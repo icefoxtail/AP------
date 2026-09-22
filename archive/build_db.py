@@ -3,6 +3,7 @@ import re
 import json
 import sys
 import io
+import subprocess
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", line_buffering=True)
@@ -1809,5 +1810,75 @@ def build_engine_db():
             print("  -", x)
 
 
-if __name__ == "__main__":
+def run_pipeline_command(label, command, cwd):
+    print(f"\n▶ {label}")
+    print("  $", " ".join(str(part) for part in command))
+    subprocess.run([str(part) for part in command], cwd=str(cwd), check=True)
+    print(f"✅ {label}")
+
+
+def run_archive_registration_sync():
+    archive_dir, _, _ = resolve_project_paths()
+    repo_root = archive_dir.parent
+    intelligence = archive_dir / "tools" / "intelligence"
+
+    print("============================================================")
+    print(" Archive 등록 자동 동기화: DB → UID → META HOLD → INDEX → CATALOG")
+    print("============================================================")
+
+    # Source JS is the inventory authority. Existing DB metadata is preserved
+    # by build_engine_db(); genuinely new source files are registered.
     build_engine_db()
+
+    run_pipeline_command(
+        "문항 UID 증분 동기화",
+        ["node", intelligence / "sync-question-identity-map-v1.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "신규 문항 metadata HOLD 동기화",
+        ["node", intelligence / "sync-pending-question-metadata-v1.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "문항 UID runtime 갱신",
+        ["node", intelligence / "build-question-identity-runtime.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Question index 갱신",
+        ["node", archive_dir / "tools" / "build-question-index.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 catalog 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 crosswalk inventory 갱신",
+        ["node", archive_dir / "tools" / "build-archive2-crosswalk-inventory.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 등록 parity 검증",
+        ["node", archive_dir / "tools" / "verify-archive-registration.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 catalog stale 검증",
+        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs", "--check"],
+        repo_root,
+    )
+
+    print("\n✅ ARCHIVE REGISTRATION SYNC PASS")
+    print("   - 신규 시험지 DB/UID/Archive2 노출은 자동 동기화")
+    print("   - 기존 Meta Foundation canonical은 자동 수정하지 않음")
+    print("   - 신규 semantic L3/L4/difficulty는 review_required HOLD로 보존")
+
+
+if __name__ == "__main__":
+    if "--db-only" in sys.argv:
+        build_engine_db()
+    else:
+        run_archive_registration_sync()
