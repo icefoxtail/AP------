@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "h1-stage2-full-goal-summary-v1",
+  "status": "STAGE2_1170_COMPLETE_HOLD_RESOLUTION_BLOCKED",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "stage2": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "missingUid": 0,
+    "duplicateUid": 0,
+    "fingerprintMismatch": 0,
+    "semanticDispositionPresent": 1170
+  },
+  "workUnits": {
+    "POLYNOMIAL": {
+      "completed": 217,
+      "denominator": 217
+    },
+    "EQINEQ": {
+      "completed": 583,
+      "denominator": 583
+    },
+    "PERMCOMB": {
+      "completed": 287,
+      "denominator": 287
+    },
+    "MATRIX": {
+      "completed": 83,
+      "denominator": 83
+    }
+  },
+  "total": {
+    "completed": 1170,
+    "denominator": 1170
+  },
+  "checkpointCommits": [
+    "8b87f47ab",
+    "f36c7663e",
+    "bd12b32c1",
+    "f183deaa4",
+    "2a9862fac",
+    "8240396d0",
+    "815db89e7",
+    "b8a96264b",
+    "165816c92",
+    "0c7e98f8f",
+    "fb5042428",
+    "09d9c5c82"
+  ],
+  "holdInventory": {
+    "totalReported": 40,
+    "itemLevelKnown": 28,
+    "itemLevelResolvedOrRouted": 28,
+    "legacyAggregateGap": 12,
+    "unresolvedUidCount": 12,
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl"
+  },
+  "holdResolution": {
+    "resolved": 28,
+    "unresolved": 12,
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "blocker": "UID-level identities for historical Eq/Ineq batch1-4 cumulative HOLD=12 are absent; the preserved ZIP is truncated/corrupt and cannot be decompressed."
+  },
+  "artifacts": {
+    "holdInventory": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
+    "holdResolution": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "fullSummary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
+    "state": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_STATE.json"
+  },
+  "mutation": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  }
+}

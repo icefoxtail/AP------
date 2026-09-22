@@ -1,6 +1,6 @@
 {
   "schemaVersion": "h1-stage2-semantic-state-v1",
-  "status": "STAGE2_COMPLETE",
+  "status": "STAGE2_1170_COMPLETE_HOLD_RESOLUTION_BLOCKED",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
   "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
@@ -142,5 +142,46 @@
     }
   ],
   "productionCanonicalCompiledRuntimeMutation": 0,
-  "mainMerge": 0
+  "mainMerge": 0,
+  "stage2": {
+    "completed": 1170,
+    "denominator": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "fingerprintMismatch": 0,
+    "workUnits": {
+      "POLYNOMIAL": {
+        "completed": 217,
+        "denominator": 217
+      },
+      "EQINEQ": {
+        "completed": 583,
+        "denominator": 583
+      },
+      "PERMCOMB": {
+        "completed": 287,
+        "denominator": 287
+      },
+      "MATRIX": {
+        "completed": 83,
+        "denominator": 83
+      }
+    }
+  },
+  "holdResolution": {
+    "resolved": 28,
+    "unresolved": 12,
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "blocker": "UID-level identities for historical Eq/Ineq batch1-4 cumulative HOLD=12 are absent; the preserved ZIP is truncated/corrupt and cannot be decompressed."
+  },
+  "holdInventory": {
+    "totalReported": 40,
+    "itemLevelKnown": 28,
+    "itemLevelResolvedOrRouted": 28,
+    "legacyAggregateGap": 12,
+    "unresolvedUidCount": 12,
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_HOLD_INVENTORY_1170.jsonl"
+  },
+  "finalSummary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
+  "finalSummarySha256": "7063538f2c16024cc0fe2b1a89072ba30709e1c706063f5bd56d18f3194cc853"
 }
