@@ -1,6 +1,6 @@
 {
   "schemaVersion": "h1-stage2-semantic-state-v1",
-  "status": "STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED",
+  "status": "STAGE2_1170_PHYSICAL_COMPLETE_REPAIR_IN_PROGRESS",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
@@ -20,7 +20,7 @@
     "PERMCOMB": 287,
     "MATRIX": 83
   },
-  "totalHold": 41,
+  "totalHold": 56,
   "currentBatchHold": 0,
   "currentBatchInputBundleSha": "a8ae8c72faf4e972f421b1d61826debe3f23c9c38174fdfabc1aa3bd3f84bd79",
   "currentBatchForbiddenCandidateInputLeakage": 0,
@@ -144,36 +144,64 @@
   "productionCanonicalCompiledRuntimeMutation": 0,
   "mainMerge": 0,
   "stage2": {
-    "rows": 1170,
+    "completed": 1170,
+    "denominator": 1170,
     "uidUnique": 1170,
     "sourceIdentityUnique": 1170,
-    "missingUid": 0,
-    "duplicateUid": 0,
     "fingerprintMismatch": 0,
     "requiredSemanticFieldMissing": 0,
-    "semanticDispositionPresent": 1170
+    "workUnits": {
+      "POLYNOMIAL": {
+        "completed": 217,
+        "denominator": 217
+      },
+      "EQINEQ": {
+        "completed": 583,
+        "denominator": 583
+      },
+      "PERMCOMB": {
+        "completed": 287,
+        "denominator": 287
+      },
+      "MATRIX": {
+        "completed": 83,
+        "denominator": 83
+      }
+    }
   },
   "holdResolution": {
-    "closed": 33,
+    "closed": 49,
     "unresolved": 7,
     "openReviewRequired": 0,
     "path": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
     "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json",
-    "blocker": "Seven historical Eq/Ineq batch1-4 aggregate HOLD identities remain unavailable; exact UID inference is prohibited."
+    "blocker": "Seven historical Eq/Ineq aggregate HOLD identities remain unavailable; exact UID inference is prohibited."
   },
   "holdInventory": {
-    "totalReported": 41,
-    "itemLevelKnown": 33,
-    "itemLevelResolvedOrRouted": 33,
+    "totalReported": 56,
+    "itemLevelKnown": 49,
+    "itemLevelResolvedOrRouted": 49,
     "openReviewRequired": 0,
     "legacyAggregateGap": 7,
     "unresolvedUidCount": 7,
     "path": "H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
     "recoveryArtifact": "H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl",
-    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json"
+    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json",
+    "dispositionCounts": {
+      "SOLUTION_REPAIR_REQUIRED": 28,
+      "ANSWER_REPAIR_REQUIRED": 8,
+      "SOURCE_REPAIR_REQUIRED": 10,
+      "SOURCE_BLOCKED": 1,
+      "VISUAL_FIDELITY_REVIEW_REQUIRED": 2
+    }
   },
   "finalSummary": "H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
-  "finalSummarySha256": "bb12c06b418f3e3bfd190c76b5452284c250518fa875c333795da356dbeaba02",
+  "finalSummarySha256": null,
   "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
-  "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01"
+  "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "gptRepair": {
+    "baseReviewHead": "d8a6be9df984d22621031402950c4138f8678287",
+    "repairedBlockRows": 57,
+    "status": "BLOCK_57_REPAIRED_FURTHER_REPAIR_REQUIRED"
+  }
 }
