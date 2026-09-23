@@ -1,0 +1,158 @@
+{
+  "schema": "H1_SOURCE_ORIGINAL_LUNA_D2_Q109_HWP_EQEDIT_EVIDENCE.v1",
+  "queueIndex": 109,
+  "questionUid": "qid_v1_b3572fb504cda7b5195b03c0917f7f7951b3565c53c629ee560f15a244cc6ed3",
+  "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#7",
+  "queueSource": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_REMAINING_QUEUE_1120_UID_ONLY.jsonl",
+    "sha256": "81554a7c477c6220a196934eefab37116305ac8be00eefead5b5e7a14475ff31"
+  },
+  "sourceDocument": {
+    "path": "D:\\기출\\23,24 고1\\2024년\\1학기 중간고사\\수학 상 (24 여수고) - 답 x.hwp",
+    "sha256": "2b08a4fc98054294da169e044bb5f01ba05532428547474ddaeaa4d598d827b9",
+    "format": "HWPv5",
+    "school": "여수고",
+    "year": 2024,
+    "semester": 1,
+    "examType": "mid",
+    "grade": "고1",
+    "course": "수학(상)"
+  },
+  "hwp5procExtraction": {
+    "command": "hwp5proc models --json <original HWP> BodyText/Section0",
+    "version": "HWPv5 model parser",
+    "returnCode": 0,
+    "rawOutputBytes": 1471966,
+    "rawOutputSha256": "28142647f8fdc70184a622bce52af091d08b6fb889dd9108e63b4bac61a8b47e",
+    "sourceSection": "BodyText/Section0"
+  },
+  "printedQuestion": {
+    "number": 7,
+    "questionParaSeq": 425,
+    "rawTextWithEquationMarker": "7. 다음 보기에서 다항식 <eqed>의 인수만을 있는 대로 고른 것은? [3.8점]<13>",
+    "score": "3.8점",
+    "stemEquationRecord": {
+      "seq": 429,
+      "formula": "x^4 +2x^2 -3"
+    },
+    "originalStem": "7. 다음 보기에서 다항식 $x^4+2x^2-3$의 인수만을 있는 대로 고른 것은? [3.8점]"
+  },
+  "statementBlock": {
+    "shapeRecordSeq": 437,
+    "type": "GShapeObjectControl",
+    "geometryHwpUnits": {
+      "x": 31560,
+      "y": 9652,
+      "width": 24274,
+      "height": 6960
+    },
+    "paragraphs": [
+      441,
+      449,
+      457
+    ],
+    "equations": [
+      {
+        "label": "ㄱ",
+        "paraSeq": 441,
+        "eqEditSeq": 445,
+        "formula": "x+1"
+      },
+      {
+        "label": "ㄴ",
+        "paraSeq": 441,
+        "eqEditSeq": 447,
+        "formula": "x+2"
+      },
+      {
+        "label": "ㄷ",
+        "paraSeq": 449,
+        "eqEditSeq": 453,
+        "formula": "x^2 -1"
+      },
+      {
+        "label": "ㄹ",
+        "paraSeq": 449,
+        "eqEditSeq": 455,
+        "formula": "x^2 +4x+4"
+      },
+      {
+        "label": "ㅁ",
+        "paraSeq": 457,
+        "eqEditSeq": 461,
+        "formula": "x^2 +3x+6"
+      },
+      {
+        "label": "ㅂ",
+        "paraSeq": 457,
+        "eqEditSeq": 463,
+        "formula": "x^3 -x^2 +3x-3"
+      }
+    ],
+    "layout": "three rows, two statements per row"
+  },
+  "sourceChoices": {
+    "paraSeq": 478,
+    "textWithTabs": "① ㄱ,ㄷ<9><9>② ㄴ,ㄹ<9><9>③ ㄷ,ㄹ<9><9>④ ㄱ,ㄴ,ㄹ<9>⑤ ㄱ,ㄷ,ㅂ<13>",
+    "choices": [
+      "ㄱ, ㄷ",
+      "ㄴ, ㄹ",
+      "ㄷ, ㄹ",
+      "ㄱ, ㄴ, ㄹ",
+      "ㄱ, ㄷ, ㅂ"
+    ]
+  },
+  "sourceAnswerAndSolution": {
+    "answerKey": "⑤ (HWP extracted answer list q7=⑤)",
+    "solution": "HWP HTML solution: x^2=X; X^2+2X-3=(X+3)(X-1); (x^2+3)(x^2-1)=(x^2+3)(x-1)(x+1); answer ⑤.",
+    "solutionHtmlPath": "C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\h1-d2-24-yeosu-source.html",
+    "solutionHtmlSha256": "17455e785bda9a14ac4f77647d142baf4607e9bc3e51cbfb61d28f35f493e88e"
+  },
+  "pageMapping": {
+    "physicalPageIndex": 1,
+    "confidence": "medium-high",
+    "method": "HWP page layout: page width 59528 / height 84188; text column width 24864; q6 line y=69602, q7 starts at y=0 then its shape is x=31560,y=9652 in the right column. This places q7 in page 1 right column.",
+    "q7LineSegments": [
+      {
+        "chpos": 0,
+        "height": 1500,
+        "height_baseline": 1275,
+        "height_text": 1500,
+        "lineseg_flags": 393216,
+        "space_below": 900,
+        "width": 24864,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "chpos": 31,
+        "height": 1000,
+        "height_baseline": 850,
+        "height_text": 1000,
+        "lineseg_flags": 393216,
+        "space_below": 600,
+        "width": 24864,
+        "x": 0,
+        "y": 2400
+      }
+    ],
+    "precedingQ6LastLineY": 69602,
+    "pageDefinition": {
+      "attr": 0,
+      "bookbinding_offset": 0,
+      "bottom_offset": 4252,
+      "footer_offset": 4252,
+      "header_offset": 0,
+      "height": 84188,
+      "left_offset": 3500,
+      "right_offset": 4028,
+      "top_offset": 4000,
+      "width": 59528
+    },
+    "fullPagePixels": "NOT_FOUND; the matching D-drive original is HWP only; no matching PDF/page PNG found."
+  },
+  "visual": {
+    "problemImage": "none; source uses text/formula shape object, not an external visual asset.",
+    "crop": "NOT_APPLICABLE"
+  }
+}
