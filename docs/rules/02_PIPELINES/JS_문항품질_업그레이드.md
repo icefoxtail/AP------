@@ -47,6 +47,39 @@
 
 ---
 
+## SOURCE ↔ SOLUTION IDENTITY FIRST GATE
+
+기존 production 해설 업그레이드에서는 content/choices/answer/solution 품질 판정보다 먼저 각 row의 identity를 확정한다.
+
+1. denominator를 unique source identity 기준으로 잠근다.
+2. `questionUid`를 resolve한다.
+3. 현재 source의 `content / choices / image refs` fingerprint를 기록한다.
+4. 현재 source 자체를 읽고 직접 풀어 `primaryMethod / decisiveSteps`를 기록한다.
+5. 그 뒤에만 기존 solution을 `KEEP / UPGRADE / HOLD`로 판정한다.
+6. final 저장 후 같은 identity row를 다시 읽어 `SOLUTION_IDENTITY_ALIGNMENT`를 판정한다.
+7. 다른 UID/학교 solution exact/near duplicate를 screening하여 `IDENTITY_COLLISION_REVIEW` 후보를 연다.
+
+금지:
+
+- 학교별 q1/q2/... 순번으로 solution 배열을 서로 매칭
+- 배열 n번째 source와 n번째 solution을 fingerprint 없이 결속
+- 이전 학교 solution 배열을 다음 학교에 ordinal 기준으로 재사용
+- 문항 수/syntax/protected field PASS를 source↔solution semantic 검증으로 보고
+- item-level alignment evidence 없이 `전수`, `직접 풀었다`, `PASS` 보고
+
+신규 failure/status code:
+
+- `ORDINAL_BINDING_USED`
+- `MISSING_SOURCE_IDENTITY`
+- `MISSING_SOURCE_FINGERPRINT`
+- `SOLUTION_IDENTITY_MISMATCH`
+- `MISSING_ALIGNMENT_EVIDENCE`
+- `IDENTITY_COLLISION_REVIEW`
+- `UNSUPPORTED_VERIFICATION_CLAIM`
+- `SEMANTIC_CHECK_NOT_RUN`
+
+---
+
 ## 2. 이번 작업 목표
 
 이 팩 안의 모든 일반 문항에 대해 아래를 수행한다.
