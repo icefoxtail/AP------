@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetSourceBranch": "codex/meta-foundation/middle-geometry",
+  "reviewIndex": {
+    "start": 481,
+    "end": 500,
+    "count": 20
+  },
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "choicesRead": false,
+  "answerFieldRead": false,
+  "existingL2L3L4CrossConceptBeforeBlindRead": false,
+  "priorReviewVerdictBeforeBlindRead": false,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 481,
+      "questionUid": "qid_v1_8cc219e82cc1a8dd6da9dc8c010a4cea0462aebb2cad2a3d90eb45a1ec3c9946",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "9d269f64dfa7db551bd428009f0f0a51e350d5d67dd74954372780809ed31f89"
+      },
+      "sourceFingerprint": "9d269f64dfa7db551bd428009f0f0a51e350d5d67dd74954372780809ed31f89",
+      "primaryMethod": "직각삼각형의 외접·내접 반지름으로 두 원 넓이 차 계산",
+      "decisiveStep": "R=hypotenuse/2=5; r=(6+8−10)/2=2; shaded area=π(25−4)=21π",
+      "supportingConcepts": [
+        "right triangle",
+        "circumcenter",
+        "incenter",
+        "circle area"
+      ],
+      "conditions": [
+        "right triangle sides6,8,10",
+        "O circumcircle center",
+        "O' incircle center"
+      ],
+      "compositionPattern": "right-triangle center formulas→outer circle area minus inner circle area",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "직각삼각형의 외심·내심 반지름을 구해 원넓이 차를 계산한다.",
+      "sourceIssue": "색칠 영역이 두 원의 차라는 점은 그림에 의존한다.",
+      "curriculumNotes": "중등 삼각형 중심·원의 넓이",
+      "sourceContentSha256": "60d4188f39b820291a8a5ff0d266b07c108d8d20df14960e5fa62866fc05302a",
+      "sourceSolutionSha256": "9f6c465bfa730a279688dd3b7b42d56e95f73ca2023ef32aa6633bb5a5c45962",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 482,
+      "questionUid": "qid_v1_8cccf8bbac380a7af59a08ca15145bb47585a4652dcf42387650e5e38e1bb52c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "7eadaf84ef49cbd8174a4c48c124963920688af803ea50df894fb98704c232e9"
+      },
+      "sourceFingerprint": "7eadaf84ef49cbd8174a4c48c124963920688af803ea50df894fb98704c232e9",
+      "primaryMethod": "닮은 삼각기둥의 대응 모서리 비로 진술 검증",
+      "decisiveStep": "AD:A'D'=4:6=2:3; corresponding AC=10/3, so AC=3 statement is false",
+      "supportingConcepts": [
+        "solid similarity",
+        "corresponding edge ratios"
+      ],
+      "conditions": [
+        "two triangular prisms are similar",
+        "AB corresponds A'B'",
+        "AD=4",
+        "A'D'=6",
+        "A'C'=5"
+      ],
+      "compositionPattern": "derive solid similarity ratio→transfer to corresponding edge→check statements",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "닮은 입체도형의 닮음비를 대응 모서리에 적용해 진술을 검증한다.",
+      "sourceIssue": "다른 보기의 대응은 그림 정보에 따른다.",
+      "curriculumNotes": "중등 입체도형의 닮음",
+      "sourceContentSha256": "d83b69222463c3c51ed0a0f7afd9b8328cb9a5a0a821eeb07c8e67f0fc0e6b2d",
+      "sourceSolutionSha256": "9612e024e585303c7fa1c7726c902fafd7eb78ea0aba89be00039dc79775fa0f",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 483,
+      "questionUid": "qid_v1_8d53b4019a9c831c7abc15952c4eec1b1c5901130240eaf4119697527a595993",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "b75b3aa812a3ed0a8db14c1070269130c6c62a2752d8ab608b22d1c433c5481d"
+      },
+      "sourceFingerprint": "b75b3aa812a3ed0a8db14c1070269130c6c62a2752d8ab608b22d1c433c5481d",
+      "primaryMethod": "호 길이를 중심각으로 바꾸고 외부 할선각과 전체 호 합으로 목표 호 및 길이 계산",
+      "decisiveStep": "arcs AB=120°, CD=60°; x+y=180°, x−y=60° so x=120°; arc AC=6π",
+      "supportingConcepts": [
+        "arc length",
+        "central angle",
+        "external secant angle",
+        "linear system"
+      ],
+      "conditions": [
+        "radius9",
+        "arc AB=6π",
+        "arc CD=3π",
+        "∠APC=30°"
+      ],
+      "compositionPattern": "arc length→central angle→circle arc sum and exterior angle difference→solve→arc length",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "호 길이를 각도로 바꾸고 외부 할선각으로 호를 연립해 다시 길이로 환산한다.",
+      "sourceIssue": "할선의 점 순서와 x,y 호 구분은 그림에서 확인한다.",
+      "curriculumNotes": "중등 원의 호·각",
+      "sourceContentSha256": "c7b5f304bd537cf0949484d97bab2ec249b7cf6017b8c81656977379aa09aa23",
+      "sourceSolutionSha256": "2e7656c4ce3b3ea066848f36e6d08fc0ec5dd1723bd8d928381889ebd6b974fd",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 484,
+      "questionUid": "qid_v1_8d5adb66553e5a1bd552ef118800a9e9daa315723365055741bff1a87eafa26d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "ffcc5ded5e9e0e2ebe0ac5786f1e79c64986eda499e05c83739b0f5dff3553d2"
+      },
+      "sourceFingerprint": "ffcc5ded5e9e0e2ebe0ac5786f1e79c64986eda499e05c83739b0f5dff3553d2",
+      "primaryMethod": "직각삼각형 RHS 합동으로 대응변을 얻고 이등변 직각삼각형에서 길이 합산",
+      "decisiveStep": "△ACE≅△ADE by RHS gives DE=CE=4; △BDE is 45-45-90 so DB=DE=4; sum8",
+      "supportingConcepts": [
+        "right triangle congruence RHS",
+        "isosceles right triangle",
+        "segment lengths"
+      ],
+      "conditions": [
+        "ABC right isosceles at C",
+        "D∈AB, AD=AC",
+        "DE⊥AB, E∈BC",
+        "CE=4"
+      ],
+      "compositionPattern": "RHS congruence→equal segment→45° right triangle→sum",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "RHS 합동으로 DE를 구하고 작은 직각이등변삼각형에서 DB를 얻는다.",
+      "sourceIssue": "점들의 선분 위 위치는 그림이 보완한다.",
+      "curriculumNotes": "중등 직각삼각형 합동·특수삼각형",
+      "sourceContentSha256": "115e6a14087fd35d3b2499e05ae1485a0bcc87de8497f85af90bf0c699d0f55d",
+      "sourceSolutionSha256": "be19eaf0235fd15d7133d3f3ec63e8bc7e4ac16a69f962753e54ab2fdf4b7af9",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 485,
+      "questionUid": "qid_v1_8d73433bf2f68582efc50f3aae348dc967b55bd54606b3dc4b09019348b3ce98",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "d2adad46d85d79169a1f0545b14ba1a5a0ff8e2a2f71b282ec2766d5f0759716"
+      },
+      "sourceFingerprint": "d2adad46d85d79169a1f0545b14ba1a5a0ff8e2a2f71b282ec2766d5f0759716",
+      "primaryMethod": "내접사각형 보각과 삼각형 각 합 뒤 접선-현각 적용",
+      "decisiveStep": "∠DCB=75°; ∠BDC=65°; tangent-chord gives ∠CBE=65°",
+      "supportingConcepts": [
+        "cyclic quadrilateral",
+        "triangle angle sum",
+        "tangent-chord angle"
+      ],
+      "conditions": [
+        "ABCD cyclic",
+        "∠DAB=105°",
+        "∠DBC=40°",
+        "BE tangent at B"
+      ],
+      "compositionPattern": "cyclic opposite-angle supplement→triangle angle→tangent-chord transfer",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "내접사각형과 삼각형의 각을 차례로 구해 접선-현각으로 옮긴다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 내접사각형·접선",
+      "sourceContentSha256": "596857411f2aed3ac33cbeada6f57525e83ded5fc0c6e57c21f1a2d9fbc51bb8",
+      "sourceSolutionSha256": "b825b48aa80a9ad42afaf2b94fb38e7225af14fe72254f8e9bcb3b7d82ad26ae",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 486,
+      "questionUid": "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "a3455d27fa16995f7a3ecbc3e93fc41fc2655daa7fff09114f84130476eaec8f"
+      },
+      "sourceFingerprint": "a3455d27fa16995f7a3ecbc3e93fc41fc2655daa7fff09114f84130476eaec8f",
+      "primaryMethod": "중심에서 현에 내린 수선의 중점 성질과 반지름 직각삼각형",
+      "decisiveStep": "AE=AB/2=3; OE=√(OA²−AE²)=3√3",
+      "supportingConcepts": [
+        "chord perpendicular bisector",
+        "radius",
+        "Pythagorean theorem"
+      ],
+      "conditions": [
+        "AB=AC",
+        "∠BAC=120°",
+        "OA=AB=6",
+        "OD⊥AB",
+        "E=OD∩AB"
+      ],
+      "compositionPattern": "perpendicular from center→half chord→right triangle radius-distance",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "중심에서 현에 내린 수선으로 반현을 얻고 반지름과 직각삼각형을 만든다.",
+      "sourceIssue": "E가 현 위의 수선 발인 incidence는 그림으로 확인한다.",
+      "curriculumNotes": "중등 원의 현",
+      "sourceContentSha256": "839639f2c1b3aa85c860d83789f4c158057d57d9fd7ab44a2ea05cff68217c9a",
+      "sourceSolutionSha256": "5f4be4af9cd054d38df253bc2ab3d790f23ea21ac7b571e54592e4b9d0b43ced",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 487,
+      "questionUid": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "75b0b5b7c23acf086aad0f811e95fd6b5ab36d1887a911728330ce3e1b5ad168"
+      },
+      "sourceFingerprint": "75b0b5b7c23acf086aad0f811e95fd6b5ab36d1887a911728330ce3e1b5ad168",
+      "primaryMethod": "마름모 대각선의 이등분 및 꼭짓각 이등분으로 길이·각 계산",
+      "decisiveStep": "AO=3 gives AC=6; ∠ABC=2·30=60°, adjacent ∠BCD=120°, diagonal AC bisects to ∠OCD=60°",
+      "supportingConcepts": [
+        "rhombus diagonals",
+        "angle bisector",
+        "supplementary angles"
+      ],
+      "conditions": [
+        "ABCD rhombus",
+        "O=AC∩BD",
+        "AO=3",
+        "∠ABO=30°"
+      ],
+      "compositionPattern": "diagonal bisection→full diagonal; angle bisection→interior angle→half",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "마름모의 대각선 이등분과 각 이등분 성질을 적용한다.",
+      "sourceIssue": "각 표시와 AO 길이는 그림에 주어진다.",
+      "curriculumNotes": "중등 마름모",
+      "sourceContentSha256": "055da26d916e223c24be8a1685f2941d024c0eccc853d903c566b00dc92f6a6e",
+      "sourceSolutionSha256": "ae02d6a4b4b5031431a4bb40cab385d2e2c44f04f98c925ab4e5de0b249c5fb8",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 488,
+      "questionUid": "qid_v1_8e8679d91c564849aac108ab4049be00f1a73683affa74f0b65c86c5ee13e5e1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "5ab7e272c72406ca69059b227ab09ad06502d1903b8df7abe02650495a992d51"
+      },
+      "sourceFingerprint": "5ab7e272c72406ca69059b227ab09ad06502d1903b8df7abe02650495a992d51",
+      "primaryMethod": "두 접선의 끼인각으로 호를 구하고 두 현 교차각 공식",
+      "decisiveStep": "minor arc AD=180°−72°=108°; remaining three equal arcs each84°; ∠BQC=(84+108)/2=96°",
+      "supportingConcepts": [
+        "two tangents",
+        "arc measure",
+        "intersecting chords angle"
+      ],
+      "conditions": [
+        "PA,PD tangents",
+        "arc AB=BC=CD",
+        "∠APD=72°",
+        "Q=AC∩BD"
+      ],
+      "compositionPattern": "tangent pair→minor arc→equal-arc partition→intersecting-chord angle",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 접선의 각에서 호를 얻고 같은 호 분할 뒤 현 교차각을 계산한다.",
+      "sourceIssue": "작은 호 AD와 세 호의 배열은 그림을 따른다.",
+      "curriculumNotes": "중등 원의 접선·호·현",
+      "sourceContentSha256": "3919fd435eed5084243a57369e9958bb92cf0534466f77f825ebca4378591454",
+      "sourceSolutionSha256": "0248d5d53b97918098e9436249502598bc8f43074fe5faff76974be2d0d06aef",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 489,
+      "questionUid": "qid_v1_8e99f18c612e5173857a5a170023e18c13426d3fae686a27be75f3541cb72d69",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "decb33d962dcfa34e366b9747488dd445ec57274ed6b30d1eea91a5c7f5d4775"
+      },
+      "sourceFingerprint": "decb33d962dcfa34e366b9747488dd445ec57274ed6b30d1eea91a5c7f5d4775",
+      "primaryMethod": "내심의 각 이등분으로 삼각형 세 각을 표현해 x 계산",
+      "decisiveStep": "A=2x, B=60°, C=50°; 2x+110=180 gives x=35°",
+      "supportingConcepts": [
+        "incenter",
+        "angle bisector",
+        "triangle angle sum"
+      ],
+      "conditions": [
+        "I incenter",
+        "∠ABI=30°",
+        "∠ACI=25°",
+        "x=∠BAI"
+      ],
+      "compositionPattern": "incenter half-angles→triangle angle sum",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "내심 각 이등분으로 원래 삼각형의 각을 나타내 내각합을 적용한다.",
+      "sourceIssue": "각 표시는 그림에 제시된다.",
+      "curriculumNotes": "중등 삼각형의 내심",
+      "sourceContentSha256": "da574e373ec3057f45fdcbb236f5f483df5757556d1a64c6c935d4472397d2a3",
+      "sourceSolutionSha256": "acd2f78eb049661ffc2781cb3420b5339e9ba79e2c9a3a2edeb1419336f5b8fd",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 490,
+      "questionUid": "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "eb9993a7af55cc74f872d1f70189245309953eb0af6477fae4d3e4440095d630"
+      },
+      "sourceFingerprint": "eb9993a7af55cc74f872d1f70189245309953eb0af6477fae4d3e4440095d630",
+      "primaryMethod": "중심에서 현까지 같은 거리 조건으로 직각삼각형 RHS 합동 및 합동기호 순서 판별",
+      "decisiveStep": "equal half-chords and radii give △OBM≅△OCN by RHS; reject mismatched correspondence order",
+      "supportingConcepts": [
+        "equidistant chords",
+        "right triangle congruence RHS",
+        "correspondence order"
+      ],
+      "conditions": [
+        "M,N feet from O to chords AB,CD",
+        "DN=AM"
+      ],
+      "compositionPattern": "center-to-chord perpendicular→equal half lengths→RHS congruence→check vertex order",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "현의 중점·거리 관계로 직각삼각형을 합동시키고 대응 순서가 잘못된 표시를 찾는다.",
+      "sourceIssue": "보기에 제시된 합동기호는 content에 없고 풀이가 오류 유형을 특정한다.",
+      "curriculumNotes": "중등 원의 현·직각삼각형 합동",
+      "sourceContentSha256": "f94515742a5c162aaf1c0a5d08e62b6b4eec7539c48537e3699694803c297da3",
+      "sourceSolutionSha256": "64413bb4cd2661747c1b4ac36b2a4bb21884e4b8e02a27f968e8a5c205de0ece",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 491,
+      "questionUid": "qid_v1_8f01c7918a339e4600d1a572b93e0b43e4fb0efc1306cf8bc6641f7983e803d2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "39c111854177a4f6fa0604e84136938f646df1be345a8bc2255fad7432c87c04"
+      },
+      "sourceFingerprint": "39c111854177a4f6fa0604e84136938f646df1be345a8bc2255fad7432c87c04",
+      "primaryMethod": "세 꼭짓점과 같은 거리에 있는 점을 외심으로 해석해 수직이등분선 교점 구성",
+      "decisiveStep": "equidistant from three trees→circumcenter→intersection of perpendicular bisectors",
+      "supportingConcepts": [
+        "circumcenter",
+        "perpendicular bisector",
+        "locus/application"
+      ],
+      "conditions": [
+        "three trees form triangle",
+        "treasure equidistant from all three"
+      ],
+      "compositionPattern": "equal vertex distances→circumcenter definition→construction",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "세 나무를 꼭짓점으로 하는 삼각형의 외심을 수직이등분선 교점으로 찾는다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 외심의 활용",
+      "sourceContentSha256": "049177a01e89c0576afd51e085ac5234d48dabd17ee12e7daad54f80a4e5b139",
+      "sourceSolutionSha256": "aee4ec7d3302e06140658c50d3d31c18b06d7070a643b14badbd8720c830dff2",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 492,
+      "questionUid": "qid_v1_8f799089d90cef41eed76415fee672affd7875df99bc4f97535b0fdf80ed5163",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "e2b945cb413db96ce23a393d85bbc44c2b12d0cfa22e1d7c992bf055cc037e25"
+      },
+      "sourceFingerprint": "e2b945cb413db96ce23a393d85bbc44c2b12d0cfa22e1d7c992bf055cc037e25",
+      "primaryMethod": "두 고도각의 탄젠트 방정식으로 공통 높이와 수평거리 연립",
+      "decisiveStep": "h=0.75x and h=(x+500)/3 gives x=400,h=300; add eye height2 for302m",
+      "supportingConcepts": [
+        "trig ratio application",
+        "tangent",
+        "complementary angles",
+        "linear equation"
+      ],
+      "conditions": [
+        "walk distance500m",
+        "elevations18° and37°",
+        "tan72°=3",
+        "tan37°=.75",
+        "eye height2m"
+      ],
+      "compositionPattern": "use complementary tangent for far angle→two shared-height equations→solve→add eye height",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 지점의 고도각을 탄젠트 식으로 세워 탑 높이를 연립한다.",
+      "sourceIssue": "관측 방향과 지점 간 수평거리는 그림 설명을 따른다.",
+      "curriculumNotes": "중등 삼각비의 활용",
+      "sourceContentSha256": "d5f35f383058ab789832d23dec0bbe024875cf25902b0777ff1613727e31f79b",
+      "sourceSolutionSha256": "66af44cacee360e3dd19c7dca7aa62504ec9e4a5d7e93afe766a25a1e1cfa73b",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 493,
+      "questionUid": "qid_v1_8fd409d81a8f08ff48d4fc99aabf46b8e780ebec78a46a8ecaf2968e8d23bb15",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "f2e108dce930981665f3193676fc0793e81d3f602cd10a4bdac53cdfe58949e3"
+      },
+      "sourceFingerprint": "f2e108dce930981665f3193676fc0793e81d3f602cd10a4bdac53cdfe58949e3",
+      "primaryMethod": "정사각형 대각선에 대한 대칭과 삼각형 각 합",
+      "decisiveStep": "∠EBC=80°, ∠ECB=45°, so ∠BEC=55°; reflection over AC gives x=55°",
+      "supportingConcepts": [
+        "square angle bisection",
+        "triangle angle sum",
+        "reflection symmetry"
+      ],
+      "conditions": [
+        "ABCD square",
+        "E on AC",
+        "∠ABE=10°"
+      ],
+      "compositionPattern": "square right angle and diagonal half-angle→triangle angle→axis reflection",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "정사각형 대각선의 각 이등분과 대칭으로 x를 구한다.",
+      "sourceIssue": "x가 대칭으로 대응되는 각의 위치는 그림에 따른다.",
+      "curriculumNotes": "중등 정사각형·대칭",
+      "sourceContentSha256": "557bddee6a48c22aa053064464fb90d59ebbd6e2eff00efa13500b55a9f69d62",
+      "sourceSolutionSha256": "a19b7fa3930ccc6b549a313480f2b3380489d599ccdb5ba3b4fd85ed31254c85",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 494,
+      "questionUid": "qid_v1_8fdc1f3cc10f5adf05b8b9c59eed329f50450d5cff598e604c3e68f78ba545f1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "093c357c2a6d25d6ff69096cfec08580f5ba8e1dd885a71cc91cd648c37e9910"
+      },
+      "sourceFingerprint": "093c357c2a6d25d6ff69096cfec08580f5ba8e1dd885a71cc91cd648c37e9910",
+      "primaryMethod": "직각삼각형 내접반지름 공식으로 원의 넓이 계산",
+      "decisiveStep": "BC=√(15²−9²)=12; r=(9+12−15)/2=3; area=9π",
+      "supportingConcepts": [
+        "Pythagorean theorem",
+        "inradius formula",
+        "circle area"
+      ],
+      "conditions": [
+        "right triangle at C",
+        "AB=15",
+        "AC=9",
+        "incircle tangent points D,E,F"
+      ],
+      "compositionPattern": "Pythagorean side→right-triangle inradius→circle area",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "피타고라스로 세 변을 구하고 직각삼각형 내접반지름으로 원넓이를 계산한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 직각삼각형·내접원",
+      "sourceContentSha256": "a37eef440f72d59ddc4c0b7acb04ac471d9287e52537e42e76c60736d3e5ffe2",
+      "sourceSolutionSha256": "d54b8fad2606d6f96b1d9cb2ebb45014feca5ccaeca2b82895205666a8d62c0b",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 495,
+      "questionUid": "qid_v1_8fdc5b8d0efbb18d4f82e259b58165da4c1ff7d56362d768307a77176351d58b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "61c594cd703ca77467d1fa48ace5ff036c52736b741938944f68aa512a749ef9"
+      },
+      "sourceFingerprint": "61c594cd703ca77467d1fa48ace5ff036c52736b741938944f68aa512a749ef9",
+      "primaryMethod": "두 그림에서 접선-현각과 삼각형 내각합을 적용",
+      "decisiveStep": "first marked exterior tangent-chord angle corresponds to 120° inscribed angle; second gives B=40°, then x=60°",
+      "supportingConcepts": [
+        "tangent-chord angle",
+        "inscribed angle",
+        "triangle angle sum"
+      ],
+      "conditions": [
+        "AT tangent at A in both diagrams",
+        "first ∠ABC=120°",
+        "second tangent-chord angle40°, ∠C=80°"
+      ],
+      "compositionPattern": "tangent-chord correspondence in each diagram→triangle angle sum for second",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "두 접선 그림에 접선-현각을 각각 적용하고 둘째 그림은 삼각형 내각합으로 마무리한다.",
+      "sourceIssue": "첫 그림에서 표시된 외각 방향은 도형 배치에 의존한다.",
+      "curriculumNotes": "중등 원의 접선·원주각",
+      "sourceContentSha256": "c99a9c909c27f4923254783c60bfbb3146bebfb9770328d7bedd79beb133c156",
+      "sourceSolutionSha256": "91f7b75c7f847eeec1cc8f88901f5a7b60888e59df13b6c24c8d7218580940e3",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 496,
+      "questionUid": "qid_v1_8ff3dfe897385c93112cbbb140d74f9d8f2a218a9e76c18a923b24a9c6b112b8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "3c2dbca5a43d1f153006f491cd36146a34c2b7d5414d2ac06c11a67267cdbdcc"
+      },
+      "sourceFingerprint": "3c2dbca5a43d1f153006f491cd36146a34c2b7d5414d2ac06c11a67267cdbdcc",
+      "primaryMethod": "같은 삼각형 넓이를 내접원·방접원 반지름과 접선 거리로 표현해 비율 계산",
+      "decisiveStep": "area=12r from semiperimeter; area=8R from excenter distances; r:R=2:3",
+      "supportingConcepts": [
+        "inradius",
+        "exradius",
+        "equal tangent distances",
+        "triangle area"
+      ],
+      "conditions": [
+        "side lengths9,11,4",
+        "incircle and an excircle tangent to extensions AB,AC and BC"
+      ],
+      "compositionPattern": "area as sum of side-distance triangles→inradius/exradius expressions→equate",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "내심·방심에서 변까지 같은 거리를 사용해 한 넓이를 두 반지름으로 나타낸다.",
+      "sourceIssue": "어느 방접원인지와 접선의 연장 위치는 그림으로 확인된다.",
+      "curriculumNotes": "중등 내심·방심·넓이",
+      "sourceContentSha256": "e9483dccb9107f71dcd96684a9af007c394c8cb19542376bddee3734cd43d4bb",
+      "sourceSolutionSha256": "6aa163281076606351737b587982ad6813c96bf8985250a0b2a5e8d585a3831f",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 497,
+      "questionUid": "qid_v1_9085daae1976da47ba5f2e7cdd228aa87af076292981d26101827622ab38feca",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "ee54e3ee700f0f45a04631daf70da8f8c86d1d71b3cfdb17968dce958000980d"
+      },
+      "sourceFingerprint": "ee54e3ee700f0f45a04631daf70da8f8c86d1d71b3cfdb17968dce958000980d",
+      "primaryMethod": "평행사변형의 대변 길이와 끼인각 사인으로 넓이 계산",
+      "decisiveStep": "area=7·6√2·sin45°=42",
+      "supportingConcepts": [
+        "parallelogram area",
+        "sine",
+        "opposite sides"
+      ],
+      "conditions": [
+        "AB=7",
+        "AD=6√2",
+        "∠B=45°"
+      ],
+      "compositionPattern": "opposite side length→adjacent sides and included angle→sine area formula",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "평행사변형의 이웃한 두 변과 끼인각의 사인으로 넓이를 구한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 평행사변형·삼각비·넓이",
+      "sourceContentSha256": "48570a86be8b0b07b997a25f232d612250ccd95697d1755c1577c8f5fcf507ea",
+      "sourceSolutionSha256": "664cb9f12bc21c5c9f61b192805a88ee3278f8d0d4e564a3bd48aeeb80b8237a",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 498,
+      "questionUid": "qid_v1_90ae56eed6029cb817a5d760d30ef3a4c4847e6076f996cc1eed1bc0c07d3e22",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "fc3364197c12e8ec24bfb9158592cc84e1f8337cd97864adfeb0932fb10a280e"
+      },
+      "sourceFingerprint": "fc3364197c12e8ec24bfb9158592cc84e1f8337cd97864adfeb0932fb10a280e",
+      "primaryMethod": "두 원의 내접·외접 중심거리와 직각 중심배치로 반지름·중심거리 방정식",
+      "decisiveStep": "outer semicircle radius20, OP=10; (10+r)²=10²+(20−r)² gives r=20/3 and PQ=50/3",
+      "supportingConcepts": [
+        "two-circle tangency",
+        "center distance",
+        "Pythagorean theorem"
+      ],
+      "conditions": [
+        "circle P diameter20",
+        "P internally tangent to semicircle O",
+        "circle Q externally tangent to P and internally tangent to O",
+        "OP⊥OQ in diagram"
+      ],
+      "compositionPattern": "internal tangency gives outer radius→external and internal center-distance formulas→right triangle equation",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "두 원의 접함에서 중심거리 합·차를 세우고 직각 중심배치로 미지 반지름을 구한다.",
+      "sourceIssue": "OP와 OQ의 수직 배치는 그림에 의존한다.",
+      "curriculumNotes": "중등 두 원의 위치 관계",
+      "sourceContentSha256": "1ab5bf2c1c2e322298f20116354a47907e3d35f5d0959e361482d19a4c723159",
+      "sourceSolutionSha256": "095b75b6066697ff2591694e5f579ae1c3e0108e8b85cf538c1d2437e77de178",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 499,
+      "questionUid": "qid_v1_915bf6c2a9a517989ed8ed6f65475f21832ace7b5f3cd67fbddaa51fdd6f26f4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "c4b9b5740ae463054f765b3d7df2ddeeed7a37168631976b7204ec6dbf7f125d"
+      },
+      "sourceFingerprint": "c4b9b5740ae463054f765b3d7df2ddeeed7a37168631976b7204ec6dbf7f125d",
+      "primaryMethod": "지름의 일직선 중심각에서 이등변삼각형 밑각 계산",
+      "decisiveStep": "∠BOC=180°−62°=118°; OB=OC gives ∠BCO=(180°−118°)/2=31°",
+      "supportingConcepts": [
+        "diameter",
+        "central angle",
+        "equal radii",
+        "isosceles triangle"
+      ],
+      "conditions": [
+        "AB diameter",
+        "∠AOC=62°"
+      ],
+      "compositionPattern": "straight central angle→subtract adjacent central angle→equal-radius isosceles triangle",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "지름 위 중심각의 평각 관계와 반지름 이등변삼각형을 이용한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 원의 중심각·이등변삼각형",
+      "sourceContentSha256": "eaaf326f2fbd1e7377aee3d9a1256960869ac5414c8a04bd4c7f489097f29bb7",
+      "sourceSolutionSha256": "8a5f2b228b44265010a1dcd262b22cf18f829d1d61bca229ea382c4ddb2d588c",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 500,
+      "questionUid": "qid_v1_919b96074ffe4ac6204cc9765b016b9c92418eced65b6bd8e35d72ea375fe51a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "61e768c52aa38ceaaa97db284e1768b1bd7cb0a349889afb7fcbc7ca6b06a1db"
+      },
+      "sourceFingerprint": "61e768c52aa38ceaaa97db284e1768b1bd7cb0a349889afb7fcbc7ca6b06a1db",
+      "primaryMethod": "두 직각삼각형의 여각 관계로 x를 각 C와 연결해 cosine 계산",
+      "decisiveStep": "x and ∠ACB are both complements of equal ∠ACG and ∠ABC; cos x=AC/BC=18/27=2/3",
+      "supportingConcepts": [
+        "complementary angles",
+        "right triangle",
+        "cosine definition"
+      ],
+      "conditions": [
+        "∠A=90°",
+        "∠ACG=∠ABC",
+        "AC=18",
+        "BC=27"
+      ],
+      "compositionPattern": "complementary-angle equality→identify target angle→cosine side ratio",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 직각삼각형의 여각 관계로 x를 C각과 같게 보고 코사인을 계산한다.",
+      "sourceIssue": "x의 위치는 그림에서 확인된다.",
+      "curriculumNotes": "중등 삼각비",
+      "sourceContentSha256": "0984e90a45029865f125b2b6f56f0778511adaef9cb35394c293f450e76b1603",
+      "sourceSolutionSha256": "a0da1ef81340c07291d954bb1ed19241af8bd2f03ade44dd6e8c58dd0127e6b7",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    }
+  ]
+}
