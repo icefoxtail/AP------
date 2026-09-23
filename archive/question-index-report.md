@@ -1,6 +1,6 @@
 # question-index 생성 리포트
 
-- 생성 시각: 2026-09-23T10:31:49.043Z
+- 생성 시각: 2026-09-23T11:48:22.699Z
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
 - 시험지 수(db.js): 464
 - 시험지 파일 수: 464
@@ -10,7 +10,7 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 464201 bytes
-- 시험지 JS 총 크기: 18385168 bytes
+- 시험지 JS 총 크기: 18385152 bytes
 - 인덱스 크기: 11928302 bytes
 - 로드 실패 파일: 0
 
