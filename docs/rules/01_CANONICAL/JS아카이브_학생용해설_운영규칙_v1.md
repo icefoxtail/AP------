@@ -20,6 +20,69 @@
 
 하위 문서의 과거 예시가 본 문서와 충돌하면 본 문서를 따른다.
 
+## 0-A. SOURCE ↔ SOLUTION IDENTITY HARD GATE
+
+> **ORDINAL IS NOT IDENTITY.** 문항 번호, `id`, 배열 index, loop 순서, 학교별 같은 번호는 source와 solution을 결속시키는 identity가 아니다.
+
+해설을 읽거나 수정하기 전에 각 문항의 source identity를 먼저 동결한다.
+
+필수 identity evidence:
+
+```text
+sourceArchiveFile
+questionUid
+id / sourceOrdinal
+contentHash
+choicesHash
+imageRefHash
+sourceIdentityFingerprint
+beforeSolutionHash
+```
+
+- `questionUid`가 현재 JS에 직접 없으면 authoritative identity map에서 resolve한다.
+- resolve할 때 `sourceArchiveFile + sourceOrdinal/id`는 위치를 찾는 보조키로만 사용한다.
+- UID resolve 뒤 현재 `content / choices / image refs` fingerprint parity를 반드시 확인한다.
+- `sourceOrdinal/id` 단독, 동일 번호, 배열 위치만으로 다른 source의 solution을 연결하는 것을 금지한다.
+
+### SOLUTION_IDENTITY_ALIGNMENT
+
+최종 solution 저장 후 동일 source identity row를 다시 읽고 다음을 문항별로 판정한다.
+
+1. 현재 `content / choices / 필요한 image`를 실제로 읽는다.
+2. final `solution`을 실제로 읽는다.
+3. `primaryMethod / decisiveSteps`가 현재 source의 풀이 요구와 일치하는지 확인한다.
+4. solution의 식·조건·결론이 바로 이 source를 풀고 있는지 확인한다.
+
+상태:
+
+- `ALIGNMENT_PASS`
+- `ALIGNMENT_FAIL`
+- `ALIGNMENT_HOLD`
+- `NOT_VERIFIED`
+
+`ALIGNMENT_PASS` evidence가 없는 문항은 answer가 맞거나 solution 자체가 수학적으로 그럴듯해도 해설 checkpoint PASS가 아니다.
+
+### CLAIM ↔ EVIDENCE LOCK
+
+`전수`, `전체 확인`, `직접 풀었다`, `독립 검증`, `검증 완료`, `PASS`, `FINAL`이라는 표현은 실제 item-level physical evidence coverage가 있을 때만 사용한다.
+
+구조검사(`node --check`, JSON parse, 문항 수, protected-field diff, regex lint)나 answer 일치는 각자의 검사 결과일 뿐 `SOLUTION_IDENTITY_ALIGNMENT` 또는 semantic 전수검증의 대체 증거가 아니다.
+
+서로 다른 source identity 사이에서 solution exact/near duplicate가 비정상적으로 발견되면 `IDENTITY_COLLISION_REVIEW`를 열고 두 source를 직접 재대조한다. duplicate screen만으로 자동 FAIL하지 않지만, 검토 없이 자동 PASS하지도 않는다.
+
+관련 상태/실패 코드는 다음을 사용한다.
+
+- `ORDINAL_BINDING_USED`
+- `MISSING_SOURCE_IDENTITY`
+- `MISSING_SOURCE_FINGERPRINT`
+- `SOLUTION_IDENTITY_MISMATCH`
+- `MISSING_ALIGNMENT_EVIDENCE`
+- `IDENTITY_COLLISION_REVIEW`
+- `UNSUPPORTED_VERIFICATION_CLAIM`
+- `SEMANTIC_CHECK_NOT_RUN`
+
+---
+
 > **학생용 해설은 ‘작은 칠판’이다. 선생님이 옆에서 판서하듯 문제를 처음부터 끝까지 따라갈 수 있어야 한다.**
 
 ---
@@ -256,7 +319,12 @@ JS `solution` 문자열의 줄바꿈은 실제 소스 개행이 아니라 `\n` e
 
 ```text
 filePath
+sourceArchiveFile
 questionUid / id
+contentHash
+choicesHash
+imageRefHash
+sourceIdentityFingerprint
 beforeSolutionHash
 disposition = KEEP | UPGRADE | HOLD
 upgradeReasons[]
@@ -267,6 +335,10 @@ calculationOmissions[]
 languageIssues[]
 linebreakIssues[]
 afterSolutionHash
+solutionIdentityAlignmentStatus
+solutionIdentityAlignmentEvidence
+duplicateScreenStatus
+duplicateCandidates[]
 protectedFieldDiffStatus
 solutionRenderStatus
 upgradeGateStatus
@@ -280,6 +352,12 @@ upgradeGateStatus
 
 한 시험지는 다음을 모두 만족해야 해설 업그레이드 checkpoint를 닫을 수 있다.
 
+- unique item ledger rows == 전체 denominator
+- source identity freeze coverage == denominator
+- source direct-read coverage == denominator
+- math check coverage == denominator
+- `SOLUTION_IDENTITY_ALIGNMENT` PASS coverage == denominator
+- `ALIGNMENT_FAIL / NOT_VERIFIED / unresolved identity collision` == 0
 - 전체 문항 denominator 확정
 - 모든 문항 `KEEP / UPGRADE / HOLD` 판정
 - `UPGRADE` 문항은 기존보다 개선됐다는 delta evidence 존재
@@ -314,6 +392,9 @@ HOLD가 있으면 그 이유와 다음 필요한 자료를 남기고 전체 Fina
 
 ## 13. 절대 금지
 
+- 문항번호/배열순서/loop index를 source↔solution identity로 사용
+- item-level alignment evidence 없이 전수/직접검증/PASS/FINAL 주장
+- syntax/문항수/protected-field diff를 semantic alignment 검증의 대체 증거로 사용
 - 기존 solution을 읽지 않고 일괄 재작성
 - 문항 수만 맞추고 전수 판독했다고 주장
 - 정답에 맞춘 역산 풀이
