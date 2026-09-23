@@ -83,6 +83,142 @@
       (subject?.courseKeys || []).map((key) => normalizeCourseIdentity(key)),
     );
   };
+  const HIGH1_SUBJECT_PROJECTIONS = Object.freeze([
+    Object.freeze({ value: "COMMON_MATH_1", label: "공통수학1" }),
+    Object.freeze({ value: "COMMON_MATH_2", label: "공통수학2" }),
+  ]);
+  const HIGH1_DIRECT_KEY_MAP = Object.freeze({
+    "H15-SA-01": "H22-C-01",
+    "H15-SA-02": "H22-C-02",
+    "H15-SA-03": "H22-C-03",
+    "H15-SA-04": "H22-C-04",
+    "H15-SA-05": "H22-C-05",
+    "H15-SA-06": "H22-C-05",
+    "H15-SA-07": "H22-C-06",
+    "H15-SA-08": "H22-C-06",
+    "H15-SA-09": "H22-C2-01",
+    "H15-SA-10": "H22-C2-02",
+    "H15-SA-11": "H22-C2-03",
+    "H15-SA-12": "H22-C2-04",
+    "H15-SA-13": "H22-C-05",
+    "H15-SB-01": "H22-C2-05",
+    "H15-SB-02": "H22-C2-06",
+    "H15-SB-03": "H22-C2-07",
+    "H15-SB-04": "H22-C2-08",
+    "H15-SB-05": "H22-C2-09",
+    "H15-SB-06": "H22-C-07",
+    "H15-SB-07": "H22-C-08",
+    "H15-SB-08": "H22-C-08",
+    "M3-04": "H22-C-05",
+  });
+  const HIGH1_RAW_KEY_MAP = Object.freeze({
+    "RAW-수치계산의공식화": "H22-C-01",
+    "RAW-다항식의성질": "H22-C-01",
+    "RAW-다항식의변형": "H22-C-01",
+    "RAW-다항식추론": "H22-C-02",
+    "RAW-다항식의결정": "H22-C-02",
+    "RAW-서술형": "H22-C-02",
+    "RAW-서술형2": "H22-C-02",
+    "RAW-서술형3": "H22-C-05",
+  });
+  const HIGH1_QUESTION_OVERRIDES = Object.freeze({
+    "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#12": "H22-C-06",
+  });
+  function high1CanonicalUnitKeyForRecord(record = {}) {
+    const sourceFile = normalizeFile(record.sourceFile),
+      sourceQuestionNo = text(
+        record.sourceQuestionNo || record.id || record._sourceQuestionNo,
+      ),
+      identity = sourceFile && sourceQuestionNo
+        ? `${sourceFile}#${sourceQuestionNo}`
+        : "";
+    if (identity && HIGH1_QUESTION_OVERRIDES[identity])
+      return HIGH1_QUESTION_OVERRIDES[identity];
+
+    const sourceKey = text(
+      record.legacyStandardUnitKey || record.standardUnitKey || record.unitKey,
+    );
+    if (/^H22-C2-\d{2}$/.test(sourceKey) || /^H22-C-\d{2}$/.test(sourceKey))
+      return sourceKey;
+
+    let mapped = HIGH1_DIRECT_KEY_MAP[sourceKey] || HIGH1_RAW_KEY_MAP[sourceKey] || "";
+    const unitText = [
+      record.standardUnit,
+      record.legacyStandardUnit,
+      record.standardUnitLabel,
+      record.L1,
+      record.L2,
+      record.topic,
+    ]
+      .map(text)
+      .filter(Boolean)
+      .join(" | ");
+
+    if (sourceKey === "H15-SA-02" && unitText.includes("방정식과 부등식"))
+      mapped = "H22-C-06";
+    if (sourceKey === "H15-SA-03" && unitText.includes("복소수"))
+      mapped = "H22-C-04";
+    if (sourceKey === "H15-SA-04" && unitText.includes("이차방정식"))
+      mapped = "H22-C-05";
+    if (sourceKey === "H15-SA-06" && unitText.includes("여러 가지"))
+      mapped = "H22-C-06";
+    if (sourceKey === "H15-SB-02" && unitText.includes("함수"))
+      mapped = "H22-C2-07";
+
+    return mapped;
+  }
+  const high1SubjectProjectionForCanonicalUnit = (unitKey) => {
+    const key = text(unitKey);
+    if (/^H22-C2-\d{2}$/.test(key)) return "COMMON_MATH_2";
+    if (/^H22-C-\d{2}$/.test(key)) return "COMMON_MATH_1";
+    return "";
+  };
+  const hasSubjectProjection = (grade) =>
+    ["고1", "고2", "고3"].includes(text(grade));
+  const subjectProjectionOptions = (grade) => {
+    if (text(grade) === "고1")
+      return HIGH1_SUBJECT_PROJECTIONS.map(({ value, label }) => ({ value, label }));
+    if (isHighSemanticSubjectGrade(grade)) return highSemanticSubjectOptions();
+    return [];
+  };
+  function subjectProjectionForRecord(record = {}, grade = "") {
+    const resolvedGrade = text(
+      grade || record.effectiveBrowseGrade || record.sourceGrade || record.grade,
+    );
+    if (resolvedGrade === "고1") {
+      if (text(record.curriculumKey) === "2022") {
+        const courseIdentity = normalizeCourseIdentity(record.courseKey);
+        if (courseIdentity === normalizeCourseIdentity("공통수학1"))
+          return "COMMON_MATH_1";
+        if (courseIdentity === normalizeCourseIdentity("공통수학2"))
+          return "COMMON_MATH_2";
+      }
+      return high1SubjectProjectionForCanonicalUnit(
+        high1CanonicalUnitKeyForRecord(record),
+      );
+    }
+    if (isHighSemanticSubjectGrade(resolvedGrade))
+      return highSemanticSubjectForCourseKey(record.courseKey);
+    return "";
+  }
+  function subjectProjectionLabel(filters = {}) {
+    const grade = text(filters.grade);
+    if (!hasSubjectProjection(grade)) return text(filters.courseKey);
+    if (!filters.semanticSubject) return "";
+    return (
+      subjectProjectionOptions(grade).find(
+        (item) => item.value === text(filters.semanticSubject),
+      )?.label || ""
+    );
+  }
+  function subjectProjectionMatches(record, filters = {}) {
+    if (!filters.semanticSubject) return true;
+    if (!hasSubjectProjection(filters.grade)) return false;
+    return (
+      subjectProjectionForRecord(record, filters.grade) ===
+      text(filters.semanticSubject)
+    );
+  }
   const finderCourseGrades = Object.freeze({
     공통수학1: "고1",
     공통수학2: "고1",
@@ -158,8 +294,9 @@
     );
   }
   function reconcileFinderFilters(filters = {}, taxonomy = []) {
-    const next = { ...filters };
-    if (isHighSemanticSubjectGrade(next.grade)) {
+    const next = { ...filters },
+      grade = text(next.grade);
+    if (isHighSemanticSubjectGrade(grade)) {
       if (
         !next.semanticSubject &&
         HIGH_SEMANTIC_SUBJECTS.some(
@@ -167,9 +304,8 @@
         )
       )
         next.semanticSubject = next.family;
-      if (!next.semanticSubject && next.courseKey) {
+      if (!next.semanticSubject && next.courseKey)
         next.semanticSubject = highSemanticSubjectForCourseKey(next.courseKey);
-      }
       if (
         next.semanticSubject &&
         !HIGH_SEMANTIC_SUBJECTS.some(
@@ -177,12 +313,37 @@
         )
       )
         next.semanticSubject = "";
-      if (next.semanticSubject) {
-        next.courseKey = "";
-        next.family = "";
+      if (next.semanticSubject) next.courseKey = "";
+      next.family = "";
+    } else if (grade === "고1") {
+      if (!next.semanticSubject && next.courseKey) {
+        const courseIdentity = normalizeCourseIdentity(next.courseKey);
+        if (courseIdentity === normalizeCourseIdentity("공통수학1"))
+          next.semanticSubject = "COMMON_MATH_1";
+        else if (courseIdentity === normalizeCourseIdentity("공통수학2"))
+          next.semanticSubject = "COMMON_MATH_2";
+      }
+      if (
+        next.semanticSubject &&
+        !HIGH1_SUBJECT_PROJECTIONS.some(
+          (subject) => subject.value === next.semanticSubject,
+        )
+      )
+        next.semanticSubject = "";
+      next.family = "";
+      if (next.semanticSubject) next.courseKey = "";
+      else if (next.courseKey) {
+        const identity = normalizeCourseIdentity(next.courseKey);
+        if (
+          identity === normalizeCourseIdentity("수학(상)") ||
+          identity === normalizeCourseIdentity("수학(하)") ||
+          !finderCourseKeys(taxonomy, next).has(next.courseKey)
+        )
+          next.courseKey = "";
       }
     } else {
       next.semanticSubject = "";
+      if (/^중[123]$/.test(grade)) next.family = "";
       if (next.courseKey && !finderCourseKeys(taxonomy, next).has(next.courseKey))
         next.courseKey = "";
     }
@@ -217,10 +378,20 @@
     for (const exam of catalog.exams || []) {
       const file = normalizeFile(exam.file),
         courseKeys = new Set(),
-        curriculumKeys = new Set(exam.curriculums || []);
+        curriculumKeys = new Set(exam.curriculums || []),
+        subjectProjections = new Set(),
+        subjectCurriculumPairs = new Set();
       for (const record of recordsByFile.get(file) || []) {
         if (record.courseKey) courseKeys.add(record.courseKey);
         if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
+        const subjectProjection = subjectProjectionForRecord(record);
+        if (subjectProjection) {
+          subjectProjections.add(subjectProjection);
+          if (record.curriculumKey)
+            subjectCurriculumPairs.add(
+              `${subjectProjection}|${record.curriculumKey}`,
+            );
+        }
       }
       let hasNeutralMiddleRange = false;
       for (const range of exam.courseRanges || []) {
@@ -251,24 +422,48 @@
         );
         if (curriculum) curriculumKeys.add(curriculum);
       }
-      byFile.set(file, { courseKeys, curriculumKeys });
+      if (
+        isHighSemanticSubjectGrade(
+          exam.effectiveBrowseGrade || exam.grade,
+        )
+      ) {
+        const legacySubjects = new Set(
+          [...courseKeys]
+            .map(highSemanticSubjectForCourseKey)
+            .filter(Boolean),
+        );
+        for (const subject of legacySubjects) {
+          subjectProjections.add(subject);
+          for (const curriculum of curriculumKeys)
+            subjectCurriculumPairs.add(`${subject}|${curriculum}`);
+        }
+      }
+      byFile.set(file, {
+        courseKeys,
+        curriculumKeys,
+        subjectProjections,
+        subjectCurriculumPairs,
+      });
     }
     return byFile;
   }
   function finderMatches(exam, filters = {}, index = new Map()) {
-    const identity = index.get(normalizeFile(exam?.file));
-    const semanticMatch =
-      !filters.semanticSubject ||
-      [...(identity?.courseKeys || [])].some(
-        (courseKey) =>
-          highSemanticSubjectForCourseKey(courseKey) ===
-          filters.semanticSubject,
-      );
+    const identity = index.get(normalizeFile(exam?.file)),
+      semanticMatch =
+        !filters.semanticSubject ||
+        identity?.subjectProjections?.has(filters.semanticSubject),
+      semanticCurriculumMatch =
+        !filters.semanticSubject ||
+        !filters.curriculumKey ||
+        identity?.subjectCurriculumPairs?.has(
+          `${filters.semanticSubject}|${filters.curriculumKey}`,
+        );
     return (
       (!filters.curriculumKey ||
         identity?.curriculumKeys?.has(filters.curriculumKey)) &&
       (!filters.courseKey || identity?.courseKeys?.has(filters.courseKey)) &&
-      semanticMatch
+      semanticMatch &&
+      semanticCurriculumMatch
     );
   }
   const sourceYear = (record) => {
@@ -361,16 +556,16 @@
     if (filters.yearTo && (!sourceYear(record) || sourceYear(record) > Number(filters.yearTo)))
       return false;
     if (filters.axis && record.examAxis !== filters.axis) return false;
-    if (
-      filters.semanticSubject &&
-      highSemanticSubjectForCourseKey(record.courseKey) !==
-        filters.semanticSubject
-    )
-      return false;
+    if (!subjectProjectionMatches(record, filters)) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;
     for (const field of PATH_FIELDS) {
-      if (field === "courseKey" && filters.semanticSubject) continue;
+      if (
+        field === "courseKey" &&
+        filters.semanticSubject &&
+        hasSubjectProjection(filters.grade)
+      )
+        continue;
       if (filters[field] && record[field] !== filters[field]) return false;
     }
     if (
@@ -639,6 +834,16 @@
     highSemanticSubjectOptions,
     highSemanticSubjectForCourseKey,
     highSemanticSubjectCourseKeys,
+    HIGH1_SUBJECT_PROJECTIONS,
+    HIGH1_DIRECT_KEY_MAP,
+    HIGH1_RAW_KEY_MAP,
+    HIGH1_QUESTION_OVERRIDES,
+    high1CanonicalUnitKeyForRecord,
+    hasSubjectProjection,
+    subjectProjectionOptions,
+    subjectProjectionForRecord,
+    subjectProjectionLabel,
+    subjectProjectionMatches,
     finderCourseGrade,
     middleCurriculumFromYear,
     finderCourseKeys,

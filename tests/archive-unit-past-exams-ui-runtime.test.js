@@ -84,6 +84,7 @@ test('Archive 2.0 ready shelf opens existing papers without the new-paper config
   assert.match(html, /previewExistingPaper\('H22-C-01', 1\)/);
   assert.match(html, /class="unit-ready-paper"/);
   assert.match(html, /시험지 확인/);
+  assert.match(html, /세분 출제/);
   assert.doesNotMatch(html, /id="unit-quick-count"/);
   assert.match(runtime.getElement('unit-stepper').innerHTML, /시험지 확인/);
 });
@@ -113,4 +114,19 @@ test('실제 UI 모듈 실행으로 snake_case UID가 catalog 정규화까지 �
   runtime.window.UnitPastExams.renderDetail('H22-C-01', { noScroll: true, restore: true });
   assert.match(runtime.getElement('unit-content').innerHTML, /핵심/);
   assert.equal(core.getQuestionUid({ question_uid: 'runtime-uid' }), 'runtime-uid');
+});
+
+test('학년 첫 화면은 6개 카드이고 고3은 고2와 같은 5과목 선택 화면을 사용한다', () => {
+  const runtime = createRuntime();
+  runtime.window.UnitPastExams.clearProfileSelection();
+  const grades = runtime.getElement('unit-content').innerHTML;
+  for (const label of ['중1','중2','중3','고1','고2','고3']) assert.match(grades, new RegExp(label));
+  assert.match(grades, /unit-grade-card/);
+
+  runtime.setUrl('http://unit.test/archive/unit-past-exams.html?ready=1&grade=h3');
+  runtime.window.UnitPastExams.selectProfile('h3');
+  const subjects = runtime.getElement('unit-content').innerHTML;
+  for (const label of ['대수','미적분Ⅰ','확률과 통계','미적분Ⅱ','기하']) assert.match(subjects, new RegExp(label));
+  assert.match(subjects, /unit-subject-card/);
+  assert.match(runtime.getElement('unit-kicker').textContent, /고3/);
 });
