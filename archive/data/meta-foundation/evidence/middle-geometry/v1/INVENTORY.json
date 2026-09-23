@@ -4,7 +4,7 @@
   "semanticHead": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
   "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
   "denominator": 928,
-  "status": "PROMOTION_READY_FOR_GIT",
+  "status": "PRODUCTION_PROMOTED_MAIN",
   "counts": {
     "mappedFinal": 921,
     "routeOut": 7,
@@ -62,14 +62,14 @@
     "4b897940d5305a0d4cf38afb294b458e933eb4e7"
   ],
   "protectedStudentFieldMutationCount": 0,
-  "nextStartPoint": "Promotion ready for the authorized branch commit and main merge.",
+  "nextStartPoint": "Middle Geometry production promotion is synchronized to branch and origin/main.",
   "q513ProblemOnlyAdjudication": {
     "status": "RESOLVED",
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
     "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
   },
-  "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "synchronizedBranchHead": "f770f2f3ef2b7eaa1389faa162915e8c133eb268",
+  "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedBranchHead": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
   "prePromotionAudit": {
     "status": "HOLD_FAIL_CLOSED",
     "inventoryPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/promotion_inventory_20260923.json",
@@ -85,10 +85,10 @@
   "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
-  "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
-  "currentOriginMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "promotionCommitSha": null,
-  "promotionCommitPending": true,
+  "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "currentOriginMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitPending": false,
   "branch": "codex/meta-foundation/middle-geometry",
   "l3": {
     "total": 928,
@@ -125,5 +125,9 @@
     "archive/meta-foundation-runtime.js": "55a0a8b53fddd3d0abe13a1fd591e1998020fecba2cbc757686271581f7631be",
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json": "abf84a862ab3f1d607e61bbd26a5d02a19c0dd419dfc9c860e60166ce95b96d9"
   },
-  "blockers": []
+  "blockers": [],
+  "branchPush": "PASS",
+  "mainMerge": "PASS_FAST_FORWARD",
+  "headEqualsOriginMain": true,
+  "mainPromotionMode": "FAST_FORWARD"
 }

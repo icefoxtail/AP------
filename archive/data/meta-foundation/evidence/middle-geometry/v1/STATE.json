@@ -11,7 +11,7 @@
   "mappedFinal": 921,
   "routeOut": 7,
   "explicitL4Hold": 20,
-  "currentStage": "CANONICAL_COMPILED_RUNTIME_READY",
+  "currentStage": "PRODUCTION_PROMOTED_MAIN",
   "adjudicationInputs": {
     "frozen143": 143,
     "new90": 90,
@@ -39,7 +39,7 @@
     "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
   ],
   "blockingIssues": [],
-  "nextStartPoint": "All production gates passed. Stage only Middle Geometry promotion and its required registration/compiler outputs, commit, push branch, re-fetch origin/main, then merge/push main.",
+  "nextStartPoint": "Middle Geometry is active on origin/main. Final STATE/INVENTORY/CHECKPOINTS status update is ready to push.",
   "officialCanonicalFinalClaim": true,
   "mainMutation": false,
   "crossParentL1L2Gate": {
@@ -61,9 +61,9 @@
     "evidencePath": "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_adjudication_20260923.json",
     "validationPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_validation_20260923.json"
   },
-  "status": "PROMOTION_READY_FOR_GIT",
-  "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "synchronizedBranchHead": "f770f2f3ef2b7eaa1389faa162915e8c133eb268",
+  "status": "PRODUCTION_PROMOTED_MAIN",
+  "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedBranchHead": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
   "prePromotionAudit": {
     "status": "HOLD_FAIL_CLOSED",
     "inventoryPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/promotion_inventory_20260923.json",
@@ -78,10 +78,10 @@
   "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
-  "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
-  "currentOriginMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "promotionCommitSha": null,
-  "promotionCommitPending": true,
+  "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "currentOriginMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitPending": false,
   "branch": "codex/meta-foundation/middle-geometry",
   "l3": {
     "total": 928,
@@ -131,5 +131,9 @@
     "archive/data/meta-foundation/runtime/middle-geometry-v1.json": "3421e5e6107bfbc404ba08a58aca2c05dec752dd9219a4b57272623c40e7c836",
     "archive/meta-foundation-runtime.js": "55a0a8b53fddd3d0abe13a1fd591e1998020fecba2cbc757686271581f7631be",
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json": "abf84a862ab3f1d607e61bbd26a5d02a19c0dd419dfc9c860e60166ce95b96d9"
-  }
+  },
+  "branchPush": "PASS",
+  "mainMerge": "PASS_FAST_FORWARD",
+  "headEqualsOriginMain": true,
+  "mainPromotionMode": "FAST_FORWARD"
 }
