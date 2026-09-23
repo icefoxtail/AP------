@@ -1,6 +1,6 @@
 {
   "schemaVersion": "h1-stage2-semantic-state-v1",
-  "status": "STAGE2_1170_PHYSICAL_COMPLETE_REPAIR_IN_PROGRESS",
+  "status": "STAGE2_1170_SEMANTIC_REPAIR_COMPLETE_STAGE3_READY",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "currentOriginMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
@@ -25,8 +25,9 @@
   "currentBatchInputBundleSha": "a8ae8c72faf4e972f421b1d61826debe3f23c9c38174fdfabc1aa3bd3f84bd79",
   "currentBatchForbiddenCandidateInputLeakage": 0,
   "next": {
-    "unit": "MATRIX",
-    "workIndex": 84,
+    "stage": "STAGE3_GLOBAL_TAXONOMY_SYNTHESIS",
+    "unit": "ALL",
+    "workIndex": null,
     "questionUid": null
   },
   "batchHistory": [
@@ -196,7 +197,7 @@
     }
   },
   "finalSummary": "H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
-  "finalSummarySha256": "5dcdbee59fbaac32147f3dcea8da915e93cb7cf2438bbf855142ea3fd1ff74b9",
+  "finalSummarySha256": "f4fc8a1b0001fbd14e7e47f52588a985017060dcc379993b8281822f2fef13fc",
   "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "gptRepair": {
@@ -208,28 +209,14 @@
       "blockSemanticCoreRepairedPreviously": 25,
       "remainingAfterBlockRepair": 221,
       "polynomialRepaired": 53,
-      "remaining": 168,
-      "remainingByUnit": {
-        "EQINEQ": 46,
-        "PERMCOMB": 63,
-        "MATRIX": 59
-      },
-      "genericReasonOnlyUntouched": 397,
-      "artifact": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_POLYNOMIAL_53.jsonl",
-      "checkpoint": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_CHECKPOINT_POLYNOMIAL_53.json",
-      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46",
-      "mainDriftVerification": {
-        "from": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
-        "to": "06c8d9f4271799446af70794f9cdf462cec5df20",
-        "aheadBy": 3,
-        "changedFiles": [
-          "archive/archive2-workspace.js",
-          "archive/archive2.css",
-          "tests/archive2-school-history.test.cjs"
-        ],
-        "h1SourceIdentityMetadataDrift": 0,
-        "verdict": "NO_H1_SEMANTIC_INPUT_DRIFT"
-      }
+      "eqineqRepaired": 46,
+      "permcombRepaired": 63,
+      "matrixRepaired": 59,
+      "postBlockRepairedTotal": 221,
+      "remaining": 0,
+      "genericReasonOnlyProvenanceBackfilled": 397,
+      "status": "COMPLETE_STAGE3_READY",
+      "closureArtifact": "H1_STAGE2_GPT_REPAIR_CLOSURE_1170.json"
     }
   }
 }
