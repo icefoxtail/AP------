@@ -847,7 +847,7 @@ button.small {
 .mode-switch button {
   border-color: transparent;
   background: transparent;
-  min-height: 34px;
+  min-height: 36px;
   padding: 6px 11px;
 }
 .mode-switch button.active {
@@ -866,7 +866,7 @@ button.small {
 }
 .part-select select {
   width: 68px;
-  min-height: 32px;
+  min-height: 36px;
   padding: 4px 7px;
 }
 .question-manager {
@@ -1089,7 +1089,7 @@ button.small {
   .mobile-actions button {
     flex: 1;
     font-size: 12px;
-    min-height: 42px;
+    min-height: 44px;
   }
   .preview {
     height: 650px;
@@ -1176,14 +1176,27 @@ button.small {
     font-size: 23px;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .mode-switch button {
+    min-height: 44px;
+  }
+  .inspector .tabs button {
+    min-height: 44px;
+  }
+  .part-select select {
+    min-height: 44px;
+  }
+}
+
 @media (pointer: coarse) {
   button,
   input,
   select {
-    min-height: 42px;
+    min-height: 44px;
   }
   .mode-switch button {
-    min-height: 40px;
+    min-height: 44px;
   }
 }
 #preview-host {

@@ -1,0 +1,183 @@
+/*
+ * Mobile paper readability is a screen-only presentation of the existing
+ * A4 render tree. It runs after RENDER_READY so print layout and pagination
+ * keep the original 210mm × 297mm page authority.
+ */
+@media screen and (max-width: 640px) {
+  body.screen-fit-mode,
+  body.preview-mode {
+    padding-top: 52px;
+  }
+
+  body.screen-fit-mode #mode-ctrl,
+  body.preview-mode #mode-ctrl {
+    box-sizing: border-box;
+    height: 52px;
+    padding: 0 8px;
+  }
+
+  .mode-tabs {
+    min-height: 52px;
+    align-items: center;
+  }
+
+  .mode-tabs .mode-tab {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 5px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #qppSelect,
+  .print-header-editor-btn,
+  #btn-qr-output {
+    min-height: 44px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  html[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) {
+    box-sizing: border-box !important;
+    width: calc(100vw - 16px) !important;
+    max-width: none !important;
+    margin: 8px auto !important;
+    padding: 0 !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    transform: none !important;
+    transform-origin: top left !important;
+  }
+
+  html[data-ap-render-ready="true"] .page {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 14px 12px !important;
+    overflow: visible !important;
+    flex: 0 0 auto !important;
+  }
+
+  html[data-ap-render-ready="true"] .page-exam-frame {
+    inset: 8px !important;
+  }
+
+  html[data-ap-render-ready="true"] .page-body {
+    box-sizing: border-box;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  html[data-ap-render-ready="true"] .page-header.page-header--exam {
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: start !important;
+    row-gap: 8px !important;
+  }
+
+  html[data-ap-render-ready="true"] .page-header.page-header--exam .page-header-title {
+    overflow-wrap: anywhere;
+  }
+
+  html[data-ap-render-ready="true"] .page-header.page-header--exam .page-header-meta {
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  html[data-ap-render-ready="true"] .page-header.page-header--exam .page-header-meta-right {
+    gap: 6px 10px !important;
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+  }
+
+  html[data-ap-render-ready="true"] .ap-equal-slot-grid {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  html[data-ap-render-ready="true"] .ap-equal-slot .ap-slot-content {
+    display: flow-root;
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    transform-origin: top left !important;
+  }
+  html[data-ap-render-ready="true"] .grid-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  html[data-ap-render-ready="true"] .grid-container::after {
+    display: none !important;
+  }
+
+  html[data-ap-render-ready="true"] .grid-col {
+    box-sizing: border-box;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  html[data-ap-render-ready="true"] .q-box {
+    box-sizing: border-box;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-width: 100%;
+    padding: 12px 0 !important;
+    overflow: visible !important;
+    border-bottom: 1px solid #e5e7eb !important;
+  }
+
+  html[data-ap-render-ready="true"] .q-box.sol-box,
+  html[data-ap-render-ready="true"] .q-box.sol-box.sol-box-long {
+    margin: 0 !important;
+    padding: 12px 0 !important;
+    overflow: visible !important;
+  }
+
+  html[data-ap-render-ready="true"] .ans-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  html[data-ap-render-ready="true"] .ans-cell-empty {
+    display: none !important;
+  }
+
+  html[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) img,
+  html[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) svg {
+    max-width: 100% !important;
+  }
+
+  html[data-ap-render-ready="true"] :is(#print-area, [data-archive-build-root]) img {
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  html[data-ap-render-ready="true"] .page-qr,
+  html[data-ap-render-ready="true"] .page-submit-qr {
+    position: static !important;
+    align-self: flex-end !important;
+    margin: 12px 0 0 auto !important;
+  }
+}
