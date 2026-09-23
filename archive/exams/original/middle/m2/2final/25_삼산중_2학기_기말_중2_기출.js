@@ -567,8 +567,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심의 $2:1$ 비와 중점연결정리를 길이비와 넓이비에 함께 적용한다.\n$L$은 $BC$의 중점이고 $G$는 무게중심이므로 $AG:AL=2:3$이다. $DG\\parallel BL$이므로 $\\triangle ADG\\sim\\triangle ABL$이고 $DG:BL=AG:AL=2:3$이다. $BL=\\dfrac12BC$이므로 $DG=\\dfrac13BC$이다.\n같은 방법으로 $GE=\\dfrac13BC$이므로 $DG=GE$이다. 따라서 $G$는 $DE$의 중점이다.\n$M,N$은 각각 $AB,AC$의 중점이므로 $MN=\\dfrac12BC$이다. 또 $AL$은 $\\triangle ABC$의 중선이므로, 닮음 관계에서 그 상인 $P$는 $MN$의 중점이다. 따라서 $MP=\\dfrac14BC$이다.\n그러므로 $MP:DG:BL=\\dfrac14:\\dfrac13:\\dfrac12=3:4:6$이어서 $x=4$, $y=6$이다.\n$MN\\parallel DE$이므로 $\\triangle MPG$와 $\\triangle MDG$는 같은 높이를 갖는다. 따라서 $[MDG]:[MPG]=DG:MP=\\dfrac13:\\dfrac14=4:3$이다. $1:z=4:3$이므로 $z=\\dfrac34$이다.\n$xyz=4\\times6\\times\\dfrac34=18$이므로 정답은 ③이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q19.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

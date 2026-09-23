@@ -152,8 +152,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 직각삼각형의 높이로 생긴 닮은 삼각형에서 필요한 선분의 길이를 구한다.\n조건 정리: $AC=8$, $BC=15$이고 $\\angle C=90^\\circ$이므로 $AB=\\sqrt{8^2+15^2}=17$이다.\n풀이 방향: $CD$와 $AD$를 구한 뒤, 두 작은 직각삼각형에서 $\\tan x^\\circ$와 $\\cos y^\\circ$를 구한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\times8\\times15=60$이다. 또 밑변을 $AB$로 보면 넓이는 $\\dfrac{1}{2}\\times17\\times CD$이므로 $CD=\\dfrac{120}{17}$이다. $\\triangle ACD\\sim\\triangle ABC$이므로 $\\dfrac{AD}{AC}=\\dfrac{AC}{AB}$에서 $AD=\\dfrac{8^2}{17}=\\dfrac{64}{17}$이다. 따라서 $\\tan x^\\circ=\\dfrac{AD}{CD}=\\dfrac{8}{15}$이고, $\\cos y^\\circ=\\dfrac{CD}{BC}=\\dfrac{8}{17}$이다. 그러므로 $\\dfrac{\\tan x^\\circ}{\\cos y^\\circ}=\\dfrac{8}{15}\\div\\dfrac{8}{17}=\\dfrac{17}{15}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q5.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -184,8 +184,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $30^\\circ$ 직각삼각형의 변의 길이와 각의 이등분선 정리를 차례로 이용한다.\n조건 정리: $AB=6$은 빗변이고 $\\angle B=30^\\circ$이다.\n풀이 방향: 먼저 $AC$, $BC$를 구한 뒤 $BD:DC=AB:AC$를 적용한다.\n정석 풀이: $AC=AB\\sin30^\\circ=6\\times\\dfrac{1}{2}=3$이고, $BC=AB\\cos30^\\circ=6\\times\\dfrac{\\sqrt3}{2}=3\\sqrt3$이다. $AD$는 $\\angle A$의 이등분선이므로 $BD:DC=AB:AC=6:3=2:1$이다. 따라서 $BD$는 $BC$의 $\\dfrac{2}{3}$이므로 $BD=3\\sqrt3\\times\\dfrac{2}{3}=2\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q6.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -711,8 +711,8 @@ window.questionBank = [
     "answer": "(1) $18\\,\\mathrm{cm}^2$ (2) $\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$ (3) $18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 먼저 $45^\\circ$ 직각삼각형에서 대각선 $AC$를 구한 뒤 두 삼각형의 넓이를 더한다.\n조건 정리: $\\angle B=90^\\circ$, $\\angle CAB=45^\\circ$, $BC=6\\,\\mathrm{cm}$이므로 $\\triangle ABC$는 직각이등변삼각형이다.\n풀이 방향: (1) $AB$를 구해 넓이를 계산하고, (2) $AC$, $CD$와 끼인각 $60^\\circ$를 이용하며, (3) 두 넓이를 더한다.\n정석 풀이: (1) 직각이등변삼각형이므로 $AB=BC=6$이다. 따라서 $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\times6\\times6=18\\,\\mathrm{cm}^2$이다. (2) $AC=6\\sqrt2$이고 $CD=3$, $\\angle ACD=60^\\circ$이므로 $\\triangle ACD$의 넓이는 $\\dfrac{1}{2}\\times6\\sqrt2\\times3\\times\\sin60^\\circ=\\dfrac{1}{2}\\times6\\sqrt2\\times3\\times\\dfrac{\\sqrt3}{2}=\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다. (3) 사각형 $ABCD$는 두 삼각형 $ABC$, $ACD$로 나뉘므로 넓이는 $18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 (1) $18\\,\\mathrm{cm}^2$, (2) $\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$, (3) $18+\\dfrac{9\\sqrt6}{2}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

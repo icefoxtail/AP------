@@ -181,8 +181,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac{1}{2}ab\\sin C$를 이용한다.\n조건 정리: 끼인 두 변은 $AB=5$, $BC=2$이고 끼인각은 $120^\\circ$이다.\n풀이 방향: 삼각형 넓이 공식에 세 값을 그대로 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot5\\cdot2\\cdot\\sin120^\\circ=5\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{5\\sqrt{3}}{2}$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q6.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -652,8 +652,8 @@ window.questionBank = [
     "answer": "$36\\sqrt{2}$",
     "solution": "[키포인트] 두 변과 그 끼인각의 사인값이 주어졌으므로 삼각형의 넓이 공식을 사용한다.\n조건 정리: $AB=9$, $BC=12$, $\\sin B=\\dfrac{2\\sqrt{2}}{3}$이다.\n풀이 방향: $B$는 두 변 $AB$, $BC$의 끼인각이므로 $\\dfrac{1}{2}AB\\cdot BC\\sin B$에 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot9\\cdot12\\cdot\\dfrac{2\\sqrt{2}}{3}=54\\cdot\\dfrac{2\\sqrt{2}}{3}=36\\sqrt{2}$이다.\n따라서 구하는 넓이는 $36\\sqrt{2}$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
