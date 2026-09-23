@@ -2183,3 +2183,112 @@ body[data-archive-view="home"] .status:not(.error) {
   }
 }
 
+/* Compose decision order. Existing filter, scope, and selection handlers remain owners. */
+body[data-archive-view="compose"] .compose-setup {
+  padding: 0;
+  overflow: hidden;
+}
+body[data-archive-view="compose"] .compose-step {
+  padding: 16px;
+  border-top: 1px solid var(--line);
+}
+body[data-archive-view="compose"] .compose-step:first-child {
+  border-top: 0;
+}
+body[data-archive-view="compose"] .compose-step-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+body[data-archive-view="compose"] .compose-step-head h2 {
+  margin: 0;
+  font-size: 16px;
+}
+body[data-archive-view="compose"] .compose-step-number {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 7px;
+  background: #e9eff7;
+  color: var(--navy);
+  font-weight: 800;
+}
+body[data-archive-view="compose"] .compose-grade > label {
+  max-width: 250px;
+}
+body[data-archive-view="compose"] .compose-subject-fields,
+body[data-archive-view="compose"] .compose-detail-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+body[data-archive-view="compose"] .compose-subject-fields {
+  max-width: 540px;
+}
+body[data-archive-view="compose"] .compose-range > .resultbar {
+  margin-top: 0;
+}
+body[data-archive-view="compose"] .compose-range > .resultbar h2 {
+  display: none;
+}
+body[data-archive-view="compose"] .compose-composition > .compose-step-head {
+  margin-bottom: 14px;
+}
+body[data-archive-view="compose"] .compose-detail {
+  margin: 16px 0;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+body[data-archive-view="compose"] .compose-detail > summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+body[data-archive-view="compose"] .compose-detail-fields {
+  margin-top: 14px;
+}
+body[data-archive-view="compose"] .compose-taxonomy {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+body[data-archive-view="compose"] .compose-create-bar {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 600px) {
+  body[data-archive-view="compose"] .compose-step {
+    padding: 14px;
+  }
+  body[data-archive-view="compose"] .compose-grade > label {
+    max-width: none;
+  }
+  body[data-archive-view="compose"] .compose-subject-fields {
+    grid-template-columns: 1fr;
+  }
+  body[data-archive-view="compose"] .compose-range .scope-list {
+    grid-template-columns: 1fr;
+  }
+  body[data-archive-view="compose"] .workspace > div > .compose-composition > .compose-create-bar {
+    position: fixed;
+    z-index: 14;
+    left: 0;
+    right: 0;
+    bottom: var(--archive2-mobile-bottom-nav-offset, 0px);
+    margin: 0;
+    padding: 10px 14px;
+    background: #fff;
+    box-shadow: 0 -4px 14px #17203318;
+  }
+  body[data-archive-view="compose"] .compose-create-bar button {
+    min-height: 44px;
+  }
+  body[data-archive-view="compose"] .mobile-actions {
+    bottom: calc(var(--archive2-mobile-bottom-nav-offset, 0px) + 2px);
+  }
+}
+
