@@ -553,8 +553,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 무게중심은 중선을 $2:1$로 나누므로 밑변에 대한 높이도 같은 비로 줄어든다.\n$D$는 $BC$의 중점이다. $G$는 $\\triangle ABC$의 무게중심이므로 $G$에서 $BC$까지의 높이는 $A$에서 $BC$까지의 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지의 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$BD=\\dfrac12BC$이므로\n$[G'BD]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac19h=\\dfrac1{18}[ABC]$이다.\n$[G'BD]=6$이므로 $[ABC]=18\\times6=108$ cm$^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q18.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -585,8 +585,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 무게중심이 같은 중선 위에서 선분을 나누는 비를 이용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $GG':G'D=2:1$이다.\n$GG'=4$ cm이므로 $G'D=2$ cm, 따라서 $GD=GG'+G'D=6$ cm이다.\n$AG:GD=2:1$이므로 $AG=12$ cm이다.\n따라서 $AD=AG+GD=12+6=18$ cm이므로 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

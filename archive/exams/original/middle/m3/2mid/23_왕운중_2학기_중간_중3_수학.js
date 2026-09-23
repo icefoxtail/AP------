@@ -302,8 +302,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 빗변과 한 예각이 주어졌으므로 코사인을 이용하고, 표에 있는 여각의 사인값으로 바꾼다.\n조건 정리: $AB=20$, $\\angle B=65^\\circ$, $\\angle C=90^\\circ$이다.\n풀이 방향: $\\cos65^\\circ=\\dfrac{BC}{20}$이고 $\\cos65^\\circ=\\sin25^\\circ$임을 이용한다.\n정석 풀이: 표에서 $\\sin25^\\circ=0.4226$이다. 따라서 $BC=20\\cos65^\\circ=20\\sin25^\\circ=20\\times0.4226=8.452$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q10.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -334,8 +334,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 대각선 $AC$로 사각형을 두 삼각형으로 나누고, 먼저 $AC^2$을 구한다.\n조건 정리: $AB=4$, $BC=8$, $\\angle ABC=60^\\circ$, $AD=DC$, $\\angle ADC=90^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선으로 $AC^2$과 $\\triangle ABC$의 넓이를 구하고, 직각이등변삼각형 $ADC$의 넓이를 더한다.\n정석 풀이: $A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=4\\sin60^\\circ=2\\sqrt3$, $BH=4\\cos60^\\circ=2$이다. 따라서 $CH=8-2=6$이고 $AC^2=AH^2+CH^2=(2\\sqrt3)^2+6^2=48$이다. $\\triangle ABC$의 넓이는 $\\dfrac12\\times8\\times2\\sqrt3=8\\sqrt3$이다. 또 $AD=DC$인 직각삼각형에서 $AC^2=AD^2+DC^2=2AD^2$이므로 $AD^2=24$이고, $\\triangle ADC$의 넓이는 $\\dfrac12AD\\cdot DC=\\dfrac12AD^2=12$이다. 그러므로 사각형의 넓이는 $12+8\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -620,8 +620,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 정삼각형의 중심과 한 변의 중점을 이은 직각삼각형에서 삼각비를 이용해 두 반지름과 한 변의 길이를 구한다.\n조건 정리: 정삼각형 $ABC$의 외심과 내심을 겸하는 점을 $O$, 변 $BC$의 중점을 $M$이라 하자. 외접원의 반지름을 $R$, 내접원의 반지름을 $r$이라 하면 $OB=R$, $OM=r$이다.\n풀이 방향: $\\triangle OBM$에서 $\\angle OBM=30^\\circ$이므로 $\\sin30^\\circ$와 $\\cos30^\\circ$를 이용한다.\n정석 풀이: $\\triangle OBM$은 $M$에서 직각이고 $BO$는 $\\angle B=60^\\circ$를 이등분하므로 $\\angle OBM=30^\\circ$이다. 따라서 $\\sin30^\\circ=\\dfrac{OM}{OB}=\\dfrac{r}{R}=\\dfrac12$이므로 $R=2r$이다. 두 원의 넓이 차가 $12\\pi$이므로 $\\pi R^2-\\pi r^2=12\\pi$이다. 여기에 $R=2r$를 대입하면 $4r^2-r^2=12$, 즉 $r=2$, $R=4$이다. 정삼각형의 한 변의 길이를 $s$라 하면 $BM=\\dfrac{s}{2}$이다. 또 $\\cos30^\\circ=\\dfrac{BM}{OB}$이므로 $\\dfrac{\\sqrt3}{2}=\\dfrac{s/2}{4}=\\dfrac{s}{8}$에서 $s=4\\sqrt3$이다. 정삼각형의 높이는 $AO+OM=R+r=6$이므로 넓이는 $\\dfrac12\\times4\\sqrt3\\times6=12\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -646,8 +646,8 @@ window.questionBank = [
     "answer": "$8\\sqrt3\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac12ab\\sin C$를 이용한다.\n조건 정리: $AC=4\\,\\mathrm{cm}$, $AB=8\\,\\mathrm{cm}$, $\\angle CAB=120^\\circ$이다.\n풀이 방향: 두 변 $AC$, $AB$와 끼인각 $120^\\circ$를 삼각형의 넓이 공식에 대입한다.\n정석 풀이: 삼각형 $ABC$의 넓이는 $\\dfrac12\\times AC\\times AB\\times\\sin120^\\circ$이다. $\\sin120^\\circ=\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이므로 넓이는 $\\dfrac12\\times4\\times8\\times\\dfrac{\\sqrt3}{2}=8\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $8\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

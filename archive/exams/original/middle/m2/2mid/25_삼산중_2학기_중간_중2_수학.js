@@ -326,8 +326,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 마름모의 넓이를 구한 뒤, 같은 높이를 갖는 삼각형의 넓이의 비를 이용한다.\n마름모의 두 대각선은 서로 수직이므로 넓이는 $\\dfrac12\\times14\\times18=126\\mathrm{cm}^2$이다. 대각선 $BD$는 마름모를 넓이가 같은 두 삼각형으로 나누므로 $[\\triangle BCD]=63\\mathrm{cm}^2$이다.\n점 $P$는 $BC$ 위에 있고 $BP:PC=2:1$이다. $\\triangle DBP$와 $\\triangle DPC$는 꼭짓점 $D$에서 직선 $BC$에 내린 높이가 같으므로 넓이의 비도 $2:1$이다.\n따라서 $[\\triangle DBP]=63\\times\\dfrac23=42\\mathrm{cm}^2$이다. 정답은 ②이다.",
     "image": "assets/images/25_삼산중_2학기_중간_중2_수학/q10.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
