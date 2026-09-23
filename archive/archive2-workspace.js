@@ -976,7 +976,7 @@
         printHeaderOptions: s.header, qpp: s.qpp, includeQr: s.includeQr,
       }}));
     }
-    const url = O.applyUrl(new URL("engine.html", location.href), s);
+    const url = O.applyUrl(O.engineUrl("engine.html", location.href), s);
     url.searchParams.set("originalSnapshot", key);
     url.searchParams.set("data", "exams/" + e.file);
     url.searchParams.set("mode", "exam");
@@ -1386,7 +1386,7 @@
   function assignmentOutput(mode) {
     const a = state.openAssignment.assignment,
       p = JSON.parse(a.mixed_payload_json || "null"),
-      u = new URL(
+      u = O.engineUrl(
         a.archive_file.startsWith("MIXED:")
           ? "mixed_engine.html"
           : "engine.html",
@@ -1610,7 +1610,7 @@
     return prepared;
   }
   function outputUrl(paper, mode = state.outputMode, preview = true) {
-    const url = new URL("mixed_engine.html", location.href);
+    const url = O.engineUrl("mixed_engine.html", location.href);
     url.searchParams.set("key", paper.key);
     url.searchParams.set("qpp", state.qpp);
     url.searchParams.set("q", paper.questions.length);
@@ -2288,7 +2288,7 @@
         replaceWith(candidateRecords[Number(b.dataset.candidate)]);
       else if (a === "candidate-preview") {
         const r = candidateRecords[Number(b.dataset.candidate)];
-        const url = new URL("engine.html", location.href);
+        const url = O.engineUrl("engine.html", location.href);
         url.searchParams.set("data", "exams/" + r.sourceFile);
         window.open(url.href, "_blank");
       } else if (a === "undo") {

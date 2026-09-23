@@ -402,6 +402,11 @@
         }
         #print-raster-area { display: none; }
     </style>
+    <script>
+        if (new URLSearchParams(window.location.search).get('archive2Context') === 'archive2') {
+            document.documentElement.dataset.archive2Context = 'archive2';
+        }
+    </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
     <script src="render-state-normalizer.js?v=20260912.1"></script>
@@ -2629,6 +2634,7 @@ function renderAns(area, data, perPage = 40) {
                     grid.appendChild(u);
                     return;
                 }
+                u.style.setProperty('--archive2-mobile-answer-order', String(start + idx));
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
                 u.dataset.sourceRef = getMixedQuestionSourceRef(chunk[idx], num - 1);
