@@ -1,0 +1,1000 @@
+{
+  "schemaVersion": "middle-geometry-conflict-adjudication-final-v1",
+  "status": "FROZEN_QUEUE_ADJUDICATION_COMPLETE_143_OF_143",
+  "queueAuthority": "MIDDLE_GEOMETRY_LUNA_NEW_CONFLICT_KEEP_143_20260923.json",
+  "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+  "coverage": "143/143",
+  "resultCounts": {
+    "LUNA_EXACT": 69,
+    "HYBRID_NEITHER": 46,
+    "HOLD_MULTI_PRIMARY": 1,
+    "GPT_EXACT": 20,
+    "HOLD_L4_NO_FIT": 6,
+    "HOLD_SOURCE_AMBIGUITY": 1
+  },
+  "holds": {
+    "count": 8,
+    "records": [
+      {
+        "batchSequence": 4,
+        "gptIndex": 13,
+        "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+        "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#22",
+        "reviewStatus": "HOLD",
+        "rationale": "단일 primary taxonomy로 두 소문항을 정직하게 대표할 수 없다. 기존 필드는 임시 보존하되 semantic 확정은 HOLD한다."
+      },
+      {
+        "batchSequence": 67,
+        "gptIndex": 743,
+        "questionUid": "qid_v1_008cc63f23e60f21a423438119a659a8af896f4d1c4d6b3b77fdc2b6bac030de",
+        "sourceIdentity": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js#8",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "현 L4에는 내접사각형 판정 자체를 정확히 나타내는 template가 없다. CENTER_ARC/COMPOSITE로 억지 수용하지 않는다."
+      },
+      {
+        "batchSequence": 71,
+        "gptIndex": 761,
+        "questionUid": "qid_v1_1df2366d1de336f1eafb2c8eaf9d15ae263e4ddf68779694a8f3b5ec675c00b3",
+        "sourceIdentity": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js#4",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "내접사각형 맞은각 성질을 직접 쓰는 L4가 없고 CENTER_ARC/COMPOSITE는 의미가 맞지 않는다."
+      },
+      {
+        "batchSequence": 76,
+        "gptIndex": 777,
+        "questionUid": "qid_v1_3d749d5cddf8f2f01b67bbae6189e95c98f6aa73a4ee9ce4011e81b0db2a4a18",
+        "sourceIdentity": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js#6",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "내접사각형 맞은각을 직접 표현하는 L4가 없어 안전하게 HOLD한다."
+      },
+      {
+        "batchSequence": 78,
+        "gptIndex": 781,
+        "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+        "sourceIdentity": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js#19",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "양쪽 기존 판정도 HOLD이며 현재 L4 세트에 내접사각형 판정 전용 골격이 없다."
+      },
+      {
+        "batchSequence": 80,
+        "gptIndex": 898,
+        "questionUid": "qid_v1_e02ac097d7b53d941b75261ebcfc2059c66b87ae008d70887d543c07c0bfb794",
+        "sourceIdentity": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js#19",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "내접사각형 판정 자체를 담는 L4가 없어 COMPOSITE로 과대분류하지 않는다."
+      },
+      {
+        "batchSequence": 88,
+        "gptIndex": 925,
+        "questionUid": "qid_v1_fd460b233aca58b96a79ba4679562f070bcf1cb48f8a012dadec779327d083fe",
+        "sourceIdentity": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js#9",
+        "reviewStatus": "HOLD_L4_NO_FIT",
+        "rationale": "내접육각형 교대각 정리를 표현하는 L4가 없고 COMPOSITE는 지나치게 넓다."
+      },
+      {
+        "batchSequence": 140,
+        "gptIndex": 97,
+        "questionUid": "qid_v1_4484ddf0d81ff0a2bae5a88e95a9972eddb46b205f57ca8d56d907ff7b3b369f",
+        "sourceIdentity": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js#15",
+        "reviewStatus": "HOLD_SOURCE_AMBIGUITY",
+        "rationale": "L3/L4 후보는 일치하나 source 문장 자체가 불완전해 FINAL을 잠그지 않음."
+      }
+    ]
+  },
+  "records": [
+    {
+      "batchSequence": 1,
+      "gptIndex": 3,
+      "lunaIndex": 6,
+      "questionUid": "qid_v1_01b63ab1f20fee132af096170dcf8e8f4d99023cfa56b2e8b94c225f8240c748",
+      "sourceIdentity": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js#20",
+      "sourceFingerprint": "0c0e73a5e1095d4e61ed698dafc6e23845776fe817acbc9ace26cf273f8ec468",
+      "sourceFileBlobSha": "9092d40b1db140832c798729a8ba2962e01da39d",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "무게중심의 중선 2:1 및 넓이 분할 성질 판별",
+        "decisiveStep": "중점-중선-무게중심 2:1과 여섯 등넓이 구조로 보기를 판정"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "닮음이 아니라 무게중심 성질이 직접적인 핵심이다. 중점·넓이는 centroid 구조 내부 사실이라 별도 CC로 두지 않는다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 2,
+      "gptIndex": 5,
+      "lunaIndex": 9,
+      "questionUid": "qid_v1_02838721674952fe74d57f1e53fcd946cd5b3548b35e1b903d115e3a759e177a",
+      "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#18",
+      "sourceFingerprint": "35ae87a68ee483362a716ef6a2292d00faaaee74e946133736fc79ad58cf1861",
+      "sourceFileBlobSha": "01021044aa0f60c16e1cf9072c83d069700a313c",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "평행선으로 생긴 닮음비를 사각형 선분비에 적용",
+        "decisiveStep": "AFE와 CFB 닮음으로 AE:BC=AF:FC를 얻고 평행사변형 AD=BC에서 ED 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "평행선 선분비 primary가 닮음 단계를 포함하므로 CC_SIMILARITY는 중복이다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 3,
+      "gptIndex": 7,
+      "lunaIndex": 14,
+      "questionUid": "qid_v1_054c513c153211005b0ecb009789871a8e38422f9bd84652a0c83b21862e9c09",
+      "sourceIdentity": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js#1",
+      "sourceFingerprint": "71f8147529331b7f15dda14bf3568e875a9a4ed3e1df263b50a559cf1ba844f9",
+      "sourceFileBlobSha": "a7925b1b002f070f9eba750a37c83f9bea1a9b33",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "무게중심 2:1과 변의 중점으로 x,y 계산",
+        "decisiveStep": "CG:GN=2:1과 M이 BC 중점이라는 사실을 각각 적용"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_RATIO",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "centroid primary는 맞지만 CC_MIDPOINT는 단순 구조조건이라 별도 횡단개념으로 과잉이다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 4,
+      "gptIndex": 13,
+      "lunaIndex": 22,
+      "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+      "sourceIdentity": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js#22",
+      "sourceFingerprint": "efc2f32a8b6aee44b46528bc627a09bc58161c7b307b6ba1b5165308f3e830f5",
+      "sourceFileBlobSha": "01021044aa0f60c16e1cf9072c83d069700a313c",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "한 레코드에 서로 독립인 내심각 문제와 원활꼴 넓이 문제가 결합",
+        "decisiveStep": "(1) 내심 각이등분선, (2) 중심각-부채꼴-삼각형 넓이로 완전히 별개 풀이"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "HOLD"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CENTERS_COMBINED",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "reviewStatus": "HOLD"
+      },
+      "resolutionType": "HOLD_MULTI_PRIMARY",
+      "rationale": "단일 primary taxonomy로 두 소문항을 정직하게 대표할 수 없다. 기존 필드는 임시 보존하되 semantic 확정은 HOLD한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 5,
+      "gptIndex": 15,
+      "lunaIndex": 28,
+      "questionUid": "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
+      "sourceIdentity": "original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js#11",
+      "sourceFingerprint": "1ccc868287f5a48cb4bc63b4ebbd740e17c3451e95be9bfa93e2f78566fea775",
+      "sourceFileBlobSha": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "무게중심 위치를 기준으로 닮음과 넓이비의 여러 진술 판별",
+        "decisiveStep": "AG:AD=2:3에서 AIJ~ABC, FE 중점연결선과 FGE 넓이비까지 연쇄"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "GPT_EXACT",
+      "rationale": "centroid가 primary이고 similarity와 triangle-area는 별도 진술의 결정 단계다. midpoint는 구조 내재라 별도 CC로 두지 않는다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 6,
+      "gptIndex": 17,
+      "lunaIndex": 31,
+      "questionUid": "qid_v1_0b82d3dfb2b2cc6eef9244d8eec53a845a044b2bdaa8ffe2f750c158ef95827d",
+      "sourceIdentity": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js#11",
+      "sourceFingerprint": "d876103f9f65e391cd7db36f1bef83ae2cbfb5950864143acb3d82080cf8565c",
+      "sourceFileBlobSha": "67919c6d54b3f98d6a4513661cd4802e0a8d7fc9",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "직각삼각형의 빗변 중점=외심 성질로 길이 계산",
+        "decisiveStep": "AM=BM=CM=BC/2와 30도 직각삼각형 성질로 둘레 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "L4": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "합동을 쓰지 않으며 빗변 중점의 등거리 성질이 핵심이므로 circumcenter 계열이 맞다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 7,
+      "gptIndex": 19,
+      "lunaIndex": 37,
+      "questionUid": "qid_v1_0d3f0261acf9b67c7089bdbb7760f60b6854c1662d15b94faeda93e16e56cd20",
+      "sourceIdentity": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js#4",
+      "sourceFingerprint": "9917fb425144bf501000bb5031984ee4ddba9ccc8cca12dd8dab36ae13012dd9",
+      "sourceFileBlobSha": "1a791354a985bf7dcc1703af23433d9a5d7aa321",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "이등변삼각형 밑각을 구한 뒤 밑각의 이등분선을 적용",
+        "decisiveStep": "B=C=62도를 구하고 C의 이등분으로 31도를 얻어 BDC 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_BASE_ANGLES",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_BASE_ANGLES",
+        "CC": [
+          "CC_ANGLE_BISECTOR"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "vertex bisector가 아니므로 GPT L4는 부정확하다. Luna의 base-angle 골격에, primary 밖의 결정적 C각 이등분을 CC로 추가한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 8,
+      "gptIndex": 20,
+      "lunaIndex": 40,
+      "questionUid": "qid_v1_0fc64493d70adeeb7e15027aa5842e0e2776a75870028335cc2da273b890ee26",
+      "sourceIdentity": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js#7",
+      "sourceFingerprint": "4462c2515614390a42e9ff6bc48b669f89a47041688186c5f91f0c01672c401b",
+      "sourceFileBlobSha": "be856061ee70bfab8909ac02e298074ec49311d0",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "평행선 닮음으로 대각선을 삼등분한 뒤 같은 높이 넓이비 계산",
+        "decisiveStep": "두 닮음으로 G,H 위치를 정하고 GH:AC=1:3에서 BHG 넓이 산출"
+      },
+      "lunaDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_MIDPOINT",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "similarity와 midpoint는 평행선 선분비 골격 안에 포함되지만 triangle-area 계산은 별도 결정 단계라 유지한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 9,
+      "gptIndex": 21,
+      "lunaIndex": 43,
+      "questionUid": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+      "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#22",
+      "sourceFingerprint": "c8a708442ddde353764856d3728e4017f925dd3d8009d37172507c6b5ddd38c8",
+      "sourceFileBlobSha": "6bf3c0e56168b26526ee52736b0fd9fbc42d20db",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "세 평행선과 두 교차선에서 두 번의 비례식으로 x,y 계산",
+        "decisiveStep": "CEF~CAB, BEF~BDC를 각각 적용해 두 선분 길이 산출"
+      },
+      "lunaDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "전체 구조는 삼각형 한 개 내부가 아니라 사각형/교차선의 일반 평행선 비 구조다. similarity는 primary 내부이므로 CC 없음.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 10,
+      "gptIndex": 35,
+      "lunaIndex": 76,
+      "questionUid": "qid_v1_1c0e0117b0af5fdda32692c3c379c76cf77d7eb7403bd139fe4e84248450cfc9",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#11",
+      "sourceFingerprint": "dd20096f915b36ff22dc5939181b23d8c853b676686648f0124ff3529206c1ae",
+      "sourceFileBlobSha": "c3f07810ab60fe67f0e8415720936f9275c2f0d0",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "합동인 두 정사각형의 구조를 이용해 겹친 사각형 넓이 계산",
+        "decisiveStep": "정사각형 중심/직교 구조를 좌표화하고 EICJ 넓이를 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [
+          "CC_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [
+          "CC_AREA"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "정사각형 성질이 primary이며 영역 넓이 계산이 별도 핵심 산출 단계라 CC_AREA를 유지한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 11,
+      "gptIndex": 39,
+      "lunaIndex": 89,
+      "questionUid": "qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9",
+      "sourceIdentity": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js#10",
+      "sourceFingerprint": "1789cf09939c9b759caa76a6980eb66a179276bfe4d878445ea0c9e781606930",
+      "sourceFileBlobSha": "f92a12586c485085f6b27023c0f879b45e8cf2fb",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "평행사변형의 직교 대각선 조건에서 마름모 성질을 증명",
+        "decisiveStep": "대각선 이등분+수직으로 두 삼각형 SAS 합동을 만들고 인접변 같음을 도출"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_CRITERIA",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "일반 사각형을 평행사변형으로 판정하는 문제가 아니라 주어진 평행사변형이 마름모가 되는 특수사각형 성질 문제다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 12,
+      "gptIndex": 40,
+      "lunaIndex": 90,
+      "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+      "sourceIdentity": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js#8",
+      "sourceFingerprint": "447c67708c60155cadedd08b497d42024718a9509101bd449d0263525e0bd23d",
+      "sourceFileBlobSha": "6bf3c0e56168b26526ee52736b0fd9fbc42d20db",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "두 각의 이등분선 정리와 평행선 닮음을 결합",
+        "decisiveStep": "AD로 BD:DC를 얻고 DE∥AB 닮음 및 BE 이등분선 비를 연결"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "L4": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "L4": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_ANGLE_BISECTOR",
+        "L4": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+        "CC": [
+          "CC_SIMILARITY"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "각의 이등분선 정리가 primary이고 닮음은 추가 결정 경로이므로 CC_SIMILARITY가 필요하다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 13,
+      "gptIndex": 42,
+      "lunaIndex": 92,
+      "questionUid": "qid_v1_218dd8bb3cc6b92f9f121c476d80ebbd932c01142f7255fca9086da1f4ce55cc",
+      "sourceIdentity": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js#5",
+      "sourceFingerprint": "589f6e1bcd113d974f3a2ce955d0d6f6b7a1d421723ed065f164e43ae08d11e0",
+      "sourceFileBlobSha": "adfb3e1befae7a60affc39472c2dedf1dbf18bd0",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "연속된 두 무게중심의 2:1 분할 적용",
+        "decisiveStep": "AG:GD=2:1로 GD를 구한 뒤 GBC의 무게중심 G'에서 다시 2:1 적용"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_SIMILAR_FIGURES",
+        "L4": "TPL_SIMILAR_FIGURES_RATIO",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_COORD_CENTROID",
+        "L4": "TPL_CENTROID_APPLICATION",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "오직 centroid 비율을 연속 적용하므로 별도 CC가 필요 없다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 14,
+      "gptIndex": 64,
+      "lunaIndex": 135,
+      "questionUid": "qid_v1_301b33eeb958cc852a41a256f5f77f6b2699fc092bfd7b206d5fa27f6c029795",
+      "sourceIdentity": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js#22",
+      "sourceFingerprint": "2e67a7721407fc43c99c706451f5c572091b00c820f42bd0025426db9cc44a2a",
+      "sourceFileBlobSha": "b5aaffe993d8b3042cb4de53011a84faa749e288",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "이등변삼각형 밑각과 C각 이등분을 순차 적용",
+        "decisiveStep": "B=C=62도, BCD=31도 후 삼각형 내각합으로 BDC 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_BASE_ANGLES",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_BASE_ANGLES",
+        "CC": [
+          "CC_ANGLE_BISECTOR"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "C는 밑각이므로 VERTEX_BISECTOR L4가 아니다. base-angle L4 + 결정적인 각의 이등분선 CC가 맞다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 15,
+      "gptIndex": 69,
+      "lunaIndex": 145,
+      "questionUid": "qid_v1_33abb9ccfd6eaa5ebe9015bb2021464abd3ed53a35fcc61820850d4129a312cf",
+      "sourceIdentity": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js#15",
+      "sourceFingerprint": "6e05879137b4364bf983a9485b857e50496ad62039df246a4a4682e74fbb0f72",
+      "sourceFileBlobSha": "2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "평행사변형이 정사각형이 되는 추가 조건 판정",
+        "decisiveStep": "직각/이웃변 같음/대각선 같음·수직 조건을 직사각형·마름모 성질과 결합"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_QUADRILATERAL_CRITERIA",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "이미 평행사변형임이 주어져 있어 parallelogram 판정 L4가 아니라 정사각형이라는 특수사각형 성질·조건이 핵심이다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 16,
+      "gptIndex": 79,
+      "lunaIndex": 174,
+      "questionUid": "qid_v1_3bffe9ddea89ae2fb0d153b27eb4afb376f66c65c3dbf6902af49626be9ff73b",
+      "sourceIdentity": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js#10",
+      "sourceFingerprint": "a820e42f7427ef1cab7703d5f5791e289860d13bd21ecc73fa9e0c67e3c3faed",
+      "sourceFileBlobSha": "b5aaffe993d8b3042cb4de53011a84faa749e288",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "외심 중심각 비에서 같은 호의 원주각 계산",
+        "decisiveStep": "AOB=96도를 구하고 같은 호 AB의 ACB가 절반임을 적용"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_TRIANGLE_CENTERS",
+        "L4": "TPL_TRIANGLE_CIRCUMCENTER",
+        "CC": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "GPT_EXACT",
+      "rationale": "circumcenter가 primary지만 마지막 원주각 정리가 primary 밖의 독립 결정 단계라 CC_INSCRIBED_ANGLE을 유지한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 17,
+      "gptIndex": 346,
+      "lunaIndex": 802,
+      "questionUid": "qid_v1_de4fac88f4d698894be503f3de503378196069a66a58ffef4916eaa4e7988b02",
+      "sourceIdentity": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js#10",
+      "sourceFingerprint": "827285a9e4629543470cd705b4501356d86c0a6b3dcda92dc8f26df2ebcbfbf4",
+      "sourceFileBlobSha": "f1753f06f0b091a2260a41b78400bc502dd92e0f",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "평행사변형 중점 구조의 닮음으로 대각선 삼등분 및 넓이 분할",
+        "decisiveStep": "BMP~DAP, DQN~BQA로 BP=PQ=QD를 얻고 영역 넓이를 계산"
+      },
+      "lunaDecision": {
+        "L2": "M2-06-SIMILAR_FIGURE",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_SIMILARITY",
+          "CC_TRIANGLE_AREA"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-06-PARALLEL_LENGTH_RATIO",
+        "L3": "PT_PARALLEL_SEGMENT_RATIO",
+        "L4": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "CC": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "HYBRID_NEITHER",
+      "rationale": "L2는 평행선 선분비가 맞고 similarity는 primary 내부 중복이다. triangle-area는 별도 계산 골격이라 유지한다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 18,
+      "gptIndex": 347,
+      "lunaIndex": 804,
+      "questionUid": "qid_v1_dec067c9ca0ebaf07a77c62585767f039ddea8bbff0a8ac9dffa5a49950cf6c2",
+      "sourceIdentity": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js#1",
+      "sourceFingerprint": "4e0154db470a7d074bad71ff23e6f416c943f3e240ff021ca3cbb24f5be5e949",
+      "sourceFileBlobSha": "c3f07810ab60fe67f0e8415720936f9275c2f0d0",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "이등변삼각형 꼭지각 이등분선의 수직이등분선 성질 판별",
+        "decisiveStep": "AD가 BC의 수직이등분선이 되어 PB=PC 및 부분삼각형 합동을 판정"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "CC": [
+          "CC_ANGLE_BISECTOR"
+        ],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-TRIANGLE_PROPERTIES",
+        "L3": "PT_ISOSCELES_TRIANGLE",
+        "L4": "TPL_ISOSCELES_VERTEX_BISECTOR",
+        "CC": [],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "L4가 꼭지각 이등분선 자체를 소유하므로 CC_ANGLE_BISECTOR는 중복이다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 19,
+      "gptIndex": 350,
+      "lunaIndex": 811,
+      "questionUid": "qid_v1_e11db8dac2a4bbd8f08184a744f69b637af2ed747ce9082785460fcd4fe69267",
+      "sourceIdentity": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js#20",
+      "sourceFingerprint": "107d6d30ac80e0570d48c01ba946302e18918ab18804675e86a11a105bf6f779",
+      "sourceFileBlobSha": "2218a75a7cb2f2642518803f8d0c9c97328c8b4b",
+      "sourceReadReceipt": {
+        "mainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "fieldsRead": [
+          "content",
+          "solution"
+        ],
+        "readBeforePriorDecisionComparison": true
+      },
+      "independentSemantic": {
+        "primaryMethod": "원 사각형의 대각선 성질로 변의 중점연결 사각형을 분류",
+        "decisiveStep": "각 변 중점을 연결한 뒤 원 사각형 대각선의 길이/수직성으로 결과 도형 판정"
+      },
+      "lunaDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "status": "FINAL"
+      },
+      "gptDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [],
+        "status": "FINAL"
+      },
+      "adjudicatedDecision": {
+        "L2": "M2-05-QUADRILATERAL_PROPERTIES",
+        "L3": "PT_QUADRILATERAL_PROPERTIES",
+        "L4": "TPL_SPECIAL_QUADRILATERALS",
+        "CC": [
+          "CC_MIDPOINT"
+        ],
+        "reviewStatus": "ADJUDICATED"
+      },
+      "resolutionType": "LUNA_EXACT",
+      "rationale": "특수사각형 성질이 primary이고 midpoint 연결은 새 사각형을 만드는 필수 보조 구조라 CC_MIDPOINT가 필요하다.",
+      "officialCanonicalFinalClaim": false
+    },
+    {
+      "batchSequence": 20,
+      "gptIndex": 353,
