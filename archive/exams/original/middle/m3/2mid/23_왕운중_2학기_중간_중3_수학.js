@@ -334,8 +334,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 대각선 $AC$로 사각형을 두 삼각형으로 나누고, 먼저 $AC^2$을 구한다.\n조건 정리: $AB=4$, $BC=8$, $\\angle ABC=60^\\circ$, $AD=DC$, $\\angle ADC=90^\\circ$이다.\n풀이 방향: $A$에서 $BC$에 내린 수선으로 $AC^2$과 $\\triangle ABC$의 넓이를 구하고, 직각이등변삼각형 $ADC$의 넓이를 더한다.\n정석 풀이: $A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=4\\sin60^\\circ=2\\sqrt3$, $BH=4\\cos60^\\circ=2$이다. 따라서 $CH=8-2=6$이고 $AC^2=AH^2+CH^2=(2\\sqrt3)^2+6^2=48$이다. $\\triangle ABC$의 넓이는 $\\dfrac12\\times8\\times2\\sqrt3=8\\sqrt3$이다. 또 $AD=DC$인 직각삼각형에서 $AC^2=AD^2+DC^2=2AD^2$이므로 $AD^2=24$이고, $\\triangle ADC$의 넓이는 $\\dfrac12AD\\cdot DC=\\dfrac12AD^2=12$이다. 그러므로 사각형의 넓이는 $12+8\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_왕운중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -122,8 +122,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 변의 길이와 그 끼인각을 알 때 삼각형의 넓이는 $\\dfrac12ab\\sin C$로 구한다.\\n조건 정리: 끼인각은 $\\angle B=120^\\circ$이고, 그 양쪽 변의 길이는 $AB=6$, $BC=5$이다.\\n풀이 방향: $\\sin120^\\circ=\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$를 이용한다.\\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac12\\times6\\times5\\times\\sin120^\\circ=15\\times\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{2}\\,\\mathrm{cm}^2$이다.\\n따라서 정답은 ③이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q4.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -654,8 +654,8 @@ window.questionBank = [
     "answer": "$\\dfrac{2\\sqrt3-2\\sqrt6+3\\sqrt2}{6}$",
     "solution": "[키포인트] 정육면체의 면의 대각선과 공간 대각선을 구한 뒤, 직각삼각형에서 빗변에 내린 높이로 생기는 닮음을 이용한다.\\n조건 정리: 한 모서리의 길이가 $8$이므로 윗면의 대각선 $BD=8\\sqrt2$, 세로 모서리 $DH=8$, 공간 대각선 $BH=8\\sqrt3$이다. 또한 $DN\\perp BH$이다.\\n풀이 방향: 직각삼각형 $BDH$에서 높이 $DN$을 내리면 $\\triangle DNH\\sim\\triangle DBH$이므로 $x=\\angle DBH$가 된다. 그 뒤 $\\triangle DBH$의 세 변으로 삼각비를 구한다.\\n정석 풀이: $BD$는 윗면 정사각형의 대각선이므로 $BD=\\sqrt{8^2+8^2}=8\\sqrt2$이다. $BH$는 정육면체의 공간 대각선이므로 $BH=\\sqrt{BD^2+DH^2}=\\sqrt{128+64}=8\\sqrt3$이다. $\\angle DNH=\\angle BDH=90^\\circ$이고 $\\angle DHN$은 공통이므로 $\\triangle DNH\\sim\\triangle DBH$이다. 따라서 $\\angle NDH=\\angle DBH$, 즉 $x=\\angle DBH$이다. 그러므로 $\\sin x=\\dfrac{DH}{BH}=\\dfrac{8}{8\\sqrt3}=\\dfrac{\\sqrt3}{3}$, $\\cos x=\\dfrac{BD}{BH}=\\dfrac{8\\sqrt2}{8\\sqrt3}=\\dfrac{\\sqrt6}{3}$, $\\tan x=\\dfrac{DH}{BD}=\\dfrac{8}{8\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다. 따라서 $\\sin x-\\cos x+\\tan x=\\dfrac{\\sqrt3}{3}-\\dfrac{\\sqrt6}{3}+\\dfrac{\\sqrt2}{2}=\\dfrac{2\\sqrt3-2\\sqrt6+3\\sqrt2}{6}$이다.\\n따라서 구하는 값은 $\\dfrac{2\\sqrt3-2\\sqrt6+3\\sqrt2}{6}$이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -680,8 +680,8 @@ window.questionBank = [
     "answer": "$14\\sqrt3\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 대각선 $BD$를 그어 사각형을 두 삼각형으로 나누고, 두 변과 그 끼인각으로 각각의 넓이를 구한다.\\n조건 정리: 그림에서 $AB=2\\sqrt3\\,\\mathrm{cm}$, $AD=4\\,\\mathrm{cm}$, $\\angle BAD=150^\\circ$, $BC=8\\,\\mathrm{cm}$, $CD=6\\,\\mathrm{cm}$, $\\angle BCD=60^\\circ$이다.\\n풀이 방향: $[ABCD]=[\\triangle ABD]+[\\triangle BCD]$로 계산한다.\\n정석 풀이: $\\triangle ABD$의 넓이는 $\\dfrac12\\times2\\sqrt3\\times4\\times\\sin150^\\circ=4\\sqrt3\\times\\dfrac12=2\\sqrt3\\,\\mathrm{cm}^2$이다. $\\triangle BCD$의 넓이는 $\\dfrac12\\times8\\times6\\times\\sin60^\\circ=24\\times\\dfrac{\\sqrt3}{2}=12\\sqrt3\\,\\mathrm{cm}^2$이다. 따라서 사각형 $ABCD$의 넓이는 $2\\sqrt3+12\\sqrt3=14\\sqrt3\\,\\mathrm{cm}^2$이다.\\n따라서 구하는 넓이는 $14\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/24_연향중_2학기_중간_중3_수학/q22.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

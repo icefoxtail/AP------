@@ -585,8 +585,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 무게중심이 같은 중선 위에서 선분을 나누는 비를 이용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다.\n$G'$은 $\\triangle GBC$의 무게중심이므로 $GG':G'D=2:1$이다.\n$GG'=4$ cm이므로 $G'D=2$ cm, 따라서 $GD=GG'+G'D=6$ cm이다.\n$AG:GD=2:1$이므로 $AG=12$ cm이다.\n따라서 $AD=AG+GD=12+6=18$ cm이므로 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

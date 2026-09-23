@@ -406,8 +406,8 @@ window.questionBank=[
     "answer": "③",
     "solution": "[키포인트] 두 직각삼각형의 길이를 구해 $15^\\circ$가 들어 있는 삼각형 $ADH$의 코사인을 계산한다.\\n조건 정리: 삼각형 $ACD$는 $C$에서 직각이고 $\\angle CAD=30^\\circ$, $CD=2$이다. 삼각형 $ABC$는 $B$에서 직각이고 $\\angle CAB=45^\\circ$이다.\\n풀이 방향: 먼저 $AD$, $AC$, $BC$를 구한 뒤 점 $D$의 높이 $DH$를 구한다.\\n정석 풀이: $30^\\circ$ 직각삼각형 $ACD$에서 $CD$는 빗변 $AD$의 절반이므로 $AD=4$, $AC=2\\sqrt3$이다. $45^\\circ$ 직각삼각형 $ABC$에서 $AB=BC=\\dfrac{AC}{\\sqrt2}=\\sqrt6$이다. 선분 $DC$는 $AC$에 수직이므로 수평선과 $45^\\circ$를 이루며, $D$는 $C$보다 $2\\sin45^\\circ=\\sqrt2$만큼 높다. 따라서 $DH=BC+\\sqrt2=\\sqrt6+\\sqrt2$이다. $\\angle DAH=30^\\circ+45^\\circ=75^\\circ$이므로 $\\angle ADH=15^\\circ$이다. 따라서 $\\cos15^\\circ=\\dfrac{DH}{AD}=\\dfrac{\\sqrt6+\\sqrt2}{4}$이다.\\n따라서 정답은 ③이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q13.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -744,8 +744,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$2\\sqrt{13}$",
     "solution": "[키포인트] 특수각의 삼각비로 두 직각변을 구한 뒤 중점 조건을 이용한다.\n조건 정리: $AB=8$, $\\angle C=90^\\circ$, $\\angle A=60^\\circ$이고 $D$는 $AC$의 중점이다.\n풀이 방향: $AC$, $BC$, $CD$를 구해 직각삼각형 $BCD$에 피타고라스 정리를 적용한다.\n정석 풀이: $AC=8\\cos60^\\circ=4$, $BC=8\\sin60^\\circ=4\\sqrt3$이다. $D$는 $AC$의 중점이므로 $CD=2$이다. 따라서 $BD=\\sqrt{BC^2+CD^2}=\\sqrt{(4\\sqrt3)^2+2^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n따라서 구하는 값은 $2\\sqrt{13}$이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

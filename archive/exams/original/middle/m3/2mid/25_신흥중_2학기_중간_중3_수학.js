@@ -344,8 +344,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] $75^\\circ$를 $45^\\circ+30^\\circ$로 나누는 보조선을 만들어 두 종류의 특수 직각삼각형을 이용한다.\n조건 정리: $AB=AC$이므로 $\\angle C=75^\\circ$, $\\angle A=30^\\circ$이다. $A$에서 $BC$에 내린 수선의 발을 $D$라 하면 $D$는 $BC$의 중점이고 $BD=\\dfrac{5\\sqrt2}{2}$, $\\angle BAD=15^\\circ$이다.\n풀이 방향: $AD$ 위에 $DE=BD$가 되도록 점 $E$를 잡고, $A$에서 $BE$의 연장선에 수선을 내려 $30^\\circ$와 $45^\\circ$ 직각삼각형을 만든다.\n정석 풀이: $DE=BD=\\dfrac{5\\sqrt2}{2}$로 두면 $\\triangle BDE$는 직각이등변삼각형이므로 $\\angle DBE=45^\\circ$이고 $BE=BD\\sqrt2=5$이다. 따라서 $\\angle ABE=75^\\circ-45^\\circ=30^\\circ$이다. $A$에서 $BE$의 연장선에 내린 수선의 발을 $F$라 하자. $\\triangle ABF$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형이므로 $AF=\\dfrac{AB}{2}$, $BF=\\dfrac{\\sqrt3}{2}AB$이다. 또한 $\\angle AEF=45^\\circ$이므로 $\\triangle AEF$는 직각이등변삼각형이고 $EF=AF=\\dfrac{AB}{2}$이다. $BF=BE+EF$이므로 $\\dfrac{\\sqrt3}{2}AB=5+\\dfrac{1}{2}AB$이다. 따라서 $(\\sqrt3-1)AB=10$이고, $AB=\\dfrac{10}{\\sqrt3-1}=5+5\\sqrt3$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_신흥중_2학기_중간_중3_수학/q11.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

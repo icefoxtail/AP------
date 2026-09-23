@@ -89,8 +89,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점에서 $2:1$로 나눈다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GM=2:1$이다. 따라서 $GM=36\\times\\dfrac13=12\\,\\mathrm{cm}$이고 $AG=24\\,\\mathrm{cm}$이다.\n$G'$은 $\\triangle GBC$의 무게중심이고 $M$은 $\\overline{BC}$의 중점이므로 $GG':G'M=2:1$이다. 따라서 $GG'=12\\times\\dfrac23=8\\,\\mathrm{cm}$이다.\n그러므로 $AG'=AG+GG'=24+8=32\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q3.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

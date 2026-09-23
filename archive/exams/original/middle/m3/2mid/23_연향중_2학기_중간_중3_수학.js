@@ -310,8 +310,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 직선이 $x$축의 양의 방향과 이루는 각의 탄젠트가 기울기이다.\n조건 정리: 이루는 각은 $30^\\circ$이고 $x$절편은 $-6$이므로 직선은 $(-6,0)$을 지난다.\n풀이 방향: 기울기를 구한 뒤 한 점을 지나는 직선의 식을 세운다.\n정석 풀이: 기울기는 $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다. 따라서 $y=\\dfrac{\\sqrt3}{3}(x+6)=\\dfrac{\\sqrt3}{3}x+2\\sqrt3$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
