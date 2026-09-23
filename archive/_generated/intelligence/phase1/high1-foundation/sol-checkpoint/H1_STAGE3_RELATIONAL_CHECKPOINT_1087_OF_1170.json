@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "h1-stage3-relational-permcomb-checkpoint-v1",
+  "status": "STAGE3_RELATIONAL_PERMCOMB_287_CANDIDATE_COMPLETE_REVIEW_PENDING",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "3e87c6cec0d2a82b8f024febfdf46d0e358913a9",
+  "basisMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "hashAlgorithm": "SHA-256 over UTF-8 bytes",
+  "priorHashRepair": {
+    "commit": "3e87c6cec0d2a82b8f024febfdf46d0e358913a9",
+    "scope": "EQINEQ 303 per-row/file hashes only",
+    "semanticDecisionChangedRows": 0
+  },
+  "batch": {
+    "workUnit": "PERMCOMB",
+    "rows": 287,
+    "uidUnique": 287,
+    "sourceIdentityUnique": 287,
+    "chunkCount": 5,
+    "chunks": [
+      {
+        "range": "001_070",
+        "rows": 70,
+        "inputSha256": "079d50940060bce4e95e2056fc389f3ad1ef7bb319c5aebc7311e2506186000c",
+        "ledgerSha256": "8cba50d79516cf42a71d805dea44ded1295212a1f683b3b48ae7f13728a259ab",
+        "inputBlob": "964c5d2d743ebee495cdf03da88852c0b30e92f3",
+        "ledgerBlob": "342d9468e5bbe22f7b7987c679218347081c2e39"
+      },
+      {
+        "range": "071_140",
+        "rows": 70,
+        "inputSha256": "12cb2089323214efcabf28e89eccc3906cd8e41b825b907472250fd8eb682657",
+        "ledgerSha256": "52d9cfd2db13c9f42a7aff8a624f2d7b7311bcc88c6657c257959cb0cfc40424",
+        "inputBlob": "b0d9e424319804edc0b57c85fb1871d1ff5ee56a",
+        "ledgerBlob": "334c335cccbb799499df3b7f88523d3372c62883"
+      },
+      {
+        "range": "141_210",
+        "rows": 70,
+        "inputSha256": "ef8df84d33331f5ff44147b53de233ff9cb9814f5a0ea309b897ef490fad5217",
+        "ledgerSha256": "8c3a3cc64384c01730b9231d03f75514dc52106cc541b6dc4a17c0bf228df0e5",
+        "inputBlob": "b7ba3a2b90e0074e739d6bb46fc15d7c57a06345",
+        "ledgerBlob": "401fe8c6e3409088fe21a5dded6c49566ef3f73a"
+      },
+      {
+        "range": "211_280",
+        "rows": 70,
+        "inputSha256": "e14e7e9107891490b956188aaf14dd36ca0e6d0c6ca327f09571c81e8dfd6b7b",
+        "ledgerSha256": "7beb6531388e8d5b8a2bf66fae44aad352d123c1dc7494f6470ebafe8ce66d2c",
+        "inputBlob": "b7d1717c69981e77dbc84f8411ddb42400c2ca45",
+        "ledgerBlob": "18fd4691c818b582541641f5664be2f78a155dd4"
+      },
+      {
+        "range": "281_287",
+        "rows": 7,
+        "inputSha256": "b04c6416182e8c7a2afa71674f9a3b231d56fccefb240bd37d38cce285fdb660",
+        "ledgerSha256": "b18eda91e3f22e5861250afcd0684e8b3db556c679128a54f54631dcc1e7b2ba",
+        "inputBlob": "d9a6708882c180fc4f8930bf855e837f67f7bfbd",
+        "ledgerBlob": "05d646b250219095000463e3543e300024247e21"
+      }
+    ],
+    "sourcePackDecisionRejoinMismatch": 0
+  },
+  "provenanceGate": {
+    "decisionIsolatedInputBundleRows": 287,
+    "forbiddenSameStageInputLeakageRows": 0,
+    "missingInputBundleSha": 0,
+    "missingContentHash": 0,
+    "missingSolutionHash": 0
+  },
+  "registryGate": {
+    "invalidCrossConceptKeys": [],
+    "invalidConditionKeys": [],
+    "invalidIntegrationPatterns": [],
+    "duplicateCrossConceptRows": 0,
+    "duplicateConditionRows": 0
+  },
+  "reviewStatusCounts": {
+    "ACTIVE_ONLY": 236,
+    "REVIEW_REQUIRED": 51
+  },
+  "unresolved": {
+    "sourceHoldRows": 1,
+    "l3HoldRows": 1,
+    "crossConceptUnmappedRows": 13,
+    "conditionUnmappedRows": 37,
+    "crossConceptUnmappedDistribution": {
+      "INCLUSION_EXCLUSION": 2,
+      "포함-배제": 3,
+      "여사건": 7,
+      "완전순열": 1
+    },
+    "conditionUnmappedDistribution": {
+      "자연수·정수 조건": 37
+    }
+  },
+  "activeCandidateDistribution": {
+    "crossConceptKeys": {
+      "CC_POINT_LINE_DISTANCE": 1,
+      "CC_NUMBER_PRIME_COPRIME": 1,
+      "CC_PRIME_FACTORIZATION": 4,
+      "CC_QUADRATIC_EQUATION": 2
+    },
+    "conditionKeys": {
+      "COND_NATURAL_NUMBER": 28,
+      "COND_INTEGER": 10,
+      "COND_NONZERO": 6,
+      "COND_RANGE": 23,
+      "COND_POSITIVE": 1
+    },
+    "integrationPattern": {
+      "NONE": 50,
+      "CASE_BRANCH": 175,
+      "SEQUENTIAL": 50,
+      "INTERDEPENDENT": 5,
+      "DEEP_COMPOSITE": 3,
+      "REINTERPRETATION": 4
+    }
+  },
+  "cumulative": {
+    "priorCompleted": 800,
+    "currentBatch": 287,
+    "overlapUid": 0,
+    "overlapSourceIdentity": 0,
+    "relationalUniqueUid": 1087,
+    "relationalUniqueSourceIdentity": 1087,
+    "overallDenominator": 1170,
+    "completedCandidateRows": 1087,
+    "remaining": 83
+  },
+  "next": {
+    "workUnit": "MATRIX",
+    "workIndex": 1,
+    "questionUid": "qid_v1_3fea7d6aed2917f1a8559fce6bdd9b575d1f07d0f6b6025a93b9c5d165a0c16e",
+    "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#7"
+  },
+  "mutations": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  },
+  "finality": "NOT_FINAL_VALIDATOR_REVIEW_PENDING"
+}
