@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "range": {
+    "start": 1,
+    "end": 200
+  },
+  "count": 7,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 2,
+      "questionUid": "qid_v1_008cc63f23e60f21a423438119a659a8af896f4d1c4d6b3b77fdc2b6bac030de",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "38afdc4bc3146f7ed89cb21f55be6a8829c3b394eb0cc929821a40ac37ecf304"
+      },
+      "sourceFingerprint": "38afdc4bc3146f7ed89cb21f55be6a8829c3b394eb0cc929821a40ac37ecf304",
+      "independentSemantic": {
+        "primaryMethod": "사각형의 내접 조건인 맞은편 각 보각으로 항상 성립하는 유형 분류",
+        "decisiveStep": "직사각형·정사각형만 언제나 원내접; 일반 사다리꼴·평행사변형·마름모는 아님",
+        "supportingConcepts": [
+          "원내접사각형",
+          "직사각형",
+          "특수 사각형"
+        ],
+        "conditions": [
+          "항상 원내접하는 사각형 유형 선택"
+        ],
+        "compositionPattern": "대각 보각 필요충분조건→각 도형의 항상성 확인",
+        "curriculumNotes": "중등 원주각·사각형 성질",
+        "sourceIssue": "보기의 도형별 각은 읽지 않았고 해설이 일반 분류를 명시.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "내접사각형의 대각 보각 조건으로 항상 성립 여부를 판단한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "68b7ab861692c4987303800f5458cea396325b58a370be7aebdeff133af3a06f",
+        "sourceSolutionSha256": "a5cfb0826fa2f9e7fab4c750f297612f03f67c6dbaaea4275ef68d5300603494"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "발문은 항상 원에 내접하는 사각형을 분류하고 대각 보각 조건을 쓰지만 현재 L4 center-arc template와의 세부 대응이 불명확하다. 이 범위에 cyclic-quadrilateral 전용 기존 template를 특정하지 못해 보류한다."
+    },
+    {
+      "reviewIndex": 22,
+      "questionUid": "qid_v1_0704335d6e4bedb837a893f8f28eac2587963888307021abc83e61407b889051",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "efc2f32a8b6aee44b46528bc627a09bc58161c7b307b6ba1b5165308f3e830f5"
+      },
+      "sourceFingerprint": "efc2f32a8b6aee44b46528bc627a09bc58161c7b307b6ba1b5165308f3e830f5",
+      "independentSemantic": {
+        "primaryMethod": "두 독립 소문항: 내심각 공식과 중심각·부채꼴에서 삼각형을 빼는 원활꼴",
+        "decisiveStep": "(1) A=35°; (2) 중심각 AOC=90°, sector16π−triangle32=16π−32",
+        "supportingConcepts": [
+          "내심",
+          "각의 이등분선",
+          "원주각·중심각",
+          "부채꼴·삼각형 넓이"
+        ],
+        "conditions": [
+          "동일 question item 안에 (1) incenter angle",
+          "(2) circle region area"
+        ],
+        "compositionPattern": "서로 독립인 두 풀이: 중심 삼각형 각공식 / 반지름 등변각→sector−triangle",
+        "curriculumNotes": "중등 삼각형 중심과 원의 넓이",
+        "sourceIssue": "한 archive content 안에 primary family가 다른 두 독립 소문항이 결합됨.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "두 소문항의 핵심 유형이 달라 하나의 primary taxonomy를 고르기 어려워 보류할 가능성이 있다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "75b59f024e2086ff878dfbef480860cb6f428d9cc477c3ce530b9f6d2ae171eb",
+        "sourceSolutionSha256": "fa034c3a56ced858fa04ce786c26294debdedf8d44bf61c173ef9af1dfdfb6a7"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "currentTemplateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "currentCrossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "같은 question record에 내심각 계산과 원활꼴 넓이 계산이라는 독립 소문항 두 개가 들어 있어 단일 primary taxonomy를 확정하지 않는다."
+    },
+    {
+      "reviewIndex": 109,
+      "questionUid": "qid_v1_2617c93580d88efbf74f9b780f119735d761afb3fbb1f32c9cbdff6ba552574e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "f35c19904fc30abd38befed0d63396a2db42b9faf4312affc5136b741b1fcb1e"
+      },
+      "sourceFingerprint": "f35c19904fc30abd38befed0d63396a2db42b9faf4312affc5136b741b1fcb1e",
+      "independentSemantic": {
+        "primaryMethod": "직각삼각형 합동 기준 RHS/RHA의 pair matching",
+        "decisiveStep": "RHS pair ①/⑤; RHA pair ②/④; ③ unpaired",
+        "supportingConcepts": [
+          "right triangle congruence",
+          "RHS",
+          "RHA",
+          "complementary angles"
+        ],
+        "conditions": [
+          "figures supply side/angle marks"
+        ],
+        "compositionPattern": "criterion grouping→complementary angle→find unmatched triangle",
+        "curriculumNotes": "중등 직각삼각형 합동",
+        "sourceIssue": "diagram data only; solution enumerates conditions.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "직각삼각형의 합동조건으로 서로 짝을 이룬다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "caf601c05c56d15ed03f8a5f7c5291508d79d2f3e8ee0b65fb3abbfb03f52626",
+        "sourceSolutionSha256": "325b56be1a14457cc0939a4f973227250eaebe67665dfb4187158841b09341e2"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "currentTemplateKey": null,
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The L3 right-triangle congruence is clear, but the item distinguishes both RHS and RHA across several choices and has no single matching registered L4 template. No new key is proposed."
+    },
+    {
+      "reviewIndex": 112,
+      "questionUid": "qid_v1_27b21aa822ef8d05977de2ec4d9a391923420e29ca921af936b7e79276e469ff",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "f7af7935d3e04963f9351709693531dac6b2363318febbccfc085abc8ca16a5b"
+      },
+      "sourceFingerprint": "f7af7935d3e04963f9351709693531dac6b2363318febbccfc085abc8ca16a5b",
+      "independentSemantic": {
+        "primaryMethod": "평행선 사이 삼각형 밑변이 같고 높이 같아 넓이 차",
+        "decisiveStep": "[ACE]=17−8=9; [ACD]=[ACE]=9",
+        "supportingConcepts": [
+          "parallel line",
+          "same-base/equal-height triangle areas",
+          "subtraction"
+        ],
+        "conditions": [
+          "B,C,E collinear",
+          "AC∥DE",
+          "two known areas"
+        ],
+        "compositionPattern": "whole triangle difference→parallel equal height→equal area",
+        "curriculumNotes": "중등 평행선·삼각형 넓이",
+        "sourceIssue": "point D/E positions as diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "평행선으로 같은 밑변·높이를 얻어 넓이를 같게 둔다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "5c11a1f1513b11cbfa26133e492b8dd012b9a3c52dfd69ee205831760df514a1",
+        "sourceSolutionSha256": "78a858e593a72db85ed49bd000e97f6d0fd772294645b9e66191c7383371600c"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": null,
+      "currentTemplateKey": null,
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": false,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The solution uses parallel lines and equal-height triangle areas, but current L3/L4 are empty and no precise existing area-ratio type is established. No key is created."
+    },
+    {
+      "reviewIndex": 163,
+      "questionUid": "qid_v1_387a2835258c9fcfd47f91616c20358c6c66601528f1a6bfdcb90563b4f40c6f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "04483f1e520bc4525de907388d30d386dda032a8b99d51cf1d51006045c4054e"
+      },
+      "sourceFingerprint": "04483f1e520bc4525de907388d30d386dda032a8b99d51cf1d51006045c4054e",
+      "independentSemantic": {
+        "primaryMethod": "세 변 길이로 둔각삼각형을 converse Pythagorean criterion으로 판별",
+        "decisiveStep": "longest side c; obtuse if c²>a²+b²; source solution contains contradictory arithmetic",
+        "supportingConcepts": [
+          "Pythagorean inequality converse",
+          "triangle side lengths",
+          "obtuse angle"
+        ],
+        "conditions": [
+          "list of side-length choices not transcribed in content",
+          "referenced 9,5,8 in solution"
+        ],
+        "compositionPattern": "order sides→compare longest-side square to sum of other squares",
+        "curriculumNotes": "중등 삼각형의 성질·피타고라스",
+        "sourceIssue": "SOURCE_SOLUTION_ARITHMETIC_CONTRADICTION: written 81>89 is false; parenthetical acknowledges typo, choice set itself not exposed in content.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "Prompt family is obtuse-triangle side test, but solution comparison contains a numerical contradiction.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "f377803a6040700a628c2ea419c79a00b96b23e0e5955da4c498b7154095dfae",
+        "sourceSolutionSha256": "d1466d76b945546049aab37728fc21854f0aac8e483f75e4337b0515deb79384"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": null,
+      "currentTemplateKey": null,
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": false,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "발문은 변 길이로 둔각삼각형을 판별하지만 해설의 제곱 비교가 산술적으로 모순되고 선택지별 side data가 source content에 없다. 분류 대조를 보류한다."
+    },
+    {
+      "reviewIndex": 180,
+      "questionUid": "qid_v1_3d749d5cddf8f2f01b67bbae6189e95c98f6aa73a4ee9ce4011e81b0db2a4a18",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "8bd20c5eb7906c440b38d0623d02f3aca2387cd33816043675f0c5e174efab31"
+      },
+      "sourceFingerprint": "8bd20c5eb7906c440b38d0623d02f3aca2387cd33816043675f0c5e174efab31",
+      "independentSemantic": {
+        "primaryMethod": "원내접사각형 보각과 삼각형 내각합",
+        "decisiveStep": "BCD: 30+70→x80; opposite angle y100",
+        "supportingConcepts": [
+          "cyclic quadrilateral",
+          "triangle angle sum"
+        ],
+        "conditions": [
+          "ABCD cyclic",
+          "triangle BCD angles 30°,70°"
+        ],
+        "compositionPattern": "triangle third angle→cyclic opposite supplementary angle",
+        "curriculumNotes": "중등 원내접사각형",
+        "sourceIssue": "diagram identifies x,y locations.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "삼각형 각합과 내접사각형 대각 보각을 결합한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "c7c5ac289c1afca0a1a82f3f423e6a8dc8947b023069225bf4947618f17a9728",
+        "sourceSolutionSha256": "9a4286a87f0046fd548c7935c4f4a463afad2cf69491f79be925da8b6ee0e680"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "풀이는 내접사각형의 맞은편 각 보각을 사용하고 current L4는 center-arc로 지정되어 있다. cyclic-quadrilateral angle-only structure에 맞는 기존 L4를 확정하기 어려워 보류한다."
+    },
+    {
+      "reviewIndex": 198,
+      "questionUid": "qid_v1_4220d2886651ba4286315f32694f3db3bafe122768a39617b468bebbadb468a5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "b0b927f1d01c8eb80bb385b56b01bbb516c0c688fe7b86b6b83dc7534f877c69"
+      },
+      "sourceFingerprint": "b0b927f1d01c8eb80bb385b56b01bbb516c0c688fe7b86b6b83dc7534f877c69",
+      "independentSemantic": {
+        "primaryMethod": "원에 내접하는 사각형 성질로 항상 cyclic types identify",
+        "decisiveStep": "isosceles trapezoid and rectangle always cyclic; generic parallelogram/rhombus not",
+        "supportingConcepts": [
+          "cyclic quadrilateral",
+          "trapezoid",
+          "rectangle"
+        ],
+        "conditions": [
+          "listed quadrilaterals in figure"
+        ],
+        "compositionPattern": "opposite angles supplementary condition by class",
+        "curriculumNotes": "중등 원내접사각형·특수 사각형",
+        "sourceIssue": "options types are listed in solution; content refers to views.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "마주 보는 각의 보각 조건으로 항상 원내접하는 도형을 분류한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "87e4445b2214b60ad8fbb6ead9284dd40d3b2a62d63839951ed38fd87589fd8a",
+        "sourceSolutionSha256": "7976171ee78e5cda0042750493709ff6aa71bdd27b384dae987bb8e34ea14f00"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "발문은 항상 원내접인 사각형의 성질을 분류하지만 현재 L4는 center-arc 유형이다. cyclic-quadrilateral criterion에 정확히 대응하는 기존 L4를 특정하기 어려워 보류한다."
+    }
+  ]
+}

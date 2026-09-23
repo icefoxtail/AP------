@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "rangeStart": 1,
+  "rangeEnd": 200,
+  "expectedRows": 200,
+  "reviewedRows": 200,
+  "comparedRows": 200,
+  "internalBatchSize": 20,
+  "batchRanges": [
+    "1-20",
+    "21-40",
+    "41-60",
+    "61-80",
+    "81-100",
+    "101-120",
+    "121-140",
+    "141-160",
+    "161-180",
+    "181-200"
+  ],
+  "identityRows": 200,
+  "identityUidParity": true,
+  "comparisonUidParity": true,
+  "uniqueQuestionUidCount": 200,
+  "uniqueSourceIdentityCount": 200,
+  "sourceContentAndSolutionHashRows": 200,
+  "blindLedgerSavedBeforeCurrentMetadataRead": true,
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "separateAnswerFieldRead": false,
+  "priorPerItemVerdictsRead": false,
+  "verdictCounts": {
+    "MATCH": 143,
+    "DEFECT": 50,
+    "HOLD": 7
+  },
+  "defectUniqueUidCount": 50,
+  "defectFieldUidCounts": {
+    "L2": 21,
+    "L3": 10,
+    "L4": 24,
+    "CrossConcept": 16
+  },
+  "crossConceptAddKeyCount": 16,
+  "crossConceptRemoveKeyCount": 4,
+  "newCanonicalKeysCreated": 0,
+  "recommendationKeysRegistered": true,
+  "invalidRecommendationKeys": [],
+  "recomputedSourceHashParity": true,
+  "recomputedSourceHashMismatchCount": 0,
+  "sourceMutation": 0,
+  "canonicalMutation": 0,
+  "compiledMutation": 0,
+  "runtimeMutation": 0,
+  "existingWorkingLedgerMutation": 0,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "limitations": [
+    "A Notion long-term status page exposed historical work-status summaries before source semantic review; no per-item prior taxonomy values or defect verdicts were opened.",
+    "For the 601-800 scope, a post-freeze diagnostic exposed l3ReviewStatus for n=601, 688, and 715; those labels were not used in these decisions.",
+    "The current runtime route could not be verified as Luna 6; do not attribute this artifact to Luna 6 without external model-route confirmation."
+  ],
+  "integrityStatus": "PASS_WITH_REVIEW_HOLDS"
+}
