@@ -182,8 +182,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 변의 길이와 그 끼인각을 알 때 삼각형의 넓이는 $\\dfrac12ab\\sin C$로 구한다.\n그림에서 $AB=12\\rm\\,cm$, $BC=8\\rm\\,cm$, $\\angle B=30^\\circ$이다.\n따라서 넓이는 $\\dfrac12\\times12\\times8\\times\\sin30^\\circ=24\\rm\\,cm^2$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/22_매산중_2학기_기말_중3_기출/q6.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -244,8 +244,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 합동인 마름모 $6$개가 한 점을 둘러싸므로 그 점에서의 한 각은 $60^\\circ$이다.\n마름모 한 개의 넓이는 두 변의 길이와 끼인각을 이용하여 $6\\times6\\times\\sin60^\\circ=18\\sqrt3\\rm\\,cm^2$이다.\n색칠된 마름모는 $3$개이므로 넓이는 $3\\times18\\sqrt3=54\\sqrt3\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/22_매산중_2학기_기말_중3_기출/q8.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -641,8 +641,8 @@ window.questionBank = [
     "answer": "$8\\sqrt3\\rm\\,cm$",
     "solution": "[키포인트] $\\angle A=30^\\circ$에서 $AC$는 이웃한 변, $AB$는 빗변이므로 코사인을 이용한다.\n$\\cos30^\\circ=\\dfrac{AC}{AB}$이므로 $\\dfrac{\\sqrt3}{2}=\\dfrac{AC}{16}$이다.\n따라서 $AC=16\\times\\dfrac{\\sqrt3}{2}=8\\sqrt3\\rm\\,cm$이다.\n따라서 구하는 길이는 $8\\sqrt3\\rm\\,cm$이다.",
     "image": "assets/images/22_매산중_2학기_기말_중3_기출/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

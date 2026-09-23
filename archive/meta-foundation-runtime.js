@@ -7,7 +7,8 @@
     "data/meta-foundation/runtime/limit-continuity-v1.json",
     "data/meta-foundation/runtime/integral-calculus-v1.json",
     "data/meta-foundation/runtime/derivative-v1.json",
-    "data/meta-foundation/runtime/probability-statistics-v1.json"
+    "data/meta-foundation/runtime/probability-statistics-v1.json",
+    "data/meta-foundation/runtime/middle-geometry-v1.json"
   ];
   const FOUNDATION_OVERRIDE_FIELDS = [
     "curriculumKey","courseKey","L1","L2","L3","L4",
@@ -153,7 +154,7 @@
         gradeConflict: base.gradeConflict,
         taxonomyStatus: "CONFIRMED",
         metadataConflicts: [],
-        reviewStatus: "reviewed_pass"
+        reviewStatus: overlay.reviewStatus || "reviewed_pass"
       };
     });
     for (const overlay of runtime.records || []) {
@@ -168,7 +169,7 @@
         sourceQuestionNo: seed.sourceQuestionNo || overlay.sourceQuestionNo,
         taxonomyStatus: "CONFIRMED",
         metadataConflicts: [],
-        reviewStatus: "reviewed_pass"
+        reviewStatus: overlay.reviewStatus || "reviewed_pass"
       });
     }
     if (joined !== Number(runtime.counts && runtime.counts.records)) {

@@ -249,8 +249,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $B$에서 $AC$에 수선을 내려 두 개의 특수한 직각삼각형으로 나눈다.\n조건 정리: $\\angle A=180^\\circ-75^\\circ-60^\\circ=45^\\circ$이다.\n풀이 방향: $B$에서 $AC$에 내린 수선의 발을 $D$라 하고, 먼저 $\\triangle BCD$에서 $BD$를 구한 뒤 $45^\\circ$ 직각삼각형 $ABD$를 이용한다.\n정석 풀이: $BD\\perp AC$라 하면 $\\triangle BCD$에서 $BC=8$은 빗변이고 $\\angle C=60^\\circ$이다. 따라서 $BD=BC\\sin60^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다. $\\triangle ABD$에서 $\\angle A=45^\\circ$, $\\angle D=90^\\circ$이므로 $\\angle ABD=45^\\circ$이다. 따라서 $\\triangle ABD$는 직각이등변삼각형이고 $AB=BD\\sqrt2=4\\sqrt3\\times\\sqrt2=4\\sqrt6\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q08.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -712,8 +712,8 @@ window.questionBank = [
     "answer": "B",
     "solution": "[키포인트] 한 원의 현의 수직이등분선은 항상 그 원의 중심을 지난다.\n조건 정리: 어느 조각이든 원래 원의 둘레에 해당하는 원호가 남아 있다.\n풀이 방향: 한 조각의 원호 위에서 세 점을 잡아 두 현을 만들고, 두 현의 수직이등분선의 교점을 찾는다.\n정석 풀이: 한 조각의 원호 위에 서로 다른 세 점 $P$, $Q$, $R$을 잡고 두 현 $PQ$, $QR$을 긋는다. 현 $PQ$의 수직이등분선과 현 $QR$의 수직이등분선은 모두 원래 원의 중심을 지나므로, 두 수직이등분선의 교점이 원의 중심이다. 이 교점이 조각의 바깥에 있더라도 작도할 수 있으므로 조각의 크기나 중심이 조각 안에 있는지는 관계가 없다. 따라서 어느 조각을 이용하더라도 중심을 찾을 수 있다고 말한 학생 B가 옳다.\n따라서 옳게 말한 사람은 B이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

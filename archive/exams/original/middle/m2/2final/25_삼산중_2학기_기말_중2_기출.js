@@ -151,8 +151,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 세 중선은 삼각형을 넓이가 같은 여섯 개의 작은 삼각형으로 나눈다.\n$G$가 무게중심이고 $D$가 $BC$의 중점이므로 $\\triangle GBD$의 넓이는 $\\triangle ABC$ 넓이의 $\\dfrac16$이다.\n따라서 $[ABC]=6\\times3=18\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -306,8 +306,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 중점과 평행 관계를 이용한 닮음으로 대각선 $BD$의 분할비를 구한다.\n$BM\\parallel AD$이고 $P$는 $BD$, $AM$의 교점이므로 $\\triangle BMP\\sim\\triangle DAP$이다. $BM:AD=1:2$이므로 $BP:PD=1:2$, 따라서 $BP=\\dfrac13BD$이다.\n또 $DN\\parallel AB$이고 $Q$는 $BD$, $AN$의 교점이므로 $\\triangle DQN\\sim\\triangle BQA$이다. $DN:AB=1:2$이므로 $DQ:BQ=1:2$, 따라서 $BQ=\\dfrac23BD$이다.\n그러므로 $BP=PQ=QD=\\dfrac13BD$이고, 같은 높이를 가지는 $\\triangle ABP$, $\\triangle APQ$, $\\triangle AQD$의 넓이는 모두 같다. 따라서 ㄴ은 참이다.\n일반적인 평행사변형에서 대각선 $BD$가 두 변과 이루는 각이 같다는 조건은 없으므로 ㄱ은 거짓이다.\n평행사변형의 넓이를 $S$라 하면 $[BCD]=\\dfrac S2$, $[BMP]=[DQN]=\\dfrac S{12}$, $[CMN]=\\dfrac S8$이므로 $[PMNQ]=\\dfrac S2-\\dfrac S{12}-\\dfrac S{12}-\\dfrac S8=\\dfrac{5S}{24}$이다.\n$S=54$이면 $[PMNQ]=\\dfrac{45}{4}\\rm\\,cm^2$이므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ④이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q10.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -567,8 +567,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심의 $2:1$ 비와 중점연결정리를 길이비와 넓이비에 함께 적용한다.\n$L$은 $BC$의 중점이고 $G$는 무게중심이므로 $AG:AL=2:3$이다. $DG\\parallel BL$이므로 $\\triangle ADG\\sim\\triangle ABL$이고 $DG:BL=AG:AL=2:3$이다. $BL=\\dfrac12BC$이므로 $DG=\\dfrac13BC$이다.\n같은 방법으로 $GE=\\dfrac13BC$이므로 $DG=GE$이다. 따라서 $G$는 $DE$의 중점이다.\n$M,N$은 각각 $AB,AC$의 중점이므로 $MN=\\dfrac12BC$이다. 또 $AL$은 $\\triangle ABC$의 중선이므로, 닮음 관계에서 그 상인 $P$는 $MN$의 중점이다. 따라서 $MP=\\dfrac14BC$이다.\n그러므로 $MP:DG:BL=\\dfrac14:\\dfrac13:\\dfrac12=3:4:6$이어서 $x=4$, $y=6$이다.\n$MN\\parallel DE$이므로 $\\triangle MPG$와 $\\triangle MDG$는 같은 높이를 갖는다. 따라서 $[MDG]:[MPG]=DG:MP=\\dfrac13:\\dfrac14=4:3$이다. $1:z=4:3$이므로 $z=\\dfrac34$이다.\n$xyz=4\\times6\\times\\dfrac34=18$이므로 정답은 ③이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q19.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+    "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

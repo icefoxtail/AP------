@@ -27,8 +27,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n그림에서 $N$, $M$은 각각 $AB$, $BC$의 중점이고 $CG=20\\rm\\,cm$, $BC=28\\rm\\,cm$이다.\n$CG:GN=2:1$이므로 $x=GN=10$이다. 또 $M$은 $BC$의 중점이므로 $y=BM=14$이다.\n따라서 $x+y=10+14=24$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_연향중_2학기_기말_중2_기출/q1.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -58,8 +58,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 대각선 $BD$가 평행사변형의 넓이를 반으로 나누고, 닮음을 이용해 $P$, $Q$가 $BD$를 나누는 비를 구한다.\n$BM=MC$이고 $BM\\parallel AD$이므로 $\\triangle BMP\\sim\\triangle DAP$이다. 따라서 $BP:PD=1:2$, 즉 $BP=\\dfrac13BD$이다. 같은 방법으로 $DQ=\\dfrac13DB$이다.\n$\\triangle BCD$의 넓이는 $96\\div2=48$이다. $BM=\\dfrac12BC$, $BP=\\dfrac13BD$이므로 $\\triangle BPM$의 넓이는 $48\\times\\dfrac12\\times\\dfrac13=8$이다. 마찬가지로 $\\triangle DQN$의 넓이도 $8$이다.\n색칠한 부분의 넓이는 $48-8-8=32\\rm\\,cm^2$이므로 정답은 ④이다.",
     "image": "assets/images/23_연향중_2학기_기말_중2_기출/q2.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
