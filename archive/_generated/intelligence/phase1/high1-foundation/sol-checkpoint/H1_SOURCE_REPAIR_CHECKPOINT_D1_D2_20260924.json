@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "h1-source-repair-d1-d2-checkpoint-v1",
+  "status": "PARTIAL_SOURCE_REPAIR_NOT_META_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "sourceReviewed": {
+    "D1": 10,
+    "D2": 7
+  },
+  "sourceChangedUidCount": 6,
+  "changedQueueIndexes": [
+    3,
+    11,
+    38,
+    39,
+    40,
+    42
+  ],
+  "portableD1EvidencePngCount": 31,
+  "portableD1EvidenceBytes": 15048363,
+  "open": [
+    "q10_JEIL_DIFFERENT_ORIGINAL_CORRECTION_PROTOCOL",
+    "q38_MAESAN_SOLUTION_GAP",
+    "q42_YEOSU_SOLUTION_RENDER_MEASURED_CHUNK_EXCEEDS_PAGE",
+    "q44_46_YEOSU_HWP_FORMULAS_UNREADABLE",
+    "q47_HANYOUNG_ANSWER_MATH_CONFLICT",
+    "q50_JEIL_SOLUTION_MATH_CONFLICT"
+  ],
+  "render": {
+    "buyeongDesktopExamSolutionAnswer": "PASS_LEGACY_AND_CURRENT_DEFAULT",
+    "buyeongMobile": "NOT_TESTED",
+    "yeosuQ42ExamAnswer": "PASS",
+    "yeosuQ42Solution": "FAIL_MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE"
+  },
+  "ledgerRefs": [
+    {
+      "file": "H1_SOURCE_ORIGINAL_LUNA_D_BATCH01_10.jsonl",
+      "sha256": "32adf9b53475779c38e73b671428457d3e9b64fe8190c11b5567095492b65eb6"
+    },
+    {
+      "file": "H1_SOURCE_ORIGINAL_LUNA_D2_BATCH01_7.jsonl",
+      "sha256": "f2a70a42ed768504d1b7a70309c85ed964bb713b0ddd6deb2b6fed9421398613"
+    },
+    {
+      "file": "H1_SOURCE_ORIGINAL_LUNA_D2_Q42_MATH_RECEIPT.json",
+      "sha256": "84505aa20ad10d3f5e0ce39c79778ef8f17f78913ed1da2eb13073873af17cf8"
+    },
+    {
+      "file": "H1_SOURCE_ORIGINAL_LUNA_D2_Q42_REPAIR_RECEIPT.json",
+      "sha256": "6cae4bb4703cd028d18a42be51e3d8435c0e22f5806af036ada230d9eb7bb9fa"
+    }
+  ],
+  "sourceJsRefs": [
+    {
+      "file": "archive/exams/original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
+      "sha256": "47f6fd93e5dff45289c25b65ab0d0550c12553cc89bd0273d156d8a8a4479c25"
+    },
+    {
+      "file": "archive/exams/original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+      "sha256": "f227796745c659336aee1089dca8ff30454eb4a5504c87d71bdb602edac57271"
+    },
+    {
+      "file": "archive/exams/original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+      "sha256": "0539f08908e78d056c10580cbef8ed156cab9d5192fc6bf15222c6ab58a4d081"
+    },
+    {
+      "file": "archive/exams/original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js",
+      "sha256": "2ff0d1dd97f217865663bc9551be09564589db6018eca269f99c8d3e2adaab2d"
+    }
+  ],
+  "assetRefs": [
+    {
+      "file": "archive/assets/images/23_부영여고_1학기_중간_고1_기출/q16.png",
+      "sha256": "c54c4e471bd08e736006ad29c92e98d648cddafd92ef299e18cd47640d824577"
+    },
+    {
+      "file": "archive/assets/images/23_여수여고_1학기_중간_고1_기출/q17.png",
+      "sha256": "a6cf1504ab7d28d3d697cf33f6032b224effd50fc7413a18b473828e6e0e4285"
+    }
+  ],
+  "d3SeparateCheckpointPending": true,
+  "mainMerge": 0,
+  "finality": "NOT_FINAL"
+}
