@@ -140,3 +140,194 @@ test("all selectable production records have canonical numeric metadata and regi
   assert.ok(ids.size > 0);
   assert.equal(catalog.health.questions, catalog.records.length);
 });
+test("grade-aware subject projection keeps high semantic API stable and gives high1 exactly two user-facing subjects", () => {
+  assert.equal(core.isHighSemanticSubjectGrade("고1"), false);
+  assert.equal(core.isHighSemanticSubjectGrade("고2"), true);
+  assert.equal(core.isHighSemanticSubjectGrade("고3"), true);
+  assert.equal(core.hasSubjectProjection("중3"), false);
+  assert.equal(core.hasSubjectProjection("고1"), true);
+  assert.deepEqual(
+    core.subjectProjectionOptions("고1").map((item) => item.label),
+    ["공통수학1", "공통수학2"],
+  );
+  assert.deepEqual(
+    core.subjectProjectionOptions("고2"),
+    core.highSemanticSubjectOptions(),
+  );
+});
+
+test("high1 projection follows unit-level 2015 to 2022 crosswalk instead of whole-course mapping", () => {
+  const expected = new Map([
+    ["H15-SA-09", "COMMON_MATH_2"],
+    ["H15-SA-10", "COMMON_MATH_2"],
+    ["H15-SA-11", "COMMON_MATH_2"],
+    ["H15-SA-12", "COMMON_MATH_2"],
+    ["H15-SB-06", "COMMON_MATH_1"],
+    ["H15-SB-07", "COMMON_MATH_1"],
+    ["H15-SB-08", "COMMON_MATH_1"],
+  ]);
+  for (const [legacyStandardUnitKey, projection] of expected)
+    assert.equal(
+      core.subjectProjectionForRecord({
+        effectiveBrowseGrade: "고1",
+        curriculumKey: "2015",
+        courseKey: legacyStandardUnitKey.startsWith("H15-SA") ? "수학(상)" : "수학(하)",
+        legacyStandardUnitKey,
+      }),
+      projection,
+      legacyStandardUnitKey,
+    );
+
+  for (const [legacyStandardUnitKey, canonicalUnitKey] of Object.entries(core.HIGH1_DIRECT_KEY_MAP)) {
+    const projection = core.subjectProjectionForRecord({
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2015",
+      courseKey: legacyStandardUnitKey.startsWith("H15-SA") ? "수학(상)" : "수학(하)",
+      legacyStandardUnitKey,
+    });
+    assert.equal(
+      projection,
+      canonicalUnitKey.startsWith("H22-C2-") ? "COMMON_MATH_2" : "COMMON_MATH_1",
+      `${legacyStandardUnitKey} -> ${canonicalUnitKey}`,
+    );
+  }
+
+  assert.equal(
+    core.subjectProjectionForRecord({
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2015",
+      courseKey: "수학(상)",
+    }),
+    "",
+  );
+  assert.equal(
+    core.subjectProjectionForRecord({
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2015",
+      courseKey: "수학(하)",
+    }),
+    "",
+  );
+  assert.equal(
+    core.subjectProjectionForRecord({
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2022",
+      courseKey: "공통수학1",
+    }),
+    "COMMON_MATH_1",
+  );
+  assert.equal(
+    core.subjectProjectionForRecord({
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2022",
+      courseKey: "공통수학2",
+    }),
+    "COMMON_MATH_2",
+  );
+});
+
+test("high1 special-case unit mapping matches the verified unit-past candidate reference", () => {
+  const cases = [
+    [{ legacyStandardUnitKey: "H15-SA-02", L2: "방정식과 부등식" }, "H22-C-06"],
+    [{ legacyStandardUnitKey: "H15-SA-03", L2: "복소수" }, "H22-C-04"],
+    [{ legacyStandardUnitKey: "H15-SA-04", L2: "이차방정식" }, "H22-C-05"],
+    [{ legacyStandardUnitKey: "H15-SA-06", L2: "여러 가지 방정식" }, "H22-C-06"],
+    [{ legacyStandardUnitKey: "H15-SB-02", L2: "함수" }, "H22-C2-07"],
+  ];
+  for (const [record, expected] of cases)
+    assert.equal(core.high1CanonicalUnitKeyForRecord(record), expected);
+  assert.equal(
+    core.high1CanonicalUnitKeyForRecord({
+      sourceFile: "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+      sourceQuestionNo: "12",
+      legacyStandardUnitKey: "H15-SA-02",
+    }),
+    "H22-C-06",
+  );
+});
+
+test("user-facing subject label resolver is nonblank only when a real subject is selected", () => {
+  assert.equal(
+    core.subjectProjectionLabel({ grade: "고1", semanticSubject: "COMMON_MATH_1" }),
+    "공통수학1",
+  );
+  assert.equal(
+    core.subjectProjectionLabel({ grade: "고2", semanticSubject: "ALGEBRA" }),
+    "대수",
+  );
+  assert.equal(
+    core.subjectProjectionLabel({ grade: "고3", semanticSubject: "CALCULUS_ADVANCED" }),
+    "미적분Ⅱ",
+  );
+  assert.equal(core.subjectProjectionLabel({ grade: "중2", courseKey: "M2-1" }), "M2-1");
+  assert.equal(core.subjectProjectionLabel({ grade: "고1" }), "");
+});
+
+test("blueprint and review consume the same high1 subject projection filter", () => {
+  const make = (n, legacyStandardUnitKey) => ({
+    questionUid: "qid_v1_" + String(n).padStart(64, "0"),
+    identityStatus: "VERIFIED",
+    sourceStatus: "VERIFIED",
+    taxonomyStatus: "CONFIRMED",
+    gradeConflict: false,
+    reviewStatus: "reviewed_pass",
+    difficultyBucket: 2,
+    difficultyConfidence: "high",
+    difficultyBoundaryFlag: "NONE",
+    legacyLevelCompatibility: "NORMAL",
+    curriculumApplicability: "DEFAULT_SCOPE",
+    defaultSelectable: true,
+    metadataConflicts: [],
+    sourceFile: `original/high/h1/test-${n}.js`,
+    sourceOrdinal: n,
+    sourceQuestionNo: String(n),
+    sourceGrade: "고1",
+    effectiveBrowseGrade: "고1",
+    curriculumKey: "2015",
+    courseKey: legacyStandardUnitKey.startsWith("H15-SA") ? "수학(상)" : "수학(하)",
+    legacyStandardUnitKey,
+    L1: "공통수학",
+    L2: "교차 경계 테스트",
+    L3: "L3",
+    L4: "L4",
+    school: "테스트고",
+    year: 2025,
+  });
+  const common2 = make(1, "H15-SA-09");
+  const common1 = make(2, "H15-SB-06");
+  const path = core.pathKey(common2, 4);
+  const req = {
+    filters: {
+      grade: "고1",
+      curriculumKey: "2015",
+      semanticSubject: "COMMON_MATH_2",
+      primaryPaths: [path],
+    },
+    rows: [{ id: "a", count: 1, paths: [path] }],
+    seed: "projection-test",
+  };
+  const result = core.selectBlueprint([common1, common2], req);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.selected.map((r) => r.questionUid), [common2.questionUid]);
+  assert.equal(core.review(result.selected, req).status, "PASS");
+  assert.equal(core.review([{ ...common1, rowId: "a" }], req).status, "HARD_BLOCK");
+});
+
+test("high2 and high3 five-subject semantic mapping remains unchanged", () => {
+  assert.deepEqual(
+    core.HIGH_SEMANTIC_SUBJECTS.map(({ value, label }) => [value, label]),
+    [
+      ["ALGEBRA", "대수"],
+      ["CALCULUS", "미적분Ⅰ"],
+      ["PROB_STATS", "확률과 통계"],
+      ["CALCULUS_ADVANCED", "미적분Ⅱ"],
+      ["GEOMETRY", "기하"],
+    ],
+  );
+  assert.equal(core.highSemanticSubjectForCourseKey("수학I"), "ALGEBRA");
+  assert.equal(core.highSemanticSubjectForCourseKey("대수"), "ALGEBRA");
+  assert.equal(core.highSemanticSubjectForCourseKey("수학II"), "CALCULUS");
+  assert.equal(core.highSemanticSubjectForCourseKey("미적분Ⅰ"), "CALCULUS");
+  assert.equal(core.highSemanticSubjectForCourseKey("미적분"), "CALCULUS_ADVANCED");
+  assert.equal(core.highSemanticSubjectForCourseKey("기하와 벡터"), "GEOMETRY");
+});
