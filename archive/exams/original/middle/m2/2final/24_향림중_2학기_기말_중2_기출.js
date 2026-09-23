@@ -244,8 +244,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 두 각의 이등분선과 그림의 평행 표시를 함께 이용한다.\n그림에서 $AB=6\\rm\\,cm$, $AC=12\\rm\\,cm$이고 $DE\\parallel AB$이다.\n$AD$는 $\\angle A$의 이등분선이므로 각의 이등분선의 성질에 따라 $BD:DC=AB:AC=1:2$이다. 따라서 $DC:BC=2:3$이다.\n$DE\\parallel AB$이므로 $\\triangle CDE\\sim\\triangle CBA$이고, $CE:CA=CD:CB=2:3$이다. 따라서 $CE=8\\rm\\,cm$, $AE=4\\rm\\,cm$이다.\n또 $BE$는 $\\angle B$의 이등분선이므로 $AE:EC=AB:BC$이다. 즉 $4:8=6:BC$이므로 $BC=12\\rm\\,cm$이다.\n따라서 $DC=\\dfrac23\\times12=8\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q8.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -368,8 +368,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 두 중선을 이용하여 무게중심의 $2:1$ 분할 성질을 적용한다.\n$E$는 $AC$의 중점이므로 $BE$는 중선이고, $D$는 $AB$의 중점이므로 $CD$도 중선이다. 따라서 두 중선의 교점 $G$는 삼각형의 무게중심이다.\n무게중심은 중선을 꼭짓점 쪽과 중점 쪽의 비가 $2:1$이 되도록 나누므로 $BG:GE=2:1$이다. $GE=5\\rm\\,cm$이므로 $BE=15\\rm\\,cm$이다.\n또 $AB=AC$인 이등변삼각형에서는 대칭인 두 중선 $BE$, $CD$의 길이가 같으므로 $CD=15\\rm\\,cm$이다.\n따라서 $CG=\\dfrac23CD=10\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -399,8 +399,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 중점연결선과 무게중심의 위치를 같은 높이 기준으로 비교한다.\n$D$, $E$가 각각 $AC$, $AB$의 중점이므로 $DE\\parallel BC$이다. $BC$의 중점을 $M$이라 하고 $AM$과 $DE$의 교점을 $N$이라 하자.\n$DE$는 중점연결선이므로 $N$은 $AM$의 중점이어서 $AN=\\dfrac12AM$이다.\n또 $G$는 두 중선 $BD$, $CE$의 교점인 무게중심이므로 $AG=\\dfrac23AM$이다. 따라서 $GN=\\dfrac23AM-\\dfrac12AM=\\dfrac16AM$이다.\n$\\triangle ADE$와 $\\triangle GDE$는 밑변 $DE$가 같고, 그 밑변에 대한 높이의 비가 $AN:GN=\\dfrac12:\\dfrac16=3:1$이다.\n따라서 넓이의 비는 $3:1$이므로 구하는 값은 $3$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q13.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

@@ -636,8 +636,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심은 세 중선의 교점이며 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n조건 정리: $D,E,F$는 각각 변 $BC,CA,AB$의 중점이다.\n풀이 방향: 중점, 중선의 분할비, 넓이 관계를 보기별로 확인한다.\n정석 풀이: $E$는 $AC$의 중점이므로 $AE=CE$이다. 중선 $CF$에서 $CG:GF=2:1$이므로 $FG:GC=1:2$이다. 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나누므로 $[GAB]=\\dfrac{2}{6}[ABC]=\\dfrac{1}{3}[ABC]$, $[GBD]=\\dfrac{1}{6}[ABC]$이다. 그러나 무게중심은 세 꼭짓점에서 같은 거리에 있는 점이 아니므로 일반적으로 $AG=BG=CG$가 아니다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q20.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

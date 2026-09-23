@@ -11,7 +11,7 @@
   "mappedFinal": 920,
   "routeOut": 8,
   "explicitL4Hold": 20,
-  "currentStage": "GPT143_LUNA90_APPLICATION_COMPLETE_WITH_DEFERRED_L1_L2_GATE",
+  "currentStage": "CROSS_PARENT_L1_L2_GATE_CLOSED_28_OF_28",
   "adjudicationInputs": {
     "frozen143": 143,
     "new90": 90,
@@ -26,7 +26,7 @@
     "protectedStudentFieldMutationCount": 0
   },
   "deferred": {
-    "crossParentL2CorrectionUidCount": 28
+    "crossParentL2CorrectionUidCount": 0
   },
   "artifactPaths": [
     "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
@@ -39,10 +39,19 @@
     "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
   ],
   "blockingIssues": [
-    "CROSS_PARENT_L2_CORRECTION_GATE_REQUIRED_FOR_28_UID",
     "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
   ],
-  "nextStartPoint": "Independent branch review of application commit + parity repair; then separate L1/L2 correction gate for 28 cross-parent UIDs. Do not re-adjudicate frozen143/new90 unless source changes.",
+  "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision.",
   "officialCanonicalFinalClaim": false,
-  "mainMutation": false
+  "mainMutation": false,
+  "crossParentL1L2Gate": {
+    "status": "CLOSED_28_OF_28",
+    "reviewed": 28,
+    "crossParentApplied": 2,
+    "sameParentL2Refined": 10,
+    "keptCurrent": 16,
+    "remainingHold": 0,
+    "gateApplicationBaseHead": "15df8e0d039029f73e2bc4f1a736ce5a04c3237a",
+    "evidencePath": "archive/data/meta-foundation/evidence/middle-geometry/v1/cross_parent_l1_l2_gate_final_28_20260923.json"
+  }
 }

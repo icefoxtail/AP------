@@ -4,7 +4,7 @@
   "semanticHead": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
   "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
   "denominator": 928,
-  "status": "APPLICATION_COMPLETE_WITH_EXPLICIT_HOLDS_AND_DEFERRED_L1_L2",
+  "status": "APPLICATION_COMPLETE_CROSS_PARENT_L1_L2_GATE_CLOSED",
   "counts": {
     "mappedFinal": 920,
     "routeOut": 8,
@@ -16,7 +16,11 @@
     "l3L4ParityRepair": 6,
     "sourceL2MutationUid": 37,
     "sourceFilesModified": 17,
-    "crossParentL2Deferred": 28
+    "crossParentL2Deferred": 0,
+    "crossParentL2GateReviewed": 28,
+    "crossParentApplied": 2,
+    "sameParentL2Refined": 10,
+    "crossParentKeptCurrent": 16
   },
   "artifacts": [
     "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
@@ -26,12 +30,13 @@
     "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_VALIDATION_20260923.json",
     "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_20260923.json",
     "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_validation_20260923.json",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/cross_parent_l1_l2_gate_final_28_20260923.json"
   ],
   "applicationCommits": [
     "21302ea89bcef4cd24ead524ed9fce84a085c94f",
     "4b897940d5305a0d4cf38afb294b458e933eb4e7"
   ],
   "protectedStudentFieldMutationCount": 0,
-  "nextStartPoint": "Independent branch review of application commit + parity repair; then separate L1/L2 correction gate for 28 cross-parent UIDs. Do not re-adjudicate frozen143/new90 unless source changes."
+  "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision."
 }

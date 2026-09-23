@@ -27,8 +27,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 무게중심은 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n그림에서 $N$, $M$은 각각 $AB$, $BC$의 중점이고 $CG=20\\rm\\,cm$, $BC=28\\rm\\,cm$이다.\n$CG:GN=2:1$이므로 $x=GN=10$이다. 또 $M$은 $BC$의 중점이므로 $y=BM=14$이다.\n따라서 $x+y=10+14=24$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_연향중_2학기_기말_중2_기출/q1.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
