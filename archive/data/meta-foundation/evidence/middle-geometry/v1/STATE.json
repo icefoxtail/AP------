@@ -1,27 +1,48 @@
 {
-  "schemaVersion": "middle-geometry-physical-inventory-v1",
-  "BASE_MAIN_SHA": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
-  "branch": "codex/meta-foundation/middle-geometry",
-  "branchHead": "2b952bc69d3249f9f819fc9c9a31052f0a50405e",
+  "schemaVersion": "middle-geometry-physical-inventory-v2",
+  "branchRef": "codex/meta-foundation/middle-geometry",
+  "semanticHead": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+  "applicationCommit": "21302ea89bcef4cd24ead524ed9fce84a085c94f",
+  "parityRepairCommit": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+  "branchBaseBeforeApplication": "9adc9480458a2c88a85425088e654f0d1f5004c0",
+  "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
   "denominator": 928,
-  "mapped": 921,
-  "routeOut": 7,
-  "currentStage": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
-  "completedUidCount": 921,
-  "completedUidSetDigest": "347c180c79c1766105ddee50e8c405f35dec2d434fb083effa0381876d0c95e1",
-  "artifactPaths": [
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_template_semantic_registry_candidate.json",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/crossconcept_candidate_proposals.json",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/L4_CROSSCONCEPT_SEMANTIC_SUMMARY.md"
-  ],
-  "artifactSha256": {
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json": "e56482d0353ae6bd3ed217f38fa2384c1cf5e9ce60ffac59a57acd912812fdd3",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_template_semantic_registry_candidate.json": "0c00cfa0e064e2e3f9de4b3c7477fc16abc6ddd63eba5445daaf5f49028a595f",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/crossconcept_candidate_proposals.json": "c8ba557f7df54e45b88ad09b8d6a33ff40824d64e0c2b59df097ff05a4a8886b",
-    "archive/data/meta-foundation/evidence/middle-geometry/v1/L4_CROSSCONCEPT_SEMANTIC_SUMMARY.md": "e35b0883b55ab3639fe808e7ef48900d47abd5d03b971631e934acf2048fb46d"
+  "reviewedUidCount": 928,
+  "mappedFinal": 920,
+  "routeOut": 8,
+  "explicitL4Hold": 20,
+  "currentStage": "GPT143_LUNA90_APPLICATION_COMPLETE_WITH_DEFERRED_L1_L2_GATE",
+  "adjudicationInputs": {
+    "frozen143": 143,
+    "new90": 90,
+    "total": 233
   },
-  "blockingIssues": [],
-  "nextStartPoint": "L4 + CrossConcept semantic freeze handoff; Condition/IntegrationPattern/difficulty not started",
-  "stateHash": "219a046b31e4a98560fee5614a04855d11243c1f067c2712f70406b0d568e316"
+  "applied": {
+    "l3ChangedUidCount": 67,
+    "l4CrossConceptAdjudicationRows": 230,
+    "l3L4ParityRepairCount": 6,
+    "sourceL2MutationUidCount": 37,
+    "sourceFileCount": 17,
+    "protectedStudentFieldMutationCount": 0
+  },
+  "deferred": {
+    "crossParentL2CorrectionUidCount": 28
+  },
+  "artifactPaths": [
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_conflict_adjudication_final_143_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_VALIDATION_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_validation_20260923.json",
+    "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
+  ],
+  "blockingIssues": [
+    "CROSS_PARENT_L2_CORRECTION_GATE_REQUIRED_FOR_28_UID",
+    "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+  ],
+  "nextStartPoint": "Independent branch review of application commit + parity repair; then separate L1/L2 correction gate for 28 cross-parent UIDs. Do not re-adjudicate frozen143/new90 unless source changes.",
+  "officialCanonicalFinalClaim": false,
+  "mainMutation": false
 }
