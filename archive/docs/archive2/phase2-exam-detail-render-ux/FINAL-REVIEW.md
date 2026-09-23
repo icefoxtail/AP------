@@ -4,6 +4,7 @@
 - Base: `origin/main` at `06c8d9f4271799446af70794f9cdf462cec5df20`.
 - Task branch: `codex/archive2-exam-render-ux-20260923`.
 - Review mode: primary Codex only, as requested; no subagents.
+- The task branch was created at 16:49 KST from the then-current `origin/main`. Main later advanced at 19:26 and 19:31 KST to `0d30376ed46d6637854bea325df043097ea999b3` through `b2eff23eb` and `0d30376ed`. Those post-creation commits are not included; main was not merged or pushed.
 
 ## Contract and render review
 
@@ -25,4 +26,5 @@
 - Broader targeted regressions: 108 passed, 2 failed in navigation test mocks that also failed in the frozen baseline.
 - Full tests-directory run: 580 passed, 250 failed; full repository auto-discovery: 930 passed, 258 failed. Full logs and the specific unchanged-source / missing-fixture failures are recorded in `evidence/final-tests-directory-root.log` and `evidence/final-full-regression.log`.
 - No failure was reported by the new responsive or touch-target tests. No UX or A4 HOLD remains; the repository-wide baseline and fixture test failures remain HOLDs outside the edited surface.
+- Integration HOLD: `origin/main` advanced by two commits after this task branch was created. Review and integrate those later main commits separately if this branch is to be rebased or merged.
 - Requested model routing to GPT-6 Luna Max is not exposed by this session's task controls, so the selected model and effort could not be verified.
