@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle-geometry-checkpoints-v2",
-  "activeCheckpointId": "Q513_PROBLEM_ONLY_HOLD_RESOLVED_20260923",
+  "activeCheckpointId": "MG_PRODUCTION_PROMOTION_READY_20260923",
   "checkpoints": [
     {
       "checkpointId": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
@@ -107,7 +107,7 @@
     },
     {
       "checkpointId": "Q513_PROBLEM_ONLY_HOLD_RESOLVED_20260923",
-      "active": true,
+      "active": false,
       "branchRef": "codex/meta-foundation/middle-geometry",
       "baseHead": "a43fc8f1f180059406bd6f6e09aeb32d923b4793",
       "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
@@ -133,6 +133,70 @@
         "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
       ],
       "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision."
+    },
+    {
+      "checkpointId": "PROMOTION_PREFLIGHT_BLOCKED_20260923",
+      "status": "PROMOTION_BLOCKED_AUTHORITATIVE_FREEZES_AND_SOURCE_TUPLES",
+      "active": true,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "sourceBaselineMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "synchronizedMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
+      "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
+      "branchHead": "f770f2f3ef2b7eaa1389faa162915e8c133eb268",
+      "promotionCommitSha": null,
+      "denominator": 928,
+      "l3": {
+        "final": 921,
+        "routeOut": 7
+      },
+      "l4": {
+        "final": 901,
+        "explicitHold": 20,
+        "routeOut": 7
+      },
+      "affectedSetValidationPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/affected_set_validation_20260923.json",
+      "inventoryPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/promotion_inventory_20260923.json",
+      "blockerCodes": [
+        "FINAL_DIFFICULTY_RECHECK_PENDING",
+        "FINAL_RELATIONAL_METADATA_FREEZE_MISSING",
+        "UNRESOLVED_L1_L2_L3_TUPLE_MISMATCH",
+        "GLOBAL_INTEGRITY_AUTHORITY_PENDING"
+      ],
+      "nextStartPoint": "Obtain/finalize physical difficulty and relational freeze authorities; resolve the two listed source/L1/L2/L3 tuple mismatches; then resume affected-set validation. No 928 semantic re-review was performed."
+    },
+    {
+      "id": "MG_PRODUCTION_PROMOTION_READY_20260923",
+      "status": "PASS_WITH_EXPLICIT_HOLDS",
+      "branch": "codex/meta-foundation/middle-geometry",
+      "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
+      "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
+      "counts": {
+        "l3Final": 921,
+        "routeOut": 7,
+        "l4Final": 901,
+        "l4Hold": 20,
+        "difficultyHold": 781,
+        "runtime": 928,
+        "archive2Join": 928
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+        "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+        "archive/data/meta-foundation/canonical/registry_index.json",
+        "archive/data/meta-foundation/compiled/aliases.json",
+        "archive/data/meta-foundation/compiled/concept_registry.json",
+        "archive/data/meta-foundation/compiled/condition_registry.json",
+        "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+        "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+        "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/meta-foundation-runtime.js",
+        "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json"
+      ],
+      "completedAt": "2026-09-23T13:37:34.897Z",
+      "next": "Commit, push branch, re-fetch and merge latest main."
     }
   ]
 }

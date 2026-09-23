@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "middle-geometry-main-source-drift-targeted-review-v1",
+  "status": "USER_AUTHORIZED_SOURCE_DRIFT_ACCEPTED",
+  "mainDriftCommit": "dc4ca0d854cdee40adffcb90b5243a2bb942af0c",
+  "sourceIdentity": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js#23",
+  "questionUid": "qid_v1_7ca94a922fb227f7079923725c0bbb5a4c399011e7961d4b3cc517f3129c27bf",
+  "sourceFingerprint": "7c76c338efd0e41323c0968926df145194690cd0d787fc5aea029e0cc91efd9c",
+  "inputBundleSha": "b1839a2db9814fa20d76542e5a6fe0b7705a1d06c007c15be0ce4eafbe0cfd27",
+  "checkedStudentFields": {
+    "content": true,
+    "choices": true,
+    "answer": true,
+    "solution": true,
+    "image": true
+  },
+  "observedSourceChange": {
+    "answer": "$\\sqrt{22}\\,\\mathrm{cm}$",
+    "solutionRelation": "MD=MB-DB=3\\sqrt2",
+    "figureOrder": "M-D-B"
+  },
+  "disposition": {
+    "l3": "PT_CIRCLE_LINE_RELATION unchanged",
+    "l4": "TM_CIRCLE_CHORD_LENGTH unchanged",
+    "crossConceptKeys": [],
+    "difficultyRecheckRequired": true
+  },
+  "difficultyPrior": {
+    "bucket": 4,
+    "confidence": "medium",
+    "boundary": "NONE",
+    "legacyCompatibility": "STRONG_CONFLICT",
+    "recheckTriggers": [
+      "same_type_difficulty_span_endpoint",
+      "visual_or_direct_source_high_risk"
+    ]
+  },
+  "updates": [
+    {
+      "artifact": "working",
+      "before": {
+        "sourceFingerprint": "0adbe9bbee682616c30ed577377daaf17893bfcdeb06051ad52cd3c9eca35c21",
+        "inputBundleSha": "b8d0247a3cb0702ecd739f4f2adfa4075b8b13b28db1bb450f51635e1c7f0b7e",
+        "problemTypeKey": "PT_TWO_CIRCLES",
+        "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "decisiveStep": "큰 원 현 반길이를 피타고라스로 구하고 DB를 더해 작은 원 중심거리 OD를 계산한다.",
+        "l4SemanticReason": "동심원·현·중심거리 관계를 두 직각삼각형으로 연결한다."
+      },
+      "after": {
+        "sourceFingerprint": "7c76c338efd0e41323c0968926df145194690cd0d787fc5aea029e0cc91efd9c",
+        "inputBundleSha": "b1839a2db9814fa20d76542e5a6fe0b7705a1d06c007c15be0ce4eafbe0cfd27",
+        "problemTypeKey": "PT_TWO_CIRCLES",
+        "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "decisiveStep": "MB=√(6²−2²)=4√2; 그림의 M-D-B 순서와 DB=√2에서 MD=3√2를 구하고, 직각삼각형 OMD로 OD=√22를 계산한다.",
+        "l4SemanticReason": "동심 두 원의 중심거리와 현 길이로 목표 반지름을 구하는 현 길이 구조다. D가 M과 B 사이에 있으므로 DB를 빼서 MD를 구한다."
+      }
+    },
+    {
+      "artifact": "freeze",
+      "before": {
+        "sourceFingerprint": "0adbe9bbee682616c30ed577377daaf17893bfcdeb06051ad52cd3c9eca35c21",
+        "inputBundleSha": "33e1672b6cb8669d502754190bd499205e33954008ca42dbb2c29fa60fb95c99",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [],
+        "decisiveStep": "안쪽 원의 반현을 구하고 같은 직선 위 바깥 현점까지의 거리로 바깥 반지름 계산",
+        "l4SemanticReason": "동심 두 원이지만 공통현은 존재하지 않는다. 실제 풀이 skeleton은 같은 중심거리에서 현의 반길이와 반지름을 직각삼각형으로 계산하는 CHORD_LENGTH 반복이다."
+      },
+      "after": {
+        "sourceFingerprint": "7c76c338efd0e41323c0968926df145194690cd0d787fc5aea029e0cc91efd9c",
+        "inputBundleSha": "b1839a2db9814fa20d76542e5a6fe0b7705a1d06c007c15be0ce4eafbe0cfd27",
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+        "crossConceptKeys": [],
+        "decisiveStep": "MB=√(6²−2²)=4√2; 그림의 M-D-B 순서와 DB=√2에서 MD=3√2를 구하고, 직각삼각형 OMD로 OD=√22를 계산한다.",
+        "l4SemanticReason": "동심 두 원의 중심거리와 현 길이로 목표 반지름을 구하는 현 길이 구조다. D가 M과 B 사이에 있으므로 DB를 빼서 MD를 구한다."
+      }
+    }
+  ],
+  "denominator": 928,
+  "protectedStudentFieldMutationByPromotion": 0,
+  "userDirection": "User said the corrected answer/solution was entered by them and does not require additional independent review; accept the latest-main correction.",
+  "sourceCommit": "dc4ca0d854cdee40adffcb90b5243a2bb942af0c",
+  "l3L4KeysUnchanged": true,
+  "difficultyBlindReuse": {
+    "bucket": 4,
+    "confidence": "medium",
+    "boundaryFlag": "NONE",
+    "note": "Retained the existing blind first-pass row per user direction; this is not an independent difficulty recheck receipt."
+  },
+  "artifactFingerprintSha256": "482dc19a067c6be017146f7c6fe976da130e2658fb41e7e987a88697582791c7"
+}

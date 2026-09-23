@@ -1,0 +1,126 @@
+{
+  "generatedAt": "2026-09-23T13:37:34.897Z",
+  "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
+  "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
+  "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
+  "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
+  "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
+  "currentOriginMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
+  "promotionCommitSha": null,
+  "promotionCommitPending": true,
+  "branch": "codex/meta-foundation/middle-geometry",
+  "denominator": 928,
+  "l3": {
+    "total": 928,
+    "final": 921,
+    "routeOut": 7
+  },
+  "l4": {
+    "total": 928,
+    "final": 901,
+    "explicitHold": 20,
+    "routeOut": 7
+  },
+  "inputArtifactSha256": {
+    "l3_semantic_final_928.json": "c450e1397bded5ee9d711aa02bfef18610dd36950e51fa6fcb1a9b6c21bf9111",
+    "l4_crossconcept_semantic_freeze_928.json": "74f82314617e8b1cd6ffbc3c6693f7c12ea5714d033f21a0a2e650048f80e4d2",
+    "difficulty_final_freeze_928_20260923.json": "9e0269b5a68df0bfb475d6f9a3bdde687fa612c16a2acfad419cbf0d4804c553",
+    "relational_metadata_final_928_20260923.json": "2210ccc56fbf2f6e303ad68319733183790d5153005fef47ae8ec9426ea74f59",
+    "cross_parent_l1_l2_gate_final_28_20260923.json": "8f9e32b57748b5d931b8cc6bdc60c458f2caec6ee7fa4a35e7627f16e5a1556a",
+    "blocker_resolution_2uid_20260923.json": "f7171d95639075d46b4e8d7d0cd23501bd5e4897ba8280cd25b3a1150eb80387"
+  },
+  "schemaVersion": "middle-geometry-final-promotion-summary-v1",
+  "status": "PROMOTION_READY_FOR_GIT",
+  "latestMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
+  "canonicalPackId": "MIDDLE_GEOMETRY",
+  "canonicalVersion": "1.0.0",
+  "canonicalStatus": "ACTIVE",
+  "canonicalKeys": {
+    "ownedProblemTypes": 11,
+    "reusedProblemTypes": 4,
+    "ownedTemplates": 31,
+    "reusedTemplates": 11,
+    "bindings": 30,
+    "aliases": 0,
+    "compiledProblemTypes": 139,
+    "compiledTemplates": 453,
+    "compiledBindings": 375,
+    "activePackCount": 8
+  },
+  "compiledParity": "PASS",
+  "runtimeRecords": 928,
+  "runtimeDefaultSelectable": 138,
+  "runtimeExplicitDifficultyHold": 781,
+  "archive2StaticJoin": "928/928",
+  "archive2RuntimeJoin": "928/928",
+  "globalRuntimeRecords": 3536,
+  "aliasCollisionBaseline": 0,
+  "middleGeometryAliasCollision": 0,
+  "protectedStudentFieldMutationCount": 0,
+  "l1l2Gate": {
+    "status": "GATE_CLOSED_28_OF_28",
+    "appliedCrossParent": 2,
+    "sameParentRefinement": 10,
+    "kept": 16,
+    "remainingHold": 0
+  },
+  "difficulty": {
+    "status": "FINAL_WITH_EXPLICIT_RECHECK_HOLDS",
+    "validation": "PASS_WITH_EXPLICIT_HOLDS",
+    "unresolved": 0,
+    "explicitHold": 781
+  },
+  "relational": {
+    "status": "FINAL",
+    "validation": "PASS",
+    "explicitL4Hold": 20
+  },
+  "maesan": {
+    "questionIndex": "23/23",
+    "catalog": "23/23"
+  },
+  "tests": [
+    {
+      "command": "node archive/tools/meta-foundation/compile-meta-foundation.mjs --write --check",
+      "status": "PASS"
+    },
+    {
+      "command": "node archive/tools/meta-foundation/compile-meta-foundation.mjs --check",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/meta-foundation-global-compile.test.js",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/meta-foundation-middle-geometry-runtime.test.js",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/meta-foundation-limit-continuity-runtime.test.js",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/meta-foundation-integral-calculus-runtime.test.js",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/meta-foundation-derivative-runtime.test.js",
+      "status": "PASS"
+    },
+    {
+      "command": "node tests/archive2-core.test.cjs",
+      "status": "PASS"
+    },
+    {
+      "command": "python archive/build_db.py (already synchronized after approved source metadata edits)",
+      "status": "PASS_CARRIED_FORWARD"
+    }
+  ],
+  "branchPush": "PENDING",
+  "mainMerge": "PENDING",
+  "headEqualsOriginMain": false,
+  "blockers": [],
+  "exactNextState": "Commit the explicit promotion changes, push codex/meta-foundation/middle-geometry, re-fetch origin/main, absorb unrelated latest-main drift if any, merge and push main.",
+  "artifactFingerprintSha256": "e9cc46a899a6e5a904caa8f2c7018b17e4b8c0bd9ddfad2e984fc8df5c9c107d"
+}

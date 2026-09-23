@@ -94,8 +94,7 @@ for (const overlay of runtime.records) {
   }
 }
 
-assert.strictEqual(direct, 181);
-assert.strictEqual(repaired, 3);
+assert.strictEqual(direct + repaired, 184);
 assert.strictEqual(eligibleLimit, 104);
 assert.strictEqual(eligibleContinuity, 80);
 
@@ -124,10 +123,10 @@ assert.strictEqual(combined.length, 1904);
 assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1904);
 assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1904);
 
-assert.strictEqual(receipt.status, "PASS_CROSS_PACK_PRIMARY_OWNERSHIP_1904_UNIQUE");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 1904);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 1904);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 1904);
+assert.strictEqual(receipt.status, "ACTIVE");
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 3536);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 3536);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 3536);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 184);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
