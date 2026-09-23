@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "h1-stage2-gpt-block-repair-checkpoint-v1",
+  "status": "BLOCK_57_REPAIRED_CHECKPOINT",
+  "baseReviewHead": "d8a6be9df984d22621031402950c4138f8678287",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "branchHeadBeforeCheckpoint": "9417a36cc952784976ce79e9ab59983b1d5730fc",
+  "repaired": {
+    "total": 57,
+    "polynomial": 25,
+    "eqineq": 30,
+    "permcomb": 1,
+    "matrix": 1
+  },
+  "validation": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "duplicateUid": 0,
+    "duplicateSourceIdentity": 0,
+    "requiredFieldMissing": 0,
+    "gptRepairRows": 57,
+    "gptRepairUidUnique": 57,
+    "currentLedgerHoldRows": 49,
+    "aggregateHistoricalHoldGap": 7
+  },
+  "hold": {
+    "itemLevel": 49,
+    "aggregateBlocked": 7,
+    "dispositionCounts": {
+      "SOLUTION_REPAIR_REQUIRED": 28,
+      "ANSWER_REPAIR_REQUIRED": 8,
+      "SOURCE_REPAIR_REQUIRED": 10,
+      "SOURCE_BLOCKED": 1,
+      "VISUAL_FIDELITY_REVIEW_REQUIRED": 2
+    }
+  },
+  "ledgerHashes": {
+    "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl": {
+      "rows": 217,
+      "sha256": "cba60936197b8be0715e8593923063f228fa4e5d7f73194ab3a5981b79bd600a"
+    },
+    "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl": {
+      "rows": 70,
+      "sha256": "b6debeb448e32bd594d88613a76cd87361f75da9ec16ed1a755181404c1f7075"
+    },
+    "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl": {
+      "rows": 70,
+      "sha256": "1a7987458551b38327f0dfc9f0eb90b2b445cf9a11a34cfc2ea27307b779b2cc"
+    },
+    "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl": {
+      "rows": 70,
+      "sha256": "353a654f3493aa09c0001eb6887566cff2d5471dab45b70666e51554e6b4d9e7"
+    },
+    "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl": {
+      "rows": 70,
+      "sha256": "3989ba41f439e7d1301fcde2c2b2a7fcaf86c8c90255eae934f8f96744743bfd"
+    },
+    "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl": {
+      "rows": 70,
+      "sha256": "1f700a779604f992bc4b53c1af4f2187485552ca48b2fd34ea9a5a9173dbfa8e"
+    },
+    "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl": {
+      "rows": 70,
+      "sha256": "7a9acfe1617b734fc7ad497c6f7114705d8291b63c3f636173486433d353b5b1"
+    },
+    "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl": {
+      "rows": 70,
+      "sha256": "b01cdd77a40e8909f4fb9e4fa7220d0814075de7da854cc8e593a5bf2a76fe91"
+    },
+    "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl": {
+      "rows": 70,
+      "sha256": "c73ca3cbc15a2ab26130d791ff7a6f84c576da026af61492bb1dd0704e0e2eee"
+    },
+    "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl": {
+      "rows": 23,
+      "sha256": "bffa72f566db0d9ca4e2da1cdb23945b5d314b37feaae609b6f8f6280d0ba3af"
+    },
+    "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl": {
+      "rows": 70,
+      "sha256": "bc33c2027a5db71b510c425b7178143e76f3766bda51a96713896e16cc8b876b"
+    },
+    "PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl": {
+      "rows": 70,
+      "sha256": "5f6557b178fabd2326cf9e02487840481b4026c935d69615137e06aaa801a264"
+    },
+    "PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl": {
+      "rows": 70,
+      "sha256": "b797f159a33c7ee92619c9df1fa7ce5698f6fb5f2bfd160e4b4ea8128b66a95e"
+    },
+    "PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl": {
+      "rows": 70,
+      "sha256": "ca9bb8b8e13c3cd6e3387476d6e5743892da650d341160e1903353b4460fe5a3"
+    },
+    "PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl": {
+      "rows": 7,
+      "sha256": "d7e1b2c56063e2eba6b6b0ce15dd03baadc5b3bf309f6bebfbb9500c83f9072b"
+    },
+    "MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl": {
+      "rows": 70,
+      "sha256": "27a9cffdf43570a98ccd2fdf25936473e919f2ba48dcf439b76a34f361bb2d36"
+    },
+    "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl": {
+      "rows": 13,
+      "sha256": "446f10c9775fb6774502d78abd6bdc2b75ed35d60c7bf5b3ed169b8acc137584"
+    }
+  },
+  "repairArtifacts": [
+    "H1_STAGE2_GPT_BLOCK_REPAIR_POLYNOMIAL_25.jsonl",
+    "H1_STAGE2_GPT_BLOCK_REPAIR_EQINEQ_30.jsonl",
+    "H1_STAGE2_GPT_BLOCK_REPAIR_MISC_2.jsonl"
+  ],
+  "note": "Codex first-review BLOCK set was independently re-read against current source+solution by GPT. Review false positives were not copied blindly. Production/canonical/compiled/runtime were not mutated. FIX_NEXT/TODO_LATER remain outside this checkpoint."
+}
