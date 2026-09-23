@@ -3,11 +3,11 @@
   "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
-  "synchronizedBranchSha": "fe719e62ce21a1e4e6a7553907627c35f565cc14",
-  "synchronizedMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "currentOriginMainSha": "54ef7d6f479c2dee804812b22b24ed9c51b507c9",
-  "promotionCommitSha": null,
-  "promotionCommitPending": true,
+  "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "currentOriginMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "promotionCommitPending": false,
   "branch": "codex/meta-foundation/middle-geometry",
   "denominator": 928,
   "l3": {
@@ -30,8 +30,8 @@
     "blocker_resolution_2uid_20260923.json": "f7171d95639075d46b4e8d7d0cd23501bd5e4897ba8280cd25b3a1150eb80387"
   },
   "schemaVersion": "middle-geometry-promotion-inventory-v1",
-  "status": "PROMOTION_READY_FOR_GIT",
-  "stage": "CANONICAL_ACTIVE_COMPILED_RUNTIME_READY",
+  "status": "PRODUCTION_PROMOTED_MAIN",
+  "stage": "PRODUCTION_PROMOTED_MAIN_EVIDENCE_FINALIZATION",
   "sourceDriftMiddleGeometryFiles": {
     "unresolved": 0,
     "acceptedUserAuthorizedSourceUpdates": 1,
@@ -120,5 +120,11 @@
     }
   ],
   "blockers": [],
-  "artifactFingerprintSha256": "e9cc46a899a6e5a904caa8f2c7018b17e4b8c0bd9ddfad2e984fc8df5c9c107d"
+  "artifactFingerprintSha256": "e9cc46a899a6e5a904caa8f2c7018b17e4b8c0bd9ddfad2e984fc8df5c9c107d",
+  "mainPromotionMode": "FAST_FORWARD",
+  "branchPush": "PASS",
+  "mainMerge": "PASS_FAST_FORWARD",
+  "headEqualsOriginMain": true,
+  "finalEvidenceStateUpdateWillFastForwardMain": true,
+  "nextStartPoint": "Production promotion commit is pushed to branch and origin/main; publish this final STATE/INVENTORY/CHECKPOINTS status update."
 }
