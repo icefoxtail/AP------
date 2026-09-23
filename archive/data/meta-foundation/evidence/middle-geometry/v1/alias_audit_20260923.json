@@ -3,9 +3,9 @@
   "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
-  "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-  "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-  "currentOriginMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedBranchSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
+  "synchronizedMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
+  "currentOriginMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
   "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
   "promotionCommitPending": false,
   "branch": "codex/meta-foundation/middle-geometry",
@@ -55,9 +55,23 @@
     "archive/meta-foundation-runtime.js": "55a0a8b53fddd3d0abe13a1fd591e1998020fecba2cbc757686271581f7631be",
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json": "abf84a862ab3f1d607e61bbd26a5d02a19c0dd419dfc9c860e60166ce95b96d9"
   },
-  "mainPromotionMode": "FAST_FORWARD",
-  "branchPush": "PASS",
-  "mainMerge": "PASS_FAST_FORWARD",
+  "mainPromotionMode": "MERGE_COMMIT_THEN_FAST_FORWARD",
+  "branchPush": "PASS_AFTER_FINAL_SYNC",
+  "mainMerge": "PASS",
   "headEqualsOriginMain": true,
-  "finalEvidenceStateUpdateWillFastForwardMain": true
+  "finalEvidenceStateUpdateWillFastForwardMain": true,
+  "latestMainDrift": {
+    "commit": "508edf075f1fa303fff65752731178b53a9fcdd5",
+    "files": [
+      "archive/question-index-audit.md",
+      "archive/question-index-report.md",
+      "archive/question-index.js"
+    ],
+    "scope": "Generated Archive question-index registration artifacts only.",
+    "indexPayloadSha256": "27045ec80a938889c36e85e2c1a7bec989a0c326b35da8a6b221bce490954a36",
+    "indexPayloadParityWithPromotion": "IDENTICAL",
+    "middleGeometrySourceSemanticDrift": 0,
+    "resolution": "Latest main commit is the second parent of the promotion merge commit. Its generated index payload matches the already-synchronized promotion payload; only generation timestamp/report measurements differ."
+  },
+  "mainMergeCommitSha": "ddccf631024dc08999531a57e2cb0566bc7073d2"
 }
