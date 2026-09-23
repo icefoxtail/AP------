@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "h1-stagea-and-one-pass-pilot-working-inventory-v2",
+  "snapshotAt": "2026-09-24T02:24:15+09:00",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "branchHeadBeforeCheckpoint": "205dd23a5",
+  "status": "PARTIAL_STAGE_A_AND_PARALLEL_PILOT_NOT_FINAL",
+  "denominator": 1170,
+  "frozenUpstream": {
+    "stage2Rows": 1170,
+    "l3CandidateRows": 1170,
+    "l4CandidateRows": 1170,
+    "semanticFinal": false
+  },
+  "stageA": {
+    "originalPairA": "1-50 current-source refreshed for 3,11,38,39,40,42",
+    "originalPairB": "1-50 current-source refreshed for 3,11,38,39,40,42",
+    "remainderPairA2": "51-290 complete; 163,165,169 refreshed after D3",
+    "remainderPairB2": "51-110 and 151-250 complete; 163,165,169 pending refresh",
+    "rawDoubleReviewedUnique": 210,
+    "sourceChangedPendingB2Refresh": [
+      163,
+      165,
+      169
+    ],
+    "currentSourceValidDoubleReviewedAtMost": 207,
+    "cleanCCompletedFiles": [
+      "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "H1_STAGEA_LUNA_C_BATCH02_8.jsonl",
+      "H1_STAGEA_LUNA_C_REMAINDER_BATCH01_3.jsonl",
+      "H1_STAGEA_LUNA_C_SOURCE_REPAIR_REREVIEW_3.jsonl",
+      "H1_STAGEA_LUNA_C_REPLACEMENT_BATCH03_9.jsonl"
+    ],
+    "supersededRejectedCFile": "H1_STAGEA_LUNA_C_BATCH03_9.jsonl",
+    "solDirectReviewedBatch01": 8,
+    "l4Final": false,
+    "difficultyFinal": false
+  },
+  "sourceRepair": {
+    "D1ChangedQueueIndexes": [
+      3,
+      11,
+      38,
+      39,
+      40
+    ],
+    "D2ChangedQueueIndex": 42,
+    "D2Q42QuestionTypeCorrection": "COMMITTED_205dd23a5",
+    "D3ChangedQueueIndexes": [
+      163,
+      165,
+      169
+    ],
+    "unresolved": [
+      "q10 different original",
+      "q38 solution gap",
+      "q42 solution render FAIL",
+      "q44-46 unreadable HWP formula",
+      "q47 answer/math conflict",
+      "q50 solution/math conflict",
+      "q175/q185 unspecified root domain"
+    ]
+  },
+  "validator": {
+    "syntheticTests": "32_PASS_0_FAIL",
+    "realFinal1170": "NOT_RUN",
+    "finality": "NOT_FINAL"
+  },
+  "pilot": {
+    "approvedSample": 80,
+    "blindInputSha": "2001e7b2c079a5d202ce8dd2a8c49d93e3678f9e81b567be3ceb9a1ef51cdc1b",
+    "sanitizedVocabularySha": "720deed302d3bd1ef67c7d73ae2c908910dd9285273f33cab2299abda3f8a120",
+    "cleanAReviewed": 40,
+    "cleanBReviewed": 40,
+    "hiddenReferenceComparison": "NOT_OPENED_NEVER_TO_WORKERS",
+    "priorPilotAAndB": "RETIRED_BEFORE_LEDGER_FOR_RAW_REGISTRY_UID_EXPOSURE",
+    "nextRows": "41-60 in progress for both"
+  },
+  "workerHealth": {
+    "qualityRejectedValidatorEngineers": 2,
+    "qualityRejectedSemanticC": 1,
+    "pilotBlindRetirements": 2,
+    "A2SourceIssueTargetedCorrection": 1,
+    "pilotBGenericReasonTargetedCorrection": 1
+  },
+  "mutations": {
+    "mainMerge": 0,
+    "canonicalProduction": 0,
+    "compiledProduction": 0,
+    "runtimeProduction": 0
+  },
+  "artifactRefs": [
+    {
+      "file": "H1_STAGEA_REMAINING_QUEUE_1120_UID_ONLY.jsonl",
+      "sha256": "81554a7c477c6220a196934eefab37116305ac8be00eefead5b5e7a14475ff31"
+    },
+    {
+      "file": "H1_STAGEA_C_BLIND_QUEUE_BATCH02_8_UID_ONLY.jsonl",
+      "sha256": "a4b3ffdcb4a3108de567ed2e404ba428a79a98efee5139255a12759620cc9c5c"
+    },
+    {
+      "file": "H1_STAGEA_C_BLIND_QUEUE_BATCH03_9_UID_ONLY.jsonl",
+      "sha256": "e3d5061e3448bb56d98203b66608c2ee1814b07d46ac79a65009223f5ce579b2"
+    },
+    {
+      "file": "H1_STAGEA_C_BLIND_QUEUE_REMAINDER_BATCH01_3_UID_ONLY.jsonl",
+      "sha256": "c8691493bd4e44340c269b69e9ff4f1d45233955d78e46448c8f1e691f79a83e"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A_BATCH02_021_040.jsonl",
+      "sha256": "7fb65ecefbfd12f077825a9e7bc11678a7f47184b062b11d4da2d6c0097ac81e"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A_BATCH03_041_050.jsonl",
+      "sha256": "2863202940aabcf36434d6965eea75abc2dffda0bf1e75dfeaf5016bd5e9cf95"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B_BATCH03_041_050.jsonl",
+      "sha256": "0c8efdc944f18ea232681fe8e95b1e457799095a31f0dd4432fc597338f0dafd"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "sha256": "07b5bbda81558ae5cf49a270bd8fbc84c8e153d9d082c54b968ff4692642f34b"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_BATCH02_8.jsonl",
+      "sha256": "21c520dc831a1e1f6a6c688fec010585afd69cf98db8d62e9a466b3f4a7ed4ba"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_REMAINDER_BATCH01_3.jsonl",
+      "sha256": "5f13640169b92904b69428410cbe8b1aa3fe7b114749326a4db22857ef434349"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_SOURCE_REPAIR_REREVIEW_3.jsonl",
+      "sha256": "5706695cff4786a0faf2ba631685dc53c9a8f59777f896e1ac46222068a7e250"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_BATCH03_9.jsonl",
+      "sha256": "892025c8dcf52359b421b00b960cbc585369e161f4c17d8fd57844d1aba7ee52"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_REPLACEMENT_BATCH03_9.jsonl",
+      "sha256": "5f2824289e2b5ec7f49d5e78f009ac5443307a53d00aaeb2fb4c4b6948f7f33a"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_5.jsonl",
+      "sha256": "1c0cded3a80cbca396ffbd890edb4d7321a99d057205d3c9fbd9a68c628e1414"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_5.jsonl",
+      "sha256": "eee097c09d7268151ac478908e92b2b4bfd268605ca8e43065b174904c783856"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A_D2_Q42_REREVIEW_1.jsonl",
+      "sha256": "3ccd50647cdfcd6808a85b39217d722e1ef62e3586982694aed4f8de94782b4e"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B_D2_Q42_REREVIEW_1.jsonl",
+      "sha256": "a21746e02f3a74818bb388f2f70b3ef5223b5a035777fcc32e2af2ba937d1d2f"
+    },
+    {
+      "file": "H1_SOURCE_REPAIR_A_B_REREVIEW_QUEUE_5_UID_ONLY.jsonl",
+      "sha256": "8c3e36370435c43b5d55f614ed089c91b734c3aabab18631c26f9e5447d836d6"
+    },
+    {
+      "file": "H1_SOURCE_REPAIR_C_BLIND_QUEUE_3_UID_ONLY.jsonl",
+      "sha256": "e472c0be49e8a73dfdca3ea4e265447f25de23b82025986c9fa70e9e4f4fddfe"
+    },
+    {
+      "file": "H1_D2_Q42_A_B_REREVIEW_QUEUE_1_UID_ONLY.jsonl",
+      "sha256": "bfb9d43bc269bfa32e7e64de933c89c98a4f00b211d1dae80b258109cb7c8a65"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sha256": "1af9e1447fc92790e00cec735ee7eb7b0659155b44ea24e4652de501029c0756"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_BATCH01_2.jsonl",
+      "sha256": "e4146157722287edd3b7d62b777a911cfebb2bd21f0134d0e9737ec8f6ea2342"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_HOLD_BATCH01_2.jsonl",
+      "sha256": "511a3ea3691008231d58475fec8a06dedb07ccd190a545629816a65c55f7f89e"
+    },
+    {
+      "file": "H1_STAGEA_BATCH01_COMPARISON_CHECKPOINT_20.json",
+      "sha256": "18c8e46dd35e3db2bc5084608b7436ac974302bc6eea39b804c054236367f5e2"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH01_051_070.jsonl",
+      "sha256": "dbf7755e52f0901ca014bce8468cd9feebba9389e5939d9aa866b3a348f53d30"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH02_071_090.jsonl",
+      "sha256": "6a1498400c4afef590d5e1fbfc5fc4046342dc356e814e68e79bdf9d333c68c6"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH03_091_110.jsonl",
+      "sha256": "39c82febabb8ba9c7ada9ee316948e27778caf2af1aae5773d10d6a17c9e386f"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BACKFILL01_111_130.jsonl",
+      "sha256": "ecfb3ced97cb348cf823effdbdf21bf6797a907bc8a35c8c0850a2a0bb9286a8"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BACKFILL02_131_150.jsonl",
+      "sha256": "b013a538c6a7752d8c59648bd5cffd580a9d5fa2175965b7766418313faaf9e1"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH04_151_170.jsonl",
+      "sha256": "625c4fedd6e0bf52f6b53af63d1bc71a57c3875c5a7f01056f43bcfd9a926917"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH05_171_190.jsonl",
+      "sha256": "df88b8dfa962477925440db0427e222b3e636e9ee242bc09e90345ddfcd6d7c9"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH06_191_210.jsonl",
+      "sha256": "abb0dd2acc1fbeacb4c93c8dc5bdc7b24f25fdff0641ff28e35f2be21b22b92e"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH07_211_230.jsonl",
+      "sha256": "5a8ca37a688a4febb544ac54069a8f615c49f7d9fd84cd0818fe262c0c8d80cd"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH08_231_250.jsonl",
+      "sha256": "f7a341c35bc18b877e26c3155c4cf3587996c8a334bb02100d4929fc61fbb814"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH09_251_270.jsonl",
+      "sha256": "dd516f5a2995ff120ad39853515492d725fdb5d5e85b8da446a8f01792065a09"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_BATCH10_271_290.jsonl",
+      "sha256": "63c69c8e70fdb7753052f135b2c623e3a6ec89912ac7e73f0327bd3fae2fb208"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_A2_D3_REREVIEW_3.jsonl",
+      "sha256": "8358f89a81403a2fb02229340698e30d87c05a88d42ee9529b3eb6c9f1114b73"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH01_051_070.jsonl",
+      "sha256": "8c77321b8918ac78b53d1c3cd7a53aed4447b163c4017b188c231012d744d2c5"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BACKFILL01_071_090.jsonl",
+      "sha256": "d281c9d4265a2082bca22f2f6ae6488483050967b3108ce34b64775305aa8540"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BACKFILL02_091_110.jsonl",
+      "sha256": "0c9bacc8a64140593ee8ff5b913bbe2c2143615f2863f5478d8c457d5b3d277c"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH02_151_170.jsonl",
+      "sha256": "140d8b81f3559500c050e8ff7ddf266ce42585fb8e6c50d5d765f784bd333949"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH03_171_190.jsonl",
+      "sha256": "63b3eeae0576151cd42d2db63d332e8628949f676e3cb810d9bf1d0867daab4e"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH04_191_210.jsonl",
+      "sha256": "3172984fa15f97de6a9ecfd5408bd360651d7182bc94388fde122fbeb5182b5b"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH05_211_230.jsonl",
+      "sha256": "5a1e812a4e0e44f8fb0793e01cce6df54de5e0775c3e0696afc91b06624f598a"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B2_BATCH06_231_250.jsonl",
+      "sha256": "b3c0cc309509a697db2fed1b11e2c687839817fb218ba160cab022c524c266cc"
+    }
+  ],
+  "pilotArtifactRefs": [
+    {
+      "file": "archive/_generated/intelligence/phase1/high1-foundation/one-pass-pilot/worker-output/H1_ONE_PASS_PILOT_LUNA_A_CLEAN_BATCH01_001_020.jsonl",
+      "sha256": "0ea3bc4bb29d45e6fd68f87cc1be75fab6aca7db6fb0885f2824fe6b00d6dc6b"
+    },
+    {
+      "file": "archive/_generated/intelligence/phase1/high1-foundation/one-pass-pilot/worker-output/H1_ONE_PASS_PILOT_LUNA_A_CLEAN_BATCH02_021_040.jsonl",
+      "sha256": "099677a640cc629be5282482b85e53524b12d191fdd3c5643f27ae5a2c4d2b71"
+    },
+    {
+      "file": "archive/_generated/intelligence/phase1/high1-foundation/one-pass-pilot/worker-output/H1_ONE_PASS_PILOT_LUNA_B_CLEAN_BATCH01_001_020.jsonl",
+      "sha256": "685f562a6df2a543a76b6c82f53e2257699766dcc9cbc4246869d4662ecf77f1"
+    },
+    {
+      "file": "archive/_generated/intelligence/phase1/high1-foundation/one-pass-pilot/worker-output/H1_ONE_PASS_PILOT_LUNA_B_CLEAN_BATCH02_021_040.jsonl",
+      "sha256": "97338412c1e3c32f86c7c262b959dfa4a3e1b8efce6649294813c892ee298af5"
+    }
+  ],
+  "next": "Continue A2/B2/clean C and pilot A/B 80. Repair only affected source/semantic HOLD. Finish L4/relational/difficulty, then real validator and expansion. Hidden pilot comparison only after both pilot A/B 80."
+}
