@@ -17,8 +17,8 @@
   },
   "denominator": {
     "total": 928,
-    "mapped": 921,
-    "routeOut": 7,
+    "mapped": 922,
+    "routeOut": 6,
     "m2": 402,
     "m3": 526
   },
@@ -28,10 +28,10 @@
     "sourceIdentityUnique": true,
     "l3ExactParity": true,
     "routeOutExactParity": true,
-    "mappedRows": 920,
-    "mappedFinal": 900,
+    "mappedRows": 921,
+    "mappedFinal": 901,
     "mappedExplicitHold": 20,
-    "routeOut": 8,
+    "routeOut": 7,
     "l4ParentMismatchCount": 0,
     "crossConceptDuplicateAssignments": 0,
     "unregisteredActiveReuse": 0,
@@ -46,7 +46,8 @@
       "preExistingCandidateRegistryDisagreementCount": 0,
       "newChangedRowCandidateRegistryDisagreementCount": 0,
       "parityRepairCount": 6
-    }
+    },
+    "problemAndFigureOnlyRows": 1
   },
   "distributions": {
     "l3": {
@@ -59,10 +60,10 @@
       "PT_QUADRILATERAL_PROPERTIES": 108,
       "PT_TRIANGLE_SIMILARITY": 31,
       "PT_TRIANGLE_ANGLE_BISECTOR": 2,
-      "ROUTE_OUT": 8,
+      "ROUTE_OUT": 7,
       "PT_CIRCLE_LINE_RELATION": 67,
       "PT_TRIG_RATIO": 106,
-      "PT_TRIG_RATIO_APPLICATION": 96,
+      "PT_TRIG_RATIO_APPLICATION": 97,
       "PT_CIRCLE_TANGENT": 53,
       "PT_TWO_CIRCLES": 9,
       "PT_CIRCLE_ANGLE_RELATIONS": 179
@@ -87,7 +88,7 @@
       "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE": 6,
       "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO": 1,
       "TPL_TRIANGLE_SIMILARITY_APPLICATION": 16,
-      "ROUTE_OUT": 8,
+      "ROUTE_OUT": 7,
       "TPL_TRIANGLE_CENTERS_COMBINED": 17,
       "TM_CIRCLE_CHORD_PERP_BISECTOR": 11,
       "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE": 1,
@@ -96,7 +97,7 @@
       "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION": 29,
       "TPL_TRIG_APPLICATION_SHARED_HEIGHT": 12,
       "TPL_TRIG_RATIO_TABLE_LOOKUP": 11,
-      "TPL_TRIG_APPLICATION_DIRECT_MEASURE": 30,
+      "TPL_TRIG_APPLICATION_DIRECT_MEASURE": 31,
       "TPL_TRIG_APPLICATION_CHAINED_MEASURE": 54,
       "TPL_TRIG_RATIO_BASIC_RELATION": 30,
       "TM_TANGENT_LENGTH": 50,
@@ -135,8 +136,8 @@
       "CC_DIAMETER": 19
     },
     "l3ReviewStatus": {
-      "FINAL": 920,
-      "OUT_OF_SCOPE_HOLD": 8
+      "FINAL": 921,
+      "OUT_OF_SCOPE_HOLD": 7
     }
   },
   "records": [
@@ -11080,18 +11081,18 @@
       "grade": "M3",
       "sourceIdentity": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js#11",
       "sourceFingerprint": "1203adbb280304585de5cee8894b01613cfdf871da8fe839ceeadfc23aaf077b",
-      "problemTypeKey": null,
-      "templateKey": null,
-      "l4ReviewStatus": "ROUTE_OUT",
-      "decisiveStep": null,
-      "l4SemanticReason": null,
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "l4ReviewStatus": "FINAL",
+      "decisiveStep": "문제 구조상 ∠C=120°와 외부 수선 AH를 이용해 목표 높이를 삼각비 활용으로 직접 측정한다.",
+      "l4SemanticReason": "The target quantity is a single height measurement in one triangle configuration, so DIRECT_MEASURE is the closest existing L4 template.",
       "crossConceptKeys": [],
       "crossConceptEvidence": {},
-      "sourceReadStatus": null,
-      "semanticReviewStatus": "ROUTE_OUT",
-      "l3ReviewStatus": "OUT_OF_SCOPE_HOLD",
-      "l3AuthoritySource": "GPT143_LUNA90_FINAL_APPLICATION_20260923",
-      "authority": "MIDDLE_GEOMETRY_L4_CROSSCONCEPT_SOURCE_SOLUTION_FINAL"
+      "sourceReadStatus": "PROBLEM_AND_FIGURE_ONLY_REVIEWED",
+      "semanticReviewStatus": "FINAL",
+      "l3ReviewStatus": "FINAL",
+      "l3AuthoritySource": "Q513_PROBLEM_ONLY_ADJUDICATION_20260923",
+      "authority": "MIDDLE_GEOMETRY_Q513_PROBLEM_ONLY_FINAL"
     },
     {
       "questionUid": "qid_v1_92dd1bbb6dcd0eaadc7c0cf460b25e0408d219e0256beeb50a91840c087426bb",

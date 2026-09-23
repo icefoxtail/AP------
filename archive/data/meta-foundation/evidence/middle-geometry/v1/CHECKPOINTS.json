@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle-geometry-checkpoints-v2",
-  "activeCheckpointId": "CROSS_PARENT_L1_L2_GATE_CLOSED_20260923",
+  "activeCheckpointId": "Q513_PROBLEM_ONLY_HOLD_RESOLVED_20260923",
   "checkpoints": [
     {
       "checkpointId": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
@@ -77,7 +77,7 @@
     },
     {
       "checkpointId": "CROSS_PARENT_L1_L2_GATE_CLOSED_20260923",
-      "active": true,
+      "active": false,
       "branchRef": "codex/meta-foundation/middle-geometry",
       "gateApplicationBaseHead": "15df8e0d039029f73e2bc4f1a736ce5a04c3237a",
       "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
@@ -99,6 +99,35 @@
       },
       "artifacts": [
         "archive/data/meta-foundation/evidence/middle-geometry/v1/cross_parent_l1_l2_gate_final_28_20260923.json"
+      ],
+      "blockingIssues": [
+        "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+      ],
+      "nextStartPoint": "Affected-set parent/parity validation, then canonical/compiled/runtime promotion decision."
+    },
+    {
+      "checkpointId": "Q513_PROBLEM_ONLY_HOLD_RESOLVED_20260923",
+      "active": true,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "baseHead": "a43fc8f1f180059406bd6f6e09aeb32d923b4793",
+      "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+      "decision": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+        "basis": "PROBLEM_STATEMENT_AND_FIGURE_ONLY",
+        "solutionUsed": false
+      },
+      "counts": {
+        "l3MappedFinal": 921,
+        "l3RouteOut": 7,
+        "l4MappedFinal": 901,
+        "l4ExplicitHold": 20,
+        "l4RouteOut": 7
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_adjudication_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_validation_20260923.json"
       ],
       "blockingIssues": [
         "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
