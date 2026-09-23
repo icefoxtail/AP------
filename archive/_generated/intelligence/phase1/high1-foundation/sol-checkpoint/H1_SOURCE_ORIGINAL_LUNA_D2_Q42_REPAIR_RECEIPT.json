@@ -1,0 +1,253 @@
+{
+  "schema": "H1_SOURCE_ORIGINAL_LUNA_D2_Q42_REPAIR_RECEIPT.v1",
+  "authorization": {
+    "releasedBy": "/root",
+    "scope": "Only q42/JS id17 in 23_여수여고_1학기_중간_고1_기출.js; add source-only q17 crop; all other six UIDs prohibited."
+  },
+  "identity": {
+    "queueIndex": 42,
+    "questionUid": "qid_v1_23ee74cb728a78df35f431f717daa91df07c171149ca23e5c26bb9afc513b212",
+    "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#17",
+    "actualJsId": 17,
+    "node": "window.questionBank[questionBank.findIndex(q => q.id === 17)]"
+  },
+  "sourceEvidence": {
+    "originalHwp": {
+      "path": "D:\\기출\\23,24 고1\\2023년\\1학기 중간고사\\23 여수여고\\수학 상 (23 여수여고).hwp",
+      "sha256": "5a5e23e6b04e8be9bd1251903ff3825d1edaecaa113e0ac073f8cf7e8d45c79f"
+    },
+    "fullPagePng": {
+      "path": "D:\\기출\\23,24 고1\\2023년\\1학기 중간고사\\23 여수여고\\05.png",
+      "sha256": "be7d2fe217f46d26f30062c18e719024f8d76386863d793ee731dcb4bdd194c3",
+      "sourcePageIndex": 5,
+      "sourcePageCount": 6
+    }
+  },
+  "repair": {
+    "changedFields": [
+      "content",
+      "choices",
+      "answer",
+      "image"
+    ],
+    "before": {
+      "content": "source stem followed by inline SVG, without score",
+      "choices": [
+        "7/3",
+        "5/2",
+        "3",
+        "10/3",
+        "7/2"
+      ],
+      "answer": "③",
+      "image": null
+    },
+    "after": {
+      "content": "exact stem with source score [5.6점]; inline SVG removed",
+      "choices": [],
+      "answer": "3",
+      "image": "assets/images/23_여수여고_1학기_중간_고1_기출/q17.png"
+    },
+    "unchangedFields": [
+      "id",
+      "level",
+      "category",
+      "originalCategory",
+      "standardCourse",
+      "standardUnitKey",
+      "standardUnit",
+      "standardUnitOrder",
+      "questionType",
+      "layoutTag",
+      "wide",
+      "tags",
+      "solution",
+      "subUnitKey",
+      "subUnit",
+      "subUnitConfidence",
+      "subUnitClassificationDepth"
+    ]
+  },
+  "bytesAndHashes": {
+    "sourceJsPath": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\exams\\original\\high\\h1\\1mid\\23_여수여고_1학기_중간_고1_기출.js",
+    "beforeSha256": "e972d67709ba9dcdc82ad11fb5071c984d996be241186066902de92463c19574",
+    "afterSha256": "0539f08908e78d056c10580cbef8ed156cab9d5192fc6bf15222c6ab58a4d081",
+    "preRepairSnapshot": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_JS_PRE_REPAIR.js",
+      "sha256": "e972d67709ba9dcdc82ad11fb5071c984d996be241186066902de92463c19574"
+    },
+    "retainedOldInlineSvg": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_INLINE_SVG_PRE_REPAIR.svg",
+      "sha256": "edbb9b71bcf0671f69224879f519bb23cc0c2797b1f1d1eac598d6f57442e42f"
+    }
+  },
+  "asset": {
+    "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\assets\\images\\23_여수여고_1학기_중간_고1_기출\\q17.png",
+    "jsImageRef": "assets/images/23_여수여고_1학기_중간_고1_기출/q17.png",
+    "sha256": "a6cf1504ab7d28d3d697cf33f6032b224effd50fc7413a18b473828e6e0e4285",
+    "dimensionsPx": [
+      215,
+      165
+    ],
+    "sourceCrop": {
+      "pagePng": "D:\\기출\\23,24 고1\\2023년\\1학기 중간고사\\23 여수여고\\05.png",
+      "bboxPx": [
+        100,
+        215,
+        315,
+        380
+      ],
+      "method": "direct Pillow pixel crop, no resize or redraw"
+    },
+    "byteParityWithTemporaryNativeCropPreview": true
+  },
+  "answerMathParity": {
+    "disposition": "SOURCE_CONFIRMED_CORRECTION",
+    "numericAnswer": "3",
+    "preservedOriginalAnswerMark": "③",
+    "mathReceiptPath": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_MATH_RECEIPT.json",
+    "mathReceiptSha256": "84505aa20ad10d3f5e0ce39c79778ef8f17f78913ed1da2eb13073873af17cf8",
+    "currentSolutionUnchanged": true,
+    "solutionTextConclusion": "따라서 구하는 높이 h는 3이다.",
+    "answerFieldMatchesConclusion": true,
+    "choicesDisposition": "SOURCE_EXACT_RESTORE: no choices visible in the full-page q17 block."
+  },
+  "affectedSetParity": {
+    "questionCountBefore": 21,
+    "questionCountAfter": 21,
+    "questionIdsStable": true,
+    "changedFieldsOnId17": [
+      "answer",
+      "choices",
+      "content",
+      "image"
+    ],
+    "q17OtherFieldsEqual": true,
+    "sourceJsPrefixAndSuffixAroundId17ObjectUnchanged": true,
+    "validationResult": "PASS; no protected fields changed; only released UID id17 changed.",
+    "allOtherQuestionObjectsRawBytesEqual": true,
+    "verification": "Pre/post JS question object raw slices compared; only the id17 object raw bytes differ; id17 object values changed exactly content, choices, answer, image; all other target fields and the solution are unchanged.",
+    "otherD2TargetFilesUnchanged": [
+      {
+        "queueIndex": 43,
+        "sha256": "84c6ba6012840087472cb4fb19c4ceb5c17c952dbb839781b0a36cc0ec41e4f4",
+        "unchanged": true
+      },
+      {
+        "queueIndex": 44,
+        "sha256": "7547890712b20d2b4dd543f913efd0e8a7e187dcf1c67e6101f420fe486545c5",
+        "unchanged": true
+      },
+      {
+        "queueIndex": 45,
+        "sha256": "7547890712b20d2b4dd543f913efd0e8a7e187dcf1c67e6101f420fe486545c5",
+        "unchanged": true
+      },
+      {
+        "queueIndex": 46,
+        "sha256": "7547890712b20d2b4dd543f913efd0e8a7e187dcf1c67e6101f420fe486545c5",
+        "unchanged": true
+      },
+      {
+        "queueIndex": 47,
+        "sha256": "f4a5b636761d2fd7d765bbc5c13d442e0ab9d2aa09855dee1932257d8aa570f6",
+        "unchanged": true
+      },
+      {
+        "queueIndex": 50,
+        "sha256": "517448ffa8d374b4bb86b8bf95960bb7cc78e7373323e22475f2d19365c4134b",
+        "unchanged": true
+      }
+    ],
+    "allOtherD2TargetFilesUnchanged": true
+  },
+  "validation": {
+    "nodeVersion": "v22.22.2",
+    "nodeSyntax": "PASS (`node --check` target JS)",
+    "vmLoad": "PASS; window.questionBank id17 parsed",
+    "jsBankSchemaScan": {
+      "status": "PASS",
+      "source": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+      "files": 1,
+      "questions": 21,
+      "loadErrors": 0,
+      "duplicateIdFiles": 0,
+      "nonSequentialIdFiles": 0,
+      "missingRequiredFields": 0,
+      "id17MissingRequiredFields": [],
+      "id17HasImageField": true
+    },
+    "examLint": {
+      "status": "PASS",
+      "command": "node archive/tools/exam-lint.mjs 23_여수여고 --json",
+      "files": 1,
+      "totalQuestions": 21,
+      "failFiles": 0,
+      "warnFiles": 0,
+      "topLevelDeclarationViolations": 0
+    }
+  },
+  "actualEngineRender": {
+    "engine": "archive/engine.html — JS아카이브 엔진 Stage E v1.7.5",
+    "localReviewUrlBase": "http://127.0.0.1:8769/archive/engine.html",
+    "viewportPx": [
+      1280,
+      1050
+    ],
+    "examMode": {
+      "status": "PASS",
+      "q17Found": true,
+      "totalQBoxes": 21,
+      "visibleStemContainsScore": true,
+      "imageComplete": true,
+      "naturalWidth": 215,
+      "naturalHeight": 165,
+      "objectFit": "contain",
+      "renderError": null,
+      "screenshot": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_ENGINE_EXAM_RENDER.png",
+        "sha256": "1d6bdc8c970eef828616fae95160cd1a1f6221a208db6c68efa35804afd0aad6"
+      }
+    },
+    "answerMode": {
+      "status": "PASS",
+      "q17AnswerVisible": "3",
+      "staticAnswerField": "3",
+      "solutionConclusionContainsNumeric3": true,
+      "renderError": null,
+      "screenshot": {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_ENGINE_ANSWER_RENDER.png",
+        "sha256": "84acb1e8c863484381a23d8d2517ae9e965e1fa128828f40883318fe6cd50b5b"
+      }
+    },
+    "solutionMode": {
+      "status": "FAIL",
+      "queryMode": "sol, qpp=1",
+      "renderError": "MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE:solution-block:16:primary:0",
+      "mapping": "questionBank id17 is zero-based array index16",
+      "solutionFieldConclusionStillMatchesAnswer": true,
+      "solutionFieldChanged": false,
+      "disposition": "record render defect; solution edits were outside this file-specific release and were not made",
+      "solutionNumberParity": "STATIC PASS: unchanged q17 solution concludes h=3 and current answer field is 3; engine did not render this solution block.",
+      "failureSource": {
+        "path": "archive/layout-authority.js",
+        "line": 1155,
+        "sha256": "c949fae0ced5d3b35a79e5a50de59a48cb427525a5ffcfa7bb830af5ed12cfa6",
+        "condition": "end < start after no measured solution chunk fits available page height"
+      }
+    }
+  },
+  "worktreeScope": "Only the released source JS file, q17 source image asset, and D2 evidence files were written by this worker. No other D2 target JS changed; no commit or push.",
+  "engineEvidenceHashes": {
+    "examScreenshot": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_ENGINE_EXAM_RENDER.png",
+      "sha256": "1d6bdc8c970eef828616fae95160cd1a1f6221a208db6c68efa35804afd0aad6"
+    },
+    "answerScreenshot": {
+      "path": "C:\\Users\\USER\\.codex\\worktrees\\h1-meta-final-candidate\\AP------\\archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_SOURCE_ORIGINAL_LUNA_D2_Q42_ENGINE_ANSWER_RENDER.png",
+      "sha256": "84acb1e8c863484381a23d8d2517ae9e965e1fa128828f40883318fe6cd50b5b"
+    },
+    "sourceCropAssetSha256": "a6cf1504ab7d28d3d697cf33f6032b224effd50fc7413a18b473828e6e0e4285",
+    "retainedOldInlineSvgSha256": "edbb9b71bcf0671f69224879f519bb23cc0c2797b1f1d1eac598d6f57442e42f"
+  }
+}

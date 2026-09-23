@@ -559,7 +559,8 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
+    "content": "그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=x+k$가 만나는 두 점을 각각 $A,B$라 하고, 점 $A$와 $B$에서 $x$축에 내린 수선의 발을 각각 $C,D$라 하자. 삼각형 $AOC$의 넓이를 $S_1$, 삼각형 $DOB$의 넓이를 $S_2$라 할 때, $S_1-S_2=32$를 만족시키는 양수 $k$의 값을 구하시오. (단, $O$는 원점이고, 두 점 $A,B$는 각각 제1사분면과 제2사분면 위에 있다.) [5.2점]",
+    "image": "assets/images/23_부영여고_1학기_중간_고1_기출/q16.png",
     "choices": [
       "13",
       "15",
@@ -633,11 +634,11 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 세 일차식의 곱으로 분해되는 정수 $a$의 개수는? [5.3점]",
+    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 계수가 모두 정수인 세 일차식의 곱으로 인수분해 되도록 하는 정수 $a$의 개수는? [5.3점]",
     "choices": [
-      "8",
-      "6",
       "4",
+      "6",
+      "8",
       "10",
       "12"
     ],
@@ -729,7 +730,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[서술형 3] 두 이차방정식의 근의 관계를 통해 $a+b$를 구하시오. [5점]",
+    "content": "이차방정식 $x^2+4x+a=0$의 두 근이 $\\alpha,\\beta$이고, 이차방정식 $x^2+bx-40=0$의 두 근이 $\\alpha+\\beta,\\alpha-\\beta$일 때, $a+b$의 값을 구하고, 그 과정을 서술하시오. (단, $a,b$는 상수이다.) [5점]",
     "choices": [],
     "answer": "-27",
     "solution": "(1) $\\alpha + \\beta = -4, \\ \\alpha\\beta = a$\n(2) 두 번째 방정식에서 근과 계수의 관계 적용:\n$(\\alpha+\\beta) + (\\alpha-\\beta) = -b \\implies -4 + (\\alpha-\\beta) = -b$\n$(\\alpha+\\beta)(\\alpha-\\beta) = -40 \\implies -4(\\alpha-\\beta) = -40 \\implies \\alpha-\\beta = 10$\n(3) 연립하여 미지수 결정:\n$b = -6$\n$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta \\implies 100 = 16 - 4a \\implies a = -21$\n(4) 최종 합: $a+b = -21 - 6 = -27$\n$\\therefore -27$",
