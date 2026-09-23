@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "79960c52786c44da223f916815be4919f64ae07a",
+  "targetBranch": "codex/meta-foundation/middle-geometry",
+  "reviewIndex": {
+    "start": 601,
+    "end": 620,
+    "count": 20
+  },
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "choicesRead": false,
+  "answerFieldRead": false,
+  "priorMetadataBeforeBlindRead": false,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "n": 601,
+      "questionUid": "qid_v1_a9a4562b79627d7afeaee2c3c085200a6e7012ab47ce92cec5b54417f793d52f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "ae89177bdc61f27da7e9564cdae3809011cdadd24e61bf990b4272a903d9090c"
+      },
+      "primaryMethod": "같은 높이의 삼각형 넓이를 밑변비로 분할",
+      "decisiveStep": "75를 3:2로 나눠 △ABP 몫을 얻음",
+      "supportingConcepts": [
+        "삼각형 넓이 합성",
+        "비례식"
+      ],
+      "conditions": [
+        "P∈BC",
+        "BP:PC=3:2",
+        "[ABC]=75"
+      ],
+      "compositionPattern": "같은 높이→밑변비=넓이비→분할",
+      "curriculumNotes": "중등 삼각형 넓이비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "같은 높이에서 밑변비가 넓이비를 결정.",
+      "sourceContentSha256": "82352abd446e3c2a54c41c0de5134a92333d17b3ae661512af16f92d1519e48c",
+      "sourceSolutionSha256": "14eeb3ced47c420097659697dd8b102413fb713c485693e45b2e212d8023ed18",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 602,
+      "questionUid": "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "8dc2e7ca05ae40912755dc16898590e1879d17242362f795e89318aea6ff76e7"
+      },
+      "primaryMethod": "평행선 닮음으로 분할 삼각형 넓이를 빼 색칠 넓이",
+      "decisiveStep": "절반 △BCD에서 모서리 영역 8씩 차감",
+      "supportingConcepts": [
+        "평행사변형 대각선 넓이 이등분",
+        "닮음 넓이비"
+      ],
+      "conditions": [
+        "M,N 중점",
+        "전체 넓이96",
+        "음영은 그림"
+      ],
+      "compositionPattern": "절반 분할→닮음→두 영역 차감",
+      "curriculumNotes": "중등 닮음·넓이비",
+      "sourceIssue": "교점·음영은 그림 의존, 해설이 풀이구조를 명시.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "결정적 계산은 닮음 삼각형 넓이의 차.",
+      "sourceContentSha256": "65eadc85a48176a0fb981b82184d1be0af50acb861d3cafdd0fe94c604ad396d",
+      "sourceSolutionSha256": "440a6c1b8da5330711d6ed4a203c8982be053dca28fc69f22546e35dda82d281",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 603,
+      "questionUid": "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "09667637b00700f63171ca4ac80468a7a090dffafdf86a1ca60cc297910f4c82"
+      },
+      "primaryMethod": "사각형 넓이를 두 삼각형으로 나누고 직각이등변·사인넓이 적용",
+      "decisiveStep": "△ABC 넓이, AC, △ACD 넓이를 순서대로 계산",
+      "supportingConcepts": [
+        "직각이등변",
+        "1/2 ab sin C",
+        "대각선 분할"
+      ],
+      "conditions": [
+        "∠B90°",
+        "∠A45°",
+        "BC6",
+        "CD3",
+        "∠ACD60°"
+      ],
+      "compositionPattern": "45°삼각형→AC→사인넓이→합",
+      "curriculumNotes": "중등 삼각형 넓이·삼각비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "변 계산 후 끼인각으로 두 번째 넓이를 구함.",
+      "sourceContentSha256": "23be435052cfaca00e69d1cd7aea09016823781cde9497d4466e205f7b3702dc",
+      "sourceSolutionSha256": "6f7d464ffd3c6e18a0b4a00388c8a672411cadf2bb31d85c7fb4467f33c61cf8",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 604,
+      "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "cb7135c3684253a1890d0e646e98209fcb939f40e124e16c835d00e693ca584a"
+      },
+      "primaryMethod": "두 무게중심의 중선 분할비 2:1 연쇄",
+      "decisiveStep": "G′로 GD를 얻고 G의 AG:GD 적용",
+      "supportingConcepts": [
+        "중선·중점"
+      ],
+      "conditions": [
+        "G,G′가 각각 두 삼각형의 무게중심",
+        "GG′=2"
+      ],
+      "compositionPattern": "내부 중심비→중선→외부 중심비",
+      "curriculumNotes": "중등 무게중심",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 단계가 모두 무게중심 2:1이다.",
+      "sourceContentSha256": "0827d3f0c250cd2207af2406da9350d107d5444875372fabcc449ed8c03c1299",
+      "sourceSolutionSha256": "2e76c1f55152543ee7011e7fd536718fe8ac0f1a73560409e90ee0ce3ac4594b",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 605,
+      "questionUid": "qid_v1_aa2152836380cf64e52bd50d0f5003e42d62cd8f2444b66c793867d676cd477c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "0bbdcbccc3eacb6bcc2b3a69b5d3f6beb3d3dad780becd15640d5f51cee4daa2"
+      },
+      "primaryMethod": "외부 두 할선이 만드는 각을 두 호의 차의 절반으로 계산",
+      "decisiveStep": "반원호180°와 중심각 호50°의 차를 반분",
+      "supportingConcepts": [
+        "중심각과 호",
+        "반원"
+      ],
+      "conditions": [
+        "AB 지름",
+        "∠DOE50°"
+      ],
+      "compositionPattern": "지름→호→외부 할선각",
+      "curriculumNotes": "중등 원의 각",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "외부점 할선각이 마지막 결정 정리.",
+      "sourceContentSha256": "91ea822dc37ae9cbe8ec0cc871d99cf88cc1f7e384ea784bbb7d2b982b80ddcd",
+      "sourceSolutionSha256": "c840a005388b08df10b4c72e527bf3cc68fd021ce41610be82a2f6a1204cb7aa",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 606,
+      "questionUid": "qid_v1_aa3817a7415824131cc15cfba245b0cae4ce9f0df2cbd2e4f6428047c83754c6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "eddee1da60fbd9e09156cca32b4eab068cafe495d6f74710c206b1d96abf1746"
+      },
+      "primaryMethod": "중심 수선이 현을 이등분함을 RHS 합동으로 증명",
+      "decisiveStep": "두 직각삼각형에서 반지름·공통변·직각으로 합동, AM=BM",
+      "supportingConcepts": [
+        "반지름",
+        "RHS"
+      ],
+      "conditions": [
+        "AB 지름 아닌 현",
+        "OM⊥AB"
+      ],
+      "compositionPattern": "구성→직각삼각형→RHS→같은 현 부분",
+      "curriculumNotes": "중등 원의 현·합동",
+      "sourceIssue": "작도/증명형이며 해설이 명제 특정.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "중심에서 현에 내린 수선의 현 이등분 정리.",
+      "sourceContentSha256": "bbbf6e82cca2ef3bda0ff7db2aa1f2a08d67f2043477dd5bed9132cb9c9d205c",
+      "sourceSolutionSha256": "29b22afdfced4382041e1d4bb5f4a0d34cb48f29af3cb4cf6daa328e045194f8",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 607,
+      "questionUid": "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "01c96bfe288dc228a9fbfd85016a2abef98182ab9718014a5702590db3978c0e"
+      },
+      "primaryMethod": "내심 각이등분선과 평행선으로 이등변 구조를 찾아 진술 판별",
+      "decisiveStep": "DB=DI, EC=EI를 얻고 BI=CI는 보장되지 않음",
+      "supportingConcepts": [
+        "평행각",
+        "선분 합"
+      ],
+      "conditions": [
+        "I 내심",
+        "DE∥BC"
+      ],
+      "compositionPattern": "각이등분→평행각→이등변→길이정리/반례",
+      "curriculumNotes": "중등 내심",
+      "sourceIssue": "길이 일부는 그림, 골격은 해설.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "내심 각이등분선이 평행선과 만드는 이등변 구조.",
+      "sourceContentSha256": "d8b416c088452926c52aeca24c8a79d7a6a60968c35c67f1e57ba56b10981c90",
+      "sourceSolutionSha256": "8fbdf9bb477ec26abec7b0449cec2ce650c3320ebb2d652549737e3d7181362a",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 608,
+      "questionUid": "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "26f43d394ab184bdd3684407a948dea8e7a3bf1878bc9b8201693e0d33029dcf"
+      },
+      "primaryMethod": "현 중점·중심 관계와 피타고라스로 반지름·넓이",
+      "decisiveStep": "△AMC에서 CM 후 (x+4)²=x²+8²",
+      "supportingConcepts": [
+        "현 수직이등분선",
+        "피타고라스",
+        "원넓이"
+      ],
+      "conditions": [
+        "CM⊥AB",
+        "AM=BM=8",
+        "CA=4√5",
+        "C,M,O 배치는 그림"
+      ],
+      "compositionPattern": "직각삼각형→현 중점→피타고라스→반지름→넓이",
+      "curriculumNotes": "중등 원·피타고라스",
+      "sourceIssue": "중심의 상대 위치는 그림/해설 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "현 중점 성질과 피타고라스가 반지름을 결정.",
+      "sourceContentSha256": "e00aeed5d898cbed7fb78b79b793624f45df6a1f65da97c301b7c27e30aa3e87",
+      "sourceSolutionSha256": "0efa8fa37300ec03e98710615bcfe104b4ef62a024ce7bf9d9d9e826b276edf4",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 609,
+      "questionUid": "qid_v1_ab4736ee0a41702e65353233a32f961d78f53f86aa58b7146eaa4170db836ff3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "3534aa7e1b04f1899ba69a52cdb07dee07644cea8fe701c9d3982ea0c0bf2af0"
+      },
+      "primaryMethod": "평행사변형과 수선 각 추적으로 각 합을 삼각형 각으로 환원",
+      "decisiveStep": "∠BQC의 보각 및 ∠DAP=∠QCB 후 △QBC 사용",
+      "supportingConcepts": [
+        "수직각",
+        "선형각",
+        "삼각형 내각합"
+      ],
+      "conditions": [
+        "평행사변형",
+        "BP,DQ⊥AC",
+        "∠PBQ35°"
+      ],
+      "compositionPattern": "수선각→보각→평행각→내각합",
+      "curriculumNotes": "중등 평행선·각",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "평행·수선 각 추적으로 각의 합 계산.",
+      "sourceContentSha256": "975da2417e747b57705df603aba63c4fd624e6739057902e7d44bd463a51722f",
+      "sourceSolutionSha256": "3cf3dd777c7dc96b4a30a075a8d4d00ae74867020672a097e5742b2ecd44602b",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 610,
+      "questionUid": "qid_v1_ac231d89920800c27a9dffdae2d9f312fcca2ce437c36cf69ddee161668c6420",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "baa6811bfab37b71b8048cd350d37bfa4f27a74acbeda1b462933031ceeefc2e"
+      },
+      "primaryMethod": "반원 호를 분할하고 교차현의 각 계산",
+      "decisiveStep": "호 AD=CD=52°, CB=76°, x=(52+76)/2",
+      "supportingConcepts": [
+        "원주각·호",
+        "반원",
+        "교차현각"
+      ],
+      "conditions": [
+        "AB 지름",
+        "호 AD=CD",
+        "∠ABD26°는 그림"
+      ],
+      "compositionPattern": "원주각→호→잔여 반원호→교차현각",
+      "curriculumNotes": "중등 원주각",
+      "sourceIssue": "26°는 발문이 아니라 그림에 있으며 해설에 제시.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "호 복원 후 교차현각 정리를 적용.",
+      "sourceContentSha256": "7daa0e01afbb2b6b9c1b2d21208fa7abf9ef6c97f7f4a4cf27342a49ce226067",
+      "sourceSolutionSha256": "0cca5657b5d4e29ada3f8ba12a62f9eda8f096e71c1dda02051261864958fd2f",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 611,
+      "questionUid": "qid_v1_ac46f1ab88c21417faaa3afafbd6775acee63ed186e6faa6101677d8e5260e8b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "1f9f2f0274069dd0c185110bf6bfa1925e5e81c7fe6e82d4334c1baad783e4d1"
+      },
+      "primaryMethod": "중심 수선이 만든 직각삼각형 RHS 합동",
+      "decisiveStep": "OA=OB, OM 공통, 직각으로 AM=BM",
+      "supportingConcepts": [
+        "같은 원의 반지름",
+        "RHS"
+      ],
+      "conditions": [
+        "AB 현",
+        "OM⊥AB"
+      ],
+      "compositionPattern": "현·수선·반지름→RHS→대응변",
+      "curriculumNotes": "중등 원·합동",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "원 중심 수선 성질의 합동 증명.",
+      "sourceContentSha256": "41e58734a87d556e3daf3b8b5ca64031a9889b39b883dbedcee91b687c8ee8b1",
+      "sourceSolutionSha256": "4a0a1500ab592992d0ef44b67ae90b9cb4edbde628f79b20d18e657d3512ba09",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 612,
+      "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "d62cf1e922de302af1aa18103f6c8af7af5663363079efcbcf1108e20b2d4eb3"
+      },
+      "primaryMethod": "닮음을 항상 보장하는 조건인지 각 배열 반례로 판정",
+      "decisiveStep": "같은 각을 꼭지각/밑각으로 둔 서로 다른 이등변삼각형 제시",
+      "supportingConcepts": [
+        "삼각형 내각합",
+        "AAA"
+      ],
+      "conditions": [
+        "항상 보장 여부",
+        "한 각만 같은 경우"
+      ],
+      "compositionPattern": "닮음 가족 비교→조건 부족 반례",
+      "curriculumNotes": "중등 닮음",
+      "sourceIssue": "보기는 미열람, 해설이 반례 특정.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "한 각 크기만으로 삼각형 모양은 고정되지 않음.",
+      "sourceContentSha256": "9d66c89be16e03d4267061f1a8acb41584548fc41616b9a7b53b46ee1ea4b5f0",
+      "sourceSolutionSha256": "0bfb51261689b58987046c38f85cd90dd116c697a4ed57a1aca6f1bf7ba60a7a",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 613,
+      "questionUid": "qid_v1_ac76fca55ee9e58a2b085bbba26f02f860a678136ec0900cb7a74be808aa54e3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "6871f8e1f9f2b7eefe7e4a1c0bfc2ef3be0b270c2643013a9e20235893c851a3"
+      },
+      "primaryMethod": "이등변삼각형 꼭짓점 수선의 밑변 이등분",
+      "decisiveStep": "AB=AC, AD⊥BC에서 BD=BC/2",
+      "supportingConcepts": [
+        "수선의 발",
+        "중점"
+      ],
+      "conditions": [
+        "AB=AC",
+        "AD⊥BC",
+        "BC8"
+      ],
+      "compositionPattern": "이등변+수선→중점→절반",
+      "curriculumNotes": "중등 이등변삼각형",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "꼭짓점 수선이 중선이 되는 성질.",
+      "sourceContentSha256": "46cf23709619fd793552ee9908728ed54e53e4b0c6fd8c6e27c010dcc82968c1",
+      "sourceSolutionSha256": "1f5710c79be8325e09d62d9f1e2927def906926447ab1a494294cc88d039fddd",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 614,
+      "questionUid": "qid_v1_aca6babe19625c333c7f3657310327b97a1b2557c2cac54d59ef929f021a7bbc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "8c858d961b3ba1f3362bf40db2a412d3fc70891f9a9fcf8d190ac0ec3e5f921e"
+      },
+      "primaryMethod": "평행사변형 변·대각선 성질로 두 일차식 풀이",
+      "decisiveStep": "AD=BC로 x, BD=2OD로 y",
+      "supportingConcepts": [
+        "대변 길이 같음",
+        "대각선 이등분"
+      ],
+      "conditions": [
+        "O는 대각선 교점",
+        "길이가 x,y식"
+      ],
+      "compositionPattern": "변 성질→식; 대각선 중점→식",
+      "curriculumNotes": "중등 평행사변형",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 서로 다른 평행사변형 성질로 두 방정식.",
+      "sourceContentSha256": "9da0a66e22bf66b34ef890878792cb4ae4d4fa0e9afb568ba78b5c224cc5f4ac",
+      "sourceSolutionSha256": "89b4f28525687439783a53181e26ca7810785df340d36a323d1101819b3ebf3f",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 615,
+      "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "3f3e311f16406bcb6ac52e3dbb664889759183890fe130dbed73db2cda7f0959"
+      },
+      "primaryMethod": "사다리꼴 평행선 닮음·중점선으로 구간 차",
+      "decisiveStep": "△AEG 닮음으로 EG12, 중점선 EH9, 차 계산",
+      "supportingConcepts": [
+        "중점연결정리",
+        "선분비"
+      ],
+      "conditions": [
+        "AD=DE=EB=5",
+        "BC18",
+        "세 평행선",
+        "H=CD∩EG"
+      ],
+      "compositionPattern": "닮음→길이비→중점선→차",
+      "curriculumNotes": "중등 평행선·선분비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "큰 삼각형 닮음과 작은 삼각형 중점선 결합.",
+      "sourceContentSha256": "9ec29322220e08adc832ed36a50186bc2f3e7c81ff9fa72f18ba7c26c43bdd68",
+      "sourceSolutionSha256": "e5afd9913299aead2ab9142ae9fbfb0523d6872ccaa22bc3d404bdec62a6787e",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 616,
+      "questionUid": "qid_v1_ad2d0a8d7055daa183852f9e62f1b0e6b0596f9aca20a436e84c651d9c4c42c3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "8e5c1b0234892139ce020384972cbdca9eef945cefc1ed48113a81675c8625d8"
+      },
+      "primaryMethod": "각 범위로 탄젠트 부호를 정해 제곱근 속 제곱을 절댓값 처리",
+      "decisiveStep": "0<tanx<1로 절댓값 부호를 나눠 소거",
+      "supportingConcepts": [
+        "√(A²)=|A|",
+        "삼각비 범위"
+      ],
+      "conditions": [
+        "0°<x<45°"
+      ],
+      "compositionPattern": "범위→tan 범위→부호→정리",
+      "curriculumNotes": "중등 삼각비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "각 범위가 탄젠트 부호와 상한을 결정.",
+      "sourceContentSha256": "d21c6a92191ce63f19b32fdfaaedc31ed8942abe587e5bc9411f99b9b2c30827",
+      "sourceSolutionSha256": "593db5f75effeb94f6ac53965d420053bb620ccad2099eb892fade251dd52f26",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 617,
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "0753a661babcebbeef8667ae21a5c8321c1a2ccb2c2a61386ad4a2f6fdf2c0ee"
+      },
+      "primaryMethod": "닮은 삼각기둥의 넓이비로 부피 구하기",
+      "decisiveStep": "길이비2:1→밑면넓이비4:1 후 큰 높이 곱함",
+      "supportingConcepts": [
+        "기둥 부피",
+        "닮음 넓이비"
+      ],
+      "conditions": [
+        "작은 밑면넓이6",
+        "대응길이10:5",
+        "큰 높이10은 그림"
+      ],
+      "compositionPattern": "닮음 길이비→넓이 제곱비→부피",
+      "curriculumNotes": "중등 입체 닮음·부피",
+      "sourceIssue": "큰 기둥 높이는 텍스트에 없고 그림 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "닮음 넓이 배율과 기둥 부피가 결정 구조.",
+      "sourceContentSha256": "997758a10ad6b4482267e150fcbc40bde8156efdd3c33902ad304b17063ce193",
+      "sourceSolutionSha256": "8da37a3dc1da806dec2643216603fad2c4817c038450309bc657696d21f1304b",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 618,
+      "questionUid": "qid_v1_adc5b8076cf0415bbe3c12620827c9ce058d2352e08f319df0740319bc8f3f16",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "de8d6cddca91c76a2e8732a5bdb0583275f7799656fb123f1977989981b89ed2"
+      },
+      "primaryMethod": "두 고각의 탄젠트 관계를 높이 방정식으로 연결",
+      "decisiveStep": "45°로 거리=x, 30°식 x/(10+x) 풀이",
+      "supportingConcepts": [
+        "tan45",
+        "tan30",
+        "일차방정식"
+      ],
+      "conditions": [
+        "관측점간10m",
+        "고각30°,45°",
+        "수평면"
+      ],
+      "compositionPattern": "높이 설정→45°거리→거리합→30°식",
+      "curriculumNotes": "중등 삼각비 활용",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 시점 탄젠트 관계를 연결해 높이를 푼다.",
+      "sourceContentSha256": "57438749ee0f789999394189750104879fdbb6bda678c9596896523962e08008",
+      "sourceSolutionSha256": "5cd79431707c6a1d7a0bb0a3da5c7a6a3250a6ae87fa22e154b0d8dc2b0905af",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 619,
+      "questionUid": "qid_v1_add0145ba3ff99270bed5f582002dc72d07e7eb4d6e7c55508304906ae224365",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "75808a1994a672b5b81fc2f9b793446e0fa34196a5cfc3e1bb07cdb0b5908a1a"
+      },
+      "primaryMethod": "사다리꼴 교점 삼각형의 넓이 등식과 같은 높이 비",
+      "decisiveStep": "큰 삼각형 등넓이에서 공통부분 제거 후 AO:OC 비",
+      "supportingConcepts": [
+        "같은 높이 넓이비",
+        "공통부분"
+      ],
+      "conditions": [
+        "AD∥BC",
+        "AO:OC=3:5",
+        "[ODC]=12"
+      ],
+      "compositionPattern": "평행 밑변 등식→공통분 제거→밑변비",
+      "curriculumNotes": "중등 사다리꼴 넓이비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "평행 밑변 넓이 등식 후 대각선상 밑변비.",
+      "sourceContentSha256": "d4921edeb3c7cb838dda6815799d8934da3bb09dd775178b71cf240bed6053c1",
+      "sourceSolutionSha256": "9dec1d61b0d0217464c8eaf18ad0dee29d38a007b6cefaa978a84eb7441f3d88",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "n": 620,
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "8593a9e4d4d1722d4200822bd418994691d9122af449b0a0e4cc704d74abe12a"
+      },
+      "primaryMethod": "특수각 삼각비 값 대입 계산",
+      "decisiveStep": "tan45, sin60, cos60 치환 후 연산",
+      "supportingConcepts": [
+        "근호·분수 연산"
+      ],
+      "conditions": [
+        "45°,60°"
+      ],
+      "compositionPattern": "값 치환→곱→차",
+      "curriculumNotes": "중등 특수각",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "직접 특수각 값 대입.",
+      "sourceContentSha256": "1647f5b5489d41c1a15f0b20a0eca6d8669a45533acedde6035fdf4e5fbef8c7",
+      "sourceSolutionSha256": "505b775a7c655e02ec7cca9dea1463e60733b867ba786c78daf422048305b7bf",
+      "semanticStatus": "READY_FOR_COMPARISON"
+    }
+  ]
+}

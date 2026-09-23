@@ -1,0 +1,1329 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "79960c52786c44da223f916815be4919f64ae07a",
+  "scope": {
+    "start": 601,
+    "end": 800
+  },
+  "defectUidCount": 47,
+  "defects": [
+    {
+      "n": 603,
+      "questionUid": "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "09667637b00700f63171ca4ac80468a7a090dffafdf86a1ca60cc297910f4c82"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "L4의 trig chained measure 정의가 area 산출을 이미 포함해 CC_TRIANGLE_AREA는 primary L1-L4와 중복."
+    },
+    {
+      "n": 604,
+      "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "cb7135c3684253a1890d0e646e98209fcb939f40e124e16c835d00e693ca584a"
+      },
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음"
+          },
+          "recommended": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "L3": {
+          "current": "PT_SIMILAR_FIGURES",
+          "recommended": "PT_COORD_CENTROID"
+        },
+        "L4": {
+          "current": "TPL_SIMILAR_FIGURES_RATIO",
+          "recommended": "TPL_CENTROID_APPLICATION"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_CENTROID"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_CENTROID"
+            ]
+          }
+        }
+      },
+      "reason": "풀이 핵심은 중선 위 두 무게중심의 2:1 관계다. Similar Figures 경로보다 기존 centroid L3/L4가 직접 맞고, 해당 CrossConcept는 primary와 중복."
+    },
+    {
+      "n": 606,
+      "questionUid": "qid_v1_aa3817a7415824131cc15cfba245b0cae4ce9f0df2cbd2e4f6428047c83754c6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "eddee1da60fbd9e09156cca32b4eab068cafe495d6f74710c206b1d96abf1746"
+      },
+      "defectFields": [
+        "L3",
+        "L4"
+      ],
+      "fields": {
+        "L3": {
+          "current": "PT_TRIANGLE_CENTERS",
+          "recommended": "PT_CIRCLE_LINE_RELATION"
+        },
+        "L4": {
+          "current": "TPL_TRIANGLE_CIRCUMCENTER",
+          "recommended": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+        }
+      },
+      "reason": "풀이 핵심은 중심에서 현에 내린 수선의 이등분 성질이다. Triangle centers/circumcenter보다 현-중심 관계 L3와 기존 ACTIVE chord-perpendicular-bisector L4가 정확하다."
+    },
+    {
+      "n": 608,
+      "questionUid": "qid_v1_ab1ed1af925a924cf90ec8f3e94c66f7ae52b07ac17faa277ab571c89c853c09",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "26f43d394ab184bdd3684407a948dea8e7a3bf1878bc9b8201693e0d33029dcf"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_PYTHAGOREAN"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "Source solution uses right-triangle Pythagoras to recover CM and the radius; CC_PYTHAGOREAN is an active concept needed outside chord taxonomy."
+    },
+    {
+      "n": 612,
+      "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "d62cf1e922de302af1aa18103f6c8af7af5663363079efcbcf1108e20b2d4eb3"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_SIMILAR_FIGURES_RATIO",
+          "recommended": "TPL_TRIANGLE_SIMILARITY_CRITERIA"
+        }
+      },
+      "reason": "문항은 닮음비 계산이 아니라 삼각형 닮음이 보장되는지의 조건·반례 판정이다. 기존 candidate criteria L4가 현재 ratio L4보다 정확하지만 promotion은 권고하지 않는다."
+    },
+    {
+      "n": 613,
+      "questionUid": "qid_v1_ac76fca55ee9e58a2b085bbba26f02f860a678136ec0900cb7a74be808aa54e3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "6871f8e1f9f2b7eefe7e4a1c0bfc2ef3be0b270c2643013a9e20235893c851a3"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_ISOSCELES_VERTEX_BISECTOR",
+          "recommended": null
+        }
+      },
+      "reason": "현재 L4는 꼭지각 이등분선을 전제로 하나 발문의 결정 조건은 꼭짓점에서 밑변으로 내린 수선이다. 대응하는 active L4가 없어 새 키를 제안하지 않는다."
+    },
+    {
+      "n": 615,
+      "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "3f3e311f16406bcb6ac52e3dbb664889759183890fe130dbed73db2cda7f0959"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_SIMILARITY",
+            "CC_MIDPOINT"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_SIMILARITY",
+              "CC_MIDPOINT"
+            ]
+          }
+        }
+      },
+      "reason": "현재 삼각형 평행선비 L4가 닮음비와 중점연결 구조를 이미 포함하므로 두 CrossConcept가 primary skeleton과 중복."
+    },
+    {
+      "n": 620,
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "8593a9e4d4d1722d4200822bd418994691d9122af449b0a0e4cc704d74abe12a"
+      },
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음"
+          },
+          "recommended": "M3-05-TRIG_RATIO"
+        },
+        "L3": {
+          "current": "PT_SIMILAR_FIGURES",
+          "recommended": "PT_TRIG_RATIO"
+        },
+        "L4": {
+          "current": "TPL_SIMILAR_FIGURES_RATIO",
+          "recommended": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_ANGLE_BISECTOR"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_ANGLE_BISECTOR"
+            ]
+          }
+        }
+      },
+      "reason": "발문은 특수각 삼각비의 직접 계산이다. Similar figures 계열 L2/L3/L4와 angle-bisector CrossConcept는 실제 풀이에 쓰이지 않는다."
+    },
+    {
+      "n": 624,
+      "questionUid": "qid_v1_aec444d7f251786d3d5ee4d5f5ed0a48a16da1be8ffb131080186e16e0c41aa3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "71adb6be847fc0eec98bc9b56aa0c3a5d7d1a6f7497caa589ee88f6e50358276"
+      },
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M3-06-CIRCLE_LINE",
+            "subUnit": "원과 직선"
+          },
+          "recommended": "M3-06-CIRCLE_INSCRIBED_ANGLE"
+        },
+        "L3": {
+          "current": "PT_CIRCLE_TANGENT",
+          "recommended": "PT_CIRCLE_ANGLE_RELATIONS"
+        },
+        "L4": {
+          "current": "TM_TANGENT_LENGTH",
+          "recommended": null
+        }
+      },
+      "reason": "발문·해설의 핵심은 원의 중심각·호·원주각이고 접선 길이를 사용하지 않는다. 점 순서로 최종 각을 확정하는 일은 별도 SOURCE_VISUAL_REQUIRED HOLD."
+    },
+    {
+      "n": 628,
+      "questionUid": "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "25905ea8eb9d5d3fdf0ea1557f3429083aaa190995a178612b53e9d3e5176bbe"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_SIMILARITY"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "The solution uses similarity of the right triangles to identify the sine ratio; similarity is outside the trig-ratio basic relation template and is required."
+    },
+    {
+      "n": 630,
+      "questionUid": "qid_v1_b115dd886da2a9fdbf5592a703c142b1f451a5a6b9efc9ea11a61d378856f01d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "3605c832b462a9c4d17a9158e3c40ef1bb8c534c43959bf967ca04e7fb08ca9f"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_PARALLEL_LINES"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_PARALLEL_LINES"
+            ]
+          }
+        }
+      },
+      "reason": "CC_PARALLEL_LINES의 canonical 정의는 좌표·기울기 관계용이며 이 사각형 판별에서 쓰이지 않는다. 평행 조건은 primary quadrilateral criterion에 포함."
+    },
+    {
+      "n": 637,
+      "questionUid": "qid_v1_b2459b7bdd888ac20deb5238711cdeab16bff250a9e5f9b580e615c38b2728a3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "aface8e373e025a31e0d7a66ec367d1272be9a34cb68c3079c9d0027b2c686ce"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "현재 trig chained-measure L4 정의가 넓이를 포함하므로 CC_TRIANGLE_AREA는 primary skeleton과 중복."
+    },
+    {
+      "n": 656,
+      "questionUid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "8b22857a713cffe10ab896af94d82d92c2b0dfa0f6118936432603f720ebc993"
+      },
+      "defectFields": [
+        "L2"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질"
+          },
+          "recommended": "M2-05-QUADRILATERAL_PROPERTIES"
+        }
+      },
+      "reason": "문항의 대상은 평행사변형과 내부 평행사변형의 넓이이므로 삼각형 성질 L2보다 사각형 성질이 직접적."
+    },
+    {
+      "n": 659,
+      "questionUid": "qid_v1_b7756906cb5b2b641338a82d94e19a50f69a39a308d70dc6e3c4a8a2611a503a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "c64a73fae127a7452271e99e186428aa72971aad23f92fc8cbf7d9e53eb1b28b"
+      },
+      "defectFields": [
+        "L3",
+        "L4"
+      ],
+      "fields": {
+        "L3": {
+          "current": "PT_TRIG_RATIO_APPLICATION",
+          "recommended": "PT_TRIANGLE_CENTERS"
+        },
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+          "recommended": "TPL_TRIANGLE_INCENTER"
+        }
+      },
+      "reason": "요구량은 내접원의 반지름이며 결정 관계는 삼각형 넓이=반지름×반둘레다. Trig application보다 기존 incenter L3/L4가 primary를 직접 분류."
+    },
+    {
+      "n": 660,
+      "questionUid": "qid_v1_b787d9bab647db310fb29e812b7fbc540a9f37f96e11e4ea028cb38020b6cc9e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "ef9a8a49ebaccd4f026efc2851a77e55ae322ba6870b6ffbcdf62f7b60fad735"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TM_TANGENCY_CONDITION",
+          "recommended": "TM_TANGENT_LENGTH"
+        },
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_PYTHAGOREAN"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "주어진 접선길이와 반지름-접선 직각삼각형으로 r을 푸는 길이 skeleton이다. Tangency-condition보다 active tangent-length L4가 정확하고 피타고라스가 필요."
+    },
+    {
+      "n": 669,
+      "questionUid": "qid_v1_b8da039d9305489dc54d94b68d0ee47675549d7f2cebedd1bb317a023f2bb6db",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "30bd9ee7ad9e56ef4bd6aff37d7916cd1ec81c04d0f9146d97254edcf8ac2cb7"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_TANGENCY",
+              "CC_PYTHAGOREAN",
+              "CC_TRIANGLE_AREA"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "중심 삼각형 길이를 얻으려면 접선길이 동일성, 직각 피타고라스, 내접반지름의 넓이-반둘레 관계가 모두 primary center taxonomy 밖에서 필요."
+    },
+    {
+      "n": 676,
+      "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "38e88fbafb0e3e6b662eb0af8bf8441991124452efe5a4a1d80b1aa1cb7e8141"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+          "recommended": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+        }
+      },
+      "reason": "출처의 두 합동삼각형은 빗변과 예각이 같아 RHA다. 현재 L4는 빗변과 한 변(RHS)을 표방한다. 추천키는 기존 candidate이며 promotion은 권고하지 않음."
+    },
+    {
+      "n": 679,
+      "questionUid": "qid_v1_bb994a1c383fcfa316a376ca6eb1c7511a95ccc859f97f4b245052b20e498f47",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "8df29f55a7bb33a8894705996437ca2a50ea4052de8e83e9a2f07e903a9b6b06"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "recommended": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "두 삼각형의 사인 넓이를 더하는 연쇄 산출이므로 chained-measure L4가 direct measure보다 맞고, 그 안에서 CC_TRIANGLE_AREA는 중복."
+    },
+    {
+      "n": 684,
+      "questionUid": "qid_v1_bc5e0d801f3b417aa0cb403613ab0193caee55fd6ee4d16021c66a9f9759b06f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "612747a5e7dcd02af24eb40bbbc85de42c4d4e2c3c57d0b0c88efe48f841502d"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "recommended": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "목표는 사인 넓이의 직접 계산이다. Area를 포함하는 chained-measure L4가 direct length/height보다 가깝고, 그 L4에서 CC_TRIANGLE_AREA는 중복."
+    },
+    {
+      "n": 689,
+      "questionUid": "qid_v1_bda210e82412d550c6aca259a8001852baec3b8448d61fdaabee05436336630e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "ef53b1807bc69c1632920fd6f93dd9e5819b03f134cef6f7b7be9223e4f7a518"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_ANGLE_BISECTOR"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_ANGLE_BISECTOR"
+            ]
+          }
+        }
+      },
+      "reason": "현재 L3/L4가 내심과 각이등분을 이미 직접 분류하므로 동일 angle-bisector concept는 CrossConcept로 중복."
+    },
+    {
+      "n": 690,
+      "questionUid": "qid_v1_bde01f44c3af4689b83ff8de048552e2270edad7a7ff3665262ec0f321a0c20a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "14ee88a70857e3b30c8207275d9f89ea4506e5c3705a86a3f5297a32a821a096"
+      },
+      "defectFields": [
+        "L2",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M3-05-TRIG_RATIO",
+            "subUnit": "삼각비"
+          },
+          "recommended": "M3-05-TRIG_RATIO_APPLICATION"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA",
+            "CC_PYTHAGOREAN"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "삼각비로 사각형 넓이를 연쇄 산출하므로 L2는 활용 subunit가 맞다. Chained-measure L4도 넓이를 포함하므로 CC_TRIANGLE_AREA는 중복."
+    },
+    {
+      "n": 692,
+      "questionUid": "qid_v1_bead3554f9bcfd7bdec0684d4b5130fd76facd1e74e28ba6dca02631c60b8821",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "ae2a2a4cd2b7ea1c89ffbe0d48eaf69df7117e3d296a5e2ac2cda1e58c356fa3"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TM_TANGENCY_CONDITION",
+          "recommended": "TM_TANGENT_LENGTH"
+        }
+      },
+      "reason": "접선길이와 반지름 수직으로 직각삼각형을 세워 반지름을 구하는 문제다. Tangency-condition보다 기존 active tangent-length skeleton이 정확."
+    },
+    {
+      "n": 702,
+      "questionUid": "qid_v1_c17ceb1f4f708094127580f300fff478efd095ee4a3371dc0af48eb6ad11589d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "18ca2866180bbc7d7df4148017c3a6143b90e59eaaeaa5e9d473251fe2c18c72"
+      },
+      "defectFields": [
+        "L2"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+            "subUnit": "삼각형의 성질"
+          },
+          "recommended": "M2-05-QUADRILATERAL_PROPERTIES"
+        }
+      },
+      "reason": "Primary figure is a rhombus and the decisive property is its diagonal area split; quadrilateral L2 is more accurate than triangle properties."
+    },
+    {
+      "n": 709,
+      "questionUid": "qid_v1_c2f8b89b4e54fa22d893e1aa837c3f600e40d9d9496792ba21e4e9a5f95f15b3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "78c3d59f33cffcdfc48fee088c8c978b189f9e97701fdd325b1972ebe8bc3f94"
+      },
+      "defectFields": [
+        "L2"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+            "subUnit": "삼각비의 활용"
+          },
+          "recommended": "M3-05-TRIG_RATIO"
+        }
+      },
+      "reason": "Asked quantity is a derived special-angle cosine value; this is the basic trig-ratio subunit, not trig application to another geometric quantity."
+    },
+    {
+      "n": 714,
+      "questionUid": "qid_v1_c4a376e540879fc952ffc11ad69787cffe02eea257b94686fd0d0a30e2af6bf5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "28cc77902ca1a73645013368b108f8263becb22ca27d0f6cfacfb39e5c5ca43d"
+      },
+      "defectFields": [
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L3": {
+          "current": "PT_TWO_CIRCLES",
+          "recommended": "PT_CIRCLE_LINE_RELATION"
+        },
+        "L4": {
+          "current": "TM_TWO_CIRCLES_TANGENT_CIRCLE",
+          "recommended": "TM_CIRCLE_CHORD_LENGTH"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_PYTHAGOREAN"
+          ],
+          "recommended": {
+            "add": [
+              "CC_PERPENDICULAR_BISECTOR"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "Concentric inner circle tangent to a chord is not a third circle tangent to both circles. Existing circle-line/chord-length keys fit, with fold-perpendicular-bisector support."
+    },
+    {
+      "n": 716,
+      "questionUid": "qid_v1_c5524a8bff9d8bad7279da2327a470ceef7ef562f69759fc5d3b0000d9e08cef",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "8b430e785b78a37e8098f1ed8f46f957850ca8c37eb3213a60ca94aba74db501"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "Solution applies direct right-triangle formulas R=c/2 and r=(a+b−c)/2; it never uses triangle-area calculation, so CC_TRIANGLE_AREA is not active in the decisive route."
+    },
+    {
+      "n": 724,
+      "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "80b06c0c216d7b8b23dc6f015a5a5438096cb1f7b875b27f379da2549f3b289a"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_CENTROID",
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_CENTROID"
+            ]
+          }
+        }
+      },
+      "reason": "PT_COORD_CENTROID plus its L4 already cover the centroid 2:1/area partition; the same centroid CrossConcept duplicates primary taxonomy."
+    },
+    {
+      "n": 729,
+      "questionUid": "qid_v1_c961f1a5ee08148d71e1e1b8cd0df068707114f8d57392581a5b42bf5031898e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "888bb3292ecb3aade2fa58a3247dd582e7b00c6cd00f2c8e550360fac6282a27"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_ISOSCELES_VERTEX_BISECTOR",
+          "recommended": "TPL_ISOSCELES_BASE_ANGLES"
+        }
+      },
+      "reason": "Assigned L4 is the isosceles vertex-angle bisector, while the source bisects a base angle; the base-angle template is the closest existing candidate, still REVIEW_REQUIRED."
+    },
+    {
+      "n": 739,
+      "questionUid": "qid_v1_ccb0885c708a4548b4b785c378cd6907d3c677bbe9369ab9ecf75f8643efaac3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "0fc24210ab324098af274a51bc7ade9a7f7eeaa72967624bae48af7e1f06a9f7"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_ISOSCELES_VERTEX_BISECTOR",
+          "recommended": "TPL_ISOSCELES_BASE_ANGLES"
+        }
+      },
+      "reason": "The current L4 says vertex-angle bisector, but source bisects a base angle; closest existing base-angle candidate is not active."
+    },
+    {
+      "n": 744,
+      "questionUid": "qid_v1_cdf16d69f5e1daa2eef9ccf8e34b631844c4cfb6b3f9aaf6825912494f422228",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "d6f5e07b0eccbe8b579cf81689f5ea807d0a2ad3269d7ae8f8c299f0144e94fd"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "recommended": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "The source ends in triangle area via the sine formula, which the chained-measure L4 covers; direct length/height L4 and CC_TRIANGLE_AREA are mismatched/redundant after that correction."
+    },
+    {
+      "n": 746,
+      "questionUid": "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "8919a8483dce8e9dfb24a3eb91e9a3f033329cde427cb6e845a4249d86dfa1d7"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_SIMILARITY"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_SIMILARITY"
+            ]
+          }
+        }
+      },
+      "reason": "The assigned triangle parallel-segment-ratio L4 already encodes the similar-triangle proportion; CC_SIMILARITY duplicates that primary skeleton."
+    },
+    {
+      "n": 748,
+      "questionUid": "qid_v1_cf508756ee75298ff7a497d8fab531106eca4845540fce0b75cfb04534ecf7ea",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "63e546d4094267dc1d30cea296dd9bca726b843c10a9040020ba29dfc7475e80"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "The source calculates a sector area and uses no triangle-area concept; CC_TRIANGLE_AREA is unused."
+    },
+    {
+      "n": 749,
+      "questionUid": "qid_v1_cfa270d0b9d1fa25a07ffc7ee1471b1cffe70a6d8f6cb0524a0e5cc260065499",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "681505dcf2f640e65d06698af098c9b231f233ff97db4dc873ef0837bb018bf9"
+      },
+      "defectFields": [
+        "L3"
+      ],
+      "fields": {
+        "L3": {
+          "current": "PT_CIRCLE_ANGLE_RELATIONS",
+          "recommended": "PT_CIRCLE_TANGENT"
+        }
+      },
+      "reason": "The asked angle is formed by two tangents from one external point; the active circle-tangent L3 is more specific than general circle-angle relations. L4 is absent."
+    },
+    {
+      "n": 750,
+      "questionUid": "qid_v1_d044eb39e02de61b1c4809d5059e85639ba341aecb3db0ddc61a3b2aaa4db90b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "db2607cfb1a8425ccc84dc8a00da2006dbe5e11f55857804815d13ab1bab5f7f"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_LINE_EQUATION"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_LINE_EQUATION"
+            ]
+          }
+        }
+      },
+      "reason": "Trigonometric chained-measure L4가 line-equation output까지 포함하며, line equation은 보조 개념이 아니라 목표이므로 현재 CrossConcept가 중복."
+    },
+    {
+      "n": 754,
+      "questionUid": "qid_v1_d1086ae360a89dbbbbf250902596402a4b32e395a270183eeb7263afc65de432",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "b55c715fef7c67985b16dd674f16c79465cf1bc97a1899c4a05b0461ba4f16e2"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "recommended": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "Trig first supplies the altitude and then triangle area is computed; chained-measure L4 is more accurate than direct length/height, and after that L4 area is covered by the primary skeleton."
+    },
+    {
+      "n": 755,
+      "questionUid": "qid_v1_d143c4903e7842b0b13c8e8335d1f552eb7b206512ea33a8d6083ba0b51eeb73",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "84b00d7fea91e70ec61b98b187eb3f1bc34a3e4650a7a3bea7882e672899ac40"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_PERPENDICULAR_BISECTOR"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "Folding C onto C′ uses the crease as the perpendicular bisector of CC′ to supply equal lengths and angle symmetry outside the SSS similarity classification."
+    },
+    {
+      "n": 760,
+      "questionUid": "qid_v1_d2cbc30d9662df1b4c91db360ec96239648c4658ac184c83ebe9d4cca29134f9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "7bb7c2ba969db64e515c108511332feecce343c8737d2beeba20d041c210427f"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "The solution uses tangent symmetry, radius, central angle and sector area; it does not use triangle area."
+    },
+    {
+      "n": 764,
+      "questionUid": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "dfa7eb68ed4e02caee0a2b82f34dc0fe05f13c3381f465ce6012f8052e316357"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_MIDPOINT"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_MIDPOINT"
+            ]
+          }
+        }
+      },
+      "reason": "The current triangle parallel-segment-ratio L4 explicitly includes midpoint-connection structures, so CC_MIDPOINT duplicates its primary skeleton."
+    },
+    {
+      "n": 767,
+      "questionUid": "qid_v1_d45521fc7fb98052bd19d164ef4b5301285b307d9421bf85d70c358691d85dc8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "820d8ec85fda6ac0a43b8ae72d2a07bc4e066c73f891dc595ede3abf0b1dfb36"
+      },
+      "defectFields": [
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "recommended": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "The primary is sine-area measurement; existing chained-measure L4 covers the area target, making direct-measure L4 and CC_TRIANGLE_AREA redundant."
+    },
+    {
+      "n": 771,
+      "questionUid": "qid_v1_d51fcaa9d38ad85c26bcccf8e01fa07e14299e7aca2728d32c5b129fd2bb9c4e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/20_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "6d133343b32d0416e29216e9a2e11c6e85966abbe04fd38d939e79550609ecb6"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_AREA"
+            ]
+          }
+        }
+      },
+      "reason": "Source solution uses the direct right-triangle inradius formula and circumradius formula; it does not calculate area, so CC_TRIANGLE_AREA is unnecessary for this path."
+    },
+    {
+      "n": 772,
+      "questionUid": "qid_v1_d52b98d397b36d4690ffd2d5aeae3e4ededc63f975e6751acdb8e998d38abcf3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "f3971b6611a41ccdd0a066f35d83849214ecdc8f7110bacd9319e2cfd995e036"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_SIMILARITY",
+            "CC_TRIANGLE_CENTROID",
+            "CC_TRIANGLE_AREA"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_SIMILARITY"
+            ]
+          }
+        }
+      },
+      "reason": "The triangle parallel-ratio L4 already uses similar triangles to form proportions; CC_SIMILARITY duplicates the assigned L4."
+    },
+    {
+      "n": 779,
+      "questionUid": "qid_v1_d7fec583bac81e84c5727580bcf4e401d8dba87bfee8ebcb2fea77391ee23890",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_매산중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "4ffeba1d1b262ac3f0ba1facc79b4f6b4d79d375f3e0e6e061b284af0993a952"
+      },
+      "defectFields": [
+        "L4"
+      ],
+      "fields": {
+        "L4": {
+          "current": "TM_TANGENCY_CONDITION",
+          "recommended": "TM_TANGENT_LENGTH"
+        }
+      },
+      "reason": "Equal lengths from external points create CD and determine the diameter; the active tangent-length L4 is more accurate than tangency-condition."
+    },
+    {
+      "n": 783,
+      "questionUid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "61ee02ce6222e200b04360e4addfff3a4ceaf48ffff8dc50acaf85634ea0b5ad"
+      },
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음"
+          },
+          "recommended": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "L3": {
+          "current": "PT_SIMILAR_FIGURES",
+          "recommended": "PT_COORD_CENTROID"
+        },
+        "L4": {
+          "current": "TPL_SIMILAR_FIGURES_RATIO",
+          "recommended": "TPL_CENTROID_APPLICATION"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_CENTROID"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_CENTROID"
+            ]
+          }
+        }
+      },
+      "reason": "Two nested centroids on one median determine the lengths; current similarity assignments are off-primary and centroid CC becomes redundant after the existing centroid L3/L4."
+    },
+    {
+      "n": 785,
+      "questionUid": "qid_v1_d923745c2dc8001bd522354fa916db2c9b9c1938f6a617df5e9ae826b9b3fedb",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "3599810c3238dc9f9a07521c445ffe218e7841528b126fd24755f1024b6fe548"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [],
+          "recommended": {
+            "add": [
+              "CC_ANGLE_BISECTOR"
+            ],
+            "remove": []
+          }
+        }
+      },
+      "reason": "After trig establishes side lengths, the angle-bisector theorem is necessary to obtain BD and lies outside the trig L3/L4."
+    },
+    {
+      "n": 786,
+      "questionUid": "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "94446a38ad01f00da2db206e464357e1c072a99726476f7787736e8a744caa89"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_SIMILARITY",
+            "CC_ANGLE_BISECTOR"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_SIMILARITY"
+            ]
+          }
+        }
+      },
+      "reason": "The triangle parallel-ratio L4 already encodes similar-triangle ratios; CC_SIMILARITY is not outside the primary skeleton."
+    },
+    {
+      "n": 790,
+      "questionUid": "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "c480b1f3e1d9ec239681440694a02a6104775d616f776de1385aee88910ebe1e"
+      },
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "fields": {
+        "CrossConcept": {
+          "current": [
+            "CC_SIMILARITY"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_SIMILARITY"
+            ]
+          }
+        }
+      },
+      "reason": "The triangle parallel-ratio L4 already encodes the similar-triangle proportion, so CC_SIMILARITY is duplicate."
+    },
+    {
+      "n": 798,
+      "questionUid": "qid_v1_dc3b610ff0d490346effbe0eba6f4ee043df8388f74907a473488548b7ddc966",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "c20185a7a1c3154e1af65c825138cbadedd562f9e34cbac49cafcbb8b3654c8c"
+      },
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "fields": {
+        "L2": {
+          "current": {
+            "subUnitKey": "M2-06-SIMILAR_FIGURE",
+            "subUnit": "도형의 닮음"
+          },
+          "recommended": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "L3": {
+          "current": "PT_SIMILAR_FIGURES",
+          "recommended": "PT_COORD_CENTROID"
+        },
+        "L4": {
+          "current": "TPL_SIMILAR_FIGURES_RATIO",
+          "recommended": "TPL_CENTROID_APPLICATION"
+        },
+        "CrossConcept": {
+          "current": [
+            "CC_TRIANGLE_CENTROID"
+          ],
+          "recommended": {
+            "add": [],
+            "remove": [
+              "CC_TRIANGLE_CENTROID"
+            ]
+          }
+        }
+      },
+      "reason": "Two centroid 2:1 divisions on one median determine AD; similarity classification is off-primary, and centroid CC duplicates the recommended centroid taxonomy."
+    }
+  ]
+}
