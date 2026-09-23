@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "h1-stage3-relational-coverage-closure-v1",
+  "status": "STAGE3_RELATIONAL_CANDIDATE_COVERAGE_COMPLETE_BOUNDARY_REVIEW_PENDING",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "518d9130d063420cc7e18ddf06a2003f72a82e6f",
+  "originalBasisMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "currentMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
+  "mainDrift": {
+    "commitCount": 2,
+    "relevantMatrixOrCanonicalDrift": 0,
+    "unrelatedChangedFile": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+  },
+  "coverage": {
+    "denominator": 1170,
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "duplicateUid": 0,
+    "duplicateSourceIdentity": 0,
+    "segments": {
+      "relationalA": 497,
+      "eqineq": 303,
+      "permcomb": 287,
+      "matrix": 83
+    }
+  },
+  "reviewStatusCounts": {
+    "ACTIVE_ONLY": 955,
+    "REVIEW_REQUIRED": 215
+  },
+  "unresolvedAggregate": {
+    "sourceHoldRows": 29,
+    "l3HoldRows": 3,
+    "crossConceptUnmappedRows": 107,
+    "conditionUnmappedRows": 108,
+    "note": "Categories overlap by row; do not sum as unique unresolved count."
+  },
+  "matrix": {
+    "rows": 83,
+    "uidUnique": 83,
+    "sourceIdentityUnique": 83,
+    "reviewStatus": {
+      "ACTIVE_ONLY": 80,
+      "REVIEW_REQUIRED": 3
+    },
+    "sourceHoldRows": 1,
+    "l3HoldRows": 0,
+    "crossConceptUnmappedRows": 2,
+    "conditionUnmappedRows": 0,
+    "crossConceptUnmappedDistribution": {
+      "COMPLEX_POWER_PERIODICITY": 2
+    },
+    "activeCrossConceptDistribution": {
+      "CC_ROOTS_COEFFICIENTS": 4,
+      "CC_DISCRIMINANT": 1,
+      "CC_NUMBER_PRIME_COPRIME": 1
+    },
+    "activeConditionDistribution": {
+      "COND_NATURAL_NUMBER": 9,
+      "COND_RANGE": 5,
+      "COND_INTEGER": 3,
+      "COND_POSITIVE": 1,
+      "COND_NONZERO": 1
+    },
+    "inputBlob": "a00162b8ecbeffcff5626b02ae4fe604b58dcd2b",
+    "ledgerBlob": "8f045687b813352a47b3c7325330a1827eff37d3",
+    "inputSha256": "32a58231b2dc63763f35bfc7ea855dfea644bffa59c618226c241bc6456a63b0",
+    "ledgerSha256": "5d5932e7bd016ded3c5ed81c8d60be5739189c33d2b9a0946d8b02518954daed",
+    "provenance": {
+      "inputFieldInventoryMissing": 0,
+      "forbiddenSameStageInputLeakageRows": 0,
+      "sourcePackDecisionRejoinMismatch": 0,
+      "semanticDecisionChangedByProvenanceRepair": 0
+    },
+    "registryGate": {
+      "invalidCrossConceptKeys": 0,
+      "invalidConditionKeys": 0,
+      "invalidIntegrationPatterns": 0,
+      "duplicateCrossConceptRows": 0,
+      "duplicateConditionRows": 0
+    }
+  },
+  "provenanceBoundaryDebt": {
+    "finality": "NOT_FINAL",
+    "note": "1170/1170 is candidate coverage closure only. Deterministic boundary/provenance validator has not yet generated semantic FINAL.",
+    "knownNormalizationNeeded": [
+      "Relational A 497 is older candidate artifact and must be included in boundary/provenance normalization before FINAL.",
+      "PERMCOMB input chunks must be checked for full inputFieldInventory contract during boundary review."
+    ]
+  },
+  "next": {
+    "stage": "STAGE3_L4_RELATIONAL_BOUNDARY_REVIEW",
+    "scope": "1170 candidate rows with REVIEW_REQUIRED priority; preserve source/L3 HOLDs"
+  },
+  "mutations": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  },
+  "finality": "NOT_FINAL_VALIDATOR_REVIEW_PENDING"
+}
