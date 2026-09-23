@@ -9,7 +9,26 @@ const Archive2Output = require("../archive/archive2-output.js");
 
 const root = path.resolve(__dirname, "..");
 const archive2Workspace = fs.readFileSync(path.join(root, "archive/archive2-workspace.js"), "utf8");
-const archive1Index = fs.readFileSync(path.join(root, "archive/index.html"), "utf8");
+const unitPastFixtureFile = "original/high/h1/1final/unit-past-preview-regression.js";
+const unitPastFixtureData = Array.from({ length: 12 }, (_, index) => ({
+  id: index + 1,
+  sourceOrdinal: index + 1,
+  grade: "고1",
+  subject: "공통수학1",
+  course: "공통수학1",
+  standardUnitKey: "H22-C-01",
+  standardUnit: "다항식의 연산",
+  subUnitKey: "H22-C-01-CORE",
+  subUnitParentKey: "H22-C-01",
+  subUnit: "핵심",
+  level: index < 4 ? "하" : index < 9 ? "중" : "상",
+  question_uid: `unit-past-mobile-${index + 1}`,
+}));
+const unitPastFixtureHtml = `<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="./"><title>Unit Past preview regression</title></head>
+<body class="unit-page"><div id="unit-kicker"></div><h1 id="unit-title"></h1><div id="unit-summary"></div><div id="unit-status" role="status" aria-live="polite"></div><nav id="unit-stepper"></nav><select id="unit-qpp"><option value="4" selected>4문항</option></select><main id="unit-content"></main>
+<script src="archive2-core.js"></script><script src="unit-past-exams-core.js"></script><script src="unit-past-exams.js"></script>
+<script>window.ARCHIVE_META_FOUNDATION_RUNTIME={status:'ACTIVE',ownedScopes:[],taxonomyRows:[]};window.questionIndex=${JSON.stringify(unitPastFixtureData.map((question) => ({ ...question, sourceFile: unitPastFixtureFile, sourceQuestionNo: question.id })))};window.UnitPastExams.init();</script></body></html>`;
 const archive2ExamData = "exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js";
 const archive2ExamSource = path.join(root, "archive", archive2ExamData);
 const archive2ExamWindow = { questionBank: null, examTitle: "" };
@@ -26,6 +45,21 @@ let baseUrl;
 test.before(async () => {
   server = http.createServer((request, response) => {
     const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
+    if (pathname === "/archive/__unit-past-preview-regression.html") {
+      response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      response.end(unitPastFixtureHtml);
+      return;
+    }
+    if (pathname === `/archive/exams/${unitPastFixtureFile}`) {
+      response.writeHead(200, { "Content-Type": "text/javascript; charset=utf-8" });
+      response.end(`window.examTitle='Unit Past regression fixture';window.questionBank=${JSON.stringify(unitPastFixtureData.map((question) => ({
+        ...question,
+        content: `Fixture question ${question.id}`,
+        answer: question.id,
+        solution: `Fixture solution ${question.id}`,
+      })))};`);
+      return;
+    }
     const relative = pathname.replace(/^\/+/, "").split("/").join(path.sep);
     const file = path.resolve(root, relative);
     if (file !== root && !file.startsWith(root + path.sep)) {
@@ -95,6 +129,29 @@ async function openEngine(options) {
   return page;
 }
 
+async function openArchiveIndex(search = "") {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  await page.addInitScript(() => {
+    window.__archiveOpenedUrls = [];
+    window.open = (url) => { window.__archiveOpenedUrls.push(String(url)); return null; };
+    window.addEventListener("load", (event) => event.stopImmediatePropagation(), true);
+  });
+  await page.route("https://**/*", (route) => route.abort());
+  await page.goto(`${baseUrl}/archive/index.html${search}`, { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() =>
+    typeof window.buildAssignTargetPreviewUrl === "function" &&
+    typeof window.Archive2Output?.engineUrl === "function",
+  null, { timeout: 120000 });
+  return page;
+}
+
+async function buildAssignPreviewUrl(page, item) {
+  return page.evaluate((assignmentItem) => {
+    window.eval(`AssignTarget = ${JSON.stringify({ item: assignmentItem, qpp: 4 })}`);
+    return window.buildAssignTargetPreviewUrl();
+  }, item);
+}
+
 async function visibleAnswerLayout(page) {
   return page.evaluate(() => {
     const grid = document.querySelector("#print-area .ans-grid");
@@ -125,7 +182,133 @@ test("Archive2 output URLs carry an explicit context marker through every engine
   }
   assert.equal((archive2Workspace.match(/\bO\.engineUrl\(/g) || []).length, 4);
   assert.doesNotMatch(archive2Workspace, /new URL\(\s*["'](?:mixed_)?engine\.html["']/);
-  assert.doesNotMatch(archive1Index, /archive2Context/);
+});
+
+test("390px Unit Past embedded preview carries Archive2 context and uses one-column reflow", { timeout: 300000 }, async () => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const session = encodeURIComponent(Buffer.from(JSON.stringify({ role: "teacher", login_id: "browser-qa", name: "브라우저 검수" }), "utf8").toString("base64"));
+  try {
+    await page.goto(`${baseUrl}/archive/__unit-past-preview-regression.html?grade=h1#apmsess=${session}`, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() =>
+      document.querySelector("#unit-content .unit-card:not(:disabled), #unit-content .unit-error") ||
+      document.querySelector("#unit-status.is-error"),
+    null, { timeout: 30000 });
+    const catalog = await page.evaluate(() => ({
+      url: location.href,
+      title: document.title,
+      hasCore: Boolean(window.UnitPastExamsCore),
+      hasApi: Boolean(window.UnitPastExams),
+      questionCount: window.questionIndex?.length || 0,
+      status: document.getElementById("unit-status")?.textContent || "",
+      content: document.getElementById("unit-content")?.innerText.slice(0, 500) || "",
+      cards: document.querySelectorAll("#unit-content .unit-card:not(:disabled)").length,
+    }));
+    assert.ok(catalog.cards > 0, JSON.stringify(catalog));
+    await page.locator("#unit-content .unit-card:not(:disabled)").first().click();
+    await page.waitForSelector("#unit-subunits", { timeout: 30000 });
+    await page.locator("#unit-quick-count").fill("8");
+    await page.locator("#unit-quick-count").dispatchEvent("change");
+    await page.getByRole("button", { name: /미리보기로 이동/ }).click();
+    await page.waitForSelector("#unit-preview-iframe", { timeout: 30000 });
+    await page.waitForFunction(() => {
+      const frame = document.getElementById("unit-preview-iframe");
+      const doc = frame?.contentDocument;
+      return doc?.documentElement?.dataset.apRenderError ||
+        (doc?.documentElement?.dataset.apRenderReady === "true" &&
+          doc.body?.classList.contains("screen-fit-mode") &&
+          Boolean(doc.querySelector("#print-area .grid-container")));
+    }, null, { timeout: 60000 });
+    const preview = await page.evaluate(() => {
+      const frame = document.getElementById("unit-preview-iframe");
+      const doc = frame?.contentDocument;
+      const grid = doc?.querySelector("#print-area .grid-container");
+      return {
+        url: frame?.src || null,
+        urlMarker: frame ? new URL(frame.src).searchParams.get("archive2Context") : null,
+        documentMarker: doc?.documentElement?.dataset.archive2Context || null,
+        renderReady: doc?.documentElement?.dataset.apRenderReady || null,
+        renderError: doc?.documentElement?.dataset.apRenderError || null,
+        preview: frame ? new URL(frame.src).searchParams.get("preview") : null,
+        parentViewport: innerWidth,
+        frameViewport: frame?.contentWindow?.innerWidth || null,
+        screenFit: doc?.body?.classList.contains("screen-fit-mode") || false,
+        gridPresent: Boolean(grid),
+        columns: grid ? getComputedStyle(grid).gridTemplateColumns.trim().split(/\s+/).length : 0,
+      };
+    });
+    assert.equal(preview.urlMarker, "archive2", JSON.stringify(preview));
+    assert.equal(preview.documentMarker, "archive2", JSON.stringify(preview));
+    assert.equal(preview.preview, "1", JSON.stringify(preview));
+    assert.equal(preview.parentViewport, 390, JSON.stringify(preview));
+    assert.equal(preview.screenFit, true, JSON.stringify(preview));
+    assert.equal(preview.columns, 1, JSON.stringify(preview));
+    assert.ok(preview.frameViewport <= 640, JSON.stringify(preview));
+  } finally {
+    await page.close();
+  }
+});
+
+test("Archive2 embedded original assignment preview uses the marked engine URL", async () => {
+  const page = await openArchiveIndex("?archive2Issue=preview-regression");
+  try {
+    const href = await buildAssignPreviewUrl(page, {
+      file: "original/high/h1/1mid/23_preview-regression.js",
+      school: "Archive2 fixture",
+      subject: "공통수학1",
+    });
+    const url = new URL(href);
+    assert.equal(url.pathname, "/archive/engine.html");
+    assert.equal(url.searchParams.get("archive2Context"), "archive2");
+    assert.equal(url.searchParams.get("preview"), "1");
+  } finally {
+    await page.close();
+  }
+});
+
+test("Archive2 embedded Unit Past assignment preview uses the marked mixed-engine URL", async () => {
+  const page = await openArchiveIndex("?unitPastAssign=unit-past-preview-regression&archive2Embedded=1");
+  try {
+    const href = await buildAssignPreviewUrl(page, {
+      unitPastSnapshotKey: "unit-past-preview-regression",
+      identityTitle: "Archive2 Unit Past fixture",
+      qCount: 12,
+      count: 12,
+    });
+    const url = new URL(href);
+    assert.equal(url.pathname, "/archive/mixed_engine.html");
+    assert.equal(url.searchParams.get("archive2Context"), "archive2");
+    assert.equal(url.searchParams.get("key"), "unit-past-preview-regression");
+  } finally {
+    await page.close();
+  }
+});
+
+test("Archive1 goEngine and goUnitPastMixedEngine launches remain marker-free", async () => {
+  const page = await openArchiveIndex("?legacy=1");
+  try {
+    const hrefs = await page.evaluate(() => {
+      localStorage.setItem("mixedQuestions_archive1-legacy-regression", JSON.stringify([{ answer: "1" }]));
+      window.goEngine({
+        file: "original/high/h1/1mid/23_legacy-regression.js",
+        school: "Archive1 fixture",
+        subject: "공통수학1",
+        questionCount: 1,
+      }, "exam", 4);
+      window.goUnitPastMixedEngine({
+        unitPastSnapshotKey: "archive1-legacy-regression",
+        qCount: 1,
+        count: 1,
+      }, "exam", 4);
+      return window.__archiveOpenedUrls;
+    });
+    assert.equal(hrefs.length, 2);
+    assert.equal(new URL(hrefs[0]).pathname, "/archive/engine.html");
+    assert.equal(new URL(hrefs[0]).searchParams.get("archive2Context"), null);
+    assert.equal(new URL(hrefs[1]).pathname, "/archive/mixed_engine.html");
+    assert.equal(new URL(hrefs[1]).searchParams.get("archive2Context"), null);
+  } finally {
+    await page.close();
+  }
 });
 
 test("390px Archive2 answers display 1..N naturally through shared and fallback renderers", { timeout: 300000 }, async () => {
