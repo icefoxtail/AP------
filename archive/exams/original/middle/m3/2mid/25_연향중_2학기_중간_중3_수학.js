@@ -384,8 +384,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 호의 길이의 비는 같은 원에서 중심각의 비와 같다.\n조건 정리: 세 호의 비가 $3:4:2$이고 전체 중심각의 합은 $360^\\circ$이다.\n풀이 방향: 호 $AB$에 대한 중심각 $\\angle AOB$를 구한 뒤 두 변과 끼인각으로 넓이를 구한다.\n정석 풀이: $\\angle AOB=360^\\circ\\times\\dfrac{3}{3+4+2}=120^\\circ$이다. $OA=OB=8$이므로 $\\triangle ABO$의 넓이는 $\\dfrac12\\times8\\times8\\times\\sin120^\\circ=32\\times\\dfrac{\\sqrt3}{2}=16\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q12.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

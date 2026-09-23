@@ -128,9 +128,9 @@ window.questionBank = [
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-07",
-    "standardUnit": "피타고라스 정리",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -148,8 +148,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 직사각형의 중심과 평행·수직 관계를 이용해 닮은 직각삼각형을 만든다.\n$BD=2BO=10\\rm\\,cm$이고, 직사각형의 세로 길이는 $6\\rm\\,cm$이므로 점 $O$에서 $AD$까지의 수직거리는 $3\\rm\\,cm$이다.\n점 $O$에서 $AD$에 수직선을 내려 그 발을 $H$라 하면 $OH=3\\rm\\,cm$이다.\n$EO\\perp BD$, $EH\\parallel BC$, $OH\\parallel DC$이므로 $\\triangle EOH\\sim\\triangle BCD$이다.\n따라서 $EO:BD=OH:BC=3:8$이므로 $EO=10\\times\\dfrac{3}{8}=\\dfrac{15}{4}\\rm\\,cm$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-    "subUnit": "피타고라스 정리의 활용",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
