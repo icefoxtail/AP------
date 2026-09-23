@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "h1-stagea-batch01-comparison-checkpoint-v1",
+  "status": "PRELIMINARY_PENDING_SOURCE_REPAIR_UPSTREAM_CORRECTION_FINAL_VALIDATOR",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "denominator": 20,
+  "aReviewed": 20,
+  "bReviewed": 20,
+  "abMatch": 9,
+  "abConflict": 11,
+  "cReviewed": 11,
+  "twoOfThreeConsensus": 3,
+  "threeWaySplit": 8,
+  "solDirectReviewed": 8,
+  "sourceOrUpstreamAffectedQueueIndexes": [
+    3,
+    10,
+    11,
+    14,
+    15
+  ],
+  "artifacts": [
+    {
+      "file": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl",
+      "sha256": "4fe424af5daddcc17794349a43d4b6c7c8a84413afc89dce7cfe4350430d50e0"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sha256": "ca29ef0f5f6add39179eb8e9a3f842990fb0b0c11c2131cf2ef44ef0a3d42ee1"
+    },
+    {
+      "file": "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "sha256": "07b5bbda81558ae5cf49a270bd8fbc84c8e153d9d082c54b968ff4692642f34b"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sha256": "1af9e1447fc92790e00cec735ee7eb7b0659155b44ea24e4652de501029c0756"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_BATCH01_2.jsonl",
+      "sha256": "e4146157722287edd3b7d62b777a911cfebb2bd21f0134d0e9737ec8f6ea2342"
+    },
+    {
+      "file": "H1_STAGEA_SOL_DIRECT_HOLD_BATCH01_2.jsonl",
+      "sha256": "511a3ea3691008231d58475fec8a06dedb07ccd190a545629816a65c55f7f89e"
+    }
+  ],
+  "rows": [
+    {
+      "queueIndex": 1,
+      "questionUid": "qid_v1_d16e9f8b6e881e82ad11e0d9bafc0bee378e04d3045b9a9368834e179db79e6f",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#4",
+      "sourceFingerprint": "bffd843ff941706e0a0cf5d750aafcdcdd12f370d6efa79519d835a6672d74fc",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "LUNA_2_OF_3_CONSENSUS",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 2,
+      "questionUid": "qid_v1_74b35c180f6054a6756a89f1e390fe03434a1439274ec9e9047877562bb67730",
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#22",
+      "sourceFingerprint": "ab60c1ded71e5fd6bd0ffc6e857601635e7757747931c67c5aef7e46a074156f",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 3,
+      "questionUid": "qid_v1_001962b3c8131aa6e7eb564b2e802d95871374cac8e5db91cce53fcdeb993891",
+      "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#18",
+      "sourceFingerprint": "4dcc8dc81fcf4f873781ba1e76575badf8b20dd71528d4a3fa534e58c2761def",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_2.jsonl",
+      "sourceRepairMayInvalidate": true
+    },
+    {
+      "queueIndex": 4,
+      "questionUid": "qid_v1_f7f70eda19a970ade8f9a52734a998cd7dce928e7d864065c8d403d576ac1ac4",
+      "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#20",
+      "sourceFingerprint": "261ef2bc4ca35de24f966a063e3dcd55b1aa7f35718cc38d572e2a368d6c8eff",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 5,
+      "questionUid": "qid_v1_3141603e392470b3bde39f91dce6b68483c93f2959b588992dff4090da1a89df",
+      "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#8",
+      "sourceFingerprint": "f55ddb35a80b8073ade25ccc620725c8b2762fc7739ee02a40fd3fc20698e806",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 6,
+      "questionUid": "qid_v1_f6fc89187a9f7f32fbf752f6a1306ff1dc9333514e693bd5d93a2bfc5b140f7e",
+      "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#20",
+      "sourceFingerprint": "21fa7167a51dd5cb7d784e9cf3f2f85ade5ab4287c119112c1a2de5ca100081a",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 7,
+      "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "dd8f2e4785ee233c24e04af77a167faced9861f3d31cf046f6e5247709be7733",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 8,
+      "questionUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+      "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#5",
+      "sourceFingerprint": "a33b90c64dca2b2c94b9b65823aadb391c85c700d4614660154e99ac069a9f72",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 9,
+      "questionUid": "qid_v1_bd12593a1ceeac51d514cc6532afd8a18a792e9758eb5240df252059d76ec605",
+      "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "be7df941da4c8cfe14989283380756fe16a08bf34d0f93a7b080441a26409a46",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 10,
+      "questionUid": "qid_v1_7ac9ba1089e9580371efd79670fbab5cd3d8d897187dce53c36b643e09b10294",
+      "sourceIdentity": "original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js#22",
+      "sourceFingerprint": "abe7324f35adf4fa836c8d99f98ffbf51e1915a0019f7850876b0c50841fb982",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_HOLD_BATCH01_2.jsonl",
+      "sourceRepairMayInvalidate": true
+    },
+    {
+      "queueIndex": 11,
+      "questionUid": "qid_v1_f17059bdf5e0c3b62f55ad859628b311eb7e9eb9e617764151a6cf7f77a3439c",
+      "sourceIdentity": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "4b09cf205105ad147d433798c292ad574e0e70602fb2f0f1266ce9f445c6a910",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "LUNA_2_OF_3_CONSENSUS",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "sourceRepairMayInvalidate": true
+    },
+    {
+      "queueIndex": 12,
+      "questionUid": "qid_v1_b277f6aa10deedbc893e2aace264873c4ea02a54dca62fdc736b9d9c8a00d5ac",
+      "sourceIdentity": "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "cc5fcf19b51976b6df5192ed7cc6b3d0b8a8ac810ae2c907906ec40a8c7868f2",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_2.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 13,
+      "questionUid": "qid_v1_674bbb4c9daaa21abbddc6e3a65ce31d579ba56ff286823603f8347ee94aa5c6",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#10",
+      "sourceFingerprint": "e675bbd1b52f5d09f2b4125368839baf2424cdbd1e7f402b4b8ab2e140ef8024",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 14,
+      "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#17",
+      "sourceFingerprint": "f0118c222d20efb06e2fa1c71b933e1b81b235ae4288b6ffdd4b0eb1b6509387",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_HOLD_BATCH01_2.jsonl",
+      "sourceRepairMayInvalidate": true
+    },
+    {
+      "queueIndex": 15,
+      "questionUid": "qid_v1_87ad079d1c292383bb525712fb4c03a588a625e9f291e716ba4fc80628ee9faa",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#11",
+      "sourceFingerprint": "a5df4b49c1886389e8c6e348dc5abd83dff03eb60aa391c22797e2e9d4ccbe68",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "LUNA_2_OF_3_CONSENSUS",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_C_BATCH01_11.jsonl",
+      "sourceRepairMayInvalidate": true
+    },
+    {
+      "queueIndex": 16,
+      "questionUid": "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#15",
+      "sourceFingerprint": "88aff1397cd8f553fa3d288e41b05fa79f3a45cafa53af1cf651f563a5fbccf9",
+      "abMatch": false,
+      "provisionalDecisionProvenance": "SOL_DIRECT_ADJUDICATION",
+      "decisionEvidenceFile": "H1_STAGEA_SOL_DIRECT_BATCH01_4.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 17,
+      "questionUid": "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#19",
+      "sourceFingerprint": "debcb8b3a504cde696370fdebc36fa5dda8fb38d16ae0b27bede46b218a8951d",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 18,
+      "questionUid": "qid_v1_511c03ae0c962459b1699a01f931f7b775e651a67048aa016302f56f95e788dd",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#16",
+      "sourceFingerprint": "4c8018da9f12444ae21d152dddb9d6a5924ba04153e04ef49b4d73826b541b1c",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 19,
+      "questionUid": "qid_v1_f66a6b26e817c318d66980bd46b8a03d3aa4fd303ec5bc9f2b3946a98eed24d9",
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#7",
+      "sourceFingerprint": "6063087df022807781f8a1cfd47f86abd3756e0d24e5510cc8c11f9812a08628",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    },
+    {
+      "queueIndex": 20,
+      "questionUid": "qid_v1_96050be48db85ce14c8c836eff231cf2b9fe0189219ac2a72ab2b511f0a311b4",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#7",
+      "sourceFingerprint": "e193078e37b7c2ed46474c179cfc2a4229101b576972133e7a4910e3083168a9",
+      "abMatch": true,
+      "provisionalDecisionProvenance": "DUAL_LUNA_MATCH",
+      "decisionEvidenceFile": "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl;H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+      "sourceRepairMayInvalidate": false
+    }
+  ]
+}
