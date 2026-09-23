@@ -1,0 +1,4099 @@
+{
+  "schemaVersion": "h1-one-pass-pilot-manifest-v1",
+  "audience": "SOL_ONLY_NOT_FOR_PILOT_WORKERS",
+  "status": "APPROVED_FOR_BLIND_A_B",
+  "purpose": "Candidate 80-item integrated one-pass sample for Sol High approval/adjustment before any pilot dispatch; not a final pilot judgment.",
+  "denominator": {
+    "source": "H1 Stage2-complete semantic ledger",
+    "rows": 1170,
+    "uniqueUid": 1170,
+    "semanticLedgerIndex": "sol-checkpoint/H1_STAGE2_SEMANTIC_LEDGER_INDEX_1170.json",
+    "semanticLedgerIndexSha256": "cb62d8462ad00eea76d666981a26d946b2ae3992e6688d8cc1c62e37951561e7"
+  },
+  "selectionPolicy": {
+    "broadDomainTargets": {
+      "POLYNOMIAL": 24,
+      "EQINEQ": 32,
+      "COUNTING": 16,
+      "MATRIX": 8
+    },
+    "stageABReviewedTarget": "approximately 25-30; sample selected 28 when achievable",
+    "resolvedSourceIssueHoldAdjacentTarget": 8,
+    "l3BoundaryReferenceTarget": "at least 8; 12 selected through overlap with other strata",
+    "maximumPerCandidateL4Skeleton": 3,
+    "favorAlreadyWorkedUids": true,
+    "sourceMutationExclusion": "all H1 source JS files dirty in the worktree snapshot were excluded; pending D2/D3 UID queues were excluded",
+    "hiddenStratificationInputs": [
+      "current H1 archive JS source/current hashes",
+      "Stage2-complete ledger",
+      "Stage3 L3 candidate",
+      "Stage3 L4 candidate",
+      "StageA A/B presence and concept/condition/integration strata",
+      "Stage2 hold inventory",
+      "L3 boundary repair references"
+    ],
+    "exclusions": {
+      "pendingD2D3UidCount": 12,
+      "activeOrDirtySourceJsFileCount": 4,
+      "activeOrDirtySourceJsFiles": [
+        "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js",
+        "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+        "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js",
+        "original/high/h1/1mid/24_효천고_1학기_중간_고1_기출.js"
+      ]
+    },
+    "blindInputAllowedFields": [
+      "questionUid",
+      "sourceIdentity",
+      "sourceArchiveFile",
+      "sourceOrdinal",
+      "sourceFingerprint",
+      "contentHash",
+      "solutionHash",
+      "inputBundleSha",
+      "content",
+      "choices",
+      "answer",
+      "solution",
+      "sourceImagePath"
+    ],
+    "blindInputForbiddenMetadata": [
+      "L1/L2/L3/L4 keys or labels",
+      "crossConceptKeys",
+      "conditionKeys",
+      "integrationPattern",
+      "difficulty/level/curriculum",
+      "selection reason",
+      "prior verdict/review status",
+      "candidate/legacy fields"
+    ]
+  },
+  "totals": {
+    "selected": 80,
+    "uidUnique": 80,
+    "sourceUnique": 80,
+    "alreadyStageAABReviewed": 28,
+    "resolvedSourceIssueHoldAdjacent": 8,
+    "l3BoundaryReference": 12,
+    "sourceImageCount": 10,
+    "candidateL3Distinct": 28,
+    "candidateL4Distinct": 51
+  },
+  "distributions": {
+    "broadDomain": {
+      "COUNTING": 16,
+      "EQINEQ": 32,
+      "MATRIX": 8,
+      "POLYNOMIAL": 24
+    },
+    "curriculum": {
+      "2015": 35,
+      "2022": 45
+    },
+    "legacyDifficulty": {
+      "상": 27,
+      "중": 46,
+      "하": 7
+    },
+    "sourceSchool": {
+      "강남여고": 8,
+      "광양제철고": 3,
+      "금당고": 12,
+      "매산고": 7,
+      "매산여고": 6,
+      "복성고": 3,
+      "순천고": 6,
+      "순천여고": 3,
+      "여수고": 1,
+      "여천고": 1,
+      "제일고": 8,
+      "충무고": 1,
+      "팔마고": 9,
+      "한영고": 3,
+      "효천고": 9
+    },
+    "candidateL3": {
+      "PT_ABSOLUTE_INEQUALITY_EXTREMUM": 1,
+      "PT_COUNTING_ARRANGEMENT": 4,
+      "PT_COUNTING_REPEATED_ASSIGNMENT": 2,
+      "PT_COUNTING_SELECTION_DISTRIBUTION": 3,
+      "PT_FUNCTION_COUNTING": 1,
+      "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY": 2,
+      "PT_H1_COMPLEX_CONDITION_EQUATION": 2,
+      "PT_H1_COMPLEX_OPERATION": 2,
+      "PT_H1_COMPLEX_POWER_ROOT": 2,
+      "PT_H1_COUNTING_PRINCIPLE_GENERAL": 5,
+      "PT_H1_HIGHER_DEGREE_EQUATION": 2,
+      "PT_H1_LINEAR_SYSTEM_INEQUALITY": 2,
+      "PT_H1_MATRIX_BASIC_OPERATION": 2,
+      "PT_H1_MATRIX_EQUATION": 2,
+      "PT_H1_MATRIX_MULTIPLICATION": 2,
+      "PT_H1_MATRIX_POWER_IDENTITY": 2,
+      "PT_H1_POLY_DIVISION_REMAINDER": 7,
+      "PT_H1_POLY_FACTORIZATION": 5,
+      "PT_H1_POLY_FORMULA_SYMMETRIC": 3,
+      "PT_H1_POLY_IDENTITY_COEFFICIENT": 5,
+      "PT_H1_POLY_OPERATION_EXPANSION": 4,
+      "PT_H1_QUADRATIC_DISCRIMINANT": 1,
+      "PT_H1_QUADRATIC_EXTREMA": 4,
+      "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 5,
+      "PT_H1_QUADRATIC_INEQUALITY": 3,
+      "PT_H1_QUADRATIC_RECONSTRUCTION": 2,
+      "PT_H1_ROOT_COEFFICIENT_RELATION": 2,
+      "PT_H1_SYSTEM_EQUATION": 2,
+      "UNASSIGNED": 1
+    },
+    "candidateL4": {
+      "TPL_AMGM_MINIMUM": 1,
+      "TPL_COMBINATION_SELECTION": 3,
+      "TPL_H1_ABSOLUTE_DIRECT_INTERVAL": 1,
+      "TPL_H1_ABSOLUTE_PIECEWISE_CASE": 1,
+      "TPL_H1_COMPLEX_COMPONENT_OPERATION": 1,
+      "TPL_H1_COMPLEX_CONJUGATE_NORM": 1,
+      "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION": 1,
+      "TPL_H1_COMPLEX_I_PERIOD": 1,
+      "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT": 1,
+      "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD": 1,
+      "TPL_H1_COUNTING_DIRECT_CASE": 3,
+      "TPL_H1_COUNTING_GRAPH_PATH_COLOR": 2,
+      "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE": 1,
+      "TPL_H1_DIVISIBILITY_FACTOR_CONDITION": 2,
+      "TPL_H1_DIVISION_RECONSTRUCTION": 2,
+      "TPL_H1_FACTORIZATION_APPLICATION": 2,
+      "TPL_H1_FACTORIZATION_STANDARD": 3,
+      "TPL_H1_FORMULA_SYMMETRIC": 3,
+      "TPL_H1_HIGHER_FACTOR_ROOT": 1,
+      "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION": 1,
+      "TPL_H1_IDENTITY_COEFFICIENT_COMPARE": 3,
+      "TPL_H1_IDENTITY_SPECIAL_VALUE": 2,
+      "TPL_H1_LINEAR_INEQUALITY_INTERVAL": 1,
+      "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER": 1,
+      "TPL_H1_MATRIX_BASIC_DIRECT": 1,
+      "TPL_H1_MATRIX_BASIC_EQUALITY": 1,
+      "TPL_H1_MATRIX_EQUATION_LINEAR": 1,
+      "TPL_H1_MATRIX_EQUATION_STRUCTURAL": 1,
+      "TPL_H1_MATRIX_POWER_PERIOD": 1,
+      "TPL_H1_MATRIX_POWER_POLYNOMIAL": 1,
+      "TPL_H1_MATRIX_PRODUCT_DIRECT": 1,
+      "TPL_H1_MATRIX_PRODUCT_MODEL": 1,
+      "TPL_H1_POLY_COEFFICIENT_EXTRACTION": 2,
+      "TPL_H1_POLY_OPERATION_DIRECT": 2,
+      "TPL_H1_QUADRATIC_EXTREMA_MODEL": 2,
+      "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL": 2,
+      "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY": 2,
+      "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER": 1,
+      "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL": 2,
+      "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY": 3,
+      "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION": 1,
+      "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX": 1,
+      "TPL_H1_REMAINDER_LINEAR_EVALUATION": 3,
+      "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT": 1,
+      "TPL_H1_SYSTEM_DIRECT": 1,
+      "TPL_H1_VIETA_SYMMETRIC_VALUE": 1,
+      "TPL_H1_VIETA_TRANSFORMED_ROOT": 1,
+      "TPL_IDENTICAL_OBJECT_PERMUTATION": 1,
+      "TPL_PERMUTATION_STANDARD_CONSTRAINT": 3,
+      "TPL_REPEATED_PERMUTATION_ASSIGNMENT": 2,
+      "TPL_SURJECTION_COUNT": 1,
+      "UNASSIGNED": 1
+    },
+    "stageAABReviewedByDomain": {
+      "POLYNOMIAL": 22,
+      "EQINEQ": 6,
+      "COUNTING": 0,
+      "MATRIX": 0
+    },
+    "sourceIssueHoldAdjacentByDomain": {
+      "POLYNOMIAL": 1,
+      "EQINEQ": 5,
+      "COUNTING": 1,
+      "MATRIX": 1
+    },
+    "l3BoundaryReferenceByDomain": {
+      "POLYNOMIAL": 0,
+      "EQINEQ": 12,
+      "COUNTING": 0,
+      "MATRIX": 0
+    },
+    "actualCrossConceptItems": 16,
+    "actualConditionItems": 60,
+    "compositeItems": 61,
+    "perCandidateL4Maximum": 3
+  },
+  "blindInput": {
+    "file": "one-pass-pilot/worker-input/H1_ONE_PASS_PILOT_BLIND_INPUT_80.jsonl",
+    "records": 80,
+    "sha256": "2001e7b2c079a5d202ce8dd2a8c49d93e3678f9e81b567be3ceb9a1ef51cdc1b"
+  },
+  "selectedItems": [
+    {
+      "sampleIndex": 1,
+      "questionUid": "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#19",
+      "sourceArchiveFile": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "232210f51b6dd97a6dee0a36139eeba2793997b5052368f7491acfbd845b4de0",
+      "sourceFingerprint": "debcb8b3a504cde696370fdebc36fa5dda8fb38d16ae0b27bede46b218a8951d",
+      "contentHash": "8f98a6ca6c5ec3f21ac5bd6d2754cde422fb3d125f5af8023d160246a6a977d2",
+      "solutionHash": "b599c544ff65f6cd52c7fd1b9b4b827bfa59724d4d37f160586cbaa4584a61b7",
+      "inputBundleSha": "646f768d6e7dbadd49e16018902f8a52ebb151b7555523698c761a750ceb4612",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-02",
+        "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISIBILITY_FACTOR_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "나누어떨어짐·인수 조건 골격",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "P(0),P(2)∈{0,1}",
+          "P(1)=0 또는 P(-1)=0"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "SOURCE_FIDELITY_REVIEW_REQUIRED",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 2,
+      "questionUid": "qid_v1_ab00d0fc95efd3711c48d9dc52d861558a5b1c4ed8a5e882cc9e1735886cb366",
+      "sourceIdentity": "original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js#13",
+      "sourceArchiveFile": "original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 13,
+      "currentSourceJsSha256": "b6b220f2d682dca44ec9a10b4f2f0767b74356571e79177eebd2e59c070d785b",
+      "sourceFingerprint": "5cfc86e7bb3d44835258052c48c4bfc9bb35042fdaa617d9b2dc70fbcaee9151",
+      "contentHash": "179faf8dd8cb83f16bda27582cf9135b8981fcbe2b5a28039f4592e988455997",
+      "solutionHash": "5d2a4caa337897cc5a0ed7db47b917b6a18ed8b6939199118bb356ee36882db8",
+      "inputBundleSha": "bcd6a621b07eb8415c110f44d45aa18021943d2075b2596eadd25e1c93462aff",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+        "sourceSchool": "순천여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "연립부등식의 해집합 조건",
+        "candidateL4": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_INEQUALITY_QUADRATIC"
+        ],
+        "actualConditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "stage2Conditions": [
+          "m은 정수",
+          "모든 실수 x∈[-2,-1)"
+        ],
+        "integrationPatterns": [
+          "INTERDEPENDENT",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "SOLUTION_QUANTIFIER_SCOPE_ERROR",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 3,
+      "questionUid": "qid_v1_1ac42169f81c95ff16a14fe3fd34195b4f82a34a64c3aad16e7ef4981160ac0b",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#22",
+      "sourceArchiveFile": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 22,
+      "currentSourceJsSha256": "35cfd82b82a822040a977f3b55bef804696f96a88d474867a88b0868f2c9f6db",
+      "sourceFingerprint": "aa616b1485e3b6174ad918c188372d710253f9717044706928f663d7f202dcee",
+      "contentHash": "ce40b5bd2b52a7e2d91c8ae2eb72846520d9c90e56ec6935ac11c2f3a60ff224",
+      "solutionHash": "46c139e90181610746ad9bc538ace2ce872bd27ea9935a3e037cc5037865b8aa",
+      "inputBundleSha": "17248b196f3d0e3ec187ca480061e3b4b5f64037f0832006dff9d2fa22a87a83",
+      "sourceImagePath": "assets/images/26_매산여고_1학기_중간_고1_기출/q22.png",
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "0≤t≤6"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "SOLUTION_AREA_FORMULA_INCORRECT; ANSWER_SOLUTION_MATH_CONTRADICTION",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 4,
+      "questionUid": "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#22",
+      "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 22,
+      "currentSourceJsSha256": "d1f434d8dc9c78b4b1b38997bf3474610a28279681b4deba337ec4aa79c981e5",
+      "sourceFingerprint": "26d13b2ec74b3a3446a6e145e12ae73c9427e8819ac30badcc5b8f4d122c1e97",
+      "contentHash": "a670d77ae54cfeabc7f54fe99d3291d79ae3cd03ea3bb457fd881abda8885f9c",
+      "solutionHash": "afe3e9915477ce216d3e1f7ab307e030b5b95ed538f44608096fe7f3c61dbc9d",
+      "inputBundleSha": "f3873fea26f367015f37a2ed7285823495f88fe56dfa5bf24c78d8f90a680c62",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-FUNCTION_BASIC",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "서로 다른 세 교점"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "SOLUTION_NOT_REPRODUCIBLE_GENERIC_STUB; ANSWER_SOLUTION_MATH_CONTRADICTION",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 5,
+      "questionUid": "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#10",
+      "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "d1f434d8dc9c78b4b1b38997bf3474610a28279681b4deba337ec4aa79c981e5",
+      "sourceFingerprint": "1ba3ffde15f295296761838e23e27fcd9be5a563e347df53ea1aa50a942a09f6",
+      "contentHash": "2af2216393254dfbcac274c64c78e1e0318db73b61471347e7b8c1d123c9bf2d",
+      "solutionHash": "9d21af1ec207cdeec6808388113bd6e27998e22a374950777a03a0ca50186484",
+      "inputBundleSha": "85a7d9c52f627bbf23d5fe4614944a72604e825e377600b9dd10fc54c012a1c7",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-EQUATION_BASIC",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "고차방정식의 인수분해·치환 구조",
+        "candidateL4": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "서로 다른 두 실근"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "NON_REPRODUCIBLE_GENERIC_SOLUTION",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 6,
+      "questionUid": "qid_v1_7cbc4b1640bcde2eaa2217408c2000a6de38220cc0a2f8de7a5eef102fc60038",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#17",
+      "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 17,
+      "currentSourceJsSha256": "54669b7f56b5e816d952a323c9b43cd38c004fadcd52e8f8af387558c9aae7df",
+      "sourceFingerprint": "0fd90079ffac2ead4a4abfaf32efac3760ec8af92d3b87074c5dc883c5e59469",
+      "contentHash": "40656040eb7ff685f70c8bff1a02e3a210a53afb7b20fe7f7841b0f85391bf5c",
+      "solutionHash": "9c79f7c5391f45476bc37196974fca8052228393ab3552549505ef9a6c77ecbd",
+      "inputBundleSha": "248cda6dca16caefe5b85105dbf4d0bfd443bf5df04e031f0a808989bbf0cb2d",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "절댓값 식의 구간분기·해집합 판정",
+        "candidateL4": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "λ>0",
+          "계수 정규화 조건 누락"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "UNDERDETERMINED_QUADRATIC_COEFFICIENTS",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 7,
+      "questionUid": "qid_v1_7d14ef7e9447e406e1b0f3d24fdf956af2d38bb1f034c8c13921227df1698c02",
+      "sourceIdentity": "original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js#10",
+      "sourceArchiveFile": "original/high/h1/2final/23_매산여고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "a0073926dc98a8d196f6fa423a9facf95a3bb788d2d59f9f80067fda619ad346",
+      "sourceFingerprint": "20ae50f19886f18fcfee3e1e0e4d8b65b44bdefda9a9a097c3d8df3ee309f440",
+      "contentHash": "17bd08b4f27214bffc9fccb9cf548769a36f585cafe879b37c82588e6c552f56",
+      "solutionHash": "a293a6f712a0da2cfa496652b39bf4a8b298f9678b237a4a035dee2aa38b9b9e",
+      "inputBundleSha": "84d1e0dbaee1be388c8fc6c6e9cd0ecc6b1ba2833c9438615fd71fa278b28eda",
+      "sourceImagePath": "assets/images/23_매산여고_2학기_기말_고1_기출/q10.png",
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": null,
+        "candidateL3Status": "HOLD",
+        "candidateL3Reason": "source/visual blocker",
+        "candidateL4": null,
+        "candidateL4Status": "HOLD",
+        "candidateL4Reason": "source blocker",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "원본 경로 그래프 확인 필요"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "VISUAL_SOURCE_UNCLEAR",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 8,
+      "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#17",
+      "sourceArchiveFile": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "currentSourceJsSha256": "57d4f5a78ffcfaf97e3c4240879dfa0375ff581d3afc7c93194f125574f7ce4c",
+      "sourceFingerprint": "af8ed20f47895005d55dece0462fd49407083afb1ec74ba3470f6035e0361d96",
+      "contentHash": "8484743fff5934faa8c24a363e10414e141ba45d2bcc74116480505e1a4d22a7",
+      "solutionHash": "c3c856ecb4f40f696d632adb0894f6ff34d85b09c684365787caa75bc7bfa787",
+      "inputBundleSha": "9f71f6a40f0dd31a9d38a6b131185f6176936a03015268a1706ed466f180be77",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "resolved_stage2_source_issue_hold_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "순천여고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_BASIC_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+        "candidateL4": "TPL_H1_MATRIX_BASIC_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "p는 소수",
+          "x,y는 50 이하 자연수",
+          "x-1=p",
+          "y=11"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "SOURCE_MATRIX_EQUALITY_MISSING; SOLUTION_FALSE_HOLD",
+        "sourceIssueSeverity": "HOLD",
+        "sourceHoldResolution": "CLOSED_ROUTED_NO_SOURCE_MUTATION",
+        "sourceIssueHoldAdjacent": true,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 9,
+      "questionUid": "qid_v1_15ed928978e54af9cc686ef1652502ecb78158740d12497b30c068b2430e5567",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#9",
+      "sourceArchiveFile": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "currentSourceJsSha256": "483e70bb9d791873360b8c764f248dd96d89f7639ed952c2a63a4690af842e54",
+      "sourceFingerprint": "d2de29a4c9fb05818e36c0217fa140d1dfae4db78f7076f89de09e6262a77045",
+      "contentHash": "81ee2c5f6612b81654613f4fd79d8912725e1fd8d27daa8fcafd9e4d04572cb9",
+      "solutionHash": "49c282c1b2897ea42e48f207065eb83b4ae80abea91cba8af2869a284f8c8cfd",
+      "inputBundleSha": "2f2f86c062d1c6b9eccd56594f81c713cd7a84c3ad0b00d4e771753b30654f77",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-05",
+        "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+        "sourceSchool": "한영고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "근의 합·곱과 대칭식 활용",
+        "candidateL4": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 10,
+      "questionUid": "qid_v1_d67e97acf385bd29f6c50185f0a55f3b9a09313469cffbe4dfb05b20118723bb",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#18",
+      "sourceArchiveFile": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 18,
+      "currentSourceJsSha256": "db242d2a18658e80729453eddca0c3643dc5235cd920a784afcd70d993cc7501",
+      "sourceFingerprint": "64aa914ea618231eba1c856ad0d2b34ea819db96b2f0fdefe1499f1d1f107116",
+      "contentHash": "8c43c2acea3946c143c8aca64a6d80f788add86bf9bf336b5007dfbca1b27ff1",
+      "solutionHash": "51870b762ce0a6601eca5cf5d8509595f29b69f4e863b8ce06d4ef94889127b1",
+      "inputBundleSha": "77f00cde862915a1aefad963af73cdd62ed2930edfc24c5dc707e6ebf97d1cd7",
+      "sourceImagePath": "assets/images/26_효천고_1학기_중간_고1_기출/q18.png",
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "a>1"
+        ],
+        "integrationPatterns": [
+          "INTERDEPENDENT"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 11,
+      "questionUid": "qid_v1_9a8319ccf1f66cb2ea96af675e0c5c249434545c88873e5f5b6c3bcae4e2f2cd",
+      "sourceIdentity": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js#7",
+      "sourceArchiveFile": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 7,
+      "currentSourceJsSha256": "cd05829bb42ecc0721c320c0ae1b269f3e8d8ceb9f0cb4a2a65a109a1affaa3c",
+      "sourceFingerprint": "3e1a079ebdf1acf52106fa647ce2e36ae8c285e2939f19e658b9f4c9dec30e10",
+      "contentHash": "3ca4c6b68df029149346cde440dd8d6118baaeff2dda8d6164b978e563ccc811",
+      "solutionHash": "3a633a373a0df8b363161ad479931c377c136d5cf5170f982741972b8588a5cb",
+      "inputBundleSha": "89338a3528d78d8461f3238cc28dfe10c39e0b8a05756d82dbbb853c18ffa819",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-EQUATION_BASIC",
+        "sourceSchool": "순천여고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_SYSTEM_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "공통근을 이용한 연립 방정식 구조",
+        "candidateL4": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "a>b"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 12,
+      "questionUid": "qid_v1_3c301382694072797edb75eac337b9838cbdb0e1cb21fa803dcabb5679458aff",
+      "sourceIdentity": "original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js#22",
+      "sourceArchiveFile": "original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "currentSourceJsSha256": "b95f09a1f4d4dab059223763c6a926dc27190cf630eae2ceca4ed1df0b0782ab",
+      "sourceFingerprint": "882c475c821d22e101b709e40b8d4d1a7ef4605792ab701f0f003dea6d77926a",
+      "contentHash": "907a59455da487a0fca54c3d29b60cdedf7ef1117e2e579a44b541df54fb2ce4",
+      "solutionHash": "5a02b9949b033564f651c122e9eb7f7beb7320b2a5d271dc9b74fda102722f8c",
+      "inputBundleSha": "3a00738243b34437fdf057445603ec40f19118543e3debf8f5fd28f90a969af7",
+      "sourceImagePath": "assets/images/26_팔마고_1학기_기말_고1_기출/q22.png",
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "범위 또는 최적화 조건"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 13,
+      "questionUid": "qid_v1_dcce92f8647d76a488b8fd018f00075624a4610f904e4aa56744b9f55493a9bc",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#11",
+      "sourceArchiveFile": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "db242d2a18658e80729453eddca0c3643dc5235cd920a784afcd70d993cc7501",
+      "sourceFingerprint": "7d6cc85106576e567d68089c427f7fc0da5a6c7ffaca9ed9946d0a679f0514d1",
+      "contentHash": "16429bff92222b067e2f0ef2ca8f5f75fbe8032a292a343d0f1f409574682c61",
+      "solutionHash": "e63a97d8f8f72a1f796d55a50fd75084c2eba5968e623c5ca51c5137d75c147e",
+      "inputBundleSha": "a2c7def13114ce9ded843644b78834258883e02aa2e20f34d6c242d6fee69163",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-EQUATION_BASIC",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "고차방정식의 인수분해·치환 구조",
+        "candidateL4": "TPL_H1_HIGHER_FACTOR_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "근의 존재·중복 조건"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 14,
+      "questionUid": "qid_v1_faed450feef45e9e3f93a173a31d70209ccc890aa3e3d9b75fd212fb80b22327",
+      "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#11",
+      "sourceArchiveFile": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "172df92b148a2490bbe736bb011d0001c94902f2070fce5f903a0bad25bf3b1d",
+      "sourceFingerprint": "c5c7647a8213277bfcaa7bd689e4926740fb89c6fd173dbd9703443f2dad28c4",
+      "contentHash": "21abf2e8f0489cd7dca31222aaf3e56d38dee1ef7841f7c5d0ff1f1246d204af",
+      "solutionHash": "9d96a374dbe32b06e3d02fa29cdacb79afc13fc4c553bdc75ae4705e8d333778",
+      "inputBundleSha": "77d9ee3624a3f10ad5e8c66fa79b6e7798e20a3109ac6fb25282816e3bf3902f",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "접점"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 15,
+      "questionUid": "qid_v1_8e02669339d6bfd88d1d362c9411cc3703dfbec4b15727ca531c403cd231e98a",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#16",
+      "sourceArchiveFile": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 16,
+      "currentSourceJsSha256": "75a6309fd187db12baf4bd7411077c8e36fc776d028729551756e75754d05f85",
+      "sourceFingerprint": "36dadd34f29dce3459486683248552a1a5e1cc11ca8c48fa820769fabd4154a7",
+      "contentHash": "e25e203f8c3aa1366802c4586e59f49ef8037335f31ad371394324a215ba1705",
+      "solutionHash": "566b8fa03b167000482fa8a5e76fd85a39aad20cd0b68c6521dbde9f3f2cfa93",
+      "inputBundleSha": "0237e220f09d3ccd7db9ccc47cb1b88bb41cdba23d4792d2951c2bb5bec189cb",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-FUNCTION_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 최대·최소/최적화",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "서로 다른 두 실근"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 16,
+      "questionUid": "qid_v1_f803b386a28bb345ce140812801122e0da6032e3cf1b14a46b1b7695c9e780ae",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#18",
+      "sourceArchiveFile": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 18,
+      "currentSourceJsSha256": "86ff149b9ffeee4b740e8859ed991ae739b2a6a21b32d81378aa63032dcd0a62",
+      "sourceFingerprint": "29ccfde93e9d5ebf3d94f7e782a4c6ed6fd1ad9de6c3a0ef3b1a3b1e9b45217f",
+      "contentHash": "4553d360089355fced0f434369f033491c064b2d71efc4c232a3125adebd598c",
+      "solutionHash": "e16d48802f8bbed24408875f8003c5fa7281f5bcdfcb0eba5b5c473dd59794a2",
+      "inputBundleSha": "8288ee2b5eb49917872a3d0ce3f69128d8e07ce01f967f943fea31c1c25642bd",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "l3_boundary_repair_reference_stratum"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "그래프 교점·접점·근 구조",
+        "candidateL4": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_POSITIVE",
+          "서로 다른 두 실근"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": true
+      }
+    },
+    {
+      "sampleIndex": 17,
+      "questionUid": "qid_v1_d16e9f8b6e881e82ad11e0d9bafc0bee378e04d3045b9a9368834e179db79e6f",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#4",
+      "sourceArchiveFile": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 4,
+      "currentSourceJsSha256": "6a7324708d6fc8b5ce17530aa8a8bd73bb557289a04c616f6a6c336eba7d1ef7",
+      "sourceFingerprint": "bffd843ff941706e0a0cf5d750aafcdcdd12f370d6efa79519d835a6672d74fc",
+      "contentHash": "8924f9cf001261bef724d64dcdaacd797339e94a041ab45025e5503f6ea18804",
+      "solutionHash": "8a950e139c5fee4ddbc49254d8c1072f1c0ddac08f6142d4e92e139584f79058",
+      "inputBundleSha": "00d57827fb2f2ab28537e50627af5010fb295e769ca9c36ee83667b58c6c8b69",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "sourceSchool": "복성고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_COMBINATORICS_COUNTING"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 18,
+      "questionUid": "qid_v1_2a444ea8f786297b2d5e2dbe63b41c560c48a403945fc8b78925f98d201f8eb5",
+      "sourceIdentity": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js#19",
+      "sourceArchiveFile": "original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "75a6309fd187db12baf4bd7411077c8e36fc776d028729551756e75754d05f85",
+      "sourceFingerprint": "188b3f97dd70e2cac87ee39a5d98b64066718259454d4bbaa7d10c0e05ce8708",
+      "contentHash": "83f7cf2c6813f0829274f74c74c16d30283139b95c32e6cc248bf57bc3d817c7",
+      "solutionHash": "abab262bfa1efdd5728f3b83a97af7b9b507087f0e1413ffabfc731f2cd0f085",
+      "inputBundleSha": "c2b03f919db704bf2f3b2bc792ef7fb26d8153b8df63170eb5cd51639476a556",
+      "sourceImagePath": "assets/images/26_금당고_1학기_중간_고1_기출/q19.png",
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_AREA"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "VISUAL_DEPENDENCY"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 19,
+      "questionUid": "qid_v1_74b35c180f6054a6756a89f1e390fe03434a1439274ec9e9047877562bb67730",
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#22",
+      "sourceArchiveFile": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "currentSourceJsSha256": "0b801b4458088da27bd1cf00fe877b64992455bc3475617bc5a909075d2de80f",
+      "sourceFingerprint": "ab60c1ded71e5fd6bd0ffc6e857601635e7757747931c67c5aef7e46a074156f",
+      "contentHash": "8011b99799b219673dfd2a95e2f5add4bfa524a9016392c1655d3bb0ba4dc73f",
+      "solutionHash": "d9491bbb2499bf929d681991ff134939b60ac9659f3fd21bc01500953fed50fa",
+      "inputBundleSha": "27bae8334bb2210117c86f34ab9fe008abf0ce620077186f93a0369a474fb27c",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "나머지 평가 골격",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "actualConditionKeys": [
+          "COND_INTEGER"
+        ],
+        "stage2Conditions": [
+          "INTEGER_CONDITION",
+          "MONIC",
+          "REMAINDER_CONDITION"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "INTERDEPENDENT",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 20,
+      "questionUid": "qid_v1_a8bdf7d756d2c3b167c61ead976546a7654fb8e20c6094bd1f0a63677add3b25",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#9",
+      "sourceArchiveFile": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "currentSourceJsSha256": "09a35dcf88df9ae2782be0d41b286bf53bda09612e745010c31b7f21f75aaa6d",
+      "sourceFingerprint": "54015c5aa0c8f55b0d2b2639dc0960719b273f2412f0101a6bbca0c209599365",
+      "contentHash": "9248a7e62f38d7d8dc21421036bdc3dd714df979c32925694bc9bcda97f750f6",
+      "solutionHash": "713cc80fd688999da20f008b98bd0a019311b1e6c7a91d869cd9be15cf51b039",
+      "inputBundleSha": "1ec50e42576f94ab3426cf4eb7b7cbed6971f760e905ed726224056ebb228ca9",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "subUnitKey": "H22-C-03-FACTORIZATION",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 21,
+      "questionUid": "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#15",
+      "sourceArchiveFile": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "232210f51b6dd97a6dee0a36139eeba2793997b5052368f7491acfbd845b4de0",
+      "sourceFingerprint": "88aff1397cd8f553fa3d288e41b05fa79f3a45cafa53af1cf651f563a5fbccf9",
+      "contentHash": "153089c41ace715f0088253743cc516cb90801c64b8d45132209cb7e19eed46a",
+      "solutionHash": "c37628376e5f47586abb66a688c129fa526d699155bb0ef070d41f067f5b7258",
+      "inputBundleSha": "af27fbb59f6819c1027c6bf9cd03b41c1b7f4a254883baf0c3441f8146c73311",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-02",
+        "subUnitKey": "H15-SA-02-IDENTITY",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_FUNCTIONAL_EQUATION"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "1차식에서는 a≠0",
+          "모든 실수 x에 대한 항등식"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 22,
+      "questionUid": "qid_v1_87ad079d1c292383bb525712fb4c03a588a625e9f291e716ba4fc80628ee9faa",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#11",
+      "sourceArchiveFile": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "232210f51b6dd97a6dee0a36139eeba2793997b5052368f7491acfbd845b4de0",
+      "sourceFingerprint": "a5df4b49c1886389e8c6e348dc5abd83dff03eb60aa391c22797e2e9d4ccbe68",
+      "contentHash": "83f3756adf0279b416a509225ae8008bc4cdb30219cefce491cb7433727982d8",
+      "solutionHash": "1cb0471c03e1357d6d2ceb36758623764554ea29df560cf92567e2c815e8d438",
+      "inputBundleSha": "ebf64edef82b4d8a1186d8525a8a4fad2a146a3975716ea7f99ee152d26d10be",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-02",
+        "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_OPERATION_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_DISCRIMINANT"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "모든 실수 k에 대해 성립"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 23,
+      "questionUid": "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#23",
+      "sourceArchiveFile": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 23,
+      "currentSourceJsSha256": "09a35dcf88df9ae2782be0d41b286bf53bda09612e745010c31b7f21f75aaa6d",
+      "sourceFingerprint": "bd2f428d30fd960a78ec36a244148259d7d96d75f04c582a7aeab4558c0fe566",
+      "contentHash": "848bb3104923588c3c7744f8048d1b57d643cd1046af3ecd28dc0b2588871d5b",
+      "solutionHash": "e898a05c7887b4a052b6656ce1701df3a5a63f87a3beb39f41a477d8eee055a4",
+      "inputBundleSha": "9b0d8082ca7e9ce6b65f2e5553643da1d75b4f8e36689e127c6c923db0827bba",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-03",
+        "subUnitKey": "H22-C-03-POLYNOMIAL_BASIC",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_APPLICATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_NUMBER_PRIME_COPRIME",
+          "CC_POLYNOMIAL_DIVISION"
+        ],
+        "actualConditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "stage2Conditions": [
+          "NATURAL_NUMBER",
+          "REMAINDER_CONDITION"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 24,
+      "questionUid": "qid_v1_1e0cbbffd815f776e797e18e099207770615ab1a104f7a1887da3905d21f29e0",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#1",
+      "sourceArchiveFile": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 1,
+      "currentSourceJsSha256": "6a4782d5f17276e615d55ae92b2e3d113b9f44b0589d40a936c057db2ab524d4",
+      "sourceFingerprint": "eb04f30210b4d0e6fc042f4ff3f9e2467ef30346cf3c4f349f8092c0b4ee083b",
+      "contentHash": "0ae4b496e5eb505d33a2cb0b9721cb257a5fe991c48f2c4fa9f7720dbd58f2d7",
+      "solutionHash": "a42d3057030cb2e51de0bf0067e1cee75e80dc26b2c12b21e75cbaab9a74b676",
+      "inputBundleSha": "141eae65dc07f0b274b677beaab48f85b04c42c822574cf63ed31d0babbcb54a",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 25,
+      "questionUid": "qid_v1_73e54cbaf648061f24a78d07128394705b9b0e4b552c5e5bab53a21c6692b6a7",
+      "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#21",
+      "sourceArchiveFile": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 21,
+      "currentSourceJsSha256": "54669b7f56b5e816d952a323c9b43cd38c004fadcd52e8f8af387558c9aae7df",
+      "sourceFingerprint": "652dbe7462827d0cc6193793aae6e1e2ce6153b6203697eea4308f2b722da2ff",
+      "contentHash": "2e7bbcc880c22b64fd0fe977e216fb7d6b217efc65f04f578ea340965dc60702",
+      "solutionHash": "09c569fb59208e1a22f510b69fb8761f198806a0be162d9ec95bb4d529090c18",
+      "inputBundleSha": "393f0d9857404dd66cc7e3ceebd0fc3918314f19b99bafa3e722f940248495e2",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "나머지 평가 골격",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_CUBIC_EQUATION"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "REMAINDER_CONDITION"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 26,
+      "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#17",
+      "sourceArchiveFile": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "currentSourceJsSha256": "f2bb572862a82daf05bda742cfe2d7f30b7f7e79e39179fdb1daf312c75d09e7",
+      "sourceFingerprint": "f0118c222d20efb06e2fa1c71b933e1b81b235ae4288b6ffdd4b0eb1b6509387",
+      "contentHash": "5c74833a99ddb4eeca99993cff39618b6aa8f5021a6da0a15a7009cdd2815918",
+      "solutionHash": "2047e532d1087af21959aeb7b0149722d1fcc949bafc656ec8ceea2ac6fe1ed2",
+      "inputBundleSha": "40cc3550954b6fea9bbab6d5d2e0304cab987cae3a9637a35e33244e3d4a968f",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-01",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_OPERATION_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_AREA"
+        ],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [
+          "변의 길이 양수"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 27,
+      "questionUid": "qid_v1_ec7e97ac945535f2bef00fc10e7e92ba63da5808d3cd3f3cbe8770a5ddb91d37",
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#8",
+      "sourceArchiveFile": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "35cfd82b82a822040a977f3b55bef804696f96a88d474867a88b0868f2c9f6db",
+      "sourceFingerprint": "0ac4ae69c63d0060c33b87b25c319d1f8c85fb851aef6d3b287c3d2963c54302",
+      "contentHash": "69dd038e6a4aedaecae23367eda9207b5c43f244e01e66ebe9039355b46b6968",
+      "solutionHash": "71bd4f126f95eb0741634416f3947334d3e8351308ca2be24e23b705d809ccc0",
+      "inputBundleSha": "2837ce7004d2baf47f38d1f48bb8762e5e5c34c31c000d4473f15e986a023fab",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "subUnitKey": "H22-C-01-CORE",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 28,
+      "questionUid": "qid_v1_3bce5da9e542fbb4bcdd3f5ded87682d26eeb0196986ba4d662babd08d439bb7",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#19",
+      "sourceArchiveFile": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+      "sourceFingerprint": "24f89dfeacb0fb456f54907545c814258471029d323238c0b8a8d00ee8d8727b",
+      "contentHash": "bea30cd685ec58d0c313f485dbdf9147955e6f0c53c47f661d28845b718d3bad",
+      "solutionHash": "978fcb1c22f9ca9a6c8480c391614f80a62926f490670a2cd3a9638640059e7a",
+      "inputBundleSha": "e80736ed92f7466f6e478ba08e906f7e45bb256fcbc6979570b6edd82c939c2e",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-03",
+        "subUnitKey": "H15-SA-03-FACTORIZATION",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 29,
+      "questionUid": "qid_v1_b356600957d6ec8de4dec19361c7f1a95c51288eb2dd601c09b782f4a68c417c",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#10",
+      "sourceArchiveFile": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "db242d2a18658e80729453eddca0c3643dc5235cd920a784afcd70d993cc7501",
+      "sourceFingerprint": "ea763e8647aa4a7e10a5d3c9db4d4c019917c89e579f81f8454b1cfb04e996fb",
+      "contentHash": "06945f63c019d2cb0f5732949d9d7fb2e37205477e9a961edd8442230e8f1008",
+      "solutionHash": "d0fbab418e998a8df773fa2f2e83d6d592eb4c2469c11b3d9e35a50f153ee298",
+      "inputBundleSha": "7ac4a4b134e9693854800a62a3d3ce36bc1cf2bc2a611b482eb3878f48887a83",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [
+          "IDENTITY_FOR_ALL_X"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 30,
+      "questionUid": "qid_v1_163385facfa8a9da00f5d31a4399cf0a5cc641059376ce491c112b698f083e31",
+      "sourceIdentity": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js#14",
+      "sourceArchiveFile": "original/high/h1/1mid/25_매산고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 14,
+      "currentSourceJsSha256": "86ff149b9ffeee4b740e8859ed991ae739b2a6a21b32d81378aa63032dcd0a62",
+      "sourceFingerprint": "2f8a4c0858dc650ab77d5467c24a9ca302845a062a44b961f2aad9356ed5ea71",
+      "contentHash": "26c3496944033bd3678c99cc3a4a514edd93b961d7b16d8b3cf7425f95520e46",
+      "solutionHash": "6f5288744603ad6d94e5d36741f2fbf120958e5e0db4577047800a321396b360",
+      "inputBundleSha": "7c2bdf141946c3d14940edbfaad9fa719d5d442ce192183bb5f009fa98feffc7",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "subUnitKey": "H22-C-01-IDENTITY_REMAINDER",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_APPLICATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "DIVISIBLE",
+          "MONIC"
+        ],
+        "integrationPatterns": [
+          "INTERDEPENDENT"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 31,
+      "questionUid": "qid_v1_0052ff977f1f3544bf2248816a9882d5cc522c83bc7671a48c41d55690d7f07f",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#8",
+      "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "d1f434d8dc9c78b4b1b38997bf3474610a28279681b4deba337ec4aa79c981e5",
+      "sourceFingerprint": "0a8b782563d63d68894ce90a0d796eb480948741ad66c81fee2e55661100ab91",
+      "contentHash": "d199f584c880c51fd583965601f197e6cfcf8d20c158aabac0c0bea482eb88cb",
+      "solutionHash": "6d847106117beebc82e9f0d517492825f259d63f6a42dcf9ee4049547d19c5fc",
+      "inputBundleSha": "94d5d1dda8d4e950ea4b583211ac3ab2cbbd51d9af0e7c9b755b0ec5438d71e8",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_OPERATION_EXPANSION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 연산·전개·계수 추출 중심",
+        "candidateL4": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [
+          "IDENTITY_FOR_ALL_X"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 32,
+      "questionUid": "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
+      "sourceIdentity": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js#17",
+      "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "sourceOrdinal": 17,
+      "currentSourceJsSha256": "d1f434d8dc9c78b4b1b38997bf3474610a28279681b4deba337ec4aa79c981e5",
+      "sourceFingerprint": "8d934c116477d8ba8e8f8af60f410d473c3dd8333f80f744ec1d857bc2ceeb33",
+      "contentHash": "f9ec1b823752ad0edf562bef3ed87b40be925d56d6b1039e423ab9cdfe5e163f",
+      "solutionHash": "aa66689517e38f8182a7f92eddcfe015274e9ec6efbd87ed37dd669b26b3d36d",
+      "inputBundleSha": "84504d5eff6971a7270211fe618f00a34d2b9cd089d5472521824b1002ad3272",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-02",
+        "subUnitKey": "H22-C-02-CORE",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISIBILITY_FACTOR_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "나누어떨어짐·인수 조건 골격",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [
+          "P(0)<0",
+          "P(2)=0",
+          "Q(0)>0",
+          "Q(1)>0"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "INTERDEPENDENT",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 33,
+      "questionUid": "qid_v1_a99aba8b48115cdfbfaddf2818b6c0c815e3416f294f1f1b1671790444c09b3d",
+      "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#5",
+      "sourceArchiveFile": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 5,
+      "currentSourceJsSha256": "7547890712b20d2b4dd543f913efd0e8a7e187dcf1c67e6101f420fe486545c5",
+      "sourceFingerprint": "a33b90c64dca2b2c94b9b65823aadb391c85c700d4614660154e99ac069a9f72",
+      "contentHash": "7839e0ece2cf149b45f93a996f21acfca0229d48341fb2291157c5fc1d443730",
+      "solutionHash": "5191cc5649f0d4f29017f04ad38eb3a29cdb3162b55c94ec50b7889b72d27dae",
+      "inputBundleSha": "6ab7df4079a4d0fc9286800b47da25998307d64be04382c0807e8d8989b8a81c",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-02",
+        "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+        "sourceSchool": "여수고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_REMAINDER_LINEAR_EVALUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "나머지 평가 골격",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 34,
+      "questionUid": "qid_v1_1bae0b893f29cc4482f7a6adb9f3f4575640e59b7b5970f5ee3d8d7b514e76ec",
+      "sourceIdentity": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js#19",
+      "sourceArchiveFile": "original/high/h1/1mid/23_한영고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "483e70bb9d791873360b8c764f248dd96d89f7639ed952c2a63a4690af842e54",
+      "sourceFingerprint": "dd8f2e4785ee233c24e04af77a167faced9861f3d31cf046f6e5247709be7733",
+      "contentHash": "475c4fd131892c8d0cdd23f8e018c8e2e1ce940a21e58b8f9840f81ca1b223e0",
+      "solutionHash": "9994a8d7b71a4cb7704a36f7d7865590d4be199f8597f0a9f242dbf449f82737",
+      "inputBundleSha": "0e316a9e9b8621f2c9ac1a0583e7a1fecaa3868f533fe8462fa908e2c024f83f",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-01",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+        "sourceSchool": "한영고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "곱셈공식 변형·대칭 구조 활용",
+        "candidateL4": "TPL_H1_FORMULA_SYMMETRIC",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_COMPLETE_SQUARE"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 35,
+      "questionUid": "qid_v1_0547c180f0440e25cd8d0e3f6d6d99a191b7af3a42cec8628c91ffa97f1a820e",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#16",
+      "sourceArchiveFile": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 16,
+      "currentSourceJsSha256": "db242d2a18658e80729453eddca0c3643dc5235cd920a784afcd70d993cc7501",
+      "sourceFingerprint": "54aa0c0d9d86387b252906ac86934a9dfad2f549baca453c7eaa4845865c5d8a",
+      "contentHash": "2f163c12d56b4bb69888dcf895d50f3664e34a58fe461f34a9f852cecb18eccc",
+      "solutionHash": "a072cffaf08eac83b913109d15e3fad5d1d233ec6a80d552730aa9fb72fe9bf7",
+      "inputBundleSha": "942ebbe4c0d69fc7b1b6f83878c8299317f32362d7bb8a9f071c0443d19a9fc9",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-01",
+        "subUnitKey": "H22-C-01-IDENTITY_REMAINDER",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "ㄹ·ㅁ의 monic 차수 조건",
+          "모든 실수 x에 대한 항등식"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "INTERDEPENDENT"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 36,
+      "questionUid": "qid_v1_0dfda33af0430e79ca3fdb54f4cb45329e1445b80f069bcb33a2015488f80fc6",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#8",
+      "sourceArchiveFile": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+      "sourceFingerprint": "6f40ebc0807ceee67261f0e53bd2fb15b1fe08b5071a64498e80cdc73e50959b",
+      "contentHash": "3f50f8d2b330da65c9334d0c143096f9c0af4b446c2ec95f8d40f654486d5482",
+      "solutionHash": "7767b51b87b0ed9fca7e173cd347841a82e97065ed3951f596ecb904bb221d50",
+      "inputBundleSha": "aa33a6468b821ddf69c5ad44e6f6b1618c285fd48c24621338841d9269ee951f",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-03",
+        "subUnitKey": "H15-SA-03-COEFFICIENT_COMPARISON",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_FACTORIZATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "인수분해 구조가 정답 도달의 중심",
+        "candidateL4": "TPL_H1_FACTORIZATION_STANDARD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 37,
+      "questionUid": "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662",
+      "sourceIdentity": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js#17",
+      "sourceArchiveFile": "original/high/h1/1mid/25_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "currentSourceJsSha256": "232210f51b6dd97a6dee0a36139eeba2793997b5052368f7491acfbd845b4de0",
+      "sourceFingerprint": "13e6309b860b01568ace1045b8b34efd2729917f3f5cfab03e5564b0161a2794",
+      "contentHash": "954a06aebd45e7945c7374feb175b27d2b96eaac5f21058dbc7e68ddcde7c946",
+      "solutionHash": "15f0bd183146e0a2f2c2c1c5fb126f874bdbf20f8fbb8fb9cd235b76198e9094",
+      "inputBundleSha": "1f2283574bd6f7dbad0b2ed82f3f67fc704036f90a50971f1de89f14482ff110",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-01",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "항등식·계수 비교로 미정계수를 결정",
+        "candidateL4": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [
+          "COND_NONZERO"
+        ],
+        "stage2Conditions": [
+          "x≠0"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 38,
+      "questionUid": "qid_v1_dad058a459d2cc61b5547b40c438c207016bdc26202e14746df1ad5fc3933709",
+      "sourceIdentity": "original/high/h1/1final/26_금당고_1학기_기말_고1_기출.js#16",
+      "sourceArchiveFile": "original/high/h1/1final/26_금당고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 16,
+      "currentSourceJsSha256": "b6f44da73f8c5997b146e3eb642375380a4cd73a7e01eaab33eb33688187a545",
+      "sourceFingerprint": "ed88eda3d49aa3f2b7411ab80515f026248e99512c43082fcb262e525bf7aca5",
+      "contentHash": "8dac69506958425562716b8e051158904c6618917254aea5846dbecc56b72e7f",
+      "solutionHash": "6f61ae176429250e2a22a37ecc4b5f98c3ff196d89c470ce46c890f20ec85456",
+      "inputBundleSha": "d0757653c7cc037bddae9c052d991d827484622a4644a3664b301ba21ec10ae6",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+        "candidateL4": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "$\\alpha-\\beta\\ne4$"
+        ],
+        "integrationPatterns": [
+          "REINTERPRETATION",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 39,
+      "questionUid": "qid_v1_85959e8df94780fe75dbb81dc1a0b192d376f2bbb065dade58c708de64bc3fdf",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#10",
+      "sourceArchiveFile": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "45d7a4e38188f65642e2fa7797a69d4503ac9cf47d471d0f6e928875e0052f27",
+      "sourceFingerprint": "de09dceffe97a29812320b30339269c953bd0d45df58cc5b6a6193f9c7eb5299",
+      "contentHash": "7bd4a237b9c684fd8b8900f2095c4d5a08db36cba3425782cf7402327cf6b3ea",
+      "solutionHash": "60bf248e2e85d81a0aeea57d998a6a54461df584113bfe83b1aab5a44352bdc1",
+      "inputBundleSha": "dd4ae613dccc645997b41cf950af7dd81e6f1664026c15e81fdf9a21176018d0",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "INTERDEPENDENT",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 40,
+      "questionUid": "qid_v1_a95b420c5e87867bdfee62962b7843226e25da5fb062eaa8c0dfd5f691e6785c",
+      "sourceIdentity": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js#20",
+      "sourceArchiveFile": "original/high/h1/2mid/24_제일고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 20,
+      "currentSourceJsSha256": "3d46c115477da4949e97facf2ca658779d3fd5a4dcdbd0fa9faa0d4a1e64344e",
+      "sourceFingerprint": "666a8af14a918aa1d31ff9a5802d1e7f2fef89d86356287b1c864f20aeee6b5a",
+      "contentHash": "bddfd055da47d6357ef121353b74129dbfb25bf3d2cdc511f5dcc6c0a7d706eb",
+      "solutionHash": "1ca2ab86ff1ce093d56416ce98a4e5962c7b4eb7df9f6f6286c5c11c7256e18a",
+      "inputBundleSha": "cbe1b9fe3ed28b19fd5756bdc1020e69b3dce67983b336f7ec872467b7cc52c3",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_GREATEST_INTEGER_FUNCTION"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "INTERDEPENDENT"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 41,
+      "questionUid": "qid_v1_cec69b96fd37f11a946aeaccaffd280838f05e5b99cfa61ba95a99dc9f67a973",
+      "sourceIdentity": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js#9",
+      "sourceArchiveFile": "original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 9,
+      "currentSourceJsSha256": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+      "sourceFingerprint": "4a700177589d042dddd56847031a211ddee64f54f2144093dc6c52910fdeab1c",
+      "contentHash": "553932f4d9dc073f052ed043ca7d26348da34add2dad4df3250f5a6997edb3c3",
+      "solutionHash": "1e143b1ab3459d8d5c1e5bb568ee7342d4161c948576641845a6ac0cefd79af9",
+      "inputBundleSha": "e974bcbe05400d78410af27b0e8f79431c8ce313087ce0095c4900fa513147e5",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-05",
+        "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_EXTREMA",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수의 최대·최소·최적화가 목표",
+        "candidateL4": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_DISCRIMINANT",
+          "CC_PERPENDICULAR"
+        ],
+        "actualConditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "INTERDEPENDENT",
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 42,
+      "questionUid": "qid_v1_9e0c3d87600ea26dfcf6dbe955ae3280e5c0f113029a7539f300a4955c942a5c",
+      "sourceIdentity": "original/high/h1/1final/22_복성고_1학기_기말_고1_기출.js#22",
+      "sourceArchiveFile": "original/high/h1/1final/22_복성고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "currentSourceJsSha256": "02d0c79de43db26fcf1ce1ac01cdd4d9c24edd6f0fa914f45bc7cabfcf2d7635",
+      "sourceFingerprint": "eacfd87e8634c999032609686972fc14e27e5a9f03a8d739d9409bbfc1e4f62f",
+      "contentHash": "ad42afa8b6e4506e921f624f6e6ea884a8ea3a3bcbeb0be99945210d73f5f0a0",
+      "solutionHash": "b5a5ace358d3c641ae6de797c33253214ac19861e7520b0ee0d96e9a598e6927",
+      "inputBundleSha": "15bcdd5355d32c5c910c379857bf0918c250b8dfb2670db0442762790765e7b2",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "already_stageA_A_B_reviewed_preference"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-05",
+        "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+        "sourceSchool": "복성고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차함수 그래프 관계",
+        "candidateL4": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [
+          "A",
+          "B"
+        ],
+        "actualCrossConceptKeys": [
+          "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
+        ],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH",
+          "DEEP_COMPOSITE",
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 43,
+      "questionUid": "qid_v1_6a8c89afa5399b849ffc69fdfa517366597be8e97be5a8179930cef5d08f1939",
+      "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#3",
+      "sourceArchiveFile": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 3,
+      "currentSourceJsSha256": "c5af366d4db36ad28d61a31c2a98fc8f62ad45df2365b8ad4ed7c902ec91ad33",
+      "sourceFingerprint": "d6590dc00cd6fc66de5c4a02821c1fba7888f4f4cbdaeb27d1fbfacf622ec0eb",
+      "contentHash": "1cd6a739884a5d52442845b574333e058b04c3258a47a5046c0da289d0806470",
+      "solutionHash": "8610e1e12c06802396071f5828d9f8ed591456124b2704ef285a62e74c310635",
+      "inputBundleSha": "b275f9b03ce1b27b1c3c9f40f1f6bb3b06d83b0dda13e3630463cab4c201f3e3",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:POLYNOMIAL"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-01",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "sourceSchool": "여천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISION_RECONSTRUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "몫·나머지 복원 골격",
+        "stageAReviewers": [
+          "A"
+        ],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "REMAINDER_CONDITION"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 44,
+      "questionUid": "qid_v1_b7969c1be96032aa33b14559233211fceb796a9bfad20cf75ec516b11dd0a75e",
+      "sourceIdentity": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js#12",
+      "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "f4a5b636761d2fd7d765bbc5c13d442e0ab9d2aa09855dee1932257d8aa570f6",
+      "sourceFingerprint": "f9fa2e84887209a1848cbae5655aedc557acd74210c47162cfb0f930b3f2d79c",
+      "contentHash": "afae72e6a5c6cd54723e405131c2c05c861524258f44eebc74aab0196239f9ed",
+      "solutionHash": "33d1f651899bfb3e3bb986c42ffe62a6e2036f6647426ca89615d198cb80a04a",
+      "inputBundleSha": "dbc028e30b8ce76440dbd0dd4889f154b7c6b13eadbde2adaafb2f11879f5d94",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:POLYNOMIAL"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "POLYNOMIAL",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-01",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "sourceSchool": "한영고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_POLY_DIVISION_REMAINDER",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "다항식 나눗셈·나머지 조건이 중심",
+        "candidateL4": "TPL_H1_DIVISION_RECONSTRUCTION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "몫·나머지 복원 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "NONE"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 45,
+      "questionUid": "qid_v1_fd67803bf9578bcefc1c7bc29158d8f3e28d232b181ac2bd7b3a7c43415a56f2",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#11",
+      "sourceArchiveFile": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "93fae1061c984d73f5855a85fb203b383a94338fb624ebefa30b42ed3656561f",
+      "sourceFingerprint": "c55b33588b61b19052e8129833acbd7de5d55360a7d633c2e8b24c169300ea5a",
+      "contentHash": "c69316e62d15921744a08d24f9285498ac457c2a1073f790fb6538a9c729c4a3",
+      "solutionHash": "b6d3e9e6aa4ae5b21fd4c7ae6f7109cfcade2a370c63ff7c083a8088ebbe2faf",
+      "inputBundleSha": "34f2722dfe21cab18ceb8dd09c4016dc8329038b34930c8080bccdae6d75d548",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+        "sourceSchool": "광양제철고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_POWER_ROOT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+        "candidateL4": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 46,
+      "questionUid": "qid_v1_f9ffafa8308b2c12f84402d4e65440bb3114dcf70099270c24c21d60d793945c",
+      "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#19",
+      "sourceArchiveFile": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "84c6ba6012840087472cb4fb19c4ceb5c17c952dbb839781b0a36cc0ec41e4f4",
+      "sourceFingerprint": "09c367ebfc9cdee59aa91dd6271978e5eb867feed063d5dabd7a806ae2b9d1ce",
+      "contentHash": "68d8dc5ab04a6381f96dd8735832e9b2b01233abc0671f5db8a17d70bce51b7c",
+      "solutionHash": "0a3b7b19d14beb53b42066bd8a95ed6a11f379103e3a2e32c5302a85a70da523",
+      "inputBundleSha": "b89e8384d1dbf33eab6a43f581cf2bedfb0ce165b497cf8113b366d2d7384ced",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-04",
+        "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+        "sourceSchool": "충무고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+        "candidateL4": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 47,
+      "questionUid": "qid_v1_6a288d9ee31546aac2cd048c97eba1c9aa1c5ae95adaa12950920b8986e633ac",
+      "sourceIdentity": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js#15",
+      "sourceArchiveFile": "original/high/h1/1mid/26_효천고_1학기_중간_고1_기출c.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "db242d2a18658e80729453eddca0c3643dc5235cd920a784afcd70d993cc7501",
+      "sourceFingerprint": "f097bc3aeb1aaf6941767ee6037a8e9a3775caddbdd5dc57fc48fbc962a82ec9",
+      "contentHash": "cfa5ba0aceb4d053ef3f2f80f8a5a8d7b8e1e927616417c5d516e96259a6b7e8",
+      "solutionHash": "0744e6d51614888717098465fb4da1397d847bfba7885808d4a6e3d7f234d85d",
+      "inputBundleSha": "cb921ff0345ea3b925927208ce6a22e6187c31251b5b85610c67e520167c68af",
+      "sourceImagePath": "assets/images/26_효천고_1학기_중간_고1_기출/q15.png",
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-FUNCTION_BASIC",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차방정식의 판별식·근의 위치·중근 조건",
+        "candidateL4": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "근의 존재·중복 조건"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 48,
+      "questionUid": "qid_v1_6558ac9077facaf514ff792c4a6961f24889250c57d25c420d844a283f43535f",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#12",
+      "sourceArchiveFile": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "762b264f7d8f272aad64551e30eb458b7497a45683c534fc56bb7b0930020607",
+      "sourceFingerprint": "87ae817c06c1705292319cb0221059a03a233e2e32da15a55e319fd0a9ba47fc",
+      "contentHash": "ffeecb94eca781faa90ec394e7a475549c4d5f87b8c6d413c3c07c0fece9e8eb",
+      "solutionHash": "0dda81d55645b8f671c4d39231a66cd22c8056ca2e8409eec7077dd4399f4f6b",
+      "inputBundleSha": "48933ef671d9ba97e2c95fee602eedd760ada2f919a5ff27795174b2019d4fc2",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+        "candidateL4": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "범위 또는 최적화 조건"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 49,
+      "questionUid": "qid_v1_2284f2aa0e5307f5e1a4a91cdaa8f117b4174c0dbed3ff89d74f06495dad56b0",
+      "sourceIdentity": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js#8",
+      "sourceArchiveFile": "original/high/h1/2mid/24_금당고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "8011311b5f242c6a502f95efd74eb97e8888b026a5736fe66869b82c7c3a14fc",
+      "sourceFingerprint": "97ad5c4f2248e93c89150ad3798d2ac30853f6fbdd76f741644ac30a45818811",
+      "contentHash": "2ce58d7af01d1cc5d7750a054bb65d9565b623035181c14d4e77278d8559b4d1",
+      "solutionHash": "c792a6ee2812e120c6e80dc4610e7cd67df3ed11f269d1fb6a8a14d194aaf748",
+      "inputBundleSha": "afd812674ca3e8cee4f7de383921af13d2d5748b9f9592f7c6b2703ad373f9a8",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "절대부등식의 최댓값·최솟값 canonical 재사용",
+        "candidateL4": "TPL_AMGM_MINIMUM",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "산술평균·기하평균 극값 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_POSITIVE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 50,
+      "questionUid": "qid_v1_d9ee9a3769771b5a6c881c4363088f1b2d8568d239280291bb0e5a2ff6b909b8",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#15",
+      "sourceArchiveFile": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "762b264f7d8f272aad64551e30eb458b7497a45683c534fc56bb7b0930020607",
+      "sourceFingerprint": "c7342b0b2669e070cd3efc7a6d1f04a6559299d9516e7cc125461545fbac4d70",
+      "contentHash": "d41dc45ea1f5347f8913a080294eb6e1abb573b82593aa187b2ecbdd5e249316",
+      "solutionHash": "9ecd4aff4c691ac8c7ba0e7a4e80aaa2178daff161cea1c4e5d044409c8efbe2",
+      "inputBundleSha": "5641929c33045030da5e3aebe4eec44df2036ce4b776d2dac57ad5d344ec5257",
+      "sourceImagePath": "assets/images/25_순천고_1학기_기말_고1_기출/q15.png",
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-06",
+        "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_SYSTEM_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "연립방정식·공통근 구조",
+        "candidateL4": "TPL_H1_SYSTEM_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 51,
+      "questionUid": "qid_v1_79dc5d371de9c83631453c8041b3b678bdb8960a92ef764716906f1a9c3ed3bb",
+      "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#21",
+      "sourceArchiveFile": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 21,
+      "currentSourceJsSha256": "6a4782d5f17276e615d55ae92b2e3d113b9f44b0589d40a936c057db2ab524d4",
+      "sourceFingerprint": "20733d758c40b164071566b7ba559d66fdc224fc8a009f6cd6a1034592642ad6",
+      "contentHash": "7a44abedeaa0937742f4211572e7c4a716e3303e2acc389225782bfc7a9daf21",
+      "solutionHash": "f69bd1b651846bf6567c2d8bb5f4fed7e33e971755bc3c903b86d3eb639a4a9b",
+      "inputBundleSha": "28508bf7744f9f69c1df8b690ae7a4e14c720dd17e5c7d84099b8003fe44b054",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-04",
+        "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 조건·근 구조를 이용한 방정식/판정",
+        "candidateL4": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 52,
+      "questionUid": "qid_v1_6c4ddbe07e93c8b05b0ad53f8c066a0cb59cc46f41a5fe2e6efc52c18531f74b",
+      "sourceIdentity": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js#15",
+      "sourceArchiveFile": "original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "45d7a4e38188f65642e2fa7797a69d4503ac9cf47d471d0f6e928875e0052f27",
+      "sourceFingerprint": "82dd6f2d0611c152d82d49dc1309315abae3cc626b7a43dad0b8e5124bca9827",
+      "contentHash": "60c50665d91d8807ef6e88491e2b90a21c7b00d7ccdd4fab42740eabb1368916",
+      "solutionHash": "2263b8c6953b7782daf52e73da2ffabca045886a3bd7e04ac96fc6307409f119",
+      "inputBundleSha": "eedee64cdc387cc6ea0949ba0c2721efa120848874323ba7a8316a49c5c2cb5e",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-INEQUALITY_APPLICATION",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "일차·연립부등식의 공통 해와 조건 판정",
+        "candidateL4": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 53,
+      "questionUid": "qid_v1_a370b70823bb029decf512751b0278a13ad2884afd9c1269575b5429af6d58e9",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#15",
+      "sourceArchiveFile": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "bdfdb4241abb8638d5a083478c502f0a38c95244d4ddf3b991e9c6f8abe89d47",
+      "sourceFingerprint": "d15a024e49310a7ee631adbcbd616a02da4e061f344e97a163dcef2a7fe86b33",
+      "contentHash": "3123c781085de5920c27e589dc1ed8a84fbcdccc62498149ed5bb7bf59d11ce9",
+      "solutionHash": "8574b20acfc3226f319f7011789487a83275f073f5adac858256e5d2f05e2615",
+      "inputBundleSha": "56952f9eb38e3040450566d28547d4b7861c08d422881688efa78b8d2d40e060",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-05",
+        "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "절댓값 식의 구간분기·해집합 판정",
+        "candidateL4": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "서로 다른 실근 4개"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 54,
+      "questionUid": "qid_v1_434f850d67a5b8cd177bad63a5f1f1e3f9483f9e0784704896f08e8cba24a0fe",
+      "sourceIdentity": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js#10",
+      "sourceArchiveFile": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "dbba44e2fc75d98ca4f7ee455c111ec9de67aa465e6ee14518868b0fd2986c99",
+      "sourceFingerprint": "d907d8f33d4c0a9fc5c673b0553b78210c305072bbcfe21dc9a538cc73095e8a",
+      "contentHash": "81be2999c83428756893d7662fa3bc485f50f95a66c1b352ceb78651485a7261",
+      "solutionHash": "06b26c2301ee44bdfcaf3d63bd9a12fa91ebb3734ebc5d3ef01b81070476a85a",
+      "inputBundleSha": "d515b02865e748b564a136a708031601e15fa5a48e741af39af5029304342d7e",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-04",
+        "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 사칙연산·상등·켤레의 직접 활용",
+        "candidateL4": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 55,
+      "questionUid": "qid_v1_428a13c022da07d8ee527bb7274e012938405f7072e5f9de2a57a4c009798bbb",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#9",
+      "sourceArchiveFile": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "currentSourceJsSha256": "f2bb572862a82daf05bda742cfe2d7f30b7f7e79e39179fdb1daf312c75d09e7",
+      "sourceFingerprint": "31e809150fbae8263ebcdbf607ebb989266238b9fed45828488654983c96b309",
+      "contentHash": "fd6d340f03bdb5e6f5fe244a946465d41ee5eaec87ef87f771a52db58d464d34",
+      "solutionHash": "bb90e6942df9e3c59fc09e1a6f8527d67d3b180b42ed52b0768d5a6512d1a146",
+      "inputBundleSha": "0583860d434034bb76eda04ec615ff817649e1a9fc506aa09bb125897482ee0b",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-04",
+        "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COMPLEX_POWER_ROOT",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "복소수 거듭제곱·단위근·주기 구조",
+        "candidateL4": "TPL_H1_COMPLEX_I_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 56,
+      "questionUid": "qid_v1_a49dcc90bf3d233a810bf71570275eae7603d180f9ac21afc53daba7d43a844c",
+      "sourceIdentity": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#6",
+      "sourceArchiveFile": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 6,
+      "currentSourceJsSha256": "69567c456dd1c11ab4a8f210b54b55cabd3ba0d699d21b3f95300ceaea50aad1",
+      "sourceFingerprint": "e53bf4f167a09f0061596b2a3e47554888ae94e90f1a41cb8e4cff700fb5cf8b",
+      "contentHash": "9b8dcefac7fba7037ba6352e2e59f9b110f8e57c7b6fea199ada10bd79e8ac91",
+      "solutionHash": "d40b73c67c97b0108d6d5795e2382de551fc575399db8443765ebe49ae7dae08",
+      "inputBundleSha": "a486d8a6693ee498b76f5a693179eac7e11922121cfba8f5851d9e042a1be260",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-08",
+        "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_INEQUALITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "이차부등식·전역 부호·매개변수 범위",
+        "candidateL4": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_INTEGER"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 57,
+      "questionUid": "qid_v1_925969e57e7f0e0b9c5f8f6fa833d80ebf969d5e12990aaeb5f628942fcbfe7b",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#8",
+      "sourceArchiveFile": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "f2bb572862a82daf05bda742cfe2d7f30b7f7e79e39179fdb1daf312c75d09e7",
+      "sourceFingerprint": "f9dc22ee42e103b6de83f2fe79b8a466d885f45785a31e3a2fd23dd72471b90d",
+      "contentHash": "a7c7927fc2c6bfe72e45196476877cbad20405cfbef1c6aa15496805e19cf890",
+      "solutionHash": "3a38e8e4b53a8707f02cc0aea7b26c848cfce5fbbd66f1a60beb5261c6c5707d",
+      "inputBundleSha": "347768632b40e8f7ebed286f7b788e56afd5f55e846eed21db09012ae658f2e4",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-13",
+        "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "조건에서 이차함수 식·축·계수를 복원",
+        "candidateL4": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 58,
+      "questionUid": "qid_v1_6ce2b6dde099902e283f95b803e5a9bc4a19ec7dadca7426b0b2bf1bcbe6bfcd",
+      "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#12",
+      "sourceArchiveFile": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "f2bb572862a82daf05bda742cfe2d7f30b7f7e79e39179fdb1daf312c75d09e7",
+      "sourceFingerprint": "fddb7f1aabc47d84ef94a8ee83b33424c499644828d5c1792b5ddb82e0737bad",
+      "contentHash": "71c81fa09d9dc3375b001956f84b7685b68f91dd34adca226535bab2d0d52e34",
+      "solutionHash": "6ab1debe651e911a87ccd74018a7431e4361f433f6f68ac36da86131b5bae8c7",
+      "inputBundleSha": "3ac80eba331c10f1072d9c32d7590d300db3e28c16d1a283a283fbd336f88e0e",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:EQINEQ"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "EQINEQ",
+        "curriculum": "2015",
+        "courseKey": "수학(상)",
+        "standardUnitKey": "H15-SA-05",
+        "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "근과 계수의 관계·근의 대칭식 활용",
+        "candidateL4": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 59,
+      "questionUid": "qid_v1_5022b4b8c8181c1c35476312ac274877ec7a6cb99469f9f844deda123c593fcb",
+      "sourceIdentity": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#24",
+      "sourceArchiveFile": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 24,
+      "currentSourceJsSha256": "a22ca9d3d525091a36da478ba3849228f3ecd3140ca4139d73f1c7b47a53b4fa",
+      "sourceFingerprint": "a88af3b54bb766d806c9e7d5a7085b310b1de0c84a10cb8ca543ea529e243f9f",
+      "contentHash": "886a73ddd83f3dc585ea45e3c58484ed4e45d7bac6e6e5f4f9fee193786f5c56",
+      "solutionHash": "825ef7d1825fad9790b2dffd67883c011219117ba70189b0916e981285fbe43d",
+      "inputBundleSha": "db6154cf504c9b1929c3d47d0b30b80e0bdae89199a1573422bc25d4c2768a44",
+      "sourceImagePath": "assets/images/21_강남여고_2학기_기말_고1_기출/q24.png",
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "sourceSchool": "강남여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "조합과 선택 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 60,
+      "questionUid": "qid_v1_3fc24c90d7d450771b196f697e2c6761d61d6cc61fa902329e507469ac27ebe1",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#7",
+      "sourceArchiveFile": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 7,
+      "currentSourceJsSha256": "16a083f8b24faa1bd46a651d251b26e97c113b44369a475e3959dde0324981ee",
+      "sourceFingerprint": "f1b1118041e9df76d5ddcb894d970dce9c3ead6e9bfacc67da23c89142a17ea4",
+      "contentHash": "146ffaa0110ae65a1dd46045978ec7d2e3f0a8301b5ce07dc88f95a4d1753ffa",
+      "solutionHash": "c1babadce94461205683afeb77c410183dbed46b345adfef85db19435fe0380e",
+      "inputBundleSha": "85e9c03bdbc2ff3b6916892fd22f94b1a898f8c2e7b23a6174f7cf380209aa36",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "일반 순열·조건 배열 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "과일·야채 번갈아 배치"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 61,
+      "questionUid": "qid_v1_6759c27cc7295966f1aa3d3af6e5ed300e5abd6751fba2d8b67974853037a0b7",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#7",
+      "sourceArchiveFile": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 7,
+      "currentSourceJsSha256": "74f3286e450553cf6a44efbc9c2aafaf4aeacc60ffa4f8664e7f72b2795913a4",
+      "sourceFingerprint": "badd24cd5e586a6e883b896f796cf00ab6c3ea38f08291973b10d952cea4fe45",
+      "contentHash": "8cc08a1279cba17ce27a8cee6a6a9659109c1108321bb94b2979835e23d6449b",
+      "solutionHash": "ebbedd41cdeb74576f51c20b987b7b716733082a463fe87361212d8ad35d3a5e",
+      "inputBundleSha": "77d40e8e30e56527706dc3f31dd28b4be6a24cd69a1e1c92a2a3d3ba7cb0a647",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 62,
+      "questionUid": "qid_v1_80b879143850bbeb0210389d759c372a9bb17d77f70875f432b1659ccda04472",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#10",
+      "sourceArchiveFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 10,
+      "currentSourceJsSha256": "a4f2d34313f458bc5883860173f4c84bdc12ed55ede2828b54a212b4f435ddd5",
+      "sourceFingerprint": "10277dc1093b647aa57ff03b9b764275ed403bec5d3e97bd93a9e3436e45e9a1",
+      "contentHash": "899a121df378860c86efc26ffb1dcc9f38a977967b6fb65a173ce43ba6916b77",
+      "solutionHash": "205fee64fc4dd4f44122c52a2787e7746278168582e98283f30f4417e9c0f439",
+      "inputBundleSha": "f1a78e0c186b69fc687f15ead5126457b89b2c10a47137361b5bdc0589f83ef0",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_FUNCTION_COUNTING",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "함수의 개수 canonical 재사용",
+        "candidateL4": "TPL_SURJECTION_COUNT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "전사함수 개수 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 63,
+      "questionUid": "qid_v1_6fe0d891005112d09d0bdf0139493fc5c129d4079f0da97f4d1f7a3e660a51fc",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#19",
+      "sourceArchiveFile": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 19,
+      "currentSourceJsSha256": "771ad74a438b1ee28cf6d3a5cac035fea71c591b09f4e5db66ac256c7ca5abf5",
+      "sourceFingerprint": "ba6071e1a550c4f586248e108a36a35f3cb72a37a293581c34529bd8a33f2d91",
+      "contentHash": "4b367a484c3ecfa99d5836cdd6df2bd314f370d58760aefa2870adebd7566045",
+      "solutionHash": "83838a7f66b472cb77ef018aa143ce0790b044603237e7e7d8f969488efc89d3",
+      "inputBundleSha": "aadcdd1679d753f867231a4fdf8d17557dcefed6d34cee7dcf8be796f5295f36",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-COMBINATION",
+        "sourceSchool": "효천고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "중복 선택·반복 배정 canonical 재사용",
+        "candidateL4": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "중복순열·반복 배정 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "a1≤a2<a3<a4≤a5",
+          "a3=5",
+          "중복 추출 허용"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 64,
+      "questionUid": "qid_v1_6374ac334daf7638b5befbf40d2e30fd9eaeb395d1fce3a4af5d9640775abd00",
+      "sourceIdentity": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js#8",
+      "sourceArchiveFile": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 8,
+      "currentSourceJsSha256": "377afc847a550bc96c855ad28ddb72fcb4773e7498989dfe2a306df021c83d98",
+      "sourceFingerprint": "f802d1afc0a517ef3138b665af627c9b14bee7841e5571edb00d736aaee9a71a",
+      "contentHash": "2ff9f96d77075c293bc130150656a39a939b35c2c1c6315153377fe13d9049b3",
+      "solutionHash": "3870e48eba48f836b453f9abed3f78b29731c3b7e7d07af6b3989aa46425f624",
+      "inputBundleSha": "af077467a4fe4ba3de434944dbc395e1ed63200820a576c0fe2c59ac71e54c11",
+      "sourceImagePath": "assets/images/21_팔마고_2학기_기말_고1_기출/q8.png",
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 65,
+      "questionUid": "qid_v1_c376eb0e1cfe81cac7ee049a0be70ee39cb23a55e38655543fb6049d99e6f5a6",
+      "sourceIdentity": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js#12",
+      "sourceArchiveFile": "original/high/h1/2final/22_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "a4f2d34313f458bc5883860173f4c84bdc12ed55ede2828b54a212b4f435ddd5",
+      "sourceFingerprint": "5fe7770f112acd77a27cd1e36b08019d24d0a1004cec8a66ec747a4003b7846b",
+      "contentHash": "cd1581da6e3c223b36bdfb0ce2655f1a03aaf02662f4d81abdf4efb9272b6336",
+      "solutionHash": "f19281a78213e063fe8267ae853c8c8111e43d806148735611ad69f4172cf6c4",
+      "inputBundleSha": "d68617b30d0a14613a1b0991a0688b993e8838b04df11b84fd74a08885d2d756",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "같은 것이 있는 순열 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_NONZERO"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 66,
+      "questionUid": "qid_v1_4cd2b3a60851a3865d81e04ab54a4f8e7bec9366b46f8d6d0657c44b468ac172",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#4",
+      "sourceArchiveFile": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 4,
+      "currentSourceJsSha256": "0ef04d08e506a216b71e86e5f89b0ae8e8790f8d367682721564ca87ab3415cd",
+      "sourceFingerprint": "7b03bf10e44149cab4293723ff14badbbcf46861a6296946206a60de054721e7",
+      "contentHash": "a90a500fe2e9b38defc27a69110930587ff97ad26af8fa7da266e6d151947cec",
+      "solutionHash": "41140ddbcdd32fd2e76f0b620f1df17bf24e061bbb21f843ced07538912e3d2e",
+      "inputBundleSha": "f8026a6c8d4a1fc62fe1360ceb372dea473934b8043074f794a80c4155e53f56",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-COMBINATION",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "조합과 선택 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 67,
+      "questionUid": "qid_v1_e4b9d65fd12487b9e1a3cd3539a757d216beec078420203fe7dc06e25f03bf1d",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#11",
+      "sourceArchiveFile": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "0ef04d08e506a216b71e86e5f89b0ae8e8790f8d367682721564ca87ab3415cd",
+      "sourceFingerprint": "50a89503103213cb0318da941b0c557b7d2368e40b4d9c59d87bb5f6361b1317",
+      "contentHash": "a4e96c9cfbab1ad57cef86a875177ab84b3ecc30cddfa1986bcfdc907a87a041",
+      "solutionHash": "c46ed681aa1a2c5b42f02240bb6251926145754ccfbf8593e61c79a821e1dac4",
+      "inputBundleSha": "9cf70941152c05a532eefea27ef3dcbd2ec8f53f63b4d903bf2ba07a04fc5277",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-PERMUTATION",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "일반 순열·조건 배열 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 68,
+      "questionUid": "qid_v1_4342cdbf79afacf653adacfe44cc6334de3308caf9f9fdbad605e1cc3b044831",
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#1",
+      "sourceArchiveFile": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 1,
+      "currentSourceJsSha256": "6a7324708d6fc8b5ce17530aa8a8bd73bb557289a04c616f6a6c336eba7d1ef7",
+      "sourceFingerprint": "e2233fa03ea99f3d3fd61c67d380f432619c505aaf51d2558b80e8213498c369",
+      "contentHash": "b2a2dac802c1326898ae867604d474053fcea1b31ed065fdacf3b7309b62214c",
+      "solutionHash": "77872c4d7153545d486b0bd9df1f8917366f1f13a9a8df45d33cc00911c57acb",
+      "inputBundleSha": "4bfe2bb1692512c851e29fa64d1cf9048d05d47abab11187e0e798c81e2a8745",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-CORE",
+        "sourceSchool": "복성고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 69,
+      "questionUid": "qid_v1_d9a0f6371046a0b88eb3db55a47414a9762c25fd66ce34271e8246b70cb08029",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#16",
+      "sourceArchiveFile": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 16,
+      "currentSourceJsSha256": "93fae1061c984d73f5855a85fb203b383a94338fb624ebefa30b42ed3656561f",
+      "sourceFingerprint": "07345f656c6373e85f45f3156454f204b47aa362747e445d0e3287517a8e9908",
+      "contentHash": "0377814150db1609a4486e074dc49260649010ade772dda0337ed2f054ba7d2d",
+      "solutionHash": "a8965e4a1c94087de6ac5761669b1a8b7bb92d96597b062fa2122fbe2d02b0c8",
+      "inputBundleSha": "67bbd3fb1a3f405adc26898c530933c270369a4e07b445164b70a978f7a74d54",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-08",
+        "subUnitKey": "H22-C-08-COUNTING_PRINCIPLE",
+        "sourceSchool": "광양제철고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "중복 선택·반복 배정 canonical 재사용",
+        "candidateL4": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "중복순열·반복 배정 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "a1+a2+a4=5",
+          "a1<a3<a5",
+          "각 ai는 1~7",
+          "복원추출"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 70,
+      "questionUid": "qid_v1_2d4bf3d948f482ad4a3568c35178b51ac1c61835c5aaaae6a7564543449525dd",
+      "sourceIdentity": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js#20",
+      "sourceArchiveFile": "original/high/h1/2final/21_순천고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 20,
+      "currentSourceJsSha256": "74f3286e450553cf6a44efbc9c2aafaf4aeacc60ffa4f8664e7f72b2795913a4",
+      "sourceFingerprint": "28b8c8ceb6af96ebc9b4e687e28ca62fefafd24bac456215e02548ccc008e916",
+      "contentHash": "8e475db1a36357b2427a1c96aa62801fb0e9f22a5ce8b2eba864e1154d613784",
+      "solutionHash": "e9ca04d3002ccd7daefaeb328494d4314603af9d8b2dd738bdf819725253467e",
+      "inputBundleSha": "95ee3af12d904d7c54fbe653075a4a327a1fd2880e9be21682c5c1e9eb31fae2",
+      "sourceImagePath": "assets/images/21_순천고_2학기_기말_고1_기출/q20.png",
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 71,
+      "questionUid": "qid_v1_53d8cf1aaa261e8b5df44bd1634c30d497c1ee472147259f71948088e85f915d",
+      "sourceIdentity": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#5",
+      "sourceArchiveFile": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 5,
+      "currentSourceJsSha256": "f57a459d83644ea31d0d9f4c030f95af6a8a43d526e99190686d9d69778df173",
+      "sourceFingerprint": "f15da86cc8eb5f9a7b5802e550bb98a3885b492ea157268c9450ea63a2d1b818",
+      "contentHash": "2a4ba39ed57fb97278771150ef928cbbd40bf67add71abd89330647dc08fcb27",
+      "solutionHash": "3f2fac5a3c96a431f360cd80e91689d68fe008ab874124b8a454763ce38efb24",
+      "inputBundleSha": "3b4601c5997eddc8b4365b5bd1fd1b6d011109e11bb2dbf3041d126015b66d1d",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "하",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "조합·선택·분배 canonical 재사용",
+        "candidateL4": "TPL_COMBINATION_SELECTION",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "조합과 선택 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "서로 다른·중복 조건"
+        ],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 72,
+      "questionUid": "qid_v1_61b67d7ac3dfdb00112f86db4853e641b048d8142736f6b99ab052b650fdcb07",
+      "sourceIdentity": "original/high/h1/2final/21_제일고_2학기_기말_고1_기출.js#11",
+      "sourceArchiveFile": "original/high/h1/2final/21_제일고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 11,
+      "currentSourceJsSha256": "fba211773e6539d64ed596ea9a6f7fad314bb96e518656ee576907ed9a103eaf",
+      "sourceFingerprint": "59e5b3d3d27195ac2e238f3016d7595ab3739bfe92f407df6bfe4c51402bd129",
+      "contentHash": "34f3ddadddd797976086912eabac8784288baf607adf3dff823d641470b0d75a",
+      "solutionHash": "34f5a5da9c58323498e7905c0b7dce028e79111d3c3272a41c800d9682983701",
+      "inputBundleSha": "b0ae3407700c4314ed68d0f23fbb82cfe9a7f6c3dbd851d42040f0187dd45cc1",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_COUNTING_ARRANGEMENT",
+        "candidateL3Status": "REUSE_ACTIVE",
+        "candidateL3Reason": "순열·조건 배열 canonical 재사용",
+        "candidateL4": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "candidateL4Status": "REUSE_ACTIVE",
+        "candidateL4Reason": "일반 순열·조건 배열 골격",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 73,
+      "questionUid": "qid_v1_d46e346c8b4f101201ca01b1a88bc47a4cd3e2f4e25f985ad33c6b3ad0aed4fb",
+      "sourceIdentity": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js#12",
+      "sourceArchiveFile": "original/high/h1/2final/24_매산여고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "af4ac49b8d91e415bf65a572a816bbab8e608a867950e57be821ee5c273d48eb",
+      "sourceFingerprint": "06de9b8451fdad0564fe13527da164a35b820cd35fb1fa60364028b4080783bb",
+      "contentHash": "f4042d47ae951de513d5ec428070cf9bc57543cdfeb174f3aeaff18df894e447",
+      "solutionHash": "7698e7d7fd2c21b2a52bc2c1b6c07276b62324cb9a1b5c02765383094753442c",
+      "inputBundleSha": "b1056022828eff5625b88a5b29660f3eb8b6b7fc26ef0aea1b9526ec190e96fe",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:COUNTING"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "COUNTING",
+        "curriculum": "2015",
+        "courseKey": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "sourceSchool": "매산여고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "합·곱의 법칙, 경우 분해, 경로·색칠·격자 등 일반 경우의 수",
+        "candidateL4": "TPL_H1_COUNTING_DIRECT_CASE",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "자연수·정수 조건"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 74,
+      "questionUid": "qid_v1_20fd1a35d1c67ec114139c77d7af614574548901ad0c78c919a64ae115898721",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#3",
+      "sourceArchiveFile": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 3,
+      "currentSourceJsSha256": "93fae1061c984d73f5855a85fb203b383a94338fb624ebefa30b42ed3656561f",
+      "sourceFingerprint": "2f61565f557ca017d2600cadbadfb5b1fe49a0f99579c4131c36312db265f919",
+      "contentHash": "f140573c72e997c21c6bcc2f72917f91a4a93d22b42c5cf8d3f8b46c23dd31c2",
+      "solutionHash": "acee1a316b1babdec8dba26502e16d2d60a358045b48b7ce58ae22e3401f44a3",
+      "inputBundleSha": "6cf340cb5e789d738ba85e09348ed16e0a4bbb943e3f5049bc4699460a8f305b",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "광양제철고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+        "candidateL4": "TPL_H1_MATRIX_EQUATION_LINEAR",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 75,
+      "questionUid": "qid_v1_b6c39f6501505f3e20d1862942d16a4993aada8aa60a259305d716f1512588e9",
+      "sourceIdentity": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js#14",
+      "sourceArchiveFile": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 14,
+      "currentSourceJsSha256": "81d8301538bb5dc4ff1ce4ae3341ca856399777b80004fc8868a924d0daf35b8",
+      "sourceFingerprint": "55e6bb6228c331fb2a401216fa29dc65f11026e3e62aab3ed0174c836f647b2c",
+      "contentHash": "9c23eda5eb26131ac939bf8f040743ade898b85057f3a6c34b81c6088f9dcae7",
+      "solutionHash": "3f46d8c0d4bb81512b75763946706efe04e6d861688decc0fe310bfaad04c1d9",
+      "inputBundleSha": "b3a6904b257b784af1a6319db5bae7b6afab4fb8bcc6f49d3b6a057854a731ab",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "제일고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_MULTIPLICATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+        "candidateL4": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 76,
+      "questionUid": "qid_v1_dff7b867626a8b76ed59e074c64f27e2e0127c9a17f3fe8dbc87dafd2532906a",
+      "sourceIdentity": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js#20",
+      "sourceArchiveFile": "original/high/h1/1final/25_순천고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 20,
+      "currentSourceJsSha256": "762b264f7d8f272aad64551e30eb458b7497a45683c534fc56bb7b0930020607",
+      "sourceFingerprint": "382ec7dfbbe4a480a9a2e5db554541f2b845741a3feb4bbfef69870fbd619ba1",
+      "contentHash": "8174afc7d204276783b5933e13ec1dba314d496d311150b30eacfb2c244a0450",
+      "solutionHash": "53c3ef007e6d61e7135f1c8937ad1c2d639d265f47a61342f247a211fdc795a6",
+      "inputBundleSha": "2e98454b6091760708dffbf8c5045e6f8262fb369da17fb036b0376c62bf7205",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "순천고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_POWER_IDENTITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 거듭제곱·다항식 항등관계",
+        "candidateL4": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 77,
+      "questionUid": "qid_v1_2a02cbe32024c9aad7afbcdb79176161e3c5e534dc10e8bd1edae24cb9d9b296",
+      "sourceIdentity": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js#6",
+      "sourceArchiveFile": "original/high/h1/1final/25_금당고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 6,
+      "currentSourceJsSha256": "db43da08e8d26a0bc369b3b8ac6f5996dd956a4134f202dfd365de443ff67553",
+      "sourceFingerprint": "ad860cb594d5410597bda0c202087093e4bce44fec6174bda179e1417e169674",
+      "contentHash": "0e83e979fbcd8f5be9ed12d76237298f786509e055461afe04950c6f6f219c93",
+      "solutionHash": "bc6b0cb6b59ac7de3bf58c2bd3ca5b22fc7dd0622fe0eb8b6587453dc34d36f6",
+      "inputBundleSha": "00493ef34e3b3e4e260d64239083d50a74bd168abee5900934e1ead593c915cb",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "금당고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_BASIC_OPERATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬의 크기·상등·덧셈·스칼라배·성분 정의",
+        "candidateL4": "TPL_H1_MATRIX_BASIC_EQUALITY",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 78,
+      "questionUid": "qid_v1_8bec6c1e6c3adab2f32b0b9a1409c992725bdf5bfe0e33501dd6ecf3e7d4a4ba",
+      "sourceIdentity": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js#15",
+      "sourceArchiveFile": "original/high/h1/1final/26_매산고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 15,
+      "currentSourceJsSha256": "16a083f8b24faa1bd46a651d251b26e97c113b44369a475e3959dde0324981ee",
+      "sourceFingerprint": "937460acf4de0e9edb01e528870588129bfce1738c4270789218ea5f86ec8a97",
+      "contentHash": "0c4a7abeb39bf627144793bd65d1f745b17ca7c264d2997801ebec8ab7346d9e",
+      "solutionHash": "26d9beb2295ceafe9c2477069c55d420b529fe30a08ca9477040d483b4974dc0",
+      "inputBundleSha": "ece05fe32435cf04c99bd7d94bb15246ff1e9c66b28ed11c9b56a59487e549d7",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "상",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_POWER_IDENTITY",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 거듭제곱·다항식 항등관계",
+        "candidateL4": "TPL_H1_MATRIX_POWER_PERIOD",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "COND_NATURAL_NUMBER",
+          "a≠b"
+        ],
+        "integrationPatterns": [
+          "SEQUENTIAL"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 79,
+      "questionUid": "qid_v1_c64d112e4410d2e181230e20c6c28c18334f082734fe2bca2e3a8493f7f314aa",
+      "sourceIdentity": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js#12",
+      "sourceArchiveFile": "original/high/h1/1final/25_매산고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 12,
+      "currentSourceJsSha256": "bdfdb4241abb8638d5a083478c502f0a38c95244d4ddf3b991e9c6f8abe89d47",
+      "sourceFingerprint": "c445d1109ed0dc28011a3735cd81a6faf5d626d78e0c84fcd3a6525354178fc4",
+      "contentHash": "3cb7a044745013c62e6f988a7b82d2179566f2fc1533c85ec892a7f2933c258c",
+      "solutionHash": "62f4109c3a470344ff02da190e8c354c88d86bed5f58afbebb7611be65a72c66",
+      "inputBundleSha": "e0573aeec49ba7cb38d4edfe59c8593352cf86f7d1dc744d2ce1cc3523bde5e5",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "매산고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_EQUATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬 방정식·성분 조건으로 미지수 결정",
+        "candidateL4": "TPL_H1_MATRIX_EQUATION_STRUCTURAL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [
+          "최댓값 선택"
+        ],
+        "integrationPatterns": [
+          "CASE_BRANCH"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    },
+    {
+      "sampleIndex": 80,
+      "questionUid": "qid_v1_3628ecb8503ae7158bfed0a6c94ae24caf2b1fe5d41e5e6ce18935452763ae1b",
+      "sourceIdentity": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js#14",
+      "sourceArchiveFile": "original/high/h1/1final/25_팔마고_1학기_기말_고1_기출c.js",
+      "sourceOrdinal": 14,
+      "currentSourceJsSha256": "388ab5f3fa9588445802e2858e5370458c7616fa78093059e16a2154e17b7fe0",
+      "sourceFingerprint": "38642e0ec8a92d64989c0a48456386c75c8bb71433a4d535e20e92bf8cba8313",
+      "contentHash": "a22db44fef4a43675a086701c86f43b08e71d385a3d39c4f354b6428f10efc34",
+      "solutionHash": "cb0eba3414f23cc316ac68d42805bc2314fe364b6da427f47a29ed607acc2332",
+      "inputBundleSha": "afd5e5abd6d186cc4679164024b1ef80644ac75054190cc6665ec38d169a86fe",
+      "sourceImagePath": null,
+      "selectionReasons": [
+        "broad_domain_balancing_target:MATRIX"
+      ],
+      "hiddenStrata": {
+        "broadDomain": "MATRIX",
+        "curriculum": "2022",
+        "courseKey": "공통수학1",
+        "standardUnitKey": "H22-C-09",
+        "subUnitKey": "H22-C-09-CORE",
+        "sourceSchool": "팔마고",
+        "legacyDifficulty": "중",
+        "legacyL3": null,
+        "legacyL4": null,
+        "candidateL3": "PT_H1_MATRIX_MULTIPLICATION",
+        "candidateL3Status": "NEW_CANDIDATE",
+        "candidateL3Reason": "행렬곱·제곱의 성분 계산과 활용",
+        "candidateL4": "TPL_H1_MATRIX_PRODUCT_MODEL",
+        "candidateL4Status": "NEW_CANDIDATE",
+        "candidateL4Reason": "동일 L3 내 Stage2 primaryMethod 반복 골격으로 압축",
+        "stageAReviewers": [],
+        "actualCrossConceptKeys": [],
+        "actualConditionKeys": [],
+        "stage2Conditions": [],
+        "integrationPatterns": [
+          "REINTERPRETATION"
+        ],
+        "sourceIssue": "NONE",
+        "sourceIssueSeverity": null,
+        "sourceHoldResolution": null,
+        "sourceIssueHoldAdjacent": false,
+        "l3BoundaryReference": false
+      }
+    }
+  ],
+  "approval": {
+    "by": "SOL_HIGH",
+    "at": "2026-09-24",
+    "gate": "80_UID_UNIQUE_SOURCE_UNIQUE_CURRENT_TUPLE_HASH_AND_ALLOWED_FIELD_PASS",
+    "hiddenReferenceRelease": "AFTER_BOTH_A_B_80_COMPLETE"
+  }
+}
