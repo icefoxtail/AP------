@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "range": "201-400",
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "validation": "PASS",
+  "checks": {
+    "identity_count": true,
+    "blind_count": true,
+    "comparison_count": true,
+    "review_index_201_to_400": true,
+    "unique_uid": true,
+    "blind_sequence_flags": true,
+    "no_sol_gpt_or_correction_inputs": true,
+    "per_batch_files": true,
+    "per_batch_20": true,
+    "all_batch_validations_pass": true,
+    "identity_blind_comparison_uid_join": true,
+    "comparison_hashes_match_blind": true,
+    "all_pinned_source_content_solution_hashes": true,
+    "recommended_L2_keys_exist": true,
+    "recommended_L3_keys_exist": true,
+    "recommended_L4_keys_exist": true,
+    "recommended_CrossConcept_keys_exist": true,
+    "verdict_and_defect_field_consistency": true
+  },
+  "reviewed": 200,
+  "batchSize": 20,
+  "batchesCompleted": 10,
+  "batchSummaries": [
+    {
+      "range": "201-220",
+      "reviewed": 20,
+      "MATCH": 15,
+      "DEFECT": 4,
+      "HOLD": 1
+    },
+    {
+      "range": "221-240",
+      "reviewed": 20,
+      "MATCH": 16,
+      "DEFECT": 4,
+      "HOLD": 0
+    },
+    {
+      "range": "241-260",
+      "reviewed": 20,
+      "MATCH": 13,
+      "DEFECT": 7,
+      "HOLD": 0
+    },
+    {
+      "range": "261-280",
+      "reviewed": 20,
+      "MATCH": 15,
+      "DEFECT": 5,
+      "HOLD": 0
+    },
+    {
+      "range": "281-300",
+      "reviewed": 20,
+      "MATCH": 15,
+      "DEFECT": 5,
+      "HOLD": 0
+    },
+    {
+      "range": "301-320",
+      "reviewed": 20,
+      "MATCH": 13,
+      "DEFECT": 7,
+      "HOLD": 0
+    },
+    {
+      "range": "321-340",
+      "reviewed": 20,
+      "MATCH": 13,
+      "DEFECT": 6,
+      "HOLD": 1
+    },
+    {
+      "range": "341-360",
+      "reviewed": 20,
+      "MATCH": 10,
+      "DEFECT": 9,
+      "HOLD": 1
+    },
+    {
+      "range": "361-380",
+      "reviewed": 20,
+      "MATCH": 13,
+      "DEFECT": 7,
+      "HOLD": 0
+    },
+    {
+      "range": "381-400",
+      "reviewed": 20,
+      "MATCH": 13,
+      "DEFECT": 6,
+      "HOLD": 1
+    }
+  ],
+  "counts": {
+    "MATCH": 136,
+    "DEFECT": 60,
+    "HOLD": 4,
+    "fieldDefects": {
+      "L2": 27,
+      "L3": 15,
+      "L4": 26,
+      "CrossConcept": 31
+    },
+    "crossConceptAdds": 17,
+    "crossConceptRemoves": 21
+  },
+  "defectUniqueUids": 60,
+  "holdUniqueUids": 4,
+  "sourceFilesChecked": 54,
+  "sourceHashMismatches": 0,
+  "missingSourcePairs": 0,
+  "metadataComparedOnlyAfterSourceLedgerSaved": true,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "blindnessLimitations": [
+    "Task history/status context had been exposed before this checkpoint review; no per-item Sol/GPT review, correction archive, or defect list was consulted.",
+    "The exact runtime model route could not be independently verified as Luna 6.",
+    "The source-only dimensional-unit annotation for reviewIndex 381 was appended after the range metadata extraction; its HOLD judgment was based on the source angle/length units."
+  ],
+  "solOrGptResultsRead": false,
+  "correctionArtifactsRead": false,
+  "mutations": {
+    "source": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "originalWorkingLedger": 0
+  },
+  "mainMerge": false
+}

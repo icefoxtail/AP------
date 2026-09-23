@@ -1,0 +1,692 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetSourceBranch": "codex/meta-foundation/middle-geometry",
+  "reviewIndex": {
+    "start": 341,
+    "end": 360,
+    "count": 20
+  },
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "choicesRead": false,
+  "answerFieldRead": false,
+  "existingL2L3L4CrossConceptBeforeBlindRead": false,
+  "priorReviewVerdictBeforeBlindRead": false,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 341,
+      "questionUid": "qid_v1_690fd1045c3a7cd2da706f114daa752158a33534a02f245be04df11c92477af1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "2344649bc1f21fbe5ff970fc9d4eae01c7ebce439bc4d0b629613b9a88ac826d"
+      },
+      "sourceFingerprint": "2344649bc1f21fbe5ff970fc9d4eae01c7ebce439bc4d0b629613b9a88ac826d",
+      "primaryMethod": "평행사변형 판정 뒤 변·대각선 조건으로 정사각형 분류",
+      "decisiveStep": "AB∥CD and AB=CD→parallelogram; AB=AD→rhombus; equal diagonals→rectangle; both→square",
+      "supportingConcepts": [
+        "parallelogram criterion",
+        "rhombus",
+        "rectangle",
+        "square"
+      ],
+      "conditions": [
+        "AB∥CD",
+        "AB=CD",
+        "AB=AD",
+        "AC=BD",
+        "AC⊥BD"
+      ],
+      "compositionPattern": "one-pair criterion→parallelogram→rhombus and rectangle criteria→square",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "평행사변형을 먼저 판정한 뒤 마름모·직사각형 조건을 결합해 정사각형을 분류한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 사각형의 성질과 판정",
+      "sourceContentSha256": "b0fc4ebb07a7cc5ee13afdea3577809e4bbb61f28dda9f6f3b2e15e4e6a1c4e4",
+      "sourceSolutionSha256": "6059c6e3aba617426e85e365de55fcc80ee38e19ee56008bc09ebefafbffc578",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 342,
+      "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "2dc39038a8f51efb1a83caa4006b355ffc70f1938497185b1163ccf170534d48"
+      },
+      "sourceFingerprint": "2dc39038a8f51efb1a83caa4006b355ffc70f1938497185b1163ccf170534d48",
+      "primaryMethod": "무게중심 2:1 및 직각삼각형 빗변 중점 성질 후 피타고라스",
+      "decisiveStep": "AD=3·GD=10; D midpoint BC gives BC=20; AB=√(20²−12²)=16",
+      "supportingConcepts": [
+        "centroid 2:1",
+        "right triangle hypotenuse midpoint",
+        "Pythagorean theorem"
+      ],
+      "conditions": [
+        "∠A=90°",
+        "G centroid",
+        "AC=12",
+        "GD=10/3"
+      ],
+      "compositionPattern": "centroid ratio→median length→hypotenuse midpoint radius→Pythagorean length",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "무게중심의 중선비로 빗변 중선 길이를 구하고 빗변 중점 성질과 피타고라스로 변을 찾는다.",
+      "sourceIssue": "그림에서 D가 BC의 중점임을 확인해야 한다.",
+      "curriculumNotes": "중등 삼각형의 무게중심·직각삼각형",
+      "sourceContentSha256": "bb564109fa391a5b9980d747bf4b87448eabe25bf76e408b65c98575f63bd61c",
+      "sourceSolutionSha256": "796cd42bdca869af3c34b5c7e5e55999b5800affa20a886e62e360095aace6c9",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 343,
+      "questionUid": "qid_v1_6930b9975c9a7ef5d1807a571d4c0818897e17e8e57d8017c669c46a1732f97a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "b9ac9f4341f2159df2dc443894282730fa8cf3481836b3b75fd16972a7ee21fd"
+      },
+      "sourceFingerprint": "b9ac9f4341f2159df2dc443894282730fa8cf3481836b3b75fd16972a7ee21fd",
+      "primaryMethod": "접선-현각에서 호의 크기를 구한 뒤 원주각 계산",
+      "decisiveStep": "arc BC=48°, arc AB=144°, remaining arc AC=168°, angle ABC=84°",
+      "supportingConcepts": [
+        "tangent-chord angle",
+        "arc measure",
+        "inscribed angle"
+      ],
+      "conditions": [
+        "CT tangent at C",
+        "arc AB=3·arc BC",
+        "∠BCT=24°"
+      ],
+      "compositionPattern": "tangent-chord angle→arc scaling→complementary arc→inscribed angle",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "접선-현각으로 호를 구하고 호의 비 및 원주각 성질을 적용한다.",
+      "sourceIssue": "호 AB, BC의 배열은 그림을 따른다.",
+      "curriculumNotes": "중등 원주각·접선",
+      "sourceContentSha256": "f1206b0a7e94cdf0c67ff30b4ff42ceef42f3ca25429f4dc5649372217b74981",
+      "sourceSolutionSha256": "9f46d50916780641b63190639287dc07a1525ab198b8ca61306bde3d60fad8ee",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 344,
+      "questionUid": "qid_v1_697e5d0d0a4b3df846d57906d09dfff1ef49c5de796b72b0c5eb00661140a5d9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "dd6b6764f1ef68143843d211c6ef598d5e61c86552ab90f02b7ed1a727ca973e"
+      },
+      "sourceFingerprint": "dd6b6764f1ef68143843d211c6ef598d5e61c86552ab90f02b7ed1a727ca973e",
+      "primaryMethod": "두 접선의 끼인각에서 중심각을 구하고 원주각으로 절반 계산",
+      "decisiveStep": "central minor angle=180°−50°=130°; subtended inscribed angle=65°",
+      "supportingConcepts": [
+        "two tangents",
+        "central angle",
+        "inscribed angle"
+      ],
+      "conditions": [
+        "PA and PB tangents",
+        "∠P=50°",
+        "x subtends arc AB"
+      ],
+      "compositionPattern": "tangent pair→central angle supplement→inscribed angle half",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "두 접선의 각과 중심각의 보각 관계 뒤 원주각을 구한다.",
+      "sourceIssue": "그림에서 x의 꼭짓점과 대응 호를 확인해야 한다.",
+      "curriculumNotes": "중등 원의 접선·중심각·원주각",
+      "sourceContentSha256": "d515607ba15c5c4df3bee450a4c9b0f61fc5e441b42be7fee8e6ae9a198bc15c",
+      "sourceSolutionSha256": "666c700300efcbb97b1f01008a37b1c263bbd96fb86aec65a94c7d9514a608a5",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 345,
+      "questionUid": "qid_v1_69881034f7dde819ed1a2eaf0d4de808efbf9c724d6c402bbcfcd9ac4235d250",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "3843bc0e9dac15e1b6d876a85b8a314a21ab90739aa5318540a14ff772abb6dd"
+      },
+      "sourceFingerprint": "3843bc0e9dac15e1b6d876a85b8a314a21ab90739aa5318540a14ff772abb6dd",
+      "primaryMethod": "두 직각삼각형의 RHA 합동으로 길이·각을 연결",
+      "decisiveStep": "right angles and hypotenuse AB=AC plus complementary acute angles establish congruence; transfer sides then trapezoid area",
+      "supportingConcepts": [
+        "right triangle congruence RHA",
+        "perpendicular lines",
+        "trapezoid area"
+      ],
+      "conditions": [
+        "ABC right isosceles",
+        "BD⊥l and CE⊥l",
+        "DB=6",
+        "EC=8"
+      ],
+      "compositionPattern": "perpendiculars→right triangles→RHA congruence→side transfer→trapezoid area",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "직각삼각형 합동으로 선분을 옮긴 다음 사다리꼴 넓이를 계산하는 합동 활용 문항이다.",
+      "sourceIssue": "보기별 판단 내용은 선택지 도형 정보에 의존한다.",
+      "curriculumNotes": "중등 직각삼각형의 합동",
+      "sourceContentSha256": "a3f99a73cb0d763aecfe8cea8f0aee220247aa2de38a939d3fe906881f24b608",
+      "sourceSolutionSha256": "97f882f72eee6fa38f976e80a4677e53f93feddf985365e241ec3502caf7fa8f",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 346,
+      "questionUid": "qid_v1_69bbc373b1677316a8864d62757b03e7077f405c35b6cb1360bb6dc703792fe9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "fabee076b095eafba3d94efc2dfa5d310f2464fcd7202d5d7b970c6b1de6dd3b"
+      },
+      "sourceFingerprint": "fabee076b095eafba3d94efc2dfa5d310f2464fcd7202d5d7b970c6b1de6dd3b",
+      "primaryMethod": "정삼각형 각추적으로 두 삼각형 닮음을 만들고 선분비 계산",
+      "decisiveStep": "△ADC∼△EDB; set DC=1, BD=2, AC=3 gives EB=2/3 and AE:EB=7:2",
+      "supportingConcepts": [
+        "equilateral triangle angles",
+        "triangle similarity",
+        "segment ratio"
+      ],
+      "conditions": [
+        "ABC equilateral",
+        "D on BC",
+        "E on AB",
+        "∠ADE=60°"
+      ],
+      "compositionPattern": "fixed 60° geometry→angle chase→similar triangles→side ratio",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "정삼각형의 각과 구성 각을 추적하여 닮음을 얻고 비례식으로 AE:EB를 계산한다.",
+      "sourceIssue": "점의 내부 위치는 그림에서 확인된다.",
+      "curriculumNotes": "중등 도형의 닮음·정삼각형",
+      "sourceContentSha256": "6d9fee29435bf8ccaa72654d2f7d2db2df26a69ea4cf10dae977b5eb0257dd9f",
+      "sourceSolutionSha256": "6bdd6304beeeaf354d25807fab788302f55249cbd2b5658c90aa1b648a5237dc",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 347,
+      "questionUid": "qid_v1_69e614c2a6d6dc1e58c18b8e514b31197596ac095052beb6cfdf50983ebf42be",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "a925bdecf623326fd77a4f29720a658224d02b54b92415d02154836d0289cb19"
+      },
+      "sourceFingerprint": "a925bdecf623326fd77a4f29720a658224d02b54b92415d02154836d0289cb19",
+      "primaryMethod": "연속한 두 이등변삼각형의 각 관계를 미지각 방정식으로 연결",
+      "decisiveStep": "∠BCD=72°; ∠ACD=72°−x; base angles of ACD=54°+x/2; collinear A,B,D gives x=36°",
+      "supportingConcepts": [
+        "isosceles triangle",
+        "linear pair",
+        "angle sum"
+      ],
+      "conditions": [
+        "AB=AC=CD",
+        "B,C,E collinear",
+        "B,A,D collinear",
+        "∠DCE=108°"
+      ],
+      "compositionPattern": "linear angle→first isosceles angles→second isosceles→linear angle equation",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "일직선 각과 두 이등변삼각형의 밑각을 연결해 일차방정식으로 구한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 이등변삼각형·각의 성질",
+      "sourceContentSha256": "5feeca1eddeaa73773210698d01e9355bccbd946099f7ffe88edabee94cc0238",
+      "sourceSolutionSha256": "9c29cc99e032a4ec0819e8607dc3fc9f5a745c326890a12314709907732beb27",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 348,
+      "questionUid": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "a56eb3d8443d3836118a458e60d2ccbc8019be7c829a0763c05a1757de0dec2d"
+      },
+      "sourceFingerprint": "a56eb3d8443d3836118a458e60d2ccbc8019be7c829a0763c05a1757de0dec2d",
+      "primaryMethod": "삼각형 중점연결정리로 평행선분과 길이 합을 계산",
+      "decisiveStep": "AM=AB/2=7/2 and MN=BC/2=11/2; x+y=9",
+      "supportingConcepts": [
+        "midpoint",
+        "triangle midline theorem",
+        "parallel lines"
+      ],
+      "conditions": [
+        "M midpoint AB",
+        "MN∥BC",
+        "AB=7 and BC=11 from diagram"
+      ],
+      "compositionPattern": "midpoint definition→parallel converse identifies N midpoint→half-side length sum",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "한 변의 중점에서 평행선을 그어 다른 변의 중점을 얻고 두 반쪽 길이를 더한다.",
+      "sourceIssue": "AB와 BC의 수치는 그림에 제시된다.",
+      "curriculumNotes": "중등 삼각형의 중점연결정리",
+      "sourceContentSha256": "35d868fc425ad5cd4b4cd01ef9636465034d4da95e06fc35af10ea9556101dc6",
+      "sourceSolutionSha256": "c1a6e145a9fbbfc7f040406dba6e869a4812b0452bb5721cd602db7a18666746",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 349,
+      "questionUid": "qid_v1_69eb4df0f417c6a4502f106554c0b503fe7d7951f2189f47913648763ab147d0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "9b023e57e79fb4beb7b20e4773ecd9d392bee00fc9227a560e5f0daf2cbcfa3c"
+      },
+      "sourceFingerprint": "9b023e57e79fb4beb7b20e4773ecd9d392bee00fc9227a560e5f0daf2cbcfa3c",
+      "primaryMethod": "평행사변형의 대각선 이등분 판정조건을 반례로 검토",
+      "decisiveStep": "OA=OB and OC=OD compare different diagonals; choose lengths 2 and 3 to satisfy givens without OA=OC or OB=OD",
+      "supportingConcepts": [
+        "parallelogram criteria",
+        "diagonal intersection",
+        "counterexample"
+      ],
+      "conditions": [
+        "O is intersection of AC and BD",
+        "OA=OB",
+        "OC=OD"
+      ],
+      "compositionPattern": "criterion identification→compare pairings→construct counterexample",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "주어진 길이 등식이 대각선별 이등분 조건과 다름을 반례로 보인다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 평행사변형 판정",
+      "sourceContentSha256": "31ef4c16acc8cf2e33443a98f52686f8e060673ada28051bd1aac63619bfa2f1",
+      "sourceSolutionSha256": "5298ecbed9fe6ebcd73fbaf2f3cf902479fbd70eb9e4d1b225d89c8bbb618a58",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 350,
+      "questionUid": "qid_v1_6a11709254ffde50e3c47450e742c80e45cb9fa58af1340714f14e60bd1e601d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "529a4e5af6c1a1c699dced9e10cf4400dfc76f0b3d2993ccef35d5f9e8d73026"
+      },
+      "sourceFingerprint": "529a4e5af6c1a1c699dced9e10cf4400dfc76f0b3d2993ccef35d5f9e8d73026",
+      "primaryMethod": "내접원 접선 길이 등식으로 변 조각을 연립",
+      "decisiveStep": "AD=AF=x; BC=(6−x)+(8−x)=9 gives x=5/2 and CF=11/2",
+      "supportingConcepts": [
+        "incircle",
+        "equal tangent lengths",
+        "linear equation"
+      ],
+      "conditions": [
+        "AB=6",
+        "BC=9",
+        "AC=8",
+        "D,E,F tangency points"
+      ],
+      "compositionPattern": "equal tangents from vertices→side decompositions→linear equation→requested tangent segment",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "삼각형 내접원의 같은 점에서 그은 접선 길이를 세 변에 적용해 접선 조각을 구한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 원의 접선",
+      "sourceContentSha256": "2c84b063068c278d8177710e1fe7c28a0a95dfbc922ea251a2968d3f737acdcb",
+      "sourceSolutionSha256": "f5444934f462caed74e5345d6b8637d38f6cd81d2ad9b0bef3d61b74ede70b0b",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 351,
+      "questionUid": "qid_v1_6a1361f9eb0f176534755fa7c2f70bfa204c0d368d5c3f2ec323a4e4a98c5782",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "59fda996721fb008dfc0caa01a3a4a4202571474a39e858d3cb74c9f29ed57a0"
+      },
+      "sourceFingerprint": "59fda996721fb008dfc0caa01a3a4a4202571474a39e858d3cb74c9f29ed57a0",
+      "primaryMethod": "현의 수직이등분선·시위를 사용해 반지름을 복원",
+      "decisiveStep": "half-chord=5 and sagitta=1; r²=(r−1)²+5² yields r=13",
+      "supportingConcepts": [
+        "chord perpendicular bisector",
+        "sagitta",
+        "Pythagorean theorem"
+      ],
+      "conditions": [
+        "AD=BD",
+        "AB⊥CD",
+        "diagram gives AD=5 and CD=1"
+      ],
+      "compositionPattern": "chord midpoint perpendicular→center alignment→right triangle radius equation",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "현의 중점 수선과 그림의 시위 길이로 직각삼각형을 만들어 반지름을 구한다.",
+      "sourceIssue": "길이 AD=5, CD=1과 원호-현 배치는 그림에 있다.",
+      "curriculumNotes": "중등 원의 현·수직이등분선",
+      "sourceContentSha256": "30c39f6c4c0398394927bbd399b9e429e6e092cc366a3234856d2ed184135a55",
+      "sourceSolutionSha256": "31fe79d66f13147a28eb1b0ab825f6002bd0e858792ad0c1ff54186c6a5e36c2",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 352,
+      "questionUid": "qid_v1_6a1e1135c74d421cbe8cd5419a4f559378cf785ef82355756ec2113eba446404",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "a29de8ab77452686da09d8ad335257cfbdcc080eac415ae8d7d5e03c1c2f6f31"
+      },
+      "sourceFingerprint": "a29de8ab77452686da09d8ad335257cfbdcc080eac415ae8d7d5e03c1c2f6f31",
+      "primaryMethod": "닮은 사각형의 대응변 비와 대응각으로 길이·각 계산",
+      "decisiveStep": "scale FG/BC=12/18=2/3 gives EF=10; quadrilateral angle sum gives ∠D=∠H=120°",
+      "supportingConcepts": [
+        "similar quadrilaterals",
+        "side ratio",
+        "angle sum"
+      ],
+      "conditions": [
+        "AB=15",
+        "BC=18",
+        "FG=12",
+        "∠A=70°, ∠B=∠C=85°",
+        "A↔E, B↔F, C↔G, D↔H"
+      ],
+      "compositionPattern": "correspondence→similarity scale→side length; polygon angle sum→corresponding angle",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "닮음비로 변 길이를 찾고 사각형 내각의 합과 대응각으로 각을 구한다.",
+      "sourceIssue": "대응점 순서는 제시된 닮음 표기와 그림에 따른다.",
+      "curriculumNotes": "중등 도형의 닮음",
+      "sourceContentSha256": "524787732c00ca15381ca8bea15414a33088e2a0063dd9f814f252474638d0e1",
+      "sourceSolutionSha256": "1cf89a53093ff86401ac2a4432a7ac19648b59c2a39411f6c89855e4891ae415",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 353,
+      "questionUid": "qid_v1_6a32bb95990b7029a8511144cfc6f34cc417a90c578da69129cfcb6991f266af",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "aefcd096ccdfeb4daaf5bf6b61d755af74f9923d90f09675ce3ba2fbfbc3429c"
+      },
+      "sourceFingerprint": "aefcd096ccdfeb4daaf5bf6b61d755af74f9923d90f09675ce3ba2fbfbc3429c",
+      "primaryMethod": "접점 반지름의 수직 성질로 접선 길이를 피타고라스로 구함",
+      "decisiveStep": "PA²=OP²−OA²=25−9=16, so PA=PB=4",
+      "supportingConcepts": [
+        "radius perpendicular tangent",
+        "Pythagorean theorem",
+        "equal tangents"
+      ],
+      "conditions": [
+        "OA=3",
+        "OP=5",
+        "A,B tangency points"
+      ],
+      "compositionPattern": "radius-tangent right triangle→Pythagorean length→equal tangent lengths",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "접점의 반지름과 접선으로 직각삼각형을 만들고 두 접선 길이가 같음을 쓴다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 원의 접선·피타고라스",
+      "sourceContentSha256": "83c0c61b54d81e41a9e63fb29715fcda2869bf9bf519a7a21cb1885ce1784271",
+      "sourceSolutionSha256": "0d6ff4d37d5e44f581a3f741ad4de3f3d9e067523ae77d24d41f423c8c3ab32e",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 354,
+      "questionUid": "qid_v1_6a58d34800f401f5f6e01e6944d77daba2a98d963f47a538cd09dedea06b9c7d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "8beb5dd82f722ac46fb4b688d0587dc09e837dc00560b46869a0552d5366735e"
+      },
+      "sourceFingerprint": "8beb5dd82f722ac46fb4b688d0587dc09e837dc00560b46869a0552d5366735e",
+      "primaryMethod": "cos로 직각변을 구하고 피타고라스로 나머지 변을 구해 tan 계산",
+      "decisiveStep": "AC=8·3/4=6; BC=√(64−36)=2√7; tan A=√7/3",
+      "supportingConcepts": [
+        "trigonometric ratios",
+        "Pythagorean theorem",
+        "right triangle"
+      ],
+      "conditions": [
+        "∠C=90°",
+        "AB=8",
+        "cos A=3/4"
+      ],
+      "compositionPattern": "cos ratio→adjacent leg→Pythagorean opposite leg→tan ratio",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "코사인과 피타고라스로 두 직각변을 구해 탄젠트를 계산한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 삼각비",
+      "sourceContentSha256": "295cf29bcfaab3613991f9e121db42569fe886181f087ba0e1925d8e5142efff",
+      "sourceSolutionSha256": "208bbeb8cfaf9e3aa1c59eaaa3aa829d6f85db22c80e43dc3737f05bad0c7bc3",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 355,
+      "questionUid": "qid_v1_6af6fc516448eabcdcbcd39bab4c9e20a878c88f7371cfd90e24936f8644ff14",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "171148885e8035228a86af139ca7d81b58dae3edace0437314040cf1a2ca3153"
+      },
+      "sourceFingerprint": "171148885e8035228a86af139ca7d81b58dae3edace0437314040cf1a2ca3153",
+      "primaryMethod": "중심에서 같은 거리의 현을 같게 하여 이등변삼각형 각 계산",
+      "decisiveStep": "equal center-to-chord distances imply equal chords; base angles both 50°, so x=80°",
+      "supportingConcepts": [
+        "equidistant chords",
+        "equal chord lengths",
+        "isosceles triangle"
+      ],
+      "conditions": [
+        "diagram shows perpendicular distances from O to two chords equal",
+        "one base angle=50°"
+      ],
+      "compositionPattern": "equal center-to-chord distances→equal chord lengths→isosceles triangle→angle sum",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "중심에서 같은 거리에 놓인 두 현의 길이를 같게 보고 이등변삼각형의 각을 계산한다.",
+      "sourceIssue": "현의 수선거리와 삼각형 꼭짓점은 그림에 제시된다.",
+      "curriculumNotes": "중등 원의 현·이등변삼각형",
+      "sourceContentSha256": "89103f92c2fcd10be52b70ba2b4b88e72cd51f503d79bf2020454cc58d5d9345",
+      "sourceSolutionSha256": "fa00b9a2a4bd14d1d1639c9081b466224d4273aee9d1b02d83209ca380e87631",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 356,
+      "questionUid": "qid_v1_6b720257c3715c5b52f7fd0e99c0feb79d08cc8aea81d83dbad8af7539e3c13c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "751169a9c5e2f69d980e34184bee68c45dfa6881dcc72a6f67119030067524cf"
+      },
+      "sourceFingerprint": "751169a9c5e2f69d980e34184bee68c45dfa6881dcc72a6f67119030067524cf",
+      "primaryMethod": "평행사변형의 마주 보는 변과 둘레 비례식",
+      "decisiveStep": "AB=3k, AD=4k; perimeter 2(7k)=28 gives k=2 and CD=6",
+      "supportingConcepts": [
+        "parallelogram opposite sides",
+        "perimeter",
+        "ratio"
+      ],
+      "conditions": [
+        "perimeter=28",
+        "AB:AD=3:4"
+      ],
+      "compositionPattern": "side ratio parameterization→opposite-side pairing→perimeter equation",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "변의 비를 매개변수로 놓고 평행사변형 둘레식으로 대응변을 구한다.",
+      "sourceIssue": "NONE",
+      "curriculumNotes": "중등 평행사변형",
+      "sourceContentSha256": "5b8b81804249489ea90ee4b02d16a98c6ab22ded29e32b8901a4c301122e024f",
+      "sourceSolutionSha256": "44937a068451abbbddad83ca0a01b7fdf92d94955e0b24c6b1ba2706e10bd437",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 357,
+      "questionUid": "qid_v1_6bc3293f044d793f44f1c59436656daf339d07dcd8e4fbb8fd5b6b5891c40b49",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "e0f18b42e7065996fa90aa178c985dc8b4e0c0fb037546e54842363d25968303"
+      },
+      "sourceFingerprint": "e0f18b42e7065996fa90aa178c985dc8b4e0c0fb037546e54842363d25968303",
+      "primaryMethod": "정사각형 대각선 성질과 직각삼각형 각추적",
+      "decisiveStep": "AO=BD/2=5; ∠ODP=35°, ∠ODC=45°, so y=10° and x+y=15",
+      "supportingConcepts": [
+        "square diagonals",
+        "angle bisector",
+        "right triangle angle sum"
+      ],
+      "conditions": [
+        "BD=10",
+        "O diagonal intersection",
+        "P on AC from diagram",
+        "∠DPO=55°"
+      ],
+      "compositionPattern": "diagonal bisection→length; perpendicular diagonal→right-triangle angle→vertex angle bisector",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "정사각형의 대각선 길이·수직·각 이등분 성질을 결합한다.",
+      "sourceIssue": "P의 위치가 그림에서 AC 위임을 확인해야 한다.",
+      "curriculumNotes": "중등 정사각형의 대각선 성질",
+      "sourceContentSha256": "16f049d4ef154fde55bd7006b3168dc6829f9a366897ac0ecbcf431a579722c8",
+      "sourceSolutionSha256": "5db63865a42e6ebf964359d934e6aadbc38d09984962cfd794b247933a29adb1",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 358,
+      "questionUid": "qid_v1_6c34bad9a57c4f4ebf3c8321f32455f10e25f920ac6b8b38c7b580888f1fe19b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "11f633544395198fb1367d71dcf89d9274924652c6bcdb08bca0eafe4a33abac"
+      },
+      "sourceFingerprint": "11f633544395198fb1367d71dcf89d9274924652c6bcdb08bca0eafe4a33abac",
+      "primaryMethod": "평행선 조건으로 두 단계 직각삼각형 닮음과 비례식 적용",
+      "decisiveStep": "first similarity gives BF=15/2; second gives AH/15=(21/2)/(15/2)=7/5, hence AH=21",
+      "supportingConcepts": [
+        "right triangles",
+        "triangle similarity",
+        "parallel lines",
+        "segment ratio"
+      ],
+      "conditions": [
+        "rectangle AB=18, BC=24",
+        "BE:CE=5:3",
+        "DE⊥EF",
+        "F on AB",
+        "H intersection of AD extension and EF extension"
+      ],
+      "compositionPattern": "split side ratio→first right-triangle similarity→BF→second similarity→external length",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "직각 관계로 두 삼각형 닮음을 연달아 만들어 미지 길이를 계산한다.",
+      "sourceIssue": "교점의 배치와 두 닮음 삼각형은 그림의 incidence에 의존한다.",
+      "curriculumNotes": "중등 도형의 닮음·직사각형",
+      "sourceContentSha256": "1db976dec260fd8b2aa3eae7a617cfe255051b77a996f991ef88850f895ffd8e",
+      "sourceSolutionSha256": "4d4f55cb39dfc7add7234ca823e009b790087a12e0ac90130bf96ff890b943b5",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 359,
+      "questionUid": "qid_v1_6c62d76b472a6ad0d1ba98aa2e7f70156abaefbe317edd7a9ffe19cc7300b123",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "022ba4a58b67e9b1a2281a4e6edeeda1b52ec9737d7ee464718862ec4cfb3bda"
+      },
+      "sourceFingerprint": "022ba4a58b67e9b1a2281a4e6edeeda1b52ec9737d7ee464718862ec4cfb3bda",
+      "primaryMethod": "평행선이 두 직선을 자를 때 생기는 대응 선분 비 적용",
+      "decisiveStep": "4:8=6:a yields a=12; 18:12=(b−8):8 yields b=20; sum=32",
+      "supportingConcepts": [
+        "parallel line segment ratio",
+        "proportion",
+        "linear expression"
+      ],
+      "conditions": [
+        "l∥m∥n",
+        "l'∥m'∥n'",
+        "segment measures shown in two diagrams"
+      ],
+      "compositionPattern": "parallel-line intercept ratio in each figure→solve two proportions→sum",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 평행선 묶음 각각에 대응 선분의 비를 적용해 a와 b를 구한다.",
+      "sourceIssue": "각 대응 선분의 수치는 그림에 제시된다.",
+      "curriculumNotes": "중등 평행선과 선분의 길이의 비",
+      "sourceContentSha256": "4cf6dcf9bf3af13b732556ae48b2c422038824db010bafbecf6ff37ad8764e2d",
+      "sourceSolutionSha256": "65b6957663d524288ff72ee94f8a292dd733feeae425a3809a0fb7653ecbe19a",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    },
+    {
+      "reviewIndex": 360,
+      "questionUid": "qid_v1_6ca8bcf2f79ee7c3f082a4f52dfce141539528169d8cfbd8c4dd20036b95dde3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "102b82ad32d10b72b21a4c119b0f904dd82f98f82973fdf7eaa763184804904c"
+      },
+      "sourceFingerprint": "102b82ad32d10b72b21a4c119b0f904dd82f98f82973fdf7eaa763184804904c",
+      "primaryMethod": "평행사변형 판정조건을 대각선 조각의 올바른 대응쌍과 비교",
+      "decisiveStep": "OA=OB and OC=OD cross-match different diagonals; diagonal bisection requires OA=OC and OB=OD",
+      "supportingConcepts": [
+        "parallelogram criteria",
+        "diagonal bisection",
+        "counterexample reasoning"
+      ],
+      "conditions": [
+        "O is AC∩BD",
+        "choices list candidate conditions"
+      ],
+      "compositionPattern": "classify known criteria→test diagonal pairings→reject cross-diagonal equality",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "평행사변형 대각선 판정에서 각 대각선의 두 조각을 맞게 비교하는지 식별한다.",
+      "sourceIssue": "정답 선택지는 보기 내용에 의존하지만 핵심 판별 개념은 명확하다.",
+      "curriculumNotes": "중등 평행사변형 판정",
+      "sourceContentSha256": "0682a63b2cf36513a9835c8d5b34e381d3ac8664b8a9692b92da3a01127b71ed",
+      "sourceSolutionSha256": "3a1278ec749b90d846c3dc6e5ab76d5e38740b47af5359fab8cf6f0f92b0a8b0",
+      "choicesRead": false,
+      "answerFieldRead": false,
+      "semanticStatus": "READY_FOR_COMPARISON"
+    }
+  ]
+}
