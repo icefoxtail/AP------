@@ -202,10 +202,24 @@
       "id": "MG_PRODUCTION_PROMOTED_MAIN_20260923",
       "status": "PRODUCTION_PROMOTED_MAIN",
       "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+      "mainMergeCommitSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
       "branch": "codex/meta-foundation/middle-geometry",
-      "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-      "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-      "mainPromotionMode": "FAST_FORWARD",
+      "synchronizedBranchSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
+      "synchronizedMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
+      "latestMainDrift": {
+        "commit": "508edf075f1fa303fff65752731178b53a9fcdd5",
+        "files": [
+          "archive/question-index-audit.md",
+          "archive/question-index-report.md",
+          "archive/question-index.js"
+        ],
+        "scope": "Generated Archive question-index registration artifacts only.",
+        "indexPayloadSha256": "27045ec80a938889c36e85e2c1a7bec989a0c326b35da8a6b221bce490954a36",
+        "indexPayloadParityWithPromotion": "IDENTICAL",
+        "middleGeometrySourceSemanticDrift": 0,
+        "resolution": "Latest main commit is the second parent of the promotion merge commit. Its generated index payload matches the already-synchronized promotion payload; only generation timestamp/report measurements differ."
+      },
+      "mainPromotionMode": "MERGE_COMMIT_THEN_FAST_FORWARD",
       "headEqualsOriginMain": true,
       "counts": {
         "l3Final": 921,
@@ -216,8 +230,8 @@
         "runtime": 928,
         "archive2Join": 928
       },
-      "completedAt": "2026-09-23T13:41:36.887Z",
-      "next": "Push this final promotion-state checkpoint to the branch and origin/main."
+      "completedAt": "2026-09-23T13:48:43.508Z",
+      "next": "Publish final promotion state to origin/main and verify HEAD parity."
     }
   ]
 }

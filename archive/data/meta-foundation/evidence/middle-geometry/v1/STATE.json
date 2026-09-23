@@ -39,7 +39,7 @@
     "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
   ],
   "blockingIssues": [],
-  "nextStartPoint": "Middle Geometry is active on origin/main. Final STATE/INVENTORY/CHECKPOINTS status update is ready to push.",
+  "nextStartPoint": "Promotion and latest-main sync are complete; publish this final branch and main fast-forward.",
   "officialCanonicalFinalClaim": true,
   "mainMutation": false,
   "crossParentL1L2Gate": {
@@ -62,8 +62,8 @@
     "validationPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/q513_problem_only_semantic_validation_20260923.json"
   },
   "status": "PRODUCTION_PROMOTED_MAIN",
-  "synchronizedMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-  "synchronizedBranchHead": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
+  "synchronizedBranchHead": "ddccf631024dc08999531a57e2cb0566bc7073d2",
   "prePromotionAudit": {
     "status": "HOLD_FAIL_CLOSED",
     "inventoryPath": "archive/data/meta-foundation/evidence/middle-geometry/v1/promotion_inventory_20260923.json",
@@ -78,8 +78,8 @@
   "baseMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "frozenSourceMainSha": "0d30376ed46d6637854bea325df043097ea999b3",
   "startingBranchSha": "61613216179588196e16147140e765f95ab2fcb4",
-  "synchronizedBranchSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
-  "currentOriginMainSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
+  "synchronizedBranchSha": "ddccf631024dc08999531a57e2cb0566bc7073d2",
+  "currentOriginMainSha": "508edf075f1fa303fff65752731178b53a9fcdd5",
   "promotionCommitSha": "92d17c1272e5f343357b12bdf0c2ca8ffe9331a1",
   "promotionCommitPending": false,
   "branch": "codex/meta-foundation/middle-geometry",
@@ -112,9 +112,17 @@
     "explicitL4Hold": 20
   },
   "latestMainDrift": {
-    "status": "USER_AUTHORIZED_SOURCE_DRIFT_ACCEPTED",
-    "resolved": 1,
-    "unresolved": 0
+    "commit": "508edf075f1fa303fff65752731178b53a9fcdd5",
+    "files": [
+      "archive/question-index-audit.md",
+      "archive/question-index-report.md",
+      "archive/question-index.js"
+    ],
+    "scope": "Generated Archive question-index registration artifacts only.",
+    "indexPayloadSha256": "27045ec80a938889c36e85e2c1a7bec989a0c326b35da8a6b221bce490954a36",
+    "indexPayloadParityWithPromotion": "IDENTICAL",
+    "middleGeometrySourceSemanticDrift": 0,
+    "resolution": "Latest main commit is the second parent of the promotion merge commit. Its generated index payload matches the already-synchronized promotion payload; only generation timestamp/report measurements differ."
   },
   "productionArtifacts": {
     "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json": "28c7a083444ec0342ca26a70676dbb8cbe8f332979fa142b077a5c7b702cbd3f",
@@ -132,8 +140,9 @@
     "archive/meta-foundation-runtime.js": "55a0a8b53fddd3d0abe13a1fd591e1998020fecba2cbc757686271581f7631be",
     "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json": "abf84a862ab3f1d607e61bbd26a5d02a19c0dd419dfc9c860e60166ce95b96d9"
   },
-  "branchPush": "PASS",
-  "mainMerge": "PASS_FAST_FORWARD",
+  "branchPush": "PASS_AFTER_FINAL_SYNC",
+  "mainMerge": "PASS",
   "headEqualsOriginMain": true,
-  "mainPromotionMode": "FAST_FORWARD"
+  "mainPromotionMode": "MERGE_COMMIT_THEN_FAST_FORWARD",
+  "mainMergeCommitSha": "ddccf631024dc08999531a57e2cb0566bc7073d2"
 }
