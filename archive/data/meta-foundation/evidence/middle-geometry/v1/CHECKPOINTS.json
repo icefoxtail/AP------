@@ -1,5 +1,6 @@
 {
-  "schemaVersion": "middle-geometry-checkpoints-v1",
+  "schemaVersion": "middle-geometry-checkpoints-v2",
+  "activeCheckpointId": "GPT143_LUNA90_APPLICATION_COMPLETE_20260923",
   "checkpoints": [
     {
       "checkpointId": "L4_CROSSCONCEPT_SEMANTIC_FREEZE",
@@ -26,7 +27,53 @@
         "archive/data/meta-foundation/evidence/middle-geometry/v1/L4_CROSSCONCEPT_SEMANTIC_SUMMARY.md": "e35b0883b55ab3639fe808e7ef48900d47abd5d03b971631e934acf2048fb46d"
       },
       "blockingIssues": [],
-      "nextStartPoint": "L4 + CrossConcept semantic freeze handoff; Condition/IntegrationPattern/difficulty not started"
+      "nextStartPoint": "L4 + CrossConcept semantic freeze handoff; Condition/IntegrationPattern/difficulty not started",
+      "active": false,
+      "legacy": true
+    },
+    {
+      "checkpointId": "GPT143_LUNA90_APPLICATION_COMPLETE_20260923",
+      "active": true,
+      "branchRef": "codex/meta-foundation/middle-geometry",
+      "semanticHead": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+      "applicationCommit": "21302ea89bcef4cd24ead524ed9fce84a085c94f",
+      "parityRepairCommit": "4b897940d5305a0d4cf38afb294b458e933eb4e7",
+      "checkedMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+      "denominator": 928,
+      "mappedFinal": 920,
+      "routeOut": 8,
+      "explicitL4Hold": 20,
+      "inputCoverage": {
+        "frozen143": 143,
+        "new90": 90,
+        "total": 233
+      },
+      "applied": {
+        "l3ChangedUidCount": 67,
+        "l4CrossConceptAdjudicationRows": 230,
+        "l3L4ParityRepairCount": 6,
+        "sourceL2MutationUidCount": 37,
+        "sourceFileCount": 17,
+        "protectedStudentFieldMutationCount": 0
+      },
+      "deferred": {
+        "crossParentL2CorrectionUidCount": 28
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l3_semantic_final_928.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/l4_crossconcept_semantic_freeze_928.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_conflict_adjudication_final_143_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/MIDDLE_GEOMETRY_LUNA401_600_CONFLICT_ADJUDICATION_FINAL_90_VALIDATION_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_143_plus_luna90_final_metadata_application_validation_20260923.json",
+        "archive/data/meta-foundation/evidence/middle-geometry/v1/gpt_l3_l4_parity_repair_6_20260923.json"
+      ],
+      "blockingIssues": [
+        "CROSS_PARENT_L2_CORRECTION_GATE_REQUIRED_FOR_28_UID",
+        "CANONICAL_COMPILED_RUNTIME_PROMOTION_NOT_RUN"
+      ],
+      "nextStartPoint": "Independent branch review of application commit + parity repair; then separate L1/L2 correction gate for 28 cross-parent UIDs. Do not re-adjudicate frozen143/new90 unless source changes."
     }
   ]
 }
