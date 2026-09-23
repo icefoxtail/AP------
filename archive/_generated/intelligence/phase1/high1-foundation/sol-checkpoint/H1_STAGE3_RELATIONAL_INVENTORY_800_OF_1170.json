@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "h1-stage3-relational-inventory-v1",
+  "status": "PARTIAL_800_OF_1170",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "basisMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "parentHead": "d519ec342e57125df72368f9591af81458bd87bc",
+  "denominator": 1170,
+  "completed": 800,
+  "remaining": 370,
+  "artifacts": [
+    {
+      "file": "H1_STAGE3_RELATIONAL_CANDIDATE_A_497.jsonl",
+      "rows": 497,
+      "blobSha": "88ba17c4d9b70a0433028b4592e65f435f664c26"
+    },
+    {
+      "file": "H1_STAGE3_RELATIONAL_INPUT_EQINEQ_303.jsonl",
+      "rows": 303,
+      "sha256": "74895d0c25f7847b3edb12e9591a7674550e6379cc0099034c937d949dda77ce"
+    },
+    {
+      "file": "H1_STAGE3_RELATIONAL_CANDIDATE_B_EQINEQ_303.jsonl",
+      "rows": 303,
+      "sha256": "a7bafd168c8891f31765c7bb8223098a7eb05e2ef78a933f6ae8e36b592a7b29"
+    },
+    {
+      "file": "H1_STAGE3_RELATIONAL_CHECKPOINT_800_OF_1170.json",
+      "rows": 1,
+      "sha256": "d81196a5439d69df9449731acf59cdf2ece8697fdbdd106fbd6d5e253fc62066"
+    }
+  ],
+  "coverage": {
+    "relationalA": 497,
+    "eqineqRemainingClosedAsCandidate": 303,
+    "cumulativeUniqueUid": 800,
+    "cumulativeUniqueSourceIdentity": 800,
+    "overlapUid": 0
+  },
+  "remainingByWorkUnit": {
+    "PERMCOMB": 287,
+    "MATRIX": 83
+  },
+  "next": {
+    "workUnit": "PERMCOMB",
+    "workIndex": 1,
+    "questionUid": "qid_v1_b81b3ab7fe1cb0cd9bf4d706b2e86a075dfeb94888554f4b8f7b415df8ad847a",
+    "sourceIdentity": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#5"
+  },
+  "rules": {
+    "sameStagePriorRelationalInputUsed": false,
+    "canonicalNewKeyCreated": false,
+    "finalDeclared": false
+  }
+}
