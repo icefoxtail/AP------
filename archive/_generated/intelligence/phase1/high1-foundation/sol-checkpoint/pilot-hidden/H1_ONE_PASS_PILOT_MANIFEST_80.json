@@ -4095,5 +4095,41 @@
     "at": "2026-09-24",
     "gate": "80_UID_UNIQUE_SOURCE_UNIQUE_CURRENT_TUPLE_HASH_AND_ALLOWED_FIELD_PASS",
     "hiddenReferenceRelease": "AFTER_BOTH_A_B_80_COMPLETE"
+  },
+  "sanitizedActiveVocabulary": {
+    "file": "one-pass-pilot/worker-input/H1_ONE_PASS_ACTIVE_VOCAB_SANITIZED.json",
+    "sha256": "720deed302d3bd1ef67c7d73ae2c908910dd9285273f33cab2299abda3f8a120",
+    "sourceRefs": [
+      {
+        "path": "archive/data/master_tables/js_archive_tag_master.json",
+        "sha256": "1ba5319b4358896d5a88453b648771a53edd52a4b63d7377e0a0610b4170afe0"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+        "sha256": "e0b982a871a0405a778b3a2da8ab2ec2bd260c4ae7474b0ae6fc7dc242fe3b8f"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+        "sha256": "7896eda79687b6ed6eb41dfef29452d10a46113e359bb5b7a0c2cd5e94394d02"
+      },
+      {
+        "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+        "sha256": "8562955f8fc8212c5bcd8681aa16184fc7856649098d66c119cf0e8553e4355a"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/metadata_rules.json",
+        "sha256": "905dcbd9d83c5ab2354b4f54cea8be2e0e433bc0ed48c92d6c357755ea435107"
+      }
+    ]
+  },
+  "blindRestart": {
+    "reason": "RAW_ACTIVE_REGISTRIES_EXPOSED_SUPPORTING_QUESTION_UID_LISTS",
+    "priorPilotAAndBRowsAccepted": 0,
+    "priorWorkersRetired": true,
+    "restartAt": "2026-09-24",
+    "nextWorkersInputFilesOnly": [
+      "H1_ONE_PASS_PILOT_BLIND_INPUT_80.jsonl",
+      "H1_ONE_PASS_ACTIVE_VOCAB_SANITIZED.json"
+    ]
   }
 }
