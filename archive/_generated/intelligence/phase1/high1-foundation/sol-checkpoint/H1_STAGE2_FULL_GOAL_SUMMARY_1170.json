@@ -2,7 +2,7 @@
   "schemaVersion": "h1-stage2-full-goal-summary-v3",
   "status": "STAGE2_1170_PHYSICAL_COMPLETE_REPAIR_IN_PROGRESS",
   "baseMainSha": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
-  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "currentOriginMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
   "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "branch": "meta-foundation-h1-preprocess-sol-review",
@@ -194,7 +194,19 @@
       "genericReasonOnlyUntouched": 397,
       "repairArtifact": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_POLYNOMIAL_53.jsonl",
       "checkpointArtifact": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_CHECKPOINT_POLYNOMIAL_53.json",
-      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46"
+      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46",
+      "mainDriftVerification": {
+        "from": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "to": "06c8d9f4271799446af70794f9cdf462cec5df20",
+        "aheadBy": 3,
+        "changedFiles": [
+          "archive/archive2-workspace.js",
+          "archive/archive2.css",
+          "tests/archive2-school-history.test.cjs"
+        ],
+        "h1SourceIdentityMetadataDrift": 0,
+        "verdict": "NO_H1_SEMANTIC_INPUT_DRIFT"
+      }
     }
   }
 }

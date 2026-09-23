@@ -3,7 +3,7 @@
   "status": "STAGE2_1170_PHYSICAL_COMPLETE_REPAIR_IN_PROGRESS",
   "authority": "Physical batch ledgers and checkpoint commits; no Notion-only state.",
   "baseMainSha": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
-  "currentOriginMainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+  "currentOriginMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
   "branch": "meta-foundation-h1-preprocess-sol-review",
   "lastBatch": {
     "unit": "MATRIX",
@@ -196,7 +196,7 @@
     }
   },
   "finalSummary": "H1_STAGE2_FULL_GOAL_SUMMARY_1170.json",
-  "finalSummarySha256": "3b699f2e805222958be61038b7b2a945e16c4b065fa33f373732e866a377df92",
+  "finalSummarySha256": "5dcdbee59fbaac32147f3dcea8da915e93cb7cf2438bbf855142ea3fd1ff74b9",
   "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "gptRepair": {
@@ -217,7 +217,19 @@
       "genericReasonOnlyUntouched": 397,
       "artifact": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_POLYNOMIAL_53.jsonl",
       "checkpoint": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_CHECKPOINT_POLYNOMIAL_53.json",
-      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46"
+      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46",
+      "mainDriftVerification": {
+        "from": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+        "to": "06c8d9f4271799446af70794f9cdf462cec5df20",
+        "aheadBy": 3,
+        "changedFiles": [
+          "archive/archive2-workspace.js",
+          "archive/archive2.css",
+          "tests/archive2-school-history.test.cjs"
+        ],
+        "h1SourceIdentityMetadataDrift": 0,
+        "verdict": "NO_H1_SEMANTIC_INPUT_DRIFT"
+      }
     }
   }
 }
