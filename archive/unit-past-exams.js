@@ -371,6 +371,7 @@
   }
   function buildMixedUrl(paper, options = {}) {
     const url = new URL('mixed_engine.html', window.location.href);
+    url.searchParams.set('archive2Context', 'archive2');
     url.searchParams.set('key', paper.snapshotKey); url.searchParams.set('qpp', getQpp());
     url.searchParams.set('mode', 'exam'); url.searchParams.set('q', String(paper.count));
     if (options.submitQr) url.searchParams.set('submitQr', '1');
