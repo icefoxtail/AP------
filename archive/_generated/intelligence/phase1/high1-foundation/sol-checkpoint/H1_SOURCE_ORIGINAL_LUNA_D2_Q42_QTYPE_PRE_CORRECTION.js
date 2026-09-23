@@ -585,7 +585,7 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "단답형",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
     "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는? [5.6점]",
