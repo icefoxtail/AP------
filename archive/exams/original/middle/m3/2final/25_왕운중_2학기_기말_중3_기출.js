@@ -151,8 +151,8 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 지름 위의 두 반지름은 일직선이므로 중심각을 먼저 구한다.\n$\\angle AOB=180^\\circ$이므로 $\\angle BOC=180^\\circ-62^\\circ=118^\\circ$이다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다. 따라서\n$\\angle BCO=\\dfrac{180^\\circ-118^\\circ}{2}=31^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q5.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -213,8 +213,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 반지름으로 만든 이등변삼각형에서 중심각을 구한다.\n$OA=OC$이므로 $\\angle AOC=180^\\circ-2\\cdot18^\\circ=144^\\circ$이다.\n$OB=OC$이므로 $\\angle BOC=180^\\circ-2\\cdot36^\\circ=108^\\circ$이다.\n한 점 주위의 각의 합은 $360^\\circ$이므로 $x=360^\\circ-144^\\circ-108^\\circ=108^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q7.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

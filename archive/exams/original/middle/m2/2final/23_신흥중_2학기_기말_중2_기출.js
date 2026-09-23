@@ -241,8 +241,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 삼각형의 두 변의 중점을 이은 선분의 길이는 나머지 한 변의 절반이다.\n$DE=\\dfrac12 AC=5\\rm\\,cm$, $EF=\\dfrac12 AB=4\\rm\\,cm$, $FD=\\dfrac12 BC=6\\rm\\,cm$이다.\n따라서 $\\triangle DEF$의 둘레는 $5+4+6=15\\rm\\,cm$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q8.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -617,8 +617,8 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $EF\\parallel AB$가 되도록 긋는다. (2) AA 닮음. (3) $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$.",
     "solution": "[키포인트] 보조선을 그어 닮은 삼각형과 평행사변형을 함께 만든다.\n(1) 점 $E$를 지나 $AB$에 평행한 직선을 그어 $BC$와 만나는 점을 $F$라 한다.\n(2) $AD$와 $EF$가 평행이고 $DE$와 $FC$가 평행이므로 대응하는 두 각의 크기가 각각 같다. 따라서 $\\triangle ADE\\sim\\triangle EFC$이며 닮음 조건은 AA 닮음이다.\n(3) 닮음에서 $AD:EF=AE:EC$이다.\n또 $DB\\parallel EF$, $DE\\parallel BF$이므로 $\\square DBFE$는 평행사변형이고 $EF=DB$이다.\n따라서 $AD:DB=AE:EC$이다.\n따라서 빈칸은 차례로 $EF$, $EC$, 평행사변형, $DB$, $DB$, $EC$이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

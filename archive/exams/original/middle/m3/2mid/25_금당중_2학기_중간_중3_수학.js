@@ -248,8 +248,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 꼭짓점 $A$에서 $BC$에 수선을 내려 두 개의 직각삼각형으로 나눈다.\n조건 정리: $AB=8\\,\\mathrm{cm}$, $BC=10\\,\\mathrm{cm}$, $\\angle B=60^\\circ$이다.\n풀이 방향: 수선의 발을 $H$라 하고 $AH$, $BH$, $HC$를 차례로 구한 뒤 피타고라스 정리를 이용한다.\n정석 풀이: $AH=8\\sin60^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$이고, $BH=8\\cos60^\\circ=8\\times\\dfrac{1}{2}=4$이다. 따라서 $HC=BC-BH=10-4=6$이다. 직각삼각형 $AHC$에서 $AC^2=AH^2+HC^2=(4\\sqrt3)^2+6^2=48+36=84$이다. 그러므로 $AC=\\sqrt{84}=2\\sqrt{21}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q8.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -659,8 +659,8 @@ window.questionBank = [
     "answer": "(1) $4$ (2) $2\\sqrt5$",
     "solution": "[키포인트] 코사인의 정의로 한 변을 구한 뒤 피타고라스 정리로 나머지 변을 구한다.\n조건 정리: $AC=6$은 빗변이고 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{2}{3}$이다.\n풀이 방향: (1) 코사인의 정의를 이용하고, (2) 직각삼각형의 세 변의 관계를 이용한다.\n정석 풀이: (1) $\\dfrac{AB}{6}=\\dfrac{2}{3}$이므로 $AB=6\\times\\dfrac{2}{3}=4$이다. (2) 피타고라스 정리에 의해 $AB^2+BC^2=AC^2$이다. 따라서 $BC^2=6^2-4^2=36-16=20$이고, 길이는 양수이므로 $BC=\\sqrt{20}=2\\sqrt5$이다.\n따라서 구하는 길이는 (1) $4$, (2) $2\\sqrt5$이다.",
     "image": "assets/images/25_금당중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

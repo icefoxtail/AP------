@@ -306,8 +306,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 중점과 평행 관계를 이용한 닮음으로 대각선 $BD$의 분할비를 구한다.\n$BM\\parallel AD$이고 $P$는 $BD$, $AM$의 교점이므로 $\\triangle BMP\\sim\\triangle DAP$이다. $BM:AD=1:2$이므로 $BP:PD=1:2$, 따라서 $BP=\\dfrac13BD$이다.\n또 $DN\\parallel AB$이고 $Q$는 $BD$, $AN$의 교점이므로 $\\triangle DQN\\sim\\triangle BQA$이다. $DN:AB=1:2$이므로 $DQ:BQ=1:2$, 따라서 $BQ=\\dfrac23BD$이다.\n그러므로 $BP=PQ=QD=\\dfrac13BD$이고, 같은 높이를 가지는 $\\triangle ABP$, $\\triangle APQ$, $\\triangle AQD$의 넓이는 모두 같다. 따라서 ㄴ은 참이다.\n일반적인 평행사변형에서 대각선 $BD$가 두 변과 이루는 각이 같다는 조건은 없으므로 ㄱ은 거짓이다.\n평행사변형의 넓이를 $S$라 하면 $[BCD]=\\dfrac S2$, $[BMP]=[DQN]=\\dfrac S{12}$, $[CMN]=\\dfrac S8$이므로 $[PMNQ]=\\dfrac S2-\\dfrac S{12}-\\dfrac S{12}-\\dfrac S8=\\dfrac{5S}{24}$이다.\n$S=54$이면 $[PMNQ]=\\dfrac{45}{4}\\rm\\,cm^2$이므로 ㄷ은 참이다.\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ④이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q10.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

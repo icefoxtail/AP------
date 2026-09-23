@@ -61,8 +61,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 두 직선이 각각 서로 수직이면 그 두 직선이 이루는 예각의 크기는 같다.\n조건 정리: 큰 직각삼각형의 두 직각변의 길이는 $6$, $8$이고, 내부의 빗변에 수직인 선분과 높이 $8$인 변이 이루는 각이 $y$이다.\n풀이 방향: 피타고라스 정리로 빗변을 구해 $\\sin x$를 계산하고, 수직인 두 직선 사이의 각 관계로 $y=x$임을 확인한 뒤 $\\cos y$를 구한다.\n정석 풀이: 큰 직각삼각형의 빗변의 길이는 $\\sqrt{6^2+8^2}=10$이다. 따라서 각 $x$에 대하여 $\\sin x=\\dfrac{8}{10}=\\dfrac45$이다. 그림에서 밑변과 높이 $8$인 변은 서로 수직이고, 빗변과 내부 선분도 서로 수직이다. 두 직선을 각각 $90^\\circ$만큼 돌려도 두 직선이 이루는 예각의 크기는 같으므로 $y=x$이다. 그러므로 $\\cos y=\\cos x=\\dfrac{6}{10}=\\dfrac35$이다. 따라서 $\\sin x+\\cos y=\\dfrac45+\\dfrac35=\\dfrac75$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -123,8 +123,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 직선이 오른쪽으로 내려가므로 기울기의 부호가 음수임을 먼저 판단한다.\n조건 정리: 직선의 $y$절편은 $4$이고, $x$축과 이루는 예각은 $60^\\circ$이다.\n풀이 방향: 기울기의 절댓값을 $\\tan60^\\circ$로 구하고 그래프의 방향으로 부호를 정한다.\n정석 풀이: 직선은 오른쪽으로 갈수록 내려가므로 기울기는 음수이다. 기울기의 절댓값은 $\\tan60^\\circ=\\sqrt3$이므로 기울기는 $-\\sqrt3$이다. $y$절편이 $4$이므로 직선의 방정식은 $y=-\\sqrt3x+4$이다. 이를 한쪽으로 모으면 $\\sqrt3x+y-4=0$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

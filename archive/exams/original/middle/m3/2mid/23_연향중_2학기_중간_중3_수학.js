@@ -682,8 +682,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{24}{25}$",
     "solution": "[키포인트] 접는 선을 사이에 둔 각의 관계와 평행선의 엇각을 이용해 이등변삼각형을 찾는다.\n조건 정리: 직사각형의 높이는 $3\\,\\mathrm{cm}$이고 $AC=5\\,\\mathrm{cm}$이다.\n풀이 방향: $AB=BC$임을 보인 뒤 직각삼각형에서 $AB$를 구한다.\n정석 풀이: 접기에 의해 위쪽 변과 $AC$가 이루는 각은 $\\angle BAC$와 같다. 위쪽 변과 아래쪽 변은 평행하므로 이 각은 $\\angle ACB$와 같다. 따라서 $\\angle BAC=\\angle ACB$이고 $AB=BC$이다. $A$에서 아래쪽 변에 내린 수선의 발을 $H$라 하면 $AH=3$, $AC=5$이므로 $HC=4$이다. $AB=BC=x$라 하면 $BH=HC-BC=4-x$이다. 직각삼각형 $ABH$에서 $x^2=3^2+(4-x)^2$이므로 $8x=25$, 따라서 $AB=\\dfrac{25}{8}$이다. $\\angle ABD=a$이므로 $\\sin a=\\dfrac{AH}{AB}=\\dfrac3{25/8}=\\dfrac{24}{25}$이다.\n따라서 구하는 값은 $\\dfrac{24}{25}$이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -734,8 +734,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$",
     "solution": "[키포인트] 실의 길이는 점 $P$에서 원으로 그은 두 접선과 원에 감긴 큰 호의 길이의 합이다.\n조건 정리: 원기둥의 반지름은 $8\\,\\mathrm{cm}$이고 점 $P$와 원기둥의 최단 거리는 $8\\,\\mathrm{cm}$이다.\n풀이 방향: 중심에서 $P$까지의 거리, 접선의 길이, 감긴 호의 중심각을 차례로 구한다.\n정석 풀이: 단면의 중심을 $O$라 하면 $OP=8+8=16$이다. 접점을 $T$라 하면 $OT\\perp PT$이므로 $PT=\\sqrt{16^2-8^2}=8\\sqrt3$이다. 접선은 두 개이므로 접선 부분의 합은 $16\\sqrt3$이다. 또한 $\\cos\\angle TOP=\\dfrac{OT}{OP}=\\dfrac12$이므로 $\\angle TOP=60^\\circ$이다. 두 접점 사이에서 점 $P$ 쪽의 중심각은 $120^\\circ$이므로 실이 감긴 큰 호의 중심각은 $240^\\circ$이다. 큰 호의 길이는 $2\\pi\\times8\\times\\dfrac{240}{360}=\\dfrac{32\\pi}{3}$이다. 따라서 실의 길이는 $16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.\n따라서 구하는 값은 $16\\sqrt3+\\dfrac{32\\pi}{3}\\,\\mathrm{cm}$이다.",
-    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-    "subUnit": "원주각",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   }

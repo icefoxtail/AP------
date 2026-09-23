@@ -468,8 +468,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 빗변과 한 직각변은 코사인, 두 직각변은 탄젠트로 연결한다.\n조건 정리: $\\angle C=90^\\circ$, $BC=12$, $\\angle B=36^\\circ$, $AB=x$, $AC=y$이다.\n풀이 방향: $\\angle B$를 기준으로 코사인과 탄젠트를 쓴다.\n정석 풀이: $\\cos36^\\circ=\\dfrac{BC}{AB}=\\dfrac{12}{x}$이므로 $x=\\dfrac{12}{\\cos36^\\circ}$이다. 또 $\\tan36^\\circ=\\dfrac{AC}{BC}=\\dfrac{y}{12}$이므로 $y=12\\tan36^\\circ$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -628,8 +628,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 사각형의 넓이를 두 대각선의 길이와 그 사이각으로 나타내어 방정식을 세운다.\n조건 정리: $AC=10$, $BD=x$, 대각선 사이각은 $60^\\circ$, 넓이는 $50\\sqrt3$이다.\n풀이 방향: $\\dfrac12\\times AC\\times BD\\times\\sin60^\\circ$를 이용한다.\n정석 풀이: $50\\sqrt3=\\dfrac12\\times10\\times x\\times\\dfrac{\\sqrt3}{2}=\\dfrac{5\\sqrt3}{2}x$이다. 양변을 $\\dfrac{5\\sqrt3}{2}$로 나누면 $x=20$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

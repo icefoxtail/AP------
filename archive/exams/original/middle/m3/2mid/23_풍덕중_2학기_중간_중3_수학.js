@@ -310,8 +310,8 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] $\\tan x=\\dfrac34$에서 $3:4:5$의 변의 비를 만들고, 사분원의 반지름이 $20$임을 이용한다.\\n조건 정리: $OA=OC=20$, $AB\\parallel CD$, $\\tan x=\\dfrac34$이다.\\n풀이 방향: 직각삼각형 $OAB$에서 $AB$, $OB$를 구하고, 직각삼각형 $OCD$에서 $CD$를 구한 뒤 사다리꼴 넓이를 계산한다.\\n정석 풀이: 삼각형 $OAB$에서 빗변 $OA=20$이고 변의 비가 $3:4:5$이므로 $AB=12$, $OB=16$이다. 따라서 $BC=OC-OB=20-16=4$이다. 삼각형 $OCD$에서는 $CD=OC\\tan x=20\\times\\dfrac34=15$이다. 그러므로 사다리꼴의 넓이는 $\\dfrac12(AB+CD)\\times BC=\\dfrac12(12+15)\\times4=54$이다.\\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q10.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -630,8 +630,8 @@ window.questionBank=[
     "answer": "③",
     "solution": "[키포인트] 둔각 $a$의 바깥쪽에 직각삼각형을 만들어 $3:4:5$의 비를 적용한 뒤 이등변삼각형을 반으로 나눈다.\\n조건 정리: $AB=AC=5$, $a>90^\\circ$, $\\tan(a-90^\\circ)=\\dfrac34$이다.\\n풀이 방향: $C$에서 직선 $AB$의 연장선에 수선을 내려 밑변 $BC$를 먼저 구한다.\\n정석 풀이: $C$에서 $BA$의 $A$ 바깥쪽 연장선에 내린 수선의 발을 $H$라 하자. $\\angle CAH=180^\\circ-a=90^\\circ-(a-90^\\circ)$이다. $\\tan(a-90^\\circ)=\\dfrac34$이므로 $3:4:5$의 비에서 $\\cos\\angle CAH=\\dfrac35$, $\\sin\\angle CAH=\\dfrac45$이다. 따라서 $AH=5\\times\\dfrac35=3$, $CH=5\\times\\dfrac45=4$이다. $HB=HA+AB=3+5=8$이므로 $BC=\\sqrt{8^2+4^2}=4\\sqrt5$이다. 이제 $A$에서 $BC$에 내린 수선은 이등변삼각형의 밑변을 이등분하므로 반쪽 밑변은 $2\\sqrt5$이다. 이 직각삼각형에서 높이는 $\\sqrt{5^2-(2\\sqrt5)^2}=\\sqrt5$이므로 $\\cos\\dfrac a2=\\dfrac{\\sqrt5}{5}$이다.\\n따라서 정답은 ③이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q20.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -706,8 +706,8 @@ window.questionBank=[
     "answer": "$15\\pi-9$",
     "solution": "[키포인트] 활꼴의 넓이는 부채꼴의 넓이에서 두 반지름과 현으로 이루어진 삼각형의 넓이를 뺀 값이다.\\n조건 정리: $OB=OC=6$, $\\angle CBO=15^\\circ$이다.\\n풀이 방향: 이등변삼각형 $BOC$의 중심각을 구한 뒤 부채꼴과 삼각형의 넓이를 각각 계산한다.\\n정석 풀이: $OB=OC$이므로 $\\angle CBO=\\angle BCO=15^\\circ$이다. 따라서 $\\angle BOC=180^\\circ-15^\\circ-15^\\circ=150^\\circ$이다. 부채꼴 $BOC$의 넓이는 $\\dfrac{150}{360}\\times\\pi\\times6^2=15\\pi$이다. 점 $B$의 반대쪽 지름의 끝점을 $A$라 하면 $\\angle COA=180^\\circ-\\angle BOC=30^\\circ$이다. 점 $C$에서 지름 $AB$에 내린 높이는 $OC\\sin30^\\circ=6\\times\\dfrac12=3$이다. 따라서 삼각형 $BOC$의 넓이는 $\\dfrac12\\times OB\\times3=\\dfrac12\\times6\\times3=9$이다. 따라서 활꼴의 넓이는 $15\\pi-9$이다.\\n따라서 구하는 넓이는 $15\\pi-9$이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q23.png",
-    "subUnitKey": "M3-06-CIRCLE_LINE",
-    "subUnit": "원과 직선",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
