@@ -1,30 +1,28 @@
-# Final convergence review
+# Final review — pinpoint closure
 
-- Notion plan: `Archive 2.0 2단계 — 시험지 상세·렌더 UX / LaTeX·도형·A4 출력 Codex 실행계획`.
-- Base: `origin/main` at `06c8d9f4271799446af70794f9cdf462cec5df20`.
 - Task branch: `codex/archive2-exam-render-ux-20260923`.
-- Review mode: primary Codex only, as requested; no subagents.
-- The task branch was created at 16:49 KST from the then-current `origin/main` (`06c8d9f`). At the final verification fetch, `origin/main` had advanced to `54ef7d6f479c2dee804812b22b24ed9c51b507c9` through four post-creation commits: `b2eff23eb`, `0d30376ed`, `dc4ca0d85`, and `54ef7d6f4`. Those commits are not included; main was not merged or pushed.
+- Latest upstream merged: `origin/main` at `54ef7d6f479c2dee804812b22b24ed9c51b507c9`; merge commit: `b72261231ae14df6cf564d9d013742de3a9f7699`.
+- No branch was created. The three GPT-confirmed UX defects and render-evidence cleanup were closed in this follow-up.
 
-## Contract and render review
+## Closed findings
 
-- Existing Korean labels, mode names, active state, question selection, part split, and qpp values `4 / 6 / 8` remain unchanged.
-- Pin, replace, and undo restored the original question UID and pinned state in the actual Compose flow.
-- Mobile display changes are screen-only and begin after `RENDER_READY`; A4 print markup, page dimensions, pagination, and print CSS remain the renderer authority.
-- PC 1440px and mobile 390px Chrome captures show readable exam, solution, answer, original detail, and Compose preview states. No horizontal overflow or mobile-tab interception was observed.
-- Final A4 verification covers original text/math/geometry outputs at qpp 4/6/8, the original geometry solution and answer, and mixed/Compose qpp 4/6/8. Four contact sheets and representative full-size pages were visually reviewed.
+- **P1-01 — mobile answer order:** each nonempty answer cell carries its source chunk index. Archive2 mobile screen CSS applies that order to the single-column grid. The shared answer executor and both engine fallback renderers use the same index. Empty padding cells remain hidden; desktop and print keep their existing two-column layout.
+- **P1-02 — Archive 1 scope leak:** all four Archive2 engine entry points use `Archive2Output.engineUrl`, which sends `archive2Context=archive2`. Both engines set the document context from that explicit marker. Every rule in `archive2-preview-mobile.css` requires the marker and screen media; `archive/index.html` legacy links send no marker.
+- **P2 — small solution SVG:** Archive2 mobile screen CSS lets solution image wrappers use the content width and removes image `max-width` / `max-height` size caps. The original q3 SVG and `solutionImageSize` data were not changed. Desktop and print sizes are unchanged.
+- **Evidence cleanup:** removed 162 generated PNG renders totaling 16,225,059 bytes from this phase's `evidence/screens` and A4 `rendered` folders. No PDF files were tracked in this evidence set.
 
-## Severity closure
+## Targeted verification
 
-- HIGH: 1 found / 1 fixed — mobile A4 preview reflow.
-- MEDIUM: 4 found / 4 fixed — mobile engine tabs, Compose desktop mode buttons, Compose mobile actions, and desktop page-count controls.
-- LOW: no remaining findings.
+- `node --check` passed for `archive/archive2-output.js`, `archive/archive2-workspace.js`, `archive/answer-render-executor.js`, and `tests/archive2-preview-responsive.test.cjs`.
+- `node --test tests/archive2-preview-responsive.test.cjs`: **5 passed, 0 failed**. The browser test uses the original 21-question Maesan geometry exam and its unchanged 620×420 q3 solution SVG.
+- At 390px, the browser's positioned answer-cell order was asserted as `1, 2, 3, …, 21` for both `engine.html` and `mixed_engine.html`, through shared and fallback renderers. Archive 1 marker-free engine paths retained two columns.
+- The 390px q3 SVG filled its available solution wrapper; Archive 1 retained the prior 72% / 145px caps. Archive2 exam rendering had no horizontal overflow. Desktop Archive2 answers remained two-column.
+- A4 qpp 4/6/8 retained **5/4/3 pages** in the existing text fixture; page counts stayed the same after switching the browser to print media.
+- No repository-wide test suite or large render capture was rerun.
 
-## Verification and remaining HOLD
+## Durable evidence retained
 
-- Focused patch regressions: 107 passed, 0 failed.
-- Broader targeted regressions: 108 passed, 2 failed in navigation test mocks that also failed in the frozen baseline.
-- Full tests-directory run: 580 passed, 250 failed; full repository auto-discovery: 930 passed, 258 failed. Full logs and the specific unchanged-source / missing-fixture failures are recorded in `evidence/final-tests-directory-root.log` and `evidence/final-full-regression.log`.
-- No failure was reported by the new responsive or touch-target tests. No UX or A4 HOLD remains; the repository-wide baseline and fixture test failures remain HOLDs outside the edited surface.
-- Integration HOLD: `origin/main` advanced by four commits after this task branch was created. Review and integrate those later main commits separately if this branch is to be rebased or merged.
-- Requested model routing to GPT-6 Luna Max is not exposed by this session's task controls, so the selected model and effort could not be verified.
+- This summary and `UX_DEBT_LEDGER.md`.
+- A4 baseline/final `summary.json` and `pdf-audit.json`.
+- `evidence/compose-final.json` and `evidence/mobile-mode-tab-baseline.json` for the existing closed UX items.
+- The targeted DOM/browser regression in `tests/archive2-preview-responsive.test.cjs`.

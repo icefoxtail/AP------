@@ -121,5 +121,10 @@
     url.searchParams.set("assignmentRegistered", "1");
     return url;
   }
-  return { displayTitle, materialKind, matchesMaterial, normalize, settings, markup, read, applyUrl };
+  function engineUrl(path, base) {
+    const url = new URL(path, base);
+    url.searchParams.set("archive2Context", "archive2");
+    return url;
+  }
+  return { displayTitle, materialKind, matchesMaterial, normalize, settings, markup, read, applyUrl, engineUrl };
 });
