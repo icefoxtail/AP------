@@ -151,8 +151,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 세 중선은 삼각형을 넓이가 같은 여섯 개의 작은 삼각형으로 나눈다.\n$G$가 무게중심이고 $D$가 $BC$의 중점이므로 $\\triangle GBD$의 넓이는 $\\triangle ABC$ 넓이의 $\\dfrac16$이다.\n따라서 $[ABC]=6\\times3=18\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_삼산중_2학기_기말_중2_기출/q5.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

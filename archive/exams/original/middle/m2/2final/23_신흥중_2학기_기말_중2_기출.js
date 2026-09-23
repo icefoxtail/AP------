@@ -366,8 +366,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심이 밑변에서 차지하는 높이의 비를 차례로 적용한다.\n$G$는 $\\triangle ABC$의 무게중심이므로 밑변 $BC$에서 $G$까지의 높이는 $A$에서 $BC$까지 높이의 $\\dfrac13$이다.\n또 $G'$은 $\\triangle GBC$의 무게중심이므로 $G'$에서 $BC$까지의 높이는 $G$에서 $BC$까지 높이의 $\\dfrac13$, 즉 원래 높이의 $\\dfrac19$이다.\n$D$는 $BC$의 중점이므로 $BD=\\dfrac12 BC$이다.\n따라서 $[\\triangle G'BD]=\\dfrac12\\times\\dfrac12 BC\\times\\dfrac19 h=\\dfrac1{18}[\\triangle ABC]$이다.\n$5=\\dfrac1{18}[\\triangle ABC]$이므로 $[\\triangle ABC]=90\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_신흥중_2학기_기말_중2_기출/q12.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
