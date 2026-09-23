@@ -655,8 +655,8 @@ window.questionBank = [
     "solution": "[키포인트] 평행한 세 선 때문에 생기는 두 쌍의 닮은 삼각형을 차례로 이용한다.\n그림에서 $AB=20\\rm\\,cm$, $EF=12\\rm\\,cm$, $BF=10\\rm\\,cm$, $FC=x\\rm\\,cm$, $DC=y\\rm\\,cm$이다.\n먼저 $EF\\parallel AB$이므로 $\\triangle CEF\\sim\\triangle CAB$이다. 따라서\n$\\dfrac{CF}{CB}=\\dfrac{EF}{AB}=\\dfrac{12}{20}=\\dfrac35$이다.\n즉 $\\dfrac{x}{x+10}=\\dfrac35$이므로 $5x=3x+30$, 따라서 $x=15$이다.\n그러면 $BC=10+15=25\\rm\\,cm$이다.\n또 $EF\\parallel DC$이므로 $\\triangle BEF\\sim\\triangle BDC$이다. 따라서\n$\\dfrac{EF}{DC}=\\dfrac{BF}{BC}=\\dfrac{10}{25}=\\dfrac25$이다.\n$\\dfrac{12}{y}=\\dfrac25$이므로 $2y=60$, 따라서 $y=30$이다.\n따라서 구하는 값은 $x=15$, $y=30$이다.",
     "image": "assets/images/24_향림중_2학기_기말_중2_기출/q22.png",
     "imageSize": "large",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

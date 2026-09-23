@@ -157,8 +157,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] $BH=OB-OH$이고, $OH$는 코사인으로 구한다.\n조건 정리: $OA=OB=1$, $\\angle AOH=35^\\circ$, $AH\\perp OB$이다.\n풀이 방향: 직각삼각형 $AOH$에서 $OH$를 구한다.\n정석 풀이: $\\cos35^\\circ=\\dfrac{OH}{OA}=OH$이므로 $OH=\\cos35^\\circ$이다. 따라서 $BH=OB-OH=1-\\cos35^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_중간_중3_수학/q5.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },

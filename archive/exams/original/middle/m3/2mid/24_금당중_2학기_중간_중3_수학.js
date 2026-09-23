@@ -249,8 +249,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] $B$에서 $AC$에 수선을 내려 두 개의 특수한 직각삼각형으로 나눈다.\n조건 정리: $\\angle A=180^\\circ-75^\\circ-60^\\circ=45^\\circ$이다.\n풀이 방향: $B$에서 $AC$에 내린 수선의 발을 $D$라 하고, 먼저 $\\triangle BCD$에서 $BD$를 구한 뒤 $45^\\circ$ 직각삼각형 $ABD$를 이용한다.\n정석 풀이: $BD\\perp AC$라 하면 $\\triangle BCD$에서 $BC=8$은 빗변이고 $\\angle C=60^\\circ$이다. 따라서 $BD=BC\\sin60^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$이다. $\\triangle ABD$에서 $\\angle A=45^\\circ$, $\\angle D=90^\\circ$이므로 $\\angle ABD=45^\\circ$이다. 따라서 $\\triangle ABD$는 직각이등변삼각형이고 $AB=BD\\sqrt2=4\\sqrt3\\times\\sqrt2=4\\sqrt6\\,\\mathrm{cm}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q08.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
