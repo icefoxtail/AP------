@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "h1-sol-browser-render-receipt-v1",
+  "status": "TARGETED_CHROME_RENDER_REVIEW_WITH_Q599_MATH_HOLD",
+  "dateLocal": "2026-09-24",
+  "browser": "Chrome extension controlled through browser tab API",
+  "localBaseUrl": "http://127.0.0.1:8765/archive/engine.html",
+  "observations": [
+    {
+      "queueIndex": 555,
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#19",
+      "sourceJsSha256": "718709B557E6302FF52E24B87701C962377471B500D2A67BB6DD7B4FF5369D99",
+      "exam": "PASS: q19 revised 단답형 stem rendered, q19.png visible and decoded at 1643x957; print area text length 5251, no apRenderError.",
+      "solution": "PASS after asynchronous render: print area text length 12178, q19 answer -4 and corrected f roots -3,0 / intersection -5,0 reasoning visible, no apRenderError.",
+      "answer": "PASS: answer table q19 displays -4."
+    },
+    {
+      "queueIndex": 599,
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#19",
+      "sourceJsSha256": "3254231071C81E63512DE29CD439B355C2926FB4FB71B4D7A01B6321151C9A46",
+      "exam": "RENDER_PASS: restored parameterized quadratic and requested cubic x^3-4x^2+ax+b appear in q19.",
+      "solution": "RENDER_PASS_MATH_HOLD: asynchronous solution render displays q19, but its unchanged answer/derivation factors an unrelated quadratic with complex roots. This remains CORRECTION_PROTOCOL_REQUIRED and is not a correctness PASS.",
+      "answer": "RENDER_PASS_MATH_HOLD: answer table q19 visibly displays (x-2-√2 i)(x-2+√2 i), the unchanged archived answer to an unrelated quadratic; it is not the printed cubic's factorization."
+    },
+    {
+      "queueIndex": 600,
+      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#20",
+      "sourceJsSha256": "3254231071C81E63512DE29CD439B355C2926FB4FB71B4D7A01B6321151C9A46",
+      "exam": "PASS: q20 printed radius 10 and CP=9, DP=6 render; restored original q20.png visible and decoded at 660x440; print area text length 4455, no apRenderError.",
+      "solution": "PASS after asynchronous render: q20 answer x^2-20x+54=0 and chord-power proof visible in a 70434-character DOM snapshot, no apRenderError.",
+      "answer": "PASS: answer table q20 displays x^2-20x+54=0."
+    },
+    {
+      "queueIndex": 641,
+      "sourceIdentity": "original/high/h1/1mid/26_매산여고_1학기_중간_고1_기출_c.js#22",
+      "sourceJsSha256": "F66714AB70AC33DEE3F0C190E4A64E813CF32528F42436AD43C7B21E862EE576",
+      "exam": "PASS: q22 restored P endpoint exclusion rendered; q22.png visible and decoded at 237x163; print area text length 5150, no apRenderError.",
+      "solution": "PASS after asynchronous render: print area text length 9085, q22 corrected maximum 12 and subtraction-of-triangles derivation visible, no apRenderError.",
+      "answer": "PASS: answer table q22 displays 12."
+    }
+  ],
+  "scopeNote": "This is targeted browser render QA, not a 1170-item FINAL validation. Solution rendering was asynchronous; an initially blank area was rechecked after it populated."
+}
