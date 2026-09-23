@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetSourceBranch": "codex/meta-foundation/middle-geometry",
+  "reviewIndex": {
+    "start": 901,
+    "end": 920,
+    "count": 20
+  },
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "choicesRead": false,
+  "answerFieldRead": false,
+  "existingL2L3L4CrossConceptBeforeBlindRead": false,
+  "priorReviewVerdictBeforeBlindRead": false,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 901,
+      "questionUid": "qid_v1_f7ea6087ad496c4efcc82bd2eb0a0d30bcfe35bc5304afdd23a3f86dedb7cb2d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "0ed1cd7544867885fc451b64a14f8d96debee8c13898a5d7c84e1b885a1a6efe"
+      },
+      "sourceFingerprint": "0ed1cd7544867885fc451b64a14f8d96debee8c13898a5d7c84e1b885a1a6efe",
+      "primaryMethod": "이등변삼각형 꼭지각 이등분선에서 두 쌍의 삼각형 합동으로 진술 검증",
+      "decisiveStep": "△ABD≅△ACD로 BD=CD, 이어 △PBD≅△PCD로 PB=PC; AP=BP는 일반적 아님",
+      "supportingConcepts": [
+        "이등변삼각형",
+        "꼭지각 이등분선",
+        "SSS/SAS 합동",
+        "대칭축"
+      ],
+      "conditions": [
+        "AB=AC",
+        "AD는 ∠A 이등분선",
+        "P∈AD"
+      ],
+      "compositionPattern": "꼭지각 이등분선→두 합동→변·각 관계→거짓 거리 주장 반례",
+      "curriculumNotes": "중등 이등변삼각형·합동",
+      "sourceIssue": "선택지 내용은 읽지 않았고 해설이 판정 논리를 제시.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "이등변삼각형 대칭축 위 점의 등거리 성질로 명제를 판단한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "81a9839eea0946cecd3511ca0d65f4a3f5d3c1373937f93a5b5a8f11f5b1b740",
+      "sourceSolutionSha256": "9529fb854a141813fee6caff0f9993e30ac8a16ec8c74a77f9e7598e55621815",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 902,
+      "questionUid": "qid_v1_f833211db4f6db8cac467cef0f4b06390519b0c18d9f4002b84baebb2066d552",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "02133b4dcedac1886a87263f312ae974bdb165c46821ccc1b0f6014c6c7a1fa9"
+      },
+      "sourceFingerprint": "02133b4dcedac1886a87263f312ae974bdb165c46821ccc1b0f6014c6c7a1fa9",
+      "primaryMethod": "무게중심의 중선 2:1 분할과 여섯 등넓이 조각으로 진술 판별",
+      "decisiveStep": "AG:GQ=2:1; 각 작은 중심 삼각형 넓이 단위로 각 보기 비를 검증",
+      "supportingConcepts": [
+        "무게중심",
+        "중선의 2:1",
+        "중선이 만드는 등넓이",
+        "삼각형 넓이비"
+      ],
+      "conditions": [
+        "G는 △ABC 무게중심",
+        "도식의 P,Q 위치·중점 표시"
+      ],
+      "compositionPattern": "중선비→중점 거리·중앙 조각→동일 넓이 분할→진술별 비",
+      "curriculumNotes": "중등 무게중심",
+      "sourceIssue": "보기의 점 배치와 넓이 부호는 삽입 그림에 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "무게중심의 길이·넓이 분할 성질이 풀이의 핵심이다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "9a49685eb757212fe007d058b9b6837bb68216c6a65213c9a593b43c585e1137",
+      "sourceSolutionSha256": "07e7f54f0dc518e94505d6e105362a65daaad9817064e0341f3ed6948898abb8",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 903,
+      "questionUid": "qid_v1_f867386595af4f85ce29e7ce9d88ded95c6ad8c288eceb582812d0b4b8d171f7",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "072997346556023bcc93241cd5739b38a4ebc23334c73c36790c92012a3febef"
+      },
+      "sourceFingerprint": "072997346556023bcc93241cd5739b38a4ebc23334c73c36790c92012a3febef",
+      "primaryMethod": "빗변 중점의 외심 등거리 성질로 이등변삼각형의 중심각",
+      "decisiveStep": "비 2:3에서 ∠BAO=36°; OA=OB라 ∠ABO=36°, ∠BOA=108°",
+      "supportingConcepts": [
+        "직각삼각형 빗변 중점",
+        "외심",
+        "이등변삼각형"
+      ],
+      "conditions": [
+        "∠A=90°",
+        "O는 BC 중점",
+        "∠BAO:∠OAC=2:3"
+      ],
+      "compositionPattern": "직각 삼각형 각비→빗변 중점 등거리→이등변삼각형→꼭짓각",
+      "curriculumNotes": "중등 삼각형 외심·삼각형 각",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "직각삼각형의 빗변 중점이 외심이 되는 성질을 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "400c7798c88e400364a14afcea34c2eef5c40529fb04e133614d8770aee2cb59",
+      "sourceSolutionSha256": "d9fd1edd8913fb706f196336f709478a42ab4462cbdf376ee779d25ff532dd93",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 904,
+      "questionUid": "qid_v1_f986e90cb0aa6a725664045aba43a9ff2201df618521e5465b838fc015eb6361",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "d2024474f3743a00d22a7b1995fa5ca22d49ea823b2ced369488daec40e4e040"
+      },
+      "sourceFingerprint": "d2024474f3743a00d22a7b1995fa5ca22d49ea823b2ced369488daec40e4e040",
+      "primaryMethod": "탄젠트로 두 직각변 비를 구하고 피타고라스로 곱",
+      "decisiveStep": "2/x=1/2로 x=4; y=√(2²+4²)=2√5; xy=8√5",
+      "supportingConcepts": [
+        "탄젠트 정의",
+        "피타고라스",
+        "직각삼각형 변비"
+      ],
+      "conditions": [
+        "AC=2",
+        "BC=x",
+        "AB=y",
+        "∠C=90°",
+        "tanα=1/2"
+      ],
+      "compositionPattern": "탄젠트 비→한 변→피타고라스 빗변→곱",
+      "curriculumNotes": "중등 삼각비의 기본 관계",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "탄젠트로 변 하나를 구한 뒤 피타고라스로 나머지를 결정한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "7a708bf6a1f9d7bc85c3c1ac297223d3e084c155b810ad04bcfa8c2788daa01f",
+      "sourceSolutionSha256": "d18828851814928f2e559baf5686989f95b1a87914e2648cc3ed2a6c46c401f2",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 905,
+      "questionUid": "qid_v1_f9a434a40a552ae6151d573e1d4368c0d2c7a5d4b63cab18517284e6fc8c056c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "c64dbd624da819ce31e900deeeca3bc1a0540d15a3bab1b399b2ea4d2dcde3c7"
+      },
+      "sourceFingerprint": "c64dbd624da819ce31e900deeeca3bc1a0540d15a3bab1b399b2ea4d2dcde3c7",
+      "primaryMethod": "두 지점의 고도각 탄젠트로 같은 높이를 공유하는 두 수평거리와 기구 높이 연립",
+      "decisiveStep": "AH=h, BH=h/√3, 합50에서 h=75−25√3",
+      "supportingConcepts": [
+        "탄젠트",
+        "두 직각삼각형",
+        "수평거리 합",
+        "유리화"
+      ],
+      "conditions": [
+        "∠A=45°",
+        "∠B=60°",
+        "AB=50m",
+        "수선발 H는 A와 B 사이"
+      ],
+      "compositionPattern": "높이 변수→각별 탄젠트로 밑변 표현→밑변 합→높이",
+      "curriculumNotes": "중등 삼각비의 활용",
+      "sourceIssue": "H가 A,B 사이인 위치는 그림이 정하고 해설이 명시.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 관측각의 탄젠트로 거리·높이 관계를 연결한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "da398abe5850c9da2c75c454c529eaf06dabe085ef565f4e5958704a937e6c4e",
+      "sourceSolutionSha256": "7a7a7a214696467097679fd4867742f3d50df0a5bd0e47ea6263f19f5758988f",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 906,
+      "questionUid": "qid_v1_f9d382935affa927a6b2ea83f860f0f3aaa5a06145e730fb3746c780f40fb68c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "db84b0697afe65ebacb65c577b414b86fbf35c1bfbf2bd2e85f75c6315230dfc"
+      },
+      "sourceFingerprint": "db84b0697afe65ebacb65c577b414b86fbf35c1bfbf2bd2e85f75c6315230dfc",
+      "primaryMethod": "닮은 삼각형의 대응변비와 대응각으로 x,y",
+      "decisiveStep": "BC:EF=2:1이므로 AB=12; 대응각 E=B=55°",
+      "supportingConcepts": [
+        "삼각형 닮음",
+        "대응 순서",
+        "대응변비",
+        "대응각"
+      ],
+      "conditions": [
+        "△ABC~△DEF",
+        "그림의 BC=16,EF=8,DE=6,∠B=55°"
+      ],
+      "compositionPattern": "대응 순서→닮음비→길이 대응식과 각 대응→합",
+      "curriculumNotes": "중등 삼각형 닮음",
+      "sourceIssue": "수치와 각도는 그림의 표시가 필요하고 해설이 대응을 알려준다.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "삼각형 대응 순서로 변비와 각을 함께 읽는다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "305a5594700432feaf104a5f99a7f21082310da4b7f238a62c2e812d59965030",
+      "sourceSolutionSha256": "5ac3aa42d026e7491fe61f1ff125874727ba62cb66c13db3b40a6d53af43f5d4",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 907,
+      "questionUid": "qid_v1_f9fdcc9e0eb838a09ee8a9ff1b4ed2cd775a691c892f0a6e986835b3d924b0e4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "8be01e6f66a2fde1c8164b7b258cbf82631d7dd12bb3a9e0f741aaa31207f514"
+      },
+      "sourceFingerprint": "8be01e6f66a2fde1c8164b7b258cbf82631d7dd12bb3a9e0f741aaa31207f514",
+      "primaryMethod": "현의 수직이등분선에 중심을 놓고 반현·중심거리를 피타고라스로 반지름",
+      "decisiveStep": "AH=4, OH=R−2; R²=16+(R−2)²에서 R=5",
+      "supportingConcepts": [
+        "현 수직이등분선",
+        "원 중심",
+        "피타고라스",
+        "원의 반지름"
+      ],
+      "conditions": [
+        "AB=8",
+        "HC=2",
+        "중심 O와 C,H 정렬 그림"
+      ],
+      "compositionPattern": "현 반분→중심-현 수직선→거리 차→반지름 방정식",
+      "curriculumNotes": "중등 원과 직선·현",
+      "sourceIssue": "중심과 C,H의 순서·HC 길이는 그림과 해설에 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "중심과 현의 수직이등분선 성질로 원의 반지름을 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "2a6a4f452372e5231dfeef509c3171d064aac560fcbd4920fb08179a4f29bac7",
+      "sourceSolutionSha256": "cc6af4c3f1393fb137c35023c2ea78ca463a3a8a734f7b8202f0df9d0aa6b9e4",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 908,
+      "questionUid": "qid_v1_fa2fa6b4ef0a78013104779fc845a6a792f1769a44caa5e8726a563d4ac6c060",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "fb26b5f043087a050c3a737f321f105758dbd276bf9ba04261226218c249dc21"
+      },
+      "sourceFingerprint": "fb26b5f043087a050c3a737f321f105758dbd276bf9ba04261226218c249dc21",
+      "primaryMethod": "평행선이 만드는 두 쌍 닮음으로 선분 길이 차",
+      "decisiveStep": "첫 닮음으로 AB=36,x=12; 둘째 닮음에서 y=18; y−x=6",
+      "supportingConcepts": [
+        "평행선",
+        "AA 닮음",
+        "대응변비",
+        "선분 차"
+      ],
+      "conditions": [
+        "DE∥BC",
+        "그림의 길이 표기와 x,y 위치"
+      ],
+      "compositionPattern": "첫 닮음으로 전체 길이→남은 구간→둘째 닮음→차",
+      "curriculumNotes": "중등 평행선과 선분비·닮음",
+      "sourceIssue": "길이표시와 점 위치는 그림에 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "평행선으로 생긴 닮음비를 두 번 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "26d69964f5f890dad4b21d937d6b4be29f2885c40139d7bbba98a95e3797fcd1",
+      "sourceSolutionSha256": "a2a6ca775e35ea7212eff7a40d208ef9eb1d31136835ed1cc2cc29f54a6019d3",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 909,
+      "questionUid": "qid_v1_fa63ddc0250872df61a57391103e00aa7d897312bf38ad1c9d1cf2e280f769b0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "7bf360b7df8cb4fb31c05c8a4fd81c89b25a6a07c1cf6d58b08c9383be674c6f"
+      },
+      "sourceFingerprint": "7bf360b7df8cb4fb31c05c8a4fd81c89b25a6a07c1cf6d58b08c9383be674c6f",
+      "primaryMethod": "원주각·중심각·내접사각형의 정리와 현 길이 비례 여부로 문장 판정",
+      "decisiveStep": "반원 원주각90; 한 호 원주각 위치 무수; 중심각의 절반; cyclic opposite angles sum180",
+      "supportingConcepts": [
+        "원주각",
+        "중심각",
+        "현",
+        "원내접사각형"
+      ],
+      "conditions": [
+        "다섯 개 기본 성질 진술"
+      ],
+      "compositionPattern": "각 문장을 정의·정리와 대조→참거짓 분류",
+      "curriculumNotes": "중등 원주각·내접사각형",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "원주각 기본정리와 원내접사각형 성질을 구별한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "164e9685c4f47978e8b9c378b10258e13f0ef8ddae876324b26188e28d6c20a9",
+      "sourceSolutionSha256": "1ac1aef3053e40f5f2e727527684e5f498696217d67824aa2b58681a7a2e08ed",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 910,
+      "questionUid": "qid_v1_fbdeee5711b3cf1e18ac2cad7191837b07e015d3edd55af92bda1fc2b73c0c8c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "c20dfe85b0213dcdb12f287bf653399cf6a10752bc4a8b2da7518623c70825ef"
+      },
+      "sourceFingerprint": "c20dfe85b0213dcdb12f287bf653399cf6a10752bc4a8b2da7518623c70825ef",
+      "primaryMethod": "직각삼각형에서 기준각의 코사인·탄젠트 정의로 두 변 식",
+      "decisiveStep": "x=12/cos36°, y=12tan36°",
+      "supportingConcepts": [
+        "삼각비 정의",
+        "기준각의 변 위치"
+      ],
+      "conditions": [
+        "∠C=90°",
+        "BC=12",
+        "∠B=36°",
+        "AB=x,AC=y"
+      ],
+      "compositionPattern": "기준각에 대한 빗변·인접변·대변 지정→cos·tan 식",
+      "curriculumNotes": "중등 삼각비의 기본 관계",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "기준각에서 코사인과 탄젠트의 변 비율을 직접 표현한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "b8fa26c316565b104ba8523d5625d906a82a70eed5b776a4bb76798005f92c0e",
+      "sourceSolutionSha256": "4219e7a92e281f15473044dd9373b5c041025071e7184e6ba99af87de0171f94",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 911,
+      "questionUid": "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "52193ae49da966bbab8b723012d897707db93749ee133bec8ff764b3855b49cc"
+      },
+      "sourceFingerprint": "52193ae49da966bbab8b723012d897707db93749ee133bec8ff764b3855b49cc",
+      "primaryMethod": "중점연결·닮음비와 같은 높이 넓이비로 사각형 영역",
+      "decisiveStep": "[ABE]=12; [ABF]=24, [BEF]=12; BP:PF=2:1에서 [BPE]=8; 합20",
+      "supportingConcepts": [
+        "중점연결 정리",
+        "닮음",
+        "삼각형 넓이비",
+        "같은 높이"
+      ],
+      "conditions": [
+        "D midpoint BC",
+        "F midpoint CE",
+        "P=DE∩BF",
+        "total area36"
+      ],
+      "compositionPattern": "중점 선분→같은 높이 넓이비→작은 닮은 삼각형→영역 합",
+      "curriculumNotes": "중등 닮음·중점·넓이비",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "중점 관계로 생긴 선분비와 삼각형 넓이비를 연쇄한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "9a8e5032d2ac2df160cfc047c38c7a0706ceb451832c2c47147c839c3e3d9bb4",
+      "sourceSolutionSha256": "9136741a61377b07b2fc5518635f809b8210d73e729844b559da2bf7949e7921",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 912,
+      "questionUid": "qid_v1_fc40513f50e6014b508eb1e8061f135682b5a065fbf336fa755918de6c97ccf7",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "a59a5af94f2859c7b4b5dccd648e16024a1c5d40dd045a31484dd1cb2422405b"
+      },
+      "sourceFingerprint": "a59a5af94f2859c7b4b5dccd648e16024a1c5d40dd045a31484dd1cb2422405b",
+      "primaryMethod": "같은 밑각의 대변을 같게 두어 일차방정식",
+      "decisiveStep": "AB=AC, 5x−6=2x+3에서 x=3",
+      "supportingConcepts": [
+        "이등변삼각형",
+        "같은 각의 대변",
+        "일차방정식"
+      ],
+      "conditions": [
+        "두 밑각이 같음",
+        "변이 5x−6,2x+3"
+      ],
+      "compositionPattern": "각 등식→대변 등식→선형 방정식",
+      "curriculumNotes": "중등 이등변삼각형 역성질",
+      "sourceIssue": "그림에서 동일 밑각의 위치를 확인; 해설이 AB=AC로 해석.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "같은 밑각에서 대변을 같게 놓고 x를 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "e62df156958a2b8926a3a1e30ff4ce4ac14b00dd5448103d35d7e789c2cd2dd6",
+      "sourceSolutionSha256": "7b7a3deabc3c87f766797087683056bf44364898ee4023ee36a6ae345ec5b184",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 913,
+      "questionUid": "qid_v1_fc4b845acbedac9832b4dd132457352095c2e7487b04cde5f1e71b02d8d03f9e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "3a5a2c93224affed39e6aae302b98296b3f1224251bf03cb77237170df414537"
+      },
+      "sourceFingerprint": "3a5a2c93224affed39e6aae302b98296b3f1224251bf03cb77237170df414537",
+      "primaryMethod": "무게중심의 2:1 중선비와 여섯 등넓이 삼각형 분할로 항목 판별",
+      "decisiveStep": "BG:GE=2:1; 서로 다른 중선 길이는 같지 않음; 작은 삼각형=전체1/6",
+      "supportingConcepts": [
+        "무게중심",
+        "중선분할",
+        "넓이 6등분"
+      ],
+      "conditions": [
+        "G centroid",
+        "선택지의 점 위치/영역"
+      ],
+      "compositionPattern": "각 보기의 길이비·넓이비를 중선 구조와 대조",
+      "curriculumNotes": "중등 무게중심",
+      "sourceIssue": "선택지 그림 구조를 사용하나 해설이 참거짓 논리를 제공.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "무게중심이 중선과 넓이를 나누는 성질을 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "df83a2a55a25f46655c919564d21f27090d248f05794c0e4eae767de5df7ebc6",
+      "sourceSolutionSha256": "41fb101635f07b12e695b2a6af04749dd6a00e2acacb772072e0a3c62e2edca0",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 914,
+      "questionUid": "qid_v1_fc7031dcd660e5d84aa3a872886dc2b24e74bf279cd18f55e12edf1b4ef46486",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 17,
+        "sourceQuestionNo": "17",
+        "sourceFingerprint": "7faab6458a749d552ce14a91be5e248491bb8ba097829031a9ee1eb5986b6f82"
+      },
+      "sourceFingerprint": "7faab6458a749d552ce14a91be5e248491bb8ba097829031a9ee1eb5986b6f82",
+      "primaryMethod": "사인으로 변비를 두고 피타고라스로 나머지 변 뒤 코사인",
+      "decisiveStep": "BC:AC=3:5, AB=4, cosA=4/5",
+      "supportingConcepts": [
+        "사인·코사인 정의",
+        "피타고라스",
+        "3-4-5 삼각형"
+      ],
+      "conditions": [
+        "∠B=90°",
+        "sinA=3/5"
+      ],
+      "compositionPattern": "주어진 삼각비→변비→피타고라스→다른 삼각비",
+      "curriculumNotes": "중등 삼각비 기본 관계",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "사인으로 정한 변비에서 피타고라스로 코사인을 복원한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "a4a242a5fe124cb60d7a0ffcb3a4176cc0d61274c0eae6f6a1ff9a53dbbb1529",
+      "sourceSolutionSha256": "d3918b956810580b96e7e1f8f93d4210284595f7ded49d3ad34decbd378c7454",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 915,
+      "questionUid": "qid_v1_fd1b64c0f8298556be66546d494cc80c7e7a997d4fed32e3f88952a7941e4432",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "5b82cfdb7d8556502c8535d84ae018d5d0969fcd180655be1dcf7b9c417e81c8"
+      },
+      "sourceFingerprint": "5b82cfdb7d8556502c8535d84ae018d5d0969fcd180655be1dcf7b9c417e81c8",
+      "primaryMethod": "발문 내용상 삼각부등식으로 세 변 길이 조건의 x 범위",
+      "decisiveStep": "양의 길이와 두 변의 합이 세 번째보다 커야 하여 x>3로 판정 가능",
+      "supportingConcepts": [
+        "삼각형 부등식",
+        "양의 길이",
+        "대수적 부등식"
+      ],
+      "conditions": [
+        "변이 x−1,x+1,x+3",
+        "source solution은 각·평행선 설명으로 불일치"
+      ],
+      "compositionPattern": "발문 변 길이로 삼각부등식 세 개 구성→가장 강한 하한",
+      "curriculumNotes": "중등 삼각형 부등식",
+      "sourceIssue": "CONTENT_SOLUTION_DISAGREEMENT: solution은 무관한 각·평행선 풀이이며 발문의 범위 조건을 다루지 않음.",
+      "semanticConfidence": "LOW",
+      "semanticReasonShort": "발문은 삼각부등식 유형이나 해설이 불일치해 독립 분류 비교를 보류한다.",
+      "semanticStatus": "REVIEW_REQUIRED",
+      "sourceContentSha256": "d9bc0c0244276007561610ec1ccc968ab35f87852383321c9d99d5476c983f20",
+      "sourceSolutionSha256": "2d8cd3cef56f8427f83ae65bc412a91f171b000f183dbc467cba720ee6fdc7cf",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 916,
+      "questionUid": "qid_v1_fd460b233aca58b96a79ba4679562f070bcf1cb48f8a012dadec779327d083fe",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "83407bfc7fce6845c52a6a17e8bb409f5b2a4789ea73bc6f0aaf5c605f42fb68"
+      },
+      "sourceFingerprint": "83407bfc7fce6845c52a6a17e8bb409f5b2a4789ea73bc6f0aaf5c605f42fb68",
+      "primaryMethod": "원내접 육각형의 한 칸 간격 세 내각 합 360°",
+      "decisiveStep": "x+123°+117°=360°, x=120°",
+      "supportingConcepts": [
+        "원내접다각형",
+        "원주각/보각",
+        "육각형 내부각"
+      ],
+      "conditions": [
+        "ABCDEF 원내접",
+        "A,C,E의 각 표시"
+      ],
+      "compositionPattern": "원내접 육각형의 교대 꼭짓점 각 합",
+      "curriculumNotes": "중등 원주각·내접다각형",
+      "sourceIssue": "세 각의 위치는 그림에 의존하지만 해설이 조건을 특정.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "원내접 육각형의 교대 꼭짓점 각 합으로 미지각을 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "8408cbe2e00e87b72f48dafd97bda27b5d84e0366ea8f0d64c207289efc044eb",
+      "sourceSolutionSha256": "0cafd4b2d953cc665fffd15c7b64c1732bb4ec63caf2e9ac9c7fcaa417628586",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 917,
+      "questionUid": "qid_v1_fd6b92171ede3658846eece797a3e3d1fe13d5861b61a557e623dba35f5ecb0a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "f1626f2ebb32553ae6c015cbf563f9ff9ab0501e36b0488fc880e9256f3f5921"
+      },
+      "sourceFingerprint": "f1626f2ebb32553ae6c015cbf563f9ff9ab0501e36b0488fc880e9256f3f5921",
+      "primaryMethod": "중심에서 현에 수직으로 내린 선분에서 반현과 원-현 거리 차로 반지름",
+      "decisiveStep": "OD=r−4, r²=6²+(r−4)², r=13/2, circumference=13π",
+      "supportingConcepts": [
+        "현 수선이등분",
+        "반지름",
+        "피타고라스",
+        "원둘레"
+      ],
+      "conditions": [
+        "AB⊥OC",
+        "BD=6",
+        "CD=4",
+        "C,D,O line per diagram"
+      ],
+      "compositionPattern": "현 반분→중심-현 거리→반지름 차→피타고라스→둘레",
+      "curriculumNotes": "중등 원과 직선·현",
+      "sourceIssue": "C,D,O의 순서 및 OC와 AB 수직 배치는 그림에 의존.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "중심-현 직각삼각형에서 원 반지름을 식으로 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "39ad967e058c5d8740bcd1af07fc69dcceb286750ce59823329a830cdce604b8",
+      "sourceSolutionSha256": "b07a074656c8ba18f4081d3d5519fc61fc07eca15fc07d6b466e806002e86035",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 918,
+      "questionUid": "qid_v1_fdbd516ce3ca19531a267d28aef6270435b38bf63621e30e1400f6f22a4ba1cf",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "a808cd9b93cde8c5edec8e9e6c1f1f007b555e873a73b30a03221ca2024754db"
+      },
+      "sourceFingerprint": "a808cd9b93cde8c5edec8e9e6c1f1f007b555e873a73b30a03221ca2024754db",
+      "primaryMethod": "선형식에서 sinA를 구하고 여각 관계·피타고라스 삼각비로 식 평가",
+      "decisiveStep": "sinA=4/5, cosA=3/5, tanA=4/3, cosB=4/5, value=41/15",
+      "supportingConcepts": [
+        "삼각비",
+        "여각 cofunction",
+        "피타고라스"
+      ],
+      "conditions": [
+        "A+B=90°",
+        "3sinA=−2sinA+4"
+      ],
+      "compositionPattern": "대수식→사인값→다른 삼각비→여각 치환→식 계산",
+      "curriculumNotes": "중등 삼각비 기본 관계",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "사인값으로 나머지 삼각비를 복원하고 cos B를 여각으로 치환한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "5b35da9e76698458c2af527de390cfb89214efbeb55f0050891802e34e89211e",
+      "sourceSolutionSha256": "2ec81d6a0da81f7b09b40e034b32f0015817b5edd373a1bcec79fc55c22d7221",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 919,
+      "questionUid": "qid_v1_fe37da525a32b16feb01d28b9b05b136b6b96c0865f15462b9042766217ce9fa",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "0c4ac564d7cbce3e4c66a9ad69a46b779a7e61327fb316c00d108e376d44040c"
+      },
+      "sourceFingerprint": "0c4ac564d7cbce3e4c66a9ad69a46b779a7e61327fb316c00d108e376d44040c",
+      "primaryMethod": "중심에서 같은 거리에 있는 두 현 길이 같음을 얻어 삼각형 이등변",
+      "decisiveStep": "AB=AC이므로 각 B=각 C=(180−44)/2=68°",
+      "supportingConcepts": [
+        "중심과 현 거리",
+        "같은 현",
+        "이등변삼각형"
+      ],
+      "conditions": [
+        "현 AB,AC 중심에서 같은 거리",
+        "∠BAC=44°"
+      ],
+      "compositionPattern": "같은 중심거리→같은 현 길이→밑각 등식",
+      "curriculumNotes": "중등 원과 현·이등변삼각형",
+      "sourceIssue": "현 위치는 그림이나 해설의 관계가 명시.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "현의 중심거리로 변의 등식을 얻고 이등변삼각형 각을 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "77ddac46a7de5f295c3003f86c9a5230114362f075de295e841ee40363daba4c",
+      "sourceSolutionSha256": "1293d76d890fc0e135da76358503977cc6106ec06900e4aa517c7be04e52e6f7",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 920,
+      "questionUid": "qid_v1_fe451846427d635ab8dc8b4d529a24bad3ada9271b20cdc4b98427fbb5c9584a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "c64d00e6e8cc354ffad4bc86831c012b7403c55ff656718e0a2e22321e029c78"
+      },
+      "sourceFingerprint": "c64d00e6e8cc354ffad4bc86831c012b7403c55ff656718e0a2e22321e029c78",
+      "primaryMethod": "빗변에 내린 수선의 두 직각삼각형에서 각을 원삼각형 예각에 대응시켜 삼각비 곱",
+      "decisiveStep": "x=∠A; AB=3√5, sinx=2/√5,tanx=2; product=4√5/5",
+      "supportingConcepts": [
+        "직각삼각형 빗변고도",
+        "여각",
+        "사인·탄젠트",
+        "피타고라스"
+      ],
+      "conditions": [
+        "∠C=90°",
+        "BC=6,AC=3",
+        "D∈BC",
+        "DE⊥AB"
+      ],
+      "compositionPattern": "두 직각삼각형의 각 여각 비교→x=원각→빗변→삼각비",
+      "curriculumNotes": "중등 삼각비 활용",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "빗변고도에서 생기는 각을 원래 삼각형 각으로 바꾸어 삼각비를 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "afedd36570bc7d54191beb4023a0dfb7a504a41c1833ccd75efcbead0fb0e9e6",
+      "sourceSolutionSha256": "ca619b235d59f1860f61f8f3f6be3abe2f5a0efd68c3ab21b64730e82d3c65d4",
+      "choicesRead": false,
+      "answerFieldRead": false
+    }
+  ]
+}
