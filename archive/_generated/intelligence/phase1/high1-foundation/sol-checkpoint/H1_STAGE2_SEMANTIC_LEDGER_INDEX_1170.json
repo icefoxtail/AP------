@@ -23,8 +23,8 @@
     {
       "file": "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
       "rows": 217,
-      "sha256": "cba60936197b8be0715e8593923063f228fa4e5d7f73194ab3a5981b79bd600a",
-      "authority": "existing semantic checkpoint preserved; provenance rechecked"
+      "sha256": "120d7bbf1aa0dedc465f3c168980e4f0e8afff7555466e74b71b37f3e8fdb8c0",
+      "authority": "GPT direct current-main source+solution semantic-core repair; 53 FIX_NEXT/TODO_LATER rows rejudged"
     },
     {
       "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
@@ -154,6 +154,22 @@
       "H1_STAGE2_GPT_BLOCK_REPAIR_EQINEQ_30.jsonl",
       "H1_STAGE2_GPT_BLOCK_REPAIR_MISC_2.jsonl"
     ],
-    "status": "BLOCK_57_REPAIRED_FURTHER_FIX_NEXT_REMAINS"
+    "status": "BLOCK_57_REPAIRED_FURTHER_FIX_NEXT_REMAINS",
+    "semanticCoreRepair": {
+      "classification": "finding code contains PRIMARY|DECISIVE|SUPPORTING_CONCEPT|CONDITION|COMPOSITION_PATTERN|SEMANTIC_CONFIDENCE|GENERIC_DECISIVE",
+      "affectedBeforeBlockRepair": 246,
+      "blockSemanticCoreRepairedPreviously": 25,
+      "remainingAfterBlockRepair": 221,
+      "polynomialRepaired": 53,
+      "remaining": 168,
+      "remainingByUnit": {
+        "EQINEQ": 46,
+        "PERMCOMB": 63,
+        "MATRIX": 59
+      },
+      "artifact": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_POLYNOMIAL_53.jsonl",
+      "checkpoint": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_CHECKPOINT_POLYNOMIAL_53.json",
+      "status": "POLYNOMIAL_53_COMPLETE_NEXT_EQINEQ_46"
+    }
   }
 }
