@@ -1,12 +1,20 @@
 (function (root, factory) {
-  const api = factory();
+  const archive2Core =
+    typeof module === 'object' && module.exports
+      ? require('./archive2-core.js')
+      : root && root.Archive2Core;
+  const api = factory(archive2Core);
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) {
     root.UnitPastExamsCore = api;
     root.High1UnitPastExamsCore = api;
   }
-})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+})(typeof globalThis !== 'undefined' ? globalThis : this, function (archive2Core) {
   'use strict';
+
+  if (!archive2Core || !Array.isArray(archive2Core.HIGH_SEMANTIC_SUBJECTS)) {
+    throw new Error('Archive2Core high-semantic subject registry is required.');
+  }
 
   const COMMON_SCOPE = Object.freeze({
     periods: Object.freeze(['1mid', '1final', '2mid', '2final']),
@@ -35,7 +43,7 @@
     { key: 'H22-C2-09', course: '공통수학2', name: '무리함수', order: 9 }
   ]);
 
-  const HIGH2_UNITS = Object.freeze([
+  const HIGH_SEMANTIC_UNITS = Object.freeze([
     { key: 'H22-A-01', course: '대수', name: '지수와 로그', order: 1 },
     { key: 'H22-A-02', course: '대수', name: '지수함수', order: 2 },
     { key: 'H22-A-03', course: '대수', name: '로그함수', order: 3 },
@@ -44,22 +52,38 @@
     { key: 'H22-A-06', course: '대수', name: '등차수열과 등비수열', order: 6 },
     { key: 'H22-A-07', course: '대수', name: '수열의 합', order: 7 },
     { key: 'H22-A-08', course: '대수', name: '수학적 귀납법', order: 8 },
-    { key: 'H22-MI1-01', course: '미적분Ⅰ', name: '함수의 극한', order: 1 },
-    { key: 'H22-MI1-02', course: '미적분Ⅰ', name: '함수의 연속', order: 2 },
-    { key: 'H22-MI1-03', course: '미적분Ⅰ', name: '미분계수', order: 3 },
-    { key: 'H22-MI1-04', course: '미적분Ⅰ', name: '도함수', order: 4 },
-    { key: 'H22-MI1-05', course: '미적분Ⅰ', name: '접선의 방정식', order: 5 },
-    { key: 'H22-MI1-06', course: '미적분Ⅰ', name: '도함수의 활용', order: 6 },
-    { key: 'H22-MI1-07', course: '미적분Ⅰ', name: '부정적분', order: 7 },
-    { key: 'H22-MI1-08', course: '미적분Ⅰ', name: '정적분', order: 8 },
-    { key: 'H22-MI1-09', course: '미적분Ⅰ', name: '정적분의 활용', order: 9 },
+    { key: 'H22-M1-01', course: '미적분Ⅰ', name: '함수의 극한', order: 1 },
+    { key: 'H22-M1-02', course: '미적분Ⅰ', name: '함수의 연속', order: 2 },
+    { key: 'H22-M1-03', course: '미적분Ⅰ', name: '미분계수', order: 3 },
+    { key: 'H22-M1-04', course: '미적분Ⅰ', name: '도함수', order: 4 },
+    { key: 'H22-M1-05', course: '미적분Ⅰ', name: '도함수의 활용', order: 5 },
+    { key: 'H22-M1-06', course: '미적분Ⅰ', name: '부정적분', order: 6 },
+    { key: 'H22-M1-07', course: '미적분Ⅰ', name: '정적분', order: 7 },
+    { key: 'H22-M1-08', course: '미적분Ⅰ', name: '정적분의 활용', order: 8 },
     { key: 'H22-PS-01', course: '확률과 통계', name: '순열과 조합', order: 1 },
-    { key: 'H22-PS-02', course: '확률과 통계', name: '중복조합과 이항정리', order: 2 },
+    { key: 'H22-PS-02', course: '확률과 통계', name: '이항정리', order: 2 },
     { key: 'H22-PS-03', course: '확률과 통계', name: '확률의 뜻과 활용', order: 3 },
     { key: 'H22-PS-04', course: '확률과 통계', name: '조건부확률', order: 4 },
     { key: 'H22-PS-05', course: '확률과 통계', name: '확률분포', order: 5 },
-    { key: 'H22-PS-06', course: '확률과 통계', name: '통계적 추정', order: 6 }
+    { key: 'H22-PS-06', course: '확률과 통계', name: '통계적 추정', order: 6 },
+    { key: 'H22-M2-01', course: '미적분Ⅱ', name: '수열의 극한', order: 1 },
+    { key: 'H22-M2-02', course: '미적분Ⅱ', name: '급수', order: 2 },
+    { key: 'H22-M2-03', course: '미적분Ⅱ', name: '지수함수와 로그함수의 미분', order: 3 },
+    { key: 'H22-M2-04', course: '미적분Ⅱ', name: '삼각함수의 미분', order: 4 },
+    { key: 'H22-M2-05', course: '미적분Ⅱ', name: '여러 가지 미분법', order: 5 },
+    { key: 'H22-M2-06', course: '미적분Ⅱ', name: '도함수의 활용', order: 6 },
+    { key: 'H22-M2-07', course: '미적분Ⅱ', name: '여러 가지 적분법', order: 7 },
+    { key: 'H22-M2-08', course: '미적분Ⅱ', name: '정적분의 활용', order: 8 },
+    { key: 'H22-GE-01', course: '기하', name: '이차곡선', order: 1 },
+    { key: 'H22-GE-02', course: '기하', name: '이차곡선의 접선', order: 2 },
+    { key: 'H22-GE-03', course: '기하', name: '공간도형', order: 3 },
+    { key: 'H22-GE-04', course: '기하', name: '공간좌표', order: 4 },
+    { key: 'H22-GE-05', course: '기하', name: '벡터의 연산', order: 5 },
+    { key: 'H22-GE-06', course: '기하', name: '벡터의 성분', order: 6 },
+    { key: 'H22-GE-07', course: '기하', name: '벡터의 내적', order: 7 },
+    { key: 'H22-GE-08', course: '기하', name: '도형의 방정식', order: 8 }
   ]);
+  const HIGH2_UNITS = HIGH_SEMANTIC_UNITS;
 
   const MIDDLE1_UNITS = Object.freeze([
     { key: 'M22-1-01', course: '중1 수학', name: '소인수분해', order: 1 },
@@ -141,8 +165,9 @@
   });
 
   const HIGH2_DIRECT_KEY_MAP = Object.freeze({
-    'H15-M1-01': 'H22-A-01', 'H21-M1-01': 'H22-A-01',
-    'H15-M1-02': 'H22-A-04', 'H21-M1-02': 'H22-A-04',
+    'H15-M1-01': 'H22-A-01', 'H15-M1-02': 'H22-A-01',
+    'H15-M1-03': 'H22-A-02', 'H15-M1-04': 'H22-A-03',
+    'H21-M1-01': 'H22-A-01', 'H21-M1-02': 'H22-A-04',
     'H15-M1-05': 'H22-A-04', 'H15-M1-06': 'H22-A-04', 'H15-M1-07': 'H22-A-04',
     'H15-M1-08': 'H22-A-06', 'H15-M1-09': 'H22-A-06',
     'H15-M1-10': 'H22-A-07', 'H15-M1-11': 'H22-A-08',
@@ -150,9 +175,15 @@
     'H22-C-04': 'H22-A-01', 'H22-C-05': 'H22-A-01', 'H22-C-06': 'H22-A-03',
     'H22-C-07': 'H22-A-02', 'H22-C-08': 'H22-A-02',
     'H22-C-09': 'H22-A-04', 'H22-C-10': 'H22-A-04', 'H22-C-11': 'H22-A-04',
-    'H15-M2-01': 'H22-MI1-01', 'H15-M2-02': 'H22-MI1-02', 'H15-M2-03': 'H22-MI1-03',
-    'H15-M2-04': 'H22-MI1-04', 'H15-M2-05': 'H22-MI1-05', 'H15-M2-06': 'H22-MI1-06',
-    'H15-M2-07': 'H22-MI1-07', 'H15-M2-08': 'H22-MI1-08', 'H15-M2-09': 'H22-MI1-09',
+    'H15-M2-01': 'H22-M1-01', 'H15-M2-02': 'H22-M1-02', 'H15-M2-03': 'H22-M1-03',
+    'H15-M2-04': 'H22-M1-04', 'H15-M2-05': 'H22-M1-05', 'H15-M2-06': 'H22-M1-05',
+    'H15-M2-07': 'H22-M1-06', 'H15-M2-08': 'H22-M1-07', 'H15-M2-09': 'H22-M1-08',
+    'H22-MI1-01': 'H22-M1-01', 'H22-MI1-02': 'H22-M1-02', 'H22-MI1-03': 'H22-M1-03',
+    'H22-MI1-04': 'H22-M1-04', 'H22-MI1-05': 'H22-M1-05', 'H22-MI1-06': 'H22-M1-05',
+    'H22-MI1-07': 'H22-M1-06', 'H22-MI1-08': 'H22-M1-07', 'H22-MI1-09': 'H22-M1-08',
+    'H15-CALC-01': 'H22-M2-01', 'H15-CALC-02': 'H22-M2-02', 'H15-CALC-03': 'H22-M2-03',
+    'H15-CALC-04': 'H22-M2-04', 'H15-CALC-05': 'H22-M2-05', 'H15-CALC-06': 'H22-M2-06',
+    'H15-CALC-07': 'H22-M2-07', 'H15-CALC-08': 'H22-M2-08',
     'H15-PS-01': 'H22-PS-01', 'H15-PS-02': 'H22-PS-02', 'H15-PS-03': 'H22-PS-03',
     'H15-PS-04': 'H22-PS-04', 'H15-PS-05': 'H22-PS-05', 'H15-PS-06': 'H22-PS-06',
     'H_ST_01_01': 'H22-PS-01', 'H_ST_01_02': 'H22-PS-02', 'H_ST_02_01': 'H22-PS-03',
@@ -211,6 +242,28 @@
     'original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#24': 'M22-3-02'
   });
 
+  const HIGH_SEMANTIC_SCOPE = Object.freeze({ ...COMMON_SCOPE, id: 'high-semantic-through-2final-v1', sourcePrefix: 'original/high/h2/' });
+  const HIGH_SEMANTIC_PROFILE_DATA = Object.freeze({
+    catalogId: 'high-semantic',
+    scope: HIGH_SEMANTIC_SCOPE,
+    courses: Object.freeze(archive2Core.highSemanticSubjectOptions().map(item => item.label)),
+    units: HIGH_SEMANTIC_UNITS,
+    directKeyMap: HIGH2_DIRECT_KEY_MAP,
+    rawKeyMap: HIGH2_RAW_KEY_MAP,
+    overrides: HIGH2_OVERRIDES
+  });
+  const LEGACY_HIGH_UNIT_ALIASES = Object.freeze({
+    'H22-MI1-01': 'H22-M1-01',
+    'H22-MI1-02': 'H22-M1-02',
+    'H22-MI1-03': 'H22-M1-03',
+    'H22-MI1-04': 'H22-M1-04',
+    'H22-MI1-05': 'H22-M1-05',
+    'H22-MI1-06': 'H22-M1-05',
+    'H22-MI1-07': 'H22-M1-06',
+    'H22-MI1-08': 'H22-M1-07',
+    'H22-MI1-09': 'H22-M1-08'
+  });
+
   const PROFILES = Object.freeze({
     h1: Object.freeze({
       id: 'h1', grade: '고1', gradeLabel: '고1', title: '고1 단원별 기출',
@@ -220,9 +273,11 @@
     }),
     h2: Object.freeze({
       id: 'h2', grade: '고2', gradeLabel: '고2', title: '고2 단원별 기출',
-      scope: Object.freeze({ ...COMMON_SCOPE, id: 'h2-through-2final-v1', sourcePrefix: 'original/high/h2/' }),
-      courses: Object.freeze(['대수', '미적분Ⅰ', '확률과 통계']), units: HIGH2_UNITS,
-      directKeyMap: HIGH2_DIRECT_KEY_MAP, rawKeyMap: HIGH2_RAW_KEY_MAP, overrides: HIGH2_OVERRIDES
+      ...HIGH_SEMANTIC_PROFILE_DATA
+    }),
+    h3: Object.freeze({
+      id: 'h3', grade: '고3', gradeLabel: '고3', title: '고3 단원별 기출',
+      ...HIGH_SEMANTIC_PROFILE_DATA
     }),
     m1: Object.freeze({
       id: 'm1', grade: '중1', gradeLabel: '중1', title: '중1 단원별 기출',
@@ -283,8 +338,20 @@
     return file.startsWith(scope.sourcePrefix) && scope.periods.includes(getPeriod(file));
   }
 
-  function isHigh2ExcludedKey(sourceKey) {
-    return sourceKey.startsWith('H15-CALC-') || sourceKey.startsWith('H22-GE-');
+  function isHighSemanticProfile(profileOrId) {
+    const profile = getProfile(profileOrId);
+    return profile && profile.catalogId === 'high-semantic';
+  }
+  function resolveUnitKeyAlias(profileOrId, value) {
+    const key = String(value || '').trim();
+    if (!key) return '';
+    return isHighSemanticProfile(profileOrId) ? (LEGACY_HIGH_UNIT_ALIASES[key] || key) : key;
+  }
+  function highSemanticSubjectOptions() {
+    return archive2Core.highSemanticSubjectOptions();
+  }
+  function highSemanticSubjectForCourseKey(courseKey) {
+    return archive2Core.highSemanticSubjectForCourseKey(courseKey);
   }
 
   function classifyRecord(record, profileOrId = 'h1') {
@@ -300,6 +367,13 @@
     const sourceKey = String(record && record.standardUnitKey || '').trim();
     const sourceUnit = String(record && record.standardUnit || '').trim();
     const unitByKey = Object.fromEntries(profile.units.map(unit => [unit.key, unit]));
+
+    if (isHighSemanticProfile(profile)) {
+      if (identity === 'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22') {
+        return { status: 'ignored', reason: '공통수학 문항' };
+      }
+    }
+
     if (unitByKey[sourceKey]) return { status: 'classified', unitKey: sourceKey, reason: 'h22-direct' };
 
     if (profile.id.startsWith('m')) {
@@ -318,13 +392,6 @@
       if (profile.id === 'm3') {
         if (/분모의유리화/.test(rawText)) return { status: 'classified', unitKey: 'M22-3-01', reason: 'middle-raw' };
         if (/곱셈공식|다항식/.test(rawText)) return { status: 'classified', unitKey: 'M22-3-02', reason: 'middle-raw' };
-      }
-    }
-
-    if (profile.id === 'h2') {
-      if (isHigh2ExcludedKey(sourceKey)) return { status: 'ignored', reason: '요청 과목 외 문항' };
-      if (identity === 'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js#22') {
-        return { status: 'ignored', reason: '공통수학 문항' };
       }
     }
 
@@ -430,7 +497,8 @@
   }
 
   function getCollectionUnitKey(record) {
-    return String(record && (record.mappedUnitKey || record.collectionUnitKey || record.unitKey) || '').trim();
+    const key = String(record && (record.mappedUnitKey || record.collectionUnitKey || record.unitKey) || '').trim();
+    return LEGACY_HIGH_UNIT_ALIASES[key] || key;
   }
 
   function normalizeCollectionScopeMode(value) {
@@ -441,7 +509,7 @@
 
   function getCollectionScopeUnits(profileOrId, options = {}) {
     const profile = getProfile(profileOrId || options.profile || options.profileId || 'h1');
-    const currentKey = String(options.unitKey || options.selectedUnitKey || '').trim();
+    const currentKey = resolveUnitKeyAlias(profile, options.unitKey || options.selectedUnitKey || '');
     const current = profile.units.find(unit => unit.key === currentKey);
     const scopeMode = normalizeCollectionScopeMode(options.scopeMode || options.collectionScope);
     const course = String(options.course || options.courseKey || current?.course || '').trim();
@@ -452,8 +520,8 @@
       return courseUnits.filter(unit => unit.order <= current.order);
     }
     if (scopeMode === 'range') {
-      const startKey = String(options.startUnitKey || options.rangeStartUnitKey || current.key).trim();
-      const endKey = String(options.endUnitKey || options.rangeEndUnitKey || current.key).trim();
+      const startKey = resolveUnitKeyAlias(profile, options.startUnitKey || options.rangeStartUnitKey || current.key);
+      const endKey = resolveUnitKeyAlias(profile, options.endUnitKey || options.rangeEndUnitKey || current.key);
       const start = courseUnits.find(unit => unit.key === startKey) || current;
       const end = courseUnits.find(unit => unit.key === endKey) || current;
       const low = Math.min(start.order, end.order);
@@ -510,6 +578,59 @@
     return /[A-Za-z]/.test(label) ? '소단원 검토 필요' : label;
   }
 
+  function getProblemTypeKey(record) {
+    return String(record && (record.problemTypeKey || record.problem_type_key) || '').trim();
+  }
+
+  function getTemplateKey(record) {
+    return String(record && (record.templateKey || record.template_key) || '').trim();
+  }
+
+  function getProblemTypeLabel(record) {
+    return String(record && (record.L3 || record.problemType || record.problemTypeLabel || '') || '').trim();
+  }
+
+  function getTemplateLabel(record) {
+    return String(record && (record.L4 || record.template || record.templateLabel || '') || '').trim();
+  }
+
+  function getProblemTypeOptions(records, filters = {}) {
+    const source = filterUnitRecords(records, {
+      subUnitKeys: filters.subUnitKeys || [],
+      difficultyBuckets: filters.difficultyBuckets || [],
+      includeUnclassified: filters.includeUnclassified === true
+    });
+    const groups = new Map();
+    for (const record of source) {
+      const key = getProblemTypeKey(record);
+      const label = getProblemTypeLabel(record);
+      if (!key || !label) continue;
+      const group = groups.get(key) || { key, label, count: 0 };
+      group.count += 1;
+      groups.set(key, group);
+    }
+    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+  }
+
+  function getTemplateOptions(records, filters = {}) {
+    const source = filterUnitRecords(records, {
+      subUnitKeys: filters.subUnitKeys || [],
+      problemTypeKeys: filters.problemTypeKeys || [],
+      difficultyBuckets: filters.difficultyBuckets || [],
+      includeUnclassified: filters.includeUnclassified === true
+    });
+    const groups = new Map();
+    for (const record of source) {
+      const key = getTemplateKey(record);
+      const label = getTemplateLabel(record);
+      if (!key || !label) continue;
+      const group = groups.get(key) || { key, label, count: 0, parentProblemTypeKey: getProblemTypeKey(record) };
+      group.count += 1;
+      groups.set(key, group);
+    }
+    return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
+  }
+
   function getRecordIdentity(record) {
     const uid = getQuestionUid(record);
     if (uid) return uid;
@@ -530,9 +651,64 @@
     return summary;
   }
 
+  const META_FOUNDATION_SCOPE_FIELDS = Object.freeze(['curriculumKey', 'courseKey', 'L1', 'L2']);
+  const META_FOUNDATION_TAXONOMY_FIELDS = Object.freeze([...META_FOUNDATION_SCOPE_FIELDS, 'problemTypeKey', 'templateKey']);
+
+  function metaFoundationTuple(record, fields) {
+    return fields.map(field => String((record && record[field]) ?? '').trim()).join('\u001f');
+  }
+
+  function createMetaFoundationSelectionAuthority(runtime) {
+    const active = Boolean(runtime && runtime.status === 'ACTIVE');
+    const ownedScopes = new Set(
+      active && Array.isArray(runtime.ownedScopes)
+        ? runtime.ownedScopes.map(row => metaFoundationTuple(row, META_FOUNDATION_SCOPE_FIELDS))
+        : []
+    );
+    const taxonomyRows = new Set(
+      active && Array.isArray(runtime.taxonomyRows)
+        ? runtime.taxonomyRows.map(row => metaFoundationTuple(row, META_FOUNDATION_TAXONOMY_FIELDS))
+        : []
+    );
+    return { active, ownedScopes, taxonomyRows };
+  }
+
+  function validateMetaFoundationSelection(record, authority) {
+    const runtimeOwnedRecord = String((record && record.metaFoundationStatus) || '').trim() === 'ACTIVE' &&
+      Boolean(String((record && record.metaFoundationPackId) || '').trim());
+    const scopeKey = metaFoundationTuple(record, META_FOUNDATION_SCOPE_FIELDS);
+    const owned = runtimeOwnedRecord || Boolean(authority && authority.active && authority.ownedScopes.has(scopeKey));
+    if (!owned) return { owned: false, valid: true, reason: 'NOT_OWNED' };
+    if (!authority || !authority.active) return { owned: true, valid: false, reason: 'RUNTIME_UNAVAILABLE' };
+    const taxonomyKey = metaFoundationTuple(record, META_FOUNDATION_TAXONOMY_FIELDS);
+    const valid = authority.taxonomyRows.has(taxonomyKey);
+    return { owned: true, valid, reason: valid ? 'ACTIVE_TAXONOMY_ROW' : 'BROKEN_L2_L3_OR_L4_PARENT' };
+  }
+
+  function isDefaultSelectable(record) {
+    const value = record && record.defaultSelectable;
+    return !(value === false || value === 0 || String(value).trim().toLowerCase() === 'false');
+  }
+
+  function isTaxonomySelectable(record) {
+    const runtimeAvailable = record && record.metaFoundationRuntimeAvailable;
+    if (runtimeAvailable === false || String(runtimeAvailable || '').trim().toLowerCase() === 'false') return false;
+    const owned = record && (
+      record.metaFoundationOwnedScope === true ||
+      String(record.metaFoundationOwnedScope || '').trim().toLowerCase() === 'true'
+    );
+    if (!owned) return true;
+    return record.metaFoundationTaxonomyValid === true ||
+      String(record.metaFoundationTaxonomyValid || '').trim().toLowerCase() === 'true';
+  }
+
+  function isAutomaticSelectable(record) {
+    return isDefaultSelectable(record) && isTaxonomySelectable(record);
+  }
+
   function getSubUnitOptions(records) {
     const groups = new Map();
-    for (const record of Array.isArray(records) ? records : []) {
+    for (const record of (Array.isArray(records) ? records : []).filter(isAutomaticSelectable)) {
       const key = getSubUnitKey(record) || '__unclassified__';
       const label = getSubUnitLabel(record) || '미분류 소단원';
       const group = groups.get(key) || { key, label, count: 0, difficulty: { 하: 0, 중: 0, 상: 0, 미분류: 0 } };
@@ -546,11 +722,18 @@
   function filterUnitRecords(records, filters = {}) {
     const source = Array.isArray(records) ? records : [];
     const subUnitKeys = new Set((filters.subUnitKeys || []).map(value => String(value || '').trim()).filter(Boolean));
+    const problemTypeKeys = new Set((filters.problemTypeKeys || []).map(value => String(value || '').trim()).filter(Boolean));
+    const templateKeys = new Set((filters.templateKeys || []).map(value => String(value || '').trim()).filter(Boolean));
     const difficultyBuckets = new Set((filters.difficultyBuckets || []).map(normalizeDifficulty));
     return source.filter(record => {
+      if (filters.includeNonSelectable !== true && !isAutomaticSelectable(record)) return false;
       const subUnitKey = getSubUnitKey(record) || '__unclassified__';
+      const problemTypeKey = getProblemTypeKey(record);
+      const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
       if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
+      if (problemTypeKeys.size && !problemTypeKeys.has(problemTypeKey)) return false;
+      if (templateKeys.size && !templateKeys.has(templateKey)) return false;
       if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
       if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
       return true;
@@ -914,6 +1097,8 @@
     const limit = selectionLimit(options);
     const pool = dedupeRecords(filterUnitRecords(records, {
       subUnitKeys: options.subUnitKeys || [],
+      problemTypeKeys: options.problemTypeKeys || [],
+      templateKeys: options.templateKeys || [],
       difficultyBuckets: options.allowAdjacentDifficulty ? [] : (options.difficultyBuckets || []),
       includeUnclassified: options.includeUnclassified === true
     }));
@@ -923,6 +1108,8 @@
         rows: normalizedRows.map((row, index) => ({
           index,
           subUnitKey: String(row.subUnitKey || '').trim(),
+          problemTypeKey: String(row.problemTypeKey || '').trim(),
+          templateKey: String(row.templateKey || '').trim(),
           difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
           requestedCount: Math.max(0, Number(row.count || 0)), availableCount: 0,
           selectedCount: 0, shortage: Math.max(0, Number(row.count || 0)),
@@ -938,11 +1125,15 @@
     normalizedRows.forEach((row, index) => {
       const requestedCount = Math.max(0, Number(row.count || 0));
       const rowSubUnitKeys = row.subUnitKeys || (row.subUnitKey ? [row.subUnitKey] : []);
+      const rowProblemTypeKeys = row.problemTypeKeys || (row.problemTypeKey ? [row.problemTypeKey] : []);
+      const rowTemplateKeys = row.templateKeys || (row.templateKey ? [row.templateKey] : []);
       const rowDifficultyBuckets = row.difficultyBuckets || (row.difficultyBucket ? [row.difficultyBucket] : []);
       const hasRowDifficulty = rowDifficultyBuckets.length > 0;
       const strictBuckets = hasRowDifficulty ? rowDifficultyBuckets : (options.difficultyBuckets || []);
       const rowCandidates = dedupeRecords(filterUnitRecords(pool, {
         subUnitKeys: rowSubUnitKeys,
+        problemTypeKeys: rowProblemTypeKeys,
+        templateKeys: rowTemplateKeys,
         difficultyBuckets: strictBuckets,
         includeUnclassified: options.includeUnclassified === true
       })).filter(record => !used.has(getRecordIdentity(record)));
@@ -954,6 +1145,8 @@
           if (availableCandidates.length >= requestedCount) break;
           const fallback = dedupeRecords(filterUnitRecords(pool, {
             subUnitKeys: rowSubUnitKeys,
+            problemTypeKeys: rowProblemTypeKeys,
+            templateKeys: rowTemplateKeys,
             difficultyBuckets: [bucket],
             includeUnclassified: options.includeUnclassified === true
           })).filter(record => !used.has(getRecordIdentity(record)) && !availableCandidates.some(item => getRecordIdentity(item) === getRecordIdentity(record)));
@@ -969,6 +1162,8 @@
       reports.push({
         index,
         subUnitKey: String(row.subUnitKey || '').trim(),
+        problemTypeKey: String(row.problemTypeKey || '').trim(),
+        templateKey: String(row.templateKey || '').trim(),
         difficultyBucket: row.difficultyBucket ? normalizeDifficulty(row.difficultyBucket) : '',
         requestedCount,
         availableCount: availableCandidates.length,
@@ -1005,6 +1200,13 @@
       subUnitKey: safeSubUnitKey,
        subUnit: safeSubUnitKey ? getSubUnitLabel(record) : '',
       difficultyBucket: getDifficultyBucket(record),
+      problemTypeKey: getProblemTypeKey(record),
+      templateKey: getTemplateKey(record),
+      L3: getProblemTypeLabel(record),
+      L4: getTemplateLabel(record),
+      defaultSelectable: isDefaultSelectable(record),
+      metaFoundationOwnedScope: record.metaFoundationOwnedScope === true,
+      metaFoundationTaxonomyValid: record.metaFoundationTaxonomyValid === true,
       mappedUnitKey: unit.key,
       mappedUnit: unit.name,
       mappedCourse: unit.course,
@@ -1062,7 +1264,10 @@
       mode: selection.mode || '',
       subUnitKeys: selection.subUnitKeys || [],
       difficultyBuckets: selection.difficultyBuckets || [],
+      problemTypeKeys: selection.problemTypeKeys || [],
+      templateKeys: selection.templateKeys || [],
       difficultyPlan: selection.difficultyPlan || [],
+      taxonomyPlan: selection.taxonomyPlan || [],
       seed: selection.seed || '',
       collection: selection.collection || null,
       paperKey: selection.paperKey || ''
@@ -1092,7 +1297,8 @@
 
     const units = profile.units.map(unit => {
       const unitRecords = byUnit[unit.key].sort(compareRecords);
-      const split = splitIntoPapers(unitRecords, { ...options, target: options.target || scope.targetQuestionsPerPaper, max: options.max || scope.hardMaxQuestionsPerPaper });
+      const selectableRecords = unitRecords.filter(isAutomaticSelectable);
+      const split = splitIntoPapers(selectableRecords, { ...options, target: options.target || scope.targetQuestionsPerPaper, max: options.max || scope.hardMaxQuestionsPerPaper });
       const papers = split.map((paperRecords, index) => ({
         index: index + 1,
         title: split.length === 1 ? unit.name : `${unit.name} · 문제지 ${index + 1}`,
@@ -1101,14 +1307,25 @@
         records: paperRecords,
         snapshotKey: buildSnapshotKey(unit.key, paperRecords, scope)
       }));
-      return { ...unit, count: unitRecords.length, records: unitRecords, papers };
+      return {
+        ...unit,
+        count: unitRecords.length,
+        selectableCount: selectableRecords.length,
+        excludedFromAutomaticCount: unitRecords.length - selectableRecords.length,
+        records: unitRecords,
+        papers
+      };
     });
 
     const classifiedCount = units.reduce((sum, unit) => sum + unit.count, 0);
+    const selectableCount = units.reduce((sum, unit) => sum + unit.selectableCount, 0);
     return {
       profile, scope, scannedCount: scanned.length,
       candidateCount: classifiedCount + review.length,
-      classifiedCount, review, invalid, ignored, units
+      classifiedCount,
+      selectableCount,
+      excludedFromAutomaticCount: classifiedCount - selectableCount,
+      review, invalid, ignored, units
     };
   }
 
@@ -1121,6 +1338,10 @@
     RAW_KEY_MAP: HIGH1_RAW_KEY_MAP,
     QUESTION_OVERRIDES: HIGH1_OVERRIDES,
     getProfile,
+    isHighSemanticProfile,
+    resolveUnitKeyAlias,
+    highSemanticSubjectOptions,
+    highSemanticSubjectForCourseKey,
     normalizePath,
     getSourceFileCandidates,
     getQuestionNo,
@@ -1142,10 +1363,21 @@
     getSubUnitKey,
     getSubUnitParentKey,
     getSubUnitLabel,
+    getProblemTypeKey,
+    getProblemTypeLabel,
+    getProblemTypeOptions,
+    getTemplateKey,
+    getTemplateLabel,
+    getTemplateOptions,
     isSubUnitInParentScope,
     getRecordIdentity,
     dedupeRecords,
     getDifficultySummary,
+    createMetaFoundationSelectionAuthority,
+    validateMetaFoundationSelection,
+    isDefaultSelectable,
+    isTaxonomySelectable,
+    isAutomaticSelectable,
     getSubUnitOptions,
     filterUnitRecords,
     normalizeCollectionSemester,

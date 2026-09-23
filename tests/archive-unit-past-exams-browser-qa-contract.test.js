@@ -16,7 +16,7 @@ test('단원별 기출 브라우저 QA 계약은 CI 테스트 수집 대상이�
     'collectionYearMode', 'collectionSemester', 'collectionExamType',
     'collectionSchoolTools', 'unifiedConfiguration', 'unit-confirmation', 'unit-preview-iframe',
     'mobile320', 'unit-past-exams-fallback.html', 'unit-past-exams-multi-paper.html',
-    'dev.logs', 'overflow', 'assignUrl'
+    'dev.logs', 'overflow', 'assignUrl', 'taxonomyControls', 'problemTypeKey', 'templateKey'
   ]) {
     assert.match(qa, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }
