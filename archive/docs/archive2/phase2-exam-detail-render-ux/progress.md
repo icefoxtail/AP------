@@ -83,7 +83,7 @@
 ## Final convergence
 - [x] Full regression complete and baseline/environment-sensitive failures classified.
 - [x] Final branch diff reviewed; only this task's production, test, and evidence files are staged.
-- [ ] Commit and push the task branch only; do not merge or push main.
+- [x] Commit and push the task branch only; main was not merged or pushed.
 
 ### Regression results and remaining HOLD
 - Focused patch regression excluding the known navigation harness: 107 tests passed.
