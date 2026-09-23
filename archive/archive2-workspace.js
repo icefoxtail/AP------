@@ -2514,7 +2514,6 @@
         invalidate();
         render();
       } else if (el.id === "distribution" || el.id === "count") {
-        if (el.id === "count" && state.count === Number(el.value)) return;
         state[el.id] = el.id === "count" ? Number(el.value) : el.value;
         invalidate();
         render();

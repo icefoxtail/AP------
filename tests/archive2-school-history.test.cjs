@@ -33,6 +33,9 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     localStorage: { getItem: key => storage.get(key) ?? null, setItem: (key, value) => storage.set(key, value) },
     document: {
       getElementById: node, querySelectorAll: () => [],
+      createElement: () => ({
+        content: { firstElementChild: { querySelector: () => ({}) } },
+      }),
       querySelector: selector => selector === '[data-recent-filter="subject"]' ? node('recent-subject') : null,
       body: { dataset: {} },
       addEventListener: (name, callback) => { if (!events.has(name)) events.set(name, []); events.get(name).push(callback); },
@@ -54,13 +57,15 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
   const startup = source.lastIndexOf('  (async () => {');
   assert.ok(startup > 0, 'only skip the network bootstrap, not handlers');
   vm.runInContext(source.slice(0, startup) + `
-    render = () => {};
+    render = () => { globalThis.workspaceRenderCount++; };
+    globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
       state, filterMarkup, finderSchoolValues, reconcileFinderSchool, scopeOptions, pool,
       recentAssignmentMarkup, renderRecent, loadRecent, changeRecentFilter, applyDraft, draft, replace,
       getCandidates: () => candidateRecords,
       setClasses: rows => { classRows = rows; },
       getClasses: () => classRows,
+      getRenderCount: () => globalThis.workspaceRenderCount,
     };
   })();`, ctx);
   const w = ctx.workspaceTest;
@@ -236,6 +241,43 @@ test('issued Compose filters cannot be changed by the school P2 handler', async 
   h.w.state.receipts = [{ id: 'issued' }]; const before = plain(h.w.state.filters);
   await change(h, 'semanticSubject', 'COMMON_MATH_2');
   assert.deepEqual(plain(h.w.state.filters), before);
+});
+
+test('changing Compose count after input still invalidates generated paper state and rerenders', async () => {
+  const h = harness(); catalogFixture(h);
+  Object.assign(h.w.state, {
+    count: 10,
+    selected: [{ questionUid: 'selected' }],
+    rows: [{ id: 'generated-row' }],
+    prepared: [{ id: 'prepared-paper' }],
+    pins: ['pinned-question'],
+    undo: [{ id: 'undo-entry' }],
+    ackWarnings: true,
+    indexVersion: 'stale-index',
+  });
+  const panel = {
+    querySelector: () => ({ replaceWith() {} }),
+    querySelectorAll: () => [],
+    insertBefore() {},
+  };
+  const count = {
+    id: 'count', value: '12', dataset: {},
+    closest: selector => selector === '.panel' ? panel : null,
+  };
+
+  await h.event('input', count);
+  assert.equal(h.w.state.count, 12);
+  assert.deepEqual(plain(h.w.state.selected), []);
+  assert.deepEqual(plain(h.w.state.rows), []);
+  assert.deepEqual(plain(h.w.state.prepared), []);
+  assert.equal(h.w.getRenderCount(), 0);
+
+  await h.event('change', count);
+  assert.deepEqual(plain(h.w.state.pins), []);
+  assert.deepEqual(plain(h.w.state.undo), []);
+  assert.equal(h.w.state.ackWarnings, false);
+  assert.equal(h.w.state.indexVersion, 'unit-test');
+  assert.equal(h.w.getRenderCount(), 1);
 });
 
 function historyFixture(h) {
