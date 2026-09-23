@@ -1,5 +1,5 @@
 import { sha256hex } from '../helpers/admin-db.js';
-import { canAccessClass, canAccessStudent, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
+import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isStaffUser } from '../helpers/foundation-db.js';
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
@@ -1664,7 +1664,52 @@ export async function handleExams(request, env, teacher, path, url) {
       const currentTeacher = await requireTeacher(request, env, teacher);
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
 
-      const classId = url.searchParams.get('class');
+      const classId = normalizeOptionalText(url.searchParams.get('class'));
+      const historyList = url.searchParams.get('history') === '1';
+      if (historyList) {
+        if (classId && !(await canAccessClass(currentTeacher, classId, env)))
+          return jsonResponse({ error: 'Forbidden' }, 403);
+
+        const conditions = [];
+        const params = [];
+        if (classId) {
+          conditions.push('a.class_id = ?');
+          params.push(classId);
+        } else {
+          const allowedClassIds = await getAllowedClassIds(env, currentTeacher);
+          if (Array.isArray(allowedClassIds)) {
+            if (!allowedClassIds.length) return jsonResponse({ success: true, assignments: [] });
+            conditions.push(`a.class_id IN (${allowedClassIds.map(() => '?').join(',')})`);
+            params.push(...allowedClassIds);
+          }
+        }
+
+        const grade = normalizeBoardGrade(url.searchParams.get('grade') || '');
+        const from = normalizeBoardDate(url.searchParams.get('from'));
+        const to = normalizeBoardDate(url.searchParams.get('to'));
+        if (grade) {
+          conditions.push("REPLACE(COALESCE(c.grade, ''), ' ', '') = ?");
+          params.push(grade);
+        }
+        if (from) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) >= ?");
+          params.push(from);
+        }
+        if (to) {
+          conditions.push("SUBSTR(COALESCE(a.exam_date, ''), 1, 10) <= ?");
+          params.push(to);
+        }
+
+        const res = await env.DB.prepare(`
+          SELECT a.*, c.name AS class_name, c.grade AS class_grade
+          FROM class_exam_assignments a
+          LEFT JOIN classes c ON c.id = a.class_id
+          ${conditions.length ? `WHERE ${conditions.join(' AND ')}` : ''}
+          ORDER BY a.exam_date DESC, a.updated_at DESC
+        `).bind(...params).all();
+        return jsonResponse({ success: true, assignments: dedupeClassExamAssignments(res.results || []) });
+      }
+
       if (!classId) return jsonResponse({ success: false, error: 'classId required' }, 400);
       if (!(await canAccessClass(currentTeacher, classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
 

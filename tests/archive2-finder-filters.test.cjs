@@ -30,7 +30,13 @@ const middleCourseKeysForRange = (range) => {
     })
     .map((semester) => `${base}-${semester}`);
 };
+const recordsByFile = new Map();
+for (const record of catalog.records || []) {
+  if (!recordsByFile.has(record.sourceFile)) recordsByFile.set(record.sourceFile, []);
+  recordsByFile.get(record.sourceFile).push(record);
+}
 const expectedCourseMatch = (exam, courseKey) =>
+  (recordsByFile.get(exam.file) || []).some((record) => record.courseKey === courseKey) ||
   (exam.courseRanges || []).some((range) =>
     middleCourseKeysForRange(range).includes(courseKey) ||
     core.normalizeCourseIdentity(range.standardCourse) ===
@@ -99,7 +105,17 @@ test("middle-school rollout assigns metadata-free exams to one curriculum by gra
     /^중[123]$/.test(exam.effectiveBrowseGrade),
   );
   assert.ok(middleExams.length > 0);
-  assert.ok(middleExams.every((exam) => !exam.curriculums?.length));
+  const fallbackExams = middleExams.filter((exam) => !exam.curriculums?.length);
+  assert.ok(fallbackExams.length > 0);
+  for (const exam of middleExams.filter((exam) => exam.curriculums?.length)) {
+    for (const curriculumKey of ["2015", "2022"]) {
+      assert.equal(
+        core.finderMatches(exam, { curriculumKey }, finderIndex),
+        exam.curriculums.includes(curriculumKey),
+        `${exam.file} explicit curriculum ${curriculumKey}`,
+      );
+    }
+  }
   const rolloutCases = [
     ["중1", 2024, "2015"],
     ["중1", 2025, "2022"],
@@ -110,7 +126,7 @@ test("middle-school rollout assigns metadata-free exams to one curriculum by gra
   ];
   for (const [grade, year, curriculum] of rolloutCases)
     assert.equal(core.middleCurriculumFromYear(grade, year), curriculum);
-  for (const exam of middleExams) {
+  for (const exam of fallbackExams) {
     const expected = middleCurriculumFromYearForTest(exam);
     if (!expected) continue;
     assert.equal(
@@ -297,7 +313,7 @@ test("grade/curriculum changes keep compatible courseKey and clear incompatible 
       { grade: "중3", curriculumKey: "2015", courseKey: "M3-2" },
       catalog.taxonomy,
     ),
-    { grade: "중3", curriculumKey: "2015", courseKey: "M3-2" },
+    { grade: "중3", curriculumKey: "2015", courseKey: "M3-2", semanticSubject: "", family: "" },
   );
   assert.equal(
     core.reconcileFinderFilters(
@@ -335,7 +351,7 @@ test("stale URL filter state is reconciled after parsing", () => {
   );
   assert.deepEqual(
     core.reconcileFinderFilters(parsed, catalog.taxonomy),
-    { grade: "중1", courseKey: "" },
+    { grade: "중1", courseKey: "", semanticSubject: "", family: "" },
   );
 });
 
@@ -347,4 +363,115 @@ test("workspace readUrl and popstate paths reconcile parsed Finder state", () =>
   );
   assert.match(workspace, /history\.replaceState\(null, "", url\)/);
   assert.match(workspace, /window\.addEventListener\("popstate"/);
+});
+test("high1 Finder exam matching is record-level and one mixed 2015 exam can match both projected subjects", () => {
+  const exam = {
+    file: "original/high/h1/mixed.js",
+    effectiveBrowseGrade: "고1",
+    curriculums: ["2015"],
+    courseRanges: [{ courseCode: "H15-SA", standardCourse: "수학(상)" }],
+  };
+  const records = [
+    {
+      sourceFile: exam.file,
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2015",
+      courseKey: "수학(상)",
+      legacyStandardUnitKey: "H15-SA-09",
+    },
+    {
+      sourceFile: exam.file,
+      effectiveBrowseGrade: "고1",
+      curriculumKey: "2015",
+      courseKey: "수학(하)",
+      legacyStandardUnitKey: "H15-SB-06",
+    },
+  ];
+  const before = JSON.stringify(exam);
+  const index = core.buildFinderIndex({ taxonomy: [], exams: [exam], records });
+  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_1" }, index), true);
+  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_2" }, index), true);
+  assert.equal(
+    core.finderMatches(
+      exam,
+      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2015" },
+      index,
+    ),
+    true,
+  );
+  assert.equal(
+    core.finderMatches(
+      exam,
+      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2022" },
+      index,
+    ),
+    false,
+  );
+  assert.equal(JSON.stringify(exam), before, "source provenance object must not be rewritten");
+});
+
+test("high1 subject plus curriculum uses the same record, preventing cross-record false positives", () => {
+  const exam = {
+    file: "original/high/h1/cross-curriculum.js",
+    effectiveBrowseGrade: "고1",
+    curriculums: ["2015", "2022"],
+    courseRanges: [],
+  };
+  const index = core.buildFinderIndex({
+    taxonomy: [],
+    exams: [exam],
+    records: [
+      {
+        sourceFile: exam.file,
+        effectiveBrowseGrade: "고1",
+        curriculumKey: "2015",
+        courseKey: "수학(하)",
+        legacyStandardUnitKey: "H15-SB-06",
+      },
+      {
+        sourceFile: exam.file,
+        effectiveBrowseGrade: "고1",
+        curriculumKey: "2022",
+        courseKey: "공통수학2",
+        legacyStandardUnitKey: "H22-C2-01",
+      },
+    ],
+  });
+  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_1" }, index), true);
+  assert.equal(core.finderMatches(exam, { curriculumKey: "2022" }, index), true);
+  assert.equal(
+    core.finderMatches(
+      exam,
+      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2022" },
+      index,
+    ),
+    false,
+  );
+});
+
+test("legacy URL state clears hidden middle/high1 family and migrates only safe subject identities", () => {
+  assert.equal(
+    core.reconcileFinderFilters({ grade: "중1", family: "COMMON_1", courseKey: "M1-1" }, [
+      { curriculumKey: "2022", courseKey: "M1-1" },
+    ]).family,
+    "",
+  );
+  const oldFamily = core.reconcileFinderFilters({ grade: "고1", family: "COMMON_1" }, []);
+  assert.equal(oldFamily.family, "");
+  assert.equal(oldFamily.semanticSubject || "", "");
+
+  const safe = core.reconcileFinderFilters({ grade: "고1", courseKey: "공통수학1" }, []);
+  assert.equal(safe.courseKey, "");
+  assert.equal(safe.semanticSubject, "COMMON_MATH_1");
+
+  const unsafeUpper = core.reconcileFinderFilters({ grade: "고1", courseKey: "수학(상)" }, []);
+  const unsafeLower = core.reconcileFinderFilters({ grade: "고1", courseKey: "수학(하)" }, []);
+  assert.equal(unsafeUpper.courseKey, "");
+  assert.equal(unsafeUpper.semanticSubject || "", "");
+  assert.equal(unsafeLower.courseKey, "");
+  assert.equal(unsafeLower.semanticSubject || "", "");
+
+  const high2 = core.reconcileFinderFilters({ grade: "고2", family: "ALGEBRA" }, []);
+  assert.equal(high2.semanticSubject, "ALGEBRA");
+  assert.equal(high2.family, "");
 });

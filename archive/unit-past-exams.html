@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>단원별 기출 · JS 아카이브</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="unit-past-exams.css?v=20260915f">
-  <link rel="stylesheet" href="archive2-navigation.css">
-  <script defer src="archive2-navigation.js"></script>
+  <link rel="stylesheet" href="unit-past-exams.css?v=20260922-semantic-cards">
+  <link rel="stylesheet" href="archive2-navigation.css?v=20260922-nav-home-final">
+  <script defer src="archive2-navigation.js?v=20260922-nav-home-final"></script>
 </head>
 <body class="unit-page">
   <header data-archive-navigation="unit" hidden></header>
@@ -26,11 +26,12 @@
     <div class="unit-status is-loading" id="unit-status" role="status" aria-live="polite">문항 인덱스를 불러오는 중입니다.</div>
     <div id="unit-content"><div class="unit-loading">단원별 문항을 집계하는 중입니다.</div></div>
   </main>
-  <script src="unit-past-exams-core.js?v=20260917-newest"></script>
+  <script src="archive2-core.js?v=20260922-shared-semantic"></script>
+  <script src="unit-past-exams-core.js?v=20260922-shared-semantic"></script>
   <script src="question-index.js?v=20260827a"></script>
   <script src="question-meta.js?v=20260826b"></script>
   <script src="meta-foundation-runtime.js?v=20260919-mf-runtime-v1"></script>
-  <script src="unit-past-exams.js?v=20260917-navigation"></script>
+  <script src="unit-past-exams.js?v=20260922-semantic-cards"></script>
   <script>window.UnitPastExams.init();</script>
 </body>
 </html>

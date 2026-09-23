@@ -745,7 +745,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.08.27.1';
+    const STUDENT_APP_VERSION = '2026.09.22.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1924,7 +1924,7 @@
 
       url.searchParams.set('mode', isExam ? 'exam' : (isSolution ? 'sol' : 'ans'));
       url.searchParams.set('fit', 'screen');
-      if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
+      if(rc2){url.searchParams.set('qpp',String(frozenPayload.meta.qpp||4));url.searchParams.set('studio','1');url.searchParams.set('studentReview','1');url.searchParams.set('submitQr','0');url.searchParams.set('solQr','0');url.searchParams.set('preRegistered','1');url.searchParams.set('assignmentRegistered','1');url.searchParams.set('assignmentId',exam.assignment_id);}
       else if (isSolution) url.searchParams.set('solQr', '1');
       return url.toString();
     }
@@ -1943,12 +1943,33 @@
       const archiveFile = String(exam?.archive_file || '').trim();
       return archiveFile.startsWith('MIXED:') && !isOmrReviewAvailable(exam);
     }
+    function repairIssuedStudentReviewSnapshot(payload) {
+      if (payload?.meta?.sourceKind !== 'archive2-original' || !Array.isArray(payload.questions)) return payload;
+      const source = String(payload.meta.sourceArchiveFile || '').trim()
+        .replace(/^archive\/exams\//, '')
+        .replace(/^exams\//, '')
+        .replace(/^\.?\//, '');
+      if (source !== 'original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js') return payload;
+      const question = payload.questions.find(item => Number(item?.id) === 23);
+      if (!question || typeof question.solution !== 'string') return payload;
+
+      const calculationRun = '$(−2,−4),(−1,−3),(0,−2),(1,−1),(2,0),(3,1),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$';
+      const calculationWrapped = '$(−2,−4),(−1,−3),(0,−2),(1,−1),(2,0),(3,1)$,\n$(5,1),(6,0),(7,−1),(8,−2),(9,−3)$';
+      const answerRun = '$(3,1),(2,0),(1,−1),(0,−2),(−1,−3),(−2,−4),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$';
+      const answerWrapped = '$(3,1),(2,0),(1,−1),(0,−2),(−1,−3),(−2,−4)$,\n$(5,1),(6,0),(7,−1),(8,−2),(9,−3)$';
+
+      question.solution = question.solution
+        .replace(calculationRun, calculationWrapped)
+        .replace(answerRun, answerWrapped);
+      return payload;
+    }
+
     function restoreMixedOmrPayload(exam) {
       const archiveFile = String(exam?.archive_file || '').trim();
       // Legacy originals keep their data URL. Archive 2.0 originals and MIXED
       // papers restore the issued content before opening the existing engine.
       if (!archiveFile.startsWith('MIXED:')) {
-        try{const payload=JSON.parse(exam.mixed_payload_json||'null');if(payload?.meta?.sourceKind==='archive2-original')localStorage.setItem('archive2Original_original-'+exam.assignment_id,JSON.stringify(payload));}catch{return false;}
+        try{const payload=repairIssuedStudentReviewSnapshot(JSON.parse(exam.mixed_payload_json||'null'));if(payload?.meta?.sourceKind==='archive2-original')localStorage.setItem('archive2Original_original-'+exam.assignment_id,JSON.stringify(payload));}catch{return false;}
         return !!archiveFile;
       }
       const key = archiveFile.startsWith('MIXED:') ? archiveFile.slice('MIXED:'.length).trim() : '';

@@ -278,6 +278,116 @@ CrossConcept 2개 이상
 
 ---
 
+# 3-1. SEMANTIC PROVENANCE ISOLATION HARD GATE
+
+## 3-1.1 결정 입력 격리
+
+L3/L4/CrossConcept semantic assignment은 **decision-isolated input bundle**에서만 생성한다.
+
+현재 stage에 필요한 이미 검증·동결된 upstream authority는 사용할 수 있다. 예를 들어 L4 판정에서 검증된 FINAL L3 parent는 허용한다. 다만 **같은 stage의 기존 candidate·suggestion·heuristic 결과·이전 verdict는 semantic decision 입력에서 제외**한다.
+
+금지 입력 예:
+
+```text
+기존 same-stage problemTypeKey / templateKey
+기존 crossConceptKeys[]
+candidate proposal / heuristic hint / regex result
+relational metadata freeze의 same-stage decision
+prior builder/reviewer verdict
+aggregate target count를 맞추기 위한 기존 assignment
+```
+
+fresh semantic pass에서 새로 생성된 current-pass upstream 결과를 후속 판단에 사용하는 것은 허용하되, 과거 same-stage candidate를 authority로 재사용해서는 안 된다.
+
+## 3-1.2 Source provenance 물리 증거
+
+각 stage/batch는 판정 전에 input bundle을 실제 파일로 freeze하고 최소 다음을 기록한다.
+
+```text
+questionUid
+sourceArchiveFile
+sourceOrdinal
+sourceFingerprint
+contentHash
+solutionHash
+필요한 image dependency/hash
+inputFieldInventory
+inputBundleSha
+```
+
+`sourceReadStatus`, `reviewStatus` 같은 모델 자기보고만으로 source read를 증명했다고 보지 않는다. validator는 실제 bundle의 field inventory와 SHA를 semantic ledger row와 대조해야 한다.
+
+## 3-1.3 Item-level semantic evidence
+
+문항별 semantic ledger에는 최소 다음을 남긴다.
+
+```text
+questionUid
+source tuple / sourceFingerprint
+inputBundleSha
+contentHash
+solutionHash
+standardUnitKey
+subUnitKey
+l1Reason
+l2Reason
+primaryMethod
+decisiveStep
+problemTypeKey
+l3SemanticReason
+templateKey
+l4SemanticReason
+crossConceptKeys[]
+crossConceptReasons[]
+semanticReason
+reviewStatus
+```
+
+L1/L2의 canonical authority는 기존 master에 그대로 두되, 문항별 유지·재분류 근거는 ledger에서 추적 가능해야 한다. 단순 보존인 경우에도 source/master parent 일치 등 최소 reason code 또는 동등한 근거를 남긴다.
+
+`crossConceptReasons[]`는 각 `crossConceptKey`별로 왜 primary 밖의 결정적 추가 개념인지 설명해야 한다. 단순 등장·그림 요소·조건 표현을 이유로 한 부여는 무효다.
+
+source에서 읽은 듯한 `decisiveStep`·reason 문자열을 **이미 candidate로 결정한 key에 사후 부착**하는 것은 fresh semantic provenance가 아니다.
+
+## 3-1.4 FINAL은 validator가 생성한다
+
+모델·Codex·GPT worker는 semantic assignment에 `FINAL`, `SEMANTIC_FREEZE`, `PASS`를 자기 판정으로 직접 확정하지 않는다.
+
+```text
+decision-isolated source/solution provenance PASS
+→ semantic evidence completeness PASS
+→ forbidden same-stage candidate input leakage == 0
+→ L1/L2 parent + L3/L4 parent + CrossConcept registry + duplicate PASS
+→ deterministic validator-generated FINAL
+```
+
+validator가 구현되지 않았거나 실행되지 않은 stage는 evidence를 보존할 수는 있지만 semantic FINAL/PASS/promotion/eligibility를 열 수 없다.
+
+필수 실패 코드:
+
+```text
+SEMANTIC_PROVENANCE_LEAKAGE
+FORBIDDEN_CANDIDATE_INPUT
+MISSING_DECISION_ISOLATED_BUNDLE
+MISSING_SEMANTIC_EVIDENCE
+DECISION_COPIED_FROM_CANDIDATE
+```
+
+## 3-1.5 Negative regression fixture
+
+2026-09-22 Middle Geometry의 `96e4605d` / `93bc935f`에서 확인된 다음 패턴을 mandatory negative regression fixture로 보존한다.
+
+```text
+candidate templateKey 존재
++ 기존 CrossConcept suggestion 존재
++ coverage / UID / parent / registry / fingerprint / artifact hash 구조 gate PASS
++ source+solution 기반 semantic decision provenance 없음
+=> FINAL 반드시 거부
+```
+
+해당 L4/CrossConcept artifact는 구조 검증 자료로는 보존할 수 있으나 evidence status를 `SUPERSEDED_INVALID_SEMANTIC_PROVENANCE`로 취급하며 semantic authority, 후속 Condition/IntegrationPattern 입력, candidate materialize, canonical promotion 근거로 사용하지 않는다.
+
+---
 # 4. EDUCATIONAL_TERMINOLOGY_LOCK
 
 ## 4.1 canonicalLabelKo 원칙

@@ -35,7 +35,7 @@ test('수록 원본의 DB·JS·index 문항 수와 학교·시험 메타데이�
   }
 });
 
-function record({ school, year, unitKey = 'H22-MI1-04', id = 1, period = '2mid' } = {}) {
+function record({ school, year, unitKey = 'H22-M1-04', id = 1, period = '2mid' } = {}) {
   return {
     sourceFile: `original/high/h2/${period}/${String(year).slice(-2)}_${school}_${id}.js`,
     sourceOrdinal: id,
@@ -64,7 +64,7 @@ test('특정 연도 모아뽑기는 선택한 연도의 실제 자료만 학교�
     record({ school: '순천고', year: 2024, id: 2 })
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, outputMode: 'school'
+    unitKey: 'H22-M1-04', yearMode: 'exact', year: 2025, outputMode: 'school'
   });
 
   assert.equal(result.ok, true);
@@ -82,7 +82,7 @@ test('최근 3개년은 학교마다 자료가 있는 최신 연도를 따로 �
     ...[2024, 2021].map((year, index) => record({ school: '순천고', year, id: index + 1 }))
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', yearMode: 'recentAvailable', yearCount: 3, outputMode: 'combined'
+    unitKey: 'H22-M1-04', yearMode: 'recentAvailable', yearCount: 3, outputMode: 'combined'
   });
 
   assert.equal(result.candidateCount, 5);
@@ -97,7 +97,7 @@ test('통합 출력의 문항 수 제한은 학교별 균형을 우선한다', (
     ...Array.from({ length: 4 }, (_, index) => record({ school: '순천고', year: 2025, id: index + 1 }))
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, outputMode: 'combined', countMode: 'fixed', count: 4
+    unitKey: 'H22-M1-04', yearMode: 'exact', year: 2025, outputMode: 'combined', countMode: 'fixed', count: 4
   });
 
   assert.equal(result.ok, true);
@@ -108,18 +108,18 @@ test('통합 출력의 문항 수 제한은 학교별 균형을 우선한다', (
 
 test('범위 모아뽑기는 같은 과목 안에서 시작·끝 단원을 포함한다', () => {
   const records = [
-    record({ school: '순천고', year: 2025, unitKey: 'H22-MI1-03', id: 1 }),
-    record({ school: '순천고', year: 2025, unitKey: 'H22-MI1-04', id: 2 }),
-    record({ school: '순천고', year: 2025, unitKey: 'H22-MI1-05', id: 3 }),
+    record({ school: '순천고', year: 2025, unitKey: 'H22-M1-03', id: 1 }),
+    record({ school: '순천고', year: 2025, unitKey: 'H22-M1-04', id: 2 }),
+    record({ school: '순천고', year: 2025, unitKey: 'H22-M1-05', id: 3 }),
     record({ school: '순천고', year: 2025, unitKey: 'H22-A-01', id: 4 })
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', scopeMode: 'range', startUnitKey: 'H22-MI1-03', endUnitKey: 'H22-MI1-05',
+    unitKey: 'H22-M1-04', scopeMode: 'range', startUnitKey: 'H22-M1-03', endUnitKey: 'H22-M1-05',
     yearMode: 'exact', year: 2025
   });
 
   assert.equal(result.candidateCount, 3);
-  assert.deepEqual(result.scopeUnits.map(unit => unit.key), ['H22-MI1-03', 'H22-MI1-04', 'H22-MI1-05']);
+  assert.deepEqual(result.scopeUnits.map(unit => unit.key), ['H22-M1-03', 'H22-M1-04', 'H22-M1-05']);
 });
 
 test('시험 학기와 중간·기말 필터는 학교·연도 후보에 함께 적용된다', () => {
@@ -129,7 +129,7 @@ test('시험 학기와 중간·기말 필터는 학교·연도 후보에 함께 
     record({ school: '매산고', year: 2025, id: 1, period: '2mid' })
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, semester: '2', examType: 'mid', outputMode: 'school'
+    unitKey: 'H22-M1-04', yearMode: 'exact', year: 2025, semester: '2', examType: 'mid', outputMode: 'school'
   });
 
   assert.equal(result.candidateCount, 1);
@@ -144,7 +144,7 @@ test('학교별 자료가 부족해도 가능한 문제지는 부분 성공으�
     ...[1, 2, 3].map(id => record({ school: '순천고', year: 2025, id }))
   ];
   const result = core.buildCollectionPapers(records, 'h2', {
-    unitKey: 'H22-MI1-04', yearMode: 'exact', year: 2025, outputMode: 'school', countMode: 'fixed', count: 2
+    unitKey: 'H22-M1-04', yearMode: 'exact', year: 2025, outputMode: 'school', countMode: 'fixed', count: 2
   });
 
   assert.equal(result.ok, true);
