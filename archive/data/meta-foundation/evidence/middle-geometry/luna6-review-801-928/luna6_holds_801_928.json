@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "range": {
+    "start": 801,
+    "end": 928
+  },
+  "count": 1,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 915,
+      "questionUid": "qid_v1_fd1b64c0f8298556be66546d494cc80c7e7a997d4fed32e3f88952a7941e4432",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_금당중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "5b82cfdb7d8556502c8535d84ae018d5d0969fcd180655be1dcf7b9c417e81c8"
+      },
+      "sourceFingerprint": "5b82cfdb7d8556502c8535d84ae018d5d0969fcd180655be1dcf7b9c417e81c8",
+      "independentSemantic": {
+        "primaryMethod": "발문 내용상 삼각부등식으로 세 변 길이 조건의 x 범위",
+        "decisiveStep": "양의 길이와 두 변의 합이 세 번째보다 커야 하여 x>3로 판정 가능",
+        "supportingConcepts": [
+          "삼각형 부등식",
+          "양의 길이",
+          "대수적 부등식"
+        ],
+        "conditions": [
+          "변이 x−1,x+1,x+3",
+          "source solution은 각·평행선 설명으로 불일치"
+        ],
+        "compositionPattern": "발문 변 길이로 삼각부등식 세 개 구성→가장 강한 하한",
+        "curriculumNotes": "중등 삼각형 부등식",
+        "sourceIssue": "CONTENT_SOLUTION_DISAGREEMENT: solution은 무관한 각·평행선 풀이이며 발문의 범위 조건을 다루지 않음.",
+        "semanticConfidence": "LOW",
+        "semanticReasonShort": "발문은 삼각부등식 유형이나 해설이 불일치해 독립 분류 비교를 보류한다.",
+        "semanticStatus": "REVIEW_REQUIRED",
+        "sourceContentSha256": "d9bc0c0244276007561610ec1ccc968ab35f87852383321c9d99d5476c983f20",
+        "sourceSolutionSha256": "2d8cd3cef56f8427f83ae65bc412a91f171b000f183dbc467cba720ee6fdc7cf"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": null,
+      "currentTemplateKey": null,
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": false,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "발문은 삼각형 부등식 범위를 묻지만 연결된 해설은 각·평행선 풀이로 무관하다. source content와 solution이 충돌해 metadata 적합성 판정을 보류한다."
+    }
+  ]
+}

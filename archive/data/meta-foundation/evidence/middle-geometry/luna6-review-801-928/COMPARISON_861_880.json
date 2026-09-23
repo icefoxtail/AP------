@@ -1,0 +1,1007 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetBranch": "codex/meta-foundation/middle-geometry",
+  "scope": {
+    "inventoryStart": 861,
+    "inventoryEnd": 880,
+    "rows": 20
+  },
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "limitations": [
+    "A Notion long-term status page exposed historical work-status summaries before source semantic review; no per-item prior taxonomy values or defect verdicts were opened.",
+    "For the 601-800 scope, a post-freeze diagnostic exposed l3ReviewStatus for n=601, 688, and 715; those labels were not used in verdicts.",
+    "The current runtime route could not be verified as Luna 6; do not attribute this artifact to Luna 6 without external model-route confirmation."
+  ],
+  "metadataAuthority": {
+    "l2": "snapshot l3_semantic_final_928.json subUnitKey joined to standard-unit master labels",
+    "l3": "snapshot l3_semantic_final_928.json problemTypeKey",
+    "l4AndCrossConcept": "snapshot l4_crossconcept_semantic_ledger_working.json templateKey and crossConceptKeys",
+    "definitions": "snapshot active canonical packs/concepts plus middle-geometry candidate definitions for assigned keys; candidate status was not treated as canonical promotion"
+  },
+  "rows": [
+    {
+      "reviewIndex": 861,
+      "questionUid": "qid_v1_ed8c659723c152cd673b945ea1ee3f6cd440496d8b5d45972715b8817a436534",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "34c04d3b8bde5543eb6912d8fe50d7c4b077519633521ed966e30104f51a37bf"
+      },
+      "sourceFingerprint": "34c04d3b8bde5543eb6912d8fe50d7c4b077519633521ed966e30104f51a37bf",
+      "independentSemantic": {
+        "primaryMethod": "빗변과 한 예각에서 두 직각변을 사인·코사인으로 나타내 식의 진위 판별",
+        "decisiveStep": "AC=c cosA, BC=c sinA; ㄱ·ㄴ·ㄹ 거짓, 둘레 식 ㄷ 참",
+        "supportingConcepts": [
+          "삼각비 정의",
+          "빗변·높이·밑변",
+          "삼각형 둘레·넓이"
+        ],
+        "conditions": [
+          "∠C=90°",
+          "AB=c",
+          "∠A 주어짐"
+        ],
+        "compositionPattern": "변을 두 삼각비로 표현→각 식 대입→둘레와 넓이 차원 검산",
+        "curriculumNotes": "중등 삼각비의 기본 관계",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "빗변을 기준으로 두 직각변을 삼각비로 표현하고 진술을 확인한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "582a92eee9b71f07b9da003ef61b7e32f2e66158866f2ac78802baa0eb77e6b9",
+        "sourceSolutionSha256": "d61bacc77a40d4bce0c4b302e2099da9c40d576ee2190b2028ff1e288f32a133"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO",
+      "currentSubUnit": "삼각비",
+      "currentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "currentTemplateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "currentCrossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "빗변 기준으로 직각변을 삼각비로 표현해 둘레·넓이 진술을 검증하는 구조와 보조 넓이 개념이 맞다."
+    },
+    {
+      "reviewIndex": 862,
+      "questionUid": "qid_v1_eda35b94bf2c971dd2f5b3baf1c3ce1cf72989d4cac3683b8553ee1c56aca0e8",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "376e08659a21a4118e975a5ccb12a69ebcf060c402650a1c05e540487376f9e4"
+      },
+      "sourceFingerprint": "376e08659a21a4118e975a5ccb12a69ebcf060c402650a1c05e540487376f9e4",
+      "independentSemantic": {
+        "primaryMethod": "두 원의 공통현 위 직선 배치와 두 원의 내접사각형 보각으로 x,y",
+        "decisiveStep": "두 내접사각형에서 x=97°, y=100°라 합197°",
+        "supportingConcepts": [
+          "공통현",
+          "원내접사각형의 대각 보각",
+          "일직선 각"
+        ],
+        "conditions": [
+          "PQ는 두 원 공통현",
+          "선분 연장 관계 및 각 수치는 그림"
+        ],
+        "compositionPattern": "한 원의 대각 보각→공통현 직선에서 선형각→다른 원의 대각 보각",
+        "curriculumNotes": "중등 원주각·내접사각형",
+        "sourceIssue": "각도 표시와 교점 직선 배치는 그림에 의존하며 해설이 대응을 명시.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "공통현 위에서 두 원의 내접사각형 각을 보각 관계로 잇는다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "daa438f852f2519707bf2d2fd51af8b8d1293667011b722b419d5a9c1e47a45a",
+        "sourceSolutionSha256": "c36a014a9366889afa1f30eb0c701c0ff7bc5830a2375739c0d89dfe56d8138e"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_TWO_CIRCLES",
+      "currentTemplateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "두 원의 공통현 직선과 각 원의 내접사각형을 연결하는 공통현 템플릿에 부합한다."
+    },
+    {
+      "reviewIndex": 863,
+      "questionUid": "qid_v1_ee6e07c33e87ca4b56c85e0987080ff6d28924bc58dcbe5c26b3271cab54b3ef",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_신흥중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "e9584d178e2aa8e97fc4b3f0929c8bb175ec477fb4f53cef072d0381242f5246"
+      },
+      "sourceFingerprint": "e9584d178e2aa8e97fc4b3f0929c8bb175ec477fb4f53cef072d0381242f5246",
+      "independentSemantic": {
+        "primaryMethod": "같은 원의 호 길이를 대응 중심각에 비례시켜 미지 호 길이",
+        "decisiveStep": "40° 원주각→호80°, 60° 원주각→호120°, 10:x=80:120이라 x=15",
+        "supportingConcepts": [
+          "원주각과 호",
+          "중심각 비례",
+          "길이비"
+        ],
+        "conditions": [
+          "그림의 두 원주각40°,60°",
+          "첫 호 길이10cm"
+        ],
+        "compositionPattern": "원주각→호 각→같은 원에서 호 길이 비례→비례식",
+        "curriculumNotes": "중등 원주각·호의 길이비",
+        "sourceIssue": "각 위치와 10cm 호는 그림에서 확인되고 해설이 명시.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "원주각에서 호의 각을 구하고 같은 원의 호 길이비를 쓴다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "62e811ea3652b58401ee91bbee8383109e5e9c7180938a3ba3dc8d092d4ffbe9",
+        "sourceSolutionSha256": "5cb5a7a80509ccf7713e5b536a26ae38461859412315529da14d34b1dcdafcda"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "원주각에서 호의 각을 얻고 같은 원의 호 길이비를 환산하는 원의 각·호 관계와 맞다."
+    },
+    {
+      "reviewIndex": 864,
+      "questionUid": "qid_v1_ee7791fdddb3e5c607b53ef75dc5b2495ed5476e0857b3436a722674f42a019c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "78474f85ad9001a709d16eff26a517d030eebccd8f459ca6e25442dee258c037"
+      },
+      "sourceFingerprint": "78474f85ad9001a709d16eff26a517d030eebccd8f459ca6e25442dee258c037",
+      "independentSemantic": {
+        "primaryMethod": "중심에서 현에 내린 수선으로 현 반쪽을 얻어 반지름을 피타고라스로",
+        "decisiveStep": "AM=5, OM=5라 x=√50=5√2",
+        "supportingConcepts": [
+          "현의 수선이등분",
+          "직각삼각형",
+          "피타고라스"
+        ],
+        "conditions": [
+          "AB=10",
+          "OM⊥AB",
+          "OM=5",
+          "x=OA 반지름"
+        ],
+        "compositionPattern": "현 반분→반현·중심거리→반지름 직각삼각형",
+        "curriculumNotes": "중등 원과 직선·현",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "중심에서 현까지의 거리와 현의 반을 피타고라스에 넣는다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "08c3fb001eb5da6a23814a18be8d19cfc16cb6552ac63481999ce09fa3a1b8d2",
+        "sourceSolutionSha256": "176f7e8df01198aeceb7146a7468271819cf224c80a46ed812f610256f322761"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "currentTemplateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "중심에서 현에 내린 수선으로 현을 이등분하고 반지름을 구하는 template와 일치한다."
+    },
+    {
+      "reviewIndex": 865,
+      "questionUid": "qid_v1_ee7bd25adb45780b251a0eb3edbe953670d44145c407feaf042634379b61ab31",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1final/24_금당중_1학기_기말_중2_기출.js",
+        "sourceOrdinal": 25,
+        "sourceQuestionNo": "25",
+        "sourceFingerprint": "3dbb6574eee33812ad3a9832d99f010a4077e871a2c51bd00e6c623f7c39e6d1"
+      },
+      "sourceFingerprint": "3dbb6574eee33812ad3a9832d99f010a4077e871a2c51bd00e6c623f7c39e6d1",
+      "independentSemantic": {
+        "primaryMethod": "평행사변형 대각선의 길이·수직 조건을 직사각형·마름모 판정으로 연결",
+        "decisiveStep": "a=b→△AOB 이등변→AC=BD→직사각형; a+b=90→대각선 수직→마름모",
+        "supportingConcepts": [
+          "평행사변형",
+          "대각선 이등분",
+          "직사각형·마름모 판정"
+        ],
+        "conditions": [
+          "O는 대각선 교점",
+          "AB∥DC",
+          "각 a,b"
+        ],
+        "compositionPattern": "평행각으로 삼각형 각→대각선 길이/직각→특수 평행사변형 판정",
+        "curriculumNotes": "중등 평행사변형의 성질과 판정",
+        "sourceIssue": "도형에서 O와 대각선 위치를 확인하며 해설이 구조를 명시.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "각 조건을 대각선 길이 같음 또는 수직으로 변환해 판정한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "7689b9083b9490ecc8f20e949bf5925657f7888abf0908f068df64e6f1db97c3",
+        "sourceSolutionSha256": "49e5c6732c428a0b0d33f15eabbd1335c7791b8405aa34c5a82bb925c5bb3072"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "평행사변형의 대각선 길이·수직 성질을 직사각형·마름모 판정으로 잇는 구조다."
+    },
+    {
+      "reviewIndex": 866,
+      "questionUid": "qid_v1_ee975694063fbd9e090dbf3faa705301374f3d42e00ac75ff0ffbb4af452e710",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "bd56edb93cf3a62055a5ad20a983a121fa5e8df0c3fd822cd1b8414ce8fbe823"
+      },
+      "sourceFingerprint": "bd56edb93cf3a62055a5ad20a983a121fa5e8df0c3fd822cd1b8414ce8fbe823",
+      "independentSemantic": {
+        "primaryMethod": "사다리꼴 양 옆변 중점 연결선과 대각선 중점 사이 길이",
+        "decisiveStep": "PQ=(14−8)/2=3",
+        "supportingConcepts": [
+          "사다리꼴 중점연결",
+          "평행선",
+          "대각선"
+        ],
+        "conditions": [
+          "AD∥BC",
+          "M,N은 양 옆변 AB,DC 중점",
+          "밑변14,8"
+        ],
+        "compositionPattern": "중점연결 정리→대각선 중점→밑변 차의 절반",
+        "curriculumNotes": "중등 사다리꼴·평행선 선분비",
+        "sourceIssue": "밑변 수치 및 P,Q 위치는 그림을 해설이 사용.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "사다리꼴의 중점연결선이 대각선의 중점을 지나 밑변 차의 절반을 만든다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "6d8d529008ac1432985e94ec8ede8fb78b9ef62aab15631a5b2880958bdfa2b3",
+        "sourceSolutionSha256": "0aee8a14c8d63c300b282dc6a94ebe1cb0f41f3348a307790aa6f2d96a93afd3"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "currentTemplateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "currentCrossConceptKeys": [
+        "CC_MIDPOINT"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "recommendedSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "recommendedProblemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "recommendedTemplateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "사다리꼴의 중점연결선과 대각선 중점 사이에서 밑변 차의 절반을 구한다. 닮은 도형의 대응변·넓이비가 핵심이 아니므로 평행선 선분비 계층이 맞다. 중점 CC는 보조개념으로 유지한다."
+    },
+    {
+      "reviewIndex": 867,
+      "questionUid": "qid_v1_eeba102f7b5045bb8b87a3cbcd071611966a58dc0d694797493d501a81c59cc9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "c78e65c7c69b2695aaaf02341c8b921a494990b15000c777165da31eaf92a72a"
+      },
+      "sourceFingerprint": "c78e65c7c69b2695aaaf02341c8b921a494990b15000c777165da31eaf92a72a",
+      "independentSemantic": {
+        "primaryMethod": "마름모의 평행성과 등변삼각형 각을 대응시켜 변을 같게 해 대각선",
+        "decisiveStep": "△BEF 밑각을 △DCF 각으로 옮겨 DF=DC=18; BD=BF+FD=30",
+        "supportingConcepts": [
+          "마름모 대변 평행·변 같음",
+          "이등변삼각형",
+          "맞꼭지각·엇각"
+        ],
+        "conditions": [
+          "BC=18",
+          "BE=BF=12",
+          "E,F,C 공선",
+          "E,F와 D,B 교점 관계"
+        ],
+        "compositionPattern": "이등변 밑각→평행선 각 대응→또 다른 이등변→대각선 분할",
+        "curriculumNotes": "중등 마름모와 이등변삼각형",
+        "sourceIssue": "E,F,C와 교점/연장 배치는 그림에 의존하고 해설이 사용.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "마름모의 평행 조건과 이등변삼각형 각을 대응해 대각선 조각을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "deb66e91dc6d5b9259195f69b37211a5c36dbd710f87ebd1128a5ff54e150b80",
+        "sourceSolutionSha256": "72f8c55a8fd9a7150d807b568a2cbbd61f63c2d1b8fb9b37b4b972059c6378e1"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "마름모의 대변 평행·같은 변 조건을 이등변삼각형 각으로 옮겨 대각선을 구하는 사각형 성질 유형에 부합한다."
+    },
+    {
+      "reviewIndex": 868,
+      "questionUid": "qid_v1_eef02c6fd7ab13f1dfc8e971105bdb08dd7c22fbd765e202f6ee4c0f3753e74f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "662bbd5eae9de38d706efe30c4c8991935e8395a8b94737453153290e43b3e87"
+      },
+      "sourceFingerprint": "662bbd5eae9de38d706efe30c4c8991935e8395a8b94737453153290e43b3e87",
+      "independentSemantic": {
+        "primaryMethod": "두 접선의 각에서 작은 호를 얻고 나머지 큰 호를 비로 나눠 원주각",
+        "decisiveStep": "작은 호 AB=150°, 큰 호 ACB=210°, 호 AC=70°라 x=35°",
+        "supportingConcepts": [
+          "두 접선 각과 호",
+          "호의 비",
+          "원주각"
+        ],
+        "conditions": [
+          "∠APB=30°",
+          "호 AC:BC=1:2"
+        ],
+        "compositionPattern": "접선각→작은 호→큰 호→호비→원주각",
+        "curriculumNotes": "중등 원주각·접선",
+        "sourceIssue": "점 C가 큰 호 ACB를 분할하는 위치는 그림에 제시.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "접선각으로 작은 호를 구한 후 큰 호 비와 원주각으로 연결한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "09897eac5e77958bc180f634a564b2f8e6e1770355de87ca7c891ecc294d132c",
+        "sourceSolutionSha256": "e476b759434c3d1d3528517fb93feffc7e29b98e16d0f8d76f7362f28bbab3a4"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "currentCrossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [
+        "CC_TANGENCY"
+      ],
+      "reason": "접선각에서 호를 구하는 과정은 복합 원의 각 관계 Primary template에 접선 관계로 포함되므로 접선 CrossConcept가 중복이다."
+    },
+    {
+      "reviewIndex": 869,
+      "questionUid": "qid_v1_ef20a6c26730e0f8d28a3cf2eb84c4ed8a64ce9531a5dbd24d70f37ef14303ae",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "e58a7ea94a08cf6e48e5c35a877399940429180dad0e558d92474cbe88d6dbb9"
+      },
+      "sourceFingerprint": "e58a7ea94a08cf6e48e5c35a877399940429180dad0e558d92474cbe88d6dbb9",
+      "independentSemantic": {
+        "primaryMethod": "중심에서 같은 거리에 수직인 현의 길이가 같음을 이용해 반지름·원넓이",
+        "decisiveStep": "세 현·중심각이 같고 반현=2√3, 30-60-90 삼각형에서 r=4, 넓이16π",
+        "supportingConcepts": [
+          "중심과 현 거리",
+          "현의 수직이등분",
+          "특수 직각삼각형",
+          "원넓이"
+        ],
+        "conditions": [
+          "OM=ON=OL",
+          "세 선분은 현에 수직",
+          "AB=4√3"
+        ],
+        "compositionPattern": "같은 중심거리→현 등식→중심각 균등→반현→반지름→원넓이",
+        "curriculumNotes": "중등 원과 직선·현·원의 넓이",
+        "sourceIssue": "수선발·현 배치는 그림/해설에서 확인.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "중심에서 등거리인 현의 길이를 같게 하고 반지름을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "e789a88777b522e8f7a50e69478babc7539c692b7c0bcefd9d0d2ce8835bd8c7",
+        "sourceSolutionSha256": "685477add84a84f1a446a1fd0ac302b2f24acebc6b1516f066d799682e8fa508"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "currentTemplateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [
+        "CC_AREA"
+      ],
+      "removeCrossConceptKeys": [],
+      "reason": "현 성질로 반지름을 구한 뒤 원의 넓이를 계산한다. 현재 현 길이 Primary 밖의 결정적 보조개념인 넓이가 누락됐다."
+    },
+    {
+      "reviewIndex": 870,
+      "questionUid": "qid_v1_ef2732975bb8c7e04e71a8c8cc99735d6fff7980c3aeda10f4d1217cdec1d039",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "90a237824da5f891fab91cad03c8365b428751736d78cac0200e69bcdfc2d304"
+      },
+      "sourceFingerprint": "90a237824da5f891fab91cad03c8365b428751736d78cac0200e69bcdfc2d304",
+      "independentSemantic": {
+        "primaryMethod": "사각형 표시조건을 평행사변형의 충분조건과 비교",
+        "decisiveStep": "한 쌍만 평행이고 다른 쌍이 같다는 조건은 등변사다리꼴도 가능해 충분하지 않음",
+        "supportingConcepts": [
+          "평행사변형 판정",
+          "대변·대각·대각선 조건",
+          "사다리꼴"
+        ],
+        "conditions": [
+          "도형별 표시조건은 그림"
+        ],
+        "compositionPattern": "충분조건 목록→각 표시 검토→불충분 조건의 반례",
+        "curriculumNotes": "중등 평행사변형 판정",
+        "sourceIssue": "도형별 표시는 그림에 있으나 해설이 모든 조건을 열거.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "평행사변형의 충분조건과 등변사다리꼴 반례를 구별한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "27ac1c277ea3a870388f0078f8cb7aecaa6f2700ebadb6f899f9ced9de9af593",
+        "sourceSolutionSha256": "fea7e255c43335f115044fba17c5d4bce3449cac94afeca016df3fceec3dc74d"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "평행사변형의 충분조건과 불충분한 사다리꼴 반례를 판별하는 기준 템플릿과 일치한다."
+    },
+    {
+      "reviewIndex": 871,
+      "questionUid": "qid_v1_ef2f75003ed913b20f7bb4d1482589a1566675e22862440bf9c035c2da9b8490",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "e73b7cba86827ee8aabcb15014b67200512722924f07108e121da93d6849c7e6"
+      },
+      "sourceFingerprint": "e73b7cba86827ee8aabcb15014b67200512722924f07108e121da93d6849c7e6",
+      "independentSemantic": {
+        "primaryMethod": "외심의 등거리 정의와 수직이등분선 교점을 그림 선택지에서 판별",
+        "decisiveStep": "세 꼭짓점 등거리인 점 또는 두 수직이등분선의 교점을 선택",
+        "supportingConcepts": [
+          "외심",
+          "세 꼭짓점 등거리",
+          "수직이등분선"
+        ],
+        "conditions": [
+          "여러 그림 중 외심 표시/관계 선택"
+        ],
+        "compositionPattern": "등거리 정의·수직이등분선 교점→각 배치 확인",
+        "curriculumNotes": "중등 삼각형의 외심",
+        "sourceIssue": "선택지 도형의 표시가 그림에 의존하며 해설이 선택번호와 조건을 제시.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "외심의 등거리 조건과 수직이등분선 교점 조건을 사용한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "9838f61369eace15e4bd5a21980baf124244f774d296c4fe8687304479b6ff38",
+        "sourceSolutionSha256": "775d81b0761563e5f4d7e58e1bde8c4782e816f793c11751b432c8c876b16a83"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "currentTemplateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "currentCrossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "reason": "수직이등분선 교점 또는 꼭짓점 등거리로 외심을 판별하는 내용이 외심 Primary에 포함되어 중복이다."
+    },
+    {
+      "reviewIndex": 872,
+      "questionUid": "qid_v1_ef3958e05772a67ec9ef1dd8a7fedb1c0842ca1008a82bfb788050a5d8b94015",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "2b8823a4ed0546f61e711f3ed62cbeef6c438163309f87f7b28c961197662c4a"
+      },
+      "sourceFingerprint": "2b8823a4ed0546f61e711f3ed62cbeef6c438163309f87f7b28c961197662c4a",
+      "independentSemantic": {
+        "primaryMethod": "이등변삼각형 외각으로 밑각을 구하고 내각합으로 꼭짓각",
+        "decisiveStep": "외각130°→밑각50°; 두 밑각 합산 후 x=80°",
+        "supportingConcepts": [
+          "이등변삼각형",
+          "외각",
+          "삼각형 내각합"
+        ],
+        "conditions": [
+          "AB=AC",
+          "C 외각130°"
+        ],
+        "compositionPattern": "외각 선형각→밑각 등식→세 내각합",
+        "curriculumNotes": "중등 이등변삼각형 성질",
+        "sourceIssue": "외각 위치는 그림에 나타나나 해설이 특정.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "외각과 이등변삼각형 밑각 성질을 연쇄한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "2609e0ecda7186680bd201fbf721b03ba165dc67d3fa566c84b48974c1119c29",
+        "sourceSolutionSha256": "8cbb023477ca593d623fde13dac362e4cbca937a2bb0cb603f3c952e579eb0cb"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "currentTemplateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "외각으로 밑각을 구하고 이등변삼각형 각 관계로 목표각을 구하는 구조와 맞다."
+    },
+    {
+      "reviewIndex": 873,
+      "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "sourceQuestionNo": "16",
+        "sourceFingerprint": "18ca38db4374fb2b28fe3d5f3ec9b157a846d6aad7de4ec9576953176676743c"
+      },
+      "sourceFingerprint": "18ca38db4374fb2b28fe3d5f3ec9b157a846d6aad7de4ec9576953176676743c",
+      "independentSemantic": {
+        "primaryMethod": "직사각형 대각선 피타고라스 후 수직이등분선·평행선 AA 닮음",
+        "decisiveStep": "AC=10, AO=5; △AOP~△CBA라 AP/CA=5/8, AP=25/4",
+        "supportingConcepts": [
+          "직사각형",
+          "피타고라스",
+          "수직이등분선",
+          "삼각형 닮음"
+        ],
+        "conditions": [
+          "가로8·세로6",
+          "PQ는 AC 수직이등분선"
+        ],
+        "compositionPattern": "대각선→중점·직각→평행선으로 닮음→비례식",
+        "curriculumNotes": "중등 도형의 닮음",
+        "sourceIssue": "직사각형 치수는 그림/해설이 제공.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "대각선 중점과 평행 조건으로 닮은 직각삼각형의 비를 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "7d6bab9299e3900747ca8be9670ffe3559c8aa0f5c2bbd4358a561485818a957",
+        "sourceSolutionSha256": "09b1b2a2acf5200acd960af9571d2d54ecddbb8b1727f2597c5acd0bac64e55f"
+      },
+      "currentSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "currentSubUnit": "평행선 사이의 선분의 길이의 비",
+      "currentProblemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "currentTemplateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "currentCrossConceptKeys": [
+        "CC_SIMILARITY",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [
+        "CC_SIMILARITY"
+      ],
+      "reason": "평행선 선분비가 현재 L2-L4 Primary의 핵심 구조이므로 닮음 CrossConcept를 별도 저장하면 Primary와 중복된다. 수직이등분선 CC는 보조개념으로 유지한다."
+    },
+    {
+      "reviewIndex": 874,
+      "questionUid": "qid_v1_ef7a7270b60bc51f87756802ec82afc0017a5bd29d7e2dc96582d73ce5f3e9a6",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "sourceQuestionNo": "11",
+        "sourceFingerprint": "417fb1f808a51a18344046f2340f0130a9f8958cb9b5f0b0404bac4daea5f2b7"
+      },
+      "sourceFingerprint": "417fb1f808a51a18344046f2340f0130a9f8958cb9b5f0b0404bac4daea5f2b7",
+      "independentSemantic": {
+        "primaryMethod": "직사각형 대각선 길이와 원의 반지름을 같게 놓아 대각선",
+        "decisiveStep": "OB는 반지름4이고 직사각형 대각선 같음에서 AC=4",
+        "supportingConcepts": [
+          "직사각형 대각선",
+          "원의 반지름"
+        ],
+        "conditions": [
+          "B는 중심 O인 반지름4 원 위",
+          "OABC 직사각형"
+        ],
+        "compositionPattern": "원 위 거리→직사각형 대각선 길이 동일",
+        "curriculumNotes": "중등 사각형과 원",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "원의 반지름 길이를 직사각형 대각선과 동일시한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "784089aa7b5ac88b0e96fa25919910b83499f07a75de1b0744a9f229854aacc7",
+        "sourceSolutionSha256": "7c2738e8bc5e732dfec3a12c97df0546565549ec1dfb27c6dc81792a27480bcd"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "원 위 점에서 반지름을 얻고 직사각형 대각선 성질을 적용하는 사각형 분류가 중심 방법과 맞다."
+    },
+    {
+      "reviewIndex": 875,
+      "questionUid": "qid_v1_f02ca0c6d6f22a766861024269c0d890a68808e08b50949ab0ecc68d1d5268ed",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "da9c5912f67abc0c7211c0aeb39c85408140e9e3e1adaf4dcdfb38b29faec82d"
+      },
+      "sourceFingerprint": "da9c5912f67abc0c7211c0aeb39c85408140e9e3e1adaf4dcdfb38b29faec82d",
+      "independentSemantic": {
+        "primaryMethod": "원외 두 할선각의 호 차 관계 두 개와 전체 호 합으로 호 구하기",
+        "decisiveStep": "c−a=60°, b−d=80°, 전체360°에서 a+d=110°, x=55°",
+        "supportingConcepts": [
+          "원 밖 할선각",
+          "호의 합",
+          "원주각"
+        ],
+        "conditions": [
+          "ABCD는 원내접",
+          "∠P=30°,∠Q=40°",
+          "호 구획 그림"
+        ],
+        "compositionPattern": "외부각 호 차 두 식→전체 호 합→목표 호 합→원주각",
+        "curriculumNotes": "중등 원주각·내접사각형",
+        "sourceIssue": "할선 구성·호 구획은 그림에 의존하고 해설이 호 변수로 구성.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "두 원외각의 호 차와 원 전체의 호 합으로 원주각을 계산한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "885020573e0b33f53f4d78707d294fc84a78f6d84550fe87455e899fb8169994",
+        "sourceSolutionSha256": "b27b3f77c419d040920577f9fcdd7c990acf773966f28fdf330efac0d5fc8c31"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "두 원외각의 호 차 식과 전체 호 합을 결합해 원주각을 구하는 복합 원의 각 구조다."
+    },
+    {
+      "reviewIndex": 876,
+      "questionUid": "qid_v1_f082c7f54847431451ab99767e3604118fa14ac2d0b973c935d6c065b735c04d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "91177b04665793d528bb5a2c9a9296a9b5e23076b3cdded7073060bb2dea5fa6"
+      },
+      "sourceFingerprint": "91177b04665793d528bb5a2c9a9296a9b5e23076b3cdded7073060bb2dea5fa6",
+      "independentSemantic": {
+        "primaryMethod": "특수각 삼각비 값들을 식마다 대입해 등식 진위 판별",
+        "decisiveStep": "표준 특수각 값을 대입하여 ②만 참",
+        "supportingConcepts": [
+          "특수각 삼각비",
+          "분수·근호 연산"
+        ],
+        "conditions": [
+          "보기의 삼각비 등식",
+          "선택지 값 미열람"
+        ],
+        "compositionPattern": "특수각 값 직접 대입→곱·나눗셈·차 계산→참 식 선택",
+        "curriculumNotes": "중등 삼각비의 값과 관계",
+        "sourceIssue": "선택지 텍스트는 읽지 않았고 해설이 참인 번호만 제공.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "특수각 삼각비 표값과 기본 연산으로 식을 판별한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "2f21c5428cd6368ecc7a97c941df0b1ec6306d8e094f52c5fd327b2c7cd0a15d",
+        "sourceSolutionSha256": "78be78e33253b96b98885957411c7a7eef2ffc5479f1e6de57a46ee95dc911ae"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO",
+      "currentSubUnit": "삼각비",
+      "currentProblemTypeKey": "PT_TRIG_RATIO",
+      "currentTemplateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "특수각 삼각비 값을 직접 대입해 식의 참거짓을 판정하는 template에 부합한다."
+    },
+    {
+      "reviewIndex": 877,
+      "questionUid": "qid_v1_f0fae6e4811f93eff8f17c4ffa0d1ede0917587ad651ea204321572c3a528452",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "7fa3baea07d9edfc1d5de6045d72fa0e017ecd5d8fdd4b0272bedcf428290248"
+      },
+      "sourceFingerprint": "7fa3baea07d9edfc1d5de6045d72fa0e017ecd5d8fdd4b0272bedcf428290248",
+      "independentSemantic": {
+        "primaryMethod": "외부점 접선 길이 같음으로 나머지 접선 조각을 구하고 직각삼각형으로 지름",
+        "decisiveStep": "DE=DA=10, CE=4, CB=4; 길이차6, AB²+6²=14²라 AB=4√10",
+        "supportingConcepts": [
+          "반원 접선",
+          "같은 외부점 접선",
+          "접선과 지름 수직",
+          "피타고라스"
+        ],
+        "conditions": [
+          "AD=10",
+          "CD=14",
+          "A,E,B 접점",
+          "AD,BC∥AB"
+        ],
+        "compositionPattern": "접선 길이 등식→평행 수선 간격 차→직각삼각형→지름",
+        "curriculumNotes": "중등 원의 접선·피타고라스",
+        "sourceIssue": "접점과 평행 접선의 그림 위치는 해설이 설명.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "접선 길이 등식과 평행 접선 간 차를 피타고라스로 연결한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "497c4ca8666416ef7e7b563a1ff5d6d8be699ddc572d6dddd5a853841b60af36",
+        "sourceSolutionSha256": "92b66c70e121e033665d893bf9c05b49ba16226a9e9a1c1e4c5c56f3718d97b2"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "currentTemplateKey": "TM_TANGENT_LENGTH",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "removeCrossConceptKeys": [],
+      "reason": "접선 길이 등식 외에 평행한 접선 사이 직각삼각형으로 지름을 구하는 데 피타고라스 정리가 필수다."
+    },
+    {
+      "reviewIndex": 878,
+      "questionUid": "qid_v1_f1055c7a2b2c42db168b0beb6f39166fae4ee20bace8031bc30cdb9838aceb54",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "1dea592123d3884a114daf815f815327a821fbd0e73c1e39215d84b01332eb5f"
+      },
+      "sourceFingerprint": "1dea592123d3884a114daf815f815327a821fbd0e73c1e39215d84b01332eb5f",
+      "independentSemantic": {
+        "primaryMethod": "반원의 지름 직각과 접선 수직·각이등분선으로 외부 각 추적",
+        "decisiveStep": "∠APB=90−x; bisector ∠APD=45−x/2; ∠CED=135−x/2=110라 x=50°",
+        "supportingConcepts": [
+          "지름 원주각",
+          "접선과 반지름 수직",
+          "각의 이등분선",
+          "선형 배치"
+        ],
+        "conditions": [
+          "AB는 반원 지름",
+          "BP는 B 접선",
+          "PD는 ∠APB 이등분선",
+          "A,C,P 공선"
+        ],
+        "compositionPattern": "지름→직각삼각형→접선직각→각이등분→직선 각 차→방정식",
+        "curriculumNotes": "중등 원·삼각형 각이등분선",
+        "sourceIssue": "A,C,P 공선과 ∠CED 방향은 그림에 의존.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "원과 접선에서 얻은 직각 및 각이등분선으로 미지각을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "94a499dbc78a3e39a1dd89534a26f572fa7ecd8c4be96938c2b0d9534dff9b21",
+        "sourceSolutionSha256": "f0d02739b05e6e09badbda9c2bee97b475c80338fe204bd18ee163debbc2e695"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "currentCrossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ],
+      "removeCrossConceptKeys": [
+        "CC_DIAMETER"
+      ],
+      "reason": "각의 이등분선이 원의 각 관계 Primary 밖에서 미지각 방정식을 만드는 데 필요하다. 지름 원주각은 현재 Primary에 포함되어 중복이다."
+    },
+    {
+      "reviewIndex": 879,
+      "questionUid": "qid_v1_f110b0ce75244df6dbe0a3672288ee256ef0a25277371ea17d28a42178e7aee0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "2d2fab0ca0f2e5685bf7026ccc0a929207b6a93f11b33f68c3c4c1f55cb358d9"
+      },
+      "sourceFingerprint": "2d2fab0ca0f2e5685bf7026ccc0a929207b6a93f11b33f68c3c4c1f55cb358d9",
+      "independentSemantic": {
+        "primaryMethod": "사각형을 대각선 이등분·대각선 길이·한 쌍의 평행으로 계층 분류",
+        "decisiveStep": "대각선 상호 이등분→평행사변형 계열; 길이 같음→직사각형/정사각형; 나머지에서 한 쌍 평행→사다리꼴",
+        "supportingConcepts": [
+          "사각형의 포함관계",
+          "대각선 성질",
+          "사다리꼴"
+        ],
+        "conditions": [
+          "분류도표의 (가)(나)(다) 분기",
+          "선택지 조건"
+        ],
+        "compositionPattern": "분류 결과를 역추적→보편 성질→특수형 분기→나머지 사다리꼴",
+        "curriculumNotes": "중등 사각형의 성질·분류",
+        "sourceIssue": "분류도표/그림은 content 밖에 있고 해설이 분기 결과를 명시.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "사각형 계층의 대각선 성질로 분류도표의 조건을 역으로 정한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "38ebf92f246243583ba59e809caadc4dcb6ed40f8a5906f22640d1bf9c46addb",
+        "sourceSolutionSha256": "9e4862a488a830bba27b7c4e63b7b8a1d60f9e04bd81abe52a73a757cedc169b"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_QUADRILATERAL_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L4"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "분류도표는 평행사변형 판정만이 아니라 직사각형·마름모·정사각형·사다리꼴의 계층을 분기하므로 특수 사각형 성질 template가 맞다."
+    },
+    {
+      "reviewIndex": 880,
+      "questionUid": "qid_v1_f1473c191ceaaa86984612468f6b15562fe8f25280f97fa5b40cec7693124d9c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "237cce0ab3c9227e95ee02333ca489fcb5c46f53fd9753d4ae287ca0c9a5a830"
+      },
+      "sourceFingerprint": "237cce0ab3c9227e95ee02333ca489fcb5c46f53fd9753d4ae287ca0c9a5a830",
+      "independentSemantic": {
+        "primaryMethod": "내심에서 세 변까지 같은 높이의 세 삼각형 넓이를 합산",
+        "decisiveStep": "[ABC]=½·r·(AB+BC+CA)=½·3·40=60",
+        "supportingConcepts": [
+          "내심",
+          "변까지 거리",
+          "삼각형 넓이 합",
+          "반둘레"
+        ],
+        "conditions": [
+          "둘레40cm",
+          "내접반지름3cm"
+        ],
+        "compositionPattern": "세 변을 밑변으로 분할→공통 높이 r→둘레에 비례한 넓이",
+        "curriculumNotes": "중등 삼각형의 내심·넓이",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "내접반지름을 공통 높이로 삼아 삼각형 넓이를 둘레로 표현한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "c4744e667a38f6e58bd46da7c5196e1fbde80fbb27932c83f913352d3a753103",
+        "sourceSolutionSha256": "2edd25efa83c847637b678c9f283417da639bcab34480617cfce410b41963a3a"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "currentTemplateKey": "TPL_TRIANGLE_INCENTER",
+      "currentCrossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L4"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "풀이가 내접원의 반지름을 공통 높이로 삼아 넓이를 반둘레 곱으로 구하며 각이등분선·내심각 관계는 사용하지 않는다. 일반 삼각형 중심 성질 template가 더 적합하고 넓이 CrossConcept는 유지한다."
+    }
+  ]
+}
