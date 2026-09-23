@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "h1-stage2-semantic-ledger-index-v2",
-  "status": "STAGE2_1170_PHYSICAL_COMPLETE_HOLD_AGGREGATE_BLOCKED",
+  "schemaVersion": "h1-stage2-semantic-ledger-index-v3",
+  "status": "STAGE2_1170_PHYSICAL_COMPLETE_REPAIR_IN_PROGRESS",
   "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
   "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
   "goal": "1170/1170 Stage 2 Single Semantic Pass physical coverage",
@@ -23,67 +23,67 @@
     {
       "file": "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
       "rows": 217,
-      "sha256": "06eaee4b317ac7fe0d9cf97ea3b0435c39187d9a2885deb6f23caecb05e50c95",
+      "sha256": "cba60936197b8be0715e8593923063f228fa4e5d7f73194ab3a5981b79bd600a",
       "authority": "existing semantic checkpoint preserved; provenance rechecked"
     },
     {
       "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "59b6710a7d9135679dde112c3d3db0bc2d56bc1ac03be80858780ad9a7eaafb8",
+      "sha256": "b6debeb448e32bd594d88613a76cd87361f75da9ec16ed1a755181404c1f7075",
       "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "eaa41fddaa6259fba73d475183cc25213828ac0c0e65f0ed4eee0437c6cb3d4d",
+      "sha256": "1a7987458551b38327f0dfc9f0eb90b2b445cf9a11a34cfc2ea27307b779b2cc",
       "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "3bea1a92e166e8333ba45a19fece153736ac99d4c1f4af61fa3207bd982d6ef8",
+      "sha256": "353a654f3493aa09c0001eb6887566cff2d5471dab45b70666e51554e6b4d9e7",
       "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl",
       "rows": 70,
-      "sha256": "13ab1d66568954ae95c8ca7cdd15c1d8a2fe529f8b23db7d8d958dc8dda7865f",
+      "sha256": "3989ba41f439e7d1301fcde2c2b2a7fcaf86c8c90255eae934f8f96744743bfd",
       "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl",
       "rows": 70,
-      "sha256": "d632b84fd4f963db2a8fb7d989f2cf768bd4dfabdd623a3388dd6c960caef7fe",
+      "sha256": "1f700a779604f992bc4b53c1af4f2187485552ca48b2fd34ea9a5a9173dbfa8e",
       "authority": "direct source+solution semantic repair materialized"
     },
     {
       "file": "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl",
       "rows": 70,
-      "sha256": "ab260f9a5a5f25a0244fcbb8ec706281973ec99d379fa3dd8ab686985c948263",
+      "sha256": "7a9acfe1617b734fc7ad497c6f7114705d8291b63c3f636173486433d353b5b1",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl",
       "rows": 70,
-      "sha256": "c0faad12c8250cb47ec23a85f3fb3fd052d57b873c2fcc1a1ae2898965ab9ca1",
+      "sha256": "b01cdd77a40e8909f4fb9e4fa7220d0814075de7da854cc8e593a5bf2a76fe91",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl",
       "rows": 70,
-      "sha256": "33feddbac128c50eb4bc738a6dab52e477eb8bd852e82b238896ae6256829681",
+      "sha256": "c73ca3cbc15a2ab26130d791ff7a6f84c576da026af61492bb1dd0704e0e2eee",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl",
       "rows": 23,
-      "sha256": "1a60b4f96ea2106e9dfc7c2be76d0d4c1a1788998676f4103a5424e3f232da10",
+      "sha256": "bffa72f566db0d9ca4e2da1cdb23945b5d314b37feaae609b6f8f6280d0ba3af",
       "authority": "current Stage 2 source-semantic pass"
     },
     {
       "file": "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl",
       "rows": 70,
-      "sha256": "d9c7b209e87064172483a5b2185a3dc957b15541c6a8f3b060acc510de629c10",
+      "sha256": "bc33c2027a5db71b510c425b7178143e76f3766bda51a96713896e16cc8b876b",
       "authority": "direct source+solution targeted semantic repair materialized"
     },
     {
@@ -119,7 +119,7 @@
     {
       "file": "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl",
       "rows": 13,
-      "sha256": "43a0f932d8e24480e74afc3d5c9078035d259c5a68238a05794ab3a1bf7396eb",
+      "sha256": "446f10c9775fb6774502d78abd6bdc2b75ed35d60c7bf5b3ed169b8acc137584",
       "authority": "direct source+solution targeted semantic repair materialized"
     }
   ],
@@ -136,14 +136,24 @@
     "artifactStatus": "TRUNCATED_CORRUPT_NOT_USED"
   },
   "holdResolution": {
-    "inventoryRows": 34,
-    "knownItemLevelHoldRows": 33,
-    "closedOrRouted": 33,
+    "inventoryRows": 50,
+    "knownItemLevelHoldRows": 49,
+    "closedOrRouted": 49,
     "openReviewRequired": 0,
     "aggregateBlocked": 7,
     "unresolved": 7,
     "inventory": "H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
     "resolution": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
     "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json"
+  },
+  "gptRepair": {
+    "baseReviewHead": "d8a6be9df984d22621031402950c4138f8678287",
+    "repairedBlockRows": 57,
+    "repairArtifacts": [
+      "H1_STAGE2_GPT_BLOCK_REPAIR_POLYNOMIAL_25.jsonl",
+      "H1_STAGE2_GPT_BLOCK_REPAIR_EQINEQ_30.jsonl",
+      "H1_STAGE2_GPT_BLOCK_REPAIR_MISC_2.jsonl"
+    ],
+    "status": "BLOCK_57_REPAIRED_FURTHER_FIX_NEXT_REMAINS"
   }
 }
