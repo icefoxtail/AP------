@@ -1,0 +1,674 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetSourceBranch": "codex/meta-foundation/middle-geometry",
+  "reviewIndex": {
+    "start": 241,
+    "end": 260,
+    "count": 20
+  },
+  "sourceOnlyFieldsRead": [
+    "content",
+    "solution"
+  ],
+  "choicesRead": false,
+  "answerFieldRead": false,
+  "existingL2L3L4CrossConceptBeforeBlindRead": false,
+  "priorReviewVerdictBeforeBlindRead": false,
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "rows": [
+    {
+      "reviewIndex": 241,
+      "questionUid": "qid_v1_4d205b9c121137d9fdbbf69a300e26294cbaa74892490dc2c4b923b92fc97074",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "9dc3a59f20678718aa1df9a7921e05064770c0f4847278a7d98d4fa83e636735"
+      },
+      "sourceFingerprint": "9dc3a59f20678718aa1df9a7921e05064770c0f4847278a7d98d4fa83e636735",
+      "primaryMethod": "diameter Thales and tangent-chord give 30-60-90 triangle, then external segment",
+      "decisiveStep": "BC=5; tangent-chord ∠BCP30; B angle120, P30; BP=BC=5",
+      "supportingConcepts": [
+        "diameter inscribed angle",
+        "tangent-chord",
+        "special right triangle",
+        "isosceles"
+      ],
+      "conditions": [
+        "AB diameter10",
+        "∠BAC30",
+        "tangent at C intersects diameter extension"
+      ],
+      "compositionPattern": "Thales→30-60-90 side→tangent-chord→triangle exterior geometry",
+      "curriculumNotes": "중등 원주각·접선·특수삼각형",
+      "sourceIssue": "P extension side from diagram.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "지름과 접현각으로 만든 30° 삼각형에서 접선교점 길이를 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "bd2eb6a72f27b0eb68d769b974681f7cbbf50897eb2beb0f318e0d341ce892c9",
+      "sourceSolutionSha256": "50e8d3a896e09535b006d8b6006c2fa403a41225a6dff812a75fe638fe019c81",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 242,
+      "questionUid": "qid_v1_4d2a3881b6936db54a92228ce62519b15a03a402eef992ff1b67f370b83c4f0e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "aa8f51c1072a7781ef70747f70a8d0b2aa6d48642ddb64a579b2728624056a66"
+      },
+      "sourceFingerprint": "aa8f51c1072a7781ef70747f70a8d0b2aa6d48642ddb64a579b2728624056a66",
+      "primaryMethod": "line slope tan angle then right triangle ratios to sin+cos",
+      "decisiveStep": "slope1/2→legs1,2,hyp√5→sin+cos=3/√5",
+      "supportingConcepts": [
+        "slope-angle tangent",
+        "trig definitions",
+        "Pythagorean"
+      ],
+      "conditions": [
+        "line equation x−2y+8=0",
+        "acute x-axis angle a"
+      ],
+      "compositionPattern": "rewrite line→slope tan→right triangle→two ratios sum",
+      "curriculumNotes": "중등 삼각비·좌표의 결합",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "직선의 기울기를 탄젠트로 읽고 삼각비 두 값을 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "574a92ccc48c0d732d2a44c1289ffe06a1f5298b9326788de740ba71879846e8",
+      "sourceSolutionSha256": "e02c7180011ff3f12d66be10a0bd3a7723584c7deba22a6f408265f394bb04ab",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 243,
+      "questionUid": "qid_v1_4e9c7f6afb10dbe7454f8508055d5ccd83d4cb7a2e2fc1e398cf262335d2964d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "cdc0386ce3c6c82294fadff6fec3df9da729245563d3059879d11150df64d0a9"
+      },
+      "sourceFingerprint": "cdc0386ce3c6c82294fadff6fec3df9da729245563d3059879d11150df64d0a9",
+      "primaryMethod": "지름 양끝 radial isosceles triangles to prove central angle is twice inscribed",
+      "decisiveStep": "AOP/ BOP base angles yield ∠AOB=2(b−a)=2x",
+      "supportingConcepts": [
+        "circumradius",
+        "isosceles triangles",
+        "central-inscribed angle",
+        "supplementary angles"
+      ],
+      "conditions": [
+        "PQ diameter",
+        "QPA=a, QPB=b",
+        "x=APB from diagram"
+      ],
+      "compositionPattern": "radii equal→base angles→center angle difference→inscribed angle difference",
+      "curriculumNotes": "중등 원주각·중심각",
+      "sourceIssue": "orientation of a,b and x shown in diagram.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "반지름 이등변삼각형의 각으로 중심각-원주각 관계를 유도한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "53bb6a8e2ee9e8edd514be5b64cf3e5df413baf7fd38d0cc28a6438fa7e6c4e7",
+      "sourceSolutionSha256": "9deb552b32fa581d5fe76a62a6f5be770d482a417f632bc2ad78e4526288b62f",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 244,
+      "questionUid": "qid_v1_4eabde697ee64aad897639aaa4e1972230512bdf73424d0268fe19c2abe25f70",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "322883f8df6125cb15eb70e87050f0bc012b28d85c1610f9cb7e3f01fedb2268"
+      },
+      "sourceFingerprint": "322883f8df6125cb15eb70e87050f0bc012b28d85c1610f9cb7e3f01fedb2268",
+      "primaryMethod": "호비 전체 360°로 arc central angle을 구해 원주각",
+      "decisiveStep": "arc BC=120°, x=60°",
+      "supportingConcepts": [
+        "arc ratio",
+        "central angle",
+        "inscribed angle"
+      ],
+      "conditions": [
+        "AB:BC:CA=3:4:5"
+      ],
+      "compositionPattern": "arc ratio sum→target arc→inscribed half",
+      "curriculumNotes": "중등 원주각·호",
+      "sourceIssue": "diagram marks angle x.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "호비에서 중심각을 구하고 원주각의 절반을 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "cdf90650e4aace4816811952aa4c45535f53d46ad8bc95f261d0280a9be70b78",
+      "sourceSolutionSha256": "67edeb42c6907b26699cb7487d6689e6ae0b34bf5bd288587ef95c6d82404144",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 245,
+      "questionUid": "qid_v1_4ed0fe0f7d3d61aac4353af889277654fbc33cb09bd3ea1284d53893983c1be0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "239d7053c1cfb316e40a17bee0e21ce0f40b1b53e0923ae9630ef0069261f65b"
+      },
+      "sourceFingerprint": "239d7053c1cfb316e40a17bee0e21ce0f40b1b53e0923ae9630ef0069261f65b",
+      "primaryMethod": "right-triangle tangent definition",
+      "decisiveStep": "tanA=BC/AB=2",
+      "supportingConcepts": [
+        "tangent definition",
+        "reference angle"
+      ],
+      "conditions": [
+        "right at B",
+        "AB1,BC2"
+      ],
+      "compositionPattern": "opposite over adjacent",
+      "curriculumNotes": "중등 삼각비 정의",
+      "sourceIssue": "side placements diagram.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "기준각의 맞은편과 인접한 변으로 탄젠트를 구한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "ce1f6d9a2d4384617e6e5992dd549cb2393e720720a0ab544b0a62a278c368d5",
+      "sourceSolutionSha256": "69d65a15f54382266a32d0d8292ab7f9c5ad626f377e15eca7b634dddecabc75",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 246,
+      "questionUid": "qid_v1_4fed26b676eeb692a532ccbe037c13db8c9e8bd611e22aef6ff093a0fd84d18d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "dbabfdc67a0c0da2261516f34d413a4bf17a233d2b5ac06b9657973f49e5c0bb"
+      },
+      "sourceFingerprint": "dbabfdc67a0c0da2261516f34d413a4bf17a233d2b5ac06b9657973f49e5c0bb",
+      "primaryMethod": "two chord perpendicular bisectors intersect at circle center",
+      "decisiveStep": "choose two chords AB,BC, intersecting perpendicular bisectors gives center",
+      "supportingConcepts": [
+        "circle chord perpendicular bisector",
+        "equidistance locus"
+      ],
+      "conditions": [
+        "draw partial arc",
+        "find center"
+      ],
+      "compositionPattern": "pick two chords→perpendicular bisectors→center→radius completes circle",
+      "curriculumNotes": "중등 원과 직선·현",
+      "sourceIssue": "construction not pre-specified; source solution explains.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "원의 중심은 서로 다른 두 현의 수직이등분선 교점이다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "ac85053736e91b282b2a0214692bb25ff5f975fa7e03bd892f8c749a4fe14de3",
+      "sourceSolutionSha256": "51f3af43126af575394888a8b02bafc65f006a4b9c35ed7003a4908b7522b68d",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 247,
+      "questionUid": "qid_v1_502a5ef0bf7ba3dceb9add250df69bf26b4882e9550976c886decb50ed6a9244",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "c9102f967cc75e7f4d0bb854659abbf9f612fcc9ea686f03b46b8d9f6a2033ef"
+      },
+      "sourceFingerprint": "c9102f967cc75e7f4d0bb854659abbf9f612fcc9ea686f03b46b8d9f6a2033ef",
+      "primaryMethod": "parallelogram midpoint congruence and area decompositions",
+      "decisiveStep": "△ABM≅△ECM; derive AM=ME; area ADE60, ADC30, ABCD60, ABMD45",
+      "supportingConcepts": [
+        "parallelogram",
+        "midpoint",
+        "triangle congruence",
+        "area ratios"
+      ],
+      "conditions": [
+        "M midpoint BC",
+        "A,M,E collinear",
+        "D,C,E collinear",
+        "[DME]=30"
+      ],
+      "compositionPattern": "parallel/midpoint→SAS congruence→midpoint alignments→area sums",
+      "curriculumNotes": "중등 평행사변형·중점·넓이",
+      "sourceIssue": "line arrangement diagram-derived.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "중점으로 만든 congruent triangles를 넓이 영역분할에 연결한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "48592d6d4567b492e81dc830fc3c52ac742984f00f54cb75222c387bd142a0eb",
+      "sourceSolutionSha256": "6f8890cb05c0e11cc3949c2a74da0452dba736b76c0bc0fdc1f83a08ef91f9ac",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 248,
+      "questionUid": "qid_v1_50420e20370de4341a6e1c32103ee9a79317b9c6274011542d5f56fee39d30c5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "25a9786fd35e1746cfe6649462630d7445efccf0e27a9154c76402dfa89ed7b9"
+      },
+      "sourceFingerprint": "25a9786fd35e1746cfe6649462630d7445efccf0e27a9154c76402dfa89ed7b9",
+      "primaryMethod": "quadrilateral diagonal split; trig heights and right-triangle side to sum areas",
+      "decisiveStep": "AH=8,BH=8,HC=12,AC=4√13; area=80+10√13",
+      "supportingConcepts": [
+        "trigonometry",
+        "right triangle",
+        "triangle area",
+        "diagonal decomposition"
+      ],
+      "conditions": [
+        "AB=8√2,BC20,CD10, angles B45°,ACD60°"
+      ],
+      "compositionPattern": "altitude projection→Pythagorean diagonal→second triangle sine area→sum",
+      "curriculumNotes": "중등 삼각비 활용·넓이",
+      "sourceIssue": "angle orientation and quadrilateral type shown.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "대각선으로 사각형을 나눈 뒤 각 삼각형의 넓이를 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "28952f552309547438fbfb61e6b42d37dbeea74db02425aba3586ef469b3ac30",
+      "sourceSolutionSha256": "559d29f5dc8d6a24a79cc72983a929cba695e3ccce7143c4afeb82335253644d",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 249,
+      "questionUid": "qid_v1_5087a11c1c5e89611439801dd7dcdf2fc30d7f1239f187c29340ca8498d58e41",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "0db743bc8a989c7e6bc116d813e7b408a217117d762ccc0cdaff8942feb0b778"
+      },
+      "sourceFingerprint": "0db743bc8a989c7e6bc116d813e7b408a217117d762ccc0cdaff8942feb0b778",
+      "primaryMethod": "intersecting chords angle and arc lengths sum to circumference to find radius",
+      "decisiveStep": "arc sum8π corresponds central160°; circumference18π; R=9",
+      "supportingConcepts": [
+        "intersecting chords",
+        "arcs",
+        "center angle",
+        "circumference"
+      ],
+      "conditions": [
+        "angle APD80°",
+        "arcs AD3π and BC5π"
+      ],
+      "compositionPattern": "interior angle→arc central sum→arc ratio to full circumference→radius",
+      "curriculumNotes": "중등 원의 각·호길이·둘레",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "교차 현각으로 호각의 합을 구해 원둘레와 반지름을 복원한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "590eb6594287c8b229706cafbf35c4fc85b2ad7150337a42e2acdf5e95d6209f",
+      "sourceSolutionSha256": "e6858ef0b09c24da5f719e717113e8118b5343f404fc1d6f2318341f3798df75",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 250,
+      "questionUid": "qid_v1_50b8b3d69a64751c91838f76b25acce8655510d66c2b1480ccf0598b3af1a373",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 10,
+        "sourceQuestionNo": "10",
+        "sourceFingerprint": "8ec8ded30a2b0f718664b32bb634165d794350d067f5c95c9dbfc45b3ddfc5ef"
+      },
+      "sourceFingerprint": "8ec8ded30a2b0f718664b32bb634165d794350d067f5c95c9dbfc45b3ddfc5ef",
+      "primaryMethod": "intersecting-chords angle chooses adjacent angle to sum opposite arcs; arc length",
+      "decisiveStep": "adjacent angle120°, arc sum240°, length4πr/3",
+      "supportingConcepts": [
+        "interior chord intersection angle",
+        "arc length",
+        "central angle"
+      ],
+      "conditions": [
+        "chords AC,BD intersection",
+        "given one angle60",
+        "radius r"
+      ],
+      "compositionPattern": "linear pair→interior angle theorem→arc sum→length proportion",
+      "curriculumNotes": "중등 원의 각·호길이",
+      "sourceIssue": "which adjacent angle sees arcs AD+BC diagram-driven.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "현 교점각을 이웃각으로 바꾸어 두 호 크기와 길이 합을 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "dcef8ae0ffc573ae548dd86bdc34c9e19ddb08260dd1af521c3be781cf79265a",
+      "sourceSolutionSha256": "c0fc746527c7c8f35eb27f5cf34849d4b580977cd2f7bfdfbfdb9da4eaab5521",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 251,
+      "questionUid": "qid_v1_51a14de06bf7de273aaa6b3fc37896007f3b73ec106d885b4eaff7d96d203b8a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "sourceQuestionNo": "18",
+        "sourceFingerprint": "444dc769808bba5ffa596382696f17adaaa1699b15418fb99c663d8fe3e1f49a"
+      },
+      "sourceFingerprint": "444dc769808bba5ffa596382696f17adaaa1699b15418fb99c663d8fe3e1f49a",
+      "primaryMethod": "nested centroid height 1/3 twice and median midpoint to area ratio",
+      "decisiveStep": "G'BD area = ABC/18; ABC=108",
+      "supportingConcepts": [
+        "nested centroids",
+        "medians",
+        "midpoint",
+        "triangle area ratio"
+      ],
+      "conditions": [
+        "G centroid ABC",
+        "G' centroid GBC",
+        "D midpoint BC",
+        "small area6"
+      ],
+      "compositionPattern": "first centroid height fraction→second fraction→half base→area ratio",
+      "curriculumNotes": "중등 무게중심·넓이비",
+      "sourceIssue": "diagram specifies D/triangle placement.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "중첩된 두 무게중심의 높이비와 중점 밑변비를 넓이에 곱한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "befc20d86e700ba25645345e9305b065183feb00587230433ce6483ae4d24fce",
+      "sourceSolutionSha256": "ae671a528f4f21b5e8daa13949966c94a34c2633e1a074fb9fbb86c3469d9940",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 252,
+      "questionUid": "qid_v1_51cc84ebcd574fe7c01c26f74510211b1842175d9cd05a83aac9ef912eba6be9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "b203a3eb7bf788bfc9c4b3b1644f3ea03a6986feda021f48b19089f9809b94d5"
+      },
+      "sourceFingerprint": "b203a3eb7bf788bfc9c4b3b1644f3ea03a6986feda021f48b19089f9809b94d5",
+      "primaryMethod": "isosceles apex angle bisector gives perpendicular bisector of base and equidistance",
+      "decisiveStep": "AD angle bisector in isosceles →AD⊥BC, BD=CD; P∈AD yields PB=PC and bisector facts",
+      "supportingConcepts": [
+        "isosceles triangle",
+        "angle bisector",
+        "perpendicular bisector",
+        "equidistance"
+      ],
+      "conditions": [
+        "AB=AC",
+        "P on AD",
+        "options include claims"
+      ],
+      "compositionPattern": "SAS symmetry→altitude/perpendicular bisector→distance/equal sides",
+      "curriculumNotes": "중등 이등변삼각형·각이등분선",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "꼭지각 이등분선이 밑변의 수직이등분선인 성질을 사용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "a82bde947b35b44a25289ebd47f8def26daa5c246dd99d45cbe086abac62d86d",
+      "sourceSolutionSha256": "d539e005e524e66d702948ed40d610d25aa38f186e17b68f6510641eae17dee5",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 253,
+      "questionUid": "qid_v1_51da12b13c9a61f7ca85495c82d0432bbcd6dfa7e6bbcf5154d2d2802b809d7b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 9,
+        "sourceQuestionNo": "9",
+        "sourceFingerprint": "ac2cd0b6071c930753081cc194a986de49e860b41f77199c59f2926bf93ccb01"
+      },
+      "sourceFingerprint": "ac2cd0b6071c930753081cc194a986de49e860b41f77199c59f2926bf93ccb01",
+      "primaryMethod": "included-angle sine area formula",
+      "decisiveStep": "½·3√2·7·sin45=21/2",
+      "supportingConcepts": [
+        "triangle area",
+        "sine",
+        "included angle"
+      ],
+      "conditions": [
+        "AB=3√2,BC7,∠B45°"
+      ],
+      "compositionPattern": "½ab sinC",
+      "curriculumNotes": "중등 삼각비·삼각형 넓이",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "두 변과 끼인각의 사인 넓이 공식을 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "66b266c04a6320221f89a1705030563b0c5028898ff52d41dd3909822ade4435",
+      "sourceSolutionSha256": "125f0edb5f0f191ce8eb9b92b6f8bfe2c52b4f96e30b84dc4872c854655026a1",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 254,
+      "questionUid": "qid_v1_52217195cbb8fd87b8eb2983352fc0fa3086d9e007e516fc9be2d365dfe6efc5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 1,
+        "sourceQuestionNo": "1",
+        "sourceFingerprint": "dafd19ee420145e17231d2b40e51d72ef8822aa08f38af4b5b008c81aac05a94"
+      },
+      "sourceFingerprint": "dafd19ee420145e17231d2b40e51d72ef8822aa08f38af4b5b008c81aac05a94",
+      "primaryMethod": "three parallel line segment proportionality across two transversals",
+      "decisiveStep": "ratio16:24=2:3; x=12,y=15,sum27",
+      "supportingConcepts": [
+        "parallel segments",
+        "proportion",
+        "linear equations"
+      ],
+      "conditions": [
+        "l,m,n parallel",
+        "intervals values from figure"
+      ],
+      "compositionPattern": "one transversal ratio→apply to other two interval pairs→sum",
+      "curriculumNotes": "중등 평행선 선분비",
+      "sourceIssue": "diagram interval arrangement.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "세 평행선의 대응 구간비를 다른 횡단선에 적용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "40dc1424eb21532eb5776574e71cc4f10eb9052c837ed67b25e047310028b328",
+      "sourceSolutionSha256": "78ccc8e7c3704f77c670233afa5e8dbed59af1e7f4df5e93e7cc7a296f506006",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 255,
+      "questionUid": "qid_v1_52dd5e39119d3c9fb18d6ea5e80aa151922c16d34276e5593ecc0d1ed49948ea",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "0a0f49a0225a009bd0fba77fecce2e0cfa9a5abb1833caf6362edba3d73ae2de"
+      },
+      "sourceFingerprint": "0a0f49a0225a009bd0fba77fecce2e0cfa9a5abb1833caf6362edba3d73ae2de",
+      "primaryMethod": "perpendicular from center bisects chord then radius Pythagorean",
+      "decisiveStep": "half chord12, center dist5, radius13",
+      "supportingConcepts": [
+        "circle chord",
+        "perpendicular bisector",
+        "Pythagorean"
+      ],
+      "conditions": [
+        "OH=5",
+        "AB=24"
+      ],
+      "compositionPattern": "half chord + center distance→hypotenuse",
+      "curriculumNotes": "중등 원과 직선·현",
+      "sourceIssue": "point H and x location diagram.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "중심에서 현에 내린 수선으로 반현을 구해 반지름을 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "c60254b06de5b242cf0184c4be0cdbe00a1374219aaf6602c7792ad2c0cc3585",
+      "sourceSolutionSha256": "3df65777447df19d92c12a29bb6bd001287aaae899df1f123dcfcdff61f998d3",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 256,
+      "questionUid": "qid_v1_533e4c26c5f02ad87d2a6988197fe9e93db53a3ddc20dc9983a4af5beb79fd96",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 2,
+        "sourceQuestionNo": "2",
+        "sourceFingerprint": "f3cd3e1ce2c6442f0d6b1a1067ec5b2510d78dd701cf1a365ac00b736768f089"
+      },
+      "sourceFingerprint": "f3cd3e1ce2c6442f0d6b1a1067ec5b2510d78dd701cf1a365ac00b736768f089",
+      "primaryMethod": "special-angle exact trig expressions compare",
+      "decisiveStep": "values √2,3,1/2,√3/2,1; maximum3",
+      "supportingConcepts": [
+        "special-angle trig",
+        "radical comparison"
+      ],
+      "conditions": [
+        "five expressions with 30°,45°,60°"
+      ],
+      "compositionPattern": "substitute exact values→order magnitudes",
+      "curriculumNotes": "중등 삼각비 특수각",
+      "sourceIssue": "options only via formula/solution.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "특수각 삼각비 값을 정확히 구해 최댓값을 비교한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "1264eb9b7ab9622642ef294742decc09a9ffa8784490ca4778ae98d31104563b",
+      "sourceSolutionSha256": "4949994a5c16cd0f78bfb8ac800e28b3c7ddf50d129aa8052b0a0bdabe56f458",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 257,
+      "questionUid": "qid_v1_535340b50cb29b21db6d369bcbfd4e81701a42c10196f5c4fe516391cc61fc02",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "00da4101b3cf32581b6d7d1d946b1b522398005cebeff908f6b46c612408d288"
+      },
+      "sourceFingerprint": "00da4101b3cf32581b6d7d1d946b1b522398005cebeff908f6b46c612408d288",
+      "primaryMethod": "coordinate distances establish right isosceles triangle then sine cosine product",
+      "decisiveStep": "AB²=AC²=13,BC²=26→A90°,B45°, sinB cosB=1/2",
+      "supportingConcepts": [
+        "coordinate distance",
+        "Pythagorean converse",
+        "isosceles",
+        "special trig"
+      ],
+      "conditions": [
+        "A(-1,-1),B(-4,1),C(1,2)"
+      ],
+      "compositionPattern": "squared distances→isosceles right→45° trig",
+      "curriculumNotes": "중등 삼각비와 좌표·피타고라스",
+      "sourceIssue": "NONE",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "좌표거리로 삼각형 유형을 확인한 뒤 45° 삼각비를 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "ae32d59251348c830abada4b7a3843f0254aa3a3f0b94f0b7b0bbdaf5000d6d2",
+      "sourceSolutionSha256": "69f6ba22f361fb6dcba89a69ac56645a3e5b21b10711703ff311dae979acbd08",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 258,
+      "questionUid": "qid_v1_5361653de294f74db3c4578552d42ffaed59e52771c7e5118e97730b854d8c70",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "da9d4d3d746efc8925f52d01cb69a315d837443ac0aaf502ef4517c1b06101a6"
+      },
+      "sourceFingerprint": "da9d4d3d746efc8925f52d01cb69a315d837443ac0aaf502ef4517c1b06101a6",
+      "primaryMethod": "incenter angle-bisected halves translated by parallel lines",
+      "decisiveStep": "angle BID? half B/C; sum yields A80°",
+      "supportingConcepts": [
+        "incenter",
+        "angle bisector",
+        "parallel alternate/corresponding angles"
+      ],
+      "conditions": [
+        "I incenter",
+        "DE∥BC",
+        "given ∠BID+∠CIE=50°"
+      ],
+      "compositionPattern": "parallel angle substitutions→half-angle sum→triangle angle sum",
+      "curriculumNotes": "중등 내심·평행선",
+      "sourceIssue": "D,E/parallel placements diagram.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "평행선과 내심 이등분각을 연결해 반각합을 사용한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "e82512ca9b107c9aad6095e28c82731a1d0f95250decdbd0bd7f2282d19ed278",
+      "sourceSolutionSha256": "c141558dbad50e7790740b24c88c81347736952415af1f5d04bfc3f497e789fd",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 259,
+      "questionUid": "qid_v1_53db40513556246bee82e8e2d41a6268023050dd427fcba4528f9e485646ed69",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/24_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 6,
+        "sourceQuestionNo": "6",
+        "sourceFingerprint": "fcbdf8ec92e1824aee169efb24547745203d3b0e8681f02435cbaa9cc017a6c4"
+      },
+      "sourceFingerprint": "fcbdf8ec92e1824aee169efb24547745203d3b0e8681f02435cbaa9cc017a6c4",
+      "primaryMethod": "right-triangle altitude creates similar angles; evaluate tangent",
+      "decisiveStep": "x=A via complementary angles; tanA=AC/BC=√3",
+      "supportingConcepts": [
+        "right-triangle altitude",
+        "angle correspondence",
+        "trig definition"
+      ],
+      "conditions": [
+        "right at C",
+        "AC3,BC6",
+        "DE⊥AB",
+        "x angle at D"
+      ],
+      "compositionPattern": "altitude angle equality→identify angle→tan ratio",
+      "curriculumNotes": "중등 삼각비 geometric derivation",
+      "sourceIssue": "D,E diagram location.",
+      "semanticConfidence": "HIGH",
+      "semanticReasonShort": "빗변고도에서 angle correspondence를 찾아 원삼각형 탄젠트를 쓴다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "4980b9a6b2db1bd1ec0079cbc389faff6b00c704cf1995c947e7bc8cf018ba96",
+      "sourceSolutionSha256": "ba68b7893c74e2c969607e0c21e3ba98e1674b4bfecc3dfbbce0906534f89c5e",
+      "choicesRead": false,
+      "answerFieldRead": false
+    },
+    {
+      "reviewIndex": 260,
+      "questionUid": "qid_v1_53ef9bf3ecbe0d5b35ecfce969e59f661f90b33356ba03e648c1f5b17b5e1efc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_금당중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "314a420a6fdc696c18251339f3d4d73b20d56348d28a7f3751ba7614394d508e"
+      },
+      "sourceFingerprint": "314a420a6fdc696c18251339f3d4d73b20d56348d28a7f3751ba7614394d508e",
+      "primaryMethod": "folded rectangle angle relation and trig heights to triangular area",
+      "decisiveStep": "triangle side/height derives BC=4√3/3; area=4√3/3",
+      "supportingConcepts": [
+        "fold reflection",
+        "trig tangent",
+        "triangle area",
+        "parallel lines"
+      ],
+      "conditions": [
+        "rectangle strip height2",
+        "crease AC=4",
+        "fold geometry"
+      ],
+      "compositionPattern": "fold/angle→right triangle lengths→base→area",
+      "curriculumNotes": "중등 삼각비·접기·넓이",
+      "sourceIssue": "folded polygon configuration diagram-specific.",
+      "semanticConfidence": "MEDIUM",
+      "semanticReasonShort": "접기 angle relation과 삼각비로 밑변·높이를 구해 넓이를 계산한다.",
+      "semanticStatus": "READY_FOR_COMPARISON",
+      "sourceContentSha256": "a864e8218252590d93458024e9a98600be1afc4f782801482d86fe0197725427",
+      "sourceSolutionSha256": "58009740ffd367671f84750e391f4f79e6eb2f2b8a3255bde36745419b21c21b",
+      "choicesRead": false,
+      "answerFieldRead": false
+    }
+  ]
+}

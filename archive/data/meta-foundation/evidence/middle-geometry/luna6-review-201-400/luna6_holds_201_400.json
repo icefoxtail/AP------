@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "range": "201-400",
+  "uniqueUidCount": 4,
+  "rows": [
+    {
+      "reviewIndex": 213,
+      "questionUid": "qid_v1_4484ddf0d81ff0a2bae5a88e95a9972eddb46b205f57ca8d56d907ff7b3b369f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/1mid/21_풍덕중_1학기_중간_중2_기출.js",
+        "sourceOrdinal": 15,
+        "sourceQuestionNo": "15",
+        "sourceFingerprint": "65d417f1fb31d5c37e85bddc3c2ba8ebad03d064940d0765a1f82a0cc3db1ffc"
+      },
+      "sourceFingerprint": "65d417f1fb31d5c37e85bddc3c2ba8ebad03d064940d0765a1f82a0cc3db1ffc",
+      "independentSemantic": {
+        "primaryMethod": "right triangle plus equal legs and perpendicular-line congruence leads angle",
+        "decisiveStep": "source solution states ∠ABC=50 although prompt specifies ∠C=90; method unclear",
+        "supportingConcepts": [
+          "right triangles",
+          "segment equality",
+          "RHS congruence",
+          "angle bisector?"
+        ],
+        "conditions": [
+          "BC=BD",
+          "AB⊥ED",
+          "question text has adjustment note",
+          "diagram F/angles"
+        ],
+        "compositionPattern": "solution claims two congruent right triangles then doubles 25°",
+        "curriculumNotes": "중등 직각삼각형·합동",
+        "sourceIssue": "CONTENT_SOLUTION_DISAGREEMENT: question says angle C=90 and refers to ∠DBF/F, while solution concludes ∠ABC=50 with unrelated geometry; hold.",
+        "semanticConfidence": "LOW",
+        "semanticReasonShort": "source content and solution conflict, so the intended primary method cannot be safely adjudicated.",
+        "semanticStatus": "REVIEW_REQUIRED",
+        "sourceContentSha256": "52222d1db1635a4ec9f2f3a23b71427dd5e069bdcf67d90d6da516e5143f92bd",
+        "sourceSolutionSha256": "58a1b79f8be5583da7e3c720c95ad7778075e9e4c2281a62a6d475e9ce91821f"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "currentTemplateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "발문은 ∠C=90°라고 하지만 solution은 ∠ABC=50°를 결론으로 삼고, 발문에 나오지 않는 F 및 25° 조건을 참조한다. content-solution 불일치로 판정을 보류한다."
+    },
+    {
+      "reviewIndex": 339,
+      "questionUid": "qid_v1_690290ce536c25bf0faaf7fc85faf8b79473bd4791ba7a06b2dbfb0a35a1ae65",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "db4edb254f1acd48f600fb7fb22ff2978496cfe2769d6d6a6534e6a92636792d"
+      },
+      "sourceFingerprint": "db4edb254f1acd48f600fb7fb22ff2978496cfe2769d6d6a6534e6a92636792d",
+      "independentSemantic": {
+        "primaryMethod": "midpoint of a segment gives two congruent right triangles",
+        "decisiveStep": "triangles AMD/BMC congruent; AD=BC=10; angle y25; x+y35",
+        "supportingConcepts": [
+          "midpoint",
+          "perpendicular",
+          "right triangle congruence",
+          "vertical angles"
+        ],
+        "conditions": [
+          "M midpoint AB",
+          "AD⊥line, BC⊥line",
+          "BC10",
+          "angle A65"
+        ],
+        "compositionPattern": "equal half base+right/vertical angles→congruence→length & angle",
+        "curriculumNotes": "중등 직각삼각형 합동·중점",
+        "sourceIssue": "line arrangement diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "중점과 두 수선을 이용해 직각삼각형을 합동시킨다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "87bdf1e08ce76166634c7fb89cf9eb4e219aad8b613a564aafebc93075eb1bfe",
+        "sourceSolutionSha256": "1c263f7771d3f7ea5fcd9effde390e64f1a3dc80412354daa1e57f84b922b50d"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "currentTemplateKey": null,
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The right-triangle congruence L3 is clear, but the available registered L4 templates cover RHS/RHA and not the source's shared midpoint/vertical-angle criterion. Hold pending an existing valid L4; do not create a key."
+    },
+    {
+      "reviewIndex": 360,
+      "questionUid": "qid_v1_6ca8bcf2f79ee7c3f082a4f52dfce141539528169d8cfbd8c4dd20036b95dde3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "sourceQuestionNo": "7",
+        "sourceFingerprint": "102b82ad32d10b72b21a4c119b0f904dd82f98f82973fdf7eaa763184804904c"
+      },
+      "sourceFingerprint": "102b82ad32d10b72b21a4c119b0f904dd82f98f82973fdf7eaa763184804904c",
+      "independentSemantic": {
+        "primaryMethod": "평행사변형 판정조건을 대각선 조각의 올바른 대응쌍과 비교",
+        "decisiveStep": "OA=OB and OC=OD cross-match different diagonals; diagonal bisection requires OA=OC and OB=OD",
+        "supportingConcepts": [
+          "parallelogram criteria",
+          "diagonal bisection",
+          "counterexample reasoning"
+        ],
+        "conditions": [
+          "O is AC∩BD",
+          "choices list candidate conditions"
+        ],
+        "compositionPattern": "classify known criteria→test diagonal pairings→reject cross-diagonal equality",
+        "curriculumNotes": "중등 평행사변형 판정",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "평행사변형 대각선 판정에서 각 대각선의 두 조각을 맞게 비교하는지 식별한다.",
+        "sourceIssue": "정답 선택지는 보기 내용에 의존하지만 핵심 판별 개념은 명확하다.",
+        "sourceContentSha256": "0682a63b2cf36513a9835c8d5b34e381d3ac8664b8a9692b92da3a01127b71ed",
+        "sourceSolutionSha256": "3a1278ec749b90d846c3dc6e5ab76d5e38740b47af5359fab8cf6f0f92b0a8b0"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_DIRECT",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "평행사변형 판정 개념은 명확하나 보기별 판정 문항에서 직접형과 proof/multi-statement L4 중 어느 골격이 더 정확한지 content+solution만으로는 확정하지 않는다. 새 키를 만들지 않고 보류한다."
+    },
+    {
+      "reviewIndex": 381,
+      "questionUid": "qid_v1_72c0c65c4562f4f08b129facdbd54539c282965850d165142d0263962be17557",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "2427f4c2843e58abbb00be598604f789f2d68256730fbbc4a5043078a4df8562"
+      },
+      "sourceFingerprint": "2427f4c2843e58abbb00be598604f789f2d68256730fbbc4a5043078a4df8562",
+      "independentSemantic": {
+        "primaryMethod": "마름모와 정사각형의 대각선 성질을 각각 적용해 각과 길이 합산",
+        "decisiveStep": "rhombus diagonals are perpendicular and bisect angles, giving x=32°; square diagonals equal and bisect, giving y=5",
+        "supportingConcepts": [
+          "rhombus diagonals",
+          "square diagonals",
+          "right triangle angle sum"
+        ],
+        "conditions": [
+          "ABCD rhombus",
+          "EFGH square",
+          "∠BCO=58°",
+          "FH=10"
+        ],
+        "compositionPattern": "special quadrilateral properties→angle from right triangle and length from equal diagonals→sum",
+        "curriculumNotes": "중등 마름모·정사각형",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "마름모·정사각형 성질은 분명하지만 마지막 x+y는 각과 길이의 합이라 단위가 맞지 않는다.",
+        "sourceIssue": "x is an angle measure while y is a length in cm, so the prompt asks for a sum of unlike units; the solution reports 37 without resolving the unit mismatch.",
+        "sourceContentSha256": "3fe9b31bd77b3a1fa810e933e5ccd935351a1aab38f90900256f4847ab655d96",
+        "sourceSolutionSha256": "051ed2a5077b9f8a0120f959a274ef926d68dad3777a1b08d3b16dd2bda1a844"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_MIDDLE_GEOMETRY_QUADRILATERAL_PROPERTIES_DIRECT",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "HOLD",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "현재 사각형 성질·직접형은 풀이 방법과 맞지만 source에서 x는 각도, y는 cm 길이여서 x+y가 단위상 정의되지 않는다. source issue를 보류로 남긴다."
+    }
+  ]
+}

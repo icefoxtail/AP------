@@ -1,0 +1,1010 @@
+{
+  "schemaVersion": 1,
+  "baseSnapshot": "12951750e4bfd6e4287ebc412309919644d046ac",
+  "targetBranch": "codex/meta-foundation/middle-geometry",
+  "scope": {
+    "inventoryStart": 301,
+    "inventoryEnd": 320,
+    "rows": 20
+  },
+  "blindnessStatus": "QUALIFIED_NONBLIND_COMPARISON",
+  "limitations": [
+    "A Notion long-term status page exposed historical work-status summaries before source semantic review; no per-item prior taxonomy values or defect verdicts were opened.",
+    "For the 601-800 scope, a post-freeze diagnostic exposed l3ReviewStatus for n=601, 688, and 715; those labels were not used in verdicts.",
+    "The current runtime route could not be verified as Luna 6; do not attribute this artifact to Luna 6 without external model-route confirmation."
+  ],
+  "metadataAuthority": {
+    "l2": "snapshot l3_semantic_final_928.json subUnitKey joined to standard-unit master labels",
+    "l3": "snapshot l3_semantic_final_928.json problemTypeKey",
+    "l4AndCrossConcept": "snapshot l4_crossconcept_semantic_ledger_working.json templateKey and crossConceptKeys",
+    "definitions": "snapshot active canonical packs/concepts plus middle-geometry candidate definitions for assigned keys; candidate status was not treated as canonical promotion"
+  },
+  "rows": [
+    {
+      "reviewIndex": 301,
+      "questionUid": "qid_v1_5d7ba86050b9338a67e36265d1f5da34d35fb92cc53ddfd000d5e2cb3a26548d",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/23_신흥중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "0c79aad7d339c72c8f18745c91aa573bc6f619830c8436494213f51c6574b242"
+      },
+      "sourceFingerprint": "0c79aad7d339c72c8f18745c91aa573bc6f619830c8436494213f51c6574b242",
+      "independentSemantic": {
+        "primaryMethod": "AA similarity from angle A equality and shared C angle to side length",
+        "decisiveStep": "AC=8; EC=4; BC:DC=2:1→BC12; BE=8",
+        "supportingConcepts": [
+          "triangle similarity",
+          "angle correspondence",
+          "segment addition"
+        ],
+        "conditions": [
+          "AD=2,DC=6,EC=4",
+          "∠A=∠DEC",
+          "D on AC etc"
+        ],
+        "compositionPattern": "whole side→AA similarity→scale ratio→subtract segment",
+        "curriculumNotes": "중등 삼각형 닮음",
+        "sourceIssue": "collinear placements implied by figure/solution.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "두 각이 같은 삼각형의 대응변비로 길이를 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "5e69721c484b335f624aa0524382ab582b9d9750e5aae628743127c6776f3a64",
+        "sourceSolutionSha256": "4b71a757ae4b8d8fb967c36f229ae2957bf3d527c9bf22446a32331acf633640"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "currentTemplateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "AA similarity from the shared angle and equal corresponding angles determines the side ratio."
+    },
+    {
+      "reviewIndex": 302,
+      "questionUid": "qid_v1_5d95b2927089be5a543ef59ae84c6542bfba1cfe6874d51cdf5608eca6e99c9b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "sourceQuestionNo": "14",
+        "sourceFingerprint": "1ca7d9f17b0cc1c53ea4d803fee09c17c6bb1a5e2a7dfc811371dc9ec046b704"
+      },
+      "sourceFingerprint": "1ca7d9f17b0cc1c53ea4d803fee09c17c6bb1a5e2a7dfc811371dc9ec046b704",
+      "independentSemantic": {
+        "primaryMethod": "등변사다리꼴 대각선 길이 같음·평행사변형으로 isosceles triangle angle",
+        "decisiveStep": "ADBE parallelogram→AE=DB; trapezoid DB=AC; triangle AEC isosceles→x43°",
+        "supportingConcepts": [
+          "isosceles trapezoid",
+          "parallelogram",
+          "equal diagonals",
+          "isosceles triangle"
+        ],
+        "conditions": [
+          "AD∥BC",
+          "AE∥DB",
+          "E on extension BC",
+          "∠ACB43 in figure"
+        ],
+        "compositionPattern": "parallel pair→parallelogram→diagonal equal→triangle base angles",
+        "curriculumNotes": "중등 사다리꼴·사각형 성질",
+        "sourceIssue": "angle value from diagram.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "등변사다리꼴 대각선과 평행사변형 성질을 등변삼각형으로 연결한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "0824fa68982e3e563ee6d7ae3322b88da70c8e743b0a47c0c98fce4b9b9d4141",
+        "sourceSolutionSha256": "fc11dc559ece6f56b1ca0255b40a0a1f25ea2dd1cd1c4099e65398b024e3c402"
+      },
+      "currentSubUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+      "currentSubUnit": "사각형의 성질",
+      "currentProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "currentTemplateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Isosceles trapezoid diagonal equality and parallelogram construction give an isosceles triangle."
+    },
+    {
+      "reviewIndex": 303,
+      "questionUid": "qid_v1_5dcb8542cf6691de45932898df65d47b17d7dfc5e47676fda9e0086721caa47b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 8,
+        "sourceQuestionNo": "8",
+        "sourceFingerprint": "000544f1b5884f565d7ea7f088ec91a3dcb8b7d46e3294008d2f9ac3b8ec3f23"
+      },
+      "sourceFingerprint": "000544f1b5884f565d7ea7f088ec91a3dcb8b7d46e3294008d2f9ac3b8ec3f23",
+      "independentSemantic": {
+        "primaryMethod": "tangent contact right triangle and special angle to tangent length",
+        "decisiveStep": "PO=r+6=2r→r6; PT=r√3=6√3",
+        "supportingConcepts": [
+          "tangent radius perpendicular",
+          "30-60-90 triangle"
+        ],
+        "conditions": [
+          "PT tangent at T",
+          "angle TPO30",
+          "PA6",
+          "P,A,O collinear"
+        ],
+        "compositionPattern": "radius-distance relation→special right triangle→tangent segment",
+        "curriculumNotes": "중등 원의 접선·삼각비",
+        "sourceIssue": "P,A,O alignment shown in figure.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "접점의 반지름 직각과 30° 삼각형으로 접선 길이를 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "00b23b0400d1ed21bdaf51aee4b916d55ee6a32c7cf15fbea9df4f9b64a74b3d",
+        "sourceSolutionSha256": "8a5696226fb5944c110902f5deb001641d657949b8f64ea2175c7faa7f3ec233"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "currentTemplateKey": "TM_TANGENCY_CONDITION",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L4"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": "TM_TANGENT_LENGTH",
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The source finds the tangent segment from an external point via a right triangle; the tangent-length template fits better than a generic tangency-condition template."
+    },
+    {
+      "reviewIndex": 304,
+      "questionUid": "qid_v1_5dd193c2b70025c981a2e926e8a36929efff680b5bb3ca1e1f4c85e9c94a99c1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "a15c88e685712a16c8375e5714a4c3948324c8e9384bd22ebdde364870b935c7"
+      },
+      "sourceFingerprint": "a15c88e685712a16c8375e5714a4c3948324c8e9384bd22ebdde364870b935c7",
+      "independentSemantic": {
+        "primaryMethod": "height from two elevation angles via two tangent right triangles",
+        "decisiveStep": "AH=4, BH=4√3; BC=4+4√3",
+        "supportingConcepts": [
+          "sine/cos",
+          "tangent",
+          "shared altitude",
+          "horizontal segment sum"
+        ],
+        "conditions": [
+          "AB=8km",
+          "B30°,C45°"
+        ],
+        "compositionPattern": "split by altitude→sin/cos projection and tan→sum horizontal parts",
+        "curriculumNotes": "중등 삼각비 활용",
+        "sourceIssue": "altitude foot relation from figure.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "수선으로 나눈 두 직각삼각형에서 삼각비로 터널 길이를 합산한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "1f168d60b03f55858e052e5611134c9e385d283b3d5c2c7bc809d64bc36496d6",
+        "sourceSolutionSha256": "df40030b800d48d5ad4bfeac56ed4810baa793186fd4118fc15f17677c8bf8a7"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "currentSubUnit": "삼각비의 활용",
+      "currentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "currentTemplateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Two elevation angles and a shared altitude form two right triangles whose horizontal spans are added."
+    },
+    {
+      "reviewIndex": 305,
+      "questionUid": "qid_v1_5deb7c5d441ef68f0cf4992c484ee0a99854f181a58053f8ce0778a1e889797b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 24,
+        "sourceQuestionNo": "24",
+        "sourceFingerprint": "6d4ccf769623c58aa7e40a6d53d14359331f48d127edbef62243d7171000e7e0"
+      },
+      "sourceFingerprint": "6d4ccf769623c58aa7e40a6d53d14359331f48d127edbef62243d7171000e7e0",
+      "independentSemantic": {
+        "primaryMethod": "depression angles to complementary tangent angles; two horizontal legs sum",
+        "decisiveStep": "AH=595, BH=830, AB=1425m",
+        "supportingConcepts": [
+          "tangent",
+          "vertical/horizontal angles",
+          "shared height",
+          "sum"
+        ],
+        "conditions": [
+          "plane height500",
+          "depression40°,31°",
+          "foot between endpoints"
+        ],
+        "compositionPattern": "complement angles→tan distances→add sides",
+        "curriculumNotes": "중등 삼각비 활용",
+        "sourceIssue": "the perpendicular foot lies between endpoints, diagram explicitly.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "내려다본각의 여각으로 두 수평거리를 구해 합한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "77780fd7dafc0a2973caf5568ab34181e654a7f88129cf15e8a64d35fc8f54ec",
+        "sourceSolutionSha256": "a6fb5d86e8da1709c823ef624d8b005e1f873083e4c23e55349e8e30a61d8f8f"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "currentSubUnit": "삼각비의 활용",
+      "currentProblemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "currentTemplateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Complementary depression angles become tangent ratios to two horizontal distances and a common height."
+    },
+    {
+      "reviewIndex": 306,
+      "questionUid": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "sourceQuestionNo": "22",
+        "sourceFingerprint": "f773f9d3433705dae77a43c4da95b42f5ca7672476147d158cbdaba043ebab7d"
+      },
+      "sourceFingerprint": "f773f9d3433705dae77a43c4da95b42f5ca7672476147d158cbdaba043ebab7d",
+      "independentSemantic": {
+        "primaryMethod": "rectangle diagonal midpoint perpendicular and AA similar triangles to EO",
+        "decisiveStep": "BO=DO=5; △DOE~△BCD ratio5:8; EO=15/4",
+        "supportingConcepts": [
+          "rectangle",
+          "diagonal midpoint",
+          "perpendicular",
+          "AA similarity"
+        ],
+        "conditions": [
+          "BD diagonal midpoint O",
+          "EF⊥BD",
+          "BC8,CD6"
+        ],
+        "compositionPattern": "rectangles/parallel sides→right angles and corresponding angles→similarity ratio",
+        "curriculumNotes": "중등 닮음·직사각형",
+        "sourceIssue": "line intersections and side orientation explicit construction.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "대각선 중점의 수직선과 직사각형 평행변으로 닮음을 세운다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "a6686da956e2a57cf64046fd33ea9207cd48c216b1d7255d4f0431f12ca7cc35",
+        "sourceSolutionSha256": "6d5546a62d42d8db1249bf16ab1acbc181c428480815a5f428563687b0504f0a"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "currentTemplateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Rectangle diagonal midpoint and parallel sides establish AA similarity and a length ratio."
+    },
+    {
+      "reviewIndex": 307,
+      "questionUid": "qid_v1_5e5840987d17f6e1a705c4780971fc106bc33ae82c4f65c596a0a7de38aacab4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_왕운중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "fdc2263e56c0e0ce187b37fc63e277c89740b4aaf7f62a94b89595a51c8ef51e"
+      },
+      "sourceFingerprint": "fdc2263e56c0e0ce187b37fc63e277c89740b4aaf7f62a94b89595a51c8ef51e",
+      "independentSemantic": {
+        "primaryMethod": "Pythagorean trig identity and positive square root for cos→sin",
+        "decisiveStep": "sinA=√(1−4/25)=√21/5",
+        "supportingConcepts": [
+          "sine/cosine identity",
+          "acute angle sign"
+        ],
+        "conditions": [
+          "cosA=2/5",
+          "A acute"
+        ],
+        "compositionPattern": "identity→positive root",
+        "curriculumNotes": "중등 삼각비의 기본 관계",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "예각 조건에서 피타고라스 삼각비 항등식을 사용한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "081b5d44182005169c76e3e549872d3935f0e542c389666412c7804701025382",
+        "sourceSolutionSha256": "9b8cdaf518bb62d826c46c83054868ca2876335ef6c9b4cea5d8c997a3f1d12c"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO",
+      "currentSubUnit": "삼각비",
+      "currentProblemTypeKey": "PT_TRIG_RATIO",
+      "currentTemplateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Trigonometric absolute values are resolved by angle-range signs and simplified algebraically."
+    },
+    {
+      "reviewIndex": 308,
+      "questionUid": "qid_v1_5e62895e0ca54b43c240c36ac94565a29ab013e0a32ff7111223237232c3c08f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "63955434941c8d3cc36df665a4858ee22df1c43855b951d28b8be1954c4c639d"
+      },
+      "sourceFingerprint": "63955434941c8d3cc36df665a4858ee22df1c43855b951d28b8be1954c4c639d",
+      "independentSemantic": {
+        "primaryMethod": "semicircle tangent lengths and diameter to perimeter",
+        "decisiveStep": "AB=10; AD+BC=DC=14; perimeter38",
+        "supportingConcepts": [
+          "tangent equal lengths",
+          "semicircle diameter",
+          "perimeter"
+        ],
+        "conditions": [
+          "radius5",
+          "sides AD,BC,CD tangent",
+          "A,B,E contacts"
+        ],
+        "compositionPattern": "equal tangents→sum side portions→perimeter",
+        "curriculumNotes": "중등 원의 접선·사각형",
+        "sourceIssue": "contact ordering from diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "접선 길이의 등식으로 사각형 변의 합을 바꿔 계산한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "94236a9a594530c580a9de6151719596a7a706c480a4190174d1e71a02cbe5db",
+        "sourceSolutionSha256": "633f4ea74e939b4e2c6f4420d46293dcca40592b928375dd9d67a441c900d3b4"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "currentTemplateKey": "TM_TANGENT_LENGTH",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Three tangents on a semicircle relate side pieces to the diameter and perimeter."
+    },
+    {
+      "reviewIndex": 309,
+      "questionUid": "qid_v1_5eb43a7628af75cee63c1bd9bc16bfd89d40b6bb9287ec1e8e8b93ddf6b3db7f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 12,
+        "sourceQuestionNo": "12",
+        "sourceFingerprint": "4400d0ba45d17ed7cb6aa35b4199ff2e181bd16b951e307c78d830870cb9fe96"
+      },
+      "sourceFingerprint": "4400d0ba45d17ed7cb6aa35b4199ff2e181bd16b951e307c78d830870cb9fe96",
+      "independentSemantic": {
+        "primaryMethod": "inscribed angle to central angle then chord midpoint right triangle and arc length",
+        "decisiveStep": "central120°, radius4, arc length8π/3",
+        "supportingConcepts": [
+          "inscribed angle",
+          "central angle",
+          "chord perpendicular bisector",
+          "arc length"
+        ],
+        "conditions": [
+          "OM2",
+          "∠ACB60",
+          "arc AB requested"
+        ],
+        "compositionPattern": "inscribed→central→radius via perpendicular foot→circumference fraction",
+        "curriculumNotes": "중등 원주각·호 길이",
+        "sourceIssue": "center-foot geometry diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "원주각으로 중심각을 구한 뒤 반지름과 호길이를 산출한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "a490c65600fd223c103aafe7bb0739caf63578506c13962edec91ad0df0ed05f",
+        "sourceSolutionSha256": "2e2c64ab2f35f049a95a6dea91a001d3f6c4884567f4dfb0ec412d4f6712034f"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "currentTemplateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "currentCrossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      "reason": "The source uses arc-length/central-angle proportionality and a center angle, not a perpendicular-bisector concept; inscribed-angle is already part of the circle-angle Primary."
+    },
+    {
+      "reviewIndex": 310,
+      "questionUid": "qid_v1_5eb8dbd83cafc680a355b2050a09acb6b2b25ebd6b4c2c84a8365b79acb944d2",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "837ff49eead2071dba616a946ecba849fc0c52bcfba7b283bc6c2d9b1a1c7e49"
+      },
+      "sourceFingerprint": "837ff49eead2071dba616a946ecba849fc0c52bcfba7b283bc6c2d9b1a1c7e49",
+      "independentSemantic": {
+        "primaryMethod": "tan side ratio and cosine of 3-4-5 triangle",
+        "decisiveStep": "legs4,3,hyp5; cosA=3/5",
+        "supportingConcepts": [
+          "tangent",
+          "Pythagorean",
+          "cosine"
+        ],
+        "conditions": [
+          "tanA=4/3",
+          "A acute"
+        ],
+        "compositionPattern": "tan→side ratio→hypotenuse→adjacent/hypotenuse",
+        "curriculumNotes": "중등 삼각비 기본 관계",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "탄젠트가 정한 변비로 빗변을 구해 코사인을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "d8063efa35286653f7ce75a46fd5250b32a1e68faa08d64e8502f02abdf34e7a",
+        "sourceSolutionSha256": "999d00e1c1eefdb5699103df0143b4a1547af96d61f2c974784f91c542cf4143"
+      },
+      "currentSubUnitKey": "M3-05-TRIG_RATIO",
+      "currentSubUnit": "삼각비",
+      "currentProblemTypeKey": "PT_TRIG_RATIO",
+      "currentTemplateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "currentCrossConceptKeys": [
+        "CC_PYTHAGOREAN"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Tangent sets a side ratio and Pythagorean gives the hypotenuse before cosine."
+    },
+    {
+      "reviewIndex": 311,
+      "questionUid": "qid_v1_5fb92573cd4fad31d895058a13c357324a46674f19b1579073e7c9b8806136bc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "4c84fc68087293fd168e7993ee0b5e857471c5bd211a6cacfcebf367b083b4b6"
+      },
+      "sourceFingerprint": "4c84fc68087293fd168e7993ee0b5e857471c5bd211a6cacfcebf367b083b4b6",
+      "independentSemantic": {
+        "primaryMethod": "always-similar classification from invariance of shape ratios",
+        "decisiveStep": "square is fixed all 90°/equal sides, others vary shape; only squares always similar",
+        "supportingConcepts": [
+          "similarity",
+          "quadrilateral properties"
+        ],
+        "conditions": [
+          "list includes cuboid, rhombus, cone, isosceles triangles, square"
+        ],
+        "compositionPattern": "test whether shape degrees of freedom alter ratios/angles",
+        "curriculumNotes": "중등 닮은 도형",
+        "sourceIssue": "option shapes are specified in solution.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "크기만 달라지고 형태가 고정된 정사각형 쌍을 찾는다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "0a6bfd34198de85dd49f8d79fc23f50b585911323e18e1f5d75de6605062e456",
+        "sourceSolutionSha256": "5ba87e26f40f86129715109f1583f5d7f6a763457aa901c72a48c59d45a461c9"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "currentTemplateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The question tests which families retain one shape under scaling, matching similar-figure classification."
+    },
+    {
+      "reviewIndex": 312,
+      "questionUid": "qid_v1_5fc909a0e4dbe66fa6964f5220c5f973e5bc2229660b1f1a8adb9536537353dd",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "3953ead50dd974662ac69acec4112cf0be25376ea6851955bd270c562bc70e51"
+      },
+      "sourceFingerprint": "3953ead50dd974662ac69acec4112cf0be25376ea6851955bd270c562bc70e51",
+      "independentSemantic": {
+        "primaryMethod": "folded rectangle right triangle projection and circle radius to area",
+        "decisiveStep": "radius4.5; tangent-direction length2√2; area 8√2",
+        "supportingConcepts": [
+          "diameter",
+          "tangent perpendicular",
+          "Pythagorean",
+          "triangle area"
+        ],
+        "conditions": [
+          "AB diameter9",
+          "T tangent",
+          "AH foot on CT",
+          "diagram AH8"
+        ],
+        "compositionPattern": "radius→parallel distance difference→right triangle segment→½ base height",
+        "curriculumNotes": "중등 원·삼각형 넓이",
+        "sourceIssue": "AH and point arrangement are diagram-only.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "반지름 직각과 현 길이에서 삼각형 밑변을 구해 넓이를 낸다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "8cdc5014e9d55858196935a9698500efa9463c2ca9464c45188e12247beabcd9",
+        "sourceSolutionSha256": "fb00d293eaacfec6b34019365c6ff407f448569e9761f8c6d52c04486e4c8207"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "currentTemplateKey": "TM_TANGENCY_CONDITION",
+      "currentCrossConceptKeys": [
+        "CC_PYTHAGOREAN",
+        "CC_TRIANGLE_AREA"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L4"
+      ],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": "TM_TANGENT_LENGTH",
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Equal tangent segments are used to determine the right-triangle side and area; tangent-length template is more precise than tangency condition."
+    },
+    {
+      "reviewIndex": 313,
+      "questionUid": "qid_v1_60bbe428780c7a29cbb9d7eadaca8c51c14947e59328186e74c10641f7bf8ea5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "sourceQuestionNo": "4",
+        "sourceFingerprint": "f5974e977fd0a004d447cb256c1720e5ccc5b2510f2645c41c2d79724579a0ee"
+      },
+      "sourceFingerprint": "f5974e977fd0a004d447cb256c1720e5ccc5b2510f2645c41c2d79724579a0ee",
+      "independentSemantic": {
+        "primaryMethod": "circumcenter equal radii and inscribed-central angle for x+y",
+        "decisiveStep": "OB=3; central90, base angle45; x+y48",
+        "supportingConcepts": [
+          "circumcenter",
+          "equal radii",
+          "inscribed/central angle"
+        ],
+        "conditions": [
+          "OA3",
+          "O circumcenter",
+          "∠OBC30,∠ACB45"
+        ],
+        "compositionPattern": "radius equality→center triangle→central double→base angle",
+        "curriculumNotes": "중등 삼각형 외심·원주각",
+        "sourceIssue": "NONE",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "외심의 반지름과 원주각의 중심각 배수로 값을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "01bbda16236c81679fe0837de90450981e7ee1645309bba51b82fa58dc5ce56f",
+        "sourceSolutionSha256": "403c95e529cb01307ccb9cb55867069ca60da8bfd397dbcc636efb87ae0789e4"
+      },
+      "currentSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "currentSubUnit": "삼각형의 성질",
+      "currentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "currentTemplateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "currentCrossConceptKeys": [
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Circumcenter radii create isosceles triangles and an inscribed-central angle relationship; the inscribed-angle CrossConcept is supplementary."
+    },
+    {
+      "reviewIndex": 314,
+      "questionUid": "qid_v1_60e849c70212bf92c4e6e75aefdc9e46de9f226c91d18cb46e1f6a734f0de967",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 3,
+        "sourceQuestionNo": "3",
+        "sourceFingerprint": "611f1b28b37debbe6571474d0afd76cd422ca68674a0a01fb1ac550718c0c9ba"
+      },
+      "sourceFingerprint": "611f1b28b37debbe6571474d0afd76cd422ca68674a0a01fb1ac550718c0c9ba",
+      "independentSemantic": {
+        "primaryMethod": "AA similarity using equal corresponding angles to solve side segment",
+        "decisiveStep": "△ABD~△ACB; AC=12; CD=9",
+        "supportingConcepts": [
+          "triangle similarity",
+          "equal angles",
+          "segment subtraction"
+        ],
+        "conditions": [
+          "∠ABD=∠C",
+          "common ∠A",
+          "AB6,AD3"
+        ],
+        "compositionPattern": "angle pair→AA similarity→corresponding ratio→whole minus part",
+        "curriculumNotes": "중등 삼각형 닮음",
+        "sourceIssue": "D on AC inferred from diagram/content.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "두 각의 일치로 닮음을 세우고 대응변비를 사용한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "7460a8b8ab33ffe929256d0ccc39ccbcebc99438191de3b302c9bb9f28ecea1c",
+        "sourceSolutionSha256": "00ca130cddbfd2cdde94fd4b96f4dbb1bbcbe0d110ad216ce0af53fb87a69d6e"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "currentTemplateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The included angle and matching side ratios establish AA/SAS similarity as classified."
+    },
+    {
+      "reviewIndex": 315,
+      "questionUid": "qid_v1_613e50e6ae0e3974bb02b71a644360feaacedbd8d055e75fa6822905d52ba6e1",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 23,
+        "sourceQuestionNo": "23",
+        "sourceFingerprint": "989be0a9ad6095e057d4679740551d91f96e51ee7868f74c3d75f4460252f51b"
+      },
+      "sourceFingerprint": "989be0a9ad6095e057d4679740551d91f96e51ee7868f74c3d75f4460252f51b",
+      "independentSemantic": {
+        "primaryMethod": "center of damaged circle as intersection of two chord perpendicular bisectors",
+        "decisiveStep": "two distinct chords→two perpendicular bisectors intersect at center",
+        "supportingConcepts": [
+          "circle",
+          "chord perpendicular bisector",
+          "locus equidistance"
+        ],
+        "conditions": [
+          "broken circular plate has arc pieces"
+        ],
+        "compositionPattern": "choose arc points→draw chords→perpendicular bisectors→intersection",
+        "curriculumNotes": "중등 원의 중심·현",
+        "sourceIssue": "none.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "두 현의 수직이등분선 교점으로 원의 중심을 찾는다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "a22f23f86ff8b34398ffc6e94a2a6a5cb024f1260abb063df42e156725eae5d7",
+        "sourceSolutionSha256": "2acfd9225e3f89d213ea8d6428a22ba3782569b7d65ad611611960b1c2f8a006"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "currentTemplateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L2"
+      ],
+      "recommendedSubUnitKey": "M3-06-CIRCLE_LINE",
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Finding the center of a broken circle uses two chord perpendicular bisectors, a circle-and-line topic, rather than the inscribed-angle subunit."
+    },
+    {
+      "reviewIndex": 316,
+      "questionUid": "qid_v1_6146d6b88882a908bccf959f17c3843fe39912f48f8d61eebf2586af3fc1b427",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 19,
+        "sourceQuestionNo": "19",
+        "sourceFingerprint": "4251a03efe7f7fca151eca93d769bc1a37871b3d6a77d196b87ce5452791e4ad"
+      },
+      "sourceFingerprint": "4251a03efe7f7fca151eca93d769bc1a37871b3d6a77d196b87ce5452791e4ad",
+      "independentSemantic": {
+        "primaryMethod": "circle angle proof uses cyclic quadrilateral, tangent-chord and diameter",
+        "decisiveStep": "relate x and y through cyclic quadrilateral/tangent angles",
+        "supportingConcepts": [
+          "two circles",
+          "tangent-chord",
+          "diameter",
+          "cyclic quadrilateral",
+          "angle chasing"
+        ],
+        "conditions": [
+          "BC diameter",
+          "PT tangent at T",
+          "small/large circles",
+          "quadrilateral THBD cyclic"
+        ],
+        "compositionPattern": "cyclic opposite angles→tangent-chord→diameter right angle→linear equations",
+        "curriculumNotes": "중등 원의 접선·원주각",
+        "sourceIssue": "multiple circle incidence from figure.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "두 원의 접선과 내접사각형, 지름 각 관계를 연쇄한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "c8aa5152480b911347b70f3e9940d32cc1d1ed23ab25c20e40ecf0d44c09061f",
+        "sourceSolutionSha256": "b7a150e6c282c01f71c389546a10f8e40e437321acb82bcb4979855829c09f2b"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "currentSubUnit": "원주각",
+      "currentProblemTypeKey": "PT_TWO_CIRCLES",
+      "currentTemplateKey": "TM_TWO_CIRCLES_COMMON_TANGENT",
+      "currentCrossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_DIAMETER"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The solution combines two-circle tangency, diameter, cyclic angles, and tangent-chord relations; current keys cover the main configuration and secondary concepts."
+    },
+    {
+      "reviewIndex": 317,
+      "questionUid": "qid_v1_6156ed8395ca83e7cf028b580468717996b8a899ed9a2f4fd935e1eb46f868fc",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2final/22_향림중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 21,
+        "sourceQuestionNo": "21",
+        "sourceFingerprint": "af657d52d3a02816ea65c670d47623e7fafb43270b3c2dce452a496d8c75e2bd"
+      },
+      "sourceFingerprint": "af657d52d3a02816ea65c670d47623e7fafb43270b3c2dce452a496d8c75e2bd",
+      "independentSemantic": {
+        "primaryMethod": "incircle tangent equality and right triangle perimeter to inradius/circumference",
+        "decisiveStep": "legs3,4,5; inradius1; circumference2π",
+        "supportingConcepts": [
+          "incircle",
+          "tangent lengths",
+          "Pythagorean",
+          "semiperimeter/inradius"
+        ],
+        "conditions": [
+          "right triangle B90",
+          "AF2,CF3",
+          "tangent points D,E,F"
+        ],
+        "compositionPattern": "tangent equalities→side equations→Pythagorean→r→circumference",
+        "curriculumNotes": "중등 내심·접선",
+        "sourceIssue": "contact positions in diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "접선 길이와 피타고라스로 직각삼각형 내접반지름을 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "eb887e9f07e195e3bc0eb632dc7038c54107043a70f6794986a246532ac68d0f",
+        "sourceSolutionSha256": "653f06cfe2bc539038f54b8b9738053f7736db2f1657ee54753a6af0a63c921a"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_TRIANGLE_CENTERS",
+      "currentTemplateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "currentCrossConceptKeys": [
+        "CC_TANGENCY",
+        "CC_PYTHAGOREAN"
+      ],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L2"
+      ],
+      "recommendedSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The target is the inradius/circumference of a right triangle incircle using tangent lengths and Pythagorean; triangle properties is the appropriate subunit."
+    },
+    {
+      "reviewIndex": 318,
+      "questionUid": "qid_v1_62838ae36c190edab501d68ec5a6418356618896240fc1a2eac576fea187452f",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 5,
+        "sourceQuestionNo": "5",
+        "sourceFingerprint": "fe9540f9f2c95183c29cf89892edb887c02d298d4aa8f40023de85c2c0dcd599"
+      },
+      "sourceFingerprint": "fe9540f9f2c95183c29cf89892edb887c02d298d4aa8f40023de85c2c0dcd599",
+      "independentSemantic": {
+        "primaryMethod": "trapezoid diagonals intersection ratio and AA similarity to parallel segment",
+        "decisiveStep": "AP:PC=1:2; triangle CPQ~CAD; PQ=8/3",
+        "supportingConcepts": [
+          "trapezoid",
+          "diagonal ratio",
+          "parallel segment",
+          "triangle similarity"
+        ],
+        "conditions": [
+          "AD4,BC8",
+          "P diagonals intersection",
+          "PQ∥AD"
+        ],
+        "compositionPattern": "diagonal intersection base ratio→similarity scale→length",
+        "curriculumNotes": "중등 사다리꼴·평행선 선분비",
+        "sourceIssue": "Q line intersection layout diagram.",
+        "semanticConfidence": "HIGH",
+        "semanticReasonShort": "사다리꼴 대각선 교점 비와 닮음을 연결한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "12543663b4e3630aac314146cad70f08484ffcdb23e7cde207fb54c27843ba7b",
+        "sourceSolutionSha256": "6deb996a43f28d7dcf37e66ad3726570aad29e6712234d7a006fca421d17dbe5"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "currentTemplateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L2"
+      ],
+      "recommendedSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "The trapezoid diagonal intersection and base ratio determine PQ; the parallel-length-ratio subunit matches this segment-ratio method."
+    },
+    {
+      "reviewIndex": 319,
+      "questionUid": "qid_v1_62a0312d26282ef5b5060d609ff9cf383686000a79c24a7e80c67a01b612809e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m3/2mid/25_신흥중_2학기_중간_중3_수학.js",
+        "sourceOrdinal": 20,
+        "sourceQuestionNo": "20",
+        "sourceFingerprint": "2772a3b417f68ccc2c37f389340101ea61e07876d35c5955f3622b7998f55b8c"
+      },
+      "sourceFingerprint": "2772a3b417f68ccc2c37f389340101ea61e07876d35c5955f3622b7998f55b8c",
+      "independentSemantic": {
+        "primaryMethod": "tangent equal lengths and parallel cross-section ratio to CF",
+        "decisiveStep": "DC=3, CE=9; (x−3)/(9−x)=1/3→x=4.5",
+        "supportingConcepts": [
+          "tangent segments",
+          "parallel lines",
+          "proportional division"
+        ],
+        "conditions": [
+          "semicircle tangents DA,BC,CD",
+          "contact A,B,E",
+          "three parallel tangents"
+        ],
+        "compositionPattern": "tangent equality→segment ratio among parallel lines→solve",
+        "curriculumNotes": "중등 원 접선·평행선 선분비",
+        "sourceIssue": "line arrangement and distances from diagram.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "접선 등식과 세 평행선 사이 선분비를 결합한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "c51955ff6bafb6d2bf81086a05fd4561a05a7a59757e2dbd1c44c90349ba037e",
+        "sourceSolutionSha256": "8d99730944adf1a11d31752b8d760f54c0d0bd54aa25c45b70b9ccd0f59c1613"
+      },
+      "currentSubUnitKey": "M3-06-CIRCLE_LINE",
+      "currentSubUnit": "원과 직선",
+      "currentProblemTypeKey": "PT_CIRCLE_TANGENT",
+      "currentTemplateKey": "TM_TANGENT_LENGTH",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "MATCH",
+      "defectFields": [],
+      "recommendedSubUnitKey": null,
+      "recommendedProblemTypeKey": null,
+      "recommendedTemplateKey": null,
+      "addCrossConceptKeys": [],
+      "removeCrossConceptKeys": [],
+      "reason": "Same-point tangent lengths and parallel-line segment ratios yield CF."
+    },
+    {
+      "reviewIndex": 320,
+      "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+        "sourceOrdinal": 13,
+        "sourceQuestionNo": "13",
+        "sourceFingerprint": "0fa760783449195c173ab12d38665ce30f71e62e6a64a53f747bdc9039b11504"
+      },
+      "sourceFingerprint": "0fa760783449195c173ab12d38665ce30f71e62e6a64a53f747bdc9039b11504",
+      "independentSemantic": {
+        "primaryMethod": "centroid median midpoints plus parallel similarity and area ratios",
+        "decisiveStep": "D,E midpoints; CF/CA=1/4; CD/CB=1/2; area ratio1/8",
+        "supportingConcepts": [
+          "centroid",
+          "midpoint",
+          "parallel",
+          "similarity",
+          "triangle area"
+        ],
+        "conditions": [
+          "G centroid",
+          "D,E derived medians",
+          "DF∥BE",
+          "[FDC]8"
+        ],
+        "compositionPattern": "centroid→two midpoints→AA similarity→base-height area ratio",
+        "curriculumNotes": "중등 무게중심·닮음·넓이비",
+        "sourceIssue": "figure determines incidence structure.",
+        "semanticConfidence": "MEDIUM",
+        "semanticReasonShort": "중점과 평행선 닮음비를 무게중심으로부터 얻어 넓이비를 구한다.",
+        "semanticStatus": "READY_FOR_COMPARISON",
+        "sourceContentSha256": "7955d8fe04a676748764cc24dd1894d3a1f2917c57458330d802e81726fc453b",
+        "sourceSolutionSha256": "1a08fc2489e0990b828049845694ccf088a3216ff977726805b5344673afc2ff"
+      },
+      "currentSubUnitKey": "M2-06-SIMILAR_FIGURE",
+      "currentSubUnit": "도형의 닮음",
+      "currentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "currentTemplateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+      "currentCrossConceptKeys": [],
+      "l4RecordPresent": true,
+      "verdict": "DEFECT",
+      "defectFields": [
+        "L2",
+        "L3",
+        "L4",
+        "CrossConcept"
+      ],
+      "recommendedSubUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "recommendedProblemTypeKey": "PT_COORD_CENTROID",
+      "recommendedTemplateKey": "TPL_CENTROID_APPLICATION",
+      "addCrossConceptKeys": [
+        "CC_MIDPOINT",
+        "CC_TRIANGLE_AREA"
+      ],
+      "removeCrossConceptKeys": [],
+      "reason": "The centroid medians establish midpoints and area ratios; similar-figure taxonomy is incorrect. Centroid is primary and midpoint/triangle area are supporting concepts."
+    }
+  ]
+}
