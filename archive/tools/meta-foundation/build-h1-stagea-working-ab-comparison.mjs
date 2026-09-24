@@ -82,6 +82,13 @@ const label = value => typeof value === 'string' ? value : value?.key ?? value?.
 const sourceIssueLabel = value => {
   const raw = label(value);
   if (['CLEAR', 'NO_ISSUE', 'OK', 'PASS'].includes(raw) || raw?.startsWith('UPSTREAM_L')) return 'NONE';
+  if (['SOLUTION_GENERIC_FILLER', 'SOLUTION_PLACEHOLDER', 'SOLUTION_BLOCKER',
+    'SOLUTION_WRONG_ITEM', 'SOLUTION_TOPIC_MISMATCH', 'SOLUTION_NOT_ITEM_SPECIFIC',
+    'SOLUTION_GENERIC_NO_MATH'].includes(raw)) return 'SOLUTION_BLOCKER';
+  if (['SOLUTION_INTERMEDIATE_TYPO', 'SOLUTION_IMAGINARY_UNIT_TRANSCRIPTION',
+    'NONBLOCKING_SOLUTION_TYPO'].includes(raw)) return 'SOLUTION_MINOR_TYPO';
+  if (['MINOR_EDITORIAL', 'MINOR_TEXT_ONLY', 'MINOR'].includes(raw)) return 'MINOR_EDITORIAL';
+  if (['SOLUTION_PROOF_GAP', 'SOLUTION_REASON_GAP', 'NONBLOCKING_SOLUTION_GAP'].includes(raw)) return 'SOLUTION_REASON_GAP';
   return raw;
 };
 function normalized(record) {
