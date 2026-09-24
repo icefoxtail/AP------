@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 319,
+  "questionUid": "qid_v1_0c5833123f1079571aac3b4cdb5345b8d379b6aaef99e92603407505529960ee",
+  "sourceIdentity": "original/high/h1/1final/23_순천여고_1학기_기말_고1_기출.js#23",
+  "sourceFingerprint": "f87467ee46cc831e35ba08943c38716470fabbb5cdc315b0f5b7ce35d6816160",
+  "sourceQuestionAudit": "source-evidence/D-q319-question-only/physical-ledger.json and source-q23-figure-detail.png: the JS stem and graph match the original printed question after heading/score restoration.",
+  "field": "sourceIssue",
+  "value": "NONBLOCKING_SOURCE_LABEL_MISMATCH",
+  "sourceAndVisualEvidence": "The stem lists the upward parabola y=x²/3+1 first and the downward parabola y=−(x−2)²+5 second, then says their x=t intersection points are respectively P and Q. The original graph labels the upper/downward point P and lower/upward point Q, reversing that respectively assignment.",
+  "mathematicalImpact": "For 0<t<3, |PQ| is the difference between the two graph values. Splitting quadrilateral PAQB along PQ gives area (1/2)|PQ|t+(1/2)|PQ|(3−t)=(3/2)|PQ|=−2t²+6t, regardless of which endpoint is called P. Its maximum is 9/2 at t=3/2, matching the answer.",
+  "reason": "A and C independently noticed the same P/Q order mismatch; B did not flag it. The mismatch is printed in the original question and reproduced in JS, so it is not a source-exact restoration opportunity. It is a nonblocking editorial/source note because swapping the two labels leaves the requested area extremum unchanged. Keep review PASS with this note; any student-facing correction belongs to a separate correction protocol rather than an inferred source edit.",
+  "reviewStatus": "PASS_WITH_SOURCE_NOTE",
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

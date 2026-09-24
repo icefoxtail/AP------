@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "conditions",
+  "value": ["COND_INTEGER", "COND_RANGE"],
+  "items": [
+    {
+      "queueIndex": 993,
+      "questionUid": "qid_v1_6b1148f350150d850bb714b587db1de7eff39ca94e2247cebdd5f87129fa8233",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#23",
+      "sourceFingerprint": "a288ed4203096a76014915d241e779c78ac03c88c319fafb746a236b9ad1bbb9",
+      "reason": "The stem explicitly restricts a,b,c to integers and to 0≤a≤4, 0≤b≤6, 1≤c≤7. Both discreteness and those finite bounds determine the 5×7×7 universe and the inclusion-exclusion intersections. The product (a−b)(b−c)(c−2a)≠0 encodes excluded equality relations, which are the primary combinatorial structure; it is not a separate nonzero restriction on an independent value to tag as COND_NONZERO."
+    },
+    {
+      "queueIndex": 1005,
+      "questionUid": "qid_v1_1be53fccbc8552586f97edfc81a9f62780c5d3944c7b63ba51ffa68931a9175a",
+      "sourceIdentity": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js#15",
+      "sourceFingerprint": "d9b523275d74e5ec130edae308e70e7ab59321bd7b26dcbc47564e632b81593a",
+      "reason": "The stem explicitly gives three integer digits with bounds 0≤a≤4, 0≤b≤5, 1≤c≤6. Integer status and finite ranges make the 5×6×6 universe and its inclusion-exclusion counts finite. The condition (a−b)(b−c)(c−a)≠0 is the pairwise-distinct selection rule itself; a separate COND_NONZERO would duplicate that structural exclusion rather than record an independent zero-avoidance condition."
+    }
+  ],
+  "newConditionKey": false,
+  "finality": "WORKING_NOT_FINAL"
+}

@@ -47,6 +47,35 @@ const inequalityCcDedup = JSON.parse(fs.readFileSync(path.join(dir, inequalityCc
 const inequalityCcDedupByQueue = new Map(inequalityCcDedup.items.map(item => [item.queueIndex, item]));
 const q307NonbindingFile = 'H1_SOL_Q307_NONBINDING_ABSOLUTE_INTERVAL.json';
 const q307Nonbinding = JSON.parse(fs.readFileSync(path.join(dir, q307NonbindingFile), 'utf8'));
+const derivedConditionFile = 'H1_SOL_COND_DERIVED_OR_STRUCTURAL_NOT_CORE_3.json';
+const derivedCondition = JSON.parse(fs.readFileSync(path.join(dir, derivedConditionFile), 'utf8'));
+const derivedConditionByQueue = new Map(derivedCondition.items.map(item => [item.queueIndex, item]));
+const q620RepeatedRootFile = 'H1_SOL_Q620_REPEATED_ROOT_AMBIGUITY.json';
+const q620RepeatedRoot = JSON.parse(fs.readFileSync(path.join(dir, q620RepeatedRootFile), 'utf8'));
+const primaryOnlyIpFile = 'H1_SOL_IP_PRIMARY_ONLY_Q264_Q886.json';
+const primaryOnlyIp = JSON.parse(fs.readFileSync(path.join(dir, primaryOnlyIpFile), 'utf8'));
+const primaryOnlyIpByQueue = new Map(primaryOnlyIp.items.map(item => [item.queueIndex, item]));
+const groupSizeConditionFile = 'H1_SOL_COND_GROUP_SIZE_VS_CATEGORY_COVERAGE_2.json';
+const groupSizeCondition = JSON.parse(fs.readFileSync(path.join(dir, groupSizeConditionFile), 'utf8'));
+const groupSizeConditionByQueue = new Map(groupSizeCondition.items.map(item => [item.queueIndex, item]));
+const q790UndercountFile = 'H1_SOL_Q790_SOLUTION_ANSWER_UNDERCOUNT.json';
+const q790Undercount = JSON.parse(fs.readFileSync(path.join(dir, q790UndercountFile), 'utf8'));
+const finiteRangeConditionFile = 'H1_SOL_COND_FINITE_DOMAIN_RANGE_2.json';
+const finiteRangeCondition = JSON.parse(fs.readFileSync(path.join(dir, finiteRangeConditionFile), 'utf8'));
+const finiteRangeConditionByQueue = new Map(finiteRangeCondition.items.map(item => [item.queueIndex, item]));
+const integerRangeDistinctFile = 'H1_SOL_COND_INTEGER_RANGE_DISTINCTNESS_2.json';
+const integerRangeDistinct = JSON.parse(fs.readFileSync(path.join(dir, integerRangeDistinctFile), 'utf8'));
+const integerRangeDistinctByQueue = new Map(integerRangeDistinct.items.map(item => [item.queueIndex, item]));
+const q374VisualFile = 'H1_SOL_Q374_INTEGER_AND_VISUAL_HOLD.json';
+const q374Visual = JSON.parse(fs.readFileSync(path.join(dir, q374VisualFile), 'utf8'));
+const seatingCardConditionFile = 'H1_SOL_COND_SEATING_STRUCTURE_VS_CARD_RANGE_2.json';
+const seatingCardCondition = JSON.parse(fs.readFileSync(path.join(dir, seatingCardConditionFile), 'utf8'));
+const seatingCardConditionByQueue = new Map(seatingCardCondition.items.map(item => [item.queueIndex, item]));
+const orderPercentConditionFile = 'H1_SOL_COND_ORDER_SIGN_VS_DERIVED_PERCENT_INTERVAL_2.json';
+const orderPercentCondition = JSON.parse(fs.readFileSync(path.join(dir, orderPercentConditionFile), 'utf8'));
+const orderPercentConditionByQueue = new Map(orderPercentCondition.items.map(item => [item.queueIndex, item]));
+const q319LabelFile = 'H1_SOL_Q319_NONBLOCKING_PQ_LABEL_ORDER.json';
+const q319Label = JSON.parse(fs.readFileSync(path.join(dir, q319LabelFile), 'utf8'));
 if (inequalityParentRows.length !== 39 || inequalityParentByQueue.size !== 39)
   throw new Error('inequality parent plan coverage mismatch');
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
@@ -265,6 +294,153 @@ for (const row of comparison.rows) {
         evidenceFile: q307NonbindingFile };
       counts.fieldsSolDirectOverride++;
     }
+  }
+  const derivedConditionItem = derivedConditionByQueue.get(row.queueIndex);
+  if (derivedConditionItem) {
+    if (row.questionUid !== derivedConditionItem.questionUid
+      || row.currentSourceFingerprint !== derivedConditionItem.sourceFingerprint)
+      throw new Error(`derived/structural condition Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`derived/structural condition expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: [], provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: derivedConditionFile, reason: derivedConditionItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 620) {
+    if (row.questionUid !== q620RepeatedRoot.questionUid
+      || row.currentSourceFingerprint !== q620RepeatedRoot.sourceFingerprint)
+      throw new Error('q620 repeated-root Sol evidence/source drift');
+    if (fieldDecisions.sourceIssue.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q620 repeated-root source issue expected pending');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('sourceIssue'), 1);
+    fieldDecisions.sourceIssue = { value: 'SOURCE_UNRESOLVED_HOLD', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: q620RepeatedRootFile, reason: q620RepeatedRoot.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const primaryOnlyIpItem = primaryOnlyIpByQueue.get(row.queueIndex);
+  if (primaryOnlyIpItem) {
+    if (row.questionUid !== primaryOnlyIpItem.questionUid
+      || row.currentSourceFingerprint !== primaryOnlyIpItem.sourceFingerprint)
+      throw new Error(`primary-only integration Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.integrationPattern.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`primary-only integration expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('integrationPattern'), 1);
+    fieldDecisions.integrationPattern = { value: 'NONE', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: primaryOnlyIpFile, reason: primaryOnlyIpItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const groupSizeConditionItem = groupSizeConditionByQueue.get(row.queueIndex);
+  if (groupSizeConditionItem) {
+    if (row.questionUid !== groupSizeConditionItem.questionUid
+      || row.currentSourceFingerprint !== groupSizeConditionItem.sourceFingerprint)
+      throw new Error(`group-size condition Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`group-size condition expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: groupSizeConditionItem.value, provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: groupSizeConditionFile, reason: groupSizeConditionItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 790) {
+    if (row.questionUid !== q790Undercount.questionUid
+      || row.currentSourceFingerprint !== q790Undercount.sourceFingerprint)
+      throw new Error('q790 solution undercount Sol evidence/source drift');
+    if (fieldDecisions.sourceIssue.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q790 solution undercount expected pending source issue');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('sourceIssue'), 1);
+    fieldDecisions.sourceIssue = { value: 'SOLUTION_BLOCKER', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: q790UndercountFile, reason: q790Undercount.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const finiteRangeConditionItem = finiteRangeConditionByQueue.get(row.queueIndex);
+  if (finiteRangeConditionItem) {
+    if (row.questionUid !== finiteRangeConditionItem.questionUid
+      || row.currentSourceFingerprint !== finiteRangeConditionItem.sourceFingerprint)
+      throw new Error(`finite-range condition Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`finite-range condition expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: ['COND_RANGE'], provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: finiteRangeConditionFile, reason: finiteRangeConditionItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const integerRangeDistinctItem = integerRangeDistinctByQueue.get(row.queueIndex);
+  if (integerRangeDistinctItem) {
+    if (row.questionUid !== integerRangeDistinctItem.questionUid
+      || row.currentSourceFingerprint !== integerRangeDistinctItem.sourceFingerprint)
+      throw new Error(`integer/range distinctness Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`integer/range distinctness expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: ['COND_INTEGER', 'COND_RANGE'], provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: integerRangeDistinctFile, reason: integerRangeDistinctItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 374) {
+    if (row.questionUid !== q374Visual.questionUid
+      || row.currentSourceFingerprint !== q374Visual.sourceFingerprint)
+      throw new Error('q374 visual HOLD Sol evidence/source drift');
+    for (const field of ['conditions', 'sourceIssue']) {
+      if (fieldDecisions[field].provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+        throw new Error(`q374 expected pending ${field}`);
+      counts.fieldsPendingSol--;
+      pending.splice(pending.indexOf(field), 1);
+      fieldDecisions[field] = { ...q374Visual.fieldDecisions[field], provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: q374VisualFile };
+      counts.fieldsSolDirectOverride++;
+    }
+    if (fieldDecisions.reviewStatus.provenance !== 'DUAL_LUNA_MATCH')
+      throw new Error('q374 expected dual semantic review status');
+    counts.fieldsDualMatch--;
+    fieldDecisions.reviewStatus = { ...q374Visual.fieldDecisions.reviewStatus,
+      provenance: 'SOL_DIRECT_ADJUDICATION', evidenceFile: q374VisualFile };
+    counts.fieldsSolDirectOverride++;
+  }
+  const seatingCardConditionItem = seatingCardConditionByQueue.get(row.queueIndex);
+  if (seatingCardConditionItem) {
+    if (row.questionUid !== seatingCardConditionItem.questionUid
+      || row.currentSourceFingerprint !== seatingCardConditionItem.sourceFingerprint)
+      throw new Error(`seating/card condition Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`seating/card condition expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: seatingCardConditionItem.value, provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: seatingCardConditionFile, reason: seatingCardConditionItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const orderPercentConditionItem = orderPercentConditionByQueue.get(row.queueIndex);
+  if (orderPercentConditionItem) {
+    if (row.questionUid !== orderPercentConditionItem.questionUid
+      || row.currentSourceFingerprint !== orderPercentConditionItem.sourceFingerprint)
+      throw new Error(`order/percent condition Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.conditions.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`order/percent condition expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('conditions'), 1);
+    fieldDecisions.conditions = { value: orderPercentConditionItem.value, provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: orderPercentConditionFile, reason: orderPercentConditionItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 319) {
+    if (row.questionUid !== q319Label.questionUid
+      || row.currentSourceFingerprint !== q319Label.sourceFingerprint)
+      throw new Error('q319 P/Q label Sol evidence/source drift');
+    if (fieldDecisions.sourceIssue.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q319 P/Q label expected pending source issue');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('sourceIssue'), 1);
+    fieldDecisions.sourceIssue = { value: 'NONBLOCKING_SOURCE_LABEL_MISMATCH', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: q319LabelFile, reason: q319Label.reason };
+    counts.fieldsSolDirectOverride++;
   }
   counts.items++;
   if (pending.length) {

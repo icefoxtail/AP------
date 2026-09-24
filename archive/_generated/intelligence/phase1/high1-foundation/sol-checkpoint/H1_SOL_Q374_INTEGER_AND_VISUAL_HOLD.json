@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 374,
+  "questionUid": "qid_v1_244bde8e189c3a7dcfbb394004b5666ab983c113f4153465cb604f836e6cb5d7",
+  "sourceIdentity": "original/high/h1/1mid/23_여수여고_1학기_중간_고1_기출.js#16",
+  "sourceFingerprint": "2b060df7327d50ef1737b1fea863032852efeb88f52551c3a40b90b74d1e4747",
+  "sourceQuestionAudit": "source-evidence/D-q374-question-only/physical-ledger.json: original question stem, piecewise ranges, graph topology, stacked −1/2 tick, target and choices match JS mathematical content.",
+  "fieldDecisions": {
+    "conditions": {
+      "value": ["COND_INTEGER"],
+      "reason": "The source explicitly asks for integer k. Solving the four-intersection condition gives the derived open interval 3/2<k<7/2, and integrality selects k=2 and 3, changing the final count to two. That derived interval and the piecewise x-domains are part of the primary graph-intersection task, not separate stated COND_RANGE metadata."
+    },
+    "sourceIssue": {
+      "value": "VISUAL_RENDER_NOT_TESTED_HOLD",
+      "reason": "The original x-axis tick is a stacked −1/2. The current inline SVG contains the literal TeX string `$-\\frac{1}{2}$` inside an SVG `<text>` element, which may display as source code rather than a typeset fraction. The apmath-visual-upgrade preflight failed because the worktree's rule verification reported 132 commits behind origin/main; no connected browser was available for actual Archive render review. D made no SVG edit. The visual cannot receive a final PASS until a current rule-pack route and actual render review close this gate."
+    },
+    "reviewStatus": {
+      "value": "HOLD",
+      "reason": "The algebraic answer is independently checkable, but source figure rendering is unverified under the required visual workflow; keep this UID in an explicit visual HOLD rather than claiming final source/render quality."
+    }
+  },
+  "jsEdit": false,
+  "officialAnswerOrSolutionSourceUsedByD": false,
+  "finality": "WORKING_NOT_FINAL"
+}
