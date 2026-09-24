@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALITY_REJECTED_WORKER_REPLACED",
+  "worker": "c_blind_conflicts01",
+  "lastCleanCheckpoint": "H1_STAGEA_LUNA6_C_BLIND_CONFLICTS31_20.jsonl",
+  "rejectedBatch": "H1_STAGEA_LUNA6_C_BLIND_CONFLICTS32_20.jsonl",
+  "rejectedBatchQueueRange": [1035, 1055],
+  "defectQueueIndex": 1045,
+  "defect": "C invented an inline 13-cell source grid and a 43-count solution. The current stem says 10 cells, the exact q18.png has rows 2+3+5, and the stored solution derives 23. A and B independently re-read the current payload and both recorded 23.",
+  "priorSameClassDefect": "C q256 incorrectly interpreted 'the integer x has value 5' as 'five integer solutions'; original question audit rejected that HOLD.",
+  "action": "Retired C immediately. Re-run the entire affected 20-item batch from current source in a fresh C-only bundle with explicit gpt-6-luna/xhigh. Exclude the rejected C32 file from working comparison and FINAL selection.",
+  "interruptedNextBatch": {
+    "bundle": "C:\\Users\\USER\\.codex\\h1-c-blind\\conflicts33",
+    "partialOutput": "output/H1_C_CONFLICTS33.jsonl",
+    "rows": 15,
+    "sha256": "4756B369B317B7F4BFF73753FF6931AAE417AFF777F3BEF5515C3632AB3517C8",
+    "accepted": false
+  }
+}

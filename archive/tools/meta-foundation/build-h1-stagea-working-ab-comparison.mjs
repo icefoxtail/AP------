@@ -16,8 +16,9 @@ const workerFiles = allFiles.filter(name => (/^H1_STAGEA_LUNA_(A2|A3|B2|B3)_.+\.
   || /^H1_STAGEA_LUNA6_[AB]_.+\.jsonl$/.test(name))
   && !name.includes('Q1001_SUPERSESSION')
   && !name.includes('STATUS_SUPERSESSION'));
-const cFiles = allFiles.filter(name => /^H1_STAGEA_LUNA_(?:C|C2|C4)_.+\.jsonl$/.test(name)
-  || /^H1_STAGEA_LUNA6_C_.+\.jsonl$/.test(name));
+const cFiles = allFiles.filter(name => (/^H1_STAGEA_LUNA_(?:C|C2|C4)_.+\.jsonl$/.test(name)
+  || /^H1_STAGEA_LUNA6_C_.+\.jsonl$/.test(name))
+  && name !== 'H1_STAGEA_LUNA6_C_BLIND_CONFLICTS32_20.jsonl');
 const bStatusSupersessionFile = path.join(dir, 'H1_STAGEA_LUNA6_B_BLIND_BATCH20_STATUS_SUPERSESSION.jsonl');
 const bStatusOverrides = fs.existsSync(bStatusSupersessionFile)
   ? new Map(readLines(bStatusSupersessionFile).map(row => [row.questionUid, row]))
