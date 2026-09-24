@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "FIELD_GRANULARITY_REJECTED_TARGETED_CORRECTION_CLOSED",
+  "scope": "B's 20-item polynomial L3/L4 boundary ledger",
+  "originalRawFile": "H1_B_POLY_DIVISION_BOUNDARY_20.jsonl",
+  "correctedSupersession": "H1_B_POLY_DIVISION_BOUNDARY_20_KEYTYPE_CORRECTED.jsonl",
+  "defect": "All 20 original activeL3EquivalentKey values named H15-SA-* subUnitKeys rather than ACTIVE problemTypeKeys, conflating curriculum subunit and semantic L3 key levels.",
+  "correction": "B rechecked the ACTIVE problemTypes and templates collections; every activeL3EquivalentKey and activeL4EquivalentKey is null, and the relevant curricular subunit is retained only under activeSubUnitKey.",
+  "coverage": 20,
+  "invalidOriginalL3EquivalentCount": 20,
+  "invalidCorrectedL3EquivalentCount": 0,
+  "identityAndHashRowsPreserved": 20,
+  "parentAndL4SemanticVerdictsChanged": 0,
+  "wholeWorkerQualityRejected": false,
+  "workerReplacement": false,
+  "reasonForScope": "This key-type error was corrected on the affected ledger before taxonomy comparison; future recurrence should trigger the worker-level quality rejection rule.",
+  "automaticProductionChange": false
+}

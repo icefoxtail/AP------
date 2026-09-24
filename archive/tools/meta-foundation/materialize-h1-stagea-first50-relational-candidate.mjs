@@ -7,6 +7,10 @@ const dir = path.join(process.cwd(), 'archive/_generated/intelligence/phase1/hig
 const comparison = JSON.parse(fs.readFileSync(path.join(dir, 'H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json'), 'utf8'));
 const q31DirectFile = 'H1_SOL_Q031_FACTOR_NORMALIZATION_ADJUDICATION.json';
 const q31Direct = JSON.parse(fs.readFileSync(path.join(dir, q31DirectFile), 'utf8'));
+const q4IpFile = 'H1_SOL_IP_Q004_PERFECT_SQUARE_PRIMARY.json';
+const q4Ip = JSON.parse(fs.readFileSync(path.join(dir, q4IpFile), 'utf8'));
+const q7HoldFile = 'H1_SOL_Q007_UNNORMALIZED_SQUARE_ROOT_HOLD.json';
+const q7Hold = JSON.parse(fs.readFileSync(path.join(dir, q7HoldFile), 'utf8'));
 if (comparison.summary.counts.currentDual !== 50 || comparison.summary.counts.unreviewedConflict !== 0)
   throw new Error('first50 A/B/C coverage gate is not closed');
 const read = file => fs.readFileSync(path.join(dir, file), 'utf8').trim().split(/\r?\n/).map(JSON.parse);
@@ -87,6 +91,33 @@ for (const row of comparison.rows) {
       }
       fieldDecisions[field] = { value, provenance: 'SOL_DIRECT_ADJUDICATION',
         evidenceFile: q31DirectFile, reason: 'Printed question leaves factor normalization and signs unconstrained.' };
+      counts.fieldsSolDirectOverride++;
+    }
+  }
+  if (row.queueIndex === 4) {
+    if (row.questionUid !== q4Ip.questionUid || row.currentSourceFingerprint !== q4Ip.sourceFingerprint)
+      throw new Error('q4 Sol integration evidence/source drift');
+    if (fieldDecisions.integrationPattern.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q4 integration expected pending');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('integrationPattern'), 1);
+    fieldDecisions.integrationPattern = { value: 'NONE', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: q4IpFile, reason: q4Ip.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 7) {
+    if (row.questionUid !== q7Hold.questionUid || row.currentSourceFingerprint !== q7Hold.sourceFingerprint)
+      throw new Error('q7 Sol HOLD evidence/source drift');
+    for (const field of ['integrationPattern', 'sourceIssue', 'reviewStatus']) {
+      const previous = fieldDecisions[field];
+      if (previous.provenance === 'SOL_DIRECT_ADJUDICATION_PENDING') {
+        counts.fieldsPendingSol--;
+        pending.splice(pending.indexOf(field), 1);
+      } else if (previous.provenance === 'DUAL_LUNA_MATCH') counts.fieldsDualMatch--;
+      else if (previous.provenance === 'LUNA_2_OF_3_CONSENSUS') counts.fieldsTwoOfThree--;
+      else throw new Error(`q7 unexpected ${field} provenance`);
+      fieldDecisions[field] = { ...q7Hold.fieldDecisions[field], provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: q7HoldFile };
       counts.fieldsSolDirectOverride++;
     }
   }

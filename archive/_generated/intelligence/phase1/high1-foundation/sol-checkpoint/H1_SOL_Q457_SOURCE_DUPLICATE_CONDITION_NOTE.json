@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 457,
+  "questionUid": "qid_v1_8a3b6a8e3b3e2a6babab60aedebba691a1dc3ef94d4906cd05b962054a008757",
+  "sourceIdentity": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#13",
+  "sourceFingerprint": "a3686c1cfc57043bd83a22be0dc496e8b3f137deec25df26ce06eb0e4f974881",
+  "sourceQuestionAudit": "source-evidence/D-q457-question-only/physical-ledger.json: original question page also repeats `(단, xyz≠0)` before `w≠0`; JS is source-exact.",
+  "field": "sourceIssue",
+  "value": "NONBLOCKING_SOURCE_DUPLICATE_CONDITION",
+  "reason": "The common-ratio equation prints xyz≠0 twice and w≠0 once. Repetition of the identical xyz≠0 clause adds no restriction: setting the common value to k gives x=2k,y=k,z=3k and xyz≠0 ensures k≠0, so (2x+y−2z)/w=k yields w=−1. D confirmed the duplication is in the original question, so no source-exact JS edit is justified. Keep the semantic result PASS with a nonblocking editorial/source note.",
+  "reviewStatus": "PASS_WITH_SOURCE_NOTE",
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}
