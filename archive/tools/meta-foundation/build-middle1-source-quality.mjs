@@ -26,8 +26,8 @@ const rows = consensus.map(x => {
     issueReason: override?.reason || x.sourceIssue || plan.defaultReason || 'No material source or solution defect after independent review.',
     disposition,
     semanticMappingStatus: x.reviewStatus,
-    metadataWritebackAllowed: disposition !== 'SOURCE_BLOCKED',
-    runtimeSelectableBeforeRepair: disposition === 'HOLD_RESOLVED_NO_SOURCE_MUTATION'
+    metadataWritebackAllowed: disposition !== 'SOURCE_BLOCKED' && x.reviewStatus !== 'ROUTE_OUT' && x.reviewStatus !== 'HOLD',
+    runtimeSelectableBeforeRepair: disposition === 'HOLD_RESOLVED_NO_SOURCE_MUTATION' && x.reviewStatus !== 'ROUTE_OUT' && x.reviewStatus !== 'HOLD'
   };
 });
 if (new Set(rows.map(x => x.questionUid)).size !== rows.length) throw new Error('Source-quality duplicate UID');

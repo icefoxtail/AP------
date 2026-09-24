@@ -19,6 +19,7 @@ for (const exam of inventory.exams) {
   if (rows.length !== exam.questionRowCount) throw new Error(`Partial consensus ${exam.batchNo}`);
   batches.push(exam.batchNo);
   for (const row of rows) {
+    if (row.reviewStatus === 'ROUTE_OUT' || row.reviewStatus === 'HOLD') continue;
     const p = pt.get(row.problemTypeKey) || { problemTypeKey: row.problemTypeKey, status: activePt.has(row.problemTypeKey) ? 'ACTIVE_REUSE' : 'CANDIDATE_PENDING_GLOBAL_COMPRESSION', ownerPack: activePt.get(row.problemTypeKey)?.ownerPack || 'MIDDLE1_CANDIDATE', representativeQuestionUid: row.questionUid, representativeReason: row.l3SemanticReason, supportingQuestionUids: [], l1Keys: [], l2Keys: [], sourceBatches: [] };
     p.supportingQuestionUids.push(row.questionUid);
     if (!p.l1Keys.includes(row.standardUnitKey)) p.l1Keys.push(row.standardUnitKey);

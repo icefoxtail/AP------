@@ -35,7 +35,7 @@ const offTopicOrdinals = quality.filter(x => x.issueType === 'OFF_TOPIC_SOLUTION
 const misleadingOrdinals = quality.filter(x => x.issueType === 'MISLEADING_SOLUTION').map(x => x.sourceOrdinal);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
-for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json','LUNA_B_PRE_SCHEMA_CORRECTION.jsonl','B_SCHEMA_CORRECTION_RECEIPT.json','ROOT_Q15_GEOMETRY_EVIDENCE.md','ROOT_Q14_GEOMETRY_EVIDENCE.md','ROOT_Q16_TRIANGLE_EVIDENCE.md','ROOT_Q17_SOLUTION_DEFECT_EVIDENCE.md','ROOT_Q22_GEOMETRY_EVIDENCE.md','ROOT_Q25_SOLUTION_DEFECT_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
+for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json','LUNA_B_PRE_SCHEMA_CORRECTION.jsonl','B_SCHEMA_CORRECTION_RECEIPT.json','ROOT_Q01_SOLUTION_MISMATCH.md','ROOT_Q07_SKEW_EDGE_EVIDENCE.md','ROOT_Q15_GEOMETRY_EVIDENCE.md','ROOT_Q14_GEOMETRY_EVIDENCE.md','ROOT_Q16_TRIANGLE_EVIDENCE.md','ROOT_Q17_SOLUTION_DEFECT_EVIDENCE.md','ROOT_Q19_CROSS_GRADE_EVIDENCE.md','ROOT_Q20_SYNTHETIC_PROOF.md','ROOT_Q22_GEOMETRY_EVIDENCE.md','ROOT_Q23_SOURCE_BLOCK_EVIDENCE.md','ROOT_Q25_SOLUTION_DEFECT_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
 const lines = [
   `# M1 Meta Foundation — Batch ${String(batchNo).padStart(2,'0')} checkpoint report`,
@@ -60,6 +60,7 @@ const lines = [
   `- Mandatory difficulty recheck: **${validation.counts.recheckReviewed}/${validation.counts.recheckQueue}**`,
   `- Validator: **${validation.status}**, failure count **${validation.failures.length}**`,
   `- Protected field mutation: **${writeback.protectedMutationCount}**; non-metadata mutation **${writeback.nonMetadataMutationCount}**`,
+  `- Metadata writeback / ROUTE_OUT skip / HOLD skip: **${writeback.changedQuestionCount}/${writeback.routeOutSkippedCount || 0}/${writeback.holdSkippedCount || 0}** (closure ${writeback.changedQuestionCount + (writeback.routeOutSkippedCount || 0) + (writeback.holdSkippedCount || 0)}/${exam.questionRowCount})`,
   `- Source JS SHA-256 after writeback: \`${writeback.writtenSourceSha256}\``,
   '',
   '## Deferred global gates',
@@ -68,7 +69,7 @@ const lines = [
   '',
   '## Source quality and worker findings',
   '',
-  `${holdCount} archived solutions remain on explicit quality HOLD. Off-topic solution ordinals: ${offTopicOrdinals.length ? offTopicOrdinals.map(n => `#${n}`).join(', ') : 'none'}. Misleading solution ordinals: ${misleadingOrdinals.length ? misleadingOrdinals.map(n => `#${n}`).join(', ') : 'none'}. Root direct-read ordinals: ${plan.rootDirectReadOrdinals.length ? plan.rootDirectReadOrdinals.map(n => `#${n}`).join(', ') : 'none'}. No protected source field was edited.`,
+  `${validation.counts.solutionQualityHold} archived solutions remain on explicit quality HOLD; ${quality.filter(x => x.disposition === 'SOURCE_BLOCKED').length} source/answer item is BLOCKED. Off-topic solution ordinals: ${offTopicOrdinals.length ? offTopicOrdinals.map(n => `#${n}`).join(', ') : 'none'}. Misleading solution ordinals: ${misleadingOrdinals.length ? misleadingOrdinals.map(n => `#${n}`).join(', ') : 'none'}. Root direct-read ordinals: ${plan.rootDirectReadOrdinals.length ? plan.rootDirectReadOrdinals.map(n => `#${n}`).join(', ') : 'none'}. No protected source field was edited.`,
   '',
   '## Artifact SHA-256',
   '',
