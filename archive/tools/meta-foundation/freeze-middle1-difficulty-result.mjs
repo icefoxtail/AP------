@@ -21,6 +21,9 @@ if (inputs.length !== exam.questionRowCount || outputs.length !== inputs.length)
 for (const rows of [inputs, outputs]) {
   for (const row of rows) if (Object.keys(row).some(k => /^(level|legacyLevel|legacyLevelCompatibility)$/i.test(k))) throw new Error(`Legacy field leaked into blind row ${row.questionUid}`);
 }
+if (batchNo >= 8) for (const row of outputs) for (const [flag, reason] of [['visualDifficultyImpact','visualDifficultyImpactReason'], ['sourceSolutionDifficultyConflict','sourceSolutionConflictReason'], ['reviewerRequestedRecheck','reviewerRecheckReason']]) {
+  if (typeof row[flag] !== 'boolean' || (row[flag] && !String(row[reason] || '').trim())) throw new Error(`Missing first-pass recheck evidence ${flag} ${row.questionUid}`);
+}
 if (new Set(outputs.map(x => x.questionUid)).size !== outputs.length) throw new Error('Duplicate blind UID');
 const byUid = new Map(inputs.map(x => [x.questionUid, x]));
 for (const row of outputs) if (row.blindInputSha !== byUid.get(row.questionUid)?.blindInputSha) throw new Error(`Blind input mismatch ${row.questionUid}`);

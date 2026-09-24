@@ -276,6 +276,9 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
       if (!['high','medium','low'].includes(row.difficultyConfidence)) fail('INVALID_DIFFICULTY_CONFIDENCE', { uid: row.questionUid });
       if (!['NONE','B12','B23','B34','B45'].includes(row.difficultyBoundaryFlag)) fail('INVALID_DIFFICULTY_BOUNDARY', { uid: row.questionUid });
       if (!String(row.difficultyReason || '').trim()) fail('MISSING_DIFFICULTY_REASON', { uid: row.questionUid });
+      if (batchNo >= 8) for (const [flag, reason] of [['visualDifficultyImpact','visualDifficultyImpactReason'], ['sourceSolutionDifficultyConflict','sourceSolutionConflictReason'], ['reviewerRequestedRecheck','reviewerRecheckReason']]) {
+        if (typeof row[flag] !== 'boolean' || (row[flag] && !String(row[reason] || '').trim())) fail('MISSING_FIRST_PASS_RECHECK_EVIDENCE', { uid: row.questionUid, flag });
+      }
     }
     difficultyChecked = true;
   }
@@ -301,8 +304,16 @@ if (exists('DIFFICULTY_RECHECK_QUEUE.jsonl') && exists('DIFFICULTY_RECHECK.jsonl
   counts.recheckQueue = queue.length;
   counts.recheckReviewed = review.length;
   const queueByUid = new Map(queue.map(x => [x.questionUid, x]));
+  const blindByUid = exists('DIFFICULTY.jsonl') ? new Map(jsonl('DIFFICULTY.jsonl').map(x => [x.questionUid, x])) : new Map();
   const seen = new Set();
   if (queue.length !== review.length || queueByUid.size !== queue.length) fail('DIFFICULTY_RECHECK_COVERAGE_MISMATCH');
+  for (const item of queue) if (batchNo >= 8) {
+    const firstPass = blindByUid.get(item.questionUid);
+    for (const [trigger, flag] of [['VISUAL_DIFFICULTY_IMPACT','visualDifficultyImpact'], ['SOURCE_SOLUTION_DIFFICULTY_CONFLICT','sourceSolutionDifficultyConflict'], ['REVIEWER_REQUESTED_RECHECK','reviewerRequestedRecheck']]) {
+      if (item.triggerReasons.includes(trigger) !== (firstPass?.[flag] === true)) fail('RECHECK_TRIGGER_EVIDENCE_MISMATCH', { uid: item.questionUid, trigger });
+    }
+    if (item.triggerReasons.includes('VISUAL_DEPENDENCY') || item.triggerReasons.includes('OFF_TOPIC_SOLUTION') || item.triggerReasons.includes('MISLEADING_SOLUTION')) fail('NONCANONICAL_RECHECK_TRIGGER', { uid: item.questionUid });
+  }
   for (const row of review) {
     if (seen.has(row.questionUid)) fail('DIFFICULTY_RECHECK_DUPLICATE_UID', { uid: row.questionUid });
     seen.add(row.questionUid);

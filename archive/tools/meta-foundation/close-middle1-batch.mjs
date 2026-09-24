@@ -22,6 +22,8 @@ if (validation.status !== 'SCOPED_BATCH_CLOSED_WITH_EXPLICIT_HOLDS_GLOBAL_CANONI
 const readJsonl = name => fs.readFileSync(path.join(dir, name), 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
 const consensus = readJsonl('CONSENSUS.jsonl');
 const finalDifficulty = readJsonl('DIFFICULTY_FINAL.jsonl');
+const difficultyFirstPass = readJsonl('DIFFICULTY.jsonl');
+const difficultyRecheckQueue = readJsonl('DIFFICULTY_RECHECK_QUEUE.jsonl');
 const quality = readJsonl('SOURCE_QUALITY.jsonl');
 const plan = JSON.parse(fs.readFileSync(path.join(dir, 'CONSENSUS_PLAN.json'), 'utf8'));
 const writeback = JSON.parse(fs.readFileSync(path.join(dir, 'WRITEBACK_RECEIPT.json'), 'utf8'));
@@ -31,11 +33,14 @@ const holdCount = quality.filter(x => x.disposition !== 'HOLD_RESOLVED_NO_SOURCE
 const routeOut = consensus.filter(x => x.reviewStatus === 'ROUTE_OUT').length;
 const bucketCounts = Object.fromEntries([1,2,3,4,5].map(n => [n, finalDifficulty.filter(x => x.difficultyBucket === n).length]));
 const compatibilityCounts = finalDifficulty.reduce((acc,x) => (acc[x.legacyLevelCompatibility] = (acc[x.legacyLevelCompatibility] || 0) + 1, acc), {});
+const recheckTriggerCounts = difficultyRecheckQueue.flatMap(x => x.triggerReasons || []).reduce((acc, trigger) => (acc[trigger] = (acc[trigger] || 0) + 1, acc), {});
+const recheckRate = (100 * difficultyRecheckQueue.length / exam.questionRowCount).toFixed(1);
+const abConflictRate = (100 * validation.counts.abConflicts / exam.questionRowCount).toFixed(1);
 const offTopicOrdinals = quality.filter(x => x.issueType === 'OFF_TOPIC_SOLUTION').map(x => x.sourceOrdinal);
 const misleadingOrdinals = quality.filter(x => x.issueType === 'MISLEADING_SOLUTION').map(x => x.sourceOrdinal);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
-for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json','LUNA_B_PRE_SCHEMA_CORRECTION.jsonl','B_SCHEMA_CORRECTION_RECEIPT.json','ROOT_Q01_SOLUTION_MISMATCH.md','ROOT_Q07_SKEW_EDGE_EVIDENCE.md','ROOT_Q15_GEOMETRY_EVIDENCE.md','ROOT_Q14_GEOMETRY_EVIDENCE.md','ROOT_Q16_TRIANGLE_EVIDENCE.md','ROOT_Q17_SOLUTION_DEFECT_EVIDENCE.md','ROOT_Q19_CROSS_GRADE_EVIDENCE.md','ROOT_Q20_SYNTHETIC_PROOF.md','ROOT_Q22_GEOMETRY_EVIDENCE.md','ROOT_Q23_SOURCE_BLOCK_EVIDENCE.md','ROOT_Q25_SOLUTION_DEFECT_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
+for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','A_REVIEW_INPUT_12.jsonl','LUNA_A_EARLY_DRAFT.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','LUNA_A_REVISION_12.jsonl','WORKER_QUALITY_REJECTIONS.json','WORKER_QUALITY_REJECTION_A_B08.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json','LUNA_B_PRE_SCHEMA_CORRECTION.jsonl','B_SCHEMA_CORRECTION_RECEIPT.json','ROOT_Q01_SOLUTION_MISMATCH.md','ROOT_Q01_STATEMENT_EVIDENCE.md','ROOT_Q07_SKEW_EDGE_EVIDENCE.md','ROOT_Q10_FOLD_ANGLE_EVIDENCE.md','ROOT_Q12_PARALLEL_ANGLE_EVIDENCE.md','ROOT_Q15_GEOMETRY_EVIDENCE.md','ROOT_Q14_GEOMETRY_EVIDENCE.md','ROOT_Q16_TRIANGLE_EVIDENCE.md','ROOT_Q17_SOLUTION_DEFECT_EVIDENCE.md','ROOT_Q19_CROSS_GRADE_EVIDENCE.md','ROOT_Q20_SYNTHETIC_PROOF.md','ROOT_Q22_GEOMETRY_EVIDENCE.md','ROOT_Q23_SOURCE_BLOCK_EVIDENCE.md','ROOT_Q25_SOLUTION_DEFECT_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
 const lines = [
   `# M1 Meta Foundation — Batch ${String(batchNo).padStart(2,'0')} checkpoint report`,
@@ -47,6 +52,7 @@ const lines = [
   `- Rows / unique UID: **${exam.questionRowCount}/${new Set(consensus.map(x => x.questionUid)).size}**`,
   `- A/B reviewed: **${validation.counts.AReviewed}/${validation.counts.BReviewed}**`,
   `- A/B semantic agreement / actual conflict: **${exam.questionRowCount - validation.counts.abConflicts}/${validation.counts.abConflicts}**`,
+  `- A/B actual conflict rate: **${abConflictRate}%**`,
   `- C blind reviewed: **${validation.counts.CReviewed}/${validation.counts.abConflicts}**`,
   `- Worker-quality rejected and source-revised UIDs: **${validation.counts.workerQualityRejectedUidCount || 0}**`,
   `- Sol direct source read (including image where relevant): **${plan.rootDirectReadOrdinals.length} UID** (${plan.rootDirectReadOrdinals.join(', ') || 'none'})`,
@@ -56,8 +62,12 @@ const lines = [
   `- Batch provisional L3 / L4 / CrossConcept usage: **${new Set(consensus.map(x => x.problemTypeKey)).size}/${new Set(consensus.map(x => x.templateKey)).size}/${new Set(consensus.flatMap(x => x.crossConceptKeys)).size}**`,
   `- Cumulative candidate L3 / L4 / CrossConcept: **${registry.counts.candidateProblemTypes}/${registry.counts.candidateTemplates}/${registry.counts.candidateCrossConcepts}**`,
   `- Difficulty distribution 1–5: **${[1,2,3,4,5].map(n => bucketCounts[n]).join(' / ')}**`,
+  `- Difficulty first-pass denominator: **${difficultyFirstPass.length}/${exam.questionRowCount}**`,
   `- Legacy compatibility: ${Object.entries(compatibilityCounts).map(([key,count]) => `${key} ${count}`).join('; ')}`,
   `- Mandatory difficulty recheck: **${validation.counts.recheckReviewed}/${validation.counts.recheckQueue}**`,
+  `- Difficulty recheck rate: **${recheckRate}%**`,
+  `- Recheck triggers: ${Object.entries(recheckTriggerCounts).sort((a,b) => a[0].localeCompare(b[0])).map(([key,count]) => `${key} ${count}`).join('; ') || 'none'}`,
+  `- Visual-triggered recheck count: **${recheckTriggerCounts.VISUAL_DIFFICULTY_IMPACT || 0}**`,
   `- Validator: **${validation.status}**, failure count **${validation.failures.length}**`,
   `- Protected field mutation: **${writeback.protectedMutationCount}**; non-metadata mutation **${writeback.nonMetadataMutationCount}**`,
   `- Metadata writeback / ROUTE_OUT skip / HOLD skip: **${writeback.changedQuestionCount}/${writeback.routeOutSkippedCount || 0}/${writeback.holdSkippedCount || 0}** (closure ${writeback.changedQuestionCount + (writeback.routeOutSkippedCount || 0) + (writeback.holdSkippedCount || 0)}/${exam.questionRowCount})`,
