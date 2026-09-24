@@ -282,7 +282,7 @@ window.questionBank = [
       "$e$"
     ],
     "answer": "③",
-    "solution": "두 제곱근이 실수가 되려면\n$x-3\\ge0$,\n$10-2x\\ge0$이어야 한다.\n\n첫째 조건에서 $x\\ge3$이고, 둘째 조건에서 $x\\le5$이다.\n\n따라서 $3\\le x\\le5$를 만족하는 정수는 $3,4,5$이다.\n\n모두 3개이다.",
+    "solution": "그래프의 점선을 따라 함수값을 차례로 읽는다.\n\n그림에서\n$f(a)=b$,\n$f(b)=c$,\n$f(c)=d$,\n$f(d)=e$이다.\n\n두 번 함수값을 취했을 때 $e$가 되려면\n$c\\to d\\to e$의 순서가 되어야 한다.\n\n실제로\n$(f\\circ f)(c)=f(f(c))$\n$=f(d)$\n$=e$이다.\n\n따라서 $k=c$이고, 정답은 ③이다.",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -310,7 +310,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "$A_2=\\{1,2\\}$,\n$A_4=\\{1,2,4\\}$이므로\n$A_2\\cap A_4=\\{1,2\\}$이다.\n\n$12$의 모든 약수는 $24$의 약수이므로\n$A_{12}\\cup A_{24}=A_{24}$이다.\n\n주어진 포함 조건은\n$A_2\\subseteq A_n\\subseteq A_{24}$이다.\n\n왼쪽 포함에서 $2$는 $n$의 약수이므로 $n$은 2의 배수이다. 두 번째 포함에서 $n$ 자체도 $24$의 약수이므로 $n$은 24의 약수이다.\n\n가능한 $n$은 $2,4,6,8,12,24$이다. 최솟값과 최댓값의 곱은\n$2\\times24=48$이다.",
+    "solution": "주어진 합집합이 공집합이므로\n$P-R=\\varnothing$,\n$Q-R^c=\\varnothing$이다.\n\nㄱ. $P-R=P\\cap R^c=\\varnothing$이므로\n$P\\subseteq R$이다.\n따라서 $p\\to r$는 항상 참이다.\n\nㄴ. $Q-R^c=Q\\cap R=\\varnothing$이므로\n$Q\\subseteq R^c$이다.\n이 조건만으로 $Q\\subseteq R$이라고 할 수 없으므로 $q\\to r$는 항상 참이라고 할 수 없다.\n\nㄷ. $P\\subseteq R$이고 $Q\\subseteq R^c$이므로\n$P\\cap Q=\\varnothing$이다.\n따라서 $Q\\subseteq P^c$이고, $q\\to\\neg p$는 항상 참이다.\n\n그러므로 항상 참인 것은 ㄱ, ㄷ이고 정답은 ③이다.",
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
