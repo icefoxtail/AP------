@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "m1-worker-model-log-v1",
+  "verificationSource": "Local Codex session JSONL world_state.collaboration_mode.model and reasoning_effort, inspected immediately after spawn",
+  "root": {
+    "workerId": "01a0d110-f29d-7bb3-b6b7-8f7dbce0a3c4",
+    "workerName": "/root",
+    "requestedModel": "gpt-6-sol",
+    "requestedReasoningEffort": "high",
+    "actualModel": "gpt-6-sol",
+    "actualReasoningEffort": "high",
+    "modelVerified": true
+  },
+  "workers": [
+    {
+      "workerId": "01a0d117-19fe-7ac0-8d64-70d762131064",
+      "workerName": "/root/m1_semantic_a",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true
+    },
+    {
+      "workerId": "01a0d117-4989-7503-8542-07e3f60a0b59",
+      "workerName": "/root/m1_semantic_b",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true
+    },
+    {
+      "workerId": "01a0d12e-b221-7bc3-b1bf-5a346f382ad2",
+      "workerName": "/root/m1_conflict_c",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true
+    },
+    {
+      "workerId": "01a0d13d-f37f-79b0-8165-544a39c2163c",
+      "workerName": "/root/m1_difficulty_blind",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "necessity": "Separate blind difficulty pass because semantic reviewers were exposed to source JS legacy level fields"
+    }
+  ]
+}
