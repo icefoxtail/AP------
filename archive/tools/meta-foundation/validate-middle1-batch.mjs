@@ -77,8 +77,11 @@ const modelLog = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'WORKER_MOD
 const requiredSemanticFields = ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash', 'primaryMethod', 'decisiveStep', 'standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue'];
 for (const role of ['A', 'B']) {
   const file = `LUNA_${role}.jsonl`;
-  const worker = modelLog.workers.find(x => x.workerName === `/root/m1_semantic_${role.toLowerCase()}`);
+  const assignedWorkers = modelLog.workers.filter(x => x.workerName.startsWith(`/root/m1_semantic_${role.toLowerCase()}`) && x.batchAssignments?.includes(batchNo));
+  const worker = assignedWorkers[0];
+  if (assignedWorkers.length !== 1) fail('MODEL_PINNING_AMBIGUOUS_ASSIGNMENT', { role, count: assignedWorkers.length });
   if (!worker || !worker.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh') fail('MODEL_PINNING_UNVERIFIED', { role });
+  if (worker?.semanticInputVerified === false) fail('MISSING_DECISION_ISOLATED_BUNDLE', { role, reason: 'Worker input-isolation review pending or rejected' });
   if (!exists(file)) { fail('MISSING_WORKER_LEDGER', { role }); counts[`${role}Reviewed`] = 0; continue; }
   const rows = jsonl(file);
   counts[`${role}Reviewed`] = rows.length;
@@ -88,7 +91,7 @@ for (const role of ['A', 'B']) {
     seen.add(row.questionUid);
     const source = inputByUid.get(row.questionUid);
     if (!source) { fail('UNKNOWN_WORKER_UID', { role, uid: row.questionUid }); continue; }
-    for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || row[field] === null || row[field] === '') fail('MISSING_SEMANTIC_EVIDENCE', { role, uid: row.questionUid, field });
+    for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role, uid: row.questionUid, field });
     for (const field of ['sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash']) if (row[field] !== source[field]) fail('WORKER_PROVENANCE_MISMATCH', { role, uid: row.questionUid, field });
     if (!Array.isArray(row.crossConceptKeys) || !Array.isArray(row.crossConceptReasons) || row.crossConceptKeys.length !== row.crossConceptReasons.length) fail('CROSS_CONCEPT_REASON_MISMATCH', { role, uid: row.questionUid });
     if (row.reviewStatus === 'FINAL' || row.reviewStatus === 'PASS') fail('MODEL_DECLARED_FINAL', { role, uid: row.questionUid });
@@ -116,7 +119,7 @@ if (exists('AB_COMPARISON.jsonl') && exists('CONFLICT_INPUT.jsonl')) {
   }
 } else if (exists('LUNA_A.jsonl') && exists('LUNA_B.jsonl')) fail('AB_COMPARISON_NOT_FROZEN');
 if (exists('CONFLICT_C.jsonl')) {
-  const cWorker = modelLog.workers.find(x => x.workerName === '/root/m1_conflict_c');
+  const cWorker = modelLog.workers.find(x => x.workerName === '/root/m1_conflict_c' && x.batchAssignments?.includes(batchNo));
   if (!cWorker || !cWorker.modelVerified || cWorker.actualModel !== 'gpt-6-luna' || cWorker.actualReasoningEffort !== 'xhigh') fail('MODEL_PINNING_UNVERIFIED', { role: 'C' });
   const cRows = jsonl('CONFLICT_C.jsonl');
   counts.CReviewed = cRows.length;
@@ -127,7 +130,7 @@ if (exists('CONFLICT_C.jsonl')) {
     const source = inputByUid.get(row.questionUid);
     if (!conflictSet.has(row.questionUid)) fail('C_READ_NONCONFLICT_UID', { uid: row.questionUid });
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.contentHash !== source.contentHash || row.solutionHash !== source.solutionHash) fail('WORKER_PROVENANCE_MISMATCH', { role: 'C', uid: row.questionUid });
-    for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || row[field] === null || row[field] === '') fail('MISSING_SEMANTIC_EVIDENCE', { role: 'C', uid: row.questionUid, field });
+    for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role: 'C', uid: row.questionUid, field });
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
@@ -238,7 +241,7 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
   if (exists('DIFFICULTY.jsonl')) {
     const dRows = jsonl('DIFFICULTY.jsonl');
     const dByUid = new Map(dInput.map(x => [x.questionUid, x]));
-    const worker = modelLog.workers.find(x => x.workerName === '/root/m1_difficulty_blind');
+    const worker = modelLog.workers.find(x => x.workerName === '/root/m1_difficulty_blind' && x.batchAssignments?.includes(batchNo));
     if (!worker || !worker.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh') fail('DIFFICULTY_MODEL_UNVERIFIED');
     counts.difficultyReviewed = dRows.length;
     if (dRows.length !== input.length) fail('DIFFICULTY_COVERAGE_MISMATCH');

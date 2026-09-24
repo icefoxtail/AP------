@@ -19,7 +19,9 @@
       "actualModel": "gpt-6-luna",
       "actualReasoningEffort": "xhigh",
       "modelVerified": true,
-      "batchAssignments": [1, 2, 3, 4]
+      "batchAssignments": [1, 2, 3, 4],
+      "retiredAfterBatch": 4,
+      "retirementReason": "B04 cross-exam semantic source mismatch on nine rows and recurrent cross-exam summary contamination after targeted correction"
     },
     {
       "workerId": "01a0d117-4989-7503-8542-07e3f60a0b59",
@@ -29,7 +31,34 @@
       "actualModel": "gpt-6-luna",
       "actualReasoningEffort": "xhigh",
       "modelVerified": true,
-      "batchAssignments": [1, 2, 3, 4]
+      "batchAssignments": [1, 2, 3, 4, 5]
+    },
+    {
+      "workerId": "01a0d1d1-a007-7190-90c1-f44703db3de6",
+      "workerName": "/root/m1_semantic_a_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "batchAssignments": [],
+      "attemptedBatches": [5],
+      "semanticInputVerified": false,
+      "retiredBeforeReviewedBatch": 5,
+      "retirementReason": "Opened same-stage cumulative candidate registry before B05 semantic verdict; decision-isolation gate rejects result even without reported use",
+      "replacementFor": "/root/m1_semantic_a"
+    },
+    {
+      "workerId": "01a0d1d5-3d42-7e32-85b8-6caca9013e91",
+      "workerName": "/root/m1_semantic_a_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [5],
+      "replacementFor": "/root/m1_semantic_a_v2"
     },
     {
       "workerId": "01a0d12e-b221-7bc3-b1bf-5a346f382ad2",
@@ -39,7 +68,7 @@
       "actualModel": "gpt-6-luna",
       "actualReasoningEffort": "xhigh",
       "modelVerified": true,
-      "batchAssignments": [1, 2, 3, 4]
+      "batchAssignments": [1, 2, 3, 4, 5]
     },
     {
       "workerId": "01a0d13d-f37f-79b0-8165-544a39c2163c",
@@ -49,7 +78,7 @@
       "actualModel": "gpt-6-luna",
       "actualReasoningEffort": "xhigh",
       "modelVerified": true,
-      "batchAssignments": [1, 2, 3, 4],
+      "batchAssignments": [1, 2, 3, 4, 5],
       "necessity": "Separate blind difficulty pass because semantic reviewers were exposed to source JS legacy level fields"
     }
   ]
