@@ -51,10 +51,13 @@
   },
   "engineCapabilityPreflight": {
     "command": "node archive/tools/meta-foundation/compile-meta-foundation.mjs --check",
-    "baselineResult": "FAIL_DERIVED_ARTIFACT_MISMATCH",
-    "mismatchedArtifactCount": 10,
+    "baselineResult": "FAIL_LEGACY_REGISTRY_INDEX_EOL_DIGEST_PENDING_FINAL_REGENERATION",
+    "initialMismatchedArtifactCount": 10,
+    "afterEolPortableVerifierMismatchedArtifactCount": 1,
+    "canonicalSemanticContentDifferenceCount": 0,
+    "diagnosis": "Nine derived files differ only by Windows checkout CRLF. The registry index has mixed historical LF/CRLF source digest policy; four middle-geometry source entries use LF while 40 other entries use CRLF. Canonical JSON content matches the Git blobs after EOL normalization.",
     "sourceMutation": false,
-    "disposition": "Continue per-exam semantic work; final compiled/runtime parity remains unproven until canonical build and regeneration"
+    "disposition": "Continue per-exam semantic work; regenerate canonical registry index and compiled/runtime from canonical authority after B31, then run portable parity check"
   },
   "status": "SCOPED_META_AUTHORITY_READ_FULL_MANIFEST_DRIFT_4",
   "ruleDrift": "EXISTS"

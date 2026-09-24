@@ -2,9 +2,48 @@
   "schemaVersion": "m1-taxonomy-candidate-registry-v1",
   "baseMainSha": "522c915eaa0c9e54bf43f3884f809d65075e1dbe",
   "sourceBatches": [
-    1
+    1,
+    2
   ],
   "problemTypes": [
+    {
+      "problemTypeKey": "PT_ABSOLUTE_VALUE_PROPERTY_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+      "representativeReason": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
+      "representativeReason": "절댓값만 주어진 여러 수의 가능한 부호에 따라 식의 최댓값과 최솟값을 구한다.",
+      "supportingQuestionUids": [
+        "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
     {
       "problemTypeKey": "PT_ALGEBRAIC_QUANTITY_TRANSLATION_CHECK",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -44,6 +83,44 @@
       ]
     },
     {
+      "problemTypeKey": "PT_BOUNDED_PRIME_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e",
+      "representativeReason": "The goal is the number of primes in a closed interval; prime testing within the stated bounds is the method.",
+      "supportingQuestionUids": [
+        "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_COMMON_DIVISOR_MEMBERSHIP",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9cd86345a6822baf307175e1dce3b4f5e6280a462c5526a8d115e90d5d5bac01",
+      "representativeReason": "The target is the candidate that fails common-divisor membership; minimum prime exponents provide the decisive test.",
+      "supportingQuestionUids": [
+        "qid_v1_9cd86345a6822baf307175e1dce3b4f5e6280a462c5526a8d115e90d5d5bac01"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_COMMON_FACTOR_NUMERIC_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -63,6 +140,44 @@
       ]
     },
     {
+      "problemTypeKey": "PT_COMMON_MULTIPLE_MEMBERSHIP",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a6f2a90b06edebd146078fc946b7474f130d357bcce6c834fb850cb0b4e9d9d3",
+      "representativeReason": "The goal is to find the candidate that is not a common multiple; divisibility by the given LCM is the direct criterion.",
+      "supportingQuestionUids": [
+        "qid_v1_a6f2a90b06edebd146078fc946b7474f130d357bcce6c834fb850cb0b4e9d9d3"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_CONSTRAINED_FACTOR_PAIR",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
+      "representativeReason": "곱이 주어진 정수·자연수 인수에 추가 조건을 적용해 인수쌍을 유일하게 정하고 합을 구한다.",
+      "supportingQuestionUids": [
+        "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_COPRIME_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -79,6 +194,25 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "problemTypeKey": "PT_COPRIME_PAIR_IDENTIFICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393",
+      "representativeReason": "The requested result is the pair whose gcd is one; shared-prime testing is decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -107,7 +241,9 @@
       "representativeQuestionUid": "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
       "representativeReason": "The task asks which symbolic equality correctly expresses exponentiation or prime factorization; the defining strategy is to verify each equality against multiplication and prime-power rules.",
       "supportingQuestionUids": [
-        "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d"
+        "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
+        "qid_v1_2f3257280a8470181a81973e3d241d51086b31824f2ad04a682496573d2a5c51",
+        "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b"
       ],
       "l1Keys": [
         "M1-01"
@@ -116,7 +252,8 @@
         "M1-01-PRIME_FACTORIZATION"
       ],
       "sourceBatches": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -161,6 +298,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_GCD_CONDITION_CANDIDATE_FILTER",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974",
+      "representativeReason": "The goal is to reject a candidate that fails a specified gcd condition; simplify the fixed pair first and then test options.",
+      "supportingQuestionUids": [
+        "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_GCD_LCM_PARAMETER_RECOVERY",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -199,13 +355,54 @@
       ]
     },
     {
+      "problemTypeKey": "PT_INTEGER_COUNT_BETWEEN_RATIONAL_RESULTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7304a4c8a49ab4eeb07277c5c7a537f60eb58ab4b620ea5f5a6002b252ac2147",
+      "representativeReason": "The target is a count of integers between two rational results; endpoint computation and open-interval interpretation are decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_7304a4c8a49ab4eeb07277c5c7a537f60eb58ab4b620ea5f5a6002b252ac2147"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_INTEGER_MEMBERSHIP_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_6bc636bbbfedd0e50c3d18cb68bbe50364939e372b8af3a14193ed066d883809",
+      "representativeReason": "The goal is the cardinality of the integer-valued entries in a mixed rational list; exact simplification and domain membership are decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_6bc636bbbfedd0e50c3d18cb68bbe50364939e372b8af3a14193ed066d883809"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_LCM_APPLICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
       "representativeQuestionUid": "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
       "representativeReason": "주어진 여러 길이의 공배수 조건을 이용해 가장 작은 정육면체의 변 길이를 정하고 반복 단위의 개수를 구한다.",
       "supportingQuestionUids": [
-        "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c"
+        "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
+        "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+        "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
+        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
       ],
       "l1Keys": [
         "M1-01"
@@ -214,7 +411,8 @@
         "M1-01-GCD_LCM"
       ],
       "sourceBatches": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -237,6 +435,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_MAXIMUM_EQUAL_DISTRIBUTION_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_4dea314439a6a3b2aa87f27bca2dcf91ef8756d52a92ba57f9507bbb229f243c",
+      "representativeReason": "The goal is the largest number of equal recipients with no remainder; the greatest common divisor gives the maximum.",
+      "supportingQuestionUids": [
+        "qid_v1_4dea314439a6a3b2aa87f27bca2dcf91ef8756d52a92ba57f9507bbb229f243c"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_MINIMUM_COMMON_MULTIPLIER_FOR_RATIONALS",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -253,6 +470,44 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06",
+      "representativeReason": "The goal is the smallest natural factor that converts a given integer to a square; complete its odd prime exponents.",
+      "supportingQuestionUids": [
+        "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MIXED_RATIONAL_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+      "representativeReason": "거듭제곱·정수 연산·분수 나눗셈이 섞인 수치식을 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -294,6 +549,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_PRIME_FACTOR_CONSTRAINT_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
+      "representativeReason": "The goal is to recover a natural number from prime-factor count/sum constraints, a bound, and a coprimality filter.",
+      "supportingQuestionUids": [
+        "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_PRIME_FACTOR_SET_IDENTIFICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -310,6 +584,25 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "problemTypeKey": "PT_RATIONAL_ADDITION_SUBTRACTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+      "representativeReason": "유리수 여러 항의 덧셈·뺄셈 결과를 구한다.",
+      "supportingQuestionUids": [
+        "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -332,6 +625,26 @@
       ]
     },
     {
+      "problemTypeKey": "PT_RATIONAL_NUMBER_ORDER_AND_EXTREMA",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
+      "representativeReason": "유리수의 대소 또는 절댓값 크기를 비교해 극값을 선택하는 반복 가능한 유형이며, #9와 같은 주된 비교 전략을 쓴다.",
+      "supportingQuestionUids": [
+        "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
+        "qid_v1_6cd2b86156ffe8f7e964da51a40a50b5961aaec4f7b96b9892cf4bbc101b253c"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "problemTypeKey": "PT_RATIONAL_PRODUCT_QUOTIENT_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -339,7 +652,8 @@
       "representativeReason": "The goal is a rational quotient; the proposed L3 also covers chained rational products and quotients.",
       "supportingQuestionUids": [
         "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
-        "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7"
+        "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+        "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3"
       ],
       "l1Keys": [
         "M1-02"
@@ -348,7 +662,27 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        1
+        1,
+        2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_RECOVER_VALUE_FROM_OPERATION_ERROR",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
+      "representativeReason": "The target is the original number after an operation was performed incorrectly; inverse-operation reasoning recovers it.",
+      "supportingQuestionUids": [
+        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -393,6 +727,20 @@
   ],
   "templates": [
     {
+      "templateKey": "TPL_ATTENDANCE_CYCLES_COMMON_PERIOD_COUNT",
+      "parentProblemTypeKey": "PT_LCM_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
+      "representativeReason": "두 attendance cycle의 최소공배수 주기를 구해 한 주기당 겹치는 날을 세고 기간 수만큼 반복한다.",
+      "supportingQuestionUids": [
+        "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_CHECK_POWER_AND_PRIME_FACTOR_EQUALITIES",
       "parentProblemTypeKey": "PT_EXPONENT_AND_FACTORIZATION_STATEMENT_CHECK",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -400,10 +748,12 @@
       "representativeQuestionUid": "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
       "representativeReason": "The template is a five-choice truth check mixing repeated addition, powers, prime factorization, and decimal powers; the student rejects each false representation.",
       "supportingQuestionUids": [
-        "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d"
+        "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
+        "qid_v1_2f3257280a8470181a81973e3d241d51086b31824f2ad04a682496573d2a5c51"
       ],
       "sourceBatches": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -421,6 +771,48 @@
       ]
     },
     {
+      "templateKey": "TPL_CHOOSE_INCORRECT_PRIME_FACTORIZATION",
+      "parentProblemTypeKey": "PT_EXPONENT_AND_FACTORIZATION_STATEMENT_CHECK",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b",
+      "representativeReason": "각 소수 인수의 곱을 원래 수와 비교해 오류가 있는 분해식을 고른다.",
+      "supportingQuestionUids": [
+        "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_COMPLETE_ODD_EXPONENTS_FOR_SQUARE",
+      "parentProblemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06",
+      "representativeReason": "The template factors one integer and asks for the minimum multiplier, using each missing prime factor once.",
+      "supportingQuestionUids": [
+        "qid_v1_e72d5960d8a95f87d7b9d05482cad9878d4a1c0fb1bc1f706183d47491f81e06"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_COMPUTE_RATIONAL_ENDPOINTS_THEN_COUNT_INTEGERS",
+      "parentProblemTypeKey": "PT_INTEGER_COUNT_BETWEEN_RATIONAL_RESULTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7304a4c8a49ab4eeb07277c5c7a537f60eb58ab4b620ea5f5a6002b252ac2147",
+      "representativeReason": "The template forms one endpoint by subtracting a fraction and another by adding a fraction, then counts intervening integers.",
+      "supportingQuestionUids": [
+        "qid_v1_7304a4c8a49ab4eeb07277c5c7a537f60eb58ab4b620ea5f5a6002b252ac2147"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_COPRIME_COUNT_BOUNDED_INTERVAL",
       "parentProblemTypeKey": "PT_COPRIME_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -432,6 +824,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_INTEGER_VALUES_IN_MIXED_LIST",
+      "parentProblemTypeKey": "PT_INTEGER_MEMBERSHIP_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_6bc636bbbfedd0e50c3d18cb68bbe50364939e372b8af3a14193ed066d883809",
+      "representativeReason": "The template mixes fractions, terminating decimals, signed integers, zero, and an unsimplified quotient.",
+      "supportingQuestionUids": [
+        "qid_v1_6bc636bbbfedd0e50c3d18cb68bbe50364939e372b8af3a14193ed066d883809"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -449,6 +855,20 @@
       ]
     },
     {
+      "templateKey": "TPL_COUNT_PRIMES_IN_CLOSED_NATURAL_INTERVAL",
+      "parentProblemTypeKey": "PT_BOUNDED_PRIME_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e",
+      "representativeReason": "The template supplies a short closed natural interval and asks for the count, not the list.",
+      "supportingQuestionUids": [
+        "qid_v1_ae204ecf6206ea478f89ef3996e71897dbfcb908862df24d0fbbea9e42bdd25e"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_EVALUATE_EXPRESSION_THEN_SUM_POSITIVE_INTEGERS",
       "parentProblemTypeKey": "PT_RATIONAL_EXPRESSION_BOUNDED_INTEGER_SUM",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -460,6 +880,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_EXTREMA_OF_LINEAR_EXPRESSION_FROM_ABSOLUTE_VALUES",
+      "parentProblemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb",
+      "representativeReason": "절댓값에서 얻은 유한한 부호 선택지를 비교해 선형식의 양 끝값을 산출한다.",
+      "supportingQuestionUids": [
+        "qid_v1_95cda2403680d62e0019fbe0b7599743e8c55855ac75face03d0b85aa4c5fdbb"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -505,6 +939,34 @@
       ]
     },
     {
+      "templateKey": "TPL_FIND_NONMULTIPLE_FROM_GIVEN_LCM",
+      "parentProblemTypeKey": "PT_COMMON_MULTIPLE_MEMBERSHIP",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a6f2a90b06edebd146078fc946b7474f130d357bcce6c834fb850cb0b4e9d9d3",
+      "representativeReason": "The template supplies an LCM and several prime-power candidates, one of which lacks a required factor.",
+      "supportingQuestionUids": [
+        "qid_v1_a6f2a90b06edebd146078fc946b7474f130d357bcce6c834fb850cb0b4e9d9d3"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_IDENTIFY_COPRIME_PAIR_BY_SHARED_FACTORS",
+      "parentProblemTypeKey": "PT_COPRIME_PAIR_IDENTIFICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393",
+      "representativeReason": "The template contrasts five pairs, each with an obvious shared factor except the coprime pair.",
+      "supportingQuestionUids": [
+        "qid_v1_c2105252f573de05ead0f47fc8482d1903829db0ddba92aaac269be28d35f393"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_IDENTIFY_WRONG_LAW_IN_SIGNED_PRODUCT",
       "parentProblemTypeKey": "PT_OPERATION_LAW_STEP_AUDIT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -516,6 +978,34 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_JUDGE_BASIC_ABSOLUTE_VALUE_AND_INTEGER_ORDER",
+      "parentProblemTypeKey": "PT_ABSOLUTE_VALUE_PROPERTY_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+      "representativeReason": "The template contrasts absolute-value counts, a bounded integer count, negative-number order, and the minimum absolute value.",
+      "supportingQuestionUids": [
+        "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_LCM_TOOTH_CYCLE_THEN_GEAR_TURNS",
+      "parentProblemTypeKey": "PT_LCM_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
+      "representativeReason": "The template turns the first common tooth engagement count into a requested number of rotations for one specified gear.",
+      "supportingQuestionUids": [
+        "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -561,6 +1051,34 @@
       ]
     },
     {
+      "templateKey": "TPL_MAXIMUM_EQUAL_SHARING_BY_GCD",
+      "parentProblemTypeKey": "PT_MAXIMUM_EQUAL_DISTRIBUTION_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_4dea314439a6a3b2aa87f27bca2dcf91ef8756d52a92ba57f9507bbb229f243c",
+      "representativeReason": "The template divides two fixed inventory counts equally among as many recipients as possible.",
+      "supportingQuestionUids": [
+        "qid_v1_4dea314439a6a3b2aa87f27bca2dcf91ef8756d52a92ba57f9507bbb229f243c"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_ODD_FACTOR_BOUND_FROM_ALTERNATING_SUM",
+      "parentProblemTypeKey": "PT_CONSTRAINED_FACTOR_PAIR",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
+      "representativeReason": "교대합에서 홀짝 조건을 도출한 뒤 인수식의 값과 하한 조건으로 자연수 인자를 선택한다.",
+      "supportingQuestionUids": [
+        "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_OUTLIER_BY_DISTINCT_PRIME_FACTORS",
       "parentProblemTypeKey": "PT_PRIME_FACTOR_SET_IDENTIFICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -572,6 +1090,48 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_POWERED_FRACTION_DIVISOR_ORDERED_EVALUATION",
+      "parentProblemTypeKey": "PT_MIXED_RATIONAL_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+      "representativeReason": "괄호와 거듭제곱을 먼저 처리한 후 음의 분수 나눗셈과 마지막 정수 덧셈을 수행한다.",
+      "supportingQuestionUids": [
+        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_PRIME_SUM_PRODUCT_WITH_NONCOPRIMALITY_FILTER",
+      "parentProblemTypeKey": "PT_PRIME_FACTOR_CONSTRAINT_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
+      "representativeReason": "The template produces a small set of prime triples, then uses a fixed square’s prime factor and an upper bound to select the number.",
+      "supportingQuestionUids": [
+        "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_PRODUCT_OF_GIVEN_RECIPROCALS",
+      "parentProblemTypeKey": "PT_RATIONAL_PRODUCT_QUOTIENT_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+      "representativeReason": "분수와 유한소수로 주어진 두 수를 기약분수로 정리하고 역수를 곱한다.",
+      "supportingQuestionUids": [
+        "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -617,6 +1177,62 @@
       ]
     },
     {
+      "templateKey": "TPL_REJECT_CANDIDATE_WITH_WRONG_GCD",
+      "parentProblemTypeKey": "PT_GCD_CONDITION_CANDIDATE_FILTER",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974",
+      "representativeReason": "The template gives a fixed triple gcd and a list of natural candidates, exactly one of which changes the gcd to the wrong value.",
+      "supportingQuestionUids": [
+        "qid_v1_801d28ec02001c2cc13082b23918d09c5e522e63f8017d9d3aa9408d7966c974"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_REJECT_COMMON_DIVISOR_BY_EXPONENT_BOUND",
+      "parentProblemTypeKey": "PT_COMMON_DIVISOR_MEMBERSHIP",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9cd86345a6822baf307175e1dce3b4f5e6280a462c5526a8d115e90d5d5bac01",
+      "representativeReason": "The template gives two prime factorizations and asks which listed divisor exceeds a shared prime exponent.",
+      "supportingQuestionUids": [
+        "qid_v1_9cd86345a6822baf307175e1dce3b4f5e6280a462c5526a8d115e90d5d5bac01"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_REVERSE_INCORRECT_ADD_FOR_SUBTRACT",
+      "parentProblemTypeKey": "PT_RECOVER_VALUE_FROM_OPERATION_ERROR",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
+      "representativeReason": "The template contrasts an intended subtraction with an actual addition and supplies the erroneous result.",
+      "supportingQuestionUids": [
+        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "templateKey": "TPL_SELECT_LARGEST_ABSOLUTE_VALUE_FROM_RATIONAL_CHOICES",
+      "parentProblemTypeKey": "PT_RATIONAL_NUMBER_ORDER_AND_EXTREMA",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940",
+      "representativeReason": "The template presents negative fractions, negative integers, zero, a positive fraction, and a positive integer as candidates.",
+      "supportingQuestionUids": [
+        "qid_v1_7994be197a1b8b0003d66fa187642f5f54415a04a495ce3f4a7669da83da2940"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_SELECT_MINIMUM_FROM_FIXED_SIGNED_EXPRESSIONS",
       "parentProblemTypeKey": "PT_EXTREME_EXPRESSION_VALUE_SELECTION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -631,6 +1247,20 @@
       ]
     },
     {
+      "templateKey": "TPL_SHIFT_REMAINDERS_TO_COMMON_MULTIPLE",
+      "parentProblemTypeKey": "PT_LCM_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536",
+      "representativeReason": "The template has distinct divisors whose remainders share a common offset from each divisor, reducing to one LCM.",
+      "supportingQuestionUids": [
+        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "templateKey": "TPL_SIGN_TUPLE_FROM_PRODUCT_ORDER_AND_QUOTIENT",
       "parentProblemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -642,6 +1272,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_SIGNED_FRACTION_DECIMAL_SUM",
+      "parentProblemTypeKey": "PT_RATIONAL_ADDITION_SUBTRACTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+      "representativeReason": "소수를 분수로 바꾸어 양수·음수 유리수 항들을 혼합 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -670,6 +1314,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_SUM_OF_EXTREME_RATIONAL_VALUES",
+      "parentProblemTypeKey": "PT_RATIONAL_NUMBER_ORDER_AND_EXTREMA",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_6cd2b86156ffe8f7e964da51a40a50b5961aaec4f7b96b9892cf4bbc101b253c",
+      "representativeReason": "분수·유한소수·정수의 크기를 비교하고 양 끝 극값 두 개만 결합한다.",
+      "supportingQuestionUids": [
+        "qid_v1_6cd2b86156ffe8f7e964da51a40a50b5961aaec4f7b96b9892cf4bbc101b253c"
+      ],
+      "sourceBatches": [
+        2
       ]
     },
     {
@@ -717,6 +1375,32 @@
   ],
   "crossConcepts": [
     {
+      "conceptKey": "CC_NUMBER_PARITY",
+      "status": "ACTIVE_REUSE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "representativeQuestionUid": "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8",
+      "representativeReason": "교대합 (-1)+(-1)^2+⋯+(-1)^B=-1에서 B가 홀수임을 얻어야 24의 인수쌍을 유일하게 고를 수 있다. 이 홀짝 판정은 인수쌍 primary 밖의 결정적 보조 개념이다.",
+      "supportingQuestionUids": [
+        "qid_v1_d269008218cd19d91814a439dfa20438a05cd0f0ec3cbe5e3cfb614d629231a8"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
+      "conceptKey": "CC_NUMBER_PRIME_COPRIME",
+      "status": "ACTIVE_REUSE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "representativeQuestionUid": "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360",
+      "representativeReason": "CC_NUMBER_PRIME_COPRIME is an active canonical concept: non-coprimality to 49 is essential to select the prime triple containing 7; this is outside the chosen prime-factorization L2.",
+      "supportingQuestionUids": [
+        "qid_v1_bccedcb814a339234aed0562db801fe5e9ebb7c5b1ae0832ed5ac55cc32f0360"
+      ],
+      "sourceBatches": [
+        2
+      ]
+    },
+    {
       "conceptKey": "CC_RECTANGULAR_PRISM_TILING",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerConceptShard": "MIDDLE1_CANDIDATE",
@@ -728,14 +1412,27 @@
       "sourceBatches": [
         1
       ]
+    },
+    {
+      "conceptKey": "CC_SET_CARDINALITY",
+      "status": "ACTIVE_REUSE",
+      "ownerConceptShard": "LOGIC_SET",
+      "representativeQuestionUid": "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
+      "representativeReason": "최소공배수로 주기를 정한 후에도 공동 출석일은 두 휴무 집합의 겹침을 빼서 세어야 하므로 원소 개수·포함배제 개념이 정답 도달에 필요하다. 이는 LCM primary 밖의 추가 단계다.",
+      "supportingQuestionUids": [
+        "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355"
+      ],
+      "sourceBatches": [
+        2
+      ]
     }
   ],
   "counts": {
-    "candidateProblemTypes": 20,
-    "candidateTemplates": 23,
+    "candidateProblemTypes": 37,
+    "candidateTemplates": 46,
     "candidateCrossConcepts": 1,
     "activeProblemTypeReuse": 0,
     "activeTemplateReuse": 0,
-    "activeCrossConceptReuse": 0
+    "activeCrossConceptReuse": 3
   }
 }

@@ -339,7 +339,8 @@ function buildRegistryIndex(canonical, outputs) {
     entry.conceptCount = shard.data.concepts.length;
   }
   for (const entry of next.canonicalSources) {
-    const text = readText(entry.path);
+    // Hash canonical source content with a stable EOL policy across checkouts.
+    const text = readText(entry.path).replaceAll("\r\n", "\n");
     entry.sizeBytes = Buffer.byteLength(text, "utf8");
     entry.sha256 = sha256(text);
   }
@@ -407,7 +408,9 @@ function expectedRuntime(canonical) {
 
 function verifyExact(pathName, expectedText, mismatches) {
   const actual = readText(pathName);
-  if (actual !== expectedText) mismatches.push(pathName);
+  // Git may check out generated text with CRLF on Windows even when the
+  // canonical serializer emits LF. Keep content parity strict across hosts.
+  if (actual.replaceAll("\r\n", "\n") !== expectedText.replaceAll("\r\n", "\n")) mismatches.push(pathName);
 }
 
 function main() {

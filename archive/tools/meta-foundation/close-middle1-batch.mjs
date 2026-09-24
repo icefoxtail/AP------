@@ -31,6 +31,7 @@ const holdCount = quality.filter(x => x.disposition !== 'HOLD_RESOLVED_NO_SOURCE
 const routeOut = consensus.filter(x => x.reviewStatus === 'ROUTE_OUT').length;
 const bucketCounts = Object.fromEntries([1,2,3,4,5].map(n => [n, finalDifficulty.filter(x => x.difficultyBucket === n).length]));
 const compatibilityCounts = finalDifficulty.reduce((acc,x) => (acc[x.legacyLevelCompatibility] = (acc[x.legacyLevelCompatibility] || 0) + 1, acc), {});
+const offTopicOrdinals = quality.filter(x => x.issueType === 'OFF_TOPIC_SOLUTION').map(x => x.sourceOrdinal);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
@@ -64,7 +65,7 @@ const lines = [
   '',
   '## Source quality and worker findings',
   '',
-  'All 23 archived solutions need item-specific repair. #9 and #21 explanations are off topic. #11 has a faint minus sign in its cube-net image; root direct inspection confirmed −3 and the keyed result −21. No protected source field was edited.',
+  `${holdCount} archived solutions remain on explicit quality HOLD. Off-topic solution ordinals: ${offTopicOrdinals.length ? offTopicOrdinals.map(n => `#${n}`).join(', ') : 'none'}. Root direct-read ordinals: ${plan.rootDirectReadOrdinals.length ? plan.rootDirectReadOrdinals.map(n => `#${n}`).join(', ') : 'none'}. No protected source field was edited.`,
   '',
   '## Artifact SHA-256',
   '',
