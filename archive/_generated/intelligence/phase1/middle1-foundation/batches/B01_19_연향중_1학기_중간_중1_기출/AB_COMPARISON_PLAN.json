@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 1,
+  "denominator": 23,
+  "comparisonRule": "Compare mathematical goal, primary method, decisive step, L1/L2, L3/L4 semantic boundary, CrossConcept, HOLD and ROUTE_OUT. Candidate key spelling differences alone do not create conflicts. Condition and IntegrationPattern differences are recorded for root gate but are outside the C trigger list in the current user instruction.",
+  "conflicts": [
+    { "sourceOrdinal": 4, "reason": "A gives divisor-count a separate L3; B merges it with bounded number-theoretic counting including #5." },
+    { "sourceOrdinal": 5, "reason": "A gives coprime-in-interval a separate L3; B merges it with divisor-count #4." },
+    { "sourceOrdinal": 9, "reason": "A places timezone conversion in integer meaning and separate L3; B places it in rational operations and a shared signed-change L3 with #22." },
+    { "sourceOrdinal": 10, "reason": "A separates fixed signed-integer expression comparison from #20; B shares an extrema-selection L3 with substituted algebraic expressions." },
+    { "sourceOrdinal": 11, "reason": "A places cube-net topology in solid figures and proposes mapping; B places arithmetic as primary with a cube-net CrossConcept and places the item on source/answer HOLD." },
+    { "sourceOrdinal": 20, "reason": "A uses a distinct algebraic substitution-and-comparison L3; B shares extrema-selection L3 with #10 and adds a proposed rational-operations CrossConcept." },
+    { "sourceOrdinal": 21, "reason": "A places smallest-cube packing in solid-measure primary with active divisor/multiple CrossConcept; B places LCM in number-theory primary with proposed tiling CrossConcept." },
+    { "sourceOrdinal": 22, "reason": "A treats win/loss net movement as distinct primary; B shares signed-change L3 with timezone conversion #9." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1, 2, 3, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18, 19, 23],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 6, "field": "conditionKeys", "note": "A proposes noncanonical COND_PRIME; evaluate against active Condition definition." },
+    { "sourceOrdinal": 7, "field": "integrationPattern", "note": "A INTERDEPENDENT, B SEQUENTIAL." },
+    { "sourceOrdinal": 8, "field": "conditionKeys/integrationPattern", "note": "B adds COND_RANGE; A marks SEQUENTIAL, B NONE." },
+    { "sourceOrdinal": 12, "field": "integrationPattern", "note": "Different combination interpretation for a single operation-law audit." },
+    { "sourceOrdinal": 13, "field": "integrationPattern", "note": "Different combination interpretation for common-factor arithmetic." },
+    { "sourceOrdinal": 17, "field": "conditionKeys", "note": "A adds COND_POSITIVE to natural-number/range constraints." },
+    { "sourceOrdinal": 19, "field": "conditionKeys", "note": "A adds implicit COND_NONZERO; B leaves no decisive condition." }
+  ]
+}

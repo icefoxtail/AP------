@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "m1-authority-preflight-v1",
+  "baseMainSha": "522c915eaa0c9e54bf43f3884f809d65075e1dbe",
+  "branch": "codex/meta-foundation/middle1",
+  "notionPagesRead": [
+    "GPT 작업 전 필독 라우터",
+    "Archive 2.0 / JS Archive 시작 페이지",
+    "Archive 전체 작업 생명주기 — 단계별 필독 문서",
+    "Sol Orchestrated Mode — 장기 프로젝트",
+    "Sol 지휘관 모드 — Codex 오케스트레이터 실험 메모",
+    "Codex Meta Foundation 단원정리 실행 프로토콜 v1",
+    "Meta Foundation 장기 진행 현황"
+  ],
+  "gitAuthorityRead": [
+    "docs/rules/02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md",
+    "docs/rules/00_RULES_INDEX.md",
+    "docs/rules/MANIFEST.md",
+    "docs/rules/02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md",
+    "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+    "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+    "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "archive/data/meta-foundation/canonical/",
+    "archive/data/meta-foundation/compiled/",
+    "archive/data/meta-foundation/runtime/",
+    "archive/data/question_identity_map.json",
+    "archive/data/question_metadata.json",
+    "archive/exams/original/middle/m1/"
+  ],
+  "manifestAudit": {
+    "entries": 33,
+    "directMetaAuthorityEntriesMatch": true,
+    "allEntriesMatch": false,
+    "driftPaths": [
+      "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md",
+      "docs/rules/03_REVIEW/무결성검수.md"
+    ]
+  },
+  "activeCanonicalSnapshot": {
+    "packCount": 8,
+    "conceptShardCount": 10,
+    "compiledProblemTypes": 139,
+    "compiledTemplates": 453,
+    "compiledCrossConcepts": 88,
+    "compiledConditions": 6,
+    "compiledBindings": 375,
+    "compiledAliases": 177,
+    "middle1PackExists": false
+  },
+  "engineCapabilityPreflight": {
+    "command": "node archive/tools/meta-foundation/compile-meta-foundation.mjs --check",
+    "baselineResult": "FAIL_DERIVED_ARTIFACT_MISMATCH",
+    "mismatchedArtifactCount": 10,
+    "sourceMutation": false,
+    "disposition": "Continue per-exam semantic work; final compiled/runtime parity remains unproven until canonical build and regeneration"
+  },
+  "status": "SCOPED_META_AUTHORITY_READ_FULL_MANIFEST_DRIFT_4",
+  "ruleDrift": "EXISTS"
+}
