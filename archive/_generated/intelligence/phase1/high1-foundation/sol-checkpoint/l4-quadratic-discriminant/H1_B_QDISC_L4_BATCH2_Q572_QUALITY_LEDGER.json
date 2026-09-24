@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "B_QDISC_BATCH2_Q572_CORRECTION_AND_PARITY_AUDIT",
+  "affectedQueueIndexes": [
+    572
+  ],
+  "inputFileSha256": "072ca6e8afe5c33102236ed831718a2802f84f9d338cb87625573a23fd398352",
+  "affectedIdentity": {
+    "questionUid": "qid_v1_111196a6100596287fe44d3a14c073618524061755efe8005fdbf0b01652b8a8",
+    "sourceFingerprint": "9d6daec2e9596e10aff2d89dadf2e4105a95c91090547266ddf89dc8a5409b75",
+    "contentHash": "6f65bac99ca7de1f9db8513052c42b5f7d696e2bc6015c84ab2e95bf87bcdae2",
+    "solutionHash": "49d4390753cd2621560dbaae712998468590edeff2cc9331a166c42073d0d6bf"
+  },
+  "rootCause": "The prior B q572 solutionMathEvidence and solutionIssue accidentally described the piecewise f(x)=x+t problem and result a+b=17 from a different UID, instead of this two-quadratic vertex/common-tangent item.",
+  "correctionScope": "Only q572 evidence, method/decisive reasons, issue status, review status and L4 verdict were corrected. The original 20-row batch output is preserved; no other L4 classification was edited.",
+  "independentResult": "The interval-extrema range yields unordered vertices {−1,2}. The swapped assignment has positive line-intersection discriminants and cannot be tangent; the valid forms have curvature magnitudes 1/2 and 1/4, giving f(2)+g(2)=−9/2, choice ①.",
+  "parityAudit": {
+    "otherRowsAudited": 19,
+    "mismatches": 0,
+    "check": "Each remaining output solutionMathEvidence was compared with its matching input solution; result-number overlap passed for all 19. The distinctive phrase f(x)=x+t and the a+b=17 conclusion occur in queue 592’s own input solution, so their appearance there is correctly UID-matched."
+  },
+  "correctedRowPath": "output/H1_B_QDISC_L4_BATCH2_Q572_CORRECTION.jsonl",
+  "preservedOriginalPath": "output/H1_B_QDISC_L4_BATCH2_20.jsonl",
+  "correctionRowCount": 1
+}
