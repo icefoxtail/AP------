@@ -42,7 +42,9 @@ const failures=[];const checks={};
 const gate=(name,ok,detail)=>{checks[name]={pass:Boolean(ok),detail};if(!ok)failures.push(name+(detail?`:${detail}`:''));};
 const same=(a,b)=>JSON.stringify(a??null)===JSON.stringify(b??null);
 const loadBank=(code,file)=>{const ctx={window:{},console:{log(){},warn(){},error(){}}};ctx.globalThis=ctx;vm.createContext(ctx);vm.runInContext(code,ctx,{filename:file,timeout:3000});return ctx.window.questionBank||ctx.window.questions||ctx.questionBank||ctx.questions;};
-const gitShow=(p)=>execFileSync('git',['show',`HEAD:${p}`],{cwd:root,maxBuffer:50*1024*1024}).toString('utf8');
+// Pin the pre-promotion B16 checkpoint. HEAD moves after the promotion commit;
+// comparing to moving HEAD would make source-protection and scope gates vacuous.
+const gitShow=(p)=>execFileSync('git',['show',`${input.sourceHead}:${p}`],{cwd:root,maxBuffer:50*1024*1024}).toString('utf8');
 
 gate('batch_16_of_16',input.counts.batches===16&&progress.batches.filter((r)=>r.batchNo<=16&&r.status.startsWith('SCOPED_BATCH_CLOSED')).length===16);
 gate('uid_identity_denominator',input.counts.rawRows===381&&input.counts.uniqueUid===381&&input.counts.uniqueSourceIdentity===381&&!input.failures.length);
