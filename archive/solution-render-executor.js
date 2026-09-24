@@ -9,6 +9,7 @@
     // next column/page. Source line breaks and typography remain unchanged;
     // only the split boundary moves earlier when the trailing fragment is tiny.
     const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
+    const MIN_LEADING_CONTINUATION_CHUNKS = 2;
 
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
@@ -188,7 +189,7 @@
                     const trailingCount = preparedChunks.length - chunkIndex;
                     const borrowCount = Math.min(
                         Math.max(0, MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount),
-                        Math.max(0, exp.children.length - 1)
+                        Math.max(0, exp.children.length - MIN_LEADING_CONTINUATION_CHUNKS)
                     );
                     const borrowed = borrowCount
                         ? Array.from(exp.children).slice(-borrowCount)
@@ -442,7 +443,7 @@ async function renderComposed({ area, items, deps }) {
                     const trailingCount = preparedChunks.length - chunkIndex;
                     const borrowCount = Math.min(
                         Math.max(0, MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount),
-                        Math.max(0, exp.children.length - 1)
+                        Math.max(0, exp.children.length - MIN_LEADING_CONTINUATION_CHUNKS)
                     );
                     const borrowed = borrowCount
                         ? Array.from(exp.children).slice(-borrowCount)
