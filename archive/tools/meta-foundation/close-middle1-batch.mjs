@@ -35,7 +35,7 @@ const offTopicOrdinals = quality.filter(x => x.issueType === 'OFF_TOPIC_SOLUTION
 const misleadingOrdinals = quality.filter(x => x.issueType === 'MISLEADING_SOLUTION').map(x => x.sourceOrdinal);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
-for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
+for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json','ROOT_Q15_GEOMETRY_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
 const lines = [
   `# M1 Meta Foundation — Batch ${String(batchNo).padStart(2,'0')} checkpoint report`,

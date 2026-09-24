@@ -16,17 +16,18 @@ const sourceAnswerHold = new Set(plan.sourceAnswerHoldOrdinals);
 const rows = consensus.map(x => {
   const override = overrides.get(x.sourceOrdinal);
   const sourceAnswerDefect = sourceAnswerHold.has(x.sourceOrdinal);
+  const disposition = override?.disposition || (sourceAnswerDefect ? 'SOURCE_BLOCKED' : plan.defaultDisposition);
   return {
     questionUid: x.questionUid,
     sourceArchiveFile: x.sourceArchiveFile,
     sourceOrdinal: x.sourceOrdinal,
     sourceFingerprint: x.sourceFingerprint,
     issueType: override?.issueType || plan.defaultIssueType,
-    issueReason: override?.reason || x.sourceIssue,
-    disposition: sourceAnswerDefect ? 'SOURCE_BLOCKED' : plan.defaultDisposition,
+    issueReason: override?.reason || x.sourceIssue || plan.defaultReason || 'No material source or solution defect after independent review.',
+    disposition,
     semanticMappingStatus: x.reviewStatus,
-    metadataWritebackAllowed: !sourceAnswerDefect,
-    runtimeSelectableBeforeRepair: false
+    metadataWritebackAllowed: disposition !== 'SOURCE_BLOCKED',
+    runtimeSelectableBeforeRepair: disposition === 'HOLD_RESOLVED_NO_SOURCE_MUTATION'
   };
 });
 if (new Set(rows.map(x => x.questionUid)).size !== rows.length) throw new Error('Source-quality duplicate UID');
