@@ -2,7 +2,7 @@
 
 **판정: `INTEGRATED_ONE_PASS_RECOMMENDED_WITH_CHANGES`**
 
-**상태: 파일럿 평가. 기존 고1 본작업과 production canonical에 자동 반영하지 않음.**
+**보고서 상태: 80문항 파일럿 종합판정 완료. 기존 고1 본작업과 production canonical에 자동 반영하지 않음.**
 
 ## 판단
 
