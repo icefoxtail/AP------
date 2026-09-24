@@ -76,6 +76,8 @@ const orderPercentCondition = JSON.parse(fs.readFileSync(path.join(dir, orderPer
 const orderPercentConditionByQueue = new Map(orderPercentCondition.items.map(item => [item.queueIndex, item]));
 const q319LabelFile = 'H1_SOL_Q319_NONBLOCKING_PQ_LABEL_ORDER.json';
 const q319Label = JSON.parse(fs.readFileSync(path.join(dir, q319LabelFile), 'utf8'));
+const q457DuplicateFile = 'H1_SOL_Q457_SOURCE_DUPLICATE_CONDITION_NOTE.json';
+const q457Duplicate = JSON.parse(fs.readFileSync(path.join(dir, q457DuplicateFile), 'utf8'));
 if (inequalityParentRows.length !== 39 || inequalityParentByQueue.size !== 39)
   throw new Error('inequality parent plan coverage mismatch');
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
@@ -440,6 +442,18 @@ for (const row of comparison.rows) {
     pending.splice(pending.indexOf('sourceIssue'), 1);
     fieldDecisions.sourceIssue = { value: 'NONBLOCKING_SOURCE_LABEL_MISMATCH', provenance: 'SOL_DIRECT_ADJUDICATION',
       evidenceFile: q319LabelFile, reason: q319Label.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 457) {
+    if (row.questionUid !== q457Duplicate.questionUid
+      || row.currentSourceFingerprint !== q457Duplicate.sourceFingerprint)
+      throw new Error('q457 duplicate condition Sol evidence/source drift');
+    if (fieldDecisions.sourceIssue.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q457 duplicate condition expected pending source issue');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('sourceIssue'), 1);
+    fieldDecisions.sourceIssue = { value: 'NONBLOCKING_SOURCE_DUPLICATE_CONDITION',
+      provenance: 'SOL_DIRECT_ADJUDICATION', evidenceFile: q457DuplicateFile, reason: q457Duplicate.reason };
     counts.fieldsSolDirectOverride++;
   }
   counts.items++;
