@@ -74,10 +74,95 @@ for (const row of input) {
 counts.uniqueInputUids = inputByUid.size;
 counts.uniqueInputSources = inputSourceSet.size;
 const modelLog = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'WORKER_MODEL_LOG.json'), 'utf8'));
+if (exists('B13_WORKER_QUALITY_REJECTION_A.json')) {
+  const rejection = json('B13_WORKER_QUALITY_REJECTION_A.json');
+  const oldWorker = modelLog.workers.find(x => x.workerName === rejection.workerName);
+  const replacement = modelLog.workers.find(x => x.workerName === rejection.replacementWorkerName);
+  const imageRefCount = input.reduce((count, row) => count + (row.images || []).length, 0);
+  if (rejection.batchNo !== batchNo || rejection.role !== 'A' || rejection.status !== 'RETIRED_BEFORE_LEDGER' || rejection.physicalLedgerWritten !== false || rejection.acceptedReviewedRows !== 0 || rejection.affectedSourceOrdinal !== 16 || rejection.inputImageRefCount !== imageRefCount || rejection.reportedImageCount >= imageRefCount || !String(input[15]?.content || '').includes('직육면체') || !oldWorker?.attemptedBatches?.includes(batchNo) || oldWorker.batchAssignments?.includes(batchNo) || !replacement?.batchAssignments?.includes(batchNo) || !replacement.modelVerified || replacement.actualModel !== 'gpt-6-luna' || replacement.actualReasoningEffort !== 'xhigh') fail('B13_PRELEDGER_A_REJECTION_OR_REPLACEMENT_INVALID');
+  counts.workerQualityRejectedAttemptCount = 1;
+}
+if (exists('B13_WORKER_QUALITY_REJECTION_B.json')) {
+  const rejection = json('B13_WORKER_QUALITY_REJECTION_B.json');
+  const oldWorker = modelLog.workers.find(x => x.workerName === rejection.workerName);
+  const replacement = modelLog.workers.find(x => x.workerName === rejection.replacementWorkerName);
+  const imageRefCount = input.reduce((count, row) => count + (row.images || []).length, 0);
+  if (rejection.batchNo !== batchNo || rejection.role !== 'B' || rejection.status !== 'RETIRED_BEFORE_LEDGER' || rejection.physicalLedgerWritten !== false || rejection.acceptedReviewedRows !== 0 || JSON.stringify(rejection.affectedSourceOrdinals) !== JSON.stringify([15,16,19,20]) || rejection.inputImageRefCount !== imageRefCount || !String(input[14]?.content || '').includes('접') || !String(input[15]?.content || '').includes('직육면체') || !String(input[18]?.content || '').includes('\\angle') || !String(input[19]?.content || '').includes('\\angle') || !oldWorker?.attemptedBatches?.includes(batchNo) || oldWorker.batchAssignments?.includes(batchNo) || !replacement?.batchAssignments?.includes(batchNo) || !replacement.modelVerified || replacement.actualModel !== 'gpt-6-luna' || replacement.actualReasoningEffort !== 'xhigh') fail('B13_PRELEDGER_B_REJECTION_OR_REPLACEMENT_INVALID');
+  counts.workerQualityRejectedAttemptCount = (counts.workerQualityRejectedAttemptCount || 0) + 1;
+}
+if (exists('LUNA_A_ARRAY_REVIEW_RECEIPT.json')) {
+  const schemaReceipt = json('LUNA_A_SCHEMA_CORRECTION_RECEIPT.json');
+  const arrayReceipt = json('LUNA_A_ARRAY_REVIEW_RECEIPT.json');
+  const arrayFinalFile = exists('LUNA_A_PRE_Q06_QUALITY_CORRECTION.jsonl') ? 'LUNA_A_PRE_Q06_QUALITY_CORRECTION.jsonl' : 'LUNA_A.jsonl';
+  const rawBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A_PRE_SCHEMA_CORRECTION.jsonl'));
+  const alignedBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A_PRE_TAXONOMY_ARRAY_REVIEW.jsonl'));
+  const finalBytes = fs.readFileSync(path.join(batchDir, arrayFinalFile));
+  const raw = jsonl('LUNA_A_PRE_SCHEMA_CORRECTION.jsonl'), aligned = jsonl('LUNA_A_PRE_TAXONOMY_ARRAY_REVIEW.jsonl'), final = jsonl(arrayFinalFile);
+  if (schemaReceipt.batchNo !== batchNo || schemaReceipt.worker !== 'LUNA_A' || schemaReceipt.changeType !== 'SCHEMA_ONLY_REASON_ARRAY_ALIGNMENT' || schemaReceipt.rawLedgerSha256 !== sha(rawBytes) || schemaReceipt.correctedLedgerSha256 !== sha(alignedBytes) || arrayReceipt.batchNo !== batchNo || arrayReceipt.worker !== 'LUNA_A' || arrayReceipt.changeType !== 'ARRAY_ONLY_CONDITION_AND_CROSS_CONCEPT_REVIEW' || arrayReceipt.oldLedgerSha256 !== sha(alignedBytes) || arrayReceipt.newLedgerSha256 !== sha(finalBytes) || raw.length !== input.length || aligned.length !== input.length || final.length !== input.length) fail('B13_A_SCHEMA_ARRAY_RECEIPT_INVALID');
+  const omit = (row, keys) => Object.fromEntries(Object.entries(row).filter(([key]) => !keys.includes(key)));
+  let schemaChanged = 0;
+  const declared = new Map((arrayReceipt.changedFieldsPerUid || []).map(x => [x.questionUid, x]));
+  let arrayChanged = 0;
+  for (let i = 0; i < Math.min(raw.length, aligned.length, final.length); i++) {
+    const before = raw[i], middle = aligned[i], after = final[i];
+    if (before.questionUid !== middle.questionUid || middle.questionUid !== after.questionUid || JSON.stringify(omit(before, ['conditionReasons'])) !== JSON.stringify(omit(middle, ['conditionReasons']))) fail('B13_A_SCHEMA_CORRECTION_EXCEEDED_SCOPE', { ordinal: i + 1 });
+    if (JSON.stringify(before.conditionReasons) !== JSON.stringify(middle.conditionReasons)) schemaChanged++;
+    const arrayFields = ['conditionKeys','conditionReasons','crossConceptKeys','crossConceptReasons'];
+    if (JSON.stringify(omit(middle, arrayFields)) !== JSON.stringify(omit(after, arrayFields))) fail('B13_A_ARRAY_REVIEW_EXCEEDED_SCOPE', { ordinal: i + 1 });
+    const changedFields = arrayFields.filter(key => JSON.stringify(middle[key]) !== JSON.stringify(after[key]));
+    if (changedFields.length) arrayChanged++;
+    const declaration = declared.get(after.questionUid);
+    if (Boolean(changedFields.length) !== Boolean(declaration) || (declaration && (declaration.sourceOrdinal !== after.sourceOrdinal || JSON.stringify(Object.keys(declaration.changedFields).sort()) !== JSON.stringify([...changedFields].sort()) || changedFields.some(key => JSON.stringify(declaration.changedFields[key]) !== JSON.stringify({ before: middle[key], after: after[key] }))))) fail('B13_A_ARRAY_REVIEW_RECEIPT_SCOPE_INVALID', { uid: after.questionUid });
+  }
+  counts.aSchemaCorrectedUidCount = schemaChanged;
+  counts.aTaxonomyArrayRevisedUidCount = arrayChanged;
+  if (schemaChanged !== schemaReceipt.changedRowCount || arrayChanged !== declared.size) fail('B13_A_CORRECTION_COUNT_MISMATCH');
+}
+if (exists('LUNA_B_ARRAY_REVIEW_RECEIPT.json')) {
+  const receipt = json('LUNA_B_ARRAY_REVIEW_RECEIPT.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B_PRE_TAXONOMY_ARRAY_REVIEW.jsonl'));
+  const newBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B.jsonl'));
+  const old = jsonl('LUNA_B_PRE_TAXONOMY_ARRAY_REVIEW.jsonl'), fresh = jsonl('LUNA_B.jsonl');
+  if (receipt.batch !== `B${String(batchNo).padStart(2,'0')}` || receipt.oldFile !== 'LUNA_B_PRE_TAXONOMY_ARRAY_REVIEW.jsonl' || receipt.newFile !== 'LUNA_B.jsonl' || receipt.oldSha256 !== sha(oldBytes) || receipt.newSha256 !== sha(newBytes) || old.length !== input.length || fresh.length !== input.length) fail('B13_B_ARRAY_REVIEW_RECEIPT_INVALID');
+  const declared = new Map((receipt.changedFieldsByUid || []).map(x => [x.questionUid, x]));
+  const arrayFields = ['conditionKeys','conditionReasons','crossConceptKeys','crossConceptReasons'];
+  const omit = row => Object.fromEntries(Object.entries(row).filter(([key]) => !arrayFields.includes(key)));
+  let changedRows = 0;
+  for (let i = 0; i < Math.min(old.length, fresh.length); i++) {
+    const before = old[i], after = fresh[i];
+    if (before.questionUid !== after.questionUid || JSON.stringify(omit(before)) !== JSON.stringify(omit(after))) fail('B13_B_ARRAY_REVIEW_EXCEEDED_SCOPE', { ordinal: i + 1 });
+    const changed = arrayFields.filter(key => JSON.stringify(before[key]) !== JSON.stringify(after[key]));
+    if (changed.length) changedRows++;
+    const declaration = declared.get(after.questionUid);
+    if (Boolean(changed.length) !== Boolean(declaration) || (declaration && (declaration.sourceOrdinal !== after.sourceOrdinal || JSON.stringify([...changed].sort()) !== JSON.stringify([...declaration.fields].sort())))) fail('B13_B_ARRAY_REVIEW_CHANGESET_INVALID', { uid: after.questionUid });
+  }
+  counts.bTaxonomyArrayRevisedUidCount = changedRows;
+  if (changedRows !== declared.size) fail('B13_B_ARRAY_REVIEW_COUNT_INVALID');
+}
+if (exists('B13_A_Q06_QUALITY_REJECTION.json')) {
+  const rejection = json('B13_A_Q06_QUALITY_REJECTION.json');
+  const normalization = json('A_Q06_SCHEMA_NORMALIZATION.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A_PRE_Q06_QUALITY_CORRECTION.jsonl'));
+  const newBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A.jsonl'));
+  const isolatedBytes = fs.readFileSync(path.join(batchDir, 'A_REVIEW_INPUT_Q06.jsonl'));
+  const rawBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A_REVISION_Q06.jsonl'));
+  const normalizedBytes = fs.readFileSync(path.join(batchDir, 'LUNA_A_REVISION_Q06_NORMALIZED.jsonl'));
+  const old = jsonl('LUNA_A_PRE_Q06_QUALITY_CORRECTION.jsonl'), fresh = jsonl('LUNA_A.jsonl'), isolated = jsonl('A_REVIEW_INPUT_Q06.jsonl'), raw = jsonl('LUNA_A_REVISION_Q06.jsonl'), normalized = jsonl('LUNA_A_REVISION_Q06_NORMALIZED.jsonl');
+  const repairWorkers = modelLog.workers.filter(x => x.workerName === '/root/m1_semantic_a_q6_repair' && x.reviewRole === 'targeted_repair' && x.batchAssignments?.includes(batchNo));
+  const repairWorker = repairWorkers[0];
+  counts.aQualityRejectedUidCount = 1;
+  if (rejection.batchNo !== batchNo || rejection.sourceOrdinal !== 6 || rejection.status !== 'RESOLVED_FRESH_BLIND_Q06' || rejection.acceptedPrimaryAUidCount !== input.length - 1 || rejection.replacedRowCount !== 1 || rejection.oldALedgerSha256 !== sha(oldBytes) || rejection.newALedgerSha256 !== sha(newBytes) || rejection.isolatedInputSha256 !== sha(isolatedBytes) || rejection.rawReplacementSha256 !== sha(rawBytes) || rejection.normalizedReplacementSha256 !== sha(normalizedBytes) || old.length !== input.length || fresh.length !== input.length || isolated.length !== 1 || raw.length !== 1 || normalized.length !== 1) fail('B13_A_Q06_REPLACEMENT_RECEIPT_INVALID');
+  if (repairWorkers.length !== 1 || !repairWorker?.modelVerified || repairWorker.actualModel !== 'gpt-6-luna' || repairWorker.actualReasoningEffort !== 'xhigh' || repairWorker.semanticInputVerified !== true) fail('B13_A_Q06_REPAIR_MODEL_UNVERIFIED');
+  const source = input.find(x => x.sourceOrdinal === 6);
+  if (!source || JSON.stringify(isolated[0]) !== JSON.stringify(source) || rejection.rejectedUid !== source.questionUid || old[5]?.questionUid !== source.questionUid || old[5]?.reviewStatus !== 'HOLD' || normalized[0]?.questionUid !== source.questionUid || normalized[0]?.inputBundleSha !== source.inputBundleSha || normalized[0]?.reviewStatus !== 'PROPOSED') fail('B13_A_Q06_REPLACEMENT_SOURCE_INVALID');
+  const schemaChanges = [...new Set([...Object.keys(raw[0] || {}), ...Object.keys(normalized[0] || {})])].filter(key => JSON.stringify(raw[0][key]) !== JSON.stringify(normalized[0]?.[key]));
+  if (normalization.batchNo !== batchNo || normalization.sourceOrdinal !== 6 || normalization.rawSha256 !== sha(rawBytes) || normalization.normalizedSha256 !== sha(normalizedBytes) || normalization.mathematicalFieldsChanged !== 0 || normalization.parentFieldsChanged !== 0 || JSON.stringify(schemaChanges) !== JSON.stringify(normalization.changedFields)) fail('B13_A_Q06_SCHEMA_NORMALIZATION_INVALID');
+  for (let i = 0; i < old.length; i++) if (JSON.stringify(fresh[i]) !== JSON.stringify(i === 5 ? normalized[0] : old[i])) fail('B13_A_Q06_REPLACEMENT_EXCEEDED_SCOPE', { ordinal: i + 1 });
+}
 const requiredSemanticFields = ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash', 'primaryMethod', 'decisiveStep', 'standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'conditionReasons', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue'];
 for (const role of ['A', 'B']) {
   const file = `LUNA_${role}.jsonl`;
-  const assignedWorkers = modelLog.workers.filter(x => x.workerName.startsWith(`/root/m1_semantic_${role.toLowerCase()}`) && x.batchAssignments?.includes(batchNo));
+  const assignedWorkers = modelLog.workers.filter(x => x.workerName.startsWith(`/root/m1_semantic_${role.toLowerCase()}`) && x.reviewRole !== 'targeted_repair' && x.batchAssignments?.includes(batchNo));
   const worker = assignedWorkers[0];
   if (assignedWorkers.length !== 1) fail('MODEL_PINNING_AMBIGUOUS_ASSIGNMENT', { role, count: assignedWorkers.length });
   if (!worker || !worker.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh') fail('MODEL_PINNING_UNVERIFIED', { role });
@@ -185,6 +270,26 @@ if (exists('CONFLICT_C.jsonl')) {
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
+if (exists('CONFLICT_C_SCHEMA_PARENT_REVIEW_RECEIPT.json')) {
+  const receipt = json('CONFLICT_C_SCHEMA_PARENT_REVIEW_RECEIPT.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'CONFLICT_C_PRE_SCHEMA_CORRECTION.jsonl'));
+  const newBytes = fs.readFileSync(path.join(batchDir, 'CONFLICT_C.jsonl'));
+  const oldRows = jsonl('CONFLICT_C_PRE_SCHEMA_CORRECTION.jsonl');
+  const newRows = jsonl('CONFLICT_C.jsonl');
+  if (receipt.receiptType !== 'B13_CONFLICT_C_SCHEMA_AND_PARENT_REVIEW' || receipt.oldSha256 !== sha(oldBytes) || receipt.newSha256 !== sha(newBytes) || receipt.validation?.status !== 'PASS' || receipt.validation.rowCount !== conflictSet.size || oldRows.length !== newRows.length || newRows.length !== conflictSet.size || JSON.stringify(receipt.requiredSemanticFields) !== JSON.stringify(requiredSemanticFields) || JSON.stringify(receipt.validation.sourceOrdinals) !== JSON.stringify(newRows.map(x => x.sourceOrdinal))) fail('C_SCHEMA_PARENT_REVIEW_RECEIPT_INVALID');
+  const declared = new Map((receipt.changedFieldsByRow || []).map(x => [x.questionUid, x]));
+  for (let i = 0; i < Math.min(oldRows.length, newRows.length); i++) {
+    const before = oldRows[i], after = newRows[i], change = declared.get(after.questionUid);
+    const beforeKeys = new Set(Object.keys(before)), afterKeys = new Set(Object.keys(after));
+    const added = [...afterKeys].filter(k => !beforeKeys.has(k)).sort();
+    const removed = [...beforeKeys].filter(k => !afterKeys.has(k)).sort();
+    const changed = [...beforeKeys].filter(k => afterKeys.has(k) && JSON.stringify(before[k]) !== JSON.stringify(after[k])).sort();
+    if (!change || change.sourceOrdinal !== after.sourceOrdinal || before.questionUid !== after.questionUid || JSON.stringify(added) !== JSON.stringify([...change.addedFields].sort()) || JSON.stringify(removed) !== JSON.stringify([...change.removedFields].sort()) || JSON.stringify(changed) !== JSON.stringify([...change.changedFields].sort()) || changed.some(k => !['l1L2Conflict','problemTypeKey','standardUnitKey','subUnitKey'].includes(k)) || ['sourceFingerprint','inputBundleSha','contentHash','choicesHash','solutionHash','primaryMethod','decisiveStep','reviewStatus'].some(k => before[k] !== after[k])) fail('C_SCHEMA_PARENT_REVIEW_EXCEEDED_SCOPE', { uid: after.questionUid });
+  }
+  if (declared.size !== newRows.length) fail('C_SCHEMA_PARENT_REVIEW_COUNT_INVALID');
+  counts.cSchemaCorrectedUidCount = newRows.length;
+  counts.cParentRejudgedUidCount = newRows.filter((x,i) => oldRows[i].l1L2Conflict !== x.l1L2Conflict).length;
+}
 if (exists('C_QUALITY_DEFECTS.json')) {
   const rejection = json('C_QUALITY_DEFECTS.json');
   const defects = rejection.defects || [];
@@ -269,7 +374,7 @@ for (const scope of qualityScopes.filter(x => exists(x.file))) {
     }
   }
 }
-counts.workerQualityRejectedUidCount += (counts.cQualityRejectedUidCount || 0) + (counts.abQualityRejectedUidCount || 0);
+counts.workerQualityRejectedUidCount += (counts.cQualityRejectedUidCount || 0) + (counts.abQualityRejectedUidCount || 0) + (counts.aQualityRejectedUidCount || 0);
 let consensusChecked = false;
 let consensusByUid = new Map();
 if (exists('CONSENSUS.jsonl')) {
@@ -522,6 +627,12 @@ if (exists('B11_RECHECK_TRIGGER_ADJUDICATION.json')) {
 if (exists('DIFFICULTY_RECHECK_QUEUE.jsonl') && exists('DIFFICULTY_RECHECK.jsonl')) {
   const queue = jsonl('DIFFICULTY_RECHECK_QUEUE.jsonl');
   const review = jsonl('DIFFICULTY_RECHECK.jsonl');
+  if (batchNo >= 13) {
+    const recheckWorkers = modelLog.workers.filter(x => x.reviewRole === 'difficulty_recheck' && x.batchAssignments?.includes(batchNo));
+    const recheckWorker = recheckWorkers[0];
+    if (recheckWorkers.length !== 1 || !recheckWorker?.modelVerified || recheckWorker.actualModel !== 'gpt-6-luna' || recheckWorker.actualReasoningEffort !== 'xhigh' || recheckWorker.blindInputVerified !== true) fail('DIFFICULTY_RECHECK_MODEL_UNVERIFIED', { assignmentCount: recheckWorkers.length });
+    counts.difficultyRecheckModelVerified = recheckWorkers.length === 1 && recheckWorker?.modelVerified === true;
+  }
   counts.recheckQueue = queue.length;
   counts.recheckReviewed = review.length;
   const queueByUid = new Map(queue.map(x => [x.questionUid, x]));
