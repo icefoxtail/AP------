@@ -9,6 +9,8 @@
     // Keep the last solution continuation from degenerating into only one or
     // two visible lines on an otherwise empty column/page.
     const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
+    // Rebalancing must not reduce a useful leading fragment to a single chunk.
+    const MIN_LEADING_CONTINUATION_CHUNKS = 2;
 
     function fail(message) { throw new Error(message); }
     function positive(value, field) { const number = Number(value); if (!Number.isFinite(number) || number <= 0) fail('INVALID_' + field); return number; }
@@ -596,7 +598,7 @@
                     const borrowCount = trailingCount < MIN_TRAILING_CONTINUATION_CHUNKS
                         ? Math.min(
                             MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount,
-                            Math.max(0, originalLength - 1)
+                            Math.max(0, originalLength - MIN_LEADING_CONTINUATION_CHUNKS)
                         )
                         : 0;
                     const borrowed = borrowCount
@@ -1179,7 +1181,7 @@
                         const segmentCount = end - start + 1;
                         const borrowCount = Math.min(
                             MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount,
-                            Math.max(0, segmentCount - 1)
+                            Math.max(0, segmentCount - MIN_LEADING_CONTINUATION_CHUNKS)
                         );
                         if (borrowCount > 0) {
                             end -= borrowCount;

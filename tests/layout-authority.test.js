@@ -387,6 +387,23 @@ test('solution planners rebalance a tiny trailing continuation instead of orphan
     [[0, 3], [4, 11]]
   );
 
+  const smallMeasured = L.planMeasuredSolutionLayout({
+    pageGeometry: { usableHeight: 100, columns: 2, tolerance: 2 },
+    blocks: [{
+      blockId: 'small-tail-balance',
+      rawHeight: 180,
+      compressedHeight: 150,
+      chunkCount: 3,
+      primaryHeights: [35, 70, 104],
+      continuationHeights: { 2: [40] }
+    }]
+  });
+  assert.equal(smallMeasured.status, 'READY');
+  assert.deepEqual(
+    smallMeasured.pages.flatMap(page => page.itemPlacements.map(item => [item.chunkStart, item.chunkEnd])),
+    [[0, 1], [2, 2]]
+  );
+
   const chunks = Array.from({ length: 12 }, (_, index) => ({
     chunkId: 'c' + index,
     measuredHeight: 10,
@@ -407,5 +424,26 @@ test('solution planners rebalance a tiny trailing continuation instead of orphan
   assert.deepEqual(
     legacy.pages.flatMap(page => page.itemPlacements.map(item => [item.chunkStart, item.chunkEnd])),
     [[0, 3], [4, 11]]
+  );
+
+  const smallLegacy = L.planLegacySolutionLayout({
+    pageGeometry: { usableHeight: 100, columns: 2, blockGap: 0 },
+    blocks: [{
+      blockId: 'small-tail-balance',
+      questionKey: 'small-tail-balance',
+      measuredHeight: 110,
+      measurements: { raw: 110, tight: 110 },
+      shellOverhead: 0,
+      continuationShellOverhead: 0,
+      chunks: [35, 35, 40].map((measuredHeight, index) => ({
+        chunkId: 'small-c' + index,
+        measuredHeight,
+        tight: measuredHeight
+      }))
+    }]
+  });
+  assert.deepEqual(
+    smallLegacy.pages.flatMap(page => page.itemPlacements.map(item => [item.chunkStart, item.chunkEnd])),
+    [[0, 1], [2, 2]]
   );
 });
