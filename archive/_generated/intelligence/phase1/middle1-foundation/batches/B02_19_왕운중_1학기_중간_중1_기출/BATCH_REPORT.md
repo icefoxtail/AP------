@@ -12,7 +12,7 @@
 - Semantic HOLD / ROUTE_OUT: **0/0**
 - Source/solution quality HOLD: **24**; source/answer BLOCK **0**
 - L1 corrections / L2 corrections: **1/10**
-- B01 provisional L3 / L4 / CrossConcept usage: **20/24/3**
+- Batch provisional L3 / L4 / CrossConcept usage: **20/24/3**
 - Cumulative candidate L3 / L4 / CrossConcept: **37/46/1**
 - Difficulty distribution 1–5: **6 / 13 / 2 / 3 / 0**
 - Legacy compatibility: NORMAL 22; BORDERLINE_ACCEPTABLE 2

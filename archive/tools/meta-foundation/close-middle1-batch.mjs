@@ -17,7 +17,7 @@ if (!exam || exam.batchNo !== batchNo) throw new Error('Usage: close-middle1-bat
 if (state.completedBatchCount !== batchNo - 1) throw new Error(`Out-of-order batch closure ${batchNo}`);
 const dir = path.join(root, exam.artifactPath);
 const validation = JSON.parse(fs.readFileSync(path.join(dir, 'VALIDATION.json'), 'utf8'));
-const requiredChecked = ['sourceCount','protectedFields','decisionIsolatedInput','inputHashes','imageDependencies','modelPinning','aAndBEvidence','conflictDenominator','cCoverage','consensus','parentValidity','candidateRegistryValidity','sourceQualityHold','difficultyInput','difficultyCoverage','blindFirstOrder','legacyCompare','mandatoryRecheck','finalDifficulty','metadataOnlyMutation','writebackCoverage'];
+const requiredChecked = ['sourceCount','protectedFields','decisionIsolatedInput','inputHashes','imageDependencies','modelPinning','aAndBEvidence','workerQualityClosure','conflictDenominator','cCoverage','consensus','parentValidity','candidateRegistryValidity','sourceQualityHold','difficultyInput','difficultyCoverage','blindFirstOrder','legacyCompare','mandatoryRecheck','finalDifficulty','metadataOnlyMutation','writebackCoverage'];
 if (validation.status !== 'SCOPED_BATCH_CLOSED_WITH_EXPLICIT_HOLDS_GLOBAL_CANONICAL_PENDING' || validation.failures.length || requiredChecked.some(key => validation.checked[key] !== true)) throw new Error('Batch validation is not scoped-closed');
 const readJsonl = name => fs.readFileSync(path.join(dir, name), 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
 const consensus = readJsonl('CONSENSUS.jsonl');
@@ -35,6 +35,7 @@ const offTopicOrdinals = quality.filter(x => x.issueType === 'OFF_TOPIC_SOLUTION
 const misleadingOrdinals = quality.filter(x => x.issueType === 'MISLEADING_SOLUTION').map(x => x.sourceOrdinal);
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
+for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','WORKER_QUALITY_REJECTIONS.json','B_REVIEW_INPUT_03.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','WORKER_QUALITY_REJECTION_B.json']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
 const lines = [
   `# M1 Meta Foundation — Batch ${String(batchNo).padStart(2,'0')} checkpoint report`,
@@ -47,11 +48,12 @@ const lines = [
   `- A/B reviewed: **${validation.counts.AReviewed}/${validation.counts.BReviewed}**`,
   `- A/B semantic agreement / actual conflict: **${exam.questionRowCount - validation.counts.abConflicts}/${validation.counts.abConflicts}**`,
   `- C blind reviewed: **${validation.counts.CReviewed}/${validation.counts.abConflicts}**`,
-  `- Sol direct source+image read: **${plan.rootDirectReadOrdinals.length} UID** (${plan.rootDirectReadOrdinals.join(', ') || 'none'})`,
+  `- Worker-quality rejected and source-revised UIDs: **${validation.counts.workerQualityRejectedUidCount || 0}**`,
+  `- Sol direct source read (including image where relevant): **${plan.rootDirectReadOrdinals.length} UID** (${plan.rootDirectReadOrdinals.join(', ') || 'none'})`,
   `- Semantic HOLD / ROUTE_OUT: **${validation.counts.consensusHolds}/${routeOut}**`,
   `- Source/solution quality HOLD: **${holdCount}**; source/answer BLOCK **${quality.filter(x => x.disposition === 'SOURCE_BLOCKED').length}**`,
   `- L1 corrections / L2 corrections: **${writeback.l1ChangedCount}/${writeback.l2ChangedCount}**`,
-  `- B01 provisional L3 / L4 / CrossConcept usage: **${new Set(consensus.map(x => x.problemTypeKey)).size}/${new Set(consensus.map(x => x.templateKey)).size}/${new Set(consensus.flatMap(x => x.crossConceptKeys)).size}**`,
+  `- Batch provisional L3 / L4 / CrossConcept usage: **${new Set(consensus.map(x => x.problemTypeKey)).size}/${new Set(consensus.map(x => x.templateKey)).size}/${new Set(consensus.flatMap(x => x.crossConceptKeys)).size}**`,
   `- Cumulative candidate L3 / L4 / CrossConcept: **${registry.counts.candidateProblemTypes}/${registry.counts.candidateTemplates}/${registry.counts.candidateCrossConcepts}**`,
   `- Difficulty distribution 1–5: **${[1,2,3,4,5].map(n => bucketCounts[n]).join(' / ')}**`,
   `- Legacy compatibility: ${Object.entries(compatibilityCounts).map(([key,count]) => `${key} ${count}`).join('; ')}`,

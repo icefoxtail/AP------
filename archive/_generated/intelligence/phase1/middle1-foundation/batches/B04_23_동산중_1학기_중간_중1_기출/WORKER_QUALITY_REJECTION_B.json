@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "m1-worker-quality-rejection-v1",
+  "batchNo": 4,
+  "worker": "B",
+  "status": "RESOLVED_TARGETED_REVIEW",
+  "rejectedOrdinals": [
+    3
+  ],
+  "rejectedQuestionUids": [
+    "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f"
+  ],
+  "oldLedgerSha256": "f1c9627f9ec061387a44cf0fd9457db19d7c0368efec3586e25797a53cc73fa0",
+  "failureCode": "DECISION_COPIED_FROM_CANDIDATE",
+  "detail": "B row 3 has correct B04 divisor-exponent method/reason but PT/TPL keys from a prior train departure question; key is not source-derived.",
+  "correctionInput": "B_REVIEW_INPUT_03.jsonl",
+  "revisionOutput": "LUNA_B_REVISION_03.jsonl",
+  "correctedLedgerSha256": "4a4d65979eae1f95a4ff8add4195723c456c924cf3d41add8e2fa1b1eff67d8c",
+  "revisionSha256": "be577f4a0f04b7b298924daed234e64e262bc03bef5a9ec76a12271ce11075f3",
+  "replacedRows": 1,
+  "unaffectedRowsPreserved": 22
+}

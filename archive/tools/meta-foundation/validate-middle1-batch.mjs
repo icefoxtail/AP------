@@ -131,6 +131,42 @@ if (exists('CONFLICT_C.jsonl')) {
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
+let workerQualityClosure = true;
+const qualityScopes = [
+  { file: 'WORKER_QUALITY_REJECTIONS.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_01_09.jsonl', ledgerFile: 'LUNA_A.jsonl' },
+  { file: 'WORKER_QUALITY_REJECTION_B.json', role: 'B', oldFile: 'LUNA_B_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_B_REVISION_03.jsonl', ledgerFile: 'LUNA_B.jsonl' }
+];
+counts.workerQualityRejectedUidCount = 0;
+for (const scope of qualityScopes.filter(x => exists(x.file))) {
+  const rejection = json(scope.file);
+  const rejectedCount = rejection.rejectedQuestionUids?.length || 0;
+  counts.workerQualityRejectedUidCount += rejectedCount;
+  if (rejection.worker !== scope.role) fail('WORKER_QUALITY_ROLE_MISMATCH', { file: scope.file });
+  if (rejection.status !== 'RESOLVED_TARGETED_REVIEW') {
+    fail('WORKER_QUALITY_REJECTED_SCOPE', { worker: scope.role, count: rejectedCount });
+    if (scope.role === 'A') counts.AReviewed = Math.max(0, (counts.AReviewed || 0) - rejectedCount);
+    if (scope.role === 'B') counts.BReviewed = Math.max(0, (counts.BReviewed || 0) - rejectedCount);
+    workerQualityClosure = false;
+  } else {
+    const corrected = fs.readFileSync(path.join(batchDir, scope.ledgerFile));
+    const old = fs.readFileSync(path.join(batchDir, scope.oldFile));
+    const revision = jsonl(scope.revisionFile);
+    const correctedRows = jsonl(scope.ledgerFile);
+    const correctedByUid = new Map(correctedRows.map(x => [x.questionUid, x]));
+    if (sha(corrected) !== rejection.correctedLedgerSha256 || sha(old) !== rejection.oldLedgerSha256 || revision.length !== rejectedCount) {
+      fail('WORKER_QUALITY_CORRECTION_PROVENANCE_MISMATCH', { worker: scope.role });
+      workerQualityClosure = false;
+    }
+    const rejectedSet = new Set(rejection.rejectedQuestionUids);
+    for (const row of revision) {
+      const source = inputByUid.get(row.questionUid);
+      if (!rejectedSet.has(row.questionUid) || !source || row.inputBundleSha !== source.inputBundleSha || row.contentHash !== source.contentHash || row.solutionHash !== source.solutionHash || JSON.stringify(row) !== JSON.stringify(correctedByUid.get(row.questionUid))) {
+        fail('WORKER_QUALITY_REVISION_SOURCE_MISMATCH', { worker: scope.role, uid: row.questionUid });
+        workerQualityClosure = false;
+      }
+    }
+  }
+}
 let consensusChecked = false;
 let consensusByUid = new Map();
 if (exists('CONSENSUS.jsonl')) {
@@ -284,7 +320,7 @@ if (!errors.length && finalDifficultyChecked) status = 'DIFFICULTY_FINAL_VALIDAT
 if (!errors.length && writebackChecked) status = 'SCOPED_BATCH_CLOSED_WITH_EXPLICIT_HOLDS_GLOBAL_CANONICAL_PENDING';
 const candidateRegistry = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'M1_CUMULATIVE_TAXONOMY_REGISTRY.json'), 'utf8'));
 const candidateKeyCount = (candidateRegistry.counts?.candidateProblemTypes || 0) + (candidateRegistry.counts?.candidateTemplates || 0) + (candidateRegistry.counts?.candidateCrossConcepts || 0);
-const result = { schemaVersion: 'm1-batch-validation-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, status, counts, failures: errors, deferredGlobalChecks: ['ACTIVE_CANONICAL_PROMOTION', 'COMPILED_RUNTIME_PARITY', 'ARCHIVE2_JOIN', 'GLOBAL_COMPRESSION'], candidateKeyCount, checked: { sourceCount: true, protectedFields: true, decisionIsolatedInput: true, inputHashes: true, imageDependencies: true, modelPinning: true, aAndBEvidence: true, conflictDenominator: Boolean(counts.abCompared), cCoverage: counts.CReviewed === counts.abConflicts, consensus: consensusChecked, parentValidity: consensusChecked, candidateRegistryValidity: consensusChecked, activeCanonicalValidity: false, sourceQualityHold: sourceQualityChecked, difficultyInput: difficultyInputChecked, difficultyCoverage: difficultyChecked, blindFirstOrder: blindFirstChecked && legacyChecked, legacyCompare: legacyChecked, mandatoryRecheck: recheckChecked, finalDifficulty: finalDifficultyChecked, metadataOnlyMutation: true, writebackCoverage: writebackChecked } };
+const result = { schemaVersion: 'm1-batch-validation-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, status, counts, failures: errors, deferredGlobalChecks: ['ACTIVE_CANONICAL_PROMOTION', 'COMPILED_RUNTIME_PARITY', 'ARCHIVE2_JOIN', 'GLOBAL_COMPRESSION'], candidateKeyCount, checked: { sourceCount: true, protectedFields: true, decisionIsolatedInput: true, inputHashes: true, imageDependencies: true, modelPinning: true, aAndBEvidence: true, workerQualityClosure, conflictDenominator: Boolean(counts.abCompared), cCoverage: counts.CReviewed === counts.abConflicts, consensus: consensusChecked, parentValidity: consensusChecked, candidateRegistryValidity: consensusChecked, activeCanonicalValidity: false, sourceQualityHold: sourceQualityChecked, difficultyInput: difficultyInputChecked, difficultyCoverage: difficultyChecked, blindFirstOrder: blindFirstChecked && legacyChecked, legacyCompare: legacyChecked, mandatoryRecheck: recheckChecked, finalDifficulty: finalDifficultyChecked, metadataOnlyMutation: true, writebackCoverage: writebackChecked } };
 fs.writeFileSync(path.join(batchDir, 'VALIDATION.json'), JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify({ batchNo, status, counts, failureCount: errors.length, firstFailures: errors.slice(0, 8) }, null, 2));
 if (errors.length) process.exitCode = 1;
