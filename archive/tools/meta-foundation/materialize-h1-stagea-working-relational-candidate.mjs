@@ -28,6 +28,14 @@ const geometricRangeByQueue = new Map(geometricRange.items.map(item => [item.que
 const cubicFactorFile = 'H1_SOL_CC_CUBIC_FACTOR_BEFORE_DISCRIMINANT_3.json';
 const cubicFactor = JSON.parse(fs.readFileSync(path.join(dir, cubicFactorFile), 'utf8'));
 const cubicFactorByQueue = new Map(cubicFactor.items.map(item => [item.queueIndex, item]));
+const realDomainHoldFile = 'H1_SOL_UNSPECIFIED_REAL_DOMAIN_HOLD_2.json';
+const realDomainHold = JSON.parse(fs.readFileSync(path.join(dir, realDomainHoldFile), 'utf8'));
+const realDomainHoldByQueue = new Map(realDomainHold.items.map(item => [item.queueIndex, item]));
+const rootsOutsidePrimaryFile = 'H1_SOL_CC_ROOTS_COEFFICIENTS_OUTSIDE_PRIMARY_3.json';
+const rootsOutsidePrimary = JSON.parse(fs.readFileSync(path.join(dir, rootsOutsidePrimaryFile), 'utf8'));
+const rootsOutsidePrimaryByQueue = new Map(rootsOutsidePrimary.items.map(item => [item.queueIndex, item]));
+const q767CcFile = 'H1_SOL_Q767_PRIMARY_QUADRATIC_INEQUALITY_CC_DEDUP.json';
+const q767Cc = JSON.parse(fs.readFileSync(path.join(dir, q767CcFile), 'utf8'));
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
   throw new Error('A/B/C coverage gate not closed for queue 51-1170');
 const consensusByQueue = new Map(fieldConsensus.rows.map(row => [row.queueIndex, row]));
@@ -162,6 +170,42 @@ for (const row of comparison.rows) {
     pending.splice(pending.indexOf('crossConcepts'), 1);
     fieldDecisions.crossConcepts = { value: ['CC_POLYNOMIAL_FACTORIZATION'], provenance: 'SOL_DIRECT_ADJUDICATION',
       evidenceFile: cubicFactorFile, reason: factorDirect.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const domainHold = realDomainHoldByQueue.get(row.queueIndex);
+  if (domainHold) {
+    if (row.questionUid !== domainHold.questionUid || row.currentSourceFingerprint !== domainHold.sourceFingerprint)
+      throw new Error(`Real-domain HOLD Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.sourceIssue.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`Real-domain HOLD expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('sourceIssue'), 1);
+    fieldDecisions.sourceIssue = { value: 'SOURCE_UNRESOLVED_HOLD', provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: realDomainHoldFile, reason: domainHold.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  const rootsOutsidePrimaryItem = rootsOutsidePrimaryByQueue.get(row.queueIndex);
+  if (rootsOutsidePrimaryItem) {
+    if (row.questionUid !== rootsOutsidePrimaryItem.questionUid
+      || row.currentSourceFingerprint !== rootsOutsidePrimaryItem.sourceFingerprint)
+      throw new Error(`Roots/coefficient CC Sol evidence/source drift q${row.queueIndex}`);
+    if (fieldDecisions.crossConcepts.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error(`Roots/coefficient CC expected pending q${row.queueIndex}`);
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('crossConcepts'), 1);
+    fieldDecisions.crossConcepts = { value: ['CC_ROOTS_COEFFICIENTS'], provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: rootsOutsidePrimaryFile, reason: rootsOutsidePrimaryItem.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 767) {
+    if (row.questionUid !== q767Cc.questionUid || row.currentSourceFingerprint !== q767Cc.sourceFingerprint)
+      throw new Error('q767 CC Sol evidence/source drift');
+    if (fieldDecisions.crossConcepts.provenance !== 'SOL_DIRECT_ADJUDICATION_PENDING')
+      throw new Error('q767 CC expected pending');
+    counts.fieldsPendingSol--;
+    pending.splice(pending.indexOf('crossConcepts'), 1);
+    fieldDecisions.crossConcepts = { value: [], provenance: 'SOL_DIRECT_ADJUDICATION',
+      evidenceFile: q767CcFile, reason: q767Cc.reason };
     counts.fieldsSolDirectOverride++;
   }
   counts.items++;

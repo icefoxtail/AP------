@@ -127,7 +127,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]",
+    "content": "다음은 다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정이다.\n$$\\begin{array}{r|ccc|c}\na & 6 & -1 & b & \\multicolumn{1}{c}{-3}\\\\\n & & \\boxed{\\phantom{000}} & \\boxed{\\phantom{000}} & \\multicolumn{1}{c}{\\boxed{\\phantom{000}}}\\\\\\hline\n & 6 & 3 & 3 & c\n\\end{array}$$\n$a+b+c$의 값은? (단, $a,b,c$는 상수이다.) [3.9점]",
     "choices": [
       "$\\frac{1}{3}$",
       "$\\frac{2}{3}$",

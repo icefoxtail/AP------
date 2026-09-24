@@ -81,7 +81,7 @@ const sorted = value => [...new Set((Array.isArray(value) ? value : [])
 const label = value => typeof value === 'string' ? value : value?.key ?? value?.status ?? value?.issue ?? null;
 const sourceIssueLabel = value => {
   const raw = label(value);
-  if (['CLEAR', 'NO_ISSUE', 'OK', 'PASS'].includes(raw) || raw?.startsWith('UPSTREAM_L')) return 'NONE';
+  if (['CLEAR', 'NO_ISSUE', 'OK', 'PASS', 'RESOLVED'].includes(raw) || raw?.startsWith('UPSTREAM_L')) return 'NONE';
   if (['SOLUTION_GENERIC_FILLER', 'SOLUTION_PLACEHOLDER', 'SOLUTION_BLOCKER',
     'SOLUTION_WRONG_ITEM', 'SOLUTION_TOPIC_MISMATCH', 'SOLUTION_NOT_ITEM_SPECIFIC',
     'SOLUTION_GENERIC_NO_MATH'].includes(raw)) return 'SOLUTION_BLOCKER';
