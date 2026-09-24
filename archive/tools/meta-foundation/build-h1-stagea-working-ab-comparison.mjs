@@ -23,6 +23,10 @@ const bStatusSupersessionFile = path.join(dir, 'H1_STAGEA_LUNA6_B_BLIND_BATCH20_
 const bStatusOverrides = fs.existsSync(bStatusSupersessionFile)
   ? new Map(readLines(bStatusSupersessionFile).map(row => [row.questionUid, row]))
   : new Map();
+const postDAssetShaByQueue = new Map([[859, sha(fs.readFileSync(path.join(root,
+  'archive/assets/images/23_매산여고_2학기_기말_고1_기출/q10.png')))]]);
+const recordAssetSha = record => record.assetSha256 ?? record.imageEvidence?.assetSha256
+  ?? record.imageEvidence?.sha256?.toLowerCase() ?? null;
 const workerRows = { A: new Map(), B: new Map() };
 for (const file of workerFiles) {
   const side = /LUNA(?:6)?_A/.test(file) ? 'A' : 'B';
@@ -35,10 +39,11 @@ for (const file of workerFiles) {
 }
 const cRows = new Map();
 for (const file of cFiles) {
+  const mtime = fs.statSync(path.join(dir, file)).mtimeMs;
   for (const record of readLines(path.join(dir, file))) {
     if (!Number.isInteger(record.queueIndex)) continue;
     if (!cRows.has(record.queueIndex)) cRows.set(record.queueIndex, []);
-    cRows.get(record.queueIndex).push({ file, record });
+    cRows.get(record.queueIndex).push({ file, mtime, record });
   }
 }
 
@@ -71,7 +76,9 @@ function currentQuestion(sourceIdentity) {
 function choose(list, q, current) {
   const candidates = (list ?? []).filter(x => x.record.questionUid === q.questionUid
     && x.record.sourceIdentity === q.sourceIdentity
-    && x.record.sourceFingerprint === current.sourceFingerprint);
+    && x.record.sourceFingerprint === current.sourceFingerprint
+    && (!postDAssetShaByQueue.has(q.queueIndex)
+      || recordAssetSha(x.record) === postDAssetShaByQueue.get(q.queueIndex)));
   candidates.sort((a, b) => b.mtime - a.mtime || a.file.localeCompare(b.file));
   return candidates[0] ?? null;
 }
@@ -116,7 +123,7 @@ for (const q of queue) {
   const b = choose(workerRows.B.get(q.queueIndex), q, current);
   const na = normalized(a);
   const nb = normalized(b);
-  const c = (cRows.get(q.queueIndex) ?? []).find(x => x.record.questionUid === q.questionUid && x.record.sourceFingerprint === current.sourceFingerprint) ?? null;
+  const c = choose(cRows.get(q.queueIndex), q, current);
   const coreKeys = ['l3', 'l3Challenge', 'crossConcepts', 'conditions', 'integrationPattern', 'reviewStatus'];
   const differentCoreFields = na && nb ? coreKeys.filter(key => JSON.stringify(na[key]) !== JSON.stringify(nb[key])) : [];
   const issueLabelDifference = Boolean(na && nb && na.sourceIssue !== nb.sourceIssue);
@@ -134,6 +141,8 @@ for (const q of queue) {
   compared.push({
     queueIndex: q.queueIndex, questionUid: q.questionUid, sourceIdentity: q.sourceIdentity,
     currentSourceFingerprint: current.sourceFingerprint, currentSourceFileSha256: current.sourceFileSha256,
+    ...(postDAssetShaByQueue.has(q.queueIndex)
+      ? { currentVisualAssetSha256: postDAssetShaByQueue.get(q.queueIndex) } : {}),
     aFile: a?.file ?? null, bFile: b?.file ?? null,
     a: na, b: nb, currentCFile: c?.file ?? null,
     differentCoreFields, issueLabelDifference, coreConflict, fullConflict,
