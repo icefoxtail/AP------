@@ -74,7 +74,7 @@ for (const row of input) {
 counts.uniqueInputUids = inputByUid.size;
 counts.uniqueInputSources = inputSourceSet.size;
 const modelLog = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'WORKER_MODEL_LOG.json'), 'utf8'));
-const requiredSemanticFields = ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash', 'primaryMethod', 'decisiveStep', 'standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue'];
+const requiredSemanticFields = ['questionUid', 'sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash', 'primaryMethod', 'decisiveStep', 'standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'conditionReasons', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue'];
 for (const role of ['A', 'B']) {
   const file = `LUNA_${role}.jsonl`;
   const assignedWorkers = modelLog.workers.filter(x => x.workerName.startsWith(`/root/m1_semantic_${role.toLowerCase()}`) && x.batchAssignments?.includes(batchNo));
@@ -94,6 +94,7 @@ for (const role of ['A', 'B']) {
     for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role, uid: row.questionUid, field });
     for (const field of ['sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash']) if (row[field] !== source[field]) fail('WORKER_PROVENANCE_MISMATCH', { role, uid: row.questionUid, field });
     if (!Array.isArray(row.crossConceptKeys) || !Array.isArray(row.crossConceptReasons) || row.crossConceptKeys.length !== row.crossConceptReasons.length) fail('CROSS_CONCEPT_REASON_MISMATCH', { role, uid: row.questionUid });
+    if (!Array.isArray(row.conditionKeys) || !Array.isArray(row.conditionReasons) || row.conditionKeys.length !== row.conditionReasons.length) fail('CONDITION_REASON_MISMATCH', { role, uid: row.questionUid });
     if (row.reviewStatus === 'FINAL' || row.reviewStatus === 'PASS') fail('MODEL_DECLARED_FINAL', { role, uid: row.questionUid });
   }
   if (rows.length !== input.length || seen.size !== inputByUid.size) fail('WORKER_COVERAGE_MISMATCH', { role, expected: input.length, actual: rows.length });
@@ -131,9 +132,22 @@ if (exists('CONFLICT_C.jsonl')) {
     if (!conflictSet.has(row.questionUid)) fail('C_READ_NONCONFLICT_UID', { uid: row.questionUid });
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.contentHash !== source.contentHash || row.solutionHash !== source.solutionHash) fail('WORKER_PROVENANCE_MISMATCH', { role: 'C', uid: row.questionUid });
     for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role: 'C', uid: row.questionUid, field });
+    if (!Array.isArray(row.conditionKeys) || !Array.isArray(row.conditionReasons) || row.conditionKeys.length !== row.conditionReasons.length) fail('CONDITION_REASON_MISMATCH', { role: 'C', uid: row.questionUid });
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
+if (exists('B_SCHEMA_CORRECTION_RECEIPT.json')) {
+  const receipt = json('B_SCHEMA_CORRECTION_RECEIPT.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B_PRE_SCHEMA_CORRECTION.jsonl'));
+  const correctedBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B.jsonl'));
+  const oldRows = jsonl('LUNA_B_PRE_SCHEMA_CORRECTION.jsonl');
+  const correctedRows = jsonl('LUNA_B.jsonl');
+  if (receipt.batchNo !== batchNo || receipt.role !== 'B' || receipt.rowCount !== input.length || receipt.addedField !== 'conditionReasons' || JSON.stringify(receipt.addedValue) !== '[]' || receipt.semanticFieldsChanged !== 0 || sha(oldBytes) !== receipt.oldLedgerSha256 || sha(correctedBytes) !== receipt.correctedLedgerSha256 || oldRows.length !== correctedRows.length) fail('WORKER_SCHEMA_CORRECTION_PROVENANCE_MISMATCH');
+  for (let i = 0; i < oldRows.length; i++) {
+    const old = oldRows[i], fixed = correctedRows[i];
+    if (Object.hasOwn(old, 'conditionReasons') || !Array.isArray(old.conditionKeys) || old.conditionKeys.length || JSON.stringify({ ...old, conditionReasons: [] }) !== JSON.stringify(fixed)) fail('WORKER_SCHEMA_CORRECTION_SCOPE_MISMATCH', { uid: old.questionUid });
+  }
+}
 let workerQualityClosure = true;
 const qualityScopes = [
   { file: 'WORKER_QUALITY_REJECTIONS.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_01_09.jsonl', ledgerFile: 'LUNA_A.jsonl' },
