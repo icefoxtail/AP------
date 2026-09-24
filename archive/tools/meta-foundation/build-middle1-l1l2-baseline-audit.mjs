@@ -20,10 +20,12 @@ const rows = source.map((s, i) => {
   for (const worker of [aa, bb]) if (worker.questionUid !== s.questionUid || worker.inputBundleSha !== s.inputBundleSha || worker.sourceFingerprint !== s.sourceFingerprint) throw new Error(`L1/L2 worker source mismatch #${s.sourceOrdinal}`);
   const aDeviation = aa.standardUnitKey !== s.currentL1 || aa.subUnitKey !== s.currentL2;
   const bDeviation = bb.standardUnitKey !== s.currentL1 || bb.subUnitKey !== s.currentL2;
-  const candidate = aDeviation || bDeviation;
   const decision = decisions.get(s.sourceOrdinal);
+  const rootOpened = decision?.rootOpened === true;
+  const candidate = aDeviation || bDeviation || rootOpened;
   if (candidate !== Boolean(decision)) throw new Error(`L1/L2 candidate plan coverage mismatch #${s.sourceOrdinal}`);
   if (decision && (!['BASELINE_RETAINED', 'L1_L2_CONFLICT_CONFIRMED'].includes(decision.disposition) || !String(decision.evidence || '').trim())) throw new Error(`Missing L1/L2 evidence #${s.sourceOrdinal}`);
+  if (rootOpened && (aDeviation || bDeviation || !decision.rootEvidenceFile || !fs.existsSync(path.join(dir, decision.rootEvidenceFile)))) throw new Error(`Invalid root-only L1/L2 candidate #${s.sourceOrdinal}`);
   const acceptedL1 = decision?.acceptedL1 || s.currentL1;
   const acceptedL2 = decision?.acceptedL2 || s.currentL2;
   const conflictConfirmed = decision?.disposition === 'L1_L2_CONFLICT_CONFIRMED';
@@ -34,7 +36,7 @@ const rows = source.map((s, i) => {
     sourceIdentityFingerprint: s.sourceIdentityFingerprint, inputBundleSha: s.inputBundleSha,
     baselineL1: s.currentL1, baselineL2: s.currentL2,
     aL1: aa.standardUnitKey, aL2: aa.subUnitKey, bL1: bb.standardUnitKey, bL2: bb.subUnitKey,
-    aDeviation, bDeviation, baselineUsed: !conflictConfirmed, l1L2Conflict: conflictConfirmed,
+    aDeviation, bDeviation, rootOpened, baselineUsed: !conflictConfirmed, l1L2Conflict: conflictConfirmed,
     acceptedL1, acceptedL2, evidence: decision?.evidence || 'Existing L1/L2 retained as upstream baseline; no source-grounded conflict opened.'
   };
 });
@@ -45,6 +47,7 @@ const summary = {
   denominator: rows.length, baselineUsedUidCount: rows.filter(x => x.baselineUsed).length,
   l1L2ConflictCount: rows.filter(x => x.l1L2Conflict).length,
   workerDeviationUidCount: rows.filter(x => x.aDeviation || x.bDeviation).length,
+  rootOnlyCandidateCount: rows.filter(x => x.rootOpened).length,
   acceptedL1ChangeCount: rows.filter(x => x.acceptedL1 !== x.baselineL1).length,
   acceptedL2ChangeCount: rows.filter(x => x.acceptedL2 !== x.baselineL2).length,
   auditSha256: crypto.createHash('sha256').update(bytes).digest('hex')

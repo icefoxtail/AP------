@@ -114,6 +114,16 @@ if (batchNo >= 10) {
     baselineAuditByUid = new Map(audit.map(x => [x.questionUid, x]));
     counts.l1L2BaselineUsed = audit.filter(x => x.baselineUsed).length;
     counts.l1L2ConflictConfirmed = audit.filter(x => x.l1L2Conflict).length;
+    if (batchNo >= 12) {
+      const plan = json('L1_L2_CONFLICT_PLAN.json');
+      const rootOnlyDecisions = new Map((plan.candidateDecisions || []).filter(x => x.rootOpened === true).map(x => [x.sourceOrdinal, x]));
+      counts.l1L2RootOnlyCandidate = audit.filter(x => x.rootOpened === true).length;
+      if (summary.rootOnlyCandidateCount !== counts.l1L2RootOnlyCandidate || rootOnlyDecisions.size !== counts.l1L2RootOnlyCandidate) fail('L1_L2_ROOT_ONLY_COUNT_MISMATCH');
+      for (const row of audit.filter(x => x.rootOpened === true)) {
+        const decision = rootOnlyDecisions.get(row.sourceOrdinal);
+        if (!decision || row.aDeviation || row.bDeviation || !decision.rootEvidenceFile || !exists(decision.rootEvidenceFile) || !String(decision.evidence || '').trim()) fail('L1_L2_ROOT_ONLY_PROVENANCE_INVALID', { uid: row.questionUid });
+      }
+    }
     if (audit.length !== input.length || baselineAuditByUid.size !== input.length || summary.batchNo !== batchNo || summary.denominator !== input.length || summary.auditSha256 !== sha(auditBytes) || summary.baselineUsedUidCount !== counts.l1L2BaselineUsed || summary.l1L2ConflictCount !== counts.l1L2ConflictConfirmed || counts.l1L2BaselineUsed + counts.l1L2ConflictConfirmed !== input.length) fail('L1_L2_BASELINE_AUDIT_COUNT_OR_HASH_MISMATCH');
     for (const row of audit) {
       const source = inputByUid.get(row.questionUid);
@@ -187,6 +197,16 @@ if (exists('C_QUALITY_DEFECTS.json')) {
   }
   counts.cQualityRejectedUidCount = defects.length;
 }
+if (exists('AB_QUALITY_DEFECTS.json')) {
+  const rejection = json('AB_QUALITY_DEFECTS.json');
+  const defects = rejection.defects || [];
+  if (rejection.batchNo !== batchNo || rejection.status !== 'AFFECTED_UID_REOPENED_AND_ROOT_ADJUDICATED' || rejection.preservedALedgerSha256 !== sha(fs.readFileSync(path.join(batchDir, 'LUNA_A.jsonl'))) || rejection.preservedBLedgerSha256 !== sha(fs.readFileSync(path.join(batchDir, 'LUNA_B.jsonl'))) || defects.length === 0 || new Set(defects.map(x => x.questionUid)).size !== defects.length) fail('AB_QUALITY_DEFECT_RECEIPT_INVALID');
+  for (const defect of defects) {
+    const source = inputByUid.get(defect.questionUid);
+    if (!source || source.sourceOrdinal !== defect.sourceOrdinal || !conflictSet.has(defect.questionUid) || !String(defect.reason || '').trim() || !String(defect.type || '').trim() || !exists(defect.rootEvidenceFile)) fail('AB_QUALITY_AFFECTED_UID_INVALID', { uid: defect.questionUid });
+  }
+  counts.abQualityRejectedUidCount = defects.length;
+}
 if (exists('B_SCHEMA_CORRECTION_RECEIPT.json')) {
   const receipt = json('B_SCHEMA_CORRECTION_RECEIPT.json');
   const oldBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B_PRE_SCHEMA_CORRECTION.jsonl'));
@@ -249,12 +269,13 @@ for (const scope of qualityScopes.filter(x => exists(x.file))) {
     }
   }
 }
-counts.workerQualityRejectedUidCount += counts.cQualityRejectedUidCount || 0;
+counts.workerQualityRejectedUidCount += (counts.cQualityRejectedUidCount || 0) + (counts.abQualityRejectedUidCount || 0);
 let consensusChecked = false;
 let consensusByUid = new Map();
 if (exists('CONSENSUS.jsonl')) {
   const consensus = jsonl('CONSENSUS.jsonl');
   const cQualityRejectedUids = new Set((exists('C_QUALITY_DEFECTS.json') ? json('C_QUALITY_DEFECTS.json').defects : []).map(x => x.questionUid));
+  const abQualityRejectedUids = new Set((exists('AB_QUALITY_DEFECTS.json') ? json('AB_QUALITY_DEFECTS.json').defects : []).map(x => x.questionUid));
   const consensusPlan = json('CONSENSUS_PLAN.json');
   consensusByUid = new Map(consensus.map(x => [x.questionUid, x]));
   const master = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/master_tables/js_archive_tag_master.json'), 'utf8'));
@@ -278,8 +299,10 @@ if (exists('CONSENSUS.jsonl')) {
     const source = inputByUid.get(row.questionUid);
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.sourceFingerprint !== source.sourceFingerprint) fail('CONSENSUS_PROVENANCE_MISMATCH', { uid: row.questionUid });
     if (batchNo >= 10 && (row.standardUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL1 || row.subUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL2)) fail('CONSENSUS_L1_L2_BASELINE_AUTHORITY_MISMATCH', { uid: row.questionUid });
+    if (batchNo >= 12 && (row.l1L2Conflict !== baselineAuditByUid.get(row.questionUid)?.l1L2Conflict || (row.l1L2Conflict && !String(row.l1L2ConflictReason || '').trim()))) fail('CONSENSUS_L1_L2_CONFLICT_EVIDENCE_MISMATCH', { uid: row.questionUid });
     if (!row.consensusBasis?.rootReason || !['A','B','C'].includes(row.consensusBasis?.chosenRole)) fail('CONSENSUS_ROOT_REASON_MISSING', { uid: row.questionUid });
     if (cQualityRejectedUids.has(row.questionUid) && (row.consensusBasis.chosenRole === 'C' || !consensusPlan.rootDirectReadOrdinals?.includes(row.sourceOrdinal))) fail('C_QUALITY_DEFECT_NOT_ROOT_ADJUDICATED', { uid: row.questionUid });
+    if (abQualityRejectedUids.has(row.questionUid) && !consensusPlan.rootDirectReadOrdinals?.includes(row.sourceOrdinal)) fail('AB_QUALITY_DEFECT_NOT_ROOT_ADJUDICATED', { uid: row.questionUid });
     const l1row = masterByKey.get(row.standardUnitKey), l2row = masterByKey.get(row.subUnitKey);
     if (l1row?.keyType !== 'standardUnitKey' || l2row?.keyType !== 'subUnitKey' || l2row.standardUnitKey !== row.standardUnitKey) fail('L1_L2_PARENT_INVALID', { uid: row.questionUid, l1: row.standardUnitKey, l2: row.subUnitKey });
     if (row.reviewStatus === 'ROUTE_OUT' || row.reviewStatus === 'HOLD') {
@@ -349,7 +372,7 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
   if (exists('DIFFICULTY.jsonl')) {
     const dRows = jsonl('DIFFICULTY.jsonl');
     const dByUid = new Map(dInput.map(x => [x.questionUid, x]));
-    const difficultyWorkers = modelLog.workers.filter(x => x.workerName.startsWith('/root/m1_difficulty_blind') && x.workerName !== '/root/m1_difficulty_blind_repair' && x.batchAssignments?.includes(batchNo));
+    const difficultyWorkers = modelLog.workers.filter(x => x.workerName.startsWith('/root/m1_difficulty_blind') && x.workerName !== '/root/m1_difficulty_blind_repair' && x.reviewRole !== 'targeted_repair' && x.batchAssignments?.includes(batchNo));
     const worker = difficultyWorkers[0];
     if (difficultyWorkers.length !== 1 || !worker?.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh' || worker.blindInputVerified === false) fail('DIFFICULTY_MODEL_UNVERIFIED', { assignmentCount: difficultyWorkers.length });
     counts.difficultyReviewed = dRows.length;
@@ -394,6 +417,32 @@ if (exists('B11_DIFFICULTY_QUALITY_REJECTION.json')) {
   const sharedSource = fullInput.find(x => x.sourceOrdinal === 18);
   if (!source || !sharedSource || JSON.stringify(isolated[0]) !== JSON.stringify(source) || corrected[0]?.questionUid !== source.questionUid || corrected[0]?.blindInputSha !== source.blindInputSha || shared.sourceOrdinal !== 19 || shared.sharedFromSourceOrdinal !== 18 || shared.questionUid !== source.questionUid || shared.isolatedInputSha256 !== sha(isolatedBytes) || JSON.stringify(shared.images) !== JSON.stringify(sharedSource.images)) fail('B11_DIFFICULTY_REPAIR_INPUT_OR_SHARED_MATERIAL_INVALID');
   for (let i = 0; i < draft.length; i++) if (JSON.stringify(final[i]) !== JSON.stringify(i === 18 ? corrected[0] : draft[i])) fail('B11_DIFFICULTY_REPAIR_EXCEEDED_Q19_SCOPE', { ordinal: i + 1 });
+}
+if (exists('B12_DIFFICULTY_QUALITY_REJECTION.json')) {
+  const rejection = json('B12_DIFFICULTY_QUALITY_REJECTION.json');
+  const policyReview = json('B12_Q12_POLICY_REVIEW_RECEIPT.json');
+  const policyNormalization = json('B12_Q12_POLICY_FIELD_NORMALIZATION.json');
+  const originalCorrectionBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_Q12.jsonl'));
+  const policyReviewedRawBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_Q12_POLICY_REVIEW_RAW.jsonl'));
+  const draftBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_DRAFT.jsonl'));
+  const correctedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_Q12_POLICY_REVIEW.jsonl'));
+  const finalBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY.jsonl'));
+  const isolatedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_INPUT_Q12.jsonl'));
+  const draft = jsonl('DIFFICULTY_DRAFT.jsonl'), corrected = jsonl('DIFFICULTY_BLIND_CORRECTION_Q12_POLICY_REVIEW.jsonl'), final = jsonl('DIFFICULTY.jsonl'), isolated = jsonl('DIFFICULTY_BLIND_INPUT_Q12.jsonl');
+  const originalCorrection = jsonl('DIFFICULTY_BLIND_CORRECTION_Q12.jsonl');
+  const policyReviewedRaw = jsonl('DIFFICULTY_BLIND_CORRECTION_Q12_POLICY_REVIEW_RAW.jsonl');
+  const fullInput = jsonl('DIFFICULTY_INPUT.jsonl');
+  const repairWorkers = modelLog.workers.filter(x => x.workerName === '/root/m1_difficulty_blind_v3' && x.reviewRole === 'targeted_repair' && x.batchAssignments?.includes(batchNo));
+  const repairWorker = repairWorkers[0];
+  counts.difficultyWorkerQualityRejectedUidCount = 1;
+  const policyChangedFields = Object.keys(originalCorrection[0] || {}).filter(k => JSON.stringify(originalCorrection[0][k]) !== JSON.stringify(policyReviewedRaw[0]?.[k]));
+  const normalizedChangedFields = Object.keys(policyReviewedRaw[0] || {}).filter(k => JSON.stringify(policyReviewedRaw[0][k]) !== JSON.stringify(corrected[0]?.[k]));
+  if (policyReview.batchNo !== batchNo || policyReview.sourceOrdinal !== 12 || policyReview.mathematicalFieldsChanged !== 0 || policyReview.originalCorrectionSha256 !== sha(originalCorrectionBytes) || policyReview.policyReviewedRawSha256 !== sha(policyReviewedRawBytes) || JSON.stringify(policyChangedFields) !== JSON.stringify(policyReview.allowedChangedFields) || policyNormalization.batchNo !== batchNo || policyNormalization.sourceOrdinal !== 12 || policyNormalization.mathematicalFieldsChanged !== 0 || policyNormalization.rawSha256 !== sha(policyReviewedRawBytes) || policyNormalization.normalizedSha256 !== sha(correctedBytes) || JSON.stringify(normalizedChangedFields) !== JSON.stringify(policyNormalization.changedFields) || originalCorrection.length !== 1 || policyReviewedRaw.length !== 1 || corrected[0]?.reviewStatus !== 'PROPOSED' || corrected[0]?.sourceSolutionDifficultyConflict !== false || corrected[0]?.reviewerRequestedRecheck !== true) fail('B12_DIFFICULTY_Q12_POLICY_REVIEW_INVALID');
+  if (rejection.batchNo !== batchNo || rejection.status !== 'RESOLVED_FRESH_BLIND_Q12' || rejection.legacyComparedBeforeCorrection !== false || sha(draftBytes) !== rejection.originalDraftSha256 || sha(correctedBytes) !== rejection.correctedRowSha256 || sha(finalBytes) !== rejection.finalBlindLedgerSha256 || sha(isolatedBytes) !== rejection.isolatedInputSha256 || rejection.acceptedPrimaryCount !== input.length - 1 || draft.length !== input.length || final.length !== input.length || corrected.length !== 1 || isolated.length !== 1) fail('B12_DIFFICULTY_QUALITY_RECEIPT_INVALID');
+  if (repairWorkers.length !== 1 || !repairWorker?.modelVerified || repairWorker.actualModel !== 'gpt-6-luna' || repairWorker.actualReasoningEffort !== 'xhigh' || repairWorker.blindInputVerified !== true) fail('B12_DIFFICULTY_REPAIR_MODEL_UNVERIFIED');
+  const source = fullInput.find(x => x.sourceOrdinal === 12);
+  if (!source || JSON.stringify(isolated[0]) !== JSON.stringify(source) || rejection.rejectedUid !== source.questionUid || corrected[0]?.questionUid !== source.questionUid || corrected[0]?.blindInputSha !== source.blindInputSha || draft[11]?.questionUid !== source.questionUid || draft[11]?.difficultyBucket !== 'UNKNOWN' || draft[11]?.reviewStatus !== 'HOLD' || !String(draft[11]?.difficultyReason || '').includes('QUALITY_REJECTED')) fail('B12_DIFFICULTY_REPAIR_ISOLATION_INVALID');
+  for (let i = 0; i < draft.length; i++) if (JSON.stringify(final[i]) !== JSON.stringify(i === 11 ? corrected[0] : draft[i])) fail('B12_DIFFICULTY_REPAIR_EXCEEDED_Q12_SCOPE', { ordinal: i + 1 });
 }
 if (exists('B09_DIFFICULTY_QUALITY_REJECTION.json')) {
   const rejection = json('B09_DIFFICULTY_QUALITY_REJECTION.json');

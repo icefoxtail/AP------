@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 12,
+  "denominator": 23,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "defaultReason": "The archived explanation repeats a broad angle, geometry, construction or data instruction and the keyed result without the individual calculation or image-specific inference. Record a physical solution-quality HOLD only; this alone does not trigger Root rereading or difficulty recheck.",
+  "overrides": [
+    { "sourceOrdinal": 1, "issueType": "MISSING_RIGHT_ANGLE_SECTOR_DERIVATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits y=180−90−61=29 and x=180−61=119. Root proves 148° from the original image, resolving B/C cautious source HOLD without changing source." },
+    { "sourceOrdinal": 3, "issueType": "MISSING_TRAPEZOID_AREA_HEIGHT_EQUATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic angle explanation does not show (3+5)h/2=16 or h=4. Root verifies the area/height source and M1-06 measurement parent; protected solution is not edited." },
+    { "sourceOrdinal": 9, "issueType": "MISSING_TRIANGLE_UNIQUENESS_CASE_AUDIT", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation does not compare the five condition packages. Root identifies choice⑤ as included-side ASA and rejects B/C's AAS wording; source answer remains valid." },
+    { "sourceOrdinal": 10, "issueType": "UNVERIFIABLE_SMALL_CONSTRUCTION_OPERATION_LABELS", "disposition": "SOURCE_BLOCKED", "reason": "The image supports a general parallel-line construction but does not permit an exact binding of all circled arc/chord operations to the option④ order. A proposes, B/C and Root cannot certify; preserve source and semantic HOLD without taxonomy/writeback." },
+    { "sourceOrdinal": 13, "issueType": "MISSING_MARKED_TRIANGLE_ASA_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The stored criteria list omits how ㄴ's third angle50° and included 4cm side match ㅂ. Root proves keyed ASA choice① from the original panel; solution quality remains a separate finding." },
+    { "sourceOrdinal": 14, "issueType": "MISSING_RHOMBUS_PROPERTY_AUDIT", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic angle explanation omits diagonal bisector lengths3 and4, side5, triangle area12 and the incorrect printed triangle correspondence. Root confirms the quadrilateral parent and choice⑤." },
+    { "sourceOrdinal": 15, "issueType": "MISSING_HISTOGRAM_DESCENDING_RANK", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits that the top12–14 pull-up class has one and the next10–12 class five, placing fifth rank in the latter; C's false top-class four is rejected. Source answer remains valid." },
+    { "sourceOrdinal": 16, "issueType": "MISSING_SHARED_IMAGE_FOOTER_RANK", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic solution does not read the image-footer eighth-largest question or repeated leaves. Root verifies eighth value230mm from the complete image, resolving A/B/C HOLD without editing the source." },
+    { "sourceOrdinal": 18, "issueType": "MISSING_TABLE_RANK_AND_NUMERIC_VERIFICATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits the printed 4,5,7,8,6 frequencies and ninth-highest student's 80–90 class. Root rejects A/B wrong source numerals while preserving correct false statement⑤." },
+    { "sourceOrdinal": 19, "issueType": "MISSING_LOWER_QUARTILE_CUMULATIVE_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits lower frequencies2+7=9 of40 and the partial 70–80 class at the bottom25% boundary. Root proves at least80 avoids that group; source remains unchanged." },
+    { "sourceOrdinal": 20, "issueType": "MISSING_TORN_GRAPH_TOTAL_FREQUENCY_PROOF", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic explanation omits total50 minus visible2,3,13,12,2 to obtain missing18 and confirm under3 is5/50=10%. Root proves statement④ from original image; source is readable." }
+  ],
+  "sourceAnswerHoldOrdinals": [10],
+  "semanticMappingPolicy": "All 23 UID remain in the exam denominator. #10 SOURCE_BLOCKED semantic HOLD stays byte unchanged and absent from taxonomy/writeback. Other 22 generic or insufficient solution fields are quality findings only and do not automatically trigger Root or difficulty recheck. C #9/#15 and A/B #18 quality defects are preserved with targeted Root proof; protected student fields are untouched."
+}

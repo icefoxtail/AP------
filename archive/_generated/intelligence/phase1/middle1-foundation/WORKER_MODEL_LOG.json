@@ -165,7 +165,8 @@
       "batchAssignments": [
         9,
         10,
-        11
+        11,
+        12
       ],
       "replacementFor": "/root/m1_semantic_a_v3",
       "verificationSource": "Local Codex session world_state and turn_context immediately after spawn"
@@ -197,7 +198,8 @@
       "semanticInputVerified": true,
       "batchAssignments": [
         10,
-        11
+        11,
+        12
       ],
       "replacementFor": "/root/m1_semantic_b_v2",
       "verificationSource": "Local Codex session turn_context immediately after spawn"
@@ -213,7 +215,8 @@
       "blindInputVerified": true,
       "batchAssignments": [
         10,
-        11
+        11,
+        12
       ],
       "replacementFor": "/root/m1_conflict_c",
       "verificationSource": "Local Codex session turn_context immediately after spawn"
@@ -229,10 +232,28 @@
       "blindInputVerified": true,
       "batchAssignments": [
         10,
-        11
+        11,
+        12
       ],
       "replacementFor": "/root/m1_difficulty_blind",
       "verificationSource": "Local Codex session turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d46e-59d3-73b0-bb9f-09d8ecaccd54",
+      "workerName": "/root/m1_difficulty_blind_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        12
+      ],
+      "replacementFor": "/root/m1_difficulty_blind_v2 q12 affected scope only",
+      "verificationSource": "Local Codex session turn_context immediately after spawn",
+      "necessity": "Fresh isolated one-UID B12 q12 blind review after original reviewer acknowledged previous-exam context contamination before any accepted blind ledger",
+      "reviewRole": "targeted_repair"
     }
   ]
 }

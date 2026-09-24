@@ -18,7 +18,7 @@ const byRole = Object.fromEntries(['A', 'B', 'C'].map(role => [role, new Map(rea
 const compareByUid = new Map(compare.map(x => [x.questionUid, x]));
 const decisionByOrdinal = new Map(plan.decisions.map(x => [x.sourceOrdinal, x]));
 if (input.length !== exam.questionRowCount || decisionByOrdinal.size !== input.length || plan.decisions.length !== input.length) throw new Error('Consensus plan coverage mismatch');
-const allowedOverrides = new Set(['standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'primaryMethod', 'decisiveStep', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'conditionReasons', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue']);
+const allowedOverrides = new Set(['standardUnitKey', 'subUnitKey', 'l1Reason', 'l2Reason', 'l1L2Conflict', 'l1L2ConflictReason', 'primaryMethod', 'decisiveStep', 'problemTypeKey', 'l3SemanticReason', 'templateKey', 'l4SemanticReason', 'crossConceptKeys', 'crossConceptReasons', 'conditionKeys', 'conditionReasons', 'integrationPattern', 'semanticReason', 'reviewStatus', 'sourceIssue']);
 const records = input.map(source => {
   const decision = decisionByOrdinal.get(source.sourceOrdinal);
   const comparison = compareByUid.get(source.questionUid);

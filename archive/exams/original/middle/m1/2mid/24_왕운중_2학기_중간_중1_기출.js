@@ -30,7 +30,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_LINES_ANGLE_RELATION",
+    "templateKey": "TPL_M1_COMBINE_PERPENDICULAR_AND_LINEAR_ANGLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -61,7 +70,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SEGMENT_COUNT_FROM_POINTS",
+    "templateKey": "TPL_M1_COUNT_UNORDERED_POINT_PAIRS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -69,9 +87,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -89,10 +107,19 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "M1-05-BASIC_FIGURE",
-    "subUnit": "점·선·면과 각",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_TRAPEZOID_AREA_HEIGHT",
+    "templateKey": "TPL_M1_AREA_BASES_TO_HEIGHT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -123,7 +150,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_NESTED_MIDPOINTS",
+    "templateKey": "TPL_M1_CONSECUTIVE_MIDPOINTS_ON_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -154,7 +190,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_SPATIAL_RELATIONS",
+    "templateKey": "TPL_M1_PRISM_EDGE_INCIDENCE_AND_SKEW",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -182,7 +227,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SPATIAL_LINE_PLANE_RELATION_JUDGMENT",
+    "templateKey": "TPL_JUDGE_LINE_PLANE_PARALLEL_PERPENDICULAR_STATEMENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -213,7 +267,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+    "templateKey": "TPL_SINGLE_RECTANGLE_FOLD_REFLECTED_RAY_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -239,7 +302,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PARALLEL_LINE_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_CONVERSE_SAME_SIDE_INTERIOR_ANGLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -267,7 +339,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_UNIQUE_TRIANGLE_DETERMINATION_FROM_GIVEN_DATA",
+    "templateKey": "TPL_CLASSIFY_TRIANGLE_DATA_BY_UNIQUENESS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -329,7 +410,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEOMETRY_CONSTRUCTION_TOOL_USAGE",
+    "templateKey": "TPL_M1_COMPASS_TASK_CLASSIFICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -357,7 +447,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_ISOSCELES_TRIANGLE_INTEGER_COUNT",
+    "templateKey": "TPL_M1_PERIMETER_AND_TRIANGLE_INEQUALITY_CASES",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER","COND_RANGE"],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -389,7 +488,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIANGLE_CONGRUENCE_CONDITION_SELECTION",
+    "templateKey": "TPL_M1_MATCH_TRIANGLE_BY_SIDE_AND_ANGLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -397,9 +505,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -417,10 +525,19 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-06-POLYGON_CIRCLE",
+    "subUnit": "다각형과 원",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+    "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -448,10 +565,19 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_DATA_ORDER_STATISTIC_FROM_DISPLAY",
+    "templateKey": "TPL_M1_KTH_HIGHEST_VALUE_CLASS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -480,10 +606,19 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_DATA_ORDER_STATISTIC_FROM_DISPLAY",
+    "templateKey": "TPL_M1_KTH_HIGHEST_STEM_LEAF_VALUE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -514,7 +649,16 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_COUNT_STEM_INTERVAL_AND_CONVERT_PERCENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -542,10 +686,19 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_FREQUENCY_TABLE_STATEMENT_VALIDATION",
+    "templateKey": "TPL_M1_CHECK_FREQUENCY_TABLE_CLAIMS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -573,10 +726,19 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_FREQUENCY_POLYGON_QUANTILE_CUTOFF",
+    "templateKey": "TPL_M1_LOWER_QUARTILE_SUPPORT_CUTOFF",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -604,10 +766,19 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_PARTIAL_FREQUENCY_POLYGON_INFERENCE",
+    "templateKey": "TPL_M1_TORN_GRAPH_TRUE_STATEMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 21,
@@ -633,7 +804,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_ANGLE_MEASURE_FROM_ALGEBRAIC_RELATIONS",
+    "templateKey": "TPL_TWO_ADJACENT_RATIO_ANGLES_STRAIGHT_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -659,7 +839,16 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_FREQUENCY_TABLE_MISSING_CLASS_FREQUENCY",
+    "templateKey": "TPL_M1_TAIL_PERCENT_AND_LOWER_RANGE_PERCENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -685,6 +874,15 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+    "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
