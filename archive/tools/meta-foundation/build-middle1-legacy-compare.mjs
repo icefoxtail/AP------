@@ -50,7 +50,9 @@ for (const row of compared) {
   if (row.legacyLevelCompatibility === 'STRONG_CONFLICT') reasons.push('LEGACY_STRONG_CONFLICT');
   const dInput = byInput.get(row.questionUid);
   if ((dInput.images || []).length) reasons.push('VISUAL_DEPENDENCY');
-  if (byQuality.get(row.questionUid)?.issueType === 'OFF_TOPIC_SOLUTION') reasons.push('OFF_TOPIC_SOLUTION');
+  const solutionIssueType = byQuality.get(row.questionUid)?.issueType;
+  if (solutionIssueType === 'OFF_TOPIC_SOLUTION') reasons.push('OFF_TOPIC_SOLUTION');
+  if (solutionIssueType === 'MISLEADING_SOLUTION') reasons.push('MISLEADING_SOLUTION');
   if (reasons.length) triggersByUid.set(row.questionUid, reasons);
 }
 const byTemplate = new Map();
