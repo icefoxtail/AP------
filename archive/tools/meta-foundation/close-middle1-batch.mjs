@@ -18,6 +18,7 @@ if (state.completedBatchCount !== batchNo - 1) throw new Error(`Out-of-order bat
 const dir = path.join(root, exam.artifactPath);
 const validation = JSON.parse(fs.readFileSync(path.join(dir, 'VALIDATION.json'), 'utf8'));
 const requiredChecked = ['sourceCount','protectedFields','decisionIsolatedInput','inputHashes','imageDependencies','modelPinning','aAndBEvidence','workerQualityClosure','conflictDenominator','cCoverage','consensus','parentValidity','candidateRegistryValidity','sourceQualityHold','difficultyInput','difficultyCoverage','blindFirstOrder','legacyCompare','mandatoryRecheck','finalDifficulty','metadataOnlyMutation','writebackCoverage'];
+if (batchNo >= 10) requiredChecked.push('l1L2BaselineAuthority');
 if (validation.status !== 'SCOPED_BATCH_CLOSED_WITH_EXPLICIT_HOLDS_GLOBAL_CANONICAL_PENDING' || validation.failures.length || requiredChecked.some(key => validation.checked[key] !== true)) throw new Error('Batch validation is not scoped-closed');
 const readJsonl = name => fs.readFileSync(path.join(dir, name), 'utf8').split(/\r?\n/).filter(Boolean).map(JSON.parse);
 const consensus = readJsonl('CONSENSUS.jsonl');
@@ -28,6 +29,7 @@ const quality = readJsonl('SOURCE_QUALITY.jsonl');
 const plan = JSON.parse(fs.readFileSync(path.join(dir, 'CONSENSUS_PLAN.json'), 'utf8'));
 const writeback = JSON.parse(fs.readFileSync(path.join(dir, 'WRITEBACK_RECEIPT.json'), 'utf8'));
 const registry = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'M1_CUMULATIVE_TAXONOMY_REGISTRY.json'), 'utf8'));
+const l1L2Baseline = batchNo >= 10 ? JSON.parse(fs.readFileSync(path.join(dir, 'L1_L2_BASELINE_SUMMARY.json'), 'utf8')) : null;
 if (consensus.length !== exam.questionRowCount || finalDifficulty.length !== consensus.length || quality.length !== consensus.length) throw new Error('Batch denominator changed after validation');
 const holdCount = quality.filter(x => x.disposition !== 'HOLD_RESOLVED_NO_SOURCE_MUTATION').length;
 const routeOut = consensus.filter(x => x.reviewStatus === 'ROUTE_OUT').length;
@@ -41,6 +43,7 @@ const misleadingOrdinals = quality.filter(x => x.issueType === 'MISLEADING_SOLUT
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const artifactNames = ['INVENTORY.json','INPUT_BUNDLE.jsonl','LUNA_A.jsonl','LUNA_B.jsonl','AB_COMPARISON.jsonl','CONFLICT_INPUT.jsonl','CONFLICT_C.jsonl','CONSENSUS.jsonl','SOURCE_QUALITY.jsonl','DIFFICULTY_INPUT.jsonl','DIFFICULTY.jsonl','DIFFICULTY_FREEZE_RECEIPT.json','LEGACY_COMPARE.jsonl','DIFFICULTY_RECHECK_QUEUE.jsonl','DIFFICULTY_RECHECK.jsonl','DIFFICULTY_FINAL.jsonl','WRITEBACK_RECEIPT.json','VALIDATION.json'];
 for (const optional of ['A_REVIEW_INPUT_01_09.jsonl','A_REVIEW_INPUT_12.jsonl','LUNA_A_EARLY_DRAFT.jsonl','LUNA_A_PRE_CORRECTION.jsonl','LUNA_A_REVISION_01_09.jsonl','LUNA_A_REVISION_12.jsonl','WORKER_QUALITY_REJECTIONS.json','WORKER_QUALITY_REJECTION_A_B08.json','B_REVIEW_INPUT_03.jsonl','B_REVIEW_INPUT_18.jsonl','LUNA_B_PRE_CORRECTION.jsonl','LUNA_B_REVISION_03.jsonl','LUNA_B_REVISION_18.jsonl','WORKER_QUALITY_REJECTION_B.json','WORKER_QUALITY_REJECTION_B_B09.json','LUNA_B_PRE_SCHEMA_CORRECTION.jsonl','B_SCHEMA_CORRECTION_RECEIPT.json','DIFFICULTY_BLIND_INPUT_01_03.jsonl','DIFFICULTY_BLIND_CORRECTION_01_03_PRE_SCHEMA.jsonl','DIFFICULTY_BLIND_CORRECTION_01_03.jsonl','B09_DIFFICULTY_QUALITY_REJECTION.json','DIFFICULTY_ROOT_ADJUDICATION.json','ROOT_Q01_SOLUTION_MISMATCH.md','ROOT_Q01_STATEMENT_EVIDENCE.md','ROOT_Q06_CONSTRUCTION_HOLD.md','ROOT_Q07_SKEW_EDGE_EVIDENCE.md','ROOT_Q09_FOLD_TAPE_EVIDENCE.md','ROOT_Q10_FOLD_ANGLE_EVIDENCE.md','ROOT_Q12_PARALLEL_ANGLE_EVIDENCE.md','ROOT_Q14_EQUILATERAL_ROTATION_EVIDENCE.md','ROOT_Q15_GEOMETRY_EVIDENCE.md','ROOT_Q14_GEOMETRY_EVIDENCE.md','ROOT_Q16_SECTION_HOLD.md','ROOT_Q16_TRIANGLE_EVIDENCE.md','ROOT_Q17_SOLUTION_DEFECT_EVIDENCE.md','ROOT_Q19_CROSS_GRADE_EVIDENCE.md','ROOT_Q20_SYNTHETIC_PROOF.md','ROOT_Q22_GEOMETRY_EVIDENCE.md','ROOT_Q23_SOURCE_BLOCK_EVIDENCE.md','ROOT_Q25_SOLUTION_DEFECT_EVIDENCE.md']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
+for (const optional of ['L1_L2_CONFLICT_PLAN.json','L1_L2_BASELINE_AUDIT.jsonl','L1_L2_BASELINE_SUMMARY.json']) if (fs.existsSync(path.join(dir, optional))) artifactNames.push(optional);
 const artifactHashes = Object.fromEntries(artifactNames.map(name => [name, sha(fs.readFileSync(path.join(dir, name)))]));
 const lines = [
   `# M1 Meta Foundation — Batch ${String(batchNo).padStart(2,'0')} checkpoint report`,
@@ -50,6 +53,7 @@ const lines = [
   `- Source: \`${exam.sourceArchiveFile}\``,
   `- Exam title: ${exam.examTitle}`,
   `- Rows / unique UID: **${exam.questionRowCount}/${new Set(consensus.map(x => x.questionUid)).size}**`,
+  ...(l1L2Baseline ? [`- Existing L1/L2 baseline used UIDs: **${l1L2Baseline.baselineUsedUidCount}/${exam.questionRowCount}**`, `- Confirmed L1_L2_CONFLICT UIDs: **${l1L2Baseline.l1L2ConflictCount}**`] : []),
   `- A/B reviewed: **${validation.counts.AReviewed}/${validation.counts.BReviewed}**`,
   `- A/B semantic agreement / actual conflict: **${exam.questionRowCount - validation.counts.abConflicts}/${validation.counts.abConflicts}**`,
   `- A/B actual conflict rate: **${abConflictRate}%**`,

@@ -93,11 +93,36 @@ for (const role of ['A', 'B']) {
     if (!source) { fail('UNKNOWN_WORKER_UID', { role, uid: row.questionUid }); continue; }
     for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role, uid: row.questionUid, field });
     for (const field of ['sourceArchiveFile', 'sourceOrdinal', 'sourceFingerprint', 'inputBundleSha', 'contentHash', 'solutionHash']) if (row[field] !== source[field]) fail('WORKER_PROVENANCE_MISMATCH', { role, uid: row.questionUid, field });
+    if (batchNo >= 11) {
+      if (typeof row.l1L2Conflict !== 'boolean' || (row.l1L2Conflict && !String(row.l1L2ConflictReason || '').trim())) fail('L1_L2_CONFLICT_EVIDENCE_MISSING', { role, uid: row.questionUid });
+      if (row.l1L2Conflict === false && (row.standardUnitKey !== source.currentL1 || row.subUnitKey !== source.currentL2)) fail('L1_L2_BASELINE_DEVIATION_UNDECLARED', { role, uid: row.questionUid });
+    }
     if (!Array.isArray(row.crossConceptKeys) || !Array.isArray(row.crossConceptReasons) || row.crossConceptKeys.length !== row.crossConceptReasons.length) fail('CROSS_CONCEPT_REASON_MISMATCH', { role, uid: row.questionUid });
     if (!Array.isArray(row.conditionKeys) || !Array.isArray(row.conditionReasons) || row.conditionKeys.length !== row.conditionReasons.length) fail('CONDITION_REASON_MISMATCH', { role, uid: row.questionUid });
     if (row.reviewStatus === 'FINAL' || row.reviewStatus === 'PASS') fail('MODEL_DECLARED_FINAL', { role, uid: row.questionUid });
   }
   if (rows.length !== input.length || seen.size !== inputByUid.size) fail('WORKER_COVERAGE_MISMATCH', { role, expected: input.length, actual: rows.length });
+}
+let baselineAuditChecked = batchNo < 10;
+let baselineAuditByUid = new Map();
+if (batchNo >= 10) {
+  if (!exists('L1_L2_BASELINE_AUDIT.jsonl') || !exists('L1_L2_BASELINE_SUMMARY.json')) fail('L1_L2_BASELINE_AUDIT_MISSING');
+  else {
+    const auditBytes = fs.readFileSync(path.join(batchDir, 'L1_L2_BASELINE_AUDIT.jsonl'));
+    const audit = jsonl('L1_L2_BASELINE_AUDIT.jsonl');
+    const summary = json('L1_L2_BASELINE_SUMMARY.json');
+    baselineAuditByUid = new Map(audit.map(x => [x.questionUid, x]));
+    counts.l1L2BaselineUsed = audit.filter(x => x.baselineUsed).length;
+    counts.l1L2ConflictConfirmed = audit.filter(x => x.l1L2Conflict).length;
+    if (audit.length !== input.length || baselineAuditByUid.size !== input.length || summary.batchNo !== batchNo || summary.denominator !== input.length || summary.auditSha256 !== sha(auditBytes) || summary.baselineUsedUidCount !== counts.l1L2BaselineUsed || summary.l1L2ConflictCount !== counts.l1L2ConflictConfirmed || counts.l1L2BaselineUsed + counts.l1L2ConflictConfirmed !== input.length) fail('L1_L2_BASELINE_AUDIT_COUNT_OR_HASH_MISMATCH');
+    for (const row of audit) {
+      const source = inputByUid.get(row.questionUid);
+      if (!source || row.sourceOrdinal !== source.sourceOrdinal || row.sourceFingerprint !== source.sourceFingerprint || row.inputBundleSha !== source.inputBundleSha || row.baselineL1 !== source.currentL1 || row.baselineL2 !== source.currentL2 || row.baselineUsed === row.l1L2Conflict || !String(row.evidence || '').trim()) fail('L1_L2_BASELINE_AUDIT_PROVENANCE_MISMATCH', { uid: row.questionUid });
+      if (row.baselineUsed && (row.acceptedL1 !== row.baselineL1 || row.acceptedL2 !== row.baselineL2)) fail('L1_L2_BASELINE_RETAINED_MUTATED', { uid: row.questionUid });
+      if (row.l1L2Conflict && row.acceptedL1 === row.baselineL1 && row.acceptedL2 === row.baselineL2) fail('L1_L2_CONFLICT_NO_CHANGE', { uid: row.questionUid });
+    }
+    baselineAuditChecked = true;
+  }
 }
 let conflictSet = new Set();
 if (exists('AB_COMPARISON.jsonl') && exists('CONFLICT_INPUT.jsonl')) {
@@ -223,6 +248,7 @@ if (exists('CONSENSUS.jsonl')) {
     seen.add(row.questionUid);
     const source = inputByUid.get(row.questionUid);
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.sourceFingerprint !== source.sourceFingerprint) fail('CONSENSUS_PROVENANCE_MISMATCH', { uid: row.questionUid });
+    if (batchNo >= 10 && (row.standardUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL1 || row.subUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL2)) fail('CONSENSUS_L1_L2_BASELINE_AUTHORITY_MISMATCH', { uid: row.questionUid });
     if (!row.consensusBasis?.rootReason || !['A','B','C'].includes(row.consensusBasis?.chosenRole)) fail('CONSENSUS_ROOT_REASON_MISSING', { uid: row.questionUid });
     const l1row = masterByKey.get(row.standardUnitKey), l2row = masterByKey.get(row.subUnitKey);
     if (l1row?.keyType !== 'standardUnitKey' || l2row?.keyType !== 'subUnitKey' || l2row.standardUnitKey !== row.standardUnitKey) fail('L1_L2_PARENT_INVALID', { uid: row.questionUid, l1: row.standardUnitKey, l2: row.subUnitKey });
@@ -423,7 +449,7 @@ if (!errors.length && finalDifficultyChecked) status = 'DIFFICULTY_FINAL_VALIDAT
 if (!errors.length && writebackChecked) status = 'SCOPED_BATCH_CLOSED_WITH_EXPLICIT_HOLDS_GLOBAL_CANONICAL_PENDING';
 const candidateRegistry = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'M1_CUMULATIVE_TAXONOMY_REGISTRY.json'), 'utf8'));
 const candidateKeyCount = (candidateRegistry.counts?.candidateProblemTypes || 0) + (candidateRegistry.counts?.candidateTemplates || 0) + (candidateRegistry.counts?.candidateCrossConcepts || 0);
-const result = { schemaVersion: 'm1-batch-validation-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, status, counts, failures: errors, deferredGlobalChecks: ['ACTIVE_CANONICAL_PROMOTION', 'COMPILED_RUNTIME_PARITY', 'ARCHIVE2_JOIN', 'GLOBAL_COMPRESSION'], candidateKeyCount, checked: { sourceCount: true, protectedFields: true, decisionIsolatedInput: true, inputHashes: true, imageDependencies: true, modelPinning: true, aAndBEvidence: true, workerQualityClosure, conflictDenominator: Boolean(counts.abCompared), cCoverage: counts.CReviewed === counts.abConflicts, consensus: consensusChecked, parentValidity: consensusChecked, candidateRegistryValidity: consensusChecked, activeCanonicalValidity: false, sourceQualityHold: sourceQualityChecked, difficultyInput: difficultyInputChecked, difficultyCoverage: difficultyChecked, blindFirstOrder: blindFirstChecked && legacyChecked, legacyCompare: legacyChecked, mandatoryRecheck: recheckChecked, finalDifficulty: finalDifficultyChecked, metadataOnlyMutation: true, writebackCoverage: writebackChecked } };
+const result = { schemaVersion: 'm1-batch-validation-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, status, counts, failures: errors, deferredGlobalChecks: ['ACTIVE_CANONICAL_PROMOTION', 'COMPILED_RUNTIME_PARITY', 'ARCHIVE2_JOIN', 'GLOBAL_COMPRESSION'], candidateKeyCount, checked: { sourceCount: true, protectedFields: true, decisionIsolatedInput: true, inputHashes: true, imageDependencies: true, modelPinning: true, aAndBEvidence: true, workerQualityClosure, l1L2BaselineAuthority: baselineAuditChecked, conflictDenominator: Boolean(counts.abCompared), cCoverage: counts.CReviewed === counts.abConflicts, consensus: consensusChecked, parentValidity: consensusChecked, candidateRegistryValidity: consensusChecked, activeCanonicalValidity: false, sourceQualityHold: sourceQualityChecked, difficultyInput: difficultyInputChecked, difficultyCoverage: difficultyChecked, blindFirstOrder: blindFirstChecked && legacyChecked, legacyCompare: legacyChecked, mandatoryRecheck: recheckChecked, finalDifficulty: finalDifficultyChecked, metadataOnlyMutation: true, writebackCoverage: writebackChecked } };
 fs.writeFileSync(path.join(batchDir, 'VALIDATION.json'), JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify({ batchNo, status, counts, failureCount: errors.length, firstFailures: errors.slice(0, 8) }, null, 2));
 if (errors.length) process.exitCode = 1;
