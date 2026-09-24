@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALITY_REJECTED_WORKER_RETIRED",
+  "worker": "C (c_blind_remaining_h1)",
+  "defectClass": "source-and-solution evidence copied from a different UID while identity/hash fields named the selected UID",
+  "rejectedLedger": "H1_C_REJECTED_POLY_OTHER_PARENT_CONFLICTS5.jsonl",
+  "rejectedScopeQueueIndexes": [5, 12, 23, 72, 174],
+  "directEvidence": "The q5 C row carries q5 UID/sourceIdentity/fingerprint but describes a shifted-basis identity at x−1/2, coefficients a=4,b=4,c=2,d=1 and a prose '부등식' typo. Those facts belong to q98. The actual q5 source concerns a monic cubic P, a transformed remainder P(2−x) modulo x−2, and divisibility of P−x² by (x−1)(x+2).",
+  "inFlightScopeDiscarded": "The interrupted C q26 post-D turn produced no output file; no q26 C result from this worker is accepted.",
+  "earlierCleanCScopesPreserved": "Earlier independently gated C rows outside these five UIDs remain valid; no blanket restart.",
+  "replacementRequired": true,
+  "replacementModel": "gpt-6-luna",
+  "replacementReasoningEffort": "xhigh",
+  "replacementInputRule": "Clone current C UID/source input and authority only; do not expose this rejection, rejected verdicts, A2/B outputs, or old assignments to the replacement.",
+  "productionMutation": false
+}

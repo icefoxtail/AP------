@@ -7,8 +7,8 @@
       1,
       50
     ],
-    "workerFiles": 10,
-    "cFiles": 10,
+    "workerFiles": 12,
+    "cFiles": 11,
     "counts": {
       "queueSeen": 50,
       "currentA": 50,
@@ -812,28 +812,33 @@
       "queueIndex": 26,
       "questionUid": "qid_v1_c55523006c9158bf5a46678b43cd1b3fcab35b243c75b74c8dc70f6871ad4087",
       "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#7",
-      "currentSourceFingerprint": "4ca0bf7554ce77a5d2ec069859989f629a94ca1c5927c6048ccfd6c88c40a22d",
-      "aFile": "H1_STAGEA_LUNA_A_BATCH02_021_040.jsonl",
-      "bFile": "H1_STAGEA_LUNA_B_BATCH02_021_040.jsonl",
-      "currentCFile": "H1_STAGEA_LUNA6_C_FIRST50_REMAINING6.jsonl",
+      "currentSourceFingerprint": "84e55dfc1a9e10701fa50bd3466763af260fbc5c108d1632ad1fdd23a6d74da5",
+      "aFile": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_Q026.jsonl",
+      "bFile": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_Q026.jsonl",
+      "currentCFile": "H1_STAGEA_LUNA_C_POST_D_Q026.jsonl",
       "a": {
-        "l3": "PT_H1_POLY_FACTORIZATION",
-        "crossConcepts": [],
+        "l3": null,
+        "crossConcepts": [
+          "CC_POLYNOMIAL_DIVISION",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
         "conditions": [],
-        "integrationPattern": "NONE",
+        "integrationPattern": "SEQUENTIAL",
+        "sourceIssue": "SOURCE_UNRESOLVED_HOLD",
+        "reviewStatus": "HOLD"
+      },
+      "b": {
+        "l3": null,
+        "crossConcepts": [
+          "CC_DISCRIMINANT"
+        ],
+        "conditions": [],
+        "integrationPattern": "SEQUENTIAL",
         "sourceIssue": "NONE",
         "reviewStatus": "PASS"
       },
-      "b": {
-        "l3": "PT_H1_POLY_DIVISION_REMAINDER",
-        "crossConcepts": [],
-        "conditions": [],
-        "integrationPattern": "NONE",
-        "sourceIssue": "NOTE_NONCONSTANT_FACTOR_CONVENTION",
-        "reviewStatus": "REVIEWED_WITH_CONVENTION_NOTE"
-      },
       "differentCoreFields": [
-        "l3",
+        "crossConcepts",
         "reviewStatus"
       ],
       "issueLabelDifference": true,

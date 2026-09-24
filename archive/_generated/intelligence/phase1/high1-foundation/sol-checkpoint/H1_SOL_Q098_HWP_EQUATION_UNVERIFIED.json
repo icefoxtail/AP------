@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 98,
+  "questionUid": "qid_v1_65454c398b883d71b6dcf6b7bd8f15ea1bbbe935649f44d22a1da5ff36cce773",
+  "sourceIdentity": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js#14",
+  "sourceFingerprint": "28cf55731481659043296c4a3d1ed7e900f23b128b53ebd3aa81b2a7b385f850",
+  "sourceQuestionAudit": "source-evidence/D-q98-question-only/physical-ledger.json: original HWP prose includes '부등식' and [5.1점], but equation controls, requested expression, choices and physical page are not extractable; question-page visual comparison is incomplete.",
+  "fieldDecisions": {
+    "sourceIssue": {
+      "value": "SOURCE_HWP_EQUATION_UNVERIFIED_HOLD",
+      "reason": "The archived JS displays an all-real equality in powers of x−1/2 while its prose says '부등식'. Under the displayed equality, the shifted-basis coefficients are uniquely (4,4,2,1) and the requested value is 13, so the wording error would be nonblocking. D could confirm only the original prose, not the source equation object or answer choices; no source-exact correction or source-fidelity PASS is justified until the HWP formula is visually rendered."
+    },
+    "reviewStatus": {
+      "value": "HOLD",
+      "reason": "The current JS math can be solved, but the authoritative question equation and choices could not be visually checked from the original HWP. Keep this UID explicitly held for source fidelity."
+    }
+  },
+  "jsEdit": false,
+  "correctionProtocolOrVisualSourceNeeded": true,
+  "finality": "WORKING_NOT_FINAL"
+}
