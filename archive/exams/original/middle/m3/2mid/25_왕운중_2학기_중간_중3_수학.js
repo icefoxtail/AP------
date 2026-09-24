@@ -25,7 +25,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 직각삼각형에서 사인은 ‘기준각의 맞은편 변의 길이 ÷ 빗변의 길이’이다.\n조건 정리: $\\angle B=90^\\circ$, $BC=6$, $AC=10$이고 기준각은 $A$이다.\n풀이 방향: $A$의 맞은편 변 $BC$와 빗변 $AC$를 사인의 정의에 대입한다.\n정석 풀이: $\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac{3}{5}$이다.\n따라서 정답은 ③이다.",
+    "solution": "직각삼각형에서 $\\sin A$는 $A$의 맞은편 변의 길이를 빗변의 길이로 나눈 값이다.\n$A$의 맞은편 변은 $BC=6$, 빗변은 $AC=10$이므로\n$\\sin A=\\dfrac{BC}{AC}=\\dfrac{6}{10}=\\dfrac35$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -56,7 +56,7 @@ window.questionBank = [
       "$\\dfrac{5}{13}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 탄젠트로 두 직각변의 비를 정한 뒤 피타고라스 정리로 빗변을 구한다.\n조건 정리: $\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로 $BC=12k$, $AB=5k$로 둘 수 있다.\n풀이 방향: 빗변 $AC$를 구한 뒤 $\\cos A=\\dfrac{AB}{AC}$를 이용한다.\n정석 풀이: 피타고라스 정리에 의해 $AC=\\sqrt{(5k)^2+(12k)^2}=13k$이다. 따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{5k}{13k}=\\dfrac{5}{13}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로\n$BC=12k$, $AB=5k$로 둘 수 있다.\n피타고라스 정리에 의해\n$AC=\\sqrt{(12k)^2+(5k)^2}=13k$이다.\n따라서 $\\cos A=\\dfrac{AB}{AC}=\\dfrac{5}{13}$이므로 정답은 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -86,7 +86,7 @@ window.questionBank = [
       "$\\sqrt{2}-3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 특수각의 삼각비 값을 정확히 대입한다.\n조건 정리: $\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt{3}}{2}$이다.\n풀이 방향: 각 삼각비를 수로 바꾼 뒤 곱셈부터 계산한다.\n정석 풀이: $\\sqrt{2}\\tan45^\\circ-\\sqrt{3}\\sin60^\\circ=\\sqrt{2}\\cdot1-\\sqrt{3}\\cdot\\dfrac{\\sqrt{3}}{2}=\\sqrt{2}-\\dfrac{3}{2}$이다.\n따라서 정답은 ④이다.",
+    "solution": "특수각의 삼각비를 대입한다.\n$\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이므로\n$\\sqrt2\\tan45^\\circ-\\sqrt3\\sin60^\\circ$\n$=\\sqrt2-\\sqrt3\\cdot\\dfrac{\\sqrt3}{2}$\n$=\\sqrt2-\\dfrac32$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -117,7 +117,7 @@ window.questionBank = [
       "$78^\\circ, 77^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 표에서 주어진 값과 정확히 같은 사인값과 코사인값을 각각 찾는다.\n조건 정리: $\\sin x=0.9816$, $\\cos y=0.2250$이다.\n풀이 방향: 사인 열에서 $0.9816$, 코사인 열에서 $0.2250$이 있는 행의 각을 읽는다.\n정석 풀이: 표에서 $\\sin79^\\circ=0.9816$이므로 $x=79^\\circ$이다. 또 $\\cos77^\\circ=0.2250$이므로 $y=77^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "표에서 주어진 값과 같은 삼각비를 찾는다.\n$\\sin79^\\circ=0.9816$이므로 $x=79^\\circ$이다.\n또 $\\cos77^\\circ=0.2250$이므로 $y=77^\\circ$이다.\n따라서 $(x,y)=(79^\\circ,77^\\circ)$이므로 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q4.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -148,7 +148,7 @@ window.questionBank = [
       "$\\sin A+\\tan A$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\sqrt{X^2}=|X|$이므로 각 괄호 안 식의 부호를 먼저 판단한다.\n조건 정리: $A$는 예각이므로 $\\tan A>0$, $0<\\sin A<1$이고 $\\sin90^\\circ=1$이다.\n풀이 방향: 두 제곱근을 절댓값으로 바꾼 뒤 부호에 따라 절댓값을 푼다.\n정석 풀이: $\\tan A+1>0$이므로 $\\sqrt{(\\tan A+1)^2}=\\tan A+1$이다. 또 $\\sin A-1<0$이므로 $\\sqrt{(\\sin A-1)^2}=1-\\sin A$이다. 따라서 전체 식은 $(\\tan A+1)-(1-\\sin A)=\\tan A+\\sin A$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$\\sin90^\\circ=1$이므로 식은\n$\\sqrt{(\\tan A+1)^2}-\\sqrt{(\\sin A-1)^2}$이다.\n$A$가 예각이므로 $\\tan A+1>0$, $0<\\sin A<1$이다.\n따라서\n$\\sqrt{(\\tan A+1)^2}=\\tan A+1$,\n$\\sqrt{(\\sin A-1)^2}=1-\\sin A$이다.\n그러므로 전체 값은\n$(\\tan A+1)-(1-\\sin A)=\\tan A+\\sin A$이다.\n정답은 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -179,7 +179,7 @@ window.questionBank = [
       "$\\dfrac{13\\sqrt{3}}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 변의 길이와 그 끼인각이 주어졌으므로 $\\dfrac{1}{2}ab\\sin C$를 이용한다.\n조건 정리: 끼인 두 변은 $AB=5$, $BC=2$이고 끼인각은 $120^\\circ$이다.\n풀이 방향: 삼각형 넓이 공식에 세 값을 그대로 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot5\\cdot2\\cdot\\sin120^\\circ=5\\cdot\\dfrac{\\sqrt{3}}{2}=\\dfrac{5\\sqrt{3}}{2}$이다.\n따라서 정답은 ①이다.",
+    "solution": "$BC$가 놓인 직선에 $A$에서 수선을 내려 높이를 $AH$라 하자.\n$\\angle ABC=120^\\circ$이므로 $BA$와 $BC$의 반대 방향이 이루는 예각은 $60^\\circ$이다.\n따라서 직각삼각형에서\n$AH=AB\\sin60^\\circ=5\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{5\\sqrt3}{2}$이다.\n이제 $BC=2$를 밑변으로 보면\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot2\\cdot\\dfrac{5\\sqrt3}{2}=\\dfrac{5\\sqrt3}{2}$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q6.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -211,7 +211,7 @@ window.questionBank = [
       "$\\tan47^\\circ=1.07$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 그림의 점 $A$의 좌표는 $(\\cos47^\\circ,\\sin47^\\circ)$이고, 여각 관계도 함께 이용한다.\n조건 정리: 그림에서 $A$의 가로 좌표는 $0.68$, 세로 좌표는 $0.73$이며 직선 $OP$의 기울기는 약 $1.07$이다.\n풀이 방향: $47^\\circ$의 사인·코사인·탄젠트를 읽고 $43^\\circ=90^\\circ-47^\\circ$를 이용한다.\n정석 풀이: $\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$, $\\tan47^\\circ=1.07$이다. 또한 $\\sin43^\\circ=\\cos47^\\circ=0.68$, $\\cos43^\\circ=\\sin47^\\circ=0.73$이다. 따라서 $\\sin47^\\circ=0.68$이라는 ②가 옳지 않다.\n따라서 정답은 ②이다.",
+    "solution": "그림에서 $47^\\circ$에 해당하는 점을 읽으면\n$\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$이고\n$\\tan47^\\circ\\approx1.07$이다.\n또 $43^\\circ=90^\\circ-47^\\circ$이므로\n$\\sin43^\\circ=\\cos47^\\circ=0.68$,\n$\\cos43^\\circ=\\sin47^\\circ=0.73$이다.\n따라서 옳지 않은 것은 $\\sin47^\\circ=0.68$인 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q7.png",
     "imageSize": "full",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -244,7 +244,7 @@ window.questionBank = [
       "$10+2\\sqrt{13}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 먼저 직각이등변삼각형 $ABH$에서 $AH$와 $BH$를 구한 뒤, 직각삼각형 $AHC$에 피타고라스 정리를 적용한다.\n조건 정리: $AH\\perp BC$, $\\angle ABH=45^\\circ$이므로 $\\triangle ABH$는 $45^\\circ$-$45^\\circ$-$90^\\circ$ 삼각형이다.\n풀이 방향: $AB=4\\sqrt{2}$에서 두 직각변을 구하고, $HC=BC-BH$를 계산한다.\n정석 풀이: $AH=BH=\\dfrac{4\\sqrt{2}}{\\sqrt{2}}=4$이다. 따라서 $HC=10-4=6$이다. $\\triangle AHC$에서 $AC=\\sqrt{AH^2+HC^2}=\\sqrt{4^2+6^2}=2\\sqrt{13}$이다. 그러므로 $AH+AC=4+2\\sqrt{13}$이다.\n따라서 정답은 ③이다.",
+    "solution": "$AH\\perp BC$이므로 $\\triangle ABH$는 직각삼각형이다.\n$\\angle ABH=45^\\circ$이므로 $45^\\circ$-$45^\\circ$-$90^\\circ$ 삼각형이고,\n$AB=4\\sqrt2$에서\n$AH=BH=4$이다.\n따라서 $HC=BC-BH=10-4=6$이다.\n직각삼각형 $AHC$에서\n$AC=\\sqrt{4^2+6^2}=\\sqrt{52}=2\\sqrt{13}$이다.\n그러므로 $AH+AC=4+2\\sqrt{13}$이므로 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q8.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -275,7 +275,7 @@ window.questionBank = [
       "$\\dfrac{7\\sqrt{10}}{10}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 직각변의 비를 문자로 나타내고 피타고라스 정리로 빗변을 구한다.\n조건 정리: $AB=t$라 두면 $AC=3t$이고 빗변은 $BC$이다.\n풀이 방향: $BC$를 구한 뒤 $C$에 대한 코사인의 정의를 적용한다.\n정석 풀이: $BC=\\sqrt{AB^2+AC^2}=\\sqrt{t^2+(3t)^2}=\\sqrt{10}t$이다. 따라서 $\\cos C=\\dfrac{AC}{BC}=\\dfrac{3t}{\\sqrt{10}t}=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
+    "solution": "$AB=t$라 두면 $AC=3t$이다.\n$\\angle A=90^\\circ$이므로 피타고라스 정리에 의해\n$BC=\\sqrt{t^2+(3t)^2}=\\sqrt{10}\\,t$이다.\n각 $C$에 대하여 이웃한 직각변은 $AC$이므로\n$\\cos C=\\dfrac{AC}{BC}$\n$=\\dfrac{3t}{\\sqrt{10}t}$\n$=\\dfrac{3\\sqrt{10}}{10}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -305,7 +305,7 @@ window.questionBank = [
       "$2:\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 삼각형의 세 내각의 합 $180^\\circ$를 이용해 각의 크기를 먼저 정한다.\n조건 정리: 세 각을 $k$, $2k$, $3k$로 두면 $A<B<C$이므로 $A=k$, $B=2k$, $C=3k$이다.\n풀이 방향: 각의 크기를 구한 뒤 특수각의 삼각비를 비교한다.\n정석 풀이: $k+2k+3k=180^\\circ$이므로 $k=30^\\circ$이다. 따라서 $A=30^\\circ$, $B=60^\\circ$이고 $\\sin A=\\sin30^\\circ=\\dfrac{1}{2}$, $\\cos B=\\cos60^\\circ=\\dfrac{1}{2}$이다. 그러므로 $\\sin A:\\cos B=1:1$이다.\n따라서 정답은 ①이다.",
+    "solution": "세 내각의 비를 $1:2:3$이라 했으므로\n각을 $k,2k,3k$라 두면\n$k+2k+3k=180^\\circ$이다.\n따라서 $k=30^\\circ$이고\n$A=30^\\circ$, $B=60^\\circ$, $C=90^\\circ$이다.\n$\\sin A=\\sin30^\\circ=\\dfrac12$,\n$\\cos B=\\cos60^\\circ=\\dfrac12$이므로\n$\\sin A:\\cos B=1:1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -336,7 +336,7 @@ window.questionBank = [
       "$6\\sqrt{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 밑변을 $BC$로 보면 $AH$는 그 밑변이 놓인 직선까지의 높이이다.\n조건 정리: $BC=8$, $\\triangle ABC$의 넓이는 $12\\sqrt{3}$이고 $AH\\perp BC$이다.\n풀이 방향: 넓이 $=\\dfrac{1}{2}\\times$ 밑변 $\\times$ 높이를 이용한다.\n정석 풀이: $12\\sqrt{3}=\\dfrac{1}{2}\\cdot8\\cdot AH=4AH$이다. 따라서 $AH=3\\sqrt{3}$이다.\n따라서 정답은 ②이다.",
+    "solution": "$BC=8$을 밑변으로 보면 $AH$가 높이이다.\n삼각형의 넓이가 $12\\sqrt3$이므로\n$12\\sqrt3=\\dfrac12\\cdot8\\cdot AH=4AH$이다.\n따라서 $AH=3\\sqrt3$이고 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q11.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -368,7 +368,7 @@ window.questionBank = [
       "$36\\pi-54\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정육각형의 중심에서 한 변까지의 거리는 한 변을 포함하는 정삼각형의 높이이다.\n조건 정리: 정육각형의 외접원 반지름을 $r$라 하면 한 변의 길이도 $r$이고, $OH=\\dfrac{\\sqrt{3}}{2}r=3\\sqrt{3}$이다.\n풀이 방향: 반지름을 구한 뒤 원의 넓이에서 정육각형의 넓이를 뺀다.\n정석 풀이: $\\dfrac{\\sqrt{3}}{2}r=3\\sqrt{3}$이므로 $r=6$이다. 원의 넓이는 $36\\pi$이다. 정육각형은 한 변이 $6$인 정삼각형 6개로 나뉘므로 넓이는 $6\\cdot\\dfrac{\\sqrt{3}}{4}\\cdot6^2=54\\sqrt{3}$이다. 따라서 색칠한 부분의 넓이는 $36\\pi-54\\sqrt{3}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "정육각형의 한 변과 원의 반지름의 길이는 같다.\n원의 반지름을 $r$라 하면 $\\triangle OAF$는 한 변이 $r$인 정삼각형이고,\n$OH$는 그 높이이므로\n$OH=\\dfrac{\\sqrt3}{2}r$이다.\n$\\dfrac{\\sqrt3}{2}r=3\\sqrt3$에서 $r=6$이다.\n\n원의 넓이는 $36\\pi$이다.\n정육각형은 한 변이 $6$인 정삼각형 6개로 나뉘므로\n정육각형의 넓이는\n$6\\cdot\\dfrac{\\sqrt3}{4}\\cdot6^2=54\\sqrt3$이다.\n따라서 색칠한 부분의 넓이는\n$36\\pi-54\\sqrt3$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q12.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -400,7 +400,7 @@ window.questionBank = [
       "$15$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원의 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OH\\perp AB$, $AB=24$이므로 $AH=12$이고 $OH=5$이다.\n풀이 방향: 직각삼각형 $OHA$에 피타고라스 정리를 적용한다.\n정석 풀이: $OA^2=OH^2+AH^2=5^2+12^2=169$이므로 $OA=13$이다. 따라서 $x=13$이다.\n따라서 정답은 ③이다.",
+    "solution": "원의 중심에서 현 $AB$에 내린 수선은 현을 이등분하므로\n$AH=\\dfrac{AB}{2}=12$이다.\n직각삼각형 $OHA$에서\n$OA^2=OH^2+AH^2=5^2+12^2=169$이다.\n따라서 $OA=x=13$이므로 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -432,7 +432,7 @@ window.questionBank = [
       "(마) $AM=BM$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 직각삼각형의 빗변과 다른 한 변을 비교하여 합동 조건을 확인한다.\n조건 정리: $OM\\perp AB$이므로 $\\angle OMA=\\angle OMB=90^\\circ$이고, $OA=OB$는 같은 원의 반지름이며 $OM$은 공통이다.\n풀이 방향: $\\triangle OAM$과 $\\triangle OBM$의 직각삼각형 합동 조건을 판정한다.\n정석 풀이: 두 삼각형은 빗변 $OA$, $OB$가 같고 다른 한 변 $OM$이 공통이므로 RHS 합동이다. 따라서 대응변 $AM=BM$이다. 빈칸 (라)에 들어갈 말은 RHS 합동이므로 ‘RHA 합동’이라는 ④가 옳지 않다.\n따라서 정답은 ④이다.",
+    "solution": "$OM\\perp AB$이므로\n$\\angle OMA=\\angle OMB=90^\\circ$이다.\n또 $OA=OB$는 같은 원의 반지름이고, $OM$은 두 삼각형의 공통인 변이다.\n따라서 두 직각삼각형 $OAM$, $OBM$은\n빗변과 다른 한 변의 길이가 각각 같아서 합동이다.\n교과서 표기로는 빈칸 (라)에 RHS 합동이 들어가야 하므로\n‘RHA 합동’이라고 한 ④가 옳지 않다.\n합동이므로 대응변 $AM=BM$도 성립한다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q14.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -464,7 +464,7 @@ window.questionBank = [
       "$\\dfrac{289}{9}\\pi$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원의 중심은 $CM$의 연장선 위에 있고, 반현과 중심까지의 거리로 직각삼각형을 만든다.\n조건 정리: 반지름을 $r$라 하면 $AM=5$이고, 호의 높이가 $CM=3$이므로 중심에서 현까지의 거리는 $r-3$이다.\n풀이 방향: 반지름, 중심에서 현까지의 거리, 반현으로 이루어진 직각삼각형에 피타고라스 정리를 적용한다.\n정석 풀이: $r^2=(r-3)^2+5^2$이므로 $r^2=r^2-6r+9+25$이다. 따라서 $6r=34$, $r=\\dfrac{17}{3}$이다. 원의 넓이는 $\\pi r^2=\\dfrac{289}{9}\\pi$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "원의 중심을 $O$, 반지름을 $r$라 하자.\n$OM\\perp AB$이므로 $M$은 현 $AB$의 중점이고\n$AM=5$이다.\n그림에서 $CM=3$이므로 $OM=r-3$이다.\n직각삼각형 $OMA$에서\n$r^2=(r-3)^2+5^2$이다.\n정리하면\n$r^2=r^2-6r+9+25$,\n$6r=34$이므로 $r=\\dfrac{17}{3}$이다.\n따라서 원의 넓이는\n$\\pi r^2=\\dfrac{289}{9}\\pi$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q15.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -496,7 +496,7 @@ window.questionBank = [
       "$8\\sqrt{3}\\pi$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 중심에서 같은 거리에 있는 현의 길이는 같으므로 세 현이 만드는 삼각형은 정삼각형이다.\n조건 정리: $OD=OE=OF$이므로 $AB=BC=CA=12$이다.\n풀이 방향: 한 변이 $12$인 정삼각형의 외접원 반지름을 구하고 원의 둘레를 계산한다.\n정석 풀이: 정삼각형의 높이는 $6\\sqrt{3}$이고, 외심은 높이를 꼭짓점 쪽에서 $2:1$로 나누므로 반지름은 $\\dfrac{2}{3}\\cdot6\\sqrt{3}=4\\sqrt{3}$이다. 따라서 원의 둘레는 $2\\pi\\cdot4\\sqrt{3}=8\\sqrt{3}\\pi$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "중심에서 같은 거리에 있는 현의 길이는 같으므로\n$OD=OE=OF$에서 $AB=BC=CA=12$이다.\n따라서 $\\triangle ABC$는 정삼각형이고,\n같은 현이 만드는 중심각도 같으므로\n$\\angle AOB=\\angle BOC=\\angle COA=120^\\circ$이다.\n\n$OD\\perp AB$이므로 $D$는 $AB$의 중점이고 $AD=6$이다.\n이등변삼각형 $AOB$에서 $OD$는 꼭짓각도 이등분하므로\n$\\angle AOD=60^\\circ$이다.\n직각삼각형 $AOD$에서\n$\\sin60^\\circ=\\dfrac{AD}{AO}=\\dfrac{6}{AO}$이므로\n$AO=4\\sqrt3$이다.\n따라서 원의 둘레는\n$2\\pi\\cdot4\\sqrt3=8\\sqrt3\\pi$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q16.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -528,7 +528,7 @@ window.questionBank = [
       "$7$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원 밖의 한 점에서 그은 두 접선의 길이는 서로 같다.\n조건 정리: 점 $P$에서 $PA$, $PB$가 접선이고, 점 $Q$에서 $QB$, $QC$가 접선이다.\n풀이 방향: 먼저 $PB$를 구하고 선분 $PQ$에서 $QB$를 구한다.\n정석 풀이: $PA=PB=2$이다. 따라서 $QB=PQ-PB=5-2=3$이다. 또 $QB=QC$이므로 $QC=3$이다. 따라서 $x=3$이다.\n따라서 정답은 ①이다.",
+    "solution": "한 점에서 한 원에 그은 두 접선의 길이는 같다.\n점 $P$에서 그은 접선이므로\n$PA=PB=2$이다.\n따라서 $QB=PQ-PB=5-2=3$이다.\n점 $Q$에서도 두 접선의 길이가 같으므로\n$QB=QC=3$이다.\n따라서 $x=3$이므로 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q17.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -560,7 +560,7 @@ window.questionBank = [
       "$44$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 같은 점에서 한 원에 그은 접선의 길이가 같다는 성질을 네 삼각형에 연속해서 적용한다.\n조건 정리: 그림에서 공통 접선 $AC$, $AD$, $AE$ 위의 접점은 이웃한 두 원이 맞닿는 공통 접점이다. $A$에서 이 공통 접점들까지의 길이는 모두 같고, 아래쪽 꼭짓점에서 접점까지의 길이를 차례로 $a,b,c,d,e$라 두면 $a+b=26$, $b+c=22$, $c+d=16$, $d+e=12$이다. 또한 $AB=34$이다.\n풀이 방향: 접선 길이의 합과 차를 번갈아 이용하여 $AD+AF$에서 미지의 접선 길이를 소거한다.\n정석 풀이: $b=26-a$, $c=22-b=a-4$, $d=16-c=20-a$, $e=12-d=a-8$이다. $A$에서 공통 접점까지의 접선 길이를 $t$라 하면 $t+a=AB=34$이므로 $t=34-a$이다. 따라서 $AD=t+c$, $AF=t+e$이고, $AD+AF=2t+c+e=2(34-a)+(a-4)+(a-8)=56$이다.\n따라서 정답은 ②이다.",
+    "solution": "같은 점에서 한 원에 그은 두 접선의 길이는 같다는 성질을 연속해서 이용한다.\n그림에서 $AC$, $AD$, $AE$ 위의 접점은 각각 이웃한 두 원이 함께 접하는 같은 점이다.\n따라서 점 $A$에서 각 원에 그은 접선의 길이는 연쇄적으로 모두 같으며, 이 길이를 $t$라 하자.\n\n아래쪽 꼭짓점에서 접점까지의 길이를 $B$부터 $F$ 방향으로 차례로 $a,b,c,d,e$라 두면\n$a+b=26,\\quad b+c=22,\\quad c+d=16,\\quad d+e=12$이다.\n$a$로 차례대로 나타내면\n$b=26-a$,\n$c=22-b=a-4$,\n$d=16-c=20-a$,\n$e=12-d=a-8$이다.\n\n$AB=t+a=34$이므로 $t=34-a$이다.\n또 $AD=t+c$, $AF=t+e$이므로\n$AD+AF=2t+c+e$\n$=2(34-a)+(a-4)+(a-8)=56$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q18.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -592,7 +592,7 @@ window.questionBank = [
       "$\\dfrac{1}{12}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 직각삼각형의 빗변의 중점은 세 꼭짓점에서 같은 거리에 있고, 중점의 좌표 관계로 $BH$를 구할 수 있다.\n조건 정리: $AB=5$, $BC=12$이므로 $AC=13$이고, $M$은 빗변 $AC$의 중점이다.\n풀이 방향: $BM$과 $BH$를 구한 뒤 직각삼각형 $BMH$에서 사인을 계산한다.\n정석 풀이: 빗변의 중점 성질에 의해 $BM=\\dfrac{AC}{2}=\\dfrac{13}{2}$이다. 또한 $M$은 $A$와 $C$의 중점이므로 $BC$ 방향으로도 중간에 있어 $BH=\\dfrac{BC}{2}=6$이다. $\\triangle BMH$에서 $\\sin x=\\dfrac{BH}{BM}=\\dfrac{6}{13/2}=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
+    "solution": "$AB=5$, $BC=12$이므로 피타고라스 정리에 의해\n$AC=13$이다.\n$M$은 $AC$의 중점이고 $MH\\parallel AB$이므로\n중점 연결 정리에 의해 $H$는 $BC$의 중점이다.\n따라서\n$BH=6$, $MH=\\dfrac{AB}{2}=\\dfrac52$이다.\n\n직각삼각형 $BMH$에서\n$BM=\\sqrt{6^2+\\left(\\dfrac52\\right)^2}$\n$=\\sqrt{\\dfrac{169}{4}}=\\dfrac{13}{2}$이다.\n그러므로\n$\\sin x=\\dfrac{BH}{BM}$\n$=\\dfrac{6}{13/2}$\n$=\\dfrac{12}{13}$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q19.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -624,7 +624,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt{6}+\\sqrt{2}}{6}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 고등학교의 덧셈공식을 쓰지 않고, 그림 속 $30^\\circ$ 직각삼각형과 $45^\\circ$ 직각이등변삼각형의 길이를 이용한다.\n조건 정리: $AF=6$, $\\angle EAF=30^\\circ$, $\\angle AEF=90^\\circ$이므로 $AE=3\\sqrt{3}$, $EF=3$이다. 그림에서 $\\angle BAE=45^\\circ$이다.\n풀이 방향: $AE$와 $EF$의 가로 방향 길이를 각각 구해 $AF$의 가로 방향 길이를 만든다. 이 길이는 $75^\\circ$의 맞은편 변에 해당한다.\n정석 풀이: $AE$는 $45^\\circ$ 방향이므로 가로 방향 길이는 $\\dfrac{3\\sqrt{3}}{\\sqrt{2}}=\\dfrac{3\\sqrt{6}}{2}$이다. $EF$는 $AE$와 수직이므로 가로 방향 길이는 $\\dfrac{3}{\\sqrt{2}}=\\dfrac{3\\sqrt{2}}{2}$이다. 따라서 $AF$의 가로 방향 길이는 $\\dfrac{3\\sqrt{6}+3\\sqrt{2}}{2}$이다. $AF=6$이므로 $\\sin75^\\circ=\\dfrac{(3\\sqrt{6}+3\\sqrt{2})/2}{6}=\\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$이다.\n따라서 정답은 ③이다.",
+    "solution": "$\\triangle AEF$는 $AF=6$인 직각삼각형이고\n$\\angle EAF=30^\\circ$이므로\n$AE=6\\cos30^\\circ=3\\sqrt3$,\n$EF=6\\sin30^\\circ=3$이다.\n\n그림에서 $\\angle BAE=45^\\circ$이므로\n$AE$가 가로 방향으로 이동한 길이는\n$\\dfrac{3\\sqrt3}{\\sqrt2}=\\dfrac{3\\sqrt6}{2}$이다.\n또 $EF\\perp AE$이므로 $EF$가 가로 방향으로 이동한 길이는\n$\\dfrac{3}{\\sqrt2}=\\dfrac{3\\sqrt2}{2}$이다.\n\n따라서 $AF$가 가로 방향으로 이동한 길이는\n$\\dfrac{3\\sqrt6+3\\sqrt2}{2}$이다.\n그림에서 $\\angle BAF=45^\\circ+30^\\circ=75^\\circ$이고 $AF=6$이므로\n$\\sin75^\\circ$\n$=\\dfrac{(3\\sqrt6+3\\sqrt2)/2}{6}$\n$=\\dfrac{\\sqrt6+\\sqrt2}{4}$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q20.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -650,7 +650,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 $AB=9$, $BC=12$인 삼각형 $ABC$에서 $\\sin B=\\dfrac{2\\sqrt{2}}{3}$일 때, $\\triangle ABC$의 넓이를 구하고, 그 과정을 서술하시오. [총 4점]",
     "choices": [],
     "answer": "$36\\sqrt{2}$",
-    "solution": "[키포인트] 두 변과 그 끼인각의 사인값이 주어졌으므로 삼각형의 넓이 공식을 사용한다.\n조건 정리: $AB=9$, $BC=12$, $\\sin B=\\dfrac{2\\sqrt{2}}{3}$이다.\n풀이 방향: $B$는 두 변 $AB$, $BC$의 끼인각이므로 $\\dfrac{1}{2}AB\\cdot BC\\sin B$에 대입한다.\n정석 풀이: $\\triangle ABC$의 넓이는 $\\dfrac{1}{2}\\cdot9\\cdot12\\cdot\\dfrac{2\\sqrt{2}}{3}=54\\cdot\\dfrac{2\\sqrt{2}}{3}=36\\sqrt{2}$이다.\n따라서 구하는 넓이는 $36\\sqrt{2}$이다.",
+    "solution": "점 $A$에서 $BC$가 놓인 직선에 수선을 내려 높이를 $AH$라 하자.\n각 $B$에 대하여\n$\\sin B=\\dfrac{AH}{AB}$이므로\n$AH=AB\\sin B$\n$=9\\cdot\\dfrac{2\\sqrt2}{3}$\n$=6\\sqrt2$이다.\n따라서\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH$\n$=\\dfrac12\\cdot12\\cdot6\\sqrt2$\n$=36\\sqrt2$이다.\n따라서 구하는 넓이는 $36\\sqrt2$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q21.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -676,7 +676,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 $\\angle B=90^\\circ$인 직각삼각형 $ABC$에서 $\\cos A=\\dfrac{3}{5}$일 때, $\\sin A$, $\\tan A$를 구하고, 그 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$\\sin A=\\dfrac{4}{5}$, $\\tan A=\\dfrac{4}{3}$",
-    "solution": "[키포인트] 코사인으로 밑변과 빗변의 비를 정한 뒤 피타고라스 정리로 나머지 변을 구한다.\n조건 정리: $\\cos A=\\dfrac{AB}{AC}=\\dfrac{3}{5}$이므로 $AB=3k$, $AC=5k$로 둘 수 있다.\n풀이 방향: $BC$를 구한 뒤 사인과 탄젠트의 정의를 적용한다.\n정석 풀이: 피타고라스 정리에 의해 $BC=\\sqrt{(5k)^2-(3k)^2}=4k$이다. 따라서 $\\sin A=\\dfrac{BC}{AC}=\\dfrac{4}{5}$이고, $\\tan A=\\dfrac{BC}{AB}=\\dfrac{4}{3}$이다.\n따라서 구하는 값은 $\\sin A=\\dfrac{4}{5}$, $\\tan A=\\dfrac{4}{3}$이다.",
+    "solution": "$\\cos A=\\dfrac{AB}{AC}=\\dfrac35$이므로\n$AB=3k$, $AC=5k$로 둘 수 있다.\n피타고라스 정리에 의해\n$BC=\\sqrt{(5k)^2-(3k)^2}=4k$이다.\n따라서\n$\\sin A=\\dfrac{BC}{AC}=\\dfrac45$,\n$\\tan A=\\dfrac{BC}{AB}=\\dfrac43$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q22.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -702,12 +702,13 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림과 같이 중심이 $O$로 같은 두 원의 반지름의 길이가 각각 $5\\,\\mathrm{cm}$, $7\\,\\mathrm{cm}$이다. 큰 원의 현 $AB$가 작은 원에 접할 때의 그 접점을 $M$이라 할 때, $\\triangle OAB$의 넓이를 구하고, 그 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$10\\sqrt{6}\\,\\mathrm{cm}^2$",
-    "solution": "[키포인트] 접점에 이은 반지름은 접선에 수직이고, 중심에서 현에 내린 수선은 현을 이등분한다.\n조건 정리: $OM=5$, $OA=OB=7$, $OM\\perp AB$이고 $AM=BM$이다.\n풀이 방향: 직각삼각형 $OMB$에서 반현 $BM$을 구한 뒤 밑변 $AB$와 높이 $OM$으로 넓이를 계산한다.\n정석 풀이: $BM=\\sqrt{OB^2-OM^2}=\\sqrt{7^2-5^2}=\\sqrt{24}=2\\sqrt{6}$이다. 따라서 $AB=2BM=4\\sqrt{6}$이다. 그러므로 $\\triangle OAB$의 넓이는 $\\dfrac{1}{2}\\cdot AB\\cdot OM=\\dfrac{1}{2}\\cdot4\\sqrt{6}\\cdot5=10\\sqrt{6}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $10\\sqrt{6}\\,\\mathrm{cm}^2$이다.",
+    "solution": "작은 원의 반지름 $OM$은 접선 $AB$에 수직이므로\n$OM\\perp AB$이다.\n또 큰 원의 중심에서도 현 $AB$에 내린 수선은 현을 이등분하므로\n$AM=BM$이다.\n\n$OM=5$, $OB=7$이므로 직각삼각형 $OMB$에서\n$BM=\\sqrt{OB^2-OM^2}$\n$=\\sqrt{7^2-5^2}$\n$=\\sqrt{24}=2\\sqrt6$이다.\n따라서\n$AB=2BM=4\\sqrt6$이다.\n\n$\\triangle OAB$의 높이는 $OM=5$이므로\n넓이는\n$\\dfrac12\\cdot4\\sqrt6\\cdot5$\n$=10\\sqrt6\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q23.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -728,11 +729,12 @@ window.questionBank = [
     "content": "[서술형 4] 다음 그림과 같이 산의 바로 위 상공 $500\\,\\mathrm{m}$ 높이에 떠 있는 비행기에서 산의 양 끝 두 지점 $A$, $B$를 내려다본 각의 크기는 각각 $40^\\circ$, $31^\\circ$이었다. 이때 두 지점 $A$, $B$ 사이의 거리를 구하고, 그 과정을 서술하시오. [총 6점] (단, $\\tan50^\\circ=1.19$, $\\tan59^\\circ=1.66$으로 계산한다.)",
     "choices": [],
     "answer": "$1425\\,\\mathrm{m}$",
-    "solution": "[키포인트] 내려다본 각과 수직선이 이루는 각은 각각 여각이므로 $50^\\circ$, $59^\\circ$가 된다.\n조건 정리: 비행기에서 지면까지의 수직거리는 $500\\,\\mathrm{m}$이고, 수선의 발을 $H$라 하면 $A$와 $B$는 $H$의 양쪽에 있다.\n풀이 방향: 두 직각삼각형에서 $AH$, $BH$를 탄젠트로 각각 구한 뒤 더한다.\n정석 풀이: 왼쪽에서 수직선과 시선이 이루는 각은 $90^\\circ-40^\\circ=50^\\circ$이므로 $AH=500\\tan50^\\circ=500\\cdot1.19=595\\,\\mathrm{m}$이다. 오른쪽에서는 $90^\\circ-31^\\circ=59^\\circ$이므로 $BH=500\\tan59^\\circ=500\\cdot1.66=830\\,\\mathrm{m}$이다. 따라서 $AB=AH+BH=595+830=1425\\,\\mathrm{m}$이다.\n따라서 구하는 거리는 $1425\\,\\mathrm{m}$이다.",
+    "solution": "비행기에서 산의 바로 아래 지점까지 내린 수선의 발을 $H$라 하자.\n$PH=500\\,\\mathrm{m}$이고 $A$, $H$, $B$는 한 직선 위에 있으며\n그림처럼 $H$는 $A$, $B$ 사이에 있다.\n\n내려다본 각이 각각 $40^\\circ$, $31^\\circ$이므로\n수직선 $PH$와 $PA$, $PB$가 이루는 각은 각각\n$50^\\circ$, $59^\\circ$이다.\n따라서\n$AH=500\\tan50^\\circ=500\\cdot1.19=595\\,\\mathrm{m}$,\n$BH=500\\tan59^\\circ=500\\cdot1.66=830\\,\\mathrm{m}$이다.\n그러므로\n$AB=AH+BH=595+830=1425\\,\\mathrm{m}$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q24.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_수학/q24-solution.svg"
   }
 ];
