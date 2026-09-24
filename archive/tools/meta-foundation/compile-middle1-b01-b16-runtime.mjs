@@ -10,7 +10,9 @@ const runtimePath='archive/data/meta-foundation/runtime/middle1-v1.json';
 const evidencePath='archive/data/meta-foundation/evidence/middle1/v1/item_metadata_assignments_381.json';
 const read=(p)=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const text=(v)=>JSON.stringify(v,null,2)+'\n';
-const sha=(p)=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+// Canonical/metadata JSON may be checked out as CRLF on Windows. Provenance
+// hashes follow the same stable LF policy as the global Foundation compiler.
+const sha=(p)=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p),'utf8').replaceAll('\r\n','\n'),'utf8').digest('hex');
 const input=read(`${global}/B01_B16_GLOBAL_COMPRESSION_INPUT.json`);
 const mapping=read(`${global}/B01_B16_CANONICAL_MAPPING.json`);
 const metadata=read('archive/data/question_metadata.json');
