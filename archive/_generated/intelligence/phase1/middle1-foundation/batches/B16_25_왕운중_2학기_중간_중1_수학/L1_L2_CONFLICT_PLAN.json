@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "m1-l1l2-conflict-plan-v1",
+  "batchNo": 16,
+  "sourceArchiveFile": "original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+  "policy": "A/B independently read 24 source rows and 21 images with no L1/L2 deviation. Frozen parent is retained on 23 UIDs. Root's targeted original-image/source audit opened #14 only: the decisive false statement is a parallelogram diagonal/perpendicular-bisector property and belongs under M1-06 quadrilateral properties, matching the analogous B13 parent correction; no other source-grounded parent change is made.",
+  "candidateDecisions": [
+    { "sourceOrdinal": 14, "disposition": "L1_L2_CONFLICT_CONFIRMED", "acceptedL1": "M1-06", "acceptedL2": "M1-06-POLYGON_CIRCLE", "rootOpened": true, "rootEvidenceFile": "ROOT_Q14_PARALLELOGRAM_PARENT_EVIDENCE.md", "evidence": "Frozen M1-05-POSITION_RELATION describes lines in general, but this source explicitly names parallelogram ABCD and tests which of its diagonal-bisection/perpendicular-bisector statements is false. Root read the original image and solution: BD does not bisect AO because O is an endpoint, while it bisects AC. The decisive quadrilateral property requires M1-06-POLYGON_CIRCLE; see physical Root proof." }
+  ]
+}
