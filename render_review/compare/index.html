@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>순천고 · 금당고 Archive 해설 렌더 비교</title>
+  <style>
+    :root { color-scheme: light; font-family: "Segoe UI", "Malgun Gothic", sans-serif; color: #162033; background: #eef2f7; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header { padding: 26px 4vw 18px; background: #10223e; color: #fff; }
+    header h1 { margin: 0 0 8px; font-size: 24px; }
+    header p { margin: 0; color: #d9e3f0; line-height: 1.55; }
+    main { max-width: 1800px; margin: auto; padding: 22px 3vw 56px; }
+    .case { margin: 0 0 26px; padding: 18px; background: white; border: 1px solid #d6dfeb; border-radius: 12px; box-shadow: 0 4px 16px #17375e0d; }
+    .case h2 { margin: 0 0 5px; font-size: 18px; }
+    .case > p { margin: 0 0 14px; color: #58677b; line-height: 1.5; }
+    .pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; align-items: start; }
+    figure { margin: 0; min-width: 0; }
+    figcaption { margin: 0 0 8px; font-weight: 700; }
+    figure a { display: block; background: #e9eef5; border: 1px solid #d6dfeb; padding: 5px; border-radius: 8px; }
+    figure img { display: block; width: 100%; height: auto; }
+    .stack { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .links { margin-top: 22px; padding: 15px 18px; background: #fff; border-radius: 10px; border: 1px solid #d6dfeb; }
+    .links a { margin-right: 14px; }
+    @media (max-width: 820px) { .pair { grid-template-columns: 1fr; } main { padding-inline: 12px; } .case { padding: 12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>순천고 · 금당고 Archive 해설 렌더 비교</h1>
+    <p>Local main의 현재 production renderer, Chrome 153, mode=sol, viewport 1440×1100, zoom 100%로 캡처했다. 좌우 이미지는 서로 다른 문항의 대표 사례다.</p>
+  </header>
+  <main>
+    <section class="case">
+      <h2>1. source 빈 줄이 많은 순천고와 재조판 후 금당고</h2>
+      <p>왼쪽 q14에는 source의 잦은 빈 줄이 세로 간격으로 나타난다. 오른쪽은 q15의 풀이가 촘촘하지만, 마지막 답 한 줄이 오른쪽 열 위로 넘어가고 그 아래는 비어 있다.</p>
+      <div class="pair">
+        <figure><figcaption>순천고 q14 · 10쪽</figcaption><a href="../suncheon_before_reflow/pages/page-10.png"><img src="../suncheon_before_reflow/pages/page-10.png" alt="순천고 q14 solution, 10쪽"></a></figure>
+        <figure><figcaption>금당고 q15 · 10쪽</figcaption><a href="../geumdang_after_reflow/pages/page-10.png"><img src="../geumdang_after_reflow/pages/page-10.png" alt="금당고 q15 solution, 10쪽"></a></figure>
+      </div>
+    </section>
+
+    <section class="case">
+      <h2>2. 긴 풀이의 공백 밀도</h2>
+      <p>왼쪽 순천고 q15는 빈 줄이 많아 풀이가 늘어진다. 오른쪽 금당고 q18은 거의 같은 해설 page layout에서 단계가 연속적으로 읽힌다.</p>
+      <div class="pair">
+        <figure><figcaption>순천고 q15 · 11쪽</figcaption><a href="../suncheon_before_reflow/pages/page-11.png"><img src="../suncheon_before_reflow/pages/page-11.png" alt="순천고 q15 solution, 11쪽"></a></figure>
+        <figure><figcaption>금당고 q18 · 13쪽</figcaption><a href="../geumdang_after_reflow/pages/page-13.png"><img src="../geumdang_after_reflow/pages/page-13.png" alt="금당고 q18 solution, 13쪽"></a></figure>
+      </div>
+    </section>
+
+    <section class="case">
+      <h2>3. 마지막 조각이 새 열이나 쪽으로 넘어가는 현상</h2>
+      <p>순천고 q22는 두 열을 채워 이어진다. 금당고 q22는 대부분 17쪽에 들어가지만 끝의 짧은 조각만 18쪽으로 넘어간다.</p>
+      <div class="pair">
+        <figure><figcaption>순천고 q22 · 18쪽</figcaption><a href="../suncheon_before_reflow/pages/page-18.png"><img src="../suncheon_before_reflow/pages/page-18.png" alt="순천고 q22 solution, 18쪽"></a></figure>
+        <div class="stack">
+          <figure><figcaption>금당고 q22 · 17쪽</figcaption><a href="../geumdang_after_reflow/pages/page-17.png"><img src="../geumdang_after_reflow/pages/page-17.png" alt="금당고 q22 solution, 17쪽"></a></figure>
+          <figure><figcaption>금당고 q22 · 18쪽 (끝 두 줄)</figcaption><a href="../geumdang_after_reflow/pages/page-18.png"><img src="../geumdang_after_reflow/pages/page-18.png" alt="금당고 q22 solution, 18쪽"></a></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="case">
+      <h2>4. 같은 문제가 아닌 대표 화면</h2>
+      <p>두 문항은 내용이 다르며 같은 q 번호끼리의 수학 비교가 아니다. 이 줄은 재조판된 금당고에서 여전히 column balancing이 남는 것을 보여준다.</p>
+      <div class="pair">
+        <figure><figcaption>순천고 q2 · 1쪽</figcaption><a href="../suncheon_before_reflow/pages/page-01.png"><img src="../suncheon_before_reflow/pages/page-01.png" alt="순천고 q2 solution, 1쪽"></a></figure>
+        <figure><figcaption>금당고 q20 · 15쪽</figcaption><a href="../geumdang_after_reflow/pages/page-15.png"><img src="../geumdang_after_reflow/pages/page-15.png" alt="금당고 q20 solution, 15쪽"></a></figure>
+      </div>
+    </section>
+
+    <div class="links">
+      <strong>전체 결과</strong><br><br>
+      <a href="../comparison_report.md">비교 보고서</a>
+      <a href="../suncheon_before_reflow/suncheon_before_reflow.pdf">순천고 해설 PDF (19쪽)</a>
+      <a href="../geumdang_after_reflow/geumdang_after_reflow.pdf">금당고 해설 PDF (18쪽)</a>
+      <a href="../suncheon_before_reflow/full-render.png">순천고 전체 화면 PNG</a>
+      <a href="../geumdang_after_reflow/full-render.png">금당고 전체 화면 PNG</a>
+    </div>
+  </main>
+</body>
+</html>
