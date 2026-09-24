@@ -6,7 +6,8 @@
     2,
     3,
     4,
-    5
+    5,
+    6
   ],
   "problemTypes": [
     {
@@ -212,7 +213,9 @@
       "representativeReason": "The goal is an angle value from linear/vertical relations and a perpendicular constraint expressed algebraically.",
       "supportingQuestionUids": [
         "qid_v1_0e7ca2acc2e284db79f22c603bfdd6ff59d05ea407d20d8f882ba630661fd909",
-        "qid_v1_b0e72da851709131c0f398f5a65d94d8617d16cfbd9f859ccf075e2d864832fe"
+        "qid_v1_b0e72da851709131c0f398f5a65d94d8617d16cfbd9f859ccf075e2d864832fe",
+        "qid_v1_350536c630d010cd125389c9a7394796133c097d4ddd7a54d2a982a8016715ea",
+        "qid_v1_89c65b94851cec037d19479549e48725a97b4e5c00f8acd93a253463583abbf9"
       ],
       "l1Keys": [
         "M1-05"
@@ -221,7 +224,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -262,6 +266,44 @@
       "sourceBatches": [
         2,
         4
+      ]
+    },
+    {
+      "problemTypeKey": "PT_CHAINED_ISOSCELES_ANGLE_CHASE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6",
+      "representativeReason": "공통 선분 길이 조건으로 연속된 이등변삼각형의 각을 추론한다.",
+      "supportingQuestionUids": [
+        "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "problemTypeKey": "PT_COLLINEAR_POINTS_OBJECT_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_237d9aee56156f644e610353f8f3142b56bb30d3846b765dbe55d6e75b891e6d",
+      "representativeReason": "점의 공선 배치에서 만들어지는 서로 다른 직선·반직선·선분의 수를 세는 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_237d9aee56156f644e610353f8f3142b56bb30d3846b765dbe55d6e75b891e6d"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -376,6 +418,25 @@
       ],
       "sourceBatches": [
         5
+      ]
+    },
+    {
+      "problemTypeKey": "PT_COPLANAR_LINE_POSITION_IMPLICATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
+      "representativeReason": "한 평면 안 직선들의 평행·수직 조건으로 다른 직선 관계가 결정되는지 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-POSITION_RELATION"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -647,6 +708,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_GEOMETRY_CONSTRUCTION_TOOL_USAGE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d",
+      "representativeReason": "기본 작도에 쓰는 도구와 각 도구의 기능을 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -789,6 +869,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M1_ANGLE_COPY_CONSTRUCTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b90ec6186ab7bd94a04da73a32b8a33a967abdbe42f7b739a71c876b2331dd52",
+      "representativeReason": "Fresh M1 type for copying a given angle onto a specified initial ray by straightedge and compass.",
+      "supportingQuestionUids": [
+        "qid_v1_b90ec6186ab7bd94a04da73a32b8a33a967abdbe42f7b739a71c876b2331dd52"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -807,6 +906,44 @@
       "sourceBatches": [
         1,
         4
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_ANGLE_CHASE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3",
+      "representativeReason": "Fresh M1 type for an angle formed by multiple regular polygons rather than one polygon formula in isolation.",
+      "supportingQuestionUids": [
+        "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3"
+      ],
+      "l1Keys": [
+        "M1-06"
+      ],
+      "l2Keys": [
+        "M1-06-POLYGON_CIRCLE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_TESSELLATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c8823b26b5541632f151adfca89d991a50b3e3b33c535368b0c332b7a6467f03",
+      "representativeReason": "Fresh M1 type for deciding single-shape regular-polygon tessellation and applying interior/exterior ratios.",
+      "supportingQuestionUids": [
+        "qid_v1_c8823b26b5541632f151adfca89d991a50b3e3b33c535368b0c332b7a6467f03"
+      ],
+      "l1Keys": [
+        "M1-06"
+      ],
+      "l2Keys": [
+        "M1-06-POLYGON_CIRCLE"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -1042,6 +1179,44 @@
       ]
     },
     {
+      "problemTypeKey": "PT_PARALLEL_ANGLE_STATEMENT_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8e04e9e81b5a049d5794a239b45747becfbf678913389b33fc80be37d941d858",
+      "representativeReason": "평행선 및 교차선 각의 여러 진술 중 옳지 않은 것을 고른다.",
+      "supportingQuestionUids": [
+        "qid_v1_8e04e9e81b5a049d5794a239b45747becfbf678913389b33fc80be37d941d858"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-POSITION_RELATION"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "problemTypeKey": "PT_PARALLEL_LINE_ANGLE_RATIO_TRIANGLE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_0d1fd103201754357d15a312b546ef0d59c024145e282209df6ce33f378a06d9",
+      "representativeReason": "평행선의 각 비 조건으로 삼각형의 미지 내각을 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_0d1fd103201754357d15a312b546ef0d59c024145e282209df6ce33f378a06d9"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-POSITION_RELATION"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "problemTypeKey": "PT_PARALLEL_LINE_CONSTRUCTION_VALIDITY",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -1077,6 +1252,25 @@
       ],
       "sourceBatches": [
         5
+      ]
+    },
+    {
+      "problemTypeKey": "PT_POLYHEDRON_VERTEX_EDGE_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_00923eb598ef98b164a73c41ee4dd545e521a4401bfd3ff601b8a1829fcb3c8a",
+      "representativeReason": "입체도형의 기본 구성요소 수를 세어 이들의 차나 합을 구하는 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_00923eb598ef98b164a73c41ee4dd545e521a4401bfd3ff601b8a1829fcb3c8a"
+      ],
+      "l1Keys": [
+        "M1-07"
+      ],
+      "l2Keys": [
+        "M1-07-SOLID_FIGURE"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -1392,6 +1586,46 @@
       ]
     },
     {
+      "problemTypeKey": "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_21174fa81a5a4cdfadfc9300479ca6d699b9549163f5312744378003c3943cdf",
+      "representativeReason": "정다각형 내각·외각 관계로 변 수와 성질을 결정하는 각 관계 L3이며 #23의 직접 계산과 풀이 핵심을 공유한다.",
+      "supportingQuestionUids": [
+        "qid_v1_21174fa81a5a4cdfadfc9300479ca6d699b9549163f5312744378003c3943cdf",
+        "qid_v1_ca48fdf566dc90735711898859ec748b8368fdb5beb2d04520b9913bd0ecc021"
+      ],
+      "l1Keys": [
+        "M1-06"
+      ],
+      "l2Keys": [
+        "M1-06-POLYGON_CIRCLE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "problemTypeKey": "PT_REGULAR_POLYGON_DIAGONAL_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_22ddc6dba9d486d3d7223b368bae0a805fb9ec98d8e13cba709f258305e2e081",
+      "representativeReason": "변 수를 복원해 다각형의 전체 대각선 개수를 구하는 유형으로 #21과 주된 목표가 같다.",
+      "supportingQuestionUids": [
+        "qid_v1_22ddc6dba9d486d3d7223b368bae0a805fb9ec98d8e13cba709f258305e2e081",
+        "qid_v1_fad19424a17a7e6873eb4bda45fd5ff27c185c154696d68bdc00a30ac80c4ca7"
+      ],
+      "l1Keys": [
+        "M1-06"
+      ],
+      "l2Keys": [
+        "M1-06-POLYGON_CIRCLE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_NESTED_MIDPOINTS",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -1408,6 +1642,25 @@
       ],
       "sourceBatches": [
         5
+      ]
+    },
+    {
+      "problemTypeKey": "PT_SEGMENT_LENGTH_FROM_RELATIVE_SUBSEGMENTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_562a2fc56431faa96e318718965f3d9ce526f932a4cefbb1b0e9c22e41a8dacc",
+      "representativeReason": "일직선 위 여러 선분의 길이비와 전체 길이로 미지 선분을 구하는 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_562a2fc56431faa96e318718965f3d9ce526f932a4cefbb1b0e9c22e41a8dacc"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -1511,13 +1764,52 @@
       ]
     },
     {
+      "problemTypeKey": "PT_SOLID_EDGE_FACE_RELATION_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_f6d2c25ae227e5310e50969ea41ca4e03884fca53b481db509015f1cf4db18e0",
+      "representativeReason": "접은 다면체에서 모서리·면 관계 진술을 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_f6d2c25ae227e5310e50969ea41ca4e03884fca53b481db509015f1cf4db18e0"
+      ],
+      "l1Keys": [
+        "M1-07"
+      ],
+      "l2Keys": [
+        "M1-07-SOLID_FIGURE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "problemTypeKey": "PT_SOLID_PLANE_AND_SKEW_EDGE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_db68fa305146fcede89180b12695f1d682fb2a4bb8f2c187cdd2f295020b2803",
+      "representativeReason": "두 평면 관계를 열거하고 전개도로 만든 직육면체의 한 모서리와 꼬인 다른 모서리를 찾는다.",
+      "supportingQuestionUids": [
+        "qid_v1_db68fa305146fcede89180b12695f1d682fb2a4bb8f2c187cdd2f295020b2803"
+      ],
+      "l1Keys": [
+        "M1-07"
+      ],
+      "l2Keys": [
+        "M1-07-SOLID_FIGURE"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "problemTypeKey": "PT_SPATIAL_LINE_PLANE_RELATION_JUDGMENT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
       "representativeQuestionUid": "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0",
       "representativeReason": "공간의 직선·평면 관계에 대한 복수 진술 중 참인 항목을 고른다.",
       "supportingQuestionUids": [
-        "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0"
+        "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0",
+        "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576"
       ],
       "l1Keys": [
         "M1-05"
@@ -1526,7 +1818,8 @@
         "M1-05-POSITION_RELATION"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -1556,7 +1849,9 @@
       "representativeReason": "보조 삼각형의 합동으로 대응각을 옮겨 목표 각을 구하는 유형이다.",
       "supportingQuestionUids": [
         "qid_v1_c9a477acd78ede0dce4978e6cfeb2363c7bf2674a48bc870b16aa5a2f5123b91",
-        "qid_v1_b47f2fc2289348b787e2f71a5ae1d786c327cd82781026dbeeeb03c90304b6ae"
+        "qid_v1_b47f2fc2289348b787e2f71a5ae1d786c327cd82781026dbeeeb03c90304b6ae",
+        "qid_v1_1e01b00ab530c126aa481fb9bcdddacd84d08ff2fb7bc1239a80662c9fb73337",
+        "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394"
       ],
       "l1Keys": [
         "M1-05"
@@ -1565,7 +1860,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -1575,7 +1871,8 @@
       "representativeQuestionUid": "qid_v1_a6ceeb35b7ba09a5b00052f47c6b595650b768aea85ae5008b3e5899db678bb0",
       "representativeReason": "The target is the condition set that is insufficient for congruence; compare each combined data set with congruence criteria.",
       "supportingQuestionUids": [
-        "qid_v1_a6ceeb35b7ba09a5b00052f47c6b595650b768aea85ae5008b3e5899db678bb0"
+        "qid_v1_a6ceeb35b7ba09a5b00052f47c6b595650b768aea85ae5008b3e5899db678bb0",
+        "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8"
       ],
       "l1Keys": [
         "M1-05"
@@ -1584,7 +1881,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -1594,7 +1892,8 @@
       "representativeQuestionUid": "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57",
       "representativeReason": "The goal is the number of listed lengths that can complete a triangle with two fixed sides; the triangle inequality is decisive.",
       "supportingQuestionUids": [
-        "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57"
+        "qid_v1_c9f56b737937b2136e41860c98f1cc493135fe4dc90af16d21e4aaf51b3d6b57",
+        "qid_v1_5d9d549da9db50a0f1d4a2af41db32cd9c17d22a78221040f0030408cb8b3fbd"
       ],
       "l1Keys": [
         "M1-05"
@@ -1603,7 +1902,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -1613,7 +1913,9 @@
       "representativeQuestionUid": "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
       "representativeReason": "The goal is to identify data that determine exactly one triangle; compare existence and uniqueness across construction conditions.",
       "supportingQuestionUids": [
-        "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069"
+        "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
+        "qid_v1_af8a6a168a716088962558d0621f9a59fcde9f4c4df662768bf67b2acb034cd8",
+        "qid_v1_91460875b8b6cb92937900a31440caa73b7d535b43d23ea67bb2556b593720cb"
       ],
       "l1Keys": [
         "M1-05"
@@ -1622,7 +1924,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        5
+        5,
+        6
       ]
     },
     {
@@ -1789,6 +2092,20 @@
       ]
     },
     {
+      "templateKey": "TPL_COLLINEAR_CHAIN_OF_ISOSCELES_TRIANGLES",
+      "parentProblemTypeKey": "PT_CHAINED_ISOSCELES_ANGLE_CHASE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6",
+      "representativeReason": "한 삼각형의 밑각을 미지수로 두고 인접 이등변삼각형과 straight-line 관계를 이어 푼다.",
+      "supportingQuestionUids": [
+        "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_COLLINEAR_POINT_ORDER_OBJECT_EQUALITY",
       "parentProblemTypeKey": "PT_SEGMENT_RAY_LINE_RELATION_JUDGMENT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1842,6 +2159,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_CONSECUTIVE_3_TO_2_CHAIN_SUM_RATIO",
+      "parentProblemTypeKey": "PT_ANGLE_MEASURE_FROM_ALGEBRAIC_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_89c65b94851cec037d19479549e48725a97b4e5c00f8acd93a253463583abbf9",
+      "representativeReason": "같은 비 3:2가 세 번 이어지는 네 각을 공통 단위로 환산하고 겹치는 두 구간 합을 비교한다.",
+      "supportingQuestionUids": [
+        "qid_v1_89c65b94851cec037d19479549e48725a97b4e5c00f8acd93a253463583abbf9"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -1996,6 +2327,20 @@
       ],
       "sourceBatches": [
         4
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_VALID_TRIPLES_FROM_FIXED_LENGTHS",
+      "parentProblemTypeKey": "PT_TRIANGLE_SIDE_FEASIBILITY_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_5d9d549da9db50a0f1d4a2af41db32cd9c17d22a78221040f0030408cb8b3fbd",
+      "representativeReason": "가능한 세 길이를 모두 나열해 가장 긴 변이 나머지 두 변의 합보다 작은 조합만 남긴다.",
+      "supportingQuestionUids": [
+        "qid_v1_5d9d549da9db50a0f1d4a2af41db32cd9c17d22a78221040f0030408cb8b3fbd"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2195,6 +2540,20 @@
       ]
     },
     {
+      "templateKey": "TPL_FOLDED_PRISM_RELATIONS",
+      "parentProblemTypeKey": "PT_SOLID_EDGE_FACE_RELATION_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_f6d2c25ae227e5310e50969ea41ca4e03884fca53b481db509015f1cf4db18e0",
+      "representativeReason": "전개도에서 접힌 뒤의 정점 대응을 복원하고 평행·수직·꼬인 위치를 선택지별로 구분한다.",
+      "supportingQuestionUids": [
+        "qid_v1_f6d2c25ae227e5310e50969ea41ca4e03884fca53b481db509015f1cf4db18e0"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
       "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
       "status": "ACTIVE_REUSE",
@@ -2237,6 +2596,20 @@
       ]
     },
     {
+      "templateKey": "TPL_IDENTIFY_REGULAR_POLYGON_FROM_ANGLE_RATIO",
+      "parentProblemTypeKey": "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_21174fa81a5a4cdfadfc9300479ca6d699b9549163f5312744378003c3943cdf",
+      "representativeReason": "각의 보각 관계로 외각을 구하고 변 수를 찾아 선택지의 성질을 검증한다.",
+      "supportingQuestionUids": [
+        "qid_v1_21174fa81a5a4cdfadfc9300479ca6d699b9549163f5312744378003c3943cdf"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_IDENTIFY_WRONG_LAW_IN_SIGNED_PRODUCT",
       "parentProblemTypeKey": "PT_OPERATION_LAW_STEP_AUDIT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -2250,6 +2623,20 @@
       "sourceBatches": [
         1,
         4
+      ]
+    },
+    {
+      "templateKey": "TPL_INTERIOR_SUM_TO_SIDE_COUNT_AND_ANGLE",
+      "parentProblemTypeKey": "PT_REGULAR_POLYGON_ANGLE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_ca48fdf566dc90735711898859ec748b8368fdb5beb2d04520b9913bd0ecc021",
+      "representativeReason": "내각합 공식에서 n을 구한 뒤 180−360/n으로 y를 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_ca48fdf566dc90735711898859ec748b8368fdb5beb2d04520b9913bd0ecc021"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2325,6 +2712,48 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_ADDITIONAL_CONDITION_SELECTION",
+      "parentProblemTypeKey": "PT_UNIQUE_TRIANGLE_DETERMINATION_FROM_GIVEN_DATA",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_91460875b8b6cb92937900a31440caa73b7d535b43d23ea67bb2556b593720cb",
+      "representativeReason": "A fixed side/angle base is supplemented by candidate conditions; each must satisfy SAS, ASA, or AAS rather than ambiguous SSA.",
+      "supportingQuestionUids": [
+        "qid_v1_91460875b8b6cb92937900a31440caa73b7d535b43d23ea67bb2556b593720cb"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_ARC_AND_CHORD_TRANSFER_SEQUENCE",
+      "parentProblemTypeKey": "PT_M1_ANGLE_COPY_CONSTRUCTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b90ec6186ab7bd94a04da73a32b8a33a967abdbe42f7b739a71c876b2331dd52",
+      "representativeReason": "The order is constrained by source chord capture, equal-radius transfer, chord transfer, and final ray construction.",
+      "supportingQuestionUids": [
+        "qid_v1_b90ec6186ab7bd94a04da73a32b8a33a967abdbe42f7b739a71c876b2331dd52"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_ASA_CONGRUENCE_IN_OVERLAPPING_SQUARES",
+      "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394",
+      "representativeReason": "The specific arrangement proves △BOH and △COI congruent by ASA, transferring a side relation inside the overlapping-square diagram.",
+      "supportingQuestionUids": [
+        "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_SUM_AND_PRODUCT",
       "parentProblemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -2336,6 +2765,76 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_MATCH_TRIANGLE_BY_SIDE_AND_ANGLES",
+      "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_CONDITION_SELECTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8",
+      "representativeReason": "The choices are diagrams; the matching option has the given side between the two known base angles.",
+      "supportingQuestionUids": [
+        "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SIDE_ANGLE_DATA_UNIQUENESS",
+      "parentProblemTypeKey": "PT_UNIQUE_TRIANGLE_DETERMINATION_FROM_GIVEN_DATA",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_af8a6a168a716088962558d0621f9a59fcde9f4c4df662768bf67b2acb034cd8",
+      "representativeReason": "The template contrasts degenerate SSS, ambiguous SSA, included-side/two-angle data, angle-only data, and impossible angle sums.",
+      "supportingQuestionUids": [
+        "qid_v1_af8a6a168a716088962558d0621f9a59fcde9f4c4df662768bf67b2acb034cd8"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SINGLE_POLYGON_TILING_AND_ANGLE_RATIO",
+      "parentProblemTypeKey": "PT_M1_REGULAR_POLYGON_TESSELLATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c8823b26b5541632f151adfca89d991a50b3e3b33c535368b0c332b7a6467f03",
+      "representativeReason": "The template checks integer angle tiling, rejects the pentagon, and recovers n from a 7:2 angle ratio.",
+      "supportingQuestionUids": [
+        "qid_v1_c8823b26b5541632f151adfca89d991a50b3e3b33c535368b0c332b7a6467f03"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SPACE_LINE_PLANE_RULE_CLASSIFICATION",
+      "parentProblemTypeKey": "PT_SPATIAL_LINE_PLANE_RELATION_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
+      "representativeReason": "Five verbal definitions are tested, with one valid shared-perpendicular implication in a plane and four spatial counterexamples.",
+      "supportingQuestionUids": [
+        "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_TRIANGLE_SQUARE_PENTAGON_COMPOSITE_ANGLE",
+      "parentProblemTypeKey": "PT_M1_REGULAR_POLYGON_ANGLE_CHASE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3",
+      "representativeReason": "This template depends on the triangle-square-pentagon arrangement and combines their interior/exterior directions at x.",
+      "supportingQuestionUids": [
+        "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2495,6 +2994,20 @@
       ]
     },
     {
+      "templateKey": "TPL_PARALLEL_ANGLE_RATIO_AND_TRIANGLE_SUM",
+      "parentProblemTypeKey": "PT_PARALLEL_LINE_ANGLE_RATIO_TRIANGLE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_0d1fd103201754357d15a312b546ef0d59c024145e282209df6ce33f378a06d9",
+      "representativeReason": "보각 관계와 두 각의 비를 먼저 적용하고 삼각형 내각합으로 남은 각을 마무리한다.",
+      "supportingQuestionUids": [
+        "qid_v1_0d1fd103201754357d15a312b546ef0d59c024145e282209df6ce33f378a06d9"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_PARALLEL_ZIGZAG_WITH_TWO_GIVEN_ANGLES",
       "parentProblemTypeKey": "PT_PARALLEL_LINES_ZIGZAG_ANGLE",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -2520,6 +3033,20 @@
       ],
       "sourceBatches": [
         5
+      ]
+    },
+    {
+      "templateKey": "TPL_PERPENDICULAR_PARALLEL_IMPLICATION_CHECK",
+      "parentProblemTypeKey": "PT_COPLANAR_LINE_POSITION_IMPLICATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
+      "representativeReason": "한 직선에 수직인 두 직선의 평행성과 평행선에 대한 수직 전이를 적용해 세 명제를 검사한다.",
+      "supportingQuestionUids": [
+        "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2562,6 +3089,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_PRISM_NET_AND_SKEW_EDGES",
+      "parentProblemTypeKey": "PT_SOLID_PLANE_AND_SKEW_EDGE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_db68fa305146fcede89180b12695f1d682fb2a4bb8f2c187cdd2f295020b2803",
+      "representativeReason": "평면 관계를 정의로 나누고 접은 뒤 edge adjacency/parallel direction을 이용해 skew edges를 고른다.",
+      "supportingQuestionUids": [
+        "qid_v1_db68fa305146fcede89180b12695f1d682fb2a4bb8f2c187cdd2f295020b2803"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2735,6 +3276,48 @@
       ]
     },
     {
+      "templateKey": "TPL_RIGHT_ANGLE_AND_TWO_LINEAR_ANGLES",
+      "parentProblemTypeKey": "PT_ANGLE_MEASURE_FROM_ALGEBRAIC_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_350536c630d010cd125389c9a7394796133c097d4ddd7a54d2a982a8016715ea",
+      "representativeReason": "가운데 각을 90°로 대입하고 양쪽 인접 각을 더해 한 개의 일차방정식을 푼다.",
+      "supportingQuestionUids": [
+        "qid_v1_350536c630d010cd125389c9a7394796133c097d4ddd7a54d2a982a8016715ea"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_ROTATED_EQUILATERAL_TRIANGLES_WITH_INTERSECTION",
+      "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_1e01b00ab530c126aa481fb9bcdddacd84d08ff2fb7bc1239a80662c9fb73337",
+      "representativeReason": "60° 회전 대응과 보조 교점에서 생기는 각 관계를 선택지별로 판별한다.",
+      "supportingQuestionUids": [
+        "qid_v1_1e01b00ab530c126aa481fb9bcdddacd84d08ff2fb7bc1239a80662c9fb73337"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
+      "templateKey": "TPL_SEGMENT_RATIO_TO_TOTAL_LENGTH",
+      "parentProblemTypeKey": "PT_SEGMENT_LENGTH_FROM_RELATIVE_SUBSEGMENTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_562a2fc56431faa96e318718965f3d9ce526f932a4cefbb1b0e9c22e41a8dacc",
+      "representativeReason": "부분 구간을 하나의 미지수로 나타내고, 중간 구간·부분합을 차례로 복원해 전체 길이 조건을 푼다.",
+      "supportingQuestionUids": [
+        "qid_v1_562a2fc56431faa96e318718965f3d9ce526f932a4cefbb1b0e9c22e41a8dacc"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_SELECT_CORRECT_LITERAL_EXPRESSION",
       "parentProblemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALIDITY_CHECK",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -2774,6 +3357,20 @@
       ],
       "sourceBatches": [
         4
+      ]
+    },
+    {
+      "templateKey": "TPL_SELECT_FALSE_PARALLEL_ANGLE_PROPERTY",
+      "parentProblemTypeKey": "PT_PARALLEL_ANGLE_STATEMENT_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8e04e9e81b5a049d5794a239b45747becfbf678913389b33fc80be37d941d858",
+      "representativeReason": "대응각의 역·맞꼭지각·엇각의 개수·각의 정의를 함께 점검해 보편 진술을 판별한다.",
+      "supportingQuestionUids": [
+        "qid_v1_8e04e9e81b5a049d5794a239b45747becfbf678913389b33fc80be37d941d858"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -2933,6 +3530,20 @@
       ]
     },
     {
+      "templateKey": "TPL_SQUARE_PYRAMID_EDGE_MINUS_VERTEX_COUNT",
+      "parentProblemTypeKey": "PT_POLYHEDRON_VERTEX_EDGE_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_00923eb598ef98b164a73c41ee4dd545e521a4401bfd3ff601b8a1829fcb3c8a",
+      "representativeReason": "사각뿔의 밑면 네 변과 꼭짓점으로 모이는 네 모서리, 밑면 네 꼭짓점과 꼭짓점 하나를 센다.",
+      "supportingQuestionUids": [
+        "qid_v1_00923eb598ef98b164a73c41ee4dd545e521a4401bfd3ff601b8a1829fcb3c8a"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_SQUARE_SAS_CONGRUENCE_ANGLE_TRANSFER",
       "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_APPLICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3045,6 +3656,20 @@
       ]
     },
     {
+      "templateKey": "TPL_THREE_COLLINEAR_ONE_OFFLINE_LINE_RAY_SEGMENT_COUNTS",
+      "parentProblemTypeKey": "PT_COLLINEAR_POINTS_OBJECT_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_237d9aee56156f644e610353f8f3142b56bb30d3846b765dbe55d6e75b891e6d",
+      "representativeReason": "세 공선점과 한 외부점 배치에서 각 점을 시작점으로 하는 반직선의 중복 여부를 따로 처리하고 세 점쌍을 센다.",
+      "supportingQuestionUids": [
+        "qid_v1_237d9aee56156f644e610353f8f3142b56bb30d3846b765dbe55d6e75b891e6d"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_THREE_DIVISORS_PRIME_SQUARES",
       "parentProblemTypeKey": "PT_DIVISOR_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3084,6 +3709,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_TOTAL_DIAGONALS_TO_VERTEX_DIAGONALS",
+      "parentProblemTypeKey": "PT_REGULAR_POLYGON_DIAGONAL_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_fad19424a17a7e6873eb4bda45fd5ff27c185c154696d68bdc00a30ac80c4ca7",
+      "representativeReason": "먼저 기준 다각형의 대각선 총수를 구하고 n−3과 같게 놓는다.",
+      "supportingQuestionUids": [
+        "qid_v1_fad19424a17a7e6873eb4bda45fd5ff27c185c154696d68bdc00a30ac80c4ca7"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -3143,6 +3782,20 @@
       ]
     },
     {
+      "templateKey": "TPL_UNMARKED_RULER_COMPASS_FUNCTIONS",
+      "parentProblemTypeKey": "PT_GEOMETRY_CONSTRUCTION_TOOL_USAGE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d",
+      "representativeReason": "원 그리기·길이 옮기기·직선 긋기·각 옮기기의 도구 역할을 대응한다.",
+      "supportingQuestionUids": [
+        "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
+    {
       "templateKey": "TPL_USE_TRIANGLE_CONGRUENCE_TO_RECOVER_TRAPEZOID_BASE_SUM",
       "parentProblemTypeKey": "PT_TRAPEZOID_AREA_FROM_CONGRUENT_TRIANGLES",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3154,6 +3807,20 @@
       ],
       "sourceBatches": [
         5
+      ]
+    },
+    {
+      "templateKey": "TPL_VERTEX_ANGLE_TOTAL_TO_DIAGONAL_COUNT",
+      "parentProblemTypeKey": "PT_REGULAR_POLYGON_DIAGONAL_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_22ddc6dba9d486d3d7223b368bae0a805fb9ec98d8e13cba709f258305e2e081",
+      "representativeReason": "꼭짓점당 180° 총합으로 n을 구한 후 n(n−3)/2를 적용한다.",
+      "supportingQuestionUids": [
+        "qid_v1_22ddc6dba9d486d3d7223b368bae0a805fb9ec98d8e13cba709f258305e2e081"
+      ],
+      "sourceBatches": [
+        6
       ]
     },
     {
@@ -3202,6 +3869,19 @@
     }
   ],
   "crossConcepts": [
+    {
+      "conceptKey": "CC_AREA",
+      "status": "ACTIVE_REUSE",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "representativeQuestionUid": "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394",
+      "representativeReason": "합동 증명 뒤 서로 같은 삼각형 넓이를 상쇄하여 사각형의 넓이를 △OBC 넓이로 옮기는 별도 면적 개념이 실제 풀이에 필수이다.",
+      "supportingQuestionUids": [
+        "qid_v1_bf6f71e848237887a135461e9cb5292a204545ac7e196eacc475b1b3025a7394"
+      ],
+      "sourceBatches": [
+        6
+      ]
+    },
     {
       "conceptKey": "CC_NUMBER_PARITY",
       "status": "ACTIVE_REUSE",
@@ -3282,11 +3962,11 @@
     }
   ],
   "counts": {
-    "candidateProblemTypes": 79,
-    "candidateTemplates": 107,
+    "candidateProblemTypes": 94,
+    "candidateTemplates": 133,
     "candidateCrossConcepts": 2,
     "activeProblemTypeReuse": 4,
     "activeTemplateReuse": 3,
-    "activeCrossConceptReuse": 4
+    "activeCrossConceptReuse": 5
   }
 }
