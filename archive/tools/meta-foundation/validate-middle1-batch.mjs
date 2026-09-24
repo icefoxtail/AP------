@@ -175,6 +175,18 @@ if (exists('CONFLICT_C.jsonl')) {
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
+if (exists('C_QUALITY_DEFECTS.json')) {
+  const rejection = json('C_QUALITY_DEFECTS.json');
+  const defects = rejection.defects || [];
+  const cRows = jsonl('CONFLICT_C.jsonl');
+  const cByUid = new Map(cRows.map(x => [x.questionUid, x]));
+  if (rejection.batchNo !== batchNo || rejection.status !== 'AFFECTED_UID_REOPENED_AND_ROOT_ADJUDICATED' || rejection.preservedLedgerSha256 !== sha(fs.readFileSync(path.join(batchDir, 'CONFLICT_C.jsonl'))) || defects.length === 0 || new Set(defects.map(x => x.questionUid)).size !== defects.length) fail('C_QUALITY_DEFECT_RECEIPT_INVALID');
+  for (const defect of defects) {
+    const source = inputByUid.get(defect.questionUid);
+    if (!source || source.sourceOrdinal !== defect.sourceOrdinal || !conflictSet.has(defect.questionUid) || !cByUid.has(defect.questionUid) || !String(defect.reason || '').trim() || !String(defect.type || '').trim() || !exists(defect.rootEvidenceFile)) fail('C_QUALITY_AFFECTED_UID_INVALID', { uid: defect.questionUid });
+  }
+  counts.cQualityRejectedUidCount = defects.length;
+}
 if (exists('B_SCHEMA_CORRECTION_RECEIPT.json')) {
   const receipt = json('B_SCHEMA_CORRECTION_RECEIPT.json');
   const oldBytes = fs.readFileSync(path.join(batchDir, 'LUNA_B_PRE_SCHEMA_CORRECTION.jsonl'));
@@ -237,10 +249,13 @@ for (const scope of qualityScopes.filter(x => exists(x.file))) {
     }
   }
 }
+counts.workerQualityRejectedUidCount += counts.cQualityRejectedUidCount || 0;
 let consensusChecked = false;
 let consensusByUid = new Map();
 if (exists('CONSENSUS.jsonl')) {
   const consensus = jsonl('CONSENSUS.jsonl');
+  const cQualityRejectedUids = new Set((exists('C_QUALITY_DEFECTS.json') ? json('C_QUALITY_DEFECTS.json').defects : []).map(x => x.questionUid));
+  const consensusPlan = json('CONSENSUS_PLAN.json');
   consensusByUid = new Map(consensus.map(x => [x.questionUid, x]));
   const master = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/master_tables/js_archive_tag_master.json'), 'utf8'));
   const masterByKey = new Map(master.map(x => [x.key, x]));
@@ -264,6 +279,7 @@ if (exists('CONSENSUS.jsonl')) {
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.sourceFingerprint !== source.sourceFingerprint) fail('CONSENSUS_PROVENANCE_MISMATCH', { uid: row.questionUid });
     if (batchNo >= 10 && (row.standardUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL1 || row.subUnitKey !== baselineAuditByUid.get(row.questionUid)?.acceptedL2)) fail('CONSENSUS_L1_L2_BASELINE_AUTHORITY_MISMATCH', { uid: row.questionUid });
     if (!row.consensusBasis?.rootReason || !['A','B','C'].includes(row.consensusBasis?.chosenRole)) fail('CONSENSUS_ROOT_REASON_MISSING', { uid: row.questionUid });
+    if (cQualityRejectedUids.has(row.questionUid) && (row.consensusBasis.chosenRole === 'C' || !consensusPlan.rootDirectReadOrdinals?.includes(row.sourceOrdinal))) fail('C_QUALITY_DEFECT_NOT_ROOT_ADJUDICATED', { uid: row.questionUid });
     const l1row = masterByKey.get(row.standardUnitKey), l2row = masterByKey.get(row.subUnitKey);
     if (l1row?.keyType !== 'standardUnitKey' || l2row?.keyType !== 'subUnitKey' || l2row.standardUnitKey !== row.standardUnitKey) fail('L1_L2_PARENT_INVALID', { uid: row.questionUid, l1: row.standardUnitKey, l2: row.subUnitKey });
     if (row.reviewStatus === 'ROUTE_OUT' || row.reviewStatus === 'HOLD') {
@@ -301,6 +317,22 @@ if (exists('SOURCE_QUALITY.jsonl')) {
   }
   sourceQualityChecked = true;
 }
+if (exists('B11_L4_REUSE_INPUT_DELTA.json')) {
+  const delta = json('B11_L4_REUSE_INPUT_DELTA.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_INPUT_PRE_L4_REUSE.jsonl'));
+  const newBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_INPUT.jsonl'));
+  const oldRows = jsonl('DIFFICULTY_INPUT_PRE_L4_REUSE.jsonl');
+  const newRows = jsonl('DIFFICULTY_INPUT.jsonl');
+  const changed = [];
+  if (delta.batchNo !== batchNo || delta.workerBlindDraftWrittenBeforeDelta !== false || sha(oldBytes) !== delta.oldInputSha256 || sha(newBytes) !== delta.newInputSha256 || oldRows.length !== input.length || newRows.length !== input.length || delta.denominator !== input.length) fail('L4_REUSE_DIFFICULTY_INPUT_DELTA_PROVENANCE_INVALID');
+  for (let i = 0; i < Math.min(oldRows.length, newRows.length); i++) {
+    const old = oldRows[i], fresh = newRows[i];
+    const expected = { ...old, semanticContext: { ...old.semanticContext, templateKey: fresh.semanticContext.templateKey }, blindInputSha: fresh.blindInputSha };
+    if (JSON.stringify(expected) !== JSON.stringify(fresh)) fail('L4_REUSE_DIFFICULTY_INPUT_SCOPE_INVALID', { uid: old.questionUid });
+    if (old.semanticContext.templateKey !== fresh.semanticContext.templateKey) changed.push({ sourceOrdinal: old.sourceOrdinal, questionUid: old.questionUid, oldTemplateKey: old.semanticContext.templateKey, newTemplateKey: fresh.semanticContext.templateKey });
+  }
+  if (changed.length !== delta.changedCount || JSON.stringify(changed) !== JSON.stringify(delta.changed)) fail('L4_REUSE_DIFFICULTY_INPUT_CHANGESET_INVALID');
+}
 let difficultyInputChecked = false, difficultyChecked = false;
 if (exists('DIFFICULTY_INPUT.jsonl')) {
   const dInput = jsonl('DIFFICULTY_INPUT.jsonl');
@@ -337,6 +369,31 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
     }
     difficultyChecked = true;
   }
+}
+if (exists('B11_DIFFICULTY_QUALITY_REJECTION.json')) {
+  const rejection = json('B11_DIFFICULTY_QUALITY_REJECTION.json');
+  const schemaReceipt = json('B11_Q19_SCHEMA_NORMALIZATION.json');
+  const rawCorrectionBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_Q19_RAW.jsonl'));
+  const draftBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_DRAFT.jsonl'));
+  const correctedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_Q19.jsonl'));
+  const finalBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY.jsonl'));
+  const isolatedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_INPUT_Q19.jsonl'));
+  const draft = jsonl('DIFFICULTY_DRAFT.jsonl'), corrected = jsonl('DIFFICULTY_BLIND_CORRECTION_Q19.jsonl'), final = jsonl('DIFFICULTY.jsonl'), isolated = jsonl('DIFFICULTY_BLIND_INPUT_Q19.jsonl');
+  const fullInput = jsonl('DIFFICULTY_INPUT.jsonl');
+  const shared = json('Q19_SHARED_MATERIAL_REF.json');
+  const repairWorker = modelLog.workers.find(x => x.workerName === '/root/m1_difficulty_blind_repair' && x.batchAssignments?.includes(batchNo));
+  counts.difficultyWorkerQualityRejectedUidCount = 1;
+  const rawCorrection = jsonl('DIFFICULTY_BLIND_CORRECTION_Q19_RAW.jsonl');
+  const normalizedFromRaw = { ...rawCorrection[0], sourceSolutionDifficultyConflict: rawCorrection[0]?.sourceSolutionConflict, reviewerRequestedRecheck: rawCorrection[0]?.reviewerRecheck, reviewer: schemaReceipt.reviewerStampOnly };
+  delete normalizedFromRaw.sourceSolutionConflict;
+  delete normalizedFromRaw.reviewerRecheck;
+  if (schemaReceipt.batchNo !== batchNo || schemaReceipt.sourceOrdinal !== 19 || schemaReceipt.mathematicalFieldsChanged !== 0 || schemaReceipt.rawSha256 !== sha(rawCorrectionBytes) || schemaReceipt.normalizedSha256 !== sha(correctedBytes) || JSON.stringify(schemaReceipt.renamedFields) !== JSON.stringify({ sourceSolutionConflict: 'sourceSolutionDifficultyConflict', reviewerRecheck: 'reviewerRequestedRecheck' }) || rawCorrection.length !== 1 || JSON.stringify(normalizedFromRaw) !== JSON.stringify(corrected[0])) fail('B11_DIFFICULTY_SCHEMA_NORMALIZATION_INVALID');
+  if (rejection.batchNo !== batchNo || rejection.status !== 'RESOLVED_FRESH_BLIND_Q19' || sha(draftBytes) !== rejection.originalDraftSha256 || sha(correctedBytes) !== rejection.correctedRowSha256 || sha(finalBytes) !== rejection.finalBlindLedgerSha256 || sha(isolatedBytes) !== rejection.isolatedInputSha256 || draft.length !== input.length || final.length !== input.length || corrected.length !== 1 || isolated.length !== 1) fail('B11_DIFFICULTY_QUALITY_RECEIPT_INVALID');
+  if (!repairWorker?.modelVerified || repairWorker.actualModel !== 'gpt-6-luna' || repairWorker.actualReasoningEffort !== 'xhigh' || repairWorker.blindInputVerified !== true) fail('B11_DIFFICULTY_REPAIR_MODEL_UNVERIFIED');
+  const source = fullInput.find(x => x.sourceOrdinal === 19);
+  const sharedSource = fullInput.find(x => x.sourceOrdinal === 18);
+  if (!source || !sharedSource || JSON.stringify(isolated[0]) !== JSON.stringify(source) || corrected[0]?.questionUid !== source.questionUid || corrected[0]?.blindInputSha !== source.blindInputSha || shared.sourceOrdinal !== 19 || shared.sharedFromSourceOrdinal !== 18 || shared.questionUid !== source.questionUid || shared.isolatedInputSha256 !== sha(isolatedBytes) || JSON.stringify(shared.images) !== JSON.stringify(sharedSource.images)) fail('B11_DIFFICULTY_REPAIR_INPUT_OR_SHARED_MATERIAL_INVALID');
+  for (let i = 0; i < draft.length; i++) if (JSON.stringify(final[i]) !== JSON.stringify(i === 18 ? corrected[0] : draft[i])) fail('B11_DIFFICULTY_REPAIR_EXCEEDED_Q19_SCOPE', { ordinal: i + 1 });
 }
 if (exists('B09_DIFFICULTY_QUALITY_REJECTION.json')) {
   const rejection = json('B09_DIFFICULTY_QUALITY_REJECTION.json');
@@ -389,6 +446,30 @@ if (exists('DIFFICULTY_FREEZE_RECEIPT.json')) {
     legacyChecked = true;
   }
 }
+const waivedRecheckTriggers = new Map();
+if (exists('B11_RECHECK_TRIGGER_ADJUDICATION.json')) {
+  const adjudication = json('B11_RECHECK_TRIGGER_ADJUDICATION.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_RECHECK_QUEUE_PRE_ADJUDICATION.jsonl'));
+  const currentBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_RECHECK_QUEUE.jsonl'));
+  const oldQueue = jsonl('DIFFICULTY_RECHECK_QUEUE_PRE_ADJUDICATION.jsonl');
+  const currentQueue = jsonl('DIFFICULTY_RECHECK_QUEUE.jsonl');
+  const changes = adjudication.changes || [];
+  const changeByUid = new Map(changes.map(x => [x.questionUid, x]));
+  const blindByUid = new Map(jsonl('DIFFICULTY.jsonl').map(x => [x.questionUid, x]));
+  if (adjudication.batchNo !== batchNo || adjudication.blindLedgerUnchanged !== true || adjudication.legacyCompareUnchanged !== true || sha(oldBytes) !== adjudication.originalQueueSha256 || sha(currentBytes) !== adjudication.correctedQueueSha256 || oldQueue.length !== adjudication.originalCount || currentQueue.length !== adjudication.correctedCount || changeByUid.size !== changes.length || changes.length === 0) fail('RECHECK_TRIGGER_ADJUDICATION_RECEIPT_INVALID');
+  const reconstructed = [];
+  for (const item of oldQueue) {
+    const change = changeByUid.get(item.questionUid);
+    if (!change) { reconstructed.push(item); continue; }
+    const firstPass = blindByUid.get(item.questionUid);
+    if (change.sourceOrdinal !== item.sourceOrdinal || !String(change.reason || '').trim() || !Array.isArray(change.removedTriggers) || !change.removedTriggers.length || !change.removedTriggers.every(x => ['VISUAL_DIFFICULTY_IMPACT','REVIEWER_REQUESTED_RECHECK'].includes(x) && item.triggerReasons.includes(x)) || (change.removedTriggers.includes('VISUAL_DIFFICULTY_IMPACT') && firstPass?.visualDifficultyImpact !== true) || (change.removedTriggers.includes('REVIEWER_REQUESTED_RECHECK') && firstPass?.reviewerRequestedRecheck !== true)) fail('RECHECK_TRIGGER_ADJUDICATION_SCOPE_INVALID', { uid: item.questionUid });
+    const remaining = item.triggerReasons.filter(x => !change.removedTriggers.includes(x));
+    if (JSON.stringify(remaining) !== JSON.stringify(change.remainingTriggers)) fail('RECHECK_TRIGGER_ADJUDICATION_REMAINDER_INVALID', { uid: item.questionUid });
+    waivedRecheckTriggers.set(item.questionUid, new Set(change.removedTriggers));
+    if (remaining.length) reconstructed.push({ ...item, triggerReasons: remaining });
+  }
+  if (JSON.stringify(reconstructed) !== JSON.stringify(currentQueue) || changes.some(x => !oldQueue.some(y => y.questionUid === x.questionUid))) fail('RECHECK_TRIGGER_ADJUDICATION_QUEUE_MISMATCH');
+}
 if (exists('DIFFICULTY_RECHECK_QUEUE.jsonl') && exists('DIFFICULTY_RECHECK.jsonl')) {
   const queue = jsonl('DIFFICULTY_RECHECK_QUEUE.jsonl');
   const review = jsonl('DIFFICULTY_RECHECK.jsonl');
@@ -401,7 +482,7 @@ if (exists('DIFFICULTY_RECHECK_QUEUE.jsonl') && exists('DIFFICULTY_RECHECK.jsonl
   for (const item of queue) if (batchNo >= 8) {
     const firstPass = blindByUid.get(item.questionUid);
     for (const [trigger, flag] of [['VISUAL_DIFFICULTY_IMPACT','visualDifficultyImpact'], ['SOURCE_SOLUTION_DIFFICULTY_CONFLICT','sourceSolutionDifficultyConflict'], ['REVIEWER_REQUESTED_RECHECK','reviewerRequestedRecheck']]) {
-      if (item.triggerReasons.includes(trigger) !== (firstPass?.[flag] === true)) fail('RECHECK_TRIGGER_EVIDENCE_MISMATCH', { uid: item.questionUid, trigger });
+      if (item.triggerReasons.includes(trigger) !== (firstPass?.[flag] === true && !waivedRecheckTriggers.get(item.questionUid)?.has(trigger))) fail('RECHECK_TRIGGER_EVIDENCE_MISMATCH', { uid: item.questionUid, trigger });
     }
     if (item.triggerReasons.includes('VISUAL_DEPENDENCY') || item.triggerReasons.includes('OFF_TOPIC_SOLUTION') || item.triggerReasons.includes('MISLEADING_SOLUTION')) fail('NONCANONICAL_RECHECK_TRIGGER', { uid: item.questionUid });
   }
