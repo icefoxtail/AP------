@@ -78,6 +78,8 @@ const q319LabelFile = 'H1_SOL_Q319_NONBLOCKING_PQ_LABEL_ORDER.json';
 const q319Label = JSON.parse(fs.readFileSync(path.join(dir, q319LabelFile), 'utf8'));
 const q457DuplicateFile = 'H1_SOL_Q457_SOURCE_DUPLICATE_CONDITION_NOTE.json';
 const q457Duplicate = JSON.parse(fs.readFileSync(path.join(dir, q457DuplicateFile), 'utf8'));
+const q98HwpFile = 'H1_SOL_Q098_HWP_EQUATION_UNVERIFIED.json';
+const q98Hwp = JSON.parse(fs.readFileSync(path.join(dir, q98HwpFile), 'utf8'));
 if (inequalityParentRows.length !== 39 || inequalityParentByQueue.size !== 39)
   throw new Error('inequality parent plan coverage mismatch');
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
@@ -455,6 +457,19 @@ for (const row of comparison.rows) {
     fieldDecisions.sourceIssue = { value: 'NONBLOCKING_SOURCE_DUPLICATE_CONDITION',
       provenance: 'SOL_DIRECT_ADJUDICATION', evidenceFile: q457DuplicateFile, reason: q457Duplicate.reason };
     counts.fieldsSolDirectOverride++;
+  }
+  if (row.queueIndex === 98) {
+    if (row.questionUid !== q98Hwp.questionUid
+      || row.currentSourceFingerprint !== q98Hwp.sourceFingerprint)
+      throw new Error('q98 HWP source HOLD evidence/source drift');
+    for (const field of ['sourceIssue', 'reviewStatus']) {
+      if (fieldDecisions[field].provenance !== 'DUAL_LUNA_MATCH')
+        throw new Error(`q98 expected dual ${field}`);
+      counts.fieldsDualMatch--;
+      fieldDecisions[field] = { ...q98Hwp.fieldDecisions[field], provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: q98HwpFile };
+      counts.fieldsSolDirectOverride++;
+    }
   }
   counts.items++;
   if (pending.length) {
