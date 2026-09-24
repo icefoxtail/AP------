@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "UID_FREE_CURRICULUM_DRAFT_REVIEW_ONLY",
+  "source": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/공통수학1.md#L2-2.4-L2-2.5",
+  "curriculumDraftParents": [
+    {
+      "labelKo": "연립방정식",
+      "scope": "둘 이상의 등식 조건을 함께 풀어 미지수를 결정하는 문제. 풀이의 결정 단계가 부등식 구간의 교집합이면 이 이름을 기계적으로 쓰지 않는다."
+    },
+    {
+      "labelKo": "연립일차부등식",
+      "scope": "일차부등식들의 해 구간을 함께 제한하는 문제. 정수해는 L4 수준의 반복 골격 후보가 될 수 있다."
+    },
+    {
+      "labelKo": "이차부등식",
+      "scope": "실제로 이차식의 부호·근·해 구간이 결정적인 문제. 다른 일차 또는 절댓값 조건과 교집합을 취할 수 있으며, 그 결합은 문항별 skeleton으로 기록한다."
+    },
+    {
+      "labelKo": "부등식의 활용",
+      "scope": "부등식 해의 범위나 조건을 이용해 매개변수, 최대·최소 또는 상황을 결정하는 문제. 단순히 매개변수나 정수해가 등장한다는 이유만으로 이 이름을 선택하지 않는다."
+    }
+  ],
+  "reviewRule": "Read the full current question and solution. Choose the primary parent by the decisive mathematical step, not a keyword in the stem. Report parentLabelKo, primaryMethod, decisiveStep, and item-specific reasons. If no draft parent fits, state a bounded NEW_CANDIDATE with evidence and first search the supplied ACTIVE vocabulary. Do not infer an expected count or match a frozen assignment.",
+  "forbidden": ["UID-specific legacy L3", "peer verdicts", "prior candidate verdicts", "pilot hidden assignments"]
+}
