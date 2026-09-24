@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 15,
+  "denominator": 24,
+  "defaultDisposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION",
+  "defaultIssueType": "NO_MATERIAL_SOURCE_OR_SOLUTION_DEFECT",
+  "defaultReason": "The independent source-first semantic passes found no material source-answer or solution defect for this UID; protected source fields remain unchanged.",
+  "overrides": [
+    { "sourceOrdinal": 15, "issueType": "UNDERDETERMINED_PARALLEL_LINE_ANGLE_SUM", "disposition": "SOURCE_BLOCKED", "reason": "The original diagram and l∥m set a=50°, but provide no condition for the second falling line that defines b. Varying that line changes a+b while preserving all printed data. The keyed 120° and B's proposed 130° are both possible but not uniquely supported; Root image proof preserves semantic HOLD and UNKNOWN difficulty without source mutation." },
+    { "sourceOrdinal": 17, "issueType": "OFF_TOPIC_CONSTRUCTION_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "A reports the frozen solution discusses angle chasing instead of the displayed compass angle-copy construction. The prompt, answer, and diagram support independent semantic classification; record a separate solution-quality finding without reopening Root or difficulty solely for prose quality." },
+    { "sourceOrdinal": 18, "issueType": "OFF_TOPIC_TRIANGLE_COUNT_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Both workers report the stored congruence text does not explain enumeration of valid length triples by triangle inequality. The count is independently supported by the stated lengths; this is a solution-quality HOLD only." },
+    { "sourceOrdinal": 19, "issueType": "OFF_TOPIC_UNIQUENESS_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "A reports generic angle calculations rather than the ASA/SAS versus ambiguous SSA/AAA uniqueness argument. The source choices and given lengths/angles support the classification independently; preserve a solution-quality finding." },
+    { "sourceOrdinal": 20, "issueType": "OFF_TOPIC_AREA_PROJECTION_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Both workers report angle-chasing boilerplate omits the midpoint/projection and area derivation. The displayed givens support a separate mathematical method judgment; the explanation defect alone does not trigger a blanket difficulty or Root reread." },
+    { "sourceOrdinal": 21, "issueType": "GENERIC_GRAPH_AREA_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "B reports graph boilerplate without substituting the coordinate or computing triangle area. Source coordinate and graph relation support the arithmetic, so this is a separate quality finding." },
+    { "sourceOrdinal": 22, "issueType": "OFF_TOPIC_COLLINEAR_COUNT_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Both workers report unrelated angle text with no distinct-line, ray, or segment count. The source point configuration permits independent enumeration; preserve the explanation defect without source mutation." },
+    { "sourceOrdinal": 23, "issueType": "GENERIC_FOLD_ANGLE_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "B reports generic angle text that omits the folded rectangle and parallel-line relation. A/B method disagreement is sent to C; explanation quality is recorded separately and does not itself force a broad extra review." },
+    { "sourceOrdinal": 24, "issueType": "OFF_TOPIC_PLANE_SQUARE_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Both workers report solid edge/face boilerplate unrelated to the plane-square congruence and area question. Source diagram and dimensions support independent semantic classification; source solution is a quality HOLD only." }
+  ],
+  "sourceAnswerHoldOrdinals": [15],
+  "semanticMappingPolicy": "All 24 UIDs remain in the exam denominator. #15 is SOURCE_BLOCKED and excluded from taxonomy/writeback with UNKNOWN difficulty. #17–#24 have separate solution-quality findings; source-supported semantic and difficulty judgments continue without general solution-upgrade scope or protected-field edits."
+}
