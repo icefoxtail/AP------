@@ -20,9 +20,8 @@ const blindBytes = fs.readFileSync(path.join(dir, 'DIFFICULTY.jsonl'));
 if (sha(blindBytes) !== receipt.blindLedgerSha256 || receipt.legacyCompareStarted !== false) throw new Error('Blind difficulty freeze mismatch');
 const blind = readJsonl('DIFFICULTY.jsonl');
 const input = readJsonl('DIFFICULTY_INPUT.jsonl');
-const quality = readJsonl('SOURCE_QUALITY.jsonl');
+const blindByUid = new Map(blind.map(x => [x.questionUid, x]));
 const byInput = new Map(input.map(x => [x.questionUid, x]));
-const byQuality = new Map(quality.map(x => [x.questionUid, x]));
 const context = { window: {}, console: { log() {}, warn() {}, error() {} } };
 context.globalThis = context;
 vm.createContext(context);
@@ -39,6 +38,12 @@ const compared = blind.map(row => {
   const raw = source[row.sourceOrdinal - 1];
   const dInput = byInput.get(row.questionUid);
   if (!raw || !dInput || row.blindInputSha !== dInput.blindInputSha) throw new Error(`Legacy/source join mismatch ${row.questionUid}`);
+  if (batchNo >= 8) {
+    for (const [flag, reason] of [['visualDifficultyImpact','visualDifficultyImpactReason'], ['sourceSolutionDifficultyConflict','sourceSolutionConflictReason'], ['reviewerRequestedRecheck','reviewerRecheckReason']]) {
+      if (typeof row[flag] !== 'boolean') throw new Error(`First-pass recheck evidence flag missing: ${flag} #${row.sourceOrdinal}`);
+      if (row[flag] && !String(row[reason] || '').trim()) throw new Error(`First-pass recheck evidence reason missing: ${reason} #${row.sourceOrdinal}`);
+    }
+  }
   return { questionUid: row.questionUid, sourceArchiveFile: row.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal, blindInputSha: row.blindInputSha, blindLedgerSha256: receipt.blindLedgerSha256, blindBucket: row.difficultyBucket, blindConfidence: row.difficultyConfidence, blindBoundaryFlag: row.difficultyBoundaryFlag, legacyLevel: raw.level ?? null, legacyLevelCompatibility: compatibility(raw.level, row.difficultyBucket) };
 });
 const triggersByUid = new Map();
@@ -46,13 +51,15 @@ for (const row of compared) {
   const reasons = [];
   if (row.blindBoundaryFlag !== 'NONE') reasons.push('BOUNDARY_FLAG');
   if (row.blindConfidence === 'low') reasons.push('LOW_CONFIDENCE');
+  // Canonical v1.3 §11.2 requires independent review before an adjacent legacy mismatch is accepted.
   if (row.legacyLevelCompatibility === 'BORDERLINE_REVIEW') reasons.push('LEGACY_BORDERLINE');
   if (row.legacyLevelCompatibility === 'STRONG_CONFLICT') reasons.push('LEGACY_STRONG_CONFLICT');
-  const dInput = byInput.get(row.questionUid);
-  if ((dInput.images || []).length) reasons.push('VISUAL_DEPENDENCY');
-  const solutionIssueType = byQuality.get(row.questionUid)?.issueType;
-  if (solutionIssueType === 'OFF_TOPIC_SOLUTION') reasons.push('OFF_TOPIC_SOLUTION');
-  if (solutionIssueType === 'MISLEADING_SOLUTION') reasons.push('MISLEADING_SOLUTION');
+  const firstPass = blindByUid.get(row.questionUid);
+  const raw = source[row.sourceOrdinal - 1];
+  if (typeof raw.difficultyBucket === 'number' && typeof row.blindBucket === 'number' && Math.abs(raw.difficultyBucket - row.blindBucket) >= 2) reasons.push('EXISTING_METADATA_SEMANTIC_CONFLICT');
+  if (firstPass.visualDifficultyImpact === true) reasons.push('VISUAL_DIFFICULTY_IMPACT');
+  if (firstPass.sourceSolutionDifficultyConflict === true) reasons.push('SOURCE_SOLUTION_DIFFICULTY_CONFLICT');
+  if (firstPass.reviewerRequestedRecheck === true) reasons.push('REVIEWER_REQUESTED_RECHECK');
   if (reasons.length) triggersByUid.set(row.questionUid, reasons);
 }
 const byTemplate = new Map();
@@ -74,4 +81,5 @@ for (const rows of byTemplate.values()) {
 const queue = compared.filter(x => triggersByUid.has(x.questionUid)).map(x => ({ ...x, triggerReasons: [...new Set(triggersByUid.get(x.questionUid))] }));
 fs.writeFileSync(legacyOut, compared.map(JSON.stringify).join('\n') + '\n');
 fs.writeFileSync(path.join(dir, 'DIFFICULTY_RECHECK_QUEUE.jsonl'), queue.map(JSON.stringify).join('\n') + (queue.length ? '\n' : ''));
-console.log(JSON.stringify({ batchNo, compared: compared.length, compatibilityCounts: compared.reduce((o,x)=>(o[x.legacyLevelCompatibility]=(o[x.legacyLevelCompatibility]||0)+1,o),{}), mandatoryRecheck: queue.length }, null, 2));
+const triggerCounts = queue.flatMap(x => x.triggerReasons).reduce((o,key)=>(o[key]=(o[key]||0)+1,o),{});
+console.log(JSON.stringify({ batchNo, compared: compared.length, compatibilityCounts: compared.reduce((o,x)=>(o[x.legacyLevelCompatibility]=(o[x.legacyLevelCompatibility]||0)+1,o),{}), mandatoryRecheck: queue.length, recheckRatePercent: Number((100 * queue.length / compared.length).toFixed(1)), triggerCounts, visualTriggeredRecheck: triggerCounts.VISUAL_DIFFICULTY_IMPACT || 0 }, null, 2));
