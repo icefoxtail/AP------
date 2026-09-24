@@ -14,6 +14,15 @@ const readJsonl = name => fs.readFileSync(path.join(dir, name), 'utf8').split(/\
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const receipt = JSON.parse(fs.readFileSync(path.join(dir, 'DIFFICULTY_FREEZE_RECEIPT.json'), 'utf8'));
 if (sha(fs.readFileSync(path.join(dir, 'DIFFICULTY.jsonl'))) !== receipt.blindLedgerSha256) throw new Error('Blind difficulty ledger changed after freeze');
+const qualityRejectionPath = path.join(dir, 'B09_DIFFICULTY_QUALITY_REJECTION.json');
+const qualityRejection = fs.existsSync(qualityRejectionPath) ? JSON.parse(fs.readFileSync(qualityRejectionPath, 'utf8')) : null;
+if (qualityRejection && qualityRejection.status !== 'RESOLVED_FRESH_BLIND_REVIEW') throw new Error('Difficulty worker quality rejection unresolved');
+const correctedBlind = qualityRejection ? readJsonl('DIFFICULTY_BLIND_CORRECTION_01_03.jsonl') : [];
+if (qualityRejection && sha(fs.readFileSync(path.join(dir, 'DIFFICULTY_BLIND_CORRECTION_01_03.jsonl'))) !== qualityRejection.correctedLedgerSha256) throw new Error('Difficulty blind correction hash mismatch');
+const correctedBlindByUid = new Map(correctedBlind.map(x => [x.questionUid, x]));
+const rootAdjudicationPath = path.join(dir, 'DIFFICULTY_ROOT_ADJUDICATION.json');
+const rootAdjudication = fs.existsSync(rootAdjudicationPath) ? JSON.parse(fs.readFileSync(rootAdjudicationPath, 'utf8')) : null;
+const rootByUid = new Map((rootAdjudication?.decisions || []).map(x => [x.questionUid, x]));
 const blind = readJsonl('DIFFICULTY.jsonl');
 const legacy = readJsonl('LEGACY_COMPARE.jsonl');
 const queue = readJsonl('DIFFICULTY_RECHECK_QUEUE.jsonl');
@@ -32,11 +41,15 @@ for (const [uid, item] of queueByUid) {
 const final = blind.map(row => {
   const rev = reviewByUid.get(row.questionUid);
   const comp = legacyByUid.get(row.questionUid);
+  const corrected = correctedBlindByUid.get(row.questionUid);
+  const rootDecision = rootByUid.get(row.questionUid);
   if (!comp || comp.blindInputSha !== row.blindInputSha) throw new Error(`Legacy join mismatch ${row.questionUid}`);
-  const bucket = rev ? (rev.proposedFinalBucket ?? rev.finalBucket) : row.difficultyBucket;
-  const confidence = rev ? rev.finalConfidence : row.difficultyConfidence;
-  const boundary = rev ? rev.finalBoundaryFlag : row.difficultyBoundaryFlag;
-  const compatibility = rev ? rev.legacyLevelCompatibility : comp.legacyLevelCompatibility;
+  if (corrected && corrected.blindInputSha !== row.blindInputSha) throw new Error(`Difficulty correction join mismatch ${row.questionUid}`);
+  if (rootDecision && (rootDecision.blindInputSha !== row.blindInputSha || rootDecision.sourceFingerprint !== row.sourceFingerprint || rootDecision.sourceOrdinal !== row.sourceOrdinal || rootDecision.frozenBlindBucket !== row.difficultyBucket || rootDecision.freshBlindBucket !== corrected?.difficultyBucket || rootDecision.recheckProposedBucket !== (rev?.proposedFinalBucket ?? rev?.finalBucket) || !String(rootDecision.rootReason || '').trim())) throw new Error(`Root difficulty adjudication provenance mismatch ${row.questionUid}`);
+  const bucket = rootDecision?.finalBucket ?? (rev ? (rev.proposedFinalBucket ?? rev.finalBucket) : (corrected?.difficultyBucket ?? row.difficultyBucket));
+  const confidence = rootDecision?.finalConfidence ?? (rev ? rev.finalConfidence : (corrected?.difficultyConfidence ?? row.difficultyConfidence));
+  const boundary = rootDecision?.finalBoundaryFlag ?? (rev ? rev.finalBoundaryFlag : (corrected?.difficultyBoundaryFlag ?? row.difficultyBoundaryFlag));
+  const compatibility = rootDecision?.legacyLevelCompatibility ?? (rev ? rev.legacyLevelCompatibility : comp.legacyLevelCompatibility);
   if (![1,2,3,4,5,'UNKNOWN'].includes(bucket)) throw new Error(`Invalid final bucket ${row.questionUid}`);
   if (!['high','medium','low'].includes(confidence)) throw new Error(`Invalid final confidence ${row.questionUid}`);
   if (!['NONE','B12','B23','B34','B45'].includes(boundary)) throw new Error(`Invalid final boundary ${row.questionUid}`);
@@ -45,9 +58,11 @@ const final = blind.map(row => {
     questionUid: row.questionUid, sourceArchiveFile: row.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal,
     sourceFingerprint: row.sourceFingerprint, blindInputSha: row.blindInputSha, blindLedgerSha256: receipt.blindLedgerSha256,
     blindBucket: row.difficultyBucket, difficultyBucket: bucket, difficultyConfidence: confidence, difficultyBoundaryFlag: boundary,
-    legacyLevelCompatibility: compatibility, difficultyReason: rev ? `${row.difficultyReason} Recheck: ${rev.recheckReason}` : row.difficultyReason,
-    sourceIssueImpact: row.sourceIssueImpact, recheckRequired: queueByUid.has(row.questionUid), recheckReviewed: Boolean(rev),
-    recheckTriggerReasons: queueByUid.get(row.questionUid)?.triggerReasons || [], reviewStatus: rev?.reviewStatus || row.reviewStatus
+    legacyLevelCompatibility: compatibility, difficultyReason: `${rev ? `${corrected?.difficultyReason || row.difficultyReason} Recheck: ${rev.recheckReason}` : (corrected?.difficultyReason || row.difficultyReason)}${rootDecision ? ` Root adjudication: ${rootDecision.rootReason}` : ''}`,
+    sourceIssueImpact: corrected?.sourceIssueImpact || row.sourceIssueImpact, recheckRequired: queueByUid.has(row.questionUid), recheckReviewed: Boolean(rev),
+    recheckTriggerReasons: queueByUid.get(row.questionUid)?.triggerReasons || [], reviewStatus: rev?.reviewStatus || corrected?.reviewStatus || row.reviewStatus,
+    ...(corrected ? { blindQualityCorrection: { correctedBucket: corrected.difficultyBucket, correctionLedgerSha256: qualityRejection.correctedLedgerSha256 } } : {}),
+    ...(rootDecision ? { rootAdjudication: { finalBucket: rootDecision.finalBucket, sourceOrdinal: rootDecision.sourceOrdinal, blindInputSha: rootDecision.blindInputSha } } : {})
   };
 });
 fs.writeFileSync(path.join(dir, 'DIFFICULTY_FINAL.jsonl'), final.map(JSON.stringify).join('\n') + '\n');

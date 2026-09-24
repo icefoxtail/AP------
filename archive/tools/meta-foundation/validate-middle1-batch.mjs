@@ -152,7 +152,8 @@ let workerQualityClosure = true;
 const qualityScopes = [
   { file: 'WORKER_QUALITY_REJECTIONS.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_01_09.jsonl', ledgerFile: 'LUNA_A.jsonl' },
   { file: 'WORKER_QUALITY_REJECTION_B.json', role: 'B', oldFile: 'LUNA_B_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_B_REVISION_03.jsonl', ledgerFile: 'LUNA_B.jsonl' },
-  { file: 'WORKER_QUALITY_REJECTION_A_B08.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_12.jsonl', reviewInputFile: 'A_REVIEW_INPUT_12.jsonl', ledgerFile: 'LUNA_A.jsonl' }
+  { file: 'WORKER_QUALITY_REJECTION_A_B08.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_12.jsonl', reviewInputFile: 'A_REVIEW_INPUT_12.jsonl', ledgerFile: 'LUNA_A.jsonl' },
+  { file: 'WORKER_QUALITY_REJECTION_B_B09.json', role: 'B', oldFile: 'LUNA_B_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_B_REVISION_18.jsonl', reviewInputFile: 'B_REVIEW_INPUT_18.jsonl', ledgerFile: 'LUNA_B.jsonl' }
 ];
 counts.workerQualityRejectedUidCount = 0;
 for (const scope of qualityScopes.filter(x => exists(x.file))) {
@@ -296,6 +297,42 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
     difficultyChecked = true;
   }
 }
+if (exists('B09_DIFFICULTY_QUALITY_REJECTION.json')) {
+  const rejection = json('B09_DIFFICULTY_QUALITY_REJECTION.json');
+  const affected = rejection.rejectedQuestionUids || [];
+  counts.difficultyWorkerQualityRejectedUidCount = affected.length;
+  if (rejection.batchNo !== batchNo || rejection.originalBlindLedgerSha256 !== sha(fs.readFileSync(path.join(batchDir, 'DIFFICULTY.jsonl')))) fail('DIFFICULTY_QUALITY_ORIGINAL_FREEZE_MISMATCH');
+  if (rejection.status !== 'RESOLVED_FRESH_BLIND_REVIEW') {
+    fail('DIFFICULTY_WORKER_QUALITY_REJECTED_SCOPE', { count: affected.length });
+    counts.difficultyReviewed = Math.max(0, (counts.difficultyReviewed || 0) - affected.length);
+  } else {
+    const repairWorker = modelLog.workers.find(x => x.workerName === '/root/m1_difficulty_blind_repair' && x.batchAssignments?.includes(batchNo));
+    if (!repairWorker?.modelVerified || repairWorker.actualModel !== 'gpt-6-luna' || repairWorker.actualReasoningEffort !== 'xhigh' || repairWorker.blindInputVerified !== true) fail('DIFFICULTY_REPAIR_MODEL_OR_INPUT_UNVERIFIED');
+    const isolatedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_INPUT_01_03.jsonl'));
+    const correctedBytes = fs.readFileSync(path.join(batchDir, 'DIFFICULTY_BLIND_CORRECTION_01_03.jsonl'));
+    const isolated = jsonl('DIFFICULTY_BLIND_INPUT_01_03.jsonl');
+    const corrected = jsonl('DIFFICULTY_BLIND_CORRECTION_01_03.jsonl');
+    if (rejection.workerRawCorrectionFile) {
+      const rawBytes = fs.readFileSync(path.join(batchDir, rejection.workerRawCorrectionFile));
+      const rawRows = jsonl(rejection.workerRawCorrectionFile);
+      if (sha(rawBytes) !== rejection.workerRawCorrectionSha256 || rawRows.length !== corrected.length) fail('DIFFICULTY_REPAIR_RAW_SCHEMA_PROVENANCE_MISMATCH');
+      for (let i = 0; i < rawRows.length; i++) {
+        const normalized = { ...rawRows[i], sourceSolutionConflictReason: rawRows[i].sourceSolutionDifficultyConflictReason, reviewerRecheckReason: rawRows[i].reviewerRequestedRecheckReason };
+        delete normalized.sourceSolutionDifficultyConflictReason;
+        delete normalized.reviewerRequestedRecheckReason;
+        if (JSON.stringify(normalized) !== JSON.stringify(corrected[i])) fail('DIFFICULTY_REPAIR_SCHEMA_ONLY_SCOPE_MISMATCH', { uid: rawRows[i].questionUid });
+      }
+    }
+    const fullInput = new Map(jsonl('DIFFICULTY_INPUT.jsonl').map(x => [x.questionUid, x]));
+    const affectedSet = new Set(affected);
+    if (sha(isolatedBytes) !== rejection.isolatedInputSha256 || sha(correctedBytes) !== rejection.correctedLedgerSha256 || isolated.length !== affected.length || corrected.length !== affected.length || new Set(corrected.map(x => x.questionUid)).size !== affected.length) fail('DIFFICULTY_REPAIR_PROVENANCE_MISMATCH');
+    for (let i = 0; i < isolated.length; i++) {
+      const source = isolated[i], row = corrected[i];
+      if (!affectedSet.has(source.questionUid) || JSON.stringify(source) !== JSON.stringify(fullInput.get(source.questionUid)) || row.questionUid !== source.questionUid || row.sourceOrdinal !== source.sourceOrdinal || row.sourceFingerprint !== source.sourceFingerprint || row.blindInputSha !== source.blindInputSha || !String(row.difficultyReason || '').trim()) fail('DIFFICULTY_REPAIR_SOURCE_MISMATCH', { uid: source.questionUid });
+      for (const [flag, reason] of [['visualDifficultyImpact','visualDifficultyImpactReason'], ['sourceSolutionDifficultyConflict','sourceSolutionConflictReason'], ['reviewerRequestedRecheck','reviewerRecheckReason']]) if (typeof row[flag] !== 'boolean' || (row[flag] && !String(row[reason] || '').trim())) fail('DIFFICULTY_REPAIR_EVIDENCE_MISSING', { uid: source.questionUid, flag });
+    }
+  }
+}
 let blindFirstChecked = false, legacyChecked = false, recheckChecked = false, finalDifficultyChecked = false, writebackChecked = false;
 if (exists('DIFFICULTY_FREEZE_RECEIPT.json')) {
   const receipt = json('DIFFICULTY_FREEZE_RECEIPT.json');
@@ -336,6 +373,10 @@ if (exists('DIFFICULTY_RECHECK_QUEUE.jsonl') && exists('DIFFICULTY_RECHECK.jsonl
 }
 if (exists('DIFFICULTY_FINAL.jsonl')) {
   const final = jsonl('DIFFICULTY_FINAL.jsonl');
+  const qualityRejection = exists('B09_DIFFICULTY_QUALITY_REJECTION.json') ? json('B09_DIFFICULTY_QUALITY_REJECTION.json') : null;
+  const correctedBlindByUid = qualityRejection?.status === 'RESOLVED_FRESH_BLIND_REVIEW' ? new Map(jsonl('DIFFICULTY_BLIND_CORRECTION_01_03.jsonl').map(x => [x.questionUid, x])) : new Map();
+  const rootPlan = exists('DIFFICULTY_ROOT_ADJUDICATION.json') ? json('DIFFICULTY_ROOT_ADJUDICATION.json') : null;
+  const rootByUid = new Map((rootPlan?.decisions || []).map(x => [x.questionUid, x]));
   counts.finalDifficultyRows = final.length;
   if (final.length !== input.length) fail('FINAL_DIFFICULTY_COUNT_MISMATCH');
   const seen = new Set();
@@ -346,6 +387,10 @@ if (exists('DIFFICULTY_FINAL.jsonl')) {
     if (consensusByUid.get(row.questionUid)?.reviewStatus === 'HOLD' && (row.difficultyBucket !== 'UNKNOWN' || row.reviewStatus !== 'HOLD')) fail('HELD_SOURCE_DIFFICULTY_NOT_UNKNOWN', { uid: row.questionUid });
     if (!['NORMAL','BORDERLINE_ACCEPTABLE','STRONG_CONFLICT','UNKNOWN'].includes(row.legacyLevelCompatibility)) fail('FINAL_DIFFICULTY_COMPATIBILITY_UNRESOLVED', { uid: row.questionUid });
     if (row.recheckRequired && !row.recheckReviewed) fail('MANDATORY_RECHECK_MISSING', { uid: row.questionUid });
+    const correctedBlind = correctedBlindByUid.get(row.questionUid);
+    if (correctedBlind && (row.blindQualityCorrection?.correctedBucket !== correctedBlind.difficultyBucket || row.blindQualityCorrection?.correctionLedgerSha256 !== qualityRejection.correctedLedgerSha256 || !String(row.difficultyReason || '').startsWith(correctedBlind.difficultyReason))) fail('FINAL_DIFFICULTY_REPAIR_NOT_APPLIED', { uid: row.questionUid });
+    const rootDecision = rootByUid.get(row.questionUid);
+    if (rootDecision && (rootPlan.batchNo !== batchNo || rootDecision.blindInputSha !== row.blindInputSha || rootDecision.sourceFingerprint !== inputByUid.get(row.questionUid)?.sourceFingerprint || row.difficultyBucket !== rootDecision.finalBucket || row.difficultyConfidence !== rootDecision.finalConfidence || row.difficultyBoundaryFlag !== rootDecision.finalBoundaryFlag || row.legacyLevelCompatibility !== rootDecision.legacyLevelCompatibility || row.rootAdjudication?.finalBucket !== rootDecision.finalBucket || !String(row.difficultyReason || '').includes(rootDecision.rootReason))) fail('FINAL_DIFFICULTY_ROOT_ADJUDICATION_MISMATCH', { uid: row.questionUid });
   }
   finalDifficultyChecked = true;
 }

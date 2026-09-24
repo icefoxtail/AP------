@@ -81,7 +81,9 @@
         7,
         8
       ],
-      "replacementFor": "/root/m1_semantic_a_v2"
+      "replacementFor": "/root/m1_semantic_a_v2",
+      "retiredAfterBatch": 8,
+      "retirementReason": "Repeated A quality defects across B06/B08: six wrong M1-06 parent routes for triangle construction/congruence, q1 option truth error, q12 same-exam math copied under correct UID/hash, and a late whole-ledger rewrite after ready message; B08 targeted corrections/consensus are closed"
     },
     {
       "workerId": "01a0d12e-b221-7bc3-b1bf-5a346f382ad2",
@@ -99,7 +101,8 @@
         5,
         6,
         7,
-        8
+        8,
+        9
       ]
     },
     {
@@ -118,9 +121,12 @@
         5,
         6,
         7,
-        8
+        8,
+        9
       ],
-      "necessity": "Separate blind difficulty pass because semantic reviewers were exposed to source JS legacy level fields"
+      "necessity": "Separate blind difficulty pass because semantic reviewers were exposed to source JS legacy level fields",
+      "retiredAfterBatch": 9,
+      "retirementReason": "B09 frozen blind difficulty q1 and q3 had wrong-source reasons despite matching UID/hash. Fresh Luna XHigh two-UID blind repair and root q3 adjudication closed B09; replace first-pass reviewer before B10."
     },
     {
       "workerId": "01a0d220-f13d-7903-a70d-ceb578281278",
@@ -134,10 +140,43 @@
       "batchAssignments": [
         6,
         7,
-        8
+        8,
+        9
       ],
       "replacementFor": "/root/m1_semantic_b",
+      "verificationSource": "Local Codex session world_state and turn_context immediately after spawn",
+      "retiredAfterBatch": 9,
+      "retirementReason": "B09 q18 prior-exam B08 midpoint math copied under correct B09 UID/hash; targeted source-first revision closed. Earlier B06 conditionReasons schema omission also required receipt. Replace B before B10 to avoid recurrence."
+    },
+    {
+      "workerId": "01a0d315-f3f9-7ab1-a33e-2098c488a9d5",
+      "workerName": "/root/m1_semantic_a_v4",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        9
+      ],
+      "replacementFor": "/root/m1_semantic_a_v3",
       "verificationSource": "Local Codex session world_state and turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d35b-7642-70b3-9172-19794608cf89",
+      "workerName": "/root/m1_difficulty_blind_repair",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        9
+      ],
+      "necessity": "Fresh blind targeted repair for B09 q1/q3 first-pass cross-UID difficulty evidence defect after original blind freeze",
+      "verificationSource": "Local Codex session turn_context immediately after spawn"
     }
   ]
 }

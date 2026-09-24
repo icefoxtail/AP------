@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "m1-worker-quality-rejection-v1",
+  "batchNo": 9,
+  "worker": "B",
+  "status": "RESOLVED_TARGETED_REVIEW",
+  "rejectedQuestionUids": [
+    "qid_v1_360fc0dcaa7c42d1b3a61b13245185ff67a0b4c88a240a2fa89881b99bd0fed9"
+  ],
+  "rejectedSourceOrdinals": [
+    18
+  ],
+  "oldLedgerSha256": "639cc72094613f0f7603f52ee9455552c9a31301d12241ca463d34ba6976cf1f",
+  "reviewInputSha256": "376f582cd418c11540d0ebc5b13112ad8bb1b84b9590d9e279e8edb5b7e39f9a",
+  "reason": "B #18 semantic math is copied from prior B08 #18 segment-midpoint item, while B09 #18 frozen source asks regular polygon exterior angle from 1440-degree interior+exterior total; UID/hashes alone cannot establish source reading.",
+  "revisionFile": "LUNA_B_REVISION_18.jsonl",
+  "correctedLedgerSha256": "9880443f3e8d2617283fe6a6ba369eb34212ddb04eaa16184a8a550bac9c3fbc",
+  "revisionSha256": "694466f49c2e1f9be2a89cd786d709cadd691a21f3a9934d162749acc5393655",
+  "resolution": "Only B09 #18 replaced from isolated source; n=1440/180=8, exterior angle45, keyed ①. Prior B08 midpoint math remains in rejected ledger only."
+}
