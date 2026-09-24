@@ -761,10 +761,10 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "[서술형 4] 제한된 범위 내에서 이차함수 최솟값이 $6$이 되는 모든 $k$의 합을 구하시오. [6점]",
+    "content": "[서술형 4] $0 \\leq x \\leq 4$일 때, 이차함수 $y=x^2-2kx+5k$의 최솟값이 $6$이 되도록 하는 모든 상수 $k$의 값을 구하고, 그 과정을 서술하시오. [6점]",
     "choices": [],
-    "answer": "5",
-    "solution": "[풀이의 핵심] 축 $x=k$의 위치에 따라 세 구간으로 분류하여 연산한다.\n$y = (x-k)^2 - k^2 + 5k$\n(1) $k < 0$: $x=0$ 최소 $\\implies 5k = 6 \\implies k=1.2$ (범위 밖 모순)\n(2) $0 \\le k \\le 4$: $x=k$ 최소 $\\implies -k^2+5k = 6 \\implies k=2, 3$ (범위 내 성립)\n(3) $k > 4$: $x=4$ 최소 $\\implies 16-8k+5k = 6 \\implies 3k=10 \\implies k=10/3$ (범위 밖 모순)\n$\\therefore 2 + 3 = 5$",
+    "answer": "$k=2,\\ 3$",
+    "solution": "[풀이의 핵심] 축 $x=k$의 위치에 따라 세 구간으로 분류하여 연산한다.\n$y = (x-k)^2 - k^2 + 5k$\n(1) $k < 0$: $x=0$ 최소 $\\implies 5k = 6 \\implies k=1.2$ (범위 밖 모순)\n(2) $0 \\le k \\le 4$: $x=k$ 최소 $\\implies -k^2+5k = 6 \\implies k=2, 3$ (범위 내 성립)\n(3) $k > 4$: $x=4$ 최소 $\\implies 16-8k+5k = 6 \\implies 3k=10 \\implies k=10/3$ (범위 밖 모순)\n$\\therefore k=2,\\ 3$",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",

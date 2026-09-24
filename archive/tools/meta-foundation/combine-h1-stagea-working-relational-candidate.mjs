@@ -9,6 +9,31 @@ const rows = [
   ...read('H1_STAGEA_FIRST50_WORKING_RELATIONAL_CANDIDATE.jsonl'),
   ...read('H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1120.jsonl'),
 ].sort((a, b) => a.queueIndex - b.queueIndex);
+const proposalPath = path.join(dir, 'poly-division-boundary/H1_POLY_DIVISION_87_L3_KEY_PROPOSAL.jsonl');
+const proposal = fs.readFileSync(proposalPath, 'utf8').trim().split(/\r?\n/).map(JSON.parse);
+if (proposal.length !== 87 || new Set(proposal.map(row => row.questionUid)).size !== 87)
+  throw new Error('polynomial L3 proposal coverage mismatch');
+const proposalByUid = new Map(proposal.map(row => [row.questionUid, row]));
+let proposalApplied = 0;
+for (const row of rows) {
+  const edit = proposalByUid.get(row.questionUid);
+  if (!edit) continue;
+  if (row.queueIndex !== edit.queueIndex || row.sourceIdentity !== edit.sourceIdentity
+    || row.sourceFingerprint !== edit.sourceFingerprint) throw new Error(`polynomial L3 proposal source drift q${row.queueIndex}`);
+  row.priorStageAL3Decision = row.fieldDecisions.l3;
+  row.fieldDecisions.l3 = edit.holdReasonRequired
+    ? { value: null, provenance: 'HOLD', keyStatus: 'HOLD_SOURCE_OR_SOLUTION',
+      reason: 'Source/solution HOLD prevents L3 freeze; draft curriculum parent retained only in the separate evidence ledger.',
+      evidenceFile: 'poly-division-boundary/H1_POLY_DIVISION_87_L3_KEY_PROPOSAL.jsonl' }
+    : { value: edit.proposedProblemTypeKey, provenance: edit.parentDecisionProvenance,
+      keyStatus: edit.proposedKeyStatus, taxonomyKeyMappingBy: 'SOL_GLOBAL_TAXONOMY_EDIT',
+      reason: `Curriculum parent ${edit.draftParentLabelKo} mapped to a working key candidate; ACTIVE promotion pending.`,
+      evidenceFile: 'poly-division-boundary/H1_POLY_DIVISION_87_L3_KEY_PROPOSAL.jsonl' };
+  row.pendingSolFields = row.pendingSolFields.filter(field => field !== 'l3');
+  row.solGlobalL3ProposalApplied = true;
+  proposalApplied++;
+}
+if (proposalApplied !== 87) throw new Error('polynomial L3 proposal not fully applied');
 if (rows.length !== 1170) throw new Error(`denominator ${rows.length} != 1170`);
 for (let i = 0; i < rows.length; i++) {
   const row = rows[i];
@@ -27,9 +52,11 @@ const summary = {
   itemsWithWorkingFieldConsensus: 1170 - pending.length,
   itemsPendingSolFieldReview: pending.length,
   pendingSolFieldCount: pending.reduce((count, row) => count + row.pendingSolFields.length, 0),
+  polynomialL3ProposalApplied: proposalApplied,
   taxonomyFinal: false, l4Final: false, crossConceptFinal: false, conditionFinal: false,
   integrationFinal: false, difficultyFinal: false, finalValidatorPass: false,
-  inputs: ['H1_STAGEA_FIRST50_WORKING_RELATIONAL_CANDIDATE.jsonl', 'H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1120.jsonl'],
+  inputs: ['H1_STAGEA_FIRST50_WORKING_RELATIONAL_CANDIDATE.jsonl', 'H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1120.jsonl',
+    'poly-division-boundary/H1_POLY_DIVISION_87_L3_KEY_PROPOSAL.jsonl'],
 };
 fs.writeFileSync(path.join(dir, 'H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1170.jsonl'), rows.map(row => JSON.stringify(row)).join('\n') + '\n');
 fs.writeFileSync(path.join(dir, 'H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1170_SUMMARY.json'), JSON.stringify(summary, null, 2) + '\n');

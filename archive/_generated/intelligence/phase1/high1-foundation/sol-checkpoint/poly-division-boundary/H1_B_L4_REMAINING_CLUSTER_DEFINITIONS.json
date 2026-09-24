@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "status": "B_OWN_REVIEW_L4_CLUSTER_COMPRESSION",
+  "scope": "66 remaining-batch source-bound UIDs plus current post-D q26 input",
+  "activeTemplateSearchReason": "The supplied ACTIVE templates were reviewed for polynomial division and remainder methods. Related factor, divisibility, limit, and derivative templates do not match these procedures exactly; no ACTIVE template key is assigned.",
+  "clusters": [
+    {
+      "clusterId": "C01",
+      "label": "Linear-divisor root evaluation",
+      "representativeQueueIndex": 58,
+      "memberQueueIndexes": [
+        23,
+        58,
+        96,
+        120,
+        142,
+        164,
+        171,
+        176,
+        207,
+        212,
+        216
+      ],
+      "canonicalSkeleton": "Evaluate the dividend at a monic linear divisor root to obtain its constant remainder; if it is zero, use exact factorization to evaluate the quotient, and for integer residues verify the standard range.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "These items use the same root-value remainder transfer. Shared roots of composite divisors, quotient follow-up after zero remainder, and numeric range checks are applications of that one step."
+    },
+    {
+      "clusterId": "C02",
+      "label": "Low-degree value interpolation",
+      "representativeQueueIndex": 18,
+      "memberQueueIndexes": [
+        6,
+        18,
+        19,
+        22,
+        54,
+        102,
+        130,
+        136,
+        150,
+        200,
+        233
+      ],
+      "canonicalSkeleton": "Represent the relevant low-degree polynomial or remainder, transfer values from distinct divisor roots, solve the resulting coefficient equations, then evaluate the requested value.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "Each item reconstructs coefficients from polynomial values at linear roots; values may come from a supplied remainder, exact divisibility, or a prior division identity."
+    },
+    {
+      "clusterId": "C03",
+      "label": "Composite-remainder extension",
+      "representativeQueueIndex": 90,
+      "memberQueueIndexes": [
+        90,
+        112,
+        154,
+        209
+      ],
+      "canonicalSkeleton": "Combine remainder information on factor divisors by writing the dividend as a base or common remainder plus a multiple of the known factor product; use additional root/value constraints to determine the correction.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "These items extend a remainder across added linear factors or use equal remainders across several divisors; the added values fix the remaining terms."
+    },
+    {
+      "clusterId": "C04",
+      "label": "Evaluate a supplied division identity",
+      "representativeQueueIndex": 119,
+      "memberQueueIndexes": [
+        119,
+        124,
+        206
+      ],
+      "canonicalSkeleton": "Substitute the requested input into a supplied dividend=divisor×quotient+remainder identity; use another input if needed to recover a quotient value.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "The quotient and remainder are supplied; evaluating the same identity provides the requested dividend or quotient values."
+    },
+    {
+      "clusterId": "C05",
+      "label": "Linked division identities",
+      "representativeQueueIndex": 99,
+      "memberQueueIndexes": [
+        99,
+        144,
+        174,
+        178,
+        184,
+        217,
+        220
+      ],
+      "canonicalSkeleton": "Write the quotient-remainder identities for the same polynomial, exploit shared or constrained quotient/remainder terms and degree bounds, then solve consistency conditions.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "These methods depend on compatibility among successive or parallel divisions, including common intermediates, equal terms, and degree restrictions."
+    },
+    {
+      "clusterId": "C06",
+      "label": "Synthetic-division recurrence",
+      "representativeQueueIndex": 125,
+      "memberQueueIndexes": [
+        125,
+        172,
+        201,
+        232
+      ],
+      "canonicalSkeleton": "Apply the synthetic-division multiply-add recurrence at the linear divisor root; read quotient coefficients and final remainder, rescaling the quotient for a nonmonic divisor.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "All rows use the same recurrence; a missing table cell or nonmonic divisor changes presentation/scaling, not the solution pattern."
+    },
+    {
+      "clusterId": "C07",
+      "label": "Long-division leading-term cancellation",
+      "representativeQueueIndex": 181,
+      "memberQueueIndexes": [
+        181,
+        225
+      ],
+      "canonicalSkeleton": "Cancel the current leading term with a divisor multiple, update the residual, and continue until residual degree is below divisor degree.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "The text and pictured long-division layouts express the same iterative algorithm; display format is not a separate L4 type."
+    },
+    {
+      "clusterId": "C08",
+      "label": "Factor-theorem root constraints",
+      "representativeQueueIndex": 8,
+      "memberQueueIndexes": [
+        5,
+        8,
+        9,
+        30,
+        82,
+        87,
+        123,
+        158,
+        173,
+        179,
+        214,
+        231
+      ],
+      "canonicalSkeleton": "Translate stated linear factors or divisibility into zero evaluations at their roots, then solve or test coefficients and residual factors; branch when a product of values is zero.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "These items use root vanishing to establish factors or reject candidates, including product-zero branches and common-factor checks."
+    },
+    {
+      "clusterId": "C09",
+      "label": "Repeated linear-factor multiplicity",
+      "representativeQueueIndex": 20,
+      "memberQueueIndexes": [
+        20,
+        27,
+        191
+      ],
+      "canonicalSkeleton": "For a squared linear factor, require the dividend to vanish at the root and then require the first quotient to vanish at the same root.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "All items enforce multiplicity two through successive factor-theorem conditions on the dividend and quotient."
+    },
+    {
+      "clusterId": "C10",
+      "label": "Assign named monic factors after coefficient recovery",
+      "representativeQueueIndex": 26,
+      "memberQueueIndexes": [
+        26,
+        31
+      ],
+      "canonicalSkeleton": "Use a prescribed factor root to determine the polynomial, factor out known roots, then use degree, irreducibility, monicity, or a relation between residual factors to assign them and check uniqueness.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "Both items first constrain roots and then assign labeled factors from the residual factorization; one remains HOLD because its stated normalization is insufficient."
+    },
+    {
+      "clusterId": "C11",
+      "label": "Shifted-basis identity coefficients",
+      "representativeQueueIndex": 98,
+      "memberQueueIndexes": [
+        98,
+        117
+      ],
+      "canonicalSkeleton": "For an identity in powers of x−r, apply synthetic division repeatedly at r to extract coefficients from constant term upward.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "Both identities use repeated coefficient extraction in a translated polynomial basis; centers and requested coefficient expressions do not create separate types."
+    },
+    {
+      "clusterId": "C12",
+      "label": "Global identity special-value reduction",
+      "representativeQueueIndex": 12,
+      "memberQueueIndexes": [
+        12,
+        227
+      ],
+      "canonicalSkeleton": "Use a special input in a global polynomial identity to force a structural relation, then combine the resulting polynomial expressions and evaluate the requested value or remainder.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "One uses a sum-of-squares zero and the other sum/difference identities; both reduce global identities at decisive inputs to reconstruct polynomial values."
+    },
+    {
+      "clusterId": "C13",
+      "label": "High-power modular reduction",
+      "representativeQueueIndex": 139,
+      "memberQueueIndexes": [
+        139
+      ],
+      "canonicalSkeleton": "Derive a short power-cycle congruence from the divisor, reduce high exponents modulo that cycle, collect terms, and normalize below the divisor degree.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "This is a distinct modular-reduction route; no separate skeleton is made for individual exponents."
+    },
+    {
+      "clusterId": "C14",
+      "label": "Transform a division identity under multiplication",
+      "representativeQueueIndex": 78,
+      "memberQueueIndexes": [
+        78
+      ],
+      "canonicalSkeleton": "Multiply a known quotient-remainder identity and regroup terms by the new divisor to identify transformed quotient and lower-degree remainder.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "This is one transferable division-identity transformation."
+    },
+    {
+      "clusterId": "C15",
+      "label": "Choose an extremal remainder candidate",
+      "representativeQueueIndex": 221,
+      "memberQueueIndexes": [
+        221
+      ],
+      "canonicalSkeleton": "Use a remainder condition at one linear divisor root to restrict a polynomial value, map the second divisor root to that input, then compare possible remainders.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REVIEW_ONLY_NEW_SKELETON",
+      "mergeRationale": "The linked root conditions yield two sign-related candidates and the minimum selects one; this is more than a fixed-value remainder lookup."
+    },
+    {
+      "clusterId": "NO_SEPARATE",
+      "label": "No separate L4 skeleton",
+      "representativeQueueIndex": 72,
+      "memberQueueIndexes": [
+        72
+      ],
+      "canonicalSkeleton": null,
+      "activeTemplateEquivalentKey": null,
+      "status": "NO_SEPARATE",
+      "mergeRationale": "The supplied remainder polynomial is read directly and two terms are added; a new skeleton would only encode a one-step coefficient read."
+    }
+  ],
+  "ledgerPath": "output/H1_B_POLY_REMAINING_67_L4_CLUSTERED.jsonl"
+}
