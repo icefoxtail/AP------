@@ -12,7 +12,8 @@
     8,
     9,
     10,
-    11
+    11,
+    12
   ],
   "problemTypes": [
     {
@@ -227,7 +228,8 @@
         "qid_v1_82360a7b7c0dcf5598ee99eda28f2d679c48a0d7c5c3aeaad67f48e95c7b1ceb",
         "qid_v1_35f0e55c79b610326858502cd9dbeccab1e4319f01464379254d5d9da789e37a",
         "qid_v1_b08700c4c662d1a8c2f833cccc0581b99b5b9b19bd3922802a0474a05dd6ed74",
-        "qid_v1_bed0ed241c60f7113af6f352452463081394e4163ea43eafccc7857b53f5168b"
+        "qid_v1_bed0ed241c60f7113af6f352452463081394e4163ea43eafccc7857b53f5168b",
+        "qid_v1_6e1595cf0bc3cc42a7da51750089edb80acf0c3f6ad6ed43e10d2616f70f6112"
       ],
       "l1Keys": [
         "M1-05"
@@ -242,7 +244,8 @@
         7,
         8,
         9,
-        10
+        10,
+        12
       ]
     },
     {
@@ -795,7 +798,8 @@
         "qid_v1_327f09771869b52ae0f351b07d2eaa7c00dd1cbdadf759030ed5d8cafd503c5d",
         "qid_v1_7de5c026452afe4b06cd702a3689dd9e46e028c57e61ef880d46a458c3b49ac1",
         "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
-        "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088"
+        "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
+        "qid_v1_dc223f16f32b3b9f34468cae91c0993de71cfda31cbf566222f440213f0e3309"
       ],
       "l1Keys": [
         "M1-05"
@@ -807,7 +811,8 @@
         6,
         9,
         10,
-        11
+        11,
+        12
       ]
     },
     {
@@ -1138,16 +1143,19 @@
       "representativeQuestionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
       "representativeReason": "줄기·잎으로 정리된 자료에서 한 나이 구간의 상대도수를 백분율로 구한다.",
       "supportingQuestionUids": [
-        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598"
+        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+        "qid_v1_cd7dba47f5a638950023c272f2786455b710a00fa3c3986f0b57049577674031"
       ],
       "l1Keys": [
         "M1-08"
       ],
       "l2Keys": [
-        "M1-08-DATA_ORGANIZATION"
+        "M1-08-DATA_ORGANIZATION",
+        "M1-08-DATA_INTERPRETATION"
       ],
       "sourceBatches": [
-        11
+        11,
+        12
       ]
     },
     {
@@ -1167,6 +1175,45 @@
       ],
       "sourceBatches": [
         11
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_DATA_ORDER_STATISTIC_FROM_DISPLAY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_82345647fa297c0c23bd664577a1af0170833b5eed2f34cc0761046b839f1c98",
+      "representativeReason": "이미 만들어진 통계 그림의 누적 순위를 읽어 k번째 자료의 값이나 계급을 찾는 데이터 해석 L3다.",
+      "supportingQuestionUids": [
+        "qid_v1_82345647fa297c0c23bd664577a1af0170833b5eed2f34cc0761046b839f1c98",
+        "qid_v1_0fa0ce2f6b7bfcd1e05980240e24be42175203a2fead5c6bfbf61c694a472d5d"
+      ],
+      "l1Keys": [
+        "M1-08"
+      ],
+      "l2Keys": [
+        "M1-08-DATA_INTERPRETATION"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_FREQUENCY_POLYGON_QUANTILE_CUTOFF",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9",
+      "representativeReason": "도수다각형에서 하위 비율만큼 누적한 뒤 그 집단 밖으로 안전하게 벗어나는 최소 점수 경계를 찾는 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9"
+      ],
+      "l1Keys": [
+        "M1-08"
+      ],
+      "l2Keys": [
+        "M1-08-DATA_INTERPRETATION"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -1195,7 +1242,8 @@
       "representativeQuestionUid": "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
       "representativeReason": "The item uses a percentage condition and known class frequency to determine an omitted grouped-table frequency.",
       "supportingQuestionUids": [
-        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
+        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
+        "qid_v1_c3af40b206248b9a436eecb4479a458de78da2d319aaf575c2c5498a6cca8a73"
       ],
       "l1Keys": [
         "M1-08"
@@ -1204,7 +1252,27 @@
         "M1-08-DATA_ORGANIZATION"
       ],
       "sourceBatches": [
-        11
+        11,
+        12
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_FREQUENCY_TABLE_STATEMENT_VALIDATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa",
+      "representativeReason": "도수분포표의 계급·도수·누적 비율·순위 진술 중 거짓을 판별하는 자료 해석 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa"
+      ],
+      "l1Keys": [
+        "M1-08"
+      ],
+      "l2Keys": [
+        "M1-08-DATA_INTERPRETATION"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -1234,7 +1302,8 @@
       "representativeReason": "각의 배수 조건과 수직선을 결합해 교점의 각을 구하는 문제다. M1용 L3 binding은 현재 ACTIVE registry에 없어 item-grounded proposal로 둔다.",
       "supportingQuestionUids": [
         "qid_v1_aa623a01a88a431b94f6a9b886d26d0abd9dfe1595a0cf6161233cc6ecb8c90c",
-        "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
+        "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690",
+        "qid_v1_03b63a5a70843b23ac16c2497f7dbad5e0eba30b5b42058379223b2570539fde"
       ],
       "l1Keys": [
         "M1-05"
@@ -1244,7 +1313,8 @@
       ],
       "sourceBatches": [
         9,
-        11
+        11,
+        12
       ]
     },
     {
@@ -1264,6 +1334,25 @@
       ],
       "sourceBatches": [
         8
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_ISOSCELES_TRIANGLE_INTEGER_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
+      "representativeReason": "이등변삼각형의 둘레 조건을 정수 부등식으로 바꾸어 가능한 조합 수를 센다.",
+      "supportingQuestionUids": [
+        "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -1302,6 +1391,25 @@
       ],
       "sourceBatches": [
         10
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_PARTIAL_FREQUENCY_POLYGON_INFERENCE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
+      "representativeReason": "도수다각형의 보이는 계급과 총도수로 가려진 계급을 복원해 진술을 판별하는 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c"
+      ],
+      "l1Keys": [
+        "M1-08"
+      ],
+      "l2Keys": [
+        "M1-08-DATA_INTERPRETATION"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -1370,7 +1478,8 @@
       "supportingQuestionUids": [
         "qid_v1_2b4931047bdbd2f493b0a4d0cff3f6de4726964ab4134ca290ccdf200a484a95",
         "qid_v1_e00cd20b2b4fe8a01d3382bff71a940aad6b1bdde976c6fe79f1d3372dc8c858",
-        "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173"
+        "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173",
+        "qid_v1_8a7a20e96f20afa0002464f66557219f9d8b3489785785aaf1befb307df16603"
       ],
       "l1Keys": [
         "M1-07"
@@ -1380,7 +1489,8 @@
       ],
       "sourceBatches": [
         10,
-        11
+        11,
+        12
       ]
     },
     {
@@ -1481,6 +1591,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M1_SEGMENT_COUNT_FROM_POINTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8b82986dcb4ceafdc47739ca5dc01bf3af8a8dc726cd3c8e63fa20422ebeb371",
+      "representativeReason": "This is a combinatorial count of distinct segments determined by a finite set of points.",
+      "supportingQuestionUids": [
+        "qid_v1_8b82986dcb4ceafdc47739ca5dc01bf3af8a8dc726cd3c8e63fa20422ebeb371"
+      ],
+      "l1Keys": [
+        "M1-05"
+      ],
+      "l2Keys": [
+        "M1-05-BASIC_FIGURE"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -1497,6 +1626,25 @@
       ],
       "sourceBatches": [
         11
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_TRAPEZOID_AREA_HEIGHT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+      "representativeReason": "사다리꼴 넓이 공식에 두 평행변과 넓이를 넣어 미지 높이를 역산하는 평면도형 측정 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482"
+      ],
+      "l1Keys": [
+        "M1-06"
+      ],
+      "l2Keys": [
+        "M1-06-PLANE_FIGURE_MEASURE"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -1625,19 +1773,22 @@
         "qid_v1_4877ea99dc183fe96916a71d6f790f3696d78b19d4218f08c7446b9a7d97552b",
         "qid_v1_26039a4374be7f532cb7fc0d6db97ca3bcc3422257c9e55f1ef71bc0401aa0ed",
         "qid_v1_64331c39ccaa40a964012e52082361879db21a62909ad7c08fb7dc857ec0c5ae",
-        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f"
+        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+        "qid_v1_c3386d1c7ff0faebf5a22a2cdf5f2eebbd94635943333b98641e7860b832cbc8"
       ],
       "l1Keys": [
         "M1-05"
       ],
       "l2Keys": [
-        "M1-05-BASIC_FIGURE"
+        "M1-05-BASIC_FIGURE",
+        "M1-05-POSITION_RELATION"
       ],
       "sourceBatches": [
         5,
         8,
         9,
-        11
+        11,
+        12
       ]
     },
     {
@@ -1801,16 +1952,19 @@
       "representativeQuestionUid": "qid_v1_8ce2f5a7671fe1903b217d226ed7a1d3ff215f7a70afeba88d529acd25585c4b",
       "representativeReason": "Angle measures and placement are used to establish or reject parallel-line relationships.",
       "supportingQuestionUids": [
-        "qid_v1_8ce2f5a7671fe1903b217d226ed7a1d3ff215f7a70afeba88d529acd25585c4b"
+        "qid_v1_8ce2f5a7671fe1903b217d226ed7a1d3ff215f7a70afeba88d529acd25585c4b",
+        "qid_v1_23be769ccde13726cc3520f0345236dea59b4aa86325d7b1129fd16b1834e2ee"
       ],
       "l1Keys": [
         "M1-05"
       ],
       "l2Keys": [
-        "M1-05-POSITION_RELATION"
+        "M1-05-POSITION_RELATION",
+        "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        10
+        10,
+        12
       ]
     },
     {
@@ -2048,7 +2202,8 @@
       "representativeQuestionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
       "representativeReason": "Trapezoid lengths establish a parallelogram and then its opposite-side and diagonal-distance properties.",
       "supportingQuestionUids": [
-        "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19"
+        "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+        "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658"
       ],
       "l1Keys": [
         "M1-06"
@@ -2057,7 +2212,8 @@
         "M1-06-POLYGON_CIRCLE"
       ],
       "sourceBatches": [
-        10
+        10,
+        12
       ]
     },
     {
@@ -2294,7 +2450,8 @@
       "representativeQuestionUid": "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c",
       "representativeReason": "같은 빗변과 대응 예각을 이용해 수선의 발로 생긴 직각삼각형을 합동시켜 길이를 찾는다.",
       "supportingQuestionUids": [
-        "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c"
+        "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c",
+        "qid_v1_62c74ba8158bc2ebaf42fd4c2914976b6e9eeedb9ceb4aa1073a7e780ee56f63"
       ],
       "l1Keys": [
         "M1-05"
@@ -2303,7 +2460,8 @@
         "M1-05-BASIC_FIGURE"
       ],
       "sourceBatches": [
-        7
+        7,
+        12
       ]
     },
     {
@@ -2318,7 +2476,8 @@
         "qid_v1_f329aafbaff90d2190925f3e85ea2d76d2808f7ef6ad4d85293894c11945b86d",
         "qid_v1_57b99e0c9d50385196d6fd5c5aa19095394bb686ea6b7e377ce13370c5509154",
         "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
-        "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720"
+        "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720",
+        "qid_v1_958866ae2b6400bff5f97c388474dc9623a08a54cae0a28112f8b5bff0a25ac5"
       ],
       "l1Keys": [
         "M1-05"
@@ -2331,7 +2490,8 @@
         7,
         8,
         10,
-        11
+        11,
+        12
       ]
     },
     {
@@ -2527,18 +2687,22 @@
       "supportingQuestionUids": [
         "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0",
         "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
-        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b"
+        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+        "qid_v1_3c797bf92db6294b83dd2044486b381486765ff65cb6f915a38af6b35266e34d"
       ],
       "l1Keys": [
-        "M1-05"
+        "M1-05",
+        "M1-07"
       ],
       "l2Keys": [
-        "M1-05-POSITION_RELATION"
+        "M1-05-POSITION_RELATION",
+        "M1-07-SOLID_FIGURE"
       ],
       "sourceBatches": [
         5,
         6,
-        11
+        11,
+        12
       ]
     },
     {
@@ -2665,7 +2829,8 @@
         "qid_v1_7a345aab19f66cfcf055ca795089dc4a4e01f956c61aa7a52e6e765fc6b16c03",
         "qid_v1_d79b4a2e071719e796531a0b951bbd1182de08c2d568138bf61456ab6b679e31",
         "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
-        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa"
+        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+        "qid_v1_c106eb02342dafd699290ae4ba21e9b0bbd143a3fa71634891cef3cde072f817"
       ],
       "l1Keys": [
         "M1-05"
@@ -2679,7 +2844,8 @@
         6,
         8,
         10,
-        11
+        11,
+        12
       ]
     },
     {
@@ -2761,7 +2927,8 @@
         "qid_v1_7db83a6ae9c81eaefc97010d65a010bac8d0dfa1add8e1f5abfb43729f58c08d",
         "qid_v1_ca9000b38594dad9cc69f42b7d259bee5168ffeee34548c87f187dbf6f58a55a",
         "qid_v1_97912236952da1b46bed89d498a2b0e673dad2c6d656dee9d80852c1a986b0fb",
-        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db"
+        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+        "qid_v1_ba2d23d69c7b2134cff219b832e83e2aa04e3b8472af88c3752303d00a8c228b"
       ],
       "l1Keys": [
         "M1-05"
@@ -2776,7 +2943,8 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ]
     },
     {
@@ -2984,11 +3152,13 @@
       "representativeReason": "The template contrasts SSA, ASA, SSS, angle-only, and ambiguous SSA cases.",
       "supportingQuestionUids": [
         "qid_v1_46d0970904703919890161fa773121f2ece793c8039f23a6a7457eb0ea0d8069",
-        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db"
+        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+        "qid_v1_ba2d23d69c7b2134cff219b832e83e2aa04e3b8472af88c3752303d00a8c228b"
       ],
       "sourceBatches": [
         5,
-        11
+        11,
+        12
       ]
     },
     {
@@ -3722,11 +3892,13 @@
       "representativeReason": "평행·수직 정리를 적용하고 skew 또는 서로 다른 방향의 반례로 보편 진술을 걸러낸다.",
       "supportingQuestionUids": [
         "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0",
-        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b"
+        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+        "qid_v1_3c797bf92db6294b83dd2044486b381486765ff65cb6f915a38af6b35266e34d"
       ],
       "sourceBatches": [
         5,
-        11
+        11,
+        12
       ]
     },
     {
@@ -3804,6 +3976,20 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_AREA_BASES_TO_HEIGHT",
+      "parentProblemTypeKey": "PT_M1_TRAPEZOID_AREA_HEIGHT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+      "representativeReason": "두 밑변 길이와 넓이에서 높이를 역산하고 그 높이를 점-변 거리로 읽는다.",
+      "supportingQuestionUids": [
+        "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_ASA_CONGRUENCE_IN_OVERLAPPING_SQUARES",
       "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_APPLICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3846,6 +4032,34 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_CHECK_FREQUENCY_TABLE_CLAIMS",
+      "parentProblemTypeKey": "PT_M1_FREQUENCY_TABLE_STATEMENT_VALIDATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa",
+      "representativeReason": "각 계급의 도수와 높은 순서의 누적 인원을 비교해 마지막 순위 주장까지 검증하는 반복 골격이다.",
+      "supportingQuestionUids": [
+        "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COMBINE_PERPENDICULAR_AND_LINEAR_ANGLES",
+      "parentProblemTypeKey": "PT_M1_INTERSECTING_LINES_ANGLE_RELATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_03b63a5a70843b23ac16c2497f7dbad5e0eba30b5b42058379223b2570539fde",
+      "representativeReason": "Use a marked right angle and a linear pair at an intersection to derive two sectors and add them.",
+      "supportingQuestionUids": [
+        "qid_v1_03b63a5a70843b23ac16c2497f7dbad5e0eba30b5b42058379223b2570539fde"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_COMPASS_AND_UNMARKED_RULER_ROLES",
       "parentProblemTypeKey": "PT_GEOMETRY_CONSTRUCTION_TOOL_USAGE",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3869,10 +4083,12 @@
       "representativeQuestionUid": "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
       "representativeReason": "서로 다른 네 작도 문장을 도구 필요 여부로 분류하고 조합 보기를 고른다.",
       "supportingQuestionUids": [
-        "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512"
+        "qid_v1_bb21cef41c096bf9223df85a0f7b0c1a899f009be5157d573665ebe89c363512",
+        "qid_v1_dc223f16f32b3b9f34468cae91c0993de71cfda31cbf566222f440213f0e3309"
       ],
       "sourceBatches": [
-        10
+        10,
+        12
       ]
     },
     {
@@ -3897,10 +4113,26 @@
       "representativeQuestionUid": "qid_v1_57b99e0c9d50385196d6fd5c5aa19095394bb686ea6b7e377ce13370c5509154",
       "representativeReason": "A-M-B-N-C 순서에서 연속한 두 선분 AB, BC의 중점 관계를 묶어 여러 길이 명제를 검증한다.",
       "supportingQuestionUids": [
-        "qid_v1_57b99e0c9d50385196d6fd5c5aa19095394bb686ea6b7e377ce13370c5509154"
+        "qid_v1_57b99e0c9d50385196d6fd5c5aa19095394bb686ea6b7e377ce13370c5509154",
+        "qid_v1_958866ae2b6400bff5f97c388474dc9623a08a54cae0a28112f8b5bff0a25ac5"
       ],
       "sourceBatches": [
-        10
+        10,
+        12
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_CONVERSE_SAME_SIDE_INTERIOR_ANGLES",
+      "parentProblemTypeKey": "PT_PARALLEL_LINE_ANGLE_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_23be769ccde13726cc3520f0345236dea59b4aa86325d7b1129fd16b1834e2ee",
+      "representativeReason": "수치 각 한 쌍의 합이 180°인지 검사하는 객관식 diagram comparison이다.",
+      "supportingQuestionUids": [
+        "qid_v1_23be769ccde13726cc3520f0345236dea59b4aa86325d7b1129fd16b1834e2ee"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -3929,6 +4161,34 @@
       ],
       "sourceBatches": [
         8
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COUNT_STEM_INTERVAL_AND_CONVERT_PERCENT",
+      "parentProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_cd7dba47f5a638950023c272f2786455b710a00fa3c3986f0b57049577674031",
+      "representativeReason": "Select leaves in the specified size interval, count them, and divide by the displayed total.",
+      "supportingQuestionUids": [
+        "qid_v1_cd7dba47f5a638950023c272f2786455b710a00fa3c3986f0b57049577674031"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COUNT_UNORDERED_POINT_PAIRS",
+      "parentProblemTypeKey": "PT_M1_SEGMENT_COUNT_FROM_POINTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8b82986dcb4ceafdc47739ca5dc01bf3af8a8dc726cd3c8e63fa20422ebeb371",
+      "representativeReason": "Count every unordered endpoint pair once; the semicircle guarantees distinct endpoints and segments.",
+      "supportingQuestionUids": [
+        "qid_v1_8b82986dcb4ceafdc47739ca5dc01bf3af8a8dc726cd3c8e63fa20422ebeb371"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -4156,6 +4416,34 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_KTH_HIGHEST_STEM_LEAF_VALUE",
+      "parentProblemTypeKey": "PT_M1_DATA_ORDER_STATISTIC_FROM_DISPLAY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_0fa0ce2f6b7bfcd1e05980240e24be42175203a2fead5c6bfbf61c694a472d5d",
+      "representativeReason": "줄기·잎 그림의 큰 값부터 반복 잎 수를 누적해 지정된 순위의 실제 수치를 읽는 반복 골격이다.",
+      "supportingQuestionUids": [
+        "qid_v1_0fa0ce2f6b7bfcd1e05980240e24be42175203a2fead5c6bfbf61c694a472d5d"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_KTH_HIGHEST_VALUE_CLASS",
+      "parentProblemTypeKey": "PT_M1_DATA_ORDER_STATISTIC_FROM_DISPLAY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_82345647fa297c0c23bd664577a1af0170833b5eed2f34cc0761046b839f1c98",
+      "representativeReason": "최상위 계급부터 인원 수를 누적하여 5번째 관측값의 구간을 찾는다.",
+      "supportingQuestionUids": [
+        "qid_v1_82345647fa297c0c23bd664577a1af0170833b5eed2f34cc0761046b839f1c98"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_LINEAR_EQUATION_FROM_PARALLEL_ANGLES",
       "parentProblemTypeKey": "PT_M1_PARALLEL_LINE_ANGLE_RELATIONS",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -4170,6 +4458,20 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_LOWER_QUARTILE_SUPPORT_CUTOFF",
+      "parentProblemTypeKey": "PT_M1_FREQUENCY_POLYGON_QUANTILE_CUTOFF",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9",
+      "representativeReason": "낮은 계급부터 목표 비율 인원을 세고 경계가 걸리는 계급의 바로 위 점수부터 탈락 집단을 피하는 골격이다.",
+      "supportingQuestionUids": [
+        "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_MATCH_TRIANGLE_BY_SIDE_AND_ANGLES",
       "parentProblemTypeKey": "PT_TRIANGLE_CONGRUENCE_CONDITION_SELECTION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -4177,10 +4479,12 @@
       "representativeQuestionUid": "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8",
       "representativeReason": "The choices are diagrams; the matching option has the given side between the two known base angles.",
       "supportingQuestionUids": [
-        "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8"
+        "qid_v1_a7d01443ac0a2cdb46267328dd93f01f0b54c93ac012191db7569d44a14050d8",
+        "qid_v1_c106eb02342dafd699290ae4ba21e9b0bbd143a3fa71634891cef3cde072f817"
       ],
       "sourceBatches": [
-        6
+        6,
+        12
       ]
     },
     {
@@ -4296,6 +4600,20 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_PERIMETER_AND_TRIANGLE_INEQUALITY_CASES",
+      "parentProblemTypeKey": "PT_M1_ISOSCELES_TRIANGLE_INTEGER_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae",
+      "representativeReason": "세 변 a,a,b의 둘레식, 삼각부등식, 두 자리 b 조건을 교차해 가능한 b를 열거한다.",
+      "supportingQuestionUids": [
+        "qid_v1_02d7e658bd500b0b67008fed8250bef0e87e8461fe3d30c39d873e84477c3fae"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_PERPENDICULAR_LINE_SECTOR_RATIO",
       "parentProblemTypeKey": "PT_M1_INTERSECTING_LINES_ANGLE_RELATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -4349,6 +4667,20 @@
       ],
       "sourceBatches": [
         10
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_PRISM_EDGE_INCIDENCE_AND_SKEW",
+      "parentProblemTypeKey": "PT_M1_POLYHEDRON_SPATIAL_RELATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8a7a20e96f20afa0002464f66557219f9d8b3489785785aaf1befb307df16603",
+      "representativeReason": "삼각기둥에서 기준 모서리와 incidence 및 skew 조건을 연속 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_8a7a20e96f20afa0002464f66557219f9d8b3489785785aaf1befb307df16603"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -4604,6 +4936,20 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_TAIL_PERCENT_AND_LOWER_RANGE_PERCENT",
+      "parentProblemTypeKey": "PT_M1_FREQUENCY_TABLE_MISSING_CLASS_FREQUENCY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c3af40b206248b9a436eecb4479a458de78da2d319aaf575c2c5498a6cca8a73",
+      "representativeReason": "상위 구간 상대도수로 B, 전체 합으로 A, 낮은 두 계급 합으로 백분율을 구한다.",
+      "supportingQuestionUids": [
+        "qid_v1_c3af40b206248b9a436eecb4479a458de78da2d319aaf575c2c5498a6cca8a73"
+      ],
+      "sourceBatches": [
+        12
+      ]
+    },
+    {
       "templateKey": "TPL_M1_TIME_SERIES_CHANGE_PLUS_BASELINE",
       "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -4615,6 +4961,20 @@
       ],
       "sourceBatches": [
         8
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_TORN_GRAPH_TRUE_STATEMENT",
+      "parentProblemTypeKey": "PT_M1_PARTIAL_FREQUENCY_POLYGON_INFERENCE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
+      "representativeReason": "보이는 계급 도수를 합계에서 빼 숨겨진 도수를 복원하고 구간별 인원·비율 보기를 대조하는 반복 골격이다.",
+      "supportingQuestionUids": [
+        "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c"
+      ],
+      "sourceBatches": [
+        12
       ]
     },
     {
@@ -5233,10 +5593,12 @@
       "representativeQuestionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
       "representativeReason": "Derive a special quadrilateral from parallel sides and length relations, then use opposite-side and diagonal properties to verify claims.",
       "supportingQuestionUids": [
-        "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19"
+        "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+        "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658"
       ],
       "sourceBatches": [
-        10
+        10,
+        12
       ]
     },
     {
@@ -5403,10 +5765,12 @@
       "representativeQuestionUid": "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c",
       "representativeReason": "직각 표시·빗변의 등식·한 예각의 등식으로 RHA 합동을 얻은 뒤 일직선의 길이를 분해한다.",
       "supportingQuestionUids": [
-        "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c"
+        "qid_v1_9ef7638fa8442a1fa1e6f90abbd59ee4a197efcb98c1995aff3c5babb8bd1e2c",
+        "qid_v1_62c74ba8158bc2ebaf42fd4c2914976b6e9eeedb9ceb4aa1073a7e780ee56f63"
       ],
       "sourceBatches": [
-        7
+        7,
+        12
       ]
     },
     {
@@ -5686,11 +6050,13 @@
       "representativeReason": "직사각형 한 번 접기에서 접는 선과 원래 수평변의 각을 구하고 반사된 변의 방향각으로 교차점의 둔각을 얻는 골격이다.",
       "supportingQuestionUids": [
         "qid_v1_26039a4374be7f532cb7fc0d6db97ca3bcc3422257c9e55f1ef71bc0401aa0ed",
-        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f"
+        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+        "qid_v1_c3386d1c7ff0faebf5a22a2cdf5f2eebbd94635943333b98641e7860b832cbc8"
       ],
       "sourceBatches": [
         8,
-        11
+        11,
+        12
       ]
     },
     {
@@ -5981,10 +6347,12 @@
       "representativeQuestionUid": "qid_v1_3d7ecd300aa4b5ec09218476f24020e4a20eac55acf786c061e02baa91296ce9",
       "representativeReason": "양쪽 각 묶음을 각비로 표현해 평각식에 대입하고 목표 인접각 합을 직접 읽는다.",
       "supportingQuestionUids": [
-        "qid_v1_3d7ecd300aa4b5ec09218476f24020e4a20eac55acf786c061e02baa91296ce9"
+        "qid_v1_3d7ecd300aa4b5ec09218476f24020e4a20eac55acf786c061e02baa91296ce9",
+        "qid_v1_6e1595cf0bc3cc42a7da51750089edb80acf0c3f6ad6ed43e10d2616f70f6112"
       ],
       "sourceBatches": [
-        7
+        7,
+        12
       ]
     },
     {
@@ -6269,8 +6637,8 @@
     }
   ],
   "counts": {
-    "candidateProblemTypes": 130,
-    "candidateTemplates": 228,
+    "candidateProblemTypes": 137,
+    "candidateTemplates": 241,
     "candidateCrossConcepts": 2,
     "activeProblemTypeReuse": 7,
     "activeTemplateReuse": 6,
