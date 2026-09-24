@@ -3,7 +3,8 @@
   "baseMainSha": "522c915eaa0c9e54bf43f3884f809d65075e1dbe",
   "sourceBatches": [
     1,
-    2
+    2,
+    3
   ],
   "problemTypes": [
     {
@@ -45,6 +46,45 @@
       ]
     },
     {
+      "problemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALIDITY_CHECK",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "representativeReason": "The goal is to select a correct symbolic representation; compare each expression with the stated operation structure.",
+      "supportingQuestionUids": [
+        "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a"
+      ],
+      "l1Keys": [
+        "M1-03"
+      ],
+      "l2Keys": [
+        "M1-03-ALGEBRAIC_EXPRESSION"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "problemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALUE_SUBSTITUTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+      "representativeReason": "The goal is to evaluate a literal expression at assigned variable values; substitution and signed arithmetic are decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+        "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788"
+      ],
+      "l1Keys": [
+        "M1-03"
+      ],
+      "l2Keys": [
+        "M1-03-ALGEBRAIC_EXPRESSION"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_ALGEBRAIC_QUANTITY_TRANSLATION_CHECK",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -80,6 +120,25 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "problemTypeKey": "PT_ALTERNATING_SIGNED_SUM",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+      "representativeReason": "반복 교대 부호를 가진 정수 항의 유한합을 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -184,7 +243,8 @@
       "representativeQuestionUid": "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
       "representativeReason": "목표는 주어진 정수 구간에서 특정 수와 서로소인 자연수의 개수를 세는 것이다.",
       "supportingQuestionUids": [
-        "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f"
+        "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
+        "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9"
       ],
       "l1Keys": [
         "M1-01"
@@ -193,7 +253,8 @@
         "M1-01-GCD_LCM"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
       ]
     },
     {
@@ -216,13 +277,33 @@
       ]
     },
     {
+      "problemTypeKey": "PT_DEFINED_OPERATION_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+      "representativeReason": "The target is the value of a newly defined operation; interpret its rule and substitute the inputs.",
+      "supportingQuestionUids": [
+        "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf"
+      ],
+      "l1Keys": [
+        "M1-03"
+      ],
+      "l2Keys": [
+        "M1-03-ALGEBRAIC_EXPRESSION"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_DIVISOR_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
       "representativeQuestionUid": "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b",
       "representativeReason": "목표는 정해진 범위에서 약수 개수가 정확히 3인 자연수의 개수를 세는 것이다.",
       "supportingQuestionUids": [
-        "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b"
+        "qid_v1_8d9cda25fe1e3f201e768645f4f76ac88c91fead674d17cef2decda2845cfc2b",
+        "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c"
       ],
       "l1Keys": [
         "M1-01"
@@ -231,7 +312,8 @@
         "M1-01-PRIME_FACTORIZATION"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
       ]
     },
     {
@@ -285,7 +367,8 @@
       "representativeQuestionUid": "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c",
       "representativeReason": "The target is the sum of extreme products from subsets of a fixed rational set; exact products must be compared before adding.",
       "supportingQuestionUids": [
-        "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c"
+        "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c",
+        "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d"
       ],
       "l1Keys": [
         "M1-02"
@@ -294,7 +377,8 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
       ]
     },
     {
@@ -323,7 +407,8 @@
       "representativeQuestionUid": "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
       "representativeReason": "The task recovers unknown exponents and a prime factor from simultaneous gcd and lcm specifications; min/max exponent matching is decisive.",
       "supportingQuestionUids": [
-        "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b"
+        "qid_v1_802b80e3505ebf59254a0a4f1e1ba3e855838dcaca1c9212a964fbc1de61302b",
+        "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845"
       ],
       "l1Keys": [
         "M1-01"
@@ -332,7 +417,27 @@
         "M1-01-GCD_LCM"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GCD_LCM_RATIO_FROM_FACTORIZATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+      "representativeReason": "The task asks for an LCM/GCD ratio of several prime-factorized integers; exponent minima/maxima determine both.",
+      "supportingQuestionUids": [
+        "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -374,6 +479,26 @@
       ]
     },
     {
+      "problemTypeKey": "PT_INTEGER_COUNT_IN_RATIONAL_INTERVAL",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+      "representativeReason": "The goal is the number of integers in an interval with rational endpoints; integer membership and endpoint inclusion are decisive.",
+      "supportingQuestionUids": [
+        "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+        "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_INTEGER_MEMBERSHIP_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -402,7 +527,8 @@
         "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
         "qid_v1_dc5e6e04949ddb1077e0a7f06eebe29a56b35167246b43caa225e008c2c3995f",
         "qid_v1_679c2264cfddf934106cfe3471ff7d436a47e55231b36b4851aac7e55b2d8355",
-        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536"
+        "qid_v1_542dd8bfcd425fd0ce55d3a2e09c22d8fc0f81d9d55cc84f041995b36e55f536",
+        "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18"
       ],
       "l1Keys": [
         "M1-01"
@@ -412,7 +538,8 @@
       ],
       "sourceBatches": [
         1,
-        2
+        2,
+        3
       ]
     },
     {
@@ -432,6 +559,25 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "problemTypeKey": "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+      "representativeReason": "The target is a missing cell in a 3×3 magic square; equal line sums and opposite-cell relations recover it.",
+      "supportingQuestionUids": [
+        "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -498,7 +644,8 @@
       "representativeQuestionUid": "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
       "representativeReason": "거듭제곱·정수 연산·분수 나눗셈이 섞인 수치식을 계산한다.",
       "supportingQuestionUids": [
-        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+        "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f",
+        "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add"
       ],
       "l1Keys": [
         "M1-02"
@@ -507,7 +654,27 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        2
+        2,
+        3
+      ]
+    },
+    {
+      "problemTypeKey": "PT_NUMBER_PROPERTY_STATEMENT_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+      "representativeReason": "기초 수론의 여러 진술을 점검해 참인 하나를 선택한다.",
+      "supportingQuestionUids": [
+        "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-GCD_LCM"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -549,6 +716,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+      "representativeReason": "The goal is to recover prime exponents in a consecutive product; count multiples of each prime power.",
+      "supportingQuestionUids": [
+        "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_PRIME_FACTOR_CONSTRAINT_RECOVERY",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -587,6 +773,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_PRIME_FACTORIZATION_PARAMETER_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+      "representativeReason": "The task recovers parameters embedded in a prime factorization and evaluates an expression in them.",
+      "supportingQuestionUids": [
+        "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_RATIONAL_ADDITION_SUBTRACTION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -603,6 +808,25 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_RATIONAL_CALCULATION_OUTLIER",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+      "representativeReason": "The target is the expression whose evaluated result differs from the others; compute and compare candidate values.",
+      "supportingQuestionUids": [
+        "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -645,6 +869,25 @@
       ]
     },
     {
+      "problemTypeKey": "PT_RATIONAL_NUMBER_PROPERTY_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+      "representativeReason": "유리수와 정수의 기본 성질 중 옳지 않은 진술을 복수 선택한다.",
+      "supportingQuestionUids": [
+        "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "problemTypeKey": "PT_RATIONAL_PRODUCT_QUOTIENT_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
       "ownerPack": "MIDDLE1_CANDIDATE",
@@ -664,6 +907,25 @@
       "sourceBatches": [
         1,
         2
+      ]
+    },
+    {
+      "problemTypeKey": "PT_RECIPROCAL_RELATION_VALUE_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+      "representativeReason": "The task recovers variables from reciprocal definitions and evaluates their sum.",
+      "supportingQuestionUids": [
+        "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -712,7 +974,8 @@
       "representativeReason": "The problem models relative change with signed values and evaluates the resulting state; this is shared with signed-movement contexts.",
       "supportingQuestionUids": [
         "qid_v1_d55faa7a9477ef5bb4314ca9dc280dc967b764095d94a6f0225348a467232cb8",
-        "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e"
+        "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
+        "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245"
       ],
       "l1Keys": [
         "M1-02"
@@ -721,11 +984,45 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
+      ]
+    },
+    {
+      "problemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+      "representativeReason": "부호 있는 정수식의 값을 계산한다.",
+      "supportingQuestionUids": [
+        "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        3
       ]
     }
   ],
   "templates": [
+    {
+      "templateKey": "TPL_ABSOLUTE_VALUE_CHOICE_THEN_EXPRESSION_EVALUATION",
+      "parentProblemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALUE_SUBSTITUTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788",
+      "representativeReason": "The template defines one variable by signed arithmetic and another as the larger of two absolute-value candidates before substitution.",
+      "supportingQuestionUids": [
+        "qid_v1_47eb037217d578118c516cfa620e960e122966b05df0531f47874902d3b80788"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
     {
       "templateKey": "TPL_ATTENDANCE_CYCLES_COMMON_PERIOD_COUNT",
       "parentProblemTypeKey": "PT_LCM_APPLICATION",
@@ -738,6 +1035,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_BRACKETED_EXPRESSION_WITH_EXPONENT_AND_FRACTION_DIVISION",
+      "parentProblemTypeKey": "PT_MIXED_RATIONAL_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+      "representativeReason": "거듭제곱을 먼저 처리하고 중괄호·대괄호를 계산한 후 바깥의 분수 뺄셈을 수행한다.",
+      "supportingQuestionUids": [
+        "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -855,6 +1166,48 @@
       ]
     },
     {
+      "templateKey": "TPL_COUNT_INTEGERS_FROM_SIGNED_TRANSLATION_BOUNDS",
+      "parentProblemTypeKey": "PT_INTEGER_COUNT_IN_RATIONAL_INTERVAL",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538",
+      "representativeReason": "The template turns two sign conditions after adding fractions into strict rational bounds on one integer.",
+      "supportingQuestionUids": [
+        "qid_v1_c1e6363f20354cdc84211fb85f4ebbedf89e01fae5fe4a32c8931c428a605538"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_INTEGERS_WITH_GIVEN_INCLUSIVE_ENDPOINTS",
+      "parentProblemTypeKey": "PT_INTEGER_COUNT_IN_RATIONAL_INTERVAL",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e",
+      "representativeReason": "The template gives one integer endpoint and one non-integer rational endpoint, both inclusive.",
+      "supportingQuestionUids": [
+        "qid_v1_a5d117cecc01b7f6b4f63f68edca8cbac7956aec455374dc6da41ae22dbc489e"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNT_PRIME_POWER_MULTIPLES_IN_PRODUCT",
+      "parentProblemTypeKey": "PT_PRIME_EXPONENT_IN_CONSECUTIVE_PRODUCT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5",
+      "representativeReason": "The template uses the product of the first 30 natural numbers and asks for two prime exponents.",
+      "supportingQuestionUids": [
+        "qid_v1_4d09d473364d760de50e45fa5291afcec751de6e0752002ae2e80531dfa3bec5"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_COUNT_PRIMES_IN_CLOSED_NATURAL_INTERVAL",
       "parentProblemTypeKey": "PT_BOUNDED_PRIME_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -953,6 +1306,34 @@
       ]
     },
     {
+      "templateKey": "TPL_FIND_TWO_RECIPROCALS_AND_ADD",
+      "parentProblemTypeKey": "PT_RECIPROCAL_RELATION_VALUE_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b",
+      "representativeReason": "The template defines one value by its reciprocal and the other as the reciprocal of a rational input, then requests their sum.",
+      "supportingQuestionUids": [
+        "qid_v1_ef871cfcb5e9ce188d31bd47d591e21ba17e831fff682d2ba9021019e222446b"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_FIXED_DENOMINATOR_COPRIME_NUMERATOR_COUNT",
+      "parentProblemTypeKey": "PT_COPRIME_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+      "representativeReason": "분모를 소인수분해해 후보 분자에서 각 소인수의 배수를 포함배제하여 센다.",
+      "supportingQuestionUids": [
+        "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_IDENTIFY_COPRIME_PAIR_BY_SHARED_FACTORS",
       "parentProblemTypeKey": "PT_COPRIME_PAIR_IDENTIFICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -992,6 +1373,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_LCM_DEPARTURE_INTERVALS_TO_CLOCK_TIME",
+      "parentProblemTypeKey": "PT_LCM_APPLICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18",
+      "representativeReason": "The template combines three departure intervals, a common start time, and a clock-time answer.",
+      "supportingQuestionUids": [
+        "qid_v1_60f05e97fa1ebb848371f9c9bd71c4fe8aeefa20ea5f480693a7e7f80d648d18"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -1065,6 +1460,34 @@
       ]
     },
     {
+      "templateKey": "TPL_MAXIMUM_TRIPLE_PRODUCT_FROM_FOUR_RATIONALS",
+      "parentProblemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
+      "representativeReason": "The template selects three of four signed rationals, creating four products with different signs and magnitudes.",
+      "supportingQuestionUids": [
+        "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_ODD_COUNT_ALTERNATING_MINUS_ONE_TERMS",
+      "parentProblemTypeKey": "PT_ALTERNATING_SIGNED_SUM",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+      "representativeReason": "서로 이웃한 -1과 +1을 상쇄한 뒤 홀수 항 개수로 남는 끝항의 부호를 판정한다.",
+      "supportingQuestionUids": [
+        "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_ODD_FACTOR_BOUND_FROM_ALTERNATING_SUM",
       "parentProblemTypeKey": "PT_CONSTRAINED_FACTOR_PAIR",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1076,6 +1499,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_OPPOSITE_CELL_IN_ZERO_SUM_MAGIC_SQUARE",
+      "parentProblemTypeKey": "PT_MAGIC_SQUARE_ENTRY_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1",
+      "representativeReason": "The template uses every integer from −4 to 4 once, provides the center and several cells, and marks a cell opposite +1.",
+      "supportingQuestionUids": [
+        "qid_v1_bdbd7a8ea6c6c046b655356a4485ade991ee950fc819c4735afe418abe91dbb1"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -1104,6 +1541,20 @@
       ],
       "sourceBatches": [
         2
+      ]
+    },
+    {
+      "templateKey": "TPL_PRIME_POWER_FORM_PARAMETER_EVALUATION",
+      "parentProblemTypeKey": "PT_PRIME_FACTORIZATION_PARAMETER_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a",
+      "representativeReason": "The template isolates one exponent, one squared prime, and one remaining prime factor before evaluating a combination.",
+      "supportingQuestionUids": [
+        "qid_v1_fc4098d1eff6104b0950659695efef9c3076ecad71f4e9aadd80fcf8a8ce4e8a"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -1163,6 +1614,20 @@
       ]
     },
     {
+      "templateKey": "TPL_RECOVER_TWO_DIGIT_PAIR_FROM_GCD_LCM",
+      "parentProblemTypeKey": "PT_GCD_LCM_PARAMETER_RECOVERY",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845",
+      "representativeReason": "The template reduces by the gcd, enumerates factor pairs of the lcm quotient, and filters by digit length.",
+      "supportingQuestionUids": [
+        "qid_v1_2bb1489bc8575f9701588dd552e935e59ef7c312aabf935c069a55bc5179a845"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_RECTANGULAR_BRICKS_SMALLEST_CUBE",
       "parentProblemTypeKey": "PT_LCM_APPLICATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1219,6 +1684,34 @@
       ]
     },
     {
+      "templateKey": "TPL_SELECT_CORRECT_LITERAL_EXPRESSION",
+      "parentProblemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALIDITY_CHECK",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a",
+      "representativeReason": "The template contrasts powers/products, division by a negative, chained division, coefficient grouping, and parentheses.",
+      "supportingQuestionUids": [
+        "qid_v1_753b4cd318a95988835f2db978d13c657861cd8ecd61714e2c5d73b82ffaf10a"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_SELECT_FALSE_RATIONAL_NUMBER_PROPERTIES",
+      "parentProblemTypeKey": "PT_RATIONAL_NUMBER_PROPERTY_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+      "representativeReason": "정의·포함관계·0의 부호 지위를 진술별로 판단해 오답 진술을 고른다.",
+      "supportingQuestionUids": [
+        "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_SELECT_LARGEST_ABSOLUTE_VALUE_FROM_RATIONAL_CHOICES",
       "parentProblemTypeKey": "PT_RATIONAL_NUMBER_ORDER_AND_EXTREMA",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1244,6 +1737,20 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_SELECT_MULTIPLIER_FOR_DIVISOR_COUNT",
+      "parentProblemTypeKey": "PT_DIVISOR_COUNT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c",
+      "representativeReason": "The template fixes a base integer and tests a short list of natural multipliers against a target divisor count.",
+      "supportingQuestionUids": [
+        "qid_v1_6ccfd85913bfbfde6991db51bff9cff756edd595f6a4358027c2bfcc512c356c"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -1303,6 +1810,20 @@
       ]
     },
     {
+      "templateKey": "TPL_SINGLE_TRUE_NUMBER_PROPERTY",
+      "parentProblemTypeKey": "PT_NUMBER_PROPERTY_STATEMENT_JUDGMENT",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15",
+      "representativeReason": "서로 다른 소수·거듭제곱·대소·약수 진술을 각각 검토하고 단일 정답을 고른다.",
+      "supportingQuestionUids": [
+        "qid_v1_711187344f26b98478398d4c35a26ac272e9d632bb46545ed4abb85280e38d15"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_SUBSTITUTE_AND_SELECT_GREATEST_EXPRESSION",
       "parentProblemTypeKey": "PT_EXTREME_EXPRESSION_VALUE_SELECTION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1314,6 +1835,48 @@
       ],
       "sourceBatches": [
         1
+      ]
+    },
+    {
+      "templateKey": "TPL_SUBSTITUTE_IN_DEFINED_BINARY_OPERATION",
+      "parentProblemTypeKey": "PT_DEFINED_OPERATION_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf",
+      "representativeReason": "The template introduces a nonstandard operation symbol with a linear rule and asks for one pair value.",
+      "supportingQuestionUids": [
+        "qid_v1_1a7d1046d7d38f49634ac7e68697b7697eb557d4a1094a298cba054beade06bf"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_SUBSTITUTE_SIGNED_VALUES_IN_LINEAR_EXPRESSION",
+      "parentProblemTypeKey": "PT_ALGEBRAIC_EXPRESSION_VALUE_SUBSTITUTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c",
+      "representativeReason": "The template assigns negative integers to two variables in a linear expression with a subtracted negative term.",
+      "supportingQuestionUids": [
+        "qid_v1_b2d8165ee6fc5a23c24ae6fd9d8f6eaf87a62cc3ba2e403d694133418927c25c"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
+      "templateKey": "TPL_SUBTRACT_NEGATIVE_AND_POWER",
+      "parentProblemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+      "representativeReason": "거듭제곱을 계산한 후 음수 빼기를 부호 변경으로 처리하고 정수 항을 합한다.",
+      "supportingQuestionUids": [
+        "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6"
+      ],
+      "sourceBatches": [
+        3
       ]
     },
     {
@@ -1345,6 +1908,20 @@
       ]
     },
     {
+      "templateKey": "TPL_THREE_NUMBER_GCD_LCM_RATIO",
+      "parentProblemTypeKey": "PT_GCD_LCM_RATIO_FROM_FACTORIZATIONS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72",
+      "representativeReason": "The template combines three factorizations and requests the ratio rather than either value alone.",
+      "supportingQuestionUids": [
+        "qid_v1_98e44785dea1cb6479cccb60916b46d17256ab0c8d146ec0841e25fc68342c72"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_TIME_ZONE_OFFSET_WITH_WEEKDAY_ROLLOVER",
       "parentProblemTypeKey": "PT_SIGNED_CHANGE_MODEL_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1359,6 +1936,20 @@
       ]
     },
     {
+      "templateKey": "TPL_UNIQUE_RESULT_AMONG_FRACTIONAL_QUOTIENTS",
+      "parentProblemTypeKey": "PT_RATIONAL_CALCULATION_OUTLIER",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f",
+      "representativeReason": "The template contrasts chained signed-fraction divisions, a single fraction quotient, and integer multiplication/division.",
+      "supportingQuestionUids": [
+        "qid_v1_a399c29e9f590efc99606127d7d66baa48ac37b5f93d28a480612e2dccc30a8f"
+      ],
+      "sourceBatches": [
+        3
+      ]
+    },
+    {
       "templateKey": "TPL_WIN_LOSS_NET_POSITION_DIFFERENCE",
       "parentProblemTypeKey": "PT_SIGNED_CHANGE_MODEL_EVALUATION",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -1366,10 +1957,12 @@
       "representativeQuestionUid": "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
       "representativeReason": "The template uses complementary win/loss counts, unequal positive/negative step sizes, and asks for the difference of net positions.",
       "supportingQuestionUids": [
-        "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e"
+        "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
+        "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245"
       ],
       "sourceBatches": [
-        1
+        1,
+        3
       ]
     }
   ],
@@ -1428,8 +2021,8 @@
     }
   ],
   "counts": {
-    "candidateProblemTypes": 37,
-    "candidateTemplates": 46,
+    "candidateProblemTypes": 51,
+    "candidateTemplates": 68,
     "candidateCrossConcepts": 1,
     "activeProblemTypeReuse": 0,
     "activeTemplateReuse": 0,
