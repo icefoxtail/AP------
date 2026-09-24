@@ -3,29 +3,29 @@
   "status": "WORKING_NOT_FINAL",
   "sourceComparison": "H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json",
   "counts": {
-    "fullConflict": 706,
+    "fullConflict": 705,
     "noCurrentC": 0,
-    "currentC": 706,
-    "allFieldsTwoOfThree": 481,
-    "rowsNeedingSolFieldReview": 225,
+    "currentC": 705,
+    "allFieldsTwoOfThree": 474,
+    "rowsNeedingSolFieldReview": 231,
     "fieldTwoOfThree": {
-      "crossConcepts": 175,
+      "crossConcepts": 174,
       "l3Challenge": 173,
       "integrationPattern": 286,
-      "conditions": 230,
+      "conditions": 229,
       "sourceIssue": 35,
       "reviewStatus": 30,
-      "l3": 20
+      "l3": 14
     },
     "fieldThreeWaySplit": {
       "integrationPattern": 64,
-      "sourceIssue": 24,
+      "sourceIssue": 23,
       "conditions": 62,
       "crossConcepts": 90,
-      "l3": 1
+      "l3": 4
     },
     "fieldMissing": {
-      "l3": 18
+      "l3": 20
     }
   },
   "rows": [
@@ -3906,9 +3906,8 @@
       "cFile": "H1_STAGEA_LUNA6_C_SOURCE_REPAIR_Q538_Q539_FINAL_CONFLICT.jsonl",
       "decisions": {
         "l3": {
-          "status": "C_FIELD_MISSING",
-          "a": "PT_H1_QUADRATIC_EXTREMA",
-          "b": "PT_COORD_TRIANGLE_AREA"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_COORD_TRIANGLE_AREA"
         },
         "l3Challenge": {
           "status": "B_C_CONSENSUS",
@@ -3935,7 +3934,6 @@
         }
       },
       "solFields": [
-        "l3",
         "crossConcepts"
       ]
     },
@@ -3947,9 +3945,8 @@
       "cFile": "H1_STAGEA_LUNA6_C_SOURCE_REPAIR_Q538_Q539_FINAL_CONFLICT.jsonl",
       "decisions": {
         "l3": {
-          "status": "C_FIELD_MISSING",
-          "a": "PT_H1_QUADRATIC_EXTREMA",
-          "b": "PT_FUNCTION_EXTREMUM"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_FUNCTION_EXTREMUM"
         },
         "l3Challenge": {
           "status": "B_C_CONSENSUS",
@@ -3978,7 +3975,6 @@
         }
       },
       "solFields": [
-        "l3",
         "crossConcepts"
       ]
     },
@@ -12636,11 +12632,15 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS32_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "THREE_WAY_SPLIT",
+          "a": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "b": "PT_COMBINATORIAL_NOTATION_EVALUATION",
+          "c": "PT_COUNTING_ARRANGEMENT"
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1053,
@@ -12692,15 +12692,18 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "C_FIELD_MISSING",
+          "a": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "b": "PT_COMBINATORIAL_NOTATION_EVALUATION"
         },
         "integrationPattern": {
           "status": "B_C_CONSENSUS",
           "value": "NONE"
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1057,
@@ -12772,15 +12775,18 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "C_FIELD_MISSING",
+          "a": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "b": "PT_COMBINATORIAL_NOTATION_EVALUATION"
         },
         "integrationPattern": {
           "status": "B_C_CONSENSUS",
           "value": "NONE"
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1061,
@@ -12874,15 +12880,18 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "C_FIELD_MISSING",
+          "a": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "b": "PT_COMBINATORIAL_NOTATION_EVALUATION"
         },
         "integrationPattern": {
           "status": "B_C_CONSENSUS",
           "value": "NONE"
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1066,
@@ -12906,12 +12915,12 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_COUNTING_SELECTION_DISTRIBUTION"
         },
         "l3Challenge": {
-          "status": "A_C_CONSENSUS",
-          "value": true
+          "status": "B_C_CONSENSUS",
+          "value": false
         }
       },
       "solFields": []
@@ -12942,8 +12951,8 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_COUNTING_REPEATED_ASSIGNMENT"
         },
         "l3Challenge": {
           "status": "A_C_CONSENSUS",
@@ -13147,8 +13156,9 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_COUNTING_SELECTION_DISTRIBUTION"
+          "status": "C_FIELD_MISSING",
+          "a": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "b": "PT_H1_COMBINATORIAL_NOTATION_PROPERTIES"
         },
         "sourceIssue": {
           "status": "THREE_WAY_SPLIT",
@@ -13158,6 +13168,7 @@
         }
       },
       "solFields": [
+        "l3",
         "sourceIssue"
       ]
     },
@@ -13214,15 +13225,18 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_COUNTING_SELECTION_DISTRIBUTION"
+          "status": "C_FIELD_MISSING",
+          "a": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "b": "PT_H1_COMBINATORIAL_NOTATION_PROPERTIES"
         },
         "conditions": {
           "status": "B_C_CONSENSUS",
           "value": []
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1086,
@@ -13246,15 +13260,19 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_COUNTING_PRINCIPLE_GENERAL"
+          "status": "THREE_WAY_SPLIT",
+          "a": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+          "b": "PT_H1_DISTINGUISHABLE_CAPACITY_DISTRIBUTION",
+          "c": "PT_COUNTING_SELECTION_DISTRIBUTION"
         },
         "conditions": {
           "status": "B_C_CONSENSUS",
           "value": []
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1091,
@@ -13352,15 +13370,19 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_MATRIX_BASIC_OPERATION"
+          "status": "THREE_WAY_SPLIT",
+          "a": "PT_H1_MATRIX_BASIC_OPERATION",
+          "b": "PT_H1_MATRIX_EQUATION",
+          "c": "PT_H1_MATRIX_MULTIPLICATION"
         },
         "crossConcepts": {
           "status": "A_C_CONSENSUS",
           "value": []
         }
       },
-      "solFields": []
+      "solFields": [
+        "l3"
+      ]
     },
     {
       "queueIndex": 1104,
@@ -13370,8 +13392,8 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_MATRIX_BASIC_OPERATION"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_H1_MATRIX_EQUATION"
         }
       },
       "solFields": []
@@ -13384,8 +13406,8 @@
       "cFile": "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl",
       "decisions": {
         "l3": {
-          "status": "A_C_CONSENSUS",
-          "value": "PT_H1_MATRIX_BASIC_OPERATION"
+          "status": "B_C_CONSENSUS",
+          "value": "PT_H1_MATRIX_MULTIPLICATION"
         }
       },
       "solFields": []
@@ -14082,43 +14104,6 @@
         }
       },
       "solFields": []
-    },
-    {
-      "queueIndex": 1169,
-      "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
-      "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#17",
-      "sourceFingerprint": "af8ed20f47895005d55dece0462fd49407083afb1ec74ba3470f6035e0361d96",
-      "cFile": "H1_STAGEA_LUNA6_C_REMAINING_CONFLICTS36_15.jsonl",
-      "decisions": {
-        "l3": {
-          "status": "C_FIELD_MISSING",
-          "a": "PT_H1_MATRIX_BASIC_OPERATION",
-          "b": "PT_H1_MATRIX_EQUATION"
-        },
-        "crossConcepts": {
-          "status": "B_C_CONSENSUS",
-          "value": [
-            "CC_NUMBER_PRIME_COPRIME"
-          ]
-        },
-        "conditions": {
-          "status": "B_C_CONSENSUS",
-          "value": [
-            "COND_NATURAL_NUMBER",
-            "COND_RANGE"
-          ]
-        },
-        "sourceIssue": {
-          "status": "THREE_WAY_SPLIT",
-          "a": "MINOR_EDITORIAL",
-          "b": "SOLUTION_INCOMPLETE",
-          "c": "SOLUTION_ERROR"
-        }
-      },
-      "solFields": [
-        "l3",
-        "sourceIssue"
-      ]
     },
     {
       "queueIndex": 1170,

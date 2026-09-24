@@ -32,14 +32,18 @@ function cRowFor(row) {
 }
 function normalizedC(c) {
   if (!c) return null;
-  const l3 = c.frozenL3Review ?? c.l3 ?? c.frozenL3 ?? {};
+  const l3 = c.independentL3ChallengeReview ?? c.frozenL3IndependentReview
+    ?? c.frozenL3Review ?? c.l3 ?? c.frozenL3 ?? {};
   const oldChallenge = c.independentChallenge?.decision === 'CHALLENGE_FROZEN_L3';
   return {
     l3: (oldChallenge ? c.independentChallenge.key : null)
+      ?? l3.selectedProblemTypeKey
+      ?? (l3.independentProblemTypeKeys?.length === 1 ? l3.independentProblemTypeKeys[0] : null)
       ?? l3.suggestedL3 ?? l3.problemTypeKey ?? l3.key ?? c.problemTypeKey ?? null,
     l3Challenge: ['NEW_CANDIDATE', 'CHALLENGE', 'HOLD'].includes(l3.status)
       || Boolean(l3.suggestedL3 && l3.suggestedL3 !== l3.key)
-      || /CHALLENGED/.test(l3.independentReview ?? '') || oldChallenge,
+      || /CHALLENGED/.test(l3.independentReview ?? '') || oldChallenge
+      || l3.decision === 'CHALLENGE',
     crossConcepts: keys(c.crossConcepts ?? c.crossConceptKeys),
     conditions: keys(c.conditions ?? c.conditionKeys),
     integrationPattern: label(c.integrationPattern),
