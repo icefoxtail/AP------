@@ -16,6 +16,19 @@ if (sample.length !== 20 || remaining.length !== 67 || family.length !== 87 || c
 const currentByUid = new Map(current.map(row => [row.questionUid, row]));
 const a = [...read('H1_A2_L4_REMAINING_67.jsonl'), ...read('H1_A2_L4_SAMPLE_20.jsonl')];
 const b = [...read('H1_B_L4_REMAINING_67.jsonl'), ...read('H1_B_L4_SAMPLE_20.jsonl')];
+const a2Final = JSON.parse(fs.readFileSync(path.join(dir,
+  'H1_A2_L4_FAMILY_87_CLUSTER_DEFINITIONS.json'), 'utf8'));
+const a2FinalRows = [
+  ...a2Final.clusterDefinitions.flatMap(cluster => cluster.members.map(member => ({
+    questionUid: member.questionUid, clusterId: cluster.clusterId,
+    skeleton: cluster.boundedCandidateSkeleton,
+  }))),
+  ...a2Final.noSeparate.map(member => ({ questionUid: member.questionUid,
+    clusterId: 'NO_SEPARATE', skeleton: null })),
+];
+const a2FinalByUid = new Map(a2FinalRows.map(row => [row.questionUid, row]));
+if (a2FinalRows.length !== 87 || a2FinalByUid.size !== 87)
+  throw new Error('A2 updated family assignment coverage/duplicate mismatch');
 const c = [...read('H1_C2_L4_REMAINING_CONFLICTS_20.jsonl'),
   ...read('H1_C2_L4_SAMPLE_CONFLICTS_8.jsonl')];
 const postD = [
@@ -44,6 +57,10 @@ const bSkeleton = row => row.l4CanonicalSkeleton ?? row.l4Cluster?.skeleton ?? r
 const cSkeleton = row => row.l4Skeleton ?? row.L4Skeleton ?? null;
 const out = family.map(item => {
   const x = aByUid.get(item.questionUid), y = bByUid.get(item.questionUid), z = cByUid.get(item.questionUid) ?? null;
+  const finalA2 = a2FinalByUid.get(item.questionUid);
+  const currentA2Cluster = [87, 114].includes(item.queueIndex) ? aCluster(x) : finalA2?.clusterId;
+  const currentA2Skeleton = [87, 114].includes(item.queueIndex) ? aSkeleton(x)
+    : finalA2?.skeleton ?? aSkeleton(x);
   const live = currentByUid.get(item.questionUid);
   if (!x || !y || !live || live.queueIndex !== item.queueIndex
     || live.sourceIdentity !== item.sourceIdentity || live.sourceFingerprint !== item.sourceFingerprint)
@@ -53,14 +70,15 @@ const out = family.map(item => {
       || x[field] !== y[field] || (z && x[field] !== z[field]))
       throw new Error(`L4 A2/B/C ${field} mismatch q${item.queueIndex}`);
   }
-  if ((!aSkeleton(x) && aCluster(x) !== 'NO_SEPARATE')
+  if ((!currentA2Skeleton && currentA2Cluster !== 'NO_SEPARATE')
     || (!bSkeleton(y) && bCluster(y) !== 'NO_SEPARATE')
     || (z && !cSkeleton(z) && cCluster(z) !== 'NO_SEPARATE'))
     throw new Error(`L4 skeleton evidence missing q${item.queueIndex}`);
   return { schemaVersion: 1, status: 'L4_RAW_COMPARISON_NOT_ADJUDICATED',
     queueIndex: item.queueIndex, questionUid: item.questionUid, sourceIdentity: item.sourceIdentity,
     sourceFingerprint: item.sourceFingerprint, selectedDraftL3ParentLabelKo: item.selectedDraftL3ParentLabelKo,
-    a2: { cluster: aCluster(x), skeleton: aSkeleton(x), reviewStatus: x.reviewStatus },
+    a2: { cluster: currentA2Cluster, skeleton: currentA2Skeleton,
+      priorItemCluster: aCluster(x), reviewStatus: x.reviewStatus },
     b: { cluster: bCluster(y), skeleton: bSkeleton(y), reviewStatus: y.reviewStatus },
     c: z ? { cluster: cCluster(z), skeleton: cSkeleton(z), reviewStatus: z.reviewStatus } : null,
     cIndependentCoverage: Boolean(z),
@@ -75,6 +93,7 @@ const summary = { schemaVersion: 1, status: 'L4_RAW_COMPARISON_NOT_ADJUDICATED',
   bNoSeparateCount: out.filter(row => row.b.cluster === 'NO_SEPARATE').length,
   currentHoldQueueIndexes: family.filter(row => row.workingReviewStatus === 'HOLD').map(row => row.queueIndex),
   clusterNamesAreIndependent: true, semanticClusterEquivalencePending: true, l4Final: false };
+summary.a2UpdatedFamilyEvidenceFile = 'H1_A2_L4_FAMILY_87_CLUSTER_DEFINITIONS.json';
 fs.writeFileSync(path.join(dir, 'H1_POLY_L4_AB_C_RAW_COMPARISON_87.jsonl'),
   out.map(row => JSON.stringify(row)).join('\n') + '\n');
 fs.writeFileSync(path.join(dir, 'H1_POLY_L4_AB_C_RAW_COMPARISON_87_SUMMARY.json'),

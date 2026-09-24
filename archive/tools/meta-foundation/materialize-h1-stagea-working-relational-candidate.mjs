@@ -84,6 +84,17 @@ const q87HoldFile = 'H1_SOL_Q087_DUPLICATE_CONSTANT_HOLD.json';
 const q87Hold = JSON.parse(fs.readFileSync(path.join(dir, q87HoldFile), 'utf8'));
 const q114HoldFile = 'H1_SOL_Q114_HWP_EQUATION_CHOICES_HOLD.json';
 const q114Hold = JSON.parse(fs.readFileSync(path.join(dir, q114HoldFile), 'utf8'));
+const qdiscReparentFile = 'l4-quadratic-discriminant/H1_SOL_QDISC_L3_REPARENT_8.jsonl';
+const qdiscReparentRows = fs.readFileSync(path.join(dir, qdiscReparentFile), 'utf8')
+  .trim().split(/\r?\n/).map(JSON.parse);
+const qdiscReparentByQueue = new Map(qdiscReparentRows.map(item => [item.queueIndex, item]));
+if (qdiscReparentRows.length !== 8 || qdiscReparentByQueue.size !== 8)
+  throw new Error('qdisc L3 reparent proposal coverage mismatch');
+const qdiscSolutionGapFile = 'l4-quadratic-discriminant/H1_SOL_QDISC_SOLUTION_GAPS_Q572_Q592.json';
+const qdiscSolutionGaps = JSON.parse(fs.readFileSync(path.join(dir, qdiscSolutionGapFile), 'utf8'));
+const qdiscSolutionGapByQueue = new Map(qdiscSolutionGaps.items.map(item => [item.queueIndex, item]));
+if (qdiscSolutionGaps.items.length !== 2 || qdiscSolutionGapByQueue.size !== 2)
+  throw new Error('qdisc solution-gap decision coverage mismatch');
 if (inequalityParentRows.length !== 39 || inequalityParentByQueue.size !== 39)
   throw new Error('inequality parent plan coverage mismatch');
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
@@ -498,6 +509,38 @@ for (const row of comparison.rows) {
       counts.fieldsDualMatch--;
       fieldDecisions[field] = { value, provenance: 'SOL_DIRECT_ADJUDICATION',
         evidenceFile: q114HoldFile, reason: q114Hold.currentJsMathCheck };
+      counts.fieldsSolDirectOverride++;
+    }
+  }
+  if (qdiscReparentByQueue.has(row.queueIndex)) {
+    const edit = qdiscReparentByQueue.get(row.queueIndex);
+    if (row.questionUid !== edit.questionUid || row.sourceIdentity !== edit.sourceIdentity
+      || row.currentSourceFingerprint !== edit.sourceFingerprint)
+      throw new Error(`q${row.queueIndex} qdisc L3 reparent source drift`);
+    const previous = fieldDecisions.l3;
+    if (previous.provenance !== 'DUAL_LUNA_MATCH'
+      || previous.value !== 'PT_H1_QUADRATIC_DISCRIMINANT')
+      throw new Error(`q${row.queueIndex} qdisc L3 prior key/provenance mismatch`);
+    counts.fieldsDualMatch--;
+    fieldDecisions.l3 = { value: edit.proposedKey, provenance: 'SOL_DIRECT_ADJUDICATION',
+      keyStatus: edit.keyStatus, unitBindingReviewRequired: edit.unitBindingReviewRequired,
+      evidenceFile: qdiscReparentFile, reason: edit.reason };
+    counts.fieldsSolDirectOverride++;
+  }
+  if (qdiscSolutionGapByQueue.has(row.queueIndex)) {
+    const item = qdiscSolutionGapByQueue.get(row.queueIndex);
+    if (row.questionUid !== item.questionUid || row.sourceIdentity !== item.sourceIdentity
+      || row.currentSourceFingerprint !== item.sourceFingerprint)
+      throw new Error(`q${row.queueIndex} solution-gap evidence/source drift`);
+    for (const field of ['sourceIssue', 'reviewStatus']) {
+      const previous = fieldDecisions[field];
+      if (previous.provenance === 'SOL_DIRECT_ADJUDICATION_PENDING') {
+        counts.fieldsPendingSol--;
+        pending.splice(pending.indexOf(field), 1);
+      } else if (previous.provenance === 'DUAL_LUNA_MATCH') counts.fieldsDualMatch--;
+      else throw new Error(`q${row.queueIndex} unexpected ${field} provenance`);
+      fieldDecisions[field] = { ...item.fieldDecisions[field], provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: qdiscSolutionGapFile };
       counts.fieldsSolDirectOverride++;
     }
   }
