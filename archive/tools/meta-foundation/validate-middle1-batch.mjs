@@ -198,6 +198,7 @@ if (exists('CONSENSUS.jsonl')) {
   const candidatePt = new Set(registry.problemTypes.map(x => x.problemTypeKey));
   const candidateTpl = new Map(registry.templates.map(x => [x.templateKey, x]));
   const candidateCc = new Set(registry.crossConcepts.map(x => x.conceptKey));
+  const registrySupportingUids = new Set([...registry.problemTypes, ...registry.templates, ...registry.crossConcepts].flatMap(x => x.supportingQuestionUids || []));
   counts.consensusRows = consensus.length;
   counts.consensusHolds = consensus.filter(x => x.reviewStatus === 'HOLD').length;
   counts.consensusRouteOut = consensus.filter(x => x.reviewStatus === 'ROUTE_OUT').length;
@@ -211,10 +212,14 @@ if (exists('CONSENSUS.jsonl')) {
     if (!row.consensusBasis?.rootReason || !['A','B','C'].includes(row.consensusBasis?.chosenRole)) fail('CONSENSUS_ROOT_REASON_MISSING', { uid: row.questionUid });
     const l1row = masterByKey.get(row.standardUnitKey), l2row = masterByKey.get(row.subUnitKey);
     if (l1row?.keyType !== 'standardUnitKey' || l2row?.keyType !== 'subUnitKey' || l2row.standardUnitKey !== row.standardUnitKey) fail('L1_L2_PARENT_INVALID', { uid: row.questionUid, l1: row.standardUnitKey, l2: row.subUnitKey });
-    if (!activePt.has(row.problemTypeKey) && !candidatePt.has(row.problemTypeKey)) fail('UNREGISTERED_L3', { uid: row.questionUid, key: row.problemTypeKey });
-    if (candidateTpl.get(row.templateKey)?.parentProblemTypeKey !== row.problemTypeKey) fail('L3_L4_PARENT_INVALID', { uid: row.questionUid, l3: row.problemTypeKey, l4: row.templateKey });
-    for (const key of row.crossConceptKeys || []) if (!activeCc.has(key) && !candidateCc.has(key)) fail('UNREGISTERED_CROSS_CONCEPT', { uid: row.questionUid, key });
-    for (const key of row.conditionKeys || []) if (!activeCond.has(key)) fail('UNREGISTERED_CONDITION', { uid: row.questionUid, key });
+    if (row.reviewStatus === 'ROUTE_OUT' || row.reviewStatus === 'HOLD') {
+      if (registrySupportingUids.has(row.questionUid)) fail('NONPROPOSED_TAXONOMY_LEAK', { uid: row.questionUid, status: row.reviewStatus });
+    } else {
+      if (!activePt.has(row.problemTypeKey) && !candidatePt.has(row.problemTypeKey)) fail('UNREGISTERED_L3', { uid: row.questionUid, key: row.problemTypeKey });
+      if (candidateTpl.get(row.templateKey)?.parentProblemTypeKey !== row.problemTypeKey) fail('L3_L4_PARENT_INVALID', { uid: row.questionUid, l3: row.problemTypeKey, l4: row.templateKey });
+      for (const key of row.crossConceptKeys || []) if (!activeCc.has(key) && !candidateCc.has(key)) fail('UNREGISTERED_CROSS_CONCEPT', { uid: row.questionUid, key });
+      for (const key of row.conditionKeys || []) if (!activeCond.has(key)) fail('UNREGISTERED_CONDITION', { uid: row.questionUid, key });
+    }
     if (!['NONE','SEQUENTIAL','INTERDEPENDENT','REINTERPRETATION','CASE_BRANCH','DEEP_COMPOSITE'].includes(row.integrationPattern)) fail('INVALID_INTEGRATION_PATTERN', { uid: row.questionUid });
     if (!['PROPOSED','HOLD','ROUTE_OUT'].includes(row.reviewStatus)) fail('MODEL_DECLARED_FINAL', { uid: row.questionUid, status: row.reviewStatus });
   }
@@ -236,6 +241,9 @@ if (exists('SOURCE_QUALITY.jsonl')) {
     if (!['SOLUTION_REPAIR_REQUIRED', 'SOURCE_BLOCKED', 'HOLD_RESOLVED_NO_SOURCE_MUTATION'].includes(row.disposition)) fail('SOURCE_QUALITY_DISPOSITION_INVALID', { uid: row.questionUid });
     if (row.semanticMappingStatus !== consensusByUid.get(row.questionUid)?.reviewStatus) fail('SOURCE_QUALITY_SEMANTIC_STATUS_MISMATCH', { uid: row.questionUid });
     if (row.disposition !== 'HOLD_RESOLVED_NO_SOURCE_MUTATION' && row.runtimeSelectableBeforeRepair !== false) fail('SOURCE_QUALITY_SELECTABILITY_LEAK', { uid: row.questionUid });
+    if (row.semanticMappingStatus === 'ROUTE_OUT' && (row.metadataWritebackAllowed !== false || row.runtimeSelectableBeforeRepair !== false)) fail('ROUTE_OUT_SELECTABILITY_LEAK', { uid: row.questionUid });
+    if (row.semanticMappingStatus === 'HOLD' && (row.metadataWritebackAllowed !== false || row.runtimeSelectableBeforeRepair !== false)) fail('HOLD_SELECTABILITY_LEAK', { uid: row.questionUid });
+    if (row.disposition === 'SOURCE_BLOCKED' && row.semanticMappingStatus !== 'HOLD') fail('SOURCE_BLOCKED_WITHOUT_SEMANTIC_HOLD', { uid: row.questionUid });
   }
   sourceQualityChecked = true;
 }
@@ -311,6 +319,7 @@ if (exists('DIFFICULTY_FINAL.jsonl')) {
     if (seen.has(row.questionUid)) fail('FINAL_DIFFICULTY_DUPLICATE_UID', { uid: row.questionUid });
     seen.add(row.questionUid);
     if (!inputByUid.has(row.questionUid) || !row.blindInputSha || ![1,2,3,4,5,'UNKNOWN'].includes(row.difficultyBucket)) fail('FINAL_DIFFICULTY_INVALID', { uid: row.questionUid });
+    if (consensusByUid.get(row.questionUid)?.reviewStatus === 'HOLD' && (row.difficultyBucket !== 'UNKNOWN' || row.reviewStatus !== 'HOLD')) fail('HELD_SOURCE_DIFFICULTY_NOT_UNKNOWN', { uid: row.questionUid });
     if (!['NORMAL','BORDERLINE_ACCEPTABLE','STRONG_CONFLICT','UNKNOWN'].includes(row.legacyLevelCompatibility)) fail('FINAL_DIFFICULTY_COMPATIBILITY_UNRESOLVED', { uid: row.questionUid });
     if (row.recheckRequired && !row.recheckReviewed) fail('MANDATORY_RECHECK_MISSING', { uid: row.questionUid });
   }
@@ -319,12 +328,20 @@ if (exists('DIFFICULTY_FINAL.jsonl')) {
 if (exists('WRITEBACK_RECEIPT.json')) {
   const writeback = json('WRITEBACK_RECEIPT.json');
   counts.writebackRows = writeback.changedQuestionCount;
-  if (writeback.changedQuestionCount !== input.length || writeback.writtenSourceSha256 !== sha(fs.readFileSync(currentSourcePath)) || writeback.protectedMutationCount !== 0 || writeback.nonMetadataMutationCount !== 0) fail('WRITEBACK_RECEIPT_MISMATCH');
+  counts.routeOutSkippedRows = writeback.routeOutSkippedCount ?? 0;
+  counts.holdSkippedRows = writeback.holdSkippedCount ?? 0;
+  const routeOutUids = [...consensusByUid.values()].filter(x => x.reviewStatus === 'ROUTE_OUT').map(x => x.questionUid).sort();
+  const holdUids = [...consensusByUid.values()].filter(x => x.reviewStatus === 'HOLD').map(x => x.questionUid).sort();
+  if (writeback.changedQuestionCount + counts.routeOutSkippedRows + counts.holdSkippedRows !== input.length || counts.routeOutSkippedRows !== routeOutUids.length || counts.holdSkippedRows !== holdUids.length || JSON.stringify([...(writeback.routeOutSkippedQuestionUids || [])].sort()) !== JSON.stringify(routeOutUids) || JSON.stringify([...(writeback.holdSkippedQuestionUids || [])].sort()) !== JSON.stringify(holdUids) || writeback.writtenSourceSha256 !== sha(fs.readFileSync(currentSourcePath)) || writeback.protectedMutationCount !== 0 || writeback.nonMetadataMutationCount !== 0) fail('WRITEBACK_RECEIPT_MISMATCH');
   const final = exists('DIFFICULTY_FINAL.jsonl') ? jsonl('DIFFICULTY_FINAL.jsonl') : [];
   const finalByUid = new Map(final.map(x => [x.questionUid, x]));
   for (const row of input) {
     const q = current[row.sourceOrdinal - 1], c = consensusByUid.get(row.questionUid), d = finalByUid.get(row.questionUid);
     if (!q || !c || !d) { fail('WRITEBACK_SOURCE_JOIN_MISMATCH', { uid: row.questionUid }); continue; }
+    if (c.reviewStatus === 'ROUTE_OUT' || c.reviewStatus === 'HOLD') {
+      if (JSON.stringify(q) !== JSON.stringify(original[row.sourceOrdinal - 1])) fail('NONPROPOSED_SOURCE_MUTATION', { uid: row.questionUid, status: c.reviewStatus });
+      continue;
+    }
     for (const field of ['standardUnitKey','subUnitKey','problemTypeKey','templateKey','integrationPattern','crossConceptKeys','conditionKeys']) if (JSON.stringify(q[field] ?? null) !== JSON.stringify(c[field] ?? null)) fail('WRITEBACK_SEMANTIC_FIELD_MISMATCH', { uid: row.questionUid, field });
     for (const field of ['difficultyBucket','difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility']) if (JSON.stringify(q[field] ?? null) !== JSON.stringify(d[field] ?? null)) fail('WRITEBACK_DIFFICULTY_FIELD_MISMATCH', { uid: row.questionUid, field });
   }

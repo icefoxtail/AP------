@@ -73,11 +73,21 @@ for (let ordinal = 1; ordinal <= blocks.length; ordinal++) {
   const source = input[ordinal - 1];
   const c = cByUid.get(source.questionUid), d = dByUid.get(source.questionUid), quality = qByUid.get(source.questionUid);
   if (!c || !d || !quality || source.sourceOrdinal !== ordinal || c.inputBundleSha !== source.inputBundleSha || d.blindInputSha === undefined) throw new Error(`UID/ledger join mismatch #${ordinal}`);
-  if (quality.disposition === 'SOURCE_BLOCKED') throw new Error(`Source-blocked item cannot be written #${ordinal}`);
+  const q = beforeBank[ordinal - 1];
+  if (c.reviewStatus === 'ROUTE_OUT') {
+    if (quality.metadataWritebackAllowed !== false || q.standardUnitKey !== c.standardUnitKey || q.subUnitKey !== c.subUnitKey) throw new Error(`Route-out source parent/writeback mismatch #${ordinal}`);
+    changes.push({ questionUid: source.questionUid, sourceOrdinal: ordinal, routeOutSkipped: true, l1Changed: false, l2Changed: false, metadataFieldsAdded: 0 });
+    continue;
+  }
+  if (c.reviewStatus === 'HOLD' || quality.disposition === 'SOURCE_BLOCKED') {
+    if (quality.metadataWritebackAllowed !== false) throw new Error(`Held source item must not be written #${ordinal}`);
+    changes.push({ questionUid: source.questionUid, sourceOrdinal: ordinal, holdSkipped: true, sourceBlocked: quality.disposition === 'SOURCE_BLOCKED', l1Changed: false, l2Changed: false, metadataFieldsAdded: 0 });
+    continue;
+  }
+  if (quality.disposition === 'SOURCE_BLOCKED' || quality.metadataWritebackAllowed === false) throw new Error(`Source-blocked item cannot be written #${ordinal}`);
   const l1 = masterByKey.get(c.standardUnitKey), l2 = masterByKey.get(c.subUnitKey);
   if (l1?.keyType !== 'standardUnitKey' || l2?.keyType !== 'subUnitKey' || l2.standardUnitKey !== c.standardUnitKey) throw new Error(`L1/L2 invalid #${ordinal}`);
   const block = lines.slice(blocks[ordinal - 1].start, blocks[ordinal - 1].end + 1);
-  const q = beforeBank[ordinal - 1];
   if (q.standardUnitKey !== c.standardUnitKey || q.subUnitKey !== c.subUnitKey) {
     setExisting(block, 'standardUnitKey', c.standardUnitKey);
     setExisting(block, 'standardUnit', l1.labelKo);
@@ -99,7 +109,7 @@ for (let ordinal = 1; ordinal <= blocks.length; ordinal++) {
     legacyLevelCompatibility: d.legacyLevelCompatibility
   });
   replacement.set(blocks[ordinal - 1].start, { end: blocks[ordinal - 1].end, lines: block });
-  changes.push({ questionUid: source.questionUid, sourceOrdinal: ordinal, l1Changed: q.standardUnitKey !== c.standardUnitKey, l2Changed: q.subUnitKey !== c.subUnitKey, metadataFieldsAdded: 9 });
+  changes.push({ questionUid: source.questionUid, sourceOrdinal: ordinal, routeOutSkipped: false, l1Changed: q.standardUnitKey !== c.standardUnitKey, l2Changed: q.subUnitKey !== c.subUnitKey, metadataFieldsAdded: 9 });
 }
 const resultLines = [];
 for (let i = 0; i < lines.length; i++) {
@@ -117,9 +127,11 @@ for (let i = 0; i < beforeBank.length; i++) {
     if (JSON.stringify(beforeBank[i][key] ?? null) !== JSON.stringify(afterBank[i][key] ?? null)) throw new Error(`Protected/non-metadata change #${i + 1} ${key}`);
   }
 }
-const receipt = { schemaVersion: 'm1-metadata-writeback-receipt-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, originalSourceSha256: sha(originalBytes), writtenSourceSha256: sha(Buffer.from(after)), questionCount: afterBank.length, changedQuestionCount: changes.length, l1ChangedCount: changes.filter(x => x.l1Changed).length, l2ChangedCount: changes.filter(x => x.l2Changed).length, protectedMutationCount: 0, nonMetadataMutationCount: 0, metadataOnly: true, canonicalStatus: 'BRANCH_CANDIDATE_PENDING_GLOBAL_COMPRESSION', changes };
+const routeOutSkippedQuestionUids = changes.filter(x => x.routeOutSkipped).map(x => x.questionUid);
+const holdSkippedQuestionUids = changes.filter(x => x.holdSkipped).map(x => x.questionUid);
+const receipt = { schemaVersion: 'm1-metadata-writeback-receipt-v1', batchNo, sourceArchiveFile: exam.sourceArchiveFile, originalSourceSha256: sha(originalBytes), writtenSourceSha256: sha(Buffer.from(after)), questionCount: afterBank.length, changedQuestionCount: changes.length - routeOutSkippedQuestionUids.length - holdSkippedQuestionUids.length, routeOutSkippedCount: routeOutSkippedQuestionUids.length, routeOutSkippedQuestionUids, holdSkippedCount: holdSkippedQuestionUids.length, holdSkippedQuestionUids, closureQuestionCount: changes.length, l1ChangedCount: changes.filter(x => x.l1Changed).length, l2ChangedCount: changes.filter(x => x.l2Changed).length, protectedMutationCount: 0, nonMetadataMutationCount: 0, metadataOnly: true, canonicalStatus: 'BRANCH_CANDIDATE_PENDING_GLOBAL_COMPRESSION', changes };
 if (!dryRun) {
   fs.writeFileSync(sourcePath, after, 'utf8');
   fs.writeFileSync(path.join(batchDir, 'WRITEBACK_RECEIPT.json'), JSON.stringify(receipt, null, 2) + '\n');
 }
-console.log(JSON.stringify({ batchNo, dryRun, questionCount: afterBank.length, l1ChangedCount: receipt.l1ChangedCount, l2ChangedCount: receipt.l2ChangedCount, protectedMutationCount: 0, sourceSha256: receipt.writtenSourceSha256 }, null, 2));
+console.log(JSON.stringify({ batchNo, dryRun, questionCount: afterBank.length, changedQuestionCount: receipt.changedQuestionCount, routeOutSkippedCount: receipt.routeOutSkippedCount, holdSkippedCount: receipt.holdSkippedCount, l1ChangedCount: receipt.l1ChangedCount, l2ChangedCount: receipt.l2ChangedCount, protectedMutationCount: 0, sourceSha256: receipt.writtenSourceSha256 }, null, 2));
