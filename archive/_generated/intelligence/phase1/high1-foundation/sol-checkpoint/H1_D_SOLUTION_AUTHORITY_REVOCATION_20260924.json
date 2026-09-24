@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPERSEDED_BY_USER_MASTER_INSTRUCTION",
+  "instruction": "D may consult only the original exam question: stem, choices, and figures. Official solution and answer materials are outside D's source-repair authority.",
+  "revertedJsFiles": [
+    {
+      "path": "archive/exams/original/high/h1/1mid/26_금당고_1학기_중간_고1_기출_c.js",
+      "affectedQueueIndexes": [510, 511, 512, 513],
+      "headAndWorktreeGitBlob": "9653fd486f6fd4c9c9737e2845dad70109a58785"
+    },
+    {
+      "path": "archive/exams/original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
+      "affectedQueueIndexes": [528, 529],
+      "headAndWorktreeGitBlob": "66bff08fdb2c5b0ac4cb52072d4cb268d32af338"
+    }
+  ],
+  "quarantinedLedgers": [
+    "H1_STAGEA_LUNA6_A_SOURCE_REPAIR_Q510_Q513.jsonl",
+    "H1_STAGEA_LUNA6_B_SOURCE_REPAIR_Q510_Q513.jsonl",
+    "H1_STAGEA_LUNA6_C_SOURCE_REPAIR_Q510_Q513_CONFLICTS.jsonl"
+  ],
+  "quarantinedSourceEvidence": [
+    "source-evidence/D-q510-q513/D-source-repair-ledger.md",
+    "source-evidence/D-q528-q529"
+  ],
+  "finalCandidateRule": "Exclude every quarantined ledger and any result whose sourceFingerprint differs from the restored live JS. Retain the evidence only as an audit record; do not count the revoked repairs as current source restoration.",
+  "currentSourceStatus": "ORIGINAL_JS_RESTORED; solution placeholders remain unresolved for correction protocol"
+}
