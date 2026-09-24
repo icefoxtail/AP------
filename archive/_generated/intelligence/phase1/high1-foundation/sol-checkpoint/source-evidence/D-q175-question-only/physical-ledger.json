@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "task": "D source audit, question-only, H1 queueIndex 175",
+  "status": "SOURCE_MATCH",
+  "disposition": "NO_JS_CHANGE",
+  "queueIndex": 175,
+  "questionUid": "qid_v1_3c1ddb54352fa7f1991e267286f57ce8a99bc3686555b82a1da572306f056e72",
+  "sourceIdentity": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js#6",
+  "targetJs": "archive/exams/original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
+  "sourceScope": "Original question PDF page only; full stem, conditions, real/complex domain declaration, score, and choices checked. No official answer or solution page inspected or used.",
+  "source": {
+    "pdf": {
+      "path": "D:\\기출\\1학기중간\\고1\\25 제일고+\\2025_제일고1_1중간.pdf",
+      "page": 2,
+      "printedPage": "2/6",
+      "sha256": "B801D969706564EDAE9B7FC941C627050A7FFA75D9D1F990FB165786BCC7BD00"
+    }
+  },
+  "itemBefore": {
+    "id": 6,
+    "questionType": "객관식",
+    "content": "$x+y=1, xy=1$일 때, $x^{5}+y^{5}$의 값은? [4.6점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 6,
+    "questionType": "객관식",
+    "content": "$x+y=1, xy=1$일 때, $x^{5}+y^{5}$의 값은? [4.6점]",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "sourceConfirmed": {
+    "stem": "x+y=1, xy=1일 때, x^5+y^5의 값은?",
+    "score": "4.6점",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "domainDeclaration": "No explicit real-number or complex-number domain is printed in q6 on the source question page."
+  },
+  "fieldDispositions": {
+    "content": "SOURCE_MATCH",
+    "domain": "SOURCE_MATCH_NO_EXPLICIT_REAL_OR_COMPLEX_DOMAIN",
+    "choices": "SOURCE_MATCH",
+    "answer": "NOT_INSPECTED_OR_CHANGED",
+    "solution": "NOT_INSPECTED_OR_CHANGED",
+    "metadata": "NOT_INSPECTED_OR_CHANGED"
+  },
+  "validation": {
+    "syntax": {
+      "status": "NOT_RUN_NO_EDIT"
+    },
+    "questionFieldSchema": {
+      "status": "PASS",
+      "checks": [
+        "q6 content includes both printed equations, requested expression, and score",
+        "q6 choices are exactly 1, 2, 3, 4, 5",
+        "source prints no explicit real/complex domain statement"
+      ]
+    },
+    "render": {
+      "status": "NOT_REQUESTED_NO_EDIT"
+    }
+  },
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q175-question-only/source-question-page-2.png",
+      "role": "Original question PDF page 2/6 render at 250 dpi",
+      "sha256": "FBB29327E7F18806B9D740112D8E294E812683D07C3D6315F662034D1657EC48"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q175-question-only/source-question-page-2-400dpi.png",
+      "role": "Original question PDF page 2/6 render at 400 dpi",
+      "sha256": "D752B57F3D4C586B7D394A093662A9E854EEDB8D48541B9548B1425DF2B6EF14"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q175-question-only/source-q6-detail.png",
+      "role": "Question 6 stem, domain cues, score, and choices crop",
+      "sha256": "A96851DA115E9F50E312B52FBFF27746BE815B5AF395A8E085F387FCF067CDB0"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  }
+}
