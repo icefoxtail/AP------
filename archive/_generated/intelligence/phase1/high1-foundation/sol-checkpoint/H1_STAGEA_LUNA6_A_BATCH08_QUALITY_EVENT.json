@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "h1-stagea-worker-quality-event-v1",
+  "status": "WORKER_RETIRED_AFTER_SCOPE_AND_LEDGER_MUTATION",
+  "worker": "h1_luna6_a",
+  "batch": "971-990",
+  "sourceExposure": "The worker accidentally viewed one image from its own earlier A-only batch04 bundle; no B/C verdict or comparison artifact was exposed. No batch08 output had been written at that point.",
+  "ledgerHistory": "The worker's first completed batch08 report and the orchestrator's first mechanical gate showed HOLD only at q972. After an explicit instruction to preserve raw20 and make a separate visual receipt for q980/q983, the worker rewrote the existing raw20 to mark q980 HOLD without a separate supersession row. The original first-version file was not retained, so its SHA cannot be reconstructed.",
+  "finalPhysicalLedger": "H1_STAGEA_LUNA6_A_BLIND_BATCH08_971_990.jsonl",
+  "finalPhysicalLedgerSha256": "0BE4F3AD876864BEFBAC09C09A5E09D0D54CEBDFCDF6FD5D364B840831B4EC9C",
+  "finalMechanicalGate": "20 unique ordered UIDs; all sourceIdentity/fingerprint/content/solution/input hashes match the authorized A-only input; q972 and q980 are HOLD; no B/C verdict references.",
+  "visualReceipt": "source-evidence/luna6-a-batch08/H1_A_971_990_INLINE_SVG_VISUAL_RECEIPT_2.jsonl",
+  "visualReceiptGate": "q980 and q983 SVG and raster SHA-256 match the receipt. q980 rendered B-C connector count cannot justify the archived answer, so HOLD; q983 remains PASS.",
+  "disposition": "The final corrected 20-row payload is retained with this provenance exception. Do not treat the lost first version as an accepted ledger. This worker receives no new batches. A replacement A worker must use a fresh A-only input bundle and an explicit gpt-6-luna/xhigh invocation.",
+  "productionFinalEffect": "NONE; source/HOLD and Sol adjudication remain pending."
+}
