@@ -1,48 +1,26 @@
 {
   "schemaVersion": 1,
-  "status": "POST_SOURCE_REPAIR_WORKING_RESOLUTION",
+  "status": "POST_SOURCE_CORRECTION_WORKING_RESOLUTION",
   "queueIndex": 599,
   "questionUid": "qid_v1_6c79454fc7a40b3688142b677112a76b316ef7a84cfe1810a6de5c7b648d59f4",
   "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#19",
   "branch": "meta-foundation-h1-preprocess-sol-review",
-  "basisHead": "67f851edbe9fe04b1ff7e86aa960b67597a1db2e",
-  "correctionScope": "q19 target polynomial only",
+  "basisHead": "bd4964c089f20e0b26ebe2e135f175fc48b35a97",
+  "correctionScope": "q19 answer and solution; printed cubic stem retained",
   "correctionBasis": {
-    "originalImageAvailable": false,
-    "gitHistoryEvidence": [
-      {
-        "ref": "a93cd5c2b814da25c9fcc77ed0ff6172dc046e19",
-        "targetPolynomial": "x^2-4x+a+b"
-      },
-      {
-        "ref": "39e916be157823445573b3634fcdaca6dc6a2d14",
-        "targetPolynomial": "x^2-4x+a+b"
-      },
-      {
-        "ref": "c307add0e6c3d42a37281759c24cf15082aa7d89",
-        "targetPolynomial": "x^2-4x+a+b"
-      },
-      {
-        "ref": "9943628a515f1145e27d287e34e5182afd5e5544",
-        "targetPolynomial": "x^2-4x+a+b"
-      },
-      {
-        "ref": "e881fd1f2b36416cb6464e8ebf32316b965d9b31",
-        "targetPolynomial": "x^2-4x+a+b"
-      }
-    ],
-    "note": "The restored parameterized quadratic is retained. Only the later target polynomial is reverted to the long-standing repository source that matches the unchanged answer and solution."
+    "originalImageAvailable": true,
+    "originalImagePath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q599-q1135-q1145-q1151-question-only/suncheon-girls-q19-exact-stem-crop.png",
+    "originalImageBlobSha": "8e413a571bb89c1298bef102831d1f7fbc7cfd48",
+    "printedTargetPolynomial": "x^3-4x^2+ax+b",
+    "supersedesCommit": "bd4964c089f20e0b26ebe2e135f175fc48b35a97",
+    "note": "The physical exam crop confirms the cubic stem. The prior history-based quadratic reversion was incorrect; retain the cubic and correct answer/solution instead."
   },
-  "sourceBefore": {
-    "sourceFingerprint": "c25948c990e522ce2be69a05fd30520ead82adeca8e2fad288ffb9675c288e73",
+  "sourceLineage": {
+    "preInterimFingerprint": "c25948c990e522ce2be69a05fd30520ead82adeca8e2fad288ffb9675c288e73",
+    "erroneousInterimFingerprint": "13994b1e69809ffeda6c1e4a245b2073f075637f38ae221f1042bb4bf31ec2e2",
+    "correctedFingerprint": "89e146bee2a80eec8306300a6b5658a905a34e5db0cec972ebcae20c1e65575f",
     "contentHash": "76dd0fe9beae21bee38926c8c77154fd5d5e725a4d50e8a95c4972d5b5e5f277",
-    "targetPolynomial": "x^3-4x^2+ax+b"
-  },
-  "sourceAfter": {
-    "sourceFingerprint": "13994b1e69809ffeda6c1e4a245b2073f075637f38ae221f1042bb4bf31ec2e2",
-    "contentHash": "30e3e4250691a4ab97d0f4f2e45e28fcc4d3ebcf8ce09b6afd263939a7321e92",
-    "solutionHash": "b273df62254be54d4f37cc52a6048488ce0fb1a5da2bd4a9135d29280c9e9dd8",
-    "targetPolynomial": "x^2-4x+a+b"
+    "solutionHash": "31ee1d843c0f4b172ddd31fdc4e08fc2254dd773264ad33f32f0878727eb288e"
   },
   "mathCheck": {
     "discriminantIdentity": "D/4=(a-2)k+(4-b)≡0",
@@ -50,12 +28,8 @@
       "a": 2,
       "b": 4
     },
-    "targetAfterSubstitution": "x^2-4x+6",
-    "roots": [
-      "2+sqrt(2)i",
-      "2-sqrt(2)i"
-    ],
-    "factorization": "(x-2-sqrt(2)i)(x-2+sqrt(2)i)",
+    "targetAfterSubstitution": "x^3-4x^2+2x+4",
+    "factorization": "(x-2)(x^2-2x-2)=(x-2)(x-1-sqrt(3))(x-1+sqrt(3))",
     "answerMatches": true,
     "solutionMatches": true
   },
@@ -71,10 +45,10 @@
     "reviewStatus": "PASS"
   },
   "assignmentReasons": {
-    "l3": "The decisive primary step is an identically-zero discriminant in free parameter k; this matches the existing H1 quadratic-discriminant working parent.",
-    "l4": "Reuse the existing qdisc discriminant-identity skeleton. The final factorization continuation does not justify splitting a new L4.",
-    "crossConcept": "Polynomial factorization is an essential secondary operation after the discriminant determines a,b. Discriminant itself is primary, so it is not duplicated as CrossConcept.",
-    "conditions": "The phrase 'for every real k' is intrinsic to the discriminant-identity skeleton and is not duplicated as a separate Condition."
+    "l3": "The all-real-k repeated-root condition is resolved by an identically-zero discriminant; this is the primary method.",
+    "l4": "Reuse the existing discriminant-identity skeleton. The downstream cubic factorization is not a reason to split a new L4.",
+    "crossConcept": "Factoring the resulting cubic is an explicit and essential secondary operation, so reuse CC_POLYNOMIAL_FACTORIZATION.",
+    "conditions": "The universal real-k statement is intrinsic to the discriminant-identity L4 and is not duplicated as a separate Condition."
   },
   "finality": {
     "taxonomyFinal": false,
