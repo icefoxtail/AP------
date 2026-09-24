@@ -14,9 +14,105 @@
     10,
     11,
     12,
-    13
+    13,
+    14
   ],
   "problemTypes": [
+    {
+      "problemTypeKey": "COUNT_THIRD_NUMBER_FROM_GCD_LCM",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1",
+      "representativeReason": "Prime-exponent minima/maxima constrain a third number, then distinctness removes two fixed values.",
+      "supportingQuestionUids": [
+        "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "problemTypeKey": "DIVISOR_MULTIPLE_BY_PRIME_EXPONENTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9",
+      "representativeReason": "A divisor has no new prime and no exponent exceeding N; a multiple has at least each exponent in N.",
+      "supportingQuestionUids": [
+        "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "problemTypeKey": "KTH_NUMBER_WITH_THREE_DISTINCT_PRIMES",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9cdef7dabe3516dd2cd6747c23c3cb93e1f16accc0cb97010ad4aee1bb61ad92",
+      "representativeReason": "Order natural numbers by size while requiring exactly three distinct prime divisors.",
+      "supportingQuestionUids": [
+        "qid_v1_9cdef7dabe3516dd2cd6747c23c3cb93e1f16accc0cb97010ad4aee1bb61ad92"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "problemTypeKey": "POWER_BASE_EXPONENT_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65",
+      "representativeReason": "Read the base and exponent from repeated multiplication, evaluate, then form the requested sum.",
+      "supportingQuestionUids": [
+        "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "problemTypeKey": "PRIME_IDENTIFICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443",
+      "representativeReason": "Choose the sole number greater than 1 with no divisors besides 1 and itself.",
+      "supportingQuestionUids": [
+        "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443"
+      ],
+      "l1Keys": [
+        "M1-01"
+      ],
+      "l2Keys": [
+        "M1-01-PRIME_FACTORIZATION"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_PROPERTY_JUDGMENT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -490,17 +586,20 @@
       "representativeReason": "목표는 주어진 정수 구간에서 특정 수와 서로소인 자연수의 개수를 세는 것이다.",
       "supportingQuestionUids": [
         "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
-        "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9"
+        "qid_v1_4555cc4a494be087f4dafe1bf7c6511a8303188434c8fee7dddf69b85c583fc9",
+        "qid_v1_164c620ea13ef9a65e047ee262ef8e9a7df560afc8cf9a5ebd0add4f93259b2a"
       ],
       "l1Keys": [
         "M1-01"
       ],
       "l2Keys": [
-        "M1-01-GCD_LCM"
+        "M1-01-GCD_LCM",
+        "M1-01-PRIME_FACTORIZATION"
       ],
       "sourceBatches": [
         1,
-        3
+        3,
+        14
       ]
     },
     {
@@ -589,7 +688,8 @@
       "representativeQuestionUid": "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
       "representativeReason": "The target is a signed value from equal-magnitude numbers with a given difference; opposite-number structure is decisive.",
       "supportingQuestionUids": [
-        "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+        "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
+        "qid_v1_5febd470aaa0329190ac999734c062a9d0e62bf4d59aabfc43a56f025a65b847"
       ],
       "l1Keys": [
         "M1-02"
@@ -598,7 +698,8 @@
         "M1-02-INTEGER_RATIONAL_NUMBER"
       ],
       "sourceBatches": [
-        4
+        4,
+        14
       ]
     },
     {
@@ -611,7 +712,8 @@
         "qid_v1_fb9bed8b3445e25cde4c9f65855f66c7308980d769d86e26da7607569ad49f6d",
         "qid_v1_2f3257280a8470181a81973e3d241d51086b31824f2ad04a682496573d2a5c51",
         "qid_v1_25636ec750043598635a0126412a7130115fc43914dbc31ef289b643d4b8206b",
-        "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb"
+        "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+        "qid_v1_f9e5f95bad562e5731c7a50c3d342d206f627e6e19bd70f81b6a7797d4a72782"
       ],
       "l1Keys": [
         "M1-01"
@@ -622,7 +724,8 @@
       "sourceBatches": [
         1,
         2,
-        4
+        4,
+        14
       ]
     },
     {
@@ -656,7 +759,8 @@
       "supportingQuestionUids": [
         "qid_v1_29286050acd6007c79e14d04a9f99ced3cbf322212cfb1047ba58ea51cd5381c",
         "qid_v1_9f472bd636d77e4196026bb15168aaf2f276e76b753aa7aee398ccda1f4ebd4d",
-        "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a"
+        "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a",
+        "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d"
       ],
       "l1Keys": [
         "M1-02"
@@ -667,7 +771,8 @@
       "sourceBatches": [
         1,
         3,
-        4
+        4,
+        14
       ]
     },
     {
@@ -2169,7 +2274,8 @@
       "representativeQuestionUid": "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
       "representativeReason": "The requested result is the set of true statements about primes and composites; the decisive strategy is to check each definition-based claim.",
       "supportingQuestionUids": [
-        "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a"
+        "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
+        "qid_v1_3315df648ddacba7f64f5def3cf1ede2a056f231b780235215d1cd25cc819676"
       ],
       "l1Keys": [
         "M1-01"
@@ -2178,7 +2284,8 @@
         "M1-01-PRIME_FACTORIZATION"
       ],
       "sourceBatches": [
-        1
+        1,
+        14
       ]
     },
     {
@@ -2226,7 +2333,8 @@
       "representativeQuestionUid": "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
       "representativeReason": "The target is the unique integer whose prime-factor structure differs; prime factorization directly classifies the options.",
       "supportingQuestionUids": [
-        "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381"
+        "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
+        "qid_v1_d3ef745a896e642249c37367c710188fafc6679dbedb316a613be75eb83bdcb5"
       ],
       "l1Keys": [
         "M1-01"
@@ -2235,7 +2343,8 @@
         "M1-01-PRIME_FACTORIZATION"
       ],
       "sourceBatches": [
-        1
+        1,
+        14
       ]
     },
     {
@@ -2407,7 +2516,8 @@
       "representativeReason": "유리수와 정수의 기본 성질 중 옳지 않은 진술을 복수 선택한다.",
       "supportingQuestionUids": [
         "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
-        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17",
+        "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
       ],
       "l1Keys": [
         "M1-02"
@@ -2417,7 +2527,8 @@
       ],
       "sourceBatches": [
         3,
-        4
+        4,
+        14
       ]
     },
     {
@@ -2429,7 +2540,8 @@
       "supportingQuestionUids": [
         "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
         "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
-        "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3"
+        "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+        "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08"
       ],
       "l1Keys": [
         "M1-02"
@@ -2439,7 +2551,8 @@
       ],
       "sourceBatches": [
         1,
-        2
+        2,
+        14
       ]
     },
     {
@@ -2468,7 +2581,8 @@
       "representativeQuestionUid": "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
       "representativeReason": "The target is the original number after an operation was performed incorrectly; inverse-operation reasoning recovers it.",
       "supportingQuestionUids": [
-        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf"
+        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
+        "qid_v1_4d4a77b01b0bef5c71d1f615a48f9710a929675fe91a01faa413dcfdba0e1aa9"
       ],
       "l1Keys": [
         "M1-02"
@@ -2477,7 +2591,8 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        2
+        2,
+        14
       ]
     },
     {
@@ -2654,7 +2769,9 @@
       "representativeReason": "The target is the sign tuple of three rational variables; product, difference, and quotient sign rules determine it.",
       "supportingQuestionUids": [
         "qid_v1_30823040895108b3b727e7e169e1ce127c777f2f3e89ecf21e0ffd8dacd84408",
-        "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a"
+        "qid_v1_8bebcc6498ee3c67f0f667c0026994659471a518190591839829c1e495f3507a",
+        "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c",
+        "qid_v1_d677e4d05ceda6281b9c7bafeb6bd266e076e4324de88801b7a067aa556b9783"
       ],
       "l1Keys": [
         "M1-02"
@@ -2664,7 +2781,8 @@
       ],
       "sourceBatches": [
         1,
-        4
+        4,
+        14
       ]
     },
     {
@@ -2676,7 +2794,8 @@
       "supportingQuestionUids": [
         "qid_v1_d55faa7a9477ef5bb4314ca9dc280dc967b764095d94a6f0225348a467232cb8",
         "qid_v1_ea0679c1bff8365296d389a47b4662aaa60ce5793cf0781ab19240a01d7c314e",
-        "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245"
+        "qid_v1_b182921ff94589b7a7c8f478025828f8c95b1658ac1d8cdecd716ba25c75b245",
+        "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e"
       ],
       "l1Keys": [
         "M1-02"
@@ -2686,7 +2805,8 @@
       ],
       "sourceBatches": [
         1,
-        3
+        3,
+        14
       ]
     },
     {
@@ -2696,7 +2816,9 @@
       "representativeQuestionUid": "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
       "representativeReason": "부호 있는 정수식의 값을 계산한다.",
       "supportingQuestionUids": [
-        "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6"
+        "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+        "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2",
+        "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5"
       ],
       "l1Keys": [
         "M1-02"
@@ -2705,7 +2827,8 @@
         "M1-02-RATIONAL_NUMBER_OPERATIONS"
       ],
       "sourceBatches": [
-        3
+        3,
+        14
       ]
     },
     {
@@ -2715,7 +2838,8 @@
       "representativeQuestionUid": "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb",
       "representativeReason": "The target is the greatest listed integer, determined by number-line order.",
       "supportingQuestionUids": [
-        "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb"
+        "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb",
+        "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8"
       ],
       "l1Keys": [
         "M1-02"
@@ -2724,7 +2848,27 @@
         "M1-02-INTEGER_RATIONAL_NUMBER"
       ],
       "sourceBatches": [
-        4
+        4,
+        14
+      ]
+    },
+    {
+      "problemTypeKey": "PT_SIGNED_SUBTRACTION_AS_OPPOSITE_MODEL",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c",
+      "representativeReason": "양수·음수 사물 모형에서 빼기는 반대수 더하기임을 추론하는 정수 연산 법칙 유형이다.",
+      "supportingQuestionUids": [
+        "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-RATIONAL_NUMBER_OPERATIONS"
+      ],
+      "sourceBatches": [
+        14
       ]
     },
     {
@@ -3096,9 +3240,98 @@
       "sourceBatches": [
         7
       ]
+    },
+    {
+      "problemTypeKey": "SIGNED_MONEY_CHANGE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965",
+      "representativeReason": "Represent an expenditure as a signed change relative to a positive receipt.",
+      "supportingQuestionUids": [
+        "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965"
+      ],
+      "l1Keys": [
+        "M1-02"
+      ],
+      "l2Keys": [
+        "M1-02-INTEGER_RATIONAL_NUMBER"
+      ],
+      "sourceBatches": [
+        14
+      ]
     }
   ],
   "templates": [
+    {
+      "templateKey": "CHOOSE_OPERATION_RULE_SHOWN_BY_SIGNED_STORY",
+      "parentProblemTypeKey": "PT_SIGNED_SUBTRACTION_AS_OPPOSITE_MODEL",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c",
+      "representativeReason": "The two matched outcomes demonstrate the subtraction rule for both signs.",
+      "supportingQuestionUids": [
+        "qid_v1_c4608f317aaa75873c8e5ebfa098aa10a9e22b21a221ccbba78cf9b5e3e3cd0c"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "CHOOSE_PAIR_GIVING_SMALLEST_PRODUCT",
+      "parentProblemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d",
+      "representativeReason": "The minimum is the negative product with greatest absolute value among the eligible pairs.",
+      "supportingQuestionUids": [
+        "qid_v1_51f43d0d30447f220563735079c98aeee8c6d2198dd7c270a5adc75a5364590d"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "CHOOSE_SIGN_FOR_SPENDING_AFTER_RECEIPT",
+      "parentProblemTypeKey": "SIGNED_MONEY_CHANGE",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965",
+      "representativeReason": "One positive and one negative monetary change are distinguished by direction.",
+      "supportingQuestionUids": [
+        "qid_v1_a7aed7ac66cd70f29e031dcb1dad929ee317808a36e0e31b73847c35c0ffe965"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "CLASSIFY_FACTORED_CANDIDATES_AS_DIVISORS_OR_MULTIPLES",
+      "parentProblemTypeKey": "DIVISOR_MULTIPLE_BY_PRIME_EXPONENTS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9",
+      "representativeReason": "Six factored candidates are sorted into divisor, multiple, or neither sets.",
+      "supportingQuestionUids": [
+        "qid_v1_8d04198dea7619382f870af43c6386a0a1b0281d8e4ad59b881758fa1ad993d9"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "COUNT_NATURAL_NUMBERS_WITH_FIXED_GCD_LCM",
+      "parentProblemTypeKey": "COUNT_THIRD_NUMBER_FROM_GCD_LCM",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1",
+      "representativeReason": "Enumerate divisors of the given LCM that are multiples of the GCD and remove duplicates of the two inputs.",
+      "supportingQuestionUids": [
+        "qid_v1_527e6fdb0ec675bec54c8c662bd43ee1cb06603b54490bf2a198a102d47c5bf1"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
     {
       "templateKey": "COUNT_SKEW_EDGES_FROM_REFERENCE_EDGE",
       "parentProblemTypeKey": "PT_M1_POLYHEDRON_SPATIAL_RELATIONS",
@@ -3128,6 +3361,48 @@
       ]
     },
     {
+      "templateKey": "DEFINE_TWO_SIGNED_VALUES_AND_SUBTRACT",
+      "parentProblemTypeKey": "PT_SIGNED_CHANGE_MODEL_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e",
+      "representativeReason": "One expression adds a negative change; the other subtracts a positive amount.",
+      "supportingQuestionUids": [
+        "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "FIND_INCORRECT_RATIONAL_MULTIPLICATION_DIVISION",
+      "parentProblemTypeKey": "PT_RATIONAL_PRODUCT_QUOTIENT_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+      "representativeReason": "Four expressions check signs or simple quotients; the fractional divisor in ⑤ exposes the error.",
+      "supportingQuestionUids": [
+        "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "FIND_THIRD_SMALLEST_THREE_PRIME_DIVISORS",
+      "parentProblemTypeKey": "KTH_NUMBER_WITH_THREE_DISTINCT_PRIMES",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_9cdef7dabe3516dd2cd6747c23c3cb93e1f16accc0cb97010ad4aee1bb61ad92",
+      "representativeReason": "Compare the next exponent increase of 30 with the smallest product using the next available prime.",
+      "supportingQuestionUids": [
+        "qid_v1_9cdef7dabe3516dd2cd6747c23c3cb93e1f16accc0cb97010ad4aee1bb61ad92"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
       "templateKey": "FIVE_TIP_TRIANGLES_TEN_BASE_ANGLES",
       "parentProblemTypeKey": "PT_M1_COMPOSITE_POLYGON_ANGLE_SUM",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -3139,6 +3414,34 @@
       ],
       "sourceBatches": [
         13
+      ]
+    },
+    {
+      "templateKey": "IDENTIFY_BASE_EXPONENT_POWER_THEN_SUM",
+      "parentProblemTypeKey": "POWER_BASE_EXPONENT_EVALUATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65",
+      "representativeReason": "The symbols a,b,c stand for base, exponent, and value of one power.",
+      "supportingQuestionUids": [
+        "qid_v1_20bc1c536faabe471edb7d41d8d2aa69db146281f1578434bee0377d124cea65"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "IDENTIFY_FALSE_INTEGER_INEQUALITY",
+      "parentProblemTypeKey": "PT_SIGNED_INTEGER_ORDER_SELECTION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8",
+      "representativeReason": "Four inequalities are checked; the negative-negative comparison is reversed.",
+      "supportingQuestionUids": [
+        "qid_v1_5c513a47b54c7958145e0ddb4233401d3653d322b0ade575a3d729f39a9e1ef8"
+      ],
+      "sourceBatches": [
+        14
       ]
     },
     {
@@ -3181,6 +3484,48 @@
       ],
       "sourceBatches": [
         13
+      ]
+    },
+    {
+      "templateKey": "POSITIVE_MINUS_LARGER_POSITIVE",
+      "parentProblemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+      "representativeReason": "One signed difference is evaluated directly.",
+      "supportingQuestionUids": [
+        "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "SELECT_INCORRECT_INTEGER_OPERATION_EQUATION",
+      "parentProblemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2",
+      "representativeReason": "Five displayed calculations are tested; one mishandles subtracting a positive integer.",
+      "supportingQuestionUids": [
+        "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
+      "templateKey": "SELECT_PRIME_FROM_FIVE_NUMBERS",
+      "parentProblemTypeKey": "PRIME_IDENTIFICATION",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443",
+      "representativeReason": "A direct prime test distinguishes one prime from four composites.",
+      "supportingQuestionUids": [
+        "qid_v1_a963094adf9788f1c9c9a4ccc3db7b332994cf9732ab623da1ece66e0ba10443"
+      ],
+      "sourceBatches": [
+        14
       ]
     },
     {
@@ -3305,10 +3650,12 @@
       "representativeQuestionUid": "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
       "representativeReason": "The template presents independent claims, including the exception that 2 is an even prime, and asks for their truth combination.",
       "supportingQuestionUids": [
-        "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a"
+        "qid_v1_7bc34e10bd0a5bfb541eb48706d88c5027f2c5caad1145d003206b53a8ae792a",
+        "qid_v1_3315df648ddacba7f64f5def3cf1ede2a056f231b780235215d1cd25cc819676"
       ],
       "sourceBatches": [
-        1
+        1,
+        14
       ]
     },
     {
@@ -3507,10 +3854,12 @@
       "representativeQuestionUid": "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
       "representativeReason": "유한 구간의 후보를 열거해 기준 수의 소인수 배수를 배제하여 서로소 개수를 세는 구조이다.",
       "supportingQuestionUids": [
-        "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f"
+        "qid_v1_b4475d3f516df4ae69b21504a246224731bfdd510be6b7ef1691d9072a0b062f",
+        "qid_v1_164c620ea13ef9a65e047ee262ef8e9a7df560afc8cf9a5ebd0add4f93259b2a"
       ],
       "sourceBatches": [
-        1
+        1,
+        14
       ]
     },
     {
@@ -5561,10 +5910,12 @@
       "representativeQuestionUid": "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
       "representativeReason": "The template compares integers by their distinct prime-divisor sets and selects one outlier.",
       "supportingQuestionUids": [
-        "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381"
+        "qid_v1_a562ab4c8b6d22f240fc71f9b2a3b84c348ee3d3101092001fce1a1f40c1e381",
+        "qid_v1_d3ef745a896e642249c37367c710188fafc6679dbedb316a613be75eb83bdcb5"
       ],
       "sourceBatches": [
-        1
+        1,
+        14
       ]
     },
     {
@@ -5778,6 +6129,21 @@
       ]
     },
     {
+      "templateKey": "TPL_PRODUCT_SIGN_AND_ORDER_FORCE_THREE_SIGNS",
+      "parentProblemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+      "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
+      "ownerPack": "MIDDLE1_CANDIDATE",
+      "representativeQuestionUid": "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c",
+      "representativeReason": "두 곱의 부호로 a,b의 반대 부호를 얻고 순서 조건으로 어느 쪽이 양수인지 정하는 반복 골격이다.",
+      "supportingQuestionUids": [
+        "qid_v1_8a18955416344b1b8817047fca7f27d3cb122e1d3c3e621bedb260fea403381c",
+        "qid_v1_d677e4d05ceda6281b9c7bafeb6bd266e076e4324de88801b7a067aa556b9783"
+      ],
+      "sourceBatches": [
+        14
+      ]
+    },
+    {
       "templateKey": "TPL_PYRAMID_VERTEX_EDGE_COUNT",
       "parentProblemTypeKey": "PT_POLYHEDRON_VERTEX_EDGE_COUNT",
       "status": "CANDIDATE_PENDING_GLOBAL_COMPRESSION",
@@ -5861,10 +6227,12 @@
       "representativeQuestionUid": "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
       "representativeReason": "The template states one value exceeds the other by a positive rational amount and asks for the lesser endpoint.",
       "supportingQuestionUids": [
-        "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+        "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f",
+        "qid_v1_5febd470aaa0329190ac999734c062a9d0e62bf4d59aabfc43a56f025a65b847"
       ],
       "sourceBatches": [
-        4
+        4,
+        14
       ]
     },
     {
@@ -5945,10 +6313,12 @@
       "representativeQuestionUid": "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
       "representativeReason": "The template contrasts an intended subtraction with an actual addition and supplies the erroneous result.",
       "supportingQuestionUids": [
-        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf"
+        "qid_v1_a6c7aa339c1cde9262257628f499a9d3da40cf1b836503baed70988ee62a5faf",
+        "qid_v1_4d4a77b01b0bef5c71d1f615a48f9710a929675fe91a01faa413dcfdba0e1aa9"
       ],
       "sourceBatches": [
-        2
+        2,
+        14
       ]
     },
     {
@@ -6073,10 +6443,12 @@
       "representativeQuestionUid": "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
       "representativeReason": "The template contrasts true prime-power products with expressions that use composite factors or incorrect exponents.",
       "supportingQuestionUids": [
-        "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb"
+        "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+        "qid_v1_f9e5f95bad562e5731c7a50c3d342d206f627e6e19bd70f81b6a7797d4a72782"
       ],
       "sourceBatches": [
-        4
+        4,
+        14
       ]
     },
     {
@@ -6130,11 +6502,13 @@
       "representativeReason": "정의·포함관계·0의 부호 지위를 진술별로 판단해 오답 진술을 고른다.",
       "supportingQuestionUids": [
         "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
-        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+        "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17",
+        "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
       ],
       "sourceBatches": [
         3,
-        4
+        4,
+        14
       ]
     },
     {
@@ -6962,8 +7336,8 @@
     }
   ],
   "counts": {
-    "candidateProblemTypes": 141,
-    "candidateTemplates": 254,
+    "candidateProblemTypes": 148,
+    "candidateTemplates": 268,
     "candidateCrossConcepts": 2,
     "activeProblemTypeReuse": 7,
     "activeTemplateReuse": 6,

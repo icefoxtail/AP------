@@ -31,7 +31,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PRIME_IDENTIFICATION",
+    "templateKey": "SELECT_PRIME_FROM_FIVE_NUMBERS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -64,7 +73,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PRIME_COMPOSITE_PROPERTY_CHECK",
+    "templateKey": "TPL_CHECK_PRIME_AND_COMPOSITE_CLAIMS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -96,7 +114,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "POWER_BASE_EXPONENT_EVALUATION",
+    "templateKey": "IDENTIFY_BASE_EXPONENT_POWER_THEN_SUM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 4,
@@ -127,7 +154,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_EXPONENT_AND_FACTORIZATION_STATEMENT_CHECK",
+    "templateKey": "TPL_SELECT_CORRECT_PRIME_POWER_FACTORIZATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -159,7 +195,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PRIME_FACTOR_SET_IDENTIFICATION",
+    "templateKey": "TPL_OUTLIER_BY_DISTINCT_PRIME_FACTORS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -191,7 +236,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "DIVISOR_MULTIPLE_BY_PRIME_EXPONENTS",
+    "templateKey": "CLASSIFY_FACTORED_CANDIDATES_AS_DIVISORS_OR_MULTIPLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -223,7 +277,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "KTH_NUMBER_WITH_THREE_DISTINCT_PRIMES",
+    "templateKey": "FIND_THIRD_SMALLEST_THREE_PRIME_DIVISORS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 8,
@@ -255,7 +318,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COPRIME_COUNT",
+    "templateKey": "TPL_COPRIME_COUNT_BOUNDED_INTERVAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -288,7 +360,16 @@ window.questionBank = [
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "COUNT_THIRD_NUMBER_FROM_GCD_LCM",
+    "templateKey": "COUNT_NATURAL_NUMBERS_WITH_FIXED_GCD_LCM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -320,7 +401,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "SIGNED_MONEY_CHANGE",
+    "templateKey": "CHOOSE_SIGN_FOR_SPENDING_AFTER_RECEIPT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -352,7 +442,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_RATIONAL_NUMBER_PROPERTY_JUDGMENT",
+    "templateKey": "TPL_SELECT_FALSE_RATIONAL_NUMBER_PROPERTIES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -418,7 +517,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+    "templateKey": "TPL_RECOVER_OPPOSITE_ENDPOINT_FROM_SEPARATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -450,7 +558,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGNED_INTEGER_ORDER_SELECTION",
+    "templateKey": "IDENTIFY_FALSE_INTEGER_INEQUALITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -482,7 +599,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+    "templateKey": "SELECT_INCORRECT_INTEGER_OPERATION_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -514,7 +640,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGNED_INTEGER_ARITHMETIC",
+    "templateKey": "POSITIVE_MINUS_LARGER_POSITIVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -546,7 +681,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGNED_CHANGE_MODEL_EVALUATION",
+    "templateKey": "DEFINE_TWO_SIGNED_VALUES_AND_SUBTRACT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -579,7 +723,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGNED_SUBTRACTION_AS_OPPOSITE_MODEL",
+    "templateKey": "CHOOSE_OPERATION_RULE_SHOWN_BY_SIGNED_STORY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -611,7 +764,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_RATIONAL_PRODUCT_QUOTIENT_EVALUATION",
+    "templateKey": "FIND_INCORRECT_RATIONAL_MULTIPLICATION_DIVISION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -643,7 +805,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+    "templateKey": "CHOOSE_PAIR_GIVING_SMALLEST_PRODUCT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -676,7 +847,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+    "templateKey": "TPL_PRODUCT_SIGN_AND_ORDER_FORCE_THREE_SIGNS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -729,7 +909,16 @@ window.questionBank = [
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_RECOVER_VALUE_FROM_OPERATION_ERROR",
+    "templateKey": "TPL_REVERSE_INCORRECT_ADD_FOR_SUBTRACT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -755,6 +944,15 @@ window.questionBank = [
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS",
+    "templateKey": "TPL_PRODUCT_SIGN_AND_ORDER_FORCE_THREE_SIGNS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   }
 ];
