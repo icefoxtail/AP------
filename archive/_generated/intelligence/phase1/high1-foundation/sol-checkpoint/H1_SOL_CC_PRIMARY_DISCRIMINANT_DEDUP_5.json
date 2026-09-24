@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "field": "crossConcepts",
+  "primaryL3": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "canonicalDecision": [],
+  "rule": "A CrossConcept must be an additional concept outside the primary L3/L4 decisive method. CC_DISCRIMINANT duplicates a discriminant-primary item; CC_INEQUALITY_QUADRATIC names the target/primary quadratic inequality rather than an independent extra method in these five items.",
+  "items": [
+    {
+      "queueIndex": 699,
+      "questionUid": "qid_v1_48bb9e68efddd957595a6799452fc49033d3966e3b4481b65338261c11c5552b",
+      "sourceFingerprint": "20fd3d52e67ac9a4861d677d18aab0ce1907a9a02851101cdd7cdec935574a2c",
+      "reason": "The upward quadratic is nonnegative for all real x exactly when D≤0. That discriminant test is the primary method itself; no second canonical concept enters the decisive step."
+    },
+    {
+      "queueIndex": 708,
+      "questionUid": "qid_v1_95394182bf16c0f0efaef71becb9d3b1021968e272aa95f47d3db39f20f306a7",
+      "sourceFingerprint": "698d2c3e0086d7c9144230237c99a37f8c204d0a0904990849ac32d95481d8f2",
+      "reason": "Existence of negative values is converted to D>0 after a sign change. The sign condition and discriminant calculation form the single primary quadratic test, not a separate CrossConcept."
+    },
+    {
+      "queueIndex": 723,
+      "questionUid": "qid_v1_3e7641b40cd484cb3debf673c554019bea59cdcf36beb093f32f7d03361f7f59",
+      "sourceFingerprint": "f0dbd73682a7e543a1437eeab60b599c66919148c35dac5b0025bb216ea76eb0",
+      "reason": "The two requested root/sign cases use D=0 and D≤0 on the same quadratic. Their distinction is a parameter condition within the primary discriminant method."
+    },
+    {
+      "queueIndex": 736,
+      "questionUid": "qid_v1_decbe0b5c4578707b7e857083fddbb78b2cc4fbfb98761b7529105c24d3fdf9e",
+      "sourceFingerprint": "cadfdd226845af2a0a75b7b86111e82a67cfd33530fc57e29c90325a55543d78",
+      "reason": "A positive quadratic inequality with no solutions is rewritten as global nonpositivity and checked by leading coefficient plus D. Both checks belong to the primary quadratic-discriminant classification; its separate IntegrationPattern remains under Sol review."
+    },
+    {
+      "queueIndex": 759,
+      "questionUid": "qid_v1_b21e466f810a0f2290dee4d4b24ad0ffb7a976c908e4136e56f243f5124e6177",
+      "sourceFingerprint": "9a7896b80c2458eb1890474b6c128924c5fb5280e8e690292764bcfb7a01d1e1",
+      "reason": "Each statement is classified by a repeated-root discriminant and strict-versus-inclusive endpoint. Endpoint rigor is a condition of the same primary test, not an additional CrossConcept."
+    }
+  ],
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}
