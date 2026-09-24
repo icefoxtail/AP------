@@ -144,9 +144,19 @@ if (exists('AB_COMPARISON.jsonl') && exists('CONFLICT_INPUT.jsonl')) {
     if (!conflictSet.has(row.questionUid) || JSON.stringify(row) !== JSON.stringify(inputByUid.get(row.questionUid))) fail('CONFLICT_INPUT_NOT_BLIND_SOURCE_SUBSET', { uid: row.questionUid });
   }
 } else if (exists('LUNA_A.jsonl') && exists('LUNA_B.jsonl')) fail('AB_COMPARISON_NOT_FROZEN');
+if (exists('B10_C_SCOPE_DELTA.json')) {
+  const delta = json('B10_C_SCOPE_DELTA.json');
+  const oldBytes = fs.readFileSync(path.join(batchDir, 'CONFLICT_INPUT_PRE_BASELINE.jsonl'));
+  const currentBytes = fs.readFileSync(path.join(batchDir, 'CONFLICT_INPUT.jsonl'));
+  const oldRows = jsonl('CONFLICT_INPUT_PRE_BASELINE.jsonl');
+  const currentRows = jsonl('CONFLICT_INPUT.jsonl');
+  const excluded = oldRows.filter(x => !currentRows.some(y => y.questionUid === x.questionUid)).map(x => x.sourceOrdinal).sort((a,b) => a-b);
+  if (delta.batchNo !== batchNo || sha(oldBytes) !== delta.oldConflictInputSha256 || sha(currentBytes) !== delta.newConflictInputSha256 || delta.oldConflictCount !== oldRows.length || delta.newConflictCount !== currentRows.length || JSON.stringify(excluded) !== JSON.stringify([...delta.excludedOrdinals].sort((a,b) => a-b)) || delta.oldCReviewedAccepted !== 0 || currentRows.length !== conflictSet.size) fail('C_SCOPE_BASELINE_DELTA_INVALID');
+}
 if (exists('CONFLICT_C.jsonl')) {
-  const cWorker = modelLog.workers.find(x => x.workerName === '/root/m1_conflict_c' && x.batchAssignments?.includes(batchNo));
-  if (!cWorker || !cWorker.modelVerified || cWorker.actualModel !== 'gpt-6-luna' || cWorker.actualReasoningEffort !== 'xhigh') fail('MODEL_PINNING_UNVERIFIED', { role: 'C' });
+  const cWorkers = modelLog.workers.filter(x => x.workerName.startsWith('/root/m1_conflict_c') && x.batchAssignments?.includes(batchNo));
+  const cWorker = cWorkers[0];
+  if (cWorkers.length !== 1 || !cWorker?.modelVerified || cWorker.actualModel !== 'gpt-6-luna' || cWorker.actualReasoningEffort !== 'xhigh' || cWorker.blindInputVerified === false) fail('MODEL_PINNING_UNVERIFIED', { role: 'C', assignmentCount: cWorkers.length });
   const cRows = jsonl('CONFLICT_C.jsonl');
   counts.CReviewed = cRows.length;
   const seen = new Set();
@@ -158,6 +168,10 @@ if (exists('CONFLICT_C.jsonl')) {
     if (!source || row.inputBundleSha !== source.inputBundleSha || row.contentHash !== source.contentHash || row.solutionHash !== source.solutionHash) fail('WORKER_PROVENANCE_MISMATCH', { role: 'C', uid: row.questionUid });
     for (const field of requiredSemanticFields) if (!Object.hasOwn(row, field) || (field !== 'sourceIssue' && (row[field] === null || row[field] === ''))) fail('MISSING_SEMANTIC_EVIDENCE', { role: 'C', uid: row.questionUid, field });
     if (!Array.isArray(row.conditionKeys) || !Array.isArray(row.conditionReasons) || row.conditionKeys.length !== row.conditionReasons.length) fail('CONDITION_REASON_MISMATCH', { role: 'C', uid: row.questionUid });
+    if (batchNo >= 10) {
+      if (typeof row.l1L2Conflict !== 'boolean' || (row.l1L2Conflict && !String(row.l1L2ConflictReason || '').trim())) fail('C_L1_L2_CONFLICT_EVIDENCE_MISSING', { uid: row.questionUid });
+      if (row.l1L2Conflict === false && (row.standardUnitKey !== source.currentL1 || row.subUnitKey !== source.currentL2)) fail('C_L1_L2_BASELINE_DEVIATION_UNDECLARED', { uid: row.questionUid });
+    }
   }
   if (seen.size !== conflictSet.size) fail('C_COVERAGE_MISMATCH', { expected: conflictSet.size, actual: seen.size });
 } else counts.CReviewed = 0;
@@ -303,8 +317,9 @@ if (exists('DIFFICULTY_INPUT.jsonl')) {
   if (exists('DIFFICULTY.jsonl')) {
     const dRows = jsonl('DIFFICULTY.jsonl');
     const dByUid = new Map(dInput.map(x => [x.questionUid, x]));
-    const worker = modelLog.workers.find(x => x.workerName === '/root/m1_difficulty_blind' && x.batchAssignments?.includes(batchNo));
-    if (!worker || !worker.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh') fail('DIFFICULTY_MODEL_UNVERIFIED');
+    const difficultyWorkers = modelLog.workers.filter(x => x.workerName.startsWith('/root/m1_difficulty_blind') && x.workerName !== '/root/m1_difficulty_blind_repair' && x.batchAssignments?.includes(batchNo));
+    const worker = difficultyWorkers[0];
+    if (difficultyWorkers.length !== 1 || !worker?.modelVerified || worker.actualModel !== 'gpt-6-luna' || worker.actualReasoningEffort !== 'xhigh' || worker.blindInputVerified === false) fail('DIFFICULTY_MODEL_UNVERIFIED', { assignmentCount: difficultyWorkers.length });
     counts.difficultyReviewed = dRows.length;
     if (dRows.length !== input.length) fail('DIFFICULTY_COVERAGE_MISMATCH');
     const seen = new Set();

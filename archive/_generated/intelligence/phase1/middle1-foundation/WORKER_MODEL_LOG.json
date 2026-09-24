@@ -103,7 +103,12 @@
         7,
         8,
         9
-      ]
+      ],
+      "attemptedBatches": [
+        10
+      ],
+      "retiredAfterBatch": 9,
+      "retirementReason": "B10 initial 13-UID C input preceded user L1/L2-baseline correction; C read old input but wrote no ledger and accepted reviewed count0. Fresh C replacement receives revised 11-UID conflict input only."
     },
     {
       "workerId": "01a0d13d-f37f-79b0-8165-544a39c2163c",
@@ -158,7 +163,8 @@
       "modelVerified": true,
       "semanticInputVerified": true,
       "batchAssignments": [
-        9
+        9,
+        10
       ],
       "replacementFor": "/root/m1_semantic_a_v3",
       "verificationSource": "Local Codex session world_state and turn_context immediately after spawn"
@@ -176,6 +182,51 @@
         9
       ],
       "necessity": "Fresh blind targeted repair for B09 q1/q3 first-pass cross-UID difficulty evidence defect after original blind freeze",
+      "verificationSource": "Local Codex session turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d368-e50f-7ae2-9a0d-1a84f85fdae2",
+      "workerName": "/root/m1_semantic_b_v3",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "semanticInputVerified": true,
+      "batchAssignments": [
+        10
+      ],
+      "replacementFor": "/root/m1_semantic_b_v2",
+      "verificationSource": "Local Codex session turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d3a7-3603-7e22-b59c-c005cc40a2cf",
+      "workerName": "/root/m1_conflict_c_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        10
+      ],
+      "replacementFor": "/root/m1_conflict_c",
+      "verificationSource": "Local Codex session turn_context immediately after spawn"
+    },
+    {
+      "workerId": "01a0d3bc-1ec9-70b2-842b-b3674a86bd24",
+      "workerName": "/root/m1_difficulty_blind_v2",
+      "requestedModel": "gpt-6-luna",
+      "requestedReasoningEffort": "xhigh",
+      "actualModel": "gpt-6-luna",
+      "actualReasoningEffort": "xhigh",
+      "modelVerified": true,
+      "blindInputVerified": true,
+      "batchAssignments": [
+        10
+      ],
+      "replacementFor": "/root/m1_difficulty_blind",
       "verificationSource": "Local Codex session turn_context immediately after spawn"
     }
   ]
