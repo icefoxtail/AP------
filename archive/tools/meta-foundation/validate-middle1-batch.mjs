@@ -151,7 +151,8 @@ if (exists('B_SCHEMA_CORRECTION_RECEIPT.json')) {
 let workerQualityClosure = true;
 const qualityScopes = [
   { file: 'WORKER_QUALITY_REJECTIONS.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_01_09.jsonl', ledgerFile: 'LUNA_A.jsonl' },
-  { file: 'WORKER_QUALITY_REJECTION_B.json', role: 'B', oldFile: 'LUNA_B_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_B_REVISION_03.jsonl', ledgerFile: 'LUNA_B.jsonl' }
+  { file: 'WORKER_QUALITY_REJECTION_B.json', role: 'B', oldFile: 'LUNA_B_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_B_REVISION_03.jsonl', ledgerFile: 'LUNA_B.jsonl' },
+  { file: 'WORKER_QUALITY_REJECTION_A_B08.json', role: 'A', oldFile: 'LUNA_A_PRE_CORRECTION.jsonl', revisionFile: 'LUNA_A_REVISION_12.jsonl', reviewInputFile: 'A_REVIEW_INPUT_12.jsonl', ledgerFile: 'LUNA_A.jsonl' }
 ];
 counts.workerQualityRejectedUidCount = 0;
 for (const scope of qualityScopes.filter(x => exists(x.file))) {
@@ -173,6 +174,18 @@ for (const scope of qualityScopes.filter(x => exists(x.file))) {
     if (sha(corrected) !== rejection.correctedLedgerSha256 || sha(old) !== rejection.oldLedgerSha256 || revision.length !== rejectedCount) {
       fail('WORKER_QUALITY_CORRECTION_PROVENANCE_MISMATCH', { worker: scope.role });
       workerQualityClosure = false;
+    }
+    if (rejection.earlyDraftFile && sha(fs.readFileSync(path.join(batchDir, rejection.earlyDraftFile))) !== rejection.earlyDraftSha256) {
+      fail('WORKER_QUALITY_EARLY_DRAFT_PROVENANCE_MISMATCH', { worker: scope.role });
+      workerQualityClosure = false;
+    }
+    if (scope.reviewInputFile) {
+      const reviewInputBytes = fs.readFileSync(path.join(batchDir, scope.reviewInputFile));
+      const reviewInput = jsonl(scope.reviewInputFile);
+      if (sha(reviewInputBytes) !== rejection.reviewInputSha256 || reviewInput.length !== rejectedCount || reviewInput.some(row => !inputByUid.has(row.questionUid) || JSON.stringify(row) !== JSON.stringify(inputByUid.get(row.questionUid)))) {
+        fail('WORKER_QUALITY_ISOLATED_INPUT_MISMATCH', { worker: scope.role });
+        workerQualityClosure = false;
+      }
     }
     const rejectedSet = new Set(rejection.rejectedQuestionUids);
     for (const row of revision) {
