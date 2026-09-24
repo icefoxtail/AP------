@@ -12,39 +12,49 @@ const manifest = read('H1_POLY_DIVISION_REMAINING_67.jsonl');
 const a = [1, 2, 3, 4].flatMap(n => read(`H1_A2_POLY_REMAINING_BATCH${n}_${n === 4 ? 7 : 20}.jsonl`));
 const b = [1, 2, 3, 4].flatMap(n => read(`H1_B_POLY_REMAINING_BATCH${n}_${n === 4 ? 7 : 20}.jsonl`));
 const c = [...read('H1_C_POLY_REMAINING_BATCH2_CONFLICTS5.jsonl'),
-  ...read('H1_C2_POLY_OTHER_PARENT_CONFLICTS5.jsonl'), one('H1_C2_Q026_POST_D.jsonl')];
+  ...read('H1_C2_POLY_OTHER_PARENT_CONFLICTS5.jsonl'), one('H1_C2_Q026_POST_D.jsonl'),
+  one('H1_C2_Q087_POST_D_RAW.jsonl')];
 const cByUid = new Map(c.map(row => [row.questionUid, row]));
-const postD = { A: one('H1_A2_Q026_POST_D.jsonl'), B: one('H1_B_Q026_POST_D.jsonl') };
+const postD = { 26: { A: one('H1_A2_Q026_POST_D.jsonl'), B: one('H1_B_Q026_POST_D.jsonl') },
+  87: { A: one('H1_A2_Q087_STAGEA_POST_D_RAW.jsonl'), B: one('H1_B_Q087_STAGEA_POST_D_RAW.jsonl') } };
 const q26D = JSON.parse(fs.readFileSync(path.join(checkpoint, 'source-evidence/D-q26-question-only/physical-ledger.json'), 'utf8'));
+const q87D = JSON.parse(fs.readFileSync(path.join(checkpoint, 'source-evidence/D-q87-question-only/physical-ledger.json'), 'utf8'));
 const q72Sol = JSON.parse(fs.readFileSync(path.join(dir, 'H1_SOL_Q072_NO_NEW_L3_DIRECT_REMAINDER_READ.json'), 'utf8'));
-if (manifest.length !== 67 || a.length !== 67 || b.length !== 67 || c.length !== 11 || cByUid.size !== 11)
+if (manifest.length !== 67 || a.length !== 67 || b.length !== 67 || c.length !== 12 || cByUid.size !== 12)
   throw new Error('remaining family reviewer coverage mismatch');
-if (q26D.queue?.queueIndex !== 26 || q26D.queue?.questionUid !== postD.A.questionUid
-  || q26D.queue?.sourceIdentity !== postD.A.sourceIdentity)
+if (q26D.queue?.queueIndex !== 26 || q26D.queue?.questionUid !== postD[26].A.questionUid
+  || q26D.queue?.sourceIdentity !== postD[26].A.sourceIdentity)
   throw new Error('q26 D ledger identity mismatch');
+if (q87D.queueIndex !== 87 || q87D.questionUid !== postD[87].A.questionUid
+  || q87D.sourceIdentity !== postD[87].A.sourceIdentity
+  || q87D.queue?.sourceFingerprintAfter !== postD[87].A.sourceFingerprint)
+  throw new Error('q87 D ledger identity/source mismatch');
 const parent = row => row.curriculumDraftL3?.parentLabelKo ?? row.curriculumL3?.parentLabelKo
   ?? row.curriculumDraftL3Parent?.parentLabelKo ?? row.l3?.draftParentLabelKo
+  ?? row.L3?.parentLabelKo ?? row.L3?.boundedCandidate ?? row.l3?.labelKo
   ?? row.parentLabelKo ?? null;
 const parentReason = row => row.curriculumDraftL3?.reason ?? row.curriculumL3?.reason
   ?? row.curriculumDraftL3Parent?.reason ?? row.l3?.draftParentReason
-  ?? row.parentReason ?? null;
+  ?? row.L3?.reason ?? row.l3?.reason ?? row.parentReason ?? null;
 const status = row => row.reviewStatus ?? row.status ?? row.verdict ?? null;
-const l4 = row => row.repeatableL4?.skeleton ?? row.l4?.skeleton ?? row.tentativeL4Skeleton ?? row.l4Skeleton ?? null;
-const l4Reason = row => row.repeatableL4?.reason ?? row.l4?.reason ?? row.tentativeL4Reason ?? row.l4Reason ?? null;
+const l4 = row => row.repeatableL4?.skeleton ?? row.l4?.skeleton ?? row.L4?.skeleton
+  ?? row.L4Skeleton ?? row.tentativeL4Skeleton ?? row.l4Skeleton ?? null;
+const l4Reason = row => row.repeatableL4?.reason ?? row.l4?.reason ?? row.L4?.reason
+  ?? row.noSeparate?.reason ?? row.tentativeL4Reason ?? row.l4Reason ?? null;
 const idKeys = ['queueIndex', 'questionUid', 'sourceIdentity', 'sourceFingerprint',
   'contentHash', 'solutionHash', 'inputBundleSha', 'sourceFileSha256'];
 const out = [];
 for (let i = 0; i < 67; i++) {
-  const old = manifest[i], x = old.queueIndex === 26 ? postD.A : a[i], y = old.queueIndex === 26 ? postD.B : b[i];
+  const old = manifest[i], x = postD[old.queueIndex]?.A ?? a[i], y = postD[old.queueIndex]?.B ?? b[i];
   if (x.queueIndex !== old.queueIndex || y.queueIndex !== old.queueIndex
     || x.questionUid !== old.questionUid || y.questionUid !== old.questionUid
     || x.sourceIdentity !== old.sourceIdentity || y.sourceIdentity !== old.sourceIdentity)
     throw new Error(`sample identity mismatch row ${i}`);
   for (const key of idKeys) if (!x[key] || x[key] !== y[key]) throw new Error(`A2/B ${key} mismatch q${old.queueIndex}`);
-  if (old.queueIndex !== 26 && old.sourceFingerprint !== x.sourceFingerprint)
+  if (![26, 87].includes(old.queueIndex) && old.sourceFingerprint !== x.sourceFingerprint)
     throw new Error(`unexpected source fingerprint drift q${old.queueIndex}`);
-  if (old.queueIndex === 26 && old.sourceFingerprint === x.sourceFingerprint)
-    throw new Error('q26 source restoration not reflected in current verdicts');
+  if ([26, 87].includes(old.queueIndex) && old.sourceFingerprint === x.sourceFingerprint)
+    throw new Error(`q${old.queueIndex} source restoration not reflected in current verdicts`);
   for (const [side, row] of [['A2', x], ['B', y]]) {
     if (!['PASS', 'HOLD'].includes(status(row)) || !parent(row) || !parentReason(row)
       || !(row.sourceEvidence ?? row.sourceMathEvidence) || !(row.solutionEvidence ?? row.solutionMathEvidence)
@@ -90,14 +100,18 @@ for (let i = 0; i < 67; i++) {
     workingReviewStatus: workingStatus, reviewStatusProvenance: statusProvenance,
     l4SkeletonEvidence: { a2: l4(x), b: l4(y), c: z ? l4(z) : null },
     evidenceFiles: { a2: old.queueIndex === 26 ? 'H1_A2_Q026_POST_D.jsonl'
+      : old.queueIndex === 87 ? 'H1_A2_Q087_STAGEA_POST_D_RAW.jsonl'
       : `H1_A2_POLY_REMAINING_BATCH${i < 20 ? '1_20' : i < 40 ? '2_20' : i < 60 ? '3_20' : '4_7'}.jsonl`,
       b: old.queueIndex === 26 ? 'H1_B_Q026_POST_D.jsonl'
+        : old.queueIndex === 87 ? 'H1_B_Q087_STAGEA_POST_D_RAW.jsonl'
         : `H1_B_POLY_REMAINING_BATCH${i < 20 ? '1_20' : i < 40 ? '2_20' : i < 60 ? '3_20' : '4_7'}.jsonl`,
       c: z ? (old.queueIndex === 26 ? 'H1_C2_Q026_POST_D.jsonl'
+        : old.queueIndex === 87 ? 'H1_C2_Q087_POST_D_RAW.jsonl'
         : [98, 102, 123, 136, 158].includes(old.queueIndex) ? 'H1_C_POLY_REMAINING_BATCH2_CONFLICTS5.jsonl'
           : 'H1_C2_POLY_OTHER_PARENT_CONFLICTS5.jsonl') : null,
       sol: old.queueIndex === 72 ? 'H1_SOL_Q072_NO_NEW_L3_DIRECT_REMAINDER_READ.json' : null },
     q26SourceRestoration: old.queueIndex === 26 ? 'source-evidence/D-q26-question-only/physical-ledger.json' : null,
+    q87SourceRestoration: old.queueIndex === 87 ? 'source-evidence/D-q87-question-only/physical-ledger.json' : null,
     activeCanonicalPromotion: false, l4Final: false });
 }
 if (new Set(out.map(row => row.questionUid)).size !== 67) throw new Error('duplicate remaining UID');
@@ -109,7 +123,8 @@ const summary = { schemaVersion: 1, status: 'WORKING_L3_L4_BOUNDARY_NOT_FINAL',
   twoOfThreeParent: out.filter(row => row.parentProvenance === 'LUNA_2_OF_3_CONSENSUS').length,
   solDirectParent: out.filter(row => row.parentProvenance === 'SOL_DIRECT_ADJUDICATION').length,
   parentCounts: counts, workingHoldQueueIndexes: out.filter(row => row.workingReviewStatus === 'HOLD').map(row => row.queueIndex),
-  q26PostDSourceSupersession: true, rejectedWorkerOutputsUsed: 0, activeCanonicalPromotion: false, l4Final: false };
+  q26PostDSourceSupersession: true, q87PostDSourceSupersession: true,
+  rejectedWorkerOutputsUsed: 0, activeCanonicalPromotion: false, l4Final: false };
 fs.writeFileSync(path.join(dir, 'H1_POLY_DIVISION_REMAINING_WORKING_67.jsonl'), out.map(row => JSON.stringify(row)).join('\n') + '\n');
 fs.writeFileSync(path.join(dir, 'H1_POLY_DIVISION_REMAINING_WORKING_67_SUMMARY.json'), JSON.stringify(summary, null, 2) + '\n');
 console.log(JSON.stringify(summary, null, 2));

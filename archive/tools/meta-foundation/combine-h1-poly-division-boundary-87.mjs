@@ -6,17 +6,21 @@ import path from 'node:path';
 const checkpoint = path.join(process.cwd(), 'archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint');
 const dir = path.join(checkpoint, 'poly-division-boundary');
 const read = file => fs.readFileSync(path.join(dir, file), 'utf8').trim().split(/\r?\n/).map(JSON.parse);
-const sample = read('H1_POLY_DIVISION_L3_L4_BOUNDARY_WORKING_20.jsonl');
+const sample = read('H1_POLY_DIVISION_BOUNDARY_WORKING_20_CURRENT.jsonl');
 const remaining = read('H1_POLY_DIVISION_REMAINING_WORKING_67.jsonl');
-const stage = fs.readFileSync(path.join(checkpoint, 'H1_STAGEA_WORKING_RELATIONAL_CANDIDATE_1170.jsonl'), 'utf8')
-  .trim().split(/\r?\n/).map(JSON.parse);
-if (sample.length !== 20 || remaining.length !== 67 || stage.length !== 1170)
-  throw new Error('family or current Stage A coverage mismatch');
-const stageByUid = new Map(stage.map(row => [row.questionUid, row]));
+const first50 = JSON.parse(fs.readFileSync(path.join(checkpoint,
+  'H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json'), 'utf8'));
+const rest = JSON.parse(fs.readFileSync(path.join(checkpoint,
+  'H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json'), 'utf8'));
+const currentRows = [...first50.rows, ...rest.rows];
+if (sample.length !== 20 || remaining.length !== 67 || currentRows.length !== 1170)
+  throw new Error('family or current A/B comparison coverage mismatch');
+const currentByUid = new Map(currentRows.map(row => [row.questionUid, row]));
 const out = [...sample, ...remaining].map(row => {
-  const current = stageByUid.get(row.questionUid);
+  const current = currentByUid.get(row.questionUid);
   if (!current || current.queueIndex !== row.queueIndex || current.sourceIdentity !== row.sourceIdentity
-    || current.sourceFingerprint !== row.sourceFingerprint) throw new Error(`Stage A identity/fingerprint drift q${row.queueIndex}`);
+    || current.currentSourceFingerprint !== row.sourceFingerprint)
+    throw new Error(`current A/B identity/fingerprint drift q${row.queueIndex}`);
   const parent = row.selectedDraftL3ParentLabelKo;
   if (!['다항식의 나눗셈', '나머지정리', '인수정리', '항등식'].includes(parent))
     throw new Error(`unapproved draft parent q${row.queueIndex}`);
@@ -40,8 +44,8 @@ const parentCounts = Object.fromEntries(['다항식의 나눗셈', '나머지정
   .map(label => [label, out.filter(row => row.selectedDraftL3ParentLabelKo === label).length]));
 const summary = {
   schemaVersion: 1, status: 'WORKING_L3_L4_BOUNDARY_NOT_FINAL', denominator: 87,
-  source: ['H1_POLY_DIVISION_L3_L4_BOUNDARY_WORKING_20.jsonl', 'H1_POLY_DIVISION_REMAINING_WORKING_67.jsonl'],
-  currentStageAIdentityCoverage: 87, parentCounts,
+  source: ['H1_POLY_DIVISION_BOUNDARY_WORKING_20_CURRENT.jsonl', 'H1_POLY_DIVISION_REMAINING_WORKING_67.jsonl'],
+  currentABComparisonIdentityCoverage: 87, parentCounts,
   parentProvenanceCounts: Object.fromEntries([...new Set(out.map(row => row.parentProvenance))]
     .map(key => [key, out.filter(row => row.parentProvenance === key).length])),
   workingHoldQueueIndexes: out.filter(row => row.workingReviewStatus === 'HOLD').map(row => row.queueIndex),

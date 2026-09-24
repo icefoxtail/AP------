@@ -80,6 +80,10 @@ const q457DuplicateFile = 'H1_SOL_Q457_SOURCE_DUPLICATE_CONDITION_NOTE.json';
 const q457Duplicate = JSON.parse(fs.readFileSync(path.join(dir, q457DuplicateFile), 'utf8'));
 const q98HwpFile = 'H1_SOL_Q098_HWP_EQUATION_UNVERIFIED.json';
 const q98Hwp = JSON.parse(fs.readFileSync(path.join(dir, q98HwpFile), 'utf8'));
+const q87HoldFile = 'H1_SOL_Q087_DUPLICATE_CONSTANT_HOLD.json';
+const q87Hold = JSON.parse(fs.readFileSync(path.join(dir, q87HoldFile), 'utf8'));
+const q114HoldFile = 'H1_SOL_Q114_HWP_EQUATION_CHOICES_HOLD.json';
+const q114Hold = JSON.parse(fs.readFileSync(path.join(dir, q114HoldFile), 'utf8'));
 if (inequalityParentRows.length !== 39 || inequalityParentByQueue.size !== 39)
   throw new Error('inequality parent plan coverage mismatch');
 if (comparison.summary.counts.currentDual !== 1120 || comparison.summary.counts.unreviewedConflict !== 0)
@@ -468,6 +472,32 @@ for (const row of comparison.rows) {
       counts.fieldsDualMatch--;
       fieldDecisions[field] = { ...q98Hwp.fieldDecisions[field], provenance: 'SOL_DIRECT_ADJUDICATION',
         evidenceFile: q98HwpFile };
+      counts.fieldsSolDirectOverride++;
+    }
+  }
+  if (row.queueIndex === 87) {
+    if (row.questionUid !== q87Hold.questionUid
+      || row.currentSourceFingerprint !== q87Hold.sourceFingerprint)
+      throw new Error('q87 duplicate-constant HOLD evidence/source drift');
+    for (const [field, value] of [['sourceIssue', 'SOURCE_UNRESOLVED_HOLD'], ['reviewStatus', 'HOLD']]) {
+      if (fieldDecisions[field].provenance !== 'DUAL_LUNA_MATCH' || fieldDecisions[field].value !== value)
+        throw new Error(`q87 expected dual ${field}=${value}`);
+      counts.fieldsDualMatch--;
+      fieldDecisions[field] = { value, provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: q87HoldFile, reason: q87Hold.independentMath };
+      counts.fieldsSolDirectOverride++;
+    }
+  }
+  if (row.queueIndex === 114) {
+    if (row.questionUid !== q114Hold.questionUid
+      || row.currentSourceFingerprint !== q114Hold.sourceFingerprint)
+      throw new Error('q114 HWP equation/choices HOLD evidence/source drift');
+    for (const [field, value] of [['sourceIssue', 'SOURCE_HWP_EQUATION_UNVERIFIED_HOLD'], ['reviewStatus', 'HOLD']]) {
+      if (fieldDecisions[field].provenance !== 'DUAL_LUNA_MATCH' || fieldDecisions[field].value !== value)
+        throw new Error(`q114 expected dual ${field}=${value}`);
+      counts.fieldsDualMatch--;
+      fieldDecisions[field] = { value, provenance: 'SOL_DIRECT_ADJUDICATION',
+        evidenceFile: q114HoldFile, reason: q114Hold.currentJsMathCheck };
       counts.fieldsSolDirectOverride++;
     }
   }

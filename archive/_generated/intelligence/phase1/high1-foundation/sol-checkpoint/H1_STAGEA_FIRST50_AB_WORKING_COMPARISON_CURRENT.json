@@ -7,17 +7,17 @@
       1,
       50
     ],
-    "workerFiles": 12,
-    "cFiles": 11,
+    "workerFiles": 20,
+    "cFiles": 14,
     "counts": {
       "queueSeen": 50,
       "currentA": 50,
       "currentB": 50,
       "currentDual": 50,
-      "coreConflict": 34,
-      "issueLabelDifference": 14,
-      "fullConflict": 35,
-      "currentC": 35,
+      "coreConflict": 33,
+      "issueLabelDifference": 10,
+      "fullConflict": 34,
+      "currentC": 34,
       "unreviewedConflict": 0
     }
   },
@@ -1146,33 +1146,41 @@
       "queueIndex": 36,
       "questionUid": "qid_v1_1949955fe03c289af9801d75c271230919d09ddb61e89731084200acf2b97cca",
       "sourceIdentity": "original/high/h1/1mid/23_매산고_1학기_중간_고1_기출.js#10",
-      "currentSourceFingerprint": "b4dcd9fa27a9b8ebc1a127cfa3701fe6e86ccd916574b47321789525bb0c80f7",
-      "aFile": "H1_STAGEA_LUNA_A_BATCH02_021_040.jsonl",
-      "bFile": "H1_STAGEA_LUNA_B_BATCH02_021_040.jsonl",
-      "currentCFile": "H1_STAGEA_LUNA_C_BATCH02_8.jsonl",
+      "currentSourceFingerprint": "898fe47d2a2d2a8c32ede5e7094b4275ea4d7562235c5dd5b1b3dd40413f3aa5",
+      "aFile": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_Q036_POST_SOL.jsonl",
+      "bFile": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_Q036_POST_SOL.jsonl",
+      "currentCFile": "H1_STAGEA_LUNA_C_POST_D_Q036_POST_SOL.jsonl",
       "a": {
-        "l3": null,
-        "crossConcepts": [],
-        "conditions": [],
-        "integrationPattern": null,
-        "sourceIssue": "HOLD",
-        "reviewStatus": "HOLD"
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "crossConcepts": [
+          "CC_AREA",
+          "CC_QUADRATIC_EXTREMUM"
+        ],
+        "conditions": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "sourceIssue": "NONE",
+        "reviewStatus": "PASS"
       },
       "b": {
-        "l3": null,
+        "l3": "PT_FUNCTION_EXTREMUM",
         "crossConcepts": [
           "CC_AREA"
         ],
-        "conditions": [],
+        "conditions": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "sourceIssue": "NONE",
-        "reviewStatus": "HOLD"
+        "reviewStatus": "PASS"
       },
       "differentCoreFields": [
         "crossConcepts",
-        "integrationPattern"
+        "conditions"
       ],
-      "issueLabelDifference": true,
+      "issueLabelDifference": false,
       "fullConflict": true
     },
     {
@@ -1328,30 +1336,39 @@
       "queueIndex": 41,
       "questionUid": "qid_v1_cea33bc611f1ffd65076b3c694623b847b40189ba73d8cac02852703639a56b6",
       "sourceIdentity": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js#22",
-      "currentSourceFingerprint": "4cb6e031bb8c27208c9af808adf83cf991f5395d2425e5c59599f4e9f3af3aa8",
-      "aFile": "H1_STAGEA_LUNA_A_BATCH03_041_050.jsonl",
-      "bFile": "H1_STAGEA_LUNA_B_BATCH03_041_050.jsonl",
-      "currentCFile": "H1_STAGEA_LUNA_C_REPLACEMENT_BATCH03_9.jsonl",
+      "currentSourceFingerprint": "c1fe21b7aefd880deefb64af26df182f0ae05df6daaaab5bd5e32784f94d1f8e",
+      "aFile": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_Q041_POST_SOL.jsonl",
+      "bFile": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_Q041_POST_SOL.jsonl",
+      "currentCFile": "H1_STAGEA_LUNA_C_POST_D_Q041_POST_SOL.jsonl",
       "a": {
-        "l3": null,
-        "crossConcepts": [],
-        "conditions": [],
-        "integrationPattern": null,
-        "sourceIssue": "HOLD",
-        "reviewStatus": "HOLD"
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "crossConcepts": [
+          "CC_VERTEX"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "sourceIssue": "NONE",
+        "reviewStatus": "PASS"
       },
       "b": {
-        "l3": null,
-        "crossConcepts": [],
-        "conditions": [],
-        "integrationPattern": "NONE",
-        "sourceIssue": "MISSING_REQUIRED_SOURCE_FUNCTION_AND_INTERVAL",
-        "reviewStatus": "HOLD"
+        "l3": "PT_FUNCTION_EXTREMUM",
+        "crossConcepts": [
+          "CC_COMPLETE_SQUARE",
+          "CC_VERTEX"
+        ],
+        "conditions": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "sourceIssue": "NONE",
+        "reviewStatus": "PASS"
       },
       "differentCoreFields": [
-        "integrationPattern"
+        "crossConcepts"
       ],
-      "issueLabelDifference": true,
+      "issueLabelDifference": false,
       "fullConflict": true
     },
     {
@@ -1433,36 +1450,33 @@
       "queueIndex": 44,
       "questionUid": "qid_v1_9f6d119436795a8634f2fbd232bca0af696e929cc35fb718316a1fa3b689f423",
       "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#15",
-      "currentSourceFingerprint": "0fc960c7be4ec1e7a52f8574664892ed67bc6dafc9058cf784fe10b5373d38ee",
-      "aFile": "H1_STAGEA_LUNA_A_BATCH03_041_050.jsonl",
-      "bFile": "H1_STAGEA_LUNA_B_BATCH03_041_050.jsonl",
-      "currentCFile": "H1_STAGEA_LUNA_C_REPLACEMENT_BATCH03_9.jsonl",
+      "currentSourceFingerprint": "617dc106531194e2fae5852eeb2b05cd5f8f9110e8c883b4a5c01f32d390df7f",
+      "aFile": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_Q044_POST_D.jsonl",
+      "bFile": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_Q044_POST_D.jsonl",
+      "currentCFile": null,
       "a": {
-        "l3": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "l3": null,
         "crossConcepts": [],
         "conditions": [
           "COND_NATURAL_NUMBER"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "sourceIssue": "HOLD",
+        "sourceIssue": "SOURCE_UNRESOLVED_HOLD",
         "reviewStatus": "HOLD"
       },
       "b": {
-        "l3": "PT_H1_COMPLEX_OPERATION",
+        "l3": null,
         "crossConcepts": [],
         "conditions": [
           "COND_NATURAL_NUMBER"
         ],
-        "integrationPattern": "NONE",
-        "sourceIssue": "MISSING_N_DOMAIN; NO_ATTAINED_MINIMUM",
+        "integrationPattern": "SEQUENTIAL",
+        "sourceIssue": "SOURCE_UNRESOLVED_HOLD",
         "reviewStatus": "HOLD"
       },
-      "differentCoreFields": [
-        "l3",
-        "integrationPattern"
-      ],
-      "issueLabelDifference": true,
-      "fullConflict": true
+      "differentCoreFields": [],
+      "issueLabelDifference": false,
+      "fullConflict": false
     },
     {
       "queueIndex": 45,
@@ -1502,30 +1516,36 @@
       "queueIndex": 46,
       "questionUid": "qid_v1_bd8592db0c38db7624883b643c9c55a19c51fc3a9b516cf3d30784baf1ec1384",
       "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#20",
-      "currentSourceFingerprint": "dce78aaf99a0ee9ffe705bdded333c641c5bc66f8b7bf3922623e4a61a61f513",
-      "aFile": "H1_STAGEA_LUNA_A_BATCH03_041_050.jsonl",
-      "bFile": "H1_STAGEA_LUNA_B_BATCH03_041_050.jsonl",
-      "currentCFile": "H1_STAGEA_LUNA_C_REPLACEMENT_BATCH03_9.jsonl",
+      "currentSourceFingerprint": "b2c22f91dd2660a733fa772b92eb5140e02e33b63320ba70ffac1d04fd6fd31e",
+      "aFile": "H1_STAGEA_LUNA_A_SOURCE_REPAIR_REREVIEW_Q046_POST_D.jsonl",
+      "bFile": "H1_STAGEA_LUNA_B_SOURCE_REPAIR_REREVIEW_Q046_POST_D.jsonl",
+      "currentCFile": "H1_STAGEA_LUNA_C_POST_D_Q046_POST_D.jsonl",
       "a": {
-        "l3": null,
-        "crossConcepts": [],
+        "l3": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "crossConcepts": [
+          "CC_SLOPE",
+          "CC_TRIANGLE_AREA"
+        ],
         "conditions": [],
-        "integrationPattern": null,
-        "sourceIssue": "HOLD",
+        "integrationPattern": "SEQUENTIAL",
+        "sourceIssue": "SOURCE_UNRESOLVED_HOLD",
         "reviewStatus": "HOLD"
       },
       "b": {
-        "l3": null,
-        "crossConcepts": [],
+        "l3": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "crossConcepts": [
+          "CC_SLOPE",
+          "CC_TRIANGLE_AREA"
+        ],
         "conditions": [],
-        "integrationPattern": "NONE",
-        "sourceIssue": "MISSING_GEOMETRIC_DATA_AND_CONDITIONS",
+        "integrationPattern": "INTERDEPENDENT",
+        "sourceIssue": "SOURCE_UNRESOLVED_HOLD",
         "reviewStatus": "HOLD"
       },
       "differentCoreFields": [
         "integrationPattern"
       ],
-      "issueLabelDifference": true,
+      "issueLabelDifference": false,
       "fullConflict": true
     },
     {

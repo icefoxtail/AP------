@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 14,
+  "questionUid": "qid_v1_43470432764ceeac8519109fbb96f954ac0db3fcf37177880826e99dc9417745",
+  "sourceIdentity": "original/high/h1/1mid/25_강남여고_1학기_중간_고1_기출.js#17",
+  "sourceFingerprint": "f0118c222d20efb06e2fa1c71b933e1b81b235ae4288b6ffdd4b0eb1b6509387",
+  "disposition": "ARCHIVE_PRIMARY_MISMATCH_HOLD",
+  "sourceEvidence": "The stem gives the areas 3, 9, 27 of three faces meeting at a cuboid vertex and asks for the sum of its three edge lengths.",
+  "solutionEvidence": "The supplied solution uses ab=3, bc=9, ca=27, obtains abc=27 by positivity, and then a=3, b=1, c=9. Its answer 13 follows the printed stem. No polynomial expansion is the decisive step.",
+  "upstreamMismatch": "The source JS unit/subunit and frozen L3 place the item under Common Math 1 polynomial operations and PT_H1_POLY_OPERATION_EXPANSION, but the actual item is a cuboid face-area length reconstruction with no matching active H1 primary family shown in the current authority.",
+  "fieldDecisions": {
+    "l3": { "value": null, "provenance": "HOLD", "reason": "The dual frozen-key match is contradicted by the actual stem and solution; curriculum ownership must be reassigned before an L3 key can be frozen." },
+    "integrationPattern": { "value": null, "provenance": "HOLD", "reason": "Defer integration taxonomy until the primary unit and L3 ownership are corrected." },
+    "sourceIssue": { "value": "ARCHIVE_PRIMARY_MISMATCH", "provenance": "SOL_DIRECT_ADJUDICATION", "reason": "The archived primary curriculum assignment does not match the mathematics in the question." }
+  },
+  "unitReassignmentRequired": true,
+  "jsEdit": false,
+  "reviewStatus": "HOLD",
+  "evidenceFiles": [
+    "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_C_BATCH01_11.jsonl"
+  ]
+}
