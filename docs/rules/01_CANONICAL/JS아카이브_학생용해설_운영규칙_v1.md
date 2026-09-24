@@ -1,6 +1,7 @@
 # JS아카이브 학생용 해설 운영규칙 v1
 
 - 적용일: 2026-09-23
+- 최근 보강: 2026-09-25 — 기하 해설 SVG 적극 제작 기준 및 단계 경계 정합화
 - 상태: ACTIVE
 - 적용 대상: 신규 `solution` 생성, 기존 production JS 학생용 해설 업그레이드, 해설 품질 검수
 - 비적용: L1/L2/L3/L4/CrossConcept/Condition의 canonical 정의·승격, SVG 제작 수치 규칙, source repair 자체
@@ -135,6 +136,7 @@ beforeSolutionHash
 - `LINEBREAK_READABILITY`
 - `RENDER_OVERFLOW`
 - `VISUAL_SOLUTION_MISMATCH`
+- `SOLUTION_VISUAL_MISSING`
 
 단순히 문장을 더 길게 쓰거나 문체를 바꾼 것은 업그레이드 근거가 아니다.
 
@@ -290,7 +292,11 @@ JS `solution` 문자열의 줄바꿈은 실제 소스 개행이 아니라 `\n` e
 
 해설 검토 중 보호 필드의 별도 결함을 발견하면 조용히 함께 수정하지 않는다. 별도 defect/HOLD로 기록하고 해당 수정 authority를 따른다.
 
-기존 `solutionImage`/SVG가 해설과 명백히 충돌하면 `VISUAL_SOLUTION_MISMATCH`로 기록한다. 4단계 로드맵의 해설 단계에서는 시각자료의 대규모 재제작을 시작하지 않는다.
+기존 `solutionImage`/SVG가 해설과 명백히 충돌하면 `VISUAL_SOLUTION_MISMATCH`로 기록하고, 수학적 의미가 이미 맞는 부분까지 불필요하게 다시 만들지 않는다. 결함이 국소적이면 그 결함만 최소 수정한다.
+
+형님이 학생 이해를 위한 해설 업그레이드를 지시한 범위에서는 해당 target 문항의 검증 가능한 `solutionImage` 또는 solution 내부 inline SVG를 해설 시각자료 범위로 함께 제작·수정할 수 있다. 기존 SVG가 없다는 사실은 신규 제작을 막는 근거가 아니다.
+
+문항의 실제 수학 구조를 검증할 수 있고 그림이 학생의 풀이 이해에 실질적으로 도움이 되면 신규 해설 SVG를 제작할 수 있다. 문제용 `image`는 계속 보호하며, 제작 수치·좌표·style·publication은 `04_VISUAL/도형추출.md`, 기하 visual necessity와 독립 semantic review는 `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`를 따른다.
 
 ---
 
@@ -305,9 +311,44 @@ JS `solution` 문자열의 줄바꿈은 실제 소스 개행이 아니라 `\n` e
 
 따라서 2단계에서 완료된 metadata는 **읽기 전용 개념 기준**으로 사용하며 해설 작업 때문에 다시 분류하지 않는다.
 
-2단계에서는 시각자료 필요성과 mismatch를 inventory할 수 있지만, 신규·대규모 SVG 제작은 3단계 툴 qualification 이후 4단계에서 수행한다. 단, 사용자가 특정 blocking visual defect의 즉시 수리를 별도로 지시한 경우는 예외다.
+### 9-1. 2단계 해설 업그레이드에서도 문항 단위 해설 SVG를 적극 제작한다
 
-`SOLUTION_TEXT_UPGRADE_PASS`는 2단계 checkpoint이며 전체 4단계 프로젝트의 Final Seal과 동의어가 아니다. 기존 Common Protocol의 visual/real-render HARD gate를 약화하지 않는다.
+4단계 순서는 Archive 전체 SVG의 **도구 고도화와 전수 migration 순서**다. 이 순서를 이유로 학교별·시험지별 해설 업그레이드에서 필요한 문항 단위 SVG를 뒤로 미루지 않는다.
+
+기하 문항의 기본 질문은 다음으로 고정한다.
+
+> **“SVG가 꼭 필요한가?”가 아니라 “이 문항에서 정확한 해설 SVG를 만들지 않을 충분한 이유가 있는가?”**
+
+기존 `solutionImage` 또는 SVG가 없어도, 그림이 풀이의 결정 단계나 도형 관계를 학생에게 실질적으로 보여 주는 문항은 기본적으로 `ADD_NEW_VISUAL` / `VISUAL_REQUIRED` 후보로 본다.
+
+특히 다음은 우선 검토한다.
+
+- 원과 접선
+- 삼각형의 닮음
+- 삼각비
+- 피타고라스 정리 활용
+- 현·중점·수직이등분선
+- 각의 크기 관계
+- 보조선이 있어야 풀이 구조가 선명해지는 문항
+- 길이비·넓이비·위치 관계가 핵심인 문항
+
+해설 SVG는 원문 그림의 단순 복제가 아니라 **해설의 결정 단계**를 보여 주는 시각자료여야 한다. 필요한 점·선·각·길이·직각·같은 각·보조선·비율 정보를 표시하고, 해설에서 쓰지 않는 장식이나 중복 정보를 늘리지 않는다.
+
+신규 SVG의 근거는 문제 원문 + 독립 풀이 + final solution + 검증 가능한 geometry model의 교집합으로 제한한다. 장식용 SVG, 해설과 무관한 중복 그림, 수학적 근거 없는 추측 도형, 실제 관계와 다른 좌표·각·길이·수직·접선 표현은 금지한다.
+
+정확한 제작·검증이 불가능하면 억지로 그리지 않는다. 실제 사유에 따라 `VISUAL_EXEMPT`, `BLOCKED/UNSUPPORTED`, `HOLD`를 구분하고 “기존 SVG가 없었다” 또는 “문제가 쉽다”만으로 면제하지 않는다.
+
+### 9-2. SOLUTION → VISUAL 별도 검수 축
+
+해설용 SVG 제작·수정 후에는 수직 여부, 접선과 반지름의 직각 관계, 중점·대칭 관계, 같은 각·각의 크기 관계, 비례·길이·넓이비, 해설에서 사용한 보조선 및 표시 일치 여부를 가능한 범위에서 직접 검증한다.
+
+또한 문제 ↔ solution ↔ visual 3방향 수학 정합성과 실제 학생용 `sol` 화면의 가독성·잘림·overflow를 확인한다.
+
+solution의 수학 사실과 actual SVG geometry가 다르면 `VISUAL_SOLUTION_MISMATCH`이며, 그림이 교육적으로 필요한데 충분한 면제 근거 없이 누락되면 `SOLUTION_VISUAL_MISSING`으로 재작업한다.
+
+3단계는 generator/verifier capability 자체를 고도화하는 단계이고, 4단계는 아직 남은 전체 Archive 시각자료를 전수 migration하는 단계다. 둘 다 2단계의 **정확하게 제작 가능한 문항 단위 해설 SVG**를 금지하거나 지연시키는 근거가 아니다.
+
+`SOLUTION_TEXT_UPGRADE_PASS`는 텍스트 checkpoint일 뿐이다. 해당 문항에 required visual이 있으면 visual parity와 real render를 닫기 전 전체 해설 완료와 동의어가 아니다. 기존 Common Protocol의 visual/real-render HARD gate를 약화하지 않는다.
 
 ---
 
