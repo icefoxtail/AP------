@@ -246,13 +246,26 @@ vm.createContext(runtimeContext);
 vm.runInContext(readText("archive/meta-foundation-runtime.js"), runtimeContext, { filename: "archive/meta-foundation-runtime.js", timeout: 3000 });
 const overlaidCatalog = await runtimeContext.window.applyArchiveMetaFoundationCatalog(catalog);
 const multiRuntime = runtimeContext.window.ARCHIVE_META_FOUNDATION_RUNTIME;
+const runtimePackIdByUid = new Map(
+  runtimeContext.window.ARCHIVE_META_FOUNDATION_RUNTIMES.flatMap((packRow) =>
+    packRow.records.map((row) => [row.questionUid, packRow.packId])
+  )
+);
 const h1CatalogRows = overlaidCatalog.records.filter((row) => row.metaFoundationPackId === "H1_FOUNDATION");
 const h1EligibleRows = h1CatalogRows.filter((row) => core.eligibility(row).ok);
 const heldButSelectable = h1CatalogRows.filter((row) => row.reviewStatus === "HOLD" && core.eligibility(row).ok).length;
 const unknownButSelectable = h1CatalogRows.filter((row) => row.difficultyBucket === "UNKNOWN" && core.eligibility(row).ok).length;
 const sourceHeldButSelectable = h1CatalogRows.filter((row) => row.sourceIssueHold && core.eligibility(row).ok).length;
-const existingRuntimeRows = overlaidCatalog.records.filter((row) => row.metaFoundationPackId && row.metaFoundationPackId !== "H1_FOUNDATION");
+const existingRuntimeRows = overlaidCatalog.records.filter((row) => {
+  const packId = runtimePackIdByUid.get(row.questionUid);
+  return packId && packId !== "H1_FOUNDATION";
+});
 const existingPackBridgeRegressionRows = existingRuntimeRows.filter((row) => core.eligibility(row).ok !== core.eligibility({ ...row, taxonomyStatus: "CONFIRMED" }).ok);
+const existingRuntimeRecordsByPack = Object.fromEntries(
+  runtimeContext.window.ARCHIVE_META_FOUNDATION_RUNTIMES
+    .filter((packRow) => packRow.packId !== "H1_FOUNDATION")
+    .map((packRow) => [packRow.packId, packRow.records.length])
+);
 const taxonomyRows = overlaidCatalog.taxonomy.filter((row) => row.curriculumKey && row.problemTypeKey && row.curriculumKey !== "");
 const h1TaxonomyRows = taxonomyRows.filter((row) => {
   const usedByH1 = assignments.items.some((item) => item.curriculumKey === row.curriculumKey && item.courseKey === row.courseKey && item.L1 === row.L1 && item.L2 === row.L2 && item.problemTypeKey === row.problemTypeKey && (item.templateKey || "") === (row.templateKey || ""));
@@ -340,6 +353,7 @@ const result = {
     h1SourceHeldButSelectable: sourceHeldButSelectable,
     existingPackRecordsChecked: existingRuntimeRows.length,
     existingPackRuntimeEligibilityChanges: existingPackBridgeRegressionRows.length,
+    existingRuntimeRecordsByPack,
     examSelectionPipeline: selectionSmoke,
     catalogIndexVersion: catalog.indexVersion,
     runtimeVersion: multiRuntime.runtimeVersion
@@ -362,6 +376,9 @@ if (!failures.length) {
   const checked = receipt.checked || (receipt.checked = {});
   Object.assign(checked, {
     combinedRuntimeRecords: multiRuntime.records.length,
+    existingPackRecordsChecked: existingRuntimeRows.length,
+    existingPackEligibilityChanges: existingPackBridgeRegressionRows.length,
+    existingRuntimeRecordsByPack,
     combinedUniqueUid: new Set(multiRuntime.records.map((row) => row.questionUid)).size,
     combinedUniqueSourceIdentity: new Set(multiRuntime.records.map((row) => `${row.sourceArchiveFile}#${row.sourceOrdinal}`)).size,
     combinedRuntimeCatalogJoin: h1CatalogRows.length + (multiRuntime.records.length - activeRuntimeRows.length),
