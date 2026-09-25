@@ -271,5 +271,33 @@
     "pushTarget": "origin/meta-foundation-h1-preprocess-sol-review",
     "checkpointCommitMessage": "checkpoint(h1-meta): independently review difficulty outliers",
     "mainMergeProhibited": true
+  },
+  "postCompareAdjudication": {
+    "createdAtUtc": "2026-09-25T12:42:49.120Z",
+    "scopeUidCount": 1,
+    "source": "User-raised timed-exam workload consideration after the initial comparison.",
+    "questionUid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
+    "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#18",
+    "initialBlindReview": {
+      "independentDifficultyBucket": 3,
+      "reviewedCalculationLoad": "medium",
+      "reviewedCaseLoad": 4,
+      "freezePreserved": true
+    },
+    "adjudicatedResult": {
+      "independentDifficultyBucket": 4,
+      "semanticConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "currentWorkingBucket": 5,
+      "disposition": "RESTORE_OR_ADJUST"
+    },
+    "rationale": "Four fixed (i,j) cases each require a discriminant computation and classification of 0/1/2 distinct real roots, then those entries must be assembled into A before checking A²=A. The repeated case work adds meaningful exam-time execution burden and moves this item to Bucket 4. The matrix-power step uses a standard idempotence check and does not require a decisive insight that would support Bucket 5.",
+    "workingFinalDifficultyApplied": false,
+    "canonicalPromotion": false
+  },
+  "nextAdjudication": {
+    "scope": "Only unresolved/contested UIDs from this 28-target batch.",
+    "currentBucket5TargetFinalAdjudicatedBucket": 4,
+    "currentBucket5TargetDisposition": "RESTORE_OR_ADJUST"
   }
 }
