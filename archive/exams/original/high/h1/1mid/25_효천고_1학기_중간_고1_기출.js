@@ -734,7 +734,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 $f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
+    "content": "이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 $f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.)",
     "choices": [],
     "answer": "$2$",
     "solution": "[키포인트] 인수정리를 이용하여 주어진 조건을 만족하는 이차식을 세운다.\n조건 $f(\\alpha)=2\\alpha$ 와 $f(\\beta)=2\\beta$ 에 의하여 $f(\\alpha)-2\\alpha=0$, $f(\\beta)-2\\beta=0$ 이 성립한다.\n이는 이차방정식 $f(x)-2x=0$ 의 두 근이 $\\alpha, \\beta$ 임을 의미한다.\n$\\alpha, \\beta$를 두 근으로 하는 이차식은 $x^2+ax+b$ 이고, $f(x)$의 이차항 계수가 $3$이므로\n$f(x) - 2x = 3(x^2+ax+b)$ 로 식을 세울 수 있다.\n따라서 $f(x) = 3(x^2+ax+b) + 2x$ 이다.\n$f(1) = 11$ 이므로 위 식에 $x=1$ 을 대입하면\n$f(1) = 3(1+a+b) + 2 = 11$\n$3(1+a+b) = 9$\n$1+a+b = 3 \\implies a+b = 2$ 이다.\n따라서 $a+b=2$ 이다.",
