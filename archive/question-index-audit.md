@@ -1,6 +1,6 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-09-25T00:49:24.587Z
+- 생성 시각: 2026-09-25T02:36:39.632Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
   - git 버전관리에 등재된 시험지 JS만 인덱싱(464파일).
