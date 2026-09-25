@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 3,
+  "denominator": 23,
+  "comparisonRule": "Compare goal, primary method, decisive step, L1/L2, L3/L4 semantic boundary, CrossConcept, HOLD and ROUTE_OUT. Candidate key spelling differences alone are not conflicts. Condition and IntegrationPattern differences remain for root gate unless coupled to semantic conflict.",
+  "conflicts": [
+    { "sourceOrdinal": 5, "reason": "A uses inclusion-exclusion/set-cardinality primary under prime factorization with coprime CrossConcept; B uses coprime/GCD primary and an Euler-totient style count. L2, primary ownership and supporting concept roles conflict." },
+    { "sourceOrdinal": 7, "reason": "A separates mixed number-theory statement judgment from #8 rational/integer property judgment; B shares a broad number-property statement L3 across both. Need distinguish mathematical goal from choice format." },
+    { "sourceOrdinal": 8, "reason": "A separates integer/rational definition judgment from #7 mixed number-theory claims; B shares the same broad property-statement L3." },
+    { "sourceOrdinal": 11, "reason": "A separates nested rational expression evaluation from #13 signed-integer sum; B groups them under signed arithmetic expression evaluation. L3/L4 compression boundary is disputed." },
+    { "sourceOrdinal": 13, "reason": "A gives a signed-integer expression its own L3; B shares it with #11 nested rational arithmetic under a broad evaluation L3." },
+    { "sourceOrdinal": 17, "reason": "A tags active CC_NUMBER_PARITY as necessary for an odd-length alternating sum; B treats parity as intrinsic to the alternating-sum primary and leaves CrossConcept empty." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1, 2, 3, 4, 6, 9, 10, 12, 14, 15, 16, 18, 19, 20, 21, 22, 23],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 4, "field": "integrationPattern", "note": "A uses NONE for divisor-count factor testing; B treats divisor characterization and option testing as sequential." },
+    { "sourceOrdinal": 6, "field": "integrationPattern", "note": "A and B differ on joint GCD/LCM prime-exponent ratio interpretation." },
+    { "sourceOrdinal": 12, "field": "integrationPattern", "note": "A/B differ on enumeration versus primary-only product maximum." },
+    { "sourceOrdinal": 14, "field": "conditionKeys", "note": "B adds integer and range conditions to the magic-square entry recovery; A has no separate Condition." },
+    { "sourceOrdinal": 16, "field": "conditionKeys", "note": "A tags nonzero denominator; B treats it as implicit/not decisive." },
+    { "sourceOrdinal": 18, "field": "integrationPattern", "note": "A/B differ on prime-power counting composition." },
+    { "sourceOrdinal": 19, "field": "integrationPattern", "note": "A/B differ on GCD/LCM pair recovery constraint integration." },
+    { "sourceOrdinal": 23, "field": "conditionKeys", "note": "B adds a positivity condition to contextual value determination; A has no separate Condition." }
+  ]
+}

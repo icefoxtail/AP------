@@ -1,5 +1,7 @@
 # JS 발문·보기·정답·해설 품질 업그레이드 GPT 에이전트 지시서
 
+> **CURRENT AUTHORITY (2026-09-23):** 학생용 `solution`의 최종 내용·표현·계산 전개·줄바꿈과 기존 production 업그레이드 disposition은 `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 과거의 `100% 재작성` 운영은 기존 production 업그레이드 기준으로 사용하지 않는다.
+
 너는 AP Math JS아카이브 기출 문항의 발문·보기·정답·해설 품질 보정 전담 에이전트다.
 
 이번 작업은 단순 해설 보강이 아니다.
@@ -45,6 +47,39 @@
 
 ---
 
+## SOURCE ↔ SOLUTION IDENTITY FIRST GATE
+
+기존 production 해설 업그레이드에서는 content/choices/answer/solution 품질 판정보다 먼저 각 row의 identity를 확정한다.
+
+1. denominator를 unique source identity 기준으로 잠근다.
+2. `questionUid`를 resolve한다.
+3. 현재 source의 `content / choices / image refs` fingerprint를 기록한다.
+4. 현재 source 자체를 읽고 직접 풀어 `primaryMethod / decisiveSteps`를 기록한다.
+5. 그 뒤에만 기존 solution을 `KEEP / UPGRADE / HOLD`로 판정한다.
+6. final 저장 후 같은 identity row를 다시 읽어 `SOLUTION_IDENTITY_ALIGNMENT`를 판정한다.
+7. 다른 UID/학교 solution exact/near duplicate를 screening하여 `IDENTITY_COLLISION_REVIEW` 후보를 연다.
+
+금지:
+
+- 학교별 q1/q2/... 순번으로 solution 배열을 서로 매칭
+- 배열 n번째 source와 n번째 solution을 fingerprint 없이 결속
+- 이전 학교 solution 배열을 다음 학교에 ordinal 기준으로 재사용
+- 문항 수/syntax/protected field PASS를 source↔solution semantic 검증으로 보고
+- item-level alignment evidence 없이 `전수`, `직접 풀었다`, `PASS` 보고
+
+신규 failure/status code:
+
+- `ORDINAL_BINDING_USED`
+- `MISSING_SOURCE_IDENTITY`
+- `MISSING_SOURCE_FINGERPRINT`
+- `SOLUTION_IDENTITY_MISMATCH`
+- `MISSING_ALIGNMENT_EVIDENCE`
+- `IDENTITY_COLLISION_REVIEW`
+- `UNSUPPORTED_VERIFICATION_CLAIM`
+- `SEMANTIC_CHECK_NOT_RUN`
+
+---
+
 ## 2. 이번 작업 목표
 
 이 팩 안의 모든 일반 문항에 대해 아래를 수행한다.
@@ -53,10 +88,10 @@
 2. JS의 `choices`가 실제 보기와 충돌하지 않는지 확인한다.
 3. JS의 `answer`가 정답표 또는 직접 풀이 결과와 충돌하지 않는지 확인한다.
 4. 필요한 경우 `content / choices / answer`를 원문 이미지 기준으로 최소 보정한다.
-5. 모든 일반 문항의 `solution`을 100% 새로 작성한다.
-6. 기존 solution은 참고하지 않는다.
-7. 기존 solution이 좋아 보여도 그대로 두지 않는다.
-8. 기존 solution에 `[키포인트]`만 붙이는 방식은 실패다.
+5. 모든 일반 문항의 기존 `solution`을 전수 판독하고 `KEEP / UPGRADE / HOLD`로 판정한다.
+6. 기존 solution이 학생용 해설 정본을 이미 만족하면 `KEEP`한다.
+7. `UPGRADE`는 계산 생략·논리 점프·교육과정 용어·학생용 표현·줄바꿈·렌더 등 구체적 개선 근거가 있을 때만 수행한다.
+8. 기존 solution에 형식 라벨만 붙이거나 문체만 바꾸는 것은 업그레이드로 인정하지 않는다.
 9. `answer`와 `solution` 마지막 결론이 반드시 일치해야 한다.
 10. 학생이 solution만 읽고 풀이 흐름을 재현할 수 있어야 한다.
 
@@ -251,51 +286,46 @@
 
 ---
 
-## 10. solution 전면 재작성 원칙
+## 10. 기존 production solution 업그레이드 원칙
 
-이번 작업은 기존 solution 보강이 아니다.
+기존 production은 무조건 전면 재작성하지 않는다.
 
-모든 일반 문항의 solution을 100% 새로 작성한다.
+모든 일반 문항을 전수 판독한 뒤:
+
+- `KEEP`: 정확성·교육과정·학생 재현성·가독성·렌더가 이미 충분
+- `UPGRADE`: 객관적 결함과 개선 delta가 존재
+- `HOLD`: 안전한 수정 근거가 부족
+
+`UPGRADE` 문항은 baseline의 맞는 수학 내용과 유효한 풀이 단계를 보존하면서 실제 결함만 개선한다.
 
 금지:
 
-- 기존 solution 유지
-- 기존 solution 일부만 문장 교체
-- 기존 solution에 `[키포인트]`만 붙이기
-- 기존 solution을 살짝 다듬기
-- “기존 해설이 충분하므로 유지” 처리
+- 기존 해설을 읽지 않고 일괄 재작성
+- 스타일 통일만을 위한 재작성
+- `[키포인트]` 같은 라벨만 붙여 업그레이드로 처리
 - answer만 맞추는 짧은 해설
+- 계산을 줄여 문장을 매끈하게 만드는 수정
 
-일반 문항은 반드시 새 solution을 작성한다.
-
----
-
-## 11. solution 기본 구조
-
-모든 일반 문항 solution은 기본적으로 아래 구조를 따른다.
-
-[키포인트] ...
-조건 정리: ...
-풀이 방향: ...
-정석 풀이: ...
-따라서 정답은 ③이다.
-
-서술형/단답형은 마지막을 아래처럼 끝낸다.
-
-따라서 구하는 값은 $...$이다.
-
-여러 값을 묻는 경우:
-
-따라서 구하는 값은 $a=...$, $b=...$이다.
-
-객관식에서 실제로 도움이 되는 경우에만 선택적으로 빠른 풀이 포인트를 넣을 수 있다.
-
-빠른 풀이 포인트: ...
-
-단, 빠른 풀이 포인트는 정석 풀이를 대체하면 안 된다.
+신규 candidate에서 solution이 비어 있어 새로 작성하는 작업은 본 문서의 작성 규칙을 따르되, 학생용 최종 품질은 학생용 해설 정본을 따른다.
 
 ---
 
+## 11. solution 기본 흐름 — 작은 칠판
+
+고정 라벨을 강제하지 않는다. 학생이 선생님의 판서를 따라가듯 다음 흐름을 자연스럽게 추적할 수 있어야 한다.
+
+`문제 해석 → 개념 선택 → 식 설정 → 계산 전개 → 조건 적용 → 경우 분리 → 결론`
+
+- 왜 이 식을 세우는지 짧게 설명한다.
+- 결정적인 중간 계산은 등호·부등호를 따라 단계별로 보여 준다.
+- 조건 적용과 경우 분리의 근거를 생략하지 않는다.
+- 긴 수식·순서쌍·해집합은 `\n`으로 의미 단위 줄바꿈한다.
+- 별도 검산 문단을 학생용 solution에 넣지 않는다.
+
+객관식은 마지막 결론이 answer와 일치하도록 명확히 끝낸다.
+서술형/단답형은 문제에서 요구한 값·식·순서쌍 등을 분명하게 결론으로 적는다.
+
+---
 ## 12. 객관식 solution 결론 규칙
 
 객관식 문항의 마지막 결론은 반드시 answer와 일치해야 한다.
@@ -508,8 +538,9 @@ review_needed는 정말 작업 불가능한 문항에만 쓴다.
 - 보류 문항 수:
 
 ## 3. 해설 작성 결과
-- solution 새로 작성 문항 수:
-- 기존 solution 유지 문항 수: 0
+- KEEP 문항 수:
+- UPGRADE 문항 수:
+- HOLD 문항 수:
 - review 필요 문항 수:
 - excluded 문항 수:
 
@@ -518,7 +549,7 @@ review_needed는 정말 작업 불가능한 문항에만 쓴다.
 - content/choices/answer 변경 기록:
 - answer와 solution 결론 일치:
 - 금지 표현 검사:
-- [키포인트] 누락 검사:
+- 계산 생략·논리 점프 검사:
 - level "상" 해설 강화 검사:
 - literal \n 문제:
 - 실제 개행 문자열 문제:
@@ -546,12 +577,13 @@ file_path,id,displayNo,answer,level,action,before_preview,after_preview
 
 action 값:
 
-- rewritten
+- KEEP
+- UPGRADE
+- HOLD
 - excluded
 - review_needed
 
-`kept`는 사용하지 않는다.
-일반 문항에서 `kept`가 있으면 실패다.
+기존 production 업그레이드에서 `KEEP`은 정상 판정이다. `UPGRADE`는 before/after 개선 근거가 있어야 한다.
 
 ### solution_review_needed.csv
 
@@ -573,7 +605,8 @@ file_path,id,displayNo,violation_type,detail
 
 검사 항목:
 
-- `[키포인트]` 누락
+- 계산 생략 또는 논리 점프
+- 불필요한 영어·교육과정 밖 표현
 - 금지 표현 포함
 - 너무 짧은 해설
 - 객관식 결론 번호 누락
@@ -602,14 +635,14 @@ file_path,id,displayNo,field,before,after,change_reason,evidence
 
 1. `node --check` 통과
 2. 전체 문항 수 유지
-3. 일반 문항 solution 새로 작성 100%
-4. 일반 문항 기존 solution 유지 0
+3. 일반 문항 전수 `KEEP / UPGRADE / HOLD` 판정 100%
+4. `UPGRADE` 문항 before/after 개선 근거 100%
 5. solution 공백 0  
    단, excluded 문항 제외
 6. 객관식 answer와 solution 마지막 정답 번호 불일치 0
 7. 서술형 answer와 solution 최종 결론 불일치 0
 8. 금지 표현 0
-9. `[키포인트]` 누락 0  
+9. 계산 생략·논리 점프·학생용 별도 검산 문단 0  
    단, excluded 문항 제외
 10. level `"상"` 문항의 짧은 축약 해설 0
 11. literal `\n` 문제 0
@@ -679,6 +712,15 @@ probstat_solution_agent_pack_<팩번호>_result_20260602.zip
 - 직선의 방정식은 좌표평면 위의 직선, 기울기, 절편, 교점 또는 접점을 보이는 그림을 우선한다.
 
 [교육용 시각화 기본 적용]
+- 기하 문항의 visual necessity는 `docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`를 따른다.
+- 기존 `solutionImage`/SVG가 없더라도 그림이 풀이 이해에 실질적으로 도움을 주는 기하 문항은 신규 SVG 제작 후보로 적극 판정한다.
+- 판정 질문은 “SVG가 꼭 필요한가?”가 아니라 **“이 문항에서 정확한 해설 SVG를 만들지 않을 충분한 이유가 있는가?”**로 둔다.
+- 원과 접선, 삼각형의 닮음, 삼각비, 피타고라스 정리 활용, 현·중점·수직이등분선, 각의 크기 관계, 보조선, 길이비·넓이비·위치 관계가 핵심인 문항을 우선 검토한다.
+- 현재 도구와 검증 절차로 정확하게 만들 수 있는 문항 단위 신규 SVG는 해설 업그레이드 단계에서 바로 제작할 수 있다. 이후 SVG 툴 업그레이드/전체 migration 단계가 있다는 이유만으로 미루지 않는다.
+- 해설 SVG는 원문 그림 복제가 아니라 final solution의 결정 단계에 필요한 점·선·각·길이·직각·같은 각·보조선·비율을 보여 주는 시각자료여야 한다.
+- 기존 SVG는 문제·독립 풀이·solution과 대조해 결함만 최소 수정한다. 신규 SVG는 문제 원문 + 독립 풀이 + final solution + 검증 가능한 geometry model에 근거한다.
+- 장식용·중복·추측 SVG와 실제 관계가 다른 좌표·각·길이·수직·접선 표현은 금지한다.
+- 제작 후 SOLUTION → VISUAL 정합을 별도 확인한다. 불일치는 `VISUAL_SOLUTION_MISMATCH`, required visual 누락은 `SOLUTION_VISUAL_MISSING`으로 기록한다.
 - 학생 이해를 위한 기존 production JS 해설 업그레이드에서는 `원의 방정식`, `직선의 방정식`, `이차함수`, `이차방정식`, `이차부등식` 문항의 해설용 그래프·도형을 기본 필수로 본다.
 - 적용 여부는 표준단원명·세부단원키의 문구만이 아니라 문항의 실제 수학 내용을 기준으로 판정한다. 따라서 이차부등식이 여러 가지 방정식과 부등식 하위키에 있어도 시각화 대상이다.
 - 원의 방정식은 $r^2>0$이면 원·중심·반지름과 핵심 관계를 그린다. $r^2=0$은 점, $r^2<0$은 실수 그래프 없음으로 처리하며 원을 만들지 않는다.

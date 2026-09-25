@@ -6,6 +6,12 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function buildLayoutAuthority(C) {
     'use strict';
 
+    // Keep the last solution continuation from degenerating into only one or
+    // two visible lines on an otherwise empty column/page.
+    const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
+    // Rebalancing must not reduce a useful leading fragment to a single chunk.
+    const MIN_LEADING_CONTINUATION_CHUNKS = 2;
+
     function fail(message) { throw new Error(message); }
     function positive(value, field) { const number = Number(value); if (!Number.isFinite(number) || number <= 0) fail('INVALID_' + field); return number; }
     function positiveInteger(value, field, fallback) { if (value === undefined || value === null) return fallback; const number = Number(value); if (!Number.isInteger(number) || number < 1) fail('INVALID_' + field); return number; }
@@ -587,8 +593,25 @@
                 const candidate = measure(block, chunk, continuation);
                 const used = shellChunks.reduce((sum, item) => sum + Number(item.measuredHeight || item.raw || 1), Number(continuation ? block.continuationShellOverhead || 0 : block.shellOverhead || 0));
                 if (shellChunks.length && !canFit(used + Number(chunk.measuredHeight || chunk.raw || 1) - (continuation ? block.continuationShellOverhead || 0 : block.shellOverhead || 0))) {
-                    flushShell(continuation, chunkIndex - shellChunks.length, chunkIndex - 1, false);
+                    const originalLength = shellChunks.length;
+                    const trailingCount = chunks.length - chunkIndex;
+                    const borrowCount = trailingCount < MIN_TRAILING_CONTINUATION_CHUNKS
+                        ? Math.min(
+                            MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount,
+                            Math.max(0, originalLength - MIN_LEADING_CONTINUATION_CHUNKS)
+                        )
+                        : 0;
+                    const borrowed = borrowCount
+                        ? shellChunks.splice(shellChunks.length - borrowCount, borrowCount)
+                        : [];
+                    flushShell(
+                        continuation,
+                        chunkIndex - originalLength,
+                        chunkIndex - borrowed.length - 1,
+                        false
+                    );
                     advanceColumn();
+                    if (borrowed.length) shellChunks.push(...borrowed);
                 } else if (!shellChunks.length && !canFit(candidate)) {
                     if (currentPage.columns[currentColumn - 1].items.length) advanceColumn();
                     if (!canFit(candidate)) {
@@ -1153,6 +1176,18 @@
                         end = index; height = measured;
                     }
                     if (end < start) fail('MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE:' + block.blockId + ':' + start);
+                    const trailingCount = count - (end + 1);
+                    if (trailingCount > 0 && trailingCount < MIN_TRAILING_CONTINUATION_CHUNKS) {
+                        const segmentCount = end - start + 1;
+                        const borrowCount = Math.min(
+                            MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount,
+                            Math.max(0, segmentCount - MIN_LEADING_CONTINUATION_CHUNKS)
+                        );
+                        if (borrowCount > 0) {
+                            end -= borrowCount;
+                            height = heights[end - start];
+                        }
+                    }
                     add(block, height, attemptOrder++, { split: true, compressed, chunkStart: start, chunkEnd: end, continuation });
                     start = end + 1; continuation += 1;
                     if (start < count) advance();

@@ -636,8 +636,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무게중심은 세 중선의 교점이며 각 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n조건 정리: $D,E,F$는 각각 변 $BC,CA,AB$의 중점이다.\n풀이 방향: 중점, 중선의 분할비, 넓이 관계를 보기별로 확인한다.\n정석 풀이: $E$는 $AC$의 중점이므로 $AE=CE$이다. 중선 $CF$에서 $CG:GF=2:1$이므로 $FG:GC=1:2$이다. 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나누므로 $[GAB]=\\dfrac{2}{6}[ABC]=\\dfrac{1}{3}[ABC]$, $[GBD]=\\dfrac{1}{6}[ABC]$이다. 그러나 무게중심은 세 꼭짓점에서 같은 거리에 있는 점이 아니므로 일반적으로 $AG=BG=CG$가 아니다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q20.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -714,8 +714,8 @@ window.questionBank = [
     "answer": "$18\\,\\mathrm{cm}^2$",
     "solution": "[키포인트] 각의 이등분선과 평행선을 이용해 같은 길이를 찾고, 작은 평행사변형의 밑변과 높이를 구한다.\n조건 정리: 사각형 $ABCD$의 높이를 $h$라 하자. $AD=BC=13\\,\\mathrm{cm}$, $AB=DC=10\\,\\mathrm{cm}$이다.\n풀이 방향: 넓이로 $h$를 구하고, 이등변삼각형 $ABE$, $DCF$에서 $ED$와 $BF$를 구한 뒤 $EBFD$의 넓이를 계산한다.\n정석 풀이: $13h=78$이므로 $h=6\\,\\mathrm{cm}$이다. $BE$는 $\\angle ABC$의 이등분선이므로 $\\angle ABE=\\angle EBC$이다. 또 $AD\\parallel BC$이므로 $\\angle AEB=\\angle EBC$이다. 따라서 $\\angle ABE=\\angle AEB$이므로 $\\triangle ABE$는 이등변삼각형이고 $AE=AB=10$이다. 그러므로 $ED=AD-AE=13-10=3\\,\\mathrm{cm}$이다. 같은 방법으로 $\\triangle DCF$도 이등변삼각형이어서 $CF=CD=10$이고 $BF=BC-CF=3\\,\\mathrm{cm}$이다. $ED\\parallel BF$이고 $ED=BF=3\\,\\mathrm{cm}$이므로 한 쌍의 대변이 평행하고 길이가 같아 사각형 $EBFD$는 평행사변형이다. 따라서 $[EBFD]=3\\times6=18\\,\\mathrm{cm}^2$이다.\n따라서 구하는 넓이는 $18\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q23.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },

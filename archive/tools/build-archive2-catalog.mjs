@@ -14,10 +14,21 @@ const read = (file) =>
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
+const foundationTaxonomy = JSON.parse(read("archive/data/meta-foundation/compiled/taxonomy_registry.json"));
+const foundationConcepts = JSON.parse(read("archive/data/meta-foundation/compiled/concept_registry.json"));
+const foundationConditions = JSON.parse(read("archive/data/meta-foundation/compiled/condition_registry.json"));
+const foundationBindings = JSON.parse(read("archive/data/meta-foundation/compiled/curriculum_bindings.json"));
+const foundationProblemTypes = new Set(foundationTaxonomy.problemTypes.map((r) => r.problemTypeKey));
+const foundationTemplates = new Map(foundationTaxonomy.templates.map((r) => [r.templateKey, r]));
+const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r.conceptKey));
+const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
+const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
+const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion"]);
 const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
+const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -111,10 +122,24 @@ for (const exam of exams) {
       meta &&
       core.normalizeFile(meta.sourceArchiveFile) === file &&
       meta.sourceOrdinal === ordinal;
-    const node = validJoin && paths.get(core.pathKey(meta));
+    const directNode = validJoin && paths.get(core.pathKey(meta));
+    const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:MIDDLE1@");
+    const foundationPresent = foundationScoped && Boolean(meta?.problemTypeKey || meta?.templateKey);
+    const foundationValid = !foundationPresent ? null : Boolean(
+      foundationProblemTypes.has(meta.problemTypeKey) &&
+      foundationTemplates.get(meta.templateKey)?.parentProblemTypeKey === meta.problemTypeKey &&
+      (meta.crossConceptKeys || []).every((key) => foundationCrossConcepts.has(key)) &&
+      (meta.conditionKeys || []).every((key) => foundationConditionKeys.has(key)) &&
+      foundationBindingKeys.has([meta.curriculum, meta.standardUnitKey, meta.subUnitKey, meta.problemTypeKey].join("\u0000"))
+    );
+    const parentOnlyFoundation = foundationValid === true &&
+      meta.rpmPathStatus === "HOLD_NO_EQUIVALENT_PATH" &&
+      meta.reviewStatus === "reviewed_pass" && !meta.L3 && !meta.L4;
+    const node = directNode || (parentOnlyFoundation && parentPaths.get(core.pathKey(meta, 4)));
     const metadataConflicts = [];
     const semantic = {};
     for (const field of core.META_FIELDS) {
+      if (!foundationScoped && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
       if (
@@ -127,6 +152,8 @@ for (const exam of exams) {
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
     }
+    if (foundationScoped && meta?.foundationTaxonomyStatus === "CONFIRMED" && foundationValid !== true)
+      metadataConflicts.push("foundationTaxonomy");
     const formula = "qid_v1_" + hash(file + "#" + ordinal);
     // qid_v1 authority removes the exams/ wrapper. Never mint missing identities here.
     const identityStatus =
@@ -162,7 +189,8 @@ for (const exam of exams) {
         validJoin && meta.sourceFingerprint === fingerprint
           ? "VERIFIED"
           : "HOLD",
-      taxonomyStatus: node ? "CONFIRMED" : "UNKNOWN",
+      taxonomyStatus: node && foundationValid !== false ? "CONFIRMED" : "UNKNOWN",
+      ...(foundationScoped ? { foundationTaxonomyStatus: foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD") } : {}),
       metadataConflicts,
       gradeConflict: false,
       courseFamilies: [

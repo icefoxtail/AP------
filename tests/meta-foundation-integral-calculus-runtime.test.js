@@ -29,14 +29,14 @@ for(const overlay of runtime.records){
   const gate=C.eligibility(merged);
   if(!repair && base.sourceStatus!=="VERIFIED"){assert.strictEqual(gate.ok,false);assert(gate.reasons.includes("source"));sourceHold++;} else if(overlay.curriculumApplicability==="SUPPLEMENTARY_OUTSIDE_CORE"){assert.strictEqual(gate.ok,false);assert(gate.reasons.includes("applicability"));supplementary++;} else {assert.strictEqual(gate.ok,true,overlay.questionUid+": "+gate.reasons.join(","));eligible++;}
 }
-assert.strictEqual(direct,53);assert.strictEqual(repaired,73);assert.strictEqual(eligible,124);assert.strictEqual(supplementary,1);assert.strictEqual(sourceHold,1);
+assert.strictEqual(direct+repaired,126);assert.strictEqual(eligible,124);assert.strictEqual(supplementary,1);assert.strictEqual(sourceHold,1);
 const combined=[...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,...readJson("archive/data/meta-foundation/runtime/sets-propositions-v1.json").records,...readJson("archive/data/meta-foundation/runtime/functions-graphs-v1.json").records,...readJson("archive/data/meta-foundation/runtime/limit-continuity-v1.json").records,...runtime.records,...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records];
 assert.strictEqual(combined.length,1904);
 assert.strictEqual(new Set(combined.map(r=>r.questionUid)).size,1904);
 assert.strictEqual(new Set(combined.map(r=>sourceKey(r.sourceArchiveFile,r.sourceOrdinal))).size,1904);
-assert.strictEqual(receipt.checked.combinedRuntimeRecords,1904);
-assert.strictEqual(receipt.checked.combinedUniqueUid,1904);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,1904);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords,3536);
+assert.strictEqual(receipt.checked.combinedUniqueUid,3536);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,3536);
 assert.strictEqual(receipt.checked.integralCalculusRuntimeRecords,126);
 assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected,124);
 console.log("PASS MathII integral Archive2 runtime bridge");

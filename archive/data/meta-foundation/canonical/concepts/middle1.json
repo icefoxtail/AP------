@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "meta-foundation-concept-shard-v1",
+  "shardId": "MIDDLE1",
+  "shardVersion": "1.0.0",
+  "status": "ACTIVE",
+  "conceptCount": 2,
+  "concepts": [
+    {
+      "conceptKey": "CC_RATIONAL_RECIPROCAL",
+      "canonicalLabelKo": "유리수의 역수",
+      "definition": "수의 역수 관계가 Primary 풀이 밖에서 추가로 필요할 때 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "B01_B16_CONSENSUS",
+          "representativeQuestionUid": "qid_v1_1289da23e9da2528aabc4e0febc9b86150d9057cc2ed3683b9d9efc27f2ed7f3",
+          "reason": "Proposed new key: taking reciprocals of rational face labels is required after identifying opposite pairs; no active concept key covers ordinary rational-number reciprocals. Active CC_INVERSE_FUNCTION is about inverse functions, not numeric reciprocals."
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-07"
+      ],
+      "ownerConceptShard": "MIDDLE1"
+    },
+    {
+      "conceptKey": "CC_RECTANGULAR_PRISM_TILING",
+      "canonicalLabelKo": "직육면체 단위 배치의 곱셈",
+      "definition": "최소공배수로 정한 입체 크기에 단위 직육면체가 각 축으로 몇 개 놓이는지 곱하여 총수를 구할 때 기록한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-01"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "B01_B16_CONSENSUS",
+          "representativeQuestionUid": "qid_v1_64ee6f6702673bd6a7e1c0f0f2cd07cde1a0c8a1fb36fa00fc7bbd7660f03e2c",
+          "reason": "After LCM fixes the minimum cube edge, the answer still requires counting 24×10×12 bricks by multiplying independent placement counts along the three axes; this spatial tiling concept is necessary beyond the primary LCM method. No ACTIVE CrossConcept covers it."
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LCM_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-01"
+      ],
+      "ownerConceptShard": "MIDDLE1"
+    }
+  ]
+}

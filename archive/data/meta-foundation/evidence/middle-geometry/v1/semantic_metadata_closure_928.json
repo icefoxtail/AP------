@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "middle-geometry-semantic-metadata-closure-v1",
+  "status": "CANDIDATE_SEMANTIC_METADATA_CLOSURE_PENDING_GPT_INDEPENDENT_REVIEW",
+  "denominator": 928,
+  "mappedCount": 923,
+  "routeOutHoldCount": 5,
+  "l3": {
+    "statusCounts": {
+      "CANDIDATE": 739,
+      "OUT_OF_SCOPE": 5,
+      "REUSE_ACTIVE": 184
+    },
+    "actionCounts": {
+      "ASSIGN_NEW": 739,
+      "REUSE": 184,
+      "ROUTE_OUT": 5
+    },
+    "canonicalReuseCount": 184,
+    "candidateAssignmentCount": 739,
+    "routeOutCount": 5
+  },
+  "l4": {
+    "statusCounts": {
+      "CANDIDATE_SUGGESTION": 739,
+      "OUT_OF_SCOPE": 5,
+      "REUSE_ACTIVE": 184
+    },
+    "actionCounts": {
+      "CANDIDATE_SUGGEST_ONLY": 739,
+      "REUSE": 184,
+      "ROUTE_OUT": 5
+    },
+    "pendingSemanticReviewCount": 923,
+    "brokenParentCount": 0,
+    "candidateTemplatesRemainReviewRequired": true
+  },
+  "crossConcept": {
+    "assignmentCount": 718,
+    "distinctKeyCount": 15,
+    "keys": [
+      "CC_ANGLE_BISECTOR",
+      "CC_ANGLE_BISECTOR_THEOREM",
+      "CC_AREA",
+      "CC_CIRCUMCIRCLE",
+      "CC_DIAMETER",
+      "CC_INSCRIBED_ANGLE",
+      "CC_PARALLELOGRAM_PROPERTIES",
+      "CC_PERPENDICULAR_BISECTOR",
+      "CC_PYTHAGOREAN",
+      "CC_REGULAR_HEXAGON",
+      "CC_RIGHT_TRIANGLE",
+      "CC_SIMILARITY",
+      "CC_SQUARE",
+      "CC_TANGENCY",
+      "CC_TRIANGLE_AREA"
+    ],
+    "unregisteredKeys": [],
+    "duplicateAssignmentUidCount": 0
+  },
+  "condition": {
+    "assignmentCount": 1,
+    "distinctKeyCount": 1,
+    "keys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "unregisteredKeys": [],
+    "duplicateAssignmentUidCount": 0
+  },
+  "integrationPattern": {
+    "counts": {
+      "INTERDEPENDENT": 16,
+      "NONE": 840,
+      "SEQUENTIAL": 67
+    },
+    "nonNoneCount": 83,
+    "invalidValues": [],
+    "pendingSemanticReviewCount": 923
+  },
+  "candidateOnly": {
+    "productionPromotion": "NOT_ATTEMPTED",
+    "canonicalMutation": 0,
+    "runtimePromotion": 0,
+    "archive2Promotion": 0,
+    "mainMerge": "FORBIDDEN"
+  },
+  "gateSummary": {
+    "parentMismatchCount": 0,
+    "unregisteredCrossConceptCount": 0,
+    "unregisteredConditionCount": 0,
+    "duplicateRelationalCount": 0,
+    "invalidIntegrationPatternCount": 0,
+    "aliasCollisionCount": 0,
+    "candidateLeakageIntoProduction": 0
+  },
+  "nextReview": "GPT independent review of item-level L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty and trigger-union recheck manifest"
+}

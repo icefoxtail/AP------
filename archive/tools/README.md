@@ -1,5 +1,16 @@
 # archive/tools
 
+## Archive 시험지 등록 자동 동기화
+
+신규 시험지 JS를 production 경로에 넣은 뒤 기존처럼 `python archive/build_db.py`만 실행하면
+DB 등록뿐 아니라 UID, 신규 문항 metadata HOLD, question index, Archive 2.0 catalog/crosswalk까지 한 번에 갱신된다.
+L3/L4/CrossConcept/difficulty 같은 semantic 정본은 자동 승격하지 않고 `review_required`로 남긴다.
+
+- 전체 자동 동기화: `python archive/build_db.py`
+- DB만 다시 만들기: `python archive/build_db.py --db-only`
+- `main`에 시험지/DB 변경이 들어오면 GitHub Actions가 같은 동기화를 실행하고 생성 산출물을 자동 커밋한다.
+
+
 ## Common pipeline quality closure
 
 New archive work uses [pipeline-core](pipeline-core/README.md) for typed facts,

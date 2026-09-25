@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "m1-ab-comparison-plan-v1",
+  "batchNo": 2,
+  "denominator": 24,
+  "comparisonRule": "Compare mathematical goal, primary method, decisive step, L1/L2, L3/L4 semantic boundary, CrossConcept, HOLD and ROUTE_OUT. Candidate key spelling differences alone do not create conflicts. Condition and IntegrationPattern differences remain for root gate unless coupled to listed semantic conflicts.",
+  "conflicts": [
+    { "sourceOrdinal": 3, "reason": "A separates exponent/repeated-factor equality checking from #4; B groups #3 and #4 under prime-factorization validity checking. Evaluate reuse with B01 factor-equality L3." },
+    { "sourceOrdinal": 4, "reason": "A treats incorrect numeric prime factorization as a distinct L3; B groups it with #3 equality validation. The reusable L3 boundary is disputed." },
+    { "sourceOrdinal": 9, "reason": "A separates sum of extrema of a fixed rational list from #22; B shares a sum-of-extreme-values L3 across the two source structures." },
+    { "sourceOrdinal": 15, "reason": "A gives reciprocal-product evaluation a distinct L3; B groups #15, #16 and #18 as rational arithmetic value. The L3/L4 compression boundary is disputed." },
+    { "sourceOrdinal": 16, "reason": "A gives signed rational summation a distinct L3; B groups it with reciprocal product and nested quotient in a broad rational-arithmetic L3." },
+    { "sourceOrdinal": 18, "reason": "A gives nested rational operation evaluation a distinct L3; B groups it with #15 and #16 under rational-arithmetic value." },
+    { "sourceOrdinal": 19, "reason": "A reuses ACTIVE PT_SET_CARDINALITY and inclusion-exclusion template from another curriculum, proposing M1 binding; B treats periodic schedule/LCM attendance counting as its own primary. Existing canonical reuse versus curriculum overreach needs blind judgment." },
+    { "sourceOrdinal": 20, "reason": "A places parity-filtered factor-pair recovery in M1-01 with CC_NUMBER_PARITY; B places it in M1-02 and adds divisor/multiple as another CrossConcept. Primary parent and CrossConcept roles conflict." },
+    { "sourceOrdinal": 22, "reason": "A separates sign-assignment extrema from #9 fixed-list extrema; B shares sum-of-extreme-values L3 while L4 captures the sign-choice structure." }
+  ],
+  "nameOnlyOrEquivalentOrdinals": [1, 2, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17, 21, 23, 24],
+  "rootGateDifferencesOutsideCTrigger": [
+    { "sourceOrdinal": 10, "field": "conditionKeys", "note": "B adds natural-number condition to bounded prime count; A retains range only." },
+    { "sourceOrdinal": 11, "field": "integrationPattern", "note": "A NONE, B SEQUENTIAL for reversing an add-for-subtract error." },
+    { "sourceOrdinal": 12, "field": "conditionKeys", "note": "A marks natural recipient count decisive; B uses no Condition." },
+    { "sourceOrdinal": 23, "field": "integrationPattern", "note": "A INTERDEPENDENT, B SEQUENTIAL for sum/product/noncoprimality constraints." }
+  ]
+}

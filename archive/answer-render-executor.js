@@ -35,6 +35,7 @@
                         grid.appendChild(u);
                         return;
                     }
+                    u.style.setProperty('--archive2-mobile-answer-order', String(start + idx));
                     const num = deps.getDisplayNumber ? deps.getDisplayNumber(chunk[idx], start + idx) : start + idx + 1;
                     if (num % 4 === 0) u.classList.add('group-end');
                     const sourceRef = deps.getArchiveQuestionSourceRef(chunk[idx], start + idx);

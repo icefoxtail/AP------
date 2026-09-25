@@ -57,7 +57,9 @@ assert(
   'OMR answer/solution review buttons should show for archive-backed middle and high school exams and restore mixed snapshots'
 );
 
+const repairHelper = studentPortal.match(/function repairIssuedStudentReviewSnapshot\(payload\) \{[\s\S]*?\n    \}/);
 const restoreHelper = studentPortal.match(/function restoreMixedOmrPayload\(exam\) \{[\s\S]*?\n    \}/);
+assert(repairHelper, 'issued review snapshot repair helper should exist');
 assert(restoreHelper, 'mixed restore helper should exist');
 const stored = new Map();
 const context = {
@@ -67,7 +69,7 @@ const context = {
   localStorage: { setItem: (key, value) => stored.set(key, value) }
 };
 vm.createContext(context);
-vm.runInContext(restoreHelper[0], context, { filename: 'student-portal-review-restore.js' });
+vm.runInContext(repairHelper[0] + '\n' + restoreHelper[0], context, { filename: 'student-portal-review-restore.js' });
 assert.strictEqual(
   context.restoreMixedOmrPayload({ archive_file: 'exams/sample.js' }),
   true,
@@ -85,6 +87,16 @@ assert.strictEqual(stored.has('mixedQuestions_sample-key'), true, 'mixed questio
 const originalSnapshot={questions:[{id:1,content:'원본 문항'}],meta:{sourceKind:'archive2-original',sourceArchiveFile:'sample.js',questionUids:['canonical-original']}};
 assert.strictEqual(context.restoreMixedOmrPayload({assignment_id:'original-assignment',archive_file:'exams/sample.js',mixed_payload_json:JSON.stringify(originalSnapshot)}),true);
 assert.deepStrictEqual(JSON.parse(stored.get('archive2Original_original-original-assignment')),originalSnapshot,'Archive 2.0 originals must restore the issued content and identity before opening the same engine');
+const hyocheonLegacySolution='각 $a$에 대해 $b=2−|4−a|$를 계산하면 $(−2,−4),(−1,−3),(0,−2),(1,−1),(2,0),(3,1),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$이다.\n따라서 구하는 순서쌍은 $(3,1),(2,0),(1,−1),(0,−2),(−1,−3),(−2,−4),(5,1),(6,0),(7,−1),(8,−2),(9,−3)$이다.';
+const hyocheonSnapshot={questions:[{id:23,content:'원본 문항',answer:'원본 정답',solution:hyocheonLegacySolution,solutionImage:'assets/q23-solution.svg'}],meta:{sourceKind:'archive2-original',sourceArchiveFile:'original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js',questionUids:['hyocheon-q23']}};
+assert.strictEqual(context.restoreMixedOmrPayload({assignment_id:'hyocheon-existing',archive_file:'exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js',mixed_payload_json:JSON.stringify(hyocheonSnapshot)}),true);
+const repairedHyocheon=JSON.parse(stored.get('archive2Original_original-hyocheon-existing'));
+assert(repairedHyocheon.questions[0].solution.includes('$(−2,−4),(−1,−3),(0,−2),(1,−1),(2,0),(3,1)$,\n$(5,1),(6,0),(7,−1),(8,−2),(9,−3)$'),'existing Hyocheon q23 calculation run should be split without changing values');
+assert(repairedHyocheon.questions[0].solution.includes('$(3,1),(2,0),(1,−1),(0,−2),(−1,−3),(−2,−4)$,\n$(5,1),(6,0),(7,−1),(8,−2),(9,−3)$'),'existing Hyocheon q23 final answer run should be split without changing values');
+assert.strictEqual(repairedHyocheon.questions[0].content,'원본 문항');
+assert.strictEqual(repairedHyocheon.questions[0].answer,'원본 정답');
+assert.strictEqual(repairedHyocheon.questions[0].solutionImage,'assets/q23-solution.svg');
+
 assert.strictEqual(
   context.restoreMixedOmrPayload({ archive_file: 'MIXED:empty', mixed_payload_json: '' }),
   false,

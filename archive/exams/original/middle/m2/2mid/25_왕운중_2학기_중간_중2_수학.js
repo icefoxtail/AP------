@@ -851,8 +851,8 @@ window.questionBank = [
     standardUnitKey: "M2-05",
     standardUnit: "도형의 성질",
     standardUnitOrder: 5,
-    subUnitKey: "M2-05-TRIANGLE_PROPERTIES",
-    subUnit: "삼각형의 성질",
+    subUnitKey: "M2-05-QUADRILATERAL_PROPERTIES",
+    subUnit: "사각형의 성질",
     questionType: "서술형",
     layoutTag: "grid",
     tags: [
