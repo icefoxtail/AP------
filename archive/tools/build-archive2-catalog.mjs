@@ -309,9 +309,13 @@ const packed = {
   ),
 };
 if (process.argv.includes("--check")) {
+  const actual = fs.existsSync(target)
+    ? fs.readFileSync(target, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  const expected = JSON.stringify(packed) + "\n";
   if (
-    !fs.existsSync(target) ||
-    fs.readFileSync(target, "utf8") !== JSON.stringify(packed) + "\n"
+    actual === null ||
+    actual !== expected
   )
     throw new Error("Archive 2.0 catalog projection is stale");
 } else fs.writeFileSync(target, JSON.stringify(packed) + "\n");
