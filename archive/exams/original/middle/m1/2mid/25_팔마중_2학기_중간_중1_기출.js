@@ -29,12 +29,21 @@ window.questionBank = [
       "28"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 입체도형에서 교점은 꼭짓점, 교선은 모서리로 생각하여 빠짐없이 센다.\n그림의 교점은 $A,B,C,D,E,F,G,I$의 $8$개이므로 $a=8$이다.\n교선은 위쪽 둘레 $4$개, 아래쪽 둘레 $4$개, 위아래를 잇는 교선 $4$개로 모두 $12$개이므로 $b=12$이다.\n따라서 $a+b=8+12=20$이므로 정답은 ①이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q01.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -66,12 +75,22 @@ window.questionBank = [
       "$\\overleftrightarrow{CD}$"
     ],
     "answer": "①, ⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①, ⑤이다.",
+    "solution": "[키포인트] 직선은 두 점을 어떤 순서로 잡아도 같은 직선이지만, 반직선과 선분은 나타내는 대상이 다르다.\n네 점 $A,B,C,D$는 모두 직선 $l$ 위에 있다.\n① $\\overleftrightarrow{AB}$는 직선 $l$ 전체를 나타낸다.\n⑤ $\\overleftrightarrow{CD}$도 같은 직선 $l$ 전체를 나타낸다.\n따라서 $\\overleftrightarrow{AB}=\\overleftrightarrow{CD}$이다.\n② $\\overrightarrow{BC}$는 $B$에서 $C,D$ 쪽으로 뻗고, ③ $\\overrightarrow{CB}$는 $C$에서 $B,A$ 쪽으로 뻗으므로 서로 다르다.\n④ $\\overline{AB}$는 두 끝점 $A,B$ 사이의 선분이므로 직선과 같지 않다.\n따라서 서로 같은 것은 ①, ⑤이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q02.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q02-solution.svg",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -102,12 +121,22 @@ window.questionBank = [
       "48"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 중점은 선분의 길이를 정확히 반으로 나눈다.\n$\\overline{BC}=x\\mathrm{cm}$라고 하면 $\\overline{AB}=3x\\mathrm{cm}$이다.\n점 $M$은 $\\overline{AB}$의 중점이므로\n$\\overline{MB}=\\dfrac{3x}{2}$이다.\n점 $N$은 $\\overline{BC}$의 중점이므로\n$\\overline{BN}=\\dfrac{x}{2}$이다.\n그림에서 $M-B-N$의 순서로 놓여 있으므로\n$\\overline{MN}=\\overline{MB}+\\overline{BN}\n=\\dfrac{3x}{2}+\\dfrac{x}{2}=2x$이다.\n$2x=28$이므로 $x=14$이다.\n따라서 $\\overline{AB}=3x=42\\mathrm{cm}$이므로 정답은 ②이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q03.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q03-solution.svg",
+    "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -139,13 +168,23 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 수직이등분선은 한 선분에 수직이면서 그 선분의 중점을 지난다.\n직선 $l$이 $\\overline{AB}$의 수직이등분선이고 교점이 $M$이므로\n$l\\perp\\overline{AB}$이고 $M$은 $\\overline{AB}$의 중점이다.\nㄱ. $l\\perp\\overline{AB}$이므로 옳다.\nㄴ. $\\overline{AM}$은 $\\overline{AB}$의 절반이고, $\\overline{PM}$은 점 $P$의 위치에 따라 달라지므로 $\\overline{AM}=\\overline{PM}$이라고 할 수 없다. 옳지 않다.\nㄷ. $PM\\perp AB$이므로 점 $P$와 직선 $AB$ 사이의 거리는 $\\overline{PM}$의 길이이다. 옳다.\nㄹ. 점 $P$에서 직선 $AB$에 내린 수선이 $PM$이므로 수선의 발은 $M$이다. 옳다.\n따라서 옳은 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q04.png",
     "imageSize": "tall",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q04-solution.svg",
+    "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -176,12 +215,22 @@ window.questionBank = [
       "$140^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 수직인 두 직선이 만드는 $90^\\circ$와 맞꼭지각을 이용해 각의 방정식을 세운다.\n$\\angle BOC=x^\\circ$라고 하자.\n$OC\\perp AD$이므로 $\\angle DOC=90^\\circ$이다.\n따라서\n$\\angle BOD=\\angle BOC+\\angle COD=x+90^\\circ$이다.\n$B,O,E$가 한 직선 위에 있으므로\n$\\angle DOE=180^\\circ-\\angle BOD\n=90^\\circ-x$이다.\n조건에서 $2\\angle BOC=\\angle DOE$이므로\n$2x=90-x$,\n$3x=90$,\n$x=30$이다.\n따라서 $\\angle BOD=120^\\circ$이다.\n$\\angle AOE$와 $\\angle BOD$는 맞꼭지각이므로\n$\\angle AOE=120^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q05.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q05-solution.svg",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -211,12 +260,21 @@ window.questionBank = [
       "ㄴ, ㄹ"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 공간에서 서로 다른 두 직선은 만나거나, 평행하거나, 꼬인 위치에 있을 수 있다.\nㄱ. 꼬인 위치의 두 직선은 같은 평면 위에 있지 않고 서로 만나지 않는다. 옳지 않다.\nㄴ. 한 점에서 만나는 두 직선은 그 두 직선을 포함하는 한 평면을 정할 수 있다. 옳다.\nㄷ. 서로 만나지 않는 두 직선은 평행할 수도 있지만 꼬인 위치일 수도 있다. 따라서 항상 평행한 것은 아니다. 옳지 않다.\nㄹ. 평행한 두 직선은 정의상 한 평면 위에 있고 서로 만나지 않는다. 옳다.\n따라서 옳은 것은 ㄴ, ㄹ이므로 정답은 ⑤이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q06.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -248,12 +306,21 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 정육면체의 한 모서리를 기준으로 만나는 모서리, 평행한 모서리, 꼬인 모서리를 나누어 센다.\n정육면체의 한 모서리 $\\overline{AB}$와 한 끝점에서 만나는 모서리는 $A$에서 $2$개, $B$에서 $2$개로 모두 $4$개이다.\n$\\overline{AB}$와 평행한 다른 모서리는 $3$개이다.\n정육면체의 모서리는 모두 $12$개이므로, $\\overline{AB}$ 자신을 제외한 나머지 $11$개 중\n만나는 $4$개와 평행한 $3$개를 빼면 꼬인 위치의 모서리는\n$11-4-3=4$개이다.\n따라서 꼬인 위치의 모서리 수와 평행한 모서리 수의 합은\n$4+3=7$이므로 정답은 ②이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q07.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -285,12 +352,22 @@ window.questionBank = [
       "$260^\\circ$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 평행선에서는 같은 방향의 기울기를 옮길 수 있고, 같은 쪽 안쪽각의 합은 $180^\\circ$이다.\n왼쪽 그림에서 $l\\parallel m$이다.\n위쪽 선분이 평행선과 이루는 예각이 $15^\\circ$, 아래쪽 선분이 평행선과 이루는 예각이 $45^\\circ$이므로\n두 선분 사이의 각은\n$\\angle x=15^\\circ+45^\\circ=60^\\circ$이다.\n오른쪽 그림에서 $n\\parallel o$이고 $y,z$는 같은 쪽 안쪽각이므로\n$\\angle y+\\angle z=180^\\circ$이다.\n따라서\n$\\angle x+\\angle y+\\angle z\n=60^\\circ+180^\\circ\n=240^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q08.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q08-solution.svg",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -320,11 +397,20 @@ window.questionBank = [
       "$\\overline{BC}\\to\\angle B\\to\\overline{AB}$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 삼각형을 작도하려면 이미 정해진 점이나 변을 기준으로 다음 조건을 차례로 옮겨야 한다.\n①은 $\\angle A$를 그은 뒤 아직 점 $B$의 위치가 정해지지 않은 상태에서 $\\angle B$를 먼저 그리려고 하므로 작도 순서가 바르지 않다.\n②는 $\\angle A$를 만든 뒤 그 한 변 위에 길이 $AC$를 옮겨 점 $C$를 정하고, 점 $C$에서 $\\angle C$를 그릴 수 있다.\n③은 $AB$를 그린 뒤 점 $A$에서 각을 만들고 그 반직선 위에 $AC$를 옮길 수 있다.\n④는 세 변의 길이를 차례로 옮기는 SSS 작도이다.\n⑤는 $BC$를 그린 뒤 점 $B$에서 각을 만들고 그 반직선 위에 $BA$를 옮길 수 있다.\n따라서 바르지 않은 것은 ①이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -354,12 +440,22 @@ window.questionBank = [
       "작도 순서는 ㅂ $\\to$ ㄱ $\\to$ ㄷ $\\to$ ㄴ $\\to$ ㄹ $\\to$ ㅁ이다."
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 같은 각을 옮길 때에는 먼저 같은 반지름의 호를 그리고, 그 호에서 생긴 두 점 사이의 거리를 그대로 옮긴다.\n원래 각에서 점 $O$를 중심으로 한 호가 두 변과 만나는 점이 $A,B$이다.\n따라서 $\\overline{OA}=\\overline{OB}$이므로 ①은 옳다.\n새 각에서도 같은 컴퍼스 벌림으로 점 $P$를 중심으로 호를 그리므로\n$\\overline{PC}=\\overline{OB}$이다. 따라서 ④도 옳다.\n이후 $\\overline{AB}$의 길이를 컴퍼스로 옮겨 새 호 위에 점 $D$를 정하므로\n$\\angle AOB=\\angle CPD$가 된다. 따라서 ②도 옳다.\n하지만 $\\overline{OA}$는 호의 반지름이고 $\\overline{AB}$는 그 호 위 두 점을 잇는 길이이므로 일반적으로 같지 않다.\n따라서 옳지 않은 것은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q10.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q10-solution.svg",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -390,12 +486,21 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 삼각형이 하나로 정해지려면 먼저 삼각형이 실제로 만들어지고, 크기와 모양까지 하나로 결정되어야 한다.\nㄱ. 세 변이 $3,6,9\\mathrm{cm}$이면 $3+6=9$이므로 삼각형이 만들어지지 않는다. 따라서 하나로 결정되지 않는다.\nㄴ. $AC=4\\mathrm{cm}$, $BC=2\\mathrm{cm}$와 그 끼인각 $\\angle C=35^\\circ$가 주어졌으므로 두 변과 그 끼인각에 의해 하나로 정해진다.\nㄷ. $AB=5\\mathrm{cm}$와 두 각 $\\angle A=40^\\circ$, $\\angle C=70^\\circ$가 주어지면 나머지 각 $\\angle B=70^\\circ$도 정해지므로 하나로 정해진다.\nㄹ. 세 각의 크기만 주어지면 모양은 같아도 크기가 다른 삼각형을 여러 개 만들 수 있으므로 하나로 정해지지 않는다.\n따라서 하나로 결정되지 않는 것은 ㄱ, ㄹ이므로 정답은 ②이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q11.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -427,12 +532,22 @@ window.questionBank = [
       "$\\angle B=\\angle D$"
     ],
     "answer": "②, ③",
-    "solution": "주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②, ③이다.",
+    "solution": "[키포인트] 이미 주어진 한 변과 한 각에 조건 하나를 더해 합동 조건을 완성한다.\n주어진 것은\n$\\overline{BC}=\\overline{EF}$,\n$\\angle C=\\angle F$이다.\n② $\\overline{AC}=\\overline{DF}$가 추가되면\n두 변 $BC,AC$와 그 끼인각 $C$가 각각 같으므로 SAS 합동이다.\n③ $\\angle A=\\angle D$가 추가되면\n두 삼각형의 나머지 각도 $\\angle B=\\angle E$로 같아진다.\n따라서 한 변 $BC=EF$와 그 양 끝 각 $B=E$, $C=F$가 각각 같으므로 합동이다.\n①과 ④는 주어진 각 $C,F$와 끼인 관계가 맞지 않아 합동을 보장하지 않고,\n⑤는 대응해야 할 각의 위치가 맞지 않는다.\n따라서 필요한 조건은 ②, ③이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q12.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q12-solution.svg",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -465,12 +580,22 @@ window.questionBank = [
       "80"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 합동 기호에 적힌 꼭짓점의 순서대로 대응점을 맞춘다.\n$\\triangle ABC\\equiv\\triangle DEF$이므로\n$A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$이다.\n그림에서 $\\angle B=55^\\circ$, $\\angle F=50^\\circ$이므로\n대응각에 의해 $\\angle C=50^\\circ$이다.\n따라서\n$a=\\angle A\n=180^\\circ-55^\\circ-50^\\circ\n=75^\\circ$이다.\n또 $\\overline{BC}$의 대응변은 $\\overline{EF}$이고\n$\\overline{BC}=5\\mathrm{cm}$이므로 $b=5$이다.\n따라서 $a+b=75+5=80$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q13.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q13-solution.svg",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -501,12 +626,22 @@ window.questionBank = [
       "$155^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 정사각형의 변과 정삼각형의 변이 같다는 점을 이용하면 두 이등변삼각형이 생긴다.\n정사각형이므로 $AB=BC=CD$이고,\n정삼각형이므로 $BE=CE=BC$이다.\n따라서 $AB=BE$이므로 $\\triangle ABE$는 이등변삼각형이다.\n$\\angle ABE=\\angle ABC-\\angle EBC\n=90^\\circ-60^\\circ=30^\\circ$이므로\n$\\angle EAB=\\dfrac{180^\\circ-30^\\circ}{2}=75^\\circ$이다.\n같은 방법으로 $CD=CE$이므로 $\\triangle CDE$도 이등변삼각형이고,\n$\\angle DCE=90^\\circ-60^\\circ=30^\\circ$이다.\n따라서\n$\\angle DEC=\\dfrac{180^\\circ-30^\\circ}{2}=75^\\circ$이다.\n그러므로\n$\\angle EAB+\\angle DEC=75^\\circ+75^\\circ=150^\\circ$이므로 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q14.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q14-solution.svg",
+    "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -538,12 +673,21 @@ window.questionBank = [
       "$415^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 그림에서 왼쪽과 오른쪽의 삼각형에 각각 삼각형의 내각의 합을 적용한다.\n왼쪽 삼각형에서\n$\\angle a+\\angle b+32^\\circ=180^\\circ$이므로\n$\\angle a+\\angle b=148^\\circ$이다.\n오른쪽 삼각형에서\n$\\angle c+\\angle d+23^\\circ=180^\\circ$이므로\n$\\angle c+\\angle d=157^\\circ$이다.\n따라서\n$\\angle a+\\angle b+\\angle c+\\angle d\n=148^\\circ+157^\\circ\n=305^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q15.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 16,
@@ -574,12 +718,21 @@ window.questionBank = [
       "정십각형"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 정다각형의 한 내각과 그에 이웃한 외각의 합은 $180^\\circ$이고, 외각의 합은 항상 $360^\\circ$이다.\n한 내각과 이웃한 외각의 크기의 비가 $4:1$이므로\n외각을 $x^\\circ$라고 하면 내각은 $4x^\\circ$이다.\n$4x+x=180$이므로 $5x=180$, $x=36$이다.\n정다각형의 변의 수를 $n$이라 하면\n$36n=360$이므로 $n=10$이다.\n따라서 이 다각형은 정십각형이므로 정답은 ⑤이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q16.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -611,12 +764,22 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 먼저 $\\triangle ABC$의 각을 구하고, 평행선을 이용해 이등변삼각형 $ADE$의 꼭지각으로 옮긴다.\n$\\triangle ABC$에서\n$\\angle A=180^\\circ-20^\\circ-30^\\circ=130^\\circ$이다.\n점 $B,A,D$가 한 직선 위에 있으므로\n$\\angle DAC=180^\\circ-130^\\circ=50^\\circ$이다.\n또 $l\\parallel m$이므로 $DE\\parallel AC$이고\n$\\angle ADE=\\angle DAC=50^\\circ$이다.\n$\\overline{DA}=\\overline{DE}$이므로 $\\triangle ADE$는 이등변삼각형이다.\n따라서 두 밑각의 크기는 같아서\n$\\angle AED\n=\\dfrac{180^\\circ-50^\\circ}{2}\n=65^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q17.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q17-solution.svg",
+    "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+    "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -646,11 +809,20 @@ window.questionBank = [
       "$1440^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] $n$각형의 대각선의 총개수는 $\\dfrac{n(n-3)}{2}$개이다.\n변의 수를 $n$이라 하면\n$\\dfrac{n(n-3)}{2}=20$이다.\n$n(n-3)=40$이므로\n$n^2-3n-40=0$,\n$(n-8)(n+5)=0$이다.\n$n$은 자연수이므로 $n=8$이다.\n따라서 이 다각형은 팔각형이고 내각의 합은\n$(8-2)\\times180^\\circ=1080^\\circ$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -680,12 +852,21 @@ window.questionBank = [
       "84"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "[키포인트] 선분 하나는 원 위의 서로 다른 두 점을 고르면 하나씩 정해진다.\n첫 번째 점은 $12$개 중에서 고르고, 두 번째 점은 남은 $11$개 중에서 고르면\n$12\\times11$가지가 된다.\n하지만 같은 선분을 양 끝점의 순서만 바꾸어 두 번씩 센 것이므로\n선분의 개수는\n$\\dfrac{12\\times11}{2}=66$개이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q19.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+    "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_SEGMENT_COUNT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -717,12 +898,22 @@ window.questionBank = [
       "$21^\\circ$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "[키포인트] 정오각형의 한 외각은 $72^\\circ$이므로, 변의 방향은 꼭짓점을 지날 때마다 $72^\\circ$씩 바뀐다.\n정오각형의 한 외각은\n$\\dfrac{360^\\circ}{5}=72^\\circ$이다.\n아래쪽 변이 직선 $m$과 이루는 각이 $19^\\circ$이다.\n정오각형의 변을 아래쪽에서 위쪽으로 따라가면 변의 방향이 꼭짓점 두 곳을 지나며\n$72^\\circ+72^\\circ=144^\\circ$만큼 바뀐다.\n따라서 위쪽 변의 진행 방향이 수평선과 이루는 각은\n$180^\\circ-(19^\\circ+144^\\circ)\n=17^\\circ$이다.\n$l\\parallel m$이므로 위쪽 수평선과 이루는 각도 같아서\n$\\angle x=17^\\circ$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q20.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q20-solution.svg",
+    "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -748,13 +939,23 @@ window.questionBank = [
     "content": "서술형 1. 아래 그림에서 $\\angle x$의 값을 구하고 그 풀이과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$62^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $62^\\circ$이다.",
+    "solution": "[키포인트] 왼쪽 삼각형에서 교점의 각을 먼저 구한 뒤 맞꼭지각으로 오른쪽 삼각형에 옮긴다.\n왼쪽 삼각형의 나머지 한 각은\n$180^\\circ-68^\\circ-48^\\circ\n=64^\\circ$이다.\n이 각과 오른쪽 삼각형의 $\\angle COD$는 맞꼭지각이므로\n$\\angle COD=64^\\circ$이다.\n$\\triangle COD$에서\n$64^\\circ+54^\\circ+x=180^\\circ$이므로\n$x=180^\\circ-118^\\circ\n=62^\\circ$이다.\n따라서 $\\angle x=62^\\circ$이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q21.png",
     "imageSize": "full",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q21-solution.svg",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -780,12 +981,22 @@ window.questionBank = [
     "content": "서술형 2. 다음 그림과 같이 $\\triangle ABC$의 두 변 $\\overline{AB}$와 $\\overline{AC}$를 각각 한 변으로 하는 정삼각형 $BAD$와 $ACE$를 그렸다.<br>① $\\triangle ABE$와 합동인 삼각형을 찾고,<br>② 합동 조건을 적절한 근거를 들어 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$\\triangle ABE\\equiv\\triangle ADC$ (SAS 합동)",
-    "solution": "풀이: 주어진 변의 길이와 각의 관계를 대응시켜 SSS, SAS, ASA(AAS) 중 해당 조건을 적용한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $\\triangle ABE\\equiv\\triangle ADC$ (SAS 합동)이다.",
+    "solution": "[키포인트] 두 정삼각형에서 같은 길이의 두 변과 $60^\\circ$를 이용해 SAS 합동을 만든다.\n$\\triangle BAD$가 정삼각형이므로\n$AB=AD$이고 $\\angle DAB=60^\\circ$이다.\n$\\triangle ACE$가 정삼각형이므로\n$AC=AE$이고 $\\angle CAE=60^\\circ$이다.\n또\n$\\angle BAE\n=\\angle BAC+\\angle CAE\n=\\angle BAC+60^\\circ$이고,\n$\\angle DAC\n=\\angle DAB+\\angle BAC\n=60^\\circ+\\angle BAC$이다.\n따라서 $\\angle BAE=\\angle DAC$이다.\n그러므로 $\\triangle ABE$와 $\\triangle ADC$에서\n$AB=AD$,\n$AE=AC$,\n그 끼인각 $\\angle BAE=\\angle DAC$이므로\nSAS 합동이다.\n따라서 $\\triangle ABE\\equiv\\triangle ADC$이다.",
     "image": "assets/images/25_팔마중_2학기_중간_중1_기출/q22.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q22-solution.svg",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 23,
@@ -810,11 +1021,20 @@ window.questionBank = [
     "content": "서술형 3. 한 외각의 크기가 $15^\\circ$인 정다각형의 꼭짓점의 개수를 $x$개, 이 정다각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수를 $y$개, 이 정다각형의 한 꼭짓점에서 대각선을 그어 만들어지는 삼각형의 개수를 $z$개라 할 때, $x+y+z$의 값을 구하고 그 풀이과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$67$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 $67$이다.",
+    "solution": "[키포인트] 정다각형의 한 외각으로 꼭짓점 수를 구한 뒤, 한 꼭짓점에서 그을 수 있는 대각선과 만들어지는 삼각형 수를 차례로 구한다.\n한 외각이 $15^\\circ$이므로 꼭짓점의 개수는\n$x=\\dfrac{360}{15}=24$개이다.\n$n$각형의 한 꼭짓점에서는 자기 자신과 양옆 두 꼭짓점을 제외한\n$n-3$개의 꼭짓점에 대각선을 그을 수 있으므로\n$y=24-3=21$이다.\n또 한 꼭짓점에서 대각선을 모두 그으면 $n-2$개의 삼각형으로 나뉘므로\n$z=24-2=22$이다.\n따라서\n$x+y+z=24+21+22=67$이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -839,10 +1059,20 @@ window.questionBank = [
     "content": "서술형 4. 어떤 정다각형의 한 꼭짓점에서 2개의 대각선을 그었더니 삼각형, 사각형, 오각형의 세 부분으로 나누어졌다.<br>① 이 정다각형의 이름을 쓰고,<br>② 이 정다각형의 내각의 합과 외각의 합을 각각 구하고 그 풀이과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "① 정팔각형, ② 내각의 합 $1080^\\circ$, 외각의 합 $360^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ① 정팔각형, ② 내각의 합 $1080^\\circ$, 외각의 합 $360^\\circ$이다.",
+    "solution": "[키포인트] 한 꼭짓점에서 그은 두 대각선은 각각 두 영역의 공통변이 되므로, 나누어진 도형들의 변 수를 더할 때 두 대각선이 두 번씩 세어진다.\n원래 정다각형의 변의 수를 $n$이라 하자.\n삼각형, 사각형, 오각형의 변 수를 모두 더하면\n$3+4+5=12$이다.\n이 합에는 원래 다각형의 $n$개 변과, 두 대각선이 각각 두 번씩 포함된다.\n따라서\n$n+2\\times2=12$,\n$n+4=12$이므로\n$n=8$이다.\n따라서 정팔각형이다.\n정팔각형의 내각의 합은\n$(8-2)\\times180^\\circ=1080^\\circ$이고,\n모든 다각형의 외각의 합은 $360^\\circ$이다.\n따라서 ① 정팔각형, ② 내각의 합 $1080^\\circ$, 외각의 합 $360^\\circ$이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_중간_중1_기출/q24-solution.svg",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
