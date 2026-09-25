@@ -26,6 +26,11 @@ const mapByUid=new Map(mapping.uidMappings.map((r)=>[r.questionUid,r]));
 const pathByUid=new Map(paths.records.map((r)=>[r.questionUid,r]));
 const labelByKey=new Map(labelMaster.map((r)=>[r.key,r]));
 const qualityByUid=new Map();
+const basicParentBySubUnit=new Map([
+  ['M1-04-COORDINATE_PLANE',['M1-1','좌표평면과 그래프','좌표와 그래프']],
+  ['M1-06-PLANE_FIGURE_MEASURE',['M1-2','평면도형','다각형']],
+  ['M1-06-POLYGON_CIRCLE',['M1-2','평면도형','다각형']]
+]);
 for(let b=1;b<=16;b++){
   const exam=input.batches.find((r)=>r.batchNo===b);
   const p=path.join(root,exam.artifactPath,'SOURCE_QUALITY.jsonl');
@@ -72,18 +77,24 @@ for(const record of metadata.records){
       directPath++;
     }else{
       for(const f of ['curriculumKey','courseKey','L1','L2','L3','L4'])delete record[f];
-      record.curriculumApplicability='HOLD';record.defaultSelectable=false;
+      const basicParent=quality.disposition==='HOLD_RESOLVED_NO_SOURCE_MUTATION'
+        ? basicParentBySubUnit.get(record.subUnitKey) : null;
+      if(basicParent){
+        Object.assign(record,{curriculumKey:record.curriculum,courseKey:basicParent[0],L1:basicParent[1],L2:basicParent[2]});
+      }
+      record.curriculumApplicability=basicParent?'DEFAULT_SCOPE':'HOLD';record.defaultSelectable=Boolean(basicParent);
       record.rpmPathHoldReason=rpm.semanticReason;
       rpmHold++;
     }
     const isQualityHold=quality.runtimeSelectableBeforeRepair===false || quality.disposition==='SOLUTION_REPAIR_REQUIRED';
     if(isQualityHold)qualityHold++;
-    record.reviewStatus=(rpm.rpmPathStatus==='DIRECT'&&!isQualityHold)?'reviewed_pass':'reviewed_hold';
+    const basicSelectable=!isQualityHold&&(rpm.rpmPathStatus==='DIRECT'||Boolean(record.L1&&record.L2));
+    record.reviewStatus=basicSelectable?'reviewed_pass':'reviewed_hold';
     record.tagConfidence='independent_semantic_consensus';
     record.tagStatus='meta_foundation_final';
     record.metadataStatus=record.reviewStatus==='reviewed_pass'?'approved_full':'approved_full_with_selectability_hold';
     record.fieldStatus={...record.fieldStatus,standardUnit:'approved_source',subUnit:'approved_source',problemType:'approved_semantic',template:'approved_semantic',crossConcept:'approved_semantic',condition:'approved_semantic',integrationPattern:'approved_semantic',difficulty:'approved_blind_recheck'};
-    record.metaFoundationHoldReason=quality.disposition==='SOLUTION_REPAIR_REQUIRED'?quality.issueType:(rpm.rpmPathStatus!=='DIRECT'?rpm.semanticReason:null);
+    record.metaFoundationHoldReason=quality.disposition==='SOLUTION_REPAIR_REQUIRED'?quality.issueType:(basicSelectable?null:rpm.semanticReason);
   }else{
     for(const f of ['curriculumKey','courseKey','L1','L2','L3','L4'])delete record[f];
     record.problemTypeKey='';record.templateKey='';record.crossConceptKeys=[];record.conditionKeys=[];record.integrationPattern='NONE';

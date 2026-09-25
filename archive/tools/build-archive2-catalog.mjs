@@ -28,6 +28,7 @@ const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
+const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -121,7 +122,7 @@ for (const exam of exams) {
       meta &&
       core.normalizeFile(meta.sourceArchiveFile) === file &&
       meta.sourceOrdinal === ordinal;
-    const node = validJoin && paths.get(core.pathKey(meta));
+    const directNode = validJoin && paths.get(core.pathKey(meta));
     const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:MIDDLE1@");
     const foundationPresent = foundationScoped && Boolean(meta?.problemTypeKey || meta?.templateKey);
     const foundationValid = !foundationPresent ? null : Boolean(
@@ -131,6 +132,10 @@ for (const exam of exams) {
       (meta.conditionKeys || []).every((key) => foundationConditionKeys.has(key)) &&
       foundationBindingKeys.has([meta.curriculum, meta.standardUnitKey, meta.subUnitKey, meta.problemTypeKey].join("\u0000"))
     );
+    const parentOnlyFoundation = foundationValid === true &&
+      meta.rpmPathStatus === "HOLD_NO_EQUIVALENT_PATH" &&
+      meta.reviewStatus === "reviewed_pass" && !meta.L3 && !meta.L4;
+    const node = directNode || (parentOnlyFoundation && parentPaths.get(core.pathKey(meta, 4)));
     const metadataConflicts = [];
     const semantic = {};
     for (const field of core.META_FIELDS) {

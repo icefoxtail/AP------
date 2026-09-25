@@ -47,7 +47,12 @@ for(const s of input.rows){
     if((r.crossConceptKeys||[]).some((k)=>!concepts.has(k)))failures.push(`concept:${s.questionUid}`);
     if((r.conditionKeys||[]).some((k)=>!conditions.has(k)))failures.push(`condition:${s.questionUid}`);
   }else if(r.problemTypeKey||r.templateKey||r.foundationTaxonomyStatus!=='HOLD')failures.push(`heldMetadata:${s.questionUid}`);
-  const selectable=Boolean(m&&r.reviewStatus==='reviewed_pass'&&r.rpmPathStatus==='DIRECT'&&r.defaultSelectable===true&&Number.isInteger(r.difficultyBucket));
+  const selectable=Boolean(m&&s.reviewStatus!=='HOLD'&&s.reviewStatus!=='ROUTE_OUT'&&
+    q.disposition!=='SOURCE_BLOCKED'&&q.disposition!=='SOLUTION_REPAIR_REQUIRED'&&
+    r.reviewStatus==='reviewed_pass'&&r.foundationTaxonomyStatus==='CONFIRMED'&&
+    r.curriculumKey&&r.courseKey&&r.L1&&r.L2&&
+    r.curriculumApplicability==='DEFAULT_SCOPE'&&r.defaultSelectable===true&&
+    Number.isInteger(r.difficultyBucket)&&r.difficultyBucket>=1&&r.difficultyBucket<=5);
   records.push({questionUid:s.questionUid,sourceArchiveFile:s.sourceArchiveFile,sourceOrdinal:s.sourceOrdinal,sourceFingerprint:s.sourceFingerprint,
     curriculum:r.curriculum,standardUnitKey:r.standardUnitKey,subUnitKey:r.subUnitKey,
     problemTypeKey:r.problemTypeKey||'',templateKey:r.templateKey||'',

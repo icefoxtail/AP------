@@ -43,8 +43,10 @@ test('curriculum rollout and explicit HOLDs retain correct Archive2 selectabilit
     if (catalogRow.curriculumKey) assert.equal(catalogRow.curriculumKey, sourceYear >= 25 ? '2022' : '2015');
     assert.equal(catalogRow.automatic, runtimeRow.runtimeSelectable);
     if (catalogRow.automatic) selectable++;
-    if (row.reviewStatus === 'HOLD' || row.reviewStatus === 'ROUTE_OUT' || runtimeRow.sourceQualityDisposition === 'SOLUTION_REPAIR_REQUIRED' || runtimeRow.rpmPathStatus === 'HOLD_NO_EQUIVALENT_PATH')
+    if (row.reviewStatus === 'HOLD' || row.reviewStatus === 'ROUTE_OUT' || runtimeRow.sourceQualityDisposition === 'SOLUTION_REPAIR_REQUIRED')
       assert.equal(catalogRow.automatic, false, row.questionUid);
+    if (runtimeRow.rpmPathStatus === 'HOLD_NO_EQUIVALENT_PATH')
+      assert.equal(catalogRow.automatic, runtimeRow.sourceQualityDisposition === 'HOLD_RESOLVED_NO_SOURCE_MUTATION', row.questionUid);
   }
-  assert.equal(selectable, 121);
+  assert.equal(selectable, 125);
 });
