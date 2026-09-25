@@ -36,9 +36,9 @@
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
     <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="layout-authority.js?v=20260911.5" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
+    <script src="layout-authority.js?v=20260924.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="layout-materializer.js?v=20260914.1"></script>
-    <script src="solution-render-executor.js?v=20260914.1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="solution-render-executor.js?v=20260924.2" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20260907.1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20260915.1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
@@ -381,7 +381,13 @@
 
         @media print { [data-archive-build-root], [data-archive-staging] { display:none !important; } }
     </style>
+    <script>
+        if (new URLSearchParams(window.location.search).get('archive2Context') === 'archive2') {
+            document.documentElement.dataset.archive2Context = 'archive2';
+        }
+    </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20260923.1">
 </head>
 <body>
     <div id="mode-ctrl">
@@ -2857,6 +2863,7 @@ function renderAnsLegacy(area, data, perPage = 40, ctx = null) {
                     grid.appendChild(u);
                     return;
                 }
+                u.style.setProperty('--archive2-mobile-answer-order', String(start + idx));
                 const num = start + idx + 1;
                 if (num % 4 === 0) u.classList.add('group-end'); // 4문제마다 채점 구분선
                 u.dataset.sourceRef = getArchiveQuestionSourceRef(chunk[idx], num - 1);

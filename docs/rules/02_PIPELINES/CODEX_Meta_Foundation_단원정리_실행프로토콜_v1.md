@@ -2,6 +2,7 @@
 
 - 적용일: 2026-09-21
 - 상태: `ACTIVE`
+- 최근 보강: 2026-09-22 — full-denominator GOAL/checkpoint batch + single semantic ledger completeness
 - 대상: Codex가 수행하는 JS Archive / Archive 2.0 Meta Foundation 단원 단위 정리 작업
 - 기본 실행: 최신 `origin/main` → 전용 작업 branch → GOAL 완주 → checkpoint/evidence 보존 → GPT 독립검수 → 사용자 승인 후 main 반영
 
@@ -100,6 +101,27 @@ checkpoint는 사용자 승인 대기 지점이 아니라 상태 보존·복구�
 
 Notion은 진행 checkpoint/index일 뿐 item-level 작업 결과 저장소가 아니다. **Notion 기록이나 채팅 보고만 있고 physical artifact가 없으면 해당 stage는 DONE으로 인정하지 않는다.**
 
+### 2-1. Final GOAL denominator / checkpoint batch HARD RULE
+
+Codex 장시간 전수 작업은 **전체 denominator를 하나의 final GOAL**로 받는다. batch 크기는 작업 종료 단위가 아니라 상태 보존·복구·감사용 checkpoint 단위다.
+
+작업 지시가 `FINAL_GOAL_DENOMINATOR`와 `CHECKPOINT_BATCH_SIZE`를 지정하면 각 batch마다 다음 순서를 반복한다.
+
+```text
+physical ledger append
+→ STATE / CHECKPOINTS 갱신
+→ rows / UID / source identity / fingerprint / duplicate 검증
+→ checkpoint commit
+→ original GOAL / DONE 조건 재확인
+→ 다음 미완료 batch 자동 진행
+```
+
+- checkpoint마다 사용자 승인이나 “다음 진행”을 기다리지 않는다.
+- **전체 GOAL 완료 또는 실제 HARD BLOCKER**에서만 최종 보고한다.
+- 마지막 잔여량이 checkpoint batch보다 작으면 남은 전체를 마지막 batch로 처리한다.
+- checkpoint commit은 partial completion을 보존할 뿐 final DONE을 의미하지 않는다.
+- 예: `FINAL_GOAL_DENOMINATOR=1170`, `CHECKPOINT_BATCH_SIZE≈70`이면 70문항 단위 commit은 복구 지점이고 최종 GOAL은 `1170/1170`이다.
+
 ## 3. GPT → Codex 짧은 GOAL 지시서
 
 Codex 지시서는 세부 프로토콜을 다시 장황하게 복붙하지 않는다. 다음만 짧게 지정한다.
@@ -156,6 +178,83 @@ semantic 작업 전에 확인:
 - actual compiler/runtime 미실행 시 해당 gate PASS 금지.
 - 사용자 지시가 engine 보강까지 포함하면 같은 branch에서 별도 checkpoint로 보강 후 regression.
 - 범위 밖 engine 보강 임의 수행 금지.
+
+## 5-1. SEMANTIC PROVENANCE ISOLATION HARD GATE
+
+본 절은 Stage 2(L3), Stage 4~6(L4/CrossConcept)의 semantic 완료 조건에 적용한다. 상세 의미 계약은 Foundation 운영규칙 §3-1이 authority다.
+
+1. semantic 판정 전에 stage별 **decision-isolated input bundle**을 물리 파일로 생성·freeze한다.
+2. source file/ordinal/fingerprint, current content, verified solution, 필요한 image dependency와 각 hash, input field inventory, `inputBundleSha`를 기록한다.
+3. 현재 stage에 필요한 검증된 upstream FINAL만 허용한다. 예: L4 판정의 FINAL L3 parent.
+4. same-stage 기존 `templateKey`, `crossConceptKeys`, candidate/heuristic/regex hint, relational freeze, prior verdict는 semantic decision input에서 제거한다.
+5. mapped row마다 `primaryMethod`, `decisiveStep`, L1/L2 reason, L3/L4 semantic reason, CrossConcept별 reason과 source hash를 물리 ledger에 남긴다.
+6. source-derived-looking reason을 candidate-derived key에 사후 부착한 결과는 fresh semantic 판정으로 인정하지 않는다.
+7. Codex/모델은 `FINAL`을 직접 쓰지 않는다. provenance·evidence completeness·forbidden input leakage 0·parent/registry/duplicate를 deterministic validator가 확인한 뒤에만 FINAL을 생성한다.
+8. validator가 없거나 미실행이면 해당 stage는 FINAL/PASS가 아니며 후속 semantic stage·candidate materialize·promotion의 authority가 될 수 없다.
+
+필수 failure code:
+
+```text
+SEMANTIC_PROVENANCE_LEAKAGE
+FORBIDDEN_CANDIDATE_INPUT
+MISSING_DECISION_ISOLATED_BUNDLE
+MISSING_SEMANTIC_EVIDENCE
+DECISION_COPIED_FROM_CANDIDATE
+```
+
+Mandatory negative regression fixture:
+
+```text
+Middle Geometry 96e4605d / 93bc935f
+candidate templateKey + 기존 CrossConcept suggestion
++ 구조 validator PASS
++ source+solution semantic decision provenance 없음
+=> FINAL 거부
+```
+
+위 두 commit의 L4/CrossConcept artifact는 `SUPERSEDED_INVALID_SEMANTIC_PROVENANCE`로 보존하며 Middle Geometry semantic authority 또는 Condition/IntegrationPattern/candidate materialize 입력으로 사용하지 않는다.
+
+## 5-2. Single Semantic Pass record completeness HARD RULE
+
+형님/GPT가 `single semantic pass`, `semantic prepass`, `semantic ledger` 방식으로 지시한 작업은 L3/L4/CrossConcept/Condition을 각각 원문 재전수하기 전에 **한 번의 source deep pass로 재사용 가능한 semantic facts를 물리 ledger에 저장**한다.
+
+모든 UID row에 최소 다음 필드를 필드 자체가 누락되지 않게 저장한다.
+
+```text
+questionUid
+source identity
+sourceFingerprint
+primaryMethod
+decisiveStep
+supportingConcepts[]
+conditions[]
+compositionPattern
+curriculumNotes
+sourceIssue
+semanticConfidence
+semanticReasonShort
+```
+
+- `primaryMethod`와 `decisiveStep`은 이후 L3/L4 synthesis의 핵심 입력이다.
+- `supportingConcepts[]`는 실제 정답 도달에 필요한 primary taxonomy 밖의 보조 개념을 기록한다. **기계적으로 전 row를 `[]`로 채우지 않는다.** source deep pass 결과 실제 보조 개념이 없을 때만 `[]`를 허용한다.
+- `conditions[]`는 자연수/정수/양수/범위/비영/정의역/존재성 등 실제 해 선택이나 풀이에 decisive하게 작용하는 restriction을 기록한다. **기계적으로 전 row를 `[]`로 채우지 않는다.** 실제 decisive condition이 없을 때만 `[]`를 허용한다.
+- `curriculumNotes`와 `semanticReasonShort`는 모든 row에 존재해야 한다. 특이사항이 없으면 명시적 `NONE` 또는 빈값을 허용하지만 **필드 누락은 허용하지 않는다.**
+- `compositionPattern`은 이후 IntegrationPattern synthesis 입력으로 재사용한다.
+- semantic prepass에서는 기존 L3/L4/CrossConcept/difficulty를 정답처럼 보지 않고 PT_/TPL_ canonical key를 억지로 확정하지 않는다.
+- 이후 L3/L4/CrossConcept/Condition/IntegrationPattern 합성은 frozen semantic ledger를 재사용하고, cluster boundary / low confidence / HOLD / rare candidate만 source targeted recheck한다.
+- 개별 HOLD는 semantic denominator를 줄이지 않는다. 먼저 final GOAL semantic pass를 끝낸 뒤 HOLD inventory를 동결하고 별도 HOLD resolution stage에서 닫는다.
+- HOLD resolution disposition은 최소 다음 enum으로 item-level 확정한다.
+
+```text
+HOLD_RESOLVED_NO_SOURCE_MUTATION
+SOURCE_REPAIR_REQUIRED
+SOLUTION_REPAIR_REQUIRED
+ANSWER_REPAIR_REQUIRED
+VISUAL_FIDELITY_REVIEW_REQUIRED
+SOURCE_BLOCKED
+```
+
+사용자 승인 없는 production/source/canonical/compiled/runtime mutation은 하지 않는다.
 
 ## 6. 표준 실행 순서
 

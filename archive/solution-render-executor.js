@@ -5,6 +5,12 @@
 })(typeof window !== 'undefined' ? window : globalThis, function createSolutionRenderExecutor(root) {
     'use strict';
 
+    // Avoid visually orphaning only a handful of final solution chunks in the
+    // next column/page. Source line breaks and typography remain unchanged;
+    // only the split boundary moves earlier when the trailing fragment is tiny.
+    const MIN_TRAILING_CONTINUATION_CHUNKS = 8;
+    const MIN_LEADING_CONTINUATION_CHUNKS = 2;
+
     async function measureSolutionBatch(boxes, staging, deps, document) {
         const records = boxes.map(box => ({ box, raw: deps.measureSolutionOuterFootprint(box) }));
         boxes.forEach(box => box.classList.add('fit-tight'));
@@ -169,7 +175,8 @@
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
 
-            for (const chunk of preparedChunks) {
+            for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
+                const chunk = preparedChunks[chunkIndex];
                 exp.appendChild(chunk);
                 if (deps.rendererMode() === 'legacy') {
                     await deps.typesetMath('solution-split-chunk', [chunk]);
@@ -179,11 +186,23 @@
 
                 if (exp.children.length > 1) {
                     exp.removeChild(chunk);
+                    const trailingCount = preparedChunks.length - chunkIndex;
+                    const borrowCount = Math.min(
+                        Math.max(0, MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount),
+                        Math.max(0, exp.children.length - MIN_LEADING_CONTINUATION_CHUNKS)
+                    );
+                    const borrowed = borrowCount
+                        ? Array.from(exp.children).slice(-borrowCount)
+                        : [];
                     targetCol = advanceColumn();
                     shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
+                    if (borrowed.length) {
+                        exp.append(...borrowed);
+                        shell.dataset.solutionTrailingRebalance = String(borrowed.length);
+                    }
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                 }
@@ -411,7 +430,8 @@ async function renderComposed({ area, items, deps }) {
                 // relaying out the shrinking staging document after every move.
                 chunkStage.remove();
             }
-            for (const chunk of preparedChunks) {
+            for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
+                const chunk = preparedChunks[chunkIndex];
                 exp.appendChild(chunk);
                 if (!chunkStage) await deps.typesetMath('composition-solution-chunk', [chunk]);
                 await yieldChunkLayout();
@@ -420,12 +440,24 @@ async function renderComposed({ area, items, deps }) {
                 // 현재 쉘에 둘 이상 조각이 있으면 마지막 조각을 다음 컬럼/페이지의 새 쉘로 넘긴다.
                 if (exp.children.length > 1) {
                     exp.removeChild(chunk);
+                    const trailingCount = preparedChunks.length - chunkIndex;
+                    const borrowCount = Math.min(
+                        Math.max(0, MIN_TRAILING_CONTINUATION_CHUNKS - trailingCount),
+                        Math.max(0, exp.children.length - MIN_LEADING_CONTINUATION_CHUNKS)
+                    );
+                    const borrowed = borrowCount
+                        ? Array.from(exp.children).slice(-borrowCount)
+                        : [];
                     targetCol = advanceColumn();
                     shell = makeLongSolutionShell(sourceBox, true);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
+                    if (borrowed.length) {
+                        exp.append(...borrowed);
+                        shell.dataset.solutionTrailingRebalance = String(borrowed.length);
+                    }
                     exp.appendChild(chunk);
-                    // Moving an already typeset chunk does not introduce new TeX.
+                    // Moving already typeset chunks does not introduce new TeX.
                     await yieldChunkLayout();
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {

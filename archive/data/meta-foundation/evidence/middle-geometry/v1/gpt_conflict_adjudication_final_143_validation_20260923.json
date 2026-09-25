@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "middle-geometry-conflict-adjudication-final-validation-v1",
+  "status": "PASS_FROZEN_QUEUE_ADJUDICATION_COMPLETE",
+  "queueAuthority": "MIDDLE_GEOMETRY_LUNA_NEW_CONFLICT_KEEP_143_20260923.json",
+  "queueTotal": 143,
+  "batchCoverage": [
+    "001-030",
+    "031-060",
+    "061-090",
+    "091-120",
+    "121-143"
+  ],
+  "recordCount": 143,
+  "sequenceUnique": 143,
+  "sequenceMin": 1,
+  "sequenceMax": 143,
+  "uidUnique": 143,
+  "sourceIdentityUnique": 143,
+  "sourceReceiptCount": 143,
+  "holdCount": 8,
+  "officialCanonicalFinalClaimCount": 0,
+  "resultCounts": {
+    "LUNA_EXACT": 69,
+    "HYBRID_NEITHER": 46,
+    "HOLD_MULTI_PRIMARY": 1,
+    "GPT_EXACT": 20,
+    "HOLD_L4_NO_FIT": 6,
+    "HOLD_SOURCE_AMBIGUITY": 1
+  },
+  "batchArtifacts": [
+    {
+      "batch": "001-030",
+      "file": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_BATCH_01_001_030_20260923.json",
+      "sha256": "fd4006912d2a1ad6f68e545c76c8e209573f11a5940162ac3de87087f63b8f0f"
+    },
+    {
+      "batch": "031-060",
+      "file": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_BATCH_02_031_060_20260923.json",
+      "sha256": "36be3029d6e7d9cca753323840e0a1e78057228d0f6b20fd2f00dbf3dd427078"
+    },
+    {
+      "batch": "061-090",
+      "file": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_BATCH_03_061_090_20260923.json",
+      "sha256": "e6d755410d010d413bccf17336fd76bb80c5a4fa16b9500483132512c4ab5f54"
+    },
+    {
+      "batch": "091-120",
+      "file": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_BATCH_04_091_120_20260923.json",
+      "sha256": "7aebfc2bbb8a66a73c264b92f6333c4cbe5870e56f8bc183bff629686541888f"
+    },
+    {
+      "batch": "121-143",
+      "file": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_BATCH_05_121_143_20260923.json",
+      "sha256": "9f01abadbd2e049ecb9959e6290a23d5a88a28699a6201156a1d92263ee6a589"
+    }
+  ],
+  "progressArtifact": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_PROGRESS_143_FINAL_20260923.json",
+  "progressSha256": "23b59faa3cc048dbca76743276d44738ee9f7e5bad40748932cd8cbab23c25eb",
+  "gitMutation": false,
+  "scopeCaveat": "This PASS means only that the frozen 143 conflict UID queue was source+solution adjudicated with physical evidence. It is not a canonical promotion PASS and does not include Luna checkpoint f424f897 (401-600) conflict discovery.",
+  "finalLedger": "MIDDLE_GEOMETRY_LUNA_CONFLICT_ADJUDICATION_FINAL_143_20260923.json",
+  "finalLedgerSha256": "ae6eaf01d0c6d4c4a8de4d79384922f2b8db44dd28df641b426535461475e380",
+  "finalMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "sourceReadMainSha": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+  "mainDriftMiddleGeometryOverlap": 0
+}

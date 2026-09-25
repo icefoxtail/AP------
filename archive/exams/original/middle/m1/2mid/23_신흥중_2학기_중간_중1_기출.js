@@ -32,7 +32,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -66,7 +75,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+    "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -94,7 +112,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -126,7 +153,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 5,
@@ -158,7 +194,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -190,7 +235,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 7,
@@ -221,7 +275,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_COPLANAR_POSITION_IMPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -251,7 +314,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -284,7 +356,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -317,7 +398,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ANGLE_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 11,
@@ -347,7 +437,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -379,7 +478,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -409,7 +517,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_SELECT_THREE_LENGTHS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -442,7 +559,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -472,7 +598,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 16,
@@ -502,7 +637,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 17,
@@ -529,7 +673,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -562,7 +715,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -594,7 +756,16 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -625,7 +796,16 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -656,7 +836,16 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -689,7 +878,16 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+    "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 23,
@@ -720,7 +918,16 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -748,7 +955,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 25,
@@ -774,10 +990,19 @@ window.questionBank = [
     "solution": "(1) 정사각형 ABCD의 대각선은 서로 수직으로 이등분하므로 BO=CO이다. 두 정사각형의 변과 대각선이 이루는 각이 같아서 ∠OBH=∠OCI, ∠BOH=∠COI이다. 따라서 ASA로 삼각형 BOH와 COI가 합동이다. (2) 합동으로 OH=OI이고, 그림에서 OHCI는 한 변이 4 cm인 정사각형이므로 넓이는 4×4=16 cm²이다.",
     "image": "assets/images/23_신흥중_2학기_중간_중1_기출/q25.png",
     "imageSize": "tall",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+    "crossConceptKeys": ["CC_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 26,
@@ -803,6 +1028,15 @@ window.questionBank = [
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_REGULAR_POLYGON_TESSELLATION",
+    "templateKey": "TPL_M1_REGULAR_POLYGON_TESSELLATION_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 9,
+  "denominator": 26,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "defaultReason": "The archived solution field repeats general angle/figure method language and the keyed result without item-specific derivation; record a physical solution-quality HOLD only, without automatic Root rereading or difficulty recheck.",
+  "overrides": [
+    { "sourceOrdinal": 8, "issueType": "UNVERIFIABLE_VISUAL_ANGLE_SECTORS", "disposition": "SOURCE_BLOCKED", "reason": "The low-detail diagram does not fix which rays bound y and 3x against the given 150° and 55° markings. A/C independently HOLD and the generic solution gives no source-to-angle mapping; preserve source and semantic HOLD." },
+    { "sourceOrdinal": 9, "issueType": "MISSING_FOLD_REFLECTION_STEPS", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The folded-tape source answer 30° is independently derivable from FG axis70°, reflected FE direction140°, x70° and y40°, but the archived explanation omits that reflection transfer." },
+    { "sourceOrdinal": 14, "issueType": "MISSING_IMAGE_INCIDENCE_AND_ROTATION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The image supplies B–D–E collinearity; a 60° rotation about C proves ∠CAE=18°, but the archived generic explanation omits both decisive steps. A/B HOLD are resolved by root image evidence without source mutation." },
+    { "sourceOrdinal": 21, "issueType": "UNVERIFIABLE_VISUAL_ANGLE_SECTORS", "disposition": "SOURCE_BLOCKED", "reason": "The x arc and 80° reference ray pair cannot be independently bound in the low-detail scan; A/B/C HOLD and the generic explanation does not settle keyed 65°. Preserve source and semantic HOLD." },
+    { "sourceOrdinal": 22, "issueType": "UNVERIFIABLE_VISUAL_POLYGON_LABELS", "disposition": "SOURCE_BLOCKED", "reason": "The c,d,e,f sector labels in the pentagon/hexagon configuration are too faint to verify the unique false statement; A/C HOLD. Do not promote or write metadata from keyed ③." }
+  ],
+  "sourceAnswerHoldOrdinals": [8, 21, 22],
+  "semanticMappingPolicy": "All 26 UID remain in this exam denominator. #8/#21/#22 SOURCE_BLOCKED semantic HOLD remain source-byte unchanged and absent from M1 taxonomy/writeback. Generic solutions on other rows are physical quality HOLDs only; they do not trigger broad Root/visual/difficulty reinspection. Protected student fields remain unchanged."
+}

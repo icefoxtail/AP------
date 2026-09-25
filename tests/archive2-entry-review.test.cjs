@@ -58,3 +58,22 @@ test('render-only review retains QR choice while assignment writes remain disabl
     assert.equal(url.searchParams.has('preview'),false);
   }
 });
+test('workspace consumes the common subject projection for Finder, Compose, metadata and assignment payloads', () => {
+  const workspace = read('archive2-workspace.js');
+  assert.match(workspace, /C\.hasSubjectProjection\?\.\(filters\.grade\)/);
+  assert.match(workspace, /C\.subjectProjectionOptions\(filters\.grade\)/);
+  assert.match(workspace, /if \(C\.hasSubjectProjection\?\.\(state\.find\.grade\)\)/);
+  assert.equal((workspace.match(/subject: C\.subjectProjectionLabel\(state\.filters\)/g) || []).length, 2);
+  assert.match(workspace, /state\.filters = C\.reconcileFinderFilters\(\s*state\.filters,/s);
+  assert.match(workspace, /f\.family && !f\.grade/);
+});
+
+test('scope, replacement and draft restore keep the shared projection gate on the existing paths', () => {
+  const workspace = read('archive2-workspace.js');
+  assert.match(workspace, /const pool = state\.catalog\.records\.filter\(\(r\) =>\s*C\.matches\(r, \{ \.\.\.state\.filters, sourceFiles: state\.sources \}\)/s);
+  assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters\)/);
+  assert.match(workspace, /const result = C\.selectBlueprint\(pool\(\), req, ctx\)/);
+  assert.match(workspace, /state\.filters = C\.reconcileFinderFilters\([\s\S]*?state\.catalog\.taxonomy/);
+  assert.match(workspace, /r\.sourceFingerprint &&[\s\S]*?state\.byUid\.get\(r\.questionUid\)\.sourceFingerprint/);
+  assert.match(workspace, /frozenPaperCache\.set\(saved\.key/);
+});

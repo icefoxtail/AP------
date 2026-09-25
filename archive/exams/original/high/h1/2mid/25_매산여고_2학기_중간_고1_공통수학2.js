@@ -29,11 +29,22 @@ window.questionBank = [
       "$2\\sqrt3$"
     ],
     "answer": "④",
-    "solution": "점 $P$가 선분 $AB$를 $2:1$로 내분하므로 $P\\left(\\dfrac{1\\cdot9+2\\cdot(-3)}{3},\\dfrac{1\\cdot14+2\\cdot2}{3}\\right)=(1,6)$이다.\n중점은 $M\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\right)=(3,8)$이다.\n따라서 $PM=\\sqrt{(3-1)^2+(8-6)^2}=\\sqrt8=2\\sqrt2$이다.\n따라서 정답은 ④이다.",
+    "solution": "먼저 내분점 $P$의 좌표를 구한다.\n\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝점의 좌표에 반대쪽의 비를 곱한다.\n\n따라서 $A(9,14)$의 좌표에는 $1$을,\n$B(-3,2)$의 좌표에는 $2$를 곱한다.\n\n$P$의 $x$좌표는\n\n$\\dfrac{1\\cdot9+2\\cdot(-3)}{2+1}$\n\n$=\\dfrac{9-6}{3}$\n\n$=\\dfrac33=1$이다.\n\n$P$의 $y$좌표는\n\n$\\dfrac{1\\cdot14+2\\cdot2}{2+1}$\n\n$=\\dfrac{14+4}{3}$\n\n$=\\dfrac{18}{3}=6$이다.\n\n따라서\n$P=(1,6)$이다.\n\n이제 선분 $AB$의 중점 $M$을 구한다.\n중점은 두 끝점의 $x$좌표끼리, $y$좌표끼리 더한 뒤 각각 $2$로 나눈다.\n\n$M=\\left(\\dfrac{9+(-3)}2,\\dfrac{14+2}2\\right)$\n\n$=\\left(\\dfrac62,\\dfrac{16}2\\right)$\n\n$=(3,8)$이다.\n\n마지막으로 두 점 $P(1,6)$, $M(3,8)$ 사이의 거리를 구한다.\n두 점 사이의 거리 공식에 $x$좌표의 차와 $y$좌표의 차를 넣으면\n\n$PM=\\sqrt{(3-1)^2+(8-6)^2}$\n\n$=\\sqrt{2^2+2^2}$\n\n$=\\sqrt{4+4}$\n\n$=\\sqrt8$\n\n$=\\sqrt{4\\cdot2}=2\\sqrt2$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_COORD_SECTION",
+    "templateKey": "TPL_SECTION_APPLICATION",
+    "crossConceptKeys": [
+      "CC_MIDPOINT"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -62,11 +73,20 @@ window.questionBank = [
       "2"
     ],
     "answer": "①",
-    "solution": "평행한 두 직선의 기울기는 같으므로 $m=-3$이다.\n점 $(1,-2)$를 지나므로 $-2=-3\\cdot1+n$에서 $n=1$이다.\n따라서 $m+n=-3+1=-2$이므로 정답은 ①이다.",
-    "subUnitKey": "H22-C2-02-RELATION",
-    "subUnit": "두 직선의 관계",
+    "solution": "두 직선이 평행하므로 기울기가 서로 같다.\n\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울기이다.\n\n주어진 직선\n$y=-3x+\\dfrac73$\n의 기울기는 $-3$이므로\n\n$m=-3$이다.\n\n이제 직선 $y=-3x+n$이 점 $(1,-2)$를 지난다는 조건을 사용한다.\n점을 지난다는 것은 그 점의 $x$, $y$좌표를 직선의 식에 대입했을 때 등식이 성립한다는 뜻이다.\n\n$x=1$, $y=-2$를 대입하면\n\n$-2=-3\\cdot1+n$\n\n$-2=-3+n$이다.\n\n양변에 $3$을 더하면\n\n$n=-2+3=1$이다.\n\n따라서\n\n$m+n=-3+1=-2$이다.\n\n그러므로 정답은 ①이다.",
+    "subUnitKey": "H22-C2-02-LINE_EQUATION",
+    "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_PARALLEL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -95,11 +115,20 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "$x^2-6x+y^2+4y+9=0$을 완전제곱식으로 정리하면 $(x-3)^2+(y+2)^2=4$이다.\n따라서 중심은 $(3,-2)$이고 반지름은 $2$이므로 $a=3$, $b=-2$, $r=2$이다.\n그러므로 $a+b+r=3-2+2=3$이므로 정답은 ③이다.",
+    "solution": "원의 중심과 반지름을 읽으려면 주어진 식을 원의 표준형으로 바꾸어야 한다.\n\n주어진 식은\n\n$x^2+y^2-6x+4y+9=0$이다.\n\n먼저 상수항 $9$를 오른쪽으로 옮겨\n$x$에 대한 항과 $y$에 대한 항을 모은다.\n\n$x^2-6x+y^2+4y=-9$이다.\n\n이제 각각 완전제곱식을 만든다.\n\n$x^2-6x$에는 $9$를 더하면\n\n$x^2-6x+9=(x-3)^2$이 된다.\n\n$y^2+4y$에는 $4$를 더하면\n\n$y^2+4y+4=(y+2)^2$가 된다.\n\n왼쪽에 $9$와 $4$를 더했으므로 오른쪽에도 똑같이 $9$와 $4$를 더한다.\n\n$(x^2-6x+9)+(y^2+4y+4)=-9+9+4$\n\n$(x-3)^2+(y+2)^2=4$이다.\n\n$4=2^2$이므로\n\n$(x-3)^2+(y-(-2))^2=2^2$로 볼 수 있다.\n\n원의 표준형\n$(x-a)^2+(y-b)^2=r^2$\n과 비교하면\n\n$a=3$, $b=-2$, $r=2$이다.\n\n따라서\n\n$a+b+r=3+(-2)+2=3$이다.\n\n그러므로 정답은 ③이다.",
     "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
     "subUnit": "원의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_CIRCLE_EQUATION",
+    "templateKey": "TM_CIRCLE_CENTER_RADIUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -128,11 +157,24 @@ window.questionBank = [
       "$-6$"
     ],
     "answer": "⑤",
-    "solution": "직선 $12x-5y+6=0$의 기울기는 $\\dfrac{12}{5}$이다. 구하는 직선 $5x-ay+b=0$의 기울기는 $\\dfrac5a$이므로 수직 조건에서 $\\dfrac{12}{5}\\cdot\\dfrac5a=-1$이다. 따라서 $a=-12$이다.\n구하는 직선은 $5x+12y+b=0$이고, 점 $(-1,1)$에서 이 직선까지의 거리가 $1$이므로 $\\dfrac{|-5+12+b|}{13}=1$이다.\n즉 $|b+7|=13$이므로 $b=6$ 또는 $-20$이다. $b>0$이므로 $b=6$이다.\n따라서 $a+b=-12+6=-6$이므로 정답은 ⑤이다.",
+    "solution": "먼저 두 직선이 수직이라는 조건을 이용하여 $a$를 구한다.\n\n직선\n$12x-5y+6=0$\n을 $y=mx+n$ 꼴로 바꾸면 기울기를 바로 읽을 수 있다.\n\n$12x-5y+6=0$\n\n$-5y=-12x-6$\n\n$y=\\dfrac{12}{5}x+\\dfrac65$이다.\n\n따라서 이 직선의 기울기는\n$\\dfrac{12}{5}$이다.\n\n구하는 직선\n$5x-ay+b=0$\n도 $y$에 대하여 정리하면\n\n$-ay=-5x-b$\n\n$y=\\dfrac5a x+\\dfrac ba$이다.\n\n따라서 이 직선의 기울기는\n$\\dfrac5a$이다.\n\n수직인 두 직선의 기울기의 곱은 $-1$이므로\n\n$\\dfrac{12}{5}\\cdot\\dfrac5a=-1$\n\n$\\dfrac{12}{a}=-1$\n\n$12=-a$\n\n$a=-12$이다.\n\n따라서 구하는 직선은\n\n$5x+12y+b=0$이다.\n\n이제 점 $(-1,1)$에서 이 직선까지의 거리가 $1$이라는 조건을 사용한다.\n\n점 $(x_1,y_1)$과 직선 $Ax+By+C=0$ 사이의 거리는\n$\\dfrac{|Ax_1+By_1+C|}{\\sqrt{A^2+B^2}}$이다.\n\n여기에 점 $(-1,1)$과 직선 $5x+12y+b=0$을 대입하면\n\n$\\dfrac{|5(-1)+12(1)+b|}{\\sqrt{5^2+12^2}}=1$\n\n$\\dfrac{|-5+12+b|}{\\sqrt{25+144}}=1$\n\n$\\dfrac{|b+7|}{\\sqrt{169}}=1$\n\n$\\dfrac{|b+7|}{13}=1$이다.\n\n따라서\n\n$|b+7|=13$이다.\n\n절댓값이 $13$이라는 것은 안의 값이 $13$ 또는 $-13$이라는 뜻이므로\n\n$b+7=13$ 또는 $b+7=-13$이다.\n\n첫 번째 경우에는\n$b=6$이고,\n\n두 번째 경우에는\n$b=-20$이다.\n\n문제에서 $b>0$이라고 했으므로\n$b=6$만 가능하다.\n\n따라서\n\n$a+b=-12+6=-6$이다.\n\n그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+    "templateKey": "TPL_DISTANCE_CONDITION_PARAMETER",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -161,11 +203,20 @@ window.questionBank = [
       "7"
     ],
     "answer": "③",
-    "solution": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같아 $A=B$이다.\n집합 $B$의 원소 $2$가 $A$에도 있어야 한다. $A$에서 $0$과 $4$는 $2$가 아니므로 $a+2=2$, 즉 $a=0$이다.\n따라서 $A=\\{0,2,4\\}$이고 $B=\\{0,2,b-1\\}$이므로 $b-1=4$에서 $b=5$이다.\n그러므로 $a+b=5$이므로 정답은 ③이다.",
+    "solution": "$A\\subset B$이고 $B\\subset A$이므로 두 집합은 서로 같은 집합이다.\n\n즉\n$A=B$이다.\n\n서로 같은 두 집합은 원소의 순서는 달라도 되지만, 들어 있는 원소는 정확히 같아야 한다.\n\n집합\n$B=\\{2,a,b-1\\}$\n에는 원소 $2$가 들어 있다.\n\n그러므로 집합 $A$에도 반드시 원소 $2$가 들어 있어야 한다.\n\n$A=\\{a+2,0,4\\}$에서\n$0$과 $4$는 $2$가 아니므로\n\n$a+2=2$이어야 한다.\n\n따라서\n\n$a=0$이다.\n\n이 값을 두 집합에 대입해 실제 원소를 다시 써 본다.\n\n$A=\\{0+2,0,4\\}=\\{2,0,4\\}$이고\n\n$B=\\{2,0,b-1\\}$이다.\n\n두 집합이 같으려면 $B$의 남은 원소 $b-1$이\n$A$의 남은 원소 $4$와 같아야 한다.\n\n$b-1=4$\n\n$b=5$이다.\n\n따라서\n\n$a+b=0+5=5$이다.\n\n그러므로 정답은 ③이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SET_EQUALITY",
+    "templateKey": "TPL_EQUAL_SET_PARAMETER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -195,11 +246,20 @@ window.questionBank = [
       "11"
     ],
     "answer": "③",
-    "solution": "직선 $y=ax+b$를 $(2,-1)$만큼 평행이동하면 $y+1=a(x-2)+b$, 즉 $y=ax+b-2a-1$이다.\n직선 $x+2y+3=0$의 기울기는 $-\\dfrac12$이므로 두 직선이 수직이 되려면 $a\\left(-\\dfrac12\\right)=-1$이어야 한다. 따라서 $a=2$이다.\n두 직선의 교점이 $x$축 위에 있으므로 $y=0$이고, $x+3=0$에서 교점의 $x$좌표는 $-3$이다.\n평행이동한 직선에 $(-3,0)$을 대입하면 $0=2(-3)+b-4-1$이므로 $b=11$이다.\n따라서 $b-a=11-2=9$이므로 정답은 ③이다.",
+    "solution": "먼저 직선 $y=ax+b$를 평행이동한 뒤의 식을 구한다.\n\n$x$축의 방향으로 $2$만큼 이동한다는 것은 오른쪽으로 $2$만큼 이동하는 것이고,\n$y$축의 방향으로 $-1$만큼 이동한다는 것은 아래로 $1$만큼 이동하는 것이다.\n\n오른쪽으로 $2$만큼 이동한 식은 원래 식의 $x$ 대신 $x-2$를 넣고,\n아래로 $1$만큼 이동한 식은 $y$ 대신 $y+1$을 넣는다.\n\n따라서 평행이동한 직선은\n\n$y+1=a(x-2)+b$이다.\n\n오른쪽을 전개하면\n\n$y+1=ax-2a+b$\n\n양변에서 $1$을 빼면\n\n$y=ax+b-2a-1$이다.\n\n이 이동한 직선이\n$x+2y+3=0$\n과 수직으로 만난다.\n\n직선 $x+2y+3=0$을 $y$에 대하여 정리하면\n\n$2y=-x-3$\n\n$y=-\\dfrac12x-\\dfrac32$이다.\n\n따라서 이 직선의 기울기는\n$-\\dfrac12$이다.\n\n수직인 두 직선의 기울기의 곱은 $-1$이므로\n\n$a\\left(-\\dfrac12\\right)=-1$\n\n$-\\dfrac a2=-1$\n\n$a=2$이다.\n\n따라서 평행이동한 직선은\n\n$y=2x+b-2\\cdot2-1$\n\n$y=2x+b-5$이다.\n\n이제 두 직선이 $x$축 위의 한 점에서 만난다는 조건을 사용한다.\n\n$x$축 위의 점은 $y$좌표가 $0$이므로\n교점에서는 $y=0$이다.\n\n직선 $x+2y+3=0$에 $y=0$을 대입하면\n\n$x+2\\cdot0+3=0$\n\n$x+3=0$\n\n$x=-3$이다.\n\n따라서 두 직선의 교점은\n$(-3,0)$이다.\n\n이 점은 평행이동한 직선\n$y=2x+b-5$\n위에도 있으므로 $x=-3$, $y=0$을 대입한다.\n\n$0=2(-3)+b-5$\n\n$0=-6+b-5$\n\n$0=b-11$\n\n$b=11$이다.\n\n따라서\n\n$b-a=11-2=9$이다.\n\n그러므로 정답은 ③이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+    "templateKey": "TT_LINE_TRANSLATION_RELATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -233,11 +293,20 @@ window.questionBank = [
     "solutionImageAlt": "세 원의 중심 C₀(−3,1), C₁(−5,2), C₂(5,−2)를 이동 순서대로 나타낸 좌표 도형",
     "solutionImageCaption": "평행이동과 원점 대칭은 중심의 좌표만 바꾸고 반지름 3은 유지한다.",
     "solutionImageSize": "full",
-    "solution": "주어진 원을 표준형으로 바꾸면 $(x+3)^2+(y-1)^2=9$이므로 중심은 $(-3,1)$이고 반지름은 $3$이다.\n중심을 $(-2,1)$만큼 평행이동하면 $(-5,2)$가 된다. 이를 원점에 대하여 대칭이동하면 중심은 $(5,-2)$가 된다.\n반지름은 변하지 않으므로 최종 원의 방정식은 $(x-5)^2+(y+2)^2=9$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "원을 두 번 이동시키는 문제에서는 원의 식 전체를 매번 바꾸기보다 중심의 위치를 순서대로 따라가면 더 쉽다.\n\n먼저 원의 중심과 반지름을 알아보기 위해 주어진 식을 표준형으로 바꾼다.\n\n$x^2+y^2+6x-2y+1=0$\n\n상수항 $1$을 오른쪽으로 옮기면\n\n$x^2+6x+y^2-2y=-1$이다.\n\n$x^2+6x$에는 $9$를,\n$y^2-2y$에는 $1$을 더해 완전제곱식을 만든다.\n\n$(x^2+6x+9)+(y^2-2y+1)=-1+9+1$\n\n$(x+3)^2+(y-1)^2=9$이다.\n\n즉\n\n$(x-(-3))^2+(y-1)^2=3^2$이므로\n\n처음 원의 중심은 $(-3,1)$이고\n반지름은 $3$이다.\n\n이제 중심만 이동 순서대로 따라간다.\n\n먼저 $x$축의 방향으로 $-2$만큼,\n$y$축의 방향으로 $1$만큼 평행이동한다.\n\n$x$좌표는 $-3-2=-5$,\n$y$좌표는 $1+1=2$이므로\n\n$(-3,1)\\rightarrow(-5,2)$이다.\n\n그다음 원점에 대하여 대칭이동한다.\n원점 대칭에서는 두 좌표의 부호가 모두 바뀌므로\n\n$(x,y)\\rightarrow(-x,-y)$이다.\n\n따라서\n\n$(-5,2)\\rightarrow(5,-2)$이다.\n\n평행이동이나 대칭이동을 해도 원의 크기는 변하지 않으므로\n반지름은 계속 $3$이다.\n\n최종 원의 중심은 $(5,-2)$이고\n반지름은 $3$이므로\n\n$(x-5)^2+(y+2)^2=9$이다.\n\n그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_COMPOSITE",
+    "templateKey": "TT_COMPOSITE_CIRCLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -272,11 +341,20 @@ window.questionBank = [
     "solutionImageAlt": "원본 그래프의 기울기와 절편 부호에서 계수 관계와 새 직선의 사분면을 판정하는 흐름도",
     "solutionImageCaption": "원본 문제 그림은 조건을 읽는 자료이고, 해설 그림은 부호 추론 과정을 별도로 보여 준다.",
     "solutionImageSize": "full",
-    "solution": "그림의 직선은 기울기가 양수이고 $y$절편은 음수, $x$절편은 양수이다.\n$ax+by+c=0$에서 기울기는 $-\\dfrac ab>0$이므로 $a$와 $b$의 부호는 서로 다르고, $y$절편 $-\\dfrac cb<0$이므로 $b$와 $c$의 부호는 같다.\n직선 $bx+cy+a=0$에서는 기울기 $-\\dfrac bc<0$이고, $x$절편 $-\\dfrac ab>0$, $y$절편 $-\\dfrac ac>0$이다.\n따라서 이 직선은 제1, 제2, 제4사분면을 지나고 제3사분면은 지나지 않는다.\n따라서 정답은 ③이다.",
+    "solution": "먼저 주어진 그래프에서 원래 직선 $ax+by+c=0$의 정보를 하나씩 읽는다.\n\n그래프는 오른쪽으로 갈수록 위로 올라가므로\n기울기는 양수이다.\n\n또 $y$축과 만나는 점이 원점보다 아래에 있으므로\n$y$절편은 음수이다.\n\n직선\n$ax+by+c=0$\n을 $y=mx+n$ 꼴로 바꾸면\n\n$by=-ax-c$\n\n$y=-\\dfrac abx-\\dfrac cb$이다.\n\n따라서 기울기는\n$-\\dfrac ab$이다.\n\n그래프의 기울기가 양수이므로\n\n$-\\dfrac ab>0$이다.\n\n따라서 $a$와 $b$의 부호는 서로 다르다.\n\n또 $y$절편은\n$-\\dfrac cb$이고,\n그래프에서 이 값이 음수이므로\n\n$-\\dfrac cb<0$이다.\n\n따라서 $b$와 $c$의 부호는 서로 같다.\n\n여기까지 얻은 부호 관계를 잠깐 정리하면\n\n$a$와 $b$ : 서로 반대 부호\n\n$b$와 $c$ : 서로 같은 부호\n\n따라서 $a$와 $c$ : 서로 반대 부호이다.\n\n이제 문제에서 묻는 새 직선\n$bx+cy+a=0$\n을 살펴본다.\n\n$cy=-bx-a$\n\n$y=-\\dfrac bcx-\\dfrac ac$이다.\n\n먼저 기울기를 본다.\n$b$와 $c$는 같은 부호이므로\n\n$\\dfrac bc>0$이다.\n\n따라서\n\n$-\\dfrac bc<0$이므로\n새 직선의 기울기는 음수이다.\n\n다음으로 $y$절편을 본다.\n$a$와 $c$는 서로 반대 부호이므로\n\n$\\dfrac ac<0$이다.\n\n따라서\n\n$-\\dfrac ac>0$이므로\n$y$절편은 양수이다.\n\n$x$절편도 확인한다.\n$x$절편에서는 $y=0$이므로\n\n$bx+a=0$\n\n$bx=-a$\n\n$x=-\\dfrac ab$이다.\n\n$a$와 $b$는 서로 반대 부호이므로\n\n$-\\dfrac ab>0$이다.\n\n따라서 $x$절편도 양수이다.\n\n정리하면 새 직선은\n기울기가 음수이고,\n$x$절편과 $y$절편이 모두 양수이다.\n\n그래서 두 축 사이의 제1사분면을 지나고,\n왼쪽으로 연장하면 제2사분면,\n오른쪽으로 연장하면 제4사분면을 지난다.\n\n하지만 $x<0$, $y<0$인 제3사분면으로는 내려가지 않는다.\n\n따라서 지나지 않는 사분면은 제3사분면이다.\n\n그러므로 정답은 ③이다.",
     "subUnitKey": "H22-C2-02-LINE_EQUATION",
     "subUnit": "직선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -310,11 +388,22 @@ window.questionBank = [
     "solutionImageAlt": "원 x²+y²=13과 점 P(3,2)의 접선, 수직인 다른 직선의 기울기 관계를 나타낸 그림",
     "solutionImageCaption": "반지름과 접선의 관계 및 두 직선의 수직 조건에서 m=2를 확인한다.",
     "solutionImageSize": "full",
-    "solution": "원 $x^2+y^2=13$ 위의 점 $(3,2)$에서의 접선은 $3x+2y=13$이고 그 기울기는 $-\\dfrac32$이다.\n직선 $mx-3y+7=0$의 기울기는 $\\dfrac m3$이다.\n두 직선이 수직이므로 $-\\dfrac32\\cdot\\dfrac m3=-1$에서 $m=2$이다.\n따라서 정답은 ②이다.",
+    "solution": "먼저 점 $(3,2)$에서 원에 그은 접선의 기울기를 구한다.\n\n원 $x^2+y^2=13$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=13$으로 나타낼 수 있다.\n\n점이 $(3,2)$이므로 접선의 방정식은\n$3x+2y=13$이다.\n\n이를 $y$에 대하여 정리하면\n$2y=-3x+13$\n\n$y=-\\dfrac32x+\\dfrac{13}{2}$이다.\n\n따라서 이 접선의 기울기는 $-\\dfrac32$이다.\n\n이제 직선 $mx-3y+7=0$의 기울기를 구한다.\n\n$-3y=-mx-7$\n\n$y=\\dfrac m3x+\\dfrac73$이므로\n기울기는 $\\dfrac m3$이다.\n\n두 직선이 수직이므로 기울기의 곱은 $-1$이다.\n\n$-\\dfrac32\\cdot\\dfrac m3=-1$\n\n$-\\dfrac m2=-1$\n\n$m=2$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_AT_POINT",
+    "crossConceptKeys": [
+      "CC_PERPENDICULAR"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -344,11 +433,20 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "②",
-    "solution": "원의 중심은 $(a,1)$이고 반지름은 $4$이다. 원과 직선이 만나려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n따라서 $\\dfrac{|-3a+4+5a-2|}{5}\\le4$, 즉 $\\dfrac{|2a+2|}{5}\\le4$이다.\n$|a+1|\\le10$이므로 $-11\\le a\\le9$이다.\n따라서 $p=-11$, $q=9$이고 $p+q=-2$이므로 정답은 ②이다.",
+    "solution": "원의 중심과 반지름부터 확인한다.\n\n원\n$(x-a)^2+(y-1)^2=16$\n의 중심은 $(a,1)$이고 반지름은 $4$이다.\n\n원과 직선이 만나려면 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다.\n접하는 경우도 한 점에서 만나는 경우이므로 포함한다.\n\n직선은\n$-3x+4y+5a-2=0$이다.\n\n중심 $(a,1)$에서 이 직선까지의 거리는\n$\\dfrac{|-3a+4\\cdot1+5a-2|}{\\sqrt{(-3)^2+4^2}}$이다.\n\n분자와 분모를 각각 정리하면\n$|-3a+4+5a-2|=|2a+2|$\n\n$\\sqrt{9+16}=5$이므로\n\n$\\dfrac{|2a+2|}{5}\\le4$이다.\n\n양변에 $5$를 곱하면\n$|2a+2|\\le20$이다.\n\n양변을 $2$로 나누면\n$|a+1|\\le10$이다.\n\n절댓값 부등식을 풀면\n$-10\\le a+1\\le10$이고,\n\n각 변에서 $1$을 빼면\n$-11\\le a\\le9$이다.\n\n따라서\n$p=-11$, $q=9$이고\n\n$p+q=-11+9=-2$이다.\n\n그러므로 정답은 ②이다.",
     "subUnitKey": "H22-C2-03-INTERSECTION",
     "subUnit": "원과 직선·원의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+    "templateKey": "TM_CIRCLE_LINE_POSITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -378,11 +476,20 @@ window.questionBank = [
       "64"
     ],
     "answer": "④",
-    "solution": "$(A\\cup B)\\cap X=X$이므로 $X\\subset A\\cup B$이다. 또한 $(A-B)\\cup X=X$이므로 $A-B\\subset X$이다.\n$A\\cup B=\\{2,3,4,5,6,7,8\\}$이고 $A-B=\\{2,3\\}$이다.\n따라서 $X$는 $2,3$을 반드시 포함하고 나머지 $4,5,6,7,8$의 $5$개 원소는 각각 포함하거나 포함하지 않을 수 있다.\n그러므로 가능한 집합 $X$의 개수는 $2^5=32$이므로 정답은 ④이다.",
+    "solution": "두 집합의 식이 뜻하는 포함관계부터 바꾸어 생각한다.\n\n먼저\n$(A\\cup B)\\cap X=X$이다.\n\n집합 $X$와 $A\\cup B$를 교집합했는데 그대로 $X$가 남는다는 것은\n$X$의 모든 원소가 $A\\cup B$ 안에 있다는 뜻이다.\n\n따라서\n$X\\subset A\\cup B$이다.\n\n또\n$(A-B)\\cup X=X$이다.\n\n집합 $X$에 $A-B$를 합집합해도 $X$가 그대로라는 것은\n$A-B$의 모든 원소가 이미 $X$ 안에 있다는 뜻이다.\n\n따라서\n$A-B\\subset X$이다.\n\n이제 실제 집합을 구한다.\n\n$A\\cup B=\\{2,3,4,5,6,7,8\\}$이고\n\n$A-B=\\{2,3\\}$이다.\n\n따라서 집합 $X$에는 $2,3$이 반드시 들어가야 한다.\n\n나머지 원소\n$4,5,6,7,8$\n은 각각 $X$에 넣어도 되고 넣지 않아도 된다.\n\n각 원소마다 선택이 $2$가지씩이고 자유로운 원소가 $5$개이므로\n\n가능한 집합 $X$의 개수는\n$2^5=32$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SUBSET_COUNT",
+    "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -416,11 +523,22 @@ window.questionBank = [
     "solutionImageAlt": "이동 후 중심 (−2,2), 반지름 2인 원이 x축과 y축에 동시에 접하는 그림",
     "solutionImageCaption": "두 축까지의 거리가 모두 반지름 2라는 조건에서 a=2, b=4를 확인한다.",
     "solutionImageSize": "full",
-    "solution": "원래 원의 중심은 $(a,b)$이고 반지름은 $a$이다. 평행이동한 원의 중심은 $(a-4,b-2)$이고 반지름은 그대로 $a$이다.\n$x$축과 $y$축에 모두 접하므로 중심에서 두 축까지의 거리가 각각 반지름과 같아 $|a-4|=a$, $|b-2|=a$이다.\n$a>0$에서 $|a-4|=a$를 풀면 $a=2$이다. 따라서 $|b-2|=2$이고 $b>0$이므로 $b=4$이다.\n그러므로 $a+b=6$이므로 정답은 ②이다.",
+    "solution": "원래 원의 중심과 반지름부터 확인한다.\n\n원\n$(x-a)^2+(y-b)^2=a^2$\n의 중심은 $(a,b)$이다.\n\n반지름은 $|a|$이지만 문제에서 $a>0$이므로 반지름은 $a$이다.\n\n이 원을 $x$축의 방향으로 $-4$만큼,\n$y$축의 방향으로 $-2$만큼 평행이동하면 중심은\n\n$(a,b)\\rightarrow(a-4,b-2)$가 된다.\n\n따라서 이동한 원의 중심은 $(a-4,b-2)$이고\n반지름은 그대로 $a$이다.\n\n이 원이 $y$축에 접하므로\n중심에서 $y$축까지의 거리와 반지름이 같다.\n\n중심의 $x$좌표가 $a-4$이므로\n$|a-4|=a$이다.\n\n$a>0$인 조건을 이용하여 이 절댓값 방정식을 나누어 푼다.\n\n만약 $a\\ge4$이면\n$a-4=a$가 되어\n$-4=0$이므로 불가능하다.\n\n따라서 $0<a<4$이고\n\n$4-a=a$\n\n$2a=4$\n\n$a=2$이다.\n\n이제 이동한 원이 $x$축에도 접한다.\n중심에서 $x$축까지의 거리는 $|b-2|$이므로\n\n$|b-2|=a=2$이다.\n\n따라서\n$b-2=2$ 또는 $b-2=-2$이다.\n\n첫 번째 경우에는\n$b=4$이고,\n\n두 번째 경우에는\n$b=0$이다.\n\n문제에서 $b>0$이므로\n$b=4$만 가능하다.\n\n따라서\n$a+b=2+4=6$이다.\n\n그러므로 정답은 ②이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+    "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -451,11 +569,20 @@ window.questionBank = [
       "$\\dfrac{14}3$"
     ],
     "answer": "④",
-    "solution": "$A-B=A\\cap B^C$이므로 $(A-B)^C=A^C\\cup B$이다. 따라서 $A\\cap(A-B)^C=A\\cap B$이고, 주어진 조건은 $A\\cap B=B$이다. 즉 $B\\subset A$이어야 한다.\n$m=1$이면 방정식 $mx+1=x$는 해가 없어 $B=\\varnothing$이므로 조건을 만족한다.\n$m\\ne1$이면 $B=\\left\\{\\dfrac1{1-m}\\right\\}$이다. 이 원소가 $-1$이면 $m=2$, $3$이면 $m=\\dfrac23$이다.\n따라서 가능한 $m$은 $1,2,\\dfrac23$이고 그 합은 $\\dfrac{11}3$이다.\n따라서 정답은 ④이다.",
+    "solution": "먼저 복잡해 보이는 집합식을 간단한 포함관계로 바꾼다.\n\n차집합은\n$A-B=A\\cap B^C$이므로\n\n$(A-B)^C=(A\\cap B^C)^C$이다.\n\n드모르간 법칙을 사용하면\n$(A\\cap B^C)^C=A^C\\cup B$이다.\n\n따라서\n$A\\cap(A-B)^C$\n\n$=A\\cap(A^C\\cup B)$\n\n$=(A\\cap A^C)\\cup(A\\cap B)$\n\n$=\\varnothing\\cup(A\\cap B)$\n\n$=A\\cap B$이다.\n\n주어진 조건\n$A\\cap(A-B)^C=B$\n는 결국\n\n$A\\cap B=B$가 된다.\n\n이 식은 집합 $B$의 모든 원소가 $A$ 안에 있다는 뜻이므로\n$B\\subset A$이다.\n\n이제 집합 $B$를 결정하는 방정식\n$mx+1=x$를 푼다.\n\n먼저 $m=1$인 경우를 따로 본다.\n\n$m=1$이면\n$x+1=x$가 되어 이를 만족하는 실수 $x$가 없다.\n\n따라서\n$B=\\varnothing$이고,\n공집합은 항상 $A$의 부분집합이므로 $m=1$은 조건을 만족한다.\n\n이제 $m\\ne1$인 경우이다.\n\n$mx+1=x$\n\n$(m-1)x=-1$\n\n$x=\\dfrac{-1}{m-1}=\\dfrac1{1-m}$이다.\n\n따라서\n$B=\\left\\{\\dfrac1{1-m}\\right\\}$이다.\n\n$B\\subset A$이고\n$A=\\{-1,3\\}$이므로\n$B$의 유일한 원소는 $-1$ 또는 $3$이어야 한다.\n\n첫째,\n$\\dfrac1{1-m}=-1$이면\n\n$1=-(1-m)$\n\n$1=-1+m$\n\n$m=2$이다.\n\n둘째,\n$\\dfrac1{1-m}=3$이면\n\n$1=3(1-m)$\n\n$1=3-3m$\n\n$3m=2$\n\n$m=\\dfrac23$이다.\n\n따라서 가능한 $m$은\n$1,2,\\dfrac23$이고,\n\n그 합은\n$1+2+\\dfrac23$\n\n$=3+\\dfrac23$\n\n$=\\dfrac{11}{3}$이다.\n\n그러므로 정답은 ④이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SET_CONSTRUCTION",
+    "templateKey": "TPL_SET_EQUATION_SOLUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -490,11 +617,22 @@ window.questionBank = [
     "solutionImageAlt": "교집합 원소 수가 최소 3일 때와 최대 14일 때의 Venn 영역 수를 비교한 그림",
     "solutionImageCaption": "합집합이 30명을 넘지 않는 경우와 한 집합이 다른 집합에 포함되는 경우를 비교한다.",
     "solutionImageSize": "full",
-    "solution": "두 활동을 모두 한 학생 수 $x$의 최댓값은 더 적은 쪽의 인원인 $14$명이다.\n또 $n(A\\cup B)\\le30$이므로 $14+19-x\\le30$에서 $x\\ge3$이다. 따라서 최솟값은 $3$명이다.\n그러므로 최댓값과 최솟값의 합은 $14+3=17$이므로 정답은 ①이다.",
+    "solution": "가방을 만든 학생의 집합을 $A$,\n수세미를 만든 학생의 집합을 $B$라고 하자.\n\n그러면\n$n(A)=14$, $n(B)=19$이고\n\n두 활동을 모두 한 학생 수는\n$x=n(A\\cap B)$이다.\n\n먼저 $x$의 최댓값을 구한다.\n\n교집합의 원소 수는 두 집합 중 원소가 더 적은 집합의 원소 수를 넘을 수 없다.\n\n따라서\n$x\\le14$이다.\n\n가방을 만든 $14$명이 모두 수세미도 만들었다고 생각하면 $x=14$가 실제로 가능하므로\n최댓값은 $14$이다.\n\n이제 $x$의 최솟값을 구한다.\n\n두 활동 중 적어도 하나를 한 학생 수는\n\n$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$이므로\n\n$n(A\\cup B)=14+19-x$\n\n$=33-x$이다.\n\n캠프에 참여한 전체 학생이 $30$명이므로\n합집합의 원소 수는 $30$을 넘을 수 없다.\n\n$33-x\\le30$\n\n$-x\\le-3$\n\n$x\\ge3$이다.\n\n두 활동 중 적어도 하나를 한 학생이 정확히 $30$명이면 $x=3$이 가능하므로\n최솟값은 $3$이다.\n\n따라서 최댓값과 최솟값의 합은\n$14+3=17$이다.\n\n그러므로 정답은 ①이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SET_EXTREMUM",
+    "templateKey": "TPL_INTERSECTION_RANGE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -528,11 +666,25 @@ window.questionBank = [
     "solutionImageAlt": "세 직선이 만드는 직각이등변삼각형 OQP와 그 외접원을 나타낸 그림",
     "solutionImageCaption": "m=1/2일 때 두 직각변의 길이가 같고 외접반지름이 빗변의 절반임을 확인한다.",
     "solutionImageSize": "full",
-    "solution": "직선 $y=3x$와 $y=-\\dfrac13x$는 기울기의 곱이 $-1$이므로 원점에서 서로 수직이다. 따라서 만들어지는 삼각형은 원점을 직각으로 하는 직각삼각형이고, 이등변이 되려면 원점에서 나가는 두 변의 길이가 같아야 한다.\n$y=mx+5$와 $y=3x$의 교점까지의 거리는 $\\dfrac{5\\sqrt{10}}{|3-m|}$이고, $y=-\\dfrac13x$와의 교점까지의 거리는 $\\dfrac{5\\sqrt{10}}{1+3m}$이다.\n$m>0$에서 두 길이를 같게 하면 $|3-m|=1+3m$이고, 가능한 해는 $m=\\dfrac12$이다.\n이때 두 직각변의 길이는 각각 $2\\sqrt{10}$이므로 빗변의 길이는 $4\\sqrt5$이다. 직각삼각형의 외접원의 반지름은 빗변의 절반이므로 $2\\sqrt5$이다.\n따라서 외접원의 넓이는 $\\pi(2\\sqrt5)^2=20\\pi$이므로 정답은 ⑤이다.",
+    "solution": "세 직선이 만드는 삼각형의 모양부터 확인한다.\n\n직선\n$y=3x$\n과\n$y=-\\dfrac13x$\n의 기울기의 곱은\n\n$3\\cdot\\left(-\\dfrac13\\right)=-1$이다.\n\n따라서 두 직선은 원점 $O$에서 서로 수직으로 만난다.\n\n세 번째 직선 $y=mx+5$가\n$y=3x$와 만나는 점을 $P$,\n$y=-\\dfrac13x$와 만나는 점을 $Q$라고 하자.\n\n그러면 삼각형 $OPQ$는 $O$가 직각인 직각삼각형이다.\n\n이 삼각형이 이등변삼각형이 되려면\n직각을 끼고 있는 두 변의 길이가 같아야 하므로\n\n$OP=OQ$이어야 한다.\n\n먼저 점 $P$의 좌표를 구한다.\n\n$3x=mx+5$\n\n$(3-m)x=5$\n\n$x=\\dfrac5{3-m}$이다.\n\n따라서\n$y=3x=\\dfrac{15}{3-m}$이므로\n\n$P\\left(\\dfrac5{3-m},\\dfrac{15}{3-m}\\right)$이다.\n\n따라서\n$OP$\n\n$=\\sqrt{\\left(\\dfrac5{3-m}\\right)^2+\\left(\\dfrac{15}{3-m}\\right)^2}$\n\n$=\\dfrac{\\sqrt{25+225}}{|3-m|}$\n\n$=\\dfrac{5\\sqrt{10}}{|3-m|}$이다.\n\n이제 점 $Q$의 좌표를 구한다.\n\n$-\\dfrac13x=mx+5$에서 양변에 $3$을 곱하면\n\n$-x=3mx+15$\n\n$(1+3m)x=-15$이다.\n\n따라서\n$x=-\\dfrac{15}{1+3m}$이고\n\n$y=-\\dfrac13x=\\dfrac5{1+3m}$이다.\n\n문제에서 $m>0$이므로 $1+3m>0$이다.\n\n따라서\n$OQ$\n\n$=\\sqrt{\\left(-\\dfrac{15}{1+3m}\\right)^2+\\left(\\dfrac5{1+3m}\\right)^2}$\n\n$=\\dfrac{\\sqrt{225+25}}{1+3m}$\n\n$=\\dfrac{5\\sqrt{10}}{1+3m}$이다.\n\n이등변 조건 $OP=OQ$를 적용하면\n\n$\\dfrac{5\\sqrt{10}}{|3-m|}=\\dfrac{5\\sqrt{10}}{1+3m}$이므로\n\n$|3-m|=1+3m$이다.\n\n이 절댓값 방정식을 경우에 따라 나눈다.\n\n$0<m<3$이면\n$|3-m|=3-m$이므로\n\n$3-m=1+3m$\n\n$2=4m$\n\n$m=\\dfrac12$이다.\n\n$m\\ge3$이면\n$|3-m|=m-3$이므로\n\n$m-3=1+3m$\n\n$-4=2m$\n\n$m=-2$가 되어 $m>0$과 맞지 않는다.\n\n따라서\n$m=\\dfrac12$이다.\n\n이 값을 이용해 두 교점을 구하면\n\n$P=(2,6)$,\n$Q=(-6,2)$이다.\n\n두 직각변의 길이는\n\n$OP=\\sqrt{2^2+6^2}$\n\n$=\\sqrt{40}=2\\sqrt{10}$이고,\n\n$OQ=2\\sqrt{10}$이다.\n\n빗변 $PQ$의 길이는\n\n$PQ=\\sqrt{(2-(-6))^2+(6-2)^2}$\n\n$=\\sqrt{8^2+4^2}$\n\n$=\\sqrt{80}=4\\sqrt5$이다.\n\n직각삼각형의 외접원에서 빗변은 지름이므로\n외접원의 반지름은\n\n$R=\\dfrac{PQ}{2}=2\\sqrt5$이다.\n\n따라서 외접원의 넓이는\n\n$\\pi R^2$\n\n$=\\pi(2\\sqrt5)^2$\n\n$=20\\pi$이다.\n\n그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_LINE_RELATION",
+    "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+    "crossConceptKeys": [
+      "CC_RIGHT_TRIANGLE",
+      "CC_CIRCUMCIRCLE"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -567,11 +719,23 @@ window.questionBank = [
     "solutionImageAlt": "반사로 최단거리의 점 P를 정하는 과정과 원의 접점현 CD를 이용한 넓이 계산을 나란히 나타낸 그림",
     "solutionImageCaption": "P=(0,0)을 정한 뒤 PH=16/5, CD=24/5를 이용해 삼각형 PCD의 넓이를 계산한다.",
     "solutionImageSize": "full",
-    "solution": "점 $A$를 중심으로 하고 $x$축에 접하는 원의 반지름은 $3$이다. $P$는 항상 원의 밖에 있으므로, 고정된 $P$에서 원 위의 점 $Q$까지의 최솟값은 $PA-3$이다. 따라서 $BP+PQ$의 최솟값을 구하는 것은 $BP+PA$를 최소로 하는 것과 같다.\n점 $A(-4,-3)$을 $y$축에 대하여 대칭이동한 점을 $A'(4,-3)$이라 하면 $PA=PA'$이다. $A'P+PB$는 $A'$, $P$, $B$가 한 직선 위에 있을 때 최소이고, 이 직선은 $y$축과 원점에서 만나므로 $P=(0,0)$이다. 이때 $PA=5$이다.\n원에서 $PC,PD$는 접선이므로 $PC=PD=\\sqrt{PA^2-3^2}=4$이다. $AP$와 접점현 $CD$의 교점을 $H$라 하면 $CD\\perp AP$이고, 직각삼각형의 닮음에서 $AH=\\dfrac{3^2}{5}=\\dfrac95$이다.\n따라서 $PH=5-\\dfrac95=\\dfrac{16}5$이고, $CH=\\sqrt{3^2-(\\dfrac95)^2}=\\dfrac{12}5$이므로 $CD=\\dfrac{24}5$이다.\n삼각형 $PCD$의 넓이는 $\\dfrac12\\cdot\\dfrac{24}5\\cdot\\dfrac{16}5=\\dfrac{192}{25}$이므로 정답은 ⑤이다.",
+    "solution": "먼저 점 $A$를 중심으로 하는 원의 반지름을 구한다.\n\n점 $A(-4,-3)$에서 $x$축까지의 거리는 $3$이므로\n이 원의 반지름은 $3$이다.\n\n이제 $\\overline{BP}+\\overline{PQ}$가 최소가 되는 점 $P$의 위치를 찾는다.\n\n점 $P$는 $y$축 위를 움직인다.\n점 $A$에서 $y$축까지의 거리만 해도 $4$이므로\n모든 $P$에 대하여 $PA>3$이고 $P$는 항상 원의 밖에 있다.\n\n고정된 점 $P$에서 원 위의 점 $Q$까지의 가장 짧은 거리는\n점 $P$와 원의 중심 $A$를 잇는 방향에서 생긴다.\n\n따라서\n$PQ$의 최솟값은\n$PA-3$이다.\n\n그러므로\n$BP+PQ$를 최소로 하는 것은\n\n$BP+(PA-3)$,\n즉 $BP+PA$를 최소로 하는 것과 같다.\n\n여기서 점 $A(-4,-3)$을 $y$축에 대하여 대칭이동한 점을\n$A'(4,-3)$이라 하자.\n\n점 $P$가 $y$축 위에 있으므로\n$PA=PA'$이다.\n\n따라서\n$BP+PA=BP+PA'$이다.\n\n두 점 $B$와 $A'$ 사이를 한 번에 잇는 직선거리가 가장 짧으므로\n$B$, $P$, $A'$가 한 직선 위에 있을 때 이 합이 최소가 된다.\n\n점\n$B(-4,3)$과 $A'(4,-3)$을 잇는 직선의 기울기는\n\n$\\dfrac{-3-3}{4-(-4)}=\\dfrac{-6}{8}=-\\dfrac34$이다.\n\n이 직선은 원점을 지나므로 방정식은\n$y=-\\dfrac34x$이다.\n\n이 직선과 $y$축의 교점은 $(0,0)$이므로\n\n$P=(0,0)$이다.\n\n따라서\n$PA=\\sqrt{(0-(-4))^2+(0-(-3))^2}$\n\n$=\\sqrt{4^2+3^2}$\n\n$=5$이다.\n\n이제 점 $P$에서 원에 그은 두 접선의 접점을 $C,D$라 하자.\n\n반지름은 접선과 접점에서 수직이므로\n$AC\\perp PC$이다.\n\n직각삼각형 $APC$에서\n\n$PC^2=AP^2-AC^2$\n\n$=5^2-3^2$\n\n$=25-9=16$이므로\n\n$PC=4$이다.\n\n두 접선의 길이는 같으므로\n$PD=4$이다.\n\n점 $H$를 선분 $AP$와 접점현 $CD$의 교점이라 하자.\n접점현 $CD$는 $AP$에 수직이다.\n\n따라서 직각삼각형 $APC$에서\n$CH$는 빗변 $AP$에 내린 높이가 된다.\n\n삼각형 $ACH$와 삼각형 $APC$는 닮음이므로\n\n$\\dfrac{AH}{AC}=\\dfrac{AC}{AP}$이다.\n\n따라서\n$AH\\cdot AP=AC^2$이고\n\n$AH=\\dfrac{AC^2}{AP}$\n\n$=\\dfrac{3^2}{5}$\n\n$=\\dfrac95$이다.\n\n그러므로\n$PH=AP-AH$\n\n$=5-\\dfrac95$\n\n$=\\dfrac{25}{5}-\\dfrac95$\n\n$=\\dfrac{16}{5}$이다.\n\n이제 직각삼각형 $ACH$에서\n\n$CH^2=AC^2-AH^2$\n\n$=3^2-\\left(\\dfrac95\\right)^2$\n\n$=9-\\dfrac{81}{25}$\n\n$=\\dfrac{225-81}{25}$\n\n$=\\dfrac{144}{25}$이다.\n\n따라서\n$CH=\\dfrac{12}{5}$이다.\n\n원의 중심 $A$에서 현 $CD$에 내린 수선은 현을 이등분하므로\n$CH=DH$이다.\n\n따라서\n$CD=2CH$\n\n$=2\\cdot\\dfrac{12}{5}$\n\n$=\\dfrac{24}{5}$이다.\n\n삼각형 $PCD$에서 밑변을 $CD$로 보면 높이는 $PH$이다.\n\n따라서 넓이는\n\n$\\dfrac12\\cdot CD\\cdot PH$\n\n$=\\dfrac12\\cdot\\dfrac{24}{5}\\cdot\\dfrac{16}{5}$\n\n$=\\dfrac{12\\cdot16}{25}$\n\n$=\\dfrac{192}{25}$이다.\n\n그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+    "crossConceptKeys": [
+      "CC_REFLECTION",
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -602,11 +766,20 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "세 직선이 삼각형을 이루지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\n첫째와 둘째 직선이 평행하려면 $a=0$, 첫째와 셋째 직선이 평행하려면 $4-3a=0$에서 $a=\\dfrac43$, 둘째와 셋째 직선이 평행하려면 $6-2a=0$에서 $a=3$이다.\n이 세 값을 제외하고 첫째와 둘째 직선의 교점을 구하면, 두 식을 더하여 $5x=-5$이므로 $x=-1$이고 $ay=-1$에서 $y=-\\dfrac1a$이다.\n이 점이 셋째 직선 위에 있으려면 $-1-(a-2)(-\\dfrac1a)-2=0$이어야 하므로 $a=-1$이다.\n따라서 가능한 $a$는 $-1,0,\\dfrac43,3$의 네 개이다. $M=4$, $N=\\dfrac{10}3$이므로 $M+N=\\dfrac{22}3$이다.\n따라서 정답은 ③이다.",
+    "solution": "세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.\n\n따라서 삼각형을 이루지 않는 경우를\n① 두 직선이 평행한 경우\n② 세 직선이 한 점에서 만나는 경우\n로 나누어 찾는다.\n\n세 직선을 순서대로\n$\\ell_1:2x+ay+3=0$,\n$\\ell_2:3x-ay+2=0$,\n$\\ell_3:x-(a-2)y-2=0$\n이라 하자.\n\n먼저 두 직선이 평행한 경우를 찾는다.\n두 직선 $A_1x+B_1y+C_1=0$, $A_2x+B_2y+C_2=0$이 평행하려면 $x,y$의 계수가 같은 비가 되어야 하므로\n$A_1B_2=A_2B_1$을 이용할 수 있다.\n\n$\\ell_1$과 $\\ell_2$가 평행하면\n$2(-a)=3a$\n\n$-2a=3a$\n\n$5a=0$\n\n$a=0$이다.\n\n$\\ell_1$과 $\\ell_3$가 평행하면\n$2\\{-(a-2)\\}=a$\n\n$-2a+4=a$\n\n$3a=4$\n\n$a=\\dfrac43$이다.\n\n$\\ell_2$와 $\\ell_3$가 평행하면\n$3\\{-(a-2)\\}=-a$\n\n$-3a+6=-a$\n\n$2a=6$\n\n$a=3$이다.\n\n이제 세 직선이 한 점에서 만나는 경우를 찾는다.\n위에서 구한 평행한 경우와 겹치지 않도록 $a\\ne0$인 경우를 본다.\n\n$\\ell_1$과 $\\ell_2$의 식을 더하면\n$(2x+ay+3)+(3x-ay+2)=0$\n\n$5x+5=0$\n\n$x=-1$이다.\n\n$x=-1$을 $\\ell_1$에 대입하면\n$2(-1)+ay+3=0$\n\n$ay+1=0$\n\n$y=-\\dfrac1a$이다.\n\n따라서 $\\ell_1$과 $\\ell_2$의 교점은\n$\\left(-1,-\\dfrac1a\\right)$이다.\n\n이 점이 $\\ell_3$ 위에도 있어야 세 직선이 한 점에서 만난다.\n\n$-1-(a-2)\\left(-\\dfrac1a\\right)-2=0$\n\n$-3+\\dfrac{a-2}{a}=0$\n\n$\\dfrac{a-2}{a}=3$\n\n$a-2=3a$\n\n$-2=2a$\n\n$a=-1$이다.\n\n따라서 세 직선이 삼각형을 이루지 않는 $a$는\n$-1,0,\\dfrac43,3$의 네 개이다.\n\n그러므로\n$M=4$이고\n\n$N=-1+0+\\dfrac43+3$\n$=\\dfrac{-3+4+9}{3}$\n$=\\dfrac{10}{3}$이다.\n\n따라서\n$M+N=4+\\dfrac{10}{3}$\n$=\\dfrac{12}{3}+\\dfrac{10}{3}$\n$=\\dfrac{22}{3}$이다.\n\n그러므로 정답은 ③이다.",
     "subUnitKey": "H22-C2-02-RELATION",
     "subUnit": "두 직선의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+    "templateKey": "TPL_INTERSECTION_TRIANGLE_FORMATION",
+    "crossConceptKeys": []
   },
   {
     "id": 18,
@@ -641,11 +814,22 @@ window.questionBank = [
     "solutionImageAlt": "3×3 격자점에서 반드시 포함되는 아래쪽 세 점과 최대거리 2√2를 만드는 위쪽 꼭짓점 조건을 나타낸 그림",
     "solutionImageCaption": "(0,2), (2,2) 중 적어도 하나를 포함해야 최대거리가 정확히 2√2가 된다.",
     "solutionImageSize": "full",
-    "solution": "조건 (가)에서 $A\\cap X=X\\cup B$이다. 왼쪽은 $A$의 부분집합이므로 $X\\subset A$이고, 또한 $X=X\\cup B$가 되어 $B\\subset X$이다. 따라서 $X$는 $A$의 아홉 점 중 아래쪽 세 점 $(0,0),(1,0),(2,0)$을 반드시 포함한다.\n집합 $A$ 안에서 두 점 사이의 거리는 최대 $2\\sqrt2$이다. 이미 $(0,0)$과 $(2,0)$이 들어 있으므로 최댓값이 정확히 $2\\sqrt2$이 되려면 대각선 끝점 쌍이 하나 이상 생겨야 한다. 즉 $(0,2)$ 또는 $(2,2)$ 중 적어도 하나는 $X$에 포함되어야 한다.\n$B$를 제외한 나머지 여섯 점을 고르는 방법은 $2^6$가지이고, 두 꼭짓점 $(0,2),(2,2)$을 모두 고르지 않는 경우는 나머지 네 점만 자유롭게 고르는 $2^4$가지이다.\n따라서 $X$의 개수는 $2^6-2^4=48$이므로 정답은 ④이다.",
+    "solution": "먼저 조건 (가)\n$A\\cap X=X\\cup B$\n가 뜻하는 포함관계를 정리한다.\n\n항상\n$A\\cap X\\subset X$\n이고\n$X\\subset X\\cup B$\n이다.\n\n그런데 두 집합이 같다고 했으므로\n$A\\cap X=X$이고\n$X\\cup B=X$가 되어야 한다.\n\n따라서\n$X\\subset A$이고\n$B\\subset X$이다.\n\n즉\n$B\\subset X\\subset A$이다.\n\n집합 $A$는 $0,1,2$를 좌표로 갖는 $3\\times3$ 격자점 아홉 개이고,\n집합 $B$는\n$\\{(0,0),(1,0),(2,0)\\}$이다.\n\n따라서 $X$에는 아래쪽 세 점\n$(0,0),(1,0),(2,0)$이 반드시 들어간다.\n\n나머지 여섯 점은\n$(0,1),(1,1),(2,1),(0,2),(1,2),(2,2)$이다.\n\n이제 조건 (나)를 사용한다.\n집합 $A$ 안에서 두 점 사이의 가장 큰 거리는 가로와 세로가 각각 $2$인 정사각형의 대각선 길이\n$\\sqrt{2^2+2^2}=2\\sqrt2$이다.\n\n이미 $(0,0)$과 $(2,0)$이 $X$에 들어 있으므로,\n두 점 사이 거리의 최댓값이 정확히 $2\\sqrt2$가 되려면\n\n$(0,0)$과 $(2,2)$이 함께 들어가거나,\n$(2,0)$과 $(0,2)$가 함께 들어가야 한다.\n\n따라서 선택 가능한 여섯 점 중\n$(0,2)$ 또는 $(2,2)$ 중 적어도 하나는 반드시 포함되어야 한다.\n\n여섯 점을 제한 없이 고르는 방법은\n$2^6=64$가지이다.\n\n여기서 $(0,2)$와 $(2,2)$을 둘 다 고르지 않는 경우를 뺀다.\n이때 나머지 네 점만 자유롭게 고를 수 있으므로\n$2^4=16$가지이다.\n\n따라서 조건을 만족하는 집합 $X$의 개수는\n$2^6-2^4$\n$=64-16$\n$=48$이다.\n\n그러므로 정답은 ④이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_SUBSET_COUNT",
+    "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS"
+    ]
   },
   {
     "id": 19,
@@ -675,11 +859,22 @@ window.questionBank = [
       "229"
     ],
     "answer": "⑤",
-    "solution": "조건 (가)에서 동시에 들어갈 수 없는 쌍은 $(1,2)$, $(2,4)$, $(3,6)$, $(4,8)$이다.\n연결된 수 $1,2,4,8$ 중 합을 가장 크게 하려면 $2$와 $8$을 고르는 것이 유리하여 합이 $10$이고, $3,6$ 중에서는 $6$을 고른다. 나머지 $5,7,9$는 제한 없이 모두 넣을 수 있다.\n따라서 합이 최대인 집합은 $A=\\{2,5,6,7,8,9\\}$이고 $a=37$이다.\n$U-A=\\{1,3,4\\}$이고 $n(A)=6$이다. $n(A\\cup B)=8$이 되려면 $B$가 $U-A$에서 정확히 두 원소를 포함해야 하므로 그 선택은 ${}_{3}C_{2}=3$가지이다. 한편 $A$의 여섯 원소는 $B$에 들어가도 합집합의 크기가 바뀌지 않으므로 각각 자유롭게 선택할 수 있어 $2^6$가지이다.\n따라서 $b=3\\cdot2^6=192$이고 $a+b=37+192=229$이므로 정답은 ⑤이다.",
+    "solution": "전체집합은\n$U=\\{1,2,3,4,5,6,7,8,9\\}$이다.\n\n조건 (가)는\n$k\\in A$이면 $2k\\notin A$\n라는 뜻이다.\n\n$2k$도 $U$에 들어오는 경우만 살펴보면 동시에 들어갈 수 없는 쌍은\n$(1,2)$, $(2,4)$, $(3,6)$, $(4,8)$이다.\n\n먼저 $1,2,4,8$을 살펴보자.\n이 네 수는\n$1-2-4-8$\n처럼 이웃한 두 수를 동시에 고를 수 없는 구조이다.\n\n$2$를 고르면 $1$과 $4$는 고를 수 없지만 $8$은 고를 수 있다.\n이때 합은\n$2+8=10$이다.\n\n반대로 $2$를 고르지 않는 경우에는 $1$을 고를 수 있다.\n또 $4$와 $8$은 동시에 고를 수 없으므로 더 큰 $8$을 고르는 것이 유리하다.\n이때 합은\n$1+8=9$이다.\n\n따라서 $1,2,4,8$에서는\n$2$와 $8$을 고를 때 합이 가장 크고 그 합은 $10$이다.\n\n$3$과 $6$은 동시에 들어갈 수 없으므로 더 큰 $6$을 고른다.\n\n$5,7,9$는 두 배가 $U$ 안에 없으므로 다른 원소와 충돌하지 않는다.\n따라서 세 수를 모두 넣는다.\n\n그러므로 원소의 합이 최대인 집합은\n$A=\\{2,5,6,7,8,9\\}$이다.\n\n따라서\n$a=2+5+6+7+8+9$\n$=37$이다.\n\n이제 가능한 집합 $B$의 개수를 구한다.\n\n$A$의 원소는 $6$개이고\n$U-A=\\{1,3,4\\}$이다.\n\n조건 (나)에서\n$n(A\\cup B)=8$이므로\n$A$에 없는 세 원소 $1,3,4$ 중 정확히 두 원소가 $B$에 들어가야 한다.\n\n세 원소 중 두 원소를 고르는 방법은\n${}_3C_2=3$가지이다.\n\n한편 $A$의 여섯 원소는 $B$에 들어가도, 들어가지 않아도 $A\\cup B$의 원소 수가 변하지 않는다.\n따라서 각각 자유롭게 선택할 수 있으므로\n$2^6=64$가지이다.\n\n그러므로\n$b={}_3C_2\\cdot2^6$\n$=3\\cdot64$\n$=192$이다.\n\n따라서\n$a+b=37+192=229$이다.\n\n그러므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C2-05-CORE",
     "subUnit": "집합 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_SET_EXTREMUM",
+    "templateKey": "TPL_SET_SUM_EXTREMUM",
+    "crossConceptKeys": [
+      "CC_COMBINATORICS_COUNTING"
+    ]
   },
   {
     "id": 20,
@@ -713,11 +908,20 @@ window.questionBank = [
     "solutionImageAlt": "접점 P에서의 접선식에 A(0,2n)을 대입해 yₙ과 xₙ을 차례로 구하는 흐름도",
     "solutionImageCaption": "접선 방정식과 원의 방정식을 연결하면 xₙ=2√(n²−1)/n을 얻는다.",
     "solutionImageSize": "full",
-    "solution": "원 $x^2+y^2=4$ 위의 점 $P(x_n,y_n)$에서의 접선은 $x_nx+y_ny=4$이다. 이 접선이 점 $A(0,2n)$을 지나므로 $2ny_n=4$에서 $y_n=\\dfrac2n$이다.\n또 $P$가 원 위의 점이고 제1사분면에 있으므로 $x_n>0$이며, $x_n^2+y_n^2=4$에서 $x_n=\\sqrt{4-\\dfrac4{n^2}}=\\dfrac{2\\sqrt{n^2-1}}n$이다.\n따라서 $x_2x_3x_4x_5=16\\sqrt{\\dfrac34\\cdot\\dfrac89\\cdot\\dfrac{15}{16}\\cdot\\dfrac{24}{25}}=16\\sqrt{\\dfrac35}=\\dfrac{16\\sqrt{15}}5$이다.\n따라서 정답은 ①이다.",
+    "solution": "원 $x^2+y^2=4$의 반지름은 $2$이다.\n\n원 $x^2+y^2=r^2$ 위의 점 $(x_1,y_1)$에서의 접선은\n$x_1x+y_1y=r^2$\n로 나타낼 수 있다.\n\n따라서 점 $P(x_n,y_n)$에서의 접선은\n$x_nx+y_ny=4$이다.\n\n이 접선이 점 $A(0,2n)$을 지나므로\n$x=0$, $y=2n$을 대입한다.\n\n$x_n\\cdot0+y_n\\cdot2n=4$\n\n$2ny_n=4$\n\n$y_n=\\dfrac2n$이다.\n\n또 점 $P(x_n,y_n)$은 원 위의 점이므로\n$x_n^2+y_n^2=4$이다.\n\n$y_n=\\dfrac2n$을 대입하면\n$x_n^2+\\dfrac4{n^2}=4$\n\n$x_n^2=4-\\dfrac4{n^2}$\n\n$=\\dfrac{4n^2-4}{n^2}$\n\n$=\\dfrac{4(n^2-1)}{n^2}$이다.\n\n점 $P$는 제1사분면에 있으므로 $x_n>0$이다.\n따라서\n$x_n=\\dfrac{2\\sqrt{n^2-1}}{n}$이다.\n\n이제 $n=2,3,4,5$를 각각 대입한다.\n\n$x_2=\\dfrac{2\\sqrt{2^2-1}}2$\n$=\\sqrt3$이다.\n\n$x_3=\\dfrac{2\\sqrt{3^2-1}}3$\n$=\\dfrac{2\\sqrt8}{3}$이다.\n\n여기서\n$\\sqrt8=\\sqrt{4\\cdot2}=2\\sqrt2$이므로\n\n$x_3=\\dfrac{4\\sqrt2}{3}$이다.\n\n$x_4=\\dfrac{2\\sqrt{4^2-1}}4$\n$=\\dfrac{2\\sqrt{15}}4$\n$=\\dfrac{\\sqrt{15}}2$이다.\n\n$x_5=\\dfrac{2\\sqrt{5^2-1}}5$\n$=\\dfrac{2\\sqrt{24}}5$이다.\n\n여기서\n$\\sqrt{24}=\\sqrt{4\\cdot6}=2\\sqrt6$이므로\n\n$x_5=\\dfrac{4\\sqrt6}{5}$이다.\n\n따라서\n$x_2x_3x_4x_5$\n$=\\sqrt3\\cdot\\dfrac{4\\sqrt2}{3}\\cdot\\dfrac{\\sqrt{15}}2\\cdot\\dfrac{4\\sqrt6}{5}$\n\n$=\\dfrac{16}{30}\\sqrt{3\\cdot2\\cdot15\\cdot6}$\n\n$=\\dfrac8{15}\\sqrt{540}$이다.\n\n$540=36\\cdot15$이므로\n\n$\\sqrt{540}=\\sqrt{36\\cdot15}$\n$=6\\sqrt{15}$이다.\n\n따라서\n$x_2x_3x_4x_5$\n$=\\dfrac8{15}\\cdot6\\sqrt{15}$\n\n$=\\dfrac{48\\sqrt{15}}{15}$\n\n$=\\dfrac{16\\sqrt{15}}5$이다.\n\n그러므로 정답은 ①이다.",
     "subUnitKey": "H22-C2-03-TANGENT",
     "subUnit": "원과 접선",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_CIRCLE_TANGENT",
+    "templateKey": "TM_TANGENT_AT_POINT",
+    "crossConceptKeys": []
   },
   {
     "id": 21,
@@ -745,11 +949,23 @@ window.questionBank = [
     "solutionImageAlt": "삼각형 ABC와 무게중심 G, 점 C에서 직선 AB에 내린 수선의 발 H를 표시한 좌표 도형",
     "solutionImageCaption": "a=−2, b=1/2를 정한 뒤 직선 AB까지의 거리를 수선으로 확인한다.",
     "solutionImageSize": "full",
-    "solution": "삼각형 $ABC$의 무게중심의 $x$좌표는 $\\dfrac{2+0+a}{3}$이다. 무게중심이 $y$축 위에 있으므로 $\\dfrac{a+2}{3}=0$에서 $a=-2$이다.\n또 $AC=BC$이므로 거리의 제곱을 같게 놓으면 $(a-2)^2+b^2=a^2+(b-4)^2$이다. $a=-2$를 대입하면 $16+b^2=4+(b-4)^2$이고, 정리하면 $b=\\dfrac12$이다.\n따라서 (1) $a=-2$, $b=\\dfrac12$이다.\n직선 $AB$는 두 점 $(2,0)$, $(0,4)$를 지나므로 $2x+y-4=0$이다. 점 $C\\left(-2,\\dfrac12\\right)$에서 이 직선까지의 거리는 $\\dfrac{|2(-2)+\\dfrac12-4|}{\\sqrt{2^2+1^2}}=\\dfrac{15/2}{\\sqrt5}=\\dfrac{3\\sqrt5}{2}$이다.\n따라서 (2) 직선 $AB$와 점 $C$와의 거리는 $\\dfrac{3\\sqrt5}{2}$이다.",
+    "solution": "먼저 무게중심이 $y$축 위에 있다는 조건을 이용해 $a$를 구한다.\n\n삼각형의 세 꼭짓점이\n$A(2,0)$, $B(0,4)$, $C(a,b)$이므로\n무게중심의 $x$좌표는\n$\\dfrac{2+0+a}{3}$이다.\n\n무게중심이 $y$축 위에 있으면 $x$좌표가 $0$이므로\n$\\dfrac{a+2}{3}=0$\n\n$a+2=0$\n\n$a=-2$이다.\n\n이제 $AC=BC$라는 조건으로 $b$를 구한다.\n길이 자체에 근호가 생기므로 두 거리의 제곱을 같게 놓으면 계산이 간단하다.\n\n$a=-2$이므로\n$C\\left(-2,b\\right)$이다.\n\n$AC^2=(-2-2)^2+(b-0)^2$\n$=(-4)^2+b^2$\n$=16+b^2$이다.\n\n또\n$BC^2=(-2-0)^2+(b-4)^2$\n$=4+(b-4)^2$\n\n$=4+(b^2-8b+16)$\n\n$=b^2-8b+20$이다.\n\n$AC=BC$이므로\n$AC^2=BC^2$이다.\n\n$16+b^2=b^2-8b+20$\n\n$16=-8b+20$\n\n$8b=4$\n\n$b=\\dfrac12$이다.\n\n따라서 (1)\n$a=-2$, $b=\\dfrac12$이다.\n\n이제 (2) 점 $C$와 직선 $AB$ 사이의 거리를 구한다.\n\n직선 $AB$의 기울기는\n$\\dfrac{4-0}{0-2}$\n$=\\dfrac4{-2}$\n$=-2$이다.\n\n점 $A(2,0)$을 지나므로\n$y-0=-2(x-2)$\n\n$y=-2x+4$이다.\n\n따라서 직선 $AB$의 방정식은\n$2x+y-4=0$이다.\n\n점 $C\\left(-2,\\dfrac12\\right)$에서 직선 $2x+y-4=0$까지의 거리는\n\n$\\dfrac{\\left|2(-2)+\\dfrac12-4\\right|}{\\sqrt{2^2+1^2}}$\n\n$=\\dfrac{\\left|-4+\\dfrac12-4\\right|}{\\sqrt5}$\n\n$=\\dfrac{\\left|-\\dfrac{15}{2}\\right|}{\\sqrt5}$\n\n$=\\dfrac{15}{2\\sqrt5}$이다.\n\n분모의 근호를 없애기 위해 분자와 분모에 $\\sqrt5$를 곱하면\n\n$\\dfrac{15}{2\\sqrt5}\\cdot\\dfrac{\\sqrt5}{\\sqrt5}$\n\n$=\\dfrac{15\\sqrt5}{2\\cdot5}$\n\n$=\\dfrac{15\\sqrt5}{10}$\n\n$=\\dfrac{3\\sqrt5}{2}$이다.\n\n따라서 (2) 직선 $AB$와 점 $C$ 사이의 거리는\n$\\dfrac{3\\sqrt5}{2}$이다.",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_COORD_CENTROID",
+    "templateKey": "TPL_CENTROID_APPLICATION",
+    "crossConceptKeys": [
+      "CC_DISTANCE_TWO_POINTS",
+      "CC_POINT_LINE_DISTANCE"
+    ]
   },
   {
     "id": 22,
@@ -778,11 +994,20 @@ window.questionBank = [
     "solutionImageAlt": "원의 중심이 (0,−3)에서 (1,0), (0,1)로 이동하는 과정과 최종 원의 두 접선을 나타낸 그림",
     "solutionImageCaption": "평행이동과 y=x 대칭 뒤 중심 (0,1)에서 두 평행 접선까지의 거리를 비교한다.",
     "solutionImageSize": "full",
-    "solution": "원 $x^2+(y+3)^2=10$의 중심은 $(0,-3)$이고 반지름은 $\\sqrt{10}$이다. 이를 $(1,3)$만큼 평행이동하면 중심은 $(1,0)$이므로 원의 방정식은 $(x-1)^2+y^2=10$이다.\n이 원을 직선 $y=x$에 대하여 대칭이동하면 중심 $(1,0)$이 $(0,1)$로 옮겨지므로 최종 원은 $x^2+(y-1)^2=10$이다.\n직선 $x+3y+k=0$이 이 원과 한 점에서 만나려면 중심 $(0,1)$에서 직선까지의 거리가 반지름과 같아야 한다.\n따라서 $\\dfrac{|0+3+k|}{\\sqrt{1^2+3^2}}=\\sqrt{10}$이고, $|k+3|=10$이다.\n그러므로 $k=-13$ 또는 $k=7$이다.",
+    "solution": "처음 원\n$x^2+(y+3)^2=10$\n의 중심은 $(0,-3)$이고 반지름은 $\\sqrt{10}$이다.\n\n먼저 $x$축의 방향으로 $1$만큼,\n$y$축의 방향으로 $3$만큼 평행이동한다.\n\n따라서 중심은\n$(0,-3)\\rightarrow(1,0)$으로 이동한다.\n\n반지름은 변하지 않으므로 평행이동한 원의 방정식은\n$(x-1)^2+y^2=10$이다.\n\n이제 직선 $y=x$에 대하여 대칭이동한다.\n직선 $y=x$에 대한 대칭이동에서는 점 $(x,y)$의 두 좌표가 서로 바뀐다.\n\n따라서 중심 $(1,0)$은\n$(0,1)$로 이동한다.\n\n반지름은 그대로 $\\sqrt{10}$이므로 최종 원의 방정식은\n$x^2+(y-1)^2=10$이다.\n\n이 원과 직선\n$x+3y+k=0$\n이 한 점에서 만난다고 했다.\n\n원과 직선이 한 점에서 만난다는 것은 서로 접한다는 뜻이므로,\n원의 중심에서 직선까지의 거리가 반지름과 같아야 한다.\n\n중심 $(0,1)$에서 직선 $x+3y+k=0$까지의 거리는\n\n$\\dfrac{|0+3\\cdot1+k|}{\\sqrt{1^2+3^2}}$\n\n$=\\dfrac{|k+3|}{\\sqrt{10}}$이다.\n\n이 값이 반지름 $\\sqrt{10}$과 같으므로\n\n$\\dfrac{|k+3|}{\\sqrt{10}}=\\sqrt{10}$이다.\n\n양변에 $\\sqrt{10}$을 곱하면\n\n$|k+3|=\\sqrt{10}\\cdot\\sqrt{10}$\n\n$=10$이다.\n\n따라서 두 경우로 나누면\n\n$k+3=10$에서\n$k=7$이고,\n\n$k+3=-10$에서\n$k=-13$이다.\n\n그러므로 구하는 모든 $k$의 값은\n$-13,7$이다.",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_MOVE_COMPOSITE",
+    "templateKey": "TT_COMPOSITE_CIRCLE",
+    "crossConceptKeys": []
   },
   {
     "id": 23,
@@ -810,10 +1035,21 @@ window.questionBank = [
     "solutionImageAlt": "점 B의 두 평행선 자취와 중심 A, 반지름 5인 원의 네 교점 중 OP가 최대인 두 점을 나타낸 좌표 도형",
     "solutionImageCaption": "넓이 조건과 AB=5를 함께 만족하는 네 점을 비교하면 최대 OP는 3√10이다.",
     "solutionImageSize": "full",
-    "solution": "$OA=\\sqrt{3^2+4^2}=5$이다. 점 $B$에서 직선 $OA$에 내린 수선의 발을 $H$라 하면, 삼각형 $OAB$의 넓이가 $\\dfrac{15}{2}$이므로 $\\dfrac12\\cdot5\\cdot BH=\\dfrac{15}{2}$에서 $BH=3$이다.\n또 $AB=OA=5$이므로 직각삼각형 $ABH$에서 $AH=\\sqrt{5^2-3^2}=4$이다.\n직선 $OA$ 위에서 $OH$는 $OA\\pm AH$, 즉 $1$ 또는 $9$가 될 수 있다. 따라서 $OB^2=OH^2+BH^2$이므로 $OB$가 최대일 때 $OH=9$이고 $OP=OB=\\sqrt{9^2+3^2}=3\\sqrt{10}$이다.\n점 $P$도 조건 (가)를 만족하므로 삼각형 $OAP$의 넓이는 $\\dfrac{15}{2}$이다. 점 $A$와 직선 $OP$ 사이의 거리를 $d$라 하면 $\\dfrac12\\cdot OP\\cdot d=\\dfrac{15}{2}$이다.\n따라서 $d=\\dfrac{15}{3\\sqrt{10}}=\\dfrac{\\sqrt{10}}2$이다.",
-    "subUnitKey": "H22-C2-01-GEOMETRY_RELATION",
-    "subUnit": "도형의 관계",
+    "solution": "먼저 선분 $OA$의 길이를 구한다.\n\n$O(0,0)$, $A(3,4)$이므로\n$OA=\\sqrt{3^2+4^2}$\n$=\\sqrt{9+16}$\n$=5$이다.\n\n점 $B$에서 직선 $OA$에 내린 수선의 발을 $H$라 하자.\n그러면 $BH$는 삼각형 $OAB$에서 밑변을 $OA$로 잡았을 때의 높이이다.\n\n삼각형 $OAB$의 넓이가 $\\dfrac{15}{2}$이므로\n\n$\\dfrac12\\cdot OA\\cdot BH=\\dfrac{15}{2}$\n\n$\\dfrac12\\cdot5\\cdot BH=\\dfrac{15}{2}$\n\n$5BH=15$\n\n$BH=3$이다.\n\n또 조건 (나)에서\n$OA=AB$이고 $OA=5$이므로\n$AB=5$이다.\n\n삼각형 $ABH$는 $H$에서 직각인 직각삼각형이다.\n따라서 피타고라스 정리를 사용하면\n\n$AH^2+BH^2=AB^2$\n\n$AH^2+3^2=5^2$\n\n$AH^2+9=25$\n\n$AH^2=16$\n\n$AH=4$이다.\n\n이제 $H$의 위치를 생각해 보자.\n점 $H$는 직선 $OA$ 위에 있고, 점 $A$에서의 거리가 $4$이다.\n또 $OA=5$이므로 가능한 $OH$는\n\n$OH=OA-AH=5-4=1$\n\n또는\n\n$OH=OA+AH=5+4=9$이다.\n\n점 $B$는 직선 $OA$에서 거리가 항상 $BH=3$인 점이므로\n직각삼각형 $OBH$에서\n\n$OB^2=OH^2+BH^2$이다.\n\n$OH=1$이면\n$OB^2=1^2+3^2=10$이므로\n$OB=\\sqrt{10}$이다.\n\n$OH=9$이면\n$OB^2=9^2+3^2$\n$=81+9$\n$=90$이므로\n$OB=3\\sqrt{10}$이다.\n\n따라서 $OB$의 길이가 최대일 때\n$OP=3\\sqrt{10}$이다.\n\n이제 점 $A$와 직선 $OP$ 사이의 거리를 $d$라 하자.\n점 $P$도 원래 조건 (가)를 만족하므로\n삼각형 $OAP$의 넓이는 여전히 $\\dfrac{15}{2}$이다.\n\n이번에는 밑변을 $OP$로 잡으면 높이가 바로 점 $A$와 직선 $OP$ 사이의 거리 $d$이다.\n\n따라서\n$\\dfrac12\\cdot OP\\cdot d=\\dfrac{15}{2}$이다.\n\n$\\dfrac12\\cdot3\\sqrt{10}\\cdot d=\\dfrac{15}{2}$\n\n$3\\sqrt{10}\\,d=15$\n\n$d=\\dfrac5{\\sqrt{10}}$\n\n$=\\dfrac{5\\sqrt{10}}{10}$\n\n$=\\dfrac{\\sqrt{10}}2$이다.\n\n따라서 점 $A$와 직선 $OP$ 사이의 거리는\n$\\dfrac{\\sqrt{10}}2$이다.",
+    "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
+    "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL",
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+    "templateKey": "TPL_DISTANCE_AREA_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN"
+    ]
   }
 ];

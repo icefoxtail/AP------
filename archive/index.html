@@ -2733,15 +2733,21 @@ function assignTargetBodyEl() {
 function buildAssignTargetPreviewUrl() {
     const item = AssignTarget?.item;
     if (!item) return '';
+    const params = new URLSearchParams(window.location.search);
     if (isUnitPastExamItem(item)) {
-        const url = new URL('mixed_engine.html', window.location.href);
+        const archive2UnitPast = params.get('archive2Embedded') === '1';
+        const url = archive2UnitPast
+            ? window.Archive2Output.engineUrl('mixed_engine.html', window.location.href)
+            : new URL('mixed_engine.html', window.location.href);
         url.searchParams.set('key', item.unitPastSnapshotKey);
         url.searchParams.set('mode', 'exam');
         url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
         url.searchParams.set('q', String(resolveExamQuestionCountForAssignment(item) || 0));
         return url.toString();
     }
-    const url = new URL('engine.html', window.location.href);
+    const url = params.has('archive2Issue')
+        ? window.Archive2Output.engineUrl('engine.html', window.location.href)
+        : new URL('engine.html', window.location.href);
     url.searchParams.set('mode', 'exam');
     url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
     url.searchParams.set('data', 'exams/' + item.file);

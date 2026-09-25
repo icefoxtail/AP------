@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 7,
+  "denominator": 24,
+  "defaultDisposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION",
+  "defaultIssueType": "NONE",
+  "defaultReason": "Independent source and solution review found no material source or explanation defect for this UID.",
+  "overrides": [
+    { "sourceOrdinal": 1, "issueType": "OFF_TOPIC_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "Choice ③ misnames the intersection point as 교각 rather than 교점, but the archived explanation discusses a nonexistent claim that there are two intersection angles. Answer ③ is supported; explanation is off topic." },
+    { "sourceOrdinal": 7, "issueType": "ABBREVIATED_SOLUTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The archived solution says only that seven edges remain. Root's full-resolution pentagonal-prism enumeration identifies skew bottom GH/HI/IJ/JF and vertical CH/DI/EJ; item-specific edge evidence is omitted from the explanation." },
+    { "sourceOrdinal": 19, "issueType": "CROSS_GRADE_SOURCE_ANOMALY", "disposition": "HOLD_RESOLVED_NO_SOURCE_MUTATION", "reason": "The cross-nationality handshake count is correctly M2-08 probability counting despite its placement in a middle-one exam; preserve existing M2 parent and explicitly ROUTE_OUT from the M1 candidate pack and metadata writeback." },
+    { "sourceOrdinal": 20, "issueType": "OUT_OF_CURRICULUM_SOLUTION_METHOD", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The archived explanation uses sine law and trigonometric ratios. Root independently obtains 35° from a 90° rotation about A and SAS congruence of △GAF and △EAF, so source answer and M1 semantic mapping are supportable while explanation requires repair." },
+    { "sourceOrdinal": 23, "issueType": "IMPOSSIBLE_SOURCE_TRIANGLE", "disposition": "SOURCE_BLOCKED", "reason": "Given JK=6, ∠K=45°, and LJ=3, the shortest J-to-KL-ray distance is 3√2>3, so purported △JKL cannot be constructed. The archived SSA-ambiguity rationale and question data are materially inconsistent; preserve source and semantic HOLD." }
+  ],
+  "sourceAnswerHoldOrdinals": [23],
+  "semanticMappingPolicy": "All 24 UIDs remain in the batch denominator. #19 ROUTE_OUT and #23 SOURCE_BLOCKED/HOLD remain byte-for-byte unchanged in production source, are excluded from the M1 taxonomy candidate registry, and are not runtime selectable. Other metadata writeback is limited to confirmed semantic and difficulty fields; all student-facing source fields remain protected."
+}

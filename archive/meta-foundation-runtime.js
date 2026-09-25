@@ -7,8 +7,12 @@
     "data/meta-foundation/runtime/limit-continuity-v1.json",
     "data/meta-foundation/runtime/integral-calculus-v1.json",
     "data/meta-foundation/runtime/derivative-v1.json",
-    "data/meta-foundation/runtime/probability-statistics-v1.json"
+    "data/meta-foundation/runtime/probability-statistics-v1.json",
+    "data/meta-foundation/runtime/middle-geometry-v1.json",
+    "data/meta-foundation/runtime/middle1-v1.json"
   ];
+  // TODO: publish runtime file paths in the ACTIVE registry before replacing this list.
+  const TAXONOMY_URL = "data/meta-foundation/compiled/taxonomy_registry.json";
   const FOUNDATION_OVERRIDE_FIELDS = [
     "curriculumKey","courseKey","L1","L2","L3","L4",
     "standardCourse","standardUnitKey","standardUnit","standardUnitOrder",
@@ -153,7 +157,7 @@
         gradeConflict: base.gradeConflict,
         taxonomyStatus: "CONFIRMED",
         metadataConflicts: [],
-        reviewStatus: "reviewed_pass"
+        reviewStatus: overlay.reviewStatus || "reviewed_pass"
       };
     });
     for (const overlay of runtime.records || []) {
@@ -168,7 +172,7 @@
         sourceQuestionNo: seed.sourceQuestionNo || overlay.sourceQuestionNo,
         taxonomyStatus: "CONFIRMED",
         metadataConflicts: [],
-        reviewStatus: "reviewed_pass"
+        reviewStatus: overlay.reviewStatus || "reviewed_pass"
       });
     }
     if (joined !== Number(runtime.counts && runtime.counts.records)) {
@@ -200,8 +204,8 @@
   const baseReady = window.__ARCHIVE_METADATA_READY__;
   const baseGet = window.getArchiveQuestionMetadata;
   const baseMerge = window.mergeArchiveQuestionMetadata;
-  const runtimeReady = Promise.all(
-    RUNTIME_URLS.map(runtimeUrl =>
+  const runtimeReady = Promise.all([
+    Promise.all(RUNTIME_URLS.map(runtimeUrl =>
       fetch(new URL(runtimeUrl, document.baseURI), { cache: "no-cache" })
         .then(response => {
           if (!response.ok) throw new Error("Meta Foundation runtime HTTP " + response.status + ": " + runtimeUrl);
@@ -213,8 +217,18 @@
           }
           return data;
         })
-    )
-  ).then(packs => {
+    )),
+    fetch(new URL(TAXONOMY_URL, document.baseURI), { cache: "no-cache" })
+      .then(response => {
+        if (!response.ok) throw new Error("Meta Foundation taxonomy HTTP " + response.status);
+        return response.json();
+      })
+      .then(data => {
+        if (data?.status !== "DERIVED_READ_ONLY" || !Array.isArray(data.problemTypes) || !Array.isArray(data.templates))
+          throw new Error("Meta Foundation taxonomy invalid");
+        return data;
+      })
+  ]).then(([packs, taxonomy]) => {
     const uniqueRows = (rows, fields) => {
       const seen = new Set();
       return rows.filter(row => {
@@ -259,14 +273,18 @@
       counts: {
         records: records.length,
         taxonomyRows: taxonomyRows.length,
-        defaultSelectable: packs.reduce((sum, pack) => sum + Number(pack.counts?.defaultSelectable || 0), 0),
+        defaultSelectable: packs.reduce((sum, pack) => sum + Number(pack.counts?.defaultSelectable ?? pack.records.filter(row => row.defaultSelectable === true).length), 0),
         supplementary: packs.reduce((sum, pack) => sum + Number(pack.counts?.supplementary || 0), 0),
-        automaticEligibleExpected: packs.reduce((sum, pack) => sum + Number(pack.counts?.automaticEligibleExpected || 0), 0),
+        automaticEligibleExpected: packs.reduce((sum, pack) => sum + Number(pack.counts?.automaticEligibleExpected ?? pack.counts?.runtimeSelectable ?? 0), 0),
         sourceHold: packs.reduce((sum, pack) => sum + Number(pack.counts?.sourceHold || 0), 0)
       }
     };
     overlayByUid = byUid;
     overlayBySource = bySource;
+    window.ARCHIVE_META_FOUNDATION_LABELS = {
+      problemTypes: Object.fromEntries(taxonomy.problemTypes.filter(row => row.status === "ACTIVE").map(row => [row.problemTypeKey, row.canonicalLabelKo])),
+      templates: Object.fromEntries(taxonomy.templates.filter(row => row.status === "ACTIVE").map(row => [row.templateKey, { label: row.canonicalLabelKo, parentProblemTypeKey: row.parentProblemTypeKey }]))
+    };
     window.ARCHIVE_META_FOUNDATION_RUNTIMES = packs;
     window.ARCHIVE_META_FOUNDATION_RUNTIME = runtime;
     return runtime;

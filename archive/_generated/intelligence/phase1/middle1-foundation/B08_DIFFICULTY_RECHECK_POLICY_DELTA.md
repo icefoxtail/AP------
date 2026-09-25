@@ -1,0 +1,9 @@
+# B08 difficulty recheck policy checkpoint
+
+- Authority: `docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md` §18, with adjacent legacy compatibility resolution under §11.2.
+- Scope: B08 onward. B01–B07 physical ledgers, metadata writeback, and seven pushed exam checkpoint commits remain unchanged. The fixed 31-exam order and 737-UID denominator are unchanged.
+- Removed trigger: mere presence of `images` no longer creates `VISUAL_DEPENDENCY` mandatory recheck. Generic or poor solution quality alone no longer creates `OFF_TOPIC_SOLUTION`/`MISLEADING_SOLUTION` difficulty triggers; those remain physical source-quality findings/HOLDs.
+- First-pass difficulty evidence now records `visualDifficultyImpact`, `sourceSolutionDifficultyConflict`, and `reviewerRequestedRecheck` as explicit booleans, each with an item-specific reason when true. Visual/shared material triggers recheck only when its interpretation directly affects the difficulty judgment. A source/solution mismatch triggers recheck only when it can contaminate that judgment.
+- Kept targeted triggers: low confidence, non-NONE boundary, strong legacy conflict, same-template outlier, strong existing metadata conflict, and explicit reviewer request. Canonical §11.2 adjacent legacy mismatch still requires independent review before `BORDERLINE_ACCEPTABLE` is assigned.
+- Deterministic gates: B08+ blind freeze and validator require the three evidence booleans and reasons; the validator verifies queue trigger linkage and rejects the removed blanket trigger names. The exam report records first-pass denominator, recheck count/rate, counts by trigger, visual-triggered count, A/B actual conflict rate, and Sol direct-read count.
+- This is a recheck-selection performance correction. Semantic A/B full independent review, conflict-only C review, source/answer fail-closed gates, and student-field protection remain in force.

@@ -12,10 +12,11 @@ const fallbackFixture = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'uni
 
 test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 연결한다', () => {
   assert.match(html, /question-meta\.js/);
-  assert.match(html, /unit-past-exams\.css\?v=20260915f/);
+  assert.match(html, /unit-past-exams\.css\?v=20260922-semantic-cards/);
   assert.match(html, /question-index\.js\?v=20260827a/);
-  assert.match(html, /unit-past-exams-core\.js\?v=20260917-newest/);
-  assert.match(html, /unit-past-exams\.js\?v=20260917-navigation/);
+  assert.match(html, /archive2-core\.js\?v=20260922-shared-semantic/);
+  assert.match(html, /unit-past-exams-core\.js\?v=20260922-shared-semantic/);
+  assert.match(html, /unit-past-exams\.js\?v=20260922-semantic-cards/);
   assert.match(html, /id="unit-stepper"/);
   for (const id of ['unit-subunits', 'unit-difficulty', 'unit-mode', 'unit-quick-preset', 'unit-quick-count', 'unit-advanced-rows', 'unit-selection-report', 'unit-collection-scope', 'unit-collection-year-mode', 'unit-school-list', 'unit-collection-output', 'unit-collection-report']) {
     assert.match(js, new RegExp(id));
@@ -28,6 +29,22 @@ test('단원별 기출 페이지는 승인 메타데이터와 새 출제 UI를 �
   }
   assert.match(js, /clearSelectionPreview\(\)/);
   assert.match(js, /blueprint/);
+  assert.match(js, /problemTypeKey/);
+  assert.match(js, /templateKey/);
+  assert.match(js, /taxonomyPlan/);
+  assert.match(js, /semanticSubject/);
+  assert.match(js, /unit-grade-card/);
+  assert.match(js, /unit-subject-card/);
+  assert.match(js, /openFineBuilder/);
+  assert.match(js, /ARCHIVE_META_FOUNDATION_RUNTIME/);
+  assert.match(js, /validateMetaFoundationSelection/);
+  assert.match(js, /metaFoundationOwnedScope/);
+  assert.match(js, /metaFoundationTaxonomyValid/);
+  assert.match(js, /metaFoundationRuntimeAvailable/);
+  assert.match(js, /isAutomaticSelectable/);
+  assert.match(js, /unit\.selectableCount/);
+  assert.match(js, /catalog\.selectableCount/);
+  assert.match(js, /Meta Foundation 연결 실패로 자동출제를 중단했습니다/);
   assert.match(js, /window\.addEventListener\('popstate'/);
   assert.match(js, /renderSafeFallback/);
   assert.match(js, /limitExceeded/);
@@ -57,6 +74,10 @@ test('출제 UI는 작은 화면과 키보드 포커스를 위한 스타일을 �
   assert.match(css, /\.unit-confirmation \{ grid-template-columns: 1fr; \}/);
   assert.match(css, /\.unit-config-row,[\s\S]*flex-direction: column/);
   assert.match(css, /unit-advanced-fields/);
+  assert.match(css, /unit-grade-cards/);
+  assert.match(css, /unit-subject-grid/);
+  assert.match(css, /unit-blueprint-candidate/);
+  assert.match(css, /--archive2-mobile-bottom-nav-offset/);
   assert.match(css, /unit-filter-actions/);
   assert.match(css, /unit-preview-frame/);
   assert.match(html, /id="unit-status"[^>]*aria-live="polite"/);

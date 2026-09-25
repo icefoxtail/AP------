@@ -32,7 +32,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_COORDINATE_POINT_READING",
+    "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -63,7 +72,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+    "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_ORDERED_PAIR_EQUALITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -94,7 +112,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+    "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -125,7 +152,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_POSITIVE","COND_NEGATIVE"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -151,10 +187,19 @@ window.questionBank = [
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q5.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+    "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -185,10 +230,19 @@ window.questionBank = [
     "solution": "두 동물이 만날 때에는 같은 시각에 출발점에서 떨어진 거리가 같으므로 두 그래프의 교점을 찾는다. 교점의 $x$좌표는 $20$, $60$이므로 거북이가 출발한 지 $20$분, $60$분 후에 만난다. 따라서 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q6.png",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -219,10 +273,19 @@ window.questionBank = [
     "solution": "그래프에서 $3$시의 기온은 $23\\,^{\\circ}\\mathrm{C}$, $9$시의 기온은 $24\\,^{\\circ}\\mathrm{C}$이므로 차는 $1\\,^{\\circ}\\mathrm{C}$이다. 따라서 옳지 않은 것은 ①이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q7.png",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 8,
@@ -258,7 +321,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -293,7 +365,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+    "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -328,7 +409,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -359,7 +449,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_RANGE"],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -394,7 +493,16 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -427,10 +535,19 @@ window.questionBank = [
     "solution": "$l\\parallel m$이므로 윗부분의 선분이 수평선과 이루는 각은 $40^{\\circ}$이다. 첫 번째 꺾이는 점에서 표시된 $30^{\\circ}$를 이용하면 가운데 선분이 수평선과 이루는 각은 $40^{\\circ}+30^{\\circ}=70^{\\circ}$이다. 아랫부분의 선분은 $m$과 $30^{\\circ}$를 이루므로 $x=70^{\\circ}+30^{\\circ}=100^{\\circ}$이다. 따라서 정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q13.png",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT"
   },
   {
     "id": 14,
@@ -461,7 +578,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 15,
@@ -496,7 +622,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+    "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -530,7 +665,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+    "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -561,7 +705,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 18,
@@ -595,7 +748,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -630,7 +792,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_SQUARE_CONGRUENCE_TRANSFER",
+    "crossConceptKeys": ["CC_SQUARE"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -665,7 +836,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -696,7 +876,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+    "templateKey": "TPL_AREA_DIRECT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -723,10 +912,19 @@ window.questionBank = [
     "solution": "두 대각선이 이루는 맞꼭지각의 크기는 같으므로 위쪽의 각은 $3x+36^{\\circ}$이다. 직선 위의 각의 합을 이용하면 $(2x-18)+(3x+36)+x=180$이다. 따라서 $6x+18=180$, $x=27$이다. 수직선과 수평선이 이루는 각은 직각이므로 $a+x=90$이고, $a=90-27=63^{\\circ}$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q22.png",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "STRONG_CONFLICT"
   },
   {
     "id": 23,
@@ -755,7 +953,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 24,
@@ -763,9 +970,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-06",
+    "standardUnit": "평면도형의 성질",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -783,9 +990,18 @@ window.questionBank = [
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q24.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+    "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];

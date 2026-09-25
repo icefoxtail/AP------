@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "m1-worker-quality-rejection-v1",
+  "batchNo": 4,
+  "worker": "A",
+  "status": "RESOLVED_TARGETED_REVIEW",
+  "rejectedOrdinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "rejectedQuestionUids": [
+    "qid_v1_293b4f2723728232b8f43e17e2f2444a9a07147a743097958f1a2dc2d241298c",
+    "qid_v1_769b940cdf602ea1c1f5a1b699f8a956289bf4ea7b8ddd549958f548ae85f8bb",
+    "qid_v1_aceb4afaef2ea2aae836b5151e1eaaee074acc6653b586fedc2ff792423f225f",
+    "qid_v1_b90c407c17be832b547e966febc3b1118c945cb3b75b1e4cf42de18f98a48c7f",
+    "qid_v1_857098e9fa0fa6ef17a0437a5b518c4d6a5be84011c0125738c8a56ef60cc205",
+    "qid_v1_e5b6802b71d2b6aa92f27203eeb6b8a3dbcd5134c474b88d44683a12d1ee3cc1",
+    "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17",
+    "qid_v1_e59f822a160a15684a3d4472c6506c8cab2094e8fd7b7094274ced8164e912eb",
+    "qid_v1_879ab6a5d7ac9127373ca65d8a7626a8e61e2f5e9eb52846fdd0de1899775a0f"
+  ],
+  "oldLedgerSha256": "9f9a14110d0b41de9919c26c2adbcaaf8b8d514be1a7f876f705e78c95704825",
+  "failureCode": "SEMANTIC_PROVENANCE_LEAKAGE",
+  "detail": "A rows 1-9 use B04 UID/hash but describe the preceding B03 questions; semantic evidence is not source-derived from the matched B04 input.",
+  "examples": [
+    {
+      "ordinal": 1,
+      "source": "count primes in 1,14,17,23,35,48",
+      "wrongDecisive": "factor 180=2^2*3^2*5"
+    },
+    {
+      "ordinal": 2,
+      "source": "factor 72",
+      "wrongDecisive": "evaluate 2 star 3"
+    },
+    {
+      "ordinal": 3,
+      "source": "divisor of 3^2*5^3",
+      "wrongDecisive": "LCM train departure at 7:20"
+    }
+  ],
+  "correctionInput": "A_REVIEW_INPUT_01_09.jsonl",
+  "revisionOutput": "LUNA_A_REVISION_01_09.jsonl",
+  "correctedLedgerSha256": "b6f90f512bcdb4a0943e5acb78c51383385258eb54e15f660feff8579c80858a",
+  "revisionSha256": "652959b70877eb95dd400c467e02f38dac75a13467602a85ac315565d83c2a38",
+  "replacedRows": 9,
+  "unaffectedRowsPreserved": 14
+}

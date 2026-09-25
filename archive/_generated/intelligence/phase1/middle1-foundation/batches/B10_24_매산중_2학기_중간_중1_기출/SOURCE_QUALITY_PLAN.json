@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "m1-source-quality-plan-v1",
+  "batchNo": 10,
+  "denominator": 24,
+  "defaultDisposition": "SOLUTION_REPAIR_REQUIRED",
+  "defaultIssueType": "GENERIC_NON_ITEM_SPECIFIC_SOLUTION",
+  "defaultReason": "The archived solution repeats a general rule or keyed answer without deriving this item's marked geometry; record a physical solution-quality HOLD without automatic Root rereading or difficulty recheck.",
+  "overrides": [
+    { "sourceOrdinal": 6, "issueType": "MISSING_IMAGE_ANGLE_TO_LINE_MAPPING", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The generic solution omits how the 60°,120°,119° marks establish p∥q and l∥m but exclude n; Root's physical image proof supports keyed ⑤, so semantic mapping may proceed while solution quality remains a finding." },
+    { "sourceOrdinal": 10, "issueType": "UNVERIFIABLE_CONSTRUCTION_PANEL_SEQUENCE", "disposition": "SOURCE_BLOCKED", "reason": "The five small compass panels cannot be reliably ordered as a cumulative construction to certify keyed ② as the third step. A/B/C and Root evidence leave this source/answer relationship unresolved; retain semantic HOLD and preserve source." },
+    { "sourceOrdinal": 14, "issueType": "UNVERIFIABLE_FOLD_ANGLE_RAYS", "disposition": "SOURCE_BLOCKED", "reason": "The shaded folded-rectangle image does not reliably bind the original/reflected rays for x and the 40° mark. A/B/C and Root cannot certify keyed 70°; retain semantic HOLD and preserve source." },
+    { "sourceOrdinal": 15, "issueType": "MISSING_CUBE_NET_FACE_RECONSTRUCTION", "disposition": "SOLUTION_REPAIR_REQUIRED", "reason": "The stored answer echo does not fold the cube net or identify faces ㄱ and ㅁ as the two faces parallel to BC; Root image topology supports keyed ①, so semantic mapping may proceed with a separate solution-quality finding." },
+    { "sourceOrdinal": 17, "issueType": "UNVERIFIABLE_STAR_ANGLE_ARC_ANCHORS", "disposition": "SOURCE_BLOCKED", "reason": "The crowded intersecting-line figure does not bind all 45°,25°,10°,55° arcs to precise rays. A/B/C and Root cannot derive keyed 195° from the available source; retain semantic HOLD and preserve source." },
+    { "sourceOrdinal": 19, "issueType": "CROPPED_PENTAGON_UPPER_VERTEX", "disposition": "SOURCE_BLOCKED", "reason": "The necessary pentagon vertex and adjoining rays are cropped, so the angle structure needed to verify the key is missing. A/B and Root leave semantic HOLD and preserve source." }
+  ],
+  "sourceAnswerHoldOrdinals": [10, 14, 17, 19],
+  "semanticMappingPolicy": "All 24 UID remain in this exam denominator. Four SOURCE_BLOCKED semantic HOLD rows remain source-byte unchanged and absent from taxonomy/writeback. Twenty generic or insufficient solution fields are quality findings only and do not themselves trigger Root or difficulty recheck. The independently proven #6/#15 answers keep quality findings without editing protected fields."
+}

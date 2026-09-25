@@ -61,20 +61,136 @@ test('구형 기말·중간 경로는 파일명의 학기로 현재 아카이브
   ]);
 });
 
-test('고2 catalog은 요청한 세 과목만 분류하고 제외 단원을 무시한다', () => {
-  const catalog = core.buildCatalog([
+test('고2·고3 shared high-semantic catalog은 같은 5과목 단원 projection을 사용한다', () => {
+  const records = [
     fixtureRecord({ course: '대수', question_uid: 'a' }),
     fixtureRecord({ id: 2, course: '미적분Ⅰ', standardUnitKey: 'H15-M2-01', standardUnit: '함수의 극한', question_uid: 'b' }),
     fixtureRecord({ id: 3, course: '확률과 통계', standardUnitKey: 'H15-PS-01', standardUnit: '순열과 조합', question_uid: 'c' }),
-    fixtureRecord({ id: 4, course: '공통', standardUnitKey: 'H15-CALC-01', standardUnit: '제외', question_uid: 'd' })
-  ], { profileId: 'h2' });
+    fixtureRecord({ id: 4, course: '미적분Ⅱ', standardUnitKey: 'H15-CALC-01', standardUnit: '수열의 극한', question_uid: 'd' }),
+    fixtureRecord({ id: 5, course: '기하', standardUnitKey: 'H22-GE-01', standardUnit: '이차곡선', question_uid: 'e' })
+  ];
+  const h2 = core.buildCatalog(records, { profileId: 'h2' });
+  const h3 = core.buildCatalog(records, { profileId: 'h3' });
 
-  assert.equal(catalog.scannedCount, 4);
-  assert.equal(catalog.classifiedCount, 3);
-  assert.equal(catalog.review.length, 0);
-  assert.equal(catalog.invalid.length, 0);
-  assert.equal(catalog.ignored.length, 1);
-  assert.deepEqual(catalog.units.filter(unit => unit.count > 0).map(unit => unit.course), ['대수', '미적분Ⅰ', '확률과 통계']);
+  assert.equal(core.PROFILES.h2.units.length, 38);
+  assert.equal(core.PROFILES.h3.units.length, 38);
+  assert.equal(core.PROFILES.h2.units, core.PROFILES.h3.units);
+  assert.equal(core.PROFILES.h2.scope, core.PROFILES.h3.scope);
+  assert.equal(h2.classifiedCount, 5);
+  assert.equal(h3.classifiedCount, 5);
+  assert.equal(h2.ignored.length, 0);
+  assert.equal(h3.ignored.length, 0);
+  assert.deepEqual(
+    h2.units.filter(unit => unit.count > 0).map(unit => unit.course),
+    ['대수', '미적분Ⅰ', '확률과 통계', '미적분Ⅱ', '기하']
+  );
+  assert.deepEqual(
+    h3.units.filter(unit => unit.count > 0).map(unit => unit.key),
+    h2.units.filter(unit => unit.count > 0).map(unit => unit.key)
+  );
+  assert.equal(core.resolveUnitKeyAlias('h3', 'H22-MI1-06'), 'H22-M1-05');
+});
+
+test('high-semantic mapping precedence는 override → explicit ignore → direct canonical → legacy 순서를 지킨다', () => {
+  const ignored = core.classifyRecord(fixtureRecord({
+    sourceFile: 'original/high/h2/1final/25_제일고_1학기_기말_고2_대수c.js',
+    id: 22,
+    sourceOrdinal: 22,
+    standardUnitKey: 'H22-A-01',
+    standardUnit: '지수와 로그',
+    question_uid: 'ignored-direct'
+  }), 'h2');
+  assert.equal(ignored.status, 'ignored');
+  assert.equal(ignored.reason, '공통수학 문항');
+
+  const overridden = core.classifyRecord(fixtureRecord({
+    sourceFile: 'original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js',
+    id: 19,
+    sourceOrdinal: 19,
+    standardUnitKey: 'H22-C2-02',
+    standardUnit: '직선의 방정식',
+    question_uid: 'override-first'
+  }), 'h2');
+  assert.equal(overridden.status, 'classified');
+  assert.equal(overridden.reason, 'manual-override');
+  assert.equal(overridden.unitKey, 'H22-A-04');
+});
+
+test('defaultSelectable=false와 broken Meta Foundation taxonomy는 자동출제 pool에서 fail-closed된다', () => {
+  const runtime = {
+    status: 'ACTIVE',
+    ownedScopes: [{ curriculumKey: '2022', courseKey: '공통수학2', L1: '도형의 방정식', L2: '평면좌표' }],
+    taxonomyRows: [{
+      curriculumKey: '2022', courseKey: '공통수학2', L1: '도형의 방정식', L2: '평면좌표',
+      problemTypeKey: 'PT_OK', templateKey: 'TPL_OK', defaultSelectable: true
+    }]
+  };
+  const authority = core.createMetaFoundationSelectionAuthority(runtime);
+  const base = {
+    curriculumKey: '2022', courseKey: '공통수학2', L1: '도형의 방정식', L2: '평면좌표',
+    problemTypeKey: 'PT_OK', templateKey: 'TPL_OK', defaultSelectable: true
+  };
+  assert.deepEqual(core.validateMetaFoundationSelection(base, authority), {
+    owned: true, valid: true, reason: 'ACTIVE_TAXONOMY_ROW'
+  });
+  assert.equal(core.validateMetaFoundationSelection({ ...base, problemTypeKey: 'PT_BROKEN' }, authority).valid, false);
+  assert.equal(core.validateMetaFoundationSelection({ ...base, templateKey: 'TPL_WRONG_PARENT' }, authority).valid, false);
+  assert.deepEqual(core.validateMetaFoundationSelection({
+    curriculumKey: '2015', courseKey: '수학I', L1: '대수', L2: '수열',
+    problemTypeKey: 'LEGACY', templateKey: 'LEGACY'
+  }, authority), { owned: false, valid: true, reason: 'NOT_OWNED' });
+
+  const records = [
+    { id: 1, sourceFile: 'a.js', questionUid: 'ok', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
+    { id: 2, sourceFile: 'b.js', questionUid: 'supplementary', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: false, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
+    { id: 3, sourceFile: 'c.js', questionUid: 'broken-taxonomy', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: false }
+  ];
+  assert.deepEqual(core.filterUnitRecords(records).map(item => item.questionUid), ['ok']);
+  assert.deepEqual(core.getSubUnitOptions(records).map(item => [item.key, item.count]), [['L2', 1]]);
+
+  const selected = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 2 }], {});
+  assert.equal(selected.ok, false);
+  assert.equal(selected.selectedCount, 1);
+  assert.equal(selected.shortage, 1);
+});
+
+test('Meta Foundation runtime unavailable은 자동출제 전체를 fail-closed한다', () => {
+  const records = [
+    {
+      sourceFile: 'legacy.js', id: 1, questionUid: 'legacy-runtime-down',
+      subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중',
+      metaFoundationRuntimeAvailable: false
+    },
+    {
+      sourceFile: 'owned.js', id: 2, questionUid: 'owned-runtime-down',
+      subUnitKey: 'A', subUnit: '개념', difficultyBucket: '중',
+      defaultSelectable: true,
+      metaFoundationRuntimeAvailable: false,
+      metaFoundationOwnedScope: true,
+      metaFoundationTaxonomyValid: false
+    }
+  ];
+  assert.equal(core.isAutomaticSelectable(records[0]), false);
+  assert.equal(core.isAutomaticSelectable(records[1]), false);
+  assert.deepEqual(core.filterUnitRecords(records, { includeUnclassified: true }), []);
+  const result = core.selectByBlueprint(records, [{ subUnitKey: 'A', difficultyBucket: '중', count: 1 }], {});
+  assert.equal(result.ok, false);
+  assert.equal(result.selectedCount, 0);
+  assert.equal(result.shortage, 1);
+});
+
+test('ready paper split은 non-selectable classified record를 보존 집계하되 문제지에는 넣지 않는다', () => {
+  const records = [
+    fixtureRecord({ id: 1, sourceOrdinal: 1, question_uid: 'ready-ok', subUnitKey: 'A', subUnit: '개념', level: '중', defaultSelectable: true }),
+    fixtureRecord({ id: 2, sourceOrdinal: 2, question_uid: 'ready-supplementary', subUnitKey: 'A', subUnit: '개념', level: '중', defaultSelectable: false })
+  ];
+  const catalog = core.buildCatalog(records, { profileId: 'h2' });
+  const unit = catalog.units.find(item => item.count > 0);
+  assert.equal(catalog.classifiedCount, 2);
+  assert.equal(unit.count, 2);
+  assert.equal(unit.selectableCount, 1);
+  assert.equal(unit.excludedFromAutomaticCount, 1);
+  assert.deepEqual(unit.papers.flatMap(paper => paper.records.map(item => item.questionUid)), ['ready-ok']);
 });
 
 test('catalog 정규화는 원본 식별자와 문제지 80문항 상한을 유지한다', () => {
@@ -255,4 +371,48 @@ test('미분류 제외가 기본이고 인접 난이도 허용은 명시적으�
   const withUnclassified = core.selectByBlueprint(records, [{ count: 2 }], { includeUnclassified: true });
   assert.equal(withUnclassified.selected.length, 2);
   assert.ok(withUnclassified.selected.some(item => item.questionUid === 'missing-subunit' || item.questionUid === 'missing-level'));
+});
+
+test('L2→L3→L4 blueprint는 계층 조건별 실제 후보 수와 부족분을 계산한다', () => {
+  const records = [
+    { sourceFile: 'a.js', id: 1, questionUid: 'u1', subUnitKey: 'L2-A', subUnit: '소단원 A', problemTypeKey: 'PT-A', L3: '유형 A', templateKey: 'TPL-A1', L4: '템플릿 A1', difficultyBucket: '중' },
+    { sourceFile: 'b.js', id: 2, questionUid: 'u2', subUnitKey: 'L2-A', subUnit: '소단원 A', problemTypeKey: 'PT-A', L3: '유형 A', templateKey: 'TPL-A2', L4: '템플릿 A2', difficultyBucket: '중' },
+    { sourceFile: 'c.js', id: 3, questionUid: 'u3', subUnitKey: 'L2-B', subUnit: '소단원 B', problemTypeKey: 'PT-B', L3: '유형 B', templateKey: 'TPL-B1', L4: '템플릿 B1', difficultyBucket: '상' }
+  ];
+
+  assert.deepEqual(core.getProblemTypeOptions(records, { subUnitKeys: ['L2-A'] }).map(item => item.key), ['PT-A']);
+  assert.deepEqual(
+    new Set(core.getTemplateOptions(records, { subUnitKeys: ['L2-A'], problemTypeKeys: ['PT-A'] }).map(item => item.key)),
+    new Set(['TPL-A1', 'TPL-A2'])
+  );
+
+  const exact = core.selectByBlueprint(records, [
+    { subUnitKey: 'L2-A', problemTypeKey: 'PT-A', templateKey: 'TPL-A2', difficultyBucket: '중', count: 1 }
+  ], { seed: 'taxonomy-exact' });
+  assert.equal(exact.ok, true);
+  assert.deepEqual(exact.selected.map(item => item.questionUid), ['u2']);
+  assert.equal(exact.rows[0].availableCount, 1);
+  assert.equal(exact.rows[0].problemTypeKey, 'PT-A');
+  assert.equal(exact.rows[0].templateKey, 'TPL-A2');
+
+  const short = core.selectByBlueprint(records, [
+    { subUnitKey: 'L2-A', problemTypeKey: 'PT-A', templateKey: 'TPL-A2', difficultyBucket: '중', count: 2 }
+  ], { seed: 'taxonomy-short' });
+  assert.equal(short.ok, false);
+  assert.equal(short.rows[0].availableCount, 1);
+  assert.equal(short.rows[0].shortage, 1);
+});
+
+test('taxonomy blueprint provenance은 snapshot identity에 포함된다', () => {
+  const records = [{ sourceFile: 'a.js', id: 1, questionUid: 'uid-a' }];
+  const scope = { id: 'scope' };
+  const first = core.buildSnapshotKey('H22-A-01', records, scope, {
+    mode: 'advanced',
+    taxonomyPlan: [{ subUnitKey: 'L2', problemTypeKey: 'PT-A', templateKey: 'TPL-A', difficultyBucket: '중', count: 1 }]
+  });
+  const second = core.buildSnapshotKey('H22-A-01', records, scope, {
+    mode: 'advanced',
+    taxonomyPlan: [{ subUnitKey: 'L2', problemTypeKey: 'PT-A', templateKey: 'TPL-B', difficultyBucket: '중', count: 1 }]
+  });
+  assert.notEqual(first, second);
 });

@@ -50,6 +50,13 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
 
   await page.locator('details.unit-advanced-panel summary').click();
   await page.locator('input[name="unit-mode"][value="advanced"]').check();
+  await waitFor(tab, async () => (await page.locator('[data-field="problemTypeKey"]').count()) > 0);
+  result.taxonomyControls = {
+    problemTypeKey: await page.locator('[data-field="problemTypeKey"]').count(),
+    templateKey: await page.locator('[data-field="templateKey"]').count()
+  };
+  assert.ok(result.taxonomyControls.problemTypeKey > 0);
+  assert.ok(result.taxonomyControls.templateKey > 0);
   if (await page.locator('.unit-blueprint-row').count() < 2) {
     await page.getByRole('button', { name: /조합 추가/ }).click();
   }
@@ -87,7 +94,7 @@ export async function runUnitPastExamsBrowserQA(tab, viewport, options = {}) {
 
   const schoolUrl = new URL(`${baseUrl}/archive/unit-past-exams.html`);
   schoolUrl.searchParams.set('grade', 'h2');
-  schoolUrl.searchParams.set('unit', 'H22-MI1-04');
+  schoolUrl.searchParams.set('unit', 'H22-M1-04');
   schoolUrl.searchParams.set('step', 'source');
   schoolUrl.searchParams.set('collection', '1');
   schoolUrl.searchParams.set('collectionYearMode', 'exact');

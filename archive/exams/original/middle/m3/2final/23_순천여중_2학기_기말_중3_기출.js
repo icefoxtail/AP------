@@ -25,12 +25,13 @@ window.questionBank = [
       "$210^\\circ,120^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원주각이 보는 호와 중심각의 관계를 이용한다.\n조건 정리: 첫 그림의 $105^\\circ$ 원주각은 $x$의 바깥쪽 큰 호를 보고, 둘째 그림의 원주각 $x$는 중심각 $60^\\circ$와 같은 호를 본다.\n풀이 방향: 첫 그림은 원주각이 보는 호의 중심각을 구한 뒤 한 바퀴에서 빼고, 둘째 그림은 중심각의 절반을 구한다.\n정석 풀이: 첫 그림에서 $105^\\circ$가 보는 큰 호의 중심각은 $210^\\circ$이므로 표시된 작은 중심각은 $360^\\circ-210^\\circ=150^\\circ$이다. 둘째 그림에서는 $x=\\dfrac12\\times60^\\circ=30^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "첫 번째 그림에서 $105^\\circ$는 표시된 $x$의 반대쪽 큰 호를 보는 원주각이다.\n따라서 그 큰 호에 대한 중심각은\n$105^\\circ\\times2=210^\\circ$\n이다.\n한 바퀴가 $360^\\circ$이므로\n$x=360^\\circ-210^\\circ=150^\\circ$\n이다.\n\n두 번째 그림에서 $x$가 보는 호의 중심각은 $60^\\circ$이다.\n원주각은 같은 호에 대한 중심각의 절반이므로\n$x=\\dfrac{60^\\circ}{2}=30^\\circ$\n이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q1.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q1-solution.svg"
   },
   {
     "id": 2,
@@ -56,12 +57,13 @@ window.questionBank = [
       "$\\angle x=2\\angle BOC=2\\times50^\\circ=100^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 같은 호를 보는 원주각은 중심각의 절반이다.\n조건 정리: $\\angle BED=60^\\circ$, $\\angle COD=70^\\circ$이다.\n풀이 방향: $\\angle BOD$, $\\angle BOC$를 차례로 구한 뒤 $x$와 비교한다.\n정석 풀이: $\\angle BOD=2\\angle BED=120^\\circ$이고 $\\angle BOC=120^\\circ-70^\\circ=50^\\circ$이다. $x$는 호 $BC$를 보는 원주각이므로 $x=\\dfrac12\\angle BOC=25^\\circ$이다. 따라서 $x=2\\angle BOC=100^\\circ$라고 한 ⑤가 옳지 않다.\n따라서 정답은 ⑤이다.",
+    "solution": "$\\angle BED=60^\\circ$가 보는 호 $BD$의 중심각은\n$\\angle BOD=2\\times60^\\circ=120^\\circ$\n이다.\n또 $\\angle COD=70^\\circ$이므로\n$\\angle BOC=120^\\circ-70^\\circ=50^\\circ$\n이다.\n\n$x$는 호 $BC$를 보는 원주각이므로\n$x=\\dfrac{50^\\circ}{2}=25^\\circ$\n이다.\n따라서 $x=2\\angle BOC=100^\\circ$라고 한 ⑤가 옳지 않다.\n정답은 ⑤이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q2-solution.svg"
   },
   {
     "id": 3,
@@ -87,12 +89,13 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 호의 길이의 비는 중심각의 크기의 비와 같다.\n조건 정리: 호 $AB:BC:CA=3:4:5$이고 전체는 $360^\\circ$이다.\n풀이 방향: 호 $BC$의 중심각을 구해 이를 보는 원주각 $x$를 구한다.\n정석 풀이: 비의 합이 $12$이므로 호 $BC$에 대한 중심각은 $360^\\circ\\times\\dfrac4{12}=120^\\circ$이다. 따라서 같은 호 $BC$를 보는 원주각은 $x=60^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": "호 $AB:BC:CA=3:4:5$이고 비의 합은 $12$이다.\n따라서 호 $BC$에 대한 중심각의 크기는\n$360^\\circ\\times\\dfrac{4}{12}=120^\\circ$\n이다.\n$x$는 같은 호 $BC$를 보는 원주각이므로\n$x=\\dfrac{120^\\circ}{2}=60^\\circ$\n이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q3-solution.svg"
   },
   {
     "id": 4,
@@ -119,12 +122,13 @@ window.questionBank = [
       "$\\angle x=90^\\circ+23^\\circ=113^\\circ$"
     ],
     "answer": "②, ④",
-    "solution": "[키포인트] 지름에 대한 원주각과 같은 호를 보는 원주각을 확인한다.\n조건 정리: $AB$는 지름이고 $\\angle DOC=46^\\circ$이다.\n풀이 방향: 각 보기의 내용을 하나씩 판정한다.\n정석 풀이: $AB$는 지름이므로 $\\angle ADB=90^\\circ$이고, $D,A,E$가 한 직선 위이므로 $\\angle EDB=90^\\circ$이다. 따라서 삼각형 $EDB$에서 $\\angle DEB+\\angle DBE=90^\\circ$이므로 ②는 옳다. 또 호 $DC$에 대한 원주각은 중심각의 절반이므로 $\\angle DBC=23^\\circ$이어서 ④도 옳다. ①은 $AB$가 반지름이 아니라 지름이므로 틀리고, ③은 $\\angle DAB$가 호 $DC$를 보는 각이 아니므로 틀리며, ⑤의 $x$는 $113^\\circ$가 아니다.\n따라서 정답은 ②, ④이다.",
+    "solution": "$AB$는 지름이므로 지름 $AB$를 보는 원주각은 직각이다.\n따라서 $\\angle ADB=90^\\circ$이고, $A,D,E$가 한 직선 위이므로\n$\\angle EDB=90^\\circ$\n이다.\n그러므로 삼각형 $EDB$에서\n$\\angle DEB+\\angle DBE=90^\\circ$\n이어서 ②는 옳다.\n\n또 $\\angle DOC=46^\\circ$이므로 같은 호 $DC$를 보는 원주각은\n$\\angle DBC=\\dfrac{46^\\circ}{2}=23^\\circ$\n이다. 따라서 ④도 옳다.\n이때 $x=\\angle DEB=180^\\circ-90^\\circ-23^\\circ=67^\\circ$이므로 ⑤의 $113^\\circ$도 옳지 않다.\n따라서 정답은 ②, ④이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -150,12 +154,13 @@ window.questionBank = [
       "$80^\\circ,100^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이다.\n조건 정리: 삼각형 $BCD$에서 $\\angle CBD=30^\\circ$, $\\angle BDC=70^\\circ$이다.\n풀이 방향: 먼저 $x$를 구한 뒤 내접사각형의 성질로 $y$를 구한다.\n정석 풀이: $x=180^\\circ-30^\\circ-70^\\circ=80^\\circ$이다. 내접사각형에서 $x+y=180^\\circ$이므로 $y=100^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "삼각형 $BCD$에서\n$x+30^\\circ+70^\\circ=180^\\circ$\n이므로\n$x=80^\\circ$\n이다.\n\n사각형 $ABCD$는 원에 내접하므로 마주 보는 두 각의 합은 $180^\\circ$이다.\n따라서\n$x+y=180^\\circ$\n$y=180^\\circ-80^\\circ=100^\\circ$\n이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -181,12 +186,13 @@ window.questionBank = [
       "$110^\\circ,80^\\circ$ / $60^\\circ,95^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 내접사각형의 맞은편 각의 합과 외각을 이용한다.\n조건 정리: 첫 그림은 내접사각형의 두 각이 $100^\\circ$, $70^\\circ$이고, 둘째 그림은 한 내각이 $60^\\circ$, 아래쪽 외각이 $95^\\circ$이다.\n풀이 방향: 두 그림을 각각 계산한다.\n정석 풀이: 첫 그림에서 $x+70^\\circ=180^\\circ$이므로 $x=110^\\circ$, $y+100^\\circ=180^\\circ$이므로 $y=80^\\circ$이다. 둘째 그림에서 아래쪽 내각은 $180^\\circ-95^\\circ=85^\\circ$이므로 맞은편 $x=95^\\circ$이다. 또한 $60^\\circ$의 맞은편 내각은 $120^\\circ$이므로 그 외각 $y=60^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "첫 번째 그림은 원에 내접하는 사각형이다.\n마주 보는 두 각의 합이 $180^\\circ$이므로\n$x+70^\\circ=180^\\circ$에서 $x=110^\\circ$,\n$y+100^\\circ=180^\\circ$에서 $y=80^\\circ$이다.\n\n두 번째 그림에서 아래쪽의 내각은 외각 $95^\\circ$와 한 직선 위에 있으므로\n$180^\\circ-95^\\circ=85^\\circ$\n이다.\n그 맞은편 각은 $180^\\circ-85^\\circ=95^\\circ$이므로 $x=95^\\circ$이다.\n또 $60^\\circ$의 맞은편 내각은 $120^\\circ$이고, 그 각의 외각은\n$180^\\circ-120^\\circ=60^\\circ$\n이므로 $y=60^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q6.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -212,12 +218,13 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 원에 내접하는 사각형의 맞은편 각의 합을 두 외부 삼각형과 연결한다.\n조건 정리: $\\angle AFD=50^\\circ$, $\\angle CED=20^\\circ$이고 $ABCD$는 원에 내접한다.\n풀이 방향: 사각형의 내각을 $A,B,C,D$로 두고 외부 삼각형의 각의 합을 이용한다.\n정석 풀이: 삼각형 $AFD$에서 두 밑각은 각각 $180^\\circ-A$, $180^\\circ-D$이므로 $A+D=230^\\circ$이다. 삼각형 $CDE$에서는 $(180^\\circ-C)+(180^\\circ-D)+20^\\circ=180^\\circ$이므로 $C+D=200^\\circ$이다. 내접사각형에서 $A+C=180^\\circ$이므로 $C=180^\\circ-A$이다. 따라서 $D=A+20^\\circ$이고 $A+D=230^\\circ$에서 $A=105^\\circ$, $D=125^\\circ$이다. 그러므로 $B=180^\\circ-D=55^\\circ$이고 $x=55^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "사각형 $ABCD$의 네 내각을 각각 $A,B,C,D$라 하자.\n삼각형 $AFD$에서 $AF$와 $AB$, $DF$와 $DC$는 각각 반대 방향이므로\n$(180^\\circ-A)+(180^\\circ-D)+50^\\circ=180^\\circ$\n따라서\n$A+D=230^\\circ$이다.\n\n삼각형 $CDE$에서도\n$(180^\\circ-C)+(180^\\circ-D)+20^\\circ=180^\\circ$\n이므로\n$C+D=200^\\circ$이다.\n원에 내접하는 사각형이므로 $A+C=180^\\circ$이다.\n따라서 $C=180^\\circ-A$를 위 식에 넣으면\n$D=A+20^\\circ$이다.\n$A+D=230^\\circ$이므로\n$A=105^\\circ$, $D=125^\\circ$이다.\n마주 보는 각의 합이 $180^\\circ$이므로\n$x=B=180^\\circ-125^\\circ=55^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -243,12 +250,13 @@ window.questionBank = [
       "$65^\\circ,60^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원주각은 자신이 보는 호의 크기의 절반이다.\n조건 정리: $\\angle A=115^\\circ$, $\\angle D=100^\\circ$이고 $x=\\angle BOC$이다.\n풀이 방향: 두 원주각이 보는 호를 이용해 호 $BC$의 크기를 구한다.\n정석 풀이: $\\angle A=115^\\circ$이므로 호 $BCDE$의 크기는 $230^\\circ$, 따라서 나머지 호 $BAE$의 크기는 $130^\\circ$이다. $\\angle D=100^\\circ$이 보는 호 $CBAE$의 크기는 $200^\\circ$이므로 호 $BC$의 크기는 $200^\\circ-130^\\circ=70^\\circ$이다. 따라서 중심각 $x=70^\\circ$이고 같은 호를 보는 원주각은 $35^\\circ$이다.\n따라서 정답은 ①이다.",
+    "solution": "$\\angle A=115^\\circ$가 보는 호 $BCDE$의 크기는\n$115^\\circ\\times2=230^\\circ$\n이다.\n따라서 나머지 호 $BAE$의 크기는\n$360^\\circ-230^\\circ=130^\\circ$\n이다.\n\n$\\angle D=100^\\circ$가 보는 호 $CBAE$의 크기는\n$100^\\circ\\times2=200^\\circ$\n이다.\n그러므로 호 $BC$의 크기는\n$200^\\circ-130^\\circ=70^\\circ$\n이다.\n중심각은 자신이 보는 호의 크기와 같으므로 $x=70^\\circ$이고,\n같은 호 $BC$를 보는 원주각은\n$\\dfrac{70^\\circ}{2}=35^\\circ$\n이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q8.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q8-solution.svg"
   },
   {
     "id": 9,
@@ -274,12 +282,13 @@ window.questionBank = [
       "$\\angle BAT=\\angle BPA$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 지름에 대한 원주각과 접선과 반지름의 수직 관계를 이용한다.\n조건 정리: $AC$는 지름이고 $AT$는 접선이다.\n풀이 방향: 첫 보기부터 실제 각의 크기를 확인한다.\n정석 풀이: 반지름 $AC$와 접선 $AT$는 수직이므로 $\\angle CAT=90^\\circ$이다. 또한 $AC$가 지름이므로 $\\angle CPA=90^\\circ$이다. 따라서 두 각을 $60^\\circ$라고 한 ①이 옳지 않다. 한편 $\\angle CAB=\\angle CPB$이고, $\\angle BAT=90^\\circ-\\angle CAB$, $\\angle BPA=90^\\circ-\\angle CAB$이므로 나머지 설명은 성립한다.\n따라서 정답은 ①이다.",
+    "solution": "$AC$는 지름이고 $AT$는 점 $A$에서의 접선이다.\n반지름 $AC$와 접선 $AT$는 서로 수직이므로\n$\\angle CAT=90^\\circ$\n이다.\n또 지름 $AC$를 보는 원주각도 직각이므로\n$\\angle CPA=90^\\circ$\n이다.\n따라서 두 각을 $60^\\circ$라고 한 ①이 옳지 않다.\n\n한편 같은 호 $CB$를 보는 원주각이므로 $\\angle CAB=\\angle CPB$이다.\n그래서\n$\\angle BAT=90^\\circ-\\angle CAB$\n$\\angle BPA=90^\\circ-\\angle CPB=90^\\circ-\\angle CAB$\n이 되어 $\\angle BAT=\\angle BPA$도 성립한다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q9.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q9-solution.svg"
   },
   {
     "id": 10,
@@ -305,12 +314,13 @@ window.questionBank = [
       "$210^\\circ,50^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 접선과 현이 이루는 각은 그 현을 보는 원주각과 같다.\n조건 정리: 두 그림 모두 $AT$가 점 $A$에서의 접선이다.\n풀이 방향: 첫 그림은 주어진 원주각과 접선각을, 둘째 그림은 접현각과 삼각형의 내각을 이용한다.\n정석 풀이: 첫 그림에서 $\\angle ABC=120^\\circ$이고, 왼쪽 방향의 접선과 현 $AC$가 이루는 표시각은 같은 현 $AC$에 대한 원주각의 바깥쪽 각이므로 $120^\\circ$이다. 둘째 그림에서 접선과 현 $AC$가 이루는 $40^\\circ$는 $\\angle ABC$와 같으므로 $\\angle B=40^\\circ$이다. $\\angle C=80^\\circ$이므로 $x=180^\\circ-40^\\circ-80^\\circ=60^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "첫 번째 그림에서 $\\angle ABC=120^\\circ$이다.\n현 $AC$와 접선이 이루는 각은 현 $AC$를 보는 원주각과 연결된다.\n그림에 표시된 $x$는 바깥쪽 각이므로\n$x=120^\\circ$\n이다.\n\n두 번째 그림에서 접선과 현 $AC$가 이루는 각이 $40^\\circ$이므로\n같은 현 $AC$를 보는 원주각 $\\angle ABC=40^\\circ$이다.\n또 $\\angle ACB=80^\\circ$이므로\n$x=180^\\circ-40^\\circ-80^\\circ=60^\\circ$\n이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -336,12 +346,13 @@ window.questionBank = [
       "$\\angle x=180^\\circ-(35^\\circ+35^\\circ)=110^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 이등변삼각형과 접현각의 성질을 순서대로 사용한다.\n조건 정리: $AP=AT$, $\\angle APT=35^\\circ$이다.\n풀이 방향: 삼각형 $APT$의 각, 접현각, 삼각형 $ABT$의 각을 차례로 구한다.\n정석 풀이: $AP=AT$이므로 $\\angle ATP=35^\\circ$이다. 접현각의 성질에 의해 $\\angle ABT=35^\\circ$이다. 삼각형 $APT$에서 $\\angle PAT=110^\\circ$이고 $P,A,B$가 한 직선 위이므로 $\\angle BAT=70^\\circ$이다. 따라서 삼각형 $ABT$에서 $x=180^\\circ-70^\\circ-35^\\circ=75^\\circ$이다. ⑤의 $110^\\circ$는 옳지 않다.\n따라서 정답은 ⑤이다.",
+    "solution": "$AP=AT$이므로 삼각형 $APT$는 이등변삼각형이다.\n$\\angle APT=35^\\circ$이므로\n$\\angle ATP=35^\\circ$\n이다.\n접선 $PT$와 현 $AT$가 이루는 각과 같은 현 $AT$를 보는 원주각은 같으므로\n$\\angle ABT=35^\\circ$\n이다.\n\n삼각형 $APT$에서\n$\\angle PAT=180^\\circ-35^\\circ-35^\\circ=110^\\circ$\n이다.\n$P,A,B$가 한 직선 위이므로\n$\\angle BAT=180^\\circ-110^\\circ=70^\\circ$\n이다.\n따라서 삼각형 $ABT$에서\n$x=180^\\circ-70^\\circ-35^\\circ=75^\\circ$\n이다.\n⑤의 $110^\\circ$는 옳지 않으므로 정답은 ⑤이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q11.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q11-solution.svg"
   },
   {
     "id": 12,
@@ -367,12 +378,13 @@ window.questionBank = [
       "$75^\\circ$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 접현각과 지름에 대한 원주각을 이용한다.\n조건 정리: $BC$는 지름이고 $\\angle BAQ=55^\\circ$이다.\n풀이 방향: 먼저 $x=\\angle ABC$를 구한 뒤 삼각형 $PAB$에서 $y$를 구한다.\n정석 풀이: 접현각의 성질에 의해 $\\angle BCA=55^\\circ$이다. 지름 $BC$에 대한 원주각 $\\angle BAC=90^\\circ$이므로 $x=180^\\circ-90^\\circ-55^\\circ=35^\\circ$이다. $PA$는 $AQ$의 반대 방향이므로 $\\angle PAB=125^\\circ$이고, $P,C,O,B$가 한 직선 위이므로 $\\angle PBA=x=35^\\circ$이다. 따라서 $y=20^\\circ$이고 $x+y=55^\\circ$이다.\n따라서 정답은 ①이다.",
+    "solution": "접선 $AQ$와 현 $AB$가 이루는 각이 $55^\\circ$이므로\n같은 현 $AB$를 보는 원주각은\n$\\angle BCA=55^\\circ$\n이다.\n$BC$는 지름이므로\n$\\angle BAC=90^\\circ$\n이다.\n따라서 삼각형 $ABC$에서\n$x=180^\\circ-90^\\circ-55^\\circ=35^\\circ$\n이다.\n\n$PA$는 $AQ$의 반대 방향이므로\n$\\angle PAB=180^\\circ-55^\\circ=125^\\circ$\n이다.\n또 $P,C,B$가 한 직선 위이므로 $\\angle PBA=x=35^\\circ$이다.\n삼각형 $PAB$에서\n$y=180^\\circ-125^\\circ-35^\\circ=20^\\circ$\n이다.\n따라서\n$x+y=35^\\circ+20^\\circ=55^\\circ$\n이므로 정답은 ①이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q12-solution.svg"
   },
   {
     "id": 13,
@@ -396,7 +408,7 @@ window.questionBank = [
       "중앙값은 자료에 따라서 두 개 이상일 수도 있다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 평균, 중앙값, 최빈값의 정의를 각각 확인한다.\n조건 정리: 자료는 $90$이 2개, $95$가 5개, $100$이 2개, $105$가 1개이다.\n풀이 방향: 각 대푯값을 직접 계산한다.\n정석 풀이: 평균은 $\\dfrac{960}{10}=96$이고, 중앙값은 정렬했을 때 5번째와 6번째 값의 평균이므로 $95$이다. 가장 많이 나타나는 값도 $95$이므로 최빈값은 $95$이다. 따라서 옳은 설명은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "자료를 작은 순서로 놓으면\n$90,90,95,95,95,95,95,100,100,105$\n이다.\n평균은\n$\\dfrac{90\\times2+95\\times5+100\\times2+105}{10}=\\dfrac{960}{10}=96$\n이므로 ①은 옳지 않다.\n자료가 10개이므로 중앙값은 5번째와 6번째 값의 평균인 $95$이어서 ②도 옳지 않다.\n가장 많이 나타나는 값은 $95$이므로 최빈값은 $95$이다.\n따라서 ③이 옳다.\n등급처럼 수의 크기를 그대로 더해 평균내기 적절하지 않은 자료에는 평균이 알맞지 않고, 중앙값은 한 자료에서 하나로 정해지므로 ④, ⑤도 옳지 않다.\n정답은 ③이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q13.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -425,7 +437,7 @@ window.questionBank = [
       "$7.5$개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 최빈값이 $7$이 되도록 먼저 $x$를 정한 뒤 중앙값을 구한다.\n조건 정리: 자료는 $6,5,7,4,x,9,3,8$이고, $x$를 제외한 값은 모두 한 번씩 나타난다.\n풀이 방향: 최빈값이 $7$이 되려면 $7$이 다른 값보다 더 많이 나타나야 한다.\n정석 풀이: 현재 $7$은 한 번 나타나므로 최빈값이 $7$이 되려면 $x=7$이어야 한다. 자료를 작은 순서로 정리하면 $3,4,5,6,7,7,8,9$이다. 자료가 8개이므로 중앙값은 가운데 두 값 $6$과 $7$의 평균인 $\\dfrac{6+7}{2}=6.5$이다.\n따라서 정답은 ③이다.",
+    "solution": "$x$를 제외한 $6,5,7,4,9,3,8$은 모두 한 번씩 나타난다.\n최빈값이 $7$이 되려면 $7$이 가장 많이 나타나야 하므로\n$x=7$\n이다.\n자료를 작은 순서로 놓으면\n$3,4,5,6,7,7,8,9$\n이다.\n자료가 8개이므로 가운데 두 값은 $6,7$이고,\n중앙값은\n$\\dfrac{6+7}{2}=6.5$\n이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q14.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -454,7 +466,7 @@ window.questionBank = [
       "$a=10,b=13$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 첫 자료의 중앙값 조건과 둘째 자료의 평균 조건을 함께 사용한다.\n조건 정리: $4,8,16,17,a$의 중앙값이 $8$이고, $2,15,14,a,b$의 평균이 $10$, 중앙값이 $12$이다.\n풀이 방향: 보기의 후보 중 평균 조건을 먼저 만족시키고 중앙값을 확인한다.\n정석 풀이: 둘째 자료의 합은 $50$이어야 하므로 $a+b=19$이다. 보기 중 이를 만족하는 것은 $a=7,b=12$이다. 첫 자료를 정렬하면 $4,7,8,16,17$로 중앙값은 $8$이고, 둘째 자료를 정렬하면 $2,7,12,14,15$로 중앙값은 $12$이다.\n따라서 정답은 ④이다.",
+    "solution": "두 번째 자료 $2,15,14,a,b$의 평균이 $10$이므로 다섯 수의 합은\n$10\\times5=50$\n이다.\n따라서\n$2+15+14+a+b=50$\n$a+b=19$\n이다.\n보기에서 $a+b=19$를 만족하는 것은 $a=7,b=12$이다.\n\n첫 번째 자료를 정리하면\n$4,7,8,16,17$\n이므로 중앙값은 $8$이다.\n두 번째 자료를 정리하면\n$2,7,12,14,15$\n이므로 중앙값은 $12$이다.\n두 조건을 모두 만족하므로 정답은 ④이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q15.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -483,7 +495,7 @@ window.questionBank = [
       "$20$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 모든 자료에서 편차의 합은 항상 $0$이다.\n조건 정리: 편차는 각 변량에서 평균을 뺀 값이다.\n풀이 방향: 편차의 합을 식으로 나타낸다.\n정석 풀이: 변량이 $n$개이고 평균이 $\\bar{x}$이면 편차의 합은 $\\sum(x_i-\\bar{x})=\\sum x_i-n\\bar{x}=n\\bar{x}-n\\bar{x}=0$이다.\n따라서 정답은 ①이다.",
+    "solution": "편차는 각 자료의 값에서 평균을 뺀 값이다.\n17개 자료의 편차를 모두 더하면\n$(17개 자료의 합)-(17\\times\\text{평균})$\n이 된다.\n그런데 17개 자료의 합은 바로 $17\\times\\text{평균}$이므로 두 값이 서로 없어져\n편차의 합은 $0$\n이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q16.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -512,7 +524,7 @@ window.questionBank = [
       "$6.5$회"
     ],
     "answer": "②",
-    "solution": "[키포인트] 평균으로 빠진 값을 구한 뒤 분산을 계산한다.\n조건 정리: 8명의 평균이 $7$이므로 전체 합은 $56$이다.\n풀이 방향: $x$를 구하고 편차의 제곱의 평균을 구한다.\n정석 풀이: 주어진 7개 값의 합은 $46$이므로 $x=10$이다. 평균 $7$에 대한 편차의 제곱은 $16,9,9,0,1,0,4,1$이고 합은 $40$이다. 따라서 분산은 $\\dfrac{40}{8}=5$이다.\n따라서 정답은 ②이다.",
+    "solution": "8명의 평균이 $7$회이므로 전체 성공 횟수의 합은\n$7\\times8=56$\n이다.\n$x$를 제외한 일곱 값의 합은\n$3+10+7+6+7+5+8=46$\n이므로\n$x=56-46=10$\n이다.\n\n평균 $7$에 대한 편차는\n$-4,3,3,0,-1,0,-2,1$\n이고, 편차의 제곱의 합은\n$16+9+9+0+1+0+4+1=40$\n이다.\n따라서 분산은\n$\\dfrac{40}{8}=5$\n이다.\n정답은 ②이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q17.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -541,7 +553,7 @@ window.questionBank = [
       "$\\sqrt5$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 표준편차는 분산의 양의 제곱근이다.\n조건 정리: 자료 $2,5,6,3,4$의 평균은 $4$이다.\n풀이 방향: 편차의 제곱의 평균을 구한다.\n정석 풀이: 편차는 $-2,1,2,-1,0$이고 제곱의 합은 $10$이다. 분산은 $10/5=2$이므로 표준편차는 $\\sqrt2$이다.\n따라서 정답은 ①이다.",
+    "solution": "자료는 $2,5,6,3,4$이고 평균은\n$\\dfrac{2+5+6+3+4}{5}=4$\n이다.\n평균 $4$에 대한 편차는\n$-2,1,2,-1,0$\n이다.\n편차의 제곱의 합은\n$4+1+4+1+0=10$\n이므로 분산은\n$\\dfrac{10}{5}=2$\n이다.\n따라서 표준편차는 분산의 양의 제곱근인\n$\\sqrt2$\n이다.\n정답은 ①이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q18.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -572,7 +584,7 @@ window.questionBank = [
       "$x$의 값이 증가함에 따라 $y$의 값이 대체로 증가하지 않으므로 두 변량 사이에는 상관관계가 없다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 표시된 두 점을 제외한 나머지 점들의 전체적인 방향을 본다.\n조건 정리: 점 (가), (나)를 지우면 나머지 점들은 $x$가 커질수록 $y$가 일정하게 증가하거나 감소하는 모양을 만들지 않는다.\n풀이 방향: 산점도의 점들이 우상향 또는 우하향 경향을 이루는지 확인한다.\n정석 풀이: 두 점을 제외한 나머지 점들은 낮은 $x$와 높은 $x$ 구간에서 $y$값이 고르게 흩어져 있어 뚜렷한 증가 또는 감소 경향이 없다. 따라서 두 변량 사이에는 상관관계가 없다고 판단한다.\n따라서 정답은 ⑤이다.",
+    "solution": "점 (가), (나)를 지우고 나머지 점들의 전체적인 모양을 본다.\n$x$가 커질수록 $y$가 함께 커지는 우상향 모양도 아니고,\n$x$가 커질수록 $y$가 작아지는 우하향 모양도 아니다.\n점들이 한 방향의 띠를 이루지 않고 흩어져 있으므로 두 변량 사이에는 뚜렷한 상관관계가 없다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q19.png",
     "imageSize": "large",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
@@ -604,7 +616,7 @@ window.questionBank = [
       "$35\\%$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 산점도에서 $y>x$인 점의 개수를 센다.\n조건 정리: 학생은 모두 10명이다.\n풀이 방향: 각 점에서 실기 점수 $y$가 필기 점수 $x$보다 큰 경우만 센다.\n정석 풀이: 산점도에서 $y>x$인 점은 2개이다. 따라서 비율은 $\\dfrac{2}{10}\\times100=20\\%$이다.\n따라서 정답은 ②이다.",
+    "solution": "가로축이 필기 점수 $x$, 세로축이 실기 점수 $y$이다.\n실기 점수가 필기 점수보다 높은 학생은 산점도에서 $y>x$인 점이다.\n10개의 점을 하나씩 비교하면 $y>x$인 점은 2개이다.\n따라서 비율은\n$\\dfrac{2}{10}\\times100=20\\%$\n이다.\n정답은 ②이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q20.png",
     "imageSize": "large",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
@@ -631,12 +643,13 @@ window.questionBank = [
     "content": "[서술형1] 다음은 원에 내접하는 사각형의 성질이다. 이 성질이 항상 성립함을 아래 도형을 이용하여 설명하시오.\\n원에 내접하는 사각형에서 마주 보는 두 각의 크기의 합은 $180^\\circ$이다. [5점]",
     "choices": [],
     "answer": "$180^\\circ$",
-    "solution": "[키포인트] 원주각은 자신이 보는 호에 대한 중심각의 절반이다.\n조건 정리: 그림에서 $\\angle A$가 보는 호 $BD$의 중심각을 $a$, $\\angle C$가 보는 반대쪽 호 $BD$의 중심각을 $b$라 두면 $a+b=360^\\circ$이다.\n풀이 방향: 두 원주각을 $a,b$로 나타내어 더한다.\n정석 풀이: $\\angle A=\\dfrac{a}{2}$, $\\angle C=\\dfrac{b}{2}$이다. 따라서 $\\angle A+\\angle C=\\dfrac{a+b}{2}=\\dfrac{360^\\circ}{2}=180^\\circ$이다. 그러므로 원에 내접하는 사각형의 마주 보는 두 각의 합은 항상 $180^\\circ$이다.\n따라서 구하는 값은 $180^\\circ$이다.",
+    "solution": "$\\angle A$가 보는 호 $BD$의 중심각을 $a$, $\\angle C$가 보는 반대쪽 호 $BD$의 중심각을 $b$라 하자.\n두 호를 합치면 원 전체가 되므로\n$a+b=360^\\circ$\n이다.\n원주각은 자신이 보는 호에 대한 중심각의 절반이므로\n$\\angle A=\\dfrac{a}{2}$,\n$\\angle C=\\dfrac{b}{2}$\n이다.\n따라서\n$\\angle A+\\angle C=\\dfrac{a+b}{2}=\\dfrac{360^\\circ}{2}=180^\\circ$\n이다.\n그러므로 원에 내접하는 사각형에서 마주 보는 두 각의 합은 항상 $180^\\circ$이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q21.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -657,12 +670,13 @@ window.questionBank = [
     "content": "[서술형2] 다음 그림과 같이 $\\overline{BC}$가 지름인 원 $O$에서 $\\overline{PT}$는 원 $O$의 접선이고 점 $T$는 그 접점이다. 이때 $\\angle x$, $\\angle y$의 크기를 각각 구하시오. [5점]",
     "choices": [],
     "answer": "$x=28^\\circ,\\ y=28^\\circ$",
-    "solution": "[키포인트] 지름에 대한 원주각과 접현각의 성질을 이용한다.\n조건 정리: $BC$는 지름이므로 $\\angle BTC=90^\\circ$이고, 접선 $PT$와 현 $TB$가 이루는 각은 $62^\\circ$이다.\n풀이 방향: 접현각으로 $\\angle TCB$를 구한 뒤 삼각형 $BTC$에서 $x$를 구하고 같은 호를 보는 원주각으로 $y$를 구한다.\n정석 풀이: 접현각의 성질에 의해 $\\angle TCB=62^\\circ$이다. 따라서 삼각형 $BTC$에서 $x=180^\\circ-90^\\circ-62^\\circ=28^\\circ$이다. $x=\\angle TBC$와 $y=\\angle TAC$는 모두 호 $TC$를 보는 원주각이므로 $y=28^\\circ$이다.\n따라서 구하는 값은 $x=28^\\circ$, $y=28^\\circ$이다.",
+    "solution": "$BC$는 지름이므로 지름 $BC$를 보는 원주각은 직각이다.\n따라서\n$\\angle BTC=90^\\circ$\n이다.\n접선 $PT$와 현 $TB$가 이루는 각이 $62^\\circ$이므로 접현각의 성질에 의해\n$\\angle TCB=62^\\circ$\n이다.\n삼각형 $BTC$에서\n$x=180^\\circ-90^\\circ-62^\\circ=28^\\circ$\n이다.\n\n$x=\\angle TBC$와 $y=\\angle TAC$는 모두 같은 호 $TC$를 보는 원주각이므로\n$y=x=28^\\circ$\n이다.\n따라서 $x=28^\\circ$, $y=28^\\circ$이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여중_2학기_기말_중3_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -682,7 +696,7 @@ window.questionBank = [
     "content": "[서술형3] 다음은 어느 동호회 회원 5명의 나이에 대한 설명이다. 이때 회원 5명의 나이의 중앙값을 구하면? [6점]",
     "choices": [],
     "answer": "$15$",
-    "solution": "[키포인트] 평균으로 전체 나이의 합을 구한 뒤 최빈값 조건을 이용한다.\n조건 정리: 5명의 평균은 $14.8$세이므로 나이의 합은 $74$이고, 최빈값은 $18$세, 한 명은 $15$세, 최솟값은 $9$세이다.\n풀이 방향: $18$세가 적어도 두 명이어야 함을 이용해 나머지 한 나이를 구한다.\n정석 풀이: 나이를 $9,15,18,18,a$라 두면 합이 $74$이므로 $a=14$이다. 정렬하면 $9,14,15,18,18$이므로 중앙값은 세 번째 값인 $15$이다.\n따라서 구하는 값은 $15$이다.",
+    "solution": "5명의 평균 나이가 $14.8$세이므로 나이의 합은\n$14.8\\times5=74$\n이다.\n최솟값이 $9$세이고 한 사람의 나이가 $15$세이며 최빈값이 $18$세이므로 $18$세는 적어도 두 명이다.\n세 명이 모두 $18$세라면 합이 $9+15+18+18+18=78$이 되어 $74$보다 커지므로 $18$세는 정확히 두 명이다.\n나머지 한 사람의 나이를 $a$세라 하면\n$9+15+18+18+a=74$\n$a=14$\n이다.\n따라서 나이를 작은 순서로 놓으면\n$9,14,15,18,18$\n이고 중앙값은 $15$이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q23.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
@@ -707,7 +721,7 @@ window.questionBank = [
     "content": "[서술형4] 다음은 학생 6명의 수학 수행 평가 점수의 편차이다. 이 학생들의 수학 수행 평가 점수의 분산과 표준편차를 구하시오. [4점]",
     "choices": [],
     "answer": "분산 $\\dfrac{23}{3}$, 표준편차 $\\dfrac{\\sqrt{69}}{3}$",
-    "solution": "[키포인트] 편차의 합은 $0$이라는 성질로 보이지 않는 한 명의 편차를 먼저 구한다.\n조건 정리: 학생은 6명이고 제시된 편차는 $-3,1,5,-3,1$이다.\n풀이 방향: 여섯 번째 편차를 구한 뒤 편차 제곱의 평균을 계산한다.\n정석 풀이: 편차의 합은 $0$이므로 여섯 번째 편차는 $-1$이다. 편차 제곱의 합은 $9+1+25+9+1+1=46$이므로 분산은 $\\dfrac{46}{6}=\\dfrac{23}{3}$이다. 표준편차는 $\\sqrt{\\dfrac{23}{3}}=\\dfrac{\\sqrt{69}}{3}$이다.\n따라서 분산은 $\\dfrac{23}{3}$, 표준편차는 $\\dfrac{\\sqrt{69}}{3}$이다.",
+    "solution": "편차의 합은 $0$이다.\n주어진 다섯 편차의 합은\n$-3+1+5-3+1=1$\n이므로 여섯 번째 편차는 $-1$이다.\n\n편차 제곱의 합은\n$(-3)^2+1^2+5^2+(-3)^2+1^2+(-1)^2$\n$=9+1+25+9+1+1=46$\n이다.\n따라서 분산은\n$\\dfrac{46}{6}=\\dfrac{23}{3}$\n이다.\n표준편차는\n$\\sqrt{\\dfrac{23}{3}}=\\dfrac{\\sqrt{69}}{3}$\n이다.\n따라서 분산은 $\\dfrac{23}{3}$, 표준편차는 $\\dfrac{\\sqrt{69}}{3}$이다.",
     "image": "assets/images/23_순천여중_2학기_기말_중3_기출/q24.png",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",

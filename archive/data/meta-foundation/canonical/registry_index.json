@@ -36,6 +36,16 @@
       "id": "PROBABILITY_STATISTICS",
       "version": "1.0.0",
       "status": "ACTIVE"
+    },
+    {
+      "id": "MIDDLE_GEOMETRY",
+      "version": "1.0.0",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "MIDDLE1",
+      "version": "1.0.0",
+      "status": "ACTIVE"
     }
   ],
   "activeConceptShards": [
@@ -98,6 +108,12 @@
       "version": "1.0.0",
       "status": "ACTIVE",
       "conceptCount": 1
+    },
+    {
+      "id": "MIDDLE1",
+      "version": "1.0.0",
+      "status": "ACTIVE",
+      "conceptCount": 2
     }
   ],
   "conditionRegistry": {
@@ -288,13 +304,13 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/aliases.json",
-      "sizeBytes": 290,
-      "sha256": "0b24932cca2c0b4dcb9f0d07dd16e9d7e5b1a237c6f4ffd825b020160a3609e3"
+      "sizeBytes": 280,
+      "sha256": "5a5c5839128fbcf40c0cdee802f1e7f6b7f9408b7a18157bab07194ab02458ee"
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/bindings.json",
-      "sizeBytes": 95024,
-      "sha256": "b2aa553ce9d8eb42c4b2a4f7f63e0206f0399d69d24c7ca029899c8813551c92"
+      "sizeBytes": 93279,
+      "sha256": "4eff69359603d13a96e08c7d1b933acf36aeb62c6d37065d122812e2fd5aeaf2"
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/pack.json",
@@ -303,20 +319,65 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/packs/probability-statistics/taxonomy.json",
-      "sizeBytes": 135053,
-      "sha256": "f6ab0dec9d77fd17008afd1d703ba6dfca144398aa5309111f0fddb4e41b7bc3"
+      "sizeBytes": 133176,
+      "sha256": "2a748f5915a359b35b5e68e9473c49027c73993290ed1726a80a487694624e15"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/aliases.json",
+      "sizeBytes": 210,
+      "sha256": "06a45ebecbd7dacfc71e1f795230e6341deee6b726127b807b3f3e99bc13676d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "sizeBytes": 87154,
+      "sha256": "d0818ea737be6d8c7293cd34c12e93addc16775c1ada89168511a9bcec7e3500"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "sizeBytes": 1195,
+      "sha256": "28c7a083444ec0342ca26a70676dbb8cbe8f332979fa142b077a5c7b702cbd3f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "sizeBytes": 149061,
+      "sha256": "fd18048d800d46adb2a386ec5a848a9f3287d3642fed687da496081e38882ad9"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "sizeBytes": 1178,
+      "sha256": "14702d773910cfabc2e6ee29969981c0bb6e3676399eb01ea200687f2f763e5d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "sizeBytes": 328955,
+      "sha256": "097b50361b5fc981ab2061d6e4af00c8e6fbf0416945cf752c0534f299849959"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "sizeBytes": 79131,
+      "sha256": "7795c8d2bba26f7c909fa6f193a442df2285e55a1997551cf2db48b261df848e"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/aliases.json",
+      "sizeBytes": 106971,
+      "sha256": "352b5652e3ed4a64b3ff7d4dab015d36bc0c0f48f3561e0e9b5b28dc74f3a4f2"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/middle1.json",
+      "sizeBytes": 2586,
+      "sha256": "1ec37d82eb7b34ea71ebf412422be257f1eaadd78ba073e0be45f1dabe3e7622"
     }
   ],
   "compiledArtifacts": [
     {
       "path": "archive/data/meta-foundation/compiled/aliases.json",
-      "sizeBytes": 37878,
-      "sha256": "982e6acd2448b5672d1ce5c74841e9b833d9310ded041eeba15ff40adb6df92d"
+      "sizeBytes": 144689,
+      "sha256": "5908247685b4d0123ce644509c8632f49a1e92c80afcdf7b7b9ee297fe6f007d"
     },
     {
       "path": "archive/data/meta-foundation/compiled/concept_registry.json",
-      "sizeBytes": 155081,
-      "sha256": "558ebb17e435da55dd43d506e6d48dccb1ea1b5a99373ad28babbf7cb3f27018"
+      "sizeBytes": 157586,
+      "sha256": "9b8ce19fdb323a2d69699b6b58176d7037809def4562511d6cb0c9ad8aa67929"
     },
     {
       "path": "archive/data/meta-foundation/compiled/condition_registry.json",
@@ -325,18 +386,18 @@
     },
     {
       "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-      "sizeBytes": 388599,
-      "sha256": "09a5aa848fe52aaf44e76f68b227c478b689dca8a1a05c4226af892f304dfd26"
+      "sizeBytes": 554389,
+      "sha256": "cfd9f70dc5483ce662a1651aa7f9ead91064e7f4c69d2247155dd7eebafdf525"
     },
     {
       "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
-      "sizeBytes": 949,
-      "sha256": "a83b497e81b444579cbd70ff38e57396ace9dcfef8b8540c27f0dfaab2b8311b"
+      "sizeBytes": 1026,
+      "sha256": "66dce1d9ce835b09196f545b9a1d6af53d44d0930d98c326960eb34fe500ab4c"
     },
     {
       "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-      "sizeBytes": 826291,
-      "sha256": "a482b096ec6e7e7bc69dedc4faffe9574d12261f9f04dcd0bf1ca5d263fb6d7b"
+      "sizeBytes": 1303732,
+      "sha256": "182d017aa347e24c7c4541b8148eb97b53d4ae914d68de86804912b462918848"
     }
   ],
   "compiledIsReadOnly": true

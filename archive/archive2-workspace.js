@@ -4,6 +4,7 @@
     Source = window.Archive2Source;
   const O = window.Archive2Output;
   const Parts = window.Archive2Papers;
+  const History = window.Archive2History;
   const frozenPaperCache = new Map();
   const lockedIndex = (index) =>
     Boolean(Parts.receipt(state.receipts, Parts.partIndex(index)));
@@ -34,6 +35,14 @@
         return `<option value="${esc(value)}"${String(current) === String(value) ? " selected" : ""}>${esc(label)}</option>`;
       })
       .join("")}`;
+  const advancedOptions = (values, current, empty) =>
+    `<option value="">${esc(empty)}</option>${["mf", "rpm"].map(authority => {
+      const group = values.filter(row => row.authority === authority);
+      return group.length
+        ? `<optgroup label="${authority === "mf" ? "Meta Foundation" : "RPM"}">${group.map(row =>
+          `<option value="${esc(row.value)}"${current === row.value ? " selected" : ""}>${esc(row.label)}</option>`).join("")}</optgroup>`
+        : "";
+    }).join("")}`;
   const button = (action, label, extra = "") =>
     `<button data-action="${action}" ${extra}>${label}</button>`;
   const badge = (label, type = "") =>
@@ -110,21 +119,38 @@
       .replace(/\s+/g, "")
       .replace(/[·・ㆍ]/g, "");
   const taxonomyRowsForFilters = (filters) => {
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
+      projected = C.hasSubjectProjection?.(filters.grade) === true;
     if (highSemantic && !filters.semanticSubject) return [];
+    const high1ProjectionPaths =
+      filters.grade === "고1" && filters.semanticSubject
+        ? new Set(
+            state.catalog.records
+              .filter(
+                (record) =>
+                  record.effectiveBrowseGrade === "고1" &&
+                  (!filters.curriculumKey ||
+                    record.curriculumKey === filters.curriculumKey) &&
+                  C.subjectProjectionMatches(record, filters),
+              )
+              .map((record) => C.pathKey(record, 4)),
+          )
+        : null;
     return state.catalog.taxonomy.filter((r) => {
-      const semanticMatch =
+      const projectionMatch =
         !filters.semanticSubject ||
-        C.highSemanticSubjectForCourseKey?.(r.courseKey) ===
-          filters.semanticSubject;
+        (filters.grade === "고1"
+          ? high1ProjectionPaths.has(C.pathKey(r, 4))
+          : C.subjectProjectionForRecord?.(r, filters.grade) ===
+            filters.semanticSubject);
       const gradeMatch =
-        highSemantic && filters.semanticSubject
+        projected && filters.semanticSubject
           ? true
           : !filters.grade ||
             courseGrade(r.courseKey, r.curriculumKey) === filters.grade;
       return (
         gradeMatch &&
-        semanticMatch &&
+        projectionMatch &&
         (!filters.curriculumKey || r.curriculumKey === filters.curriculumKey) &&
         (!filters.courseKey ||
           filters.semanticSubject ||
@@ -134,6 +160,12 @@
   };
   const state = {
     catalog: null,
+    recentRows: [],
+    recentClassId: "",
+    recentFilters: { from: "", to: "", grade: "", subject: "", query: "" },
+    recentLoadVersion: 0,
+    recentLoading: false,
+    recentError: "",
     byUid: new Map(),
     busy: false,
     view: "home",
@@ -180,6 +212,7 @@
     inspector: "summary",
     previewIndex: 0,
     outputMode: "exam",
+    composeDetailOpen: false,
     prepared: [],
     undo: [],
     receipts: [],
@@ -365,6 +398,26 @@
       )
     )
       throw new Error("시리즈 이력 UID가 잘못되었습니다.");
+    const restoredFilters = C.reconcileFinderFilters(
+      { ...data.filters },
+      state.catalog.taxonomy,
+    );
+    const hasLegacyDetail = ["L3", "L4"].some(
+      field => restoredFilters[field] && !/^(mf|rpm):/.test(restoredFilters[field]),
+    );
+    if (hasLegacyDetail) {
+      let scopePaths = unique(data.rows.flatMap(row => row.paths || []));
+      if (!scopePaths.length) {
+        const previousFilters = state.filters, previousScopes = state.scopes;
+        state.filters = { ...restoredFilters, L3: "", L4: "" };
+        state.scopes = data.scopes;
+        try { scopePaths = selectedScopePaths(); }
+        finally { state.filters = previousFilters; state.scopes = previousScopes; }
+      }
+      Object.assign(restoredFilters, C.migrateLegacyAdvancedFilters(
+        restoredFilters, state.catalog.records, scopePaths, data.sources,
+      ));
+    }
     const allowed = Object.keys(draft()).filter(
       (k) =>
         !["schemaVersion", "taxonomyVersion", "updatedAt", "selected"].includes(
@@ -373,12 +426,9 @@
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
-    if (C.isHighSemanticSubjectGrade?.(state.filters.grade)) {
-      state.filters = C.reconcileFinderFilters(
-        state.filters,
-        state.catalog.taxonomy,
-      );
-    }
+    state.filters = restoredFilters;
+    if (!state.receipts.length && !state.sealed)
+      reconcileFinderSchool(state.filters);
     state.selected = data.selected.map((r) => ({
       ...state.byUid.get(r.questionUid),
       rowId: r.rowId,
@@ -642,34 +692,37 @@
       /^M([123])-([12])$/.test(value)
         ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
         : value;
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
-    const courses = highSemantic
-      ? C.highSemanticSubjectOptions()
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
+      projected = C.hasSubjectProjection?.(filters.grade) === true;
+    const courses = projected
+      ? C.subjectProjectionOptions(filters.grade)
       : unique(
           taxonomyRowsForFilters({ ...filters, courseKey: "" })
             .map((r) => r.courseKey),
         ).map((value) => ({ value, label: courseLabel(value) }));
-    const courseField = highSemantic
-      ? `<label>과목<select data-filter="semanticSubject" data-group="${prefix}">${options(courses, filters.semanticSubject, "과목 선택")}</select></label>`
+    const courseField = projected
+      ? `<label>과목<select data-filter="semanticSubject" data-group="${prefix}">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
       : `<label>과목<select data-filter="courseKey" data-group="${prefix}">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
+    if (compose === "primary")
+      return `<div class="compose-step compose-grade"><div class="compose-step-head"><span class="compose-step-number">1</span><h2>학년</h2></div><label>학년<select data-filter="grade" data-group="compose">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, null)}</select></label></div>
+        <div class="compose-step compose-subject"><div class="compose-step-head"><span class="compose-step-number">2</span><h2>교육과정 / 과목</h2></div><div class="compose-subject-fields"><label>교육과정<select data-filter="curriculumKey" data-group="compose">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div></div>`;
+    if (compose === "detail")
+      return `<div class="compose-detail-fields"><label>학교<select data-filter="school" data-group="compose">${options(finderSchoolValues(filters), filters.school, "전체 학교")}</select></label>
+        <label>시험 시기<select data-filter="axis" data-group="compose">${options([{ value: "1-mid", label: "1학기 중간" }, { value: "1-final", label: "1학기 기말" }, { value: "2-mid", label: "2학기 중간" }, { value: "2-final", label: "2학기 기말" }], filters.axis, "전체 시험")}</select></label>
+        <label>시작 연도<input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="compose" value="${esc(filters.yearFrom || "")}" placeholder="전체"></label>
+        <label>끝 연도<input type="number" min="2000" max="2100" data-filter="yearTo" data-group="compose" value="${esc(filters.yearTo || "")}" placeholder="전체"></label></div>`;
     return `<div class="filters"><label>학년<select data-filter="grade" data-group="${prefix}">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, compose ? null : "전체 학년")}</select></label>
       <label>교육과정<select data-filter="curriculumKey" data-group="${prefix}">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>
       ${courseField}
       <label>학교<select data-filter="school" data-group="${prefix}">${options(
-        unique(
-          state.catalog.exams
-            .filter(
-              (e) => !filters.grade || e.effectiveBrowseGrade === filters.grade,
-            )
-            .map((e) => e.school),
-        ).sort((a, b) => a.localeCompare(b, "ko")),
+        finderSchoolValues(filters),
         filters.school,
         "전체 학교",
       )}</select></label>
       <label>시작 연도<input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="${prefix}" value="${esc(filters.yearFrom || "")}" placeholder="전체"></label>
       <label>끝 연도<input type="number" min="2000" max="2100" data-filter="yearTo" data-group="${prefix}" value="${esc(filters.yearTo || "")}" placeholder="전체"></label>
       ${
-        !compose && !highSemantic
+        !compose && !filters.grade
           ? `<label>과목 계열<select data-filter="family" data-group="find">${options(
               [
                 { value: "COMMON_1", label: "공통수학1 계열" },
@@ -702,9 +755,9 @@
       /^M([123])-([12])$/.test(value)
         ? value.replace(/^M([123])-([12])$/, "중$1 · $2학기")
         : value;
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
-    return highSemantic
-      ? C.highSemanticSubjectOptions()
+    const projected = C.hasSubjectProjection?.(filters.grade) === true;
+    return projected
+      ? C.subjectProjectionOptions(filters.grade)
       : unique(
           taxonomyRowsForFilters({ ...filters, courseKey: "" })
             .map((r) => r.courseKey),
@@ -713,34 +766,16 @@
   function finderUpstreamMatch(exam, filters) {
     if (!O.matchesMaterial(exam, filters.material)) return false;
     if (filters.grade && exam.effectiveBrowseGrade !== filters.grade) return false;
-    if (
-      filters.curriculumKey &&
-      !C.finderMatches(
-        exam,
-        { curriculumKey: filters.curriculumKey },
-        state.finderIndex,
-      )
-    )
-      return false;
-    if (
-      filters.semanticSubject &&
-      !C.finderMatches(
-        exam,
-        { semanticSubject: filters.semanticSubject },
-        state.finderIndex,
-      )
-    )
-      return false;
-    if (
-      filters.courseKey &&
-      !C.finderMatches(
-        exam,
-        { courseKey: filters.courseKey },
-        state.finderIndex,
-      )
-    )
-      return false;
-    return true;
+    return C.finderMatches(
+      exam,
+      {
+        grade: filters.grade,
+        curriculumKey: filters.curriculumKey,
+        courseKey: filters.courseKey,
+        semanticSubject: filters.semanticSubject,
+      },
+      state.finderIndex,
+    );
   }
   function finderSchoolValues(filters = state.find) {
     return unique(
@@ -822,15 +857,15 @@
     }</div>`;
   }
   function finderPrimaryFilterMarkup(filters) {
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
+      projected = C.hasSubjectProjection?.(filters.grade) === true;
     const courses = finderCourseOptions(filters);
-    const courseField = highSemantic
-      ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, "과목 선택")}</select></label>`
+    const courseField = projected
+      ? `<label class="finder-field finder-course"><span>과목</span><select data-filter="semanticSubject" data-group="find">${options(courses, filters.semanticSubject, highSemantic ? "과목 선택" : "전체 과목")}</select></label>`
       : `<label class="finder-field finder-course"><span>과목</span><select data-filter="courseKey" data-group="find">${options(courses, filters.courseKey, "전체 과목")}</select></label>`;
     return `<div class="finder-filter-core"><label class="finder-field"><span>학년</span><select data-filter="grade" data-group="find">${options(["중1", "중2", "중3", "고1", "고2", "고3"], filters.grade, "전체 학년")}</select></label><label class="finder-field"><span>교육과정</span><select data-filter="curriculumKey" data-group="find">${options(["2015", "2022"], filters.curriculumKey, "전체 교육과정")}</select></label>${courseField}</div>`;
   }
   function finderDetailFilterMarkup(filters) {
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
     const schools = finderSchoolValues(filters);
     return `<div class="finder-filter-detail"><label class="finder-field finder-school"><span>학교</span><select data-filter="school" data-group="find">${options(schools, filters.school, "전체 학교")}</select></label><label class="finder-field"><span>시험 시기</span><select data-filter="axis" data-group="find">${options(
       [
@@ -842,7 +877,7 @@
       filters.axis,
       "전체 시험",
     )}</select></label><label class="finder-field finder-year"><span>연도</span><span class="finder-year-range"><input type="number" min="2000" max="2100" data-filter="yearFrom" data-group="find" value="${esc(filters.yearFrom || "")}" placeholder="시작 연도"><b>~</b><input type="number" min="2000" max="2100" data-filter="yearTo" data-group="find" value="${esc(filters.yearTo || "")}" placeholder="끝 연도"></span></label>${
-      highSemantic
+      filters.grade
         ? ""
         : `<label class="finder-field finder-family"><span>과목 계열</span><select data-filter="family" data-group="find">${options(
             [
@@ -887,22 +922,19 @@
         return false;
       if (f.axis && `${exam.semester}-${exam.examType}` !== f.axis)
         return false;
-      if (f.family && !exam.courseFamilies.includes(f.family)) return false;
+      if (f.family && !f.grade && !exam.courseFamilies.includes(f.family)) return false;
       if (
-        f.semanticSubject &&
         !C.finderMatches(
           exam,
-          { semanticSubject: f.semanticSubject },
+          {
+            grade: f.grade,
+            curriculumKey: f.curriculumKey,
+            courseKey: f.courseKey,
+            semanticSubject: f.semanticSubject,
+          },
           state.finderIndex,
         )
       )
-        return false;
-      if (
-        f.curriculumKey &&
-        !C.finderMatches(exam, { curriculumKey: f.curriculumKey }, state.finderIndex)
-      )
-        return false;
-      if (f.courseKey && !C.finderMatches(exam, { courseKey: f.courseKey }, state.finderIndex))
         return false;
       return (
         !query ||
@@ -969,7 +1001,7 @@
         printHeaderOptions: s.header, qpp: s.qpp, includeQr: s.includeQr,
       }}));
     }
-    const url = O.applyUrl(new URL("engine.html", location.href), s);
+    const url = O.applyUrl(O.engineUrl("engine.html", location.href), s);
     url.searchParams.set("originalSnapshot", key);
     url.searchParams.set("data", "exams/" + e.file);
     url.searchParams.set("mode", "exam");
@@ -1084,6 +1116,31 @@
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" aria-label="5단계 난이도">${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
+  function composeAdvancedChoices(selectionFilters) {
+    const baseFilters = { ...selectionFilters, L3: "", L4: "" };
+    const excluded = C.composeExclusions(context()).union;
+    const eligible = pool().filter(r =>
+      C.matches(r, baseFilters) && C.eligibility(r, state).ok && !excluded.has(r.questionUid));
+    const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
+    const concepts = new Map(), types = new Map();
+    for (const record of eligible) {
+      const authority = C.advancedAuthority(record);
+      const l3 = C.advancedFilterValue(record, 3), l4 = C.advancedFilterValue(record, 4);
+      const l3Label = authority === "mf" ? labels.problemTypes[record.problemTypeKey] : record.L3;
+      const template = authority === "mf" ? labels.templates[record.templateKey] : null;
+      const l4Label = authority === "mf" && template?.parentProblemTypeKey === record.problemTypeKey
+        ? template.label : authority === "rpm" ? record.L4 : "";
+      if (l3 && l3Label) concepts.set(l3, { value: l3, label: l3Label, authority });
+      if (l4 && l4Label && (!state.filters.L3 || l3 === state.filters.L3))
+        types.set(l4, { value: l4, label: l4Label, authority });
+    }
+    const sort = rows => [...rows.values()].sort((a, b) => a.label.localeCompare(b.label, "ko"));
+    return { concepts: sort(concepts), types: sort(types) };
+  }
+  const displayTemplate = record =>
+    C.advancedAuthority(record) === "mf"
+      ? window.ARCHIVE_META_FOUNDATION_LABELS?.templates?.[record.templateKey]?.label || record.L4
+      : record.L4;
   function renderComposition() {
     const selectionFilters = {
       ...state.filters,
@@ -1105,11 +1162,8 @@
         available: candidates.filter((r) => C.rowMatches(r, row)).length,
       }))
       .filter((item) => item.available < item.row.count);
-    const selectedPaths = new Set(selectedScopePaths());
-    const concepts = taxonomyRowsForFilters(state.filters).filter(
-      (r) => !selectedPaths.size || selectedPaths.has(C.pathKey(r, 4)),
-    );
-    return `<section class="panel"><h2>출제 범위 · 문항 수</h2><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
+    const advanced = composeAdvancedChoices(selectionFilters);
+    return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">출제 범위 · 문항 수</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
         { value: "equal", label: "단원별 균등" },
         { value: "pool", label: "전체에서 선택" },
@@ -1119,10 +1173,10 @@
       state.distribution,
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><label>난이도 (1~5)${bucketButtons(state.buckets)}</label></div>
-      <details style="margin-top:15px"><summary>개념·유형으로 더 좁히기</summary><div class="filters" style="margin-top:12px"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.map((r) => r.L3)), state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.filter((r) => !state.filters.L3 || r.L3 === state.filters.L3).map((r) => r.L4)), state.filters.L4, "전체 유형")}</select></label></div></details>
+      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
-      <div class="resultbar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
+      <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
   function renderInspector() {
     const r = state.selected.length ? review() : null;
@@ -1232,7 +1286,7 @@
       .map((r, i) =>
         Parts.partIndex(i) !== state.previewIndex
           ? ""
-          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(r.L4)}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
+          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(displayTemplate(r))}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
       )
       .join("");
     return `<section class="panel paper-panel"><div class="paper-toolbar"><div class="actions mode-switch">${modes}</div><span class="muted paper-count">${state.selected.length}문항</span><label class="part-select">문제지<select id="preview-index">${options(
@@ -1253,43 +1307,115 @@
   }
   function renderCompose() {
     return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 파일 저장")}${button("import", "백업 불러오기")}</div></div>
-    <div class="workspace"><div>${!state.selected.length ? `<section class="panel">${filterMarkup(state.filters, "compose", true)}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}${renderScopes()}</section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", true)}${renderScopes()}${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+    <div class="workspace"><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
+  }
+  function recentClassOptions() {
+    const grade = state.recentFilters.grade;
+    const availableIds = new Set(state.recentRows
+      .filter((row) => !grade || row.targetGrade === grade)
+      .map((row) => row.classId).filter(Boolean));
+    const byId = new Map();
+    for (const cls of classRows) {
+      const id = String(cls.id || "");
+      if (id && availableIds.has(id)) byId.set(id, { value: id, label: cls.name || id });
+    }
+    for (const row of state.recentRows) {
+      if (!row.classId || (grade && row.targetGrade !== grade)) continue;
+      if (!byId.has(row.classId)) byId.set(row.classId, { value: row.classId, label: row.className || row.classId });
+    }
+    return [...byId.values()];
   }
   function renderRecent() {
-    const list = drafts();
-    return `<div class="intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div><section class="panel"><h2>최근 출제</h2><label>반<select id="recent-class">${options(
-      classRows.map((c) => ({ value: c.id, label: c.name })),
-      state.recentClassId,
-      "반 선택",
-    )}</select></label><div id="recent-assignments">${recentAssignmentMarkup()}</div></section><section class="panel"><h2>만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="recent-row"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</section>`;
+    const list = drafts(), f = state.recentFilters;
+    return `<div class="history-surface"><div class="intro history-intro"><div><h1>최근 출제 · 작업</h1><p class="muted">출제한 시험의 대상과 제출 상태를 확인하거나 만들던 문제지를 이어서 작업하세요.</p></div><div class="actions">${button("new-draft", "새 문제지", 'class="primary"')}${button("import", "작업 파일 불러오기")}</div></div>
+      <section class="panel history-panel" aria-labelledby="history-heading"><div class="history-heading"><h2 id="history-heading">최근 출제</h2></div>
+      <div class="history-filters">
+        <label class="history-period-filter">기간<span class="history-period"><input type="date" data-recent-filter="from" aria-label="시작일" value="${esc(f.from)}"><span aria-hidden="true">~</span><input type="date" data-recent-filter="to" aria-label="끝일" value="${esc(f.to)}"></span></label>
+        <label>학년<select data-recent-filter="grade">${options(History.grades, f.grade, "전체 학년")}</select></label>
+        <label>반<select id="recent-class">${options(recentClassOptions(), state.recentClassId, "전체 반")}</select></label>
+        <label class="history-subject-filter">과목<select data-recent-filter="subject">${options(History.subjectOptions(state.recentRows, f.grade, C), f.subject, "전체 과목")}</select></label>
+        <label class="history-title-filter">제목 검색<input type="search" data-recent-filter="query" value="${esc(f.query)}"></label>
+      </div><div id="recent-assignments" aria-live="polite" aria-busy="${state.recentLoading}">${recentAssignmentMarkup()}</div></section>
+      <aside class="history-drafts" aria-labelledby="history-drafts-heading"><h2 id="history-drafts-heading">만들던 문제지</h2>${list.length ? list.map((d, i) => `<div class="history-draft"><div><h3>${esc(d.header?.title || d.title)}</h3><p class="muted">${esc(new Date(d.updatedAt).toLocaleString("ko-KR"))} · ${d.selected?.length || 0}문항 · ${d.round || 1}차</p></div><div class="actions">${button("restore", "이어하기", `data-draft="${i}"`)}${button("delete-draft", "삭제", `data-draft="${i}" class="danger"`)}</div></div>`).join("") : '<div class="empty">저장된 작업이 없습니다.</div>'}</aside></div>`;
   }
   function recentAssignmentMarkup() {
-    return (
-      (state.recentAssignments || [])
-        .map(
-          (a) =>
-            `<div class="recent-row"><div><h3>${esc(a.exam_title)}</h3><p class="muted">${esc(a.exam_date)} · ${a.question_count}문항 · ${a.pdf_status === "ready" ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</p></div>${button("assignment-status", "학생별 확인 · 출력", `data-assignment="${a.id}"`)}</div>`,
-        )
-        .join("") ||
-      '<p class="muted">반을 선택하면 기존 출제 내역을 불러옵니다.</p>'
-    );
+    if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
+    if (state.recentError) return `<p class="error history-result-state">${esc(state.recentError)}</p>`;
+    const rows = History.filterAssignments(state.recentRows, {
+      ...state.recentFilters, classId: state.recentClassId,
+    });
+    return History.groupByDate(rows).map((group) =>
+      `<section class="history-date-group"><h3 class="history-date-heading">${group.date ? `<time datetime="${esc(group.date)}">${esc(group.date)}</time>` : "—"}<small class="muted">${group.rows.length}개</small></h3><div class="history-grid">${group.rows.map((a) => {
+        const paperMeta = [a.contentGrade, a.subjectLabel].filter(Boolean).join(" · ");
+        const metadata = [a.targetGrade ? `대상 ${a.targetGrade}` : "",
+          paperMeta ? `시험지 ${paperMeta}` : "", a.className,
+          a.questionCount === null ? "" : `${a.questionCount}문항`,
+          a.recipientCount === null ? "" : `대상 ${a.recipientCount}명`,
+          a.submittedCount === null ? "" : `제출 ${a.submittedCount}명`].filter(Boolean);
+        return `<article class="history-card"><h3>${esc(a.title)}</h3><div class="history-card-meta muted">${metadata.map((value) => `<span>${esc(value)}</span>`).join("")}</div><div class="history-card-footer"><span class="history-pdf ${a.pdfReady ? "" : "muted"}">${a.pdfReady ? "PDF 준비 완료" : "출제 저장됨 · PDF 확인 필요"}</span>${button("assignment-status", "학생별 확인 · 출력", `data-assignment="${esc(a.id)}" class="small"`)}</div></article>`;
+      }).join("")}</div></section>`
+    ).join("") || '<p class="muted history-result-state">현재 조건에 맞는 출제 내역이 없습니다.</p>';
   }
-  async function loadRecent(classId) {
-    if (!classRows.length) {
-      const d = await api("/qr-classes");
-      classRows = d.classes || [];
+  function updateRecentResults() {
+    const host = $("recent-assignments");
+    if (host) {
+      host.innerHTML = recentAssignmentMarkup();
+      host.setAttribute("aria-busy", String(state.recentLoading));
     }
-    state.recentClassId =
-      classId || state.recentClassId || state.classId || classRows[0]?.id || "";
-    state.recentAssignments = state.recentClassId
-      ? (
-          await api(
-            "/class-exam-assignments?class=" +
-              encodeURIComponent(state.recentClassId),
-          )
-        ).assignments || []
-      : [];
-    if (state.view === "recent") render();
+  }
+  function changeRecentFilter(el) {
+    const key = el.dataset.recentFilter;
+    if (!Object.hasOwn(state.recentFilters, key)) return;
+    state.recentFilters[key] = el.value;
+    if (key === "grade") {
+      const subjects = History.subjectOptions(state.recentRows, el.value, C);
+      if (!subjects.some((item) => item.value === state.recentFilters.subject))
+        state.recentFilters.subject = "";
+      const field = document.querySelector('[data-recent-filter="subject"]');
+      if (field) field.innerHTML = options(subjects, state.recentFilters.subject, "전체 과목");
+      const classes = recentClassOptions();
+      if (state.recentClassId && !classes.some((item) => item.value === state.recentClassId))
+        state.recentClassId = "";
+      const classField = $("recent-class");
+      if (classField) classField.innerHTML = options(classes, state.recentClassId, "전체 반");
+    }
+    // Update only the result host: date/search inputs retain focus and IME state.
+    updateRecentResults();
+  }
+  async function loadRecent() {
+    const version = ++state.recentLoadVersion;
+    state.recentLoading = true;
+    state.recentError = "";
+    state.recentAssignments = [];
+    state.recentRows = [];
+    updateRecentResults();
+    try {
+      if (!classRows.length) {
+        const data = await api("/qr-classes");
+        if (version !== state.recentLoadVersion) return;
+        classRows = Array.isArray(data.classes) ? data.classes : [];
+      }
+      const data = await api("/class-exam-assignments?history=1");
+      if (version !== state.recentLoadVersion) return;
+      state.recentAssignments = Array.isArray(data.assignments) ? data.assignments : [];
+      state.recentRows = History.normalizeAssignments(
+        state.recentAssignments, classRows, state.catalog.exams, C,
+      );
+      if (state.recentClassId && !state.recentRows.some((row) => row.classId === state.recentClassId))
+        state.recentClassId = "";
+      const subjects = History.subjectOptions(state.recentRows, state.recentFilters.grade, C);
+      if (state.recentFilters.subject && !subjects.some((item) => item.value === state.recentFilters.subject))
+        state.recentFilters.subject = "";
+    } catch (error) {
+      if (version !== state.recentLoadVersion) return;
+      state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
+      throw error;
+    } finally {
+      if (version === state.recentLoadVersion) {
+        state.recentLoading = false;
+        if (state.view === "recent") render();
+      }
+    }
   }
   async function assignmentStatus(id) {
     const data = await api(
@@ -1307,7 +1433,7 @@
   function assignmentOutput(mode) {
     const a = state.openAssignment.assignment,
       p = JSON.parse(a.mixed_payload_json || "null"),
-      u = new URL(
+      u = O.engineUrl(
         a.archive_file.startsWith("MIXED:")
           ? "mixed_engine.html"
           : "engine.html",
@@ -1390,6 +1516,15 @@
     if (!state.catalog) return;
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
+    const detail = document.querySelector(".compose-detail");
+    if (detail) state.composeDetailOpen = detail.open;
+    const focusedFilter = document.activeElement?.dataset?.group === "compose"
+      ? document.activeElement.dataset.filter : null;
+    const focusedScope = document.activeElement?.dataset?.scope;
+    const focusedAction = ["scope-all", "scope-clear", "scope-group", "scope-range"]
+      .includes(document.activeElement?.dataset?.action)
+      ? document.activeElement.dataset.action : null;
+    const focusedGroupIndex = document.activeElement?.dataset?.groupIndex;
     document.querySelectorAll("[data-view]").forEach((b) => {
       b.classList.toggle("active", b.dataset.view === state.view);
       b.setAttribute(
@@ -1408,6 +1543,13 @@
             : state.view === "health"
               ? renderHealth()
               : renderCompose();
+    if (state.view === "compose") {
+      const focusTarget = [...document.querySelectorAll('[data-group="compose"][data-filter], [data-scope]')]
+        .find((el) => focusedFilter ? el.dataset.filter === focusedFilter : focusedScope && el.dataset.scope === focusedScope)
+        || [...document.querySelectorAll('[data-action]')]
+          .find((el) => focusedAction && el.dataset.action === focusedAction && el.dataset.groupIndex === focusedGroupIndex);
+      focusTarget?.focus?.({ preventScroll: true });
+    }
     if (state.view === "compose" && state.selected.length) updatePreview();
   }
   async function prepare() {
@@ -1478,7 +1620,7 @@
         identityTitle: state.header.title,
         count: part.length,
         grade: state.filters.grade,
-        subject: state.filters.courseKey,
+        subject: C.subjectProjectionLabel(state.filters),
         questionUids: part.map((q) => q.questionUid),
         printHeaderOptions: {
           ...state.header,
@@ -1515,7 +1657,7 @@
     return prepared;
   }
   function outputUrl(paper, mode = state.outputMode, preview = true) {
-    const url = new URL("mixed_engine.html", location.href);
+    const url = O.engineUrl("mixed_engine.html", location.href);
     url.searchParams.set("key", paper.key);
     url.searchParams.set("qpp", state.qpp);
     url.searchParams.set("q", paper.questions.length);
@@ -1651,7 +1793,7 @@
           .slice(0, 30)
           .map(
             (r, i) =>
-              `<div class="candidate"><div><strong>${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번</strong><p class="muted">${esc(r.L4)} · 난이도 ${r.difficultyBucket}</p></div><div>${button("candidate-preview", "원본 확인", `data-candidate="${i}" class="small"`)}${button("candidate-use", "교체", `data-candidate="${i}" class="small"`)}</div></div>`,
+              `<div class="candidate"><div><strong>${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번</strong><p class="muted">${esc(displayTemplate(r))} · 난이도 ${r.difficultyBucket}</p></div><div>${button("candidate-preview", "원본 확인", `data-candidate="${i}" class="small"`)}${button("candidate-use", "교체", `data-candidate="${i}" class="small"`)}</div></div>`,
           )
           .join("") ||
         '<div class="empty">같은 조건으로 교체할 새 문항이 없습니다.</div>'
@@ -1801,7 +1943,7 @@
               .slice(0, 10)),
           question_count: paper.questions.length,
           archive_file: "MIXED:" + paper.key,
-          subject: state.filters.courseKey,
+          subject: C.subjectProjectionLabel(state.filters),
           pdf_qpp: paper.meta.qpp,
           history_mode: "off",
           mixed_payload_json: { questions: paper.questions, meta: paper.meta },
@@ -2049,13 +2191,21 @@
       } else if (a === "go-compose") {
         state.view = "compose";
         if (state.find.grade) state.filters.grade = state.find.grade;
-        if (C.isHighSemanticSubjectGrade?.(state.find.grade)) {
+        if (C.hasSubjectProjection?.(state.find.grade)) {
           state.filters.semanticSubject = state.find.semanticSubject || "";
           state.filters.courseKey = "";
+          state.filters.family = "";
         } else {
           state.filters.semanticSubject = "";
+          state.filters.family = "";
           if (state.find.courseKey) state.filters.courseKey = state.find.courseKey;
         }
+        state.filters = C.reconcileFinderFilters(
+          state.filters,
+          state.catalog.taxonomy,
+        );
+        if (!state.receipts.length && !state.sealed)
+          reconcileFinderSchool(state.filters);
         state.scopes = [];
         delete state.filters.L3;
         delete state.filters.L4;
@@ -2185,7 +2335,7 @@
         replaceWith(candidateRecords[Number(b.dataset.candidate)]);
       else if (a === "candidate-preview") {
         const r = candidateRecords[Number(b.dataset.candidate)];
-        const url = new URL("engine.html", location.href);
+        const url = O.engineUrl("engine.html", location.href);
         url.searchParams.set("data", "exams/" + r.sourceFile);
         window.open(url.href, "_blank");
       } else if (a === "undo") {
@@ -2309,7 +2459,12 @@
         return;
       }
       if (el.id === "recent-class") {
-        await loadRecent(el.value);
+        state.recentClassId = el.value;
+        updateRecentResults();
+        return;
+      }
+      if (el.dataset.recentFilter) {
+        changeRecentFilter(el);
         return;
       }
       if (
@@ -2345,12 +2500,23 @@
               state.filters.curriculumKey = "";
               state.filters.courseKey = "";
               state.filters.semanticSubject = "";
+              state.filters.family = "";
               state.filters.school = "";
             }
-            if (el.dataset.filter === "curriculumKey")
+            if (
+              el.dataset.filter === "curriculumKey" &&
+              !C.hasSubjectProjection?.(state.filters.grade)
+            )
               state.filters.courseKey = "";
-            if (el.dataset.filter === "semanticSubject")
+            if (el.dataset.filter === "semanticSubject") {
               state.filters.courseKey = "";
+              state.filters.family = "";
+            }
+            state.filters = C.reconcileFinderFilters(
+              state.filters,
+              state.catalog.taxonomy,
+            );
+            reconcileFinderSchool(state.filters);
           }
           invalidate();
         } else {
@@ -2363,7 +2529,7 @@
             state.find.family = "";
           }
           if (
-            ["grade", "curriculumKey", "semanticSubject"].includes(
+            ["grade", "curriculumKey", "courseKey", "semanticSubject"].includes(
               el.dataset.filter,
             )
           )
@@ -2443,6 +2609,10 @@
     }
   });
   document.addEventListener("input", (event) => {
+    if (event.target.dataset.recentFilter === "query") {
+      if (!event.isComposing) changeRecentFilter(event.target);
+      return;
+    }
     const el = event.target;
     if (el.dataset.outputField) {
       changeOutput(el);
@@ -2520,6 +2690,9 @@
       previewTimer = setTimeout(updatePreview, 450);
     }
   }
+  document.addEventListener("compositionend", (event) => {
+    if (event.target.dataset.recentFilter === "query") changeRecentFilter(event.target);
+  });
   document.addEventListener("keydown", (event) => {
     if (
       state.busy ||
