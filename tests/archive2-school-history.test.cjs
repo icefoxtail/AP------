@@ -235,6 +235,52 @@ test('draft school repair preserves UID, fingerprint and frozen receipt contract
   assert.equal(h.w.state.selected[0].questionUid, r.questionUid);
   assert.throws(() => h.w.applyDraft({ ...d, selected: [{ ...d.selected[0], sourceFingerprint: 'changed' }] }), /원본 문항이 변경/);
 });
+
+test('saved Compose L3/L4 labels migrate only with a unique current catalog authority', () => {
+  const h = harness(); const { records } = catalogFixture(h);
+  const meta = records[1];
+  Object.assign(meta, { metaFoundationPackVersion: '1.0.0', problemTypeKey: 'PT_FUNCTION_GRAPH_PROPERTIES', templateKey: 'TPL_GRAPH_ORDER_INTERVAL' });
+  const path = h.c.pathKey(meta, 4);
+  h.w.state.filters = { grade: '고1', L3: meta.L3, L4: meta.L4 };
+  h.w.state.rows = [{ id: 'saved', paths: [path], depth: 4, count: 1, difficultyBuckets: [2] }];
+  h.w.state.selected = [{ ...meta, rowId: 'saved' }];
+  const saved = plain(h.w.draft());
+  h.w.applyDraft(saved);
+  assert.equal(h.w.state.filters.L3, 'mf:PT_FUNCTION_GRAPH_PROPERTIES');
+  assert.equal(h.w.state.filters.L4, 'mf:TPL_GRAPH_ORDER_INTERVAL');
+  assert.equal(h.c.matches(h.w.state.selected[0], { ...h.w.state.filters, primaryPaths: [path] }), true);
+  assert.notEqual(h.c.review(h.w.state.selected, { filters: { ...h.w.state.filters, primaryPaths: [path] }, rows: h.w.state.rows }).status, 'HARD_BLOCK');
+
+  const competing = { ...meta, questionUid: 'qid_v1_' + 'f'.repeat(64), problemTypeKey: 'PT_OTHER', templateKey: 'TPL_OTHER' };
+  h.w.state.catalog.records.push(competing);
+  h.w.state.filters = { grade: '고1' };
+  assert.throws(() => h.w.applyDraft(saved), /안전하게 연결할 수 없습니다/);
+  assert.equal(h.w.state.filters.L3, undefined, 'failed migration must not partially restore the draft');
+});
+
+test('unissued draft scope migrates Meta labels, while RPM labels retain RPM authority', () => {
+  const h = harness(); const { records } = catalogFixture(h);
+  const meta = records[1];
+  Object.assign(meta, { metaFoundationPackVersion: '1.0.0', problemTypeKey: 'PT_FUNCTION_GRAPH_PROPERTIES', templateKey: 'TPL_GRAPH_ORDER_INTERVAL' });
+  const path = h.c.pathKey(meta, 4);
+  h.w.state.filters = { grade: '고1', L3: meta.L3, L4: meta.L4 };
+  h.w.state.scopes = [h.w.scopeOptions().find(scope => scope.paths.includes(path)).key];
+  const saved = plain(h.w.draft());
+  assert.equal(saved.rows.length, 0);
+  h.w.applyDraft(saved);
+  assert.equal(h.w.state.filters.L3, 'mf:PT_FUNCTION_GRAPH_PROPERTIES');
+  assert.equal(h.w.state.filters.L4, 'mf:TPL_GRAPH_ORDER_INTERVAL');
+  assert.throws(() => h.w.applyDraft({ ...saved, scopes: [] }), /출제 범위를 확인할 수 없습니다/);
+
+  const rpm = records[0], rpmPath = h.c.pathKey(rpm, 4);
+  h.w.state.filters = { grade: '고1', L3: rpm.L3, L4: rpm.L4 };
+  h.w.state.scopes = [];
+  h.w.state.rows = [{ id: 'rpm', paths: [rpmPath], depth: 4, count: 1, difficultyBuckets: [2] }];
+  h.w.state.selected = [{ ...rpm, rowId: 'rpm' }];
+  h.w.applyDraft(plain(h.w.draft()));
+  assert.equal(h.w.state.filters.L3, 'rpm:유형');
+  assert.equal(h.w.state.filters.L4, 'rpm:세부유형');
+});
 test('issued Compose filters cannot be changed by the school P2 handler', async () => {
   const h = harness(); catalogFixture(h);
   h.w.state.filters = { grade: '고1', semanticSubject: 'COMMON_MATH_1', school: '경우고' };

@@ -398,6 +398,26 @@
       )
     )
       throw new Error("시리즈 이력 UID가 잘못되었습니다.");
+    const restoredFilters = C.reconcileFinderFilters(
+      { ...data.filters },
+      state.catalog.taxonomy,
+    );
+    const hasLegacyDetail = ["L3", "L4"].some(
+      field => restoredFilters[field] && !/^(mf|rpm):/.test(restoredFilters[field]),
+    );
+    if (hasLegacyDetail) {
+      let scopePaths = unique(data.rows.flatMap(row => row.paths || []));
+      if (!scopePaths.length) {
+        const previousFilters = state.filters, previousScopes = state.scopes;
+        state.filters = { ...restoredFilters, L3: "", L4: "" };
+        state.scopes = data.scopes;
+        try { scopePaths = selectedScopePaths(); }
+        finally { state.filters = previousFilters; state.scopes = previousScopes; }
+      }
+      Object.assign(restoredFilters, C.migrateLegacyAdvancedFilters(
+        restoredFilters, state.catalog.records, scopePaths, data.sources,
+      ));
+    }
     const allowed = Object.keys(draft()).filter(
       (k) =>
         !["schemaVersion", "taxonomyVersion", "updatedAt", "selected"].includes(
@@ -406,13 +426,7 @@
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
-    state.filters = C.reconcileFinderFilters(
-      state.filters,
-      state.catalog.taxonomy,
-    );
-    for (const level of ["L3", "L4"])
-      if (state.filters[level] && !/^(mf|rpm):/.test(state.filters[level]))
-        state.filters[level] = `rpm:${state.filters[level]}`;
+    state.filters = restoredFilters;
     if (!state.receipts.length && !state.sealed)
       reconcileFinderSchool(state.filters);
     state.selected = data.selected.map((r) => ({

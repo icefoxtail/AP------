@@ -80,3 +80,30 @@ test('unpromoted scope retains RPM L3 and L4 filtering', () => {
   assert.equal(selected.ok, true, JSON.stringify(selected));
   assert.ok(selected.selected.every(row => row.L3 === target.L3 && row.L4 === target.L4));
 });
+
+test('an existing Functions/Graphs Compose label restores to its unique canonical keys', () => {
+  const pack = require('../archive/data/meta-foundation/runtime/functions-graphs-v1.json');
+  const records = pack.records.map(overlay => {
+    const base = byUid.get(overlay.questionUid);
+    if (!base) return null;
+    return {
+      ...base, ...overlay,
+      sourceFile: base.sourceFile, sourceOrdinal: base.sourceOrdinal,
+      effectiveBrowseGrade: base.effectiveBrowseGrade,
+      identityStatus: base.identityStatus, sourceStatus: base.sourceStatus,
+      sourceFingerprint: base.sourceFingerprint, gradeConflict: base.gradeConflict,
+      taxonomyStatus: 'CONFIRMED', metadataConflicts: [],
+      reviewStatus: overlay.reviewStatus || 'reviewed_pass'
+    };
+  }).filter(Boolean);
+  const target = records.find(row => core.eligibility(row).ok &&
+    row.L3 === '함수 그래프의 성질' && row.L4 === '그래프의 대소 관계');
+  assert.ok(target);
+  const migrated = core.migrateLegacyAdvancedFilters(
+    { grade: target.effectiveBrowseGrade, L3: target.L3, L4: target.L4 },
+    records, [core.pathKey(target, 4)]
+  );
+  assert.equal(migrated.L3, 'mf:PT_FUNCTION_GRAPH_PROPERTIES');
+  assert.equal(migrated.L4, 'mf:TPL_GRAPH_ORDER_INTERVAL');
+  assert.equal(core.matches(target, migrated), true);
+});

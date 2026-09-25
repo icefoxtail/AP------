@@ -628,6 +628,25 @@
       return false;
     return true;
   }
+  function migrateLegacyAdvancedFilters(filters, records, scopePaths, sourceFiles = []) {
+    const next = { ...filters };
+    const legacy = ["L3", "L4"].filter(field => next[field] && !/^(mf|rpm):/.test(next[field]));
+    if (!legacy.length) return next;
+    if (!scopePaths?.length) throw new Error("저장된 개념·유형 조건의 출제 범위를 확인할 수 없습니다. 새 작업에서 조건을 다시 선택해 주세요.");
+    const candidates = records.filter(record =>
+      eligibility(record).ok &&
+      matches(record, { ...next, L3: "", L4: "", primaryPaths: scopePaths, sourceFiles }) &&
+      (!next.L3 || (legacy.includes("L3") ? record.L3 === next.L3 : advancedFilterValue(record, 3) === next.L3)) &&
+      (!next.L4 || (legacy.includes("L4") ? record.L4 === next.L4 : advancedFilterValue(record, 4) === next.L4))
+    );
+    for (const field of legacy) {
+      const values = new Set(candidates.map(record => advancedFilterValue(record, field === "L3" ? 3 : 4)).filter(Boolean));
+      if (values.size !== 1)
+        throw new Error("저장된 개념·유형 조건을 현재 문항 분류에 안전하게 연결할 수 없습니다. 새 작업에서 조건을 다시 선택해 주세요.");
+      next[field] = [...values][0];
+    }
+    return next;
+  }
   function composeExclusions(context = {}) {
     const sets = {};
     const union = new Set();
@@ -891,6 +910,7 @@
     advancedAuthority,
     advancedFilterValue,
     matches,
+    migrateLegacyAdvancedFilters,
     composeExclusions,
     rowMatches,
     validatePlan,
