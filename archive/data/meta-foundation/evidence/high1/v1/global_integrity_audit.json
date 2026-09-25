@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "h1-foundation-global-integrity-audit-v1",
+  "status": "PASS",
+  "packId": "H1_FOUNDATION",
+  "packVersion": "1.0.0",
+  "sourceHeads": {
+    "immutableOutlierReviewStart": "0ead023bc48f96e2c6d55c351ff815af99735547",
+    "outlierReviewCheckpoint": "70ffc893777e543989a01566d9106f9f1b76b991",
+    "latestMergedOriginMain": "4be6351d3f4cd722ca12639d9e652777e51426db",
+    "taskBranchBeforeMaterialization": "a203b80e522a5cbbb31b40d7e1f404870e890d5a"
+  },
+  "selectionProvenance": {
+    "retainedLargeShiftSelected": 27,
+    "retainedLargeShiftReviewed": 27,
+    "currentBucket5Selected": 1,
+    "currentBucket5Reviewed": 1,
+    "uniqueReviewUidCount": 28,
+    "selectionOverlap": 0,
+    "selectionMissing": 0,
+    "dispositionCounts": {
+      "RESTORE_OR_ADJUST": 12,
+      "CONFIRM_WORKING": 8,
+      "BOUNDARY_HOLD": 7,
+      "SOURCE_HOLD": 1
+    }
+  },
+  "counts": {
+    "targetRows": 1170,
+    "uniqueUid": 1170,
+    "uniqueSourceIdentity": 1170,
+    "duplicateUid": 0,
+    "duplicateSourceIdentity": 0,
+    "finalDifficulty": {
+      "1": 33,
+      "2": 537,
+      "3": 366,
+      "4": 154,
+      "UNKNOWN": 80
+    },
+    "legacyLevelCompatibility": {
+      "NORMAL": 548,
+      "BORDERLINE_ACCEPTABLE": 165,
+      "BORDERLINE_REVIEW": 279,
+      "STRONG_CONFLICT": 98,
+      "UNKNOWN": 80
+    },
+    "l3Disposition": {
+      "ASSIGNED": 1153,
+      "HOLD": 17
+    },
+    "l4Disposition": {
+      "ASSIGNED": 1044,
+      "NO_SEPARATE_L4": 69,
+      "HOLD": 57
+    },
+    "explicitHold": 149,
+    "holdReasonCounts": {
+      "LEGACY_LEVEL_STRONG_CONFLICT_UNADJUDICATED": 42,
+      "SOURCE_DRIFT_ORIGIN_MAIN": 48,
+      "L3_HOLD": 17,
+      "L4_HOLD": 57,
+      "PREEXISTING_DIFFICULTY_UNKNOWN": 24,
+      "SOURCE_OR_SOLUTION_ISSUE": 25,
+      "DIFFICULTY_BOUNDARY_HOLD": 7,
+      "DIFFICULTY_SOURCE_HOLD": 1
+    },
+    "retainedLargeShiftCoverage": 27,
+    "bucket5Coverage": 1,
+    "sourceDriftHold": 48,
+    "sourceFingerprintSync": 22,
+    "l3Unique": 32,
+    "l3OwnedNew": 27,
+    "l4AssignedUnique": 61,
+    "l4OwnedNew": 53,
+    "noSeparateL4": 69,
+    "keepNewL4Support": 60,
+    "newBindings": 208,
+    "crossConceptUsed": 42,
+    "conditionUsed": 6,
+    "integrationPatternsUsed": [
+      "CASE_BRANCH",
+      "DEEP_COMPOSITE",
+      "INTERDEPENDENT",
+      "NONE",
+      "REINTERPRETATION",
+      "SEQUENTIAL"
+    ]
+  },
+  "validation": {
+    "acceptedBaselineOnly": true,
+    "repeated28Review": false,
+    "sourceQuestionMutation": 0,
+    "canonicalBucket5Assumption": false,
+    "allCrossConceptsRegistered": true,
+    "allConditionsRegistered": true,
+    "allIntegrationPatternsValid": true,
+    "l3l4ParentMismatch": 0,
+    "outlierSourceOverlap": 0,
+    "sourceFingerprintMismatchAfterSync": 0,
+    "deterministicCompilerCheck": "PASS",
+    "genericPackValidator": "PASS",
+    "archive2CatalogGeneratorCheck": "PASS",
+    "archive2RuntimeBridge": "PASS",
+    "archive2ExamSelectionPipeline": "PASS",
+    "compiledJoinMissing": 0,
+    "runtimeJoinMissing": 0,
+    "unregisteredCrossConcept": 0,
+    "unregisteredCondition": 0,
+    "invalidIntegrationPattern": 0,
+    "invalidDifficultyBucket": 0
+  },
+  "outlierCompare": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+    "postCompareBucket5Adjudication": {
+      "independentDifficultyBucket": 4,
+      "semanticConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "currentWorkingBucket": 5,
+      "disposition": "RESTORE_OR_ADJUST"
+    },
+    "changedOutlierDeltaRows": 20
+  },
+  "latestMainSourceDrift": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_SOURCE_DRIFT_ORIGIN_MAIN_048.jsonl",
+    "total": 48,
+    "semanticInputChanged": 47,
+    "answerOrImageOnly": 1,
+    "reviewAgain": false
+  },
+  "outputPaths": {
+    "canonicalPack": "archive/data/meta-foundation/canonical/packs/h1-foundation",
+    "assignments": "archive/data/meta-foundation/evidence/high1/v1/item_metadata_assignments_1170.json",
+    "difficultyAccepted": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_ACCEPTED_FINAL_1170.jsonl",
+    "difficultyDelta": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_ACCEPTED_OUTLIER_DELTA_020.jsonl",
+    "sourceHold": "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048.jsonl",
+    "runtime": "archive/data/meta-foundation/runtime/h1-foundation-v1.json"
+  },
+  "runtime": {
+    "combinedPackCount": 10,
+    "combinedRuntimeRecords": 5087,
+    "h1RuntimeRecords": 1170,
+    "h1RuntimeSelectable": 631,
+    "h1ExplicitHold": 149,
+    "h1LatestMainSourceHold": 48,
+    "h1CatalogIndexVersion": "525b683c79400ebb9b98f1952a25722a81407abef55e41c706b373996f930500",
+    "productionSelectionSmoke": {
+      "status": "PASS",
+      "selectedCount": 1,
+      "reviewStatus": "PASS",
+      "selectedPackIds": [
+        "H1_FOUNDATION"
+      ],
+      "errors": []
+    }
+  }
+}

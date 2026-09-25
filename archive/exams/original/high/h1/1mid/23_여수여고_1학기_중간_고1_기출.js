@@ -375,12 +375,12 @@ window.questionBank = [
     "content": "$\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$를 만족시키는 실수 $a, b$에 대하여 $ab$의 값은? [3.6점]",
     "choices": [
       "$-4\\sqrt{6}$",
-      "$-2\\sqrt{6}$",
-      "$1$",
       "$2\\sqrt{6}$",
+      "$-2\\sqrt{6}$",
+      "$4\\sqrt{6}$",
       "$4\\sqrt{6}$"
     ],
-    "answer": "⑤",
+    "answer": "④",
     "tags": [
       "객관식",
       "제곱근",
@@ -390,7 +390,7 @@ window.questionBank = [
       "계산",
       "개념"
     ],
-    "solution": "[키포인트]\n음수의 제곱근 성질($\\sqrt{-a} = \\sqrt{a}i, a \\gt 0$)을 이용하여 복소수의 사칙연산을 정확히 계산한다.\n\n조건 정리\n- $\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$\n\n풀이 과정\n1. 각 항을 허수단위 $i$를 사용하여 정리한다.\n첫 번째 항: $\\sqrt{-2}\\sqrt{-3} = (\\sqrt{2}i)(\\sqrt{3}i) = \\sqrt{6}i^2 = -\\sqrt{6}$\n두 번째 항: $\\frac{\\sqrt{18}}{\\sqrt{-2}} = \\frac{3\\sqrt{2}}{\\sqrt{2}i} = \\frac{3}{i} = -3i$\n세 번째 항: $\\frac{\\sqrt{-8}}{\\sqrt{-12}} = \\frac{2\\sqrt{2}i}{2\\sqrt{3}i} = \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{\\sqrt{6}}{3}$\n2. 전체 식을 다시 적어 계산한다.\n$-\\sqrt{6} - 3i - \\frac{\\sqrt{6}}{3} = \\left(-\\sqrt{6} - \\frac{\\sqrt{6}}{3}\\right) - 3i = -\\frac{4\\sqrt{6}}{3} - 3i$\n3. 실수부분 $a = -\\frac{4\\sqrt{6}}{3}$, 허수부분 $b = -3$이다.\n4. $ab = \\left(-\\frac{4\\sqrt{6}}{3}\\right) \\times (-3) = 4\\sqrt{6}$\n\n결론\n계산 결과 $4\\sqrt{6}$은 선택지 ⑤와 일치한다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트]\n음수의 제곱근 성질($\\sqrt{-a} = \\sqrt{a}i, a \\gt 0$)을 이용하여 복소수의 사칙연산을 정확히 계산한다.\n\n조건 정리\n- $\\sqrt{-2}\\sqrt{-3}+\\frac{\\sqrt{18}}{\\sqrt{-2}}-\\frac{\\sqrt{-8}}{\\sqrt{-12}}=a+bi$\n\n풀이 과정\n1. 각 항을 허수단위 $i$를 사용하여 정리한다.\n첫 번째 항: $\\sqrt{-2}\\sqrt{-3} = (\\sqrt{2}i)(\\sqrt{3}i) = \\sqrt{6}i^2 = -\\sqrt{6}$\n두 번째 항: $\\frac{\\sqrt{18}}{\\sqrt{-2}} = \\frac{3\\sqrt{2}}{\\sqrt{2}i} = \\frac{3}{i} = -3i$\n세 번째 항: $\\frac{\\sqrt{-8}}{\\sqrt{-12}} = \\frac{2\\sqrt{2}i}{2\\sqrt{3}i} = \\frac{\\sqrt{2}}{\\sqrt{3}} = \\frac{\\sqrt{6}}{3}$\n2. 전체 식을 다시 적어 계산한다.\n$-\\sqrt{6} - 3i - \\frac{\\sqrt{6}}{3} = \\left(-\\sqrt{6} - \\frac{\\sqrt{6}}{3}\\right) - 3i = -\\frac{4\\sqrt{6}}{3} - 3i$\n3. 실수부분 $a = -\\frac{4\\sqrt{6}}{3}$, 허수부분 $b = -3$이다.\n4. $ab = \\left(-\\frac{4\\sqrt{6}}{3}\\right) \\times (-3) = 4\\sqrt{6}$\n\n결론\n정답표는 ④를 가리키지만 ④와 ⑤의 선택지 값이 모두 $4\\sqrt{6}$으로 중복된다. 따라서 계산값은 $4\\sqrt{6}$이고 원문 선택지 결함으로 정답 식별은 여전히 source hold다.",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "candidate_evidence",
@@ -585,12 +585,18 @@ window.questionBank = [
     "standardUnitKey": "H15-SA-05",
     "standardUnit": "이차방정식",
     "standardUnitOrder": 5,
-    "questionType": "단답형",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "wide": false,
-    "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는? [5.6점]",
-    "choices": [],
-    "answer": "3",
+    "content": "다음 그림과 같이 폭이 $4$m이고 높이가 $4$m인 포물선 모양의 조형물이 있다. 조형물이 지면과 만나는 두 지점을 각각 $A, B$라 하고 $B$로부터 $0.5$m 떨어진 지면 $C$에서 조형물에 레이저를 그림과 같이 접하게 쏘아 올릴 때, 레이저와 조형물이 만나는 지점의 지면으로부터의 높이 $h$의 길이는?\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"20\" y1=\"150\" x2=\"220\" y2=\"150\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 34.0,175.2 L 37.38,160.69 L 40.77,146.94 L 44.15,133.96 L 47.54,121.74 L 50.92,110.28 L 54.31,99.59 L 57.69,89.66 L 61.08,80.5 L 64.46,72.1 L 67.85,64.46 L 71.23,57.59 L 74.62,51.48 L 78.0,46.13 L 81.38,41.55 L 84.77,37.73 L 88.15,34.68 L 91.54,32.39 L 94.92,30.86 L 98.31,30.1 L 101.69,30.1 L 105.08,30.86 L 108.46,32.39 L 111.85,34.68 L 115.23,37.73 L 118.62,41.55 L 122.0,46.13 L 125.38,51.48 L 128.77,57.59 L 132.15,64.46 L 135.54,72.1 L 138.92,80.5 L 142.31,89.66 L 145.69,99.59 L 149.08,110.28 L 152.46,121.74 L 155.85,133.96 L 159.23,146.94 L 162.62,160.69 L 166.0,175.2\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 115.0,30.0 L 175.0,150.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <line x1=\"130\" y1=\"150\" x2=\"130\" y2=\"60\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"140\" y1=\"150\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"100\" y1=\"30\" x2=\"140\" y2=\"30\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,3\"/>\n  <path d=\"M 140,30 Q 160,70 140,150\" fill=\"none\" stroke=\"black\" stroke-width=\"0.8\" stroke-dasharray=\"3,2\"/>\n  <text x=\"40\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">A</text>\n  <text x=\"160\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">B</text>\n  <text x=\"175\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">C</text>\n  <text x=\"100\" y=\"162\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"130\" y=\"100\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">h</text>\n  <text x=\"152\" y=\"80\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4m</text>\n  <text x=\"167\" y=\"145\" font-size=\"8px\" text-anchor=\"middle\" font-family=\"serif\"><tspan x=\"167\" dy=\"0\">1</tspan><tspan x=\"167\" dy=\"8\">2</tspan>m</text>\n  <line x1=\"163\" y1=\"149\" x2=\"171\" y2=\"149\" stroke=\"black\" stroke-width=\"0.4\"/>\n</svg>",
+    "choices": [
+      "$\\frac{7}{3}$",
+      "$\\frac{5}{2}$",
+      "$3$",
+      "$\\frac{10}{3}$",
+      "$\\frac{7}{2}$"
+    ],
+    "answer": "③",
     "tags": [
       "객관식",
       "계수비교",
@@ -605,8 +611,7 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
     "subUnit": "이차방정식의 풀이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/23_여수여고_1학기_중간_고1_기출/q17.png"
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 18,

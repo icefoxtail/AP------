@@ -127,7 +127,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다음은 다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누었을 때의 몫과 나머지를 조립제법을 이용하여 구하는 과정이다.\n$$\\begin{array}{r|ccc|c}\na & 6 & -1 & b & \\multicolumn{1}{c}{-3}\\\\\n & & \\boxed{\\phantom{000}} & \\boxed{\\phantom{000}} & \\multicolumn{1}{c}{\\boxed{\\phantom{000}}}\\\\\\hline\n & 6 & 3 & 3 & c\n\\end{array}$$\n$a+b+c$의 값은? (단, $a,b,c$는 상수이다.) [3.9점]",
+    "content": "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]",
     "choices": [
       "$\\frac{1}{3}$",
       "$\\frac{2}{3}$",
@@ -559,8 +559,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=x+k$가 만나는 두 점을 각각 $A,B$라 하고, 점 $A$와 $B$에서 $x$축에 내린 수선의 발을 각각 $C,D$라 하자. 삼각형 $AOC$의 넓이를 $S_1$, 삼각형 $DOB$의 넓이를 $S_2$라 할 때, $S_1-S_2=32$를 만족시키는 양수 $k$의 값을 구하시오. (단, $O$는 원점이고, 두 점 $A,B$는 각각 제1사분면과 제2사분면 위에 있다.) [5.2점]",
-    "image": "assets/images/23_부영여고_1학기_중간_고1_기출/q16.png",
+    "content": "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
     "choices": [
       "13",
       "15",
@@ -634,11 +633,11 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 계수가 모두 정수인 세 일차식의 곱으로 인수분해 되도록 하는 정수 $a$의 개수는? [5.3점]",
+    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 세 일차식의 곱으로 분해되는 정수 $a$의 개수는? [5.3점]",
     "choices": [
-      "4",
-      "6",
       "8",
+      "6",
+      "4",
       "10",
       "12"
     ],
@@ -730,7 +729,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "이차방정식 $x^2+4x+a=0$의 두 근이 $\\alpha,\\beta$이고, 이차방정식 $x^2+bx-40=0$의 두 근이 $\\alpha+\\beta,\\alpha-\\beta$일 때, $a+b$의 값을 구하고, 그 과정을 서술하시오. (단, $a,b$는 상수이다.) [5점]",
+    "content": "[서술형 3] 두 이차방정식의 근의 관계를 통해 $a+b$를 구하시오. [5점]",
     "choices": [],
     "answer": "-27",
     "solution": "(1) $\\alpha + \\beta = -4, \\ \\alpha\\beta = a$\n(2) 두 번째 방정식에서 근과 계수의 관계 적용:\n$(\\alpha+\\beta) + (\\alpha-\\beta) = -b \\implies -4 + (\\alpha-\\beta) = -b$\n$(\\alpha+\\beta)(\\alpha-\\beta) = -40 \\implies -4(\\alpha-\\beta) = -40 \\implies \\alpha-\\beta = 10$\n(3) 연립하여 미지수 결정:\n$b = -6$\n$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta \\implies 100 = 16 - 4a \\implies a = -21$\n(4) 최종 합: $a+b = -21 - 6 = -27$\n$\\therefore -27$",
@@ -761,10 +760,10 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "[서술형 4] $0 \\leq x \\leq 4$일 때, 이차함수 $y=x^2-2kx+5k$의 최솟값이 $6$이 되도록 하는 모든 상수 $k$의 값을 구하고, 그 과정을 서술하시오. [6점]",
+    "content": "[서술형 4] 제한된 범위 내에서 이차함수 최솟값이 $6$이 되는 모든 $k$의 합을 구하시오. [6점]",
     "choices": [],
-    "answer": "$k=2,\\ 3$",
-    "solution": "[풀이의 핵심] 축 $x=k$의 위치에 따라 세 구간으로 분류하여 연산한다.\n$y = (x-k)^2 - k^2 + 5k$\n(1) $k < 0$: $x=0$ 최소 $\\implies 5k = 6 \\implies k=1.2$ (범위 밖 모순)\n(2) $0 \\le k \\le 4$: $x=k$ 최소 $\\implies -k^2+5k = 6 \\implies k=2, 3$ (범위 내 성립)\n(3) $k > 4$: $x=4$ 최소 $\\implies 16-8k+5k = 6 \\implies 3k=10 \\implies k=10/3$ (범위 밖 모순)\n$\\therefore k=2,\\ 3$",
+    "answer": "5",
+    "solution": "[풀이의 핵심] 축 $x=k$의 위치에 따라 세 구간으로 분류하여 연산한다.\n$y = (x-k)^2 - k^2 + 5k$\n(1) $k < 0$: $x=0$ 최소 $\\implies 5k = 6 \\implies k=1.2$ (범위 밖 모순)\n(2) $0 \\le k \\le 4$: $x=k$ 최소 $\\implies -k^2+5k = 6 \\implies k=2, 3$ (범위 내 성립)\n(3) $k > 4$: $x=4$ 최소 $\\implies 16-8k+5k = 6 \\implies 3k=10 \\implies k=10/3$ (범위 밖 모순)\n$\\therefore 2 + 3 = 5$",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
