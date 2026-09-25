@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "WORKING_NOT_FINAL",
+  "status": "WORKING_RELATIONAL_CLOSED_NOT_FINAL",
   "denominator": 1120,
   "counts": {
     "items": 1120,
@@ -20,9 +20,9 @@
   "currentSourceIdentityCoverage": 1120,
   "duplicateUidCount": 0,
   "duplicateSourceIdentityCount": 0,
-  "itemsWithWorkingFieldConsensus": 1087,
-  "itemsPendingSolFieldReview": 33,
-  "pendingSolFieldCount": 40,
+  "itemsWithWorkingFieldConsensus": 1120,
+  "itemsPendingSolFieldReview": 0,
+  "pendingSolFieldCount": 0,
   "pureRelationalMaterialization": {
     "status": "COMPLETE",
     "rowsMaterialized": 146,
@@ -49,5 +49,22 @@
   "conditionFinal": false,
   "integrationFinal": false,
   "difficultyFinal": false,
-  "finalValidatorPass": false
+  "finalValidatorPass": false,
+  "critical33Materialization": {
+    "status": "COMPLETE",
+    "sourceLedger": "H1_SOL_DIRECT_CRITICAL34_DECISIONS.jsonl",
+    "rowsMaterialized": 33,
+    "fieldsMaterialized": 40,
+    "fieldCounts": {
+      "l3": 23,
+      "sourceIssue": 11,
+      "conditions": 3,
+      "crossConcepts": 1,
+      "integrationPattern": 2
+    },
+    "blockingHoldRows": 0,
+    "nonblockingSourceIssueRows": 5,
+    "sourceIssueNoneRows": 6,
+    "basisHead": "cedfaab737104d53019c0da4df4d59875c1f29ab"
+  }
 }
