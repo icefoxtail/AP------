@@ -650,7 +650,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 $AB=9$, $BC=12$인 삼각형 $ABC$에서 $\\sin B=\\dfrac{2\\sqrt{2}}{3}$일 때, $\\triangle ABC$의 넓이를 구하고, 그 과정을 서술하시오. [총 4점]",
     "choices": [],
     "answer": "$36\\sqrt{2}$",
-    "solution": "점 $A$에서 $BC$가 놓인 직선에 수선을 내려 높이를 $AH$라 하자.\n각 $B$에 대하여\n$\\sin B=\\dfrac{AH}{AB}$이므로\n$AH=AB\\sin B$\n$=9\\cdot\\dfrac{2\\sqrt2}{3}$\n$=6\\sqrt2$이다.\n따라서\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH$\n$=\\dfrac12\\cdot12\\cdot6\\sqrt2$\n$=36\\sqrt2$이다.\n따라서 구하는 넓이는 $36\\sqrt2$이다.",
+    "solution": "점 $A$에서 $BC$가 놓인 직선에 수선을 내려 높이를 $AH$라 하자.\n각 $B$에 대하여\n$\\sin B=\\dfrac{AH}{AB}$이므로\n$AH=AB\\sin B$\n$=9\\cdot\\dfrac{2\\sqrt2}{3}$\n$=6\\sqrt2$이다.\n\n따라서\n$\\triangle ABC$의 넓이는\n$\\dfrac12\\cdot BC\\cdot AH$\n$=\\dfrac12\\cdot12\\cdot6\\sqrt2$\n$=36\\sqrt2$이다.\n따라서 구하는 넓이는 $36\\sqrt2$이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_수학/q21.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
