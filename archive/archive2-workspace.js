@@ -35,6 +35,14 @@
         return `<option value="${esc(value)}"${String(current) === String(value) ? " selected" : ""}>${esc(label)}</option>`;
       })
       .join("")}`;
+  const advancedOptions = (values, current, empty) =>
+    `<option value="">${esc(empty)}</option>${["mf", "rpm"].map(authority => {
+      const group = values.filter(row => row.authority === authority);
+      return group.length
+        ? `<optgroup label="${authority === "mf" ? "Meta Foundation" : "RPM"}">${group.map(row =>
+          `<option value="${esc(row.value)}"${current === row.value ? " selected" : ""}>${esc(row.label)}</option>`).join("")}</optgroup>`
+        : "";
+    }).join("")}`;
   const button = (action, label, extra = "") =>
     `<button data-action="${action}" ${extra}>${label}</button>`;
   const badge = (label, type = "") =>
@@ -402,6 +410,9 @@
       state.filters,
       state.catalog.taxonomy,
     );
+    for (const level of ["L3", "L4"])
+      if (state.filters[level] && !/^(mf|rpm):/.test(state.filters[level]))
+        state.filters[level] = `rpm:${state.filters[level]}`;
     if (!state.receipts.length && !state.sealed)
       reconcileFinderSchool(state.filters);
     state.selected = data.selected.map((r) => ({
@@ -1091,6 +1102,31 @@
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" aria-label="5단계 난이도">${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
+  function composeAdvancedChoices(selectionFilters) {
+    const baseFilters = { ...selectionFilters, L3: "", L4: "" };
+    const excluded = C.composeExclusions(context()).union;
+    const eligible = pool().filter(r =>
+      C.matches(r, baseFilters) && C.eligibility(r, state).ok && !excluded.has(r.questionUid));
+    const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
+    const concepts = new Map(), types = new Map();
+    for (const record of eligible) {
+      const authority = C.advancedAuthority(record);
+      const l3 = C.advancedFilterValue(record, 3), l4 = C.advancedFilterValue(record, 4);
+      const l3Label = authority === "mf" ? labels.problemTypes[record.problemTypeKey] : record.L3;
+      const template = authority === "mf" ? labels.templates[record.templateKey] : null;
+      const l4Label = authority === "mf" && template?.parentProblemTypeKey === record.problemTypeKey
+        ? template.label : authority === "rpm" ? record.L4 : "";
+      if (l3 && l3Label) concepts.set(l3, { value: l3, label: l3Label, authority });
+      if (l4 && l4Label && (!state.filters.L3 || l3 === state.filters.L3))
+        types.set(l4, { value: l4, label: l4Label, authority });
+    }
+    const sort = rows => [...rows.values()].sort((a, b) => a.label.localeCompare(b.label, "ko"));
+    return { concepts: sort(concepts), types: sort(types) };
+  }
+  const displayTemplate = record =>
+    C.advancedAuthority(record) === "mf"
+      ? window.ARCHIVE_META_FOUNDATION_LABELS?.templates?.[record.templateKey]?.label || record.L4
+      : record.L4;
   function renderComposition() {
     const selectionFilters = {
       ...state.filters,
@@ -1112,10 +1148,7 @@
         available: candidates.filter((r) => C.rowMatches(r, row)).length,
       }))
       .filter((item) => item.available < item.row.count);
-    const selectedPaths = new Set(selectedScopePaths());
-    const concepts = taxonomyRowsForFilters(state.filters).filter(
-      (r) => !selectedPaths.size || selectedPaths.has(C.pathKey(r, 4)),
-    );
+    const advanced = composeAdvancedChoices(selectionFilters);
     return `<section class="panel compose-composition"><div class="compose-step-head"><span class="compose-step-number">4</span><h2>구성</h2><span class="muted">출제 범위 · 문항 수</span></div><div class="inline"><label>배분 방식<select id="distribution" ${state.sealed ? "disabled" : ""}>${options(
       [
         { value: "equal", label: "단원별 균등" },
@@ -1126,7 +1159,7 @@
       state.distribution,
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><label>난이도 (1~5)${bucketButtons(state.buckets)}</label></div>
-      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.map((r) => r.L3)), state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${options(unique(concepts.filter((r) => !state.filters.L3 || r.L3 === state.filters.L3).map((r) => r.L4)), state.filters.L4, "전체 유형")}</select></label></div></div></details>
+      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
       ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
@@ -1239,7 +1272,7 @@
       .map((r, i) =>
         Parts.partIndex(i) !== state.previewIndex
           ? ""
-          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(r.L4)}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
+          : `<div data-question-uid="${r.questionUid}" class="paper-row ${state.pins.includes(r.questionUid) ? "pinned" : ""}"><strong>${(i % 50) + 1}</strong><div class="description">${esc(r.L2)} · 난이도 ${r.difficultyBucket}<br><span class="muted">${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번 · ${esc(displayTemplate(r))}</span></div><div class="actions">${button("pin", state.pins.includes(r.questionUid) ? "고정됨" : "고정", `data-index="${i}" aria-pressed="${state.pins.includes(r.questionUid)}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}${button("replace", "교체", `data-index="${i}" class="small" ${state.sealed || lockedIndex(i) ? "disabled" : ""}`)}</div></div>`,
       )
       .join("");
     return `<section class="panel paper-panel"><div class="paper-toolbar"><div class="actions mode-switch">${modes}</div><span class="muted paper-count">${state.selected.length}문항</span><label class="part-select">문제지<select id="preview-index">${options(
@@ -1746,7 +1779,7 @@
           .slice(0, 30)
           .map(
             (r, i) =>
-              `<div class="candidate"><div><strong>${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번</strong><p class="muted">${esc(r.L4)} · 난이도 ${r.difficultyBucket}</p></div><div>${button("candidate-preview", "원본 확인", `data-candidate="${i}" class="small"`)}${button("candidate-use", "교체", `data-candidate="${i}" class="small"`)}</div></div>`,
+              `<div class="candidate"><div><strong>${esc(r.year)} ${esc(r.school)} · 원본 ${esc(r.sourceQuestionNo)}번</strong><p class="muted">${esc(displayTemplate(r))} · 난이도 ${r.difficultyBucket}</p></div><div>${button("candidate-preview", "원본 확인", `data-candidate="${i}" class="small"`)}${button("candidate-use", "교체", `data-candidate="${i}" class="small"`)}</div></div>`,
           )
           .join("") ||
         '<div class="empty">같은 조건으로 교체할 새 문항이 없습니다.</div>'

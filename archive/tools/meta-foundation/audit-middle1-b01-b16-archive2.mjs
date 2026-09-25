@@ -43,7 +43,10 @@ for(const s of input.rows){
       if(c.taxonomyStatus!=='CONFIRMED')failures.push(`rpmTaxonomy:${s.questionUid}`);
     }else if(m.rpmPathStatus==='HOLD_NO_EQUIVALENT_PATH'){
       rpmHold++;
-      if(c.automatic||c.reviewStatus==='reviewed_pass')failures.push(`rpmHoldSelectable:${s.questionUid}`);
+      const basicPass=r.sourceQualityDisposition==='HOLD_RESOLVED_NO_SOURCE_MUTATION'&&
+        r.semanticDisposition!=='HOLD'&&r.semanticDisposition!=='ROUTE_OUT';
+      if(Boolean(c.automatic)!==basicPass || Boolean(r.runtimeSelectable)!==basicPass)
+        failures.push(`rpmOnlyBasicGate:${s.questionUid}`);
     }else failures.push(`rpmDisposition:${s.questionUid}`);
   }else{
     if(s.reviewStatus==='ROUTE_OUT')routeOut++;else semanticHold++;

@@ -38,6 +38,16 @@
   const text = (value) => String(value ?? "").trim();
   const pathKey = (record, depth = 6) =>
     JSON.stringify(PATH_FIELDS.slice(0, depth).map((k) => text(record[k])));
+  const advancedAuthority = (record) =>
+    record.metaFoundationPackVersion && record.problemTypeKey && record.templateKey
+      ? "mf" : "rpm";
+  const advancedFilterValue = (record, level) => {
+    const authority = advancedAuthority(record);
+    const key = authority === "mf"
+      ? record[level === 3 ? "problemTypeKey" : "templateKey"]
+      : record[level === 3 ? "L3" : "L4"];
+    return key ? `${authority}:${key}` : "";
+  };
   const normalizeFile = (value) =>
     text(value)
       .normalize("NFC")
@@ -519,6 +529,14 @@
     if (record.taxonomyStatus !== "CONFIRMED") reasons.push("taxonomy");
     if (record.gradeConflict) reasons.push("grade");
     if (record.reviewStatus !== "reviewed_pass") reasons.push("review");
+    if (record.semanticDisposition === "HOLD" || record.semanticDisposition === "ROUTE_OUT")
+      reasons.push("semantic");
+    if (record.sourceQualityDisposition === "SOURCE_BLOCKED" || record.sourceQualityDisposition === "SOLUTION_REPAIR_REQUIRED")
+      reasons.push("solution");
+    if (record.foundationTaxonomyStatus && (
+      record.foundationTaxonomyStatus !== "CONFIRMED" ||
+      !record.curriculumKey || !record.courseKey || !record.L1 || !record.L2
+    )) reasons.push("foundation_scope");
     if (
       !Number.isInteger(record.difficultyBucket) ||
       record.difficultyBucket < 1 ||
@@ -568,7 +586,14 @@
     if (!subjectProjectionMatches(record, filters)) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;
+    for (const level of [3, 4]) {
+      const selected = filters[`L${level}`];
+      if (selected && advancedFilterValue(record, level) !==
+        (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`))
+        return false;
+    }
     for (const field of PATH_FIELDS) {
+      if (field === "L3" || field === "L4") continue;
       if (
         field === "courseKey" &&
         filters.semanticSubject &&
@@ -863,6 +888,8 @@
     compareNewest,
     taxonomyPaths,
     eligibility,
+    advancedAuthority,
+    advancedFilterValue,
     matches,
     composeExclusions,
     rowMatches,
