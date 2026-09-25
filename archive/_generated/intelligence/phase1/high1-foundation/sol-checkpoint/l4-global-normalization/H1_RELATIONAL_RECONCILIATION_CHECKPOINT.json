@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "h1-relational-reconciliation-checkpoint-v1",
+  "status": "WORKING_RELATIONAL_RECONCILED_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "upstreamHead": "9fefe0efe9a0a74b291c3042041e0741b7682830",
+  "denominator": 1170,
+  "step1": {
+    "authorityPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl",
+    "materializedRows": 15,
+    "parentCounts": {
+      "PT_COUNTING_ARRANGEMENT": 5,
+      "PT_H1_COUNTING_PRINCIPLE_GENERAL": 5,
+      "PT_H1_QUADRATIC_DISCRIMINANT": 5
+    },
+    "rowsAfter": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "deltaJoinMissing": 0,
+    "parentChangedUidCount": 15,
+    "unrelatedL3MutationCount": 0,
+    "existingChallengeLedgerPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L3_PARENT_CHALLENGE.jsonl",
+    "existingChallengeLedgerRowsPreserved": 40,
+    "materializedUidsAlsoInExistingLedger": 0,
+    "existingChallengeLedgerUnmodified": true
+  },
+  "step2": {
+    "outputPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_AFTER_PARENT_MATERIALIZATION_1170.jsonl",
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "reassignmentRows": 15,
+    "l3L4ParentMismatch": 0,
+    "templateParentMismatch": 0,
+    "missingL4OutsideExplicitHold": 0,
+    "newCanonicalKeys": 0,
+    "newCanonicalPromotions": 0,
+    "candidateGateReopened": false
+  },
+  "step3": {
+    "outputPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_RELATIONAL_RECONCILED_1170.jsonl",
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "crossConceptUnregistered": 0,
+    "conditionUnregistered": 0,
+    "invalidIntegrationPattern": 0,
+    "l3L4RelationalJoinMissing": 0,
+    "changedUidDeltaRows": 16,
+    "relationalHoldRows": 39,
+    "priorHoldRows": 39,
+    "priorHoldsReleased": 0,
+    "integrationPatternHoldRows": 1,
+    "integrationPatternHoldPreserved": true,
+    "taxonomyReviewPendingRows": 1170
+  },
+  "gateSummary": {
+    "keepNewL4Families": 10,
+    "keepNewL4SupportUids": 60,
+    "gateReopened": false
+  },
+  "canonicalPromotions": 0,
+  "newCanonicalRegistration": 0,
+  "difficultyStarted": false,
+  "final": false,
+  "outputFiles": [
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L3_PARENT_CHALLENGE_MATERIALIZED_015.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_AFTER_PARENT_MATERIALIZATION_1170.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_PARENT_REASSIGNMENT_015.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_RELATIONAL_RECONCILED_1170.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_RELATIONAL_RECONCILIATION_DELTA.jsonl",
+    "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_RELATIONAL_RECONCILIATION_CHECKPOINT.json"
+  ],
+  "nextStep": "Begin fresh blind Difficulty 1170 from this pushed checkpoint as immutable upstream."
+}
