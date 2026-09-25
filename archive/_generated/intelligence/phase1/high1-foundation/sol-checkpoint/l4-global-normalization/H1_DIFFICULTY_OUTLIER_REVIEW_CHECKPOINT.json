@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "h1-difficulty-outlier-review-checkpoint-v1",
+  "status": "INDEPENDENT_REVIEW_AND_COMPARE_COMPLETE_STOP",
+  "createdAtUtc": "2026-09-25T12:30:38.933Z",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "startHead": "0ead023bc48f96e2c6d55c351ff815af99735547",
+  "originStartHead": "0ead023bc48f96e2c6d55c351ff815af99735547",
+  "scope": {
+    "requestedSelection": "27 retained large-shift targets + current final-working Bucket 5 target",
+    "selectionCount": 28,
+    "uniqueReviewUidCount": 28,
+    "retainedLargeShift": {
+      "selected": 27,
+      "reviewed": 27,
+      "missing": 0
+    },
+    "currentBucket5": {
+      "selected": 1,
+      "reviewed": 1,
+      "missing": 0,
+      "independentResult": {
+        "questionUid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
+        "independentDifficultyBucket": 3,
+        "disposition": "RESTORE_OR_ADJUST"
+      }
+    },
+    "selectionOverlapCount": 0,
+    "uidDuplicateCount": 0,
+    "sourceIdentityDuplicateCount": 0,
+    "selectionMissing": 0
+  },
+  "firstPassIntegrity": {
+    "canonicalDifficultyRule": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "blindInputFieldAllowlist": [
+      "current source content",
+      "current choices",
+      "current solution",
+      "current working L3/L4",
+      "current CrossConcept/Condition/IntegrationPattern where available",
+      "source identity and fingerprint"
+    ],
+    "excludedSemanticFields": [
+      "old metadata difficultyBucket",
+      "blind working bucket",
+      "conflict recheck result",
+      "old difficultyReason",
+      "old/new bucket difference",
+      "previous reviewer verdict"
+    ],
+    "sourceContentChoicesSolutionReadRows": 28,
+    "visualReviewedRows": 2,
+    "priorMetadataComparedBeforeInitialFreeze": false,
+    "semanticJudgmentPayloadContainedDifficultyFields": false,
+    "sourceIdentityAndFingerprintJoinPassRows": 28,
+    "oldMetadataVersusCapturedPriorMatchRows": 28,
+    "sourceFingerprintMismatchRows": 0,
+    "initialFreezeSha256": "ce22d3d3930d82ecaa9947e1995e1b633fa2c5719a854b2be42db5a71bea38f0",
+    "initialFrozenReviewSha256": "816a7a2c8a62c899c7dbaa778432901a7c3f25c0cafcec4509891eb9f8083144",
+    "amendedFreezeRevision": 2,
+    "amendedReviewSha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67",
+    "postFreezeCorrection": {
+      "count": 1,
+      "questionUid": "qid_v1_554fdee280a088c5f3158c03d944b2dcfa1b644bcecd101059dc9013e75da4a6",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#8",
+      "trigger": "Source-to-review-rationale mapping defect discovered during post-freeze audit.",
+      "comparisonMaterialAlreadyOpened": true,
+      "initialFrozenReviewSha256": "816a7a2c8a62c899c7dbaa778432901a7c3f25c0cafcec4509891eb9f8083144",
+      "amendedReviewSha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67",
+      "originalIndependentBucket": 3,
+      "correctedIndependentBucket": 2,
+      "compareDispositionConstraint": "BOUNDARY_HOLD for this UID because the post-freeze correction crosses B23; do not report a clean first-pass confirmation."
+    },
+    "oldMetadataJoinRows": 28
+  },
+  "independentReview": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_INDEPENDENT_REVIEW_028.jsonl",
+    "sha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67",
+    "rows": 28,
+    "amendedIndependentBucketCounts": {
+      "2": 9,
+      "3": 15,
+      "4": 3,
+      "UNKNOWN": 1
+    },
+    "reviewStatusCounts": {
+      "reviewed_pass": 27,
+      "HOLD": 1
+    },
+    "sourceIssueCount": 1,
+    "sourceHoldQuestionUids": [
+      "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a"
+    ]
+  },
+  "compare": {
+    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
+    "sha256": "cbf13fa0ed128a834c48b6aa8893edb369a207a3c843b0087e4c8d62c8a19e5a",
+    "rows": 28,
+    "dispositionCounts": {
+      "RESTORE_OR_ADJUST": 12,
+      "CONFIRM_WORKING": 8,
+      "BOUNDARY_HOLD": 7,
+      "SOURCE_HOLD": 1
+    },
+    "currentWorkingConflictCount": 13,
+    "retainedLargeShiftConflictCount": 12,
+    "retainedLargeShiftConflictUids": [
+      {
+        "questionUid": "qid_v1_becae85811a6b2ceeb78a2050b04b7b150e7aba56f1cc28ca12c91400c0f6045",
+        "currentWorkingBucket": 1,
+        "independentDifficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_95394182bf16c0f0efaef71becb9d3b1021968e272aa95f47d3db39f20f306a7",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_dedab558e5c28d1968ec3e309c8b703fd9f8026c9a1ebb3f753aaaaf0e38ad90",
+        "currentWorkingBucket": 3,
+        "independentDifficultyBucket": 4
+      },
+      {
+        "questionUid": "qid_v1_0bc4aa2a5292338e60ab8f2f66b3d169820e2a6c43e9944c756a273659daa973",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 4
+      },
+      {
+        "questionUid": "qid_v1_4fa48d54012cf696ba0f5f987b98d79499fc9090cadebe1a1a344d23415c0f80",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_d7dda37a747f12cb47787cd39ef647ea828e2c45aaf1f31aebcbd6738da4f3a2",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 3
+      },
+      {
+        "questionUid": "qid_v1_d9d876114d129201f55c17d7efeaf6051d2722c5bbcbeb4e28d5d4d4708415c1",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3
+      },
+      {
+        "questionUid": "qid_v1_7bf29f42a77119d09304069f3fbc2960bc628697fb918c2f3d4e11bafa721762",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 3
+      },
+      {
+        "questionUid": "qid_v1_58e387824cd804671c59f8848d617c9b0483e54010a7d0e96457dcfff4457a35",
+        "currentWorkingBucket": 1,
+        "independentDifficultyBucket": 2
+      },
+      {
+        "questionUid": "qid_v1_0bab48ad22edc05a613c095459557455b12ed72e12cf03088c53d7d07d11fec3",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3
+      },
+      {
+        "questionUid": "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
+        "currentWorkingBucket": 3,
+        "independentDifficultyBucket": 4
+      },
+      {
+        "questionUid": "qid_v1_069e80fdac47e872e9e23a2a662fe8db2d04c4ce6f22fd4dc7011d584ea49ffb",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3
+      }
+    ],
+    "allCurrentWorkingConflictUids": [
+      {
+        "questionUid": "qid_v1_becae85811a6b2ceeb78a2050b04b7b150e7aba56f1cc28ca12c91400c0f6045",
+        "currentWorkingBucket": 1,
+        "independentDifficultyBucket": 2,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_95394182bf16c0f0efaef71becb9d3b1021968e272aa95f47d3db39f20f306a7",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 2,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
+        "currentWorkingBucket": 5,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "CURRENT_BUCKET_5"
+      },
+      {
+        "questionUid": "qid_v1_dedab558e5c28d1968ec3e309c8b703fd9f8026c9a1ebb3f753aaaaf0e38ad90",
+        "currentWorkingBucket": 3,
+        "independentDifficultyBucket": 4,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_0bc4aa2a5292338e60ab8f2f66b3d169820e2a6c43e9944c756a273659daa973",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 4,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_4fa48d54012cf696ba0f5f987b98d79499fc9090cadebe1a1a344d23415c0f80",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 2,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_d7dda37a747f12cb47787cd39ef647ea828e2c45aaf1f31aebcbd6738da4f3a2",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_d9d876114d129201f55c17d7efeaf6051d2722c5bbcbeb4e28d5d4d4708415c1",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_7bf29f42a77119d09304069f3fbc2960bc628697fb918c2f3d4e11bafa721762",
+        "currentWorkingBucket": 4,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_58e387824cd804671c59f8848d617c9b0483e54010a7d0e96457dcfff4457a35",
+        "currentWorkingBucket": 1,
+        "independentDifficultyBucket": 2,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_0bab48ad22edc05a613c095459557455b12ed72e12cf03088c53d7d07d11fec3",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
+        "currentWorkingBucket": 3,
+        "independentDifficultyBucket": 4,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      },
+      {
+        "questionUid": "qid_v1_069e80fdac47e872e9e23a2a662fe8db2d04c4ce6f22fd4dc7011d584ea49ffb",
+        "currentWorkingBucket": 2,
+        "independentDifficultyBucket": 3,
+        "reviewTargetReason": "RETAINED_LARGE_SHIFT"
+      }
+    ],
+    "sourceHoldUids": [
+      {
+        "questionUid": "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a",
+        "sourceIssue": "REAL_DOMAIN_CONTRADICTION_AND_SOLUTION_DOMAIN_ERROR",
+        "independentDifficultyBucket": "UNKNOWN"
+      }
+    ],
+    "currentBucket5ConflictCount": 1
+  },
+  "validation": {
+    "allTargetsHaveDisposition": true,
+    "duplicateUid": 0,
+    "duplicateSourceIdentity": 0,
+    "selectionMissing": 0,
+    "allReviewTargetReasonsCovered": true,
+    "sourceIdentityDuplicateInQuestionMetadataJoin": 0,
+    "allSourceFingerprintsMatched": true,
+    "canonicalPromotionCount": 0,
+    "workingDifficultyMutationCount": 0,
+    "productionModificationCount": 0,
+    "mainMerge": false
+  },
+  "git": {
+    "pushTarget": "origin/meta-foundation-h1-preprocess-sol-review",
+    "checkpointCommitMessage": "checkpoint(h1-meta): independently review difficulty outliers",
+    "mainMergeProhibited": true
+  },
+  "postCompareAdjudication": {
+    "createdAtUtc": "2026-09-25T12:42:49.120Z",
+    "scopeUidCount": 1,
+    "source": "User-raised timed-exam workload consideration after the initial comparison.",
+    "questionUid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
+    "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#18",
+    "initialBlindReview": {
+      "independentDifficultyBucket": 3,
+      "reviewedCalculationLoad": "medium",
+      "reviewedCaseLoad": 4,
+      "freezePreserved": true
+    },
+    "adjudicatedResult": {
+      "independentDifficultyBucket": 4,
+      "semanticConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "currentWorkingBucket": 5,
+      "disposition": "RESTORE_OR_ADJUST"
+    },
+    "rationale": "Four fixed (i,j) cases each require a discriminant computation and classification of 0/1/2 distinct real roots, then those entries must be assembled into A before checking A²=A. The repeated case work adds meaningful exam-time execution burden and moves this item to Bucket 4. The matrix-power step uses a standard idempotence check and does not require a decisive insight that would support Bucket 5.",
+    "workingFinalDifficultyApplied": false,
+    "canonicalPromotion": false
+  },
+  "nextAdjudication": {
+    "scope": "Only unresolved/contested UIDs from this 28-target batch.",
+    "currentBucket5TargetFinalAdjudicatedBucket": 4,
+    "currentBucket5TargetDisposition": "RESTORE_OR_ADJUST"
+  }
+}

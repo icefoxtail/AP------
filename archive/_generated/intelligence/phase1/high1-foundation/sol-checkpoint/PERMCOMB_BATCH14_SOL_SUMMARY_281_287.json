@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "h1-stage2-sol-semantic-summary-v1",
+  "status": "BATCH_SOL_REVIEW_ARTIFACT_COMPLETE_WITH_HOLDS",
+  "authority": "SOL_EXHAUSTIVE_SOURCE_REVIEW",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "currentOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "batchNo": 14,
+  "unit": "PERMCOMB",
+  "scope": {
+    "start": 281,
+    "end": 287,
+    "denominator": 7
+  },
+  "coverage": {
+    "rows": 7,
+    "uniqueUid": 7,
+    "uniqueSourceIdentity": 7,
+    "fingerprintMismatch": 0,
+    "missingDecisionEvidence": 0,
+    "forbiddenCandidateInputLeakage": 0
+  },
+  "inputBundle": {
+    "inputBundleSha": "3f13a9f3dc9609f4789bf86ad2dbc129df1d0c9014c0c6b8cccd6b26e65b178f",
+    "sourcePackRows": 7,
+    "sourceContentSolutionImageOnly": true,
+    "sameStageCandidateInputExcluded": true,
+    "sourcePackSha256": "7c11da157c69e393aac4e4f3691e0da7715f4bf68a9e7feae79b968a0dfcb602"
+  },
+  "holdCount": 0,
+  "sourceIssues": [],
+  "compositionPattern": {
+    "CASE_BRANCH": 4,
+    "SEQUENTIAL": 2,
+    "NONE": 1
+  },
+  "visualReviewPendingWorkIndices": [
+    283
+  ],
+  "newDefiniteL1L2RejoinCount": 0,
+  "nextStart": {
+    "workIndex": 288,
+    "questionUid": null
+  },
+  "artifacts": {
+    "sourcePack": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH14_SOURCE_PACK_281_287.jsonl",
+    "decisionLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl",
+    "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/PERMCOMB_BATCH14_SOL_SUMMARY_281_287.json",
+    "checkpoint": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_PERMCOMB_287.json",
+    "pointers": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_COMMON_MATH1_SOL_CHECKPOINT_PERMCOMB_287_POINTERS.json"
+  },
+  "note": "Stage 2 Single Semantic Pass only. No PT/TPL/CrossConcept/difficulty canonical synthesis; existing legacy labels were not used as authority. Codex did not generate canonical FINAL/PASS."
+}

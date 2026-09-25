@@ -1,0 +1,111 @@
+{
+  "task": "D-q26-question-only",
+  "status": "QUESTION_SCORE_REPAIRED_FACTOR_AMBIGUITY_HOLD",
+  "queue": {
+    "queueIndex": 26,
+    "questionUid": "qid_v1_c55523006c9158bf5a46678b43cd1b3fcab35b243c75b74c8dc70f6871ad4087",
+    "sourceIdentity": "original/high/h1/1mid/26_매산고_1학기_중간_고1_기출c.js#7",
+    "comparisonPath": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json",
+    "directFieldQueuePath": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_SOL_DIRECT_FIELD_QUEUE.jsonl",
+    "sourceFingerprintBefore": "4ca0bf7554ce77a5d2ec069859989f629a94ca1c5927c6048ccfd6c88c40a22d",
+    "directQueueSourceFingerprint": "4ca0bf7554ce77a5d2ec069859989f629a94ca1c5927c6048ccfd6c88c40a22d",
+    "parityBeforeEdit": "PASS",
+    "parityAfterEdit": "RECOMPUTE_REQUIRED_DUE_EXACT_SCORE_RESTORATION"
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\26_매산고_1학기_중간_고1_기출c.js",
+    "jsSha256Before": "172df92b148a2490bbe736bb011d0001c94902f2070fce5f903a0bad25bf3b1d",
+    "jsSha256After": "017bc41b1611f628f2f7fba415e26f3f42850d40cdd6c7709158066ba048f315",
+    "questionId": 7,
+    "arrayIndex": 6,
+    "questionFieldsSha256Before": "be09dea7cc83ad6fb37c915240f7e0da90562d7ebfbe189a4ed2b054e2112210",
+    "questionFieldsSha256After": "6d0b508fc3d1226510af7722ce593e755b95e20f93af51293c3694587af7a038",
+    "changedFields": [
+      "content"
+    ],
+    "before": {
+      "questionType": "객관식",
+      "content": "다항식 $p(x)=x^3-ax^2-11x-21$이 최고차항 계수가 $1$인 두 다항식 $f(x), g(x)$의 곱으로 인수분해 되고 $f(7)=0$일 때, $f(1)+g(1)$의 값은?",
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "layoutTag": "grid",
+      "wide": false,
+      "imageFieldPresent": false,
+      "imageValue": null
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "다항식 $p(x)=x^3-ax^2-11x-21$이 최고차항 계수가 $1$인 두 다항식 $f(x), g(x)$의 곱으로 인수분해 되고 $f(7)=0$일 때, $f(1)+g(1)$의 값은? [4.3점]",
+      "choices": [
+        "$-1$",
+        "$0$",
+        "$1$",
+        "$2$",
+        "$3$"
+      ],
+      "layoutTag": "grid",
+      "wide": false,
+      "imageFieldPresent": false,
+      "imageValue": null
+    }
+  },
+  "source": {
+    "type": "original exam question page",
+    "path": "D:\\2026년 기출\\1학기중간_\\고1\\매산고\\S28BW-826051515310_0018.jpg",
+    "sha256": "4792EFF5801DAB6E853417E8E759AB9227110D81333D64A4D0606599F802903B",
+    "pageNumber": 2,
+    "printedPage": "2쪽 (2/6)",
+    "fullPageEvidence": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q26-question-only\\original-page-2.jpg",
+      "sha256": "4792EFF5801DAB6E853417E8E759AB9227110D81333D64A4D0606599F802903B",
+      "copiedByteForByte": true
+    },
+    "detailCrop": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q26-question-only\\q7-detail.png",
+      "sha256": "A6A07E6FB1CBD1D66AFD7F893036875B03320E5ADDDFF80EE356CFB6974D793C",
+      "cropFrom": "Page 2 original; x=48%-98.5%, y=5%-19%"
+    },
+    "questionOnlySourcePage": true,
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false
+  },
+  "comparison": {
+    "factorWording": "SOURCE_MATCH",
+    "printedFactorClause": "최고차항 계수가 1인 두 다항식 f(x), g(x)의 곱으로 인수분해 되고 f(7)=0",
+    "degreeOrNonconstantClause": "The original has no separate degree assignment and no explicit nonconstant clause. No extra condition was inferred or added.",
+    "requestedTarget": "f(1)+g(1)",
+    "choices": [
+      "1) -1",
+      "2) 0",
+      "3) 1",
+      "4) 2",
+      "5) 3"
+    ],
+    "choicesDisposition": "All five choices match original order.",
+    "scoreSource": "[4.3점]",
+    "scoreJsBefore": "omitted",
+    "scoreJsAfter": "[4.3점]",
+    "repair": "Appended the clearly printed [4.3점] to q7 content only.",
+    "figure": "No figure.",
+    "factorIssueDisposition": "HOLD",
+    "holdReason": "The source question page itself provides no explicit degree assignment or separate nonconstant clause for f and g. No missing condition can be source-restored; no condition was guessed."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedQuestionSchema": "PASS (q7 id, nonempty content, 5 choices, question-only fields read)",
+    "onlyQuestionContentChanged": true,
+    "physicalLedgerJson": "PASS",
+    "render": "NOT_TESTED",
+    "sourceVisualReview": "PASS: original page 2 and q7 detail crop visually inspected"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

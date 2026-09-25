@@ -1,0 +1,104 @@
+{
+  "task": "D-first50-missing-stem-batch",
+  "queueIndex": 44,
+  "questionUid": "qid_v1_9f6d119436795a8634f2fbd232bca0af696e929cc35fb718316a1fa3b689f423",
+  "sourceIdentity": "original/high/h1/1mid/24_여수고_1학기_중간_고1_기출.js#15",
+  "status": "CHOICES_REPAIRED_STEM_HOLD",
+  "queue": {
+    "uidOnlyQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\queue-uid-only.jsonl",
+    "comparisonQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_AB_WORKING_COMPARISON_CURRENT.json",
+    "directFieldQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_FIRST50_SOL_DIRECT_FIELD_QUEUE.jsonl",
+    "parityBeforeEdit": "PASS",
+    "sourceFingerprintBefore": "0fc960c7be4ec1e7a52f8574664892ed67bc6dafc9058cf784fe10b5373d38ee",
+    "directSourceFingerprintBefore": "0fc960c7be4ec1e7a52f8574664892ed67bc6dafc9058cf784fe10b5373d38ee",
+    "sourceFingerprintAfter": "617dc106531194e2fae5852eeb2b05cd5f8f9110e8c883b4a5c01f32d390df7f",
+    "identityNeedsRefreshAfterEdit": true
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\24_여수고_1학기_중간_고1_기출.js",
+    "questionId": 15,
+    "arrayIndex": 14,
+    "jsSha256Before": "e6ebbd974eb6b55eb06502f7fb5dec0902a70e260b592c58a2efc888248bb715",
+    "jsSha256After": "c81c37519b84961c92cd80cfb8d542b291caf04a0c339aaca1fdf277e624767f",
+    "questionFieldsSha256Before": "edb276f773660d260db8d4419b435148b32403319a00b450ae5192805539a9a5",
+    "questionFieldsSha256After": "59bccc10d4376ecf737c94ec0e53e8728e61980a40ddcfc80ddd193e0b01f3ba",
+    "changedFields": [
+      "choices"
+    ],
+    "before": {
+      "questionType": "객관식",
+      "content": "$z^2-mz+n=0$ ($m$은 자연수)의 허근 $z$가 존재할 때 $m+n$의 최솟값은? [4.1점]",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "image": null,
+      "imageFieldPresent": false,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "$z^2-mz+n=0$ ($m$은 자연수)의 허근 $z$가 존재할 때 $m+n$의 최솟값은? [4.1점]",
+      "choices": [
+        "13",
+        "14",
+        "15",
+        "16",
+        "17"
+      ],
+      "image": null,
+      "imageFieldPresent": false,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original exam question HWP",
+    "path": "D:\\기출\\23,24 고1\\2024년\\1학기 중간고사\\수학 상 (24 여수고) - 답 x.hwp",
+    "sha256": "2B08A4FC98054294DA169E044BB5F01BA05532428547474DDAEAA4D598D827B9",
+    "questionOrdinal": 15,
+    "physicalPage": null,
+    "physicalPageStatus": "UNRESOLVED_BY_HWP_PARSER",
+    "pageImage": null,
+    "textEvidence": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-first50-missing-stem-batch\\q44\\q15-source-text-excerpt.txt",
+      "sha256": "D6B23DAA9260E6DA60293A3C5212625B6B033B9B0D59A0061DD055945A890E99",
+      "tool": "PyHWP hwp5txt",
+      "lines": "219-222"
+    },
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false
+  },
+  "comparison": {
+    "choicesDisposition": "SOURCE_CONFIRMED",
+    "originalChoices": [
+      "13",
+      "14",
+      "15",
+      "16",
+      "17"
+    ],
+    "stemDisposition": "HOLD",
+    "holdReason": "The formula/control object that defines the complex-number condition is omitted by available HWP extraction. Original prose says two integers, while exact formula/domain details cannot be confirmed; no content wording or equation was inferred.",
+    "visualPage": "NOT_TESTED",
+    "renderedChoiceValues": "Text extraction directly yielded five integer options 13,14,15,16,17."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedSchema": "PASS (q15 id, 객관식, nonempty content, five choices)",
+    "onlyQuestionChoicesChanged": true,
+    "sourceFingerprintAlgorithm": "SHA256(JSON.stringify({content,choices,answer,solution,image})) per build-h1-blind-worker-bundle.mjs; answer/solution fields hashed in memory without viewing or output",
+    "sourceVisualReview": "NOT_TESTED",
+    "archiveBrowserRender": "NOT_TESTED",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

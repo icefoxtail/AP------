@@ -23,7 +23,7 @@ const foundationTemplates = new Map(foundationTaxonomy.templates.map((r) => [r.t
 const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r.conceptKey));
 const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
 const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
-const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion"]);
+const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
 const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
@@ -123,11 +123,15 @@ for (const exam of exams) {
       core.normalizeFile(meta.sourceArchiveFile) === file &&
       meta.sourceOrdinal === ordinal;
     const directNode = validJoin && paths.get(core.pathKey(meta));
-    const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:MIDDLE1@");
+    const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:");
     const foundationPresent = foundationScoped && Boolean(meta?.problemTypeKey || meta?.templateKey);
+    const template = meta?.templateKey ? foundationTemplates.get(meta.templateKey) : null;
+    const explicitNoTemplateDisposition = ["NO_SEPARATE_L4", "HOLD"].includes(meta?.l4Disposition);
     const foundationValid = !foundationPresent ? null : Boolean(
       foundationProblemTypes.has(meta.problemTypeKey) &&
-      foundationTemplates.get(meta.templateKey)?.parentProblemTypeKey === meta.problemTypeKey &&
+      (template
+        ? template.parentProblemTypeKey === meta.problemTypeKey
+        : explicitNoTemplateDisposition) &&
       (meta.crossConceptKeys || []).every((key) => foundationCrossConcepts.has(key)) &&
       (meta.conditionKeys || []).every((key) => foundationConditionKeys.has(key)) &&
       foundationBindingKeys.has([meta.curriculum, meta.standardUnitKey, meta.subUnitKey, meta.problemTypeKey].join("\u0000"))
@@ -190,7 +194,7 @@ for (const exam of exams) {
           ? "VERIFIED"
           : "HOLD",
       taxonomyStatus: node && foundationValid !== false ? "CONFIRMED" : "UNKNOWN",
-      ...(foundationScoped ? { foundationTaxonomyStatus: foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD") } : {}),
+      ...(foundationScoped ? { foundationTaxonomyStatus: meta?.foundationTaxonomyStatus === "HOLD" ? "HOLD" : (foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD")) } : {}),
       metadataConflicts,
       gradeConflict: false,
       courseFamilies: [

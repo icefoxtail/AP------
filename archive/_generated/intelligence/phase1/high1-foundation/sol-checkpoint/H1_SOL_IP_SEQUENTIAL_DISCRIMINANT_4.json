@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "field": "integrationPattern",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "canonicalDecision": "SEQUENTIAL",
+  "rule": "The decisive solution obtains one algebraic/discriminant result and then applies a distinct coefficient, parameter, degree, or integer filter. This is sequential use of results, not mutually dependent concepts; a single primary L3 does not erase the actual chained steps.",
+  "items": [
+    {
+      "queueIndex": 395,
+      "questionUid": "qid_v1_d9fb232f1b8c9ca469eac2aadf504e8d2e7365ade20ab1d82ef62df6865a6d51",
+      "sourceFingerprint": "a25f039fcee93a0334db218c654fcef5c061db1be315751bbf23e7503cb4cbcd",
+      "reason": "Set the discriminant polynomial D(k) identically to zero for every k, then compare its coefficients and finally apply the positive solution condition. Each result feeds the next step."
+    },
+    {
+      "queueIndex": 613,
+      "questionUid": "qid_v1_8addbecbdc38f0a682127fc00942f122b2c5fa8c9d09fb98f24870854e5d673b",
+      "sourceFingerprint": "46f26aba431ce5e885e776c9745701520edd85ae38f4e1a40d493d84093db423",
+      "reason": "The first repeated-root discriminant determines n from m; the second distinct-root discriminant and card range then filter the ordered pairs."
+    },
+    {
+      "queueIndex": 619,
+      "questionUid": "qid_v1_ec37277753402a53359b450c1969a014d85863a15ad03dbbaec6260e11a50251",
+      "sourceFingerprint": "ef038cfc2fb8851e46333ba8fced9cf5dbbbc85f4f38b311cbe31e4a09a33b41",
+      "reason": "First exclude the parameter where the equation loses quadratic degree, then impose D>0 and choose the smallest integer still allowed."
+    },
+    {
+      "queueIndex": 623,
+      "questionUid": "qid_v1_a1d9b6509715350a57b74586aa68a1bf0472bedc2a108e899249609a1ddd57a6",
+      "sourceFingerprint": "8e8773b9efee4f924d485e37c0a4ee8665131426806d85a6c6ea9cf628bfc943",
+      "reason": "Form the intersection quadratic for k≠0, require its discriminant to vanish identically in k, then compare coefficients to solve a,b."
+    }
+  ],
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

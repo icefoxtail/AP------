@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 2,
+  "questionUid": "qid_v1_74b35c180f6054a6756a89f1e390fe03434a1439274ec9e9047877562bb67730",
+  "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#22",
+  "sourceFingerprint": "ab60c1ded71e5fd6bd0ffc6e857601635e7757747931c67c5aef7e46a074156f",
+  "fieldDecisions": {
+    "crossConcepts": { "value": ["CC_QUADRATIC_EQUATION"], "reason": "After the division/remainder degree constraint fixes g=-x²-x+q, the integer-root condition must be tested on the remaining quadratic factor g+1. The q=3 candidate gives x²+x−4 with nonintegral roots, whereas q=11 gives (x−3)(x+4). Quadratic roots are necessary beyond the primary division structure; merely observing the product factorization is not a separate additional concept." },
+    "integrationPattern": { "value": "CASE_BRANCH", "reason": "The known root x=3 can come from either -x+q=0 or -x²-x+q+1=0. These give q=3 and q=11, and the three-distinct-integer-roots condition rejects q=3." }
+  },
+  "reviewStatus": "PASS",
+  "jsEdit": false,
+  "evidenceFiles": [
+    "H1_STAGEA_LUNA_A_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_B_BATCH01_001_020.jsonl",
+    "H1_STAGEA_LUNA_C_BATCH01_11.jsonl"
+  ]
+}

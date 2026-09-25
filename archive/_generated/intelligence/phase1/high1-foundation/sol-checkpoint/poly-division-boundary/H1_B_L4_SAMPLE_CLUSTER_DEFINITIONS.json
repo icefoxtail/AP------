@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "status": "B_OWN_SAMPLE20_L4_CLUSTER_REVIEW",
+  "scope": "20 current source+solution rows from poly-division-boundary-20; no prior UID-specific assignments consulted",
+  "inputFile": "input/H1_B_2_236.jsonl",
+  "inputFileSha256": "f2e097dd51b7a189fc8a9374c4566c2b453e858b5cfd92b094d13ffd9d192736",
+  "inputBundleSha": "27bae8334bb2210117c86f34ab9fe008abf0ce620077186f93a0369a474fb27c",
+  "inputBundleQueueIndexes": [
+    2,
+    17,
+    21,
+    29,
+    61,
+    65,
+    68,
+    73,
+    77,
+    85,
+    105,
+    110,
+    114,
+    131,
+    132,
+    133,
+    165,
+    187,
+    215,
+    236
+  ],
+  "activeVocabularySha256": "720deed302d3bd1ef67c7d73ae2c908910dd9285273f33cab2299abda3f8a120",
+  "remaining67ClusterDefinitions": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+  "activeTemplateSearch": "Searched ACTIVE template labels/definitions/skeletons for polynomial division, synthetic division, quotient/remainder, remainder theorem and factorization terminology. No repeatable polynomial-division skeleton matched exactly; no ACTIVE template key assigned to these rows.",
+  "clusters": [
+    {
+      "clusterId": "B20-N01",
+      "label": "Equal quotient-remainder factorization with independent root constraint",
+      "memberQueueIndexes": [
+        2,
+        215
+      ],
+      "canonicalSkeleton": "Set the common quotient and remainder S equal; write P=DS+S=(D+1)S, use the remainder-degree/monicity constraints where needed, then apply a separate known root or divisibility condition to fix the remaining parameter.",
+      "activeTemplateEquivalentKey": null,
+      "status": "NEW_BOUNDED_CLUSTER_CANDIDATE",
+      "proposalRationale": "The decisive construction is the special equality Q=R, which factors f as (g+1)R; a known root and integrality then select the factor branch. This is the same bounded pattern as q215, but differs from C05 because there is only one division identity, not compatibility across multiple divisions."
+    },
+    {
+      "clusterId": "B20-N02",
+      "label": "Irreducible-factor transfer by modular remainders",
+      "memberQueueIndexes": [
+        29
+      ],
+      "canonicalSkeleton": "For a product divisible by an irreducible quadratic that cannot divide the linear factor, force divisibility into the other factor; reduce the polynomial identity modulo the quadratic, solve the resulting remainder coefficient equations, and apply any root/sign filters.",
+      "activeTemplateEquivalentKey": null,
+      "status": "NEW_BOUNDED_CLUSTER_CANDIDATE",
+      "proposalRationale": "The decisive step transfers an irreducible quadratic factor across a product and converts divisibility into a two-coefficient modular system. None of the remaining67 skeletons captures this factor-transfer plus modular-remainder route."
+    },
+    {
+      "clusterId": "B20-N03",
+      "label": "Exact quotient product coefficient recovery",
+      "memberQueueIndexes": [
+        61,
+        65,
+        73
+      ],
+      "canonicalSkeleton": "Represent exact divisibility as dividend = fixed divisor × known or unknown quotient, expand or compare coefficients to determine the quotient parameters or requested dividend coefficients.",
+      "activeTemplateEquivalentKey": null,
+      "status": "NEW_BOUNDED_CLUSTER_CANDIDATE",
+      "proposalRationale": "This is recovery from one exact product identity by expansion and coefficient comparison; the repeated divisor and final evaluation do not change that skeleton."
+    },
+    {
+      "clusterId": "C01",
+      "label": "Linear-divisor root evaluation",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        187
+      ],
+      "canonicalSkeleton": "Evaluate the dividend at a monic linear divisor root to obtain its constant remainder; if it is zero, use exact factorization to evaluate the quotient, and for integer residues verify the standard range.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "This is the root-value remainder transfer in C01 with no quotient follow-up; multiplying by x² only changes the value evaluated."
+    },
+    {
+      "clusterId": "C02",
+      "label": "Low-degree value interpolation",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        17,
+        236
+      ],
+      "canonicalSkeleton": "Represent the relevant low-degree polynomial or remainder, transfer values from distinct divisor roots, solve the resulting coefficient equations, then evaluate the requested value.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "A low-degree polynomial is reconstructed from a small set of point-value constraints, the same repeatable coefficient-recovery core as C02.; The repeated work is low-degree interpolation from prescribed point values; the binary-value cases and the final sum are conditions/output only, not a different reconstruction skeleton."
+    },
+    {
+      "clusterId": "C04",
+      "label": "Evaluate a supplied division identity",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        131
+      ],
+      "canonicalSkeleton": "Substitute the requested input into a supplied dividend=divisor×quotient+remainder identity; use another input if needed to recover a quotient value.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The supplied dividend=divisor×quotient+remainder identity is evaluated at a strategically chosen input that nulls the quotient term, matching C04."
+    },
+    {
+      "clusterId": "C05",
+      "label": "Linked division identities",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        105,
+        114
+      ],
+      "canonicalSkeleton": "Write the quotient-remainder identities for the same polynomial, exploit shared or constrained quotient/remainder terms and degree bounds, then solve consistency conditions.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The same polynomial is governed by linked quotient-remainder identities, with degree bounds connecting the cubic-divisor quotient to the linear-divisor quotient as in C05.; Two division identities are chained on the same polynomial: the supplied first one determines the dividend used in the second, matching the linked-division family even though there are no unknown shared coefficients."
+    },
+    {
+      "clusterId": "C06",
+      "label": "Synthetic-division recurrence",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        68,
+        110
+      ],
+      "canonicalSkeleton": "Apply the synthetic-division multiply-add recurrence at the linear divisor root; read quotient coefficients and final remainder, rescaling the quotient for a nonmonic divisor.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The multiply-add sequence is C06; nonmonicity adds only the stated scaling step, not a distinct recurrence skeleton.; The printed table directly instantiates the recurrence shared by C06; filling the blank cells is presentation detail."
+    },
+    {
+      "clusterId": "C07",
+      "label": "Long-division leading-term cancellation",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        77,
+        133,
+        165
+      ],
+      "canonicalSkeleton": "Cancel the current leading term with a divisor multiple, update the residual, and continue until residual degree is below divisor degree.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The essential procedure is the same iterative leading-term cancellation as C07; blank placement is display format.; This is the iterative long-division algorithm in the canonical skeleton; the specific divisor and three cancellation steps do not create a new template.; This is the same long-division cancellation process as C07; its short degree and table layout do not change the skeleton."
+    },
+    {
+      "clusterId": "C11",
+      "label": "Shifted-basis identity coefficients",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        132
+      ],
+      "canonicalSkeleton": "For an identity in powers of x−r, apply synthetic division repeatedly at r to extract coefficients from constant term upward.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "Repeated coefficient extraction in the translated basis is the exact C11 skeleton; only the center and final expression differ."
+    },
+    {
+      "clusterId": "C12",
+      "label": "Global identity special-value reduction",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        21
+      ],
+      "canonicalSkeleton": "Use a special input in a global polynomial identity to force a structural relation, then combine the resulting polynomial expressions and evaluate the requested value or remainder.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The distinctive route is evaluating a global identity at a special input to force polynomial structure, then using the recovered expression for the requested remainder, matching C12."
+    },
+    {
+      "clusterId": "C14",
+      "label": "Transform a division identity under multiplication",
+      "reuseFrom": "poly-division-remaining-67/output/H1_B_POLY_REMAINING_67_L4_CLUSTERS.json",
+      "memberQueueIndexes": [
+        85
+      ],
+      "canonicalSkeleton": "Multiply a known quotient-remainder identity and regroup terms by the new divisor to identify transformed quotient and lower-degree remainder.",
+      "activeTemplateEquivalentKey": null,
+      "status": "REUSED_REMAINING67_CLUSTER",
+      "reuseRationale": "The core is the exact transformation of an existing quotient-remainder identity after multiplication, precisely C14."
+    }
+  ],
+  "mergeProposals": [
+    {
+      "proposal": "Keep B20-N01 as one new bounded cluster, grouping queue 2 and 215.",
+      "reason": "Both explicitly set quotient equal to remainder and factor the dividend as (divisor+1) times the common expression before using a separate root condition; C05 instead requires multiple linked division identities."
+    },
+    {
+      "proposal": "Keep B20-N02 as a separate new bounded cluster for queue 29.",
+      "reason": "The irreducible quadratic factor is transferred across a product and divisibility becomes modular remainder coefficient equations; C08 is specifically linear-root/factor-theorem work, so merging would erase the decisive step."
+    },
+    {
+      "proposal": "Keep B20-N03 as one new bounded cluster, grouping queue 61, 65 and 73.",
+      "reason": "All three derive the target from one exact product identity by coefficient comparison; none uses the repeated iterative cancellation that defines C07."
+    },
+    {
+      "proposal": "Reuse C02 for queues 17 and 236 rather than split by condition source.",
+      "reason": "Both recover a low-degree polynomial from finitely many point-value constraints; whether those values come from product divisibility or a transformed identity does not change the coefficient-reconstruction procedure."
+    }
+  ],
+  "reviewNotes": {
+    "holdCount": 0,
+    "passCount": 20,
+    "sourceIssueCount": 0,
+    "clusterCount": 12,
+    "exactActiveTemplateEquivalents": 0
+  }
+}

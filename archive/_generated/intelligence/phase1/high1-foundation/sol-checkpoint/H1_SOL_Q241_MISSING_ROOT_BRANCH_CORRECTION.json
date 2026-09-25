@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "SOLUTION_REASON_GAP_CORRECTED_WORKING",
+  "queueIndex": 241,
+  "questionUid": "qid_v1_b2fd27170298cd3a490b7375d9ace680e495653562efcff5e4191c01041db772",
+  "sourceIdentity": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js#18",
+  "sourceFingerprintBefore": "caf2275b5ea37423ab2075eb49fc47f5c8264dfaa2d95530e3073f03b636fbfe",
+  "sourceFingerprintAfter": "b8af5a7fe6be8ebc36c5dae93e3006a4117578cf4b42ec58a359adce2199af92",
+  "solutionHashBefore": "563b0cf9cd8fa57d6dffd686cdefa4a11bdf1e9dfda790fa6db9cc539ff6c661",
+  "solutionHashAfter": "f741d8cbdef234998bb36562804ad606eaa46d00c1897edd2f1c045ef38367d9",
+  "changedField": "solution",
+  "answerUnchanged": "$-3$",
+  "before": {
+    "proofSentence": "두 근 중 하나는 $-1$과 $1$ 사이에 있고, 다른 하나는 $1$보다 큰 쪽에 있어야 하므로"
+  },
+  "after": {
+    "proofSentence": "두 근 중 하나는 $-1$과 $1$ 사이에 있다. 다른 근이 $-1$보다 작다면 $f(-1)<0$과 $f(1)>0$이 필요하지만, 이는 각각 $a<-3$과 $5a+3>0$을 요구하여 양립할 수 없다. 따라서 다른 근은 $1$보다 커야 하므로"
+  },
+  "mathematicalVerification": "If the other root were below −1, an upward quadratic would require f(−1)<0 and f(1)>0. Here f(−1)=a+3 and f(1)=5a+3, forcing a<−3 and a>−3/5 simultaneously, impossible. Thus the exterior root is above 1; the original −3<a<−3/5 and integer sum −3 follow.",
+  "reason": "The prior solution asserted the right exterior-root location without excluding the left case. A and B/C independently surfaced the proof gap; the correction adds the missing contradiction only.",
+  "evidenceFiles": [
+    "C:/Users/USER/.codex/h1-a2-blind/l4-qdisc-80/batch1/output/H1_A2_QDISC_L4_BATCH1_20.jsonl",
+    "C:/Users/USER/.codex/h1-b-blind/l4-qdisc-80/batch1/output/H1_B_QDISC_L4_BATCH1_20_ISSUE_REASON_SUPERSESSION.jsonl",
+    "C:/Users/USER/.codex/h1-c2-blind/l4-qdisc-batch1-conflicts8/output/H1_C2_QDISC_BATCH1_CONFLICTS8.jsonl"
+  ],
+  "officialAnswerOrSolutionPagesUsed": false,
+  "affectedUidBlindRereviewRequired": true,
+  "validation": {
+    "syntax": "PASS",
+    "onlySolutionChanged": true,
+    "sourceFingerprintRecomputed": true
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "task": "D source repair, question-only, H1 queueIndex 1169",
+  "status": "HOLD",
+  "disposition": "PARTIAL_REPAIR_CHOICE_AND_TARGET_CONFIRMED_MATRIX_CONTENT_HELD",
+  "queueIndex": 1169,
+  "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
+  "sourceIdentity": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js#17",
+  "targetJs": "archive/exams/original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+  "sourceScope": "Original question pages only: stem, matrix display, and choices. No official answer or official solution page inspected or used.",
+  "source": {
+    "pdf": {
+      "path": "D:\\2025년\\1학기중간_2025\\고1\\순천여고\\순천여고.pdf",
+      "page": 4,
+      "printedPage": "4/6",
+      "sha256": "B57CAB0CC8ADB2316AA0B3F77B7BFF0A55E2564E2F3972A8955FEFC9FB61851D"
+    },
+    "pageTiff": {
+      "path": "D:\\2025년\\1학기중간_2025\\고1\\순천여고\\04.tif",
+      "printedPage": "4/6",
+      "sha256": "3B131B88C1274A14429C817D081F196FC7CB2C09CC1ABC80E7F13091345EDB1F"
+    },
+    "duplicatePageTiff": {
+      "path": "D:\\2025년\\1학기중간_2025\\고1\\순천여고\\새 폴더\\04.tif",
+      "printedPage": "4/6",
+      "sha256": "37D2E0D69F04BE6A38874C3EB67670F251EA22CB8B1B326F9FD7443170DE0BB5"
+    }
+  },
+  "sourceObservations": {
+    "confirmed": "The original question page clearly ends the q17 prompt with “A=B일 때 p의 최댓값은?”; the target is p only. The displayed B matrix is unambiguous: [[x+y−1, 0], [0, p−1]]. The five printed options are 41, 43, 47, 51, 53.",
+    "held": "The source overprint crosses the A-matrix display. Do not infer any obscured A-matrix entry or reconstruct the full matrix equation. The overall content field remains HOLD until the A matrix can be transcribed 1:1."
+  },
+  "fieldDispositions": {
+    "choices": {
+      "status": "REPAIRED_SOURCE_CONFIRMED",
+      "before": [
+        "100",
+        "102",
+        "104",
+        "106",
+        "108"
+      ],
+      "after": [
+        "41",
+        "43",
+        "47",
+        "51",
+        "53"
+      ]
+    },
+    "targetPhrase": {
+      "status": "REPAIRED_SOURCE_CONFIRMED",
+      "before": "$x+y+p$",
+      "after": "$p$",
+      "sourceReading": "A=B일 때 p의 최댓값은?"
+    },
+    "printedRelation": {
+      "status": "SOURCE_CONFIRMED",
+      "reading": "A=B",
+      "note": "The printed relation is legible; this does not resolve the obscured A matrix."
+    },
+    "bMatrix": {
+      "status": "SOURCE_CONFIRMED",
+      "reading": "[[x+y−1, 0], [0, p−1]]"
+    },
+    "aMatrix": {
+      "status": "HOLD_SOURCE_NOT_FULLY_CONFIRMED",
+      "reason": "Overprint crosses the A-matrix display; no entry was guessed."
+    },
+    "content": {
+      "status": "HOLD_PARTIAL_SOURCE_REPAIR",
+      "before": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
+      "after": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $p$의 최댓값은? [4.8점]",
+      "reason": "Choices and target phrase are corrected from the original question page, but the matrix-bearing stem is not fully source-confirmed."
+    },
+    "fullMatrixEquation": {
+      "status": "HOLD_SOURCE_NOT_FULLY_CONFIRMED",
+      "reason": "A=B is visible, but the A-matrix contents are not fully readable."
+    },
+    "internalHoldNote": {
+      "status": "REPAIRED_SOURCE_CONFIRMED_TARGET_ONLY",
+      "classification": "existing q1169 HOLD guidance in the JS solution field; not an official solution",
+      "beforeToken": "$x+y+p$",
+      "afterToken": "$p$",
+      "reason": "Align the HOLD note target with the original question-page target p."
+    }
+  },
+  "itemBefore": {
+    "id": 17,
+    "questionType": "객관식",
+    "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
+    "choices": [
+      "100",
+      "102",
+      "104",
+      "106",
+      "108"
+    ],
+    "image": null,
+    "hasImageField": false,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 17,
+    "questionType": "객관식",
+    "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $p$의 최댓값은? [4.8점]",
+    "choices": [
+      "41",
+      "43",
+      "47",
+      "51",
+      "53"
+    ],
+    "image": null,
+    "hasImageField": false,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "validation": {
+    "syntax": {
+      "command": "node --check archive/exams/original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "itemSchema": {
+      "status": "PASS",
+      "checks": [
+        "questionBank is an array",
+        "question ids are unique positive integers",
+        "q17 choices are five strings matching source",
+        "q17 objective is p only",
+        "q17 content is non-empty",
+        "obscured matrix fields remain HOLD",
+        "existing internal HOLD note target equals source-confirmed p"
+      ]
+    },
+    "lineEndings": {
+      "status": "PASS",
+      "scope": "q17 target phrase replacement retained source line ending",
+      "check": "no line endings changed by this edit"
+    }
+  },
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-page.png",
+      "role": "PDF source page 4/6 render at 200 dpi",
+      "sha256": "895DAE178709F9C23814D97C5A67FF5054F6CDDD9DBA037910182857FE6953D3"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-page-400dpi.png",
+      "role": "PDF source page 4/6 render at 400 dpi",
+      "sha256": "4B7CE412E5CDE67B22E561ACA32FED8016FB5E5CF4737CEEC286AA79B16AE46D"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-q17-detail.png",
+      "role": "Question 17 detail crop from PDF page 4 render",
+      "sha256": "25CE663E0B7E6428049CF70E34F8B4325DF2CE098E4B2A7361E0FE4F3693AA2A"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-page-04-original-tif.png",
+      "role": "Full page render of the original 04.tif question page",
+      "sha256": "0F4B1F1EF5A259F798EA56816FF0A5BF017F8CF61AFC18A5A7DB1FCFB8BFA863"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-q17-detail-04-original-tif.png",
+      "role": "Question 17 detail crop, including printed options, from the original 04.tif question page",
+      "sha256": "822BE611AAF29E20587DBF814186AFD8F49521D119E2A5C5063885836F9F1981"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-q17-condition-detail.png",
+      "role": "Question 17 lower condition line detail crop",
+      "sha256": "121CF54DE153F60EA39D672CD57FA084615D48F022555628699B7AB2BE1BFDD6"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q1169-question-only/source-question-q17-complete-detail.png",
+      "role": "Question 17 prompt, relation, matrix display, and choices from PDF question page 4/6; target phrase verification",
+      "sha256": "EB6F693CB54775B2EFC4F062C0E3D99359B3D5432EA371234E6860F6E23C973A"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  },
+  "itemAfterFirstRepair": {
+    "id": 17,
+    "questionType": "객관식",
+    "content": "[상] 소수 $p$와 50이하 자연수 $x, y$에 대하여 행렬 상등 $x-1=p, y=11$ 일 때, $x+y+p$의 최댓값은? [4.8점]",
+    "choices": [
+      "41",
+      "43",
+      "47",
+      "51",
+      "53"
+    ],
+    "image": null,
+    "hasImageField": false,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "changeHistory": [
+    {
+      "operation": 1,
+      "field": "choices",
+      "before": [
+        "100",
+        "102",
+        "104",
+        "106",
+        "108"
+      ],
+      "after": [
+        "41",
+        "43",
+        "47",
+        "51",
+        "53"
+      ],
+      "evidence": "Original question page 4/6, q17 option row."
+    },
+    {
+      "operation": 2,
+      "field": "content target phrase",
+      "before": "$x+y+p$",
+      "after": "$p$",
+      "evidence": "Original question page 4/6, q17 printed prompt line."
+    },
+    {
+      "operation": 3,
+      "field": "solution internal HOLD guidance target token",
+      "before": "$x+y+p$",
+      "after": "$p$",
+      "evidence": "Question page 4/6 clearly prints “p의 최댓값은?”; this change only aligns the existing JS HOLD note and does not use an official solution."
+    }
+  ],
+  "internalHoldNoteBefore": "문제에 제시된 행렬 상등의 실제 두 행렬이 누락되어 있어, $x-1=p$와 $y=11$이 어떤 성분 비교에서 나온 조건인지 확인할 수 없다. 누락된 행렬을 임의로 복원하지 않으면 현재 정보만으로는 $x+y+p$의 최댓값을 결정할 수 없다.",
+  "internalHoldNoteAfter": "문제에 제시된 행렬 상등의 실제 두 행렬이 누락되어 있어, $x-1=p$와 $y=11$이 어떤 성분 비교에서 나온 조건인지 확인할 수 없다. 누락된 행렬을 임의로 복원하지 않으면 현재 정보만으로는 $p$의 최댓값을 결정할 수 없다.",
+  "finalFieldHashes": {
+    "contentSha256": "62e92cceb8c2a9640d29df9ebdb480813774365602dd21e7063b2ced18ea10aa",
+    "solutionSha256": "0c783639a6776231130d07109be6b76f306e009d67aa8afa004582d430c446c0",
+    "solutionFieldRole": "existing internal HOLD guidance; not an official solution"
+  }
+}

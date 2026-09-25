@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_TAXONOMY_PLAN_NOT_FINAL",
+  "scope": "H1 Common Math1 matrix items, queue 1088-1170",
+  "denominator": 83,
+  "authority": [
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/공통수학1.md#L1-4-행렬",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0"
+  ],
+  "authorityTerms": {
+    "l3Draft": ["행렬의 뜻", "행렬의 연산", "행렬의 성질"],
+    "l4Draft": ["행·열·성분", "같은 행렬", "덧셈·뺄셈·실수배", "행렬의 곱셈", "곱셈의 성질", "조건을 만족하는 행렬"]
+  },
+  "frozenL3Counts": {
+    "PT_H1_MATRIX_BASIC_OPERATION": 35,
+    "PT_H1_MATRIX_EQUATION": 12,
+    "PT_H1_MATRIX_MULTIPLICATION": 31,
+    "PT_H1_MATRIX_POWER_IDENTITY": 5
+  },
+  "existingStage3L4CandidateCounts": {
+    "TPL_H1_MATRIX_BASIC_DIRECT": 28,
+    "TPL_H1_MATRIX_BASIC_EQUALITY": 7,
+    "TPL_H1_MATRIX_PRODUCT_DIRECT": 30,
+    "TPL_H1_MATRIX_PRODUCT_MODEL": 1,
+    "TPL_H1_MATRIX_EQUATION_LINEAR": 9,
+    "TPL_H1_MATRIX_EQUATION_STRUCTURAL": 3,
+    "TPL_H1_MATRIX_POWER_PERIOD": 3,
+    "TPL_H1_MATRIX_POWER_POLYNOMIAL": 2
+  },
+  "workingCompressionDecisions": [
+    {
+      "sourceCandidates": ["TPL_H1_MATRIX_PRODUCT_DIRECT", "TPL_H1_MATRIX_PRODUCT_MODEL"],
+      "workingFamily": "MATRIX_PRODUCT_COMPONENT_CALCULATION_OR_INTERPRETATION",
+      "support": 31,
+      "reason": "The single table/profit item interprets row-column products but does not justify a one-item independent L4. Preserve its specific semantic evidence within the matrix-product family."
+    },
+    {
+      "sourceCandidates": ["TPL_H1_MATRIX_EQUATION_LINEAR", "TPL_H1_MATRIX_EQUATION_STRUCTURAL"],
+      "workingFamily": "MATRIX_COMPONENT_CONSTRAINT_SYSTEM",
+      "support": 12,
+      "reason": "Both translate a matrix relation into component conditions and solve them; the structural subset still needs targeted boundary checks before merge is final."
+    },
+    {
+      "sourceCandidates": ["TPL_H1_MATRIX_POWER_PERIOD", "TPL_H1_MATRIX_POWER_POLYNOMIAL"],
+      "workingFamily": "MATRIX_POWER_RELATION_REDUCTION",
+      "support": 5,
+      "reason": "Both use a repeated or polynomial relation to reduce powers; preserve period-vs-polynomial evidence as item-level skeleton detail."
+    },
+    {
+      "sourceCandidates": ["TPL_H1_MATRIX_BASIC_DIRECT"],
+      "workingFamily": "SPLIT_BY_DECISIVE_STEP",
+      "support": 28,
+      "reason": "This old bucket mixes dimension/component recognition with actual matrix arithmetic. Assign each item to the curriculum draft parent '행렬의 뜻' or '행렬의 연산' before fixing L4 ownership."
+    },
+    {
+      "sourceCandidates": ["TPL_H1_MATRIX_BASIC_EQUALITY"],
+      "workingFamily": "MATRIX_EQUALITY_COMPONENT_COMPARISON",
+      "support": 7,
+      "reason": "Corresponding-entry equality is a repeatable decisive skeleton distinct from direct arithmetic."
+    }
+  ],
+  "overclassificationChecks": [
+    "B's five MATRIX_OPERATION_PROPERTIES proposals require evidence of a distinct decisive skeleton; default to the existing draft '행렬의 성질' family rather than creating a sixth L3 name.",
+    "B's one MATRIX_QUADRATIC_FORM_CONSTRAINT proposal is a singleton; test against '조건을 만족하는 행렬' before considering a new L3.",
+    "No new matrix L3/L4 key is promoted to ACTIVE or production by this plan."
+  ],
+  "structuralEquationBoundaryEvidence": [
+    "q1098 and q1170 share the repeatable step: expand a noncommutative matrix identity, derive AB=BA, then compare entries.",
+    "q1099 instead expands a row-matrix-column quadratic form, factors the first scalar condition into two lines, then compares two objective values. Its case branch may belong in IntegrationPattern rather than a singleton L4."
+  ],
+  "nextGate": "Sol item-level review of the mixed BASIC_DIRECT bucket and the q1099 boundary, then parent-ownership validation across all 83 matrix UIDs."
+}

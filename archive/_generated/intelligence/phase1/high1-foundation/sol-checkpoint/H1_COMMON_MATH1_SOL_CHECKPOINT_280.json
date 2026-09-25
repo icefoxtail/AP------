@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Codex preprocessing + Sol exhaustive semantic review checkpoint",
+  "baseMainSha": "54b3f2aee093c9f25b27a618630fe2ebac9c2d46",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "overall": {
+    "completed": 497,
+    "denominator": 1170
+  },
+  "workUnits": {
+    "POLYNOMIAL": {
+      "completed": 217,
+      "denominator": 217,
+      "semanticStatus": "CLOSED",
+      "physicalUidArtifactsPreserved": "217/217 COMPLETE",
+      "canonicalPhysicalLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
+      "summary": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/POLYNOMIAL_SEMANTIC_SUMMARY_217.json",
+      "materializationBasis": "completed Sol semantic checkpoint + current source reread; legacy L3/L4/difficulty not used",
+      "coverage": {
+        "rows": 217,
+        "uniqueUid": 217,
+        "uniqueSourceIdentity": 217,
+        "fingerprintMismatch": 0,
+        "hold": 6,
+        "warn": 2,
+        "rejoinCandidates": 11
+      },
+      "gitBlobSha": "b191b33803d3ea945b1ac6d0c324c411914c79e2"
+    },
+    "EQUATIONS_INEQUALITIES": {
+      "completed": 280,
+      "denominator": 583,
+      "semanticStatus": "PARTIAL",
+      "nextWorkIndex": 281,
+      "nextQuestionUid": "qid_v1_e0acc4956d4542098fb512af7bf6c86900a041a7f5c263a25a6314980885b507",
+      "nextSourceArchiveFile": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
+      "nextSourceOrdinal": 15,
+      "nextQueueId": "H22-C-04"
+    },
+    "PERMUTATION_COMBINATION": {
+      "completed": 0,
+      "denominator": 287
+    },
+    "MATRIX": {
+      "completed": 0,
+      "denominator": 83
+    }
+  },
+  "eqineqCumulative": {
+    "holdCount": 12,
+    "definiteL1L2RejoinCount": 44,
+    "note": "Counts are checkpoint status; final semantic authority remains Sol review."
+  },
+  "workflow": {
+    "codexRole": [
+      "mechanical inventory join",
+      "source packing",
+      "UID/source/fingerprint verification",
+      "draft semantic fields",
+      "format/integrity checks"
+    ],
+    "solRole": [
+      "exhaustive source semantic review",
+      "mathematical verification",
+      "HOLD/source defect decision",
+      "L1/L2 rejoin decision",
+      "final semantic authority"
+    ],
+    "forbiddenForCodex": [
+      "final PASS",
+      "canonical mutation",
+      "production/runtime mutation",
+      "inventing missing source conditions",
+      "treating legacy L3/L4/difficulty as authority"
+    ]
+  },
+  "artifactChecksums": {
+    "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl": "189b4aee3a3b641d2884b02ab1d6dbcfbae0872219378c4ea5cb1c7594cf6c8f",
+    "EQINEQ_BATCH1_SUMMARY.json": "5e583bb15e1a5366466fbd490354a8dd7a7151fa215873f003e477af08f11bb6",
+    "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl": "04803980405ff1db467e87aa650587a67e11d5323da02a1bc62d613f9c3c8c97",
+    "EQINEQ_BATCH2_SUMMARY.json": "1a57b62ea36601042166c6e8af3e5dcf0edc902533e4881c570b534a69947482",
+    "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl": "659cfff341053d9d798b16fe3a6a06733e03700e9e87a9e06cecf7d04854a39c",
+    "EQINEQ_BATCH3_SUMMARY.json": "590799fc6a82a652746dd5698ab8866a981e31479d844dedf85234eeceb977b5",
+    "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl": "a0396baa5f4e79dc8e2db5979c27b52657ad0cb3620a604a75ae3d43af0ef07e",
+    "EQINEQ_BATCH4_SUMMARY.json": "4405b47087f90402d9d854d0d150211f5e42d04e6a331c324ba5fb4e649ebe01",
+    "POLYNOMIAL_BATCH3_SEMANTIC_LEDGER.jsonl": "4b4656a02343699ad33b1a85c5d85b961dd6ab33b416eb617db8985a60933172",
+    "POLYNOMIAL_BATCH3_SUMMARY.json": "2b179f5dd2df6902bdea9b6d61c5637b1c02e5718ea814a62fbf05e3dcd06eec",
+    "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl": "git-blob:b191b33803d3ea945b1ac6d0c324c411914c79e2",
+    "POLYNOMIAL_SEMANTIC_SUMMARY_217.json": "git-blob:228566006af99ec9d7eb5e3f14d309586a1974a8"
+  },
+  "physicalCheckpointAuthority": {
+    "polynomialUidLedger": "COMPLETE_217_217",
+    "equationsInequalities": "BATCH1_4_PRESERVED_TO_280",
+    "note": "Physical artifact is authority; Notion/chat are progress index only."
+  }
+}
