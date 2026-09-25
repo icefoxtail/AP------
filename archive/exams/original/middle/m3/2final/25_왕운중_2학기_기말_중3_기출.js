@@ -180,7 +180,7 @@ window.questionBank = [
       "$\\dfrac{17}2$"
     ],
     "answer": "③",
-    "solution": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle C=180^\\circ-30^\\circ=150^\\circ$이다.\n대각선 $BD$로 나누어 두 삼각형의 넓이를 각각 구한다.\n$[\\triangle ABD]=\\dfrac12\\cdot2\\cdot7\\cdot\\sin30^\\circ=\\dfrac72$이다.\n또\n$[\\triangle BCD]=\\dfrac12\\cdot2\\cdot(7-2\\sqrt3)\\cdot\\sin150^\\circ=\\dfrac{7-2\\sqrt3}{2}$이다.\n따라서\n$[ABCD]=\\dfrac72+\\dfrac{7-2\\sqrt3}{2}=7-\\sqrt3$이다.\n따라서 정답은 ③이다.,
+    "solution": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle C=180^\\circ-30^\\circ=150^\\circ$이다.\n대각선 $BD$로 나누어 두 삼각형의 넓이를 각각 구한다.\n$[\\triangle ABD]=\\dfrac12\\cdot2\\cdot7\\cdot\\sin30^\\circ=\\dfrac72$이다.\n또\n$[\\triangle BCD]=\\dfrac12\\cdot2\\cdot(7-2\\sqrt3)\\cdot\\sin150^\\circ=\\dfrac{7-2\\sqrt3}{2}$이다.\n따라서\n$[ABCD]=\\dfrac72+\\dfrac{7-2\\sqrt3}{2}=7-\\sqrt3$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q6-corrected.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
