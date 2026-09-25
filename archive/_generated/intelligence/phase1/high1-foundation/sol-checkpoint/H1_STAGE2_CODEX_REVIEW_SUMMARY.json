@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "h1-stage2-codex-review-summary-v1",
+  "generatedAt": "2026-09-23T05:00:22.988Z",
+  "reviewBase": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "reviewStartHead": "409af467e81cf336b2f811f2163ebe50b35fea22",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "scope": "H1 Common Math1 Stage 2 Single Semantic Pass",
+  "denominator": 1170,
+  "actualSourceReviewed": 1170,
+  "actualSolutionReviewed": 1170,
+  "actualImageDependencyReviewed": 1170,
+  "reviewStatusCounts": {
+    "PASS": 460,
+    "WARN": 649,
+    "FAIL": 56,
+    "REVIEW_REQUIRED": 5
+  },
+  "severityCounts": {
+    "BLOCK": 57,
+    "FIX_NEXT": 639,
+    "TODO_LATER": 14
+  },
+  "workUnitCoverage": {
+    "POLYNOMIAL": {
+      "denominator": 217,
+      "reviewed": 217,
+      "statusCounts": {
+        "PASS": 137,
+        "WARN": 55,
+        "FAIL": 25,
+        "REVIEW_REQUIRED": 0
+      }
+    },
+    "EQINEQ": {
+      "denominator": 583,
+      "reviewed": 583,
+      "statusCounts": {
+        "PASS": 277,
+        "WARN": 273,
+        "FAIL": 30,
+        "REVIEW_REQUIRED": 3
+      }
+    },
+    "PERMCOMB": {
+      "denominator": 287,
+      "reviewed": 287,
+      "statusCounts": {
+        "PASS": 27,
+        "WARN": 258,
+        "FAIL": 0,
+        "REVIEW_REQUIRED": 2
+      }
+    },
+    "MATRIX": {
+      "denominator": 83,
+      "reviewed": 83,
+      "statusCounts": {
+        "PASS": 19,
+        "WARN": 63,
+        "FAIL": 1,
+        "REVIEW_REQUIRED": 0
+      }
+    }
+  },
+  "semanticReasonReviewCounts": {
+    "PASS": 629,
+    "WARN": 541,
+    "FAIL": 0,
+    "REVIEW_REQUIRED": 0
+  },
+  "semanticConfidenceReviewCounts": {
+    "PASS": 460,
+    "WARN": 705,
+    "REVIEW_REQUIRED": 5
+  },
+  "genericSemanticReasonTemplateUids": 541,
+  "highRiskRepair562Review": {
+    "declaredRows": 562,
+    "actualRows": 562,
+    "uniqueUids": 562,
+    "duplicateUids": 0,
+    "missingReviewRows": 0,
+    "reviewStatuses": {
+      "PASS": 323,
+      "WARN": 214,
+      "FAIL": 20,
+      "REVIEW_REQUIRED": 5
+    },
+    "workUnitCoverage": {
+      "EQINEQ": {
+        "denominator": 350,
+        "reviewed": 350,
+        "statuses": {
+          "PASS": 277,
+          "WARN": 50,
+          "FAIL": 20,
+          "REVIEW_REQUIRED": 3
+        }
+      },
+      "PERMCOMB": {
+        "denominator": 186,
+        "reviewed": 186,
+        "statuses": {
+          "WARN": 157,
+          "PASS": 27,
+          "REVIEW_REQUIRED": 2
+        }
+      },
+      "MATRIX": {
+        "denominator": 26,
+        "reviewed": 26,
+        "statuses": {
+          "PASS": 19,
+          "WARN": 7
+        }
+      }
+    },
+    "files": [
+      "H1_SEMANTIC_REPAIR_EQINEQ_001_280.jsonl",
+      "H1_SEMANTIC_REPAIR_EQINEQ_281_350.jsonl",
+      "H1_SEMANTIC_REPAIR_PERMCOMB_001_070.jsonl",
+      "H1_SEMANTIC_REPAIR_PERMCOMB_071_140.jsonl",
+      "H1_SEMANTIC_REPAIR_PERMCOMB_141_186.jsonl",
+      "H1_SEMANTIC_REPAIR_MATRIX_001_026.jsonl"
+    ]
+  },
+  "findingCodeCounts": {
+    "DECISIVE_STEP_TOO_GENERIC": 29,
+    "DECISIVE_STEP_OVERLONG_SOLUTION_COPY": 19,
+    "COMPOSITION_PATTERN_OVERSTATED": 9,
+    "DECISIVE_STEP_TRUNCATED": 7,
+    "PRIMARY_METHOD_FALSE_ASSIGNMENT": 18,
+    "CONDITION_X_NONZERO_NOT_RECORDED": 1,
+    "COMPOSITION_CASE_BRANCH_FALSE_POSITIVE": 1,
+    "SUPPORTING_CONCEPT_NOT_DECISIVE": 3,
+    "SUPPORTING_CONCEPT_OVERINCLUSIVE": 8,
+    "SUPPORTING_CONCEPT_MATERIAL_CONTEXT_ONLY": 1,
+    "MISSING_DECISIVE_POSITIVITY_CONDITION": 1,
+    "SUPPORTING_CONCEPT_TOO_GENERIC": 4,
+    "CONDITION_FALSE_POSITIVE": 10,
+    "VISUAL_DEPENDENCY_FALSE_POSITIVE": 2,
+    "SUPPORTING_CONCEPT_FALSE_ASSIGNMENT": 2,
+    "SOURCE_WORDING_MISMATCH": 1,
+    "SOURCE_WORDING_ISSUE_RETAINED": 1,
+    "PRIMARY_METHOD_TOO_NARROW": 6,
+    "MISSING_UNIVERSAL_PARAMETER_CONDITION": 5,
+    "SOLUTION_MATH_CONTRADICTION": 2,
+    "SOURCE_SOLUTION_DEFECT": 2,
+    "MISSING_REQUIRED_DECISIVE_CONDITION": 1,
+    "PRIMARY_METHOD_TOO_GENERIC": 10,
+    "MISSING_NONZERO_CONDITION": 1,
+    "SOURCE_FIDELITY_REVIEW_REQUIRED": 1,
+    "CHOICE_STRUCTURE_MISSING": 1,
+    "MISSING_REQUIRED_SOURCE_STRUCTURE": 3,
+    "SOURCE_SOLUTION_UNSUPPORTED": 6,
+    "SOURCE_REQUIRED_DATA_MISSING": 1,
+    "SOLUTION_UNSUPPORTED_ASSERTION": 1,
+    "MISSING_REQUIRED_SOURCE_CONDITIONS": 1,
+    "SOURCE_SOLUTION_GUESS": 1,
+    "MISSING_DECISION_ISOLATED_SOURCE_STRUCTURE": 1,
+    "SOLUTION_INVALID_GENERALIZATION": 1,
+    "SOURCE_FACTOR_ROLE_AMBIGUITY": 1,
+    "ANSWER_SOLUTION_CHOICE_CONTRADICTION": 1,
+    "MISSING_EXTREMUM_CONDITION": 1,
+    "MISSING_UNIVERSAL_DOMAIN_CONDITION": 1,
+    "SUPPORTING_CONCEPTS_ROLE_COLLISION": 1,
+    "SOLUTION_QUANTIFIER_SCOPE_ERROR": 1,
+    "FALSE_PASS_ON_UNIVERSAL_CONDITION": 1,
+    "MISSING_REAL_INTERVAL_CONDITION": 1,
+    "MISSING_GLOBAL_MINIMUM_CONDITION": 1,
+    "DECISIVE_STEP_INCOMPLETE": 1,
+    "MISSING_GLOBAL_EXTREMUM_CONDITION": 1,
+    "MISSING_DISTINCT_ROOT_CONDITION": 1,
+    "SOLUTION_SURFACE_CORRUPTION": 3,
+    "DECISIVE_STEP_COPY_NO_MATH_ERROR": 1,
+    "SOURCE_GEOMETRY_STRUCTURE_MISSING": 1,
+    "AREA_MODEL_UNSUPPORTED_BY_SOURCE": 1,
+    "SOLUTION_NO_ATTAINED_MINIMUM": 1,
+    "MISSING_STRICT_DOMAIN_BOUNDARY": 1,
+    "FALSE_PASS_ON_OPTIMIZATION": 1,
+    "MISSING_REQUIRED_SOURCE_GEOMETRY": 3,
+    "SOLUTION_INVENTS_SIMILARITY_RELATION": 1,
+    "SOURCE_SOLUTION_NOT_REPRODUCIBLE": 1,
+    "AREA_DEFINITION_MISSING": 1,
+    "MISSING_REQUIRED_SOURCE_EQUATIONS": 1,
+    "MISSING_REQUIRED_FUNCTION_AND_INTERVAL": 1,
+    "DUPLICATE_CHOICES_SAME_VALUE": 1,
+    "ANSWER_NOT_UNIQUE": 1,
+    "SOLUTION_INVALID_COMPLEX_RADICAL_IDENTITY": 1,
+    "MISSING_RADICAL_DOMAIN_CONDITION": 1,
+    "SUPPORTING_CONCEPT_DUPLICATES_PRIMARY": 88,
+    "DECISIVE_STEP_INCOMPLETE_BRANCH_EXCLUSION": 1,
+    "SOURCE_ISSUE_FALSE_POSITIVE_OR_SURFACE_FLAG": 1,
+    "MISSING_N_DOMAIN": 1,
+    "NO_ATTAINED_MINIMUM": 1,
+    "MISSING_POINT_AND_SLOPE_CONDITIONS": 1,
+    "VISUAL_DEPENDENCY_RECONSTRUCTED_PROVENANCE": 1,
+    "RADICAL_BRANCH_AMBIGUITY": 1,
+    "ANSWER_SOURCE_CONFLICT": 1,
+    "NO_UNAMBIGUOUS_K_SQUARE": 1,
+    "SOURCE_ISSUE_LABEL_UNSUPPORTED_BY_CURRENT_SOURCE": 3,
+    "SUPPORTING_CONCEPT_REDUNDANT_WITH_PRIMARY": 1,
+    "SOLUTION_CONVEXITY_DIRECTION_LABEL_INVERTED": 2,
+    "VISUAL_FIDELITY_REVIEW_REQUIRED": 2,
+    "DUPLICATE_SOURCE_CONDITION": 1,
+    "CONDITION_VALUE_EXCLUSION_MISCODED_AS_NONZERO": 1,
+    "SOLUTION_LOGIC_FALSE_IMPLICATION": 1,
+    "SOLUTION_EVIDENCE_INSUFFICIENT": 3,
+    "SOLUTION_ARGUMENT_INSUFFICIENT": 2,
+    "DECISIVE_STEP_OMITS_NONZERO_CASE_FILTER": 1,
+    "SOLUTION_INTERNAL_GROUPING_CONTRADICTION": 1,
+    "DECISIVE_STEP_MISMATCHES_ITEM_METHOD": 4,
+    "SOLUTION_NOT_REPRODUCIBLE_GENERIC_STUB": 13,
+    "SOLUTION_OFF_TOPIC_STUB": 3,
+    "DECISIVE_STEP_OMITS_BRANCH_SELECTION": 1,
+    "SOLUTION_CONTENT_MISMATCH": 1,
+    "ANSWER_KEY_MATH_CONTRADICTION": 7,
+    "ANSWER_SOLUTION_MATH_CONTRADICTION": 5,
+    "SOLUTION_GRAPH_RELATION_MISSTATED": 1,
+    "GENERIC_SEMANTIC_REASON_SHORT": 541,
+    "IRRELEVANT_SUPPORTING_CONCEPT": 5,
+    "SOLUTION_CASE_COVERAGE_INCOMPLETE": 1,
+    "SOLUTION_VERTEX_TERM_MISUSE": 1,
+    "SOLUTION_CASE_ANALYSIS_INCOMPLETE": 1,
+    "MISSING_REQUIRED_SOURCE_EQUATION": 1,
+    "MISSING_REQUIRED_DIAMETER_LENGTH": 1,
+    "SOLUTION_UNSUPPORTED_SOURCE_ASSUMPTION": 1,
+    "IMAGE_TEXT_LABEL_MISMATCH": 1,
+    "DECISIVE_STEP_PLACEHOLDER_UNRESOLVED": 5,
+    "DECISIVE_STEP_CONTAINS_PROVENANCE_TEXT": 1,
+    "SOLUTION_AREA_FORMULA_INCORRECT": 1,
+    "UNDERDETERMINED_QUADRATIC_COEFFICIENTS": 1,
+    "ANSWER_CHOICES_MISSING_VALID_RANGE": 1,
+    "SOLUTION_CASE_OMISSION": 1,
+    "SOLUTION_REGION_LABEL_MISMATCH": 1,
+    "SOURCE_IMAGE_GRAPH_SOLUTION_MISMATCH": 1,
+    "SOURCE_REGION_COUNT_MISMATCH": 1,
+    "VISUAL_SOURCE_UNCLEAR": 1,
+    "SEMANTIC_PRIMARY_MISCLASSIFIED": 18,
+    "COMPOSITION_PATTERN_FALSE_BRANCH": 24,
+    "SUPPORTING_CONCEPT_FALSE_POSITIVE": 29,
+    "COMPOSITION_PATTERN_MISSED_CASE_BRANCH": 1,
+    "SOLUTION_DIAGRAM_POSITION_MISMATCH": 1,
+    "GENERIC_DECISIVE_STEP_PLACEHOLDER": 3,
+    "SEMANTIC_CONFIDENCE_MISMATCH": 4,
+    "SEMANTIC_PRIMARY_TOO_NARROW": 2,
+    "COMPOSITION_PATTERN_MISSED_SEQUENTIAL": 18,
+    "CONDITION_MISSING_OPTIMIZATION": 1,
+    "DECISIVE_STEP_GENERIC_MISMATCH": 2,
+    "CONDITION_MISSING_ORDERING": 1,
+    "CONDITION_MISSING_DISCRIMINANT_ROOT_COUNT": 1,
+    "CONDITION_MISSING_DISTINCTNESS": 1,
+    "SOURCE_MATRIX_EQUALITY_MISSING": 1,
+    "SOLUTION_FALSE_HOLD": 1
+  },
+  "defectRows": 710,
+  "holdAudit": {
+    "allInventoryRecords": 34,
+    "allResolutionRecords": 34,
+    "currentItemHoldRows": 28,
+    "currentItemHoldUniqueUids": 28,
+    "currentItemResolutionRows": 28,
+    "currentItemResolutionUniqueUids": 28,
+    "currentItemHoldResolutionUidParity": true,
+    "itemHoldDispositionCounts": {
+      "SOLUTION_REPAIR_REQUIRED": 21,
+      "ANSWER_REPAIR_REQUIRED": 6,
+      "SOURCE_REPAIR_REQUIRED": 1
+    },
+    "itemHoldResolutionStatusCounts": {
+      "CLOSED_ROUTED_NO_SOURCE_MUTATION": 28
+    },
+    "currentLedgerHoldRows": 28,
+    "currentLedgerHoldUidParityWithCurrentItemInventory": true,
+    "recoveredLegacyInventoryRows": 5,
+    "recoveredLegacyResolutionRows": 5,
+    "recoveredLegacyUidParity": true,
+    "recoveredLegacyDispositionCounts": {
+      "ANSWER_REPAIR_REQUIRED": 2,
+      "SOURCE_BLOCKED": 1,
+      "SOLUTION_REPAIR_REQUIRED": 2
+    },
+    "recoveredLegacyRoutedResolutionStatusCounts": {
+      "CLOSED_ROUTED_NO_SOURCE_MUTATION": 5
+    },
+    "recoveredLegacySourceAuditStatusCounts": {
+      "OPEN_REVIEW_REQUIRED": 5
+    },
+    "aggregateGapRecords": 1,
+    "aggregateGapResolutionRecords": 1,
+    "aggregateGapCount": 7,
+    "aggregateGapUidRecovered": false,
+    "combinedItemHoldRoutes": 33,
+    "combinedItemRouteDispositionCounts": {
+      "SOLUTION_REPAIR_REQUIRED": 23,
+      "ANSWER_REPAIR_REQUIRED": 8,
+      "SOURCE_REPAIR_REQUIRED": 1,
+      "SOURCE_BLOCKED": 1
+    },
+    "combinedItemRouteStatusCounts": {
+      "CLOSED_ROUTED_NO_SOURCE_MUTATION": 33
+    },
+    "itemReviewStatusForHolds": {
+      "FAIL": 21,
+      "WARN": 12
+    },
+    "unresolvedItemHoldReviewUids": [
+      "qid_v1_7ac9ba1089e9580371efd79670fbab5cd3d8d897187dce53c36b643e09b10294",
+      "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
+      "qid_v1_90c9dbcd359aafba4e343b890fb396b3eea88982ed68c4493b4d6d3acc9eacde",
+      "qid_v1_d3b95dd7aa9a7af6e916cae16e235be25cb2340e1ada6b424b7cb7bee90427aa",
+      "qid_v1_ddaa6dd0a819d26d18017745dab9eac3f0cae8fffb56e0580eff4cb81422d01f",
+      "qid_v1_6caa36217f885cc4dd14ccd515973debd4ee7700b3e3e46cb19ad6fc75c2fc75",
+      "qid_v1_97673a9fb8348c7419a0b44fddc57da38f40b6de3717095d9299f0695d820534",
+      "qid_v1_9153a2d75691d8d358efa005a9dfbc27190768426d10b467d05eef25df9e1cf5",
+      "qid_v1_a7b4fc2a33aec16bdc5d0fe0ec81f7542cb5f702871af72c13243733e4999a8e",
+      "qid_v1_ab7dc64db81bbd7ef0c90a3adf207efeada2c9348d1a6b08b079def02d16e1cd",
+      "qid_v1_c69ade98b426b292c94729649ea15e187265293098083f303955014552f223f7",
+      "qid_v1_1e2dc73ffc29e5670ba119e1bfaa640b698da6fc2abcfa0b527e75f85b32a050",
+      "qid_v1_2c95c2e052c61e0c48ed173d1ccf40bec0d7e411c2bd97c3a3249afe527a33c4",
+      "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
+      "qid_v1_05f4370382639ab7ffdbb1f5376c6e7a4f5f2e0d5204ecb38631e9306154f492",
+      "qid_v1_87dfd7564526306254c5142c4a7e92a3d6e8c3afbbb783e7b47ec93b1873478b",
+      "qid_v1_33ed96533ee09ef1350ae13e39c9ef876b29170339b3a2fdbe747a25e505ae04",
+      "qid_v1_9f6d119436795a8634f2fbd232bca0af696e929cc35fb718316a1fa3b689f423",
+      "qid_v1_407efb2cf43120511ba8befe8ec893212addde8886155d68c6d60ccd6b932ac2",
+      "qid_v1_51decba190f0d425b29d7a0d5ea57be530279b25d830effd59f4269ca6ab649d",
+      "qid_v1_ce9233127836eec69af90d69b2fd1ad36c212281782539693d7f8a94f858fa86"
+    ],
+    "note": "CLOSED_ROUTED_NO_SOURCE_MUTATION closes the routing workflow only; it does not mean the source/answer/solution defect is repaired. Five recovered legacy holds are a separate source-audit set and remain OPEN_REVIEW_REQUIRED there; the aggregate residual 7 has no inferred UIDs.",
+    "residualAggregate": {
+      "schemaVersion": "h1-stage2-legacy-hold-residual-audit-v1",
+      "status": "AGGREGATE_BLOCKER_UID_UNRESOLVED",
+      "unit": "EQINEQ",
+      "aggregateCount": 7,
+      "exactUidRecovery": false,
+      "evidenceSearch": [
+        "git history: all reachable commits/refs searched for EQINEQ_BATCH1-4 semantic ledgers and legacy payload objects",
+        "local Git objects: legacy ZIP blob exists but is 15009 bytes with no EOCD; no valid original ledger object found",
+        "current checkpoint: H1_COMMON_MATH1_SOL_CHECKPOINT_280.json contains aggregate count/checksums but no UID list",
+        "source-audit/evidence: five UID-level HOLD rows recovered into H1_STAGE2_LEGACY_HOLD_RECOVERY_SOURCE_AUDIT_5.jsonl; no additional seven exact UIDs",
+        "current source inventory and batch summaries: no item-level identity that can be proven to be the remaining seven historical HOLD rows"
+      ],
+      "disposition": "SOURCE_BLOCKED",
+      "resolutionStatus": "UNRESOLVED_UID_REQUIRED",
+      "note": "Do not infer or fabricate the seven UIDs. Preserve as explicit aggregate blocker until original item-level payload or exact historical ledger is recovered."
+    }
+  },
+  "evidenceShortUnique": 1170,
+  "duplicateEvidenceShortGroups": [],
+  "unchangedProductionData": true,
+  "unchangedCanonicalData": true,
+  "unchangedCompiledData": true,
+  "unchangedRuntimeData": true,
+  "mainMergePerformed": false,
+  "inventoryArtifactReusedAsMechanicalBaseline": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE2_CODEX_REVIEW_INVENTORY.json",
+  "itemReviewArtifact": "H1_STAGE2_CODEX_ITEM_REVIEW_1170.jsonl",
+  "defectsArtifact": "H1_STAGE2_CODEX_DEFECTS.jsonl",
+  "checkpointsArtifact": "H1_STAGE2_CODEX_REVIEW_CHECKPOINTS.json",
+  "nextAction": "Review WARN/FAIL/REVIEW_REQUIRED defects at item level; do not promote unresolved records until routed repairs are completed."
+}

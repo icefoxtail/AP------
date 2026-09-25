@@ -1,0 +1,44 @@
+{
+  "status": "AMENDED_SOURCE_TARGETED_REVIEW_COMPLETE_WITH_L2_ALIAS_CONFLICT",
+  "row": 6,
+  "mainQueueIndex": 663,
+  "questionUid": "qid_v1_7cbc4b1640bcde2eaa2217408c2000a6de38220cc0a2f8de7a5eef102fc60038",
+  "sourceFingerprint": "42cfa9a15a67c284b71ac97e982da33e2ca398e544ed07bec2230c6c8af20b25",
+  "sourceRepairLedger": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_SOURCE_ORIGINAL_LUNA_D3_Q663_BATCH01_1.jsonl",
+  "originalPilotInputAndLedgersPreserved": true,
+  "A": {
+    "L1": "H22-C-06",
+    "L2": "H22-C-06-HIGHER_INEQUALITY",
+    "L3Kind": "NEW_L3_CANDIDATE",
+    "L4Kind": "NEW_L4_CANDIDATE",
+    "CrossConcepts": [],
+    "Conditions": [
+      "COND_POSITIVE"
+    ],
+    "IntegrationPattern": "SEQUENTIAL",
+    "Status": "REVIEWED"
+  },
+  "B": {
+    "L1": "H22-C-06",
+    "L2": "H22-C-06-INEQUALITY",
+    "L3Kind": "NEW_L3_CANDIDATE",
+    "L4Kind": "NEW_L4_CANDIDATE",
+    "CrossConcepts": [],
+    "Conditions": [
+      "COND_POSITIVE"
+    ],
+    "IntegrationPattern": "SEQUENTIAL",
+    "Status": "REVIEWED"
+  },
+  "fieldDifferences": [
+    "L2"
+  ],
+  "l3CandidateSemanticEquivalent": true,
+  "l4CandidateSemanticEquivalent": true,
+  "solL2Adjudication": {
+    "key": "H22-C-06-INEQUALITY",
+    "reason": "Both active H22-C-06-HIGHER_INEQUALITY and H22-C-06-INEQUALITY share label 여러 가지 부등식 and parent H22-C-06. The source combines absolute-value and quadratic inequalities, so the general INEQUALITY key is the safer existing canonical; duplicate same-label keys need taxonomy cleanup."
+  },
+  "answerMath": "The absolute-value inequality has [-2,3]. Matching quadratics are a(x+2)(x-3), a>0, so b=-a,c=-6a and bc/a²=6, answer⑤.",
+  "hiddenMatchFeedbackToWorkers": false
+}

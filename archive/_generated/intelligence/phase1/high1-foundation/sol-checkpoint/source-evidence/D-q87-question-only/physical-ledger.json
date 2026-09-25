@@ -1,0 +1,101 @@
+{
+  "task": "D-q87-question-only",
+  "queueIndex": 87,
+  "questionUid": "qid_v1_8af06999d1a0b438d90a0643d1c241e20c11317b78164ec7e057c5e1720a6960",
+  "sourceIdentity": "original/high/h1/1mid/23_여천고_1학기_중간_고1_기출.js#5",
+  "status": "SCORE_RESTORED_PARTIAL_AUDIT_HOLD",
+  "queue": {
+    "uidOnlyQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q87-question-only\\queue-uid-only.jsonl",
+    "comparisonQueue": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json",
+    "parityBeforeEdit": "PASS",
+    "sourceFingerprintBefore": "4fd74b1735db2f55b36d6b12439ce922ff4aabf00e20c57c8c0f9e1d609e6c60",
+    "sourceFingerprintAfter": "234368f2e964fc21d35e6cd17f709f89fbcbdfd44b98ea10f50282d065361dec",
+    "identityNeedsRefreshAfterEdit": true
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\1mid\\23_여천고_1학기_중간_고1_기출.js",
+    "questionId": 5,
+    "arrayIndex": 4,
+    "jsSha256Before": "c5af366d4db36ad28d61a31c2a98fc8f62ad45df2365b8ad4ed7c902ec91ad33",
+    "jsSha256After": "f18c0f662ed9a9d79370edd002ccbea494d157bb39e736f6f5e97976ff12a5df",
+    "questionFieldsSha256Before": "8dde1b15b9d09760d05729c80d79d86b79cdedb1a5564b02a78fea4f0f479d5a",
+    "questionFieldsSha256After": "654dcc28f1743e24644d8d6bfa920850c1965aec9f5e4d8191f71a7a261325db",
+    "changedFields": [
+      "content"
+    ],
+    "before": {
+      "questionType": "객관식",
+      "content": "다항식 $f(x)=2x^3-3x^2-2x+a$를 인수분해 하면 $(x-1)g(x)$의 꼴로 된다. 이때 다항식 $g(x)$의 모든 계수들과 상수항의 합은?",
+      "choices": [
+        "$-5$",
+        "$-2$",
+        "$1$",
+        "$4$",
+        "$6$"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "다항식 $f(x)=2x^3-3x^2-2x+a$를 인수분해 하면 $(x-1)g(x)$의 꼴로 된다. 이때 다항식 $g(x)$의 모든 계수들과 상수항의 합은? [3.7점]",
+      "choices": [
+        "$-5$",
+        "$-2$",
+        "$1$",
+        "$4$",
+        "$6$"
+      ],
+      "image": null,
+      "layoutTag": "grid",
+      "wide": false
+    }
+  },
+  "source": {
+    "type": "original question HWP",
+    "path": "D:\\기출\\23,24 고1\\2023년\\1학기 중간고사\\수학 상 (23 여천고).hwp",
+    "sha256": "d579b60d034d1bd5b00bc362f12192569558dde691d428cd7778f4cc6889a7c9",
+    "questionOrdinal": 5,
+    "physicalPage": null,
+    "physicalPageStatus": "UNRESOLVED_BY_HWP_PARSER",
+    "pageImage": null,
+    "textExcerpt": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q87-question-only\\q5-source-text-excerpt.txt",
+      "sha256": "ec46c660652579f50f27048b74353e15a0f121728a73ea5c8b7fb18ff110ed54",
+      "tool": "PyHWP hwp5txt",
+      "lines": "82-87"
+    },
+    "hwpClassification": {
+      "sourceDirectory": "2023년 1학기 중간고사",
+      "bodyTextSections": 1,
+      "separateOfficialAnswerSolutionStreamFound": false,
+      "fileHeaderScriptFlag": 0,
+      "officialAnswerPagesOpened": false,
+      "officialSolutionPagesOpened": false
+    }
+  },
+  "comparison": {
+    "wordingPhrase": "SOURCE_TEXT_MATCH: all-coefficients plus constant-term phrase matches the extracted source prose.",
+    "scoreSource": "[3.7점] is explicit in HWP text extraction; restored to q5 content.",
+    "formulaAndFactorization": "HOLD: HWP equation/control objects are omitted; the exact factorization expression is not independently visible.",
+    "choices": "HOLD: HWP text extraction shows only ①-⑤ labels and omits option values.",
+    "visualEvidence": "Text excerpt only; no original page image/crop could be rendered. Physical page mapping unavailable.",
+    "repair": "Appended exact source score [3.7점] to q5 content only; choices unchanged."
+  },
+  "validation": {
+    "syntax": "PASS (node --check)",
+    "targetedSchema": "PASS (q5 id, 객관식, content string, five choices)",
+    "onlyQuestionContentChanged": true,
+    "sourceFingerprintAlgorithm": "SHA256(JSON.stringify({content,choices,answer,solution,image})) per build-h1-blind-worker-bundle.mjs; answer/solution fields hashed in memory without viewing or output",
+    "sourceVisualReview": "NOT_TESTED",
+    "archiveRender": "NOT_TESTED",
+    "answerSolutionSemanticRereviewRequired": "required after source edit; no answer or solution values were inspected or used",
+    "physicalLedgerJson": "PASS"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

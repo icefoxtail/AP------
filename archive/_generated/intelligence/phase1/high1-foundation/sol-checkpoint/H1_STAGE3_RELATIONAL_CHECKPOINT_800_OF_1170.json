@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "h1-stage3-relational-eqineq-checkpoint-v1",
+  "status": "STAGE3_RELATIONAL_EQINEQ_303_CANDIDATE_COMPLETE_REVIEW_PENDING",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "d519ec342e57125df72368f9591af81458bd87bc",
+  "basisMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "batch": {
+    "workUnit": "EQINEQ",
+    "stage2WorkIndexStart": 281,
+    "stage2WorkIndexEnd": 583,
+    "rows": 303,
+    "uidUnique": 303,
+    "sourceIdentityUnique": 303,
+    "inputBundleRows": 303,
+    "inputBundleSha256": "bda4fe1e15b332813b8bc6109774b414fe6f32a89488ab7b2b55f3236475eb45",
+    "relationalLedgerSha256": "896d38697ccb15590d7642392562f7327bb64d28e0827a2c4f9d9796be8a41b5"
+  },
+  "provenanceGate": {
+    "decisionIsolatedInputBundleRows": 303,
+    "forbiddenSameStageInputLeakageRows": 0,
+    "missingInputBundleSha": 0,
+    "missingContentHash": 0,
+    "missingSolutionHash": 0
+  },
+  "registryGate": {
+    "invalidCrossConceptKeys": [],
+    "invalidConditionKeys": [],
+    "invalidIntegrationPatterns": [],
+    "duplicateCrossConceptRows": 0,
+    "duplicateConditionRows": 0
+  },
+  "reviewStatusCounts": {
+    "ACTIVE_ONLY": 251,
+    "REVIEW_REQUIRED": 52
+  },
+  "unresolved": {
+    "sourceHoldRows": 27,
+    "l3HoldRows": 2,
+    "crossConceptUnmappedRows": 24,
+    "conditionUnmappedRows": 9,
+    "crossConceptUnmappedDistribution": {
+      "항등식의 계수비교": 1,
+      "그래프의 교점": 12,
+      "원의 현의 교차 관계": 1,
+      "직사각형의 둘레·넓이 관계": 8,
+      "직사각형 둘레": 1,
+      "좌표기하": 1
+    },
+    "conditionUnmappedDistribution": {
+      "정수/자연수 조건": 6,
+      "원래 이차방정식 누락": 1,
+      "AB 길이/도형 누락": 1,
+      "계수 정규화 조건 누락": 1
+    }
+  },
+  "activeCandidateDistribution": {
+    "crossConceptKeys": {
+      "CC_ROOTS_COEFFICIENTS": 56,
+      "CC_QUADRATIC_FUNCTION": 33,
+      "CC_SIMILARITY": 1,
+      "CC_POLYNOMIAL_FACTORIZATION": 41,
+      "CC_VERTEX": 26,
+      "CC_TRIANGLE_AREA": 2,
+      "CC_DISCRIMINANT": 17,
+      "CC_INEQUALITY_QUADRATIC": 1,
+      "CC_COMBINATORICS_COUNTING": 1
+    },
+    "conditionKeys": {
+      "COND_NONZERO": 7,
+      "COND_NATURAL_NUMBER": 23,
+      "COND_NEGATIVE": 12,
+      "COND_RANGE": 132,
+      "COND_POSITIVE": 31,
+      "COND_INTEGER": 62
+    },
+    "integrationPattern": {
+      "NONE": 156,
+      "SEQUENTIAL": 98,
+      "INTERDEPENDENT": 13,
+      "CASE_BRANCH": 21,
+      "REINTERPRETATION": 15
+    }
+  },
+  "cumulative": {
+    "priorRelationalA": 497,
+    "currentBatch": 303,
+    "overlapUid": 0,
+    "relationalUniqueUid": 800,
+    "relationalUniqueSourceIdentity": 800,
+    "overallDenominator": 1170,
+    "completedCandidateRows": 800,
+    "remaining": 370
+  },
+  "next": {
+    "workUnit": "PERMCOMB",
+    "workIndex": 1,
+    "questionUid": "qid_v1_b81b3ab7fe1cb0cd9bf4d706b2e86a075dfeb94888554f4b8f7b415df8ad847a",
+    "sourceIdentity": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js#5"
+  },
+  "mutations": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  },
+  "finality": "NOT_FINAL_VALIDATOR_REVIEW_PENDING",
+  "hashAlgorithm": "SHA-256 over UTF-8 bytes",
+  "hashRepair": {
+    "repairedAt": "2026-09-23",
+    "reason": "Previous hash helper used JS UTF-16 code units for Korean text. Semantic decisions unchanged; per-row/file hash metadata normalized to UTF-8 SHA-256.",
+    "repairedInputBundleRows": 303,
+    "semanticDecisionChangedRows": 0
+  }
+}

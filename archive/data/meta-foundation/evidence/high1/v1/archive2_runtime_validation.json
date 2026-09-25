@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "h1-foundation-archive2-production-validation-v1",
+  "status": "PASS",
+  "packId": "H1_FOUNDATION",
+  "packVersion": "1.0.0",
+  "createdAt": "2026-09-25T14:54:26.899Z",
+  "globalCounts": {
+    "assignments": 1170,
+    "uniqueUid": 1170,
+    "uniqueSourceIdentity": 1170,
+    "finalDifficulty": {
+      "1": 33,
+      "2": 537,
+      "3": 366,
+      "4": 154,
+      "UNKNOWN": 80
+    },
+    "explicitHold": 149,
+    "sourceHold": 73,
+    "runtimeSelectable": 631,
+    "l3Unique": 32,
+    "l3New": 27,
+    "l4AssignedUnique": 61,
+    "l4New": 53,
+    "l3l4ParentMismatch": 0,
+    "missingBinding": 0,
+    "crossConceptRegisteredCount": 90,
+    "crossConceptUsedCount": 42,
+    "unregisteredCrossConceptCount": 0,
+    "conditionKeyCount": 6,
+    "conditionUsedCount": 6,
+    "unregisteredConditionCount": 0,
+    "integrationPatternsUsed": [
+      "CASE_BRANCH",
+      "DEEP_COMPOSITE",
+      "INTERDEPENDENT",
+      "NONE",
+      "REINTERPRETATION",
+      "SEQUENTIAL"
+    ],
+    "explicitL3Holds": 17,
+    "explicitL4Holds": 57,
+    "noSeparateL4": 69,
+    "borderLineReview": 279
+  },
+  "archive2": {
+    "catalogQuestions": 11269,
+    "combinedRuntimePacks": 10,
+    "combinedRuntimeRecords": 5087,
+    "h1JoinedRecords": 1170,
+    "h1FilterTaxonomyRows": 217,
+    "h1EligibleRecords": 631,
+    "h1HeldButSelectable": 0,
+    "h1UnknownDifficultyButSelectable": 0,
+    "h1SourceHeldButSelectable": 0,
+    "existingPackRecordsChecked": 3536,
+    "existingPackRuntimeEligibilityChanges": 0,
+    "examSelectionPipeline": {
+      "status": "PASS",
+      "selectedCount": 1,
+      "reviewStatus": "PASS",
+      "selectedPackIds": [
+        "H1_FOUNDATION"
+      ],
+      "errors": []
+    },
+    "catalogIndexVersion": "525b683c79400ebb9b98f1952a25722a81407abef55e41c706b373996f930500",
+    "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v5:GEOMETRY_EQUATIONS@1.0.2/runtime-bridge-v1+SETS_PROPOSITIONS@1.0.0/runtime-bridge-v1.1+FUNCTIONS_GRAPHS@1.0.1/runtime-bridge-v2+LIMIT_CONTINUITY@1.1.0/runtime-bridge-v4+INTEGRAL_CALCULUS@1.0.0/runtime-bridge-v2+DERIVATIVE@1.0.0/runtime-bridge-v3+PROBABILITY_STATISTICS@1.0.0/runtime-bridge-v1+MIDDLE_GEOMETRY@1.0.0/runtime-bridge-v1+MIDDLE1@1.0.0/runtime-bridge-v1+H1_FOUNDATION@1.0.0/runtime-bridge-v5",
+    "runtimeBridgeReceiptUpdated": true,
+    "runtimeBridgeReceiptPackCount": 10,
+    "runtimeBridgeReceiptJoinCount": 5087
+  },
+  "deterministicChecks": [
+    {
+      "name": "compile-meta-foundation",
+      "status": "PASS"
+    },
+    {
+      "name": "validate-meta-foundation-pack",
+      "status": "PASS"
+    },
+    {
+      "name": "build-archive2-catalog",
+      "status": "PASS"
+    }
+  ],
+  "gates": [],
+  "expectedHoldPolicy": {
+    "sourceDriftUids": 48,
+    "currentBucket5Uid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
+    "currentBucket5FinalBucket": 4,
+    "repeatedSemanticReview": false
+  }
+}

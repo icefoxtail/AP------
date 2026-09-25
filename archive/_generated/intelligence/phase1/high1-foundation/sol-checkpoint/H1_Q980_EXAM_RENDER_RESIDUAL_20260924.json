@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "status": "RESOLVED_BY_QUESTION_SOURCE_REPAIR",
+  "sourceExam": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js",
+  "triggerUidQueueIndex": 980,
+  "triggerQuestionOrdinal": 11,
+  "triggerQuestionGate": "SCOPED_DESKTOP_MOBILE_EXAM_RENDER_PASS",
+  "aggregateGate": "PRINT_READY_BLOCKED",
+  "failureCodes": ["EQUAL_SLOT_AUDIT_FAILED", "SVG_VIEWBOX_CLIP"],
+  "affectedLocation": "exam question ordinals 18 and 20 on printed page 4; queue indexes 538 and 539",
+  "evidence": "source-evidence/D-q980-question-only/source-verdict-ledger.md",
+  "resolutionEvidence": "source-evidence/D-q980-svg-audit/source-verdict-ledger.md",
+  "resolution": "Original question crops showed a clipped line label and parabola tail. D expanded only the two inline SVG question viewBoxes/heights to 200 and restored printed score tokens. Post-repair exam audit was PRINT_READY with auditOk true, 6 pages, zero issues; desktop/mobile scoped views passed.",
+  "remainingReview": "Fresh A/B q538/q539 source-payload reviews passed; their classification conflicts await blind C."
+}

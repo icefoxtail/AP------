@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "queueIndex": 790,
+  "questionUid": "qid_v1_2a1bbc7f5245c49dbb292eb37d462974c1bd13bc5446649b59470b8c63fff975",
+  "sourceIdentity": "original/high/h1/1mid/25_팔마고_1학기_중간_고1_기출.js#23",
+  "sourceFingerprint": "a3e26b5a19ef45d98bf2ba1cb00c20df692554ffe5137bd082cbef89d2e4a235",
+  "sourceQuestionAudit": "source-evidence/D-q790-question-only/physical-ledger.json: source-exact question wording restored; the printed system asks for positive real k giving exactly three distinct solution pairs.",
+  "field": "sourceIssue",
+  "value": "SOLUTION_BLOCKER",
+  "sourceMathEvidence": "The first equation factors as (x−3y)(x−y+2)=0, defining lines L1:x=3y and L2:x=y−2. The second equation is 3x²+2xy+3y²=4k² with k>0.",
+  "solutionMathEvidence": "On L1, y=±k/3 always gives two distinct points. On L2, substitution yields 2(y−1)²+1=k²: no points for k<1, one tangent point for k=1, and two points for k>1. The lines meet at (−3,−1), which lies on the second curve exactly when k=3.",
+  "independentCount": "At k=1, L1 contributes two points and L2 one separate tangent point: three distinct pairs. At k=3, each line contributes two points but shares (−3,−1), so the union again contains three distinct pairs. Other positive k values give two or four pairs.",
+  "reason": "The supplied solution and answer report only k=1 because they count the k>1 line branches without subtracting their shared pair at k=3. A/B/C independently found both k=1 and k=3 on the current source. The question wording is source-confirmed, so the answer/solution undercount is a correction-protocol defect; retain HOLD and do not silently change the JS answer or solution.",
+  "correctionProtocolRequired": true,
+  "jsAnswerOrSolutionEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "conditions",
+  "value": [],
+  "items": [
+    {
+      "queueIndex": 728,
+      "questionUid": "qid_v1_16f652caf7dfc575bdda7207a70491682b893b1a5ee05580d8f34736de15a363",
+      "sourceIdentity": "original/high/h1/1final/25_효천고_1학기_기말_고1_기출c.js#5",
+      "sourceFingerprint": "64329da6a46322b8fb86a6ddfd8184276223c2ac5d91bbc6ee45a936a0ac12e5",
+      "reason": "The source gives only |2x−3|≤x and asks for the endpoints of its solution interval. The solution derives x≥0 from the nonnegative absolute value, then solves −x≤2x−3≤x to obtain [1,3]. That positivity is a consequence of the primary inequality, not a separate stated parameter condition; a≤x≤b describes the sought answer, not an external range restriction. No Condition Core key is added."
+    },
+    {
+      "queueIndex": 963,
+      "questionUid": "qid_v1_d71815750f3e5ed6af2baf6ea042e73766055c11c1ef850fb1c72e09ceccea33",
+      "sourceIdentity": "original/high/h1/2final/22_효천고_2학기_기말_고1_기출.js#14",
+      "sourceFingerprint": "ab1f7d4af3416ae12a9178610114914795b1bf6e5ad4d6f281bd81311762628d",
+      "reason": "The source selects three representatives from four boys and four girls with at least one of each. The solution uses C(8,3)−C(4,3)−C(4,3)=48. The mixed-sex requirement defines which selections are counted; it is not a numeric sign/range condition in Condition Core. Tagging the implied positive counts or a range of counts would duplicate the selection structure."
+    },
+    {
+      "queueIndex": 966,
+      "questionUid": "qid_v1_486d500a3b1aae0e135cb841dc4054a06ebe10056438ff94b327809034197027",
+      "sourceIdentity": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js#7",
+      "sourceFingerprint": "8e35d137e17a03bc069658822fecbae0c3ac684b0ee1918998916955a04ddb06",
+      "reason": "The ride has capacity three and selects riders from four men and five women, requiring both sexes. The solution subtracts all-male and all-female choices from C(9,3), obtaining 70. Capacity and mixed-sex composition are intrinsic selection constraints, not a separate positive/range condition on a mathematical variable or parameter. No Condition Core key is justified."
+    }
+  ],
+  "newConditionKey": false,
+  "finality": "WORKING_NOT_FINAL"
+}

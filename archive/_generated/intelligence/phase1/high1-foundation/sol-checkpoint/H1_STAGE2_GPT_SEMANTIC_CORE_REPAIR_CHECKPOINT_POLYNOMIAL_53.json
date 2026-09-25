@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "h1-stage2-gpt-semantic-core-repair-checkpoint-v1",
+  "status": "POLYNOMIAL_SEMANTIC_CORE_53_REPAIRED_STOP",
+  "generatedAt": "2026-09-23T15:43:00+09:00",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "b07b606dc6ab52aee35cf37c993647b4bb99fa5b",
+  "frozenReviewHead": "d8a6be9df984d22621031402950c4138f8678287",
+  "frozenDefectRows": 710,
+  "genericSemanticReasonOnly": 397,
+  "semanticCoreAffectedBeforeBlockRepair": 246,
+  "semanticCoreBlockAlreadyRepaired": 25,
+  "semanticCoreRemainingAfterBlockRepair": 221,
+  "thisCheckpoint": {
+    "unit": "POLYNOMIAL",
+    "repaired": 53,
+    "ledgerRows": 217,
+    "ledgerSha256": "120d7bbf1aa0dedc465f3c168980e4f0e8afff7555466e74b71b37f3e8fdb8c0",
+    "repairEvidence": "H1_STAGE2_GPT_SEMANTIC_CORE_REPAIR_POLYNOMIAL_53.jsonl",
+    "repairEvidenceSha256": "bf8ade03a055c5d88de23b668052bae796b3a9c27ab321a5f4aa7fa0fe5712cd"
+  },
+  "remainingSemanticCore": {
+    "total": 168,
+    "EQINEQ": 46,
+    "PERMCOMB": 63,
+    "MATRIX": 59
+  },
+  "stage2Integrity": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "requiredSemanticFieldMissing": 0
+  },
+  "untouched": {
+    "genericReasonOnly": 397,
+    "production": true,
+    "canonical": true,
+    "compiled": true,
+    "runtime": true,
+    "main": true
+  },
+  "next": "EQINEQ semantic-core 46 direct current source+solution rejudgment",
+  "note": "57 BLOCK 전체는 이전 checkpoint에서 처리. 이번 checkpoint는 FIX_NEXT/TODO_LATER 중 primary/decisive/supporting/condition/composition/confidence semantic-core만 다항식 53건 직접 재판정했다.",
+  "sourceReviewMain": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+  "postCommitMain": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "mainDriftVerification": {
+    "from": "6fe92b8689e926d08bee9ecb6637e8ee8baa4af1",
+    "to": "06c8d9f4271799446af70794f9cdf462cec5df20",
+    "aheadBy": 3,
+    "changedFiles": [
+      "archive/archive2-workspace.js",
+      "archive/archive2.css",
+      "tests/archive2-school-history.test.cjs"
+    ],
+    "h1SourceIdentityMetadataDrift": 0,
+    "verdict": "NO_H1_SEMANTIC_INPUT_DRIFT"
+  }
+}

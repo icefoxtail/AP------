@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "h1-stage2-full-goal-summary-v3",
+  "status": "STAGE2_1170_SEMANTIC_REPAIR_COMPLETE_STAGE3_READY",
+  "baseMainSha": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
+  "currentOriginMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "repairStartHead": "afccd2f78cc4a99a8a8deef8b160f90c3b0f9ae2",
+  "repairStartOriginMainSha": "0487238c8a137fcf5853d5202663dec04f893a01",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "stage2": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "missingUid": 0,
+    "duplicateUid": 0,
+    "fingerprintMismatch": 0,
+    "requiredSemanticFieldMissing": 0,
+    "semanticDispositionPresent": 1170
+  },
+  "workUnits": {
+    "POLYNOMIAL": {
+      "completed": 217,
+      "denominator": 217
+    },
+    "EQINEQ": {
+      "completed": 583,
+      "denominator": 583
+    },
+    "PERMCOMB": {
+      "completed": 287,
+      "denominator": 287
+    },
+    "MATRIX": {
+      "completed": 83,
+      "denominator": 83
+    }
+  },
+  "total": {
+    "completed": 1170,
+    "denominator": 1170
+  },
+  "holdInventory": {
+    "totalRows": 50,
+    "itemLevelKnown": 49,
+    "itemLevelClosedOrRouted": 49,
+    "openReviewRequired": 0,
+    "aggregateBlocked": 7,
+    "unresolvedUidCount": 7,
+    "dispositionCounts": {
+      "SOLUTION_REPAIR_REQUIRED": 28,
+      "ANSWER_REPAIR_REQUIRED": 8,
+      "SOURCE_REPAIR_REQUIRED": 10,
+      "SOURCE_BLOCKED": 1,
+      "VISUAL_FIDELITY_REVIEW_REQUIRED": 2
+    },
+    "path": "H1_STAGE2_HOLD_INVENTORY_1170.jsonl",
+    "resolutionPath": "H1_STAGE2_HOLD_RESOLUTION_1170.jsonl",
+    "residualAudit": "H1_STAGE2_LEGACY_HOLD_RESIDUAL_7_AUDIT.json"
+  },
+  "mutation": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  },
+  "artifacts": {
+    "index": "H1_STAGE2_SEMANTIC_LEDGER_INDEX_1170.json",
+    "state": "H1_COMMON_MATH1_SOL_STATE.json",
+    "ledgerFiles": [
+      {
+        "file": "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl",
+        "rows": 217,
+        "sha256": "120d7bbf1aa0dedc465f3c168980e4f0e8afff7555466e74b71b37f3e8fdb8c0",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl",
+        "rows": 70,
+        "sha256": "e808733108e68df03221b0ee15e8459b0027ec6c3c86015e6719156ed6d00409",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl",
+        "rows": 70,
+        "sha256": "535ff00cc742e0469a62cc684b7f6902e66240ceff7a6cb26ab47e7e2778723c",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl",
+        "rows": 70,
+        "sha256": "bc29e74820af87386905579b7afe78552e38677e854e43e50c6fd553054c8011",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl",
+        "rows": 70,
+        "sha256": "42d7211510f3dd7a8ca9532ccbb8ce51e6c7353b71f12ec9417c7f81ae3ecd7f",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl",
+        "rows": 70,
+        "sha256": "ecb1909e12abc9ffbc66b01cb63f126bff16028ccdc327f499d0a99fbafa0c49",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl",
+        "rows": 70,
+        "sha256": "79d24ac6a74ba91984c2a1655863e45cb486dd5acf93c96c88581e6eefdeab49",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl",
+        "rows": 70,
+        "sha256": "6074253d4c764adf8e8f0b5080fabf487df09774cb2129c2b13256daf7d2c98b",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl",
+        "rows": 70,
+        "sha256": "e8535309d6a2ab6a956b52dd124ace202919fd904e88db6d3d8f04825e24724c",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl",
+        "rows": 23,
+        "sha256": "d59e2c21371cc6f98caf5064f0cdf66f10acd3921bdc5548a5a223af2e34a7a7",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl",
+        "rows": 70,
+        "sha256": "8ba789ad0d708585cf0565cb5e1c7c1acf1ba8a592883586ff09aa493eaf6e03",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl",
+        "rows": 70,
+        "sha256": "820aab483387c7b5cbecfeb43f2345c86ef8ecfc664fae16eb3768e742879ddf",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl",
+        "rows": 70,
+        "sha256": "25358fea42736cd3f6ff7cf1daacef34b90b19f59fd5b3e909691c77b8b760db",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl",
+        "rows": 70,
+        "sha256": "ff526125a2570fca119607b5f569d9181559c23677dfa65dcf1a4abd40a990d8",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl",
+        "rows": 7,
+        "sha256": "b7c29cb2912bf283ff59ceaf065e0cd8bdc540b2bb55d428dd2908587a4189a9",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl",
+        "rows": 70,
+        "sha256": "d0bd546a368ffec8fd8fc97a36dbb995a2bfdc092175623bf56ebeda6203e314",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      },
+      {
+        "file": "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl",
+        "rows": 13,
+        "sha256": "3ef8c1d509af320442a34b28fb0db314755108c17a22929f9df1911d488bdc54",
+        "authority": "Stage2 repaired semantic ledger; GPT direct semantic-core rejudgment + item-specific provenance evidence binding"
+      }
+    ]
+  },
+  "gptRepair": {
+    "baseReviewHead": "d8a6be9df984d22621031402950c4138f8678287",
+    "repairedBlockRows": 57,
+    "remainingScope": "FIX_NEXT/TODO_LATER from frozen Codex review remains for later targeted repair",
+    "repairArtifacts": [
+      "H1_STAGE2_GPT_BLOCK_REPAIR_POLYNOMIAL_25.jsonl",
+      "H1_STAGE2_GPT_BLOCK_REPAIR_EQINEQ_30.jsonl",
+      "H1_STAGE2_GPT_BLOCK_REPAIR_MISC_2.jsonl"
+    ],
+    "semanticCoreRepair": {
+      "affectedBeforeBlockRepair": 246,
+      "blockSemanticCoreRepairedPreviously": 25,
+      "remainingAfterBlockRepair": 221,
+      "polynomialRepaired": 53,
+      "eqineqRepaired": 46,
+      "permcombRepaired": 63,
+      "matrixRepaired": 59,
+      "postBlockRepairedTotal": 221,
+      "remaining": 0,
+      "genericReasonOnlyProvenanceBackfilled": 397,
+      "status": "COMPLETE_STAGE3_READY",
+      "closureArtifact": "H1_STAGE2_GPT_REPAIR_CLOSURE_1170.json"
+    },
+    "nextStage": "STAGE3_GLOBAL_TAXONOMY_SYNTHESIS"
+  }
+}

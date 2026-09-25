@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "field": "conditions",
+  "items": [
+    {
+      "queueIndex": 1026,
+      "questionUid": "qid_v1_7749aea1cb627d24561a11c427ba83822a61f208f89cfaac8809486fe57efe48",
+      "sourceIdentity": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js#23",
+      "sourceFingerprint": "513c294b4bd3decc13137f1c63ba1854a6f286f551032e11199183e146654740",
+      "value": [],
+      "reason": "The car has a fixed 2–2–3 seat layout, four named riders, a required occupied driver seat, and a same-row mixed-sex adjacency prohibition. The solution branches on who uses the front row and then counts permitted arrangements. These are the seating structure and occupancy rules that define the primary combinatorics problem, not an independent numeric nonzero variable or a range restriction on a value to solve. COND_NONZERO/COND_RANGE would duplicate the item setup."
+    },
+    {
+      "queueIndex": 1050,
+      "questionUid": "qid_v1_4a115d6f89085d4299625ae448fc03542824f0e2e43518e7f9fc8b9b030a278b",
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#4",
+      "sourceFingerprint": "d9c56f149cc12bfee47567de42baa81fb381e0646fa012aeb9c7ca24f62c1687",
+      "value": ["COND_RANGE"],
+      "reason": "The seven cards are specifically labeled 1 through 7. That finite numeric range determines which three-card arithmetic progressions exist: 5 triples of gap 1, 3 of gap 2, and 1 of gap 3, before six permutations per triple give 54. Zero is already absent because the allowed range starts at 1, so a separate COND_NONZERO adds no restriction."
+    }
+  ],
+  "newConditionKey": false,
+  "finality": "WORKING_NOT_FINAL"
+}

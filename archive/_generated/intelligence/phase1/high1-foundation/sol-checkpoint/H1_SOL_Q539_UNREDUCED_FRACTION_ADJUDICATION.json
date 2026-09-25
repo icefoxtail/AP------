@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "status": "SOL_DIRECT_ADJUDICATION_WORKING",
+  "queueIndex": 539,
+  "questionUid": "qid_v1_a9087c1259ff45d4ecd9ece722de1c10461f0b51463ca2822e014edc5bf46ed1",
+  "sourceIdentity": "original/high/h1/1final/25_강남여고_1학기_기말_고1_기출c.js#20",
+  "sourceFingerprint": "39b95aa5f95689af9ea98caf030b41677e7078b0957d17391bb20b53ae163569",
+  "contentHash": "a81508f8ee50b7457bb74928035e40225f55860ce35004dd8209ddc41c9d1307",
+  "solutionHash": "5c6cecb55348c2816f36fcbdf86133a5b9fd27b287047b305557ea8100e811ce",
+  "aStatus": "PASS",
+  "bStatus": "PASS",
+  "cStatus": "HOLD",
+  "solDecision": "SOURCE_UNRESOLVED_HOLD",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "reason": "The length is L(t)=-t^2+3t=-(t-3/2)^2+9/4, so the unique maximizing t is 3/2. The statement requires p and q, but not m and n, to be coprime. It does not otherwise constrain m,n or require n/m in lowest terms. Both (n,m)=(3,2) and (6,4) satisfy t=n/m, while m+n changes from 5 to 10. With p=4 and q=9, the requested total is therefore not uniquely determined by the printed statement. The supplied solution assumes m=2,n=3 without an explicit source condition.",
+  "sourceQuestionEvidence": "source-evidence/D-q980-svg-audit/source-verdict-ledger.md",
+  "currentWorkerEvidence": [
+    "H1_STAGEA_LUNA6_A_SOURCE_REPAIR_Q538_Q539_FINAL.jsonl",
+    "H1_STAGEA_LUNA6_B_SOURCE_REPAIR_Q538_Q539_FINAL.jsonl",
+    "H1_STAGEA_LUNA6_C_SOURCE_REPAIR_Q538_Q539_FINAL_CONFLICT.jsonl"
+  ],
+  "jsEdit": false,
+  "correctionProtocolCandidate": "If authorized by the separate correction protocol, add an explicit reduced-fraction condition for m,n; do not infer a source-exact D repair.",
+  "finalMetadataStatus": "HOLD_PENDING_CORRECTION_PROTOCOL"
+}

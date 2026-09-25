@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "h1-difficulty-outlier-independent-freeze-v1",
+  "frozenAtUtc": "2026-09-25T12:21:03.055Z",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "startHead": "0ead023bc48f96e2c6d55c351ff815af99735547",
+  "originStartHead": "0ead023bc48f96e2c6d55c351ff815af99735547",
+  "reviewRubric": {
+    "name": "JS Archive difficultyBucket five-stage operational rule",
+    "version": "v1.3",
+    "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "sha256": "3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab"
+  },
+  "selectionProvenance": {
+    "largeShift": {
+      "sourceFiles": [
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_CONFLICTS.jsonl",
+        "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_CONFLICT_RECHECK_DELTA.jsonl"
+      ],
+      "selectionRule": "conflictType=LARGE_BUCKET_MOVEMENT; matching delta targetedReviewStatus=RECHECKED_AFTER_COMPARE; abs(priorDifficultyBucket−recheckedFinalBucket)>=2",
+      "selected": 27,
+      "reviewed": 27,
+      "missing": 0
+    },
+    "currentBucket5": {
+      "sourceFile": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_FINAL_WORKING_1170.jsonl",
+      "selectionRule": "difficultyBucket===5",
+      "selected": 1,
+      "reviewed": 1,
+      "missing": 0
+    },
+    "overlapUidCount": 0,
+    "selectionCount": 28,
+    "uniqueUidCount": 28,
+    "uidDuplicateCount": 0,
+    "sourceIdentityDuplicateCount": 0
+  },
+  "blindFirstPass": {
+    "judgmentInputFields": [
+      "current source content",
+      "current choices",
+      "current solution",
+      "current working L3/L4",
+      "current CrossConcept/Condition/IntegrationPattern where available",
+      "source identity and fingerprint"
+    ],
+    "judgmentPayloadExcludedFields": [
+      "old metadata difficultyBucket",
+      "blind working bucket",
+      "conflict recheck result",
+      "old difficultyReason",
+      "bucket difference",
+      "prior reviewer verdict"
+    ],
+    "selectionArtifactsReadForTargetSelection": true,
+    "priorMetadataComparedBeforeFreeze": false,
+    "reviewRows": 28,
+    "boundaryFlagCounts": {
+      "NONE": 17,
+      "B34": 6,
+      "B23": 4,
+      "UNKNOWN": 1
+    },
+    "sourceContentReadRows": 28,
+    "choicesReadRows": 28,
+    "solutionReadRows": 28,
+    "visualReviewedRows": 2,
+    "sourceIssueCount": 1,
+    "holdCount": 1,
+    "initialFrozenIndependentBucketCounts": {
+      "2": 8,
+      "3": 16,
+      "4": 3,
+      "UNKNOWN": 1
+    },
+    "amendedIndependentBucketCounts": {
+      "2": 9,
+      "3": 15,
+      "4": 3,
+      "UNKNOWN": 1
+    }
+  },
+  "integrity": {
+    "independentReviewPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_INDEPENDENT_REVIEW_028.jsonl",
+    "independentReviewSha256": "816a7a2c8a62c899c7dbaa778432901a7c3f25c0cafcec4509891eb9f8083144",
+    "blindInputPacketSha256": "ab0ae6d7aec3b01212473c2b205f9bc17a8e7cc6fe646c324e707d0f60ac56fc",
+    "uidUnique": true,
+    "sourceIdentityUnique": true,
+    "allInputsBoundToIndependentInputFingerprints": true,
+    "initialIndependentReviewSha256": "816a7a2c8a62c899c7dbaa778432901a7c3f25c0cafcec4509891eb9f8083144",
+    "amendedIndependentReviewSha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67",
+    "currentReviewFileSha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67"
+  },
+  "compareNotStartedAtFreeze": true,
+  "freezeRevision": 2,
+  "amendedAtUtc": "2026-09-25T12:27:40.848Z",
+  "initialFreezeSnapshotSha256": "ce22d3d3930d82ecaa9947e1995e1b633fa2c5719a854b2be42db5a71bea38f0",
+  "amendment": {
+    "count": 1,
+    "questionUid": "qid_v1_554fdee280a088c5f3158c03d944b2dcfa1b644bcecd101059dc9013e75da4a6",
+    "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#8",
+    "trigger": "Source-to-review-rationale mapping defect discovered during post-freeze audit.",
+    "comparisonMaterialAlreadyOpened": true,
+    "initialFrozenReviewSha256": "816a7a2c8a62c899c7dbaa778432901a7c3f25c0cafcec4509891eb9f8083144",
+    "amendedReviewSha256": "9197a4a180a2b3f0090b05d97a7c380f098d3d9add689b1c1f0d77e82356aa67",
+    "originalIndependentBucket": 3,
+    "correctedIndependentBucket": 2,
+    "compareDispositionConstraint": "BOUNDARY_HOLD for this UID because the post-freeze correction crosses B23; do not report a clean first-pass confirmation."
+  },
+  "comparisonOpenedAfterInitialFreeze": true
+}

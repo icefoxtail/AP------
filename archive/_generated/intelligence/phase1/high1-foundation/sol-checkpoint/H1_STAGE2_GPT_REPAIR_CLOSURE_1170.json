@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "h1-stage2-gpt-repair-closure-v1",
+  "status": "STAGE2_1170_SEMANTIC_REPAIR_COMPLETE_STAGE3_READY",
+  "generatedAt": "2026-09-23",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "branchHeadBeforeClosure": "fb1dde8c6e80ed6c73482ec72a3ebb07d8b625a5",
+  "currentMainSha": "06c8d9f4271799446af70794f9cdf462cec5df20",
+  "physicalCoverage": {
+    "rows": 1170,
+    "uidUnique": 1170,
+    "sourceIdentityUnique": 1170,
+    "duplicateUid": 0,
+    "duplicateSourceIdentity": 0,
+    "requiredSemanticFieldMissing": 0,
+    "workUnits": {
+      "POLYNOMIAL": 217,
+      "EQINEQ": 583,
+      "PERMCOMB": 287,
+      "MATRIX": 83
+    },
+    "note": "UID/source identity fields were not mutated by semantic-core or provenance repairs; denominator/identity uniqueness remains the validated 1170 baseline."
+  },
+  "reviewRepair": {
+    "frozenDefectRows": 710,
+    "blockRowsRepairedPreviously": 57,
+    "semanticCoreAffected": 246,
+    "semanticCoreWithinPriorBlock": 25,
+    "semanticCorePostBlockDenominator": 221,
+    "semanticCorePostBlockRepaired": {
+      "POLYNOMIAL": 53,
+      "EQINEQ": 46,
+      "PERMCOMB": 63,
+      "MATRIX": 59,
+      "total": 221
+    },
+    "genericReasonOnlyProvenanceBackfill": {
+      "EQINEQ": 201,
+      "PERMCOMB": 192,
+      "MATRIX": 4,
+      "total": 397
+    },
+    "semanticCoreRemaining": 0,
+    "genericReasonOnlyRemaining": 0
+  },
+  "holds": {
+    "itemLevelKnown": 49,
+    "itemLevelRouted": 49,
+    "historicalAggregateUidUnresolved": 7,
+    "status": "PRESERVED_NOT_REPAIRED_BY_STAGE2_SEMANTIC_CLOSURE",
+    "note": "Routing closure does not mean source/answer/solution defect repair. Historical 7 UIDs are not inferred."
+  },
+  "mutations": {
+    "production": 0,
+    "canonical": 0,
+    "compiled": 0,
+    "runtime": 0,
+    "mainMerge": 0
+  },
+  "ledgerHashes": {
+    "POLYNOMIAL_SEMANTIC_LEDGER_217.jsonl": "120d7bbf1aa0dedc465f3c168980e4f0e8afff7555466e74b71b37f3e8fdb8c0",
+    "EQINEQ_BATCH1_SEMANTIC_LEDGER.jsonl": "e808733108e68df03221b0ee15e8459b0027ec6c3c86015e6719156ed6d00409",
+    "EQINEQ_BATCH2_SEMANTIC_LEDGER.jsonl": "535ff00cc742e0469a62cc684b7f6902e66240ceff7a6cb26ab47e7e2778723c",
+    "EQINEQ_BATCH3_SEMANTIC_LEDGER.jsonl": "bc29e74820af87386905579b7afe78552e38677e854e43e50c6fd553054c8011",
+    "EQINEQ_BATCH4_SEMANTIC_LEDGER.jsonl": "42d7211510f3dd7a8ca9532ccbb8ce51e6c7353b71f12ec9417c7f81ae3ecd7f",
+    "EQINEQ_BATCH5_SOL_DECISIONS_281_350.jsonl": "ecb1909e12abc9ffbc66b01cb63f126bff16028ccdc327f499d0a99fbafa0c49",
+    "EQINEQ_BATCH6_SOL_DECISIONS_351_420.jsonl": "79d24ac6a74ba91984c2a1655863e45cb486dd5acf93c96c88581e6eefdeab49",
+    "EQINEQ_BATCH7_SOL_DECISIONS_421_490.jsonl": "6074253d4c764adf8e8f0b5080fabf487df09774cb2129c2b13256daf7d2c98b",
+    "EQINEQ_BATCH8_SOL_DECISIONS_491_560.jsonl": "e8535309d6a2ab6a956b52dd124ace202919fd904e88db6d3d8f04825e24724c",
+    "EQINEQ_BATCH9_SOL_DECISIONS_561_583.jsonl": "d59e2c21371cc6f98caf5064f0cdf66f10acd3921bdc5548a5a223af2e34a7a7",
+    "PERMCOMB_BATCH10_SOL_DECISIONS_1_70.jsonl": "8ba789ad0d708585cf0565cb5e1c7c1acf1ba8a592883586ff09aa493eaf6e03",
+    "PERMCOMB_BATCH11_SOL_DECISIONS_71_140.jsonl": "820aab483387c7b5cbecfeb43f2345c86ef8ecfc664fae16eb3768e742879ddf",
+    "PERMCOMB_BATCH12_SOL_DECISIONS_141_210.jsonl": "25358fea42736cd3f6ff7cf1daacef34b90b19f59fd5b3e909691c77b8b760db",
+    "PERMCOMB_BATCH13_SOL_DECISIONS_211_280.jsonl": "ff526125a2570fca119607b5f569d9181559c23677dfa65dcf1a4abd40a990d8",
+    "PERMCOMB_BATCH14_SOL_DECISIONS_281_287.jsonl": "b7c29cb2912bf283ff59ceaf065e0cd8bdc540b2bb55d428dd2908587a4189a9",
+    "MATRIX_BATCH15_SOL_DECISIONS_1_70.jsonl": "d0bd546a368ffec8fd8fc97a36dbb995a2bfdc092175623bf56ebeda6203e314",
+    "MATRIX_BATCH16_SOL_DECISIONS_71_83.jsonl": "3ef8c1d509af320442a34b28fb0db314755108c17a22929f9df1911d488bdc54"
+  },
+  "nextStage": "STAGE3_GLOBAL_TAXONOMY_SYNTHESIS",
+  "gateNote": "Stage2 semantic facts are repaired and physically bound. Source/answer/solution HOLDs remain promotion blockers for affected items but do not require rereading unaffected items for Stage3 clustering."
+}

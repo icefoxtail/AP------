@@ -1,0 +1,98 @@
+{
+  "task": "D-q457-question-only",
+  "status": "SOURCE_MATCH",
+  "queue": {
+    "queueIndex": 457,
+    "questionUid": "qid_v1_8a3b6a8e3b3e2a6babab60aedebba691a1dc3ef94d4906cd05b962054a008757",
+    "sourceIdentity": "original/high/h1/2final/21_금당고_2학기_기말_고1_기출.js#13",
+    "comparisonPath": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\H1_STAGEA_AB_WORKING_COMPARISON_CURRENT.json",
+    "parity": "PASS"
+  },
+  "target": {
+    "jsPath": "archive\\exams\\original\\high\\h1\\2final\\21_금당고_2학기_기말_고1_기출.js",
+    "jsSha256": "F57A459D83644EA31D0D9F4C030F95AF6A8A43D526E99190686D9D69778DF173",
+    "questionId": 13,
+    "arrayIndex": 12,
+    "questionFieldsSha256": "fdc9967e8dd0f534196e10590215bcf13688a448130d0d51b7c96e926f7b803b",
+    "before": {
+      "questionType": "객관식",
+      "content": "$\\dfrac{x+y}{3}=\\dfrac{y+z}{4}=\\dfrac{x+z}{5}=\\dfrac{2x+y-2z}{w}$일 때, 상수 $w$의 값을 구하면? (단, $xyz\\ne0$, $xyz\\ne0$, $w\\ne0$) [4.1점]",
+      "choices": [
+        "$2$",
+        "$1$",
+        "$-1$",
+        "$-2$",
+        "$-3$"
+      ],
+      "layoutTag": "grid",
+      "wide": false,
+      "imageFieldPresent": false,
+      "imageValue": null
+    },
+    "after": {
+      "questionType": "객관식",
+      "content": "$\\dfrac{x+y}{3}=\\dfrac{y+z}{4}=\\dfrac{x+z}{5}=\\dfrac{2x+y-2z}{w}$일 때, 상수 $w$의 값을 구하면? (단, $xyz\\ne0$, $xyz\\ne0$, $w\\ne0$) [4.1점]",
+      "choices": [
+        "$2$",
+        "$1$",
+        "$-1$",
+        "$-2$",
+        "$-3$"
+      ],
+      "layoutTag": "grid",
+      "wide": false,
+      "imageFieldPresent": false,
+      "imageValue": null
+    },
+    "edited": false
+  },
+  "source": {
+    "type": "original question paper PDF",
+    "path": "D:\\기출\\(4)2기말\\수학(하)\\2021_금당고1_2기말.pdf",
+    "sha256": "71515EB4989C0F722E2287B0DFEB293B72D77023CA242625D6F20C4C07A5AFFC",
+    "pageNumber": 2,
+    "printedPage": "2/5",
+    "pageCount": 5,
+    "pageImage": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q457-question-only\\source-page2-250dpi-2.png",
+      "sha256": "BA80C8C80C90FD2AB62D5174A5CEF079306C1309EDC56B0F9128B3983F1996F4",
+      "dpi": 250
+    },
+    "detailCrop": {
+      "path": "archive\\_generated\\intelligence\\phase1\\high1-foundation\\sol-checkpoint\\source-evidence\\D-q457-question-only\\q13-detail.png",
+      "sha256": "E20C67A4CB259616A2D6012A6C6ECC2106DE56C699E0EF20207E30F3E9134FF1",
+      "cropFrom": "page 2 full-page render; x=48%-99%, y=32%-53%"
+    },
+    "pageInspectionScope": "QUESTION pages only",
+    "officialAnswerPagesOpened": false,
+    "officialSolutionPagesOpened": false
+  },
+  "comparison": {
+    "overall": "SOURCE_MATCH",
+    "stem": "JS and source match: (x+y)/3=(y+z)/4=(x+z)/5=(2x+y-2z)/w; find constant w",
+    "requestedTarget": "constant w",
+    "conditions": "The original visibly prints (단, xyz≠0, xyz≠0, w≠0); duplicate xyz≠0 clauses are present in both source and JS.",
+    "score": "[4.1점]",
+    "choices": [
+      "1) 2",
+      "2) 1",
+      "3) -1",
+      "4) -2",
+      "5) -3"
+    ],
+    "choicesDisposition": "All five options match the printed question page in order.",
+    "figure": "No source figure/table for q13; JS image property absent.",
+    "repair": "None; no discrepancy is established."
+  },
+  "validation": {
+    "jsSyntax": "PASS (node --check)",
+    "targetedQuestionRead": "PASS (q13 id, nonempty content, 5 string choices; question-only fields inspected)",
+    "queueParity": "PASS",
+    "render": "NOT_TESTED"
+  },
+  "model": {
+    "requested": "gpt-6-luna",
+    "effort": "xhigh",
+    "explicitContrarySetting": "none shown"
+  }
+}

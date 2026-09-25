@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "field": "integrationPattern",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "canonicalDecision": "SEQUENTIAL",
+  "rule": "These items compute a first condition or interval and use its result in a later intersection, parameter, discriminant, or integer filter. The concepts are chained; they do not mutually determine one decisive step, and the actual solution is not one undifferentiated operation.",
+  "items": [
+    {
+      "queueIndex": 464,
+      "questionUid": "qid_v1_9f1a220903a814a3cd444e8122b4b9a6d6c59e24e3e8e3ff9b48257b1bbd65d6",
+      "sourceFingerprint": "d89d53b3089c59e9e987396e213a6ddc3c87ebc3b2ef458aca42a75b5ca1d52c",
+      "reason": "Factor the two quadratic inequalities separately, intersect their sign intervals, then sum the integers retained in the common interval."
+    },
+    {
+      "queueIndex": 466,
+      "questionUid": "qid_v1_cc6f9fbb1a230fd963b9934425ef741c12f2deac42fc1947e18b8e6b5bcfdf63",
+      "sourceFingerprint": "7967a7205d02ae311bfc272b2362450992b4d56623ddb7480178e5e5626a3d89",
+      "reason": "Find the real-root interval of x²−kx+1, establish the relevant positive-root side, then impose inclusion of that interval in (0,5)."
+    },
+    {
+      "queueIndex": 516,
+      "questionUid": "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a",
+      "sourceFingerprint": "677d4127e8e884789fc03c58299c0cc1cca3948c1654ce4dc267f2b790e88768",
+      "reason": "The principal-square-root identity first fixes the signs of a and b; only then can the candidate quadratic discriminants be tested over that sign region."
+    },
+    {
+      "queueIndex": 555,
+      "questionUid": "qid_v1_3ad1a4198cf94b183a64ffd92856544579ed1fa04373e6eb029a3a346db22bb0",
+      "sourceFingerprint": "d1fada37e57ffea2376566b7d8b4a24568cf5155db1d446e9552c5980d93378e",
+      "reason": "Read f's zero interval and the f<g interval from the graphs, intersect the open intervals, then apply the integer restriction."
+    },
+    {
+      "queueIndex": 658,
+      "questionUid": "qid_v1_4724c797d366afa030b54a7dd41d8a67d3e4185ea867b48b0ae560dbecb20251",
+      "sourceFingerprint": "e1f75183e61800af601a0507ce0f34fb829f60ac2350311037e1e4b0377fcbcb",
+      "reason": "Split the chained strict inequality into its two sides, solve each bound, then take their common interval."
+    }
+  ],
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "CRITICAL33_MATERIALIZATION_PASS_WORKING_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "cedfaab737104d53019c0da4df4d59875c1f29ab",
+  "sourceLedger": "H1_SOL_DIRECT_CRITICAL34_DECISIONS.jsonl",
+  "scope": {
+    "rows": 33,
+    "fields": 40,
+    "fieldCounts": {
+      "l3": 23,
+      "sourceIssue": 11,
+      "conditions": 3,
+      "crossConcepts": 1,
+      "integrationPattern": 2
+    }
+  },
+  "validation": {
+    "uidMismatch": 0,
+    "sourceIdentityMismatch": 0,
+    "pendingFieldMismatch": 0,
+    "remainingQueueRows": 0,
+    "remainingQueueFields": 0
+  },
+  "l3": {
+    "reviewed": 23,
+    "candidateMatch": 10,
+    "reparent": 13,
+    "hold": 0
+  },
+  "sourceIssue": {
+    "reviewed": 11,
+    "none": 6,
+    "nonblockingDefect": 5,
+    "blocking": 0
+  },
+  "stage3Sync": {
+    "permCombRows": 7,
+    "matrixRows": 16,
+    "total": 23
+  },
+  "finality": {
+    "taxonomyFinal": false,
+    "l4Final": false,
+    "difficultyFinal": false,
+    "finalValidatorPass": false
+  },
+  "next": "L3 parent challenge cleanup/global taxonomy normalization, then L4 normalization and fresh difficulty."
+}

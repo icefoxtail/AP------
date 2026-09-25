@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_SOL_DIRECT_FIELD_ADJUDICATION",
+  "field": "crossConcepts",
+  "primaryL3": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "decisionProvenance": "SOL_DIRECT_ADJUDICATION",
+  "canonicalDecision": ["CC_POLYNOMIAL_FACTORIZATION"],
+  "activeConceptDefinition": "다항식의 근·중근·곱구조를 인수분해하여 함수·도함수·방정식의 구조를 분석하는 개념.",
+  "rule": "A known cubic root must first be factored out to expose the residual quadratic. Factorization is an additional decisive concept outside the discriminant-primary L3. CC_DISCRIMINANT duplicates that L3, while CC_CUBIC_EQUATION only names the ambient equation. Removing factorization prevents the residual-quadratic discriminant test.",
+  "items": [
+    {
+      "queueIndex": 704,
+      "questionUid": "qid_v1_da7c0dc30fbdd538feb4f4a4d70ada227051eff8221fa1e8897ef4c5b1b1dcf6",
+      "sourceFingerprint": "378a5bbf604e0e519df3e13d10bb1e17d395306a6c4455385d9cee507e331aae",
+      "reason": "Factor the fixed cubic root −2 to obtain x²+2mx+3; only after that factorization can D, axis location, and endpoint signs constrain the residual roots."
+    },
+    {
+      "queueIndex": 725,
+      "questionUid": "qid_v1_f32d26daa791cc15128b80149d7f32283721bbe9c33c1e23d122e181fe4526f7",
+      "sourceFingerprint": "48965a430d84c651003e2e515a05cd3b28b4f9fdeb42b2d2529521aeb632b70c",
+      "reason": "Factor the guaranteed root x=0 from the cubic, leaving 3x²−2mx+3; the quadratic discriminant then counts when two additional distinct real roots exist."
+    },
+    {
+      "queueIndex": 754,
+      "questionUid": "qid_v1_b9607bdcb91730681acb43e4d2b879b1d2312aae00eed9e8099b5fa6cbe86e9a",
+      "sourceFingerprint": "83d8b1d931bf7b8dd3bf98c44ae2aba11eb7cfd655246a4349098b990a533a01",
+      "reason": "Factor the known root x=1 from the cubic to expose kx²+(2k+2)x+k+3; D>0 and the no-shared-root check apply only to that residual factor."
+    }
+  ],
+  "jsEdit": false,
+  "finality": "WORKING_NOT_FINAL"
+}

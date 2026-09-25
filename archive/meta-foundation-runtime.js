@@ -9,7 +9,8 @@
     "data/meta-foundation/runtime/derivative-v1.json",
     "data/meta-foundation/runtime/probability-statistics-v1.json",
     "data/meta-foundation/runtime/middle-geometry-v1.json",
-    "data/meta-foundation/runtime/middle1-v1.json"
+    "data/meta-foundation/runtime/middle1-v1.json",
+    "data/meta-foundation/runtime/h1-foundation-v1.json"
   ];
   // TODO: publish runtime file paths in the ACTIVE registry before replacing this list.
   const TAXONOMY_URL = "data/meta-foundation/compiled/taxonomy_registry.json";
@@ -23,6 +24,10 @@
     "reviewStatus","metadataStatus","metadataRevision",
     "metaFoundationStatus","metaFoundationPackId","metaFoundationPackVersion",
     "metaFoundationCurriculumApplicability"
+  ];
+  const H1_FOUNDATION_OVERRIDE_FIELDS = [
+    "l3Disposition","l4Disposition","semanticDisposition","foundationTaxonomyStatus",
+    "metaFoundationHoldReason"
   ];
   const text = value => String(value == null ? "" : value).trim();
   const normalizeFile = value => {
@@ -104,7 +109,10 @@
       });
       if (!overlay) return merged;
       const conflicts = { ...(merged._archiveMetadataConflicts || {}) };
-      for (const field of FOUNDATION_OVERRIDE_FIELDS) {
+      const overrideFields = overlay.metaFoundationPackId === "H1_FOUNDATION"
+        ? FOUNDATION_OVERRIDE_FIELDS.concat(H1_FOUNDATION_OVERRIDE_FIELDS)
+        : FOUNDATION_OVERRIDE_FIELDS;
+      for (const field of overrideFields) {
         const value = overlay[field];
         if (!meaningful(value) && value !== false && value !== 0) continue;
         if (meaningful(merged[field]) && !same(merged[field], value)) conflicts[field] = { source: merged[field], metadata: value };
@@ -155,7 +163,9 @@
         rawQuestionHash: base.rawQuestionHash,
         approvedSourceFingerprint: base.approvedSourceFingerprint,
         gradeConflict: base.gradeConflict,
-        taxonomyStatus: "CONFIRMED",
+        taxonomyStatus: overlay.metaFoundationPackId === "H1_FOUNDATION"
+          ? (overlay.taxonomyStatus || base.taxonomyStatus || "CONFIRMED")
+          : "CONFIRMED",
         metadataConflicts: [],
         reviewStatus: overlay.reviewStatus || "reviewed_pass"
       };
@@ -170,7 +180,9 @@
         sourceFile: seed.sourceFile || overlay.sourceArchiveFile,
         sourceOrdinal: Number(seed.sourceOrdinal || overlay.sourceOrdinal),
         sourceQuestionNo: seed.sourceQuestionNo || overlay.sourceQuestionNo,
-        taxonomyStatus: "CONFIRMED",
+        taxonomyStatus: overlay.metaFoundationPackId === "H1_FOUNDATION"
+          ? (overlay.taxonomyStatus || seed.taxonomyStatus || "CONFIRMED")
+          : "CONFIRMED",
         metadataConflicts: [],
         reviewStatus: overlay.reviewStatus || "reviewed_pass"
       });
@@ -258,7 +270,7 @@
     runtime = {
       schemaVersion: "meta-foundation-runtime-overlay-bundle-v1",
       status: "ACTIVE",
-      runtimeVersion: "META_FOUNDATION_MULTI/runtime-bridge-v3:" + packs.map(pack => pack.runtimeVersion).join("+"),
+      runtimeVersion: "META_FOUNDATION_MULTI/runtime-bridge-v5:" + packs.map(pack => pack.runtimeVersion).join("+"),
       packId: "MULTI_PACK",
       packVersion: packs.map(pack => pack.packId + "@" + pack.packVersion).join("+"),
       packs: packs.map(pack => ({

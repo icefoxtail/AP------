@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALITY_REJECTED_WORKER_RETIRED",
+  "worker": "A (h1_matrix_boundary_a)",
+  "repeatedDefectClass": "unsupported or cross-UID source-condition assertion in an item verdict",
+  "firstObservedDefect": "q762 first pass imported |p|=1 from q781 although q762's source said p=10; targeted correction was recorded in l3-boundary/H1_Q762_A_TARGETED_QUALITY_CORRECTION.json.",
+  "recurrentDefect": "q31 polynomial batch1 verdict assumed the remaining factors g,h were monic and marked PASS. The source and original question do not state monicity; g,h and −g,−h can yield distinct requested values. q31's source-exact HOLD was already recorded in H1_SOL_Q031_FACTOR_NORMALIZATION_ADJUDICATION.json and D question-only evidence.",
+  "rejectedLedger": "H1_A_REJECTED_POLY_REMAINING_BATCH1_20.jsonl",
+  "rejectedScope": "20 UIDs in H1_POLY_DIVISION_REMAINING_BATCH1.jsonl",
+  "lastCleanScopePreserved": "Prior A verdicts outside this batch remain in their existing physical ledgers; this rejection is bounded to the batch since the last clean A checkpoint.",
+  "replacementRequired": true,
+  "replacementModel": "gpt-6-luna",
+  "replacementReasoningEffort": "xhigh",
+  "replacementBlindInput": "same current UID/source bundle, cloned without A/B/C verdict files or this rejection ledger",
+  "bVerdictsInvalidated": false,
+  "productionMutation": false
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "task": "D question-only source audit, H1 queueIndex 620",
+  "status": "SOURCE_MATCH",
+  "disposition": "NO_JS_CHANGE_DISTINCT_ROOT_QUALIFIER_NOT_PRESENT_IN_SOURCE_OR_JS",
+  "queueIndex": 620,
+  "questionUid": "qid_v1_4aa3e71305ce27c69582889108c56e6f910cc6d7757d884d923be835b09de398",
+  "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#21",
+  "targetJs": "archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js",
+  "sourceScope": "Original question PDF question page only; full stem, root wording, conditions, target, and choices checked. No official answer or solution page inspected or used.",
+  "source": {
+    "pdf": {
+      "path": "D:\\기출\\1학기중간\\고1\\25 효천고+\\2025_효천고1_공통수학1_1중간_.pdf",
+      "page": 3,
+      "printedPage": "3/3",
+      "sha256": "59FA2A7DE622EA7E43FA3EF6930EBF6C9C26BDFFF4DF6CBC991F497D3644C6F8"
+    }
+  },
+  "itemBefore": {
+    "id": 21,
+    "questionType": "서술형",
+    "content": "이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 $f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "itemAfter": {
+    "id": 21,
+    "questionType": "서술형",
+    "content": "이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 $f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
+    "choices": [],
+    "image": null,
+    "layoutTag": "grid",
+    "wide": false
+  },
+  "sourceConfirmed": {
+    "section": "서술형 2",
+    "rootWording": "이차방정식 x²+ax+b=0의 두 근이 α, β이다.",
+    "distinctRootQualifier": "No “서로 다른”/distinct-root qualifier is printed.",
+    "conditions": [
+      "x² coefficient of f(x) is 3",
+      "f(α)=2α",
+      "f(β)=2β",
+      "f(1)=11",
+      "a,b are real numbers"
+    ],
+    "target": "a+b",
+    "score": "5점",
+    "choices": "None; written-response item."
+  },
+  "fieldDispositions": {
+    "content": "SOURCE_MATCH",
+    "rootWording": "SOURCE_MATCH_NO_DISTINCT_QUALIFIER",
+    "conditions": "SOURCE_MATCH",
+    "requestedTarget": "SOURCE_MATCH",
+    "choices": "SOURCE_MATCH_NONE",
+    "answer": "NOT_INSPECTED_OR_CHANGED",
+    "solution": "NOT_INSPECTED_OR_CHANGED",
+    "metadata": "NOT_INSPECTED_OR_CHANGED"
+  },
+  "validation": {
+    "queueParity": {
+      "status": "PASS",
+      "queueIndex": 620,
+      "questionUid": "qid_v1_4aa3e71305ce27c69582889108c56e6f910cc6d7757d884d923be835b09de398",
+      "sourceIdentity": "original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js#21"
+    },
+    "syntax": {
+      "command": "node --check archive/exams/original/high/h1/1mid/25_효천고_1학기_중간_고1_기출.js",
+      "status": "PASS",
+      "exitCode": 0
+    },
+    "itemSchema": {
+      "status": "PASS",
+      "checks": [
+        "questionBank array and q21 present",
+        "q21 questionType is written response",
+        "q21 choices array is empty",
+        "root wording and conditions match original page",
+        "requested a+b target and score match original page"
+      ]
+    },
+    "render": {
+      "status": "NOT_TESTED",
+      "reason": "No Archive engine browser review requested; source page was inspected directly."
+    }
+  },
+  "contentSha256": "c5e8b9dfbee507ec913c619d741357a17f2bf790cb41ee460ba9b7276f7a505d",
+  "evidenceFiles": [
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q620-question-only/source-question-page-3.png",
+      "role": "Original question PDF page 3/3 full-page render",
+      "sha256": "B18AE6088580C6071578CED87FEF97B6456323BFAE66C44DE3DDD96FB5351A74"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q620-question-only/source-q21-detail.png",
+      "role": "Question 21/서술형 2 source detail crop",
+      "sha256": "2145156368951CB49B715FCFF2B59ACF2EF665F7E6A3A4993EED446CF6B9D528"
+    },
+    {
+      "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/source-evidence/D-q620-question-only/source-q21-root-condition-detail.png",
+      "role": "High-resolution crop of root wording and conditions",
+      "sha256": "AE67C3BE8FC1696D22E9CAC22AACBB52CC1A2FAD5105FC6E6372AE85E8B00BF2"
+    }
+  ],
+  "officialAnswerPageInspected": false,
+  "officialSolutionPageInspected": false,
+  "officialAnswerOrSolutionUsed": false,
+  "model": {
+    "identity": "gpt-6-luna",
+    "reasoningEffort": "xhigh"
+  },
+  "sourceProvenanceCorrection": {
+    "field": "source.pdf.sourceQuestionImage",
+    "before": "D:\\2025년\\1학기중간_2025\\고1\\효천고\\S28BW-826042516170_0003.jpg",
+    "after": null,
+    "reason": "Removed an unverified similarly named JPEG reference. The bound source is the matching D: question PDF page 3/3 and its rendered page evidence; the JPEG path was not opened or used."
+  }
+}

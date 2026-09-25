@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "status": "QDISC_L4_BATCH34_CHECKPOINT_COMPLETE_WORKING_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "parentHead": "e69a7100eab26f03d61a0eaafbfc025a6a48ecd8",
+  "scope": {
+    "preparedRows": 40,
+    "batch3Rows": 20,
+    "batch4Rows": 20,
+    "currentQdiscAtStart": 35,
+    "upstreamMovedBeforeReview": 5,
+    "parentChallengesFoundAndRepaired": 25,
+    "l4Assigned": 10
+  },
+  "validation": {
+    "directReviewRows": 40,
+    "parentRepairRows": 25,
+    "l4AssignmentRows": 10,
+    "normalizedL3Rows": 1170,
+    "uniqueUid": 1170,
+    "uniqueSourceIdentity": 1170,
+    "currentQdiscFamilyAfterRepair": 45
+  },
+  "l4": {
+    "newL4KeysCreated": 0,
+    "familyCounts": {
+      "L4_QDISC_DISCRIMINANT_CONDITION": 3,
+      "L4_QDISC_SIGN_RELATION_SYSTEM": 1,
+      "DISCRIMINANT_PARAMETER_INEQUALITY": 3,
+      "L4_QDISC_DISCRIMINANT_IDENTITY": 2,
+      "TPL_ROOT_COUNT_BY_EXTREMA": 1
+    },
+    "activeTemplateReuse": {
+      "TPL_ROOT_COUNT_BY_EXTREMA": 1
+    },
+    "workingFamilyReuseCount": 9
+  },
+  "parentRepairTargetCounts": {
+    "PT_H1_ROOT_COEFFICIENT_RELATION": 6,
+    "PT_H1_QUADRATIC_GRAPH_INTERSECTION": 1,
+    "PT_H1_QUADRATIC_INEQUALITY": 7,
+    "PT_H1_HIGHER_DEGREE_EQUATION": 8,
+    "PT_H1_COMPLEX_POWER_ROOT": 1,
+    "PT_H1_INEQUALITY_APPLICATION": 1,
+    "PT_H1_EQUATION_APPLICATION": 1
+  },
+  "upstreamMoved": [
+    {
+      "queueIndex": 712,
+      "sourceIdentity": "original/high/h1/1final/25_제일고_1학기_기말_고1_기출c.js#8",
+      "targetProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT"
+    },
+    {
+      "queueIndex": 735,
+      "sourceIdentity": "original/high/h1/1final/26_광양제철고_1학기_기말_고1_기출.js#7",
+      "targetProblemTypeKey": "PT_H1_INEQUALITY_APPLICATION"
+    },
+    {
+      "queueIndex": 761,
+      "sourceIdentity": "original/high/h1/1final/26_복성고_1학기_기말_고1_기출.js#18",
+      "targetProblemTypeKey": "PT_H1_EQUATION_APPLICATION"
+    },
+    {
+      "queueIndex": 770,
+      "sourceIdentity": "original/high/h1/1final/26_순천고_1학기_기말_고1_기출.js#21",
+      "targetProblemTypeKey": "PT_H1_SYSTEM_EQUATION"
+    },
+    {
+      "queueIndex": 775,
+      "sourceIdentity": "original/high/h1/1final/26_순천여고_1학기_기말_고1_기출.js#21",
+      "targetProblemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION"
+    }
+  ],
+  "physicalArtifacts": [
+    "l4-quadratic-discriminant/H1_QDISC_L4_BATCH34_DIRECT_REVIEW_40.jsonl",
+    "l4-quadratic-discriminant/H1_QDISC_L4_BATCH34_PARENT_REPAIR_25.jsonl",
+    "l4-quadratic-discriminant/H1_QDISC_L4_BATCH34_ASSIGNMENTS_10.jsonl",
+    "l4-quadratic-discriminant/H1_QDISC_L4_BATCH34_CHECKPOINT.json",
+    "H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl"
+  ],
+  "next": "full L4 normalization across 1170 using corrected normalized L3 upstream; do not start difficulty before L4 normalization checkpoint.",
+  "finality": {
+    "l3Final": false,
+    "l4Final": false,
+    "difficultyFinal": false,
+    "canonicalPromotion": false
+  }
+}

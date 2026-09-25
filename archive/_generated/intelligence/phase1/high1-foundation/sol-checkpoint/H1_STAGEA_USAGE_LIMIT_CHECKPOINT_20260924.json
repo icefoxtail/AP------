@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "status": "WORKING_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "previousCheckpointHead": "6cedbde6d1e63e08ee84a43cf7d842407919decf",
+  "denominator": 1170,
+  "stageARawA": 1170,
+  "stageARawB": 1170,
+  "queue51To1170": {
+    "currentSourceFingerprintA": 1120,
+    "currentSourceFingerprintB": 1120,
+    "currentDual": 1120,
+    "workingFullConflicts": 707,
+    "currentC": 689,
+    "unreviewedConflict": 37
+  },
+  "newlyConfirmedQuestionSourceRepairs": [
+    { "queueIndex": 980, "fields": ["content"], "evidence": "source-evidence/D-q980-question-only/source-verdict-ledger.md" },
+    { "queueIndexes": [538, 539], "fields": ["content"], "evidence": "source-evidence/D-q980-svg-audit/source-verdict-ledger.md" },
+    { "queueIndex": 1045, "fields": ["content"], "evidence": "source-evidence/D-q1045-question-only/source-verdict-ledger.md" }
+  ],
+  "workerQuality": {
+    "retiredC": "c_blind_conflicts01",
+    "reason": "Repeated false source-read HOLD at q256 and q1045; entire old C32 batch rejected.",
+    "acceptedReplacement": ["H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS32_20.jsonl", "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS33_20.jsonl", "H1_STAGEA_LUNA6_C_REPLACEMENT_CONFLICTS34_20.jsonl"],
+    "replacementModel": "gpt-6-luna",
+    "replacementReasoningEffort": "xhigh"
+  },
+  "workerUsageLimit": {
+    "effect": "Replacement C turn stopped before writing q538/q539 C verdicts.",
+    "acceptedOutputForQ538Q539C": false,
+    "pendingCInputBundles": [
+      "C:\\Users\\USER\\.codex\\h1-c-blind\\source-repair-q538-q539-final-conflict",
+      "C:\\Users\\USER\\.codex\\h1-c-blind\\conflicts35",
+      "C:\\Users\\USER\\.codex\\h1-c-blind\\conflicts36-final-remainder"
+    ]
+  },
+  "remainingRequiredStages": [
+    "Complete remaining C conflict reviews and Sol 3-way field adjudication",
+    "Global L3/L4/CrossConcept/Condition/IntegrationPattern normalization",
+    "Fresh blind A/B difficulty review for 1170 items",
+    "Final 1170-row item ledger and deterministic validator",
+    "Metadata expansion candidate and final branch push"
+  ]
+}
