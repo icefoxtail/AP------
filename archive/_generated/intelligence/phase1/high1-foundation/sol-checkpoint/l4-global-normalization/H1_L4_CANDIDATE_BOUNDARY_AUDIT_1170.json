@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "h1-l4-candidate-boundary-audit-v1",
+  "status": "CANDIDATE_BOUNDARY_REVIEW_COMPLETE_NOT_FINAL",
+  "branch": "meta-foundation-h1-preprocess-sol-review",
+  "basisHead": "4d59afa6bfb9f0255c9b79eef68b136892a7088d",
+  "semanticSkeletonReviewPrecededCandidateComparison": true,
+  "l3AuthorityPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/H1_STAGE3_L3_GLOBAL_NORMALIZED_1170.jsonl",
+  "l3AuthoritySha256": "9b1c6aacc9adb478a765d06073cc209061c3001eb16a483f2771169eedd96a1d",
+  "inputBundlePath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_DECISION_INPUT_1170_V14.jsonl",
+  "inputBundleSha256": "57852c3aeb07103afc87fa00153475e0de17cba83f76112d2ba66bdddb448ae8",
+  "skeletonCheckpointPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_SKELETON_CHECKPOINT_1113.json",
+  "skeletonCheckpointSha256": "f0c842f665ce96fe85f4ae1e9f6f048634f99bb1bc5d409f860fe7e4125039aa",
+  "candidateAssignmentsPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_NORMALIZATION_CANDIDATE_ASSIGNMENTS_1170.jsonl",
+  "candidateAssignmentsSha256": "873694650297d2b59a16cde9109838f6bb3e231d9d0d1a281b481a487089e905",
+  "newCandidateLedgerPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_NEW_L4_CANDIDATE_LEDGER_021.jsonl",
+  "newCandidateLedgerSha256": "72f33e04f485cdcaadc63fb237399edbff3edfc99cc674628a7bbec589d5cdac",
+  "joinedRelationalArtifactPath": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_L4_RELATIONAL_WORKING_JOIN_1170.jsonl",
+  "joinedRelationalArtifactSha256": "1208b3232b01b4eb7370dcc22d693e4f92b30435ae0be01282b395bdf6afe2ff",
+  "denominator": 1170,
+  "assignmentCoverage": 1170,
+  "uniqueUid": 1170,
+  "uniqueSourceIdentity": 1170,
+  "assignedParentCompatibleRows": 1113,
+  "explicitL3Holds": 57,
+  "assignmentStatusCounts": {
+    "RETAIN_WORKING_CANDIDATE": 826,
+    "NEW_L4_CANDIDATE": 144,
+    "HOLD": 57,
+    "REUSE_ACTIVE": 143
+  },
+  "candidateDecisionCounts": {
+    "RETAIN_PARENT_COMPATIBLE_KEY": 761,
+    "NEW_L4_CANDIDATE": 144,
+    "REFINE_OR_COMPRESS_CANDIDATE_BOUNDARY": 112,
+    "HOLD_UPSTREAM_L3": 17,
+    "REASSIGN_AFTER_NORMALIZED_L3": 96,
+    "HOLD_L3_PARENT_CHALLENGE": 40
+  },
+  "oldSameStageCandidateL3ParentMismatchesAmongReviewedRows": 183,
+  "newL4CandidateFamilyCount": 21,
+  "newL4CandidateSupportingRows": 144,
+  "newCandidateFamilyMinimumSupport": 3,
+  "newCandidateFamilyMaximumSupport": 23,
+  "candidateFamiliesAllRepeatedAndIsolated": true,
+  "canonicalPromotions": 0,
+  "l4Final": false,
+  "l3Modified": false,
+  "boundaryDecisions": [
+    {
+      "independentSkeletonClusters": [
+        "DIVISOR_COUNT_FROM_PRIME_EXPONENTS",
+        "DIVISOR_COUNT_WITH_REQUIRED_EXPONENTS"
+      ],
+      "supportingUidCount": 10,
+      "currentParentCompatibleKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "decision": "REUSE_WORKING_FAMILY",
+      "reason": "The fresh decisive step is independent exponent choices multiplied together; prime factorization is retained on the CrossConcept axis rather than creating an L4 solely for concept context."
+    },
+    {
+      "independentSkeletonCluster": "DICE_OUTCOME_CLASSIFICATION_BY_SUM_OR_RESIDUE",
+      "supportingUidCount": 8,
+      "currentParentCompatibleKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "decision": "REUSE_WORKING_FAMILY",
+      "reason": "Ordered outcomes are partitioned into disjoint cases and summed; the dice context and sum/residue condition do not by themselves require a separate L4 under the general counting-principle parent."
+    },
+    {
+      "independentSkeletonCluster": "ARITHMETIC_PROPERTY_CONSTRAINED_SUBSET_COUNT",
+      "supportingUidCount": 4,
+      "currentParentCompatibleKey": "TPL_COMBINATION_SELECTION",
+      "decision": "REUSE_ACTIVE_FAMILY",
+      "reason": "The decisive selection operation remains an unordered subset count; number-theory restrictions stay in CrossConcept/Condition metadata."
+    },
+    {
+      "sourceIdentity": "original/high/h1/2final/24_강남여고_2학기_기말_고1_기출.js#4",
+      "supportingUidCount": 1,
+      "correctedIndependentSkeletonCluster": "SIMPLE_UNORDERED_SUBSET_SELECTION",
+      "currentParentCompatibleKey": "TPL_COMBINATION_SELECTION",
+      "decision": "CORRECT_SKELETON_AND_REUSE_ACTIVE_FAMILY",
+      "reason": "The source asks only to choose pots for identical flowers and does not compare identical versus distinguishable objects."
+    },
+    {
+      "independentSkeletonCluster": "BOX_ASSIGNMENT_OBJECT_IDENTITY_CONTRAST",
+      "supportingUidCount": 3,
+      "templateKeyCandidate": "TPL_H1_SELECTION_BOX_IDENTITY",
+      "decision": "RETAIN_NEW_CANDIDATE",
+      "reason": "These rows explicitly compare the identical-object combination count with the distinguishable-object ordered assignment count; this repeated two-branch comparison sequence is not represented by either single active combination/permutation family."
+    }
+  ],
+  "dimensionSeparation": "CrossConcept, Condition, and IntegrationPattern were not used to create L4 splits; existing working decisions are preserved in the joined artifact for the next relational review.",
+  "nextStep": "Continue targeted CrossConcept/Condition/IntegrationPattern reconciliation from the existing joined working decisions; preserve all source, upstream L3, and parent-challenge holds."
+}
