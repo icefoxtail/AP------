@@ -34,9 +34,9 @@ const combined=[...readJson("archive/data/meta-foundation/runtime/geometry-equat
 assert.strictEqual(combined.length,1904);
 assert.strictEqual(new Set(combined.map(r=>r.questionUid)).size,1904);
 assert.strictEqual(new Set(combined.map(r=>sourceKey(r.sourceArchiveFile,r.sourceOrdinal))).size,1904);
-assert.strictEqual(receipt.checked.combinedRuntimeRecords,3536);
-assert.strictEqual(receipt.checked.combinedUniqueUid,3536);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,3536);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords,5087);
+assert.strictEqual(receipt.checked.combinedUniqueUid,5087);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity,5087);
 assert.strictEqual(receipt.checked.integralCalculusRuntimeRecords,126);
 assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected,124);
 console.log("PASS MathII integral Archive2 runtime bridge");

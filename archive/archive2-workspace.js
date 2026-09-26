@@ -176,7 +176,7 @@
     scopes: [],
     distribution: "equal",
     count: 10,
-    buckets: [2, 3],
+    buckets: [],
     custom: {},
     selected: [],
     pins: [],
@@ -599,7 +599,7 @@
                     sourceFiles: state.sources,
                     primaryPaths: s.paths,
                   }) &&
-                  state.buckets.includes(r.difficultyBucket) &&
+                  (!state.buckets.length || state.buckets.includes(r.difficultyBucket)) &&
                   C.eligibility(r, state).ok &&
                   !C.composeExclusions(context()).union.has(r.questionUid),
               ).length
@@ -1114,7 +1114,7 @@
         .join("")}</div>`;
   }
   function bucketButtons(current, row = "") {
-    return `<div class="bucket-set" aria-label="5단계 난이도">${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
+    return `<div class="bucket-set" aria-label="5단계 난이도">${button("bucket-all", "전체 난이도", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
   function composeAdvancedChoices(selectionFilters) {
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
@@ -1174,7 +1174,7 @@
       null,
     )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><label>난이도 (1~5)${bucketButtons(state.buckets)}</label></div>
       <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
-      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
+      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : (row.difficultyBuckets.length ? row.difficultyBuckets.join(" · ") : "전체 난이도")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
@@ -2290,6 +2290,12 @@
         }
         invalidate();
         render();
+      } else if (a === "bucket-all") {
+        const row = b.dataset.row;
+        if (row) state.custom[row] = { ...state.custom[row], buckets: [] };
+        else state.buckets = [];
+        invalidate();
+        render();
       } else if (a === "bucket") {
         const n = Number(b.dataset.bucket),
           row = b.dataset.row;
@@ -2299,7 +2305,7 @@
         const next = values.includes(n)
           ? values.filter((v) => v !== n)
           : [...values, n].sort();
-        if (!next.length) throw new Error("난이도를 하나 이상 선택하세요.");
+
         if (row) state.custom[row] = { ...state.custom[row], buckets: next };
         else state.buckets = next;
         invalidate();

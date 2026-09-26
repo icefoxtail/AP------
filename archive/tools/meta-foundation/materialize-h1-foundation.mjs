@@ -503,6 +503,7 @@ const tplDefinitionByKey = new Map([...activeTPL.entries(), ...newTemplates.map(
 for (const source of sourceRows) {
   const base = source.row;
   const metadata = source.metadata;
+  Object.assign(metadata, core.projectBasicEligibility(metadata));
   const relation = relationByUid.get(base.questionUid);
   const l3Key = finalL3ByUid.get(base.questionUid);
   const l4Key = finalL4ByUid.get(base.questionUid);
@@ -522,7 +523,8 @@ for (const source of sourceRows) {
     compatibilityNewStrongHold.add(base.questionUid);
   }
   const finalHoldReasons = sorted(new Set(holdReasons));
-  const statusHold = finalHoldReasons.length > 0;
+  const basicHoldReasons = core.basicHardReasons({ holdReasons: finalHoldReasons });
+  const statusHold = basicHoldReasons.length > 0;
   const problemType = l3Key ? ptDefinitionByKey.get(l3Key) : null;
   const template = l4Key ? tplDefinitionByKey.get(l4Key) : null;
   const crossConceptKeys = [...new Set(relation.crossConceptKeys || [])].sort();
@@ -553,7 +555,7 @@ for (const source of sourceRows) {
   finalCompatibilityCounts[legacy.value] = (finalCompatibilityCounts[legacy.value] || 0) + 1;
   const metadataRevision = "meta-foundation:H1_FOUNDATION@1.0.0";
   const h1HoldReason = finalHoldReasons.length ? finalHoldReasons.join("|") : null;
-  const defaultSelectable = statusHold ? false : metadata.defaultSelectable !== false;
+  const defaultSelectable = !statusHold && (metadata.curriculumApplicability || "DEFAULT_SCOPE") === "DEFAULT_SCOPE";
   const curriculumApplicability = metadata.curriculumApplicability || "DEFAULT_SCOPE";
   const l1 = metadata.L1 || metadata.standardUnit || "";
   const l2 = metadata.L2 || metadata.subUnit || "";
@@ -622,7 +624,8 @@ for (const source of sourceRows) {
     sourceFingerprint: source.currentFingerprint,
     identityStatus: "VERIFIED",
     sourceStatus: "VERIFIED",
-    taxonomyStatus: (!l3Key || l4Disposition === "HOLD" || sourceDrift) ? "HOLD" : "CONFIRMED",
+    taxonomyStatus: "CONFIRMED",
+    basicTaxonomyStatus: "CONFIRMED",
     gradeConflict: false,
     reviewStatus: statusHold ? "HOLD" : "reviewed_pass",
     semanticDisposition: statusHold ? "HOLD" : "CONFIRMED",
@@ -681,8 +684,11 @@ for (const source of sourceRows) {
     sourceHoldReason: sourceDrift ? "LATEST_MAIN_SOURCE_CHANGED_NO_REVIEW_AUTHORIZED" : (diff.sourceHoldReason || null),
     metaFoundationHoldReason: h1HoldReason,
     holdReasons: finalHoldReasons,
+    advancedHoldReasons: finalHoldReasons.filter(reason => !basicHoldReasons.includes(reason)),
+    advancedCapabilityStatus: finalHoldReasons.length ? "INCOMPLETE" : "AVAILABLE",
     semanticDisposition: statusHold ? "HOLD" : "CONFIRMED",
-    taxonomyStatus: (!l3Key || l4Disposition === "HOLD" || sourceDrift) ? "HOLD" : "CONFIRMED",
+    taxonomyStatus: "CONFIRMED",
+    basicTaxonomyStatus: "CONFIRMED",
     foundationTaxonomyStatus: (!l3Key || l4Disposition === "HOLD" || sourceDrift) ? "HOLD" : "CONFIRMED",
     reviewStatus: statusHold ? "HOLD" : "reviewed_pass",
     curriculumApplicability,
@@ -894,7 +900,7 @@ const pack = {
     "The completed 28-item outlier compare is the accepted Difficulty result; the single current Bucket 5 target is materialized at adjudicated Bucket 4.",
     "Only the 10 KEEP_NEW_L4 candidate families are registered; NO_SEPARATE_L4 and parent reassignment outcomes are preserved per UID.",
     "Forty-eight latest-main source changes remain per-item source holds and are not sent for another review.",
-    "Unknown Difficulty and L3/L4 HOLD states remain explicit, non-selectable records; normal items are still available to Archive 2.0."
+    "Unknown difficulty and L3/L4 HOLD remain advanced diagnostics; only basic quality/scope defects block Archive 2.0."
   ]
 };
 

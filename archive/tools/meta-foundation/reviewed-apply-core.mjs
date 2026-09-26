@@ -169,11 +169,11 @@ export function validatePacketEnvelope(packet, { rawBytes = null } = {}) {
     }
     if (patch.status === "REPAIR") {
       requiredString(patch.runtimePackId, `runtimePackId for ${patch.questionUid}`);
-      const required = ["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys"];
+      const required = ["standardUnitKey", "subUnitKey"];
       for (const field of required) if (!Object.hasOwn(patch.after, field)) fail(`REPAIR after.${field} required for ${patch.questionUid}`);
-      if (!Array.isArray(patch.after.crossConceptKeys) || new Set(patch.after.crossConceptKeys).size !== patch.after.crossConceptKeys.length) fail(`crossConceptKeys must be unique array for ${patch.questionUid}`);
+      if (Object.hasOwn(patch.after, "crossConceptKeys") && (!Array.isArray(patch.after.crossConceptKeys) || new Set(patch.after.crossConceptKeys).size !== patch.after.crossConceptKeys.length)) fail(`crossConceptKeys must be unique array for ${patch.questionUid}`);
       if (Object.hasOwn(patch.after, "conditionKeys") && (!Array.isArray(patch.after.conditionKeys) || new Set(patch.after.conditionKeys).size !== patch.after.conditionKeys.length)) fail(`conditionKeys must be a unique array for ${patch.questionUid}`);
-      if (Object.hasOwn(patch.after, "difficultyBucket") && (!Number.isInteger(patch.after.difficultyBucket) || patch.after.difficultyBucket < 1 || patch.after.difficultyBucket > 5)) fail(`difficultyBucket must be 1..5 for ${patch.questionUid}`);
+      if (patch.after.difficultyBucket != null && patch.after.difficultyBucket !== "UNKNOWN" && (!Number.isInteger(patch.after.difficultyBucket) || patch.after.difficultyBucket < 1 || patch.after.difficultyBucket > 5)) fail(`difficultyBucket must be 1..5 for ${patch.questionUid}`);
       if (legacyCompatibility) {
         const legacyOnlyBefore = Object.keys(patch.before).filter((field) => !Object.hasOwn(patch.after, field)).sort();
         if (!equal(legacyOnlyBefore, ["legacyL3Key", "legacyL4Key"])) {

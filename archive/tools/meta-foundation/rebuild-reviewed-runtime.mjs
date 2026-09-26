@@ -217,9 +217,10 @@ const outputFiles = new Map();
 const changedPacks = new Set();
 const touchedUids = [];
 const makeRuntimeRecord = (meta, id, binding, l1, l2, l3, l4, packId, packVersion, catalogRow) => {
-  const difficultyValid = Number.isInteger(meta.difficultyBucket) && meta.difficultyBucket >= 1 && meta.difficultyBucket <= 5;
-  const runtimeSelectable = meta.reviewStatus === "reviewed_pass" && meta.foundationTaxonomyStatus === "CONFIRMED" &&
-    meta.curriculumApplicability === "DEFAULT_SCOPE" && meta.defaultSelectable !== false && difficultyValid && Boolean(meta.courseKey || meta.standardCourse) && Boolean(l1 && (l2 || binding.bindingMode === "STANDARD_UNIT_DIRECT"));
+  const runtimeSelectable = catalogCore.default.basicEligibility({ ...catalogRow, ...meta,
+    basicTaxonomyStatus: catalogRow?.basicTaxonomyStatus || catalogRow?.taxonomyStatus,
+    L1: l1.labelKo, L2: l2?.labelKo || binding.subUnitLabelKo || ""
+  }).ok;
   const l2Label = l2?.labelKo || binding.subUnitLabelKo || "";
   return {
     questionUid: meta.questionUid,
@@ -239,8 +240,8 @@ const makeRuntimeRecord = (meta, id, binding, l1, l2, l3, l4, packId, packVersio
     subUnit: meta.subUnit || l2Label,
     L1: l1.labelKo,
     L2: l2Label,
-    L3: l3.canonicalLabelKo,
-    L4: l4.canonicalLabelKo,
+    L3: l3?.canonicalLabelKo || null,
+    L4: l4?.canonicalLabelKo || null,
     problemTypeKey: meta.problemTypeKey,
     templateKey: meta.templateKey,
     crossConceptKeys: [...(meta.crossConceptKeys || [])],
@@ -278,10 +279,11 @@ for (const override of overrideByUid.values()) {
   const l2 = meta.subUnitKey ? masterByKey.get(meta.subUnitKey) : null;
   const l3 = problemByKey.get(meta.problemTypeKey);
   const l4 = templateByKey.get(meta.templateKey);
-  if (!l1 || meta.subUnitKey && !l2 || !l3 || !l4 || l4.parentProblemTypeKey !== l3.problemTypeKey) throw new Error(`REPAIR canonical mapping invalid: ${override.questionUid}`);
-  if (!meta.crossConceptKeys.every((key) => conceptByKey.get(key)?.status === "ACTIVE")) throw new Error(`REPAIR CrossConcept invalid: ${override.questionUid}`);
+  if (!l1 || meta.subUnitKey && !l2 || meta.problemTypeKey && !l3 || meta.templateKey && (!l4 || !l3 || l4.parentProblemTypeKey !== l3.problemTypeKey)) throw new Error(`REPAIR canonical mapping invalid: ${override.questionUid}`);
+  if (!(meta.crossConceptKeys || []).every((key) => conceptByKey.get(key)?.status === "ACTIVE")) throw new Error(`REPAIR CrossConcept invalid: ${override.questionUid}`);
   const binding = bindingRows.find((row) => row.curriculum === (meta.curriculum || meta.curriculumKey) && row.standardUnitKey === meta.standardUnitKey && (row.subUnitKey ?? null) === (meta.subUnitKey ?? null) && row.problemTypeKey === meta.problemTypeKey);
-  if (!binding) throw new Error(`REPAIR curriculum binding missing: ${override.questionUid}`);
+  if (l3 && !binding) throw new Error(`REPAIR curriculum binding missing: ${override.questionUid}`);
+  const basicParent = binding || { curriculum: meta.curriculum || meta.curriculumKey, standardCourse: meta.standardCourse || meta.courseKey };
   const runtimePack = runtimes.get(packId);
   const positions = [];
   for (const [index, row] of runtimePack.runtime.records.entries()) if (row.questionUid === override.questionUid) positions.push(index);
@@ -292,7 +294,7 @@ for (const override of overrideByUid.values()) {
   if (!catalogRow || normalizeSourceFile(catalogRow.sourceFile) !== normalizeSourceFile(meta.sourceArchiveFile) || Number(catalogRow.sourceOrdinal) !== Number(meta.sourceOrdinal)) {
     throw new Error(`Archive2 catalog join missing/mismatched for ${override.questionUid}`);
   }
-  const next = makeRuntimeRecord(meta, identityByUid.get(override.questionUid), binding, l1, l2, l3, l4, packId, activePack.version, catalogRow);
+  const next = makeRuntimeRecord(meta, identityByUid.get(override.questionUid), basicParent, l1, l2, l3, l4, packId, activePack.version, catalogRow);
   if (positions.length) {
     const prior = runtimePack.runtime.records[positions[0]];
     Object.assign(prior, next);

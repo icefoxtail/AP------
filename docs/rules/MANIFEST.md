@@ -9,11 +9,11 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 18546 bytes | sha256 1e3e7417ef7117c1f4663244847d9e34e4b1e443c96061dba79d8908c6839a48
+- 00_RULES_INDEX.md | 18967 bytes | sha256 337168dcc9083e8225033699cee70c8a9f143a129ee5ba4cb18156e22da095ea
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
-- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 47813 bytes | sha256 6a02139e5f716e1f07043bbbf5b414108a9bd22dfbd545e071ebb76ef4a6faef
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 50549 bytes | sha256 584119db9cc31e060f489b155816560d0f4094adc8562e113a5a77a14df8edac
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md | 1839 bytes | sha256 3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 555923 bytes | sha256 0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e

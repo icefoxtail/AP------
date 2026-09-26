@@ -24,6 +24,11 @@
     "rpmPathStatus",
     "metaFoundationHoldReason",
     "metaFoundationPackVersion",
+    "metaFoundationPackId", "semanticDisposition", "basicSemanticDisposition",
+    "sourceIssueHold", "sourceHoldReason", "sourceQualityDisposition",
+    "sourceDefectCandidate", "metadataStatus",
+    "l3Disposition", "l4Disposition", "advancedHoldReasons", "advancedCapabilityStatus",
+    "basicScopeDefaultSelectable",
     "curriculumApplicability",
     "defaultSelectable",
     "difficultyBucket",
@@ -39,9 +44,10 @@
   const pathKey = (record, depth = 6) =>
     JSON.stringify(PATH_FIELDS.slice(0, depth).map((k) => text(record[k])));
   const advancedAuthority = (record) =>
-    record.metaFoundationPackVersion && record.problemTypeKey && record.templateKey
+    record.metaFoundationPackVersion && record.problemTypeKey
       ? "mf" : "rpm";
   const advancedFilterValue = (record, level) => {
+    if (!capabilities(record)[`l${level}`]) return "";
     const authority = advancedAuthority(record);
     const key = authority === "mf"
       ? record[level === 3 ? "problemTypeKey" : "templateKey"]
@@ -518,53 +524,133 @@
         }
     return paths;
   }
-  function eligibility(record, options = {}) {
+  // Inclusive Basic Eligibility is shared by every grade, builder and consumer.
+  // Optional metadata is validated as capability; explicit semantic HOLD stays hard.
+  const ADVANCED_HOLD_REASONS = new Set([
+    "L3_HOLD", "L4_HOLD", "DIFFICULTY_UNKNOWN", "PREEXISTING_DIFFICULTY_UNKNOWN",
+    "DIFFICULTY_BOUNDARY_HOLD", "LEGACY_LEVEL_STRONG_CONFLICT_UNADJUDICATED",
+    "BORDERLINE_REVIEW", "STRONG_CONFLICT", "RPM_PRIMARY_MIGRATION_GAP",
+    "HOLD_NO_EQUIVALENT_PATH", "EXPLICIT_L4_HOLD", "DIFFICULTY_RECHECK_HOLD",
+    "LEGACY_L4_FOUNDATION_GAP"
+  ]);
+  const BASIC_CONFLICT_FIELDS = new Set([
+    "identity", "source", "sourceFingerprint", "curriculumKey", "courseKey",
+    "L1", "L2", "standardUnitKey", "subUnitKey", "applicability",
+    "curriculumApplicability", "semanticDisposition", "sourceQualityDisposition"
+  ]);
+  function holdDiagnostics(record) {
+    return [...new Set([
+      ...(record.holdReasons || []),
+      ...text(record.metaFoundationHoldReason).split("|"),
+      ...(["EXPLICIT_L4_HOLD", "DIFFICULTY_RECHECK_HOLD"].includes(record.metadataStatus)
+        ? [record.metadataStatus] : []),
+      ...(record.metadataStatus === "approved_direct_tagging_with_foundation_gap" ? ["LEGACY_L4_FOUNDATION_GAP"] : [])
+    ].filter(Boolean))];
+  }
+  function basicHardReasons(record) {
+    const reasons = holdDiagnostics(record).filter(reason => !ADVANCED_HOLD_REASONS.has(reason));
+    if (record.sourceIssueHold === true) reasons.push("SOURCE_OR_SOLUTION_ISSUE");
+    if (record.sourceDefectCandidate === true || record.reviewStatus === "SOURCE_DEFECT_CANDIDATE" || record.metadataStatus === "SOURCE_HOLD")
+      reasons.push("SOURCE_DEFECT_HOLD");
+    if (["SOURCE_BLOCKED", "SOURCE_REPAIR_REQUIRED", "SOLUTION_REPAIR_REQUIRED",
+      "ANSWER_REPAIR_REQUIRED"].includes(record.sourceQualityDisposition))
+      reasons.push(record.sourceQualityDisposition);
+    if (record.sourceHoldReason) reasons.push(record.sourceHoldReason);
+    if (record.basicSemanticDisposition === "HOLD") reasons.push("SEMANTIC_HOLD");
+    return [...new Set(reasons)];
+  }
+  // Migrate only positively identified historic advanced-only status pollution.
+  // Unknown/free-text holds and explicit independent semantic decisions are retained.
+  function projectBasicEligibility(record, options = {}) {
+    const diagnostics = holdDiagnostics(record);
+    const generatedFoundationState = Boolean(record.metaFoundationPackId ||
+      text(record.metadataRevision).startsWith("meta-foundation:") ||
+      ["EXPLICIT_L4_HOLD", "DIFFICULTY_RECHECK_HOLD", "approved_direct_tagging_with_foundation_gap"].includes(record.metadataStatus));
+    const advancedOnly = generatedFoundationState && diagnostics.length > 0 && basicHardReasons(record).length === 0 &&
+      diagnostics.every(reason => ADVANCED_HOLD_REASONS.has(reason)) &&
+      record.basicSemanticDisposition !== "HOLD" &&
+      !["ROUTE_OUT", "route_out"].includes(record.semanticDisposition) &&
+      record.metaFoundationL3Status !== "ROUTE_OUT";
+    if (!advancedOnly) return { ...record };
+    const scope = diagnostics.includes("LEGACY_L4_FOUNDATION_GAP") &&
+      record.curriculumApplicability === "UNKNOWN" && options.basicScope?.curriculumApplicability === "DEFAULT_SCOPE"
+        ? "DEFAULT_SCOPE" : record.curriculumApplicability;
+    return {
+      ...record,
+      advancedHoldReasons: [...new Set([...(record.advancedHoldReasons || []), ...diagnostics])],
+      advancedCapabilityStatus: "INCOMPLETE",
+      reviewStatus: "reviewed_pass",
+      semanticDisposition: "CONFIRMED",
+      curriculumApplicability: scope,
+      defaultSelectable: scope === "DEFAULT_SCOPE",
+      metaFoundationStatus: "ACTIVE"
+    };
+  }
+  function basicEligibility(record, options = {}) {
     const reasons = [];
-    if (
-      !UID.test(record.questionUid || "") ||
-      record.identityStatus !== "VERIFIED"
-    )
-      reasons.push("identity");
+    if (!UID.test(record.questionUid || "") || record.identityStatus !== "VERIFIED") reasons.push("identity");
     if (record.sourceStatus !== "VERIFIED") reasons.push("source");
-    if (record.taxonomyStatus !== "CONFIRMED") reasons.push("taxonomy");
+    if (!record.curriculumKey || !record.courseKey || !record.L1 || !record.L2 ||
+        (record.basicTaxonomyStatus || record.taxonomyStatus) !== "CONFIRMED" ||
+        record.l1l2ParentValid === false) reasons.push("taxonomy");
     if (record.gradeConflict) reasons.push("grade");
-    if (record.reviewStatus !== "reviewed_pass") reasons.push("review");
-    if (record.semanticDisposition === "HOLD" || record.semanticDisposition === "ROUTE_OUT")
-      reasons.push("semantic");
-    if (record.sourceQualityDisposition === "SOURCE_BLOCKED" || record.sourceQualityDisposition === "SOLUTION_REPAIR_REQUIRED")
-      reasons.push("solution");
-    if (record.foundationTaxonomyStatus && (
-      record.foundationTaxonomyStatus !== "CONFIRMED" ||
-      !record.curriculumKey || !record.courseKey || !record.L1 || !record.L2
-    )) reasons.push("foundation_scope");
-    if (
-      !Number.isInteger(record.difficultyBucket) ||
-      record.difficultyBucket < 1 ||
-      record.difficultyBucket > 5 ||
-      !["high", "medium", "low"].includes(record.difficultyConfidence) ||
-      !["NONE", "B12", "B23", "B34", "B45"].includes(
-        record.difficultyBoundaryFlag,
-      ) ||
-      !["NORMAL", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT"].includes(
-        record.legacyLevelCompatibility,
-      )
-    )
-      reasons.push("difficulty");
-    if (
-      !(
-        record.curriculumApplicability === "DEFAULT_SCOPE" &&
-        record.defaultSelectable === true
-      ) &&
-      !(
-        options.includeExtended &&
-        record.curriculumApplicability === "RPM_EXTENDED"
-      )
-    )
-      reasons.push("applicability");
-    if (record.metadataConflicts?.length) reasons.push("conflict");
+    if (["HOLD", "reviewed_hold", "manual_review", "route_out", "ROUTE_OUT"].includes(record.reviewStatus)) reasons.push("review");
+    if (["HOLD", "ROUTE_OUT", "route_out"].includes(record.semanticDisposition) ||
+        ["HOLD", "ROUTE_OUT"].includes(record.basicSemanticDisposition) ||
+        record.metaFoundationL3Status === "ROUTE_OUT") reasons.push("semantic");
+    if (basicHardReasons(record).length) reasons.push("quality");
+    // defaultSelectable is a derived/legacy output. Only canonical scope policy
+    // can exclude an otherwise sound DEFAULT_SCOPE question.
+    if (!(record.curriculumApplicability === "DEFAULT_SCOPE" && record.basicScopeDefaultSelectable !== false) &&
+        !(options.includeExtended && record.curriculumApplicability === "RPM_EXTENDED")) reasons.push("applicability");
+    if ((record.metadataConflicts || []).some(field => BASIC_CONFLICT_FIELDS.has(field))) reasons.push("conflict");
     return { ok: reasons.length === 0, reasons };
   }
+  const eligibility = basicEligibility;
+  function resolveBasicParentScope(record, taxonomy) {
+    if (!record.curriculumKey || !record.courseKey || !record.L1 || !record.L2) return null;
+    const exact = (taxonomy || []).find(row => row.curriculumKey === record.curriculumKey &&
+      row.courseKey === record.courseKey && row.L1 === record.L1 && row.L2 === record.L2);
+    if (exact) return exact;
+    const middle = text(record.courseKey).match(/^중([123])\s*수학$/);
+    const candidates = (taxonomy || []).filter(row => row.curriculumKey === record.curriculumKey &&
+      row.L1 === record.L1 && row.L2 === record.L2 && (middle
+        ? finderCourseGrade(row.courseKey, row.curriculumKey) === `중${middle[1]}`
+        : normalizeCourseIdentity(row.courseKey) === normalizeCourseIdentity(record.courseKey)));
+    const courses = new Set(candidates.map(row => row.courseKey));
+    return courses.size === 1 ? candidates.find(row => row.curriculumApplicability === "DEFAULT_SCOPE") || candidates[0] : null;
+  }
+  function capabilities(record) {
+    const held = value => ["HOLD", "EXPLICIT_HOLD", "UNAVAILABLE", "NO_SEPARATE_L4"].includes(value);
+    const mfL3 = Boolean(record.problemTypeKey && record.metaFoundationPackVersion) &&
+      !held(record.l3Disposition || record.metaFoundationL3Status) && record.l3CapabilityValid !== false;
+    const mfL4 = Boolean(record.templateKey && mfL3) &&
+      !held(record.l4Disposition || record.metaFoundationL4Status) && record.l4CapabilityValid !== false;
+    const rpm = !record.metaFoundationPackVersion && !/HOLD|GAP|INCOMPLETE/.test(record.rpmPathStatus || "") &&
+      record.rpmCapabilityValid !== false;
+    const rpmL3 = !record.metaFoundationPackVersion && (record.rpmL3CapabilityValid ?? Boolean(rpm && record.L3));
+    const rpmL4 = !record.metaFoundationPackVersion && (record.rpmL4CapabilityValid ?? Boolean(rpm && record.L3 && record.L4));
+    return {
+      difficulty: Number.isInteger(record.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5,
+      l3: mfL3 || Boolean(rpmL3),
+      l4: mfL4 || Boolean(rpmL4),
+      rpm: Boolean(rpm && record.L3 && record.L4),
+      crossConcept: Boolean(record.crossConceptKeys?.length && record.crossConceptCapabilityValid !== false),
+      condition: Boolean(record.conditionKeys?.length && record.conditionCapabilityValid !== false)
+    };
+  }
+  function capabilityMatch(record, filters = {}) {
+    const available = capabilities(record);
+    if (filters.difficultyBuckets?.length && (!available.difficulty || !filters.difficultyBuckets.includes(record.difficultyBucket))) return false;
+    for (const level of [3, 4]) {
+      const selected = filters[`L${level}`];
+      if (selected && (!available[`l${level}`] || advancedFilterValue(record, level) !==
+        (/^(mf|rpm):/.test(selected) ? selected : `rpm:${selected}`))) return false;
+    }
+    return true;
+  }
   function matches(record, filters = {}) {
+    if (!capabilityMatch(record, filters)) return false;
     if (
       filters.primaryPaths?.length &&
       !filters.primaryPaths.includes(pathKey(record, 4))
@@ -586,12 +672,6 @@
     if (!subjectProjectionMatches(record, filters)) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;
-    for (const level of [3, 4]) {
-      const selected = filters[`L${level}`];
-      if (selected && advancedFilterValue(record, level) !==
-        (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`))
-        return false;
-    }
     for (const field of PATH_FIELDS) {
       if (field === "L3" || field === "L4") continue;
       if (
@@ -907,6 +987,13 @@
     compareNewest,
     taxonomyPaths,
     eligibility,
+    basicEligibility,
+    basicHardReasons,
+    holdDiagnostics,
+    projectBasicEligibility,
+    resolveBasicParentScope,
+    capabilities,
+    capabilityMatch,
     advancedAuthority,
     advancedFilterValue,
     matches,

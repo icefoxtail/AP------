@@ -26,6 +26,8 @@
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
+<script src="mixer-selector.js"></script>
+<script src="archive2-core.js?v=20260926-inclusive-basic"></script>
 <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
 <script src="meta-foundation-runtime.js?v=20260919-mf-runtime-v1" onerror="console.error('[meta-foundation] runtime bridge 로드 실패')"></script>
 <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
@@ -798,6 +800,11 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
     const standardUnit = String((std.unit && std.unit !== '미분류' ? std.unit : '') || raw.standardUnit || '').trim();
     const unitOrder = Number.isFinite(Number(std.order)) ? Number(std.order) : Number(raw.unitOrder || 999);
     const standardUnitKey = String(raw.standardUnitKey || findStandardUnitKey(course, standardUnit, unitOrder) || '').trim();
+    const approvedMeta = window.getArchiveQuestionMetadata?.({ questionUid: identity?.questionUid, sourceFile, sourceOrdinal }) || raw._metaFoundation || null;
+    const l3Candidate = String(approvedMeta?.problemTypeKey || raw.problemTypeKey || raw.problem_type_key || raw.typeKey || '').trim();
+    const l4Candidate = String(approvedMeta?.templateKey || raw.templateKey || raw.template_key || '').trim();
+    const l3Available = approvedMeta?.l3CapabilityValid === true;
+    const l4Available = approvedMeta?.l4CapabilityValid === true;
     const tags = normalizeTags(raw.tags);
     const content = String(raw.content || raw.contentText || '');
     const choices = Array.isArray(raw.choices) ? raw.choices.join(' ') : String(raw.choicesText || '');
@@ -809,6 +816,7 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
 
     return {
         key,
+        basicSelectable: approvedMeta?.runtimeSelectable,
         sourceMode,
         sourceFile,
         sourceTitle,
@@ -821,9 +829,11 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
         subUnitKey: String(raw.subUnitKey || raw.sub_unit_key || '').trim(),
         subUnit: String(raw.subUnit || raw.sub_unit || '').trim(),
         conceptClusterKey: String(raw.conceptClusterKey || raw.concept_cluster_key || '').trim(),
-        problemTypeKey: String(raw.problemTypeKey || raw.problem_type_key || raw.typeKey || raw.questionType || '').trim(),
-        templateKey: String(raw.templateKey || raw.template_key || '').trim(),
-        difficultyBucket: String(raw.difficultyBucket || raw.difficulty_bucket || normalizeCartLevel(raw.level) || '').trim(),
+        problemTypeKey: l3Available ? l3Candidate : '',
+        unverifiedProblemTypeKey: l3Available ? '' : l3Candidate,
+        templateKey: l4Available ? l4Candidate : '',
+        unverifiedTemplateKey: l4Available ? '' : l4Candidate,
+        difficultyBucket: String(approvedMeta?.difficultyBucket ?? raw.difficultyBucket ?? raw.difficulty_bucket ?? '').trim(),
         standardUnit,
         unitOrder,
         questionUid: identity?.questionUid || '',
@@ -1689,6 +1699,7 @@ function adjustBlueprintRowsForPinned(rows, pinnedItems) {
 }
 
 function pickQuestionsByDifficulty(filteredPool, plan) {
+    filteredPool = filteredPool.filter(record => record.basicSelectable !== false);
     const cartKeys = new Set(cart.map(c => c._qKey));
     const picked = [];
     const buckets = {
@@ -1728,7 +1739,7 @@ function pickQuestionsByBlueprint(filteredPool, blueprintRows = null) {
     const advancedOptions = readAutoGenAdvancedOptions();
     rows.forEach((row, rowIndex) => {
         const want = Math.max(1, Math.min(AUTOGEN_MAX_CART, parseInt(row.count, 10) || 0));
-        const pool = filteredPool.filter(record => !cartKeys.has(record.key) && record.standardUnitKey);
+        const pool = filteredPool.filter(record => record.basicSelectable !== false && !cartKeys.has(record.key) && record.standardUnitKey);
         const contract = window.ArchiveMixerSelector;
         const canUseContract = contract && pool.length > 0 && pool.every(record => record.sourceMode === 'archive');
         const evaluated = canUseContract

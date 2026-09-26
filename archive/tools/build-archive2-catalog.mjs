@@ -29,6 +29,9 @@ const masterFile =
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
 const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
+const conceptPaths = new Set(taxonomy.map(record => core.pathKey(record, 5)));
+const defaultParentScopes = new Set(taxonomy.filter(record => record.curriculumApplicability === "DEFAULT_SCOPE" &&
+  record.defaultSelectable !== false).map(record => core.pathKey(record, 4)));
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -107,7 +110,13 @@ for (const exam of exams) {
   for (const [index, question] of bank.entries()) {
     const ordinal = index + 1;
     const id = identityBySource.get(file + "#" + ordinal);
-    const meta = id && metaByUid.get(id.questionUid);
+    const meta = id && core.projectBasicEligibility(metaByUid.get(id.questionUid) || {});
+    const legacyCourseKey = meta?.courseKey;
+    const basicScope = meta && (parentPaths.get(core.pathKey(meta, 4)) || core.resolveBasicParentScope(meta, taxonomy));
+    if (basicScope) {
+      meta.courseKey = basicScope.courseKey;
+      Object.assign(meta, core.projectBasicEligibility(meta, { basicScope }));
+    }
     const fingerprint = hash(
       JSON.stringify({
         content: question.content ?? null,
@@ -136,10 +145,9 @@ for (const exam of exams) {
       (meta.conditionKeys || []).every((key) => foundationConditionKeys.has(key)) &&
       foundationBindingKeys.has([meta.curriculum, meta.standardUnitKey, meta.subUnitKey, meta.problemTypeKey].join("\u0000"))
     );
-    const parentOnlyFoundation = foundationValid === true &&
-      meta.rpmPathStatus === "HOLD_NO_EQUIVALENT_PATH" &&
-      meta.reviewStatus === "reviewed_pass" && !meta.L3 && !meta.L4;
-    const node = directNode || (parentOnlyFoundation && parentPaths.get(core.pathKey(meta, 4)));
+
+    const parentNode = validJoin && parentPaths.get(core.pathKey(meta, 4));
+    const node = directNode || parentNode;
     const metadataConflicts = [];
     const semantic = {};
     for (const field of core.META_FIELDS) {
@@ -152,6 +160,8 @@ for (const exam of exams) {
         String(sourceValue).trim() !== "" &&
         value !== undefined &&
         JSON.stringify(sourceValue) !== JSON.stringify(value)
+        && !(field === "courseKey" && basicScope && sourceValue === legacyCourseKey)
+        && !(field === "curriculumApplicability" && sourceValue === "UNKNOWN" && meta.advancedHoldReasons?.includes("LEGACY_L4_FOUNDATION_GAP"))
       )
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
@@ -179,6 +189,7 @@ for (const exam of exams) {
           : "other",
       contentType: exam.contentType,
       ...semantic,
+      ...(legacyCourseKey !== meta?.courseKey ? { legacyCourseKey } : {}),
       difficultyBucket: Number.isInteger(semantic.difficultyBucket)
         ? semantic.difficultyBucket
         : "UNKNOWN",
@@ -193,7 +204,14 @@ for (const exam of exams) {
         validJoin && meta.sourceFingerprint === fingerprint
           ? "VERIFIED"
           : "HOLD",
-      taxonomyStatus: node && foundationValid !== false ? "CONFIRMED" : "UNKNOWN",
+      taxonomyStatus: node ? "CONFIRMED" : "UNKNOWN",
+      basicTaxonomyStatus: parentNode ? "CONFIRMED" : "UNKNOWN",
+      basicScopeDefaultSelectable: parentNode ? defaultParentScopes.has(core.pathKey(meta || {}, 4)) : undefined,
+      l3CapabilityValid: foundationPresent ? foundationProblemTypes.has(meta.problemTypeKey) && foundationBindingKeys.has([meta.curriculum, meta.standardUnitKey, meta.subUnitKey, meta.problemTypeKey].join("\u0000")) : undefined,
+      l4CapabilityValid: foundationPresent ? Boolean(template && template.parentProblemTypeKey === meta.problemTypeKey) : undefined,
+      rpmCapabilityValid: Boolean(directNode),
+      rpmL3CapabilityValid: conceptPaths.has(core.pathKey(meta || {}, 5)),
+      rpmL4CapabilityValid: Boolean(directNode),
       ...(foundationScoped ? { foundationTaxonomyStatus: meta?.foundationTaxonomyStatus === "HOLD" ? "HOLD" : (foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD")) } : {}),
       metadataConflicts,
       gradeConflict: false,
@@ -206,9 +224,9 @@ for (const exam of exams) {
       ],
     };
     if (
-      node &&
+      directNode &&
       (node.curriculumApplicability !== record.curriculumApplicability ||
-        node.defaultSelectable !== record.defaultSelectable)
+        node.defaultSelectable !== record.defaultSelectable) && !core.holdDiagnostics(meta).length
     )
       record.metadataConflicts.push("applicability");
     const detectedGrade = courseGrade(record.courseKey || "");
@@ -235,6 +253,10 @@ for (const exam of exams) {
     )
       record.courseFamilies = ["MIDDLE"];
     record.automatic = core.eligibility(record).ok;
+    if (record.automatic && record.defaultSelectable === false) {
+      record.legacyDefaultSelectable = false;
+      record.defaultSelectable = true;
+    }
     core.eligibility(record).reasons.forEach(count);
     if (record.automatic) count("automatic");
     examRecords.push(record);

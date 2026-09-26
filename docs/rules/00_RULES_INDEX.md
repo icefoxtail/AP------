@@ -22,6 +22,10 @@ Codex Meta Foundation 작업은 `최신 main → 전용 branch → GOAL 완주 �
 checkpoint는 사용자 승인 대기 지점이 아니며, 실제 HARD BLOCKER가 아니면 프로토콜의 DONE 조건까지 계속 진행한다.
 완료 branch는 main merge 전에 GPT가 전체 diff·ledger/evidence·canonical/compiled/runtime/Archive2 parity를 독립검수한다.
 
+### 전 학년 BASIC 출제 계약 (2026-09-26)
+
+중1~고3·전 과목은 Foundation 운영규칙 §24의 Inclusive Basic Eligibility를 적용한다. L1/L2 + source/solution/identity/semantic quality + DEFAULT_SCOPE가 BASIC이며, difficulty/L3/L4/RPM/relational metadata는 요청 시에만 쓰는 optional capability다. 실제 source/solution HARD defect와 explicit semantic HOLD/ROUTE_OUT은 계속 차단한다.
+
 ## 1. 현재 읽기 순서
 
 ### 신규 JS 추출·변환

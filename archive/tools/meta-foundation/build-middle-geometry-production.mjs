@@ -229,7 +229,7 @@ const pack = {
     "Canonical support UIDs and counts were recomputed from the current FINAL L3/L4 ledgers.",
     "Two authorized L1/L2 source metadata corrections were applied; protected student fields were unchanged.",
     "Already ACTIVE L3 and L4 keys are reused without changing their existing owners.",
-    "Difficulty recheck holds and L4 explicit holds remain non-selectable in runtime."
+    "Difficulty recheck and L4 holds remain advanced diagnostics; BASIC eligibility follows the common contract."
   ]
 };
 
@@ -274,7 +274,7 @@ const records = l3.map((sourceRow) => {
   const isRouteOut = sourceRow.l3ReviewStatus !== "FINAL";
   const difficultyRow = difficultyByUid.get(uid) || null;
   const relationalRow = relationalByUid.get(uid) || null;
-  if (!isRouteOut && (!difficultyRow || !relationalRow)) throw new Error("mapped final join missing difficulty/relational " + uid);
+
   const l4Final = l4Row.l4ReviewStatus === "FINAL";
   const l4Hold = l4Row.l4ReviewStatus === "EXPLICIT_HOLD";
   const problemTypeKey = isRouteOut ? null : sourceRow.problemTypeKey;
@@ -289,7 +289,12 @@ const records = l3.map((sourceRow) => {
 
   const difficultyPass = !!difficultyRow && ["PASS_BLIND_NO_RECHECK_TRIGGER", "PASS_EXISTING_SOURCE_PARITY_RECHECK", "PASS_USER_AUTHORIZED_SOURCE_UPDATE"].includes(difficultyRow.recheckDisposition);
   const sourceVerified = catalogRow.sourceStatus === "VERIFIED" && catalogRow.identityStatus === "VERIFIED";
-  const selectable = !isRouteOut && l4Final && difficultyPass && sourceVerified;
+  const selectable = archive2.basicEligibility({ ...catalogRow,
+    L1: ix.standardUnit, L2: ix.subUnit, basicTaxonomyStatus: "CONFIRMED",
+    reviewStatus: isRouteOut ? "route_out" : "reviewed_pass",
+    semanticDisposition: isRouteOut ? "ROUTE_OUT" : "CONFIRMED",
+    curriculumApplicability: "DEFAULT_SCOPE", defaultSelectable: !isRouteOut
+  }).ok;
   const metadataStatus = isRouteOut ? "ROUTE_OUT" : l4Hold ? "EXPLICIT_L4_HOLD" : !difficultyPass ? "DIFFICULTY_RECHECK_HOLD" : "FINAL";
   const reviewStatus = selectable ? "reviewed_pass" : "manual_review";
 
@@ -332,6 +337,10 @@ const records = l3.map((sourceRow) => {
     metaFoundationL4Status: l4Row.l4ReviewStatus,
     curriculumApplicability: "DEFAULT_SCOPE",
     defaultSelectable: selectable,
+    runtimeSelectable: selectable,
+    basicTaxonomyStatus: "CONFIRMED",
+    semanticDisposition: isRouteOut ? "ROUTE_OUT" : "CONFIRMED",
+    advancedCapabilityStatus: !l4Final || !difficultyPass ? "INCOMPLETE" : "AVAILABLE",
     reviewStatus,
     metadataStatus,
     metaFoundationStatus: metadataStatus,
@@ -514,7 +523,7 @@ if (fs.existsSync(runtimeReceiptPath)) {
     "Current active runtime pack count is 8, including MIDDLE_GEOMETRY.",
     "Current active runtime join is " + combinedRuntime.length + "/" + combinedRuntime.length + " with UID/source-identity duplicate counts 0.",
     "MIDDLE_GEOMETRY joins Archive2 by direct questionUid for " + directJoinByPack.get("MIDDLE_GEOMETRY").direct + "/" + records.length + " rows.",
-    "MIDDLE_GEOMETRY preserves 20 explicit L4 holds and 7 route-outs as non-selectable."
+    "MIDDLE_GEOMETRY preserves 20 advanced L4 holds and blocks the 7 semantic route-outs."
   ];
   if (receipt.archive2JoinContract) receipt.archive2JoinContract.expectedRuntimeJoin = combinedRuntime.length;
   writeJson(runtimeReceiptPath, receipt);

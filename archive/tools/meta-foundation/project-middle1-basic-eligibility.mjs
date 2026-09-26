@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Restore the approved L1/L2 parent for Foundation items without an RPM leaf.
 import fs from 'node:fs';
+import core from '../../archive2-core.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -24,7 +25,7 @@ if (candidates.length !== 4) throw new Error(`Expected 4 independently eligible 
 for (const row of candidates) {
   const meta = byUid.get(row.questionUid);
   const parent = parentByUnit.get(meta?.subUnitKey);
-  if (!meta || !parent || meta.sourceFingerprint !== row.sourceFingerprint || meta.foundationTaxonomyStatus !== 'CONFIRMED')
+  if (!meta || !parent || meta.sourceFingerprint !== row.sourceFingerprint)
     throw new Error(`Foundation identity or L1/L2 parent missing: ${row.questionUid}`);
   const curriculumKey = meta.curriculum;
   if (!catalog.taxonomy.some(t => t.curriculumKey === curriculumKey && t.courseKey === parent[0] && t.L1 === parent[1] && t.L2 === parent[2]))
@@ -33,8 +34,10 @@ for (const row of candidates) {
     curriculumKey, courseKey: parent[0], L1: parent[1], L2: parent[2],
     curriculumApplicability: 'DEFAULT_SCOPE', defaultSelectable: true,
     reviewStatus: 'reviewed_pass', metadataStatus: 'approved_full',
-    metaFoundationHoldReason: null,
+    advancedCapabilityStatus: 'INCOMPLETE',
   });
+  if (!core.basicEligibility({ ...meta, identityStatus:'VERIFIED',sourceStatus:'VERIFIED',basicTaxonomyStatus:'CONFIRMED',sourceQualityDisposition:row.sourceQualityDisposition,semanticDisposition:row.semanticDisposition }).ok)
+    throw new Error(`BASIC contract failed: ${row.questionUid}`);
 }
 fs.writeFileSync(path.join(root, metadataPath), JSON.stringify(metadata, null, 2) + '\n');
 console.log(JSON.stringify({ projected: candidates.map(row => row.questionUid) }, null, 2));

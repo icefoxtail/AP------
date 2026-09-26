@@ -1,0 +1,478 @@
+{
+  "BASE_MAIN_SHA": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
+  "rawSearch": "strict-gate-search-all-source.txt",
+  "rawSha256": "f5e45c6ef180ba8611a27a413c73759903542278bbff18b516bb1fb7a36d2ee4",
+  "coverage": {
+    "matchingFiles": 470,
+    "matchingLines": 7601,
+    "directories": [
+      "25_매산여고_2학기_중간_고1_공통수학2.js",
+      "alive",
+      "apmath",
+      "archive",
+      "artifacts",
+      "docs",
+      "eie",
+      "report-ai-proxy",
+      "tests",
+      "tools"
+    ],
+    "layers": [
+      "shared helper",
+      "all grade materializers",
+      "global compiler",
+      "runtime builders",
+      "catalog",
+      "question index",
+      "schema/pack validators",
+      "mixer",
+      "UI query/default state",
+      "API predicates",
+      "legacy adapter",
+      "import/migration",
+      "generated runtime/catalog loader"
+    ]
+  },
+  "knownFindings": 2,
+  "additionalFindings": 21,
+  "unresolvedBasicOverblocking": 0,
+  "findings": [
+    {
+      "path": "archive/archive2-core.js",
+      "symbolOrFunction": "basicEligibility / advancedFilterValue",
+      "gateCondition": "difficulty bucket/confidence/boundary/legacy compatibility and taxonomy/review completeness were global gates; L3 required both PT and TPL",
+      "basicVsAdvanced": "BASIC_AND_ADVANCED",
+      "modified": true,
+      "reason": "Shared BASIC helper; per-capability requested-filter matching; explicit semantic/source defects retained",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 73,
+      "candidatePredicateCount": 23
+    },
+    {
+      "path": "archive/archive2-source.js",
+      "symbolOrFunction": "restore metadata conflict",
+      "gateCondition": "optional source metadata mismatch could stop materialization after selection",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Source content fingerprint/UID retained; only BASIC scope metadata conflicts stop restore; optional overlays are not content mutation",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 7,
+      "candidatePredicateCount": 1
+    },
+    {
+      "path": "archive/archive2-workspace.js",
+      "symbolOrFunction": "state.buckets / planRows / bucket UI",
+      "gateCondition": "default buckets [2,3]; distribution all used buckets.includes; empty selection rejected",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Empty = all including UNKNOWN; explicit all control; requested bucket and L3 verified in Chrome",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 18,
+      "candidatePredicateCount": 7
+    },
+    {
+      "path": "archive/meta-foundation-runtime.js",
+      "symbolOrFunction": "runtimeReady / applyCatalogOverlay",
+      "gateCondition": "generated advanced-only HOLD and taxonomy-completeness states survived live overlay; automatic could be stale",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Known generated pollution projected; hard source preserved; automatic recalculated and parent-only scope shown",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 39,
+      "candidatePredicateCount": 16
+    },
+    {
+      "path": "archive/mixer.html",
+      "symbolOrFunction": "runtime dependency / normalizeForFilter / pickQuestionsByBlueprint",
+      "gateCondition": "runtime loader lacked shared helper dependency; normalized candidates dropped runtime BASIC verdict",
+      "basicVsAdvanced": "CONSUMER",
+      "modified": true,
+      "reason": "Load shared contract and consume actual runtime hard verdict without requiring optional capability; explicit difficulty plans remain explicit filters",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 21,
+      "candidatePredicateCount": 9
+    },
+    {
+      "path": "archive/tools/build-archive2-catalog.mjs",
+      "symbolOrFunction": "node / foundationValid / record projection",
+      "gateCondition": "full RPM L3/L4 path and full PT/TPL validation determined taxonomyStatus",
+      "basicVsAdvanced": "BASIC_AND_ADVANCED",
+      "modified": true,
+      "reason": "Canonical parent-only path is sufficient for BASIC; validate existing advanced values independently",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 33,
+      "candidatePredicateCount": 19
+    },
+    {
+      "path": "archive/tools/intelligence/adjudicate-m3-direct-2h-mother.mjs",
+      "symbolOrFunction": "finalDecision defaultSelectable",
+      "gateCondition": "L4 gap => applicability UNKNOWN and defaultSelectable=false",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "L4 gap is an advanced diagnostic; explicit semantic/scope decisions still retained",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 9,
+      "candidatePredicateCount": 4
+    },
+    {
+      "path": "archive/tools/intelligence/build-m3-l1-metadata.mjs",
+      "symbolOrFunction": "candidate hold",
+      "gateCondition": "no full L3/L4 taxonomy entry or UNKNOWN difficulty => HOLD",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Independent canonical parent selection and common BASIC helper; advanced diagnostics preserved",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 89,
+      "candidatePredicateCount": 46
+    },
+    {
+      "path": "archive/tools/intelligence/record-m3-mother-final.mjs",
+      "symbolOrFunction": "finalDecision defaultSelectable",
+      "gateCondition": "L4 gap => defaultSelectable=false",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Same gap separation for the alternate final ledger recorder",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 3,
+      "candidatePredicateCount": 0
+    },
+    {
+      "path": "archive/tools/meta-foundation/apply-reviewed-meta-patch.mjs",
+      "symbolOrFunction": "validateRepair / canonical projection",
+      "gateCondition": "mandatory L3/L4 and their binding on every repair",
+      "basicVsAdvanced": "IMPORT_BASIC",
+      "modified": true,
+      "reason": "Validate present keys; no L3/L4 uses approved L1/L2 parent descriptor without fake canonical keys",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 39,
+      "candidatePredicateCount": 24
+    },
+    {
+      "path": "archive/tools/meta-foundation/audit-middle1-b01-b16-archive2.mjs",
+      "symbolOrFunction": "rpmOnlyBasicGate",
+      "gateCondition": "duplicate semantic/source quality expression",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Audit common BASIC decision, not an independent grade policy",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 15,
+      "candidatePredicateCount": 12
+    },
+    {
+      "path": "archive/tools/meta-foundation/build-middle-geometry-production.mjs",
+      "symbolOrFunction": "selectable / reviewStatus",
+      "gateCondition": "l4Final AND difficultyPass AND sourceVerified",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Common BASIC quality/scope gate; no automatic manual_review from advanced incompleteness",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 100,
+      "candidatePredicateCount": 57
+    },
+    {
+      "path": "archive/tools/meta-foundation/compile-middle1-b01-b16-runtime.mjs",
+      "symbolOrFunction": "selectable",
+      "gateCondition": "mapping + foundation CONFIRMED + integer difficulty 1..5 required",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Common helper; approved L1/L2 supplied separately; source/solution dispositions still block",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 30,
+      "candidatePredicateCount": 20
+    },
+    {
+      "path": "archive/tools/meta-foundation/materialize-h1-foundation.mjs",
+      "symbolOrFunction": "statusHold / assignment materialization",
+      "gateCondition": "L3_HOLD / L4_HOLD / difficulty UNKNOWN / legacy conflict joined into statusHold",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Only basicHardReasons feed semantic/review/default states; advanced reasons preserved",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 195,
+      "candidatePredicateCount": 78
+    },
+    {
+      "path": "archive/tools/meta-foundation/project-middle1-basic-eligibility.mjs",
+      "symbolOrFunction": "Foundation parent projection",
+      "gateCondition": "foundationTaxonomyStatus CONFIRMED required for parent projection",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Advanced status removed from BASIC prerequisite; common helper verifies projected parent and quality",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 6,
+      "candidatePredicateCount": 4
+    },
+    {
+      "path": "archive/tools/meta-foundation/rebuild-basic-eligibility.mjs",
+      "symbolOrFunction": "legacy state migration / canonical scope proof",
+      "gateCondition": "old M3 L4 gap left 49 reviewed records with UNKNOWN scope and false default; legacy middle course aliases prevented a canonical parent join",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Migrate only known generated gap with verified canonical parent and actual source/identity; preserve unverified source; scope resolver retains legacy alias evidence",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 27,
+      "candidatePredicateCount": 16
+    },
+    {
+      "path": "archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs",
+      "symbolOrFunction": "makeRuntimeRecord / REPAIR mapping",
+      "gateCondition": "difficultyValid and complete L3/L4 required even for BASIC/repair",
+      "basicVsAdvanced": "BASIC_AND_ADVANCED",
+      "modified": true,
+      "reason": "Common BASIC; validate optional keys only when present; basic parent descriptor independent of advanced binding",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 75,
+      "candidatePredicateCount": 44
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-apply-core.mjs",
+      "symbolOrFunction": "validatePacketEnvelope REPAIR",
+      "gateCondition": "problemTypeKey/templateKey/CrossConcept and integer difficulty required",
+      "basicVsAdvanced": "IMPORT_BASIC",
+      "modified": true,
+      "reason": "Optional absence/UNKNOWN accepted; existing optional keys retain registry validation",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 16,
+      "candidatePredicateCount": 9
+    },
+    {
+      "path": "archive/tools/meta-foundation/sync-middle1-b01-b16-question-metadata.mjs",
+      "symbolOrFunction": "basicSelectable",
+      "gateCondition": "duplicate RPM/quality/basic gate",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Delegate to common helper; source quality and independent semantic HOLD remain hard",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 34,
+      "candidatePredicateCount": 11
+    },
+    {
+      "path": "archive/tools/meta-foundation/validate-h1-foundation-production.mjs",
+      "symbolOrFunction": "unknownDifficultyNotSelectable",
+      "gateCondition": "UNKNOWN must have zero selectable rows",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "Difficulty-independent BASIC parity regression; actual loader, filters, restore exercised",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 92,
+      "candidatePredicateCount": 50
+    },
+    {
+      "path": "archive/tools/meta-foundation/validate-meta-foundation-pack.mjs",
+      "symbolOrFunction": "assignment HOLD validation",
+      "gateCondition": "L3/L4 HOLD required reviewStatus=HOLD; missing difficulty invalid",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "HOLD is advanced disposition; validate present keys and valid present bucket only",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 27,
+      "candidatePredicateCount": 23
+    },
+    {
+      "path": "archive/unit-past-exams-core.js",
+      "symbolOrFunction": "isAutomaticSelectable / filterUnitRecords / getDifficultyBucket",
+      "gateCondition": "runtime unavailable/broken advanced taxonomy and unclassified difficulty removed default candidates",
+      "basicVsAdvanced": "BASIC_AND_ADVANCED",
+      "modified": true,
+      "reason": "Common canonical BASIC gate; optional absence retained; requested PT/TPL/difficulty only; canonical missing difficulty never falls back to legacy level",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 99,
+      "candidatePredicateCount": 52
+    },
+    {
+      "path": "archive/unit-past-exams.js",
+      "symbolOrFunction": "buildQuickRows",
+      "gateCondition": "no difficulty selection defaults to preset numeric/legacy buckets",
+      "basicVsAdvanced": "BASIC",
+      "modified": true,
+      "reason": "No requested difficulty yields unrestricted row",
+      "testCoverage": [
+        "tests/archive2-inclusive-basic.test.cjs",
+        "tests/archive2-production-basic.test.cjs",
+        "tests/archive2-core.test.cjs",
+        "tests/archive-unit-past-exams-core.test.js",
+        "tests/archive-reviewed-apply-bridge.test.mjs",
+        "Chrome actual Compose / difficulty=3 / L3 / all toggle",
+        "compiler/catalog/runtime --check"
+      ],
+      "matchingLineCount": 100,
+      "candidatePredicateCount": 49
+    }
+  ]
+}

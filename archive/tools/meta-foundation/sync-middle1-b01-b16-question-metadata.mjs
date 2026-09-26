@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
+import core from '../../archive2-core.js';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -88,7 +89,11 @@ for(const record of metadata.records){
     }
     const isQualityHold=quality.runtimeSelectableBeforeRepair===false || quality.disposition==='SOLUTION_REPAIR_REQUIRED';
     if(isQualityHold)qualityHold++;
-    const basicSelectable=!isQualityHold&&(rpm.rpmPathStatus==='DIRECT'||Boolean(record.L1&&record.L2));
+    const basicSelectable=core.basicEligibility({ ...record, identityStatus:'VERIFIED',sourceStatus:'VERIFIED',
+      basicTaxonomyStatus:record.L1&&record.L2?'CONFIRMED':'UNKNOWN',
+      reviewStatus:'reviewed_pass',semanticDisposition:ledger.reviewStatus,
+      sourceQualityDisposition:quality.disposition
+    }).ok;
     record.reviewStatus=basicSelectable?'reviewed_pass':'reviewed_hold';
     record.tagConfidence='independent_semantic_consensus';
     record.tagStatus='meta_foundation_final';
