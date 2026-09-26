@@ -1,0 +1,175 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "48496579f6f04fe2599114526376e4e2c60876fd47ed8d87d711f30bb273215b",
+  "normalizedSvgSha256": "0549f9863db437c373b23c18364aeb7eaef3471700dd64d4ce15bd743c657867",
+  "texSha256": "d2348675b4f4ac2f3a41df04585936e4ea4713856a8477c43f64118436d99314",
+  "coordinateModel": {
+    "originX": 230.0,
+    "originY": 250.0,
+    "sx": 49.5,
+    "sy": 49.5,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "C-name",
+        "kind": "POINT_NAME",
+        "target": "C",
+        "text": "C",
+        "at": [
+          180.5,
+          200.5
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 176.1275,
+          "y": 168.625,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          176.1275,
+          184.525
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "C-coordinate",
+        "kind": "COORDINATE_LABEL",
+        "target": "C",
+        "exact": [
+          "-1",
+          "1"
+        ],
+        "font": 12.0,
+        "priority": 2,
+        "at": [
+          180.5,
+          200.5
+        ],
+        "text": "(−1,1)",
+        "panelText": "C: (−1,1)",
+        "box": {
+          "x": 156.74,
+          "y": 212.5,
+          "width": 47.519999999999996,
+          "height": 18.0
+        },
+        "baseline": [
+          156.74,
+          226.9
+        ],
+        "placement": "AUTO_S"
+      },
+      {
+        "id": "equation",
+        "kind": "EQUATION_LABEL",
+        "text": "(x+1)^(2)+(y−1)^(2)=2^(2)",
+        "at": [
+          329.0,
+          101.5
+        ],
+        "font": 13.5,
+        "priority": 2,
+        "markup": "(<tspan font-style=\"italic\">x</tspan>+1)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>+(<tspan font-style=\"italic\">y</tspan>−1)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>=2<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>",
+        "sourceMath": "(x+1)^2+(y-1)^2=2^2",
+        "math": true,
+        "box": {
+          "x": 341.0,
+          "y": 69.25,
+          "width": 222.75,
+          "height": 20.25
+        },
+        "baseline": [
+          341.0,
+          85.45
+        ],
+        "placement": "AUTO_NE"
+      },
+      {
+        "id": "axis-x",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          428.0,
+          250.0
+        ],
+        "text": "x",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 423.71,
+          "y": 218.5,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          423.71,
+          234.1
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          230.0,
+          52.0
+        ],
+        "text": "y",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 242.0,
+          "y": 42.25,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          242.0,
+          57.85
+        ],
+        "placement": "AUTO_E"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "C-name",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "C-coordinate",
+        "fallback": "AUTO_S"
+      },
+      {
+        "id": "equation",
+        "fallback": "AUTO_NE"
+      },
+      {
+        "id": "axis-x",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "fallback": "AUTO_E"
+      }
+    ],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY"
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "semanticWitnessSha256": "f14a3a159aa8eb25657339e31f707237de7b0bc0d2aaacab14173479e7107e4b"
+}

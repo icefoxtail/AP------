@@ -1,0 +1,46 @@
+phase=PHASE_10_RENDERED_BROWSER_QA
+attempt=3
+status=FAIL
+counts commands=3/4 labels=8/8 fixtures=2 unresolved=0 node=0/0 browserVersion=not-reported
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/label_layout.py archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_label_layout.py -v =====
+--- stdout ---
+
+--- stderr ---
+test_all_collision_kinds (test_label_layout.LayoutTests.test_all_collision_kinds) ... ok
+test_circle_and_segment_boundary (test_label_layout.LayoutTests.test_circle_and_segment_boundary) ... ok
+test_cluster_name_coordinate (test_label_layout.LayoutTests.test_cluster_name_coordinate) ... ok
+test_explicit_polish (test_label_layout.LayoutTests.test_explicit_polish) ... ok
+test_optional_suppression (test_label_layout.LayoutTests.test_optional_suppression) ... ok
+test_priority_and_determinism (test_label_layout.LayoutTests.test_priority_and_determinism) ... ok
+test_rendered_dimensions_override (test_label_layout.LayoutTests.test_rendered_dimensions_override) ... ok
+test_safe_area_and_fixed_font (test_label_layout.LayoutTests.test_safe_area_and_fixed_font) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+OK
+
+===== PASS exit=0 python archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+{"fixtures": 2, "unresolved": 0}
+
+--- stderr ---
+
+===== FAIL exit=1 node archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+--- stdout ---
+{"status":"FAIL","runtime":"playwright-chromium","synthetic":false,"maxRelayoutPasses":3,"rows":[{"id":"circle-source","status":"FAIL","attempt":2,"svgSha256":"6eace57ed783883fa5c630c0d54e6a2d043f335a8a6de55c461a915f9df97f96","errors":[],"staticErrors":["STALE_WITNESS_SVG_SHA"]},{"id":"circle-cluster","status":"FAIL","attempt":2,"svgSha256":"9e83adfbb115dd69754cfe8f8be4e425eb77b8f1d661130857bccc458eb3ec86","errors":[],"staticErrors":["DISPLAYED_MATH_PARITY_FAIL:m-definition","DISPLAYED_MATH_PARITY_FAIL:M-definition","STALE_WITNESS_SVG_SHA"]}]}
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/label_layout.py c934ebf1b3085337bffca97841c425150bc779cfe1e8ca5b1d98922461eb275c
+archive/tools/geometry-equation/visual_engine/engine.py 0a4f16a8fa86a23d7366ca31b3492887e1b7d93a4ce4b12453f6b5f0ef34085d
+archive/tools/geometry-equation/tests/build_visual_fixtures.py 1f3d3aae8129d216a8c376c93dcad3915f3bfd59cd4ecbf7839429e287e0d947
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs 79dec1dd43320266c80684f6b1b612b792e2685386308681434497fc031e9086
+archive/tools/geometry-equation/verify-rendered-layout.mjs 1afb091f646cfd57a54d93d1e430808f826d61c3672ec2a2ea3e92141b6aa686
+archive/tools/geometry-equation/visual-browser-runtime.mjs cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33

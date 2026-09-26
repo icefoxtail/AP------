@@ -1,0 +1,305 @@
+{
+  "status": "PASS",
+  "gate": "STATIC_GATE",
+  "svgSha256": "bce81be48208e381eefb496b2db438d8c5b91889ff71cb1ad52f3ab0d6ad4082",
+  "STATIC_GATE_PASS": true,
+  "MATH_PARITY_PASS": true,
+  "SEMANTIC_PARITY_PASS": true,
+  "DISPLAYED_MATH_PARITY_PASS": true,
+  "checks": {
+    "structural": {
+      "status": "PASS",
+      "errors": []
+    },
+    "actual": {
+      "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+      "questionId": null,
+      "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-cluster/visual.svg",
+      "svgSha256": "sha256:bce81be48208e381eefb496b2db438d8c5b91889ff71cb1ad52f3ab0d6ad4082",
+      "sourceFactStatus": "PASS",
+      "expectedFactStatus": "PASS",
+      "coordinateModel": {
+        "originX": 59.310344827586206,
+        "originY": 420.6896551724138,
+        "sx": 113.79310344827584,
+        "sy": 113.79310344827584,
+        "aspectPolicy": "EQUAL_UNIT",
+        "anchors": {
+          "origin": {
+            "type": "INTERSECTION",
+            "elements": [
+              "x-axis",
+              "y-axis"
+            ],
+            "expected": [
+              0,
+              0
+            ]
+          },
+          "xAxis": {
+            "element": "model-x-unit",
+            "expected": [
+              1,
+              0
+            ]
+          },
+          "yAxis": {
+            "element": "model-y-unit",
+            "expected": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "expectedFactCount": 5,
+      "observedFactCount": 5,
+      "factParityPassCount": 5,
+      "coordinateModelParity": "PASS",
+      "coordinateModelAnchors": [
+        {
+          "role": "origin",
+          "type": "INTERSECTION",
+          "element": [
+            "x-axis",
+            "y-axis"
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "observed": [
+            0,
+            0
+          ],
+          "delta": [
+            0,
+            0
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "role": "xAxis",
+          "type": "POINT",
+          "element": "model-x-unit",
+          "expected": [
+            1,
+            0
+          ],
+          "observed": [
+            1.0000000000012121,
+            0
+          ],
+          "delta": [
+            1.212141498285746e-12,
+            0
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "role": "yAxis",
+          "type": "POINT",
+          "element": "model-y-unit",
+          "expected": [
+            0,
+            1
+          ],
+          "observed": [
+            0,
+            1.0000000000012121
+          ],
+          "delta": [
+            0,
+            1.212141498285746e-12
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        }
+      ],
+      "tolerancePolicy": {
+        "maxTolerance": 0.05,
+        "defaultTolerance": 0.000001,
+        "status": "PASS"
+      },
+      "elementExtractionStatus": "PASS",
+      "observedFactStatus": "PASS",
+      "expectedObservedParity": "PASS",
+      "facts": [
+        {
+          "factId": "C1",
+          "type": "POINT",
+          "element": "C1",
+          "expected": [
+            1.264297739604484,
+            1.264297739604484
+          ],
+          "observed": [
+            1.264297739606061,
+            1.2642977396060606
+          ],
+          "delta": [
+            1.5769607841775724e-12,
+            1.5765166949677223e-12
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "factId": "C2",
+          "type": "POINT",
+          "element": "C2",
+          "expected": [
+            1.735702260395516,
+            1.735702260395516
+          ],
+          "observed": [
+            1.7357022603939398,
+            1.7357022603939394
+          ],
+          "delta": [
+            -1.5760726057578722e-12,
+            -1.5765166949677223e-12
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "factId": "T",
+          "type": "POINT",
+          "element": "T",
+          "expected": [
+            1.5,
+            1.5
+          ],
+          "observed": [
+            1.5000000000000002,
+            1.5000000000000002
+          ],
+          "delta": [
+            2.220446049250313e-16,
+            2.220446049250313e-16
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "factId": "tangent-slope",
+          "type": "LINE_SLOPE",
+          "element": "tangent",
+          "expected": -1,
+          "observed": -1,
+          "delta": 0,
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "factId": "tangent-intercept",
+          "type": "INTERCEPT",
+          "element": "tangent",
+          "expected": {
+            "x": 3,
+            "y": 3
+          },
+          "observed": {
+            "x": 3,
+            "y": 3
+          },
+          "delta": {
+            "x": 0,
+            "y": 0
+          },
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        }
+      ],
+      "svgMathStatus": "PASS",
+      "renderResult": "NOT_TESTED",
+      "svgFinalStatus": "FAIL",
+      "failures": []
+    },
+    "extra": {
+      "status": "PASS",
+      "observed": [
+        {
+          "id": "circle1",
+          "center": [
+            1.264297739606061,
+            1.2642977396060606
+          ],
+          "radius": 0.33333333333545456
+        },
+        {
+          "id": "circle2",
+          "center": [
+            1.7357022603939398,
+            1.7357022603939394
+          ],
+          "radius": 0.33333333333545456
+        }
+      ],
+      "errors": []
+    },
+    "display": {
+      "status": "PASS",
+      "rows": [
+        {
+          "id": "coord1",
+          "status": "PASS",
+          "observed": {
+            "visible": "(m,m)",
+            "powers": [],
+            "kind": "COORDINATE_LABEL"
+          }
+        },
+        {
+          "id": "coord2",
+          "status": "PASS",
+          "observed": {
+            "visible": "(M,M)",
+            "powers": [],
+            "kind": "COORDINATE_LABEL"
+          }
+        },
+        {
+          "id": "coordT",
+          "status": "PASS",
+          "observed": {
+            "visible": "T: (3/2,3/2)",
+            "powers": [],
+            "kind": "COORDINATE_LABEL"
+          }
+        },
+        {
+          "id": "m-definition",
+          "status": "PASS",
+          "observed": {
+            "visible": "m=(3−√(2)/3)/2",
+            "powers": [],
+            "kind": "EQUATION_LABEL"
+          }
+        },
+        {
+          "id": "M-definition",
+          "status": "PASS",
+          "observed": {
+            "visible": "M=(3+√(2)/3)/2",
+            "powers": [],
+            "kind": "EQUATION_LABEL"
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  "errors": []
+}

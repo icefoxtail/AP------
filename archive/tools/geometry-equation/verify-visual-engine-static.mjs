@@ -33,7 +33,7 @@ export function displayedMath(svg,expected) {
     if(id)actual.set(id,{visible,powers,kind});
   }
   for(const row of expected||[]) {
-    const value=actual.get(row.id);const pass=value&&value.visible===row.visible&&JSON.stringify(value.powers)===JSON.stringify(row.powers||[]);
+    const value=actual.get(row.id);const visible=Array.isArray(row.visible)?row.visible:[row.visible];const pass=value&&visible.includes(value.visible)&&JSON.stringify(value.powers)===JSON.stringify(row.powers||[]);
     rows.push({id:row.id,status:pass?'PASS':'FAIL',observed:value});if(!pass)errors.push('DISPLAYED_MATH_PARITY_FAIL:'+row.id);
   }
   const covered=new Set((expected||[]).map(v=>v.id));

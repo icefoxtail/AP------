@@ -1,0 +1,202 @@
+{
+  "engineVersion": "geometry-visual-v1",
+  "authority": "BUILD_SIDE_ONLY",
+  "publicationAuthorized": false,
+  "classification": "STANDARD",
+  "visualSpecSha256": "6d3551176279aafacc43e9858753467a0eddae0a910c38566027614b3b73d0fd",
+  "normalizedSvgSha256": "a1ee0eecd02d4cdd821c5e2ecd41603684cc07aa1eef8d9698def9c8d3dc00ef",
+  "texSha256": "026bdddd507cb80c4fee3a34503b03f63188153d37611e21ec52673ab1173c6b",
+  "coordinateModel": {
+    "originX": 230.0,
+    "originY": 373.75,
+    "sx": 49.5,
+    "sy": 49.5,
+    "aspectPolicy": "EQUAL_UNIT"
+  },
+  "relations": [],
+  "layout": {
+    "labels": [
+      {
+        "id": "C-name",
+        "kind": "POINT_NAME",
+        "target": "C",
+        "text": "C",
+        "at": [
+          180.5,
+          225.25
+        ],
+        "font": 13.25,
+        "priority": 0,
+        "box": {
+          "x": 176.1275,
+          "y": 193.375,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          176.1275,
+          209.275
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "R-name",
+        "kind": "POINT_NAME",
+        "target": "R",
+        "text": "R",
+        "at": [
+          279.5,
+          225.25
+        ],
+        "font": 13.25,
+        "priority": 1,
+        "box": {
+          "x": 291.5,
+          "y": 193.375,
+          "width": 8.745000000000001,
+          "height": 19.875
+        },
+        "baseline": [
+          291.5,
+          209.275
+        ],
+        "placement": "AUTO_NE"
+      },
+      {
+        "id": "C-coordinate",
+        "kind": "COORDINATE_LABEL",
+        "target": "C",
+        "exact": [
+          "-1",
+          "3"
+        ],
+        "font": 12.0,
+        "priority": 2,
+        "at": [
+          180.5,
+          225.25
+        ],
+        "text": "(−1,3)",
+        "panelText": "C: (−1,3)",
+        "box": {
+          "x": 156.74,
+          "y": 237.25,
+          "width": 47.519999999999996,
+          "height": 18.0
+        },
+        "baseline": [
+          156.74,
+          251.65
+        ],
+        "placement": "AUTO_S"
+      },
+      {
+        "id": "equation",
+        "kind": "EQUATION_LABEL",
+        "text": "(x+1)^(2)+(y−3)^(2)=2^(2)",
+        "at": [
+          329.0,
+          126.25
+        ],
+        "font": 13.5,
+        "priority": 2,
+        "markup": "(<tspan font-style=\"italic\">x</tspan>+1)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>+(<tspan font-style=\"italic\">y</tspan>−3)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>=2<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>",
+        "sourceMath": "(x+1)^2+(y-3)^2=2^2",
+        "math": true,
+        "box": {
+          "x": 341.0,
+          "y": 94.0,
+          "width": 222.75,
+          "height": 20.25
+        },
+        "baseline": [
+          341.0,
+          110.2
+        ],
+        "placement": "AUTO_NE"
+      },
+      {
+        "id": "axis-x",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          428.0,
+          373.75
+        ],
+        "text": "x",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 423.71,
+          "y": 342.25,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          423.71,
+          357.85
+        ],
+        "placement": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "kind": "GRAPH_ANNOTATION",
+        "at": [
+          230.0,
+          76.75
+        ],
+        "text": "y",
+        "font": 13,
+        "priority": 4,
+        "allowSuppress": true,
+        "math": true,
+        "box": {
+          "x": 225.71,
+          "y": 45.25,
+          "width": 8.58,
+          "height": 19.5
+        },
+        "baseline": [
+          225.71,
+          60.85
+        ],
+        "placement": "AUTO_N"
+      }
+    ],
+    "suppressed": [],
+    "unresolved": [],
+    "trace": [
+      {
+        "id": "C-name",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "R-name",
+        "fallback": "AUTO_NE"
+      },
+      {
+        "id": "C-coordinate",
+        "fallback": "AUTO_S"
+      },
+      {
+        "id": "equation",
+        "fallback": "AUTO_NE"
+      },
+      {
+        "id": "axis-x",
+        "fallback": "AUTO_N"
+      },
+      {
+        "id": "axis-y",
+        "fallback": "AUTO_N"
+      }
+    ],
+    "status": "PASS",
+    "basis": "APPROXIMATE_BUILD_SIDE_ONLY"
+  },
+  "sampling": [],
+  "semanticStatus": "PASS",
+  "status": "CANDIDATE_REQUIRES_QA",
+  "semanticWitnessSha256": "bf48078d18ded7b27e26b56753fa3ff184885af811711e8b910ab4dccbbe7a30"
+}

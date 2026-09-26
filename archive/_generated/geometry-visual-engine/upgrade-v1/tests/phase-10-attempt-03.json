@@ -1,0 +1,70 @@
+{
+  "phase": "PHASE_10_RENDERED_BROWSER_QA",
+  "attempt": 3,
+  "status": "FAIL",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/label_layout.py archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/tests/build_visual_fixtures.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-03-pycompile-targeted-python.stdout.txt",
+      "stderr": "phase-10-attempt-03-pycompile-targeted-python.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_label_layout.py -v",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-03-label-layout-unittest.stdout.txt",
+      "stderr": "phase-10-attempt-03-label-layout-unittest.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/tests/build_visual_fixtures.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-03-build-visual-fixtures.stdout.txt",
+      "stderr": "phase-10-attempt-03-build-visual-fixtures.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "stdout": "phase-10-attempt-03-rendered-fixture-browser-run.stdout.txt",
+      "stderr": "phase-10-attempt-03-rendered-fixture-browser-run.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 4,
+    "commandsPassed": 3,
+    "labelLayoutTests": 8,
+    "labelLayoutPassed": 8,
+    "fixtureCount": 2,
+    "fixtureUnresolved": 0,
+    "nodeTests": 0,
+    "nodePassed": 0,
+    "nodeFailed": 0,
+    "protectedFiles": null,
+    "productionMutationCount": null
+  },
+  "browserSummary": {
+    "browserVersion": null,
+    "captureCount": null,
+    "desktopCaptureCount": null,
+    "mobileCaptureCount": null,
+    "hardCollisionCount": null,
+    "clippedCount": null,
+    "missingGlyphCount": null,
+    "output": "{\"status\":\"FAIL\",\"runtime\":\"playwright-chromium\",\"synthetic\":false,\"maxRelayoutPasses\":3,\"rows\":[{\"id\":\"circle-source\",\"status\":\"FAIL\",\"attempt\":2,\"svgSha256\":\"6eace57ed783883fa5c630c0d54e6a2d043f335a8a6de55c461a915f9df97f96\",\"errors\":[],\"staticErrors\":[\"STALE_WITNESS_SVG_SHA\"]},{\"id\":\"circle-cluster\",\"status\":\"FAIL\",\"attempt\":2,\"svgSha256\":\"9e83adfbb115dd69754cfe8f8be4e425eb77b8f1d661130857bccc458eb3ec86\",\"errors\":[],\"staticErrors\":[\"DISPLAYED_MATH_PARITY_FAIL:m-definition\",\"DISPLAYED_MATH_PARITY_FAIL:M-definition\",\"STALE_WITNESS_SVG_SHA\"]}]}"
+  },
+  "environment": {
+    "GEOMETRY_NODE_MODULES": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
+    "GEOMETRY_BROWSER_CHANNEL": "chrome"
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "c934ebf1b3085337bffca97841c425150bc779cfe1e8ca5b1d98922461eb275c",
+    "archive/tools/geometry-equation/visual_engine/engine.py": "0a4f16a8fa86a23d7366ca31b3492887e1b7d93a4ce4b12453f6b5f0ef34085d",
+    "archive/tools/geometry-equation/tests/build_visual_fixtures.py": "1f3d3aae8129d216a8c376c93dcad3915f3bfd59cd4ecbf7839429e287e0d947",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "79dec1dd43320266c80684f6b1b612b792e2685386308681434497fc031e9086",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "1afb091f646cfd57a54d93d1e430808f826d61c3672ec2a2ea3e92141b6aa686",
+    "archive/tools/geometry-equation/visual-browser-runtime.mjs": "cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33"
+  }
+}

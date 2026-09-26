@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.4783
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5323
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.221
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.4073
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 0.2153
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.168
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 7 - good point: geometry parity passes
+  ---
+  duration_ms: 9.1166
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 8 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 3.3874
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 9 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 6.0095
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 10 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.0761
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 11 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 3.4989
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 12 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.296
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 13 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.7892
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 14 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 103.2383
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 15 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 4.1289
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 16 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.2179
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 17 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 2.9624
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 18 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 12.6156
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 19 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 5.1369
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 20 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 4.4299
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 21 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.5253
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 22 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5856
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 23 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.3078
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 24 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 4.9958
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 25 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 3.3319
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 313.904

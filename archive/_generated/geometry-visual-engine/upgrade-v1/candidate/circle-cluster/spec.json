@@ -1,0 +1,148 @@
+{
+  "sourceFacts": {
+    "independentFactHash": "code-regression-source-freeze-v1"
+  },
+  "derivedFacts": {},
+  "displayFacts": {
+    "symbolDefinitions": {
+      "m": "(3-sqrt(2)/3)/2",
+      "M": "(3+sqrt(2)/3)/2"
+    }
+  },
+  "id": "circle-cluster",
+  "title": "원과 접점",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": 0,
+    "xMax": 3,
+    "yMin": 0,
+    "yMax": 3
+  },
+  "objects": [
+    {
+      "id": "C1",
+      "kind": "POINT",
+      "name": "C₁",
+      "at": [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      "priority": 0
+    },
+    {
+      "id": "C2",
+      "kind": "POINT",
+      "name": "C₂",
+      "at": [
+        1.735702260395516,
+        1.735702260395516
+      ],
+      "priority": 0
+    },
+    {
+      "id": "T",
+      "kind": "POINT",
+      "at": [
+        1.5,
+        1.5
+      ],
+      "priority": 0
+    },
+    {
+      "id": "circle1",
+      "kind": "CIRCLE",
+      "center": [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      "radius": 0.3333333333333333
+    },
+    {
+      "id": "circle2",
+      "kind": "CIRCLE",
+      "center": [
+        1.735702260395516,
+        1.735702260395516
+      ],
+      "radius": 0.3333333333333333
+    },
+    {
+      "id": "tangent",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        1,
+        -3
+      ]
+    },
+    {
+      "id": "t1",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent",
+        "circle1"
+      ],
+      "at": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "id": "t2",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent",
+        "circle2"
+      ],
+      "at": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "id": "coord1",
+      "kind": "COORDINATE_LABEL",
+      "target": "C1",
+      "exact": [
+        "m",
+        "m"
+      ]
+    },
+    {
+      "id": "coord2",
+      "kind": "COORDINATE_LABEL",
+      "target": "C2",
+      "exact": [
+        "M",
+        "M"
+      ]
+    },
+    {
+      "id": "coordT",
+      "kind": "COORDINATE_LABEL",
+      "target": "T",
+      "exact": [
+        "3/2",
+        "3/2"
+      ]
+    },
+    {
+      "id": "m-definition",
+      "kind": "EQUATION_LABEL",
+      "text": "m=(3-sqrt(2)/3)/2",
+      "at": [
+        2.5,
+        2.7
+      ]
+    },
+    {
+      "id": "M-definition",
+      "kind": "EQUATION_LABEL",
+      "text": "M=(3+sqrt(2)/3)/2",
+      "at": [
+        2.5,
+        2.4
+      ]
+    }
+  ]
+}

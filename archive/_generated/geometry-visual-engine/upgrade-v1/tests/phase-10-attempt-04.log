@@ -1,0 +1,223 @@
+phase=PHASE_10_RENDERED_BROWSER_QA
+attempt=4
+status=PASS
+counts commands=7/7 python=61/61 fixtures=2 unresolved=0 node=25/25 browser=PASS version=153.0.8010.53 captures=4 desktop=2 mobile=2 hardCollisions=0 clipped=0 glyphs=0 labelCollisions=0 overflow=0 maxPasses=3
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/math_expression.py archive/tools/geometry-equation/visual_engine/label_layout.py archive/tools/geometry-equation/tests/build_visual_fixtures.py archive/tools/geometry-equation/tests/test_engine.py =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py =====
+--- stdout ---
+
+--- stderr ---
+.............................................................
+----------------------------------------------------------------------
+Ran 61 tests in 0.213s
+
+OK
+
+===== PASS exit=0 python archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+{"fixtures": 2, "unresolved": 0}
+
+--- stderr ---
+
+===== PASS exit=0 node archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+--- stdout ---
+{"status":"PASS","runtime":"playwright-chromium","synthetic":false,"maxRelayoutPasses":3,"rows":[{"id":"circle-source","status":"PASS","attempt":0,"svgSha256":"a1ee0eecd02d4cdd821c5e2ecd41603684cc07aa1eef8d9698def9c8d3dc00ef","errors":[],"staticErrors":[]},{"id":"circle-cluster","status":"PASS","attempt":0,"svgSha256":"bce81be48208e381eefb496b2db438d8c5b91889ff71cb1ad52f3ab0d6ad4082","errors":[],"staticErrors":[]}]}
+
+--- stderr ---
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.4783
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5323
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.221
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.4073
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 0.2153
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.168
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 7 - good point: geometry parity passes
+  ---
+  duration_ms: 9.1166
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 8 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 3.3874
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 9 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 6.0095
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 10 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.0761
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 11 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 3.4989
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 12 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.296
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 13 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.7892
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 14 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 103.2383
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 15 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 4.1289
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 16 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.2179
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 17 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 2.9624
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 18 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 12.6156
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 19 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 5.1369
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 20 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 4.4299
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 21 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.5253
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 22 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5856
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 23 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.3078
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 24 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 4.9958
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 25 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 3.3319
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 313.904
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/freeze-visual-baseline.py --verify =====
+--- stdout ---
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+--- stderr ---
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+
+--- stderr ---
+warning: in the working copy of 'archive/tools/geometry-equation/tests/test_engine.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'archive/tools/geometry-equation/verify-visual-engine-static.mjs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'archive/tools/geometry-equation/visual_engine/engine.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'archive/tools/geometry-equation/visual_engine/label_layout.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'archive/tools/geometry-equation/visual_engine/math_expression.py', LF will be replaced by CRLF the next time Git touches it
+
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/engine.py 88599c090a2c1bcb54729c30438e03bc9df2c7f5c3e9aae2d5dc07bc64cb6d2c
+archive/tools/geometry-equation/visual_engine/math_expression.py 098e14903c9526ef8414dc4d0cc897d95d4ce82ccbe58346cfcfc5023f75d728
+archive/tools/geometry-equation/visual_engine/label_layout.py c934ebf1b3085337bffca97841c425150bc779cfe1e8ca5b1d98922461eb275c
+archive/tools/geometry-equation/tests/build_visual_fixtures.py 1f3d3aae8129d216a8c376c93dcad3915f3bfd59cd4ecbf7839429e287e0d947
+archive/tools/geometry-equation/tests/test_engine.py cccbe1792d376bdc2c6908cb0054eb2bdb9864ec4edba3dbe2826fa198167fb6
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs 7555bf33de3a03dd4252aa82d85ff68846e70dc876deada4ff8101eeb8755fa0
+archive/tools/geometry-equation/verify-rendered-layout.mjs 1afb091f646cfd57a54d93d1e430808f826d61c3672ec2a2ea3e92141b6aa686
+archive/tools/geometry-equation/visual-browser-runtime.mjs cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33
+
+renderedBrowserSummary={"summaryStatus":"PASS","runtime":"playwright-chromium","synthetic":false,"maxRelayoutPasses":3,"captureCount":4,"desktopCount":2,"mobileCount":2,"browserVersions":["153.0.8010.53"],"HARD_RENDERED_COLLISION":0,"CLIPPING":0,"missingGlyphCount":0,"labelCollisionCount":0,"overflowCount":0,"captures":[{"fixture":"circle-source","viewport":"desktop","status":"PASS","browserVersion":"153.0.8010.53","HARD_RENDERED_COLLISION":0,"CLIPPING":0,"missingGlyphCount":0,"labelCollisionCount":0,"overflowCount":0},{"fixture":"circle-source","viewport":"mobile","status":"PASS","browserVersion":"153.0.8010.53","HARD_RENDERED_COLLISION":0,"CLIPPING":0,"missingGlyphCount":0,"labelCollisionCount":0,"overflowCount":0},{"fixture":"circle-cluster","viewport":"desktop","status":"PASS","browserVersion":"153.0.8010.53","HARD_RENDERED_COLLISION":0,"CLIPPING":0,"missingGlyphCount":0,"labelCollisionCount":0,"overflowCount":0},{"fixture":"circle-cluster","viewport":"mobile","status":"PASS","browserVersion":"153.0.8010.53","HARD_RENDERED_COLLISION":0,"CLIPPING":0,"missingGlyphCount":0,"labelCollisionCount":0,"overflowCount":0}],"summaryPath":"archive/_generated/geometry-visual-engine/upgrade-v1/rendered-bbox/summary.json"}

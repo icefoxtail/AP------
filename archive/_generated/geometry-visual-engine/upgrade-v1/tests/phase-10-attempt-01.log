@@ -1,0 +1,220 @@
+phase=PHASE_10_RENDERED_BROWSER_QA
+attempt=1
+status=FAIL
+counts commands=8/9 node=25/25 browserVersion=not-reported
+===== PASS exit=0 node --check archive/tools/geometry-equation/visual-browser-runtime.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-rendered-layout.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-visual-engine-static.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-visual-extra-primitives.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/math_expression.py archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.3885
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5223
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.2081
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.3996
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 1.4602
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.334
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 7 - good point: geometry parity passes
+  ---
+  duration_ms: 9.8135
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 8 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 3.6862
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 9 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 4.1774
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 10 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 3.2108
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 11 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 4.3982
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 12 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.5236
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 13 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.6115
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 14 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 111.3344
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 15 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 3.6068
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 16 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.188
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 17 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 3.2585
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 18 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 12.6677
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 19 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 5.6741
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 20 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 3.9832
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 21 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 3.9552
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 22 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5813
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 23 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.315
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 24 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 5.7852
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 25 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 4.1241
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 309.3561
+
+--- stderr ---
+
+===== FAIL exit=1 python archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+{"fixtures": 2, "unresolved": 1}
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/visual-browser-runtime.mjs cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33
+archive/tools/geometry-equation/verify-rendered-layout.mjs 1afb091f646cfd57a54d93d1e430808f826d61c3672ec2a2ea3e92141b6aa686
+archive/tools/geometry-equation/verify-visual-engine-static.mjs 886fb1ae9b83132e5eba25eea0e3af16d4c72ea7ec4b53b64842ded50dba72c2
+archive/tools/geometry-equation/verify-visual-extra-primitives.mjs ea057dd97236c50671bb91dcfbc142eacce93c89d3a872074458a8ef60dc752f
+archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs a1679c58da1b7336f003de092da3fc35ef928a36d15c6115a180f4e3bb2a8918
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs 79dec1dd43320266c80684f6b1b612b792e2685386308681434497fc031e9086
+archive/tools/geometry-equation/visual_engine/engine.py 0a4f16a8fa86a23d7366ca31b3492887e1b7d93a4ce4b12453f6b5f0ef34085d
+archive/tools/geometry-equation/visual_engine/math_expression.py 08f3a9046a2298445c5c466835f5f8c6f5504426604112a8f16af941230a5f35
+archive/tools/geometry-equation/tests/build_visual_fixtures.py 1f3d3aae8129d216a8c376c93dcad3915f3bfd59cd4ecbf7839429e287e0d947

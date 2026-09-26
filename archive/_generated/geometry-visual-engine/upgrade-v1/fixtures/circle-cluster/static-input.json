@@ -1,0 +1,135 @@
+{
+  "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-cluster/visual.svg",
+  "witness": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-cluster/witness.json",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 59.310344827586206,
+    "originY": 420.6896551724138,
+    "sx": 113.79310344827584,
+    "sy": 113.79310344827584,
+    "aspectPolicy": "EQUAL_UNIT",
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "factId": "C1",
+      "type": "POINT",
+      "element": "C1",
+      "expected": [
+        1.264297739604484,
+        1.264297739604484
+      ]
+    },
+    {
+      "factId": "C2",
+      "type": "POINT",
+      "element": "C2",
+      "expected": [
+        1.735702260395516,
+        1.735702260395516
+      ]
+    },
+    {
+      "factId": "T",
+      "type": "POINT",
+      "element": "T",
+      "expected": [
+        1.5,
+        1.5
+      ]
+    },
+    {
+      "factId": "tangent-slope",
+      "type": "LINE_SLOPE",
+      "element": "tangent",
+      "expected": -1
+    },
+    {
+      "factId": "tangent-intercept",
+      "type": "INTERCEPT",
+      "element": "tangent",
+      "expected": {
+        "x": 3,
+        "y": 3
+      }
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "CIRCLE",
+      "element": "circle1",
+      "center": [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      "radius": 0.3333333333333333
+    },
+    {
+      "type": "CIRCLE",
+      "element": "circle2",
+      "center": [
+        1.735702260395516,
+        1.735702260395516
+      ],
+      "radius": 0.3333333333333333
+    }
+  ],
+  "expectedLabels": [
+    {
+      "id": "coord1",
+      "visible": [
+        "(m,m)",
+        "C1: (m,m)"
+      ]
+    },
+    {
+      "id": "coord2",
+      "visible": [
+        "(M,M)",
+        "C2: (M,M)"
+      ]
+    },
+    {
+      "id": "coordT",
+      "visible": [
+        "(3/2,3/2)",
+        "T: (3/2,3/2)"
+      ]
+    },
+    {
+      "id": "m-definition",
+      "visible": "m=(3−√(2)/3)/2"
+    },
+    {
+      "id": "M-definition",
+      "visible": "M=(3+√(2)/3)/2"
+    }
+  ]
+}

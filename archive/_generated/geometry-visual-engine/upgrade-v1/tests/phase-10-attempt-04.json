@@ -1,0 +1,147 @@
+{
+  "phase": "PHASE_10_RENDERED_BROWSER_QA",
+  "attempt": 4,
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/math_expression.py archive/tools/geometry-equation/visual_engine/label_layout.py archive/tools/geometry-equation/tests/build_visual_fixtures.py archive/tools/geometry-equation/tests/test_engine.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-pycompile-changed-python.stdout.txt",
+      "stderr": "phase-10-attempt-04-pycompile-changed-python.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-all-python-unittests.stdout.txt",
+      "stderr": "phase-10-attempt-04-all-python-unittests.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/tests/build_visual_fixtures.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-build-visual-fixtures.stdout.txt",
+      "stderr": "phase-10-attempt-04-build-visual-fixtures.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-rendered-fixture-browser-run.stdout.txt",
+      "stderr": "phase-10-attempt-04-rendered-fixture-browser-run.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-combined-node-tests.stdout.txt",
+      "stderr": "phase-10-attempt-04-combined-node-tests.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/freeze-visual-baseline.py --verify",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-baseline-verify.stdout.txt",
+      "stderr": "phase-10-attempt-04-baseline-verify.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-10-attempt-04-diff-check.stdout.txt",
+      "stderr": "phase-10-attempt-04-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 7,
+    "commandsPassed": 7,
+    "pythonTests": 61,
+    "pythonPassed": 61,
+    "fixtureCount": 2,
+    "fixtureUnresolved": 0,
+    "nodeTests": 25,
+    "nodePassed": 25,
+    "nodeFailed": 0,
+    "protectedFiles": 4493,
+    "productionMutationCount": 0
+  },
+  "browserSummary": {
+    "summaryStatus": "PASS",
+    "runtime": "playwright-chromium",
+    "synthetic": false,
+    "maxRelayoutPasses": 3,
+    "captureCount": 4,
+    "desktopCount": 2,
+    "mobileCount": 2,
+    "browserVersions": [
+      "153.0.8010.53"
+    ],
+    "HARD_RENDERED_COLLISION": 0,
+    "CLIPPING": 0,
+    "missingGlyphCount": 0,
+    "labelCollisionCount": 0,
+    "overflowCount": 0,
+    "captures": [
+      {
+        "fixture": "circle-source",
+        "viewport": "desktop",
+        "status": "PASS",
+        "browserVersion": "153.0.8010.53",
+        "HARD_RENDERED_COLLISION": 0,
+        "CLIPPING": 0,
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "overflowCount": 0
+      },
+      {
+        "fixture": "circle-source",
+        "viewport": "mobile",
+        "status": "PASS",
+        "browserVersion": "153.0.8010.53",
+        "HARD_RENDERED_COLLISION": 0,
+        "CLIPPING": 0,
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "overflowCount": 0
+      },
+      {
+        "fixture": "circle-cluster",
+        "viewport": "desktop",
+        "status": "PASS",
+        "browserVersion": "153.0.8010.53",
+        "HARD_RENDERED_COLLISION": 0,
+        "CLIPPING": 0,
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "overflowCount": 0
+      },
+      {
+        "fixture": "circle-cluster",
+        "viewport": "mobile",
+        "status": "PASS",
+        "browserVersion": "153.0.8010.53",
+        "HARD_RENDERED_COLLISION": 0,
+        "CLIPPING": 0,
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "overflowCount": 0
+      }
+    ],
+    "summaryPath": "archive/_generated/geometry-visual-engine/upgrade-v1/rendered-bbox/summary.json"
+  },
+  "environment": {
+    "GEOMETRY_NODE_MODULES": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
+    "GEOMETRY_BROWSER_CHANNEL": "chrome"
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/engine.py": "88599c090a2c1bcb54729c30438e03bc9df2c7f5c3e9aae2d5dc07bc64cb6d2c",
+    "archive/tools/geometry-equation/visual_engine/math_expression.py": "098e14903c9526ef8414dc4d0cc897d95d4ce82ccbe58346cfcfc5023f75d728",
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "c934ebf1b3085337bffca97841c425150bc779cfe1e8ca5b1d98922461eb275c",
+    "archive/tools/geometry-equation/tests/build_visual_fixtures.py": "1f3d3aae8129d216a8c376c93dcad3915f3bfd59cd4ecbf7839429e287e0d947",
+    "archive/tools/geometry-equation/tests/test_engine.py": "cccbe1792d376bdc2c6908cb0054eb2bdb9864ec4edba3dbe2826fa198167fb6",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "7555bf33de3a03dd4252aa82d85ff68846e70dc876deada4ff8101eeb8755fa0",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "1afb091f646cfd57a54d93d1e430808f826d61c3672ec2a2ea3e92141b6aa686",
+    "archive/tools/geometry-equation/visual-browser-runtime.mjs": "cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33"
+  }
+}

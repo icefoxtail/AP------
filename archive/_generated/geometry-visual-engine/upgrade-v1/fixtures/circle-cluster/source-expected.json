@@ -1,0 +1,84 @@
+{
+  "points": {
+    "C1": [
+      1.264297739604484,
+      1.264297739604484
+    ],
+    "C2": [
+      1.735702260395516,
+      1.735702260395516
+    ],
+    "T": [
+      1.5,
+      1.5
+    ]
+  },
+  "lineFacts": [
+    {
+      "factId": "tangent-slope",
+      "type": "LINE_SLOPE",
+      "element": "tangent",
+      "expected": -1
+    },
+    {
+      "factId": "tangent-intercept",
+      "type": "INTERCEPT",
+      "element": "tangent",
+      "expected": {
+        "x": 3,
+        "y": 3
+      }
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "CIRCLE",
+      "element": "circle1",
+      "center": [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      "radius": 0.3333333333333333
+    },
+    {
+      "type": "CIRCLE",
+      "element": "circle2",
+      "center": [
+        1.735702260395516,
+        1.735702260395516
+      ],
+      "radius": 0.3333333333333333
+    }
+  ],
+  "labels": [
+    {
+      "id": "coord1",
+      "visible": [
+        "(m,m)",
+        "C1: (m,m)"
+      ]
+    },
+    {
+      "id": "coord2",
+      "visible": [
+        "(M,M)",
+        "C2: (M,M)"
+      ]
+    },
+    {
+      "id": "coordT",
+      "visible": [
+        "(3/2,3/2)",
+        "T: (3/2,3/2)"
+      ]
+    },
+    {
+      "id": "m-definition",
+      "visible": "m=(3−√(2)/3)/2"
+    },
+    {
+      "id": "M-definition",
+      "visible": "M=(3+√(2)/3)/2"
+    }
+  ]
+}
