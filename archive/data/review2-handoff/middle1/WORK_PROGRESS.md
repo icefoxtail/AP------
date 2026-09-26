@@ -139,3 +139,25 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - Main was not changed or merged. No `R2E_MAIN_FINAL` terminal receipt was issued.
 - Next: B28. Resolve q12/q23 source-recovered student solutions, then complete the remaining Meta/RPM and runtime checks.
 - Current branch HEAD before the B24 physical receipt update: `3e302ecdb1fab7a08abedf7fcdaefebc54208292`.
+
+## B28 R2E validation checkpoint — 2026-09-27
+
+- B28 denominator 24/24; deep review 22/22 (q1–q16, q19–q24); resolved 22; unresolved 0.
+- q12 and q23 were recovered from exact Notion D12 source evidence. Image Git blobs match f7fd240b9cd92fe668ae5a3e880d843892851f6b and 063ac074aa466d8a3ac5eadf0373babc3e2c51cb; final solutions show the exposed-surface ordering and equal-water-volume equation.
+- q14 mean is 135/10=13.5. q16 difficulty conflict is resolved at bucket 3 / medium / B34 / BORDERLINE_ACCEPTABLE.
+- q6/q13/q22 SVG byte drift was repaired, XML-checked, Chrome-rendered, and visually reviewed. All 8 referenced B28 solution SVGs exist and parse.
+- Target gates: protected source fields 24/24; difficulty-field parity 24/24; Archive2 eligible 24/24; runtime selectable 24/24; canonical owner parity 24/24; target RPM/crosswalk/exact binding audit 64/64; combined runtime/catalog joins 5157/5157.
+- node --check, VM load, blank solution, control-character, LaTeX escape, canonical compiled parity, reviewed-runtime check, and Archive2 catalog check pass.
+- Archive engine exam/solution/answer browser preview was blocked by the CUA browser URL policy for the local file URL. No alternate browser route was used. This limitation does not leave a source, math, Meta, SVG, catalog, or runtime HOLD.
+- B28 is validated and ready for its exam-specific final branch commit. Main is unchanged; no Notion main-terminal receipt will be issued.
+- Current branch HEAD: e653ec92c3b46391e500d30691216a453c1d5117.
+- Next: commit/push B28 final artifact, then commit/push the physical R2E branch receipt.
+
+## B28 R2E final artifact commit — 2026-09-27
+
+- B28 final artifact commit: 3143a9626ca664fafc5dbd5837a7428f8b17fafd; pushed to origin/work/m1-b20-b24-b28-r2e.
+- B28 status: R2E_BRANCH_FINAL, denominator 24/24, deep review 22/22, unresolved 0.
+- B20 and B24 remain R2E_BRANCH_FINAL on this branch. No main merge, main update, or Notion main-terminal receipt was performed.
+- The local Archive engine exam/solution/answer browser preview remains blocked by the CUA URL policy. Static, VM, canonical, catalog, runtime, source, difficulty, and SVG gates pass.
+- Current branch HEAD at this checkpoint: 3143a9626ca664fafc5dbd5837a7428f8b17fafd.
+- Physical terminal receipt is committed and will be pushed to the existing work branch; no main integration or Notion main-terminal receipt will occur.
