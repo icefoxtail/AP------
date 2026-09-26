@@ -1,0 +1,454 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_EVIDENCE_V1",
+  "examFile": "23_금당중_2학기_중간_중2_수학.js",
+  "examUid": "23_금당중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "lane": "D",
+  "stage": "CREATE",
+  "sourcePath": "archive/exams/original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+  "sourceBlobSha": "d98189f2d9c563030fd666a204e365ec30d36488",
+  "totalQuestions": 25,
+  "sourceIdentity": {
+    "coverage": "25/25",
+    "protectedFields": "content/choices/answer/image PASS",
+    "sourceImagesReviewed": "13/13",
+    "trueHold": 0
+  },
+  "solutionSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0,
+    "smallBoard": "25/25 직접 판독; 기존 해설 충분"
+  },
+  "svgSummary": {
+    "ADD": 6,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "questions": [
+      12,
+      16,
+      18,
+      21,
+      24,
+      25
+    ],
+    "validation": "GEOMETRY_FACT_CHECK + XML_PARSE PASS",
+    "renderReview": "NOT_RUN_BY_POLICY",
+    "blobShas": {
+      "12": "46f4425a72b9265d62d9d110840fc87594eb44ec",
+      "16": "d03ab54e518d474fd99ded5bec0581fe0c3df033",
+      "18": "345da08e7f1d5168f257df304555aa5da21da6c1",
+      "21": "1e35ef4e5efc1be898b87c066381c3ba6c6a9544",
+      "24": "38b64fbb8e88200615076833365816ae543db795",
+      "25": "c842e41c8c4c16de10faffcac931209a75909757"
+    }
+  },
+  "l2RepairSummary": {
+    "REPAIR": 5,
+    "items": [
+      {
+        "q": 2,
+        "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "reason": "단일 이원일차방정식 자연수 해"
+      },
+      {
+        "q": 10,
+        "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "reason": "개수·가격 활용"
+      },
+      {
+        "q": 15,
+        "from": "M2-06-SIMILAR_FIGURE",
+        "to": "M2-06-PARALLEL_LENGTH_RATIO",
+        "reason": "중점연결정리"
+      },
+      {
+        "q": 19,
+        "from": "M2-05-TRIANGLE_PROPERTIES",
+        "to": "M2-06-PARALLEL_LENGTH_RATIO",
+        "reason": "M2-06 parent violation 복구; 무게중심 전용 L2 부재는 RPM-095 gap으로 보존"
+      },
+      {
+        "q": 22,
+        "from": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "to": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+        "reason": "도형 활용 연립방정식"
+      }
+    ]
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 6,
+    "PROPOSED_NEW_L3": 1,
+    "PROPOSED_NEW_L4": 2,
+    "RPM_PRIMARY_MIGRATION_GAP": 16,
+    "TRUE_HOLD": 0
+  },
+  "difficultySummary": {
+    "judged": 25,
+    "buckets": {
+      "1": 5,
+      "2": 11,
+      "3": 5,
+      "4": 4,
+      "5": 0
+    }
+  },
+  "perQuestion": [
+    {
+      "questionNo": 1,
+      "rpmPrimary": null,
+      "disposition": "PROPOSED_NEW_L3",
+      "difficultyBucket": 1,
+      "primaryMethod": "상황을 식으로 바꾼 뒤 xy 존재 여부로 일차성 판별",
+      "decisiveStep": "①은 xy=28이므로 일차방정식 아님",
+      "proposal": "L3 미지수가 2개인 일차방정식 / L4 일차성 판별"
+    },
+    {
+      "questionNo": 2,
+      "rpmPrimary": null,
+      "disposition": "PROPOSED_NEW_L4",
+      "difficultyBucket": 2,
+      "primaryMethod": "2x+3y=12의 자연수 순서쌍 탐색",
+      "decisiveStep": "(3,2)만 자연수 해",
+      "proposal": "L4 자연수 해의 순서쌍"
+    },
+    {
+      "questionNo": 3,
+      "rpmPrimary": "M2-RPM-033",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "두 해를 대입해 계수 결정",
+      "decisiveStep": "a=4,p=6"
+    },
+    {
+      "questionNo": 4,
+      "rpmPrimary": "M2-RPM-030",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "가감법 소거 가능 연산 판별",
+      "decisiveStep": "② y 소거, ④ x 소거"
+    },
+    {
+      "questionNo": 5,
+      "rpmPrimary": "M2-RPM-030",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 1,
+      "primaryMethod": "괄호 정리 후 가감법",
+      "decisiveStep": "x=1,y=-1"
+    },
+    {
+      "questionNo": 6,
+      "rpmPrimary": "M2-RPM-034",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "괄호식 연립 풀이 후 k 대입",
+      "decisiveStep": "x=-2,y=3→k=2"
+    },
+    {
+      "questionNo": 7,
+      "rpmPrimary": "M2-RPM-031",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 1,
+      "primaryMethod": "대입법",
+      "decisiveStep": "4x=1"
+    },
+    {
+      "questionNo": 8,
+      "rpmPrimary": "M2-RPM-035",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "분수·소수식을 정수계수로 변환 후 가감",
+      "decisiveStep": "x=y=2"
+    },
+    {
+      "questionNo": 9,
+      "rpmPrimary": "M2-RPM-037",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 3,
+      "primaryMethod": "무수히 많은 해의 계수비 일치",
+      "decisiveStep": "a=-1,b=3"
+    },
+    {
+      "questionNo": 10,
+      "rpmPrimary": "M2-RPM-039",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "개수·가격 상황을 연립방정식으로 모델링",
+      "decisiveStep": "x=34/21,y=20/21→21k=74"
+    },
+    {
+      "questionNo": 11,
+      "rpmPrimary": "M2-RPM-046",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 1,
+      "primaryMethod": "함숫값 직접 대입",
+      "decisiveStep": "a=-3,b=9",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+    },
+    {
+      "questionNo": 12,
+      "rpmPrimary": "M2-RPM-087",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3,
+      "primaryMethod": "AA 닮음 뒤 대응변 비",
+      "decisiveStep": "△ABC∽△EDC→BE=8",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+    },
+    {
+      "questionNo": 13,
+      "rpmPrimary": "M2-RPM-103",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "피타고라스 후 넓이 두 표현",
+      "decisiveStep": "BC=5, AH=12/5"
+    },
+    {
+      "questionNo": 14,
+      "rpmPrimary": "M2-RPM-093",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2,
+      "primaryMethod": "DE∥BC 닮음비",
+      "decisiveStep": "AD/12=6/9→AD=8",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+    },
+    {
+      "questionNo": 15,
+      "rpmPrimary": "M2-RPM-089",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1,
+      "primaryMethod": "삼각형 중점연결정리",
+      "decisiveStep": "DE=5,EF=4,FD=6",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+    },
+    {
+      "questionNo": 16,
+      "rpmPrimary": "M2-RPM-094",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4,
+      "primaryMethod": "중점 조건과 평행선 비를 결합",
+      "decisiveStep": "CN=3/4CD, ME=1/2CD→CN=6",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    },
+    {
+      "questionNo": 17,
+      "rpmPrimary": "M2-RPM-091",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3,
+      "primaryMethod": "여러 평행선의 닮음비 연결",
+      "decisiveStep": "BE:BD=3:7→EF=12",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    },
+    {
+      "questionNo": 18,
+      "rpmPrimary": "M2-RPM-098",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 4,
+      "primaryMethod": "중첩 무게중심 높이비로 넓이 환산",
+      "decisiveStep": "[G'BD]=[ABC]/18",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION"
+    },
+    {
+      "questionNo": 19,
+      "rpmPrimary": "M2-RPM-095",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 3,
+      "primaryMethod": "두 무게중심의 2:1 비 연속 적용",
+      "decisiveStep": "GG'=4→AD=18",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_REVERSE"
+    },
+    {
+      "questionNo": 20,
+      "rpmPrimary": "M2-RPM-101",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "피타고라스 정리의 역",
+      "decisiveStep": "②,⑤만 성립"
+    },
+    {
+      "questionNo": 21,
+      "rpmPrimary": "M2-RPM-103",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 3,
+      "primaryMethod": "반원 넓이의 피타고라스 상쇄",
+      "decisiveStep": "색칠 넓이=[ABC]=54"
+    },
+    {
+      "questionNo": 22,
+      "rpmPrimary": "M2-RPM-044",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2,
+      "primaryMethod": "도형 조건을 연립방정식으로 모델링",
+      "decisiveStep": "3x-2y=15,x+3y=16→넓이21"
+    },
+    {
+      "questionNo": 23,
+      "rpmPrimary": null,
+      "disposition": "PROPOSED_NEW_L4",
+      "difficultyBucket": 2,
+      "primaryMethod": "두 구간 거리합·실주행시간합을 연립",
+      "decisiveStep": "x+y=10000,x/200+y/100=85→x=3000",
+      "proposal": "RPM L3 속력·시간·거리 아래 L4 구간별 속력과 휴식시간"
+    },
+    {
+      "questionNo": 24,
+      "rpmPrimary": "M2-RPM-094",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4,
+      "primaryMethod": "두 평행선의 닮음비 연쇄",
+      "decisiveStep": "AD:AB=4:7→AE:AC=4:7→EC=21/2",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+    },
+    {
+      "questionNo": 25,
+      "rpmPrimary": "M2-RPM-097",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 4,
+      "primaryMethod": "중점연결+무게중심으로 선분비·넓이비",
+      "decisiveStep": "AH:HG:GD=3:1:2, 넓이비=3:1:4",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_APPLICATION"
+    }
+  ],
+  "unresolvedItems": [
+    {
+      "questionNo": 1,
+      "disposition": "PROPOSED_NEW_L3",
+      "rpmPrimary": null,
+      "proposal": "L3 미지수가 2개인 일차방정식 / L4 일차성 판별"
+    },
+    {
+      "questionNo": 2,
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "proposal": "L4 자연수 해의 순서쌍"
+    },
+    {
+      "questionNo": 3,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-033",
+      "proposal": null
+    },
+    {
+      "questionNo": 4,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "proposal": null
+    },
+    {
+      "questionNo": 5,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "proposal": null
+    },
+    {
+      "questionNo": 6,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-034",
+      "proposal": null
+    },
+    {
+      "questionNo": 7,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-031",
+      "proposal": null
+    },
+    {
+      "questionNo": 8,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-035",
+      "proposal": null
+    },
+    {
+      "questionNo": 9,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-037",
+      "proposal": null
+    },
+    {
+      "questionNo": 10,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-039",
+      "proposal": null
+    },
+    {
+      "questionNo": 11,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-046",
+      "proposal": null
+    },
+    {
+      "questionNo": 13,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-103",
+      "proposal": null
+    },
+    {
+      "questionNo": 18,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-098",
+      "proposal": null
+    },
+    {
+      "questionNo": 19,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-095",
+      "proposal": null
+    },
+    {
+      "questionNo": 20,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-101",
+      "proposal": null
+    },
+    {
+      "questionNo": 21,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-103",
+      "proposal": null
+    },
+    {
+      "questionNo": 22,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-044",
+      "proposal": null
+    },
+    {
+      "questionNo": 23,
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "proposal": "RPM L3 속력·시간·거리 아래 L4 구간별 속력과 휴식시간"
+    },
+    {
+      "questionNo": 25,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-097",
+      "proposal": null
+    }
+  ],
+  "authorityRefs": {
+    "branch": "work/intake/m2",
+    "inputCommit": "10cf7f55381cc82224e7ffb9b2674c8a3b8e9671",
+    "mainReadSha": "7bf8f80a3d953b6eb9f0a7d0f3532e29c5313e69",
+    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "sourceBlobSha": "d98189f2d9c563030fd666a204e365ec30d36488"
+  },
+  "validation": {
+    "jsRuntime": "25/25 PASS",
+    "idOrder": "1..25 PASS",
+    "controlChars": 0,
+    "renderReview": "NOT_RUN_BY_POLICY"
+  },
+  "createdAt": "2026-09-27T03:40:00+09:00"
+}
