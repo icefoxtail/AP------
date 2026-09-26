@@ -43,6 +43,10 @@ function bindingKey(row) {
   return [text(row?.curriculum), text(row?.standardUnitKey), row?.subUnitKey == null ? '<DIRECT>' : text(row.subUnitKey), text(row?.problemTypeKey)].join('\0');
 }
 
+function exactBindingIdentity(row) {
+  return [bindingKey(row), text(row?.ownerPack)].join('\0');
+}
+
 export function loadActiveMetaRegistry(repoRoot = defaultRoot) {
   const root = path.resolve(repoRoot);
   const errors = [];
@@ -101,6 +105,18 @@ export function loadActiveMetaRegistry(repoRoot = defaultRoot) {
     for (const key of duplicate) errors.push(`META_REGISTRY_DUPLICATE:${kind}:${key}`);
   }
   const activeBindings = new Set((bindings.bindings || []).filter(row => row?.status === 'ACTIVE').map(bindingKey));
+  const activeBindingRows = (bindings.bindings || []).filter(row => row?.status === 'ACTIVE');
+  const activePacks = new Map((index?.activePacks || []).filter(row => row?.status === 'ACTIVE').map(row => [row.id, row]));
+  const activeBindingIdentities = new Set(activeBindingRows.map(exactBindingIdentity));
+  const registrySha = `sha256:${crypto.createHash('sha256').update(JSON.stringify({
+    index: parsed.index || null,
+    rules: parsed.rules || null,
+    conditionsCanonical: parsed.conditionsCanonical || null,
+    taxonomy: parsed.taxonomy || null,
+    concepts: parsed.concepts || null,
+    conditions: parsed.conditions || null,
+    bindings: parsed.bindings || null,
+  })).digest('hex')}`;
   return {
     status: errors.length ? 'UNAVAILABLE' : 'ACTIVE',
     errors: [...new Set(errors)],
@@ -112,6 +128,10 @@ export function loadActiveMetaRegistry(repoRoot = defaultRoot) {
     concepts: conceptRows.map,
     conditions: conditionRows.map,
     bindings: activeBindings,
+    bindingRows: activeBindingRows,
+    bindingIdentities: activeBindingIdentities,
+    activePacks,
+    registrySha,
     integrationPatterns: new Set(parsed.rules?.integrationPatterns || []),
   };
 }

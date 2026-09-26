@@ -4,7 +4,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
-export const PACKET_SCHEMA_VERSION = 2;
+export const PACKET_SCHEMA_VERSION = 3;
 export const LEGACY_GEUMDANG_R2_ATTESTATION = Object.freeze({
   packetSha256: "ea4afcb4a39a9f2bc91b163dfdc26216df3bbdf4edc66c07e7718d800da39867",
   artifactSha256: "d72bf847deed2a251d6d73c3cda2bd77cb3f41c3068ac98e83262209615f84dd",
@@ -81,7 +81,8 @@ export function validatePacketEnvelope(packet, { rawBytes = null } = {}) {
   const exactPacketSha256 = rawBytes ? sha256(rawBytes) : null;
   const legacyCompatibility = packet.schemaVersion === "archive-reviewed-apply/v2" &&
     exactPacketSha256 === LEGACY_GEUMDANG_R2_ATTESTATION.packetSha256;
-  if (packet.schemaVersion !== PACKET_SCHEMA_VERSION && !legacyCompatibility) fail("schemaVersion must be 2");
+  if (packet.schemaVersion !== PACKET_SCHEMA_VERSION && !legacyCompatibility) fail("schemaVersion must be 3; v2 is accepted only for the exact sealed legacy recovery packet");
+  if (!legacyCompatibility && packet.recoveryRoute !== "SEALED_LEGACY_RECOVERY") fail("schema v3 is reserved for sealed legacy artifact recovery; new CREATE/R1/R2E production must use the current intake/R2E lifecycle");
   if (legacyCompatibility && (
     packet.applyId !== LEGACY_GEUMDANG_R2_ATTESTATION.applyId ||
     packet.targetBaseSha !== LEGACY_GEUMDANG_R2_ATTESTATION.targetBaseSha ||
@@ -161,6 +162,24 @@ export function validatePacketEnvelope(packet, { rawBytes = null } = {}) {
     if (typeof patch.runtimePackId !== "string") fail(`runtimePackId must be a string for ${patch.questionUid}`);
     if (!patch.before || typeof patch.before !== "object" || Array.isArray(patch.before)) fail(`before object required for ${patch.questionUid}`);
     if (!patch.after || typeof patch.after !== "object" || Array.isArray(patch.after)) fail(`after object required for ${patch.questionUid}`);
+    if (!legacyCompatibility) {
+      for (const [field, value] of Object.entries({
+        resolverInput: patch.resolverInput,
+        resolverEvidence: patch.resolverEvidence,
+        difficultyEvidence: patch.difficultyEvidence,
+        semanticMetaEvidence: patch.semanticMetaEvidence,
+        validatorReceipt: patch.validatorReceipt,
+      })) {
+        if (!value || typeof value !== "object" || Array.isArray(value)) fail(`${field} required for ${patch.questionUid}`);
+      }
+      if (patch.resolverInput.sourceIdentity?.questionUid !== patch.questionUid) fail(`resolverInput UID mismatch for ${patch.questionUid}`);
+      if (patch.resolverInput.sourceIdentity?.sourceArchiveFile !== patch.sourceArchiveFile
+        || Number(patch.resolverInput.sourceIdentity?.sourceOrdinal) !== patch.sourceOrdinal) fail(`resolverInput source identity mismatch for ${patch.questionUid}`);
+      if (patch.validatorReceipt.status !== "PASS" || patch.validatorReceipt.validatorId !== "rpm-active-resolver-v1"
+        || patch.validatorReceipt.inputEvidenceSha !== patch.resolverEvidence.evidenceSha || !patch.validatorReceipt.runSha) {
+        fail(`deterministic Meta validator receipt required for ${patch.questionUid}`);
+      }
+    }
     for (const field of [...Object.keys(patch.before), ...Object.keys(patch.after)]) {
       if (!META_VALUE_FIELDS.has(field) &&
           !(legacyCompatibility && new Set(["legacyL3Key", "legacyL4Key"]).has(field))) {

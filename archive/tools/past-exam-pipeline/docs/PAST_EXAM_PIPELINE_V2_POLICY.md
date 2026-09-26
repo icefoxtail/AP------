@@ -40,9 +40,12 @@ frozen source
 → RPM Primary README
 → RPM CANONICAL_MASTER
 → target curriculum/scope view
-→ RPM→ACTIVE crosswalk
-→ ACTIVE Meta Foundation
-→ L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty v1.3
+→ exact grade/subject RPM→ACTIVE crosswalk
+→ GLOBAL ACTIVE Meta Foundation PT/TPL
+→ exact curriculum/L1/L2 binding
+→ EXISTING_REUSE / FAMILY_REUSE / RPM_PRIMARY_MIGRATION_GAP / TRUE_TAXONOMY_GAP / ROUTE_OUT
+→ independent difficulty blind pass
+→ L3/L4/CrossConcept/Condition/IntegrationPattern deterministic validator receipt
 → solution identity evidence
 → visual triage and EXPECTED FACT
 → required solution SVGs
@@ -52,9 +55,11 @@ frozen source
 Classification starts from current source plus verified final solution,
 `primaryMethod`, and `decisiveStep`. Same-stage candidate keys, template or
 CrossConcept suggestions, heuristics, and prior verdicts are excluded from the
-semantic input. The RPM lookup order is mandatory; a missing ACTIVE key or
-binding is a migration disposition and never authorizes an invented canonical
-key.
+semantic input. `archive/tools/meta-foundation/rpm-active-resolver.mjs` is the
+shared implementation; consumers must not copy its RPM/crosswalk/ACTIVE lookup
+logic. The RPM lookup order is mandatory; a missing ACTIVE key or binding is
+`RPM_PRIMARY_MIGRATION_GAP`, never a true taxonomy gap or authorization to mint
+a key.
 
 `build-completion-evidence.mjs` creates only hash-bound `NOT_TESTED` drafts for
 `solution_identity_evidence.json` and `meta_decision_evidence.json`. A reviewer
@@ -67,7 +72,10 @@ Solution identity uses `sourceArchiveFile`, `sourceIdentityKey`, `sourceOrdinal`
 A migration gap may leave BASIC eligible while advanced metadata remains
 `HOLD`; canonical fields stay blank rather than carrying a candidate/deprecated
 key. A `TRUE_TAXONOMY_GAP` is evidence/HOLD only and cannot create or promote a
-new key.
+new key. Difficulty is a separate fresh blind pass and is never inferred from
+legacy `level`. The deterministic validator receipt is required before
+advanced Meta closure; runtime/Archive parity binds the same UID and evidence
+hashes.
 
 
 ## Source-of-truth order

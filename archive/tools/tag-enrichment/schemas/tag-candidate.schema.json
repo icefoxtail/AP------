@@ -16,10 +16,8 @@
     "currentTags",
     "subUnitKeyCandidate",
     "subUnitCandidate",
-    "conceptClusterKeyCandidate",
-    "problemTypeKeyCandidate",
-    "templateKeyCandidate",
-    "difficultyBucketCandidate",
+    "advancedMetaAuthority",
+    "advancedMetaDisposition",
     "tagConfidence",
     "tagStatus",
     "reasons",
@@ -40,15 +38,21 @@
     "currentTags": { "type": "array", "items": { "type": "string" } },
     "subUnitKeyCandidate": { "type": "string" },
     "subUnitCandidate": { "type": "string" },
-    "conceptClusterKeyCandidate": { "type": "string" },
-    "problemTypeKeyCandidate": { "type": "string" },
-    "templateKeyCandidate": { "type": "string" },
-    "difficultyBucketCandidate": { "type": "string" },
+    "advancedMetaAuthority": { "const": "RPM_ACTIVE_RESOLVER_ONLY" },
+    "advancedMetaDisposition": { "const": "NOT_CLASSIFIED" },
     "tagConfidence": { "enum": ["high", "medium", "low"] },
-    "tagStatus": { "enum": ["auto_high", "auto_medium", "auto_low", "manual_review"] },
+    "tagStatus": { "enum": ["hint_only", "manual_review"] },
     "reasons": { "type": "array", "items": { "type": "string" } },
     "conflicts": { "type": "array", "items": { "type": "string" } },
     "reviewNotes": { "type": "string" }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["conceptClusterKeyCandidate"] },
+      { "required": ["problemTypeKeyCandidate"] },
+      { "required": ["templateKeyCandidate"] },
+      { "required": ["difficultyBucketCandidate"] }
+    ]
   },
   "additionalProperties": true
 }

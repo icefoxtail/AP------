@@ -9,6 +9,9 @@ Use this skill whenever a task creates, edits, regenerates, attaches, or reviews
 
 This skill is a router only. Do not copy, summarize, merge, or rewrite the rule prose here. The authoritative text remains in the repository files below.
 
+This skill does not classify L3/L4 or difficulty. If visual target selection
+needs Meta context, route to `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md` and the shared resolver; keep all semantic Meta work outside this visual router.
+
 ## CURRENT EXECUTION ROUTE LOCK
 
 For new work, the execution topology is defined by

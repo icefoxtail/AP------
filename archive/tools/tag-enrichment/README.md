@@ -6,15 +6,8 @@ This toolset creates review-only tag enrichment candidates for existing JS archi
 
 - Read existing `archive/exams/**/*.js` question banks.
 - Analyze existing fields without changing question content, choices, answer, solution, image, `layoutTag`, or `wide`.
-- Create candidate enrichment metadata for similar-problem tagging:
-  - `subUnitKey`
-  - `subUnit`
-  - `conceptClusterKey`
-  - `problemTypeKey`
-  - `templateKey`
-  - `difficultyBucket`
-  - `tagConfidence`
-  - `tagStatus`
+- Create read-only inventory and possible L1/L2 subunit hints. These are not canonical decisions.
+- Route all L3/L4, CrossConcept, Condition, IntegrationPattern, and difficulty work to the shared RPM→ACTIVE resolver and its independent evidence contract.
 
 ## Inputs
 
@@ -31,9 +24,8 @@ Reports are written under:
 archive/_generated/tag-enrichment/reports/
 ```
 
-The generated reports are candidates only. They are intended for review before any later JS update round.
-The approved production apply path is maintained separately under `archive/tools/intelligence/`;
-this README's default commands remain dry-run and do not replace the parity-checked apply workflow.
+The generated reports are hint-only. Local seed patterns cannot create authoritative L3/L4 assignments.
+This tool emits no advanced Meta keys and never maps legacy `level` to `difficultyBucket`.
 
 ## Non-Mutation Rule
 
@@ -56,8 +48,8 @@ Allowed values are fixed by `docs/rules/JS아카이브_세부단원_운영규칙
 1. Run scan.
 2. Build candidate tags.
 3. Validate generated candidates.
-4. Create a review pack.
-5. Review outputs before any future application step.
+4. Create a review pack for the inventory and subunit hints.
+5. Send advanced Meta decisions to `archive/tools/meta-foundation/rpm-active-resolver.mjs` after the source and verified final solution are fixed.
 
 ## Commands
 

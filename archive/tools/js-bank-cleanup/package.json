@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "quality": "node ../pipeline-core/cli.mjs audit --pipeline js-bank-cleanup",
+    "test": "node --test tests/*.test.mjs",
     "scan-js-bank": "node scripts/scan-js-bank.mjs",
     "scan-db-index": "node scripts/scan-db-index.mjs",
     "scan-image-assets": "node scripts/scan-image-assets.mjs",
