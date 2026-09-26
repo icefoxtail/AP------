@@ -1,5 +1,4 @@
 window.examTitle = "23_왕운중_2학기_기말_중1_기출";
-
 window.questionBank = [
   {
     "id": 1,
@@ -23,11 +22,18 @@ window.questionBank = [
       "오각뿔대"
     ],
     "answer": "③",
-    "solution": "[키포인트] 다면체는 다각형인 면으로만 둘러싸인 입체도형이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 사각뿔, 직육면체, 삼각기둥, 오각뿔대는 모든 면이 다각형이므로 다면체이다.\n2단계: 원뿔은 옆면이 곡면이므로 다면체가 아니다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 다면체는 다각형인 면으로만 둘러싸인 입체도형이다.\n사각뿔, 직육면체, 삼각기둥, 오각뿔대는 모든 면이 다각형이므로 다면체이다.\n원뿔은 옆면이 곡면이므로 다면체가 아니다.\n\n따라서 정답은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -54,11 +60,19 @@ window.questionBank = [
       "$18\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 길이가 $8\\rm\\,cm$인 호에 대한 중심각은 $40^\\circ$이고, 길이가 $x\\rm\\,cm$인 호에 대한 중심각은 $80^\\circ$이다.\n2단계: $8:x=40:80$이므로 $x=16$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례한다.\n길이가 $8\\rm\\,cm$인 호에 대한 중심각은 $40^\\circ$이고, 길이가 $x\\rm\\,cm$인 호에 대한 중심각은 $80^\\circ$이다.\n\n$8:x=40:80$\n이므로\n$x=16$이다.\n\n따라서 정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q02-solution.svg"
   },
   {
     "id": 3,
@@ -85,11 +99,19 @@ window.questionBank = [
       "$130^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼각형의 한 꼭짓점에서 내각과 외각의 합은 $180^\\circ$이고, 삼각형의 세 외각의 합은 $360^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 오른쪽 아래 내각이 $56^\\circ$이므로 그 꼭짓점의 외각은 $180^\\circ-56^\\circ=124^\\circ$이다.\n2단계: 세 외각이 $x^\\circ$, $(x-14)^\\circ$, $124^\\circ$이므로 $x+(x-14)+124=360$이다.\n3단계: $2x+110=360$에서 $x=125$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 삼각형의 세 외각의 합은 $360^\\circ$이다.\n오른쪽 아래 내각이 $56^\\circ$이므로 그 꼭짓점의 외각은\n$180^\\circ-56^\\circ=124^\\circ$이다.\n\n세 외각이 $x^\\circ$, $(x-14)^\\circ$, $124^\\circ$이므로\n$x+(x-14)+124=360$,\n$2x+110=360$이다.\n\n따라서 $x=125$이므로 정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q03-solution.svg"
   },
   {
     "id": 4,
@@ -116,11 +138,19 @@ window.questionBank = [
       "$62$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 오각형의 내각의 합은 $(5-2)\\times180^\\circ=540^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 위쪽 꼭짓점의 외각이 $(x-15)^\\circ$이므로 그 내각은 $180^\\circ-(x-15)^\\circ=(195-x)^\\circ$이다.\n2단계: 그림의 나머지 내각은 $85^\\circ$, $110^\\circ$, $2x^\\circ$, $90^\\circ$이다.\n3단계: $85+110+2x+90+(195-x)=540$이므로 $x=60$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 오각형의 내각의 합은 $(5-2)\\times180^\\circ=540^\\circ$이다.\n위쪽 꼭짓점의 외각이 $(x-15)^\\circ$이므로 그 내각은\n$180^\\circ-(x-15)^\\circ=(195-x)^\\circ$이다.\n\n오각형의 다섯 내각을 더하면\n$85+110+2x+90+(195-x)=540$이다.\n\n정리하면\n$x+480=540$,\n$x=60$이다.\n\n따라서 정답은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q04-solution.svg"
   },
   {
     "id": 5,
@@ -144,11 +174,18 @@ window.questionBank = [
       "$46^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼각형의 세 내각의 합은 $180^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 세 내각의 비의 합은 $2+3+4=9$이다.\n2단계: 한 비의 크기는 $180^\\circ\\div9=20^\\circ$이다.\n3단계: 가장 작은 내각은 $2\\times20^\\circ=40^\\circ$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 삼각형의 세 내각의 합은 $180^\\circ$이다.\n세 내각의 비의 합은\n$2+3+4=9$이다.\n\n한 비에 해당하는 각의 크기는\n$180^\\circ\\div9=20^\\circ$이다.\n\n가장 작은 내각은\n$2\\times20^\\circ=40^\\circ$이다.\n\n따라서 정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -173,11 +210,18 @@ window.questionBank = [
       "$145$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정구각형의 외각의 합은 $360^\\circ$이고 모든 외각의 크기는 같다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: $A=360$이고 한 외각의 크기는 $B=360\\div9=40$이다.\n2단계: 한 내각은 $180^\\circ-40^\\circ=140^\\circ$이므로 $C=40$, $D=140$이다.\n3단계: $A-B-C-D=360-40-40-140=140$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 정구각형의 외각은 모두 같고, 외각의 합은 $360^\\circ$이다.\n$A=360$이고 한 외각의 크기는\n$B=360\\div9=40$이다.\n\n한 내각은\n$180^\\circ-40^\\circ=140^\\circ$이므로\n$C=40$, $D=140$이다.\n\n따라서\n$A-B-C-D=360-40-40-140=140$이다.\n\n정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -201,11 +245,18 @@ window.questionBank = [
       "면의 모양이 정삼각형인 것은 정사면체, 정팔면체, 정이십면체뿐이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 정다면체의 면, 모서리, 꼭짓점의 개수를 각각 확인한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 정육면체의 모서리는 $12$개이고 정팔면체의 꼭짓점은 $6$개이며, 정십이면체의 한 꼭짓점에는 정오각형 $3$개가 모인다.\n2단계: 정십이면체의 꼭짓점은 $20$개이고 정이십면체의 꼭짓점은 $12$개이므로 두 개수는 같지 않다.\n3단계: 정삼각형을 면으로 갖는 정다면체는 정사면체, 정팔면체, 정이십면체이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 정다면체의 면·모서리·꼭짓점의 개수를 보기별로 확인한다.\n① 정육면체의 모서리는 $12$개이다.\n② 정팔면체의 꼭짓점은 $6$개이다.\n③ 정십이면체의 한 꼭짓점에는 정오각형 $3$개가 모인다.\n④ 정십이면체의 꼭짓점은 $20$개이고 정이십면체의 꼭짓점은 $12$개이므로 서로 같지 않다.\n⑤ 정삼각형을 면으로 갖는 정다면체는 정사면체, 정팔면체, 정이십면체이다.\n\n따라서 옳지 않은 것은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -230,11 +281,18 @@ window.questionBank = [
       "ㄴ, ㄹ, ㅁ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 호, 현, 활꼴, 부채꼴의 정의와 한 원에서의 현의 성질을 보기별로 판단한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: ㄱ에서 원 위의 두 점을 이은 선분은 호가 아니라 현이므로 거짓이다. ㄴ의 호와 현으로 둘러싸인 도형은 활꼴이므로 참이다.\n2단계: 활꼴과 부채꼴이 같은 도형이 되는 경우는 반원이며 중심각은 $180^\\circ$이므로 ㄷ은 거짓이다.\n3단계: 같은 원에서 같은 크기의 중심각에 대한 두 현의 길이는 같으므로 ㄹ은 참이고, 지름은 가장 긴 현이므로 ㅁ도 참이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 호, 현, 활꼴, 부채꼴의 정의와 한 원에서의 현의 성질을 하나씩 판단한다.\nㄱ. 원 위의 두 점을 이은 선분은 호가 아니라 현이므로 거짓이다.\nㄴ. 호와 현으로 둘러싸인 도형은 활꼴이므로 참이다.\nㄷ. 활꼴과 부채꼴이 같은 도형이 되는 경우는 반원이고 중심각은 $180^\\circ$이므로 거짓이다.\nㄹ. 같은 원에서 같은 크기의 중심각에 대한 두 현의 길이는 같으므로 참이다.\nㅁ. 지름은 원에서 가장 긴 현이므로 참이다.\n\n따라서 옳은 것은 ㄴ, ㄹ, ㅁ이므로 정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -259,11 +317,18 @@ window.questionBank = [
       "21번"
     ],
     "answer": "①",
-    "solution": "[키포인트] 한 사람 기준으로 악수 상대를 센 뒤, 같은 악수가 두 번씩 세어졌음을 처리한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 각 사람은 자신과 양옆의 두 사람을 제외하므로 $7-3=4$명과 악수한다.\n2단계: $7$명이 각각 $4$번씩 악수한다고 세면 $7\\times4=28$이지만, 한 번의 악수가 두 사람에게 각각 한 번씩 세어졌다.\n3단계: 따라서 실제 악수 횟수는 $28\\div2=14$번이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 한 사람의 악수 상대를 센 뒤, 같은 악수가 두 번씩 세어진 것을 나눈다.\n각 사람은 자신과 양옆의 두 사람을 제외하므로\n$7-3=4$명과 악수한다.\n\n$7$명이 각각 $4$번씩 악수한다고 세면\n$7\\times4=28$번이지만,\n한 번의 악수가 두 사람에게 각각 한 번씩 세어졌다.\n\n따라서 실제 악수 횟수는\n$28\\div2=14$번이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -285,11 +350,18 @@ window.questionBank = [
     "content": "다음 중 평면도형을 회전시켜 만든 입체도형으로 옳지 않은 것은? [4점]",
     "choices": [],
     "answer": "②",
-    "solution": "[키포인트] 각 평면도형을 표시된 회전축 둘레로 돌렸을 때 생기는 입체의 모양을 비교한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: ②의 삼각형은 회전축이 삼각형의 한 변과 일치한다. 이 삼각형을 그 축 둘레로 한 바퀴 돌리면 원뿔 한 개가 생긴다.\n2단계: 그런데 ②에 제시된 입체도형은 원뿔 두 개가 밑면을 맞댄 모양이므로 회전 결과와 일치하지 않는다.\n3단계: 나머지 그림은 각 평면도형의 회전 결과와 대응한다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 평면도형의 모양뿐 아니라 회전축과의 위치 관계까지 함께 본다.\n②에서는 삼각형이 회전축과 떨어져 있다.\n따라서 이 삼각형을 회전시키면 회전축 둘레에 빈 공간이 생기므로, 그림처럼 두 원뿔이 축까지 채워져 밑면을 맞댄 입체도형이 되지 않는다.\n\n나머지 보기는 각 평면도형과 회전축의 위치를 그대로 회전시켰을 때 제시된 입체도형과 대응한다.\n\n따라서 정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -313,11 +385,18 @@ window.questionBank = [
       "회전체의 옆면을 만드는 선분을 높이라 한다."
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 회전체의 단면과 모선의 뜻을 각각 확인한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 원뿔대를 회전축에 수직인 서로 다른 위치의 평면으로 자르면 반지름이 다른 원이 생길 수 있으므로 단면이 항상 합동인 것은 아니다. 따라서 ①은 옳지 않다.\n2단계: 원기둥의 축을 포함하는 단면은 직사각형이고, 구를 중심을 지나지 않는 평면으로 잘라도 단면은 원이며, 원뿔의 축을 포함하는 단면은 이등변삼각형이므로 ②, ③, ④는 옳다.\n3단계: 회전체의 옆면을 만드는 선분은 높이가 아니라 모선이므로 ⑤도 옳지 않다.\n따라서 정답은 ①, ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 회전체의 단면과 모선의 뜻을 보기별로 확인한다.\n① 원뿔대를 회전축에 수직인 서로 다른 위치의 평면으로 자르면 반지름이 다른 원이 생길 수 있으므로 단면이 항상 합동인 것은 아니다.\n② 원기둥을 회전축을 포함하는 평면으로 자른 단면은 직사각형이다.\n③ 구를 중심을 지나지 않는 평면으로 잘라도 단면은 원이다.\n④ 원뿔을 회전축을 포함하는 평면으로 자른 단면은 이등변삼각형이다.\n⑤ 회전체의 옆면을 만드는 선분은 높이가 아니라 모선이다.\n\n따라서 옳지 않은 것은 ①, ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -344,11 +423,18 @@ window.questionBank = [
       "$120\\rm\\,cm^3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각뿔의 부피는 $\\dfrac13\\times$(밑넓이)$\\times$(높이)이다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 밑면은 가로 $6\\rm\\,cm$, 세로 $4\\rm\\,cm$인 직사각형이므로 밑넓이는 $6\\times4=24\\rm\\,cm^2$이다.\n2단계: 사각뿔의 높이는 $5\\rm\\,cm$이므로 부피는 $\\dfrac13\\times24\\times5=40\\rm\\,cm^3$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 각뿔의 부피는 $\\dfrac13\\times$(밑넓이)$\\times$(높이)이다.\n밑면은 가로 $6\\rm\\,cm$, 세로 $4\\rm\\,cm$인 직사각형이므로\n밑넓이는\n$6\\times4=24\\rm\\,cm^2$이다.\n\n사각뿔의 높이는 $5\\rm\\,cm$이므로\n부피는\n$\\dfrac13\\times24\\times5=40\\rm\\,cm^3$이다.\n\n따라서 정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -375,11 +461,18 @@ window.questionBank = [
       "$45$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 색칠한 부분은 한 변이 $6\\rm\\,cm$인 정사각형에서 네 모서리의 사분원을 뺀 부분이다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 네 사분원의 반지름은 모두 $3\\rm\\,cm$이고, 네 사분원의 넓이의 합은 반지름 $3\\rm\\,cm$인 원 하나의 넓이와 같으므로 $9\\pi\\rm\\,cm^2$이다.\n2단계: 정사각형의 넓이는 $6^2=36\\rm\\,cm^2$이므로 색칠한 부분의 넓이는 $36-9\\pi\\rm\\,cm^2$이다.\n3단계: $a=36$, $b=-9$이므로 $a+b=27$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 색칠한 부분은 한 변이 $6\\rm\\,cm$인 정사각형에서 네 모서리의 사분원을 뺀 부분이다.\n네 사분원의 반지름은 모두 $3\\rm\\,cm$이고,\n네 사분원의 넓이의 합은 반지름 $3\\rm\\,cm$인 원 하나의 넓이와 같다.\n\n네 사분원의 넓이의 합:\n$\\pi\\times3^2=9\\pi\\rm\\,cm^2$\n\n정사각형의 넓이:\n$6^2=36\\rm\\,cm^2$\n\n따라서 색칠한 부분의 넓이는\n$36-9\\pi\\rm\\,cm^2$이다.\n\n$a=36$, $b=-9$이므로\n$a+b=27$이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -406,11 +499,18 @@ window.questionBank = [
       "수학 수행평가 점수가 25점 이상 30점 미만인 학생은 모두 5명이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 상대도수는 각 계급의 도수를 도수의 총합으로 나눈 값이다.\n조건 정리: 자료의 계급, 도수·상대도수와 전체 자료의 개수를 정리한다.\n풀이 방향: 도수와 상대도수의 관계를 계산하고 자료의 분포를 해석한다.\n정석 풀이: 1단계: 첫 계급에서 도수 $1$의 상대도수가 $0.04$이므로 전체 학생 수는 $1\\div0.04=25$명이다.\n2단계: $A=25\\times0.28=7$이고, 20점 이상 25점 미만의 상대도수는 $5/25=0.20$이므로 25점 이상 30점 미만의 도수는 $25-(1+6+7+5)=6$명이다.\n3단계: 15점 이상인 학생은 $7+5+6=18$명으로 $18/25=0.72=72\\%$이다. 따라서 ①~④는 옳고, ⑤의 5명은 틀리다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 상대도수 $=$(도수)$\\div$(도수의 총합)이다.\n첫 계급에서 도수 $1$의 상대도수가 $0.04$이므로 전체 학생 수는\n$1\\div0.04=25$명이다.\n\n15점 이상 20점 미만인 계급의 도수는\n$A=25\\times0.28=7$명이다.\n\n20점 이상 25점 미만의 도수는 $5$명이므로,\n25점 이상 30점 미만인 계급의 도수는\n$25-(1+6+7+5)=6$명이다.\n\n15점 이상인 학생은\n$7+5+6=18$명이고,\n$\\dfrac{18}{25}=0.72=72\\%$이다.\n\n따라서 ⑤의 '5명'이 옳지 않으므로 정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -437,11 +537,21 @@ window.questionBank = [
       "$8\\rm\\,cm$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 같은 원에서 호의 길이는 중심각의 크기에 비례하므로 먼저 $\\wideparen{BD}$에 대한 중심각 $\\angle BOD$를 구한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: $\\overline{AB}$가 지름이므로 $\\angle AOB=180^\\circ$이다. $\\angle COA=50^\\circ$이므로 $\\angle COB=130^\\circ$이다.\n2단계: $\\overline{BD}\\parallel\\overline{OC}$이므로 $\\angle OBD=50^\\circ$이다. 또한 $OB=OD$이므로 삼각형 $OBD$는 이등변삼각형이고 $\\angle ODB=50^\\circ$이다. 따라서 $\\angle BOD=180^\\circ-50^\\circ-50^\\circ=80^\\circ$이다.\n3단계: $\\wideparen{AC}$와 $\\wideparen{BD}$의 길이의 비는 중심각의 비와 같으므로 $5: \\wideparen{BD}=50:80$이다. 따라서 $\\wideparen{BD}=8\\rm\\,cm$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 같은 원에서 호의 길이는 중심각의 크기에 비례하므로 먼저 $\\angle BOD$를 구한다.\n$\\overline{AB}$가 지름이므로\n$\\angle AOB=180^\\circ$이다.\n\n$\\angle COA=50^\\circ$이므로\n$\\angle COB=180^\\circ-50^\\circ=130^\\circ$이다.\n\n$\\overline{BD}\\parallel\\overline{OC}$이므로\n$\\angle OBD=50^\\circ$이다.\n또 $OB=OD$이므로 $\\triangle OBD$는 이등변삼각형이고\n$\\angle ODB=50^\\circ$이다.\n\n따라서\n$\\angle BOD=180^\\circ-50^\\circ-50^\\circ=80^\\circ$이다.\n\n호의 길이의 비는 중심각의 비와 같으므로\n$5:\\wideparen{BD}=50:80$이다.\n따라서\n$\\wideparen{BD}=8\\rm\\,cm$이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [
+      "CC_PARALLEL_LINES"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q15-solution.svg"
   },
   {
     "id": 16,
@@ -468,11 +578,18 @@ window.questionBank = [
       "$54\\pi\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 그림의 세 부채꼴은 반지름이 모두 정삼각형의 한 변과 같은 $9\\rm\\,cm$이고, 각 부채꼴의 중심각을 먼저 확인한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 정삼각형의 한 내각은 $60^\\circ$이고, 그림에서 각 부채꼴의 두 반지름이 만드는 작은 각은 $120^\\circ$이다. 따라서 표시된 큰 부채꼴의 중심각은 $360^\\circ-120^\\circ=240^\\circ$이다.\n2단계: 부채꼴 하나의 호의 길이는 $2\\pi\\times9\\times\\dfrac{240}{360}=12\\pi\\rm\\,cm$이다.\n3단계: 세 부채꼴의 호의 길이의 합은 $12\\pi\\times3=36\\pi\\rm\\,cm$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 세 부채꼴의 반지름은 모두 $9\\rm\\,cm$이고, 각 부채꼴의 중심각을 정확히 잡는다.\n정삼각형의 한 내각은 $60^\\circ$이다.\n그림에서 각 부채꼴의 두 반지름이 만드는 작은 각은\n$180^\\circ-60^\\circ=120^\\circ$이므로,\n표시된 큰 부채꼴의 중심각은\n$360^\\circ-120^\\circ=240^\\circ$이다.\n\n부채꼴 하나의 호의 길이는\n$2\\pi\\times9\\times\\dfrac{240}{360}=12\\pi\\rm\\,cm$이다.\n\n세 부채꼴의 호의 길이의 합은\n$12\\pi\\times3=36\\pi\\rm\\,cm$이다.\n\n따라서 정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -499,11 +616,19 @@ window.questionBank = [
       "$204\\rm\\,cm^2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 기둥의 겉넓이는 두 밑면의 넓이와 옆면의 넓이를 더하여 구한다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 밑면은 윗변 $3\\rm\\,cm$, 아랫변 $7\\rm\\,cm$, 높이 $3\\rm\\,cm$인 사다리꼴이므로 넓이는 $\\dfrac{3+7}{2}\\times3=15\\rm\\,cm^2$이다.\n2단계: 밑면의 둘레는 $3+3+5+7=18\\rm\\,cm$이므로 옆넓이는 $18\\times8=144\\rm\\,cm^2$이다.\n3단계: 겉넓이는 $15\\times2+144=174\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 기둥의 겉넓이는 두 밑면의 넓이와 옆넓이를 더하여 구한다.\n밑면은 윗변 $3\\rm\\,cm$, 아랫변 $7\\rm\\,cm$, 높이 $3\\rm\\,cm$인 사다리꼴이므로\n밑넓이는\n$\\dfrac{3+7}{2}\\times3=15\\rm\\,cm^2$이다.\n\n밑면의 둘레는\n$3+3+5+7=18\\rm\\,cm$이다.\n\n사각기둥의 높이가 $8\\rm\\,cm$이므로\n옆넓이는\n$18\\times8=144\\rm\\,cm^2$이다.\n\n따라서 겉넓이는\n$15\\times2+144=174\\rm\\,cm^2$이다.\n\n정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q17-solution.svg"
   },
   {
     "id": 18,
@@ -530,11 +655,19 @@ window.questionBank = [
       "$28$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 세 원을 팽팽하게 둘러싼 테이프는 세 개의 직선 부분과 세 개의 원호 부분으로 나누어 생각한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 각 캔의 반지름은 $3\\rm\\,cm$이므로 서로 접한 두 캔의 중심 사이 거리는 지름인 $6\\rm\\,cm$이다. 세 중심은 한 변의 길이가 $6\\rm\\,cm$인 정삼각형을 이루므로 직선 부분의 길이의 합은 $6\\times3=18\\rm\\,cm$이다.\n2단계: 세 모서리의 원호를 한데 모으면 중심각의 합이 $360^\\circ$가 되어 반지름 $3\\rm\\,cm$인 원 한 바퀴의 길이와 같다. 따라서 원호 부분의 합은 $2\\pi\\times3=6\\pi\\rm\\,cm$이다.\n3단계: 최소 길이는 $(6\\pi+18)\\rm\\,cm$이므로 $a=6$, $b=18$이고 $a+b=24$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 세 캔을 팽팽하게 둘러싼 테이프는 세 직선 부분과 세 원호 부분으로 나누어 생각한다.\n각 캔의 반지름은 $3\\rm\\,cm$이므로 서로 접한 두 캔의 중심 사이 거리는\n$6\\rm\\,cm$이다.\n\n세 중심은 한 변의 길이가 $6\\rm\\,cm$인 정삼각형을 이루므로\n직선 부분의 길이의 합은\n$6\\times3=18\\rm\\,cm$이다.\n\n세 모서리의 원호를 한데 모으면 중심각의 합이 $360^\\circ$가 되므로\n원호 부분의 길이의 합은\n$2\\pi\\times3=6\\pi\\rm\\,cm$이다.\n\n필요한 테이프의 최소 길이는\n$(6\\pi+18)\\rm\\,cm$이다.\n\n따라서 $a=6$, $b=18$이므로\n$a+b=24$이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q18-solution.svg"
   },
   {
     "id": 19,
@@ -561,11 +694,18 @@ window.questionBank = [
       "$294\\pi\\rm\\,cm^3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 테니스공의 반지름을 $r$라 하면 케이스의 반지름은 $r$, 높이는 공의 지름 세 개의 합인 $6r$이다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 원기둥의 부피는 $\\pi r^2\\times6r=6\\pi r^3$이고 이것이 $1296\\pi$이므로 $r^3=216$이다. 따라서 $r=6\\rm\\,cm$이다.\n2단계: 구의 부피는 $\\dfrac43\\pi r^3$이므로 테니스공 한 개의 부피는 $\\dfrac43\\pi\\times216=288\\pi\\rm\\,cm^3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 공의 반지름을 $r$라 하면 케이스의 반지름은 $r$, 높이는 공의 지름 세 개의 합인 $6r$이다.\n원기둥의 부피가 $1296\\pi\\rm\\,cm^3$이므로\n$\\pi r^2\\times6r=1296\\pi$이다.\n\n$6r^3=1296$,\n$r^3=216$이므로\n$r=6\\rm\\,cm$이다.\n\n테니스공 한 개의 부피는\n$\\dfrac43\\pi r^3=\\dfrac43\\pi\\times216=288\\pi\\rm\\,cm^3$이다.\n\n따라서 정답은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -593,11 +733,19 @@ window.questionBank = [
       "$126\\pi\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 직사각형이 회전축에서 떨어져 있으므로 속이 빈 원기둥 모양의 회전체가 생긴다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 안쪽 반지름은 $2\\rm\\,cm$, 직사각형의 가로가 $3\\rm\\,cm$이므로 바깥 반지름은 $2+3=5\\rm\\,cm$이다. 높이는 $6\\rm\\,cm$이다.\n2단계: 바깥쪽 옆넓이는 $2\\pi\\times5\\times6=60\\pi$, 안쪽 옆넓이는 $2\\pi\\times2\\times6=24\\pi$이다.\n3단계: 위아래의 고리 모양 두 면의 넓이는 $2\\times\\pi(5^2-2^2)=42\\pi$이다.\n4단계: 겉넓이는 $60\\pi+24\\pi+42\\pi=126\\pi\\rm\\,cm^2$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 직사각형이 회전축에서 떨어져 있으므로 속이 빈 원기둥 모양의 회전체가 생긴다.\n안쪽 반지름은 $2\\rm\\,cm$이다.\n직사각형의 가로가 $3\\rm\\,cm$이므로 바깥 반지름은\n$2+3=5\\rm\\,cm$이고,\n높이는 $6\\rm\\,cm$이다.\n\n바깥쪽 옆넓이:\n$2\\pi\\times5\\times6=60\\pi$\n\n안쪽 옆넓이:\n$2\\pi\\times2\\times6=24\\pi$\n\n위아래 고리 모양 두 면의 넓이:\n$2\\times\\pi(5^2-2^2)=42\\pi$\n\n따라서 겉넓이는\n$60\\pi+24\\pi+42\\pi=126\\pi\\rm\\,cm^2$이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q20-solution.svg"
   },
   {
     "id": 21,
@@ -619,11 +767,18 @@ window.questionBank = [
     "content": "[서술형1] 다음 도수분포표는 민수가 운영하는 블로그에 하루 동안 방문한 사람 수를 $20$일 동안 조사하여 나타낸 것이다. [4점]<div class=\"question-table-wrap\"><table class=\"question-table\"><tr><th>방문자 수(명)</th><th>일수(일)</th></tr><tr><td>10 이상 ~ 15 미만</td><td>2</td></tr><tr><td>15 ~ 20</td><td>5</td></tr><tr><td>20 ~ 25</td><td>4</td></tr><tr><td>25 ~ 30</td><td>8</td></tr><tr><td>30 ~ 35</td><td>1</td></tr><tr><td>합계</td><td>20</td></tr></table></div><div>(1) 이 도수 분포표를 히스토그램으로 나타내시오. [2점]</div><img src=\"assets/images/23_왕운중_2학기_기말_중1_기출/q21.png\" alt=\"히스토그램 작성용 좌표축\"><div>(2) 도수 분포표를 히스토그램으로 나타냈을 때의 장점을 1가지 쓰시오. [2점]</div>",
     "choices": [],
     "answer": "(1) 각 계급의 도수가 차례로 2, 5, 4, 8, 1인 히스토그램 (2) 자료의 분포 상태를 한눈에 알아보기 쉽다.",
-    "solution": "[키포인트] 히스토그램은 가로축에 계급, 세로축에 도수를 놓고 각 계급의 도수만큼 붙어 있는 직사각형을 그린다.\n조건 정리: 자료의 계급, 도수·상대도수와 전체 자료의 개수를 정리한다.\n풀이 방향: 도수와 상대도수의 관계를 계산하고 자료의 분포를 해석한다.\n정석 풀이: 1단계: $10$ 이상 $15$ 미만, $15$ 이상 $20$ 미만, $20$ 이상 $25$ 미만, $25$ 이상 $30$ 미만, $30$ 이상 $35$ 미만 계급의 도수는 각각 $2,5,4,8,1$이다. 따라서 각 계급 구간에 높이가 차례로 $2,5,4,8,1$인 직사각형을 서로 붙여 그리면 된다.\n2단계: 히스토그램으로 나타내면 어느 구간에 자료가 많이 모여 있는지 등 자료의 분포 상태를 한눈에 파악하기 쉽다.\n따라서 구하는 값은 (1) 각 계급의 도수가 차례로 2, 5, 4, 8, 1인 히스토그램 (2) 자료의 분포 상태를 한눈에 알아보기 쉽다.이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 히스토그램은 가로축에 계급, 세로축에 도수를 놓고 각 계급의 도수만큼 서로 붙은 직사각형을 그린다.\n\n(1) 각 계급의 도수는 차례로\n$2,\\ 5,\\ 4,\\ 8,\\ 1$이다.\n따라서\n$10$ 이상 $15$ 미만은 높이 $2$,\n$15$ 이상 $20$ 미만은 높이 $5$,\n$20$ 이상 $25$ 미만은 높이 $4$,\n$25$ 이상 $30$ 미만은 높이 $8$,\n$30$ 이상 $35$ 미만은 높이 $1$인 직사각형을 서로 붙여 그린다.\n\n(2) 히스토그램으로 나타내면 어느 구간에 자료가 많이 모여 있는지 등 자료의 분포 상태를 한눈에 파악하기 쉽다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -645,11 +800,18 @@ window.questionBank = [
     "content": "[서술형2] 아래 그림과 같이 점 $O$에 매달린 추는 $A$ 지점과 $D$ 지점 사이를 움직인다. $\\angle AOD=114^\\circ$, $\\wideparen{AB}:\\wideparen{BC}=5:3$, $\\wideparen{BC}:\\wideparen{CD}=2:1$일 때, $\\angle AOB$의 크기를 구하고 그 풀이과정을 서술하시오. (단, 추의 크기는 생각하지 않는다.) [4점]",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": "[키포인트] 같은 원에서 호의 길이의 비는 그 호에 대한 중심각의 크기의 비와 같다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: $\\wideparen{AB}:\\wideparen{BC}=5:3$, $\\wideparen{BC}:\\wideparen{CD}=2:1$이므로 세 호의 비를 한꺼번에 맞추면 $\\wideparen{AB}:\\wideparen{BC}:\\wideparen{CD}=10:6:3$이다.\n2단계: $\\angle AOD=114^\\circ$는 세 호에 대한 중심각의 합이고 비의 합은 $10+6+3=19$이다. 따라서 한 비에 해당하는 각은 $114^\\circ\\div19=6^\\circ$이다.\n3단계: $\\angle AOB$는 $10$비에 해당하므로 $10\\times6^\\circ=60^\\circ$이다.\n따라서 구하는 값은 $60^\\circ$이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 같은 원에서 호의 길이의 비는 그 호에 대한 중심각의 크기의 비와 같다.\n$\\wideparen{AB}:\\wideparen{BC}=5:3$,\n$\\wideparen{BC}:\\wideparen{CD}=2:1$이므로\n세 호의 비를 맞추면\n\n$\\wideparen{AB}:\\wideparen{BC}:\\wideparen{CD}=10:6:3$이다.\n\n$\\angle AOD=114^\\circ$이고 비의 합은\n$10+6+3=19$이므로\n한 비에 해당하는 각은\n$114^\\circ\\div19=6^\\circ$이다.\n\n$\\angle AOB$는 $10$비에 해당하므로\n$10\\times6^\\circ=60^\\circ$이다.\n\n따라서 $\\angle AOB=60^\\circ$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -669,11 +831,18 @@ window.questionBank = [
     "content": "[서술형3]\n(1) 한 내각의 크기와 한 외각의 크기가 $3:1$인 정다각형의 한 내각과 한 외각의 크기를 각각 구하시오. [2점]\n(2) 다각형의 외각의 크기의 합을 이용하여 구하는 과정과 그 정다각형의 이름을 쓰시오. [2점]\n(2) (2)에 해당하는 정다각형의 대각선의 총 개수를 구하시오. [2점]",
     "choices": [],
     "answer": "(1) 내각 $135^\\circ$, 외각 $45^\\circ$ (2) 정팔각형 (2) $20$개",
-    "solution": "[키포인트] 한 꼭짓점의 내각과 외각의 합은 $180^\\circ$이고, 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 1단계: 내각과 외각의 비가 $3:1$이므로 각각 $3k$, $k$라 하면 $3k+k=180^\\circ$이다. 따라서 $k=45^\\circ$이고, 한 외각은 $45^\\circ$, 한 내각은 $135^\\circ$이다.\n2단계: 정다각형의 한 외각이 $45^\\circ$이므로 변의 수는 $360^\\circ\\div45^\\circ=8$이다. 따라서 정팔각형이다.\n3단계: 정팔각형의 한 꼭짓점에서 그을 수 있는 대각선은 $8-3=5$개이므로 모두 세면 $8\\times5=40$개이다. 한 대각선이 두 꼭짓점에서 중복되어 세어졌으므로 대각선의 총 개수는 $40\\div2=20$개이다.\n따라서 구하는 값은 (1) 내각 $135^\\circ$, 외각 $45^\\circ$ (2) 정팔각형 (2) $20$개이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 한 꼭짓점의 내각과 외각의 합은 $180^\\circ$이고, 다각형의 외각의 합은 $360^\\circ$이다.\n\n(1) 내각과 외각의 비가 $3:1$이므로\n내각을 $3k$, 외각을 $k$라 하면\n$3k+k=180^\\circ$이다.\n\n따라서\n$k=45^\\circ$이고,\n한 외각은 $45^\\circ$, 한 내각은 $135^\\circ$이다.\n\n(2) 한 외각이 $45^\\circ$이므로 변의 수는\n$360^\\circ\\div45^\\circ=8$이다.\n따라서 정팔각형이다.\n\n(마지막 물음) 정팔각형의 대각선의 총개수는\n$\\dfrac{8(8-3)}{2}=20$개이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -694,10 +863,18 @@ window.questionBank = [
     "content": "[서술형4]<br><img src=\"assets/images/23_왕운중_2학기_기말_중1_기출/q24.png\" alt=\"사다리꼴과 회전축 l\"><br>(1) 위의 그림과 같은 사다리꼴을 직선 $l$을 축으로 하여 $1$회전 시킬 때 생기는 입체도형의 이름을 쓰시오. [1점]<br>(2) (1)의 입체도형의 전개도를 그리시오. [1점]<br>(3) (1)의 입체도형의 겉넓이를 구하시오. [4점]",
     "choices": [],
     "answer": "(1) 원뿔대 (2) 반지름 $9\\rm\\,cm$, $3\\rm\\,cm$인 두 원과 바깥 반지름 $15\\rm\\,cm$, 안쪽 반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양 부채꼴 (3) $210\\pi\\rm\\,cm^2$",
-    "solution": "[키포인트] 사다리꼴을 오른쪽 변인 직선 $l$을 축으로 회전시키면 원뿔대가 되고, 전개도에서 옆면은 고리 모양의 부채꼴이 된다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 1단계: 회전하여 생기는 원뿔대의 두 밑면의 반지름은 각각 $9\\rm\\,cm$, $3\\rm\\,cm$이고, 원뿔대의 모선은 $10\\rm\\,cm$이다. 그림의 연장된 작은 원뿔의 모선이 $5\\rm\\,cm$이므로 큰 원뿔의 모선은 $15\\rm\\,cm$이다.\n2단계: 전개도의 옆면을 이루는 큰 부채꼴의 호의 길이는 큰 밑면의 둘레 $18\\pi$와 같다. 중심각을 $x$라 하면 $2\\pi\\times15\\times\\dfrac{x}{360}=18\\pi$이므로 $x=216^\\circ$이다. 따라서 옆면은 바깥 반지름 $15\\rm\\,cm$, 안쪽 반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양 부채꼴이다.\n3단계: 옆넓이는 $\\dfrac{216}{360}\\pi(15^2-5^2)=120\\pi\\rm\\,cm^2$이다. 두 밑면의 넓이의 합은 $\\pi(9^2+3^2)=90\\pi\\rm\\,cm^2$이다.\n4단계: 겉넓이는 $120\\pi+90\\pi=210\\pi\\rm\\,cm^2$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 구하는 값은 (1) 원뿔대 (2) 반지름 $9\\rm\\,cm$, $3\\rm\\,cm$인 두 원과 바깥 반지름 $15\\rm\\,cm$, 안쪽 반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양 부채꼴 (3) $210\\pi\\rm\\,cm^2$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 사다리꼴을 직선 $l$을 축으로 회전시키면 원뿔대가 되고, 전개도의 옆면은 고리 모양의 부채꼴이 된다.\n\n(1) 회전하여 생기는 입체도형은 원뿔대이다.\n\n(2) 두 밑면의 반지름은 각각 $9\\rm\\,cm$, $3\\rm\\,cm$이고, 원뿔대의 모선은 $10\\rm\\,cm$이다.\n\n전개도 옆면의 안쪽 반지름을 $x\\rm\\,cm$라 하면 바깥 반지름은 $(x+10)\\rm\\,cm$이다.\n안쪽 호와 바깥쪽 호는 같은 중심각을 가지므로 호의 길이의 비는 부채꼴 반지름의 비와 같다.\n두 호의 길이는 각각 작은 밑면과 큰 밑면의 둘레인 $6\\pi$, $18\\pi$이므로\n$x:(x+10)=6\\pi:18\\pi=1:3$이다.\n\n$3x=x+10$이므로\n$x=5$이다.\n따라서 전개도 옆면의 안쪽 반지름은 $5\\rm\\,cm$, 바깥 반지름은 $15\\rm\\,cm$이다.\n\n큰 부채꼴의 호의 길이는 큰 밑면의 둘레 $18\\pi$와 같다.\n중심각을 $\\theta$라 하면\n$2\\pi\\times15\\times\\dfrac{\\theta}{360}=18\\pi$이다.\n따라서 $\\theta=216^\\circ$이다.\n\n즉 전개도는 반지름 $9\\rm\\,cm$, $3\\rm\\,cm$인 두 원과, 바깥 반지름 $15\\rm\\,cm$, 안쪽 반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양 부채꼴이다.\n\n(3) 옆넓이는\n$\\dfrac{216}{360}\\pi(15^2-5^2)=120\\pi\\rm\\,cm^2$이다.\n\n두 밑면의 넓이의 합은\n$\\pi(9^2+3^2)=90\\pi\\rm\\,cm^2$이다.\n\n따라서 겉넓이는\n$120\\pi+90\\pi=210\\pi\\rm\\,cm^2$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q24-solution.svg"
   }
 ];
