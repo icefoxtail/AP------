@@ -882,7 +882,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
-    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",

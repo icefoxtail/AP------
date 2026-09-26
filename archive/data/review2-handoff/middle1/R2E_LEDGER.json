@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "e57fdf57379240690848ccc372307ca36edbe68b",
-  "timestamp": "2026-09-27 01:46:16 Asia/Seoul",
-  "physicalCheckpoint": "B20_Q9_Q13_Q21_VISUAL_DRIFT_REPAIRED",
+  "currentBranchHead": "9bfb121a565e4cf1738637f55f52f513716dd666",
+  "timestamp": "2026-09-27 02:11:59 Asia/Seoul",
+  "physicalCheckpoint": "B20_Q9_Q13_Q21_VISUAL_AND_Q22_META_REVIEWED",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -49,7 +49,10 @@
         22,
         24
       ],
-      "resolvedItems": [],
+      "resolvedItems": [
+        9,
+        21
+      ],
       "unresolvedItems": [
         1,
         2,
@@ -59,7 +62,6 @@
         6,
         7,
         8,
-        9,
         11,
         12,
         13,
@@ -70,7 +72,6 @@
         18,
         19,
         20,
-        21,
         22,
         24
       ],
@@ -79,7 +80,12 @@
         "r1PackGapHold": 11,
         "final": "PENDING"
       },
-      "changedFiles": [],
+      "changedFiles": [
+        "archive/assets/images/23_금당중_2학기_기말_중1_기출/q9-solution.svg",
+        "archive/assets/images/23_금당중_2학기_기말_중1_기출/q13-solution.svg",
+        "archive/assets/images/23_금당중_2학기_기말_중1_기출/q21-solution.svg",
+        "archive/exams/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js"
+      ],
       "r1Evidence": {
         "zipSha256": "F1C1AD5BE52694A36B282DA8AE78357711BEB061EFC21080A249299589732E78",
         "r1FinalJsSha256": "c5153b1122b10e0e1b574a5f897242a3ea162020d7957934afb926eb86d93387",
@@ -95,9 +101,10 @@
         ]
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "q1-q8 binding/parity closure, then q11 Meta/source adjudication",
+      "currentNextItem": "B20 q1-q8 Meta/binding closure, then q11-q20 shared taxonomy adjudication",
       "deepReviewReasons": {
-        "q9": "R1 solution SVG byte drift vs extracted R1_INPUT ZIP; targeted visual recheck reopened despite prior Meta/Math PASS."
+        "q9": "R1 solution SVG byte drift vs extracted R1_INPUT ZIP; source polygon angle labels were corrected and visually validated.",
+        "q22": "R2E corrected an R1 template mismatch: source solution uses the triangle exterior-angle equation, so the active L4 is EXTERIOR_ANGLE_EQUATION rather than INTERIOR_POINT_ANGLE_SUM."
       },
       "visualReview": {
         "items": [
@@ -126,7 +133,7 @@
             "render": "Chrome headless render inspected; point labels, guides, axes, and answer visible."
           }
         ],
-        "xmlValidation": "PENDING_TARGETED_VALIDATORS"
+        "xmlValidation": "PASS_FOR_Q9_Q13_Q21"
       }
     },
     {
