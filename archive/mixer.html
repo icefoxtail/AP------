@@ -28,6 +28,7 @@
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
 <script src="mixer-selector.js"></script>
 <script src="archive2-core.js?v=20260926-inclusive-basic"></script>
+<script src="archive2-source.js"></script>
 <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
 <script src="meta-foundation-runtime.js?v=20260919-mf-runtime-v1" onerror="console.error('[meta-foundation] runtime bridge 로드 실패')"></script>
 <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
@@ -778,6 +779,44 @@ function resolveMixerQuestionIdentity(raw, sourceFile) {
     return String(result?.status || '').startsWith('RESOLVED_') ? result : null;
 }
 
+let mixerBasicCatalogPromise = null;
+let mixerBasicByUid = new Map(), mixerBasicBySource = new Map();
+
+async function ensureMixerBasicCatalog() {
+    if (!mixerBasicCatalogPromise) {
+        mixerBasicCatalogPromise = (async () => {
+            const response = await fetch(new URL('data/archive2-catalog.json', document.baseURI), { cache: 'no-cache' });
+            if (!response.ok) throw new Error('basic catalog HTTP ' + response.status);
+            let catalog = window.Archive2Core.decodeCatalog(await response.json());
+            if (window.applyArchiveMetaFoundationCatalog) catalog = await window.applyArchiveMetaFoundationCatalog(catalog);
+            const byUid = new Map(), bySource = new Map();
+            for (const record of catalog.records) {
+                const sourceKey = window.Archive2Core.normalizeFile(record.sourceFile) + '#' + Number(record.sourceOrdinal);
+                if (byUid.has(record.questionUid) || bySource.has(sourceKey)) throw new Error('duplicate basic catalog identity');
+                byUid.set(record.questionUid, record);
+                bySource.set(sourceKey, record);
+            }
+            mixerBasicByUid = byUid;
+            mixerBasicBySource = bySource;
+            return catalog;
+        })().catch(error => {
+            mixerBasicCatalogPromise = null;
+            mixerBasicByUid = new Map();
+            mixerBasicBySource = new Map();
+            throw error;
+        });
+    }
+    return mixerBasicCatalogPromise;
+}
+
+function getMixerBasicRecord(sourceFile, sourceOrdinal, questionUid = '') {
+    const file = window.Archive2Core.normalizeFile(sourceFile);
+    const ordinal = Number(sourceOrdinal);
+    const record = mixerBasicBySource.get(file + '#' + ordinal);
+    if (!record || questionUid && (record.questionUid !== questionUid || mixerBasicByUid.get(questionUid) !== record)) return null;
+    return record;
+}
+
 function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
     const sourceFileHint = String(q?._sourceFile || q?.sourceFile || sourceMeta.file || '').trim();
     const raw = window.mergeArchiveQuestionMetadata
@@ -793,6 +832,9 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
     const identity = resolveMixerQuestionIdentity(raw, sourceFile);
     const sourceOrdinal = identity?.sourceOrdinal || getMixerSourceOrdinal(raw);
     const sourceQuestionNo = identity?.sourceQuestionNo || String(raw._sourceQuestionNo || raw.source_question_no || raw.sourceQuestionNo || raw.id || '');
+    const requestedUid = String(identity?.questionUid || raw._sourceQuestionUid || raw.source_question_uid || raw.sourceQuestionUid || raw.questionUid || '').trim();
+    const basicRecord = getMixerBasicRecord(sourceFile, sourceOrdinal, requestedUid);
+    const basicSelectable = Boolean(basicRecord && window.Archive2Core.basicEligibility(basicRecord).ok);
     const key = String(identity?.questionUid || (sourceMode === 'archive' ? (raw.qKey || raw._qKey || `${sourceFile}_${raw.id || ''}`) : (raw._qKey || raw.qKey || `${sourceFile}_${raw.id || ''}`)));
     const rawSubject = String(raw.subject || meta.subject || '').trim();
     const stdCourse = normalizeCourseName(std.course && std.course !== '기타' ? std.course : '');
@@ -816,7 +858,7 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
 
     return {
         key,
-        basicSelectable: approvedMeta?.runtimeSelectable,
+        basicSelectable,
         sourceMode,
         sourceFile,
         sourceTitle,
@@ -836,7 +878,7 @@ function normalizeForFilter(q, sourceMode, sourceMeta = {}) {
         difficultyBucket: String(approvedMeta?.difficultyBucket ?? raw.difficultyBucket ?? raw.difficulty_bucket ?? '').trim(),
         standardUnit,
         unitOrder,
-        questionUid: identity?.questionUid || '',
+        questionUid: basicRecord?.questionUid || identity?.questionUid || '',
         sourceOrdinal,
         sourceQuestionNo,
         identityStatus: identity?.status || '',
@@ -1451,12 +1493,17 @@ function getCachedQuestionFile(sourceFile) {
 }
 
 async function restoreIndexRecordToCart(record) {
-    const normalized = record && record.raw ? record : normalizeForFilter(record, 'archive', getSourceMetaForIndexRecord(record));
-    if (!normalized || cart.some(c => c._qKey === normalized.key)) return true;
     try {
+        await ensureMixerBasicCatalog();
+        const normalized = record && record.raw ? record : normalizeForFilter(record, 'archive', getSourceMetaForIndexRecord(record));
+        if (!normalized) return false;
+        const basicRecord = getMixerBasicRecord(normalized.sourceFile, normalized.sourceOrdinal, normalized.questionUid);
+        if (!basicRecord || !window.Archive2Core.basicEligibility(basicRecord).ok) return false;
+        if (cart.some(c => c._qKey === normalized.key)) return true;
         const questions = await getCachedQuestionFile(normalized.sourceFile);
         const original = normalized.sourceOrdinal ? questions[normalized.sourceOrdinal - 1] : null;
-        if (!original) return false;
+        if (!original || !window.Archive2Source ||
+            await window.Archive2Source.fingerprint(original) !== basicRecord.sourceFingerprint) return false;
         cart.push({
             ...original,
             _sourceTitle: normalized.sourceTitle || getSourceTitleForIndexRecord(normalized.raw),
@@ -1474,7 +1521,7 @@ async function restoreIndexRecordToCart(record) {
         });
         return true;
     } catch (e) {
-        console.warn('question restore failed:', normalized.sourceFile, normalized.raw.id, e);
+        console.warn('question restore failed:', record?.sourceFile, e);
         return false;
     }
 }
@@ -1699,7 +1746,7 @@ function adjustBlueprintRowsForPinned(rows, pinnedItems) {
 }
 
 function pickQuestionsByDifficulty(filteredPool, plan) {
-    filteredPool = filteredPool.filter(record => record.basicSelectable !== false);
+    filteredPool = filteredPool.filter(record => record.basicSelectable === true);
     const cartKeys = new Set(cart.map(c => c._qKey));
     const picked = [];
     const buckets = {
@@ -1739,7 +1786,7 @@ function pickQuestionsByBlueprint(filteredPool, blueprintRows = null) {
     const advancedOptions = readAutoGenAdvancedOptions();
     rows.forEach((row, rowIndex) => {
         const want = Math.max(1, Math.min(AUTOGEN_MAX_CART, parseInt(row.count, 10) || 0));
-        const pool = filteredPool.filter(record => record.basicSelectable !== false && !cartKeys.has(record.key) && record.standardUnitKey);
+        const pool = filteredPool.filter(record => record.basicSelectable === true && !cartKeys.has(record.key) && record.standardUnitKey);
         const contract = window.ArchiveMixerSelector;
         const canUseContract = contract && pool.length > 0 && pool.every(record => record.sourceMode === 'archive');
         const evaluated = canUseContract
@@ -1808,18 +1855,15 @@ async function applyPickedToCart(picked) {
     for (const record of picked) {
         if (cart.length >= AUTOGEN_MAX_CART) break;
         if (cart.some(c => c._qKey === record.key)) continue;
-        if (record.sourceMode === 'archive') {
-            const ok = await restoreIndexRecordToCart(record);
-            if (ok) added += 1;
-        } else {
-            cart.push(makeCartItemFromRecord(record));
-            added += 1;
-        }
+        const ok = await restoreIndexRecordToCart(record);
+        if (ok) added += 1;
     }
     return added;
 }
 
 async function runAutoGenerate(mode) {
+    try { await ensureMixerBasicCatalog(); }
+    catch (error) { alert('문항 출제 가능 여부를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'); return; }
     const state = readFilterState();
     if (state.sourceScope === 'archive') {
         const ok = await ensureQuestionIndexLoaded({ silent: true });
@@ -1919,8 +1963,7 @@ async function addCurrentFilterAll() {
     }
     for (const record of targets) {
         if (cart.some(c => c._qKey === record.key)) continue;
-        if (record.sourceMode === 'archive') await restoreIndexRecordToCart(record);
-        else cart.push(makeCartItemFromRecord(record));
+        await restoreIndexRecordToCart(record);
     }
     updateCartUI(); refreshFilterResults();
 }
@@ -2089,13 +2132,13 @@ function createQuestionItem(record) {
     return div;
 }
 
-function toggleCart(qKey) {
+async function toggleCart(qKey) {
     lastAutoGenValidation = null;
     const idx = cart.findIndex(c => c._qKey === qKey);
     if(idx > -1) { cart.splice(idx, 1); pinnedKeys.delete(qKey); }
     else {
         const record = getCanonicalPool('paper').find(it => it.key === qKey);
-        if(record) cart.push(makeCartItemFromRecord(record));
+        if(record) await restoreIndexRecordToCart(record);
     }
     updateCartUI(); refreshFilterResults();
 }
@@ -2376,6 +2419,8 @@ window.onload = async () => {
     await window.__AP_MATHJAX_READY__;
     if (window.MathJax?.startup?.promise) await window.MathJax.startup.promise;
     if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
+    try { await ensureMixerBasicCatalog(); }
+    catch (error) { console.warn('[mixer] basic eligibility unavailable:', error); }
     mixerDbLoadFailed = false;
     const s = document.createElement('script');
     s.src = withArchiveAssetVersion('db.js');

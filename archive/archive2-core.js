@@ -562,6 +562,11 @@
   // Migrate only positively identified historic advanced-only status pollution.
   // Unknown/free-text holds and explicit independent semantic decisions are retained.
   function projectBasicEligibility(record, options = {}) {
+    // This field is the independent semantic verdict, not an aggregate legacy
+    // review status. Advanced diagnostics cannot establish that HOLD was fake.
+    if (["HOLD", "ROUTE_OUT", "route_out"].includes(record.semanticDisposition) ||
+        ["HOLD", "ROUTE_OUT"].includes(record.basicSemanticDisposition) ||
+        ["ROUTE_OUT", "route_out"].includes(record.reviewStatus)) return { ...record };
     const diagnostics = holdDiagnostics(record);
     const generatedFoundationState = Boolean(record.metaFoundationPackId ||
       text(record.metadataRevision).startsWith("meta-foundation:") ||
