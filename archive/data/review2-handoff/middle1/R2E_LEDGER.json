@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "9bfb121a565e4cf1738637f55f52f513716dd666",
-  "timestamp": "2026-09-27 02:11:59 Asia/Seoul",
-  "physicalCheckpoint": "B20_Q9_Q13_Q21_VISUAL_AND_Q22_META_REVIEWED",
+  "currentBranchHead": "2f14894cb52d6d4198a963f60c59e858c74a8f99",
+  "timestamp": "2026-09-27 02:18:16 Asia/Seoul",
+  "physicalCheckpoint": "B24_R1_SVG_REPAIRS_APPLIED",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -206,7 +206,12 @@
         ],
         "final": "PENDING"
       },
-      "changedFiles": [],
+      "changedFiles": [
+        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg",
+        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg",
+        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg",
+        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg"
+      ],
       "r1Evidence": {
         "zipSha256": "4188AEBB9CE4C88DA0C018FAB8B03A2F409167621964C54B3F4A0B5234885970",
         "physicalPackage": "CREATE/READY_FOR_REVIEW, not R1 final",
@@ -220,7 +225,51 @@
         ]
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "WAIT_B20_TERMINAL"
+      "currentNextItem": "WAIT_B20_TERMINAL",
+      "deepReviewReasons": {
+        "q6": "Notion R1 repair is absent from the available CREATE/READY package; direct source comparison showed the diagrams did not preserve the 2:1 radius and 4:1 height ratios.",
+        "q7": "Notion R1 repair is absent from the available CREATE/READY package; the source solution requires a 144° sector, while the old diagram showed about 72°.",
+        "q8": "SVG byte drift against the physical CREATE/READY ZIP; keep open for final source/render parity closure.",
+        "q10": "SVG byte drift and R1 repair; corrected to display the similar 2:1 cones used by the frustum-volume calculation.",
+        "q21": "SVG byte drift and R1 repair; corrected so the three radius-3 spheres fit the radius-3 cylinder exactly."
+      },
+      "visualReview": {
+        "items": [
+          {
+            "q": 6,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q6.png exact branch source image and R1 math/solution record",
+            "finding": "A has r=6,h=6; B has r=3 and the solved height. Old SVG showed same heights and inaccurate radius proportions.",
+            "repair": "Redrew proportional cylinders with B four times A's height and half its radius; equation 9πh=216π remains visible.",
+            "render": "Chrome headless render inspected; labels and equation are readable."
+          },
+          {
+            "q": 7,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q7.png exact branch source image and final solution",
+            "finding": "The 5 cm sector must subtend 144° because its arc is 4π; old sector was drawn at about 72°.",
+            "repair": "Redrew the 144° sector and radius-2 base circle; total surface area 14π is shown.",
+            "render": "Chrome headless render inspected; sector and labels are visible."
+          },
+          {
+            "q": 10,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q10.png exact branch source image and final solution",
+            "finding": "Source dimensions are large cone r=4,h=6 and removed small cone r=2,h=3; old frustum proportions did not express their 2:1 similarity.",
+            "repair": "Redrew the shared-apex similar cones with 2:1 radius and height ratios and preserved 32π−4π=28π m³.",
+            "render": "Chrome headless render inspected; dimensions and calculations are visible."
+          },
+          {
+            "q": 21,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q21.png exact branch source image and final solution",
+            "finding": "Source says each radius-3 ball fits snugly in a cylinder, so the cylinder radius must also be 3 and its height is three diameters.",
+            "repair": "Redrew three radius-3 spheres exactly filling a radius-3 cylinder of height 18 cm; empty volume remains 54π cm³.",
+            "render": "Chrome headless render inspected; ball-to-cylinder parity is clear."
+          }
+        ],
+        "xmlValidation": "PASS_FOR_Q6_Q7_Q10_Q21"
+      }
     },
     {
       "code": "B28",

@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 385" preserveAspectRatio="xMidYMid meet"><rect width="620" height="385" fill="#fff"/><style>.s{fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.a{fill:none;stroke:#555;stroke-width:1.5;stroke-dasharray:6 5}.t{font:16px sans-serif;fill:#111}.m{font:15px sans-serif;fill:#111}</style><path class="s" d="M150 220 L210 82 L310 82 L370 220 Z"/><line class="a" x1="210" y1="82" x2="260" y2="18"/><line class="a" x1="310" y1="82" x2="260" y2="18"/><line class="a" x1="260" y1="18" x2="260" y2="220"/><text class="m" x="285" y="48">small cone: r=2 m, h=3 m</text><text class="m" x="98" y="246">large cone: r=4 m, h=6 m</text><text class="t" x="28" y="292">large cone: (1/3)π·4²·6 = 32π m³</text><text class="t" x="28" y="322">small cone: (1/3)π·2²·3 = 4π m³</text><text class="t" x="28" y="352">frustum: 32π − 4π = 28π m³</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 430" role="img" aria-label="큰 원뿔의 높이 6m와 작은 원뿔의 높이 3m, 반지름 4m와 2m로 나타낸 원뿔대">
+  <rect width="680" height="430" fill="#fff"/>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M280 50 L160 250 M280 50 L400 250" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="7 5"/>
+    <path d="M220 150 L160 250 L400 250 L340 150 Z" fill="#e2e8f0" stroke="#111" stroke-width="2.5"/>
+    <line x1="220" y1="150" x2="340" y2="150" stroke="#111" stroke-width="2.5"/>
+    <line x1="160" y1="250" x2="400" y2="250" stroke="#111" stroke-width="2.5"/>
+    <line x1="280" y1="50" x2="280" y2="250" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5 5"/>
+    <line x1="280" y1="50" x2="280" y2="150" stroke="#dc2626" stroke-width="2"/>
+  </g>
+  <g fill="#111" font-family="sans-serif">
+    <text x="24" y="34" font-size="20" font-weight="700">원뿔대는 큰 원뿔에서 작은 원뿔을 뺀 입체</text>
+    <text x="286" y="102" font-size="15" fill="#dc2626">작은 원뿔 높이 3 m</text>
+    <text x="286" y="219" font-size="15">큰 원뿔 높이 6 m</text>
+    <text x="219" y="145" font-size="15">r=2 m</text>
+    <text x="164" y="242" font-size="15">r=4 m</text>
+    <text x="24" y="312" font-size="17">큰 원뿔 부피=(1/3)π·4²·6=32π m³</text>
+    <text x="24" y="342" font-size="17">작은 원뿔 부피=(1/3)π·2²·3=4π m³</text>
+    <text x="24" y="380" font-size="18" font-weight="700">원뿔대 부피=32π−4π=28π m³</text>
+  </g>
+</svg>

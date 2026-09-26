@@ -77,3 +77,13 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - This correction is a targeted R1/R2 Meta conflict recheck. q22 remains unresolved until the 2015 binding/crosswalk and compiled runtime checks pass.
 - The q13 SVG was adjusted once more after its first browser render so the 300° arc is centered on the tether point and the fence masks the interior wedge; the final rendered SVG and XML check pass.
 - Current branch HEAD before this checkpoint: `9bfb121a565e4cf1738637f55f52f513716dd666`.
+
+## B24 bounded visual repairs — 2026-09-27
+
+- R1's `q6`, `q7`, `q10`, and `q21` visual repairs are absent from the available CREATE/READY package, so I checked each image and final solution directly.
+- q6 now shows radius 6/height 6 for A and radius 3 with a four-times-taller cylinder B; the equal-volume equation still yields 24 cm.
+- q7 now shows a 144° sector of radius 5 cm, matching arc length 4π and a base radius of 2 cm; total surface area remains 14π cm².
+- q10 now shows the large cone and removed small cone in exact 2:1 radius/height scale (4,6 and 2,3), supporting 32π−4π=28π m³.
+- q21 now shows three radius-3 spheres fitting exactly in a radius-3 cylinder of height 18 cm; empty volume remains 54π cm³.
+- All four SVGs passed XML parsing and Chrome headless renders were visually inspected. B24 items remain open until Meta and full exam validators close.
+- Current branch HEAD before this checkpoint: `2f14894cb52d6d4198a963f60c59e858c74a8f99`.
