@@ -64,7 +64,8 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q2-solution.svg"
   },
   {
     "id": 3,
@@ -185,10 +186,11 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 세 직선의 교점을 구하면 둘러싸인 삼각형의 밑변과 높이를 알 수 있다.\n조건 정리: 두 일차함수의 그래프는 원점에서 만나고, 직선 $x=4$에서 각각 $(4,4)$와 $(4,8)$을 지난다.\n풀이 방향: 세 교점을 꼭짓점으로 하는 삼각형의 넓이를 구한다.\n정석 풀이: $y=x$와 $y=2x$의 교점은 $(0,0)$이다. $x=4$를 두 식에 대입하면 나머지 두 꼭짓점은 $(4,4)$와 $(4,8)$이다. $x=4$ 위의 세로 선분 길이는 $8-4=4$이고, 원점에서 직선 $x=4$까지의 가로 거리는 $4$이다. 따라서 넓이는 $\\dfrac{1}{2}\\times4\\times4=8$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q6-solution.svg"
   },
   {
     "id": 7,
@@ -247,10 +249,10 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] $y$축에 평행한 직선 위의 모든 점은 $x$좌표가 같다.\n조건 정리: 두 점의 $x$좌표는 각각 $3$과 $a-1$이다.\n풀이 방향: 두 $x$좌표를 같게 놓고 $a$를 구한다.\n정석 풀이: 두 점을 지나는 직선이 세로 방향이 되려면 $3=a-1$이어야 한다. 양변에 $1$을 더하면 $a=4$이다. 이때 두 점은 $(3,8)$과 $(3,4)$로 서로 다른 점이므로 실제로 $y$축에 평행한 직선을 정한다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 9,
@@ -378,7 +380,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -444,7 +447,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg"
   },
   {
     "id": 15,
@@ -510,7 +514,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg"
   },
   {
     "id": 17,
@@ -576,7 +581,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg"
   },
   {
     "id": 19,
@@ -664,10 +670,10 @@ window.questionBank=[
     "choices": [],
     "answer": "$a=2$, $b=-2$",
     "solution": "[키포인트] 한 함수의 점 통과 조건으로 $a$를 먼저 구하고, 두 절편이 같다는 조건으로 $b$를 구한다.\n조건 정리: $y=ax+1$은 $(1,3)$을 지나며, 이 함수의 $y$절편과 $y=ax+b$의 $x$절편이 같다.\n풀이 방향: $(1,3)$을 대입하고, 두 번째 함수의 $x$절편을 식으로 나타낸다.\n정석 풀이: $y=ax+1$에 $(1,3)$을 대입하면 $3=a+1$이므로 $a=2$이다. 이 함수의 $y$절편은 $1$이다. 따라서 $y=2x+b$의 $x$절편도 $1$이어야 한다. $x=1$, $y=0$을 대입하면 $0=2+b$이므로 $b=-2$이다.\n따라서 $a=2$, $b=-2$이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 22,
@@ -694,7 +700,8 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q22-solution.svg"
   },
   {
     "id": 23,
@@ -721,7 +728,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -748,6 +756,7 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q24-solution.svg"
   }
 ];
