@@ -380,12 +380,13 @@ window.questionBank = [
       "$50^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직사각형의 두 대각선은 길이가 같고 서로를 이등분한다.\n조건 정리: 두 대각선의 교점을 $O$라 하면 $OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n풀이 방향: $\\angle BCO$에서 꼭지각을 구한 뒤 $\\triangle BOD$의 각을 이용한다.\n정석 풀이: $\\angle BCO=\\angle ACB=42^\\circ$이므로 $\\angle OBC=42^\\circ$이고 $\\angle BOC=180^\\circ-84^\\circ=96^\\circ$이다. $\\angle BOD=180^\\circ-96^\\circ=84^\\circ$이다. 또한 $OB=OD$이므로 $\\triangle BOD$는 이등변삼각형이고 $\\angle BDO=(180^\\circ-84^\\circ)/2=48^\\circ$이다. 따라서 $\\angle BDC=48^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로, 교점에서 생기는 길이 관계를 이용한다.\n조건 정리: 두 대각선의 교점을 $O$라 하면 $O$는 $AC$, $BD$ 위에 있고 $OB=OC$이다. 또 $\\angle BCO=\\angle BCA=42^\\circ$이다.\n풀이 방향: $\\triangle BOC$의 이등변 성질로 $\\angle DBC$를 구한 뒤, 직각삼각형 $BCD$의 내각의 합을 이용한다.\n정석 풀이: $OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다. 따라서 $\\angle OBC=\\angle BCO=42^\\circ$이다. $B,O,D$가 한 직선 위에 있으므로 $\\angle DBC=42^\\circ$이다. 직사각형에서 $\\angle BCD=90^\\circ$이므로 $\\triangle BCD$에서\n$\\angle BDC=180^\\circ-90^\\circ-42^\\circ=48^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q12.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -417,7 +418,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -604,8 +606,8 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 평행한 두 밑변 때문에 교점에서 만들어지는 두 삼각형이 닮음이다.\n조건 정리: $BD=25$, $AD=10$이므로 $AB=25-10=15$이고 $DE=12$이다.\n풀이 방향: $\\triangle ADE$와 $\\triangle ABC$의 닮음비를 이용한다.\n정석 풀이: $DE\\parallel BC$이므로 $\\angle ADE=\\angle ABC$, $\\angle AED=\\angle ACB$이다. 따라서 $\\triangle ADE\\sim\\triangle ABC$이다. $AD:AB=10:15=2:3$이므로 $DE:BC=2:3$이다. 따라서 $12:x=2:3$에서 $x=18$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q19.png",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -665,7 +667,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q21-solution.svg"
   },
   {
     "id": 22,
@@ -688,10 +691,11 @@ window.questionBank = [
     "answer": "$65^\\circ$",
     "solution": "[키포인트] 정사각형의 대각선이 꼭지각을 이등분하는 성질로 두 삼각형의 SAS 합동을 만든다.\n조건 정리: 정사각형이므로 $AD=CD$, $\\angle ADC=90^\\circ$이고 대각선 $BD$가 $\\angle ADC$를 이등분하여 $\\angle ADE=\\angle CDE=45^\\circ$이다.\n풀이 방향: $\\triangle ADE$와 $\\triangle CDE$의 합동으로 $\\angle DCE$를 구한 뒤 외각의 성질을 적용한다.\n정석 풀이: $AD=CD$, $DE$는 공통, $\\angle ADE=\\angle CDE=45^\\circ$이므로 $\\triangle ADE\\equiv\\triangle CDE$이다(SAS 합동). 따라서 대응각 $\\angle DCE=\\angle DAE=20^\\circ$이다. $B,E,D$는 한 직선 위에 있으므로 $\\angle BEC$는 $\\triangle CDE$의 꼭짓점 $E$에서의 한 외각이다. 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같으므로 $\\angle BEC=\\angle CDE+\\angle DCE=45^\\circ+20^\\circ=65^\\circ$이다.\n따라서 구하는 각의 크기는 $65^\\circ$이다.",
     "image": "assets/images/23_이수중_2학기_중간_중2_수학/q22.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q22-solution.svg"
   },
   {
     "id": 23,
@@ -717,7 +721,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -743,6 +748,7 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_이수중_2학기_중간_중2_수학/q24-solution.svg"
   }
 ];
