@@ -13,6 +13,19 @@ GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 cand
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
 
+### JS Archive R2E Intake → Main 작업 선행 규칙
+
+중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
+`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 현재 생명주기 정본으로 함께 적용한다.
+
+새 표준 흐름은
+`CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → Codex R2E → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
+
+중2 intake authority는 `work/intake/m2`, 중3은 `work/intake/m3`이다.
+과거 `REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge` 경로는 새 intake 생산에 적용하지 않고 legacy artifact 복구에만 사용한다.
+R2E는 intake branch를 수정·통째 merge하지 않고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
+정상 PASS 문항의 불필요한 전체 재검수보다 HOLD/REPAIR/CONFLICT/proposal/migration/source defect의 최종 adjudication에 집중한다.
+
 ### Codex Meta Foundation 작업 선행 규칙
 
 Codex가 Meta Foundation 단원 정리를 수행할 때는 GPT 격리 작업 규칙의 기본 실행형을 그대로 적용하지 않고
