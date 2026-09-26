@@ -59,6 +59,56 @@ test('missing runtimeSelectable does not exclude a healthy L1/L2-only question',
   assert.equal(e.context.cart.length,1);
 });
 
+for(const mode of ['archive','paper']){
+  test(`concurrent ${mode} restores add a canonical question only once`,{timeout:5000},async()=>{
+    const q=question(),e=environment([record(q)],[q]);
+    await e.context.ensureMixerBasicCatalog();
+    let arrivals=0,release;
+    const barrier=new Promise(resolve=>{release=resolve;});
+    e.context.window.Archive2Source={...source,fingerprint:async original=>{
+      if(++arrivals===2)release();
+      await barrier;
+      return source.fingerprint(original);
+    }};
+    const candidate=e.normalize(q,mode);
+    const restored=await Promise.all([
+      e.context.restoreIndexRecordToCart(candidate),
+      e.context.restoreIndexRecordToCart(candidate)
+    ]);
+    assert.deepEqual(restored,[true,true]);
+    assert.equal(arrivals,2,'both calls must reach fingerprint verification concurrently');
+    assert.equal(e.context.cart.length,1);
+    assert.equal(e.context.cart[0].source_question_uid,uid(1));
+    assert.equal(await e.context.restoreIndexRecordToCart(candidate),true);
+    assert.equal(e.context.cart.length,1,'sequential retries remain idempotent');
+  });
+}
+
+test('concurrent legacy keys for one source identity share the catalog canonical UID',async()=>{
+  const q=question(),e=environment([record(q)],[q]);
+  await e.context.ensureMixerBasicCatalog();
+  const candidate=e.normalize(q);
+  const restored=await Promise.all([
+    e.context.restoreIndexRecordToCart({...candidate,key:'legacy-paper-key',questionUid:''}),
+    e.context.restoreIndexRecordToCart({...candidate,key:'legacy-archive-key'})
+  ]);
+  assert.deepEqual(restored,[true,true]);
+  assert.equal(e.context.cart.length,1);
+  assert.equal(e.context.cart[0]._sourceQuestionUid,uid(1));
+  assert.equal(e.context.cart[0].source_question_uid,uid(1));
+});
+
+test('existing cart UID prevents a duplicate even when its legacy key differs',async()=>{
+  const q=question();
+  for(const field of ['_sourceQuestionUid','source_question_uid']){
+    const e=environment([record(q)],[q]);
+    await e.context.ensureMixerBasicCatalog();
+    e.context.cart.push({...q,_qKey:'legacy-key',[field]:uid(1)});
+    assert.equal(await e.context.restoreIndexRecordToCart(e.normalize(q)),true,field);
+    assert.equal(e.context.cart.length,1,field);
+  }
+});
+
 test('missing runtimeSelectable cannot bypass source, identity, solution or semantic HARD blocks',async()=>{
   const q=question();
   for(const change of [{identityStatus:'UNRESOLVED'},{sourceStatus:'HOLD'},{sourceIssueHold:true},{sourceQualityDisposition:'SOLUTION_REPAIR_REQUIRED'},{semanticDisposition:'HOLD'},

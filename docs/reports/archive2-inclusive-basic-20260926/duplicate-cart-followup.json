@@ -1,0 +1,142 @@
+{
+  "scope": "P2: concurrent legacy mixer restores must not insert a canonical question twice",
+  "baseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
+  "baseBranchCommit": "77f6e8b9ebdb16f219a9f00793264e98443ffc18",
+  "branch": "codex/archive-inclusive-basic-20260926",
+  "implementation": {
+    "duplicateIdentity": "canonical catalog questionUid or existing _qKey; both UID compatibility fields recognized",
+    "insertion": "recheck immediately after source fingerprint await, then synchronously cart.push without another await",
+    "persistedIdentity": "both cart UID fields use the verified catalog questionUid",
+    "basicEligibilityAndFingerprintGates": "unchanged"
+  },
+  "regression": {
+    "beforeRepair": {
+      "pass": 7,
+      "fail": 4,
+      "concurrentCartLength": 2
+    },
+    "afterRepair": {
+      "mixer": {
+        "pass": 11,
+        "fail": 0
+      },
+      "targetedWithInclusiveBasic": {
+        "pass": 23,
+        "fail": 0
+      },
+      "relatedSuite": {
+        "pass": 117,
+        "fail": 0,
+        "files": [
+          "tests/archive-mixer-basic-gate.test.cjs",
+          "tests/archive-mixer-loader-isolation.test.js",
+          "tests/archive-mixer-selector-contract.test.js",
+          "tests/archive2-core.test.cjs",
+          "tests/archive2-entry-review.test.cjs",
+          "tests/archive2-finder-filters.test.cjs",
+          "tests/archive2-inclusive-basic.test.cjs",
+          "tests/archive2-meta-advanced-filter.test.cjs",
+          "tests/archive2-optional-pack-validator.test.cjs",
+          "tests/archive2-preview-responsive.test.cjs",
+          "tests/archive2-production-basic.test.cjs",
+          "tests/archive2-rc2-output.test.cjs",
+          "tests/archive2-school-history.test.cjs",
+          "tests/archive2-touch-targets.test.cjs",
+          "tests/meta-foundation-derivative-runtime.test.js",
+          "tests/meta-foundation-global-compile.test.js",
+          "tests/meta-foundation-integral-calculus-runtime.test.js",
+          "tests/meta-foundation-limit-continuity-runtime.test.js",
+          "tests/meta-foundation-middle-geometry-runtime.test.js",
+          "tests/meta-foundation-middle1-b01-b16-promotion.test.cjs"
+        ],
+        "navigationHarness": "excluded; two unchanged original-BASE failures previously documented"
+      },
+      "syntax": {
+        "checks": 4,
+        "pass": true,
+        "mixerInlineScripts": 3,
+        "testFiles": 1
+      },
+      "actualChrome": {
+        "status": "PASS",
+        "catalogRecords": 11269,
+        "basicSelectable": 5086,
+        "target": {
+          "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc",
+          "difficultyBucket": "UNKNOWN"
+        },
+        "scenarios": [
+          {
+            "name": "archive concurrent restore",
+            "fingerprintArrivals": 2,
+            "returned": [
+              true,
+              true
+            ],
+            "cartLength": 1,
+            "uniqueUidCount": 1,
+            "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc"
+          },
+          {
+            "name": "paper concurrent restore",
+            "fingerprintArrivals": 2,
+            "returned": [
+              true,
+              true
+            ],
+            "cartLength": 1,
+            "uniqueUidCount": 1,
+            "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc"
+          },
+          {
+            "name": "different legacy keys, absent incoming UID",
+            "fingerprintArrivals": 2,
+            "returned": [
+              true,
+              true
+            ],
+            "cartLength": 1,
+            "uniqueUidCount": 1,
+            "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc"
+          },
+          {
+            "name": "actual toggleCart called twice during loading",
+            "fingerprintArrivals": 2,
+            "returned": [
+              null,
+              null
+            ],
+            "cartLength": 1,
+            "uniqueUidCount": 1,
+            "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc"
+          }
+        ],
+        "cartCountText": "1",
+        "countAfterRemoval": 0,
+        "hardBlockedReturn": false,
+        "hardBlockedCartLength": 0,
+        "semanticHold": {
+          "semanticDisposition": "HOLD",
+          "basicSelectable": false
+        },
+        "errors": []
+      }
+    }
+  },
+  "production": {
+    "catalogRecords": 11269,
+    "basicSelectableBefore": 5086,
+    "basicSelectableAfter": 5086,
+    "runtimeCatalogBasicParity": "PASS: archive2-production-basic regression validates 5087 unique runtime joins and BASIC parity",
+    "sourceJsMutation": 0,
+    "dataRuntimeCatalogMutation": 0
+  },
+  "originMainRechecked": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
+  "mainMerged": false,
+  "remainingBlockers": [],
+  "changedFiles": [
+    "archive/mixer.html",
+    "tests/archive-mixer-basic-gate.test.cjs",
+    "docs/reports/archive2-inclusive-basic-20260926/duplicate-cart-followup.json"
+  ]
+}

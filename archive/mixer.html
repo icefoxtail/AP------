@@ -1499,20 +1499,24 @@ async function restoreIndexRecordToCart(record) {
         if (!normalized) return false;
         const basicRecord = getMixerBasicRecord(normalized.sourceFile, normalized.sourceOrdinal, normalized.questionUid);
         if (!basicRecord || !window.Archive2Core.basicEligibility(basicRecord).ok) return false;
-        if (cart.some(c => c._qKey === normalized.key)) return true;
+        const alreadyInCart = () => cart.some(c => c._qKey === normalized.key ||
+            c._sourceQuestionUid === basicRecord.questionUid || c.source_question_uid === basicRecord.questionUid);
+        if (alreadyInCart()) return true;
         const questions = await getCachedQuestionFile(normalized.sourceFile);
         const original = normalized.sourceOrdinal ? questions[normalized.sourceOrdinal - 1] : null;
         if (!original || !window.Archive2Source ||
             await window.Archive2Source.fingerprint(original) !== basicRecord.sourceFingerprint) return false;
+        // Async restores can finish together; keep this final check and push synchronous.
+        if (alreadyInCart()) return true;
         cart.push({
             ...original,
             _sourceTitle: normalized.sourceTitle || getSourceTitleForIndexRecord(normalized.raw),
             _sourceFile: normalized.sourceFile,
             _qKey: normalized.key,
-            _sourceQuestionUid: normalized.questionUid || '',
+            _sourceQuestionUid: basicRecord.questionUid,
             _sourceQuestionOrdinal: normalized.sourceOrdinal || null,
             _sourceQuestionNo: normalized.sourceQuestionNo || original.id || '',
-            source_question_uid: normalized.questionUid || '',
+            source_question_uid: basicRecord.questionUid,
             source_question_ordinal: normalized.sourceOrdinal || null,
             source_question_no: normalized.sourceQuestionNo || original.id || '',
             standardUnit: original.standardUnit || normalized.standardUnit,
