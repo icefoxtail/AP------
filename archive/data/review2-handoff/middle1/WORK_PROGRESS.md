@@ -130,3 +130,12 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B24 denominator checks pass 22/22: protected-field parity against the recovered package; node/VM; blank/control/LaTeX checks; 7/7 solution SVG XML/path checks; canonical/crosswalk/binding checks; Archive2 identity/source/taxonomy and eligibility 22/22; runtime selectable 22/22 and catalog joins PASS.
 - B24 is ready for its exam-specific final commit. B20 remains `R2E_BRANCH_FINAL` at `cdb5742f1ddd952bf5d7301cc53eb735385c4969`. No main integration or main terminal receipt has occurred.
 - Current branch HEAD before the B24 exam-specific final commit: `fe46fa13a46aeaf74a7b0b9d9ba1bbda7096eeb1`.
+
+## B24 exam-specific final commit — 2026-09-27
+
+- B24 final artifact commit: `3e302ecdb1fab7a08abedf7fcdaefebc54208292` (pushed to the work branch).
+- B24 status: `R2E_BRANCH_FINAL`, denominator 22/22, deep review 20/20 (including q11 and q22 reopened from PASS), unresolved 0.
+- B24 final gate: protected fields 22/22; math/solution reused from R1 KEEP 22/22; XML/path 7/7; runtime selectable and Archive2 eligible 22/22; exact target RPM/crosswalk/binding checks pass.
+- Main was not changed or merged. No `R2E_MAIN_FINAL` terminal receipt was issued.
+- Next: B28. Resolve q12/q23 source-recovered student solutions, then complete the remaining Meta/RPM and runtime checks.
+- Current branch HEAD before the B24 physical receipt update: `3e302ecdb1fab7a08abedf7fcdaefebc54208292`.
