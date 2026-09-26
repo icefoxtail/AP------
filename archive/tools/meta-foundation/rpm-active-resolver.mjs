@@ -528,7 +528,8 @@ export function validateR2EReceipt(receipt, options = {}) {
   if (Array.isArray(options.sourceQuestions)) {
     const sourceCheck = validateR2EIntakeMetaReceipt({
       schemaVersion: 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1',
-      items: receipt.items.map(item => ({ ...item, disposition: item.resolverEvidence?.disposition })),
+      items: receipt.items.map(item => ({ ...item, sourceOrdinal: item.sourceOrdinal ?? item.input?.sourceIdentity?.sourceOrdinal,
+        disposition: item.resolverEvidence?.disposition })),
     }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot, registry: options.registry, requireResolverReceipt: false });
     for (const error of sourceCheck.errors) errors.push(`R2E_FINAL_SOURCE_BINDING:${error}`);
   }
