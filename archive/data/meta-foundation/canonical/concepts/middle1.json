@@ -3,8 +3,37 @@
   "shardId": "MIDDLE1",
   "shardVersion": "1.0.0",
   "status": "ACTIVE",
-  "conceptCount": 2,
+  "conceptCount": 3,
   "concepts": [
+    {
+      "conceptKey": "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY",
+      "canonicalLabelKo": "정다각형의 내각과 입체 꼭짓점의 적합성",
+      "definition": "정다면체의 한 꼭짓점에서 면의 내각 합이 360°보다 작아야 한다는 조건으로 정다각형 면의 가능성을 판정한다.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
+          "reason": "B28 q8 computes a regular octagon interior angle of 135° and checks whether three faces can meet at a vertex."
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2022:중1 수학:M1-07"
+      ],
+      "ownerConceptShard": "MIDDLE1"
+    },
     {
       "conceptKey": "CC_RATIONAL_RECIPROCAL",
       "canonicalLabelKo": "유리수의 역수",
