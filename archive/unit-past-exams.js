@@ -102,6 +102,21 @@
         L3: String(meta.L3 || record.L3 || '').trim(),
         L4: String(meta.L4 || record.L4 || '').trim(),
         difficultyBucket: meta.difficultyBucket || record.difficultyBucket || '',
+        curriculumApplicability: meta.curriculumApplicability ?? record.curriculumApplicability,
+        basicScopeDefaultSelectable: meta.basicScopeDefaultSelectable ?? record.basicScopeDefaultSelectable,
+        basicEligibilityStatus: meta.basicEligibilityStatus ?? record.basicEligibilityStatus,
+        runtimeSelectable: meta.runtimeSelectable ?? record.runtimeSelectable,
+        l3CapabilityValid: meta.l3CapabilityValid ?? record.l3CapabilityValid,
+        l4CapabilityValid: meta.l4CapabilityValid ?? record.l4CapabilityValid,
+        reviewStatus: meta.reviewStatus ?? record.reviewStatus,
+        semanticDisposition: meta.semanticDisposition ?? record.semanticDisposition,
+        sourceQualityDisposition: meta.sourceQualityDisposition ?? record.sourceQualityDisposition,
+        sourceIssueHold: meta.sourceIssueHold ?? record.sourceIssueHold,
+        sourceDefectCandidate: meta.sourceDefectCandidate ?? record.sourceDefectCandidate,
+        sourceHoldReason: meta.sourceHoldReason ?? record.sourceHoldReason,
+        metaFoundationHoldReason: meta.metaFoundationHoldReason ?? record.metaFoundationHoldReason,
+        advancedHoldReasons: meta.advancedHoldReasons ?? record.advancedHoldReasons,
+        advancedCapabilityStatus: meta.advancedCapabilityStatus ?? record.advancedCapabilityStatus,
         defaultSelectable: meta.defaultSelectable !== undefined ? meta.defaultSelectable : record.defaultSelectable,
         metaFoundationRuntimeAvailable: authority.active,
         metaFoundationOwnedScope: taxonomyGate.owned,
@@ -919,6 +934,7 @@
   }
   function buildQuickRows(unit) {
     const filter = state.filterState; const preset = QUICK_PRESETS[filter.preset] || QUICK_PRESETS.exam;
+    if (!filter.difficultyBuckets.length) return [{ difficultyBucket: '', count: filter.count }];
     const scoped = core.filterUnitRecords(unit.records, { subUnitKeys: filter.subUnitKeys, includeUnclassified: filter.includeUnclassified }); const available = core.getDifficultySummary(scoped);
     const allowed = filter.difficultyBuckets.length ? filter.difficultyBuckets : LEVELS.slice(0, 3);
     const buckets = preset.buckets.filter(bucket => allowed.includes(bucket) && available[bucket] > 0);
@@ -1188,7 +1204,7 @@
     state.collectionState.subUnitKeys = [...state.filterState.subUnitKeys];
     state.collectionState.difficultyBuckets = state.filterState.difficultyBuckets.length
       ? [...state.filterState.difficultyBuckets]
-      : [...(QUICK_PRESETS[state.filterState.preset]?.buckets || ['하', '중', '상'])];
+      : [];
     state.collectionState.includeUnclassified = state.filterState.includeUnclassified;
     state.collectionState.countMode = 'fixed';
     state.collectionState.count = state.filterState.count;

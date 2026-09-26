@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Derives the scoped M1 runtime and audit sidecars from canonical/compiled authority and UID metadata.
 import fs from 'node:fs';
+import core from '../../archive2-core.js';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -47,14 +48,15 @@ for(const s of input.rows){
     if((r.crossConceptKeys||[]).some((k)=>!concepts.has(k)))failures.push(`concept:${s.questionUid}`);
     if((r.conditionKeys||[]).some((k)=>!conditions.has(k)))failures.push(`condition:${s.questionUid}`);
   }else if(r.problemTypeKey||r.templateKey||r.foundationTaxonomyStatus!=='HOLD')failures.push(`heldMetadata:${s.questionUid}`);
-  const selectable=Boolean(m&&s.reviewStatus!=='HOLD'&&s.reviewStatus!=='ROUTE_OUT'&&
-    q.disposition!=='SOURCE_BLOCKED'&&q.disposition!=='SOLUTION_REPAIR_REQUIRED'&&
-    r.reviewStatus==='reviewed_pass'&&r.foundationTaxonomyStatus==='CONFIRMED'&&
-    r.curriculumKey&&r.courseKey&&r.L1&&r.L2&&
-    r.curriculumApplicability==='DEFAULT_SCOPE'&&r.defaultSelectable===true&&
-    Number.isInteger(r.difficultyBucket)&&r.difficultyBucket>=1&&r.difficultyBucket<=5);
+  const selectable=core.basicEligibility({ ...r,
+    questionUid:s.questionUid, identityStatus:'VERIFIED', sourceStatus:'VERIFIED',
+    basicTaxonomyStatus:r.L1&&r.L2?'CONFIRMED':'UNKNOWN',
+    semanticDisposition:s.reviewStatus,sourceQualityDisposition:q.disposition
+  }).ok;
   records.push({questionUid:s.questionUid,sourceArchiveFile:s.sourceArchiveFile,sourceOrdinal:s.sourceOrdinal,sourceFingerprint:s.sourceFingerprint,
-    curriculum:r.curriculum,standardUnitKey:r.standardUnitKey,subUnitKey:r.subUnitKey,
+    curriculum:r.curriculum,curriculumKey:r.curriculumKey,courseKey:r.courseKey,L1:r.L1,L2:r.L2,
+    basicTaxonomyStatus:r.L1&&r.L2?'CONFIRMED':'UNKNOWN',
+    standardUnitKey:r.standardUnitKey,subUnitKey:r.subUnitKey,
     problemTypeKey:r.problemTypeKey||'',templateKey:r.templateKey||'',
     crossConceptKeys:r.crossConceptKeys||[],conditionKeys:r.conditionKeys||[],integrationPattern:r.integrationPattern||'NONE',
     difficultyBucket:r.difficultyBucket,difficultyConfidence:r.difficultyConfidence,difficultyBoundaryFlag:r.difficultyBoundaryFlag,legacyLevelCompatibility:r.legacyLevelCompatibility,
@@ -84,6 +86,13 @@ const parity={schemaVersion:'m1-b01-b16-runtime-parity-v1',status:failures.lengt
 const outputs=new Map([[runtimePath,text(runtime)],[evidencePath,text(assignments)],[`${global}/B01_B16_CANONICAL_USAGE.json`,text(usage)],[`${global}/B01_B16_RUNTIME_PARITY.json`,text(parity)]]);
 const write=process.argv.includes('--write'),check=process.argv.includes('--check');
 if(write&&!failures.length)for(const [p,v] of outputs){fs.mkdirSync(path.dirname(path.join(root,p)),{recursive:true});fs.writeFileSync(path.join(root,p),v);}
-if(check)for(const [p,v] of outputs){if(!fs.existsSync(path.join(root,p))||fs.readFileSync(path.join(root,p),'utf8').replaceAll('\r\n','\n')!==v)failures.push(`stale:${p}`);}
+// The common BASIC rebuilder may add quality/capability diagnostics. Check all
+// fields owned by this compiler while preserving those derived extensions.
+const containsExpected=(actual,expected)=>{
+  if(Array.isArray(expected))return Array.isArray(actual)&&actual.length===expected.length&&expected.every((v,i)=>containsExpected(actual[i],v));
+  if(expected&&typeof expected==='object')return actual&&Object.entries(expected).every(([k,v])=>containsExpected(actual[k],v));
+  return actual===expected;
+};
+if(check)for(const [p,v] of outputs){if(!fs.existsSync(path.join(root,p))||!containsExpected(read(p),JSON.parse(v)))failures.push(`stale:${p}`);}
 console.log(JSON.stringify({status:failures.length?'FAIL':'PASS',write,check,counts,failureCount:failures.length,firstFailures:failures.slice(0,10)},null,2));
 if(failures.length)process.exitCode=1;

@@ -116,7 +116,7 @@ test('high-semantic mapping precedence는 override → explicit ignore → direc
   assert.equal(overridden.unitKey, 'H22-A-04');
 });
 
-test('defaultSelectable=false와 broken Meta Foundation taxonomy는 자동출제 pool에서 fail-closed된다', () => {
+test('scope 제외는 block이고 advanced taxonomy 미완성은 기본 pool을 차단하지 않는다', () => {
   const runtime = {
     status: 'ACTIVE',
     ownedScopes: [{ curriculumKey: '2022', courseKey: '공통수학2', L1: '도형의 방정식', L2: '평면좌표' }],
@@ -145,16 +145,16 @@ test('defaultSelectable=false와 broken Meta Foundation taxonomy는 자동출제
     { id: 2, sourceFile: 'b.js', questionUid: 'supplementary', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: false, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: true },
     { id: 3, sourceFile: 'c.js', questionUid: 'broken-taxonomy', subUnitKey: 'L2', subUnit: '소단원', level: '중', defaultSelectable: true, metaFoundationOwnedScope: true, metaFoundationTaxonomyValid: false }
   ];
-  assert.deepEqual(core.filterUnitRecords(records).map(item => item.questionUid), ['ok']);
-  assert.deepEqual(core.getSubUnitOptions(records).map(item => [item.key, item.count]), [['L2', 1]]);
+  assert.deepEqual(core.filterUnitRecords(records).map(item => item.questionUid), ['ok', 'broken-taxonomy']);
+  assert.deepEqual(core.getSubUnitOptions(records).map(item => [item.key, item.count]), [['L2', 2]]);
 
   const selected = core.selectByBlueprint(records, [{ subUnitKey: 'L2', difficultyBucket: '중', count: 2 }], {});
-  assert.equal(selected.ok, false);
-  assert.equal(selected.selectedCount, 1);
-  assert.equal(selected.shortage, 1);
+  assert.equal(selected.ok, true);
+  assert.equal(selected.selectedCount, 2);
+  assert.equal(selected.shortage, 0);
 });
 
-test('Meta Foundation runtime unavailable은 자동출제 전체를 fail-closed한다', () => {
+test('advanced runtime unavailable 자체는 기본 출제 gate가 아니다', () => {
   const records = [
     {
       sourceFile: 'legacy.js', id: 1, questionUid: 'legacy-runtime-down',
@@ -170,13 +170,13 @@ test('Meta Foundation runtime unavailable은 자동출제 전체를 fail-closed�
       metaFoundationTaxonomyValid: false
     }
   ];
-  assert.equal(core.isAutomaticSelectable(records[0]), false);
-  assert.equal(core.isAutomaticSelectable(records[1]), false);
-  assert.deepEqual(core.filterUnitRecords(records, { includeUnclassified: true }), []);
+  assert.equal(core.isAutomaticSelectable(records[0]), true);
+  assert.equal(core.isAutomaticSelectable(records[1]), true);
+  assert.deepEqual(core.filterUnitRecords(records, { includeUnclassified: true }), records);
   const result = core.selectByBlueprint(records, [{ subUnitKey: 'A', difficultyBucket: '중', count: 1 }], {});
-  assert.equal(result.ok, false);
-  assert.equal(result.selectedCount, 0);
-  assert.equal(result.shortage, 1);
+  assert.equal(result.ok, true);
+  assert.equal(result.selectedCount, 1);
+  assert.equal(result.shortage, 0);
 });
 
 test('ready paper split은 non-selectable classified record를 보존 집계하되 문제지에는 넣지 않는다', () => {
@@ -282,14 +282,14 @@ test('마스터 소단원 표기를 우선 사용하고 영문 표시를 차단�
   }
 });
 
-test('필터는 미분류 문항을 명시적으로 허용할 때만 포함한다', () => {
+test('소단원 누락은 scope 제외지만 난이도 미분류는 기본 후보에 포함한다', () => {
   const records = [
     { id: 'classified', subUnitKey: 'A', subUnit: 'A', level: '중' },
     { id: 'missing-subunit', level: '하' },
     { id: 'missing-level', subUnitKey: 'A', subUnit: 'A', level: '미분류' }
   ];
 
-  assert.deepEqual(core.filterUnitRecords(records).map(item => item.id), ['classified']);
+  assert.deepEqual(core.filterUnitRecords(records).map(item => item.id), ['classified', 'missing-level']);
   assert.deepEqual(core.filterUnitRecords(records, { includeUnclassified: true }).map(item => item.id), [
     'classified', 'missing-subunit', 'missing-level'
   ]);

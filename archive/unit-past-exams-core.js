@@ -546,11 +546,12 @@
       .trim()
       .replace(/^\[|\]$/g, '')
       .trim();
-    return ['하', '중', '상'].includes(normalized) ? normalized : '미분류';
+    return ['1','2','3','4','5','하', '중', '상'].includes(normalized) ? normalized : '미분류';
   }
 
   function getDifficultyBucket(record) {
-    const value = record && (record.difficultyBucket || record.normalizedLevel || record.level);
+    const value = record && (record.identityStatus !== undefined
+      ? record.difficultyBucket : (record.difficultyBucket || record.normalizedLevel || record.level));
     return normalizeDifficulty(value);
   }
 
@@ -647,7 +648,10 @@
 
   function getDifficultySummary(records) {
     const summary = { 하: 0, 중: 0, 상: 0, 미분류: 0 };
-    for (const record of Array.isArray(records) ? records : []) summary[getDifficultyBucket(record)] += 1;
+    for (const record of Array.isArray(records) ? records : []) {
+      const bucket = getDifficultyBucket(record);
+      summary[bucket] = (summary[bucket] || 0) + 1;
+    }
     return summary;
   }
 
@@ -679,6 +683,7 @@
     const scopeKey = metaFoundationTuple(record, META_FOUNDATION_SCOPE_FIELDS);
     const owned = runtimeOwnedRecord || Boolean(authority && authority.active && authority.ownedScopes.has(scopeKey));
     if (!owned) return { owned: false, valid: true, reason: 'NOT_OWNED' };
+    if (!getProblemTypeKey(record) && !getTemplateKey(record)) return { owned: true, valid: true, reason: 'BASIC_L1_L2_ONLY' };
     if (!authority || !authority.active) return { owned: true, valid: false, reason: 'RUNTIME_UNAVAILABLE' };
     const taxonomyKey = metaFoundationTuple(record, META_FOUNDATION_TAXONOMY_FIELDS);
     const valid = authority.taxonomyRows.has(taxonomyKey);
@@ -703,7 +708,16 @@
   }
 
   function isAutomaticSelectable(record) {
-    return isDefaultSelectable(record) && isTaxonomySelectable(record);
+    const projected = archive2Core.projectBasicEligibility(record || {});
+    if (archive2Core.basicHardReasons(projected).length || ["HOLD", "ROUTE_OUT", "route_out"].includes(projected.semanticDisposition) ||
+        ["HOLD", "reviewed_hold", "manual_review", "route_out"].includes(projected.reviewStatus)) return false;
+    if (projected.basicScopeDefaultSelectable === false ||
+        projected.curriculumApplicability && projected.curriculumApplicability !== 'DEFAULT_SCOPE') return false;
+    if (projected.runtimeSelectable === false || projected.basicEligibilityStatus === 'BLOCKED') return false;
+    if (projected.runtimeSelectable === true && projected.basicEligibilityStatus === 'PASS') return true;
+    if (record && record.identityStatus !== undefined) return archive2Core.basicEligibility(record).ok;
+    return projected.basicScopeDefaultSelectable !== false &&
+      (projected.curriculumApplicability === 'DEFAULT_SCOPE' || isDefaultSelectable(projected));
   }
 
   function getSubUnitOptions(records) {
@@ -713,7 +727,8 @@
       const label = getSubUnitLabel(record) || '미분류 소단원';
       const group = groups.get(key) || { key, label, count: 0, difficulty: { 하: 0, 중: 0, 상: 0, 미분류: 0 } };
       group.count += 1;
-      group.difficulty[getDifficultyBucket(record)] += 1;
+      const bucket = getDifficultyBucket(record);
+      group.difficulty[bucket] = (group.difficulty[bucket] || 0) + 1;
       groups.set(key, group);
     }
     return [...groups.values()].sort((a, b) => b.count - a.count || compareText(a.label, b.label));
@@ -732,10 +747,10 @@
       const templateKey = getTemplateKey(record);
       const difficulty = getDifficultyBucket(record);
       if (subUnitKeys.size && !subUnitKeys.has(subUnitKey)) return false;
-      if (problemTypeKeys.size && !problemTypeKeys.has(problemTypeKey)) return false;
-      if (templateKeys.size && !templateKeys.has(templateKey)) return false;
+      if (problemTypeKeys.size && (record.l3CapabilityValid === false || !problemTypeKeys.has(problemTypeKey))) return false;
+      if (templateKeys.size && (record.l4CapabilityValid === false || !templateKeys.has(templateKey))) return false;
       if (difficultyBuckets.size && !difficultyBuckets.has(difficulty)) return false;
-      if (filters.includeUnclassified !== true && (subUnitKey === '__unclassified__' || difficulty === '미분류')) return false;
+      if (filters.includeUnclassified !== true && subUnitKey === '__unclassified__') return false;
       return true;
     });
   }

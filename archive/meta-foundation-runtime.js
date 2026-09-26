@@ -163,10 +163,16 @@
         rawQuestionHash: base.rawQuestionHash,
         approvedSourceFingerprint: base.approvedSourceFingerprint,
         gradeConflict: base.gradeConflict,
+        basicTaxonomyStatus: overlay.basicTaxonomyStatus || base.basicTaxonomyStatus || base.taxonomyStatus,
+        sourceIssueHold: base.sourceIssueHold === true || overlay.sourceIssueHold === true,
         taxonomyStatus: overlay.metaFoundationPackId === "H1_FOUNDATION"
           ? (overlay.taxonomyStatus || base.taxonomyStatus || "CONFIRMED")
           : "CONFIRMED",
         metadataConflicts: [],
+        advancedMetadataConflicts: [...new Set([...(base.advancedMetadataConflicts || []),
+          ...(base.metadataConflicts || []).filter(field => ["difficultyBucket", "difficultyConfidence",
+            "difficultyBoundaryFlag", "legacyLevelCompatibility", "problemTypeKey", "templateKey",
+            "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomy"].includes(field))])],
         reviewStatus: overlay.reviewStatus || "reviewed_pass"
       };
     });
@@ -180,6 +186,7 @@
         sourceFile: seed.sourceFile || overlay.sourceArchiveFile,
         sourceOrdinal: Number(seed.sourceOrdinal || overlay.sourceOrdinal),
         sourceQuestionNo: seed.sourceQuestionNo || overlay.sourceQuestionNo,
+        basicTaxonomyStatus: overlay.basicTaxonomyStatus || seed.basicTaxonomyStatus || seed.taxonomyStatus,
         taxonomyStatus: overlay.metaFoundationPackId === "H1_FOUNDATION"
           ? (overlay.taxonomyStatus || seed.taxonomyStatus || "CONFIRMED")
           : "CONFIRMED",
@@ -195,12 +202,22 @@
     const next = {
       ...catalog,
       records: nextRecords,
-      taxonomy: legacyTaxonomy.concat(runtime.taxonomyRows || []),
+      taxonomy: legacyTaxonomy.concat(runtime.taxonomyRows || [], nextRecords
+        .filter(record => record.basicTaxonomyStatus === "CONFIRMED" &&
+          !window.Archive2Core.capabilities(record).l3)
+        .map(record => ({ curriculumKey: record.curriculumKey, courseKey: record.courseKey,
+          L1: record.L1, L2: record.L2, L3: "", L4: "",
+          curriculumApplicability: record.curriculumApplicability, defaultSelectable: record.defaultSelectable }))),
       indexVersion: String(catalog.indexVersion || "") + ":mf:" + runtime.runtimeVersion,
       metaFoundationRuntimeVersion: runtime.runtimeVersion,
       metaFoundationPackId: runtime.packId,
       metaFoundationPackVersion: runtime.packVersion
     };
+    next.records = next.records.map(record => {
+      const automatic = window.Archive2Core.basicEligibility(record).ok;
+      return { ...record, automatic, ...(automatic && record.defaultSelectable === false
+        ? { defaultSelectable: true, legacyDefaultSelectable: false } : {}) };
+    });
     if (next.health && window.Archive2Core && typeof window.Archive2Core.eligibility === "function") {
       next.health = {
         ...next.health,
@@ -250,7 +267,7 @@
         return true;
       });
     };
-    const records = packs.flatMap(pack => pack.records || []);
+    const records = packs.flatMap(pack => (pack.records || []).map(record => window.Archive2Core.projectBasicEligibility(record)));
     const taxonomyRows = uniqueRows(
       packs.flatMap(pack => pack.taxonomyRows || []),
       ["curriculumKey","courseKey","L1","L2","problemTypeKey","templateKey"]

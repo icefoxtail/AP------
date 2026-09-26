@@ -27,11 +27,11 @@ assert.strictEqual(runtime.counts.finalL3, 921);
 assert.strictEqual(runtime.counts.finalL4, 901);
 assert.strictEqual(runtime.counts.explicitL4Hold, 20);
 assert.strictEqual(runtime.counts.routeOut, 7);
-assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, 3536);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, 3536);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, 3536);
+assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, 5087);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, 5087);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, 5087);
 assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, 928);
-assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 8);
+assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 10);
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 928);
 assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, 928);
 assert.strictEqual(runtime.records.filter((row) => row.metaFoundationL3Status === "FINAL").length, 921);
@@ -69,7 +69,7 @@ for (const row of runtime.records) {
     } else {
       assert.strictEqual(row.metaFoundationL4Status, "EXPLICIT_HOLD");
       assert.strictEqual(row.templateKey, null);
-      assert.strictEqual(row.defaultSelectable, false);
+      assert.strictEqual(row.defaultSelectable, true); // L4 absence is an advanced diagnostic.
     }
   }
   for (const key of row.crossConceptKeys || []) assert(activeConcepts.has(key), key);
@@ -130,8 +130,9 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
   assert.strictEqual(new Set(joined.map((row) => sourceKey(row.sourceFile, row.sourceOrdinal))).size, 928);
   const explicitHold = joined.find((row) => row.metaFoundationL4Status === "EXPLICIT_HOLD");
   assert(explicitHold);
-  assert.strictEqual(explicitHold.defaultSelectable, false);
-  assert.strictEqual(explicitHold.reviewStatus, "manual_review");
+  assert.strictEqual(explicitHold.defaultSelectable, true);
+  assert.strictEqual(explicitHold.reviewStatus, "reviewed_pass");
+  assert.strictEqual(Archive2Core.eligibility(explicitHold).ok, runtime.records.find(r => r.questionUid === explicitHold.questionUid).runtimeSelectable);
   const routeOut = joined.find((row) => row.metaFoundationL3Status === "ROUTE_OUT");
   assert(routeOut);
   assert.strictEqual(routeOut.problemTypeKey, null);

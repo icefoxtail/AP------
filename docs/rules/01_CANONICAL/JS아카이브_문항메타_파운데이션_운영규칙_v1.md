@@ -1679,7 +1679,7 @@ JS 생성
 
 핵심 invariant:
 
-> Production JS는 모든 taxonomy·CrossConcept·Condition key와 L2↔L3 binding이 현재 canonical registry에서 유효한 경우에만 입고할 수 있다.
+> Production JS에 존재하는 taxonomy·CrossConcept·Condition key와 해당 L2↔L3 binding은 canonical registry에서 검증한다. optional key의 부재는 입고/BASIC 출제 결함이 아니며 §24의 공통 계약을 따른다.
 
 ---
 
@@ -1874,3 +1874,21 @@ canonical Ownership Lock
 # 23. 한 줄 운영 정의
 
 > JS는 문항에 실제 적용된 canonical metadata value의 source of truth이고, Meta Foundation은 Pack/Shard 단위로 L3/L4/CrossConcept/Condition/alias/curriculum-binding 정의를 소유한다. 전체 Compiled Foundation은 ACTIVE Pack/Shard에서 기계 생성하는 read-only 파생본이며, 미등록 key는 production에 들어갈 수 없다.
+
+---
+
+# 24. 전 학년 공통 Inclusive Basic Eligibility — 2026-09-26 ACTIVE
+
+사용자의 2026-09-26 명시 계약 및 Notion 「Archive2 전 학년 공통 Inclusive Basic Eligibility HARD RULE」을 적용한다. 중1·중2·중3·고1·고2·고3 및 모든 과목/Pack에 공통이며, 위 문서의 legacy completeness 표현과 충돌하면 본 절을 우선한다.
+
+`BASIC_SELECTABLE = 정상 identity/source + source/solution 실제 HARD defect 없음 + explicit semantic HOLD/ROUTE_OUT 없음 + canonical L1/L2 및 parent 정합 + 기본 curriculum scope`.
+
+- difficultyBucket, confidence, boundary, legacy compatibility는 BASIC 필수조건이 아니다. 없음/UNKNOWN/BORDERLINE_REVIEW/STRONG_CONFLICT는 난이도 capability 진단이다. 난이도 없는 문항에 숫자를 생성하지 않는다.
+- L3/problemTypeKey, L4/templateKey, RPM leaf/path/migration/binding, CrossConcept, Condition, IntegrationPattern은 optional capability다. 없는 사실 자체는 BASIC block이 아니다.
+- 값이 존재하면 ACTIVE canonical registry/parent/binding을 검증한다. 유효하지 않은 advanced 값은 해당 capability/filter에서 제외하고 진단을 보존한다. metadata promotion validator의 key validation과 BASIC 출제 gate를 혼동하지 않는다.
+- L1/L2만 선택하거나 전체 난이도를 선택하면 모든 BASIC 후보를 포함한다. 명시 난이도 3은 실제 bucket 3만, 명시 L3/L4는 검증된 해당 capability만 선택한다.
+- SOURCE_BLOCKED, SOLUTION_REPAIR_REQUIRED, source drift/identity defect, independent semantic HOLD, ROUTE_OUT, L1/L2 부재·parent mismatch 및 scope 밖 문항은 계속 차단한다.
+- advanced HOLD를 semanticDisposition/reviewStatus HOLD 또는 defaultSelectable=false로 전파하지 않는다. 알려진 과거 generated advanced-only 상태 오염은 근거가 있는 경우에만 공통 projector로 이관하고 원래 진단을 보존한다. unknown/free-text HARD hold는 자동 해제하지 않는다.
+- 공통 구현 정본은 `archive/archive2-core.js`의 `basicEligibility`, `capabilities`, `capabilityMatch`, `projectBasicEligibility`다. grade materializer/compiler/catalog/UI는 별도 BASIC 계약을 만들지 않는다.
+- production 재생성은 `archive/tools/meta-foundation/rebuild-basic-eligibility.mjs --write/--check` 및 catalog builder로 수행한다. source JS, canonical 정의, difficulty/L3/L4/RPM 값의 생성·재분류를 포함하지 않는다.
+- 회귀 정본: `tests/archive2-inclusive-basic.test.cjs`, `tests/archive2-production-basic.test.cjs`. 실제 loader/catalog join, BASIC parity와 source 복원을 함께 검증한다.

@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import core from '../../archive2-core.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -299,8 +300,9 @@ function main() {
             L3: result.L3,
             L4: result.L4,
             secondaryConceptKeys: result.secondaryConceptKeys,
-            curriculumApplicability: taxonomyEntry?.curriculumApplicability || 'UNKNOWN',
-            defaultSelectable: taxonomyEntry?.defaultSelectable ?? false,
+            curriculumApplicability: (taxonomyEntry || parentEntry)?.curriculumApplicability || 'UNKNOWN',
+            defaultSelectable: (taxonomyEntry || parentEntry)?.defaultSelectable ?? false,
+            advancedCapabilityStatus: !taxonomyEntry || finalBucket === 'UNKNOWN' ? 'INCOMPLETE' : 'AVAILABLE',
             difficultyBucket: result.difficultyBucket,
             difficultyConfidence: result.difficultyConfidence,
             difficultyBoundaryFlag: result.difficultyBoundaryFlag,
@@ -461,7 +463,13 @@ function main() {
         const finalPath = recheck && recheck.status === 'RESOLVED' ? recheck.recheckPath : { L1: record.L1, L2: record.L2, L3: record.L3, L4: record.L4 };
         const finalCompatibility = recheck && recheck.status === 'RESOLVED' ? recheck.legacyLevelCompatibilityAfter : compare.legacyLevelCompatibility;
         const taxonomyEntry = pathMap.get(finalPath.L2 + '|' + finalPath.L3 + '|' + finalPath.L4);
-        const hold = !taxonomyEntry || finalBucket === 'UNKNOWN' || !source.solutionPresent;
+        const parentEntry = [...pathMap.values()].find(row => row.L2 === finalPath.L2);
+        const hold = !core.basicEligibility({ questionUid:source.questionUid,
+            identityStatus:'VERIFIED',sourceStatus:source.solutionPresent?'VERIFIED':'HOLD',
+            basicTaxonomyStatus:parentEntry?'CONFIRMED':'UNKNOWN',
+            curriculumKey:target.curriculum,courseKey:source.courseKey,L1:finalPath.L1,L2:finalPath.L2,
+            curriculumApplicability:parentEntry?.curriculumApplicability,defaultSelectable:parentEntry?.defaultSelectable
+        }).ok;
         return {
             questionUid: source.questionUid,
             sourceArchiveFile: source.sourceArchiveFile,
@@ -475,8 +483,9 @@ function main() {
             L3: finalPath.L3,
             L4: finalPath.L4,
             secondaryConceptKeys: record.secondaryConceptKeys,
-            curriculumApplicability: taxonomyEntry?.curriculumApplicability || 'UNKNOWN',
-            defaultSelectable: taxonomyEntry?.defaultSelectable ?? false,
+            curriculumApplicability: (taxonomyEntry || parentEntry)?.curriculumApplicability || 'UNKNOWN',
+            defaultSelectable: (taxonomyEntry || parentEntry)?.defaultSelectable ?? false,
+            advancedCapabilityStatus: !taxonomyEntry || finalBucket === 'UNKNOWN' ? 'INCOMPLETE' : 'AVAILABLE',
             difficultyBucket: finalBucket,
             difficultyConfidence: recheck?.recheckConfidence || record.difficultyConfidence,
             difficultyBoundaryFlag: record.difficultyBoundaryFlag,
@@ -532,7 +541,7 @@ function main() {
             difficultyBoundaryFlag: record.difficultyBoundaryFlag,
             legacyLevelCompatibility: record.legacyLevelCompatibility,
             reviewStatus: record.reviewStatus,
-            reason: record.reviewStatus === 'HOLD' ? 'explicit hold; canonical path/difficulty evidence incomplete' : 'recheck or compatibility evidence retained'
+            reason: record.reviewStatus === 'HOLD' ? 'basic L1/L2 or solution defect' : 'recheck or compatibility evidence retained'
         }))
     });
     const invalidTaxonomyPathCount = candidates.filter(record => !pathMap.has(record.L2 + '|' + record.L3 + '|' + record.L4)).length;

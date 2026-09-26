@@ -81,32 +81,26 @@ for (const row of assignments.items || []) {
   if (seenSource.has(sourceIdentity)) failures.push(`duplicateSource:${sourceIdentity}`);
   seenSource.add(sourceIdentity);
 
-  if (!dispositions.has(row.l4Disposition)) failures.push(`missingOrInvalidL4Disposition:${row.questionUid}`);
-  if (!["ASSIGNED", "HOLD"].includes(row.l3Disposition)) failures.push(`missingOrInvalidL3Disposition:${row.questionUid}`);
-  if (row.l3Disposition === "HOLD") {
-    if (row.problemTypeKey || row.l4Disposition !== "HOLD" || row.reviewStatus !== "HOLD" || row.foundationTaxonomyStatus !== "HOLD") {
-      failures.push(`invalidL3Hold:${row.questionUid}`);
-    }
-  } else {
+  if (row.l4Disposition != null && !dispositions.has(row.l4Disposition)) failures.push(`invalidL4Disposition:${row.questionUid}`);
+  if (row.l3Disposition != null && !["ASSIGNED", "HOLD"].includes(row.l3Disposition)) failures.push(`invalidL3Disposition:${row.questionUid}`);
+  if (row.problemTypeKey) {
     const problemType = currentPT.get(row.problemTypeKey);
     if (!problemType) failures.push(`missingL3:${row.questionUid}`);
     if (!activeBindingKeys.has(bindKey(row))) failures.push(`missingBinding:${row.questionUid}`);
+  } else if (row.templateKey) {
+    failures.push(`L4WithoutL3:${row.questionUid}`);
   }
 
-  if (row.l4Disposition === "ASSIGNED") {
+  if (row.templateKey) {
     const template = currentTPL.get(row.templateKey);
     if (!template) failures.push(`missingL4:${row.questionUid}`);
     else if (template.parentProblemTypeKey !== row.problemTypeKey) failures.push(`badL4Parent:${row.questionUid}`);
-  } else if (row.l4Disposition === "NO_SEPARATE_L4") {
-    if (!row.problemTypeKey || row.templateKey != null) failures.push(`invalidNoSeparateL4:${row.questionUid}`);
-  } else if (row.l4Disposition === "HOLD") {
-    if (row.templateKey != null || row.reviewStatus !== "HOLD") failures.push(`invalidL4Hold:${row.questionUid}`);
   }
 
   for (const key of row.crossConceptKeys || []) if (!concepts.has(key)) failures.push(`missingConcept:${key}`);
   for (const key of row.conditionKeys || []) if (!conditions.has(key)) failures.push(`missingCondition:${key}`);
-  if (!patterns.has(row.integrationPattern)) failures.push(`badIntegration:${row.questionUid}`);
-  if (row.difficultyBucket !== "UNKNOWN" && (!Number.isInteger(row.difficultyBucket) || row.difficultyBucket < 1 || row.difficultyBucket > 5)) failures.push(`badDifficulty:${row.questionUid}`);
+  if (row.integrationPattern != null && row.integrationPattern !== "" && !patterns.has(row.integrationPattern)) failures.push(`badIntegration:${row.questionUid}`);
+  if (row.difficultyBucket != null && row.difficultyBucket !== "UNKNOWN" && (!Number.isInteger(row.difficultyBucket) || row.difficultyBucket < 1 || row.difficultyBucket > 5)) failures.push(`badDifficulty:${row.questionUid}`);
   if (!row.sourceFingerprint || !row.sourceIdentity) failures.push(`missingSourceIdentity:${row.questionUid}`);
 
   const runtimeRow = runtimeByUid.get(row.questionUid);

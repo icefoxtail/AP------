@@ -126,6 +126,9 @@
           "metadataRevision",
         ]) {
           if (
+            ["curriculumKey", "courseKey", "L1", "L2", "curriculumApplicability"].includes(field) &&
+            !(field === "courseKey" && question[field] === record.legacyCourseKey) &&
+            !(field === "curriculumApplicability" && question[field] === "UNKNOWN" && record.advancedHoldReasons?.includes("LEGACY_L4_FOUNDATION_GAP")) &&
             question[field] !== undefined &&
             question[field] !== null &&
             String(question[field]).trim() !== "" &&

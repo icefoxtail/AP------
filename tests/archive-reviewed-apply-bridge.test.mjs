@@ -7,6 +7,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { validatePacketEnvelope } from "../archive/tools/meta-foundation/reviewed-apply-core.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePath = "original/middle/m2/2mid/24_fixture_middle2.js";
@@ -350,6 +351,8 @@ function regenerateFixtureCatalog(fixture) {
     sourceQuestionNo: String(row.sourceOrdinal),
     questionUid: row.questionUid,
     identityStatus: "VERIFIED",
+    sourceStatus: "VERIFIED",
+    taxonomyStatus: "CONFIRMED",
     sourceFingerprint: row.sourceFingerprint,
     approvedSourceFingerprint: row.sourceFingerprint,
     rawQuestionHash: `updated-${row.sourceOrdinal}`,
@@ -625,4 +628,33 @@ test("T18 R2 production asset copy has a main-only automatic push trigger", () =
   const workflow = fs.readFileSync(path.join(projectRoot, ".github/workflows/r2-archive-assets-copy.yml"), "utf8");
   assert.match(workflow, /workflow_dispatch:\s*\n\s*push:\s*\n\s*branches:\s*\[main\]/);
   assert.match(workflow, /archive\/assets\/images\/\*\*/);
+});
+
+test("T19 reviewed repair accepts absent L3/L4 and UNKNOWN difficulty and remains BASIC selectable", (t) => {
+  const f = fixtureRoot(t);
+  const staged = createStaging(f, { applyId: "fixture-inclusive-basic-019" });
+  const repair = staged.packet.metaPatches.find(row => row.questionUid === q1Uid);
+  repair.after.problemTypeKey = null;
+  repair.after.templateKey = null;
+  repair.before.difficultyBucket = 2;
+  repair.after.difficultyBucket = "UNKNOWN";
+  writePacket(f, staged.packet);
+  runCli(f.root, cli.patch, ["--packet", staged.packetPath, "--write"]);
+  regenerateFixtureCatalog(f);
+  runCli(f.root, cli.runtime, ["--packet", staged.packetPath, "--write"]);
+  const row = readJson(f.root, "archive/data/meta-foundation/runtime/test-pack-v1.json").records.find(row => row.questionUid === q1Uid);
+  assert.equal(row.problemTypeKey, null);
+  assert.equal(row.templateKey, null);
+  assert.equal(row.difficultyBucket, "UNKNOWN");
+  assert.equal(row.runtimeSelectable, true);
+  runCli(f.root, cli.runtime, ["--packet", staged.packetPath, "--check"]);
+});
+
+test("T20 REPAIR envelope needs only L1/L2 and does not require optional capability fields", (t) => {
+  const f = fixtureRoot(t);
+  const packet = makePacket(f);
+  const repair = packet.metaPatches.find(row => row.questionUid === q1Uid);
+  repair.before = { standardUnitKey: "M2-01", subUnitKey: "M2-01-EXPRESSION" };
+  repair.after = { ...repair.before };
+  assert.doesNotThrow(() => validatePacketEnvelope(packet));
 });

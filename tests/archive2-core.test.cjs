@@ -32,13 +32,10 @@ const request = (rows) => ({
   seed: "teacher-test",
 });
 
-test("canonical approval gates distinguish UNKNOWN, HOLD, extended candidate and pending recheck", () => {
+test("BASIC ignores optional difficulty and retains identity, source, semantic and scope blocks", () => {
   assert.ok(base && core.eligibility(base).ok);
   for (const change of [
-    { difficultyBucket: "중" },
-    { difficultyBucket: "UNKNOWN" },
     { reviewStatus: "HOLD" },
-    { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
     {
       curriculumApplicability: "RPM_EXTENDED_CANDIDATE",
       defaultSelectable: false,
@@ -47,6 +44,10 @@ test("canonical approval gates distinguish UNKNOWN, HOLD, extended candidate and
     { sourceStatus: "HOLD" },
   ])
     assert.equal(core.eligibility({ ...base, ...change }).ok, false);
+  for (const change of [{ difficultyBucket: undefined }, { difficultyBucket: "UNKNOWN" },
+    { legacyLevelCompatibility: "BORDERLINE_REVIEW" }, { difficultyConfidence: undefined },
+    { difficultyBoundaryFlag: undefined }, { legacyLevelCompatibility: undefined }])
+    assert.equal(core.eligibility({ ...base, ...change }).ok, true);
 });
 test("pin and rebuild retain pins and student/series exclusion; no silent shortage relaxation", () => {
   const pool = Array.from({ length: 20 }, (_, i) => record(i + 1));

@@ -245,7 +245,7 @@ gate("sourceFingerprintMismatchOnlyExplicitHolds", sourceRecoveryExplicitFingerp
 
 const packedCatalog = readJson("archive/data/archive2-catalog.json");
 const catalog = core.decodeCatalog(packedCatalog);
-const vmWindow = {};
+const vmWindow = { Archive2Core: core };
 const fetchArchiveAsset = async (url) => {
   const parsed = new URL(String(url));
   const prefix = "/archive/";
@@ -339,7 +339,8 @@ gate("archive2H1DirectJoin", h1CatalogRows.length === 1170 && joinedSourceMismat
 gate("archive2H1FilterTaxonomy", h1TaxonomyRows.length > 0 && h1CatalogRows.some((row) => row.curriculumKey && row.courseKey && row.standardUnitKey && row.subUnitKey));
 gate("archive2H1SelectableCount", h1EligibleRows.length === runtime.counts.runtimeSelectable);
 gate("explicitHoldNotSelectable", heldButSelectable === 0);
-gate("unknownDifficultyNotSelectable", unknownButSelectable === 0);
+gate("unknownDifficultyBasicParity", h1CatalogRows.filter(row => row.difficultyBucket === "UNKNOWN").every(row =>
+  core.basicEligibility(row).ok === core.basicEligibility({ ...row, difficultyBucket: 3, difficultyConfidence: "high", difficultyBoundaryFlag: "NONE", legacyLevelCompatibility: "NORMAL" }).ok));
 gate("sourceHoldNotSelectable", sourceHeldButSelectable === 0);
 gate("existingPackRuntimeRegression", existingPackBridgeRegressionRows.length === 0);
 

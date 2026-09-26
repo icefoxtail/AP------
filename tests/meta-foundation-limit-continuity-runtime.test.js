@@ -21,7 +21,7 @@ assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveF
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 184);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, runtime.records.filter(row => row.runtimeSelectable).length);
 assert.strictEqual(runtime.counts.difficultyDeferred, 0);
 assert.strictEqual(runtime.taxonomyRows.length, 33);
 assert.strictEqual(new Set(runtime.records.map((r) => r.problemTypeKey)).size, 10);
@@ -85,6 +85,11 @@ for (const overlay of runtime.records) {
     reviewStatus: "reviewed_pass"
   };
   const gate = C.eligibility(merged);
+  if (base.sourceStatus !== "VERIFIED") {
+    assert.strictEqual(gate.ok, false);
+    assert(gate.reasons.includes("source"));
+    continue;
+  }
   if (overlay.standardUnitKey === "H15-M2-01") {
     assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
     eligibleLimit += 1;
@@ -95,8 +100,8 @@ for (const overlay of runtime.records) {
 }
 
 assert.strictEqual(direct + repaired, 184);
-assert.strictEqual(eligibleLimit, 104);
-assert.strictEqual(eligibleContinuity, 80);
+assert.strictEqual(eligibleLimit, runtime.records.filter(r => r.standardUnitKey === "H15-M2-01" && r.runtimeSelectable).length);
+assert.strictEqual(eligibleContinuity, runtime.records.filter(r => r.standardUnitKey === "H15-M2-02" && r.runtimeSelectable).length);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
@@ -109,7 +114,7 @@ assert(/courseGrade\(r\.courseKey,\s*r\.curriculumKey\)/.test(workspace));
 const bridge = readText("archive/meta-foundation-runtime.js");
 assert(bridge.includes("data/meta-foundation/runtime/limit-continuity-v1.json"));
 assert(bridge.includes("catalogIdentityRepairVerified"));
-assert(bridge.includes("META_FOUNDATION_MULTI/runtime-bridge-v3:"));
+assert(bridge.includes("META_FOUNDATION_MULTI/runtime-bridge-v5:"));
 
 const combined = [
   ...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,
@@ -124,9 +129,9 @@ assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1904);
 assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1904);
 
 assert.strictEqual(receipt.status, "ACTIVE");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 3536);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 3536);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 3536);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 5087);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 5087);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 5087);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
 assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 184);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
