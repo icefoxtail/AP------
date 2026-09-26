@@ -25,7 +25,7 @@ window.questionBank = [
       "내부의 한 점에서 각 꼭짓점에 선분을 그었을 때 생기는 삼각형의 개수는 $8$개다."
     ],
     "answer": "①, ⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①, ⑤이다.",
+    "solution": "조건 (가), (나), (다)를 만족하는 도형은 정팔각형이다.\n\n정팔각형의 대각선의 개수는\n\n$\\dfrac{8(8-3)}2=20$\n\n이므로 ①은 옳다.\n\n한 외각은 $360^\\circ\\div8=45^\\circ$, 내각의 합은 $(8-2)\\times180^\\circ=1080^\\circ$, 한 꼭짓점에서 그을 수 있는 대각선은 $8-3=5$개이다.\n\n또 내부의 한 점과 8개의 꼭짓점을 이으면 삼각형은 8개 생긴다.\n\n따라서 옳은 것은 ①, ⑤이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -55,7 +55,7 @@ window.questionBank = [
       "$20^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "아래쪽 한 점에서 $85^\\circ$와 $x$는 한 직선 위의 이웃한 각이다.\n\n$x=180^\\circ-85^\\circ=95^\\circ$\n\n위쪽 한 점에서 $95^\\circ$와 $y$도 한 직선 위의 이웃한 각이다.\n\n$y=180^\\circ-95^\\circ=85^\\circ$\n\n따라서\n\n$x-y=95^\\circ-85^\\circ=10^\\circ$\n\n이므로 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q2.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -86,7 +86,7 @@ window.questionBank = [
       "$20^\\circ$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "별 모양의 다섯 꼭짓점 각의 합은 $180^\\circ$이다.\n\n따라서\n\n$30^\\circ+40^\\circ+40^\\circ+40^\\circ+z=180^\\circ$\n\n$z=30^\\circ$\n\n오른쪽의 삼각형에서 교차점의 안쪽 각은 $180^\\circ-x$이고 다른 각은 $y$, 꼭짓점 각은 $40^\\circ$이다.\n\n$(180^\\circ-x)+y+40^\\circ=180^\\circ$\n\n$x-y=40^\\circ$\n\n따라서\n\n$x-y-z=40^\\circ-30^\\circ=10^\\circ$\n\n이므로 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q3.png",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
@@ -117,7 +117,7 @@ window.questionBank = [
       "한 원에서 두 반지름과 호로 이루어진 도형을 활꼴이라 한다."
     ],
     "answer": "①, ③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ①, ③이다.",
+    "solution": "① 반원은 두 반지름과 호로 이루어진 부채꼴이면서, 지름인 현과 호로 이루어진 활꼴이기도 하므로 옳다.\n\n② 원 위의 두 점을 이은 선분이 현이다. 직선이라고 한 것은 옳지 않다.\n\n③ 한 원의 현 중 가장 긴 현은 지름이므로 옳다.\n\n④ 중심각은 두 반지름이 이루는 각이다.\n\n⑤ 두 반지름과 호로 이루어진 도형은 활꼴이 아니라 부채꼴이다.\n\n따라서 옳은 것은 ①, ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -145,7 +145,7 @@ window.questionBank = [
       "$14\\pi\\rm\\,cm$"
     ],
     "answer": "②",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "부채꼴의 넓이를 $S$, 반지름을 $r$, 호의 길이를 $l$이라 하면\n\n$S=\\dfrac12rl$\n\n이다.\n\n$20\\pi=\\dfrac12\\times5\\times l$\n\n$l=8\\pi$\n\n따라서 호의 길이는 $8\\pi\\rm\\,cm$이므로 정답은 ②이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
@@ -175,7 +175,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "세 호의 길이의 비가 $1:3:5$이므로 대응하는 중심각의 비도 $1:3:5$이다.\n\n전체가 $360^\\circ$이므로 한 비의 크기는\n\n$360^\\circ\\div9=40^\\circ$\n\n이다. 따라서 $\\angle AOB=40^\\circ$, $\\angle BOC=120^\\circ$이다.\n\nㄱ. 호의 길이의 비가 $1:3$이라고 현의 길이도 $1:3$인 것은 아니므로 거짓이다.\n\nㄴ. $\\angle BOC=120^\\circ$이므로 거짓이다.\n\nㄷ. $\\wideparen{BC}:\\wideparen{CPA}=3:5$이므로 $6:x=3:5$, 따라서 $x=10\\rm\\,cm$로 참이다.\n\nㄹ. 반지름이 $6\\rm\\,cm$이면 부채꼴 $AOB$의 넓이는\n\n$\\pi\\times6^2\\times\\dfrac{40}{360}=4\\pi\\rm\\,cm^2$\n\n이므로 참이다.\n\n따라서 ㄷ, ㄹ이 옳아 정답은 ②이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
@@ -205,12 +205,13 @@ window.questionBank = [
       "$14\\pi\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "직사각형이 한 바퀴 구르는 동안 꼭짓점 $A$는 각 꼭짓점을 중심으로 $90^\\circ$짜리 원호를 차례로 그린다.\n\n그때 $A$에서 회전 중심까지의 거리는 $6\\rm\\,cm$, $10\\rm\\,cm$, $8\\rm\\,cm$이다.\n\n따라서 이동 거리는\n\n$\\dfrac14(2\\pi\\times6)+\\dfrac14(2\\pi\\times10)+\\dfrac14(2\\pi\\times8)$\n\n$=3\\pi+5\\pi+4\\pi$\n\n$=12\\pi\\rm\\,cm$\n\n이다. 따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q7.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -236,7 +237,7 @@ window.questionBank = [
       "$(32-8\\pi)\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "색칠한 부분의 둘레를 직선 부분과 원호 부분으로 나누어 더한다.\n\n그림에서 직선으로 된 경계의 길이를 모두 모으면 정사각형의 네 변의 길이와 같으므로\n\n$4\\times4=16\\rm\\,cm$\n\n이다.\n\n원호로 된 경계를 같은 반지름의 원호끼리 모아 한 바퀴 길이로 정리하면 모두\n\n$8\\pi\\rm\\,cm$\n\n이다.\n\n따라서 둘레는\n\n$16+8\\pi\\rm\\,cm$\n\n이므로 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q8.png",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
@@ -265,7 +266,7 @@ window.questionBank = [
       "정사면체는 합동인 정사각형으로 이루어져 있다."
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "각 설명을 정의와 비교한다.\n\n육각뿔대는 면이 $6+2=8$개이므로 팔면체이다.\n정다면체는 5종류이고, 구를 평면으로 자른 단면은 원이며, 각뿔대의 두 밑면은 서로 평행하다.\n\n정사면체의 네 면은 합동인 정삼각형이다. 정사각형으로 이루어진 것이 아니다.\n\n따라서 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -289,7 +290,7 @@ window.questionBank = [
     "content": "다음 평면도형들을 1회전 시켜 얻어진 회전체 중에서 그 전개도가 보기와 같은 것은? [3점]",
     "choices": [],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "보기의 전개도에는 크기가 다른 두 원과 고리 모양의 부채꼴이 있다.\n\n크기가 다른 두 원은 두 밑면이고, 고리 모양의 부채꼴은 옆면이므로 이 전개도는 원뿔대의 전개도이다.\n\n평면도형을 한 번 회전시켰을 때 원뿔대가 되는 모양을 고르면 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q10.png",
     "imageSize": "tall",
     "subUnitKey": "M1-07-SOLID_FIGURE",
@@ -319,7 +320,7 @@ window.questionBank = [
       "$54$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "육각뿔대는 위 밑면에 꼭짓점 6개, 아래 밑면에 꼭짓점 6개가 있으므로\n\n$a=12$\n\n이다.\n\n정십이면체의 모서리의 개수는 $30$개이므로\n\n$b=30$\n\n이다.\n\n따라서\n\n$a+b=12+30=42$\n\n이므로 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -349,7 +350,7 @@ window.questionBank = [
       "$81\\pi\\rm\\,cm^2$"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "원뿔의 밑면의 둘레는\n\n$2\\pi\\times3=6\\pi\\rm\\,cm$\n\n이다.\n\n원뿔이 꼭짓점 $O$를 중심으로 한 바퀴 도는 동안 밑면의 원은 한 번 굴러야 하므로, 원래 자리로 돌아올 때까지 두 번 굴렀다는 조건에서 이동한 원주의 길이는\n\n$2\\times6\\pi=12\\pi\\rm\\,cm$\n\n이다.\n\n이 길이는 모선의 길이를 반지름으로 하는 원의 둘레이므로\n\n$2\\pi l=12\\pi$\n\n$l=6\\rm\\,cm$\n\n이다.\n\n옆면에 칠한 페인트가 지나간 부분은 반지름 $6\\rm\\,cm$인 원이므로 넓이는\n\n$\\pi\\times6^2=36\\pi\\rm\\,cm^2$\n\n이다. 따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q12.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
@@ -380,7 +381,7 @@ window.questionBank = [
       "$56\\pi\\rm\\,cm^3$"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "회전축에 수직인 단면이 반지름 $3\\rm\\,cm$인 원이고, 회전축을 포함하는 단면이 가로 $6\\rm\\,cm$, 세로 $8\\rm\\,cm$인 직사각형이다.\n\n따라서 회전체는 밑면의 반지름이 $3\\rm\\,cm$, 높이가 $8\\rm\\,cm$인 원기둥이다.\n\n부피는\n\n$\\pi\\times3^2\\times8=72\\pi\\rm\\,cm^3$\n\n이다. 따라서 정답은 ①이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q13.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
@@ -411,7 +412,7 @@ window.questionBank = [
       "$162\\pi\\rm\\,cm^2$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "반지름이 $6\\rm\\,cm$인 구 전체의 겉넓이는\n\n$4\\pi\\times6^2=144\\pi\\rm\\,cm^2$\n\n이다.\n\n구면은 전체의 $\\dfrac18$을 잘라냈으므로 $\\dfrac78$이 남아\n\n$144\\pi\\times\\dfrac78=126\\pi$\n\n이다.\n\n잘라서 새로 생긴 세 평면은 각각 반지름 $6\\rm\\,cm$인 원의 $\\dfrac14$이므로 넓이의 합은\n\n$3\\times\\dfrac14\\pi\\times6^2=27\\pi$\n\n이다.\n\n따라서 겉넓이는\n\n$126\\pi+27\\pi=153\\pi\\rm\\,cm^2$\n\n이므로 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q14.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
@@ -442,7 +443,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "두 그릇에는 같은 양의 물이 들어 있으므로 물이 차지하는 부피가 같다.\n\n그림의 $6\\rm\\,cm$, $4\\rm\\,cm$에 의해 생기는 공통 단면을 기준으로 두 물의 부피를 같은 삼각기둥 단위로 나누어 비교하면 공통 인자가 약분되어\n\n$7=3x$\n\n가 된다.\n\n따라서\n\n$x=\\dfrac73$\n\n이므로 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q15.png",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
@@ -473,12 +474,13 @@ window.questionBank = [
       "$48\\pi\\rm\\,cm^2$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "그림의 입체는 반지름 $3\\rm\\,cm$, 높이 $6\\rm\\,cm$, 중심각 $240^\\circ$인 원기둥의 일부이다.\n\n위아래 두 부채꼴의 넓이의 합은\n\n$2\\times\\pi\\times3^2\\times\\dfrac{240}{360}=12\\pi$\n\n이다.\n\n곡면의 넓이는\n\n$2\\pi\\times3\\times\\dfrac{240}{360}\\times6=24\\pi$\n\n이다.\n\n두 직사각형 면의 넓이의 합은\n\n$2\\times3\\times6=36$\n\n이다.\n\n따라서 겉넓이는\n\n$12\\pi+24\\pi+36=36\\pi+36\\rm\\,cm^2$\n\n이므로 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q16.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution.svg"
   },
   {
     "id": 17,
@@ -505,7 +507,7 @@ window.questionBank = [
       "$24$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "자료를 작은 수부터 정리하면\n\n$24,25,25,27,29,30,32,33,33,36,38,41,42,42,47,47,48,49,53,56$\n\n이다.\n\n줄기와 잎 그림의 빈칸을 이 순서와 비교하면\n\n$a=5,\\quad b=8,\\quad c=7$\n\n이다.\n\n따라서\n\n$a+b+c=5+8+7=20$\n\n이므로 정답은 ①이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -535,7 +537,7 @@ window.questionBank = [
       "$38$살"
     ],
     "answer": "③",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "자료의 개수는 $20$개이므로 중앙값은 작은 수부터 나열했을 때 10번째와 11번째 값의 평균이다.\n\n10번째 값은 $36$, 11번째 값은 $38$이다.\n\n따라서 중앙값은\n\n$\\dfrac{36+38}{2}=37$\n\n이므로 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -565,7 +567,7 @@ window.questionBank = [
       "시장에 머문 시간이 $30$분 미만은 사람은 전체의 $34\\%$이다."
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "① 계급은 $0$~$10$, $10$~$20$, $20$~$30$, $30$~$40$, $40$~$50$의 5개이므로 옳다.\n\n② 계급의 크기는 $10$분이다.\n\n③ 가장 작은 도수는 $3$명이다.\n\n④ 가장 큰 도수 $16$명은 $10$분 이상 $20$분 미만 계급이다.\n\n⑤ $30$분 미만인 사람은\n\n$3+16+15=34$명\n\n이고, 전체 $50$명 중 차지하는 비율은\n\n$\\dfrac{34}{50}\\times100=68\\%$\n\n이다. $34\\%$가 아니다.\n\n따라서 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -595,7 +597,7 @@ window.questionBank = [
       "$16$명"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "계급값이 $18.5$초인 계급의 도수를 $a$명이라 하자.\n\n전체 학생 수는 $10a$명이다.\n\n조건에 따라 계급값이 $17.5$초인 계급의 도수는 $a+2$명이다.\n\n그래프에서 나머지 계급의 도수를 모두 더하면 $30$명이므로\n\n$10a=30+(a+2)+a$\n\n$8a=32$\n\n$a=4$\n\n이다.\n\n$18$초 이상인 학생은 계급값 $18.5$, $19.5$, $20.5$초인 계급에 속한다. 그래프의 도수를 더하면\n\n$4+2+1=7$명\n\n이다. 따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q20.png",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
@@ -620,7 +622,7 @@ window.questionBank = [
     "content": "[서·논술형 1] 한 꼭짓점에서 그을 수 있는 대각선의 개수가 $a$이고, 이 대각선에 의해 만들어지는 삼각형의 개수가 $b$인 다각형이 있다. $a+b=35$일 때, 이 다각형의 내각의 크기의 합을 구하고, 그 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$3240^\\circ$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 $3240^\\circ$이다.",
+    "solution": "다각형의 변의 개수를 $n$이라 하자.\n\n한 꼭짓점에서 그을 수 있는 대각선의 개수는\n\n$a=n-3$\n\n이고, 이 대각선들로 만들어지는 삼각형의 개수는\n\n$b=n-2$\n\n이다.\n\n$a+b=35$이므로\n\n$(n-3)+(n-2)=35$\n\n$2n-5=35$\n\n$n=20$\n\n이다.\n\n따라서 내각의 크기의 합은\n\n$(20-2)\\times180^\\circ=3240^\\circ$\n\n이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
@@ -645,12 +647,13 @@ window.questionBank = [
     "content": "[서·논술형 2] 다음 그림과 같이 원 $O$의 지름 $\\overline{AB}$의 연장선과 현 $\\overline{CD}$의 연장선의 교점을 $P$라 하자. $\\overline{DO}=\\overline{DP}$, $\\angle AOC=48^\\circ$, $\\wideparen{AC}=12\\rm\\,cm$일 때, $\\wideparen{BD}$와 $\\wideparen{CD}$의 길이를 각각 구하고, 그 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$4\\rm\\,cm,\\ 29\\rm\\,cm$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $4\\rm\\,cm,\\ 29\\rm\\,cm$이다.",
+    "solution": "$\\wideparen{AC}=12\\rm\\,cm$가 중심각 $48^\\circ$에 대응한다.\n\n따라서 원의 둘레를 $C$라 하면\n\n$12=C\\times\\dfrac{48}{360}$\n\n$C=90\\rm\\,cm$\n\n이다.\n\n$\\angle DOP=\\theta$라 하자. $DO=DP$이므로 $\\triangle ODP$는 이등변삼각형이고\n\n$\\angle DOP=\\angle OPD=\\theta$\n\n이다. 따라서 $\\angle ODP=180^\\circ-2\\theta$이다.\n\n$C,D,P$가 한 직선 위에 있으므로 $\\angle CDO=2\\theta$이고, $OC=OD$이므로 $\\angle OCD=2\\theta$이다.\n\n따라서\n\n$\\angle COD=180^\\circ-4\\theta$\n\n이다.\n\n지름 $AB$에서 $\\angle COB=180^\\circ-48^\\circ=132^\\circ$이고\n\n$132^\\circ=(180^\\circ-4\\theta)+\\theta$\n\n이므로 $\\theta=16^\\circ$이다.\n\n따라서 $\\wideparen{BD}$는 중심각 $16^\\circ$에 대응하므로\n\n$90\\times\\dfrac{16}{360}=4\\rm\\,cm$\n\n이다.\n\n또 $\\angle COD=180^\\circ-64^\\circ=116^\\circ$이므로\n\n$\\wideparen{CD}=90\\times\\dfrac{116}{360}=29\\rm\\,cm$\n\n이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q22.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -671,10 +674,11 @@ window.questionBank = [
     "content": "[서·논술형 3]\n<div class=\"question-note-box\">고대 그리스의 수학자 아르키메데스(Archimedes)는 자신의 묘비에 원기둥에 꼭 맞게 들어간 구의 모양을 새겨 달라고 부탁했다고 전해진다.<br>(출처: Plutarch, 『Plutarch's Lives, Vol V』)</div>\n다음 그림과 같이 원기둥에 꼭 맞는 구와 원뿔이 있다. 다음 물음에 답하시오. [8점]\n<img src=\"assets/images/25_연향중_2학기_기말_중1_기출/q23.png\">\n(1) 위 원기둥의 밑면의 반지름의 길이를 $r$이라 할 때, 원뿔, 구, 원기둥의 부피를 각각 구하시오. [6점]\n(단, 각각의 답은 곱셈과 나눗셈의 기호를 생략하여 가장 간단한 식으로 구할 것!)\n(2) 원뿔, 구, 원기둥의 부피의 비를 가장 간단한 자연수의 비로 구하고, 그 과정을 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac23\\pi r^3$, $\\dfrac43\\pi r^3$, $2\\pi r^3$ (2) $1:2:3$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $\\dfrac23\\pi r^3$, $\\dfrac43\\pi r^3$, $2\\pi r^3$ (2) $1:2:3$이다.",
+    "solution": "원기둥에 구가 꼭 맞게 들어 있으므로 원기둥의 높이는 구의 지름과 같은 $2r$이다. 원뿔도 같은 밑면과 높이를 가진다.\n\n(1) 원뿔의 부피는\n\n$\\dfrac13\\pi r^2\\times2r=\\dfrac23\\pi r^3$\n\n구의 부피는\n\n$\\dfrac43\\pi r^3$\n\n원기둥의 부피는\n\n$\\pi r^2\\times2r=2\\pi r^3$\n\n이다.\n\n(2) 세 부피의 공통인 $\\dfrac23\\pi r^3$을 기준으로 나누면\n\n$\\dfrac23\\pi r^3: \\dfrac43\\pi r^3:2\\pi r^3=1:2:3$\n\n이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution.svg"
   }
 ];
