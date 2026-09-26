@@ -49,7 +49,8 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - **Meta/L3/L4 작업은 RPM Primary v1.0을 선조회한다.** `01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `LOCKED` semantic path reference authority이며, 신규 L3/L4·HOLD를 판정하기 전에 `README.md` → `00_POLICY/CANONICAL_MASTER.json` → 대상 curriculum/scope view를 확인한다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지한다.
 - L3/L4/CrossConcept/Condition/alias/curriculum binding의 **production machine-key 정의·승격·검증 authority**는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md` + `archive/data/meta-foundation/canonical/`이다.
-- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → ACTIVE PT/TPL + curriculum binding → reuse/migration 판단 → 둘 다 없을 때만 신규 taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding만 빠진 경우는 `RPM_PRIMARY_MIGRATION_GAP`이며 새 수학 유형 부재로 보지 않는다.
+- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/migration 판단 → 둘 다 없을 때만 신규 taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding만 빠진 경우는 `RPM_PRIMARY_MIGRATION_GAP`이며 새 수학 유형 부재로 보지 않는다.
+- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서만 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP` / `RPM_ONLY`는 반복 전역검색이나 임의 신규 key 생성 없이 `RPM_PRIMARY_MIGRATION_GAP`으로 처리한다. crosswalk 이후에는 **current ACTIVE의 관련 row/binding만 targeted validation**하며, 관련 canonical/binding drift가 없으면 이미 계산된 mapping을 다시 전역 조사하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
 - L3/L4/CrossConcept semantic assignment의 FINAL authority는 **decision-isolated input bundle + item-level semantic evidence + deterministic validator**의 결합으로만 생성한다.
@@ -70,13 +71,14 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 5. `01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md`
 6. **`01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md`**
 7. **`01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json` + 대상 curriculum/scope view**
-8. `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
-9. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
-10. `02_PIPELINES/문제해설추출.md`
-11. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
-12. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-13. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-14. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+8. **`../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`의 정확한 학년/과목 crosswalk JSON**
+9. `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
+10. `02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md`
+11. `02_PIPELINES/문제해설추출.md`
+12. 필요 시 `02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md` 또는 `02_PIPELINES/JS_변환_프롬프트.md`
+13. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+14. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+15. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
 
 ### 기존 JS 해설 업그레이드
 
@@ -127,6 +129,7 @@ Meta Foundation은 RPM semantic taxonomy reference와 production machine-key can
 
 - **선조회 semantic taxonomy:** `01_CANONICAL/taxonomy/rpm-primary-v1.0/` — `LOCKED` RPM Primary L1~L4 reference. 신규 L3/L4 또는 HOLD 판정 전에 반드시 해당 curriculum/scope를 먼저 확인한다.
 - **RPM 전체 master:** `01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json`
+- **RPM→ACTIVE deterministic crosswalk:** `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/` — RPM path 확정 직후 exact 학년/과목 파일을 조회하는 재탐색 방지 reference. production authority 자체는 아니며 current ACTIVE 관련 row/binding으로 targeted validation한다.
 - 운영규칙 정본: `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
 - 실제 Meta Foundation production machine-key 정본: `../../archive/data/meta-foundation/canonical/`
 - RPM path가 있는데 ACTIVE `problemTypeKey/templateKey` 또는 binding이 없는 상태는 **migration gap**이다. 기존 RPM 의미를 무시하고 임의 신규 key를 만들거나 `META_PACK_GAP_HOLD`로 닫지 않는다.

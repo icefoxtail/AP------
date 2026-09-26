@@ -1,0 +1,2226 @@
+{
+  "schemaVersion": "rpm-primary-active-crosswalk-v1",
+  "status": "ACTIVE_REFERENCE",
+  "grade": "H2",
+  "subjectFamily": "MATH1_ALGEBRA",
+  "generatedAgainstMain": "81168fa87970567ce8ee3df12efbe5b7a43ca3cb",
+  "rpmAuthority": {
+    "version": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "status": "LOCKED",
+    "source": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+  },
+  "activeAuthority": {
+    "source": "archive/data/meta-foundation/canonical/",
+    "packs": [
+      "FUNCTIONS_GRAPHS"
+    ]
+  },
+  "policy": {
+    "purpose": "2015 수학I + 2022 대수 RPM semantic path를 현재 ACTIVE production machine key로 번역하는 deterministic reference",
+    "doesNotCreateCanonicalKeys": true,
+    "DIRECT_ACTIVE": "mapped PT/TPL과 exact binding이 ACTIVE.",
+    "FAMILY_ACTIVE": "mapped PT와 exact binding이 ACTIVE; listed template 중 decisive step과 맞는 1개 선택.",
+    "DIRECT_BINDING_GAP": "PT/TPL은 ACTIVE지만 exact curriculum+L1+L2 binding이 없음. RPM_PRIMARY_MIGRATION_GAP.",
+    "FAMILY_BINDING_GAP": "PT는 ACTIVE지만 exact binding이 없고 listed template 중 decisive step으로 선택. RPM_PRIMARY_MIGRATION_GAP.",
+    "RPM_ONLY": "현재 ACTIVE에 안전한 대응 machine key가 확정되지 않음. 억지 매핑 금지.",
+    "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
+  },
+  "summary": {
+    "recordCount": 132,
+    "DIRECT_ACTIVE": 0,
+    "FAMILY_ACTIVE": 0,
+    "DIRECT_BINDING_GAP": 24,
+    "FAMILY_BINDING_GAP": 4,
+    "RPM_ONLY": 104,
+    "byScope": {
+      "수학I": {
+        "DIRECT_ACTIVE": 0,
+        "FAMILY_ACTIVE": 0,
+        "DIRECT_BINDING_GAP": 12,
+        "FAMILY_BINDING_GAP": 2,
+        "RPM_ONLY": 52
+      },
+      "대수": {
+        "DIRECT_ACTIVE": 0,
+        "FAMILY_ACTIVE": 0,
+        "DIRECT_BINDING_GAP": 12,
+        "FAMILY_BINDING_GAP": 2,
+        "RPM_ONLY": 52
+      }
+    }
+  },
+  "records": [
+    {
+      "id": "H2-M1-RPM-001",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "거듭제곱근",
+        "l4": "n제곱근"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-002",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "거듭제곱근",
+        "l4": "실수 조건"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-003",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수의 확장",
+        "l4": "유리수 지수"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-004",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수의 확장",
+        "l4": "실수 지수"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-005",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "지수식 계산"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-006",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "조건식"
+      },
+      "standardUnitKey": "H15-M1-01",
+      "subUnitKey": "H15-M1-01-EXPONENT",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-007",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 뜻",
+        "l4": "로그와 지수 관계"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-008",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 뜻",
+        "l4": "밑과 진수 조건"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-009",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-010",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 성질",
+        "l4": "밑의 변환"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-011",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "상용로그",
+        "l4": "상용로그표·자릿수"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-012",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "상용로그",
+        "l4": "소수점 위치"
+      },
+      "standardUnitKey": "H15-M1-02",
+      "subUnitKey": "H15-M1-02-LOGARITHM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-013",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 그래프",
+        "l4": "증가·감소"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-014",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 그래프",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-015",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "밑 통일"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-016",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-017",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수부등식",
+        "l4": "밑의 범위에 따른 부등호"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-018",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수부등식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-019",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+          "templateLabelKo": "매개변수 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+          "templateLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+        }
+      ],
+      "selectionRule": "정의역 끝점/매개변수 모델/계수범위 중 final solution decisive step에 맞는 listed template 선택",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-020",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "standardUnitKey": "H15-M1-03",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-021",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 그래프",
+        "l4": "증가·감소"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-022",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 그래프",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-023",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그방정식",
+        "l4": "진수 조건"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-024",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그방정식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-025",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-026",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-027",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+          "templateLabelKo": "매개변수 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+          "templateLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+        }
+      ],
+      "selectionRule": "정의역 끝점/매개변수 모델/계수범위 중 final solution decisive step에 맞는 listed template 선택",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-028",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "standardUnitKey": "H15-M1-04",
+      "subUnitKey": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-029",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "일반각과 호도법",
+        "l4": "일반각"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-030",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "일반각과 호도법",
+        "l4": "호도법"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-031",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 뜻",
+        "l4": "단위원"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-032",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 뜻",
+        "l4": "삼각함수 값"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-033",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 성질",
+        "l4": "주기·대칭"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-034",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 성질",
+        "l4": "삼각함수 관계"
+      },
+      "standardUnitKey": "H15-M1-05",
+      "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-035",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각방정식·부등식",
+        "l4": "그래프를 이용한 해"
+      },
+      "standardUnitKey": "H15-M1-07",
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-036",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각방정식·부등식",
+        "l4": "주기 구간의 해"
+      },
+      "standardUnitKey": "H15-M1-07",
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-037",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "기본 그래프",
+        "l4": "sin·cos"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-038",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "기본 그래프",
+        "l4": "tan"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-039",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 변환",
+        "l4": "주기·진폭"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-040",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 변환",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-041",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 활용",
+        "l4": "교점"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-042",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H15-M1-06",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-043",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "사인법칙",
+        "l4": "외접원 반지름"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-044",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "사인법칙",
+        "l4": "변·각 계산"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-045",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "코사인법칙",
+        "l4": "변·각 계산"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-046",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "코사인법칙",
+        "l4": "삼각형 판정"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-047",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "삼각형의 넓이",
+        "l4": "두 변과 끼인각"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-048",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "삼각형의 넓이",
+        "l4": "복합도형"
+      },
+      "standardUnitKey": null,
+      "subUnitKey": null,
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-049",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "일반항"
+      },
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-050",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "중항"
+      },
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-051",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "합"
+      },
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-052",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "일반항"
+      },
+      "standardUnitKey": "H15-M1-09",
+      "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-053",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "중항"
+      },
+      "standardUnitKey": "H15-M1-09",
+      "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-054",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "합"
+      },
+      "standardUnitKey": "H15-M1-09",
+      "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-055",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "수열의 활용",
+        "l4": "조건으로 수열 결정"
+      },
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-056",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "수열의 활용",
+        "l4": "귀납적 패턴"
+      },
+      "standardUnitKey": "H15-M1-08",
+      "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-057",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "합의 기호 Σ",
+        "l4": "Σ 계산"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-058",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "합의 기호 Σ",
+        "l4": "성질"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-059",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "여러 가지 수열의 합",
+        "l4": "자연수 거듭제곱의 합"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-060",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "여러 가지 수열의 합",
+        "l4": "부분분수·망원급수형"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-061",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "계차수열",
+        "l4": "계차수열"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-062",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "계차수열",
+        "l4": "일반항 구하기"
+      },
+      "standardUnitKey": "H15-M1-10",
+      "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-063",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수열의 귀납적 정의",
+        "l4": "점화식으로 항 구하기"
+      },
+      "standardUnitKey": "H15-M1-11",
+      "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-064",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수열의 귀납적 정의",
+        "l4": "관계 추론"
+      },
+      "standardUnitKey": "H15-M1-11",
+      "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-065",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수학적 귀납법",
+        "l4": "등식 증명"
+      },
+      "standardUnitKey": "H15-M1-11",
+      "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-066",
+      "curriculum": "2015",
+      "scope": "수학I",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수학적 귀납법",
+        "l4": "부등식·나눗셈 증명"
+      },
+      "standardUnitKey": "H15-M1-11",
+      "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-067",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "거듭제곱근",
+        "l4": "n제곱근"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-068",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "거듭제곱근",
+        "l4": "실수 조건"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-069",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수의 확장",
+        "l4": "유리수 지수"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-070",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수의 확장",
+        "l4": "실수 지수"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-071",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "지수식 계산"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-072",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수",
+        "l3": "지수법칙",
+        "l4": "조건식"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-073",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 뜻",
+        "l4": "로그와 지수 관계"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-074",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 뜻",
+        "l4": "밑과 진수 조건"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-075",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 성질",
+        "l4": "곱·몫·거듭제곱"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-076",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "로그의 성질",
+        "l4": "밑의 변환"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-077",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "상용로그",
+        "l4": "상용로그표·자릿수"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-078",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그",
+        "l3": "상용로그",
+        "l4": "소수점 위치"
+      },
+      "standardUnitKey": "H22-A-01",
+      "subUnitKey": "H22-A-01-EXPONENT_LOG",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-079",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 그래프",
+        "l4": "증가·감소"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-080",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 그래프",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-081",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "밑 통일"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-082",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수방정식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-083",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수부등식",
+        "l4": "밑의 범위에 따른 부등호"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-084",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수부등식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-085",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+          "templateLabelKo": "매개변수 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+          "templateLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+        }
+      ],
+      "selectionRule": "정의역 끝점/매개변수 모델/계수범위 중 final solution decisive step에 맞는 listed template 선택",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-086",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "지수함수",
+        "l3": "지수함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "standardUnitKey": "H22-A-02",
+      "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-087",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 그래프",
+        "l4": "증가·감소"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-088",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 그래프",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-089",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그방정식",
+        "l4": "진수 조건"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-090",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그방정식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-091",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "정의역·밑 조건"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-092",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그부등식",
+        "l4": "치환"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-093",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+          "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+          "templateLabelKo": "매개변수 함수의 최댓값·최솟값"
+        },
+        {
+          "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+          "templateLabelKo": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+        }
+      ],
+      "selectionRule": "정의역 끝점/매개변수 모델/계수범위 중 final solution decisive step에 맞는 listed template 선택",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-094",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "지수함수와 로그함수",
+        "midUnit": "로그함수",
+        "l3": "로그함수의 활용",
+        "l4": "그래프 교점"
+      },
+      "standardUnitKey": "H22-A-03",
+      "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-095",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "일반각과 호도법",
+        "l4": "일반각"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-096",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "일반각과 호도법",
+        "l4": "호도법"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-097",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 뜻",
+        "l4": "단위원"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-098",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 뜻",
+        "l4": "삼각함수 값"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-099",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 성질",
+        "l4": "주기·대칭"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-100",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각함수의 성질",
+        "l4": "삼각함수 관계"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-101",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각방정식·부등식",
+        "l4": "그래프를 이용한 해"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-102",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수",
+        "l3": "삼각방정식·부등식",
+        "l4": "주기 구간의 해"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-103",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "기본 그래프",
+        "l4": "sin·cos"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-104",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "기본 그래프",
+        "l4": "tan"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-105",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 변환",
+        "l4": "주기·진폭"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-106",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 변환",
+        "l4": "평행이동"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-107",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 활용",
+        "l4": "교점"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "problemTypeLabelKo": "함수 그래프의 교점",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "templateLabelKo": "두 함수 그래프의 교점",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-108",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 그래프",
+        "l3": "그래프 활용",
+        "l4": "최대·최소"
+      },
+      "standardUnitKey": "H22-A-04",
+      "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "problemTypeLabelKo": "함수의 최댓값·최솟값",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "templateLabelKo": "구간 끝점과 함수의 최댓값·최솟값",
+      "bindingStatus": "MISSING"
+    },
+    {
+      "id": "H2-M1-RPM-109",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "사인법칙",
+        "l4": "외접원 반지름"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-110",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "사인법칙",
+        "l4": "변·각 계산"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-111",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "코사인법칙",
+        "l4": "변·각 계산"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-112",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "코사인법칙",
+        "l4": "삼각형 판정"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-113",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "삼각형의 넓이",
+        "l4": "두 변과 끼인각"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-114",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "삼각함수",
+        "midUnit": "삼각함수의 활용",
+        "l3": "삼각형의 넓이",
+        "l4": "복합도형"
+      },
+      "standardUnitKey": "H22-A-05",
+      "subUnitKey": "H22-A-05-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-115",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "일반항"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-116",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "중항"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-117",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등차수열",
+        "l4": "합"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-118",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "일반항"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-119",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "중항"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-120",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "등비수열",
+        "l4": "합"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-121",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "수열의 활용",
+        "l4": "조건으로 수열 결정"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-122",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "등차수열과 등비수열",
+        "l3": "수열의 활용",
+        "l4": "귀납적 패턴"
+      },
+      "standardUnitKey": "H22-A-06",
+      "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-123",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "합의 기호 Σ",
+        "l4": "Σ 계산"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-124",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "합의 기호 Σ",
+        "l4": "성질"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-125",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "여러 가지 수열의 합",
+        "l4": "자연수 거듭제곱의 합"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-126",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "여러 가지 수열의 합",
+        "l4": "부분분수·망원급수형"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-127",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "계차수열",
+        "l4": "계차수열"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-128",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수열의 합",
+        "l3": "계차수열",
+        "l4": "일반항 구하기"
+      },
+      "standardUnitKey": "H22-A-07",
+      "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-129",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수열의 귀납적 정의",
+        "l4": "점화식으로 항 구하기"
+      },
+      "standardUnitKey": "H22-A-08",
+      "subUnitKey": "H22-A-08-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-130",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수열의 귀납적 정의",
+        "l4": "관계 추론"
+      },
+      "standardUnitKey": "H22-A-08",
+      "subUnitKey": "H22-A-08-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-131",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수학적 귀납법",
+        "l4": "등식 증명"
+      },
+      "standardUnitKey": "H22-A-08",
+      "subUnitKey": "H22-A-08-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    },
+    {
+      "id": "H2-M1-RPM-132",
+      "curriculum": "2022",
+      "scope": "대수",
+      "rpmPath": {
+        "majorUnit": "수열",
+        "midUnit": "수학적 귀납법",
+        "l3": "수학적 귀납법",
+        "l4": "부등식·나눗셈 증명"
+      },
+      "standardUnitKey": "H22-A-08",
+      "subUnitKey": "H22-A-08-CORE",
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
+    }
+  ]
+}

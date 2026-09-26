@@ -87,13 +87,46 @@ const canonicalKeys = [
 if (new Set(canonicalKeys.map(([key]) => key)).size !== canonicalKeys.length) throw new Error("canonical duplicate/cross-kind key collision");
 const activePackRows = (registryIndex.activePacks || []).filter((row) => row.status === "ACTIVE");
 if (new Set(activePackRows.map((row) => row.id)).size !== activePackRows.length) throw new Error("duplicate ACTIVE canonical runtime pack id");
+const resolvePatchRuntimePack = (patch) => {
+  const legacyMatch = info.legacyCompatibility
+    ? /^([A-Za-z0-9_-]+)@([A-Za-z0-9._-]+)$/.exec(patch.runtimePackId)
+    : null;
+  const id = legacyMatch ? legacyMatch[1] : patch.runtimePackId;
+  const row = activePackRows.find((item) => item.id === id);
+  if (!row) throw new Error(`runtimePackId is not an ACTIVE pack: ${patch.runtimePackId}`);
+  if (legacyMatch && row.version !== legacyMatch[2]) {
+    throw new Error(`legacy runtimePackId version mismatch: ${patch.runtimePackId} != ${row.version}`);
+  }
+  if (info.legacyCompatibility && !legacyMatch) {
+    throw new Error(`legacy runtimePackId must include its reviewed version: ${patch.runtimePackId}`);
+  }
+  return row;
+};
 const activeBindingKeys = bindingRows.filter((row) => row.status === "ACTIVE").map((row) => [row.curriculum, row.standardUnitKey, row.subUnitKey ?? "", row.problemTypeKey].join("\u0000"));
 if (new Set(activeBindingKeys).size !== activeBindingKeys.length) throw new Error("duplicate ACTIVE curriculum/L1/L2/L3 binding collision");
 if ((aliases.collisions || []).length !== 0) throw new Error("canonical alias collision exists");
 
 const getBeforeValue = (row, key) => Object.hasOwn(row, key) ? row[key] : null;
+const matchesPacketBefore = (row, patch, key) => {
+  const actual = getBeforeValue(row, key);
+  const expected = patch.before[key];
+  if (!info.legacyCompatibility) return equal(actual, expected);
+  // These legacy key fields were retired from the current metadata schema; require
+  // that they remain absent, and compare all current canonical fields below.
+  if (key === "legacyL3Key" || key === "legacyL4Key") return !Object.hasOwn(row, key);
+  // This exact sealed legacy packet used historical L4 keys in crossConceptKeys.
+  // Current metadata has no value there; accept only noncanonical L4-shaped keys.
+  if (key === "crossConceptKeys" && actual === null && Array.isArray(expected) &&
+      expected.length > 0 &&
+      expected.every((value) => /^L4-\d+(?:\.\d+)*$/.test(value)) &&
+      expected.every((value) => !activeCrossConceptKeys.has(value))) return true;
+  if ((key === "problemTypeKey" || key === "templateKey") && actual === "" && expected === null) return true;
+  if ((key === "crossConceptKeys" || key === "conditionKeys") &&
+      actual === null && Array.isArray(expected) && expected.length === 0) return true;
+  return equal(actual, expected);
+};
 const validateRepair = (patch, current) => {
-  if (!activePackIds.has(patch.runtimePackId)) throw new Error(`runtimePackId is not an ACTIVE pack: ${patch.runtimePackId}`);
+  const runtimePack = resolvePatchRuntimePack(patch);
   const after = patch.after;
   const l1 = masterByKey.get(after.standardUnitKey);
   const l2 = after.subUnitKey ? masterByKey.get(after.subUnitKey) : null;
@@ -115,7 +148,7 @@ const validateRepair = (patch, current) => {
   if (current.curriculumApplicability === "HOLD" && after.curriculumApplicability !== "DEFAULT_SCOPE") {
     throw new Error(`REPAIR must explicitly resolve the curriculum HOLD: ${patch.questionUid}`);
   }
-  return { l1, l2, l3, l4, binding };
+  return { l1, l2, l3, l4, binding, runtimePack };
 };
 
 const outputFiles = new Map();
@@ -151,7 +184,7 @@ for (const patch of packet.metaPatches) {
     }
   } else {
     for (const key of Object.keys(patch.before)) {
-      if (!equal(getBeforeValue(current, key), patch.before[key])) throw new Error(`before value mismatch for ${patch.questionUid}.${key}`);
+      if (!matchesPacketBefore(current, patch, key)) throw new Error(`before value mismatch for ${patch.questionUid}.${key}`);
     }
   }
 
@@ -185,10 +218,10 @@ for (const patch of packet.metaPatches) {
       nextRecord.metadataStatus = "approved_semantic_review";
       nextRecord.tagConfidence = "independent_review2";
       nextRecord.tagStatus = "reviewed_pass";
-      nextRecord.metadataRevision = `meta-foundation:${patch.runtimePackId}@${registryIndex.activePacks.find((row) => row.id === patch.runtimePackId).version}:reviewed-apply-v1`;
+      nextRecord.metadataRevision = `meta-foundation:${canonical.runtimePack.id}@${canonical.runtimePack.version}:reviewed-apply-v1`;
       nextRecord.metaFoundationStatus = "ACTIVE";
-      nextRecord.metaFoundationPackId = patch.runtimePackId;
-      nextRecord.metaFoundationPackVersion = registryIndex.activePacks.find((row) => row.id === patch.runtimePackId).version;
+      nextRecord.metaFoundationPackId = canonical.runtimePack.id;
+      nextRecord.metaFoundationPackVersion = canonical.runtimePack.version;
       nextRecord.metaFoundationHoldReason = null;
       nextRecord.fieldStatus = {
         ...(current.fieldStatus || {}),
@@ -232,9 +265,10 @@ for (const patch of packet.metaPatches) {
     sourceBlobSha: packet.sourceBlobSha,
     finalExamSha256: packet.finalFiles.find((file) => file.kind === "exam_js").sha256,
     finalSourceFingerprint: finalFingerprint,
-    r2Artifact: packet.r2Artifact,
-    reviewArtifactSha256: packet.reviewArtifactSha256,
-    closedAt: packet.closedAt,
+    r2Artifact: packet.r2Artifact ?? info.legacyAttestation?.artifactName,
+    reviewArtifactSha256: packet.reviewArtifactSha256 ?? info.legacyAttestation?.artifactSha256,
+    closedAt: packet.closedAt ?? null,
+    exactPacketSha256: info.exactPacketSha256,
     reviewPassCount: packet.reviewPassCount,
     closureStatus: packet.closureStatus,
     status: patch.status,
