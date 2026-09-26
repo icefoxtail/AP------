@@ -39,5 +39,34 @@
   "rpm2015M2_2RhsRhaBeforeRepair": 0,
   "rpm2022M2_2RhsRhaBeforeRepair": 2,
   "activeProblemTypeCount": 244,
-  "activeTemplateCount": 655
+  "activeTemplateCount": 655,
+  "repairedRpmL4RecordCount": 468,
+  "repairedOmissionCount": 2,
+  "repairedIdsPendingCrosswalkRegeneration": [
+    "M2-RPM-TBD-RHS",
+    "M2-RPM-TBD-RHA"
+  ],
+  "masterRecordCountAfterRepair": 222,
+  "crosswalkRecordsBeforeRegeneration": {
+    "middle1": 232,
+    "middle2": 234,
+    "expectedMiddle1": 232,
+    "expectedMiddle2": 236
+  },
+  "viewParityAfterRepair": {
+    "viewsRead": 8,
+    "viewsPass": 8,
+    "mismatches": 0
+  },
+  "matrixParityAfterRepair": {
+    "rpmL1L2": "PASS",
+    "l1L4": "PASS",
+    "rpmPackageManifest": "38/38 PASS",
+    "rootRulesManifestMasterHash": "PASS"
+  },
+  "rhsRhaEvidencePath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json",
+  "rhsRhaEvidenceSha256": "ff512f9565cc3e118ee311c92945192bd2005dc0b3b3d79743a28d916a4e463c",
+  "previousCheckpointCommitSha": "b1390e04adf3b23d98d60de4f09865d798a40b33",
+  "activeGlobalPackCount": 10,
+  "masterSha256AfterRepair": "5783a2fec07af03463780b1d594d8b768424f4521b790b6341d4bd79d69890a1"
 }
