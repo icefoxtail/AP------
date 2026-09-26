@@ -21,7 +21,7 @@ window.questionBank = [
     "imageSize": "tall",
     "choices": [],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "[키포인트] 다면체는 다각형인 면으로만 둘러싸인 입체도형이다.\n그림의 ①~④는 모든 면이 다각형으로 이루어진 다면체이다.\n⑤는 위아래가 원이고 옆면이 굽은 면인 원뿔대이므로 다면체가 아니다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -52,7 +52,7 @@ window.questionBank = [
       "높이는 두 밑면에 수직인 선분의 길이이다."
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "[키포인트] 각뿔대를 이루는 면의 개수와 밑면의 모양을 확인한다.\n그림은 오각뿔을 밑면에 평행한 평면으로 잘라 만든 오각뿔대이다.\n두 밑면은 오각형이고, 옆면은 $5$개의 사다리꼴이므로 전체 면의 수는\n$2+5=7$개이다.\n따라서 이 입체도형은 오면체가 아니라 칠면체이므로 옳지 않은 것은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -83,9 +83,9 @@ window.questionBank = [
       "$15$개"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-    "subUnit": "입체도형의 측정",
+    "solution": "[키포인트] 전개도를 접었을 때 어떤 입체도형이 되는지 먼저 판단한다.\n가운데 정사각형에 삼각형 $4$개가 붙어 있으므로 접으면 사각뿔이 된다.\n사각뿔의 꼭짓점은 밑면의 $4$개와 꼭짓점 $1$개를 합하여 $5$개이고,\n모서리는 밑면 $4$개와 옆모서리 $4$개를 합하여 $8$개이다.\n따라서 모서리와 꼭짓점의 개수의 합은\n$8+5=13$개이다.\n정답은 ③이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -114,7 +114,7 @@ window.questionBank = [
       "(마) $\\pi r^2+2\\pi r\\times h\\,(\\mathrm{cm}^2)$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "원기둥의 전개도를 기준으로 빈칸을 확인하자.\n\n(가)는 겉넓이를 한눈에 볼 수 있는 전개도이다.\n두 밑면은 서로 합동인 원이므로 (나)는 합동이다.\n옆면을 펼치면 직사각형이므로 (다)는 직사각형이다.\n펼쳐진 옆면의 가로 길이는 밑면의 둘레인 $2\\pi r$이므로 (라)는 밑면의 둘레이다.\n\n원기둥의 겉넓이는 두 밑면과 옆면의 넓이의 합이므로\n$2\\pi r^2+2\\pi rh$이다.\n(마)의 $\\pi r^2+2\\pi rh$는 밑면 하나의 넓이가 빠졌으므로 옳지 않다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
@@ -146,11 +146,12 @@ window.questionBank = [
       "$192\\pi\\rm\\,cm^2$"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "회전축에 수직인 단면이 반지름 $4\\rm\\,cm$인 원이고, 회전축을 포함하는 단면이 가로 $8\\rm\\,cm$, 세로 $10\\rm\\,cm$인 직사각형이므로 회전체는 반지름 $4\\rm\\,cm$, 높이 $10\\rm\\,cm$인 원기둥이다.\n\n두 밑면의 넓이는\n$2\\times\\pi\\times4^2=32\\pi$\n이고, 옆넓이는\n$2\\pi\\times4\\times10=80\\pi$\n이다.\n\n따라서 겉넓이는\n$32\\pi+80\\pi=112\\pi\\rm\\,cm^2$이다.\n정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -178,7 +179,7 @@ window.questionBank = [
       "$288\\pi\\rm\\,cm^3$"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "실험에서 밑면과 높이가 같은 원뿔의 모래를 원기둥에 $3$번 채우면 가득 찬다.\n따라서 원뿔의 부피는 같은 밑면과 높이를 가진 원기둥 부피의 $\\dfrac13$이다.\n\n원기둥의 반지름은 $4\\rm\\,cm$, 높이는 $6\\rm\\,cm$이므로\n$V_{\\text{원기둥}}=\\pi\\times4^2\\times6=96\\pi$\n\n따라서 원뿔의 부피는\n$96\\pi\\div3=32\\pi\\rm\\,cm^3$이다.\n정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
@@ -209,11 +210,12 @@ window.questionBank = [
       "$225\\rm\\,cm^3$"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "[키포인트] 각뿔의 부피는 $\\dfrac13\\times$ 밑넓이 $\\times$ 높이이다.\n밑면은 한 변의 길이가 $5\\rm\\,cm$인 정사각형이므로 밑넓이는\n$5\\times5=25\\rm\\,cm^2$이다.\n높이는 $9\\rm\\,cm$이므로\n$V=\\dfrac13\\times25\\times9=75\\rm\\,cm^3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -240,11 +242,12 @@ window.questionBank = [
       "$252\\pi\\rm\\,cm^3$"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "색칠한 원뿔대는 큰 원뿔에서 위의 작은 원뿔을 뺀 도형으로 본다.\n작은 원뿔의 반지름은 $3\\rm\\,cm$, 높이는 $4\\rm\\,cm$이고, 원뿔대의 높이도 $4\\rm\\,cm$이므로 큰 원뿔의 높이는 $8\\rm\\,cm$이다.\n큰 원뿔의 밑면 반지름은 $6\\rm\\,cm$이다.\n\n큰 원뿔의 부피는\n$\\dfrac13\\pi\\times6^2\\times8=96\\pi$\n이고, 작은 원뿔의 부피는\n$\\dfrac13\\pi\\times3^2\\times4=12\\pi$\n이다.\n\n따라서 색칠한 부분의 부피는\n$96\\pi-12\\pi=84\\pi\\rm\\,cm^3$이다.\n정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q8-solution.svg"
   },
   {
     "id": 9,
@@ -271,11 +274,12 @@ window.questionBank = [
       "$6\\rm\\,cm$"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "구가 들어 있는 원기둥을 물로 가득 채웠으므로 물의 부피는 원기둥의 부피에서 구의 부피를 뺀 값이다.\n원기둥의 반지름은 $r$, 높이는 $2r$이므로\n$V_{\\text{원기둥}}=2\\pi r^3$\n이고, 구의 부피는\n$V_{\\text{구}}=\\dfrac43\\pi r^3$\n이다.\n\n따라서 물의 부피는\n$2\\pi r^3-\\dfrac43\\pi r^3=\\dfrac23\\pi r^3$\n이다.\n구를 꺼낸 뒤 물의 높이가 $\\dfrac{2r}{3}$인 것도 같은 부피를 나타낸다.\n\n$\\dfrac23\\pi r^3=18\\pi$\n$r^3=27$\n$r=3$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q9-solution.svg"
   },
   {
     "id": 10,
@@ -302,11 +306,12 @@ window.questionBank = [
       "$320\\pi\\rm\\,cm^2$"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "고깔모자는 밑면이 열린 원뿔이므로 옆면의 넓이만 구하면 된다.\n밑면의 반지름은 $8\\rm\\,cm$, 모선의 길이는 $20\\rm\\,cm$이다.\n원뿔의 옆넓이는\n$\\pi rl$\n이므로\n$\\pi\\times8\\times20=160\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -332,7 +337,7 @@ window.questionBank = [
       "중앙값, $11$분"
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "자료를 작은 수부터 나열하면\n$6,7,8,9,10,10,11,12,12,45$이다.\n$45$분은 다른 값들에 비해 매우 큰 값이므로 평균은 이 값의 영향을 많이 받는다.\n따라서 이 자료를 대표할 때는 중앙값이 적절하다.\n자료가 $10$개이므로 중앙값은 가운데 두 값의 평균이고,\n$\\dfrac{10+10}{2}=10$분이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -360,7 +365,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "현재 $3$과 $5$가 각각 두 번씩 있으므로, 최빈값이 하나만 되려면 $x$가 특정 값의 빈도를 더 높여야 한다.\n보기에서 $x=5$이면 자료를 정렬했을 때\n$3,3,4,5,5,5,6,7$\n이 된다.\n최빈값은 $5$이고, 중앙값은 네 번째와 다섯 번째 값의 평균이므로\n$\\dfrac{5+5}{2}=5$이다.\n중앙값과 최빈값이 같고 최빈값도 하나뿐이다.\n따라서 $x=5$, 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -388,7 +393,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "조건을 하나씩 범위로 바꾸자.\n\n[조건1] $2,6,a$의 중앙값이 $6$이려면 $a\\ge6$이어야 한다.\n[조건2] $10,13,a$의 중앙값이 $10$이려면 $a\\le10$이어야 한다.\n\n따라서 자연수 $a$의 가능한 범위는\n$6\\le a\\le10$이다.\n보기의 $5$는 이 범위에 들어가지 않으므로 될 수 없다.\n정답은 ①이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -418,7 +423,7 @@ window.questionBank = [
       "통학 시간이 $4$번째로 짧은 학생의 통학 시간은 $17$분이다."
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "줄기별 잎의 수를 세면 $4,6,7,5$개이므로 전체 학생 수는\n$4+6+7+5=22$명이다.\n잎이 가장 적은 줄기는 $1$이고, 가장 긴 통학 시간은 $49$분이다.\n$40$분 이상인 값은 $40,41,45,48,49$로 $5$명이다.\n또 작은 순서로 $14,15,16,17,\\ldots$이므로 네 번째 값은 $17$분이다.\n따라서 '$40$분 이상인 학생은 $4$명'이라는 ④가 옳지 않다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -448,7 +453,7 @@ window.questionBank = [
       "기록이 $16$초 이상 $18$초 미만인 학생은 전체의 $50\\%$이다."
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "도수분포표는 각 계급에 속한 학생 수만 알려 주고, 계급 안의 정확한 개별 기록은 알려 주지 않는다.\n\n① 계급의 크기는 $2$초이다.\n③ $18$초 이상 $22$초 미만은 $3+1=4$명이다.\n④ $17$초는 $16$초 이상 $18$초 미만 계급에 속한다.\n⑤ 해당 계급의 학생은 $10$명이므로 $10/20=50\\%$이다.\n\n하지만 $20$초 이상 $22$초 미만인 학생이 $1$명이라는 사실만으로 그 학생의 기록이 정확히 $21$초라고 할 수는 없다.\n따라서 옳지 않은 것은 ②이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -479,7 +484,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "④",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "가로축의 계급 경계가 $0,2,4,6,8,10,12$이므로 계급의 크기는\n$a=2$시간이다.\n\n공부 시간이 가장 많은 쪽부터 세면 $10$시간 이상 $12$시간 미만 계급에 $2$명이 있다.\n그 다음 $8$시간 이상 $10$시간 미만 계급의 도수는 $4$명이므로, 공부 시간이 $5$번째로 많은 학생은 이 계급에 속한다.\n따라서 $b=4$이다.\n\n$b-a=4-2=2$이므로 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -510,7 +515,7 @@ window.questionBank = [
       "기록이 $45$회 이상인 학생은 $12.5\\%$이다."
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "그래프의 실제 계급은 $6$개이고 계급의 크기는 $5$회이다.\n도수는 차례로 $2,5,6,12,10,5$명이므로 전체 학생 수는\n$2+5+6+12+10+5=40$명이다.\n$35$회 미만인 학생은 $2+5+6=13$명이다.\n$45$회 이상인 학생은 마지막 계급의 $5$명이므로\n$\\dfrac5{40}\\times100=12.5\\%$이다.\n따라서 옳은 것은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
@@ -541,7 +546,7 @@ window.questionBank = [
       "$50$명"
     ],
     "answer": "②",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "$50$회는 $50$회 이상 $60$회 미만 계급에 속한다.\n그래프에서 이 계급의 상대도수는 $0.2$이다.\n전체 학생 수가 $100$명이므로 이 계급의 학생 수는\n$100\\times0.2=20$명이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
@@ -572,9 +577,9 @@ window.questionBank = [
       "A 중학교와 B 중학교에서 키가 $140\\rm\\,cm$ 이상 $150\\rm\\,cm$ 미만인 학생 수가 같다."
     ],
     "answer": "⑤",
-    "solution": "주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
-    "subUnitKey": "M1-08-DATA_ORGANIZATION",
-    "subUnit": "자료의 정리",
+    "solution": "두 학교의 전체 학생 수가 다르므로 상대도수와 실제 학생 수를 구분해서 비교해야 한다.\n\n그래프에서 A 중학교의 $140\\rm\\,cm$ 미만 상대도수는 $0.15$이므로 $100\\times0.15=15$명이다.\nB 중학교의 $130\\rm\\,cm$ 이상 $140\\rm\\,cm$ 미만 상대도수는 $0.05$이므로 $200\\times0.05=10$명이다.\nB 중학교의 $160\\rm\\,cm$ 이상 상대도수의 합은 $0.50$이므로 전체의 $50\\%$이다.\n또 B 중학교의 분포가 A 중학교보다 오른쪽 구간에서 더 높아, B 중학교 학생들의 키가 상대적으로 큰 편이다.\n\n$140\\rm\\,cm$ 이상 $150\\rm\\,cm$ 미만 계급은 그래프에서 읽은 각 학교의 상대도수에 전체 학생 수 $100$명과 $200$명을 각각 곱해 비교하면 실제 학생 수가 같지 않다.\n따라서 옳지 않은 것은 ⑤이다.",
+    "subUnitKey": "M1-08-DATA_INTERPRETATION",
+    "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -596,7 +601,7 @@ window.questionBank = [
     "content": "[서술형1] 다음 일차방정식을 푸시오. [5점]\n(1) $2x-4=-2$\n(2) $3(x-1)=x+7$\n(3) $0.3x-\\dfrac{2}{5}=2$",
     "choices": [],
     "answer": "(1) $x=1$, (2) $x=5$, (3) $x=8$",
-    "solution": "풀이: 주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 (1) $x=1$, (2) $x=5$, (3) $x=8$이다.",
+    "solution": "(1) $2x-4=-2$\n$2x=2$\n$x=1$\n\n(2) $3(x-1)=x+7$\n$3x-3=x+7$\n$2x=10$\n$x=5$\n\n(3) $0.3x-\\dfrac25=2$\n양변에 $10$을 곱하면\n$3x-4=20$\n$3x=24$\n$x=8$\n\n따라서 (1) $x=1$, (2) $x=5$, (3) $x=8$이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
@@ -623,9 +628,9 @@ window.questionBank = [
     "imageSize": "tall",
     "choices": [],
     "answer": "(1) 모든 면이 서로 합동인 정다각형이 아니므로 정다면체가 아니다. (2) 모든 면이 서로 합동인 정다각형이고 각 꼭짓점에 모인 면의 개수가 같은 다면체이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) 모든 면이 서로 합동인 정다각형이 아니므로 정다면체가 아니다. (2) 모든 면이 서로 합동인 정다각형이고 각 꼭짓점에 모인 면의 개수가 같은 다면체이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.이다. (3) 정삼각형의 한 각은 $60^\\circ$이므로 한 꼭짓점에 모이는 면은 $3$개, $4$개, $5$개만 가능하고, 각각 정사면체, 정팔면체, 정이십면체가 된다.이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-    "subUnit": "입체도형의 측정",
+    "solution": "(1) 정다면체가 되려면 모든 면이 서로 합동인 정다각형이어야 한다.\n<탐구1>의 입체도형은 이 조건을 만족하지 않으므로 정다면체가 아니다.\n\n(2) 정다면체는 모든 면이 서로 합동인 정다각형이고, 각 꼭짓점에 모이는 면의 개수가 같은 다면체이다.\n\n(3) 정삼각형의 한 내각은 $60^\\circ$이다.\n한 꼭짓점에 면이 모여 입체도형이 되려면 그 각의 합이 $360^\\circ$보다 작아야 한다.\n정삼각형 $3$개가 모이면 $180^\\circ$, $4$개가 모이면 $240^\\circ$, $5$개가 모이면 $300^\\circ$이므로 가능하다.\n하지만 $6$개가 모이면 $360^\\circ$가 되어 평면으로 펴지므로 불가능하다.\n따라서 정삼각형으로 이루어진 정다면체는 정사면체, 정팔면체, 정이십면체의 $3$가지이다.",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -650,11 +655,12 @@ window.questionBank = [
     "imageSize": "tall",
     "choices": [],
     "answer": "(1) 오렌지의 겉넓이는 오렌지를 반으로 자른 단면의 넓이의 $4$배이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) 오렌지의 겉넓이는 오렌지를 반으로 자른 단면의 넓이의 $4$배이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.이다. (2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 $2\\pi r^2=18\\pi\\rm\\,cm^2$, 단면의 넓이는 $\\pi r^2=9\\pi\\rm\\,cm^2$이므로 겉넓이는 $27\\pi\\rm\\,cm^2$이다.이다.",
+    "solution": "(1) 구 모양 오렌지의 껍질을 잘라 펼치면 반지름이 같은 원 $4$개의 넓이를 채운다.\n따라서 구의 겉넓이는 큰 원의 넓이의 $4$배이다.\n즉, 반지름을 $r$이라 하면 구의 겉넓이는 $4\\pi r^2$이다.\n\n(2) 반지름이 $3\\rm\\,cm$인 반구의 곡면 넓이는 구 겉넓이의 절반이므로\n$2\\pi r^2=2\\pi\\times3^2=18\\pi\\rm\\,cm^2$이다.\n여기에 원 모양의 밑면 넓이\n$\\pi r^2=9\\pi\\rm\\,cm^2$\n를 더한다.\n따라서 반구의 겉넓이는\n$18\\pi+9\\pi=27\\pi\\rm\\,cm^2$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_풍덕중_2학기_기말_중1_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -675,7 +681,7 @@ window.questionBank = [
     "content": "[서술형4] 다음은 풍덕중학교 학생회에서 풍덕제 하루 동안 판매한 음료의 용량을 조사한 자료이다. 풍덕제 학생회 학생이라면, 판매한 음료 용량에 대한 적절한 대푯값은 무엇인지 구하고 그 이유를 서술하시오. [4점]\n< 풍덕제 하루 동안 판매한 음료 용량 >\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>판매한 음료 용량</th><th>판매한 음료 개수</th></tr></thead><tbody><tr><td>200mL</td><td>5</td></tr><tr><td>300mL</td><td>6</td></tr><tr><td>500mL</td><td>15</td></tr><tr><td>750mL</td><td>6</td></tr><tr><td>1000mL</td><td>3</td></tr><tr><td>합계</td><td>35</td></tr></tbody></table></div>",
     "choices": [],
     "answer": "최빈값 $500\\rm\\,mL$이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.",
-    "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 최빈값 $500\\rm\\,mL$이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.이다. $500\\rm\\,mL$ 음료가 $15$개로 가장 많이 판매되었으므로 판매한 음료 용량을 대표하기에 적절하다.이다.",
+    "solution": "판매된 음료의 용량은 같은 값이 여러 번 나타나는 자료이므로, 가장 많이 판매된 용량을 찾으면 실제 판매 경향을 잘 나타낼 수 있다.\n표에서 판매 개수는\n$200\\rm\\,mL:5$개, $300\\rm\\,mL:6$개, $500\\rm\\,mL:15$개, $750\\rm\\,mL:6$개, $1000\\rm\\,mL:3$개이다.\n가장 많이 판매된 용량은 $500\\rm\\,mL$이므로 최빈값은 $500\\rm\\,mL$이다.\n따라서 적절한 대푯값은 최빈값 $500\\rm\\,mL$이고, $15$개로 가장 많이 판매되었기 때문에 판매한 음료 용량을 대표하기에 적절하다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
