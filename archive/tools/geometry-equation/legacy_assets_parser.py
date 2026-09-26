@@ -11,8 +11,6 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[3]
 ARCHIVE = ROOT / "archive"
-REPORTS = ROOT / "reports" / "geometry_equation_20260902"
-PACK_PATH = REPORTS / "geometry_equation_build_pack.json"
 
 NUMBER = r"[-+]?\d+(?:\.\d+)?(?:\s*/\s*[-+]?\d+)?"
 FRACTION = r"\\frac\{[-+]?\d+(?:\.\d+)?\}\{[-+]?\d+(?:\.\d+)?\}"

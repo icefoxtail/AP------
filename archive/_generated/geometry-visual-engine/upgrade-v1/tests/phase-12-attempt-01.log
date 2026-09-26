@@ -1,0 +1,241 @@
+phase=PHASE_12_DETERMINISM_CONFIG_AND_LINE_ENDINGS
+attempt=phase-12-attempt-01
+status=FAIL
+counts commands=9/10 python=65/65 node=25/25 protected=4493 mutations=0 verifierHashes=6 changed=0 gitattributes=PASS
+===== FAIL exit=1 python -m py_compile archive/tools/geometry-equation/visual_engine/config.py archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/determinism.py archive/tools/geometry-equation/visual_engine/legacy_independent_builder.py archive/tools/geometry-equation/legacy_assets_parser.py archive/tools/geometry-equation/verify-visual-determinism.py archive/tools/geometry-equation/tests/test_config.py =====
+--- stdout ---
+
+--- stderr ---
+[Errno 2] No such file or directory: 'archive/tools/geometry-equation/visual_engine/determinism.py'
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py =====
+--- stdout ---
+
+--- stderr ---
+.................................................................
+----------------------------------------------------------------------
+Ran 65 tests in 0.235s
+
+OK
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-visual-engine-static.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.994
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5033
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.2177
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.4092
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 0.6655
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 1.0458
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 7 - good point: geometry parity passes
+  ---
+  duration_ms: 17.964
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 8 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 9.5243
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 9 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 7.0326
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 10 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.3013
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 11 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 4.5868
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 12 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.5843
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 13 - open or closed state requires a circle element
+  ---
+  duration_ms: 10.607
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 14 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 97.1679
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 15 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 9.5468
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 16 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 9.614
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 17 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 8.1742
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 18 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 18.2921
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 19 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 5.3085
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 20 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 3.9714
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 21 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 5.0721
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 22 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.6194
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 23 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.315
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 24 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 5.923
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 25 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 3.8945
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 338.9749
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/verify-visual-determinism.py --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+--- stdout ---
+{"status": "PASS", "cases": 2}
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/freeze-visual-baseline.py --verify =====
+--- stdout ---
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+--- stderr ---
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 git check-attr text eol -- archive/tools/geometry-equation/visual_engine/engine.py archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-source/visual.svg =====
+--- stdout ---
+archive/tools/geometry-equation/visual_engine/engine.py: text: set
+archive/tools/geometry-equation/visual_engine/engine.py: eol: lf
+archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-source/visual.svg: text: unset
+archive/_generated/geometry-visual-engine/upgrade-v1/candidate/circle-source/visual.svg: eol: unspecified
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/config.py 8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268
+archive/tools/geometry-equation/visual_engine/engine.py fdf407a32f236f6957f6a326d7d373ba644805a23120dcd5e961b80fdfd1b2e9
+archive/tools/geometry-equation/legacy_assets_parser.py b8694ff043a3b442fccdbaa92dcc8716c1177164def0cfe3e22891bdf26e94da
+archive/tools/geometry-equation/verify-visual-determinism.py ed82c09adbc768b57399751f727d375218836aa7e458a8d65a6ec427a838e3f7
+archive/tools/geometry-equation/tests/test_config.py e70a1ebab01c42fa912c4274cb78e435b3b86402adeaaa5fa94e109c7f601b1e
+archive/tools/geometry-equation/verify-visual-engine-static.mjs 5bc3a433d9ecdfb52f3531eb9d66c8519b6c13aef54b34c7d27f4cc3f6302981
+archive/tools/geometry-equation/record-visual-browser-evidence.mjs b21c5015680fef6640e0c732643f6ebc89e0119430080b6e7c36146d0116fea7
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a
+baselineVerifierHashes:
+archive/tools/geometry-equation/verify-b-static-full.mjs baseline=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22 current=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22
+archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs baseline=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387 current=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387
+archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs baseline=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a current=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a
+archive/tools/geometry-equation/verify-pilot-static.mjs baseline=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08 current=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08
+archive/tools/geometry-equation/verify-production-parity-s15.mjs baseline=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b current=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b
+archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs baseline=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21 current=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21

@@ -7,6 +7,7 @@ import {sha256} from './verify-visual-engine-static.mjs';
 import {collectRenderedLayout,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
 
 export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
+  if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
   run=assertOutput(run);const matrix=JSON.parse(fs.readFileSync(path.join(run,'archive-render-matrix.json'),'utf8'));
   if(matrix.synthetic!==false||sha256(fs.readFileSync(path.join(repoRoot,'archive/engine.html')))!==matrix.engineSha256)throw Error('STALE_ENGINE_MATRIX');
   const overrides=new Map(matrix.sources.map(v=>['/'+v.sourcePath,path.join(repoRoot,v.candidatePath)]));
