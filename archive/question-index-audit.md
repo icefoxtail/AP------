@@ -1,6 +1,5 @@
 # question-index 데이터 정합성 감사 (PHASE 4.5)
 
-- 생성 시각: 2026-09-25T13:01:46.849Z
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
   - git 버전관리에 등재된 시험지 JS만 인덱싱(464파일).
@@ -91,10 +90,10 @@
 
 | 기준 | 수 |
 |------|---:|
-| q.image 보유 | 2244 |
+| q.image 보유 | 2248 |
 | content <img> | 26 |
 | content <svg> | 79 |
-| content <table> | 172 |
-| 시각요소 보유(hasImage=true) | 2515 |
+| content <table> | 176 |
+| 시각요소 보유(hasImage=true) | 2523 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
