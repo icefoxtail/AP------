@@ -25,12 +25,13 @@ window.questionBank = [
       "$85^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "삼각형 $ABC$에서\\n$\\angle A=180^\\circ-30^\\circ-70^\\circ=80^\\circ$이다.\\n\\n$\\overline{AD}$가 $\\angle A$의 이등분선이므로\\n$\\angle DAC=40^\\circ$이다.\\n\\n삼각형 $ADC$에서\\n$\\angle ADC=180^\\circ-40^\\circ-70^\\circ=70^\\circ$이다.\\n\\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q1.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution.svg"
   },
   {
     "id": 2,
@@ -56,7 +57,7 @@ window.questionBank = [
       "$132^\\circ$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "그림은 육각형이다.\\n\\n$48^\\circ$, $53^\\circ$는 각각 바깥쪽 각이므로 대응하는 내각은\\n$180^\\circ-48^\\circ=132^\\circ$,\\n$180^\\circ-53^\\circ=127^\\circ$이다.\\n\\n육각형의 내각의 합은\\n$(6-2)\\times180^\\circ=720^\\circ$이다.\\n\\n따라서\\n$x+132^\\circ+127^\\circ+111^\\circ+112^\\circ+108^\\circ=720^\\circ$\\n$x=130^\\circ$이다.\\n\\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q2.png",
@@ -87,7 +88,7 @@ window.questionBank = [
       "오각형의 한 꼭짓점에서 대각선을 그으면 3개의 삼각형으로 나누어진다."
     ],
     "answer": "②, ③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②, ③이다.",
+    "solution": "① 삼각형은 꼭짓점 하나에서 이웃하지 않은 꼭짓점이 없으므로 대각선을 그을 수 없다.\\n\\n② $n$각형의 대각선의 개수는\\n$\\dfrac{n(n-3)}{2}$이므로 옳지 않다.\\n\\n③ 변의 개수가 가장 적은 다각형은 삼각형이므로 옳지 않다.\\n\\n④ 다각형의 외각의 합은 항상 $360^\\circ$이다.\\n\\n⑤ 오각형의 한 꼭짓점에서 대각선을 그으면 $5-2=3$개의 삼각형으로 나누어진다.\\n\\n따라서 옳지 않은 것은 ②, ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "existing_preserved",
@@ -118,12 +119,13 @@ window.questionBank = [
       "(부채꼴 $COE$의 넓이)$=2\\times$(부채꼴 $AOB$의 넓이)"
     ],
     "answer": "③, ④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③, ④이다.",
+    "solution": "같은 원에서 길이가 같은 호에 대응하는 현의 길이와 중심각의 크기는 각각 같다.\\n\\n$\\wideparen{AB}=\\wideparen{CD}=\\wideparen{DE}$이므로\\n$\\overline{AB}=\\overline{DE}$이고,\\n$\\angle COD=\\angle DOE=\\angle AOB$이다.\\n\\n따라서\\n$\\angle COE=\\angle COD+\\angle DOE=2\\angle AOB$이다.\\n부채꼴의 넓이는 중심각의 크기에 비례하므로 부채꼴 $COE$의 넓이는 부채꼴 $AOB$의 넓이의 2배이다.\\n\\n하지만 두 호를 합친 현 $\\overline{CE}$의 길이는 $2\\overline{AB}$가 아니고, 삼각형 $COE$가 삼각형 $AOB$의 2배인 도형이라고 할 수도 없다.\\n\\n따라서 옳지 않은 것은 ③, ④이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q4.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -147,7 +149,7 @@ window.questionBank = [
       "$44$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "한 외각의 크기가 $40^\\circ$인 정다각형의 변의 수를 $n$이라 하면\\n$40^\\circ\\times n=360^\\circ$이다.\\n\\n$n=9$이므로 정구각형이다.\\n\\n$n$각형의 대각선의 개수는\\n$\\dfrac{n(n-3)}{2}$이므로\\n$\\dfrac{9\\times6}{2}=27$이다.\\n\\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "existing_preserved",
@@ -175,7 +177,7 @@ window.questionBank = [
       "각 면의 모양이 정삼각형인 정다면체는 정사면체, 정육면체, 정이십면체이다."
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "각 보기를 정다면체의 성질과 비교한다.\\n\\n① 정다면체의 면에는 정오각형도 있으므로 옳지 않다.\\n② 정이십면체의 모서리는 30개이다.\\n③ 한 꼭짓점에 정삼각형 4개가 모이는 정다면체는 정팔면체이다.\\n④ 정팔면체의 꼭짓점은 6개이다.\\n⑤ 정삼각형으로 이루어진 정다면체는 정사면체, 정팔면체, 정이십면체이다.\\n\\n따라서 옳은 것은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "existing_preserved",
@@ -203,7 +205,7 @@ window.questionBank = [
       "$40^\\circ$"
     ],
     "answer": "②",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "정다각형의 변의 수를 $n$이라 하면 내각의 합은\\n$(n-2)\\times180^\\circ$이다.\\n\\n$(n-2)\\times180^\\circ=2340^\\circ$\\n$n-2=13$\\n$n=15$이다.\\n\\n정십오각형의 한 외각의 크기는\\n$\\dfrac{360^\\circ}{15}=24^\\circ$이다.\\n\\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "existing_preserved",
@@ -233,7 +235,7 @@ window.questionBank = [
       "$20\\pi\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "색칠한 부분의 둘레를 이루는 호들의 중심각을 모두 합하면 $360^\\circ$가 된다.\\n각 호의 반지름은 정사각형의 한 변의 길이와 같은 $5\\rm\\,cm$이다.\\n\\n따라서 전체 호의 길이는 반지름이 $5\\rm\\,cm$인 원의 둘레와 같다.\\n$2\\pi\\times5=10\\pi\\rm\\,cm$\\n\\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q8.png",
@@ -263,7 +265,7 @@ window.questionBank = [
       "삼각뿔대"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "각 입체도형의 면의 개수를 센다.\\n\\n정팔면체: 8개\\n정사면체: 4개\\n오각기둥: $5+2=7$개\\n육각뿔: $6+1=7$개\\n삼각뿔대: $3+2=5$개\\n\\n가장 많은 것은 정팔면체이므로 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "existing_preserved",
@@ -291,7 +293,7 @@ window.questionBank = [
       "원기둥"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "회전축에 수직인 평면으로 자를 때 단면이 언제나 같은 크기의 원이 되어야 한다.\\n\\n구와 반구는 자르는 위치에 따라 원의 크기가 달라지고, 원뿔과 원뿔대도 높이에 따라 단면의 반지름이 달라진다.\\n원기둥은 회전축에 수직인 어느 위치에서 잘라도 밑면과 합동인 원이 생긴다.\\n\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "existing_preserved",
@@ -321,7 +323,7 @@ window.questionBank = [
       "$150\\pi\\rm\\,cm^2$"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "구의 지름이 $10\\rm\\,cm$이므로 반지름은 $5\\rm\\,cm$이다.\\n\\n구를 4등분했으므로 곡면의 넓이는 구의 겉넓이의 $\\dfrac14$이다.\\n$\\dfrac14\\times4\\pi\\times5^2=25\\pi\\rm\\,cm^2$\\n\\n자른 두 평면에는 반지름 $5\\rm\\,cm$인 반원이 하나씩 생긴다.\\n두 반원의 넓이의 합은 원 하나의 넓이와 같으므로\\n$\\pi\\times5^2=25\\pi\\rm\\,cm^2$이다.\\n\\n따라서 겉넓이는\\n$25\\pi+25\\pi=50\\pi\\rm\\,cm^2$이다.\\n\\n정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q11.png",
@@ -352,12 +354,13 @@ window.questionBank = [
       "$108\\pi\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "원뿔의 반지름을 $r\\rm\\,cm$라 하자.\\n모선의 길이는 그림에서 $12\\rm\\,cm$이다.\\n\\n원뿔의 옆넓이는 $\\pi rl$이므로\\n$\\pi\\times r\\times12=72\\pi$\\n$r=6$이다.\\n\\n밑넓이는\\n$\\pi\\times6^2=36\\pi\\rm\\,cm^2$이다.\\n\\n따라서 겉넓이는\\n$72\\pi+36\\pi=108\\pi\\rm\\,cm^2$이다.\\n\\n정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q12.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution.svg"
   },
   {
     "id": 13,
@@ -383,12 +386,13 @@ window.questionBank = [
       "$192\\pi\\rm\\,cm^2$"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "공의 반지름을 $r\\rm\\,cm$라 하자.\\n공이 원기둥의 옆면에 꼭 맞으므로 원기둥의 반지름도 $r$이다.\\n공 3개가 세로로 쌓여 두 밑면에 접하므로 원기둥의 높이는 $6r$이다.\\n\\n원기둥의 부피가 $384\\pi\\rm\\,cm^3$이므로\\n$\\pi r^2\\times6r=384\\pi$\\n$6r^3=384$\\n$r^3=64$\\n$r=4$이다.\\n\\n공 하나의 겉넓이는\\n$4\\pi r^2=4\\pi\\times4^2=64\\pi\\rm\\,cm^2$이다.\\n\\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q13.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q13-solution.svg"
   },
   {
     "id": 14,
@@ -414,7 +418,7 @@ window.questionBank = [
       "6개"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "정육면체의 한 모서리의 길이를 $a$라 하자.\\n정육면체의 부피는 $a^3$이다.\\n\\n그림의 삼각뿔은 정육면체의 한 면에 있는 직각삼각형을 밑면으로 볼 수 있다.\\n밑넓이는 $\\dfrac12a^2$이고 높이는 $a$이므로 부피는\\n$\\dfrac13\\times\\dfrac12a^2\\times a=\\dfrac16a^3$이다.\\n\\n따라서 정육면체 하나의 향초로 만들 수 있는 삼각뿔 모양 향초의 개수는\\n$a^3\\div\\dfrac16a^3=6$이다.\\n\\n정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q14.png",
@@ -445,7 +449,7 @@ window.questionBank = [
       "홍태네 음식점의 평점의 최빈값과 은서네 음식점의 평점의 최빈값은 같다."
     ],
     "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "홍태네 자료를 작은 순서로 배열하면\\n$2,4,4,4,5,5$이다.\\n평균은 $4$, 중앙값은 $4$, 최빈값은 $4$이다.\\n\\n은서네 자료를 작은 순서로 배열하면\\n$2,3,3,3,4,5,5,5$이다.\\n중앙값은 가운데 두 값의 평균이므로\\n$\\dfrac{3+4}{2}=3.5$이다.\\n평균은 $\\dfrac{30}{8}=3.75$이고, 최빈값은 $3$과 $5$이다.\\n\\n따라서 옳은 것은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "existing_preserved",
@@ -475,7 +479,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "①",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "자료의 합은\\n$8+3+8+8+10+4+3+8+6+2=60$이므로\\n평균은 $a=60\\div10=6$이다.\\n\\n작은 순서로 배열하면\\n$2,3,3,4,6,8,8,8,8,10$이다.\\n가운데 두 값이 $6,8$이므로\\n$b=\\dfrac{6+8}{2}=7$이다.\\n\\n가장 많이 나타나는 값은 $8$이므로 $c=8$이다.\\n\\n따라서\\n$a+b+c=6+7+8=21$이므로 정답은 ①이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "existing_preserved",
@@ -505,7 +509,7 @@ window.questionBank = [
       "영어 성적이 50점 대인 학생들이 90점 대인 학생들보다 많다."
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "자료는 모두 22개이다.\\n중앙값은 작은 순서로 나열했을 때 11번째와 12번째 값의 평균이다.\\n\\n줄기와 잎 그림에서 11번째 값은 $74$, 12번째 값은 $76$이다.\\n따라서 중앙값은\\n$\\dfrac{74+76}{2}=75$이다.\\n\\n그러므로 옳은 것은 ②이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "existing_preserved",
@@ -535,7 +539,7 @@ window.questionBank = [
       "$e=20$"
     ],
     "answer": "④",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "줄기와 잎 그림을 각 계급별로 센다.\\n\\n$0$ 이상 $10$ 미만: 4명\\n$10$ 이상 $20$ 미만: 6명 → $a=6$\\n$20$ 이상 $30$ 미만: 5명 → $b=20$\\n$30$ 이상 $40$ 미만: 3명 → $c=3$\\n$40$ 이상 $50$ 미만: 2명 → $d=50$\\n\\n전체 학생 수는\\n$4+6+5+3+2=20$명이므로 $e=20$이다.\\n\\n따라서 옳지 않은 것은 $d=60$인 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "existing_preserved",
@@ -565,7 +569,7 @@ window.questionBank = [
       "등교 시간이 20분 미만인 학생 수는 등교 시간이 25분 이상인 학생 수보다 적다."
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "히스토그램에서 계급은 $5$분 간격으로 6개이다.\\n보이는 막대와 전체 학생 수 40명을 함께 이용하면 각 계급의 도수는 차례로\\n$3,5,9,12,6,5$명이다.\\n\\n따라서 도수가 가장 작은 계급은 $5$분 이상 $10$분 미만이고, 가장 많은 계급은 $20$분 이상 $25$분 미만이다.\\n\\n등교 시간이 $20$분 미만인 학생 수는\\n$3+5+9=17$명이고,\\n$25$분 이상인 학생 수는\\n$6+5=11$명이다.\\n\\n$17<11$은 성립하지 않으므로 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q19.png",
@@ -596,7 +600,7 @@ window.questionBank = [
       "한별이네 반에서 5번째로 빠르게 달린 학생이 속하는 계급의 도수는 3명이다."
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
+    "solution": "그래프의 각 점은 해당 1초 구간의 도수를 나타낸다.\\n\\n두 반의 각 계급 도수를 더하면 전체 학생 수는 서로 같고, 부미네 반에서 $15$초 미만인 학생 수는 전체의 $16\\%$이다. 또한 두 반에서 $17$초 이상인 학생 수를 합하면 6명이고, 부미네 반의 도수가 가장 큰 계급은 $16$초 이상 $17$초 미만이다.\\n\\n한별이네 반의 빠른 기록부터 누적하면 5번째 학생은 $15$초 이상 $16$초 미만인 계급에 들어간다. 그래프에서 이 계급의 도수는 6명이므로 ‘도수는 3명이다’라는 ⑤가 옳지 않다.\\n\\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q20.png",
@@ -623,12 +627,13 @@ window.questionBank = [
     "content": "[서답형 1] 부채꼴에서 색칠한 부분의 둘레의 길이를 구하는 과정을 자세히 서술하시오. [5점]",
     "choices": [],
     "answer": "$(5\\pi+8)\\rm\\,cm$",
-    "solution": "풀이: 문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $(5\\pi+8)\\rm\\,cm$이다.",
+    "solution": "안쪽 반지름은 $OB=8\\rm\\,cm$이고,\\n$BD=4\\rm\\,cm$이므로 바깥쪽 반지름은\\n$OD=8+4=12\\rm\\,cm$이다.\\n\\n중심각은 $45^\\circ$이다.\\n바깥쪽 호 $CD$의 길이는\\n$2\\pi\\times12\\times\\dfrac{45}{360}=3\\pi\\rm\\,cm$이다.\\n안쪽 호 $AB$의 길이는\\n$2\\pi\\times8\\times\\dfrac{45}{360}=2\\pi\\rm\\,cm$이다.\\n\\n두 곧은 변 $AC$, $BD$의 길이는 각각\\n$12-8=4\\rm\\,cm$이다.\\n\\n따라서 색칠한 부분의 둘레는\\n$3\\pi+2\\pi+4+4=(5\\pi+8)\\rm\\,cm$이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q21.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -649,12 +654,13 @@ window.questionBank = [
     "content": "[서답형 2] 부채꼴에서 색칠한 부분의 활꼴을 직선 $l$을 축으로 하여 1회전 시켰을 때 생기는 회전체의 부피를 구하는 과정을 자세히 서술하시오. [5점]",
     "choices": [],
     "answer": "$72\\pi\\rm\\,cm^3$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $72\\pi\\rm\\,cm^3$이다.",
+    "solution": "그림의 부채꼴은 반지름이 $6\\rm\\,cm$, 중심각이 $90^\\circ$인 사분원이다.\\n색칠한 활꼴을 직선 $l$을 축으로 회전시키면, 사분원 전체를 회전시킨 반구에서 직각삼각형 부분을 회전시킨 원뿔을 뺀 모양이 된다.\\n\\n반구의 부피는\\n$\\dfrac12\\times\\dfrac43\\pi\\times6^3=144\\pi\\rm\\,cm^3$이다.\\n\\n원뿔의 반지름과 높이는 모두 $6\\rm\\,cm$이므로\\n$\\dfrac13\\pi\\times6^2\\times6=72\\pi\\rm\\,cm^3$이다.\\n\\n따라서 구하는 부피는\\n$144\\pi-72\\pi=72\\pi\\rm\\,cm^3$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "image": "assets/images/25_왕의중_2학기_기말_중1_기출/q22.png",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -675,7 +681,7 @@ window.questionBank = [
     "content": "[서답형 3] 다음은 경화의 기말고사 성적을 조사한 자료이다. 경화의 기말고사 성적의 평균과 최빈값이 같을 때, $x$의 값을 구하는 과정을 자세히 서술하시오. [5점]\n<div class=\"question-table-wrap\"><div>기말고사 점수　(단위: 점)</div><table class=\"question-table\"><tbody><tr><td>48</td><td>14</td><td>64</td><td>42</td><td>$x$</td></tr></tbody></table></div>",
     "choices": [],
     "answer": "$42$",
-    "solution": "풀이: 문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 $42$이다.",
+    "solution": "기존 네 점수 $48,14,64,42$는 모두 서로 다르다.\\n최빈값이 생기려면 $x$는 이 네 값 중 하나와 같아야 하고, 그때 최빈값은 $x$이다.\\n\\n기존 네 점수의 합은\\n$48+14+64+42=168$이다.\\n평균과 최빈값이 같으므로\\n$\\dfrac{168+x}{5}=x$\\n$168+x=5x$\\n$4x=168$\\n$x=42$이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "existing_preserved",
@@ -700,7 +706,7 @@ window.questionBank = [
     "content": "[서답형 4] 아래 상대도수 분포표는 A중학교 1학년 학생들의 통학 거리를 조사하여 나타낸 것이다. 통학 거리가 8km 이상인 학생 수를 구하는 과정을 자세히 서술하시오. [5점]\n<div class=\"question-table-wrap\"><div>통학 거리</div><table class=\"question-table\"><thead><tr><th>통학 거리(km)</th><th>도수(명)</th><th>상대도수</th></tr></thead><tbody><tr><td>0 이상 ~ 2 미만</td><td></td><td>0.08</td></tr><tr><td>2 ~ 4</td><td></td><td>0.22</td></tr><tr><td>4 ~ 6</td><td></td><td>0.27</td></tr><tr><td>6 ~ 8</td><td></td><td>0.2</td></tr><tr><td>8 ~ 10</td><td>48</td><td></td></tr><tr><td>10 ~ 12</td><td></td><td>0.07</td></tr><tr><td>합계</td><td></td><td>1</td></tr></tbody></table></div>",
     "choices": [],
     "answer": "$69$명",
-    "solution": "풀이: 문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 주어진 정답과 일치하는 결과는 $69$명이다.",
+    "solution": "$8$km 이상 $10$km 미만인 계급의 상대도수를 먼저 구한다.\\n\\n$1-(0.08+0.22+0.27+0.20+0.07)=0.16$이다.\\n이 계급의 도수가 48명이므로 전체 학생 수를 $N$명이라 하면\\n$0.16N=48$\\n$N=300$이다.\\n\\n$10$km 이상 $12$km 미만인 학생 수는\\n$300\\times0.07=21$명이다.\\n\\n따라서 통학 거리가 $8$km 이상인 학생 수는\\n$48+21=69$명이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "existing_preserved",

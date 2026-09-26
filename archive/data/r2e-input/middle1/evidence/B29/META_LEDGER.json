@@ -1,0 +1,1181 @@
+[
+  {
+    "questionUid": "qid_v1_e9e18ecec0a323f92ed0a2996a4d1977897354e12b8f47bc672a87cf6c086643",
+    "sourceOrdinal": 1,
+    "sourceFingerprint": "c6c7e336b546bc2a19ff56528a5e091cee770500844fc7a7129e88e18de9ac48",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-POLYGON_CIRCLE",
+      "label": "다각형과 원",
+      "status": "KEEP"
+    },
+    "primaryMethod": "삼각형 내각합으로 꼭짓점각을 구한 뒤 각의 이등분선으로 절반을 적용해 부분 삼각형의 각을 계산",
+    "decisiveStep": "삼각형 내각합으로 꼭짓점각을 구한 뒤 각의 이등분선으로 절반을 적용해 부분 삼각형의 각을 계산",
+    "crossConceptKeys": [
+      "CC_ANGLE_BISECTOR"
+    ],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "삼각형 각 계산 — 각의 이등분선 적용",
+    "searchedCanonicalCandidates": [
+      "PT_M1_TRIANGLE_ANGLE_CHASE"
+    ],
+    "holdReason": "ACTIVE L3는 있으나 angle-bisector를 직접 쓰는 이 문항의 결정 단계에 맞는 ACTIVE L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.1.2",
+          "l3LabelKo": "삼각형·다각형의 각",
+          "l4Id": "L4-2.1.2.1",
+          "l4LabelKo": "각의 크기 계산"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKeys": [
+            "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+            "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_ACTIVE_BINDING_TEMPLATE_MISMATCH",
+          "reason": "Active triangle angle templates are bound to basic-figure angle chase; this RPM path/skeleton is distinct."
+        },
+        {
+          "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+            "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2022",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active intersecting-angle binding exists, but the final solution does not match its full active template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "02eea8d1263051769b386e8b6d2cdd0adc7ae13f39c2181db513ee49e5f04ada",
+      "finalSolutionSha256": "791cbc78cbfee4e7d1d167190fe9fed693a9d0a27c9cf7434d0a7b3c2b33c565"
+    }
+  },
+  {
+    "questionUid": "qid_v1_827bf72aef7c8ea965a1481e32787eb8e0851c6acdd4b87b136e5139616d2ac8",
+    "sourceOrdinal": 2,
+    "sourceFingerprint": "742a02dc3f442e7bf252a1ada8399b8a97a9da96a99173110ad5cc476c74a478",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-POLYGON_CIRCLE",
+      "label": "다각형과 원",
+      "status": "KEEP"
+    },
+    "primaryMethod": "두 외각을 보각인 내각으로 바꾸고 육각형 내각의 합에서 미지각 계산",
+    "decisiveStep": "두 외각을 보각인 내각으로 바꾸고 육각형 내각의 합에서 미지각 계산",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_613bde5027956ce68d2abaf5cd5f86d2e9e788e3cbae5dca3033f2fbf8ac8265",
+    "sourceOrdinal": 3,
+    "sourceFingerprint": "2c331922397345da2df2a11d73e5d4a254c043fc6c0c1975fe28ed2b2bf16728",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-POLYGON_CIRCLE",
+      "label": "다각형과 원",
+      "status": "KEEP"
+    },
+    "primaryMethod": "다각형의 대각선 공식과 최소 변 수를 보기별로 판정",
+    "decisiveStep": "다각형의 대각선 공식과 최소 변 수를 보기별로 판정",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_7fe5c9b15f68af162d5b845a3430b67c361c39cc268e3cfa77242c12149a80e7",
+    "sourceOrdinal": 4,
+    "sourceFingerprint": "00e10f231faff0f05d1f972123b221dfc754861840b3a65a79d4e910a5038161",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-POLYGON_CIRCLE",
+      "label": "다각형과 원",
+      "status": "KEEP"
+    },
+    "primaryMethod": "같은 원에서 같은 호에 대응하는 현·중심각·부채꼴 넓이 관계 판정",
+    "decisiveStep": "같은 원에서 같은 호에 대응하는 현·중심각·부채꼴 넓이 관계 판정",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "원의 호·현·중심각 관계 판정",
+    "searchedCanonicalCandidates": [
+      "PT_M1_POLYGON_ANGLE_AND_COUNT"
+    ],
+    "holdReason": "현재 ACTIVE M1-06 L3/L4에 원의 같은 호·현·중심각·부채꼴 넓이 관계 판정 유형이 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.1",
+          "l4LabelKo": "중심각·호·현"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.2",
+          "l3LabelKo": "부채꼴의 넓이",
+          "l4Id": "L4-2.2.2.1",
+          "l4LabelKo": "중심각을 이용한 넓이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "12bffcea488d4ada2cea26862258e5d9a65168295c31164d93c8f7b0286ad3f6",
+      "finalSolutionSha256": "e1d12a38f5255fc28b9bfa3b23dd263a70c90d9753b03d6e9bc720060f324c47"
+    }
+  },
+  {
+    "questionUid": "qid_v1_9e9eccb68d14313d49dca7d10cb526ab9d328ba657d966d7e2b1a11a561278fd",
+    "sourceOrdinal": 5,
+    "sourceFingerprint": "dda01aa935d04a2a5b64f7010fb54cc2ab7c47f37ea18372e4551ba0f6a76eae",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-POLYGON_CIRCLE",
+      "label": "다각형과 …5368 tokens truncated…ANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "f27173809b720067444c9f04e3c4fc1b0a564ea75900150ac23e5eec84ff9633",
+      "finalSolutionSha256": "4bd4ef5ca2dd108b9155f2c4ecfd1556dc518b7519e0aa818078e54bd022ef81"
+    }
+  },
+  {
+    "questionUid": "qid_v1_90ae647baecb8b08f4853fa4ca841c1ae12b5a3c59bd26aa4a200828a63d4247",
+    "sourceOrdinal": 14,
+    "sourceFingerprint": "c6a47ccfd2980eaacdb57e4c71ddcd56553ee0032971d65b32bf2101e8506d72",
+    "L1": {
+      "key": "M1-07",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-07-SOLID_FIGURE_MEASURE",
+      "label": "입체도형의 측정",
+      "status": "KEEP"
+    },
+    "primaryMethod": "정육면체 안 삼각뿔의 부피를 밑넓이×높이÷3으로 구해 정육면체와 부피비 비교",
+    "decisiveStep": "정육면체 안 삼각뿔의 부피를 밑넓이×높이÷3으로 구해 정육면체와 부피비 비교",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 4,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "삼각뿔과 정육면체의 부피비",
+    "searchedCanonicalCandidates": [
+      "PT_M1_POLYHEDRON_COMPONENT_COUNT"
+    ],
+    "holdReason": "M1-07 ACTIVE taxonomy에 정육면체와 삼각뿔의 부피비 측정 L3/L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.1",
+          "l4LabelKo": "각뿔"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.1",
+          "l4LabelKo": "각기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "1bfbe793066e9ac35a938b7e7e6089e22dcd4d3dd8f0f36a858f18b3046cf172",
+      "finalSolutionSha256": "533a28ee5015dadcec79329be40d5c275251c9964971b475798c1dff793a62b3"
+    }
+  },
+  {
+    "questionUid": "qid_v1_0019b9df13f238ac957eb65f84f1a08c6c070281c8f641b94bc558c0a9c6c325",
+    "sourceOrdinal": 15,
+    "sourceFingerprint": "a683f6c0dbcc21b63c08b689a47877233b3af01beb52e01b67cae859f12edc2c",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_INTERPRETATION",
+      "label": "자료의 해석",
+      "status": "KEEP"
+    },
+    "primaryMethod": "두 원자료를 정렬해 평균·중앙값·최빈값을 각각 계산하여 보기 판정",
+    "decisiveStep": "두 원자료를 정렬해 평균·중앙값·최빈값을 각각 계산하여 보기 판정",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "대푯값 비교",
+    "searchedCanonicalCandidates": [
+      "PT_M1_DATA_ORDER_AND_VALUE",
+      "PT_M1_DATA_EXTREME_VALUE_SUM"
+    ],
+    "holdReason": "기존 ACTIVE M1-08 유형은 순위/극값/도수 해석 중심이며 평균·중앙값·최빈값을 직접 비교하는 L3/L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "81a4121a6dd7e3a0a71aaf3b7779061d9a235284fe378cfeaa4b8201e6fe5b3e",
+      "finalSolutionSha256": "cbaa190eb64ba7a21e37d976c9bd3f5ecb1e84dfd5a85acb26bc4c8ab9056e27"
+    }
+  },
+  {
+    "questionUid": "qid_v1_7360cee3fca35b3d5cf90b163d1166a92ad3256528aafc796d1aa614a7310c39",
+    "sourceOrdinal": 16,
+    "sourceFingerprint": "883f597a723a782e80cac6077518036e639d8da587e03a4e9da80d7259b70713",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_INTERPRETATION",
+      "label": "자료의 해석",
+      "status": "KEEP"
+    },
+    "primaryMethod": "원자료의 평균·중앙값·최빈값을 각각 계산한 뒤 합산",
+    "decisiveStep": "원자료의 평균·중앙값·최빈값을 각각 계산한 뒤 합산",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "평균·중앙값·최빈값 계산",
+    "searchedCanonicalCandidates": [
+      "PT_M1_DATA_ORDER_AND_VALUE"
+    ],
+    "holdReason": "평균·중앙값·최빈값을 원자료에서 동시에 산출하는 ACTIVE L3/L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "11feb08b5009b530f39928ce71cb6370239f0f80be9bebd93086ccc01e3c5e9d",
+      "finalSolutionSha256": "908171286b03f88cb51a6deddb16085c4c66a43cab076ddf3968cdb0b0afd8d0"
+    }
+  },
+  {
+    "questionUid": "qid_v1_a7a7395d929b75658cea095b9a7b67e13fc80ae6efc54cb8b5d2396bbe1de829",
+    "sourceOrdinal": 17,
+    "sourceFingerprint": "d9097d3d0bf50be5412746fbbb9baec39da773dc0fad72a82a689e5385f82f1b",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_ORGANIZATION",
+      "label": "자료의 정리",
+      "status": "KEEP"
+    },
+    "primaryMethod": "줄기와 잎 그림의 자료 개수와 가운데 순서를 이용해 중앙값 계산",
+    "decisiveStep": "줄기와 잎 그림의 자료 개수와 가운데 순서를 이용해 중앙값 계산",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948",
+    "sourceOrdinal": 18,
+    "sourceFingerprint": "5160c3599adeb88ac50db352cb42f31b22a86c811eb656764ba2e3a282744ab6",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_ORGANIZATION",
+      "label": "자료의 정리",
+      "status": "KEEP"
+    },
+    "primaryMethod": "줄기와 잎 자료를 계급별로 세어 도수분포표의 미지 값을 채움",
+    "decisiveStep": "줄기와 잎 자료를 계급별로 세어 도수분포표의 미지 값을 채움",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_b910779e3a8500213b5d38fe7080016cb82b9807e814195c9684eda49557d559",
+    "sourceOrdinal": 19,
+    "sourceFingerprint": "f6a520add5057c8b0f51ac01895fb7a0d42007ce2110d3a0e256246519ef69f8",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_ORGANIZATION",
+      "label": "자료의 정리",
+      "status": "KEEP"
+    },
+    "primaryMethod": "찢어진 히스토그램의 계급별 도수를 전체 40명과 함께 복원해 보기 판정",
+    "decisiveStep": "찢어진 히스토그램의 계급별 도수를 전체 40명과 함께 복원해 보기 판정",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 3,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_f498f0a348a7c01027483e35fad90b8059a6243c26167ad801c30d4f45326a67",
+    "sourceOrdinal": 20,
+    "sourceFingerprint": "7ca83f123aacf036f0ffb3aa9f6a5aeccd55c0f6f49236dbbd4f1aaa308de0f5",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_ORGANIZATION",
+      "label": "자료의 정리",
+      "status": "KEEP"
+    },
+    "primaryMethod": "두 도수분포다각형을 계급별로 읽어 비율·누적순위·최빈 계급을 보기별 판정",
+    "decisiveStep": "두 도수분포다각형을 계급별로 읽어 비율·누적순위·최빈 계급을 보기별 판정",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 4,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  },
+  {
+    "questionUid": "qid_v1_d247e8a713ec628aa817bbdcc42dd52387eb8c2e7a0989faf5b1e58325b74ebe",
+    "sourceOrdinal": 21,
+    "sourceFingerprint": "c1648759b8f7e5454251e54cc4ed85623d9d07701e1e62947696cf388aace793",
+    "L1": {
+      "key": "M1-06",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-06-PLANE_FIGURE_MEASURE",
+      "label": "평면도형의 측정",
+      "status": "KEEP"
+    },
+    "primaryMethod": "안팎 두 부채꼴의 호 길이와 두 반지름 차를 더해 환부채꼴 둘레 계산",
+    "decisiveStep": "안팎 두 부채꼴의 호 길이와 두 반지름 차를 더해 환부채꼴 둘레 계산",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 3,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "환부채꼴의 둘레",
+    "searchedCanonicalCandidates": [
+      "PT_M1_POLYGON_ANGLE_AND_COUNT"
+    ],
+    "holdReason": "현재 ACTIVE M1-06 L3/L4에 환부채꼴의 두 호와 반지름 차를 합치는 둘레 측정 유형이 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.3",
+          "l3LabelKo": "복합도형",
+          "l4Id": "L4-2.2.3.1",
+          "l4LabelKo": "부채꼴을 포함한 둘레"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.2",
+          "l4LabelKo": "부채꼴의 호의 길이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+          "templateKeys": [
+            "TPL_M1_TRAPEZOID_AREA_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Plane-measure binding exists for trapezoid area, but the source method is circle/sector geometry."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "3a2bc1a5f6a50eb1ce256bea3c75e3763bfa0537cc1db8b55c1471318782315e",
+      "finalSolutionSha256": "4629c1986371ac0d63a2166b272a4339d9bbfe6cc171b8f5ef6db3dea5301640"
+    }
+  },
+  {
+    "questionUid": "qid_v1_ab302d1be594c2fbf797f49d65f86d0b2867ff92ba549dc65cf32524dc990575",
+    "sourceOrdinal": 22,
+    "sourceFingerprint": "00504c74e6957d444587f7ad62609ac29fbf63888784127e8c20306f4dafeb6b",
+    "L1": {
+      "key": "M1-07",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-07-SOLID_FIGURE_MEASURE",
+      "label": "입체도형의 측정",
+      "status": "KEEP"
+    },
+    "primaryMethod": "활꼴 회전체를 반구에서 원뿔을 뺀 입체로 분해하여 부피 계산",
+    "decisiveStep": "활꼴 회전체를 반구에서 원뿔을 뺀 입체로 분해하여 부피 계산",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 4,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "활꼴 회전체의 부피",
+    "searchedCanonicalCandidates": [
+      "PT_M1_POLYHEDRON_COMPONENT_COUNT"
+    ],
+    "holdReason": "M1-07 ACTIVE taxonomy에 활꼴 회전체를 반구-원뿔로 분해하는 부피 측정 L3/L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.2",
+          "l4LabelKo": "구의 부피"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.2",
+          "l4LabelKo": "원뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "035af45410611d72dc0395a3634cbb5a0d4a6d8b9442432f0bc3c884906d041e",
+      "finalSolutionSha256": "c0f85c6f44aba95c40e03aaf95a549cc03adcbe91d94736a187065d86e153698"
+    }
+  },
+  {
+    "questionUid": "qid_v1_a31dd329f2f32b6dd728d785ef783aa23bb39967f34225509c16bee2e85d857a",
+    "sourceOrdinal": 23,
+    "sourceFingerprint": "1f945e214b0be4d10e82c2fca38155cbdfb21e30a85c723bab70bc2cac1670fe",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_INTERPRETATION",
+      "label": "자료의 해석",
+      "status": "KEEP"
+    },
+    "primaryMethod": "미지값이 최빈값이 되도록 후보를 정하고 평균과 같은지 식으로 확인",
+    "decisiveStep": "미지값이 최빈값이 되도록 후보를 정하고 평균과 같은지 식으로 확인",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 2,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "META_PACK_GAP_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "suggestedClusterLabel": "대푯값 조건의 미지수 결정",
+    "searchedCanonicalCandidates": [
+      "PT_M1_DATA_ORDER_AND_VALUE"
+    ],
+    "holdReason": "평균과 최빈값이 같다는 조건으로 미지 원자료를 정하는 ACTIVE L3/L4가 없음",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "fa24ff0a881449014190c8337356d4a99a6dae372b7a26d21ba343fb6f103630",
+      "finalSolutionSha256": "ce41027e0969bcdd29985df557cf6939e71349d2b83ad911df2f854ec3e4ec6d"
+    }
+  },
+  {
+    "questionUid": "qid_v1_36ba23d28c5568254e6200a48c31ab79d3cc0c054d6f0137599b751bcc7684bf",
+    "sourceOrdinal": 24,
+    "sourceFingerprint": "138b3382055e5a11b85d332967a212ec1e77078152594ec5a7cbb1b149b1fa40",
+    "L1": {
+      "key": "M1-08",
+      "status": "KEEP"
+    },
+    "L2": {
+      "key": "M1-08-DATA_ORGANIZATION",
+      "label": "자료의 정리",
+      "status": "KEEP"
+    },
+    "primaryMethod": "상대도수 합으로 8~10km 상대도수를 구해 전체 인원과 10~12km 도수를 복원",
+    "decisiveStep": "상대도수 합으로 8~10km 상대도수를 구해 전체 인원과 10~12km 도수를 복원",
+    "crossConceptKeys": [],
+    "difficulty": {
+      "bucket": 3,
+      "status": "FRESH_CREATE"
+    },
+    "existingMetaStatus": "ABSENT_FROM_CURRENT_MIDDLE1_RUNTIME_FOR_THIS_EXAM",
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "canonicalSearchStatus": "ACTIVE_MATCH"
+  }
+]
