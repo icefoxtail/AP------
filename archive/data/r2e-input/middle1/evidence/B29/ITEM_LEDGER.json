@@ -1,0 +1,1389 @@
+[
+  {
+    "id": 1,
+    "questionUid": "qid_v1_e9e18ecec0a323f92ed0a2996a4d1977897354e12b8f47bc672a87cf6c086643",
+    "sourceFingerprint": "c6c7e336b546bc2a19ff56528a5e091cee770500844fc7a7129e88e18de9ac48",
+    "contentHash": "75fb8e37aba2557a7ee7c951f81b6850ab72eb36d520b219bf31b11facac7c6e",
+    "choicesHash": "0eac758af29ceb2629e3c423954d9d4c98476cd7cc610ba35848c8406e2e93da",
+    "answerHash": "dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+    "imageRefHash": "8e20d3e589274f71e76ddf0b1acfe5d3cc8cc094ad6c88b524d561ff10d8a657",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.1.2",
+          "l3LabelKo": "삼각형·다각형의 각",
+          "l4Id": "L4-2.1.2.1",
+          "l4LabelKo": "각의 크기 계산"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+          "templateKeys": [
+            "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+            "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_ACTIVE_BINDING_TEMPLATE_MISMATCH",
+          "reason": "Active triangle angle templates are bound to basic-figure angle chase; this RPM path/skeleton is distinct."
+        },
+        {
+          "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+            "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2022",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-BASIC_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active intersecting-angle binding exists, but the final solution does not match its full active template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "02eea8d1263051769b386e8b6d2cdd0adc7ae13f39c2181db513ee49e5f04ada",
+      "finalSolutionSha256": "791cbc78cbfee4e7d1d167190fe9fed693a9d0a27c9cf7434d0a7b3c2b33c565"
+    }
+  },
+  {
+    "id": 2,
+    "questionUid": "qid_v1_827bf72aef7c8ea965a1481e32787eb8e0851c6acdd4b87b136e5139616d2ac8",
+    "sourceFingerprint": "742a02dc3f442e7bf252a1ada8399b8a97a9da96a99173110ad5cc476c74a478",
+    "contentHash": "d0adb984dd342b1bfaa7fd4a406e04edd0c82faeb8511e6cde73e601ac65bc7e",
+    "choicesHash": "24c09f4a9cec92dacf7c3ad41fa1af206de92a5daa01d8337cd9c7545c894f1f",
+    "answerHash": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+    "imageRefHash": "deec8eb8387f1bc232015e2c8d3bbe3090939856758f64255fb4e554f7b732be",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 3,
+    "questionUid": "qid_v1_613bde5027956ce68d2abaf5cd5f86d2e9e788e3cbae5dca3033f2fbf8ac8265",
+    "sourceFingerprint": "2c331922397345da2df2a11d73e5d4a254c043fc6c0c1975fe28ed2b2bf16728",
+    "contentHash": "5cf82e6481639c49af9d829490548a57ac89daa4936d29ac4a936d7e618de491",
+    "choicesHash": "8ca5638c2742e6862fd3c4ac4268e64eea1f3084b95968cde18776d28df95b33",
+    "answerHash": "4fcc14dd33588849a751380031f0dd77bdfd09a1bb240a3db58f5a66498f44e7",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 4,
+    "questionUid": "qid_v1_7fe5c9b15f68af162d5b845a3430b67c361c39cc268e3cfa77242c12149a80e7",
+    "sourceFingerprint": "00e10f231faff0f05d1f972123b221dfc754861840b3a65a79d4e910a5038161",
+    "contentHash": "34030af0639aa9438cf5968ad943f7f5d3166c21a66e66970c55cac2141e522e",
+    "choicesHash": "25a51119fe510450c1da0505cfde95e9aeb156874f3519d68454589dfdb43bc9",
+    "answerHash": "fde88cc8ca48694fd598e89abaab50085f5e16b5bbdc3363a652ced3564ebdda",
+    "imageRefHash": "5e5257f76633819a03406f8e4f55de3890ec2cd006bf489a1abd6ee7db3aaf42",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.1",
+          "l4LabelKo": "중심각·호·현"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.2",
+          "l3LabelKo": "부채꼴의 넓이",
+          "l4Id": "L4-2.2.2.1",
+          "l4LabelKo": "중심각을 이용한 넓이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "12bffcea488d4ada2cea26862258e5d9a65168295c31164d93c8f7b0286ad3f6",
+      "finalSolutionSha256": "e1d12a38f5255fc28b9bfa3b23dd263a70c90d9753b03d6e9bc720060f324c47"
+    }
+  },
+  {
+    "id": 5,
+    "questionUid": "qid_v1_9e9eccb68d14313d49dca7d10cb526ab9d328ba657d966d7e2b1a11a561278fd",
+    "sourceFingerprint": "dda01aa935d04a2a5b64f7010fb54cc2ab7c47f37ea18372e4551ba0f6a76eae",
+    "contentHash": "f22c1fe33c0544c356fe72d30d582058bb8000939e6633f780ede129ab417903",
+    "choicesHash": "09ed83538af6369dc597802ba3667bf69b9ea3fd14b0460f000a9fdc73ee384e",
+    "answerHash": "b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 6,
+    "questionUid": "qid_v1_d4ea71b8f50860b552e2e38dca911226bac214c1e3e3f6f17623aca653d1f3e6",
+    "sourceFingerprint": "201066d9c09515edd889890b049448f8d95c58c814a3bc62bf2fa7ab61271997",
+    "contentHash": "db36b1b09586942aa66e810be14e3bbbef95ff34341656bb7cf9c20740697654",
+    "choicesHash": "4f875c428d7430b47e01eb3aee41a6e90196e4e2bb961a12536fa45788394501",
+    "answerHash": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 7,
+    "questionUid": "qid_v1_178c78ae735475d98b498304b1d11044a043a8be54944a2515186c6c70a216fd",
+    "sourceFingerprint": "9b3f16a9805439e1c56ce60b08047d503ab9bee3c7c85cb6550c404ba3a6df6b",
+    "contentHash": "77ae8722e82b501375f8ca47067e347fcbcea8effedaa87fa0361fad85c138f4",
+    "choicesHash": "2e4bcf437503b5bc48f27d8473109ebcd1a41025168c61dc36ada48c81763b3d",
+    "answerHash": "dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 8,
+    "questionUid": "qid_v1_87cf8b1cc4695082657172fee9f019c71f6c9ec08b2c03653aa240fc866fcdbf",
+    "sourceFingerprint": "461a14e8750646d50d87451b83b15a9444b7373a8b79e7d7e4c5c21253f99a71",
+    "contentHash": "6a1be7ea487d584ec5505c579c0506e8f49e2553a8030d59914db52a3e3f8ea3",
+    "choicesHash": "2ed45c6d0f0a30da23be156299d546fc0410912d25684e828adf9c2a1d687783",
+    "answerHash": "b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+    "imageRefHash": "cb677633f4e039119764348b99249ac7f7ef53f0268f85e83679b67366d74c6d",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.3",
+          "l3LabelKo": "복합도형",
+          "l4Id": "L4-2.2.3.1",
+          "l4LabelKo": "부채꼴을 포함한 둘레"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.2",
+          "l4LabelKo": "부채꼴의 호의 길이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+          "templateKeys": [
+            "TPL_M1_TRAPEZOID_AREA_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Plane-measure binding exists for trapezoid area, but the source method is circle/sector geometry."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "612e467393f4085bfc699e81fa09ba4424f4d811fa6b59b56aba441f1c46065d",
+      "finalSolutionSha256": "f2d95f2fc3a6fcff6e49d6a09169dcb472bbf8a57c99d77d638e7b716f0e2869"
+    }
+  },
+  {
+    "id": 9,
+    "questionUid": "qid_v1_3358e484c51b04b29ed7a4465203de61a047c92c5092ebbff1e827ec559065c6",
+    "sourceFingerprint": "aee34d22c02c76364f72e8151c42022801e55710e1f0aa234d2f91d9c9c4aa6b",
+    "contentHash": "cc2e02bc13cbb1eb501b66e84a3eff7c093df6ac5f61a8777ae146d6325d8454",
+    "choicesHash": "371c47db5c8374223c55be465ea77f0e8a85043fd40164804ec4af0d432e2c25",
+    "answerHash": "973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 10,
+    "questionUid": "qid_v1_8dcde91f5db698019ae5040ad98f75b1f41b1803097ee9f682a4eb115b0fcec7",
+    "sourceFingerprint": "6bb59000187d0c8a69fdf6ed3f5ef5c59e41bce742d00935c5f10e4d28207a99",
+    "contentHash": "83688a3c807356314147fb5ae8d536d9ef6bb646c0124c3c45b5acf39418ea23",
+    "choicesHash": "088c050c383ee03db469a7da22b70e7b6928c2c6410fee6e5f0543ed0bc4960a",
+    "answerHash": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.1.3",
+          "l3LabelKo": "회전체",
+          "l4Id": "L4-3.1.3.2",
+          "l4LabelKo": "회전체의 단면"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Spatial-relation templates are not a rotational-solid generation or section template."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "aaf184339a65828645b880a13229b31383952a8532ed346f465b944bd49d77f1",
+      "finalSolutionSha256": "880fb8500a430cff19c4a71db265ffb8dc3cd554d6c78bd98687878f78a83862"
+    }
+  },
+  {
+    "id": 11,
+    "questionUid": "qid_v1_30b87fae8ffe96b92e0b17e1ddf62917d5a8a656ed8c96234a2a6076eb76f5c8",
+    "sourceFingerprint": "2ab07e1f0ea38aa0500440aa651f68090d3de4dcf934d0bfd20e1ab1bea594a6",
+    "contentHash": "7ee41c8be1922c052f24ec7f2167ef2cd6d9009e3d65731cfb5bc1e0aa2a594e",
+    "choicesHash": "a5a699c0d39723334ece67c2876ad115e925fea02d948246b77eef1b65b74664",
+    "answerHash": "973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+    "imageRefHash": "17996295a5e37cefced34e5e882142f93ed5e9521606df5cad494682e2accb81",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.1",
+          "l4LabelKo": "구의 겉넓이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "e05c6f8fdc277de2bb8d7ad9560b0e0d0c3938e3b615b05588a3ca3d94cc15bc",
+      "finalSolutionSha256": "70f2ae5fc63747fa0eb9998ea7bd2b369a341d138468d2c4eb0f9d23043ffb93"
+    }
+  },
+  {
+    "id": 12,
+    "questionUid": "qid_v1_98443e0269d3b06684d3cf296990f6f94a1a5c956746577d83d7c89c5670d6ae",
+    "sourceFingerprint": "84d9670c2025ff1bec98faca2249868e1d7c0841ad2117483bc02c3b3c07e7ea",
+    "contentHash": "d3de75956ccfdf740b00b6dd47e742d3f714bc158538a6e28626dde03fc76b1f",
+    "choicesHash": "1093e167c4847f74bfad52371e5fa4e604dd44bd1a0c0cc729ec1bb1c3db9883",
+    "answerHash": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+    "imageRefHash": "03612615fefaa980ca1bc3f15c86ff0791e2aca09ad8d23ac00b33451c4b5a1a",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.2",
+          "l4LabelKo": "원뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "e0e6729371568f65ff184215b6b5146fe16436cbd910e89b6f324ff5fd521046",
+      "finalSolutionSha256": "4df96f5a966a449001fb12490bd052f4876a66d18c9dc13a11e987b563f4a4dd"
+    }
+  },
+  {
+    "id": 13,
+    "questionUid": "qid_v1_c94e33cd218ea2a363e1fcdf6fb8e1ed325d6a4cc56b387e9adc3d031490e23c",
+    "sourceFingerprint": "8d4b00f46cb7dd9534ce0fcfc4ab09de3c8d99c65160f6cd28cdae26b7ebb0ab",
+    "contentHash": "9633e829b69e6694383e2662553ce29e3761b04bab27f26514f73b569e6fe74d",
+    "choicesHash": "132de5cc0d5ec7ee75da23a44096f4cecaf8f10fe28bfc27c3fc00463a3253c8",
+    "answerHash": "dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+    "imageRefHash": "c512a0d424eb7bd967a70ab67910c5a4bc28781bcf0bd797c2a750ad919a644b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.1",
+          "l4LabelKo": "구의 겉넓이"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.2",
+          "l4LabelKo": "원기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "f27173809b720067444c9f04e3c4fc1b0a564ea75900150ac23e5eec84ff9633",
+      "finalSolutionSha256": "4bd4ef5ca2dd108b9155f2c4ecfd1556dc518b7519e0aa818078e54bd022ef81"
+    }
+  },
+  {
+    "id": 14,
+    "questionUid": "qid_v1_90ae647baecb8b08f4853fa4ca841c1ae12b5a3c59bd26aa4a200828a63d4247",
+    "sourceFingerprint": "c6a47ccfd2980eaacdb57e4c71ddcd56553ee0032971d65b32bf2101e8506d72",
+    "contentHash": "b627f4fd0fb1f64f67f0e105cf92d4f392efe8d9817ebacbb6887ff88701238f",
+    "choicesHash": "4c6f3ee08e165f5bd5ca5a6e796e49da234db1e8bfacacc58e6ee9e9bad9db4f",
+    "answerHash": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+    "imageRefHash": "c5915011ccc277036ff3b6a5d3e5ee689d202fa8834c15e6903e14049bd85f19",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.1",
+          "l4LabelKo": "각뿔"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.1",
+          "l4LabelKo": "각기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "1bfbe793066e9ac35a938b7e7e6089e22dcd4d3dd8f0f36a858f18b3046cf172",
+      "finalSolutionSha256": "533a28ee5015dadcec79329be40d5c275251c9964971b475798c1dff793a62b3"
+    }
+  },
+  {
+    "id": 15,
+    "questionUid": "qid_v1_0019b9df13f238ac957eb65f84f1a08c6c070281c8f641b94bc558c0a9c6c325",
+    "sourceFingerprint": "a683f6c0dbcc21b63c08b689a47877233b3af01beb52e01b67cae859f12edc2c",
+    "contentHash": "35e47d90091d76c94c0d07d03998ecaaf5c7e9c1d55a585645005016508c8d0c",
+    "choicesHash": "e781171ad3585bd207f199a7ebe9219a7dabbb5e7160ed962aa8b718b9b2e915",
+    "answerHash": "b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "81a4121a6dd7e3a0a71aaf3b7779061d9a235284fe378cfeaa4b8201e6fe5b3e",
+      "finalSolutionSha256": "cbaa190eb64ba7a21e37d976c9bd3f5ecb1e84dfd5a85acb26bc4c8ab9056e27"
+    }
+  },
+  {
+    "id": 16,
+    "questionUid": "qid_v1_7360cee3fca35b3d5cf90b163d1166a92ad3256528aafc796d1aa614a7310c39",
+    "sourceFingerprint": "883f597a723a782e80cac6077518036e639d8da587e03a4e9da80d7259b70713",
+    "contentHash": "9a1d78a254464ee8c8329a1a2c8b903e963df06eeb85b1b0f3350b3fe86691c2",
+    "choicesHash": "9cdf6632e9549efbaccb6af975ca838a322b0fca938cbb6bc1b5a40338ca2551",
+    "answerHash": "973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "11feb08b5009b530f39928ce71cb6370239f0f80be9bebd93086ccc01e3c5e9d",
+      "finalSolutionSha256": "908171286b03f88cb51a6deddb16085c4c66a43cab076ddf3968cdb0b0afd8d0"
+    }
+  },
+  {
+    "id": 17,
+    "questionUid": "qid_v1_a7a7395d929b75658cea095b9a7b67e13fc80ae6efc54cb8b5d2396bbe1de829",
+    "sourceFingerprint": "d9097d3d0bf50be5412746fbbb9baec39da773dc0fad72a82a689e5385f82f1b",
+    "contentHash": "7a96c0edfedce8fac222d73cd7939f6dbb5bb32491a2a97bf28ec4e8a27b565a",
+    "choicesHash": "6aa9abfcbebbdc429118c5c61d1fe5a1ced1bc870c540f08be3b50c9e1562c0e",
+    "answerHash": "dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 18,
+    "questionUid": "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948",
+    "sourceFingerprint": "5160c3599adeb88ac50db352cb42f31b22a86c811eb656764ba2e3a282744ab6",
+    "contentHash": "accf5d339cbc48f555842089f02ac1b7ca759f3145c86e15c688103dda8aa706",
+    "choicesHash": "f0709519aa60798ff621ebb3f1fc1ef2949952b03358e941de5c8603abdb32a1",
+    "answerHash": "d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 19,
+    "questionUid": "qid_v1_b910779e3a8500213b5d38fe7080016cb82b9807e814195c9684eda49557d559",
+    "sourceFingerprint": "f6a520add5057c8b0f51ac01895fb7a0d42007ce2110d3a0e256246519ef69f8",
+    "contentHash": "f2100e147e8f5029e7892504f1e019cc55c4b4f5f780f3e997484fba1e766136",
+    "choicesHash": "536ca942abd17fbac46d517aece49cbaf59bdddc3a8ab8bfd91ba7cd9de34a2a",
+    "answerHash": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+    "imageRefHash": "a39fe3eb53050acbc12e4907dbb5c43ee2101c51d64a2184844cc7a235e70dc9",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 20,
+    "questionUid": "qid_v1_f498f0a348a7c01027483e35fad90b8059a6243c26167ad801c30d4f45326a67",
+    "sourceFingerprint": "7ca83f123aacf036f0ffb3aa9f6a5aeccd55c0f6f49236dbbd4f1aaa308de0f5",
+    "contentHash": "8ac08bdf5e145330d2b513c0b609801138585e2959d357180bbaf975b55985e6",
+    "choicesHash": "37004d84952d168db5acff8500400ea820a9963e27275f163f2edce8e49d8544",
+    "answerHash": "0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+    "imageRefHash": "e238d75298a0d74abc2006fb580ef810af8d4a1709f131bebe232a2c6a1c0ab8",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  {
+    "id": 21,
+    "questionUid": "qid_v1_d247e8a713ec628aa817bbdcc42dd52387eb8c2e7a0989faf5b1e58325b74ebe",
+    "sourceFingerprint": "c1648759b8f7e5454251e54cc4ed85623d9d07701e1e62947696cf388aace793",
+    "contentHash": "d621f231a36a3e7a9aba4e54708fa322426ce6148da1ff8a68279bdee548615e",
+    "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "answerHash": "1ac3c8ac23e1cd1e7bdec29405a90635e2d8b606478da1a6c771c603aab17fd3",
+    "imageRefHash": "2670ea2d0f8c1824ac4c0281f9e41c8a08625b7279b4c169e03f84971a40185c",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.3",
+          "l3LabelKo": "복합도형",
+          "l4Id": "L4-2.2.3.1",
+          "l4LabelKo": "부채꼴을 포함한 둘레"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.2",
+          "l4LabelKo": "부채꼴의 호의 길이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+          "templateKeys": [
+            "TPL_M1_TRAPEZOID_AREA_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Plane-measure binding exists for trapezoid area, but the source method is circle/sector geometry."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "3a2bc1a5f6a50eb1ce256bea3c75e3763bfa0537cc1db8b55c1471318782315e",
+      "finalSolutionSha256": "4629c1986371ac0d63a2166b272a4339d9bbfe6cc171b8f5ef6db3dea5301640"
+    }
+  },
+  {
+    "id": 22,
+    "questionUid": "qid_v1_ab302d1be594c2fbf797f49d65f86d0b2867ff92ba549dc65cf32524dc990575",
+    "sourceFingerprint": "00504c74e6957d444587f7ad62609ac29fbf63888784127e8c20306f4dafeb6b",
+    "contentHash": "4d4eaec9e3149f06c3bf374583e2c532fe123435c5b18fad40136d61ade243a6",
+    "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "answerHash": "ce140bede6a8a12019c489ddf8c4d20a9f8341ec6e49dd28c926d1f27503e364",
+    "imageRefHash": "8a513b6efb7f83a02a1a9f2f8029401e2e748ed1cde33801d296f2eca6772620",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "SVG_ADD",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.2",
+          "l4LabelKo": "구의 부피"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.2",
+          "l4LabelKo": "원뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "035af45410611d72dc0395a3634cbb5a0d4a6d8b9442432f0bc3c884906d041e",
+      "finalSolutionSha256": "c0f85c6f44aba95c40e03aaf95a549cc03adcbe91d94736a187065d86e153698"
+    }
+  },
+  {
+    "id": 23,
+    "questionUid": "qid_v1_a31dd329f2f32b6dd728d785ef783aa23bb39967f34225509c16bee2e85d857a",
+    "sourceFingerprint": "1f945e214b0be4d10e82c2fca38155cbdfb21e30a85c723bab70bc2cac1670fe",
+    "contentHash": "14eddfd59edf4042e57953f3847c1116c90cafb93027dcc6cf1e913c1736b965",
+    "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "answerHash": "d992ce60bd4bfb663a4ec54f6b38afef84c9223dadbda724a0b700e1e0efbb61",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "META_PACK_GAP_HOLD",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_PACK_GAP_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.3",
+          "l3LabelKo": "대푯값의 선택",
+          "l4Id": "L4-4.1.3.2",
+          "l4LabelKo": "대푯값 비교"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "평균",
+          "l4Id": "L4-4.1.1.2",
+          "l4LabelKo": "평균을 이용한 미지수"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.1",
+          "l4LabelKo": "중앙값"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2022",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.2",
+          "l3LabelKo": "중앙값과 최빈값",
+          "l4Id": "L4-4.1.2.2",
+          "l4LabelKo": "최빈값"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        },
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "ACTIVE_BINDING_OTHER_CURRICULUM",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "fa24ff0a881449014190c8337356d4a99a6dae372b7a26d21ba343fb6f103630",
+      "finalSolutionSha256": "ce41027e0969bcdd29985df557cf6939e71349d2b83ad911df2f854ec3e4ec6d"
+    }
+  },
+  {
+    "id": 24,
+    "questionUid": "qid_v1_36ba23d28c5568254e6200a48c31ab79d3cc0c054d6f0137599b751bcc7684bf",
+    "sourceFingerprint": "138b3382055e5a11b85d332967a212ec1e77078152594ec5a7cbb1b149b1fa40",
+    "contentHash": "2db8f858bab306293d8235ab83b33175d7e0fd4dcd4a9bfae5c1af4a08791995",
+    "choicesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "answerHash": "489d294f860478e9dfdc7dfc4cdd3d362a790c806d939a0fe7e3514f80390d5f",
+    "imageRefHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "sourceIdentityStatus": "PASS",
+    "mathAnswerStatus": "PASS",
+    "solutionDisposition": "UPGRADE",
+    "solutionIdentityAlignment": "ALIGNMENT_PASS",
+    "solutionImageStatus": "KEEP_SOURCE_VISUAL_OR_NO_NEW_SVG",
+    "metaStatus": "FILL_ACTIVE_REUSE",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  }
+]
