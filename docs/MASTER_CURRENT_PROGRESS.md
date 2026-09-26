@@ -1,5 +1,18 @@
 # MASTER_CURRENT_PROGRESS
 
+## 2026-09-27 — 중2·중3 Codex R2E 6시간 예약 준비
+
+- 최신 main `7bf8f80a3`의 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 실행 정본으로 적용한다.
+- 사용자 지시에 따라 별도 대형 controller/legacy Apply Bridge 재구현을 축소했다.
+  `archive/tools/r2e/`에는 진입 지시서, OS 실행 잠금, Git intake snapshot, 최종 gate 보조만 둔다.
+- intake 정본은 `work/intake/m2`, `work/intake/m3`. 진행 상태는 remote
+  `work/r2e-state`와 `archive/data/r2e/<grade>/`의 물리 ledger/receipt에서 복원한다.
+- 실행 목표는 서울 00:00/06:00/12:00/18:00, `gpt-6-luna / max`다.
+- 보조 tests 5/5 PASS, canonical/compiled parity와 문항 identity contract/runtime 회귀 PASS.
+- 실제 queue smoke는 READY 0 / resume 0 / 오류 0의 `NO_WORK`. 실제 시험지 production 반영은 수행하지 않았다.
+- 이후 예약은 정본에 따라 selective R2E·repair·기존 검증·최신 main integration을 수행하며,
+  이 helper의 PASS만으로 수학/Meta/production 완료를 선언하지 않는다.
+
 현재 구현과 문서 기준의 진행 상태를 한눈에 보는 문서다. 상세 근거는 `docs/implemented`, `docs/domains`, `docs/plans`, `docs/_index`에 둔다.
 
 ## 1. 상태값 기준

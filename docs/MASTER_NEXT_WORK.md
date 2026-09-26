@@ -1,5 +1,16 @@
 # MASTER_NEXT_WORK
 
+## 2026-09-27 — Codex R2E 예약의 다음 실행
+
+- 최신 R2E 운영 정본과 연결된 Notion 라우터를 매 실행 진입점으로 사용한다.
+- 중2·중3 intake에 실제 `READY_FOR_R2E` receipt가 들어오면 원격 checkpoint를 우선 복원하고
+  동결 batch만 처리한다. 신규 입력을 진행 중 batch에 추가하지 않는다.
+- 실제 시험지 첫 폐쇄에서 item-level evidence·HOLD Zero·검증과 main ancestry/bytes/parity
+  receipt를 확인한다. 현재 빈 queue smoke를 실제 시험지 end-to-end PASS로 확대하지 않는다.
+- 문제가 있는 시험지는 checkpoint/실패 원인을 보존하고 독립된 나머지 시험지를 처리한다.
+- 문서/규칙은 `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`, 실행 보조는
+  `archive/tools/r2e/README.md`를 참조한다. main에 legacy handoff나 scratch를 넣지 않는다.
+
 다음 작업과 보류/금지/완료 기준을 한눈에 정리하는 문서다.
 
 ## 1. 상태값 기준
