@@ -104,3 +104,13 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B20's 22 deep-review items are resolved. Its exam-specific final commit is still pending; the upcoming shared Meta commit is separate. B24 visual repairs are checkpointed, while its R2E Meta adjudication waits for the B20 final commit.
 - Latest user scope remains branch-only: no `main` merge, update, or `R2E_MAIN_FINAL` receipt.
 - Current checkpoint branch HEAD before the shared Meta checkpoint commit: `3f30ed098b87440d319683e34e185a7c1a1b47da`.
+
+## B20 terminal branch checkpoint — 2026-09-27
+
+- Shared Meta commit `909617696fa78f64dbbcd8e029667078b260ff90` now contains the cross-exam ACTIVE canonical, exact bindings, and RPM crosswalk materialization.
+- B20 q1–q24 now have complete taxonomy projections. All 22 deep-review items are resolved; no source, answer, identity, solution, SVG, taxonomy, or binding holds remain.
+- B20 denominator checks pass 24/24: protected-field parity; node syntax and VM load; solution blank, control-character, and LaTeX-escape checks; XML and solutionImage path checks; exact crosswalk/binding checks; 24/24 Archive2 eligibility; 24/24 selectable runtime records and catalog joins.
+- q8/q9/q13/q21/q22/q24 SVG parity was reviewed and rendered. q8 and q24 were corrected in the current B20 final change set.
+- Difficulty fields for the nine previously incomplete B20 rows were adjudicated and written to `R2E_DIFFICULTY_ADJUDICATION.json`; all B20 Archive2 eligibility blockers are cleared.
+- B20 is `R2E_BRANCH_FINAL` after its exam-specific final commit is created. It is not `R2E_MAIN_FINAL`, because the latest user instruction prohibits main integration. No Notion main-terminal receipt will be issued.
+- Current branch HEAD before the B20 exam-specific final commit: `909617696fa78f64dbbcd8e029667078b260ff90`. Next: create and push B20 final commit, then start B24 Meta closure.

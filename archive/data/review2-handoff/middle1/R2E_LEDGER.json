@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "3f30ed098b87440d319683e34e185a7c1a1b47da",
-  "timestamp": "2026-09-27 03:39:36 Asia/Seoul",
-  "physicalCheckpoint": "B20_BRANCH_FINAL_VALIDATORS_PASS",
+  "currentBranchHead": "909617696fa78f64dbbcd8e029667078b260ff90",
+  "timestamp": "2026-09-27 03:43:26 Asia/Seoul",
+  "physicalCheckpoint": "B20_BRANCH_FINAL_COMMIT_PENDING",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -37,7 +37,8 @@
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
       "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json"
     ],
-    "validatorStatus": "PASS_CANONICAL_COMPILED_PARITY; PASS_TARGET_CROSSWALK_BINDING_61_61; B20_RUNTIME_AND_ARCHIVE2_PASS"
+    "validatorStatus": "PASS_CANONICAL_COMPILED_PARITY; PASS_TARGET_CROSSWALK_BINDING_61_61; B20_RUNTIME_AND_ARCHIVE2_PASS",
+    "commitSha": "909617696fa78f64dbbcd8e029667078b260ff90"
   },
   "exams": [
     {
@@ -230,7 +231,10 @@
         "xmlValidation": "PASS_Q8_Q9_Q13_Q21_Q22_Q24_AND_ALL_REFERENCED_PATHS"
       },
       "branchStatus": "R2E_BRANCH_FINAL_READY",
-      "mainIntegration": "NOT_PERFORMED_PER_LATEST_USER_INSTRUCTION"
+      "mainIntegration": "NOT_PERFORMED_PER_LATEST_USER_INSTRUCTION",
+      "finalCommitSha": null,
+      "branchFinalStatus": "R2E_BRANCH_FINAL_COMMIT_PENDING",
+      "mainTerminalReceipt": "NOT_ISSUED_MAIN_INTEGRATION_PROHIBITED"
     },
     {
       "code": "B24",

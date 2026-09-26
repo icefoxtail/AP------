@@ -474,7 +474,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q11-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -512,7 +520,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q12-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -550,7 +566,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBucket": 3,
-    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q13-solution.svg"
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q13-solution.svg",
+    "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+    "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -589,7 +613,9 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
   },
   {
     "id": 15,
@@ -627,7 +653,9 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
   },
   {
     "id": 16,
@@ -660,7 +688,15 @@ window.questionBank = [
     "subUnit": "회전체",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+    "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -697,7 +733,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q17-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -735,7 +779,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q18-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -773,7 +825,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q19-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -810,7 +870,15 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q20-solution.svg",
-    "difficultyBucket": 3
+    "difficultyBucket": 3,
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -958,6 +1026,14 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q24-solution.svg",
-    "difficultyBucket": 2
+    "difficultyBucket": 2,
+    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+    "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
