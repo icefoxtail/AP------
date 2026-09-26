@@ -87,3 +87,10 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - q21 now shows three radius-3 spheres fitting exactly in a radius-3 cylinder of height 18 cm; empty volume remains 54π cm³.
 - All four SVGs passed XML parsing and Chrome headless renders were visually inspected. B24 items remain open until Meta and full exam validators close.
 - Current branch HEAD before this checkpoint: `2f14894cb52d6d4198a963f60c59e858c74a8f99`.
+
+## Cross-exam Meta adjudication draft — 2026-09-27
+
+- Recorded 61 item-level disposition candidates in `R2E_META_ASSIGNMENTS.json`, grouped across the three exams. This preserves the shared decisions for circle/sector, polyhedra, rotation-solid sections, solid measurement, frequency/relative-frequency, and central tendency.
+- New shared keys remain draft until current canonical schemas, exact bindings, RPM crosswalk rows, and source solutions validate together. The physical assignments are not yet applied to exam JS or metadata projection.
+- B24 visual repairs are checkpointed, but B20 remains the active exam for terminal closure. The q23 Meta assignment is still draft until its recovered source geometry is carried through the final student solution.
+- Current checkpoint branch HEAD: `bd8f8ec639a74db22a24757917d74c378e1e54f0`.
