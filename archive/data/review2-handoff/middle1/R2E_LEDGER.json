@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "90a3c21166daefcbe08e1e5be0f578603ea68edf",
-  "timestamp": "2026-09-26 23:46:13",
-  "physicalCheckpoint": "INPUT_RECONCILIATION",
+  "currentBranchHead": "eea22dea92bfc36abe4e0befd03a1a19feba8c59",
+  "timestamp": "2026-09-27 00:11:59",
+  "physicalCheckpoint": "LATEST_USER_SCOPE_AND_B28_RECOVERY_RECONCILIATION",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -231,10 +231,39 @@
       "r1Evidence": {
         "zipSha256": "FF960507337BE4E0A4962252B46BDF3F96D24CD0FA01EC8BF2711962DF5DB466",
         "r1FinalJsSha256": "9a46ad715ca2603794cd38e58fa29f1d57362d32aa4d3a646cb72c97f0993e59",
-        "status": "POST_R1_Q14_SOLUTION_CHANGE"
+        "status": "POST_R1_Q14_SOLUTION_CHANGE",
+        "latestNotionRecovery": {
+          "status": "RECOVERY_APPLIED",
+          "sourceHolds": [
+            {
+              "q": 12,
+              "imageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
+              "branchImageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b"
+            },
+            {
+              "q": 23,
+              "imageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb",
+              "branchImageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb"
+            }
+          ],
+          "q14": {
+            "mean": "135/10=13.5",
+            "branchAlreadyCorrect": true
+          },
+          "sourceHoldsBeforeRecovery": 0,
+          "source": "Notion D12 updated 2026-09-26T14:49Z; recovery ZIP itself unavailable in this work package"
+        }
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "WAIT_B24_TERMINAL"
+      "currentNextItem": "B20 q1 Meta repair recheck",
+      "localAdjudication": {
+        "q12": "OPEN: branch solution still contains R1 HOLD text; reconstruct final student solution from exact image blob and recovery evidence",
+        "q23": "OPEN: branch solution still contains R1 HOLD text; independently derive final student solution from exact image blob",
+        "q14": "SOURCE_SOLUTION_REVIEWED: arithmetic is 135/10=13.5 and current answer ①,⑤ remains valid"
+      }
     }
-  ]
+  ],
+  "integrationScope": "WORK_BRANCH_ONLY",
+  "mainMerge": "PROHIBITED_BY_LATEST_USER_INSTRUCTION",
+  "terminalReceiptPolicy": "Do not emit R2E_MAIN_FINAL without main integration; branch completion only."
 }
