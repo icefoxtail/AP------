@@ -1,0 +1,29 @@
+phase=PHASE_03_SAFE_MATH_EXPRESSION status=PASS counts commands=3/3 tests=10 passed=10 failed=0 errors=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/math_expression.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_math_expression.py -v =====
+--- stdout ---
+--- stderr ---
+test_coordinate_accuracy (test_math_expression.MathTests.test_coordinate_accuracy) ... ok
+test_coordinate_tuple_and_subscript (test_math_expression.MathTests.test_coordinate_tuple_and_subscript) ... ok
+test_decimal_source_exception (test_math_expression.MathTests.test_decimal_source_exception) ... ok
+test_exponent_display_scope (test_math_expression.MathTests.test_exponent_display_scope) ... ok
+test_functions (test_math_expression.MathTests.test_functions) ... ok
+test_gold_regression (test_math_expression.MathTests.test_gold_regression) ... ok
+test_limits (test_math_expression.MathTests.test_limits) ... ok
+test_precedence (test_math_expression.MathTests.test_precedence) ... ok
+test_relation (test_math_expression.MathTests.test_relation) ... ok
+test_unsafe_rejection (test_math_expression.MathTests.test_unsafe_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+OK
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/math_expression.py 1A673B231A6E0991B903169A5830DA0D0178C625FFA0FB9B27E872C36379A579
+archive/tools/geometry-equation/tests/test_math_expression.py 8D3E382DDAEF1015007D862B90E3579134728C9FBE85BDF0696355C6731D8AEB
