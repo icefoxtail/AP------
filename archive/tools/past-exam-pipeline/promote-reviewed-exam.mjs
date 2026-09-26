@@ -63,6 +63,7 @@ function main() {
   // All source, fidelity, math, asset, serialization, and handoff bindings are
   // checked before any protected destination is created.
   const hardening = assertPastExamPromotion({ candidateFile, manifest, review, reviewFile });
+  if (hardening.eligibility?.BASIC_ARCHIVE_ELIGIBLE !== true) throw new Error("BASIC_ARCHIVE_ELIGIBILITY_REQUIRED");
   const masterRows = loadSubunitMaster(archiveRoot);
   if (review.examId !== manifest.examId || candidate.examTitle !== manifest.examId) throw new Error("exam identity mismatch");
   if (!Array.isArray(candidate.questionBank) || candidate.questionBank.length !== review.questionCount) throw new Error("question count mismatch");
@@ -74,6 +75,11 @@ function main() {
   const confidenceValues = new Set(["existing_preserved", "candidate_evidence", "category_or_cue_inferred", "rule_inferred"]);
   const depthValues = new Set(["complete_candidate", "complete_category", "complete_documented", "complete_rule"]);
   for (const question of candidate.questionBank) {
+    if (hardening.completionVersion === "PAST_EXAM_V3_COMPLETE") {
+      for (const key of ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"]) {
+        if (!(key in question)) throw new Error(`q${question.id} missing ${key}`);
+      }
+    }
     for (const key of required) if (!(key in question)) throw new Error(`q${question.id} missing ${key}`);
     for (const key of nonEmptyRequired) if (!isNonEmpty(question[key])) throw new Error(`q${question.id} empty ${key}`);
     if (!confidenceValues.has(question.subUnitConfidence)) throw new Error(`q${question.id} invalid subUnitConfidence`);

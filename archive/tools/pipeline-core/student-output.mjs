@@ -39,3 +39,23 @@ export function validateCurriculumBinding(question, { source = {}, examId = '' }
   }
   return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
+
+export function validateCanonicalL1L2(question) {
+  const errors = [];
+  const unitKey = String(question?.standardUnitKey || '');
+  const subUnitKey = String(question?.subUnitKey || '');
+  const unit = master.find(row => row.keyType === 'standardUnitKey' && row.key === unitKey && row.status !== 'deprecated');
+  if (!unit) errors.push('CURRICULUM_UNIT_UNKNOWN');
+  else {
+    if (String(question?.standardUnit || '') !== String(unit.labelKo || '')) errors.push('CURRICULUM_UNIT_LABEL_MISMATCH');
+    const suffix = Number(unitKey.match(/-(\d+)$/)?.[1]);
+    if (!Number.isSafeInteger(suffix) || Number(question?.standardUnitOrder) !== suffix) errors.push('CURRICULUM_UNIT_ORDER_MISMATCH');
+  }
+  const subUnit = master.find(row => row.keyType === 'subUnitKey' && row.key === subUnitKey && row.status !== 'deprecated');
+  if (!subUnit) errors.push('CURRICULUM_SUBUNIT_UNKNOWN');
+  else {
+    if (subUnit.standardUnitKey !== unitKey) errors.push('CURRICULUM_SUBUNIT_PARENT_MISMATCH');
+    if (String(question?.subUnit || '') !== String(subUnit.labelKo || '')) errors.push('CURRICULUM_SUBUNIT_LABEL_MISMATCH');
+  }
+  return { status: errors.length ? 'FAIL' : 'PASS', errors: [...new Set(errors)] };
+}

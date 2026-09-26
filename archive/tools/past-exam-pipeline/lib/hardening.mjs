@@ -3,8 +3,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import vm from "node:vm";
+import { fileURLToPath } from "node:url";
 
 import { canonicalJson, objectSha } from "../../pipeline-core/canonical.mjs";
+import { validateCanonicalL1L2, validateCurriculumBinding } from "../../pipeline-core/student-output.mjs";
+import { validateCompletionEvidence } from "./completion-evidence.mjs";
 
 export const SOURCE_INVENTORY_SCHEMA = "PAST_EXAM_SOURCE_INVENTORY_v1";
 export const SOURCE_IDENTITY_MAP_SCHEMA = "PAST_EXAM_SOURCE_IDENTITY_MAP_v1";
@@ -50,6 +53,7 @@ const REQUIRED_EVIDENCE_FIELDS = Object.freeze([
   ["mathReviewEvidenceSha", "math_review_evidence.json", MATH_REVIEW_SCHEMA],
   ["assetProvenanceEvidenceSha", "asset_provenance_evidence.json", ASSET_PROVENANCE_SCHEMA],
 ]);
+const REPOSITORY_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../../..");
 
 function nonEmpty(value) {
   return value !== undefined && value !== null && String(value).trim() !== "";
@@ -545,23 +549,83 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
   return [...new Set(errors)];
 }
 
+function isV3Completion(candidateFile) {
+  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const handoffFile = path.join(candidateRoot, "reports", "gpt_gemini_handoff_manifest.json");
+  if (!fs.existsSync(handoffFile)) return false;
+  return JSON.parse(fs.readFileSync(handoffFile, "utf8")).completionContract === "PAST_EXAM_V3_COMPLETE";
+}
+
+function validateBasicCompletionFields(question) {
+  const errors = [];
+  const requiredFields = ["level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"];
+  for (const field of requiredFields) if (!Object.hasOwn(question || {}, field)) errors.push(`BASIC_ARCHIVE_FIELD_MISSING:q${question?.id}:${field}`);
+  for (const field of ["content", "answer", "solution", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]) {
+    if (!nonEmpty(question?.[field])) errors.push(`BASIC_ARCHIVE_FIELD_REQUIRED:q${question?.id}:${field}`);
+  }
+  if (!Array.isArray(question?.choices)) errors.push(`BASIC_ARCHIVE_CHOICES_INVALID:q${question?.id}`);
+  if (!Array.isArray(question?.tags)) errors.push(`BASIC_ARCHIVE_TAGS_INVALID:q${question?.id}`);
+  if (typeof question?.wide !== "boolean") errors.push(`BASIC_ARCHIVE_WIDE_INVALID:q${question?.id}`);
+  if (!Number.isSafeInteger(Number(question?.standardUnitOrder))) errors.push(`BASIC_ARCHIVE_UNIT_ORDER_INVALID:q${question?.id}`);
+  if (!nonEmpty(question?.sourceArchiveFile) || !nonEmpty(question?.sourceIdentityKey) || !Number.isSafeInteger(Number(question?.sourceOrdinal))) errors.push(`BASIC_ARCHIVE_SOURCE_IDENTITY_REQUIRED:q${question?.id}`);
+  return errors;
+}
+
 export function validatePastExamPromotion({ candidateFile, manifest, review, reviewFile = "" }) {
   const loaded = loadCandidate(candidateFile);
   const errors = [];
   if (loaded.window.examTitle !== manifest.examId) errors.push("EXAM_IDENTITY_MISMATCH");
   const source = validateSourceInventoryAndCoverage(candidateFile, loaded.questions);
   errors.push(...source.errors);
+  const v3Completion = isV3Completion(candidateFile);
+  let completionEvidence = null;
   if (source.inventory) {
     const reviewEnvelope = validateReviewEnvelope(candidateFile, loaded.source, loaded.questions, review, manifest);
     errors.push(...reviewEnvelope);
     errors.push(...validateFidelityEvidence(candidateFile, loaded.questions, review, source.inventory));
     errors.push(...validateMathEvidence(candidateFile, loaded.questions, review));
     errors.push(...validateAssetEvidence(candidateFile, loaded.questions, review));
+    if (v3Completion) {
+      for (const question of loaded.questions) {
+        errors.push(...validateBasicCompletionFields(question));
+        const curriculum = validateCurriculumBinding(question, { examId: manifest.examId });
+        errors.push(...curriculum.errors.map(error => `${error}:q${question.id}`));
+        const canonicalL1L2 = validateCanonicalL1L2(question);
+        errors.push(...canonicalL1L2.errors.map(error => `${error}:q${question.id}`));
+        if (!question.subUnitKey) errors.push(`CURRICULUM_SUBUNIT_REQUIRED:q${question.id}`);
+      }
+      completionEvidence = validateCompletionEvidence({
+        candidateFile,
+        questions: loaded.questions,
+        manifest,
+        review,
+        inventory: source.inventory,
+        repoRoot: REPOSITORY_ROOT,
+      });
+      errors.push(...completionEvidence.errors);
+    }
   }
   const identities = source.candidate?.identities || [];
+  const basicArchiveEligible = errors.length === 0;
+  const metaEligibility = completionEvidence?.metaEligibility || {
+    schema: "PAST_EXAM_META_ELIGIBILITY_v1",
+    basicArchiveEligible,
+    advancedMetaEligible: false,
+    status: v3Completion ? "HOLD" : "NOT_APPLICABLE_LEGACY",
+    migrationGapCount: 0,
+    rows: [],
+  };
+  metaEligibility.basicArchiveEligible = basicArchiveEligible;
   return {
     status: errors.length ? "BLOCKED" : "PASS",
     errors: [...new Set(errors)],
+    completionVersion: v3Completion ? "PAST_EXAM_V3_COMPLETE" : "LEGACY",
+    eligibility: {
+      stage: "PRE_PROMOTION_HARDENING",
+      BASIC_ARCHIVE_ELIGIBLE: basicArchiveEligible,
+      ADVANCED_META_ELIGIBLE: basicArchiveEligible && metaEligibility.advancedMetaEligible === true,
+    },
+    metaEligibility,
     candidateSha: fileSha(candidateFile),
     sourceInventorySha: source.inventory && fileSha(path.join(path.dirname(candidateFile), "..", "reports", "source_inventory.json")),
     sourceIdentityMapSha: source.identityMap && fileSha(path.join(path.dirname(candidateFile), "..", "reports", "source_identity_map.json")),
@@ -649,6 +713,12 @@ export function makePromotionReceipt({ manifest, candidateFile, reviewFile, clos
     sourceFidelityEvidenceSha: hardening.sourceFidelityEvidenceSha,
     mathReviewEvidenceSha: hardening.mathReviewEvidenceSha,
     assetProvenanceEvidenceSha: hardening.assetProvenanceEvidenceSha,
+    completionVersion: hardening.completionVersion || "LEGACY",
+    basicArchiveEligible: hardening.eligibility?.BASIC_ARCHIVE_ELIGIBLE === true && closure?.status === "PASS",
+    advancedMetaEligible: hardening.eligibility?.ADVANCED_META_ELIGIBLE === true && closure?.status === "PASS",
+    metaEligibilityStatus: hardening.metaEligibility?.status || "NOT_APPLICABLE_LEGACY",
+    solutionIdentityEvidenceSha: hardening.metaEligibility?.solutionIdentityEvidenceSha || "",
+    metaDecisionEvidenceSha: hardening.metaEligibility?.metaDecisionEvidenceSha || "",
   };
 }
 

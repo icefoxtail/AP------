@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "inventory": "node run-batch.mjs --inventory",
-    "check": "node --check run-batch.mjs && node --check run-one-exam.mjs && node --check lib/exam-id.mjs && node --check lib/js-candidate.mjs && node --check lib/hardening.mjs && node --check lib/portable-package.mjs && node --check promote-reviewed-exam.mjs && node --check portable-package-check.mjs && node --check production-write-preflight.mjs && node --check release-closure-check.mjs && node --check calibration.mjs && node --check lib/calibration.mjs",
+    "check": "node --check run-batch.mjs && node --check run-one-exam.mjs && node --check lib/exam-id.mjs && node --check lib/js-candidate.mjs && node --check lib/hardening.mjs && node --check lib/completion-evidence.mjs && node --check build-completion-evidence.mjs && node --check ../../tools/meta-foundation/active-registry.mjs && node --check ../../tools/meta-foundation/validate-meta-foundation-pack.mjs && node --check ../pipeline-core/student-output.mjs && node --check lib/portable-package.mjs && node --check promote-reviewed-exam.mjs && node --check portable-package-check.mjs && node --check production-write-preflight.mjs && node --check release-closure-check.mjs && node --check calibration.mjs && node --check lib/calibration.mjs",
     "test": "node --test tests/*.test.mjs",
     "audit:visual": "python helpers/audit_generated_visual_asset_links.py --root . --out reports/visual_asset_link_audit.json"
   }

@@ -1,15 +1,55 @@
 {
   "schemaVersion": "PAST_EXAM_V3_COMPLETE",
   "executionAuthority": "archive/tools/pipeline-core/AGENT_BUDGET.md",
-  "allowedCompletionFields": ["answer", "solution", "answerStatus", "solutionStatus", "level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize"],
+  "allowedCompletionFields": ["answer", "solution", "answerStatus", "solutionStatus", "level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize"],
+  "completionFieldContract": {
+    "schemaVersion": "PAST_EXAM_COMPLETION_FIELDS_v2",
+    "solutionAuthority": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+    "metaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+    "difficultyAuthority": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "rpmLookupOrder": ["RPM_PRIMARY_README", "RPM_CANONICAL_MASTER", "RPM_CURRICULUM_SCOPE_VIEW", "RPM_TO_ACTIVE_CROSSWALK", "ACTIVE_META_FOUNDATION"],
+    "basicArchiveEligibility": ["source_identity_pass", "source_fidelity_pass", "independent_math_pass", "student_solution_pass", "typed_solution_quality_pass", "l1_l2_pass", "serialization_pass"],
+    "advancedMetaEligibility": ["active_problem_type", "active_template_or_no_separate_l4", "parent_type_match", "active_curriculum_binding", "active_cross_concepts", "active_conditions", "canonical_integration_pattern", "difficulty_v1_3_pass", "rpm_first_evidence_pass"],
+    "migrationDisposition": ["REUSE", "BINDING_MIGRATION_GAP", "KEY_MIGRATION_GAP", "TRUE_TAXONOMY_GAP"],
+    "migrationGapEffect": "BASIC_ARCHIVE_ELIGIBLE_MAY_PASS_ADVANCED_META_ELIGIBLE_FALSE",
+    "unresolvedTrueTaxonomyGapEffect": "NO_NEW_CANONICAL_KEY; HOLD_EVIDENCE_ONLY"
+  },
+  "completionFieldSchemas": {
+    "problemTypeKey": {"type": "string", "default": "", "authority": "ACTIVE canonical PT registry", "validation": "active key + source curriculum/unit binding", "migration": "blank + sidecar disposition while unresolved", "eligibilityImpact": "advanced only when absent; invalid populated key blocks BASIC"},
+    "templateKey": {"type": "string", "default": "", "authority": "ACTIVE canonical TPL registry", "validation": "active key + parentProblemTypeKey equals problemTypeKey", "migration": "blank + sidecar disposition while unresolved; NO_SEPARATE_L4 must be evidenced", "eligibilityImpact": "advanced only when absent; invalid populated key blocks BASIC"},
+    "crossConceptKeys": {"type": "unique string[]", "default": [], "authority": "ACTIVE compiled concept registry", "validation": "exact unique ACTIVE canonical keys; aliases/free text/primary duplication forbidden", "migration": "unresolved concepts omitted and recorded as HOLD", "eligibilityImpact": "advanced only when empty; invalid populated key blocks BASIC"},
+    "conditionKeys": {"type": "unique string[]", "default": [], "authority": "ACTIVE canonical condition registry", "validation": "exact unique ACTIVE canonical keys only", "migration": "unresolved conditions omitted and recorded as HOLD", "eligibilityImpact": "advanced only when empty; invalid populated key blocks BASIC"},
+    "integrationPattern": {"type": "enum", "default": "NONE", "authority": "canonical metadata_rules.json integrationPatterns", "validation": "exact canonical enum", "migration": "HOLD evidence; never free text", "eligibilityImpact": "invalid value blocks BASIC; valid value participates in advanced"},
+    "difficultyBucket": {"type": "1|2|3|4|5|UNKNOWN", "default": "UNKNOWN", "authority": "difficultyBucket 5단계 운영규칙 v1.3", "validation": "integer 1..5 or UNKNOWN", "migration": "UNKNOWN while unreviewed; HOLD lives in review status/evidence", "eligibilityImpact": "UNKNOWN prevents advanced eligibility but does not alone block BASIC"},
+    "difficultyConfidence": {"type": "high|medium|low|UNKNOWN", "default": "UNKNOWN", "authority": "difficultyBucket 5단계 운영규칙 v1.3", "validation": "canonical enum plus low-confidence recheck/adjudication for advanced PASS", "migration": "UNKNOWN or HOLD evidence", "eligibilityImpact": "UNKNOWN prevents advanced eligibility; invalid value blocks BASIC"},
+    "difficultyBoundaryFlag": {"type": "NONE|B12|B23|B34|B45|UNKNOWN", "default": "UNKNOWN", "authority": "difficultyBucket 5단계 운영규칙 v1.3", "validation": "canonical enum plus boundary review where required", "migration": "UNKNOWN or HOLD evidence", "eligibilityImpact": "UNKNOWN prevents advanced eligibility; invalid value blocks BASIC"},
+    "legacyLevelCompatibility": {"type": "NORMAL|BORDERLINE_REVIEW|BORDERLINE_ACCEPTABLE|STRONG_CONFLICT|UNKNOWN", "default": "UNKNOWN", "authority": "difficultyBucket 5단계 운영규칙 v1.3", "validation": "canonical enum; unresolved review/conflict cannot grant advanced PASS", "migration": "UNKNOWN/BORDERLINE_REVIEW with evidence", "eligibilityImpact": "unresolved value prevents advanced eligibility; invalid value blocks BASIC"}
+  },
+  "advancedMetaEvidenceContract": {
+    "schemaVersion": "PAST_EXAM_META_DECISION_EVIDENCE_v1",
+    "solutionIdentitySchemaVersion": "PAST_EXAM_SOLUTION_IDENTITY_v1",
+    "validationAuthority": "archive/tools/past-exam-pipeline/lib/completion-evidence.mjs + archive/tools/meta-foundation/active-registry.mjs",
+    "rpmLookupOrder": ["RPM_PRIMARY_README", "RPM_CANONICAL_MASTER", "RPM_CURRICULUM_SCOPE_VIEW", "RPM_TO_ACTIVE_CROSSWALK", "ACTIVE_META_FOUNDATION"],
+    "dispositions": ["REUSE", "BINDING_MIGRATION_GAP", "KEY_MIGRATION_GAP", "TRUE_TAXONOMY_GAP"],
+    "l4Dispositions": ["ASSIGNED", "NO_SEPARATE_L4"],
+    "sameStageCandidateMetaInputAllowed": false,
+    "productionWriteOnGap": "BASIC_ONLY_WITH_CANONICAL_FIELDS_BLANK_OR_VALID; ADVANCED_HOLD"
+  },
+  "solutionIdentityContract": {
+    "schemaVersion": "PAST_EXAM_SOLUTION_IDENTITY_v1",
+    "identityFields": ["sourceArchiveFile", "sourceIdentityKey", "sourceOrdinal", "contentHash", "choicesHash", "imageRefHash", "sourceIdentityFingerprint", "solutionHash"],
+    "imageRefHashSources": ["image", "visualAsset", "fullPageImagePath", "fullPageImageRelPath", "sourceEvidencePath", "sourcePageEvidencePaths"],
+    "semanticAuthority": "U1 SOURCE_ONLY independent solve plus separate U3 CANDIDATE_ONLY solution alignment bound to the exact solutionHash",
+    "ordinalOnlyBindingAllowed": false
+  },
   "repairLoop": {"workflowProfile": "PAST_EXAM", "maxRepairIterations": 3, "finalAuditCount": 1, "targetedRecheckIndependent": true, "productionRequiresOpenDefectCountZero": true},
   "requiredRenderCases": ["exam/desktop", "exam/mobile", "solution/desktop", "solution/mobile", "answer/desktop", "answer/mobile"],
-  "stages": ["RULE_PREFLIGHT", "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION", "PRODUCTION_QUALITY_PROFILE_FREEZE", "TARGET_BASELINE_REVIEW", "SOURCE_INVENTORY_FREEZE", "FULL_PAGE_EXACT_EXTRACTION", "SOURCE_FIDELITY_FREEZE", "BUILDER_INDEPENDENT_SOLVE", "SOLUTION_AND_CLASSIFICATION_BUILD", "ALL_QUESTION_VISUAL_TRIAGE", "EXPECTED_FACT_FREEZE", "NUMERIC_VISUAL_BUILD", "STATIC_AND_RENDER_CAPTURE", "FINAL_AUDIT_SEALED_U1_U2_U3", "TARGETED_REPAIR", "TARGETED_RECHECK_BOUNDED_3_ITERATIONS", "PROMOTION", "FINAL_CLOSURE"],
+  "stages": ["RULE_PREFLIGHT", "CANONICAL_PRODUCTION_SAMPLE_CALIBRATION", "PRODUCTION_QUALITY_PROFILE_FREEZE", "TARGET_BASELINE_REVIEW", "SOURCE_INVENTORY_FREEZE", "FULL_PAGE_EXACT_EXTRACTION", "SOURCE_FIDELITY_FREEZE", "BUILDER_INDEPENDENT_SOLVE", "SMALL_BLACKBOARD_STUDENT_SOLUTION", "L1_L2_CLASSIFICATION", "RPM_PRIMARY_README_LOOKUP", "RPM_CANONICAL_MASTER_LOOKUP", "RPM_CURRICULUM_SCOPE_VIEW_LOOKUP", "RPM_ACTIVE_CROSSWALK_LOOKUP", "ACTIVE_META_FOUNDATION_COMPARISON", "L3_L4_CROSSCONCEPT_CONDITION_INTEGRATION_DIFFICULTY_BUILD", "SOLUTION_IDENTITY_EVIDENCE_FREEZE", "ALL_QUESTION_VISUAL_TRIAGE", "EXPECTED_FACT_FREEZE", "NUMERIC_VISUAL_BUILD", "STATIC_AND_RENDER_CAPTURE", "FINAL_AUDIT_SEALED_U1_U2_U3", "TARGETED_REPAIR", "TARGETED_RECHECK_BOUNDED_3_ITERATIONS", "PROMOTION", "FINAL_CLOSURE"],
   "geometryPolicyRef": {
     "path": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
     "version": "v1.1",
-    "bytes": 65827,
-    "sha256": "sha256:e136ca000b5e16fa0bd493cf7067c1e219683bfecbe4daa7e487f020b87bac3b"
+    "bytes": 68608,
+    "sha256": "sha256:603bd386655bdba191ef34bee95722e84017586988dd4b262c9d9dd5479dee77"
   },
   "geometryPolicyScope": "PROJECT_REFERENCED_ONLY",
   "logicOverlayAuthority": "QUALIFICATION_ONLY_NOT_PRODUCTION_RELEASE",
