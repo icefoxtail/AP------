@@ -29,7 +29,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -59,7 +66,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -89,7 +103,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -119,7 +140,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -149,7 +177,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -179,7 +214,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -209,7 +251,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -239,7 +288,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -265,11 +321,18 @@ window.questionBank = [
       "$-\\dfrac14x+\\dfrac74$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 분모를 같게 만든 뒤 분자끼리 계산한다.\\n$\\dfrac12(-x-3)=\\dfrac{-2x-6}{4}$이므로 $\\dfrac{-2x-6}{4}-\\dfrac{3x-1}{4}=\\dfrac{-5x-5}{4}=-\\dfrac54x-\\dfrac54$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 두 식의 분모를 $4$로 맞춘 뒤 분자끼리 계산한다.\n$\\dfrac12(-x-3)=\\dfrac{-x-3}{2}=\\dfrac{-2x-6}{4}$이다.\n\n따라서\n$\\dfrac{-2x-6}{4}-\\dfrac{3x-1}{4}$\n$=\\dfrac{-2x-6-(3x-1)}{4}$\n$=\\dfrac{-5x-5}{4}$\n$=-\\dfrac54x-\\dfrac54$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -299,7 +362,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -329,7 +399,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -355,11 +432,18 @@ window.questionBank = [
       "(가) ㄱ, (나) ㄴ·ㄷ"
     ],
     "answer": "②",
-    "solution": "[키포인트] 한 단계의 식 변형이 어떤 등식의 성질과 이항을 사용했는지 구분한다.\\n(가)에서 $3x+1=2$를 $3x=2-1$로 바꾸는 것은 양변에서 $1$을 빼는 등식의 성질 ㄱ을 이용한 것이면서 $+1$을 부호를 바꾸어 오른쪽으로 옮긴 이항 ㄴ으로도 볼 수 있다. (나)에서 $3x=1$을 $x=\\dfrac13$으로 바꾸는 것은 양변을 $3$으로 나눈 것이므로 ㄷ이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 식이 바뀌는 각 단계에서 사용한 등식의 성질과 이항을 구분한다.\n(가) $3x+1=2\\rightarrow3x=2-1$에서 양변에서 $1$을 뺀 것으로 볼 수 있으므로 ㄱ이다. 동시에 $+1$을 부호를 바꾸어 오른쪽으로 옮긴 이항이므로 ㄴ도 해당한다.\n\n(나) $3x=1\\rightarrow x=\\dfrac13$은 양변을 $3$으로 나눈 것이므로 ㄷ이다.\n\n따라서 (가)는 ㄱ·ㄴ, (나)는 ㄷ이므로 정답은 ②이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -389,7 +473,14 @@ window.questionBank = [
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -415,11 +506,18 @@ window.questionBank = [
       "$\\dfrac74$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 첫 번째 방정식의 공통 해를 먼저 구한 뒤 그 값을 두 번째 방정식에 대입한다.\\n첫째 식은 $-0.6x-2.8=0.9x+1.7$이므로 $-1.5x=4.5$, 따라서 $x=-3$이다. 이를 둘째 식에 대입하면 $0.4(-3-2a)-\\dfrac13=\\dfrac{4a}{3}$이다. 양변에 15를 곱하면 $-23-12a=20a$이므로 $-23=32a$, $a=-\\dfrac{23}{32}$이다.\\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 두 방정식의 해가 같으므로 첫 번째 방정식에서 공통 해를 먼저 구해 두 번째 식에 넣는다.\n첫 번째 식에서\n$\\dfrac15(-3x-14)=0.9x+1.7$\n$-0.6x-2.8=0.9x+1.7$\n$-1.5x=4.5$\n이므로 $x=-3$이다.\n\n이 값을 두 번째 식에 대입하면\n$0.4(-3-2a)-\\dfrac13=\\dfrac{a(8)}6=\\dfrac{4a}{3}$이다.\n양변에 $15$를 곱하면\n$6(-3-2a)-5=20a$\n$-23-12a=20a$\n$-23=32a$\n이므로 $a=-\\dfrac{23}{32}$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION",
     "subUnit": "일차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -451,7 +549,17 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q15-solution.svg",
+    "problemTypeKey": "PT_COORDINATE_POINT_READING",
+    "templateKey": "TPL_COORDINATE_POINT_READING_CORE"
   },
   {
     "id": 16,
@@ -479,11 +587,18 @@ window.questionBank = [
       "좌표축이 정해져 있는 평면을 좌표평면이라고 한다."
     ],
     "answer": "①, ⑤",
-    "solution": "[키포인트] 좌표의 순서와 사분면, 좌표축의 정의를 각각 확인한다.\\n원점은 $O(0,0)$이므로 ①은 옳다. $P(a,b)$의 $x$좌표는 $a$, $y$좌표는 $b$이므로 ②는 틀리고, 그림의 $A$는 제3사분면에 있어 ③도 틀리다. $x$축 위의 점은 $y$좌표가 0이므로 ④는 틀리며, 좌표축이 정해진 평면을 좌표평면이라 하므로 ⑤는 옳다.\\n따라서 정답은 ①, ⑤이다.",
+    "solution": "[키포인트] 좌표의 순서, 사분면의 부호, 좌표축의 성질을 보기별로 확인한다.\n① 원점은 $O(0,0)$이므로 옳다.\n② $P(a,b)$의 $x$좌표는 $a$, $y$좌표는 $b$이므로 틀리다.\n③ 그림의 $A$는 제3사분면에 있으므로 틀리다.\n④ $x$축 위의 점은 $y$좌표가 $0$이므로 틀리다.\n⑤ 좌표축이 정해진 평면을 좌표평면이라고 하므로 옳다.\n\n따라서 정답은 ①, ⑤이다.",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -513,7 +628,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM"
   },
   {
     "id": 18,
@@ -539,7 +663,15 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q18-solution.svg"
   },
   {
     "id": 19,
@@ -567,11 +699,21 @@ window.questionBank = [
       "관람차가 시작 지점에서 올라갔다가 다시 그 지점으로 내려올 때까지 걸리는 시간은 30분이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 그래프의 최고점, 반복 주기와 특정 높이를 지나는 시각을 직접 읽는다.\\n최고 높이는 30m이고 최고점은 10분, 30분, 50분에 나타난다. 높이 20m는 60분 동안 6번 지나며, 시작 높이로 되돌아오는 데에는 20분이 걸린다. 따라서 30분이 걸린다는 ⑤가 옳지 않다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 최고점과 반복 간격, 같은 높이를 지나는 횟수를 그래프에서 직접 읽는다.\n최고 높이는 $30\\,\\mathrm m$이고 최고점은 $10$분, $30$분, $50$분에 나타난다.\n따라서 최고점 사이의 간격은 $20$분이다.\n높이 $20\\,\\mathrm m$를 지나는 때는 $60$분 동안 모두 $6$번이다.\n또 시작 높이에서 출발해 다시 같은 시작 높이로 돌아오는 데 걸리는 시간은 $20$분이다.\n\n따라서 $30$분이 걸린다는 ⑤가 옳지 않으므로 정답은 ⑤이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+    "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+    "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution.svg"
   },
   {
     "id": 20,
@@ -601,7 +743,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
   },
   {
     "id": 21,
@@ -629,11 +780,19 @@ window.questionBank = [
       "$36$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 교점의 좌표를 두 식에 각각 대입해 $a$, $b$를 구한다.\\n$(-6,2)$가 $y=ax$ 위에 있으므로 $2=-6a$, 따라서 $a=-\\dfrac13$이다. 또 $2=\\dfrac{b}{-6}$이므로 $b=-12$이다. 따라서 $ab=\\left(-\\dfrac13\\right)(-12)=4$이다.\\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 교점 $(-6,2)$는 두 그래프 위에 동시에 있으므로 두 식에 각각 대입한다.\n$y=ax$에 대입하면\n$2=-6a$이므로 $a=-\\dfrac13$이다.\n\n$y=\\dfrac bx$에 대입하면\n$2=\\dfrac{b}{-6}$이므로 $b=-12$이다.\n\n따라서\n$ab=\\left(-\\dfrac13\\right)(-12)=4$이다.\n\n정답은 ④이다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -656,11 +815,18 @@ window.questionBank = [
     "content": "서술형1. 오른쪽 표는 A 식품과 B 식품의 100 g당 칼륨 함량을 나타낸 것이다. (1) A 식품 $x$ g과 B 식품 $y$ g을 섭취하였을 때 섭취한 칼륨의 양을 문자를 사용한 식으로 나타내고, (2) A 식품 200 g과 B 식품 150 g을 섭취하였을 때 섭취한 칼륨의 양을 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "(1) $4.5x+3y\\,\\mathrm{mg}$ (2) $1350\\,\\mathrm{mg}$",
-    "solution": "[키포인트] 100g당 함량을 1g당 함량으로 바꾼 뒤 섭취량을 곱한다.\\nA 식품은 1g당 $4.5\\,\\mathrm{mg}$, B 식품은 1g당 $3\\,\\mathrm{mg}$이므로 $x$g과 $y$g을 섭취한 칼륨의 양은 $4.5x+3y\\,\\mathrm{mg}$이다. $x=200$, $y=150$을 대입하면 $4.5\\times200+3\\times150=900+450=1350\\,\\mathrm{mg}$이다.\\n따라서 (1) $4.5x+3y\\,\\mathrm{mg}$, (2) $1350\\,\\mathrm{mg}$이다.",
+    "solution": "[키포인트] 표의 $100\\,\\mathrm g$당 함량을 먼저 $1\\,\\mathrm g$당 함량으로 바꾼다.\nA 식품은 $100\\,\\mathrm g$당 $450\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $4.5\\,\\mathrm{mg}$이다.\nB 식품은 $100\\,\\mathrm g$당 $300\\,\\mathrm{mg}$이므로 $1\\,\\mathrm g$당 $3\\,\\mathrm{mg}$이다.\n\n(1) A 식품 $x\\,\\mathrm g$, B 식품 $y\\,\\mathrm g$의 칼륨 양은\n$4.5x+3y\\,\\mathrm{mg}$이다.\n\n(2) $x=200$, $y=150$을 대입하면\n$4.5\\times200+3\\times150$\n$=900+450$\n$=1350\\,\\mathrm{mg}$이다.\n\n따라서 (1) $4.5x+3y\\,\\mathrm{mg}$, (2) $1350\\,\\mathrm{mg}$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -681,11 +847,18 @@ window.questionBank = [
     "content": "서술형2. 집에서 학교까지 가는 데 시속 40km의 버스를 타고 갈 때 시속 8km인 자전거로 가는 것보다 40분 일찍 도착한다. 집과 학교 사이의 거리를 구하는 과정을 아래 내용이 포함되도록 서술하시오. [7점]\\n<div class=\"question-note-box\">(1) 미지수 정하기　　(2) 일차방정식 세우기<br>(3) 일차방정식 풀기　　(4) 문제의 답</div>",
     "choices": [],
     "answer": "$\\dfrac{20}{3}\\,\\mathrm{km}$",
-    "solution": "[키포인트] 같은 거리를 이동할 때 자전거 시간에서 버스 시간을 뺀 값이 40분이다.\\n집과 학교 사이의 거리를 $x\\,\\mathrm{km}$라 하면 자전거로 걸리는 시간은 $\\dfrac{x}{8}$시간, 버스로 걸리는 시간은 $\\dfrac{x}{40}$시간이다. 40분은 $\\dfrac23$시간이므로 $\\dfrac{x}{8}-\\dfrac{x}{40}=\\dfrac23$이다. 왼쪽을 정리하면 $\\dfrac{x}{10}=\\dfrac23$이므로 $x=\\dfrac{20}{3}$이다.\\n따라서 집과 학교 사이의 거리는 $\\dfrac{20}{3}\\,\\mathrm{km}$이다.",
+    "solution": "[키포인트] 같은 거리 $x$를 두 이동수단으로 갈 때의 시간 차가 $40$분이라는 식을 세운다.\n(1) 집과 학교 사이의 거리를 $x\\,\\mathrm{km}$라 하자.\n\n(2) 자전거 시간은 $\\dfrac{x}{8}$시간, 버스 시간은 $\\dfrac{x}{40}$시간이다. $40$분은 $\\dfrac23$시간이므로\n$\\dfrac{x}{8}-\\dfrac{x}{40}=\\dfrac23$이다.\n\n(3) 양변을 정리하면\n$\\dfrac{5x-x}{40}=\\dfrac23$\n$\\dfrac{x}{10}=\\dfrac23$\n$x=\\dfrac{20}{3}$이다.\n\n(4) 따라서 집과 학교 사이의 거리는 $\\dfrac{20}{3}\\,\\mathrm{km}$이다.",
     "subUnitKey": "M1-03-LINEAR_EQUATION_WORD",
     "subUnit": "일차방정식의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -708,10 +881,18 @@ window.questionBank = [
     "content": "서술형3. 토끼와 거북의 달리기 시험에서 시간에 따른 이동 거리의 변화를 나타낸 그래프이다. 이를 통해 알 수 있는 사실을 두 가지 서술하시오. (단, 시간과 거리 중 적어도 하나에 대한 정보를 포함하도록 서술하시오.) [6점]",
     "choices": [],
     "answer": "(1) 토끼는 달리기 시험이 시작된 지 10분 뒤에 출발한다. (2) 거북은 출발 후 60분에 2km 지점에 도착한다.",
-    "solution": "[키포인트] 그래프에서 각 동물의 출발 시각과 특정 거리까지 도달한 시각을 좌표로 읽는다.\\n토끼의 그래프는 $(10,0)$에서 시작하므로 달리기 시험이 시작된 지 10분 뒤에 출발한다. 거북의 그래프는 원점에서 시작하는 직선이고 $(60,2)$를 지나므로 거북은 출발 후 60분에 2km 지점에 도착한다.\\n따라서 그래프에서 알 수 있는 사실의 예는 위 두 가지이다.",
+    "solution": "[키포인트] 그래프에서 선이 시작하는 점과 특정 거리 $2\\,\\mathrm{km}$에 도달하는 점을 좌표로 읽는다.\n토끼의 그래프는 $(10,0)$에서 시작한다. 따라서 토끼는 시험이 시작된 지 $10$분 뒤에 출발한다.\n\n거북의 그래프는 원점에서 시작하여 $(60,2)$를 지난다. 따라서 거북은 출발 후 $60$분에 $2\\,\\mathrm{km}$ 지점에 도착한다.\n\n이 두 사실은 모두 그래프에서 직접 읽을 수 있다.",
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution.svg"
   }
 ];
