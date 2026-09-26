@@ -31,7 +31,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q1-solution.svg"
   },
   {
     "id": 2,
@@ -191,7 +192,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q6-solution.svg"
   },
   {
     "id": 7,
@@ -223,7 +225,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q7-solution.svg"
   },
   {
     "id": 8,
@@ -346,7 +349,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q11-solution.svg"
   },
   {
     "id": 12,
@@ -410,7 +414,8 @@ window.questionBank = [
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -569,7 +574,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q18-solution.svg"
   },
   {
     "id": 19,
@@ -601,7 +607,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q19-solution.svg"
   },
   {
     "id": 20,
@@ -708,10 +715,10 @@ window.questionBank = [
     "answer": "(1) $120\\mathrm{cm}^2$ (2) $50\\mathrm{cm}^2$",
     "solution": "[키포인트] 마름모의 넓이는 두 대각선의 길이의 곱의 절반이며, 같은 높이를 가진 삼각형의 넓이는 밑변의 길이에 비례한다.\n(1) 조건 정리: 마름모의 대각선은 서로를 이등분하므로 $AC=2AO$, $BD=2BO$이다.\n(1) 풀이 방향: 두 대각선의 전체 길이를 구해 마름모 넓이 공식에 대입한다.\n(1) 정석 풀이: $AC=2\\times10=20\\mathrm{cm}$, $BD=2\\times6=12\\mathrm{cm}$이다. 따라서 마름모의 넓이는 $\\dfrac{1}{2}\\times20\\times12=120\\mathrm{cm}^2$이다.\n(2) 조건 정리: $AC=16\\mathrm{cm}$, $BD=20\\mathrm{cm}$이고 $BP:PC=5:3$이다.\n(2) 풀이 방향: 먼저 마름모 전체와 삼각형 $DBC$의 넓이를 구한 뒤, 밑변의 비로 삼각형 $DBP$의 넓이를 나눈다.\n(2) 정석 풀이: 마름모 $ABCD$의 넓이는 $\\dfrac{1}{2}\\times16\\times20=160\\mathrm{cm}^2$이다. 대각선 $BD$는 마름모를 넓이가 같은 두 삼각형으로 나누므로 $\\triangle DBC$의 넓이는 $160\\div2=80\\mathrm{cm}^2$이다. 삼각형 $DBP$와 $DPC$는 높이가 같으므로 넓이의 비는 밑변의 비 $BP:PC=5:3$과 같다. 따라서 $\\triangle DBP$의 넓이는 $80\\times\\dfrac{5}{8}=50\\mathrm{cm}^2$이다.\n따라서 (1) $120\\mathrm{cm}^2$, (2) $50\\mathrm{cm}^2$이다.",
     "image": "assets/images/24_매산중_2학기_중간_중2_수학/q23.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 24,
@@ -737,6 +744,7 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산중_2학기_중간_중2_수학/q24-solution.svg"
   }
 ];
