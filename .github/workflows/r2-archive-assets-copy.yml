@@ -3,6 +3,7 @@ name: R2 Archive Assets Copy
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
       - "archive/assets/images/**"
       - ".github/workflows/r2-archive-assets-copy.yml"
