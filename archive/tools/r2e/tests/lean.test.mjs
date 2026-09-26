@@ -32,6 +32,8 @@ function fixture() {
   };
   const sourceArchiveFile = examFile.replace(/^archive\/exams\//, '');
   const questionUid = `qid_v1_${sha(`${sourceArchiveFile}#1`)}`;
+  const sourceIdentityKey = `${sha('synthetic-source-pdf')}|1`;
+  question.sourceIdentityKey = sourceIdentityKey;
   write(examFile, `window.questionBank=${JSON.stringify([question])};`);
   const main = commit([examFile], 'main'); git(repo, ['push', 'origin', 'main']);
   for (const g of ['m2', 'm3']) git(repo, ['push', 'origin', `${main}:refs/heads/work/intake/${g}`]);
@@ -39,7 +41,7 @@ function fixture() {
   const receiptPath = 'archive/data/r2e-intake/m2/test.json';
   const input = {
     sourceIdentity: {
-      sourceArchiveFile, questionUid, sourceOrdinal: 1,
+      sourceArchiveFile, questionUid, sourceIdentityKey, sourceOrdinal: 1,
       contentHash: objectSha(question.content), choicesHash: objectSha(question.choices),
       imageRefHash: objectSha({ image: '', visualAsset: '', fullPageImagePath: '', fullPageImageRelPath: '', sourceEvidencePath: '', sourcePageEvidencePaths: [] }),
     },

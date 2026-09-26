@@ -88,12 +88,19 @@ function viewPathFor(context, rpmPath) {
 function canonicalSourceFingerprint(source) {
   return objectSha({
     sourceArchiveFile: text(source.sourceArchiveFile),
-    sourceIdentityKey: text(source.questionUid || source.sourceIdentityKey),
+    sourceIdentityKey: text(source.sourceIdentityKey || source.questionUid),
     sourceOrdinal: Number(source.sourceOrdinal),
     contentHash: text(source.contentHash),
     choicesHash: text(source.choicesHash),
     imageRefHash: text(source.imageRefHash),
   });
+}
+
+export function questionUidForSource(sourceArchiveFile, sourceOrdinal) {
+  const normalized = text(sourceArchiveFile).normalize('NFC').replaceAll('\\', '/').replace(/^archive\/exams\//, '');
+  const ordinal = Number(sourceOrdinal);
+  if (!normalized || !Number.isInteger(ordinal) || ordinal < 1 || normalized.split('/').includes('..')) throw new Error('META_CANONICAL_SOURCE_UID_INPUT_INVALID');
+  return `qid_v1_${crypto.createHash('sha256').update(`${normalized}#${ordinal}`).digest('hex')}`;
 }
 
 function containsBannedKey(value, pathPart = '$') {
@@ -136,12 +143,13 @@ export function buildDecisionIsolatedInput(input) {
   if (input.activeSearchEvidence) assertAllowedKeys(input.activeSearchEvidence, new Set(['status', 'searchedGlobalActive', 'candidateKeys', 'registrySha', 'searchMethod', 'searchedScope']), 'META_ACTIVE_SEARCH_EVIDENCE');
   const leakage = containsBannedKey(decision);
   if (leakage.length) throw new Error(`FORBIDDEN_CANDIDATE_INPUT:${leakage.join(',')}`);
-  const sourceIdentityKey = requireString(source.questionUid || source.sourceIdentityKey, 'META_SOURCE_UID_REQUIRED');
+  const questionUid = requireString(source.questionUid || source.sourceIdentityKey, 'META_SOURCE_UID_REQUIRED');
+  const sourceIdentityKey = requireString(source.sourceIdentityKey || source.questionUid, 'META_SOURCE_IDENTITY_KEY_REQUIRED');
   const sourceArchiveFile = requireString(source.sourceArchiveFile, 'META_SOURCE_FILE_REQUIRED');
   const sourceOrdinal = Number(source.sourceOrdinal);
   if (!Number.isInteger(sourceOrdinal) || sourceOrdinal < 1) throw new Error('META_SOURCE_ORDINAL_INVALID');
   for (const field of ['contentHash', 'choicesHash', 'imageRefHash']) requireString(source[field], `META_SOURCE_${field.toUpperCase()}_REQUIRED`);
-  const sourceFingerprint = canonicalSourceFingerprint({ ...source, sourceIdentityKey });
+  const sourceFingerprint = canonicalSourceFingerprint({ ...source, questionUid, sourceIdentityKey });
   const suppliedFingerprint = text(source.sourceIdentityFingerprint || source.sourceFingerprint);
   if (suppliedFingerprint && suppliedFingerprint !== sourceFingerprint) throw new Error('META_SOURCE_FINGERPRINT_MISMATCH');
   const solutionHash = requireString(solution.solutionHash, 'META_VERIFIED_SOLUTION_HASH_REQUIRED');
@@ -169,7 +177,8 @@ export function buildDecisionIsolatedInput(input) {
   const bundle = {
     sourceIdentity: {
       sourceArchiveFile,
-      questionUid: sourceIdentityKey,
+      questionUid,
+      sourceIdentityKey,
       sourceOrdinal,
       contentHash: text(source.contentHash),
       choicesHash: text(source.choicesHash),
@@ -577,6 +586,7 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
     const canonicalSourceKey = normalizeSource(sourceArchiveFile).normalize('NFC');
     const expectedUid = `qid_v1_${crypto.createHash('sha256').update(`${canonicalSourceKey}#${i + 1}`).digest('hex')}`;
     if (uid !== expectedUid) errors.push(`R2E_META_INPUT_CANONICAL_UID_MISMATCH:${uid}`);
+    if (question?.sourceIdentityKey && source.sourceIdentityKey !== question.sourceIdentityKey) errors.push(`R2E_META_INPUT_SOURCE_IDENTITY_KEY_MISMATCH:${uid}`);
     const actualHashes = question ? {
       contentHash: objectSha(question.content ?? ''),
       choicesHash: objectSha(question.choices ?? []),

@@ -9,6 +9,7 @@ import {
   META_LOOKUP_ORDER as RPM_LOOKUP_ORDER,
   buildResolverBackedMetaEvidence,
   buildResolverDecisionEvidence,
+  questionUidForSource,
   validateMetaFinalization, validateResolverEvidence,
 } from '../../meta-foundation/rpm-active-resolver.mjs';
 
@@ -91,6 +92,11 @@ function validateMetaRow({ row, question, identity, solutionReview, repoRoot, re
   for (const field of ['contentHash', 'choicesHash', 'imageRefHash', 'sourceIdentityFingerprint', 'solutionHash']) if (!equal(row[field], identity[field])) errors.push(`META_EVIDENCE_${field.toUpperCase()}_MISMATCH:${key}`);
   if (!text(row.primaryMethod) || !text(row.decisiveStep) || !text(row.semanticReason)) errors.push(`META_EVIDENCE_SEMANTIC_REASON_REQUIRED:${key}`);
   if (row.primaryMethod !== solutionReview?.primaryMethod || !(solutionReview?.decisiveSteps || []).includes(row.decisiveStep)) errors.push(`META_EVIDENCE_SOLUTION_METHOD_MISMATCH:${key}`);
+  let expectedUid = '';
+  try { expectedUid = questionUidForSource(identity.sourceArchiveFile, identity.sourceOrdinal); } catch { /* identity errors are reported above */ }
+  if (input?.sourceIdentity?.sourceIdentityKey !== identity.sourceIdentityKey || !expectedUid || input?.sourceIdentity?.questionUid !== expectedUid) {
+    errors.push(`META_EVIDENCE_CANONICAL_UID_OR_SOURCE_KEY_MISMATCH:${key}`);
+  }
   const resolution = row.resolverEvidence;
   if (!resolution) errors.push(`SHARED_META_RESOLVER_EVIDENCE_REQUIRED:${key}`);
   const resolverCheck = resolution && input ? validateResolverEvidence(input, resolution, { repoRoot, registry }) : { status: 'FAIL', errors: ['META_RESOLVER_EVIDENCE_MISSING'] };

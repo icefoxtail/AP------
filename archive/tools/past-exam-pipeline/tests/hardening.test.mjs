@@ -19,7 +19,7 @@ import { validatePortableZip } from "../lib/portable-package.mjs";
 import { makeQuestionSkeleton } from "../lib/js-candidate.mjs";
 import { makeSolutionIdentityDraft, createMetaDecisionDraft, RPM_LOOKUP_ORDER } from "../lib/completion-evidence.mjs";
 import { loadActiveMetaRegistry } from "../../meta-foundation/active-registry.mjs";
-import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, resolveMetaRoute } from "../../meta-foundation/rpm-active-resolver.mjs";
+import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, questionUidForSource, resolveMetaRoute } from "../../meta-foundation/rpm-active-resolver.mjs";
 
 const sha = value => `sha256:${crypto.createHash("sha256").update(value).digest("hex")}`;
 const repoRoot = path.resolve(fileURLToPath(new URL('../../../../', import.meta.url)));
@@ -261,7 +261,8 @@ function activateV3(f, disposition = 'REUSE') {
   const activeRegistry = loadActiveMetaRegistry(root);
   const resolverInput = {
     sourceIdentity: {
-      sourceArchiveFile: identity.sourceArchiveFile, questionUid: identity.sourceIdentityKey, sourceOrdinal: identity.sourceOrdinal,
+      sourceArchiveFile: identity.sourceArchiveFile, questionUid: questionUidForSource(identity.sourceArchiveFile, identity.sourceOrdinal),
+      sourceIdentityKey: identity.sourceIdentityKey, sourceOrdinal: identity.sourceOrdinal,
       contentHash: identity.contentHash, choicesHash: identity.choicesHash, imageRefHash: identity.imageRefHash,
       sourceIdentityFingerprint: identity.sourceIdentityFingerprint,
     },
@@ -576,7 +577,7 @@ test('source → candidate → solution identity → RPM/ACTIVE metadata → pre
     const pass = validatePastExamPromotion(f);
     assert.equal(pass.status, 'PASS', JSON.stringify(pass.errors));
     assert.equal(pass.eligibility.BASIC_ARCHIVE_ELIGIBLE, true);
-    assert.equal(pass.eligibility.ADVANCED_META_ELIGIBLE, true);
+    assert.equal(pass.eligibility.ADVANCED_META_ELIGIBLE, true, JSON.stringify({ errors: pass.errors, metaEligibility: pass.metaEligibility }));
     assert.equal(pass.metaEligibility.status, 'PASS');
     assert.equal(pass.metaEligibility.rows[0].disposition, 'EXISTING_REUSE');
     assert.equal(fs.existsSync(path.join(repoRoot, 'archive/exams', f.manifest.archiveRelativePath)), false);
