@@ -29,11 +29,20 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정비례식 $y=2x$의 그래프는 원점을 지나고, 기울기가 양수인 직선이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: $x=0$을 대입하면 $y=0$이므로 그래프는 원점 $(0,0)$을 지난다. 또 $x=2$일 때 $y=2\\times2=4$이므로 $(2,4)$를 지난다. 기울기가 양수이므로 제1사분면과 제3사분면을 지나며, 제2사분면과 제4사분면은 지나지 않는다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
+    "solution": "[키포인트] 정비례 관계 $y=2x$의 그래프는 원점을 지나며, $x$가 양수일 때 $y$도 양수이다.\nㄱ. $x=0$이면 $y=0$이므로 원점 $(0,0)$을 지난다. → 참\nㄴ. $x=2$이면 $y=2\\times2=4$이므로 점 $(2,4)$를 지난다. → 참\nㄷ. $x$와 $y$의 부호가 같으므로 제1사분면과 제3사분면을 지난다. → 거짓\n따라서 옳은 것은 ㄱ, ㄴ이므로 정답은 ②이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -61,11 +70,20 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정비례식에서는 모든 점의 좌표가 $y=3x$를 만족한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: $(2,a)$를 대입하면 $a=3\\times2=6$이다. $(b,12)$를 대입하면 $12=3b$이므로 $b=4$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "정비례 관계",
+    "solution": "[키포인트] 그래프 위의 점은 모두 $y=3x$를 만족한다.\n점 $(2,a)$를 대입하면\n$a=3\\times2=6$이다.\n점 $(b,12)$를 대입하면\n$12=3b$,\n$b=4$이다.\n따라서\n$a-b=6-4=2$이므로 정답은 ⑤이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -93,14 +111,24 @@ window.questionBank = [
       "$\\dfrac{3}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 정비례식 $y=ax$에서 $a$는 그래프 위 한 점의 $y$좌표를 $x$좌표로 나눈 값이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 그림에서 그래프는 점 $(-2,3)$을 지난다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 정비례 관계 $y=ax$에서 그래프 위의 점 $(x,y)$를 이용하면 $a=\\dfrac{y}{x}$이다.\n그림에서 직선은 점 $(-2,3)$을 지난다.\n따라서\n$3=a\\times(-2)$,\n$a=-\\dfrac{3}{2}$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q3.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "정비례 그래프",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q3-solution.svg"
   },
   {
     "id": 4,
@@ -127,11 +155,20 @@ window.questionBank = [
       "$y=\\dfrac{5}{x}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 반비례 관계는 $y=\\dfrac{a}{x}$ 또는 $xy=a$로 나타낸다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: $x=2$, $y=5$를 $xy=a$에 대입하면 $a=2\\times5=10$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "반비례 관계",
+    "solution": "[키포인트] 반비례 관계는 $y=\\dfrac{a}{x}$로 나타내고, 그래프 위에서는 $xy=a$이다.\n$x=2$, $y=5$이므로\n$a=2\\times5=10$이다.\n따라서 관계식은\n$y=\\dfrac{10}{x}$이므로 정답은 ④이다.",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -160,14 +197,24 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": "[키포인트] 반비례 그래프 위의 점에서는 $xy$가 일정하다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 점 C의 좌표를 $(x,y)$라고 하면 $y=\\dfrac{15}{x}$이므로 $xy=15$이다. 직사각형 AOBC의 가로와 세로의 길이가 각각 $x,y$이므로 넓이는 $xy=15$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 반비례 그래프 $y=\\dfrac{15}{x}$ 위의 점에서는 $xy=15$이다.\n점 C의 좌표를 $(x,y)$라 하자.\n$y=\\dfrac{15}{x}$이므로\n$xy=15$이다.\n직사각형 AOBC의 가로와 세로의 길이는 각각 $x$, $y$이므로\n넓이 $=xy=15$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q5.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "반비례 그래프",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+    "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -195,14 +242,24 @@ window.questionBank = [
       "$(-3,2)$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 반비례 그래프 위에서는 $xy$의 값이 일정하다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 그림에 표시된 점 $(-2,4)$를 이용하면 반비례 상수는 $(-2)\\times4=-8$이다. 각 선택지의 $xy$를 계산한다. ① $-8$, ② $-8$, ③ $-8$, ④ $-8$이므로 모두 그래프 위에 있다. ⑤는 $(-3)\\times2=-6$으로 상수 $-8$과 다르다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 반비례 그래프 위의 모든 점은 같은 값의 $xy$를 가진다.\n그림의 점 $(-2,4)$에서\n$xy=(-2)\\times4=-8$이다.\n① $1\\times(-8)=-8$\n② $2\\times(-4)=-8$\n③ $4\\times(-2)=-8$\n④ $(-1)\\times8=-8$\n⑤ $(-3)\\times2=-6$\n따라서 그래프 위의 점이 아닌 것은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q6.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "반비례 그래프",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -231,14 +288,24 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 그래프의 교점은 두 관계식을 동시에 만족한다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 그림에서 교점의 $x$좌표가 $2$이고, 직선 $y=-2x$ 위의 점이므로 $y=-2\\times2=-4$이다. 이 점을 $y=\\dfrac{a}{x}$에 대입하면 $-4=\\dfrac{a}{2}$이므로 $a=-8$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 두 그래프의 교점은 두 관계식을 모두 만족한다.\n그림에서 교점의 $x$좌표는 $2$이다.\n$y=-2x$에 $x=2$를 대입하면\n$y=-2\\times2=-4$이다.\n따라서 교점은 $(2,-4)$이고, 이 점이 $y=\\dfrac{a}{x}$ 위에 있으므로\n$-4=\\dfrac{a}{2}$,\n$a=-8$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q7.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "정비례와 반비례 그래프",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -246,9 +313,9 @@ window.questionBank = [
     "category": "평면도형의 성질",
     "originalCategory": "평면도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-06",
-    "standardUnit": "평면도형의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -266,14 +333,24 @@ window.questionBank = [
       "$72^\\circ$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 교차하는 두 직선에서 맞꼭지각의 크기는 같다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 삼각형 AOB에서 $\\angle AOB=180^\\circ-40^\\circ-58^\\circ=82^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 삼각형의 내각의 합과 맞꼭지각을 차례로 이용한다.\n$\\triangle AOB$에서\n$\\angle AOB=180^\\circ-40^\\circ-58^\\circ=82^\\circ$이다.\n$\\angle AOB$와 $\\angle COD$는 맞꼭지각이므로\n$\\angle COD=82^\\circ$이다.\n$\\triangle COD$에서\n$x=180^\\circ-82^\\circ-30^\\circ=68^\\circ$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q8.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "각의 성질",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q8-solution.svg"
   },
   {
     "id": 9,
@@ -301,14 +378,24 @@ window.questionBank = [
       "$140^\\circ$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 다각형의 내각의 합은 $(n-2)\\times180^\\circ$이고, 한 외각과 그에 이웃한 내각의 합은 $180^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 육각형의 내각의 합은 $(6-2)\\times180^\\circ=720^\\circ$이다. 그림의 오른쪽 아래 꼭짓점에서 외각이 $50^\\circ$이므로 그 내각은 $180^\\circ-50^\\circ=130^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 육각형의 내각의 합은 $720^\\circ$이고, 한 외각과 그에 이웃한 내각의 합은 $180^\\circ$이다.\n$50^\\circ$의 외각과 이웃한 내각은\n$180^\\circ-50^\\circ=130^\\circ$이다.\n따라서\n$x+110^\\circ+140^\\circ+90^\\circ+120^\\circ+130^\\circ=720^\\circ$,\n$x=130^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q9.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형의 각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q9-solution.svg"
   },
   {
     "id": 10,
@@ -336,11 +423,20 @@ window.questionBank = [
       "한 꼭짓점에서 대각선을 그어 만들어지는 삼각형은 13개이다."
     ],
     "answer": "③",
-    "solution": "[키포인트] (가), (나)를 만족하는 다각형은 정다각형이고, (다)에서 변의 개수는 15이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 정다각형은 정십오각형이다. 한 외각은 $360^\\circ\\div15=24^\\circ$이고, 한 꼭짓점에서 그을 수 있는 대각선은 $15-3=12$개이다. 한 꼭짓점에서 대각선을 모두 그으면 삼각형은 $15-2=13$개가 생긴다. 내각의 합은 $(15-2)\\times180^\\circ=2340^\\circ$이므로 ‘$2160^\\circ$’라는 설명만 옳지 않다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 조건을 만족하는 도형은 정십오각형이다.\n변이 15개이므로 정십오각형이다.\n한 외각의 크기는\n$360^\\circ\\div15=24^\\circ$이다.\n내각의 합은\n$(15-2)\\times180^\\circ=2340^\\circ$이다.\n한 꼭짓점에서 그을 수 있는 대각선은\n$15-3=12$개이고,\n그 대각선들로 나뉘는 삼각형은\n$15-2=13$개이다.\n따라서 옳지 않은 것은 ③이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -369,14 +465,16 @@ window.questionBank = [
       "$20\\mathrm{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 같은 원에서 부채꼴의 넓이는 중심각의 크기에 비례한다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: $OA=OB$이므로 삼각형 AOB는 이등변삼각형이다. $\\angle AOB=100^\\circ$이므로 $\\angle OAB=\\angle OBA=40^\\circ$이다. $AB\\parallel OC$이므로 평행선의 각 관계를 이용하면 $\\angle BOC=40^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 같은 원에서 부채꼴의 넓이는 중심각의 크기에 비례한다.\n$OA=OB$이므로 $\\triangle AOB$는 이등변삼각형이다.\n$\\angle AOB=100^\\circ$이므로\n$\\angle OAB=\\angle OBA=\\dfrac{180^\\circ-100^\\circ}{2}=40^\\circ$이다.\n$AB\\parallel OC$이므로\n$\\angle BOC=40^\\circ$이다.\n따라서 부채꼴 BOC의 넓이는\n$40\\times\\dfrac{40}{100}=16\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q11.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "원과 부채꼴",
+    "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+    "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q11-solution.svg",
+    "difficultyBucket": 2
   },
   {
     "id": 12,
@@ -405,14 +503,16 @@ window.questionBank = [
       "$\\widehat{BD}$와 $\\overline{BD}$로 이루어진 도형은 활꼴이면서 부채꼴이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 같은 원에서 호의 길이는 그 호에 대응하는 중심각의 크기에 비례하고, 중심에서 원 위의 점까지의 거리는 모두 반지름이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 그림에서 $\\angle AOB=30^\\circ$, $\\angle BOC=90^\\circ$이고 $B,O,D$가 일직선이므로 $\\widehat{AB}$, $\\widehat{BC}$, $\\widehat{AC}$에 대응하는 중심각은 각각 $30^\\circ$, $90^\\circ$, $120^\\circ$이다. 따라서 $\\widehat{AC}=4\\widehat{AB}$, 실제로 $\\widehat{BC}=3\\widehat{AB}$이고 $\\widehat{AC}$의 중심각은 $120^\\circ$이다. 또한 $OA=OB=OC$이며, 지름 $BD$를 현과 호로 둘러싼 도형은 활꼴이고 두 반지름과 호로도 이루어지는 부채꼴이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례한다.\n그림에서\n$\\angle AOB=30^\\circ$, $\\angle BOC=90^\\circ$이다.\n따라서\n$\\widehat{AB}:\\widehat{BC}=30:90=1:3$이므로\n$\\widehat{BC}=3\\widehat{AB}$이다.\n또\n$\\angle AOC=30^\\circ+90^\\circ=120^\\circ$이므로\n$\\widehat{AC}=4\\widehat{AB}$이다.\n$OA=OB=OC$는 모두 반지름이고, $B,O,D$가 일직선이므로 $BD$는 지름이다.\n따라서 옳지 않은 것은 ②이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q12.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "원과 호",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q12-solution.svg",
+    "difficultyBucket": 2
   },
   {
     "id": 13,
@@ -441,14 +541,16 @@ window.questionBank = [
       "$\\dfrac{95}{3}\\pi\\,\\mathrm{m}^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 담장 안쪽으로는 움직일 수 없으므로 처음 묶인 꼭짓점에서는 $360^\\circ-60^\\circ=300^\\circ$만큼의 부채꼴이 생긴다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 처음 꼭짓점에서 반지름 $6$인 $300^\\circ$ 부채꼴의 넓이는 $\\dfrac{300}{360}\\pi\\times6^2=30\\pi$이다. 끈이 한 변 $4\\mathrm{m}$를 따라 인접한 꼭짓점에 닿으면 길이가 $6-4=2\\mathrm{m}$ 남는다. 인접한 두 꼭짓점 각각에서 반지름 $2$인 $120^\\circ$ 부채꼴을 더할 수 있으므로 추가 넓이는 $2\\times\\dfrac{120}{360}\\pi\\times2^2=\\dfrac{8}{3}\\pi$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 담장 안쪽 $60^\\circ$를 제외한 영역과, 끈이 두 이웃 꼭짓점을 돌아간 뒤의 영역을 더한다.\n처음 묶인 꼭짓점에서는\n$360^\\circ-60^\\circ=300^\\circ$만큼 움직일 수 있다.\n넓이는\n$\\dfrac{300}{360}\\pi\\times6^2=30\\pi$이다.\n끈이 길이 $4\\mathrm m$인 한 변을 따라 이웃 꼭짓점에 닿으면\n남은 길이는 $6-4=2\\mathrm m$이다.\n두 이웃 꼭짓점에서 각각 $120^\\circ$만큼 더 움직일 수 있으므로\n추가 넓이는\n$2\\times\\dfrac{120}{360}\\pi\\times2^2=\\dfrac{8}{3}\\pi$이다.\n따라서 전체 넓이는\n$30\\pi+\\dfrac{8}{3}\\pi=\\dfrac{98}{3}\\pi\\,\\mathrm m^2$이므로 정답은 ④이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q13.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 넓이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 3,
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q13-solution.svg"
   },
   {
     "id": 14,
@@ -476,11 +578,18 @@ window.questionBank = [
       "사각뿔－삼각형"
     ],
     "answer": "①",
-    "solution": "[키포인트] 각뿔의 옆면은 모두 삼각형이고, 각뿔대의 옆면은 사다리꼴이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 오각뿔의 옆면은 오각형이 아니라 삼각형이다. 삼각기둥의 옆면은 직사각형, 육각뿔대의 옆면은 사다리꼴, 정육면체의 면은 정사각형, 사각뿔의 옆면은 삼각형이므로 ①만 잘못 짝지어졌다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 각뿔의 옆면은 삼각형이고, 각기둥의 옆면은 직사각형, 각뿔대의 옆면은 사다리꼴이다.\n① 오각뿔의 옆면은 오각형이 아니라 삼각형이다.\n② 삼각기둥의 옆면은 직사각형이다.\n③ 육각뿔대의 옆면은 사다리꼴이다.\n④ 정육면체의 면은 정사각형이다.\n⑤ 사각뿔의 옆면은 삼각형이다.\n따라서 잘못 짝지어진 것은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "다면체",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -507,11 +616,18 @@ window.questionBank = [
       "한 꼭짓점에 모인 면의 개수가 5개인 정다면체는 정이십면체이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 정다면체는 한 종류의 정다각형으로만 이루어지고, 모든 꼭짓점에 모이는 면의 수가 같다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 5가지이다. 정사면체와 정팔면체의 면은 정삼각형이고 정십이면체의 면은 정오각형이므로 세 정다면체의 면 모양이 모두 같다는 ②가 옳지 않다. 정십이면체의 꼭짓점 수는 20개이고 정이십면체의 면 수 역시 20개이다. 정오각형으로 이루어진 것은 정십이면체이며, 한 꼭짓점에 5개의 정삼각형이 모이는 것은 정이십면체이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 정다면체는 면의 모양과 한 꼭짓점에 모이는 면의 수를 구분하여 확인한다.\n① 정다면체는 5가지이다.\n② 정사면체와 정팔면체의 면은 정삼각형이지만, 정십이면체의 면은 정오각형이다. → 거짓\n③ 정십이면체의 꼭짓점은 20개이고 정이십면체의 면도 20개이다.\n④ 정오각형으로 이루어진 정다면체는 정십이면체이다.\n⑤ 한 꼭짓점에 정삼각형 5개가 모이는 정다면체는 정이십면체이다.\n따라서 옳지 않은 것은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "정다면체",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -539,11 +655,12 @@ window.questionBank = [
       "원뿔을 회전축을 포함하는 평면으로 자를 때 생기는 단면의 모양은 직각삼각형이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 회전체를 회전축을 포함하는 평면으로 자른 단면은 회전축에 대해 선대칭이고, 수직인 평면으로 자른 단면은 원 또는 원의 일부이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: ①, ②, ③, ④는 회전체의 정의와 단면의 성질에 맞는다. 원뿔을 회전축을 포함하는 평면으로 자르면 꼭짓점에서 밑면의 지름까지 이어지는 이등변삼각형이 생기므로 직각삼각형이라고 항상 말할 수 없다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 회전체를 회전축을 포함하는 평면으로 자르면 회전축에 대하여 선대칭인 단면이 생긴다.\n① 회전체의 정의로 옳다.\n② 원기둥의 옆면 전개도는 직사각형이다.\n③ 회전축에 수직인 평면으로 자른 단면의 경계는 원이다.\n④ 회전축을 포함하는 평면으로 자른 단면은 회전축에 대하여 선대칭이다.\n⑤ 원뿔을 회전축을 포함하는 평면으로 자르면 이등변삼각형이므로 항상 직각삼각형인 것은 아니다.\n따라서 옳지 않은 것은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "회전체",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2
   },
   {
     "id": 17,
@@ -571,14 +688,16 @@ window.questionBank = [
       "$158\\mathrm{cm}^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 사각뿔대의 옆면은 사다리꼴이고, 겉넓이는 두 밑면의 넓이와 네 옆면의 넓이를 더한 값이다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 옆면 하나의 사다리꼴 넓이는 $\\dfrac{3+7}{2}\\times5=25\\mathrm{cm}^2$이다. 옆면이 4개이므로 옆넓이는 $25\\times4=100\\mathrm{cm}^2$이다. 두 밑면의 넓이는 $3^2+7^2=9+49=58\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 사각뿔대의 겉넓이는 두 밑면과 네 개의 사다리꼴 옆면의 넓이를 더한다.\n옆면 하나의 넓이는\n$\\dfrac{3+7}{2}\\times5=25\\mathrm{cm}^2$이다.\n옆면은 4개이므로\n옆넓이 $=25\\times4=100\\mathrm{cm}^2$이다.\n두 밑면의 넓이의 합은\n$3^2+7^2=9+49=58\\mathrm{cm}^2$이다.\n따라서 겉넓이는\n$100+58=158\\mathrm{cm}^2$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q17.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 겉넓이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q17-solution.svg",
+    "difficultyBucket": 2
   },
   {
     "id": 18,
@@ -607,14 +726,16 @@ window.questionBank = [
       "$2\\mathrm{cm}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 물의 양은 옮겨도 변하지 않으므로 두 입체도형의 부피가 같다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 원뿔의 부피는 $\\dfrac13\\pi\\times3^2\\times10=30\\pi\\mathrm{cm}^3$이다. 원기둥의 반지름을 5cm, 물의 높이를 $h$cm라고 하면 부피는 $\\pi\\times5^2\\times h=25\\pi h$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 물의 양은 옮겨도 같으므로 원뿔과 원기둥 속 물의 부피가 같다.\n원뿔의 부피는\n$\\dfrac13\\pi\\times3^2\\times10=30\\pi\\mathrm{cm}^3$이다.\n원기둥에서 물의 높이를 $h\\mathrm{cm}$라 하면\n$\\pi\\times5^2\\times h=25\\pi h$이다.\n따라서\n$25\\pi h=30\\pi$,\n$h=\\dfrac65$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q18.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 부피",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q18-solution.svg",
+    "difficultyBucket": 2
   },
   {
     "id": 19,
@@ -643,14 +764,16 @@ window.questionBank = [
       "$96\\pi\\mathrm{cm}^3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 원기둥의 높이는 공 3개의 지름을 합한 길이이고, 남은 부피는 원기둥 부피에서 구 3개의 부피를 뺀 값이다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 원기둥과 공의 반지름은 $6\\div2=3$cm이고, 원기둥의 높이는 $6\\times3=18$cm이다. 원기둥의 부피는 $\\pi\\times3^2\\times18=162\\pi$이다. 공 1개의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi$이므로 공 3개의 부피는 $108\\pi$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 원기둥의 부피에서 공 3개의 부피를 뺀다.\n원기둥과 공의 반지름은\n$6\\div2=3\\mathrm{cm}$이다.\n공 3개가 꼭 맞게 들어 있으므로 원기둥의 높이는\n$6\\times3=18\\mathrm{cm}$이다.\n원기둥의 부피는\n$\\pi\\times3^2\\times18=162\\pi$이다.\n공 한 개의 부피는\n$\\dfrac43\\pi\\times3^3=36\\pi$이므로\n공 3개의 부피는 $108\\pi$이다.\n따라서 남은 부피는\n$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이므로 정답은 ①이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q19.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 부피",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q19-solution.svg",
+    "difficultyBucket": 2
   },
   {
     "id": 20,
@@ -678,14 +801,16 @@ window.questionBank = [
       "$198\\pi\\mathrm{cm}^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 회전체의 겉넓이는 회전하여 생기는 각 곡면과 밑면의 넓이를 빠짐없이 더한다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 그림의 회전체는 반지름 6cm인 반구, 반지름 6cm와 3cm인 원뿔대의 옆면, 반지름 3cm인 원형 밑면으로 나누어 계산한다. 반구의 겉넓이는 $2\\pi\\times6^2=72\\pi$이다. 원뿔대 옆면의 모선이 5cm이므로 옆넓이는 $\\pi(6+3)\\times5=45\\pi$이다. 밑면 넓이는 $\\pi\\times3^2=9\\pi$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 회전하여 생기는 겉면을 반구의 곡면, 원뿔대의 옆면, 아래 원형 밑면으로 나누어 더한다.\n반지름 $6\\mathrm{cm}$인 반구의 곡면 넓이는\n$2\\pi\\times6^2=72\\pi$이다.\n원뿔대의 두 반지름은 $6\\mathrm{cm}$, $3\\mathrm{cm}$이고 모선은 $5\\mathrm{cm}$이므로\n옆넓이는\n$\\pi(6+3)\\times5=45\\pi$이다.\n아래 밑면의 넓이는\n$\\pi\\times3^2=9\\pi$이다.\n따라서 겉넓이는\n$72\\pi+45\\pi+9\\pi=126\\pi\\mathrm{cm}^2$이므로 정답은 ③이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q20.png",
     "imageSize": "tall",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "회전체의 겉넓이",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q20-solution.svg",
+    "difficultyBucket": 3
   },
   {
     "id": 21,
@@ -708,14 +833,24 @@ window.questionBank = [
     "content": "[서술형1] 집에서 6km 떨어진 학교 운동장까지 진수는 자전거를 타고 가고, 영서는 걸어가기로 했다. 다음 그림은 두 사람이 동시에 출발하여 $x$분 동안 이동한 거리를 $y$m라 할 때, $x$와 $y$ 사이의 관계를 나타낸 그래프이다. 진수가 학교 운동장에 도착한 지 몇 분 후에 영서가 도착하는지를 다음 <조건>에 맞추어 서술하시오. (5점)<br><div class=\"question-note-box\"><b>&lt;조건&gt;</b><br>진수와 영서의 $x$와 $y$ 사이의 관계식과 도착하는 시간을 각각 구하여 풀이 과정에 포함하여 서술할 것</div>",
     "choices": [],
     "answer": "60분",
-    "solution": "[키포인트] 학교까지의 거리를 그래프의 세로축 단위인 m로 바꾸고, 각 직선의 기울기에서 1분 동안 이동하는 거리를 구한다.\n조건 정리: 위치함수 또는 속도함수와 시간의 범위, 방향이 바뀌는 시점을 정리한다.\n풀이 방향: 도함수와 위치함수를 구하고 시간 구간별 부호를 나누어 필요한 시각과 거리를 계산한다.\n정석 풀이: $6\\mathrm{km}=6000\\mathrm{m}$이다. 그래프에서 진수의 직선은 $(3,1200)$을 지나므로 관계식은 $y=400x$이다. $6000=400x$에서 진수의 도착 시간은 $15$분이다. 영서의 직선은 $(3,240)$을 지나므로 관계식은 $y=80x$이다. $6000=80x$에서 영서의 도착 시간은 $75$분이다.\n따라서 구하는 값은 60분이다.",
+    "solution": "[키포인트] 그래프의 한 점을 이용해 두 사람의 정비례 관계식을 각각 구한다.\n학교까지의 거리는\n$6\\mathrm{km}=6000\\mathrm m$이다.\n\n진수의 그래프는 $(3,1200)$을 지나므로\n$1200=3a$에서 $a=400$,\n관계식은 $y=400x$이다.\n$6000=400x$에서 진수는 $15$분 후 도착한다.\n\n영서의 그래프는 $(3,240)$을 지나므로\n$240=3b$에서 $b=80$,\n관계식은 $y=80x$이다.\n$6000=80x$에서 영서는 $75$분 후 도착한다.\n\n따라서 영서는 진수보다\n$75-15=60$분 늦게 도착한다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q21.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "정비례와 그래프",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -723,9 +858,9 @@ window.questionBank = [
     "category": "평면도형의 성질",
     "originalCategory": "평면도형의 성질",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-06",
-    "standardUnit": "평면도형의 성질",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본도형",
+    "standardUnitOrder": 5,
     "questionType": "서술형",
     "layoutTag": "subjective-2up",
     "tags": [
@@ -738,14 +873,24 @@ window.questionBank = [
     "content": "[서술형2] 오른쪽 그림에서 $\\angle x$의 크기를 구하시오. (4점)",
     "choices": [],
     "answer": "$60^\\circ$",
-    "solution": "[키포인트] 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 그림에서 왼쪽 내각은 $(x-30)^\\circ$, 오른쪽 아래 내각은 $80^\\circ$, 위 꼭짓점의 외각은 $(2x-10)^\\circ$이다.\n따라서 구하는 값은 $60^\\circ$이다.",
+    "solution": "[키포인트] 삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.\n그림에서 위 꼭짓점의 외각은 $(2x-10)^\\circ$이고,\n이웃하지 않는 두 내각은 $(x-30)^\\circ$, $80^\\circ$이다.\n따라서\n$2x-10=(x-30)+80$,\n$2x-10=x+50$,\n$x=60$이다.\n따라서 $\\angle x=60^\\circ$이다.",
     "image": "assets/images/23_금당중_2학기_기말_중1_기출/q22.png",
     "imageSize": "medium",
     "visualAssetStatus": "ready",
-    "subUnitKey": "M1-06-POLYGON_CIRCLE",
-    "subUnit": "각의 성질",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+    "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -768,11 +913,20 @@ window.questionBank = [
     "content": "[서술형3] 한 내각의 크기와 한 외각의 크기의 비가 $7:2$인 정다각형의 대각선의 개수를 구하고자 한다. 다음 물음에 답하시오. (5점)<br>(1) 한 내각의 크기와 한 외각의 크기의 비가 $7:2$인 정다각형을 구하시오. (3점)<br>(2) 이 정다각형의 대각선의 개수를 구하시오. (2점)",
     "choices": [],
     "answer": "(1) 정구각형 (2) 27개",
-    "solution": "[키포인트] 정다각형의 한 내각과 이웃한 한 외각의 합은 $180^\\circ$이다.\n조건 정리: 그림이나 좌표평면에 표시된 길이·각·점과 도형 사이의 관계를 정리한다.\n풀이 방향: 도형의 정의와 기본 성질을 적용하여 필요한 길이·각·넓이·부피를 계산한다.\n정석 풀이: 내각과 외각을 각각 $7k,2k$라 하면 $7k+2k=180^\\circ$이므로 $k=20^\\circ$이다. 한 외각은 $40^\\circ$이고, 정다각형의 변의 수는 $360^\\circ\\div40^\\circ=9$이다.\n따라서 구하는 값은 (1) 정구각형 (2) 27개이다.",
+    "solution": "[키포인트] 정다각형의 한 내각과 한 외각의 합은 $180^\\circ$이고, 모든 외각의 합은 $360^\\circ$이다.\n\n(1) 내각과 외각을 각각 $7k^\\circ$, $2k^\\circ$라 하면\n$7k+2k=180$,\n$9k=180$,\n$k=20$이다.\n한 외각은 $40^\\circ$이므로\n변의 수는\n$360^\\circ\\div40^\\circ=9$이다.\n따라서 정구각형이다.\n\n(2) 구각형의 대각선의 개수는\n$\\dfrac{9(9-3)}{2}=27$개이다.\n\n따라서 (1) 정구각형, (2) 27개이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "정다각형",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+    "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -797,11 +951,13 @@ window.questionBank = [
     "content": "[서술형4] 다음 그림과 같은 입체도형의 겉넓이와 부피를 구하시오. (6점)<br>(1) 오른쪽 원기둥의 겉넓이를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_1.png\" alt=\"24번 (1) 원기둥\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\"><br>(2) 오른쪽 정사각뿔의 부피를 구하시오. (3점)<br><img src=\"assets/images/23_금당중_2학기_기말_중1_기출/q24_2.png\" alt=\"24번 (2) 정사각뿔\" style=\"display:block;max-width:100%;height:auto;margin:10px auto;\">",
     "choices": [],
     "answer": "(1) $28\\pi\\,\\mathrm{cm}^2$ (2) $84\\mathrm{cm}^3$",
-    "solution": "[키포인트] 원기둥의 겉넓이는 두 밑면과 옆면의 넓이의 합이고, 각뿔의 부피는 밑면 넓이와 높이를 이용한다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: (1) 원기둥의 반지름은 2cm, 높이는 5cm이므로 겉넓이는 $2\\pi\\times2^2+2\\pi\\times2\\times5=8\\pi+20\\pi=28\\pi\\mathrm{cm}^2$이다. (2) 정사각뿔의 밑면은 한 변 6cm인 정사각형이므로 밑면 넓이는 $6^2=36\\mathrm{cm}^2$이다. 높이가 7cm이므로 부피는 $\\dfrac13\\times36\\times7=84\\mathrm{cm}^3$이다.\n따라서 구하는 값은 (1) $28\\pi\\,\\mathrm{cm}^2$ (2) $84\\mathrm{cm}^3$이다.",
+    "solution": "[키포인트] (1)은 원기둥의 두 밑면과 옆면을 더하고, (2)는 각뿔의 부피 공식을 이용한다.\n\n(1) 원기둥의 반지름은 $2\\mathrm{cm}$, 높이는 $5\\mathrm{cm}$이다.\n두 밑면의 넓이는\n$2\\times\\pi\\times2^2=8\\pi$이다.\n옆넓이는\n$2\\pi\\times2\\times5=20\\pi$이다.\n따라서 겉넓이는\n$8\\pi+20\\pi=28\\pi\\,\\mathrm{cm}^2$이다.\n\n(2) 정사각뿔의 밑면은 한 변이 $6\\mathrm{cm}$인 정사각형이므로\n밑면 넓이는 $6^2=36\\mathrm{cm}^2$이다.\n높이는 $7\\mathrm{cm}$이므로\n부피는\n$\\dfrac13\\times36\\times7=84\\mathrm{cm}^3$이다.\n\n따라서 (1) $28\\pi\\,\\mathrm{cm}^2$, (2) $84\\mathrm{cm}^3$이다.",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_금당중_2학기_기말_중1_기출/q24-solution.svg",
+    "difficultyBucket": 2
   }
 ];
