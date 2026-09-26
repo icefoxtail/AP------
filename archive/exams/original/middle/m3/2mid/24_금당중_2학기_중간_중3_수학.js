@@ -185,8 +185,8 @@ window.questionBank = [
     "answer": "①",
     "solution": "두 직각삼각형의 특수각을 차례로 이용하여 $BC$와 $BD$를 구한다.\n$\\triangle ABC$는 $B$에서 직각이고 $\\angle A=60^\\circ$이며, $\\triangle BCD$는 $C$에서 직각이고 $\\angle D=45^\\circ$이다.\n\n먼저 $\\triangle ABC$에서 $BC$를 구한 뒤, 직각이등변삼각형 $BCD$의 빗변을 구한다.\n\n$\\tan60^\\circ=\\dfrac{BC}{AB}$이므로 $\\sqrt3=\\dfrac{BC}{\\sqrt2}$이다.\n따라서 $BC=\\sqrt6$이다.\n$\\triangle BCD$는 두 예각이 모두 $45^\\circ$인 직각이등변삼각형이므로 $BC=CD=\\sqrt6$이다.\n피타고라스 정리에 의하여 $BD=\\sqrt{(\\sqrt6)^2+(\\sqrt6)^2}=\\sqrt{12}=2\\sqrt3$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q06.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -313,8 +313,8 @@ window.questionBank = [
     "answer": "③",
     "solution": "대각선 $AC$를 기준으로 사각형을 두 삼각형으로 나누어 넓이를 더한다.\n$\\angle ACB=90^\\circ$, $\\angle ABC=45^\\circ$이므로 $\\triangle ABC$는 직각이등변삼각형이다.\n\n먼저 $AC$와 $\\triangle ABC$의 넓이를 구하고, 두 변과 끼인각을 이용하여 $\\triangle ACD$의 넓이를 구한다.\n\n$AB=8\\sqrt2$는 $\\triangle ABC$의 빗변이므로 $AC=BC=8$이다.\n따라서 $\\triangle ABC$의 넓이는 $\\dfrac12\\times8\\times8=32$이다.\n또한 $AC=8$, $AD=5$, $\\angle DAC=60^\\circ$이므로 $\\triangle ACD$의 넓이는 $\\dfrac12\\times8\\times5\\times\\sin60^\\circ=20\\times\\dfrac{\\sqrt3}{2}=10\\sqrt3$이다.\n따라서 사각형의 넓이는 $32+10\\sqrt3\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q10.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -662,8 +662,8 @@ window.questionBank = [
     "answer": "$13.2$",
     "solution": "빗변과 한 예각이 주어졌으므로 사인과 코사인으로 두 직각변을 각각 구한다.\n$AB=10$은 빗변이고, $x=AC$는 $24^\\circ$의 맞은편 변, $y=BC$는 이웃한 변이다.\n\n$\\sin24^\\circ=\\dfrac{x}{10}$, $\\cos24^\\circ=\\dfrac{y}{10}$을 이용한다.\n\n$\\sin24^\\circ=0.41$이므로 $\\dfrac{x}{10}=0.41$, 따라서 $x=4.1$이다.\n$\\cos24^\\circ=0.91$이므로 $\\dfrac{y}{10}=0.91$, 따라서 $y=9.1$이다.\n그러므로 $x+y=4.1+9.1=13.2$이다.\n따라서 구하는 값은 $13.2$이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
