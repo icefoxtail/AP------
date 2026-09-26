@@ -1,0 +1,30 @@
+phase=PHASE_11_ARCHIVE_RENDER_MATRIX
+attempt=phase-11-attempt-02
+status=FAIL
+counts commands=3/6 sources=1 rows=2 browserRows=2 protectedFiles=None mutations=None
+===== PASS exit=0 node --check archive/tools/geometry-equation/build-visual-render-matrix.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node archive/tools/geometry-equation/build-visual-render-matrix.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --bindings archive/_generated/geometry-visual-engine/upgrade-v1/config/archive-bindings.json =====
+--- stdout ---
+{"sources":1,"rows":2}
+
+--- stderr ---
+
+===== FAIL exit=1 node archive/tools/geometry-equation/record-visual-browser-evidence.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --attempt phase-11-attempt-02 =====
+--- stdout ---
+{"status":"FAIL","runtime":"playwright-chromium","synthetic":false,"scope":"bound code regression candidates in unmodified archive runtime","rows":[{"id":"source-0-sol-desktop","status":"FAIL","capture":{"missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":["page.waitForFunction: Timeout 60000ms exceeded.\n    at recordArchiveEvidence (C:\\Users\\USER\\.codex\\worktrees\\geometry-visual-engine-upgrade\\archive\\tools\\geometry-equation\\record-visual-browser-evidence.mjs:28:20)\n    at async file:///C:/Users/USER/.codex/worktrees/geometry-visual-engine-upgrade/archive/tools/geometry-equation/record-visual-browser-evidence.mjs:70:69"]},{"id":"source-0-sol-mobile","status":"FAIL","capture":{"missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":["page.waitForFunction: Timeout 60000ms exceeded.\n    at recordArchiveEvidence (C:\\Users\\USER\\.codex\\worktrees\\geometry-visual-engine-upgrade\\archive\\tools\\geometry-equation\\record-visual-browser-evidence.mjs:28:20)\n    at async file:///C:/Users/USER/.codex/worktrees/geometry-visual-engine-upgrade/archive/tools/geometry-equation/record-visual-browser-evidence.mjs:70:69"]}],"matrixSha256":"1bdcd4a0be4d198250f36d04eb012b17dee9d3a60e385ede4b779844470a0d69"}
+
+--- stderr ---
+
+codeAndBindingHashes:
+archive/tools/geometry-equation/build-visual-render-matrix.mjs 2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be
+archive/tools/geometry-equation/record-visual-browser-evidence.mjs 192c15e6333116ce6cf1f7ea5e9772639a8f3ee1725507352953a57f64d57af1
+archive/_generated/geometry-visual-engine/upgrade-v1/config/archive-bindings.json fcbb0c108ce8e0fb3cffefd544422cca4c9375fda5cd80e878acb3aa2212845c

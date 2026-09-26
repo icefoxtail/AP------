@@ -1,0 +1,173 @@
+{
+  "phase": "PHASE_11_ARCHIVE_RENDER_MATRIX",
+  "attempt": "phase-11-attempt-01",
+  "status": "FAIL",
+  "commands": [
+    {
+      "command": "node --check archive/tools/geometry-equation/build-visual-render-matrix.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-11-attempt-01-check-render-matrix.stdout.txt",
+      "stderr": "phase-11-attempt-01-check-render-matrix.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-11-attempt-01-check-browser-evidence-recorder.stdout.txt",
+      "stderr": "phase-11-attempt-01-check-browser-evidence-recorder.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/build-visual-render-matrix.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --bindings archive/_generated/geometry-visual-engine/upgrade-v1/config/archive-bindings.json",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-11-attempt-01-build-render-matrix.stdout.txt",
+      "stderr": "phase-11-attempt-01-build-render-matrix.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/record-visual-browser-evidence.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --attempt phase-11-attempt-01",
+      "exitCode": 1,
+      "status": "FAIL",
+      "stdout": "phase-11-attempt-01-record-browser-evidence.stdout.txt",
+      "stderr": "phase-11-attempt-01-record-browser-evidence.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 4,
+    "commandsPassed": 3,
+    "protectedFiles": null,
+    "productionMutationCount": null
+  },
+  "renderMetrics": {
+    "matrixSourceCount": [
+      1
+    ],
+    "matrixRowCounts": [
+      2,
+      [
+        {
+          "id": "source-0-sol-desktop",
+          "status": "FAIL",
+          "capture": {
+            "missingGlyphCount": 0,
+            "labelCollisionCount": 0,
+            "criticalCollisionCount": 0,
+            "clippedTextCount": 0,
+            "overflowCount": 0,
+            "loadedSvgCount": 2,
+            "failedSvgCount": 0
+          },
+          "errors": [
+            "ARCHIVE_RENDER_NOT_READY"
+          ]
+        },
+        {
+          "id": "source-0-sol-mobile",
+          "status": "FAIL",
+          "capture": {
+            "missingGlyphCount": 0,
+            "labelCollisionCount": 0,
+            "criticalCollisionCount": 0,
+            "clippedTextCount": 0,
+            "overflowCount": 0,
+            "loadedSvgCount": 2,
+            "failedSvgCount": 0
+          },
+          "errors": [
+            "ARCHIVE_RENDER_NOT_READY"
+          ]
+        }
+      ]
+    ],
+    "targetCounts": [],
+    "loadedSvgCounts": [
+      2,
+      2
+    ],
+    "failedSvgCounts": [
+      0,
+      0
+    ],
+    "collisionCounts": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "clippingCounts": [
+      0,
+      0
+    ],
+    "glyphCounts": [
+      0,
+      0
+    ],
+    "overflowCounts": [
+      0,
+      0
+    ],
+    "mathJaxReady": [],
+    "consoleErrorCounts": [],
+    "browserVersions": []
+  },
+  "structuredOutputs": {
+    "matrix": [
+      {
+        "sources": 1,
+        "rows": 2
+      }
+    ],
+    "browserEvidence": [
+      {
+        "status": "FAIL",
+        "runtime": "playwright-chromium",
+        "synthetic": false,
+        "scope": "bound code regression candidates in unmodified archive runtime",
+        "rows": [
+          {
+            "id": "source-0-sol-desktop",
+            "status": "FAIL",
+            "capture": {
+              "missingGlyphCount": 0,
+              "labelCollisionCount": 0,
+              "criticalCollisionCount": 0,
+              "clippedTextCount": 0,
+              "overflowCount": 0,
+              "loadedSvgCount": 2,
+              "failedSvgCount": 0
+            },
+            "errors": [
+              "ARCHIVE_RENDER_NOT_READY"
+            ]
+          },
+          {
+            "id": "source-0-sol-mobile",
+            "status": "FAIL",
+            "capture": {
+              "missingGlyphCount": 0,
+              "labelCollisionCount": 0,
+              "criticalCollisionCount": 0,
+              "clippedTextCount": 0,
+              "overflowCount": 0,
+              "loadedSvgCount": 2,
+              "failedSvgCount": 0
+            },
+            "errors": [
+              "ARCHIVE_RENDER_NOT_READY"
+            ]
+          }
+        ],
+        "matrixSha256": "1bdcd4a0be4d198250f36d04eb012b17dee9d3a60e385ede4b779844470a0d69"
+      }
+    ]
+  },
+  "codeAndBindingHashes": {
+    "archive/tools/geometry-equation/build-visual-render-matrix.mjs": "2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be",
+    "archive/tools/geometry-equation/record-visual-browser-evidence.mjs": "e966ee1f5d10307ed08c9f29aa1174b013bbbca881b9cf9641033061935b98a0",
+    "archive/_generated/geometry-visual-engine/upgrade-v1/config/archive-bindings.json": "fcbb0c108ce8e0fb3cffefd544422cca4c9375fda5cd80e878acb3aa2212845c"
+  },
+  "environment": {
+    "GEOMETRY_NODE_MODULES": "C:\\Users\\USER\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
+    "GEOMETRY_BROWSER_CHANNEL": "chrome"
+  }
+}
