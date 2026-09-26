@@ -1,0 +1,248 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_EVIDENCE_V1",
+  "examFile": "23_신흥중_2학기_중간_중2_수학.js",
+  "examUid": "23_신흥중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "lane": "A",
+  "stage": "CREATE",
+  "sourcePath": "archive/exams/original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
+  "sourceBlobSha": "67919c6d54b3f98d6a4513661cd4802e0a8d7fc9",
+  "totalQuestions": 24,
+  "sourceIdentity": {
+    "coverage": "24/24",
+    "protectedFields": "content/choices/answer/solution/image PASS",
+    "blankSolution": 0,
+    "trueHold": 0
+  },
+  "solutionSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "svgSummary": {
+    "ADD": 4,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "questions": [
+      19,
+      20,
+      21,
+      24
+    ],
+    "validation": "PYTHON_FACT_CHECK+XML_PARSE+GEOMETRY_STYLE_LINT PASS",
+    "renderReview": "NOT_RUN_BY_POLICY",
+    "q24": "rebuilt so OA=OB and OC=OD are geometrically exact"
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 19,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 1,
+    "RPM_PRIMARY_MIGRATION_GAP": 4,
+    "TRUE_HOLD": 0
+  },
+  "difficultySummary": {
+    "judged": 24,
+    "buckets": {
+      "1": 3,
+      "2": 9,
+      "3": 4,
+      "4": 8,
+      "5": 0
+    }
+  },
+  "unresolvedItems": [
+    {
+      "questionNo": 1,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-055",
+      "reason": "RPM_ONLY; no ACTIVE mapping"
+    },
+    {
+      "questionNo": 2,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "mappedProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "mappedTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "exact M2 binding missing"
+    },
+    {
+      "questionNo": 3,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "mappedProblemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "mappedTemplateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "meeting time is the intersection of the two distance functions; exact M2 binding missing"
+    },
+    {
+      "questionNo": 6,
+      "disposition": "PROPOSED_NEW_L4",
+      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "proposedLabelKo": "직각삼각형 합동 조건 종합 판별",
+      "reason": "RHS/RHA/two-leg congruence and AA non-congruence are compared in one decisive structure; ACTIVE 2015 M2 PT binding exists but no single existing L4 captures the combined judgment"
+    },
+    {
+      "questionNo": 22,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-070",
+      "mappedProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "mappedTemplateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "reason": "RPM direct-active binding is M2-05-QUADRILATERAL_PROPERTIES while source subUnitKey is M2-05-TRIANGLE_PROPERTIES; preserve source at CREATE and adjudicate in R1"
+    }
+  ],
+  "perQuestion": [
+    {
+      "questionNo": 1,
+      "rpmPrimary": "M2-RPM-055",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 2,
+      "rpmPrimary": "M2-RPM-056",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 3,
+      "rpmPrimary": "M2-RPM-056",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 3
+    },
+    {
+      "questionNo": 4,
+      "rpmPrimary": "M2-RPM-060",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "questionNo": 5,
+      "rpmPrimary": "M2-RPM-060",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 6,
+      "rpmPrimary": null,
+      "disposition": "PROPOSED_NEW_L4",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 7,
+      "rpmPrimary": "M2-RPM-060",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 8,
+      "rpmPrimary": "M2-RPM-064",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "questionNo": 9,
+      "rpmPrimary": "M2-RPM-065",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "questionNo": 10,
+      "rpmPrimary": "M2-RPM-066",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 11,
+      "rpmPrimary": "M2-RPM-065",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 12,
+      "rpmPrimary": "M2-RPM-066",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 13,
+      "rpmPrimary": "M2-RPM-071",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "questionNo": 14,
+      "rpmPrimary": "M2-RPM-070",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 15,
+      "rpmPrimary": "M2-RPM-078",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 16,
+      "rpmPrimary": "M2-RPM-077",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "questionNo": 17,
+      "rpmPrimary": "M2-RPM-081",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "questionNo": 18,
+      "rpmPrimary": "M2-RPM-076",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 19,
+      "rpmPrimary": "M2-RPM-061",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 20,
+      "rpmPrimary": "M2-RPM-064",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 21,
+      "rpmPrimary": "M2-RPM-067",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 22,
+      "rpmPrimary": "M2-RPM-070",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 23,
+      "rpmPrimary": "M2-RPM-072",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "questionNo": 24,
+      "rpmPrimary": "M2-RPM-073",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    }
+  ],
+  "authorityRefs": {
+    "rulesIndexBlobSha": "fe241c7c8e787041d6a513a6b2bd6fdd192e8c97",
+    "metaRuleBlobSha": "683a3c1dcb7088acce7340f00fb27dc8d5458588",
+    "visualRuleBlobSha": "b6cb044188dfc739abb587c17d0403798880c4ef",
+    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "rpmCrosswalkBlobSha": "d76e7bfa87898fdf3102b4988765026141a53ff2",
+    "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
+    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477"
+  },
+  "createdAt": "2026-09-27T02:08:33+09:00"
+}
