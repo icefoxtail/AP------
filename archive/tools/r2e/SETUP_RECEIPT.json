@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "R2E_AUTOMATION_SETUP_v1",
+  "mode": "DOCUMENT_DRIVEN_WITH_MINIMAL_GUARDS",
+  "authority": "docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md",
+  "authorityMainCommit": "7bf8f80a3d953b6eb9f0a7d0f3532e29c5313e69",
+  "codeCommit": "291ce541e9c580e3a4e2e612be8ce45908520563",
+  "branch": "codex/r2e-intake-pipeline",
+  "intakeBranches": ["work/intake/m2", "work/intake/m3"],
+  "stateBranch": "work/r2e-state",
+  "automation": {
+    "id": "js-archive-2-3-r2e",
+    "name": "JS Archive 중2·중3 R2E 최종 폐쇄",
+    "status": "ACTIVE",
+    "timezone": "Asia/Seoul",
+    "scheduledTimes": ["00:00", "06:00", "12:00", "18:00"],
+    "model": "gpt-6-luna",
+    "reasoningEffort": "max",
+    "projectPath": "C:/Users/USER/Desktop/AP------",
+    "helperWorktree": "C:/Users/USER/Desktop/AP-------r2e-pipeline"
+  },
+  "tests": {
+    "r2eHelpers": "PASS_5_OF_5",
+    "finalGateFollowup": "PASS",
+    "canonicalCompiledParity": "PASS",
+    "questionIdentityContract": "PASS_11277",
+    "questionIdentityRuntime": "PASS_11277",
+    "skills": "PASS",
+    "realIntakeSmoke": "NO_WORK",
+    "readyCount": 0,
+    "resumeCount": 0,
+    "receiptErrors": 0,
+    "realExamProductionIntegration": "NOT_RUN_NO_READY_INPUT"
+  },
+  "productionMainMutation": false
+}
