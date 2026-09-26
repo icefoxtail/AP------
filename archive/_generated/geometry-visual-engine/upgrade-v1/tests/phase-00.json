@@ -1,0 +1,142 @@
+{
+  "phase": "PHASE_00_BASELINE_FREEZE",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/freeze-visual-baseline.py",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/freeze-visual-baseline.py --verify",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "prescribedCommands": 4,
+    "commandsPassed": 4,
+    "commandsFailed": 0,
+    "coordinateParityTests": 11,
+    "coordinateParityPassed": 11,
+    "coordinateParityFailed": 0,
+    "protectedFiles": 4493,
+    "productionMutationCount": 0,
+    "goldIterations": 10,
+    "goldHoldoutEvidenceFiles": 17,
+    "goldInputs": 10,
+    "missingGoldInputs": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/freeze-visual-baseline.py": "7570F41FB039F3E377B52ED56ADE2E11F47F134F1352F8E559CC1C0A209215B0",
+    "archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs": "C6C0E7F66A77376DA55301244C643DBA935F1963A09FFE03FCF4479C3B749C9B",
+    "archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs": "86AD2BB1081F436EB3FC50ED921484860CDAF913F8F1480FAF0B29865F4F7E21"
+  },
+  "configFileHashes": {
+    "archive/_generated/geometry-visual-engine/upgrade-v1/config/baseline.json": "EB4716620D44675BD69CE68031E9C72E23BCB99ECEEBB066BAD09413E21F18D5",
+    "archive/_generated/geometry-visual-engine/upgrade-v1/config/regression-fixtures.json": "55C2A0A0F8F179B1183F4EF748B9630FCA949471D2425FF42A353EA6E217AC24",
+    "archive/_generated/geometry-visual-engine/upgrade-v1/config/inheritance-review.json": "52FDE7580596651B83F1720C53DB1CAC82D313EF6A09083BEA30D399AC8AB275",
+    "archive/_generated/geometry-visual-engine/upgrade-v1/config/original-workspace-status.txt": "585324D27F7CFDE39384974DD5C0698FCFB0622C0425FED4FAA5AF4DA8650029"
+  },
+  "baselineChecks": {
+    "baselineFrozen": "PASS",
+    "protectedFileCount": 4493,
+    "mutationCount": 0,
+    "goldIterations": [
+      "r01",
+      "r02",
+      "r03",
+      "r04",
+      "r05",
+      "r06",
+      "r07",
+      "r08",
+      "r09",
+      "r10"
+    ],
+    "goldHoldoutPaths": [
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/fact-validation.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/HOLDOUT-REPORT.md",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/inventory.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/manifest.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/build-results.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H01_circle_tangent_lines/H01_circle_tangent_lines.tex",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H01_circle_tangent_lines/H01_circle_tangent_lines.witness.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H02_point_tangent/H02_point_tangent.tex",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H02_point_tangent/H02_point_tangent.witness.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H03_axis_tangent_circles/H03_axis_tangent_circles.tex",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H03_axis_tangent_circles/H03_axis_tangent_circles.witness.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/render-metrics.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/render_holdout.cjs",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H01_circle_tangent_lines.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H02_point_tangent.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H03_axis_tangent_circles.json",
+      "artifacts/tex-pilot/gold-pilot/reports/holdout/validate_holdout.py"
+    ],
+    "regressionFixtureMissing": [],
+    "circleOverlap": {
+      "sourceAsset": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg",
+      "sourceRole": "real circle tangent cluster, independently frozen numeric fixture",
+      "center": [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      "radius": 0.3333333333333333,
+      "nearbyPoints": [
+        [
+          1.264297739604484,
+          1.264297739604484
+        ],
+        [
+          1.5,
+          1.5
+        ],
+        [
+          1.735702260395516,
+          1.735702260395516
+        ]
+      ],
+      "mustSeparate": [
+        "POINT_NAME",
+        "COORDINATE_LABEL"
+      ],
+      "exactCoordinates": [
+        "(3−√2/3)/2",
+        "3/2",
+        "(3+√2/3)/2"
+      ],
+      "legacyOffsetReplay": {
+        "offsetName": [
+          9,
+          -8
+        ],
+        "offsetCoordinate": [
+          9,
+          16
+        ],
+        "plotScale": 70,
+        "failure": "coordinate strings widths exceed center/tangent spacing 23.57px"
+      }
+    },
+    "circleSourceExists": true,
+    "originalWorkspaceStatusLines": 217,
+    "originalWorkspaceDirtyRecordsPresent": true
+  },
+  "artifacts": {
+    "commandManifest": "phase-00-commands.json",
+    "validationOutput": "phase-00-validation.stdout.txt",
+    "validationSummary": "phase-00-validation-summary.stdout.txt",
+    "stdoutFiles": "01-*.stdout.txt, 02-*.stdout.txt, 03-*.stdout.txt, 04-*.stdout.txt",
+    "stderrFiles": "01-*.stderr.txt, 02-*.stderr.txt, 03-*.stderr.txt, 04-*.stderr.txt"
+  }
+}

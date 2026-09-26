@@ -1,0 +1,45 @@
+phase=PREFLIGHT
+command=PowerShell preflight inventory: verify git branch/status, Python/Node/npm versions, browser automation drivers, Playwright Chromium cache, installed Chrome/Edge executable metadata; do not launch browser.
+status=PASS
+counts.testsExecuted=0
+counts.browsersLaunched=0
+counts.codeFilesHashed=0
+----- stdout -----
+cwd=C:\Users\USER\.codex\worktrees\geometry-visual-engine-upgrade
+repositoryRoot=C:/Users/USER/.codex/worktrees/geometry-visual-engine-upgrade
+branch=codex/geometry-visual-engine-upgrade
+gitStatus:
+# branch.oid 886cd25ed5710ab8badfac606b19b9c0d2fe620e
+# branch.head codex/geometry-visual-engine-upgrade
+# branch.upstream origin/codex/geometry-visual-engine-upgrade
+# branch.ab +0 -0
+? archive/tools/geometry-equation/freeze-visual-baseline.py
+pythonVersion=Python 3.12.10
+nodeVersion=v22.22.2
+npmVersion=10.9.7
+npmGlobal:
+C:\nvm4w\nodejs -> .\
+├── @openai/codex@0.130.0
+├── corepack@0.34.6
+└── npm@10.9.7
+pythonAutomationModules:
+playwright=False
+pyppeteer=False
+playwrightCliAvailable=False
+repoPlaywrightPackage=False
+repoPlaywrightCorePackage=False
+Playwright Chromium cache:
+C:\Users\USER\AppData\Local\ms-playwright\chromium-1169\chrome-win\chrome.exe
+C:\Users\USER\AppData\Local\ms-playwright\chromium-1228\chrome-win64\chrome.exe
+C:\Users\USER\AppData\Local\ms-playwright\chromium-1243\chrome-win64\chrome.exe
+System browsers:
+[
+  {
+    "path": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "fileVersion": "153.0.8010.53"
+  },
+  {
+    "path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "fileVersion": "153.0.4234.48"
+  }
+]

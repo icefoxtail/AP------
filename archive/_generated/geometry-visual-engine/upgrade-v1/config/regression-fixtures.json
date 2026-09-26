@@ -1,0 +1,74 @@
+{
+  "goldInputs": [
+    "artifacts/tex-pilot/gold-pilot/samples/01_coordinate_perpendicular.json",
+    "artifacts/tex-pilot/gold-pilot/samples/02_coordinate_parallel.json",
+    "artifacts/tex-pilot/gold-pilot/samples/03_circle_center_radius.json",
+    "artifacts/tex-pilot/gold-pilot/samples/04_circle_tangent_bounds.json",
+    "artifacts/tex-pilot/gold-pilot/samples/05_function_branch_switch.json",
+    "artifacts/tex-pilot/gold-pilot/samples/06_function_tangent_triple_root.json",
+    "artifacts/tex-pilot/gold-pilot/samples/07_calculus_step_count.json",
+    "artifacts/tex-pilot/gold-pilot/samples/08_calculus_min_slope.json",
+    "artifacts/tex-pilot/gold-pilot/samples/09_calculus_reintersection.json",
+    "artifacts/tex-pilot/gold-pilot/samples/special/10_moving_segment_intersection.facts.json"
+  ],
+  "goldIterationReuseOnly": true,
+  "circleOverlap": {
+    "sourceAsset": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg",
+    "sourceRole": "real circle tangent cluster, independently frozen numeric fixture",
+    "center": [
+      1.264297739604484,
+      1.264297739604484
+    ],
+    "radius": 0.3333333333333333,
+    "nearbyPoints": [
+      [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      [
+        1.5,
+        1.5
+      ],
+      [
+        1.735702260395516,
+        1.735702260395516
+      ]
+    ],
+    "mustSeparate": [
+      "POINT_NAME",
+      "COORDINATE_LABEL"
+    ],
+    "exactCoordinates": [
+      "(3−√2/3)/2",
+      "3/2",
+      "(3+√2/3)/2"
+    ],
+    "legacyOffsetReplay": {
+      "offsetName": [
+        9,
+        -8
+      ],
+      "offsetCoordinate": [
+        9,
+        16
+      ],
+      "plotScale": 70,
+      "failure": "coordinate strings widths exceed center/tangent spacing 23.57px"
+    }
+  },
+  "mutations": [
+    "wrong perpendicular mark",
+    "wrong intersection",
+    "exponent corruption",
+    "duplicate equation label",
+    "bad graph aspect",
+    "conditionBox multiline",
+    "Hangul glyph",
+    "coordinate overlap",
+    "point-name overlap",
+    "tick-coordinate overlap",
+    "circle tangent cluster",
+    "cubic/quartic",
+    "rational/log/tan discontinuity"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "phase": "PREFLIGHT",
+  "command": "PowerShell preflight inventory: verify git branch/status, Python/Node/npm versions, browser automation drivers, Playwright Chromium cache, installed Chrome/Edge executable metadata; do not launch browser.",
+  "status": "PASS",
+  "counts": {
+    "testsExecuted": 0,
+    "browsersLaunched": 0,
+    "codeFilesHashed": 0
+  },
+  "codeFileHashes": {},
+  "environment": {
+    "branch": "codex/geometry-visual-engine-upgrade",
+    "nodeAutomationPackages": [],
+    "repoPlaywrightPackage": false,
+    "gitStatus": [
+      "# branch.oid 886cd25ed5710ab8badfac606b19b9c0d2fe620e",
+      "# branch.head codex/geometry-visual-engine-upgrade",
+      "# branch.upstream origin/codex/geometry-visual-engine-upgrade",
+      "# branch.ab +0 -0",
+      "? archive/tools/geometry-equation/freeze-visual-baseline.py"
+    ],
+    "npmVersion": "10.9.7",
+    "playwrightCliAvailable": false,
+    "repoPlaywrightCorePackage": false,
+    "systemBrowsers": [
+      {
+        "path": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+        "fileVersion": "153.0.8010.53"
+      },
+      {
+        "path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+        "fileVersion": "153.0.4234.48"
+      }
+    ],
+    "nodeVersion": "v22.22.2",
+    "pythonAutomationModules": "playwright=False\r\npyppeteer=False",
+    "repositoryRoot": "C:/Users/USER/.codex/worktrees/geometry-visual-engine-upgrade",
+    "pythonVersion": "Python 3.12.10",
+    "cwd": "C:\\Users\\USER\\.codex\\worktrees\\geometry-visual-engine-upgrade",
+    "npmGlobal": "C:\\nvm4w\\nodejs -> .\\\r\n├── @openai/codex@0.130.0\r\n├── corepack@0.34.6\r\n└── npm@10.9.7",
+    "playwrightBrowserCache": [
+      "C:\\Users\\USER\\AppData\\Local\\ms-playwright\\chromium-1169\\chrome-win\\chrome.exe",
+      "C:\\Users\\USER\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+      "C:\\Users\\USER\\AppData\\Local\\ms-playwright\\chromium-1243\\chrome-win64\\chrome.exe"
+    ],
+    "browserLaunched": false
+  },
+  "artifacts": {
+    "stdout": "phase-preflight.log",
+    "stderr": "phase-preflight.stderr.txt"
+  }
+}

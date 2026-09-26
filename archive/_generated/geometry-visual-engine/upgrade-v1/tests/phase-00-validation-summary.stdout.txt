@@ -1,0 +1,85 @@
+{
+  "goldIterationIds": [
+    "r01",
+    "r02",
+    "r03",
+    "r04",
+    "r05",
+    "r06",
+    "r07",
+    "r08",
+    "r09",
+    "r10"
+  ],
+  "goldIterationCount": 10,
+  "goldHoldoutEvidenceCount": 17,
+  "goldHoldoutPaths": [
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/fact-validation.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/HOLDOUT-REPORT.md",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/inventory.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/manifest.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/build-results.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H01_circle_tangent_lines/H01_circle_tangent_lines.tex",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H01_circle_tangent_lines/H01_circle_tangent_lines.witness.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H02_point_tangent/H02_point_tangent.tex",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H02_point_tangent/H02_point_tangent.witness.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H03_axis_tangent_circles/H03_axis_tangent_circles.tex",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/outputs/H03_axis_tangent_circles/H03_axis_tangent_circles.witness.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/render-metrics.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/render_holdout.cjs",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H01_circle_tangent_lines.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H02_point_tangent.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/samples/H03_axis_tangent_circles.json",
+    "artifacts/tex-pilot/gold-pilot/reports/holdout/validate_holdout.py"
+  ],
+  "goldEvidenceCount": 149,
+  "goldInputCount": 10,
+  "missingGoldInputs": [],
+  "circleOverlap": {
+    "sourceAsset": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q11-solution.svg",
+    "sourceRole": "real circle tangent cluster, independently frozen numeric fixture",
+    "center": [
+      1.264297739604484,
+      1.264297739604484
+    ],
+    "radius": 0.3333333333333333,
+    "nearbyPoints": [
+      [
+        1.264297739604484,
+        1.264297739604484
+      ],
+      [
+        1.5,
+        1.5
+      ],
+      [
+        1.735702260395516,
+        1.735702260395516
+      ]
+    ],
+    "mustSeparate": [
+      "POINT_NAME",
+      "COORDINATE_LABEL"
+    ],
+    "exactCoordinates": [
+      "(3−√2/3)/2",
+      "3/2",
+      "(3+√2/3)/2"
+    ],
+    "legacyOffsetReplay": {
+      "offsetName": [
+        9,
+        -8
+      ],
+      "offsetCoordinate": [
+        9,
+        16
+      ],
+      "plotScale": 70,
+      "failure": "coordinate strings widths exceed center/tangent spacing 23.57px"
+    }
+  },
+  "circleSourceExists": true,
+  "originalWorkspaceStatusLineCount": 217,
+  "originalWorkspaceHasModifiedOrUntrackedRecords": true
+}

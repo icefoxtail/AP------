@@ -1,0 +1,111 @@
+phase=PHASE_00_BASELINE_FREEZE
+status=PASS
+counts: prescribed commands 4/4 PASS; coordinate parity 11/11 PASS; protectedFiles=4493; productionMutationCount=0; goldIterations=
+10
+; goldHoldoutEvidenceFiles=
+17
+; regressionInputs=
+10
+; missingFixturePaths=
+0
+commands:
+[PASS exit=0] python -m py_compile archive/tools/geometry-equation/freeze-visual-baseline.py
+--- stdout ---
+--- stderr ---
+[PASS exit=0] python archive/tools/geometry-equation/freeze-visual-baseline.py --verify
+--- stdout ---
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+--- stderr ---
+[PASS exit=0] node --test archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs
+--- stdout ---
+TAP version 13
+# Subtest: good point: geometry parity passes
+ok 1 - good point: geometry parity passes
+  ---
+  duration_ms: 12.8089
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 2 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 9.195
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 3 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 9.7596
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 4 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.1494
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 5 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 10.8309
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 6 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 9.1609
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 7 - open or closed state requires a circle element
+  ---
+  duration_ms: 13.1178
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 8 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 108.9631
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 9 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 9.1547
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 10 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 8.4364
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 11 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 9.3447
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 334.3952
+
+--- stderr ---
+[PASS exit=0] git diff --check
+--- stdout ---
+--- stderr ---
+Code SHA-256:
+archive/tools/geometry-equation/freeze-visual-baseline.py 7570F41FB039F3E377B52ED56ADE2E11F47F134F1352F8E559CC1C0A209215B0
+archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs C6C0E7F66A77376DA55301244C643DBA935F1963A09FFE03FCF4479C3B749C9B
+archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs 86AD2BB1081F436EB3FC50ED921484860CDAF913F8F1480FAF0B29865F4F7E21
+Config SHA-256:
+archive/_generated/geometry-visual-engine/upgrade-v1/config/baseline.json EB4716620D44675BD69CE68031E9C72E23BCB99ECEEBB066BAD09413E21F18D5
+archive/_generated/geometry-visual-engine/upgrade-v1/config/regression-fixtures.json 55C2A0A0F8F179B1183F4EF748B9630FCA949471D2425FF42A353EA6E217AC24
+archive/_generated/geometry-visual-engine/upgrade-v1/config/inheritance-review.json 52FDE7580596651B83F1720C53DB1CAC82D313EF6A09083BEA30D399AC8AB275
+archive/_generated/geometry-visual-engine/upgrade-v1/config/original-workspace-status.txt 585324D27F7CFDE39384974DD5C0698FCFB0622C0425FED4FAA5AF4DA8650029
