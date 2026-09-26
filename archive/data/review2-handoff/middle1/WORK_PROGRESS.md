@@ -36,3 +36,23 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B28: 24/24; R1 solution KEEP 20 / REPAIR 2 / HOLD 2; Meta KEEP 4 / REPAIR 8 / HOLD 12, including 15 RPM gaps + source visual HOLD q12/q23. R1 final JS SHA-256 `9a46ad715ca2603794cd38e58fa29f1d57362d32aa4d3a646cb72c97f0993e59`; current branch differs only at q14 solution, whose `145/10=14.5` is already corrected to `135/10=13.5`. Deep review queue: q1–q15, q19–q24 (21 items).
 - Extracted ZIP evidence is read-only under the OS temp directory; SHA-256 and ZIP member inventories are in this session's verified checkpoint. Production integration must omit this entire review handoff directory.
 - Current next item: B20 q1 Meta R1 repair recheck. Machine ledger: `archive/data/review2-handoff/middle1/R2E_LEDGER.json`.
+
+## B20/B24/B28 preexisting R2E results integrated — 2026-09-27
+
+- B20, B24, and B28 final branch artifacts from work/m1-b20-b24-b28-r2e were re-applied on work/m1-b01-b31-r2e. The shared Meta/canonical commit was imported as 3af4fd4334a62a6ffd92221b8b944d8299612ba8.
+- B20 target commits: 9a0cf220b9641f14b49b3416a553a288457c9867 plus supporting q22 metadata commit 680643a2bcfdae260363b39ebaa24078e8289664.
+- B24 target commits: a818d2387ef3b5959a3fe3e8ece35dcc78b559a0 plus supporting solution-SVG commit 0cef455e9f059d758e99646e309b012c9c4da630.
+- B28 target final artifact commit: 70e579568929005ee38f20e2444f26c36ce0b9e0.
+- INGEST_QUEUE statuses B20/B24/B28 are PREEXISTING_R2E_RESULT; per-exam R2E_RESULT.json receipts are under archive/data/r2e-input/middle1/evidence/.
+- Target gates passed: identity/protected fields 24/24, 22/22, 24/24; referenced solution SVG XML 31/31; target Archive2 eligible 24/24, 22/22, 24/24; runtime selectable 24/24, 22/22, 24/24; crosswalk/binding/runtime owner audit 64/64.
+- Global catalog rebuild was not applied to unrelated R1 inputs from other exams. The committed catalog delta changes only the 70 B20/B24/B28 records; other branch input statuses remain untouched.
+- Main was not merged or pushed.
+
+## B20/B24/B28 preexisting R2E results imported — 2026-09-27
+
+- Physical INGEST_QUEUE marks B20/B24/B28 as PREEXISTING_R2E_RESULT and points to per-exam R2E_RESULT.json receipts.
+- Target exam commits: B20 9a0cf220b9641f14b49b3416a553a288457c9867 (support 680643a2bcfdae260363b39ebaa24078e8289664); B24 a818d2387ef3b5959a3fe3e8ece35dcc78b559a0 (support 0cef455e9f059d758e99646e309b012c9c4da630); B28 70e579568929005ee38f20e2444f26c36ce0b9e0.
+- Shared Meta commit: 3af4fd4334a62a6ffd92221b8b944d8299612ba8; runtime no-separate-L4 compatibility commit: 8c07caf53414e381d48fc7df76dc10c0f5a506cb.
+- Target-specific verification: protected identity 24/24, 22/22, 24/24; solution SVG path/XML 31/31; Archive2 eligible 24/24, 22/22, 24/24; runtime selectable same; crosswalk/binding/owner 64/64.
+- A full catalog rebuild would alter 261 rows for 11 unrelated R1 input files already in this batch branch. The target-specific catalog rows remain verified and the unrelated input rows were left untouched.
+- Main was not merged or pushed.

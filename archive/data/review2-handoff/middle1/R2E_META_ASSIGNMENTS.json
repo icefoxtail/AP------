@@ -1,7 +1,7 @@
 {
   "schemaVersion": "middle1-r2e-meta-adjudication/v1",
-  "status": "B20_B24_R2E_BRANCH_FINAL_B28_READY_FOR_EXAM_COMMIT",
-  "branch": "work/m1-b20-b24-b28-r2e",
+  "status": "B20_B24_B28_PREEXISTING_R2E_RESULT",
+  "branch": "work/m1-b01-b31-r2e",
   "curriculumByExam": {
     "B20": "2015",
     "B24": "2015",
@@ -802,8 +802,8 @@
   ],
   "validation": {
     "canonicalCompiledParity": "PASS",
-    "targetCrosswalkAndBindingItems": 64,
-    "status": "PASS_B20_B24_B28_TARGET_ASSIGNMENTS",
+    "targetCrosswalkAndBindingItems": "64/64",
+    "status": "PASS_TARGET_BRANCH_IMPORT",
     "b20Archive2": "24/24 eligible",
     "b20Runtime": "24/24 PASS",
     "b24Archive2": "22/22 eligible",
@@ -815,12 +815,30 @@
     "b28DifficultyParity": "24/24",
     "b28SourceRecovery": "2/2 deterministic image-source recoveries",
     "b28ProtectedFields": "24/24",
-    "archiveEngineBrowserPreview": "BLOCKED_BY_CUA_URL_POLICY"
+    "archiveEngineBrowserPreview": "BLOCKED_BY_CUA_URL_POLICY",
+    "b28FinalCommitSha": "3143a9626ca664fafc5dbd5837a7428f8b17fafd",
+    "targetB20Identity": "24/24 PASS",
+    "targetB24Identity": "22/22 PASS",
+    "targetB28Identity": "24/24 PASS",
+    "targetB20Archive2": "24/24 eligible",
+    "targetB24Archive2": "22/22 eligible",
+    "targetB28Archive2": "24/24 eligible",
+    "targetB20Runtime": "24/24 selectable",
+    "targetB24Runtime": "22/22 selectable",
+    "targetB28Runtime": "24/24 selectable",
+    "targetRuntimeOwner": "64/64 PASS",
+    "targetUnrelatedMutation": "0 outside declared B20/B24/B28/shared Meta/ledger files",
+    "targetB20": "24/24 identity/protected/catalog/runtime",
+    "targetB24": "22/22 identity/protected/catalog/runtime",
+    "targetB28": "24/24 identity/protected/catalog/runtime",
+    "targetRuntimeOwners": "64/64",
+    "targetSvgPathXml": "31/31",
+    "unrelatedMutation": "0"
   },
   "examFinalCommitShas": {
-    "B20": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
-    "B24": "3e302ecdb1fab7a08abedf7fcdaefebc54208292",
-    "B28": null
+    "B20": "9a0cf220b9641f14b49b3416a553a288457c9867",
+    "B24": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+    "B28": "70e579568929005ee38f20e2444f26c36ce0b9e0"
   },
   "sourceRecoveryEvidence": {
     "B28_q12": "Notion D12 RECOVERY_APPLIED; exact source image blob f7fd240b9cd92fe668ae5a3e880d843892851f6b retained.",
@@ -839,5 +857,31 @@
       "sourceFacts": "(가) water base 12×18 cm and fill depth 9/3 cm; (나) water base 9×12 cm and fill depth x cm; marked 18 cm is the container dimension, not the filled-water depth.",
       "solution": "12×18×3=648; 9×12×x=108x; equality gives x=6."
     }
-  }
+  },
+  "sourceBranch": "work/m1-b20-b24-b28-r2e",
+  "sourceExamFinalCommitShas": {
+    "B20": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
+    "B24": "3e302ecdb1fab7a08abedf7fcdaefebc54208292",
+    "B28": "3143a9626ca664fafc5dbd5837a7428f8b17fafd"
+  },
+  "examSupportingCommitShas": {
+    "B20": [
+      "680643a2bcfdae260363b39ebaa24078e8289664"
+    ],
+    "B24": [
+      "0cef455e9f059d758e99646e309b012c9c4da630"
+    ],
+    "B28": []
+  },
+  "examLatestResultCommitShas": {
+    "B20": "680643a2bcfdae260363b39ebaa24078e8289664",
+    "B24": "0cef455e9f059d758e99646e309b012c9c4da630",
+    "B28": "70e579568929005ee38f20e2444f26c36ce0b9e0"
+  },
+  "sharedMetaSourceCommitSha": "909617696fa78f64dbbcd8e029667078b260ff90",
+  "targetSharedMetaCommitSha": "3af4fd4334a62a6ffd92221b8b944d8299612ba8",
+  "targetRuntimeCompatibilityCommitSha": "8c07caf53414e381d48fc7df76dc10c0f5a506cb",
+  "sourceSharedMetaCommit": "909617696fa78f64dbbcd8e029667078b260ff90",
+  "targetSharedMetaCommit": "3af4fd4334a62a6ffd92221b8b944d8299612ba8",
+  "targetRuntimeCompatibilityCommit": "8c07caf53414e381d48fc7df76dc10c0f5a506cb"
 }
