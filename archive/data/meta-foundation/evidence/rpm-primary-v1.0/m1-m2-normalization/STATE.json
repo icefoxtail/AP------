@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M1_M2_NORMALIZATION_STATE_v1",
+  "task": "M1-M2 RPM completeness and global ACTIVE crosswalk semantic normalization",
+  "baseMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+  "branch": "work/meta-rpm-m1-m2-normalization",
+  "currentStage": "BASELINE_RPM_AND_CROSSWALK_AUDIT_FROZEN",
+  "initialRpmL4RecordCount": 466,
+  "repairedRpmL4RecordCount": null,
+  "scope": [
+    "2015/M1-1",
+    "2015/M1-2",
+    "2015/M2-1",
+    "2015/M2-2",
+    "2022/M1-1",
+    "2022/M1-2",
+    "2022/M2-1",
+    "2022/M2-2"
+  ],
+  "completedStages": [
+    "NOTION_START_GATE",
+    "LATEST_ORIGIN_MAIN_FETCH",
+    "WORKTREE_CREATED",
+    "REQUIRED_GIT_DOCUMENTS_READ",
+    "ACTIVE_GLOBAL_REGISTRY_INVENTORIED",
+    "KNOWN_RHS_RHA_SOURCE_REVIEWED",
+    "BASELINE_RPM_RECORD_CENSUS",
+    "BASELINE_CROSSWALK_DENOMINATOR_AND_GLOBAL_ACTIVE_SNAPSHOT"
+  ],
+  "remainingStages": [
+    "RPM_OMISSION_REPAIR",
+    "CROSSWALK_SEMANTIC_NORMALIZATION",
+    "FINAL_RECORD_LEVEL_AUDIT",
+    "MIGRATION_GAP_REASSESSMENT",
+    "RESOLVER_RUNTIME_VALIDATION",
+    "REMOTE_PUSH",
+    "NOTION_CLOSEOUT"
+  ],
+  "lastCompletedItem": "Baseline 466 RPM L4 rows and 466 initial crosswalk rows frozen; pre-existing 2015 M2-2 RHS/RHA count=0; existing 2022 RHS/RHA and 2015 binding recorded.",
+  "nextStartPoint": "Repair the missing 2015 M2-2 right-triangle-congruence L3/L4 path and regenerate views/CSV/package manifests.",
+  "hardBlockers": []
+}
