@@ -45,25 +45,25 @@ jobs:
           packet="${packets[0]}"
           inspection="$(node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs inspect --packet "$packet")"
           target_ref="$(jq -r '.targetRef' <<<"$inspection")"
-          target_base_sha="$(jq -r '.targetBaseSha' <<<"$inspection")"
+          review_base_sha="$(jq -r '.targetBaseSha' <<<"$inspection")"
           apply_id="$(jq -r '.applyId' <<<"$inspection")"
           echo "packet=$packet" >> "$GITHUB_OUTPUT"
           echo "target_ref=$target_ref" >> "$GITHUB_OUTPUT"
-          echo "target_base_sha=$target_base_sha" >> "$GITHUB_OUTPUT"
+          echo "review_base_sha=$review_base_sha" >> "$GITHUB_OUTPUT"
           echo "apply_id=$apply_id" >> "$GITHUB_OUTPUT"
 
-      - name: Check target base before any generation
+      - name: Check current target matches staging parent
         id: base
         shell: bash
         env:
           TARGET_REF: ${{ steps.packet.outputs.target_ref }}
-          TARGET_BASE_SHA: ${{ steps.packet.outputs.target_base_sha }}
         run: |
           set -euo pipefail
           git fetch --no-tags origin "refs/heads/${TARGET_REF}"
           current_target_sha="$(git rev-parse FETCH_HEAD)"
-          if [[ "$current_target_sha" != "$TARGET_BASE_SHA" ]]; then
-            echo "APPLY_BASE_STALE: $TARGET_REF is $current_target_sha, packet base is $TARGET_BASE_SHA" >&2
+          staging_parent_sha="$(git rev-parse HEAD^)"
+          if [[ "$current_target_sha" != "$staging_parent_sha" ]]; then
+            echo "APPLY_BASE_STALE: $TARGET_REF advanced after E created staging; current=$current_target_sha staging-parent=$staging_parent_sha" >&2
             exit 1
           fi
           echo "target_sha=$current_target_sha" >> "$GITHUB_OUTPUT"
