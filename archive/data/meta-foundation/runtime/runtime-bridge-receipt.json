@@ -15,10 +15,10 @@
     "limitContinuityCatalogJoinMismatch": 0,
     "limitContinuityDifficultyDeferred": 0,
     "limitContinuityAutomaticEligibleExpected": 184,
-    "combinedRuntimeRecords": 5087,
-    "combinedUniqueUid": 5087,
-    "combinedUniqueSourceIdentity": 5087,
-    "combinedRuntimeCatalogJoin": 5087,
+    "combinedRuntimeRecords": 5111,
+    "combinedUniqueUid": 5111,
+    "combinedUniqueSourceIdentity": 5111,
+    "combinedRuntimeCatalogJoin": 5111,
     "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 2,
     "limitContinuityDifficultyReviewed": 104,
@@ -78,7 +78,7 @@
     "probabilityStatisticsDirectStandardUnitBoundItems": 4,
     "probabilityStatisticsSourceHold": 0,
     "questionMetadataFingerprintSync": 3,
-    "questionMetadataDigest": "054915dfaa21c369b6d8be7a3ae62fb3427f16586eb230fe35d3d37c952b0738",
+    "questionMetadataDigest": "8e40443190b80a3265d6d969cd07a8d3f1f264755bdcd9b2ac3e169ff3ab6a78",
     "archive2CatalogIndexVersion": "8d6fe5bde4d29bb01a9f5254b0be7e019c59b84e5e5c4e0984083843ef1c856e",
     "metaFoundationRuntimePackCount": 10,
     "metaFoundationRuntimeUrlCount": 10,
@@ -128,7 +128,11 @@
       "PROBABILITY_STATISTICS": 704,
       "MIDDLE_GEOMETRY": 928,
       "MIDDLE1": 381
-    }
+    },
+    "combinedRuntimeCatalogDirectJoin": 5111,
+    "combinedRuntimeCatalogSourceIdentityRepairJoin": 0,
+    "reviewOverrideUidCount": 24,
+    "reviewOverrideDigest": "b98f072ae4910d5d5a2edaf8cee001e0f36970e29bb13e9f095252771a065766"
   },
   "archive2JoinContract": {
     "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
@@ -166,5 +170,88 @@
     "Current active runtime join is 5087/5087 with UID/source-identity duplicate counts 0.",
     "H1_FOUNDATION joins Archive 2.0 by direct questionUid for 1170/1170 rows.",
     "H1_FOUNDATION retains 130 explicit item holds; 650 rows are selectable by the production eligibility gate."
-  ]
+  ],
+  "reviewedApplyV1": {
+    "schemaVersion": "archive-reviewed-runtime-receipt-v1",
+    "status": "PASS",
+    "activePackCount": 10,
+    "runtimeRecordCount": 5111,
+    "uniqueUidCount": 5111,
+    "uniqueSourceIdentityCount": 5111,
+    "archive2DirectJoinCount": 5111,
+    "archive2SourceIdentityRepairJoinCount": 0,
+    "archive2JoinMismatchCount": 0,
+    "canonicalGateCounts": {
+      "brokenL4ParentCount": 0,
+      "unregisteredL3Count": 0,
+      "unregisteredL4Count": 0,
+      "unregisteredCrossConceptCount": 0,
+      "bindingMismatchCount": 0
+    },
+    "overrideUidCount": 24,
+    "overrideDigest": "b98f072ae4910d5d5a2edaf8cee001e0f36970e29bb13e9f095252771a065766",
+    "packCounts": [
+      {
+        "packId": "DERIVATIVE",
+        "records": 320,
+        "runtimeFile": "derivative-v1.json",
+        "runtimeSha256": "f0e14ab3d0f87031eb106c24cb9551a3802f4bd22cbe08b3f9db50f86e0d74f4"
+      },
+      {
+        "packId": "FUNCTIONS_GRAPHS",
+        "records": 522,
+        "runtimeFile": "functions-graphs-v1.json",
+        "runtimeSha256": "92f8ea87294bc025a76653fe5a54b8b0495407a3d55bf03fa9d39099ac99757f"
+      },
+      {
+        "packId": "GEOMETRY_EQUATIONS",
+        "records": 400,
+        "runtimeFile": "geometry-equations-v1.json",
+        "runtimeSha256": "1e8383e786785654c2be467c83e8645494ae40bab54a7ab97b02332fd1cbac8b"
+      },
+      {
+        "packId": "H1_FOUNDATION",
+        "records": 1170,
+        "runtimeFile": "h1-foundation-v1.json",
+        "runtimeSha256": "eaf24ce14b13cb9a7fb4b19dc64dedc6a47e10d7c63548d687dce20af54f87a8"
+      },
+      {
+        "packId": "INTEGRAL_CALCULUS",
+        "records": 126,
+        "runtimeFile": "integral-calculus-v1.json",
+        "runtimeSha256": "3357a57c1d1512f08c9f87c61da020669d9b47bd06a6f106629a4f70d786acd4"
+      },
+      {
+        "packId": "LIMIT_CONTINUITY",
+        "records": 184,
+        "runtimeFile": "limit-continuity-v1.json",
+        "runtimeSha256": "3e1cf8802f66d420bc33fce4e1238f8bf3050e11b6a5004d78322c8050653049"
+      },
+      {
+        "packId": "MIDDLE_GEOMETRY",
+        "records": 931,
+        "runtimeFile": "middle-geometry-v1.json",
+        "runtimeSha256": "49ca670c3a1cba1aceea3a42d6d83bf15b47898057a27b501ed58e1582085d1d"
+      },
+      {
+        "packId": "MIDDLE1",
+        "records": 400,
+        "runtimeFile": "middle1-v1.json",
+        "runtimeSha256": "64dadcc46c45423376a46135036854a918a1361d8b4f6290c8592836be2a8263"
+      },
+      {
+        "packId": "PROBABILITY_STATISTICS",
+        "records": 704,
+        "runtimeFile": "probability-statistics-v1.json",
+        "runtimeSha256": "1eb818dc465fc03a0563cc07f4fe3a3e72af64c064a05b84de951bb96d2cf5c7"
+      },
+      {
+        "packId": "SETS_PROPOSITIONS",
+        "records": 354,
+        "runtimeFile": "sets-propositions-v1.json",
+        "runtimeSha256": "3b443aa78c44bd0c121f5ccfb83c85034cba702391933d0c50ad35dcd7bb8e6e"
+      }
+    ],
+    "latestPacketApplyId": ""
+  }
 }
