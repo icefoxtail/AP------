@@ -36,3 +36,11 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B28: 24/24; R1 solution KEEP 20 / REPAIR 2 / HOLD 2; Meta KEEP 4 / REPAIR 8 / HOLD 12, including 15 RPM gaps + source visual HOLD q12/q23. R1 final JS SHA-256 `9a46ad715ca2603794cd38e58fa29f1d57362d32aa4d3a646cb72c97f0993e59`; current branch differs only at q14 solution, whose `145/10=14.5` is already corrected to `135/10=13.5`. Deep review queue: q1–q15, q19–q24 (21 items).
 - Extracted ZIP evidence is read-only under the OS temp directory; SHA-256 and ZIP member inventories are in this session's verified checkpoint. Production integration must omit this entire review handoff directory.
 - Current next item: B20 q1 Meta R1 repair recheck. Machine ledger: `archive/data/review2-handoff/middle1/R2E_LEDGER.json`.
+
+
+## Latest user scope and B28 recovery reconciliation — 2026-09-27
+
+- Latest user instruction: finish on the existing task branch with commit/push only; do not merge or update main. Do not issue `R2E_MAIN_FINAL` receipts without main integration.
+- Latest Notion D12 REVIEW1 record and R2E pilot update report deterministic source recovery for B28 q12/q23 and q14 mean repair. Current branch q12 image blob `f7fd240b9cd92fe668ae5a3e880d843892851f6b` and q23 image blob `063ac074aa466d8a3ac5eadf0373babc3e2c51cb` match those receipts exactly.
+- Current branch JS still contains the old q12/q23 HOLD prose. R2E will independently adjudicate and replace both solutions from the matched source images; q14 already uses `135/10=13.5` and has no residual `145/10`.
+- The Notion recovery summary says target image blobs exact, source holds 0, and the recovery artifact was stored in the latest Library REVIEW1_DONE ZIP. That ZIP is not present in this branch's R1_INPUT package; evidence identity is preserved above and the R2E solution writes will be recorded locally.
