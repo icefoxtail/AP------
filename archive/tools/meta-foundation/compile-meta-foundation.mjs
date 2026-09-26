@@ -414,10 +414,30 @@ function verifyExact(pathName, expectedText, mismatches) {
 }
 
 function main() {
+  const canonicalOnlyCheck = process.argv.includes("--canonical-only-check");
   const write = process.argv.includes("--write");
   const check = process.argv.includes("--check") || !write;
   const canonical = loadCanonical();
   const compiled = buildCompiled(canonical);
+  if (canonicalOnlyCheck) {
+    if (write) throw new Error("--canonical-only-check is read-only");
+    const outputs = compiledOutputs(canonical, compiled);
+    const index = buildRegistryIndex(canonical, outputs);
+    const mismatches = [];
+    for (const [p, text] of outputs) verifyExact(p, text, mismatches);
+    verifyExact(canonical.indexPath, jsonText(index), mismatches);
+    if (mismatches.length) {
+      throw new Error("Canonical/compiled Meta Foundation parity failed: " + mismatches.join(", "));
+    }
+    process.stdout.write(JSON.stringify({
+      status: "PASS",
+      gate: "CANONICAL_COMPILED_PARITY",
+      activePackCount: canonical.packs.length,
+      conceptShardCount: canonical.shards.length,
+      compiledArtifactCount: outputs.size
+    }) + "\n");
+    return;
+  }
   const regression = buildGeometryRegression(canonical, compiled);
   assertGate(regression);
 
