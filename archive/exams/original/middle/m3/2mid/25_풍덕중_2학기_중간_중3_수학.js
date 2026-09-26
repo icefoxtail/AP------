@@ -274,11 +274,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "$D$는 $BC$ 위에 있고 $E$는 $AC$ 위에 있으므로 $\\angle DCE=\\angle BCA$이다.\n또 $DE\\perp AC$이므로 직각삼각형 $CDE$에서\n$x+\\angle C=90^\\circ$이다.\n\n직각삼각형 $ABC$에서도 $\\angle B=90^\\circ$이므로\n$\\angle A+\\angle C=90^\\circ$이다.\n\n따라서 $x=\\angle A$이다.\n\n피타고라스 정리에 의해\n$AC=\\sqrt{AB^2+BC^2}=\\sqrt{2^2+5^2}=\\sqrt{29}$\n\n그러므로\n$\\cos x^\\circ=\\cos A=\\dfrac{AB}{AC}=\\dfrac{2}{\\sqrt{29}}=\\dfrac{2\\sqrt{29}}{29}$\n\n따라서 정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9.png",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 10,
@@ -592,11 +592,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "$AD=t$라 하자.\n점 $D$에서 그은 두 접선의 길이가 같으므로 $DE=t$이다.\n또 점 $C$에서 그은 두 접선의 길이가 같으므로 $CE=BC=5$이다.\n\n따라서\n$CD=DE+EC=t+5$\n\n$AD\\perp AB$, $BC\\perp AB$이므로 점 $D$와 $C$의 가로 방향 거리는 $AB=6$, 세로 방향 높이 차는 $5-t$이다.\n피타고라스 정리에 의해\n$(t+5)^2=6^2+(5-t)^2$\n\n전개하면\n$t^2+10t+25=36+t^2-10t+25$\n$20t=36$\n$t=\\dfrac95$\n\n따라서 $AD=\\dfrac95$이고 정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19.png",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 20,
@@ -729,11 +729,11 @@ window.questionBank = [
     "answer": "$64\\sqrt{3}\\,\\mathrm{cm}^2$",
     "solution": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n\n직각삼각형 $APO$에서 $PO=16$이고 $\\angle APO=30^\\circ$이므로\n$OA=16\\sin30^\\circ=16\\times\\dfrac12=8$\n$AP=16\\cos30^\\circ=16\\times\\dfrac{\\sqrt3}{2}=8\\sqrt3$\n\n한 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이고, $OA=OB$는 반지름이다.\n따라서 $\\triangle APO$와 $\\triangle BPO$의 넓이는 같다.\n\n그러므로 사각형 $APBO$의 넓이는\n$2\\times\\dfrac12\\times8\\times8\\sqrt3$\n$=64\\sqrt3\\,\\mathrm{cm}^2$\n\n따라서 구하는 넓이는 $64\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24.png",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 25,
@@ -756,11 +756,11 @@ window.questionBank = [
     "answer": "$6$",
     "solution": "점 $P$에서 원에 그은 두 접선의 길이가 같으므로\n$PA=PB=8$이다.\n\n위쪽 접선에서 $PC=7$이므로\n$CA=PA-PC=8-7=1$\n\n점 $C$에서 그은 두 접선의 길이가 같으므로\n$CE=CA=1$\n\n$CD=3$이므로\n$DE=CD-CE=3-1=2$\n\n점 $D$에서 그은 두 접선의 길이가 같으므로\n$DB=DE=2$\n\n아래쪽 접선에서 $PB=PD+DB$이므로\n$8=x+2$\n$x=6$\n\n따라서 구하는 값은 $6$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25.png",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg"
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];
 window.examTitle = "25_풍덕중_2학기_중간_중3_수학";
