@@ -21,6 +21,9 @@ def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def prepare(spec):
     semantic=validate(spec);geometry=semantic['geometry'];tokens=load();critical=[]
+    symbols={name:evaluate(parse(expression)) for name,expression in spec['displayFacts'].get('symbolDefinitions',{}).items()}
+    for name,value in symbols.items():
+        if not name.isalpha() or isinstance(value,(bool,tuple,complex)) or not math.isfinite(float(value)):raise ValueError('INVALID_EXACT_SYMBOL_DEFINITION')
     for value in geometry.values():
         if isinstance(value,Circle):
             x,y=value.center;r=value.radius;critical.extend([(x-r,y-r),(x+r,y+r)])
@@ -77,7 +80,7 @@ def prepare(spec):
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
             label['at']=vp.screen(geometry[obj['target']]) if kind in {'POINT_NAME','COORDINATE_LABEL'} else vp.screen(obj['at'])
             if kind=='COORDINATE_LABEL':
-                exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence'))) for v,n in zip(obj['exact'],geometry[obj['target']])]
+                exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']
             elif kind=='CONDITION_BOX':label['text']='\n'.join(obj['lines'])
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
@@ -120,7 +123,7 @@ def write_candidate(spec,config,measurements=None):
     for name,value in [('visual.svg',result['svg']),('visual.tex',result['tex']),('witness.json',json.dumps(result['witness'],ensure_ascii=False,indent=2)+'\n'),('spec.json',json.dumps(spec,ensure_ascii=False,indent=2)+'\n')]:
         target=(folder/name).resolve()
         if not target.is_relative_to(root):raise ValueError('PRODUCTION_WRITE_FORBIDDEN')
-        target.write_text(value,encoding='utf-8')
+        target.write_text(value,encoding='utf-8',newline='\n')
     return result
 
 def cli():

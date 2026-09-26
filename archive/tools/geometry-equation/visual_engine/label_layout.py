@@ -55,7 +55,7 @@ def approximate_size(text,font=13.25,lines=1):
         rows=text.split('\n')
         return max(approximate_size(row,font)[0] for row in rows),font*1.5*len(rows)
     width=sum(font*(1.0 if ord(c)>127 and c not in '−√≤≥′' else .66) for c in text)
-    return max(font,width),font*1.5*lines
+    return max(font*.5,width),font*1.5*lines
 
 def candidate(at,width,height,direction,gap):
     x,y=at
@@ -79,7 +79,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
         w,h=measurements.get(label['id'],approximate_size(label['text'],label.get('font',13.25)))
         w,h=finite(w),finite(h);chosen=None;method=None
-        for gap in (12,20,32,48):
+        for gap in (12,8,20,32,48):
             for direction in DIRECTIONS:
                 box=candidate(label['at'],w,h,direction,gap)
                 if safe_area.contains(box) and not any(collision(box,o) for o in occupied):

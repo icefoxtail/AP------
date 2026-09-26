@@ -109,7 +109,7 @@ def serialize(node,mode='tex'):
             return s(left)+'^('+s(right)+')'
         if op=='/':
             if mode=='tex':return '\\frac{'+s(left)+'}{'+s(right)+'}'
-            return (s(left) if left.kind in {'number','symbol','group'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group'} else '('+s(right)+')')
+            return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
         mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠'}
         return s(left)+escape(mapped.get(op,op))+s(right)
     raise ValueError('UNKNOWN_AST_NODE')
@@ -144,10 +144,10 @@ def evaluate(node,values=None):
         if op=='>=':return l>=r
     raise ValueError('UNEVALUABLE_EXPRESSION')
 
-def exact_coordinate(source,numeric,source_decimal=False):
+def exact_coordinate(source,numeric,source_decimal=False,values=None):
     tree=parse(source)
     if '.' in source and not source_decimal:raise ValueError('INVALID_STUDENT_DECIMAL_LABEL')
-    value=evaluate(tree)
+    value=evaluate(tree,values)
     if isinstance(value,(bool,tuple,complex)) or not math.isfinite(float(value)) or abs(float(value)-numeric)>1e-9:
         raise ValueError('DISPLAY_COORDINATE_PARITY_FAIL')
     # Normalize rational coordinate labels, without guessing floats as rationals.

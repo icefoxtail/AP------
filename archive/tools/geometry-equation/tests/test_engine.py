@@ -1,7 +1,8 @@
 import sys,unittest,importlib.util
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from visual_engine.engine import build,output_root,ROOT
+from visual_engine.engine import build,output_root,write_candidate,ROOT
+import hashlib
 from visual_engine.entrypoints import build_independent
 
 def spec():
@@ -36,5 +37,12 @@ class EngineTests(unittest.TestCase):
     def test_bad_display_coordinate(self):
         s=spec();s['objects'][2]['exact']=['1/2','1']
         with self.assertRaisesRegex(ValueError,'DISPLAY_COORDINATE'):build(s)
+    def test_file_witness_raw_sha_roundtrip(self):
+        s=spec();s['id']='hash-roundtrip'
+        config={'engineVersion':'geometry-visual-v1','runId':'upgrade-v1','productionBaselinePolicy':'READ_ONLY','allowProductionWrite':False,'outputRoot':'archive/_generated/geometry-visual-engine/upgrade-v1/tests/generated'}
+        result=write_candidate(s,config)
+        raw=(output_root(config)/'candidate/hash-roundtrip/visual.svg').read_bytes()
+        self.assertNotIn(b'\r\n',raw)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),result['witness']['normalizedSvgSha256'])
 
 if __name__=='__main__':unittest.main()
