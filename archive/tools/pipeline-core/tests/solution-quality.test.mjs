@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { solutionQualityDraft, validateSolutionQuality, SOLUTION_QUALITY_CHECKS } from '../solution-quality.mjs';
+import { solutionQualityDraft, validateSolutionQuality, SOLUTION_QUALITY_CHECKS, SOLUTION_QUALITY_CHECKS_V1, SOLUTION_QUALITY_LEGACY_VERSION } from '../solution-quality.mjs';
 import { validateVisualBenefit, validateVisualBenefitPair } from '../solution-visual-benefit.mjs';
 import { auditRun } from '../closure.mjs';
 import { axisInputSha } from '../projection.mjs';
@@ -34,6 +34,29 @@ test('a PASS label, draft, missing check, or all N/A cannot substitute quality e
   const c = solutionQualityDraft();
   for (const k of SOLUTION_QUALITY_CHECKS) c.checks[k] = { status: 'NOT_APPLICABLE', reason: 'Synthetic exemption', solutionExcerpts: [] };
   assert.equal(validateSolutionQuality(c).status, 'FAIL');
+});
+
+test('solution quality v2 requires typed student language and blackboard layout evidence', () => {
+  const solution = '양변에서 1을 빼면\nx=1이다.';
+  const contract = reviewedSolutionContract(solution, { solutionExcerpt: solution, expression: '1', claimedValue: 1, independentlyComputedValue: 1 });
+  assert.equal(contract.schemaVersion, 'APMATH_SOLUTION_QUALITY_v2');
+  contract.checks.blackboardLayoutPass.status = 'NOT_APPLICABLE';
+  const result = validateSolutionQuality(contract, { solution, choices: [], questionType: '서술형' });
+  assert.ok(result.errors.includes('SOLUTION_QUALITY_EXEMPTION_FORBIDDEN:blackboardLayoutPass'));
+  assert.equal(validateSolutionQuality(reviewedSolutionContract(solution, { solutionExcerpt: solution, expression: '1', claimedValue: 1, independentlyComputedValue: 1 }), { solution, choices: ['1'], questionType: '객관식' }).status, 'PASS');
+});
+
+test('legacy v1 solution quality remains readable without v2-only checks', () => {
+  const solution = '양변에서 1을 빼면 x=1이다.';
+  const contract = {
+    schemaVersion: SOLUTION_QUALITY_LEGACY_VERSION,
+    checks: Object.fromEntries(SOLUTION_QUALITY_CHECKS_V1.map(key => [key, { status: 'PASS', reason: `Legacy reviewed ${key}`, solutionExcerpts: [solution] }])),
+  };
+  contract.checks.independentIntermediateRecalculation = {
+    status: 'PASS', reason: 'Legacy arithmetic evidence', solutionExcerpts: ['1'],
+    independentWork: 'Recomputed 1 independently', recalculations: [{ solutionExcerpt: '1', expression: '1', claimedValue: 1, independentlyComputedValue: 1 }],
+  };
+  assert.equal(validateSolutionQuality(contract, { solution, choices: ['1'], questionType: '객관식' }).status, 'PASS');
 });
 
 test('high difficulty and constructed response exemptions are rejected', () => {

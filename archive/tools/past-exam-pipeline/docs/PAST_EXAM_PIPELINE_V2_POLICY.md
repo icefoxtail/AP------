@@ -21,6 +21,54 @@ It does not create or decide:
 - direct solving
 - question-wide image fallback
 
+This extraction boundary remains unchanged. It defines only S1~S3 and does not
+represent a completed Past Exam V3 candidate. After extraction/source-fidelity
+freeze, the V3 completion lane builds a new candidate with independent SOURCE_ONLY
+math review, the canonical student-facing small-blackboard solution, L1/L2, and
+advanced metadata evidence.
+
+## V3 completion overlay after source freeze
+
+The solution and metadata stage consumes the exact frozen V2 source payload. Its
+order is fixed:
+
+```text
+frozen source
+→ independent source-only math solve
+→ final student solution under JS아카이브_학생용해설_운영규칙_v1.md
+→ canonical L1/L2 validation
+→ RPM Primary README
+→ RPM CANONICAL_MASTER
+→ target curriculum/scope view
+→ RPM→ACTIVE crosswalk
+→ ACTIVE Meta Foundation
+→ L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty v1.3
+→ solution identity evidence
+→ visual triage and EXPECTED FACT
+→ required solution SVGs
+→ independent U1/U2/U3 review
+```
+
+Classification starts from current source plus verified final solution,
+`primaryMethod`, and `decisiveStep`. Same-stage candidate keys, template or
+CrossConcept suggestions, heuristics, and prior verdicts are excluded from the
+semantic input. The RPM lookup order is mandatory; a missing ACTIVE key or
+binding is a migration disposition and never authorizes an invented canonical
+key.
+
+`build-completion-evidence.mjs` creates only hash-bound `NOT_TESTED` drafts for
+`solution_identity_evidence.json` and `meta_decision_evidence.json`. A reviewer
+must complete the semantic evidence; the generator does not grant PASS.
+Solution identity uses `sourceArchiveFile`, `sourceIdentityKey`, `sourceOrdinal`,
+`contentHash`, `choicesHash`, `imageRefHash`, `sourceIdentityFingerprint`, and
+`solutionHash` and cannot be bound by question number or array index alone.
+
+`BASIC_ARCHIVE_ELIGIBLE` and `ADVANCED_META_ELIGIBLE` are independent results.
+A migration gap may leave BASIC eligible while advanced metadata remains
+`HOLD`; canonical fields stay blank rather than carrying a candidate/deprecated
+key. A `TRUE_TAXONOMY_GAP` is evidence/HOLD only and cannot create or promote a
+new key.
+
 
 ## Source-of-truth order
 
@@ -139,26 +187,31 @@ The next GPT/Gemini agent receives:
 - `reports/gpt_gemini_handoff_manifest.json`
 - relevant rulebook files
 
-The next agent may fill only:
+The handoff is an authoring input after extraction. It is not final archive
+promotion evidence. Before S8 visual work, the completed candidate must pass the
+V3 identity, solution, RPM-first Meta, and applicable pipeline-core quality
+contracts.
 
-- `answer`
-- `solution`
-- `answerStatus`
-- `solutionStatus`
-
-The next agent must also preserve or complete the four required subunit
-metadata fields before a candidate can receive `reviewed_pass`. Those fields
-are metadata, not a license to rewrite `content`, `choices`, `answer`,
-`solution`, or source images without the relevant evidence.
+The V2 extraction output leaves `answer` and `solution` blank. The downstream
+V3 completion builder may fill `answer`, `solution`, answer/solution statuses,
+the L1/L2 fields and the advanced fields explicitly listed in
+`completion-contract.json`. Advanced values must pass RPM-first evidence and
+ACTIVE canonical validation before they can make `ADVANCED_META_ELIGIBLE`.
+This completion allowance does not authorize edits to extracted `content`,
+`choices`, source identity, source page evidence or source images.
 
 If it finds a content/choice/image extraction error, it must verify the mismatch against full-page evidence and write an extraction correction report instead of silently changing extraction fields. It must not use a crop failure as the basis for rewriting content or choices.
 
 Before handoff, the protected payload SHA is frozen for each source identity.
 After handoff it must match exactly. Any protected-field mutation fails with
 `ANSWER_SOLUTION_SCOPE_VIOLATION` and returns to the
-`SOURCE_FIDELITY_RESTORATION` lane. A reviewed-pass envelope must bind the
+`SOURCE_FIDELITY_RESTORATION` lane. A V3 reviewed-pass envelope must bind the
 candidate SHA, source inventory/map/fidelity SHA, independent math evidence
-SHA, and asset-provenance evidence SHA.
+SHA, asset-provenance evidence SHA, `solution_identity_evidence.json`, and
+`meta_decision_evidence.json`. The latter two contain per-question hashes and
+solution alignment/RPM-first dispositions. V3 promotion reports BASIC and
+advanced metadata eligibility separately; an advanced migration gap cannot
+replace either decision.
 
 Independent math evidence is source-only and blind to the prior answer and
 solution. It must record the solve, answer comparison, choice uniqueness, and

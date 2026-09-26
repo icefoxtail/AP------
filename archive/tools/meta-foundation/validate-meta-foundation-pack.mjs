@@ -3,6 +3,7 @@
 // NO_SEPARATE_L4 dispositions are valid only when represented in the ledger.
 import fs from "node:fs";
 import path from "node:path";
+import { loadActiveMetaRegistry, validateActiveMetaFields } from "./active-registry.mjs";
 
 const av = process.argv.slice(2);
 const arg = (name) => {
@@ -29,15 +30,17 @@ const compiledConcepts = read(path.join(compiledRoot, "concept_registry.json"));
 const compiledConditions = read(path.join(compiledRoot, "condition_registry.json"));
 const compiledAliases = read(path.join(compiledRoot, "aliases.json"));
 const compiledBindings = read(path.join(compiledRoot, "curriculum_bindings.json"));
+const activeRegistry = loadActiveMetaRegistry();
 
 const failures = [];
-const currentPT = new Map(compiledTaxonomy.problemTypes.map((row) => [row.problemTypeKey, row]));
-const currentTPL = new Map(compiledTaxonomy.templates.map((row) => [row.templateKey, row]));
+for (const error of activeRegistry.errors) failures.push(`activeMeta:${error}`);
+const currentPT = activeRegistry.problemTypes;
+const currentTPL = activeRegistry.templates;
 const packPT = tax.problemTypes || [];
 const packTPL = tax.templates || [];
 const isActivePack = (compiledTaxonomy.sourcePacks || []).some((row) => row.packId === pack.packId);
-const concepts = new Set(compiledConcepts.concepts.map((row) => row.conceptKey));
-const conditions = new Set(compiledConditions.conditions.map((row) => row.conditionKey));
+const concepts = new Set(activeRegistry.concepts.keys());
+const conditions = new Set(activeRegistry.conditions.keys());
 const bindKey = (row) => [row.curriculum, row.standardUnitKey, row.subUnitKey === null ? "<DIRECT>" : row.subUnitKey, row.problemTypeKey].join("\0");
 const activeBindingKeys = new Set(compiledBindings.bindings.map(bindKey));
 for (const row of binds.bindings || []) activeBindingKeys.add(bindKey(row));
@@ -88,6 +91,18 @@ for (const row of assignments.items || []) {
       failures.push(`invalidL3Hold:${row.questionUid}`);
     }
   } else {
+    const activeValidation = validateActiveMetaFields({
+      ...row,
+      problemTypeKey: row.problemTypeKey ?? "",
+      templateKey: row.templateKey ?? "",
+      crossConceptKeys: row.crossConceptKeys ?? [],
+      conditionKeys: row.conditionKeys ?? [],
+      difficultyBucket: row.difficultyBucket ?? "UNKNOWN",
+      difficultyConfidence: row.difficultyConfidence ?? "UNKNOWN",
+      difficultyBoundaryFlag: row.difficultyBoundaryFlag ?? "UNKNOWN",
+      legacyLevelCompatibility: row.legacyLevelCompatibility ?? "UNKNOWN",
+    }, activeRegistry);
+    for (const error of activeValidation.errors) failures.push(`activeMeta:${error}:${row.questionUid}`);
     const problemType = currentPT.get(row.problemTypeKey);
     if (!problemType) failures.push(`missingL3:${row.questionUid}`);
     if (!activeBindingKeys.has(bindKey(row))) failures.push(`missingBinding:${row.questionUid}`);

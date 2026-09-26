@@ -2,7 +2,8 @@ import { isObject, nonempty, objectSha } from './canonical.mjs';
 import { validateStudentSerialization } from './student-output.mjs';
 import { evaluateExpression } from './expression.mjs';
 
-export const SOLUTION_QUALITY_VERSION = 'APMATH_SOLUTION_QUALITY_v1';
+export const SOLUTION_QUALITY_LEGACY_VERSION = 'APMATH_SOLUTION_QUALITY_v1';
+export const SOLUTION_QUALITY_VERSION = 'APMATH_SOLUTION_QUALITY_v2';
 export const SOLUTION_CORE_CHECKS = Object.freeze([
   'mathCorrect', 'answerConclusionParity', 'keyIdeaAdequate',
   'conditionInterpretationAdequate', 'reasoningDirectionAdequate',
@@ -15,7 +16,13 @@ export const SOLUTION_CONDITIONAL_CHECKS = Object.freeze([
   'caseSplitComplete', 'rangeBoundaryComplete', 'uniquenessOrOverlapExplained',
   'highLevelEnhanced', 'subjectiveScoringReady'
 ]);
-export const SOLUTION_QUALITY_CHECKS = Object.freeze([...SOLUTION_CORE_CHECKS, ...SOLUTION_CONDITIONAL_CHECKS]);
+export const SOLUTION_STUDENT_PRESENTATION_CHECKS = Object.freeze([
+  'studentLanguagePass', 'blackboardLayoutPass'
+]);
+export const SOLUTION_QUALITY_CHECKS_V1 = Object.freeze([...SOLUTION_CORE_CHECKS, ...SOLUTION_CONDITIONAL_CHECKS]);
+export const SOLUTION_QUALITY_CHECKS = Object.freeze([
+  ...SOLUTION_QUALITY_CHECKS_V1, ...SOLUTION_STUDENT_PRESENTATION_CHECKS
+]);
 
 // Semantic adequacy belongs to the independent U3 reviewer. This reducer checks
 // completeness, applicability, and anchors; it never infers pedagogy from length
@@ -28,8 +35,14 @@ export function solutionQualityDraft() {
 export function validateSolutionQuality(contract, question = null) {
   const errors = [];
   if (question) errors.push(...validateStudentSerialization(question).errors);
-  if (!isObject(contract) || contract.schemaVersion !== SOLUTION_QUALITY_VERSION) return { status: 'FAIL', errors: ['SOLUTION_QUALITY_CONTRACT_REQUIRED'] };
+  if (!isObject(contract) || ![SOLUTION_QUALITY_LEGACY_VERSION, SOLUTION_QUALITY_VERSION].includes(contract.schemaVersion)) return { status: 'FAIL', errors: ['SOLUTION_QUALITY_CONTRACT_REQUIRED'] };
+  const checksForVersion = contract.schemaVersion === SOLUTION_QUALITY_LEGACY_VERSION
+    ? SOLUTION_QUALITY_CHECKS_V1
+    : SOLUTION_QUALITY_CHECKS;
   const required = new Set(SOLUTION_CORE_CHECKS);
+  if (contract.schemaVersion === SOLUTION_QUALITY_VERSION) {
+    for (const key of SOLUTION_STUDENT_PRESENTATION_CHECKS) required.add(key);
+  }
   if (question && /\b(?:OCR|ChatGPT|Gemini|PASS|FAIL|pre-live)\b|원문 오류|원문 확인|검수 필요|재검산|내부 계산/.test(String(question.solution || ''))) errors.push('SOLUTION_FORBIDDEN_OPERATIONAL_TEXT');
   if (question?.level === '상') required.add('highLevelEnhanced');
   if (question && /경우|경우의 수|나누어|분류|조합|순열/.test(question.solution || '')) required.add('caseSplitComplete');
@@ -48,8 +61,8 @@ export function validateSolutionQuality(contract, question = null) {
       } catch { errors.push('SOLUTION_RECALCULATION_EXPRESSION_INVALID'); }
     }
   }
-  for (const key of Object.keys(contract.checks)) if (!SOLUTION_QUALITY_CHECKS.includes(key)) errors.push(`SOLUTION_QUALITY_UNKNOWN_CHECK:${key}`);
-  for (const key of SOLUTION_QUALITY_CHECKS) {
+  for (const key of Object.keys(contract.checks)) if (!checksForVersion.includes(key)) errors.push(`SOLUTION_QUALITY_UNKNOWN_CHECK:${key}`);
+  for (const key of checksForVersion) {
     const check = contract.checks[key];
     if (!isObject(check) || !['PASS', 'FAIL', 'NOT_APPLICABLE'].includes(check.status)) { errors.push(`SOLUTION_QUALITY_NOT_REVIEWED:${key}`); continue; }
     if (!nonempty(check.reason)) errors.push(`SOLUTION_QUALITY_REASON_REQUIRED:${key}`);

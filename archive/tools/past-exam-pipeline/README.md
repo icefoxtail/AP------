@@ -39,20 +39,21 @@ if stale. Keep locks under repository staging so core can bind relative refs.
 
 4. Use the existing run-one-exam / run-selected V2 extraction commands below.
    Direct Python extraction enforces the same calibration gate. Freeze an
-   extraction-source JS separately before filling the candidate. New handoffs
-   carry `PAST_EXAM_V3_COMPLETE`, protected source hashes, the entire completion
-   baseline, and the exact allowed fields from `completion-contract.json`.
-   New visual crops already use `assets/images/<examId>/qNNN_visual.png` inside
-   staging; no post-review source-image renaming is needed. Put solution SVGs
-   under the same staged exam asset directory. Pass that directory as `--assets`
-   to promotion. The common preparer infers assetRoot from the staged manifest;
-   use `--asset-root <staged-root>` explicitly if needed, and
-   `--source-asset-root archive` when the frozen source JS refers to existing
-   production images. These options read assets; they do not write production.
-5. Solve all questions locally from source; write new student solutions and
-   classification; triage every question; create required/beneficial solution
-   visuals using frozen facts and numeric generation. Build work is not a blind
-   reviewer PASS. Run common preparation:
+   extraction-source JS separately before filling the completed candidate. New
+   handoffs carry `PAST_EXAM_V3_COMPLETE`, protected source hashes, the entire
+   completion baseline, and the exact allowed fields from `completion-contract.json`.
+   New visual crops use `assets/images/<examId>/qNNN_visual.png` inside staging.
+   Put solution SVGs under the same staged exam asset directory. Pass it as
+   `--assets` to promotion; `--asset-root <staged-root>` and
+   `--source-asset-root archive` only read staged/source assets.
+5. Complete S4 onward in this order: independent SOURCE_ONLY solve →
+   student-facing small-blackboard solution → L1/L2 → RPM Primary README → RPM canonical master
+   → exact curriculum/scope view → RPM→ACTIVE crosswalk → ACTIVE Meta Foundation
+   → L3/L4/CrossConcept/Condition/IntegrationPattern/difficultyBucket → solution
+   identity evidence → visual triage → EXPECTED FACT → needed SVG. Use
+   `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` as the canonical
+   solution authority. SVG facts come after the verified solution and cannot
+   change its math. The common preparer then binds the completed candidate:
 
 ```powershell
 node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-exam-manifest <staged-manifest.json> --source <frozen-extraction.js> --candidate <completed-candidate.js> --source-registry-ref <registry-file-ref.json> --run-id <run-id> --work-batch-id <job-id> --builder-id <reader-id> --builder-session-id <reader-session-id> --builder-model <actual-model> --workdir <new-staging-directory>
@@ -68,6 +69,25 @@ decides. Each repair uses a new revision/inputSha and immutable freeze;
 validated reuse is required for unaffected axes.
 Use the canonical promotion helper only after all six render cases, source/math/
 visual/solution/metadata gates, and production authority pass.
+
+Before final audit, create SHA-bound NOT_TESTED identity and metadata evidence
+drafts in staging after the solution exists:
+
+```powershell
+node archive/tools/past-exam-pipeline/build-completion-evidence.mjs --manifest <staged-manifest.json> --candidate <completed-candidate.js> --inventory <reports/source_inventory.json> --out-dir <staging-reports>
+```
+
+The builder fills and independently reviews these sidecars; the command does not
+grant alignment, metadata, or promotion PASS. Final solution alignment binds
+`sourceArchiveFile`, `sourceIdentityKey`, `sourceOrdinal`, content/choices/image
+reference hashes, `sourceIdentityFingerprint`, and `solutionHash`. RPM/ACTIVE
+evidence binds the lookup order and exact current file hashes.
+
+Promotion reports `BASIC_ARCHIVE_ELIGIBLE` separately from
+`ADVANCED_META_ELIGIBLE`. An unresolved migration gap can keep the basic source,
+math, solution and L1/L2 candidate eligible while advanced metadata remains
+HOLD. A candidate/deprecated/free-text key in a production field fails the gate.
+`TRUE_TAXONOMY_GAP` never creates a new canonical key.
 
 `npm --prefix archive/tools/past-exam-pipeline test` covers calibration and
 handoff hardening. `npm --prefix archive/tools/pipeline-core test` covers common
@@ -105,9 +125,12 @@ fields are complete; the promotion helper enforces the same SHA-bound contract.
 
 The handoff lock protects `content`, `choices`, source identity/page evidence,
 and visual asset bindings. Answer/solution work may change only
-`answer`, `solution`, their status fields, and explicitly declared subunit
-metadata. An extraction mismatch routes to `SOURCE_FIDELITY_RESTORATION`; it
-cannot be silently repaired in the answer/solution lane.
+`answer`, `solution`, their status fields, explicitly declared L1/L2 and
+advanced metadata fields, and solution visual fields. Advanced fields are
+validated against active canonical sources and do not become valid because the
+allowlist admits them. An extraction mismatch routes to
+`SOURCE_FIDELITY_RESTORATION`; it cannot be silently repaired in the
+answer/solution lane.
 
 Visual assets require provenance and semantic evidence in addition to PNG
 decode: source document/question/page, bbox, asset SHA, crop generator,
@@ -146,7 +169,7 @@ staging path correction can never be promoted to `DONE`.
 - candidate JS의 `image`는 full page 또는 question crop을 가리키면 실패입니다.
 - `fullPageImagePath`는 모든 문항의 근거 이미지로 유지합니다.
 - `answer`와 `solution`은 파이프라인에서 채우지 않습니다.
-- 정답/해설은 candidate JS + full page 이미지 + reports 압축본을 받은 GPT/Gemini가 별도 작성합니다.
+- 이 경계는 **S1~S3 V2 추출 단계**에 적용됩니다. 추출이 끝난 뒤 Past Exam V3 완성 단계는 독립 풀이와 학생용 해설/Meta를 새 candidate에 작성하고 같은 source 보호 hash에 결속합니다.
 
 ## 기본 흐름
 
@@ -222,6 +245,9 @@ python .\helpers\scanned_exam_pipeline.py `
 - `lib/hardening.mjs`: source identity, evidence SHA, mutation, asset, serialization, release, and production-write gates
 - `lib/portable-package.mjs`: independent ZIP consumer/extraction parity gate
 - `promote-reviewed-exam.mjs`: `reviewed_pass` 후보를 canonical Archive로 승격
+- `build-completion-evidence.mjs`: final solution 뒤 identity/Meta NOT_TESTED sidecar 초안 생성
+- `lib/completion-evidence.mjs`: RPM-first, solution identity, advanced eligibility evidence gate
+- `archive/tools/meta-foundation/active-registry.mjs`: ACTIVE canonical/compiled registry validator
 - `docs/PAST_EXAM_PIPELINE_V2_POLICY.md`: 정책 문서
 - `docs/VISION_PAGE_EXTRACT_REQUEST_TEMPLATE.md`: Vision 호출 프롬프트 템플릿
 - `examples/vision_page_extract.example.json`: Vision JSON 예시

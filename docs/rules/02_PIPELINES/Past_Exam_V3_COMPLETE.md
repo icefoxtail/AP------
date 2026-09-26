@@ -22,13 +22,26 @@
    확인한다. 기존 해설은 진단 대상이며 새 해설의 품질 기준이나 풀이 seed가 아니다.
    전체 문항 관찰을 남기고 lock 안에 당시 raw-byte snapshot을 보존한다.
 5. **S1~S3**: 원본 PDF/페이지 inventory → 전체 페이지 정확 추출 → source fidelity freeze.
-6. **S4~S8 BUILDER**: 원문으로 직접 풀이 → 전 일반문항 신규 학생용 해설 + 분류 → 전 문항
-   visual triage → EXPECTED FACT 동결 → Python 수치 모델 → 필요한 SVG 생성.
-7. **S9~S14**: STATIC/METADATA 및 exam/solution/answer × desktop/mobile 실렌더 수집,
+   V2 full-page PNG/Vision 추출과 원본 보호 경계는 그대로 유지한다.
+6. **S4 독립 수학 풀이**: source/content/choices/그림만으로 먼저 풀고 기존 answer/solution은
+   보이지 않는 SOURCE_ONLY evidence에 정답·유일성·문항 유효성을 기록한다.
+7. **S5 학생용 final solution**: 검증 풀이를 작은칠판 흐름으로 다시 작성한다.
+   `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 canonical authority다.
+   final solution을 동결한 뒤 L1/L2를 canonical master와 비교한다.
+8. **S6 RPM Primary v1.0 선조회**: `README.md` → `00_POLICY/CANONICAL_MASTER.json` →
+   대상 curriculum/scope view → RPM→ACTIVE crosswalk → ACTIVE Meta Foundation 순서로 조회한다.
+   current source + verified final solution에서 `primaryMethod` / `decisiveStep`를 만든 뒤에만
+   L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty를 판정한다. 같은 stage candidate key,
+   template/CrossConcept 제안 또는 이전 verdict는 semantic input에서 제외한다.
+9. **S7 metadata evidence freeze**: `REUSE`, `BINDING_MIGRATION_GAP`, `KEY_MIGRATION_GAP`,
+   `TRUE_TAXONOMY_GAP`를 machine-readable evidence로 남긴다. migration gap을 임의 key로 채우지 않는다.
+10. **S8 Visual 이후 단계**: solution과 Meta를 동결한 뒤 전 문항 visual triage → EXPECTED FACT 동결
+    → Python 수치 모델 → 필요한 SVG 생성.
+11. **S9~S14**: STATIC/METADATA 및 exam/solution/answer × desktop/mobile 실렌더 수집,
    한 번의 FINAL_AUDIT에서 sealed U1(SOURCE/MATH_A1/V1), U2(V2 artifact-only),
    U3(MATH_A2/SOLUTION/V3/RENDER_REVIEW) 검수. 독립 U1 판정은 builder 예상과 다를 수 있다.
    불일치는 결함으로 반환하고 원본·동결된 첫 판정을 덮어쓰지 않는다.
-8. **S15~DONE**: 결함 수정 및 영향 범위 계산 → `AGENT_BUDGET.md`에 저장된
+12. **S15~DONE**: 결함 수정 및 영향 범위 계산 → `AGENT_BUDGET.md`에 저장된
    Past Exam repair allowance에 따른 bounded `TARGETED_RECHECK` loop
    (현재 3 iterations; legacy profile은 저장된 allowance 유지) → 전 문항
    공통 품질 closure + production authority → canonical promotion helper → DB/index/최종 release.
@@ -68,7 +81,8 @@ Calibration은 builder의 작업 준비 증거다. U1 source-only나 U2 artifact
 
 ## Typed Solution Quality
 
-독립 U3 `SOLUTION.payload.solutionQuality`는 `APMATH_SOLUTION_QUALITY_v1`이다.
+신규 독립 U3 `SOLUTION.payload.solutionQuality`는 `APMATH_SOLUTION_QUALITY_v2`다.
+기존 v1 evidence는 기존 run에서 계속 읽을 수 있으며 in-place 변환하지 않는다.
 모든 검사는 `{status, reason, solutionExcerpts[]}`로 기록하며, PASS의 인용은 현재 solution에
 실제로 존재해야 한다. 구현은 `pipeline-core/solution-quality.mjs`다.
 
@@ -80,10 +94,31 @@ Calibration은 builder의 작업 준비 증거다. U1 source-only나 U2 artifact
   highLevelEnhanced, subjectiveScoringReady. 적용 제외도 근거를 요구한다.
 - `level=상`이면 highLevelEnhanced, choices가 없거나 서술/서답형이면
   subjectiveScoringReady는 필수 PASS다. 난이도·유형 변경은 SOLUTION/V3를 재검한다.
+- v2는 `studentLanguagePass`와 `blackboardLayoutPass` typed decisions를 추가 요구한다.
+  학생용 언어 적합성과 작은칠판 줄바꿈은 독립 reviewer가 판단한다. 단순 regex, solution 길이,
+  제목이나 라벨로 semantic PASS를 만들지 않는다.
 
 `SOLUTION_QUALITY_PASS`는 reducer가 applicable check를 모두 확인해 계산한다.
 문자열 PASS, 해설의 길이, 특정 제목, MathJax/렌더 성공은 내용 품질을 대신하지 않는다.
 핵심 추론 생략 여부와 조건부 검사의 적용 여부는 독립 reviewer가 판단한다.
+
+## BASIC / advanced metadata eligibility
+
+- `BASIC_ARCHIVE_ELIGIBLE`은 source identity/fidelity, 독립 수학 풀이, 학생용 final solution,
+  L1/L2, serialization이 모두 PASS일 때 계산한다.
+- `ADVANCED_META_ELIGIBLE`은 ACTIVE PT/TPL 또는 근거 있는 `NO_SEPARATE_L4`, parent,
+  curriculum/L2 binding, ACTIVE CrossConcept/Condition, canonical IntegrationPattern,
+  difficultyBucket v1.3와 RPM-first evidence까지 PASS일 때만 true다.
+- advanced metadata migration gap은 `reports/meta_decision_evidence.json`에 기록한다.
+  canonical advanced fields를 비워 둔 채 `BASIC_ARCHIVE_ELIGIBLE=true`,
+  `ADVANCED_META_ELIGIBLE=false`로 진행할 수 있다. 미등록·candidate·deprecated key를
+  production field에 넣어 BASIC PASS를 얻는 것은 금지한다.
+- `TRUE_TAXONOMY_GAP`은 새 canonical key 승격이 아니라 HOLD/candidate evidence만 남긴다.
+
+source ↔ solution alignment는 ordinal이 아닌 `sourceArchiveFile + sourceIdentityKey + sourceOrdinal`
+및 content/choices/image/solution hash를 포함한 `sourceIdentityFingerprint`로 검증한다.
+신규 run은 `node archive/tools/past-exam-pipeline/build-completion-evidence.mjs`로
+`NOT_TESTED` sidecar draft를 만들 수 있다. 이 명령은 identity/meta PASS를 만들지 않는다.
 
 ## Typed Visual Benefit / 기하 정책
 
