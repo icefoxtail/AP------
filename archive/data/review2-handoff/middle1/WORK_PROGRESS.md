@@ -122,3 +122,11 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - The user explicitly prohibited main integration. B20 is therefore not labeled `R2E_MAIN_FINAL`, and no main-terminal Notion receipt was written.
 - Next exam: B24. Its four R1 visual repairs are checkpointed; apply and validate the shared taxonomy assignments before the B24-specific final commit.
 - Current branch HEAD before this physical receipt update: `cdb5742f1ddd952bf5d7301cc53eb735385c4969`.
+
+## B24 terminal branch checkpoint — 2026-09-27
+
+- B24 was independently adjudicated across 20 deep-review items. q11 was reopened from R1 KEEP because its verified grouped-frequency rank solution maps to the exact RPM cumulative-cutoff path. q17's R1 frequency-audit label was overridden because its decisive step converts two relative frequencies using unequal population totals and compares actual counts. q22's adjacent difficulty boundary was rechecked and recorded as `BORDERLINE_ACCEPTABLE` with the source level unchanged.
+- Restored B24 R1 Meta repairs q12/q14/q15/q17/q18/q20, completed all other L3/L4/materialization decisions, and applied L2/crosswalk bindings to the target UIDs.
+- B24 denominator checks pass 22/22: protected-field parity against the recovered package; node/VM; blank/control/LaTeX checks; 7/7 solution SVG XML/path checks; canonical/crosswalk/binding checks; Archive2 identity/source/taxonomy and eligibility 22/22; runtime selectable 22/22 and catalog joins PASS.
+- B24 is ready for its exam-specific final commit. B20 remains `R2E_BRANCH_FINAL` at `cdb5742f1ddd952bf5d7301cc53eb735385c4969`. No main integration or main terminal receipt has occurred.
+- Current branch HEAD before the B24 exam-specific final commit: `fe46fa13a46aeaf74a7b0b9d9ba1bbda7096eeb1`.

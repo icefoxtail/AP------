@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle1-r2e-meta-adjudication/v1",
-  "status": "B20_R2E_BRANCH_FINAL_B24_B28_PENDING",
+  "status": "B20_B24_R2E_BRANCH_FINAL_READY_B28_PENDING",
   "branch": "work/m1-b20-b24-b28-r2e",
   "curriculumByExam": {
     "B20": "2015",
@@ -83,8 +83,9 @@
     {
       "cluster": "M1_FREQUENCY_RELATIVE_FREQUENCY",
       "owner": "MIDDLE1",
-      "decision": "Restore B24 R1 frequency repairs; reuse active frequency L3/L4s for frequency audits and missing-frequency reconstruction; add distinct repeated L4s for relative-frequency population reconstruction and group-count comparison.",
+      "decision": "Restore B24 R1 frequency repairs. Re-adjudicate q17 against its verified solution: relative frequency × unequal group totals is an actual group-count comparison, so assign the DataCategory L3 and shared comparison L4 despite the R1 frequency-audit label. Reuse frequency audit/missing-frequency for the table items and population reconstruction for q18/B28 q19.",
       "items": [
+        "B24:11",
         "B24:12",
         "B24:13",
         "B24:14",
@@ -92,6 +93,7 @@
         "B24:17",
         "B24:18",
         "B24:20",
+        "B24:22",
         "B28:19",
         "B28:20",
         "B28:24"
@@ -451,6 +453,17 @@
     },
     {
       "exam": "B24",
+      "q": 11,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+      "rpmRecordIds": [
+        "M1-RPM-113"
+      ],
+      "disposition": "R2E_RECLASSIFIED_TO_EXACT_RPM_DATA_INTERPRETATION_PATH",
+      "reason": "The source and verified solution locate the ninth-largest student by accumulating grouped frequencies from the highest interval; the active frequency-distribution cumulative-cutoff L3/L4 is more faithful than generic ordered-value reading."
+    },
+    {
+      "exam": "B24",
       "q": 12,
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
@@ -543,6 +556,17 @@
         "M1-RPM-106"
       ],
       "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 22,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-113"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_DIFFICULTY_RECHECK",
+      "reason": "Archive2 exposed an adjacent legacy-level/difficulty boundary; R2 rechecked the graph comparison and retained the active frequency-audit assignment."
     },
     {
       "exam": "B28",
@@ -770,11 +794,12 @@
   ],
   "validation": {
     "canonicalCompiledParity": "PASS",
-    "targetCrosswalkAndBindingItems": 61,
+    "targetCrosswalkAndBindingItems": 63,
     "status": "PASS",
-    "b20ProtectedFields": "24/24 PASS",
     "b20Archive2": "24/24 eligible",
     "b20Runtime": "24/24 PASS",
+    "b24Archive2": "22/22 eligible",
+    "b24Runtime": "22/22 PASS",
     "pendingSourceSolutionItems": [
       "B28:12",
       "B28:23"
