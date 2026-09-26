@@ -1,0 +1,39 @@
+{
+  "phase": "PHASE_05_LABEL_LAYOUT",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/label_layout.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-05-pycompile.stdout.txt",
+      "stderr": "phase-05-pycompile.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_label_layout.py -v",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-05-label-layout-unittest.stdout.txt",
+      "stderr": "phase-05-label-layout-unittest.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-05-diff-check.stdout.txt",
+      "stderr": "phase-05-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 3,
+    "commandsPassed": 3,
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "08000620122033D1AFEED5EFA6DA2E6E9CCE5AA9BF6F40BBF38F5243FCD3D59F",
+    "archive/tools/geometry-equation/tests/test_label_layout.py": "097BE4A5FC90A95CA804E6E930636E8DCEDA8313121CD399BA88F3B842264E1E"
+  }
+}
