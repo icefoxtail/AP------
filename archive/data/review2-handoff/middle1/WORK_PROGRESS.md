@@ -52,3 +52,11 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - Shared structures: triangle angle chase (B20 q8/q22 + B28 q1/q21); circle/sector measurement (B20 q11–13 + B28 q4–6/q22); polyhedron face/vertex properties; rotation-solid sections; solid surface/volume; frequency/relative-frequency; 2022 representative values.
 - Planned exact curriculum: B20/B24 2015, B28 2022. Planned shared changes remain on branch only; no main integration.
 - Current next: materialize Meta plan and restore B24 R1 Meta corrections; then finalize B20 → B24 → B28 files in order.
+
+
+## SVG byte-drift audit scope — 2026-09-27
+
+- B20 SVG drift vs extracted R1_INPUT: q8, q9, q13, q21, q22, q24; q9 reopens from R1 normal PASS because only its SVG byte set changed.
+- B24 SVG drift vs physical CREATE/READY package: q8, q10, q21. q6/q7 branch SVGs match the package bytes but R1 records semantic repairs; q6/q7/q10/q21 remain deep.
+- B28 SVG drift vs extracted R1_INPUT: q6, q13, q22; all three were already deep-review targets.
+- Deep review denominator is now B20 22/24, B24 18/22, B28 21/24 (61 targeted items total); unchanged PASS items remain closure-scan only. Exact hashes/render findings will be added before exam closure.

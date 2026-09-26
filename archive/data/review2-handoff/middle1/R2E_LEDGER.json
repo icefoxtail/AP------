@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "eea22dea92bfc36abe4e0befd03a1a19feba8c59",
-  "timestamp": "2026-09-27 00:11:59",
-  "physicalCheckpoint": "LATEST_USER_SCOPE_AND_B28_RECOVERY_RECONCILIATION",
+  "currentBranchHead": "1b70b54ff41d86d883d546afa3347d8912d844d9",
+  "timestamp": "2026-09-27 01:21:51",
+  "physicalCheckpoint": "SVG_BYTE_DRIFT_SCOPE_RECONCILED",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -34,6 +34,7 @@
         6,
         7,
         8,
+        9,
         11,
         12,
         13,
@@ -58,6 +59,7 @@
         6,
         7,
         8,
+        9,
         11,
         12,
         13,
@@ -82,10 +84,21 @@
         "zipSha256": "F1C1AD5BE52694A36B282DA8AE78357711BEB061EFC21080A249299589732E78",
         "r1FinalJsSha256": "c5153b1122b10e0e1b574a5f897242a3ea162020d7957934afb926eb86d93387",
         "branchBlobSha256": "c5153b1122b10e0e1b574a5f897242a3ea162020d7957934afb926eb86d93387",
-        "status": "R1_BYTES_MATCH"
+        "status": "R1_BYTES_MATCH",
+        "visualByteDriftQuestions": [
+          8,
+          9,
+          13,
+          21,
+          22,
+          24
+        ]
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "q1 Meta repair recheck"
+      "currentNextItem": "q1 Meta repair recheck",
+      "deepReviewReasons": {
+        "q9": "R1 solution SVG byte drift vs extracted R1_INPUT ZIP; targeted visual recheck reopened despite prior Meta/Math PASS."
+      }
     },
     {
       "code": "B24",
@@ -163,7 +176,12 @@
         "physicalPackage": "CREATE/READY_FOR_REVIEW, not R1 final",
         "r1FinalJsSha256": "3e0e0e717ef6eb62804d543cc2d8e42e9ea75da6e1fe97a921a319b1b0052f7a",
         "zipJsAndBranchBlobSha256": "497f7c4267ed615d2a617191ca83c8d51d07d14f266fdc2b8c6026dfb0f6b56a",
-        "status": "R1_BYTES_UNRECONCILED"
+        "status": "R1_BYTES_UNRECONCILED",
+        "visualByteDriftQuestions": [
+          8,
+          10,
+          21
+        ]
       },
       "validatorStatus": "NOT_RUN",
       "currentNextItem": "WAIT_B20_TERMINAL"
@@ -252,7 +270,12 @@
           },
           "sourceHoldsBeforeRecovery": 0,
           "source": "Notion D12 updated 2026-09-26T14:49Z; recovery ZIP itself unavailable in this work package"
-        }
+        },
+        "visualByteDriftQuestions": [
+          6,
+          13,
+          22
+        ]
       },
       "validatorStatus": "NOT_RUN",
       "currentNextItem": "B20 q1 Meta repair recheck",
