@@ -520,7 +520,7 @@ export function validateR2EReceipt(receipt, options = {}) {
     const sourceCheck = validateR2EIntakeMetaReceipt({
       schemaVersion: 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1',
       items: receipt.items.map(item => ({ ...item, disposition: item.resolverEvidence?.disposition })),
-    }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot, registry: options.registry });
+    }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot, registry: options.registry, requireResolverReceipt: false });
     for (const error of sourceCheck.errors) errors.push(`R2E_FINAL_SOURCE_BINDING:${error}`);
   }
   if (receipt?.stage === 'R2E_FINAL') {
@@ -555,7 +555,7 @@ export function validateRuntimeMetaParity({ questionUid, sourceFingerprint, reso
   return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
-export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourceQuestions, repoRoot = DEFAULT_ROOT, registry } = {}) {
+export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourceQuestions, repoRoot = DEFAULT_ROOT, registry, requireResolverReceipt = true } = {}) {
   const errors = [];
   const rows = receipt?.items;
   if (receipt?.schemaVersion !== 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1' || !Array.isArray(rows)) return { status: 'FAIL', errors: ['R2E_META_INPUT_RECEIPT_SCHEMA_INVALID'] };
@@ -637,7 +637,7 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
     const activeCheck = validateActiveMetaFields({ ...candidateMeta, curriculum: candidateMeta.curriculum || ctx.curriculum }, activeRegistry, { requireFields: true });
     for (const error of activeCheck.errors) errors.push(`${error}:${uid}`);
     const validator = item?.validatorReceipt;
-    if (!validateMetaValidatorReceipt(validator, item?.resolverEvidence?.evidenceSha, resolver)) errors.push(`R2E_META_INPUT_VALIDATOR_NOT_RUN:${uid}`);
+    if (requireResolverReceipt && !validateMetaValidatorReceipt(validator, item?.resolverEvidence?.evidenceSha, resolver)) errors.push(`R2E_META_INPUT_VALIDATOR_NOT_RUN:${uid}`);
     const disposition = item?.resolverEvidence?.disposition;
     if (['RPM_PRIMARY_MIGRATION_GAP', 'TRUE_TAXONOMY_GAP', 'ROUTE_OUT'].includes(disposition)
       && (candidateMeta.problemTypeKey || candidateMeta.templateKey)) errors.push(`R2E_META_INPUT_GAP_KEY_MUST_REMAIN_BLANK:${uid}`);

@@ -10,7 +10,7 @@ import { inventory } from '../snapshot.mjs';
 import { finalGate, REQUIRED_GATES } from '../final-gate.mjs';
 import { objectSha } from '../../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry } from '../../meta-foundation/active-registry.mjs';
-import { META_RESOLUTION_SCHEMA, makeDifficultyEvidence, makeMetaValidatorReceipt, resolveMetaRoute, sealR2EMetaReceipt, validateResolverEvidence } from '../../meta-foundation/rpm-active-resolver.mjs';
+import { META_RESOLUTION_SCHEMA, makeDifficultyEvidence, makeMetaValidatorReceipt, resolveMetaRoute, sealR2EMetaReceipt, validateMetaFinalization, validateR2EReceipt, validateResolverEvidence } from '../../meta-foundation/rpm-active-resolver.mjs';
 
 const currentRepoRoot = path.resolve(fileURLToPath(new URL('../../../..', import.meta.url)));
 
@@ -73,10 +73,31 @@ function fixture() {
   const metaEvidenceRef = write(metaEvidencePath, metaResolutionEvidence);
   const receipt = { examUid: 'test', examFile, grade: '중2', lane: 'A', stage: 'R1', sourceBlobSha: sha('source'), inputCommit: main, totalQuestions: 1, changedQuestions: [], changedSvgFiles: [], metaDispositionSummary: { [resolverEvidence.disposition]: 1 }, metaResolutionEvidenceRef: metaEvidenceRef, metaResolverContractVersion: META_RESOLUTION_SCHEMA, unresolvedItems: [], authorityRefs: [], nextState: 'READY_FOR_R2E', updatedAt: new Date().toISOString() };
   write(receiptPath, receipt); const ready = commit([receiptPath, metaEvidencePath], 'R1 READY'); git(repo, ['push', 'origin', 'work/intake/m2']);
-  return { root, repo, write, commit, examFile, main, receiptPath, receipt, ready };
+  return { root, repo, write, commit, examFile, sourceArchiveFile, question, metaResolutionEvidence, main, receiptPath, receipt, ready };
 }
 test('grade snapshot is immutable; late and malformed receipts do not block healthy input', () => {
   const f = fixture(), first = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot }); assert.equal(first.status, 'READY'); assert.equal(first.candidates[0].inputCommit, f.ready);
+  const intakeItem = f.metaResolutionEvidence.items[0];
+  const runtimeRecord = {
+    questionUid: intakeItem.questionUid, sourceFingerprint: intakeItem.resolverEvidence.sourceFingerprint,
+    resolverEvidenceSha: intakeItem.resolverEvidence.evidenceSha, difficultyEvidenceSha: intakeItem.difficultyEvidence.evidenceSha,
+    ...Object.fromEntries(['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'].map(key => [key, intakeItem.candidateMeta[key]])),
+  };
+  const finalMetaPreflight = validateMetaFinalization({ input: intakeItem.input, resolverEvidence: intakeItem.resolverEvidence,
+    difficultyEvidence: intakeItem.difficultyEvidence, candidateMeta: intakeItem.candidateMeta,
+    semanticMetaEvidence: intakeItem.semanticMetaEvidence, requireValidatorReceipt: false, repoRoot: currentRepoRoot });
+  assert.equal(finalMetaPreflight.status, 'PASS', JSON.stringify(finalMetaPreflight.errors));
+  const finalValidatorReceipt = makeMetaValidatorReceipt(intakeItem.resolverEvidence, finalMetaPreflight);
+  const finalReceipt = sealR2EMetaReceipt({
+    schemaVersion: 'JS_ARCHIVE_R2E_META_RECEIPT_v1', stage: 'R2E_FINAL',
+    unresolvedSemanticCount: 0, unresolvedProposalCount: 0, unresolvedCrossConceptCandidateCount: 0,
+    metaHoldCount: 0, migrationGapCount: 0, runtimeParityFailureCount: 0,
+    items: [{ ...intakeItem, validatorReceipt: finalValidatorReceipt, r2eFinalDisposition: 'EXISTING_REUSE', runtimeRecord }],
+  });
+  const finalValidation = validateR2EReceipt(finalReceipt, {
+    repoRoot: currentRepoRoot, sourceArchiveFile: f.sourceArchiveFile, sourceQuestions: [f.question],
+  });
+  assert.equal(finalValidation.status, 'PASS', JSON.stringify(finalValidation.errors));
   f.write('archive/data/r2e-intake/m2/bad.json', { nextState: 'READY_FOR_R2E' }); const late = f.commit(['archive/data/r2e-intake/m2/bad.json'], 'late invalid'); git(f.repo, ['push', 'origin', 'work/intake/m2']);
   assert.equal(first.heads.m2.sha, f.ready); assert.equal(first.candidates.length, 1);
   const next = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot }); assert.equal(next.heads.m2.sha, late); assert.equal(next.candidates.length, 1); assert.equal(next.errors.length, 1);
