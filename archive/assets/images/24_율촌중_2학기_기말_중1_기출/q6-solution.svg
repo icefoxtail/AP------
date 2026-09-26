@@ -1,17 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" preserveAspectRatio="xMidYMid meet">
-<rect width="520" height="300" fill="#fff"/>
-<style>
-.s{fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.a{fill:none;stroke:#555;stroke-width:1.5;stroke-dasharray:6 5}
-.t{font:17px sans-serif;fill:#111}
-.m{font:16px sans-serif;fill:#111}
-</style>
-
-<ellipse class="s" cx="150" cy="70" rx="62" ry="22"/><line class="s" x1="88" y1="70" x2="88" y2="200"/>
-<line class="s" x1="212" y1="70" x2="212" y2="200"/><ellipse class="s" cx="150" cy="200" rx="62" ry="22"/>
-<line class="a" x1="150" y1="70" x2="212" y2="70"/><text class="m" x="165" y="60">6 cm</text><text class="m" x="35" y="140">6 cm</text><text class="t" x="137" y="250">A</text>
-<ellipse class="s" cx="380" cy="70" rx="42" ry="16"/><line class="s" x1="338" y1="70" x2="338" y2="200"/>
-<line class="s" x1="422" y1="70" x2="422" y2="200"/><ellipse class="s" cx="380" cy="200" rx="42" ry="16"/>
-<line class="a" x1="380" y1="70" x2="422" y2="70"/><text class="m" x="390" y="58">3 cm</text><text class="m" x="430" y="140">h</text><text class="t" x="367" y="250">B</text>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 390" role="img" aria-label="반지름 6과 높이 6인 원기둥 A, 반지름 3인 원기둥 B의 같은 부피 비교">
+  <rect width="620" height="390" fill="#fff"/>
+  <g fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round">
+    <ellipse cx="145" cy="105" rx="30" ry="9"/>
+    <line x1="115" y1="105" x2="115" y2="135"/><line x1="175" y1="105" x2="175" y2="135"/>
+    <ellipse cx="145" cy="135" rx="30" ry="9"/>
+    <ellipse cx="405" cy="55" rx="15" ry="5"/>
+    <line x1="390" y1="55" x2="390" y2="175"/><line x1="420" y1="55" x2="420" y2="175"/>
+    <ellipse cx="405" cy="175" rx="15" ry="5"/>
+    <line x1="145" y1="105" x2="175" y2="105" stroke="#64748b" stroke-dasharray="5 4"/>
+    <line x1="405" y1="55" x2="420" y2="55" stroke="#64748b" stroke-dasharray="5 4"/>
+    <line x1="194" y1="105" x2="194" y2="135" stroke="#64748b" stroke-dasharray="5 4"/>
+  </g>
+  <g fill="#111" font-family="sans-serif">
+    <text x="24" y="32" font-size="20" font-weight="700">부피가 같은 두 원기둥</text>
+    <text x="135" y="167" font-size="18" font-weight="700">A</text>
+    <text x="395" y="207" font-size="18" font-weight="700">B</text>
+    <text x="121" y="96" font-size="15">r=6 cm</text>
+    <text x="197" y="127" font-size="15">h=6 cm</text>
+    <text x="424" y="54" font-size="15">r=3 cm</text>
+    <text x="426" y="121" font-size="15">h cm</text>
+    <text x="24" y="265" font-size="17">A의 부피 = π·6²·6 = 216π cm³</text>
+    <text x="24" y="296" font-size="17">B의 부피 = π·3²·h = 9πh cm³</text>
+    <text x="24" y="327" font-size="17">9πh=216π 이므로 h=24 cm</text>
+  </g>
 </svg>
