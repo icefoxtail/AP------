@@ -3,6 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { objectSha } from "../pipeline-core/canonical.mjs";
+import { validateMetaFinalization, validateResolverEvidence } from "./rpm-active-resolver.mjs";
 import {
   META_VALUE_FIELDS, contentFingerprint, equal, jsonText, normalizeSourceFile,
   assertBaseAndFinalQuestionFiles, packetDigest, parseArgs, readJson, readPacket, repoRootFrom, sha256,
@@ -25,6 +27,56 @@ const compiledRoot = rel(dataRoot, "meta-foundation", "compiled");
 const overridesDir = rel(dataRoot, "meta-foundation", "evidence", "review-overrides", "v1");
 const overridesRel = "archive/data/meta-foundation/evidence/review-overrides/v1";
 const packetSha = packetDigest(packet);
+const advancedFieldNames = ["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"];
+
+function validateSharedResolution(patch, current, finalQuestion) {
+  if (info.legacyCompatibility) return null;
+  const input = patch.resolverInput;
+  const source = input.sourceIdentity;
+  const imageRefHash = objectSha({
+    image: finalQuestion.image ?? "",
+    visualAsset: finalQuestion.visualAsset ?? "",
+    fullPageImagePath: finalQuestion.fullPageImagePath ?? "",
+    fullPageImageRelPath: finalQuestion.fullPageImageRelPath ?? "",
+    sourceEvidencePath: finalQuestion.sourceEvidencePath ?? "",
+    sourcePageEvidencePaths: finalQuestion.sourcePageEvidencePaths ?? [],
+  });
+  const expected = {
+    sourceArchiveFile: patch.sourceArchiveFile,
+    questionUid: patch.questionUid,
+    sourceOrdinal: patch.sourceOrdinal,
+    contentHash: objectSha(finalQuestion.content ?? ""),
+    choicesHash: objectSha(finalQuestion.choices ?? []),
+    imageRefHash,
+    solutionHash: objectSha(finalQuestion.solution ?? ""),
+  };
+  for (const [field, value] of Object.entries(expected)) {
+    const actual = field === "solutionHash" ? input.solutionIdentity?.[field] : source[field];
+    if ((field === "sourceArchiveFile" && normalizeSourceFile(actual) !== value)
+      || (field !== "sourceArchiveFile" && actual !== value)) throw new Error(`RPM resolver source/solution identity mismatch ${patch.questionUid}.${field}`);
+  }
+  const base = patch.status === "REPAIR" ? { ...current, ...patch.after } : current;
+  for (const field of ["standardUnitKey", "subUnitKey"]) {
+    if ((input.curriculumContext[field] || "") !== (base[field] || "")) throw new Error(`RPM resolver curriculum context mismatch ${patch.questionUid}.${field}`);
+  }
+  const checked = validateResolverEvidence(input, patch.resolverEvidence, { repoRoot: root });
+  if (checked.status !== "PASS") throw new Error(`RPM resolver evidence failed ${patch.questionUid}: ${checked.errors.join(",")}`);
+  if (["REPAIR", "KEEP"].includes(patch.status)) {
+    const candidateMeta = Object.fromEntries(advancedFieldNames.map(field => [field, base[field] ?? (field.endsWith("Keys") ? [] : field === "integrationPattern" ? "NONE" : field.startsWith("difficulty") || field === "legacyLevelCompatibility" ? "UNKNOWN" : "")]));
+    Object.assign(candidateMeta, {
+      standardCourse: base.standardCourse || input.curriculumContext.standardCourse,
+      standardUnitKey: base.standardUnitKey,
+      subUnitKey: base.subUnitKey,
+      integrationReason: patch.integrationReason || "",
+    });
+    const finalCheck = validateMetaFinalization({
+      input, resolverEvidence: patch.resolverEvidence, difficultyEvidence: patch.difficultyEvidence,
+      candidateMeta, semanticMetaEvidence: patch.semanticMetaEvidence, validatorReceipt: patch.validatorReceipt, repoRoot: root,
+    });
+    if (finalCheck.status !== "PASS") throw new Error(`RPM resolver finalization failed ${patch.questionUid}: ${finalCheck.errors.join(",")}`);
+  }
+  return checked.recomputed;
+}
 
 const gitShow = (commit, repoPath) => execFileSync("git", ["-C", root, "show", `${commit}:${repoPath}`], {
   encoding: null,
@@ -191,6 +243,7 @@ for (const patch of packet.metaPatches) {
   const finalQuestion = sourceState.finalBank[patch.sourceOrdinal - 1];
   const finalFingerprint = sourceFingerprint(finalQuestion);
   const finalContentFingerprint = contentFingerprint(finalQuestion);
+  const resolverDecision = validateSharedResolution(patch, current, finalQuestion);
   let nextRecord = { ...current };
   let canonical = null;
   if (patch.status === "REPAIR") {
@@ -211,7 +264,12 @@ for (const patch of packet.metaPatches) {
       nextRecord.crossConceptKeys = [...(patch.after.crossConceptKeys || [])];
       nextRecord.conditionKeys = [...(patch.after.conditionKeys || current.conditionKeys || [])];
       nextRecord.foundationTaxonomyStatus = "CONFIRMED";
-      nextRecord.rpmPathStatus = "DIRECT";
+      if (resolverDecision && ["EXISTING_REUSE", "FAMILY_REUSE"].includes(patch.resolverEvidence.disposition)) {
+        nextRecord.rpmPathStatus = "DIRECT";
+        nextRecord.rpmCrosswalkStatus = patch.resolverEvidence.crosswalkStatus;
+        nextRecord.metaResolverEvidenceSha = patch.resolverEvidence.evidenceSha;
+        nextRecord.difficultyBlindEvidenceSha = patch.difficultyEvidence.evidenceSha;
+      }
       nextRecord.curriculumApplicability = patch.after.curriculumApplicability || "DEFAULT_SCOPE";
       nextRecord.defaultSelectable = patch.after.defaultSelectable !== false;
       nextRecord.reviewStatus = "reviewed_pass";
@@ -273,6 +331,8 @@ for (const patch of packet.metaPatches) {
     closureStatus: packet.closureStatus,
     status: patch.status,
     runtimePackId: patch.runtimePackId,
+    ...(resolverDecision ? { resolverDisposition: patch.resolverEvidence.disposition, resolverEvidenceSha: patch.resolverEvidence.evidenceSha,
+      difficultyEvidenceSha: patch.difficultyEvidence.evidenceSha } : {}),
     packetSha256: packetSha,
     before: patch.before,
     after: patch.after,

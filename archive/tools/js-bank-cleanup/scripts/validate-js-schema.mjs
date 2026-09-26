@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { scanJsBank, writeJsBankInventory, parseArgs, increment } from "./scan-js-bank.mjs";
 import { validateIdentityRows } from '../../pipeline-core/integration.mjs';
+import { buildAdvancedMetaAudit } from './advanced-meta-audit.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "../../../..");
@@ -72,6 +73,7 @@ export function validateJsSchema(options = parseArgs()) {
   for (const code of validateIdentityRows(identityRows, row => row.sourceFile && Number.isSafeInteger(row.questionId) && row.questionId > 0 ? `${row.sourceFile}|${row.questionId}` : '')) issues.push({ severity: 'error', sourceFile: '', questionId: null, code, message: code });
   const specialLayout = [];
   const acceptedDocumentedParentKeys = {};
+  const advancedMetaAudit = buildAdvancedMetaAudit({ files: jsInventory.files, repoRoot: ROOT_DIR });
 
   for (const file of jsInventory.files) {
     for (const question of file.questions) {
@@ -159,6 +161,8 @@ export function validateJsSchema(options = parseArgs()) {
     },
     issues,
     specialLayout,
+    advancedMetaAudit,
+    advancedMetaAuditStatus: 'READ_ONLY_NO_SEMANTIC_AUTOFIX',
   };
 }
 

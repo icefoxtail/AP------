@@ -61,6 +61,16 @@ R17 LOCAL FREEZE
 
 At each Phase 2 stage, run `prepare`, delegate every packet with exactly its allowed inputs, submit each artifact once, then run `reduce`. The reducer alone advances the stage. After `PHASE2_COMPLETE`, run `adapt` with canonical Archive metadata, `serialize`, collect actual production-engine browser evidence for all three modes, then run `record-render`, `package`, and `freeze`. Never mark a pending stage PASS manually.
 
+For generated questions, “canonical Archive metadata” routes to
+`docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`.
+Do not copy source `problemTypeKey`, `templateKey`, CrossConcept, Condition,
+or difficulty blindly: re-judge from the generated question's own verified
+solution and decisive step, then use RPM Primary → exact grade/subject
+crosswalk → GLOBAL ACTIVE PT/TPL → exact binding. Run difficulty as a separate
+fresh blind pass; do not derive its bucket from source or legacy `level`.
+Similar-question runs remain local and unregistered in production Archive by
+default.
+
 For an explicitly requested strict whole-exam audit, repeat that loop across children until every child is `LOCALLY_FROZEN`; then run `exam-sync`, `exam-assemble`, the whole-exam browser Gate, and `exam-package`. Intermediate readiness states are checkpoints, not stopping points. After a process restart, context compaction, or bulk-dispatch error, reload manifests and task packets before acting. Submitted packets are complete regardless of whether the original agent call reported cleanly; dispatch only still-pending packets. A returned subagent id is evidence of a started task even when the surrounding batch call reports a capacity error.
 
 Use capacity-safe waves of at most four agent tasks. Record each successful spawn with `dispatch-start` immediately, then fill the next slot. Do not launch a side-effecting wave with fail-fast `Promise.all`; use sequential spawn calls or an all-settled collector so one capacity error cannot erase successful agent ids. `agent thread limit reached` means stop filling the current wave, wait for and close the known `DISPATCHED` agents, reconcile task states, and continue. It is not a reason to end the user turn while runnable or dispatched work remains.

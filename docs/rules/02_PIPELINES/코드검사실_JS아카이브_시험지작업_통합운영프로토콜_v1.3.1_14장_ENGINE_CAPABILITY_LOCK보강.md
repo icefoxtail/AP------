@@ -1010,9 +1010,9 @@ standardUnitOrder
 depth는 `complete_candidate`, `complete_category`, `complete_documented`, `complete_rule`이다.
 RAW/RRAW/UNMAPPED와 legacy 누락은 report 예외로 격리하며, 이 게이트는 원문·정답·해설을 수정하지 않는다.
 
-Foundation v1 적용 신규 JS는 `problemTypeKey`, `templateKey`, `crossConceptKeys[]`, `conditionKeys[]`, `integrationPattern`을 함께 생성·검증한다. L3/L4/CrossConcept/Condition/alias/curriculum binding의 authority는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`와 ACTIVE canonical Pack/Shard다. difficulty 4-field는 `JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md`를 따른다.
+Foundation v1 적용 신규 JS의 L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 route로 사용한다. Semantic 판단은 current source + independently verified final solution에서 candidate-blind `primaryMethod`/`decisiveStep`을 확정한 뒤 RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE owner → exact binding 순으로 진행한다. Difficulty v1.3은 독립 blind pass다.
 
-신규 production 입고 전에는 최소 다음을 fail-closed로 확인한다: ACTIVE L3, L2↔L3 binding, ACTIVE L4와 parent, CrossConcept/Condition 전부 ACTIVE, 중복·alias 0, canonical IntegrationPattern, candidate/deprecated/unregistered key 0. 미등록 항목은 production에 넣지 않고 Foundation candidate proposal/evidence로 분리한다.
+신규 production 입고 전에는 공용 deterministic validator를 실행하여 ACTIVE L3, L2↔L3 binding, ACTIVE L4와 parent, CrossConcept/Condition 전부 ACTIVE, 중복·alias 0, canonical IntegrationPattern, difficulty evidence, source/solution identity, resolver evidence SHA를 확인하고 validator receipt를 저장한다. `RPM_PRIMARY_MIGRATION_GAP`은 advanced eligibility만 미완료이며 source/solution/L1/L2가 정상인 문항의 BASIC eligibility와 결합하지 않는다. Candidate/deprecated/unregistered key로 BASIC PASS를 만들지 않는다.
 
 분류는 발문 단어가 아니라 **핵심 풀이 도구**를 기준으로 한다.
 

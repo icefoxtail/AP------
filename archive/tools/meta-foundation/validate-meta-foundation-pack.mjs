@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadActiveMetaRegistry, validateActiveMetaFields } from "./active-registry.mjs";
+import { META_RESOLUTION_SCHEMA, validateMetaFinalization } from "./rpm-active-resolver.mjs";
 
 const av = process.argv.slice(2);
 const arg = (name) => {
@@ -49,6 +50,14 @@ const seenUid = new Set();
 const seenSource = new Set();
 const patterns = new Set(["NONE", "SEQUENTIAL", "INTERDEPENDENT", "REINTERPRETATION", "CASE_BRANCH", "DEEP_COMPOSITE"]);
 const dispositions = new Set(["ASSIGNED", "NO_SEPARATE_L4", "HOLD"]);
+const requiresSharedResolver = !isActivePack || pack.resolverContractVersion === META_RESOLUTION_SCHEMA
+  || assignments.resolverContractVersion === META_RESOLUTION_SCHEMA;
+let resolverEvidenceChecked = 0;
+let legacyResolverEvidenceUnverified = 0;
+
+if (!isActivePack && assignments.resolverContractVersion !== META_RESOLUTION_SCHEMA) {
+  failures.push(`newCandidatePackRequiresResolverContract:${META_RESOLUTION_SCHEMA}`);
+}
 
 function sameValue(left, right) {
   return JSON.stringify(left ?? null) === JSON.stringify(right ?? null);
@@ -83,6 +92,29 @@ for (const row of assignments.items || []) {
   const sourceIdentity = `${row.sourceArchiveFile}#${Number(row.sourceOrdinal)}`;
   if (seenSource.has(sourceIdentity)) failures.push(`duplicateSource:${sourceIdentity}`);
   seenSource.add(sourceIdentity);
+
+  if (requiresSharedResolver) {
+    if (!row.resolverInput || !row.resolverEvidence || !row.difficultyEvidence || !row.semanticMetaEvidence || !row.validatorReceipt) {
+      failures.push(`sharedResolverEvidenceMissing:${row.questionUid}`);
+    } else {
+      const candidateMeta = {
+        ...row,
+        integrationReason: row.integrationReason || row.integrationPatternReason || "",
+      };
+      const finalMeta = validateMetaFinalization({
+        input: row.resolverInput,
+        resolverEvidence: row.resolverEvidence,
+        difficultyEvidence: row.difficultyEvidence,
+        candidateMeta,
+        semanticMetaEvidence: row.semanticMetaEvidence,
+        validatorReceipt: row.validatorReceipt,
+      });
+      resolverEvidenceChecked += 1;
+      for (const error of finalMeta.errors) failures.push(`sharedResolver:${error}:${row.questionUid}`);
+    }
+  } else {
+    legacyResolverEvidenceUnverified += 1;
+  }
 
   if (!dispositions.has(row.l4Disposition)) failures.push(`missingOrInvalidL4Disposition:${row.questionUid}`);
   if (!["ASSIGNED", "HOLD"].includes(row.l3Disposition)) failures.push(`missingOrInvalidL3Disposition:${row.questionUid}`);
@@ -166,11 +198,14 @@ const counts = {
   failures: failures.length
 };
 const output = {
-  schemaVersion: "meta-foundation-pack-generic-validator-v2",
+  schemaVersion: "meta-foundation-pack-generic-validator-v3",
   status: failures.length ? "FAIL" : "PASS",
   packId: pack.packId,
   packVersion: pack.packVersion,
   mode: isActivePack ? "ACTIVE_CANONICAL_PACK" : "CANDIDATE_PACK",
+  resolverEvidenceStatus: requiresSharedResolver ? "REQUIRED_AND_VALIDATED" : "LEGACY_READ_ONLY_UNVERIFIED",
+  resolverEvidenceChecked,
+  legacyResolverEvidenceUnverified,
   counts,
   failures
 };

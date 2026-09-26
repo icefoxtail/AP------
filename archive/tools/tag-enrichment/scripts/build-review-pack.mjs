@@ -6,18 +6,14 @@ import { fileURLToPath } from "node:url";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(SCRIPT_DIR, "../../../..");
-const TOOL_DIR = path.join(ROOT_DIR, "archive", "tools", "tag-enrichment");
 const REPORT_DIR = path.join(ROOT_DIR, "archive", "_generated", "tag-enrichment", "reports");
 
 const REVIEW_FILES = [
   { source: path.join(REPORT_DIR, "exam-bank-inventory.summary.md"), name: "exam-bank-inventory.summary.md" },
   { source: path.join(REPORT_DIR, "tag-candidates.summary.md"), name: "tag-candidates.summary.md" },
   { source: path.join(REPORT_DIR, "validation-summary.md"), name: "validation-summary.md" },
-  { source: path.join(REPORT_DIR, "tag-candidates.auto_high.json"), name: "tag-candidates.auto_high.json" },
+  { source: path.join(REPORT_DIR, "tag-candidates.hint_only.json"), name: "tag-candidates.hint_only.json" },
   { source: path.join(REPORT_DIR, "tag-candidates.review_required.json"), name: "tag-candidates.review_required.json" },
-  { source: path.join(TOOL_DIR, "data", "tag-master.seed.json"), name: "tag-master.seed.json" },
-  { source: path.join(TOOL_DIR, "data", "pattern-rules.seed.json"), name: "pattern-rules.seed.json" },
-  { source: path.join(TOOL_DIR, "README.md"), name: "README.md" },
 ];
 
 function dosDateTime(date = new Date()) {

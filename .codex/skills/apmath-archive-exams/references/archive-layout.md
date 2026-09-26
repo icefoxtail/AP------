@@ -16,7 +16,9 @@ RULE_PREFLIGHT -> CANONICAL_PRODUCTION_SAMPLE_CALIBRATION
 -> PRODUCTION_QUALITY_PROFILE_FREEZE -> TARGET_BASELINE_REVIEW
 -> SOURCE_INVENTORY_FREEZE -> FULL_PAGE_EXACT_EXTRACTION
 -> SOURCE_FIDELITY_FREEZE -> BUILDER_INDEPENDENT_SOLVE
--> SOLUTION_AND_CLASSIFICATION_BUILD -> ALL_QUESTION_VISUAL_TRIAGE
+-> SOLUTION_AND_CLASSIFICATION_BUILD -> DECISION_ISOLATED_META_JUDGEMENT
+-> RPM_PRIMARY -> EXACT_GRADE_SUBJECT_CROSSWALK -> GLOBAL_ACTIVE_META
+-> EXACT_BINDING -> DIFFICULTY_BLIND_PASS -> ALL_QUESTION_VISUAL_TRIAGE
 -> EXPECTED_FACT_FREEZE -> NUMERIC_VISUAL_BUILD
 -> STATIC_AND_RENDER_CAPTURE -> FINAL_AUDIT_SEALED_U1_U2_U3
 -> TARGETED_REPAIR -> TARGETED_RECHECK -> PROMOTION -> FINAL_CLOSURE
@@ -79,6 +81,20 @@ Production questions must have:
   `questionType`, `layoutTag`, `tags`, and `wide`;
 - for new candidates and production, non-empty `subUnitKey`, `subUnit`,
   `subUnitConfidence`, and `subUnitClassificationDepth`.
+- advanced fields: `problemTypeKey`, `templateKey`, `crossConceptKeys[]`,
+  `conditionKeys[]`, `integrationPattern`, and difficulty v1.3 fields. Unresolved
+  values remain blank/empty/`UNKNOWN` and live in the machine-readable sidecar;
+  never mint a selectable key to satisfy field presence.
+
+Read `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`
+and call `archive/tools/meta-foundation/rpm-active-resolver.mjs` for every
+advanced Meta decision. The mandatory order is source + independently verified
+final solution → candidate-blind `primaryMethod`/`decisiveStep` → RPM Primary
+README/master/curriculum view → exact grade/subject crosswalk → GLOBAL ACTIVE
+PT/TPL → exact curriculum binding → disposition. Difficulty is a separate
+fresh blind pass and cannot be inferred from legacy `level`. Resolve advanced
+Meta before `ALL_QUESTION_VISUAL_TRIAGE`; do not build SVG first and shape the
+solution or tags around it.
 
 Extraction candidates are intentionally different. In the V2 S1~S3
 intermediate artifact they may keep `answer` and `solution` blank while a

@@ -41,6 +41,7 @@ Main reports:
 - `image-tag-warning-report.json`
 - `schema-validation.json`
 - `schema-validation.summary.md`
+- `schema-validation.json` also contains a read-only advanced Meta audit: field existence/type, ACTIVE canonical registration, metadata provenance/final status, and metadata/runtime parity.
 - `cleanup-candidates.json`
 - `cleanup-candidates.safe-structure-only.json`
 - `cleanup-candidates.requires-review.json`
@@ -69,6 +70,7 @@ This cleanup round does not edit:
 - content, choices, answer, solution, image, `layoutTag`, `wide`, or tags
 
 No review-pack zip is created by this tool.
+Advanced Meta findings are audit output only. This tool does not assign or repair L3/L4, CrossConcept, Condition, IntegrationPattern, or difficulty.
 
 ## How To Read Reports
 

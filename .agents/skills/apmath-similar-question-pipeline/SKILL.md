@@ -191,6 +191,14 @@ Read these references when operating the indicated route:
 - [final-closure-gate.md](references/final-closure-gate.md):
   fail-closed per-question final QA ledger and final ZIP audit.
 
+Generated-question Meta follows the shared RPM→ACTIVE contract in
+`references/workflow.md` and
+`docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`.
+Source Meta is context only: independently classify the new question from its
+own verified solution and decisive step, re-evaluate CrossConcept, and run a
+fresh difficulty blind pass. This skill never registers a generated similar
+question in production Archive by default.
+
 ## Universal variant engine contract and lifecycle tools
 
 The universal A/B/C implementation is introduced behind the existing B route.

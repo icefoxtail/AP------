@@ -17,8 +17,9 @@ import {
 } from "../lib/hardening.mjs";
 import { validatePortableZip } from "../lib/portable-package.mjs";
 import { makeQuestionSkeleton } from "../lib/js-candidate.mjs";
-import { makeSolutionIdentityDraft, createMetaDecisionDraft, META_DECISION_INPUT_FIELDS, META_FIELDS_EXCLUDED_FROM_DECISION, RPM_LOOKUP_ORDER, metaDecisionInputSha } from "../lib/completion-evidence.mjs";
+import { makeSolutionIdentityDraft, createMetaDecisionDraft, RPM_LOOKUP_ORDER } from "../lib/completion-evidence.mjs";
 import { loadActiveMetaRegistry } from "../../meta-foundation/active-registry.mjs";
+import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, resolveMetaRoute } from "../../meta-foundation/rpm-active-resolver.mjs";
 
 const sha = value => `sha256:${crypto.createHash("sha256").update(value).digest("hex")}`;
 const repoRoot = path.resolve(fileURLToPath(new URL('../../../../', import.meta.url)));
@@ -147,10 +148,6 @@ function fixture() {
   return { root, examRoot, reportsDir, candidateFile, question, review, manifest, writeCandidate, setExamId(value) { currentExamId = value; manifest.examId = value; review.examId = value; }, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
 }
 
-function fieldProjection(question) {
-  return Object.fromEntries(META_FIELDS_EXCLUDED_FROM_DECISION.map(key => [key, question[key] ?? null]));
-}
-
 function activateV3(f, disposition = 'REUSE') {
   const root = repoRoot;
   const crosswalkPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json';
@@ -256,58 +253,54 @@ function activateV3(f, disposition = 'REUSE') {
     primaryMethod: solutionIdentity.items[0].primaryMethod,
     decisiveStep: solutionIdentity.items[0].decisiveSteps[0],
     semanticReason: '원문과 독립 검증된 final solution의 decisive step을 기준으로 RPM path를 먼저 조회하고 ACTIVE binding을 대조했다.',
-    candidateMetaFieldsExcluded: [...META_FIELDS_EXCLUDED_FROM_DECISION],
-    candidateMetaVisible: false,
     disposition,
-    l4Disposition: q.templateKey ? 'ASSIGNED' : 'NO_SEPARATE_L4',
-    noSeparateL4Reason: q.templateKey ? '' : '현재 RPM scope와 ACTIVE template 모두 별도 L4 없음',
-    activeMapping: {
-      problemTypeKey: selected?.problemTypeKey || '', templateKey: selected?.templateKey || '',
-      curriculumBindingStatus: disposition === 'REUSE' ? 'ACTIVE' : disposition === 'BINDING_MIGRATION_GAP' ? 'MISSING' : 'NO_ACTIVE_MAPPING',
-    },
-    crossConceptDecisions: [], conditionDecisions: [], integrationReason: '주개념 경로만으로 결정적 풀이가 완결된다.',
-    difficultyEvidence: {
-      fields: {
-        difficultyBucket: q.difficultyBucket, difficultyConfidence: q.difficultyConfidence,
-        difficultyBoundaryFlag: q.difficultyBoundaryFlag, legacyLevelCompatibility: q.legacyLevelCompatibility,
-      },
-      reason: disposition === 'REUSE' ? '독립 풀이의 계산 단계와 조건 수를 기준으로 판정했다.' : 'migration HOLD에 따라 미판정 상태를 유지했다.',
-    },
-    fieldProjection: fieldProjection(q),
+    integrationReason: '주개념 경로만으로 결정적 풀이가 완결된다.',
   });
   const pathData = selected?.rpmPath || { majorUnit: '다항식', midUnit: '다항식의 연산', l3: '테스트용 taxonomy 부재', l4: '테스트용 템플릿 부재' };
   const scope = selected?.scope || '수학_상';
-  const mappingStatus = selected?.mappingStatus || 'NO_MATCH';
-  const refs = [
-    ['RPM_PRIMARY_README', 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md'],
-    ['RPM_CANONICAL_MASTER', 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json'],
-    ['RPM_CURRICULUM_SCOPE_VIEW', `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/${scope}.md`],
-    ['RPM_TO_ACTIVE_CROSSWALK', crosswalkPath],
-  ].map(([role, relative]) => ({ role, path: relative, sha256: fileSha(path.join(root, relative)) }));
-  for (const relative of [
-    'archive/data/meta-foundation/canonical/registry_index.json',
-    'archive/data/meta-foundation/canonical/metadata_rules.json',
-    'archive/data/meta-foundation/canonical/condition_registry.json',
-    'archive/data/meta-foundation/compiled/taxonomy_registry.json',
-    'archive/data/meta-foundation/compiled/concept_registry.json',
-    'archive/data/meta-foundation/compiled/condition_registry.json',
-    'archive/data/meta-foundation/compiled/curriculum_bindings.json',
-  ]) refs.push({ role: 'ACTIVE_META_FOUNDATION', path: relative, sha256: fileSha(path.join(root, relative)) });
-  item.rpmLookup = {
-    order: [...RPM_LOOKUP_ORDER], curriculum: '2015', level: 'high', scope,
-    rpmPathStatus: disposition === 'TRUE_TAXONOMY_GAP' ? 'NOT_FOUND' : 'FOUND',
-    rpmPath: pathData,
-    crosswalkRecordId: selected?.id || '', crosswalkMappingStatus: mappingStatus,
-    references: refs,
+  const activeRegistry = loadActiveMetaRegistry(root);
+  const resolverInput = {
+    sourceIdentity: {
+      sourceArchiveFile: identity.sourceArchiveFile, questionUid: identity.sourceIdentityKey, sourceOrdinal: identity.sourceOrdinal,
+      contentHash: identity.contentHash, choicesHash: identity.choicesHash, imageRefHash: identity.imageRefHash,
+      sourceIdentityFingerprint: identity.sourceIdentityFingerprint,
+    },
+    solutionIdentity: { status: 'VERIFIED_FINAL', independentVerification: true, solutionHash: identity.solutionHash },
+    curriculumContext: { grade: 'H1', curriculum: '2015', scope, standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey },
+    semanticDecision: { primaryMethod: item.primaryMethod, decisiveStep: item.decisiveStep, rpmPath: { curriculum: '2015', scope, ...pathData } },
+    ...(disposition === 'TRUE_TAXONOMY_GAP' ? { activeSearchEvidence: {
+      status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys: [], registrySha: activeRegistry.registrySha,
+      searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2',
+      searchedScope: { curriculum: '2015', standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey },
+    } } : {}),
   };
-  item.activeSearch = {
-    status: disposition === 'TRUE_TAXONOMY_GAP' ? 'COMPLETED' : 'COMPLETED',
-    searchedSemanticPath: disposition === 'TRUE_TAXONOMY_GAP',
-    problemTypeCandidates: [], templateCandidates: [],
-    matchingProblemTypeKey: disposition === 'REUSE' || disposition === 'BINDING_MIGRATION_GAP' ? selected.problemTypeKey : '',
-    matchingTemplateKey: disposition === 'REUSE' || disposition === 'BINDING_MIGRATION_GAP' ? selected.templateKey || '' : '',
+  const resolverEvidence = resolveMetaRoute(resolverInput, { repoRoot: root, registry: activeRegistry });
+  const semanticMetaEvidence = {
+    schemaVersion: 'JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1', sourceFingerprint: resolverEvidence.sourceFingerprint,
+    inputBundleSha: resolverEvidence.inputBundleSha, candidateVisibleDuringDecision: false,
+    crossConceptDecisions: [], conditionDecisions: [],
   };
-  item.decisionInputSha = metaDecisionInputSha({ question: q, identity, row: item });
+  semanticMetaEvidence.evidenceSha = objectFileSha(semanticMetaEvidence);
+  const difficultyEvidence = disposition === 'REUSE' ? makeDifficultyEvidence({
+    status: 'PASS', blindPassStatus: 'FRESH_INDEPENDENT', sourceFingerprint: resolverEvidence.sourceFingerprint,
+    solutionHash: identity.solutionHash, independentOfSemanticPass: true,
+    difficultyBucket: q.difficultyBucket, difficultyConfidence: q.difficultyConfidence,
+    difficultyBoundaryFlag: q.difficultyBoundaryFlag, legacyLevelCompatibility: q.legacyLevelCompatibility,
+    rationale: '독립 풀이의 계산 단계와 조건 수를 기준으로 fresh 판정했다.', blindReviewerId: 'fixture-reviewer',
+    decisionSha: objectFileSha({ uid: identity.sourceIdentityKey, bucket: q.difficultyBucket }),
+  }) : { status: 'NOT_TESTED' };
+  const candidateMeta = {
+    standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey,
+    problemTypeKey: q.problemTypeKey, templateKey: q.templateKey, crossConceptKeys: q.crossConceptKeys,
+    conditionKeys: q.conditionKeys, integrationPattern: q.integrationPattern, integrationReason: item.integrationReason,
+    difficultyBucket: q.difficultyBucket, difficultyConfidence: q.difficultyConfidence,
+    difficultyBoundaryFlag: q.difficultyBoundaryFlag, legacyLevelCompatibility: q.legacyLevelCompatibility,
+  };
+  const built = buildResolverBackedMetaEvidence({ input: resolverInput, candidateMeta, semanticMetaEvidence, difficultyEvidence, repoRoot: root, registry: activeRegistry });
+  Object.assign(item, {
+    resolverInput, resolverEvidence: built.resolverEvidence, semanticMetaEvidence: built.semanticMetaEvidence,
+    difficultyEvidence: built.difficultyEvidence, validatorReceipt: built.validatorReceipt,
+  });
   const metaFile = path.join(f.reportsDir, 'meta_decision_evidence.json');
   fs.writeFileSync(metaFile, `${JSON.stringify(draft, null, 2)}\n`);
   Object.assign(f.review, {
@@ -585,7 +578,7 @@ test('source → candidate → solution identity → RPM/ACTIVE metadata → pre
     assert.equal(pass.eligibility.BASIC_ARCHIVE_ELIGIBLE, true);
     assert.equal(pass.eligibility.ADVANCED_META_ELIGIBLE, true);
     assert.equal(pass.metaEligibility.status, 'PASS');
-    assert.equal(pass.metaEligibility.rows[0].disposition, 'REUSE');
+    assert.equal(pass.metaEligibility.rows[0].disposition, 'EXISTING_REUSE');
     assert.equal(fs.existsSync(path.join(repoRoot, 'archive/exams', f.manifest.archiveRelativePath)), false);
     // No changedFields declaration can hide an actual protected layout mutation.
     f.question.layoutTag = 'fullwidth';
@@ -607,8 +600,8 @@ for (const [disposition, reason] of [
     assert.equal(report.status, 'PASS', JSON.stringify(report.errors));
     assert.equal(report.eligibility.BASIC_ARCHIVE_ELIGIBLE, true);
     assert.equal(report.eligibility.ADVANCED_META_ELIGIBLE, false);
-    assert.equal(report.metaEligibility.status, 'MIGRATION_GAP');
-    assert.equal(report.metaEligibility.rows[0].disposition, disposition);
+    assert.equal(report.metaEligibility.status, disposition === 'TRUE_TAXONOMY_GAP' ? 'HOLD' : 'MIGRATION_GAP');
+    assert.equal(report.metaEligibility.rows[0].disposition, disposition === 'TRUE_TAXONOMY_GAP' ? 'TRUE_TAXONOMY_GAP' : 'RPM_PRIMARY_MIGRATION_GAP');
     assert.equal(f.question.problemTypeKey, '');
     assert.equal(f.question.templateKey, '');
   } finally { f.cleanup(); }

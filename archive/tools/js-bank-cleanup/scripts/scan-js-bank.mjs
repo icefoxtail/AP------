@@ -136,6 +136,10 @@ function analyzeQuestion(question, originalIndex) {
   return {
     questionId: ids ?? null,
     originalIndex,
+    advancedMetaFields: Object.fromEntries([
+      "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern",
+      "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
+    ].filter(field => Object.hasOwn(safeQuestion, field)).map(field => [field, safeQuestion[field]])),
     idType: typeof ids,
     isObject: Boolean(question && typeof question === "object"),
     level: safeQuestion?.level ?? "",

@@ -6,8 +6,10 @@ description: Run an isolated experimental A/B variant of the APMath whole-exam s
 # APMath ALIVE Adaptive Comparison (V2)
 
 This is a canary variant of [the baseline skill](../apmath-similar-question-pipeline/SKILL.md).
-Use it only for an explicit comparison run. The baseline skill, its files, and
-its runtime are the control group and must not be changed.
+Use it only for an explicit comparison run. The baseline execution behavior is
+the control group. For policy routing, including Meta, inherit the current
+canonical baseline references; do not copy a separate taxonomy or difficulty
+rule into this experimental skill.
 
 This experimental route is legacy compatibility work. It does not override
 the pipeline-core v2 work-batch, provider-attestation, concurrency, retry, or

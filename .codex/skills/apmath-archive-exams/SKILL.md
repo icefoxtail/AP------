@@ -230,12 +230,28 @@ inventory set; an unexplained count gap is
 After source fidelity is frozen, the main worker continues the same V3 JOB:
 
 1. Independently solve every question from the source and choices.
-2. Write a fresh student-facing answer and solution, then assign classification
-   and current subunit metadata.
-3. Run `ALL_QUESTION_VISUAL_TRIAGE`, freeze `EXPECTED FACT` records, and build
+2. Write a fresh student-facing answer and solution using
+   `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` as the
+   canonical authority.
+3. Classify L1/L2, then use the shared Meta contract:
+   `source + verified final solution → decision-isolated primaryMethod/decisiveStep
+   → RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL
+   → exact curriculum binding → disposition → independent difficulty blind
+   pass → deterministic validator receipt`. The implementation is
+   `archive/tools/meta-foundation/rpm-active-resolver.mjs` and the canonical
+   contract is `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`.
+   Keep unresolved advanced fields blank/empty/`UNKNOWN` and record the migration
+   or taxonomy state in sidecar evidence; do not mint keys or map `level` to
+   `difficultyBucket`.
+4. Run `ALL_QUESTION_VISUAL_TRIAGE`, freeze `EXPECTED FACT` records, and build
    only the required deterministic visual artifacts.
-4. Prepare the typed machine evidence needed for STATIC/METADATA and the
+5. Prepare the typed machine evidence needed for STATIC/METADATA and the
    sealed U1/U2/U3 audit.
+
+Do not start visual generation before the final solution and semantic Meta
+disposition are frozen. Advanced Meta migration gaps may leave
+`BASIC_ARCHIVE_ELIGIBLE=true` while `ADVANCED_META_ELIGIBLE=false` when source,
+solution, L1/L2, and all basic production fields pass.
 
 Do not pass the extraction candidate to GPT/Gemini as the default answer or
 solution completion step. Do not treat extraction completion as the end of

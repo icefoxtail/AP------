@@ -1,5 +1,7 @@
 # Archive Reviewed Apply Bridge v1
 
+> 상태: LEGACY RECOVERY ONLY. 신규 중2/중3 CREATE → R1 → intake → R2E → main의 primary route가 아니다. 새 intake 생산은 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 따른다.
+
 ## Purpose
 
 This contract applies the final Archive reservation stages without asking E to
@@ -48,9 +50,11 @@ staging from the latest target with the **same sealed R2 packet**. Relevant
 source/SVG/UID/canonical drift fails closed as `APPLY_CONFLICT_HOLD`; only that
 case returns to review/repair.
 
-## APPLY_PACKET schema v2
+## APPLY_PACKET schema v3 — sealed legacy recovery
 
-The packet uses `schemaVersion: 2` and includes:
+신규 recovery packet은 `schemaVersion: 3` 및 `recoveryRoute: "SEALED_LEGACY_RECOVERY"`를 사용한다. 정확히 attested된 과거 v2 sealed artifact는 compatibility 예외로만 읽을 수 있다. Schema v2는 해당 예외 packet 외에는 거부한다. Schema v3 meta patch마다 shared RPM→ACTIVE resolver input/evidence, independent difficulty evidence, relational evidence, deterministic validator receipt를 포함한다.
+
+모든 packet은 기존 identity/closure fields와 아래 fields를 포함한다:
 
 - `applyId`, `examFile`, `sourcePath`, `grade`, `targetRef`, `targetBaseSha`,
   `sourceBlobSha`, `totalQuestions`;
@@ -60,25 +64,30 @@ The packet uses `schemaVersion: 2` and includes:
 - `finalFiles[]` with `path`, `sha256`, `sizeBytes`, and `kind`
   (`exam_js` or `solution_svg`);
 - one `metaPatches[]` row per source ordinal, including UID, source file,
-  ordinal, identity fingerprint, decision status, runtime pack, and `before`
-  / `after` values;
+  ordinal, identity fingerprint, decision status, runtime pack, `before`/
+  `after` values, and shared `resolverInput`, `resolverEvidence`,
+  `difficultyEvidence`, `semanticMetaEvidence`, and `validatorReceipt`;
 - `candidatePending[]`, `canonicalHolds[]`, `routeOutPreserve[]` as UID lists;
   and `regenerateScopes[]` naming metadata, runtime, question index, Archive2
   catalog, and crosswalk regeneration.
 
 Every UID/source tuple is checked against the current dispatch checkout's
-`question_identity_map.json`. In schema v2, `targetBaseSha` is the immutable
+`question_identity_map.json`. In schema v3, `targetBaseSha` is the immutable
 R2 review base. `sourceBlobSha` is SHA-256 of the source exam JS blob at that
 review base, and the same source blob must still exist at the current dispatch
 base. `finalFiles` hashes cover the staging-tree bytes.
 
 `REPAIR.after` contains only actual reviewed values, such as unit/subunit,
 problem type, template, cross-concepts, conditions, integration pattern, and
-difficulty fields. Its L3/L4/CrossConcept references and exact active
-curriculum binding must exist in the compiled canonical registry. `CANDIDATE`
+difficulty fields. Its L3/L4 decision is revalidated through
+`archive/tools/meta-foundation/rpm-active-resolver.mjs`; only a current reuse
+route with exact ACTIVE owner, parent, and binding can apply. `CANDIDATE`
 contains labels, definitions, skeleton, candidate cross-concepts, searched
 canonical candidates, and a reason; it never creates selectable PT/TPL keys.
 `KEEP`, `HOLD`, and `ROUTE_OUT` preserve their existing semantic values.
+`rpmPathStatus: "DIRECT"` is written only when the packet's resolver evidence
+passes; the exact evidence SHA and crosswalk status are retained. Legacy v2
+recovery preserves an existing `rpmPathStatus` and never synthesizes `DIRECT`.
 
 ## Runner behavior and target commit
 
@@ -86,7 +95,8 @@ The runner first requires the current target SHA to equal the staging commit's
 parent. It then proves the packet review base is an ancestor of that dispatch
 base and runs the relevant-drift gates above. The generic UID patch engine also
 checks every affected UID's current metadata against packet `before` values and
-revalidates ACTIVE L3/L4/CrossConcept/binding state on the current checkout.
+revalidates resolver evidence, ACTIVE L3/L4/CrossConcept/binding state, and
+difficulty provenance on the current checkout.
 
 After those gates pass, it calls `python archive/build_db.py`, rebuilds only
 affected runtime packs, regenerates Archive2 catalog/crosswalk, and runs

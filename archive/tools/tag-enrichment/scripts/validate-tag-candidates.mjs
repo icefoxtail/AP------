@@ -21,10 +21,8 @@ const REQUIRED_FIELDS = [
   "currentTags",
   "subUnitKeyCandidate",
   "subUnitCandidate",
-  "conceptClusterKeyCandidate",
-  "problemTypeKeyCandidate",
-  "templateKeyCandidate",
-  "difficultyBucketCandidate",
+  "advancedMetaAuthority",
+  "advancedMetaDisposition",
   "tagConfidence",
   "tagStatus",
   "reasons",
@@ -32,7 +30,7 @@ const REQUIRED_FIELDS = [
   "reviewNotes",
 ];
 const ALLOWED_CONFIDENCE = new Set(["high", "medium", "low"]);
-const ALLOWED_STATUS = new Set(["auto_high", "auto_medium", "auto_low", "manual_review"]);
+const ALLOWED_STATUS = new Set(["hint_only", "manual_review"]);
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -56,9 +54,6 @@ export function validateTagCandidates() {
   for (const message of validateIdentityRows(report.candidates, row => row.sourceFile && Number.isSafeInteger(row.questionId) && row.questionId > 0 ? `${row.sourceFile}|${row.questionId}` : '')) addIssue(issues, 'error', null, message);
   const seen = new Set();
   const knownSubUnits = new Set(master.subUnits.map((item) => item.subUnitKey));
-  const knownConcepts = new Set(master.conceptClusters);
-  const knownProblemTypes = new Set(master.problemTypes.map((item) => item.problemTypeKey));
-  const knownTemplates = new Set(master.templates.map((item) => item.templateKey));
 
   for (const candidate of report.candidates ?? []) {
     for (const field of REQUIRED_FIELDS) {
@@ -71,26 +66,19 @@ export function validateTagCandidates() {
     if (seen.has(identity)) addIssue(issues, "error", candidate, `duplicate source/question identity: ${identity}`);
     seen.add(identity);
 
-    if (candidate.tagStatus === "auto_high" && !candidate.problemTypeKeyCandidate) addIssue(issues, "error", candidate, "auto_high missing problemTypeKeyCandidate");
-    if (candidate.tagStatus === "auto_high" && !candidate.templateKeyCandidate) addIssue(issues, "error", candidate, "auto_high missing templateKeyCandidate");
-    if (candidate.tagStatus === "auto_high" && (!Array.isArray(candidate.reasons) || candidate.reasons.length === 0)) addIssue(issues, "error", candidate, "auto_high missing reasons");
-
-    if (candidate.standardUnitKey && !candidate.problemTypeKeyCandidate && candidate.tagStatus === "auto_high") {
-      addIssue(issues, "error", candidate, "standardUnitKey-only candidate cannot be auto_high");
+    if (candidate.advancedMetaAuthority !== "RPM_ACTIVE_RESOLVER_ONLY" || candidate.advancedMetaDisposition !== "NOT_CLASSIFIED") {
+      addIssue(issues, "error", candidate, "tag-enrichment cannot assign or resolve advanced Meta");
     }
     if (candidate.subUnitKeyCandidate && !knownSubUnits.has(candidate.subUnitKeyCandidate)) addIssue(issues, "error", candidate, `subUnitKeyCandidate not in seed: ${candidate.subUnitKeyCandidate}`);
-    if (candidate.conceptClusterKeyCandidate && !knownConcepts.has(candidate.conceptClusterKeyCandidate)) addIssue(issues, "error", candidate, `conceptClusterKeyCandidate not in seed: ${candidate.conceptClusterKeyCandidate}`);
-    if (candidate.problemTypeKeyCandidate && !knownProblemTypes.has(candidate.problemTypeKeyCandidate)) addIssue(issues, "error", candidate, `problemTypeKeyCandidate not in seed: ${candidate.problemTypeKeyCandidate}`);
-    if (candidate.templateKeyCandidate && !knownTemplates.has(candidate.templateKeyCandidate)) addIssue(issues, "error", candidate, `templateKeyCandidate not in seed: ${candidate.templateKeyCandidate}`);
+    for (const forbiddenAdvanced of ["conceptClusterKeyCandidate", "problemTypeKeyCandidate", "templateKeyCandidate", "crossConceptKeyCandidates", "conditionKeyCandidates", "difficultyBucketCandidate", "difficultyFromLevel"]) {
+      if (forbiddenAdvanced in candidate) addIssue(issues, "error", candidate, `forbidden advanced Meta candidate field: ${forbiddenAdvanced}`);
+    }
 
     if (!candidate.sourceFingerprint || !("layoutTag" in candidate.sourceFingerprint) || !("wide" in candidate.sourceFingerprint)) {
       addIssue(issues, "error", candidate, "missing source fingerprint for layoutTag/wide");
     }
     for (const forbidden of ["contentCandidate", "choicesCandidate", "answerCandidate", "solutionCandidate", "imageCandidate"]) {
       if (forbidden in candidate) addIssue(issues, "error", candidate, `forbidden mutation-style field exists: ${forbidden}`);
-    }
-    if (String(candidate.problemTypeKeyCandidate).startsWith("PROPOSED-") || String(candidate.templateKeyCandidate).startsWith("PROPOSED-")) {
-      addIssue(issues, "error", candidate, "PROPOSED key must not be used as an automatic recommendation");
     }
   }
 

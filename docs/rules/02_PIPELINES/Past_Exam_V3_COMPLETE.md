@@ -28,14 +28,18 @@
 7. **S5 학생용 final solution**: 검증 풀이를 작은칠판 흐름으로 다시 작성한다.
    `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 canonical authority다.
    final solution을 동결한 뒤 L1/L2를 canonical master와 비교한다.
-8. **S6 RPM Primary v1.0 선조회**: `README.md` → `00_POLICY/CANONICAL_MASTER.json` →
-   대상 curriculum/scope view → RPM→ACTIVE crosswalk → ACTIVE Meta Foundation 순서로 조회한다.
-   current source + verified final solution에서 `primaryMethod` / `decisiveStep`를 만든 뒤에만
-   L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty를 판정한다. 같은 stage candidate key,
-   template/CrossConcept 제안 또는 이전 verdict는 semantic input에서 제외한다.
-9. **S7 metadata evidence freeze**: `REUSE`, `BINDING_MIGRATION_GAP`, `KEY_MIGRATION_GAP`,
-   `TRUE_TAXONOMY_GAP`를 machine-readable evidence로 남긴다. migration gap을 임의 key로 채우지 않는다.
-10. **S8 Visual 이후 단계**: solution과 Meta를 동결한 뒤 전 문항 visual triage → EXPECTED FACT 동결
+8. **S6 Meta semantic 판단**: `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와
+   `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다. current source + verified final
+   solution에서 candidate-blind `primaryMethod` / `decisiveStep`를 먼저 동결한 뒤 RPM Primary README →
+   CANONICAL_MASTER → exact curriculum/scope view → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL
+   → exact curriculum/L1/L2 binding 순으로 resolver를 호출한다. Same-stage candidate key, template/
+   CrossConcept suggestion, heuristic, 이전 verdict는 semantic input에서 제외한다.
+9. **S7 disposition + independent difficulty**: `EXISTING_REUSE`, `FAMILY_REUSE`,
+   `RPM_PRIMARY_MIGRATION_GAP`, `TRUE_TAXONOMY_GAP`, `ROUTE_OUT`를 machine-readable evidence로 남긴다.
+   Difficulty는 별도 fresh blind evidence이며 legacy `level`에서 추론하지 않는다. Deterministic Meta
+   validator receipt가 없으면 advanced Meta FINAL/PASS/promotion을 허용하지 않는다. Migration gap은
+   임의 key로 채우지 않는다.
+10. **S8 Visual 이후 단계**: verified solution과 Meta disposition을 동결한 뒤 전 문항 visual triage → EXPECTED FACT 동결
     → Python 수치 모델 → 필요한 SVG 생성.
 11. **S9~S14**: STATIC/METADATA 및 exam/solution/answer × desktop/mobile 실렌더 수집,
    한 번의 FINAL_AUDIT에서 sealed U1(SOURCE/MATH_A1/V1), U2(V2 artifact-only),
@@ -108,12 +112,13 @@ Calibration은 builder의 작업 준비 증거다. U1 source-only나 U2 artifact
   L1/L2, serialization이 모두 PASS일 때 계산한다.
 - `ADVANCED_META_ELIGIBLE`은 ACTIVE PT/TPL 또는 근거 있는 `NO_SEPARATE_L4`, parent,
   curriculum/L2 binding, ACTIVE CrossConcept/Condition, canonical IntegrationPattern,
-  difficultyBucket v1.3와 RPM-first evidence까지 PASS일 때만 true다.
+  independent difficultyBucket v1.3, resolver evidence, deterministic validator receipt까지 PASS일 때만 true다.
 - advanced metadata migration gap은 `reports/meta_decision_evidence.json`에 기록한다.
   canonical advanced fields를 비워 둔 채 `BASIC_ARCHIVE_ELIGIBLE=true`,
   `ADVANCED_META_ELIGIBLE=false`로 진행할 수 있다. 미등록·candidate·deprecated key를
   production field에 넣어 BASIC PASS를 얻는 것은 금지한다.
 - `TRUE_TAXONOMY_GAP`은 새 canonical key 승격이 아니라 HOLD/candidate evidence만 남긴다.
+- Runtime/Archive closure에서는 UID/source fingerprint와 resolver/difficulty evidence SHA parity를 확인한다.
 
 source ↔ solution alignment는 ordinal이 아닌 `sourceArchiveFile + sourceIdentityKey + sourceOrdinal`
 및 content/choices/image/solution hash를 포함한 `sourceIdentityFingerprint`로 검증한다.

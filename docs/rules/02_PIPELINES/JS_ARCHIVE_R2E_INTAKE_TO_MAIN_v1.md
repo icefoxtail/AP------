@@ -129,6 +129,14 @@ source + final solution
 → existing reuse / migration / proposal
 ```
 
+세 단계는 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통으로 사용한다. Evidence를 봉인하기 전 검증 명령은 다음이다.
+
+```bash
+node archive/tools/meta-foundation/validate-rpm-active-receipt.mjs --resolver-evidence <resolver-evidence.json>
+```
+
+R1/R2E item receipt는 동일 UID의 `resolverInput`, `resolverEvidence`, `difficultyEvidence`, relational semantic evidence, `validatorReceipt`를 보관한다. R2E 최종 receipt는 `JS_ARCHIVE_R2E_META_RECEIPT_v1`이며 `--r2e-receipt <receipt.json>` 검증을 통과해야 `R2E_FINAL`로 닫을 수 있다.
+
 정확한 기존 key가 없다는 이유만으로 TRUE_HOLD하지 않는다.
 
 CREATE 단계 허용 semantic disposition:
@@ -193,6 +201,8 @@ totalQuestions
 changedQuestions[]
 changedSvgFiles[]
 metaDispositionSummary
+metaResolutionEvidenceRef: { path, sha256 }
+metaResolverContractVersion = JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1
 unresolvedItems[]
 authorityRefs[]
 nextState
@@ -212,8 +222,7 @@ sourceHardHolds[]
 validatorSummary
 ```
 
-receipt는 item-level evidence를 대체하지 않는다.
-필요한 세부 판정은 기존 작업 ledger/evidence 경로에 물리 저장한다.
+`metaResolutionEvidenceRef`는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` sidecar를 가리킨다. 모든 UID의 input bundle, resolver evidence, candidate projection, relational evidence, fresh difficulty blind evidence, validator receipt를 포함한다. Intake snapshot은 frozen exam JS와 sidecar를 UID/ordinal/content/choices/image/solution hash로 대조한 뒤 공용 resolver로 재검증한다. Receipt는 item-level evidence를 대체하지 않는다.
 
 ---
 
@@ -301,6 +310,9 @@ R2E는 최종 semantic 결정권자다.
 - `PROPOSED_NEW_L3`
 - `PROPOSED_NEW_L4`
 - 미결 CrossConcept candidate
+- 미실행 deterministic Meta validator
+- source/solution/resolver/difficulty SHA mismatch
+- runtime/Archive metadata parity mismatch
 
 최종 disposition은 다음 중 하나다.
 
@@ -313,6 +325,10 @@ R2E는 최종 semantic 결정권자다.
 - `ROUTE_OUT`
 
 판정 순서는 항상 RPM Primary → exact crosswalk → GLOBAL ACTIVE owner → exact binding을 선행한다.
+
+Final disposition은 shared resolver의 결과와 현재 적용 action을 함께 보존한다. `EXISTING_REUSE`와 `FAMILY_REUSE`는 R2E의 `EXISTING_REUSE`로, 유효한 `ROUTE_OUT` evidence는 `ROUTE_OUT`으로 기록한다. Migration gap/taxonomy gap은 최종에 남길 수 없다. Canonical materialization, rebind, 신규 L3/L4, CrossConcept 승인 이후에는 current ACTIVE snapshot으로 resolver를 다시 실행해 final metadata/runtime parity receipt에 SHA를 고정한다.
+
+R2E FINAL receipt는 `unresolvedSemanticCount`, `unresolvedProposalCount`, `unresolvedCrossConceptCandidateCount`, `metaHoldCount`, `migrationGapCount`를 모두 0으로 기록하며 shared validator가 기계적으로 확인한다.
 
 local binding pack taxonomy에 key가 없다는 사실만으로 canonical absent를 선언하지 않는다.
 

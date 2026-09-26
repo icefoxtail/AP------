@@ -24,6 +24,9 @@ intermediate extractor contract into a competing lifecycle.
 5. For corrections and final release, add `수정프로토콜.md`,
    `작업방식_적응형배치루프_v1.md`, the 1차/2차/3차 domain review protocols,
    and the real-render requirements in the integrated protocol.
+   For middle-school R1/R2E closure, also read
+   `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md` and use the durable
+   receipt helpers in `archive/tools/r2e/`.
 6. For a graph, geometry, table, or SVG, read current
    `04_VISUAL/도형추출.md`; read the geometry-equation SVG review protocol
    only when that special lane applies.
@@ -90,6 +93,18 @@ independent solve, fresh student solution, classification, all-question V1
 visual triage, expected-fact freeze, deterministic visual build, and machine
 evidence preparation. Semantic review follows the canonical pipeline-core
 FINAL_AUDIT / U1/U2/U3 contract, not an ad hoc GPT/Gemini handoff.
+
+For `SOLUTION_AND_CLASSIFICATION_BUILD`, use the shared Meta contract at
+`docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`.
+The route is source + verified final solution → candidate-blind semantic
+judgement → RPM Primary README/master/scope view → exact grade/subject
+crosswalk → GLOBAL ACTIVE PT/TPL → exact curriculum binding → reuse/migration/
+true-gap/route-out. Call
+`archive/tools/meta-foundation/rpm-active-resolver.mjs`; do not duplicate its
+lookup or use current candidate metadata as the first semantic input. Complete
+the separate fresh difficulty blind pass and deterministic validator receipt
+before `ALL_QUESTION_VISUAL_TRIAGE`. BASIC eligibility remains independent of
+an advanced Meta migration gap.
 
 ## Pipeline-core execution and diagnostic continuation
 

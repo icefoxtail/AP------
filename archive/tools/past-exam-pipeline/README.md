@@ -47,13 +47,16 @@ if stale. Keep locks under repository staging so core can bind relative refs.
    `--assets` to promotion; `--asset-root <staged-root>` and
    `--source-asset-root archive` only read staged/source assets.
 5. Complete S4 onward in this order: independent SOURCE_ONLY solve →
-   student-facing small-blackboard solution → L1/L2 → RPM Primary README → RPM canonical master
-   → exact curriculum/scope view → RPM→ACTIVE crosswalk → ACTIVE Meta Foundation
-   → L3/L4/CrossConcept/Condition/IntegrationPattern/difficultyBucket → solution
-   identity evidence → visual triage → EXPECTED FACT → needed SVG. Use
+   student-facing small-blackboard solution → L1/L2 → decision-isolated semantic
+   judgement → shared RPM Primary README/master/curriculum view → exact
+   grade/subject crosswalk → GLOBAL ACTIVE PT/TPL → exact curriculum binding →
+   resolver disposition → independent difficulty blind pass → deterministic
+   validator receipt → solution identity evidence → visual triage → EXPECTED FACT
+   → needed SVG. Use
    `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` as the canonical
-   solution authority. SVG facts come after the verified solution and cannot
-   change its math. The common preparer then binds the completed candidate:
+   solution authority and `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`
+   as the single advanced Meta contract. SVG facts come after the verified
+   solution and cannot change its math. The common preparer then binds the completed candidate:
 
 ```powershell
 node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-exam-manifest <staged-manifest.json> --source <frozen-extraction.js> --candidate <completed-candidate.js> --source-registry-ref <registry-file-ref.json> --run-id <run-id> --work-batch-id <job-id> --builder-id <reader-id> --builder-session-id <reader-session-id> --builder-model <actual-model> --workdir <new-staging-directory>
@@ -81,13 +84,16 @@ The builder fills and independently reviews these sidecars; the command does not
 grant alignment, metadata, or promotion PASS. Final solution alignment binds
 `sourceArchiveFile`, `sourceIdentityKey`, `sourceOrdinal`, content/choices/image
 reference hashes, `sourceIdentityFingerprint`, and `solutionHash`. RPM/ACTIVE
-evidence binds the lookup order and exact current file hashes.
+evidence is produced and revalidated by `archive/tools/meta-foundation/rpm-active-resolver.mjs`
+and `validate-rpm-active-receipt.mjs`; it binds the lookup order, exact current
+file hashes, resolver disposition, and deterministic validator receipt.
 
 Promotion reports `BASIC_ARCHIVE_ELIGIBLE` separately from
 `ADVANCED_META_ELIGIBLE`. An unresolved migration gap can keep the basic source,
 math, solution and L1/L2 candidate eligible while advanced metadata remains
 HOLD. A candidate/deprecated/free-text key in a production field fails the gate.
-`TRUE_TAXONOMY_GAP` never creates a new canonical key.
+`TRUE_TAXONOMY_GAP` never creates a new canonical key. `RPM_PRIMARY_MIGRATION_GAP`
+is not a taxonomy gap and does not by itself block BASIC eligibility.
 
 `npm --prefix archive/tools/past-exam-pipeline test` covers calibration and
 handoff hardening. `npm --prefix archive/tools/pipeline-core test` covers common
@@ -246,8 +252,10 @@ python .\helpers\scanned_exam_pipeline.py `
 - `lib/portable-package.mjs`: independent ZIP consumer/extraction parity gate
 - `promote-reviewed-exam.mjs`: `reviewed_pass` 후보를 canonical Archive로 승격
 - `build-completion-evidence.mjs`: final solution 뒤 identity/Meta NOT_TESTED sidecar 초안 생성
-- `lib/completion-evidence.mjs`: RPM-first, solution identity, advanced eligibility evidence gate
+- `lib/completion-evidence.mjs`: resolver evidence, solution identity, BASIC/advanced eligibility gate
 - `archive/tools/meta-foundation/active-registry.mjs`: ACTIVE canonical/compiled registry validator
+- `archive/tools/meta-foundation/rpm-active-resolver.mjs`: shared RPM→ACTIVE semantic resolver, provenance, difficulty and R2E/runtime parity gates
+- `archive/tools/meta-foundation/build-rpm-active-resolution.mjs`: decision-isolated resolver evidence builder for new candidates/review items
 - `docs/PAST_EXAM_PIPELINE_V2_POLICY.md`: 정책 문서
 - `docs/VISION_PAGE_EXTRACT_REQUEST_TEMPLATE.md`: Vision 호출 프롬프트 템플릿
 - `examples/vision_page_extract.example.json`: Vision JSON 예시
