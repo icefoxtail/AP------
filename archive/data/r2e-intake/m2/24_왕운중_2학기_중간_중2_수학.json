@@ -1,0 +1,51 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_V1",
+  "examFile": "24_왕운중_2학기_중간_중2_수학.js",
+  "examUid": "24_왕운중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "lane": "B",
+  "stage": "CREATE",
+  "sourceBlobSha": "4770d7394bc8d72c27f8dd2da5836bbc959a8d00",
+  "totalQuestions": 24,
+  "changedQuestions": [
+    5,
+    14
+  ],
+  "changedSvgFiles": [],
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 22,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 1,
+    "RPM_PRIMARY_MIGRATION_GAP": 1,
+    "TRUE_HOLD": 0
+  },
+  "unresolvedItems": [
+    {
+      "questionNo": 5,
+      "disposition": "PROPOSED_NEW_L4",
+      "parentProblemTypeKey": "PT_SIMILAR_FIGURES",
+      "proposedTemplateKey": "TPL_ALWAYS_SIMILAR_FIGURES_CLASSIFICATION",
+      "proposedLabelKo": "항상 닮은 도형 판별",
+      "reason": "2015 M2 RPM Primary에는 해당 분류형 exact L4가 없고 GLOBAL ACTIVE PT_SIMILAR_FIGURES는 재사용 가능하나 exact L4가 없어 proposal로 보존"
+    },
+    {
+      "questionNo": 14,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-075",
+      "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "reason": "RPM Primary의 평행사변형 넓이·분할도형 경로는 존재하지만 middle2 crosswalk가 RPM_ONLY/NO_ACTIVE_MAPPING이므로 broad canonical을 억지 매핑하지 않음"
+    }
+  ],
+  "nextState": "READY_FOR_REVIEW",
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "3b100969af789655e684d14a9fb5e45483fd4197",
+    "mainReadSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
+    "sourcePath": "archive/exams/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+    "sourceBlobSha": "4770d7394bc8d72c27f8dd2da5836bbc959a8d00",
+    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "evidencePath": "archive/data/r2e-intake/m2/24_왕운중_2학기_중간_중2_수학.evidence.json"
+  },
+  "updatedAt": "2026-09-27T06:42:37+09:00"
+}
