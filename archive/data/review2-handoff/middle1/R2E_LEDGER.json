@@ -1,13 +1,13 @@
 {
   "schemaVersion": "r2e-main-final-ledger/v1",
   "task": "Middle 1 B20/B24/B28 R2E",
-  "status": "IN_PROGRESS",
-  "branch": "work/m1-b20-b24-b28-r2e",
+  "status": "R2E_BRANCH_FINAL",
+  "branch": "work/m1-b01-b31-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "fe46fa13a46aeaf74a7b0b9d9ba1bbda7096eeb1",
-  "timestamp": "2026-09-27 04:11:58 Asia/Seoul",
-  "physicalCheckpoint": "B24_BRANCH_FINAL_VALIDATORS_PASS_COMMIT_PENDING",
+  "currentBranchHead": "8c07caf53414e381d48fc7df76dc10c0f5a506cb",
+  "timestamp": "2026-09-27 06:24:54 Asia/Seoul",
+  "physicalCheckpoint": "B20_B24_B28_PREEXISTING_R2E_RESULT_RECORDED",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -38,7 +38,9 @@
       "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json"
     ],
     "validatorStatus": "PASS_CANONICAL_COMPILED_PARITY; PASS_TARGET_CROSSWALK_BINDING_61_61; B20_RUNTIME_AND_ARCHIVE2_PASS",
-    "commitSha": "909617696fa78f64dbbcd8e029667078b260ff90"
+    "commitSha": "3af4fd4334a62a6ffd92221b8b944d8299612ba8",
+    "sourceCommitSha": "909617696fa78f64dbbcd8e029667078b260ff90",
+    "targetCommitSha": "3af4fd4334a62a6ffd92221b8b944d8299612ba8"
   },
   "exams": [
     {
@@ -151,7 +153,11 @@
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a.json",
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4.json",
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_4817917a358ee5bab0470f3014f80f7009278447c77b5b8dbdf2958accd1763d.json",
-        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1.json"
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1.json",
+        "archive/data/r2e-input/middle1/INGEST_QUEUE.json",
+        "archive/data/r2e-input/middle1/evidence/B20/R2E_RESULT.json",
+        "archive/data/review2-handoff/middle1/R2E_LEDGER.json",
+        "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json"
       ],
       "r1Evidence": {
         "zipSha256": "F1C1AD5BE52694A36B282DA8AE78357711BEB061EFC21080A249299589732E78",
@@ -168,7 +174,7 @@
         ]
       },
       "validatorStatus": "PASS_NODE_VM_24_24; PASS_PROTECTED_FIELDS_24_24; PASS_SOLUTION_BLANK_CONTROL_LATEX; PASS_SVG_XML_PATH_RENDER; PASS_CANONICAL_CROSSWALK_BINDING; PASS_RUNTIME_24_24; PASS_ARCHIVE2_ELIGIBLE_24_24",
-      "currentNextItem": "B24 q2-q21 Meta deep review",
+      "currentNextItem": "none",
       "deepReviewReasons": {
         "q8": "R1 SVG byte drift was rechecked against the original intersecting-lines source; the solution diagram now shows the two triangles and the exact angle-transfer steps.",
         "q9": "R1 solution SVG byte drift; source polygon angle labels were corrected and visually validated.",
@@ -231,11 +237,68 @@
         "xmlValidation": "PASS_Q8_Q9_Q13_Q21_Q22_Q24_AND_ALL_REFERENCED_PATHS"
       },
       "branchStatus": "R2E_BRANCH_FINAL_READY",
-      "mainIntegration": "NOT_PERFORMED_PER_LATEST_USER_INSTRUCTION",
-      "finalCommitSha": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
+      "mainIntegration": "NOT_PERFORMED",
+      "finalCommitSha": "9a0cf220b9641f14b49b3416a553a288457c9867",
       "branchFinalStatus": "R2E_BRANCH_FINAL",
       "mainTerminalReceipt": "NOT_ISSUED_MAIN_INTEGRATION_PROHIBITED",
-      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE"
+      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE",
+      "sourceBranchFinalCommitSha": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
+      "targetArtifactCommitSha": "9a0cf220b9641f14b49b3416a553a288457c9867",
+      "targetSupportingCommitShas": [
+        "680643a2bcfdae260363b39ebaa24078e8289664"
+      ],
+      "targetFinalResultCommitSha": "680643a2bcfdae260363b39ebaa24078e8289664",
+      "importStatus": "PREEXISTING_R2E_RESULT",
+      "integrationBranch": "work/m1-b01-b31-r2e",
+      "integrationMeta": {
+        "existingL3Reuse": 16,
+        "rpmMaterializedL3Assignments": 6,
+        "rpmMaterializedL3Keys": 2,
+        "existingL4Reuse": 12,
+        "newSharedL4Assignments": 10,
+        "newSharedL4Keys": 8,
+        "bindingMigrationItems": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          21
+        ],
+        "crossConceptItems": [],
+        "trueNewL3": 0
+      },
+      "integrationStatus": "PREEXISTING_R2E_RESULT",
+      "targetLatestResultCommitSha": "680643a2bcfdae260363b39ebaa24078e8289664",
+      "preexistingResultStatus": "PREEXISTING_R2E_RESULT",
+      "targetIntegrationMeta": {
+        "existingL3ReuseAssignments": 16,
+        "rpmL3MaterializedAssignments": 6,
+        "rpmL3MaterializedKeys": 2,
+        "existingL4ReuseAssignments": 12,
+        "newL4Assignments": 10,
+        "newL4UniqueKeys": 8,
+        "bindingMigrationItems": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          21
+        ],
+        "crossConceptItems": [],
+        "trueNewL3OutsideLockedRpm": 0
+      },
+      "targetSourceRecovery": [],
+      "targetSvgCount": 16,
+      "targetChangedSolutionSvgs": [
+        "q8-solution.svg",
+        "q9-solution.svg",
+        "q13-solution.svg",
+        "q21-solution.svg",
+        "q24-solution.svg"
+      ],
+      "targetImportedAt": "2026-09-27 06:24:54 Asia/Seoul"
     },
     {
       "code": "B24",
@@ -356,7 +419,11 @@
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49.json",
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33.json",
         "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307.json",
-        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f0d5f93852d3693e4710507a066ed378d08550ff4ab7dbcce5da6521afc5876f.json"
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f0d5f93852d3693e4710507a066ed378d08550ff4ab7dbcce5da6521afc5876f.json",
+        "archive/data/r2e-input/middle1/INGEST_QUEUE.json",
+        "archive/data/r2e-input/middle1/evidence/B24/R2E_RESULT.json",
+        "archive/data/review2-handoff/middle1/R2E_LEDGER.json",
+        "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json"
       ],
       "r1Evidence": {
         "zipSha256": "4188AEBB9CE4C88DA0C018FAB8B03A2F409167621964C54B3F4A0B5234885970",
@@ -371,7 +438,7 @@
         ]
       },
       "validatorStatus": "PASS_NODE_CHECK_VM_22_22; PASS_PROTECTED_FIELDS_22_22; PASS_SOLUTION_BLANK_CONTROL_LATEX; PASS_SVG_XML_PATH_RENDER_7_7; PASS_CANONICAL_CROSSWALK_BINDING_63_63; PASS_RUNTIME_22_22; PASS_ARCHIVE2_ELIGIBLE_22_22",
-      "currentNextItem": "B24 exam-specific final commit SHA pending; then begin B28 source recovery and Meta closure",
+      "currentNextItem": "none",
       "deepReviewReasons": {
         "q6": "R1 semantic SVG repair restored A r=6,h=6 and B r=3,h=24 proportional dimensions.",
         "q7": "R1 semantic SVG repair restored the exact 144° cone-net sector.",
@@ -407,9 +474,62 @@
         ],
         "xmlValidation": "PASS_Q6_Q7_Q8_Q10_Q21_AND_ALL_REFERENCED_PATHS"
       },
-      "branchFinalStatus": "R2E_BRANCH_FINAL_READY",
-      "finalCommitSha": null,
-      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE"
+      "branchFinalStatus": "R2E_BRANCH_FINAL",
+      "finalCommitSha": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE",
+      "sourceBranchFinalCommitSha": "3e302ecdb1fab7a08abedf7fcdaefebc54208292",
+      "targetArtifactCommitSha": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+      "targetSupportingCommitShas": [
+        "0cef455e9f059d758e99646e309b012c9c4da630"
+      ],
+      "targetFinalResultCommitSha": "0cef455e9f059d758e99646e309b012c9c4da630",
+      "importStatus": "PREEXISTING_R2E_RESULT",
+      "integrationBranch": "work/m1-b01-b31-r2e",
+      "mainIntegration": "NOT_PERFORMED",
+      "integrationMeta": {
+        "existingL3Reuse": 10,
+        "rpmMaterializedL3Assignments": 10,
+        "rpmMaterializedL3Keys": 2,
+        "existingL4Reuse": 7,
+        "newSharedL4Assignments": 13,
+        "newSharedL4Keys": 10,
+        "bindingMigrationItems": [
+          12,
+          14,
+          15,
+          20
+        ],
+        "crossConceptItems": [],
+        "trueNewL3": 0
+      },
+      "integrationStatus": "PREEXISTING_R2E_RESULT",
+      "targetLatestResultCommitSha": "0cef455e9f059d758e99646e309b012c9c4da630",
+      "preexistingResultStatus": "PREEXISTING_R2E_RESULT",
+      "targetIntegrationMeta": {
+        "existingL3ReuseAssignments": 10,
+        "rpmL3MaterializedAssignments": 10,
+        "rpmL3MaterializedKeys": 2,
+        "existingL4ReuseAssignments": 7,
+        "newL4Assignments": 13,
+        "newL4UniqueKeys": 10,
+        "bindingMigrationItems": [
+          12,
+          14,
+          15,
+          20
+        ],
+        "crossConceptItems": [],
+        "trueNewL3OutsideLockedRpm": 0
+      },
+      "targetSourceRecovery": [],
+      "targetSvgCount": 7,
+      "targetChangedSolutionSvgs": [
+        "q6-solution.svg",
+        "q7-solution.svg",
+        "q10-solution.svg",
+        "q21-solution.svg"
+      ],
+      "targetImportedAt": "2026-09-27 06:24:54 Asia/Seoul"
     },
     {
       "code": "B28",
@@ -431,6 +551,7 @@
         13,
         14,
         15,
+        16,
         19,
         20,
         21,
@@ -438,8 +559,7 @@
         23,
         24
       ],
-      "resolvedItems": [],
-      "unresolvedItems": [
+      "resolvedItems": [
         1,
         2,
         3,
@@ -455,6 +575,7 @@
         13,
         14,
         15,
+        16,
         19,
         20,
         21,
@@ -462,39 +583,159 @@
         23,
         24
       ],
+      "unresolvedItems": [],
       "metaDisposition": {
         "r1MigrationGap": 15,
-        "sourceVisualHold": [
+        "sourceVisualHoldBeforeRecovery": [
           12,
           23
         ],
-        "final": "PENDING"
+        "sourceRecoveryItems": [
+          12,
+          23
+        ],
+        "sourceRecoveryStatus": "RECOVERY_APPLIED; exact image blob parity; no source or solution HOLD",
+        "final": "PASS_NO_TAXONOMY_RPM_DIFFICULTY_SOURCE_OR_BINDING_HOLD",
+        "existingL3ReuseItems": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          16,
+          19,
+          20,
+          21,
+          22,
+          24
+        ],
+        "existingL4ReuseItems": [
+          1,
+          2,
+          3,
+          6,
+          16,
+          21,
+          24
+        ],
+        "newL4Items": [
+          4,
+          5,
+          7,
+          8,
+          19,
+          20,
+          22
+        ],
+        "rpmMaterializedItems": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          23
+        ],
+        "rpmMaterializedL3Keys": [
+          "PT_M1_ROTATION_SOLID_PROPERTIES",
+          "PT_M1_SOLID_FIGURE_MEASURE",
+          "PT_M1_CENTRAL_TENDENCY"
+        ],
+        "newL3Materialized": 3,
+        "newL3OutsideLockedRPM": 0,
+        "newL4": 7,
+        "crossConceptItems": [
+          8
+        ],
+        "crossConcept": 1,
+        "bindingMigrationItems": [
+          1,
+          4,
+          6,
+          15,
+          19,
+          20,
+          21
+        ],
+        "difficultyAdjudicatedItems": 22,
+        "difficultyReopenedItems": [
+          5,
+          14,
+          16
+        ],
+        "noSeparateL4Items": [
+          14
+        ]
       },
-      "changedFiles": [],
+      "changedFiles": [
+        "archive/exams/original/middle/m1/2final/25_왕운중_2학기_기말_중1_기출.js",
+        "archive/assets/images/25_왕운중_2학기_기말_중1_기출/q6-solution.svg",
+        "archive/assets/images/25_왕운중_2학기_기말_중1_기출/q13-solution.svg",
+        "archive/assets/images/25_왕운중_2학기_기말_중1_기출/q22-solution.svg",
+        "archive/data/question_metadata.json",
+        "archive/data/archive2-catalog.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+        "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json",
+        "archive/data/review2-handoff/middle1/R2E_DIFFICULTY_ADJUDICATION.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_385d314e84730242ba2e90344059e54559444f286192d8ae88beb5835ea826c3.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_bf96f1e1a94e3d1d870f8dcadcfb1b43e00f25468d52ec16892851e7d7902017.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_76bd5d12df09268493b1f61107cacb61746c366839eba4339034447ac95951e6.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cb9115964cd7a5270799edf570788c87706c67085edc250a39bbf6ed7b2dccea.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_1a8159b4dc0fa361db9e4e976d3a3b4009b4bc927f6fae737f7d54aa94dc1dde.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_81bfb7002460d5476195b35a673184d06288914753f5cecd84af6aec3d40d002.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_adadf0810ade818ef1f3ddc6f9de24615497bad4df4e73de69286658a8daae79.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_77c11c683e138f6fcc117c68e4347724ac2aa5797b4c78db03c27ced1cc6b065.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_37458bc65f27a6f3a2ffb6fdd229d027b984e3134ff4aa5962900a0aa547154a.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_378417836e32662281c15dd16fae018a76dfb486b235ebe1d91c4a6041f4f3fc.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391.json",
+        "archive/data/r2e-input/middle1/INGEST_QUEUE.json",
+        "archive/data/r2e-input/middle1/evidence/B28/R2E_RESULT.json",
+        "archive/data/review2-handoff/middle1/R2E_LEDGER.json"
+      ],
       "r1Evidence": {
         "zipSha256": "FF960507337BE4E0A4962252B46BDF3F96D24CD0FA01EC8BF2711962DF5DB466",
         "r1FinalJsSha256": "9a46ad715ca2603794cd38e58fa29f1d57362d32aa4d3a646cb72c97f0993e59",
-        "status": "POST_R1_Q14_SOLUTION_CHANGE",
+        "status": "POST_R1_Q14_SOLUTION_CHANGE_WITH_Q12_Q23_RECOVERY",
         "latestNotionRecovery": {
           "status": "RECOVERY_APPLIED",
-          "sourceHolds": [
-            {
-              "q": 12,
-              "imageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
-              "branchImageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b"
-            },
-            {
-              "q": 23,
-              "imageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb",
-              "branchImageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb"
-            }
+          "sourceHoldsBeforeRecovery": [
+            12,
+            23
           ],
-          "q14": {
-            "mean": "135/10=13.5",
-            "branchAlreadyCorrect": true
-          },
-          "sourceHoldsBeforeRecovery": 0,
-          "source": "Notion D12 updated 2026-09-26T14:49Z; recovery ZIP itself unavailable in this work package"
+          "sourceHoldsAfterRecovery": 0,
+          "source": "Notion D12 B28 REVIEW1 recovery evidence",
+          "items": {
+            "q12": {
+              "imageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
+              "branchImageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
+              "fact": "[ㄷ] is a quarter-sphere of radius 5 cm with two semicircular cut faces; [ㄱ]/[ㄴ] dimensions are legible and sufficient for exposed-surface calculation."
+            },
+            "q23": {
+              "imageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb",
+              "branchImageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb",
+              "fact": "(가) base 12×18 cm and water depth one third of the marked 9 cm; (나) base 9×12 cm and water depth x cm."
+            }
+          }
         },
         "visualByteDriftQuestions": [
           6,
@@ -502,16 +743,188 @@
           22
         ]
       },
-      "validatorStatus": "NOT_RUN",
-      "currentNextItem": "B20 q1-q8 binding/parity closure, then q11 Meta/source adjudication",
+      "validatorStatus": "PASS_NODE_CHECK_VM_24_24; PASS_PROTECTED_FIELDS_24_24; PASS_SOLUTION_BLANK_CONTROL_LATEX_0; PASS_SVG_XML_PATH_8_8; PASS_SVG_RENDER_REVIEW_Q6_Q13_Q22; PASS_SOURCE_RECOVERY_Q12_Q23; PASS_DIFFICULTY_PARITY_24_24; PASS_CANONICAL_CROSSWALK_BINDING_64_64; PASS_RUNTIME_OWNER_64_64; PASS_RUNTIME_SELECTABLE_24_24; PASS_ARCHIVE2_ELIGIBLE_24_24; PASS_CATALOG_RUNTIME_JOIN_5157_5157; ARCHIVE_ENGINE_BROWSER_PREVIEW_BLOCKED_BY_CUA_URL_POLICY",
+      "currentNextItem": "none",
       "localAdjudication": {
-        "q12": "OPEN: branch solution still contains R1 HOLD text; reconstruct final student solution from exact image blob and recovery evidence",
-        "q23": "OPEN: branch solution still contains R1 HOLD text; independently derive final student solution from exact image blob",
-        "q14": "SOURCE_SOLUTION_REVIEWED: arithmetic is 135/10=13.5 and current answer ①,⑤ remains valid"
-      }
+        "q12": "RESOLVED: source blob exact; surface areas [ㄷ]=50π, [ㄱ]=132π, [ㄴ]=144π+270; answer ④.",
+        "q23": "RESOLVED: source blob exact; (가) water volume 12×18×(9/3)=648, (나) water volume 9×12×x=108x; x=6.",
+        "q14": "SOURCE_SOLUTION_REVIEWED: mean 135/10=13.5; answer ①,⑤ retained.",
+        "q16": "DIFFICULTY_REOPEN_RESOLVED: bucket 3, medium, B34, BORDERLINE_ACCEPTABLE with cumulative-frequency evidence."
+      },
+      "deepReviewReasons": {
+        "q1": "Reused the clustered chained triangle-angle path after L2 migration.",
+        "q2": "Re-adjudicated the polygon partition-to-diagonals mapping against the final solution.",
+        "q3": "Re-adjudicated the regular-polygon composite-angle structure and exact active L4.",
+        "q4": "Reused the circle/sector L3 and assigned the sector-measure L4 with exact plane-measure L2.",
+        "q5": "Reopened the adjacent legacy difficulty boundary and confirmed bucket 3 with BORDERLINE_ACCEPTABLE; finalized the sector-measure L4.",
+        "q6": "Rechecked the R1 SVG byte drift against the exact circle source, corrected the circle/chord diagram, and verified the canonical MIDDLE_GEOMETRY owner.",
+        "q7": "Assigned the repeated polyhedron-face-property L4 after comparing it with B20/B24 geometry clusters.",
+        "q8": "Assigned the same polyhedron L4 and separated polygon/solid vertex feasibility into the active CrossConcept registry.",
+        "q9": "Materialized the locked RPM rotation-solid path and checked its perpendicular-section solution.",
+        "q10": "Materialized the shared central-tendency constraint path; verified the final mean/median/mode condition solution.",
+        "q11": "Materialized the shared solid-volume-conservation path.",
+        "q12": "Recovered the exact source image; calculated exposed surfaces of the hemisphere/cone composite, sector prism, and quarter-sphere before ordering them.",
+        "q13": "Rechecked the R1 SVG byte drift against the exact frustum source and repaired the square bases, dimensions, perpendicular height, and surface equation diagram.",
+        "q14": "Rechecked the final mean as 135/10=13.5, retained answers ① and ⑤, and confirmed no separate L4 is needed.",
+        "q15": "Materialized the central-tendency RPM path and moved the metadata to the data-interpretation L2.",
+        "q16": "Reopened the difficulty validator conflict; retained bucket 3, medium confidence, B34, and BORDERLINE_ACCEPTABLE with cumulative-frequency evidence.",
+        "q19": "Compared the population-reconstruction structure with the clustered relative-frequency items and assigned its exact new L4.",
+        "q20": "Compared unequal-population count conversion with B20/B24 and assigned the group-count-comparison L4.",
+        "q21": "Reused the chained-isosceles triangle-angle path after L2 migration.",
+        "q22": "Rechecked the R1 SVG byte drift; corrected the quarter-circle/rectangle overlap, F/E points, S1/S2 regions, and area-cancellation result.",
+        "q23": "Recovered the exact source image; read the (가) water depth as one third of 9 cm and set equal prism water volumes to solve x=6.",
+        "q24": "Reused the existing RPM missing-frequency path restored from the R1 repair."
+      },
+      "visualReview": {
+        "items": [
+          {
+            "q": 6,
+            "status": "SOURCE_PARITY_REPAIRED_CHROME_RENDER_REVIEWED",
+            "source": "Exact q6.png source image",
+            "finding": "Equal central angles, three radii, and source circle points were checked; prior diagram lacked the AC chord and source alignment.",
+            "repair": "Redrew equal central angles and chords AB/BC/AC; marked points lie on the source circle.",
+            "render": "Chrome headless SVG render reviewed; XML PASS."
+          },
+          {
+            "q": 13,
+            "status": "SOURCE_PARITY_REPAIRED_CHROME_RENDER_REVIEWED",
+            "source": "Exact q13.png source image",
+            "finding": "Frustum dimensions are top square side 6 cm, bottom square side 12 cm, with perpendicular trapezoid height x.",
+            "repair": "Redrew the frustum and one lateral trapezoid with a right-angle marker and surface-area equation.",
+            "render": "Final Chrome headless SVG render reviewed; XML PASS."
+          },
+          {
+            "q": 22,
+            "status": "SOURCE_PARITY_REPAIRED_CHROME_RENDER_REVIEWED",
+            "source": "Exact q22.png source image",
+            "finding": "The quadrant is centered at B with radius AB=8; rectangle DC meets the arc at F and the arc ends at E.",
+            "repair": "Redrew the proportion-consistent rectangle/quadrant overlap, S1/S2 regions, labels A-F, and BC calculation.",
+            "render": "Chrome headless SVG render reviewed; XML PASS."
+          }
+        ],
+        "xmlValidation": "PASS_ALL_8_REFERENCED_SOLUTION_SVGS",
+        "archiveEngineExamSolutionAnswerPreview": "BLOCKED_BY_CUA_URL_POLICY; no alternate browser route used"
+      },
+      "branchStatus": "R2E_BRANCH_FINAL",
+      "mainIntegration": "NOT_PERFORMED",
+      "finalCommitSha": "70e579568929005ee38f20e2444f26c36ce0b9e0",
+      "branchFinalStatus": "R2E_BRANCH_FINAL",
+      "mainTerminalReceipt": "NOT_ISSUED_MAIN_INTEGRATION_PROHIBITED",
+      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE",
+      "sourceBranchFinalCommitSha": "3143a9626ca664fafc5dbd5837a7428f8b17fafd",
+      "targetArtifactCommitSha": "70e579568929005ee38f20e2444f26c36ce0b9e0",
+      "targetSupportingCommitShas": [],
+      "targetFinalResultCommitSha": "70e579568929005ee38f20e2444f26c36ce0b9e0",
+      "importStatus": "PREEXISTING_R2E_RESULT",
+      "integrationBranch": "work/m1-b01-b31-r2e",
+      "integrationMeta": {
+        "existingL3Reuse": 14,
+        "rpmMaterializedL3Assignments": 8,
+        "rpmMaterializedL3Keys": 3,
+        "existingL4Reuse": 7,
+        "newSharedL4Assignments": 14,
+        "newSharedL4Keys": 9,
+        "rpmMaterializedL4Assignments": 7,
+        "noSeparateL4Items": [
+          14
+        ],
+        "bindingMigrationItems": [
+          1,
+          4,
+          6,
+          15,
+          19,
+          20,
+          21
+        ],
+        "crossConceptItems": [
+          8
+        ],
+        "trueNewL3": 0
+      },
+      "sourceRecoveryBlobs": {
+        "q12": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
+        "q23": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb"
+      },
+      "integrationStatus": "PREEXISTING_R2E_RESULT",
+      "targetLatestResultCommitSha": "70e579568929005ee38f20e2444f26c36ce0b9e0",
+      "preexistingResultStatus": "PREEXISTING_R2E_RESULT",
+      "targetIntegrationMeta": {
+        "existingL3ReuseAssignments": 14,
+        "rpmL3MaterializedAssignments": 8,
+        "rpmL3MaterializedKeys": 3,
+        "existingL4ReuseAssignments": 7,
+        "newL4Assignments": 14,
+        "newL4UniqueKeys": 9,
+        "rpmL4MaterializedAssignments": 7,
+        "noSeparateL4Items": [
+          14
+        ],
+        "bindingMigrationItems": [
+          1,
+          4,
+          6,
+          15,
+          19,
+          20,
+          21
+        ],
+        "crossConceptItems": [
+          8
+        ],
+        "trueNewL3OutsideLockedRpm": 0
+      },
+      "targetSourceRecovery": [
+        {
+          "q": 12,
+          "imageBlob": "f7fd240b9cd92fe668ae5a3e880d843892851f6b"
+        },
+        {
+          "q": 23,
+          "imageBlob": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb"
+        }
+      ],
+      "targetSvgCount": 8,
+      "targetChangedSolutionSvgs": [
+        "q6-solution.svg",
+        "q13-solution.svg",
+        "q22-solution.svg"
+      ],
+      "targetImportedAt": "2026-09-27 06:24:54 Asia/Seoul"
     }
   ],
   "integrationScope": "WORK_BRANCH_ONLY",
   "mainMerge": "PROHIBITED_BY_LATEST_USER_INSTRUCTION",
-  "terminalReceiptPolicy": "Do not emit R2E_MAIN_FINAL without main integration; branch completion only."
+  "terminalReceiptPolicy": "Do not emit R2E_MAIN_FINAL without main integration; branch completion only.",
+  "latestPhysicalReceiptCommitSha": "ba58624f3765fa006d9a309b99bac69051bf1ed6",
+  "integrationTarget": {
+    "branch": "work/m1-b01-b31-r2e",
+    "startingHead": "df886ed11bd3fa131b57c593504424e0829d7d6b",
+    "sharedMetaTargetCommit": "3af4fd4334a62a6ffd92221b8b944d8299612ba8",
+    "runtimeCompatibilityCommit": "8c07caf53414e381d48fc7df76dc10c0f5a506cb",
+    "unrelatedMutationCount": 0
+  },
+  "targetIntegration": {
+    "branch": "work/m1-b01-b31-r2e",
+    "sourceBranch": "work/m1-b20-b24-b28-r2e",
+    "sourceBranchHead": "3678dea1e9811e99c1b3175ecc1db31e6bcee07c",
+    "sharedMetaSourceCommit": "909617696fa78f64dbbcd8e029667078b260ff90",
+    "sharedMetaTargetCommit": "3af4fd4334a62a6ffd92221b8b944d8299612ba8",
+    "runtimeCompatibilityCommit": "8c07caf53414e381d48fc7df76dc10c0f5a506cb",
+    "importStartedFrom": "df886ed11bd3fa131b57c593504424e0829d7d6b",
+    "unrelatedMutationCount": 0
+  },
+  "integrationValidation": {
+    "targetSpecificIdentity": "B20 24/24; B24 22/22; B28 24/24",
+    "protectedFields": "B20 24/24; B24 22/22; B28 24/24",
+    "solutionSvgPathAndXml": "31/31 PASS",
+    "targetArchive2Eligibility": "B20 24/24; B24 22/22; B28 24/24",
+    "runtimeSelectable": "B20 24/24; B24 22/22; B28 24/24",
+    "r2eCrosswalkCanonicalBinding": "64/64 PASS",
+    "runtimeCanonicalOwner": "64/64 PASS",
+    "runtimeCatalogJoin": "5157/5157 PASS",
+    "canonicalCompiledParity": "PASS",
+    "unrelatedMutationAudit": "0 outside B20/B24/B28 and required shared Meta/runtime/evidence files",
+    "fullCatalogBuilderCheck": "STALE_FOR_EXISTING_NON_TARGET_R1_INPUTS; 261 record projections across 11 unrelated exam JS files would change on a full rebuild. The catalog was kept to the committed target-specific 70-record delta; B20/B24/B28 target records pass."
+  }
 }
