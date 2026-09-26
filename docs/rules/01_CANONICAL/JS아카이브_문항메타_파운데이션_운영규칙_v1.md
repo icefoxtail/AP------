@@ -105,6 +105,46 @@ candidate/runtime/canonical 경계
 forward/reverse consistency audit
 ```
 
+## 1.4 RPM Primary v1.0 선조회와 Meta Foundation materialization bridge
+
+`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `TAXONOMY_AUTHORITY=LOCKED`인 **semantic path reference authority**다. 이는 RPM 내부 문구를 그대로 production key로 복제하라는 뜻이 아니라, 교육과정/L1/L2 안에서 이미 정규화·감사된 L3/L4 의미가 존재하는지 먼저 확인하는 기준이다.
+
+Meta Foundation ACTIVE Pack/Binding은 위 의미를 실제 production에서 사용하는 `problemTypeKey/templateKey + curriculum binding`으로 materialize한 **machine-key authority**다.
+
+따라서 L3/L4 생성·수정·검수·HOLD 판정의 강제 순서는 다음과 같다.
+
+```text
+current source + verified final solution
+→ primaryMethod / decisiveStep 확정
+→ RPM Primary v1.0 해당 curriculum/scope L1→L4 semantic path 조회
+→ ACTIVE Meta Foundation PT/TPL + curriculum binding 조회
+→ semantic crosswalk / reuse / migration gap 판정
+→ RPM과 ACTIVE 양쪽에 적절한 path가 없을 때만 신규 taxonomy gap
+```
+
+판정 규칙:
+
+1. RPM path와 의미가 같고 ACTIVE PT/TPL+binding이 있으면 기존 machine key를 재사용한다.
+2. RPM path와 의미가 같고 ACTIVE PT/TPL은 있으나 해당 curriculum/L2 binding만 없으면 **binding migration gap**이다. 신규 L3/L4를 만들지 않는다.
+3. RPM path는 있으나 대응 ACTIVE PT/TPL 자체가 아직 없으면 **key migration gap**이다. 이를 새 수학 유형 부재로 취급하지 않는다.
+4. RPM Primary와 ACTIVE semantic registry 양쪽을 모두 실제 검색한 뒤에도 적절한 path가 없을 때만 신규 L3/L4 candidate 또는 진짜 taxonomy gap을 연다.
+5. 예약 CREATE/REVIEW처럼 global canonical write 권한이 없는 작업은 2~3을 직접 승격하지 않고 evidence/HOLD로 넘긴다. 기존 상태 enum을 써야 하면 `META_CANONICAL_HOLD`를 사용하고 `holdReason`에 **`RPM_PRIMARY_MIGRATION_GAP`**을 명시한다.
+6. **`META_PACK_GAP_HOLD`는 RPM Primary 해당 경로에도 적용 가능한 L3/L4가 없고 ACTIVE Pack/binding에도 재사용 가능한 semantic path가 없는 경우에만 허용한다.**
+
+HOLD/candidate evidence에는 가능한 범위에서 최소 다음을 남긴다.
+
+```text
+rpmPrimaryPath
+searchedRpmPrimaryCandidates[]
+searchedCanonicalCandidates[]
+primaryMethod
+decisiveStep
+migrationDisposition
+holdReason
+```
+
+RPM Primary는 production JS의 PT/TPL field를 직접 덮어쓰지 않는다. 실제 승격은 이 문서의 candidate/evidence → ownership/binding → compile/runtime 검증 절차를 따라 Meta Foundation canonical로 materialize한다.
+
 ---
 
 # 2. 정식 메타 구조
