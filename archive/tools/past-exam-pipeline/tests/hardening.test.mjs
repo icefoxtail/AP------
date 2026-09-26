@@ -19,7 +19,7 @@ import { validatePortableZip } from "../lib/portable-package.mjs";
 import { makeQuestionSkeleton } from "../lib/js-candidate.mjs";
 import { makeSolutionIdentityDraft, createMetaDecisionDraft, RPM_LOOKUP_ORDER } from "../lib/completion-evidence.mjs";
 import { loadActiveMetaRegistry } from "../../meta-foundation/active-registry.mjs";
-import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, questionUidForSource, resolveMetaRoute } from "../../meta-foundation/rpm-active-resolver.mjs";
+import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, questionUidForSource, resolveMetaRoute, sealR2EMetaReceipt, validateR2EReceipt } from "../../meta-foundation/rpm-active-resolver.mjs";
 
 const sha = value => `sha256:${crypto.createHash("sha256").update(value).digest("hex")}`;
 const repoRoot = path.resolve(fileURLToPath(new URL('../../../../', import.meta.url)));
@@ -580,6 +580,44 @@ test('source → candidate → solution identity → RPM/ACTIVE metadata → pre
     assert.equal(pass.eligibility.ADVANCED_META_ELIGIBLE, true, JSON.stringify({ errors: pass.errors, metaEligibility: pass.metaEligibility }));
     assert.equal(pass.metaEligibility.status, 'PASS');
     assert.equal(pass.metaEligibility.rows[0].disposition, 'EXISTING_REUSE');
+    const metaEvidence = JSON.parse(fs.readFileSync(path.join(f.reportsDir, 'meta_decision_evidence.json'), 'utf8'));
+    const resolvedItem = metaEvidence.items[0];
+    const r2eCandidateMeta = {
+      standardCourse: f.question.standardCourse, standardUnitKey: f.question.standardUnitKey,
+      subUnitKey: f.question.subUnitKey, curriculum: '2015',
+      problemTypeKey: f.question.problemTypeKey, templateKey: f.question.templateKey,
+      crossConceptKeys: f.question.crossConceptKeys, conditionKeys: f.question.conditionKeys,
+      integrationPattern: f.question.integrationPattern, integrationReason: resolvedItem.integrationReason,
+      difficultyBucket: f.question.difficultyBucket, difficultyConfidence: f.question.difficultyConfidence,
+      difficultyBoundaryFlag: f.question.difficultyBoundaryFlag, legacyLevelCompatibility: f.question.legacyLevelCompatibility,
+    };
+    const runtimeRecord = {
+      questionUid: resolvedItem.resolverInput.sourceIdentity.questionUid,
+      sourceFingerprint: resolvedItem.resolverEvidence.sourceFingerprint,
+      resolverEvidenceSha: resolvedItem.resolverEvidence.evidenceSha,
+      difficultyEvidenceSha: resolvedItem.difficultyEvidence.evidenceSha,
+      ...Object.fromEntries(['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'].map(field => [field, r2eCandidateMeta[field]])),
+    };
+    const r2eReceipt = sealR2EMetaReceipt({
+      schemaVersion: 'JS_ARCHIVE_R2E_META_RECEIPT_v1', stage: 'R2E_FINAL',
+      unresolvedSemanticCount: 0, unresolvedProposalCount: 0, unresolvedCrossConceptCandidateCount: 0,
+      metaHoldCount: 0, migrationGapCount: 0, runtimeParityFailureCount: 0,
+      items: [{
+        questionUid: resolvedItem.resolverInput.sourceIdentity.questionUid,
+        input: resolvedItem.resolverInput,
+        resolverEvidence: resolvedItem.resolverEvidence,
+        difficultyEvidence: resolvedItem.difficultyEvidence,
+        candidateMeta: r2eCandidateMeta,
+        semanticMetaEvidence: resolvedItem.semanticMetaEvidence,
+        validatorReceipt: resolvedItem.validatorReceipt,
+        r2eFinalDisposition: 'EXISTING_REUSE',
+        runtimeRecord,
+      }],
+    });
+    const r2eValidation = validateR2EReceipt(r2eReceipt, {
+      repoRoot, sourceArchiveFile: f.manifest.archiveRelativePath, sourceQuestions: [f.question],
+    });
+    assert.equal(r2eValidation.status, 'PASS', JSON.stringify(r2eValidation.errors));
     assert.equal(fs.existsSync(path.join(repoRoot, 'archive/exams', f.manifest.archiveRelativePath)), false);
     // No changedFields declaration can hide an actual protected layout mutation.
     f.question.layoutTag = 'fullwidth';
