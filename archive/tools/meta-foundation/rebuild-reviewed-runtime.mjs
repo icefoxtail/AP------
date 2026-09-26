@@ -240,9 +240,11 @@ const makeRuntimeRecord = (meta, id, binding, l1, l2, l3, l4, packId, packVersio
     L1: l1.labelKo,
     L2: l2Label,
     L3: l3.canonicalLabelKo,
-    L4: l4.canonicalLabelKo,
+    L4: l4?.canonicalLabelKo || meta.L4 || "",
     problemTypeKey: meta.problemTypeKey,
-    templateKey: meta.templateKey,
+    templateKey: meta.templateKey || null,
+    l3Disposition: meta.l3Disposition || "ASSIGNED",
+    l4Disposition: meta.l4Disposition || (meta.templateKey ? "ASSIGNED" : "NO_SEPARATE_L4"),
     crossConceptKeys: [...(meta.crossConceptKeys || [])],
     secondaryConceptKeys: [...(meta.secondaryConceptKeys || [])],
     conditionKeys: [...(meta.conditionKeys || [])],
@@ -277,8 +279,9 @@ for (const override of overrideByUid.values()) {
   const l1 = masterByKey.get(meta.standardUnitKey);
   const l2 = meta.subUnitKey ? masterByKey.get(meta.subUnitKey) : null;
   const l3 = problemByKey.get(meta.problemTypeKey);
-  const l4 = templateByKey.get(meta.templateKey);
-  if (!l1 || meta.subUnitKey && !l2 || !l3 || !l4 || l4.parentProblemTypeKey !== l3.problemTypeKey) throw new Error(`REPAIR canonical mapping invalid: ${override.questionUid}`);
+  const l4 = meta.templateKey ? templateByKey.get(meta.templateKey) : null;
+  const noSeparateL4 = meta.l4Disposition === "NO_SEPARATE_L4" && !meta.templateKey;
+  if (!l1 || meta.subUnitKey && !l2 || !l3 || (!l4 && !noSeparateL4) || (l4 && l4.parentProblemTypeKey !== l3.problemTypeKey)) throw new Error(`REPAIR canonical mapping invalid: ${override.questionUid}`);
   if (!meta.crossConceptKeys.every((key) => conceptByKey.get(key)?.status === "ACTIVE")) throw new Error(`REPAIR CrossConcept invalid: ${override.questionUid}`);
   const binding = bindingRows.find((row) => row.curriculum === (meta.curriculum || meta.curriculumKey) && row.standardUnitKey === meta.standardUnitKey && (row.subUnitKey ?? null) === (meta.subUnitKey ?? null) && row.problemTypeKey === meta.problemTypeKey);
   if (!binding) throw new Error(`REPAIR curriculum binding missing: ${override.questionUid}`);
