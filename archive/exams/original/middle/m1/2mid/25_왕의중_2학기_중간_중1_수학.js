@@ -34,7 +34,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COORDINATE_POINT_READING",
+    "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -67,7 +76,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+    "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -100,7 +118,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -133,7 +160,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -156,13 +192,22 @@ window.questionBank = [
     "content": "오른쪽 물컵에 일정한 양의 물을 계속 넣을 때, 시간 $x$초 동안 물컵에 담긴 물의 높이 $y\\,\\mathrm{cm}$ 사이의 관계를 나타내는 그래프로 옳은 것은? [3점]",
     "choices": [],
     "answer": "①",
-    "solution": "[키포인트] 그릇의 단면이 넓어질수록 같은 양의 물을 부어도 높이는 천천히 올라간다.\n물컵은 위로 갈수록 넓어지는 모양이다.\n따라서 물을 일정한 양으로 계속 넣으면 처음에는 물의 높이가 빠르게 올라가지만, 위로 갈수록 단면이 넓어지므로 높이가 올라가는 속도는 점점 느려진다.\n즉 그래프는 계속 올라가되 기울기가 점점 완만해지는 곡선이어야 한다.\n②는 점점 가팔라지는 곡선, ③은 일정한 기울기의 직선이므로 알맞지 않고, ④와 ⑤는 중간에 기울기가 꺾이는 그래프이므로 알맞지 않다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 같은 양의 물을 부을 때 컵이 넓을수록 물의 높이는 조금씩 올라간다.\n물컵은 위로 갈수록 넓어지는 모양이다.\n따라서 같은 시간 동안 같은 양의 물을 계속 넣으면, 처음에는 물의 높이가 많이 올라가고 위로 갈수록 높이가 올라가는 양이 점점 작아진다.\n그러므로 그래프는 계속 증가하지만 점점 완만해져야 한다.\n①이 이런 모양이다.\n②는 점점 가팔라지고, ③은 일정한 비율로 올라가며, ④와 ⑤는 중간에서 갑자기 변화하므로 알맞지 않다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q05.png",
     "imageSize": "tall",
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+    "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -191,7 +236,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -225,7 +279,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -259,7 +322,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -292,7 +364,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -324,7 +405,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -359,7 +449,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -394,7 +493,17 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q12-solution.svg",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -429,7 +538,17 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q13-solution.svg",
+    "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+    "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -464,7 +583,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -500,7 +628,17 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q15-solution.svg",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -535,7 +673,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+    "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+    "crossConceptKeys": ["CC_ANGLE_BISECTOR"],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -564,12 +711,22 @@ window.questionBank = [
       "작도 순서 : ㉠→㉢→㉡→㉣→㉤"
     ],
     "answer": "④",
-    "solution": "[키포인트] 크기가 같은 각의 작도는 컴퍼스로 호의 반지름과 두 점 사이의 거리를 그대로 옮기는 과정이다.\n점 $O$를 중심으로 하는 호를 그려 두 반직선과의 교점을 $A$, $B$라 하고, 같은 반지름으로 점 $O'$를 중심으로 하는 호를 그려 반직선 $O'X'$와의 교점을 $A'$라 한다.\n①: $\\overline{OA}$와 $\\overline{O'A'}$는 같은 반지름의 호의 반지름이므로 같다. 옳다.\n②: $\\overline{OB}$도 점 $O$를 중심으로 하는 같은 호의 반지름이므로 $\\overline{OB}=\\overline{OA}=\\overline{O'A'}$이다. 옳다.\n③: 컴퍼스로 $\\overline{AB}$의 길이를 재어 점 $A'$를 중심으로 호를 그려 점 $B'$를 정하므로 $\\overline{AB}=\\overline{A'B'}$이다. 옳다.\n④: 점 $X$와 점 $Y$는 두 반직선 위에 잡은 점일 뿐이므로 $\\overline{OX}$와 $\\overline{OY}$의 길이가 같다고 할 수 없다. 옳지 않다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 크기가 같은 각의 작도는 컴퍼스로 호의 반지름과 두 점 사이의 거리를 그대로 옮기는 과정이다.\n점 $O$를 중심으로 하는 호를 그려 두 반직선과의 교점을 $A$, $B$라 하고, 같은 반지름으로 점 $O'$를 중심으로 하는 호를 그려 반직선 $O'X'$와의 교점을 $A'$라 한다.\n①: $\\overline{OA}$와 $\\overline{O'A'}$는 같은 반지름의 호의 반지름이므로 같다. 옳다.\n②: $\\overline{OB}$도 점 $O$를 중심으로 하는 같은 호의 반지름이므로 $\\overline{OB}=\\overline{OA}=\\overline{O'A'}$이다. 옳다.\n③: 컴퍼스로 $\\overline{AB}$의 길이를 재어 점 $A'$를 중심으로 호를 그려 점 $B'$를 정하므로 $\\overline{AB}=\\overline{A'B'}$이다. 옳다.\n④: 점 $X$와 점 $Y$는 두 반직선 위에 잡은 점일 뿐이므로 $\\overline{OX}$와 $\\overline{OY}$의 길이가 같다고 할 수 없다. 옳지 않다.\n⑤: 먼저 원래 각에서 호를 그려 $A,B$를 정하고, 같은 반지름의 호를 $O'$에서 그려 $A'$를 정한다. 이어서 $\\overline{AB}$의 길이를 $A'$에서 옮겨 $B'$를 정하고 $O'B'$를 잇는다. 그림의 표시를 따라가면 제시된 작도 순서와 같다. 옳다.\n따라서 옳지 않은 것은 ④이므로 정답은 ④이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q17.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q17-solution.svg",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -602,7 +759,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+    "crossConceptKeys": [],
+    "conditionKeys": ["COND_NATURAL_NUMBER"],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -634,7 +800,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -669,7 +844,17 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q20-solution.svg",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -698,7 +883,17 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q21-solution.svg",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -727,7 +922,16 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -754,7 +958,16 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+    "crossConceptKeys": ["CC_TRIANGLE_AREA"],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -778,11 +991,21 @@ window.questionBank = [
     "content": "아래 그림에서 $\\triangle ACD$와 $\\triangle CBE$는 각각 정삼각형이다. $\\overline{DB}$와 $\\overline{AE}$의 교점을 $F$, $\\overline{DB}$와 $\\overline{CE}$의 교점을 $G$, $\\overline{AE}$와 $\\overline{DC}$의 교점을 $H$라 하자.<br>(1) $\\triangle ACE$와 합동인 삼각형을 찾고 그 이유를 자세히 서술하시오. [5점]<br>(2) $\\angle GFE$의 크기를 구하는 과정을 자세히 서술하시오. [3점]",
     "choices": [],
     "answer": "(1) $\\triangle DCB$ (SAS 합동), (2) $60^\\circ$",
-    "solution": "[키포인트] 정삼각형의 성질로 SAS 합동을 보인 뒤, 합동으로 옮긴 각과 삼각형의 외각을 이용한다.\n(1) $\\triangle ACD$가 정삼각형이므로 $\\overline{CA}=\\overline{CD}$이고 $\\angle ACD=60^\\circ$이다.\n$\\triangle CBE$가 정삼각형이므로 $\\overline{CE}=\\overline{CB}$이고 $\\angle BCE=60^\\circ$이다.\n점 $C$는 $\\overline{AB}$ 위의 점이므로 $\\angle DCE=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n이때 $\\angle ACE=\\angle ACD+\\angle DCE=60^\\circ+60^\\circ=120^\\circ$이고, $\\angle DCB=\\angle DCE+\\angle ECB=60^\\circ+60^\\circ=120^\\circ$이므로 $\\angle ACE=\\angle DCB$이다.\n따라서 $\\triangle ACE$와 $\\triangle DCB$에서 $\\overline{CA}=\\overline{CD}$, $\\overline{CE}=\\overline{CB}$, $\\angle ACE=\\angle DCB$이므로 두 삼각형은 SAS 합동이다.\n즉 $\\triangle ACE \\equiv \\triangle DCB$이다.\n(2) (1)의 합동에서 대응각이 같으므로 $\\angle CAE=\\angle CDB$이다.\n점 $F$는 $\\overline{AE}$와 $\\overline{DB}$의 교점이고, $\\triangle AFD$에서 $\\angle AFD$의 외각인 $\\angle GFE$를 생각한다.\n$\\triangle AHC$와 $\\triangle FHD$에서 $\\angle AHC=\\angle FHD$(맞꼭지각)이고 $\\angle HAC=\\angle HDF$이므로 나머지 한 각도 같아 $\\angle DFH=\\angle ACH=\\angle ACD=60^\\circ$이다.\n$\\angle GFE$는 $\\angle DFH$의 맞꼭지각이므로 $\\angle GFE=60^\\circ$이다.\n따라서 $\\angle GFE=60^\\circ$이다.",
+    "solution": "[키포인트] 정삼각형의 성질로 SAS 합동을 보인 뒤, 합동으로 옮긴 각과 맞꼭지각을 이용한다.\n(1) $\\triangle ACD$가 정삼각형이므로 $\\overline{CA}=\\overline{CD}$이고 $\\angle ACD=60^\\circ$이다.\n$\\triangle CBE$가 정삼각형이므로 $\\overline{CE}=\\overline{CB}$이고 $\\angle BCE=60^\\circ$이다.\n점 $C$는 $\\overline{AB}$ 위의 점이므로\n$\\angle DCE=180^\\circ-60^\\circ-60^\\circ=60^\\circ$이다.\n따라서\n$\\angle ACE=\\angle ACD+\\angle DCE=120^\\circ$,\n$\\angle DCB=\\angle DCE+\\angle ECB=120^\\circ$이므로\n$\\angle ACE=\\angle DCB$이다.\n$\\triangle ACE$와 $\\triangle DCB$에서\n$\\overline{CA}=\\overline{CD}$,\n$\\overline{CE}=\\overline{CB}$,\n$\\angle ACE=\\angle DCB$이므로 두 삼각형은 SAS 합동이다.\n즉 $\\triangle ACE\\equiv\\triangle DCB$이다.\n\n(2) (1)의 합동에서 대응각이 같으므로 $\\angle CAE=\\angle CDB$이다.\n$H$는 $AE$와 $DC$의 교점이고 $F$는 $AE$와 $DB$의 교점이므로\n$\\angle HAC=\\angle HDF$이다.\n또 $\\angle AHC$와 $\\angle FHD$는 맞꼭지각이므로 서로 같다.\n따라서 $\\triangle AHC$와 $\\triangle FHD$에서 두 쌍의 각이 각각 같으므로 나머지 각도 같아\n$\\angle ACH=\\angle DFH$이다.\n$H$는 $DC$ 위에 있으므로\n$\\angle ACH=\\angle ACD=60^\\circ$이다.\n따라서 $\\angle DFH=60^\\circ$이다.\n$D,F,G$가 한 직선 위에 있고 $H,F,E$가 한 직선 위에 있으므로\n$\\angle GFE$와 $\\angle DFH$는 맞꼭지각이다.\n그러므로 $\\angle GFE=60^\\circ$이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q24.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕의중_2학기_중간_중1_수학/q24-solution.svg",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
