@@ -94,3 +94,13 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - New shared keys remain draft until current canonical schemas, exact bindings, RPM crosswalk rows, and source solutions validate together. The physical assignments are not yet applied to exam JS or metadata projection.
 - B24 visual repairs are checkpointed, but B20 remains the active exam for terminal closure. The q23 Meta assignment is still draft until its recovered source geometry is carried through the final student solution.
 - Current checkpoint branch HEAD: `bd8f8ec639a74db22a24757917d74c378e1e54f0`.
+
+## Shared Meta application and B20 branch closure — 2026-09-27
+
+- Applied the cross-exam taxonomy disposition to the active MIDDLE1 and MIDDLE_GEOMETRY owners, with the required FUNCTIONS_GRAPHS evidence support. Three machine L3s materialize locked RPM paths; the clustered sector, polyhedron, rotation, solid-measure, central-tendency, and relative-frequency L4s are active.
+- Updated the target RPM crosswalk rows and exact curriculum/L1/L2/L3 bindings. The 61 deep assignments now have zero crosswalk, parent, or binding mismatches. `compile-meta-foundation --write` and `--canonical-only-check` pass with zero alias collisions, duplicate keys, broken parents, and unregistered keys.
+- B20 q22 now uses the exterior-angle L4. q8/q9/q13/q21/q22/q24 visual source parity was reviewed; the repaired assets render and all referenced SVGs validate.
+- B20 full-denominator checks: 24/24 UID/source joins PASS; 24/24 Archive2 records taxonomy-confirmed and eligible; 24/24 runtime records selectable; solution blank/control/LaTeX checks 0; protected fields parity 24/24; runtime catalog joins 24/24.
+- B20's 22 deep-review items are resolved. Its exam-specific final commit is still pending; the upcoming shared Meta commit is separate. B24 visual repairs are checkpointed, while its R2E Meta adjudication waits for the B20 final commit.
+- Latest user scope remains branch-only: no `main` merge, update, or `R2E_MAIN_FINAL` receipt.
+- Current checkpoint branch HEAD before the shared Meta checkpoint commit: `3f30ed098b87440d319683e34e185a7c1a1b47da`.

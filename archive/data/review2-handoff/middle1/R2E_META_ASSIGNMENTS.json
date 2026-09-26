@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle1-r2e-meta-adjudication/v1",
-  "status": "DRAFTED_FOR_DIRECT_APPLY",
+  "status": "CANONICAL_CROSSWALK_AND_B20_METADATA_RUNTIME_APPLIED_B24_B28_PENDING",
   "branch": "work/m1-b20-b24-b28-r2e",
   "curriculumByExam": {
     "B20": "2015",
@@ -12,43 +12,100 @@
       "cluster": "M1_TRIANGLE_ANGLE_CHASE",
       "owner": "MIDDLE1",
       "decision": "Reuse PT_M1_TRIANGLE_ANGLE_CHASE; correct B20 q22 from the interior-point template to the exterior-angle equation template; assign B28 q1/q21 to the same M1-05 basic-figure parent.",
-      "items": ["B20:8", "B20:22", "B28:1", "B28:21"]
+      "items": [
+        "B20:8",
+        "B20:22",
+        "B28:1",
+        "B28:21"
+      ]
     },
     {
       "cluster": "M1_CIRCLE_ARC_SECTOR",
       "owner": "MIDDLE_GEOMETRY",
       "decision": "Reuse PT_CIRCLE_ANGLE_RELATIONS, materialize the missing M1 bindings, and add one L4 for sector measurement; keep central-angle/arc/chord judgments on the existing center-arc L4.",
-      "items": ["B20:11", "B20:12", "B20:13", "B28:4", "B28:5", "B28:6", "B28:22"]
+      "items": [
+        "B20:11",
+        "B20:12",
+        "B20:13",
+        "B28:4",
+        "B28:5",
+        "B28:6",
+        "B28:22"
+      ]
     },
     {
       "cluster": "M1_POLYHEDRON_FACE_VERTEX_PROPERTIES",
       "owner": "MIDDLE1",
       "decision": "Reuse PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS and add one repeated face/vertex property audit L4; use CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY only for the regular-octagon vertex-angle feasibility item.",
-      "items": ["B20:14", "B20:15", "B24:2", "B28:7", "B28:8"]
+      "items": [
+        "B20:14",
+        "B20:15",
+        "B24:2",
+        "B28:7",
+        "B28:8"
+      ]
     },
     {
       "cluster": "M1_ROTATION_SOLID_SECTIONS",
       "owner": "MIDDLE1",
       "decision": "Materialize the RPM Primary rotation-solid section path as one L3 with separate perpendicular-section and axis-section L4s.",
-      "items": ["B20:16", "B24:3", "B24:4", "B28:9"]
+      "items": [
+        "B20:16",
+        "B24:3",
+        "B24:4",
+        "B28:9"
+      ]
     },
     {
       "cluster": "M1_SOLID_FIGURE_MEASURE",
       "owner": "MIDDLE1",
       "decision": "Materialize the RPM Primary solid-measure paths as one shared L3 with L4s for volume conservation, volume difference, cone/frustum net measurement, frustum surface, composite surface, and routine formula substitution.",
-      "items": ["B20:17", "B20:18", "B20:19", "B20:20", "B20:24", "B24:5", "B24:6", "B24:7", "B24:8", "B24:9", "B24:10", "B24:19", "B24:21", "B28:11", "B28:12", "B28:13", "B28:23"]
+      "items": [
+        "B20:17",
+        "B20:18",
+        "B20:19",
+        "B20:20",
+        "B20:24",
+        "B24:5",
+        "B24:6",
+        "B24:7",
+        "B24:8",
+        "B24:9",
+        "B24:10",
+        "B24:19",
+        "B24:21",
+        "B28:11",
+        "B28:12",
+        "B28:13",
+        "B28:23"
+      ]
     },
     {
       "cluster": "M1_FREQUENCY_RELATIVE_FREQUENCY",
       "owner": "MIDDLE1",
       "decision": "Restore B24 R1 frequency repairs; reuse active frequency L3/L4s for frequency audits and missing-frequency reconstruction; add distinct repeated L4s for relative-frequency population reconstruction and group-count comparison.",
-      "items": ["B24:12", "B24:13", "B24:14", "B24:15", "B24:17", "B24:18", "B24:20", "B28:19", "B28:20", "B28:24"]
+      "items": [
+        "B24:12",
+        "B24:13",
+        "B24:14",
+        "B24:15",
+        "B24:17",
+        "B24:18",
+        "B24:20",
+        "B28:19",
+        "B28:20",
+        "B28:24"
+      ]
     },
     {
       "cluster": "M1_CENTRAL_TENDENCY",
       "owner": "MIDDLE1",
       "decision": "Materialize the 2022 RPM representative-value path as one L3; use one constraint-reconstruction L4 for q10/q15 and explicit NO_SEPARATE_L4 for q14's data-appropriateness judgment.",
-      "items": ["B28:10", "B28:14", "B28:15"]
+      "items": [
+        "B28:10",
+        "B28:14",
+        "B28:15"
+      ]
     }
   ],
   "newProblemTypes": [
@@ -75,69 +132,652 @@
     "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"
   ],
   "trueNewL3OutsideLockedRpm": 0,
+  "pendingSolutionAuthorityItems": [
+    "B28:12",
+    "B28:23"
+  ],
   "assignments": [
-    {"exam":"B20","q":1,"problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","rpmRecordIds":["M1-RPM-055"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":2,"problemTypeKey":"PT_M1_PROPORTION_PARAMETER_EVALUATION","templateKey":"TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION","rpmRecordIds":["M1-RPM-054"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":3,"problemTypeKey":"PT_M1_PROPORTION_PARAMETER_EVALUATION","templateKey":"TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION","rpmRecordIds":["M1-RPM-054"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":4,"problemTypeKey":"PT_M1_PROPORTION_PARAMETER_EVALUATION","templateKey":"TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION","rpmRecordIds":["M1-RPM-056"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":5,"problemTypeKey":"PT_M1_COORDINATE_COMPOSITE_AREA","templateKey":"TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA","rpmRecordIds":["M1-RPM-050"],"disposition":"EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"},
-    {"exam":"B20","q":6,"problemTypeKey":"PT_FUNCTION_GRAPH_PROPERTIES","templateKey":"TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT","rpmRecordIds":["M1-RPM-055"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":7,"problemTypeKey":"PT_M1_PROPORTION_PARAMETER_EVALUATION","templateKey":"TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS","rpmRecordIds":["M1-RPM-058"],"disposition":"EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"},
-    {"exam":"B20","q":8,"problemTypeKey":"PT_M1_TRIANGLE_ANGLE_CHASE","templateKey":"TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER","rpmRecordIds":["M1-RPM-063"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":9,"problemTypeKey":"PT_M1_POLYGON_ANGLE_AND_COUNT","templateKey":"TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM","rpmRecordIds":["M1-RPM-084"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":11,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_SECTOR_MEASURE","rpmRecordIds":["M1-RPM-090"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B20","q":12,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_CENTER_ARC","rpmRecordIds":["M1-RPM-088"],"disposition":"EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"},
-    {"exam":"B20","q":13,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_SECTOR_MEASURE","rpmRecordIds":["M1-RPM-093"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B20","q":14,"problemTypeKey":"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","templateKey":"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT","rpmRecordIds":["M1-RPM-095"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B20","q":15,"problemTypeKey":"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","templateKey":"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT","rpmRecordIds":["M1-RPM-096"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B20","q":16,"problemTypeKey":"PT_M1_ROTATION_SOLID_PROPERTIES","templateKey":"TPL_M1_ROTATION_SOLID_AXIS_SECTION","rpmRecordIds":["M1-RPM-099"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B20","q":17,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B20","q":18,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION","rpmRecordIds":["M1-RPM-103","M1-RPM-101"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B20","q":19,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B20","q":20,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B20","q":21,"problemTypeKey":"PT_M1_PROPORTION_PARAMETER_EVALUATION","templateKey":"TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS","rpmRecordIds":["M1-RPM-058"],"disposition":"EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"},
-    {"exam":"B20","q":22,"problemTypeKey":"PT_M1_TRIANGLE_ANGLE_CHASE","templateKey":"TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION","rpmRecordIds":["M1-RPM-062"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B20","q":24,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_STANDARD_MEASURE","rpmRecordIds":["M1-RPM-101","M1-RPM-102"],"disposition":"RPM_PATH_MATERIALIZATION_MULTI_PATH"},
-
-    {"exam":"B24","q":2,"problemTypeKey":"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","templateKey":"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT","rpmRecordIds":["M1-RPM-097"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B24","q":3,"problemTypeKey":"PT_M1_ROTATION_SOLID_PROPERTIES","templateKey":"TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION","rpmRecordIds":["M1-RPM-099"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":4,"problemTypeKey":"PT_M1_ROTATION_SOLID_PROPERTIES","templateKey":"TPL_M1_ROTATION_SOLID_AXIS_SECTION","rpmRecordIds":["M1-RPM-099"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":5,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_NET_MEASURE","rpmRecordIds":["M1-RPM-101"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":6,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION","rpmRecordIds":["M1-RPM-101"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":7,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_NET_MEASURE","rpmRecordIds":["M1-RPM-103"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":8,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_STANDARD_MEASURE","rpmRecordIds":["M1-RPM-105"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":9,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":10,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B24","q":12,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY","rpmRecordIds":["M1-RPM-108"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B24","q":13,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF","rpmRecordIds":["M1-RPM-113"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B24","q":14,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY","rpmRecordIds":["M1-RPM-108"],"disposition":"RESTORE_R1_REPAIR"},
-    {"exam":"B24","q":15,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT","rpmRecordIds":["M1-RPM-109"],"disposition":"RESTORE_R1_REPAIR"},
-    {"exam":"B24","q":17,"problemTypeKey":"PT_M1_DATA_CATEGORY_PERCENTAGE","templateKey":"TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON","rpmRecordIds":["M1-RPM-112"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B24","q":18,"problemTypeKey":"PT_M1_DATA_CATEGORY_PERCENTAGE","templateKey":"TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION","rpmRecordIds":["M1-RPM-110"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B24","q":19,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_STANDARD_MEASURE","rpmRecordIds":["M1-RPM-100","M1-RPM-103"],"disposition":"RPM_PATH_MATERIALIZATION_MULTI_PATH"},
-    {"exam":"B24","q":20,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY","rpmRecordIds":["M1-RPM-108"],"disposition":"RESTORE_R1_REPAIR"},
-    {"exam":"B24","q":21,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE","rpmRecordIds":["M1-RPM-106"],"disposition":"RPM_PATH_MATERIALIZATION"},
-
-    {"exam":"B28","q":1,"problemTypeKey":"PT_M1_TRIANGLE_ANGLE_CHASE","templateKey":"TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION","rpmRecordIds":["M1-RPM-175"],"disposition":"EXISTING_L3_L4_REUSE_WITH_L2_MIGRATION","standardUnitKey":"M1-05","subUnitKey":"M1-05-BASIC_FIGURE"},
-    {"exam":"B28","q":2,"problemTypeKey":"PT_M1_POLYGON_ANGLE_AND_COUNT","templateKey":"TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS","rpmRecordIds":["M1-RPM-198"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B28","q":3,"problemTypeKey":"PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE","templateKey":"TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE","rpmRecordIds":["M1-RPM-200"],"disposition":"EXISTING_L3_L4_REUSE"},
-    {"exam":"B28","q":4,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_SECTOR_MEASURE","rpmRecordIds":["M1-RPM-202"],"disposition":"EXISTING_L3_NEW_L4_WITH_L2_MIGRATION","subUnitKey":"M1-06-PLANE_FIGURE_MEASURE"},
-    {"exam":"B28","q":5,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_SECTOR_MEASURE","rpmRecordIds":["M1-RPM-205"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B28","q":6,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_CENTER_ARC","rpmRecordIds":["M1-RPM-201"],"disposition":"EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"},
-    {"exam":"B28","q":7,"problemTypeKey":"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","templateKey":"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT","rpmRecordIds":["M1-RPM-209"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B28","q":8,"problemTypeKey":"PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS","templateKey":"TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT","crossConceptKeys":["CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"],"rpmRecordIds":["M1-RPM-209"],"disposition":"EXISTING_L3_NEW_L4_WITH_CROSSCONCEPT"},
-    {"exam":"B28","q":9,"problemTypeKey":"PT_M1_ROTATION_SOLID_PROPERTIES","templateKey":"TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION","rpmRecordIds":["M1-RPM-212"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":10,"problemTypeKey":"PT_M1_CENTRAL_TENDENCY","templateKey":"TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION","rpmRecordIds":["M1-RPM-222","M1-RPM-223"],"disposition":"RPM_PATH_MATERIALIZATION_MULTI_PATH"},
-    {"exam":"B28","q":11,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION","rpmRecordIds":["M1-RPM-218"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":12,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE","rpmRecordIds":["M1-RPM-219"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":13,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE","rpmRecordIds":["M1-RPM-215"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":14,"problemTypeKey":"PT_M1_CENTRAL_TENDENCY","templateKey":null,"rpmRecordIds":["M1-RPM-225"],"disposition":"RPM_PATH_MATERIALIZATION_NO_SEPARATE_L4","l4Disposition":"NO_SEPARATE_L4"},
-    {"exam":"B28","q":15,"problemTypeKey":"PT_M1_CENTRAL_TENDENCY","templateKey":"TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION","rpmRecordIds":["M1-RPM-224"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":19,"problemTypeKey":"PT_M1_DATA_CATEGORY_PERCENTAGE","templateKey":"TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION","rpmRecordIds":["M1-RPM-229"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B28","q":20,"problemTypeKey":"PT_M1_DATA_CATEGORY_PERCENTAGE","templateKey":"TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON","rpmRecordIds":["M1-RPM-232"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B28","q":21,"problemTypeKey":"PT_M1_TRIANGLE_ANGLE_CHASE","templateKey":"TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES","rpmRecordIds":["M1-RPM-175"],"disposition":"EXISTING_L3_L4_REUSE_WITH_L2_MIGRATION","standardUnitKey":"M1-05","subUnitKey":"M1-05-BASIC_FIGURE"},
-    {"exam":"B28","q":22,"problemTypeKey":"PT_CIRCLE_ANGLE_RELATIONS","templateKey":"TPL_CIRCLE_ANGLE_SECTOR_MEASURE","rpmRecordIds":["M1-RPM-206"],"disposition":"EXISTING_L3_NEW_L4"},
-    {"exam":"B28","q":23,"problemTypeKey":"PT_M1_SOLID_FIGURE_MEASURE","templateKey":"TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION","rpmRecordIds":["M1-RPM-213"],"disposition":"RPM_PATH_MATERIALIZATION"},
-    {"exam":"B28","q":24,"problemTypeKey":"PT_M1_FREQUENCY_DISTRIBUTION_READING","templateKey":"TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY","rpmRecordIds":["M1-RPM-228"],"disposition":"RESTORE_R1_REPAIR"}
-  ]
+    {
+      "exam": "B20",
+      "q": 1,
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "rpmRecordIds": [
+        "M1-RPM-055"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 2,
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+      "rpmRecordIds": [
+        "M1-RPM-054"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 3,
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+      "rpmRecordIds": [
+        "M1-RPM-054"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 4,
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+      "rpmRecordIds": [
+        "M1-RPM-056"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 5,
+      "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+      "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA",
+      "rpmRecordIds": [
+        "M1-RPM-050"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"
+    },
+    {
+      "exam": "B20",
+      "q": 6,
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "rpmRecordIds": [
+        "M1-RPM-055"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 7,
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+      "rpmRecordIds": [
+        "M1-RPM-058"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"
+    },
+    {
+      "exam": "B20",
+      "q": 8,
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+      "rpmRecordIds": [
+        "M1-RPM-062"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 9,
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+      "rpmRecordIds": [
+        "M1-RPM-081"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 11,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-090"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B20",
+      "q": 12,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "rpmRecordIds": [
+        "M1-RPM-088"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"
+    },
+    {
+      "exam": "B20",
+      "q": 13,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-093"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B20",
+      "q": 14,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-095"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B20",
+      "q": 15,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-096"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B20",
+      "q": 16,
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+      "rpmRecordIds": [
+        "M1-RPM-099"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B20",
+      "q": 17,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B20",
+      "q": 18,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+      "rpmRecordIds": [
+        "M1-RPM-103",
+        "M1-RPM-101"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B20",
+      "q": 19,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B20",
+      "q": 20,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B20",
+      "q": 21,
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+      "rpmRecordIds": [
+        "M1-RPM-058"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"
+    },
+    {
+      "exam": "B20",
+      "q": 22,
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+      "rpmRecordIds": [
+        "M1-RPM-062"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B20",
+      "q": 24,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-101",
+        "M1-RPM-102"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION_MULTI_PATH"
+    },
+    {
+      "exam": "B24",
+      "q": 2,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-097"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B24",
+      "q": 3,
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+      "rpmRecordIds": [
+        "M1-RPM-099"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 4,
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+      "rpmRecordIds": [
+        "M1-RPM-099"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 5,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-101"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 6,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+      "rpmRecordIds": [
+        "M1-RPM-101"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 7,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-103"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 8,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-105"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 9,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 10,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 12,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "rpmRecordIds": [
+        "M1-RPM-108"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 13,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+      "rpmRecordIds": [
+        "M1-RPM-113"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B24",
+      "q": 14,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "rpmRecordIds": [
+        "M1-RPM-108"
+      ],
+      "disposition": "RESTORE_R1_REPAIR_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 15,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-109"
+      ],
+      "disposition": "RESTORE_R1_REPAIR_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 17,
+      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+      "rpmRecordIds": [
+        "M1-RPM-112"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B24",
+      "q": 18,
+      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+      "rpmRecordIds": [
+        "M1-RPM-110"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B24",
+      "q": 19,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-100",
+        "M1-RPM-103"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION_MULTI_PATH"
+    },
+    {
+      "exam": "B24",
+      "q": 20,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "rpmRecordIds": [
+        "M1-RPM-108"
+      ],
+      "disposition": "RESTORE_R1_REPAIR_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_ORGANIZATION"
+    },
+    {
+      "exam": "B24",
+      "q": 21,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "rpmRecordIds": [
+        "M1-RPM-106"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 1,
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+      "rpmRecordIds": [
+        "M1-RPM-175"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_L2_MIGRATION",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE"
+    },
+    {
+      "exam": "B28",
+      "q": 2,
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+      "rpmRecordIds": [
+        "M1-RPM-198"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B28",
+      "q": 3,
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+      "rpmRecordIds": [
+        "M1-RPM-200"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE"
+    },
+    {
+      "exam": "B28",
+      "q": 4,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-202"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE"
+    },
+    {
+      "exam": "B28",
+      "q": 5,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-205"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B28",
+      "q": 6,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "rpmRecordIds": [
+        "M1-RPM-201"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_BINDING_MIGRATION"
+    },
+    {
+      "exam": "B28",
+      "q": 7,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-209"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B28",
+      "q": 8,
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "crossConceptKeys": [
+        "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"
+      ],
+      "rpmRecordIds": [
+        "M1-RPM-209"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4_WITH_CROSSCONCEPT"
+    },
+    {
+      "exam": "B28",
+      "q": 9,
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+      "rpmRecordIds": [
+        "M1-RPM-212"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 10,
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "rpmRecordIds": [
+        "M1-RPM-222",
+        "M1-RPM-223"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION_MULTI_PATH"
+    },
+    {
+      "exam": "B28",
+      "q": 11,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+      "rpmRecordIds": [
+        "M1-RPM-218"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 12,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+      "rpmRecordIds": [
+        "M1-RPM-219"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 13,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+      "rpmRecordIds": [
+        "M1-RPM-215"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 14,
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": null,
+      "rpmRecordIds": [
+        "M1-RPM-225"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION_NO_SEPARATE_L4",
+      "l4Disposition": "NO_SEPARATE_L4"
+    },
+    {
+      "exam": "B28",
+      "q": 15,
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "rpmRecordIds": [
+        "M1-RPM-224"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION"
+    },
+    {
+      "exam": "B28",
+      "q": 19,
+      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+      "rpmRecordIds": [
+        "M1-RPM-229"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION"
+    },
+    {
+      "exam": "B28",
+      "q": 20,
+      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+      "rpmRecordIds": [
+        "M1-RPM-232"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4_WITH_L2_MIGRATION",
+      "subUnitKey": "M1-08-DATA_INTERPRETATION"
+    },
+    {
+      "exam": "B28",
+      "q": 21,
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+      "rpmRecordIds": [
+        "M1-RPM-175"
+      ],
+      "disposition": "EXISTING_L3_L4_REUSE_WITH_L2_MIGRATION",
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-BASIC_FIGURE"
+    },
+    {
+      "exam": "B28",
+      "q": 22,
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "rpmRecordIds": [
+        "M1-RPM-206"
+      ],
+      "disposition": "EXISTING_L3_NEW_L4"
+    },
+    {
+      "exam": "B28",
+      "q": 23,
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+      "rpmRecordIds": [
+        "M1-RPM-213"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION"
+    },
+    {
+      "exam": "B28",
+      "q": 24,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "rpmRecordIds": [
+        "M1-RPM-228"
+      ],
+      "disposition": "RESTORE_R1_REPAIR"
+    }
+  ],
+  "validation": {
+    "canonicalCompiledParity": "PASS",
+    "targetCrosswalkAndBindingItems": 61,
+    "status": "PASS",
+    "b20ProtectedFields": "24/24 PASS",
+    "b20Archive2": "24/24 eligible",
+    "b20Runtime": "24/24 PASS",
+    "pendingSourceSolutionItems": [
+      "B28:12",
+      "B28:23"
+    ]
+  }
 }

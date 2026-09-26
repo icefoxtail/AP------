@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "bd8f8ec639a74db22a24757917d74c378e1e54f0",
-  "timestamp": "2026-09-27 02:32:40 Asia/Seoul",
-  "physicalCheckpoint": "R2E_META_CLUSTER_DECISIONS_DRAFTED",
+  "currentBranchHead": "3f30ed098b87440d319683e34e185a7c1a1b47da",
+  "timestamp": "2026-09-27 03:39:36 Asia/Seoul",
+  "physicalCheckpoint": "B20_BRANCH_FINAL_VALIDATORS_PASS",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -16,9 +16,28 @@
     "Middle1 RPM→ACTIVE crosswalk"
   ],
   "sharedMeta": {
-    "disposition": "DRAFTED_CROSS_EXAM_ASSIGNMENTS_NOT_APPLIED",
-    "changedFiles": [],
-    "validatorStatus": "NOT_RUN"
+    "disposition": "APPLIED_TARGET_CANONICAL_BINDINGS_AND_RPM_CROSSWALK",
+    "changedFiles": [
+      "archive/data/meta-foundation/canonical/concepts/middle1.json",
+      "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/pack.json",
+      "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/middle1/bindings.json",
+      "archive/data/meta-foundation/canonical/packs/middle1/pack.json",
+      "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "archive/data/meta-foundation/canonical/registry_index.json",
+      "archive/data/meta-foundation/compiled/aliases.json",
+      "archive/data/meta-foundation/compiled/concept_registry.json",
+      "archive/data/meta-foundation/compiled/condition_registry.json",
+      "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "archive/data/review2-handoff/middle1/R2E_META_ASSIGNMENTS.json"
+    ],
+    "validatorStatus": "PASS_CANONICAL_COMPILED_PARITY; PASS_TARGET_CROSSWALK_BINDING_61_61; B20_RUNTIME_AND_ARCHIVE2_PASS"
   },
   "exams": [
     {
@@ -50,10 +69,6 @@
         24
       ],
       "resolvedItems": [
-        9,
-        21
-      ],
-      "unresolvedItems": [
         1,
         2,
         3,
@@ -62,6 +77,7 @@
         6,
         7,
         8,
+        9,
         11,
         12,
         13,
@@ -72,19 +88,69 @@
         18,
         19,
         20,
+        21,
         22,
         24
       ],
+      "unresolvedItems": [],
       "metaDisposition": {
         "r1Repair": 10,
         "r1PackGapHold": 11,
-        "final": "PENDING"
+        "final": "PASS_NO_TAXONOMY_RPM_DIFFICULTY_OR_BINDING_HOLD",
+        "newL3": 2,
+        "newL4": 10,
+        "crossConcept": 0,
+        "bindingMigrationItems": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          21
+        ],
+        "difficultyStatus": "COMPLETE",
+        "newL3Materialized": 2,
+        "newL3OutsideLockedRPM": 0,
+        "difficultyAdjudicatedItems": 9
       },
       "changedFiles": [
+        "archive/exams/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js",
+        "archive/assets/images/23_금당중_2학기_기말_중1_기출/q8-solution.svg",
         "archive/assets/images/23_금당중_2학기_기말_중1_기출/q9-solution.svg",
         "archive/assets/images/23_금당중_2학기_기말_중1_기출/q13-solution.svg",
         "archive/assets/images/23_금당중_2학기_기말_중1_기출/q21-solution.svg",
-        "archive/exams/original/middle/m1/2final/23_금당중_2학기_기말_중1_기출.js"
+        "archive/assets/images/23_금당중_2학기_기말_중1_기출/q24-solution.svg",
+        "archive/data/question_metadata.json",
+        "archive/data/archive2-catalog.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+        "archive/data/review2-handoff/middle1/R2E_DIFFICULTY_ADJUDICATION.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c5febce4d879758546ccf23f4edcdc792aaaf0111de6c2bcdceeb76dd7e97a14.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f0a1abe66349312a29836833058c5784abb7cdbbbe60197c7085fac597f025c9.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6ecd20d61ce06b1c96b021f09edd8900a41e7421e1028f165e39bd43724c8a55.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f32f3c45cfe79ed2a903a4f8b9605a7c90308fb5f1490b0453fbebb7f5e96c0a.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_7eae27cbf6d7b42629e570e8e660107409d345ee56e1657dfef8a4b59c1b5e81.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_4be0a3e316dcc6fcfd73f4d5fc132b144704ffd210a83823a58cc27627c4fb16.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_4471d95b73c44214785108fd5f5184e780584e3819cae0601713d6247d0744a0.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6bd8e88a529023c0bd81dcade2d2170bd9aef8f45da26c9b7f58d56b19ac14af.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_7eeacf8b68bf0f7479a058a5ae5b3ea58d53e991a20f140df29a87e5a8caed2f.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_a07937a2314578386e5e497c39d3cc68f93eee43b45a3f715e5cfe5e2468549c.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_34dcef3d8f3fdf53fc83227a8b6ce95e685ec3c18428a807f4aba73a54c027d4.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_4817917a358ee5bab0470f3014f80f7009278447c77b5b8dbdf2958accd1763d.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1.json"
       ],
       "r1Evidence": {
         "zipSha256": "F1C1AD5BE52694A36B282DA8AE78357711BEB061EFC21080A249299589732E78",
@@ -100,41 +166,71 @@
           24
         ]
       },
-      "validatorStatus": "NOT_RUN",
-      "currentNextItem": "B20 q1-q8 Meta/binding closure, then q11-q20 shared taxonomy adjudication",
+      "validatorStatus": "PASS_NODE_VM_24_24; PASS_PROTECTED_FIELDS_24_24; PASS_SOLUTION_BLANK_CONTROL_LATEX; PASS_SVG_XML_PATH_RENDER; PASS_CANONICAL_CROSSWALK_BINDING; PASS_RUNTIME_24_24; PASS_ARCHIVE2_ELIGIBLE_24_24",
+      "currentNextItem": "B24 R2E Meta deep adjudication; B20 exam final commit SHA pending",
       "deepReviewReasons": {
-        "q9": "R1 solution SVG byte drift vs extracted R1_INPUT ZIP; source polygon angle labels were corrected and visually validated.",
-        "q22": "R2E corrected an R1 template mismatch: source solution uses the triangle exterior-angle equation, so the active L4 is EXTERIOR_ANGLE_EQUATION rather than INTERIOR_POINT_ANGLE_SUM."
+        "q8": "R1 SVG byte drift was rechecked against the original intersecting-lines source; the solution diagram now shows the two triangles and the exact angle-transfer steps.",
+        "q9": "R1 solution SVG byte drift; source polygon angle labels were corrected and visually validated.",
+        "q13": "R1 solution SVG byte drift; the tether-point diagram and the 300°/two 120° sectors were repaired and rendered.",
+        "q21": "R1 SVG byte drift; the source graph points and 6000 m intercepts are now shown at 15 and 75 minutes.",
+        "q22": "R2E corrected the R1 template mismatch to the exterior-angle equation, matching the final solution.",
+        "q24": "R1 SVG byte drift; corrected the cylinder and square-pyramid dimensions, then reviewed the browser render."
       },
       "visualReview": {
         "items": [
           {
+            "q": 8,
+            "status": "SOURCE_PARITY_RENDER_REVIEWED",
+            "source": "q8.png exact source image",
+            "finding": "The original contains upper triangle AOB and lower triangle COD with intersecting diagonals; the prior SVG omitted the two triangle bases.",
+            "repair": "Added segments AB and CD and localized the displayed angle-transfer steps in Korean.",
+            "render": "Chrome headless render and XML validation PASS."
+          },
+          {
             "q": 9,
             "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q9.png exact branch source image",
-            "finding": "Original was a hexagon with 140°, 110°, 120°, 90°, exterior 50°, and x at the sixth vertex. Previous SVG misplaced x and substituted an unlabeled 90° vertex for the exterior-angle relation.",
-            "repair": "Relabeled all six interior angles, added the right-angle marker and exterior 50° relation, and showed x=130° from the hexagon angle sum.",
-            "render": "Chrome headless render inspected; Korean text and diagram visible without clipping."
+            "source": "q9.png exact source image",
+            "finding": "Prior SVG misplaced x and omitted the 50° exterior-angle relation.",
+            "repair": "Correctly placed x, marked the 90° vertex and 130° interior angle, and displayed the angle-sum calculation.",
+            "render": "Chrome headless render and XML validation PASS."
           },
           {
             "q": 13,
             "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q13.png exact branch source image",
-            "finding": "Previous SVG placed the equilateral fence incorrectly and did not show the dog tied at a fence vertex.",
-            "repair": "Redrew the equilateral fence with the tether point at a vertex, the 300° radius-6 m region and two radius-2 m, 120° sectors; arithmetic matches the student solution.",
-            "render": "Chrome headless render inspected; all labels and formulas visible."
+            "source": "q13.png exact source image",
+            "finding": "Prior SVG did not show the tether at an equilateral fence vertex.",
+            "repair": "Redrew the 300° radius-6 m arc, fence, and two remaining-rope radius-2 m, 120° sectors.",
+            "render": "Final Chrome headless render and XML validation PASS."
           },
           {
             "q": 21,
             "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q21.png exact branch source image and verified solution",
-            "finding": "Prior SVG showed the target 6000 m line but omitted the source points (3,1200), (3,240), and the time intercepts.",
-            "repair": "Redrew both proportional graphs through their source points and marked 15-minute and 75-minute intersections with 6000 m.",
-            "render": "Chrome headless render inspected; point labels, guides, axes, and answer visible."
+            "source": "q21.png exact source image",
+            "finding": "Prior SVG omitted the source points and final travel-time intersections.",
+            "repair": "Redrew both graphs through (3,1200) and (3,240), and marked the 15/75-minute intersections at 6000 m.",
+            "render": "Chrome headless render and XML validation PASS."
+          },
+          {
+            "q": 22,
+            "status": "SOURCE_PARITY_RENDER_REVIEWED",
+            "source": "q22.png exact source image",
+            "finding": "The exterior-angle equation in the solution is consistent with the source labels.",
+            "repair": "Retained the geometry and formula diagram; Meta L4 corrected separately.",
+            "render": "Chrome headless render and XML validation PASS."
+          },
+          {
+            "q": 24,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q24_1.png and q24_2.png exact source images",
+            "finding": "Prior SVG did not preserve the cylinder h:r ratio or show a square base and perpendicular pyramid height.",
+            "repair": "Redrew radius 2/height 5 cylinder and side-6 square pyramid with perpendicular height 7.",
+            "render": "Final Chrome headless render and XML validation PASS."
           }
         ],
-        "xmlValidation": "PASS_FOR_Q9_Q13_Q21"
-      }
+        "xmlValidation": "PASS_Q8_Q9_Q13_Q21_Q22_Q24_AND_ALL_REFERENCED_PATHS"
+      },
+      "branchStatus": "R2E_BRANCH_FINAL_READY",
+      "mainIntegration": "NOT_PERFORMED_PER_LATEST_USER_INSTRUCTION"
     },
     {
       "code": "B24",
@@ -363,7 +459,7 @@
         ]
       },
       "validatorStatus": "NOT_RUN",
-  "currentNextItem": "B20 q1-q8 binding/parity closure, then q11 Meta/source adjudication",
+      "currentNextItem": "B20 q1-q8 binding/parity closure, then q11 Meta/source adjudication",
       "localAdjudication": {
         "q12": "OPEN: branch solution still contains R1 HOLD text; reconstruct final student solution from exact image blob and recovery evidence",
         "q23": "OPEN: branch solution still contains R1 HOLD text; independently derive final student solution from exact image blob",
