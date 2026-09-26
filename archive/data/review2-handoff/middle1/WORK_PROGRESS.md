@@ -69,3 +69,11 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - q21: corrected the graph aid to show the source points (3,1200) and (3,240), both `y=400x` / `y=80x` lines, and the 6000 m intersections at 15 and 75 minutes.
 - All three SVGs were opened through Chrome headless rendering and visually inspected. Targeted XML/schema validation and full B20 closure remain pending; no item is marked fully resolved until Meta and its associated checks close.
 - Current checkpoint branch HEAD before this visual checkpoint: `1d5244405db63371a97b95a2a78daa1539d83295`. Current next: B20 q1–q8 binding/parity closure, then q11 source/Meta adjudication.
+
+## B20 Meta re-adjudication — 2026-09-27
+
+- q9 and q21 are closed as deep-review items after their source-parity SVG repairs. q13 remains open pending the shared sector/measurement Meta disposition.
+- q22 was re-adjudicated from its source and final solution: `2x−10=(x−30)+80` is the triangle exterior-angle equation. The prior `TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM` did not describe that decisive step; the JS now uses active `TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION`.
+- This correction is a targeted R1/R2 Meta conflict recheck. q22 remains unresolved until the 2015 binding/crosswalk and compiled runtime checks pass.
+- The q13 SVG was adjusted once more after its first browser render so the 300° arc is centered on the tether point and the fence masks the interior wedge; the final rendered SVG and XML check pass.
+- Current branch HEAD before this checkpoint: `9bfb121a565e4cf1738637f55f52f513716dd666`.
