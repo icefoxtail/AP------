@@ -353,7 +353,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "정사각형의 한 변 x에 따른 두 영역 넓이의 합 A(x); 허용 구간에서 x=40m일 때 최대이다.",
+    "solutionImageCaption": "A(x)=−3x²/2+120x; 허용 구간 240/7≤x<48 m에서 최댓값은 x=40m, 2400m²이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -684,6 +688,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "포물선 y=−x²+6x의 두 허용 접점에서 접선과 절편 삼각형 ABO, ACD를 비교한다.",
+    "solutionImageCaption": "접점은 포물선에서 허용되는 구간 0<t<6이며, 실제 접점은 t=3/2와 9/2이다.",
+    "solutionImageSize": "full"
   }
 ];
