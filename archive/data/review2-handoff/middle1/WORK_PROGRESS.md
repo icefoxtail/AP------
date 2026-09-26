@@ -44,3 +44,11 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - Latest Notion D12 REVIEW1 record and R2E pilot update report deterministic source recovery for B28 q12/q23 and q14 mean repair. Current branch q12 image blob `f7fd240b9cd92fe668ae5a3e880d843892851f6b` and q23 image blob `063ac074aa466d8a3ac5eadf0373babc3e2c51cb` match those receipts exactly.
 - Current branch JS still contains the old q12/q23 HOLD prose. R2E will independently adjudicate and replace both solutions from the matched source images; q14 already uses `135/10=13.5` and has no residual `145/10`.
 - The Notion recovery summary says target image blobs exact, source holds 0, and the recovery artifact was stored in the latest Library REVIEW1_DONE ZIP. That ZIP is not present in this branch's R1_INPUT package; evidence identity is preserved above and the R2E solution writes will be recorded locally.
+
+
+## Cross-exam Meta clustering — 2026-09-27
+
+- Cross-exam comparison is frozen in `R2E_META_CLUSTER_PLAN.json`; it groups 60 deep-review items and keeps true-new L3 count at 0 (new machine keys materialize existing RPM paths).
+- Shared structures: triangle angle chase (B20 q8/q22 + B28 q1/q21); circle/sector measurement (B20 q11–13 + B28 q4–6/q22); polyhedron face/vertex properties; rotation-solid sections; solid surface/volume; frequency/relative-frequency; 2022 representative values.
+- Planned exact curriculum: B20/B24 2015, B28 2022. Planned shared changes remain on branch only; no main integration.
+- Current next: materialize Meta plan and restore B24 R1 Meta corrections; then finalize B20 → B24 → B28 files in order.

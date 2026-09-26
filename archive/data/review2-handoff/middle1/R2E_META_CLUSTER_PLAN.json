@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "m1-r2e-meta-cluster-plan/v1",
+  "createdAt": "2026-09-26T15:55:17.693Z",
+  "branch": "work/m1-b20-b24-b28-r2e",
+  "baseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
+  "currentBranchHead": "a5f75931c440c776c7bb69ee24467975418a4c17",
+  "workflow": "R2E direct adjudication; work-branch commits/pushes only; no main integration",
+  "curriculumEvidence": {
+    "B20": {
+      "year": 2023,
+      "curriculum": "2015",
+      "basis": "archive/db.js exam year; official rollout predates 2025"
+    },
+    "B24": {
+      "year": 2024,
+      "curriculum": "2015",
+      "basis": "archive/db.js exam year; official rollout predates 2025"
+    },
+    "B28": {
+      "year": 2025,
+      "curriculum": "2022",
+      "basis": "archive/db.js exam year + MOE implementation schedule: middle/high grade 1 begins 2025"
+    }
+  },
+  "clusterEvidence": [
+    {
+      "id": "M1_GRAPH_AND_COORDINATE_RELATION",
+      "items": [
+        "B20:q1",
+        "B20:q2",
+        "B20:q3",
+        "B20:q4",
+        "B20:q5",
+        "B20:q6",
+        "B20:q7",
+        "B20:q21"
+      ],
+      "disposition": "REUSE_R1_REPAIRS_AFTER_SOURCE_AND_ACTIVE_BINDING_RECHECK",
+      "owner": "MIDDLE1",
+      "notes": "R1 repairs move q1–q7/q21 to the official graph-relation L2; q5 uses coordinate-composite-area. Verify current branch Meta fields and bindings, no math re-solve."
+    },
+    {
+      "id": "M1_TRIANGLE_ANGLE_CHASE",
+      "items": [
+        "B20:q8",
+        "B20:q22",
+        "B28:q1",
+        "B28:q21"
+      ],
+      "disposition": "REUSE_ACTIVE_PT_M1_TRIANGLE_ANGLE_CHASE",
+      "notes": "B28 q1/q21 moved to the same basic-figure L1/L2 already adjudicated in B20; bind 2022 curriculum."
+    },
+    {
+      "id": "M1_POLYGON_ANGLE",
+      "items": [
+        "B28:q2",
+        "B28:q3"
+      ],
+      "disposition": "REUSE_ACTIVE_CANONICAL",
+      "notes": "Use R1-corrected PT/TPL pairs."
+    },
+    {
+      "id": "M1_CIRCLE_ARC_SECTOR",
+      "items": [
+        "B20:q11",
+        "B20:q12",
+        "B20:q13",
+        "B28:q4",
+        "B28:q5",
+        "B28:q6",
+        "B28:q22"
+      ],
+      "disposition": "REUSE_MIDDLE_GEOMETRY_L3_PLUS_ONE_RPM_PATH_TPL",
+      "owner": "MIDDLE_GEOMETRY",
+      "notes": "Central-angle/arc facts reuse PT_CIRCLE_ANGLE_RELATIONS. A single R2E L4 materializes repeated sector area/perimeter measurement; exact M1 L2 is plane-figure measurement."
+    },
+    {
+      "id": "M1_POLYHEDRON_FACE_VERTEX_PROPERTIES",
+      "items": [
+        "B20:q14",
+        "B20:q15",
+        "B24:q2",
+        "B28:q7",
+        "B28:q8"
+      ],
+      "disposition": "REUSE_ACTIVE_POLYHEDRON_L3_PLUS_REPEATED_FACE_PROPERTY_L4",
+      "owner": "MIDDLE1",
+      "notes": "One shared property-audit L4 covers face shape, face/vertex counts, and regular-solid vertex angle feasibility; no candidate-derived key reuse."
+    },
+    {
+      "id": "M1_ROTATION_SOLID_SECTIONS",
+      "items": [
+        "B20:q16",
+        "B24:q3",
+        "B24:q4",
+        "B28:q9"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION",
+      "owner": "MIDDLE1",
+      "notes": "Repeated perpendicular-axis section and axis-containing section skeletons justify one L3 and two L4 templates."
+    },
+    {
+      "id": "M1_SOLID_FIGURE_MEASURE",
+      "items": [
+        "B20:q17",
+        "B20:q18",
+        "B20:q19",
+        "B20:q20",
+        "B20:q24",
+        "B24:q5",
+        "B24:q6",
+        "B24:q7",
+        "B24:q8",
+        "B24:q9",
+        "B24:q10",
+        "B24:q19",
+        "B24:q21",
+        "B28:q11",
+        "B28:q12",
+        "B28:q13",
+        "B28:q23"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION",
+      "owner": "MIDDLE1",
+      "notes": "Repeated surface/volume work across all schools supports a single measurement L3 and bounded L4s for equivalent volume, component subtraction, net measures, frustum surface area, composite surface area, and cone/pyramid volume."
+    },
+    {
+      "id": "M1_FREQUENCY_AND_RELATIVE_FREQUENCY",
+      "items": [
+        "B24:q12",
+        "B24:q13",
+        "B24:q14",
+        "B24:q15",
+        "B24:q17",
+        "B24:q18",
+        "B24:q20",
+        "B28:q19",
+        "B28:q20",
+        "B28:q24"
+      ],
+      "disposition": "EXISTING_L3_REUSE_PLUS_ONE_POPULATION_RECOVERY_L4",
+      "owner": "MIDDLE1",
+      "notes": "Restore six R1 repairs, use existing frequency-audit/missing-frequency templates, and group q18/q19 under a single population-size reconstruction L4."
+    },
+    {
+      "id": "M1_CENTRAL_TENDENCY",
+      "items": [
+        "B28:q10",
+        "B28:q14",
+        "B28:q15"
+      ],
+      "disposition": "RPM_PATH_MATERIALIZATION",
+      "owner": "MIDDLE1",
+      "notes": "Three 2022 representative-value items; distinct from grouped-display rank reading. A shared constraint-reconstruction L4 covers q10/q15; q14 receives an explicit no-separate-L4 decision if no recurring comparison skeleton is evidenced."
+    }
+  ],
+  "plannedCanonicalMaterialization": {
+    "newProblemTypes": [
+      {
+        "key": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "owner": "MIDDLE1",
+        "rpm": "2015/2022 M1-2 회전체 > 회전체의 단면"
+      },
+      {
+        "key": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1",
+        "rpm": "2015/2022 M1-2 입체도형의 겉넓이와 부피"
+      },
+      {
+        "key": "PT_M1_CENTRAL_TENDENCY",
+        "owner": "MIDDLE1",
+        "rpm": "2022 M1-2 대푯값"
+      }
+    ],
+    "newTemplates": [
+      {
+        "key": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_REGULAR_FACE_VERTEX_AUDIT",
+        "parent": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+        "parent": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "parent": "PT_M1_ROTATION_SOLID_PROPERTIES",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_SOLID_FIGURE_PYRAMID_CONE_VOLUME",
+        "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "parent": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "parent": "PT_M1_CENTRAL_TENDENCY",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "parent": "PT_CIRCLE_ANGLE_RELATIONS",
+        "owner": "MIDDLE_GEOMETRY"
+      }
+    ],
+    "newCrossConcepts": [],
+    "newConditions": [],
+    "trueNewL3OutsideRpm": 0
+  },
+  "openRisks": [
+    {
+      "code": "B28_Q12_Q23_SOLUTION_MUTATION_PENDING",
+      "note": "Exact source image hashes match latest Notion recovery receipt; branch JS still contains old HOLD prose. R2E must write its own student solutions before freezing semantic input."
+    },
+    {
+      "code": "B24_R1_FINAL_JS_UNAVAILABLE",
+      "note": "Physical B24 R1_INPUT ZIP is CREATE/READY bytes; Notion R1 SHA differs. The six R1 Meta repairs are re-adjudicated and will be re-applied from current source/solution."
+    }
+  ]
+}
