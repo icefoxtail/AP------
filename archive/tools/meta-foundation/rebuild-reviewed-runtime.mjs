@@ -38,6 +38,17 @@ const templateByKey = new Map((taxonomy.templates || []).map((row) => [row.templ
 const conceptByKey = new Map((concepts.concepts || []).map((row) => [row.conceptKey, row]));
 const conditionByKey = new Map((conditions.conditions || []).map((row) => [row.conditionKey, row]));
 const activePacks = new Map((registryIndex.activePacks || []).filter((row) => row.status === "ACTIVE").map((row) => [row.id, row]));
+const resolveRuntimePackId = (value) => {
+  if (activePacks.has(value)) return value;
+  const separator = typeof value === "string" ? value.lastIndexOf("@") : -1;
+  if (separator > 0) {
+    const id = value.slice(0, separator);
+    const version = value.slice(separator + 1);
+    const row = activePacks.get(id);
+    if (row && row.version === version) return id;
+  }
+  throw new Error(`runtimePackId is not an ACTIVE pack/version: ${value}`);
+};
 const bindingRows = (bindings.bindings || []).filter((row) => row.status === "ACTIVE");
 const aliasesData = aliases;
 const canonicalKeys = [
@@ -260,7 +271,7 @@ for (const override of overrideByUid.values()) {
   const decision = override.latestAcceptedReview2;
   if (decision.status !== "REPAIR") continue;
   const meta = metadataByUid.get(override.questionUid);
-  const packId = decision.runtimePackId;
+  const packId = resolveRuntimePackId(decision.runtimePackId);
   const activePack = activePacks.get(packId);
   if (!activePack) throw new Error(`REPAIR references inactive pack ${packId}: ${override.questionUid}`);
   const l1 = masterByKey.get(meta.standardUnitKey);
@@ -297,7 +308,10 @@ for (const override of overrideByUid.values()) {
   runtimePack.runtime.reviewedApply = {
     schemaVersion: "archive-reviewed-runtime-rebuild-v1",
     overrideDigest: overridesDigest,
-    acceptedRepairUidCount: [...overrideByUid.values()].filter((row) => row.latestAcceptedReview2.status === "REPAIR" && row.latestAcceptedReview2.runtimePackId === packId).length
+    acceptedRepairUidCount: [...overrideByUid.values()].filter((row) =>
+      row.latestAcceptedReview2.status === "REPAIR" &&
+      resolveRuntimePackId(row.latestAcceptedReview2.runtimePackId) === packId
+    ).length
   };
   changedPacks.add(packId);
   touchedUids.push(override.questionUid);

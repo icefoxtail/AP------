@@ -5,6 +5,16 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 export const PACKET_SCHEMA_VERSION = 2;
+export const LEGACY_GEUMDANG_R2_ATTESTATION = Object.freeze({
+  packetSha256: "ea4afcb4a39a9f2bc91b163dfdc26216df3bbdf4edc66c07e7718d800da39867",
+  artifactSha256: "d72bf847deed2a251d6d73c3cda2bd77cb3f41c3068ac98e83262209615f84dd",
+  artifactName: "REVIEW_DONE__24_금당중_2학기_중간_중3_수학.js.zip",
+  applyId: "r2-24-geumdang-m3-2mid-20260926",
+  targetBaseSha: "1cdd50343690977693ae9bf9b144ff9b538c340b",
+  sourceBlobSha: "f96498d639b3f3a9174d139cb9cfdea85c4643ff",
+  sourcePath: "archive/exams/original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
+  examFile: "24_금당중_2학기_중간_중3_수학.js"
+});
 export const TARGET_REFS = new Set(["main", "codex/meta-foundation/middle1"]);
 export const META_VALUE_FIELDS = new Set([
   "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder",
@@ -26,6 +36,12 @@ export const PROTECTED_FIELDS = new Set([
 export const APPLY_STATUSES = new Set(["KEEP", "REPAIR", "CANDIDATE", "HOLD", "ROUTE_OUT"]);
 
 export const sha256 = (value) => crypto.createHash("sha256").update(value).digest("hex");
+export const gitBlobSha1 = (value) => crypto.createHash("sha1")
+  .update(`blob ${value.length}\0`).update(value).digest("hex");
+export const sourceBlobMatches = (bytes, packet, info) =>
+  info?.legacyCompatibility
+    ? gitBlobSha1(bytes) === packet.sourceBlobSha
+    : sha256(bytes) === packet.sourceBlobSha;
 export const jsonText = (value) => JSON.stringify(value, null, 2) + "\n";
 export const normalizeSourceFile = (value) => String(value || "").normalize("NFC")
   .replace(/\\/g, "/").replace(/^\.?\/?archive\/exams\//, "")
@@ -60,15 +76,30 @@ function patchUidFor(sourceArchiveFile, ordinal) {
   return `qid_v1_${sha256(`${normalizeSourceFile(sourceArchiveFile)}#${Number(ordinal)}`)}`;
 }
 
-export function validatePacketEnvelope(packet) {
+export function validatePacketEnvelope(packet, { rawBytes = null } = {}) {
   if (!packet || typeof packet !== "object" || Array.isArray(packet)) fail("top-level object required");
-  if (packet.schemaVersion !== PACKET_SCHEMA_VERSION) fail("schemaVersion must be 2");
+  const exactPacketSha256 = rawBytes ? sha256(rawBytes) : null;
+  const legacyCompatibility = packet.schemaVersion === "archive-reviewed-apply/v2" &&
+    exactPacketSha256 === LEGACY_GEUMDANG_R2_ATTESTATION.packetSha256;
+  if (packet.schemaVersion !== PACKET_SCHEMA_VERSION && !legacyCompatibility) fail("schemaVersion must be 2");
+  if (legacyCompatibility && (
+    packet.applyId !== LEGACY_GEUMDANG_R2_ATTESTATION.applyId ||
+    packet.targetBaseSha !== LEGACY_GEUMDANG_R2_ATTESTATION.targetBaseSha ||
+    packet.sourceBlobSha !== LEGACY_GEUMDANG_R2_ATTESTATION.sourceBlobSha ||
+    packet.sourcePath !== LEGACY_GEUMDANG_R2_ATTESTATION.sourcePath ||
+    packet.examFile !== LEGACY_GEUMDANG_R2_ATTESTATION.examFile ||
+    packet.targetRef !== "main"
+  )) fail("exact legacy Geumdang packet identity mismatch");
   if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/.test(packet.applyId || "") || packet.applyId.endsWith(".") || packet.applyId.endsWith("..")) {
     fail("applyId is invalid");
   }
   if (!TARGET_REFS.has(packet.targetRef)) fail("targetRef is not allowlisted");
   if (!/^[0-9a-f]{40}$/.test(packet.targetBaseSha || "")) fail("targetBaseSha must be a full SHA-1 commit id");
-  if (!/^[0-9a-f]{64}$/.test(packet.sourceBlobSha || "")) fail("sourceBlobSha must be SHA-256");
+  if (legacyCompatibility
+    ? !/^[0-9a-f]{40}$/.test(packet.sourceBlobSha || "")
+    : !/^[0-9a-f]{64}$/.test(packet.sourceBlobSha || "")) {
+    fail(legacyCompatibility ? "sourceBlobSha must be a Git blob SHA-1" : "sourceBlobSha must be SHA-256");
+  }
   if (!Number.isInteger(packet.totalQuestions) || packet.totalQuestions < 1) fail("totalQuestions must be positive");
   if (packet.reviewPassCount !== 2) fail("reviewPassCount must equal 2");
   if (packet.closureStatus !== "CLOSED_FOR_APPLY") fail("closureStatus must be CLOSED_FOR_APPLY");
@@ -77,14 +108,16 @@ export function validatePacketEnvelope(packet) {
   const expectedTarget = packet.grade === "중1" ? "codex/meta-foundation/middle1" : "main";
   if (packet.targetRef !== expectedTarget) fail(`targetRef must be ${expectedTarget} for ${packet.grade}`);
   const normalized = normalizeSourceFile(packet.sourcePath);
-  if (!normalized || normalized !== packet.sourcePath || !safeRelativePath(`archive/exams/${normalized}`) || !normalized.endsWith(".js")) {
+  if (!normalized || (!legacyCompatibility && normalized !== packet.sourcePath) || !safeRelativePath(`archive/exams/${normalized}`) || !normalized.endsWith(".js")) {
     fail("sourcePath must be an archive/exams relative JS path");
   }
   if (packet.examFile !== path.posix.basename(normalized)) fail("examFile must be the sourcePath basename");
-  requiredString(packet.r2Artifact, "r2Artifact");
-  if (!/^[0-9a-f]{64}$/.test(packet.reviewArtifactSha256 || "")) fail("reviewArtifactSha256 must be SHA-256");
-  if (typeof packet.closedAt !== "string" || !Number.isFinite(Date.parse(packet.closedAt))) fail("closedAt must be an ISO timestamp");
-  if (new Date(packet.closedAt).toISOString() !== packet.closedAt) fail("closedAt must use canonical UTC ISO format");
+  if (!legacyCompatibility) {
+    requiredString(packet.r2Artifact, "r2Artifact");
+    if (!/^[0-9a-f]{64}$/.test(packet.reviewArtifactSha256 || "")) fail("reviewArtifactSha256 must be SHA-256");
+    if (typeof packet.closedAt !== "string" || !Number.isFinite(Date.parse(packet.closedAt))) fail("closedAt must be an ISO timestamp");
+    if (new Date(packet.closedAt).toISOString() !== packet.closedAt) fail("closedAt must use canonical UTC ISO format");
+  }
 
   if (!Array.isArray(packet.finalFiles) || !packet.finalFiles.length) fail("finalFiles must be a nonempty array");
   const finalFilePaths = new Set();
@@ -129,7 +162,10 @@ export function validatePacketEnvelope(packet) {
     if (!patch.before || typeof patch.before !== "object" || Array.isArray(patch.before)) fail(`before object required for ${patch.questionUid}`);
     if (!patch.after || typeof patch.after !== "object" || Array.isArray(patch.after)) fail(`after object required for ${patch.questionUid}`);
     for (const field of [...Object.keys(patch.before), ...Object.keys(patch.after)]) {
-      if (!META_VALUE_FIELDS.has(field)) fail(`unsupported patch field ${field} for ${patch.questionUid}`);
+      if (!META_VALUE_FIELDS.has(field) &&
+          !(legacyCompatibility && new Set(["legacyL3Key", "legacyL4Key"]).has(field))) {
+        fail(`unsupported patch field ${field} for ${patch.questionUid}`);
+      }
     }
     if (patch.status === "REPAIR") {
       requiredString(patch.runtimePackId, `runtimePackId for ${patch.questionUid}`);
@@ -138,7 +174,14 @@ export function validatePacketEnvelope(packet) {
       if (!Array.isArray(patch.after.crossConceptKeys) || new Set(patch.after.crossConceptKeys).size !== patch.after.crossConceptKeys.length) fail(`crossConceptKeys must be unique array for ${patch.questionUid}`);
       if (Object.hasOwn(patch.after, "conditionKeys") && (!Array.isArray(patch.after.conditionKeys) || new Set(patch.after.conditionKeys).size !== patch.after.conditionKeys.length)) fail(`conditionKeys must be a unique array for ${patch.questionUid}`);
       if (Object.hasOwn(patch.after, "difficultyBucket") && (!Number.isInteger(patch.after.difficultyBucket) || patch.after.difficultyBucket < 1 || patch.after.difficultyBucket > 5)) fail(`difficultyBucket must be 1..5 for ${patch.questionUid}`);
-      if (!equal(Object.keys(patch.before).sort(), Object.keys(patch.after).sort())) fail(`REPAIR before/after fields must match for ${patch.questionUid}`);
+      if (legacyCompatibility) {
+        const legacyOnlyBefore = Object.keys(patch.before).filter((field) => !Object.hasOwn(patch.after, field)).sort();
+        if (!equal(legacyOnlyBefore, ["legacyL3Key", "legacyL4Key"])) {
+          fail(`legacy REPAIR may only preserve archived legacy L3/L4 evidence for ${patch.questionUid}`);
+        }
+      } else if (!equal(Object.keys(patch.before).sort(), Object.keys(patch.after).sort())) {
+        fail(`REPAIR before/after fields must match for ${patch.questionUid}`);
+      }
     } else if (patch.status === "CANDIDATE") {
       for (const field of ["l3CandidateLabel", "l3CandidateDefinition", "l4CandidateLabel", "l4CandidateSkeleton", "whyExistingCanonicalDoesNotFit"]) requiredString(patch[field], `${field} for ${patch.questionUid}`);
       if (!Array.isArray(patch.crossConceptCandidates) || !Array.isArray(patch.searchedCanonicalCandidates)) fail(`candidate evidence arrays required for ${patch.questionUid}`);
@@ -165,9 +208,18 @@ export function validatePacketEnvelope(packet) {
   }
   if (!Array.isArray(packet.regenerateScopes)) fail("regenerateScopes must be an array");
   for (const required of ["question_metadata", "meta_runtime", "question_index", "archive2_catalog", "crosswalk"]) {
-    if (!packet.regenerateScopes.includes(required)) fail(`regenerateScopes must include ${required}`);
+    const legacyCrosswalkAlias = legacyCompatibility && required === "crosswalk" &&
+      packet.regenerateScopes.includes("archive2_crosswalk");
+    if (!packet.regenerateScopes.includes(required) && !legacyCrosswalkAlias) {
+      fail(`regenerateScopes must include ${required}`);
+    }
   }
-  return { sourcePath: normalized, finalFilePaths, patchByOrdinal, uidSet };
+  return {
+    sourcePath: normalized, finalFilePaths, patchByOrdinal, uidSet,
+    legacyCompatibility,
+    exactPacketSha256,
+    legacyAttestation: legacyCompatibility ? LEGACY_GEUMDANG_R2_ATTESTATION : null
+  };
 }
 
 export function parseQuestionBank(code, filename) {
@@ -210,7 +262,7 @@ export function assertBaseAndFinalQuestionFiles({ root, packet, packetInfo, iden
   }
   const repoPath = `archive/exams/${packetInfo.sourcePath}`;
   const baseBytes = gitShow(packet.targetBaseSha, repoPath);
-  if (sha256(baseBytes) !== packet.sourceBlobSha) throw new Error("sourceBlobSha mismatch against targetBaseSha source blob");
+  if (!sourceBlobMatches(baseBytes, packet, packetInfo)) throw new Error("sourceBlobSha mismatch against targetBaseSha source blob");
   const finalPath = path.join(root, ...repoPath.split("/"));
   const finalBytes = fs.readFileSync(finalPath);
   const baseBank = parseQuestionBank(baseBytes.toString("utf8"), `base:${repoPath}`);
@@ -267,8 +319,9 @@ export function packetDigest(packet) {
 export function readPacket(packetPath) {
   const absolute = path.resolve(packetPath);
   if (!fs.existsSync(absolute)) throw new Error(`packet not found: ${absolute}`);
-  const packet = JSON.parse(fs.readFileSync(absolute, "utf8"));
-  return { absolute, packet, info: validatePacketEnvelope(packet) };
+  const rawBytes = fs.readFileSync(absolute);
+  const packet = JSON.parse(rawBytes.toString("utf8"));
+  return { absolute, packet, info: validatePacketEnvelope(packet, { rawBytes }) };
 }
 
 export function parseArgs(argv) {

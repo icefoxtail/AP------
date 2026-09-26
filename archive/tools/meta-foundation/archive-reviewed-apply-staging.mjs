@@ -4,14 +4,14 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import {
   assertBaseAndFinalQuestionFiles, normalizeSourceFile, parseArgs,
-  readJson, readPacket, repoRootFrom, sha256
+  readJson, readPacket, repoRootFrom, sha256, sourceBlobMatches
 } from "./reviewed-apply-core.mjs";
 
 const arg = parseArgs(process.argv.slice(2));
 const command = arg.values.get("command");
 const root = repoRootFrom(import.meta.url, arg.values.get("repo-root"));
 const run = (args, options = {}) => execFileSync("git", ["-C", root, ...args], {
-  encoding: options.encoding ?? "utf8",
+  encoding: options.encoding === undefined ? "utf8" : options.encoding,
   maxBuffer: options.maxBuffer ?? 64 * 1024 * 1024,
   stdio: ["ignore", "pipe", "pipe"]
 });
@@ -74,7 +74,7 @@ function assertReviewBaseCompatible({ packet, info, targetSha }) {
   } catch {
     throw new Error(`APPLY_CONFLICT_HOLD: source exam is missing at current target: ${repoPath}`);
   }
-  if (sha256(targetSourceBytes) !== packet.sourceBlobSha) {
+  if (!sourceBlobMatches(targetSourceBytes, packet, info)) {
     throw new Error(`APPLY_CONFLICT_HOLD: source exam drifted since R2 closure: ${repoPath}`);
   }
   for (const file of packet.finalFiles.filter((row) => row.kind === "solution_svg")) {
@@ -113,8 +113,17 @@ function preflight() {
   if (!actual.has(expectedPacket) || [...actual].some((file) => !expected.has(file))) {
     throw new Error(`staging diff must contain only finalFiles plus its one APPLY_PACKET; expected=${JSON.stringify([...expected].sort())}; actual=${JSON.stringify([...actual].sort())}; rows=${JSON.stringify(changes)}`);
   }
-  for (const file of packet.finalFiles.filter((row) => row.kind === "solution_svg")) {
-    if (!actual.has(file.path)) throw new Error(`solution_svg must be an actual staging change: ${file.path}`);
+  for (const file of packet.finalFiles) {
+    const baseEntry = treeEntryAt(targetSha, file.path);
+    const baseBytes = baseEntry ? gitShow(targetSha, file.path) : null;
+    const unchangedAtDispatchBase = baseBytes !== null &&
+      baseBytes.length === file.sizeBytes && sha256(baseBytes) === file.sha256;
+    if (unchangedAtDispatchBase && actual.has(file.path)) {
+      throw new Error(`unchanged final file must not be added to staging: ${file.path}`);
+    }
+    if (!unchangedAtDispatchBase && !actual.has(file.path)) {
+      throw new Error(`changed final file is missing from staging: ${file.path}`);
+    }
   }
   for (const file of [...info.finalFilePaths, expectedPacket]) {
     assertRegularFile(file, "staging payload");
