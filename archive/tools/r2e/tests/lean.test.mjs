@@ -132,11 +132,19 @@ test('final gate needs current bytes, complete evidence, HOLD Zero and integrity
     metaHoldCount: 0, migrationGapCount: 0, runtimeParityFailureCount: 0,
     items: [{ questionUid: 'qid-test-001', resolverEvidence: { disposition: 'EXISTING_REUSE', sourceFingerprint: 'fixture' } }],
   });
-  const ledger = { examFile: f.examFile, inputBranch: 'work/intake/m2', inputCommit: f.ready, dependencyShas: [evidence], denominator: 1, integrityScanned: 1, deepReviewItems: [], resolvedItems: [], remainingItems: [], unresolvedItems: [], metaResolutionReceipt, items: [{ ordinal: 1, questionUid: 'qid-test-001', status: 'PASS', r1Status: 'PASS', reviewMode: 'INTEGRITY_REUSE', metaDisposition: 'EXISTING_REUSE', sourceFingerprint: 'fixture' }] };
+  const ledger = { examFile: f.examFile, inputBranch: 'work/intake/m2', inputCommit: f.ready, dependencyShas: [evidence], denominator: 1, integrityScanned: 1, deepReviewItems: [], resolvedItems: [], remainingItems: [], unresolvedItems: [], metaResolutionReceipt, items: [{ ordinal: 1, questionUid: 'qid-test-001', status: 'PASS', disposition: 'EXISTING_REUSE', r1Status: 'PASS', reviewMode: 'INTEGRITY_REUSE', metaDisposition: 'EXISTING_REUSE', sourceFingerprint: 'fixture' }] };
   const validation = { artifactSha256: sha(fs.readFileSync(path.join(f.repo, f.examFile))), inputCommit: f.ready, artifacts: [], gates: Object.fromEntries(REQUIRED_GATES.map(name => [name, { status: 'PASS', evidenceRef: evidence }])) };
   const metaValidator = () => ({ status: 'PASS', errors: [] });
   const passed = finalGate(f.repo, ledger, validation, { validateMetaReceipt: metaValidator });
   assert.equal(passed.status, 'PASS', JSON.stringify(passed.errors));
+  for (const disposition of ['EXISTING_REUSE', 'MATERIALIZED', 'NEW_L3']) {
+    const failed = structuredClone(ledger); failed.items[0].status = 'FAIL'; failed.items[0].disposition = disposition;
+    assert.ok(finalGate(f.repo, failed, validation, { validateMetaReceipt: metaValidator }).errors.includes('ITEM_NOT_FINAL'));
+  }
+  const held = structuredClone(ledger); held.items[0].status = 'HOLD'; held.items[0].disposition = 'EXISTING_REUSE';
+  assert.ok(finalGate(f.repo, held, validation, { validateMetaReceipt: metaValidator }).errors.includes('ITEM_NOT_FINAL'));
+  const invalidDisposition = structuredClone(ledger); invalidDisposition.items[0].disposition = 'NOT_A_FINAL_DISPOSITION';
+  assert.ok(finalGate(f.repo, invalidDisposition, validation, { validateMetaReceipt: metaValidator }).errors.includes('FINAL_DISPOSITION_INVALID'));
   for (const code of ['META_PACK_GAP_HOLD', 'META_CANONICAL_HOLD', 'RPM_PRIMARY_MIGRATION_GAP', 'PROPOSED_NEW_L3', 'PROPOSED_NEW_L4', 'CROSS_CONCEPT_CANDIDATE']) {
     const modified = structuredClone(ledger); modified.items[0].disposition = code; assert.equal(finalGate(f.repo, modified, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
   }

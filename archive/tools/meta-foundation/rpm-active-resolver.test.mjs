@@ -5,6 +5,7 @@ import { objectSha } from '../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry } from './active-registry.mjs';
 import {
   buildDecisionIsolatedInput,
+  activeCandidateKeysForScope,
   buildResolverDecisionEvidence,
   makeDifficultyEvidence,
   makeMetaValidatorReceipt,
@@ -134,18 +135,53 @@ test('RPM path without ACTIVE materialization is a migration gap and emits no ke
   assert.equal(result.problemTypeKey, '');
 });
 
-test('no RPM path and a completed empty targeted ACTIVE search is a true taxonomy gap', () => {
+test('truthful exact-scope ACTIVE no-match remains a true taxonomy gap', () => {
   const row = rowFor('H1-RPM-001');
   const input = makeInput(row);
+  input.curriculumContext.standardUnitKey = 'H15-UNMAPPED-FIXTURE';
+  input.curriculumContext.subUnitKey = 'H15-UNMAPPED-FIXTURE-SUB';
   input.semanticDecision.rpmPath = { curriculum: row.curriculum, scope: row.scope, majorUnit: '검증용 단원', midUnit: '검증용 중단원', l3: '없는 유형', l4: '없는 풀이 구조' };
   input.activeSearchEvidence = {
     status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys: [], registrySha: registry.registrySha,
     searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2',
-    searchedScope: { curriculum: '2015', standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey },
+    searchedScope: { curriculum: '2015', standardUnitKey: input.curriculumContext.standardUnitKey, subUnitKey: input.curriculumContext.subUnitKey },
   };
   const result = resolveMetaRoute(input, { repoRoot: root, registry });
   assert.equal(result.disposition, 'TRUE_TAXONOMY_GAP');
   assert.equal(result.problemTypeKey, '');
+});
+
+test('false empty ACTIVE receipt is rejected when exact-scope candidates exist', () => {
+  const row = rowFor('H1-RPM-001');
+  const scope = { curriculum: row.curriculum, standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey };
+  const input = makeInput(row);
+  input.semanticDecision.rpmPath = { curriculum: row.curriculum, scope: row.scope, majorUnit: '검증용 단원', midUnit: '검증용 중단원', l3: '없는 유형', l4: '없는 풀이 구조' };
+  input.activeSearchEvidence = { status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys: [], registrySha: registry.registrySha,
+    searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2', searchedScope: scope };
+  const result = resolveMetaRoute(input, { repoRoot: root, registry });
+  assert.equal(result.disposition, 'ROUTE_OUT');
+  assert.equal(result.dispositionReason, 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH');
+  assert.ok(result.recomputedActiveCandidateKeys.length > 0);
+});
+
+test('ACTIVE no-match receipt rejects stale registry SHA, mismatched scope, and omitted candidates', () => {
+  const row = rowFor('H1-RPM-001');
+  const scope = { curriculum: row.curriculum, standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey };
+  const candidateKeys = activeCandidateKeysForScope(registry, scope);
+  assert.ok(candidateKeys.length > 1);
+  const makeNoMatchInput = () => {
+    const input = makeInput(row);
+    input.semanticDecision.rpmPath = { curriculum: row.curriculum, scope: row.scope, majorUnit: '검증용 단원', midUnit: '검증용 중단원', l3: '없는 유형', l4: '없는 풀이 구조' };
+    input.activeSearchEvidence = { status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys, registrySha: registry.registrySha,
+      searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2', searchedScope: scope };
+    return input;
+  };
+  const stale = makeNoMatchInput(); stale.activeSearchEvidence.registrySha = 'sha256:stale';
+  assert.equal(resolveMetaRoute(stale, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_REGISTRY_SHA_STALE');
+  const mismatch = makeNoMatchInput(); mismatch.activeSearchEvidence.searchedScope = { ...scope, subUnitKey: 'WRONG_SCOPE' };
+  assert.equal(resolveMetaRoute(mismatch, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_SCOPE_MISMATCH');
+  const partial = makeNoMatchInput(); partial.activeSearchEvidence.candidateKeys = candidateKeys.slice(1);
+  assert.equal(resolveMetaRoute(partial, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH');
 });
 
 test('candidate leakage in the first semantic decision is rejected', () => {
@@ -185,6 +221,26 @@ test('validator run receipt is mandatory before Meta finalization', () => {
   assert.ok(validateMetaFinalization(common).errors.includes('META_DETERMINISTIC_VALIDATOR_NOT_RUN'));
   const receipt = makeMetaValidatorReceipt(resolution, preflight);
   assert.equal(validateMetaFinalization({ ...common, validatorReceipt: receipt }).status, 'PASS');
+});
+
+test('candidate difficulty projection must exactly match fresh blind evidence', () => {
+  const input = makeInput(rowFor('H1-RPM-001'));
+  const resolverEvidence = resolveMetaRoute(input, { repoRoot: root });
+  const difficultyEvidence = makeDifficulty(resolverEvidence, 2);
+  const semanticMetaEvidence = makeRelational(resolverEvidence);
+  const candidateMeta = makeCandidate(resolverEvidence);
+  const common = { input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence, requireValidatorReceipt: false, repoRoot: root };
+  assert.equal(validateMetaFinalization(common).status, 'PASS');
+  const cases = [
+    ['difficultyBucket', 3], ['difficultyBucket', 'UNKNOWN'], ['difficultyConfidence', 'high'],
+    ['difficultyBoundaryFlag', 'B23'], ['legacyLevelCompatibility', 'BORDERLINE_ACCEPTABLE'],
+  ];
+  for (const [field, value] of cases) {
+    const mismatched = { ...candidateMeta, [field]: value };
+    const result = validateMetaFinalization({ ...common, candidateMeta: mismatched });
+    assert.equal(result.status, 'FAIL', `${field}=${value} must fail`);
+    assert.ok(result.errors.includes(`META_FINAL_DIFFICULTY_FIELD_PARITY_FAIL:${field}`), result.errors.join(','));
+  }
 });
 
 test('difficulty is a separate fresh blind pass and may disagree with legacy level', () => {
