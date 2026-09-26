@@ -1,0 +1,48 @@
+{
+  "phase": "PHASE_02_SEMANTIC_MODEL",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/semantic_model.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-02-pycompile.stdout.txt",
+      "stderr": "phase-02-pycompile.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_semantic_model.py -v",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-02-semantic-model-unittest.stdout.txt",
+      "stderr": "phase-02-semantic-model-unittest.stderr.txt"
+    },
+    {
+      "command": "python -c <schema JSON/KINDS exact enum and required plan kinds check>",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-02-schema-kind-check.stdout.txt",
+      "stderr": "phase-02-schema-kind-check.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-02-diff-check.stdout.txt",
+      "stderr": "phase-02-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 4,
+    "commandsPassed": 4,
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/__init__.py": "F6346FB2944EFC4CCCA3AF788D78695B6F645E2AC8ABCBE2163C5D50DEE672DC",
+    "archive/tools/geometry-equation/visual_engine/semantic_model.py": "2B4951CC7FD9457D269B7068D20216284A875CCD7CF529F0F9674601C81D8942",
+    "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json": "475A5371601D2EEF55C12CC7670CD377D195CC1F8E99424AE02F4BBBD47317D9",
+    "archive/tools/geometry-equation/tests/test_semantic_model.py": "6BF05919863E96BBF4258A1AE1511B8A236AA994562334C448FF5035EBFD725A"
+  }
+}

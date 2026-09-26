@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"apmath://geometry-visual-v1",
+  "type":"object","additionalProperties":false,
+  "required":["id","visualType","viewport","objects","sourceFacts","derivedFacts","displayFacts"],
+  "properties":{
+    "id":{"type":"string","minLength":1},
+    "title":{"type":"string"},
+    "visualType":{"enum":["coordinate_geometry","line_circle_geometry","function_graph","calculus_graph","explanation_card"]},
+    "viewport":{"type":"object","required":["xMin","xMax","yMin","yMax"],"properties":{"xMin":{"type":"number"},"xMax":{"type":"number"},"yMin":{"type":"number"},"yMax":{"type":"number"}}},
+    "axes":{"type":"boolean"},
+    "sourceFacts":{"type":"object"},"derivedFacts":{"type":"object"},"displayFacts":{"type":"object"},
+    "objects":{"type":"array","items":{"type":"object","required":["id","kind"],"properties":{
+      "id":{"type":"string","pattern":"^[A-Za-z0-9_-]+$"},
+      "kind":{"enum":["POINT","POINT_NAME","COORDINATE_LABEL","LINE","SEGMENT","CIRCLE","FUNCTION_GRAPH","INTERSECTION","TANGENT","PARALLEL","PERPENDICULAR","PERPENDICULAR_MARK","ANGLE_MARK","LENGTH_LABEL","EQUATION_LABEL","GRAPH_ANNOTATION","CONDITION_BOX","AUXILIARY_LINE","LEADER_LINE"]}
+    }}}
+  }
+}

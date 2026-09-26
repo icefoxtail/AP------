@@ -1,0 +1,42 @@
+phase=PHASE_02_SEMANTIC_MODEL status=PASS counts commands=4/4 tests=8 passed=8 failed=0 errors=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/semantic_model.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_semantic_model.py -v =====
+--- stdout ---
+--- stderr ---
+test_angle_and_length (test_semantic_model.SemanticTests.test_angle_and_length) ... ok
+test_name_coordinate_separation (test_semantic_model.SemanticTests.test_name_coordinate_separation) ... ok
+test_source_derived_parity (test_semantic_model.SemanticTests.test_source_derived_parity) ... ok
+test_unknown_and_duplicate (test_semantic_model.SemanticTests.test_unknown_and_duplicate) ... ok
+test_verified_relations (test_semantic_model.SemanticTests.test_verified_relations) ... ok
+test_verified_tangent (test_semantic_model.SemanticTests.test_verified_tangent) ... ok
+test_wrong_intersection (test_semantic_model.SemanticTests.test_wrong_intersection) ... ok
+test_wrong_mark (test_semantic_model.SemanticTests.test_wrong_mark) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.004s
+
+OK
+
+===== PASS exit=0 python -c <schema JSON/KINDS exact enum and required plan kinds check> =====
+--- stdout ---
+{
+  "schemaJsonParses": true,
+  "kindCount": 19,
+  "schemaEnumMatchingKinds": [
+    "$/properties/objects/items/properties/kind/enum"
+  ],
+  "requiredKindsCount": 19,
+  "missingRequiredKinds": []
+}
+
+--- stderr ---
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/__init__.py F6346FB2944EFC4CCCA3AF788D78695B6F645E2AC8ABCBE2163C5D50DEE672DC
+archive/tools/geometry-equation/visual_engine/semantic_model.py 2B4951CC7FD9457D269B7068D20216284A875CCD7CF529F0F9674601C81D8942
+archive/tools/geometry-equation/visual_engine/visual_spec.schema.json 475A5371601D2EEF55C12CC7670CD377D195CC1F8E99424AE02F4BBBD47317D9
+archive/tools/geometry-equation/tests/test_semantic_model.py 6BF05919863E96BBF4258A1AE1511B8A236AA994562334C448FF5035EBFD725A
