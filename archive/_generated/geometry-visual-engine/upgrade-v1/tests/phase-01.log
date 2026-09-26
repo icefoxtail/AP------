@@ -1,0 +1,29 @@
+phase=PHASE_01_NUMERIC_GEOMETRY_MODEL status=PASS counts commands=3/3 tests=9 passed=9 failed=0 errors=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/geometry_model.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_geometry_model.py -v =====
+--- stdout ---
+--- stderr ---
+test_circle_circle (test_geometry_model.GeometryTests.test_circle_circle) ... ok
+test_circle_line (test_geometry_model.GeometryTests.test_circle_line) ... ok
+test_division (test_geometry_model.GeometryTests.test_division) ... ok
+test_fail_closed (test_geometry_model.GeometryTests.test_fail_closed) ... ok
+test_foot_distance (test_geometry_model.GeometryTests.test_foot_distance) ... ok
+test_gold_old_numeric_parity (test_geometry_model.GeometryTests.test_gold_old_numeric_parity) ... ok
+test_large_small_norm_and_clip (test_geometry_model.GeometryTests.test_large_small_norm_and_clip) ... ok
+test_real_tangent_cluster (test_geometry_model.GeometryTests.test_real_tangent_cluster) ... ok
+test_vertical_canonical (test_geometry_model.GeometryTests.test_vertical_canonical) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/__init__.py F6346FB2944EFC4CCCA3AF788D78695B6F645E2AC8ABCBE2163C5D50DEE672DC
+archive/tools/geometry-equation/visual_engine/geometry_model.py 0F03ACF264BEF55B7BA1E07078E53ACBA5CF0272D8E1309749B38FFD6C925160
+archive/tools/geometry-equation/tests/test_geometry_model.py 912BE445E01CEC4EDB46059613EC334E4A76412BB2B877C750DFE25625C928D1
