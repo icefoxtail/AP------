@@ -318,8 +318,9 @@ function createStaging(fixture, options = {}) {
   const applyId = options.applyId || "fixture-stage-main-001";
   const targetRef = options.targetRef || "main";
   const grade = options.grade || (targetRef === "main" ? "중2" : "중1");
-  if (targetRef !== "main") git(fixture.root, ["branch", targetRef, fixture.baseSha]);
-  git(fixture.root, ["checkout", "-b", `archive-apply/${applyId}`, fixture.baseSha]);
+  const dispatchBaseSha = options.dispatchBaseSha || fixture.baseSha;
+  if (targetRef !== "main") git(fixture.root, ["branch", targetRef, dispatchBaseSha]);
+  git(fixture.root, ["checkout", "-b", `archive-apply/${applyId}`, dispatchBaseSha]);
   const finalQuestions = fixture.questions.map((row) => ({ ...row }));
   if (options.protectedMutation === "content") finalQuestions[0].content = "임의 변조된 문항";
   else if (options.protectedMutation === "answer") finalQuestions[0].answer = "B";
@@ -470,14 +471,31 @@ test("T8 sourceBlobSha mismatch is rejected against the base commit", (t) => {
   assert.match(result.stderr, /sourceBlobSha mismatch/);
 });
 
-test("T9 stale targetBaseSha fails before target ref mutation", (t) => {
+test("T9 compatible main advance is accepted without R2 reseal", (t) => {
   const f = fixtureRoot(t);
-  const { packet, packetPath } = createStaging(f, { applyId: "fixture-stale-009" });
-  const targetBefore = String(git(f.root, ["rev-parse", "refs/heads/main"])).trim();
-  const result = runCli(f.root, cli.staging, ["preflight", "--packet", packetPath, "--target-sha", "0".repeat(40)], false);
-  assert.match(result.stderr, /APPLY_BASE_STALE/);
-  assert.equal(String(git(f.root, ["rev-parse", "refs/heads/main"])).trim(), targetBefore);
-  assert.equal(packet.targetBaseSha, targetBefore);
+  fs.writeFileSync(path.join(f.root, "unrelated.txt"), "unrelated main advance\n", "utf8");
+  git(f.root, ["add", "--", "unrelated.txt"]);
+  git(f.root, ["commit", "-m", "unrelated main advance"]);
+  const dispatchBaseSha = String(git(f.root, ["rev-parse", "HEAD"])).trim();
+  const { packet, packetPath } = createStaging(f, { applyId: "fixture-moving-009", dispatchBaseSha });
+  const checked = lastJson(runCli(f.root, cli.staging, ["preflight", "--packet", packetPath, "--target-sha", dispatchBaseSha]).stdout);
+  assert.equal(checked.status, "PASS");
+  assert.equal(checked.reviewBaseSha, f.baseSha);
+  assert.equal(checked.dispatchBaseSha, dispatchBaseSha);
+  assert.notEqual(packet.targetBaseSha, dispatchBaseSha);
+});
+
+test("T9b relevant source drift since R2 closure fails closed", (t) => {
+  const f = fixtureRoot(t);
+  const drifted = f.questions.map((row) => ({ ...row }));
+  drifted[0].content = "R2 이후 원문 변경";
+  writeBank(f.root, drifted);
+  git(f.root, ["add", "--", examRepoPath]);
+  git(f.root, ["commit", "-m", "drift reviewed source"]);
+  const dispatchBaseSha = String(git(f.root, ["rev-parse", "HEAD"])).trim();
+  const { packetPath } = createStaging(f, { applyId: "fixture-conflict-009b", dispatchBaseSha, finalMutation: "solution" });
+  const result = runCli(f.root, cli.staging, ["preflight", "--packet", packetPath, "--target-sha", dispatchBaseSha], false);
+  assert.match(result.stderr, /APPLY_CONFLICT_HOLD: source exam drifted/);
 });
 
 test("T10 finalFiles SHA mismatch is rejected by staging preflight", (t) => {
