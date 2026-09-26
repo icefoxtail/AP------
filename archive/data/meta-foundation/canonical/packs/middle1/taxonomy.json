@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 78,
-  "templateCount": 149,
+  "problemTypeCount": 81,
+  "templateCount": 161,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -430,6 +430,43 @@
       ]
     },
     {
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "대푯값의 해석과 조건 복원",
+      "definition": "평균·중앙값·최빈값을 계산·비교하고 대푯값 조건으로 자료의 누락값을 복원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
+        "qid_v1_1a8159b4dc0fa361db9e4e976d3a3b4009b4bc927f6fae737f7d54aa94dc1dde",
+        "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953"
+      ],
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
+          "representativePrimaryMethod": "평균으로 $a+b$를 먼저 정한 뒤 자료를 크기순으로 배열한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_1a8159b4dc0fa361db9e4e976d3a3b4009b4bc927f6fae737f7d54aa94dc1dde",
+          "representativePrimaryMethod": "이상값 $62$가 있으므로 평균, 중앙값, 최빈값을 각각 직접 확인한다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ①, ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953",
+          "representativePrimaryMethod": "줄기와 잎 그림의 도수와 ‘중앙값=최빈값’ 조건을 함께 이용한다.",
+          "representativeDecisiveStep": "$a+b+A+B=6+6+2+3=17$이므로 정답은 ②이다."
+        }
+      ]
+    },
+    {
       "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
       "canonicalLabelKo": "공약수·공배수 조건 검사",
       "definition": "The target is the candidate that fails common-divisor membership; minimum prime exponents provide the decisive test.",
@@ -628,9 +665,10 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 2,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
         "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+        "qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471",
         "qid_v1_f8e070b5c591c974adcc63502139009fcd2fe3a5107ff3c5db2d94daa878348b"
       ],
       "sourceUnits": [
@@ -642,6 +680,12 @@
           "representativeQuestionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
           "representativePrimaryMethod": "좌표에서 같은 x 또는 같은 y 좌표를 이용해 사다리꼴의 평행한 두 변 길이와 그 사이 거리를 구하고 넓이 공식을 적용한다.",
           "representativeDecisiveStep": "AB는 x=−4 위의 세로변 길이 5−(−2)=7이고 CD는 x=6 위의 세로변 길이 1−(−2)=3이다. 두 평행변 사이 거리는 6−(−4)=10이므로 넓이는 (7+3)÷2×10=50이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471",
+          "representativePrimaryMethod": "반비례 그래프 $y=\\dfrac{15}{x}$ 위의 점에서는 $xy=15$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ③이다."
         }
       ]
     },
@@ -732,10 +776,14 @@
       "aliases": [],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 2,
+      "supportingItemCount": 6,
       "supportingQuestionUids": [
+        "qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac",
         "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
-        "qid_v1_cd7dba47f5a638950023c272f2786455b710a00fa3c3986f0b57049577674031"
+        "qid_v1_cc6b3bb9b8f40e87b60fc39db1aa57b5b472783fb6f4eb3c19a373d4f9192732",
+        "qid_v1_cd7dba47f5a638950023c272f2786455b710a00fa3c3986f0b57049577674031",
+        "qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9",
+        "qid_v1_e696a0c355985e4f8c3c8c4a45a2736dba86252e91b36d5d7e03a8b909be9485"
       ],
       "sourceUnits": [
         "M1-08"
@@ -746,6 +794,30 @@
           "representativeQuestionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
           "representativePrimaryMethod": "40대 나이의 도수와 전체 자료 수를 이용해 백분율 계산",
           "representativeDecisiveStep": "Q15의 공통 자료에는 나이가 20개 있고 40대 값은 41,42,42,47,47,48,49의 7개다. 따라서 7/20×100=35%로 보기 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cc6b3bb9b8f40e87b60fc39db1aa57b5b472783fb6f4eb3c19a373d4f9192732",
+          "representativePrimaryMethod": "상대도수에 전체 학생 수를 곱하면 해당 계급의 학생 수를 구할 수 있다.",
+          "representativeDecisiveStep": "$60-50=10$명 더 많으므로 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_e696a0c355985e4f8c3c8c4a45a2736dba86252e91b36d5d7e03a8b909be9485",
+          "representativePrimaryMethod": "한 계급의 도수와 상대도수를 이용해 전체 학생 수를 먼저 구한다.",
+          "representativeDecisiveStep": "따라서 $25$명, $0.2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9",
+          "representativePrimaryMethod": "한 계급의 실제 학생 수와 상대도수로 전체 학생 수를 먼저 구한다.",
+          "representativeDecisiveStep": "$48/300\\times100=16\\%$이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac",
+          "representativePrimaryMethod": "상대도수만 비교하지 말고 학교별 전체 학생 수까지 곱해 실제 학생 수로 바꾼다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ①이다."
         }
       ]
     },
@@ -838,13 +910,19 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 6,
+      "supportingItemCount": 12,
       "supportingQuestionUids": [
+        "qid_v1_1b11f39f4173ca2c7a0191b0b8e33ef92e7eba5e2abdfe8e5f1eb3c34be36c1d",
         "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
+        "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
+        "qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113",
+        "qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33",
         "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa",
         "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
         "qid_v1_c3af40b206248b9a436eecb4479a458de78da2d319aaf575c2c5498a6cca8a73",
+        "qid_v1_cc9182377d80d9500f9fe3e68491f901d6aa0ece2799ee55cca353e2196efb03",
         "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9",
+        "qid_v1_f50e3780729b7f23c1676b957760e7396cecc5d1d164f1b690fe97c164b3bf8c",
         "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
       ],
       "sourceUnits": [
@@ -856,6 +934,42 @@
           "representativeQuestionUid": "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
           "representativePrimaryMethod": "Convert 20% of 30 to the ≥160 cm total, then subtract the known 170–180 cm frequency.",
           "representativeDecisiveStep": "There are 6 students at least 160 cm tall; 3 are in 170–180 cm, leaving 3 in 160–170 cm."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_f50e3780729b7f23c1676b957760e7396cecc5d1d164f1b690fe97c164b3bf8c",
+          "representativePrimaryMethod": "전체 학생 수에서 알려진 계급의 도수를 빼서 빈칸의 도수를 구한다.",
+          "representativeDecisiveStep": "따라서 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_1b11f39f4173ca2c7a0191b0b8e33ef92e7eba5e2abdfe8e5f1eb3c34be36c1d",
+          "representativePrimaryMethod": "줄기와 잎 그림에서 $42$ 이상인 자료만 센다.",
+          "representativeDecisiveStep": "$6+6=12$명이고 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cc9182377d80d9500f9fe3e68491f901d6aa0ece2799ee55cca353e2196efb03",
+          "representativePrimaryMethod": "상대도수는 $\\dfrac{\\text{도수}}{\\text{전체 도수}}$로 구한다.",
+          "representativeDecisiveStep": "정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113",
+          "representativePrimaryMethod": "히스토그램에서 각 막대의 높이는 해당 계급의 도수이다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33",
+          "representativePrimaryMethod": "빈칸의 도수를 $x$명으로 놓고 전체 도수의 합이 $28$명임을 이용한다.",
+          "representativeDecisiveStep": "구하는 값은 $16$명이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
+          "representativePrimaryMethod": "각 집단에서 상대도수의 합이 $1$이라는 점을 이용한다.",
+          "representativeDecisiveStep": "따라서 모두 $84+90=174$명이다."
         }
       ]
     },
@@ -1192,15 +1306,17 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 16,
+      "supportingItemCount": 18,
       "supportingQuestionUids": [
         "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
         "qid_v1_07621230226a6705c8d349759b651e5e4110f5881da8aeb6c7e70b027a7f844c",
+        "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
         "qid_v1_20eb1925e02082e0bc984ef8d4987a2b84d0b33b8bdbdb69653dcea1774ea529",
         "qid_v1_21174fa81a5a4cdfadfc9300479ca6d699b9549163f5312744378003c3943cdf",
         "qid_v1_22ddc6dba9d486d3d7223b368bae0a805fb9ec98d8e13cba709f258305e2e081",
         "qid_v1_360fc0dcaa7c42d1b3a61b13245185ff67a0b4c88a240a2fa89881b99bd0fed9",
         "qid_v1_50e4ef192f71379c7a2a1ac6f24a15fbf6d38eb1c0b7e72d05bfaa22f68b6dd1",
+        "qid_v1_6ecd20d61ce06b1c96b021f09edd8900a41e7421e1028f165e39bd43724c8a55",
         "qid_v1_6ef33b13b4ec9085d1acf7fee2cd17d7bb6ae53f4a811ea56af4efdfb3a58fd5",
         "qid_v1_9bb4fb1290c68f9a1c8a64f7ba7fb6de9718165ab99b8854f1f3b349f6f79f25",
         "qid_v1_b0d8fb8f75c7f1eeaf3190bf017a496205b74b17acfde4581b95a2ba1a2c0315",
@@ -1220,6 +1336,18 @@
           "representativeQuestionUid": "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
           "representativePrimaryMethod": "인접한 정다각형의 내각·외각이 180°를 이루게 하여 외각과 변의 수를 정하고 선택지별 다각형 성질을 검산한다.",
           "representativeDecisiveStep": "외각 e이면 3e+e=180°이므로 e=45°, n=360/45=8이다. 한 꼭짓점에서 대각선으로 생기는 삼각형은 n−2=6개이므로 ‘5개’인 ④가 틀리다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6ecd20d61ce06b1c96b021f09edd8900a41e7421e1028f165e39bd43724c8a55",
+          "representativePrimaryMethod": "육각형의 내각의 합은 $720^\\circ$이고, 한 외각과 그에 이웃한 내각의 합은 $180^\\circ$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
+          "representativePrimaryMethod": "$n$각형의 내각의 합과 한 꼭짓점에서 그을 수 있는 대각선의 개수를 연결한다.",
+          "representativeDecisiveStep": "따라서 $x+y=4+7=11$이므로 정답은 ①이다."
         }
       ]
     },
@@ -1277,7 +1405,7 @@
     {
       "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
       "canonicalLabelKo": "다면체의 모서리·면 관계",
-      "definition": "The goal is to identify a false spatial-geometry claim about edges, faces, and distances in a rectangular prism.",
+      "definition": "다면체에서 면의 모양, 모서리·면·꼭짓점의 관계, 한 꼭짓점에 모이는 면의 성질과 공간 관계를 진술별로 판단한다.",
       "aliases": [
         "PRISM_SKEW_AND_FACE_PARALLEL_EDGE_COUNTS",
         "PT_M1_POLYHEDRON_SPATIAL_RELATIONS",
@@ -1290,16 +1418,21 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 16,
+      "supportingItemCount": 21,
       "supportingQuestionUids": [
+        "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
         "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
         "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173",
         "qid_v1_1d5c86f437be9418bfc4cb1f3f9f6fd7cd0a9846a41f6a30da38ede245ce7745",
         "qid_v1_24f2f2cf423b79613a14e85c6ffbf0912816db27608343057aa26263536ab6f8",
         "qid_v1_2b4931047bdbd2f493b0a4d0cff3f6de4726964ab4134ca290ccdf200a484a95",
+        "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
         "qid_v1_31d055d81ade79007620d5df4d3deeb0460b58c0cc554378f737dd5ec57bc21b",
         "qid_v1_618d09e48445ce3e0556235122b322e592ecd1eac03133418968ef89dbeed46e",
         "qid_v1_6a197c91d78047c77a9d6921343db3df2d8664d07b4f94c81eb035790a5d14c9",
+        "qid_v1_6bd8e88a529023c0bd81dcade2d2170bd9aef8f45da26c9b7f58d56b19ac14af",
+        "qid_v1_6c2cef33225a19f174b4bed663192b7c449d2b066ecccff40cc2d3761d391968",
+        "qid_v1_7eeacf8b68bf0f7479a058a5ae5b3ea58d53e991a20f140df29a87e5a8caed2f",
         "qid_v1_8a7a20e96f20afa0002464f66557219f9d8b3489785785aaf1befb307df16603",
         "qid_v1_a1a90308af82ee31394cb64c4dc042a6c653970e818db50445f9fbfcfad8d4fc",
         "qid_v1_cc3fcfb27575b854e84c42a6a12ad630b235f22b824509310454eacbe1e1b38f",
@@ -1319,6 +1452,36 @@
           "representativeQuestionUid": "qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6",
           "representativePrimaryMethod": "Check each cuboid relation; for option ③, measure the perpendicular distance from G to face AEHD.",
           "representativeDecisiveStep": "The distance is GH=4 cm, not 3 cm; option ③ is false."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6bd8e88a529023c0bd81dcade2d2170bd9aef8f45da26c9b7f58d56b19ac14af",
+          "representativePrimaryMethod": "각뿔의 옆면은 삼각형이고, 각기둥의 옆면은 직사각형, 각뿔대의 옆면은 사다리꼴이다.",
+          "representativeDecisiveStep": "따라서 잘못 짝지어진 것은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_7eeacf8b68bf0f7479a058a5ae5b3ea58d53e991a20f140df29a87e5a8caed2f",
+          "representativePrimaryMethod": "정다면체는 면의 모양과 한 꼭짓점에 모이는 면의 수를 구분하여 확인한다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6c2cef33225a19f174b4bed663192b7c449d2b066ecccff40cc2d3761d391968",
+          "representativePrimaryMethod": "정다면체는 한 꼭짓점에 모이는 면의 개수를 비교하면 구별할 수 있다.",
+          "representativeDecisiveStep": "한 꼭짓점에 면이 $4$개 모이는 것은 정팔면체이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
+          "representativePrimaryMethod": "여기서 ‘구면체’는 구(九)면체, 즉 면이 9개인 다면체라는 뜻이다.",
+          "representativeDecisiveStep": "따라서 ⑤가 옳지 않으므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
+          "representativePrimaryMethod": "정팔각형의 한 내각과 한 꼭짓점에 모이는 각의 합을 비교한다.",
+          "representativeDecisiveStep": "내각 공식의 분자는 $(8-2)=6$이므로 ④에 들어갈 수는 $6$이다. 보기의 ‘5’는 잘못이므로 정답은 ④이다."
         }
       ]
     },
@@ -1449,11 +1612,16 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 3,
+      "supportingItemCount": 8,
       "supportingQuestionUids": [
+        "qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a",
+        "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
         "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
+        "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
+        "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b",
         "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
-        "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2"
+        "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
+        "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685"
       ],
       "sourceUnits": [
         "M1-04"
@@ -1464,6 +1632,36 @@
           "representativeQuestionUid": "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
           "representativePrimaryMethod": "read direct/inverse graph constants",
           "representativeDecisiveStep": "The line through (−4,2) gives a=2/(−4)=−1/2. The inverse graph through (3,5) gives b=xy=15. So a−b=−1/2−15=−31/2."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b",
+          "representativePrimaryMethod": "그래프 위의 점은 모두 $y=3x$를 만족한다.",
+          "representativeDecisiveStep": "$a-b=6-4=2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
+          "representativePrimaryMethod": "정비례 관계 $y=ax$에서 그래프 위의 점 $(x,y)$를 이용하면 $a=\\dfrac{y}{x}$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685",
+          "representativePrimaryMethod": "반비례 관계는 $y=\\dfrac{a}{x}$로 나타내고, 그래프 위에서는 $xy=a$이다.",
+          "representativeDecisiveStep": "$y=\\dfrac{10}{x}$이므로 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
+          "representativePrimaryMethod": "두 그래프의 교점은 두 관계식을 모두 만족한다.",
+          "representativeDecisiveStep": "따라서 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a",
+          "representativePrimaryMethod": "그래프의 한 점을 이용해 두 사람의 정비례 관계식을 각각 구한다.",
+          "representativeDecisiveStep": "$75-15=60$분 늦게 도착한다."
         }
       ]
     },
@@ -1706,12 +1904,13 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 4,
+      "supportingItemCount": 5,
       "supportingQuestionUids": [
         "qid_v1_1f83170c9598475023d8ff009183e7e3175cbf1762b58817c46bc07890ffde80",
         "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3",
         "qid_v1_2e6f3d78946fb4d3a06f2b7e575bde646f48d22d8b66dddb67ff1ea425795b86",
-        "qid_v1_89a8a97d3c7cf1152abbd4f94130be90be6cf3c78c1dd9d1aafb74cf5fd43c7b"
+        "qid_v1_89a8a97d3c7cf1152abbd4f94130be90be6cf3c78c1dd9d1aafb74cf5fd43c7b",
+        "qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b"
       ],
       "sourceUnits": [
         "M1-06"
@@ -1722,6 +1921,12 @@
           "representativeQuestionUid": "qid_v1_1f83170c9598475023d8ff009183e7e3175cbf1762b58817c46bc07890ffde80",
           "representativePrimaryMethod": "정오각형의 외각 72도에서 공유 변의 수평 방향각 36도를 얻고 정삼각형의 60도와 정사각형 수평변을 합성한다.",
           "representativeDecisiveStep": "공유 변 방향 36도와 정삼각형 각 60도를 더해 내려가는 선분의 방향 96도를 얻고, 왼쪽 수평변과의 각 x=180도−96도=84도이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b",
+          "representativePrimaryMethod": "정다각형의 바깥각을 이용해 두 변의 방향 차이를 비교한다.",
+          "representativeDecisiveStep": "$x+y=180^\\circ+(72^\\circ-60^\\circ)=192^\\circ$이므로 정답은 ⑤이다."
         }
       ]
     },
@@ -1771,6 +1976,50 @@
           "representativeQuestionUid": "qid_v1_00d5faf57a4654c3c6cf9814946c4f5c29bfb232f33b2a09418d166032122f1b",
           "representativePrimaryMethod": "Test trapezoid angle, distance, and incidence properties",
           "representativeDecisiveStep": "AB is perpendicular to both parallel bases; D projects perpendicularly to AB at A; the distance between AB and BC is the height AB=2 cm; and the other three side-lines each meet AB. Thus ㄱ–ㄹ are all true (⑤)."
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "canonicalLabelKo": "회전체의 단면 성질",
+      "definition": "회전체를 회전축에 수직인 평면 또는 회전축을 포함하는 평면으로 자를 때 생기는 단면의 모양·넓이·합동·대칭 성질을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb",
+        "qid_v1_6f8cab14c7b506265fd4dc674d17a9458c1104fc476f8e9e0bad4f6103988639",
+        "qid_v1_974f5258da6d53b711f7908e714dd4d8697474a738519476489cd72d179e1307",
+        "qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a"
+      ],
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a",
+          "representativePrimaryMethod": "회전체를 회전축을 포함하는 평면으로 자르면 회전축에 대하여 선대칭인 단면이 생긴다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_974f5258da6d53b711f7908e714dd4d8697474a738519476489cd72d179e1307",
+          "representativePrimaryMethod": "회전체를 회전축에 수직인 평면으로 자르면 단면은 원 모양이다.",
+          "representativeDecisiveStep": "따라서 바르게 짝지어진 것은 ‘원뿔 - 원’이므로 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6f8cab14c7b506265fd4dc674d17a9458c1104fc476f8e9e0bad4f6103988639",
+          "representativePrimaryMethod": "회전체를 회전축을 포함하는 평면으로 자르면 회전축이 단면의 대칭축이 된다.",
+          "representativeDecisiveStep": "따라서 ㉮는 합동, ㉯는 선대칭이므로 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb",
+          "representativePrimaryMethod": "직사각형을 한 변을 축으로 회전하면 원기둥이 된다.",
+          "representativeDecisiveStep": "$\\pi\\times8^2=64\\pi\\rm\\,cm^2$이므로 정답은 ①이다."
         }
       ]
     },
@@ -1837,6 +2086,127 @@
           "representativeQuestionUid": "qid_v1_9431b3e0911c680c10ec64b3e0b2bd1ff34af4773bfa7cfeb8b5dbb3c2aef53e",
           "representativePrimaryMethod": "Subtract Dubai’s +4 offset from New York’s −5 relative offset, then apply the 9-hour difference to the stated time.",
           "representativeDecisiveStep": "New York is 9 hours behind Dubai; Tuesday 6 a.m. becomes Monday 9 p.m., choice ①."
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "canonicalLabelKo": "입체도형의 겉넓이·부피 계산",
+      "definition": "입체도형의 겉넓이와 부피 공식을 적용하고 합성·절단·옮김 전후의 관계로 측정량을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 15,
+      "supportingQuestionUids": [
+        "qid_v1_1a858ebefe9ca7a430dc8096a9f3f372ca915546c98b53e3344c253cabdbd526",
+        "qid_v1_34dcef3d8f3fdf53fc83227a8b6ce95e685ec3c18428a807f4aba73a54c027d4",
+        "qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49",
+        "qid_v1_8530d56e636f605741be693d69472480d286ff5f4d2bef24b3514a8a61eb397e",
+        "qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2",
+        "qid_v1_8c1120cb8046980e755d2f250867ea4ae8293c44b2ecc90fdec807a3a26adc13",
+        "qid_v1_9c90165060eab71b9285ef0a50861aa14c43cb6e04e887cc904df547633fa2dc",
+        "qid_v1_a07937a2314578386e5e497c39d3cc68f93eee43b45a3f715e5cfe5e2468549c",
+        "qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1",
+        "qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307",
+        "qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832",
+        "qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4",
+        "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90",
+        "qid_v1_d86be3c42030629b6be76efaef912c5d35d487fe6dd933704ec2b9b49635fb1c",
+        "qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd"
+      ],
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_a07937a2314578386e5e497c39d3cc68f93eee43b45a3f715e5cfe5e2468549c",
+          "representativePrimaryMethod": "사각뿔대의 겉넓이는 두 밑면과 네 개의 사다리꼴 옆면의 넓이를 더한다.",
+          "representativeDecisiveStep": "$100+58=158\\mathrm{cm}^2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_34dcef3d8f3fdf53fc83227a8b6ce95e685ec3c18428a807f4aba73a54c027d4",
+          "representativePrimaryMethod": "물의 양은 옮겨도 같으므로 원뿔과 원기둥 속 물의 부피가 같다.",
+          "representativeDecisiveStep": "따라서 정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4",
+          "representativePrimaryMethod": "원기둥의 부피에서 공 3개의 부피를 뺀다.",
+          "representativeDecisiveStep": "$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이므로 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90",
+          "representativePrimaryMethod": "회전하여 생기는 겉면을 반구의 곡면, 원뿔대의 옆면, 아래 원형 밑면으로 나누어 더한다.",
+          "representativeDecisiveStep": "$72\\pi+45\\pi+9\\pi=126\\pi\\mathrm{cm}^2$이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1",
+          "representativePrimaryMethod": "(1)은 원기둥의 두 밑면과 옆면을 더하고, (2)는 각뿔의 부피 공식을 이용한다.",
+          "representativeDecisiveStep": "따라서 (1) $28\\pi\\,\\mathrm{cm}^2$, (2) $84\\mathrm{cm}^3$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_9c90165060eab71b9285ef0a50861aa14c43cb6e04e887cc904df547633fa2dc",
+          "representativePrimaryMethod": "원기둥의 전개도에서 두 원의 반지름, 옆면 직사각형의 높이와 가로 길이를 차례로 연결한다.",
+          "representativeDecisiveStep": "따라서 정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8530d56e636f605741be693d69472480d286ff5f4d2bef24b3514a8a61eb397e",
+          "representativePrimaryMethod": "두 원기둥의 부피가 같다는 조건으로 B의 높이를 구한다.",
+          "representativeDecisiveStep": "따라서 원기둥 B의 높이는 $24\\mathrm{cm}$이고 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_1a858ebefe9ca7a430dc8096a9f3f372ca915546c98b53e3344c253cabdbd526",
+          "representativePrimaryMethod": "원뿔의 전개도에서 부채꼴의 호의 길이는 밑면의 원주와 같다.",
+          "representativeDecisiveStep": "$10\\pi+4\\pi=14\\pi\\mathrm{cm}^2$이므로 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d86be3c42030629b6be76efaef912c5d35d487fe6dd933704ec2b9b49635fb1c",
+          "representativePrimaryMethod": "반구의 부피는 같은 반지름을 가진 구의 부피의 절반이다.",
+          "representativeDecisiveStep": "정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8c1120cb8046980e755d2f250867ea4ae8293c44b2ecc90fdec807a3a26adc13",
+          "representativePrimaryMethod": "겉넓이를 구의 곡면 부분과 두 절단면으로 나누어 본다.",
+          "representativeDecisiveStep": "따라서 ㉡은 반원이고 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd",
+          "representativePrimaryMethod": "원뿔대는 큰 원뿔에서 위쪽의 작은 원뿔을 뺀 것으로 생각한다.",
+          "representativeDecisiveStep": "$32\\pi-4\\pi=28\\pi\\mathrm{m}^3$이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49",
+          "representativePrimaryMethod": "(1)은 삼각기둥의 두 밑면과 옆면을 더하고, (2)는 원뿔의 부피를 구한다.",
+          "representativeDecisiveStep": "따라서 (1) $288\\mathrm{cm}^2$, (2) $75\\pi\\mathrm{cm}^3$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307",
+          "representativePrimaryMethod": "원기둥 모양 통의 부피에서 공 $3$개의 부피를 뺀다.",
+          "representativeDecisiveStep": "$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832",
+          "representativePrimaryMethod": "녹이기 전후의 부피가 같음을 이용한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2",
+          "representativePrimaryMethod": "두 정사각형 밑면과 네 개의 합동인 사다리꼴 옆면의 넓이를 합한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
         }
       ]
     },
@@ -1990,13 +2360,17 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 6,
+      "supportingItemCount": 10,
       "supportingQuestionUids": [
+        "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
         "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
+        "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
         "qid_v1_6c85e970e17ed288d81c2496c4f401932f77ea1d530f9e5b67652812a12c7878",
         "qid_v1_8fd3c9e74df936eeabc207ad02f66d0857fc61e35826cbf9040cd22dee3647bd",
         "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994",
         "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+        "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+        "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
         "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
       ],
       "sourceUnits": [
@@ -2008,6 +2382,30 @@
           "representativeQuestionUid": "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
           "representativePrimaryMethod": "연속한 이등변삼각형의 밑각을 나타내고 직선상 각 및 삼각형 내각합으로 미지각을 푼다.",
           "representativeDecisiveStep": "x=∠ADC=∠CAD. ∠ADE=100°, ∠CDE=100°−x이므로 ∠DCE=40°+x/2. B,A,D,F가 일직선이고 B,C,E가 일직선이어서 ∠ACE=180°−x/2. 한편 ∠ACE=(180°−2x)+(40°+x/2); 같게 놓으면 x=40°이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
+          "representativePrimaryMethod": "삼각형의 내각의 합과 맞꼭지각을 차례로 이용한다.",
+          "representativeDecisiveStep": "따라서 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+          "representativePrimaryMethod": "삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.",
+          "representativeDecisiveStep": "따라서 $\\angle x=60^\\circ$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+          "representativePrimaryMethod": "일직선과 삼각형의 내각의 합을 차례로 이용한다.",
+          "representativeDecisiveStep": "정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+          "representativePrimaryMethod": "두 이등변삼각형의 밑각을 차례로 구한 뒤 바깥각을 구한다.",
+          "representativeDecisiveStep": "$x=180^\\circ-78^\\circ=102^\\circ$이다."
         }
       ]
     },
@@ -3034,6 +3432,34 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "canonicalLabelKo": "대푯값 조건으로 자료 복원",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "definition": "평균·중앙값·최빈값 조건을 식으로 바꾸고 자료의 순서와 빈도를 확인해 누락값을 복원.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
+        "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_00dfff2608c2a51eb012e1e6731bb4e01c8b6411ef96c0817bbf1d3aba552ede",
+          "representativePrimaryMethod": "평균으로 $a+b$를 먼저 정한 뒤 자료를 크기순으로 배열한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_5877b6de040fb2ad6562ab96ec6affdeb618c0bdfd7017dbcce572c49e263953",
+          "representativePrimaryMethod": "줄기와 잎 그림의 도수와 ‘중앙값=최빈값’ 조건을 함께 이용한다.",
+          "representativeDecisiveStep": "$a+b+A+B=6+6+2+3=17$이므로 정답은 ②이다."
+        }
+      ]
+    },
+    {
       "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
       "parentProblemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
       "canonicalLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격",
@@ -3505,9 +3931,10 @@
       "aliases": [
         "TPL_M1_COORDINATE_TRAPEZOID_PARALLEL_SIDE_AREA"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "supportingQuestionUids": [
-        "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9"
+        "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+        "qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
@@ -3518,6 +3945,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
           "representativeStep": "AB는 x=−4 위의 세로변 길이 5−(−2)=7이고 CD는 x=6 위의 세로변 길이 1−(−2)=3이다. 두 평행변 사이 거리는 6−(−4)=10이므로 넓이는 (7+3)÷2×10=50이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d0190912ff2fefe3a53fc83f953ce6706956fcef833f5d3bdc7cb331a5f34471",
+          "representativePrimaryMethod": "반비례 그래프 $y=\\dfrac{15}{x}$ 위의 점에서는 $xy=15$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ③이다."
         }
       ]
     },
@@ -3697,6 +4130,62 @@
       ]
     },
     {
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+      "canonicalLabelKo": "상대도수로 집단별 인원 비교",
+      "parentProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "definition": "집단별 상대도수에 각 집단의 전체 인원을 곱해 실제 인원을 비교.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac",
+        "qid_v1_cc6b3bb9b8f40e87b60fc39db1aa57b5b472783fb6f4eb3c19a373d4f9192732"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cc6b3bb9b8f40e87b60fc39db1aa57b5b472783fb6f4eb3c19a373d4f9192732",
+          "representativePrimaryMethod": "상대도수에 전체 학생 수를 곱하면 해당 계급의 학생 수를 구할 수 있다.",
+          "representativeDecisiveStep": "$60-50=10$명 더 많으므로 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_03941b7e264dfb63c7271e2399e09076840e7c73e18261e767f43ac6283c9aac",
+          "representativePrimaryMethod": "상대도수만 비교하지 말고 학교별 전체 학생 수까지 곱해 실제 학생 수로 바꾼다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ①이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+      "canonicalLabelKo": "상대도수로 전체 인원 복원",
+      "parentProblemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "definition": "실제 도수와 상대도수로 전체 인원을 구한 뒤 필요한 실제 도수·비율을 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9",
+        "qid_v1_e696a0c355985e4f8c3c8c4a45a2736dba86252e91b36d5d7e03a8b909be9485"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_e696a0c355985e4f8c3c8c4a45a2736dba86252e91b36d5d7e03a8b909be9485",
+          "representativePrimaryMethod": "한 계급의 도수와 상대도수를 이용해 전체 학생 수를 먼저 구한다.",
+          "representativeDecisiveStep": "따라서 $25$명, $0.2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d9f125289ff7fb870667cd902ed5e7a60846069f8f9139709f3ca42b52b23ad9",
+          "representativePrimaryMethod": "한 계급의 실제 학생 수와 상대도수로 전체 학생 수를 먼저 구한다.",
+          "representativeDecisiveStep": "$48/300\\times100=16\\%$이므로 정답은 ③이다."
+        }
+      ]
+    },
+    {
       "templateKey": "TPL_M1_DATA_EXTREME_VALUE_SUM_CORE",
       "parentProblemTypeKey": "PT_M1_DATA_EXTREME_VALUE_SUM",
       "canonicalLabelKo": "자료의 최댓값·최솟값 이용 — 기본 풀이 골격",
@@ -3794,8 +4283,9 @@
         "TPL_M1_CHECK_FREQUENCY_TABLE_CLAIMS",
         "TPL_M1_LOWER_QUARTILE_SUPPORT_CUTOFF"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
+        "qid_v1_1b11f39f4173ca2c7a0191b0b8e33ef92e7eba5e2abdfe8e5f1eb3c34be36c1d",
         "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa",
         "qid_v1_d820faaba2270355ad9463cd4500c5686c2239d0297e555a5d957976887869a9"
       ],
@@ -3809,6 +4299,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_7a8e0b52e6133f39c8ea257ecc1ad80ad86dff0244f237f6724fa348f1f1f6fa",
           "representativeStep": "최고 90~100점 계급6명 다음 아홉 번째는 80~90점 계급에 속하며 그 도수는8명이지7명이 아니므로 ⑤가 틀리다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_1b11f39f4173ca2c7a0191b0b8e33ef92e7eba5e2abdfe8e5f1eb3c34be36c1d",
+          "representativePrimaryMethod": "줄기와 잎 그림에서 $42$ 이상인 자료만 센다.",
+          "representativeDecisiveStep": "$6+6=12$명이고 정답은 ④이다."
         }
       ]
     },
@@ -3824,8 +4320,9 @@
         "TPL_M1_SUM_CLASSES_BELOW_CUTPOINT",
         "TPL_M1_TAIL_PERCENT_AND_LOWER_RANGE_PERCENT"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
+        "qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113",
         "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
         "qid_v1_c3af40b206248b9a436eecb4479a458de78da2d319aaf575c2c5498a6cca8a73"
       ],
@@ -3838,6 +4335,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
           "representativeStep": "The 130–140 cm class has 4 and 140–150 cm has 11, so 4+11=15 students are below 150 cm."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113",
+          "representativePrimaryMethod": "히스토그램에서 각 막대의 높이는 해당 계급의 도수이다.",
+          "representativeDecisiveStep": "정답은 ②이다."
         }
       ]
     },
@@ -3853,9 +4356,13 @@
         "TPL_M1_TORN_GRAPH_TRUE_STATEMENT",
         "TPL_M1_USE_PERCENT_TOTAL_TO_FILL_FREQUENCY"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 6,
       "supportingQuestionUids": [
         "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
+        "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
+        "qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33",
+        "qid_v1_cc9182377d80d9500f9fe3e68491f901d6aa0ece2799ee55cca353e2196efb03",
+        "qid_v1_f50e3780729b7f23c1676b957760e7396cecc5d1d164f1b690fe97c164b3bf8c",
         "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
       ],
       "observedConditionKeys": [],
@@ -3867,6 +4374,30 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_38e73b7fb61838240ac3f54280f124c8432dd18dbdba8e81d76a717d0900122c",
           "representativeStep": "There are 6 students at least 160 cm tall; 3 are in 170–180 cm, leaving 3 in 160–170 cm."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_f50e3780729b7f23c1676b957760e7396cecc5d1d164f1b690fe97c164b3bf8c",
+          "representativePrimaryMethod": "전체 학생 수에서 알려진 계급의 도수를 빼서 빈칸의 도수를 구한다.",
+          "representativeDecisiveStep": "따라서 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cc9182377d80d9500f9fe3e68491f901d6aa0ece2799ee55cca353e2196efb03",
+          "representativePrimaryMethod": "상대도수는 $\\dfrac{\\text{도수}}{\\text{전체 도수}}$로 구한다.",
+          "representativeDecisiveStep": "정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33",
+          "representativePrimaryMethod": "빈칸의 도수를 $x$명으로 놓고 전체 도수의 합이 $28$명임을 이용한다.",
+          "representativeDecisiveStep": "구하는 값은 $16$명이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_4fcdf70b120a3b9e8f0b47a1afb8867e4eff5cec7e9c84cd73182733d5f2b391",
+          "representativePrimaryMethod": "각 집단에서 상대도수의 합이 $1$이라는 점을 이용한다.",
+          "representativeDecisiveStep": "따라서 모두 $84+90=174$명이다."
         }
       ]
     },
@@ -4608,9 +5139,10 @@
         "TPL_M1_FOUR_PENTAGON_INTERIORS_TO_ADJACENT_EXTERIOR",
         "TPL_M1_PENTAGON_RATIO_TO_EXTREMAL_ANGLES"
       ],
-      "supportingItemCount": 3,
+      "supportingItemCount": 4,
       "supportingQuestionUids": [
         "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
+        "qid_v1_6ecd20d61ce06b1c96b021f09edd8900a41e7421e1028f165e39bd43724c8a55",
         "qid_v1_9bb4fb1290c68f9a1c8a64f7ba7fb6de9718165ab99b8854f1f3b349f6f79f25",
         "qid_v1_ee96f38629a0aedd52a9d0c9b223c0eefd9538295c711496ffcdffe3691dfd8e"
       ],
@@ -4623,6 +5155,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_0554824dd8ae54f73142c40123946586366e627047d79ab6a261064fba2f9c6a",
           "representativeStep": "The ratio has 27 parts; 540/27=20°, so a=60°. The largest interior angle is160°, making the smallest exterior b=20°; a+b=80°."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6ecd20d61ce06b1c96b021f09edd8900a41e7421e1028f165e39bd43724c8a55",
+          "representativePrimaryMethod": "육각형의 내각의 합은 $720^\\circ$이고, 한 외각과 그에 이웃한 내각의 합은 $180^\\circ$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ④이다."
         }
       ]
     },
@@ -4638,9 +5176,10 @@
         "TPL_M1_SIDE_COUNT_LOCAL_DIAGONALS_TRIANGLES_EQUATION",
         "TWO_DIAGONALS_TWO_TRIANGLES_ONE_QUADRILATERAL"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
         "qid_v1_07621230226a6705c8d349759b651e5e4110f5881da8aeb6c7e70b027a7f844c",
+        "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
         "qid_v1_6ef33b13b4ec9085d1acf7fee2cd17d7bb6ae53f4a811ea56af4efdfb3a58fd5"
       ],
       "observedConditionKeys": [],
@@ -4652,6 +5191,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_07621230226a6705c8d349759b651e5e4110f5881da8aeb6c7e70b027a7f844c",
           "representativeStep": "A=n, B=n−3, C=n−2, so A−B+C=n+1=8; n=7, a heptagon."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_0bc8c861739c94238388304386b6fb85000500f1f463bc9e21d0423c4b0b874b",
+          "representativePrimaryMethod": "$n$각형의 내각의 합과 한 꼭짓점에서 그을 수 있는 대각선의 개수를 연결한다.",
+          "representativeDecisiveStep": "따라서 $x+y=4+7=11$이므로 정답은 ①이다."
         }
       ]
     },
@@ -4782,6 +5327,55 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_2b4931047bdbd2f493b0a4d0cff3f6de4726964ab4134ca290ccdf200a484a95",
           "representativeStep": "삼각기둥에서 DE에 붙는 보기 모서리는 D 또는 E를 끝점으로 공유한다. BC는 위쪽 삼각형의 모서리여서 D,E를 공유하지 않아 DE와 만나지 않으므로 ③이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "canonicalLabelKo": "다면체의 면·꼭짓점 성질 판단",
+      "parentProblemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "definition": "다면체·정다면체의 면 모양, 한 꼭짓점에 모이는 면의 수, 정다각형 내각 합의 입체 가능성을 진술별로 판단.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
+        "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
+        "qid_v1_6bd8e88a529023c0bd81dcade2d2170bd9aef8f45da26c9b7f58d56b19ac14af",
+        "qid_v1_6c2cef33225a19f174b4bed663192b7c449d2b066ecccff40cc2d3761d391968",
+        "qid_v1_7eeacf8b68bf0f7479a058a5ae5b3ea58d53e991a20f140df29a87e5a8caed2f"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6bd8e88a529023c0bd81dcade2d2170bd9aef8f45da26c9b7f58d56b19ac14af",
+          "representativePrimaryMethod": "각뿔의 옆면은 삼각형이고, 각기둥의 옆면은 직사각형, 각뿔대의 옆면은 사다리꼴이다.",
+          "representativeDecisiveStep": "따라서 잘못 짝지어진 것은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_7eeacf8b68bf0f7479a058a5ae5b3ea58d53e991a20f140df29a87e5a8caed2f",
+          "representativePrimaryMethod": "정다면체는 면의 모양과 한 꼭짓점에 모이는 면의 수를 구분하여 확인한다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6c2cef33225a19f174b4bed663192b7c449d2b066ecccff40cc2d3761d391968",
+          "representativePrimaryMethod": "정다면체는 한 꼭짓점에 모이는 면의 개수를 비교하면 구별할 수 있다.",
+          "representativeDecisiveStep": "한 꼭짓점에 면이 $4$개 모이는 것은 정팔면체이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_033e9f7a2a765b9c0c16ec9a3a7d1407ae2fd1581765f2718a9b3a5229908383",
+          "representativePrimaryMethod": "여기서 ‘구면체’는 구(九)면체, 즉 면이 9개인 다면체라는 뜻이다.",
+          "representativeDecisiveStep": "따라서 ⑤가 옳지 않으므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_3096b414386ca69f7d356adbe704b481843bbe095cf4f87b2f899766cb982e97",
+          "representativePrimaryMethod": "정팔각형의 한 내각과 한 꼭짓점에 모이는 각의 합을 비교한다.",
+          "representativeDecisiveStep": "내각 공식의 분자는 $(8-2)=6$이므로 ④에 들어갈 수는 $6$이다. 보기의 ‘5’는 잘못이므로 정답은 ④이다."
         }
       ]
     },
@@ -5208,9 +5802,11 @@
       "aliases": [
         "RECOVER_RATIO_THEN_COMPLETE_TABLE"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
-        "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2"
+        "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
+        "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
+        "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
@@ -5221,6 +5817,18 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_7b89ada83bc949f573a6d8f816e0e3364fd7f1701baa08a525892b26b0c987b2",
           "representativeStep": "At x=−2,y=1/3, a=−1/6. Then p=−4 for y=2/3, q=−1/6 at x=1, r=6 for y=−1. Thus pqr=4."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_9b06a2b045d6f5e081a7c64e47110bba18c582071ae27ca0030dc8e3a650796b",
+          "representativePrimaryMethod": "그래프 위의 점은 모두 $y=3x$를 만족한다.",
+          "representativeDecisiveStep": "$a-b=6-4=2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_347cec11bdd87cdf376940918f809ded960bafd665991cacc446d01933c45fe8",
+          "representativePrimaryMethod": "정비례 관계 $y=ax$에서 그래프 위의 점 $(x,y)$를 이용하면 $a=\\dfrac{y}{x}$이다.",
+          "representativeDecisiveStep": "따라서 정답은 ①이다."
         }
       ]
     },
@@ -5235,9 +5843,10 @@
       "aliases": [
         "RECOVER_CONSTANT_FROM_GRAPH_POINT"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "supportingQuestionUids": [
-        "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a"
+        "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
+        "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
@@ -5248,6 +5857,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_d485821d8e9f62c6ddb2f155dfd0d84a217db84aeeb32b41b9a3ce95629fd54a",
           "representativeStep": "Graph point (4,2) gives a=xy=8; at x=−1, y=8/(−1)=−8 (④)."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_e5fe0ca82fd475e99ae092948f29d9364ee20bbdb554683320e5d0dec6340685",
+          "representativePrimaryMethod": "반비례 관계는 $y=\\dfrac{a}{x}$로 나타내고, 그래프 위에서는 $xy=a$이다.",
+          "representativeDecisiveStep": "$y=\\dfrac{10}{x}$이므로 정답은 ④이다."
         }
       ]
     },
@@ -5262,8 +5877,10 @@
       "aliases": [
         "READ_TWO_GRAPH_PARAMETERS_AND_SUBTRACT"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
+        "qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a",
+        "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
         "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2"
       ],
       "observedConditionKeys": [],
@@ -5275,6 +5892,18 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_e33fa670068a0649ff0431a64e1551ae2694a047277ca6fa2a9633c5274825f2",
           "representativeStep": "The line through (−4,2) gives a=2/(−4)=−1/2. The inverse graph through (3,5) gives b=xy=15. So a−b=−1/2−15=−31/2."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_810f27ebcd030f103259cd1555bcefa6030ea74e731adcca52a207e48aa652c2",
+          "representativePrimaryMethod": "두 그래프의 교점은 두 관계식을 모두 만족한다.",
+          "representativeDecisiveStep": "따라서 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_226ab00a15cdd83fb024dd1ab239d6cf81d52dd967677ad57467a2a45c95024a",
+          "representativePrimaryMethod": "그래프의 한 점을 이용해 두 사람의 정비례 관계식을 각각 구한다.",
+          "representativeDecisiveStep": "$75-15=60$분 늦게 도착한다."
         }
       ]
     },
@@ -5794,10 +6423,11 @@
         "TPL_M1_TRIANGLE_SQUARE_PENTAGON_COMPOSITE_ANGLE",
         "TPL_OCTAGON_PENTAGON_SIDE_EXTENSION_ANGLE"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 3,
       "supportingQuestionUids": [
         "qid_v1_1f83170c9598475023d8ff009183e7e3175cbf1762b58817c46bc07890ffde80",
-        "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3"
+        "qid_v1_2c71fe5698fa1f3d527ccc3e09191f7bdc66435fe24ba2cd21ccd49aa458f5d3",
+        "qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
@@ -5809,6 +6439,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_1f83170c9598475023d8ff009183e7e3175cbf1762b58817c46bc07890ffde80",
           "representativeStep": "공유 변 방향 36도와 정삼각형 각 60도를 더해 내려가는 선분의 방향 96도를 얻고, 왼쪽 수평변과의 각 x=180도−96도=84도이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_94282bace49b7efac917d83724beb6c5b9f77411b3af8b4eee228a073829bf8b",
+          "representativePrimaryMethod": "정다각형의 바깥각을 이용해 두 변의 방향 차이를 비교한다.",
+          "representativeDecisiveStep": "$x+y=180^\\circ+(72^\\circ-60^\\circ)=192^\\circ$이므로 정답은 ⑤이다."
         }
       ]
     },
@@ -5866,6 +6502,62 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_00d5faf57a4654c3c6cf9814946c4f5c29bfb232f33b2a09418d166032122f1b",
           "representativeStep": "AB is perpendicular to both parallel bases; D projects perpendicularly to AB at A; the distance between AB and BC is the height AB=2 cm; and the other three side-lines each meet AB. Thus ㄱ–ㄹ are all true (⑤)."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+      "canonicalLabelKo": "회전축을 포함하는 단면",
+      "parentProblemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "definition": "축을 포함하는 단면의 합동·선대칭 성질을 이용.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_6f8cab14c7b506265fd4dc674d17a9458c1104fc476f8e9e0bad4f6103988639",
+        "qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_a043809efba8ac06e04aeddf9e5b9c96c15f3c96871dcc708f81b6630ed5ab4a",
+          "representativePrimaryMethod": "회전체를 회전축을 포함하는 평면으로 자르면 회전축에 대하여 선대칭인 단면이 생긴다.",
+          "representativeDecisiveStep": "따라서 옳지 않은 것은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6f8cab14c7b506265fd4dc674d17a9458c1104fc476f8e9e0bad4f6103988639",
+          "representativePrimaryMethod": "회전체를 회전축을 포함하는 평면으로 자르면 회전축이 단면의 대칭축이 된다.",
+          "representativeDecisiveStep": "따라서 ㉮는 합동, ㉯는 선대칭이므로 정답은 ①이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+      "canonicalLabelKo": "회전축에 수직인 단면",
+      "parentProblemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "definition": "축에 수직인 단면은 원임을 이용하고 반지름으로 넓이를 계산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb",
+        "qid_v1_974f5258da6d53b711f7908e714dd4d8697474a738519476489cd72d179e1307"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_974f5258da6d53b711f7908e714dd4d8697474a738519476489cd72d179e1307",
+          "representativePrimaryMethod": "회전체를 회전축에 수직인 평면으로 자르면 단면은 원 모양이다.",
+          "representativeDecisiveStep": "따라서 바르게 짝지어진 것은 ‘원뿔 - 원’이므로 정답은 ④이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_58619239fa5796489ce1cad319ecdeaea957b763109843e4e2dec5e6a46cd4fb",
+          "representativePrimaryMethod": "직사각형을 한 변을 축으로 회전하면 원기둥이 된다.",
+          "representativeDecisiveStep": "$\\pi\\times8^2=64\\pi\\rm\\,cm^2$이므로 정답은 ①이다."
         }
       ]
     },
@@ -5995,6 +6687,195 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_d55faa7a9477ef5bb4314ca9dc280dc967b764095d94a6f0225348a467232cb8",
           "representativeStep": "New York is 9 hours behind Dubai; Tuesday 6 a.m. becomes Monday 9 p.m., choice ①."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+      "canonicalLabelKo": "합성 입체의 노출 겉넓이",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "합성 입체에서 바깥에 드러난 곡면과 절단면만 구분해 넓이를 합산.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_8c1120cb8046980e755d2f250867ea4ae8293c44b2ecc90fdec807a3a26adc13",
+        "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cee13b386e463414b43c2b70cd54cf16f32d671aa80d8b0cd34728e0f9413f90",
+          "representativePrimaryMethod": "회전하여 생기는 겉면을 반구의 곡면, 원뿔대의 옆면, 아래 원형 밑면으로 나누어 더한다.",
+          "representativeDecisiveStep": "$72\\pi+45\\pi+9\\pi=126\\pi\\mathrm{cm}^2$이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8c1120cb8046980e755d2f250867ea4ae8293c44b2ecc90fdec807a3a26adc13",
+          "representativePrimaryMethod": "겉넓이를 구의 곡면 부분과 두 절단면으로 나누어 본다.",
+          "representativeDecisiveStep": "따라서 ㉡은 반원이고 정답은 ⑤이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+      "canonicalLabelKo": "뿔대의 겉넓이",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "두 밑면과 합동 사다리꼴 옆면의 넓이를 합함.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2",
+        "qid_v1_a07937a2314578386e5e497c39d3cc68f93eee43b45a3f715e5cfe5e2468549c"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_a07937a2314578386e5e497c39d3cc68f93eee43b45a3f715e5cfe5e2468549c",
+          "representativePrimaryMethod": "사각뿔대의 겉넓이는 두 밑면과 네 개의 사다리꼴 옆면의 넓이를 더한다.",
+          "representativeDecisiveStep": "$100+58=158\\mathrm{cm}^2$이므로 정답은 ⑤이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8c06039ac25ba0c28436e749c93b6d2833392d970a95df1a1a798cae44ca3eb2",
+          "representativePrimaryMethod": "두 정사각형 밑면과 네 개의 합동인 사다리꼴 옆면의 넓이를 합한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+      "canonicalLabelKo": "전개도에서 길이와 겉넓이 계산",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "원기둥·원뿔 전개도에서 원주와 부채꼴 호 길이를 연결해 길이나 겉넓이를 구함.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_1a858ebefe9ca7a430dc8096a9f3f372ca915546c98b53e3344c253cabdbd526",
+        "qid_v1_9c90165060eab71b9285ef0a50861aa14c43cb6e04e887cc904df547633fa2dc"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_9c90165060eab71b9285ef0a50861aa14c43cb6e04e887cc904df547633fa2dc",
+          "representativePrimaryMethod": "원기둥의 전개도에서 두 원의 반지름, 옆면 직사각형의 높이와 가로 길이를 차례로 연결한다.",
+          "representativeDecisiveStep": "따라서 정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_1a858ebefe9ca7a430dc8096a9f3f372ca915546c98b53e3344c253cabdbd526",
+          "representativePrimaryMethod": "원뿔의 전개도에서 부채꼴의 호의 길이는 밑면의 원주와 같다.",
+          "representativeDecisiveStep": "$10\\pi+4\\pi=14\\pi\\mathrm{cm}^2$이므로 정답은 ④이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "canonicalLabelKo": "기본 입체도형 공식 대입",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "기본 각기둥·원기둥·각뿔·원뿔의 겉넓이·부피 공식에 수치를 대입.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49",
+        "qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1",
+        "qid_v1_d86be3c42030629b6be76efaef912c5d35d487fe6dd933704ec2b9b49635fb1c"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c005d734101f461396ab39ac8da738d80e7f8d392487a92867c6e95d99b9efa1",
+          "representativePrimaryMethod": "(1)은 원기둥의 두 밑면과 옆면을 더하고, (2)는 각뿔의 부피 공식을 이용한다.",
+          "representativeDecisiveStep": "따라서 (1) $28\\pi\\,\\mathrm{cm}^2$, (2) $84\\mathrm{cm}^3$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_d86be3c42030629b6be76efaef912c5d35d487fe6dd933704ec2b9b49635fb1c",
+          "representativePrimaryMethod": "반구의 부피는 같은 반지름을 가진 구의 부피의 절반이다.",
+          "representativeDecisiveStep": "정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49",
+          "representativePrimaryMethod": "(1)은 삼각기둥의 두 밑면과 옆면을 더하고, (2)는 원뿔의 부피를 구한다.",
+          "representativeDecisiveStep": "따라서 (1) $288\\mathrm{cm}^2$, (2) $75\\pi\\mathrm{cm}^3$이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+      "canonicalLabelKo": "입체도형의 부피 보존",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "녹이거나 물을 옮겨도 부피가 같다는 조건으로 서로 다른 입체도형의 부피를 같게 놓음.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_34dcef3d8f3fdf53fc83227a8b6ce95e685ec3c18428a807f4aba73a54c027d4",
+        "qid_v1_8530d56e636f605741be693d69472480d286ff5f4d2bef24b3514a8a61eb397e",
+        "qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_34dcef3d8f3fdf53fc83227a8b6ce95e685ec3c18428a807f4aba73a54c027d4",
+          "representativePrimaryMethod": "물의 양은 옮겨도 같으므로 원뿔과 원기둥 속 물의 부피가 같다.",
+          "representativeDecisiveStep": "따라서 정답은 ②이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_8530d56e636f605741be693d69472480d286ff5f4d2bef24b3514a8a61eb397e",
+          "representativePrimaryMethod": "두 원기둥의 부피가 같다는 조건으로 B의 높이를 구한다.",
+          "representativeDecisiveStep": "따라서 원기둥 B의 높이는 $24\\mathrm{cm}$이고 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c89c38b53a4ff4f49954f91d1a20d9d0123e9fd117f7122de40fbca1c5146832",
+          "representativePrimaryMethod": "녹이기 전후의 부피가 같음을 이용한다.",
+          "representativeDecisiveStep": "정답은 ②이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+      "canonicalLabelKo": "잘라낸 입체의 부피 차",
+      "parentProblemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "definition": "큰 입체의 부피에서 잘라 낸 입체들의 부피를 빼어 남은 부피를 구함.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307",
+        "qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4",
+        "qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cb9787da6dcb950604620dfaf53cfa5e45e1ae7ba918dfe2f66e16488ee66de4",
+          "representativePrimaryMethod": "원기둥의 부피에서 공 3개의 부피를 뺀다.",
+          "representativeDecisiveStep": "$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이므로 정답은 ①이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd",
+          "representativePrimaryMethod": "원뿔대는 큰 원뿔에서 위쪽의 작은 원뿔을 뺀 것으로 생각한다.",
+          "representativeDecisiveStep": "$32\\pi-4\\pi=28\\pi\\mathrm{m}^3$이므로 정답은 ③이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307",
+          "representativePrimaryMethod": "원기둥 모양 통의 부피에서 공 $3$개의 부피를 뺀다.",
+          "representativeDecisiveStep": "$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이다."
         }
       ]
     },
@@ -6259,8 +7140,9 @@
       "aliases": [
         "TPL_COLLINEAR_CHAIN_OF_ISOSCELES_TRIANGLES"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "supportingQuestionUids": [
+        "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
         "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6"
       ],
       "observedConditionKeys": [],
@@ -6272,6 +7154,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_f8150d3bea94636e21612c20d7ae47cac09a0b57d50763d25ed12e98ee1c14e6",
           "representativeStep": "x=∠ADC=∠CAD. ∠ADE=100°, ∠CDE=100°−x이므로 ∠DCE=40°+x/2. B,A,D,F가 일직선이고 B,C,E가 일직선이어서 ∠ACE=180°−x/2. 한편 ∠ACE=(180°−2x)+(40°+x/2); 같게 놓으면 x=40°이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_382314a3713c9d61ec63b7c54dde290271cd467b42c1e9c58d3dd7274790b554",
+          "representativePrimaryMethod": "두 이등변삼각형의 밑각을 차례로 구한 뒤 바깥각을 구한다.",
+          "representativeDecisiveStep": "$x=180^\\circ-78^\\circ=102^\\circ$이다."
         }
       ]
     },
@@ -6287,10 +7175,12 @@
         "TPL_TRIANGLE_EXTERIOR_ANGLE_AND_INTERIOR_SUM",
         "TRIANGLE_WITH_CEVian_AND_EXTERIOR_ANGLE"
       ],
-      "supportingItemCount": 2,
+      "supportingItemCount": 4,
       "supportingQuestionUids": [
         "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
-        "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7"
+        "qid_v1_c065365a17e7cd338f660ae98e70c5b74ed99c5d57a3fc6978b7caa882acc6f7",
+        "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+        "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4"
       ],
       "observedConditionKeys": [],
       "observedIntegrationPatterns": [
@@ -6301,6 +7191,18 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_1bc464e0d6f0a8b7e36149efecc79397709aa137fec9820972a2f190214fe8db",
           "representativeStep": "(85°−2x)+75°+(140°−4x)=180°에서 6x=120, x=20이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_ee9ddf2b5976c985c3b07fb0a418ac3cbcda1a214e92b7bdcec4776f37714eb4",
+          "representativePrimaryMethod": "삼각형의 한 외각은 그와 이웃하지 않는 두 내각의 합과 같다.",
+          "representativeDecisiveStep": "따라서 $\\angle x=60^\\circ$이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_cbad75c4eb55bd19cf1de16ffa0a5259b1f9730cb717f5a7e9817720db19bc15",
+          "representativePrimaryMethod": "일직선과 삼각형의 내각의 합을 차례로 이용한다.",
+          "representativeDecisiveStep": "정답은 ①이다."
         }
       ]
     },
@@ -6344,8 +7246,9 @@
       "aliases": [
         "TPL_INTERSECTING_TRIANGLES_VERTICAL_ANGLE_TRANSFER"
       ],
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "supportingQuestionUids": [
+        "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
         "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994"
       ],
       "observedConditionKeys": [],
@@ -6357,6 +7260,12 @@
           "source": "B01_B16_CONSENSUS",
           "representativeQuestionUid": "qid_v1_aae8e3d02ffa5d8a77541dd8e9171a112a28ea80b86f80c4f2d7ebeda5f8f994",
           "representativeStep": "교점각은 180°−40°−35°=105°이고, 맞꼭지각도 105°이므로 x=180°−105°−27°=48°이다."
+        },
+        {
+          "source": "R2E_B20_B24_B28_FINAL",
+          "representativeQuestionUid": "qid_v1_126e7ef54bd47ab404addcb3a3ca0492dd2e95e2db006410b625ba686f021b86",
+          "representativePrimaryMethod": "삼각형의 내각의 합과 맞꼭지각을 차례로 이용한다.",
+          "representativeDecisiveStep": "따라서 정답은 ③이다."
         }
       ]
     },
