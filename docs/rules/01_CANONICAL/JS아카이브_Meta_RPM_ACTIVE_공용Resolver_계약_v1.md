@@ -32,6 +32,7 @@ Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `s
 최소 identity:
 
 - `sourceArchiveFile`, `questionUid`, `sourceOrdinal`
+- canonical `sourceIdentityKey` alongside `questionUid`; both refer to the same frozen source UID, and `questionUid` must be the canonical file/ordinal UID
 - `contentHash`, `choicesHash`, `imageRefHash`, `sourceFingerprint`
 - `solutionIdentity.status=VERIFIED_FINAL`, `independentVerification=true`, `solutionHash`
 - `curriculum`, `grade`, RPM `scope`, `standardUnitKey`, `subUnitKey`

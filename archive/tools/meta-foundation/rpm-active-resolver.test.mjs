@@ -16,6 +16,7 @@ import {
   validateResolverEvidence,
   validateMetaValidatorReceipt,
   validateRuntimeMetaParity,
+  questionUidForSource,
 } from './rpm-active-resolver.mjs';
 
 const root = new URL('../../../', import.meta.url).pathname.replace(/^\//, '').replaceAll('/', '\\');
@@ -24,10 +25,13 @@ const crosswalk = JSON.parse(fs.readFileSync(`${root}\\archive\\data\\meta-found
 const rowFor = id => crosswalk.records.find(row => row.id === id);
 
 function makeInput(row, overrides = {}) {
+  const sourceArchiveFile = 'original/high/h1/1final/fixture.js';
+  const sourceIdentityKey = `${objectSha('source pdf')}|1`;
   const input = {
     sourceIdentity: {
-      sourceArchiveFile: 'original/high/h1/1final/fixture.js',
-      questionUid: 'fixture-question-001',
+      sourceArchiveFile,
+      questionUid: questionUidForSource(sourceArchiveFile, 1),
+      sourceIdentityKey,
       sourceOrdinal: 1,
       contentHash: objectSha('source content'),
       choicesHash: objectSha(['①', '②']),
@@ -54,7 +58,7 @@ function makeDifficulty(resolution, bucket = 2, extra = {}) {
     solutionHash: resolution.semanticInputBundle.solutionIdentity.solutionHash, independentOfSemanticPass: true,
     difficultyBucket: bucket, difficultyConfidence: 'medium', difficultyBoundaryFlag: 'NONE',
     legacyLevelCompatibility: 'NORMAL', rationale: '조건 수와 독립 계산 단계로 fresh 판정.',
-    blindReviewerId: 'reviewer-b', decisionSha: objectSha({ bucket, uid: 'fixture-question-001' }), ...extra,
+    blindReviewerId: 'reviewer-b', decisionSha: objectSha({ bucket, uid: resolution.semanticInputBundle.sourceIdentity.questionUid }), ...extra,
   });
 }
 
@@ -210,12 +214,12 @@ test('same resolver decision closes through R2E and an exact runtime projection'
   assert.equal(preflight.status, 'PASS', JSON.stringify(preflight.errors));
   const validatorReceipt = makeMetaValidatorReceipt(resolverEvidence, preflight);
   const runtimeRecord = {
-    questionUid: 'fixture-question-001', sourceFingerprint: resolverEvidence.sourceFingerprint,
+    questionUid: input.sourceIdentity.questionUid, sourceFingerprint: resolverEvidence.sourceFingerprint,
     resolverEvidenceSha: resolverEvidence.evidenceSha, difficultyEvidenceSha: difficultyEvidence.evidenceSha,
     ...Object.fromEntries(['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'].map(key => [key, candidateMeta[key]])),
   };
   const item = {
-    questionUid: 'fixture-question-001', input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence,
+    questionUid: input.sourceIdentity.questionUid, input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence,
     validatorReceipt, r2eFinalDisposition: 'EXISTING_REUSE', runtimeRecord,
   };
   const receipt = sealR2EMetaReceipt({
