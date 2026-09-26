@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "archive-reviewed-apply/v2",
+  "applyId": "r2-25-pungdeok-m3-2mid-20260926",
+  "examFile": "25_풍덕중_2학기_중간_중3_수학.js",
+  "sourcePath": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+  "grade": "중3",
+  "targetRef": "main",
+  "targetBaseSha": "1cdd50343690977693ae9bf9b144ff9b538c340b",
+  "reviewBaseRefSha": "1cdd50343690977693ae9bf9b144ff9b538c340b",
+  "sourceBlobSha": "806a606481003a5db8ee31c1e1f1d2b680587463",
+  "totalQuestions": 25,
+  "reviewPassCount": 2,
+  "closureStatus": "CLOSED_FOR_APPLY",
+  "status": "READY_FOR_APPLY",
+  "finalFiles": [
+    {
+      "path": "archive/exams/original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
+      "archiveMember": "25_풍덕중_2학기_중간_중3_수학.js",
+      "sha256": "1867df53371de1d492cb5c28e7f464b7c875a1f7216e02c79c5c539e5451d548",
+      "sizeBytes": 34610,
+      "kind": "exam_js",
+      "applyDisposition": "KEEP_SOURCE_UNCHANGED_SEMANTIC_PARITY"
+    },
+    {
+      "path": "archive/assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
+      "archiveMember": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
+      "sha256": "2b255a25c02386f62a2dc2151745c12c0bab217c7c420e4efea835316fd0cf20",
+      "sizeBytes": 1008,
+      "kind": "solution_svg",
+      "applyDisposition": "KEEP_SOURCE_UNCHANGED_NORMALIZED_PARITY"
+    },
+    {
+      "path": "archive/assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+      "archiveMember": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
+      "sha256": "8ae6b5e08220dbad0a38ff2576e51c99aed14308f5815a55284679f7e185b617",
+      "sizeBytes": 1191,
+      "kind": "solution_svg",
+      "applyDisposition": "KEEP_SOURCE_UNCHANGED_NORMALIZED_PARITY"
+    },
+    {
+      "path": "archive/assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+      "archiveMember": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
+      "sha256": "0ad7384a43100b38ece142e22b90aafc1f556745e457d1fd19975df2ea0b668d",
+      "sizeBytes": 1182,
+      "kind": "solution_svg",
+      "applyDisposition": "KEEP_SOURCE_UNCHANGED_NORMALIZED_PARITY"
+    },
+    {
+      "path": "archive/assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
+      "archiveMember": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
+      "sha256": "4a77d04fed8f89dc5138272e0b4121588a2975b7acd024ef30faec5591323445",
+      "sizeBytes": 1308,
+      "kind": "solution_svg",
+      "applyDisposition": "KEEP_SOURCE_UNCHANGED_NORMALIZED_PARITY"
+    }
+  ],
+  "metaPatches": [
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_40842ba63c3b292d05dcbea469caf5937e11e2343dd63d8df0c2fdeb921397db",
+      "status": "REPAIR",
+      "before": {
+        "L4": "특수각의 삼각비",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "after": {
+        "L4": "삼각비의 기본 관계",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "reason": "문항의 결정 단계는 특수각 계산이 아니라 예각에서 sin/cos/tan의 대소·변화 관계 판정이다."
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_592d007d20506d0f363be5673ec3cc884ad0ca4da02500740ee97e4a3e02b4da",
+      "status": "REPAIR",
+      "before": {
+        "L4": "특수각의 삼각비",
+        "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE"
+      },
+      "after": {
+        "L4": "삼각비의 기본 관계",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "reason": "25°, 50°, 72° 등 일반 예각의 대소관계가 핵심이며 특수각 자체가 주된 구조가 아니다."
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_77d78f3bca75f44ef9f2544cb25f62c7e8d7c01cbea94128c2b169e1d8146023",
+      "status": "REPAIR",
+      "before": {
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "difficultyBucket": null,
+        "metaFoundationStatus": "ROUTE_OUT"
+      },
+      "after": {
+        "L3": "삼각비의 값과 관계",
+        "L4": "삼각비의 기본 관계",
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+        "crossConceptKeys": [
+          "CC_LINE_EQUATION"
+        ],
+        "difficultyBucket": 2,
+        "metaFoundationStatus": "REVIEW_REPAIR_REQUIRED"
+      },
+      "reason": "tan30°로 직선의 기울기를 정한 뒤 y절편과 결합해 직선의 방정식을 구한다. 중3 삼각비 source의 결정 단계가 명확하므로 ROUTE_OUT보다 trig primary + 직선의 방정식 CrossConcept가 정합하다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5928d66b0592db4a39a219dd1e5f84c133ef1b5b34f0547acd109066f2ac4686",
+      "status": "REPAIR",
+      "before": {
+        "crossConceptKeys": []
+      },
+      "after": {
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ]
+      },
+      "reason": "현의 중점과 중심을 잇는 직각삼각형에서 r²=6²+(r-3)²가 정답을 결정하는 필수 단계다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_d31ea1633e462022d48c6d01cf9720fcc450905b62bbf5a1768f19bf8e6da0fd",
+      "status": "REPAIR",
+      "before": {
+        "crossConceptKeys": [
+          "CC_INSCRIBED_ANGLE"
+        ],
+        "difficultyBucket": 1
+      },
+      "after": {
+        "crossConceptKeys": [],
+        "difficultyBucket": 2
+      },
+      "reason": "원주각은 이미 primary L3/L4에 포함되어 CrossConcept 중복이다. 같은 현/중심거리 관계와 원주각 관계를 연결한 뒤 각의 합을 쓰는 2단계 구조이므로 Bucket 1보다 2가 적절하다."
+    }
+  ],
+  "canonicalHolds": [],
+  "candidatePending": [],
+  "routeOutPreserve": [],
+  "regenerateScopes": [
+    "question_metadata",
+    "meta_foundation_runtime",
+    "question_index",
+    "archive2_catalog",
+    "archive2_crosswalk",
+    "archive_registration_check"
+  ],
+  "applyPolicy": {
+    "examJs": "NO_WRITE_IF_LATEST_SOURCE_SEMANTICALLY_IDENTICAL",
+    "solutionSvg": "NO_WRITE_IF_LATEST_SOURCE_NORMALIZED_IDENTICAL",
+    "meta": "APPLY_ONLY_LISTED_UID_PATCHES",
+    "sharedDerived": "REGENERATE_FROM_LATEST_TARGET_REF"
+  },
+  "review2": {
+    "reviewMode": "UPLOAD_RECOVERY_FROM_COMPLETED_R2",
+    "mathPass": 25,
+    "layoutPass": 25,
+    "svgPass": 4,
+    "metaKeep": 20,
+    "metaRepair": 5,
+    "metaCandidate": 0,
+    "metaHold": 0,
+    "runtimeControlCharCount": 0,
+    "productionRender": "NOT_RUN_CODEX_HANDOFF"
+  }
+}
