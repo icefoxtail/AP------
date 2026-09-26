@@ -95,9 +95,38 @@
         ]
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "q1 Meta repair recheck",
+      "currentNextItem": "q1-q8 binding/parity closure, then q11 Meta/source adjudication",
       "deepReviewReasons": {
         "q9": "R1 solution SVG byte drift vs extracted R1_INPUT ZIP; targeted visual recheck reopened despite prior Meta/Math PASS."
+      },
+      "visualReview": {
+        "items": [
+          {
+            "q": 9,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q9.png exact branch source image",
+            "finding": "Original was a hexagon with 140°, 110°, 120°, 90°, exterior 50°, and x at the sixth vertex. Previous SVG misplaced x and substituted an unlabeled 90° vertex for the exterior-angle relation.",
+            "repair": "Relabeled all six interior angles, added the right-angle marker and exterior 50° relation, and showed x=130° from the hexagon angle sum.",
+            "render": "Chrome headless render inspected; Korean text and diagram visible without clipping."
+          },
+          {
+            "q": 13,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q13.png exact branch source image",
+            "finding": "Previous SVG placed the equilateral fence incorrectly and did not show the dog tied at a fence vertex.",
+            "repair": "Redrew the equilateral fence with the tether point at a vertex, the 300° radius-6 m region and two radius-2 m, 120° sectors; arithmetic matches the student solution.",
+            "render": "Chrome headless render inspected; all labels and formulas visible."
+          },
+          {
+            "q": 21,
+            "status": "REPAIRED_RENDER_REVIEWED",
+            "source": "q21.png exact branch source image and verified solution",
+            "finding": "Prior SVG showed the target 6000 m line but omitted the source points (3,1200), (3,240), and the time intercepts.",
+            "repair": "Redrew both proportional graphs through their source points and marked 15-minute and 75-minute intersections with 6000 m.",
+            "render": "Chrome headless render inspected; point labels, guides, axes, and answer visible."
+          }
+        ],
+        "xmlValidation": "PENDING_TARGETED_VALIDATORS"
       }
     },
     {
@@ -278,7 +307,7 @@
         ]
       },
       "validatorStatus": "NOT_RUN",
-      "currentNextItem": "B20 q1 Meta repair recheck",
+  "currentNextItem": "B20 q1-q8 binding/parity closure, then q11 Meta/source adjudication",
       "localAdjudication": {
         "q12": "OPEN: branch solution still contains R1 HOLD text; reconstruct final student solution from exact image blob and recovery evidence",
         "q23": "OPEN: branch solution still contains R1 HOLD text; independently derive final student solution from exact image blob",

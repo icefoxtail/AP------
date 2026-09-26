@@ -60,3 +60,12 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B24 SVG drift vs physical CREATE/READY package: q8, q10, q21. q6/q7 branch SVGs match the package bytes but R1 records semantic repairs; q6/q7/q10/q21 remain deep.
 - B28 SVG drift vs extracted R1_INPUT: q6, q13, q22; all three were already deep-review targets.
 - Deep review denominator is now B20 22/24, B24 18/22, B28 21/24 (61 targeted items total); unchanged PASS items remain closure-scan only. Exact hashes/render findings will be added before exam closure.
+
+## B20 bounded visual rechecks — 2026-09-27
+
+- Reopened the R1 byte-drift items q9, q13, and q21 against the exact source PNGs.
+- q9: corrected the hexagon angle SVG to place `x` at the source vertex, preserve the marked 90° angle, and derive the adjacent 130° interior angle from the 50° exterior angle.
+- q13: corrected the leash diagram so the equilateral fence, tether vertex, initial 300°/6 m sector, and two added 120°/2 m sectors agree with the verified solution.
+- q21: corrected the graph aid to show the source points (3,1200) and (3,240), both `y=400x` / `y=80x` lines, and the 6000 m intersections at 15 and 75 minutes.
+- All three SVGs were opened through Chrome headless rendering and visually inspected. Targeted XML/schema validation and full B20 closure remain pending; no item is marked fully resolved until Meta and its associated checks close.
+- Current checkpoint branch HEAD before this visual checkpoint: `1d5244405db63371a97b95a2a78daa1539d83295`. Current next: B20 q1–q8 binding/parity closure, then q11 source/Meta adjudication.
