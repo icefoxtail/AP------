@@ -5,9 +5,9 @@
   "branch": "work/m1-b20-b24-b28-r2e",
   "branchBaseMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
   "fetchedOriginMainSha": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-  "currentBranchHead": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
-  "timestamp": "2026-09-27 03:47:22 Asia/Seoul",
-  "physicalCheckpoint": "B20_R2E_BRANCH_FINAL_COMMIT_PUSHED",
+  "currentBranchHead": "fe46fa13a46aeaf74a7b0b9d9ba1bbda7096eeb1",
+  "timestamp": "2026-09-27 04:11:58 Asia/Seoul",
+  "physicalCheckpoint": "B24_BRANCH_FINAL_VALIDATORS_PASS_COMMIT_PENDING",
   "notionEvidence": [
     "D10 B20 REVIEW1 completion",
     "D11 B24 REVIEW1 completion",
@@ -251,6 +251,7 @@
         8,
         9,
         10,
+        11,
         12,
         13,
         14,
@@ -259,10 +260,10 @@
         18,
         19,
         20,
-        21
+        21,
+        22
       ],
-      "resolvedItems": [],
-      "unresolvedItems": [
+      "resolvedItems": [
         2,
         3,
         4,
@@ -272,6 +273,7 @@
         8,
         9,
         10,
+        11,
         12,
         13,
         14,
@@ -280,8 +282,10 @@
         18,
         19,
         20,
-        21
+        21,
+        22
       ],
+      "unresolvedItems": [],
       "metaDisposition": {
         "r1RepairsMissingFromCurrentBranch": [
           12,
@@ -305,13 +309,54 @@
           19,
           21
         ],
-        "final": "PENDING"
+        "final": "PASS_NO_TAXONOMY_RPM_DIFFICULTY_OR_BINDING_HOLD",
+        "difficultyAdjudicatedItems": 20,
+        "newL3Materialized": 2,
+        "newL3OutsideLockedRPM": 0,
+        "newL4": 10,
+        "crossConcept": 0,
+        "crosswalkReopenedItems": [
+          11
+        ],
+        "difficultyBoundaryRecheckItems": [
+          22
+        ]
       },
       "changedFiles": [
+        "archive/exams/original/middle/m1/2final/24_율촌중_2학기_기말_중1_기출.js",
         "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg",
         "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg",
         "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg",
-        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg"
+        "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg",
+        "archive/data/question_metadata.json",
+        "archive/data/archive2-catalog.json",
+        "archive/data/meta-foundation/runtime/functions-graphs-v1.json",
+        "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+        "archive/data/meta-foundation/runtime/middle1-v1.json",
+        "archive/data/meta-foundation/runtime/runtime-bridge-receipt.json",
+        "archive/data/review2-handoff/middle1/R2E_DIFFICULTY_ADJUDICATION.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_2b64513d5f1aa7ee80be6fd1cc37cd76c62c893742eda2ed0bdd2abf2212bcc4.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6c2cef33225a19f174b4bed663192b7c449d2b066ecccff40cc2d3761d391968.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_974f5258da6d53b711f7908e714dd4d8697474a738519476489cd72d179e1307.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6f8cab14c7b506265fd4dc674d17a9458c1104fc476f8e9e0bad4f6103988639.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_9c90165060eab71b9285ef0a50861aa14c43cb6e04e887cc904df547633fa2dc.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_8530d56e636f605741be693d69472480d286ff5f4d2bef24b3514a8a61eb397e.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_1a858ebefe9ca7a430dc8096a9f3f372ca915546c98b53e3344c253cabdbd526.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_d86be3c42030629b6be76efaef912c5d35d487fe6dd933704ec2b9b49635fb1c.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_8c1120cb8046980e755d2f250867ea4ae8293c44b2ecc90fdec807a3a26adc13.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_da9b83852529e1fdd56738c9ce00053ef53bfed442781281466cdd2a1a97e4fd.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_22d866843dd786ac7733618a81a5f53a272c3365f568fb6dbba75cedd02cbc90.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f50e3780729b7f23c1676b957760e7396cecc5d1d164f1b690fe97c164b3bf8c.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_1b11f39f4173ca2c7a0191b0b8e33ef92e7eba5e2abdfe8e5f1eb3c34be36c1d.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cc9182377d80d9500f9fe3e68491f901d6aa0ece2799ee55cca353e2196efb03.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_53bb43a0e7a8e7f816a2ef7d5fa88bef4e7d3bcbf1ca3f02c547cda2047b7113.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_b8d5afc2daca8678766e809d4b271eda60b3ca9e392ffd8b96eab0d2da9b930f.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_cc6b3bb9b8f40e87b60fc39db1aa57b5b472783fb6f4eb3c19a373d4f9192732.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_e696a0c355985e4f8c3c8c4a45a2736dba86252e91b36d5d7e03a8b909be9485.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_6fe84a76332f2cf25567c7e20ab6479d3e1cf576a977852204c073411185bc49.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_549bea534b797d67c3588fd6fe794983dc48e9b11586a18ff8801275e4cc9a33.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_c2e290499a2c5c25c2b5030beb122c3871a54ff3b5cf6c260867817f92381307.json",
+        "archive/data/meta-foundation/evidence/review-overrides/v1/qid_v1_f0d5f93852d3693e4710507a066ed378d08550ff4ab7dbcce5da6521afc5876f.json"
       ],
       "r1Evidence": {
         "zipSha256": "4188AEBB9CE4C88DA0C018FAB8B03A2F409167621964C54B3F4A0B5234885970",
@@ -325,52 +370,46 @@
           21
         ]
       },
-      "validatorStatus": "NOT_RUN",
-      "currentNextItem": "WAIT_B20_TERMINAL",
+      "validatorStatus": "PASS_NODE_CHECK_VM_22_22; PASS_PROTECTED_FIELDS_22_22; PASS_SOLUTION_BLANK_CONTROL_LATEX; PASS_SVG_XML_PATH_RENDER_7_7; PASS_CANONICAL_CROSSWALK_BINDING_63_63; PASS_RUNTIME_22_22; PASS_ARCHIVE2_ELIGIBLE_22_22",
+      "currentNextItem": "B24 exam-specific final commit SHA pending; then begin B28 source recovery and Meta closure",
       "deepReviewReasons": {
-        "q6": "Notion R1 repair is absent from the available CREATE/READY package; direct source comparison showed the diagrams did not preserve the 2:1 radius and 4:1 height ratios.",
-        "q7": "Notion R1 repair is absent from the available CREATE/READY package; the source solution requires a 144° sector, while the old diagram showed about 72°.",
-        "q8": "SVG byte drift against the physical CREATE/READY ZIP; keep open for final source/render parity closure.",
-        "q10": "SVG byte drift and R1 repair; corrected to display the similar 2:1 cones used by the frustum-volume calculation.",
-        "q21": "SVG byte drift and R1 repair; corrected so the three radius-3 spheres fit the radius-3 cylinder exactly."
+        "q6": "R1 semantic SVG repair restored A r=6,h=6 and B r=3,h=24 proportional dimensions.",
+        "q7": "R1 semantic SVG repair restored the exact 144° cone-net sector.",
+        "q8": "The drifted source-matched hemisphere diagram was render-reviewed; radius 6 and the half-sphere formula are consistent.",
+        "q10": "R1 semantic SVG repair restored the 2:1 similar-cone geometry for the frustum volume subtraction.",
+        "q11": "R1 KEEP classification was reopened because its ordered grouped-frequency solution maps more exactly to the RPM data-interpretation cumulative-cutoff path; reassigned to the active FDR L3/L4.",
+        "q17": "R1 labeled this frequency audit; R2 compared the verified solution and classified the decisive step as relative-frequency times unequal group totals, using DataCategory group-count comparison.",
+        "q21": "R1 semantic SVG repair restored the snug fit of radius-3 spheres inside a radius-3 cylinder.",
+        "q22": "Archive2 exposed an adjacent legacy level/difficulty boundary; R2 rechecked the graph audit and accepted bucket 3 as BORDERLINE_ACCEPTABLE without changing the source level."
       },
       "visualReview": {
         "items": [
           {
             "q": 6,
-            "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q6.png exact branch source image and R1 math/solution record",
-            "finding": "A has r=6,h=6; B has r=3 and the solved height. Old SVG showed same heights and inaccurate radius proportions.",
-            "repair": "Redrew proportional cylinders with B four times A's height and half its radius; equation 9πh=216π remains visible.",
-            "render": "Chrome headless render inspected; labels and equation are readable."
+            "status": "REPAIRED_RENDER_REVIEWED"
           },
           {
             "q": 7,
-            "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q7.png exact branch source image and final solution",
-            "finding": "The 5 cm sector must subtend 144° because its arc is 4π; old sector was drawn at about 72°.",
-            "repair": "Redrew the 144° sector and radius-2 base circle; total surface area 14π is shown.",
-            "render": "Chrome headless render inspected; sector and labels are visible."
+            "status": "REPAIRED_RENDER_REVIEWED"
+          },
+          {
+            "q": 8,
+            "status": "SOURCE_PARITY_RENDER_REVIEWED"
           },
           {
             "q": 10,
-            "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q10.png exact branch source image and final solution",
-            "finding": "Source dimensions are large cone r=4,h=6 and removed small cone r=2,h=3; old frustum proportions did not express their 2:1 similarity.",
-            "repair": "Redrew the shared-apex similar cones with 2:1 radius and height ratios and preserved 32π−4π=28π m³.",
-            "render": "Chrome headless render inspected; dimensions and calculations are visible."
+            "status": "REPAIRED_RENDER_REVIEWED"
           },
           {
             "q": 21,
-            "status": "REPAIRED_RENDER_REVIEWED",
-            "source": "q21.png exact branch source image and final solution",
-            "finding": "Source says each radius-3 ball fits snugly in a cylinder, so the cylinder radius must also be 3 and its height is three diameters.",
-            "repair": "Redrew three radius-3 spheres exactly filling a radius-3 cylinder of height 18 cm; empty volume remains 54π cm³.",
-            "render": "Chrome headless render inspected; ball-to-cylinder parity is clear."
+            "status": "REPAIRED_RENDER_REVIEWED"
           }
         ],
-        "xmlValidation": "PASS_FOR_Q6_Q7_Q10_Q21"
-      }
+        "xmlValidation": "PASS_Q6_Q7_Q8_Q10_Q21_AND_ALL_REFERENCED_PATHS"
+      },
+      "branchFinalStatus": "R2E_BRANCH_FINAL_READY",
+      "finalCommitSha": null,
+      "mainTerminalStatus": "NOT_R2E_MAIN_FINAL_PER_USER_SCOPE"
     },
     {
       "code": "B28",
