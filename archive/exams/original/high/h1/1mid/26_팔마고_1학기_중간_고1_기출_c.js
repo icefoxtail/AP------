@@ -55,7 +55,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "$(\\sqrt{-7} \\times \\sqrt{7}) - \\left(\\dfrac{\\sqrt{128}}{\\sqrt{-8}}\\right) + (\\sqrt{-3} \\times \\sqrt{-3}) \\times i$의 값은?\n(단, $i=\\sqrt{-1}$)",
+    "content": "$(\\sqrt{-7} \\times \\sqrt{7}) - \\left(\\dfrac{\\sqrt{128}}{\\sqrt{-8}}\\right) + (\\sqrt{-3} \\times \\sqrt{-3}) \\times i$의 값은?\n(단, $i=\\sqrt{-1}$) [4점]",
     "choices": [
       "$-12i$",
       "$-6i$",
@@ -63,8 +63,8 @@ window.questionBank = [
       "$8i$",
       "$20i$"
     ],
-    "answer": "①",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ①이다.",
+    "answer": "④",
+    "solution": "\\(\\sqrt{-7}=i\\sqrt7\\), \\(\\sqrt{-8}=i\\sqrt8=2i\\sqrt2\\), \\(\\sqrt{128}=8\\sqrt2\\), \\(\\sqrt{-3}=i\\sqrt3\\)이다.\n\n따라서\n\\[\n\\sqrt{-7}\\sqrt7=7i,\\qquad\n\\frac{\\sqrt{128}}{\\sqrt{-8}}\n=\\frac{8\\sqrt2}{2i\\sqrt2}\n=\\frac4i=-4i\n\\]\n이고,\n\\[\n(\\sqrt{-3}\\sqrt{-3})i=(i\\sqrt3)^2i=-3i\n\\]\n이다.\n\n주어진 식의 값은\n\\[\n7i-(-4i)-3i=8i\n\\]\n이므로 정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -333,7 +333,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "사차방정식 $(x^2-4x)(x^2-4x+7)+10=0$의 서로 다른 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha\\beta$의 값은?",
+    "content": "사차방정식 $(x^2-4x)(x^2-4x+7)+10=0$의 서로 다른 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha\\beta$의 값은? [4.4점]",
     "choices": [
       "1",
       "2",
@@ -342,7 +342,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "②",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ②이다.",
+    "solution": "\\(t=x^2-4x\\)라 놓으면\n\\[\n(x^2-4x)(x^2-4x+7)+10=0\n\\]\n은\n\\[\nt(t+7)+10=0\n\\]\n이므로\n\\[\nt^2+7t+10=0,\\qquad (t+5)(t+2)=0\n\\]\n이다. 따라서 \\(t=-5\\) 또는 \\(t=-2\\)이다.\n\n\\(t=-5\\)이면\n\\[\nx^2-4x+5=0\n\\]\n이고 판별식은 \\(16-20=-4<0\\)이므로 실근이 없다.\n\n\\(t=-2\\)이면\n\\[\nx^2-4x+2=0\n\\]\n이다. 이 방정식의 판별식은 \\(16-8=8>0\\)이므로 서로 다른 두 실근 \\(\\alpha,\\beta\\)를 갖는다. 근과 계수의 관계에 따라\n\\[\n\\alpha\\beta=2\n\\]\n이므로 정답은 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -433,7 +433,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "길이가 $80\\text{cm}$인 철사를 잘라서 한 변의 길이가 각각 $a\\text{cm}, b\\text{cm}$ ($a>b$)인 두 개의 정사각형을 만들었다. 이 두 정사각형의 넓이의 합이 $218\\text{cm}^2$일 때, $a$의 값은?\n(단, 철사는 모두 사용하고 굵기는 무시한다.)",
+    "content": "길이가 $80\\text{cm}$인 철사를 잘라서 한 변의 길이가 각각 $a\\text{cm}, b\\text{cm}$ ($a>b$)인 두 개의 정사각형을 만들었다. 이 두 정사각형의 넓이의 합이 $218\\text{cm}^2$일 때, $a$의 값은?\n(단, 철사는 모두 사용하고 굵기는 무시한다.) [4.7점]",
     "choices": [
       "11",
       "12",
@@ -442,7 +442,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "solution": "두 정사각형을 만드는 데 철사를 모두 썼으므로\n\\[\n4a+4b=80,\\qquad a+b=20\n\\]\n이다.\n\n또\n\\[\n(a+b)^2=a^2+2ab+b^2\n\\]\n이므로\n\\[\n20^2=218+2ab,\\qquad 2ab=182,\\qquad ab=91\n\\]\n이다.\n\n\\(a,b\\)를 두 근으로 하는 이차방정식은\n\\[\nu^2-(a+b)u+ab=0\n\\]\n이므로\n\\[\nu^2-20u+91=0,\\qquad (u-13)(u-7)=0\n\\]\n이다. 따라서 \\(a,b\\)는 13, 7이고, \\(a>b\\)이므로 \\(a=13\\)이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -467,7 +467,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "삼차방정식 $x^3=-1$의 한 허근을 $\\omega$라 할 때,\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5+6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9=a+b\\omega$\n를 만족시키는 두 실수 $a, b$에 대하여 $b-a$의 값은?",
+    "content": "삼차방정식 $x^3=-1$의 한 허근을 $\\omega$라 할 때,\n$\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5+6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9=a+b\\omega$\n를 만족시키는 두 실수 $a, b$에 대하여 $b-a$의 값은? [4.7점]",
     "choices": [
       "0",
       "5",
@@ -475,8 +475,8 @@ window.questionBank = [
       "15",
       "20"
     ],
-    "answer": "④",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ④이다.",
+    "answer": "⑤",
+    "solution": "\\(\\omega^3=-1\\)이고 \\(\\omega\\)는 허근이므로 \\(\\omega\\ne-1\\)이다. \\(x^3+1=(x+1)(x^2-x+1)\\)에서\n\\[\n\\omega^2-\\omega+1=0,\\qquad \\omega^2=\\omega-1\n\\]\n을 얻는다.\n\n또\n\\[\n\\omega^4=-\\omega,\\quad \\omega^5=-\\omega^2,\\quad\n\\omega^6=1,\\quad \\omega^7=\\omega,\\quad\n\\omega^8=\\omega^2,\\quad \\omega^9=-1\n\\]\n이다. 따라서\n\\[\n\\begin{aligned}\n&\\omega+2\\omega^2+3\\omega^3+4\\omega^4+5\\omega^5\n +6\\omega^6+7\\omega^7+8\\omega^8+9\\omega^9\\\\\n&=(1-4+7)\\omega+(2-5+8)\\omega^2+(-3+6-9)\\\\\n&=4\\omega+5\\omega^2-6\\\\\n&=4\\omega+5(\\omega-1)-6\\\\\n&=9\\omega-11.\n\\end{aligned}\n\\]\n그러므로 \\(a=-11,\\ b=9\\)이고\n\\[\nb-a=9-(-11)=20\n\\]\n이므로 정답은 ⑤이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -534,7 +534,7 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "content": "$\\left\\{(\\dfrac{1-i}{\\sqrt{2}})^m + (-i)^n\\right\\}^2 = -2i$를 만족하는 100이하의 자연수 $m, n$에 대하여 $m+n$의 최댓값은? (단, $i=\\sqrt{-1}$)",
+    "content": "$\\left\\{(\\dfrac{1-i}{\\sqrt{2}})^m + (-i)^n\\right\\}^2 = -2i$를 만족하는 100이하의 자연수 $m, n$에 대하여 $m+n$의 최댓값은? (단, $i=\\sqrt{-1}$) [4.8점]",
     "choices": [
       "196",
       "197",
@@ -542,8 +542,8 @@ window.questionBank = [
       "199",
       "200"
     ],
-    "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "answer": "④",
+    "solution": "\\[\n\\zeta=\\frac{1-i}{\\sqrt2}\n\\]\n라 하면\n\\[\n\\zeta^2=-i,\\quad \\zeta^4=-1,\\quad \\zeta^8=1\n\\]\n이므로 \\(\\zeta^m\\)의 값은 \\(m\\bmod8\\)에 따라 반복된다. 또 \\((-i)^n\\)은 \\(n\\bmod4\\)에 따라 반복된다.\n\\[\n\\begin{array}{c|cccccccc}\nm\\bmod8&0&1&2&3&4&5&6&7\\\\ \\hline\n\\zeta^m&1&\\frac{1-i}{\\sqrt2}&-i&\\frac{-1-i}{\\sqrt2}&-1&\\frac{-1+i}{\\sqrt2}&i&\\frac{1+i}{\\sqrt2}\n\\end{array}\n\\]\n\\[\n\\begin{array}{c|cccc}\nn\\bmod4&0&1&2&3\\\\ \\hline\n(-i)^n&1&-i&-1&i\n\\end{array}\n\\]\n\n\\(z=\\zeta^m+(-i)^n\\)라 놓으면 \\(z^2=-2i=(1-i)^2\\)이므로\n\\[\nz=1-i\\quad\\text{또는}\\quad z=-1+i\n\\]\n이다. 각 목표 \\(z\\)에서 \\(n\\bmod4\\)의 네 값을 빼서 필요한 \\(\\zeta^m\\)을 구한다.\n\\[\n\\begin{array}{c|c|c|c|c}\nz&n\\bmod4&(-i)^n&\\text{필요한 }\\zeta^m&\\text{판정}\\\\ \\hline\n1-i&0&1&-i&m\\equiv2\\pmod8\\\\\n1-i&1&-i&1&m\\equiv0\\pmod8\\\\\n1-i&2&-1&2-i&|2-i|=\\sqrt5\\ne1\\\\\n1-i&3&i&1-2i&|1-2i|=\\sqrt5\\ne1\\\\\n-1+i&0&1&-2+i&|-2+i|=\\sqrt5\\ne1\\\\\n-1+i&1&-i&-1+2i&|-1+2i|=\\sqrt5\\ne1\\\\\n-1+i&2&-1&i&m\\equiv6\\pmod8\\\\\n-1+i&3&i&-1&m\\equiv4\\pmod8\n\\end{array}\n\\]\n따라서 가능한 나머지 조합은\n\\[\n(m\\bmod8,n\\bmod4)=(2,0),(0,1),(6,2),(4,3)\n\\]\n뿐이다.\n\n각 조합에서 100 이하의 가장 큰 자연수 \\(m,n\\)을 택하면\n\\[\n\\begin{array}{c|c|c|c}\n(m\\bmod8,n\\bmod4)&m&n&m+n\\\\ \\hline\n(2,0)&98&100&198\\\\\n(0,1)&96&97&193\\\\\n(6,2)&94&98&192\\\\\n(4,3)&100&99&199\n\\end{array}\n\\]\n이다. 따라서 \\(m+n\\)의 최댓값은 199이므로 정답은 ④이다.",
     "subUnitKey": "H22-C-04-COMPLEX_ROOT",
     "subUnit": "복소수와 이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -598,7 +598,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "$x$에 대한 사차방정식 $x^4-(2m+3)x^2+m^2+2=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.)",
+    "content": "$x$에 대한 사차방정식 $x^4-(2m+3)x^2+m^2+2=0$이 서로 다른 네 실근 $a, b, c, d$를 갖고, $ad+bc=-11$의 관계가 성립할 때, 양수 $m$의 값은? (단, $a<b<c<d$이다.) [5점]",
     "choices": [
       "2",
       "4",
@@ -606,8 +606,8 @@ window.questionBank = [
       "8",
       "10"
     ],
-    "answer": "③",
-    "solution": "주어진 식을 정리하고 필요한 값을 대입한 뒤 등식 또는 부등식의 기본 성질에 따라 계산한다. 주어진 정답과 일치하는 결과는 ③이다.",
+    "answer": "②",
+    "solution": "\\(t=x^2\\)라 놓으면 방정식은\n\\[\nt^2-(2m+3)t+(m^2+2)=0\n\\]\n이다.\n\n서로 다른 네 실근을 가지려면 이 방정식의 두 근을 \\(u,v\\)라 할 때 \\(u>v>0\\)이어야 한다. 그러면 \\(x\\)의 네 근은 순서대로\n\\[\na=-\\sqrt u,\\quad b=-\\sqrt v,\\quad c=\\sqrt v,\\quad d=\\sqrt u\n\\]\n이다. 따라서\n\\[\nad+bc=-u-v\n\\]\n이고, 근과 계수의 관계에서 \\(u+v=2m+3\\)이므로\n\\[\n-(2m+3)=-11,\\qquad m=4\n\\]\n를 얻는다.\n\n\\(m=4\\)를 대입하면\n\\[\nt^2-11t+18=0,\\qquad (t-9)(t-2)=0\n\\]\n이다. 두 \\(t\\)값 9, 2는 서로 다른 양수이므로 \\(x\\)의 네 실근은\n\\[\n-3,\\ -\\sqrt2,\\ \\sqrt2,\\ 3\n\\]\n이다. 이 순서에서 \\(ad+bc=(-3)(3)+(-\\sqrt2)(\\sqrt2)=-11\\)이고 \\(m=4\\)는 양수이다. 따라서 정답은 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -676,10 +676,10 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 3]\n연립방정식 $\\begin{cases} x-y=3 \\\\ x^2+y^2=17 \\end{cases}$의 해를 $x=\\alpha, y=\\beta$라 할 때, 다음의 물음에 답하시오.\n(1) $\\alpha, \\beta$의 값을 모두 구하시오. (단, 한 쌍씩 정확하게 쓰시오.)\n(2) $\\alpha+\\beta$의 최댓값을 구하시오.",
+    "content": "[서답형(서술형) 3]\n연립방정식 $\\begin{cases} x-y=3 \\\\ x^2+y^2=17 \\end{cases}$의 해를 $x=\\alpha, y=\\beta$라 할 때, 다음의 물음에 답하시오.\n(1) $\\alpha, \\beta$의 값을 모두 구하시오. (단, 한 쌍씩 정확하게 쓰시오.)\n(2) $\\alpha+\\beta$의 최댓값을 구하시오. [총 5점] [부분점수 부여] (1) [4점], (2) [1점]",
     "choices": [],
     "answer": "(1) ($4, 1$), ($-1, -4$) (2) 5",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 주어진 정답과 일치하는 결과는 (1) ($4, 1$), ($-1, -4$) (2) 5이다.",
+    "solution": "첫째 식에서\n\\[\nx-y=3,\\qquad x=y+3\n\\]\n이다. 이를 둘째 식에 대입하면\n\\[\n(y+3)^2+y^2=17\n\\]\n이므로\n\\[\n2y^2+6y-8=0,\\qquad y^2+3y-4=0\n\\]\n이다. 인수분해하면\n\\[\n(y-1)(y+4)=0\n\\]\n이므로 \\(y=1\\) 또는 \\(y=-4\\)이다.\n\n\\(y=1\\)이면 \\(x=4\\), \\(y=-4\\)이면 \\(x=-1\\)이다. 따라서 해는\n\\[\n(\\alpha,\\beta)=(4,1),\\quad(-1,-4)\n\\]\n이다.\n\n각 해에서 합을 구하면 \\(4+1=5\\), \\(-1+(-4)=-5\\)이므로 \\(\\alpha+\\beta\\)의 최댓값은 5이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -701,10 +701,10 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2+4x+4, g(x)=-(x+1)^2+5$\n$h(x) = \\begin{cases} f(x) (x \\le -3 \\text{ 또는 } x \\ge 0) \\\\ g(x) (-3 < x < 0) \\end{cases}$\n이라 하자. 직선 $y=mx+7$과 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 실수 $m$의 값의 합을 $S$라 할 때, $10S^2$의 값을 구하시오.",
+    "content": "[서답형(서술형) 4]\n두 이차함수 $f(x)=x^2+4x+4, g(x)=-(x+1)^2+5$\n$h(x) = \\begin{cases} f(x) (x \\le -3 \\text{ 또는 } x \\ge 0) \\\\ g(x) (-3 < x < 0) \\end{cases}$\n이라 하자. 직선 $y=mx+7$과 $y=h(x)$의 그래프가 서로 다른 세 점에서 만나도록 하는 실수 $m$의 값의 합을 $S$라 할 때, $10S^2$의 값을 구하시오. [총 6점] [부분점수 부여]",
     "choices": [],
-    "answer": "25",
-    "solution": "풀이: 주어진 식 또는 그래프에서 좌표의 부호와 변화 관계를 확인하고, 문제의 조건을 식으로 정리한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 25이다.",
+    "answer": "120",
+    "solution": "바깥 구간의 함수는\n\\[\nf(x)=x^2+4x+4=(x+2)^2\n\\]\n이고, 가운데 구간의 함수는\n\\[\ng(x)=-(x+1)^2+5\n\\]\n이다. 직선과 두 함수를 각각 연립하여 허용된 구간에서 교점 수를 센다.\n\n먼저 바깥 구간에서 \\(f(x)=mx+7\\)을 풀면\n\\[\nx^2+(4-m)x-3=0\n\\]\n이다. 두 근의 곱이 \\(-3\\)이므로 하나는 양수, 하나는 음수이다. 양의 근은 항상 \\(x\\ge0\\)에서 허용된다. 음의 근이 \\(x\\le-3\\)에 들어가는지는 \\(x=-3\\)을 대입해 판단한다.\n\\[\n(-3)^2+(4-m)(-3)-3=3(m-2)\n\\]\n따라서 \\(m\\le2\\)이면 음의 근도 \\(x\\le-3\\)에 들어가 바깥 구간의 교점이 2개이고, \\(m>2\\)이면 음의 근이 \\(-3<x<0\\)에 있어 바깥 구간의 교점은 1개이다.\n\n가운데 구간에서는 \\(g(x)=mx+7\\)이므로\n\\[\nx^2+(m+2)x+3=0\n\\]\n을 얻는다. 두 근의 곱은 3이고 합은 \\(-(m+2)\\)이다. 가운데 구간에 음의 실근이 있으려면\n\\[\n(m+2)^2-12\\ge0,\\qquad m+2>0\n\\]\n이어야 하므로 \\(m\\ge2\\sqrt3-2\\)이다. \\(m=2\\sqrt3-2\\)일 때는 중근 하나가 \\(-\\sqrt3\\)이므로 가운데 구간의 교점은 1개이다.\n\n\\(2\\sqrt3-2<m<2\\)이면 두 근이 모두 \\((-3,0)\\)에 있으므로 가운데 구간의 교점은 2개이다. \\(m=2\\)이면 방정식은\n\\[\n(x+3)(x+1)=0\n\\]\n이고, 가운데 구간은 \\(-3<x<0\\)이므로 \\(x=-1\\)만 허용된다. \\(m>2\\)이면 두 근 중 하나만 \\((-3,0)\\)에 있어 가운데 구간의 교점은 1개이다.\n\n\\[\n\\begin{array}{c|c|c|c}\nm&\\text{바깥 구간의 교점 수}&\\text{가운데 구간의 교점 수}&\\text{전체}\\\\ \\hline\nm<2\\sqrt3-2&2&0&2\\\\\nm=2\\sqrt3-2&2&1&3\\\\\n2\\sqrt3-2<m<2&2&2&4\\\\\nm=2&2&1&3\\\\\nm>2&1&1&2\n\\end{array}\n\\]\n\n따라서 서로 다른 세 점에서 만나는 \\(m\\)은 \\(2\\sqrt3-2\\)와 2이다. 그러므로\n\\[\nS=(2\\sqrt3-2)+2=2\\sqrt3,\\qquad\n10S^2=10(2\\sqrt3)^2=120\n\\]\n이다.",
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",

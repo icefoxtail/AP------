@@ -127,7 +127,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]",
+    "content": "다항식 $6x^3-x^2+bx-3$을 $x-a$로 나누는 조립제법 과정에서 $a+b+c$의 값은? [3.9점]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><tr><td>$a$</td><td>$6$</td><td>$-1$</td><td>$b$</td><td>$-3$</td></tr><tr><td></td><td></td><td>$6a$</td><td>$3a$</td><td>$3a$</td></tr><tr><td></td><td>$6$</td><td>$3$</td><td>$3$</td><td>$c$</td></tr></table></div>",
     "choices": [
       "$\\frac{1}{3}$",
       "$\\frac{2}{3}$",
@@ -136,7 +136,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "②",
-    "solution": "[풀이의 핵심] 조립제법의 빈칸을 채워 미정계수를 결정한다.\n조립제법의 연산 규칙(내려오면 더하고, 오른쪽은 곱한다)을 적용한다.\n(1) 일차항 계산: $-1 + (6 \\times a) = 3$ 이므로 $6a = 4 \\implies a = \\frac{2}{3}$\n(2) 이차항 이후 계산: $b + (3 \\times a) = 3$ 이다.\n$\\implies b + (3 \\times \\frac{2}{3}) = 3 \\implies b + 2 = 3 \\implies b = 1$\n(3) 나머지 계산: $-3 + (3 \\times a) = c$ 이다.\n$\\implies -3 + (3 \\times \\frac{2}{3}) = c \\implies -3 + 2 = c \\implies c = -1$\n최종 합 구하기: $a + b + c = \\frac{2}{3} + 1 + (-1) = \\frac{2}{3}$\n$\\therefore \\frac{2}{3}$",
+    "solution": "조립제법에서 −1+6a=3이므로 a=2/3이다. 다음 줄에서 b+3a=3이므로 b+2=3, b=1이다. 나머지는 c=−3+3a=−3+2=−1이다. 따라서 a+b+c=2/3이므로 정답은 ②이다.",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
     "subUnit": "다항식의 나눗셈",
     "subUnitConfidence": "rule_inferred",
@@ -559,7 +559,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 두 점 $A, B$를 통해 정의된 삼각형의 넓이 차 $S_1-S_2=32$일 때 양수 $k$는? [5.2점]",
+    "content": "이차함수 $y=x^2$과 직선 $y=x+k$가 만나는 점을 $A,B$라 하고, $A,B$에서 $x$축에 내린 수선의 발을 각각 $C,D$라 하자. 삼각형 $AOC$, $DOB$의 넓이를 각각 $S_1,S_2$라 할 때, $S_1-S_2=32$를 만족시키는 양수 $k$의 값은? [5.2점]",
     "choices": [
       "13",
       "15",
@@ -568,7 +568,8 @@ window.questionBank = [
       "21"
     ],
     "answer": "⑤",
-    "solution": "[풀이의 핵심] 교점의 좌표를 근과 계수의 관계로 치환하여 넓이 관계식을 유도한다.\n$x^2 - x - k = 0$ 의 두 근을 $\\alpha, \\beta \\ (\\alpha < 0 < \\beta)$라 한다.\n$\\alpha + \\beta = 1, \\ \\alpha\\beta = -k$\n$S_1 = \\frac{1}{2}\\beta^3, \\ S_2 = -\\frac{1}{2}\\alpha^3$ (밑변이 $-\\alpha$이므로)\n$S_1 - S_2 = \\frac{1}{2}(\\beta^3 + \\alpha^3) = 32 \\implies \\alpha^3 + \\beta^3 = 64$\n곱셈 공식 변형 적용:\n$(\\alpha + \\beta)^3 - 3\\alpha\\beta(\\alpha + \\beta) = 1^3 - 3(-k)(1) = 64$\n$1 + 3k = 64 \\implies 3k = 63$\n$\\therefore k = 21$",
+    "solution": "두 교점의 x좌표를 u>0(A), v<0(B)라 하자. 교점 방정식은 x²−x−k=0이므로 u+v=1, uv=−k이다. C=(u,0), D=(v,0)이고 A=(u,u²), B=(v,v²)이므로 S₁=u³/2, S₂=−v³/2이다.\nS₁−S₂=(u³+v³)/2=((u+v)³−3uv(u+v))/2=(1+3k)/2=32.\n따라서 1+3k=64, k=21이므로 정답은 ⑤이다.",
+    "image": "assets/images/23_부영여고_1학기_중간_고1_기출/q16.png",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
@@ -633,16 +634,16 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 세 일차식의 곱으로 분해되는 정수 $a$의 개수는? [5.3점]",
+    "content": "다항식 $3x^3+ax^2+(2a-6)x+12$가 정수 계수를 갖는 세 일차식의 곱으로 인수분해될 때, 정수 $a$의 개수는? [5.3점]",
     "choices": [
-      "8",
-      "6",
       "4",
+      "6",
+      "8",
       "10",
       "12"
     ],
     "answer": "②",
-    "solution": "[풀이의 핵심] 정수 근의 후보를 찾아 인수분해를 시도한다.\n$f(-2) = 0$ 임을 확인하여 $(x+2)$를 인수로 추출한다.\n$3x^3 + ax^2 + (2a-6)x + 12 = (x+2)\\{3x^2 + (a-6)x + 6\\}$\n이차식 $3x^2 + (a-6)x + 6$ 이 두 정수 계수 일차식 $(3x+m)(x+n)$으로 분해되어야 한다.\n상수항 $mn = 6$ 인 정수 쌍을 조사한다.\n$\\{(1,6), (6,1), (2,3), (3,2), (-1,-6), (-6,-1), (-2,-3), (-3,-2)\\}$\n각 쌍에 대해 $a-6 = m+3n$ 을 만족하는 정수 $a$를 구하면 총 $6$개이다.\n$\\therefore 6$",
+    "solution": "P(x)=3x³+ax²+(2a−6)x+12이라 하자. P(−2)=−24+4a−4a+12+12=0이므로 x+2가 인수이고\nP(x)=(x+2)(3x²+(a−6)x+6)이다. 이차식이 정수 계수 일차식 두 개로 나뉘려면 (3x+m)(x+n) 꼴로 쓸 수 있어 mn=6, a−6=m+3n이다.\n(m,n)=(1,6),(6,1),(2,3),(3,2),(−1,−6),(−6,−1),(−2,−3),(−3,−2)에 대응하는 a값은 각각 25,15,17,15,−13,−3,−5,−3이다. 서로 다른 값은 {−13,−5,−3,15,17,25}의 6개이므로 정답은 ②이다.",
     "subUnitKey": "H15-SA-03-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 연산",
     "subUnitConfidence": "rule_inferred",
@@ -729,10 +730,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[서술형 3] 두 이차방정식의 근의 관계를 통해 $a+b$를 구하시오. [5점]",
+    "content": "[서술형 3] 이차방정식 $x^2+4x+a=0$의 두 근을 $\\alpha,\\beta$라 하자. 이차방정식 $x^2+bx-40=0$의 두 근이 $\\alpha+\\beta$와 $\\alpha-\\beta$일 때, $a+b$의 값을 구하시오. [5점]",
     "choices": [],
-    "answer": "-27",
-    "solution": "(1) $\\alpha + \\beta = -4, \\ \\alpha\\beta = a$\n(2) 두 번째 방정식에서 근과 계수의 관계 적용:\n$(\\alpha+\\beta) + (\\alpha-\\beta) = -b \\implies -4 + (\\alpha-\\beta) = -b$\n$(\\alpha+\\beta)(\\alpha-\\beta) = -40 \\implies -4(\\alpha-\\beta) = -40 \\implies \\alpha-\\beta = 10$\n(3) 연립하여 미지수 결정:\n$b = -6$\n$(\\alpha-\\beta)^2 = (\\alpha+\\beta)^2 - 4\\alpha\\beta \\implies 100 = 16 - 4a \\implies a = -21$\n(4) 최종 합: $a+b = -21 - 6 = -27$\n$\\therefore -27$",
+    "answer": "−27",
+    "solution": "α,β가 x²+4x+a=0의 두 근이므로 s=α+β=−4이다. 두 번째 이차방정식의 두 근은 s와 d=α−β이며 곱이 −40이므로 sd=−40, d=10이다. 두 번째 방정식의 근의 합은 −b이므로 −b=s+d=6, b=−6이다.\n또한 d²=(α−β)²=(α+β)²−4αβ=16−4a이다. d=10을 대입하면 100=16−4a, a=−21이다. 따라서 a+b=−21−6=−27이다.",
     "subUnitKey": "H15-SA-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -760,10 +761,10 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "content": "[서술형 4] 제한된 범위 내에서 이차함수 최솟값이 $6$이 되는 모든 $k$의 합을 구하시오. [6점]",
+    "content": "[서술형 4] $0\\le x\\le4$에서 이차함수 $y=x^2-2kx+5k$의 최솟값이 6이 되도록 하는 모든 실수 $k$의 값의 합은? [6점]",
     "choices": [],
     "answer": "5",
-    "solution": "[풀이의 핵심] 축 $x=k$의 위치에 따라 세 구간으로 분류하여 연산한다.\n$y = (x-k)^2 - k^2 + 5k$\n(1) $k < 0$: $x=0$ 최소 $\\implies 5k = 6 \\implies k=1.2$ (범위 밖 모순)\n(2) $0 \\le k \\le 4$: $x=k$ 최소 $\\implies -k^2+5k = 6 \\implies k=2, 3$ (범위 내 성립)\n(3) $k > 4$: $x=4$ 최소 $\\implies 16-8k+5k = 6 \\implies 3k=10 \\implies k=10/3$ (범위 밖 모순)\n$\\therefore 2 + 3 = 5$",
+    "solution": "y=x²−2kx+5k=(x−k)²−k²+5k이고 x의 범위는 0≤x≤4이다.\nk<0이면 꼭짓점이 구간 왼쪽에 있으므로 x=0에서 최솟값 5k=6을 얻어야 하나 k=6/5는 k<0을 만족하지 않아 탈락한다.\n0≤k≤4이면 꼭짓점 x=k가 구간 안에 있다. −k²+5k=6에서 k²−5k+6=0, (k−2)(k−3)=0이므로 k=2,3은 모두 허용된다.\nk>4이면 꼭짓점이 구간 오른쪽에 있으므로 x=4에서 최솟값 16−3k=6을 얻어야 한다. 여기서 k=10/3은 k>4를 만족하지 않아 탈락한다. 따라서 가능한 k의 합은 2+3=5이다.",
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",

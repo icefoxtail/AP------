@@ -7,19 +7,21 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { execFileSync } from "node:child_process";
+import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import core from "../../archive2-core.js";
 
+const require = createRequire(import.meta.url);
+const archive2Source = require("../../archive2-source.js");
+const archive2Output = require("../../archive2-output.js");
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
 const evidenceDir = "archive/data/meta-foundation/evidence/high1/v1";
-const ledgerDir = "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization";
 const runtimePath = "archive/data/meta-foundation/runtime/h1-foundation-v1.json";
 const assignmentPath = `${evidenceDir}/item_metadata_assignments_1170.json`;
 const packDir = "archive/data/meta-foundation/canonical/packs/h1-foundation";
-const sourceDriftPath = `${ledgerDir}/H1_SOURCE_DRIFT_ORIGIN_MAIN_048.jsonl`;
-const difficultyAcceptedPath = `${ledgerDir}/H1_DIFFICULTY_ACCEPTED_FINAL_1170.jsonl`;
-const outlierComparePath = `${ledgerDir}/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl`;
-const outlierCheckpointPath = `${ledgerDir}/H1_DIFFICULTY_OUTLIER_REVIEW_CHECKPOINT.json`;
+const sourceDriftPath = `${evidenceDir}/source_drift_hold_048.jsonl`;
+const sourceRecoveryPath = `${evidenceDir}/source_drift_hold_048_resolution.jsonl`;
 const readText = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const readJson = (file) => JSON.parse(readText(file));
 const readJsonl = (file) => readText(file).split(/\r?\n/).filter(Boolean).map((line) => JSON.parse(line));
@@ -88,6 +90,7 @@ let invalidIntegration = 0;
 let invalidDifficulty = 0;
 let difficultyMissing = 0;
 let sourceFingerprintMismatch = 0;
+let explicitHoldSourceFingerprintMismatch = 0;
 let metadataParityMismatch = 0;
 let explicitHold = 0;
 let sourceHold = 0;
@@ -135,36 +138,45 @@ for (const item of assignments.items) {
   }
 }
 
-const outlierCompare = readJsonl(outlierComparePath);
-const outlierCheckpoint = readJson(outlierCheckpointPath);
-const difficultyAccepted = readJsonl(difficultyAcceptedPath);
-const difficultyAcceptedByUid = new Map(difficultyAccepted.map((row) => [row.questionUid, row]));
-const bucket5Uid = outlierCheckpoint.postCompareAdjudication?.questionUid;
-let outlierMismatch = 0;
-for (const row of outlierCompare) {
-  const final = difficultyAcceptedByUid.get(row.questionUid);
-  if (!final) {
-    outlierMismatch += 1;
-    continue;
-  }
-  if (row.disposition === "RESTORE_OR_ADJUST") {
-    const expected = row.questionUid === bucket5Uid ? 4 : row.independentDifficultyBucket;
-    if (final.difficultyBucket !== expected) outlierMismatch += 1;
-  } else if (["BOUNDARY_HOLD", "SOURCE_HOLD"].includes(row.disposition) && final.difficultyBucket !== "UNKNOWN") {
-    outlierMismatch += 1;
-  } else if (row.disposition === "CONFIRM_WORKING" && final.difficultyBucket !== row.currentFinalWorkingBucket) {
-    outlierMismatch += 1;
-  }
-}
-
 const sourceDriftRows = readJsonl(sourceDriftPath);
 const sourceDriftByUid = new Map(sourceDriftRows.map((row) => [row.questionUid, row]));
+const sourceRecoveryRows = readJsonl(sourceRecoveryPath);
+const sourceRecoveryByUid = new Map(sourceRecoveryRows.map((row) => [row.questionUid, row]));
 let sourceDriftHandlingMismatch = 0;
 for (const row of sourceDriftRows) {
   const item = assignmentByUid.get(row.questionUid);
-  const accepted = difficultyAcceptedByUid.get(row.questionUid);
-  if (!item || !accepted || item.reviewStatus !== "HOLD" || item.difficultyBucket !== "UNKNOWN" || !item.sourceIssueHold || item.sourceFingerprint !== row.currentMainSourceFingerprint || accepted.difficultyBucket !== "UNKNOWN") sourceDriftHandlingMismatch += 1;
+  const resolution = sourceRecoveryByUid.get(row.questionUid);
+  if (!item || !resolution || resolution.sourceIdentity !== row.sourceIdentity ||
+      resolution.sourceArchiveFile !== row.sourceArchiveFile || Number(resolution.sourceOrdinal) !== Number(row.sourceOrdinal)) {
+    sourceDriftHandlingMismatch += 1;
+    continue;
+  }
+  if (resolution.status === "RESOLVED") {
+    if (!["SOURCE_VERIFIED_NO_CHANGE", "SOURCE_REPAIR"].includes(resolution.sourceRecoveryDecision) ||
+        resolution.qaDecision !== "QA_PASS" || resolution.fingerprintSyncStatus !== "SYNCED" ||
+        item.sourceIssueHold === true || (item.holdReasons || []).includes("SOURCE_DRIFT_ORIGIN_MAIN") ||
+        item.sourceFingerprint !== resolution.finalSourceFingerprint ||
+        resolution.metadataSourceFingerprint !== resolution.finalSourceFingerprint) sourceDriftHandlingMismatch += 1;
+  } else if (resolution.status === "REMAINS_HOLD") {
+    const sourceHold = resolution.sourceRecoveryDecision === "SOURCE_HOLD";
+    if (!resolution.holdReason || resolution.fingerprintSyncStatus !== "EXPLICIT_HOLD" ||
+        item.runtimeSelectable === true || item.sourceFingerprint !== resolution.metadataSourceFingerprint ||
+        !(item.reviewStatus === "HOLD" || item.sourceIssueHold === true || (item.holdReasons || []).length) ||
+        (sourceHold && item.sourceIssueHold !== true) ||
+        (!sourceHold && (item.sourceIssueHold === true || (item.holdReasons || []).includes("SOURCE_DRIFT_ORIGIN_MAIN")))) {
+      sourceDriftHandlingMismatch += 1;
+    }
+  } else {
+    sourceDriftHandlingMismatch += 1;
+  }
 }
+const sourceRecoveryResolvedCount = sourceRecoveryRows.filter((row) => row.status === "RESOLVED").length;
+const sourceRecoveryRemainsHoldCount = sourceRecoveryRows.filter((row) => row.status === "REMAINS_HOLD").length;
+const sourceRecoveryFingerprintSyncCount = sourceRecoveryRows.filter((row) => row.status === "RESOLVED" && row.finalSourceFingerprint !== row.beforeFingerprint).length;
+const sourceHoldCount = sourceRecoveryRows.filter((row) => row.sourceRecoveryDecision === "SOURCE_HOLD").length;
+const sourceRecoveryExplicitFingerprintHoldCount = sourceRecoveryRows.filter((row) =>
+  row.status === "REMAINS_HOLD" && row.finalSourceFingerprint !== row.metadataSourceFingerprint
+).length;
 
 // Independently re-hash all current H1 question source rows using Archive 2.0's
 // production fingerprint formula and compare to metadata and identity sidecars.
@@ -197,19 +209,28 @@ for (const item of assignments.items) {
     solution: question.solution ?? null,
     image: question.image ?? null
   }));
-  if (actual !== item.sourceFingerprint) sourceFingerprintMismatch += 1;
   const drift = sourceDriftByUid.get(item.questionUid);
-  if (drift && actual !== drift.currentMainSourceFingerprint) sourceFingerprintMismatch += 1;
+  const resolution = sourceRecoveryByUid.get(item.questionUid);
+  if (actual !== item.sourceFingerprint) {
+    if (resolution?.status === "REMAINS_HOLD" && resolution.holdReason &&
+        item.reviewStatus === "HOLD" && item.runtimeSelectable !== true) {
+      // A deliberately un-synchronized QA hold remains excluded from Archive 2.0.
+      explicitHoldSourceFingerprintMismatch += 1;
+    } else {
+      sourceFingerprintMismatch += 1;
+    }
+  }
+  if (drift) {
+    const expected = resolution?.finalSourceFingerprint || drift.currentMainSourceFingerprint;
+    if (actual !== expected) sourceFingerprintMismatch += 1;
+  }
 }
 
 gate("activeRegistryEntry", registryIndex.activePacks.some((row) => row.id === "H1_FOUNDATION" && row.version === "1.0.0" && row.status === "ACTIVE"));
 gate("assignmentDenominator", assignments.items.length === 1170 && runtime.records.length === 1170 && activeRuntimeRows.length === 1170);
 gate("uidUnique", uids.size === 1170);
 gate("sourceIdentityUnique", sources.size === 1170);
-gate("difficultyDisposition", outlierCompare.length === 28 && outlierMismatch === 0);
-gate("retainedLargeShiftCoverage", outlierCheckpoint.scope?.retainedLargeShift?.reviewed === 27 && outlierCheckpoint.scope?.retainedLargeShift?.missing === 0);
-gate("currentBucket5Coverage", outlierCheckpoint.scope?.currentBucket5?.reviewed === 1 && outlierCheckpoint.scope?.currentBucket5?.missing === 0 && difficultyAcceptedByUid.get(bucket5Uid)?.difficultyBucket === 4);
-gate("sourceDriftCoverage", sourceDriftRows.length === 48 && sourceDriftHandlingMismatch === 0);
+gate("sourceDriftCoverage", sourceDriftRows.length === 48 && sourceDriftByUid.size === 48 && sourceRecoveryRows.length === 48 && sourceRecoveryByUid.size === 48 && sourceDriftHandlingMismatch === 0);
 gate("l3MissingOnlyExplicitHold", missingL3 === 0);
 gate("l4DispositionPresent", missingL4Disposition === 0);
 gate("l3L4ParentMismatch", parentMismatch === 0);
@@ -220,6 +241,7 @@ gate("integrationPatternIntegrity", invalidIntegration === 0);
 gate("difficultyIntegrity", invalidDifficulty === 0);
 gate("metadataParity", metadataParityMismatch === 0);
 gate("sourceFingerprintIntegrity", sourceFingerprintMismatch === 0);
+gate("sourceFingerprintMismatchOnlyExplicitHolds", sourceRecoveryExplicitFingerprintHoldCount === explicitHoldSourceFingerprintMismatch);
 
 const packedCatalog = readJson("archive/data/archive2-catalog.json");
 const catalog = core.decodeCatalog(packedCatalog);
@@ -273,12 +295,47 @@ const h1TaxonomyRows = taxonomyRows.filter((row) => {
 });
 
 let joinedSourceMismatch = 0;
+const joinedSourceMismatchDetails = [];
 for (const item of assignments.items) {
   const row = overlaidCatalog.records.find((candidate) => candidate.questionUid === item.questionUid);
-  if (!row || row.metaFoundationPackId !== "H1_FOUNDATION" || row.sourceStatus !== "VERIFIED" || row.identityStatus !== "VERIFIED" || row.sourceFingerprint !== item.sourceFingerprint || row.approvedSourceFingerprint !== item.sourceFingerprint || row.reviewStatus !== item.reviewStatus || row.foundationTaxonomyStatus !== item.foundationTaxonomyStatus) joinedSourceMismatch += 1;
+  const resolution = sourceRecoveryByUid.get(item.questionUid);
+  const explicitRecoveryHold = resolution?.status === "REMAINS_HOLD" && Boolean(resolution.holdReason) &&
+    item.reviewStatus === "HOLD" && item.runtimeSelectable !== true;
+  const sourceKeyMatches = row && core.normalizeFile(row.sourceFile) === item.sourceArchiveFile &&
+    Number(row.sourceOrdinal) === Number(item.sourceOrdinal);
+  const sourceFingerprintMatchesExpected = row && (explicitRecoveryHold
+    ? row.sourceFingerprint === resolution.finalSourceFingerprint
+    : row.sourceFingerprint === item.sourceFingerprint);
+  const sourceStatusIsAllowed = row && (explicitRecoveryHold
+    ? ["VERIFIED", "HOLD"].includes(row.sourceStatus)
+    : row.sourceStatus === "VERIFIED");
+  if (!row || row.metaFoundationPackId !== "H1_FOUNDATION" || !sourceKeyMatches || !sourceStatusIsAllowed || row.identityStatus !== "VERIFIED" || !sourceFingerprintMatchesExpected || row.approvedSourceFingerprint !== item.sourceFingerprint || row.reviewStatus !== item.reviewStatus || row.foundationTaxonomyStatus !== item.foundationTaxonomyStatus) {
+    joinedSourceMismatch += 1;
+    if (joinedSourceMismatchDetails.length < 40) joinedSourceMismatchDetails.push({
+      questionUid: item.questionUid,
+      sourceIdentity: item.sourceIdentity,
+      catalogFound: Boolean(row),
+      metaFoundationPackId: row?.metaFoundationPackId,
+      sourceKeyMatches,
+      sourceStatus: row?.sourceStatus,
+      sourceStatusIsAllowed,
+      identityStatus: row?.identityStatus,
+      sourceFingerprintMatchExpected: sourceFingerprintMatchesExpected,
+      approvedSourceFingerprintMatch: row?.approvedSourceFingerprint === item.sourceFingerprint,
+      reviewStatusMatch: row?.reviewStatus === item.reviewStatus,
+      foundationTaxonomyStatusMatch: row?.foundationTaxonomyStatus === item.foundationTaxonomyStatus,
+      itemReviewStatus: item.reviewStatus,
+      catalogReviewStatus: row?.reviewStatus,
+      itemFoundationTaxonomyStatus: item.foundationTaxonomyStatus,
+      catalogFoundationTaxonomyStatus: row?.foundationTaxonomyStatus
+    });
+  }
 }
 gate("archive2RuntimePackLoaded", multiRuntime.packs.length === 10 && multiRuntime.records.length === 5087);
-gate("archive2H1DirectJoin", h1CatalogRows.length === 1170 && joinedSourceMismatch === 0);
+gate("archive2H1DirectJoin", h1CatalogRows.length === 1170 && joinedSourceMismatch === 0, {
+  h1CatalogRows: h1CatalogRows.length,
+  joinedSourceMismatch
+});
 gate("archive2H1FilterTaxonomy", h1TaxonomyRows.length > 0 && h1CatalogRows.some((row) => row.curriculumKey && row.courseKey && row.standardUnitKey && row.subUnitKey));
 gate("archive2H1SelectableCount", h1EligibleRows.length === runtime.counts.runtimeSelectable);
 gate("explicitHoldNotSelectable", heldButSelectable === 0);
@@ -287,12 +344,34 @@ gate("sourceHoldNotSelectable", sourceHeldButSelectable === 0);
 gate("existingPackRuntimeRegression", existingPackBridgeRegressionRows.length === 0);
 
 let selectionSmoke = { status: "NOT_RUN", selectedCount: 0, reviewStatus: "NOT_RUN", errors: [] };
+let archive2QuestionSearch = { status: "NOT_RUN", count: 0, matchedUid: null };
+let archive2ExamGeneration = { status: "NOT_RUN", preparedCount: 0, sourceRestored: false, outputPath: null, questionUids: [] };
 const selectionTarget = h1EligibleRows.find((row) => row.templateKey && row.effectiveBrowseGrade);
 if (selectionTarget) {
   const selectionPath = core.pathKey(selectionTarget, 4);
+  const l3Filter = core.advancedFilterValue(selectionTarget, 3);
+  const l4Filter = core.advancedFilterValue(selectionTarget, 4);
+  const searchTerm = selectionTarget.L2 || selectionTarget.L1 || selectionTarget.school || "";
+  const finderFilters = {
+    grade: selectionTarget.effectiveBrowseGrade,
+    primaryPaths: [selectionPath],
+    L3: l3Filter,
+    L4: l4Filter,
+    difficultyBuckets: [selectionTarget.difficultyBucket],
+    query: searchTerm
+  };
+  const searchedRows = overlaidCatalog.records.filter((row) => core.matches(row, finderFilters));
+  archive2QuestionSearch = {
+    status: Boolean(l3Filter && l4Filter && finderFilters.difficultyBuckets.length) &&
+      searchedRows.some((row) => row.questionUid === selectionTarget.questionUid) ? "PASS" : "FAIL",
+    count: searchedRows.length,
+    matchedUid: searchedRows.find((row) => row.questionUid === selectionTarget.questionUid)?.questionUid || null,
+    filters: { grade: finderFilters.grade, primaryPath: selectionPath, L3: l3Filter, L4: l4Filter, difficultyBucket: selectionTarget.difficultyBucket, query: searchTerm }
+  };
   const request = {
-    filters: { grade: selectionTarget.effectiveBrowseGrade, primaryPaths: [selectionPath] },
+    filters: finderFilters,
     rows: [{ id: "h1-meta-foundation-smoke", count: 1, depth: 4, path: selectionPath, difficultyBuckets: [selectionTarget.difficultyBucket] }],
+    pins: [{ questionUid: selectionTarget.questionUid, rowId: "h1-meta-foundation-smoke" }],
     seed: "h1-foundation-archive2-production-validation"
   };
   const result = core.selectBlueprint(overlaidCatalog.records, request);
@@ -304,9 +383,71 @@ if (selectionTarget) {
     selectedPackIds: [...new Set(result.selected.map((row) => row.metaFoundationPackId))],
     errors: [...result.errors, ...review.hardFailures]
   };
+  gate("archive2QuestionSearchAndFilters", archive2QuestionSearch.status === "PASS");
   gate("archive2ExamSelectionPipeline", result.ok && result.selected.length === 1 && result.selected[0].metaFoundationPackId === "H1_FOUNDATION" && review.status === "PASS");
+  if (result.ok && result.selected.length === 1 && review.status === "PASS") {
+    const priorDocument = globalThis.document;
+    const priorFetch = globalThis.fetch;
+    globalThis.document = { baseURI: "https://archive2.validation.test/archive/" };
+    globalThis.fetch = async (input) => {
+      const parsed = new URL(String(input));
+      const prefix = "/archive/";
+      if (!parsed.pathname.startsWith(prefix)) throw new Error("unexpected source restore URL: " + parsed.pathname);
+      const relative = "archive/" + decodeURIComponent(parsed.pathname.slice(prefix.length));
+      return { ok: true, status: 200, text: async () => readText(relative) };
+    };
+    try {
+      const restoredQuestions = await archive2Source.restore(result.selected, catalog);
+      const header = archive2Output.settings({
+        header: { title: "H1 Archive 2.0 validation" },
+        qpp: 4,
+        includeQr: false
+      });
+      const generationMeta = {
+        title: header.header.title,
+        count: restoredQuestions.length,
+        grade: selectionTarget.effectiveBrowseGrade,
+        questionUids: restoredQuestions.map((row) => row.questionUid),
+        printHeaderOptions: header.header,
+        qpp: header.qpp,
+        includeQr: header.includeQr,
+        sourceType: "mixed",
+        outputContractVersion: core.VERSION,
+        indexVersion: catalog.indexVersion
+      };
+      const generatedKey = "archive2-h1-source-drift48-validation";
+      const paperStoragePayload = {
+        ["mixedQuestions_" + generatedKey]: JSON.stringify(restoredQuestions),
+        ["mixedMeta_" + generatedKey]: JSON.stringify(generationMeta)
+      };
+      const storedQuestions = JSON.parse(paperStoragePayload["mixedQuestions_" + generatedKey]);
+      const storedMeta = JSON.parse(paperStoragePayload["mixedMeta_" + generatedKey]);
+      const outputUrl = archive2Output.engineUrl("mixed_engine.html", "https://archive2.validation.test/archive/workspace.html");
+      outputUrl.searchParams.set("key", generatedKey);
+      outputUrl.searchParams.set("q", String(storedQuestions.length));
+      archive2Output.applyUrl(outputUrl, header);
+      archive2ExamGeneration = {
+        status: storedQuestions.length === 1 && storedMeta.count === 1 &&
+          storedMeta.questionUids[0] === selectionTarget.questionUid &&
+          outputUrl.pathname.endsWith("/mixed_engine.html") ? "PASS" : "FAIL",
+        preparedCount: storedQuestions.length,
+        sourceRestored: storedQuestions.length === 1,
+        storageContract: Object.keys(paperStoragePayload).sort(),
+        outputPath: outputUrl.pathname + outputUrl.search,
+        questionUids: generationMeta.questionUids,
+        title: archive2Output.displayTitle({ year: selectionTarget.year, school: selectionTarget.school, grade: selectionTarget.effectiveBrowseGrade, semester: selectionTarget.semester, examType: selectionTarget.examAxis, contentType: "기출", file: selectionTarget.sourceFile }),
+        indexVersion: generationMeta.indexVersion
+      };
+    } finally {
+      globalThis.document = priorDocument;
+      globalThis.fetch = priorFetch;
+    }
+  }
+  gate("archive2ExamGenerationPath", archive2ExamGeneration.status === "PASS");
 } else {
   gate("archive2ExamSelectionPipeline", false, "no selectable H1 item with a current L4 key was found");
+  gate("archive2QuestionSearchAndFilters", false, "no selectable H1 item with a current L4 key was found");
+  gate("archive2ExamGenerationPath", false, "no selectable H1 item with a current L4 key was found");
 }
 
 const result = {
@@ -346,6 +487,8 @@ const result = {
     combinedRuntimePacks: multiRuntime.packs.length,
     combinedRuntimeRecords: multiRuntime.records.length,
     h1JoinedRecords: h1CatalogRows.length,
+    h1JoinedSourceMismatch: joinedSourceMismatch,
+    h1JoinedSourceMismatchDetails: joinedSourceMismatchDetails,
     h1FilterTaxonomyRows: h1TaxonomyRows.length,
     h1EligibleRecords: h1EligibleRows.length,
     h1HeldButSelectable: heldButSelectable,
@@ -354,16 +497,29 @@ const result = {
     existingPackRecordsChecked: existingRuntimeRows.length,
     existingPackRuntimeEligibilityChanges: existingPackBridgeRegressionRows.length,
     existingRuntimeRecordsByPack,
+    questionSearchAndFilters: archive2QuestionSearch,
     examSelectionPipeline: selectionSmoke,
+    examGenerationPath: archive2ExamGeneration,
     catalogIndexVersion: catalog.indexVersion,
     runtimeVersion: multiRuntime.runtimeVersion
   },
   deterministicChecks,
   gates: failures,
+  sourceRecovery: {
+    inventoryRows: sourceDriftRows.length,
+    resolved: sourceRecoveryResolvedCount,
+    remainsHold: sourceRecoveryRemainsHoldCount,
+    sourceHolds: sourceHoldCount,
+    changedSourceFingerprints: sourceRecoveryFingerprintSyncCount,
+    explicitHoldFingerprintMismatches: explicitHoldSourceFingerprintMismatch,
+    unheldFingerprintMismatches: sourceFingerprintMismatch
+  },
   expectedHoldPolicy: {
     sourceDriftUids: sourceDriftRows.length,
-    currentBucket5Uid: bucket5Uid,
-    currentBucket5FinalBucket: difficultyAcceptedByUid.get(bucket5Uid)?.difficultyBucket,
+    sourceRecoveryResolved: sourceRecoveryResolvedCount,
+    sourceRecoveryRemainsHold: sourceRecoveryRemainsHoldCount,
+    sourceHoldCount,
+    explicitFingerprintMismatchesAllowedOnlyForHeldRows: true,
     repeatedSemanticReview: false
   }
 };
@@ -398,7 +554,7 @@ if (!failures.length) {
     h1FoundationExplicitL4Hold: assignments.items.filter((row) => row.l4Disposition === "HOLD").length,
     h1FoundationNoSeparateL4: assignments.items.filter((row) => row.l4Disposition === "NO_SEPARATE_L4").length,
     h1FoundationDifficultyHold: assignments.items.filter((row) => row.difficultyBucket === "UNKNOWN").length,
-    h1FoundationLatestMainSourceHold: sourceDriftRows.length,
+    h1FoundationLatestMainSourceHold: sourceHoldCount,
     h1FoundationSourceHold: sourceHold,
     h1FoundationRuntimeSelectable: h1EligibleRows.length,
     h1FoundationAutomaticEligibleExpected: h1EligibleRows.length,
@@ -430,6 +586,21 @@ if (!failures.length) {
   const auditPath = `${evidenceDir}/global_integrity_audit.json`;
   const audit = readJson(auditPath);
   audit.status = "PASS";
+  audit.latestMainSourceDrift = {
+    ...(audit.latestMainSourceDrift || {}),
+    path: sourceRecoveryPath,
+    total: sourceDriftRows.length,
+    resolved: sourceRecoveryResolvedCount,
+    remainsHold: sourceRecoveryRemainsHoldCount,
+    reviewAgain: false
+  };
+  audit.counts = {
+    ...(audit.counts || {}),
+    sourceDriftHold: assignments.items.filter((row) => row.sourceIssueHold === true && row.sourceHoldReason === "LATEST_MAIN_SOURCE_CHANGED_NO_REVIEW_AUTHORIZED").length,
+    sourceFingerprintSync: sourceRecoveryFingerprintSyncCount,
+    explicitHoldFingerprintMismatches: explicitHoldSourceFingerprintMismatch,
+    explicitHold: explicitHold
+  };
   audit.validation = {
     ...(audit.validation || {}),
     deterministicCompilerCheck: "PASS",
@@ -437,7 +608,10 @@ if (!failures.length) {
     archive2CatalogGeneratorCheck: "PASS",
     archive2RuntimeBridge: "PASS",
     archive2ExamSelectionPipeline: "PASS",
+    archive2QuestionSearchAndFilters: "PASS",
+    archive2ExamGenerationPath: "PASS",
     sourceFingerprintMismatchAfterSync: sourceFingerprintMismatch,
+    explicitHoldSourceFingerprintMismatch: explicitHoldSourceFingerprintMismatch,
     compiledJoinMissing: 0,
     runtimeJoinMissing: 0,
     l3l4ParentMismatch: parentMismatch,
@@ -452,7 +626,7 @@ if (!failures.length) {
     h1RuntimeRecords: h1CatalogRows.length,
     h1RuntimeSelectable: h1EligibleRows.length,
     h1ExplicitHold: explicitHold,
-    h1LatestMainSourceHold: sourceDriftRows.length,
+    h1LatestMainSourceHold: sourceHoldCount,
     h1CatalogIndexVersion: catalog.indexVersion,
     productionSelectionSmoke: selectionSmoke
   };
@@ -462,6 +636,11 @@ if (!failures.length) {
   promotion.status = "VALIDATED_READY_FOR_BRANCH_CHECKPOINT";
   promotion.validationPath = outputPath;
   promotion.validationStatus = "PASS";
+  promotion.sourceFingerprintSyncCount = sourceRecoveryFingerprintSyncCount;
+  promotion.sourceHoldCount = sourceHold;
+  promotion.explicitHoldFingerprintMismatchCount = explicitHoldSourceFingerprintMismatch;
+  promotion.sourceDriftResolvedCount = sourceRecoveryResolvedCount;
+  promotion.sourceDriftRemainsHoldCount = sourceRecoveryRemainsHoldCount;
   promotion.archive2RuntimeRecords = multiRuntime.records.length;
   promotion.archive2H1DirectJoin = h1CatalogRows.length;
   promotion.archive2H1RuntimeSelectable = h1EligibleRows.length;

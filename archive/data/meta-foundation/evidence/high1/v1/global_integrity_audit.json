@@ -53,7 +53,7 @@
       "NO_SEPARATE_L4": 69,
       "HOLD": 57
     },
-    "explicitHold": 149,
+    "explicitHold": 132,
     "holdReasonCounts": {
       "LEGACY_LEVEL_STRONG_CONFLICT_UNADJUDICATED": 42,
       "SOURCE_DRIFT_ORIGIN_MAIN": 48,
@@ -66,8 +66,8 @@
     },
     "retainedLargeShiftCoverage": 27,
     "bucket5Coverage": 1,
-    "sourceDriftHold": 48,
-    "sourceFingerprintSync": 22,
+    "sourceDriftHold": 0,
+    "sourceFingerprintSync": 17,
     "l3Unique": 32,
     "l3OwnedNew": 27,
     "l4AssignedUnique": 61,
@@ -84,7 +84,8 @@
       "NONE",
       "REINTERPRETATION",
       "SEQUENTIAL"
-    ]
+    ],
+    "explicitHoldFingerprintMismatches": 29
   },
   "validation": {
     "acceptedBaselineOnly": true,
@@ -107,7 +108,10 @@
     "unregisteredCrossConcept": 0,
     "unregisteredCondition": 0,
     "invalidIntegrationPattern": 0,
-    "invalidDifficultyBucket": 0
+    "invalidDifficultyBucket": 0,
+    "archive2QuestionSearchAndFilters": "PASS",
+    "archive2ExamGenerationPath": "PASS",
+    "explicitHoldSourceFingerprintMismatch": 29
   },
   "outlierCompare": {
     "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_DIFFICULTY_OUTLIER_COMPARE_028.jsonl",
@@ -121,11 +125,13 @@
     "changedOutlierDeltaRows": 20
   },
   "latestMainSourceDrift": {
-    "path": "archive/_generated/intelligence/phase1/high1-foundation/sol-checkpoint/l4-global-normalization/H1_SOURCE_DRIFT_ORIGIN_MAIN_048.jsonl",
+    "path": "archive/data/meta-foundation/evidence/high1/v1/source_drift_hold_048_resolution.jsonl",
     "total": 48,
     "semanticInputChanged": 47,
     "answerOrImageOnly": 1,
-    "reviewAgain": false
+    "reviewAgain": false,
+    "resolved": 17,
+    "remainsHold": 31
   },
   "outputPaths": {
     "canonicalPack": "archive/data/meta-foundation/canonical/packs/h1-foundation",
@@ -139,10 +145,10 @@
     "combinedPackCount": 10,
     "combinedRuntimeRecords": 5087,
     "h1RuntimeRecords": 1170,
-    "h1RuntimeSelectable": 631,
-    "h1ExplicitHold": 149,
-    "h1LatestMainSourceHold": 48,
-    "h1CatalogIndexVersion": "525b683c79400ebb9b98f1952a25722a81407abef55e41c706b373996f930500",
+    "h1RuntimeSelectable": 648,
+    "h1ExplicitHold": 132,
+    "h1LatestMainSourceHold": 1,
+    "h1CatalogIndexVersion": "38b154ab208676f456244ac8d90a464be87ddadade64b2d96f156856f8fa19ee",
     "productionSelectionSmoke": {
       "status": "PASS",
       "selectedCount": 1,

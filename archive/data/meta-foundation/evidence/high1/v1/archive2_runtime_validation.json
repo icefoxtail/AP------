@@ -3,21 +3,21 @@
   "status": "PASS",
   "packId": "H1_FOUNDATION",
   "packVersion": "1.0.0",
-  "createdAt": "2026-09-25T15:08:38.986Z",
+  "createdAt": "2026-09-26T05:44:21.581Z",
   "globalCounts": {
     "assignments": 1170,
     "uniqueUid": 1170,
     "uniqueSourceIdentity": 1170,
     "finalDifficulty": {
-      "1": 33,
-      "2": 537,
-      "3": 366,
-      "4": 154,
-      "UNKNOWN": 80
+      "1": 34,
+      "2": 547,
+      "3": 370,
+      "4": 156,
+      "UNKNOWN": 63
     },
-    "explicitHold": 149,
-    "sourceHold": 73,
-    "runtimeSelectable": 631,
+    "explicitHold": 132,
+    "sourceHold": 26,
+    "runtimeSelectable": 648,
     "l3Unique": 32,
     "l3New": 27,
     "l4AssignedUnique": 61,
@@ -38,9 +38,9 @@
       "REINTERPRETATION",
       "SEQUENTIAL"
     ],
-    "explicitL3Holds": 17,
-    "explicitL4Holds": 57,
-    "noSeparateL4": 69,
+    "explicitL3Holds": 13,
+    "explicitL4Holds": 53,
+    "noSeparateL4": 70,
     "borderLineReview": 279
   },
   "archive2": {
@@ -48,8 +48,10 @@
     "combinedRuntimePacks": 10,
     "combinedRuntimeRecords": 5087,
     "h1JoinedRecords": 1170,
+    "h1JoinedSourceMismatch": 0,
+    "h1JoinedSourceMismatchDetails": [],
     "h1FilterTaxonomyRows": 217,
-    "h1EligibleRecords": 631,
+    "h1EligibleRecords": 648,
     "h1HeldButSelectable": 0,
     "h1UnknownDifficultyButSelectable": 0,
     "h1SourceHeldButSelectable": 0,
@@ -66,6 +68,19 @@
       "MIDDLE_GEOMETRY": 928,
       "MIDDLE1": 381
     },
+    "questionSearchAndFilters": {
+      "status": "PASS",
+      "count": 5,
+      "matchedUid": "qid_v1_7794c339b6be0cd50bc5819af432e7d4834445e4537f5a21ee63e7dd4880812d",
+      "filters": {
+        "grade": "고1",
+        "primaryPath": "[\"2022\",\"공통수학1\",\"행렬\",\"행렬\"]",
+        "L3": "mf:PT_H1_MATRIX_EQUATION",
+        "L4": "mf:TPL_H1_MATRIX_EQUATION_LINEAR",
+        "difficultyBucket": 3,
+        "query": "행렬"
+      }
+    },
     "examSelectionPipeline": {
       "status": "PASS",
       "selectedCount": 1,
@@ -75,7 +90,22 @@
       ],
       "errors": []
     },
-    "catalogIndexVersion": "525b683c79400ebb9b98f1952a25722a81407abef55e41c706b373996f930500",
+    "examGenerationPath": {
+      "status": "PASS",
+      "preparedCount": 1,
+      "sourceRestored": true,
+      "storageContract": [
+        "mixedMeta_archive2-h1-source-drift48-validation",
+        "mixedQuestions_archive2-h1-source-drift48-validation"
+      ],
+      "outputPath": "/archive/mixed_engine.html?archive2Context=archive2&key=archive2-h1-source-drift48-validation&q=1&qpp=4&submitQr=0&solQr=0&portalQr=1&preRegistered=1&assignmentRegistered=1",
+      "questionUids": [
+        "qid_v1_7794c339b6be0cd50bc5819af432e7d4834445e4537f5a21ee63e7dd4880812d"
+      ],
+      "title": "2026 광양제철고 고1",
+      "indexVersion": "38b154ab208676f456244ac8d90a464be87ddadade64b2d96f156856f8fa19ee"
+    },
+    "catalogIndexVersion": "38b154ab208676f456244ac8d90a464be87ddadade64b2d96f156856f8fa19ee",
     "runtimeVersion": "META_FOUNDATION_MULTI/runtime-bridge-v5:GEOMETRY_EQUATIONS@1.0.2/runtime-bridge-v1+SETS_PROPOSITIONS@1.0.0/runtime-bridge-v1.1+FUNCTIONS_GRAPHS@1.0.1/runtime-bridge-v2+LIMIT_CONTINUITY@1.1.0/runtime-bridge-v4+INTEGRAL_CALCULUS@1.0.0/runtime-bridge-v2+DERIVATIVE@1.0.0/runtime-bridge-v3+PROBABILITY_STATISTICS@1.0.0/runtime-bridge-v1+MIDDLE_GEOMETRY@1.0.0/runtime-bridge-v1+MIDDLE1@1.0.0/runtime-bridge-v1+H1_FOUNDATION@1.0.0/runtime-bridge-v5",
     "runtimeBridgeReceiptUpdated": true,
     "runtimeBridgeReceiptPackCount": 10,
@@ -96,10 +126,21 @@
     }
   ],
   "gates": [],
+  "sourceRecovery": {
+    "inventoryRows": 48,
+    "resolved": 17,
+    "remainsHold": 31,
+    "sourceHolds": 1,
+    "changedSourceFingerprints": 17,
+    "explicitHoldFingerprintMismatches": 29,
+    "unheldFingerprintMismatches": 0
+  },
   "expectedHoldPolicy": {
     "sourceDriftUids": 48,
-    "currentBucket5Uid": "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
-    "currentBucket5FinalBucket": 4,
+    "sourceRecoveryResolved": 17,
+    "sourceRecoveryRemainsHold": 31,
+    "sourceHoldCount": 1,
+    "explicitFingerprintMismatchesAllowedOnlyForHeldRows": true,
     "repeatedSemanticReview": false
   }
 }
