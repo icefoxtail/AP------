@@ -12,11 +12,6 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[3]
-REPORTS = ROOT / "reports" / "geometry_equation_20260902"
-STAGING = REPORTS / "staging" / "archive"
-MANIFEST_PATH = REPORTS / "geometry_equation_manifest.json"
-FACTS_PATH = Path(os.environ.get("GEOMETRY_FACTS_FILE", str(REPORTS / "a_independent_solve_facts_final.json")))
-PILOT_PATH = REPORTS / "pilot_sample_manifest.json"
 
 NUMBER = r"[-+−]?\d+(?:[.,]\d+)?(?:\s*/\s*[-+−]?\d+(?:[.,]\d+)?)?"
 COORD_RE = re.compile(rf"(?P<label>[A-Za-z](?:[A-Za-z0-9_′']*)?)\s*(?:=|:)??\s*\(\s*(?P<x>{NUMBER})\s*,\s*(?P<y>{NUMBER})\s*\)")

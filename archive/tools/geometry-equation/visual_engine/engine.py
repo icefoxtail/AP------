@@ -13,6 +13,7 @@ from .math_expression import parse,serialize,evaluate,exact_coordinate
 from .label_layout import Box,layout,approximate_size
 from .svg_composer import compose
 from .style_tokens import load
+from .config import resolve_output
 
 ROOT=Path(__file__).resolve().parents[4]
 
@@ -102,17 +103,11 @@ def build(spec,measurements=None):
         'texSha256':sha(tex),'coordinateModel':vp.model(),'relations':semantic['relations'],
         'layout':result,'sampling':sampling,'semanticStatus':'PASS',
         'status':'POLISH_REQUIRED' if result['unresolved'] or any(v['status']!='PASS' for v in sampling) else 'CANDIDATE_REQUIRES_QA'}
-    witness['semanticWitnessSha256']=sha(canonical({'sourceFacts':spec['sourceFacts'],'derivedFacts':spec['derivedFacts'],'relations':semantic['relations']}))
+    witness['semanticWitnessSha256']=sha(canonical({'sourceFacts':spec['sourceFacts'],'derivedFacts':spec['derivedFacts'],'displayFacts':spec['displayFacts'],'objects':spec['objects'],'relations':semantic['relations']}))
     return {'svg':svg,'tex':tex,'witness':witness,'spec':spec}
 
 def output_root(config):
-    if config.get('engineVersion')!=ENGINE_VERSION or config.get('productionBaselinePolicy')!='READ_ONLY' or config.get('allowProductionWrite') is not False:raise ValueError('PRODUCTION_WRITE_FORBIDDEN')
-    run=config.get('runId','')
-    if not run or not all(c.isalnum() or c in '_-' for c in run):raise ValueError('INVALID_RUN_ID')
-    allowed=(ROOT/'archive/_generated/geometry-visual-engine').resolve()
-    path=(ROOT/config.get('outputRoot',f'archive/_generated/geometry-visual-engine/{run}')).resolve()
-    if path==allowed or not path.is_relative_to(allowed):raise ValueError('PRODUCTION_WRITE_FORBIDDEN')
-    return path
+    return resolve_output(config)
 
 def write_candidate(spec,config,measurements=None):
     root=output_root(config);oid=spec['id']

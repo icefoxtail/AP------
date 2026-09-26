@@ -66,7 +66,8 @@ export function verifyVisualEngineStatic({root=process.cwd(),input}) {
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {
   const arg=k=>process.argv[process.argv.indexOf(k)+1];
-  const file=path.resolve(arg('--input'));const out=path.resolve(arg('--out'));const root=arg('--root')?path.resolve(arg('--root')):path.dirname(file);
+  if(!process.argv.includes('--input')||!process.argv.includes('--out'))throw Error('INPUT_AND_OUTPUT_REQUIRED');
+  const file=path.resolve(arg('--input'));const out=path.resolve(arg('--out'));const root=process.argv.includes('--root')?path.resolve(arg('--root')):path.dirname(file);
   const repo=fileURLToPath(new URL('../../../',import.meta.url));const allowed=path.resolve(repo,'archive/_generated/geometry-visual-engine');
   if(!out.startsWith(allowed+path.sep))throw Error('EVIDENCE_OUTPUT_SCOPE_VIOLATION');
   const result=verifyVisualEngineStatic({root,input:JSON.parse(fs.readFileSync(file,'utf8'))});fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,errors:result.errors}));if(result.status!=='PASS')process.exitCode=1;
