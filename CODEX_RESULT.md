@@ -12,6 +12,6 @@
 - 코드 SHA: 291ce541e9c580e3a4e2e612be8ce45908520563
 - branch: codex/r2e-intake-pipeline
 - HEAD: 424882e1544a56bcea042053ce4d61907394db90
-- Review pack: C:\Users\USER\Downloads\CODEX_REVIEW_PACK_R2E_AUTOMATION_20260927_011957.zip
+- Review pack: C:\Users\USER\Downloads\CODEX_REVIEW_PACK_R2E_AUTOMATION_20260927_012232_verified.zip
 
 MASTER_CURRENT_PROGRESS와 MASTER_NEXT_WORK는 이 branch에서 갱신했다. MASTER_RULEBOOK은 새 정책을 중복 정의하지 않도록 변경하지 않았으며 최신 R2E 운영 정본을 따른다.
