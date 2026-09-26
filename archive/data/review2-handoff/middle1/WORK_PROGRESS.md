@@ -160,4 +160,10 @@ This branch is a review handoff checkpoint. No final REVIEW2 ledgers, final Meta
 - B20 and B24 remain R2E_BRANCH_FINAL on this branch. No main merge, main update, or Notion main-terminal receipt was performed.
 - The local Archive engine exam/solution/answer browser preview remains blocked by the CUA URL policy. Static, VM, canonical, catalog, runtime, source, difficulty, and SVG gates pass.
 - Current branch HEAD at this checkpoint: 3143a9626ca664fafc5dbd5837a7428f8b17fafd.
-- Physical terminal receipt is committed and will be pushed to the existing work branch; no main integration or Notion main-terminal receipt will occur.
+- Physical terminal receipt commit ba58624f3765fa006d9a309b99bac69051bf1ed6 was pushed; HEAD matched origin/work/m1-b20-b24-b28-r2e and the worktree was clean at verification. No main integration or Notion main-terminal receipt occurred.
+
+## Physical R2E branch receipt pushed — 2026-09-27
+
+- Physical receipt commit: ba58624f3765fa006d9a309b99bac69051bf1ed6; pushed to origin/work/m1-b20-b24-b28-r2e.
+- Verified HEAD == origin/work/m1-b20-b24-b28-r2e with a clean worktree at this checkpoint.
+- B20, B24, and B28 are all R2E_BRANCH_FINAL on the work branch. Main remains untouched; no Notion main-terminal receipt was issued.
