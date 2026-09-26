@@ -1,7 +1,5 @@
 window.examTitle = "25_팔마중_2학기_기말_중1_기출";
 
-
-
 window.questionBank = [
   {
     "id": 1,
@@ -25,11 +23,18 @@ window.questionBank = [
       "$35$"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ②이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-    "subUnit": "입체도형의 측정",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 오각기둥은 위·아래 오각형의 모서리 10개와 두 밑면을 잇는 모서리 5개가 있다. 꼭짓점은 위·아래에 5개씩 있다.\n\n모서리의 개수는\n$a=5+5+5=15$이고,\n꼭짓점의 개수는\n$b=5+5=10$이다.\n\n따라서\n$a+b=15+10=25$이다.\n\n정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -56,11 +61,19 @@ window.questionBank = [
       "$87$"
     ],
     "answer": "⑤",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 같은 원에서는 호의 길이와 그 호에 대한 중심각의 크기가 서로 비례한다. 그림의 $1\\rm\\,cm$ 호가 $20^\\circ$에 대응하는 것을 기준으로 잡는다.\n\n호의 길이 $1\\rm\\,cm$가 중심각 $20^\\circ$에 대응하므로, 중심각 $140^\\circ$에 대응하는 호의 길이 $x$는\n$x:1=140:20$이다.\n따라서 $x=7$이다.\n\n또 호의 길이 $4\\rm\\,cm$에 대응하는 중심각이 $y^\\circ$이므로\n$4:1=y:20$이다.\n따라서 $y=80$이다.\n\n그러므로\n$x+y=7+80=87$이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q2-solution.svg"
   },
   {
     "id": 3,
@@ -87,11 +100,18 @@ window.questionBank = [
       "$12\\pi+12\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 두 원의 반지름과 두 중심 사이의 거리가 모두 $6\\rm\\,cm$이므로, 중심과 교점으로 만든 삼각형에서 $60^\\circ$가 나온다. 색칠한 부분의 경계는 반지름 두 개와 $60^\\circ$짜리 호 하나이다.\n\n색칠한 부분의 두 직선 경계는 원 $O'$의 반지름이므로 길이의 합은\n$6+6=12\\rm\\,cm$이다.\n\n곡선 경계는 반지름 $6\\rm\\,cm$, 중심각 $60^\\circ$인 호이므로 길이는\n$2\\pi\\times6\\times\\frac{60}{360}=2\\pi\\rm\\,cm$이다.\n\n따라서 색칠한 부분의 둘레는\n$2\\pi+12\\rm\\,cm$이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -116,11 +136,18 @@ window.questionBank = [
       "정이십면체"
     ],
     "answer": "①",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 정다면체는 한 꼭짓점에 모이는 면의 개수까지 함께 보면 구별할 수 있다.\n\n정사면체는 한 면이 정삼각형이므로 $a=3$이고, 한 꼭짓점에 면이 $3$개 모이므로 $b=3$이다.\n$a+b=3+3=6$이다.\n\n정육면체는 $a+b=4+3=7$,\n정팔면체는 $a+b=3+4=7$,\n정십이면체는 $a+b=5+3=8$,\n정이십면체는 $a+b=3+5=8$이다.\n\n조건을 만족하는 것은 정사면체이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -146,11 +173,18 @@ window.questionBank = [
       "직각삼각형을 직각을 낀 한 변을 회전축으로 하여 $1$회전 시키면 원뿔이 생긴다."
     ],
     "answer": "①, ③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 주어진 정답과 일치하는 결과는 ①, ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 회전체의 회전축과 단면의 모양을 하나씩 확인한다.\n\n① 구는 지름이 되는 어떤 직선도 회전축이 될 수 있으므로 회전축이 하나뿐이라는 설명은 틀리다.\n\n② 회전축에 수직인 평면으로 자르면 원 또는 원판 모양이 되어 선대칭도형이다.\n\n③ 회전축을 포함하는 평면으로 자른 단면은 축에 대해 대칭인 도형이지만, 모두 원인 것은 아니다. 따라서 틀리다.\n\n④ 원뿔대를 회전축을 포함하는 평면으로 자르면 사다리꼴 모양의 단면이 생긴다.\n\n⑤ 직각삼각형을 직각을 낀 한 변을 축으로 회전시키면 원뿔이 생긴다.\n\n따라서 틀린 것은 ①, ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -177,11 +211,19 @@ window.questionBank = [
       "$(45\\pi+72)\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 반원기둥의 겉넓이는 양쪽 반원 2개, 반원호가 만든 곡면, 지름이 만든 직사각형을 더한다.\n\n지름이 $6\\rm\\,cm$이므로 반지름은 $3\\rm\\,cm$이고, 기둥의 높이는 $12\\rm\\,cm$이다.\n\n양쪽 반원의 넓이의 합은\n$2\\times\\frac12\\pi\\times3^2=9\\pi$이다.\n\n반원호가 만든 곡면의 넓이는\n$(\\pi\\times3)\\times12=36\\pi$이다.\n\n지름이 만든 직사각형의 넓이는\n$6\\times12=72$이다.\n\n따라서 겉넓이는\n$9\\pi+36\\pi+72=45\\pi+72\\rm\\,cm^2$이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -208,11 +250,19 @@ window.questionBank = [
       "$192\\rm\\,cm^3$"
     ],
     "answer": "②",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 밑면 사각형을 대각선으로 두 삼각형으로 나누어 넓이를 구한 뒤 기둥의 높이 $6\\rm\\,cm$를 곱한다.\n\n오른쪽 삼각형은 서로 수직인 두 변의 길이가 $3\\rm\\,cm$, $4\\rm\\,cm$이므로 넓이는\n$\\frac12\\times3\\times4=6\\rm\\,cm^2$이다.\n\n왼쪽 삼각형은 대각선의 길이가 $5\\rm\\,cm$이고 그 대각선에 대한 높이가 $4\\rm\\,cm$이므로 넓이는\n$\\frac12\\times5\\times4=10\\rm\\,cm^2$이다.\n\n따라서 밑넓이는\n$6+10=16\\rm\\,cm^2$이다.\n\n사각기둥의 부피는\n$16\\times6=96\\rm\\,cm^3$이다.\n\n정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -239,11 +289,18 @@ window.questionBank = [
       "$8\\rm\\,cm$"
     ],
     "answer": "③",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 정육면체에서 잘려 나간 부분은 한 꼭짓점을 공통으로 하고 서로 수직인 세 모서리의 길이가 모두 $x$인 삼각뿔이다.\n\n정육면체의 부피는 $x^3$이다.\n잘려 나간 삼각뿔의 부피는\n$\\frac13\\times\\frac12x^2\\times x=\\frac16x^3$이다.\n\n남은 입체도형의 부피는\n$x^3-\\frac16x^3=\\frac56x^3$이다.\n\n따라서\n$\\frac56x^3=180$,\n$x^3=216$,\n$x=6$이다.\n\n정답은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 9,
@@ -270,11 +327,18 @@ window.questionBank = [
       "$90\\pi\\rm\\,cm^3$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 반구 2개를 합치면 반지름 $3\\rm\\,cm$인 구 하나가 된다. 가운데는 반지름 $3\\rm\\,cm$, 높이 $5\\rm\\,cm$인 원기둥이다.\n\n원기둥의 부피는\n$\\pi\\times3^2\\times5=45\\pi$이다.\n\n구의 부피는\n$\\frac43\\pi\\times3^3=36\\pi$이다.\n\n따라서 전체 부피는\n$45\\pi+36\\pi=81\\pi\\rm\\,cm^3$이다.\n\n정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -301,11 +365,19 @@ window.questionBank = [
       "$64\\pi\\rm\\,cm^2$"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] $OA=OD$이므로 $\\triangle AOD$는 이등변삼각형이다. 이등변삼각형 $ABC$의 밑각과 연결해 중심각 $\\angle DOE$를 구한다.\n\n$\\angle ACB=30^\\circ$이고 $AC=BC$이므로\n$\\angle A=\\angle B=\\frac{180-30}{2}=75^\\circ$이다.\n\n$OA=OD$이므로 $\\triangle AOD$에서\n$\\angle OAD=75^\\circ$,\n$\\angle ADO=75^\\circ$이고,\n$\\angle AOD=180-75-75=30^\\circ$이다.\n\n같은 방법으로 $\\angle EOB=30^\\circ$이다.\n반원의 중심각이 $180^\\circ$이므로\n$\\angle DOE=180-30-30=120^\\circ$이다.\n\n반지름은 $12\\rm\\,cm$이므로 부채꼴 $DOE$의 넓이는\n$\\pi\\times12^2\\times\\frac{120}{360}=48\\pi\\rm\\,cm^2$이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -332,11 +404,19 @@ window.questionBank = [
       "$45\\pi\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 회전해서 생기는 겉면을 바깥 원기둥의 옆면·밑면과 안쪽 반구의 곡면으로 나눈다.\n\n정사각형의 한 변이 $3\\rm\\,cm$이므로 원기둥의 반지름과 높이는 모두 $3\\rm\\,cm$이다.\n\n바깥 원기둥의 옆넓이는\n$2\\pi\\times3\\times3=18\\pi$이다.\n\n아래쪽 원의 넓이는\n$\\pi\\times3^2=9\\pi$이다.\n\n잘라낸 $90^\\circ$ 부채꼴의 호가 회전하면서 만드는 안쪽 곡면은 반지름 $3\\rm\\,cm$인 반구의 곡면이므로\n$2\\pi\\times3^2=18\\pi$이다.\n\n따라서 겉넓이는\n$18\\pi+9\\pi+18\\pi=45\\pi\\rm\\,cm^2$이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q11-solution.svg"
   },
   {
     "id": 12,
@@ -361,11 +441,18 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "③",
-    "solution": "문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 자료를 작은 수부터 차례로 늘어놓고 가운데 값을 찾는다.\n\n$5,6,8,10,7$을 정리하면\n$5,6,7,8,10$이다.\n\n자료가 $5$개이므로 가운데인 세 번째 값 $7$이 중앙값이다.\n\n정답은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -390,11 +477,18 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄹ, ㅁ"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 평균·중앙값·최빈값의 정의를 보기마다 따로 확인한다.\n\nㄱ. 최빈값은 가장 많이 나타나는 값이므로 같은 횟수로 가장 많이 나타나는 값이 여러 개이면 여러 개가 될 수 있다. 옳다.\n\nㄴ. 평균은 모든 자료의 값을 이용하므로 매우 크거나 작은 값의 영향을 받는다. 옳다.\n\nㄷ. 자료의 개수가 짝수이면 중앙의 두 값의 평균을 중앙값으로 정하므로 중앙값이 원래 자료에 없는 값일 수도 있다. 틀리다.\n\nㄹ. 평균, 중앙값, 최빈값은 자료를 대표하는 값으로 사용한다. 옳다.\n\nㅁ. 한 자료의 중앙값은 정렬했을 때 가운데 위치로 정해지므로 하나로 정해진다. 틀리다.\n\n따라서 옳은 것은 ㄱ, ㄴ, ㄹ이다.\n\n정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -422,11 +516,18 @@ window.questionBank = [
       "줄넘기 기록이 가장 높은 학생과 가장 낮은 학생의 기록의 차는 $40$개다."
     ],
     "answer": "②, ④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ②, ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 줄기와 잎을 실제 자료로 읽어 학생 수, 구간별 개수, 순위, 최댓값과 최솟값을 확인한다.\n\n① 잎의 개수를 모두 세면 $4+6+7+5+3=25$명이므로 옳다.\n\n② 줄기가 $2$인 잎은 $1,3,5,6,7,8,8$의 $7$개이므로 틀리다.\n\n③ $10$개 이하인 기록은 $5,7,7,9,10$의 $5$명이므로 옳다.\n\n④ 큰 값부터 보면 $45,44,42,39,37,36,\\ldots$이므로 $6$번째로 높은 기록은 $36$개이다. 따라서 틀리다.\n\n⑤ 가장 높은 기록과 가장 낮은 기록의 차는 $45-5=40$개이므로 옳다.\n\n따라서 옳지 않은 것은 ②, ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -453,11 +554,18 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] $160\\rm\\,cm$ 이상인 학생 수를 먼저 전체의 $30\\%$로 구한 뒤 마지막 계급의 도수를 뺀다.\n\n$160\\rm\\,cm$ 이상인 학생 수는\n$30\\times0.3=9$명이다.\n\n그중 $170\\rm\\,cm$ 이상 $180\\rm\\,cm$ 미만인 학생이 $2$명이므로,\n$160\\rm\\,cm$ 이상 $170\\rm\\,cm$ 미만인 학생 수는\n$9-2=7$명이다.\n\n정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -484,11 +592,18 @@ window.questionBank = [
       "멀리 던진 쪽에서 $4$번째인 학생이 속하는 계급은 $45\\rm\\,m$ 이상 $50\\rm\\,m$ 미만이다."
     ],
     "answer": "③",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ③이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 찢어진 계급의 도수는 전체 $25$명에서 보이는 네 계급의 도수를 빼서 복원한다.\n\n그래프에서 보이는 도수는 차례로 $3,6,5,2$명이다.\n따라서 $40\\rm\\,m$ 이상 $45\\rm\\,m$ 미만의 도수는\n$25-(3+6+5+2)=9$명이다.\n\n① 계급은 $5$개이므로 옳다.\n② 계급의 크기는 $5\\rm\\,m$이므로 옳다.\n③ 해당 계급의 도수는 $9$명이지 $8$명이 아니므로 틀리다.\n④ $45\\rm\\,m$ 이상은 $5+2=7$명이므로 옳다.\n⑤ 큰 기록부터 $2$명 다음 계급에 $5$명이 있으므로 $4$번째 학생은 $45\\rm\\,m$ 이상 $50\\rm\\,m$ 미만 계급에 속한다. 옳다.\n\n따라서 옳지 않은 것은 ③이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -515,11 +630,18 @@ window.questionBank = [
       "A동아리에서는 윗몸일으키기 횟수가 대체적으로 여학생이 남학생보다 많은 편이다."
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 도수분포다각형의 각 점 높이가 그 계급의 도수이다. 필요한 계급부터 누적해서 각 보기를 확인한다.\n\n남학생의 큰 기록 쪽을 보면 $120$회 이상 $140$회 미만 계급에 $2$명, $100$회 이상 $120$회 미만 계급에 $5$명이 있다.\n\n따라서 남학생 중 가장 많이 한 학생부터 세면 첫 두 명은 $120$회 이상 $140$회 미만 계급에 있고, 세 번째 학생은 $100$회 이상 $120$회 미만 계급에 있다.\n이 계급의 도수는 $5$명이다.\n\n따라서 ④가 옳다. 나머지 보기는 그래프의 총도수·최저 계급·해당 구간 도수·분포 위치와 맞지 않는다.\n\n정답은 ④이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -546,11 +668,18 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "⑤",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 상대도수의 합은 $1$이다. 빈칸의 상대도수를 구한 뒤 전체 학생 수 $40$명을 곱한다.\n\n주어진 상대도수의 합은\n$0.15+0.30+0.20+0.10=0.75$이다.\n\n따라서 $40$분 이상 $60$분 미만 계급의 상대도수는\n$1-0.75=0.25$이다.\n\n학생 수는\n$40\\times0.25=10$명이다.\n\n정답은 ⑤이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -577,11 +706,18 @@ window.questionBank = [
       "$22$명"
     ],
     "answer": "①",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] $13$시간 미만의 도수가 전체의 $40\\%$라는 조건으로 전체 학생 수를 먼저 구한다. 그다음 보이는 도수를 전체에서 뺀다.\n\n$13$시간 미만인 세 계급의 도수는 그래프에서\n$1+5+8=14$명이다.\n\n이 $14$명이 전체의 $40\\%$이므로 전체 학생 수를 $N$이라 하면\n$0.4N=14$,\n$N=35$이다.\n\n지워진 $13$시간 이상 $15$시간 미만 계급을 제외한 나머지 도수의 합은\n$1+5+8+5+2=21$명이다.\n\n따라서 지워진 계급의 도수는\n$35-21=14$명이다.\n\n정답은 ①이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 20,
@@ -605,11 +741,18 @@ window.questionBank = [
       "$24:19$"
     ],
     "answer": "②",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 주어진 정답과 일치하는 결과는 ②이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 상대도수는 $\\frac{계급의 도수}{도수의 총합}$이다. 비끼리 나눌 때 분모의 총합 비를 함께 반영한다.\n\nA, B의 도수의 총합을 각각 $6k,5k$라 하고, 해당 계급의 도수를 각각 $4m,3m$이라 하자.\n\n해당 계급의 상대도수의 비는\n$\\frac{4m}{6k}:\\frac{3m}{5k}$\n$=\\frac{2}{3}:\\frac{3}{5}$\n$=10:9$이다.\n\n정답은 ②이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -631,11 +774,19 @@ window.questionBank = [
     "content": "다음 사다리꼴 $ABCD$를 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는 회전체에 대해, ①회전체의 전개도를 그리고, ②회전축을 포함하는 평면으로 자른 단면의 넓이를 구하고 그 풀이과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "① 원뿔대의 전개도, ② $28\\rm\\,cm^2$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ① 원뿔대의 전개도, ② $28\\rm\\,cm^2$이다.",
-    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-    "subUnit": "입체도형의 측정",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 사다리꼴을 회전시키면 원뿔대가 된다. 전개도는 옆면의 부채꼴 띠와 반지름이 서로 다른 두 원으로 이루어진다.\n\n① 회전체는 원뿔대이다. 따라서 전개도는 원뿔대의 옆면인 고리 모양 부채꼴과 반지름 $5\\rm\\,cm$, $2\\rm\\,cm$인 두 원으로 그린다.\n\n② 회전축을 포함하는 평면으로 자르면, 회전축의 양쪽으로 같은 모양이 생겨 평행한 두 변의 길이가 각각 지름 $10\\rm\\,cm$, $4\\rm\\,cm$인 사다리꼴이 된다. 높이는 $4\\rm\\,cm$이다.\n\n따라서 단면의 넓이는\n$\\frac{10+4}{2}\\times4=28\\rm\\,cm^2$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중1_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -657,11 +808,18 @@ window.questionBank = [
     "content": "다음 그림과 같이 반지름의 길이가 $3\\rm\\,cm$인 구에 대해, 구의 중심을 지나도록 수직으로 $3$번 잘랐을 때, 자른 구의 겉넓이의 합을 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$90\\pi\\rm\\,cm^2$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $90\\pi\\rm\\,cm^2$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 처음 구의 겉넓이에, 중심을 지나는 절단면 $3$개가 새로 만드는 원판 면적을 더한다. 한 번 자를 때 같은 크기의 원판이 양쪽에 하나씩 생긴다.\n\n반지름이 $3\\rm\\,cm$인 구의 원래 겉넓이는\n$4\\pi\\times3^2=36\\pi\\rm\\,cm^2$이다.\n\n중심을 지나 한 번 자르면 반지름 $3\\rm\\,cm$인 원판이 두 면 생기므로 늘어나는 넓이는\n$2\\times\\pi\\times3^2=18\\pi\\rm\\,cm^2$이다.\n\n이와 같은 절단을 서로 수직으로 $3$번 하므로 새로 생기는 면의 넓이의 합은\n$3\\times18\\pi=54\\pi\\rm\\,cm^2$이다.\n\n따라서 자른 구들의 겉넓이의 합은\n$36\\pi+54\\pi=90\\pi\\rm\\,cm^2$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -682,11 +840,18 @@ window.questionBank = [
     "content": "다음 자료의 평균이 $8$일 때, 중앙값과 최빈값의 합을 구하고, 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$11.5$",
-    "solution": "풀이: 문제에서 주어진 단위와 관계를 식으로 세워 계산하고, 단위를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $11.5$이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 평균이 $8$이므로 자료 $8$개의 합이 $64$이다. 먼저 $x$를 구한 뒤 자료를 정렬한다.\n\n자료의 합은\n$8\\times8=64$이다.\n\n주어진 값들의 합은\n$5+8+14+2+5+14+11=59$이므로\n$x=64-59=5$이다.\n\n자료를 작은 수부터 정리하면\n$2,5,5,5,8,11,14,14$이다.\n\n자료가 $8$개이므로 중앙값은 네 번째와 다섯 번째 값의 평균이다.\n$\\frac{5+8}{2}=6.5$이다.\n\n가장 많이 나타나는 값은 $5$이므로 최빈값은 $5$이다.\n\n따라서 중앙값과 최빈값의 합은\n$6.5+5=11.5$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -708,10 +873,17 @@ window.questionBank = [
     "content": "다음 도수분포다각형은 어느 학교 A, B 두 반의 수학 성적을 조사하여 나타낸 것이다. A반에서 성적이 상위 $10\\%$ 이내에 드는 학생의 성적은 B반에서 최소 상위 몇 $\\%$ 이내에 드는지 구하고 그 풀이 과정을 서술하시오. [5점, 부분점수 있음]",
     "choices": [],
     "answer": "$30\\%$",
-    "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $30\\%$이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 두 반의 전체 학생 수와 상위 구간의 누적 도수를 각각 읽는다. A반 상위 $10\\%$ 학생이 들어 있는 점수 구간을 먼저 찾고, 같은 점수 이상인 B반 학생의 비율을 구한다.\n\n그래프에서 A반의 도수는 높은 점수 쪽부터 $1,3,7,6,3$명으로 전체 $20$명이다.\nA반 상위 $10\\%$는\n$20\\times0.10=2$명이다.\n\n최고 점수 계급에 $1$명이 있으므로 두 번째 학생은 그 바로 아래인 $80$점 이상 $90$점 미만 계급에 있다. 따라서 상위 $10\\%$ 이내 학생의 성적 경계는 $80$점 이상인 구간에 놓인다.\n\nB반에서 $80$점 이상인 학생 수는 그래프에서\n$4+2=6$명이고, B반 전체도 $20$명이다.\n\n따라서 그 성적은 B반에서 최소\n$\\frac6{20}\\times100=30\\%$ 이내에 든다.\n\n답은 $30\\%$이다.",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "REINTERPRETATION",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
