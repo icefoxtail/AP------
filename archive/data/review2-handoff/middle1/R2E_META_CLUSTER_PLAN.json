@@ -33,11 +33,12 @@
         "B20:q5",
         "B20:q6",
         "B20:q7",
-        "B20:q21"
+        "B20:q21",
+        "B20:q9"
       ],
       "disposition": "REUSE_R1_REPAIRS_AFTER_SOURCE_AND_ACTIVE_BINDING_RECHECK",
       "owner": "MIDDLE1",
-      "notes": "R1 repairs move q1–q7/q21 to the official graph-relation L2; q5 uses coordinate-composite-area. Verify current branch Meta fields and bindings, no math re-solve."
+      "notes": "R1 repairs move q1–q7/q21 to the official graph-relation L2; q5 uses coordinate-composite-area. Verify current branch Meta fields and bindings, no math re-solve. B20 q9 is included as a bounded reopened item because its solution SVG bytes differ from R1 evidence."
     },
     {
       "id": "M1_TRIANGLE_ANGLE_CHASE",
@@ -83,9 +84,9 @@
         "B28:q7",
         "B28:q8"
       ],
-      "disposition": "REUSE_ACTIVE_POLYHEDRON_L3_PLUS_REPEATED_FACE_PROPERTY_L4",
+      "disposition": "REUSE_ACTIVE_PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS_PLUS_ONE_REPEATED_L4",
       "owner": "MIDDLE1",
-      "notes": "One shared property-audit L4 covers face shape, face/vertex counts, and regular-solid vertex angle feasibility; no candidate-derived key reuse."
+      "notes": "B20 q14/q15, B24 q2, and B28 q7/q8 share option-by-option auditing of solid-to-face shape, face/vertex counts and regular-solid feasibility; one face-property L4 under the existing owner L3 is supported by five items."
     },
     {
       "id": "M1_ROTATION_SOLID_SECTIONS",
@@ -159,23 +160,23 @@
       {
         "key": "PT_M1_ROTATION_SOLID_PROPERTIES",
         "owner": "MIDDLE1",
-        "rpm": "2015/2022 M1-2 회전체 > 회전체의 단면"
+        "rpm": "2015/2022 M1-2 M1-07 회전체 > 회전체의 단면"
       },
       {
         "key": "PT_M1_SOLID_FIGURE_MEASURE",
         "owner": "MIDDLE1",
-        "rpm": "2015/2022 M1-2 입체도형의 겉넓이와 부피"
+        "rpm": "2015/2022 M1-2 M1-07 입체도형의 겉넓이와 부피"
       },
       {
         "key": "PT_M1_CENTRAL_TENDENCY",
         "owner": "MIDDLE1",
-        "rpm": "2022 M1-2 대푯값"
+        "rpm": "2022 M1-2 M1-08 대푯값"
       }
     ],
     "newTemplates": [
       {
-        "key": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_REGULAR_FACE_VERTEX_AUDIT",
-        "parent": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+        "key": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+        "parent": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
         "owner": "MIDDLE1"
       },
       {
@@ -214,8 +215,13 @@
         "owner": "MIDDLE1"
       },
       {
-        "key": "TPL_M1_SOLID_FIGURE_PYRAMID_CONE_VOLUME",
+        "key": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "parent": "PT_M1_SOLID_FIGURE_MEASURE",
+        "owner": "MIDDLE1"
+      },
+      {
+        "key": "TPL_M1_CENTRAL_TENDENCY_CORE",
+        "parent": "PT_M1_CENTRAL_TENDENCY",
         "owner": "MIDDLE1"
       },
       {
@@ -224,8 +230,8 @@
         "owner": "MIDDLE1"
       },
       {
-        "key": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
-        "parent": "PT_M1_CENTRAL_TENDENCY",
+        "key": "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "parent": "PT_M1_DATA_CATEGORY_PERCENTAGE",
         "owner": "MIDDLE1"
       },
       {
@@ -236,7 +242,9 @@
     ],
     "newCrossConcepts": [],
     "newConditions": [],
-    "trueNewL3OutsideRpm": 0
+    "trueNewL3OutsideRpm": 0,
+    "note": "All three new L3 machine keys materialize existing RPM Primary L3 paths; no new L3 semantic beyond RPM is introduced. Existing L3 MIDDLE1/MIDDLE_GEOMETRY parents are reused where exact.",
+    "newTemplatesCount": 13
   },
   "openRisks": [
     {
@@ -247,5 +255,28 @@
       "code": "B24_R1_FINAL_JS_UNAVAILABLE",
       "note": "Physical B24 R1_INPUT ZIP is CREATE/READY bytes; Notion R1 SHA differs. The six R1 Meta repairs are re-adjudicated and will be re-applied from current source/solution."
     }
-  ]
+  ],
+  "svgByteDrift": {
+    "B20": [
+      8,
+      9,
+      13,
+      21,
+      22,
+      24
+    ],
+    "B24": [
+      8,
+      10,
+      21
+    ],
+    "B28": [
+      6,
+      13,
+      22
+    ],
+    "reopenedNewItems": [
+      "B20:q9"
+    ]
+  }
 }
