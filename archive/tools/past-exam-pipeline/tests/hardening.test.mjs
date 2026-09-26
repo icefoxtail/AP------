@@ -258,7 +258,13 @@ function activateV3(f, disposition = 'REUSE') {
   });
   const pathData = selected?.rpmPath || { majorUnit: '다항식', midUnit: '다항식의 연산', l3: '테스트용 taxonomy 부재', l4: '테스트용 템플릿 부재' };
   const scope = selected?.scope || '수학_상';
-  const activeRegistry = loadActiveMetaRegistry(root);
+  const loadedRegistry = loadActiveMetaRegistry(root);
+  const activeRegistry = disposition === 'TRUE_TAXONOMY_GAP' ? {
+    ...loadedRegistry,
+    bindingRows: loadedRegistry.bindingRows.filter(binding => !(binding.curriculum === '2015'
+      && binding.standardUnitKey === q.standardUnitKey && (binding.subUnitKey ?? '') === q.subUnitKey)),
+    registrySha: `${loadedRegistry.registrySha}:synthetic-empty-exact-scope`,
+  } : loadedRegistry;
   const resolverInput = {
     sourceIdentity: {
       sourceArchiveFile: identity.sourceArchiveFile, questionUid: questionUidForSource(identity.sourceArchiveFile, identity.sourceOrdinal),

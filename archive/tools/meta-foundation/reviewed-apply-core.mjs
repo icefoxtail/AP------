@@ -5,6 +5,11 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 export const PACKET_SCHEMA_VERSION = 3;
+export function rpmPathStatusFromResolverEvidence(evidence) {
+  if (evidence?.disposition === "EXISTING_REUSE" && evidence.crosswalkStatus === "DIRECT_ACTIVE") return "DIRECT";
+  if (evidence?.disposition === "FAMILY_REUSE" && evidence.crosswalkStatus === "FAMILY_ACTIVE") return "FAMILY";
+  throw new Error("resolver evidence does not establish a direct or family RPM path");
+}
 export const LEGACY_GEUMDANG_R2_ATTESTATION = Object.freeze({
   packetSha256: "ea4afcb4a39a9f2bc91b163dfdc26216df3bbdf4edc66c07e7718d800da39867",
   artifactSha256: "d72bf847deed2a251d6d73c3cda2bd77cb3f41c3068ac98e83262209615f84dd",

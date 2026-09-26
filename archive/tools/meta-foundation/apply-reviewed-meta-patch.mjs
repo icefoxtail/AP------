@@ -8,7 +8,7 @@ import { validateMetaFinalization, validateResolverEvidence } from "./rpm-active
 import {
   META_VALUE_FIELDS, contentFingerprint, equal, jsonText, normalizeSourceFile,
   assertBaseAndFinalQuestionFiles, packetDigest, parseArgs, readJson, readPacket, repoRootFrom, sha256,
-  sourceFingerprint, stableJson
+  rpmPathStatusFromResolverEvidence, sourceFingerprint, stableJson
 } from "./reviewed-apply-core.mjs";
 
 const arg = parseArgs(process.argv.slice(2));
@@ -64,6 +64,7 @@ function validateSharedResolution(patch, current, finalQuestion) {
   if (["REPAIR", "KEEP"].includes(patch.status)) {
     const candidateMeta = Object.fromEntries(advancedFieldNames.map(field => [field, base[field] ?? (field.endsWith("Keys") ? [] : field === "integrationPattern" ? "NONE" : field.startsWith("difficulty") || field === "legacyLevelCompatibility" ? "UNKNOWN" : "")]));
     Object.assign(candidateMeta, {
+      curriculum: base.curriculum || base.curriculumKey || input.curriculumContext.curriculum,
       standardCourse: base.standardCourse || input.curriculumContext.standardCourse,
       standardUnitKey: base.standardUnitKey,
       subUnitKey: base.subUnitKey,
@@ -265,7 +266,8 @@ for (const patch of packet.metaPatches) {
       nextRecord.conditionKeys = [...(patch.after.conditionKeys || current.conditionKeys || [])];
       nextRecord.foundationTaxonomyStatus = "CONFIRMED";
       if (resolverDecision && ["EXISTING_REUSE", "FAMILY_REUSE"].includes(patch.resolverEvidence.disposition)) {
-        nextRecord.rpmPathStatus = "DIRECT";
+        // DIRECT is reserved for DIRECT_ACTIVE; keep family evidence distinct.
+        nextRecord.rpmPathStatus = rpmPathStatusFromResolverEvidence(patch.resolverEvidence);
         nextRecord.rpmCrosswalkStatus = patch.resolverEvidence.crosswalkStatus;
         nextRecord.metaResolverEvidenceSha = patch.resolverEvidence.evidenceSha;
         nextRecord.difficultyBlindEvidenceSha = patch.difficultyEvidence.evidenceSha;

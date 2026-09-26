@@ -27,6 +27,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(here, '../../..');
 const text = value => typeof value === 'string' ? value.trim() : '';
 const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+const DIFFICULTY_PROJECTION_FIELDS = Object.freeze(['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']);
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const pathRef = (root, rel) => fileRef(root, rel);
 const rpmBase = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
@@ -218,6 +219,22 @@ function crosswalkMatch(file, context, rpmPath) {
   return { doc, row, duplicate: false };
 }
 
+export function activeCandidateKeysForScope(registry, { curriculum, standardUnitKey, subUnitKey = '' } = {}) {
+  const candidates = new Set();
+  for (const binding of registry?.bindingRows || []) {
+    if (binding.status !== 'ACTIVE' || binding.curriculum !== curriculum
+      || binding.standardUnitKey !== standardUnitKey || (binding.subUnitKey ?? '') !== (subUnitKey ?? '')) continue;
+    const pt = registry.problemTypes.get(binding.problemTypeKey);
+    const pack = registry.activePacks.get(binding.ownerPack);
+    if (pt?.status !== 'ACTIVE' || pt.ownerPack !== binding.ownerPack || !pack) continue;
+    candidates.add(binding.problemTypeKey);
+    for (const tpl of registry.templates.values()) {
+      if (tpl.status === 'ACTIVE' && tpl.parentProblemTypeKey === binding.problemTypeKey && tpl.ownerPack === binding.ownerPack) candidates.add(tpl.templateKey);
+    }
+  }
+  return [...candidates].sort();
+}
+
 function bindingIdentity(binding) {
   if (!binding) return '';
   return [binding.curriculum, binding.standardUnitKey, binding.subUnitKey ?? '<DIRECT>', binding.problemTypeKey, binding.ownerPack].join('|');
@@ -281,14 +298,23 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   };
   if (registry.status !== 'ACTIVE') return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason: 'ACTIVE_META_REGISTRY_UNAVAILABLE', activeRegistrySha: registry.registrySha || '' });
   if (!rpmVerified) {
+    const exactScope = { curriculum: context.curriculum, standardUnitKey: context.standardUnitKey, subUnitKey: context.subUnitKey };
+    const recomputedCandidateKeys = activeCandidateKeysForScope(registry, exactScope);
+    const suppliedCandidateKeys = input.activeSearchEvidence?.candidateKeys;
     if (input.activeSearchEvidence?.status !== 'COMPLETED_NO_MATCH'
       || input.activeSearchEvidence?.registrySha !== registry.registrySha
       || input.activeSearchEvidence?.searchedGlobalActive !== true
       || input.activeSearchEvidence?.searchMethod !== 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2'
-      || !equal(input.activeSearchEvidence?.searchedScope, { curriculum: context.curriculum, standardUnitKey: context.standardUnitKey, subUnitKey: context.subUnitKey })
-      || !Array.isArray(input.activeSearchEvidence?.candidateKeys)
-      || input.activeSearchEvidence.candidateKeys.length) {
-      return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason: 'ACTIVE_TARGETED_SEARCH_EVIDENCE_REQUIRED' });
+      || !equal(input.activeSearchEvidence?.searchedScope, exactScope)
+      || !Array.isArray(suppliedCandidateKeys)
+      || !equal([...suppliedCandidateKeys].sort(), recomputedCandidateKeys)
+      || recomputedCandidateKeys.length) {
+      const reason = input.activeSearchEvidence?.registrySha !== registry.registrySha ? 'ACTIVE_TARGETED_SEARCH_REGISTRY_SHA_STALE'
+        : !equal(input.activeSearchEvidence?.searchedScope, exactScope) ? 'ACTIVE_TARGETED_SEARCH_SCOPE_MISMATCH'
+          : Array.isArray(suppliedCandidateKeys) && !equal([...suppliedCandidateKeys].sort(), recomputedCandidateKeys) ? 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH'
+            : recomputedCandidateKeys.length ? 'ACTIVE_TARGETED_SEARCH_FOUND_CANDIDATES' : 'ACTIVE_TARGETED_SEARCH_EVIDENCE_REQUIRED';
+      return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason, activeRegistrySha: registry.registrySha,
+        activeSearchEvidence: input.activeSearchEvidence, recomputedActiveCandidateKeys: recomputedCandidateKeys });
     }
     return buildEvidence({ bundle, ...base, disposition: 'TRUE_TAXONOMY_GAP', reason: 'RPM_AND_ACTIVE_TARGETED_SEARCH_EMPTY', activeRegistrySha: registry.registrySha,
       activeSearchEvidence: input.activeSearchEvidence });
@@ -427,6 +453,14 @@ export function validateBlindDifficulty(evidence, { sourceFingerprint, solutionH
   return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
+export function validateDifficultyProjectionParity(candidateMeta, difficultyEvidence, { errorPrefix = 'META_FINAL_DIFFICULTY_FIELD_PARITY_FAIL' } = {}) {
+  const errors = [];
+  for (const field of DIFFICULTY_PROJECTION_FIELDS) {
+    if (!equal(candidateMeta?.[field] ?? null, difficultyEvidence?.[field] ?? null)) errors.push(`${errorPrefix}:${field}`);
+  }
+  return { status: errors.length ? 'FAIL' : 'PASS', errors };
+}
+
 export function validateMetaFinalization({ input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence, validatorReceipt,
   requireValidatorReceipt = true, repoRoot = DEFAULT_ROOT, registry } = {}) {
   const errors = [];
@@ -437,6 +471,7 @@ export function validateMetaFinalization({ input, resolverEvidence, difficultyEv
     solutionHash: resolverEvidence?.semanticInputBundle?.solutionIdentity?.solutionHash,
   });
   errors.push(...difficulty.errors);
+  errors.push(...validateDifficultyProjectionParity(candidateMeta, difficultyEvidence).errors);
   if (!candidateMeta || typeof candidateMeta !== 'object') errors.push('META_FINAL_CANDIDATE_REQUIRED');
   else {
     const activeRegistry = registry || loadActiveMetaRegistry(repoRoot);
@@ -617,9 +652,8 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
       solutionHash: item?.resolverEvidence?.semanticInputBundle?.solutionIdentity?.solutionHash,
     });
     for (const error of difficulty.errors) errors.push(`${error}:${uid}`);
-    for (const field of ['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']) {
-      if (!equal(candidateMeta[field] ?? null, item?.difficultyEvidence?.[field] ?? null)) errors.push(`R2E_META_INPUT_DIFFICULTY_FIELD_PARITY_FAIL:${uid}:${field}`);
-    }
+    errors.push(...validateDifficultyProjectionParity(candidateMeta, item?.difficultyEvidence,
+      { errorPrefix: `R2E_META_INPUT_DIFFICULTY_FIELD_PARITY_FAIL:${uid}` }).errors);
     const relation = item?.semanticMetaEvidence;
     if (relation?.schemaVersion !== 'JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1'
       || relation?.sourceFingerprint !== item?.resolverEvidence?.sourceFingerprint

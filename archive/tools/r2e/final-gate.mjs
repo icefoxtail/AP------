@@ -38,10 +38,10 @@ export function finalGate(root, ledger, validation, { validateMetaReceipt = vali
   }
   for (const row of ledger.items || []) {
     record(!BLOCKERS.test(JSON.stringify({ status: row.status, disposition: row.disposition, unresolved: row.unresolvedItems, remaining: row.remainingItems })), 'META_HOLD_OR_PROPOSAL_REMAINING');
-    record(row.status === 'PASS' || DISPOSITIONS.has(row.disposition), 'ITEM_NOT_FINAL');
+    record(row.status === 'PASS', 'ITEM_NOT_FINAL');
     if (row.r1Status === 'PASS' && row.invalidationReason == null) record(row.reviewMode === 'INTEGRITY_REUSE', 'NORMAL_PASS_REVIEW_MODE');
     if (row.reviewMode === 'DEEP') record(ledger.deepReviewItems?.includes(row.ordinal), 'DEEP_ITEM_OUTSIDE_SCOPE');
-    if (row.disposition) record(DISPOSITIONS.has(row.disposition), 'FINAL_DISPOSITION_INVALID');
+    record(DISPOSITIONS.has(row.disposition), 'FINAL_DISPOSITION_INVALID');
   }
   let bytes;
   try {

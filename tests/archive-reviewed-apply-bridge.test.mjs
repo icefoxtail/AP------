@@ -7,6 +7,10 @@ import path from "node:path";
 import vm from "node:vm";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { rpmPathStatusFromResolverEvidence } from "../archive/tools/meta-foundation/reviewed-apply-core.mjs";
+import { objectSha } from "../archive/tools/pipeline-core/canonical.mjs";
+import { loadActiveMetaRegistry } from "../archive/tools/meta-foundation/active-registry.mjs";
+import { buildResolverBackedMetaEvidence, makeDifficultyEvidence, resolveMetaRoute } from "../archive/tools/meta-foundation/rpm-active-resolver.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sourcePath = "original/middle/m2/2mid/24_fixture_middle2.js";
@@ -18,6 +22,13 @@ const cli = {
   runtime: "archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs",
   staging: "archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs"
 };
+
+test("Legacy Apply keeps DIRECT and FAMILY RPM path statuses distinct and evidence-backed", () => {
+  assert.equal(rpmPathStatusFromResolverEvidence({ disposition: "EXISTING_REUSE", crosswalkStatus: "DIRECT_ACTIVE" }), "DIRECT");
+  assert.equal(rpmPathStatusFromResolverEvidence({ disposition: "FAMILY_REUSE", crosswalkStatus: "FAMILY_ACTIVE" }), "FAMILY");
+  assert.throws(() => rpmPathStatusFromResolverEvidence({ disposition: "FAMILY_REUSE", crosswalkStatus: "DIRECT_ACTIVE" }), /does not establish/);
+  assert.throws(() => rpmPathStatusFromResolverEvidence({ disposition: "EXISTING_REUSE" }), /does not establish/);
+});
 
 function sha(bytes) {
   return crypto.createHash("sha256").update(bytes).digest("hex");
@@ -221,6 +232,7 @@ function baseFixtureData(root) {
     L1: "수와 식", L2: "문자와 식", L3: "기본 유형", L4: "구형 풀이 템플릿"
   }));
   writeJson(root, "archive/data/archive2-catalog.json", { schemaVersion: "fixture-catalog", records: catalogRecords, exams: [], health: { exams: 1, questions: 2 } });
+  writeResolverAuthority(root);
   return { questions, baseBytes, metadata, identityMap };
 }
 
@@ -234,7 +246,7 @@ function fixtureRoot(t) {
   git(root, ["config", "user.email", "archive-apply-tests@example.invalid"]);
   git(root, ["config", "core.quotepath", "false"]);
   const data = baseFixtureData(root);
-  git(root, ["add", "--", examRepoPath, "archive/archive2-core.js", "archive/mixer-selector.js", "archive/data"]);
+  git(root, ["add", "--", examRepoPath, "archive/archive2-core.js", "archive/mixer-selector.js", "archive/data", "docs/rules"]);
   git(root, ["commit", "-m", "fixture base"]);
   const baseSha = String(git(root, ["rev-parse", "HEAD"])).trim();
   return { root, baseSha, ...data };
@@ -274,6 +286,37 @@ function makePacket(fixture, options = {}) {
       searchedCanonicalCandidates: [{ key: "PT_VALID", label: "기본 유형" }],
       whyExistingCanonicalDoesNotFit: "기존 ACTIVE 유형으로 설명되지 않음"
     });
+    const finalQuestion = questions[ordinal - 1];
+    const candidate = status === "REPAIR" ? { ...current, ...after } : current;
+    const evidenceCandidate = candidate.templateKey === "TPL_WRONG" ? { ...candidate, templateKey: current.templateKey } : candidate;
+    const crosswalkDoc = readJson(fixture.root, "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json");
+    crosswalkDoc.records.find(row => row.id === `FIXTURE-DIRECT-${ordinal}`).templateKey = evidenceCandidate.templateKey;
+    writeJson(fixture.root, "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json", crosswalkDoc);
+    const resolverInput = {
+      sourceIdentity: {
+        sourceArchiveFile: sourcePath, questionUid: identity.questionUid, sourceIdentityKey: identity.sourceFingerprint,
+        sourceOrdinal: ordinal, contentHash: objectSha(finalQuestion.content ?? ""), choicesHash: objectSha(finalQuestion.choices ?? []),
+        imageRefHash: objectSha({ image: finalQuestion.image ?? "", visualAsset: finalQuestion.visualAsset ?? "", fullPageImagePath: finalQuestion.fullPageImagePath ?? "", fullPageImageRelPath: finalQuestion.fullPageImageRelPath ?? "", sourceEvidencePath: finalQuestion.sourceEvidencePath ?? "", sourcePageEvidencePaths: finalQuestion.sourcePageEvidencePaths ?? [] }),
+      },
+      solutionIdentity: { status: "VERIFIED_FINAL", independentVerification: true, solutionHash: objectSha(finalQuestion.solution ?? "") },
+      curriculumContext: { grade: "M2", curriculum: "2015", scope: "middle2-fixture", standardCourse: "중2 수학", standardUnitKey: "M2-01", subUnitKey: "M2-01-EXPRESSION" },
+      semanticDecision: { primaryMethod: "동류항을 정리한다.", decisiveStep: "같은 차수의 항을 비교한다.", rpmPath: { curriculum: "2015", scope: "middle2-fixture", majorUnit: "fixture-major", midUnit: "fixture-mid", l3: `fixture-L3-${ordinal}`, l4: `fixture-L4-${ordinal}` } },
+    };
+    const resolverEvidence = resolveMetaRoute(resolverInput, { repoRoot: fixture.root, registry: loadActiveMetaRegistry(fixture.root) });
+    const difficultyEvidence = makeDifficultyEvidence({ status: "PASS", blindPassStatus: "FRESH_INDEPENDENT", sourceFingerprint: resolverEvidence.sourceFingerprint,
+      solutionHash: resolverInput.solutionIdentity.solutionHash, independentOfSemanticPass: true, difficultyBucket: candidate.difficultyBucket,
+      difficultyConfidence: candidate.difficultyConfidence, difficultyBoundaryFlag: candidate.difficultyBoundaryFlag, legacyLevelCompatibility: candidate.legacyLevelCompatibility,
+      rationale: "Fixture blind evidence.", blindReviewerId: "fixture-reviewer", decisionSha: objectSha({ uid: identity.questionUid }) });
+    const semanticMetaEvidence = { schemaVersion: "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1", sourceFingerprint: resolverEvidence.sourceFingerprint,
+      inputBundleSha: resolverEvidence.inputBundleSha, candidateVisibleDuringDecision: false,
+      crossConceptDecisions: (candidate.crossConceptKeys || []).map(key => ({ key, status: "FINAL", reason: "fixture reviewed concept evidence", sourceFingerprint: resolverEvidence.sourceFingerprint, inputBundleSha: resolverEvidence.inputBundleSha })), conditionDecisions: [] };
+    semanticMetaEvidence.evidenceSha = objectSha(semanticMetaEvidence);
+    const candidateMeta = Object.fromEntries(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"].map(field => [field, evidenceCandidate[field]]));
+    Object.assign(candidateMeta, { curriculum: "2015", standardCourse: "중2 수학", standardUnitKey: "M2-01", subUnitKey: "M2-01-EXPRESSION", integrationReason: "독립된 개념 결합이 없다." });
+    const built = buildResolverBackedMetaEvidence({ input: resolverInput, candidateMeta, semanticMetaEvidence, difficultyEvidence, repoRoot: fixture.root });
+    if (!built.validatorReceipt) throw new Error(`fixture shared resolver did not close: ${JSON.stringify(built.validation)}`);
+    Object.assign(patch, { resolverInput, resolverEvidence: built.resolverEvidence, difficultyEvidence: built.difficultyEvidence,
+      semanticMetaEvidence: built.semanticMetaEvidence, validatorReceipt: built.validatorReceipt, integrationReason: "독립된 개념 결합이 없다." });
     return patch;
   });
   const assetRel = "archive/assets/images/fixture/q01-solution.svg";
@@ -284,7 +327,8 @@ function makePacket(fixture, options = {}) {
   }
   const statusUids = (status) => patches.filter((row) => row.status === status).map((row) => row.questionUid).sort();
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
+    recoveryRoute: "SEALED_LEGACY_RECOVERY",
     applyId: options.applyId || "fixture-apply-001",
     examFile: path.posix.basename(sourcePath),
     sourcePath,
@@ -378,6 +422,44 @@ function mutateFixtureJson(fixture, relative, mutate) {
   writeJson(fixture.root, relative, value);
 }
 
+function writeResolverAuthority(root) {
+  const canonical = 'archive/data/meta-foundation/canonical';
+  const compiled = 'archive/data/meta-foundation/compiled';
+  writeJson(root, `${canonical}/metadata_rules.json`, { status: 'ACTIVE', integrationPatterns: ['NONE'] });
+  writeJson(root, `${canonical}/condition_registry.json`, { status: 'ACTIVE', conditions: [] });
+  for (const relative of [`${compiled}/taxonomy_registry.json`, `${compiled}/concept_registry.json`, `${compiled}/condition_registry.json`, `${compiled}/curriculum_bindings.json`]) {
+    const data = readJson(root, relative);
+    data.status = 'DERIVED_READ_ONLY';
+    if (relative.endsWith('taxonomy_registry.json')) {
+      data.problemTypes = data.problemTypes.map(row => ({ ...row, ownerPack: 'TEST_PACK' }));
+      data.templates = data.templates.map(row => ({ ...row, ownerPack: 'TEST_PACK' }));
+    }
+    if (relative.endsWith('curriculum_bindings.json')) data.bindings = data.bindings.map(row => ({ ...row, ownerPack: 'TEST_PACK', standardCourse: '중2 수학' }));
+    writeJson(root, relative, data);
+  }
+  const canonicalPaths = [`${canonical}/metadata_rules.json`, `${canonical}/condition_registry.json`];
+  const compiledPaths = [`${compiled}/taxonomy_registry.json`, `${compiled}/concept_registry.json`, `${compiled}/condition_registry.json`, `${compiled}/curriculum_bindings.json`];
+  writeJson(root, 'archive/data/meta-foundation/canonical/registry_index.json', {
+    status: 'ACTIVE', activePacks: [{ id: 'TEST_PACK', version: '1.0.0', status: 'ACTIVE' }],
+    canonicalSources: canonicalPaths.map(file => ({ path: file, sha256: sha(fs.readFileSync(path.join(root, ...file.split('/')))) })),
+    compiledArtifacts: compiledPaths.map(file => ({ path: file, sha256: sha(fs.readFileSync(path.join(root, ...file.split('/')))) })),
+  });
+  const rpm = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
+  writeJson(root, `${rpm}/00_POLICY/CANONICAL_MASTER.json`, { records: [1, 2].map(n => ({ curriculum: '2015', scope: 'middle2-fixture', majorUnit: 'fixture-major', midUnit: 'fixture-mid', concepts: [{ concept: `fixture-L3-${n}`, problemTypes: [{ problemType: `fixture-L4-${n}` }] }] })) });
+  const readme = path.join(root, ...`${rpm}/README.md`.split('/'));
+  fs.mkdirSync(path.dirname(readme), { recursive: true });
+  fs.writeFileSync(readme, '# RPM Primary fixture\n', 'utf8');
+  const view = path.join(root, ...`${rpm}/01_2015/MIDDLE/middle2-fixture.md`.split('/'));
+  fs.mkdirSync(path.dirname(view), { recursive: true });
+  fs.writeFileSync(view, 'fixture-L3-1\nfixture-L4-1\nfixture-L3-2\nfixture-L4-2\n', 'utf8');
+  const binding = { curriculum: '2015', standardCourse: '중2 수학', standardUnitKey: 'M2-01', subUnitKey: 'M2-01-EXPRESSION', problemTypeKey: 'PT_VALID', ownerPack: 'TEST_PACK' };
+  writeJson(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json', { records: [1, 2].map(n => ({
+    id: `FIXTURE-DIRECT-${n}`, curriculum: '2015', scope: 'middle2-fixture', standardCourse: '중2 수학',
+    standardUnitKey: 'M2-01', subUnitKey: 'M2-01-EXPRESSION', rpmPath: { majorUnit: 'fixture-major', midUnit: 'fixture-mid', l3: `fixture-L3-${n}`, l4: `fixture-L4-${n}` },
+    mappingStatus: 'DIRECT_ACTIVE', bindingStatus: 'ACTIVE', problemTypeKey: 'PT_VALID', templateKey: n === 1 ? 'TPL_NEW' : 'TPL_OLD', ownerPack: 'TEST_PACK', binding,
+  })) });
+}
+
 test("T1 KEEP only makes zero question_metadata and runtime mutations", (t) => {
   const f = fixtureRoot(t);
   const packet = makePacket(f, { statusByOrdinal: { 1: "KEEP", 2: "KEEP" } });
@@ -392,6 +474,16 @@ test("T1 KEEP only makes zero question_metadata and runtime mutations", (t) => {
   assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json")), metadataBefore);
   assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/meta-foundation/runtime/test-pack-v1.json")), runtimeBefore);
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence/review-overrides/v1", `${q1Uid}.json`)), true);
+});
+
+test("generic schema v2 packet remains rejected outside the exact sealed Geumdang compatibility receipt", (t) => {
+  const f = fixtureRoot(t);
+  const packet = makePacket(f, { statusByOrdinal: { 1: "KEEP", 2: "KEEP" } });
+  packet.schemaVersion = "archive-reviewed-apply/v2";
+  delete packet.recoveryRoute;
+  const packetPath = writePacket(f, packet);
+  const result = runCli(f.root, cli.patch, ["--packet", packetPath, "--check"], false);
+  assert.match(result.stderr, /schemaVersion must be 3; v2 is accepted only for the exact sealed legacy recovery packet/);
 });
 
 test("T2 REPAIR updates an existing UID in metadata, runtime, and catalog projection", (t) => {
@@ -423,7 +515,7 @@ test("T3 invalid L3 fails before any output mutation", (t) => {
   const packetPath = writePacket(f, packet);
   const before = fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json"));
   const result = runCli(f.root, cli.patch, ["--packet", packetPath, "--write"], false);
-  assert.match(result.stderr, /unregistered\/inactive|ACTIVE row/);
+  assert.match(result.stderr, /unregistered\/inactive|ACTIVE row|ADVANCED_META_PROBLEM_TYPE_INVALID/);
   assert.deepEqual(fs.readFileSync(path.join(f.root, "archive/data/question_metadata.json")), before);
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence/review-overrides/v1")), false);
 });
@@ -433,7 +525,7 @@ test("T4 invalid L4 parent fails closed", (t) => {
   const packet = makePacket(f, { templateKey: "TPL_WRONG" });
   const packetPath = writePacket(f, packet);
   const result = runCli(f.root, cli.patch, ["--packet", packetPath, "--check"], false);
-  assert.match(result.stderr, /invalid L4 parent/);
+  assert.match(result.stderr, /invalid L4 parent|META_FINAL_RESOLVER_KEY_PARITY_FAIL/);
 });
 
 test("T5 invalid CrossConcept fails closed", (t) => {
@@ -442,7 +534,7 @@ test("T5 invalid CrossConcept fails closed", (t) => {
   packet.metaPatches[0].after.crossConceptKeys = ["CC_NOT_REGISTERED"];
   const packetPath = writePacket(f, packet);
   const result = runCli(f.root, cli.patch, ["--packet", packetPath, "--check"], false);
-  assert.match(result.stderr, /unregistered\/inactive CrossConcept/);
+  assert.match(result.stderr, /unregistered\/inactive CrossConcept|CROSS_CONCEPT_EVIDENCE_PARITY_FAIL/);
 });
 
 test("T6 duplicate UID packet is rejected", (t) => {
