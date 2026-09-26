@@ -1,0 +1,28 @@
+phase=PHASE_07_OPTIONAL_TIKZ_ADAPTER status=PASS counts commands=4/4 tests=4 passed=4 failed=0 errors=0 optionalToolAvailability={"xelatex": "C:\\Users\\USER\\AppData\\Local\\Programs\\texlive\\2026-pilot\\bin\\windows\\xelatex.EXE", "dvisvgm": "C:\\Users\\USER\\AppData\\Local\\Programs\\texlive\\2026-pilot\\bin\\windows\\dvisvgm.EXE"}
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/tikz_adapter.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_tikz_adapter.py -v =====
+--- stdout ---
+--- stderr ---
+test_escape (test_tikz_adapter.TikzTests.test_escape) ... ok
+test_no_production_write (test_tikz_adapter.TikzTests.test_no_production_write) ... ok
+test_safe_math_draft (test_tikz_adapter.TikzTests.test_safe_math_draft) ... ok
+test_unknown_primitive (test_tikz_adapter.TikzTests.test_unknown_primitive) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+
+===== PASS exit=0 python -c <shutil.which xelatex/dvisvgm> =====
+--- stdout ---
+{"xelatex": "C:\\Users\\USER\\AppData\\Local\\Programs\\texlive\\2026-pilot\\bin\\windows\\xelatex.EXE", "dvisvgm": "C:\\Users\\USER\\AppData\\Local\\Programs\\texlive\\2026-pilot\\bin\\windows\\dvisvgm.EXE"}
+
+--- stderr ---
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/tikz_adapter.py 1900E4A324984E60115AF37ED337D86EFB8C389992EADD5D0E6B78925894F901
+archive/tools/geometry-equation/tests/test_tikz_adapter.py F2EAC989ABBD36DFD553D3B589878072EA013526C3A5F885FC6A088F55F6FFA0
