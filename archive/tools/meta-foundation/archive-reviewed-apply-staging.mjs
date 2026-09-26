@@ -54,20 +54,55 @@ function changedNameStatuses(baseSha, head = null) {
   return rows;
 }
 
+
+function treeEntryAt(commit, repoPath) {
+  const output = run(["ls-tree", "-z", commit, "--", repoPath], { encoding: null }).toString("utf8").split("\0").find(Boolean);
+  return output || null;
+}
+
+function assertReviewBaseCompatible({ packet, info, targetSha }) {
+  if (!/^[0-9a-f]{40}$/.test(targetSha || "")) throw new Error("APPLY_BASE_STALE: current target SHA must be a full SHA-1");
+  try {
+    run(["merge-base", "--is-ancestor", packet.targetBaseSha, targetSha]);
+  } catch {
+    throw new Error("APPLY_CONFLICT_HOLD: R2 review base is not an ancestor of the current target");
+  }
+  const repoPath = `archive/exams/${info.sourcePath}`;
+  let targetSourceBytes;
+  try {
+    targetSourceBytes = gitShow(targetSha, repoPath);
+  } catch {
+    throw new Error(`APPLY_CONFLICT_HOLD: source exam is missing at current target: ${repoPath}`);
+  }
+  if (sha256(targetSourceBytes) !== packet.sourceBlobSha) {
+    throw new Error(`APPLY_CONFLICT_HOLD: source exam drifted since R2 closure: ${repoPath}`);
+  }
+  for (const file of packet.finalFiles.filter((row) => row.kind === "solution_svg")) {
+    const reviewEntry = treeEntryAt(packet.targetBaseSha, file.path);
+    const currentEntry = treeEntryAt(targetSha, file.path);
+    if (reviewEntry !== currentEntry) {
+      throw new Error(`APPLY_CONFLICT_HOLD: reviewed SVG path drifted since R2 closure: ${file.path}`);
+    }
+  }
+}
+
 function preflight() {
   const { packet, info, absolute } = requirePacket();
   const targetSha = arg.values.get("target-sha");
-  if (!targetSha || targetSha !== packet.targetBaseSha) throw new Error("APPLY_BASE_STALE: origin target SHA does not equal targetBaseSha");
+  if (!targetSha || !/^[0-9a-f]{40}$/.test(targetSha)) throw new Error("APPLY_BASE_STALE: --target-sha must be the current target SHA");
   const branch = runText(["branch", "--show-current"]);
   if (branch !== `archive-apply/${packet.applyId}`) throw new Error(`staging branch must be archive-apply/${packet.applyId}`);
   const expectedPacket = `.archive-apply/inbox/${packet.applyId}.json`;
   if (asRelative(absolute) !== expectedPacket) throw new Error(`packet must be exactly ${expectedPacket}`);
   if (runText(["status", "--porcelain", "--untracked-files=all"])) throw new Error("staging checkout must be clean before APPLY");
-  const count = Number(runText(["rev-list", "--count", `${packet.targetBaseSha}..HEAD`]));
-  if (count !== 1) throw new Error(`staging branch must have exactly one initial commit above targetBaseSha; got ${count}`);
-  const mergeBase = runText(["merge-base", packet.targetBaseSha, "HEAD"]);
-  if (mergeBase !== packet.targetBaseSha) throw new Error("staging branch must be based directly on targetBaseSha");
-  const changes = changedNameStatuses(packet.targetBaseSha, "HEAD");
+
+  const count = Number(runText(["rev-list", "--count", `${targetSha}..HEAD`]));
+  if (count !== 1) throw new Error(`APPLY_BASE_STALE: staging branch must have exactly one initial commit above current target; got ${count}`);
+  const mergeBase = runText(["merge-base", targetSha, "HEAD"]);
+  if (mergeBase !== targetSha) throw new Error("APPLY_BASE_STALE: staging branch is not based directly on the current target");
+  assertReviewBaseCompatible({ packet, info, targetSha });
+
+  const changes = changedNameStatuses(targetSha, "HEAD");
   const actual = new Set();
   const expected = new Set([...info.finalFilePaths, expectedPacket]);
   for (const row of changes) {
@@ -93,7 +128,8 @@ function preflight() {
     status: "PASS",
     applyId: packet.applyId,
     targetRef: packet.targetRef,
-    targetBaseSha: packet.targetBaseSha,
+    reviewBaseSha: packet.targetBaseSha,
+    dispatchBaseSha: targetSha,
     stagingCommit: runText(["rev-parse", "HEAD"]),
     stagedFinalFiles: info.finalFilePaths.size,
     packetPath: expectedPacket
@@ -121,8 +157,9 @@ function removePacket() {
 function finalize() {
   const { packet, info, packetRelative } = requirePacket();
   const baseSha = arg.values.get("target-base-sha");
-  if (!baseSha || baseSha !== packet.targetBaseSha) throw new Error("finalize base must equal packet targetBaseSha");
+  if (!baseSha || !/^[0-9a-f]{40}$/.test(baseSha)) throw new Error("finalize requires the current dispatch base SHA");
   if (packetRelative !== `.archive-apply/inbox/${packet.applyId}.json`) throw new Error("packet path does not match applyId");
+  assertReviewBaseCompatible({ packet, info, targetSha: baseSha });
 
   const changes = changedNameStatuses(baseSha);
   const untracked = run(["ls-files", "--others", "--exclude-standard", "-z"], { encoding: null }).toString("utf8").split("\0").filter(Boolean).map((file) => ({ status: "A", path: file }));
@@ -160,11 +197,20 @@ function finalize() {
   run(["config", "user.email", "41898282+github-actions[bot]@users.noreply.github.com"]);
   run(["commit", "-m", `archive: apply reviewed exam ${packet.applyId}`]);
   const head = runText(["rev-parse", "HEAD"]);
-  if (runText(["rev-parse", "HEAD^"]) !== baseSha) throw new Error("final APPLY commit must have targetBaseSha as its only parent");
+  if (runText(["rev-parse", "HEAD^"]) !== baseSha) throw new Error("final APPLY commit must have the dispatch base as its only parent");
   if (Number(runText(["rev-list", "--count", `${baseSha}..HEAD`])) !== 1) throw new Error("target delta must contain exactly one commit");
   const finalPacketTree = run(["ls-tree", "-r", "--name-only", "HEAD", "--", ".archive-apply/inbox"], { encoding: null }).toString("utf8").trim();
   if (finalPacketTree) throw new Error("final target tree contains transient APPLY_PACKET files");
-  console.log(JSON.stringify({ status: "PASS", applyId: packet.applyId, targetRef: packet.targetRef, targetBaseSha: baseSha, finalCommit: head, targetCommitCount: 1, changedFiles: staged }, null, 2));
+  console.log(JSON.stringify({
+    status: "PASS",
+    applyId: packet.applyId,
+    targetRef: packet.targetRef,
+    reviewBaseSha: packet.targetBaseSha,
+    dispatchBaseSha: baseSha,
+    finalCommit: head,
+    targetCommitCount: 1,
+    changedFiles: staged
+  }, null, 2));
 }
 
 if (command === "inspect") inspect();
