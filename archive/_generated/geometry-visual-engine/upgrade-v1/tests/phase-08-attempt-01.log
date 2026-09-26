@@ -1,0 +1,134 @@
+phase=PHASE_08_ENGINE_INTEGRATION attempt=1 status=PASS counts commands=6/6 engine=6/6 allPython=60/60 node=11/11 protectedFiles=4493 productionMutations=0 baselineVerifierHashes=6 changedVerifierHashes=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/generate-svg-assets.py archive/tools/geometry-equation/generate-svg-from-independent-facts.py archive/tools/geometry-equation/legacy_assets_parser.py archive/tools/geometry-equation/legacy_independent_builder.py archive/tools/geometry-equation/tests/test_engine.py archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/entrypoints.py archive/tools/geometry-equation/visual_engine/label_layout.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_engine.py -v =====
+--- stdout ---
+--- stderr ---
+test_bad_display_coordinate (test_engine.EngineTests.test_bad_display_coordinate) ... ok
+test_entrypoint_import_no_io (test_engine.EngineTests.test_entrypoint_import_no_io) ... ok
+test_fact_binding (test_engine.EngineTests.test_fact_binding) ... ok
+test_legacy_special_fail_closed (test_engine.EngineTests.test_legacy_special_fail_closed) ... ok
+test_output_guard (test_engine.EngineTests.test_output_guard) ... ok
+test_pure_deterministic_build (test_engine.EngineTests.test_pure_deterministic_build) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.029s
+
+OK
+
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py' =====
+--- stdout ---
+--- stderr ---
+............................................................
+----------------------------------------------------------------------
+Ran 60 tests in 0.204s
+
+OK
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: good point: geometry parity passes
+ok 1 - good point: geometry parity passes
+  ---
+  duration_ms: 9.3867
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 2 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 5.2672
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 3 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 5.3739
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 4 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 3.165
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 5 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 3.7895
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 6 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.3366
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 7 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.1113
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 8 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 101.9051
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 9 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 4.5137
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 10 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.6339
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 11 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 3.1778
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 281.2413
+
+--- stderr ---
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+warning: in the working copy of 'archive/tools/geometry-equation/visual_engine/label_layout.py', LF will be replaced by CRLF the next time Git touches it
+
+===== PASS exit=0 python archive/tools/geometry-equation/freeze-visual-baseline.py --verify =====
+--- stdout ---
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+--- stderr ---
+Changed Python file SHA-256:
+archive/tools/geometry-equation/generate-svg-assets.py B604EF7B448FA0A4496B114F2FAF4E3D4079BFB66A2F145A60282CC288341D33
+archive/tools/geometry-equation/generate-svg-from-independent-facts.py F1611AD70C032AC23AB158DCE9AC58284D6C5F7C99DC7B7644C8787E0F155EA3
+archive/tools/geometry-equation/legacy_assets_parser.py 89CEB0FE80A84E1232F20F576BFF58FCE29FE8ABE8D2A532CBC7418F2D5AC8E8
+archive/tools/geometry-equation/legacy_independent_builder.py E3B5A308C5866EAED1D2ECAC08A6B60AF9E98DD7C8E80409215C4A60B2C85ED2
+archive/tools/geometry-equation/tests/test_engine.py 0FE155AB3205CE1E40907E2800DCED3931134094362610620EB32735EC82154A
+archive/tools/geometry-equation/visual_engine/engine.py 2FBA00AE925A77FCE4B7377E31DACED52F5EA65E42640E44D4D95DA9711918E7
+archive/tools/geometry-equation/visual_engine/entrypoints.py 8E60261CE39B4C2619E685357DB4ECC1E786BBA691C57911499B0871EBD9637E
+archive/tools/geometry-equation/visual_engine/label_layout.py 34CF1718A5A8D3B2AE6396349561972C545EDE9909D081FB8E94820441FF3F18
+Baseline verifier hash comparison:
+archive/tools/geometry-equation/verify-b-static-full.mjs baseline=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22 current=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22
+archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs baseline=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387 current=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387
+archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs baseline=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a current=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a
+archive/tools/geometry-equation/verify-pilot-static.mjs baseline=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08 current=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08
+archive/tools/geometry-equation/verify-production-parity-s15.mjs baseline=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b current=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b
+archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs baseline=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21 current=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21

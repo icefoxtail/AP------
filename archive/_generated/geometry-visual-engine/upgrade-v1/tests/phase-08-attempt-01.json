@@ -1,0 +1,105 @@
+{
+  "phase": "PHASE_08_ENGINE_INTEGRATION",
+  "attempt": 1,
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/generate-svg-assets.py archive/tools/geometry-equation/generate-svg-from-independent-facts.py archive/tools/geometry-equation/legacy_assets_parser.py archive/tools/geometry-equation/legacy_independent_builder.py archive/tools/geometry-equation/tests/test_engine.py archive/tools/geometry-equation/visual_engine/engine.py archive/tools/geometry-equation/visual_engine/entrypoints.py archive/tools/geometry-equation/visual_engine/label_layout.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-pycompile-changed-python.stdout.txt",
+      "stderr": "phase-08-attempt-01-pycompile-changed-python.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_engine.py -v",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-engine-unittest.stdout.txt",
+      "stderr": "phase-08-attempt-01-engine-unittest.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p 'test_*.py'",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-all-python-unittests.stdout.txt",
+      "stderr": "phase-08-attempt-01-all-python-unittests.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-coordinate-parity-node-test.stdout.txt",
+      "stderr": "phase-08-attempt-01-coordinate-parity-node-test.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-diff-check.stdout.txt",
+      "stderr": "phase-08-attempt-01-diff-check.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/freeze-visual-baseline.py --verify",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-08-attempt-01-baseline-verify.stdout.txt",
+      "stderr": "phase-08-attempt-01-baseline-verify.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 6,
+    "commandsPassed": 6,
+    "changedPythonFiles": 8,
+    "engineTests": 6,
+    "enginePassed": 6,
+    "engineFailed": 0,
+    "allPythonTests": 60,
+    "allPythonPassed": 60,
+    "allPythonFailed": 0,
+    "coordinateParityNodeTests": 11,
+    "coordinateParityNodePassed": 11,
+    "coordinateParityNodeFailed": 0,
+    "protectedFiles": 4493,
+    "productionMutationCount": 0
+  },
+  "baselineVerifierHashCheck": {
+    "compared": 6,
+    "changed": [],
+    "hashes": {
+      "archive/tools/geometry-equation/verify-b-static-full.mjs": {
+        "baseline": "5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22",
+        "current": "5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22"
+      },
+      "archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs": {
+        "baseline": "8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387",
+        "current": "8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387"
+      },
+      "archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs": {
+        "baseline": "f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a",
+        "current": "f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a"
+      },
+      "archive/tools/geometry-equation/verify-pilot-static.mjs": {
+        "baseline": "a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08",
+        "current": "a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08"
+      },
+      "archive/tools/geometry-equation/verify-production-parity-s15.mjs": {
+        "baseline": "09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b",
+        "current": "09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b"
+      },
+      "archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs": {
+        "baseline": "86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21",
+        "current": "86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21"
+      }
+    }
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/generate-svg-assets.py": "B604EF7B448FA0A4496B114F2FAF4E3D4079BFB66A2F145A60282CC288341D33",
+    "archive/tools/geometry-equation/generate-svg-from-independent-facts.py": "F1611AD70C032AC23AB158DCE9AC58284D6C5F7C99DC7B7644C8787E0F155EA3",
+    "archive/tools/geometry-equation/legacy_assets_parser.py": "89CEB0FE80A84E1232F20F576BFF58FCE29FE8ABE8D2A532CBC7418F2D5AC8E8",
+    "archive/tools/geometry-equation/legacy_independent_builder.py": "E3B5A308C5866EAED1D2ECAC08A6B60AF9E98DD7C8E80409215C4A60B2C85ED2",
+    "archive/tools/geometry-equation/tests/test_engine.py": "0FE155AB3205CE1E40907E2800DCED3931134094362610620EB32735EC82154A",
+    "archive/tools/geometry-equation/visual_engine/engine.py": "2FBA00AE925A77FCE4B7377E31DACED52F5EA65E42640E44D4D95DA9711918E7",
+    "archive/tools/geometry-equation/visual_engine/entrypoints.py": "8E60261CE39B4C2619E685357DB4ECC1E786BBA691C57911499B0871EBD9637E",
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "34CF1718A5A8D3B2AE6396349561972C545EDE9909D081FB8E94820441FF3F18"
+  }
+}

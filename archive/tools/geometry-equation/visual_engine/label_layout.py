@@ -51,6 +51,9 @@ def collision(box,obstacle,pad=6):
     raise ValueError('UNKNOWN_COLLISION_OBSTACLE')
 
 def approximate_size(text,font=13.25,lines=1):
+    if '\n' in text:
+        rows=text.split('\n')
+        return max(approximate_size(row,font)[0] for row in rows),font*1.5*len(rows)
     width=sum(font*(1.0 if ord(c)>127 and c not in '−√≤≥′' else .66) for c in text)
     return max(font,width),font*1.5*lines
 
