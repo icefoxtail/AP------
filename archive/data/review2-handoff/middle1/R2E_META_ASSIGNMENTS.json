@@ -1,6 +1,6 @@
 {
   "schemaVersion": "middle1-r2e-meta-adjudication/v1",
-  "status": "B20_B24_R2E_BRANCH_FINAL_READY_B28_PENDING",
+  "status": "B20_B24_R2E_BRANCH_FINAL_B28_READY_FOR_EXAM_COMMIT",
   "branch": "work/m1-b20-b24-b28-r2e",
   "curriculumByExam": {
     "B20": "2015",
@@ -96,7 +96,8 @@
         "B24:22",
         "B28:19",
         "B28:20",
-        "B28:24"
+        "B28:24",
+        "B28:16"
       ]
     },
     {
@@ -134,10 +135,7 @@
     "CC_M1_POLYGON_ANGLE_SOLID_VERTEX_FEASIBILITY"
   ],
   "trueNewL3OutsideLockedRpm": 0,
-  "pendingSolutionAuthorityItems": [
-    "B28:12",
-    "B28:23"
-  ],
+  "pendingSolutionAuthorityItems": [],
   "assignments": [
     {
       "exam": "B20",
@@ -729,6 +727,16 @@
     },
     {
       "exam": "B28",
+      "q": 16,
+      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+      "rpmRecordIds": [
+        "M1-RPM-231"
+      ],
+      "disposition": "VALIDATOR_DIFFICULTY_REOPEN_REUSE"
+    },
+    {
+      "exam": "B28",
       "q": 19,
       "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
       "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
@@ -794,20 +802,42 @@
   ],
   "validation": {
     "canonicalCompiledParity": "PASS",
-    "targetCrosswalkAndBindingItems": 63,
-    "status": "PASS",
+    "targetCrosswalkAndBindingItems": 64,
+    "status": "PASS_B20_B24_B28_TARGET_ASSIGNMENTS",
     "b20Archive2": "24/24 eligible",
     "b20Runtime": "24/24 PASS",
     "b24Archive2": "22/22 eligible",
     "b24Runtime": "22/22 PASS",
-    "pendingSourceSolutionItems": [
-      "B28:12",
-      "B28:23"
-    ]
+    "pendingSourceSolutionItems": [],
+    "b28Archive2": "24/24 eligible",
+    "b28Runtime": "24/24 selectable",
+    "b28RuntimeCanonicalOwner": "24/24 exact global owner",
+    "b28DifficultyParity": "24/24",
+    "b28SourceRecovery": "2/2 deterministic image-source recoveries",
+    "b28ProtectedFields": "24/24",
+    "archiveEngineBrowserPreview": "BLOCKED_BY_CUA_URL_POLICY"
   },
   "examFinalCommitShas": {
     "B20": "cdb5742f1ddd952bf5d7301cc53eb735385c4969",
-    "B24": null,
+    "B24": "3e302ecdb1fab7a08abedf7fcdaefebc54208292",
     "B28": null
+  },
+  "sourceRecoveryEvidence": {
+    "B28_q12": "Notion D12 RECOVERY_APPLIED; exact source image blob f7fd240b9cd92fe668ae5a3e880d843892851f6b retained.",
+    "B28_q23": "Notion D12 RECOVERY_APPLIED; exact source image blob 063ac074aa466d8a3ac5eadf0373babc3e2c51cb retained; R2E derived equal water volumes from the depicted dimensions.",
+    "B28_q12_resolution": {
+      "status": "RECOVERY_APPLIED_SOURCE_VISUAL_PASS",
+      "physicalAuthority": "Notion D12 latest Library REVIEW1_DONE recovery evidence; source image retained in branch and hash-verified.",
+      "imageBlobSha1": "f7fd240b9cd92fe668ae5a3e880d843892851f6b",
+      "sourceFacts": "[ㄱ] hemisphere radius 6 cm joined to a cone with slant 10 cm; [ㄴ] 120-degree radius-9 sector prism length 15 cm; [ㄷ] quarter-sphere radius 5 cm with two semicircular cuts.",
+      "solution": "[ㄱ]=132π cm²; [ㄴ]=144π+270 cm²; [ㄷ]=50π cm²; answer ④."
+    },
+    "B28_q23_resolution": {
+      "status": "RECOVERY_APPLIED_SOURCE_VISUAL_PASS",
+      "physicalAuthority": "Notion D12 latest Library REVIEW1_DONE recovery evidence; source image retained in branch and hash-verified.",
+      "imageBlobSha1": "063ac074aa466d8a3ac5eadf0373babc3e2c51cb",
+      "sourceFacts": "(가) water base 12×18 cm and fill depth 9/3 cm; (나) water base 9×12 cm and fill depth x cm; marked 18 cm is the container dimension, not the filled-water depth.",
+      "solution": "12×18×3=648; 9×12×x=108x; equality gives x=6."
+    }
   }
 }
