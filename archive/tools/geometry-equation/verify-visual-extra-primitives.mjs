@@ -23,10 +23,10 @@ export function observeExtraPrimitives(svg,input) {
   const covered=new Set((input.expectedFacts||[]).filter(v=>['POINT','MIDPOINT','ROOT','OPEN_CLOSED_POINT'].includes(v.type)).map(v=>v.element));
   for(const fact of input.extraFacts||[]) {
     try {
-      const tolerance=fact.tolerance??.02;if(!finite(tolerance)||tolerance<0||tolerance>.05)throw Error('EXTRA_TOLERANCE_POLICY');
+      const tolerance=fact.tolerance??(fact.type==='CIRCLE'?1e-7:.02);if(!finite(tolerance)||tolerance<0||tolerance>.05)throw Error('EXTRA_TOLERANCE_POLICY');
       if(fact.type==='CIRCLE') {
         const e=read(fact.element);if(e.kind!=='circle')throw Error('CIRCLE_REQUIRED');
-        const center=inverse(points(e)[0]);const radius=Number(e.a.r)/model.sx;
+        const center=inverse(points(e)[0]);const radius=Number(e.a.r)/model.sx;if(!finite(radius)||radius<=0)throw Error('DEGENERATE_ACTUAL_CIRCLE');
         if(!near(model.sx,model.sy,1e-9)||!center.every((v,i)=>near(v,fact.center[i],tolerance))||!near(radius,fact.radius,tolerance))throw Error('ACTUAL_CIRCLE_PARITY_FAIL');
         covered.add(fact.element);observed.push({id:fact.element,center,radius});
       } else if(fact.type==='FUNCTION_GRAPH') {

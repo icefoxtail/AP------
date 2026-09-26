@@ -15,7 +15,7 @@ def safe_math_markup(value):
     return value
 
 def compose(prepared,layout,viewport):
-    tokens=load();seen=set();semantic_labels=set();layers=[]
+    tokens=load();seen={'visual-title','visual-desc'};semantic_labels=set();layers=[]
     def element_id(value):
         if value in seen:raise ValueError('DUPLICATE_SVG_ID:'+value)
         seen.add(value);return esc(value)
@@ -43,12 +43,15 @@ def compose(prepared,layout,viewport):
             raise ValueError('INVALID_STUDENT_DECIMAL_LABEL')
         x,y=label['baseline'];font=label['font'];box=label['box']
         attrs=f'id="{oid}" data-label-kind="{esc(label["kind"])}" data-priority="{label.get("priority",2)}" x="{num(x)}" y="{num(y)}" font-size="{num(font)}"'
+        if label.get('math') or label.get('hasMath'):attrs+=' data-math="true"'
         if label['kind']=='POINT_NAME':attrs+=' font-style="italic"'
         family=tokens['mathFont'] if label.get('math') or label['kind']=='POINT_NAME' else tokens['textFont']
         attrs+=' font-family="'+esc(family)+'"'
         if label['kind']=='CONDITION_BOX':
-            layers.append((88,index,f'<rect id="{oid}-box" data-role="conditionBox" x="{num(box["x"]-6)}" y="{num(box["y"]-6)}" width="{num(box["width"]+12)}" height="{num(box["height"]+12)}" fill="#fff" stroke="#555" stroke-width="0.8"/>'))
-            content=''.join(f'<tspan x="{num(x)}" y="{num(box["y"]+font+i*font*1.5)}">{esc(row)}</tspan>' for i,row in enumerate(label.get('lines',[label['text']])))
+            bid=element_id(label['id']+'-box')
+            layers.append((88,index,f'<rect id="{bid}" data-role="conditionBox" x="{num(box["x"]-6)}" y="{num(box["y"]-6)}" width="{num(box["width"]+12)}" height="{num(box["height"]+12)}" fill="#fff" stroke="#555" stroke-width="0.8"/>'))
+            rows=label.get('renderedLines',[{'text':row,'math':False} for row in label.get('lines',[label['text']])])
+            content=''.join(f'<tspan x="{num(x)}" y="{num(box["y"]+font+i*font*1.5)}" font-family="{esc(tokens["mathFont"] if row["math"] else tokens["textFont"])}">{safe_math_markup(row["markup"]) if row.get("markup") else esc(row["text"])}</tspan>' for i,row in enumerate(rows))
         else:content=safe_math_markup(label['markup']) if label.get('markup') else esc(label['text'])
         layers.append((90,index,f'<text {attrs}>{content}</text>'))
     model=viewport.model();metadata=prepared.get('factHash','')

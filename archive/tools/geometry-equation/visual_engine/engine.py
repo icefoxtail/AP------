@@ -3,6 +3,8 @@ import argparse
 import hashlib
 import json
 import math
+import xml.etree.ElementTree as ET
+from fractions import Fraction
 from pathlib import Path
 from . import ENGINE_VERSION
 from .semantic_model import validate
@@ -45,7 +47,19 @@ def prepare(spec):
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick'},'line')
         for oid,at,text in [('axis-x',(xmax,0),'x'),('axis-y',(0,ymax),'y')]:
             labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        for axis,lo,hi in [('x',xmin,xmax),('y',ymin,ymax)]:
+            raw=(hi-lo)/5;power=10**math.floor(math.log10(raw));step=next(v*power for v in (1,2,5,10) if v*power>=raw)
+            for index in range(math.ceil(lo/step),math.floor(hi/step)+1):
+                value=index*step
+                if abs(value)<1e-12:continue
+                at=(value,0) if axis=='x' else (0,value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
+                oid=f'tick-{axis}-{index}'
+                if abs(value-1)>1e-12:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick'},'line')
+                text=(str(int(value)) if float(value).is_integer() else f'{value:.10g}').replace('-','−')
+                labels.append({'id':oid+'-label','kind':'GRAPH_ANNOTATION','target':axis+'-axis','at':p,'text':text,'font':tokens['tickLabel'],'priority':4,'allowSuppress':True,'preferred':'S' if axis=='x' else 'W','gaps':(8,12)})
     by_id={v['id']:v for v in spec['objects']}
+    tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
+    graph_index=0
     named={v.get('target') for v in spec['objects'] if v['kind']=='POINT_NAME'}
     for obj in spec['objects']:
         oid=obj['id'];kind=obj['kind'];value=geometry.get(oid)
@@ -54,7 +68,7 @@ def prepare(spec):
             if oid not in named:labels.append({'id':oid+'-name','kind':'POINT_NAME','target':oid,'text':obj.get('name',oid),'at':vp.screen(value),'font':tokens['pointName'],'priority':obj.get('priority',1)})
         elif kind in {'LINE','AUXILIARY_LINE'}:
             hits=clip_line(value,vp.bounds)
-            if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
+            if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
         elif kind in {'SEGMENT','LEADER_LINE'}:
             primitive({'id':oid,'kind':'line','from':vp.screen(value[0]),'to':vp.screen(value[1]),'token':'leaderLine' if kind=='LEADER_LINE' else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 30,'role':'leader' if kind=='LEADER_LINE' else 'line'},'leader' if kind=='LEADER_LINE' else 'line')
         elif kind=='CIRCLE':
@@ -63,7 +77,8 @@ def prepare(spec):
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve','layer':40,'role':'curve'},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if graph_index==0 else 'secondaryCurve','layer':40 if graph_index==0 else 35,'role':'curve'},'curve')
+            graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]
             for ref in obj['refs']:
@@ -83,9 +98,18 @@ def prepare(spec):
             if kind=='COORDINATE_LABEL':
                 exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']
-            elif kind=='CONDITION_BOX':label['text']='\n'.join(obj['lines'])
+                label['panelPrefix']=obj['target']+': '
+                trees=[parse(v) for v in obj['exact']]
+                trees=[parse(str(value)) if isinstance(value:=evaluate(tree,symbols),Fraction) else tree for tree in trees]
+                label.update(markup='('+','.join(serialize(tree,'svg') for tree in trees)+')',math=True)
+            elif kind=='CONDITION_BOX':
+                rows=[{'text':row,'math':False} if isinstance(row,str) else row for row in obj['lines']]
+                label['renderedLines']=[{**row,'markup':serialize(parse(row['text']),'svg') if row['math'] else None} for row in rows]
+                label['lines']=[serialize(parse(row['text']),'plain') if row['math'] else row['text'] for row in rows]
+                label['text']='\n'.join(label['lines']);label['hasMath']=any(v['math'] for v in rows)
             elif kind in {'EQUATION_LABEL','LENGTH_LABEL'} or obj.get('math'):
                 tree=parse(obj['text']);label.update(text=serialize(tree,'plain'),markup=serialize(tree,'svg'),sourceMath=obj['text'],math=True)
+                label['layoutText']=''.join(ET.fromstring('<text>'+label['markup']+'</text>').itertext())
                 if kind=='LENGTH_LABEL' and abs(float(evaluate(tree))-obj['value'])>1e-9:raise ValueError('DISPLAY_LENGTH_PARITY_FAIL')
             labels.append(label)
     return {'primitives':primitives,'title':spec.get('title','도형과 핵심 점'),'factHash':sha(canonical(spec['sourceFacts']))},labels,obstacles,vp,semantic,sampling

@@ -11,6 +11,8 @@ KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE',
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL'}
+FIELDS={'id','kind','at','from','to','center','radius','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -42,6 +44,11 @@ def validate(spec):
     objects={}; geometry={}; relations=[]
     for obj in spec['objects']:
         if not isinstance(obj,dict) or obj.get('kind') not in KINDS: raise ValueError('UNKNOWN_COMPONENT')
+        if set(obj)-FIELDS or not REQUIRED[obj['kind']]<=obj.keys():raise ValueError('UNKNOWN_OR_MISSING_COMPONENT_FIELD')
+        if 'priority' in obj and (isinstance(obj['priority'],bool) or not isinstance(obj['priority'],int) or not 0<=obj['priority']<=4):raise ValueError('INVALID_PRIORITY')
+        if 'refs' in obj and (not isinstance(obj['refs'],list) or not all(isinstance(v,str) for v in obj['refs'])):raise ValueError('INVALID_REFS')
+        for key in ('math','allowSuppress'):
+            if key in obj and not isinstance(obj[key],bool):raise ValueError('INVALID_COMPONENT_FLAG')
         oid=obj.get('id'); kind=obj['kind']
         if not isinstance(oid,str) or not oid or not all(c.isalnum() or c in '_-' for c in oid):
             raise ValueError('INVALID_OBJECT_ID')
@@ -61,7 +68,7 @@ def validate(spec):
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':
-                if not obj.get('lines') or not all(isinstance(v,str) for v in obj['lines']):
+                if not obj.get('lines') or not all(isinstance(v,str) or (isinstance(v,dict) and isinstance(v.get('text'),str) and isinstance(v.get('math',False),bool) and not set(v)-{'text','math'}) for v in obj['lines']):
                     raise ValueError('CONDITION_LINES_REQUIRED')
             elif not isinstance(obj.get('text'),str): raise ValueError('LABEL_TEXT_REQUIRED')
     for obj in spec['objects']:
@@ -88,8 +95,15 @@ def validate(spec):
             elif kind=='TANGENT':
                 if len(refs)!=2: raise ValueError('TANGENT_REFS_REQUIRED')
                 l,c=(geometry.get(r) for r in refs)
-                if not isinstance(l,Line) or not isinstance(c,Circle): raise ValueError('UNSUPPORTED_TANGENCY')
-                observed=point(obj['at']); ok=tangent_check(c,l,observed)
+                if not isinstance(l,Line): raise ValueError('LINE_TANGENT_REF_REQUIRED')
+                observed=point(obj['at'])
+                if isinstance(c,Circle):ok=tangent_check(c,l,observed)
+                elif objects[refs[1]]['kind']=='FUNCTION_GRAPH':
+                    from .math_expression import parse
+                    from .differential import value_derivative
+                    graph=objects[refs[1]];y,d=value_derivative(parse(graph['expression']),observed[0])
+                    ok=math.isfinite(y) and math.isfinite(d) and graph['domain'][0]<=observed[0]<=graph['domain'][1] and parity(y,observed[1]) and point_on_line(observed,l) and abs(l.a+l.b*d)<=1e-9
+                else:raise ValueError('UNSUPPORTED_TANGENCY')
             elif kind=='LENGTH_LABEL':
                 if len(refs)!=1 or objects[refs[0]]['kind']!='SEGMENT': raise ValueError('SEGMENT_REF_REQUIRED')
                 observed=math.dist(*geometry[refs[0]])
