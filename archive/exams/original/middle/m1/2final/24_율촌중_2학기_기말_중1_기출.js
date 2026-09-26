@@ -25,11 +25,20 @@ window.questionBank=[
       "ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 다면체의 면의 개수를 종류별로 센다.\n조건 정리: $n$각뿔은 면이 $n+1$개, $n$각기둥과 $n$각뿔대는 면이 $n+2$개이다.\n정석 풀이: ㄱ 사각뿔은 $4+1=5$개, ㄴ 오각뿔대는 $5+2=7$개, ㄷ 삼각기둥은 $3+2=5$개, ㄹ 사각기둥은 $4+2=6$개, ㅁ 삼각뿔대는 $3+2=5$개, ㅂ 육각뿔은 $6+1=7$개의 면을 갖는다. 따라서 면이 $7$개인 것은 ㄴ, ㅂ이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] $n$각뿔의 면은 $n+1$개이고, $n$각기둥과 $n$각뿔대의 면은 $n+2$개이다.\nㄱ. 사각뿔: $4+1=5$개\nㄴ. 오각뿔대: $5+2=7$개\nㄷ. 삼각기둥: $3+2=5$개\nㄹ. 사각기둥: $4+2=6$개\nㅁ. 삼각뿔대: $3+2=5$개\nㅂ. 육각뿔: $6+1=7$개\n따라서 면이 $7$개인 것은 ㄴ, ㅂ이므로 정답은 ②이다.",
+    "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+    "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -56,11 +65,11 @@ window.questionBank=[
       "정이십면체"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정다면체는 한 꼭짓점에 모이는 면의 개수로 구별할 수 있다.\n조건 정리: 모든 면이 합동인 정다각형이고, 한 꼭짓점에 $4$개의 면이 모인다.\n정석 풀이: 정사면체는 한 꼭짓점에 정삼각형 $3$개, 정육면체는 정사각형 $3$개, 정팔면체는 정삼각형 $4$개가 모인다. 정십이면체는 정오각형 $3$개, 정이십면체는 정삼각형 $5$개가 모인다. 조건을 만족하는 것은 정팔면체이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 정다면체는 한 꼭짓점에 모이는 면의 개수를 비교하면 구별할 수 있다.\n정사면체: 정삼각형 $3$개\n정육면체: 정사각형 $3$개\n정팔면체: 정삼각형 $4$개\n정십이면체: 정오각형 $3$개\n정이십면체: 정삼각형 $5$개\n한 꼭짓점에 면이 $4$개 모이는 것은 정팔면체이므로 정답은 ③이다."
   },
   {
     "id": 3,
@@ -86,11 +95,11 @@ window.questionBank=[
       "원기둥 - 정사각형"
     ],
     "answer": "④",
-    "solution": "[키포인트] 회전체를 회전축에 수직인 평면으로 자르면 단면은 원 모양이 된다.\n정석 풀이: 구를 자른 단면은 원이므로 정삼각형이 아니고, 반구의 단면도 원이므로 반원이 아니다. 원뿔대의 단면도 원이므로 사다리꼴이 아니다. 원뿔을 회전축에 수직으로 자르면 단면이 원이 된다. 원기둥의 단면도 원이므로 정사각형이 아니다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 회전체를 회전축에 수직인 평면으로 자르면 단면은 원 모양이다.\n구, 반구, 원뿔대, 원뿔, 원기둥을 회전축에 수직으로 자른 단면은 모두 원이다.\n따라서 바르게 짝지어진 것은 ‘원뿔 - 원’이므로 정답은 ④이다."
   },
   {
     "id": 4,
@@ -116,11 +125,11 @@ window.questionBank=[
       "이등변삼각형, 합동"
     ],
     "answer": "①",
-    "solution": "[키포인트] 회전체는 회전축을 중심으로 어느 방향에서 보아도 같은 모양이 되도록 회전하여 만든 입체도형이다.\n정석 풀이: 회전축을 포함하는 평면으로 자르면 자르는 평면의 방향이 달라져도 같은 단면이 생기므로 단면들은 서로 합동이다. 또한 그 단면에서 회전축은 좌우를 서로 포개는 대칭축이 되므로 단면은 회전축에 대하여 선대칭도형이다.\n따라서 ㉮는 합동, ㉯는 선대칭이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 회전체를 회전축을 포함하는 평면으로 자르면 회전축이 단면의 대칭축이 된다.\n자르는 평면의 방향이 달라져도 같은 모양과 크기의 단면이 생기므로 단면들은 서로 합동이다.\n또한 단면은 회전축을 기준으로 좌우가 포개지므로 선대칭도형이다.\n따라서 ㉮는 합동, ㉯는 선대칭이므로 정답은 ①이다."
   },
   {
     "id": 5,
@@ -148,11 +157,12 @@ window.questionBank=[
       "$17+25\\pi$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 원기둥의 전개도에서 두 원의 반지름, 옆면 직사각형의 세로와 가로를 원기둥의 치수와 연결한다.\n조건 정리: 원기둥의 반지름은 $5\\rm\\,cm$, 높이는 $12\\rm\\,cm$이다.\n정석 풀이: 원의 반지름에 해당하는 빈칸은 $5$이다. 옆면 직사각형의 한 변은 원기둥의 높이이므로 $12$이고, 다른 변은 밑면의 원주이므로 $2\\pi\\times5=10\\pi$이다. 따라서 빈칸의 수의 합은 $5+12+10\\pi=17+10\\pi$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 원기둥의 전개도에서 두 원의 반지름, 옆면 직사각형의 높이와 가로 길이를 차례로 연결한다.\n원의 반지름은 $5\\mathrm{cm}$이므로 첫 번째 빈칸은 $5$이다.\n옆면 직사각형의 세로는 원기둥의 높이와 같으므로 $12$이다.\n가로는 밑면의 원주와 같으므로\n$2\\pi\\times5=10\\pi$이다.\n따라서 빈칸의 수의 합은\n$5+12+10\\pi=17+10\\pi$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -180,11 +190,12 @@ window.questionBank=[
       "$28\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 두 원기둥의 부피가 같다는 조건으로 높이를 구한다.\n조건 정리: A의 반지름과 높이는 각각 $6\\rm\\,cm$, $6\\rm\\,cm$이고, B의 반지름은 $3\\rm\\,cm$, 높이는 $h\\rm\\,cm$이다.\n정석 풀이: A의 부피는 $\\pi\\times6^2\\times6=216\\pi$이고, B의 부피는 $\\pi\\times3^2\\times h=9\\pi h$이다. 두 부피가 같으므로 $9\\pi h=216\\pi$이고, $h=24$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 두 원기둥의 부피가 같다는 조건으로 B의 높이를 구한다.\n원기둥 A의 부피는\n$\\pi\\times6^2\\times6=216\\pi$이다.\n원기둥 B의 높이를 $h\\mathrm{cm}$라 하면 부피는\n$\\pi\\times3^2\\times h=9\\pi h$이다.\n두 부피가 같으므로\n$9\\pi h=216\\pi$\n$h=24$\n따라서 원기둥 B의 높이는 $24\\mathrm{cm}$이고 정답은 ①이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -212,11 +223,12 @@ window.questionBank=[
       "$16\\pi\\rm\\,cm^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 원뿔의 겉넓이는 옆면인 부채꼴의 넓이와 밑면인 원의 넓이의 합이다.\n조건 정리: 전개도에서 부채꼴의 반지름은 $5\\rm\\,cm$, 밑면의 반지름은 $2\\rm\\,cm$이다.\n정석 풀이: 부채꼴의 호의 길이는 밑면의 원주와 같으므로 $2\\pi\\times2=4\\pi\\rm\\,cm$이다. 부채꼴의 넓이는 $\\dfrac12\\times5\\times4\\pi=10\\pi\\rm\\,cm^2$이다. 밑면의 넓이는 $\\pi\\times2^2=4\\pi\\rm\\,cm^2$이다. 따라서 겉넓이는 $10\\pi+4\\pi=14\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 원뿔의 전개도에서 부채꼴의 호의 길이는 밑면의 원주와 같다.\n밑면의 반지름이 $2\\mathrm{cm}$이므로 밑면의 원주는\n$2\\pi\\times2=4\\pi$이다.\n부채꼴의 반지름이 $5\\mathrm{cm}$이므로 중심각을 $x^\\circ$라 하면\n$2\\pi\\times5\\times\\dfrac{x}{360}=4\\pi$\n$x=144$\n부채꼴의 넓이는\n$\\pi\\times5^2\\times\\dfrac{144}{360}=10\\pi\\mathrm{cm}^2$이다.\n밑면의 넓이는\n$\\pi\\times2^2=4\\pi\\mathrm{cm}^2$이다.\n따라서 겉넓이는\n$10\\pi+4\\pi=14\\pi\\mathrm{cm}^2$이므로 정답은 ④이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -244,11 +256,12 @@ window.questionBank=[
       "$148\\pi\\rm\\,cm^3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 반구의 부피는 같은 반지름을 가진 구의 부피의 절반이다.\n조건 정리: 반구의 반지름은 $6\\rm\\,cm$이다.\n정석 풀이: 반지름이 $6\\rm\\,cm$인 구의 부피는 $\\dfrac43\\pi\\times6^3=288\\pi\\rm\\,cm^3$이다. 반구는 그 절반이므로 부피는 $\\dfrac12\\times288\\pi=144\\pi\\rm\\,cm^3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 반구의 부피는 같은 반지름을 가진 구의 부피의 절반이다.\n반지름은 $6\\mathrm{cm}$이므로 구의 부피는\n$\\dfrac43\\pi\\times6^3=288\\pi\\mathrm{cm}^3$이다.\n따라서 반구의 부피는\n$\\dfrac12\\times288\\pi=144\\pi\\mathrm{cm}^3$이다.\n정답은 ③이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg"
   },
   {
     "id": 9,
@@ -276,11 +289,11 @@ window.questionBank=[
       "$\\dfrac14$, 반원"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 겉넓이를 곡면과 두 개의 잘린 평면으로 나누어 본다.\n조건 정리: 그림의 입체도형은 구를 서로 수직인 두 평면으로 잘라 만든 $\\dfrac14$ 부분이다.\n정석 풀이: 구의 곡면에 해당하는 부분은 전체 구의 겉넓이의 $\\dfrac14$이므로 ㉠은 $\\dfrac14$이다. 두 절단면은 각각 구의 중심을 지나는 원의 절반 모양이므로 모두 반원이다. 따라서 ㉡은 반원이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 겉넓이를 구의 곡면 부분과 두 절단면으로 나누어 본다.\n그림의 입체도형은 구를 서로 수직인 두 평면으로 잘라 만든 $\\dfrac14$ 부분이다.\n따라서 곡면의 넓이는 구의 겉넓이의 $\\dfrac14$이므로 ㉠은 $\\dfrac14$이다.\n두 절단면은 각각 구의 중심을 지나는 원의 절반 모양이므로 모두 반원이다.\n따라서 ㉡은 반원이고 정답은 ⑤이다."
   },
   {
     "id": 10,
@@ -308,11 +321,12 @@ window.questionBank=[
       "$25\\pi\\rm\\,m^3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 원뿔대는 큰 원뿔에서 위쪽의 작은 원뿔을 뺀 것으로 생각한다.\n조건 정리: 큰 원뿔의 밑면 반지름은 $4\\rm\\,m$, 높이는 $6\\rm\\,m$이고, 잘라 낸 작은 원뿔의 밑면 반지름은 $2\\rm\\,m$, 높이는 $3\\rm\\,m$이다.\n정석 풀이: 큰 원뿔의 부피는 $\\dfrac13\\pi\\times4^2\\times6=32\\pi\\rm\\,m^3$이다. 작은 원뿔의 부피는 $\\dfrac13\\pi\\times2^2\\times3=4\\pi\\rm\\,m^3$이다. 따라서 원뿔대의 부피는 $32\\pi-4\\pi=28\\pi\\rm\\,m^3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 원뿔대는 큰 원뿔에서 위쪽의 작은 원뿔을 뺀 것으로 생각한다.\n큰 원뿔의 밑면 반지름은 $4\\mathrm{m}$, 높이는 $6\\mathrm{m}$이므로\n부피는\n$\\dfrac13\\pi\\times4^2\\times6=32\\pi\\mathrm{m}^3$이다.\n작은 원뿔의 밑면 반지름은 $2\\mathrm{m}$, 높이는 $3\\mathrm{m}$이므로\n부피는\n$\\dfrac13\\pi\\times2^2\\times3=4\\pi\\mathrm{m}^3$이다.\n따라서 원뿔대의 부피는\n$32\\pi-4\\pi=28\\pi\\mathrm{m}^3$이므로 정답은 ③이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -341,11 +355,20 @@ window.questionBank=[
       "$22\\rm\\,cm$ 이상 $23\\rm\\,cm$ 미만"
     ],
     "answer": "④",
-    "solution": "[키포인트] 큰 값부터 계급별 도수를 누적하여 $9$번째 학생이 들어가는 계급을 찾는다.\n정석 풀이: 가장 큰 계급인 $22\\rm\\,cm$ 이상 $23\\rm\\,cm$ 미만의 학생은 $4$명이므로 큰 순서로 $1$번째부터 $4$번째까지이다. 그다음 $21\\rm\\,cm$ 이상 $22\\rm\\,cm$ 미만의 학생은 $6$명이므로 큰 순서로 $5$번째부터 $10$번째까지가 이 계급에 속한다. 따라서 $9$번째로 큰 학생은 $21\\rm\\,cm$ 이상 $22\\rm\\,cm$ 미만의 계급에 속한다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 큰 값이 있는 계급부터 도수를 누적하여 $9$번째 학생이 들어가는 계급을 찾는다.\n$22\\mathrm{cm}$ 이상 $23\\mathrm{cm}$ 미만 계급의 학생은 $4$명이므로 큰 순서로 $1$번째부터 $4$번째까지이다.\n그다음 $21\\mathrm{cm}$ 이상 $22\\mathrm{cm}$ 미만 계급의 학생은 $6$명이므로 큰 순서로 $5$번째부터 $10$번째까지이다.\n따라서 $9$번째로 큰 학생은 $21\\mathrm{cm}$ 이상 $22\\mathrm{cm}$ 미만 계급에 속하므로 정답은 ④이다.",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CUMULATIVE_COUNT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -373,11 +396,11 @@ window.questionBank=[
       "$10$명"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 전체 학생 수에서 알려진 계급의 도수를 빼서 빈칸의 도수를 구한다.\n정석 풀이: 도수분포표의 알려진 도수의 합은 $1+4+8+6+4=23$명이다. 전체 학생 수가 $33$명이므로 빈칸인 $20\\rm\\,cm$ 이상 $21\\rm\\,cm$ 미만 계급의 도수는 $33-23=10$명이다. 다른 계급의 도수는 $1,4,8,6,4$명이므로 가장 큰 도수는 $10$명이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 전체 학생 수에서 알려진 계급의 도수를 빼서 빈칸의 도수를 구한다.\n알려진 도수의 합은\n$1+4+8+6+4=23$명이다.\n전체가 $33$명이므로 빈칸의 도수는\n$33-23=10$명이다.\n다른 계급의 도수는 $1,4,8,6,4$명이므로 가장 큰 도수는 $10$명이다.\n따라서 정답은 ⑤이다."
   },
   {
     "id": 13,
@@ -405,11 +428,11 @@ window.questionBank=[
       "$13$명"
     ],
     "answer": "④",
-    "solution": "[키포인트] 줄기와 잎 그림에서 $42$ 이상인 자료만 직접 센다.\n정석 풀이: 줄기가 $4$인 자료 중 $42$ 이상은 $42,42,47,48,48,48$로 $6$명이다. 줄기가 $5$인 자료 $52,53,54,55,57,59$는 모두 $42$ 이상이므로 $6$명이다. 따라서 $42$회 이상인 학생 수는 $6+6=12$명이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 줄기와 잎 그림에서 $42$ 이상인 자료만 센다.\n줄기가 $4$인 자료 중 $42$ 이상인 값은\n$42,42,47,48,48,48$로 $6$개이다.\n줄기가 $5$인 자료\n$52,53,54,55,57,59$는 모두 $42$ 이상이므로 $6$개이다.\n따라서 $42$회 이상인 학생 수는\n$6+6=12$명이고 정답은 ④이다."
   },
   {
     "id": 14,
@@ -437,11 +460,11 @@ window.questionBank=[
       "$15.75$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 상대도수는 $\\dfrac{도수}{전체\\ 학생\\ 수}$로 구한다.\n조건 정리: 전체 학생 수는 $40$명이다.\n정석 풀이: $10$분 이상 $20$분 미만 계급은 도수가 $10$명이므로 $A=\\dfrac{10}{40}=0.25$이다. $30$분 이상 $40$분 미만 계급은 상대도수가 $0.2$이므로 $B=40\\times0.2=8$이다. $40$분 이상 $50$분 미만 계급은 상대도수가 $0.15$이므로 $C=40\\times0.15=6$이다. 전체의 상대도수의 합은 $1$이므로 $D=1$이다. 따라서 $A+B+C+D=0.25+8+6+1=15.25$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 상대도수는 $\\dfrac{\\text{도수}}{\\text{전체 도수}}$로 구한다.\n전체 학생 수는 $40$명이다.\n$A=\\dfrac{10}{40}=0.25$\n상대도수가 $0.2$인 계급의 도수는\n$B=40\\times0.2=8$\n상대도수가 $0.15$인 계급의 도수는\n$C=40\\times0.15=6$\n상대도수의 합은 $1$이므로 $D=1$이다.\n따라서\n$A+B+C+D=0.25+8+6+1=15.25$\n정답은 ③이다."
   },
   {
     "id": 15,
@@ -469,11 +492,11 @@ window.questionBank=[
       "$35$대"
     ],
     "answer": "②",
-    "solution": "[키포인트] 히스토그램의 각 막대의 높이가 해당 계급의 도수이므로 모든 막대의 높이를 더한다.\n정석 풀이: 비행시간별 도수는 차례로 $3,9,7,6,4,2,1$대이다. 따라서 조사한 드론의 수는 $3+9+7+6+4+2+1=32$대이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 히스토그램에서 각 막대의 높이는 해당 계급의 도수이다.\n각 계급의 도수는 차례로\n$3,9,7,6,4,2,1$이다.\n따라서 조사한 드론의 수는\n$3+9+7+6+4+2+1=32$대이다.\n정답은 ②이다."
   },
   {
     "id": 16,
@@ -501,11 +524,20 @@ window.questionBank=[
       "$1$년간 저축한 금액이 $4$만 $9$천 원인 학생이 속하는 계급의 도수는 $13$명이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 도수분포다각형에서 실제 계급의 도수와 계급의 크기를 읽어 각 설명을 확인한다.\n정석 풀이: 실제 계급은 $1$만 원 간격으로 $6$개이므로 ①, ②는 옳다. $2$만 원 미만인 학생 수는 첫 계급의 도수인 $2$명이므로 ③도 옳다. 가장 높은 점은 $4$만 원 이상 $5$만 원 미만 계급에 해당하므로 ④도 옳다. $4$만 $9$천 원은 $4$만 원 이상 $5$만 원 미만 계급에 속하고, 그래프에서 이 계급의 도수는 $19$명이다. 따라서 도수가 $13$명이라는 ⑤는 옳지 않다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 도수분포다각형에서 각 계급의 도수와 계급의 크기를 읽어 보기별로 확인한다.\n① 실제 계급은 $6$개이므로 옳다.\n② 계급의 크기는 $1$만 원이므로 옳다.\n③ $2$만 원 미만인 학생은 첫 계급의 도수인 $2$명이므로 옳다.\n④ 가장 높은 점은 $4$만 원 이상 $5$만 원 미만 계급에 해당하므로 옳다.\n⑤ $4$만 $9$천 원은 $4$만 원 이상 $5$만 원 미만 계급에 속하고, 이 계급의 도수는 $19$명이다. 따라서 $13$명이라는 설명은 옳지 않다.\n따라서 정답은 ⑤이다.",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CLAIM_AUDIT",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -533,11 +565,11 @@ window.questionBank=[
       "$14$명"
     ],
     "answer": "①",
-    "solution": "[키포인트] 상대도수에 전체 학생 수를 곱하면 해당 계급의 학생 수를 구할 수 있다.\n정석 풀이: $60$분 이상 $70$분 미만 계급의 상대도수는 남학생이 $0.20$, 여학생이 $0.25$이다. 남학생 수는 $300\\times0.20=60$명이고, 여학생 수는 $200\\times0.25=50$명이다. 따라서 남학생이 여학생보다 $60-50=10$명 더 많다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 상대도수에 전체 학생 수를 곱하면 해당 계급의 학생 수를 구할 수 있다.\n$60$분 이상 $70$분 미만 계급의 상대도수는 남학생이 $0.20$, 여학생이 $0.25$이다.\n남학생 수는\n$300\\times0.20=60$명이다.\n여학생 수는\n$200\\times0.25=50$명이다.\n따라서 남학생이 여학생보다\n$60-50=10$명 더 많으므로 정답은 ①이다."
   },
   {
     "id": 18,
@@ -565,11 +597,11 @@ window.questionBank=[
       "$25$명, $0.2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 한 계급의 도수와 상대도수를 이용해 전체 학생 수를 먼저 구한다.\n정석 풀이: $10$분 이상 $20$분 미만 계급의 도수는 $2$명, 상대도수는 $0.08$이므로 전체 학생 수를 $N$이라 하면 $\\dfrac{2}{N}=0.08$이다. 따라서 $N=25$명이다. $20$분 이상 $30$분 미만 계급의 도수는 $5$명이므로 상대도수는 $\\dfrac{5}{25}=0.2$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 한 계급의 도수와 상대도수를 이용해 전체 학생 수를 먼저 구한다.\n$10$분 이상 $20$분 미만 계급의 도수는 $2$명, 상대도수는 $0.08$이다.\n전체 학생 수를 $N$명이라 하면\n$\\dfrac{2}{N}=0.08$\n$N=25$\n$20$분 이상 $30$분 미만 계급의 도수는 $5$명이므로 상대도수는\n$\\dfrac{5}{25}=0.2$이다.\n따라서 $25$명, $0.2$이므로 정답은 ⑤이다."
   },
   {
     "id": 19,
@@ -592,11 +624,12 @@ window.questionBank=[
     "image": "assets/images/24_율촌중_2학기_기말_중1_기출/q19.png",
     "content": "[서술형1] 다음 물음에 답하시오. [7점]",
     "answer": "(1) 288 cm² (2) 75π cm³",
-    "solution": "[키포인트] (1)은 삼각기둥의 두 밑면과 옆면의 넓이를 더하고, (2)는 원뿔의 부피 공식을 이용한다.\n(1) 밑면은 두 직각변의 길이가 $6\\rm\\,cm$, $8\\rm\\,cm$인 직각삼각형이므로 한 밑면의 넓이는 $\\dfrac12\\times6\\times8=24\\rm\\,cm^2$이다. 두 밑면의 넓이의 합은 $48\\rm\\,cm^2$이다. 밑면 삼각형의 세 변은 $6\\rm\\,cm$, $8\\rm\\,cm$, $10\\rm\\,cm$이고 기둥의 높이는 $10\\rm\\,cm$이므로 옆넓이는 $(6+8+10)\\times10=240\\rm\\,cm^2$이다. 따라서 겉넓이는 $48+240=288\\rm\\,cm^2$이다.\n(2) 원뿔의 밑면 반지름은 $5\\rm\\,cm$, 높이는 $9\\rm\\,cm$이다. 따라서 부피는 $\\dfrac13\\pi\\times5^2\\times9=75\\pi\\rm\\,cm^3$이다.\n따라서 구하는 값은 (1) $288\\rm\\,cm^2$, (2) $75\\pi\\rm\\,cm^3$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] (1)은 삼각기둥의 두 밑면과 옆면을 더하고, (2)는 원뿔의 부피를 구한다.\n\n(1) 밑면은 두 직각변의 길이가 $6\\mathrm{cm}$, $8\\mathrm{cm}$인 직각삼각형이다.\n한 밑면의 넓이는\n$\\dfrac12\\times6\\times8=24\\mathrm{cm}^2$이다.\n두 밑면의 넓이의 합은\n$24\\times2=48\\mathrm{cm}^2$이다.\n그림에서 밑면 삼각형의 세 변의 길이는 $6\\mathrm{cm}$, $8\\mathrm{cm}$, $10\\mathrm{cm}$이고 기둥의 높이는 $10\\mathrm{cm}$이다.\n옆넓이는\n$(6+8+10)\\times10=240\\mathrm{cm}^2$이다.\n따라서 겉넓이는\n$48+240=288\\mathrm{cm}^2$이다.\n\n(2) 원뿔의 밑면 반지름은 $5\\mathrm{cm}$, 높이는 $9\\mathrm{cm}$이다.\n부피는\n$\\dfrac13\\pi\\times5^2\\times9=75\\pi\\mathrm{cm}^3$이다.\n\n따라서 (1) $288\\mathrm{cm}^2$, (2) $75\\pi\\mathrm{cm}^3$이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg"
   },
   {
     "id": 20,
@@ -619,11 +652,11 @@ window.questionBank=[
     "image": "assets/images/24_율촌중_2학기_기말_중1_기출/q20.png",
     "content": "[서술형2] 다음은 민수네 반 학생 $28$명의 하루 평균 운동 시간을 조사하여 나타낸 도수분포표이다. 운동 시간이 $30$분 이상 $50$분 미만인 학생 수를 구하시오. [7점]\n(방정식: 3점, 방정식 풀이: 2점, 정답: 2점)",
     "answer": "16명",
-    "solution": "[키포인트] 빈칸의 도수를 $x$로 놓고 전체 도수의 합이 $28$명임을 이용한다.\n정석 풀이: $10$분 이상 $20$분 미만 계급의 도수를 $x$명이라 하면 $30$분 이상 $40$분 미만 계급의 도수는 $3x$명이다. 전체 학생 수가 $28$명이므로 $x+5+3x+4+3=28$이다. 따라서 $4x+12=28$, $4x=16$이므로 $x=4$이다. $30$분 이상 $50$분 미만인 학생 수는 $3x+4=12+4=16$명이다.\n따라서 구하는 값은 $16$명이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 빈칸의 도수를 $x$명으로 놓고 전체 도수의 합이 $28$명임을 이용한다.\n$10$분 이상 $20$분 미만 계급의 도수를 $x$명이라 하면\n$30$분 이상 $40$분 미만 계급의 도수는 $3x$명이다.\n전체 학생 수가 $28$명이므로\n$x+5+3x+4+3=28$\n$4x+12=28$\n$4x=16$\n$x=4$\n따라서 $30$분 이상 $50$분 미만인 학생 수는\n$3x+4=12+4=16$명이다.\n구하는 값은 $16$명이다."
   },
   {
     "id": 21,
@@ -646,11 +679,12 @@ window.questionBank=[
     "image": "assets/images/24_율촌중_2학기_기말_중1_기출/q21.png",
     "content": "[서술형3] 다음 그림과 같이 반지름의 길이가 $3\\rm\\,cm$인 공 $3$개가 원기둥 모양의 통에 꼭 맞게 들어 있다. 이 통 속의 빈 공간의 부피를 구하시오. (단, 통의 두께는 생각하지 않는다.) [7점]\n(각각의 부피: 4점, 정답:3점)",
     "answer": "54π cm³",
-    "solution": "[키포인트] 통의 부피에서 공 $3$개의 부피를 빼면 빈 공간의 부피가 된다.\n조건 정리: 공의 반지름은 $3\\rm\\,cm$이므로 지름은 $6\\rm\\,cm$이다. 공 $3$개가 세로로 꼭 맞게 들어 있으므로 원기둥의 반지름은 $3\\rm\\,cm$, 높이는 $6\\times3=18\\rm\\,cm$이다.\n정석 풀이: 원기둥의 부피는 $\\pi\\times3^2\\times18=162\\pi\\rm\\,cm^3$이다. 공 한 개의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi\\rm\\,cm^3$이므로 공 $3$개의 부피는 $108\\pi\\rm\\,cm^3$이다. 따라서 빈 공간의 부피는 $162\\pi-108\\pi=54\\pi\\rm\\,cm^3$이다.\n따라서 구하는 값은 $54\\pi\\rm\\,cm^3$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 원기둥 모양 통의 부피에서 공 $3$개의 부피를 뺀다.\n공의 반지름은 $3\\mathrm{cm}$이므로 지름은 $6\\mathrm{cm}$이다.\n공 $3$개가 세로로 꼭 맞게 들어 있으므로 원기둥의 반지름은 $3\\mathrm{cm}$, 높이는\n$6\\times3=18\\mathrm{cm}$이다.\n원기둥의 부피는\n$\\pi\\times3^2\\times18=162\\pi\\mathrm{cm}^3$이다.\n공 한 개의 부피는\n$\\dfrac43\\pi\\times3^3=36\\pi\\mathrm{cm}^3$이다.\n공 $3$개의 부피는\n$36\\pi\\times3=108\\pi\\mathrm{cm}^3$이다.\n따라서 빈 공간의 부피는\n$162\\pi-108\\pi=54\\pi\\mathrm{cm}^3$이다.",
+    "solutionImage": "assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -673,10 +707,19 @@ window.questionBank=[
     "image": "assets/images/24_율촌중_2학기_기말_중1_기출/q22.png",
     "content": "[서술형4] 다음은 A 학교와 B 학교 학생들이 $1$년 동안 읽은 책의 수에 대한 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중에서 옳지 않은 것($2$개)을 모두 찾아 바르게 고쳐쓰시오. [7점]\n(보기를 각각 설명: 2점, 2점, 3점)",
     "answer": "ㄴ, ㄷ\nㄴ. 책을 $8$권 이상 $10$권 미만 읽은 학생의 비율은 A 학교가 B 학교보다 더 높다.\nㄷ. B 학교에는 책을 한 권도 읽지 않은 학생이 없다.",
-    "solution": "[키포인트] 각 문장을 그래프의 해당 계급 상대도수와 직접 비교한다.\nㄱ. A 학교에서 $10$권 이상 $12$권 미만 계급의 상대도수는 $0.12$이다. 전체 학생 수가 $100$명이므로 학생 수는 $100\\times0.12=12$명이다. 따라서 ㄱ은 옳다.\nㄴ. $8$권 이상 $10$권 미만 계급에서는 A 학교의 상대도수가 B 학교의 상대도수보다 높다. 따라서 'A 학교가 더 낮다'는 설명은 옳지 않으며, 'A 학교가 B 학교보다 더 높다'로 고쳐야 한다.\nㄷ. B 학교에서 책을 한 권도 읽지 않은 학생이 포함되는 첫 계급의 상대도수는 $0$이다. 따라서 책을 한 권도 읽지 않은 학생이 있다는 설명은 옳지 않으며, 'B 학교에는 책을 한 권도 읽지 않은 학생이 없다'로 고쳐야 한다.\n따라서 옳지 않은 것은 ㄴ, ㄷ이고, 바르게 고치면 'ㄴ. 책을 $8$권 이상 $10$권 미만 읽은 학생의 비율은 A 학교가 B 학교보다 더 높다.', 'ㄷ. B 학교에는 책을 한 권도 읽지 않은 학생이 없다.'이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solution": "[키포인트] 각 문장을 상대도수 그래프의 해당 계급과 직접 비교한다.\nㄱ. A 학교의 $10$권 이상 $12$권 미만 계급의 상대도수는 $0.12$이다.\n전체 학생 수가 $100$명이므로\n$100\\times0.12=12$명이다.\n따라서 ㄱ은 옳다.\n\nㄴ. $8$권 이상 $10$권 미만 계급에서는 A 학교의 상대도수가 B 학교보다 높다.\n따라서 ‘A 학교가 더 낮다’는 설명은 옳지 않고,\n‘A 학교가 B 학교보다 더 높다’로 고쳐야 한다.\n\nㄷ. B 학교에서 책을 한 권도 읽지 않은 학생이 포함되는 첫 계급의 상대도수는 $0$이다.\n따라서 ‘책을 한 권도 읽지 않은 학생이 있다’는 설명은 옳지 않고,\n‘B 학교에는 책을 한 권도 읽지 않은 학생이 없다’로 고쳐야 한다.\n\n따라서 옳지 않은 것은 ㄴ, ㄷ이다.",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CLAIM_AUDIT",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
   }
 ];
