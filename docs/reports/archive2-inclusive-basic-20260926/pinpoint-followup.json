@@ -1,0 +1,62 @@
+{
+  "scope": "pinpoint legacy mixer fail-open and semantic HOLD projector recovery",
+  "baseBranchCommit": "2bdec00d88d348e0aa58b44345ebd25e67e36144",
+  "branch": "codex/archive-inclusive-basic-20260926",
+  "changes": {
+    "mixer": "shared catalog BASIC gate replaces optional runtimeSelectable inference; both pickers require true; all cart entry paths recheck BASIC and current question fingerprint",
+    "projector": "explicit semantic HOLD/ROUTE_OUT is preserved before advanced legacy aggregate projection; confirmed/absent independent semantic verdict still allows advanced aggregate diagnostics to normalize"
+  },
+  "tests": {
+    "relatedSuite": {
+      "pass": 161,
+      "fail": 0,
+      "baselineNavigationHarness": "excluded; already reproduced at original BASE_MAIN_SHA"
+    },
+    "pinpointRegression": {
+      "pass": 21,
+      "fail": 0
+    },
+    "actualChrome": {
+      "catalogRecords": 11269,
+      "basicSelectable": 5086,
+      "drift": {
+        "uid": "qid_v1_9b1de25500ecd4efd2f7e5cbb47f98a125795ca21ce506254d0a6d0c497f3055",
+        "sourceStatus": "HOLD",
+        "runtimeSelectable": false,
+        "selected": 0,
+        "restored": false
+      },
+      "optional": {
+        "uid": "qid_v1_843056fb96d65c01cc887ef99ecbd6053b38c056a36e2e79a15a50df7efba9fc",
+        "difficultyBucket": "UNKNOWN",
+        "basicSelectable": true,
+        "restored": true
+      },
+      "semantic": {
+        "semanticDisposition": "HOLD",
+        "reviewStatus": "HOLD",
+        "basicSelectable": false
+      },
+      "cartCount": 1,
+      "errors": []
+    },
+    "runtimeRebuildCheck": "PASS, changed=[]",
+    "catalogRebuildCheck": "PASS",
+    "syntax": "core/tests and 3 mixer inline scripts PASS"
+  },
+  "production": {
+    "catalogRecords": 11269,
+    "basicSelectable": 5086,
+    "semanticHoldRecords": 54,
+    "existingDataChanged": false
+  },
+  "mainMerged": false,
+  "sourceMutation": 0,
+  "changedFiles": [
+    "archive/archive2-core.js",
+    "archive/mixer.html",
+    "tests/archive2-inclusive-basic.test.cjs",
+    "tests/archive-mixer-basic-gate.test.cjs",
+    "docs/reports/archive2-inclusive-basic-20260926/pinpoint-followup.json"
+  ]
+}

@@ -45,11 +45,14 @@ test('K–R: actual source/solution/semantic/identity/parent/scope defects remai
     assert.equal(core.basicEligibility({...base,...delta}).ok,false,JSON.stringify(delta));
 });
 test('diagnostic migration requires positive evidence and preserves source and independent semantic holds', () => {
-  const polluted={...base,metaFoundationPackId:'H1_FOUNDATION',reviewStatus:'HOLD',semanticDisposition:'HOLD',defaultSelectable:false,holdReasons:['L3_HOLD','L4_HOLD']};
+  const polluted={...base,metaFoundationPackId:'H1_FOUNDATION',reviewStatus:'HOLD',semanticDisposition:'CONFIRMED',legacyAggregateDisposition:'HOLD',defaultSelectable:false,holdReasons:['L3_HOLD','L4_HOLD']};
   const migrated=core.projectBasicEligibility(polluted);
   assert.equal(core.basicEligibility(migrated).ok,true);
   assert.deepEqual(migrated.advancedHoldReasons,['L3_HOLD','L4_HOLD']);
   for(const delta of [{sourceIssueHold:true},{basicSemanticDisposition:'HOLD'},
+    {semanticDisposition:'HOLD'},
+    {semanticDisposition:'HOLD',basicSemanticDisposition:'CONFIRMED'},
+    {reviewStatus:'route_out'},
     {holdReasons:['L3_HOLD','SOURCE_OR_SOLUTION_ISSUE']},{holdReasons:['UNRECOGNIZED_HOLD']},
     {semanticDisposition:'ROUTE_OUT'},{sourceHoldReason:'SOURCE_DRIFT'}])
     assert.equal(core.basicEligibility(core.projectBasicEligibility({...polluted,...delta})).ok,false);
