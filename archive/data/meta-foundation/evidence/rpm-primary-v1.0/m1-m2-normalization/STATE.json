@@ -3,9 +3,9 @@
   "task": "M1-M2 RPM completeness and global ACTIVE crosswalk semantic normalization",
   "baseMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
   "branch": "work/meta-rpm-m1-m2-normalization",
-  "currentStage": "BASELINE_RPM_AND_CROSSWALK_AUDIT_FROZEN",
+  "currentStage": "RPM_COMPLETENESS_REPAIR_FROZEN",
   "initialRpmL4RecordCount": 466,
-  "repairedRpmL4RecordCount": null,
+  "repairedRpmL4RecordCount": 468,
   "scope": [
     "2015/M1-1",
     "2015/M1-2",
@@ -24,18 +24,22 @@
     "ACTIVE_GLOBAL_REGISTRY_INVENTORIED",
     "KNOWN_RHS_RHA_SOURCE_REVIEWED",
     "BASELINE_RPM_RECORD_CENSUS",
-    "BASELINE_CROSSWALK_DENOMINATOR_AND_GLOBAL_ACTIVE_SNAPSHOT"
+    "BASELINE_CROSSWALK_DENOMINATOR_AND_GLOBAL_ACTIVE_SNAPSHOT",
+    "CURRICULUM_SEMANTIC_PAIRING_BASELINE",
+    "2015_M2_2_RHS_RHA_OMISSION_REPAIR",
+    "RPM_MASTER_VIEW_CSV_PACKAGE_MANIFEST_PARITY",
+    "2015_M2_2_RHS_RHA_RPM_PATH_RESTORED",
+    "2015_2022_COURSE_VIEW_AND_MASTER_PARITY_PASS"
   ],
   "remainingStages": [
-    "RPM_OMISSION_REPAIR",
-    "CROSSWALK_SEMANTIC_NORMALIZATION",
+    "CROSSWALK_SEMANTIC_AUDIT_AND_NORMALIZATION",
     "FINAL_RECORD_LEVEL_AUDIT",
     "MIGRATION_GAP_REASSESSMENT",
-    "RESOLVER_RUNTIME_VALIDATION",
+    "RESOLVER_COMPILED_RUNTIME_VALIDATION",
     "REMOTE_PUSH",
     "NOTION_CLOSEOUT"
   ],
-  "lastCompletedItem": "Baseline 466 RPM L4 rows and 466 initial crosswalk rows frozen; pre-existing 2015 M2-2 RHS/RHA count=0; existing 2022 RHS/RHA and 2015 binding recorded.",
-  "nextStartPoint": "Repair the missing 2015 M2-2 right-triangle-congruence L3/L4 path and regenerate views/CSV/package manifests.",
+  "lastCompletedItem": "Restored 2015/M2-2/삼각형의 성질/삼각형의 합동/RHS+RHA; exact 2015 M2-05/M2-05-TRIANGLE_PROPERTIES GLOBAL ACTIVE binding is reused.",
+  "nextStartPoint": "Apply semantic crosswalk decisions to all M1/M2 rows, regenerate ids from the repaired master, then write final 468-row audit ledgers.",
   "hardBlockers": []
 }

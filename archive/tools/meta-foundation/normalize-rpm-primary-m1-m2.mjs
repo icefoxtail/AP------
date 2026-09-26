@@ -71,10 +71,10 @@ function parseView(relative, curriculum, scope) {
     match = line.match(/^### L2-[^.]*(?:\.\d+)?\.\s*(.+?)\s*$/);
     if (match) { midUnit = match[1].trim(); continue; }
     match = line.match(/^#### L3-[^.]*(?:\.\d+)?\.\s*(.+?)\s*$/);
-    if (match) { l3 = match[1].trim(); continue; }
+    if (match) { l3 = match[1].replace(/^\d+\.\s*/, '').trim(); continue; }
     match = line.match(/^-\s+\*\*L4-[^*]+\*\*\s+(.+?)\s*$/);
     if (match) {
-      const value = match[1].replace(/\s+\[RPM_EXTENDED[^\]]*\].*$/, '').trim();
+      const value = match[1].replace(/\s+`?\[RPM_EXTENDED.*$/, '').trim();
       rows.push({ curriculum, scope, majorUnit, midUnit, l3, l4: value });
     }
   }
@@ -241,8 +241,7 @@ function addRhsRhaRecord(master) {
 function repairRpm() {
   const master = readJson(MASTER_PATH);
   const changed = addRhsRhaRecord(master);
-  if (!changed) return { changed: false, message: '2015 RHS/RHA already restored.' };
-  writeJson(MASTER_PATH, master);
+  if (changed) writeJson(MASTER_PATH, master);
 
   const viewPath = `${RPM}/01_2015/MIDDLE/M2-2.md`;
   let view = readText(viewPath);
@@ -266,11 +265,12 @@ function repairRpm() {
 
   const l2Path = `${RPM}/00_POLICY/RPM_L1_L2_MATRIX.csv`;
   let l2Csv = readText(l2Path);
-  const l2Anchor = '2015,middle,M2-2,삼각형의 성질,삼각형의 외심과 내심,RPM_M2_2015,RPM_VERIFIED,RPM_VERIFIED\n';
+  const l2Anchor = '2015,middle,M2-2,사각형의 성질,평행사변형,RPM_M2_2015,RPM_VERIFIED,RPM_VERIFIED\n';
   const l2New = '2015,middle,M2-2,삼각형의 성질,삼각형의 성질,RPM_M2_2015,RPM_VERIFIED,RPM_VERIFIED\n';
-  if (!l2Csv.includes(l2New)) {
-    if (!l2Csv.includes(l2Anchor)) throw new Error('Cannot insert 2015 M2-2 L2 in RPM_L1_L2_MATRIX.csv.');
-    l2Csv = l2Csv.replace(l2Anchor, `${l2New}${l2Anchor}`);
+  if (!l2Csv.includes(l2Anchor)) throw new Error('Cannot locate L1/L2 matrix order anchor for 2015 M2-2.');
+  const normalizedL2Csv = `${l2Csv.replace(l2New, '')}`.replace(l2Anchor, `${l2New}${l2Anchor}`);
+  if (normalizedL2Csv !== l2Csv) {
+    l2Csv = normalizedL2Csv;
     fs.writeFileSync(path.join(ROOT, l2Path), l2Csv, 'utf8');
   }
 
@@ -295,9 +295,10 @@ function repairRpm() {
     counts.L2++;
     for (const l3 of r.concepts || []) {
       counts.L3++;
+      if (String(l3.curriculumApplicability || '').startsWith('RPM_EXTENDED')) counts.extendedMarkedEntries++;
       for (const l4 of l3.problemTypes || []) {
         counts.L4++;
-        if (String(l4.curriculumApplicability || l3.curriculumApplicability || '').startsWith('RPM_EXTENDED')) counts.extendedMarkedEntries++;
+        if (String(l4.curriculumApplicability || '').startsWith('RPM_EXTENDED')) counts.extendedMarkedEntries++;
       }
     }
   }
@@ -310,7 +311,8 @@ function repairRpm() {
   refreshRpmPackageManifest();
   refreshRootRulesManifest();
   const after = readJson(MASTER_PATH);
-  return { changed: true, addedRecords: 1, addedL3: 1, addedL4: 2, counts: { records: after.records.length, ...counts }, masterSha256: fileSha(MASTER_PATH) };
+  return { changed, addedRecords: changed ? 1 : 0, addedL3: changed ? 1 : 0, addedL4: changed ? 2 : 0,
+    counts: { records: after.records.length, ...counts }, masterSha256: fileSha(MASTER_PATH) };
 }
 
 function refreshRpmPackageManifest() {
@@ -322,7 +324,19 @@ function refreshRpmPackageManifest() {
     const buffer = fs.readFileSync(abs);
     return { ...item, bytes: buffer.length, sha256: sha256(buffer) };
   });
-  writeJson(manifestPath, manifest);
+  const files = manifest.files.map(item => `    {"path":${JSON.stringify(item.path)},"bytes":${item.bytes},"sha256":${JSON.stringify(item.sha256)}}`).join(',\n');
+  const rendered = [
+    '{',
+    `  "schemaVersion": ${JSON.stringify(manifest.schemaVersion)},`,
+    `  "authorityStatus": ${JSON.stringify(manifest.authorityStatus)},`,
+    `  "package": ${JSON.stringify(manifest.package)},`,
+    '  "files": [',
+    files,
+    '  ]',
+    '}',
+    '',
+  ].join('\n');
+  fs.writeFileSync(path.join(ROOT, manifestPath), rendered, 'utf8');
 }
 
 function refreshRootRulesManifest() {
@@ -334,6 +348,77 @@ function refreshRootRulesManifest() {
   if (!pattern.test(content)) throw new Error('Root rules MANIFEST lacks RPM canonical master entry.');
   content = content.replace(pattern, row);
   fs.writeFileSync(path.join(ROOT, manifestPath), content, 'utf8');
+}
+
+function refreshDerivedStatsAndManifests() {
+  const master = readJson(MASTER_PATH);
+  const l1Keys = new Set();
+  let l3 = 0;
+  let l4 = 0;
+  for (const block of master.records) {
+    l1Keys.add(`${block.curriculum}|${block.level}|${block.scope}|${block.majorUnit}`);
+    l3 += (block.concepts || []).length;
+    for (const concept of block.concepts || []) l4 += (concept.problemTypes || []).length;
+  }
+  const statsPath = `${RPM}/STATS.json`;
+  const stats = readJson(statsPath);
+  Object.assign(stats, { L1: l1Keys.size, L2: master.records.length, L3: l3, L4: l4 });
+  writeJson(statsPath, stats);
+  refreshRpmPackageManifest();
+  refreshRootRulesManifest();
+  return { L1: l1Keys.size, L2: master.records.length, L3: l3, L4: l4, masterSha256: fileSha(MASTER_PATH) };
+}
+
+function validateRpmSources() {
+  const master = readJson(MASTER_PATH);
+  const rows = flattenMaster(master);
+  const errors = [];
+  const viewErrors = viewMismatch(rows);
+  if (viewErrors.length) errors.push(`RPM_MASTER_VIEW_PARITY:${viewErrors.length}`);
+  const semanticKeys = rows.map(row => `${row.curriculum}|${row.scope}|${row.majorUnit}|${row.midUnit}|${row.l3}|${row.l4}`);
+  const duplicateKeys = semanticKeys.filter((key, index) => semanticKeys.indexOf(key) !== index);
+  if (duplicateKeys.length) errors.push(`RPM_DUPLICATE_SEMANTIC_TUPLE:${duplicateKeys.length}`);
+
+  const l2Csv = readText(`${RPM}/00_POLICY/RPM_L1_L2_MATRIX.csv`).trimEnd().split(/\r?\n/).slice(1);
+  const matrixL2 = new Set(l2Csv.map(line => line.split(',').slice(0, 8).join('|')));
+  const masterL2 = new Set(master.records.map(row => [row.curriculum, row.level, row.scope, row.majorUnit, row.midUnit, row.rpmSource, row.majorStatus, row.midStatus].join('|')));
+  if (matrixL2.size !== l2Csv.length || matrixL2.size !== masterL2.size || [...masterL2].some(key => !matrixL2.has(key))) errors.push('RPM_L1_L2_MATRIX_PARITY');
+
+  const l4Csv = readText(`${RPM}/00_POLICY/L1_L4_CANONICAL_DRAFT_MATRIX.csv`).trimEnd().split(/\r?\n/).slice(1);
+  const matrixL4 = new Set(l4Csv.map(line => line.split(',').slice(0, 14).join('|')));
+  const masterL4 = new Set();
+  for (const row of master.records) for (const concept of row.concepts || []) for (const leaf of concept.problemTypes || []) {
+    masterL4.add([row.curriculum, row.level, row.scope, row.majorUnit, row.midUnit, concept.concept, leaf.problemType,
+      row.majorStatus, row.midStatus, concept.status, leaf.status, leaf.curriculumApplicability,
+      leaf.defaultSelectable ? 'True' : 'False', row.rpmSource].join('|'));
+  }
+  if (matrixL4.size !== l4Csv.length || matrixL4.size !== masterL4.size || [...masterL4].some(key => !matrixL4.has(key))) errors.push('RPM_L1_L4_MATRIX_PARITY');
+
+  const stats = readJson(`${RPM}/STATS.json`);
+  const distinctL1 = new Set(master.records.map(row => `${row.curriculum}|${row.level}|${row.scope}|${row.majorUnit}`)).size;
+  const totalL3 = master.records.reduce((sum, row) => sum + (row.concepts || []).length, 0);
+  const totalL4 = masterL4.size;
+  if (stats.L1 !== distinctL1 || stats.L2 !== master.records.length || stats.L3 !== totalL3 || stats.L4 !== totalL4) errors.push('RPM_STATS_PARITY');
+  const packageManifest = readJson(`${RPM}/MANIFEST.json`);
+  const manifestErrors = [];
+  for (const entry of packageManifest.files || []) {
+    const file = path.join(ROOT, RPM, entry.path);
+    if (!fs.existsSync(file)) { manifestErrors.push(`MISSING:${entry.path}`); continue; }
+    const bytes = fs.readFileSync(file);
+    if (bytes.length !== entry.bytes || sha256(bytes) !== entry.sha256) manifestErrors.push(`HASH:${entry.path}`);
+  }
+  if (manifestErrors.length) errors.push(`RPM_PACKAGE_MANIFEST:${manifestErrors.length}`);
+  const masterBytes = fs.readFileSync(path.join(ROOT, MASTER_PATH));
+  const rootManifest = readText('docs/rules/MANIFEST.md');
+  if (!rootManifest.includes(`${masterBytes.length} bytes | sha256 ${sha256(masterBytes)}`)) errors.push('ROOT_RULES_MANIFEST_MASTER_HASH_MISMATCH');
+
+  const rhs = rows.filter(row => row.curriculum === '2015' && row.scope === 'M2-2' && row.l3 === '직각삼각형의 합동');
+  if (rhs.length !== 2 || new Set(rhs.map(row => row.l4)).size !== 2 || !rhs.some(row => row.l4 === 'RHS') || !rhs.some(row => row.l4 === 'RHA')) errors.push('KNOWN_RHS_RHA_2015_REGRESSION');
+  return { status: errors.length ? 'FAIL' : 'PASS', errors, rows: rows.length, masterRecordCount: master.records.length,
+    l1: distinctL1, l2: master.records.length, l3: totalL3, l4: totalL4,
+    viewCount: CURRICULA.length * SCOPE_ORDER.length, viewMismatchCount: viewErrors.length,
+    duplicateSemanticTupleCount: duplicateKeys.length, packageManifestEntryCount: packageManifest.files.length,
+    knownRhsRha2015Rows: rhs.map(row => ({ scope: row.scope, l3: row.l3, l4: row.l4 })) };
 }
 
 function loadBaselineIndex() {
@@ -541,7 +626,17 @@ function main() {
       globalActivePackCount: result.global.activePacks.length }, null, 2));
     return;
   }
-  throw new Error('Usage: normalize-rpm-primary-m1-m2.mjs --snapshot-baseline | --repair-rpm | --normalize-crosswalk');
+  if (command === '--refresh-derived-stats-and-manifests') {
+    console.log(JSON.stringify({ status: 'PASS', ...refreshDerivedStatsAndManifests() }, null, 2));
+    return;
+  }
+  if (command === '--validate-rpm') {
+    const result = validateRpmSources();
+    console.log(JSON.stringify(result, null, 2));
+    if (result.status !== 'PASS') process.exitCode = 1;
+    return;
+  }
+  throw new Error('Usage: normalize-rpm-primary-m1-m2.mjs --snapshot-baseline | --repair-rpm | --normalize-crosswalk | --refresh-derived-stats-and-manifests');
 }
 
 main();
