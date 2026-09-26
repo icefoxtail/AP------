@@ -1,0 +1,78 @@
+{
+  "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-log/visual.svg",
+  "witness": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-log/witness.json",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 164.0,
+    "originY": 195.5,
+    "sx": 66.0,
+    "sy": 54.5,
+    "aspectPolicy": "UNEQUAL_UNIT_DECLARED",
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "factId": "P",
+      "type": "POINT",
+      "element": "P",
+      "expected": [
+        1,
+        0
+      ]
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "FUNCTION_GRAPH",
+      "prefix": "g",
+      "expression": [
+        "log",
+        "x"
+      ],
+      "poles": [
+        0
+      ]
+    }
+  ],
+  "expectedLabels": [
+    {
+      "id": "coord",
+      "visible": [
+        "(1,0)",
+        "P: (1,0)"
+      ]
+    },
+    {
+      "id": "equation",
+      "visible": "f(x)=log(x)",
+      "powers": []
+    }
+  ]
+}

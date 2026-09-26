@@ -1,0 +1,285 @@
+{
+  "phase": "PHASE_13_FULL_REGRESSION_QUALIFICATION",
+  "attempt": "phase-13-attempt-01",
+  "status": "FAIL",
+  "gateFailure": {
+    "command": "diff-check",
+    "error": "/manifest.json:68: trailing whitespace.\n+    \"svg\": \"archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-sin/visual.svg\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:69: trailing whitespace.\n+    \"staticInput\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-sin/static-input.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:70: trailing whitespace.\n+    \"status\": \"CANDIDATE_REQUIRES_QA\"\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:71: trailing whitespace.\n+  },\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:72: trailing whitespace.\n+  {\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:73: trailing whitespace.\n+    \"id\": \"graph-cos\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:74: trailing whitespace.\n+    \"spec\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-cos/spec.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:75: trailing whitespace.\n+    \"svg\": \"archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-cos/visual.svg\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:76: trailing whitespace.\n+    \"staticInput\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-cos/static-input.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:77: trailing whitespace.\n+    \"status\": \"CANDIDATE_REQUIRES_QA\"\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:78: trailing whitespace.\n+  },\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:79: trailing whitespace.\n+  {\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:80: trailing whitespace.\n+    \"id\": \"graph-tan\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:81: trailing whitespace.\n+    \"spec\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-tan/spec.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:82: trailing whitespace.\n+    \"svg\": \"archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-tan/visual.svg\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:83: trailing whitespace.\n+    \"staticInput\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-tan/static-input.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:84: trailing whitespace.\n+    \"status\": \"CANDIDATE_REQUIRES_QA\"\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:85: trailing whitespace.\n+  },\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:86: trailing whitespace.\n+  {\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:87: trailing whitespace.\n+    \"id\": \"graph-segmented\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:88: trailing whitespace.\n+    \"spec\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-segmented/spec.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:89: trailing whitespace.\n+    \"svg\": \"archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-segmented/visual.svg\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:90: trailing whitespace.\n+    \"staticInput\": \"archive/_generated/geometry-visual-engine/upgrade-v1/fixtures/graph-segmented/static-input.json\",\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:91: trailing whitespace.\n+    \"status\": \"CANDIDATE_REQUIRES_QA\"\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:92: trailing whitespace.\n+  }\narchive/_generated/geometry-visual-engine/upgrade-v1/fixtures/manifest.json:93: trailing whitespace.\n+]\n"
+  },
+  "commands": [
+    {
+      "command": "python -c import json,py_compile; from pathlib import Path; root=Path('archive/tools/geometry-equation/visual_engine'); modules=sorted(root.glob('*.py')); extra=[Path('archive/tools/geometry-equation/tests/build_visual_fixtures.py'),Path('archive/tools/geometry-equation/tests/test_regression.py')]; files=modules+extra; [py_compile.compile(str(p),doraise=True) for p in files]; print(json.dumps({'engineModules':len(modules),'compiled':len(files),'files':[str(p).replace('\\\\','/') for p in files]}))",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-compile-python-modules.stdout.txt",
+      "stderr": "phase-13-attempt-01-compile-python-modules.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_*.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-python-regression-suite.stdout.txt",
+      "stderr": "phase-13-attempt-01-python-regression-suite.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-visual-engine-static.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-static-verifier.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-static-verifier.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-visual-extra-primitives.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-extra-primitives-verifier.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-extra-primitives-verifier.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-rendered-layout.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-rendered-layout-verifier.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-rendered-layout-verifier.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-rendered-layout-test.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-rendered-layout-test.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-static-verifier-test.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-static-verifier-test.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-coordinate-parity-test.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-coordinate-parity-test.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-check-rendered-fixture-runner.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-check-rendered-fixture-runner.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-node-regression-suite.stdout.txt",
+      "stderr": "phase-13-attempt-01-node-regression-suite.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/tests/build_visual_fixtures.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-build-visual-fixtures.stdout.txt",
+      "stderr": "phase-13-attempt-01-build-visual-fixtures.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --evidence-tag phase-13-attempt-01",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-rendered-fixture-browser-run.stdout.txt",
+      "stderr": "phase-13-attempt-01-rendered-fixture-browser-run.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/verify-visual-determinism.py --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-visual-determinism.stdout.txt",
+      "stderr": "phase-13-attempt-01-visual-determinism.stderr.txt"
+    },
+    {
+      "command": "python archive/tools/geometry-equation/freeze-visual-baseline.py --verify",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-13-attempt-01-baseline-verify.stdout.txt",
+      "stderr": "phase-13-attempt-01-baseline-verify.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 2,
+      "status": "FAIL",
+      "stdout": "phase-13-attempt-01-diff-check.stdout.txt",
+      "stderr": "phase-13-attempt-01-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 15,
+    "commandsPassed": 14,
+    "engineModulesCompiled": 14,
+    "compiledPythonFiles": 16,
+    "pythonTests": 77,
+    "pythonPassed": 77,
+    "nodeTests": 27,
+    "nodePassed": 27,
+    "nodeFailed": 0,
+    "fixturesBuilt": 13,
+    "fixturesUnresolved": 0,
+    "determinismCases": 13,
+    "protectedFiles": 4493,
+    "productionMutationCount": 0
+  },
+  "renderSummary": {
+    "status": "PASS",
+    "runtime": "playwright-chromium",
+    "synthetic": false,
+    "maxRelayoutPasses": 3,
+    "rows": [
+      {
+        "id": "circle-source",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "885eefc140a57bd657cf96d8d18f160e80f679d8ae628286437c35e340d7743e",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "circle-cluster",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "c1828db81ae5fe006f5eb23018a40ea6950e244d156c537be617045e810a5589",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-quadratic",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "48adc468317190c1628c73cf8da0ee7358b472b0fad0b9a5fe07dddcb105ccf0",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-cubic",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "4237254952312cc119ab563e3684de8e16a24e9df6e77bd369f30493d2ea61ed",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-quartic",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "bdb6f6839fb59dd719f231a8158d19f585727c7bcbcaf3c6cf7e8db7f3f5e898",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-rational",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "04517360d207be612ad3df8bf9da8a1ace78bd71162b554370146945868aaffa",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-radical",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "12ddcb0e04fd7827672d6fe4cd8db21840f32c956be72ed4f1b79ecb1de6b469",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-exp",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "9a813d4d4b5c499efcc831530bf2170db3b0c5989f0f58656bd0598985da8c14",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-log",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "a7971c96eafb0dfb01194dff1a645d2452a6312385906a74ee761fac6a9b346b",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-sin",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "68ce85b9fbec2f8b171135ced54ce19096752089d48038bddbb00f3d99ae502f",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-cos",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "4b04b4d4d5196a20b9745e557388c1080181d87faf69a86cef4b2612e7c276ea",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-tan",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "285a69b00d1716c4e9aa86fbc617201720a99dcef9dc2444eaf2cb7c0181a57e",
+        "errors": [],
+        "staticErrors": []
+      },
+      {
+        "id": "graph-segmented",
+        "status": "PASS",
+        "attempt": 0,
+        "svgSha256": "4b5cd1153cd54691db41596f50e3379f4afe9da2e3b6c5f0d45e7c8d54537738",
+        "errors": [],
+        "staticErrors": []
+      }
+    ]
+  },
+  "renderMetrics": {
+    "captureCount": 26,
+    "desktopCaptures": 13,
+    "mobileCaptures": 13,
+    "browserVersions": [
+      "153.0.8010.53"
+    ],
+    "hardRenderedCollision": 0,
+    "clipping": 0,
+    "missingGlyphCount": 0,
+    "labelCollisionCount": 0,
+    "overflowCount": 0,
+    "captureFailures": 0,
+    "maxRelayoutPasses": 3
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/__init__.py": "f6346fb2944efc4ccca3af788d78695b6f645e2ac8abcbe2163c5d50dee672dc",
+    "archive/tools/geometry-equation/visual_engine/config.py": "8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268",
+    "archive/tools/geometry-equation/visual_engine/differential.py": "a411299279d12dbef321177cf15a7fe4b00c8c2f1cda5bb26455017fbd715b0c",
+    "archive/tools/geometry-equation/visual_engine/engine.py": "9a43d7e4eb542d197fc8fd171353ff2f223ce15bfba5151040d8a303eb61d529",
+    "archive/tools/geometry-equation/visual_engine/entrypoints.py": "a7d36ad12aaa93e5a572c9f99d75a5736dbe8e1a8df545444409c23cb8612cc9",
+    "archive/tools/geometry-equation/visual_engine/function_sampling.py": "476787521e82b336476782fdfa7f2e54c15b930efdb2860ae0ec62c146293e2a",
+    "archive/tools/geometry-equation/visual_engine/geometry_model.py": "0f03acf264bef55b7ba1e07078e53acba5cf0272d8e1309749b38ffd6c925160",
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "2aadf65f89c523c5c0717b8db185b54ad1f9410c3d6a7f4b4f0e1ecda30d7b1e",
+    "archive/tools/geometry-equation/visual_engine/math_expression.py": "e9af8c019a55c4dddb19949db984876ebaa26bb41b2e31dd3bbfdac5b8b1e0f9",
+    "archive/tools/geometry-equation/visual_engine/semantic_model.py": "0ca10433e7b5201ecdae9c7db7fec9d4cc6cede7b78fd121c2746a98957cbe59",
+    "archive/tools/geometry-equation/visual_engine/style_tokens.py": "069804bdf537721af5f4036152c0bca1e134194f7de445c24592d4daa7a574d2",
+    "archive/tools/geometry-equation/visual_engine/svg_composer.py": "4640e0e1c017195ba59494295220dc35258039b8b30ad0e5c5326a7cc6be937d",
+    "archive/tools/geometry-equation/visual_engine/tikz_adapter.py": "73f0536539f89e9972bee4885179280892d17ffa705da5e6d639b8ad0b23cc4d",
+    "archive/tools/geometry-equation/visual_engine/viewport.py": "24a218c13f229df0c36e1bde4452c6d05cbe1b9339523c1a6c11bfb19c13a094",
+    "archive/tools/geometry-equation/tests/build_visual_fixtures.py": "37462f1b822c1d2847f36ee982b4ef5a9e9bee1aa4e9eb7c5d3aa52cd466617b",
+    "archive/tools/geometry-equation/tests/test_regression.py": "f6e35c655ad376e45846a14c64453d2bd2d9aa11fc988eb67916ca6e46cdfb50",
+    "archive/tools/geometry-equation/verify-visual-engine-static.mjs": "0ccb430ca228aae42fe961674624f32c2eebfb3a84bd0f85697ce9e7152d9748",
+    "archive/tools/geometry-equation/verify-visual-extra-primitives.mjs": "b02fabee9a36e5cef94c3758916e69a0522188839d3865ec057692c6424e2cfa",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "c0465c1e758b4562a25312c3cd1abcd94f526e7279a31fd657ead1593e604318",
+    "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs": "73225a00582184a23d7173186ceac181b30f67ce6dd520d03161a323b0fe6075",
+    "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs": "ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e",
+    "archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs": "c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a",
+    "archive/tools/geometry-equation/verify-visual-determinism.py": "ed82c09adbc768b57399751f727d375218836aa7e458a8d65a6ec427a838e3f7"
+  }
+}

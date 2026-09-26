@@ -1,6 +1,7 @@
 """Deterministic bounded label layout; approximate boxes cannot grant FINAL."""
 from dataclasses import dataclass,asdict
 import math
+import html
 from .geometry_model import finite
 
 DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
@@ -77,10 +78,11 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
     for label in sorted(labels,key=lambda v:(v.get('priority',2),v['id'])):
         priority=label.get('priority',2)
         if not isinstance(priority,int) or not 0<=priority<=4:raise ValueError('INVALID_LABEL_PRIORITY')
-        w,h=measurements.get(label['id'],approximate_size(label['text'],label.get('font',13.25)))
+        w,h=measurements.get(label['id'],approximate_size(label.get('layoutText',label['text']),label.get('font',13.25)))
         w,h=finite(w),finite(h);chosen=None;method=None
-        for gap in (12,8,20,32,48):
-            for direction in DIRECTIONS:
+        preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in DIRECTIONS if v!=preferred)
+        for gap in label.get('gaps',(12,8,20,32,48)):
+            for direction in directions:
                 box=candidate(label['at'],w,h,direction,gap)
                 if safe_area.contains(box) and not any(collision(box,o) for o in occupied):
                     chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
@@ -95,7 +97,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None):
             for row in range(0,int(panel.height),24):
                 box=Box(panel.x,panel.y+row,pw,ph)
                 if panel.contains(box) and safe_area.contains(box) and not any(collision(box,o) for o in occupied):
-                    chosen=box;method='SIDE_PANEL';label={**label,'text':text};break
+                    chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue

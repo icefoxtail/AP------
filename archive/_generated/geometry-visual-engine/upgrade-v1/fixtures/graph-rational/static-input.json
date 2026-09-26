@@ -1,0 +1,79 @@
+{
+  "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-rational/visual.svg",
+  "witness": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-rational/witness.json",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 230.0,
+    "originY": 250.0,
+    "sx": 66.0,
+    "sy": 43.6,
+    "aspectPolicy": "UNEQUAL_UNIT_DECLARED",
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "factId": "P",
+      "type": "POINT",
+      "element": "P",
+      "expected": [
+        1,
+        1
+      ]
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "FUNCTION_GRAPH",
+      "prefix": "g",
+      "expression": [
+        "/",
+        1,
+        "x"
+      ],
+      "poles": [
+        0
+      ]
+    }
+  ],
+  "expectedLabels": [
+    {
+      "id": "coord",
+      "visible": [
+        "(1,1)",
+        "P: (1,1)"
+      ]
+    },
+    {
+      "id": "equation",
+      "visible": "f(x)=1/x",
+      "powers": []
+    }
+  ]
+}

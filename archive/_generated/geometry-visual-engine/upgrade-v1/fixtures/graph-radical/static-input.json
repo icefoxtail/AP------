@@ -1,0 +1,76 @@
+{
+  "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-radical/visual.svg",
+  "witness": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-radical/witness.json",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 164.0,
+    "originY": 359.0,
+    "sx": 66.0,
+    "sy": 109.0,
+    "aspectPolicy": "UNEQUAL_UNIT_DECLARED",
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "factId": "P",
+      "type": "POINT",
+      "element": "P",
+      "expected": [
+        0,
+        0
+      ]
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "FUNCTION_GRAPH",
+      "prefix": "g",
+      "expression": [
+        "sqrt",
+        "x"
+      ],
+      "poles": []
+    }
+  ],
+  "expectedLabels": [
+    {
+      "id": "coord",
+      "visible": [
+        "(0,0)",
+        "P: (0,0)"
+      ]
+    },
+    {
+      "id": "equation",
+      "visible": "f(x)=√(x)",
+      "powers": []
+    }
+  ]
+}

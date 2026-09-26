@@ -28,16 +28,23 @@ export function displayedMath(svg,expected) {
   for(const m of svg.matchAll(/<text\b([^>]*)>([\s\S]*?)<\/text>/g)) {
     const id=m[1].match(/\bid="([^"]+)"/)?.[1];
     const kind=m[1].match(/data-label-kind="([^"]+)"/)?.[1];
-    const visible=decode(m[2].replace(/<[^>]*>/g,''));
-    const powers=[...m[2].matchAll(/<tspan\b[^>]*baseline-shift="super"[^>]*>([\s\S]*?)<\/tspan>/g)].map(v=>decode(v[1].replace(/<[^>]*>/g,'')));
-    if(id)actual.set(id,{visible,powers,kind});
+    const tree={children:[]};const stack=[tree];
+    for(const token of m[2].match(/<[^>]*>|[^<]+/g)||[]) {
+      if(token.startsWith('</')){if(stack.length>1)stack.pop();}
+      else if(token.startsWith('<')){const n={super:/baseline-shift="super"/.test(token),children:[]};stack.at(-1).children.push(n);if(!token.endsWith('/>'))stack.push(n);}
+      else stack.at(-1).children.push(decode(token));
+    }
+    const visibleText=n=>typeof n==='string'?n:n.children.map(visibleText).join('');
+    const visible=visibleText(tree);const powers=[];
+    const walk=n=>{if(typeof n==='string')return;if(n.super)powers.push(visibleText(n));n.children.forEach(walk);};walk(tree);
+    if(id)actual.set(id,{visible,powers,kind,math:/data-math="true"/.test(m[1])});
   }
   for(const row of expected||[]) {
     const value=actual.get(row.id);const visible=Array.isArray(row.visible)?row.visible:[row.visible];const pass=value&&visible.includes(value.visible)&&JSON.stringify(value.powers)===JSON.stringify(row.powers||[]);
     rows.push({id:row.id,status:pass?'PASS':'FAIL',observed:value});if(!pass)errors.push('DISPLAYED_MATH_PARITY_FAIL:'+row.id);
   }
   const covered=new Set((expected||[]).map(v=>v.id));
-  for(const [id,v] of actual)if(['EQUATION_LABEL','LENGTH_LABEL','COORDINATE_LABEL'].includes(v.kind)&&!covered.has(id))errors.push('DISPLAY_EXPECTATION_MISSING:'+id);
+  for(const [id,v] of actual)if((['EQUATION_LABEL','LENGTH_LABEL','COORDINATE_LABEL'].includes(v.kind)||(v.kind==='CONDITION_BOX'&&v.math))&&!covered.has(id))errors.push('DISPLAY_EXPECTATION_MISSING:'+id);
   if(new Set((expected||[]).map(v=>v.id)).size!==(expected||[]).length)errors.push('DUPLICATE_DISPLAY_EXPECTATION');
   return {status:errors.length?'FAIL':'PASS',rows,errors};
 }
@@ -61,7 +68,7 @@ export function verifyVisualEngineStatic({root=process.cwd(),input}) {
     if(n)errors.push('ITEM_REVIEW_UNRESOLVED');
   }
   return {status:errors.length?'FAIL':'PASS',gate:'STATIC_GATE',svgSha256:sha256(svg),
-    STATIC_GATE_PASS:!errors.length,MATH_PARITY_PASS:checks.actual.svgMathStatus==='PASS'&&checks.extra.status==='PASS',SEMANTIC_PARITY_PASS:checks.actual.expectedObservedParity==='PASS',DISPLAYED_MATH_PARITY_PASS:checks.display.status==='PASS',checks,errors};
+    STATIC_GATE_PASS:!errors.length,MATH_PARITY_PASS:checks.actual.svgMathStatus==='PASS'&&checks.extra.status==='PASS',SEMANTIC_PARITY_PASS:checks.actual.expectedObservedParity==='PASS'&&checks.extra.status==='PASS',DISPLAYED_MATH_PARITY_PASS:checks.display.status==='PASS',checks,errors};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {

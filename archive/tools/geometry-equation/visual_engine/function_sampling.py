@@ -62,10 +62,12 @@ def constraints(tree):
 def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
     tree=parse(expression);lo,hi=point(domain)
     if lo>=hi or not 1<=max_depth<=16:raise ValueError('INVALID_SAMPLING_CONFIG')
-    guards=constraints(tree);cuts=[lo,hi,*[finite(x) for x in breaks if lo<x<hi]];critical=list(critical_x)
+    guards=constraints(tree);cuts=[lo,hi,*[finite(x) for x in breaks if lo<x<hi]];hard_cuts=set(breaks);critical=list(critical_x)
     for kind,n in guards:
         if kind in {'denominator','log','sqrt'}:
-            try:cuts.extend(roots(polynomial(n),lo,hi))
+            try:
+                hits=roots(polynomial(n),lo,hi);cuts.extend(hits)
+                if kind!='sqrt':hard_cuts.update(hits)
             except ValueError:pass
     try:
         p=polynomial(tree)
@@ -76,7 +78,9 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
     def at(x):
         if x in cache:return cache[x]
         try:
-            y=finite(float(evaluate(tree,{'x':x})));signature=[]
+            value=evaluate(tree,{'x':x})
+            if isinstance(value,(bool,tuple,complex)):raise ValueError('NONSCALAR_GRAPH')
+            y=finite(float(value));signature=[]
             for kind,n in guards:
                 z=finite(float(evaluate(n,{'x':x})))
                 if kind=='denominator':
@@ -129,7 +133,7 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
         if len(current)>1:branches.append(current)
     for index,(l,r) in enumerate(zip(cuts,cuts[1:])):
         eps=max(1e-10,(r-l)*1e-9)
-        start=l+(eps if l!=lo else 0);end=r-(eps if r!=hi else 0)
+        start=l+(eps if l in hard_cuts else 0);end=r-(eps if r in hard_cuts else 0)
         count=max(300 if guards else 200,math.ceil(viewport.plotWidth/(1 if guards else 1.5)))
         positions=sorted(set([start+(end-start)*i/count for i in range(count+1)]+[x for x in critical if start<=x<=end]))
         raw=[]
@@ -148,6 +152,7 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
             if p is not None and viewport.yMin<=p[1]<=viewport.yMax:extra[x]=p[:2]
         dense.append([extra[x] for x in sorted(extra)])
     branches=dense
+    if not branches:warnings.append({'code':'NO_VISIBLE_BRANCH'})
     return {'branches':branches,'sampleCount':sum(map(len,branches)),'branchCount':len(branches),
         'adaptive':True,'screenSpaceChordErrorPx':max_error,'warnings':warnings,'domainCuts':cuts,
         'criticalX':sorted(set(critical)),'status':'POLISH_REQUIRED' if warnings else 'PASS'}

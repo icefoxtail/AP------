@@ -1,0 +1,96 @@
+{
+  "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-quartic/visual.svg",
+  "witness": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-quartic/witness.json",
+  "sourceFactStatus": "PASS",
+  "expectedFactStatus": "PASS",
+  "coordinateModel": {
+    "originX": 230.0,
+    "originY": 339.7647058823529,
+    "sx": 66.0,
+    "sy": 25.647058823529413,
+    "aspectPolicy": "UNEQUAL_UNIT_DECLARED",
+    "anchors": {
+      "origin": {
+        "type": "INTERSECTION",
+        "elements": [
+          "x-axis",
+          "y-axis"
+        ],
+        "expected": [
+          0,
+          0
+        ]
+      },
+      "xAxis": {
+        "element": "model-x-unit",
+        "expected": [
+          1,
+          0
+        ]
+      },
+      "yAxis": {
+        "element": "model-y-unit",
+        "expected": [
+          0,
+          1
+        ]
+      }
+    }
+  },
+  "expectedFacts": [
+    {
+      "factId": "P",
+      "type": "POINT",
+      "element": "P",
+      "expected": [
+        0,
+        4
+      ]
+    }
+  ],
+  "extraFacts": [
+    {
+      "type": "FUNCTION_GRAPH",
+      "prefix": "g",
+      "expression": [
+        "+",
+        [
+          "-",
+          [
+            "^",
+            "x",
+            4
+          ],
+          [
+            "*",
+            5,
+            [
+              "^",
+              "x",
+              2
+            ]
+          ]
+        ],
+        4
+      ],
+      "poles": []
+    }
+  ],
+  "expectedLabels": [
+    {
+      "id": "coord",
+      "visible": [
+        "(0,4)",
+        "P: (0,4)"
+      ]
+    },
+    {
+      "id": "equation",
+      "visible": "f(x)=x4−5x2+4",
+      "powers": [
+        "4",
+        "2"
+      ]
+    }
+  ]
+}

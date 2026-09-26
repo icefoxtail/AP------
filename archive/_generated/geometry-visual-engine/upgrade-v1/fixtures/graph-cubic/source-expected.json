@@ -1,0 +1,95 @@
+{
+  "points": {
+    "A": [
+      1,
+      -3
+    ],
+    "B": [
+      -2,
+      0
+    ]
+  },
+  "extraFacts": [
+    {
+      "type": "FUNCTION_GRAPH",
+      "prefix": "g",
+      "expression": [
+        "-",
+        [
+          "^",
+          "x",
+          3
+        ],
+        [
+          "*",
+          4,
+          "x"
+        ]
+      ],
+      "poles": []
+    }
+  ],
+  "labels": [
+    {
+      "id": "coord",
+      "visible": [
+        "(1,−3)",
+        "A: (1,−3)"
+      ]
+    },
+    {
+      "id": "equation",
+      "visible": "y=x3−4x",
+      "powers": [
+        "3"
+      ]
+    },
+    {
+      "id": "coordB",
+      "visible": [
+        "(−2,0)",
+        "B: (−2,0)"
+      ]
+    },
+    {
+      "id": "equationA",
+      "visible": "y=−x−2"
+    },
+    {
+      "id": "equationB",
+      "visible": "y=8x+16"
+    }
+  ],
+  "lineFacts": [
+    {
+      "factId": "slope",
+      "type": "LINE_SLOPE",
+      "element": "tangent",
+      "expected": -1
+    },
+    {
+      "factId": "intercept",
+      "type": "INTERCEPT",
+      "element": "tangent",
+      "expected": {
+        "x": -2,
+        "y": -2
+      }
+    },
+    {
+      "factId": "slopeB",
+      "type": "LINE_SLOPE",
+      "element": "tangentB",
+      "expected": 8
+    },
+    {
+      "factId": "interceptB",
+      "type": "INTERCEPT",
+      "element": "tangentB",
+      "expected": {
+        "x": -2,
+        "y": 16
+      }
+    }
+  ]
+}

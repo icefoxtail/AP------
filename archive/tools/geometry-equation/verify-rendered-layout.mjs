@@ -61,6 +61,7 @@ export function analyzeRenderedLayout(capture) {
     }
   }
   const missingGlyphCount=capture.labels.reduce((s,v)=>s+v.missingGlyphCount,0);
+  for(const g of capture.geometry){if(!contains(capture.svg,g.client)){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
   return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,
     labelCollisionCount,criticalCollisionCount,clippedTextCount,overflowCount,missingGlyphCount,errors,

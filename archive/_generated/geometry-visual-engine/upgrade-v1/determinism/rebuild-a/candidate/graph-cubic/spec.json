@@ -1,0 +1,137 @@
+{
+  "sourceFacts": {
+    "independentFactHash": "code-regression-source-freeze-v1"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "id": "graph-cubic",
+  "title": "함수와 핵심 점",
+  "visualType": "function_graph",
+  "viewport": {
+    "xMin": -3,
+    "xMax": 3,
+    "yMin": -16,
+    "yMax": 16
+  },
+  "objects": [
+    {
+      "id": "g",
+      "kind": "FUNCTION_GRAPH",
+      "expression": "x^3-4x",
+      "domain": [
+        -3,
+        3
+      ],
+      "breaks": [],
+      "criticalX": [
+        1
+      ]
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "at": [
+        1,
+        -3
+      ],
+      "priority": 0,
+      "name": "A"
+    },
+    {
+      "id": "coord",
+      "kind": "COORDINATE_LABEL",
+      "target": "A",
+      "exact": [
+        "1",
+        "-3"
+      ]
+    },
+    {
+      "id": "equation",
+      "kind": "EQUATION_LABEL",
+      "text": "y=x^3-4x",
+      "at": [
+        1.9500000000000002,
+        13.6
+      ]
+    },
+    {
+      "id": "B",
+      "kind": "POINT",
+      "at": [
+        -2,
+        0
+      ],
+      "priority": 0
+    },
+    {
+      "id": "coordB",
+      "kind": "COORDINATE_LABEL",
+      "target": "B",
+      "exact": [
+        "-2",
+        "0"
+      ]
+    },
+    {
+      "id": "tangent",
+      "kind": "LINE",
+      "coefficients": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "t",
+      "kind": "TANGENT",
+      "refs": [
+        "tangent",
+        "g"
+      ],
+      "at": [
+        1,
+        -3
+      ]
+    },
+    {
+      "id": "tangentB",
+      "kind": "LINE",
+      "coefficients": [
+        -8,
+        1,
+        -16
+      ]
+    },
+    {
+      "id": "tB",
+      "kind": "TANGENT",
+      "refs": [
+        "tangentB",
+        "g"
+      ],
+      "at": [
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "equationA",
+      "kind": "EQUATION_LABEL",
+      "text": "y=-x-2",
+      "at": [
+        2.7,
+        -4.7
+      ]
+    },
+    {
+      "id": "equationB",
+      "kind": "EQUATION_LABEL",
+      "text": "y=8x+16",
+      "at": [
+        -0.4,
+        12.8
+      ]
+    }
+  ]
+}

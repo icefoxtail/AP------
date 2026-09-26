@@ -4,8 +4,8 @@
   "publicationAuthorized": false,
   "classification": "STANDARD",
   "visualSpecSha256": "48496579f6f04fe2599114526376e4e2c60876fd47ed8d87d711f30bb273215b",
-  "normalizedSvgSha256": "0549f9863db437c373b23c18364aeb7eaef3471700dd64d4ce15bd743c657867",
-  "texSha256": "d2348675b4f4ac2f3a41df04585936e4ea4713856a8477c43f64118436d99314",
+  "normalizedSvgSha256": "b267f127913175f310753017d45d2f386f8e5444cd446b1d4c7f0b0d5c41c9a5",
+  "texSha256": "a305ab7a5bea21dc01de43c6c6e36789fcb505490715dd14ea34a3737b2f033e",
   "coordinateModel": {
     "originX": 230.0,
     "originY": 250.0,
@@ -55,6 +55,9 @@
         ],
         "text": "(−1,1)",
         "panelText": "C: (−1,1)",
+        "panelPrefix": "C: ",
+        "markup": "(−1,1)",
+        "math": true,
         "box": {
           "x": 156.74,
           "y": 212.5,
@@ -80,17 +83,18 @@
         "markup": "(<tspan font-style=\"italic\">x</tspan>+1)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>+(<tspan font-style=\"italic\">y</tspan>−1)<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>=2<tspan baseline-shift=\"super\" font-size=\"70%\">2</tspan>",
         "sourceMath": "(x+1)^2+(y-1)^2=2^2",
         "math": true,
+        "layoutText": "(x+1)2+(y−1)2=22",
         "box": {
-          "x": 341.0,
+          "x": 257.72,
           "y": 69.25,
-          "width": 222.75,
+          "width": 142.56,
           "height": 20.25
         },
         "baseline": [
-          341.0,
+          257.72,
           85.45
         ],
-        "placement": "AUTO_NE"
+        "placement": "AUTO_N"
       },
       {
         "id": "axis-x",
@@ -139,6 +143,238 @@
           57.85
         ],
         "placement": "AUTO_E"
+      },
+      {
+        "id": "tick-x--1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          131.0,
+          250.0
+        ],
+        "text": "−2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 123.41,
+          "y": 224.75,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          123.41,
+          238.55
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x--2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          32.0,
+          250.0
+        ],
+        "text": "−4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 40.0,
+          "y": 224.75,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          40.0,
+          238.55
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-x-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          329.0,
+          250.0
+        ],
+        "text": "2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 325.205,
+          "y": 224.75,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          325.205,
+          238.55
+        ],
+        "placement": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x-2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "x-axis",
+        "at": [
+          428.0,
+          250.0
+        ],
+        "text": "4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "S",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 436.0,
+          "y": 258.0,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          436.0,
+          271.8
+        ],
+        "placement": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "tick-y--1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          230.0,
+          349.0
+        ],
+        "text": "−2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 238.0,
+          "y": 323.75,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          238.0,
+          337.55
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y--2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          230.0,
+          448.0
+        ],
+        "text": "−4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 238.0,
+          "y": 422.75,
+          "width": 15.180000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          238.0,
+          436.55
+        ],
+        "placement": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-1-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          230.0,
+          151.0
+        ],
+        "text": "2",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 238.0,
+          "y": 142.375,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          238.0,
+          156.175
+        ],
+        "placement": "COORDINATE_RELOCATION_E"
+      },
+      {
+        "id": "tick-y-2-label",
+        "kind": "GRAPH_ANNOTATION",
+        "target": "y-axis",
+        "at": [
+          230.0,
+          52.0
+        ],
+        "text": "4",
+        "font": 11.5,
+        "priority": 4,
+        "allowSuppress": true,
+        "preferred": "W",
+        "gaps": [
+          8,
+          12
+        ],
+        "box": {
+          "x": 214.41,
+          "y": 60.0,
+          "width": 7.590000000000001,
+          "height": 17.25
+        },
+        "baseline": [
+          214.41,
+          73.8
+        ],
+        "placement": "COORDINATE_RELOCATION_SW"
       }
     ],
     "suppressed": [],
@@ -154,7 +390,7 @@
       },
       {
         "id": "equation",
-        "fallback": "AUTO_NE"
+        "fallback": "AUTO_N"
       },
       {
         "id": "axis-x",
@@ -163,6 +399,38 @@
       {
         "id": "axis-y",
         "fallback": "AUTO_E"
+      },
+      {
+        "id": "tick-x--1-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x--2-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-x-1-label",
+        "fallback": "COORDINATE_RELOCATION_N"
+      },
+      {
+        "id": "tick-x-2-label",
+        "fallback": "COORDINATE_RELOCATION_SE"
+      },
+      {
+        "id": "tick-y--1-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y--2-label",
+        "fallback": "COORDINATE_RELOCATION_NE"
+      },
+      {
+        "id": "tick-y-1-label",
+        "fallback": "COORDINATE_RELOCATION_E"
+      },
+      {
+        "id": "tick-y-2-label",
+        "fallback": "COORDINATE_RELOCATION_SW"
       }
     ],
     "status": "PASS",

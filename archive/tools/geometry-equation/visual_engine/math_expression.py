@@ -48,7 +48,9 @@ class Parser:
             self.expect(')')
             left=self.node('tuple' if len(rows)>1 else 'group',args=rows)
         elif token[0].isdigit():left=self.node('number',token)
-        elif token.isalpha() and token!='EOF':left=self.node('symbol',token)
+        elif token.isalpha() and token!='EOF':
+            if token in FUNCTIONS and self.peek()!='(':raise ValueError('FUNCTION_CALL_REQUIRED')
+            left=self.node('symbol',token)
         else:raise ValueError('UNEXPECTED_MATH_TOKEN:'+token)
         while True:
             op=self.peek()
@@ -87,11 +89,15 @@ def serialize(node,mode='tex'):
     if k=='number':return node.value
     if k=='symbol':
         if mode=='svg':return '<tspan font-style="italic">'+escape(node.value)+'</tspan>'
-        return node.value
+        return {'π':r'\pi','α':r'\alpha','β':r'\beta','θ':r'\theta'}.get(node.value,node.value) if mode=='tex' else node.value
     if k=='group':return '('+s(a[0])+')'
     if k=='tuple':return '('+','.join(s(v) for v in a)+')'
     if k=='unary':return ('−' if node.value=='-' and mode!='tex' else node.value)+s(a[0])
     if k in {'prime','subscript'}:
+        if k=='prime':
+            base=node;count=0
+            while base.kind=='prime':count+=1;base=base.args[0]
+            return s(base)+('^{'+r'\prime'*count+'}' if mode=='tex' else '′'*count)
         tail='′' if k=='prime' else s(a[1])
         if mode=='tex':return s(a[0])+('^{\\prime}' if k=='prime' else '_{'+tail+'}')
         if mode=='svg' and k=='subscript':return s(a[0])+'<tspan baseline-shift="sub" font-size="70%">'+tail+'</tspan>'
@@ -99,6 +105,7 @@ def serialize(node,mode='tex'):
     if k=='call':
         name=a[0].value if a[0].kind=='symbol' else ''
         if name=='sqrt':return ('\\sqrt{'+s(a[1])+'}') if mode=='tex' else '√('+s(a[1])+')'
+        if name=='abs' and mode=='tex':return r'\left|'+s(a[1])+r'\right|'
         fn=('\\'+name) if mode=='tex' and name in FUNCTIONS else (escape(name) if name in FUNCTIONS else s(a[0]))
         return fn+'('+','.join(s(v) for v in a[1:])+')'
     if k=='binary':
@@ -109,7 +116,7 @@ def serialize(node,mode='tex'):
             return s(left)+'^('+s(right)+')'
         if op=='/':
             if mode=='tex':return '\\frac{'+s(left)+'}{'+s(right)+'}'
-            return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
+            return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript','unary'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
         mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠'}
         return s(left)+escape(mapped.get(op,op))+s(right)
     raise ValueError('UNKNOWN_AST_NODE')

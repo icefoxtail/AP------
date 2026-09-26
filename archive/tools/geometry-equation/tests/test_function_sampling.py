@@ -24,7 +24,8 @@ class SamplingTests(unittest.TestCase):
         for expr in ('log(x)','sqrt(x)'):
             r=sample(expr,[-2,3],v)
             self.assertTrue(r['branches'])
-            self.assertTrue(all(p[0]>0 for b in r['branches'] for p in b))
+            self.assertTrue(all(p[0]>=0 if expr=='sqrt(x)' else p[0]>0 for b in r['branches'] for p in b))
+            if expr=='sqrt(x)':self.assertEqual(r['branches'][0][0],(0,0))
     def test_tan_branch_signature(self):
         v=Viewport(-4,4,-10,10,equal=False);r=sample('tan(x)',[-4,4],v)
         self.assertGreaterEqual(r['branchCount'],3)

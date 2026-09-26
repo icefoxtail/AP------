@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "gate": "STATIC_GATE",
+  "svgSha256": "48adc468317190c1628c73cf8da0ee7358b472b0fad0b9a5fe07dddcb105ccf0",
+  "STATIC_GATE_PASS": true,
+  "MATH_PARITY_PASS": true,
+  "SEMANTIC_PARITY_PASS": true,
+  "DISPLAYED_MATH_PARITY_PASS": true,
+  "checks": {
+    "structural": {
+      "status": "PASS",
+      "errors": []
+    },
+    "actual": {
+      "schemaVersion": "APMATH_SVG_COORDINATE_PARITY_EVIDENCE_v1",
+      "questionId": null,
+      "svg": "archive/_generated/geometry-visual-engine/upgrade-v1/candidate/graph-quadratic/visual.svg",
+      "svgSha256": "sha256:48adc468317190c1628c73cf8da0ee7358b472b0fad0b9a5fe07dddcb105ccf0",
+      "sourceFactStatus": "PASS",
+      "expectedFactStatus": "PASS",
+      "coordinateModel": {
+        "originX": 230,
+        "originY": 428.3636363636364,
+        "sx": 66,
+        "sy": 39.63636363636363,
+        "aspectPolicy": "UNEQUAL_UNIT_DECLARED",
+        "anchors": {
+          "origin": {
+            "type": "INTERSECTION",
+            "elements": [
+              "x-axis",
+              "y-axis"
+            ],
+            "expected": [
+              0,
+              0
+            ]
+          },
+          "xAxis": {
+            "element": "model-x-unit",
+            "expected": [
+              1,
+              0
+            ]
+          },
+          "yAxis": {
+            "element": "model-y-unit",
+            "expected": [
+              0,
+              1
+            ]
+          }
+        }
+      },
+      "expectedFactCount": 1,
+      "observedFactCount": 1,
+      "factParityPassCount": 1,
+      "coordinateModelParity": "PASS",
+      "coordinateModelAnchors": [
+        {
+          "role": "origin",
+          "type": "INTERSECTION",
+          "element": [
+            "x-axis",
+            "y-axis"
+          ],
+          "expected": [
+            0,
+            0
+          ],
+          "observed": [
+            0,
+            0
+          ],
+          "delta": [
+            0,
+            0
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "role": "xAxis",
+          "type": "POINT",
+          "element": "model-x-unit",
+          "expected": [
+            1,
+            0
+          ],
+          "observed": [
+            1,
+            0
+          ],
+          "delta": [
+            0,
+            0
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        },
+        {
+          "role": "yAxis",
+          "type": "POINT",
+          "element": "model-y-unit",
+          "expected": [
+            0,
+            1
+          ],
+          "observed": [
+            0,
+            1.0000000000068807
+          ],
+          "delta": [
+            0,
+            6.88071821741687e-12
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        }
+      ],
+      "tolerancePolicy": {
+        "maxTolerance": 0.05,
+        "defaultTolerance": 0.000001,
+        "status": "PASS"
+      },
+      "elementExtractionStatus": "PASS",
+      "observedFactStatus": "PASS",
+      "expectedObservedParity": "PASS",
+      "facts": [
+        {
+          "factId": "P",
+          "type": "POINT",
+          "element": "P",
+          "expected": [
+            0,
+            0
+          ],
+          "observed": [
+            0,
+            0
+          ],
+          "delta": [
+            0,
+            0
+          ],
+          "tolerance": 0.000001,
+          "result": "PASS",
+          "reason": null
+        }
+      ],
+      "svgMathStatus": "PASS",
+      "renderResult": "NOT_TESTED",
+      "svgFinalStatus": "FAIL",
+      "failures": []
+    },
+    "extra": {
+      "status": "PASS",
+      "observed": [
+        {
+          "id": "g-branch-0",
+          "sampleCount": 265
+        }
+      ],
+      "errors": []
+    },
+    "display": {
+      "status": "PASS",
+      "rows": [
+        {
+          "id": "coord",
+          "status": "PASS",
+          "observed": {
+            "visible": "(0,0)",
+            "powers": [],
+            "kind": "COORDINATE_LABEL",
+            "math": true
+          }
+        },
+        {
+          "id": "equation",
+          "status": "PASS",
+          "observed": {
+            "visible": "f(x)=x2",
+            "powers": [
+              "2"
+            ],
+            "kind": "EQUATION_LABEL",
+            "math": true
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  "errors": []
+}

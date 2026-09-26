@@ -23,6 +23,7 @@ def draft(prepared,layout):
         else:raise ValueError('TIKZ_UNSUPPORTED_PRIMITIVE')
     for label in layout['labels']:
         if label.get('sourceMath'):content='$'+serialize(parse(label['sourceMath']))+'$'
+        elif label.get('renderedLines'):content=r'\shortstack[l]{'+r'\\'.join('$'+serialize(parse(v['text']))+'$' if v['math'] else text(v['text']) for v in label['renderedLines'])+'}'
         elif label.get('lines'):content=r'\shortstack[l]{'+r'\\'.join(text(v) for v in label['lines'])+'}'
         else:content=text(label['text'])
         rows.append(r'\node[anchor=base west] at '+coord(label['baseline'])+' {'+content+'};')

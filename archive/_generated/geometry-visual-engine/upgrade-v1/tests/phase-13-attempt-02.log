@@ -1,0 +1,92 @@
+phase=PHASE_13_TARGETED_EOL_REPAIR_QUALIFICATION
+attempt=phase-13-attempt-02
+status=PASS
+counts commands=7/7 fixtures=13 unresolved=0 static=13 determinism=13 reuse=True captures=26 shaMismatches=0 missing=0 mutations=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/tests/build_visual_fixtures.py =====
+--- stdout ---
+{"fixtures": 13, "unresolved": 0}
+
+--- stderr ---
+
+===== PASS exit=0 node --input-type=module -e import fs from 'node:fs';import path from 'node:path';import {verifyVisualEngineStatic} from './archive/tools/geometry-equation/verify-visual-engine-static.mjs';const root=process.cwd();const run='archive/_generated/geometry-visual-engine/upgrade-v1';const manifest=JSON.parse(fs.readFileSync(path.join(root,run,'fixtures/manifest.json'),'utf8'));const rows=manifest.map(item=>{const input=JSON.parse(fs.readFileSync(path.join(root,item.staticInput),'utf8'));const result=verifyVisualEngineStatic({root,input});return{id:item.id,status:result.status,errors:result.errors}});const result={status:rows.every(x=>x.status==='PASS')?'PASS':'FAIL',cases:rows.length,rows};console.log(JSON.stringify(result));if(result.status!=='PASS')process.exitCode=1; =====
+--- stdout ---
+{"status":"PASS","cases":13,"rows":[{"id":"circle-source","status":"PASS","errors":[]},{"id":"circle-cluster","status":"PASS","errors":[]},{"id":"graph-quadratic","status":"PASS","errors":[]},{"id":"graph-cubic","status":"PASS","errors":[]},{"id":"graph-quartic","status":"PASS","errors":[]},{"id":"graph-rational","status":"PASS","errors":[]},{"id":"graph-radical","status":"PASS","errors":[]},{"id":"graph-exp","status":"PASS","errors":[]},{"id":"graph-log","status":"PASS","errors":[]},{"id":"graph-sin","status":"PASS","errors":[]},{"id":"graph-cos","status":"PASS","errors":[]},{"id":"graph-tan","status":"PASS","errors":[]},{"id":"graph-segmented","status":"PASS","errors":[]}]}
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/verify-visual-determinism.py --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+--- stdout ---
+{"status": "PASS", "cases": 13}
+
+--- stderr ---
+
+===== PASS exit=0 python -c 
+import hashlib,json
+from pathlib import Path
+run=Path('archive/_generated/geometry-visual-engine/upgrade-v1')
+tag='phase-13-attempt-01'
+manifest=json.loads((run/'fixtures/manifest.json').read_text(encoding='utf-8'))
+summary=json.loads((run/'rendered-bbox'/tag/'summary.json').read_text(encoding='utf-8'))
+rows={x['id']:x for x in summary.get('rows',[])}
+mismatches=[];missing=[];bad=[];capture_count=0
+for item in manifest:
+    row=rows.get(item['id'],{})
+    svg=Path(item['svg'])
+    digest=hashlib.sha256(svg.read_bytes()).hexdigest() if svg.is_file() else None
+    if not digest or digest!=row.get('svgSha256'):
+        mismatches.append({'fixture':item['id'],'candidateSha256':digest,'attempt01Sha256':row.get('svgSha256')})
+    folder=run/'rendered-bbox'/tag/item['id']/f"attempt-{row.get('attempt',0)}"
+    for viewport in ('desktop','mobile'):
+        jp=folder/f'{viewport}.json';png=folder/f'{viewport}.png';capture_count+=1
+        if not jp.is_file() or not png.is_file():
+            missing.append({'fixture':item['id'],'viewport':viewport,'jsonExists':jp.is_file(),'pngExists':png.is_file()})
+        else:
+            capture=json.loads(jp.read_text(encoding='utf-8'))
+            if digest!=capture.get('svgSha256') or capture.get('status')!='PASS':
+                bad.append({'fixture':item['id'],'viewport':viewport,'status':capture.get('status'),'sha256Matches':digest==capture.get('svgSha256')})
+result={'summaryStatus':summary.get('status'),'fixtures':len(manifest),'summaryRows':len(rows),'capturePairs':capture_count,'shaMismatches':mismatches,'missingCaptures':missing,'badCaptures':bad,'captureReusePass':summary.get('status')=='PASS' and len(manifest)==13 and len(rows)==13 and capture_count==26 and not mismatches and not missing and not bad}
+print(json.dumps(result))
+ =====
+--- stdout ---
+{"summaryStatus": "PASS", "fixtures": 13, "summaryRows": 13, "capturePairs": 26, "shaMismatches": [], "missingCaptures": [], "badCaptures": [], "captureReusePass": true}
+
+--- stderr ---
+
+===== PASS exit=0 python archive/tools/geometry-equation/freeze-visual-baseline.py --verify =====
+--- stdout ---
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+--- stderr ---
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/__init__.py f6346fb2944efc4ccca3af788d78695b6f645e2ac8abcbe2163c5d50dee672dc
+archive/tools/geometry-equation/visual_engine/config.py 8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268
+archive/tools/geometry-equation/visual_engine/differential.py a411299279d12dbef321177cf15a7fe4b00c8c2f1cda5bb26455017fbd715b0c
+archive/tools/geometry-equation/visual_engine/engine.py 9a43d7e4eb542d197fc8fd171353ff2f223ce15bfba5151040d8a303eb61d529
+archive/tools/geometry-equation/visual_engine/entrypoints.py a7d36ad12aaa93e5a572c9f99d75a5736dbe8e1a8df545444409c23cb8612cc9
+archive/tools/geometry-equation/visual_engine/function_sampling.py 476787521e82b336476782fdfa7f2e54c15b930efdb2860ae0ec62c146293e2a
+archive/tools/geometry-equation/visual_engine/geometry_model.py 0f03acf264bef55b7ba1e07078e53acba5cf0272d8e1309749b38ffd6c925160
+archive/tools/geometry-equation/visual_engine/label_layout.py 2aadf65f89c523c5c0717b8db185b54ad1f9410c3d6a7f4b4f0e1ecda30d7b1e
+archive/tools/geometry-equation/visual_engine/math_expression.py e9af8c019a55c4dddb19949db984876ebaa26bb41b2e31dd3bbfdac5b8b1e0f9
+archive/tools/geometry-equation/visual_engine/semantic_model.py 0ca10433e7b5201ecdae9c7db7fec9d4cc6cede7b78fd121c2746a98957cbe59
+archive/tools/geometry-equation/visual_engine/style_tokens.py 069804bdf537721af5f4036152c0bca1e134194f7de445c24592d4daa7a574d2
+archive/tools/geometry-equation/visual_engine/svg_composer.py 4640e0e1c017195ba59494295220dc35258039b8b30ad0e5c5326a7cc6be937d
+archive/tools/geometry-equation/visual_engine/tikz_adapter.py 73f0536539f89e9972bee4885179280892d17ffa705da5e6d639b8ad0b23cc4d
+archive/tools/geometry-equation/visual_engine/viewport.py 24a218c13f229df0c36e1bde4452c6d05cbe1b9339523c1a6c11bfb19c13a094
+archive/tools/geometry-equation/tests/build_visual_fixtures.py c1820fcaec7a3d21b8a5ccf8a7b480f03b10b6dcd7b2f46a0c600887b3a0434a
+archive/tools/geometry-equation/tests/test_regression.py f6e35c655ad376e45846a14c64453d2bd2d9aa11fc988eb67916ca6e46cdfb50
+archive/tools/geometry-equation/verify-visual-determinism.py ed82c09adbc768b57399751f727d375218836aa7e458a8d65a6ec427a838e3f7
+archive/tools/geometry-equation/verify-visual-engine-static.mjs 0ccb430ca228aae42fe961674624f32c2eebfb3a84bd0f85697ce9e7152d9748
+archive/tools/geometry-equation/verify-visual-extra-primitives.mjs b02fabee9a36e5cef94c3758916e69a0522188839d3865ec057692c6424e2cfa
+archive/tools/geometry-equation/verify-rendered-layout.mjs c0465c1e758b4562a25312c3cd1abcd94f526e7279a31fd657ead1593e604318
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a

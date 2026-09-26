@@ -1,0 +1,54 @@
+{
+  "id": "special-regression",
+  "title": "중심과 반지름",
+  "visualType": "line_circle_geometry",
+  "viewport": {
+    "xMin": -4,
+    "xMax": 4,
+    "yMin": -4,
+    "yMax": 4
+  },
+  "sourceFacts": {
+    "independentFactHash": "frozen"
+  },
+  "derivedFacts": {},
+  "displayFacts": {},
+  "objects": [
+    {
+      "id": "C",
+      "kind": "POINT",
+      "at": [
+        -1,
+        1
+      ],
+      "priority": 0
+    },
+    {
+      "id": "circle",
+      "kind": "CIRCLE",
+      "center": [
+        -1,
+        1
+      ],
+      "radius": 2
+    },
+    {
+      "id": "C-coordinate",
+      "kind": "COORDINATE_LABEL",
+      "target": "C",
+      "exact": [
+        "-1",
+        "1"
+      ]
+    },
+    {
+      "id": "equation",
+      "kind": "EQUATION_LABEL",
+      "text": "(x+1)^2+(y-1)^2=2^2",
+      "at": [
+        2,
+        3
+      ]
+    }
+  ]
+}
