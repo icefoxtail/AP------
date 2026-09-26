@@ -1,0 +1,21 @@
+test_clipping_boundary (test_function_sampling.SamplingTests.test_clipping_boundary) ... ok
+test_exp_sin_cos_and_finite (test_function_sampling.SamplingTests.test_exp_sin_cos_and_finite) ... ok
+test_log_sqrt_domains (test_function_sampling.SamplingTests.test_log_sqrt_domains) ... ok
+test_piecewise_segment_breaks (test_function_sampling.SamplingTests.test_piecewise_segment_breaks) ... ok
+test_polynomials_and_critical_points (test_function_sampling.SamplingTests.test_polynomials_and_critical_points) ... FAIL
+test_rational_poles (test_function_sampling.SamplingTests.test_rational_poles) ... ok
+test_tan_branch_signature (test_function_sampling.SamplingTests.test_tan_branch_signature) ... ok
+test_viewport_policy (test_function_sampling.SamplingTests.test_viewport_policy) ... ok
+
+======================================================================
+FAIL: test_polynomials_and_critical_points (test_function_sampling.SamplingTests.test_polynomials_and_critical_points)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\USER\.codex\worktrees\geometry-visual-engine-upgrade\archive\tools\geometry-equation\tests\test_function_sampling.py", line 13, in test_polynomials_and_critical_points
+    self.assertGreater(r['sampleCount'],200)
+AssertionError: 185 not greater than 200
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.108s
+
+FAILED (failures=1)

@@ -1,0 +1,31 @@
+phase=PHASE_04_FUNCTION_SAMPLING_VIEWPORT attempt=2 status=PASS counts commands=4/4 tests=8 passed=8 failed=0 errors=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/function_sampling.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/viewport.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_function_sampling.py -v =====
+--- stdout ---
+--- stderr ---
+test_clipping_boundary (test_function_sampling.SamplingTests.test_clipping_boundary) ... ok
+test_exp_sin_cos_and_finite (test_function_sampling.SamplingTests.test_exp_sin_cos_and_finite) ... ok
+test_log_sqrt_domains (test_function_sampling.SamplingTests.test_log_sqrt_domains) ... ok
+test_piecewise_segment_breaks (test_function_sampling.SamplingTests.test_piecewise_segment_breaks) ... ok
+test_polynomials_and_critical_points (test_function_sampling.SamplingTests.test_polynomials_and_critical_points) ... ok
+test_rational_poles (test_function_sampling.SamplingTests.test_rational_poles) ... ok
+test_tan_branch_signature (test_function_sampling.SamplingTests.test_tan_branch_signature) ... ok
+test_viewport_policy (test_function_sampling.SamplingTests.test_viewport_policy) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.182s
+
+OK
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/function_sampling.py CFF045BD127FBACF7845C5748AA6EFD3A637BD26F39A39810BE6DD838C890283
+archive/tools/geometry-equation/visual_engine/viewport.py 24A218C13F229DF0C36E1BDE4452C6D05CBE1B9339523C1A6C11BFB19C13A094
+archive/tools/geometry-equation/tests/test_function_sampling.py 921639DF5642F186BE0286F52014EF48FAAD401F386611569B92D0164E4399AD

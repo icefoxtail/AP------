@@ -1,0 +1,49 @@
+{
+  "phase": "PHASE_04_FUNCTION_SAMPLING_VIEWPORT",
+  "attempt": 2,
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/function_sampling.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-attempt-02-pycompile-function-sampling.stdout.txt",
+      "stderr": "phase-04-attempt-02-pycompile-function-sampling.stderr.txt"
+    },
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/viewport.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-attempt-02-pycompile-viewport.stdout.txt",
+      "stderr": "phase-04-attempt-02-pycompile-viewport.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_function_sampling.py -v",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-attempt-02-function-sampling-unittest.stdout.txt",
+      "stderr": "phase-04-attempt-02-function-sampling-unittest.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-attempt-02-diff-check.stdout.txt",
+      "stderr": "phase-04-attempt-02-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 4,
+    "commandsPassed": 4,
+    "tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/function_sampling.py": "CFF045BD127FBACF7845C5748AA6EFD3A637BD26F39A39810BE6DD838C890283",
+    "archive/tools/geometry-equation/visual_engine/viewport.py": "24A218C13F229DF0C36E1BDE4452C6D05CBE1B9339523C1A6C11BFB19C13A094",
+    "archive/tools/geometry-equation/tests/test_function_sampling.py": "921639DF5642F186BE0286F52014EF48FAAD401F386611569B92D0164E4399AD"
+  },
+  "priorAttempt": "phase-04.json/phase-04.log preserved with original failure evidence"
+}

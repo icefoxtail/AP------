@@ -1,0 +1,41 @@
+phase=PHASE_04_FUNCTION_SAMPLING_VIEWPORT status=FAIL counts commands=3/4 tests=8 passed=7 failed=1 errors=0
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/function_sampling.py =====
+--- stdout ---
+--- stderr ---
+===== PASS exit=0 python -m py_compile archive/tools/geometry-equation/visual_engine/viewport.py =====
+--- stdout ---
+--- stderr ---
+===== FAIL exit=1 python -m unittest discover -s archive/tools/geometry-equation/tests -p test_function_sampling.py -v =====
+--- stdout ---
+--- stderr ---
+test_clipping_boundary (test_function_sampling.SamplingTests.test_clipping_boundary) ... ok
+test_exp_sin_cos_and_finite (test_function_sampling.SamplingTests.test_exp_sin_cos_and_finite) ... ok
+test_log_sqrt_domains (test_function_sampling.SamplingTests.test_log_sqrt_domains) ... ok
+test_piecewise_segment_breaks (test_function_sampling.SamplingTests.test_piecewise_segment_breaks) ... ok
+test_polynomials_and_critical_points (test_function_sampling.SamplingTests.test_polynomials_and_critical_points) ... FAIL
+test_rational_poles (test_function_sampling.SamplingTests.test_rational_poles) ... ok
+test_tan_branch_signature (test_function_sampling.SamplingTests.test_tan_branch_signature) ... ok
+test_viewport_policy (test_function_sampling.SamplingTests.test_viewport_policy) ... ok
+
+======================================================================
+FAIL: test_polynomials_and_critical_points (test_function_sampling.SamplingTests.test_polynomials_and_critical_points)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\USER\.codex\worktrees\geometry-visual-engine-upgrade\archive\tools\geometry-equation\tests\test_function_sampling.py", line 13, in test_polynomials_and_critical_points
+    self.assertGreater(r['sampleCount'],200)
+AssertionError: 185 not greater than 200
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.108s
+
+FAILED (failures=1)
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+--- stderr ---
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/function_sampling.py 124B9AEB59A6DE9D53599A2E52A86BCE924277C68E9F6838A4AB3A6F436F326C
+archive/tools/geometry-equation/visual_engine/viewport.py 24A218C13F229DF0C36E1BDE4452C6D05CBE1B9339523C1A6C11BFB19C13A094
+archive/tools/geometry-equation/tests/test_function_sampling.py 921639DF5642F186BE0286F52014EF48FAAD401F386611569B92D0164E4399AD
+failedTest=test_polynomials_and_critical_points file=archive/tools/geometry-equation/tests/test_function_sampling.py:13 assertion sampleCount > 200 actual=185
+

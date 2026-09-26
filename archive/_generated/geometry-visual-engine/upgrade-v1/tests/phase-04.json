@@ -1,0 +1,55 @@
+{
+  "phase": "PHASE_04_FUNCTION_SAMPLING_VIEWPORT",
+  "status": "FAIL",
+  "commands": [
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/function_sampling.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-pycompile-function-sampling.stdout.txt",
+      "stderr": "phase-04-pycompile-function-sampling.stderr.txt"
+    },
+    {
+      "command": "python -m py_compile archive/tools/geometry-equation/visual_engine/viewport.py",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-pycompile-viewport.stdout.txt",
+      "stderr": "phase-04-pycompile-viewport.stderr.txt"
+    },
+    {
+      "command": "python -m unittest discover -s archive/tools/geometry-equation/tests -p test_function_sampling.py -v",
+      "exitCode": 1,
+      "status": "FAIL",
+      "stdout": "phase-04-function-sampling-unittest.stdout.txt",
+      "stderr": "phase-04-function-sampling-unittest.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-04-diff-check.stdout.txt",
+      "stderr": "phase-04-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 4,
+    "commandsPassed": 3,
+    "tests": 8,
+    "passed": 7,
+    "failed": 1,
+    "errors": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/function_sampling.py": "124B9AEB59A6DE9D53599A2E52A86BCE924277C68E9F6838A4AB3A6F436F326C",
+    "archive/tools/geometry-equation/visual_engine/viewport.py": "24A218C13F229DF0C36E1BDE4452C6D05CBE1B9339523C1A6C11BFB19C13A094",
+    "archive/tools/geometry-equation/tests/test_function_sampling.py": "921639DF5642F186BE0286F52014EF48FAAD401F386611569B92D0164E4399AD"
+  },
+  "failedTests": [
+    {
+      "name": "test_polynomials_and_critical_points",
+      "file": "archive/tools/geometry-equation/tests/test_function_sampling.py",
+      "line": 13,
+      "assertion": "sampleCount > 200; actual=185"
+    }
+  ]
+}
