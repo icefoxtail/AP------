@@ -26,11 +26,16 @@ window.questionBank = [
       "$28\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 같은 원에서 호의 길이는 그 호에 대한 중심각의 크기에 비례한다.\n조건 정리: 중심각 $40^\\circ$에 대한 호의 길이가 $10\\rm\\,cm$이고, $x$에 해당하는 중심각은 $80^\\circ$이다.\n풀이 방향: 중심각의 비 $40:80=1:2$를 호의 길이의 비에 그대로 적용한다.\n정석 풀이: $10:x=40:80$이므로 $x=10\\times\\dfrac{80}{40}=20$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "같은 원에서 호의 길이는 중심각의 크기에 비례한다.\n중심각 $40^\\circ$에 대한 호의 길이가 $10\\rm\\,cm$이고, $x$에 해당하는 중심각은 $80^\\circ$이다.\n$10:x=40:80$\n$x=10\\times\\dfrac{80}{40}=20$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q1-solution.svg"
   },
   {
     "id": 2,
@@ -57,11 +62,16 @@ window.questionBank = [
       "$25\\pi$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 부채꼴의 호의 길이와 넓이는 모두 중심각이 전체 $360^\\circ$에서 차지하는 비율을 이용한다.\n조건 정리: 반지름은 $6\\rm\\,cm$, 중심각은 $150^\\circ$이다.\n풀이 방향: 먼저 호의 길이 $x$와 넓이 $y$를 각각 구한 뒤 더한다.\n정석 풀이: $x=2\\pi\\times6\\times\\dfrac{150}{360}=5\\pi$이다. 또 $y=\\pi\\times6^2\\times\\dfrac{150}{360}=15\\pi$이다. 따라서 $x+y=5\\pi+15\\pi=20\\pi$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "반지름이 $6\\rm\\,cm$, 중심각이 $150^\\circ$인 부채꼴이다.\n호의 길이는\n$x=2\\pi\\times6\\times\\dfrac{150}{360}=5\\pi$\n넓이는\n$y=\\pi\\times6^2\\times\\dfrac{150}{360}=15\\pi$\n따라서 $x+y=20\\pi$이므로 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q2-solution.svg"
   },
   {
     "id": 3,
@@ -85,11 +95,15 @@ window.questionBank = [
       "면의 모양이 정삼각형인 정다면체는 정사면체, 정팔면체, 정이십면체이다."
     ],
     "answer": "④",
-    "solution": "[키포인트] 정다면체는 모든 면이 합동인 정다각형이고, 각 꼭짓점에 모이는 면의 개수도 모두 같아야 한다.\n조건 정리: 정다면체는 정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체의 5가지이다.\n풀이 방향: 각 설명이 정다면체의 정의와 성질에 맞는지 확인한다.\n정석 풀이: ①은 맞고, 정사면체의 모서리는 6개이므로 ②도 맞다. 정육면체의 한 꼭짓점에는 3개의 면이 모이므로 ③도 맞다. 그러나 모든 면의 모양이 같다는 조건만으로는 각 꼭짓점에 모이는 면의 개수까지 같다고 할 수 없으므로 ④는 잘못된 설명이다. 정삼각형을 면으로 하는 정다면체는 정사면체, 정팔면체, 정이십면체이므로 ⑤는 맞다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "정다면체는 모든 면이 합동인 정다각형이고, 각 꼭짓점에 모이는 면의 개수도 모두 같아야 한다.\n정다면체는 5가지이므로 ①은 맞다.\n정사면체의 모서리는 6개이므로 ②도 맞다.\n정육면체의 한 꼭짓점에는 3개의 면이 모이므로 ③도 맞다.\n모든 면의 모양이 같기만 해서는 정다면체라고 할 수 없으므로 ④가 잘못된 설명이다.\n정삼각형을 면으로 하는 정다면체는 정사면체, 정팔면체, 정이십면체이므로 ⑤는 맞다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 4,
@@ -116,11 +130,16 @@ window.questionBank = [
       "$36\\pi+144\\rm\\,cm^2$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 회전축을 포함하는 평면으로 자르면 원기둥 부분은 직사각형, 반구 부분은 반원이 된다.\n조건 정리: 반지름은 $6\\rm\\,cm$이므로 지름은 $12\\rm\\,cm$이고, 원기둥의 높이는 $12\\rm\\,cm$이다.\n풀이 방향: 단면의 직사각형 넓이와 반원의 넓이를 더한다.\n정석 풀이: 직사각형의 넓이는 $12\\times12=144$이고, 반원의 넓이는 $\\dfrac12\\pi\\times6^2=18\\pi$이다. 따라서 단면의 넓이는 $144+18\\pi\\rm\\,cm^2$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "회전축을 포함하는 평면으로 자르면 원기둥 부분은 가로 $12\\rm\\,cm$, 세로 $12\\rm\\,cm$인 직사각형이 되고, 위쪽은 반지름 $6\\rm\\,cm$인 반원이 된다.\n직사각형의 넓이는\n$12\\times12=144$\n반원의 넓이는\n$\\dfrac12\\pi\\times6^2=18\\pi$\n따라서 단면의 넓이는 $144+18\\pi\\rm\\,cm^2$이고 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -147,11 +166,16 @@ window.questionBank = [
       "$110\\pi\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 회전축이 직사각형에서 $1\\rm\\,cm$ 떨어져 있으므로 속이 빈 원기둥 모양이 생긴다.\n조건 정리: 안쪽 반지름은 $1\\rm\\,cm$, 바깥쪽 반지름은 $1+3=4\\rm\\,cm$, 높이는 $8\\rm\\,cm$이다.\n풀이 방향: 바깥쪽 옆넓이, 안쪽 옆넓이, 위아래의 고리 모양 넓이를 모두 더한다.\n정석 풀이: 바깥쪽 옆넓이는 $2\\pi\\times4\\times8=64\\pi$, 안쪽 옆넓이는 $2\\pi\\times1\\times8=16\\pi$이다. 위와 아래의 고리 모양 넓이는 $2\\times\\pi(4^2-1^2)=30\\pi$이다. 따라서 겉넓이는 $64\\pi+16\\pi+30\\pi=110\\pi\\rm\\,cm^2$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "회전축과 직사각형 사이의 거리가 $1\\rm\\,cm$이므로 속이 빈 원기둥 모양이 생긴다.\n안쪽 반지름은 $1\\rm\\,cm$, 바깥쪽 반지름은 $1+3=4\\rm\\,cm$, 높이는 $8\\rm\\,cm$이다.\n바깥쪽 옆넓이: $2\\pi\\times4\\times8=64\\pi$\n안쪽 옆넓이: $2\\pi\\times1\\times8=16\\pi$\n위아래 고리 모양의 넓이: $2\\pi(4^2-1^2)=30\\pi$\n따라서 겉넓이는 $64\\pi+16\\pi+30\\pi=110\\pi\\rm\\,cm^2$이고 정답은 ⑤이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -178,11 +202,16 @@ window.questionBank = [
       "$180\\rm\\,cm^3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 기둥의 부피는 밑넓이와 높이의 곱이다.\n조건 정리: 밑면은 평행한 두 변의 길이가 $2\\rm\\,cm$, $5\\rm\\,cm$이고 높이가 $4\\rm\\,cm$인 사다리꼴이며, 기둥의 높이는 $10\\rm\\,cm$이다.\n풀이 방향: 먼저 사다리꼴의 넓이를 구한 뒤 기둥의 높이 $10\\rm\\,cm$를 곱한다.\n정석 풀이: 밑넓이는 $\\dfrac{(2+5)\\times4}{2}=14\\rm\\,cm^2$이다. 따라서 부피는 $14\\times10=140\\rm\\,cm^3$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "기둥의 부피는 밑넓이와 기둥의 높이의 곱이다.\n밑면은 평행한 두 변이 $2\\rm\\,cm$, $5\\rm\\,cm$이고 높이가 $4\\rm\\,cm$인 사다리꼴이다.\n밑넓이는\n$\\dfrac{(2+5)\\times4}{2}=14\\rm\\,cm^2$\n기둥의 높이가 $10\\rm\\,cm$이므로\n$14\\times10=140\\rm\\,cm^3$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -209,11 +238,16 @@ window.questionBank = [
       "$132\\rm\\,cm^2$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 겉넓이는 밑면의 넓이와 네 옆면의 넓이의 합이다.\n조건 정리: 밑면은 한 변이 $6\\rm\\,cm$인 정사각형이고, 각 옆면 삼각형의 밑변은 $6\\rm\\,cm$, 높이는 $8\\rm\\,cm$이다.\n풀이 방향: 밑넓이와 옆면 삼각형 4개의 넓이를 각각 구한다.\n정석 풀이: 밑넓이는 $6^2=36\\rm\\,cm^2$이다. 한 옆면의 넓이는 $\\dfrac12\\times6\\times8=24\\rm\\,cm^2$이므로 옆넓이는 $24\\times4=96\\rm\\,cm^2$이다. 따라서 겉넓이는 $36+96=132\\rm\\,cm^2$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "겉넓이는 밑면과 네 옆면의 넓이를 모두 더한다.\n밑면은 한 변이 $6\\rm\\,cm$인 정사각형이므로 $6^2=36\\rm\\,cm^2$이다.\n한 옆면은 밑변 $6\\rm\\,cm$, 높이 $8\\rm\\,cm$인 삼각형이므로\n$\\dfrac12\\times6\\times8=24\\rm\\,cm^2$\n옆면 4개의 넓이는 $24\\times4=96\\rm\\,cm^2$이다.\n따라서 겉넓이는 $36+96=132\\rm\\,cm^2$이고 정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -240,11 +274,15 @@ window.questionBank = [
       "$576\\rm\\,cm^3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정팔면체를 가운데 정사각형을 밑면으로 하는 두 개의 사각뿔로 나누어 생각한다.\n조건 정리: 구의 반지름은 $6\\rm\\,cm$이다. 정팔면체의 위아래 꼭짓점과 가운데 정사각형의 네 꼭짓점이 구에 닿으므로, 가운데 정사각형의 두 대각선은 모두 구의 지름인 $12\\rm\\,cm$이다.\n풀이 방향: 가운데 정사각형의 넓이를 구한 뒤, 높이가 각각 $6\\rm\\,cm$인 사각뿔 두 개의 부피를 더한다.\n정석 풀이: 정사각형은 대각선이 서로 수직으로 만나므로 넓이는 $4\\times\\dfrac12\\times6\\times6=72\\rm\\,cm^2$이다. 한 사각뿔의 부피는 $\\dfrac13\\times72\\times6=144\\rm\\,cm^3$이고 두 개이므로 정팔면체의 부피는 $144\\times2=288\\rm\\,cm^3$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "정팔면체를 가운데 정사각형을 공통 밑면으로 하는 두 개의 사각뿔로 나누어 본다.\n구의 반지름은 $6\\rm\\,cm$이고, 가운데 정사각형의 두 대각선은 구의 지름이므로 각각 $12\\rm\\,cm$이다.\n두 대각선이 수직이므로 정사각형의 넓이는\n$4\\times\\dfrac12\\times6\\times6=72\\rm\\,cm^2$\n한 사각뿔의 높이는 $6\\rm\\,cm$이므로 부피는\n$\\dfrac13\\times72\\times6=144\\rm\\,cm^3$\n두 사각뿔을 합치면 $144\\times2=288\\rm\\,cm^3$이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -271,11 +309,15 @@ window.questionBank = [
       "$99\\pi$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 남은 입체의 겉넓이에는 구의 곡면뿐 아니라 잘라 낸 두 평면의 넓이도 포함된다.\n조건 정리: 반지름은 $3\\rm\\,cm$이고 구의 $\\dfrac14$을 잘라 냈으므로 남은 부분은 구의 $\\dfrac34$이다.\n풀이 방향: 남은 곡면의 넓이와 두 절단면의 넓이를 더해 $x$를 구하고, 남은 부피 $y$를 구한다.\n정석 풀이: 구의 겉넓이는 $4\\pi\\times3^2=36\\pi$이므로 남은 곡면은 $36\\pi\\times\\dfrac34=27\\pi$이다. 절단면 두 개는 각각 반지름 $3$인 반원이므로 넓이의 합은 $2\\times\\dfrac12\\pi\\times3^2=9\\pi$이다. 따라서 $x=36\\pi$이다. 구의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi$이므로 $y=36\\pi\\times\\dfrac34=27\\pi$이다. 따라서 $x+y=63\\pi$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "구의 $\\dfrac14$을 잘라 냈으므로 남은 부분은 구의 $\\dfrac34$이다.\n구의 겉넓이는 $4\\pi\\times3^2=36\\pi$이므로 남은 곡면의 넓이는 $27\\pi$이다.\n두 절단면은 각각 반지름 3인 반원이므로 넓이의 합은 $9\\pi$이다.\n따라서 $x=27\\pi+9\\pi=36\\pi$이다.\n구의 부피는 $\\dfrac43\\pi\\times3^3=36\\pi$이므로 남은 부피는 $y=27\\pi$이다.\n따라서 $x+y=63\\pi$이고 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -302,11 +344,15 @@ window.questionBank = [
       "$18\\rm\\,cm$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 쇠구슬을 꺼냈을 때 줄어드는 물의 부피는 쇠구슬 5개의 전체 부피와 같다.\n조건 정리: 쇠구슬의 반지름은 $6\\rm\\,cm$, 물통의 반지름은 $12\\rm\\,cm$이다.\n풀이 방향: 쇠구슬 5개의 부피를 구한 뒤 원기둥 밑넓이로 나누어 줄어드는 높이를 구한다.\n정석 풀이: 쇠구슬 한 개의 부피는 $\\dfrac43\\pi\\times6^3=288\\pi\\rm\\,cm^3$이므로 5개의 부피는 $1440\\pi\\rm\\,cm^3$이다. 물통의 밑넓이는 $\\pi\\times12^2=144\\pi\\rm\\,cm^2$이다. 줄어드는 높이를 $h$라 하면 $144\\pi h=1440\\pi$이므로 $h=10$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "쇠구슬을 모두 꺼냈을 때 줄어드는 물의 부피는 쇠구슬 5개의 전체 부피와 같다.\n쇠구슬의 반지름은 $6\\rm\\,cm$이므로 한 개의 부피는\n$\\dfrac43\\pi\\times6^3=288\\pi\\rm\\,cm^3$\n5개의 부피는 $1440\\pi\\rm\\,cm^3$이다.\n물통의 반지름은 $12\\rm\\,cm$이므로 밑넓이는 $144\\pi\\rm\\,cm^2$이다.\n줄어드는 높이를 $h$라 하면\n$144\\pi h=1440\\pi$\n$h=10$\n따라서 정답은 ①이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -334,11 +380,18 @@ window.questionBank = [
       "28명"
     ],
     "answer": "①",
-    "solution": "[키포인트] 줄기와 잎 그림에서 잎 하나는 조사한 사람 한 명을 뜻한다.\n조건 정리: 각 줄기의 잎의 개수는 차례로 $2,4,5,4,3,2$개이다.\n풀이 방향: 모든 잎의 개수를 더한다.\n정석 풀이: 이용자 수는 $2+4+5+4+3+2=20$명이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "줄기와 잎 그림에서 잎 하나는 이용자 한 명을 뜻한다.\n각 줄기의 잎의 개수는 $2,4,5,4,3,2$개이다.\n따라서 전체 이용자 수는\n$2+4+5+4+3+2=20$명이다.\n정답은 ①이다.",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "crossConceptKeys": []
   },
   {
     "id": 12,
@@ -365,11 +418,18 @@ window.questionBank = [
       "60대"
     ],
     "answer": "②",
-    "solution": "[키포인트] 각 연령대의 이용자 수는 그 줄기의 잎의 개수로 비교한다.\n조건 정리: 20대는 4명, 30대는 5명, 40대는 4명, 50대는 3명, 60대는 2명이다.\n풀이 방향: 잎의 개수가 가장 많은 줄기를 찾는다.\n정석 풀이: 가장 많은 이용자가 있는 연령대는 잎이 5개인 30대이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "각 연령대의 이용자 수는 해당 줄기의 잎의 개수로 비교한다.\n20대는 4명, 30대는 5명, 40대는 4명, 50대는 3명, 60대는 2명이다.\n가장 많은 연령대는 5명인 30대이다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "crossConceptKeys": []
   },
   {
     "id": 13,
@@ -393,11 +453,15 @@ window.questionBank = [
       "도수분포표는 계급의 개수가 많을수록 분포 상태의 파악에 유용하다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 도수분포표의 기본 용어와 계급을 나누는 목적을 확인한다.\n조건 정리: 계급, 계급의 크기, 도수, 도수분포표의 정의가 제시되어 있다.\n풀이 방향: 각 설명이 정의에 맞는지 판단한다.\n정석 풀이: ①~④는 각각 계급, 계급의 크기, 도수, 도수분포표의 올바른 설명이다. 계급의 개수를 지나치게 많이 하면 자료가 너무 잘게 나뉘어 전체적인 분포 상태를 파악하기에 오히려 불편할 수 있으므로 ⑤는 옳지 않다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "계급은 변량을 일정한 간격으로 나눈 구간이고, 계급의 크기는 그 구간의 너비이다.\n각 계급에 속하는 자료의 개수를 도수라고 하며, 계급과 도수를 나타낸 표가 도수분포표이다.\n따라서 ①~④는 옳다.\n계급의 개수를 지나치게 많이 하면 자료가 너무 잘게 나뉘어 전체 분포를 파악하기 불편할 수 있으므로 ⑤는 옳지 않다.\n정답은 ⑤이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B12",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
   },
   {
     "id": 14,
@@ -424,11 +488,18 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 도수분포표의 모든 도수의 합은 전체 자료의 수와 같다.\n조건 정리: 전체 지역은 40개이고, 알려진 도수의 합은 $4+12+6+3=25$이다.\n풀이 방향: $A+B$를 하나의 묶음으로 두고 전체 도수에서 알려진 도수를 뺀다.\n정석 풀이: $4+A+12+B+6+3=40$이므로 $A+B=40-25=15$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "도수의 합은 전체 자료의 수와 같다.\n전체는 40개 지역이고 알려진 도수의 합은\n$4+12+6+3=25$\n이므로\n$A+B=40-25=15$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": []
   },
   {
     "id": 15,
@@ -455,11 +526,18 @@ window.questionBank = [
       "22개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 보이지 않는 두 계급의 도수를 문자로 놓고 전체 도수의 합을 이용한다.\n조건 정리: 그래프에서 보이는 도수는 $4,6,5,2$이고, $20$럭스 이상 $22$럭스 미만의 도수를 $x$라 하면 $16$럭스 이상 $18$럭스 미만의 도수는 $2x$이다.\n풀이 방향: 전체 가로등 수가 50개라는 조건으로 방정식을 세운다.\n정석 풀이: $4+6+2x+5+x+2=50$이므로 $3x+17=50$이다. 따라서 $3x=33$, $x=11$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "$20$럭스 이상 $22$럭스 미만의 도수를 $x$개라 두면, $16$럭스 이상 $18$럭스 미만의 도수는 $2x$개이다.\n그래프에서 보이는 나머지 도수의 합은 $4+6+5+2=17$이다.\n전체가 50개이므로\n$17+2x+x=50$\n$3x=33$\n$x=11$\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": []
   },
   {
     "id": 16,
@@ -486,11 +564,18 @@ window.questionBank = [
       "자유투 성공 횟수가 많은 쪽에서 10번째인 학생이 속하는 계급은 9회 이상 11회 미만이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 도수분포다각형의 각 점에서 계급별 도수를 읽고 보기의 내용을 하나씩 확인한다.\n조건 정리: 실제 5개 계급의 도수는 차례로 $1,6,12,10,3$이므로 전체는 $32$명이다. 계급의 크기는 2회이다.\n풀이 방향: 각 보기의 수치와 계급 범위를 그래프와 대조한다.\n정석 풀이: ①은 $1+6+12+10+3=32$이므로 맞다. 마지막 계급은 11회 이상 13회 미만이므로 성공 횟수는 최대 12회까지 가능하여 ②의 '13개를 넣었다'는 설명은 옳지 않다. ③은 $1+6=7$명으로 맞고, ④도 맞다. 성공 횟수가 많은 쪽에서 보면 11회 이상 13회 미만에 3명, 그다음 9회 이상 11회 미만에 10명이 있으므로 10번째 학생은 9회 이상 11회 미만에 속해 ⑤도 맞다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "그래프에서 실제 다섯 계급의 도수는 차례로 $1,6,12,10,3$명이다.\n전체는 $1+6+12+10+3=32$명이므로 ①은 맞다.\n마지막 계급은 11회 이상 13회 미만이므로 성공 횟수는 최대 12회까지 가능하다. 따라서 ②의 13개를 넣었다는 설명은 옳지 않다.\n7회 미만은 $1+6=7$명이므로 ③은 맞고, 계급의 크기는 2회, 계급의 개수는 5개이므로 ④도 맞다.\n많이 성공한 쪽에서 3명 다음 10명이 9회 이상 11회 미만 계급에 있으므로 ⑤도 맞다.\n따라서 정답은 ②이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": []
   },
   {
     "id": 17,
@@ -517,11 +602,18 @@ window.questionBank = [
       "60초"
     ],
     "answer": "④",
-    "solution": "[키포인트] 상위 $20\\%$에 해당하는 학생 수를 먼저 구한 뒤 기록이 큰 계급부터 세어 간다.\n조건 정리: 그래프의 도수는 차례로 $3,5,10,6,4,2$명이므로 전체 학생 수는 $30$명이다.\n풀이 방향: $30$명의 $20\\%$인 6명을 기록이 높은 쪽부터 센다.\n정석 풀이: 상위 $20\\%$는 $30\\times0.2=6$명이다. 60초 이상 70초 미만인 학생이 2명, 50초 이상 60초 미만인 학생이 4명이므로 두 계급을 합하면 정확히 6명이다. 따라서 상위 $20\\%$ 이내에 들려면 최소한 50초 이상이어야 한다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "그래프의 도수는 차례로 $3,5,10,6,4,2$명이므로 전체 학생 수는 30명이다.\n상위 $20\\%$는\n$30\\times0.2=6$명이다.\n기록이 큰 쪽부터 세면 60초 이상 70초 미만이 2명, 50초 이상 60초 미만이 4명으로 모두 6명이다.\n따라서 상위 $20\\%$ 이내에 들기 위한 최소 기록은 50초이고 정답은 ④이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+    "crossConceptKeys": []
   },
   {
     "id": 18,
@@ -548,11 +640,18 @@ window.questionBank = [
       "140명"
     ],
     "answer": "④",
-    "solution": "[키포인트] 한 시간은 60분이므로 60분 이상인 계급들의 상대도수를 더한다.\n조건 정리: 60분 이상인 세 계급의 상대도수는 그래프에서 $0.35,0.15,0.10$이다.\n풀이 방향: 상대도수의 합을 구한 뒤 전체 학생 수 200명을 곱한다.\n정석 풀이: 60분 이상인 학생의 상대도수는 $0.35+0.15+0.10=0.60$이다. 따라서 학생 수는 $200\\times0.60=120$명이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "한 시간은 60분이므로 60분 이상인 세 계급의 상대도수를 더한다.\n$0.35+0.15+0.10=0.60$\n전체 학생이 200명이므로\n$200\\times0.60=120$명이다.\n따라서 정답은 ④이다.",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": []
   },
   {
     "id": 19,
@@ -579,11 +678,18 @@ window.questionBank = [
       "연령이 40세 이상 50세 미만인 회원 수의 비율은 볼링이 수영보다 상대적으로 더 높다."
     ],
     "answer": "③",
-    "solution": "[키포인트] 상대도수의 크기와 실제 회원 수는 다르므로, 두 집단의 전체 인원이 다를 때는 실제 수를 따로 계산해야 한다.\n조건 정리: 수영 회원은 50명, 볼링 회원은 40명이다. 그래프에서 볼링의 30대 상대도수는 $0.25$, 40대 상대도수는 $0.30$이고, 수영의 40대 상대도수는 약 $0.28$이다.\n풀이 방향: 상대도수 자체를 묻는 보기와 실제 인원수를 묻는 보기를 구분해 확인한다.\n정석 풀이: ①에서 볼링 30대 회원 수는 $40\\times0.25=10$명으로 맞다. 계급은 6개이고 크기는 10이므로 ②도 맞다. 40대 회원 수는 볼링이 $40\\times0.30=12$명이고 수영은 $50\\times0.28=14$명으로 수영이 더 많으므로 ③은 옳지 않다. 그래프의 높은 연령대에서는 수영의 상대도수가 볼링보다 전반적으로 높아 ④는 맞고, 40세 이상 50세 미만에서는 볼링의 상대도수가 더 높으므로 ⑤도 맞다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "수영 회원은 50명, 볼링 회원은 40명이므로 상대도수가 비슷해도 실제 회원 수는 다를 수 있다.\n① 그래프에서 볼링 30대의 상대도수는 $0.25$이므로 $40\\times0.25=10$명으로 맞다.\n② 계급은 6개이고 계급의 크기는 10이므로 맞다.\n③ 40대의 상대도수는 두 집단이 거의 같은 수준이지만 전체 회원 수는 수영이 50명, 볼링이 40명이다. 실제 인원으로 바꾸면 수영 40대 회원 수가 볼링 40대 회원 수보다 많으므로 이 설명은 옳지 않다.\n④ 높은 연령대에서는 수영의 상대도수가 전반적으로 더 높으므로 맞다.\n⑤ 40세 이상 50세 미만의 상대도수는 볼링이 수영보다 높으므로 맞다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B34",
+    "legacyLevelCompatibility": "NORMAL",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": []
   },
   {
     "id": 20,
@@ -610,11 +716,18 @@ window.questionBank = [
       "120명"
     ],
     "answer": "③",
-    "solution": "[키포인트] 상대도수의 합은 1이므로 보이지 않는 한 계급의 상대도수는 나머지 계급의 상대도수를 이용해 구할 수 있다.\n조건 정리: 그래프에서 보이는 상대도수는 $0.12,0.16,0.20,0.08,0.04$이고 전체 학생 수는 200명이다.\n풀이 방향: 보이지 않는 50kg 이상 55kg 미만 계급의 상대도수를 1에서 나머지 합을 빼서 구한다.\n정석 풀이: 보이는 상대도수의 합은 $0.12+0.16+0.20+0.08+0.04=0.60$이다. 따라서 보이지 않는 계급의 상대도수는 $1-0.60=0.40$이다. 학생 수는 $200\\times0.40=80$명이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "상대도수의 합은 1이다.\n그래프에서 보이는 상대도수의 합은\n$0.12+0.16+0.20+0.08+0.04=0.60$\n따라서 보이지 않는 50kg 이상 55kg 미만 계급의 상대도수는\n$1-0.60=0.40$\n전체 200명 중 학생 수는\n$200\\times0.40=80$명이다.\n따라서 정답은 ③이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": []
   },
   {
     "id": 21,
@@ -636,11 +749,15 @@ window.questionBank = [
     "image": "assets/images/23_연향중_2학기_기말_중1_기출/q21.png",
     "choices": [],
     "answer": "$130\\pi-200$",
-    "solution": "[키포인트] 큰 사분원과 두 반원의 호를 구분하고, 두 색칠 영역의 넓이가 서로 같다는 구조를 이용한다.\n조건 정리: 정사각형의 한 변은 $20\\rm\\,cm$이다. 큰 호는 반지름 20인 사분원의 호이고, 안쪽 두 원호는 지름 20인 반원의 일부이므로 각각 반지름은 10이다.\n풀이 방향: 먼저 두 색칠 부분의 둘레의 합 $x$를 구하고, 두 색칠 부분의 넓이의 합 $y$를 구한다.\n정석 풀이: 위쪽 색칠 부분의 경계는 반지름 20인 사분원 호 $10\\pi$와 반지름 10인 사분원 호 두 개 $5\\pi+5\\pi$로 이루어져 둘레가 $20\\pi$이다. 아래쪽 렌즈 모양의 둘레는 반지름 10인 사분원 호 두 개이므로 $10\\pi$이다. 따라서 $x=30\\pi$이다. 아래쪽 렌즈 한 부분의 넓이는 반지름 10인 $90^\\circ$ 부채꼴 두 개에서 직각삼각형 두 개를 뺀 값이므로 $2\\times(25\\pi-50)=50\\pi-100$이다. 큰 사분원의 넓이와 두 반원의 넓이가 모두 $100\\pi$이므로 위쪽 색칠 부분의 넓이도 $50\\pi-100$이다. 따라서 $y=100\\pi-200$이고, $x+y=30\\pi+100\\pi-200=130\\pi-200$이다.\n핵심 확인: 앞에서 적용한 조건과 계산 결과가 문제의 요구를 모두 만족하는지 확인한다.\n따라서 구하는 값은 $130\\pi-200$이다.",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "정사각형의 한 변은 $20\\rm\\,cm$이다. 큰 호는 반지름 20인 사분원의 호이고, 안쪽 원호들은 반지름 10인 원의 일부이다.\n위쪽 색칠 부분의 경계 길이는 $10\\pi+5\\pi+5\\pi=20\\pi$이다.\n아래쪽 렌즈 모양의 경계 길이는 $5\\pi+5\\pi=10\\pi$이다.\n따라서 $x=30\\pi$이다.\n아래쪽 렌즈 부분의 넓이는 반지름 10인 $90^\\circ$ 부채꼴 두 개에서 직각삼각형 두 개를 뺀 값이므로\n$2(25\\pi-50)=50\\pi-100$이다.\n큰 사분원의 넓이는 $\\dfrac14\\pi\\times20^2=100\\pi$이고, 두 반원의 넓이의 합도 $2\\times\\dfrac12\\pi\\times10^2=100\\pi$이다.\n두 반원의 넓이의 합은 「두 반원의 합집합 넓이 + 아래쪽 렌즈 넓이」이므로, 큰 사분원에서 두 반원의 합집합을 뺀 위쪽 색칠 부분의 넓이는 아래쪽 렌즈 넓이와 같다.\n따라서 $y=2(50\\pi-100)=100\\pi-200$이다.\n그러므로 $x+y=30\\pi+100\\pi-200=130\\pi-200$이다.",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B45",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -662,11 +779,16 @@ window.questionBank = [
     "image": "assets/images/23_연향중_2학기_기말_중1_기출/q22.png",
     "choices": [],
     "answer": "$112\\rm\\,cm^2$",
-    "solution": "[키포인트] 사각뿔대의 전개도는 한 변이 6cm인 정사각형에 합동인 사다리꼴 4개를 붙이고, 그중 한 사다리꼴의 바깥쪽 4cm 변에 한 변이 4cm인 정사각형을 붙인 모양으로 그릴 수 있다.\n조건 정리: 주어진 함수식과 구간, 도함수·적분 또는 극값 조건을 정리한다.\n풀이 방향: 도함수로 증가·감소와 극값을 판단하고 필요한 구간의 적분을 계산한다.\n정석 풀이: 전개도는 다음과 같다.\n<div class=\"sol-visual net-q22\"><svg viewBox=\"0 0 320 370\" width=\"320\" height=\"370\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><polygon points=\"100,160 220,160 220,280 100,280\"/><polygon points=\"100,160 220,160 200,100 120,100\"/><polygon points=\"100,280 220,280 200,340 120,340\"/><polygon points=\"100,160 100,280 40,260 40,180\"/><polygon points=\"220,160 220,280 280,260 280,180\"/><polygon points=\"120,100 200,100 200,20 120,20\"/></g><g font-family=\"serif\" font-size=\"10\" text-anchor=\"middle\"><text x=\"160\" y=\"225\">6 cm</text><text x=\"160\" y=\"64\">4 cm</text><text x=\"160\" y=\"132\">3 cm</text></g></svg></div>\n두 밑면의 넓이의 합은 $6^2+4^2=36+16=52\\rm\\,cm^2$이다. 한 옆면은 평행한 두 변이 $6\\rm\\,cm$, $4\\rm\\,cm$이고 높이가 $3\\rm\\,cm$인 사다리꼴이므로 넓이는 $\\dfrac{(6+4)\\times3}{2}=15\\rm\\,cm^2$이다. 옆면 4개의 넓이는 $15\\times4=60\\rm\\,cm^2$이다. 따라서 겉넓이는 $52+60=112\\rm\\,cm^2$이다.\n따라서 구하는 값은 $112\\rm\\,cm^2$이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "사각뿔대의 전개도는 한 변이 $6\\rm\\,cm$인 정사각형 둘레에 합동인 사다리꼴 4개를 붙이고, 그중 한 사다리꼴의 바깥쪽 $4\\rm\\,cm$ 변에 한 변이 $4\\rm\\,cm$인 정사각형을 붙인 모양으로 그릴 수 있다.\n두 밑면의 넓이의 합은\n$6^2+4^2=36+16=52\\rm\\,cm^2$\n한 옆면은 평행한 두 변이 $6\\rm\\,cm$, $4\\rm\\,cm$이고 높이가 $3\\rm\\,cm$인 사다리꼴이므로\n$\\dfrac{(6+4)\\times3}{2}=15\\rm\\,cm^2$\n옆면 4개의 넓이는 $15\\times4=60\\rm\\,cm^2$이다.\n따라서 겉넓이는 $52+60=112\\rm\\,cm^2$이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "solutionImage": "assets/images/23_연향중_2학기_기말_중1_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -688,11 +810,18 @@ window.questionBank = [
     "image": "assets/images/23_연향중_2학기_기말_중1_기출/q23.png",
     "choices": [],
     "answer": "계급의 크기가 일정하지 않음; 50~60: 2명, 60~70: 1명, 70~80: 5명, 80~90: 6명, 90~100: 6명",
-    "solution": "[키포인트] 도수분포표의 계급의 크기는 일정해야 하므로, 원자료를 크기 10인 계급으로 다시 나누어 센다.\n조건 정리: 자료의 계급, 도수·상대도수와 전체 자료의 개수를 정리한다.\n풀이 방향: 도수와 상대도수의 관계를 계산하고 자료의 분포를 해석한다.\n정석 풀이: 제시된 표에서는 $60$ 이상 $80$ 미만인 계급만 계급의 크기가 20이므로 이 부분이 잘못되었다. 원자료를 다시 세면 $50$ 이상 $60$ 미만은 $50,58$로 2명, $60$ 이상 $70$ 미만은 $62$로 1명, $70$ 이상 $80$ 미만은 $71,73,77,78,79$로 5명, $80$ 이상 $90$ 미만은 $81,82,83,83,83,87$로 6명, $90$ 이상 $100$ 미만은 $92,92,92,92,92,94$로 6명이다.\n바르게 고친 도수분포표는 다음과 같다.\n<div class=\"sol-visual table-q23\"><table class=\"question-table\"><thead><tr><th>자책점</th><th>도수(명)</th></tr></thead><tbody><tr><td>50 이상 60 미만</td><td>2</td></tr><tr><td>60 이상 70 미만</td><td>1</td></tr><tr><td>70 이상 80 미만</td><td>5</td></tr><tr><td>80 이상 90 미만</td><td>6</td></tr><tr><td>90 이상 100 미만</td><td>6</td></tr><tr><td>합계</td><td>20</td></tr></tbody></table></div>\n도수의 합은 $2+1+5+6+6=20$명으로 원자료의 수와 일치한다.\n따라서 구하는 값은 계급의 크기가 일정하지 않음; 50~60: 2명, 60~70: 1명, 70~80: 5명, 80~90: 6명, 90~100: 6명이다.",
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "도수분포표의 계급의 크기는 일정해야 한다. 제시된 표에서 60 이상 80 미만인 계급만 크기가 20이므로 이 부분을 크기 10인 두 계급으로 나누어 원자료를 다시 센다.\n50 이상 60 미만: 2명\n60 이상 70 미만: 1명\n70 이상 80 미만: 5명\n80 이상 90 미만: 6명\n90 이상 100 미만: 6명\n도수의 합은 $2+1+5+6+6=20$명으로 전체 자료의 수와 같다.\n따라서 계급의 크기를 10으로 일정하게 고친 도수는 차례로 $2,1,5,6,6$명이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": []
   },
   {
     "id": 24,
@@ -714,10 +843,17 @@ window.questionBank = [
     "image": "assets/images/23_연향중_2학기_기말_중1_기출/q24.png",
     "choices": [],
     "answer": "24명",
-    "solution": "[키포인트] 도수와 상대도수의 관계로 전체 학생 수를 먼저 구한 뒤, $4$만 원 미만인 학생 수에서 $0$만 원 이상 $2$만 원 미만인 학생 수를 뺀다.\n조건 정리: $0$만 원 이상 $2$만 원 미만의 도수는 4명이고 상대도수는 $0.05$이다. 또 $4$만 원 이상인 학생은 전체의 $65\\%$이다.\n풀이 방향: $4\\div0.05$로 전체 학생 수를 구하고, 전체의 $35\\%$가 $4$만 원 미만이라는 점을 이용한다.\n정석 풀이: 전체 학생 수는 $4\\div0.05=80$명이다. $4$만 원 이상이 $65\\%$이므로 $4$만 원 미만은 $35\\%$이고, 학생 수는 $80\\times0.35=28$명이다. 이 중 $0$만 원 이상 $2$만 원 미만인 학생이 4명이므로 $2$만 원 이상 $4$만 원 미만인 학생 수는 $28-4=24$명이다.\n따라서 구하는 값은 24명이다.",
     "subUnitKey": "M1-08-DATA_INTERPRETATION",
     "subUnit": "자료의 해석",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solution": "$0$만 원 이상 $2$만 원 미만의 도수 4명이 상대도수 $0.05$에 해당하므로 전체 학생 수는\n$4\\div0.05=80$명이다.\n$4$만 원 이상인 학생이 $65\\%$이므로 $4$만 원 미만인 학생은 $35\\%$이다.\n$80\\times0.35=28$명\n이 28명 중 $0$만 원 이상 $2$만 원 미만인 4명을 빼면\n$28-4=24$명이다.\n따라서 $2$만 원 이상 $4$만 원 미만인 학생은 24명이다.",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "B23",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": []
   }
 ];

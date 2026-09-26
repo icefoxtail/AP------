@@ -1,0 +1,1241 @@
+[
+  {
+    "id": 1,
+    "sourceOrdinal": 1,
+    "questionUid": "qid_v1_27f15e6a216c3f4ca0429867028666e062d3fe46259848a4c5a86bca579eedd5",
+    "L1": "M1-06",
+    "L2": "M1-06-PLANE_FIGURE_MEASURE",
+    "primaryMethod": "중심각 비로 호의 길이 비례",
+    "decisiveStep": "40:80=10:x",
+    "difficulty": {
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "부채꼴/호 길이 측정의 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.2",
+          "l4LabelKo": "부채꼴의 호의 길이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "bad45e153cba5026e31870ad25359a66f8720de52b86a3ba1a4734164a90ff8e",
+      "finalSolutionSha256": "b97d3f9352fcce0f630ca3140f809559d33c6c92897752d897e46f10683144c9"
+    }
+  },
+  {
+    "id": 2,
+    "sourceOrdinal": 2,
+    "questionUid": "qid_v1_9c30ccd95602ccad6f611a563cf34490725bdfeae5ece95a3f8fbaa3094bebe3",
+    "L1": "M1-06",
+    "L2": "M1-06-PLANE_FIGURE_MEASURE",
+    "primaryMethod": "부채꼴 호의 길이·넓이 공식",
+    "decisiveStep": "150/360을 두 공식에 동일 적용",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "부채꼴 호·넓이 측정 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.2",
+          "l3LabelKo": "부채꼴의 넓이",
+          "l4Id": "L4-2.2.2.2",
+          "l4LabelKo": "호의 길이와 넓이 관계"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.1",
+          "l3LabelKo": "원과 부채꼴의 기본",
+          "l4Id": "L4-2.2.1.2",
+          "l4LabelKo": "부채꼴의 호의 길이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "80e4931e518560db3decd8495454ed1e4c112798421a13cef5c5aa82d570ec01",
+      "finalSolutionSha256": "617c9ce4965a41d82fa5c1b9eae6bb50b3c87d69ee8c5dc3ee74638ca63b4d63"
+    }
+  },
+  {
+    "id": 3,
+    "sourceOrdinal": 3,
+    "questionUid": "qid_v1_cf427f56616b2402363f4c0df7b728eeb14923d434f92062fd545a5799a9e188",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE",
+    "primaryMethod": "정다면체 정의·구성 성질 판정",
+    "decisiveStep": "면 모양 동일만으로 정다면체가 되지 않음",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B12",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "reviewVerdict": "REPAIR_TO_HOLD",
+    "holdReason": "정다면체 정의·성질 복합 판정의 exact ACTIVE L3/L4가 없음. PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS는 모서리·면의 공간 위치관계 판정이 주 의미여서 이 문항에 강제 재사용하지 않음.",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.1.2",
+          "l3LabelKo": "정다면체",
+          "l4Id": "L4-3.1.2.1",
+          "l4LabelKo": "정다면체의 종류"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active component-count template is narrower than the source/final-solution property or classification task."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+            "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2022",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active edge/face-relation templates do not exactly match this component-count/type claim."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "a327c92cf148286d97acd4a1730b464f4212400774cca7ea247834b214c264d2",
+      "finalSolutionSha256": "70b754ec9d1a43e563a978400a46b4c08995a9270cb91d3c063829a2b0ef793e"
+    }
+  },
+  {
+    "id": 4,
+    "sourceOrdinal": 4,
+    "questionUid": "qid_v1_99fc97aeb2c3be0db3ea0a91f105a05d80d1ab0c1d41546e0781fd1de03752f5",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "회전축 포함 단면 분해",
+    "decisiveStep": "단면=직사각형+반원",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "회전체 단면 넓이 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.1.3",
+          "l3LabelKo": "회전체",
+          "l4Id": "L4-3.1.3.2",
+          "l4LabelKo": "회전체의 단면"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Spatial-relation templates are not a rotational-solid generation or section template."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "18c17587acea5d9745288e17c8af641666a749168aa86049a00f01301d4bbdc9",
+      "finalSolutionSha256": "07d4556fe1e55c05abd358c073f8ea666e49ed8baaf2de01fd0102e94efed84d"
+    }
+  },
+  {
+    "id": 5,
+    "sourceOrdinal": 5,
+    "questionUid": "qid_v1_e5b9865da17b4f91653200a901b4556172ea0d9b16fe30c16e84d9ee7c7f3c47",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "속 빈 원기둥 겉넓이 분해",
+    "decisiveStep": "R=4,r=1,h=8의 안·밖 옆면과 두 고리면",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B34",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "회전체 겉넓이 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.2",
+          "l4LabelKo": "원기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "89597645ab49807f54e9a8732ffae8230dfd434981e6a4aa60fe61220d0716ba",
+      "finalSolutionSha256": "8f9254366bced762cd73b7e49b928d56563a14dbe246f561e941e976c564e357"
+    }
+  },
+  {
+    "id": 6,
+    "sourceOrdinal": 6,
+    "questionUid": "qid_v1_f06e6c83e2eee2e22ca1c8107d2459dc75bc9335af1d058b4ae37fb2ceca1743",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "사다리꼴 밑면 넓이×기둥 높이",
+    "decisiveStep": "[(2+5)×4/2]×10",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "각기둥 부피 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.1",
+          "l4LabelKo": "각기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "e30e7571836896eb4bc5a1ffca14be20313c08f71a27aa587ab9217e60218dd3",
+      "finalSolutionSha256": "9cb5b60ce102efb0f271276ef8c090ca5174c12248484e6b470c11ef88779164"
+    }
+  },
+  {
+    "id": 7,
+    "sourceOrdinal": 7,
+    "questionUid": "qid_v1_80b43f00bdde614adf09ffb5d9a6de97214aa2108154e49aab1de2c214d719c4",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "밑면+삼각형 옆면 4개",
+    "decisiveStep": "6²+4×(1/2×6×8)",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "각뿔 겉넓이 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.1",
+          "l4LabelKo": "각뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "f39b0086e85d3aee5398f18c23d054e6e4c3a78077e859b4b1b0c72153d6e068",
+      "finalSolutionSha256": "31160496c74b929a0c5f257ee352f70721651f0640e0ec63addab4e15fd0b2ef"
+    }
+  },
+  {
+    "id": 8,
+    "sourceOrdinal": 8,
+    "questionUid": "qid_v1_b36de57507c901372f5224a1f7d7b5130bfe365d98f3b3d34cf24eb0aaaad602",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "정팔면체를 사각뿔 두 개로 분해",
+    "decisiveStep": "가운데 정사각형 대각선 12, 높이6인 두 사각뿔",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B34",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "구 내접 정팔면체 부피 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.2",
+          "l3LabelKo": "뿔의 겉넓이와 부피",
+          "l4Id": "L4-3.2.2.1",
+          "l4LabelKo": "각뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "41c36242c33839516b2cd3200ed78c9fea5e2c73fdc845282f35805243e16891",
+      "finalSolutionSha256": "0f12b86ade3120bcaf3a5480e627622d81f645a571eb2b194af345576e861452"
+    }
+  },
+  {
+    "id": 9,
+    "sourceOrdinal": 9,
+    "questionUid": "qid_v1_4bacb912087f53727c0868a3eae6e92bce43ca3f99631163bbf1c4189518b6e2",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "남은 구 곡면+절단면·부피",
+    "decisiveStep": "절단면 두 반원을 겉넓이에 추가",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B34",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "부분 구 겉넓이·부피 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.1",
+          "l4LabelKo": "구의 겉넓이"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.2",
+          "l4LabelKo": "구의 부피"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "68a3182ad569b4e2db7f3ffa380bec7f8465fae334e3771b25430bc02a546bc8",
+      "finalSolutionSha256": "e0a4ae8eb3e88bf4c065a742ce23e33771b5790f0201f70fdd2e84067cea4f1f"
+    }
+  },
+  {
+    "id": 10,
+    "sourceOrdinal": 10,
+    "questionUid": "qid_v1_e82b776b6f4f4fc8127a140640b5e7d2bbb000fc63a9ba75bfd2c79cb63b321f",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "구 5개 부피=수위 감소 부피",
+    "decisiveStep": "5×구부피 ÷ 원기둥 밑넓이",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B34",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "구 체적 배수량-원기둥 수위 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.3",
+          "l3LabelKo": "구",
+          "l4Id": "L4-3.2.3.2",
+          "l4LabelKo": "구의 부피"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.1",
+          "l3LabelKo": "기둥의 겉넓이와 부피",
+          "l4Id": "L4-3.2.1.2",
+          "l4LabelKo": "원기둥"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "ff7d16d8ae0b2d4b028f655c6ba7046cde82f1d064e0d4c33417cecbdf2ede25",
+      "finalSolutionSha256": "c29e311e8dce1ce940ec59e4f55c8d6bdebf666d6d433436068c0003964f19b3"
+    }
+  },
+  {
+    "id": 11,
+    "sourceOrdinal": 11,
+    "questionUid": "qid_v1_2a0dc12bb587e2431735aa4d110107e87c55362325fcdd1f5fd484a9f17d3637",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "줄기와 잎에서 자료 수 세기",
+    "decisiveStep": "잎 2+4+5+4+3+2",
+    "difficulty": {
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 12,
+    "sourceOrdinal": 12,
+    "questionUid": "qid_v1_bd8854c848f4b0e5f69ae7893e3419e7c8166b3aa40f334ba41a8b1e09d91973",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "줄기별 빈도 비교",
+    "decisiveStep": "30대 잎 5개 최대",
+    "difficulty": {
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+    "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 13,
+    "sourceOrdinal": 13,
+    "questionUid": "qid_v1_ce941f802d1b8eb3c57b4e2c510ebf7a51dcba2dd8f0aa4ceeb081db9e7cf1a6",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_ORGANIZATION",
+    "primaryMethod": "도수분포표 정의 판정",
+    "decisiveStep": "계급 과분할은 항상 유용하지 않음",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B12",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "reviewVerdict": "REPAIR_TO_HOLD",
+    "holdReason": "도수분포표 기본 용어·계급 개수 적절성의 정의 판정에 exact ACTIVE L3/L4가 없음. FREQUENCY_DISTRIBUTION_READING 계열을 억지로 재사용하지 않음.",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-4.1.1",
+          "l3LabelKo": "도수분포",
+          "l4Id": "L4-4.1.1.1",
+          "l4LabelKo": "도수분포표"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-08",
+            "subUnitKey": "M1-08-DATA_ORGANIZATION",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "2015 frequency-reading key/binding exists; use REUSE only where the final solution matches an ACTIVE template skeleton."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "2898d4476b7b68ad5ee3930f9ae870cb048f464c5e0e6f28ae2fa914c1873c7b",
+      "finalSolutionSha256": "3d7c411b223b3088efe4a44a4aae3bf3dee7b0370d8fa0b49b66154f715745f6"
+    }
+  },
+  {
+    "id": 14,
+    "sourceOrdinal": 14,
+    "questionUid": "qid_v1_b26ca04b33e53815f07557f414dbf13946b1af4376df3d2f6625ab9944cd8bdc",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_ORGANIZATION",
+    "primaryMethod": "전체 도수 합으로 미지 도수 합",
+    "decisiveStep": "A+B=40-25",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 15,
+    "sourceOrdinal": 15,
+    "questionUid": "qid_v1_229ff4517791471b044e08f8501abfc453c24ad358729baaacdad77289e5a442",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "두 미지 도수의 배수 관계와 전체 도수",
+    "decisiveStep": "17+2x+x=50",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 16,
+    "sourceOrdinal": 16,
+    "questionUid": "qid_v1_36eeeafcfb65805b7903e7c578da232125eafb0c9efb103616d6addcd707fde5",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "도수분포다각형 보기 전수 판정",
+    "decisiveStep": "11≤성공<13이면 최대 정수 12",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 17,
+    "sourceOrdinal": 17,
+    "questionUid": "qid_v1_190a98ce4af486a1ce426c597a99fd6f9e1974a2d72936c8ae8cfbd09821a1a5",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "상위 20% 누적 도수",
+    "decisiveStep": "30×0.2=6명을 큰 기록부터 누적",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 18,
+    "sourceOrdinal": 18,
+    "questionUid": "qid_v1_c773cb8a9751eaf987c48ee27e013c339038f85ba1004ae6bdf66c41f784b2e7",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "상대도수 합→실제 도수",
+    "decisiveStep": "0.35+0.15+0.10=0.60",
+    "difficulty": {
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 19,
+    "sourceOrdinal": 19,
+    "questionUid": "qid_v1_957c3b3bfe04be724b389d76145bd21ccf7cfa6289d7d3188cf2612ddc37ef0a",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "서로 다른 집단의 상대도수→실제 인원 비교",
+    "decisiveStep": "볼링 12명 vs 수영 14명",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B34",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 20,
+    "sourceOrdinal": 20,
+    "questionUid": "qid_v1_e22423feccfc3aaac79104b3a264b8bdda8f9dab4601d9947a5f5d2d19978d13",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "상대도수 합 1로 결측 계급 복원",
+    "decisiveStep": "1-0.60=0.40",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 21,
+    "sourceOrdinal": 21,
+    "questionUid": "qid_v1_e6e0c05a84cfe1e48689beb0f9ea9929c2968c59e4933d79572c6ae221bbc84a",
+    "L1": "M1-06",
+    "L2": "M1-06-PLANE_FIGURE_MEASURE",
+    "primaryMethod": "원호 둘레 분해+렌즈 넓이 대칭",
+    "decisiveStep": "x=30π, y=100π-200",
+    "difficulty": {
+      "bucket": 4,
+      "confidence": "medium",
+      "boundary": "B45",
+      "legacyCompatibility": "NORMAL"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "복합 원호 둘레·넓이 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.3",
+          "l3LabelKo": "복합도형",
+          "l4Id": "L4-2.2.3.1",
+          "l4LabelKo": "부채꼴을 포함한 둘레"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-2.2.3",
+          "l3LabelKo": "복합도형",
+          "l4Id": "L4-2.2.3.2",
+          "l4LabelKo": "부채꼴을 포함한 넓이"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+          "templateKeys": [
+            "TPL_M1_TRAPEZOID_AREA_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Plane-measure binding exists for trapezoid area, but the source method is circle/sector geometry."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-POLYGON_CIRCLE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE binding is for polygon angle/count; circle/sector L3/L4 has no exact ACTIVE PT/TPL binding in MIDDLE1."
+        },
+        {
+          "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+          "templateKeys": [
+            "TPL_M1_TRAPEZOID_AREA_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-06",
+            "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "Plane-measure binding exists for trapezoid area, but the source method is circle/sector geometry."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "736dea459ec49ca8890a19dadced8b60f6c2970766e74f7d7d10b00e78cdf415",
+      "finalSolutionSha256": "8d0f1029f526a12bce30ad55cf8f7de3d9ee1f3488de47d60ca610fadc1c3624"
+    }
+  },
+  {
+    "id": 22,
+    "sourceOrdinal": 22,
+    "questionUid": "qid_v1_17e38663cc373d4b752187ad66ab3073f1fc707bfd859f10abe89ba3d8fe0da0",
+    "L1": "M1-07",
+    "L2": "M1-07-SOLID_FIGURE_MEASURE",
+    "primaryMethod": "사각뿔대 전개도와 사다리꼴 옆면",
+    "decisiveStep": "52+4×15=112",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "META_CANONICAL_HOLD",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "crossConceptKeys": [],
+    "holdReason": "사각뿔대 전개도·겉넓이 exact ACTIVE L3/L4 부재",
+    "reviewVerdict": "KEEP",
+    "rpmPrimaryCrosswalk": {
+      "schemaVersion": "meta-hold-crosswalk-row/1.0",
+      "existingHold": "META_CANONICAL_HOLD",
+      "rpmPrimaryVersion": "1.0",
+      "rpmPrimaryPaths": [
+        {
+          "role": "PRIMARY",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.2.4",
+          "l3LabelKo": "복합입체도형",
+          "l4Id": "L4-3.2.4.1",
+          "l4LabelKo": "잘라낸 입체"
+        },
+        {
+          "role": "SUPPORTING",
+          "rpmPrimaryVersion": "1.0",
+          "curriculum": "2015",
+          "scope": "M1-2",
+          "l3Id": "L3-3.1.1",
+          "l3LabelKo": "다면체",
+          "l4Id": "L4-3.1.1.2",
+          "l4LabelKo": "각기둥·각뿔"
+        }
+      ],
+      "activeCandidates": [
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_SEMANTIC_MISMATCH",
+          "reason": "ACTIVE solid-figure binding is component counting, not solid measurement."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2015",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active component-count template is narrower than the source/final-solution property or classification task."
+        },
+        {
+          "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+          "templateKeys": [
+            "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+            "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT"
+          ],
+          "activeStatus": "ACTIVE",
+          "binding": {
+            "curriculum": "2022",
+            "standardUnitKey": "M1-07",
+            "subUnitKey": "M1-07-SOLID_FIGURE",
+            "bindingStatus": "ACTIVE_OTHER_CURRICULUM_ONLY"
+          },
+          "matchStatus": "NEARBY_ACTIVE_TEMPLATE_MISMATCH",
+          "reason": "Active edge/face-relation templates do not exactly match this component-count/type claim."
+        }
+      ],
+      "finalDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "dispositionReason": "RPM Primary v1.0 has the matching L3/L4 path; no exact ACTIVE PT/TPL + curriculum/unit binding covers the decisive source-to-solution skeleton.",
+      "evidenceStatus": "SOURCE_AND_FINAL_SOLUTION_READ",
+      "sourceTextSha256": "8776a7b276ff174babee1635dd7b4a6bf329d89a9bda7f717fd41d3b8436cd40",
+      "finalSolutionSha256": "aa4ee65cec58a1033e045a27dd7e754a4a0b7dfa8d43478f1bc2e48000c4d8bc"
+    }
+  },
+  {
+    "id": 23,
+    "sourceOrdinal": 23,
+    "questionUid": "qid_v1_e0d96fd992b45f6ad0aa8ddf38041ad48f4a982c4b5f9a7af3794a8dfedeb66a",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_ORGANIZATION",
+    "primaryMethod": "계급 크기 통일 후 원자료 재집계",
+    "decisiveStep": "60~80 계급을 60~70/70~80으로 재분할",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  },
+  {
+    "id": 24,
+    "sourceOrdinal": 24,
+    "questionUid": "qid_v1_8dfef20b1821b5316b079c290aee3f6e66d9a6dc3f9f297d754afdde1170e2d4",
+    "L1": "M1-08",
+    "L2": "M1-08-DATA_INTERPRETATION",
+    "primaryMethod": "도수/상대도수로 전체 수→여집합",
+    "decisiveStep": "4/0.05=80, 80×0.35-4",
+    "difficulty": {
+      "bucket": 3,
+      "confidence": "medium",
+      "boundary": "B23",
+      "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    "status": "FILL_ACTIVE_REUSE",
+    "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+    "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
+    "crossConceptKeys": [],
+    "reviewVerdict": "KEEP"
+  }
+]
