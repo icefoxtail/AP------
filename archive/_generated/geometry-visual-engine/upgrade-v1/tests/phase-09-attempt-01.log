@@ -1,0 +1,157 @@
+phase=PHASE_09_STATIC_AND_EXTRA_PRIMITIVE_GATES
+attempt=1
+status=PASS
+counts commands=5/5 tests=19/19 failed=0
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-visual-engine-static.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-visual-extra-primitives.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: good point: geometry parity passes
+ok 1 - good point: geometry parity passes
+  ---
+  duration_ms: 7.9615
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 2 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 3.4507
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 3 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 5.8876
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 4 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.7176
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 5 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 11.0686
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 6 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 9.16
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 7 - open or closed state requires a circle element
+  ---
+  duration_ms: 4.0559
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 8 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 100.6187
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 9 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 3.5706
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 10 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.3303
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 11 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 9.4722
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 12 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 17.9715
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 13 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 11.1298
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 14 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 11.1243
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 15 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.2391
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 16 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5774
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 17 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.3168
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 18 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 13.2331
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 19 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 10.3825
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 299.6759
+
+--- stderr ---
+
+===== PASS exit=0 git diff --check =====
+--- stdout ---
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/verify-visual-engine-static.mjs 5ba49c48bde6faaa8c097146fa9365caa736396b4cc140afc93b52736a06bda5
+archive/tools/geometry-equation/verify-visual-extra-primitives.mjs ea057dd97236c50671bb91dcfbc142eacce93c89d3a872074458a8ef60dc752f
+archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs 00dc4e1fdd84b00cb822e7a9566197feb8e9d36c209729280f540dcc6d35fbbb

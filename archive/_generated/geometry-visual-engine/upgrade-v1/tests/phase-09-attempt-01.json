@@ -1,0 +1,54 @@
+{
+  "phase": "PHASE_09_STATIC_AND_EXTRA_PRIMITIVE_GATES",
+  "attempt": 1,
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-visual-engine-static.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-09-attempt-01-check-static.stdout.txt",
+      "stderr": "phase-09-attempt-01-check-static.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-visual-extra-primitives.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-09-attempt-01-check-extra-primitives.stdout.txt",
+      "stderr": "phase-09-attempt-01-check-extra-primitives.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-09-attempt-01-check-static-test.stdout.txt",
+      "stderr": "phase-09-attempt-01-check-static-test.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-09-attempt-01-node-tests.stdout.txt",
+      "stderr": "phase-09-attempt-01-node-tests.stderr.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-09-attempt-01-diff-check.stdout.txt",
+      "stderr": "phase-09-attempt-01-diff-check.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 5,
+    "commandsPassed": 5,
+    "tests": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/verify-visual-engine-static.mjs": "5ba49c48bde6faaa8c097146fa9365caa736396b4cc140afc93b52736a06bda5",
+    "archive/tools/geometry-equation/verify-visual-extra-primitives.mjs": "ea057dd97236c50671bb91dcfbc142eacce93c89d3a872074458a8ef60dc752f",
+    "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs": "00dc4e1fdd84b00cb822e7a9566197feb8e9d36c209729280f540dcc6d35fbbb"
+  }
+}
