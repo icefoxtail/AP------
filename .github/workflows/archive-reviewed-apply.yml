@@ -1,0 +1,181 @@
+name: Archive Reviewed Apply Bridge v1
+
+on:
+  push:
+    branches:
+      - "archive-apply/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-reviewed-apply-target-writer
+  cancel-in-progress: false
+
+jobs:
+  reviewed-apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout staging branch with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find the single APPLY_PACKET
+        id: packet
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t packets < <(find .archive-apply/inbox -maxdepth 1 -type f -name '*.json' -print 2>/dev/null | sort)
+          if [[ ${#packets[@]} -ne 1 ]]; then
+            echo "Expected exactly one APPLY_PACKET under .archive-apply/inbox; found ${#packets[@]}" >&2
+            exit 1
+          fi
+          packet="${packets[0]}"
+          inspection="$(node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs inspect --packet "$packet")"
+          target_ref="$(jq -r '.targetRef' <<<"$inspection")"
+          target_base_sha="$(jq -r '.targetBaseSha' <<<"$inspection")"
+          apply_id="$(jq -r '.applyId' <<<"$inspection")"
+          echo "packet=$packet" >> "$GITHUB_OUTPUT"
+          echo "target_ref=$target_ref" >> "$GITHUB_OUTPUT"
+          echo "target_base_sha=$target_base_sha" >> "$GITHUB_OUTPUT"
+          echo "apply_id=$apply_id" >> "$GITHUB_OUTPUT"
+
+      - name: Check target base before any generation
+        id: base
+        shell: bash
+        env:
+          TARGET_REF: ${{ steps.packet.outputs.target_ref }}
+          TARGET_BASE_SHA: ${{ steps.packet.outputs.target_base_sha }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "refs/heads/${TARGET_REF}"
+          current_target_sha="$(git rev-parse FETCH_HEAD)"
+          if [[ "$current_target_sha" != "$TARGET_BASE_SHA" ]]; then
+            echo "APPLY_BASE_STALE: $TARGET_REF is $current_target_sha, packet base is $TARGET_BASE_SHA" >&2
+            exit 1
+          fi
+          echo "target_sha=$current_target_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Validate staging protocol and final file hashes
+        run: >-
+          node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs
+          preflight
+          --packet "${{ steps.packet.outputs.packet }}"
+          --target-sha "${{ steps.base.outputs.target_sha }}"
+
+      - name: Check canonical Meta Foundation baseline
+        run: node archive/tools/meta-foundation/compile-meta-foundation.mjs --check
+
+      - name: Validate reviewed UID Meta patch without writing
+        run: >-
+          node archive/tools/meta-foundation/apply-reviewed-meta-patch.mjs
+          --packet "${{ steps.packet.outputs.packet }}"
+          --check
+
+      - name: Apply reviewed UID Meta patch and persist evidence
+        run: >-
+          node archive/tools/meta-foundation/apply-reviewed-meta-patch.mjs
+          --packet "${{ steps.packet.outputs.packet }}"
+          --write
+
+      - name: Rebuild registration artifacts from repository sources
+        run: python archive/build_db.py
+
+      - name: Rebuild affected runtime packs from reviewed metadata
+        run: >-
+          node archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs
+          --packet "${{ steps.packet.outputs.packet }}"
+          --write
+
+      - name: Rebuild Archive2 catalog and crosswalk
+        run: |
+          node archive/tools/build-archive2-catalog.mjs
+          node archive/tools/build-archive2-crosswalk-inventory.mjs
+
+      - name: Validate registration, canonical taxonomy, runtime, and assets
+        run: |
+          node archive/tools/verify-archive-registration.mjs
+          node archive/tools/build-archive2-catalog.mjs --check
+          node archive/tools/build-archive2-crosswalk-inventory.mjs --check
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          node archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs --packet "${{ steps.packet.outputs.packet }}" --check
+          node tests/archive-question-identity-contract.test.mjs
+          node tests/archive-question-identity-runtime.test.mjs
+          git diff --check
+
+      - name: Prove generator idempotence after removing transient packet
+        id: idempotence
+        shell: bash
+        env:
+          PACKET: ${{ steps.packet.outputs.packet }}
+          TARGET_BASE_SHA: ${{ steps.base.outputs.target_sha }}
+          APPLY_ID: ${{ steps.packet.outputs.apply_id }}
+        run: |
+          set -euo pipefail
+          packet_copy="/tmp/archive-reviewed-apply-${APPLY_ID}.json"
+          cp -- "$PACKET" "$packet_copy"
+          node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs remove-packet --packet "$PACKET"
+          before="$(node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs snapshot --base-sha "$TARGET_BASE_SHA")"
+          python archive/build_db.py
+          node archive/tools/build-question-index.mjs
+          node archive/tools/build-archive2-catalog.mjs
+          node archive/tools/build-archive2-crosswalk-inventory.mjs
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          node archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs --check
+          after="$(node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs snapshot --base-sha "$TARGET_BASE_SHA")"
+          if [[ "$before" != "$after" ]]; then
+            echo "Generator idempotence failed: second pass changed generated output." >&2
+            diff -u <(jq -S . <<<"$before") <(jq -S . <<<"$after") || true
+            exit 1
+          fi
+          echo "PASS: second generator pass made no changes."
+
+      - name: Squash generated output to one target-base commit
+        id: final
+        env:
+          PACKET: ${{ steps.packet.outputs.packet }}
+          TARGET_BASE_SHA: ${{ steps.base.outputs.target_sha }}
+          APPLY_ID: ${{ steps.packet.outputs.apply_id }}
+        run: |
+          packet_copy="/tmp/archive-reviewed-apply-${APPLY_ID}.json"
+          node archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs finalize --packet "$packet_copy" --staging-packet-path "$PACKET" --target-base-sha "$TARGET_BASE_SHA" | tee /tmp/archive-reviewed-apply-final.json
+          echo "final_commit=$(jq -r '.finalCommit' /tmp/archive-reviewed-apply-final.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Recheck target SHA and fast-forward one commit
+        shell: bash
+        env:
+          TARGET_REF: ${{ steps.packet.outputs.target_ref }}
+          TARGET_BASE_SHA: ${{ steps.base.outputs.target_sha }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin "refs/heads/${TARGET_REF}"
+          current_target_sha="$(git rev-parse FETCH_HEAD)"
+          if [[ "$current_target_sha" != "$TARGET_BASE_SHA" ]]; then
+            echo "APPLY_BASE_STALE: target changed during APPLY; refusing push." >&2
+            exit 1
+          fi
+          if ! git push origin "HEAD:refs/heads/${TARGET_REF}"; then
+            git fetch --no-tags origin "refs/heads/${TARGET_REF}" || true
+            latest_target_sha="$(git rev-parse FETCH_HEAD 2>/dev/null || true)"
+            if [[ "$latest_target_sha" != "$TARGET_BASE_SHA" ]]; then
+              echo "APPLY_BASE_STALE: target advanced during fast-forward push; no force push attempted." >&2
+            fi
+            exit 1
+          fi
+
+      - name: Delete successful staging branch
+        env:
+          STAGING_BRANCH: ${{ github.ref_name }}
+        run: git push origin --delete "$STAGING_BRANCH"
