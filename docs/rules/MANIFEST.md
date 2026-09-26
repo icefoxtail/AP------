@@ -1,7 +1,7 @@
 # rules source pack manifest
 
 created: 2026-09-19T09:21:00+09:00
-updated: 2026-09-25
+updated: 2026-09-26
 scope: current operational rules under `docs/rules/` excluding `05_DESIGN/` and `90_ARCHIVE/`
 excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical rule versions under `90_ARCHIVE/`
 
@@ -9,17 +9,19 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 
 ## files
 
-- 00_RULES_INDEX.md | 15853 bytes | sha256 e4bf63da390a6c96e1f7b0578568b9d489e13ea18f09508ab97e62cf43029bae
+- 00_RULES_INDEX.md | 17320 bytes | sha256 936e0161b697afc812c058b62d1e6c5a82ad85b81278a2f505df8d9a6ae88f9f
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
-- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 45163 bytes | sha256 ccb1eafdc6cfb30722c4ab45bbeccd0fef0f8e12571386a6353175a313a7ec98
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 47813 bytes | sha256 6a02139e5f716e1f07043bbbf5b414108a9bd22dfbd545e071ebb76ef4a6faef
+- 01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md | 1839 bytes | sha256 3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332
+- 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 555923 bytes | sha256 0409c489f167211f961cc14811c204f2056511f4c029091feddfdc8384c367bf
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 94556 bytes | sha256 88668b3e35b813bef036571686e8205d2e6189601ce3c25b09ae14032c328213
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
-- 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 23141 bytes | sha256 d6388eec89047f19ba16b66c9f23fc39908d5bbf5e99318e279e9ff2c79514be
+- 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 24292 bytes | sha256 7cecfad8b0fb20aea1b190d06f8dea56af38ada007eb08591999282a6dd306e6
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17795 bytes | sha256 efa2cc23237b12ffa2508d998dfb78612738359e8c1bca11cf97513f03d609a5
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 130796 bytes | sha256 5fbe4daf2a8fb7a70602dee2a9849ba0285b2030b3b9d0a10783b573debd150b
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
