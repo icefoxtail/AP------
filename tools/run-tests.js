@@ -34,6 +34,26 @@ const requiredCommands = [
     args: ['--check', 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs']
   },
   {
+    label: 'archive/tools/meta-foundation/reviewed-apply-core.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/reviewed-apply-core.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/apply-reviewed-meta-patch.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/apply-reviewed-meta-patch.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/rebuild-reviewed-runtime.mjs']
+  },
+  {
+    label: 'archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs syntax',
+    args: ['--check', 'archive/tools/meta-foundation/archive-reviewed-apply-staging.mjs']
+  },
+  {
+    label: 'tests/archive-reviewed-apply-bridge.test.mjs',
+    args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
+  },
+  {
     label: 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs',
     args: ['--test', 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs']
   },
