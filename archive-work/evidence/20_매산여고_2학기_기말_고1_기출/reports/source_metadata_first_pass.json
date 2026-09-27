@@ -1,0 +1,3833 @@
+{
+  "schema": "PAST_EXAM_SOURCE_METADATA_FIRST_PASS_v1",
+  "status": "SOURCE_FIRST_PASS",
+  "catalogSha": "sha256:d9ee6aa3224541ddb7171eb5e326519bcc8473ccd3f153c4c208a318a11ea840",
+  "catalogRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "sha256:1ba5319b4358896d5a88453b648771a53edd52a4b63d7377e0a0610b4170afe0"
+    }
+  ],
+  "productionAuthorized": false,
+  "solutionReviewRequired": true,
+  "items": [
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|1",
+      "sourceFingerprint": "sha256:a69a9e3b550da57569cb7bfcf57c4063637cbb2222842ff66f44f55610117a63",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "유한 정의역에서 같은 함수 조건",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_FUNCTION_EQUALITY",
+        "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하",
+        "tags": [
+          "기출",
+          "고1",
+          "함수의 정의",
+          "같은 함수",
+          "유한 정의역",
+          "계수 조건"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "정의역이 $\\{1,3\\}$인 두 함수 $f(x)=4x$"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|2",
+      "sourceFingerprint": "sha256:8e079feec05eb004c9b40cb033551365e68285ffa2f679cad5c280886b7e9bc7",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "곱셈형 함수방정식과 역함수 성질",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+        "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "함수방정식",
+          "곱셈형",
+          "역함수",
+          "참·거짓 판정"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "함수 $f$에 대하여 역함수 $f^{-1}$가 존재하고"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|3",
+      "sourceFingerprint": "sha256:bae6fdb938ca5b1a032e594c68463d477526dc4552155fd3d7b9d25e915512ea",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "정의역·치역 포함 조건에서 계수의 최댓값",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+        "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_EXTREMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "정의역",
+          "치역",
+          "일차함수",
+          "계수의 최댓값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "두 집합 $X=\\{x\\mid 1\\le x\\le5\\}$,"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|4",
+      "sourceFingerprint": "sha256:84ecf80734db8511ae42286c6566a98e57031d47113b364e5db0b6257c71fdd9",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "subUnit": "합성함수",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "합성함수 관계에서 함수값 구하기",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+        "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "하",
+        "tags": [
+          "기출",
+          "고1",
+          "합성함수",
+          "함수값",
+          "합성 관계"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "두 함수 $f(x)=2x+1$, $g(x)=-2x+3$"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|5",
+      "sourceFingerprint": "sha256:2774db95f5824ea90e6f5197c45e7f62ba1def853e33e0718728fddb6eb5776a",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "subUnit": "합성함수",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "함수의 반복합성과 주기",
+        "originalCategory": "합성함수",
+        "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "problemTypeKey": "PT_ITERATED_COMPOSITION",
+        "templateKey": "TPL_ITERATION_RULE",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "반복합성",
+          "함수의 주기",
+          "그래프",
+          "함숫값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "집합 $X=\\{1,2,3,4\\}$에 대하여 함수 $f:"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|6",
+      "sourceFingerprint": "sha256:553ae0d44aa6163c9e627371861014b1d68e6d27a23ecf5437008f3c4100c082",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "subUnit": "합성함수",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "역함수와 합성함수 관계에서 함수값 구하기",
+        "originalCategory": "합성함수",
+        "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "problemTypeKey": "PT_INVERSE_COMPOSITION",
+        "templateKey": "TPL_INVERSE_CONJUGATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "합성함수",
+          "역함수",
+          "항등함수",
+          "함수값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "실수 전체의 집합에서 정의된 세 함수 $f,g,h$에 "
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|7",
+      "sourceFingerprint": "sha256:50fd3c0b7c9a2834416750bcde6ba77f646fced6c61133fb816997f3f953c534",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "정의역 제한으로 이차함수의 일대일성 판단",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "일대일함수",
+          "역함수 존재",
+          "이차함수",
+          "정의역 제한"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "집합 $X=\\{x\\mid x\\ge a\\}$에 대하여 $"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|8",
+      "sourceFingerprint": "sha256:7fd7c841172e9e64b9529b49e48fbe8dbab5f6eb9a32049d530ac5b8f1429f77",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "유리함수 그래프와 무리함수 사분면 관계",
+        "originalCategory": "유리함수",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "유리함수",
+          "무리함수",
+          "그래프",
+          "사분면",
+          "매개변수 관계"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "유리함수 $y=\\frac{bx+c}{x+a}$의 그래프"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|9",
+      "sourceFingerprint": "sha256:eaba671f806038045e8ff7ee42c9c8d4fc40fc05283f2f1bf75357df31dc5101",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "유리함수 그래프의 대칭 직선",
+        "originalCategory": "유리함수",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "유리함수",
+          "그래프의 대칭",
+          "직선",
+          "계수 관계"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "유리함수 $y=\\frac{3-4x}{2x+1}$의 그래"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|10",
+      "sourceFingerprint": "sha256:2ba1d9f3b4c1e8368c8e6fb0c174332cfaa43c2758915600d06d1621c49ed6b3",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "subUnit": "유리함수의 활용",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "유리함수의 구간 최댓값과 최솟값",
+        "originalCategory": "유리함수",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_APPLICATION",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "유리함수",
+          "점근선",
+          "구간",
+          "최댓값",
+          "최솟값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "유리함수 $y=\\frac{ax+b}{x+2}$의 그래프"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 활용에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|11",
+      "sourceFingerprint": "sha256:3c3bed2f242d25b18c95887e72fd2765f5f8f510180ed7668ce609f1cc3fe77d",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "subUnit": "조건이 있는 순열",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "이웃 조건과 양 끝 조건이 있는 순열",
+        "originalCategory": "순열",
+        "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "순열",
+          "이웃 조건",
+          "양 끝 조건",
+          "경우의 수"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "$q,u,e,s,t,i,o,n$의 8개의 문자를 일렬로"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|12",
+      "sourceFingerprint": "sha256:44cbee300091fcfdc4cff70cc56865c685d251bce87aafdecde319b2cfff1068",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "조각함수의 치역과 일대일 조건",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "조각함수",
+          "치역",
+          "일대일함수",
+          "유리함수",
+          "무리함수"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "실수 전체의 집합에서 정의된 함수 $f(x)=\\begi"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|13",
+      "sourceFingerprint": "sha256:3bd05c9c7861435e1b9a197b7d6c2db4442f631d9dc9085ac0269208eaa25fa5",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "유리함수·무리함수의 사분면 조건과 정수 매개변수",
+        "originalCategory": "유리함수",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "유리함수",
+          "무리함수",
+          "사분면",
+          "정수 매개변수"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "유리함수 $y=\\frac{k}{x-3}+2$의 그래프가"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|14",
+      "sourceFingerprint": "sha256:1bb7f7b3cf0b961809f24bab737ab807bee03fc1f1ba19e8813609c03e0b00ef",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "subUnit": "조건이 있는 순열",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "첫째·마지막 조건이 있는 도착 순서",
+        "originalCategory": "경우의 수",
+        "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "순열",
+          "도착 순서",
+          "첫째·마지막 조건",
+          "경우의 수"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "수학 행사장에는 $A$동아리 학생 2명과 $B$동아리 "
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|15",
+      "sourceFingerprint": "sha256:622f6706f3232fa719e014f743f8b634d9035f186c93cc3629f84607009a3a3c",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-08",
+        "standardUnit": "조합",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
+        "subUnit": "조합",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "원 위의 점을 골라 삼각형 분류하기",
+        "originalCategory": "조합",
+        "conceptClusterKey": "H15-SB-08-COMBINATION_BASIC",
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "조합",
+          "원 위의 점",
+          "삼각형",
+          "각의 분류"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "다음 그림과 같이 원 위에 있는 12개의 점 중에서 3"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 조합 / 조합에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|16",
+      "sourceFingerprint": "sha256:9b517be6fcb20cf84214469c185784585479612bf5c192426827797ddf8066fe",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-06",
+        "standardUnit": "경우의 수",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "subUnit": "경우의 수의 기본 원리",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "영역 인접 조건이 있는 색칠 경우의 수",
+        "originalCategory": "경우의 수",
+        "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "경우의 수",
+          "색칠",
+          "인접 조건",
+          "그래프"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "오른쪽 그림의 4개의 영역 $A,B,C,D$를 서로 다"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 경우의 수 / 경우의 수의 기본 원리에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|17",
+      "sourceFingerprint": "sha256:e39f4ef5fb857444d3863ebc7ca135c075292f9c333e06ad3c5bae3516839967",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+        "subUnit": "조건이 있는 순열",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "같은 문자가 있고 인접·양 끝 조건이 있는 순열",
+        "originalCategory": "순열",
+        "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "같은 것이 있는 순열",
+          "인접 금지",
+          "문자 배열",
+          "조건부 순열"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "8개의 $a$와 4개의 $b$를 모두 사용하여 만든 1"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 조건이 있는 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|주관식1",
+      "sourceFingerprint": "sha256:3102d9ffa604604e42241bf9a2ea4f8abefe29c7f7bcc22179fef30d2d4b84aa",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-04",
+        "standardUnit": "유리함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+        "subUnit": "유리함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "역함수 그래프의 점근선",
+        "originalCategory": "유리함수",
+        "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+        "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+        "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "유리함수",
+          "역함수",
+          "점근선"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "함수 $f(x)=\\frac{2-3x}{x-5}$의 역함"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 유리함수 / 유리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|주관식2",
+      "sourceFingerprint": "sha256:880bc0d4a481fbc88a7255cf7a293b69f6bbec122aa597c458e640198824f601",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+        "subUnit": "함수의 뜻과 대응",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "일대일 조건과 이웃한 함수값 차가 있는 함수의 개수",
+        "originalCategory": "함수",
+        "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "일대일함수",
+          "함수의 개수",
+          "함수값 차이",
+          "유한집합"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "집합 $A$가 $A=\\{1,2,3,4,5,6\\}$일 때"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 함수의 뜻과 대응에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|주관식3",
+      "sourceFingerprint": "sha256:f4183b050c0e3c41355c180b497945a91a30ea0e60a4bc1006c6de6f32a5a397",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-07",
+        "standardUnit": "순열",
+        "standardUnitOrder": 7,
+        "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+        "subUnit": "순열",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "순열의 역순위",
+        "originalCategory": "순열",
+        "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "중",
+        "tags": [
+          "기출",
+          "고1",
+          "순열",
+          "사전식 순위",
+          "역순위",
+          "자연수"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "medium",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "5개의 숫자 1, 3, 5, 7, 9를 모두 사용하여 "
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 순열 / 순열에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|주관식4",
+      "sourceFingerprint": "sha256:7cdd87fc147aaad018f1a6a913f9c94383e7009a66b62ccec6f0426505658418",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-05",
+        "standardUnit": "무리함수",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "subUnit": "무리함수의 그래프",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "무리함수 그래프 위 점과 삼각형 넓이의 최솟값",
+        "originalCategory": "무리함수",
+        "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "무리함수",
+          "그래프 위의 점",
+          "삼각형 넓이",
+          "최솟값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "두 점 $A(0,1)$, $B(1,2)$와 곡선 $y="
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 무리함수 / 무리함수의 그래프에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    },
+    {
+      "sourceIdentityKey": "sha256:9ecc3f5aac8f4c2cc5454579507ce2f409d2db5366f0c0036b6e213efe4ce913|주관식5",
+      "sourceFingerprint": "sha256:dbb3776241df20d53310b1f90c265bfda317972b42b0a41de712871e4d9c149d",
+      "values": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)",
+        "standardUnitKey": "H15-SB-03",
+        "standardUnit": "함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "subUnit": "합성함수",
+        "subUnitConfidence": "candidate_evidence",
+        "subUnitClassificationDepth": "complete_candidate",
+        "category": "합성함수의 치역 원소 개수 조건",
+        "originalCategory": "합성함수",
+        "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+        "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+        "templateKey": "TPL_COMPOSITE_RANGE",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "low",
+        "difficultyBoundaryFlag": "UNKNOWN",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "level": "상",
+        "tags": [
+          "기출",
+          "고1",
+          "합성함수",
+          "치역",
+          "자연수의 개수",
+          "최솟값"
+        ],
+        "layoutTag": "grid",
+        "wide": false
+      },
+      "confidence": "low",
+      "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다.",
+      "sourceExcerpts": [
+        "두 함수 $f(x)=3x+2$, $g(x)=(2x-1)"
+      ],
+      "unresolvedFields": [
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        {
+          "field": "level",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        }
+      ],
+      "status": "FIRST_PASS_FILLED",
+      "solutionReviewRequired": true,
+      "fieldStatus": {
+        "curriculum": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardCourse": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "standardUnitOrder": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnit": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitConfidence": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "subUnitClassificationDepth": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "category": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "originalCategory": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "conceptClusterKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "problemTypeKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "templateKey": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "crossConceptKeys": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "추가 ACTIVE CrossConcept를 발문 근거만으로 확정하지 않았다. 실제 풀이에서 필요 여부를 다시 판단한다."
+        },
+        "conditionKeys": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "integrationPattern": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "difficultyBucket": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "원문 단계의 복잡도 예상이며 독립 풀이 뒤 새 난이도 판단이 필요하다."
+        },
+        "difficultyConfidence": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "독립 blind 난이도 판단 뒤 confidence를 다시 부여한다."
+        },
+        "difficultyBoundaryFlag": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "난이도 경계는 풀이 확인 후 다시 판단한다."
+        },
+        "legacyLevelCompatibility": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 호환성은 독립 난이도 판단 후 다시 검증한다."
+        },
+        "level": {
+          "status": "DEFERRED_TO_SOLUTION",
+          "reason": "기존 level 예상은 풀이 및 독립 난이도 판단 후 다시 검증한다."
+        },
+        "tags": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "layoutTag": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        },
+        "wide": {
+          "status": "FIRST_PASS_FILLED",
+          "reason": "표지상 2020학년도 고1 수학(하) 2학기 기말 원문에서 직접 확인한 발문·선지·조건을 근거로 함수 / 합성함수에 1차 분류했다. 난이도와 유형은 source-only 추정으로 풀이 뒤 재검한다."
+        }
+      }
+    }
+  ],
+  "classifiedCount": 22
+}
