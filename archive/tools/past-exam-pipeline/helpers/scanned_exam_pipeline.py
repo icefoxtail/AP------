@@ -385,9 +385,11 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
             bbox = normalize_bbox(raw_q.get("visualAssetBBox") or raw_q.get("visualAssetBBoxOnPage") or raw_q.get("bbox"))
             bbox_ok, bbox_reasons = bbox_validation(bbox, int(page_meta["width"]), int(page_meta["height"])) if has_visual else (True, [])
             review_reasons = []
+            if str(raw_q.get("displayNo") or "").strip() != display_no:
+                schema_errors.append({"pageNo": page_no, "error": "SOURCE_DISPLAY_NUMBER_MISMATCH", "expected": display_no, "actual": raw_q.get("displayNo")})
             if not content:
                 review_reasons.append("content_empty_or_not_extracted")
-            if question_type == "객관식" and len(choices) not in (0, 5):
+            if question_type == "객관식" and len(choices) != 5:
                 review_reasons.append("objective_choices_count_not_5")
             if has_visual and not bbox_ok:
                 review_reasons.extend(bbox_reasons)
@@ -466,13 +468,16 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
                     "choicesStatus": "ok" if choices else "empty_or_not_required",
                     "hasVisualAsset": str(has_visual),
                 })
-    frozen_count = len(source_inventory.get("questions") or [])
+    frozen_count = sum(item.get("disposition") != "EXCLUDED_WITH_EVIDENCE" for item in source_inventory.get("questions") or [])
     if sequential_id - 1 != frozen_count:
         schema_errors.append({
             "error": "SOURCE_INVENTORY_COVERAGE_FAIL",
             "expected": frozen_count,
             "actual": sequential_id - 1,
         })
+    expected_keys = [item["sourceIdentityKey"] for item in source_inventory.get("questions", []) if item.get("disposition") != "EXCLUDED_WITH_EVIDENCE"]
+    if [q["sourceIdentityKey"] for q in questions] != expected_keys:
+        schema_errors.append({"error": "SOURCE_IDENTITY_ORDER_OR_COVERAGE_FAIL"})
     return questions, review_rows, schema_errors
 
 
@@ -551,7 +556,8 @@ def write_candidate_js(manifest, questions, candidate_file):
     )
 
 
-def crop_visual_assets(root, questions, exam_id=None):
+def crop_visual_assets(root, questions, exam_id=None, asset_root=None):
+    asset_root = Path(asset_root) if asset_root else root
     if exam_id is not None and (not exam_id or "/" in exam_id or "\\" in exam_id or ".." in exam_id):
         raise ValueError("INVALID_EXAM_ASSET_PREFIX")
     results = []
@@ -588,7 +594,7 @@ def crop_visual_assets(root, questions, exam_id=None):
                 x1, y1, x2, y2 = bbox["x1"], bbox["y1"], bbox["x2"], bbox["y2"]
                 prefix = f"assets/images/{exam_id}" if exam_id else "assets"
                 asset_rel = f"{prefix}/q{int(q['id']):03d}_visual.png"
-                asset_path = root / asset_rel
+                asset_path = asset_root / asset_rel
                 asset_path.parent.mkdir(parents=True, exist_ok=True)
                 image.crop((x1, y1, x2, y2)).save(asset_path)
                 asset_sha = "sha256:" + hashlib.sha256(asset_path.read_bytes()).hexdigest()
@@ -952,21 +958,58 @@ def write_final_reports(root, manifest, page_items, questions, manual_review_row
     return validation
 
 
+def write_source_reports(root, manifest, page_items, questions, manual_review_rows, crop_results, image_gate, working_file):
+    reports = root / "reports"
+    write_json(reports / "vision_asset_crop_map.json", {"items": crop_results})
+    write_json(reports / "visual_asset_link_audit.json", image_gate)
+    write_json(reports / "extraction_manual_review.json", {"items": manual_review_rows})
+    status = "SOURCE_EXTRACTED_REVIEW_REQUIRED" if not manual_review_rows and image_gate["status"] == "ok" else "NEEDS_WORK"
+    validation = {"status": status, "scope": "SOURCE_ONLY", "workingExam": str(working_file),
+                  "questionCount": len(questions), "pageCount": len(page_items),
+                  "visualAssetCropCount": sum(item.get("status") == "asset_crop_success" for item in crop_results),
+                  "manualReviewCount": len(manual_review_rows), "sourceFidelity": "REVIEW_REQUIRED",
+                  "assetSemantics": "REVIEW_REQUIRED", "productionAuthorized": False,
+                  "answerSolutionPolicy": "OUT_OF_SCOPE", "imageFieldPolicy": "visual_asset_only_never_question_crop"}
+    write_json(reports / "validation_summary.json", validation)
+    return validation
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--dpi", type=int, default=220)
-    parser.add_argument("--candidate-file", required=True)
+    parser.add_argument("--candidate-file", default="")
+    parser.add_argument("--working-exam", default="")
+    parser.add_argument("--prepare-only", action="store_true")
+    parser.add_argument("--replace-source", action="store_true")
     parser.add_argument("--vision-json", default="")
     parser.add_argument("--create-question-crops", action="store_true", help="debug only; generated crops are never linked to candidate image")
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest)
-    # Direct Python entry cannot bypass S0/S0.5 by avoiding run-one-exam.mjs.
-    subprocess.run(["node", str(Path(__file__).resolve().parents[1] / "calibration.mjs"),
-                    "--check", "--manifest", str(manifest_path.resolve())],
-                   check=True, stdout=subprocess.PIPE, encoding="utf-8")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    folder_mode = manifest.get("storageLayout") == "ARCHIVE_FOLDERS"
+    source_only = folder_mode and manifest.get("extractionScope") == "SOURCE_ONLY"
+    working_file = args.working_exam or args.candidate_file
+    if not working_file:
+        raise ValueError("WORKING_EXAM_REQUIRED")
+    if folder_mode:
+        subprocess.run(["node", str(Path(__file__).resolve().parents[1] / "run-source-exam.mjs"),
+                        "--check-workspace", "--root", manifest["projectRoot"], "--manifest", str(manifest_path.resolve()),
+                        *(["--replace-source"] if args.replace_source else []), *(["--prepare"] if args.prepare_only else [])],
+                       check=True, stdout=subprocess.PIPE, encoding="utf-8")
+        if Path(args.out).resolve() != Path(manifest["outputDir"]).resolve() or Path(working_file).resolve() != Path(manifest["workingExamPath"]).resolve():
+            raise ValueError("WORKSPACE_PATH_MISMATCH")
+        if Path(working_file).exists() and not args.replace_source and not args.prepare_only:
+            raise ValueError("WORKING_EXAM_EXISTS")
+    if not source_only:
+        # Full production jobs retain their existing calibration contract.
+        subprocess.run(["node", str(Path(__file__).resolve().parents[1] / "calibration.mjs"),
+                        "--check", "--manifest", str(manifest_path.resolve())],
+                       check=True, stdout=subprocess.PIPE, encoding="utf-8")
+    if args.prepare_only and not source_only:
+        raise ValueError("PREPARE_ONLY_REQUIRES_SOURCE_SCOPE")
     root = Path(args.out)
     resolved_root = root.resolve()
     protected_roots = [
@@ -1012,6 +1055,17 @@ def main():
         "items": [],
     })
 
+    if args.prepare_only:
+        write_vision_contract_reports(root, manifest, page_items)
+        draft_path = root / "inventory-input.json"
+        if not draft_path.exists():
+            write_json(draft_path, {"schema": "PAST_EXAM_SOURCE_INVENTORY_v1", "examId": manifest["examId"],
+                                   "status": "UNVERIFIED", "pageCount": len(page_items), "questions": []})
+        print(json.dumps({"status": "SOURCE_PAGES_READY", "pageCount": len(page_items),
+                          "inventoryDraft": str(draft_path), "extractionRequest": str(reports / "vision_page_extract_request.json"),
+                          "workingExam": working_file, "jsWritten": False}, ensure_ascii=False, indent=2))
+        return
+
     source_inventory = load_frozen_source_inventory(manifest, page_items)
     manifest["expectedQuestionCount"] = len(source_inventory.get("questions") or [])
 
@@ -1050,9 +1104,13 @@ def main():
     manifest["answerSolutionPolicy"] = "excluded_from_extraction_pipeline"
     write_json(root / "manifest.json", manifest)
 
-    crop_results = crop_visual_assets(root, questions, manifest["examId"])
+    if folder_mode and (schema_errors or any(not q.get("content") for q in questions)):
+        write_json(reports / "extraction_errors.json", {"schemaErrors": schema_errors, "manualReview": manual_review_rows})
+        raise ValueError("SOURCE_EXTRACTION_INCOMPLETE: existing JS is preserved")
+    crop_results = crop_visual_assets(root, questions, manifest["examId"], manifest.get("assetRoot") if folder_mode else None)
     image_gate = image_path_gate(questions)
-    write_candidate_js(manifest, questions, Path(args.candidate_file))
+    if not source_only:
+        write_candidate_js(manifest, questions, Path(working_file))
 
     debug_items = []
     debug_contact_sheet = ""
@@ -1060,7 +1118,14 @@ def main():
         debug_items = make_debug_question_crops(root, page_items, int(manifest.get("expectedQuestionCount") or 0))
         debug_contact_sheet = make_debug_contact_sheet(root, debug_items)
 
-    validation = write_final_reports(root, manifest, page_items, questions, manual_review_rows, schema_errors, crop_results, image_gate, Path(args.candidate_file), debug_items, debug_contact_sheet)
+    if source_only:
+        for q in questions:
+            q["answerStatus"] = "out_of_scope"
+            q["solutionStatus"] = "out_of_scope"
+        write_candidate_js(manifest, questions, Path(working_file))
+        validation = write_source_reports(root, manifest, page_items, questions, manual_review_rows, crop_results, image_gate, Path(working_file))
+    else:
+        validation = write_final_reports(root, manifest, page_items, questions, manual_review_rows, schema_errors, crop_results, image_gate, Path(working_file), debug_items, debug_contact_sheet)
     print(json.dumps(validation, ensure_ascii=False, indent=2))
 
 

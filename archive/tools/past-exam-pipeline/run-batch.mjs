@@ -3,6 +3,7 @@ import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, listPdfFiles, readJson, rel, writeJson } from "./lib/fs-utils.mjs";
 import { buildManifestFromInventoryItem, parseExamPdfMetadata } from "./lib/exam-id.mjs";
 import { runOneExam } from "./run-one-exam.mjs";
+import { runFolderExtraction } from "./lib/folder-extraction.mjs";
 
 function toFullYear(twoDigit) {
   const n = Number(twoDigit);
@@ -56,7 +57,7 @@ function summarizeJobResult(job, result, index) {
     outputDir: job.outputDir,
     status: result?.status || "unknown",
     currentStage: result?.currentStage || "",
-    candidateFile: result?.candidateFile || "",
+    candidateFile: result?.workingExam || result?.candidateFile || "",
     questionCount: result?.questionCount ?? 0,
     cropCount: result?.cropCount ?? 0,
     contentTranscriptionQueue: result?.contentTranscriptionQueue || "",
@@ -186,6 +187,7 @@ async function buildInventory(cfg) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const cfg = await loadConfig(args);
+  if (args.prepare && !args.sourceOnly) throw new Error("--prepare requires --source-only");
   const needsInventory = args.inventory || args.createSelected || (!args.selectedManifest && !args.runSelected);
   const inventory = needsInventory ? await buildInventory(cfg) : null;
   if (args.createSelected) {
@@ -216,12 +218,13 @@ async function main() {
     }
     const selectedManifest = await readJson(manifestFile);
     if (!selectedManifest?.jobs?.length) throw new Error("selected manifest has no jobs");
+    if (new Set(selectedManifest.jobs.map(job => job.examId)).size !== selectedManifest.jobs.length) throw new Error("DUPLICATE_EXAM_ID_REQUIRES_SOURCE_SELECTION");
     const results = [];
     await writeBatchProgress(cfg, manifestFile, selectedManifest.jobs, results, null);
     for (const [index, job] of selectedManifest.jobs.entries()) {
       await writeBatchProgress(cfg, manifestFile, selectedManifest.jobs, results, index);
       try {
-        results.push(await runOneExam(cfg, job));
+        results.push(args.sourceOnly ? await runFolderExtraction(job, { root: cfg.projectRoot, workRoot: args.workRoot || job.workRoot || cfg.workRoot, sourceOnly: true, prepareOnly: args.prepare, dpi: cfg.cropDpi || 220 }) : await runOneExam(cfg, job));
       } catch (error) {
         results.push({
           examId: job.examId,
@@ -242,7 +245,7 @@ async function main() {
       selectedManifest: manifestFile,
       jobCount: selectedManifest.jobs.length,
       results,
-      status: results.some((r) => ["manual_review", "partial", "blocked", "fail"].includes(r.status)) ? "partial" : "ok"
+      status: results.some((r) => ["NEEDS_WORK", "manual_review", "partial", "blocked", "fail"].includes(r.status)) ? "partial" : "ok"
     };
     await writeJson(path.join(cfg.batchDir, "batch_validation_summary.json"), summary);
     await writeBatchProgress(cfg, manifestFile, selectedManifest.jobs, results, null);

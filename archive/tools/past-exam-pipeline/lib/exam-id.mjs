@@ -147,6 +147,7 @@ export function parseExamPdfMetadata(file, sourceRoot = "") {
 }
 
 export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
+  if (cfg.workRoot && duplicateIndex > 0) throw new Error(`DUPLICATE_EXAM_ID_REQUIRES_SOURCE_SELECTION:${item.examId}`);
   const safeExamId = duplicateIndex > 0 ? `${item.examId}_${duplicateIndex + 1}` : item.examId;
   const gradeMatch = String(item.grade || "").match(/^(고|중)([1-3])$/);
   const level = gradeMatch ? (gradeMatch[1] === "고" ? "high" : "middle") : "";
@@ -175,8 +176,9 @@ export function buildManifestFromInventoryItem(item, cfg, duplicateIndex = 0) {
     solutionPdfPath: item.solutionPdfPath || "",
     pageRange: "",
     expectedQuestionCount: cfg.defaultQuestionCount,
-    outputFileName: `${safeExamId}${cfg.candidateFileSuffix}.js`,
-    outputDir: path.join(cfg.generatedRoot, safeExamId),
+    outputFileName: cfg.workRoot ? `${safeExamId}.js` : `${safeExamId}${cfg.candidateFileSuffix || ""}.js`,
+    ...(cfg.workRoot ? { storageLayout: "ARCHIVE_FOLDERS", workRoot: cfg.workRoot } : {}),
+    outputDir: cfg.workRoot ? path.resolve(cfg.projectRoot, cfg.workRoot, "evidence", safeExamId) : path.join(cfg.generatedRoot, safeExamId),
     status: item.parseStatus === "parsed" ? "pending" : "blocked",
     notes: item.parseIssues
   };

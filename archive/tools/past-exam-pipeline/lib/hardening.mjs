@@ -1,3 +1,4 @@
+import { examStorage } from '../../pipeline-core/archive-workspace.mjs';
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
@@ -309,7 +310,7 @@ function payloadIssues(questions) {
 }
 
 function resolveEvidenceFile(candidateFile, configured, fallbackName) {
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   const configuredPath = configured?.path ? resolveInputPath(configured.path, candidateRoot) : "";
   const inferred = path.join(candidateRoot, "reports", fallbackName);
   const file = configuredPath || inferred;
@@ -333,7 +334,7 @@ function evidenceItems(data) {
 }
 
 function validateSourceInventoryAndCoverage(candidateFile, questions) {
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   const inventoryFile = path.join(candidateRoot, "reports", "source_inventory.json");
   const mapFile = path.join(candidateRoot, "reports", "source_identity_map.json");
   if (!fs.existsSync(inventoryFile) || !fs.existsSync(mapFile)) return { errors: ["SOURCE_INVENTORY_REQUIRED"], inventory: null, identityMap: null };
@@ -400,7 +401,7 @@ function validateFidelityEvidence(candidateFile, questions, review, inventory) {
 }
 
 function sourceEvidenceMatches(candidateFile, item) {
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   const sourcePath = String(item.sourceEvidencePath || "");
   const file = path.isAbsolute(sourcePath) ? sourcePath : path.resolve(candidateRoot, sourcePath);
   if (!fs.existsSync(file) || !fs.statSync(file).isFile() || fileSha(file) !== normalizeSha(item.sourceEvidenceSha256)) return false;
@@ -417,7 +418,7 @@ function validateMathEvidence(candidateFile, questions, review) {
   if (!result.data || result.data.schema !== MATH_REVIEW_SCHEMA || result.data.status !== "PASS") return ["MATH_REVIEW_EVIDENCE_BINDING_FAIL"];
   const byKey = new Map();
   const errors = [];
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   if (result.data.sourceInventorySha !== fileSha(path.join(candidateRoot, "reports", "source_inventory.json"))) errors.push("MATH_REVIEW_INVENTORY_STALE");
   if (result.data.sourceIdentityMapSha !== fileSha(path.join(candidateRoot, "reports", "source_identity_map.json"))) errors.push("MATH_REVIEW_IDENTITY_MAP_STALE");
   for (const item of evidenceItems(result.data)) {
@@ -438,8 +439,8 @@ function validateMathEvidence(candidateFile, questions, review) {
 function resolveAsset(candidateFile, assetPath) {
   if (!nonEmpty(assetPath)) return "";
   if (path.isAbsolute(assetPath)) return assetPath;
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
-  const local = path.resolve(candidateRoot, assetPath);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
+  const local = path.resolve(examStorage(candidateFile).assetRoot, assetPath.replace(/^archive\//, ""));
   if (fs.existsSync(local)) return local;
   const repo = path.resolve(candidateRoot, "../../../../");
   const archive = path.resolve(candidateRoot, "../../..");
@@ -458,7 +459,7 @@ function validateAssetEvidence(candidateFile, questions, review) {
   if (result.data.status !== "PASS") return ["ASSET_PROVENANCE_STATUS_NOT_PASS"];
   const byKey = new Map();
   const errors = [];
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   if (result.data.sourceInventorySha !== fileSha(path.join(candidateRoot, "reports", "source_inventory.json"))) errors.push("ASSET_PROVENANCE_INVENTORY_STALE");
   if (result.data.sourceIdentityMapSha !== fileSha(path.join(candidateRoot, "reports", "source_identity_map.json"))) errors.push("ASSET_PROVENANCE_IDENTITY_MAP_STALE");
   for (const item of evidenceItems(result.data)) {
@@ -501,7 +502,7 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
   if (!nonEmpty(review.promotionTransactionId)) errors.push("PROMOTION_TRANSACTION_ID_REQUIRED");
   if (review.sourceFidelityRestoration === true || review.sourceRestorationRequested === true) errors.push("SOURCE_FIDELITY_RESTORATION_REQUIRED");
   const allowed = new Set(["answer", "solution", "answerStatus", "solutionStatus", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]);
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   const handoffFile = path.join(candidateRoot, "reports", "gpt_gemini_handoff_manifest.json");
   if (!fs.existsSync(handoffFile)) {
     errors.push("HANDOFF_PROTECTED_PAYLOAD_BINDING_MISSING");
@@ -550,7 +551,7 @@ function validateReviewEnvelope(candidateFile, candidateSource, questions, revie
 }
 
 function isV3Completion(candidateFile) {
-  const candidateRoot = path.basename(path.dirname(candidateFile)) === "candidate" ? path.dirname(path.dirname(candidateFile)) : path.dirname(candidateFile);
+  const candidateRoot = examStorage(candidateFile).evidenceRoot;
   const handoffFile = path.join(candidateRoot, "reports", "gpt_gemini_handoff_manifest.json");
   if (!fs.existsSync(handoffFile)) return false;
   return JSON.parse(fs.readFileSync(handoffFile, "utf8")).completionContract === "PAST_EXAM_V3_COMPLETE";
@@ -627,8 +628,8 @@ export function validatePastExamPromotion({ candidateFile, manifest, review, rev
     },
     metaEligibility,
     candidateSha: fileSha(candidateFile),
-    sourceInventorySha: source.inventory && fileSha(path.join(path.dirname(candidateFile), "..", "reports", "source_inventory.json")),
-    sourceIdentityMapSha: source.identityMap && fileSha(path.join(path.dirname(candidateFile), "..", "reports", "source_identity_map.json")),
+    sourceInventorySha: source.inventory && fileSha(path.join(examStorage(candidateFile).evidenceRoot, "reports", "source_inventory.json")),
+    sourceIdentityMapSha: source.identityMap && fileSha(path.join(examStorage(candidateFile).evidenceRoot, "reports", "source_identity_map.json")),
     sourceFidelityEvidenceSha: normalizeSha(review.sourceFidelityEvidenceSha),
     mathReviewEvidenceSha: normalizeSha(review.mathReviewEvidenceSha),
     assetProvenanceEvidenceSha: normalizeSha(review.assetProvenanceEvidenceSha),

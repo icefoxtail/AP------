@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { examStorage } from '../../pipeline-core/archive-workspace.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { objectSha } from '../../pipeline-core/canonical.mjs';
@@ -25,8 +26,7 @@ const equal = (left, right) => JSON.stringify(left ?? null) === JSON.stringify(r
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 
 function candidateRoot(candidateFile) {
-  const parent = path.dirname(candidateFile);
-  return path.basename(parent) === 'candidate' ? path.dirname(parent) : parent;
+  return examStorage(candidateFile).evidenceRoot;
 }
 
 function solutionIdentityFields(question, { sourceArchiveFile, sourceOrdinal }) {

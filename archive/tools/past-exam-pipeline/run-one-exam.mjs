@@ -6,6 +6,7 @@ import { parseArgs, loadConfig } from "./lib/config.mjs";
 import { ensureDir, readJson, writeJson, writeText } from "./lib/fs-utils.mjs";
 import { makeCandidateJs } from "./lib/js-candidate.mjs";
 import { freezeSourceInventory } from "./lib/hardening.mjs";
+import { runFolderExtraction } from "./lib/folder-extraction.mjs";
 import { assertBuilderStart } from "./lib/calibration.mjs";
 import { markGeneratedRun, writeGeneratedLifecycle } from "../../../tools/archive/generated-artifact-lifecycle.mjs";
 
@@ -37,6 +38,7 @@ function parseOneArgs(argv) {
 export async function runOneExam(cfg, manifest) {
   // S0 + S0.5 precede source inventory, provider use, and ALL candidate writes.
   assertBuilderStart(path.resolve(thisDir, '../../..'), manifest);
+  if (cfg.workRoot || manifest.storageLayout === 'ARCHIVE_FOLDERS') return runFolderExtraction(manifest, { root: cfg.projectRoot || path.resolve(thisDir, '../../..'), workRoot: manifest.workRoot || cfg.workRoot, sourceOnly: false, dpi: cfg.cropDpi || 220 });
   const outputDir = path.resolve(manifest.outputDir || path.join(cfg.generatedRoot, manifest.examId));
   const protectedRoots = [
     path.resolve(cfg.archiveRoot, "exams", "original"),

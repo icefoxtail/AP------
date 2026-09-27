@@ -9,6 +9,9 @@ export function parseArgs(argv) {
     runSelected: false,
     selectedManifest: "",
     sourceRoot: "",
+    workRoot: "",
+    sourceOnly: false,
+    prepare: false,
     recentYears: null,
     years: [],
     grade: "",
@@ -23,6 +26,9 @@ export function parseArgs(argv) {
     else if (arg === "--create-selected") args.createSelected = true;
     else if (arg === "--run-selected") args.runSelected = true;
     else if (arg === "--selected-manifest") args.selectedManifest = argv[++i];
+    else if (arg === "--source-only") args.sourceOnly = true;
+    else if (arg === "--prepare") args.prepare = true;
+    else if (arg === "--work-root") args.workRoot = argv[++i];
     else if (arg === "--source-root") args.sourceRoot = argv[++i];
     else if (arg === "--recent-years") args.recentYears = Number(argv[++i]);
     else if (arg === "--years") args.years = argv[++i].split(",").map((v) => v.trim()).filter(Boolean);
@@ -42,20 +48,22 @@ export async function loadConfig(args) {
     : path.resolve(cwd, "archive/tools/past-exam-pipeline/pipeline.config.example.json");
   const raw = await readJson(configFile, {});
   const projectRoot = path.resolve(raw.projectRoot || cwd);
+  const workRoot = args.workRoot || raw.workRoot || (raw.generatedRoot ? "" : "archive-work");
   const cfg = {
     ...raw,
     configFile,
     projectRoot,
     sourceRoot: path.resolve(args.sourceRoot || raw.sourceRoot || projectRoot),
-    generatedRoot: path.resolve(raw.generatedRoot || path.join(projectRoot, "archive/_generated/past-exams")),
+    workRoot,
+    generatedRoot: raw.generatedRoot ? path.resolve(raw.generatedRoot) : undefined,
     archiveRoot: path.resolve(raw.archiveRoot || path.join(projectRoot, "archive")),
     rulesDir: path.resolve(raw.rulesDir || path.join(projectRoot, "rules")),
     defaultRecentYears: Number(raw.defaultRecentYears || 3),
     defaultQuestionCount: Number(raw.defaultQuestionCount || 0),
-    candidateFileSuffix: raw.candidateFileSuffix || ".candidate",
+    candidateFileSuffix: raw.candidateFileSuffix || "",
     allowBatchRunWithoutSelectedManifest: raw.allowBatchRunWithoutSelectedManifest === true,
     args
   };
-  cfg.batchDir = path.join(cfg.generatedRoot, "_batch");
+  cfg.batchDir = workRoot ? path.resolve(projectRoot, workRoot, "evidence", "batch") : path.join(cfg.generatedRoot, "_batch");
   return cfg;
 }

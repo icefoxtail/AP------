@@ -12,8 +12,10 @@ import { assertBuilderStart } from '../past-exam-pipeline/lib/calibration.mjs';
 import { solutionQualityDraft } from './solution-quality.mjs';
 import { visualBenefitDraft } from './solution-visual-benefit.mjs';
 import { evaluateGoldSourceEligibility } from './gold-contract.mjs';
+import { workingExamOptions } from './archive-workspace.mjs';
 
-export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath, workdir, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null, benchmarkKind = null }) {
+export function prepareDraft(root, options) {
+  const { pipeline, runId, sourcePath, candidatePath, workdir, workspace = null, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null, benchmarkKind = null } = workingExamOptions(root, options);
   if (!profiles.pipelines[pipeline] || !/^[A-Za-z0-9_-]+$/.test(runId || '')) throw new Error('PIPELINE_AND_RUN_ID_REQUIRED');
   let pastManifest = null;
   let calibrationStart = null;
@@ -47,6 +49,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
   const sourceInputRef = { ...fileRef(root, sourcePath), role: 'source' };
   const candidateInputRef = { ...fileRef(root, candidatePath), role: 'candidate' };
   const run = { schemaVersion, status: 'DRAFT_NOT_REVIEWED', pipeline, runId, revision: 1, builderId: v2 ? builderId : null, builderSessionId: v2 ? builderSessionId : null, builderModelOrAgent: v2 ? builderModelOrAgent : null, canonicalRecordId: `${runId}:r1`, inputs: [sourceInputRef, candidateInputRef, ...rulePack.refs], questions: [], evidence: [], registry: [], denominator: { status: 'UNFROZEN', stale: true }, inputSha: null };
+  if (workspace) run.workspace = workspace;
   if (v2) {
     run.sourceAuthority = { sourceTruthRefs: [], sourceTruthBundleSha: objectSha([]), activeBaselineRef: null, activeBaselineSha: null, baselineDiscoveryEvidenceRef: null, approvedSourceRepairLedgerRef: null, approvedSourceExceptionLedgerRef: null };
     run.uidAuthority = { sourceExamIdRegistryRef: null, sourceExamIdRegistryEntrySha: null, uidMigrationEvidenceRefs: [], uidMigrationEvidenceSetSha: objectSha([]) };
@@ -56,7 +59,7 @@ export function prepareDraft(root, { pipeline, runId, sourcePath, candidatePath,
     run.benchmarkKind = benchmarkKind || null;
   }
   const pendingBundles = [];
-  run.assetRoot = assetRoot || (pastManifest ? path.relative(root, path.resolve(root, pastManifest.outputDir || path.join(path.dirname(pastManifest.sourceInventoryPath), '..'))).split(path.sep).join('/') : 'archive');
+  run.assetRoot = assetRoot || (pastManifest ? path.relative(root, path.resolve(root, pastManifest.assetRoot || pastManifest.outputDir || path.join(path.dirname(pastManifest.sourceInventoryPath), '..'))).split(path.sep).join('/') : 'archive');
   if (pastManifest) {
     const contractPath = 'archive/tools/past-exam-pipeline/completion-contract.json';
     const contract = JSON.parse(fs.readFileSync(safePath(root, contractPath), 'utf8'));
