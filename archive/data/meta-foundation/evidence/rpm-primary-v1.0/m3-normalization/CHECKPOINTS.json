@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M3_NORMALIZATION_CHECKPOINTS_v1",
+  "baseMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "checkpoints": [
+    {
+      "name": "M3_AUDIT_BASELINE",
+      "stage": "BASELINE_FROZEN",
+      "denominator": {
+        "rpmRecords": 181,
+        "crosswalkRows": 181,
+        "views": 8
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/baseline-snapshot.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/INVENTORY.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/STATE.json"
+      ],
+      "baselineSnapshotSha256": "289f0399473db16589f5674a2fbec137f8da383597421c669d1f79c7c4964db6",
+      "commitSha": "PENDING"
+    }
+  ],
+  "remaining": [
+    "M3_CURRICULUM_AUDIT",
+    "M3_CROSSWALK_NORMALIZATION",
+    "M3_VALIDATION",
+    "REMOTE_PUSH",
+    "NOTION_CLOSEOUT"
+  ],
+  "mainMerge": "NOT_REQUESTED"
+}

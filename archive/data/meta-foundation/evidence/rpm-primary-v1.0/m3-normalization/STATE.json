@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M3_NORMALIZATION_STATE_v1",
+  "task": "M3 RPM completeness and GLOBAL ACTIVE crosswalk semantic normalization",
+  "branch": "work/meta-rpm-m1-m2-normalization",
+  "baseMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "currentStage": "BASELINE_FROZEN",
+  "denominator": {
+    "rpmRecords": 181,
+    "crosswalkRows": 181,
+    "curriculumViews": 8
+  },
+  "completedStages": [
+    "LATEST_MAIN_FETCHED",
+    "NOTION_START_GATE_READ",
+    "EXISTING_M1_M2_BRANCH_AND_M3_ARTIFACTS_RESTORED",
+    "M3_RPM_CROSSWALK_BASELINE_FROZEN"
+  ],
+  "remainingStages": [
+    "M3_CURRICULUM_SEMANTIC_PAIR_AUDIT",
+    "M3_CROSSWALK_SEMANTIC_NORMALIZATION",
+    "M3_R2E_GAP_REASSESSMENT",
+    "M3_RESOLVER_RUNTIME_VALIDATION",
+    "REMOTE_PUSH",
+    "NOTION_CLOSEOUT"
+  ],
+  "lastCompletedItem": "M3 denominator fixed at 181 RPM L4 and 181 middle3 crosswalk rows; previous candidate L3 semantic ledger remains pending and was not reused as FINAL authority.",
+  "nextStartPoint": "Build M3 2015/2022 curriculum semantic pairs, review all 181 crosswalk entries against GLOBAL ACTIVE definitions/skeletons/support/bindings, then normalize only confirmed defects.",
+  "hardBlockers": []
+}
