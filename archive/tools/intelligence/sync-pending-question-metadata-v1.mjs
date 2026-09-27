@@ -94,20 +94,46 @@ function main() {
   const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
   const identityByUid = new Map((identity.records || []).map(r => [r.questionUid, r]));
   const byUid = new Map((metadata.records || []).map(r => [r.questionUid, r]));
-
+  const renamePairs = new Map(
+    (identity.incrementalSync?.renamedFiles || []).map(row => [normalizeFile(row.from), normalizeFile(row.to)])
+  );
   for (const uid of byUid.keys()) {
     if (!identityByUid.has(uid)) throw new Error('metadata row without canonical identity: ' + uid);
   }
-
+  let relocated = 0;
+  const relocatedFiles = new Set();
+  for (const identityRecord of identity.records || []) {
+    const existing = byUid.get(identityRecord.questionUid);
+    if (!existing) continue;
+    const currentFile = normalizeFile(identityRecord.sourceArchiveFile);
+    const metadataFile = normalizeFile(existing.sourceArchiveFile);
+    if (metadataFile === currentFile) continue;
+    if (renamePairs.get(metadataFile) !== currentFile) {
+      throw new Error('metadata/identity source path drift without approved rename migration: ' +
+        identityRecord.questionUid + ' ' + metadataFile + ' -> ' + currentFile);
+    }
+    const bank = loadBank(currentFile);
+    const question = bank[Number(identityRecord.sourceOrdinal) - 1];
+    if (!question) throw new Error('renamed metadata source ordinal missing: ' + currentFile + '#' + identityRecord.sourceOrdinal);
+    const currentFingerprint = sourceFingerprint(question);
+    if (identityRecord.sourceFingerprint && identityRecord.sourceFingerprint !== currentFingerprint) {
+      throw new Error('renamed identity/source fingerprint mismatch: ' + identityRecord.questionUid);
+    }
+    existing.sourceArchiveFile = currentFile;
+    existing.sourceOrdinal = Number(identityRecord.sourceOrdinal);
+    existing.sourceQuestionNo = identityRecord.sourceQuestionNo ?? question?.id ?? null;
+    existing.sourceFingerprint = currentFingerprint;
+    existing.contentFingerprint = contentFingerprint(question);
+    relocated += 1;
+    relocatedFiles.add(currentFile);
+  }
   let added = 0;
   const addedFiles = new Set();
   for (const identityRecord of identity.records || []) {
     if (byUid.has(identityRecord.questionUid)) continue;
     const bank = loadBank(identityRecord.sourceArchiveFile);
     const question = bank[Number(identityRecord.sourceOrdinal) - 1];
-    if (!question) throw new Error(
-      'source ordinal missing: ' + identityRecord.sourceArchiveFile + '#' + identityRecord.sourceOrdinal
-    );
+    if (!question) throw new Error('source ordinal missing: ' + identityRecord.sourceArchiveFile + '#' + identityRecord.sourceOrdinal);
     const currentFingerprint = sourceFingerprint(question);
     if (identityRecord.sourceFingerprint && identityRecord.sourceFingerprint !== currentFingerprint) {
       throw new Error('new identity/source fingerprint mismatch: ' + identityRecord.questionUid);
@@ -116,19 +142,16 @@ function main() {
     added += 1;
     addedFiles.add(normalizeFile(identityRecord.sourceArchiveFile));
   }
-
-  if (!added) {
+  if (!added && !relocated) {
     if (byUid.size !== (identity.records || []).length) throw new Error('metadata/identity cardinality mismatch');
-    console.log(JSON.stringify({ status: 'NO_CHANGE', records: byUid.size, added: 0 }, null, 2));
+    console.log(JSON.stringify({ status: 'NO_CHANGE', records: byUid.size, added: 0, relocated: 0 }, null, 2));
     return;
   }
-
   const records = [...byUid.values()].sort((a, b) => String(a.questionUid).localeCompare(String(b.questionUid), 'en'));
   const sourceKeys = new Set(records.map(r => normalizeFile(r.sourceArchiveFile) + '#' + Number(r.sourceOrdinal)));
   if (records.length !== identity.records.length || sourceKeys.size !== records.length) {
     throw new Error('metadata cardinality/source join gate failed');
   }
-
   const counts = {
     ...(metadata.counts || {}),
     records: records.length,
@@ -143,7 +166,6 @@ function main() {
     explicitTemplateHolds: records.filter(r => r.fieldStatus?.template === 'manual_review_pending').length,
     explicitDifficultyHolds: records.filter(r => r.fieldStatus?.difficulty === 'manual_review_pending').length
   };
-
   const next = {
     ...metadata,
     generatedAt: new Date().toISOString(),
@@ -160,20 +182,23 @@ function main() {
     counts,
     records,
     registrationSync: {
-      schemaVersion: 'archive-registration-metadata-sync-v1',
+      schemaVersion: 'archive-registration-metadata-sync-v2',
       added,
-      addedFiles: [...addedFiles].sort((a, b) => a.localeCompare(b, 'en'))
+      addedFiles: [...addedFiles].sort((a, b) => a.localeCompare(b, 'en')),
+      relocated,
+      relocatedFiles: [...relocatedFiles].sort((a, b) => a.localeCompare(b, 'en'))
     }
   };
   delete next.digest;
   next.digest = sha256(JSON.stringify(next));
   fs.writeFileSync(metadataPath, JSON.stringify(next, null, 2) + '\n', 'utf8');
-
   console.log(JSON.stringify({
     status: 'UPDATED',
     total: records.length,
     added,
     addedFiles: next.registrationSync.addedFiles,
+    relocated,
+    relocatedFiles: next.registrationSync.relocatedFiles,
     digest: next.digest
   }, null, 2));
 }
