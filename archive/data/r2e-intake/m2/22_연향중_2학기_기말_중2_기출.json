@@ -70,10 +70,7 @@
   },
   "metaDispositionSummary": {
     "EXISTING_REUSE": 6,
-    "PROPOSED_NEW_L3": 0,
-    "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 16,
-    "TRUE_HOLD": 0
+    "RPM_PRIMARY_MIGRATION_GAP": 17
   },
   "unresolvedItems": [
     {
@@ -227,23 +224,16 @@
   ],
   "sourceHardHolds": [],
   "validatorSummary": {
-    "denominator": "23/23",
-    "protectedFieldParity": "PASS 23/23",
-    "sourceImageParity": "PASS 13/13",
-    "solutionMath": "PASS 23/23",
-    "smallBoard": "PASS 23/23",
-    "svgStructural": "PASS 13/13",
-    "svgSemantic": "PASS 13/13 after 12 repairs",
-    "runtimeStringBasic": "PASS",
-    "trueHold": 0,
-    "render": "NOT_RUN_BY_POLICY"
+    "status": "PASS",
+    "validatorId": "rpm-active-resolver-v1",
+    "schemaVersion": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2",
+    "questionCount": 23,
+    "resolverPassCount": 23,
+    "difficultyPassCount": 23,
+    "relationalEvidenceCount": 23,
+    "receiptCommit": "bbd20c48bf38f78bf5a717c4358eb77e3de44ece"
   },
-  "authorityRefs": [
-    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
-    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "archive/data/meta-foundation/canonical/registry_index.json",
-    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
-  ],
+  "authorityRefs": [],
   "nextState": "READY_FOR_R2E",
   "commitBinding": "SELF",
   "inputAuthority": {
@@ -256,5 +246,10 @@
     "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
     "evidencePath": "archive/data/r2e-intake/m2/22_연향중_2학기_기말_중2_기출.evidence.json"
   },
-  "updatedAt": "2026-09-27T16:41:39+09:00"
+  "updatedAt": "2026-09-27T14:27:53.079Z",
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/22_연향중_2학기_기말_중2_기출.meta.json",
+    "sha256": "118b9c434bbd893760ece4bf72602ca8709b87b406db11dce13f3e1d58f71196"
+  },
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1"
 }
