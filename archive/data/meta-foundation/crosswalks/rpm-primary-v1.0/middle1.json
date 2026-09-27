@@ -2,7 +2,7 @@
   "schemaVersion": "rpm-primary-active-crosswalk-v1",
   "status": "ACTIVE_REFERENCE",
   "grade": "M1",
-  "generatedAgainstMain": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+  "generatedAgainstMain": "7720c9f6dd38d0639c16e62cedaa8bfa0a67f072",
   "rpmAuthority": {
     "version": "RPM_PRIMARY_TAXONOMY_v1.0",
     "status": "LOCKED",
@@ -35,10 +35,10 @@
   },
   "summary": {
     "recordCount": 232,
-    "DIRECT_ACTIVE": 73,
-    "RPM_ONLY": 108,
-    "DIRECT_BINDING_GAP": 11,
-    "FAMILY_ACTIVE": 38,
+    "DIRECT_ACTIVE": 83,
+    "RPM_ONLY": 95,
+    "DIRECT_BINDING_GAP": 10,
+    "FAMILY_ACTIVE": 42,
     "FAMILY_BINDING_GAP": 2
   },
   "records": [
@@ -915,20 +915,20 @@
         "l4": "점의 좌표 읽기"
       },
       "standardUnitKey": "M1-04",
-      "subUnitKey": "M1-04-COORDINATE_PLANE",
+      "subUnitKey": "M1-04-GRAPH_RELATION",
       "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_COORDINATE_POINT_READING",
-      "problemTypeLabelKo": "좌표평면의 점 좌표 읽기",
+      "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+      "problemTypeLabelKo": "좌표·함수와 도형 넓이 결합",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
-      "templateLabelKo": "좌표평면의 점 좌표 읽기 — 기본 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA",
+      "templateLabelKo": "좌표·함수와 도형 넓이 결합 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-051",
@@ -992,8 +992,19 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
+      "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-055",
@@ -1007,8 +1018,19 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      },
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "templateLabelKo": "함수 그래프의 성질 판정"
     },
     {
       "id": "M1-RPM-056",
@@ -1022,8 +1044,19 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+      "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-057",
@@ -1052,8 +1085,19 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-GRAPH_RELATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+      "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-059",
@@ -1123,8 +1167,36 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "problemTypeLabelKo": "삼각형의 내각·외각 연쇄 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 각 이동"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 각 방정식"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 조건별 풀이 골격"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 조건별 풀이 골격"
+        }
+      ],
+      "selectionRule": "Select the triangle-angle L4 matching the decisive step."
     },
     {
       "id": "M1-RPM-063",
@@ -1548,15 +1620,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-082",
@@ -1574,15 +1646,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-083",
@@ -1600,15 +1672,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-084",
@@ -1665,15 +1737,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 대각선 공식",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 대각선 공식"
     },
     {
       "id": "M1-RPM-086",
@@ -1917,15 +1989,15 @@
       "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
       "problemTypeLabelKo": "다면체의 꼭짓점·모서리·면 개수",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
-      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M1-07",
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격"
     },
     {
       "id": "M1-RPM-095",
@@ -1991,8 +2063,19 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "problemTypeLabelKo": "다면체의 모서리·면 관계",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "templateLabelKo": "다면체의 면·꼭짓점 성질 판단"
     },
     {
       "id": "M1-RPM-098",
@@ -2122,8 +2205,44 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "problemTypeLabelKo": "입체도형의 겉넓이·부피 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+          "templateLabelKo": "입체도형의 부피 보존"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+          "templateLabelKo": "잘라낸 입체의 부피 차"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+          "templateLabelKo": "전개도에서 길이와 겉넓이 계산"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+          "templateLabelKo": "뿔대의 겉넓이"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+          "templateLabelKo": "합성 입체의 노출 겉넓이"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+          "templateLabelKo": "기본 입체도형 공식 대입"
+        }
+      ],
+      "selectionRule": "Choose the solid-measure L4 matching conservation, subtraction, net, frustum, exposed surface, or routine formula substitution."
     },
     {
       "id": "M1-RPM-102",
@@ -2438,6 +2557,10 @@
         {
           "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
           "templateLabelKo": "혼합 도수·상대도수 표의 여러 값 복원"
+        },
+        {
+          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+          "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격"
         }
       ],
       "selectionRule": "Choose missing-frequency for one missing bin, table-audit for direct frequency claims, stem-leaf audit for stem-and-leaf displays, or multi-cell reconstruction for mixed actual/relative-frequency tables with several missing values."
@@ -3107,15 +3230,15 @@
       "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
       "problemTypeLabelKo": "문장과 식의 대응·표기 검사",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
-      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-03",
         "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-141",
@@ -3133,15 +3256,15 @@
       "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
       "problemTypeLabelKo": "문장과 식의 대응·표기 검사",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
-      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-03",
         "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-142",
@@ -3895,8 +4018,36 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+      "problemTypeLabelKo": "삼각형의 내각·외각 연쇄 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-05",
+        "subUnitKey": "M1-05-BASIC_FIGURE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_VERTICAL_ANGLE_TRANSFER",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 각 이동"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 각 방정식"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_CHAINED_ISOSCELES",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 조건별 풀이 골격"
+        },
+        {
+          "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_INTERIOR_POINT_ANGLE_SUM",
+          "templateLabelKo": "삼각형의 내각·외각 연쇄 계산 — 조건별 풀이 골격"
+        }
+      ],
+      "selectionRule": "Select the triangle-angle L4 matching the final solution."
     },
     {
       "id": "M1-RPM-176",
@@ -4320,15 +4471,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-195",
@@ -4366,15 +4517,15 @@
       "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
       "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-06",
         "subUnitKey": "M1-06-POLYGON_CIRCLE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-197",
@@ -4497,13 +4648,19 @@
       },
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-POLYGON_CIRCLE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
-      "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+      "problemTypeLabelKo": "정다각형을 결합한 각 계산",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
-      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
+      "templateLabelKo": "정다각형을 결합한 각 계산 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-201",
@@ -4552,8 +4709,19 @@
       },
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "templateLabelKo": "부채꼴과 원이 포함된 도형의 길이·넓이"
     },
     {
       "id": "M1-RPM-203",
@@ -4643,8 +4811,19 @@
       },
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      },
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "templateLabelKo": "부채꼴과 원이 포함된 도형의 길이·넓이"
     },
     {
       "id": "M1-RPM-207",
@@ -4662,15 +4841,15 @@
       "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
       "problemTypeLabelKo": "다면체의 꼭짓점·모서리·면 개수",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
-      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-07",
         "subUnitKey": "M1-07-SOLID_FIGURE",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격"
     },
     {
       "id": "M1-RPM-208",
@@ -5041,8 +5220,44 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "problemTypeLabelKo": "입체도형의 겉넓이·부피 계산",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+          "templateLabelKo": "입체도형의 부피 보존"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+          "templateLabelKo": "잘라낸 입체의 부피 차"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+          "templateLabelKo": "전개도에서 길이와 겉넓이 계산"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+          "templateLabelKo": "뿔대의 겉넓이"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+          "templateLabelKo": "합성 입체의 노출 겉넓이"
+        },
+        {
+          "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+          "templateLabelKo": "기본 입체도형 공식 대입"
+        }
+      ],
+      "selectionRule": "Choose the solid-measure L4 matching conservation, subtraction, net, frustum, exposed surface, or routine formula substitution."
     },
     {
       "id": "M1-RPM-219",
@@ -5242,8 +5457,19 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "problemTypeLabelKo": "대푯값의 해석과 조건 복원",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "templateLabelKo": "대푯값 조건으로 자료 복원"
     },
     {
       "id": "M1-RPM-225",
@@ -5257,8 +5483,18 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "problemTypeLabelKo": "대푯값의 해석과 조건 복원",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-08",
+        "subUnitKey": "M1-08-DATA_INTERPRETATION",
+        "ownerPack": "MIDDLE1"
+      },
+      "templateDisposition": "NO_SEPARATE_L4"
     },
     {
       "id": "M1-RPM-226",
@@ -5330,15 +5566,15 @@
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2022",
         "standardUnitKey": "M1-08",
         "subUnitKey": "M1-08-DATA_ORGANIZATION",
         "ownerPack": "MIDDLE1"
-      }
+      },
+      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-229",

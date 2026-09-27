@@ -39,8 +39,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342",
-      "difficultyEvidenceSha": "sha256:8c58ddeb211ff6cd24ef959974f7994c77e36d54ba7df8ed0e777f6e2cc1be2a"
+      "resolverEvidenceSha": "sha256:25e876dcdfa8d78d24c6ff61146271853baaeba985e9ca200b2017b794fd978c",
+      "difficultyEvidenceSha": "sha256:33e4a1d17050614201cdef7be4f2c45ce201c91bc78968532e4c7eeadbc631eb"
     },
     {
       "id": 2,
@@ -80,8 +80,8 @@ window.questionBank = [
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:852292a6b103328d2e0f6b045db6cd4801bd45d85b0d8eb73e9a1cfdfaee223e",
-      "difficultyEvidenceSha": "sha256:ff914cc13df21281a79e9aceafd5b3a19c559e92ce0d1ad83742f9db4d6c9edb"
+      "resolverEvidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389",
+      "difficultyEvidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7"
     },
     {
       "id": 3,
@@ -124,8 +124,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39",
-      "difficultyEvidenceSha": "sha256:c91d87be7af67dd00fe58b2d967576c5ba4f85b7c6fe07de4bec5bac7389e89f"
+      "resolverEvidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1",
+      "difficultyEvidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546"
     },
     {
       "id": 4,
@@ -198,8 +198,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a",
-      "difficultyEvidenceSha": "sha256:7d992fe85c2818bae9af554b1ce2f3bd156ed0d91a79122efcf8a2fdcf11a975"
+      "resolverEvidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e",
+      "difficultyEvidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776"
     },
     {
       "id": 6,
@@ -242,8 +242,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d",
-      "difficultyEvidenceSha": "sha256:86706124f687f281928f30eb3d34c5b55699248c78c0ab22d819dd4534948f72"
+      "resolverEvidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d",
+      "difficultyEvidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902"
     },
     {
       "id": 7,
@@ -286,8 +286,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74",
-      "difficultyEvidenceSha": "sha256:33a594d77602711b129c72add2549ef3384385cbbf956ef659eccc43575e751a"
+      "resolverEvidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023",
+      "difficultyEvidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69"
     },
     {
       "id": 8,
@@ -327,8 +327,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231",
-      "difficultyEvidenceSha": "sha256:0652125e4336d61de1d07167590236e11ef3fc23f0cd36c1cbfdcee136d47ecc"
+      "resolverEvidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89",
+      "difficultyEvidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7"
     },
     {
       "id": 9,
@@ -369,8 +369,8 @@ window.questionBank = [
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:1a1f42d99328a3229c312c6a98275c2bbdb365b68f4b4bb4ab97b551695287ef",
-      "difficultyEvidenceSha": "sha256:04d40f18c272b580797a7ac3e1ee1065673dc27718766b09a06ffcc6174154ad"
+      "resolverEvidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624",
+      "difficultyEvidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573"
     },
     {
       "id": 10,
@@ -410,8 +410,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b",
-      "difficultyEvidenceSha": "sha256:9b1e6f19d094c4cff975f163c1c45096657264bef5c73cdb8d2d7a72caffedae"
+      "resolverEvidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530",
+      "difficultyEvidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744"
     },
     {
       "id": 11,
@@ -449,8 +449,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13",
-      "difficultyEvidenceSha": "sha256:5181ccb0b62c2ae0473c7bb29d8f055dbaf2f7feba48dec82fe1e823245e932f",
+      "resolverEvidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26",
+      "difficultyEvidenceSha": "sha256:ef8f6a5dd5c98727010404b958946b10729c9daf203a1f3d21b21cf118d9afce",
       "solutionImageAlt": "회전축 l에서 떨어진 직사각형을 회전시켜 생기는 속이 빈 원기둥과 그 수직 단면의 고리 모양",
       "solutionImageCaption": "회전축과 직사각형 사이의 간격 때문에 수직 단면에는 바깥 원과 안쪽 원이 함께 생긴다.",
       "solutionImageSize": "large"
@@ -496,8 +496,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7",
-      "difficultyEvidenceSha": "sha256:d6b1499692751be80833f6abb668f1d48d617749a65c5356ff658075de26461d"
+      "resolverEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
+      "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae"
     },
     {
       "id": 13,
@@ -540,8 +540,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d",
-      "difficultyEvidenceSha": "sha256:226b6613e8b0f8e68c3e0b6190074ff87eaf50575436b4516ca6591cecc7c922"
+      "resolverEvidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c",
+      "difficultyEvidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e"
     },
     {
       "id": 14,
@@ -584,8 +584,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699",
-      "difficultyEvidenceSha": "sha256:26c5fd933750e1ff0e2e9765713985ebd2392c8f772384ea5886d06ddcce461d"
+      "resolverEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
+      "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a"
     },
     {
       "id": 15,
@@ -628,8 +628,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916",
-      "difficultyEvidenceSha": "sha256:82bfdc39f331a5ba023fdd0269f0fb3bb86ae72796fe7396d52e03ca2e501f33"
+      "resolverEvidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8",
+      "difficultyEvidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6"
     },
     {
       "id": 16,
@@ -672,8 +672,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452",
-      "difficultyEvidenceSha": "sha256:7c80f4cd1a81b4bdcbd0208e15cf636d418f5cb7315c6c289f747699bce61c66"
+      "resolverEvidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead",
+      "difficultyEvidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08"
     },
     {
       "id": 17,
@@ -715,8 +715,8 @@ window.questionBank = [
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ab7ca7d96a971999007b56bb7808726c8b4d9b2193a42a3fc9ced9ecfddd2a18",
-      "difficultyEvidenceSha": "sha256:87d9b68ece18b0f48f2743fd44dcbb069ef90db8e4ab931852c86d4c74bbb1b2"
+      "resolverEvidenceSha": "sha256:4c769365892b4d823296073405171d870435f8e3e5d6b595b07e1d77ed449dc8",
+      "difficultyEvidenceSha": "sha256:5a487c0000bffa8e0c664fa82790a507c7e78b439916610db422b8b1f5eb8901"
     },
     {
       "id": 18,
@@ -759,8 +759,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89",
-      "difficultyEvidenceSha": "sha256:3c78f2fd8dbdcbabd526e17c2131db82a3c884ec82190b1391c31638ba1d0651"
+      "resolverEvidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e",
+      "difficultyEvidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac"
     },
     {
       "id": 19,
@@ -803,8 +803,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a",
-      "difficultyEvidenceSha": "sha256:990cc26910bea7a38fa56f68f80798ad012d43d870a71439e8b6a788012df8ac"
+      "resolverEvidenceSha": "sha256:0678560f9b08cd0e75bb69e5684551a88275bb95010ff0c1313bc406d0e23741",
+      "difficultyEvidenceSha": "sha256:f0c3935a464a361aab00ec6fecff183297c66bb78bc9d3a00cc6470858da387a"
     },
     {
       "id": 20,
@@ -847,8 +847,8 @@ window.questionBank = [
       "integrationPattern": "SEQUENTIAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883",
-      "difficultyEvidenceSha": "sha256:a8aec3ce44af243f07523f770a0d7db86dcf1b7cc5edc27211fb179055756e22"
+      "resolverEvidenceSha": "sha256:c7468f0aa0d6273b080645a7108e08f98168fcd78b5318be05397abc004497e4",
+      "difficultyEvidenceSha": "sha256:8f912dd8652f5fbc807af0637c8b8fcb1f700c483eebb18dc8023e5b4b0cc6b5"
     },
     {
       "id": 21,
@@ -886,8 +886,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6",
-      "difficultyEvidenceSha": "sha256:688f158968849afa43b8d9bff70f10568df595a70770beabcfde38b9c33861d1"
+      "resolverEvidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f",
+      "difficultyEvidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859"
     },
     {
       "id": 22,
@@ -925,8 +925,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d",
-      "difficultyEvidenceSha": "sha256:a8522f3de4878d685e3beda7bddcc926a5cfce155b6ba5f2d4a14128bf165084"
+      "resolverEvidenceSha": "sha256:4ae0db8624e595ad44abfafeb0528a4e6241e0a151355f552176e9ecad7c6b87",
+      "difficultyEvidenceSha": "sha256:17c7f7a6cd64b7f3347c51fc9fbd9d47c0534e5361ddb2241dc64048d19f06d4"
     },
     {
       "id": 23,
@@ -965,8 +965,8 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160",
-      "difficultyEvidenceSha": "sha256:87c130e3c5d5e8e682b52493a9f42fc7395744c628a1cc8f1ddb1571f4f4172c",
+      "resolverEvidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f",
+      "difficultyEvidenceSha": "sha256:e7067b3daf3a96466dcc83c803d9bc0ca308d93752ac8aa7380c2dbf9d4d6b40",
       "solutionImageAlt": "원뿔대 옆면을 펼친 고리 모양 부채꼴과 반지름 6 cm, 3 cm인 두 밑면 원",
       "solutionImageCaption": "옆면은 바깥·안쪽 반지름 10 cm, 5 cm와 중심각 216°인 부채꼴 띠다.",
       "solutionImageSize": "large"
