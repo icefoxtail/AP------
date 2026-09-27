@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "M1_R2E_TARGETED_SVG_REVIEW_v2",
+  "examCode": "B27",
+  "scope": "Only currently held B27 Q7,Q16,Q22,Q23; PASS items unopened.",
+  "rule": "도형추출.md v3.0 §§1-2, 6-4~6-18; rule file hash verified against MANIFEST",
+  "pythonGeometryEvidence": "tmp/m1-b01-b31-r2e-20260927/svg-upgrade/B27/PYTHON_GEOMETRY_FACTS_B27.json",
+  "assetChecks": [
+    {
+      "q": 7,
+      "assetSha256": "34aeccabdeb3b8cc50f9004a2ad2df1d4baf9fadc86f8fb783704a4a298ee0ac",
+      "xml": "PASS",
+      "requiredMetadata": "PASS",
+      "pythonFactHashParity": "PASS"
+    },
+    {
+      "q": 16,
+      "assetSha256": "28bbbb8d1db7c5a20b812d1263cd04020f014f855109f925d77e9906ad9bbd52",
+      "xml": "PASS",
+      "requiredMetadata": "PASS",
+      "pythonFactHashParity": "PASS"
+    },
+    {
+      "q": 22,
+      "assetSha256": "2424a171bd36dac0e020e717d7433e6804a6a988a3b4e17ce2cee946fa70bade",
+      "xml": "PASS",
+      "requiredMetadata": "PASS",
+      "pythonFactHashParity": "PASS"
+    },
+    {
+      "q": 23,
+      "assetSha256": "a61848305f33bdafd3af9998ca3b25aa5a19300aecf97d74149c7c503e040491",
+      "xml": "PASS",
+      "requiredMetadata": "PASS",
+      "pythonFactHashParity": "PASS"
+    }
+  ],
+  "browserCapture": {
+    "schemaVersion": "M1_R2E_TARGETED_SVG_VISUAL_REVIEW_v2",
+    "examCode": "B27",
+    "scope": "held Q7,Q16,Q22,Q23 SVGs only",
+    "browserCases": [
+      {
+        "viewport": "desktop",
+        "width": 1280,
+        "scrollWidth": 1280,
+        "images": [
+          {
+            "loaded": true,
+            "naturalWidth": 600,
+            "naturalHeight": 310,
+            "renderedWidth": 594,
+            "renderedHeight": 306.890625
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 720,
+            "naturalHeight": 455,
+            "renderedWidth": 594,
+            "renderedHeight": 375.375
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 760,
+            "naturalHeight": 365,
+            "renderedWidth": 594,
+            "renderedHeight": 285.265625
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 720,
+            "naturalHeight": 370,
+            "renderedWidth": 594,
+            "renderedHeight": 305.25
+          }
+        ],
+        "status": "PASS",
+        "screenshot": "archive/data/r2e/middle1/visual/B27/screenshots/all-desktop.png"
+      },
+      {
+        "viewport": "mobile",
+        "width": 390,
+        "scrollWidth": 390,
+        "images": [
+          {
+            "loaded": true,
+            "naturalWidth": 600,
+            "naturalHeight": 310,
+            "renderedWidth": 340,
+            "renderedHeight": 175.65625
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 720,
+            "naturalHeight": 455,
+            "renderedWidth": 340,
+            "renderedHeight": 214.859375
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 760,
+            "naturalHeight": 365,
+            "renderedWidth": 340,
+            "renderedHeight": 163.28125
+          },
+          {
+            "loaded": true,
+            "naturalWidth": 720,
+            "naturalHeight": 370,
+            "renderedWidth": 340,
+            "renderedHeight": 174.71875
+          }
+        ],
+        "status": "PASS",
+        "screenshot": "archive/data/r2e/middle1/visual/B27/screenshots/all-mobile.png"
+      }
+    ]
+  },
+  "localRenderVisualInspection": {
+    "status": "PASS",
+    "viewportSet": [
+      "desktop",
+      "mobile"
+    ],
+    "notes": [
+      "Q7 arc radii visibly preserve 6:10:8 proportion.",
+      "Q16 remaining 240-degree sector has the 120-degree cutout and separated surface-area cards.",
+      "Q22 P is visible outside the circle; labels and secant/diameter are separated.",
+      "Q23 cone, sphere, cylinder labels clear shape strokes after the label offset correction.",
+      "Grayscale stroke hierarchy and no clipping were visually checked."
+    ]
+  },
+  "geometryStyleLint": "NOT_TESTED",
+  "pipelineV1V2V3Closure": "NOT_TESTED",
+  "independentRenderReview": "NOT_TESTED",
+  "releaseDisposition": "HOLD_META_AND_CURRENT_PIPELINE_CLOSURE_OPEN",
+  "durableEvidenceRoot": "archive/data/r2e/middle1/visual/B27"
+}
