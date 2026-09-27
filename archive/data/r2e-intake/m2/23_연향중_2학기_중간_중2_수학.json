@@ -3,22 +3,40 @@
   "examFile": "23_연향중_2학기_중간_중2_수학.js",
   "examUid": "23_연향중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "B",
-  "stage": "CREATE",
+  "lane": "A",
+  "stage": "R1",
+  "sourcePath": "archive/exams/original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
   "sourceBlobSha": "c3f07810ab60fe67f0e8415720936f9275c2f0d0",
   "totalQuestions": 24,
-  "changedQuestions": [
-    3,
-    4,
-    5,
-    11,
-    22,
-    24
-  ],
+  "changedQuestions": [],
   "changedSvgFiles": [
     "archive/assets/images/23_연향중_2학기_중간_중2_수학/q3-solution.svg",
     "archive/assets/images/23_연향중_2학기_중간_중2_수학/q11-solution.svg",
     "archive/assets/images/23_연향중_2학기_중간_중2_수학/q24-solution.svg"
+  ],
+  "solutionDispositionSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "KEEP": 0,
+    "REPAIR": 3,
+    "ADD": 0,
+    "HOLD": 0
+  },
+  "l1l2DispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 1,
+    "HOLD": 0
+  },
+  "l1l2Patches": [
+    {
+      "questionNo": 20,
+      "before": "M2-06-SIMILAR_FIGURE",
+      "after": "M2-06-PARALLEL_LENGTH_RATIO",
+      "applyAtR2E": true
+    }
   ],
   "metaDispositionSummary": {
     "EXISTING_REUSE": 21,
@@ -27,36 +45,64 @@
     "RPM_PRIMARY_MIGRATION_GAP": 2,
     "TRUE_HOLD": 0
   },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 0,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0,
+    "NONE_REQUIRED": 24,
+    "TRUE_HOLD": 0
+  },
+  "difficultyDispositionSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "buckets": {
+      "1": 4,
+      "2": 8,
+      "3": 6,
+      "4": 6,
+      "5": 0
+    }
+  },
   "unresolvedItems": [
     {
       "questionNo": 8,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-075"
+      "rpmPrimary": "M2-RPM-077"
     },
     {
       "questionNo": 11,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-075"
+      "rpmPrimary": "M2-RPM-077"
     },
     {
       "questionNo": 20,
       "disposition": "PROPOSED_NEW_L4",
-      "parentProblemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
       "proposedTemplateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SEGMENT_RATIO"
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "nextState": "READY_FOR_R2E",
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "3cf355d1a4147cfd69ef91d64bb1b9b31a753777",
-    "mainReadSha": "7bf8f80a3d953b6eb9f0a7d0f3532e29c5313e69",
-    "sourcePath": "archive/exams/original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js",
+    "inputCommit": "b566c8a921be34b630101ff786ab0d8395627891",
+    "mainReadSha": "8dcc176eff3c1544cfcea95041600c505cad13c8",
     "sourceBlobSha": "c3f07810ab60fe67f0e8415720936f9275c2f0d0",
-    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
-    "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
-    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477",
-    "evidencePath": "archive/data/r2e-intake/m2/23_연향중_2학기_중간_중2_수학.evidence.json"
+    "r1InputJsBlobSha": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+    "r1FinalJsBlobSha": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+    "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "middleGeometryTaxonomyBlobSha": "f3b2880cee6047202a8558a62e97949ddca34971",
+    "middleGeometryBindingsBlobSha": "32339f1b96e2d85d2471c30ad9a29bebe651222b"
   },
-  "updatedAt": "2026-09-27T02:42:55+09:00"
+  "finalAuthority": {
+    "jsBlobSha": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+    "svgBlobShas": {
+      "3": "1f5321a39c9c12958ffda9d586e350282288839a",
+      "11": "51cfe0845506443a7ce805f74580ab54b4735065",
+      "24": "add84427512ac23556b2bb06663d961c322d4c98"
+    }
+  },
+  "evidencePath": "archive/data/r2e-intake/m2/23_연향중_2학기_중간_중2_수학.evidence.json",
+  "commitBinding": "SELF",
+  "remoteCommitSha": "SELF",
+  "updatedAt": "2026-09-27T18:30:48+09:00"
 }
