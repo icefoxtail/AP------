@@ -1,0 +1,2484 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_V1",
+  "examFile": "23_매산중_2학기_기말_중2_기출.js",
+  "examUid": "23_매산중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "lane": "A",
+  "stage": "CREATE",
+  "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+  "inputCommit": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+  "totalQuestions": 24,
+  "changedQuestions": [],
+  "changedSvgFiles": [],
+  "coverage": {
+    "sourceIdentity": "24/24",
+    "contentChoicesAnswerSolution": "24/24",
+    "sourceImages": "18/18",
+    "mathSolution": "24/24",
+    "smallBoardSolution": "24/24",
+    "metaDecision": "24/24"
+  },
+  "solutionDisposition": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 6,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 18,
+    "TRUE_HOLD": 0
+  },
+  "l1l2RepairCandidates": [
+    3,
+    16,
+    21
+  ],
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "metaEvidenceInline": true,
+  "authority": {
+    "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+    "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+    "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+    "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+    "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+    "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+    "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+  },
+  "decisionIsolation": {
+    "candidateVisibleDuringDecision": false,
+    "excludedSameStageFields": [
+      "problemTypeKey",
+      "templateKey",
+      "crossConceptKeys",
+      "conditionKeys",
+      "integrationPattern",
+      "difficultyBucket",
+      "previousVerdict"
+    ]
+  },
+  "officialResolverCli": "NOT_RUN_IN_CONNECTOR_RUNTIME",
+  "items": [
+    {
+      "questionUid": "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
+      "sourceOrdinal": 1,
+      "sourceAudit": {
+        "contentHash": "sha256:6f5e7fc150a2e43035086c8be839b29f674e4af5c3bf28d0406ce90e05b1f34e",
+        "choicesHash": "sha256:93f1e0cfbfed8f406fc2c7457ced128452d03d8442935f7eb5774257a57f540d",
+        "answerHash": "sha256:0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+        "solutionHash": "sha256:ef6097bc5c526dd6b95ff7e7198fb09214d1b30c78cfb80bac707d2204007aa5",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q1.png",
+          "blobSha": "821ac1b45f051ccb9b10c7640a2de8bbfeeb2e25",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
+          "sourceIdentityKey": "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
+          "sourceOrdinal": 1,
+          "contentHash": "sha256:6f5e7fc150a2e43035086c8be839b29f674e4af5c3bf28d0406ce90e05b1f34e",
+          "choicesHash": "sha256:93f1e0cfbfed8f406fc2c7457ced128452d03d8442935f7eb5774257a57f540d",
+          "imageRefHash": "sha256:6d47c4e05df45cebc49cd7503731b6d07f5e2d39361a4b849a3bfc058e957b4d",
+          "sourceFingerprint": "sha256:e348487fd100c47bf5639ab046e4db2e6ca0d42ad5b154bc332700c807e062b6"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:ef6097bc5c526dd6b95ff7e7198fb09214d1b30c78cfb80bac707d2204007aa5",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "세 평행선의 대응 선분비로 미지 길이를 구한다.",
+          "decisiveStep": "2:6=3:x에서 x=9",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "평행선 사이 선분비",
+            "l4": "여러 평행선"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:e348487fd100c47bf5639ab046e4db2e6ca0d42ad5b154bc332700c807e062b6",
+        "inputBundleSha": "sha256:a31064d9864f91a1864f626ad9c7874f4907976abaceed2fc136a913b51d8f42",
+        "crosswalkRecordId": "M2-RPM-093",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:e348487fd100c47bf5639ab046e4db2e6ca0d42ad5b154bc332700c807e062b6",
+        "solutionHash": "sha256:ef6097bc5c526dd6b95ff7e7198fb09214d1b30c78cfb80bac707d2204007aa5",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:e348487fd100c47bf5639ab046e4db2e6ca0d42ad5b154bc332700c807e062b6",
+        "inputBundleSha": "sha256:a31064d9864f91a1864f626ad9c7874f4907976abaceed2fc136a913b51d8f42",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_b5d0b5b71b6df8b92dc6e1c4573644fdd7ba822da2d24a990b0c50674c4eacb2",
+      "sourceOrdinal": 2,
+      "sourceAudit": {
+        "contentHash": "sha256:7e3fa2eed173239a658a02ad6e3c4116d6de08f94e744f9fe21042291d5b9c51",
+        "choicesHash": "sha256:eb82a0abf27b542e4cb1df56c3aa39790e4f8d3da40560f8c1dea6245fcc166f",
+        "answerHash": "sha256:0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+        "solutionHash": "sha256:3f6249ffdaf0af67392595b9e374e781b524485db319195d291bbdd12b2efff0",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q2.png",
+          "blobSha": "45ed3ac9ead78089a9a6216c33c5ef9571274581",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_b5d0b5b71b6df8b92dc6e1c4573644fdd7ba822da2d24a990b0c50674c4eacb2",
+          "sourceIdentityKey": "qid_v1_b5d0b5b71b6df8b92dc6e1c4573644fdd7ba822da2d24a990b0c50674c4eacb2",
+          "sourceOrdinal": 2,
+          "contentHash": "sha256:7e3fa2eed173239a658a02ad6e3c4116d6de08f94e744f9fe21042291d5b9c51",
+          "choicesHash": "sha256:eb82a0abf27b542e4cb1df56c3aa39790e4f8d3da40560f8c1dea6245fcc166f",
+          "imageRefHash": "sha256:90da48d4ce2701a93771b63d196189cfe47963c6ed45c3360754b95dbda392d2",
+          "sourceFingerprint": "sha256:1e4a88078f2fbbb3a7a0784c52ca03e54f7b4ac4b223018fdf04304cee0f0581"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:3f6249ffdaf0af67392595b9e374e781b524485db319195d291bbdd12b2efff0",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중점 연결로 얻은 닮음비를 넓이비로 바꿔 보기를 판정한다.",
+          "decisiveStep": "닮음비 1:2이므로 넓이비 1:4",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "넓이·부피 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:1e4a88078f2fbbb3a7a0784c52ca03e54f7b4ac4b223018fdf04304cee0f0581",
+        "inputBundleSha": "sha256:a2568a364373ceb02e70d215545b69acf2abdd72745e693ea7cdb7d695329064",
+        "crosswalkRecordId": "M2-RPM-090",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:1e4a88078f2fbbb3a7a0784c52ca03e54f7b4ac4b223018fdf04304cee0f0581",
+        "solutionHash": "sha256:3f6249ffdaf0af67392595b9e374e781b524485db319195d291bbdd12b2efff0",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:1e4a88078f2fbbb3a7a0784c52ca03e54f7b4ac4b223018fdf04304cee0f0581",
+        "inputBundleSha": "sha256:a2568a364373ceb02e70d215545b69acf2abdd72745e693ea7cdb7d695329064",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+      "sourceOrdinal": 3,
+      "sourceAudit": {
+        "contentHash": "sha256:fe01f0ba651f0b348e1deb22ef854f0322fd9222afd8ec1cf776d96650934bb1",
+        "choicesHash": "sha256:f8dda10c00fdf74a727b23c9f5ffc6034485d6b680f6f9c8684d22a458624425",
+        "answerHash": "sha256:d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+        "solutionHash": "sha256:da1ce37fa3198a9fdb1d6b9ce62118c28df05f574a9cd80d91701c6ebf96a36d",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q3.png",
+          "blobSha": "e7445b0935e747e0931da03ab95e51c92b8caed2",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+          "sourceIdentityKey": "qid_v1_d8b94ee2b9b63f5326a011e0f23c8b86234f3c81bedcacb9a6240c76055dddf2",
+          "sourceOrdinal": 3,
+          "contentHash": "sha256:fe01f0ba651f0b348e1deb22ef854f0322fd9222afd8ec1cf776d96650934bb1",
+          "choicesHash": "sha256:f8dda10c00fdf74a727b23c9f5ffc6034485d6b680f6f9c8684d22a458624425",
+          "imageRefHash": "sha256:4e73df12732dcd0dabe78d090b01551f72c71e33c1e5b04fa262f120acdddfb0",
+          "sourceFingerprint": "sha256:6e9979dd8d3c94626f1a722606910288ad4f32779145610372989ec71fe98ec2"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:da1ce37fa3198a9fdb1d6b9ce62118c28df05f574a9cd80d91701c6ebf96a36d",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "semanticDecision": {
+          "primaryMethod": "무게중심의 2:1 중선비를 두 번 적용한다.",
+          "decisiveStep": "AG=24, GM=12, GG'=8이므로 AG'=32",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "중선과 무게중심",
+            "l4": "2:1 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:6e9979dd8d3c94626f1a722606910288ad4f32779145610372989ec71fe98ec2",
+        "inputBundleSha": "sha256:bce287bff741833797dc1da9361b3b3ef835bee2bea5162768d5ce3152b0b7b7",
+        "crosswalkRecordId": "M2-RPM-097",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_COORD_CENTROID",
+        "mappedTemplateKeys": [
+          "TPL_CENTROID_REVERSE"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:6e9979dd8d3c94626f1a722606910288ad4f32779145610372989ec71fe98ec2",
+        "solutionHash": "sha256:da1ce37fa3198a9fdb1d6b9ce62118c28df05f574a9cd80d91701c6ebf96a36d",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:6e9979dd8d3c94626f1a722606910288ad4f32779145610372989ec71fe98ec2",
+        "inputBundleSha": "sha256:bce287bff741833797dc1da9361b3b3ef835bee2bea5162768d5ce3152b0b7b7",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": {
+        "current": "M2-05-TRIANGLE_PROPERTIES",
+        "expected": "",
+        "label": "삼각형의 무게중심"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c6f036b50b8bc1718b49da15858eb640d591dcc6665ea8118dc9aaaaf11cdf10",
+      "sourceOrdinal": 4,
+      "sourceAudit": {
+        "contentHash": "sha256:b4b761fce0aa6fc364354544b5d996717e71085a4e6a6439e5918805b83a9fe8",
+        "choicesHash": "sha256:6a92d6f4fdc035694dfaba42503dbb5a4cc73178a7fe4273050b3f76b58ed251",
+        "answerHash": "sha256:b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+        "solutionHash": "sha256:f685469ab8ee47cbb7fb4cb052118db10a5e82c7468fd9afdddcd541ca1758de",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q4.png",
+          "blobSha": "4cb4d78e7d1db7009275f772922885238aa4fc26",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_c6f036b50b8bc1718b49da15858eb640d591dcc6665ea8118dc9aaaaf11cdf10",
+          "sourceIdentityKey": "qid_v1_c6f036b50b8bc1718b49da15858eb640d591dcc6665ea8118dc9aaaaf11cdf10",
+          "sourceOrdinal": 4,
+          "contentHash": "sha256:b4b761fce0aa6fc364354544b5d996717e71085a4e6a6439e5918805b83a9fe8",
+          "choicesHash": "sha256:6a92d6f4fdc035694dfaba42503dbb5a4cc73178a7fe4273050b3f76b58ed251",
+          "imageRefHash": "sha256:f797d2f4afb14ebbf7cfdf768338c795b64b343a02eb0dec08f1575f468b76a8",
+          "sourceFingerprint": "sha256:3a9666807f5bbdf936d264924e08ab7af6f5750e054a0815b7ab8784698d7a81"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:f685469ab8ee47cbb7fb4cb052118db10a5e82c7468fd9afdddcd541ca1758de",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "부피비에서 닮음비를 얻어 겉넓이비로 바꾼다.",
+          "decisiveStep": "27:64=3^3:4^3이므로 겉넓이비 9:16",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "넓이·부피 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:3a9666807f5bbdf936d264924e08ab7af6f5750e054a0815b7ab8784698d7a81",
+        "inputBundleSha": "sha256:846396b9c1fdeb88b7433f37017419100ea87eac9cbf2be510c485427855c703",
+        "crosswalkRecordId": "M2-RPM-090",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:3a9666807f5bbdf936d264924e08ab7af6f5750e054a0815b7ab8784698d7a81",
+        "solutionHash": "sha256:f685469ab8ee47cbb7fb4cb052118db10a5e82c7468fd9afdddcd541ca1758de",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:3a9666807f5bbdf936d264924e08ab7af6f5750e054a0815b7ab8784698d7a81",
+        "inputBundleSha": "sha256:846396b9c1fdeb88b7433f37017419100ea87eac9cbf2be510c485427855c703",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+      "sourceOrdinal": 5,
+      "sourceAudit": {
+        "contentHash": "sha256:2bea16c4d33f79a11e71ab15e85fca99655149515bc739c552ebb351c5537b95",
+        "choicesHash": "sha256:fdc95674fdbeb4deea4a7421b1d7fcddac39820042d28b3d329e7f81e152d573",
+        "answerHash": "sha256:973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+        "solutionHash": "sha256:644455331f2869ff8165f53a12fe6b6b984d7b9ea619113a1aab79bbb7573cb3",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q5.png",
+          "blobSha": "53682d9b2c34cb902b5f5fd8d9e0d664c106f69b",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+          "sourceIdentityKey": "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+          "sourceOrdinal": 5,
+          "contentHash": "sha256:2bea16c4d33f79a11e71ab15e85fca99655149515bc739c552ebb351c5537b95",
+          "choicesHash": "sha256:fdc95674fdbeb4deea4a7421b1d7fcddac39820042d28b3d329e7f81e152d573",
+          "imageRefHash": "sha256:77dd318a533d2e5ff4343e6211f9cb8a943c33c429d598d168753dd71b6be3ba",
+          "sourceFingerprint": "sha256:62fd0ec2bec1f44677e79d92a4ea6c1da0b2d5dbee1f354b45f408bb6d178dc4"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:644455331f2869ff8165f53a12fe6b6b984d7b9ea619113a1aab79bbb7573cb3",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중점 연결 정리를 연속 적용한다.",
+          "decisiveStep": "GC=4, EF=8, DF=6이므로 y/x=3/2",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:62fd0ec2bec1f44677e79d92a4ea6c1da0b2d5dbee1f354b45f408bb6d178dc4",
+        "inputBundleSha": "sha256:c6ba182c837275d35aeff06ce745d4ab56eae23c45355e1afedbbecbb0baf84a",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:62fd0ec2bec1f44677e79d92a4ea6c1da0b2d5dbee1f354b45f408bb6d178dc4",
+        "solutionHash": "sha256:644455331f2869ff8165f53a12fe6b6b984d7b9ea619113a1aab79bbb7573cb3",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:62fd0ec2bec1f44677e79d92a4ea6c1da0b2d5dbee1f354b45f408bb6d178dc4",
+        "inputBundleSha": "sha256:c6ba182c837275d35aeff06ce745d4ab56eae23c45355e1afedbbecbb0baf84a",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
+      "sourceOrdinal": 6,
+      "sourceAudit": {
+        "contentHash": "sha256:79d432808ce6ceb8a91500e49004dc3b3d41670109e25d296e7ec9b3416854d2",
+        "choicesHash": "sha256:31316c17c1c5d2af578b733da36559f1639b2aa99fbe82e8a2c79b8cfe101c75",
+        "answerHash": "sha256:0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+        "solutionHash": "sha256:b5472e0e7c2d31033ac7eb552192b97dd8ef4472baba88cf9bac4899730487a2",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q6.png",
+          "blobSha": "e10fa347d07e4faa5bbbf3e2ee8452e7213a65aa",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
+          "sourceIdentityKey": "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
+          "sourceOrdinal": 6,
+          "contentHash": "sha256:79d432808ce6ceb8a91500e49004dc3b3d41670109e25d296e7ec9b3416854d2",
+          "choicesHash": "sha256:31316c17c1c5d2af578b733da36559f1639b2aa99fbe82e8a2c79b8cfe101c75",
+          "imageRefHash": "sha256:43ce52ed8f7cf22354a6b46550fc6a2690ee36d8a578460bb3bc01397954da40",
+          "sourceFingerprint": "sha256:a5768e2c36822a87631ee400f41b3bab5cd287ed9095d0fdd76f7f389b31025e"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:b5472e0e7c2d31033ac7eb552192b97dd8ef4472baba88cf9bac4899730487a2",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중점 연결과 닮음으로 선분비를 만든 뒤 넓이비로 환산한다.",
+          "decisiveStep": "PF:PB=1:2, [BPE]=8, [ABPE]=20",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:a5768e2c36822a87631ee400f41b3bab5cd287ed9095d0fdd76f7f389b31025e",
+        "inputBundleSha": "sha256:28371cf02dfacc3aba0f807ddff1666374b76d17a090b8ae0751d7d347f19672",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:a5768e2c36822a87631ee400f41b3bab5cd287ed9095d0fdd76f7f389b31025e",
+        "solutionHash": "sha256:b5472e0e7c2d31033ac7eb552192b97dd8ef4472baba88cf9bac4899730487a2",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:a5768e2c36822a87631ee400f41b3bab5cd287ed9095d0fdd76f7f389b31025e",
+        "inputBundleSha": "sha256:28371cf02dfacc3aba0f807ddff1666374b76d17a090b8ae0751d7d347f19672",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_1a275026191ec3c7abf5dbe60847f6c45fff45c2788ac3b3b66d1427ad8d23cc",
+      "sourceOrdinal": 7,
+      "sourceAudit": {
+        "contentHash": "sha256:de64323ade7b4f6fadc6143e0227da640ce2c7ebde452c6af54e063614e04682",
+        "choicesHash": "sha256:3e734a57757e9dc3478646972bb0bd03c9f5610f4c6f425d971615b75bea80d9",
+        "answerHash": "sha256:d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+        "solutionHash": "sha256:74e884a0d8edffd9b026a1400e367ec5b11331abfd7af2c7248226735b908f58",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q7.png",
+          "blobSha": "5e15ff4466cc40f1c3140cd8a75b8108003aca2e",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_1a275026191ec3c7abf5dbe60847f6c45fff45c2788ac3b3b66d1427ad8d23cc",
+          "sourceIdentityKey": "qid_v1_1a275026191ec3c7abf5dbe60847f6c45fff45c2788ac3b3b66d1427ad8d23cc",
+          "sourceOrdinal": 7,
+          "contentHash": "sha256:de64323ade7b4f6fadc6143e0227da640ce2c7ebde452c6af54e063614e04682",
+          "choicesHash": "sha256:3e734a57757e9dc3478646972bb0bd03c9f5610f4c6f425d971615b75bea80d9",
+          "imageRefHash": "sha256:760ead07e28aa92b103acfe11718f88e982a5c138bc2a0b1c2736fc3e73f0f95",
+          "sourceFingerprint": "sha256:57ed0900198bf87058660eea8ce3329e47bb25ac266eb0f6575cd5c37514bc26"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:74e884a0d8edffd9b026a1400e367ec5b11331abfd7af2c7248226735b908f58",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "원뿔 닮음비를 부피비로 바꿔 시간비를 구한다.",
+          "decisiveStep": "부피비 1:27, 전체 81초에서 3초를 빼 78초",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "넓이·부피 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:57ed0900198bf87058660eea8ce3329e47bb25ac266eb0f6575cd5c37514bc26",
+        "inputBundleSha": "sha256:e02f34fa815f09ff21277d8da4543e06f4a636fcb87f4df9feb5de27be35941a",
+        "crosswalkRecordId": "M2-RPM-090",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:57ed0900198bf87058660eea8ce3329e47bb25ac266eb0f6575cd5c37514bc26",
+        "solutionHash": "sha256:74e884a0d8edffd9b026a1400e367ec5b11331abfd7af2c7248226735b908f58",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:57ed0900198bf87058660eea8ce3329e47bb25ac266eb0f6575cd5c37514bc26",
+        "inputBundleSha": "sha256:e02f34fa815f09ff21277d8da4543e06f4a636fcb87f4df9feb5de27be35941a",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242",
+      "sourceOrdinal": 8,
+      "sourceAudit": {
+        "contentHash": "sha256:5a2c8fdc38b5800b73ce7d7d65d4dbd6eaf19e627e59fd7156b761a2d0029661",
+        "choicesHash": "sha256:684cd053b2e2239252077d9164f26b91bcb693b51c55a0e113a7b8b880b187d4",
+        "answerHash": "sha256:4fcc14dd33588849a751380031f0dd77bdfd09a1bb240a3db58f5a66498f44e7",
+        "solutionHash": "sha256:3a55364721d8e9332f47f60702738bf1fec6762115e9384923614d939fcac63e",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242",
+          "sourceIdentityKey": "qid_v1_578b266e333c0ea050c38aafdfde77f81cf8e73f130666f72bc08f15fee3e242",
+          "sourceOrdinal": 8,
+          "contentHash": "sha256:5a2c8fdc38b5800b73ce7d7d65d4dbd6eaf19e627e59fd7156b761a2d0029661",
+          "choicesHash": "sha256:684cd053b2e2239252077d9164f26b91bcb693b51c55a0e113a7b8b880b187d4",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:df0f9c9467cced2aef52a446f6d136951b7e8dc5f730dbbce3eb7b4509bcc1c5"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:3a55364721d8e9332f47f60702738bf1fec6762115e9384923614d939fcac63e",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        },
+        "semanticDecision": {
+          "primaryMethod": "피타고라스 정리의 역으로 직각삼각형 여부를 판정한다.",
+          "decisiveStep": "②와 ③만 a²+b²=c²를 만족하지 않는다",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리의 역",
+            "l4": "직각삼각형 판정"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:df0f9c9467cced2aef52a446f6d136951b7e8dc5f730dbbce3eb7b4509bcc1c5",
+        "inputBundleSha": "sha256:3cedb784e4dff5d744a4134d31243420e565ba3e0c19deafa28af9e3fb38e10d",
+        "crosswalkRecordId": "M2-RPM-103",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:df0f9c9467cced2aef52a446f6d136951b7e8dc5f730dbbce3eb7b4509bcc1c5",
+        "solutionHash": "sha256:3a55364721d8e9332f47f60702738bf1fec6762115e9384923614d939fcac63e",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:df0f9c9467cced2aef52a446f6d136951b7e8dc5f730dbbce3eb7b4509bcc1c5",
+        "inputBundleSha": "sha256:3cedb784e4dff5d744a4134d31243420e565ba3e0c19deafa28af9e3fb38e10d",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_ad48d56e65cb85964c2a3a2d1514742e5448d514b4d7d023ae9606115e0da684",
+      "sourceOrdinal": 9,
+      "sourceAudit": {
+        "contentHash": "sha256:c891c076ea366c70087a7f34c69169219aa982a1651117535fd8ab9512ea7289",
+        "choicesHash": "sha256:d82c7a0cd9f0cd81986f117cbf02032835dad912c9768a18f2306596967b0c01",
+        "answerHash": "sha256:973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+        "solutionHash": "sha256:e0bfe1a15edc22ec6fa94c5f3bec6b977cd820dae46f3b4ee76521a8814ad2f5",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q9.png",
+          "blobSha": "f0d12caf7169e51761fa35e841408f9535380102",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_ad48d56e65cb85964c2a3a2d1514742e5448d514b4d7d023ae9606115e0da684",
+          "sourceIdentityKey": "qid_v1_ad48d56e65cb85964c2a3a2d1514742e5448d514b4d7d023ae9606115e0da684",
+          "sourceOrdinal": 9,
+          "contentHash": "sha256:c891c076ea366c70087a7f34c69169219aa982a1651117535fd8ab9512ea7289",
+          "choicesHash": "sha256:d82c7a0cd9f0cd81986f117cbf02032835dad912c9768a18f2306596967b0c01",
+          "imageRefHash": "sha256:8a0380ddbdfba0d9a4cec97f133e82298d625c57b7c89466e655e6eab5ff87b2",
+          "sourceFingerprint": "sha256:b70b2cebb06bcb7052bcdbadc2e0298e8d31c8f9e2152dbce9c338f07ef814de"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:e0bfe1a15edc22ec6fa94c5f3bec6b977cd820dae46f3b4ee76521a8814ad2f5",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "이등변삼각형의 높이에 피타고라스 정리를 적용한다.",
+          "decisiveStep": "높이 8, 넓이 48",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:b70b2cebb06bcb7052bcdbadc2e0298e8d31c8f9e2152dbce9c338f07ef814de",
+        "inputBundleSha": "sha256:c27f279e08e15e9c7a414084bea4bdda0a3f73f5b4fd86abd5498b0c9c69ca7a",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:b70b2cebb06bcb7052bcdbadc2e0298e8d31c8f9e2152dbce9c338f07ef814de",
+        "solutionHash": "sha256:e0bfe1a15edc22ec6fa94c5f3bec6b977cd820dae46f3b4ee76521a8814ad2f5",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:b70b2cebb06bcb7052bcdbadc2e0298e8d31c8f9e2152dbce9c338f07ef814de",
+        "inputBundleSha": "sha256:c27f279e08e15e9c7a414084bea4bdda0a3f73f5b4fd86abd5498b0c9c69ca7a",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_8a0068702a4af6330e9e273ad42ed036f83f0f668dcba055e9bcd6cfb72b50fd",
+      "sourceOrdinal": 10,
+      "sourceAudit": {
+        "contentHash": "sha256:efe2eba8802bc2503db2c905a0fa4af1cba27edd013d497cbef816937559ba1e",
+        "choicesHash": "sha256:844aefd1c01adf2d30d72fea39245e9d6f31ab3b87078a4c8c84440efc1152c7",
+        "answerHash": "sha256:dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+        "solutionHash": "sha256:729ecbcfd9a1b4d49ef5ad0a553edbe4b8b2de01ee8ec4941f7a99911861c077",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q10.png",
+          "blobSha": "f7cf3d0f57f3651f44fbef578b2122bede29ad39",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_8a0068702a4af6330e9e273ad42ed036f83f0f668dcba055e9bcd6cfb72b50fd",
+          "sourceIdentityKey": "qid_v1_8a0068702a4af6330e9e273ad42ed036f83f0f668dcba055e9bcd6cfb72b50fd",
+          "sourceOrdinal": 10,
+          "contentHash": "sha256:efe2eba8802bc2503db2c905a0fa4af1cba27edd013d497cbef816937559ba1e",
+          "choicesHash": "sha256:844aefd1c01adf2d30d72fea39245e9d6f31ab3b87078a4c8c84440efc1152c7",
+          "imageRefHash": "sha256:3c1ea4940a76cfe84fa5eac67ede3fe30400c004c8424557a7de4200358f8a0c",
+          "sourceFingerprint": "sha256:182cf8f16840518ddc5d856169e8a9ccb2b969aea8947a0f5c71e1de71583fc9"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:729ecbcfd9a1b4d49ef5ad0a553edbe4b8b2de01ee8ec4941f7a99911861c077",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "반원 넓이를 지름 제곱으로 나타내 피타고라스 관계를 합산한다.",
+          "decisiveStep": "π/8(AB²+AC²+BC²)=36π",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:182cf8f16840518ddc5d856169e8a9ccb2b969aea8947a0f5c71e1de71583fc9",
+        "inputBundleSha": "sha256:31b28a7c4f35cd951f255f0195c3f3b2db8febfbadfb8546d5956c8c5709983c",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:182cf8f16840518ddc5d856169e8a9ccb2b969aea8947a0f5c71e1de71583fc9",
+        "solutionHash": "sha256:729ecbcfd9a1b4d49ef5ad0a553edbe4b8b2de01ee8ec4941f7a99911861c077",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:182cf8f16840518ddc5d856169e8a9ccb2b969aea8947a0f5c71e1de71583fc9",
+        "inputBundleSha": "sha256:31b28a7c4f35cd951f255f0195c3f3b2db8febfbadfb8546d5956c8c5709983c",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_b6ce198672dc125c871b98fb73ded547f807074e6fc9763c4ae4f52cabdbafc0",
+      "sourceOrdinal": 11,
+      "sourceAudit": {
+        "contentHash": "sha256:b4b5caf7f5946c05a1776e241edc52833a55adae1beb59f1591c7f956a5b84b1",
+        "choicesHash": "sha256:4cd11d68752de9a9fd9e3f6ca3952cda3c662b4f594f2f23568c592afc3ea311",
+        "answerHash": "sha256:973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+        "solutionHash": "sha256:a38e2771bb376b759b83cbefa9843ad1b85357218c7397f3d9e46993b78c247c",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q11.png",
+          "blobSha": "33ec8e93a6e190a14e80eede99307db46025094f",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_b6ce198672dc125c871b98fb73ded547f807074e6fc9763c4ae4f52cabdbafc0",
+          "sourceIdentityKey": "qid_v1_b6ce198672dc125c871b98fb73ded547f807074e6fc9763c4ae4f52cabdbafc0",
+          "sourceOrdinal": 11,
+          "contentHash": "sha256:b4b5caf7f5946c05a1776e241edc52833a55adae1beb59f1591c7f956a5b84b1",
+          "choicesHash": "sha256:4cd11d68752de9a9fd9e3f6ca3952cda3c662b4f594f2f23568c592afc3ea311",
+          "imageRefHash": "sha256:a3eb21239a7bb13e49a7d935b7ce31e6361ccc0c4a080cf0254a19cbc6c358eb",
+          "sourceFingerprint": "sha256:760404cd38cdd18f12d8ba8f57569ea5b76b78305331fa3af72d9241e85e9929"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:a38e2771bb376b759b83cbefa9843ad1b85357218c7397f3d9e46993b78c247c",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "피타고라스로 한 변을 구하고 넓이 차로 중앙 정사각형을 구한다.",
+          "decisiveStep": "BE=8, 중앙 넓이 49, 둘레 28",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:760404cd38cdd18f12d8ba8f57569ea5b76b78305331fa3af72d9241e85e9929",
+        "inputBundleSha": "sha256:32c56073a6ba36c049340684b060522ec55d1f6331d289b903eaa3e028a09844",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:760404cd38cdd18f12d8ba8f57569ea5b76b78305331fa3af72d9241e85e9929",
+        "solutionHash": "sha256:a38e2771bb376b759b83cbefa9843ad1b85357218c7397f3d9e46993b78c247c",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:760404cd38cdd18f12d8ba8f57569ea5b76b78305331fa3af72d9241e85e9929",
+        "inputBundleSha": "sha256:32c56073a6ba36c049340684b060522ec55d1f6331d289b903eaa3e028a09844",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_54b0a4ed33d7c6f5103ef3fe7f1b6f502d725848fa4e37b2b461875c6c73dd44",
+      "sourceOrdinal": 12,
+      "sourceAudit": {
+        "contentHash": "sha256:fd30e9563469e7ff8e09ef6571a72d4dacae90ba2d84ecc3b329b5c191dfd5da",
+        "choicesHash": "sha256:adaee55c9d19995125524fc6d6e479815c09349a9d34bb855cad9e3002c470d1",
+        "answerHash": "sha256:b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+        "solutionHash": "sha256:ace10d0f6301dc70c206a071f1daec6221f7330a5b6fa866f113ea7a040b7dac",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q12.png",
+          "blobSha": "f897a77a5d15807177bfb9917658bd1513352081",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_54b0a4ed33d7c6f5103ef3fe7f1b6f502d725848fa4e37b2b461875c6c73dd44",
+          "sourceIdentityKey": "qid_v1_54b0a4ed33d7c6f5103ef3fe7f1b6f502d725848fa4e37b2b461875c6c73dd44",
+          "sourceOrdinal": 12,
+          "contentHash": "sha256:fd30e9563469e7ff8e09ef6571a72d4dacae90ba2d84ecc3b329b5c191dfd5da",
+          "choicesHash": "sha256:adaee55c9d19995125524fc6d6e479815c09349a9d34bb855cad9e3002c470d1",
+          "imageRefHash": "sha256:8b496ddfbddb2c70950cd97caaa64c38dffb6424eaae5e1e96ea4c5779c79084",
+          "sourceFingerprint": "sha256:5f5024675f3e8904b25b55b241b2bbac6a83b9f0c4baf2a1ab02e296d2fec3f8"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:ace10d0f6301dc70c206a071f1daec6221f7330a5b6fa866f113ea7a040b7dac",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        },
+        "semanticDecision": {
+          "primaryMethod": "피타고라스 정사각형 넓이 합 불변을 단계별로 적용한다.",
+          "decisiveStep": "각 단계 합 225이므로 총 675",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:5f5024675f3e8904b25b55b241b2bbac6a83b9f0c4baf2a1ab02e296d2fec3f8",
+        "inputBundleSha": "sha256:1f5b83ae9a567d20cd4ba4d2c16655b2a52d25096d9b5752baed519608fbdff6",
+        "crosswalkRecordId": "M2-RPM-101",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:5f5024675f3e8904b25b55b241b2bbac6a83b9f0c4baf2a1ab02e296d2fec3f8",
+        "solutionHash": "sha256:ace10d0f6301dc70c206a071f1daec6221f7330a5b6fa866f113ea7a040b7dac",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:5f5024675f3e8904b25b55b241b2bbac6a83b9f0c4baf2a1ab02e296d2fec3f8",
+        "inputBundleSha": "sha256:1f5b83ae9a567d20cd4ba4d2c16655b2a52d25096d9b5752baed519608fbdff6",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_515a60073a8b15971bfe076ac34b195ec929a23127becb6e729597f17a53aa54",
+      "sourceOrdinal": 13,
+      "sourceAudit": {
+        "contentHash": "sha256:56833a26d9e49faa17607e147823e961fcef1317d0f71108b1fc15c910d7410c",
+        "choicesHash": "sha256:535eee285406563010affebeb3272f617e9779c01ed9ff4fd01af98534f654d3",
+        "answerHash": "sha256:0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+        "solutionHash": "sha256:14afcbd18f5168d2c8daa21316b7bccc8a63c933c82ef166c89371ee3fcb77c8",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q13.png",
+          "blobSha": "f16a4e8a055703cf6d0e879de3500223efde5615",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_515a60073a8b15971bfe076ac34b195ec929a23127becb6e729597f17a53aa54",
+          "sourceIdentityKey": "qid_v1_515a60073a8b15971bfe076ac34b195ec929a23127becb6e729597f17a53aa54",
+          "sourceOrdinal": 13,
+          "contentHash": "sha256:56833a26d9e49faa17607e147823e961fcef1317d0f71108b1fc15c910d7410c",
+          "choicesHash": "sha256:535eee285406563010affebeb3272f617e9779c01ed9ff4fd01af98534f654d3",
+          "imageRefHash": "sha256:ad8055b7f112018653bd45c2fda0d1ab45dabf1984a2ca84d3e351ba264b560d",
+          "sourceFingerprint": "sha256:0dd9a53fde969549530f98e3f6f9901586d8005c6a4cbefbf868a77c4c0669b1"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:14afcbd18f5168d2c8daa21316b7bccc8a63c933c82ef166c89371ee3fcb77c8",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "피타고라스로 대각선을 구한 뒤 닮음비를 보조로 사용한다.",
+          "decisiveStep": "AE=10, EH=5/2, AH=15/2",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:0dd9a53fde969549530f98e3f6f9901586d8005c6a4cbefbf868a77c4c0669b1",
+        "inputBundleSha": "sha256:65c6515fcd7d622e92fce937bff4cf5c4564bae9a31a7131bbbc76bfdfc041e4",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:0dd9a53fde969549530f98e3f6f9901586d8005c6a4cbefbf868a77c4c0669b1",
+        "solutionHash": "sha256:14afcbd18f5168d2c8daa21316b7bccc8a63c933c82ef166c89371ee3fcb77c8",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:0dd9a53fde969549530f98e3f6f9901586d8005c6a4cbefbf868a77c4c0669b1",
+        "inputBundleSha": "sha256:65c6515fcd7d622e92fce937bff4cf5c4564bae9a31a7131bbbc76bfdfc041e4",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [
+          {
+            "key": "CC_SIMILARITY",
+            "status": "FINAL"
+          }
+        ],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_12113dfd5d30b16e9fd1d1aee2b5a69329e06d9c146900b2cd8a342a125273ac",
+      "sourceOrdinal": 14,
+      "sourceAudit": {
+        "contentHash": "sha256:89c18dffb3c95cdd19d02a0b9c15a63c75ebf531a97b7e0a0f66589efd00c342",
+        "choicesHash": "sha256:5dfa59a13e058a5105c52c8c9be058a93012f41643d94c193fd29fba55eab469",
+        "answerHash": "sha256:973d2fd2f97e26a666f403b12da6d87e527985b36bcf4ff0a47c7e7e8c36321a",
+        "solutionHash": "sha256:dde4a01ebf80d149265d82f5d9da8dd42caab02e396c1928a90c9c57dc76cbef",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q14.png",
+          "blobSha": "99757c83a6ba6dda5e0dd62c4eddf8ca7efaef9b",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_12113dfd5d30b16e9fd1d1aee2b5a69329e06d9c146900b2cd8a342a125273ac",
+          "sourceIdentityKey": "qid_v1_12113dfd5d30b16e9fd1d1aee2b5a69329e06d9c146900b2cd8a342a125273ac",
+          "sourceOrdinal": 14,
+          "contentHash": "sha256:89c18dffb3c95cdd19d02a0b9c15a63c75ebf531a97b7e0a0f66589efd00c342",
+          "choicesHash": "sha256:5dfa59a13e058a5105c52c8c9be058a93012f41643d94c193fd29fba55eab469",
+          "imageRefHash": "sha256:5ab6f4c4afdee3a8be5e947bacee447e2fdaf9d5192f9cd0bd9d1ee2ef25951f",
+          "sourceFingerprint": "sha256:28c799cddad5e8c299ff09162bdd066aa80ad006714ccfe8ec56bc65a0c09bd8"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:dde4a01ebf80d149265d82f5d9da8dd42caab02e396c1928a90c9c57dc76cbef",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "접기의 등거리 조건 뒤 피타고라스 정리를 적용한다.",
+          "decisiveStep": "PC=4, CQ=3, 넓이 6",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:28c799cddad5e8c299ff09162bdd066aa80ad006714ccfe8ec56bc65a0c09bd8",
+        "inputBundleSha": "sha256:13c6e3603ea3561ad27226fee17fdd4b7e6544d7cdf40a1edc254ebe76591bdd",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:28c799cddad5e8c299ff09162bdd066aa80ad006714ccfe8ec56bc65a0c09bd8",
+        "solutionHash": "sha256:dde4a01ebf80d149265d82f5d9da8dd42caab02e396c1928a90c9c57dc76cbef",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:28c799cddad5e8c299ff09162bdd066aa80ad006714ccfe8ec56bc65a0c09bd8",
+        "inputBundleSha": "sha256:13c6e3603ea3561ad27226fee17fdd4b7e6544d7cdf40a1edc254ebe76591bdd",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043",
+      "sourceOrdinal": 15,
+      "sourceAudit": {
+        "contentHash": "sha256:a41abd5e1996d84e7088588cd24ceb15efd4814727ade53ac965b79e58c94fa8",
+        "choicesHash": "sha256:fc3dba98889cccd1a96f32fb71f7812a2d3b9dde603c59a1f87b932df48e085f",
+        "answerHash": "sha256:dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+        "solutionHash": "sha256:6754ff0117cfb25e2290c3b1a727035700dc7386110a5231c7b42eed44666d6d",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043",
+          "sourceIdentityKey": "qid_v1_ab6c2b1acd0cb470d9dbfbdf7b3cd4bfd25aeb5c8c98499ff940334cf427f043",
+          "sourceOrdinal": 15,
+          "contentHash": "sha256:a41abd5e1996d84e7088588cd24ceb15efd4814727ade53ac965b79e58c94fa8",
+          "choicesHash": "sha256:fc3dba98889cccd1a96f32fb71f7812a2d3b9dde603c59a1f87b932df48e085f",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:ff4c23a00af7bb843ae9aa60024dde4ef915606173571bbec264f4f25e0eb78b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:6754ff0117cfb25e2290c3b1a727035700dc7386110a5231c7b42eed44666d6d",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "겹치지 않는 합 조건의 경우를 직접 세어 더한다.",
+          "decisiveStep": "합 2는 1가지, 합 7은 6가지, 총 7",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "합의 법칙과 곱의 법칙",
+            "l4": "중복 없이 세기"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:ff4c23a00af7bb843ae9aa60024dde4ef915606173571bbec264f4f25e0eb78b",
+        "inputBundleSha": "sha256:d884c26db71d144584611c7e96ce2b6cea851648c643efd384e578671ff1af62",
+        "crosswalkRecordId": "M2-RPM-108",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:ff4c23a00af7bb843ae9aa60024dde4ef915606173571bbec264f4f25e0eb78b",
+        "solutionHash": "sha256:6754ff0117cfb25e2290c3b1a727035700dc7386110a5231c7b42eed44666d6d",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:ff4c23a00af7bb843ae9aa60024dde4ef915606173571bbec264f4f25e0eb78b",
+        "inputBundleSha": "sha256:d884c26db71d144584611c7e96ce2b6cea851648c643efd384e578671ff1af62",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_ac85c67f9b8a9f484632f1f8a72bad2ff884697489f3be3a300fdf5926dbbaf7",
+      "sourceOrdinal": 16,
+      "sourceAudit": {
+        "contentHash": "sha256:5dde3c8ea704456a8853064500339652c5bc87e0ebfc6ec5235d356671a6a51c",
+        "choicesHash": "sha256:7d713f086661fa18a4e8d7f5b504a3f8d28e946ad1877de0a712d8b5c8894cfc",
+        "answerHash": "sha256:d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+        "solutionHash": "sha256:b701bfe532c839d9b531698d1642fbdb25c204f88b0eab928c359c7907f93aa1",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q16.png",
+          "blobSha": "579057d1f8539e31e30416d6ecaf632a95889943",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_ac85c67f9b8a9f484632f1f8a72bad2ff884697489f3be3a300fdf5926dbbaf7",
+          "sourceIdentityKey": "qid_v1_ac85c67f9b8a9f484632f1f8a72bad2ff884697489f3be3a300fdf5926dbbaf7",
+          "sourceOrdinal": 16,
+          "contentHash": "sha256:5dde3c8ea704456a8853064500339652c5bc87e0ebfc6ec5235d356671a6a51c",
+          "choicesHash": "sha256:7d713f086661fa18a4e8d7f5b504a3f8d28e946ad1877de0a712d8b5c8894cfc",
+          "imageRefHash": "sha256:f39abefef0a63ad1d29841f9a7215adcc21c8d5735af09504e2f6145a0bfe202",
+          "sourceFingerprint": "sha256:d9112ac90fc5c982c7dbcffd9a4cb68d3056d26ba7d2dfba5c34772917b2a2ce"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:b701bfe532c839d9b531698d1642fbdb25c204f88b0eab928c359c7907f93aa1",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "선두 0 제한이 있는 순서 배열을 곱의 법칙으로 센다.",
+          "decisiveStep": "4×4×3=48",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "배열과 선택",
+            "l4": "순서가 있는 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:d9112ac90fc5c982c7dbcffd9a4cb68d3056d26ba7d2dfba5c34772917b2a2ce",
+        "inputBundleSha": "sha256:ba2041f62a9b2f235236dca748258a2168670a7eaf109861942132b42801cdf9",
+        "crosswalkRecordId": "M2-RPM-109",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "mappedTemplateKeys": [
+          "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:d9112ac90fc5c982c7dbcffd9a4cb68d3056d26ba7d2dfba5c34772917b2a2ce",
+        "solutionHash": "sha256:b701bfe532c839d9b531698d1642fbdb25c204f88b0eab928c359c7907f93aa1",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:d9112ac90fc5c982c7dbcffd9a4cb68d3056d26ba7d2dfba5c34772917b2a2ce",
+        "inputBundleSha": "sha256:ba2041f62a9b2f235236dca748258a2168670a7eaf109861942132b42801cdf9",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": {
+        "current": "M2-08-PROBABILITY_BASIC",
+        "expected": "M2-08-PROBABILITY_COUNTING",
+        "label": "경우의 수와 확률"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+      "sourceOrdinal": 17,
+      "sourceAudit": {
+        "contentHash": "sha256:be414d339c78a8954dec6d5c980fb5d14750893114be761c99c5d6cd03fd5417",
+        "choicesHash": "sha256:f9e1793e66710c108e9c317de768adb90a8746f6549dc355ada9edb7bea20c59",
+        "answerHash": "sha256:dfde05a3668030e99ca64d8d4ae5f6b64c7a87cee61c0ba43904b92ef210191d",
+        "solutionHash": "sha256:4629651ffa6316386671c4547930452803b684da5c7f8deb739995512a29bc19",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+          "sourceIdentityKey": "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+          "sourceOrdinal": 17,
+          "contentHash": "sha256:be414d339c78a8954dec6d5c980fb5d14750893114be761c99c5d6cd03fd5417",
+          "choicesHash": "sha256:f9e1793e66710c108e9c317de768adb90a8746f6549dc355ada9edb7bea20c59",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:5cc6eda3dc3e541146e0e0b48d850bce36d8a298cc26690ec05ed2c0ba14c125"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:4629651ffa6316386671c4547930452803b684da5c7f8deb739995512a29bc19",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "확률의 정의와 범위로 보기를 판정한다.",
+          "decisiveStep": "0≤p≤1이므로 ②가 틀리다",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "동등가능한 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:5cc6eda3dc3e541146e0e0b48d850bce36d8a298cc26690ec05ed2c0ba14c125",
+        "inputBundleSha": "sha256:8bb521177377e21439a2e53c4976249e74f9c33ea557aa7f998ab71f87f14859",
+        "crosswalkRecordId": "M2-RPM-113",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:5cc6eda3dc3e541146e0e0b48d850bce36d8a298cc26690ec05ed2c0ba14c125",
+        "solutionHash": "sha256:4629651ffa6316386671c4547930452803b684da5c7f8deb739995512a29bc19",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:5cc6eda3dc3e541146e0e0b48d850bce36d8a298cc26690ec05ed2c0ba14c125",
+        "inputBundleSha": "sha256:8bb521177377e21439a2e53c4976249e74f9c33ea557aa7f998ab71f87f14859",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_3ddf4d29e8c10bfdb7142ca23f915f6e6b801d3df855a5186c6739b6af36b339",
+      "sourceOrdinal": 18,
+      "sourceAudit": {
+        "contentHash": "sha256:9ef522f4ad19fc55aa07141b1a9679f12bd09aac4dfbf962c7841791bd2acc44",
+        "choicesHash": "sha256:89bac6930e389f0c747037526f17a0b8875bcc1be084b771b583a752f6ed91c3",
+        "answerHash": "sha256:0bdef091c479702584f065d3a3714f8a76f851b3f0cf10912f345a5dd930b0a8",
+        "solutionHash": "sha256:ab8d677cd0f9d75ace9f9d3bcd018b9499ab2a35c199751ef1a6dfe0b2664d09",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_3ddf4d29e8c10bfdb7142ca23f915f6e6b801d3df855a5186c6739b6af36b339",
+          "sourceIdentityKey": "qid_v1_3ddf4d29e8c10bfdb7142ca23f915f6e6b801d3df855a5186c6739b6af36b339",
+          "sourceOrdinal": 18,
+          "contentHash": "sha256:9ef522f4ad19fc55aa07141b1a9679f12bd09aac4dfbf962c7841791bd2acc44",
+          "choicesHash": "sha256:89bac6930e389f0c747037526f17a0b8875bcc1be084b771b583a752f6ed91c3",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:79d1cbc64a9f9383ce11adcf18809913dc8dc96173b61228930ec978f6565ebe"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:ab8d677cd0f9d75ace9f9d3bcd018b9499ab2a35c199751ef1a6dfe0b2664d09",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "적어도 하나 조건을 여사건으로 계산한다.",
+          "decisiveStep": "1-4/36=8/9",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 성질",
+            "l4": "여사건"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:79d1cbc64a9f9383ce11adcf18809913dc8dc96173b61228930ec978f6565ebe",
+        "inputBundleSha": "sha256:e3f76ae4f786cefc12d2b4f4bb3244a9e2ffe7e55189741d57759a91fc1e91ef",
+        "crosswalkRecordId": "M2-RPM-115",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:79d1cbc64a9f9383ce11adcf18809913dc8dc96173b61228930ec978f6565ebe",
+        "solutionHash": "sha256:ab8d677cd0f9d75ace9f9d3bcd018b9499ab2a35c199751ef1a6dfe0b2664d09",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:79d1cbc64a9f9383ce11adcf18809913dc8dc96173b61228930ec978f6565ebe",
+        "inputBundleSha": "sha256:e3f76ae4f786cefc12d2b4f4bb3244a9e2ffe7e55189741d57759a91fc1e91ef",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_6caf6836bb948d317dc66f4b2485f462f3e5739b1369c480af1aa608298980e9",
+      "sourceOrdinal": 19,
+      "sourceAudit": {
+        "contentHash": "sha256:c552ecb8538363b67608e0687b715d469abb28e1a96fad03757592e5692839b0",
+        "choicesHash": "sha256:64699bf56e24a52ecff9d457eb41776e3f738727788285310470b49b694ee3fa",
+        "answerHash": "sha256:b15be6cb71072b84f7e1e198ce023fc5bb8b1e625335904ddcf3cffcd8b7312b",
+        "solutionHash": "sha256:19faf5b76f27432ab91c9499c24a43ab125d289bd2c1ed715fa87f69cbbe5601",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_6caf6836bb948d317dc66f4b2485f462f3e5739b1369c480af1aa608298980e9",
+          "sourceIdentityKey": "qid_v1_6caf6836bb948d317dc66f4b2485f462f3e5739b1369c480af1aa608298980e9",
+          "sourceOrdinal": 19,
+          "contentHash": "sha256:c552ecb8538363b67608e0687b715d469abb28e1a96fad03757592e5692839b0",
+          "choicesHash": "sha256:64699bf56e24a52ecff9d457eb41776e3f738727788285310470b49b694ee3fa",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:89facfd038d6c6561a8d12264c5fc5a7e12938aac2d13b28984bc60551cd7cd6"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:19faf5b76f27432ab91c9499c24a43ab125d289bd2c1ed715fa87f69cbbe5601",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "해 조건을 주사위 순서쌍 조건으로 바꿔 센다.",
+          "decisiveStep": "b=a 6가지와 b=2a 3가지로 9/36=1/4",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "확률 계산"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:89facfd038d6c6561a8d12264c5fc5a7e12938aac2d13b28984bc60551cd7cd6",
+        "inputBundleSha": "sha256:62f13a351312a45be8557aba6f63a8678a9277d586f9c8e6e5c1b64a05243815",
+        "crosswalkRecordId": "M2-RPM-114",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:89facfd038d6c6561a8d12264c5fc5a7e12938aac2d13b28984bc60551cd7cd6",
+        "solutionHash": "sha256:19faf5b76f27432ab91c9499c24a43ab125d289bd2c1ed715fa87f69cbbe5601",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:89facfd038d6c6561a8d12264c5fc5a7e12938aac2d13b28984bc60551cd7cd6",
+        "inputBundleSha": "sha256:62f13a351312a45be8557aba6f63a8678a9277d586f9c8e6e5c1b64a05243815",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_39624764cd09cc2364146a62046e64fb2a6196772e985a349d5e53bf187434c0",
+      "sourceOrdinal": 20,
+      "sourceAudit": {
+        "contentHash": "sha256:1a103c4c653c4f721ea36cc1324ab71a436673bacf041acf4c834cae10f00304",
+        "choicesHash": "sha256:9bdfbaa35e5ec094b5570479d56d707a79fab69bf3dc38d4f94f2cbfa94414e8",
+        "answerHash": "sha256:d41ea6521f53fb3dfa10cf72e2932f4405d9c999fa422cdc840d25d57e90dd34",
+        "solutionHash": "sha256:980ff86ff1dd0c92f1806dddfde1a35b1739a92be255da36fda0d94fb0dd1799",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q20.png",
+          "blobSha": "607687f981c20e73c505ffabecc1bbe494777a75",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_39624764cd09cc2364146a62046e64fb2a6196772e985a349d5e53bf187434c0",
+          "sourceIdentityKey": "qid_v1_39624764cd09cc2364146a62046e64fb2a6196772e985a349d5e53bf187434c0",
+          "sourceOrdinal": 20,
+          "contentHash": "sha256:1a103c4c653c4f721ea36cc1324ab71a436673bacf041acf4c834cae10f00304",
+          "choicesHash": "sha256:9bdfbaa35e5ec094b5570479d56d707a79fab69bf3dc38d4f94f2cbfa94414e8",
+          "imageRefHash": "sha256:4e9bacde61844d86ac33cd82ef35c27929588fe611ccad1ece97ef83176751df",
+          "sourceFingerprint": "sha256:b7910d04de9016df4d159cca048afb7124e3196fc0d73b333495c1ffec3b7cae"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:980ff86ff1dd0c92f1806dddfde1a35b1739a92be255da36fda0d94fb0dd1799",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "색이 다른 두 배타적 경우의 확률을 각각 곱해 더한다.",
+          "decisiveStep": "9/35+8/35=17/35",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "경우를 나누어 구하는 확률"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:b7910d04de9016df4d159cca048afb7124e3196fc0d73b333495c1ffec3b7cae",
+        "inputBundleSha": "sha256:bab0543f79dc17fcdc37d752d24a30afe3f8331b87dc27b71ceca09607144f0d",
+        "crosswalkRecordId": "M2-RPM-117",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:b7910d04de9016df4d159cca048afb7124e3196fc0d73b333495c1ffec3b7cae",
+        "solutionHash": "sha256:980ff86ff1dd0c92f1806dddfde1a35b1739a92be255da36fda0d94fb0dd1799",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:b7910d04de9016df4d159cca048afb7124e3196fc0d73b333495c1ffec3b7cae",
+        "inputBundleSha": "sha256:bab0543f79dc17fcdc37d752d24a30afe3f8331b87dc27b71ceca09607144f0d",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c",
+      "sourceOrdinal": 21,
+      "sourceAudit": {
+        "contentHash": "sha256:effdcf2b2f9c3d8c7c4b27d42fcdc8a0a1d267f2475a47cf6e85f68c9152f2fc",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "answerHash": "sha256:88d70baf22dc439b85e118c6d4b22dd5977ee8f7693be9b2651fd4c4ea5a06a0",
+        "solutionHash": "sha256:4620a619ef483455196c5b4357091020111bdf2cf85a0e8433075d4c01dbcab0",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q21.png",
+          "blobSha": "072d6cae1d12d995e032248407d8ed34a0c62f44",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c",
+          "sourceIdentityKey": "qid_v1_92ed29b514280561d03d1b87b6b494055a1bb98b10e6d74a8769779099db8f3c",
+          "sourceOrdinal": 21,
+          "contentHash": "sha256:effdcf2b2f9c3d8c7c4b27d42fcdc8a0a1d267f2475a47cf6e85f68c9152f2fc",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:24f6e024133e9a0d12c736db07926e130ff6e60c204c13a06c78cc99da946b78",
+          "sourceFingerprint": "sha256:dafb895428c63baf2f5c91222d4b7f1d39ffe6e6f477dd52bc804f44ac9c2aff"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:4620a619ef483455196c5b4357091020111bdf2cf85a0e8433075d4c01dbcab0",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "무게중심의 넓이 분할과 2:1 비를 복합 넓이에 적용한다.",
+          "decisiveStep": "①18, ②75×(2/3)^2=100/3",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "넓이와 무게중심",
+            "l4": "무게중심을 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:dafb895428c63baf2f5c91222d4b7f1d39ffe6e6f477dd52bc804f44ac9c2aff",
+        "inputBundleSha": "sha256:274f7b07b9d8b295379ec96b9eaa00ff3023381000a366451479d4fa56009049",
+        "crosswalkRecordId": "M2-RPM-100",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_COORD_CENTROID",
+        "mappedTemplateKeys": [
+          "TPL_CENTROID_APPLICATION"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:dafb895428c63baf2f5c91222d4b7f1d39ffe6e6f477dd52bc804f44ac9c2aff",
+        "solutionHash": "sha256:4620a619ef483455196c5b4357091020111bdf2cf85a0e8433075d4c01dbcab0",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:dafb895428c63baf2f5c91222d4b7f1d39ffe6e6f477dd52bc804f44ac9c2aff",
+        "inputBundleSha": "sha256:274f7b07b9d8b295379ec96b9eaa00ff3023381000a366451479d4fa56009049",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [
+          {
+            "key": "CC_PYTHAGOREAN",
+            "status": "FINAL"
+          }
+        ],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": {
+        "current": "M2-06-PARALLEL_LENGTH_RATIO",
+        "expected": "",
+        "label": "삼각형의 무게중심"
+      }
+    },
+    {
+      "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+      "sourceOrdinal": 22,
+      "sourceAudit": {
+        "contentHash": "sha256:7f0baf3eafa7552eac9a4fdbb627779ef386991144dec397e3c7b9b076a14936",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "answerHash": "sha256:62ed2682f01fd6e5b843e527ef63a2071a1040ca78e3340ef592578e5b0a5f1b",
+        "solutionHash": "sha256:71f824d1f1c6ae0ea0e296fc0277cd5fcec591c5d5c351b4106fd917e4fd412b",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q22.png",
+          "blobSha": "1c64b7808be155c03b88f24f78e1e2cef716e8b1",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+          "sourceIdentityKey": "qid_v1_d0b9c1fa0603907bf60d4cc4504d2747a03ff23046d96526a083511f9f734547",
+          "sourceOrdinal": 22,
+          "contentHash": "sha256:7f0baf3eafa7552eac9a4fdbb627779ef386991144dec397e3c7b9b076a14936",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:a3909c7f242bdcddf44cb10fc2d20c9d6cfa6348c3039837cdf42f0a88638071",
+          "sourceFingerprint": "sha256:9d6f19083a98d76d5c541bdbc0808346866a6a52ed7e496d3b31d3345543a40b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:71f824d1f1c6ae0ea0e296fc0277cd5fcec591c5d5c351b4106fd917e4fd412b",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "직각삼각형과 원뿔의 모선에 피타고라스를 적용한다.",
+          "decisiveStep": "①x=4, ②높이 8·모선 10·옆넓이 60π",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:9d6f19083a98d76d5c541bdbc0808346866a6a52ed7e496d3b31d3345543a40b",
+        "inputBundleSha": "sha256:effb1e0aa0e12e18f40c704c6c7224114d5c0f3e642903aedeff827622b70002",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "",
+        "mappedTemplateKeys": [],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9d6f19083a98d76d5c541bdbc0808346866a6a52ed7e496d3b31d3345543a40b",
+        "solutionHash": "sha256:71f824d1f1c6ae0ea0e296fc0277cd5fcec591c5d5c351b4106fd917e4fd412b",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9d6f19083a98d76d5c541bdbc0808346866a6a52ed7e496d3b31d3345543a40b",
+        "inputBundleSha": "sha256:effb1e0aa0e12e18f40c704c6c7224114d5c0f3e642903aedeff827622b70002",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_5d201e1800fc0802fca9d44e1134670fd20cef1dfaf40d72741545cc0ba0a971",
+      "sourceOrdinal": 23,
+      "sourceAudit": {
+        "contentHash": "sha256:f45b1e1c7c81d0c822d2c996972734ad0b093232e033de1390253337be628b43",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "answerHash": "sha256:d8dc50c5a0e84127206b6673f1afe208ce2afdae321024cf907bd7015efca1a8",
+        "solutionHash": "sha256:e6ce791f1092b13f4e7a81b295317f3d14ccb05fad144be6075d7e1daf1fe9a3",
+        "imageBinding": {
+          "path": "",
+          "blobSha": "",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_5d201e1800fc0802fca9d44e1134670fd20cef1dfaf40d72741545cc0ba0a971",
+          "sourceIdentityKey": "qid_v1_5d201e1800fc0802fca9d44e1134670fd20cef1dfaf40d72741545cc0ba0a971",
+          "sourceOrdinal": 23,
+          "contentHash": "sha256:f45b1e1c7c81d0c822d2c996972734ad0b093232e033de1390253337be628b43",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:0e5eeb26c228207aa65fb44ad14c0e9b43fd051d2b506f3c0527327f86fe8d98",
+          "sourceFingerprint": "sha256:efec781d62f934392adc37c10d18a0622d10d921d69e7acd277a7db266d5a717"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:e6ce791f1092b13f4e7a81b295317f3d14ccb05fad144be6075d7e1daf1fe9a3",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "역할과 자리가 구분되는 배열을 곱의 법칙으로 센다.",
+          "decisiveStep": "①3×2=6, ②2×3!=12",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "배열과 선택",
+            "l4": "순서가 있는 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:efec781d62f934392adc37c10d18a0622d10d921d69e7acd277a7db266d5a717",
+        "inputBundleSha": "sha256:fb941d542e3325e445b1401ae403f982eee84cf132feddeebd92b3179afc36f7",
+        "crosswalkRecordId": "M2-RPM-109",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "mappedTemplateKeys": [
+          "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:efec781d62f934392adc37c10d18a0622d10d921d69e7acd277a7db266d5a717",
+        "solutionHash": "sha256:e6ce791f1092b13f4e7a81b295317f3d14ccb05fad144be6075d7e1daf1fe9a3",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:efec781d62f934392adc37c10d18a0622d10d921d69e7acd277a7db266d5a717",
+        "inputBundleSha": "sha256:fb941d542e3325e445b1401ae403f982eee84cf132feddeebd92b3179afc36f7",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    },
+    {
+      "questionUid": "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27",
+      "sourceOrdinal": 24,
+      "sourceAudit": {
+        "contentHash": "sha256:44414c305fb2942ce0983b86fb2ff46d65919bfa71a486d2ec406c454c024405",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "answerHash": "sha256:ae79533e25ce20ed6ef075e4d042db4f51fe3f70ba25da25fffa363b62aa4eb2",
+        "solutionHash": "sha256:41cdf5e7430c2eda9b15a5ebff1a32583503f3bed4f3f6f2c661dfb874c82f67",
+        "imageBinding": {
+          "path": "assets/images/23_매산중_2학기_기말_중2_기출/q24.png",
+          "blobSha": "6f146d8a22e18227118916202fd7491e927779b8",
+          "imageSize": ""
+        }
+      },
+      "resolverInput": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/23_매산중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27",
+          "sourceIdentityKey": "qid_v1_b6d82eefaf0eb7e4dd2625fd1c747d69aacba880eb30f166e5268df04d72ad27",
+          "sourceOrdinal": 24,
+          "contentHash": "sha256:44414c305fb2942ce0983b86fb2ff46d65919bfa71a486d2ec406c454c024405",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:43c2417540482bd665f18b812a130f2d73ae286b4a494f751be0fca58911a6f4",
+          "sourceFingerprint": "sha256:76c408f5dcd212e59d62cad567d3b4d6fd0b14de16ec4b1cd8a4d9396f57bfe0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:41cdf5e7430c2eda9b15a5ebff1a32583503f3bed4f3f6f2c661dfb874c82f67",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "개수비와 넓이비로 확률을 계산한다.",
+          "decisiveStep": "①9/24=3/8, ②12π/36π=1/3",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "확률 계산"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:76c408f5dcd212e59d62cad567d3b4d6fd0b14de16ec4b1cd8a4d9396f57bfe0",
+        "inputBundleSha": "sha256:851bb26e7575a7c035c3bf73d6ebdce74ae02a82870d6f7631c3dffb57db6195",
+        "crosswalkRecordId": "M2-RPM-114",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "authorityGitShas": {
+          "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+          "intakeReadSha": "fafe41a022e7191c91d631ddf96d379d1380a2a8",
+          "sourceBlobSha": "4021fa07e6e833e713c08e5da713d51c56fc8832",
+          "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+          "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+          "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+          "rpmCanonicalMasterBlobSha": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+          "rpmScopeViewBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581"
+        },
+        "contractProjectionCheck": "PASS"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:76c408f5dcd212e59d62cad567d3b4d6fd0b14de16ec4b1cd8a4d9396f57bfe0",
+        "solutionHash": "sha256:41cdf5e7430c2eda9b15a5ebff1a32583503f3bed4f3f6f2c661dfb874c82f67",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "independentOfSemanticPass": true,
+        "derivedFromLegacyLevel": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:76c408f5dcd212e59d62cad567d3b4d6fd0b14de16ec4b1cd8a4d9396f57bfe0",
+        "inputBundleSha": "sha256:851bb26e7575a7c035c3bf73d6ebdce74ae02a82870d6f7631c3dffb57db6195",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
+      },
+      "l1l2Conflict": null
+    }
+  ],
+  "nextState": "READY_FOR_REVIEW",
+  "updatedAt": "2026-09-28T02:09:54+09:00"
+}
