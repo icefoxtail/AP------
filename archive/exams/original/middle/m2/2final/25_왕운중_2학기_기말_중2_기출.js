@@ -571,7 +571,7 @@ window.questionBank = [
       "$\\dfrac13$"
     ],
     "answer": "①",
-    "solution": "[키포인트] “적어도 한 명 성공”의 여사건은 “두 명 모두 실패”이다.\n현성이가 실패할 확률은 $\\dfrac35$, 진표가 실패할 확률은 $1-x$이다.\n$1-\\dfrac35(1-x)=\\dfrac45$이므로 $\\dfrac35(1-x)=\\dfrac15$이다. 따라서 $1-x=\\dfrac13$, $x=\\dfrac23$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 두 사람의 개별 성공 확률만으로는 두 사건의 결합 관계가 정해지지 않는다.\n현성이가 성공하는 사건을 $A$, 진표가 성공하는 사건을 $B$라 하면 $P(A)=\\dfrac25$, $P(B)=x$, $P(A\\cup B)=\\dfrac45$이다.\n따라서 $P(A\\cap B)=P(A)+P(B)-P(A\\cup B)=\\dfrac25+x-\\dfrac45=x-\\dfrac25$이다. 이 식만으로는 $x$를 하나로 정할 수 없다.\n두 성공 사건이 서로 독립이라고 추가로 가정하면 $P(A\\cap B)=\\dfrac25x$이므로 $\\dfrac25x=x-\\dfrac25$에서 $x=\\dfrac23$이 되어 ①과 일치한다.\n하지만 원문에는 두 사건이 서로 독립이라는 조건이 없으므로, 주어진 조건만으로는 $x$를 유일하게 정할 수 없다.",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -617,7 +617,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "그래프",
@@ -645,7 +645,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -671,7 +671,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],
