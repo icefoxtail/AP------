@@ -15,6 +15,7 @@ compatibility-path: 이 파일명은 기존 호출부 호환을 위해 v1 경로
 > - READY_FOR_R2E 전에 `resolvablePending = 0`, deterministic binding/materialization gap = 0, 안전한 existing-reuse 가능 RPM_ONLY = 0이어야 한다.
 > - 해결 방법이 이미 확정된 `RPM_PRIMARY_MIGRATION_GAP`을 R2E로 넘기는 것은 R1 종료 계약 위반이다.
 > - R2E는 신규 taxonomy 필요성, 비결정적 semantic conflict, source hard hold, multi-exam semantic cluster처럼 CREATE/R1에서 실제로 닫을 수 없는 adjudication만 deep review한다.
+> - **R2E HOLD-SAFE + CURRENT VISUAL ROUTE HARD RULE:** full evidence·허용 repair를 소진해도 안전한 판단이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 FINAL을 금지한다. R1/R2E의 SVG 생성·재생성·수학적 수정은 `.codex/skills/apmath-visual-upgrade/SKILL.md`가 라우팅하는 current ruleset과 pipeline-core closure를 실제로 적용한다.
 
 ---
 
@@ -87,14 +88,17 @@ INTEGRATION_PENDING
 R2E_MAIN_FINAL
 ```
 
-운영·장애 상태:
+운영·보류 상태:
 
 ```text
 WAIT_RESOURCE
 RETRY_PENDING
 INTEGRATION_CONFLICT
+R2E_HOLD
 HUMAN_REQUIRED
 ```
+
+- `R2E_HOLD`: CREATE/R1의 resolvable item은 모두 닫힌 상태에서 R2E가 full evidence와 허용 repair/recovery를 소진했지만 안전한 최종 판단을 만들 수 없는 item-level terminal hold. 억지 FINAL 대신 사용한다.
 
 정의:
 
@@ -195,7 +199,49 @@ CREATE 결과를 승인하는 단계가 아니라 **잘못 만든 Meta를 실제
 - RPM_ONLY라도 GLOBAL ACTIVE로 안전하게 재사용 가능하면 R1에서 REBIND/REUSE한다.
 - CrossConcept/difficulty/parent mismatch도 결정 가능하면 직접 수정한다.
 - CREATE가 만든 잘못된 materialization patch도 R1에서 교정한다.
+- solution·Meta·layout·visual defect를 발견하고 현재 scope에서 수정 가능하면 `수정프로토콜.md`를 적용해 **보고만 하지 않고 직접 최소 수정 → 영향 재검증**한다.
+- visual이 누락되었거나 기존 SVG가 수학적으로 틀리고 학생 이해에 benefit이 있으면 **R1에서 ADD/REBUILD를 적극 수행**한다. 단, 위 CURRENT VISUAL ROUTE HARD GATE를 먼저 닫는다.
 - 복합성·표현 차이·완전 동일 wording 부재만으로 unresolved 금지.
+
+### R1/R2E CURRENT VISUAL ROUTE HARD GATE
+
+R1 또는 R2E가 SVG·graph·geometry·`solutionImage`를 **생성, 수정, 재생성, 부착, 검수**할 때는 특정 문서 하나만 골라 읽지 않는다. 작업 시작 전 현재 Git bytes 기준으로 다음 router와 ruleset을 실제 적용한다.
+
+1. `.codex/skills/apmath-visual-upgrade/SKILL.md` — visual task router
+2. `node tools/skills/verify-skills.mjs` PASS
+3. `docs/rules/00_RULES_INDEX.md` + `docs/rules/MANIFEST.md` — 적용 문서와 byte/hash 고정
+4. `docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md`
+5. `docs/rules/02_PIPELINES/공통파이프라인_실행계약_v1.md`
+6. `docs/rules/02_PIPELINES/작업방식_적응형배치루프_v1.md`
+7. `archive/tools/pipeline-core/README.md` + `archive/tools/pipeline-core/AGENT_BUDGET.md`
+8. 적용 가능한 VISUAL/domain/unit 규칙
+   - 제작 좌표·Python·style·publication: `docs/rules/04_VISUAL/도형추출.md`
+   - 기하 문항의 visual necessity·학생 이해·semantic independent review: `docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`
+   - 좌표·직선·원·도형의 방정식·관련 geometry explanation: `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`
+   - 집합·명제 qualification이면 Logic Visual overlay
+   - 대상 단원에 `UNIT_OVERLAY`가 있으면 그 문서까지 적용
+9. defect 수정이면 `docs/rules/02_PIPELINES/수정프로토콜.md`
+
+신규 또는 수정 visual의 current semantic lineage는 다음을 닫아야 한다.
+
+```text
+V1 student-understanding benefit / visualRequirement triage
+→ EXPECTED FACT freeze
+→ deterministic artifact build
+→ V2 artifact-only OBSERVED FACT / geometry
+→ V3 expected ↔ observed parity
+→ render-capture
+→ independent render-review
+→ closure
+```
+
+기하 문항은 최신 geometry domain policy의 **`GEOMETRY_SOLUTION_VISUAL_DEFAULT = CREATE_UNLESS_JUSTIFIED_EXEMPT`**와 2026-09-25 solution visual 적극 제작 addendum을 따른다. 기존 SVG가 없거나 source에 그림이 없거나 문항이 쉽다는 이유만으로 `VISUAL_EXEMPT` 처리하지 않는다. 학생 이해에 실질 benefit이 있는 `VISUAL_OPTIONAL`도 적극 `ADD/REBUILD` 대상으로 본다. required visual이 없으면 `SOLUTION_VISUAL_MISSING` repair 대상이다.
+
+수학적 visual build는 Python/독립 수학검산에서 동결한 EXPECTED FACT를 사용하며, 생성 artifact나 builder metadata에서 expected를 역산하지 않는다. 실제 SVG geometry에서 OBSERVED FACT를 독립 추출해 parity를 확인한다.
+
+**신형 geometry visual engine 경계:** `archive/tools/past-exam-pipeline/build-visual-candidate.mjs` + `archive/tools/geometry-equation/visual_engine/`은 frozen EXPECTED FACT를 받는 candidate builder다. 현재 코드가 `productionBaselinePolicy: READ_ONLY`, `allowProductionWrite: false`, witness `publicationAuthorized: false`를 강제한다. 지원되는 visual이면 R1/R2E가 candidate 생성에 적극 활용할 수 있지만, 이 엔진의 candidate 결과만으로 production SVG를 FINAL/promotion하지 않는다. 반드시 위 current pipeline-core parity/render/independent-review closure를 통과한다. 지원하지 않는 visual은 current ruleset 아래의 다른 deterministic builder를 사용하되 동일 closure를 지킨다.
+
+예약 GPT R1 정책상 실제 render가 실행되지 않는 경우에는 `NOT_RUN_CODEX_HANDOFF`를 기록하고 **render PASS를 허위 선언하지 않는다.** current pipeline이 final production closure에서 render를 요구하면 R2E/Codex가 render-capture + independent render-review를 닫아야 한다.
 
 ### READY_FOR_R2E ZERO-RESOLVABLE GATE
 
@@ -325,46 +371,35 @@ native file-condition trigger에 의존하지 않는다.
 
 ---
 
-## 8. R2E 역할 — Final Adjudication & Closure
+## 8. R2E 역할 — Final Adjudication, Repair & Closure
 
-R2E는 세 번째 전체 deep review도 아니고 **CREATE/R1이 할 수 있었던 routine Meta cleanup을 대신하는 단계도 아니다.**
+R2E는 세 번째 전체 deep review도 아니고 **CREATE/R1이 할 수 있었던 routine Meta cleanup을 대신하는 단계도 아니다.** 그러나 R2E에서 새로 확인된 실제 defect는 적극적으로 repair한다.
 
-모든 대상 문항에 integrity scan은 수행하지만 deep review는 다음에만 집중한다.
-
+deep review 대상:
 - `R2_ADJUDICATION_REQUIRED` true semantic conflict
 - 신규 L3/L4 필요성이 R1에서도 닫히지 않은 항목
-- CREATE ↔ R1 사이의 비결정적 conflict
+- CREATE ↔ R1 비결정적 conflict
 - source/answer/visual hard HOLD
 - 여러 시험지를 함께 봐야 판단 가능한 semantic cluster
 - R1 이후 byte drift
 - validator가 새로 찾은 actual defect
 - R1에서 이미 확정한 shared Meta patch의 production integration
 
-**단순 binding 부재, deterministic materialization, existing ACTIVE reuse 가능 항목은 R2E deep review 대상이 아니다.**
-그런 항목이 남아 있으면 R1 종료 gate 실패로 되돌린다.
+단순 binding 부재, deterministic materialization, existing ACTIVE reuse 가능 항목이 남아 있으면 R1 종료 gate 실패로 되돌린다.
+
+R2E에서 solution·Meta·layout·SVG defect가 실제로 확인되면 `수정프로토콜.md`를 적용해 **보고만 하지 않고 직접 최소 수정 → validator/parity 재실행**한다. 기존 SVG가 틀리거나 풀이 재현성/학생 이해에 필요한 visual이 빠졌으면 CURRENT VISUAL ROUTE HARD GATE 아래에서 적극 `ADD/REBUILD`한다.
+
+full evidence와 허용 repair/recovery를 소진해도 안전하게 결정할 수 없는 항목은 **`R2E_HOLD`**로 종료한다. HOLD 0을 만들기 위해 가장 가까운 PT/TPL·새 L3/L4·visual을 억지 선택하지 않는다.
 
 정상 PASS item은 source/dependency drift 등 invalidation 근거 없이 처음부터 다시 풀지 않는다.
 
 ---
 
-## 9. Meta HOLD Zero gate
+## 9. R2E HOLD-safe terminal gate
 
-R2E는 최종 semantic 결정권자다. 단, **R2E 진입 전에 이미 `resolvablePending = 0`이어야 한다.**
+R2E는 최종 판단 단계이지만 **모르는 것을 억지 FINAL시키는 단계가 아니다.**
 
-`R2E_FINAL`에 다음이 남아 있으면 안 된다.
-
-- `META_PACK_GAP_HOLD`
-- `META_CANONICAL_HOLD`
-- `RPM_PRIMARY_MIGRATION_GAP`
-- `PROPOSED_NEW_L3`
-- `PROPOSED_NEW_L4`
-- 미결 CrossConcept candidate
-- 미실행 deterministic Meta validator
-- source/solution/resolver/difficulty SHA mismatch
-- runtime/Archive metadata parity mismatch
-
-최종 disposition은 다음 중 하나다.
-
+허용 item-level 최종 disposition:
 - `EXISTING_REUSE`
 - `REBIND`
 - `MATERIALIZED`
@@ -372,14 +407,28 @@ R2E는 최종 semantic 결정권자다. 단, **R2E 진입 전에 이미 `resolva
 - `NEW_L3`
 - `CROSS_CONCEPT`
 - `ROUTE_OUT`
+- **`R2E_HOLD`**
 
-판정 순서는 항상 RPM Primary → exact crosswalk → GLOBAL ACTIVE owner → exact binding을 선행한다.
+`R2E_HOLD`는 다음과 같이 evidence를 소진한 뒤에도 안전한 판정이 불가능할 때 사용한다.
+- RPM Primary / crosswalk / GLOBAL ACTIVE / exact binding / final solution을 모두 대조했지만 semantic target을 확정할 수 없음
+- operative source/answer/solution truth를 확정할 수 없음
+- visual defect를 수정프로토콜 + current visual ruleset으로 재작업했지만 수학적 parity를 확정할 수 없음
+- 둘 이상의 합리적 판정이 남아 임의 선택하면 의미 왜곡 위험이 있음
 
-Final disposition은 shared resolver의 결과와 현재 적용 action을 함께 보존한다. `EXISTING_REUSE`와 `FAMILY_REUSE`는 R2E의 `EXISTING_REUSE`로, 유효한 `ROUTE_OUT` evidence는 `ROUTE_OUT`으로 기록한다. Migration gap/taxonomy gap은 최종에 남길 수 없다. 특히 단순 binding/materialization-only gap이 R2E 입력에 남아 있으면 R1 계약 위반으로 간주한다. `RPM_PRIMARY_MIGRATION_GAP`이 R2E 입력에 존재할 수 있는 유일한 경우는 full evidence를 소진해도 exact materialization target 자체를 결정할 수 없어 `R2_ADJUDICATION_REQUIRED`로 명시한 경우다. Canonical materialization, rebind, 신규 L3/L4, CrossConcept 승인 이후에는 current ACTIVE snapshot으로 resolver를 다시 실행해 final metadata/runtime parity receipt에 SHA를 고정한다.
+금지:
+- HOLD 0을 만들기 위한 추측 `NEW_L3/NEW_L4`
+- 가장 가까워 보이는 PT/TPL 강제 배정
+- visual을 그럴듯하게 만든 뒤 V2/V3/parity 미확정 상태를 PASS 처리
+- 근거 부족을 모델 추측으로 메우기
 
-R2E FINAL receipt는 `unresolvedSemanticCount`, `unresolvedProposalCount`, `unresolvedCrossConceptCandidateCount`, `metaHoldCount`, `migrationGapCount`를 모두 0으로 기록하며 shared validator가 기계적으로 확인한다.
+HOLD 영향:
+- **`BASIC_HARD_HOLD`**: source/answer/solution/identity 또는 수학적 visual parity처럼 BASIC correctness를 깨는 HOLD. 시험지 production integration을 차단한다.
+- **`ADVANCED_META_HOLD`**: L3/L4/CrossConcept 등 advanced capability만 미확정이고 BASIC payload가 정상인 HOLD. item evidence로 보존하며 Inclusive Basic Eligibility 계약이 허용하는 BASIC 사용은 차단하지 않는다.
 
-local binding pack taxonomy에 key가 없다는 사실만으로 canonical absent를 선언하지 않는다.
+Exam-level closure:
+- BASIC_HARD_HOLD > 0 → exam `R2E_HOLD`, production integration 금지.
+- BASIC_HARD_HOLD = 0이고 ADVANCED_META_HOLD만 존재 → BASIC-valid production은 허용 가능하되 advanced capability를 pending/disabled로 명시하고 hold evidence를 보존한다.
+- 미분류 unresolved 상태는 금지한다. 모든 item은 resolved disposition 또는 evidence-complete `R2E_HOLD`여야 한다.
 
 ---
 
@@ -521,9 +570,11 @@ fencingToken
 - affected UID metadata
 - Archive2 catalog/index/join
 - 관련 targeted regression
-- Meta unresolved 0
+- 미분류 unresolved 0: 모든 item은 resolved disposition 또는 evidence-complete `R2E_HOLD`
+- `R2E_HOLD`의 BASIC_HARD_HOLD / ADVANCED_META_HOLD 영향 분류
+- 신규/수정 visual이면 current pipeline-core visual closure 또는 정책상 명시적 handoff 상태
 
-기존 validator가 HOLD/candidate를 허용한다는 이유로 R2E PASS를 선언하지 않는다.
+기존 validator가 candidate/HOLD를 허용한다는 이유로 PASS를 선언하지 않는다. 반대로 evidence-complete `R2E_HOLD`를 없애기 위해 추측 FINAL을 만들지도 않는다.
 
 ---
 

@@ -17,6 +17,8 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 **CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
 
+**R2E HOLD-SAFE HARD RULE:** R2E가 full evidence와 허용 repair를 소진해도 안전한 판정이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 taxonomy/Meta/visual FINAL을 금지한다. R1/R2E에서 수정 가능한 solution·Meta·visual defect는 `수정프로토콜.md`로 직접 repair하고, visual 생성·재생성은 CURRENT VISUAL ROUTER를 반드시 따른다.
+
 
 중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
 `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 현재 생명주기 정본으로 함께 적용한다. **파일 경로는 호환상 v1을 유지하지만 내용 authority는 v2(2026-09-28)다.**
@@ -80,6 +82,36 @@ visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출
 유사문항은 별도 manifest와 별도 seal 프로젝트라는 Common Protocol의 경계를 유지한다.
 각 작업 문서는 domain-specific 품질 규칙을 계속 담당하지만, 품질 단계나 batch 이름만으로
 agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
+
+### CURRENT VISUAL ROUTER — SVG / graph / geometry / solutionImage
+
+SVG·graph·geometry·`solutionImage`를 생성·수정·재생성·부착·검수하는 모든 작업은 **`.codex/skills/apmath-visual-upgrade/SKILL.md`를 router로 사용**한다. visual 작업 전에 `node tools/skills/verify-skills.mjs`를 실행하고, MANIFEST-covered 필수 문서의 path/version/bytes/SHA와 current working bytes를 일치시킨다.
+
+현재 실행 경로:
+```text
+apmath-visual-upgrade router
+→ 00_RULES_INDEX + MANIFEST
+→ COMMON_PROTOCOL
+→ 공통파이프라인 실행계약
+→ 적응형배치루프
+→ pipeline-core README + AGENT_BUDGET
+→ applicable VISUAL / geometry domain / unit rule
+→ V1 benefit triage
+→ EXPECTED FACT freeze
+→ deterministic artifact build
+→ V2 artifact-only OBSERVED FACT
+→ V3 expected↔observed parity
+→ render-capture
+→ independent render-review
+→ closure
+```
+
+기하 문항은 `기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`의 2026-09-25 addendum을 포함한다. **`GEOMETRY_SOLUTION_VISUAL_DEFAULT = CREATE_UNLESS_JUSTIFIED_EXEMPT`**이며, source figure 부재·기존 solution SVG 부재·쉬운 문항이라는 이유만으로 VISUAL_EXEMPT하지 않는다. 학생 이해 benefit이 명확한 VISUAL_OPTIONAL도 ADD/REBUILD 적극 대상이다.
+
+`archive/tools/past-exam-pipeline/build-visual-candidate.mjs`와 `archive/tools/geometry-equation/visual_engine/`은 frozen EXPECTED FACT를 입력받는 **candidate-only builder**다. 코드가 production READ_ONLY / production write false / publicationAuthorized false를 강제하므로, 지원되는 visual에서 candidate 생성에 적극 활용할 수 있지만 current pipeline-core closure 없이 production FINAL/promotion authority로 사용하지 않는다.
+
+예약 GPT가 정책상 실제 render를 실행하지 않는 경우 `NOT_RUN_CODEX_HANDOFF`를 기록하고 render PASS를 선언하지 않는다. final production closure에서 render가 요구되면 Codex/R2E가 current render-capture + independent render-review를 닫는다.
+
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
