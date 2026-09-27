@@ -205,12 +205,16 @@ window.questionBank = [
       "$14\\pi\\rm\\,cm$"
     ],
     "answer": "④",
-    "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "직사각형이 직선 l 위에서 한 바퀴 구를 때 꼭짓점 A는 네 번의 90° 회전을 한다. 첫 회전은 꼭짓점 B를 중심으로 하므로 A가 그리는 원호의 반지름은 AB=6 cm이다. 둘째 회전의 중심은 C이고, 반지름은 대각선 AC=10 cm이다. 셋째 회전의 중심은 D이고, 반지름은 AD=8 cm이다. 마지막 회전은 A를 중심으로 하므로 A는 움직이지 않는다. 따라서 이동 거리는 (1/4)×2π×6+(1/4)×2π×10+(1/4)×2π×8=12π cm이다. 따라서 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q7.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q7-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "한 바퀴 굴리는 직사각형에서 꼭짓점 A가 B, C, D를 중심으로 반지름 6 cm, 10 cm, 8 cm의 90도 원호를 따라 움직이고 마지막 A 중심 회전에서는 움직이지 않는 그림",
+    "solutionImageCaption": "세 사분원호의 길이를 더하면 꼭짓점 A의 이동 거리는 12π cm이다."
   },
   {
     "id": 8,
@@ -473,12 +477,16 @@ window.questionBank = [
       "$48\\pi\\rm\\,cm^2$"
     ],
     "answer": "④",
-    "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "남은 입체는 중심각이 240°, 반지름이 3 cm, 높이가 6 cm인 원기둥 조각이다. 옆 곡면의 넓이는 부채꼴 호의 길이에 높이를 곱하여 (240/360)×2π×3×6=24π cm²이다. 윗면과 아랫면의 넓이 합은 2×(240/360)×π×3²=12π cm²이다. 절단면은 3 cm×6 cm 직사각형이 두 개이므로 넓이 합은 36 cm²이다. 따라서 겉넓이는 24π+12π+36=36π+36 cm²이고, 정답은 ④이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q16.png",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q16-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "중심각 240도, 반지름 3 cm, 높이 6 cm인 원기둥 조각을 옆 곡면, 두 부채꼴 면, 두 절단 직사각형 면으로 나눈 그림",
+    "solutionImageCaption": "옆 곡면 24π, 위아래 부채꼴 면 12π, 절단면 36을 더해 겉넓이는 36π+36 cm²이다."
   },
   {
     "id": 17,
@@ -645,12 +653,16 @@ window.questionBank = [
     "content": "[서·논술형 2] 다음 그림과 같이 원 $O$의 지름 $\\overline{AB}$의 연장선과 현 $\\overline{CD}$의 연장선의 교점을 $P$라 하자. $\\overline{DO}=\\overline{DP}$, $\\angle AOC=48^\\circ$, $\\wideparen{AC}=12\\rm\\,cm$일 때, $\\wideparen{BD}$와 $\\wideparen{CD}$의 길이를 각각 구하고, 그 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$4\\rm\\,cm,\\ 29\\rm\\,cm$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $4\\rm\\,cm,\\ 29\\rm\\,cm$이다.",
+    "solution": "x=∠BOD라 하자. ∠COB=180°−∠AOC=132°이다. DO=DP이므로 이등변삼각형 ODP에서 ∠DOP=∠OPD=x이고, C, D, P가 한 직선 위에 있으므로 ∠ODC=2x이다. OC=OD이므로 ∠OCD=2x이고, 따라서 ∠COD=180°−4x이다. 한편 ∠COB=∠COD+∠DOB=(180°−4x)+x=132°에서 x=16°이다. 그러므로 ∠COD=116°이다. 호 AC의 중심각 48°에 대한 길이가 12 cm이므로 1°에 대한 호의 길이는 12/48=0.25 cm이다. 따라서 호 BD=16×0.25=4 cm, 호 CD=116×0.25=29 cm이다.",
     "image": "assets/images/25_연향중_2학기_기말_중1_기출/q22.png",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q22-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "지름 AB와 중심 O가 있는 원에서 C, D가 원 위에 있고 secant CD의 연장선이 지름 연장선과 P에서 만난다. 호 AC는 12 cm, 중심각 AOC는 48도이며 DO와 DP가 같은 그림",
+    "solutionImageCaption": "각의 관계로 ∠BOD=16°, ∠COD=116°를 구하고, 호 AC의 길이 비례로 BD=4 cm, CD=29 cm를 얻는다."
   },
   {
     "id": 23,
@@ -671,10 +683,14 @@ window.questionBank = [
     "content": "[서·논술형 3]\n<div class=\"question-note-box\">고대 그리스의 수학자 아르키메데스(Archimedes)는 자신의 묘비에 원기둥에 꼭 맞게 들어간 구의 모양을 새겨 달라고 부탁했다고 전해진다.<br>(출처: Plutarch, 『Plutarch's Lives, Vol V』)</div>\n다음 그림과 같이 원기둥에 꼭 맞는 구와 원뿔이 있다. 다음 물음에 답하시오. [8점]\n<img src=\"assets/images/25_연향중_2학기_기말_중1_기출/q23.png\">\n(1) 위 원기둥의 밑면의 반지름의 길이를 $r$이라 할 때, 원뿔, 구, 원기둥의 부피를 각각 구하시오. [6점]\n(단, 각각의 답은 곱셈과 나눗셈의 기호를 생략하여 가장 간단한 식으로 구할 것!)\n(2) 원뿔, 구, 원기둥의 부피의 비를 가장 간단한 자연수의 비로 구하고, 그 과정을 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac23\\pi r^3$, $\\dfrac43\\pi r^3$, $2\\pi r^3$ (2) $1:2:3$",
-    "solution": "풀이: 그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 (1) $\\dfrac23\\pi r^3$, $\\dfrac43\\pi r^3$, $2\\pi r^3$ (2) $1:2:3$이다.",
+    "solution": "구가 원기둥에 꼭 맞게 들어가므로 원기둥의 밑면 반지름은 r, 높이는 구의 지름인 2r이다. 원뿔도 밑면 반지름이 r, 높이가 2r이므로 부피는 (1/3)πr²×2r=(2/3)πr³이다. 구의 부피는 (4/3)πr³이고, 원기둥의 부피는 πr²×2r=2πr³이다. 따라서 부피의 비는 (2/3):(4/3):2=1:2:3이다.",
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_연향중_2학기_기말_중1_기출/q23-solution.svg",
+    "solutionImageSize": "large",
+    "solutionImageAlt": "높이가 2r인 원기둥에 꼭 맞는 반지름 r의 구와 같은 밑면 반지름 r, 높이 2r인 원뿔을 나란히 비교하는 그림",
+    "solutionImageCaption": "세 부피는 각각 2/3πr³, 4/3πr³, 2πr³이므로 비는 1:2:3이다."
   }
 ];
