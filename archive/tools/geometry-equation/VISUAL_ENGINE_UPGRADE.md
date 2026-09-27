@@ -73,3 +73,103 @@ outside its code qualification scope; they still block those production rows
 from FINAL qualification. Their triage belongs to the subsequent inventory
 and FULL PILOT. A code-ready fixture remains BUILD_SIDE_ONLY and cannot grant
 question publication authority. Optional TikZ conversion remains draft only.
+
+## Independent GPT review — 2026-09-27
+
+Review target branch: `codex/geometry-visual-engine-upgrade`  
+Reviewed head: `659288875bc90b2be2a58628da663dbd5830c990`
+
+### Verdict
+
+`GEOMETRY_VISUAL_ENGINE_CODE_READY` is accepted **only for the shared engine code and isolated qualification scope**.
+
+The review does **not** authorize production publication, main merge, pipeline promotion, or a production-wide SVG migration.
+
+Review coverage:
+
+- final source/code inventory: **52/52 files opened and checked**
+- protected production inventory: **4,493 files, mutation 0 as sealed**
+- original independent verifiers: **6/6 byte-identical as sealed**
+- Python tests: **77/77 PASS**
+- Node tests: **31/31 PASS**
+- static/actual SVG qualification: **13 fixtures PASS**
+- deterministic A/B rebuild: **13/13 PASS**
+- rendered browser QA: **26/26 PASS**
+- native Archive exam/sol/ans QA: **12/12 PASS**
+- inherited v22 raw qualification: **91 PASS / 8 FAIL remains unchanged**
+
+The review independently opened the final shared engine, adapters, validators, browser QA, seal logic, tests, and critical raw evidence. The 996 regeneratable evidence files are covered by the seal inventory/hash chain; this review did not independently re-run or byte-rehash every one of those 996 generated files.
+
+### Confirmed strengths
+
+- production writes are fail-closed and candidate output is constrained to `archive/_generated/geometry-visual-engine/<runId>/`
+- frozen independent facts are required at the shared entrypoints
+- numeric geometry and semantic relation validation are separated from SVG composition
+- the old greedy exponent serializer is replaced by a bounded expression tree and regression tests include the original GOLD failures
+- point marker / point name / coordinate label are separated
+- label layout uses N/NE/E/SE/S/SW/W/NW candidates, priority, suppression/side-panel fallback, and explicit POLISH_REQUIRED
+- approximate builder layout cannot grant FINAL; actual browser `getBBox()` / `getBoundingClientRect()` drives final collision QA
+- existing independent coordinate and v22 actual-SVG verifiers remain independent
+- TikZ is optional candidate-only and cannot bypass common QA
+- Archive QA runs the unmodified `archive/engine.html` with candidate source overrides and SHA bindings
+
+### Integration blockers
+
+#### 1. Latest-main drift
+
+At review time, current main was `5f13c7289ddf8f3cf70bac7dc4b27dc0975f5a96`.
+The upgrade branch was **18 commits ahead / 172 commits behind**, with merge-base `4be6351d3f4cd722ca12639d9e652777e51426db`.
+
+The Archive engine, two original independent SVG verifiers, and the two main visual rule documents were byte-identical between the branch and current main. However, Past Exam V3 and the rules index/manifest evolved on main. Therefore the current branch qualification cannot be treated as a current-main integration qualification.
+
+#### 2. Generated evidence is tracked on the branch
+
+Current `GENERATED_ARTIFACT_GIT_POLICY_v1.md` classifies `archive/_generated/` as REGENERATABLE and says it must not remain in Git history.
+
+This branch intentionally committed its qualification evidence for the experiment, including the 996-file evidence inventory. **Do not merge or cherry-pick those generated evidence paths into main.**
+
+The branch-specific `.gitattributes` rule for `/archive/_generated/geometry-visual-engine/**` is also not a production requirement and must not override the current generated-artifact policy.
+
+### Required integration sequence
+
+1. Start from the **latest main**, not the stale branch tip.
+2. Transfer only reviewed source/test/document changes needed by the visual engine.
+3. Do not transfer tracked `archive/_generated/` evidence to main; regenerate evidence locally in the ignored workspace.
+4. Preserve current-main RULES_INDEX / MANIFEST / Past Exam V3 changes.
+5. Re-run the full code qualification on current main:
+   - Python/Node tests
+   - 13 fixture static/actual parity
+   - deterministic rebuild
+   - 26 rendered-bbox cases
+   - 12 native Archive cases
+   - inherited v22 regression
+6. Only after the current-main qualification passes, enter the **Geometry Equation FULL PILOT**.
+7. Production-wide migration and canonical pipeline promotion remain blocked until that FULL PILOT and independent review pass.
+
+### Pipeline connection decision
+
+A pipeline connection is ultimately required, but **not as a direct production-promotion path yet**.
+
+After current-main requalification, the visual engine should first be connected as the S8/candidate-generation backend:
+
+```text
+verified solution / EXPECTED FACT
+→ geometry visual engine
+→ isolated candidate SVG
+→ static + actual-SVG parity
+→ READY_FOR_LOCAL_VISUAL_QA
+→ local Codex rendered-bbox / Archive QA
+→ V2/V3 independent review
+→ promotion authority
+```
+
+For scheduled GPT/Work production, SVG generation may occur automatically, but GPT-side creation does not grant render FINAL. This preserves the current reservation rule `NOT_RUN_CODEX_HANDOFF`.
+
+The intended operational split is:
+
+- scheduled pipeline: candidate generation + math/semantic evidence
+- local Codex: final rendered layout, typography, clipping/collision, Archive desktop/mobile QA
+- promotion: only after existing independent review/release gates
+
+Do not connect this engine as an unconditional replacement backend before the Geometry Equation FULL PILOT.
+
