@@ -70,13 +70,22 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
   Meta evidence 오류를 `validationErrors`와 함께 `META_RECOVERY_REQUIRED` queue에 노출한다.
   resolver validator가 PASS하기 전까지는 READY candidate가 아니다. source/choices/solution/image
   identity hash, UID/ordinal, denominator, receipt lineage 불일치는 이 자동 recovery로 숨기지 않는다.
+- R1 sidecar에 최신 resolver input/evidence/difficulty가 없을 수 있다. 누락됐다는 이유만으로
+  중단하지 않고 frozen JS 및 verified final solution bytes에서 새 decision-isolated input,
+  shared resolver evidence, fresh blind difficulty와 relational evidence를 생성한다. 이전
+  candidate, verdict, difficulty는 semantic first pass에 재사용하지 않는다.
 - receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
   서로 독립인 입력의 진행을 막지 않는다. R1에서 문항 오류로 지정된 UID는
   `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`로 오류를 확인한 뒤
   `docs/rules/02_PIPELINES/수정프로토콜.md`를 따라 지적 필드만 최소 수정한다. Meta HOLD와
   연결된 projection parity 결함도 승인된 해당 UID/필드만 resolver evidence에 맞춰 수정할 수
   있다. 이 근거와 연결되지 않는 drift/parity 실패는 `CONTRACT_RECOVERY_BLOCKED`로 남긴다.
-  validator 완화나 검증 우회는 금지한다.
+  `R2E_FINAL` JS에는 denominator 전체 UID의 9개 advanced Meta/difficulty projection을 fresh
+  evidence와 exact parity로 materialize한다. 이는 모든 UID의 metadata completion이며, 일반 R1
+  PASS 문항의 content/choices/answer/solution을 다시 쓰는 권한은 주지 않는다. R1 flagged
+  question error는 별도로 지정된 UID/원인 필드만 수정프로토콜로 최소 수리한다. Meta HOLD,
+  migration gap, taxonomy proposal은 canonical crosswalk/ACTIVE owner에 evidence-backed
+  materialization/rebind/proposal adjudication을 수행한다. validator 완화나 검증 우회는 금지한다.
 - 두 HEAD를 먼저 고정한 뒤 각 고정 tree에서 inventory를 만든다.
 - 결과 receipt가 실제 들어간 commit을 `inputCommit`으로 동결한다. receipt 내부 inputCommit은
   `declaredInputCommit`으로 따로 보존하고 snapshot history의 조상인지 확인한다.
@@ -84,13 +93,15 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 - receipt 이후 JS/SVG byte drift가 있으면 새 receipt 없이는 READY로 인정하지 않는다.
 - 원격 `work/r2e-state`가 있으면 `archive/data/r2e/<grade>/exams/*.json`을 먼저 복원한다.
 - 현재 run이 끝날 때까지 snapshot을 다시 만들어 대상 시험지를 추가하지 않는다.
+- 검증된 receipt/sidecar 또는 exam repair를 commit한 뒤 cohort 내 결과를 판정하려면 frozen
+  examUid 집합만 대상으로 새 snapshot을 만든다. run 시작 뒤 새로 들어온 UID는 추가하지 않는다.
 - `NO_WORK`면 guard를 종료한다. 잘못된 receipt는 파일별 오류로 남겨 다른 유효 입력을 막지 않는다.
 
 `META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
-요구하면 먼저 receipt/sidecar backfill을 수행한다. 그 뒤 새 snapshot에서 contract PASS한
-  독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. 모든 UID의 current
-  resolver/fresh difficulty projection을 최종 JS에 materialize하고 exact parity를 검증한다. R1
-  item-level `REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
+요구하면 먼저 receipt/sidecar backfill과 필요한 Meta projection materialization을 수행한다. 그
+뒤 새 snapshot에서 contract PASS한 독립 candidates는 active prompt에 따라 selective R2E를
+진행할 수 있다. 모든 UID의 current resolver/fresh difficulty projection을 최종 JS에 materialize하고
+exact parity를 검증한다. R1 item-level `REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
 필요하거나 `CONTRACT_RECOVERY_BLOCKED`인 시험지는 R2E ledger/final gate에 넣지 않는다.
 이 blocker가 다른 시험지의 유효한 candidate/resume 처리를 막아서는 안 된다.
 
