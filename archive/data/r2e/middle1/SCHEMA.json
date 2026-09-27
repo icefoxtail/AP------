@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "js-archive-r2e-durable-state/v1",
+  "authorityBranch": "work/r2e-state",
+  "grade": "M1",
+  "sourceBranch": "work/m1-b01-b31-r2e",
+  "runId": "m1-b01-b31-r2e-20260927",
+  "denominator": 31,
+  "storageRoot": "archive/data/r2e/middle1",
+  "statePaths": {
+    "run": "runs/m1-b01-b31-r2e-20260927.json",
+    "exam": "exams/B##.json",
+    "events": "events/B##.jsonl",
+    "receipt": "receipts/B##/R2E_META_RECEIPT.json",
+    "mainFinalReceipt": "receipts/B##/R2E_MAIN_FINAL.json",
+    "visual": "visual/B##/"
+  },
+  "authority": "Remote Git branch plus machine-readable receipt and physical per-exam event ledgers. Intake branch is read-only.",
+  "statusVocabulary": [
+    "R2E_PENDING",
+    "R2E_FINAL_PENDING_MAIN",
+    "R2E_MAIN_FINAL",
+    "HUMAN_REQUIRED"
+  ],
+  "commitPolicy": {
+    "oneExamPerProductionCommit": true,
+    "sharedMetaSeparate": true,
+    "interimOverride": {
+      "status": "USER_AUTHORIZED_AGGREGATE_URGENT_COMMIT",
+      "commitSha": "1623d06593588147cb093bdad19e897572050f90",
+      "followupCommitSha": "9b988082fdc991f2098d197a6aa7846ff70747eb"
+    }
+  },
+  "updatedAt": "2026-09-27T05:25:55.409Z"
+}

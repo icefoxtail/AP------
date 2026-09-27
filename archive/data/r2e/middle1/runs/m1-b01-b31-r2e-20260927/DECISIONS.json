@@ -1,0 +1,471 @@
+{
+  "schemaVersion": "m1-b01-b31-r2e-decisions/v1",
+  "inputCommit": "92cf91b383d2e622c1c1aa22582e0903cc40da0a",
+  "decisions": [
+    {
+      "status": "HUMAN_REQUIRED",
+      "questionUid": "qid_v1_1ea07d7bc401d3f7661720a4cf03a386d49fccc7cb071ac311f7ba449ee71910",
+      "answerPdfSha256": "4adc1c6f48dee92c8da0ff69733af0d2b5b8f9280943599b1c7e502a91a574a1",
+      "examFile": "25_풍덕중_2학기_중간_중1_기출.js",
+      "sourcePdfSha256": "13861b1ab1d663fbe70e5ed4f4a483f4645da7440cbd6151f8740e17d4c1813d",
+      "sourcePdf": "D:\\기출\\(3)2중간\\중1\\2025_풍덕중1_수학_2중간.pdf",
+      "answerPdf": "D:\\기출\\(3)2중간\\중1\\2025_풍덕중1_수학_2중간_정답.pdf",
+      "id": "B19-q6",
+      "evidence": "Source page 2 labels AB=23 cm, AC=7 cm, BD=8 cm, DC=12 cm while diagram marks BD=DC and the right angle at C. The official key lists ③, but the printed options yield multiple contradictions: D cannot simultaneously be midpoint and have 8/12 segments; the right triangle lengths also fail the stated AB/AC/base relation; several choices become false. No corrected source copy or answer authority was found. DERIVED_SOURCE_RECOVERY is PRODUCER_NOT_IMPLEMENTED. Do not rewrite source or synthesize a replacement without school/user authority."
+    },
+    {
+      "renderedPages": 4,
+      "denominator": 24,
+      "status": "SOURCE_RECOVERED_FOR_R2E",
+      "note": "No R1 package existed on intake. Full source exam/solution pages inspected and the 24-item production JS matches the source numbering and denominator; correct B25 entry can proceed with recovered source evidence.",
+      "examFile": "24_향림중_2학기_기말_중1_기출.js",
+      "sourcePdfSha256": "b5bd9f4dd9ed62e06a7a84dbe32ebf3e1657613914e55e767ae01773f15c28eb",
+      "sourcePdf": "D:\\기출\\(4)2기말\\중1\\2024_향림중1_수학_2기말.pdf",
+      "solutionPdfSha256": "7dc1afb7a43a8ca7c6e38d0591ac598be5b8aacff322cbd30f22165a465b327a0",
+      "id": "B25-source-recovery",
+      "solutionPdf": "D:\\기출\\(4)2기말\\중1\\2024_향림중1_수학_2기말_해설.pdf"
+    },
+    {
+      "exams": {
+        "B20": "branch-final, not re-reviewed",
+        "B24": "branch-final, not re-reviewed",
+        "B28": "branch-final, not re-reviewed"
+      },
+      "id": "preexisting-final",
+      "evidencePaths": [
+        "archive/data/r2e-input/middle1/evidence/B20/R2E_RESULT.json",
+        "archive/data/r2e-input/middle1/evidence/B24/R2E_RESULT.json",
+        "archive/data/r2e-input/middle1/evidence/B28/R2E_RESULT.json"
+      ]
+    },
+    {
+      "id": "visual-svg-provenance-and-render-B23-B26-B30",
+      "status": "TARGETED_VISUAL_REPAIR_AND_RENDER_REVIEW_COMPLETE",
+      "inputCommit": "92cf91b383d2e622c1c1aa22582e0903cc40da0a",
+      "latestMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+      "candidateHead": "ca1728692e2a4686fa6aa96fe8bf94904810a08f",
+      "evidencePath": "tmp/m1-b01-b31-r2e-20260927/VISUAL_REVIEW_B23_B26_B30.json",
+      "evidenceSha256": "faa7cd72bb2c163dde302eb2b14e3c2f5035ca6d020f87d99f92ff3a90f08a9f",
+      "assetCount": 13,
+      "exactFrozenInputAssetBytes": "13/13",
+      "renderCases": "18/18 cases passed content, image load, and overflow checks; desktop exam captures record local favicon-only 404",
+      "notes": [
+        "R1 semantic visual statuses reused on exact frozen-input bytes per user direction.",
+        "R1 render was NOT_RUN for B23/B26/B30; current engine solution output was captured and manually reviewed at desktop 1280 and mobile 390.",
+        "Changed only allowed solutionImageAlt, solutionImageCaption, solutionImageSize presentation fields after verifying source/solution parity."
+      ]
+    },
+    {
+      "id": "visual-svg-provenance-and-render-B29",
+      "status": "TARGETED_VISUAL_REPAIR_AND_RENDER_REVIEW_COMPLETE",
+      "inputCommit": "92cf91b383d2e622c1c1aa22582e0903cc40da0a",
+      "latestMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+      "candidateHead": "5f85d173b2bb24f86c56af3ef8f7aa3645bf6f6d",
+      "evidencePath": "tmp/m1-b01-b31-r2e-20260927/VISUAL_REVIEW_B29.json",
+      "evidenceSha256": "7b7e03baaa925003690a143e2b22cacc5c3766d12b1551f42d1ee46cacc1840d",
+      "assets": [
+        {
+          "q": 1,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q1-solution.svg",
+          "inputSha256": "10d453a22440b5bc69e03608371bf296f39732ba042e95995f310a669b092ec0",
+          "finalSha256": "10d453a22440b5bc69e03608371bf296f39732ba042e95995f310a669b092ec0",
+          "bytesExactFrozenInput": true,
+          "geometryChanged": false
+        },
+        {
+          "q": 4,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q4-solution.svg",
+          "inputSha256": "6d41141ce56711958ead6179e0989c1453ddcaa4a7f5fc56f370927d98308c5d",
+          "finalSha256": "6d41141ce56711958ead6179e0989c1453ddcaa4a7f5fc56f370927d98308c5d",
+          "bytesExactFrozenInput": true,
+          "geometryChanged": false
+        },
+        {
+          "q": 12,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q12-solution.svg",
+          "inputSha256": "5ac1162e9a325a5b5cc213baf37043c98f08a9bdbea6cfd2b85d661e6bdfb22e",
+          "finalSha256": "696726ad739debcfe5fd240d445a4e243b27cbea05f27744f827f1930a16ea1b",
+          "bytesExactFrozenInput": false,
+          "geometryChanged": false
+        },
+        {
+          "q": 13,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q13-solution.svg",
+          "inputSha256": "58bc36998714f06a2268fa6a5738199d93f7876353c9e4d2c794c025eeb4d8d1",
+          "finalSha256": "58bc36998714f06a2268fa6a5738199d93f7876353c9e4d2c794c025eeb4d8d1",
+          "bytesExactFrozenInput": true,
+          "geometryChanged": false
+        },
+        {
+          "q": 21,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q21-solution.svg",
+          "inputSha256": "a1d84e876fc98ae96f53f0d27006fddf3b17e953c411179c78ce8efd01d8641a",
+          "finalSha256": "a1d84e876fc98ae96f53f0d27006fddf3b17e953c411179c78ce8efd01d8641a",
+          "bytesExactFrozenInput": true,
+          "geometryChanged": false
+        },
+        {
+          "q": 22,
+          "path": "archive/assets/images/25_왕의중_2학기_기말_중1_기출/q22-solution.svg",
+          "inputSha256": "0788a8978221c2a058f16d84723afc3ac9f1329a875a7c54c38fcaebd6e7e142",
+          "finalSha256": "c8f028ce1de8e8c032bb7ca3722c141a701ec123e2d1203b897e25f9f9fa82b0",
+          "bytesExactFrozenInput": false,
+          "geometryChanged": false
+        }
+      ],
+      "renderCases": "6/6 desktop/mobile exam/solution/answer cases passed; all 6 solution SVGs decoded in both solution viewports; no page or horizontal overflow",
+      "notes": [
+        "R1 SVG KEEP and numerical evidence reused; original bytes restored before render review.",
+        "R2E found and repaired only two label collisions using permitted text-only layout changes; SVG geometry remained identical.",
+        "B29 Q4 arc notation was changed only to a MathJax-supported equivalent so it displays as an arc in the browser."
+      ]
+    },
+    {
+      "id": "B29-R2E-FINAL",
+      "status": "R2E_FINAL",
+      "denominator": 24,
+      "receiptPath": "tmp/m1-b01-b31-r2e-20260927/B29_R2E_META_RECEIPT.json",
+      "receiptSha": "sha256:0cd676b79e51d761102869079d229c937b20450d4e453f505370ba170b1706df",
+      "validationPath": "tmp/m1-b01-b31-r2e-20260927/B29_R2E_META_RECEIPT_VALIDATION.json",
+      "validationStatus": "PASS",
+      "visualEvidencePath": "tmp/m1-b01-b31-r2e-20260927/VISUAL_REVIEW_B29.json",
+      "visualEvidenceSha256": "7b7e03baaa925003690a143e2b22cacc5c3766d12b1551f42d1ee46cacc1840d",
+      "metaLedgerInputIssue": {
+        "path": "archive/data/r2e-input/middle1/evidence/B29/META_LEDGER.json",
+        "sha256": "2a42a1447a536655929818ec010d99ddbdeedc55c402f1f2342655f945118ee7",
+        "status": "MALFORMED_INPUT; not edited",
+        "parseError": "JSON parse error at position 9288 (line 249 column 9); complete META_LEDGER parse failed. Valid 24-row ITEM_LEDGER and REVIEW_LEDGER remained available and were used."
+      },
+      "action": "Completed 24/24 R2E resolver/validator finalizations; no unresolved Meta holds or migration gaps."
+    },
+    {
+      "id": "visual-svg-provenance-and-render-B21-B22",
+      "status": "TARGETED_VISUAL_REVIEW_COMPLETE",
+      "latestMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+      "evidencePath": "tmp/m1-b01-b31-r2e-20260927/VISUAL_REVIEW_B21_B22.json",
+      "evidenceSha256": "430e0ecf54923f309f5329ab772790820058a061cab95e90f8d86c227597f26a",
+      "assetCount": 16,
+      "r1SvgStatus": "B21: seven final R1 SVGs including Q22 R1 REPAIR; B22: eight KEEP SVGs, plus Q21 source-axis PNG",
+      "renderCases": "12 current desktop/mobile solution-render cases; B21 7/7 and B22 9/9 solution assets decode in both viewports; no page or horizontal overflow",
+      "notes": [
+        "Manual SVG label/number check done at desktop size.",
+        "Added question-specific solutionImageAlt/caption and large display size; source SVG/PNG bytes and geometry are unchanged.",
+        "B22 Q21 retains the original axis template PNG; its caption states the five verified bar heights while the adjacent solution text lists all bins."
+      ]
+    },
+    {
+      "id": "resolver-evidence-refresh-after-B29-main-migration",
+      "status": "CURRENT_CANONICAL_RECEIPTS_PASS",
+      "canonicalSnapshotMainSha": "1623d06593588147cb093bdad19e897572050f90",
+      "exams": [
+        {
+          "exam": "B21",
+          "receiptSha": "sha256:f0a3d4e6242c4d2e2a227c5085e4b0750a9c1d7bf7bd40eb78eb8539c81a78c9",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B22",
+          "receiptSha": "sha256:7e56fbcafbafe643a5ba2e67d6a5e8d974ec5be06f11a50a5e34e734936f04fc",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B23",
+          "receiptSha": "sha256:4316b643cca6933662730ba4048476fc095f8ea4b42f4a70d60e6aefae48528d",
+          "denominator": 23,
+          "validation": "PASS",
+          "itemCount": 23
+        },
+        {
+          "exam": "B26",
+          "receiptSha": "sha256:fe3eaea7ba238911510e267f401801fa82eeae527e1b3541fabb107cbd0f38f7",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B29",
+          "receiptSha": "sha256:957eaea77c4054d19dbcced8a574ddc1704aaa8ff0896a3e1dbf16ad8f0497d7",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B30",
+          "receiptSha": "sha256:f9bbb64750c9e2307b6b9a523aff53c7059e7d3c22163f68f2f89bd870d019bc",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        }
+      ],
+      "notes": [
+        "The B29 taxonomy-family migration changed shared crosswalk hashes and invalidated earlier stored resolver evidence for B21/B22/B23/B26/B30.",
+        "Regenerated current resolver evidence for all five exams without re-reviewing source/math on normal PASS items; re-sealed B21/B22/B23/B26/B29/B30 against the current runtime.",
+        "All six final receipt validators pass."
+      ]
+    },
+    {
+      "id": "normalized-crosswalk-rematerialization-post-latest-main",
+      "status": "R2E_PATHS_MATERIALIZED",
+      "latestMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+      "normalizedCrosswalkSha256": "fc46aa9357b1570827ebe6ffde532c48269dce2f39022e65f4d6404da63dc0a5",
+      "materializedCrosswalkSha256": "c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+      "evidencePath": "tmp/m1-b01-b31-r2e-20260927/CURRENT_CROSSWALK_MATERIALIZATION.json",
+      "evidenceSha256": "5ebeb19956ede7d1aaf63643df06d78c2b297cea2b58305180b098a402b85183",
+      "activatedRouteCount": 72,
+      "l2Alignments": [
+        {
+          "id": "M1-RPM-088",
+          "fromStatus": "DIRECT_BINDING_GAP",
+          "toStatus": "FAMILY_ACTIVE",
+          "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+          "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+          "questionRefs": [
+            "B22:8",
+            "B22:22",
+            "B23:5"
+          ],
+          "templateKeys": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+          ]
+        },
+        {
+          "id": "M1-RPM-201",
+          "fromStatus": "DIRECT_BINDING_GAP",
+          "toStatus": "FAMILY_ACTIVE",
+          "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+          "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+          "questionRefs": [
+            "B29:4",
+            "B30:2"
+          ],
+          "templateKeys": [
+            "TPL_CIRCLE_ANGLE_CENTER_ARC",
+            "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+          ]
+        },
+        {
+          "id": "M1-RPM-231",
+          "fromStatus": "RPM_ONLY",
+          "toStatus": "FAMILY_ACTIVE",
+          "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "questionRefs": [
+            "B29:17",
+            "B29:18",
+            "B29:19",
+            "B29:20",
+            "B30:14",
+            "B30:16",
+            "B30:17",
+            "B30:19"
+          ],
+          "templateKeys": [
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+            "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+          ]
+        }
+      ],
+      "explicitR1SubUnitOverrides": [
+        {
+          "exam": "B21",
+          "q": 4,
+          "crosswalkRecordId": "M1-RPM-099",
+          "sourceSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+          "selectedSubUnitKey": "M1-07-SOLID_FIGURE",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B21",
+          "q": 15,
+          "crosswalkRecordId": "M1-RPM-108",
+          "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B21",
+          "q": 16,
+          "crosswalkRecordId": "M1-RPM-109",
+          "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B21",
+          "q": 17,
+          "crosswalkRecordId": "M1-RPM-109",
+          "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B21",
+          "q": 20,
+          "crosswalkRecordId": "M1-RPM-108",
+          "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B26",
+          "q": 10,
+          "crosswalkRecordId": "M1-RPM-161",
+          "sourceSubUnitKey": "M1-03-LINEAR_EQUATION",
+          "selectedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B30",
+          "q": 20,
+          "crosswalkRecordId": "M1-RPM-229",
+          "sourceSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "selectedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        },
+        {
+          "exam": "B30",
+          "q": 24,
+          "crosswalkRecordId": "M1-RPM-232",
+          "sourceSubUnitKey": "M1-08-DATA_ORGANIZATION",
+          "selectedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+          "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+        }
+      ],
+      "notes": [
+        "Activated current M1 RPM rows only where the final exam assignment had a valid active PT/TPL and exact active binding.",
+        "Preserved the R1/source L2 for B21/B22/B23/B29 stem-leaf and frequency-distribution items by mapping M1-RPM-231 to M1-08-DATA_ORGANIZATION, which has the exact ACTIVE frequency-reading binding.",
+        "Aligned M1-RPM-088/201 circle-definition routes to the protected M1-06-POLYGON_CIRCLE L2 where that exact active geometry binding exists."
+      ]
+    },
+    {
+      "id": "resolver-evidence-refresh-post-latest-main",
+      "status": "ALL_CURRENT_RECEIPTS_PASS",
+      "latestMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+      "exams": [
+        {
+          "exam": "B21",
+          "receiptSha": "sha256:314ad94bc6ebac533a13f8e10477f0faf5a5eeef55f76b8a15f5ba2cf252d284",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B22",
+          "receiptSha": "sha256:bc8672d22a9c3d4c98d4664892bf409eb1aa86f87d5e302e9b56be76a88e9885",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B23",
+          "receiptSha": "sha256:59361cf4efd0b72d66fbd4156f67a51577fb29f32817397bc1604ae336a91b92",
+          "denominator": 23,
+          "validation": "PASS",
+          "itemCount": 23
+        },
+        {
+          "exam": "B26",
+          "receiptSha": "sha256:142261bde8d27226eff210effac49f86542817621aaafb29509a79f3247632e6",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B29",
+          "receiptSha": "sha256:0cd676b79e51d761102869079d229c937b20450d4e453f505370ba170b1706df",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        },
+        {
+          "exam": "B30",
+          "receiptSha": "sha256:c94663c7400599534de0985c73d28ef753f6bd585e6af4901bc2fe53ab368fbd",
+          "denominator": 24,
+          "validation": "PASS",
+          "itemCount": 24
+        }
+      ],
+      "notes": [
+        "Regenerated item-level resolver evidence against normalized current-main RPM rows and the current active crosswalk snapshot.",
+        "No source, answer, or final solution math was reopened for R1 normal PASS items."
+      ]
+    },
+    {
+      "id": "interim-main-final-20260927",
+      "status": "INTERIM_MAIN_FINAL_PARTIAL",
+      "latestMainSha": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+      "interimArchiveCommitSha": "1623d06593588147cb093bdad19e897572050f90",
+      "followupResolverCommitSha": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+      "mainFinalExams": [
+        {
+          "exam": "B21",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B21.json",
+          "receiptSha256": "sha256:cae9f29b14749711fd54bbd71e1ed06b37d47dc1de11c9b3840214b4ee329d6c",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "f2806faf7e84be8fda9129ad2b0e4b4eb5d814cee7019997e51a07047f7a7518",
+          "r2eReceiptSha": "sha256:314ad94bc6ebac533a13f8e10477f0faf5a5eeef55f76b8a15f5ba2cf252d284"
+        },
+        {
+          "exam": "B22",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B22.json",
+          "receiptSha256": "sha256:8298fad3b5a2363c15bdc1b3405649e6fcd50382bfd5d47e63ef0b09f2d40e50",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "c32b3e4158051a0662d5321f9114b9509fbd14ae33214a40746c1c7db5d1c3ec",
+          "r2eReceiptSha": "sha256:bc8672d22a9c3d4c98d4664892bf409eb1aa86f87d5e302e9b56be76a88e9885"
+        },
+        {
+          "exam": "B23",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B23.json",
+          "receiptSha256": "sha256:6132af727d321db53b97bcb09e039068a0fb01297599e68bead2599fd5fe5238",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "e9da18f5f1cb4f8eef778eb3b3c4f59affc05e302059406d8c7ea9778ceb892c",
+          "r2eReceiptSha": "sha256:59361cf4efd0b72d66fbd4156f67a51577fb29f32817397bc1604ae336a91b92"
+        },
+        {
+          "exam": "B26",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B26.json",
+          "receiptSha256": "sha256:d7488fe932ed632bf48e2594ef19c64107338046eb61018ef3b0c26283b813b4",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "6d3d8f6a5cc16b938747eee08d82f4297f0b045d969d5b9245fac43815c0ce85",
+          "r2eReceiptSha": "sha256:142261bde8d27226eff210effac49f86542817621aaafb29509a79f3247632e6"
+        },
+        {
+          "exam": "B29",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B29.json",
+          "receiptSha256": "sha256:c04c7461effd1a738cf30488d7a8b0756893c68777392bdce5b8dc0d75d615c3",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "62e2fdffa19e7744c1be375587c6356dbefb52bd46a79b77b4afead9e89c7519",
+          "r2eReceiptSha": "sha256:0cd676b79e51d761102869079d229c937b20450d4e453f505370ba170b1706df"
+        },
+        {
+          "exam": "B30",
+          "receiptPath": "tmp/m1-b01-b31-r2e-20260927/R2E_MAIN_FINAL/B30.json",
+          "receiptSha256": "sha256:21874f9be6e67757b0f40cab7c18c1b7699e21df8866a63a2dedaa27eb557777",
+          "productionCommit": "9b988082fdc991f2098d197a6aa7846ff70747eb",
+          "productionSha256": "b8bf42bbdc57671a4a2837a0481b5b7d5fcd2aa0c808effb5a5b10f08834401f",
+          "r2eReceiptSha": "sha256:c94663c7400599534de0985c73d28ef753f6bd585e6af4901bc2fe53ab368fbd"
+        }
+      ],
+      "branchFinalPendingMainBSet": [
+        20,
+        24,
+        28
+      ],
+      "coverage": "9/31",
+      "mainFinalCount": 6,
+      "blockers": [
+        "B19 q6 HUMAN_REQUIRED: contradictory source/answer evidence"
+      ],
+      "nextAction": "Continue main integration for B20/B24/B28 branch-final artifacts; process B25/B27/B31 and all remaining B01-B31 R2E items. B19 Q6 remains HUMAN_REQUIRED."
+    }
+  ]
+}
