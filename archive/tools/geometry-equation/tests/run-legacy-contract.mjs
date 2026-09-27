@@ -34,8 +34,21 @@ const protectedInputs=ledger.filter(v=>v.source.startsWith('archive/exams/')||v.
 const drift=protectedInputs.filter(v=>baseline.protectedFiles[v.source]!==v.sha256);
 const verifierParity=ledger.find(v=>v.source===verifier)?.sha256===baseline.coreFiles[verifier];
 const frozenInputParity=!drift.length&&verifierParity;
+const historicalInheritedFailureIds=[
+  '22_금당고_1학기_기말_고1_기출.js#19',
+  '25_매산여고_2학기_중간_고1_공통수학2.js#2',
+  '25_매산여고_2학기_중간_고1_공통수학2.js#4',
+  '25_매산여고_2학기_중간_고1_공통수학2.js#8',
+  '25_매산여고_2학기_중간_고1_공통수학2.js#15',
+  '25_매산여고_2학기_중간_고1_공통수학2.js#17',
+  '25_순천고_2학기_중간_고1_기출.js#18',
+  '25_제일고_2학기_중간_고1_기출.js#15',
+];
+const currentFailureIds=report.rows.filter(v=>v.status==='FAIL').map(v=>v.key);
+const missingHistorical=historicalInheritedFailureIds.filter(v=>!currentFailureIds.includes(v));
+const additionalLatestMainFindings=currentFailureIds.filter(v=>!historicalInheritedFailureIds.includes(v));
 // This gate is regression against Phase0, not a new production qualification.
 // Raw verifier FAILs remain FAILs in qualification.json and in this summary.
-const regressionPass=frozenInputParity&&report.knownBadRecall.status==='PASS'&&report.sourcePack.status==='PASS';
-const summary={status:regressionPass?'PASS':'FAIL',gate:'LEGACY_CONTRACT_BASELINE_PARITY',rawQualificationStatus:report.status,baselineHead:baseline.head,baselineInputParity:frozenInputParity?'PASS':'FAIL',introducedRegressionCount:drift.length,drift,verifierByteParity:verifierParity?'PASS':'FAIL',target:report.target,passCount:report.passCount,failureCount:report.failureCount,inheritedFindings:report.rows.filter(v=>v.status==='FAIL').map(v=>({key:v.key,failedGates:v.pass3Parity.filter(g=>g.status==='FAIL').map(g=>g.name)})),knownBadRecall:report.knownBadRecall.status,recall:report.knownBadRecall.recall,copiedFileCount:ledger.length,scope:'code regression only; inherited production qualification findings are not relabelled PASS'};
+const regressionPass=frozenInputParity&&!missingHistorical.length&&report.knownBadRecall.status==='PASS'&&report.sourcePack.status==='PASS';
+const summary={status:regressionPass?'PASS':'FAIL',gate:'LEGACY_CONTRACT_BASELINE_PARITY',rawQualificationStatus:report.status,baselineHead:baseline.head,baselineInputParity:frozenInputParity?'PASS':'FAIL',introducedRegressionCount:drift.length,drift,verifierByteParity:verifierParity?'PASS':'FAIL',target:report.target,passCount:report.passCount,failureCount:report.failureCount,historicalInheritedFailureIds,historicalInheritedFindingsPresent:missingHistorical.length?'FAIL':'PASS',missingHistorical,additionalLatestMainFindings,inheritedFindings:report.rows.filter(v=>v.status==='FAIL').map(v=>({key:v.key,failedGates:v.pass3Parity.filter(g=>g.status==='FAIL').map(g=>g.name)})),knownBadRecall:report.knownBadRecall.status,recall:report.knownBadRecall.recall,copiedFileCount:ledger.length,scope:'code regression only; inherited production qualification findings are not relabelled PASS'};
 fs.writeFileSync(path.join(out,'summary.json'),JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));if(summary.status!=='PASS')process.exitCode=1;

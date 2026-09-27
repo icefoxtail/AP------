@@ -124,7 +124,8 @@ export function qualifyCode({run,archiveAttempt,bboxReceipt}){
   }
   const legacy=readRel('legacy-contract/summary.json'),raw=readRel('legacy-contract/qualification.json');
   requireGate(legacy.status==='PASS'&&legacy.gate==='LEGACY_CONTRACT_BASELINE_PARITY'&&legacy.baselineInputParity==='PASS'&&
-    legacy.verifierByteParity==='PASS'&&legacy.introducedRegressionCount===0&&legacy.knownBadRecall==='PASS','LEGACY_CODE_REGRESSION');
+    legacy.verifierByteParity==='PASS'&&legacy.introducedRegressionCount===0&&legacy.knownBadRecall==='PASS'&&
+    legacy.historicalInheritedFindingsPresent==='PASS'&&legacy.historicalInheritedFailureIds.length===8,'LEGACY_CODE_REGRESSION');
   requireGate(legacy.rawQualificationStatus===raw.status&&legacy.failureCount===raw.failureCount&&legacy.inheritedFindings.length===raw.failureCount,'LEGACY_FINDINGS_HIDDEN');
   const buildPerformance=readRel('performance/build.json'),browserPerformance=readRel('performance/browser.json');
   requireGate(buildPerformance.status==='PASS'&&browserPerformance.status==='PASS','PERFORMANCE_NOT_MEASURED');
@@ -190,8 +191,8 @@ export function saveSeal(result,run){
     '- Python '+result.tests.python+', Node '+result.tests.node+', actual SVG '+result.tests.static+', bbox '+result.tests.renderedBbox+', archive '+result.tests.nativeArchive+', determinism '+result.tests.determinism+' PASS',
     '- 신규 엔진 P0/P1=0/0; 신규 회귀=0; 원본 '+result.production.protectedFiles+'개 변경=0; 기존 verifier6개 바이트 일치','',
     '## 기존 production qualification finding','',
-    '기존 v22 raw qualification은 **'+result.inheritedProductionQualification.status+'**를 유지한다. 현재 99건 중 91 PASS / 8 FAIL이며 고정 과거 분모는 94다.',
-    '8건의 입력은 모두 Phase0 baseline과 같고, 신규 회귀는 0이다. 이 코드 봉인은 해당 production finding을 해결하거나 PASS로 변경하지 않는다.',
+    '기존 v22 raw qualification은 **'+result.inheritedProductionQualification.status+'**를 유지한다. 최신 main 재qualification은 '+raw.target.total+'건 중 '+raw.passCount+' PASS / '+raw.failureCount+' FAIL이며 고정 과거 분모는 '+raw.target.expected.total+'이다.',
+    '기존 source qualification의 8개 FAIL 식별자는 그대로 남았으며, 최신 main에서 추가로 관찰한 finding '+legacy.additionalLatestMainFindings.length+'건도 그대로 기록했다. 입력 parity, 독립 verifier byte parity, 신규 regression은 PASS다. 이 코드 봉인은 production finding을 해결하거나 PASS로 변경하지 않는다.',
     '심각도 재분류와 production 자산 조치는 이후 inventory/FULL PILOT 범위다. 원본 FAIL 전체는 legacy-contract/qualification.json에 보존했다.','',
     '## Phase commits','',...result.phaseCommits.map((v,i)=>'- Phase '+i+': '+v),'',
     '## 성능 측정','',
