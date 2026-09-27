@@ -25,24 +25,24 @@
     28
   ],
   "blockingIssues": [
-    "B08 Q16 cuboid section topology remains unresolved.",
+    "B08 Q16 repair is local and awaits R2E_MAIN_FINAL.",
     "B08 Q06, B09 Q08/Q21/Q22, B11 Q10, B12 Q10, and B14 Q12 require R2E metadata/final closure after D-source review.",
     "B07/B10/B14/B15 local repairs are not R2E_MAIN_FINAL.",
     "B01-B18 whole-batch R2E closure remains open.",
     "Independent pipeline closure for B19/B25/B27/B31 remains pending."
   ],
-  "lastCompletedItem": "D-source adjudication and local repairs for B07, B10, B14 and B15; B10 Q19 SVG repaired and native-rendered.",
-  "nextStartPoint": "Resolve B08 Q16 cuboid section topology; finish B08 Q06, B09 Q08/Q21/Q22, B11 Q10, B12 Q10, B14 Q12 metadata and exam closure; then process B01-B18 inherited R2E closure without re-reviewing PASS.",
+  "lastCompletedItem": "B08 Q16 source ambiguity repaired locally: corrected ⑤ count 3→4 and replaced raster with separated-topology SVG; native render PASS.",
+  "nextStartPoint": "Continue only unresolved inherited HOLDs B08 Q06; B09 Q08/Q21/Q22; B11 Q10; B12 Q10; B14 Q12. Then run affected exam metadata/runtime closure and the batch R2E audit.",
   "initialMainSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
   "latestMainAfterAdvance": "d6fd4bebf6e817f1545de54f07ba9b600ebe93c8",
-  "candidateHead": "8a58d1b62114fa7f65c81a6c228895f0ccd44e96",
+  "candidateHead": "2a114373125eb9feef9d5add68fec47c2ee32f9e",
   "candidateBranch": "codex/m1-r2e-main-final-20260927",
   "readyCandidateBSet": [],
   "readyCandidateCount": 0,
   "closedOrReadyCount": 9,
   "closedOrReadyPercent": 29,
   "mainPromotedCount": 9,
-  "lastCompletedStage": "B07 Q23 and B14 Q22 minimal source fixes; B15 Q15 angle solution; B10 Q10/Q14/Q17/Q19 solutions, Q19 SVG. All remain R2E_MAIN_FINAL pending.",
+  "lastCompletedStage": "B07 Q23, B08 Q16, B10 Q10/Q14/Q17/Q19, B14 Q22 and B15 Q15 held/source corrections are committed locally; all await R2E_MAIN_FINAL.",
   "visualReviewEvidencePath": "archive/data/r2e/middle1/visual/B20_B24_B28_BATCH_REVIEW.json",
   "visualReviewEvidenceSha256": "188445f88dbe0643ed89b24d6538d46f391267ed2fd0e230e0fa628114fa5e2e",
   "mainPromotionStatus": "R2E_MAIN_FINAL_PARTIAL",
@@ -77,7 +77,7 @@
     ],
     "dependencyImpact": "Catalog index advanced with the main sync, so all nine R2E_MAIN_FINAL receipts were rebuilt. The M1 exam artifacts, solution assets, RPM crosswalk, canonical Meta, runtime, and engine are unchanged; production byte parity remains PASS."
   },
-  "updatedAt": "2026-09-27T17:11:01.2945214Z",
+  "updatedAt": "2026-09-27T17:29:05.6832138Z",
   "scopedHoldDenominator": 40,
   "scopedHoldMetaResolved": 38,
   "scopedHoldMetaRemaining": 2,
@@ -108,6 +108,11 @@
       "B": 15,
       "item": "Q15",
       "sha": "f6497b6b1"
+    },
+    {
+      "item": "Q16 choice repair + section SVG",
+      "sha": "2a1143731",
+      "B": 8
     }
   ]
 }
