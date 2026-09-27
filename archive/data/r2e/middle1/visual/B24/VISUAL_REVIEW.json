@@ -1,0 +1,1091 @@
+{
+  "schemaVersion": "M1_R2E_VISUAL_REVIEW_v1",
+  "runId": "m1-b01-b31-r2e-20260927",
+  "overall": "PASS",
+  "baseMainSha": "7720c9f6dd38d0639c16e62cedaa8bfa0a67f072",
+  "engineSha256": "777ede0287dea2a46b0cf86ad275089ce3980f0da5281029f84f8d21fbe53254",
+  "visualStandard": "docs/rules/04_VISUAL/도형추출.md v3.0 §6-4; per-image browser crop review at original rendered size plus desktop/mobile page gate.",
+  "assetCounts": {
+    "total": 7,
+    "svg": 7,
+    "sourcePng": 0
+  },
+  "manualDisposition": {
+    "examQuestionContextCompared": true,
+    "solutionTextAndDiagramLabelsCompared": true,
+    "geometryParametersAndTopologyChecked": true,
+    "labelStrokeOverlaps": 0,
+    "textCollisions": 0,
+    "clippedOrMissingLabels": 0,
+    "brokenSvgRenders": 0
+  },
+  "layoutRepairs": [
+    {
+      "exam": "B20",
+      "question": 24,
+      "action": "STRIP_INLINE reminder-image policy in solution view; the combined solution SVG already includes both original solids.",
+      "reason": "Repeated source figures pushed the measured solution block beyond a page."
+    },
+    {
+      "exam": "B28",
+      "question": 15,
+      "action": "Reuse the original stem-and-leaf/frequency-table source PNG as a full-size solution context image and strip the repeated inline source image in solution view.",
+      "reason": "The original figure carries the shared data; its source bytes were retained."
+    },
+    {
+      "exam": "B28",
+      "question": 20,
+      "action": "Set the source relative-frequency graph image to medium display size.",
+      "reason": "Equal-slot audit detected a vertical slot overflow; medium keeps the full graph visible."
+    }
+  ],
+  "examResults": [
+    {
+      "exam": "B24",
+      "examFile": "24_율촌중_2학기_기말_중1_기출.js",
+      "questionCount": 22,
+      "renderEngineSha": "777ede0287dea2a46b0cf86ad275089ce3980f0da5281029f84f8d21fbe53254",
+      "cases": [
+        {
+          "viewport": "desktop",
+          "mode": "exam",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [
+            {
+              "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+              "location": {
+                "url": "http://127.0.0.1:8765/favicon.ico",
+                "line": 0,
+                "column": 0,
+                "lineNumber": 0,
+                "columnNumber": 0
+              }
+            }
+          ],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/exam-desktop.png",
+          "innerWidth": 1280,
+          "innerHeight": 1000,
+          "questionCount": 22,
+          "qboxCount": 24,
+          "answerCount": 0,
+          "sourceQboxCount": 22,
+          "blankQboxCount": 2,
+          "lastOrdinal": 22,
+          "lastText": "22.\n[서술형4]\n다음은 A 학교와 B 학교 학생들이 1\n년 동안 읽은 책의 수에 대한 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중에서 옳지 않은 것(2\n개)을 모두 찾아 바르게 고쳐쓰시오. [7점]\n(보기를 각각 설명: 2점, 2점, 3점)",
+          "pageCount": 6,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "horizontalViewportOverflow": false,
+          "images": [],
+          "imageCount": 0,
+          "imageLoadedCount": 0,
+          "allImages": [
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q1.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 949,
+              "naturalHeight": 444
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q2.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 849,
+              "naturalHeight": 339
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 879,
+              "naturalHeight": 449
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 744,
+              "naturalHeight": 499
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 554,
+              "naturalHeight": 359
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 419,
+              "naturalHeight": 299
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q9.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 509,
+              "naturalHeight": 389
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 494,
+              "naturalHeight": 554
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q11.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1400,
+              "naturalHeight": 910
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q13.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 704,
+              "naturalHeight": 619
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q14.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 844,
+              "naturalHeight": 544
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q15.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 980,
+              "naturalHeight": 663
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q16.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 574,
+              "naturalHeight": 724
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q17.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 669,
+              "naturalHeight": 559
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q18.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 894,
+              "naturalHeight": 509
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1129,
+              "naturalHeight": 1204
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q20.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 724,
+              "naturalHeight": 654
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 599,
+              "naturalHeight": 654
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q22.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1124,
+              "naturalHeight": 985
+            }
+          ],
+          "allImageCount": 19,
+          "allImagesLoadedCount": 19,
+          "pageOverflow": []
+        },
+        {
+          "viewport": "desktop",
+          "mode": "sol",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/sol-desktop.png",
+          "innerWidth": 1280,
+          "innerHeight": 1000,
+          "questionCount": 22,
+          "qboxCount": 22,
+          "answerCount": 0,
+          "sourceQboxCount": 22,
+          "blankQboxCount": 0,
+          "lastOrdinal": 22,
+          "lastText": "22.\n[서술형4] 다음은 A 학교와 B 학교 학생들이 1\n년 동안 읽은 책의 수에 대한 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중에서 옳지 않은 것(2\n개)을 모두 찾아 바르게 고쳐쓰시오. [7점]\n(보기를 각각 설명: 2점, 2점, 3점)\n[정답] ㄴ, ㄷ\nㄴ. 책을 8\n권 이상 10\n권 미만 읽은 학생의 비",
+          "pageCount": 7,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "horizontalViewportOverflow": false,
+          "images": [
+            {
+              "question": "5.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg?v=20260903.1",
+              "alt": "반지름 5cm 원 두 개와 높이 12cm인 직사각형으로 이루어진 원기둥 전개도, 원주 10πcm.",
+              "caption": "직사각형의 가로는 밑면 원주 10πcm, 세로는 높이 12cm이므로 빈칸의 합은 17+10π이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 274.265625,
+              "height": 158.234375,
+              "page": 1,
+              "loaded": true
+            },
+            {
+              "question": "6.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg?v=20260903.1",
+              "alt": "부피가 같은 두 원기둥 A와 B. A는 반지름 6cm, 높이 6cm이고 B는 반지름 3cm, 높이 h이다.",
+              "caption": "같은 부피에서 π·6²·6=π·3²·h이므로 h=24cm이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 274.265625,
+              "height": 158.234375,
+              "page": 2,
+              "loaded": true
+            },
+            {
+              "question": "7.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg?v=20260903.1",
+              "alt": "밑면 반지름 2cm인 원과 반지름 5cm, 호 길이 4πcm인 원뿔 전개도.",
+              "caption": "부채꼴 중심각은 144°이고 부채꼴과 밑면의 넓이를 더하면 14π cm²이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 274.265625,
+              "height": 158.234375,
+              "page": 2,
+              "loaded": true
+            },
+            {
+              "question": "8.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg?v=20260903.1",
+              "alt": "반지름 6cm인 반구 단면과 반구 부피 계산식.",
+              "caption": "반구의 부피는 1/2×(4/3)π×6³=144π cm³이다.",
+              "naturalWidth": 227,
+              "naturalHeight": 150,
+              "width": 272.421875,
+              "height": 180,
+              "page": 3,
+              "loaded": true
+            },
+            {
+              "question": "10.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg?v=20260903.1",
+              "alt": "큰 원뿔(r=4m, h=6m)에서 작은 원뿔(r=2m, h=3m)을 잘라 만든 원뿔대.",
+              "caption": "큰 원뿔 부피 32π에서 작은 원뿔 부피 4π를 빼면 28π m³이다.",
+              "naturalWidth": 242,
+              "naturalHeight": 150,
+              "width": 274.28125,
+              "height": 170.328125,
+              "page": 3,
+              "loaded": true
+            },
+            {
+              "question": "19.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg?v=20260903.1",
+              "alt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
+              "caption": "삼각기둥 겉넓이는 288 cm²이고 원뿔 부피는 75π cm³이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 274.265625,
+              "height": 158.234375,
+              "page": 6,
+              "loaded": true
+            },
+            {
+              "question": "21.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg?v=20260903.1",
+              "alt": "반지름 3cm인 구 세 개가 반지름 3cm, 높이 18cm인 원기둥 통에 세로로 꼭 맞게 들어 있다.",
+              "caption": "통 부피 162π에서 구 세 개의 부피 108π를 빼면 빈 공간은 54π cm³이다.",
+              "naturalWidth": 214,
+              "naturalHeight": 150,
+              "width": 257.140625,
+              "height": 180,
+              "page": 7,
+              "loaded": true
+            }
+          ],
+          "imageCount": 7,
+          "imageLoadedCount": 7,
+          "allImages": [
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg?v=20260903.1",
+              "alt": "반지름 5cm 원 두 개와 높이 12cm인 직사각형으로 이루어진 원기둥 전개도, 원주 10πcm.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg?v=20260903.1",
+              "alt": "부피가 같은 두 원기둥 A와 B. A는 반지름 6cm, 높이 6cm이고 B는 반지름 3cm, 높이 h이다.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg?v=20260903.1",
+              "alt": "밑면 반지름 2cm인 원과 반지름 5cm, 호 길이 4πcm인 원뿔 전개도.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg?v=20260903.1",
+              "alt": "반지름 6cm인 반구 단면과 반구 부피 계산식.",
+              "loaded": true,
+              "naturalWidth": 227,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg?v=20260903.1",
+              "alt": "큰 원뿔(r=4m, h=6m)에서 작은 원뿔(r=2m, h=3m)을 잘라 만든 원뿔대.",
+              "loaded": true,
+              "naturalWidth": 242,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg?v=20260903.1",
+              "alt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg?v=20260903.1",
+              "alt": "반지름 3cm인 구 세 개가 반지름 3cm, 높이 18cm인 원기둥 통에 세로로 꼭 맞게 들어 있다.",
+              "loaded": true,
+              "naturalWidth": 214,
+              "naturalHeight": 150
+            }
+          ],
+          "allImageCount": 7,
+          "allImagesLoadedCount": 7,
+          "pageOverflow": []
+        },
+        {
+          "viewport": "desktop",
+          "mode": "ans",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/ans-desktop.png",
+          "innerWidth": 1280,
+          "innerHeight": 1000,
+          "questionCount": 22,
+          "qboxCount": 0,
+          "answerCount": 22,
+          "sourceQboxCount": 0,
+          "blankQboxCount": 0,
+          "lastOrdinal": null,
+          "lastText": "",
+          "pageCount": 1,
+          "documentScrollWidth": 1280,
+          "bodyScrollWidth": 1280,
+          "horizontalViewportOverflow": false,
+          "images": [],
+          "imageCount": 0,
+          "imageLoadedCount": 0,
+          "allImages": [],
+          "allImageCount": 0,
+          "allImagesLoadedCount": 0,
+          "pageOverflow": []
+        },
+        {
+          "viewport": "mobile",
+          "mode": "exam",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/exam-mobile.png",
+          "innerWidth": 390,
+          "innerHeight": 844,
+          "questionCount": 22,
+          "qboxCount": 24,
+          "answerCount": 0,
+          "sourceQboxCount": 22,
+          "blankQboxCount": 2,
+          "lastOrdinal": 22,
+          "lastText": "22.\n[서술형4]\n다음은 A 학교와 B 학교 학생들이 1\n년 동안 읽은 책의 수에 대한 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중에서 옳지 않은 것(2\n개)을 모두 찾아 바르게 고쳐쓰시오. [7점]\n(보기를 각각 설명: 2점, 2점, 3점)",
+          "pageCount": 6,
+          "documentScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "horizontalViewportOverflow": false,
+          "images": [],
+          "imageCount": 0,
+          "imageLoadedCount": 0,
+          "allImages": [
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q1.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 949,
+              "naturalHeight": 444
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q2.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 849,
+              "naturalHeight": 339
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 879,
+              "naturalHeight": 449
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 744,
+              "naturalHeight": 499
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 554,
+              "naturalHeight": 359
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 419,
+              "naturalHeight": 299
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q9.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 509,
+              "naturalHeight": 389
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 494,
+              "naturalHeight": 554
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q11.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1400,
+              "naturalHeight": 910
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q13.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 704,
+              "naturalHeight": 619
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q14.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 844,
+              "naturalHeight": 544
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q15.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 980,
+              "naturalHeight": 663
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q16.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 574,
+              "naturalHeight": 724
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q17.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 669,
+              "naturalHeight": 559
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q18.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 894,
+              "naturalHeight": 509
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1129,
+              "naturalHeight": 1204
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q20.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 724,
+              "naturalHeight": 654
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 599,
+              "naturalHeight": 654
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q22.png?v=20260903.1",
+              "alt": "",
+              "loaded": true,
+              "naturalWidth": 1124,
+              "naturalHeight": 985
+            }
+          ],
+          "allImageCount": 19,
+          "allImagesLoadedCount": 19,
+          "pageOverflow": []
+        },
+        {
+          "viewport": "mobile",
+          "mode": "sol",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/sol-mobile.png",
+          "innerWidth": 390,
+          "innerHeight": 844,
+          "questionCount": 22,
+          "qboxCount": 22,
+          "answerCount": 0,
+          "sourceQboxCount": 22,
+          "blankQboxCount": 0,
+          "lastOrdinal": 22,
+          "lastText": "22.\n[서술형4] 다음은 A 학교와 B 학교 학생들이 1\n년 동안 읽은 책의 수에 대한 상대도수의 분포를 그래프로 나타낸 것이다. 보기 중에서 옳지 않은 것(2\n개)을 모두 찾아 바르게 고쳐쓰시오. [7점]\n(보기를 각각 설명: 2점, 2점, 3점)\n[정답] ㄴ, ㄷ\nㄴ. 책을 8\n권 이상 10\n권 미만 읽은 학생의 비",
+          "pageCount": 7,
+          "documentScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "horizontalViewportOverflow": false,
+          "images": [
+            {
+              "question": "5.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg?v=20260903.1",
+              "alt": "반지름 5cm 원 두 개와 높이 12cm인 직사각형으로 이루어진 원기둥 전개도, 원주 10πcm.",
+              "caption": "직사각형의 가로는 밑면 원주 10πcm, 세로는 높이 12cm이므로 빈칸의 합은 17+10π이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 129.18807983398438,
+              "height": 74.5335693359375,
+              "page": 1,
+              "loaded": true
+            },
+            {
+              "question": "6.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg?v=20260903.1",
+              "alt": "부피가 같은 두 원기둥 A와 B. A는 반지름 6cm, 높이 6cm이고 B는 반지름 3cm, 높이 h이다.",
+              "caption": "같은 부피에서 π·6²·6=π·3²·h이므로 h=24cm이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 129.18809509277344,
+              "height": 74.5335693359375,
+              "page": 2,
+              "loaded": true
+            },
+            {
+              "question": "7.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg?v=20260903.1",
+              "alt": "밑면 반지름 2cm인 원과 반지름 5cm, 호 길이 4πcm인 원뿔 전개도.",
+              "caption": "부채꼴 중심각은 144°이고 부채꼴과 밑면의 넓이를 더하면 14π cm²이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 129.18807983398438,
+              "height": 74.53363037109375,
+              "page": 2,
+              "loaded": true
+            },
+            {
+              "question": "8.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg?v=20260903.1",
+              "alt": "반지름 6cm인 반구 단면과 반구 부피 계산식.",
+              "caption": "반구의 부피는 1/2×(4/3)π×6³=144π cm³이다.",
+              "naturalWidth": 227,
+              "naturalHeight": 150,
+              "width": 128.3196258544922,
+              "height": 84.785888671875,
+              "page": 3,
+              "loaded": true
+            },
+            {
+              "question": "10.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg?v=20260903.1",
+              "alt": "큰 원뿔(r=4m, h=6m)에서 작은 원뿔(r=2m, h=3m)을 잘라 만든 원뿔대.",
+              "caption": "큰 원뿔 부피 32π에서 작은 원뿔 부피 4π를 빼면 28π m³이다.",
+              "naturalWidth": 242,
+              "naturalHeight": 150,
+              "width": 129.1954345703125,
+              "height": 80.230224609375,
+              "page": 3,
+              "loaded": true
+            },
+            {
+              "question": "19.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg?v=20260903.1",
+              "alt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
+              "caption": "삼각기둥 겉넓이는 288 cm²이고 원뿔 부피는 75π cm³이다.",
+              "naturalWidth": 260,
+              "naturalHeight": 150,
+              "width": 129.18809509277344,
+              "height": 74.53369140625,
+              "page": 6,
+              "loaded": true
+            },
+            {
+              "question": "21.",
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg?v=20260903.1",
+              "alt": "반지름 3cm인 구 세 개가 반지름 3cm, 높이 18cm인 원기둥 통에 세로로 꼭 맞게 들어 있다.",
+              "caption": "통 부피 162π에서 구 세 개의 부피 108π를 빼면 빈 공간은 54π cm³이다.",
+              "naturalWidth": 214,
+              "naturalHeight": 150,
+              "width": 121.12165832519531,
+              "height": 84.785888671875,
+              "page": 7,
+              "loaded": true
+            }
+          ],
+          "imageCount": 7,
+          "imageLoadedCount": 7,
+          "allImages": [
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg?v=20260903.1",
+              "alt": "반지름 5cm 원 두 개와 높이 12cm인 직사각형으로 이루어진 원기둥 전개도, 원주 10πcm.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg?v=20260903.1",
+              "alt": "부피가 같은 두 원기둥 A와 B. A는 반지름 6cm, 높이 6cm이고 B는 반지름 3cm, 높이 h이다.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg?v=20260903.1",
+              "alt": "밑면 반지름 2cm인 원과 반지름 5cm, 호 길이 4πcm인 원뿔 전개도.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg?v=20260903.1",
+              "alt": "반지름 6cm인 반구 단면과 반구 부피 계산식.",
+              "loaded": true,
+              "naturalWidth": 227,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg?v=20260903.1",
+              "alt": "큰 원뿔(r=4m, h=6m)에서 작은 원뿔(r=2m, h=3m)을 잘라 만든 원뿔대.",
+              "loaded": true,
+              "naturalWidth": 242,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg?v=20260903.1",
+              "alt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
+              "loaded": true,
+              "naturalWidth": 260,
+              "naturalHeight": 150
+            },
+            {
+              "src": "assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg?v=20260903.1",
+              "alt": "반지름 3cm인 구 세 개가 반지름 3cm, 높이 18cm인 원기둥 통에 세로로 꼭 맞게 들어 있다.",
+              "loaded": true,
+              "naturalWidth": 214,
+              "naturalHeight": 150
+            }
+          ],
+          "allImageCount": 7,
+          "allImagesLoadedCount": 7,
+          "pageOverflow": []
+        },
+        {
+          "viewport": "mobile",
+          "mode": "ans",
+          "httpStatus": 200,
+          "pageErrors": [],
+          "consoleErrors": [],
+          "badResponses": [],
+          "failedRequests": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/ans-mobile.png",
+          "innerWidth": 390,
+          "innerHeight": 844,
+          "questionCount": 22,
+          "qboxCount": 0,
+          "answerCount": 22,
+          "sourceQboxCount": 0,
+          "blankQboxCount": 0,
+          "lastOrdinal": null,
+          "lastText": "",
+          "pageCount": 1,
+          "documentScrollWidth": 390,
+          "bodyScrollWidth": 390,
+          "horizontalViewportOverflow": false,
+          "images": [],
+          "imageCount": 0,
+          "imageLoadedCount": 0,
+          "allImages": [],
+          "allImageCount": 0,
+          "allImagesLoadedCount": 0,
+          "pageOverflow": []
+        }
+      ],
+      "passed": true,
+      "solutionRenderCases": [
+        {
+          "viewport": "desktop",
+          "httpStatus": 200,
+          "questions": 22,
+          "solutionImages": 7,
+          "loaded": 7,
+          "pageCount": 7,
+          "pageOverflow": [],
+          "horizontalOverflow": false,
+          "pageErrors": [],
+          "badResponses": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/sol-desktop.png"
+        },
+        {
+          "viewport": "mobile",
+          "httpStatus": 200,
+          "questions": 22,
+          "solutionImages": 7,
+          "loaded": 7,
+          "pageCount": 7,
+          "pageOverflow": [],
+          "horizontalOverflow": false,
+          "pageErrors": [],
+          "badResponses": [],
+          "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/sol-mobile.png"
+        }
+      ],
+      "solutionImages": [
+        {
+          "question": 5,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q5-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "37f05e4dd64611bdda1da4f7fdfe2eca7f02cf0b66441c1a79f04d0e1d6bd300",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "caae07525c5b097bedba5f35b6d4f2d893a2c6065b922defc0fd4d1e8f867052"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "반지름 5cm 원 두 개와 높이 12cm인 직사각형으로 이루어진 원기둥 전개도, 원주 10πcm.",
+          "solutionImageCaption": "직사각형의 가로는 밑면 원주 10πcm, 세로는 높이 12cm이므로 빈칸의 합은 17+10π이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 274.265625,
+            "height": 158.234375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q5-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 129.18807983398438,
+            "height": 74.5335693359375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q5-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 6,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q6-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "09c5e8fdd9a5d3980e4558ccb34858829c871f0c7bf6e7d3fad75976eddba070",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "0ffb13124d271910a1b3fda11aa0ce6854f80cddc8f473e798b1b9d7f6f6d8c4"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "부피가 같은 두 원기둥 A와 B. A는 반지름 6cm, 높이 6cm이고 B는 반지름 3cm, 높이 h이다.",
+          "solutionImageCaption": "같은 부피에서 π·6²·6=π·3²·h이므로 h=24cm이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 274.265625,
+            "height": 158.234375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q6-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 129.18809509277344,
+            "height": 74.5335693359375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q6-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 7,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q7-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "fbb7da75980cc69c1805f318ec60434f1bace4eeb5d0dc5d7832a59a144d9de5",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "b6ed17e234ca18fa4bc02c12570bd045c428b5d5338ffbb24eb43457344c9d81"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "밑면 반지름 2cm인 원과 반지름 5cm, 호 길이 4πcm인 원뿔 전개도.",
+          "solutionImageCaption": "부채꼴 중심각은 144°이고 부채꼴과 밑면의 넓이를 더하면 14π cm²이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 274.265625,
+            "height": 158.234375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q7-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 129.18807983398438,
+            "height": 74.53363037109375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q7-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 8,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q8-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "23958e60fe5c999e29bc983303991baf35e4574bfb22798979388faf206e168e",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "4c1bc642897cf522a9e01eb4b70c2decf3637faf57771b56f0eff71e14569b47"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "반지름 6cm인 반구 단면과 반구 부피 계산식.",
+          "solutionImageCaption": "반구의 부피는 1/2×(4/3)π×6³=144π cm³이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 272.421875,
+            "height": 180,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q8-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 128.3196258544922,
+            "height": 84.785888671875,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q8-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 10,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q10-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "4f2e0b51d638452ed1c12c878e43bf2f41da465b49b9855df4334e0661633b4f",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "4f2e0b51d638452ed1c12c878e43bf2f41da465b49b9855df4334e0661633b4f"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "큰 원뿔(r=4m, h=6m)에서 작은 원뿔(r=2m, h=3m)을 잘라 만든 원뿔대.",
+          "solutionImageCaption": "큰 원뿔 부피 32π에서 작은 원뿔 부피 4π를 빼면 28π m³이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 274.28125,
+            "height": 170.328125,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q10-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 129.1954345703125,
+            "height": 80.230224609375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q10-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 19,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q19-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "8ae15029290d86c44a0b1c402cc057e355fe7de51190a023a89a6026189d2a06",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "2190e187a93e3cbb3b5516f5d797adcf48b9380938a02641beea73cf245a51cd"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "직각삼각형 밑면(변 6, 8, 10)과 기둥 높이 10인 삼각기둥, 반지름 5 높이 9인 원뿔.",
+          "solutionImageCaption": "삼각기둥 겉넓이는 288 cm²이고 원뿔 부피는 75π cm³이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 274.265625,
+            "height": 158.234375,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q19-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 129.18809509277344,
+            "height": 74.53369140625,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q19-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        },
+        {
+          "question": 21,
+          "path": "archive/assets/images/24_율촌중_2학기_기말_중1_기출/q21-solution.svg",
+          "fileType": "SVG",
+          "assetSha256": "edd2b29305b25f2c6505586ff0742de36f47e045d7257b009e96a33557b27a79",
+          "provenance": {
+            "sourceCommit": "a818d2387ef3b5959a3fe3e8ece35dcc78b559a0",
+            "sourceSha256": "edd2b29305b25f2c6505586ff0742de36f47e045d7257b009e96a33557b27a79"
+          },
+          "solutionImageSize": "large",
+          "solutionImageAlt": "반지름 3cm인 구 세 개가 반지름 3cm, 높이 18cm인 원기둥 통에 세로로 꼭 맞게 들어 있다.",
+          "solutionImageCaption": "통 부피 162π에서 구 세 개의 부피 108π를 빼면 빈 공간은 54π cm³이다.",
+          "reminderImagePolicy": null,
+          "desktop": {
+            "loaded": true,
+            "width": 257.140625,
+            "height": 180,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q21-desktop.png"
+          },
+          "mobile": {
+            "loaded": true,
+            "width": 121.12165832519531,
+            "height": 84.785888671875,
+            "screenshot": "archive/data/r2e/middle1/visual/B24/screenshots/svg-q21-mobile.png"
+          },
+          "manualReview": {
+            "renderedCropInspected": true,
+            "geometryMatchesSolution": true,
+            "allDimensionAndPointLabelsAccountedFor": true,
+            "labelStrokeOverlap": false,
+            "textCollision": false,
+            "clippedOrMissingLabels": false,
+            "disposition": "PASS"
+          }
+        }
+      ],
+      "targetedRenderEvidencePath": "archive/data/r2e/middle1/visual/B24/TARGETED_RENDER_EVIDENCE.json",
+      "targetedRenderEvidenceSha256": "9825bc84bd2e7ad015ad56d54a77e8399a518daf92f882cd40dbe8512e9880a3",
+      "overall": "PASS"
+    }
+  ],
+  "allImageRenderCases": [
+    {
+      "exam": "B24",
+      "viewport": "desktop",
+      "questionCount": 22,
+      "sourceQuestionCount": 22,
+      "images": 7,
+      "loaded": 7,
+      "pageCount": 7,
+      "pageOverflow": [],
+      "horizontalOverflow": false,
+      "pageErrors": [],
+      "badResponses": []
+    },
+    {
+      "exam": "B24",
+      "viewport": "mobile",
+      "questionCount": 22,
+      "sourceQuestionCount": 22,
+      "images": 7,
+      "loaded": 7,
+      "pageCount": 7,
+      "pageOverflow": [],
+      "horizontalOverflow": false,
+      "pageErrors": [],
+      "badResponses": []
+    }
+  ],
+  "allAssetsManuallyPassed": true,
+  "batchReportPath": "archive/data/r2e/middle1/visual/B20_B24_B28_BATCH_REVIEW.json",
+  "visualReviewStatus": "PASS"
+}
