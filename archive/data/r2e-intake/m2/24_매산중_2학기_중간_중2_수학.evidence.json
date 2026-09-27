@@ -3,327 +3,370 @@
   "examFile": "24_매산중_2학기_중간_중2_수학.js",
   "examUid": "24_매산중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "C",
-  "stage": "CREATE",
+  "lane": "B",
+  "stage": "R1",
+  "totalQuestions": 24,
   "sourcePath": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
   "sourceBlobSha": "01021044aa0f60c16e1cf9072c83d069700a313c",
-  "totalQuestions": 24,
   "sourceIdentity": {
     "coverage": "24/24",
     "protectedFieldParity": "PASS 24/24",
-    "solutionParity": "KEEP 24/24",
-    "sourceImageCoverage": "23/23 from exact source-locked prior CREATE artifact",
-    "priorArtifactReuse": "READY_FOR_REVIEW__24_매산중_2학기_중간_중2_수학.js.zip",
-    "trueHold": 0
-  },
-  "solutionSummary": {
-    "KEEP": 24,
-    "REPAIR": 0,
+    "answerParity": "PASS 24/24",
+    "sourceImageCoverage": "23/23",
+    "sourceImagesVisualReview": "PASS 23/23",
     "TRUE_HOLD": 0
   },
-  "svgSummary": {
-    "ADD": 8,
-    "REPAIR": 0,
+  "solution": {
+    "KEEP": 23,
+    "REPAIR": 1,
     "HOLD": 0,
-    "questions": [
-      1,
-      6,
-      7,
-      11,
-      13,
-      18,
-      19,
-      24
-    ],
-    "renderReview": "NOT_RUN_BY_POLICY"
+    "repair": {
+      "q": 10,
+      "reason": "literal \\\\n 4개를 runtime newline escape로 정상화; 수학/정답 불변."
+    }
   },
-  "jsMetaRepairs": {
-    "questions": [
-      23
-    ],
-    "changes": [
-      "M2-05-TRIANGLE_PROPERTIES → M2-05-QUADRILATERAL_PROPERTIES"
-    ]
+  "smallBlackboard": {
+    "coverage": "24/24",
+    "KEEP": 23,
+    "REPAIR": 1,
+    "HOLD": 0
   },
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 22,
+  "svg": {
+    "KEEP": 7,
+    "REPAIR": 1,
+    "HOLD": 0,
+    "repair": {
+      "q": 19,
+      "path": "archive/assets/images/24_매산중_2학기_중간_중2_수학/q19-solution.svg",
+      "reason": "원문/발문에 없는 G 라벨 제거."
+    },
+    "structural": "8/8 PASS",
+    "render": "NOT_RUN_BY_POLICY"
+  },
+  "meta": {
+    "EXISTING_REUSE": 23,
     "PROPOSED_NEW_L3": 0,
     "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 1,
+    "RPM_PRIMARY_MIGRATION_GAP": 0,
     "TRUE_HOLD": 0
   },
-  "crossConceptCandidates": [
+  "metaChanges": [
     {
-      "questionNo": 22,
-      "candidates": [
-        "중심각·부채꼴·원활꼴 넓이"
-      ],
-      "reason": "독립 2번 소문항을 새 L3/L4로 과분화하지 않고 보조축 후보로 분리"
-    }
-  ],
-  "perQuestion": [
-    {
-      "questionNo": 1,
-      "rpmPrimary": "M2-RPM-061",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
-      "difficultyBucket": 1,
-      "primaryMethod": "꼭짓각 이등분선→두 삼각형 합동",
-      "decisiveStep": "합동으로 밑변 이등분·수직 확정"
+      "q": 3,
+      "before": "RPM_PRIMARY_MIGRATION_GAP",
+      "after": "EXISTING_REUSE",
+      "reason": "GLOBAL ACTIVE exact reuse + 2015 binding 확인."
     },
     {
-      "questionNo": 2,
-      "rpmPrimary": "M2-RPM-060",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "difficultyBucket": 1,
-      "primaryMethod": "외각→이등변삼각형 밑각",
-      "decisiveStep": "외각 이웃각 후 두 밑각 동일"
-    },
-    {
-      "questionNo": 3,
-      "rpmPrimary": null,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-      "difficultyBucket": 2,
-      "primaryMethod": "직각삼각형 RHA 합동",
-      "decisiveStep": "빗변과 한 예각으로 합동 확정",
-      "nearbyRpm": "M2-RPM-179 (2022)",
-      "reason": "2015 RPM exact path 부재; 2022 RPM과 GLOBAL ACTIVE pair가 있어 duplicate 신규 key 대신 migration gap."
-    },
-    {
-      "questionNo": 4,
-      "rpmPrimary": "M2-RPM-065",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-      "difficultyBucket": 2,
-      "primaryMethod": "외심 등거리",
-      "decisiveStep": "OA=OB=OC로 각 계산"
-    },
-    {
-      "questionNo": 5,
-      "rpmPrimary": "M2-RPM-068",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
-      "difficultyBucket": 2,
-      "primaryMethod": "외심 반지름·현 성질",
-      "decisiveStep": "보기별 외심 성질 대조"
-    },
-    {
-      "questionNo": 6,
-      "rpmPrimary": "M2-RPM-066",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 1,
-      "primaryMethod": "내심 각 이등분",
-      "decisiveStep": "∠ICB 확정 후 내각합"
-    },
-    {
-      "questionNo": 7,
-      "rpmPrimary": "M2-RPM-067",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 2,
-      "primaryMethod": "내심에서 변까지 같은 거리",
-      "decisiveStep": "거리 동일성과 내각합"
-    },
-    {
-      "questionNo": 8,
-      "rpmPrimary": "M2-RPM-069",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-      "difficultyBucket": 3,
-      "primaryMethod": "내심·외심 결합",
-      "decisiveStep": "BI·BO의 BC 기준 각 차"
-    },
-    {
-      "questionNo": 9,
-      "rpmPrimary": "M2-RPM-070",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 1,
-      "primaryMethod": "평행사변형 대변·이웃각",
-      "decisiveStep": "대변 길이와 이웃각 180°"
-    },
-    {
-      "questionNo": 10,
-      "rpmPrimary": "M2-RPM-072",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-      "difficultyBucket": 3,
-      "primaryMethod": "평행사변형 판정",
-      "decisiveStep": "보기별 충분조건 판정"
-    },
-    {
-      "questionNo": 11,
-      "rpmPrimary": "M2-RPM-077",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 2,
-      "primaryMethod": "마름모 대각선 성질",
-      "decisiveStep": "이등분·수직·각 이등분"
-    },
-    {
-      "questionNo": 12,
-      "rpmPrimary": "M2-RPM-076",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 2,
-      "primaryMethod": "특수 사각형 충분조건",
-      "decisiveStep": "직사각형·마름모 조건 구별"
-    },
-    {
-      "questionNo": 13,
-      "rpmPrimary": "M2-RPM-077",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 3,
-      "primaryMethod": "정사각형 대각선 각·합동",
-      "decisiveStep": "45°와 합동으로 목표각"
-    },
-    {
-      "questionNo": 14,
-      "rpmPrimary": "M2-RPM-078",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 3,
-      "primaryMethod": "등변사다리꼴 성질",
-      "decisiveStep": "대각선·등변 관계 활용"
-    },
-    {
-      "questionNo": 15,
-      "rpmPrimary": null,
-      "disposition": "PROPOSED_NEW_L4",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_ALWAYS_SIMILAR_FIGURES_CLASSIFICATION",
-      "difficultyBucket": 1,
-      "primaryMethod": "항상 닮는 도형 판별",
-      "decisiveStep": "형상 자유도 유무로 선별",
-      "reason": "2015 RPM M2-06에 항상 닮은 도형 판별 exact L4가 없어 existing PT_SIMILAR_FIGURES 아래 신규 L4 proposal."
-    },
-    {
-      "questionNo": 16,
-      "rpmPrimary": "M2-RPM-082",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "difficultyBucket": 1,
-      "primaryMethod": "대응변 길이비",
-      "decisiveStep": "대응변 비=닮음비"
-    },
-    {
-      "questionNo": 17,
-      "rpmPrimary": "M2-RPM-083",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "difficultyBucket": 2,
-      "primaryMethod": "대응변·대응각",
-      "decisiveStep": "대응관계 정렬 후 계산"
-    },
-    {
-      "questionNo": 18,
-      "rpmPrimary": "M2-RPM-094",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-      "difficultyBucket": 2,
-      "primaryMethod": "평행선이 만드는 닮음",
-      "decisiveStep": "닮음비를 선분비에 연결"
-    },
-    {
-      "questionNo": 19,
-      "rpmPrimary": "M2-RPM-087",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-      "difficultyBucket": 3,
-      "primaryMethod": "닮은 직각삼각형 연쇄",
-      "decisiveStep": "두 닮음 관계로 길이 결정"
-    },
-    {
-      "questionNo": 20,
-      "rpmPrimary": "M2-RPM-087",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-      "difficultyBucket": 3,
-      "primaryMethod": "60° 구조 삼각형 닮음",
-      "decisiveStep": "닮음 후 대응변 비"
-    },
-    {
-      "questionNo": 21,
-      "rpmPrimary": "M2-RPM-060",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "difficultyBucket": 3,
-      "primaryMethod": "접기·등변→이등변삼각형",
-      "decisiveStep": "등변에서 밑각 관계"
-    },
-    {
-      "questionNo": 22,
-      "rpmPrimary": "M2-RPM-066",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 3,
-      "primaryMethod": "복합 서답형 primary=내심",
-      "decisiveStep": "1번 내심 primary; 2번 원 넓이 보조축",
-      "crossConceptCandidates": [
-        "중심각·부채꼴·원활꼴 넓이"
+      "q": 21,
+      "crossConceptAdd": [
+        "CC_REFLECTION"
       ]
     },
     {
-      "questionNo": 23,
-      "rpmPrimary": "M2-RPM-077",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 2,
-      "primaryMethod": "마름모 대각선·넓이",
-      "decisiveStep": "이등분·넓이·같은 높이 넓이비"
+      "q": 22,
+      "crossConceptAdd": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "proposal": "CC_CIRCLE_SECTOR_AREA"
     },
     {
-      "questionNo": 24,
-      "rpmPrimary": "M2-RPM-087",
+      "q": 23,
+      "crossConceptAdd": [
+        "CC_TRIANGLE_AREA"
+      ]
+    }
+  ],
+  "difficulty": {
+    "coverage": "24/24",
+    "buckets": {
+      "1": 5,
+      "2": 10,
+      "3": 7,
+      "4": 2,
+      "5": 0
+    },
+    "repairs": [
+      {
+        "q": 4,
+        "from": 2,
+        "to": 3
+      },
+      {
+        "q": 10,
+        "from": 3,
+        "to": 4
+      },
+      {
+        "q": 15,
+        "from": 1,
+        "to": 2
+      },
+      {
+        "q": 20,
+        "from": 3,
+        "to": 4
+      }
+    ]
+  },
+  "perQuestion": [
+    {
+      "q": 1,
+      "rpm": "M2-RPM-061",
+      "pt": "PT_ISOSCELES_TRIANGLE",
+      "tpl": "TPL_ISOSCELES_VERTEX_BISECTOR",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "difficultyBucket": 1
+    },
+    {
+      "q": 2,
+      "rpm": "M2-RPM-060",
+      "pt": "PT_ISOSCELES_TRIANGLE",
+      "tpl": "TPL_ISOSCELES_BASE_ANGLES",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "q": 3,
+      "rpm": null,
+      "pt": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "tpl": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "disposition": "EXISTING_REUSE",
       "difficultyBucket": 2,
-      "primaryMethod": "빗변 높이로 생긴 닮음",
-      "decisiveStep": "닮음으로 선분 길이 결정"
+      "note": "2015 RPM exact row 없음; GLOBAL ACTIVE PT/TPL + 2015 M2-05 exact binding ACTIVE라 existing reuse."
+    },
+    {
+      "q": 4,
+      "rpm": "M2-RPM-065",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_CIRCUMCENTER",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "q": 5,
+      "rpm": "M2-RPM-068",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 6,
+      "rpm": "M2-RPM-066",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_INCENTER",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "q": 7,
+      "rpm": "M2-RPM-067",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_INCENTER",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 8,
+      "rpm": "M2-RPM-069",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_CENTERS_COMBINED",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "q": 9,
+      "rpm": "M2-RPM-070",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_QUADRILATERAL_PROPERTIES",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "q": 10,
+      "rpm": "M2-RPM-072",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_QUADRILATERAL_CRITERIA",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "q": 11,
+      "rpm": "M2-RPM-077",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_SPECIAL_QUADRILATERALS",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 12,
+      "rpm": "M2-RPM-076",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_SPECIAL_QUADRILATERALS",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 13,
+      "rpm": "M2-RPM-077",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_SPECIAL_QUADRILATERALS",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "q": 14,
+      "rpm": "M2-RPM-078",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_SPECIAL_QUADRILATERALS",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "q": 15,
+      "rpm": null,
+      "pt": "PT_SIMILAR_FIGURES",
+      "tpl": "TPL_ALWAYS_SIMILAR_FIGURES_CLASSIFICATION",
+      "disposition": "PROPOSED_NEW_L4",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 16,
+      "rpm": "M2-RPM-082",
+      "pt": "PT_SIMILAR_FIGURES",
+      "tpl": "TPL_SIMILAR_FIGURES_RATIO",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 1
+    },
+    {
+      "q": 17,
+      "rpm": "M2-RPM-083",
+      "pt": "PT_SIMILAR_FIGURES",
+      "tpl": "TPL_SIMILAR_FIGURES_RATIO",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 18,
+      "rpm": "M2-RPM-094",
+      "pt": "PT_PARALLEL_SEGMENT_RATIO",
+      "tpl": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    },
+    {
+      "q": 19,
+      "rpm": "M2-RPM-087",
+      "pt": "PT_TRIANGLE_SIMILARITY",
+      "tpl": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3
+    },
+    {
+      "q": 20,
+      "rpm": "M2-RPM-087",
+      "pt": "PT_TRIANGLE_SIMILARITY",
+      "tpl": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 4
+    },
+    {
+      "q": 21,
+      "rpm": "M2-RPM-060",
+      "pt": "PT_ISOSCELES_TRIANGLE",
+      "tpl": "TPL_ISOSCELES_BASE_ANGLES",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_REFLECTION"
+      ]
+    },
+    {
+      "q": 22,
+      "rpm": "M2-RPM-066",
+      "pt": "PT_TRIANGLE_CENTERS",
+      "tpl": "TPL_TRIANGLE_INCENTER",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "proposedCrossConcept": {
+        "proposalKey": "CC_CIRCLE_SECTOR_AREA",
+        "labelKo": "중심각·부채꼴·원활꼴 넓이"
+      }
+    },
+    {
+      "q": 23,
+      "rpm": "M2-RPM-077",
+      "pt": "PT_QUADRILATERAL_PROPERTIES",
+      "tpl": "TPL_SPECIAL_QUADRILATERALS",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ]
+    },
+    {
+      "q": 24,
+      "rpm": "M2-RPM-087",
+      "pt": "PT_TRIANGLE_SIMILARITY",
+      "tpl": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "disposition": "EXISTING_REUSE",
+      "difficultyBucket": 2
+    }
+  ],
+  "unresolvedItems": [
+    {
+      "q": 15,
+      "disposition": "PROPOSED_NEW_L4",
+      "proposalKey": "TPL_ALWAYS_SIMILAR_FIGURES_CLASSIFICATION",
+      "reason": "항상 닮은 도형 판별 decisive step과 exact한 ACTIVE L4 없음."
+    },
+    {
+      "q": 22,
+      "disposition": "PROPOSED_NEW_CROSS_CONCEPT",
+      "proposalKey": "CC_CIRCLE_SECTOR_AREA",
+      "reason": "원활꼴 넓이 경로에 exact GLOBAL ACTIVE CrossConcept 없음."
     }
   ],
   "integrity": {
     "javascriptParse": "PASS",
     "questionCardinality": "24/24",
+    "idSequence": "PASS",
     "protectedFieldParity": "PASS 24/24",
-    "solutionParity": "PASS 24/24",
-    "solutionBlankCount": 0,
-    "svgXml": "8/8 structural PASS",
-    "renderReview": "NOT_RUN_BY_POLICY"
+    "answerParity": "PASS 24/24",
+    "solutionBlank": 0,
+    "runtimeLiteralBackslashN": 0,
+    "runtimeControlChars": 0,
+    "svgStructural": "8/8 PASS"
   },
-  "authorityRefs": {
-    "inputBranch": "work/intake/m2",
-    "inputCommit": "75dbbd65f819b13e484ff3d4bc981fc58a9ce4f2",
-    "mainReadSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
-    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636"
+  "finalFiles": [
+    {
+      "path": "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+      "gitBlobSha": "04eeca92976f25bd6b1b60aac6fe968816e15187"
+    },
+    {
+      "path": "archive/assets/images/24_매산중_2학기_중간_중2_수학/q19-solution.svg",
+      "gitBlobSha": "a372018e26a1056c0ace3b143095e60179844919"
+    }
+  ],
+  "authorityOrder": [
+    "source+final solution",
+    "primaryMethod",
+    "decisiveStep",
+    "RPM Primary",
+    "middle2 crosswalk",
+    "GLOBAL ACTIVE canonical",
+    "exact binding"
+  ],
+  "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "58f64eb83fefcec8dfd622025ed8e7af47f46afe",
+    "mainReadSha": "d2899c0f36d3bc5603f3dc9039b787778cb2867a"
   },
-  "createdAt": "2026-09-27T05:10:35+09:00"
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T10:41:10+09:00"
 }
