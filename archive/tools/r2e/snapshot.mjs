@@ -6,10 +6,28 @@ import { checkGuard } from './guard.mjs';
 import { parseQuestionBank } from '../meta-foundation/reviewed-apply-core.mjs';
 import { META_RESOLUTION_SCHEMA, validateR2EIntakeMetaReceipt } from '../meta-foundation/rpm-active-resolver.mjs';
 
-const required = ['examUid', 'examFile', 'grade', 'lane', 'stage', 'sourceBlobSha', 'inputCommit', 'totalQuestions', 'changedQuestions', 'changedSvgFiles', 'metaDispositionSummary', 'metaResolutionEvidenceRef', 'metaResolverContractVersion', 'unresolvedItems', 'authorityRefs', 'nextState', 'updatedAt'];
-const fullExamPath = value => value.startsWith('archive/exams/') ? value : `archive/exams/${value.replace(/^exams\//, '')}`;
+const required = ['examUid', 'examFile', 'grade', 'lane', 'stage', 'sourceBlobSha', 'totalQuestions', 'changedQuestions', 'changedSvgFiles', 'metaDispositionSummary', 'metaResolutionEvidenceRef', 'metaResolverContractVersion', 'unresolvedItems', 'nextState', 'updatedAt'];
+const recoverableSchemaFields = new Set(['inputCommit', 'authorityRefs', 'metaResolutionEvidenceRef', 'metaResolverContractVersion']);
+const metaRecoveryFields = new Set(['metaResolutionEvidenceRef', 'metaResolverContractVersion']);
+const fullExamPath = value => {
+  const normalized = String(value || '').replaceAll('\\', '/').replace(/^\.\//, '');
+  if (normalized.startsWith('archive/exams/')) return normalized;
+  if (normalized.startsWith('exams/')) return `archive/${normalized}`;
+  if (normalized.startsWith('original/middle/')) return `archive/exams/${normalized}`;
+  return `archive/exams/${normalized}`;
+};
+const resolveExamPath = (repo, commit, value, grade) => {
+  const normalized = String(value || '').replaceAll('\\', '/').replace(/^\.\//, '');
+  if (!normalized.includes('/') && normalized.endsWith('.js')) {
+    const matches = files(repo, commit, `archive/exams/original/middle/${grade}/`)
+      .filter(filePath => filePath.split('/').at(-1) === normalized);
+    if (matches.length === 1) return matches[0];
+    throw new Error(matches.length ? 'EXAM_FILE_PATH_AMBIGUOUS' : 'EXAM_FILE_NOT_FOUND');
+  }
+  return relative(fullExamPath(normalized));
+};
 export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {}) {
-  const heads = {}, errors = [], candidates = [], checkpoints = [];
+  const heads = {}, errors = [], candidates = [], metaRecoveryCandidates = [], checkpoints = [];
   // Capture both authoritative HEADs before looking inside either tree.
   for (const [grade, branch] of Object.entries(INTAKES)) {
     try { heads[grade] = { branch, sha: fetch ? fetchRef(repo, branch) : git(repo, ['rev-parse', `refs/remotes/origin/${branch}`]).trim() }; }
@@ -26,21 +44,46 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
   }
   for (const [grade, head] of Object.entries(heads)) {
     const seen = new Set();
-    for (const rel of files(repo, head.sha, `archive/data/r2e-intake/${grade}/`).filter(p => p.endsWith('.json'))) {
+    for (const rel of files(repo, head.sha, `archive/data/r2e-intake/${grade}/`).filter(p => p.endsWith('.json') && !p.endsWith('.evidence.json'))) {
       try {
         const receiptBytes = blob(repo, head.sha, rel), receipt = JSON.parse(receiptBytes);
         if (receipt.nextState !== 'READY_FOR_R2E') continue;
-        ensure(required.every(k => Object.hasOwn(receipt, k)), 'READY_REQUIRED_FIELD_MISSING');
+        const missingFields = [...required, 'inputCommit', 'authorityRefs'].filter(k => !Object.hasOwn(receipt, k));
+        const unsupportedMissingFields = missingFields.filter(field => !recoverableSchemaFields.has(field));
+        ensure(unsupportedMissingFields.length === 0, 'READY_REQUIRED_FIELD_MISSING');
+        const recoverableMetaGap = missingFields.some(field => metaRecoveryFields.has(field));
         const declaredGrade = String(receipt.grade).replace('중', 'm').toLowerCase();
         ensure(declaredGrade === grade, 'RECEIPT_GRADE_MISMATCH');
-        const examFile = relative(fullExamPath(receipt.examFile));
+        const inputCommit = git(repo, ['log', '-1', '--format=%H', head.sha, '--', rel]).trim();
+        const examFile = resolveExamPath(repo, inputCommit, receipt.examFile, grade);
         ensure(examFile.startsWith(`archive/exams/original/middle/${grade}/`) && examFile.endsWith('.js'), 'EXAM_GRADE_PATH_MISMATCH');
         ensure(!seen.has(receipt.examUid), 'DUPLICATE_READY_EXAM'); seen.add(receipt.examUid);
-        ensure(/^[0-9a-f]{40}$/.test(receipt.inputCommit), 'INPUT_COMMIT_REQUIRED');
-        git(repo, ['merge-base', '--is-ancestor', receipt.inputCommit, head.sha]);
-        const inputCommit = git(repo, ['log', '-1', '--format=%H', head.sha, '--', rel]).trim();
+        if (receipt.inputCommit) {
+          ensure(/^[0-9a-f]{40}$/.test(receipt.inputCommit), 'INPUT_COMMIT_INVALID');
+          git(repo, ['merge-base', '--is-ancestor', receipt.inputCommit, inputCommit]);
+        }
         const js = blob(repo, inputCommit, examFile);
         ensure(sha(js) === sha(blob(repo, head.sha, examFile)), 'POST_RECEIPT_INPUT_DRIFT');
+        if (recoverableMetaGap) {
+          const sourceQuestions = parseQuestionBank(js.toString('utf8'), examFile);
+          ensure(sourceQuestions.length === receipt.totalQuestions, 'META_RESOLVER_SOURCE_DENOMINATOR_MISMATCH');
+          const svgFiles = receipt.changedSvgFiles.map(value => relative(typeof value === 'string' ? value : value.path));
+          const assets = svgFiles.map(assetPath => {
+            const bytes = blob(repo, inputCommit, assetPath);
+            ensure(sha(bytes) === sha(blob(repo, head.sha, assetPath)), 'POST_RECEIPT_SVG_DRIFT');
+            return { path: assetPath, sha256: sha(bytes) };
+          });
+          const source = String(receipt.sourceBlobSha).replace(/^sha256:/, '');
+          ensure(/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(source), 'SOURCE_SHA_REQUIRED');
+          const inputSha256 = digest({ examFile, jsSha256: sha(js), assets, sourceBlobSha: receipt.sourceBlobSha, receiptSha256: sha(receiptBytes) });
+          metaRecoveryCandidates.push({
+            grade, intakeBranch: head.branch, intakeHead: head.sha, inputCommit, declaredInputCommit: receipt.inputCommit || null,
+            examFile, examUid: receipt.examUid, receiptPath: rel, receiptSha256: sha(receiptBytes),
+            jsSha256: sha(js), assets, inputSha256, totalQuestions: sourceQuestions.length,
+            missingFields,
+          });
+          continue;
+        }
         ensure(receipt.metaResolutionEvidenceRef && typeof receipt.metaResolutionEvidenceRef.path === 'string'
           && /^[a-f0-9]{64}$/.test(String(receipt.metaResolutionEvidenceRef.sha256 || '').replace(/^sha256:/, '')), 'META_RESOLVER_EVIDENCE_REF_REQUIRED');
         ensure(receipt.metaResolverContractVersion === META_RESOLUTION_SCHEMA, 'META_RESOLVER_CONTRACT_VERSION_MISMATCH');
@@ -60,18 +103,20 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
           rows.set(item.disposition, (rows.get(item.disposition) || 0) + 1); return rows;
         }, new Map()));
         ensure(JSON.stringify(Object.entries(dispositionCounts).sort()) === JSON.stringify(Object.entries(receipt.metaDispositionSummary || {}).sort()), 'META_DISPOSITION_SUMMARY_MISMATCH');
-        ensure(Number.isSafeInteger(receipt.totalQuestions) && receipt.totalQuestions > 0 && Array.isArray(receipt.unresolvedItems) && Array.isArray(receipt.authorityRefs), 'RECEIPT_DENOMINATOR_OR_EVIDENCE_INVALID');
+        ensure(Number.isSafeInteger(receipt.totalQuestions) && receipt.totalQuestions > 0 && Array.isArray(receipt.unresolvedItems)
+          && (receipt.authorityRefs === undefined || Array.isArray(receipt.authorityRefs)), 'RECEIPT_DENOMINATOR_OR_EVIDENCE_INVALID');
         const svgFiles = receipt.changedSvgFiles.map(value => relative(typeof value === 'string' ? value : value.path));
         const assets = svgFiles.map(rel => { const bytes = blob(repo, inputCommit, rel); ensure(sha(bytes) === sha(blob(repo, head.sha, rel)), 'POST_RECEIPT_SVG_DRIFT'); return { path: rel, sha256: sha(bytes) }; });
         const source = String(receipt.sourceBlobSha).replace(/^sha256:/, ''); ensure(/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(source), 'SOURCE_SHA_REQUIRED');
         const inputSha256 = digest({ examFile, jsSha256: sha(js), assets, metaEvidenceSha256: metaEvidenceSha, sourceBlobSha: receipt.sourceBlobSha, receiptSha256: sha(receiptBytes) });
         const prior = checkpoints.find(c => c.grade === grade && c.ledger.examUid === receipt.examUid && c.ledger.inputCommit === inputCommit && c.ledger.finalStatus === 'R2E_MAIN_FINAL');
-        if (!prior) candidates.push({ grade, intakeBranch: head.branch, intakeHead: head.sha, inputCommit, declaredInputCommit: receipt.inputCommit, examFile, examUid: receipt.examUid, receiptPath: rel, receiptSha256: sha(receiptBytes), jsSha256: sha(js), assets, inputSha256, receipt });
+        if (!prior) candidates.push({ grade, intakeBranch: head.branch, intakeHead: head.sha, inputCommit, declaredInputCommit: receipt.inputCommit || null, examFile, examUid: receipt.examUid, receiptPath: rel, receiptSha256: sha(receiptBytes), jsSha256: sha(js), assets, inputSha256, receipt });
       } catch (error) { errors.push({ grade, path: rel, code: 'INVALID_READY_RECEIPT', reason: error.message }); }
     }
   }
   const resume = checkpoints.filter(c => !['R2E_MAIN_FINAL', 'HUMAN_REQUIRED'].includes(c.ledger.finalStatus) && (!c.ledger.retryAfter || Date.parse(c.ledger.retryAfter) <= Date.now()));
-  return { schemaVersion: 'R2E_SNAPSHOT_v1', status: resume.length ? 'RESUME' : candidates.length ? 'READY' : errors.length ? 'WAIT_RESOURCE' : 'NO_WORK', createdAt: new Date().toISOString(), heads, stateHead, resume, candidates, errors };
+  const status = resume.length ? 'RESUME' : metaRecoveryCandidates.length ? 'META_RECOVERY_REQUIRED' : candidates.length ? 'READY' : errors.length ? 'WAIT_RESOURCE' : 'NO_WORK';
+  return { schemaVersion: 'R2E_SNAPSHOT_v1', status, createdAt: new Date().toISOString(), heads, stateHead, resume, candidates, metaRecoveryCandidates, errors };
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2), opt = k => { const i = args.indexOf(`--${k}`); return i < 0 ? null : args[i + 1]; };
