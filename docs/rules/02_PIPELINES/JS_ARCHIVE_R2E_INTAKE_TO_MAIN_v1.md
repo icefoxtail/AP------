@@ -199,6 +199,91 @@ V1 benefit / requirement triage
 
 CREATE에서 이미 확인 가능한 visual defect를 "R1에서 고칠 예정"으로 남기지 않는다. **known visual repair pending = 0**이 원칙이다. R1은 CREATE 결과를 독립검수하다 새로 발견한 defect만 repair한다.
 
+### CREATE_SELF_CHECK — 제작자 1차 자가검수 HARD GATE
+
+CREATE는 작은칠판 해설·visual·Meta 제작을 끝낸 뒤 곧바로 `READY_FOR_REVIEW`를 선언하지 않는다. **같은 제작자가 최종 저장본을 다시 읽는 1회 제작자 SELF-CHECK를 수행하고, 발견한 결함을 CREATE 안에서 직접 고친 뒤 재확인**한다.
+
+이 자가검수는 R1 독립검수를 대체하지 않는다. 역할은 다음처럼 분리한다.
+
+```text
+CREATE_SELF_CHECK = 제작자가 자기 final artifact의 known defect를 제거하는 QC
+R1                = CREATE evidence를 믿지 않고 별도 판단으로 독립 재검증
+```
+
+#### A. 작은칠판 solution SELF-CHECK
+
+전 문항 final solution을 실제로 다시 읽고 다음을 판정한다.
+
+- SOURCE ↔ SOLUTION identity alignment
+- answer / final solution 수학 정합
+- REPRODUCIBILITY: 학생이 그대로 따라 풀 수 있는지
+- MICRO_LAYOUT: 설명→식→연속계산→조건 적용→경우 분리→결론의 세로 판서 흐름
+- 결정적 중간 계산·등식·조건·경우 누락 0
+- 교육과정 밖 용어/방법 0
+- 학생용 언어 / 불필요한 개발자·검수 표현 0
+- ㄱ·ㄴ·ㄷ, (1)(2)(3), 경우 1/2 등 구조 분리
+- 최종 결론 분리
+- MathJax block 안 가짜 줄바꿈, 과다 빈 줄, 긴 식/목록 가독성 defect 0
+- solution에 검산/운영 메모/작업 흔적 0
+- solution ↔ visual 결정 단계 정합
+
+FAIL을 발견하면 해당 문항을 즉시 수정하고 final bytes에서 다시 확인한다.
+
+#### B. SVG_RULE_COMPLIANCE_PASS — 결과보다 먼저 생성 규칙 준수 검증
+
+SVG/graph/geometry/`solutionImage`가 있는 문항은 **그림이 맞아 보이는지 보기 전에, 생성 규칙을 실제로 지켰는지**부터 확인한다. 다음 evidence가 모두 일치해야 `SVG_RULE_COMPLIANCE_PASS`다.
+
+1. visual 작업 전에 `.codex/skills/apmath-visual-upgrade/SKILL.md` router를 사용했음
+2. `node tools/skills/verify-skills.mjs` PASS
+3. 작업에 적용한 RULES_INDEX / MANIFEST rule path·declared version·bytes·SHA 기록 존재
+4. applicable VISUAL / geometry domain / UNIT_OVERLAY 라우팅 누락 0
+5. **V1 visualRequirement / student-understanding benefit가 artifact 생성 전에 동결됨**
+6. **EXPECTED FACT가 SVG/기존 builder metadata를 보기 전에 source + verified final solution + 독립 수학검산으로 동결됨**
+7. deterministic builder / Python / numeric model 등 applicable build contract의 실제 실행 evidence 존재
+8. 신형 geometry visual engine 사용 시 candidate-only / production READ_ONLY / publication unauthorized 경계를 지켰음
+9. 생성 이후 임의 눈대중 좌표 수정, evidence 밖 수동 geometry 변경 0
+10. **V2 OBSERVED FACT를 최종 actual SVG geometry에서 artifact-only로 추출함**
+11. **V3 EXPECTED ↔ OBSERVED parity PASS**
+12. solution ↔ visual decisive-step / displayed fact parity PASS
+13. 해당 style/static/publication/XML/reference gate PASS 또는 명시적 NOT_TESTED/HANDOFF
+14. 검증 evidence의 `svgSha256`가 **실제 최종 저장 SVG bytes SHA와 동일**
+15. render 미실행 시 `NOT_RUN_CODEX_HANDOFF`; 미실행인데 render PASS 선언 0
+
+아래 중 하나라도 성립하면 SVG가 화면상 그럴듯하거나 수학적으로 우연히 맞더라도 `SVG_RULE_COMPLIANCE_PASS`를 주지 않는다.
+
+- rule preflight evidence 없음
+- V1/EXPECTED FACT를 artifact 생성 뒤에 역작성
+- builder self-check만 있고 V2 artifact-only evidence 없음
+- V3 parity 없음
+- 검증 뒤 SVG를 다시 수정했지만 새 SHA/evidence를 만들지 않음
+- candidate-only engine 결과를 독립 closure 없이 production final로 취급
+- 실제 render를 안 했는데 render PASS 기록
+
+규칙 위반이 복구 가능하면 CREATE가 current visual route로 **REBUILD/REPAIR → 새 evidence → 새 final SHA → compliance 재검사**한다. 정확하게 복구할 수 없으면 억지 PASS하지 않고 visual HOLD/UNSUPPORTED evidence를 남긴다.
+
+#### C. Meta SELF-CHECK
+
+- RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE owner → exact binding 재확인
+- safe existing reuse를 migration gap으로 남긴 항목 0
+- deterministic materialization 미처리 0
+- 결정 가능한 CrossConcept/difficulty/parent mismatch 0
+- `resolvablePending = 0`
+
+#### D. CREATE_SELF_CHECK 종료 조건
+
+```text
+CREATE_SELF_CHECK_PASS = true
+solutionSelfCheckStatus = PASS
+svgRuleComplianceStatus = PASS | NOT_APPLICABLE
+knownSolutionRepairPending = 0
+knownVisualRepairPending = 0
+requiredVisualMissingCount = 0
+knownMetaRepairPending = 0
+resolvablePending = 0
+```
+
+자가검수에서 defect를 찾았다는 사실 자체는 실패가 아니다. **찾고도 안 고친 채 R1으로 넘기는 것이 CREATE 실패**다. 수정 후 영향을 받은 self-check axis를 다시 실행하고 final artifact SHA에 evidence를 재결속한다.
+
 ### CREATE RESOLVABLE-FIRST HARD RULE
 
 - existing ACTIVE PT/TPL + exact binding이 있으면 즉시 final Meta projection에 반영한다.
@@ -218,6 +303,11 @@ visualRulePreflightStatus = PASS                    # visual-capable item이 있
 knownVisualRepairPending = 0
 requiredVisualMissingCount = 0
 visualMathParityPending = 0                         # 지원 가능한 범위
+CREATE_SELF_CHECK_PASS = true
+solutionSelfCheckStatus = PASS
+svgRuleComplianceStatus = PASS | NOT_APPLICABLE
+knownSolutionRepairPending = 0
+knownMetaRepairPending = 0
 renderStatus = PASS | NOT_RUN_CODEX_HANDOFF         # 현재 실행 정책에 따라
 ```
 
@@ -248,6 +338,7 @@ CREATE 결과를 승인하는 단계가 아니라 **잘못 만든 Meta를 실제
 ### R1 RESOLVE-EVERYTHING-POSSIBLE HARD RULE
 
 - CREATE의 Meta를 fresh decision으로 재검증한다.
+- CREATE의 `CREATE_SELF_CHECK_PASS`와 `SVG_RULE_COMPLIANCE_PASS`는 제작자 자기보고이므로 R1 authority로 자동 신뢰하지 않는다. evidence path/SHA와 final artifact SHA를 확인하고 독립 판단에서 false PASS가 있으면 CREATE defect로 기록·수정한다.
 - exact existing path가 있으면 즉시 REPAIR/REUSE한다.
 - PT/TPL이 확정되고 binding만 빠졌으면 exact materialization patch를 확정하고 final projection을 수정한다.
 - crosswalk/L2/binding mismatch가 deterministic하게 복구 가능하면 R1에서 복구한다.
@@ -339,6 +430,10 @@ changedSvgFiles[]
 visualDispositionSummary
 visualEvidenceRef
 visualRenderStatus
+createSelfCheckStatus
+solutionSelfCheckStatus
+svgRuleComplianceStatus
+createSelfCheckEvidenceRef
 metaDispositionSummary
 metaResolutionEvidenceRef: { path, sha256 }
 metaResolverContractVersion = JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1
