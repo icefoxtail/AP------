@@ -44,12 +44,15 @@ function itemOrdinal(row) {
   const value = row && (row.sourceOrdinal ?? row.questionNo ?? row.ordinal ?? row.q ?? row.question ?? row.id);
   const n = Number(value);
   if (Number.isSafeInteger(n) && n > 0) return n;
-  const match = String(value ?? '').match(/(?:^|\b)q\s*(\d+)\b/i);
+  const scopeText = row && typeof row === 'object'
+    ? [row.scope, row.reasonCode, row.reason, row.holdReason, row.description].map(clean).filter(Boolean).join(' ')
+    : String(row ?? '');
+  const match = `${value ?? ''} ${scopeText}`.match(/(?:^|\b)q\s*(\d+)\b/i);
   return match ? Number(match[1]) : null;
 }
 function expandQuestionScope(row) {
   if (!row || typeof row !== 'object' || itemOrdinal(row)) return [row];
-  const values = [row.questions, row.questionNumbers, row.questionOrdinals].find(Array.isArray);
+  const values = [row.questions, row.questionNumbers, row.questionOrdinals, row.supportingQuestions].find(Array.isArray);
   if (!values) return [row];
   return values.map(value => ({
     ...row,
@@ -58,6 +61,7 @@ function expandQuestionScope(row) {
     questions: undefined,
     questionNumbers: undefined,
     questionOrdinals: undefined,
+    supportingQuestions: undefined,
   }));
 }
 function rowText(row) {
@@ -213,7 +217,22 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map() 
     findings.set(key, body);
   };
   const add = (row, sourceName, sourcePath) => {
-    const rowObject = row && typeof row === 'object' ? row : { reason: String(row) };
+    const sourceField = String(sourceName).split('.').at(-1);
+    const primitiveDisposition = {
+      rpmMigrationGaps: 'RPM_PRIMARY_MIGRATION_GAP',
+      proposedNewL3: 'PROPOSED_NEW_L3',
+      proposedNewL4: 'PROPOSED_NEW_L4',
+      proposedNewCrossConcept: 'PROPOSED_NEW_CROSS_CONCEPT',
+      crossConceptCandidates: 'CROSS_CONCEPT_CANDIDATE',
+      sourceHardHolds: 'SOURCE_HARD_HOLD',
+      visualHolds: 'SVG_HOLD',
+      trueHold: 'TRUE_HOLD',
+    }[sourceField];
+    const primitiveQuestion = (typeof row === 'number' && Number.isSafeInteger(row) && row > 0)
+      || (typeof row === 'string' && /^[1-9]\d*$/.test(row.trim()));
+    const rowObject = primitiveQuestion && primitiveDisposition
+      ? { sourceOrdinal: Number(row), questionNo: Number(row), disposition: primitiveDisposition }
+      : row && typeof row === 'object' ? row : { reason: String(row) };
     for (const scopedRow of expandQuestionScope(rowObject)) addOne(scopedRow, sourceName, sourcePath);
   };
 
