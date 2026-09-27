@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "M1_R2E_SOURCE_CORRECTION_LEDGER_v1",
+  "runId": "m1-b01-b31-r2e-20260927",
+  "updatedAt": "2026-09-27T16:54:51.5520935Z",
+  "scope": "D-drive source adjudication and user-authorized minimum source corrections; local candidate only",
+  "corrections": [
+    {
+      "B": 7,
+      "question": 23,
+      "questionUid": "qid_v1_6305db876ddf39640d44ae07abbf7aa2ac6c519cb285c3e66c839b03e33901fe",
+      "examPath": "archive/exams/original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+      "sourcePdf": "D:\\기출\\(3)2중간\\중1\\2023_연향중1_수학_2중간.pdf",
+      "sourcePdfSha256": "53028052A5D58AE9B389074F0742CB2E44CA0085DB6681CB07BC3618E19E9598",
+      "sourcePage": 4,
+      "renderedPageSha256": "78BE954649BFE562BA230C038FF95EABA71C6D8A43F9DF267C8E98E852636CF7",
+      "sourceText": "Triangle JKL has JK=6 cm, angle K=45 degrees, and LJ=3 cm.",
+      "finding": "With these source values, the sine rule gives sin(L)=6 sin(45)/3=sqrt(2), so triangle JKL does not exist. This invalidates the source example.",
+      "minimumCorrection": "Changed LJ from 3 cm to 5 cm. Then sin(L)=3sqrt(2)/5, giving two valid noncongruent triangles; option (b) remains the unique always-noncongruent case.",
+      "localCommit": "ad6b2e8ba",
+      "status": "SOURCE_REPAIRED_LOCAL_R2E_FINAL_PENDING"
+    },
+    {
+      "B": 14,
+      "question": 22,
+      "questionUid": "qid_v1_845fd38ec6376ee46bf813d32426ce4f31335134cd9a2d7589a687e2cb78e682",
+      "examPath": "archive/exams/original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+      "sourcePdf": "D:\\기출\\(3)2중간\\중1\\2025_동산중1_수학_2중간.pdf",
+      "sourcePdfSha256": "274D177BA3EB77BF2BDD7B9F7D537D679C0E150E44C46427C48113988B70031C",
+      "sourcePage": 4,
+      "renderedPageSha256": "BB78EBD8E20ED6C9732CA76F6B986D0B2AA373CD97D9A763CE4D3043CB9BCAE7",
+      "sourceText": "45*a is the square of a natural number b; find the second-smallest a and b.",
+      "finding": "The original and archived stem do not restrict a to natural numbers, so the requested second-smallest pair is not well-defined under the stated domain.",
+      "minimumCorrection": "Added the parenthetical condition that a is also a natural number; preserved the keyed pair a=20, b=30 and existing derivation.",
+      "localCommit": "510226ce6",
+      "status": "SOURCE_REPAIRED_LOCAL_R2E_FINAL_PENDING"
+    }
+  ]
+}
