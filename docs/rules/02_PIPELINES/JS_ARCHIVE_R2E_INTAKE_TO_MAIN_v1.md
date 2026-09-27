@@ -1,9 +1,20 @@
-# JS Archive R2E Intake → Main 운영계약 v1
+# JS Archive R2E Intake → Main 운영계약 v2
 
 status: ACTIVE
-effective: 2026-09-27
+effective: 2026-09-28
 scope: 중등 JS Archive CREATE/R1 intake 및 Codex R2E 최종 폐쇄
 supersedes-for-new-intake: REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge 기본 흐름
+
+contract-version: v2
+compatibility-path: 이 파일명은 기존 호출부 호환을 위해 v1 경로를 유지하지만 내용 authority는 v2다.
+
+> **CREATE/R1 ZERO-RESOLVABLE HARD RULE — 2026-09-28**
+>
+> - CREATE는 Meta 후보만 남기는 단계가 아니다. 현재 RPM/ACTIVE authority로 결정 가능한 L3/L4/CrossConcept/difficulty와 exact materialization/repair patch를 적극 반영한다.
+> - R1은 CREATE 결과를 독립 재판정하고 틀린 Meta를 직접 수정한다.
+> - READY_FOR_R2E 전에 `resolvablePending = 0`, deterministic binding/materialization gap = 0, 안전한 existing-reuse 가능 RPM_ONLY = 0이어야 한다.
+> - 해결 방법이 이미 확정된 `RPM_PRIMARY_MIGRATION_GAP`을 R2E로 넘기는 것은 R1 종료 계약 위반이다.
+> - R2E는 신규 taxonomy 필요성, 비결정적 semantic conflict, source hard hold, multi-exam semantic cluster처럼 CREATE/R1에서 실제로 닫을 수 없는 adjudication만 deep review한다.
 
 ---
 
@@ -97,9 +108,11 @@ Notion/채팅에 상태만 있고 remote commit/receipt가 없으면 READY로 �
 
 ---
 
-## 3. CREATE 계약
+## 3. CREATE 계약 — ACTIVE META BUILD
 
-CREATE는 전체 denominator를 source-first로 읽고 다음을 한 번의 판독에서 물리화한다.
+CREATE는 전체 denominator를 source-first로 읽고 **현재 authority로 결정 가능한 Meta를 실제 intake 결과에 적극 반영**한다.
+
+물리화 대상:
 
 - source identity
 - content / choices / answer
@@ -113,8 +126,9 @@ CREATE는 전체 denominator를 source-first로 읽고 다음을 한 번의 판�
 - 학년별 RPM→ACTIVE crosswalk
 - GLOBAL ACTIVE canonical owner
 - exact curriculum binding
-- L3/L4/CrossConcept candidate 또는 reuse
-- unresolved reason
+- 최종 L3/L4/CrossConcept/difficulty projection
+- exact materialization/repair patch
+- 정말 남는 unresolved reason
 
 Meta 강제 조회 순서:
 
@@ -126,34 +140,40 @@ source + final solution
 → 학년/과목 crosswalk
 → GLOBAL ACTIVE canonical owner
 → exact curriculum binding
-→ existing reuse / migration / proposal
+→ existing reuse / rebind / materialization
+→ 실제로 결정 불가할 때만 adjudication candidate
 ```
 
-세 단계는 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통으로 사용한다. Evidence를 봉인하기 전 검증 명령은 다음이다.
+공용 resolver/validator는 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와
+`archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다.
 
-```bash
-node archive/tools/meta-foundation/validate-rpm-active-receipt.mjs --resolver-evidence <resolver-evidence.json>
+### CREATE RESOLVABLE-FIRST HARD RULE
+
+- existing ACTIVE PT/TPL + exact binding이 있으면 즉시 final Meta projection에 반영한다.
+- PT/TPL은 확정되고 exact binding만 없으며 현재 authority로 binding target을 결정할 수 있으면 generic `RPM_PRIMARY_MIGRATION_GAP`으로 넘기지 않는다. **CREATE가 exact materialization patch를 만든다.**
+- crosswalk exact row / L2 mismatch가 RPM + ACTIVE authority로 deterministic 복구 가능하면 CREATE에서 patch를 만든다.
+- RPM_ONLY라도 GLOBAL ACTIVE에 의미상 안전한 reuse 경로가 확인되면 REBIND/REUSE로 닫는다.
+- CrossConcept/difficulty도 source + verified final solution으로 결정 가능하면 CREATE에서 반영한다.
+- 신규 L3/L4가 정말 필요하거나 source truth가 불확정할 때만 unresolved로 남긴다.
+
+CREATE 종료 gate:
+
+```text
+resolvablePending = 0
+deterministicMaterializationPending = 0
+safeExistingReusePending = 0
 ```
 
-R1/R2E item receipt는 동일 UID의 `resolverInput`, `resolverEvidence`, `difficultyEvidence`, relational semantic evidence, `validatorReceipt`를 보관한다. R2E 최종 receipt는 `JS_ARCHIVE_R2E_META_RECEIPT_v1`이며 `--r2e-receipt <receipt.json>` 검증을 통과해야 `R2E_FINAL`로 닫을 수 있다.
-
-정확한 기존 key가 없다는 이유만으로 TRUE_HOLD하지 않는다.
-
-CREATE 단계 허용 semantic disposition:
-
-- `EXISTING_REUSE`
-- `PROPOSED_NEW_L3`
-- `PROPOSED_NEW_L4`
-- `RPM_PRIMARY_MIGRATION_GAP`
-- `TRUE_HOLD`
-
-`TRUE_HOLD`는 source/answer/identity 자체가 실제로 판단 불가능한 경우만 사용한다.
+shared production canonical/binding writer 충돌을 피하기 위해 CREATE가 main shared Meta를 직접 갱신하지 않아도 된다.
+대신 **final Meta projection + exact materializationPatch를 intake artifact에 물리화**해야 하며,
+단순히 "migration gap"이라는 이름만 남겨 downstream에 판단을 떠넘기는 것은 금지한다.
 
 ---
 
-## 4. R1 계약
+## 4. R1 계약 — ZERO-RESOLVABLE REVIEW
 
 R1은 CREATE와 다른 실행·새 판단으로 전체 문항을 독립 대조한다.
+CREATE 결과를 승인하는 단계가 아니라 **잘못 만든 Meta를 실제로 고치고 CREATE가 놓친 deterministic repair를 끝내는 단계**다.
 
 확인:
 
@@ -163,18 +183,33 @@ R1은 CREATE와 다른 실행·새 판단으로 전체 문항을 독립 대조�
 - 필요한 SVG parity
 - L1/L2 conflict
 - L3/L4/CrossConcept/difficulty
+- RPM ↔ crosswalk ↔ GLOBAL ACTIVE owner ↔ exact binding
 - runtime 문자열·기초 무결성
 
-R1은 가능한 결정을 최대한 끝낸다.
+### R1 RESOLVE-EVERYTHING-POSSIBLE HARD RULE
 
-- exact existing path가 있으면 reuse/repair.
-- canonical은 있는데 binding만 없으면 migration gap.
-- 같은 L3 아래 반복 가능한 decisive-step skeleton이 실제로 다르면 신규 L4 proposal.
-- 기존 L3에 넣으면 중심 요구/전략이 왜곡될 때만 신규 L3 proposal.
-- 보조 개념은 CrossConcept.
-- 복합성·표현 차이·완전 동일 template 부재만으로 HOLD 금지.
+- CREATE의 Meta를 fresh decision으로 재검증한다.
+- exact existing path가 있으면 즉시 REPAIR/REUSE한다.
+- PT/TPL이 확정되고 binding만 빠졌으면 exact materialization patch를 확정하고 final projection을 수정한다.
+- crosswalk/L2/binding mismatch가 deterministic하게 복구 가능하면 R1에서 복구한다.
+- RPM_ONLY라도 GLOBAL ACTIVE로 안전하게 재사용 가능하면 R1에서 REBIND/REUSE한다.
+- CrossConcept/difficulty/parent mismatch도 결정 가능하면 직접 수정한다.
+- CREATE가 만든 잘못된 materialization patch도 R1에서 교정한다.
+- 복합성·표현 차이·완전 동일 wording 부재만으로 unresolved 금지.
 
-R1 완료는 시험지 receipt가 `READY_FOR_R2E`이고 해당 remote commit이 실제 존재할 때만 인정한다.
+### READY_FOR_R2E ZERO-RESOLVABLE GATE
+
+`READY_FOR_R2E` 선언 전 반드시:
+
+1. `resolvablePending = 0`
+2. deterministic binding/materialization gap = 0
+3. 현재 RPM/ACTIVE authority로 안전하게 reuse 가능한 RPM_ONLY = 0
+4. CREATE↔R1 conflict 중 해결 가능한 항목 = 0
+5. 남은 항목마다 `R2_ADJUDICATION_REQUIRED` 사유 + searched evidence 존재
+
+**R1에서 해결 방법이 확정된 항목을 `RPM_PRIMARY_MIGRATION_GAP`으로 R2E에 넘기는 것을 금지한다.**
+
+R1 완료는 위 gate PASS + 시험지 receipt의 `READY_FOR_R2E` + 해당 remote commit 존재가 모두 충족될 때만 인정한다.
 
 ---
 
@@ -292,33 +327,29 @@ native file-condition trigger에 의존하지 않는다.
 
 ## 8. R2E 역할 — Final Adjudication & Closure
 
-R2E는 세 번째 전체 deep review가 아니다.
+R2E는 세 번째 전체 deep review도 아니고 **CREATE/R1이 할 수 있었던 routine Meta cleanup을 대신하는 단계도 아니다.**
 
-모든 대상 문항에 integrity scan은 수행하지만 deep review는 다음에 집중한다.
+모든 대상 문항에 integrity scan은 수행하지만 deep review는 다음에만 집중한다.
 
-- R1 HOLD
-- R1 REPAIR
-- CREATE ↔ R1 conflict
-- review/quality blocker
-- `PROPOSED_NEW_L3`
-- `PROPOSED_NEW_L4`
-- `RPM_PRIMARY_MIGRATION_GAP`
-- legacy `META_CANONICAL_HOLD` / `META_PACK_GAP_HOLD`
-- CrossConcept 경계
+- `R2_ADJUDICATION_REQUIRED` true semantic conflict
+- 신규 L3/L4 필요성이 R1에서도 닫히지 않은 항목
+- CREATE ↔ R1 사이의 비결정적 conflict
 - source/answer/visual hard HOLD
+- 여러 시험지를 함께 봐야 판단 가능한 semantic cluster
 - R1 이후 byte drift
 - validator가 새로 찾은 actual defect
+- R1에서 이미 확정한 shared Meta patch의 production integration
+
+**단순 binding 부재, deterministic materialization, existing ACTIVE reuse 가능 항목은 R2E deep review 대상이 아니다.**
+그런 항목이 남아 있으면 R1 종료 gate 실패로 되돌린다.
 
 정상 PASS item은 source/dependency drift 등 invalidation 근거 없이 처음부터 다시 풀지 않는다.
-
-여러 시험지의 proposal은 한 run에서 semantic cluster로 묶어 비교한다.
-첫 사례 하나만 보고 taxonomy를 과분화하지 않는다.
 
 ---
 
 ## 9. Meta HOLD Zero gate
 
-R2E는 최종 semantic 결정권자다.
+R2E는 최종 semantic 결정권자다. 단, **R2E 진입 전에 이미 `resolvablePending = 0`이어야 한다.**
 
 `R2E_FINAL`에 다음이 남아 있으면 안 된다.
 
@@ -344,7 +375,7 @@ R2E는 최종 semantic 결정권자다.
 
 판정 순서는 항상 RPM Primary → exact crosswalk → GLOBAL ACTIVE owner → exact binding을 선행한다.
 
-Final disposition은 shared resolver의 결과와 현재 적용 action을 함께 보존한다. `EXISTING_REUSE`와 `FAMILY_REUSE`는 R2E의 `EXISTING_REUSE`로, 유효한 `ROUTE_OUT` evidence는 `ROUTE_OUT`으로 기록한다. Migration gap/taxonomy gap은 최종에 남길 수 없다. Canonical materialization, rebind, 신규 L3/L4, CrossConcept 승인 이후에는 current ACTIVE snapshot으로 resolver를 다시 실행해 final metadata/runtime parity receipt에 SHA를 고정한다.
+Final disposition은 shared resolver의 결과와 현재 적용 action을 함께 보존한다. `EXISTING_REUSE`와 `FAMILY_REUSE`는 R2E의 `EXISTING_REUSE`로, 유효한 `ROUTE_OUT` evidence는 `ROUTE_OUT`으로 기록한다. Migration gap/taxonomy gap은 최종에 남길 수 없다. 특히 단순 binding/materialization-only gap이 R2E 입력에 남아 있으면 R1 계약 위반으로 간주한다. `RPM_PRIMARY_MIGRATION_GAP`이 R2E 입력에 존재할 수 있는 유일한 경우는 full evidence를 소진해도 exact materialization target 자체를 결정할 수 없어 `R2_ADJUDICATION_REQUIRED`로 명시한 경우다. Canonical materialization, rebind, 신규 L3/L4, CrossConcept 승인 이후에는 current ACTIVE snapshot으로 resolver를 다시 실행해 final metadata/runtime parity receipt에 SHA를 고정한다.
 
 R2E FINAL receipt는 `unresolvedSemanticCount`, `unresolvedProposalCount`, `unresolvedCrossConceptCandidateCount`, `metaHoldCount`, `migrationGapCount`를 모두 0으로 기록하며 shared validator가 기계적으로 확인한다.
 
@@ -562,7 +593,7 @@ legacy 경로를 사용할 수 있는 경우:
 
 ```text
 최신 GPT 작업 전 필독 라우터와
-JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1을 읽고 따른다.
+JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1 경로의 **v2 내용 authority**를 읽고 따른다.
 
 대상: <학년/branch/scope>
 목표: <CREATE/R1/R2E>
