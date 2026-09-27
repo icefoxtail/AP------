@@ -96,6 +96,8 @@ test('BASIC selection and final review accept UNKNOWN advanced taxonomy for ever
     assert.equal(result.ok, true, grade);
     assert.notEqual(core.review(result.selected, request).status, 'HARD_BLOCK', grade);
     assert.equal(core.basicEligibility({ ...row, foundationTaxonomyStatus: 'UNKNOWN' }).ok, true);
+    assert.equal(core.basicEligibility({ ...row, taxonomyStatus: 'HOLD' }).ok, true);
+    assert.equal(core.basicEligibility({ ...row, basicTaxonomyStatus: 'HOLD' }).ok, false);
     assert.equal(core.matches({ ...row, L3: 'unverified' }, { grade, L3: 'rpm:unverified' }), false);
   }
 });

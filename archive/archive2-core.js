@@ -541,7 +541,8 @@
     if ((record.sourceIntegrityStatus || record.sourceStatus) !== "VERIFIED") reasons.push("source");
     // A missing RPM/Foundation leaf does not invalidate a known source unit.
     if (["courseKey", "L1", "L2"].some(field => !text(record[field])) ||
-        record.taxonomyStatus === "HOLD") reasons.push("taxonomy");
+        record.basicTaxonomyStatus === "HOLD" || record.l1l2ParentValid === false)
+      reasons.push("taxonomy");
     if (record.gradeConflict) reasons.push("grade");
     // Missing metadata and a pending classification are not source defects.
     if (["HOLD", "reviewed_hold", "route_out", "ROUTE_OUT",
