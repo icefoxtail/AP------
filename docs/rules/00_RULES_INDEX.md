@@ -12,6 +12,41 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+### QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY 선행 규칙
+
+**모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
+
+
+### JS Archive R2E Repair & Release v3 작업 선행 규칙
+
+**CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
+
+**CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 CURRENT VISUAL ROUTER를 처음 제작부터 적용한다. `VISUAL_REQUIRED`와 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL`은 CREATE에서 KEEP/ADD/REBUILD를 끝내며, known visual repair를 R1/R2E로 의도적으로 미루지 않는다. CREATE 종료 시 visual preflight PASS, required visual missing 0, known visual repair pending 0, 지원 가능한 visual math parity pending 0을 요구한다. 예약 GPT가 render를 실행하지 않는 정책이면 `NOT_RUN_CODEX_HANDOFF`만 허용하며 render PASS를 허위 선언하지 않는다.
+
+**CREATE_SELF_CHECK HARD RULE:** CREATE는 작은칠판 solution·visual·Meta 최종 저장본을 제작 직후 1회 다시 읽고 known defect를 직접 수정한다. `READY_FOR_REVIEW` 전 `CREATE_SELF_CHECK_PASS=true`가 필수다. 특히 visual은 **`SVG_RULE_COMPLIANCE_PASS`를 수학/표현 PASS보다 먼저** 확인한다: current visual router/verify-skills/rule SHA preflight → artifact 이전 V1 → artifact 이전 EXPECTED FACT → deterministic build evidence → final actual SVG의 V2 OBSERVED FACT → V3 parity → final SVG SHA/evidence 결속. 생성 순서가 뒤집혔거나 evidence가 없으면 결과 SVG가 그럴듯해도 PASS 금지. R1은 이 제작자 self-check를 독립검수의 대체물로 신뢰하지 않고 evidence/final SHA를 독립 감사한다.
+
+**R2E HOLD-SAFE HARD RULE:** R2E가 full evidence와 허용 repair를 소진해도 안전한 판정이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 taxonomy/Meta/visual FINAL을 금지한다. R1/R2E에서 수정 가능한 solution·Meta·visual defect는 `수정프로토콜.md`로 직접 repair하고, visual 생성·재생성은 CURRENT VISUAL ROUTER를 반드시 따른다.
+
+
+중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
+`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 현재 생명주기 정본으로 함께 적용한다. **v1 helper는 과거 receipt/checkpoint 복구 전용이다.**
+
+새 표준 흐름은
+`CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → HOLD inventory/grouping → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
+
+중2 intake authority는 `work/intake/m2`, 중3은 `work/intake/m3`이다.
+과거 `REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge` 경로는 새 intake 생산에 적용하지 않고 legacy artifact 복구에만 사용한다.
+R2E는 intake branch를 read-only로 사용하고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
+정상 PASS 문항은 다시 풀이·재분류하지 않는다. 동결된 legacy R1 cohort의 HOLD는 유형별 batch로 묶어 existing L3/L4에 매핑하고, student-facing defect는 affected UID만 repair한다.
+
+R2E v3 legacy HOLD batch HARD RULE:
+- READY_FOR_R2E 당시 이미 존재한 frozen legacy backlog만을 대상으로 한다. New CREATE/R1은 ZERO-RESOLVABLE gate를 유지한다.
+- 구형 backlog는 R1 receipt/evidence/JS를 read-only로 읽으며 Meta sidecar backfill을 하지 않는다.
+- 기존 중등 active L3/L4/RPM 목록으로 공통 유형을 묶고, group decision 1회와 UID별 applied key/reason/evidence를 기록한다.
+- Existing-key batch mapping은 신규 taxonomy 생성이나 전역 crosswalk rewrite가 아니다. 맞는 기존 key가 확인되지 않는 문항만 question-scoped upper-model case로 넘긴다.
+- RPM/sidecar/difficulty/runtime/catalog gap은 META_ONLY로 남길 수 있고 JS release를 막지 않는다. BASIC_HARD_HOLD에 해당하는 실제 source/math/asset/JS defect만 release를 차단한다.
+- R2E v3는 normal R1 PASS reclassification, all-question Meta projection, whole-exam render, global runtime/catalog rebuild를 하지 않는다.
+- 무변경 visual은 R1 evidence를 재사용한다. 실제 수정된 SVG/해설 visual만 current pipeline-core closure와 targeted render를 실행한다.
 
 ### Codex Meta Foundation 작업 선행 규칙
 
@@ -49,10 +84,12 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - **Meta/L3/L4 작업은 RPM Primary v1.0을 선조회한다.** `01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `LOCKED` semantic path reference authority이며, 신규 L3/L4·HOLD를 판정하기 전에 `README.md` → `00_POLICY/CANONICAL_MASTER.json` → 대상 curriculum/scope view를 확인한다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지한다.
 - L3/L4/CrossConcept/Condition/alias/curriculum binding의 **production machine-key 정의·승격·검증 authority**는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md` + `archive/data/meta-foundation/canonical/`이다.
-- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/migration 판단 → 둘 다 없을 때만 신규 taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding만 빠진 경우는 `RPM_PRIMARY_MIGRATION_GAP`이며 새 수학 유형 부재로 보지 않는다.
-- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서만 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP` / `RPM_ONLY`는 반복 전역검색이나 임의 신규 key 생성 없이 `RPM_PRIMARY_MIGRATION_GAP`으로 처리한다. crosswalk 이후에는 **current ACTIVE의 관련 row/binding만 targeted validation**하며, 관련 canonical/binding drift가 없으면 이미 계산된 mapping을 다시 전역 조사하지 않는다.
+- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/rebind/materialization 판단 → 그래도 결정 불가할 때만 adjudication/taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding이 빠졌더라도 **exact materialization target이 deterministic하면 CREATE/R1에서 patch를 만들어 닫아야 하며**, 단순 `RPM_PRIMARY_MIGRATION_GAP`으로 R2E에 넘기지 않는다.
+- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP`은 exact target이 결정되면 CREATE에서 `materializationPatch`를 만들고 R1에서 독립 검증·수정한다. `RPM_ONLY`도 GLOBAL ACTIVE에 안전한 reuse가 있으면 CREATE/R1에서 REBIND/REUSE로 닫는다. **READY_FOR_R2E는 `resolvablePending=0`이 HARD gate**이며, R2E에는 exact target 자체가 비결정적인 `R2_ADJUDICATION_REQUIRED`만 넘긴다.
+- 모든 ACTIVE Meta 생성·3차검수·repair·R1/R2E 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
+- 학생에게 노출되는 문제 `content/choices/problem image/layout`의 조판·원문 보호 authority는 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`다. 의미 동일 비교가 아니라 SOURCE_TEXT_EXACT_PARITY를 요구한다.
 - L3/L4/CrossConcept semantic assignment의 FINAL authority는 **decision-isolated input bundle + item-level semantic evidence + deterministic validator**의 결합으로만 생성한다.
 - 같은 stage의 기존 candidate/templateKey/CrossConcept suggestion/heuristic hint를 semantic decision 입력으로 사용한 결과는 구조 검사가 PASS여도 semantic authority가 아니다.
 - `sourceReadStatus` 같은 모델 자기보고만으로 FINAL을 허용하지 않으며, validator 미구현·미실행 상태에서는 semantic FINAL/PASS/promotion을 금지한다.
@@ -63,6 +100,38 @@ visual triage, SVG 생성·검수, 독립검수, 유사문항 작업, 최종 출
 유사문항은 별도 manifest와 별도 seal 프로젝트라는 Common Protocol의 경계를 유지한다.
 각 작업 문서는 domain-specific 품질 규칙을 계속 담당하지만, 품질 단계나 batch 이름만으로
 agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
+
+### CURRENT VISUAL ROUTER — SVG / graph / geometry / solutionImage
+
+CREATE/R1/R2E를 포함해 SVG·graph·geometry·`solutionImage`를 생성·수정·재생성·부착·검수하는 모든 작업은 **`.codex/skills/apmath-visual-upgrade/SKILL.md`를 router로 사용**한다. visual 작업 전에 `node tools/skills/verify-skills.mjs`를 실행하고, MANIFEST-covered 필수 문서의 path/version/bytes/SHA와 current working bytes를 일치시킨다.
+
+현재 실행 경로:
+```text
+apmath-visual-upgrade router
+→ 00_RULES_INDEX + MANIFEST
+→ COMMON_PROTOCOL
+→ 공통파이프라인 실행계약
+→ 적응형배치루프
+→ pipeline-core README + AGENT_BUDGET
+→ applicable VISUAL / geometry domain / unit rule
+→ V1 benefit triage
+→ EXPECTED FACT freeze
+→ deterministic artifact build
+→ V2 artifact-only OBSERVED FACT
+→ V3 expected↔observed parity
+→ render-capture
+→ independent render-review
+→ closure
+```
+
+기하 문항은 `기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`의 2026-09-25 addendum을 포함한다. **`GEOMETRY_SOLUTION_VISUAL_DEFAULT = CREATE_UNLESS_JUSTIFIED_EXEMPT`**이며, source figure 부재·기존 solution SVG 부재·쉬운 문항이라는 이유만으로 VISUAL_EXEMPT하지 않는다. 학생 이해 benefit이 명확한 VISUAL_OPTIONAL도 ADD/REBUILD 적극 대상이다.
+
+`archive/tools/past-exam-pipeline/build-visual-candidate.mjs`와 `archive/tools/geometry-equation/visual_engine/`은 frozen EXPECTED FACT를 입력받는 **candidate-only builder**다. 코드가 production READ_ONLY / production write false / publicationAuthorized false를 강제하므로, 지원되는 visual에서 candidate 생성에 적극 활용할 수 있지만 current pipeline-core closure 없이 production FINAL/promotion authority로 사용하지 않는다.
+
+예약 GPT가 정책상 실제 render를 실행하지 않는 경우 `NOT_RUN_CODEX_HANDOFF`를 기록하고 render PASS를 선언하지 않는다. final production closure에서 render가 요구되면 Codex/R2E가 current render-capture + independent render-review를 닫는다.
+
+R2E v3는 이 visual route를 실제로 변경한 SVG/해설 문항에 targeted 적용한다. R1과 바이트가 같은 정상 visual은 R1 evidence를 재사용하며, Meta-only HOLD나 다른 문항의 변경 때문에 whole-exam render를 반복하지 않는다.
+
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)

@@ -6,10 +6,13 @@
 
 # APMath common pipeline core
 
-Current solution quality is enforced by `solution-quality.mjs`: every SOLUTION
-axis needs all fourteen typed decisions, rationale and excerpts anchored in the
-current student solution. Required decisions cannot be N/A; high-level and
-constructed-response requirements derive from the actual question. A render
+Current solution quality is enforced by `solution-quality.mjs`: new
+`APMATH_SOLUTION_QUALITY_v2` SOLUTION evidence includes the existing typed math,
+reasoning and curriculum checks plus required `studentLanguagePass` and
+`blackboardLayoutPass` decisions, with reasons and excerpts anchored in the
+current student solution. Legacy `APMATH_SOLUTION_QUALITY_v1` remains readable
+without in-place schema mutation. Required decisions cannot be N/A; high-level
+and constructed-response requirements derive from the actual question. A render
 PASS never substitutes for this semantic review. Difficulty/type/choices changes
 invalidate SOLUTION evidence. `solution-visual-benefit.mjs` requires V1 and V3
 benefit semantics and first-pass binding for every visual-capable question,
