@@ -16,15 +16,43 @@
         "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/STATE.json"
       ],
       "baselineSnapshotSha256": "289f0399473db16589f5674a2fbec137f8da383597421c669d1f79c7c4964db6",
+      "commitSha": "85ee8da54b3cdbdf94669d505fdc78446c29fe05"
+    },
+    {
+      "name": "M3_SEMANTIC_NORMALIZATION_AND_RUNTIME",
+      "stage": "M3_NORMALIZATION_AND_RUNTIME_VALIDATED",
+      "denominator": {
+        "rpmRecords": 181,
+        "crosswalkRows": 181,
+        "views": 4,
+        "semanticLedgerRows": 181
+      },
+      "summary": {
+        "semanticRelation": { "BOTH_PRESENT": 173, "LEGIT_CURRICULUM_DIFFERENCE": 7, "NEEDS_EVIDENCE": 1 },
+        "finalCrosswalk": { "DIRECT_ACTIVE": 13, "FAMILY_ACTIVE": 4, "DIRECT_BINDING_GAP": 41, "FAMILY_BINDING_GAP": 7, "RPM_ONLY": 116 },
+        "normalization": { "KEEP": 127, "DIRECT_TO_FAMILY": 0, "DIRECT_OR_FAMILY_TO_RPM_ONLY": 43, "PT_TPL_REMAP": 3, "RPM_ONLY_TO_EXISTING_CANONICAL": 2, "BINDING_STATUS_RECONCILED": 6, "BINDING_REPAIR": 0, "UNRESOLVED": 0 },
+        "resolver": { "EXISTING_REUSE": 13, "FAMILY_REUSE": 4, "RPM_PRIMARY_MIGRATION_GAP": 164, "perRowRuntimeParity": "PASS" },
+        "m3R2EReceipts": 0
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/semantic-audit-ledger.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/SEMANTIC_AUDIT_SUMMARY.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/global-active-registry-snapshot.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/CURRICULUM_EVIDENCE.md",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/M3_R2E_RECEIPT_SCAN.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/TEST_VALIDATION_SUMMARY.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/resolver-runtime-validation.json",
+        "archive/tools/meta-foundation/rpm-primary-m3-normalization.test.mjs"
+      ],
       "commitSha": "PENDING"
     }
   ],
   "remaining": [
-    "M3_CURRICULUM_AUDIT",
-    "M3_CROSSWALK_NORMALIZATION",
-    "M3_VALIDATION",
+    "MERGE_LATEST_ORIGIN_MAIN",
+    "REFRESH_AUDIT_SHA_AFTER_MAIN_MERGE",
     "REMOTE_PUSH",
     "NOTION_CLOSEOUT"
   ],
-  "mainMerge": "NOT_REQUESTED"
+  "latestMainMergedIntoWorkBranch": "PENDING",
+  "taskBranchMergedIntoMain": "NOT_REQUESTED"
 }
