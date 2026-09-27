@@ -86,6 +86,15 @@ test("grade-only canonical path filters pass mixed-question validation", async (
   );
 });
 
+test("BASIC middle3 questions without advanced taxonomy pass server validation", async () => {
+  const record = catalog.records.find(row => row.effectiveBrowseGrade === "중3" &&
+    row.taxonomyStatus === "UNKNOWN" && core.basicEligibility(row).ok);
+  assert.ok(record, "need a source-verified BASIC question without an RPM leaf");
+  await validateApprovedMixedQuestions(env, [materialize(record)], input({
+    grade: "중3", primaryPaths: [core.pathKey(record, 4)],
+  }));
+});
+
 test("curriculum and course filters remain optional additions, when present", async () => {
   await validateApprovedMixedQuestions(env, [baseQuestion], input(fullFilters));
 });
