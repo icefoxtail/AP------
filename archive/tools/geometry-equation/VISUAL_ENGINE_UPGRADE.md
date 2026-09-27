@@ -42,3 +42,34 @@ the regex expression serializer and fixed offset label path. Recompute
 item-level unresolved totals: r10 aggregate zero conflicts with three
 POLISH_REQUIRED review rows and an archive NOT_RUN defect. Historical
 render claims are not current qualification evidence.
+
+## Performance and readiness
+
+The final code seal validates actual artifact bytes, current code test hashes,
+protected source inventory, unchanged verifier bytes, 13 isolated fixtures,
+26 measured bbox captures, A/B rebuilds, and the full archive mode matrix.
+Missing measurements, incomplete coverage, stale files, or synthetic browser
+evidence block readiness. Pure builds never replace saved candidates.
+
+Run after the native archive matrix and capture are complete (substitute the
+run directory, archive attempt, and bbox receipt for the current job):
+
+```text
+python archive/tools/geometry-equation/record-visual-code-tests.py --run <run>
+python archive/tools/geometry-equation/measure-visual-build-performance.py --run <run>
+node archive/tools/geometry-equation/measure-visual-browser-performance.mjs --run <run> --archive-attempt <attempt>
+node archive/tools/geometry-equation/seal-visual-engine-code-ready.mjs --run <run> --archive-attempt <attempt> --bbox-receipt <repo-relative-receipt>
+```
+
+Browser dependencies and channel are discovered through the browser runtime
+and environment configuration. No personal executable paths are embedded.
+Performance is measured after correctness, without inventing a latency budget.
+
+The original v22 production verifier runs in a byte-identical shadow. The
+Phase0 baseline already has 99 targets against its fixed historical 94 and
+eight raw FAIL rows. Code regression uses baseline input/verifier parity and
+retains every raw FAIL. The readiness seal records these inherited findings
+outside its code qualification scope; they still block those production rows
+from FINAL qualification. Their triage belongs to the subsequent inventory
+and FULL PILOT. A code-ready fixture remains BUILD_SIDE_ONLY and cannot grant
+question publication authority. Optional TikZ conversion remains draft only.
