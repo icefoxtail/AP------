@@ -1,8 +1,8 @@
 {
   "schemaVersion": "M1_R2E_HOLD_SOURCE_ADJUDICATION_v1",
   "runId": "m1-b01-b31-r2e-20260927",
-  "updatedAt": "2026-09-27T17:11:01.0177469Z",
-  "productionCandidateHead": "8a58d1b62114fa7f65c81a6c228895f0ccd44e96",
+  "updatedAt": "2026-09-27T17:29:43.6420539Z",
+  "productionCandidateHead": "2a114373125eb9feef9d5add68fec47c2ee32f9e",
   "scope": "Only inherited HOLD and source-correction cases B07-B15. Ordinary PASS items were not inspected.",
   "sourceDocuments": [
     {
@@ -104,11 +104,18 @@
     {
       "sourcePage": 3,
       "q": 16,
-      "status": "BLOCKED_TOPOLOGY_ADJUDICATION_PENDING",
-      "disposition": "D_SOURCE_VISUAL_REVIEWED",
+      "status": "REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "MINIMAL_SOURCE_CHOICE_REPAIR_AND_SVG_UPGRADE",
       "hold": "AMBIGUOUS_SECTION_FACE_COUNT",
-      "finding": "Full original page reviewed; cuboid section and hidden-edge topology still need an explicit verified resolution before clearing the hold.",
-      "B": 8
+      "finding": "The full D-source diagram fixes the cuboid topology. The triangular section AGC meets three original cuboid faces; no cuboid edge is parallel to its plane. Therefore the original ⑤ statement and keyed ④ were both true.",
+      "B": 8,
+      "sourceSvgSha256": "662C8755B3B109D4C00D3789757C5B5CA6FFA23B101E0AF11EBD69E3A9004C7A",
+      "candidateCommit": "2a1143731",
+      "renderedSourcePagePath": "tmp/m1-b01-b31-r2e-20260927/D-hold-check/B08_p3_hi.png",
+      "minimumCorrection": "Changed only choice ⑤ from 3 faces to 4 faces, making it false while preserving answer ④. Replaced the unclear raster with a standalone SVG that separates projected intersections of the section and hidden edges.",
+      "renderedSourcePageSha256": "4CBD3A5A4351EF0F2B3E8F95E1D13681D460700D4D169235B70CE8ED02BE5A9F",
+      "sourceSvg": "archive/assets/images/23_왕운중_2학기_중간_중1_기출/q16-section-repaired.svg",
+      "nativePreviewSha256": "36E045C2C4AB86ACD91CD1D9F86C2721E906460845F0946FD7E62368B92D4113"
     },
     {
       "sourcePage": 2,
