@@ -1,6 +1,6 @@
 # Archive Reviewed Apply Bridge v1
 
-> 상태: LEGACY RECOVERY ONLY. 신규 중2/중3 CREATE → R1 → intake → R2E → main의 primary route가 아니다. 새 intake 생산은 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 따른다.
+> 상태: LEGACY RECOVERY ONLY. 신규 중2/중3 CREATE → R1 → intake → R2E → main의 primary route가 아니다. 새 intake 생산은 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 따른다.
 
 ## Purpose
 

@@ -52,6 +52,15 @@ Resolver 출력은 RPM path/L3/L4, 실제 crosswalk file·row·status, ACTIVE PT
 
 RPM path가 있고 active key나 exact binding이 없는 상태는 항상 `RPM_PRIMARY_MIGRATION_GAP`이다. 이를 true taxonomy gap 또는 `META_PACK_GAP_HOLD`로 바꾸지 않는다.
 
+### R2E Repair & Release v3 release impact
+
+이 resolver 계약은 실제 Meta key를 생성·재사용·수정하는 UID에 계속 적용한다. 다만 신규 R2E v3는 전체 시험지의 Meta 완성을 목표로 하지 않는다.
+
+- RPM migration gap과 resolver/difficulty sidecar 누락은 Meta disposition으로 보존하며 `META_ONLY`다. 그 이유만으로 시험지 JS release를 막지 않는다.
+- R2E가 특정 HOLD UID에 existing PT/TPL을 적용하는 경우에는 해당 UID의 active key/parent 근거와 group decision/UID application evidence를 남긴다. 새로운 L3/L4 key 생성 권한을 만들지 않는다.
+- production JS의 Meta field를 실제 변경하는 경우에만 해당 UID를 shared resolver/validator와 직접 영향 runtime consumer로 targeted 검증한다. 정상 R1 PASS 전체의 fresh resolver/difficulty pass, reprojection, runtime/catalog regeneration은 요구하지 않는다.
+- `JS_ARCHIVE_R2E_META_RECEIPT_v1`와 Meta HOLD Zero는 기존 v1 receipt/artifact 호환 경로에서만 사용한다. 신규 R2E v3는 `JS_ARCHIVE_R2E_FINAL_RECEIPT_v2`의 RELEASE_BLOCKING/META_ONLY 분리를 사용한다. Meta Foundation promotion 자체는 이 예외를 적용하지 않는다.
+
 `TRUE_TAXONOMY_GAP`에는 current registry SHA와 함께 `searchMethod=GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2`, 검색한 exact curriculum/L1/L2 scope, no-match candidate key list를 sidecar에 남긴다. Candidate/heuristic key를 검색 근거로 재사용하지 않는다.
 
 R2E final receipt 매핑은 `EXISTING_REUSE`/`FAMILY_REUSE → EXISTING_REUSE`, `ROUTE_OUT → ROUTE_OUT`이다. Migration gap과 taxonomy gap은 unresolved이므로 R2E_FINAL에 남길 수 없다. Canonical materialization/repair 후에는 갱신된 ACTIVE registry를 대상으로 resolver를 다시 실행하고 그 결과를 self-hash `receiptSha`와 durable ledger로 봉인한다.
@@ -73,7 +82,8 @@ Source identity/fidelity, independent math, 학생용 해설, solution quality, 
 ## 7. 기존 경로
 
 - 신규 Past Exam은 `completion-contract.json`의 resolver-backed sidecar와 BASIC/ADVANCED 분리 gate를 사용한다.
-- 3차검수·수정·무결성·R1/R2E는 `rpm-active-resolver.mjs` 및 CLI를 공통 호출한다. R2E intake receipt는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` strict-projection 또는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2` staged-candidate evidence ref를 묶는다. v2는 frozen source Meta projection과 새 candidate projection을 별도 증명하며, candidate와 fresh difficulty evidence parity는 항상 exact다. R2E final receipt는 `JS_ARCHIVE_R2E_META_RECEIPT_v1`로 모든 UID의 completed JS/runtime projection parity와 Meta HOLD Zero를 다시 검증한다.
+- 3차검수·Meta repair·Meta promotion은 `rpm-active-resolver.mjs` 및 CLI를 공통 호출한다. R1 v1 resolver-backed receipt와 legacy R2E v1 receipt는 기존 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1/v2` 및 `JS_ARCHIVE_R2E_META_RECEIPT_v1`로 검증한다.
+- 신규 R2E v3의 release authority는 `JS_ARCHIVE_R2E_FINAL_RECEIPT_v2`다. R1 input과 Meta sidecar는 read-only로 소비하며, `RPM_PRIMARY_MIGRATION_GAP`과 다른 metadata-only findings를 `META_ONLY`로 기록한다. HOLD group mapping이 production Meta field를 바꾸는 경우에만 해당 UID의 resolver/validator/runtime consumer를 targeted 검증한다. Resolver의 semantic disposition을 약화하거나 임의 key를 만드는 권한은 부여하지 않는다.
 - 1차검수는 field presence/type/evidence/provenance의 read-only 상태만 확인한다. 2차 수학검수는 semantic Meta engine이 아니다.
 - tag-enrichment는 L1/L2/subUnit hint와 inventory만 만들며 advanced Meta/difficulty를 분류하지 않는다.
 - js-bank-cleanup은 advanced Meta를 read-only audit한다.

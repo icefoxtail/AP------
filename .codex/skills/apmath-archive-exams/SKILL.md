@@ -12,8 +12,23 @@ Import original Korean math exam scans, or audit, correct, and upgrade existing
 Archive JS answers, solutions, metadata, assets, DB/index records, and render
 evidence. Do not declare a final pass until source fidelity, metadata, assets,
 DB/index parity, typed quality evidence, and real browser rendering are closed.
+This full V3 completion bar applies to new original Past Exam jobs. Existing
+middle-school R2E uses the separate Repair & Release v2 contract below.
 
 ## Scope and routing
+
+### Existing middle-school R2E Repair & Release v3
+
+For existing m2/m3 R1 intake, apply
+`docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`. R1 is read-only
+authority. Aggregate R1 HOLD findings across the frozen cohort, group common
+causes, map only held rows to existing active middle-school keys, and keep
+question-specific UID applications. Meta-only RPM/sidecar gaps do not block
+JS release. Normal R1 PASS receives integrity reuse without semantic
+re-adjudication, Meta re-projection, or new difficulty review. Existing SVG
+repair routes through the current visual lane; render only changed visuals.
+Do not apply the new-exam V3 all-question/6-case render workflow to an
+unchanged R2E exam.
 
 `docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md` is the top-level execution
 contract for every new original Past Exam job. The execution topology,
