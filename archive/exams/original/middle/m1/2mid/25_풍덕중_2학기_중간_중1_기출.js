@@ -18,6 +18,7 @@ window.questionBank = [
       "기본도형"
     ],
     "wide": false,
+    "choiceColumns": 1,
     "content": "다음 제시된 &lt;도형 1&gt;~&lt;도형 3&gt;에 대한 설명으로 옳지 않은 것은? [3점]",
     "choices": [
       "세 도형을 구성하는 기본 요소는 점, 선, 면이다.",
@@ -87,7 +88,7 @@ window.questionBank = [
       "중점"
     ],
     "wide": false,
-    "content": "다음 그림에서 두 점 $M$, $N$은 각각 $\\overline{AB}$, $\\overline{MB}$의 중점이다. $\\overline{NB}=3\\,\\mathrm{cm}$일 때, $\\overline{AN}$의 길이는? [3점]",
+    "content": "다음 그림에서 두 점 $M$, $N$은 각각 $\\overline{AB}$, $\\overline{MB}$의 중점이다.\n$\\overline{NB}=3\\,\\mathrm{cm}$일 때, $\\overline{AN}$의 길이는? [3점]",
     "choices": [
       "$3\\,\\mathrm{cm}$",
       "$6\\,\\mathrm{cm}$",
@@ -121,7 +122,8 @@ window.questionBank = [
       "중점"
     ],
     "wide": false,
-    "content": "다음은 풍덕중학교 입구 $(A)$에서 홈플러스 입구 $(B)$까지 거리에 관한 그림이다. 점 $M$은 선분 $AB$의 중점이라고 할 때, 제시된 설명 중 옳지 않은 것은? [4점]",
+    "choiceColumns": 1,
+    "content": "다음은 풍덕중학교 입구 $(A)$에서 홈플러스 입구 $(B)$까지 거리에 관한 그림이다.\n점 $M$은 선분 $AB$의 중점이라고 할 때, 제시된 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\overline{AM}=\\overline{BM}=\\dfrac12\\overline{AB}$",
       "선분 $BM$의 길이는 $96.5\\,\\mathrm{m}$이다.",
@@ -189,6 +191,7 @@ window.questionBank = [
       "거리"
     ],
     "wide": false,
+    "choiceColumns": 1,
     "content": "다음 그림과 같은 직각삼각형 $ABC$에 대한 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\overline{AC}$는 $\\overleftrightarrow{BC}$의 수선이다.",
@@ -223,7 +226,7 @@ window.questionBank = [
       "위치관계"
     ],
     "wide": false,
-    "content": "다음 그림과 같은 사각기둥에 대해 $\\overline{HG}$와 평행한 모서리의 개수를 $a$개, $\\overline{CD}$와 만나는 모서리의 개수를 $b$개, $\\overline{BC}$와 꼬인 위치인 모서리의 개수를 $c$개라고 할 때, $a+b-c$의 값으로 옳은 것은? [3점]",
+    "content": "다음 그림과 같은 사각기둥에 대해 $\\overline{HG}$와 평행한 모서리의 개수를 $a$개, $\\overline{CD}$와 만나는 모서리의 개수를 $b$개, $\\overline{BC}$와 꼬인 위치인 모서리의 개수를 $c$개라고 할 때,\n$a+b-c$의 값으로 옳은 것은? [3점]",
     "choices": [
       "2",
       "3",
@@ -269,6 +272,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q08.png",
+    "imageSize": "large",
     "subUnitKey": "M1-07-SOLID_FIGURE",
     "subUnit": "입체도형",
     "subUnitConfidence": "rule_inferred",
@@ -293,7 +297,8 @@ window.questionBank = [
       "모서리"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 직육면체에서 삼각기둥을 잘라내고 남은 도형이다. 제시된 설명 중 옳지 않은 것은? [4점]",
+    "choiceColumns": 1,
+    "content": "다음 그림과 같이 직육면체에서 삼각기둥을 잘라내고 남은 도형이다.\n제시된 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "면 $ABFE$와 면 $DCGH$는 꼬인 위치에 있다.",
       "면 $ABCD$와 평행한 면은 면 $EFGH$이다.",
@@ -327,7 +332,7 @@ window.questionBank = [
       "엇각"
     ],
     "wide": false,
-    "content": "오른쪽 그림에서 $\\angle d$의 동위각의 크기를 $a$, $\\angle e$의 엇각의 크기를 $b$라고 할 때, $b-a$의 값은? [4점]",
+    "content": "오른쪽 그림에서 $\\angle d$의 동위각의 크기를 $a$, $\\angle e$의 엇각의 크기를 $b$라고 할 때,\n$b-a$의 값은? [4점]",
     "choices": [
       "$31^\\circ$",
       "$41^\\circ$",
@@ -462,7 +467,7 @@ window.questionBank = [
       "합동"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC\\equiv\\triangle PQR$일 때, 변 $QR$의 길이를 $x\\,\\mathrm{cm}$, $\\angle C$의 크기를 $y^\\circ$라고 할 때 $x+y$의 값은? [3점]",
+    "content": "다음 그림에서 $\\triangle ABC\\equiv\\triangle PQR$일 때, 변 $QR$의 길이를 $x\\,\\mathrm{cm}$, $\\angle C$의 크기를 $y^\\circ$라고 할 때\n$x+y$의 값은? [3점]",
     "choices": [
       "30",
       "40",
@@ -496,7 +501,8 @@ window.questionBank = [
       "합동"
     ],
     "wide": false,
-    "content": "오른쪽 그림에서 점 $M$은 $\\overline{AD}$와 $\\overline{BC}$의 교점이고 $\\overline{AM}=\\overline{DM}$, $\\overline{AB}\\parallel\\overline{CD}$일 때, 제시된 설명 중 옳지 않은 것은? [4점]",
+    "choiceColumns": 1,
+    "content": "오른쪽 그림에서 점 $M$은 $\\overline{AD}$와 $\\overline{BC}$의 교점이고 $\\overline{AM}=\\overline{DM}$, $\\overline{AB}\\parallel\\overline{CD}$일 때,\n제시된 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\triangle ABM\\equiv\\triangle DCM$ (SAS 합동)",
       "$\\angle BAM=\\angle CDM$",
@@ -507,6 +513,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "그림의 모서리와 면의 관계를 정의에 따라 확인하여 만남·평행·수직·꼬인 위치를 구분한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q15.png",
+    "imageSize": "large",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
@@ -530,7 +537,7 @@ window.questionBank = [
       "길이"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC$와 $\\triangle ADE$는 정삼각형이고 $\\overline{AD}=4\\,\\mathrm{cm}$, $\\overline{BD}=13\\,\\mathrm{cm}$일 때, 변 $\\overline{CD}$의 길이는? [4점]",
+    "content": "다음 그림에서 $\\triangle ABC$와 $\\triangle ADE$는 정삼각형이고 $\\overline{AD}=4\\,\\mathrm{cm}$, $\\overline{BD}=13\\,\\mathrm{cm}$일 때,\n변 $\\overline{CD}$의 길이는? [4점]",
     "choices": [
       "$6\\,\\mathrm{cm}$",
       "$7\\,\\mathrm{cm}$",
@@ -541,6 +548,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q16.png",
+    "imageSize": "large",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -600,7 +608,8 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 반지름의 길이가 $10\\,\\mathrm{cm}$인 피자가 8조각으로 균등하게 잘려 있다고 하자. 별이가 피자 3조각을 먹는다고 할 때, 별이가 먹은 피자 3조각의 넓이는? [4점]",
+    "choiceColumns": 2,
+    "content": "오른쪽 그림과 같이 반지름의 길이가 $10\\,\\mathrm{cm}$인 피자가 8조각으로 균등하게 잘려 있다고 하자.\n별이가 피자 3조각을 먹는다고 할 때, 별이가 먹은 피자 3조각의 넓이는? [4점]",
     "choices": [
       "$36\\pi\\,\\mathrm{cm}^2$",
       "$36.5\\pi\\,\\mathrm{cm}^2$",
@@ -635,7 +644,8 @@ window.questionBank = [
       "부채꼴"
     ],
     "wide": false,
-    "content": "오른쪽 제시된 그림의 원 $O$에서 $\\angle AOB=60^\\circ$, $\\angle COD=30^\\circ$일 때, 다음 설명 중 옳지 않은 것은? [4점]",
+    "choiceColumns": 1,
+    "content": "오른쪽 제시된 그림의 원 $O$에서 $\\angle AOB=60^\\circ$, $\\angle COD=30^\\circ$일 때,\n다음 설명 중 옳지 않은 것은? [4점]",
     "choices": [
       "$\\overline{AO}=\\overline{CO}$",
       "호 $AB$의 길이는 호 $CD$의 길이의 2배이다.",
@@ -646,6 +656,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q19.png",
+    "imageSize": "large",
     "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
     "subUnit": "평면도형의 측정",
     "subUnitConfidence": "rule_inferred",
@@ -756,7 +767,7 @@ window.questionBank = [
       "동위각"
     ],
     "wide": false,
-    "content": "[서술형 3] 다음은 착시현상에 관한 내용이다. 제시된 굵은 가로선인 두 직선 $m$, $n$이 평행한 이유를 아래 보기의 내용을 활용하여 설명하시오. [5점]\n[착시현상이란 무엇일까?] 사물의 객관적인 성질과 사람의 눈을 통해 본 성질 사이에 차이가 있는 경우를 착시현상이라고 한다. 위 그림에 제시된 두 개의 굵은 가로선 $m$, $n$을 포함한 모든 굵은 가로선은 모두 평행한 선인데 주위의 사선 때문에 비뚤어져 보이는 착시현상이다.",
+    "content": "[서술형 3] 다음은 착시현상에 관한 내용이다.\n제시된 굵은 가로선인 두 직선 $m$, $n$이 평행한 이유를 아래 보기의 내용을 활용하여 설명하시오. [5점]\n[착시현상이란 무엇일까?]\n사물의 객관적인 성질과 사람의 눈을 통해 본 성질 사이에 차이가 있는 경우를 착시현상이라고 한다.\n위 그림에 제시된 두 개의 굵은 가로선 $m$, $n$을 포함한 모든 굵은 가로선은 모두 평행한 선인데 주위의 사선 때문에 비뚤어져 보이는 착시현상이다.",
     "choices": [],
     "answer": "직선 $l$이 두 직선 $m$, $n$과 만나면서 생긴 두 각은 동위각이고, 두 각의 크기가 모두 $40^\\circ$로 같다. 따라서 동위각의 크기가 같으므로 $m\\parallel n$이다.",
     "solution": "풀이: 문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 직선 $l$이 두 직선 $m$, $n$과 만나면서 생긴 두 각은 동위각이고, 두 각의 크기가 모두 $40^\\circ$로 같다. 따라서 동위각의 크기가 같으므로 $m\\parallel n$이다.이다.이다.이다.이다.이다.",
@@ -785,7 +796,7 @@ window.questionBank = [
       "각"
     ],
     "wide": false,
-    "content": "[서술형 4] 다음 제시된 삼각형 $ABC$에서 &lt;평행선의 성질&gt;을 이용하여 $\\angle x$를 구하고 그 이유를 설명하시오. [5점]\n&lt;평행선의 성질&gt; 평행한 두 직선이 다른 한 직선과 만날 때 생기는 동위각과 엇각의 크기는 각각 같다.",
+    "content": "[서술형 4] 다음 제시된 삼각형 $ABC$에서 &lt;평행선의 성질&gt;을 이용하여 $\\angle x$를 구하고 그 이유를 설명하시오. [5점]\n&lt;평행선의 성질&gt;\n평행한 두 직선이 다른 한 직선과 만날 때 생기는 동위각과 엇각의 크기는 각각 같다.",
     "choices": [],
     "answer": "$145^\\circ$",
     "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 $145^\\circ$이다.",
@@ -813,11 +824,12 @@ window.questionBank = [
       "대각선"
     ],
     "wide": false,
-    "content": "[서술형 5] 순천에 있는 중학교 7개 배구 대표팀이 서로 한 번씩 경기하려고 한다. 이웃한 대표팀끼리는 경기하지 않는다고 할 때, 7개 배구 대표팀 간에 이루어지는 총 경기 수를 구하고 그 과정을 서술하시오. [5점]",
+    "content": "[서술형 5] 순천에 있는 중학교 7개 배구 대표팀이 서로 한 번씩 경기하려고 한다.\n이웃한 대표팀끼리는 경기하지 않는다고 할 때,\n7개 배구 대표팀 간에 이루어지는 총 경기 수를 구하고 그 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "14경기",
     "solution": "풀이: 직선각과 맞꼭지각, 평행선의 동위각·엇각 및 삼각형의 내각의 합을 이용해 그림의 각을 차례로 계산한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 14경기이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중1_기출/q25_clean.png",
+    "imageSize": "full",
     "subUnitKey": "M1-06-POLYGON_CIRCLE",
     "subUnit": "다각형과 원",
     "subUnitConfidence": "rule_inferred",
