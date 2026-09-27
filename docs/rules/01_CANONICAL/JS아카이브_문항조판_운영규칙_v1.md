@@ -67,6 +67,24 @@ choices는 engine 번호 authority를 유지하고 장문·수식이 부자연�
 page/column 내부 분리, asset 때문에 질문/보기가 떨어짐, 과도한 auto-fit 축소는 FAIL 후보다.
 정적 PASS와 render PASS를 분리하며 미실행 render는 `NOT_RUN_CODEX_HANDOFF`.
 
+### SUBJECTIVE_WRITING_SPACE_FIRST — 서술형/단답형/서논술형 답안 공간 HARD RULE
+
+학생이 실제로 풀이·답안을 써야 하는 문항은 **내용 수용보다 작성 공간을 우선**한다.
+
+- 기본 layout은 기존 `grid`를 유지한다.
+- 단답형·서술형·서논술형 또는 choices가 없는 주관식에서, 현재 grid가 학생 답안 작성에 좁다고 판단되면 **`layoutTag: "subjective-2up"`으로 승격**한다.
+- `(1) (2)`, `(1)~(5)`, ①/②처럼 문제 안에 소문항이 여러 개 있으면 각 소문항의 경계를 명확히 줄바꿈하고, 학생이 각 항목에 답을 적을 수 있는 충분한 세로 간격을 확보한다.
+- 답안 공간 부족을 해결하기 위해 font/image를 먼저 과도하게 축소하지 않는다. **`grid → subjective-2up` 공간 확보가 압축보다 우선**이다.
+- 기본 escalation은 여기까지다. `subjective-4up`·`fullwidth`로 자동 확대하는 별도 단계는 두지 않는다. `subjective-2up`으로도 실제 render에서 부족한 특수 문항만 별도 HOLD/후속 엔진 개선 대상으로 남긴다.
+- 원문에 이미 `단답형`, `서술형`, `서논술형` 표지가 있으면 renderer-only bold/간격/괄호·배지 스타일로 시각 계층을 강화할 수 있다. **원문에 없는 유형 라벨을 새로 쓰거나 기존 문구를 바꾸지 않는다.**
+- 유형 표시 styling은 SOURCE_TEXT_EXACT_PARITY의 text atom을 바꾸지 않는 presentation layer여야 한다.
+- CREATE/R1은 정적 구조를 판정하고, 실제 답안 공간 충분성은 Codex exam render에서 다시 확인한다.
+
+결함 코드:
+- `SUBQUESTION_WRITING_SPACE_TIGHT`
+- `SUBJECTIVE_GRID_TOO_TIGHT`
+- `SUBJECTIVE_TYPE_HIERARCHY_WEAK`
+
 ## 7. disposition / defect code
 
 disposition: `LAYOUT_KEEP | LAYOUT_POLISH | LAYOUT_REFORMAT | LAYOUT_HOLD`
