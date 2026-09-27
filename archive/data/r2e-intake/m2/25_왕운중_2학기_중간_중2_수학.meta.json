@@ -1,0 +1,1511 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_META_EVIDENCE_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "examFile": "25_왕운중_2학기_중간_중2_수학.js",
+  "denominator": 25,
+  "decisionIsolation": {
+    "sameStageCandidateUsed": false,
+    "sameStageTemplateUsed": false,
+    "sameStageCrossConceptUsed": false,
+    "sameStageDifficultyUsed": false,
+    "previousVerdictUsed": false
+  },
+  "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "resolverExecutionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+  "authority": {
+    "mainCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
+    "sourceCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+    "sourceBlobSha": "86cbde21edbf9912f9c7775e08f88a88b9709721",
+    "crosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
+  },
+  "summary": {
+    "EXISTING_REUSE": 15,
+    "FAMILY_REUSE": 2,
+    "RPM_PRIMARY_MIGRATION_GAP": 8,
+    "TRUE_HOLD": 0
+  },
+  "difficultyBucketSummary": {
+    "1": 6,
+    "2": 4,
+    "3": 10,
+    "4": 5,
+    "5": 0
+  },
+  "items": [
+    {
+      "qid": 1,
+      "questionUid": "qid_v1_8de296c7b15803f43d72cc1c8f1fc64186c874c73686af201b4555313e63d363",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 1,
+        "contentHash": "sha256:28e4e1610e7882d68cda47b1fcffa7edfbda00c924106d9f0ad37514eaad68ce",
+        "choicesHash": "sha256:db39530c0c5066eb991fa028b97c971a66ac431e267e352e055ad38a81479383",
+        "imageRefHash": "sha256:b717f525581e8486e172ac146662d521d90bc230b9c5a409dc7d3f93d0daf766"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:9311797daf4347a6616c85dbeaba0a4c9d3a8c60da7ef8026cbc2b29f41c0780"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "두 직선의 기울기를 비교하여 평행 관계를 판정",
+        "decisiveStep": "주어진 그래프의 기울기 2를 구하고 보기의 직선 중 기울기 2인 식을 선택",
+        "rpmRecordId": "M2-RPM-057",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 2,
+      "questionUid": "qid_v1_748dd9d1390c542e32f42844160ae6e2a90e96d4fae64d1ca0df78099b5d6a21",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 2,
+        "contentHash": "sha256:a55d6e342f0f0a8b7f38f3158673fcc974af1f1a7a7cbad94d213a78268f35b7",
+        "choicesHash": "sha256:4ebbf60c6d9ddcc3b3ed789a7400da725f8b21cea6e4a447c4bab369be42745c",
+        "imageRefHash": "sha256:0cff0d8336e9a10034973245d01bc3829d9d5f3285584d2f0f5b24d19648e48a"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:2c83f3a93b3e1b91d61ccf53ad540da0625975d4d375f4d399c333fe07c4a295"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+      },
+      "semanticDecision": {
+        "primaryMethod": "일차방정식을 y=mx+n 꼴로 정리하여 기울기와 y절편의 부호를 해석",
+        "decisiveStep": "1/a<0에서 a<0, b/a>0에서 b<0을 결정",
+        "rpmRecordId": "M2-RPM-048",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 그래프",
+          "l4": "기울기·절편"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "FAMILY_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 3,
+      "questionUid": "qid_v1_dddabee939ce84c05724506511da85d5aa9c1f8b43cf0cd212fa4c085e2f1e05",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 3,
+        "contentHash": "sha256:7b5c905114e7e3b920ddf233b80254c6c9652eee9ffb10d0e38fb3e99c5240e5",
+        "choicesHash": "sha256:5970a7246bbc06b4ec69aab9cdca60be305bf738ed2f783523c37232edbc7e2f",
+        "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:6cacf77e4d8c4f801ba28a066ef93ee0582acf65859b78d1de4eac73bd1a3e67"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "x축에 평행한 직선은 y좌표가 일정함을 이용",
+        "decisiveStep": "점 (-3,4)를 지나므로 y=4로 확정",
+        "rpmRecordId": "M2-RPM-055",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "방정식과 그래프",
+          "l4": "x축·y축에 평행한 직선"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 4,
+      "questionUid": "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 4,
+        "contentHash": "sha256:cd93f7146118520108f49d8ba6b6c31d4b64703ca3162ddd0d400f21cb74dc11",
+        "choicesHash": "sha256:0790604a86d34f395ce454e4054fc1a2c6396a263c65588d69a6ac1342df6252",
+        "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:68f65fff30c6f6ec7ab49564af92fc5dcf95e7db3e6290624a0e71cc483f7dba"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "두 직선과 y축이 만드는 삼각형의 밑변과 높이를 계산",
+        "decisiveStep": "y절편 차이 6과 교점의 y축 거리 2로 넓이 6을 계산",
+        "rpmRecordId": "M2-RPM-058",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "그래프 활용",
+          "l4": "넓이"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 5,
+      "questionUid": "qid_v1_1d4e83144518225ea6df3aa105afa66d2ec1b04bc8a2564eb3984ab1c3a070d3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 5,
+        "contentHash": "sha256:057377af02c7588032c190a26573b013cb657ccf20e81be31de44a0d7a7ab812",
+        "choicesHash": "sha256:a37198b16ba02eeba5f924bdeab0bfe4ee14e618b060a4ca4b9e45e0e30e1ced",
+        "imageRefHash": "sha256:d46d75363438296590b423a1745dd64878d0cf62fe85893e1f43499e4cf4381a"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:fe28bcb7cf9f3da20e27bd337e2a6a8bde6ed39b7cb686f93770ff7e6a19ca0a"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "두 직선의 교점을 연립방정식의 해로 해석",
+        "decisiveStep": "두 식을 연립하여 교점 (3,1)을 결정",
+        "rpmRecordId": "M2-RPM-056",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 6,
+      "questionUid": "qid_v1_466f0b3af9ac162a98d1258879ab0c7e8bb2259f6cac9e0ca3d140261b509ff4",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 6,
+        "contentHash": "sha256:8650b3ce884090e7ebaac5e9f6fc7c99b35f87720ba548a6dc058a30d38a4198",
+        "choicesHash": "sha256:a2c6c06b96a22ea33f98816972cfd11f799b535c72027b09126bec5f6d68765d",
+        "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:33e54a528e933c5f16eea49bb98fde7b69ca87d7c1c9410bf49d758cea5c2770"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "해가 없는 두 직선의 평행 조건과 무수히 많은 해의 일치 조건을 순서대로 적용",
+        "decisiveStep": "기울기 일치로 a=4를 구한 뒤 y절편 차이 7/3을 이동량으로 결정",
+        "rpmRecordId": "M2-RPM-057",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "두 직선의 평행·일치"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 7,
+      "questionUid": "qid_v1_745010e0892494c24639e339f5870619adfad6973fec17cb6f252badf96775e9",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 7,
+        "contentHash": "sha256:2cbe4328fca5067074fa07bcf1c67307b49cca165cba3bf4f74c58751afe5544",
+        "choicesHash": "sha256:119a6d81cf8b830697ba7ba1e4042113a222c8a082c3619f03f917d8c647f06f",
+        "imageRefHash": "sha256:8a2521dd7fb0890634759184af6dd5e5af704adc3634bde1ae50ec4e5c5de1cf"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:cb0358e1edab72c2062df24c5bbcaf965bedc6c53373856fe041d60118d99a7c"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "같은 각을 이용해 이등변삼각형을 찾고 각을 이어 정삼각형을 판정",
+        "decisiveStep": "∠DBC=∠BCD에서 DC=DB=9, 이어 △ADC의 세 각이 60°임을 확인",
+        "rpmRecordId": "M2-RPM-060",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "이등변삼각형",
+          "l3": "이등변삼각형의 성질",
+          "l4": "밑각"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 8,
+      "questionUid": "qid_v1_010d977d0827aa4d3e791212a20950580803d68b8f456496cdc5e3bd1ea14415",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 8,
+        "contentHash": "sha256:c084b4ce83ba8e7e48f6b506cc09150d3b881715f6614b21bad89dfd5ec1ebed",
+        "choicesHash": "sha256:9578c11397d5588b9aab161917f96dfc7bee4e62b83273135aa9a5236f657deb",
+        "imageRefHash": "sha256:575d30dab7f528a7538d4360effe9c5172f5c935659a7dc5ee52eb53729a2d48"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:9e657ce290b511c5cbebd96aeeaad843296a69b808e3b39ba5205d19ee926b86"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "직각삼각형의 빗변과 한 예각 조건으로 합동을 판정",
+        "decisiveStep": "AB=AC와 ∠BAD=∠ACE로 합동을 보아 AD=6, AE=8을 얻고 DE=14",
+        "rpmRecordId": "M2-RPM-071",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 9,
+      "questionUid": "qid_v1_3fcc44938912568f8136ed7e3467ec33b6937bf93587acc4af6ad7f5c69369fb",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 9,
+        "contentHash": "sha256:12b7bb116a48a6ddaa6022d9931f00dcab394a290d6de647e1df9599ede08fc9",
+        "choicesHash": "sha256:15e7a83d368e47f8bebeea6517702577fe71ebf2b03e61cad8cdbc290c2a8c49",
+        "imageRefHash": "sha256:fd4994bbc347a59ccb4e244e9656ddd5cd22cc5025d2b947278253fe4d064882"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:d3dcfcb721d19ac1a9eca6cd6d84b311a92882b9a1404f8deb6dd9177f13b9c9"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "증명에 주어진 직각·빗변·한 예각 조건을 직각삼각형 합동 조건으로 연결",
+        "decisiveStep": "AB=DE, ∠B=∠E, ∠C=∠F=90°에서 두 직각삼각형의 합동을 확정",
+        "rpmRecordId": "M2-RPM-071",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHA"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 10,
+      "questionUid": "qid_v1_172daabd512857c589f3c8ed3e8ddfb11382d06666621e7cb90d206e65b51210",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 10,
+        "contentHash": "sha256:0db680ba6b5783adbe004f712b2ea3404abd619e6f2bbe9183d127b2460cb183",
+        "choicesHash": "sha256:059cf36b23acf5065f6a5e9630b1b423326321a3ae9a5038ee1a5bbc3cc419a7",
+        "imageRefHash": "sha256:0dcbd9c83030636da5d9c6b3d528ff80e1d9a070a3fc72402cd1f459d3bf729e"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:76f6b5bf7efdd2cf320df42cc34bded11876959174aaf9b0ba82a11a3caf9f8d"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "외심에서 세 꼭짓점까지의 거리가 같음을 이용해 이등변삼각형의 각을 추적",
+        "decisiveStep": "OA=OB=OC로 각을 x와 연결한 뒤 △ABC의 내각합으로 x=10°",
+        "rpmRecordId": "M2-RPM-065",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외심",
+          "l4": "외심의 위치·각"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 11,
+      "questionUid": "qid_v1_410a62b8e9e1713f083d1450bec7d891fc60becb84a45dee51c07d66bf696590",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 11,
+        "contentHash": "sha256:b972a81cdda863834c93aa8605c725075bd466b05bf37ac8188af0ef76f88974",
+        "choicesHash": "sha256:0de6dce75671702c3671f3881719fc317d343138e11d818f2451bdf874f91fb9",
+        "imageRefHash": "sha256:303851379dfc2df9f46e29db6dfb06e21f370e06330421baf22b62d3d355faa3"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:28899aa236c7f63d22f3c7ed139470a931fce63ccfcbf53dc418c2ce9e5ded19"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "외심과 꼭짓점 사이 거리를 외접원의 반지름으로 놓고 둘레 조건을 사용",
+        "decisiveStep": "2R+13=29에서 R=8을 얻어 외접원 넓이 64π를 계산",
+        "rpmRecordId": "M2-RPM-068",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "FAMILY_ACTIVE",
+        "disposition": "FAMILY_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 12,
+      "questionUid": "qid_v1_9922fdb0d30c265378a8f2f73ab4fb0d6ce20236cfe56b7ba8629752aeeb2072",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 12,
+        "contentHash": "sha256:684f492814ee644a8c38dd0a16472bb536b983c2e53977f4c02bf0cb07c7d4a6",
+        "choicesHash": "sha256:61aeedd4dc8b35815f9066d49269bb3aad705d3e61fe6c450a82bba31955d2bc",
+        "imageRefHash": "sha256:24bce883f2b0008ecc2c2b1313236ab5e5ef4415ad54648526419a6e299d95b7"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:cc0ae51938cc02a325aeb50019e82261f43c67808dac593b53dd9fa5787e7521"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "삼각형 넓이=반둘레×내접원 반지름을 이용해 내접원 반지름을 결정",
+        "decisiveStep": "96=24r에서 r=4를 얻고 밑변 AB=20으로 △IAB 넓이 40을 계산",
+        "rpmRecordId": "M2-RPM-068",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "외접원·내접원 활용",
+          "l4": "반지름·각 계산"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "FAMILY_ACTIVE",
+        "disposition": "FAMILY_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 13,
+      "questionUid": "qid_v1_e2b72faac9c9014cbe224d70a4fa9e4779bc00ad402cdcdbd49cd2cbd455507c",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 13,
+        "contentHash": "sha256:4959c8cfea9640510096ce544d68500eb0bc1a163469519c9419974e998a8de8",
+        "choicesHash": "sha256:9827a6502e84abfcc815a4eb8a70a27e7f8e9a10a750334167b751ac937bc3af",
+        "imageRefHash": "sha256:5445546b21e62cf7158296de798bc2177771d30314a330aa8346359ce974366e"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:32bc99c388ea0077c8e7740918435e0e1f17983359b263686e7deb39d9e92150"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "두 내각의 이등분선의 교점이 내심이라는 성질로 각과 내접원 반지름을 판정",
+        "decisiveStep": "BI가 ∠B의 이등분선이고 ID가 내접원 반지름임을 이용해 ㄴ, ㄹ만 참으로 확정",
+        "rpmRecordId": "M2-RPM-066",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 외심과 내심",
+          "l3": "내심",
+          "l4": "각의 이등분선과 내심"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_INCENTER",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 14,
+      "questionUid": "qid_v1_82797dad4da5c2f449690d234ca101201602583fe5c2e2a37b538b13c07915c7",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 14,
+        "contentHash": "sha256:7ea20700a9a51a80635ef3b0c401f363b9be37e999875bde9214982a7867580d",
+        "choicesHash": "sha256:abc5266453f9feb6139491a01b5d605a9d61aaa4231fb6f3c3e71e803fff5db1",
+        "imageRefHash": "sha256:009ec0053a64e172ea02523aebad843f1a328d9464b449df93bc0c57e578f0b8"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:0ae48924c43a8629339e78e52792b529323e9e34ef06305a442620558fa04117"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "평행사변형의 대변 길이와 이웃한 두 각의 합 성질을 직접 적용",
+        "decisiveStep": "AB=CD=10, y=180-125=55에서 x+y=65",
+        "rpmRecordId": "M2-RPM-072",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 15,
+      "questionUid": "qid_v1_3649df6924d5ad0aa907d4a21c3f4023c5b6414f2ba84265ca4385e280b9a593",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 15,
+        "contentHash": "sha256:b6d9c9c2ec5bcab369135363d5d925af388d4d222599f683440cee98f047a595",
+        "choicesHash": "sha256:ec6354e49bf426c6d0be4a7d988c12e4383215914b91e14c5417d0ceae994190",
+        "imageRefHash": "sha256:2b190181a2f7904506ca535b92f7db8ce5e95ac61dbcba3e60e95e8ad3c14f40"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:35afb48e54bdab2058c0ecaa427bafa30bfaa4dc82bab1ceef825a7ea40c940e"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "평행사변형의 대각선이 서로를 이등분하는 성질을 이용",
+        "decisiveStep": "AO+BO=18에서 AC+BD=2(AO+BO)=36",
+        "rpmRecordId": "M2-RPM-073",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "평행사변형의 대각선 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 16,
+      "questionUid": "qid_v1_06ba19327af78e760b26248cd76fb73e8162c3c511e2e7b49ee52f703aa8712e",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 16,
+        "contentHash": "sha256:31ebc55ff1423376096706e2d7a998cc55a031d4a49b26e35317cedd6ba92ae6",
+        "choicesHash": "sha256:7707075ac811bc4f2bb5d55725ace90af44d5f605d904577f46583e9b5809d38",
+        "imageRefHash": "sha256:c4e65688b027a84c309120c07cd96e44f4e98914165c558187acf1c62beb9be1"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:4da7e7428c4f9b31bbe437547498dcb00ce18e7759cd02756724dbe60a251372"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "평행선의 엇각과 공통변을 이용해 대각선으로 나뉜 두 삼각형의 합동을 증명",
+        "decisiveStep": "두 쌍의 엇각과 AC 공통으로 △ABC≡△CDA를 확정하고 대응 성질을 얻음",
+        "rpmRecordId": "M2-RPM-072",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 17,
+      "questionUid": "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 17,
+        "contentHash": "sha256:169ce13130da4f8f13de68badf73d6d59155f1879a005ea6f9e14b17e29e3be6",
+        "choicesHash": "sha256:3a2171cef1a5c134e5c2b33d7f9af3ac8b6325db8bcca59c1018e2c285a318ad",
+        "imageRefHash": "sha256:a873ac0d1f157a74b8cd2ad73bc470773c955b23767ba1cdbdf03438cb6b43d0"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:12ea2afc60c0347f6b66e2d6559b45219472e49d766623d9e6ee9da635970490"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "평행사변형의 대각선 넓이 분할과 중심대칭을 이용해 각 선택지의 넓이 관계를 판정",
+        "decisiveStep": "O 중심 180° 대응과 네 삼각형의 동일 넓이 8을 결합해 ⑤만 항상 성립하지 않음을 판정",
+        "rpmRecordId": "M2-RPM-077",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "넓이와 활용",
+          "l4": "분할도형"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "RPM_ONLY",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 18,
+      "questionUid": "qid_v1_43100c677921e57a90799b99e024c2c0f99a81d42cf424f62988557c88b88032",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 18,
+        "contentHash": "sha256:b29ae68e305b133165535071ffb28008986451738b130f75964c848845a02865",
+        "choicesHash": "sha256:ebb443eccdb14874856e0eb5c7b00fa4c968eb3566927473c4dc87d7b7b4719a",
+        "imageRefHash": "sha256:026ad5840400c32d4ddabe69206cf901bf0ee9dd604f1284689cc18633a3b7c7"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:81a81c828c09b16d9fe0ef8d160a93d4869de1dfed706c9b5b15fb3ad1ed8f4e"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "평행사변형의 평행선과 각의 이등분선을 결합해 이등변삼각형 두 개를 구성",
+        "decisiveStep": "BF=8, DE=AD=BC=8+x에서 y=x+8을 얻어 x=6",
+        "rpmRecordId": "M2-RPM-072",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 19,
+      "questionUid": "qid_v1_e9e65ef026942183612cf357a102c1b7c704e21e32f9530a261a7821760e1142",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 19,
+        "contentHash": "sha256:3ba8ef27647948dae2e5437274ef5266986bd8c54d03cf4668b1b46943a32106",
+        "choicesHash": "sha256:5b3bedfc00abf4d0f613477cbc1c312997b99321c6e5179d62ea3b6beda964f8",
+        "imageRefHash": "sha256:e3365a3d2372d6f6fa99783b07c5d32dab6e621f1406c68048745d364a0a4ff5"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:57acdf082f82a3ef0f7e303321c5ba5b82b66f2c2487c354bfbb0db983cac9a8"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "직사각형의 두 대각선이 길이가 같고 서로를 이등분한다는 성질을 판정",
+        "decisiveStep": "AC=BD와 AO=CO, BO=DO를 결합해 ㄴ, ㄷ, ㄹ만 참으로 확정",
+        "rpmRecordId": "M2-RPM-079",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 20,
+      "questionUid": "qid_v1_b1773b7e1c25fc3ec0745881f96fdfe1b8f2ea663c7d45c3b36fb40190da70e5",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 20,
+        "contentHash": "sha256:4579ba867274906003bfb1d5a0153ca75ce7c2dfc1c5d037473c9ffd490c12e2",
+        "choicesHash": "sha256:fc8a7e98d355e02e1f3494464595059f28c59183f21267a3450866ee3dee5627",
+        "imageRefHash": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:08c73488b7116ff06020be834b49de0d47be263a1cb34700b4f77d43f34d84e7"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "주어진 조건이 마름모를 반드시 보장하는지 충분조건을 판정",
+        "decisiveStep": "④는 평행사변형+대각선 수직, ⑤는 네 변 동일로 마름모를 보장함을 확인",
+        "rpmRecordId": "M2-RPM-082",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "사각형의 포함 관계",
+          "l4": "조건으로 사각형 판정"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 21,
+      "questionUid": "qid_v1_72c0c65c4562f4f08b129facdbd54539c282965850d165142d0263962be17557",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 21,
+        "contentHash": "sha256:3fe9b31bd77b3a1fa810e933e5ccd935351a1aab38f90900256f4847ab655d96",
+        "choicesHash": "sha256:ee341173aaf847f45db47c79414d9fc966e2ef9ecd46cc38ed47e230a8664f59",
+        "imageRefHash": "sha256:4981d945fb851656293ea0377d788fa0670a2d44e866f3939adb017346175807"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:051ed2a5077b9f8a0120f959a274ef926d68dad3777a1b08d3b16dd2bda1a844"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "마름모와 정사각형의 대각선 성질을 각각 적용",
+        "decisiveStep": "마름모에서 x=32°, 정사각형에서 y=5를 얻어 x+y=37",
+        "rpmRecordId": "M2-RPM-079",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 22,
+      "questionUid": "qid_v1_ab4736ee0a41702e65353233a32f961d78f53f86aa58b7146eaa4170db836ff3",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 22,
+        "contentHash": "sha256:975da2417e747b57705df603aba63c4fd624e6739057902e7d44bd463a51722f",
+        "choicesHash": "sha256:aeb40ff8075ae4e42a69b3d3e45af3ec512072c48b305642a418a7722c19e260",
+        "imageRefHash": "sha256:8069a7095cafe8314d7a84ea32939d5b6f68f1bda7d0b7d0156310f50b24db81"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:3cf3dd777c7dc96b4a30a075a8d4d00ae74867020672a097e5742b2ecd44602b"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "수선과 평행선의 각 관계를 이용해 목표 각의 합을 한 삼각형의 두 각으로 변환",
+        "decisiveStep": "BQ와 AC의 예각 55°와 ∠BQC=125°를 얻어 목표 합을 55°로 계산",
+        "rpmRecordId": "M2-RPM-072",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 성질",
+          "l4": "변·각의 성질"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 23,
+      "questionUid": "qid_v1_9549de6dcae441fa62b29252cbe4c99d8eef48b32cf6097a2a0e5cfb7e51713a",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 23,
+        "contentHash": "sha256:05a4571fdb87678fc5972a3b6ef8fb318946a65c99a558a27d8417221058f8c6",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:d730b881351ed66d9266146ef4efbf4da951c6f4873bde0fdfa90d3144f82c36"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:8b854e1119d98ec4baa954a545f6185687b504a2cf9b6c324a50cf8eb5452ed4"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-1",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-04",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION"
+      },
+      "semanticDecision": {
+        "primaryMethod": "그래프의 두 점으로 두 직선의 방정식을 구한 뒤 연립하여 교점을 계산",
+        "decisiveStep": "y=1/2x+3, y=3x-1을 얻어 연립해 (8/5,19/5)를 결정",
+        "rpmRecordId": "M2-RPM-056",
+        "rpmPath": {
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 일차방정식의 관계",
+          "l3": "두 직선의 관계",
+          "l4": "교점과 연립방정식"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_BINDING_GAP",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "ownerPack": "",
+        "exactBindingStatus": "NOT_MATERIALIZED",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 3,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 24,
+      "questionUid": "qid_v1_1ebbad7ce98e6ba9e27dfc3ec5893095633653ab3fcc94c198a8df3f9fa73950",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 24,
+        "contentHash": "sha256:53af90f0575341b75b6e690c815297b1fe12c6b623c3e7800260581738a3eb77",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:7358fef07cb06745bf829cdc84b64f9fc17c76c67563c670585b04bb6cf77f5a"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:103ca086b0f2be6e976e3389649b106d9ee85f000f1bcc7d565318b64384e6c7"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "두 직각삼각형의 빗변과 다른 한 변의 길이를 비교하여 합동을 증명",
+        "decisiveStep": "BM=CM, MD=ME, 두 각이 직각이므로 합동을 보아 BD=3.6, AB=10",
+        "rpmRecordId": "M2-RPM-070",
+        "rpmPath": {
+          "majorUnit": "삼각형의 성질",
+          "midUnit": "삼각형의 성질",
+          "l3": "직각삼각형의 합동",
+          "l4": "RHS"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    },
+    {
+      "qid": 25,
+      "questionUid": "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b",
+      "sourceIdentity": {
+        "sourceArchiveFile": "original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+        "sourceOrdinal": 25,
+        "contentHash": "sha256:db6e8cc214d7fb2070a85f53bd41ddbce729550aa886ea1d4dc60f6b922854ca",
+        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "imageRefHash": "sha256:357b02c1182f719e0d27b598f3e180a2a7f741c5093377794acccebf4d5e372d"
+      },
+      "solutionIdentity": {
+        "status": "VERIFIED_FINAL",
+        "independentVerification": true,
+        "solutionHash": "sha256:7efe8fe24b5b16114a1f831f873760d42942d0aff55a1ac5f6ed7f80853da4a6"
+      },
+      "curriculumContext": {
+        "grade": "M2",
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+      },
+      "semanticDecision": {
+        "primaryMethod": "대각선을 보조선으로 그어 두 삼각형 합동을 만든 뒤 나머지 한 쌍의 대변도 평행함을 증명",
+        "decisiveStep": "AB=CD, AC 공통, 평행선의 엇각으로 SAS 합동을 보아 BC∥AD를 얻음",
+        "rpmRecordId": "M2-RPM-074",
+        "rpmPath": {
+          "majorUnit": "사각형의 성질",
+          "midUnit": "평행사변형",
+          "l3": "평행사변형의 판정",
+          "l4": "변·각 조건"
+        }
+      },
+      "resolverEvidence": {
+        "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "executionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
+        "crosswalkMappingStatus": "DIRECT_ACTIVE",
+        "disposition": "EXISTING_REUSE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "exactBindingStatus": "ACTIVE",
+        "arbitraryCanonicalKeyCreated": false
+      },
+      "relationalEvidence": {
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "status": "NONE_REQUIRED"
+      },
+      "difficultyEvidence": {
+        "method": "FRESH_STRUCTURE_EVIDENCE",
+        "bucket": 4,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      }
+    }
+  ]
+}
