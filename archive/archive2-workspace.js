@@ -487,16 +487,23 @@
     };
   }
   function scopeOptions() {
-    const counts = new Map(),
+    const counts = new Map(), eligibleCounts = new Map(),
       excluded = C.composeExclusions(context()).union;
     const pool = state.catalog.records.filter((r) =>
-      C.matches(r, { ...state.filters, sourceFiles: state.sources }),
+      C.matches(r, { ...state.filters, L3: "", L4: "", difficultyBuckets: [], sourceFiles: state.sources }),
     );
-    for (const r of pool)
-      if (C.eligibility(r, state).ok && !excluded.has(r.questionUid))
-        counts.set(C.pathKey(r, 4), (counts.get(C.pathKey(r, 4)) || 0) + 1);
+    for (const r of pool) {
+      if (!r.L1 || !r.L2) continue;
+      const path = C.pathKey(r, 4);
+      counts.set(path, (counts.get(path) || 0) + 1);
+      if (C.matches(r, state.filters) && C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
+          C.eligibility(r, state).ok && !excluded.has(r.questionUid))
+        eligibleCounts.set(path, (eligibleCounts.get(path) || 0) + 1);
+    }
     const units = new Map();
-    for (const r of taxonomyRowsForFilters(state.filters)) {
+    // Source units remain visible even before their advanced taxonomy is published.
+    for (const r of [...taxonomyRowsForFilters(state.filters), ...pool]) {
+      if (!r.L1 || !r.L2) continue;
       const key = [
         r.curriculumKey,
         r.courseKey,
@@ -556,6 +563,7 @@
         label: `${group.L2}${suffix}`,
         paths,
         count: paths.reduce((sum, path) => sum + (counts.get(path) || 0), 0),
+        eligibleCount: paths.reduce((sum, path) => sum + (eligibleCounts.get(path) || 0), 0),
       };
     });
   }
@@ -1078,7 +1086,7 @@
         .join("")}</div></div>
       ${!exams.length ? '<div class="empty">현재 조건에 맞는 자료가 없습니다. 학교·연도·교육과정 중 하나를 넓혀 보세요.</div>' : ""}
       <div class="pager">${button("page-prev", "이전", state.page === 0 ? "disabled" : "")}<span>${state.page + 1} / ${Math.max(1, Math.ceil(exams.length / 18))}</span>${button("page-next", "다음", (state.page + 1) * 18 >= exams.length ? "disabled" : "")}</div>
-      ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기")}</div></div>` : ""}</div>`;
+      ${state.sources.length ? `<div class="floating finder-selection-bar"><strong>선택한 시험 ${state.sources.length}개</strong><div class="actions">${button("sources-clear", "선택 비우기")}${button("go-compose", "선택한 자료로 문제지 만들기", 'data-use-sources="true"')}</div></div>` : ""}</div>`;
   }
 
   function renderScopes() {
@@ -1090,7 +1098,7 @@
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 현재 출제 조건을 반영한 검수 문항 수입니다.</p>
+      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 시험지에 있는 전체 문항 수이며, 자동 출제 가능 수는 별도로 표시합니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
         0,
@@ -1107,7 +1115,7 @@
               .filter((s) => s.L1 === g)
               .map(
                 (s) =>
-                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`,
+                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항${s.eligibleCount !== s.count ? ` · 자동 출제 ${s.eligibleCount}` : ""}</small></div>`,
               )
               .join("")}</div>`,
         )
@@ -1124,6 +1132,7 @@
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
+      if (!C.advancedEligible(record)) continue;
       const authority = C.advancedAuthority(record);
       const l3 = C.advancedFilterValue(record, 3), l4 = C.advancedFilterValue(record, 4);
       const l3Label = authority === "mf" ? labels.problemTypes[record.problemTypeKey] : record.L3;
@@ -2070,9 +2079,13 @@
   }
   function newDraft() {
     if (state.selected.length) save();
+    delete state.filters.L3;
+    delete state.filters.L4;
     Object.assign(state, {
       draftId: crypto.randomUUID(),
       selected: [],
+      sources: [],
+      scopes: [],
       pins: [],
       rows: [],
       round: 1,
@@ -2102,6 +2115,8 @@
     if (!b || b.disabled || state.busy) return;
     try {
       if (b.dataset.view) {
+        if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
+          state.sources = [];
         state.view = b.dataset.view;
         urlState();
         render();
@@ -2176,6 +2191,7 @@
         const target = product.routeResolver();
         if (target) location.href = String(target);
       } else if (a === "home-grade") {
+        state.sources = [];
         state.find = { grade: b.dataset.grade || "" };
         state.view = "find";
         state.page = 0;
@@ -2189,8 +2205,12 @@
         urlState();
         render();
       } else if (a === "go-compose") {
+        const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
+        if (state.selected.length || state.receipts.length || state.sealed) newDraft();
+        state.sources = sources;
         state.view = "compose";
-        if (state.find.grade) state.filters.grade = state.find.grade;
+        state.filters = { school: "", ...state.find };
+        if (!state.filters.grade) state.filters.grade = "고1";
         if (C.hasSubjectProjection?.(state.find.grade)) {
           state.filters.semanticSubject = state.find.semanticSubject || "";
           state.filters.courseKey = "";
@@ -2204,6 +2224,8 @@
           state.filters,
           state.catalog.taxonomy,
         );
+        state.sources = state.sources.filter(file => state.catalog.records.some(record =>
+          record.sourceFile === file && record.effectiveBrowseGrade === state.filters.grade));
         if (!state.receipts.length && !state.sealed)
           reconcileFinderSchool(state.filters);
         state.scopes = [];
@@ -2497,6 +2519,7 @@
             delete state.filters.L3;
             delete state.filters.L4;
             if (el.dataset.filter === "grade") {
+              state.sources = [];
               state.filters.curriculumKey = "";
               state.filters.courseKey = "";
               state.filters.semanticSubject = "";
@@ -2521,6 +2544,7 @@
           invalidate();
         } else {
           if (el.dataset.filter === "grade") {
+            state.sources = [];
             state.find.semanticSubject = "";
             state.find.family = "";
           }

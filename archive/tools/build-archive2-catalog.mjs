@@ -29,6 +29,37 @@ const masterFile =
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
 const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
+const labelKey = value => String(value || "").normalize("NFC").replace(/\s+/g, "");
+// Preserve source unit tags even when the advanced metadata join has no path.
+// Match a canonical parent only when the source labels identify it uniquely.
+function sourceScope(question, exam) {
+  const unitKey = question.standardUnitKey || "";
+  const middle = unitKey.match(/^M([123])-(\d{2})$/);
+  const middleSemester = unitKey.match(/^M([123])-([12])-/);
+  const curriculumKey = question.curriculumKey ||
+    (/^H(15|22)-/.test(unitKey) ? "20" + unitKey.slice(1, 3) :
+      core.middleCurriculumFromYear(exam.grade, exam.year));
+  const courseFromKey = {
+    "H15-SA": "수학(상)", "H15-SB": "수학(하)", "H15-M1": "수학I",
+    "H15-M2": "수학II", "H15-CALC": "미적분", "H15-PS": "확률과통계", "H15-GE": "기하",
+    "H22-C": "공통수학1", "H22-C2": "공통수학2", "H22-A": "대수",
+    "H22-M1": "미적분I", "H22-M2": "미적분II", "H22-PS": "확률과통계", "H22-GE": "기하",
+  }[unitKey.match(/^(H(?:15|22)-[^-]+)-/)?.[1]];
+  const sourceCourse = courseFromKey || question.standardCourse || exam.subject;
+  const courseKey = question.courseKey || (middle ?
+    `M${middle[1]}-${Number(middle[2]) <= 4 ? 1 : 2}` : middleSemester ?
+    `M${middleSemester[1]}-${middleSemester[2]}` :
+    taxonomy.find(row => row.curriculumKey === curriculumKey &&
+      core.normalizeCourseIdentity(row.courseKey) === core.normalizeCourseIdentity(sourceCourse))?.courseKey || sourceCourse);
+  const L1 = question.standardUnit || question.category || "";
+  const L2 = question.subUnit || L1;
+  const parents = new Map(taxonomy.filter(row => row.curriculumKey === curriculumKey &&
+    row.courseKey === courseKey).map(row => [core.pathKey(row, 4), row]));
+  const candidates = [...parents.values()].filter(row =>
+    labelKey(row.L2) === labelKey(L2) || labelKey(row.L2) === labelKey(L1));
+  const parent = candidates.length === 1 ? candidates[0] : null;
+  return { curriculumKey, courseKey, L1: parent?.L1 || L1, L2: parent?.L2 || L2 };
+}
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -234,6 +265,9 @@ for (const exam of exams) {
       /^中|^중|^M[123]-/.test(record.courseKey || exam.subject)
     )
       record.courseFamilies = ["MIDDLE"];
+    const sourceParent = sourceScope(question, exam);
+    for (const field of core.PATH_FIELDS.slice(0, 4))
+      if (!record[field] && sourceParent[field]) record[field] = sourceParent[field];
     record.automatic = core.eligibility(record).ok;
     core.eligibility(record).reasons.forEach(count);
     if (record.automatic) count("automatic");
