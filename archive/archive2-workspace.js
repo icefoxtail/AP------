@@ -118,6 +118,16 @@
       .normalize("NFC")
       .replace(/\s+/g, "")
       .replace(/[·・ㆍ]/g, "");
+  const scopeCourseKey = (row) => {
+    const course = C.normalizeCourseIdentity(row.courseKey);
+    const grade = course.match(/^중([123])(?:수학)?$/)?.[1];
+    if (!grade) return course;
+    const unit = String(row.standardUnitKey || row.legacyStandardUnitKey || "");
+    const major = unit.match(new RegExp(`^M${grade}-(\\d{2})$`));
+    if (major) return `M${grade}-${Number(major[1]) <= 4 ? 1 : 2}`;
+    const semester = unit.match(new RegExp(`^M${grade}-([12])-`))?.[1];
+    return semester ? `M${grade}-${semester}` : course;
+  };
   const taxonomyRowsForFilters = (filters) => {
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
@@ -136,7 +146,7 @@
               .map((record) => C.pathKey(record, 4)),
           )
         : null;
-    return state.catalog.taxonomy.filter((r) => {
+    return (state.catalog.basicTaxonomy || state.catalog.taxonomy).filter((r) => {
       const projectionMatch =
         !filters.semanticSubject ||
         (filters.grade === "고1"
@@ -498,7 +508,7 @@
   function scopeOptions() {
     const canonicalRows = taxonomyRowsForFilters(state.filters);
     const canonicalParents = new Set(canonicalRows.map(r =>
-      [r.courseKey, scopeText(r.L1), scopeText(r.L2)].join("|")));
+      [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|")));
     const counts = new Map(), eligibleCounts = new Map(),
       excluded = C.composeExclusions(context()).union;
     const pool = state.catalog.records.filter((r) =>
@@ -518,14 +528,14 @@
       if (!r.L1 || !r.L2) continue;
       const key = [
         r.curriculumKey,
-        r.courseKey,
+        scopeCourseKey(r),
         scopeText(r.L1),
         scopeText(r.L2),
       ].join("|");
       if (!units.has(key))
         units.set(key, {
           curriculumKey: r.curriculumKey,
-          courseKey: r.courseKey,
+          courseKey: scopeCourseKey(r),
           L1: r.L1,
           L2: r.L2,
           rows: [],
@@ -574,7 +584,7 @@
         L2: group.L2,
         label: `${group.L2}${suffix}`,
         basicScope: group.rows.some(r => canonicalParents.has(
-          [r.courseKey, scopeText(r.L1), scopeText(r.L2)].join("|"))),
+          [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|"))),
         paths,
         count: paths.reduce((sum, path) => sum + (counts.get(path) || 0), 0),
         eligibleCount: paths.reduce((sum, path) => sum + (eligibleCounts.get(path) || 0), 0),

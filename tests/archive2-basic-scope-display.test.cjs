@@ -1,24 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const vm = require('node:vm');
-const crypto = require('node:crypto');
-const core = require('../archive/archive2-core.js');
-const catalog = core.decodeCatalog(require('../archive/data/archive2-catalog.json'));
-
-function workspace(filters = { grade: '중1' }) {
-  const source = fs.readFileSync(path.join(__dirname, '../archive/archive2-workspace.js'), 'utf8');
-  const listeners = {}, controls = {};
-  const window = { Archive2Core: core };
-  vm.runInNewContext(source.slice(0, source.indexOf('  document.addEventListener("submit"')) +
-    '\nrender = () => {}; scheduleSave = () => {}; window.scopeTest = { state, scopeOptions, renderScopes, selectedScopePaths };\n})();', {
-    window, crypto,
-    document: { addEventListener: (name, fn) => listeners[name] = fn, getElementById: id => controls[id] },
-  });
-  Object.assign(window.scopeTest.state, { catalog, filters });
-  return { ...window.scopeTest, controls, click: dataset => listeners.click({ target: { closest: () => ({ dataset }) } }) };
-}
+const { core, catalog, workspace, productionCatalog, filterCases } = require('./helpers/archive2-scope-harness.cjs');
 
 test('actual middle1 default shows the eight canonical L1 groups and nineteen L2 scopes', () => {
   const app = workspace();
@@ -71,4 +53,92 @@ test('every grade keeps default parent names inside its published taxonomy', () 
     for (const scope of app.scopeOptions().filter(s => s.basicScope))
       assert.ok(canonical.has(scope.L1.replace(/\s+/g, '') + '|' + scope.L2.replace(/\s+/g, '')), `${grade} ${scope.L1} ${scope.L2}`);
   }
+});
+
+test('all ten live runtime packs preserve the basic parent authority before adding advanced rows', async () => {
+  const { data, runtime } = await productionCatalog();
+  assert.equal(runtime.packs.length, 10);
+  assert.equal(data.basicTaxonomy, catalog.taxonomy);
+  const parent = row => [core.normalizeCourseIdentity(row.courseKey), row.L1?.replace(/\s+/g, ''), row.L2?.replace(/\s+/g, '')].join('|');
+  const canonical = new Set(data.basicTaxonomy.map(parent));
+  assert.ok(data.taxonomy.some(row => !canonical.has(parent(row))), 'live packs contain additional advanced/legacy parents');
+  const app = workspace({ grade: '고2', semanticSubject: 'PROB_STATS' }, data);
+  const [main, detail] = app.renderScopes().split('<details class="compose-detail source-scope-detail"');
+  for (const label of ['신뢰구간', '확률변수와 기댓값', '순열과 조합 핵심 개념']) {
+    assert.ok(!main.includes(label), label);
+    assert.ok(detail.includes(label), label);
+  }
+});
+
+test('all 66 grade, subject, semester and curriculum cases preserve sources and isolate default selection', async () => {
+  const { data } = await productionCatalog();
+  const master = core.taxonomyPaths(require('../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json'));
+  const parent = row => [core.normalizeCourseIdentity(row.courseKey), row.L1?.replace(/\s+/g, ''), row.L2?.replace(/\s+/g, '')].join('|');
+  const authoritativeParents = new Set(master.map(parent));
+  const before = JSON.stringify(data.records);
+  const cases = filterCases();
+  assert.equal(cases.length, 66);
+  for (const filters of cases) {
+    const label = JSON.stringify(filters), app = workspace(filters, data);
+    const scopes = app.scopeOptions(), basics = scopes.filter(s => s.basicScope);
+    const allowed = new Set(app.taxonomyRowsForFilters(filters).map(row => row.L1.replace(/\s+/g, '') + '|' + row.L2.replace(/\s+/g, '')));
+    for (const row of app.taxonomyRowsForFilters(filters)) assert.ok(authoritativeParents.has(parent(row)), label + ' canonical source');
+    for (const s of basics) assert.ok(allowed.has(s.L1.replace(/\s+/g, '') + '|' + s.L2.replace(/\s+/g, '')), label + ' basic label');
+    const pool = data.records.filter(r => core.matches(r, filters) && r.L1 && r.L2);
+    const paths = new Set(scopes.flatMap(s => s.paths));
+    for (const r of pool) assert.ok(paths.has(core.pathKey(r, 4)), label + ' missing source ' + r.questionUid);
+    assert.equal(scopes.reduce((n, s) => n + s.count, 0), pool.length, label + ' source counts');
+    const html = app.renderScopes();
+    if (scopes.some(s => !s.basicScope)) {
+      const detail = html.split('<details class="compose-detail source-scope-detail"')[1];
+      assert.ok(detail, label + ' missing details');
+      assert.doesNotMatch(detail.slice(0, detail.indexOf('>')), /\bopen\b/, label + ' details must start collapsed');
+    }
+    await app.click({ action: 'scope-all' });
+    assert.deepEqual([...app.state.scopes], [...basics.map(s => s.key)], label + ' all');
+    app.controls['scope-start'] = { value: '0' };
+    app.controls['scope-end'] = { value: String(scopes.length - 1) };
+    await app.click({ action: 'scope-range' });
+    assert.deepEqual([...app.state.scopes], [...basics.map(s => s.key)], label + ' continuous');
+    const sharedGroup = basics.find(s => scopes.some(d => !d.basicScope && d.L1 === s.L1));
+    if (sharedGroup) {
+      await app.click({ action: 'scope-clear' });
+      await app.click({ action: 'scope-group', groupIndex: String([...new Set(scopes.map(s => s.L1))].indexOf(sharedGroup.L1)), scopeKind: 'basic' });
+      assert.ok(app.state.scopes.every(key => scopes.find(s => s.key === key).basicScope), label + ' group selection');
+    }
+  }
+  assert.equal(JSON.stringify(data.records), before, 'scope display and selection must not change metadata');
+});
+
+test('middle2, middle3 and high subjects retain selectable detailed source questions with the live bridge', async () => {
+  const { data } = await productionCatalog();
+  for (const filters of [{ grade: '중2' }, { grade: '중3' }, { grade: '고1' },
+    ...core.highSemanticSubjectOptions().map(s => ({ grade: '고2', semanticSubject: s.value }))]) {
+    const app = workspace(filters, data), scopes = app.scopeOptions();
+    const target = scopes.find(s => !s.basicScope && s.eligibleCount > 0);
+    if (!target) {
+      assert.equal(data.records.filter(r => core.matches(r, filters) && !scopes.filter(s => s.basicScope).some(s => s.paths.includes(core.pathKey(r, 4))) && core.eligibility(r).ok).length, 0);
+      continue;
+    }
+    const index = [...new Set(scopes.map(s => s.L1))].indexOf(target.L1);
+    await app.click({ action: 'scope-group', groupIndex: String(index), scopeKind: 'detail' });
+    assert.ok(app.state.scopes.includes(target.key));
+    assert.ok(app.renderScopes().includes('class="compose-detail source-scope-detail" open'));
+    const req = { filters: { ...filters, primaryPaths: app.selectedScopePaths() }, rows: [{ id: 'detail', paths: target.paths, count: 1 }], seed: 'all-grades-scope' };
+    const selected = core.selectBlueprint(data.records, req);
+    assert.equal(selected.ok, true, JSON.stringify(filters));
+    assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK', JSON.stringify(filters));
+  }
+});
+
+test('an explicit curriculum keeps canonical middle geometry counts despite legacy course aliases', async () => {
+  const { data } = await productionCatalog();
+  const app = workspace({ grade: '중3', curriculumKey: '2015' }, data);
+  const scopes = app.scopeOptions();
+  const circle = scopes.find(s => s.basicScope && s.L1 === '원의 성질' && s.L2 === '원주각');
+  assert.ok(circle && circle.count > 0);
+  const aliased = data.records.filter(r => core.matches(r, app.state.filters) && r.courseKey === '중3 수학' && r.L1 === '원의 성질' && r.L2 === '원주각');
+  assert.ok(aliased.length > 0);
+  for (const r of aliased) assert.ok(circle.paths.includes(core.pathKey(r, 4)), r.questionUid);
+  assert.ok(!scopes.some(s => !s.basicScope && s.L1 === '원의 성질' && s.L2 === '원주각'));
 });
