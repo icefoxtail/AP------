@@ -71,7 +71,7 @@ def freeze(run):
         'port': ['canonical numeric geometry','source/derived fact split','semantic verification','deterministic witness'],
         'replace': ['regex math serializer','fixed label offsets','standalone-only final gate'],
         'assetPublication': 'No production promotion; code qualification fixtures only'})
-    return verify()
+    return verify(run)
 
 def write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
