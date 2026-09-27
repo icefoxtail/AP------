@@ -70,7 +70,7 @@ test('workspace consumes the common subject projection for Finder, Compose, meta
 
 test('scope, replacement and draft restore keep the shared projection gate on the existing paths', () => {
   const workspace = read('archive2-workspace.js');
-  assert.match(workspace, /const pool = state\.catalog\.records\.filter\(\(r\) =>\s*C\.matches\(r, \{ \.\.\.state\.filters, sourceFiles: state\.sources \}\)/s);
+  assert.match(workspace, /const pool = state\.catalog\.records\.filter\(\(r\) =>\s*C\.matches\(r, \{ \.\.\.state\.filters, L3: "", L4: "", difficultyBuckets: \[\], sourceFiles: state\.sources \}\)/s);
   assert.match(workspace, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters\)/);
   assert.match(workspace, /const result = C\.selectBlueprint\(pool\(\), req, ctx\)/);
   assert.match(workspace, /state\.filters = C\.reconcileFinderFilters\([\s\S]*?state\.catalog\.taxonomy/);

@@ -70,7 +70,7 @@ test('middle1 composes with L1/L2 and difficulty alone', () => {
 });
 
 test('unpromoted scope retains RPM L3 and L4 filtering', () => {
-  const target = catalog.records.find(row => core.eligibility(row).ok && core.advancedAuthority(row) === 'rpm' && row.L3 && row.L4);
+  const target = catalog.records.find(row => core.eligibility(row).ok && core.advancedEligible(row) && core.advancedAuthority(row) === 'rpm' && row.L3 && row.L4);
   assert.ok(target);
   const filters = { grade: target.effectiveBrowseGrade, primaryPaths: [core.pathKey(target, 4)], L3: `rpm:${target.L3}`, L4: `rpm:${target.L4}` };
   assert.equal(core.matches(target, filters), true);
