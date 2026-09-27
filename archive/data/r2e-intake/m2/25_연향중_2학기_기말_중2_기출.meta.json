@@ -1,53 +1,53 @@
 {
-  "schemaVersion": "JS_ARCHIVE_CREATE_META_SIDECAR_v2",
+  "schemaVersion": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1",
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceLane": "B",
+  "lane": "D",
+  "stage": "R1",
   "examUid": "25_연향중_2학기_기말_중2_기출",
   "examFile": "25_연향중_2학기_기말_중2_기출.js",
   "grade": "M2",
-  "lane": "B",
-  "stage": "CREATE",
-  "inputCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-  "sourceBlobSha": "57b2b66e2985724ca0b4d88bba1a2e027d201988",
-  "authority": {
+  "generatedAgainst": {
     "mainReadSha": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "intakeReadSha": "5c502b2dc99e552ae77008af346c1d5d72fe624c",
+    "intakeReadSha": "2139e1b54064f5bf4b9685fff5e277f8acca2849",
     "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
     "sourceBlobSha": "57b2b66e2985724ca0b4d88bba1a2e027d201988",
-    "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
-    "resolverContractBlobSha": "7aad67bc604afd65a11ac88435a742c92de9d5d6",
-    "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
-    "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
-    "taxonomyRegistryBlobSha": "c0b2cb3047d242e2e56920528f5f5c839295e1bb",
-    "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99"
+    "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js"
   },
   "decisionIsolation": {
-    "candidateVisibleDuringSemanticFirstPass": false,
-    "forbiddenInputs": [
-      "same-stage problemTypeKey",
-      "same-stage templateKey",
-      "same-stage crossConceptKeys",
-      "same-stage difficulty",
-      "previous verdict"
+    "sameStageAdvancedMetaUsedAsSemanticInput": false,
+    "semanticInput": "source + independently verified final solution only",
+    "reviewer": "GPT_M2_RESET_R1_D_20260928"
+  },
+  "r1Gate": {
+    "status": "HOLD",
+    "basicHardHoldCount": 2,
+    "visualComplianceHoldCount": 8,
+    "advancedMetaHoldCount": 8,
+    "resolvablePending": 0,
+    "readyForR2E": false
+  },
+  "materializationPatchSummary": {
+    "count": 6,
+    "questions": [
+      14,
+      15,
+      16,
+      18,
+      19,
+      20
     ],
-    "lookupOrder": [
-      "source+verified final solution",
-      "primaryMethod",
-      "decisiveStep",
-      "RPM Primary",
-      "middle2 crosswalk",
-      "GLOBAL ACTIVE",
-      "exact binding"
-    ]
+    "status": "DETERMINISTIC_PATCH_READY"
   },
   "items": [
     {
       "questionUid": "qid_v1_92a9b78ed8d175e8b4f366d95b2d09cdf2df713df5ba8183ee11d401f7df6fa8",
       "sourceOrdinal": 1,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_92a9b78ed8d175e8b4f366d95b2d09cdf2df713df5ba8183ee11d401f7df6fa8",
@@ -60,7 +60,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:d1afcd69aa1cd5f57290fb8f0a34a77fbee1235ca7f9098ce8ed8d09b1069c70",
+          "solutionHash": "sha256:43b6f03138bd7546378d174020d166d737d93b4fbfdddaa5693783381bfa9211",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -73,8 +73,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "닮은 두 삼각형의 닮음비로 대응변을 구한 뒤 둘레를 계산한다.",
-          "decisiveStep": "ABC:DEF=9:5이므로 DE=10, EF=8, 둘레=24",
+          "primaryMethod": "닮은 두 삼각형의 대응변 비가 3:1임을 이용해 작은 삼각형의 두 변을 구한 뒤 둘레를 합한다.",
+          "decisiveStep": "BC:EF=CA:FD=3:1이므로 EF=8, FD=6이고 DE=10이어서 둘레는 24이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -88,7 +88,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:fb44a2698908af7acad9aa7395c80e43285dd64557f9c8cdf19e748a813f589f",
-        "inputBundleSha": "sha256:8d304f258b85664ea05c55c413efce73dadb694ae7c20da3226a5d601b57e284",
+        "inputBundleSha": "sha256:4fea4d2e3073d306bb452731e17603745ddae76805761d6e6f581a7a219a871f",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -124,7 +124,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:d1afcd69aa1cd5f57290fb8f0a34a77fbee1235ca7f9098ce8ed8d09b1069c70",
+            "solutionHash": "sha256:43b6f03138bd7546378d174020d166d737d93b4fbfdddaa5693783381bfa9211",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -137,8 +137,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "닮은 두 삼각형의 닮음비로 대응변을 구한 뒤 둘레를 계산한다.",
-            "decisiveStep": "ABC:DEF=9:5이므로 DE=10, EF=8, 둘레=24",
+            "primaryMethod": "닮은 두 삼각형의 대응변 비가 3:1임을 이용해 작은 삼각형의 두 변을 구한 뒤 둘레를 합한다.",
+            "decisiveStep": "BC:EF=CA:FD=3:1이므로 EF=8, FD=6이고 DE=10이어서 둘레는 24이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -214,42 +214,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:f008cf90e01e2080df3fe4e6428cfda9ebb25089f942123a887f7963d84ceb61"
+        "evidenceSha": "sha256:efdad4a60713ce8adb9ab8b7aa68bcb80224cace715b739a45061a22f54f08dd"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:fb44a2698908af7acad9aa7395c80e43285dd64557f9c8cdf19e748a813f589f",
-        "solutionHash": "sha256:d1afcd69aa1cd5f57290fb8f0a34a77fbee1235ca7f9098ce8ed8d09b1069c70",
+        "solutionHash": "sha256:43b6f03138bd7546378d174020d166d737d93b4fbfdddaa5693783381bfa9211",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 1의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:7457faa46cc9c67e4f0d97553e2d0b5261fdd49cb90d87626e4a5ac0be8587bd",
-        "evidenceSha": "sha256:5a9c4aac5557143d8a774c23fba6d5ef2f7ca73877fa2c41c9ec262b034a530f"
+        "rationale": "q1 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:dec6a3ab2814e7ebbb10b6e76ed77d40074231c6bc6c2a0c0c69deb4b4863b0f",
+        "evidenceSha": "sha256:b4e2bca54273795758299445348715121b8ed97d2dc3cc5bbdc35396743cd282"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:fb44a2698908af7acad9aa7395c80e43285dd64557f9c8cdf19e748a813f589f",
-        "inputBundleSha": "sha256:8d304f258b85664ea05c55c413efce73dadb694ae7c20da3226a5d601b57e284",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:4fea4d2e3073d306bb452731e17603745ddae76805761d6e6f581a7a219a871f",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:55d71ce4c1a9ca0d6b51869a463b381605d027eb1fec57568e56012453b7d952"
+        "evidenceSha": "sha256:812acfafecaf90d8b1a38d17bb83f30b60d582948bed6246867539440d497cd0"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
       "sourceOrdinal": 2,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
@@ -262,7 +287,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:e0f8103719677aedcf94e4b0437b273aff4f13fc4cc12306e4689b5cb2d936c7",
+          "solutionHash": "sha256:83a5cf8e1684a424fedb723ee888b5539d4466fa8cf102f8fc7822443e22b5ad",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -275,8 +300,8 @@
           "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
         },
         "semanticDecision": {
-          "primaryMethod": "두 삼각형의 대응 선분비가 같은지를 검사하여 역으로 평행 여부를 판정한다.",
-          "decisiveStep": "②에서 AD:AB=AE:AC=1:3이므로 DE∥BC",
+          "primaryMethod": "두 삼각형에서 대응하는 두 선분의 비가 같은지를 확인해 평행선의 역을 판정한다.",
+          "decisiveStep": "②에서 AD:AB=2:6=1:3이고 AE:AC=3:9=1:3이므로 DE∥BC이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -290,7 +315,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:6d3791c48ae816ea8148b0772d009853b1c4e9607ab049193731a90a7a57f561",
-        "inputBundleSha": "sha256:ab05f5e6d092fee8de14802c22f0731519a0a239d52e75f4a950e0f30fd0495c",
+        "inputBundleSha": "sha256:4c663666f4d10389d5bd158dde7f1c65a3cf9673ad46e89c8ed1ce41181496de",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -332,7 +357,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:e0f8103719677aedcf94e4b0437b273aff4f13fc4cc12306e4689b5cb2d936c7",
+            "solutionHash": "sha256:83a5cf8e1684a424fedb723ee888b5539d4466fa8cf102f8fc7822443e22b5ad",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -345,8 +370,8 @@
             "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
           },
           "semanticDecision": {
-            "primaryMethod": "두 삼각형의 대응 선분비가 같은지를 검사하여 역으로 평행 여부를 판정한다.",
-            "decisiveStep": "②에서 AD:AB=AE:AC=1:3이므로 DE∥BC",
+            "primaryMethod": "두 삼각형에서 대응하는 두 선분의 비가 같은지를 확인해 평행선의 역을 판정한다.",
+            "decisiveStep": "②에서 AD:AB=2:6=1:3이고 AE:AC=3:9=1:3이므로 DE∥BC이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -422,42 +447,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:f89d247708e0b5944c9829a1d65ee2f3d4f058476c1e4218d06b7855c80baa13"
+        "evidenceSha": "sha256:85cfa9dd19ff5a9775bcc9f0cab2d731e2ffa70ea9a1438282d72d3703a78b63"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:6d3791c48ae816ea8148b0772d009853b1c4e9607ab049193731a90a7a57f561",
-        "solutionHash": "sha256:e0f8103719677aedcf94e4b0437b273aff4f13fc4cc12306e4689b5cb2d936c7",
+        "solutionHash": "sha256:83a5cf8e1684a424fedb723ee888b5539d4466fa8cf102f8fc7822443e22b5ad",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 2의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:20d8b86a2939f8f2931763d7e700f0bcd533c52035d5cee1a391537d2e65b88f",
-        "evidenceSha": "sha256:6a64a2a5ee3be6d4e3ff0ca6bf42732a4e83486cbd6b654e1ae87e0b5993b568"
+        "rationale": "q2 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:a3059b436252701fc9c6b9dccf7b8be23a1ad999015a7f46be0f78dee3b44851",
+        "evidenceSha": "sha256:5d864e43b7ee541137169ebed27e0d49c6e41bbd0241f181ce521334798cb0f7"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:6d3791c48ae816ea8148b0772d009853b1c4e9607ab049193731a90a7a57f561",
-        "inputBundleSha": "sha256:ab05f5e6d092fee8de14802c22f0731519a0a239d52e75f4a950e0f30fd0495c",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:4c663666f4d10389d5bd158dde7f1c65a3cf9673ad46e89c8ed1ce41181496de",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:7ca173f273af995d7c64dd4005b5618be8efda2d1e151aa185a15feca3f88739"
+        "evidenceSha": "sha256:05ff80b09955c1828e7c5fc177442890d0bd55a2715418d5b63acf5ff6a4696c"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_SEMANTIC_DIRECTION_MISMATCH",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
       "sourceOrdinal": 3,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
@@ -470,7 +522,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:6b2f54017fcfeb0006bda6df93b73b09efe36f56a20848128a56102479779b37",
+          "solutionHash": "sha256:2994160861fd3a79f90c3b874db67b7ecaa9860de9b263f25de016c99d6a2426",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -483,8 +535,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "직각삼각형에서 빗변에 내린 높이로 생기는 닮음을 이용한다.",
-          "decisiveStep": "AB²=AD·AC에서 AC=12",
+          "primaryMethod": "직각삼각형의 빗변에 내린 높이로 생기는 닮은 삼각형의 대응변 관계를 이용한다.",
+          "decisiveStep": "AB²=AD·AC에서 AC=12이고 DC=9이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -498,7 +550,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:42e303afaab789811676f66bfcc55740fa5920d20a064bb8c17d0d32f2ad111c",
-        "inputBundleSha": "sha256:31645ff12fbf2df3df7cdd66e2afa9f8bd0e8a05a39ff1ec34470f646176d79c",
+        "inputBundleSha": "sha256:8f217cb30787cbc139dde2634a4a6bf9179992a4a3514eb33b6f89888a962031",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -534,7 +586,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:6b2f54017fcfeb0006bda6df93b73b09efe36f56a20848128a56102479779b37",
+            "solutionHash": "sha256:2994160861fd3a79f90c3b874db67b7ecaa9860de9b263f25de016c99d6a2426",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -547,8 +599,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "직각삼각형에서 빗변에 내린 높이로 생기는 닮음을 이용한다.",
-            "decisiveStep": "AB²=AD·AC에서 AC=12",
+            "primaryMethod": "직각삼각형의 빗변에 내린 높이로 생기는 닮은 삼각형의 대응변 관계를 이용한다.",
+            "decisiveStep": "AB²=AD·AC에서 AC=12이고 DC=9이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -624,42 +676,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:1387e77eb61e95e1c9519818da4d16e7b75847dbf31dedc6d0737692efdaa5b0"
+        "evidenceSha": "sha256:693db39738f3b666d7bd6e1560758de8db6dfc185b5843ac1fabf1e393822222"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:42e303afaab789811676f66bfcc55740fa5920d20a064bb8c17d0d32f2ad111c",
-        "solutionHash": "sha256:6b2f54017fcfeb0006bda6df93b73b09efe36f56a20848128a56102479779b37",
+        "solutionHash": "sha256:2994160861fd3a79f90c3b874db67b7ecaa9860de9b263f25de016c99d6a2426",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 3의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:6cfc59efe0f61387dbf34e62ec241d756cc89f80008324c09bda3f976b84618c",
-        "evidenceSha": "sha256:2c72687548b4a19fc15c51ac07dabb62d5bf8441861e2852b6deb0a6d8a4b0ae"
+        "rationale": "q3 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:95b5732a472f443054c16423fff0245d202e497e790cea431d69b096be910ac3",
+        "evidenceSha": "sha256:940f0fbf1e73a202ce1ab1388c4a5323397fe73f06f740fd18f8fdffe0c972de"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:42e303afaab789811676f66bfcc55740fa5920d20a064bb8c17d0d32f2ad111c",
-        "inputBundleSha": "sha256:31645ff12fbf2df3df7cdd66e2afa9f8bd0e8a05a39ff1ec34470f646176d79c",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:8f217cb30787cbc139dde2634a4a6bf9179992a4a3514eb33b6f89888a962031",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:7465013a11b78f51a5f38abffb5096cf4936aca1ad0c306d761e33c4bfa961ea"
+        "evidenceSha": "sha256:bd358042ca034ad904422f686c37914a8cd77212b7af49e028ba409750701fe4"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_47bef6dc41ad02ca963e72d60e56880bf22e4ef03f260d4f7bbdb8b1d8bf775b",
       "sourceOrdinal": 4,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_47bef6dc41ad02ca963e72d60e56880bf22e4ef03f260d4f7bbdb8b1d8bf775b",
@@ -672,7 +749,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:b453c50405274256e16259bb2d4e796a9b72b49b1b43ea5b85867b37f2ff2f0b",
+          "solutionHash": "sha256:22fffb870b4d7551ca27e5feb339940eb7709dacd683a2d88a968cdbe7d99dbf",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -685,8 +762,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "도형의 종류별로 닮음비가 항상 일정한지를 판정한다.",
-          "decisiveStep": "구·정육면체·꼭지각이 같은 이등변삼각형만 항상 닮음",
+          "primaryMethod": "도형의 종류별로 모양이 항상 일정해 닮음이 보장되는지를 판정한다.",
+          "decisiveStep": "원기둥과 호의 길이만 같은 부채꼴은 각각 항상 닮는 도형이 아니므로 ①, ②이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -700,7 +777,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:121a6d2534e6bcf8ab1e393bc913840186472aaf0457e3890a94332b45259dfc",
-        "inputBundleSha": "sha256:8f1ef79dcb15be977d63bf4047d13d3a56a1a522888151fcfa4c2f642b24d81c",
+        "inputBundleSha": "sha256:560000b74c168286b542c46294a93e7eaefba94c1025d16381c63a51d84d0437",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -736,7 +813,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:b453c50405274256e16259bb2d4e796a9b72b49b1b43ea5b85867b37f2ff2f0b",
+            "solutionHash": "sha256:22fffb870b4d7551ca27e5feb339940eb7709dacd683a2d88a968cdbe7d99dbf",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -749,8 +826,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "도형의 종류별로 닮음비가 항상 일정한지를 판정한다.",
-            "decisiveStep": "구·정육면체·꼭지각이 같은 이등변삼각형만 항상 닮음",
+            "primaryMethod": "도형의 종류별로 모양이 항상 일정해 닮음이 보장되는지를 판정한다.",
+            "decisiveStep": "원기둥과 호의 길이만 같은 부채꼴은 각각 항상 닮는 도형이 아니므로 ①, ②이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -826,42 +903,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:dee8b01c97a30db726d54a3b15edbc7a29952097acad6564b9ba5171b8a5754f"
+        "evidenceSha": "sha256:62be9d972495d86d93cc97a64172cf81efd0e11c58646ed35b7aefafb6c6214e"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:121a6d2534e6bcf8ab1e393bc913840186472aaf0457e3890a94332b45259dfc",
-        "solutionHash": "sha256:b453c50405274256e16259bb2d4e796a9b72b49b1b43ea5b85867b37f2ff2f0b",
+        "solutionHash": "sha256:22fffb870b4d7551ca27e5feb339940eb7709dacd683a2d88a968cdbe7d99dbf",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 4의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:bcd0d076bde0f9dc7420e9bfa195b64bd02c3039a5f71e72827ae0777311352a",
-        "evidenceSha": "sha256:cd54c6e1cea51e6484c3ee345c6ac092ea52a9976539466387fa4515a3b9bd12"
+        "rationale": "q4 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:78dd69ebfcd11b8c1ebcec809abceb22048b46f5786c1c9026e20ce71a11ae58",
+        "evidenceSha": "sha256:c246969ca82408e28dd3a1027a4c655b0c56c619a3cd71681454727771d7d397"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:121a6d2534e6bcf8ab1e393bc913840186472aaf0457e3890a94332b45259dfc",
-        "inputBundleSha": "sha256:8f1ef79dcb15be977d63bf4047d13d3a56a1a522888151fcfa4c2f642b24d81c",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:560000b74c168286b542c46294a93e7eaefba94c1025d16381c63a51d84d0437",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:087ef75c5c941dd1325eedbafae31d5e3accf801a1777f183d48c7f8b3cd870f"
+        "evidenceSha": "sha256:87db4e0696e4b16e87a628361120a025f631ffc7db1281fda80ec54e1a1a39ed"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_62838ae36c190edab501d68ec5a6418356618896240fc1a2eac576fea187452f",
       "sourceOrdinal": 5,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_62838ae36c190edab501d68ec5a6418356618896240fc1a2eac576fea187452f",
@@ -874,7 +976,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:e913e4cf761c32e53cd823e483ba80a761dc4b73c6e93a0cbc0835f3bc2c6396",
+          "solutionHash": "sha256:6deb996a43f28d7dcf37e66ad3726570aad29e6712234d7a006fca421d17dbe5",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -887,8 +989,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "사다리꼴의 평행한 두 밑변과 대각선 교점의 선분비를 이용한다.",
-          "decisiveStep": "CP:CA=2:3, PQ∥AD에서 PQ=8/3",
+          "primaryMethod": "사다리꼴의 평행한 두 밑변과 대각선 교점에서 생기는 닮음 및 평행선 선분비를 이용한다.",
+          "decisiveStep": "CP:CA=8:12=2:3이고 PQ∥AD이므로 PQ=(2/3)·4=8/3이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -902,7 +1004,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:4c09d8a3f7ae7fe1d8dce0dfd04d782ef6f075bea924cff121f40c7846a336e5",
-        "inputBundleSha": "sha256:c5d732a0ec67d9bb2d146b01d9086dc6541f6461663439f48b793966382929c3",
+        "inputBundleSha": "sha256:2c2cb0e757a6ee1857334d5808b167fbf986ec91844f30b7561dbe19bfce7472",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -938,7 +1040,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:e913e4cf761c32e53cd823e483ba80a761dc4b73c6e93a0cbc0835f3bc2c6396",
+            "solutionHash": "sha256:6deb996a43f28d7dcf37e66ad3726570aad29e6712234d7a006fca421d17dbe5",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -951,8 +1053,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "사다리꼴의 평행한 두 밑변과 대각선 교점의 선분비를 이용한다.",
-            "decisiveStep": "CP:CA=2:3, PQ∥AD에서 PQ=8/3",
+            "primaryMethod": "사다리꼴의 평행한 두 밑변과 대각선 교점에서 생기는 닮음 및 평행선 선분비를 이용한다.",
+            "decisiveStep": "CP:CA=8:12=2:3이고 PQ∥AD이므로 PQ=(2/3)·4=8/3이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -1028,42 +1130,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:81aa142ec0d3cc2a63c60bce5f5c7924990e585b368e71e3236093d24d32e239"
+        "evidenceSha": "sha256:07060de08548101736a71ef24dac9462622a3f031a2c53a8e337881e6298e226"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:4c09d8a3f7ae7fe1d8dce0dfd04d782ef6f075bea924cff121f40c7846a336e5",
-        "solutionHash": "sha256:e913e4cf761c32e53cd823e483ba80a761dc4b73c6e93a0cbc0835f3bc2c6396",
+        "solutionHash": "sha256:6deb996a43f28d7dcf37e66ad3726570aad29e6712234d7a006fca421d17dbe5",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 5의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:c9eef4940660c9ed1432bc29727f7f3733f8018d7e05a9c3840fb9e123bea321",
-        "evidenceSha": "sha256:d9c6c805673733645a5570ac8321edada92364c9fa3f2f1adba1364b8b40a139"
+        "rationale": "q5 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:e9ef94014b42186ca9d9df25a11f5162ad526ff7dc49b5771ef6ddb34fff067e",
+        "evidenceSha": "sha256:3d2cfb31f41ad376b5e314e3a17b179f63c82459504e4148a9b2821d0eccacd9"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:4c09d8a3f7ae7fe1d8dce0dfd04d782ef6f075bea924cff121f40c7846a336e5",
-        "inputBundleSha": "sha256:c5d732a0ec67d9bb2d146b01d9086dc6541f6461663439f48b793966382929c3",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:2c2cb0e757a6ee1857334d5808b167fbf986ec91844f30b7561dbe19bfce7472",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:333e2085faab9cb506cfcaac48f4b20273d435735b684f76a959298d12ce6f97"
+        "evidenceSha": "sha256:795cb39dade239d07385333449e2e344f46bf06cb9e77b3a4fb42b62c587c776"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_24ab42c5f0e1186703cb09c5869513ccd793bff5f3c8232dc14a59a59e7d7810",
       "sourceOrdinal": 6,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_24ab42c5f0e1186703cb09c5869513ccd793bff5f3c8232dc14a59a59e7d7810",
@@ -1076,7 +1203,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:28582f3443de5bce979e46660a9f72e262c678fa52f52bd4e95426f1483526b3",
+          "solutionHash": "sha256:5089fc416f1d10917d804b7e3973ffc3ac939fc9aef8b955222db8f8cfe280e6",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -1089,8 +1216,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "닮은 입체도형의 부피비가 닮음비의 세제곱임을 이용한다.",
-          "decisiveStep": "(1/3)^3, (2/3)^3로 층별 부피비를 구해 114",
+          "primaryMethod": "닮은 입체도형의 부피비가 닮음비의 세제곱임을 이용해 층별 부피를 구한다.",
+          "decisiveStep": "윗부분과 위 두 층의 부피비가 각각 (1/3)^3, (2/3)^3이므로 가운데 층 42에서 전체 162, 아래 층 114를 얻는다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -1104,7 +1231,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:42b91961c1713aa56575e8a1e6c75c4c42d36ab932c4b01fdc76ef9213a04c76",
-        "inputBundleSha": "sha256:0c8b1065b0280c8e4bab23bfb417e57fcd76d6de0164b2fcaf861c698afe9fdb",
+        "inputBundleSha": "sha256:79ece90f26f5e678dc4e6d3e4cd1e5648e5f889bde7bcb4e8b56127f3458563b",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -1140,7 +1267,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:28582f3443de5bce979e46660a9f72e262c678fa52f52bd4e95426f1483526b3",
+            "solutionHash": "sha256:5089fc416f1d10917d804b7e3973ffc3ac939fc9aef8b955222db8f8cfe280e6",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -1153,8 +1280,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "닮은 입체도형의 부피비가 닮음비의 세제곱임을 이용한다.",
-            "decisiveStep": "(1/3)^3, (2/3)^3로 층별 부피비를 구해 114",
+            "primaryMethod": "닮은 입체도형의 부피비가 닮음비의 세제곱임을 이용해 층별 부피를 구한다.",
+            "decisiveStep": "윗부분과 위 두 층의 부피비가 각각 (1/3)^3, (2/3)^3이므로 가운데 층 42에서 전체 162, 아래 층 114를 얻는다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -1230,42 +1357,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:3e8c7bd5be79a938ed9cfada7953565dcd153b31f195e8726b0cb98c8a94595a"
+        "evidenceSha": "sha256:49f384cc6a33c2df1d66970f6ee7e46a92d3b584f9db1ccab8decef46fc1c6af"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:42b91961c1713aa56575e8a1e6c75c4c42d36ab932c4b01fdc76ef9213a04c76",
-        "solutionHash": "sha256:28582f3443de5bce979e46660a9f72e262c678fa52f52bd4e95426f1483526b3",
+        "solutionHash": "sha256:5089fc416f1d10917d804b7e3973ffc3ac939fc9aef8b955222db8f8cfe280e6",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 6의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:84394dc000199e918e5ab7a9cb7b21984bf38af2466c1ac75d6a24ecc819eecd",
-        "evidenceSha": "sha256:534b767a33fc1d48d141267193713375cc0a6cfe01da8acc4948f57c43d5af11"
+        "rationale": "q6 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:4a0b1f50712419fdae9e2e8368f77651521a2fbe39f39126c58b5abf21ad4a2c",
+        "evidenceSha": "sha256:2d67c00601b7d8f102207f4c08431a8ba7f307d1a3ae3c8496efec6ad999a908"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:42b91961c1713aa56575e8a1e6c75c4c42d36ab932c4b01fdc76ef9213a04c76",
-        "inputBundleSha": "sha256:0c8b1065b0280c8e4bab23bfb417e57fcd76d6de0164b2fcaf861c698afe9fdb",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:79ece90f26f5e678dc4e6d3e4cd1e5648e5f889bde7bcb4e8b56127f3458563b",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:3b8fbadc3442a33fb0867d0d6536ea4e136076d05ab913e81df783b9f94d6ceb"
+        "evidenceSha": "sha256:979e4ce7ec6ae14401d7806a3700e4d8de57f3ece1086e09010f77024fad9efa"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
       "sourceOrdinal": 7,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
@@ -1278,7 +1430,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:448b188e0d22e2c5ef99a976e08c9cc6891cb55f80c64f2d14bc507ebdd877f0",
+          "solutionHash": "sha256:2e76c1f55152543ee7011e7fd536718fe8ac0f1a73560409e90ee0ce3ac4594b",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -1291,8 +1443,8 @@
           "subUnitKey": ""
         },
         "semanticDecision": {
-          "primaryMethod": "삼각형의 무게중심이 중선을 2:1로 나누는 성질을 연속 적용한다.",
-          "decisiveStep": "GG'=2/3·GD=2이므로 GD=3, AG=6",
+          "primaryMethod": "삼각형의 무게중심이 중선을 2:1로 나누는 성질을 두 삼각형에 연속 적용한다.",
+          "decisiveStep": "G'가 △GBC의 무게중심이므로 GG'=(2/3)GD=2에서 GD=3이고 G가 △ABC의 무게중심이므로 AG=2GD=6이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -1306,7 +1458,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:ba5cba8ab933ebd90a3957901c49a548cf3c1bb9e537b007e2d4632ed875bad9",
-        "inputBundleSha": "sha256:da7e28b6cbfcf4bbe57c63e0e3a5d08227394d88fac517c26fcfd8a9cabf5c98",
+        "inputBundleSha": "sha256:6f0fb509c703a15a53e9377abe61e2c53fbdcb0d0445c15877ca0b1271db7c47",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -1350,7 +1502,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:448b188e0d22e2c5ef99a976e08c9cc6891cb55f80c64f2d14bc507ebdd877f0",
+            "solutionHash": "sha256:2e76c1f55152543ee7011e7fd536718fe8ac0f1a73560409e90ee0ce3ac4594b",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -1363,8 +1515,8 @@
             "subUnitKey": ""
           },
           "semanticDecision": {
-            "primaryMethod": "삼각형의 무게중심이 중선을 2:1로 나누는 성질을 연속 적용한다.",
-            "decisiveStep": "GG'=2/3·GD=2이므로 GD=3, AG=6",
+            "primaryMethod": "삼각형의 무게중심이 중선을 2:1로 나누는 성질을 두 삼각형에 연속 적용한다.",
+            "decisiveStep": "G'가 △GBC의 무게중심이므로 GG'=(2/3)GD=2에서 GD=3이고 G가 △ABC의 무게중심이므로 AG=2GD=6이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -1440,42 +1592,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:064bd5a3ceeff9da10a899740aacede363a31b6623adae605824c68f09788630"
+        "evidenceSha": "sha256:bd13840649e8150aa9aea57987c72f2f04463422b450eeb7426ea2bc2137cb14"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:ba5cba8ab933ebd90a3957901c49a548cf3c1bb9e537b007e2d4632ed875bad9",
-        "solutionHash": "sha256:448b188e0d22e2c5ef99a976e08c9cc6891cb55f80c64f2d14bc507ebdd877f0",
+        "solutionHash": "sha256:2e76c1f55152543ee7011e7fd536718fe8ac0f1a73560409e90ee0ce3ac4594b",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 7의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:d839616760a9d9e7c8f962ac4fadd50b1207ee4b94e40e49d5704f96c4ef8efa",
-        "evidenceSha": "sha256:4f8112d15b4090960b08bbbce67eb99bbdf1fa36f4a3ba6a83fb55c533be3c26"
+        "rationale": "q7 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:b69c17348a586a4b83342ae86e2a8671b4784ec8a5e6bfc85056c1aff5d9f0ce",
+        "evidenceSha": "sha256:639fb622089c007c4924bfe9e25564eed133b55a78a7d49d57022ee26cad8acc"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:ba5cba8ab933ebd90a3957901c49a548cf3c1bb9e537b007e2d4632ed875bad9",
-        "inputBundleSha": "sha256:da7e28b6cbfcf4bbe57c63e0e3a5d08227394d88fac517c26fcfd8a9cabf5c98",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:6f0fb509c703a15a53e9377abe61e2c53fbdcb0d0445c15877ca0b1271db7c47",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:4e65aca8c56dd608a0a0209a1fa0931d15537834880db4e5a5948b8876a2bd98"
+        "evidenceSha": "sha256:8e5d7703ae0d09be1d54a3a3da35863892f371b3f840141229b329fbff0630d4"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
       "sourceOrdinal": 8,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
@@ -1488,7 +1667,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:5e25b3f379986376869cb1a3a0e892bf4beb356a6d824224e28033763c8f0224",
+          "solutionHash": "sha256:810a2040ba3f00a501c2eba90e26fc8e777c45120acfbe6dafe1802fd584b1bc",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -1501,8 +1680,8 @@
           "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
         },
         "semanticDecision": {
-          "primaryMethod": "평행선으로 생기는 선분비와 넓이비를 이용해 분할 영역의 넓이를 뺀다.",
-          "decisiveStep": "BP/BD=DQ/DB=1/3이고 양쪽 작은 삼각형 넓이가 각각 6",
+          "primaryMethod": "평행사변형의 대각선과 중점 조건에서 생기는 선분비·넓이비를 이용한다.",
+          "decisiveStep": "BP:BD=DQ:DB=1:3이고 양쪽 작은 삼각형의 넓이가 각각 6이므로 음영 넓이는 24이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -1516,7 +1695,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:11cb30b283b3f2a281c7c270241722d1735dd0eb6c43ad64ed89edf82df72145",
-        "inputBundleSha": "sha256:7f1d52dfc34d5eadc8cb98fb0c7d28cc34c65aa4f2cd515c9d1e44df3bf36e22",
+        "inputBundleSha": "sha256:ce687638fc355224d1f4ca96874c5f10b8785d8fa096679b208e79955bd8ee9e",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -1552,7 +1731,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:5e25b3f379986376869cb1a3a0e892bf4beb356a6d824224e28033763c8f0224",
+            "solutionHash": "sha256:810a2040ba3f00a501c2eba90e26fc8e777c45120acfbe6dafe1802fd584b1bc",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -1565,8 +1744,8 @@
             "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
           },
           "semanticDecision": {
-            "primaryMethod": "평행선으로 생기는 선분비와 넓이비를 이용해 분할 영역의 넓이를 뺀다.",
-            "decisiveStep": "BP/BD=DQ/DB=1/3이고 양쪽 작은 삼각형 넓이가 각각 6",
+            "primaryMethod": "평행사변형의 대각선과 중점 조건에서 생기는 선분비·넓이비를 이용한다.",
+            "decisiveStep": "BP:BD=DQ:DB=1:3이고 양쪽 작은 삼각형의 넓이가 각각 6이므로 음영 넓이는 24이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -1642,50 +1821,75 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:84a99c3c6d01e6201e5df65f3f82fc36f8516a694701fa0335f4a5850452b734"
+        "evidenceSha": "sha256:f5d67edb1d62ef54e31a8c316492113b0916bed20b60e6b1019eb910dbdf1507"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:11cb30b283b3f2a281c7c270241722d1735dd0eb6c43ad64ed89edf82df72145",
-        "solutionHash": "sha256:5e25b3f379986376869cb1a3a0e892bf4beb356a6d824224e28033763c8f0224",
+        "solutionHash": "sha256:810a2040ba3f00a501c2eba90e26fc8e777c45120acfbe6dafe1802fd584b1bc",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 8의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:bd2a7be81451658d34072a9a039bf35c5d010d0c1aae4fc0056507a80bcd678e",
-        "evidenceSha": "sha256:cdecff3cb25699be9fb6d0f380d7217d2b716e79e4366e04e5b0b5a56013633d"
+        "rationale": "q8 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:82cb22179632061053203c64de1d66511ebd22e4c01ae9c90c0ed4d50bf5cd12",
+        "evidenceSha": "sha256:f5a6debc384a18c52cd69f7b9bdde999b80a21bf8d91da806f19cf9ca5a18a33"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:11cb30b283b3f2a281c7c270241722d1735dd0eb6c43ad64ed89edf82df72145",
-        "inputBundleSha": "sha256:7f1d52dfc34d5eadc8cb98fb0c7d28cc34c65aa4f2cd515c9d1e44df3bf36e22",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:ce687638fc355224d1f4ca96874c5f10b8785d8fa096679b208e79955bd8ee9e",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [
           {
             "key": "CC_TRIANGLE_AREA",
-            "status": "FINAL",
-            "reason": "primary 선분비/피타고라스 경로 밖에서 최종 넓이 계산에 삼각형 넓이 개념이 실제 필요",
-            "sourceFingerprint": "sha256:11cb30b283b3f2a281c7c270241722d1735dd0eb6c43ad64ed89edf82df72145",
-            "inputBundleSha": "sha256:7f1d52dfc34d5eadc8cb98fb0c7d28cc34c65aa4f2cd515c9d1e44df3bf36e22"
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
           }
         ],
         "conditionDecisions": [],
-        "reason": "확정 해설의 primary 밖 decisive concept만 ACTIVE CrossConcept로 기록",
-        "evidenceSha": "sha256:624058ccdab6f89a1737c618e249737985a97170834942e48b0c2828a48fceff"
+        "evidenceSha": "sha256:1af242b8071af4a6d25fd17157eeb2794abaa397507a62edbc500d45ff386040"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_6e391c87ec064258ea1ebdcfa50c3437e99bbc6a66c420b67b2001b987413924",
       "sourceOrdinal": 9,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_6e391c87ec064258ea1ebdcfa50c3437e99bbc6a66c420b67b2001b987413924",
@@ -1698,7 +1902,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:06b336ae221889b80e356619f8c317d48dc442eb180ff53a61f8d04645d415d6",
+          "solutionHash": "sha256:430f92fd746b66ed6c7ba2b633a9550dc1d7497f533768cee48ddecc3d23d617",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -1711,8 +1915,8 @@
           "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
         },
         "semanticDecision": {
-          "primaryMethod": "피타고라스 정리로 직사각형의 대각선을 구하고 반원 넓이 관계를 이용한다.",
-          "decisiveStep": "대각선 17, 네 반원 넓이의 합=외접원 넓이→어두운 부분=직사각형 넓이 120",
+          "primaryMethod": "피타고라스 정리로 직사각형의 대각선을 구한 뒤 반원 넓이의 합 관계를 이용한다.",
+          "decisiveStep": "대각선은 17이고 네 반원의 넓이 합이 외접원 넓이와 같아 음영 넓이는 직사각형 넓이 120이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -1726,7 +1930,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:61a1ddf6c16828aaf1df63df0e5d7a31e20f29697ad7e85a1d4bb806e11c705a",
-        "inputBundleSha": "sha256:631e0090bf52e835e1d123658bdf2c1e9a4b825f46b4bd37f41088c135d650a2",
+        "inputBundleSha": "sha256:8e1434945abfe56f82f9c517150fca0451f96cef84b55eaf376a57ca82f56c50",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -1768,7 +1972,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:06b336ae221889b80e356619f8c317d48dc442eb180ff53a61f8d04645d415d6",
+            "solutionHash": "sha256:430f92fd746b66ed6c7ba2b633a9550dc1d7497f533768cee48ddecc3d23d617",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -1781,8 +1985,8 @@
             "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
           },
           "semanticDecision": {
-            "primaryMethod": "피타고라스 정리로 직사각형의 대각선을 구하고 반원 넓이 관계를 이용한다.",
-            "decisiveStep": "대각선 17, 네 반원 넓이의 합=외접원 넓이→어두운 부분=직사각형 넓이 120",
+            "primaryMethod": "피타고라스 정리로 직사각형의 대각선을 구한 뒤 반원 넓이의 합 관계를 이용한다.",
+            "decisiveStep": "대각선은 17이고 네 반원의 넓이 합이 외접원 넓이와 같아 음영 넓이는 직사각형 넓이 120이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -1858,42 +2062,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:21a47938d985c6843d678c02985262eff594db32271e5c6f61312baafe29a40a"
+        "evidenceSha": "sha256:3b0ce00056b1fb9859882199797ec2ca64d85af27bf020def304f9ac25d774b8"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:61a1ddf6c16828aaf1df63df0e5d7a31e20f29697ad7e85a1d4bb806e11c705a",
-        "solutionHash": "sha256:06b336ae221889b80e356619f8c317d48dc442eb180ff53a61f8d04645d415d6",
+        "solutionHash": "sha256:430f92fd746b66ed6c7ba2b633a9550dc1d7497f533768cee48ddecc3d23d617",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 9의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:032425c27a11ded57232de0bb1934328811ae7e67f033a51e1948642bee82ea3",
-        "evidenceSha": "sha256:49517efd80e572b1bc1b9eed93f2ddc71012a5e77b896fac65514359408a5436"
+        "rationale": "q9 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:1c11bd92d99df3a8d77986e3fa5035764eff7fa06368e2f7460ebdd9f22e67b8",
+        "evidenceSha": "sha256:d62d9acde2d769a35da5854561b26d90557bb8a7d73b81cf74dc3262a3af5d8e"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:61a1ddf6c16828aaf1df63df0e5d7a31e20f29697ad7e85a1d4bb806e11c705a",
-        "inputBundleSha": "sha256:631e0090bf52e835e1d123658bdf2c1e9a4b825f46b4bd37f41088c135d650a2",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:8e1434945abfe56f82f9c517150fca0451f96cef84b55eaf376a57ca82f56c50",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:b329cdd73938c8e724b0453314aa9b0e99ae8160119be4197a2445a32f6d6ad6"
+        "evidenceSha": "sha256:c55e8ad3e28ab3cbac898058545764a7beeece74ffeff9ae4c360e5e30ea228c"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87",
       "sourceOrdinal": 10,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87",
@@ -1906,7 +2137,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:2731d7971e4448932ef1a344ea64e5a88fc6bdc4220a9cb453d3a05ca837cc12",
+          "solutionHash": "sha256:23d7f26b4ce5be499a45174283ed38011ae78ff8209e732f09b559bfd45030f2",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -1919,8 +2150,8 @@
           "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
         },
         "semanticDecision": {
-          "primaryMethod": "피타고라스 정리와 직각삼각형의 닮음을 이용해 높이에 필요한 길이를 구한다.",
-          "decisiveStep": "AC=6, CM=AC²/BC=18/5, 넓이=18",
+          "primaryMethod": "피타고라스 정리와 직각삼각형에서 생기는 닮음을 이용해 필요한 높이와 넓이를 구한다.",
+          "decisiveStep": "AC=6이고 CM=AC²/BC=18/5이므로 △ACG의 넓이는 18이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -1934,7 +2165,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:0c6f6222e4868a8486498fe051cc86a806f6e6057f2f4fdfa43dd51d7b5e2b55",
-        "inputBundleSha": "sha256:171df0a2af2d6bfb00db84b6f75cd87bf65bd214a8b2f064d2fa15fe5b9908ef",
+        "inputBundleSha": "sha256:22834daecb818ed34dc33d1005d4922bfb038d2b6d8cc8a688a11d7558033bf7",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -1976,7 +2207,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:2731d7971e4448932ef1a344ea64e5a88fc6bdc4220a9cb453d3a05ca837cc12",
+            "solutionHash": "sha256:23d7f26b4ce5be499a45174283ed38011ae78ff8209e732f09b559bfd45030f2",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -1989,8 +2220,8 @@
             "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
           },
           "semanticDecision": {
-            "primaryMethod": "피타고라스 정리와 직각삼각형의 닮음을 이용해 높이에 필요한 길이를 구한다.",
-            "decisiveStep": "AC=6, CM=AC²/BC=18/5, 넓이=18",
+            "primaryMethod": "피타고라스 정리와 직각삼각형에서 생기는 닮음을 이용해 필요한 높이와 넓이를 구한다.",
+            "decisiveStep": "AC=6이고 CM=AC²/BC=18/5이므로 △ACG의 넓이는 18이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -2066,50 +2297,77 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:266a981cb6693ba66964a47c09fdecd426e1bb53ce6f8a8365242978db1fb1b5"
+        "evidenceSha": "sha256:65c074e1f77abd295ffb889440860e5c3c1f97c4c81783d7b5c9923df1484465"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:0c6f6222e4868a8486498fe051cc86a806f6e6057f2f4fdfa43dd51d7b5e2b55",
-        "solutionHash": "sha256:2731d7971e4448932ef1a344ea64e5a88fc6bdc4220a9cb453d3a05ca837cc12",
+        "solutionHash": "sha256:23d7f26b4ce5be499a45174283ed38011ae78ff8209e732f09b559bfd45030f2",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 10의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:dda62492ddccee1ef96ca0fbdceee614d9abc60434199da1f4fd22275b488712",
-        "evidenceSha": "sha256:ea49614ea0a38a0fdff96ae3260b41afef04babb92a15156bf8d01ba35d77682"
+        "rationale": "q10 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:c67f8c0f066d3cc0a6cdd037492cd8e62f51deedfc4380692912ef521d516d34",
+        "evidenceSha": "sha256:bb7e56973614f8d8d448d0eab4452f53f1072e6dd55a2f476adef4cf7aec8535"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:0c6f6222e4868a8486498fe051cc86a806f6e6057f2f4fdfa43dd51d7b5e2b55",
-        "inputBundleSha": "sha256:171df0a2af2d6bfb00db84b6f75cd87bf65bd214a8b2f064d2fa15fe5b9908ef",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:22834daecb818ed34dc33d1005d4922bfb038d2b6d8cc8a688a11d7558033bf7",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [
           {
             "key": "CC_TRIANGLE_AREA",
-            "status": "FINAL",
-            "reason": "primary 선분비/피타고라스 경로 밖에서 최종 넓이 계산에 삼각형 넓이 개념이 실제 필요",
-            "sourceFingerprint": "sha256:0c6f6222e4868a8486498fe051cc86a806f6e6057f2f4fdfa43dd51d7b5e2b55",
-            "inputBundleSha": "sha256:171df0a2af2d6bfb00db84b6f75cd87bf65bd214a8b2f064d2fa15fe5b9908ef"
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
           }
         ],
         "conditionDecisions": [],
-        "reason": "확정 해설의 primary 밖 decisive concept만 ACTIVE CrossConcept로 기록",
-        "evidenceSha": "sha256:ce261bd968c59c258c3641ec1d37415be1eacedc5f6ca0e352da2056c6e9d1f4"
+        "evidenceSha": "sha256:183ca0af692c10aa27a6a730b8f31e1e35935d38fb2a61a44f96ecac222438f5"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-07",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_TRIANGLE_AREA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_390ecd771302444f0cd24c796e540bbc66940a9f0d1fd25cfbdc457c9c07d780",
       "sourceOrdinal": 11,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_390ecd771302444f0cd24c796e540bbc66940a9f0d1fd25cfbdc457c9c07d780",
@@ -2122,7 +2380,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:b6fd26c35dc26d9691f086d6c29fa7b97e788c405b82f7b01e369920ef5441fb",
+          "solutionHash": "sha256:27a042350911ce7dc4beac51eaa1c5ba0cd3c77c06d9b4bd278c7e6a407340dd",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -2135,8 +2393,8 @@
           "subUnitKey": "M2-08-PROBABILITY_COUNTING"
         },
         "semanticDecision": {
-          "primaryMethod": "두 주사위의 눈을 순서쌍으로 나누어 조건을 만족하는 경우를 센다.",
-          "decisiveStep": "|a-b|=1인 10가지와 |a-b|=3인 2가지를 합해 12",
+          "primaryMethod": "서로 다른 두 주사위의 눈을 순서쌍으로 나누어 눈의 차가 조건을 만족하는 경우를 센다.",
+          "decisiveStep": "|a-b|=2인 경우 8가지와 |a-b|=4인 경우 4가지를 합해 12가지이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -2150,7 +2408,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:ef3e956d3a17d496ec2b6b061c4ad9e6c3072d2989f8beb0364da41e8a9c35d0",
-        "inputBundleSha": "sha256:80357c4249b75f76cb360b1f723ee36aadbc4b3c7766a89057e5cefcb83760cf",
+        "inputBundleSha": "sha256:361fa4358c457c3eaf63e8ac807b07730ce7728d5f41db8ff6929a895dec80d7",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -2192,7 +2450,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:b6fd26c35dc26d9691f086d6c29fa7b97e788c405b82f7b01e369920ef5441fb",
+            "solutionHash": "sha256:27a042350911ce7dc4beac51eaa1c5ba0cd3c77c06d9b4bd278c7e6a407340dd",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -2205,8 +2463,8 @@
             "subUnitKey": "M2-08-PROBABILITY_COUNTING"
           },
           "semanticDecision": {
-            "primaryMethod": "두 주사위의 눈을 순서쌍으로 나누어 조건을 만족하는 경우를 센다.",
-            "decisiveStep": "|a-b|=1인 10가지와 |a-b|=3인 2가지를 합해 12",
+            "primaryMethod": "서로 다른 두 주사위의 눈을 순서쌍으로 나누어 눈의 차가 조건을 만족하는 경우를 센다.",
+            "decisiveStep": "|a-b|=2인 경우 8가지와 |a-b|=4인 경우 4가지를 합해 12가지이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -2282,42 +2540,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:d0b2d5719e82df8502f52a20c61c09b65e098b947faa06b55d29717715f3550b"
+        "evidenceSha": "sha256:b0e92e99f4f79d544c077facf25e8718042dddef5c72cc7bcad1b6a22abd7f2f"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:ef3e956d3a17d496ec2b6b061c4ad9e6c3072d2989f8beb0364da41e8a9c35d0",
-        "solutionHash": "sha256:b6fd26c35dc26d9691f086d6c29fa7b97e788c405b82f7b01e369920ef5441fb",
+        "solutionHash": "sha256:27a042350911ce7dc4beac51eaa1c5ba0cd3c77c06d9b4bd278c7e6a407340dd",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 11의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:f0fd0619a4745ee5139ea318f1a50bb237362f6b79910857d6663adbc9f9cd96",
-        "evidenceSha": "sha256:ae9cc8e79060e613d953f1c007eba3c1ef3b008bd3b467b93a2556164dded3a5"
+        "rationale": "q11 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:d65292d9a8b54c874aea8aabfef368a30de0cbc6a757e9f73a8731f0513dc573",
+        "evidenceSha": "sha256:4c456ccba9bde0dc531841245bd8cbd2d7389090d10102de0e21402bff5ad34a"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:ef3e956d3a17d496ec2b6b061c4ad9e6c3072d2989f8beb0364da41e8a9c35d0",
-        "inputBundleSha": "sha256:80357c4249b75f76cb360b1f723ee36aadbc4b3c7766a89057e5cefcb83760cf",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:361fa4358c457c3eaf63e8ac807b07730ce7728d5f41db8ff6929a895dec80d7",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:fbbbfbc0112e8a9f2eca7335ee5d403ee4f1c4a5e00041113a069e36ad66cda2"
+        "evidenceSha": "sha256:7b98f50c82d0c55c440633e5d632092914b454f899ede6b5a59508929b849c37"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_f757ff18a35d5ea0e85c8f7835cf155abf8b1e4bfefa0f1d940d83f10dc8e9ab",
       "sourceOrdinal": 12,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_f757ff18a35d5ea0e85c8f7835cf155abf8b1e4bfefa0f1d940d83f10dc8e9ab",
@@ -2330,7 +2615,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:e0e023cc4fa461f5953575d0c903011c726ee99539079e1476de89abe30fed6f",
+          "solutionHash": "sha256:bf513479a4816e3e64e32cb9c467e73befb9f4f6ec92925cfa56937a322328c7",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -2343,8 +2628,8 @@
           "subUnitKey": "M2-08-PROBABILITY_COUNTING"
         },
         "semanticDecision": {
-          "primaryMethod": "십의 자리와 일의 자리를 단계별로 선택해 조건을 만족하는 수를 센다.",
-          "decisiveStep": "일의 자리 0이면4개, 2·4이면 각4개→12",
+          "primaryMethod": "십의 자리와 일의 자리를 단계별로 선택하여 조건을 만족하는 두 자리 짝수의 개수를 센다.",
+          "decisiveStep": "일의 자리가 0이면 4개, 2 또는 4이면 각각 4개여서 모두 12개이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -2358,7 +2643,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:22e718f6fbe8a6a020b085145397cd414d9ae5585ec0f9d5e6412da7af4515a2",
-        "inputBundleSha": "sha256:5c562017e005853b6efebead9473ebd8a59d554ba5a250ef0dca878cba405b0c",
+        "inputBundleSha": "sha256:f82766ee9b9dfc25b708af69ff9bc2b35058fa879d87a0d42a71c98222150e43",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -2400,7 +2685,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:e0e023cc4fa461f5953575d0c903011c726ee99539079e1476de89abe30fed6f",
+            "solutionHash": "sha256:bf513479a4816e3e64e32cb9c467e73befb9f4f6ec92925cfa56937a322328c7",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -2413,8 +2698,8 @@
             "subUnitKey": "M2-08-PROBABILITY_COUNTING"
           },
           "semanticDecision": {
-            "primaryMethod": "십의 자리와 일의 자리를 단계별로 선택해 조건을 만족하는 수를 센다.",
-            "decisiveStep": "일의 자리 0이면4개, 2·4이면 각4개→12",
+            "primaryMethod": "십의 자리와 일의 자리를 단계별로 선택하여 조건을 만족하는 두 자리 짝수의 개수를 센다.",
+            "decisiveStep": "일의 자리가 0이면 4개, 2 또는 4이면 각각 4개여서 모두 12개이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -2490,42 +2775,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:58960f1f995d2607a634d3c313613b9e5b5e396f44f31f471244a3071954b055"
+        "evidenceSha": "sha256:56b9289396fabef744c7209da1e3406e212f37922ba1d9f470a8899e38535322"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:22e718f6fbe8a6a020b085145397cd414d9ae5585ec0f9d5e6412da7af4515a2",
-        "solutionHash": "sha256:e0e023cc4fa461f5953575d0c903011c726ee99539079e1476de89abe30fed6f",
+        "solutionHash": "sha256:bf513479a4816e3e64e32cb9c467e73befb9f4f6ec92925cfa56937a322328c7",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 12의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:f1887b3fe49ee4c4c95be104e9a58a8f1a09746a1c4c5e151345e92ac88b896e",
-        "evidenceSha": "sha256:aecef523d313dbfa4394d66062257748b01b8565298614fa7ff35b377af8a9a2"
+        "rationale": "q12 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:20b0ffe95a1d14fe22a5ff623d9ec51550ac5e25dc24e2871c93e29088554ffe",
+        "evidenceSha": "sha256:e95bb15db55ed804b406f5e61d7bf03859537b00c64d00053651df30670dbafd"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:22e718f6fbe8a6a020b085145397cd414d9ae5585ec0f9d5e6412da7af4515a2",
-        "inputBundleSha": "sha256:5c562017e005853b6efebead9473ebd8a59d554ba5a250ef0dca878cba405b0c",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:f82766ee9b9dfc25b708af69ff9bc2b35058fa879d87a0d42a71c98222150e43",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:72d6c207e3f51924ec817964934a49d25b0d5cbdfa788fd3c0f4fe01c859dce1"
+        "evidenceSha": "sha256:1780bf5fe73ae04601f75493edce4606218a83c042133651df94ee051790c0ea"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_f68c0134e44f19ff3cc3c8532a2468379cf618e6132eeec03df18a1a62031581",
       "sourceOrdinal": 13,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_f68c0134e44f19ff3cc3c8532a2468379cf618e6132eeec03df18a1a62031581",
@@ -2538,7 +2850,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:ecd8add7f08d50f27679f20caaf8b3d05e01300e0726b643315c852525f0594e",
+          "solutionHash": "sha256:c5e662e176b9d1f2426667c6b3ffed446ee2cb7edf2e24a921b9a744b80542ab",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -2551,8 +2863,8 @@
           "subUnitKey": "M2-08-PROBABILITY_COUNTING"
         },
         "semanticDecision": {
-          "primaryMethod": "인접 영역과 다른 색을 칠하는 선택 수를 단계별로 곱한다.",
-          "decisiveStep": "B 4가지, C 3가지, A 2가지, D 2가지→48",
+          "primaryMethod": "인접한 영역끼리 다른 색이 되도록 각 영역의 선택 수를 단계별로 곱한다.",
+          "decisiveStep": "B 4가지, C 3가지, A 2가지, D 2가지이므로 48가지이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -2566,7 +2878,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:ac92042b2be6f205bf33246e251b68fcfdc0075d40c400a140ab2ed7485e3bc1",
-        "inputBundleSha": "sha256:dd2597995ca8fd50bebe7fd32e584c89c7b308cce839f0927811e2688fa6f616",
+        "inputBundleSha": "sha256:beb1d38efc87f24a320c3c864efced1f9dda1fa3321cd6117248e595062bac1f",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -2608,7 +2920,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:ecd8add7f08d50f27679f20caaf8b3d05e01300e0726b643315c852525f0594e",
+            "solutionHash": "sha256:c5e662e176b9d1f2426667c6b3ffed446ee2cb7edf2e24a921b9a744b80542ab",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -2621,8 +2933,8 @@
             "subUnitKey": "M2-08-PROBABILITY_COUNTING"
           },
           "semanticDecision": {
-            "primaryMethod": "인접 영역과 다른 색을 칠하는 선택 수를 단계별로 곱한다.",
-            "decisiveStep": "B 4가지, C 3가지, A 2가지, D 2가지→48",
+            "primaryMethod": "인접한 영역끼리 다른 색이 되도록 각 영역의 선택 수를 단계별로 곱한다.",
+            "decisiveStep": "B 4가지, C 3가지, A 2가지, D 2가지이므로 48가지이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -2698,42 +3010,69 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:2ca5600ecfaafb6a119d9d2988871de8bb2a4e251fc0b8027756f5abeabf696d"
+        "evidenceSha": "sha256:7ece62d7600c41182e1b1823bc2f29399b22dfa40d8b6d19cd495b5a1d7ea448"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:ac92042b2be6f205bf33246e251b68fcfdc0075d40c400a140ab2ed7485e3bc1",
-        "solutionHash": "sha256:ecd8add7f08d50f27679f20caaf8b3d05e01300e0726b643315c852525f0594e",
+        "solutionHash": "sha256:c5e662e176b9d1f2426667c6b3ffed446ee2cb7edf2e24a921b9a744b80542ab",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 13의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:ae80cac80ac910d112229bd2162f5cb850e572aa3e7a16eaa03e47891a3b7749",
-        "evidenceSha": "sha256:c071b0c1ab08b247ff83e3d9f0e1a3355699911eb88864806b2cfea67034f2db"
+        "rationale": "q13 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:6a4b9651ccf2878e990766953ec1259dca133d13dade0efeeeb15d27bb361ee6",
+        "evidenceSha": "sha256:366ea3ef99880aa388600e8040c6844e95323c122f9bde9cf1f548f16e45a969"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:ac92042b2be6f205bf33246e251b68fcfdc0075d40c400a140ab2ed7485e3bc1",
-        "inputBundleSha": "sha256:dd2597995ca8fd50bebe7fd32e584c89c7b308cce839f0927811e2688fa6f616",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:beb1d38efc87f24a320c3c864efced1f9dda1fa3321cd6117248e595062bac1f",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:1236df2d1be70abb9f022a5aeddd6802518968f67ad0c7a7e33fc4929613d9fd"
+        "evidenceSha": "sha256:c838609d5a5f88dfc0ecc4f53146d5010b2a757431331b6a3a510ca23aa4e0df"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_96a3b46003d94242ee31f25390e05ae48f9144cd2821f425a033bdd894d1b0a7",
       "sourceOrdinal": 14,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_96a3b46003d94242ee31f25390e05ae48f9144cd2821f425a033bdd894d1b0a7",
@@ -2746,7 +3085,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:0a02bc4acdbb0547311281379d52a703256a108d3431d92aa510114967204630",
+          "solutionHash": "sha256:8778db1d050688885dabdccfd6a4b7a90765ab45f30fd009cd54e83aad7edada",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -2759,8 +3098,8 @@
           "subUnitKey": "M2-08-PROBABILITY_COUNTING"
         },
         "semanticDecision": {
-          "primaryMethod": "5개 점에서 순서 없이 두 점을 선택하여 선분의 개수를 센다.",
-          "decisiveStep": "5개 중 2개 선택→10",
+          "primaryMethod": "원 위의 5개 점에서 순서 없이 두 점을 선택해 만들 수 있는 선분의 개수를 센다.",
+          "decisiveStep": "5개 점 중 2개를 고르는 경우는 10가지이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -2774,7 +3113,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:af44e453473d2ac62c9704f6333342fbf8355da6c26bba0c05c4c14c414d6658",
-        "inputBundleSha": "sha256:3836c1c2116d250749642fe58637b493657e8ef0e259fd71458f4240ed26eb23",
+        "inputBundleSha": "sha256:844bc0115c824f163e007f40cb55e6029d946487a0944cc8fd17e2231fd7680d",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -2818,7 +3157,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:0a02bc4acdbb0547311281379d52a703256a108d3431d92aa510114967204630",
+            "solutionHash": "sha256:8778db1d050688885dabdccfd6a4b7a90765ab45f30fd009cd54e83aad7edada",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -2831,8 +3170,8 @@
             "subUnitKey": "M2-08-PROBABILITY_COUNTING"
           },
           "semanticDecision": {
-            "primaryMethod": "5개 점에서 순서 없이 두 점을 선택하여 선분의 개수를 센다.",
-            "decisiveStep": "5개 중 2개 선택→10",
+            "primaryMethod": "원 위의 5개 점에서 순서 없이 두 점을 선택해 만들 수 있는 선분의 개수를 센다.",
+            "decisiveStep": "5개 점 중 2개를 고르는 경우는 10가지이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -2908,42 +3247,86 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:9802da5b59d595775f4b32765b9fd62cb69d79ab3b35ebca132e4350a7d7b99c"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:69371df9146ce6804715f584751c5ff0d5d0224f838a052cbe092e97695771ef"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:af44e453473d2ac62c9704f6333342fbf8355da6c26bba0c05c4c14c414d6658",
-        "solutionHash": "sha256:0a02bc4acdbb0547311281379d52a703256a108d3431d92aa510114967204630",
+        "solutionHash": "sha256:8778db1d050688885dabdccfd6a4b7a90765ab45f30fd009cd54e83aad7edada",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 14의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:242d095c1bc87508dc9e5be5b2e00549b03357ee0c4adb9dbdf3e4f7da52df9e",
-        "evidenceSha": "sha256:ea2a7a9e653479679d3a28695d6fcce3a0aa0235cb54747c941f2644a6763aae"
+        "rationale": "q14 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:0e72d1f6e791d10a0ea15b951a73743f4a2373279c18621167e79d42400725f7",
+        "evidenceSha": "sha256:eaf5f4994de92df0b3d233453227b771bddf409279a051347fb2dae162da8b30"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:af44e453473d2ac62c9704f6333342fbf8355da6c26bba0c05c4c14c414d6658",
-        "inputBundleSha": "sha256:3836c1c2116d250749642fe58637b493657e8ef0e259fd71458f4240ed26eb23",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:844bc0115c824f163e007f40cb55e6029d946487a0944cc8fd17e2231fd7680d",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:3f51b9a2e2813769edfebd8dd2f84f6cf164696ed4382ce27b34b03d86201fd0"
+        "evidenceSha": "sha256:0e2a11c8304f96a6769002b5b31d7d5c2ea0fc545fa3c21f7a7c95750f64cb2a"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+          "templateKey": "TPL_COMBINATION_SELECTION",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_b482ca36af05654e55333172e5d37be318ea5008c64ca0184779bdb47bcb1303",
       "sourceOrdinal": 15,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_b482ca36af05654e55333172e5d37be318ea5008c64ca0184779bdb47bcb1303",
@@ -2956,7 +3339,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:24432505735159f51bb9c7b79fb2181744778e1154fc918e9a41dac168fa4721",
+          "solutionHash": "sha256:d25438085e449e4c6baf9d8e5fa9c097fa0725ed86a919353ca092d3bb04cf5e",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -2969,8 +3352,8 @@
           "subUnitKey": "M2-08-PROBABILITY_COUNTING"
         },
         "semanticDecision": {
-          "primaryMethod": "양 끝에 A,B를 배치한 뒤 나머지 문자를 배열한다.",
-          "decisiveStep": "끝 배치 2가지×가운데 3! =12",
+          "primaryMethod": "양 끝에 A와 B를 배치한 뒤 나머지 세 문자를 가운데에 배열한다.",
+          "decisiveStep": "양 끝 배치 2가지와 가운데 3!가지를 곱해 12가지이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -2984,7 +3367,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:6c17f7355decee16f1f9d1a4837bb67d92cf4745651f7b3518df9b601fbb62c2",
-        "inputBundleSha": "sha256:6297d60dce7c0030c3ce3e7916025df2781dd0ce1f1ea0420a808f15d56b8ee3",
+        "inputBundleSha": "sha256:73afe6b568ebce6d21ebd58ad6bbfcc19f28e1fa42a793f1dceaa7ca6d954769",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -3028,7 +3411,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:24432505735159f51bb9c7b79fb2181744778e1154fc918e9a41dac168fa4721",
+            "solutionHash": "sha256:d25438085e449e4c6baf9d8e5fa9c097fa0725ed86a919353ca092d3bb04cf5e",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -3041,8 +3424,8 @@
             "subUnitKey": "M2-08-PROBABILITY_COUNTING"
           },
           "semanticDecision": {
-            "primaryMethod": "양 끝에 A,B를 배치한 뒤 나머지 문자를 배열한다.",
-            "decisiveStep": "끝 배치 2가지×가운데 3! =12",
+            "primaryMethod": "양 끝에 A와 B를 배치한 뒤 나머지 세 문자를 가운데에 배열한다.",
+            "decisiveStep": "양 끝 배치 2가지와 가운데 3!가지를 곱해 12가지이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -3118,42 +3501,86 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:11a3d766e68d8f8bbdd8886cc0f5695449f097874896c1a95c36aa0ef8b19962"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:857679f249ecde18e1a4b4e5cbb9f182257b32a8e31c505dc7c335868babcd57"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:6c17f7355decee16f1f9d1a4837bb67d92cf4745651f7b3518df9b601fbb62c2",
-        "solutionHash": "sha256:24432505735159f51bb9c7b79fb2181744778e1154fc918e9a41dac168fa4721",
+        "solutionHash": "sha256:d25438085e449e4c6baf9d8e5fa9c097fa0725ed86a919353ca092d3bb04cf5e",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 15의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:286db8b777d4f85cee40af7df7e2ed71954745ccc155bcab6f72cd1c026f9c46",
-        "evidenceSha": "sha256:ae2351425bb033f0dd78b0725db37a6e0a1d5c23f6b0177d3a7857d615d3a896"
+        "rationale": "q15 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:967835fc58d2c4046173ac331b4cb5102f6c5ee98cfe3eb7fda279385faa7d11",
+        "evidenceSha": "sha256:b0bf7acd206246c6dde1cd21199a4e91062c09aaf9ebbd708f627307420b2f51"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:6c17f7355decee16f1f9d1a4837bb67d92cf4745651f7b3518df9b601fbb62c2",
-        "inputBundleSha": "sha256:6297d60dce7c0030c3ce3e7916025df2781dd0ce1f1ea0420a808f15d56b8ee3",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:73afe6b568ebce6d21ebd58ad6bbfcc19f28e1fa42a793f1dceaa7ca6d954769",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:5c28d2a2e192f505e64a2302a78d06f00eb0916d954143217ae0fcc73fcffd7a"
+        "evidenceSha": "sha256:73e2656651104cc1408ceffad036a02e1495a6c42b87cf368022e5971283cf9f"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+          "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_48b073685f281394e5fcd2a5f0bc7f478e9274835dc672b5386c4318c7ce0a38",
       "sourceOrdinal": 16,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_48b073685f281394e5fcd2a5f0bc7f478e9274835dc672b5386c4318c7ce0a38",
@@ -3166,7 +3593,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:bf828bbe87576492a51c30a8315b2c0ef2e2c5b2889c45124e7faa0fb93f34f9",
+          "solutionHash": "sha256:7b3bfdb5a77dbbc5f59834a3181f9185e6a68bf4489c5e6c97ebc0fc9b938090",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -3179,8 +3606,8 @@
           "subUnitKey": "M2-08-PROBABILITY_BASIC"
         },
         "semanticDecision": {
-          "primaryMethod": "확률의 범위와 확실·불가능 사건의 값을 이용해 옳지 않은 설명을 판정한다.",
-          "decisiveStep": "눈의 차가 3인 사건은 0도 1도 아니므로 ①",
+          "primaryMethod": "확률의 범위와 확실한 사건·불가능한 사건의 값을 이용해 옳지 않은 설명을 판정한다.",
+          "decisiveStep": "두 눈의 차가 3인 사건은 일어날 수도 있고 일어나지 않을 수도 있어 확률이 0도 1도 아니다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -3194,7 +3621,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:e8b4fbb8d5f25093e51c0c7fc77ce8ebda514f0997c95f0e9fd929072f4221ed",
-        "inputBundleSha": "sha256:d9f8cdb4d65f1be07fa804ac3c84588a1e607128cdbd27b202e83dcab804d5db",
+        "inputBundleSha": "sha256:c9bb31fb3c96e0c83f7af009b5a5b75071ae0c8a344159ab85e769403877df5e",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -3238,7 +3665,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:bf828bbe87576492a51c30a8315b2c0ef2e2c5b2889c45124e7faa0fb93f34f9",
+            "solutionHash": "sha256:7b3bfdb5a77dbbc5f59834a3181f9185e6a68bf4489c5e6c97ebc0fc9b938090",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -3251,8 +3678,8 @@
             "subUnitKey": "M2-08-PROBABILITY_BASIC"
           },
           "semanticDecision": {
-            "primaryMethod": "확률의 범위와 확실·불가능 사건의 값을 이용해 옳지 않은 설명을 판정한다.",
-            "decisiveStep": "눈의 차가 3인 사건은 0도 1도 아니므로 ①",
+            "primaryMethod": "확률의 범위와 확실한 사건·불가능한 사건의 값을 이용해 옳지 않은 설명을 판정한다.",
+            "decisiveStep": "두 눈의 차가 3인 사건은 일어날 수도 있고 일어나지 않을 수도 있어 확률이 0도 1도 아니다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -3328,85 +3755,168 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:ad06a56ffc470142b55ac4693227c90a73a8826db9b83ba8187df70caca16357"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:8a4a079a5d345f26721fbc35d02be40017b89a34a48f74c0eb03b51d65b451ce"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:e8b4fbb8d5f25093e51c0c7fc77ce8ebda514f0997c95f0e9fd929072f4221ed",
-        "solutionHash": "sha256:bf828bbe87576492a51c30a8315b2c0ef2e2c5b2889c45124e7faa0fb93f34f9",
+        "solutionHash": "sha256:7b3bfdb5a77dbbc5f59834a3181f9185e6a68bf4489c5e6c97ebc0fc9b938090",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 16의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:4879e564ff6cfff59aa7e7db695855aa5342dbe8ac1f43a246fe9404d1180684",
-        "evidenceSha": "sha256:0c5c69ce88ba4db3eb788797e8c8306d6e7397ffbd5b75399224ad1f68dc8020"
+        "rationale": "q16 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:7a155262247ed0543fedaaafe2c601d3980eea027dbd8fd788b8577aad0449c5",
+        "evidenceSha": "sha256:e8d3079b64f0df2de2278bf1941d9ebae563fc1fb6150157a1b023d20ae02e12"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:e8b4fbb8d5f25093e51c0c7fc77ce8ebda514f0997c95f0e9fd929072f4221ed",
-        "inputBundleSha": "sha256:d9f8cdb4d65f1be07fa804ac3c84588a1e607128cdbd27b202e83dcab804d5db",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:c9bb31fb3c96e0c83f7af009b5a5b75071ae0c8a344159ab85e769403877df5e",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:20648c4f6f4c054b0dcf9dee26810c15cd694944950a5a9ad3f003ef579e831b"
+        "evidenceSha": "sha256:b5ad41fc7e313c96528f80af2a6e25716e0bf17c63ba057054b6b46c8aedcd6c"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
       "sourceOrdinal": 17,
       "disposition": "TRUE_HOLD",
-      "sourceIdentity": {
-        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
-        "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
-        "sourceIdentityKey": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
-        "sourceOrdinal": 17,
-        "contentHash": "sha256:920b43f6abaa268ea58941d42490240e022efb9dd5946c9a220c9b51333c1155",
-        "choicesHash": "sha256:eae17350a1f2799205c0a9928a7e29bf3b38f8417457a60d34b1a4ee0b163a09",
-        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
-        "sourceFingerprint": "sha256:f0f9f93f9b8cfb351e8bde81ac99b89612390141ceb40ef61453b2217127c18a"
+      "input": {
+        "sourceIdentity": {
+          "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:59ef0d1e03afd85f77dbd115af8ce668fee667fe9117f9fc169e630da373b139",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "주어진 두 주변확률만으로 결합사건의 확률이 결정되는지 먼저 확인한다.",
+          "decisiveStep": "독립 여부가 주어지지 않아 두 사람이 만나지 못할 확률은 유일하게 결정되지 않는다."
+        }
       },
-      "resolverInput": null,
-      "resolverEvidence": null,
+      "resolverEvidence": {},
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
-        "sourceFingerprint": "sha256:f0f9f93f9b8cfb351e8bde81ac99b89612390141ceb40ef61453b2217127c18a",
-        "solutionHash": "sha256:7896647cbef99cdd74e626d13f0b7c43185d25240e6bb36b624997e3a0e2237a",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "solutionHash": "sha256:59ef0d1e03afd85f77dbd115af8ce668fee667fe9117f9fc169e630da373b139",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 17의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:de5efd57448d46a31211880fa5049939b17d83cd11ab0632faba60417f73d517",
-        "evidenceSha": "sha256:9b87183c5db2ae8610dc54520a15b01f06e2fb71df775a7cde2068fae0f7a771"
+        "rationale": "q17 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:67ad9f5a4c558f751c735d09a35458d9ce1be823be40c91c23c426032aea4d8f",
+        "evidenceSha": "sha256:e08c43ba39ea1fa9ebfa2b2d4da29721be15f7cedee167ef768c157dca51e375"
       },
-      "relationalEvidence": null,
-      "holdEvidence": {
-        "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-        "deterministicUncertainty": true,
-        "detail": "민아와 우빈의 개별 약속 이행확률만 주어졌으며 두 사건의 독립 또는 결합확률 정보가 없어 '만나지 않는다'의 확률이 유일하게 결정되지 않음",
-        "protectedAnswerPreserved": "④",
-        "sourceSolutionReplacedWithHoldSafeStudentExplanation": true
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "inputBundleSha": "sha256:e52eb2dafc0a6b767ffa4b9ab0edf12a6c1514ef303f2e6fc3d9a148c0ddb6a1",
+        "candidateFieldsUsedAsSemanticInput": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:f154ab48218fb0e4226d61fdcdca53e0e1cec94c1b846ad4dc00740c433cdb13"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "BASIC_HARD_HOLD",
+        "resolvablePending": false,
+        "reason": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
+        "humanRequired": true
       }
     },
     {
       "questionUid": "qid_v1_55a8e289c5da640ded8d966f3e8e6f5b10f5d37a3141b123a86b3d61f49fc2a8",
       "sourceOrdinal": 18,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_55a8e289c5da640ded8d966f3e8e6f5b10f5d37a3141b123a86b3d61f49fc2a8",
@@ -3419,7 +3929,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:28000183fbd997fcfce6d0163f48b03e93923ed9f7a9945ef1e79a7d6b7aeccc",
+          "solutionHash": "sha256:cc35a1ff9413cb6cff16bee370809eb59dfdf54d2a2a9995c2d5167bae0f85ca",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -3432,8 +3942,8 @@
           "subUnitKey": "M2-08-PROBABILITY_BASIC"
         },
         "semanticDecision": {
-          "primaryMethod": "두 사건의 합집합을 직접 세어 확률을 구한다.",
-          "decisiveStep": "2의 배수 또는 5의 배수={2,4,5,6,8}→5/8",
+          "primaryMethod": "두 사건의 합집합에 해당하는 결과를 직접 세어 확률을 구한다.",
+          "decisiveStep": "2의 배수 또는 5의 배수는 {2,4,5,6,8}의 5개이므로 확률은 5/8이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -3447,7 +3957,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:68a578aec9a4899f2327e9f75aba247f3797ec1ec661b4fe45d5afa01a7a33cf",
-        "inputBundleSha": "sha256:ab92aef009018d929b253d53a67031f1703a642b3992d841ce77b4f1122e704a",
+        "inputBundleSha": "sha256:642bb6c77053050765964b03387573a71333129552302a8f4608779bca3315de",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -3491,7 +4001,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:28000183fbd997fcfce6d0163f48b03e93923ed9f7a9945ef1e79a7d6b7aeccc",
+            "solutionHash": "sha256:cc35a1ff9413cb6cff16bee370809eb59dfdf54d2a2a9995c2d5167bae0f85ca",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -3504,8 +4014,8 @@
             "subUnitKey": "M2-08-PROBABILITY_BASIC"
           },
           "semanticDecision": {
-            "primaryMethod": "두 사건의 합집합을 직접 세어 확률을 구한다.",
-            "decisiveStep": "2의 배수 또는 5의 배수={2,4,5,6,8}→5/8",
+            "primaryMethod": "두 사건의 합집합에 해당하는 결과를 직접 세어 확률을 구한다.",
+            "decisiveStep": "2의 배수 또는 5의 배수는 {2,4,5,6,8}의 5개이므로 확률은 5/8이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -3581,42 +4091,86 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:2f48496fe313a15893b59ccdc9cf148ae26c1e21d141f7589f3c4e30ed78a407"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:a49e7bfa13cd7c1298af638d28988e8eab1129f3962833672b350954bca8be19"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:68a578aec9a4899f2327e9f75aba247f3797ec1ec661b4fe45d5afa01a7a33cf",
-        "solutionHash": "sha256:28000183fbd997fcfce6d0163f48b03e93923ed9f7a9945ef1e79a7d6b7aeccc",
+        "solutionHash": "sha256:cc35a1ff9413cb6cff16bee370809eb59dfdf54d2a2a9995c2d5167bae0f85ca",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 18의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:7ef6942ed20cdc77d8a4852d658620e7d7991405fbe03e44df8fae976aa45f5e",
-        "evidenceSha": "sha256:7725484266baff0dcf55d851bd3bcfd14335bdd356c18be385b0624036910101"
+        "rationale": "q18 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:e480577f0d1185c8ad183737e67b97ac14b83e9936c375a931de5f7ef36c9b7d",
+        "evidenceSha": "sha256:a49893e2fe39845f5452e6527d6086039863c722c451ab38eeed96b1e9d8855c"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:68a578aec9a4899f2327e9f75aba247f3797ec1ec661b4fe45d5afa01a7a33cf",
-        "inputBundleSha": "sha256:ab92aef009018d929b253d53a67031f1703a642b3992d841ce77b4f1122e704a",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:642bb6c77053050765964b03387573a71333129552302a8f4608779bca3315de",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:35cead11d8f235f41b9f84753f4c6e126ba6a54c18a44fef1f556f92b76476b6"
+        "evidenceSha": "sha256:64a69356a9acf3052623397121477dbe829ccb528abcb0ca1192973f9493e6c2"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+          "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_eee85f4abcd64f88961a65cbd01b6247df0c538571a2feda009854666ae06d06",
       "sourceOrdinal": 19,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_eee85f4abcd64f88961a65cbd01b6247df0c538571a2feda009854666ae06d06",
@@ -3629,7 +4183,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:89762f275541df132e400b6769d0d03a3b4123b7dd39c9cc6d12cbe9966d2e39",
+          "solutionHash": "sha256:a3a94e25e41e9d75ddea963a8fb7399ed8d3dbd0c73187f200485f35a8d41897",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -3642,8 +4196,8 @@
           "subUnitKey": "M2-08-PROBABILITY_BASIC"
         },
         "semanticDecision": {
-          "primaryMethod": "서로 다른 두 주머니에서 한 번씩 뽑는 연속 시행의 확률을 곱한다.",
-          "decisiveStep": "5/8×2/5=1/4",
+          "primaryMethod": "서로 다른 두 주머니에서 각각 한 번씩 뽑는 두 단계 시행의 확률을 곱한다.",
+          "decisiveStep": "첫째 주머니에서 노란 공 5/8, 둘째 주머니에서 원하는 공 4/10이므로 1/4이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -3657,7 +4211,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:a46e18137df098da3f92c6cfc989ed4e44cf464ee556360f55cf4f0a5ad3ecee",
-        "inputBundleSha": "sha256:644457d0ab6d942250ce502e10b0af928048d010df01cb07de3d38c6fc29d66d",
+        "inputBundleSha": "sha256:5cdb8cda76e64503de0e6804482706e4977a1b2f981fd754cba51d86102eb01c",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -3701,7 +4255,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:89762f275541df132e400b6769d0d03a3b4123b7dd39c9cc6d12cbe9966d2e39",
+            "solutionHash": "sha256:a3a94e25e41e9d75ddea963a8fb7399ed8d3dbd0c73187f200485f35a8d41897",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -3714,8 +4268,8 @@
             "subUnitKey": "M2-08-PROBABILITY_BASIC"
           },
           "semanticDecision": {
-            "primaryMethod": "서로 다른 두 주머니에서 한 번씩 뽑는 연속 시행의 확률을 곱한다.",
-            "decisiveStep": "5/8×2/5=1/4",
+            "primaryMethod": "서로 다른 두 주머니에서 각각 한 번씩 뽑는 두 단계 시행의 확률을 곱한다.",
+            "decisiveStep": "첫째 주머니에서 노란 공 5/8, 둘째 주머니에서 원하는 공 4/10이므로 1/4이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -3791,42 +4345,86 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:25dd2467ab950d1a322e918721175da75980e5c59d25bcabc3dd87037ffd8337"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:0474473674141a8c79cc9b2e7d0779d47ca4a921f18916583a408a3cc7c12ea5"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:a46e18137df098da3f92c6cfc989ed4e44cf464ee556360f55cf4f0a5ad3ecee",
-        "solutionHash": "sha256:89762f275541df132e400b6769d0d03a3b4123b7dd39c9cc6d12cbe9966d2e39",
+        "solutionHash": "sha256:a3a94e25e41e9d75ddea963a8fb7399ed8d3dbd0c73187f200485f35a8d41897",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 1,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 19의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:28fdb2843f2cd8c8ec3c27ac31ef7c0b7e9ede51ea7f140bf087241df20108d3",
-        "evidenceSha": "sha256:84fb6b5d0180cad27014d94a980ad38877817a448a91eb407a172f5a16485f3c"
+        "rationale": "q19 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:9514f7b3f85bfbf0e5b5fe9c900489e07a0879e8807deda2457458ce713a9d7c",
+        "evidenceSha": "sha256:5be3a71978995650e126094c400f0519449fda679ee6b1436760c1b39c9b5c0b"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:a46e18137df098da3f92c6cfc989ed4e44cf464ee556360f55cf4f0a5ad3ecee",
-        "inputBundleSha": "sha256:644457d0ab6d942250ce502e10b0af928048d010df01cb07de3d38c6fc29d66d",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:5cdb8cda76e64503de0e6804482706e4977a1b2f981fd754cba51d86102eb01c",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:d24d9c3832bc18e2b29070093b360d573cc4682a2e82722929d05460610e923e"
+        "evidenceSha": "sha256:b2e09ce6b44c800827ebf986c3523a2c2c513a65280a779c3b3e6877f3de8823"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_5cc65dcae052d39bfc312258d15e009791dfd819843a13e7b9196d4175963e08",
       "sourceOrdinal": 20,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_5cc65dcae052d39bfc312258d15e009791dfd819843a13e7b9196d4175963e08",
@@ -3839,7 +4437,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:9a88a61adc3f96c44d83dabd8b251608faa4246ee03c9095435982a3e277675d",
+          "solutionHash": "sha256:ce79ec819323cfb06dc86d4a26363714b6b6c73df48e94db334687a0024650d0",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -3853,7 +4451,7 @@
         },
         "semanticDecision": {
           "primaryMethod": "되돌려 넣는 두 번의 시행에서 각 조건의 확률을 곱한다.",
-          "decisiveStep": "3/20×4/20=3/100",
+          "decisiveStep": "첫 번째가 6의 배수일 확률 3/20과 두 번째가 15의 약수일 확률 4/20을 곱해 3/100이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -3867,7 +4465,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:484216d15df8a13207dd8e08434afddcafeb960d87bf0a51c3d92b9cb115f552",
-        "inputBundleSha": "sha256:bcac851ca9963fc3c8e35d02b1e38563fa20e8f1623517a3dfdde7415ff93563",
+        "inputBundleSha": "sha256:6efdffbcdb9e1fa128ffd5b627fa37cb0d627129ec4ac3a1dcbb82fe9aa55d9b",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -3911,7 +4509,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:9a88a61adc3f96c44d83dabd8b251608faa4246ee03c9095435982a3e277675d",
+            "solutionHash": "sha256:ce79ec819323cfb06dc86d4a26363714b6b6c73df48e94db334687a0024650d0",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -3925,7 +4523,7 @@
           },
           "semanticDecision": {
             "primaryMethod": "되돌려 넣는 두 번의 시행에서 각 조건의 확률을 곱한다.",
-            "decisiveStep": "3/20×4/20=3/100",
+            "decisiveStep": "첫 번째가 6의 배수일 확률 3/20과 두 번째가 15의 약수일 확률 4/20을 곱해 3/100이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -4001,42 +4599,86 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:76278ba9585c7f144dabccf8f75b5298c4c68dcf50ae655416f68ecdfd850902"
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        },
+        "r1MaterializationStatus": "PATCH_READY_DETERMINISTIC",
+        "evidenceSha": "sha256:992bd8547c9965a094565b22b99e30a20a19bc2f2c09ee14883810fa23922283"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:484216d15df8a13207dd8e08434afddcafeb960d87bf0a51c3d92b9cb115f552",
-        "solutionHash": "sha256:9a88a61adc3f96c44d83dabd8b251608faa4246ee03c9095435982a3e277675d",
+        "solutionHash": "sha256:ce79ec819323cfb06dc86d4a26363714b6b6c73df48e94db334687a0024650d0",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 20의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:7bd41d1b98a3544b63763ac94ea2139cc5046887050b0c1acbdf3529071b8a88",
-        "evidenceSha": "sha256:3003efeb4fc6c2a3ab6f324bbee1182bde6535062062dfd7b2cd3db32c4fc1f0"
+        "rationale": "q20 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:c043ebb87a75cef434978ce6891ba397869f3e66dd3370c5ddec6223c75f968a",
+        "evidenceSha": "sha256:d9ded4e8d0a25a8e4a23d6e1024ca6daf4489a730a2b5c6a341b2c9c16b0d943"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:484216d15df8a13207dd8e08434afddcafeb960d87bf0a51c3d92b9cb115f552",
-        "inputBundleSha": "sha256:bcac851ca9963fc3c8e35d02b1e38563fa20e8f1623517a3dfdde7415ff93563",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:6efdffbcdb9e1fa128ffd5b627fa37cb0d627129ec4ac3a1dcbb82fe9aa55d9b",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:1a260744713dc81ea544b888c5d82e167af8122988d9891dddcca63ced8b725a"
+        "evidenceSha": "sha256:7ceb51fc2a79e6ef58414735ed8c181b477349ac99c8f3979d6090947a361edc"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "MATERIALIZATION_PATCH_READY",
+        "resolvablePending": false,
+        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "materializationPatch": {
+          "action": "ADD_EXACT_CURRICULUM_BINDING",
+          "curriculum": "2015",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+          "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+          "ownerPack": "PROBABILITY_STATISTICS"
+        }
       }
     },
     {
       "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
       "sourceOrdinal": 21,
       "disposition": "EXISTING_REUSE",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
@@ -4049,7 +4691,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:affc16f77b1583f51a398fb35837aa5b5836e11f8e646e786574c65e50bf821f",
+          "solutionHash": "sha256:70045745ed4588e60168c285da47ee1f0f11b881148d9afcd65f8f730789eb4f",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -4062,8 +4704,8 @@
           "subUnitKey": "M2-06-SIMILAR_FIGURE"
         },
         "semanticDecision": {
-          "primaryMethod": "평행선으로 생기는 삼각형 닮음과 중점 조건을 이용한다.",
-          "decisiveStep": "△ADG∽△ABC, DG=BC/2이고 △DGE∽△FCE에서 CF=DG→BF=3DG",
+          "primaryMethod": "평행선으로 생기는 두 닮음 관계와 중점 조건을 차례로 이용한다.",
+          "decisiveStep": "△ADG∽△ABC에서 DG=BC/2이고 △DGE∽△FCE에서 CF=DG이므로 BF=3DG=18, 따라서 DG=6이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -4077,7 +4719,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:8f321b6cc8e0f41747ef4fb60ee690eccda035e6609af5829ce1986d3db90164",
-        "inputBundleSha": "sha256:e5f7c0ccf67d3966db9a01d36c96361cad5bc8202ad3371fac61d55bc25476ab",
+        "inputBundleSha": "sha256:6393ea31cd61f2bbd749bdf733ff8ca814c1b797fe70b8a51c1e980da4b89d35",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -4113,7 +4755,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:affc16f77b1583f51a398fb35837aa5b5836e11f8e646e786574c65e50bf821f",
+            "solutionHash": "sha256:70045745ed4588e60168c285da47ee1f0f11b881148d9afcd65f8f730789eb4f",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -4126,8 +4768,8 @@
             "subUnitKey": "M2-06-SIMILAR_FIGURE"
           },
           "semanticDecision": {
-            "primaryMethod": "평행선으로 생기는 삼각형 닮음과 중점 조건을 이용한다.",
-            "decisiveStep": "△ADG∽△ABC, DG=BC/2이고 △DGE∽△FCE에서 CF=DG→BF=3DG",
+            "primaryMethod": "평행선으로 생기는 두 닮음 관계와 중점 조건을 차례로 이용한다.",
+            "decisiveStep": "△ADG∽△ABC에서 DG=BC/2이고 △DGE∽△FCE에서 CF=DG이므로 BF=3DG=18, 따라서 DG=6이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -4203,42 +4845,67 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:7face54feadbe6747edb65cba9e3c632982f817c372f20d2bbe5db42e2db5833"
+        "evidenceSha": "sha256:3424ea832a80cb3050ef351714d3f3bf6859578c3ff49d207d4d3b0b7416fac5"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:8f321b6cc8e0f41747ef4fb60ee690eccda035e6609af5829ce1986d3db90164",
-        "solutionHash": "sha256:affc16f77b1583f51a398fb35837aa5b5836e11f8e646e786574c65e50bf821f",
+        "solutionHash": "sha256:70045745ed4588e60168c285da47ee1f0f11b881148d9afcd65f8f730789eb4f",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 4,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 21의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:6470c0b0624fbd9a95b9927aa0059a2b48c79f88804003f17c067d19b473edad",
-        "evidenceSha": "sha256:1529217c9487f6acf130c9448fb04cba66609c8dcf73f2381a59556ec4df1653"
+        "rationale": "q21 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:e88d5c6e17fe035f652c0fabc71204253dddd65d5db5435bc1cc88751005e056",
+        "evidenceSha": "sha256:f33634501ecc7181d140cbe830b596cf96ed2a758d75c82f6968a6217975541f"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:8f321b6cc8e0f41747ef4fb60ee690eccda035e6609af5829ce1986d3db90164",
-        "inputBundleSha": "sha256:e5f7c0ccf67d3966db9a01d36c96361cad5bc8202ad3371fac61d55bc25476ab",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:6393ea31cd61f2bbd749bdf733ff8ca814c1b797fe70b8a51c1e980da4b89d35",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
         "conditionDecisions": [],
-        "reason": "primaryMethod/decisiveStep가 단일 주개념 route로 충분하며 별도 CrossConcept/condition key를 요구하지 않음",
-        "evidenceSha": "sha256:162d873c13a97c2e886690d01655417b967bb11ce1ba64f39ee3e836b055f7ea"
+        "evidenceSha": "sha256:0f9f660d80bc8d235515eb6e17db493bc8dd8679e192730c0aa45365c34da4bd"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "KEEP",
+        "resolvablePending": false,
+        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
       }
     },
     {
       "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
       "sourceOrdinal": 22,
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "resolverInput": {
+      "input": {
         "sourceIdentity": {
           "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
           "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
@@ -4251,7 +4918,7 @@
         },
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
-          "solutionHash": "sha256:6c8ed3386fb7a9ff5c9c1f89472b05da31d57ca4e02aeb1fc66f9f2fb2f0597a",
+          "solutionHash": "sha256:796cd42bdca869af3c34b5c7e5e55999b5800affa20a886e62e360095aace6c9",
           "independentVerification": true
         },
         "curriculumContext": {
@@ -4264,8 +4931,8 @@
           "subUnitKey": ""
         },
         "semanticDecision": {
-          "primaryMethod": "무게중심의 2:1 비로 중선 길이를 구한 뒤 직각삼각형의 변을 구한다.",
-          "decisiveStep": "GD=10/3→AD=10=BC/2, AC=12에서 AB=16",
+          "primaryMethod": "무게중심의 2:1 비로 중선 길이를 구한 뒤 직각삼각형의 빗변 중점 성질과 피타고라스 정리를 이용한다.",
+          "decisiveStep": "GD=10/3에서 AD=10, BC=20이고 AC=12이므로 AB=16이다.",
           "rpmPath": {
             "curriculum": "2015",
             "scope": "M2-2",
@@ -4279,7 +4946,7 @@
       "resolverEvidence": {
         "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
         "sourceFingerprint": "sha256:d56e93ac1eab564018eac46d29fa9178c6b081f897dd03a22abdcca883b32854",
-        "inputBundleSha": "sha256:3f69c46c371b0f65b8c1173f1067c5ade18f4a84161ccfe62b9aeaabae409e72",
+        "inputBundleSha": "sha256:3ee6dec813ff8cfb0b4db3802e46b88bb37636e0db539ce9e20bf7fdf19bd00f",
         "rpmPath": {
           "curriculum": "2015",
           "scope": "M2-2",
@@ -4323,7 +4990,7 @@
           },
           "solutionIdentity": {
             "status": "VERIFIED_FINAL",
-            "solutionHash": "sha256:6c8ed3386fb7a9ff5c9c1f89472b05da31d57ca4e02aeb1fc66f9f2fb2f0597a",
+            "solutionHash": "sha256:796cd42bdca869af3c34b5c7e5e55999b5800affa20a886e62e360095aace6c9",
             "independentVerification": true
           },
           "curriculumContext": {
@@ -4336,8 +5003,8 @@
             "subUnitKey": ""
           },
           "semanticDecision": {
-            "primaryMethod": "무게중심의 2:1 비로 중선 길이를 구한 뒤 직각삼각형의 변을 구한다.",
-            "decisiveStep": "GD=10/3→AD=10=BC/2, AC=12에서 AB=16",
+            "primaryMethod": "무게중심의 2:1 비로 중선 길이를 구한 뒤 직각삼각형의 빗변 중점 성질과 피타고라스 정리를 이용한다.",
+            "decisiveStep": "GD=10/3에서 AD=10, BC=20이고 AC=12이므로 AB=16이다.",
             "rpmPath": {
               "curriculum": "2015",
               "scope": "M2-2",
@@ -4413,86 +5080,152 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:3eb907e745778543864d5ef31b448b7784f982e5109f58adfc850dfb27f526de"
+        "evidenceSha": "sha256:e295f59f32a9c3e40984dd5dd0812552fce296165822b3d97a97809c1ef1d87a"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
         "sourceFingerprint": "sha256:d56e93ac1eab564018eac46d29fa9178c6b081f897dd03a22abdcca883b32854",
-        "solutionHash": "sha256:6c8ed3386fb7a9ff5c9c1f89472b05da31d57ca4e02aeb1fc66f9f2fb2f0597a",
+        "solutionHash": "sha256:796cd42bdca869af3c34b5c7e5e55999b5800affa20a886e62e360095aace6c9",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 3,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 22의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:963c9334c48a8d8956c79ebbee1ea199d6932f59b94b87bec6b023cef1e9cd60",
-        "evidenceSha": "sha256:e4809731f4febf24c4e2b3eb4491137e73e15a37d082ebf18beb04c0a9576ab1"
+        "rationale": "q22 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:2ff94dd32a723ad07220324eed5ed8467eb38e85e094a000f6d675a1373cd86e",
+        "evidenceSha": "sha256:1be06da19727906096b8df12ecf674423b366174dc2becf60e2b9165223cf5b0"
       },
-      "relationalEvidence": {
+      "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
         "sourceFingerprint": "sha256:d56e93ac1eab564018eac46d29fa9178c6b081f897dd03a22abdcca883b32854",
-        "inputBundleSha": "sha256:3f69c46c371b0f65b8c1173f1067c5ade18f4a84161ccfe62b9aeaabae409e72",
-        "candidateVisibleDuringDecision": false,
+        "inputBundleSha": "sha256:3ee6dec813ff8cfb0b4db3802e46b88bb37636e0db539ce9e20bf7fdf19bd00f",
+        "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [
           {
             "key": "CC_PYTHAGOREAN",
-            "status": "FINAL",
-            "reason": "primary 무게중심 경로 밖에서 두 번째 물음의 직각삼각형 변 계산에 피타고라스 정리가 실제 필요",
-            "sourceFingerprint": "sha256:d56e93ac1eab564018eac46d29fa9178c6b081f897dd03a22abdcca883b32854",
-            "inputBundleSha": "sha256:3f69c46c371b0f65b8c1173f1067c5ade18f4a84161ccfe62b9aeaabae409e72"
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
           }
         ],
         "conditionDecisions": [],
-        "reason": "확정 해설의 primary 밖 decisive concept만 ACTIVE CrossConcept로 기록",
-        "evidenceSha": "sha256:bdd62d22843bd240ce553cd2e740d57947cef5030309068ceac362abe682ba28"
+        "evidenceSha": "sha256:b26d4962919a960cfe24b8e4acd1eacedc39a1929ff59d07bc06d310c1ec51a2"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-06",
+        "subUnitKey": "",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "integrationReason": "무게중심의 2:1 비를 먼저 적용한 뒤 피타고라스 정리로 두 번째 물음을 해결하는 순차 결합",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "ADVANCED_META_HOLD",
+        "resolvablePending": false,
+        "reason": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
+        "r2AdjudicationRequired": true,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
       }
     },
     {
       "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
       "sourceOrdinal": 23,
       "disposition": "TRUE_HOLD",
-      "sourceIdentity": {
-        "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
-        "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
-        "sourceIdentityKey": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
-        "sourceOrdinal": 23,
-        "contentHash": "sha256:40206dd1ff53689923e82d80ea550c781541a1684cf061fbcb43158d7151ccbf",
-        "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
-        "sourceFingerprint": "sha256:bcae47ab965c9cacb4b89440573d7dfb3a1e6cb1ae476200a6de8e44ae9893dd"
+      "input": {
+        "sourceIdentity": {
+          "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:fafe4094fa264247d65dc2cf31b53d9422d9276f73996a528740813893ef99e1",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "주어진 두 주변확률만으로 결합사건의 확률이 결정되는지 먼저 확인한다.",
+          "decisiveStep": "독립 여부가 주어지지 않아 (1)~(3)의 확률은 유일하게 결정되지 않는다."
+        }
       },
-      "resolverInput": null,
-      "resolverEvidence": null,
+      "resolverEvidence": {},
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
         "blindPassStatus": "FRESH_INDEPENDENT",
-        "sourceFingerprint": "sha256:bcae47ab965c9cacb4b89440573d7dfb3a1e6cb1ae476200a6de8e44ae9893dd",
-        "solutionHash": "sha256:f9d126499a4523d6f6a935ceb606e2e8a1e2eeadb7d3cae3dcb829f4c1cb803c",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "solutionHash": "sha256:fafe4094fa264247d65dc2cf31b53d9422d9276f73996a528740813893ef99e1",
         "independentOfSemanticPass": true,
         "derivedFromLegacyLevel": false,
-        "difficultyMappingSource": "fresh_blind_semantic_review",
+        "difficultyMappingSource": "r1_fresh_blind_source_solution_review",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "문항 23의 풀이 단계 수·개념 결합·계산 부담을 source+verified solution만 보고 독립 판정",
-        "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
-        "decisionSha": "sha256:7a7d85c3690ec0368b80de53c5d3ac9a6f39b7cb4bbb5da3faa61356249d3339",
-        "evidenceSha": "sha256:9831c94f1e9f0230bcf04f7f3d43e7708a1552a0f79e2fc61ff3934474400c8d"
+        "rationale": "q23 source+verified final solution only fresh difficulty judgement",
+        "blindReviewerId": "GPT_M2_RESET_R1_D_20260928",
+        "decisionSha": "sha256:bb3b45311426a6cfc6033fb9a62b85704643b5c1f0acd7b8a0092a06637cb76d",
+        "evidenceSha": "sha256:44de2cb21969b7a88853dd6df2162f5294257a340cf902e06c1146ff4560b6d7"
       },
-      "relationalEvidence": null,
-      "holdEvidence": {
-        "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-        "deterministicUncertainty": true,
-        "detail": "서웅이와 지호의 개별 합격확률만 주어졌으며 두 합격 사건의 독립 또는 결합확률 정보가 없어 세 물음의 확률이 유일하게 결정되지 않음",
-        "protectedAnswerPreserved": "(1) $\\dfrac27$ (2) $\\dfrac2{21}$ (3) $\\dfrac{19}{21}$",
-        "sourceSolutionReplacedWithHoldSafeStudentExplanation": true
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "inputBundleSha": "sha256:5061dbef538500952e1dfe084c5d4c1701dde7362f19c6a624114e42503e31bd",
+        "candidateFieldsUsedAsSemanticInput": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:4980ff2af1f36f0fdc9ab48fd4c1177dbe47c87513738588cdc929a5ff93050a"
+      },
+      "validatorReceipt": {
+        "status": "NOT_RUN_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1",
+        "reason": "R1 remains HOLD; READY validator gate not entered"
+      },
+      "candidateMeta": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학",
+        "standardUnitKey": "M2-08",
+        "subUnitKey": "M2-08-PROBABILITY_BASIC",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "status": "BASIC_HARD_HOLD",
+        "resolvablePending": false,
+        "reason": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
+        "humanRequired": true
       }
     }
   ]
