@@ -1,8 +1,8 @@
 {
   "schemaVersion": "M1_R2E_HOLD_SOURCE_ADJUDICATION_v1",
   "runId": "m1-b01-b31-r2e-20260927",
-  "updatedAt": "2026-09-27T17:29:43.6420539Z",
-  "productionCandidateHead": "2a114373125eb9feef9d5add68fec47c2ee32f9e",
+  "updatedAt": "2026-09-27T17:38:41.9317231Z",
+  "productionCandidateHead": "e614023c975e8dfd47427ec34a6fdf68b90b76e6",
   "scope": "Only inherited HOLD and source-correction cases B07-B15. Ordinary PASS items were not inspected.",
   "sourceDocuments": [
     {
@@ -95,11 +95,12 @@
     {
       "sourcePage": 1,
       "q": 6,
-      "status": "R2E_META_CLOSURE_PENDING",
-      "disposition": "D_SOURCE_VISUAL_CONFIRMED",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "D_SOURCE_CONFIRMED_AND_SOLUTION_REPAIRED",
       "hold": "UNVERIFIABLE_VISUAL_OPTION_LABELS",
-      "finding": "Full original page contains the complete construction diagram and its circled labels; keyed answer ⑤ retained.",
-      "B": 8
+      "finding": "D original resolves the circled labels; solution now names the arc-copy order and confirms ⑤.",
+      "B": 8,
+      "candidateCommit": "0f43c162e"
     },
     {
       "sourcePage": 3,
@@ -129,20 +130,22 @@
     {
       "sourcePage": 3,
       "q": 21,
-      "status": "R2E_META_CLOSURE_PENDING",
-      "disposition": "D_SOURCE_VISUAL_CONFIRMED",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "D_SOURCE_CONFIRMED_AND_SOLUTION_REPAIRED",
       "hold": "UNVERIFIABLE_VISUAL_ANGLE_SECTORS",
-      "finding": "Full original page confirms the five-sided angle diagram and its marked sectors; keyed answer ② retained.",
-      "B": 9
+      "finding": "D original confirms the pentagon exterior-angle labels; 360−(60+80+65+90)=65°, matching ②.",
+      "B": 9,
+      "candidateCommit": "23b9dc253"
     },
     {
       "sourcePage": 3,
       "q": 22,
-      "status": "R2E_META_CLOSURE_PENDING",
-      "disposition": "D_SOURCE_VISUAL_CONFIRMED",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "D_SOURCE_CONFIRMED_AND_SOLUTION_REPAIRED",
       "hold": "UNVERIFIABLE_VISUAL_POLYGON_LABELS",
-      "finding": "Full original page confirms regular-pentagon/hexagon labels a-f; keyed answer ③ retained.",
-      "B": 9
+      "finding": "D original confirms the pentagon/hexagon labels; a=108°, b=120°, c=132° and c+d≠208°, matching ③.",
+      "B": 9,
+      "candidateCommit": "23b9dc253"
     },
     {
       "finding": "D answer sheet confirms sequence ④→⑤→②→①→③, so stage three is panel ②; candidate solution now states the sequence.",
@@ -192,23 +195,25 @@
       "solutionPage": 2
     },
     {
-      "status": "R2E_META_CLOSURE_PENDING",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
       "q": 10,
-      "finding": "D full page and answer sheet confirm the construction labels and answer choice ②.",
+      "finding": "D answer sheet confirms ②; solution now explains angle transfer for the parallel-line construction.",
       "sourcePage": 2,
       "B": 11,
       "hold": "UNVERIFIABLE_SMALL_CONSTRUCTION_OPERATION_LABELS",
-      "disposition": "D_SOURCE_AND_KEY_CONFIRMED",
-      "solutionPage": 1
+      "disposition": "D_SOURCE_AND_KEY_CONFIRMED_SOLUTION_REPAIRED",
+      "solutionPage": 1,
+      "candidateCommit": "58f10c023"
     },
     {
       "sourcePage": 2,
       "q": 10,
-      "status": "R2E_META_CLOSURE_PENDING",
-      "disposition": "D_SOURCE_VISUAL_CONFIRMED",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "D_SOURCE_CONFIRMED_SOLUTION_REPAIRED",
       "hold": "UNVERIFIABLE_RASTER_CONSTRUCTION_ORDER",
-      "finding": "D full page contains the full six-mark construction sequence; keyed answer ④ retained.",
-      "B": 12
+      "finding": "D original confirms the marked parallel-construction operations; solution now explains the arc/chord transfer sequence and retains answer ④.",
+      "B": 12,
+      "candidateCommit": "e614023c9"
     },
     {
       "sourcePage": 3,
