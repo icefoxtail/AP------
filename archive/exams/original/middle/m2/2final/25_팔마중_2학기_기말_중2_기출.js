@@ -1,4 +1,4 @@
-window.examTitle = "25_팔마중_2학기_기말_중2_기출";
+window.examTitle = "2025학년도 팔마중학교 2학년 2학기 기말고사";
 
 window.questionBank = [
   {
@@ -25,7 +25,7 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 평행선 때문에 생기는 두 삼각형의 닮음을 이용한다.\n$\\triangle ACB$와 $\\triangle DCE$에서 $\\angle ACB=\\angle DCE$이고 $\\overline{AB}\\parallel\\overline{DE}$이므로 두 삼각형은 닮음이다.\n따라서 대응변의 비에서 $AB:DE=CB:CE$이므로 $12:8=x:4$이다.\n$8x=48$이므로 $x=6$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 평행선 때문에 생기는 두 삼각형의 닮음을 이용한다.\\n$\\angle ACB=\\angle DCE$이고 $AB\\parallel DE$이므로 $\\angle ABC=\\angle DEC$이다.\\n따라서 $\\triangle ACB\\sim\\triangle DCE$이고 대응변의 비에서 $AB:DE=CB:CE$이다.\\n$12:8=x:4$이므로 $8x=48$, 따라서 $x=6$이다.\\n따라서 정답은 ①이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q1.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
@@ -55,9 +55,10 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "⑤",
-    "solution": "[키포인트] 평행선으로 생기는 닮음과 각의 이등분선의 성질을 차례로 이용한다.\n그림에서 $AB=6$, $DB=2$이므로 $AD=4$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고 $AD:AB=AE:AC=2:3$이다. $EC=3$이므로 $AC=9$, $AE=6$이다.\n$AG$는 $\\angle BAC$의 이등분선이므로 $AF$는 $\\angle DAE$의 이등분선이다. 각의 이등분선의 성질에 따라 $DF:FE=AD:AE=4:6=2:3$이다.\n$FE=2$이므로 $DF=\\dfrac43$, 따라서 $DE=\\dfrac{10}{3}$이다.\n닮음에서 $DE:BC=AD:AB=2:3$이므로 $BC=\\dfrac32\\times\\dfrac{10}{3}=5$이다.\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "[키포인트] 평행선으로 생기는 닮음으로 전체 밑변의 길이를 구한 뒤, 각의 이등분선의 성질로 $x=GC$를 구한다.\n그림에서 $AB=6$, $DB=2$이므로 $AD=4$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고 $AD:AB=AE:AC=2:3$이다. $EC=3$이므로 $AC=9$, $AE=6$이다.\n$AG$는 $\\angle BAC$의 이등분선이고 $F$는 $AG$와 $DE$의 교점이므로 $AF$는 $\\angle DAE$의 이등분선이다. 따라서 $DF:FE=AD:AE=4:6=2:3$이다.\n$FE=2$이므로 $DF=\\dfrac43$, 따라서 $DE=\\dfrac{10}{3}$이다.\n닮음에서 $DE:BC=AD:AB=2:3$이므로 $BC=5$이다.\n또 $AG$는 $\\angle BAC$의 이등분선이므로 $BG:GC=AB:AC=6:9=2:3$이다. $BC=5$이므로 $GC=3$이다.\n따라서 $x=3$이고 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q2.png",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
@@ -278,7 +279,8 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q9-solution.svg"
   },
   {
     "id": 10,
@@ -604,7 +606,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -630,7 +632,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -656,7 +658,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -682,7 +684,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
