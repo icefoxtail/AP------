@@ -3,62 +3,91 @@
   "examFile": "24_신흥중_2학기_중간_중2_수학.js",
   "examUid": "24_신흥중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "D",
-  "stage": "CREATE",
+  "lane": "C",
+  "stage": "R1",
   "sourceBlobSha": "1a791354a985bf7dcc1703af23433d9a5d7aa321",
-  "inputCommit": "bee5815d3d4268fad9cbc650dfcfa0d556a06145",
+  "inputCommit": "e6ae05ad02b2b357c2de239eab463e30d6f6b373",
   "totalQuestions": 21,
   "changedQuestions": [
-    5,
+    4,
+    6,
     7,
-    10,
+    12,
     13,
+    14,
     15,
+    16,
+    17,
     19,
-    20
+    21
   ],
-  "changedSvgFiles": [
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q5-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q7-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q10-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q13-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q15-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg",
-    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q20-solution.svg"
-  ],
-  "primaryMetaSummary": {
-    "EXISTING_REUSE": 19,
-    "PROPOSED_NEW_L3": 0,
-    "PROPOSED_NEW_L4": 0,
-    "RPM_PRIMARY_MIGRATION_GAP": 2,
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 21,
+    "REPAIR": 0,
     "TRUE_HOLD": 0
   },
-  "unresolvedItems": [
-    {
-      "questionNo": 6,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-178",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
-      "reason": "2015 M2-05 RPM Primary에는 직각삼각형 합동 exact path가 없고, 2022 M2-RPM-178 RHS 경로와 GLOBAL ACTIVE PT/TPL은 확인되지만 2015 exact curriculum binding이 materialize되지 않음"
-    },
-    {
-      "questionNo": 7,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-178",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
-      "reason": "2015 M2-05 RPM Primary에는 직각삼각형 합동 exact path가 없고, 2022 M2-RPM-178 RHS 경로와 GLOBAL ACTIVE PT/TPL은 확인되지만 2015 exact curriculum binding이 materialize되지 않음"
-    }
-  ],
+  "svgDispositionSummary": {
+    "KEEP": 7,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 21,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 0,
+    "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 2,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0
+  },
+  "difficultyDispositionSummary": {
+    "KEEP": 19,
+    "REPAIR": 2,
+    "HOLD": 0
+  },
+  "unresolvedItems": [],
   "authorityRefs": [
     "branch:work/intake/m2",
-    "parent:bee5815d3d4268fad9cbc650dfcfa0d556a06145",
-    "main:2a425e2a970c00c20bba87f3eb9301b4359c106d",
+    "parent:e6ae05ad02b2b357c2de239eab463e30d6f6b373",
+    "main:128ecbab0b67143c2bee53c41665daf1ef6ec3ce",
     "sourceBlob:1a791354a985bf7dcc1703af23433d9a5d7aa321",
-    "crosswalk:archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@d76e7b313658035f8455e399422a28861b34b636",
+    "normalization:work/meta-rpm-m1-m2-normalization@6f6bb93656055ebd1b0e32c9de5afb9b81c4b83a",
+    "crosswalk:0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "migrationGapReassessment:62827b10da98076c4fa7d1c3fffa8dd4aade202d",
+    "rhsRhaCurriculumEvidence:6da3c391e8548d705e5fbf7e4b5a29bce98ef6c7",
     "evidence:archive/data/r2e-intake/m2/24_신흥중_2학기_중간_중2_수학.evidence.json"
   ],
-  "nextState": "READY_FOR_REVIEW",
-  "updatedAt": "2026-09-27T07:38:18+09:00"
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "e6ae05ad02b2b357c2de239eab463e30d6f6b373",
+    "mainReadSha": "128ecbab0b67143c2bee53c41665daf1ef6ec3ce",
+    "sourcePath": "archive/exams/original/middle/m2/2mid/24_신흥중_2학기_중간_중2_수학.js",
+    "sourceBlobSha": "1a791354a985bf7dcc1703af23433d9a5d7aa321",
+    "r1InputJsBlobSha": "223ee9e521790780933e03fb264f66d0d4bdc540",
+    "r1FinalJsBlobSha": "223ee9e521790780933e03fb264f66d0d4bdc540",
+    "normalizationBranch": "work/meta-rpm-m1-m2-normalization",
+    "normalizationReadSha": "6f6bb93656055ebd1b0e32c9de5afb9b81c4b83a",
+    "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "migrationGapReassessmentBlobSha": "62827b10da98076c4fa7d1c3fffa8dd4aade202d",
+    "rhsRhaCurriculumEvidenceBlobSha": "6da3c391e8548d705e5fbf7e4b5a29bce98ef6c7",
+    "evidencePath": "archive/data/r2e-intake/m2/24_신흥중_2학기_중간_중2_수학.evidence.json"
+  },
+  "finalAuthority": {
+    "jsBlobSha": "223ee9e521790780933e03fb264f66d0d4bdc540",
+    "svgBlobShas": {
+      "5": "edded08e9d83bc8244327d0f4742c7e517621ada",
+      "7": "682161ca16fe68a3d6c4c8eab874b602420339b2",
+      "10": "766677ffdb878eee0e5c6765950a7ce0d614820b",
+      "13": "bc16a9763db1d9dc00cd517f84b17ab9d2481247",
+      "15": "1a8fdad2572edb2df3e2c582dcdcd356ad6fb218",
+      "19": "1a072b899c3fbd0960b3e6f5d4f489b5223b0e47",
+      "20": "3f54cc34551383ea065bee3b3b1dff527cbc8673"
+    }
+  },
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T13:08:13+09:00",
+  "commitBinding": "SELF"
 }
