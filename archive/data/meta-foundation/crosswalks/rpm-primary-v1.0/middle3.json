@@ -2,7 +2,7 @@
   "schemaVersion": "rpm-primary-active-crosswalk-v1",
   "status": "ACTIVE_REFERENCE",
   "grade": "M3",
-  "generatedAgainstMain": "56db229f427265dc45391882e56a1fea70be8874",
+  "generatedAgainstMain": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
   "rpmAuthority": {
     "version": "RPM_PRIMARY_TAXONOMY_v1.0",
     "status": "LOCKED",
@@ -11,10 +11,16 @@
   "activeAuthority": {
     "source": "archive/data/meta-foundation/canonical/",
     "packs": [
-      "H1_FOUNDATION",
+      "DERIVATIVE",
       "FUNCTIONS_GRAPHS",
       "GEOMETRY_EQUATIONS",
-      "MIDDLE_GEOMETRY"
+      "H1_FOUNDATION",
+      "INTEGRAL_CALCULUS",
+      "LIMIT_CONTINUITY",
+      "MIDDLE1",
+      "MIDDLE_GEOMETRY",
+      "PROBABILITY_STATISTICS",
+      "SETS_PROPOSITIONS"
     ]
   },
   "policy": {
@@ -28,12 +34,12 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 181,
-    "DIRECT_ACTIVE": 22,
-    "FAMILY_ACTIVE": 4,
-    "DIRECT_BINDING_GAP": 73,
+    "RPM_ONLY": 116,
+    "DIRECT_BINDING_GAP": 41,
     "FAMILY_BINDING_GAP": 7,
-    "RPM_ONLY": 75
+    "DIRECT_ACTIVE": 13,
+    "FAMILY_ACTIVE": 4,
+    "recordCount": 181
   },
   "records": [
     {
@@ -258,13 +264,11 @@
       },
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_RADICAL_EXPRESSION",
-      "problemTypeLabelKo": "무리식의 계산",
-      "ownerPack": "FUNCTIONS_GRAPHS",
-      "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
-      "templateLabelKo": "무리식의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_UNSUPPORTED_RADICAL_APPLICATION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "These leaves ask for a broad mixed radical-expression value/application. TPL_RADICAL_EXPRESSION_APPLICATION has one supporting item and a generic placeholder skeleton, which is not enough to establish the RPM scope as equivalent."
     },
     {
       "id": "M3-RPM-014",
@@ -278,13 +282,11 @@
       },
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_RADICAL_EXPRESSION",
-      "problemTypeLabelKo": "무리식의 계산",
-      "ownerPack": "FUNCTIONS_GRAPHS",
-      "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
-      "templateLabelKo": "무리식의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_UNSUPPORTED_RADICAL_APPLICATION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "These leaves ask for a broad mixed radical-expression value/application. TPL_RADICAL_EXPRESSION_APPLICATION has one supporting item and a generic placeholder skeleton, which is not enough to establish the RPM scope as equivalent."
     },
     {
       "id": "M3-RPM-015",
@@ -298,13 +300,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-016",
@@ -318,13 +318,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-017",
@@ -338,13 +336,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-018",
@@ -358,13 +354,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-019",
@@ -378,13 +372,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-020",
@@ -398,13 +390,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-021",
@@ -418,13 +408,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-022",
@@ -438,13 +426,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-023",
@@ -458,13 +444,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-024",
@@ -478,13 +462,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-025",
@@ -498,13 +480,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-026",
@@ -518,13 +498,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-027",
@@ -538,13 +516,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-028",
@@ -558,13 +534,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-029",
@@ -683,13 +657,11 @@
       },
       "standardUnitKey": "M3-03",
       "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-      "problemTypeLabelKo": "이차방정식의 근과 판별식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
-      "templateLabelKo": "판별식으로 근의 존재·중복 판정",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_DISCRIMINANT_TEMPLATE_SKELETON_MISMATCH",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The RPM leaf asks to classify the number of quadratic-equation roots by the discriminant. The linked template definition mentions discriminant sign, but its internal skeleton ROOT_LOCATION_BY_ENDPOINT_SIGN is an endpoint-sign root-location method and does not establish the same decisive route."
     },
     {
       "id": "M3-RPM-037",
@@ -902,8 +874,16 @@
       },
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "bindingStatus": "MISSING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "m3NormalizationDisposition": "REUSE_EXISTING_GRAPH_TRANSLATION_CANONICAL",
+      "m3NormalizationDefectType": "SAFE_EXISTING_REUSE",
+      "m3NormalizationRationale": "The RPM leaf is explicitly parallel translation of a quadratic-function graph. The GLOBAL ACTIVE graph-transformation parent and translation template share the same operation; exact M3 curriculum binding is checked separately."
     },
     {
       "id": "M3-RPM-050",
@@ -947,13 +927,11 @@
       },
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-      "problemTypeLabelKo": "이차함수의 최대·최소",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
-      "templateLabelKo": "꼭짓점·제한구간의 최대·최소",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_EXTREMA_TEMPLATES_WITHOUT_ALL_REAL_DOMAIN_CASE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "The 2022 curriculum leaf includes maximum/minimum over the all-real domain, while TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL is specifically bounded-interval endpoint comparison and TPL_H1_QUADRATIC_EXTREMA_MODEL is contextual modelling. Their union does not establish coverage of the ordinary all-real vertex-extremum subtype. The 2015 leaf is additionally outside that curriculum placement."
     },
     {
       "id": "M3-RPM-053",
@@ -1015,15 +993,18 @@
       "problemTypeKey": "PT_TRIG_RATIO",
       "problemTypeLabelKo": "삼각비의 값과 관계",
       "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
-      "templateLabelKo": "도형에서 삼각비 값 유도",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "templateLabelKo": "삼각비의 기본 관계",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
         "standardUnitKey": "M3-05",
         "subUnitKey": "M3-05-TRIG_RATIO",
         "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      },
+      "m3NormalizationDisposition": "REMAP_TRIG_RATIO_TO_BASIC_DEFINITION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The leaf states the sine/cosine/tangent ratio definitions and direct conversion among ratios. The former geometric-derivation template requires reconstructing auxiliary geometry, a narrower decisive structure."
     },
     {
       "id": "M3-RPM-056",
@@ -1359,19 +1340,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
       "problemTypeLabelKo": "원과 직선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "templateLabelKo": "현의 수직이등분선",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-068",
@@ -1385,19 +1370,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
       "problemTypeLabelKo": "원과 직선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "templateLabelKo": "현의 수직이등분선",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-069",
@@ -1411,19 +1400,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
       "problemTypeLabelKo": "원과 직선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_CIRCLE_CHORD_LENGTH",
       "templateLabelKo": "현의 길이",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-070",
@@ -1437,19 +1430,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_TANGENT",
       "problemTypeLabelKo": "원의 접선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_TANGENCY_CONDITION",
       "templateLabelKo": "원과 직선이 접할 조건",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-071",
@@ -1463,19 +1460,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_TANGENT",
       "problemTypeLabelKo": "원의 접선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_TANGENT_LENGTH",
       "templateLabelKo": "접선의 길이",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-072",
@@ -1489,19 +1490,23 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
+      "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_CIRCLE_TANGENT",
       "problemTypeLabelKo": "원의 접선",
       "ownerPack": "GEOMETRY_EQUATIONS",
       "templateKey": "TM_TANGENT_LENGTH",
       "templateLabelKo": "접선의 길이",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "bindingStatus": "MISSING",
+      "m3OwnerMismatchBinding": {
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "activeBindingOwnerPacks": [
+          "MIDDLE_GEOMETRY"
+        ],
+        "reason": "An ACTIVE exact-path binding exists, but its owner pack does not match the compiled GLOBAL ACTIVE PT owner; it is not an exact binding for the selected canonical identity."
+      },
+      "m3NormalizationDisposition": "RECONCILE_BINDING_OWNER_MISMATCH",
+      "m3NormalizationDefectType": "BINDING_ONLY_GAP",
+      "m3NormalizationRationale": "The exact curriculum tuple has no binding owned by the selected compiled GLOBAL ACTIVE PT. A binding from another owner pack is recorded as non-matching evidence and is not treated as exact."
     },
     {
       "id": "M3-RPM-073",
@@ -1515,19 +1520,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-      "templateLabelKo": "접선과 현이 이루는 각",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_LINE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_GENERIC_TANGENT_ANGLE_FROM_TANGENT_CHORD_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The RPM leaf says to find an angle from a tangent condition; this can use the radius-perpendicular-to-tangent relation and is broader than TPL_CIRCLE_ANGLE_TANGENT_CHORD, which specifically uses a tangent-chord/arc/inscribed-angle correspondence."
     },
     {
       "id": "M3-RPM-074",
@@ -1619,19 +1616,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "templateLabelKo": "복합 원의 각 관계",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_SIMPLE_CYCLIC_CONDITION_FROM_COMPOSITE_ANGLE_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "Inscribed-quadrilateral angle and four-points-cyclic conditions can be decided by one circle criterion; TPL_CIRCLE_ANGLE_COMPOSITE requires a chain of multiple circle-angle relations. The template is too specific in the opposite direction to serve as a direct equivalent, and no complete active family covers every criterion subtype."
     },
     {
       "id": "M3-RPM-078",
@@ -1645,19 +1634,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "templateLabelKo": "복합 원의 각 관계",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M3-06",
-        "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_SIMPLE_CYCLIC_CONDITION_FROM_COMPOSITE_ANGLE_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "Inscribed-quadrilateral angle and four-points-cyclic conditions can be decided by one circle criterion; TPL_CIRCLE_ANGLE_COMPOSITE requires a chain of multiple circle-angle relations. The template is too specific in the opposite direction to serve as a direct equivalent, and no complete active family covers every criterion subtype."
     },
     {
       "id": "M3-RPM-079",
@@ -2113,13 +2094,11 @@
       },
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_RADICAL_EXPRESSION",
-      "problemTypeLabelKo": "무리식의 계산",
-      "ownerPack": "FUNCTIONS_GRAPHS",
-      "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
-      "templateLabelKo": "무리식의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_UNSUPPORTED_RADICAL_APPLICATION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "These leaves ask for a broad mixed radical-expression value/application. TPL_RADICAL_EXPRESSION_APPLICATION has one supporting item and a generic placeholder skeleton, which is not enough to establish the RPM scope as equivalent."
     },
     {
       "id": "M3-RPM-106",
@@ -2133,13 +2112,11 @@
       },
       "standardUnitKey": "M3-01",
       "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_RADICAL_EXPRESSION",
-      "problemTypeLabelKo": "무리식의 계산",
-      "ownerPack": "FUNCTIONS_GRAPHS",
-      "templateKey": "TPL_RADICAL_EXPRESSION_APPLICATION",
-      "templateLabelKo": "무리식의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_UNSUPPORTED_RADICAL_APPLICATION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "These leaves ask for a broad mixed radical-expression value/application. TPL_RADICAL_EXPRESSION_APPLICATION has one supporting item and a generic placeholder skeleton, which is not enough to establish the RPM scope as equivalent."
     },
     {
       "id": "M3-RPM-107",
@@ -2153,13 +2130,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-108",
@@ -2173,13 +2148,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-109",
@@ -2193,13 +2166,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-110",
@@ -2213,13 +2184,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-111",
@@ -2233,13 +2202,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-112",
@@ -2253,13 +2220,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-      "problemTypeLabelKo": "곱셈공식과 대칭식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
-      "templateLabelKo": "곱셈공식·대칭식 변형",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_MULTIPLICATION_FORMULA_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FORMULA_SYMMETRIC has the decisive skeleton QUADRATIC_PRODUCT_TO_PERFECT_SQUARE, narrower than the RPM leaves for square expansion, arbitrary linear-factor products, generic arithmetic/value calculation, and geometry applications. TPL_H1_POLY_OPERATION_DIRECT is also excluded because its decisive skeleton is BINOMIAL_EXPANSION_REMAINDER_BY_DIVISIBILITY."
     },
     {
       "id": "M3-RPM-113",
@@ -2273,13 +2238,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-114",
@@ -2293,13 +2256,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-115",
@@ -2313,13 +2274,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-116",
@@ -2333,13 +2292,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-117",
@@ -2353,13 +2310,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
-      "templateLabelKo": "표준 인수분해",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-118",
@@ -2373,13 +2328,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-119",
@@ -2393,13 +2346,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-120",
@@ -2413,13 +2364,11 @@
       },
       "standardUnitKey": "M3-02",
       "subUnitKey": "M3-02-FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-      "problemTypeLabelKo": "다항식의 인수분해",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
-      "templateLabelKo": "인수분해 구조의 활용",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_NARROW_FACTORIZATION_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "TPL_H1_FACTORIZATION_STANDARD has the decisive skeleton BIVARIATE_LINEAR_FACTOR_COEFFICIENT_MATCH, while its RPM leaves span common-factor grouping, identities, and general quadratic factorization. TPL_H1_FACTORIZATION_APPLICATION has INTEGER_LINEAR_FACTOR_PAIR_ENUMERATION, narrower than the generic value/condition application leaves."
     },
     {
       "id": "M3-RPM-121",
@@ -2538,13 +2487,11 @@
       },
       "standardUnitKey": "M3-03",
       "subUnitKey": "M3-03-QUADRATIC_EQUATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-      "problemTypeLabelKo": "이차방정식의 근과 판별식",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
-      "templateLabelKo": "판별식으로 근의 존재·중복 판정",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_DISCRIMINANT_TEMPLATE_SKELETON_MISMATCH",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The RPM leaf asks to classify the number of quadratic-equation roots by the discriminant. The linked template definition mentions discriminant sign, but its internal skeleton ROOT_LOCATION_BY_ENDPOINT_SIGN is an endpoint-sign root-location method and does not establish the same decisive route."
     },
     {
       "id": "M3-RPM-129",
@@ -2663,8 +2610,16 @@
       },
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "bindingStatus": "MISSING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "problemTypeLabelKo": "함수 그래프의 변환",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "templateLabelKo": "함수 그래프의 평행이동",
+      "m3NormalizationDisposition": "REUSE_EXISTING_GRAPH_TRANSLATION_CANONICAL",
+      "m3NormalizationDefectType": "SAFE_EXISTING_REUSE",
+      "m3NormalizationRationale": "The RPM leaf is explicitly parallel translation of a quadratic-function graph. The GLOBAL ACTIVE graph-transformation parent and translation template share the same operation; exact M3 curriculum binding is checked separately."
     },
     {
       "id": "M3-RPM-137",
@@ -2678,13 +2633,11 @@
       },
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
-      "problemTypeLabelKo": "조건을 이용한 이차함수 결정",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
-      "templateLabelKo": "근·축·꼭짓점으로 이차함수 결정",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_WRONG_QUADRATIC_EQUATION_RECONSTRUCTION_TARGET",
+      "m3NormalizationDefectType": "WRONG_PT",
+      "m3NormalizationRationale": "The RPM leaf asks for a vertex coordinate. PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX solves in the reverse direction: given roots/axis/vertex/point data, recover the quadratic function. The GLOBAL ACTIVE function-graph translation/property candidates do not establish the full vertex-coordinate skeleton across the broader RPM leaf, so no direct/family mapping is safe."
     },
     {
       "id": "M3-RPM-138",
@@ -2699,12 +2652,15 @@
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
       "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
-      "problemTypeLabelKo": "조건을 이용한 이차함수 결정",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
-      "templateLabelKo": "근·축·꼭짓점으로 이차함수 결정",
-      "bindingStatus": "MISSING"
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "problemTypeLabelKo": "함수 그래프의 성질",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+      "templateLabelKo": "함수 그래프의 대칭성",
+      "bindingStatus": "MISSING",
+      "m3NormalizationDisposition": "REMAP_AXIS_TO_GRAPH_SYMMETRY_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_PT",
+      "m3NormalizationRationale": "The RPM leaf asks for the axis of symmetry of a quadratic graph. The GLOBAL ACTIVE function-graph symmetry template matches that target; the prior quadratic-reconstruction template solves for a function equation from graph data, which is a different objective."
     },
     {
       "id": "M3-RPM-139",
@@ -2748,13 +2704,11 @@
       },
       "standardUnitKey": "M3-04",
       "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-      "problemTypeLabelKo": "이차함수의 최대·최소",
-      "ownerPack": "H1_FOUNDATION",
-      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
-      "templateLabelKo": "꼭짓점·제한구간의 최대·최소",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_EXTREMA_TEMPLATES_WITHOUT_ALL_REAL_DOMAIN_CASE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "The 2022 curriculum leaf includes maximum/minimum over the all-real domain, while TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL is specifically bounded-interval endpoint comparison and TPL_H1_QUADRATIC_EXTREMA_MODEL is contextual modelling. Their union does not establish coverage of the ordinary all-real vertex-extremum subtype. The 2015 leaf is additionally outside that curriculum placement."
     },
     {
       "id": "M3-RPM-142",
@@ -2801,9 +2755,12 @@
       "problemTypeKey": "PT_TRIG_RATIO",
       "problemTypeLabelKo": "삼각비의 값과 관계",
       "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
-      "templateLabelKo": "도형에서 삼각비 값 유도",
-      "bindingStatus": "MISSING"
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "templateLabelKo": "삼각비의 기본 관계",
+      "bindingStatus": "MISSING",
+      "m3NormalizationDisposition": "REMAP_TRIG_RATIO_TO_BASIC_DEFINITION_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The leaf states the sine/cosine/tangent ratio definitions and direct conversion among ratios. The former geometric-derivation template requires reconstructing auxiliary geometry, a narrower decisive structure."
     },
     {
       "id": "M3-RPM-144",
@@ -3193,13 +3150,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_LINE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
-      "templateLabelKo": "접선과 현이 이루는 각",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_GENERIC_TANGENT_ANGLE_FROM_TANGENT_CHORD_TEMPLATE",
+      "m3NormalizationDefectType": "WRONG_TEMPLATE",
+      "m3NormalizationRationale": "The RPM leaf says to find an angle from a tangent condition; this can use the radius-perpendicular-to-tangent relation and is broader than TPL_CIRCLE_ANGLE_TANGENT_CHORD, which specifically uses a tangent-chord/arc/inscribed-angle correspondence."
     },
     {
       "id": "M3-RPM-162",
@@ -3273,13 +3228,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "templateLabelKo": "복합 원의 각 관계",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_SIMPLE_CYCLIC_CONDITION_FROM_COMPOSITE_ANGLE_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "Inscribed-quadrilateral angle and four-points-cyclic conditions can be decided by one circle criterion; TPL_CIRCLE_ANGLE_COMPOSITE requires a chain of multiple circle-angle relations. The template is too specific in the opposite direction to serve as a direct equivalent, and no complete active family covers every criterion subtype."
     },
     {
       "id": "M3-RPM-166",
@@ -3293,13 +3246,11 @@
       },
       "standardUnitKey": "M3-06",
       "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
-      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
-      "templateLabelKo": "복합 원의 각 관계",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "m3NormalizationDisposition": "REMOVE_SIMPLE_CYCLIC_CONDITION_FROM_COMPOSITE_ANGLE_TEMPLATE",
+      "m3NormalizationDefectType": "DIRECT_OVERMAPPING",
+      "m3NormalizationRationale": "Inscribed-quadrilateral angle and four-points-cyclic conditions can be decided by one circle criterion; TPL_CIRCLE_ANGLE_COMPOSITE requires a chain of multiple circle-angle relations. The template is too specific in the opposite direction to serve as a direct equivalent, and no complete active family covers every criterion subtype."
     },
     {
       "id": "M3-RPM-167",
