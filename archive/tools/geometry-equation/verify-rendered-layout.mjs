@@ -38,6 +38,12 @@ function segmentBox(p,q,b) {
   for(const [a,c] of [[-dx,p[0]-b.x],[dx,right(b)-p[0]],[-dy,p[1]-b.y],[dy,bottom(b)-p[1]]]){if(a===0){if(c<0)return false;}else{const t=c/a;if(a<0)lo=Math.max(lo,t);else hi=Math.min(hi,t);if(lo>hi)return false;}}
   return true;
 }
+function properCross(a,b,c,d) {
+  const u=[b[0]-a[0],b[1]-a[1]],v=[d[0]-c[0],d[1]-c[1]],w=[c[0]-a[0],c[1]-a[1]];
+  const cross=(p,q)=>p[0]*q[1]-p[1]*q[0];const determinant=cross(u,v);if(Math.abs(determinant)<1e-9)return false;
+  const t=cross(w,v)/determinant,s=cross(w,u)/determinant;
+  return t>1e-6&&t<1-1e-6&&s>1e-6&&s<1-1e-6;
+}
 export function analyzeRenderedLayout(capture) {
   if(capture.synthetic!==false||capture.runtime!=='playwright-chromium')throw Error('ACTUAL_BROWSER_CAPTURE_REQUIRED');
   const errors=[];let labelCollisionCount=0,criticalCollisionCount=0,clippedTextCount=0,overflowCount=0;
@@ -61,6 +67,9 @@ export function analyzeRenderedLayout(capture) {
     }
   }
   const missingGlyphCount=capture.labels.reduce((s,v)=>s+v.missingGlyphCount,0);
+  for(const leader of capture.geometry.filter(v=>v.kind==='leader'))for(const other of capture.geometry.filter(v=>v.id!==leader.id&&v.points)) {
+    if(leader.points.some((p,i)=>i>0&&other.points.some((q,j)=>j>0&&properCross(leader.points[i-1],p,other.points[j-1],q)))){criticalCollisionCount++;errors.push('LEADER_CROSSING:'+leader.id+':'+other.id);}
+  }
   for(const g of capture.geometry){if(!contains(capture.svg,g.client)){overflowCount++;errors.push('GEOMETRY_VIEWPORT_CLIPPING:'+g.id);}}
   if(missingGlyphCount)errors.push('MISSING_GLYPH');
   return{status:errors.length?'FAIL':'PASS',HARD_RENDERED_COLLISION:criticalCollisionCount,CLIPPING:clippedTextCount,

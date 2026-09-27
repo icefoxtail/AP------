@@ -1,0 +1,350 @@
+{
+  "id": "source-1-exam-mobile",
+  "status": "PASS",
+  "mode": "exam",
+  "viewport": "mobile",
+  "runtime": "playwright-chromium",
+  "synthetic": false,
+  "url": "http://127.0.0.1:61051/archive/engine.html?preview=1&qpp=4&mode=exam&data=exams%2Foriginal%2Fhigh%2Fh2%2F2mid%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II.js",
+  "sourceSha256": "4d0932e824b8e2a7e7dba951ad8807541a97c48b54ae9f1360acb27c992e80dd",
+  "candidateSha256": "0aa95b1ffe056f93a310432b6e24f88bf2a031a63665672a959531d0758ee659",
+  "engineSha256": "c304e068aedcc72fc926d8a9aa3d471abad38abee0c2e26994e476bd37d1dbc9",
+  "browserVersion": "153.0.8010.53",
+  "state": {
+    "questionBlocks": 22,
+    "rawQuestionBlocks": 22,
+    "lastQuestionNo": 22,
+    "pageCount": 6,
+    "readiness": "{\"adapter\":\"ArchiveAdapter\",\"transaction\":1,\"state\":\"RENDER_READY\",\"ready\":false,\"failed\":false,\"failure\":null,\"events\":[{\"state\":\"DATA_READY\",\"evidence\":{\"questions\":22,\"sourceArchiveFile\":\"exams/original/high/h2/2mid/23_복성고_2학기_중간_고2_수학II.js\"}},{\"state\":\"MATH_READY\",\"evidence\":{\"source\":\"local\"}},{\"state\":\"IMAGE_READY\",\"evidence\":{\"images\":3,\"loaded\":3,\"errors\":0,\"timeouts\":0}},{\"state\":\"LAYOUT_READY\",\"evidence\":{\"pages\":6,\"mode\":\"exam\"}},{\"state\":\"RENDER_READY\",\"evidence\":{\"mode\":\"exam\",\"pages\":6}}]}",
+    "nativeRenderMetrics": {
+      "renderer": "batch",
+      "mode": "exam",
+      "questions": 22,
+      "startedAt": 471.60000002384186,
+      "renderReadyMs": 2243,
+      "mathJaxCalls": 1,
+      "mathJaxTotalMs": 2078.8,
+      "calls": [
+        {
+          "label": "exam-equal-slots",
+          "elapsedMs": 2078.8
+        }
+      ],
+      "phases": {
+        "exam-layout": 2157.2
+      },
+      "pages": 6,
+      "transactionId": "render-1790468315052-1",
+      "requestGeneration": 1,
+      "sessionId": "session-1790468315052-2",
+      "foreground": true,
+      "rafCount": 2,
+      "layoutBarrierCount": 2,
+      "fontWaitMs": 0.5,
+      "unrenderedMath": 0,
+      "finishedAt": 2714.7000000476837
+    },
+    "targets": [
+      {
+        "id": "graph-cubic",
+        "src": "",
+        "loaded": false,
+        "rect": null
+      }
+    ],
+    "horizontalOverflow": false,
+    "errorText": "",
+    "mathJaxReady": true,
+    "allImagesLoaded": true,
+    "imageCount": 3
+  },
+  "layouts": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:61051/archive/engine.html?preview=1&qpp=4&mode=exam&data=exams%2Foriginal%2Fhigh%2Fh2%2F2mid%2F23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II.js",
+      "status": 200,
+      "sha256": "c304e068aedcc72fc926d8a9aa3d471abad38abee0c2e26994e476bd37d1dbc9",
+      "bytes": 179503
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/archive2-review.js",
+      "status": 200,
+      "sha256": "e706739784346f32347a609a08e99245f3acf3c3626474b5318a625695b0f138",
+      "bytes": 413
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/archive2-review.css",
+      "status": 200,
+      "sha256": "956a692d7949424b88a19b8641af24215a206c9a236d4d4c3306c79aaf8f8e3c",
+      "bytes": 488
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/equal-slot-engine.css?v=20260915.1",
+      "status": 200,
+      "sha256": "2e7f18061f400c320163412f0a09e00e43af3128d800824dd210ceb5829edcf2",
+      "bytes": 1847
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/css/js-archive-theme-override.css",
+      "status": 200,
+      "sha256": "5c7225d0fb5fd4bab3c222acc4589981a80f81dd5aecda441e9f28d0b161e6fd",
+      "bytes": 16183
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/native_print.js?v=20260915.2",
+      "status": 200,
+      "sha256": "7afbb40b56f4e1d930f6d57e208e211a7ae1c74e5ab84f2c5c5b3f2c146ffc11",
+      "bytes": 18532
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/mathjax_render_loop.js?v=20260911.5",
+      "status": 200,
+      "sha256": "5ce90d2b951bb8890f6b1c60ff63f27d37a985b3b757e2cee3d2ed56e74b331b",
+      "bytes": 3546
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/print_image_optimizer.js?v=20260811.3",
+      "status": 200,
+      "sha256": "9c07c4619d27c30e9262714daae34442317ec568a1131aa261c8918536880700",
+      "bytes": 7372
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/concept_map.js",
+      "status": 200,
+      "sha256": "da30d15d75872d0190f06c6a5acd6b058d2c4a75914c116ef866984594ed6ff9",
+      "bytes": 8453
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/question-meta.js?v=archive-metadata-v1-phase1b-20260826b",
+      "status": 200,
+      "sha256": "f57c08ed243a483e4c38f17022ec7f6a6a2f34453531e5cd0cd129782df2b9fe",
+      "bytes": 27357
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/render-authority.js?v=20260906.5",
+      "status": 200,
+      "sha256": "425c8a0b1b651bbfe9dc62f528c7db6ce670a10f89e25664795eddc52a4f66bd",
+      "bytes": 27193
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/print-contract.js?v=20260906.2",
+      "status": 200,
+      "sha256": "d254821e71ee6ff7a1b6747843dd4a1cdea4a56bbfcf5e33c637f57894969cf2",
+      "bytes": 27665
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/archive2-preview-mobile.css?v=20260923.1",
+      "status": 200,
+      "sha256": "4f86625526fde85eab0b385c0da1a4d706752a61ff8e8c3b6b3fbb0a16ea7914",
+      "bytes": 6865
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/layout-materializer.js?v=20260914.1",
+      "status": 200,
+      "sha256": "ed6f44d62e3e76dd4c7f0384f8a12092f55cb0fb1f247a5cd74121d59a033e56",
+      "bytes": 10595
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/answer-render-executor.js?v=20260907.1",
+      "status": 200,
+      "sha256": "87a73df7cc0ded42d062aa5f8955e1d3e8edca01ec5502e3336f6e76d9f54726",
+      "bytes": 3128
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/side-effect-ledger.js?v=20260911.5",
+      "status": 200,
+      "sha256": "8de8fb7b3da6178800b634d6908a565734a95deb7c5497529908a4845140890a",
+      "bytes": 2861
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/render-state-normalizer.js?v=20260911.5",
+      "status": 200,
+      "sha256": "28502ff163a8b25221a824de6ecd1bae3cfc693ef63ceeda461689fdb25426c9",
+      "bytes": 7099
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/snapshot-contract.js?v=20260923.1",
+      "status": 200,
+      "sha256": "60a365e82448a539ce170da227e112891f95e1ddd6c3bb7056a0364ed4b18b78",
+      "bytes": 5926
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/solution-render-executor.js?v=20260924.2",
+      "status": 200,
+      "sha256": "2b6339e46db98388b7882ee3d0a43645ec25bc4690be67df1c62b7bce62cd743",
+      "bytes": 26924
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/layout-authority.js?v=20260924.1",
+      "status": 200,
+      "sha256": "be10c5cc8c1fd70a06216cb40b2f2e1ebe23b42f49df2b40f47d03fa11d5c532",
+      "bytes": 84946
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/screen-runtime.js?v=20260922.2",
+      "status": 200,
+      "sha256": "2ef7caab4db8ea86dab2b5d23cb1f71823e840b96941800f73f856c2ce9ac8b2",
+      "bytes": 19548
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1",
+      "status": 200,
+      "sha256": "4917b15ac829f7546ab1c053b06499786b45a053169f31f436c16c8eb821414e",
+      "bytes": 198708
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/review-preview-bridge.js?v=20260915.2",
+      "status": 200,
+      "sha256": "8db7dcc2cbd1b7565a24dce81f08ba8e90c53cd77de82a2308dc81b58d17119d",
+      "bytes": 20569
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/question-image-readiness.js?v=20260915.2",
+      "status": 200,
+      "sha256": "b5e67eabfde5d4909fa70c72746f1ec530be6377a55ea6c13a270523ad6c6043",
+      "bytes": 7106
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/print-runtime.js?v=20260906.2",
+      "status": 200,
+      "sha256": "c92b4b4133c8e1bbe7e909c6418e3c966262cf476584607ede77cf8d47cbda75",
+      "bytes": 4173
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/equal-slot-engine.js?v=20260915.1",
+      "status": 200,
+      "sha256": "499d7b255b47be1e7cb0b69bbf3bafb662b6ed8e7495095264d13c0af0f02e49",
+      "bytes": 20576
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/exam-render-executor.js?v=20260915.1",
+      "status": 200,
+      "sha256": "aa783b92883cd331f162fb935f942eaa06b1c06f802865d92cfb49acc0c0c369",
+      "bytes": 24516
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/screen-runtime-adapter.js?v=20260922.2",
+      "status": 200,
+      "sha256": "2d81c3c4038e8aba434fa616d4e95e344d84ca18ff2e023351436f4bc584ae56",
+      "bytes": 35413
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+      "status": 200,
+      "sha256": "db99dcaf40a926181bce4522477c2efc5924f6c4b29111b6a97faea477c9528b",
+      "bytes": 17579
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+      "status": 200,
+      "sha256": "b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+      "bytes": 968520
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+      "status": 200,
+      "sha256": "baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+      "bytes": 2460
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/exams/original/high/h2/2mid/23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II.js",
+      "status": 200,
+      "sha256": "0aa95b1ffe056f93a310432b6e24f88bf2a031a63665672a959531d0758ee659",
+      "bytes": 40001
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/data/question_metadata.json",
+      "status": 200,
+      "error": "Error: response.body: Protocol error (Network.getResponseBody): Request content was evicted from inspector cache\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation."
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/assets/images/23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II/q5.png?v=20260903.1",
+      "status": 200,
+      "sha256": "8d06b84832d4a41ce228bbed391dad9979a63743a9e7aad7fe363d60cd7f7a33",
+      "bytes": 54912
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/assets/images/23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II/q19.png?v=20260903.1",
+      "status": 200,
+      "sha256": "a6b556b40261682d33265f5a5e6603f774379e5bede899d3b4c0b384bd6d2ce4",
+      "bytes": 21306
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/assets/images/23_%EB%B3%B5%EC%84%B1%EA%B3%A0_2%ED%95%99%EA%B8%B0_%EC%A4%91%EA%B0%84_%EA%B3%A02_%EC%88%98%ED%95%99II/q21.png?v=20260903.1",
+      "status": 200,
+      "sha256": "86d2e44b38a5bc9ca44a00d9f916ad051eac2adf9c342a0acbcd4b1b3f0b12f8",
+      "bytes": 24260
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+      "status": 200,
+      "sha256": "2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+      "bytes": 960
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+      "status": 200,
+      "sha256": "4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+      "bytes": 980
+    },
+    {
+      "url": "blob:http://127.0.0.1:61051/933be9e3-356b-41f4-bcfc-3371d28ee40d",
+      "status": 200,
+      "sha256": "9c90aa3e2122512e2bed3e2ec681ae6531197f57a7d80d22634d6aa8e167c5ee",
+      "bytes": 176
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax/sre/speech-worker.js",
+      "status": 200,
+      "sha256": "80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+      "bytes": 425256
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax/sre/mathmaps/base.json",
+      "status": 200,
+      "sha256": "52a3d2c1fbaaabd74d6a49b7868db11cea16f45e2832aee35193466cdcfdde38",
+      "bytes": 217297
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+      "status": 200,
+      "sha256": "fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+      "bytes": 164864
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s4.woff2",
+      "status": 200,
+      "sha256": "b20a0e1b03043ae1a540857bdf1b220297ff0e78b110b1e15554addf91ad0937",
+      "bytes": 4352
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+      "status": 200,
+      "sha256": "07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+      "bytes": 2560
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax/sre/mathmaps/en.json",
+      "status": 200,
+      "sha256": "a4b07bd66f18143e61bdfee91103086e46dc0495592a59bc832dd8b0210f4ce6",
+      "bytes": 364362
+    },
+    {
+      "url": "http://127.0.0.1:61051/archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+      "status": 200,
+      "sha256": "859638d56039b28251b877911ce532b056c315a96d3df5a4050c3f60cdfc4414",
+      "bytes": 227597
+    }
+  ],
+  "errors": [],
+  "capture": {
+    "status": "MEASURED",
+    "missingGlyphCount": 0,
+    "labelCollisionCount": 0,
+    "criticalCollisionCount": 0,
+    "clippedTextCount": 0,
+    "overflowCount": 0,
+    "loadedSvgCount": 0,
+    "failedSvgCount": 0
+  }
+}

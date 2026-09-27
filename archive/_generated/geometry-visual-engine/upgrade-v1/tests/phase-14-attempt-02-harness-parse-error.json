@@ -1,0 +1,354 @@
+{
+  "phase": "PHASE_14_ARCHIVE_CONTRACT_AND_LEADER_REANALYSIS",
+  "attempt": "phase-14-attempt-02",
+  "status": "FAIL",
+  "failure": {
+    "command": "legacy-contract",
+    "error": {
+      "summary": {
+        "status": "PASS",
+        "gate": "LEGACY_CONTRACT_BASELINE_PARITY",
+        "rawQualificationStatus": "FAIL",
+        "baselineHead": "886cd25ed5710ab8badfac606b19b9c0d2fe620e",
+        "baselineInputParity": "PASS",
+        "introducedRegressionCount": 0,
+        "drift": [],
+        "verifierByteParity": "PASS",
+        "target": {
+          "total": 99,
+          "h15": 63,
+          "h22": 36,
+          "files": 29,
+          "expected": {
+            "total": 94,
+            "h15": 63,
+            "h22": 31,
+            "files": 28
+          },
+          "reviewed": 99,
+          "coverage": 1.053191489361702
+        },
+        "passCount": 91,
+        "failureCount": 8,
+        "inheritedFindings": [
+          {
+            "key": "22_\uae08\ub2f9\uace0_1\ud559\uae30_\uae30\ub9d0_\uace01_\uae30\ucd9c.js#19",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "SOURCE_ACTUAL_LINE_PARITY",
+              "CAPTION_SEMANTIC_PARITY"
+            ]
+          },
+          {
+            "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#2",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "CAPTION_SEMANTIC_PARITY",
+              "METADATA_OBSERVED_PARITY"
+            ]
+          },
+          {
+            "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#4",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "SOURCE_ACTUAL_LINE_PARITY",
+              "CAPTION_SEMANTIC_PARITY",
+              "METADATA_OBSERVED_PARITY"
+            ]
+          },
+          {
+            "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#8",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "METADATA_OBSERVED_PARITY"
+            ]
+          },
+          {
+            "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#15",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "SOURCE_ACTUAL_LINE_PARITY",
+              "CAPTION_SEMANTIC_PARITY",
+              "METADATA_OBSERVED_PARITY"
+            ]
+          },
+          {
+            "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#17",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "METADATA_OBSERVED_PARITY"
+            ]
+          },
+          {
+            "key": "25_\uc21c\ucc9c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#18",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "SOURCE_ACTUAL_LINE_PARITY",
+              "CAPTION_SEMANTIC_PARITY"
+            ]
+          },
+          {
+            "key": "25_\uc81c\uc77c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#15",
+            "failedGates": [
+              "REQUIRED_GEOMETRY_PRESENCE",
+              "NONZERO_LINE_GEOMETRY",
+              "LINE_LABEL_COEFFICIENT_PARITY",
+              "CAPTION_SEMANTIC_PARITY"
+            ]
+          }
+        ],
+        "knownBadRecall": "PASS",
+        "recall": {
+          "numericHard": "21/21",
+          "semantic": "27/27",
+          "metadata": "10/10",
+          "total": "58/58"
+        },
+        "copiedFileCount": 210,
+        "scope": "code regression only; inherited production qualification findings are not relabelled PASS"
+      },
+      "rawQualification": {
+        "status": "FAIL",
+        "failureCount": 8,
+        "rowCount": 99,
+        "target": {
+          "total": 99,
+          "h15": 63,
+          "h22": 36,
+          "files": 29,
+          "expected": {
+            "total": 94,
+            "h15": 63,
+            "h22": 31,
+            "files": 28
+          },
+          "reviewed": 99,
+          "coverage": 1.053191489361702
+        },
+        "failedRows": [
+          "22_\uae08\ub2f9\uace0_1\ud559\uae30_\uae30\ub9d0_\uace01_\uae30\ucd9c.js#19",
+          "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#2",
+          "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#4",
+          "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#8",
+          "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#15",
+          "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#17",
+          "25_\uc21c\ucc9c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#18",
+          "25_\uc81c\uc77c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#15"
+        ]
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/run-legacy-contract.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-02-check-legacy-runner.stdout.txt",
+      "stderr": "phase-14-attempt-02-check-legacy-runner.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-02-check-browser-recorder.stdout.txt",
+      "stderr": "phase-14-attempt-02-check-browser-recorder.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-rendered-layout.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-02-check-rendered-analyzer.stdout.txt",
+      "stderr": "phase-14-attempt-02-check-rendered-analyzer.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-02-node-tests.stdout.txt",
+      "stderr": "phase-14-attempt-02-node-tests.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/tests/run-legacy-contract.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-02-legacy-contract.stdout.txt",
+      "stderr": "phase-14-attempt-02-legacy-contract.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 5,
+    "commandsPassed": 5,
+    "nodeTests": 28,
+    "nodePassed": 28,
+    "nodeFailed": 0,
+    "legacyStatus": "PASS",
+    "legacyBaselineParity": null,
+    "rawQualificationStatus": "FAIL",
+    "introducedRegressionCount": 0,
+    "rawFailureCount": null,
+    "matrixSources": null,
+    "matrixRows": null,
+    "matrixAssets": null,
+    "archiveRows": 0,
+    "reanalyzedPriorCaptures": null,
+    "protectedFiles": null,
+    "productionMutationCount": null,
+    "originalVerifierHashesCompared": 0,
+    "originalVerifierHashesChanged": []
+  },
+  "legacyContractSummary": {
+    "status": "PASS",
+    "gate": "LEGACY_CONTRACT_BASELINE_PARITY",
+    "rawQualificationStatus": "FAIL",
+    "baselineHead": "886cd25ed5710ab8badfac606b19b9c0d2fe620e",
+    "baselineInputParity": "PASS",
+    "introducedRegressionCount": 0,
+    "drift": [],
+    "verifierByteParity": "PASS",
+    "target": {
+      "total": 99,
+      "h15": 63,
+      "h22": 36,
+      "files": 29,
+      "expected": {
+        "total": 94,
+        "h15": 63,
+        "h22": 31,
+        "files": 28
+      },
+      "reviewed": 99,
+      "coverage": 1.053191489361702
+    },
+    "passCount": 91,
+    "failureCount": 8,
+    "inheritedFindings": [
+      {
+        "key": "22_\uae08\ub2f9\uace0_1\ud559\uae30_\uae30\ub9d0_\uace01_\uae30\ucd9c.js#19",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      },
+      {
+        "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#2",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#4",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#8",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#15",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_\ub9e4\uc0b0\uc5ec\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uacf5\ud1b5\uc218\ud5592.js#17",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_\uc21c\ucc9c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#18",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      },
+      {
+        "key": "25_\uc81c\uc77c\uace0_2\ud559\uae30_\uc911\uac04_\uace01_\uae30\ucd9c.js#15",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      }
+    ],
+    "knownBadRecall": "PASS",
+    "recall": {
+      "numericHard": "21/21",
+      "semantic": "27/27",
+      "metadata": "10/10",
+      "total": "58/58"
+    },
+    "copiedFileCount": 210,
+    "scope": "code regression only; inherited production qualification findings are not relabelled PASS"
+  },
+  "matrixSummary": null,
+  "archiveEvidenceSummary": null,
+  "archiveRowChecks": [],
+  "archiveMetrics": {
+    "archiveRows": 0,
+    "modes": [],
+    "viewports": [],
+    "questionBlocks": [],
+    "minRootPages": 0,
+    "solTargetsPerRow": [],
+    "loadedSolTargets": 0,
+    "errors": 0,
+    "overflowRows": 0,
+    "screenshots": 0,
+    "targetCrops": 0,
+    "browserVersions": []
+  },
+  "prior26Reanalysis": null,
+  "originalVerifierHashParity": {},
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/tests/run-legacy-contract.mjs": "1660594764672882d49cfba7ae9ec8efdec0428f1c96248cbab689068e5b7c84",
+    "archive/tools/geometry-equation/record-visual-browser-evidence.mjs": "87b525d80c5c61258bb36cd2c0a74d71b93fca90cfd0d88cd4094c246388368a",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b",
+    "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs": "1868d2c789413f372e1ea7dd943d66b651ddb0ef5a3e9a5821ee04b7683ea3bd",
+    "archive/tools/geometry-equation/build-visual-render-matrix.mjs": "2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be",
+    "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs": "ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e",
+    "archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs": "c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a"
+  }
+}

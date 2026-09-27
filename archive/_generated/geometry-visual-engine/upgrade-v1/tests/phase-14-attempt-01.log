@@ -1,0 +1,238 @@
+phase=PHASE_14_ARCHIVE_CONTRACT_AND_LEADER_REANALYSIS
+attempt=phase-14-attempt-01
+status=FAIL
+counts commands=5/6 node=28/28 legacy=91/8 recall=None matrix=Nonesources/Nonerows archiveRows=0 reanalyzed=None mutations=None
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/run-legacy-contract.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/verify-rendered-layout.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs =====
+--- stdout ---
+
+--- stderr ---
+
+===== PASS exit=0 node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+--- stdout ---
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.5294
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5331
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.2206
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.3189
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 1.1801
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.2123
+  type: 'test'
+  ...
+# Subtest: leader crossing a core line is a hard rendered failure
+ok 7 - leader crossing a core line is a hard rendered failure
+  ---
+  duration_ms: 0.4921
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 8 - good point: geometry parity passes
+  ---
+  duration_ms: 10.9453
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 9 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 4.9023
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 10 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 6.6313
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 11 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 3.1572
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 12 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 9.6913
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 13 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 9.0856
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 14 - open or closed state requires a circle element
+  ---
+  duration_ms: 4.6137
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 15 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 105.7364
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 16 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 3.6233
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 17 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.7834
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 18 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 3.3338
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 19 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 11.1036
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 20 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 7.2303
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 21 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 4.8307
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 22 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.9986
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 23 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5859
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 24 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.3179
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 25 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 5.3284
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 26 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 4.122
+  type: 'test'
+  ...
+# Subtest: nested superscript scopes cannot collapse to a flat exponent
+ok 27 - nested superscript scopes cannot collapse to a flat exponent
+  ---
+  duration_ms: 0.6667
+  type: 'test'
+  ...
+# Subtest: right angle orientation is observed from actual vertices and rays
+ok 28 - right angle orientation is observed from actual vertices and rays
+  ---
+  duration_ms: 8.6272
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 331.0971
+
+--- stderr ---
+
+===== FAIL exit=1 node archive/tools/geometry-equation/tests/run-legacy-contract.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+--- stdout ---
+{"status":"FAIL","verifierByteParity":"PASS","target":{"total":99,"h15":63,"h22":36,"files":29,"expected":{"total":94,"h15":63,"h22":31,"files":28},"reviewed":99,"coverage":1.053191489361702},"passCount":91,"failureCount":8,"knownBadRecall":"PASS","recall":{"numericHard":"21/21","semantic":"27/27","metadata":"10/10","total":"58/58"},"copiedFileCount":210}
+
+--- stderr ---
+
+codeFileHashes:
+archive/tools/geometry-equation/visual_engine/__init__.py f6346fb2944efc4ccca3af788d78695b6f645e2ac8abcbe2163c5d50dee672dc
+archive/tools/geometry-equation/visual_engine/config.py 8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268
+archive/tools/geometry-equation/visual_engine/differential.py a411299279d12dbef321177cf15a7fe4b00c8c2f1cda5bb26455017fbd715b0c
+archive/tools/geometry-equation/visual_engine/engine.py 9a43d7e4eb542d197fc8fd171353ff2f223ce15bfba5151040d8a303eb61d529
+archive/tools/geometry-equation/visual_engine/entrypoints.py a7d36ad12aaa93e5a572c9f99d75a5736dbe8e1a8df545444409c23cb8612cc9
+archive/tools/geometry-equation/visual_engine/function_sampling.py 476787521e82b336476782fdfa7f2e54c15b930efdb2860ae0ec62c146293e2a
+archive/tools/geometry-equation/visual_engine/geometry_model.py 0f03acf264bef55b7ba1e07078e53acba5cf0272d8e1309749b38ffd6c925160
+archive/tools/geometry-equation/visual_engine/label_layout.py 2aadf65f89c523c5c0717b8db185b54ad1f9410c3d6a7f4b4f0e1ecda30d7b1e
+archive/tools/geometry-equation/visual_engine/math_expression.py e9af8c019a55c4dddb19949db984876ebaa26bb41b2e31dd3bbfdac5b8b1e0f9
+archive/tools/geometry-equation/visual_engine/semantic_model.py 0ca10433e7b5201ecdae9c7db7fec9d4cc6cede7b78fd121c2746a98957cbe59
+archive/tools/geometry-equation/visual_engine/style_tokens.py 069804bdf537721af5f4036152c0bca1e134194f7de445c24592d4daa7a574d2
+archive/tools/geometry-equation/visual_engine/svg_composer.py 4640e0e1c017195ba59494295220dc35258039b8b30ad0e5c5326a7cc6be937d
+archive/tools/geometry-equation/visual_engine/tikz_adapter.py 73f0536539f89e9972bee4885179280892d17ffa705da5e6d639b8ad0b23cc4d
+archive/tools/geometry-equation/visual_engine/viewport.py 24a218c13f229df0c36e1bde4452c6d05cbe1b9339523c1a6c11bfb19c13a094
+archive/tools/geometry-equation/tests/run-legacy-contract.mjs 1e56106a53c574c2d240f0ba2f5ae4d1b7a26cd8253831c28ac59c09c8f79d63
+archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs 1868d2c789413f372e1ea7dd943d66b651ddb0ef5a3e9a5821ee04b7683ea3bd
+archive/tools/geometry-equation/verify-rendered-layout.mjs 8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b
+archive/tools/geometry-equation/record-visual-browser-evidence.mjs 87b525d80c5c61258bb36cd2c0a74d71b93fca90cfd0d88cd4094c246388368a
+archive/tools/geometry-equation/build-visual-render-matrix.mjs 2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be
+archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e
+archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a
+archive/tools/geometry-equation/tests/test_regression.py f6e35c655ad376e45846a14c64453d2bd2d9aa11fc988eb67916ca6e46cdfb50
+originalVerifierHashes:

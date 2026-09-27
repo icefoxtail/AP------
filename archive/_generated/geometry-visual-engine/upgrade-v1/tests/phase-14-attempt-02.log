@@ -1,0 +1,235 @@
+phase=PHASE_14_ARCHIVE_CONTRACT_AND_LEADER_REANALYSIS
+attempt=phase-14-attempt-02
+status=PASS
+counts commands=10/10 node=28/28 legacyGate=LEGACY_CONTRACT_BASELINE_PARITY raw=FAIL/8 introduced=0 matrix=2/12 assets=3 archive=12 rows screenshots=12 crops=6 reanalysis=26 baselineMutations=0 verifierChanges=0 diff=PASS
+===== PASS node --check archive/tools/geometry-equation/tests/run-legacy-contract.mjs =====
+
+
+===== PASS node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs =====
+
+
+===== PASS node --check archive/tools/geometry-equation/verify-rendered-layout.mjs =====
+
+
+===== PASS node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs =====
+TAP version 13
+# Subtest: clear rendered bbox passes
+ok 1 - clear rendered bbox passes
+  ---
+  duration_ms: 1.4636
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 2 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.512
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 3 - critical label overlap fails
+  ---
+  duration_ms: 0.2309
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 4 - actual line through label fails
+  ---
+  duration_ms: 0.3168
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 5 - clipping and glyph errors fail
+  ---
+  duration_ms: 0.3801
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 6 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.1896
+  type: 'test'
+  ...
+# Subtest: leader crossing a core line is a hard rendered failure
+ok 7 - leader crossing a core line is a hard rendered failure
+  ---
+  duration_ms: 0.472
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 8 - good point: geometry parity passes
+  ---
+  duration_ms: 9.8757
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 9 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 3.377
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 10 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 4.9589
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 11 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.2483
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 12 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 4.0065
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 13 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 3.2667
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 14 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.286
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 15 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 95.9868
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 16 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 3.619
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 17 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 3.1609
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 18 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 2.8474
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 19 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 11.04
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 20 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 6.2606
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 21 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 4.3171
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 22 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.5388
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 23 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5057
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 24 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.3272
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 25 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 5.1309
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 26 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 3.4417
+  type: 'test'
+  ...
+# Subtest: nested superscript scopes cannot collapse to a flat exponent
+ok 27 - nested superscript scopes cannot collapse to a flat exponent
+  ---
+  duration_ms: 0.5317
+  type: 'test'
+  ...
+# Subtest: right angle orientation is observed from actual vertices and rays
+ok 28 - right angle orientation is observed from actual vertices and rays
+  ---
+  duration_ms: 8.1353
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 288.6302
+
+
+===== PASS node archive/tools/geometry-equation/tests/run-legacy-contract.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 =====
+{"status":"PASS","gate":"LEGACY_CONTRACT_BASELINE_PARITY","rawQualificationStatus":"FAIL","baselineHead":"886cd25ed5710ab8badfac606b19b9c0d2fe620e","baselineInputParity":"PASS","introducedRegressionCount":0,"drift":[],"verifierByteParity":"PASS","target":{"total":99,"h15":63,"h22":36,"files":29,"expected":{"total":94,"h15":63,"h22":31,"files":28},"reviewed":99,"coverage":1.053191489361702},"passCount":91,"failureCount":8,"inheritedFindings":[{"key":"22_금당고_1학기_기말_고1_기출.js#19","failedGates":["REQUIRED_GEOMETRY_PRESENCE","SOURCE_ACTUAL_LINE_PARITY","CAPTION_SEMANTIC_PARITY"]},{"key":"25_매산여고_2학기_중간_고1_공통수학2.js#2","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","CAPTION_SEMANTIC_PARITY","METADATA_OBSERVED_PARITY"]},{"key":"25_매산여고_2학기_중간_고1_공통수학2.js#4","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","SOURCE_ACTUAL_LINE_PARITY","CAPTION_SEMANTIC_PARITY","METADATA_OBSERVED_PARITY"]},{"key":"25_매산여고_2학기_중간_고1_공통수학2.js#8","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","METADATA_OBSERVED_PARITY"]},{"key":"25_매산여고_2학기_중간_고1_공통수학2.js#15","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","SOURCE_ACTUAL_LINE_PARITY","CAPTION_SEMANTIC_PARITY","METADATA_OBSERVED_PARITY"]},{"key":"25_매산여고_2학기_중간_고1_공통수학2.js#17","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","METADATA_OBSERVED_PARITY"]},{"key":"25_순천고_2학기_중간_고1_기출.js#18","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","SOURCE_ACTUAL_LINE_PARITY","CAPTION_SEMANTIC_PARITY"]},{"key":"25_제일고_2학기_중간_고1_기출.js#15","failedGates":["REQUIRED_GEOMETRY_PRESENCE","NONZERO_LINE_GEOMETRY","LINE_LABEL_COEFFICIENT_PARITY","CAPTION_SEMANTIC_PARITY"]}],"knownBadRecall":"PASS","recall":{"numericHard":"21/21","semantic":"27/27","metadata":"10/10","total":"58/58"},"copiedFileCount":210,"scope":"code regression only; inherited production qualification findings are not relabelled PASS"}
+
+
+===== PASS node archive/tools/geometry-equation/build-visual-render-matrix.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --bindings archive/_generated/geometry-visual-engine/upgrade-v1/config/archive-bindings.json --all-modes =====
+{"sources":2,"rows":12}
+
+
+===== PASS node archive/tools/geometry-equation/record-visual-browser-evidence.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --attempt phase-14-attempt-02 =====
+{"status":"PASS","runtime":"playwright-chromium","synthetic":false,"scope":"bound code regression candidates in unmodified archive runtime","rows":[{"id":"source-0-exam-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-0-exam-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-0-sol-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":2,"failedSvgCount":0},"errors":[]},{"id":"source-0-sol-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":2,"failedSvgCount":0},"errors":[]},{"id":"source-0-ans-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-0-ans-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-1-exam-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-1-exam-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-1-sol-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":1,"failedSvgCount":0},"errors":[]},{"id":"source-1-sol-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":1,"failedSvgCount":0},"errors":[]},{"id":"source-1-ans-desktop","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]},{"id":"source-1-ans-mobile","status":"PASS","capture":{"status":"MEASURED","missingGlyphCount":0,"labelCollisionCount":0,"criticalCollisionCount":0,"clippedTextCount":0,"overflowCount":0,"loadedSvgCount":0,"failedSvgCount":0},"errors":[]}],"matrixSha256":"e7a1dfd9e3106c6bae31aab5675e24a918a71181208438d56f1f31a16f4df677"}
+
+
+===== PASS reanalyze-prior26-captures =====
+{"status":"PASS","cases":26,"analyzerSha256":"8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b","failed":[]}
+
+
+===== PASS baseline-verify =====
+{"BASELINE_FROZEN": "PASS", "PRODUCTION_MUTATION_COUNT": 0, "protectedFileCount": 4493, "changed": []}
+
+
+===== PASS diff-check =====
+
+
+nativeRenderMetricsReceipt=archive/_generated/geometry-visual-engine/upgrade-v1/tests/phase-14-attempt-02-native-metrics.json
+prior26ReanalysisPath=archive/_generated/geometry-visual-engine/upgrade-v1/tests/phase-14-attempt-02-reanalysis.json
+codeFileHashes:
+archive/tools/geometry-equation/tests/run-legacy-contract.mjs 1660594764672882d49cfba7ae9ec8efdec0428f1c96248cbab689068e5b7c84
+archive/tools/geometry-equation/record-visual-browser-evidence.mjs 87b525d80c5c61258bb36cd2c0a74d71b93fca90cfd0d88cd4094c246388368a
+archive/tools/geometry-equation/verify-rendered-layout.mjs 8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b
+archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs 1868d2c789413f372e1ea7dd943d66b651ddb0ef5a3e9a5821ee04b7683ea3bd
+archive/tools/geometry-equation/build-visual-render-matrix.mjs 2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be
+archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e
+archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b
+archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a
+originalVerifierHashes:
+archive/tools/geometry-equation/verify-b-static-full.mjs baseline=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22 current=5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22
+archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs baseline=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387 current=8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387
+archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs baseline=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a current=f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a
+archive/tools/geometry-equation/verify-pilot-static.mjs baseline=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08 current=a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08
+archive/tools/geometry-equation/verify-production-parity-s15.mjs baseline=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b current=09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b
+archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs baseline=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21 current=86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21

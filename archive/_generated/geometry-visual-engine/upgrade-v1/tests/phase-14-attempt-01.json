@@ -1,0 +1,144 @@
+{
+  "phase": "PHASE_14_ARCHIVE_CONTRACT_AND_LEADER_REANALYSIS",
+  "attempt": "phase-14-attempt-01",
+  "status": "FAIL",
+  "failure": {
+    "command": "legacy-contract",
+    "error": "{\"status\":\"FAIL\",\"verifierByteParity\":\"PASS\",\"target\":{\"total\":99,\"h15\":63,\"h22\":36,\"files\":29,\"expected\":{\"total\":94,\"h15\":63,\"h22\":31,\"files\":28},\"reviewed\":99,\"coverage\":1.053191489361702},\"passCount\":91,\"failureCount\":8,\"knownBadRecall\":\"PASS\",\"recall\":{\"numericHard\":\"21/21\",\"semantic\":\"27/27\",\"metadata\":\"10/10\",\"total\":\"58/58\"},\"copiedFileCount\":210}\n"
+  },
+  "commands": [
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/run-legacy-contract.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-01-check-legacy-runner.stdout.txt",
+      "stderr": "phase-14-attempt-01-check-legacy-runner.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/verify-rendered-layout.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-01-check-rendered-analyzer.stdout.txt",
+      "stderr": "phase-14-attempt-01-check-rendered-analyzer.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-01-check-rendered-test.stdout.txt",
+      "stderr": "phase-14-attempt-01-check-rendered-test.stderr.txt"
+    },
+    {
+      "command": "node --check archive/tools/geometry-equation/record-visual-browser-evidence.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-01-check-archive-recorder.stdout.txt",
+      "stderr": "phase-14-attempt-01-check-archive-recorder.stderr.txt"
+    },
+    {
+      "command": "node --test archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs",
+      "exitCode": 0,
+      "status": "PASS",
+      "stdout": "phase-14-attempt-01-node-regression-suite.stdout.txt",
+      "stderr": "phase-14-attempt-01-node-regression-suite.stderr.txt"
+    },
+    {
+      "command": "node archive/tools/geometry-equation/tests/run-legacy-contract.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "exitCode": 1,
+      "status": "FAIL",
+      "stdout": "phase-14-attempt-01-legacy-contract.stdout.txt",
+      "stderr": "phase-14-attempt-01-legacy-contract.stderr.txt"
+    }
+  ],
+  "counts": {
+    "commandsRun": 6,
+    "commandsPassed": 5,
+    "nodeTests": 28,
+    "nodePassed": 28,
+    "nodeFailed": 0,
+    "legacyPassCount": 91,
+    "legacyFailureCount": 8,
+    "legacyMutationRecall": null,
+    "legacyVerifierByteParity": "PASS",
+    "matrixSources": null,
+    "matrixRows": null,
+    "archiveCaptureRows": 0,
+    "reanalyzedPriorCaptures": null,
+    "protectedFiles": null,
+    "productionMutationCount": null,
+    "originalVerifierHashesCompared": 0,
+    "originalVerifierHashesChanged": []
+  },
+  "legacyContract": {
+    "status": "FAIL",
+    "verifierByteParity": "PASS",
+    "target": {
+      "total": 99,
+      "h15": 63,
+      "h22": 36,
+      "files": 29,
+      "expected": {
+        "total": 94,
+        "h15": 63,
+        "h22": 31,
+        "files": 28
+      },
+      "reviewed": 99,
+      "coverage": 1.053191489361702
+    },
+    "passCount": 91,
+    "failureCount": 8,
+    "knownBadRecall": "PASS",
+    "recall": {
+      "numericHard": "21/21",
+      "semantic": "27/27",
+      "metadata": "10/10",
+      "total": "58/58"
+    },
+    "copiedFileCount": 210
+  },
+  "matrix": null,
+  "archiveEvidence": null,
+  "archiveRowChecks": [],
+  "archiveMetrics": {
+    "archiveRows": 0,
+    "modes": [],
+    "viewports": [],
+    "questionCounts": [],
+    "pageCountMin": 0,
+    "solTargetCounts": [],
+    "loadedSolTargets": 0,
+    "archiveErrors": 0,
+    "overflowRows": 0,
+    "screenshots": 0,
+    "targetCrops": 0,
+    "browserVersions": []
+  },
+  "prior26Reanalysis": null,
+  "originalVerifierHashParity": {},
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/visual_engine/__init__.py": "f6346fb2944efc4ccca3af788d78695b6f645e2ac8abcbe2163c5d50dee672dc",
+    "archive/tools/geometry-equation/visual_engine/config.py": "8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268",
+    "archive/tools/geometry-equation/visual_engine/differential.py": "a411299279d12dbef321177cf15a7fe4b00c8c2f1cda5bb26455017fbd715b0c",
+    "archive/tools/geometry-equation/visual_engine/engine.py": "9a43d7e4eb542d197fc8fd171353ff2f223ce15bfba5151040d8a303eb61d529",
+    "archive/tools/geometry-equation/visual_engine/entrypoints.py": "a7d36ad12aaa93e5a572c9f99d75a5736dbe8e1a8df545444409c23cb8612cc9",
+    "archive/tools/geometry-equation/visual_engine/function_sampling.py": "476787521e82b336476782fdfa7f2e54c15b930efdb2860ae0ec62c146293e2a",
+    "archive/tools/geometry-equation/visual_engine/geometry_model.py": "0f03acf264bef55b7ba1e07078e53acba5cf0272d8e1309749b38ffd6c925160",
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "2aadf65f89c523c5c0717b8db185b54ad1f9410c3d6a7f4b4f0e1ecda30d7b1e",
+    "archive/tools/geometry-equation/visual_engine/math_expression.py": "e9af8c019a55c4dddb19949db984876ebaa26bb41b2e31dd3bbfdac5b8b1e0f9",
+    "archive/tools/geometry-equation/visual_engine/semantic_model.py": "0ca10433e7b5201ecdae9c7db7fec9d4cc6cede7b78fd121c2746a98957cbe59",
+    "archive/tools/geometry-equation/visual_engine/style_tokens.py": "069804bdf537721af5f4036152c0bca1e134194f7de445c24592d4daa7a574d2",
+    "archive/tools/geometry-equation/visual_engine/svg_composer.py": "4640e0e1c017195ba59494295220dc35258039b8b30ad0e5c5326a7cc6be937d",
+    "archive/tools/geometry-equation/visual_engine/tikz_adapter.py": "73f0536539f89e9972bee4885179280892d17ffa705da5e6d639b8ad0b23cc4d",
+    "archive/tools/geometry-equation/visual_engine/viewport.py": "24a218c13f229df0c36e1bde4452c6d05cbe1b9339523c1a6c11bfb19c13a094",
+    "archive/tools/geometry-equation/tests/run-legacy-contract.mjs": "1e56106a53c574c2d240f0ba2f5ae4d1b7a26cd8253831c28ac59c09c8f79d63",
+    "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs": "1868d2c789413f372e1ea7dd943d66b651ddb0ef5a3e9a5821ee04b7683ea3bd",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b",
+    "archive/tools/geometry-equation/record-visual-browser-evidence.mjs": "87b525d80c5c61258bb36cd2c0a74d71b93fca90cfd0d88cd4094c246388368a",
+    "archive/tools/geometry-equation/build-visual-render-matrix.mjs": "2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be",
+    "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs": "ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e",
+    "archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs": "c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a",
+    "archive/tools/geometry-equation/tests/test_regression.py": "f6e35c655ad376e45846a14c64453d2bd2d9aa11fc988eb67916ca6e46cdfb50"
+  }
+}

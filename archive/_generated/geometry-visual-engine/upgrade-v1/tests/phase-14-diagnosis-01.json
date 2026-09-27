@@ -1,0 +1,1761 @@
+{
+  "comparison": {
+    "historicalStatus": "PASS",
+    "historicalTarget": {
+      "total": 94,
+      "h15": 63,
+      "h22": 31,
+      "files": 28,
+      "expected": {
+        "total": 94,
+        "h15": 63,
+        "h22": 31,
+        "files": 28
+      },
+      "reviewed": 94,
+      "coverage": 1
+    },
+    "historicalRows": 94,
+    "currentStatus": "FAIL",
+    "currentTarget": {
+      "total": 99,
+      "h15": 63,
+      "h22": 36,
+      "files": 29,
+      "expected": {
+        "total": 94,
+        "h15": 63,
+        "h22": 31,
+        "files": 28
+      },
+      "reviewed": 99,
+      "coverage": 1.053191489361702
+    },
+    "currentRows": 99,
+    "newTargetKeys": [
+      "25_매산여고_2학기_중간_고1_공통수학2.js#15",
+      "25_매산여고_2학기_중간_고1_공통수학2.js#17",
+      "25_매산여고_2학기_중간_고1_공통수학2.js#2",
+      "25_매산여고_2학기_중간_고1_공통수학2.js#4",
+      "25_매산여고_2학기_중간_고1_공통수학2.js#8"
+    ],
+    "removedTargetKeys": []
+  },
+  "failedRows": [
+    {
+      "key": "22_금당고_1학기_기말_고1_기출.js#19",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE"
+          ]
+        },
+        {
+          "name": "SOURCE_ACTUAL_LINE_PARITY",
+          "issues": [
+            "SOURCE_LINE_NOT_OBSERVED"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_OR_LABEL_EQUATION_MISSING",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOURCE_LINE_NOT_OBSERVED"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js"
+      ],
+      "reportedAssetPath": "assets/images/22_금당고_1학기_기말_고1_기출/q19-solution.svg",
+      "assetCurrentBankPath": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q19-solution.svg"
+    },
+    {
+      "key": "25_매산여고_2학기_중간_고1_공통수학2.js#2",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        },
+        {
+          "name": "METADATA_OBSERVED_PARITY",
+          "issues": [
+            "SOLUTION_IMAGE_MISSING",
+            "SOLUTION_IMAGE_ALT_MISSING",
+            "SOLUTION_IMAGE_CAPTION_MISSING",
+            "VISUAL_TAG_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_PARALLEL_MISSING",
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOLUTION_IMAGE_ALT_MISSING",
+        "SOLUTION_IMAGE_CAPTION_MISSING",
+        "SOLUTION_IMAGE_MISSING",
+        "VISIBLE_PARALLEL_SEMANTIC_MISSING",
+        "VISUAL_TAG_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+      ],
+      "reportedAssetPath": null,
+      "assetCurrentBankPath": null
+    },
+    {
+      "key": "25_매산여고_2학기_중간_고1_공통수학2.js#4",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "SOURCE_ACTUAL_LINE_PARITY",
+          "issues": [
+            "SOURCE_LINE_NOT_OBSERVED"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PERPENDICULAR_MISSING",
+            "CAPTION_DISTANCE_MISSING",
+            "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING",
+            "VISIBLE_DISTANCE_SEMANTIC_MISSING",
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "METADATA_OBSERVED_PARITY",
+          "issues": [
+            "SOLUTION_IMAGE_MISSING",
+            "SOLUTION_IMAGE_ALT_MISSING",
+            "SOLUTION_IMAGE_CAPTION_MISSING",
+            "VISUAL_TAG_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_DISTANCE_MISSING",
+        "CAPTION_OR_LABEL_EQUATION_MISSING",
+        "CAPTION_PERPENDICULAR_MISSING",
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOLUTION_IMAGE_ALT_MISSING",
+        "SOLUTION_IMAGE_CAPTION_MISSING",
+        "SOLUTION_IMAGE_MISSING",
+        "SOURCE_LINE_NOT_OBSERVED",
+        "VISIBLE_DISTANCE_SEMANTIC_MISSING",
+        "VISIBLE_PERPENDICULAR_SEMANTIC_MISSING",
+        "VISUAL_TAG_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+      ],
+      "reportedAssetPath": null,
+      "assetCurrentBankPath": null
+    },
+    {
+      "key": "25_매산여고_2학기_중간_고1_공통수학2.js#8",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "METADATA_OBSERVED_PARITY",
+          "issues": [
+            "VISUAL_TAG_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "VISUAL_TAG_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+      ],
+      "reportedAssetPath": "assets/images/25_매산여고_2학기_중간_고1_공통수학2/q8-solution.svg",
+      "assetCurrentBankPath": "archive/assets/images/25_매산여고_2학기_중간_고1_공통수학2/q8-solution.svg"
+    },
+    {
+      "key": "25_매산여고_2학기_중간_고1_공통수학2.js#15",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "SOURCE_ACTUAL_LINE_PARITY",
+          "issues": [
+            "SOURCE_LINE_NOT_OBSERVED"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        },
+        {
+          "name": "METADATA_OBSERVED_PARITY",
+          "issues": [
+            "VISUAL_TAG_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_OR_LABEL_EQUATION_MISSING",
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOURCE_LINE_NOT_OBSERVED",
+        "VISUAL_TAG_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+      ],
+      "reportedAssetPath": "assets/images/25_매산여고_2학기_중간_고1_공통수학2/q15-solution.svg",
+      "assetCurrentBankPath": "archive/assets/images/25_매산여고_2학기_중간_고1_공통수학2/q15-solution.svg"
+    },
+    {
+      "key": "25_매산여고_2학기_중간_고1_공통수학2.js#17",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "METADATA_OBSERVED_PARITY",
+          "issues": [
+            "SOLUTION_IMAGE_MISSING",
+            "SOLUTION_IMAGE_ALT_MISSING",
+            "SOLUTION_IMAGE_CAPTION_MISSING",
+            "VISUAL_TAG_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOLUTION_IMAGE_ALT_MISSING",
+        "SOLUTION_IMAGE_CAPTION_MISSING",
+        "SOLUTION_IMAGE_MISSING",
+        "VISUAL_TAG_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js"
+      ],
+      "reportedAssetPath": null,
+      "assetCurrentBankPath": null
+    },
+    {
+      "key": "25_순천고_2학기_중간_고1_기출.js#18",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING",
+            "FOOT_SEGMENT_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "SOURCE_ACTUAL_LINE_PARITY",
+          "issues": [
+            "SOURCE_LINE_NOT_OBSERVED"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_OR_LABEL_EQUATION_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_OR_LABEL_EQUATION_MISSING",
+        "FOOT_SEGMENT_PRIMITIVE_MISSING",
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "SOURCE_LINE_NOT_OBSERVED"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js"
+      ],
+      "reportedAssetPath": "assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
+      "assetCurrentBankPath": "archive/assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg"
+    },
+    {
+      "key": "25_제일고_2학기_중간_고1_기출.js#15",
+      "failedGates": [
+        {
+          "name": "REQUIRED_GEOMETRY_PRESENCE",
+          "issues": [
+            "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+            "LINE_PRIMITIVE_MISSING"
+          ]
+        },
+        {
+          "name": "NONZERO_LINE_GEOMETRY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "LINE_LABEL_COEFFICIENT_PARITY",
+          "issues": [
+            "NO_VISIBLE_LINE_PRIMITIVE"
+          ]
+        },
+        {
+          "name": "CAPTION_SEMANTIC_PARITY",
+          "issues": [
+            "CAPTION_PARALLEL_MISSING",
+            "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+          ]
+        }
+      ],
+      "coreIssueCodes": [
+        "CAPTION_PARALLEL_MISSING",
+        "LINE_PRIMITIVE_MISSING",
+        "NO_VISIBLE_LINE_PRIMITIVE",
+        "PIXEL_TO_MATH_MAPPING_UNAVAILABLE",
+        "VISIBLE_PARALLEL_SEMANTIC_MISSING"
+      ],
+      "sourceCurrentBankPaths": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+      ],
+      "reportedAssetPath": "assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+      "assetCurrentBankPath": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg"
+    }
+  ],
+  "assetSHAComparison": {
+    "historicalAssetRows": 94,
+    "currentAssetRows": 96,
+    "sharedRowsWithBothAssetSHA": 94,
+    "unchangedSHA": 4,
+    "changedSHA": 90,
+    "historicalAssetSHAAbsentCurrent": 0,
+    "currentAssetSHANew": 2,
+    "unchangedKeys": [
+      "22_강남여고_2학기_중간_고1_기출.js#22",
+      "23_제일고_1학기_기말_고1_기출.js#13",
+      "24_제일고_1학기_중간_고1_기출.js#15",
+      "25_제일고_2학기_중간_고1_기출.js#12"
+    ],
+    "changedKeys": [
+      "21_복성고_2학기_중간_고1_기출.js#17",
+      "21_순천고_2학기_중간_고1_기출.js#21",
+      "21_효천고_2학기_중간_고1_기출.js#13",
+      "22_강남여고_2학기_중간_고1_기출.js#13",
+      "22_금당고_1학기_기말_고1_기출.js#13",
+      "22_금당고_1학기_기말_고1_기출.js#19",
+      "22_금당고_1학기_기말_고1_기출.js#20",
+      "22_금당고_1학기_기말_고1_기출.js#4",
+      "22_매산고_1학기_기말_고1_기출.js#15",
+      "22_매산고_1학기_기말_고1_기출.js#6",
+      "22_매산고_1학기_기말_고1_기출.js#9",
+      "22_순천여고_1학기_기말_고1_기출.js#18",
+      "22_순천여고_1학기_기말_고1_기출.js#19",
+      "22_순천여고_1학기_기말_고1_기출.js#3",
+      "22_순천여고_1학기_기말_고1_기출.js#6",
+      "22_제일고_1학기_기말_고1_기출.js#10",
+      "22_제일고_1학기_기말_고1_기출.js#11",
+      "22_제일고_1학기_기말_고1_기출.js#12",
+      "22_팔마고_1학기_기말_고1_기출.js#13",
+      "22_팔마고_1학기_기말_고1_기출.js#14",
+      "22_팔마고_1학기_기말_고1_기출.js#17",
+      "22_팔마고_1학기_기말_고1_기출.js#22",
+      "22_팔마고_1학기_기말_고1_기출.js#4",
+      "22_팔마고_1학기_기말_고1_기출.js#5",
+      "22_효천고_1학기_기말_고1_기출.js#16",
+      "22_효천고_1학기_기말_고1_기출.js#2",
+      "23_강남여고_1학기_기말_고1_기출.js#12",
+      "23_강남여고_1학기_기말_고1_기출.js#13",
+      "23_강남여고_1학기_기말_고1_기출.js#22",
+      "23_강남여고_1학기_기말_고1_기출.js#24",
+      "23_강남여고_1학기_기말_고1_기출.js#5",
+      "23_금당고_1학기_기말_고1_기출.js#12",
+      "23_금당고_1학기_기말_고1_기출.js#17",
+      "23_금당고_1학기_기말_고1_기출.js#3",
+      "23_금당고_1학기_기말_고1_기출.js#5",
+      "23_금당고_1학기_기말_고1_기출.js#7",
+      "23_매산고_1학기_기말_고1_기출.js#2",
+      "23_매산고_1학기_기말_고1_기출.js#7",
+      "23_복성고_1학기_기말_고1_기출.js#11",
+      "23_복성고_1학기_기말_고1_기출.js#4",
+      "23_복성고_1학기_기말_고1_기출.js#5",
+      "23_순천여고_1학기_기말_고1_기출.js#11",
+      "23_순천여고_1학기_기말_고1_기출.js#13",
+      "23_순천여고_1학기_기말_고1_기출.js#2",
+      "23_순천여고_1학기_기말_고1_기출.js#21",
+      "23_순천여고_1학기_기말_고1_기출.js#4",
+      "23_팔마고_1학기_기말_고1_기출.js#17",
+      "23_팔마고_1학기_기말_고1_기출.js#18",
+      "23_팔마고_1학기_기말_고1_기출.js#2",
+      "23_팔마고_1학기_기말_고1_기출.js#22",
+      "23_팔마고_1학기_기말_고1_기출.js#3",
+      "23_팔마고_1학기_기말_고1_기출.js#4",
+      "23_팔마고_1학기_기말_고1_기출.js#5",
+      "23_팔마고_1학기_기말_고1_기출.js#8",
+      "24_금당고_1학기_기말_고1_기출.js#11",
+      "24_금당고_1학기_기말_고1_기출.js#14",
+      "24_금당고_1학기_기말_고1_기출.js#4",
+      "24_금당고_1학기_기말_고1_기출.js#5",
+      "24_금당고_1학기_기말_고1_기출.js#6",
+      "24_매산고_1학기_기말_고1_기출.js#11",
+      "24_매산고_1학기_기말_고1_기출.js#14",
+      "24_매산고_1학기_기말_고1_기출.js#5",
+      "24_매산고_1학기_기말_고1_기출.js#6",
+      "24_제일고_1학기_기말_고1_기출.js#14",
+      "24_제일고_1학기_중간_고1_기출.js#14",
+      "24_제일고_1학기_중간_고1_기출.js#16",
+      "24_제일고_1학기_중간_고1_기출.js#17",
+      "24_제일고_1학기_중간_고1_기출.js#20",
+      "24_제일고_1학기_중간_고1_기출.js#21",
+      "25_금당고_2학기_중간_고1_기출.js#14",
+      "25_금당고_2학기_중간_고1_기출.js#17",
+      "25_금당고_2학기_중간_고1_기출.js#2",
+      "25_매산고_2학기_중간_고1_기출.js#15",
+      "25_매산고_2학기_중간_고1_기출.js#2",
+      "25_매산고_2학기_중간_고1_기출.js#6",
+      "25_순천고_2학기_중간_고1_기출.js#12",
+      "25_순천고_2학기_중간_고1_기출.js#18",
+      "25_순천고_2학기_중간_고1_기출.js#21",
+      "25_순천고_2학기_중간_고1_기출.js#6",
+      "25_순천여고_2학기_중간_고1_공통수학2.js#10",
+      "25_순천여고_2학기_중간_고1_공통수학2.js#12",
+      "25_순천여고_2학기_중간_고1_공통수학2.js#13",
+      "25_순천여고_2학기_중간_고1_공통수학2.js#19",
+      "25_순천여고_2학기_중간_고1_공통수학2.js#20",
+      "25_제일고_2학기_기말_고1_기출.js#9",
+      "25_제일고_2학기_중간_고1_기출.js#14",
+      "25_제일고_2학기_중간_고1_기출.js#15",
+      "25_효천고_2학기_중간_고1_기출.js#2",
+      "25_효천고_2학기_중간_고1_기출.js#7",
+      "25_효천고_2학기_중간_고1_기출.js#8"
+    ]
+  },
+  "phase0RawSHAParity": {
+    "basis": "current legacy-contract copy-ledger source paths and report pass2ObservedSvg asset references compared with baseline.json protectedFiles",
+    "uniqueTargetSourceFiles": 29,
+    "targetSourceMissingRefs": [],
+    "targetSourceAmbiguities": [],
+    "targetSourcesEqualPhase0": 29,
+    "targetSourcesMismatchOrUnbound": [],
+    "uniqueObservedAssetFiles": 96,
+    "observedAssetsEqualPhase0": 96,
+    "observedAssetsMismatchOrUnbound": [],
+    "allCurrentTargetedSourceAndObservedAssetRawSHAEqualPhase0": true,
+    "sourceChecks": [
+      {
+        "path": "archive/exams/original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "4ce25683a0ca8f75ae03a28fa3bc04a4d07438c646493986a1405f00316b3f83",
+        "ledgerSHA": "4ce25683a0ca8f75ae03a28fa3bc04a4d07438c646493986a1405f00316b3f83",
+        "phase0SHA": "4ce25683a0ca8f75ae03a28fa3bc04a4d07438c646493986a1405f00316b3f83",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/22_매산고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "a95c77db6fffb6340ff55f9539b9c44cd54e9baece068a88bdb7e55e8658c404",
+        "ledgerSHA": "a95c77db6fffb6340ff55f9539b9c44cd54e9baece068a88bdb7e55e8658c404",
+        "phase0SHA": "a95c77db6fffb6340ff55f9539b9c44cd54e9baece068a88bdb7e55e8658c404",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/22_순천여고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "b6b220f2d682dca44ec9a10b4f2f0767b74356571e79177eebd2e59c070d785b",
+        "ledgerSHA": "b6b220f2d682dca44ec9a10b4f2f0767b74356571e79177eebd2e59c070d785b",
+        "phase0SHA": "b6b220f2d682dca44ec9a10b4f2f0767b74356571e79177eebd2e59c070d785b",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/22_제일고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "a2ad84f27edc684df039e546fca14f0ab64637dc85a5b9fa57f1f64377eacf50",
+        "ledgerSHA": "a2ad84f27edc684df039e546fca14f0ab64637dc85a5b9fa57f1f64377eacf50",
+        "phase0SHA": "a2ad84f27edc684df039e546fca14f0ab64637dc85a5b9fa57f1f64377eacf50",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/22_팔마고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "757529d8c4039562f7e8b8cb1f92b59c6d7500eb692e0c9b7a21b72a2b271c27",
+        "ledgerSHA": "757529d8c4039562f7e8b8cb1f92b59c6d7500eb692e0c9b7a21b72a2b271c27",
+        "phase0SHA": "757529d8c4039562f7e8b8cb1f92b59c6d7500eb692e0c9b7a21b72a2b271c27",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "69567c456dd1c11ab4a8f210b54b55cabd3ba0d699d21b3f95300ceaea50aad1",
+        "ledgerSHA": "69567c456dd1c11ab4a8f210b54b55cabd3ba0d699d21b3f95300ceaea50aad1",
+        "phase0SHA": "69567c456dd1c11ab4a8f210b54b55cabd3ba0d699d21b3f95300ceaea50aad1",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_강남여고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "56c777a8539a5994ce5a62449d2fc146a4e74f7601280be44a59121a2e963b11",
+        "ledgerSHA": "56c777a8539a5994ce5a62449d2fc146a4e74f7601280be44a59121a2e963b11",
+        "phase0SHA": "56c777a8539a5994ce5a62449d2fc146a4e74f7601280be44a59121a2e963b11",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "b3bc8cb9800f0c0516e1fc9053b14af33c8b1e314575098e8f9f924263926885",
+        "ledgerSHA": "b3bc8cb9800f0c0516e1fc9053b14af33c8b1e314575098e8f9f924263926885",
+        "phase0SHA": "b3bc8cb9800f0c0516e1fc9053b14af33c8b1e314575098e8f9f924263926885",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "539ed79a66e766e2b17d31e453ae801d0a33a3f19d7c78af4ad7cb2016d188a2",
+        "ledgerSHA": "539ed79a66e766e2b17d31e453ae801d0a33a3f19d7c78af4ad7cb2016d188a2",
+        "phase0SHA": "539ed79a66e766e2b17d31e453ae801d0a33a3f19d7c78af4ad7cb2016d188a2",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_복성고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "8841a24312f0468329dc162865a7f51ee06718fb72ceaa6d74a021e7bc33d30b",
+        "ledgerSHA": "8841a24312f0468329dc162865a7f51ee06718fb72ceaa6d74a021e7bc33d30b",
+        "phase0SHA": "8841a24312f0468329dc162865a7f51ee06718fb72ceaa6d74a021e7bc33d30b",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_순천여고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "a5d65e05f9b35e252701ac5c74d5ada6362109df13e660a1cc1e1d0b82cf2163",
+        "ledgerSHA": "a5d65e05f9b35e252701ac5c74d5ada6362109df13e660a1cc1e1d0b82cf2163",
+        "phase0SHA": "a5d65e05f9b35e252701ac5c74d5ada6362109df13e660a1cc1e1d0b82cf2163",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_제일고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+        "ledgerSHA": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+        "phase0SHA": "d0bb7442d3b7be315c95d2ccc59dfb8c9c0e4b47dd5f9377331713551dd265ba",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/23_팔마고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "45d7a4e38188f65642e2fa7797a69d4503ac9cf47d471d0f6e928875e0052f27",
+        "ledgerSHA": "45d7a4e38188f65642e2fa7797a69d4503ac9cf47d471d0f6e928875e0052f27",
+        "phase0SHA": "45d7a4e38188f65642e2fa7797a69d4503ac9cf47d471d0f6e928875e0052f27",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "fe62db778e7ea63fd4049b64926037967a40d8004d77d1d9170fbdb670395fc0",
+        "ledgerSHA": "fe62db778e7ea63fd4049b64926037967a40d8004d77d1d9170fbdb670395fc0",
+        "phase0SHA": "fe62db778e7ea63fd4049b64926037967a40d8004d77d1d9170fbdb670395fc0",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "a7d9ce3f1e2690e929bd4aff36af74f881c36b5ff05bf8ba6bb588267c7209a3",
+        "ledgerSHA": "a7d9ce3f1e2690e929bd4aff36af74f881c36b5ff05bf8ba6bb588267c7209a3",
+        "phase0SHA": "a7d9ce3f1e2690e929bd4aff36af74f881c36b5ff05bf8ba6bb588267c7209a3",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1final/24_제일고_1학기_기말_고1_기출.js",
+        "currentRawSHA": "29864e69a8d83d16b9428123bf9fb90e8e706757309a324429c35b6a2d1c1f39",
+        "ledgerSHA": "29864e69a8d83d16b9428123bf9fb90e8e706757309a324429c35b6a2d1c1f39",
+        "phase0SHA": "29864e69a8d83d16b9428123bf9fb90e8e706757309a324429c35b6a2d1c1f39",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/1mid/24_제일고_1학기_중간_고1_기출.js",
+        "currentRawSHA": "517448ffa8d374b4bb86b8bf95960bb7cc78e7373323e22475f2d19365c4134b",
+        "ledgerSHA": "517448ffa8d374b4bb86b8bf95960bb7cc78e7373323e22475f2d19365c4134b",
+        "phase0SHA": "517448ffa8d374b4bb86b8bf95960bb7cc78e7373323e22475f2d19365c4134b",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
+        "currentRawSHA": "99d4d2923e94dc068c56892bf49a9cbda52b83049918dd7abe37facc8d7b579d",
+        "ledgerSHA": "99d4d2923e94dc068c56892bf49a9cbda52b83049918dd7abe37facc8d7b579d",
+        "phase0SHA": "99d4d2923e94dc068c56892bf49a9cbda52b83049918dd7abe37facc8d7b579d",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/21_복성고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "7fd64ec6a50d6f7a0b4289c5fb8d5e49197169d522f81c6e9136a1b838f85fc2",
+        "ledgerSHA": "7fd64ec6a50d6f7a0b4289c5fb8d5e49197169d522f81c6e9136a1b838f85fc2",
+        "phase0SHA": "7fd64ec6a50d6f7a0b4289c5fb8d5e49197169d522f81c6e9136a1b838f85fc2",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/21_순천고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "3a00630da9ac9239a1dfce558cb50ee3a08991866fd56eb0d69a838f74571244",
+        "ledgerSHA": "3a00630da9ac9239a1dfce558cb50ee3a08991866fd56eb0d69a838f74571244",
+        "phase0SHA": "3a00630da9ac9239a1dfce558cb50ee3a08991866fd56eb0d69a838f74571244",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "be76e281833b0336ea11a212820da45f69318208ab8e8c3878824c8e13985ac6",
+        "ledgerSHA": "be76e281833b0336ea11a212820da45f69318208ab8e8c3878824c8e13985ac6",
+        "phase0SHA": "be76e281833b0336ea11a212820da45f69318208ab8e8c3878824c8e13985ac6",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/22_강남여고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "1178fae8a7e7a200b5f7e75d6ee1cc69cbc6d6eb11e6c46422ff2fa411de9134",
+        "ledgerSHA": "1178fae8a7e7a200b5f7e75d6ee1cc69cbc6d6eb11e6c46422ff2fa411de9134",
+        "phase0SHA": "1178fae8a7e7a200b5f7e75d6ee1cc69cbc6d6eb11e6c46422ff2fa411de9134",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_금당고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "2e0ac5916e629c86ff3cd7eba1b873d518242e579f8b993dcba80fd998ad0fa7",
+        "ledgerSHA": "2e0ac5916e629c86ff3cd7eba1b873d518242e579f8b993dcba80fd998ad0fa7",
+        "phase0SHA": "2e0ac5916e629c86ff3cd7eba1b873d518242e579f8b993dcba80fd998ad0fa7",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "debd1f6352a9aa285ada5ae11c05cb96b6c1e6f282a56c8c729ab864e8f50346",
+        "ledgerSHA": "debd1f6352a9aa285ada5ae11c05cb96b6c1e6f282a56c8c729ab864e8f50346",
+        "phase0SHA": "debd1f6352a9aa285ada5ae11c05cb96b6c1e6f282a56c8c729ab864e8f50346",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js",
+        "currentRawSHA": "7a929512b2f9fb630b63620cf9666c4a37b71f7075cb14eec1af9b58afe4f719",
+        "ledgerSHA": "7a929512b2f9fb630b63620cf9666c4a37b71f7075cb14eec1af9b58afe4f719",
+        "phase0SHA": "7a929512b2f9fb630b63620cf9666c4a37b71f7075cb14eec1af9b58afe4f719",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "1fbc83849d5a92a41afbeafccc55620972d65be3a260fabb0743445834b340eb",
+        "ledgerSHA": "1fbc83849d5a92a41afbeafccc55620972d65be3a260fabb0743445834b340eb",
+        "phase0SHA": "1fbc83849d5a92a41afbeafccc55620972d65be3a260fabb0743445834b340eb",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+        "currentRawSHA": "d6a190618898406fa47c686d2d452ac41a72cf8cd5dd3eeeb65b0941ecbcd31d",
+        "ledgerSHA": "d6a190618898406fa47c686d2d452ac41a72cf8cd5dd3eeeb65b0941ecbcd31d",
+        "phase0SHA": "d6a190618898406fa47c686d2d452ac41a72cf8cd5dd3eeeb65b0941ecbcd31d",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "5939228715b92c4201d4365100732fe94d580763866fb35e37f5643bd6722ef0",
+        "ledgerSHA": "5939228715b92c4201d4365100732fe94d580763866fb35e37f5643bd6722ef0",
+        "phase0SHA": "5939228715b92c4201d4365100732fe94d580763866fb35e37f5643bd6722ef0",
+        "exists": true,
+        "equalsPhase0": true
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "currentRawSHA": "086f962d7c03089b225b5810a992e6de8a28736ed1dce846ada9dea2f29422a3",
+        "ledgerSHA": "086f962d7c03089b225b5810a992e6de8a28736ed1dce846ada9dea2f29422a3",
+        "phase0SHA": "086f962d7c03089b225b5810a992e6de8a28736ed1dce846ada9dea2f29422a3",
+        "exists": true,
+        "equalsPhase0": true
+      }
+    ],
+    "assetChecks": [
+      {
+        "path": "archive/assets/images/21_복성고_2학기_중간_고1_기출/q17-solution.svg",
+        "reportSHA": "69f8bb4fa1a7e851a8bbadf8055a438cb7b375f30358063aa4f0f62daf18de1a",
+        "currentRawSHA": "69f8bb4fa1a7e851a8bbadf8055a438cb7b375f30358063aa4f0f62daf18de1a",
+        "ledgerSHA": "69f8bb4fa1a7e851a8bbadf8055a438cb7b375f30358063aa4f0f62daf18de1a",
+        "phase0SHA": "69f8bb4fa1a7e851a8bbadf8055a438cb7b375f30358063aa4f0f62daf18de1a",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/21_순천고_2학기_중간_고1_기출/q21-solution.svg",
+        "reportSHA": "d587cfe06354b8c199c5277b84c73676d2efbbdd78cd14f4ced70447579b5619",
+        "currentRawSHA": "d587cfe06354b8c199c5277b84c73676d2efbbdd78cd14f4ced70447579b5619",
+        "ledgerSHA": "d587cfe06354b8c199c5277b84c73676d2efbbdd78cd14f4ced70447579b5619",
+        "phase0SHA": "d587cfe06354b8c199c5277b84c73676d2efbbdd78cd14f4ced70447579b5619",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/21_효천고_2학기_중간_고1_기출/q13-solution.svg",
+        "reportSHA": "675f20f0190e4c415194c45e329b335f0acc570b708d1eff2ef073e4b6e10865",
+        "currentRawSHA": "675f20f0190e4c415194c45e329b335f0acc570b708d1eff2ef073e4b6e10865",
+        "ledgerSHA": "675f20f0190e4c415194c45e329b335f0acc570b708d1eff2ef073e4b6e10865",
+        "phase0SHA": "675f20f0190e4c415194c45e329b335f0acc570b708d1eff2ef073e4b6e10865",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_강남여고_2학기_중간_고1_기출/q13-solution.svg",
+        "reportSHA": "7c4aa986300f469d75bc3063cb8adff45ec52fcdb149405dfb9ee81aaa6b3882",
+        "currentRawSHA": "7c4aa986300f469d75bc3063cb8adff45ec52fcdb149405dfb9ee81aaa6b3882",
+        "ledgerSHA": "7c4aa986300f469d75bc3063cb8adff45ec52fcdb149405dfb9ee81aaa6b3882",
+        "phase0SHA": "7c4aa986300f469d75bc3063cb8adff45ec52fcdb149405dfb9ee81aaa6b3882",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_강남여고_2학기_중간_고1_기출/q22-solution.svg",
+        "reportSHA": "907ea05f70cc1c76f52a929b1ee20a6cdb25cb190e93ce6785547f74da8e62f2",
+        "currentRawSHA": "907ea05f70cc1c76f52a929b1ee20a6cdb25cb190e93ce6785547f74da8e62f2",
+        "ledgerSHA": "907ea05f70cc1c76f52a929b1ee20a6cdb25cb190e93ce6785547f74da8e62f2",
+        "phase0SHA": "907ea05f70cc1c76f52a929b1ee20a6cdb25cb190e93ce6785547f74da8e62f2",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "6a51246b004f02d138a6b2fda82db6b49cdfa9288fefbe6c43402c827b8629f6",
+        "currentRawSHA": "6a51246b004f02d138a6b2fda82db6b49cdfa9288fefbe6c43402c827b8629f6",
+        "ledgerSHA": "6a51246b004f02d138a6b2fda82db6b49cdfa9288fefbe6c43402c827b8629f6",
+        "phase0SHA": "6a51246b004f02d138a6b2fda82db6b49cdfa9288fefbe6c43402c827b8629f6",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q13-solution.svg",
+        "reportSHA": "274d47bbe762b310e14d6d545f39f1a740d8141b26b1cc2fa5798bb7a3011635",
+        "currentRawSHA": "274d47bbe762b310e14d6d545f39f1a740d8141b26b1cc2fa5798bb7a3011635",
+        "ledgerSHA": "274d47bbe762b310e14d6d545f39f1a740d8141b26b1cc2fa5798bb7a3011635",
+        "phase0SHA": "274d47bbe762b310e14d6d545f39f1a740d8141b26b1cc2fa5798bb7a3011635",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q19-solution.svg",
+        "reportSHA": "439eaf500f7ed40af4ea7a7c36cca9f6d3a53c6f7aec0e72583a035089c323ef",
+        "currentRawSHA": "439eaf500f7ed40af4ea7a7c36cca9f6d3a53c6f7aec0e72583a035089c323ef",
+        "ledgerSHA": "439eaf500f7ed40af4ea7a7c36cca9f6d3a53c6f7aec0e72583a035089c323ef",
+        "phase0SHA": "439eaf500f7ed40af4ea7a7c36cca9f6d3a53c6f7aec0e72583a035089c323ef",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_금당고_1학기_기말_고1_기출/q20-solution.svg",
+        "reportSHA": "9d3251131870842e2c3ccc9ed61749500401f50da463d7272ce621cc7e734e37",
+        "currentRawSHA": "9d3251131870842e2c3ccc9ed61749500401f50da463d7272ce621cc7e734e37",
+        "ledgerSHA": "9d3251131870842e2c3ccc9ed61749500401f50da463d7272ce621cc7e734e37",
+        "phase0SHA": "9d3251131870842e2c3ccc9ed61749500401f50da463d7272ce621cc7e734e37",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_매산고_1학기_기말_고1_기출/q06-solution.svg",
+        "reportSHA": "1549e3174128397e21b9bd77e36dc764678606ee93a35962f27df7ef117f6601",
+        "currentRawSHA": "1549e3174128397e21b9bd77e36dc764678606ee93a35962f27df7ef117f6601",
+        "ledgerSHA": "1549e3174128397e21b9bd77e36dc764678606ee93a35962f27df7ef117f6601",
+        "phase0SHA": "1549e3174128397e21b9bd77e36dc764678606ee93a35962f27df7ef117f6601",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_매산고_1학기_기말_고1_기출/q09-solution.svg",
+        "reportSHA": "1da88fba1e25cc8bdf9a329956d40685f8598838c9303ad2364a9a2773d75f19",
+        "currentRawSHA": "1da88fba1e25cc8bdf9a329956d40685f8598838c9303ad2364a9a2773d75f19",
+        "ledgerSHA": "1da88fba1e25cc8bdf9a329956d40685f8598838c9303ad2364a9a2773d75f19",
+        "phase0SHA": "1da88fba1e25cc8bdf9a329956d40685f8598838c9303ad2364a9a2773d75f19",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_매산고_1학기_기말_고1_기출/q15-solution.svg",
+        "reportSHA": "0c6aa72647fe0db6a3dfe8d2df32132ef1e6f535a096adb8ae0fd978306ac3b0",
+        "currentRawSHA": "0c6aa72647fe0db6a3dfe8d2df32132ef1e6f535a096adb8ae0fd978306ac3b0",
+        "ledgerSHA": "0c6aa72647fe0db6a3dfe8d2df32132ef1e6f535a096adb8ae0fd978306ac3b0",
+        "phase0SHA": "0c6aa72647fe0db6a3dfe8d2df32132ef1e6f535a096adb8ae0fd978306ac3b0",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_순천여고_1학기_기말_고1_기출/q03-solution.svg",
+        "reportSHA": "d83d7d7bbd0ae8b9b42a3577b62d8ba1ca7a64265773b78550d92f0fe3439ab4",
+        "currentRawSHA": "d83d7d7bbd0ae8b9b42a3577b62d8ba1ca7a64265773b78550d92f0fe3439ab4",
+        "ledgerSHA": "d83d7d7bbd0ae8b9b42a3577b62d8ba1ca7a64265773b78550d92f0fe3439ab4",
+        "phase0SHA": "d83d7d7bbd0ae8b9b42a3577b62d8ba1ca7a64265773b78550d92f0fe3439ab4",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_순천여고_1학기_기말_고1_기출/q06-solution.svg",
+        "reportSHA": "01a1906500af70c6676f951e83daaec4d6c63132fe745cb4faaef9cd17855b9f",
+        "currentRawSHA": "01a1906500af70c6676f951e83daaec4d6c63132fe745cb4faaef9cd17855b9f",
+        "ledgerSHA": "01a1906500af70c6676f951e83daaec4d6c63132fe745cb4faaef9cd17855b9f",
+        "phase0SHA": "01a1906500af70c6676f951e83daaec4d6c63132fe745cb4faaef9cd17855b9f",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_순천여고_1학기_기말_고1_기출/q18-solution.svg",
+        "reportSHA": "cd07a2861b16dbdba320d7ef84c2f488aa09731228f5d39bb7210de20f1c066b",
+        "currentRawSHA": "cd07a2861b16dbdba320d7ef84c2f488aa09731228f5d39bb7210de20f1c066b",
+        "ledgerSHA": "cd07a2861b16dbdba320d7ef84c2f488aa09731228f5d39bb7210de20f1c066b",
+        "phase0SHA": "cd07a2861b16dbdba320d7ef84c2f488aa09731228f5d39bb7210de20f1c066b",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_순천여고_1학기_기말_고1_기출/q19-solution.svg",
+        "reportSHA": "0ce7a94aa974236c5b41fbd47d2ff3476c245f66161b49a45754394ba9d9ae4d",
+        "currentRawSHA": "0ce7a94aa974236c5b41fbd47d2ff3476c245f66161b49a45754394ba9d9ae4d",
+        "ledgerSHA": "0ce7a94aa974236c5b41fbd47d2ff3476c245f66161b49a45754394ba9d9ae4d",
+        "phase0SHA": "0ce7a94aa974236c5b41fbd47d2ff3476c245f66161b49a45754394ba9d9ae4d",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_제일고_1학기_기말_고1_기출/q10-solution.svg",
+        "reportSHA": "60faae714f4edb7b3b0af2154acc24828a7cf4b243159bdc387e2ba13d2f9998",
+        "currentRawSHA": "60faae714f4edb7b3b0af2154acc24828a7cf4b243159bdc387e2ba13d2f9998",
+        "ledgerSHA": "60faae714f4edb7b3b0af2154acc24828a7cf4b243159bdc387e2ba13d2f9998",
+        "phase0SHA": "60faae714f4edb7b3b0af2154acc24828a7cf4b243159bdc387e2ba13d2f9998",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_제일고_1학기_기말_고1_기출/q11-solution.svg",
+        "reportSHA": "306ed77a64e650e4dbe75261b81ab3cdaffcd30c8471e7799185b4375487b07a",
+        "currentRawSHA": "306ed77a64e650e4dbe75261b81ab3cdaffcd30c8471e7799185b4375487b07a",
+        "ledgerSHA": "306ed77a64e650e4dbe75261b81ab3cdaffcd30c8471e7799185b4375487b07a",
+        "phase0SHA": "306ed77a64e650e4dbe75261b81ab3cdaffcd30c8471e7799185b4375487b07a",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_제일고_1학기_기말_고1_기출/q12-solution.svg",
+        "reportSHA": "8ba9ecd1d4550e67e9eda4e93bc7195eaa80e7301b703e08e541a8f35340e9ce",
+        "currentRawSHA": "8ba9ecd1d4550e67e9eda4e93bc7195eaa80e7301b703e08e541a8f35340e9ce",
+        "ledgerSHA": "8ba9ecd1d4550e67e9eda4e93bc7195eaa80e7301b703e08e541a8f35340e9ce",
+        "phase0SHA": "8ba9ecd1d4550e67e9eda4e93bc7195eaa80e7301b703e08e541a8f35340e9ce",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "c61bb0372b5b3d3237cae0848f07d6a44de36030027ede85f6caefb0d999f0ec",
+        "currentRawSHA": "c61bb0372b5b3d3237cae0848f07d6a44de36030027ede85f6caefb0d999f0ec",
+        "ledgerSHA": "c61bb0372b5b3d3237cae0848f07d6a44de36030027ede85f6caefb0d999f0ec",
+        "phase0SHA": "c61bb0372b5b3d3237cae0848f07d6a44de36030027ede85f6caefb0d999f0ec",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "3a0fbb58fdeba7dc153935c6d659bdb4eb4bc0f8d4b2a0bca46c5a4e22cc2f86",
+        "currentRawSHA": "3a0fbb58fdeba7dc153935c6d659bdb4eb4bc0f8d4b2a0bca46c5a4e22cc2f86",
+        "ledgerSHA": "3a0fbb58fdeba7dc153935c6d659bdb4eb4bc0f8d4b2a0bca46c5a4e22cc2f86",
+        "phase0SHA": "3a0fbb58fdeba7dc153935c6d659bdb4eb4bc0f8d4b2a0bca46c5a4e22cc2f86",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q13-solution.svg",
+        "reportSHA": "629e714b8d09c46ab2dba16399a2e39f40ab4d978505cb407530bd2cfdcdda39",
+        "currentRawSHA": "629e714b8d09c46ab2dba16399a2e39f40ab4d978505cb407530bd2cfdcdda39",
+        "ledgerSHA": "629e714b8d09c46ab2dba16399a2e39f40ab4d978505cb407530bd2cfdcdda39",
+        "phase0SHA": "629e714b8d09c46ab2dba16399a2e39f40ab4d978505cb407530bd2cfdcdda39",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q14-solution.svg",
+        "reportSHA": "e113c4c0b57e4b27292fd50c374c2dc501b4090580c72a3f84fd01416668d284",
+        "currentRawSHA": "e113c4c0b57e4b27292fd50c374c2dc501b4090580c72a3f84fd01416668d284",
+        "ledgerSHA": "e113c4c0b57e4b27292fd50c374c2dc501b4090580c72a3f84fd01416668d284",
+        "phase0SHA": "e113c4c0b57e4b27292fd50c374c2dc501b4090580c72a3f84fd01416668d284",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q17-solution.svg",
+        "reportSHA": "c5f6e4429b6b9a959a5fc2b36594520fb14786e84e244f8baf9ebfa85f285962",
+        "currentRawSHA": "c5f6e4429b6b9a959a5fc2b36594520fb14786e84e244f8baf9ebfa85f285962",
+        "ledgerSHA": "c5f6e4429b6b9a959a5fc2b36594520fb14786e84e244f8baf9ebfa85f285962",
+        "phase0SHA": "c5f6e4429b6b9a959a5fc2b36594520fb14786e84e244f8baf9ebfa85f285962",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_팔마고_1학기_기말_고1_기출/q22-solution.svg",
+        "reportSHA": "46a7e0c0bc45f799ff9612a92f0474631343a4db771cebd95b44ae1972411f50",
+        "currentRawSHA": "46a7e0c0bc45f799ff9612a92f0474631343a4db771cebd95b44ae1972411f50",
+        "ledgerSHA": "46a7e0c0bc45f799ff9612a92f0474631343a4db771cebd95b44ae1972411f50",
+        "phase0SHA": "46a7e0c0bc45f799ff9612a92f0474631343a4db771cebd95b44ae1972411f50",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_효천고_1학기_기말_고1_기출/q02-solution.svg",
+        "reportSHA": "d6fe8de69e9e98e25a6fa113feb89e32df1ddf9c5493f9e5e8bbc729e065087a",
+        "currentRawSHA": "d6fe8de69e9e98e25a6fa113feb89e32df1ddf9c5493f9e5e8bbc729e065087a",
+        "ledgerSHA": "d6fe8de69e9e98e25a6fa113feb89e32df1ddf9c5493f9e5e8bbc729e065087a",
+        "phase0SHA": "d6fe8de69e9e98e25a6fa113feb89e32df1ddf9c5493f9e5e8bbc729e065087a",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/22_효천고_1학기_기말_고1_기출/q16-solution.svg",
+        "reportSHA": "60b3f009b7bbf801deebead41e12d58a67892d8a1f41a3882fd287a8667d9845",
+        "currentRawSHA": "60b3f009b7bbf801deebead41e12d58a67892d8a1f41a3882fd287a8667d9845",
+        "ledgerSHA": "60b3f009b7bbf801deebead41e12d58a67892d8a1f41a3882fd287a8667d9845",
+        "phase0SHA": "60b3f009b7bbf801deebead41e12d58a67892d8a1f41a3882fd287a8667d9845",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "cf8cbf586779a69ec5126d60ee7368513ee6fb3ea58605867683baaa6e9a9807",
+        "currentRawSHA": "cf8cbf586779a69ec5126d60ee7368513ee6fb3ea58605867683baaa6e9a9807",
+        "ledgerSHA": "cf8cbf586779a69ec5126d60ee7368513ee6fb3ea58605867683baaa6e9a9807",
+        "phase0SHA": "cf8cbf586779a69ec5126d60ee7368513ee6fb3ea58605867683baaa6e9a9807",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q12-solution.svg",
+        "reportSHA": "b69e3497757458d1bd17a0e15fc05da2fa6fe1c911b572f7924cd64179731157",
+        "currentRawSHA": "b69e3497757458d1bd17a0e15fc05da2fa6fe1c911b572f7924cd64179731157",
+        "ledgerSHA": "b69e3497757458d1bd17a0e15fc05da2fa6fe1c911b572f7924cd64179731157",
+        "phase0SHA": "b69e3497757458d1bd17a0e15fc05da2fa6fe1c911b572f7924cd64179731157",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q13-solution.svg",
+        "reportSHA": "c01069e390600040d5362f582dc26801babb83d31888866d8176ae97f6ec497e",
+        "currentRawSHA": "c01069e390600040d5362f582dc26801babb83d31888866d8176ae97f6ec497e",
+        "ledgerSHA": "c01069e390600040d5362f582dc26801babb83d31888866d8176ae97f6ec497e",
+        "phase0SHA": "c01069e390600040d5362f582dc26801babb83d31888866d8176ae97f6ec497e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q22-solution.svg",
+        "reportSHA": "487a576ee2810ee183c66a7cde2ac41351c34028ffeaa0a1bb912ab504392c6e",
+        "currentRawSHA": "487a576ee2810ee183c66a7cde2ac41351c34028ffeaa0a1bb912ab504392c6e",
+        "ledgerSHA": "487a576ee2810ee183c66a7cde2ac41351c34028ffeaa0a1bb912ab504392c6e",
+        "phase0SHA": "487a576ee2810ee183c66a7cde2ac41351c34028ffeaa0a1bb912ab504392c6e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_강남여고_1학기_기말_고1_기출/q24-solution.svg",
+        "reportSHA": "eef53803176d64eef57d58f0ae8df399a3e6e8219279b8007cea48643827e3fb",
+        "currentRawSHA": "eef53803176d64eef57d58f0ae8df399a3e6e8219279b8007cea48643827e3fb",
+        "ledgerSHA": "eef53803176d64eef57d58f0ae8df399a3e6e8219279b8007cea48643827e3fb",
+        "phase0SHA": "eef53803176d64eef57d58f0ae8df399a3e6e8219279b8007cea48643827e3fb",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_금당고_1학기_기말_고1_기출/q03-solution.svg",
+        "reportSHA": "e73880621d58a02d10f5e1fee470408dfe481b0ac296b876c16cec78bdf65307",
+        "currentRawSHA": "e73880621d58a02d10f5e1fee470408dfe481b0ac296b876c16cec78bdf65307",
+        "ledgerSHA": "e73880621d58a02d10f5e1fee470408dfe481b0ac296b876c16cec78bdf65307",
+        "phase0SHA": "e73880621d58a02d10f5e1fee470408dfe481b0ac296b876c16cec78bdf65307",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_금당고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "23a92bc6c8f29e85120898526b84d100100cb9480b691b7c947ccc17677934c5",
+        "currentRawSHA": "23a92bc6c8f29e85120898526b84d100100cb9480b691b7c947ccc17677934c5",
+        "ledgerSHA": "23a92bc6c8f29e85120898526b84d100100cb9480b691b7c947ccc17677934c5",
+        "phase0SHA": "23a92bc6c8f29e85120898526b84d100100cb9480b691b7c947ccc17677934c5",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_금당고_1학기_기말_고1_기출/q07-solution.svg",
+        "reportSHA": "5d645915628a19bd626e42d46788b0fb14c8fcd9fcba2b07e527dcca057df7e7",
+        "currentRawSHA": "5d645915628a19bd626e42d46788b0fb14c8fcd9fcba2b07e527dcca057df7e7",
+        "ledgerSHA": "5d645915628a19bd626e42d46788b0fb14c8fcd9fcba2b07e527dcca057df7e7",
+        "phase0SHA": "5d645915628a19bd626e42d46788b0fb14c8fcd9fcba2b07e527dcca057df7e7",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_금당고_1학기_기말_고1_기출/q12-solution.svg",
+        "reportSHA": "f53a21a8115566afb4733f17c0a18b74c34cc4b181fdc806fce0b14e046e33c8",
+        "currentRawSHA": "f53a21a8115566afb4733f17c0a18b74c34cc4b181fdc806fce0b14e046e33c8",
+        "ledgerSHA": "f53a21a8115566afb4733f17c0a18b74c34cc4b181fdc806fce0b14e046e33c8",
+        "phase0SHA": "f53a21a8115566afb4733f17c0a18b74c34cc4b181fdc806fce0b14e046e33c8",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_금당고_1학기_기말_고1_기출/q17-solution.svg",
+        "reportSHA": "8ff115ddf0fff666ae8a9ac09889ffff347fa97d3ece18b98a71a9bf997eebf0",
+        "currentRawSHA": "8ff115ddf0fff666ae8a9ac09889ffff347fa97d3ece18b98a71a9bf997eebf0",
+        "ledgerSHA": "8ff115ddf0fff666ae8a9ac09889ffff347fa97d3ece18b98a71a9bf997eebf0",
+        "phase0SHA": "8ff115ddf0fff666ae8a9ac09889ffff347fa97d3ece18b98a71a9bf997eebf0",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_매산고_1학기_기말_고1_기출/q02-solution.svg",
+        "reportSHA": "e0ed9c71b2c0beb351cf4a5cb838d33678b82ac656ff36ecb977bc065444c6c8",
+        "currentRawSHA": "e0ed9c71b2c0beb351cf4a5cb838d33678b82ac656ff36ecb977bc065444c6c8",
+        "ledgerSHA": "e0ed9c71b2c0beb351cf4a5cb838d33678b82ac656ff36ecb977bc065444c6c8",
+        "phase0SHA": "e0ed9c71b2c0beb351cf4a5cb838d33678b82ac656ff36ecb977bc065444c6c8",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_매산고_1학기_기말_고1_기출/q07-solution.svg",
+        "reportSHA": "41cf58b9a5f5bb32df9de1b6c74faf4166baafd3e3a6e7bec8a58f7cf8c6b112",
+        "currentRawSHA": "41cf58b9a5f5bb32df9de1b6c74faf4166baafd3e3a6e7bec8a58f7cf8c6b112",
+        "ledgerSHA": "41cf58b9a5f5bb32df9de1b6c74faf4166baafd3e3a6e7bec8a58f7cf8c6b112",
+        "phase0SHA": "41cf58b9a5f5bb32df9de1b6c74faf4166baafd3e3a6e7bec8a58f7cf8c6b112",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_복성고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "af32236f2a335ce11cd6413daf835c4dfaf6cbd5575ff61af518fe62ad240af5",
+        "currentRawSHA": "af32236f2a335ce11cd6413daf835c4dfaf6cbd5575ff61af518fe62ad240af5",
+        "ledgerSHA": "af32236f2a335ce11cd6413daf835c4dfaf6cbd5575ff61af518fe62ad240af5",
+        "phase0SHA": "af32236f2a335ce11cd6413daf835c4dfaf6cbd5575ff61af518fe62ad240af5",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_복성고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "72d80dd9b70d51c2b5d0f71d9f15ed8b183086387a608f6defc3c59709e6b4cb",
+        "currentRawSHA": "72d80dd9b70d51c2b5d0f71d9f15ed8b183086387a608f6defc3c59709e6b4cb",
+        "ledgerSHA": "72d80dd9b70d51c2b5d0f71d9f15ed8b183086387a608f6defc3c59709e6b4cb",
+        "phase0SHA": "72d80dd9b70d51c2b5d0f71d9f15ed8b183086387a608f6defc3c59709e6b4cb",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_복성고_1학기_기말_고1_기출/q11-solution.svg",
+        "reportSHA": "b82f0ccc930dfb9e1e0c71afbe9ac19d20d44a015a995f5ea55a00ffee4f186d",
+        "currentRawSHA": "b82f0ccc930dfb9e1e0c71afbe9ac19d20d44a015a995f5ea55a00ffee4f186d",
+        "ledgerSHA": "b82f0ccc930dfb9e1e0c71afbe9ac19d20d44a015a995f5ea55a00ffee4f186d",
+        "phase0SHA": "b82f0ccc930dfb9e1e0c71afbe9ac19d20d44a015a995f5ea55a00ffee4f186d",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_순천여고_1학기_기말_고1_기출/q02-solution.svg",
+        "reportSHA": "84ff3ae8bbfc71ad8b5ba0466f3c9e95546a236f3626d66fd35a8485e6786af7",
+        "currentRawSHA": "84ff3ae8bbfc71ad8b5ba0466f3c9e95546a236f3626d66fd35a8485e6786af7",
+        "ledgerSHA": "84ff3ae8bbfc71ad8b5ba0466f3c9e95546a236f3626d66fd35a8485e6786af7",
+        "phase0SHA": "84ff3ae8bbfc71ad8b5ba0466f3c9e95546a236f3626d66fd35a8485e6786af7",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_순천여고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "fb8fd8af90322b98177507a022817a651db03a5c578c186bac40e1e085f78e64",
+        "currentRawSHA": "fb8fd8af90322b98177507a022817a651db03a5c578c186bac40e1e085f78e64",
+        "ledgerSHA": "fb8fd8af90322b98177507a022817a651db03a5c578c186bac40e1e085f78e64",
+        "phase0SHA": "fb8fd8af90322b98177507a022817a651db03a5c578c186bac40e1e085f78e64",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_순천여고_1학기_기말_고1_기출/q11-solution.svg",
+        "reportSHA": "a603544a685cd2f00808fb5f9eb89aabdcc6da87e8ac341e7ce0b05da31fda34",
+        "currentRawSHA": "a603544a685cd2f00808fb5f9eb89aabdcc6da87e8ac341e7ce0b05da31fda34",
+        "ledgerSHA": "a603544a685cd2f00808fb5f9eb89aabdcc6da87e8ac341e7ce0b05da31fda34",
+        "phase0SHA": "a603544a685cd2f00808fb5f9eb89aabdcc6da87e8ac341e7ce0b05da31fda34",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_순천여고_1학기_기말_고1_기출/q13-solution.svg",
+        "reportSHA": "8dbe4f7e4bddec40cf03b666e0209d950c0f25dbd66a2ebe2faaa0f64525ff0a",
+        "currentRawSHA": "8dbe4f7e4bddec40cf03b666e0209d950c0f25dbd66a2ebe2faaa0f64525ff0a",
+        "ledgerSHA": "8dbe4f7e4bddec40cf03b666e0209d950c0f25dbd66a2ebe2faaa0f64525ff0a",
+        "phase0SHA": "8dbe4f7e4bddec40cf03b666e0209d950c0f25dbd66a2ebe2faaa0f64525ff0a",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_순천여고_1학기_기말_고1_기출/q21-solution.svg",
+        "reportSHA": "6e6fd59efb24f026787dac2293121972bd1b8fd73e1a9644bdfc38b0d7801e60",
+        "currentRawSHA": "6e6fd59efb24f026787dac2293121972bd1b8fd73e1a9644bdfc38b0d7801e60",
+        "ledgerSHA": "6e6fd59efb24f026787dac2293121972bd1b8fd73e1a9644bdfc38b0d7801e60",
+        "phase0SHA": "6e6fd59efb24f026787dac2293121972bd1b8fd73e1a9644bdfc38b0d7801e60",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_제일고_1학기_기말_고1_기출/q13-solution.svg",
+        "reportSHA": "01d676be78346f4ebe19dcde90f38ac7f19c6d4f57fabfb6b355dc8ea5b41bcd",
+        "currentRawSHA": "01d676be78346f4ebe19dcde90f38ac7f19c6d4f57fabfb6b355dc8ea5b41bcd",
+        "ledgerSHA": "01d676be78346f4ebe19dcde90f38ac7f19c6d4f57fabfb6b355dc8ea5b41bcd",
+        "phase0SHA": "01d676be78346f4ebe19dcde90f38ac7f19c6d4f57fabfb6b355dc8ea5b41bcd",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q02-solution.svg",
+        "reportSHA": "cdfac9fff6845741ad81ed2b27d60efeac954069cee2ca42c1ff329de40e5a7f",
+        "currentRawSHA": "cdfac9fff6845741ad81ed2b27d60efeac954069cee2ca42c1ff329de40e5a7f",
+        "ledgerSHA": "cdfac9fff6845741ad81ed2b27d60efeac954069cee2ca42c1ff329de40e5a7f",
+        "phase0SHA": "cdfac9fff6845741ad81ed2b27d60efeac954069cee2ca42c1ff329de40e5a7f",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q03-solution.svg",
+        "reportSHA": "cc5be6895a3fa7bc3edf8dd50f2b9ea6d637bd42bcba10e0d864dae148320c48",
+        "currentRawSHA": "cc5be6895a3fa7bc3edf8dd50f2b9ea6d637bd42bcba10e0d864dae148320c48",
+        "ledgerSHA": "cc5be6895a3fa7bc3edf8dd50f2b9ea6d637bd42bcba10e0d864dae148320c48",
+        "phase0SHA": "cc5be6895a3fa7bc3edf8dd50f2b9ea6d637bd42bcba10e0d864dae148320c48",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "96e7300bba39bf264c101a58b8ed444e1415050c4ef981237f2ad530922f9968",
+        "currentRawSHA": "96e7300bba39bf264c101a58b8ed444e1415050c4ef981237f2ad530922f9968",
+        "ledgerSHA": "96e7300bba39bf264c101a58b8ed444e1415050c4ef981237f2ad530922f9968",
+        "phase0SHA": "96e7300bba39bf264c101a58b8ed444e1415050c4ef981237f2ad530922f9968",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "b04d16c61d3b86c571bbdf188307da879777c47d151182b033004fee28e77055",
+        "currentRawSHA": "b04d16c61d3b86c571bbdf188307da879777c47d151182b033004fee28e77055",
+        "ledgerSHA": "b04d16c61d3b86c571bbdf188307da879777c47d151182b033004fee28e77055",
+        "phase0SHA": "b04d16c61d3b86c571bbdf188307da879777c47d151182b033004fee28e77055",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q08-solution.svg",
+        "reportSHA": "39ee94e65e4fecac92af501b1ffe9b81205c3408d0c4cca3b7575d62732e8f7e",
+        "currentRawSHA": "39ee94e65e4fecac92af501b1ffe9b81205c3408d0c4cca3b7575d62732e8f7e",
+        "ledgerSHA": "39ee94e65e4fecac92af501b1ffe9b81205c3408d0c4cca3b7575d62732e8f7e",
+        "phase0SHA": "39ee94e65e4fecac92af501b1ffe9b81205c3408d0c4cca3b7575d62732e8f7e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q17-solution.svg",
+        "reportSHA": "bef7b94987dbc76471e30544537853c620eb971f341a01d07617129f4089b880",
+        "currentRawSHA": "bef7b94987dbc76471e30544537853c620eb971f341a01d07617129f4089b880",
+        "ledgerSHA": "bef7b94987dbc76471e30544537853c620eb971f341a01d07617129f4089b880",
+        "phase0SHA": "bef7b94987dbc76471e30544537853c620eb971f341a01d07617129f4089b880",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q18-solution.svg",
+        "reportSHA": "29bf6ee599c99f0cc7cbabcd0395abf8aaaf6b167e243ba594b891a480f7d6de",
+        "currentRawSHA": "29bf6ee599c99f0cc7cbabcd0395abf8aaaf6b167e243ba594b891a480f7d6de",
+        "ledgerSHA": "29bf6ee599c99f0cc7cbabcd0395abf8aaaf6b167e243ba594b891a480f7d6de",
+        "phase0SHA": "29bf6ee599c99f0cc7cbabcd0395abf8aaaf6b167e243ba594b891a480f7d6de",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/23_팔마고_1학기_기말_고1_기출/q22-solution.svg",
+        "reportSHA": "55ff37f17bff1a84aca7e50870ddad4eb276208a5876fbe2094bd33acbb5a016",
+        "currentRawSHA": "55ff37f17bff1a84aca7e50870ddad4eb276208a5876fbe2094bd33acbb5a016",
+        "ledgerSHA": "55ff37f17bff1a84aca7e50870ddad4eb276208a5876fbe2094bd33acbb5a016",
+        "phase0SHA": "55ff37f17bff1a84aca7e50870ddad4eb276208a5876fbe2094bd33acbb5a016",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_금당고_1학기_기말_고1_기출/q04-solution.svg",
+        "reportSHA": "b3f867feaf44b0d3b532f8b69a0376e9c321a78e1b43e5694e85ee7b5f5fdd74",
+        "currentRawSHA": "b3f867feaf44b0d3b532f8b69a0376e9c321a78e1b43e5694e85ee7b5f5fdd74",
+        "ledgerSHA": "b3f867feaf44b0d3b532f8b69a0376e9c321a78e1b43e5694e85ee7b5f5fdd74",
+        "phase0SHA": "b3f867feaf44b0d3b532f8b69a0376e9c321a78e1b43e5694e85ee7b5f5fdd74",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_금당고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "dfa344d810839b38aa4017768bd189e02403ffc5d2b6f35091d065537fd4ce7c",
+        "currentRawSHA": "dfa344d810839b38aa4017768bd189e02403ffc5d2b6f35091d065537fd4ce7c",
+        "ledgerSHA": "dfa344d810839b38aa4017768bd189e02403ffc5d2b6f35091d065537fd4ce7c",
+        "phase0SHA": "dfa344d810839b38aa4017768bd189e02403ffc5d2b6f35091d065537fd4ce7c",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_금당고_1학기_기말_고1_기출/q06-solution.svg",
+        "reportSHA": "3dfecc34dbf0599e6c4e31f55e9f57de0cffc89ba8ac3c3e15bcad32b4652673",
+        "currentRawSHA": "3dfecc34dbf0599e6c4e31f55e9f57de0cffc89ba8ac3c3e15bcad32b4652673",
+        "ledgerSHA": "3dfecc34dbf0599e6c4e31f55e9f57de0cffc89ba8ac3c3e15bcad32b4652673",
+        "phase0SHA": "3dfecc34dbf0599e6c4e31f55e9f57de0cffc89ba8ac3c3e15bcad32b4652673",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_금당고_1학기_기말_고1_기출/q11-solution.svg",
+        "reportSHA": "574729fe9b9f25ede4817353133a19121c73f19ce52be534924280e83ce2e754",
+        "currentRawSHA": "574729fe9b9f25ede4817353133a19121c73f19ce52be534924280e83ce2e754",
+        "ledgerSHA": "574729fe9b9f25ede4817353133a19121c73f19ce52be534924280e83ce2e754",
+        "phase0SHA": "574729fe9b9f25ede4817353133a19121c73f19ce52be534924280e83ce2e754",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_금당고_1학기_기말_고1_기출/q14-solution.svg",
+        "reportSHA": "13416f4d302d45ad877bc655466bc9cc7d40a4c6a0b15840afb9c5455be24c3c",
+        "currentRawSHA": "13416f4d302d45ad877bc655466bc9cc7d40a4c6a0b15840afb9c5455be24c3c",
+        "ledgerSHA": "13416f4d302d45ad877bc655466bc9cc7d40a4c6a0b15840afb9c5455be24c3c",
+        "phase0SHA": "13416f4d302d45ad877bc655466bc9cc7d40a4c6a0b15840afb9c5455be24c3c",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_매산고_1학기_기말_고1_기출/q05-solution.svg",
+        "reportSHA": "942c86f71d6949af79d7066299cbbb1fe87454db9f2a1ccb669b4d85367cb598",
+        "currentRawSHA": "942c86f71d6949af79d7066299cbbb1fe87454db9f2a1ccb669b4d85367cb598",
+        "ledgerSHA": "942c86f71d6949af79d7066299cbbb1fe87454db9f2a1ccb669b4d85367cb598",
+        "phase0SHA": "942c86f71d6949af79d7066299cbbb1fe87454db9f2a1ccb669b4d85367cb598",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_매산고_1학기_기말_고1_기출/q06-solution.svg",
+        "reportSHA": "f4bc913ef306f837a5f86ad8577282254daa461dbef98a2f3a370d4388ccbcec",
+        "currentRawSHA": "f4bc913ef306f837a5f86ad8577282254daa461dbef98a2f3a370d4388ccbcec",
+        "ledgerSHA": "f4bc913ef306f837a5f86ad8577282254daa461dbef98a2f3a370d4388ccbcec",
+        "phase0SHA": "f4bc913ef306f837a5f86ad8577282254daa461dbef98a2f3a370d4388ccbcec",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_매산고_1학기_기말_고1_기출/q11-solution.svg",
+        "reportSHA": "27312ec22f943c36c10cb3d61ade7977ab2f1c98a53e4bf47779aa4d851528b1",
+        "currentRawSHA": "27312ec22f943c36c10cb3d61ade7977ab2f1c98a53e4bf47779aa4d851528b1",
+        "ledgerSHA": "27312ec22f943c36c10cb3d61ade7977ab2f1c98a53e4bf47779aa4d851528b1",
+        "phase0SHA": "27312ec22f943c36c10cb3d61ade7977ab2f1c98a53e4bf47779aa4d851528b1",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_매산고_1학기_기말_고1_기출/q14-solution.svg",
+        "reportSHA": "dbd5131fcf457ba79e6d3eee6e5029390aee8eac21ffb22be430531d3fc57eed",
+        "currentRawSHA": "dbd5131fcf457ba79e6d3eee6e5029390aee8eac21ffb22be430531d3fc57eed",
+        "ledgerSHA": "dbd5131fcf457ba79e6d3eee6e5029390aee8eac21ffb22be430531d3fc57eed",
+        "phase0SHA": "dbd5131fcf457ba79e6d3eee6e5029390aee8eac21ffb22be430531d3fc57eed",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_기말_고1_기출/q14-solution.svg",
+        "reportSHA": "46f5624cb07c7f45132148dc58871d24b570cc7a84038a87560253e9d7c866c6",
+        "currentRawSHA": "46f5624cb07c7f45132148dc58871d24b570cc7a84038a87560253e9d7c866c6",
+        "ledgerSHA": "46f5624cb07c7f45132148dc58871d24b570cc7a84038a87560253e9d7c866c6",
+        "phase0SHA": "46f5624cb07c7f45132148dc58871d24b570cc7a84038a87560253e9d7c866c6",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q14-solution.svg",
+        "reportSHA": "ce5119f7f09a64207e11b62c9dde674decb7c845eb43b1e67069e0c9f976d3db",
+        "currentRawSHA": "ce5119f7f09a64207e11b62c9dde674decb7c845eb43b1e67069e0c9f976d3db",
+        "ledgerSHA": "ce5119f7f09a64207e11b62c9dde674decb7c845eb43b1e67069e0c9f976d3db",
+        "phase0SHA": "ce5119f7f09a64207e11b62c9dde674decb7c845eb43b1e67069e0c9f976d3db",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q15-solution.svg",
+        "reportSHA": "c71b4bdb3e5badc0d861150406ba931b9b999b789d3c9d0c38da8dd299a5b238",
+        "currentRawSHA": "c71b4bdb3e5badc0d861150406ba931b9b999b789d3c9d0c38da8dd299a5b238",
+        "ledgerSHA": "c71b4bdb3e5badc0d861150406ba931b9b999b789d3c9d0c38da8dd299a5b238",
+        "phase0SHA": "c71b4bdb3e5badc0d861150406ba931b9b999b789d3c9d0c38da8dd299a5b238",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q16-solution.svg",
+        "reportSHA": "db315243da80235c91f492056c494c061eafa590761e2d773b9d946f856afac8",
+        "currentRawSHA": "db315243da80235c91f492056c494c061eafa590761e2d773b9d946f856afac8",
+        "ledgerSHA": "db315243da80235c91f492056c494c061eafa590761e2d773b9d946f856afac8",
+        "phase0SHA": "db315243da80235c91f492056c494c061eafa590761e2d773b9d946f856afac8",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q17-solution.svg",
+        "reportSHA": "f08c22e40cfc1993bb9b50ab246b2a5bd41df23b09aadb72eadf70efaa766ec0",
+        "currentRawSHA": "f08c22e40cfc1993bb9b50ab246b2a5bd41df23b09aadb72eadf70efaa766ec0",
+        "ledgerSHA": "f08c22e40cfc1993bb9b50ab246b2a5bd41df23b09aadb72eadf70efaa766ec0",
+        "phase0SHA": "f08c22e40cfc1993bb9b50ab246b2a5bd41df23b09aadb72eadf70efaa766ec0",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q20-solution.svg",
+        "reportSHA": "731a7d3882ec6cdb2cbc3271bcef9466a71f0620b6d76614741a763a20380718",
+        "currentRawSHA": "731a7d3882ec6cdb2cbc3271bcef9466a71f0620b6d76614741a763a20380718",
+        "ledgerSHA": "731a7d3882ec6cdb2cbc3271bcef9466a71f0620b6d76614741a763a20380718",
+        "phase0SHA": "731a7d3882ec6cdb2cbc3271bcef9466a71f0620b6d76614741a763a20380718",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/24_제일고_1학기_중간_고1_기출/q21-solution.svg",
+        "reportSHA": "9c33a23f57088962548d59a7da96103e8634b64da5e29bb9b9af206057eb566b",
+        "currentRawSHA": "9c33a23f57088962548d59a7da96103e8634b64da5e29bb9b9af206057eb566b",
+        "ledgerSHA": "9c33a23f57088962548d59a7da96103e8634b64da5e29bb9b9af206057eb566b",
+        "phase0SHA": "9c33a23f57088962548d59a7da96103e8634b64da5e29bb9b9af206057eb566b",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_금당고_2학기_중간_고1_기출/q02-solution.svg",
+        "reportSHA": "74ecec542f71b49109a6f9816fc57176a873dd3ecaa2bd9857ac652e5bac3f4b",
+        "currentRawSHA": "74ecec542f71b49109a6f9816fc57176a873dd3ecaa2bd9857ac652e5bac3f4b",
+        "ledgerSHA": "74ecec542f71b49109a6f9816fc57176a873dd3ecaa2bd9857ac652e5bac3f4b",
+        "phase0SHA": "74ecec542f71b49109a6f9816fc57176a873dd3ecaa2bd9857ac652e5bac3f4b",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_금당고_2학기_중간_고1_기출/q14-solution.svg",
+        "reportSHA": "22abf4739ef2812731e6add8d70c443eee8dbdbc218efdcb5eea116b773e63b1",
+        "currentRawSHA": "22abf4739ef2812731e6add8d70c443eee8dbdbc218efdcb5eea116b773e63b1",
+        "ledgerSHA": "22abf4739ef2812731e6add8d70c443eee8dbdbc218efdcb5eea116b773e63b1",
+        "phase0SHA": "22abf4739ef2812731e6add8d70c443eee8dbdbc218efdcb5eea116b773e63b1",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_금당고_2학기_중간_고1_기출/q17-solution.svg",
+        "reportSHA": "d5fd665d9f2cb79db70933de06be5c55d13f28c3f884a77f8d696ddada08c138",
+        "currentRawSHA": "d5fd665d9f2cb79db70933de06be5c55d13f28c3f884a77f8d696ddada08c138",
+        "ledgerSHA": "d5fd665d9f2cb79db70933de06be5c55d13f28c3f884a77f8d696ddada08c138",
+        "phase0SHA": "d5fd665d9f2cb79db70933de06be5c55d13f28c3f884a77f8d696ddada08c138",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_매산고_2학기_중간_고1_기출/q02-solution.svg",
+        "reportSHA": "48a3a7d879dbde8206653ba1bf796b1fd603e9dd36efbe0a34e89f95950f45d2",
+        "currentRawSHA": "48a3a7d879dbde8206653ba1bf796b1fd603e9dd36efbe0a34e89f95950f45d2",
+        "ledgerSHA": "48a3a7d879dbde8206653ba1bf796b1fd603e9dd36efbe0a34e89f95950f45d2",
+        "phase0SHA": "48a3a7d879dbde8206653ba1bf796b1fd603e9dd36efbe0a34e89f95950f45d2",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_매산고_2학기_중간_고1_기출/q06-solution.svg",
+        "reportSHA": "7d143403dafb6c356612807533e94c93275320d21415a2223bdf76e30b7ab47e",
+        "currentRawSHA": "7d143403dafb6c356612807533e94c93275320d21415a2223bdf76e30b7ab47e",
+        "ledgerSHA": "7d143403dafb6c356612807533e94c93275320d21415a2223bdf76e30b7ab47e",
+        "phase0SHA": "7d143403dafb6c356612807533e94c93275320d21415a2223bdf76e30b7ab47e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_매산고_2학기_중간_고1_기출/q15-solution.svg",
+        "reportSHA": "60e55b9c75c35871efb6ee59f904d567155c2fbd1c2b94c80592ac4d1c753b2c",
+        "currentRawSHA": "60e55b9c75c35871efb6ee59f904d567155c2fbd1c2b94c80592ac4d1c753b2c",
+        "ledgerSHA": "60e55b9c75c35871efb6ee59f904d567155c2fbd1c2b94c80592ac4d1c753b2c",
+        "phase0SHA": "60e55b9c75c35871efb6ee59f904d567155c2fbd1c2b94c80592ac4d1c753b2c",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_공통수학2/q15-solution.svg",
+        "reportSHA": "64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80",
+        "currentRawSHA": "64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80",
+        "ledgerSHA": "64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80",
+        "phase0SHA": "64c2538e2bcf43c8b3ab2eebfdd50d4b3bff1b567f2eabbc57b7ed166d282f80",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_매산여고_2학기_중간_고1_공통수학2/q8-solution.svg",
+        "reportSHA": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "currentRawSHA": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "ledgerSHA": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "phase0SHA": "e68f84d87c867873f47bb3a6ef25c1e30179cb3307cf07ef53a3478a581c3430",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천고_2학기_중간_고1_기출/q06-solution.svg",
+        "reportSHA": "8f5bbba58d4e1e49750b027ad7da781c0a2b9114a3e42a1cabd2570aad536bca",
+        "currentRawSHA": "8f5bbba58d4e1e49750b027ad7da781c0a2b9114a3e42a1cabd2570aad536bca",
+        "ledgerSHA": "8f5bbba58d4e1e49750b027ad7da781c0a2b9114a3e42a1cabd2570aad536bca",
+        "phase0SHA": "8f5bbba58d4e1e49750b027ad7da781c0a2b9114a3e42a1cabd2570aad536bca",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
+        "reportSHA": "989d075c10940416eabea1b0dbaca5bcdb9ea369aa8cc1d3529ddd355c4ca20e",
+        "currentRawSHA": "989d075c10940416eabea1b0dbaca5bcdb9ea369aa8cc1d3529ddd355c4ca20e",
+        "ledgerSHA": "989d075c10940416eabea1b0dbaca5bcdb9ea369aa8cc1d3529ddd355c4ca20e",
+        "phase0SHA": "989d075c10940416eabea1b0dbaca5bcdb9ea369aa8cc1d3529ddd355c4ca20e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천고_2학기_중간_고1_기출/q18-solution.svg",
+        "reportSHA": "6e7594fea3c83c79a85890d070b86f37f6f02b0b6cd895ef09ee7a4b1a5eb19b",
+        "currentRawSHA": "6e7594fea3c83c79a85890d070b86f37f6f02b0b6cd895ef09ee7a4b1a5eb19b",
+        "ledgerSHA": "6e7594fea3c83c79a85890d070b86f37f6f02b0b6cd895ef09ee7a4b1a5eb19b",
+        "phase0SHA": "6e7594fea3c83c79a85890d070b86f37f6f02b0b6cd895ef09ee7a4b1a5eb19b",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천고_2학기_중간_고1_기출/q21-solution.svg",
+        "reportSHA": "7002a2c8a2c78460e54483d3b6c391720bfe5a5cf5ed50a46c41808f13842dc9",
+        "currentRawSHA": "7002a2c8a2c78460e54483d3b6c391720bfe5a5cf5ed50a46c41808f13842dc9",
+        "ledgerSHA": "7002a2c8a2c78460e54483d3b6c391720bfe5a5cf5ed50a46c41808f13842dc9",
+        "phase0SHA": "7002a2c8a2c78460e54483d3b6c391720bfe5a5cf5ed50a46c41808f13842dc9",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q10-solution.svg",
+        "reportSHA": "0b636af70b91db3f9bf2cddcc8b8f926d46706260e18330c443b2864a7f34236",
+        "currentRawSHA": "0b636af70b91db3f9bf2cddcc8b8f926d46706260e18330c443b2864a7f34236",
+        "ledgerSHA": "0b636af70b91db3f9bf2cddcc8b8f926d46706260e18330c443b2864a7f34236",
+        "phase0SHA": "0b636af70b91db3f9bf2cddcc8b8f926d46706260e18330c443b2864a7f34236",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q12-solution.svg",
+        "reportSHA": "9aef949178f7c2ca640dcf7b41829c3e7dc5d0b53fc6ab37e37b09db4d22027a",
+        "currentRawSHA": "9aef949178f7c2ca640dcf7b41829c3e7dc5d0b53fc6ab37e37b09db4d22027a",
+        "ledgerSHA": "9aef949178f7c2ca640dcf7b41829c3e7dc5d0b53fc6ab37e37b09db4d22027a",
+        "phase0SHA": "9aef949178f7c2ca640dcf7b41829c3e7dc5d0b53fc6ab37e37b09db4d22027a",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q13-solution.svg",
+        "reportSHA": "89b3f9b969757dcf664c4b532331d7c73a4275a9fc1b0d79e6607c326696ba4b",
+        "currentRawSHA": "89b3f9b969757dcf664c4b532331d7c73a4275a9fc1b0d79e6607c326696ba4b",
+        "ledgerSHA": "89b3f9b969757dcf664c4b532331d7c73a4275a9fc1b0d79e6607c326696ba4b",
+        "phase0SHA": "89b3f9b969757dcf664c4b532331d7c73a4275a9fc1b0d79e6607c326696ba4b",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q19-solution.svg",
+        "reportSHA": "cd07e9dfae3c235aa025c83dace51c8f63373783bc7317aca2e43fb5e89f34f4",
+        "currentRawSHA": "cd07e9dfae3c235aa025c83dace51c8f63373783bc7317aca2e43fb5e89f34f4",
+        "ledgerSHA": "cd07e9dfae3c235aa025c83dace51c8f63373783bc7317aca2e43fb5e89f34f4",
+        "phase0SHA": "cd07e9dfae3c235aa025c83dace51c8f63373783bc7317aca2e43fb5e89f34f4",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_순천여고_2학기_중간_고1_공통수학2/q20-solution.svg",
+        "reportSHA": "fa56de57de5ef278aae6c4f040779c49fc9b7c01a37fb638a7ff4fd2ac0cc78e",
+        "currentRawSHA": "fa56de57de5ef278aae6c4f040779c49fc9b7c01a37fb638a7ff4fd2ac0cc78e",
+        "ledgerSHA": "fa56de57de5ef278aae6c4f040779c49fc9b7c01a37fb638a7ff4fd2ac0cc78e",
+        "phase0SHA": "fa56de57de5ef278aae6c4f040779c49fc9b7c01a37fb638a7ff4fd2ac0cc78e",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_기말_고1_기출/q09-solution.svg",
+        "reportSHA": "816b16fab84486d72c30a52a7368a6023d84e33b1318806bdb81c3ecdfa5b275",
+        "currentRawSHA": "816b16fab84486d72c30a52a7368a6023d84e33b1318806bdb81c3ecdfa5b275",
+        "ledgerSHA": "816b16fab84486d72c30a52a7368a6023d84e33b1318806bdb81c3ecdfa5b275",
+        "phase0SHA": "816b16fab84486d72c30a52a7368a6023d84e33b1318806bdb81c3ecdfa5b275",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q12-solution.svg",
+        "reportSHA": "f2ae39059deca500b10f2777a3319353a3717bbeeea79da9f130292a1bdbef8d",
+        "currentRawSHA": "f2ae39059deca500b10f2777a3319353a3717bbeeea79da9f130292a1bdbef8d",
+        "ledgerSHA": "f2ae39059deca500b10f2777a3319353a3717bbeeea79da9f130292a1bdbef8d",
+        "phase0SHA": "f2ae39059deca500b10f2777a3319353a3717bbeeea79da9f130292a1bdbef8d",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q14-solution.svg",
+        "reportSHA": "3bc863b548532b252b523ef45d3eba5a4a35a3a894cef0ae11f9d804c4375ec9",
+        "currentRawSHA": "3bc863b548532b252b523ef45d3eba5a4a35a3a894cef0ae11f9d804c4375ec9",
+        "ledgerSHA": "3bc863b548532b252b523ef45d3eba5a4a35a3a894cef0ae11f9d804c4375ec9",
+        "phase0SHA": "3bc863b548532b252b523ef45d3eba5a4a35a3a894cef0ae11f9d804c4375ec9",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_제일고_2학기_중간_고1_기출/q15-solution.svg",
+        "reportSHA": "bb5326946e023180894a2a27c66c90e5ca65a6c352edbde87064e432f21fd6ef",
+        "currentRawSHA": "bb5326946e023180894a2a27c66c90e5ca65a6c352edbde87064e432f21fd6ef",
+        "ledgerSHA": "bb5326946e023180894a2a27c66c90e5ca65a6c352edbde87064e432f21fd6ef",
+        "phase0SHA": "bb5326946e023180894a2a27c66c90e5ca65a6c352edbde87064e432f21fd6ef",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q02-solution.svg",
+        "reportSHA": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "currentRawSHA": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "ledgerSHA": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "phase0SHA": "cc8971bcb8799221119dc71405654a35e8bef250726cd0d78281514950c8eff4",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q07-solution.svg",
+        "reportSHA": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "currentRawSHA": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "ledgerSHA": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "phase0SHA": "cbed44f293dc28b324e79e13e496a1f90021edab92855e3fa84e73dc5f9e8aca",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      },
+      {
+        "path": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q08-solution.svg",
+        "reportSHA": "fc6a9c1ef15c1985f4b12caf957d1ffaa3a9ac3b5a22327cff4df5590f585e65",
+        "currentRawSHA": "fc6a9c1ef15c1985f4b12caf957d1ffaa3a9ac3b5a22327cff4df5590f585e65",
+        "ledgerSHA": "fc6a9c1ef15c1985f4b12caf957d1ffaa3a9ac3b5a22327cff4df5590f585e65",
+        "phase0SHA": "fc6a9c1ef15c1985f4b12caf957d1ffaa3a9ac3b5a22327cff4df5590f585e65",
+        "exists": true,
+        "equalsPhase0": true,
+        "reportMatchesCurrent": true
+      }
+    ]
+  },
+  "provenanceSHA256": {
+    "historicalQualification": "24a4217c2dd997913d41497c9e45169b7fd11cd8327952a7d56afee6b7ad2f8a",
+    "currentQualification": "91064c059a676a9a688cbe43fc00a039d88cd3b77752ba817cb60e172bc1077b",
+    "copyLedger": "968bef3b4a5363f05235d0b2b58b9f87ce4b2c510643219c5ed00b3869891a73",
+    "phase0Baseline": "eb4716620d44675bd69ce68031e9c72e23bcb99eceebb066bad09413e21f18d5"
+  }
+}
