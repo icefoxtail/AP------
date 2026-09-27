@@ -73,7 +73,7 @@ Source identity/fidelity, independent math, 학생용 해설, solution quality, 
 ## 7. 기존 경로
 
 - 신규 Past Exam은 `completion-contract.json`의 resolver-backed sidecar와 BASIC/ADVANCED 분리 gate를 사용한다.
-- 3차검수·수정·무결성·R1/R2E는 `rpm-active-resolver.mjs` 및 CLI를 공통 호출한다. R2E intake receipt는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` evidence ref를 묶고, R2E final receipt는 `JS_ARCHIVE_R2E_META_RECEIPT_v1`로 동일 UID의 resolver/difficulty/runtime projection을 재검증한다.
+- 3차검수·수정·무결성·R1/R2E는 `rpm-active-resolver.mjs` 및 CLI를 공통 호출한다. R2E intake receipt는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` strict-projection 또는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2` staged-candidate evidence ref를 묶는다. v2는 frozen source Meta projection과 새 candidate projection을 별도 증명하며, candidate와 fresh difficulty evidence parity는 항상 exact다. R2E final receipt는 `JS_ARCHIVE_R2E_META_RECEIPT_v1`로 모든 UID의 completed JS/runtime projection parity와 Meta HOLD Zero를 다시 검증한다.
 - 1차검수는 field presence/type/evidence/provenance의 read-only 상태만 확인한다. 2차 수학검수는 semantic Meta engine이 아니다.
 - tag-enrichment는 L1/L2/subUnit hint와 inventory만 만들며 advanced Meta/difficulty를 분류하지 않는다.
 - js-bank-cleanup은 advanced Meta를 read-only audit한다.

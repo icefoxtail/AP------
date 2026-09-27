@@ -9,11 +9,14 @@ import {
   buildResolverDecisionEvidence,
   makeDifficultyEvidence,
   makeMetaValidatorReceipt,
+  makeR2ESourceMetaProjection,
+  R2E_META_INPUT_SCHEMA_V2,
   resolveMetaRoute,
   sealR2EMetaReceipt,
   validateBlindDifficulty,
   validateMetaFinalization,
   validateR2EReceipt,
+  validateR2EIntakeMetaReceipt,
   validateResolverEvidence,
   validateMetaValidatorReceipt,
   validateRuntimeMetaParity,
@@ -290,4 +293,67 @@ test('same resolver decision closes through R2E and an exact runtime projection'
     resolverEvidence, difficultyEvidence, candidateMeta, runtimeRecord }).status, 'PASS');
   assert.equal(validateRuntimeMetaParity({ questionUid: item.questionUid, sourceFingerprint: resolverEvidence.sourceFingerprint,
     resolverEvidence, difficultyEvidence, candidateMeta, runtimeRecord: { ...runtimeRecord, templateKey: 'TPL_WRONG' } }).status, 'FAIL');
+});
+
+test('v2 intake keeps frozen JS projection separate and requires exact projection at R2E final', () => {
+  const row = rowFor('H1-RPM-001');
+  const sourceArchiveFile = 'original/high/h1/1final/fixture-v2.js';
+  const questionUid = questionUidForSource(sourceArchiveFile, 1);
+  const input = makeInput(row);
+  input.sourceIdentity.sourceArchiveFile = sourceArchiveFile;
+  input.sourceIdentity.questionUid = questionUid;
+  input.sourceIdentity.imageRefHash = objectSha({ image: '', visualAsset: '', fullPageImagePath: '', fullPageImageRelPath: '', sourceEvidencePath: '', sourcePageEvidencePaths: [] });
+  const sourceQuestion = {
+    id: 1, sourceIdentityKey: input.sourceIdentity.sourceIdentityKey,
+    content: 'source content', choices: ['①', '②'], image: '', solution: 'verified student solution',
+    curriculum: row.curriculum, standardCourse: row.standardCourse,
+    standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey || '',
+  };
+  const resolverEvidence = resolveMetaRoute(input, { repoRoot: root });
+  const difficultyEvidence = makeDifficulty(resolverEvidence);
+  const candidateMeta = makeCandidate(resolverEvidence);
+  const semanticMetaEvidence = makeRelational(resolverEvidence);
+  const sourceMetaProjection = makeR2ESourceMetaProjection(sourceQuestion);
+  const resolverValidation = validateResolverEvidence(input, resolverEvidence, { repoRoot: root });
+  const intakeItem = {
+    questionUid, sourceOrdinal: 1, disposition: resolverEvidence.disposition, input, resolverEvidence,
+    difficultyEvidence, candidateMeta, semanticMetaEvidence, sourceMetaProjection,
+    sourceMetaProjectionSha: objectSha(sourceMetaProjection),
+    validatorReceipt: makeMetaValidatorReceipt(resolverEvidence, resolverValidation),
+  };
+  const intakeReceipt = { schemaVersion: R2E_META_INPUT_SCHEMA_V2, items: [intakeItem] };
+  const intakeCheck = validateR2EIntakeMetaReceipt(intakeReceipt, {
+    sourceArchiveFile, sourceQuestions: [sourceQuestion], repoRoot: root,
+  });
+  assert.equal(intakeCheck.status, 'PASS', JSON.stringify(intakeCheck.errors));
+  assert.equal(sourceQuestion.difficultyBucket, undefined);
+  assert.equal(candidateMeta.difficultyBucket, difficultyEvidence.difficultyBucket);
+
+  const finalQuestion = { ...sourceQuestion, ...candidateMeta };
+  const finalPreflight = validateMetaFinalization({ input, resolverEvidence, difficultyEvidence, candidateMeta,
+    semanticMetaEvidence, requireValidatorReceipt: false, repoRoot: root });
+  assert.equal(finalPreflight.status, 'PASS', JSON.stringify(finalPreflight.errors));
+  const finalValidatorReceipt = makeMetaValidatorReceipt(resolverEvidence, finalPreflight);
+  const runtimeRecord = {
+    questionUid, sourceFingerprint: resolverEvidence.sourceFingerprint,
+    resolverEvidenceSha: resolverEvidence.evidenceSha, difficultyEvidenceSha: difficultyEvidence.evidenceSha,
+    ...Object.fromEntries(['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'].map(key => [key, candidateMeta[key]])),
+  };
+  const finalReceipt = sealR2EMetaReceipt({
+    schemaVersion: 'JS_ARCHIVE_R2E_META_RECEIPT_v1', stage: 'R2E_FINAL',
+    unresolvedSemanticCount: 0, unresolvedProposalCount: 0, unresolvedCrossConceptCandidateCount: 0,
+    metaHoldCount: 0, migrationGapCount: 0, runtimeParityFailureCount: 0,
+    items: [{ ...intakeItem, validatorReceipt: finalValidatorReceipt, r2eFinalDisposition: 'EXISTING_REUSE', runtimeRecord }],
+  });
+  assert.equal(validateR2EReceipt(finalReceipt, { repoRoot: root, sourceArchiveFile, sourceQuestions: [finalQuestion] }).status, 'PASS');
+  const notMaterialized = validateR2EReceipt(finalReceipt, { repoRoot: root, sourceArchiveFile, sourceQuestions: [sourceQuestion] });
+  assert.equal(notMaterialized.status, 'FAIL');
+  assert.ok(notMaterialized.errors.some(error => error.includes('R2E_META_INPUT_CANDIDATE_JS_PARITY_FAIL') && error.includes('difficultyBucket')));
+
+  const tampered = structuredClone(intakeReceipt);
+  tampered.items[0].sourceMetaProjection.difficultyBucket = 4;
+  tampered.items[0].sourceMetaProjectionSha = objectSha(tampered.items[0].sourceMetaProjection);
+  const badSourceProjection = validateR2EIntakeMetaReceipt(tampered, { sourceArchiveFile, sourceQuestions: [sourceQuestion], repoRoot: root });
+  assert.equal(badSourceProjection.status, 'FAIL');
+  assert.ok(badSourceProjection.errors.includes(`R2E_META_INPUT_SOURCE_JS_PROJECTION_PARITY_FAIL:${questionUid}`));
 });

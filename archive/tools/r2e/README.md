@@ -74,6 +74,11 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
   중단하지 않고 frozen JS 및 verified final solution bytes에서 새 decision-isolated input,
   shared resolver evidence, fresh blind difficulty와 relational evidence를 생성한다. 이전
   candidate, verdict, difficulty는 semantic first pass에 재사용하지 않는다.
+- Legacy recovery는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2`를 사용한다. `sourceMetaProjection`
+  은 frozen R1 JS의 기존 9개 Meta/difficulty field를 증명하고, `candidateMeta`는 fresh R2E
+  decision output을 담는다. Intake validator는 source projection과 original bytes를 검사하고
+  candidateMeta/evidence parity를 검사한다. Final R2E gate는 별도로 candidateMeta와 completed
+  JS/runtime projection의 exact parity를 강제한다.
 - receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
   서로 독립인 입력의 진행을 막지 않는다. R1에서 문항 오류로 지정된 UID는
   `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`로 오류를 확인한 뒤
