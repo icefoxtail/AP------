@@ -3,423 +3,423 @@
   "examFile": "24_연향중_2학기_중간_중2_수학.js",
   "examUid": "24_연향중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "A",
-  "stage": "CREATE",
-  "sourcePath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
-  "sourceBlobSha": "ffe11198776b78f33cffbfcd59d49277b57a3ac3",
-  "totalQuestions": 23,
-  "sourceIdentity": {
-    "coverage": "23/23",
-    "protectedFieldParity": "PASS 23/23",
-    "protectedFields": "content/choices/answer/image",
-    "sourceImageCoverage": "21/21 VISUAL_PASS",
-    "blankSolution": 0,
-    "TRUE_HOLD": 0
+  "lane": "D",
+  "stage": "R1",
+  "denominator": 23,
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "05af01347f2630a46bf0939c05bd01ce57fb2646",
+    "mainReadSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+    "sourcePath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "sourceBlobSha": "ffe11198776b78f33cffbfcd59d49277b57a3ac3",
+    "r1InputJsBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+    "r1FinalJsBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d"
   },
-  "repairs": [
-    {
-      "questionNo": 2,
-      "kind": "SOLUTION_REPAIR",
-      "sourceImageBlobSha": "fd1f4b906e2a1a082721d15359691cd618b5397a",
-      "beforeDefect": "solution invented BE=BC and an unnecessary SSS chain",
-      "sourceEvidence": "two equal angle arcs at B and ∠DBC=24°; C is a right angle",
-      "after": "∠ABD=∠DBC=24°, ∠ABC=48°, x=42°"
-    },
-    {
-      "questionNo": 16,
-      "kind": "L1_L2_REPAIR",
-      "before": {
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
-      },
-      "after": {
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-SIMILAR_FIGURE"
-      },
-      "reason": "final solution decisive step is △AOP∼△CBA; RPM M2-RPM-087 and GLOBAL ACTIVE exact binding agree"
-    }
+  "normalizationAuthority": {
+    "branch": "main",
+    "readSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+    "crosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "middleGeometryTaxonomyBlobSha": "f3b2880cee6047202a8558a62e97949ddca34971",
+    "middleGeometryBindingsBlobSha": "32339f1b96e2d85d2471c30ad9a29bebe651222b",
+    "planeGeometryConceptsBlobSha": "f4a745320dc97940baf17b65032f47d3c292e15d"
+  },
+  "authorityOrder": [
+    "source+final solution",
+    "primaryMethod",
+    "decisiveStep",
+    "RPM Primary",
+    "middle2 crosswalk",
+    "GLOBAL ACTIVE canonical",
+    "exact binding"
   ],
-  "solutionSummary": {
-    "KEEP": 22,
-    "REPAIR": 1,
+  "sourceIdentity": {
+    "status": "PASS",
+    "coverage": "23/23",
+    "trueHold": 0,
+    "protectedFields": "content+choices+answer+image 23/23 unchanged"
+  },
+  "mathSolution": {
+    "coverage": "23/23",
+    "KEEP": 23,
+    "REPAIR": 0,
     "TRUE_HOLD": 0
   },
-  "svgSummary": {
-    "ADD": 12,
+  "smallBlackboard": {
+    "coverage": "23/23",
+    "KEEP": 23,
     "REPAIR": 0,
-    "HOLD": 0,
-    "questions": [
-      2,
-      9,
-      12,
-      13,
-      14,
-      16,
-      17,
-      19,
-      20,
-      21,
-      22,
-      23
-    ],
-    "validation": "PYTHON_EXPECTED_FACT+COORDINATE_ASSERT PASS 12/12; XML_PARSE PASS 12/12; ROOT_METADATA/LATEX/BR CHECK PASS 12/12",
-    "renderReview": "NOT_RUN_BY_POLICY"
+    "HOLD": 0
   },
-  "l1l2Summary": {
-    "KEEP": 22,
-    "REPAIR": 1,
+  "visual": {
+    "sourceImagesReviewed": 21,
+    "sourceImageParity": "21/21 PASS",
+    "solutionSvgPresent": 12,
+    "svgKeep": 12,
+    "svgRepair": 0,
+    "svgHold": 0,
+    "render": "NOT_RUN_BY_POLICY"
+  },
+  "l1l2": {
+    "coverage": "23/23",
+    "KEEP": 23,
+    "REPAIR": 0,
     "HOLD": 0
   },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 19,
-    "PROPOSED_NEW_L3": 0,
+    "EXISTING_REUSE": 20,
+    "PROPOSED_NEW_L3": 2,
     "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 3,
+    "RPM_PRIMARY_MIGRATION_GAP": 0,
     "TRUE_HOLD": 0
   },
-  "difficultySummary": {
-    "judged": 23,
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 10,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0
+  },
+  "difficultyBlindPass": {
+    "coverage": "23/23",
     "buckets": {
       "1": 3,
       "2": 10,
       "3": 7,
       "4": 3,
       "5": 0
-    }
+    },
+    "hold": 0,
+    "authority": "JS아카이브_difficultyBucket_5단계_운영규칙_v1.3"
   },
-  "unresolvedItems": [
-    {
-      "questionNo": 2,
-      "disposition": "PROPOSED_NEW_L4",
-      "parentProblemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
-      "proposedLabelKo": "각의 이등분을 이용한 각 계산",
-      "reason": "GLOBAL ACTIVE L3 has exact 2015 M2-05 binding, but existing L4s cover equidistance/side-ratio rather than angle-partition calculation."
-    },
-    {
-      "questionNo": 12,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-075",
-      "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "reason": "RPM path exists but crosswalk is RPM_ONLY/NO_ACTIVE_MAPPING; no exact ACTIVE L4 is forced at CREATE."
-    },
-    {
-      "questionNo": 13,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-074",
-      "candidateProblemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "reason": "RPM path exists but crosswalk is RPM_ONLY/NO_ACTIVE_MAPPING; no exact ACTIVE L4 is forced at CREATE."
-    },
-    {
-      "questionNo": 22,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": null,
-      "mappedProblemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
-      "mappedTemplateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
-      "reason": "GLOBAL ACTIVE canonical is an exact semantic match, but its active binding is M1-only; exact M2 curriculum binding is absent."
-    }
-  ],
+  "integrity": {
+    "jsParse": "PASS",
+    "questionCount": 23,
+    "idSequence": "1..23 PASS",
+    "uniqueIds": "23/23",
+    "blankSolutions": 0,
+    "protectedIdentity": "23/23 PASS",
+    "runtimeStringBasic": "PASS",
+    "controlChars": 0,
+    "svgStructure": "12/12 PASS"
+  },
   "perQuestion": [
     {
       "questionNo": 1,
+      "primaryMethod": "두 밑각이 같은 삼각형을 이등변삼각형으로 판정",
+      "decisiveStep": "AB=AC에서 x=3",
       "rpmPrimary": "M2-RPM-062",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
       "templateKey": "TPL_ISOSCELES_CONVERSE",
       "crossConceptKeys": [],
-      "primaryMethod": "두 밑각이 같은 삼각형을 이등변삼각형으로 판정",
-      "decisiveStep": "AB=AC에서 일차방정식으로 x=3",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 1
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 2,
+      "primaryMethod": "같은 각 표시로 B의 각을 둘로 나눔",
+      "decisiveStep": "24+24=48 뒤 직각삼각형 각의 합",
       "rpmPrimary": null,
+      "disposition": "PROPOSED_NEW_L4",
       "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
-      "templateKey": null,
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_ANGLE_PARTITION",
       "crossConceptKeys": [
         "CC_RIGHT_TRIANGLE"
       ],
-      "primaryMethod": "그림의 같은 각 표시로 B의 각을 둘로 나눔",
-      "decisiveStep": "24°+24°=48° 뒤 직각삼각형 각의 합으로 x=42°",
-      "disposition": "PROPOSED_NEW_L4",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 3,
+      "primaryMethod": "직각삼각형 빗변 중점의 외심 성질",
+      "decisiveStep": "OA=OB로 각을 옮겨 108도",
       "rpmPrimary": "M2-RPM-065",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
       "crossConceptKeys": [],
-      "primaryMethod": "직각삼각형 빗변 중점의 외심 성질",
-      "decisiveStep": "OA=OB로 이등변삼각형 각을 옮겨 108° 계산",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 4,
+      "primaryMethod": "내심과 평행선으로 이등변삼각형 구성",
+      "decisiveStep": "DB=DI, EC=EI와 둘레 24 판정",
       "rpmPrimary": "M2-RPM-066",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
       "crossConceptKeys": [],
-      "primaryMethod": "내심의 각 이등분선과 평행선으로 이등변삼각형 구성",
-      "decisiveStep": "DB=DI, EC=EI와 둘레 24를 확인하고 BI=CI를 배제",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 5,
+      "primaryMethod": "외심의 등거리·수직이등분선 판별",
+      "decisiveStep": "③과 ⑤만 외심 조건 만족",
       "rpmPrimary": "M2-RPM-064",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
       "crossConceptKeys": [
         "CC_PERPENDICULAR_BISECTOR"
       ],
-      "primaryMethod": "외심의 등거리·수직이등분선 조건 판별",
-      "decisiveStep": "③과 ⑤만 외심 조건을 만족",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 6,
+      "primaryMethod": "내심에서 세 변까지 같은 거리로 넓이 분할",
+      "decisiveStep": "60=1/2*r*40에서 r=3",
       "rpmPrimary": "M2-RPM-068",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
-      "primaryMethod": "내심에서 세 변까지의 같은 거리로 넓이를 분할",
-      "decisiveStep": "60=1/2·r·(8+15+17)에서 r=3",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 7,
+      "primaryMethod": "외심의 세 반지름으로 이등변삼각형 각 연쇄",
+      "decisiveStep": "삼각형 각의 합으로 x=25",
       "rpmPrimary": "M2-RPM-065",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
       "crossConceptKeys": [],
-      "primaryMethod": "외심의 세 반지름으로 세 이등변삼각형 각을 연쇄",
-      "decisiveStep": "삼각형 ABC의 각 합으로 x=25°",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 8,
-      "rpmPrimary": "M2-RPM-070",
+      "primaryMethod": "평행사변형 평행 대변으로 각 이동",
+      "decisiveStep": "x+y=80",
+      "rpmPrimary": "M2-RPM-072",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
       "crossConceptKeys": [],
-      "primaryMethod": "평행사변형의 평행한 대변으로 각을 이동",
-      "decisiveStep": "DAB=BCD 관계에서 x+y=80°",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 9,
-      "rpmPrimary": "M2-RPM-070",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "crossConceptKeys": [
-        "CC_SIMILARITY"
-      ],
-      "primaryMethod": "평행사변형의 대변 성질과 중점 구조를 결합",
-      "decisiveStep": "1:1 닮음에서 CF=AB=6, 이어 DF=12",
+      "primaryMethod": "평행사변형 조건에서 두 삼각형 닮음",
+      "decisiveStep": "1:1 닮음으로 CF=6, DF=12",
+      "rpmPrimary": "M2-RPM-089",
       "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_PROPERTIES"
+      ],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 10,
-      "rpmPrimary": "M2-RPM-077",
+      "primaryMethod": "평행사변형 대각선 이등분·수직 성질",
+      "decisiveStep": "SAS이므로 RHS 표기가 오답",
+      "rpmPrimary": "M2-RPM-079",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
       "crossConceptKeys": [],
-      "primaryMethod": "평행사변형의 대각선 이등분·수직 성질로 두 삼각형 비교",
-      "decisiveStep": "두 변과 끼인 직각으로 SAS이므로 RHS 표기가 오답",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 11,
-      "rpmPrimary": "M2-RPM-081",
+      "primaryMethod": "특수 사각형 포함 관계와 성질 판정",
+      "decisiveStep": "나·다·마만 참",
+      "rpmPrimary": "M2-RPM-083",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
       "crossConceptKeys": [],
-      "primaryMethod": "특수 사각형의 포함 관계와 대각선 성질 판정",
-      "decisiveStep": "나·다·마만 참",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 1
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 12,
-      "rpmPrimary": "M2-RPM-075",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": null,
+      "primaryMethod": "마름모 대각선 넓이와 같은 높이 넓이비",
+      "decisiveStep": "400→200→120",
+      "rpmPrimary": "M2-RPM-077",
+      "disposition": "PROPOSED_NEW_L3",
+      "problemTypeKey": "PT_QUADRILATERAL_AREA_RELATIONS",
+      "templateKey": "TPL_QUADRILATERAL_AREA_PARTITION",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
-      "primaryMethod": "마름모의 대각선 넓이와 같은 높이의 넓이비 결합",
-      "decisiveStep": "전체 400→ABC 200→APC 120",
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 13,
-      "rpmPrimary": "M2-RPM-074",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": null,
+      "primaryMethod": "평행한 두 밑변 사이 같은 높이 넓이 관계",
+      "decisiveStep": "OCD=15, AOB=OCD",
+      "rpmPrimary": "M2-RPM-076",
+      "disposition": "PROPOSED_NEW_L3",
+      "problemTypeKey": "PT_QUADRILATERAL_AREA_RELATIONS",
+      "templateKey": "TPL_QUADRILATERAL_PARALLEL_EQUAL_AREA",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
-      "primaryMethod": "평행한 두 밑변 사이의 같은 높이 넓이 관계",
-      "decisiveStep": "OCD=15이고 AOB=OCD로 15",
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 14,
-      "rpmPrimary": "M2-RPM-083",
+      "primaryMethod": "주어진 닮음의 대응각과 이등변·각 이등분 연결",
+      "decisiveStep": "180-2x=x/2에서 x=72",
+      "rpmPrimary": "M2-RPM-085",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
       "crossConceptKeys": [
         "CC_ANGLE_BISECTOR"
       ],
-      "primaryMethod": "주어진 닮음의 대응각과 이등변·각 이등분을 연결",
-      "decisiveStep": "180-2x=x/2에서 x=72°",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 15,
-      "rpmPrimary": "M2-RPM-088",
+      "primaryMethod": "닮은 원의 넓이비는 반지름비의 제곱",
+      "decisiveStep": "100π*4/25=16π",
+      "rpmPrimary": "M2-RPM-090",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
       "crossConceptKeys": [],
-      "primaryMethod": "닮은 원의 넓이비는 반지름비의 제곱",
-      "decisiveStep": "100π·4/25=16π",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 1
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 16,
-      "rpmPrimary": "M2-RPM-087",
+      "primaryMethod": "대각선 길이 뒤 AOP와 CBA 닮음",
+      "decisiveStep": "AP/CA=AO/CB로 AP=25/4",
+      "rpmPrimary": "M2-RPM-089",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
       "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
       "crossConceptKeys": [
         "CC_PYTHAGOREAN"
       ],
-      "primaryMethod": "대각선 길이를 구한 뒤 AOP와 CBA의 닮음을 사용",
-      "decisiveStep": "AP/CA=AO/CB=5/8에서 AP=25/4",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 17,
-      "rpmPrimary": "M2-RPM-087",
+      "primaryMethod": "빗변 높이로 생기는 닮음 활용",
+      "decisiveStep": "AB^2=BH*BC=16",
+      "rpmPrimary": "M2-RPM-089",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
       "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
       "crossConceptKeys": [],
-      "primaryMethod": "빗변에 내린 높이로 생기는 닮음 활용",
-      "decisiveStep": "AB²=BH·BC=16에서 AB=4",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 18,
-      "rpmPrimary": "M2-RPM-082",
+      "primaryMethod": "평행 단면의 두 원뿔 닮음비",
+      "decisiveStep": "높이비 2:3을 반지름비에 적용",
+      "rpmPrimary": "M2-RPM-084",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_SIMILAR_FIGURES",
       "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
       "crossConceptKeys": [],
-      "primaryMethod": "평행 단면으로 생긴 두 원뿔의 닮음비",
-      "decisiveStep": "높이비 12:18=2:3을 반지름비에 적용",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 19,
-      "rpmPrimary": "M2-RPM-094",
+      "primaryMethod": "중점 연결 평행선과 선분비",
+      "decisiveStep": "MQN이 전체의 1/8",
+      "rpmPrimary": "M2-RPM-096",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
       "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
-      "primaryMethod": "중점 연결 평행선과 선분비로 M,N 위치를 결정",
-      "decisiveStep": "MQN 넓이가 전체의 1/8이므로 전체 48",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 4
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 20,
-      "rpmPrimary": "M2-RPM-087",
+      "primaryMethod": "접기 등거리와 두 삼각형 닮음",
+      "decisiveStep": "BDE~CEF에서 8:12=7:AF",
+      "rpmPrimary": "M2-RPM-089",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
       "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
       "crossConceptKeys": [],
-      "primaryMethod": "접기 등거리와 두 삼각형 닮음을 결합",
-      "decisiveStep": "BDE∼CEF에서 8:12=7:AF",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 4
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 21,
-      "rpmPrimary": null,
+      "primaryMethod": "직각삼각형의 빗변·한 변으로 RHS 합동",
+      "decisiveStep": "CE=DE=4와 BDE 직각이등변",
+      "rpmPrimary": "M2-RPM-070",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
       "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
       "crossConceptKeys": [],
-      "primaryMethod": "두 직각삼각형의 빗변·한 변으로 RHS 합동",
-      "decisiveStep": "CE=DE=4와 BDE의 직각이등변 구조로 DB+DE=8",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 22,
-      "rpmPrimary": null,
-      "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
-      "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_CORE",
+      "primaryMethod": "정사각형 대각선 성질로 ASA 합동 후 넓이 이동",
+      "decisiveStep": "OCQ≡OBP 뒤 겹친 넓이 9",
+      "rpmPrimary": "M2-RPM-079",
+      "disposition": "EXISTING_REUSE",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
       "crossConceptKeys": [
         "CC_TRIANGLE_AREA"
       ],
-      "primaryMethod": "두 정사각형의 직각·대각선 각으로 ASA 합동을 만들고 넓이 이동",
-      "decisiveStep": "OCQ≡OBP 후 겹친 넓이=OBC=9",
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "difficultyBucket": 4
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high"
     },
     {
       "questionNo": 23,
-      "rpmPrimary": "M2-RPM-087",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-      "crossConceptKeys": [],
-      "primaryMethod": "두 각으로 AA 닮음을 확정하고 대응변 비를 사용",
-      "decisiveStep": "12:CD=5:3에서 CD=36/5",
+      "primaryMethod": "두 각으로 AA 닮음 후 대응변 비",
+      "decisiveStep": "12:CD=5:3",
+      "rpmPrimary": "M2-RPM-086",
       "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 2
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "crossConceptKeys": [],
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high"
     }
   ],
-  "integrity": {
-    "javascriptSyntax": "PASS_V8_COMPILE",
-    "questionCardinality": "23/23",
-    "protectedFieldParity": "PASS 23/23",
-    "solutionBlankCount": 0,
-    "sourceImageVisualParity": "PASS 21/21",
-    "trueHold": 0
-  },
-  "authorityRefs": {
-    "rulesIndexBlobSha": "f792fc7ce0372b6855e4d38f636d49c6336c368a",
-    "rpmPrimaryReadmeBlobSha": "c4fbdd83e37c25392ceb92f2b5d2b5df5ec9d592",
-    "metaRuleBlobSha": "683a3c1dcb7088acce7340f00fb27dc8d5458588",
-    "studentSolutionRuleBlobSha": "ee0d220ee496ea5188493d102e3ff27982cf43e7",
-    "difficultyRuleBlobSha": "fa7735b0a79fa9084ec726ef24a82a4eaaf7dca8",
-    "visualRuleBlobSha": "b6cb044188dfc739abb587c17d0403798880c4ef",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
-    "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
-    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477",
-    "middle1TaxonomyBlobSha": "3e9c0fa8a208a1e4d1abcc0a27d15dfb2dbd1ca9",
-    "middle1BindingsBlobSha": "f3d00f63c3c3a34422a94536ef992c97a0a1c30e",
-    "planeGeometryConceptsBlobSha": "f4a745320dc97940baf17b65032f47d3c292e15d"
-  },
-  "inputAuthority": {
-    "branch": "work/intake/m2",
-    "inputCommit": "fbb81bb54c0c4affebbf3d244c567069a3bdb580",
-    "mainReadSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
-    "sourceBlobSha": "ffe11198776b78f33cffbfcd59d49277b57a3ac3"
-  },
-  "updatedAt": "2026-09-27T06:12:21+09:00"
+  "proposalEvidence": [
+    {
+      "status": "PROPOSED_NEW_L4",
+      "questionNo": 2,
+      "parentProblemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "proposedTemplateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_ANGLE_PARTITION",
+      "labelKo": "각의 이등분을 이용한 각 계산",
+      "reason": "exact M2 PT binding은 ACTIVE이나 기존 L4가 등거리/변의 비만 포괄"
+    },
+    {
+      "status": "PROPOSED_NEW_L3",
+      "proposedProblemTypeKey": "PT_QUADRILATERAL_AREA_RELATIONS",
+      "labelKo": "사각형의 넓이 관계",
+      "supportingQuestions": [
+        12,
+        13
+      ],
+      "proposedTemplates": [
+        "TPL_QUADRILATERAL_AREA_PARTITION",
+        "TPL_QUADRILATERAL_PARALLEL_EQUAL_AREA"
+      ],
+      "reason": "M2-RPM-077/076이 RPM_ONLY이고 GLOBAL ACTIVE primary exact match 없음"
+    }
+  ],
+  "updatedAt": "2026-09-27T14:08:05+09:00"
 }
