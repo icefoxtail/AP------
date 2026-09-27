@@ -32,21 +32,26 @@ const request = (rows) => ({
   seed: "teacher-test",
 });
 
-test("canonical approval gates distinguish UNKNOWN, HOLD, extended candidate and pending recheck", () => {
+test("BASIC preserves explicit quality holds while optional difficulty remains a filter", () => {
   assert.ok(base && core.eligibility(base).ok);
   for (const change of [
-    { difficultyBucket: "중" },
-    { difficultyBucket: "UNKNOWN" },
     { reviewStatus: "HOLD" },
-    { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
     {
       curriculumApplicability: "RPM_EXTENDED_CANDIDATE",
       defaultSelectable: false,
     },
     { identityStatus: "UNRESOLVED" },
-    { sourceStatus: "HOLD" },
+    { sourceStatus: "HOLD", sourceIntegrityStatus: "HOLD" },
   ])
     assert.equal(core.eligibility({ ...base, ...change }).ok, false);
+  for (const change of [
+    { difficultyBucket: "중" }, { difficultyBucket: "UNKNOWN" },
+    { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
+  ]) {
+    const record = { ...base, ...change };
+    assert.equal(core.eligibility(record).ok, true);
+    assert.equal(core.matches(record, { difficultyBuckets: [1, 2, 3, 4, 5] }), false);
+  }
 });
 test("pin and rebuild retain pins and student/series exclusion; no silent shortage relaxation", () => {
   const pool = Array.from({ length: 20 }, (_, i) => record(i + 1));
@@ -129,13 +134,14 @@ test("two source files with equal lexical declarations load independently and or
   assert.equal(a[1].content, 2);
   assert.equal(b[0].content, 3);
 });
-test("all selectable production records have canonical numeric metadata and registered identity", () => {
+test("all BASIC production records have verified current source identity without requiring optional metadata approval", () => {
   const ids = new Set();
   for (const r of catalog.records.filter((r) => r.automatic)) {
     assert.equal(core.eligibility(r).ok, true);
     assert.ok(!ids.has(r.questionUid));
     ids.add(r.questionUid);
-    assert.equal(r.sourceFingerprint, r.approvedSourceFingerprint);
+    assert.equal(r.sourceIntegrityStatus, "VERIFIED");
+    assert.match(r.sourceFingerprint, /^[a-f0-9]{64}$/);
   }
   assert.ok(ids.size > 0);
   assert.equal(catalog.health.questions, catalog.records.length);
