@@ -3,174 +3,340 @@
   "examFile": "23_금당중_2학기_중간_중2_수학.js",
   "examUid": "23_금당중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "D",
-  "stage": "CREATE",
+  "lane": "C",
+  "sourceLane": "D",
+  "stage": "R1",
   "sourceBlobSha": "d98189f2d9c563030fd666a204e365ec30d36488",
+  "inputCommit": "bbd20c48bf38f78bf5a717c4358eb77e3de44ece",
   "totalQuestions": 25,
   "changedQuestions": [
-    2,
-    10,
     12,
+    13,
+    14,
     15,
     16,
+    17,
     18,
     19,
+    20,
     21,
-    22,
     24,
     25
   ],
-  "changedSvgFiles": [
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q12-solution.svg",
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q16-solution.svg",
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q18-solution.svg",
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q21-solution.svg",
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q24-solution.svg",
-    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q25-solution.svg"
+  "physicallyChangedSolutionQuestions": [
+    16,
+    25
   ],
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 6,
-    "PROPOSED_NEW_L3": 1,
-    "PROPOSED_NEW_L4": 2,
-    "RPM_PRIMARY_MIGRATION_GAP": 16,
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 2,
     "TRUE_HOLD": 0
   },
-  "unresolvedItems": [
+  "svgDispositionSummary": {
+    "KEEP": 6,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "l1l2DispositionSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 9,
+    "PROPOSED_NEW_L3": 1,
+    "PROPOSED_NEW_L4": 3,
+    "RPM_PRIMARY_MIGRATION_GAP": 12,
+    "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 0,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0
+  },
+  "difficultyDispositionSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "proposedNewL3": [
     {
       "questionNo": 1,
       "disposition": "PROPOSED_NEW_L3",
       "rpmPrimary": null,
-      "proposal": "L3 미지수가 2개인 일차방정식 / L4 일차성 판별"
-    },
+      "proposal": {
+        "l3": "미지수가 2개인 일차방정식",
+        "l4": "일차방정식 판별"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
+    }
+  ],
+  "proposedNewL4": [
     {
       "questionNo": 2,
       "disposition": "PROPOSED_NEW_L4",
       "rpmPrimary": null,
-      "proposal": "L4 자연수 해의 순서쌍"
-    },
-    {
-      "questionNo": 3,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-033",
-      "proposal": null
-    },
-    {
-      "questionNo": 4,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-030",
-      "proposal": null
-    },
-    {
-      "questionNo": 5,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-030",
-      "proposal": null
-    },
-    {
-      "questionNo": 6,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-034",
-      "proposal": null
-    },
-    {
-      "questionNo": 7,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-031",
-      "proposal": null
-    },
-    {
-      "questionNo": 8,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-035",
-      "proposal": null
-    },
-    {
-      "questionNo": 9,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-037",
-      "proposal": null
-    },
-    {
-      "questionNo": 10,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-039",
-      "proposal": null
-    },
-    {
-      "questionNo": 11,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-046",
-      "proposal": null
-    },
-    {
-      "questionNo": 13,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-103",
-      "proposal": null
-    },
-    {
-      "questionNo": 18,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-098",
-      "proposal": null
-    },
-    {
-      "questionNo": 19,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-095",
-      "proposal": null
-    },
-    {
-      "questionNo": 20,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-101",
-      "proposal": null
+      "proposal": {
+        "parentL3": "미지수가 2개인 일차방정식",
+        "l4": "자연수 해의 순서쌍·개수"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
     },
     {
       "questionNo": 21,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-103",
-      "proposal": null
-    },
-    {
-      "questionNo": 22,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-044",
-      "proposal": null
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "rpmParent": "피타고라스 정리 > 도형에의 활용",
+      "closestRpm": "M2-RPM-105",
+      "proposal": {
+        "l4": "피타고라스 정리를 이용한 평면도형 넓이 관계"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
     },
     {
       "questionNo": 23,
       "disposition": "PROPOSED_NEW_L4",
       "rpmPrimary": null,
-      "proposal": "RPM L3 속력·시간·거리 아래 L4 구간별 속력과 휴식시간"
-    },
-    {
-      "questionNo": 25,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-097",
-      "proposal": null
+      "rpmParent": "속력·시간·거리",
+      "closestRpm": "M2-RPM-040",
+      "proposal": {
+        "l4": "구간별 속력과 휴식 시간"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "rpmMigrationGaps": [
+    {
+      "questionNo": 3,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-033",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 4,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 5,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 6,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-034",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 7,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-031",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 8,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-035",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 9,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-037",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 10,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-039",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 11,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-046",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 13,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-105",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 20,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-103",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 22,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-044",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    }
+  ],
+  "sourceHardHolds": [],
+  "repairs": [
+    {
+      "q": 16,
+      "scope": "solution",
+      "reason": "좌표계산 생략 제거; 넓이비+중점연결정리로 전개"
+    },
+    {
+      "q": 25,
+      "scope": "solution",
+      "reason": "h/2-h/3=h/6 중간계산 명시"
+    }
+  ],
+  "unresolvedItems": [
+    {
+      "questionNo": 1,
+      "disposition": "PROPOSED_NEW_L3",
+      "rpmPrimary": null,
+      "proposal": {
+        "l3": "미지수가 2개인 일차방정식",
+        "l4": "일차방정식 판별"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
+    },
+    {
+      "questionNo": 2,
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "proposal": {
+        "parentL3": "미지수가 2개인 일차방정식",
+        "l4": "자연수 해의 순서쌍·개수"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
+    },
+    {
+      "questionNo": 3,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-033",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 4,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 5,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-030",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 6,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-034",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 7,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-031",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 8,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-035",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 9,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-037",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 10,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-039",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 11,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-046",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 13,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-105",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 20,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-103",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 21,
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "rpmParent": "피타고라스 정리 > 도형에의 활용",
+      "closestRpm": "M2-RPM-105",
+      "proposal": {
+        "l4": "피타고라스 정리를 이용한 평면도형 넓이 관계"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
+    },
+    {
+      "questionNo": 22,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-044",
+      "reason": "RPM path deterministic; GLOBAL ACTIVE exact 2015 M2 binding absent, so R2E materialization pending"
+    },
+    {
+      "questionNo": 23,
+      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": null,
+      "rpmParent": "속력·시간·거리",
+      "closestRpm": "M2-RPM-040",
+      "proposal": {
+        "l4": "구간별 속력과 휴식 시간"
+      },
+      "reason": "현재 RPM/crosswalk/GLOBAL ACTIVE에 의미 왜곡 없는 exact 구조가 없어 R2E semantic-cluster proposal로 보존"
+    }
+  ],
+  "authorityRefs": [
+    "branch:work/intake/m2",
+    "parent:bbd20c48bf38f78bf5a717c4358eb77e3de44ece",
+    "main:6bc2717079c994c20732375d972bb17cbd8bde82",
+    "sourceBlob:d98189f2d9c563030fd666a204e365ec30d36488",
+    "crosswalk:0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "evidence:archive/data/r2e-intake/m2/23_금당중_2학기_중간_중2_수학.evidence.json"
+  ],
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "10cf7f55381cc82224e7ffb9b2674c8a3b8e9671",
-    "mainReadSha": "7bf8f80a3d953b6eb9f0a7d0f3532e29c5313e69",
+    "inputCommit": "bbd20c48bf38f78bf5a717c4358eb77e3de44ece",
+    "mainReadSha": "6bc2717079c994c20732375d972bb17cbd8bde82",
     "sourcePath": "archive/exams/original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
     "sourceBlobSha": "d98189f2d9c563030fd666a204e365ec30d36488",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "r1InputJsBlobSha": "d3a6942a50fd457290cc75ba83423c50619227f9",
+    "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
     "evidencePath": "archive/data/r2e-intake/m2/23_금당중_2학기_중간_중2_수학.evidence.json"
   },
-  "finalAuthority": {
-    "jsBlobSha": "d3a6942a50fd457290cc75ba83423c50619227f9",
-    "svgBlobShas": {
-      "12": "46f4425a72b9265d62d9d110840fc87594eb44ec",
-      "16": "d03ab54e518d474fd99ded5bec0581fe0c3df033",
-      "18": "345da08e7f1d5168f257df304555aa5da21da6c1",
-      "21": "1e35ef4e5efc1be898b87c066381c3ba6c6a9544",
-      "24": "38b64fbb8e88200615076833365816ae543db795",
-      "25": "c842e41c8c4c16de10faffcac931209a75909757"
-    }
+  "validatorSummary": {
+    "questions": "25/25",
+    "protected": "PASS 25/25",
+    "answers": "PASS 25/25",
+    "math": "PASS 25/25",
+    "smallBlackboard": "PASS after q16/q25 repair",
+    "svg": "6/6 structural+semantic PASS; render NOT_RUN_BY_POLICY",
+    "runtime": "PASS; control chars 0; literal newline-escape defect 0",
+    "trueHold": 0
   },
-  "updatedAt": "2026-09-27T03:40:00+09:00"
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T17:11:07+09:00",
+  "commitBinding": "SELF"
 }

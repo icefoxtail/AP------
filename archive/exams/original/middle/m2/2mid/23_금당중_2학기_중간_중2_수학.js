@@ -488,7 +488,7 @@ window.questionBank = [
       "9 cm"
     ],
     "answer": "②",
-    "solution": "[키포인트] 중점 조건과 평행선으로 생기는 길이의 비를 차례로 이용한다.\n$B=(0,0)$, $M=(1,0)$, $C=(2,0)$으로 놓고 $A=(u,v)$라 하자. $N$은 $AM$의 중점이므로 $N=\\left(\\dfrac{u+1}{2},\\dfrac v2\\right)$이다.\n직선 $CN$과 $AB$의 교점을 $D$라 하면 계산하여 $D=\\left(\\dfrac{2u}{3},\\dfrac{2v}{3}\\right)$을 얻는다. 따라서 직선 $CD$ 위에서 $CN:ND=3:1$, 즉 $CN=\\dfrac34CD$이다.\n또 $M$은 $BC$의 중점이고 $ME\\parallel CD$이므로 $\\triangle BCD$의 중점연결정리에 따라 $ME=\\dfrac12CD$이다.\n그러므로 $CN:ME=\\dfrac34:\\dfrac12=3:2$이다.\n$ME=4$ cm이므로 $CN=4\\times\\dfrac32=6$ cm이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 중점 조건과 평행선으로 생기는 길이의 비를 차례로 이용한다.\n$\\triangle ABC$의 넓이를 $S$라 하자.\n$M$은 $BC$의 중점이므로 $[ABM]=[AMC]=\\dfrac S2$이다.\n$N$은 $AM$의 중점이므로 $[ABN]=[BNM]=\\dfrac S4$이고, $[ACN]=[CNM]=\\dfrac S4$이다.\n따라서 $[BCN]=[BNM]+[CNM]=\\dfrac S2$이다.\n\n$CN:ND=r:1$이라 하자.\n$\\triangle ACN$과 $\\triangle ADN$은 점 $A$에서 직선 $CD$에 내린 높이가 같으므로 $[ACN]:[ADN]=r:1$이다.\n같은 이유로 $[BCN]:[BDN]=r:1$이다.\n따라서 $[ADN]=\\dfrac{S}{4r}$, $[BDN]=\\dfrac{S}{2r}$이다.\n$[ABN]=[ADN]+[BDN]$이므로\n$\\dfrac S4=\\dfrac{S}{4r}+\\dfrac{S}{2r}=\\dfrac{3S}{4r}$이다.\n따라서 $r=3$, 즉 $CN:ND=3:1$이고 $CN=\\dfrac34CD$이다.\n\n또 $M$은 $BC$의 중점이고 $ME\\parallel CD$이므로 $\\triangle BCD$에서 중점연결정리에 의해 $ME=\\dfrac12CD$이다.\n$ME=4$ cm이므로 $CD=8$ cm이고, $CN=\\dfrac34\\times8=6$ cm이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q16.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q16-solution.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
@@ -753,7 +753,7 @@ window.questionBank = [
     "content": "[서술형 4] 그림에서 점 $G$는 $\\triangle ABC$의 무게중심일 때, 다음 물음에 답하시오.<br>(1) $\\overline{AH}:\\overline{HG}:\\overline{GD}$를 구하시오. [2점]<br>(2) 삼각형의 넓이 $\\triangle AFE:\\triangle FGE:\\triangle GBC$를 간단한 자연수의 비로 나타내시오. [3점]",
     "choices": [],
     "answer": "$3:1:2$, $3:1:4$",
-    "solution": "[키포인트] $F,E,D$는 각 변의 중점이고, 무게중심과 중점연결정리를 함께 이용한다.\n$G$는 무게중심이므로 $AG:GD=2:1$이다.\n$F,E$는 각각 $AB,AC$의 중점이므로 $FE\\parallel BC$이고, $H$는 $AD$의 중점이다. 따라서 $AH:HD=1:1$이다.\n$AD$를 6등분하면 $AH=3$, $AG=4$, $GD=2$에 해당하므로 $HG=AG-AH=1$이다.\n따라서 $AH:HG:GD=3:1:2$이다.\n전체 $\\triangle ABC$의 넓이를 12라 하자. $\\triangle AFE\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 $[AFE]=3$이다.\n$G$에서 $BC$까지의 높이는 전체 높이의 $\\dfrac13$이므로 $[GBC]=\\dfrac13[ABC]=4$이다.\n또 $FE=\\dfrac12BC$이고 $G$와 $FE$ 사이의 높이는 전체 높이의 $\\dfrac16$이므로 $[FGE]=1$이다.\n따라서 $[AFE]:[FGE]:[GBC]=3:1:4$이다.",
+    "solution": "[키포인트] $F,E,D$는 각 변의 중점이고, 무게중심과 중점연결정리를 함께 이용한다.\n$G$는 무게중심이므로 $AG:GD=2:1$이다.\n$F,E$는 각각 $AB,AC$의 중점이므로 $FE\\parallel BC$이고, $H$는 $AD$의 중점이다. 따라서 $AH:HD=1:1$이다.\n$AD$를 6등분하면 $AH=3$, $AG=4$, $GD=2$에 해당하므로 $HG=AG-AH=1$이다.\n따라서 $AH:HG:GD=3:1:2$이다.\n\n전체 $\\triangle ABC$의 넓이를 12라 하고, $A$에서 $BC$까지의 높이를 $h$라 하자.\n$\\triangle AFE\\sim\\triangle ABC$이고 닮음비가 $1:2$이므로 $[AFE]=3$이다.\n$G$에서 $BC$까지의 높이는 $\\dfrac h3$이므로 $[GBC]=\\dfrac13[ABC]=4$이다.\n또 $FE\\parallel BC$이고 $F,E$가 중점이므로 $FE$는 높이 $h$의 절반인 위치에 있다.\n따라서 $G$와 $FE$ 사이의 높이는 $\\dfrac h2-\\dfrac h3=\\dfrac h6$이다.\n$FE=\\dfrac12BC$이므로\n$[FGE]=\\dfrac12\\times\\dfrac12BC\\times\\dfrac h6=\\dfrac1{12}[ABC]=1$이다.\n따라서 $[AFE]:[FGE]:[GBC]=3:1:4$이다.",
     "image": "assets/images/23_금당중_2학기_중간_중2_수학/q25.png",
     "solutionImage": "assets/images/23_금당중_2학기_중간_중2_수학/q25-solution.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
