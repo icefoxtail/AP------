@@ -7,6 +7,8 @@ import { loadActiveMetaRegistry, validateActiveMetaFields } from './active-regis
 
 export const META_RESOLUTION_SCHEMA = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1';
 export const META_DIFFICULTY_SCHEMA = 'JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1';
+export const R2E_META_INPUT_SCHEMA_V1 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1';
+export const R2E_META_INPUT_SCHEMA_V2 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2';
 export const META_LOOKUP_ORDER = Object.freeze([
   'RPM_PRIMARY_README', 'RPM_CANONICAL_MASTER', 'RPM_CURRICULUM_SCOPE_VIEW', 'RPM_TO_ACTIVE_CROSSWALK', 'ACTIVE_META_FOUNDATION',
 ]);
@@ -27,11 +29,22 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(here, '../../..');
 const text = value => typeof value === 'string' ? value.trim() : '';
 const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+const comparableMetaProjectionValue = (field, value) => {
+  if (field === 'problemTypeKey' || field === 'templateKey') return text(value) || null;
+  if (field === 'crossConceptKeys' || field === 'conditionKeys') return Array.isArray(value) ? value : [];
+  if (field === 'integrationPattern') return text(value) || 'NONE';
+  return value ?? null;
+};
 const DIFFICULTY_PROJECTION_FIELDS = Object.freeze(['difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']);
 const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
 const pathRef = (root, rel) => fileRef(root, rel);
 const rpmBase = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
 const crosswalkBase = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0';
+
+export function makeR2ESourceMetaProjection(question) {
+  return Object.fromEntries(ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT
+    .map(field => [field, comparableMetaProjectionValue(field, question?.[field])]));
+}
 
 const BANNED_DECISION_KEY = /candidate|heuristic|previous.?verdict|reviewer.?verdict|problemTypeKey|templateKey|crossConcept|conditionKey|difficultyBucket|legacyLevel|activeMapping/i;
 const ALLOWED_TOP_LEVEL = new Set(['sourceIdentity', 'solutionIdentity', 'curriculumContext', 'semanticDecision', 'familyTemplateSelection', 'activeSearchEvidence']);
@@ -561,11 +574,14 @@ export function validateR2EReceipt(receipt, options = {}) {
     }
   }
   if (Array.isArray(options.sourceQuestions)) {
+    const inputSchemaVersion = receipt?.items?.some(item => item?.sourceMetaProjection)
+      ? R2E_META_INPUT_SCHEMA_V2 : R2E_META_INPUT_SCHEMA_V1;
     const sourceCheck = validateR2EIntakeMetaReceipt({
-      schemaVersion: 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1',
+      schemaVersion: inputSchemaVersion,
       items: receipt.items.map(item => ({ ...item, sourceOrdinal: item.sourceOrdinal ?? item.input?.sourceIdentity?.sourceOrdinal,
         disposition: item.resolverEvidence?.disposition })),
-    }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot, registry: options.registry, requireResolverReceipt: false });
+    }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot,
+      registry: options.registry, requireResolverReceipt: false, projectionMode: 'R2E_FINAL' });
     for (const error of sourceCheck.errors) errors.push(`R2E_FINAL_SOURCE_BINDING:${error}`);
   }
   if (receipt?.stage === 'R2E_FINAL') {
@@ -607,10 +623,14 @@ export function validateRuntimeMetaParity({ questionUid, sourceFingerprint, reso
   return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
-export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourceQuestions, repoRoot = DEFAULT_ROOT, registry, requireResolverReceipt = true } = {}) {
+export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourceQuestions, repoRoot = DEFAULT_ROOT, registry,
+  requireResolverReceipt = true, projectionMode = 'R2E_INTAKE' } = {}) {
   const errors = [];
   const rows = receipt?.items;
-  if (receipt?.schemaVersion !== 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1' || !Array.isArray(rows)) return { status: 'FAIL', errors: ['R2E_META_INPUT_RECEIPT_SCHEMA_INVALID'] };
+  const isV1 = receipt?.schemaVersion === R2E_META_INPUT_SCHEMA_V1;
+  const isV2 = receipt?.schemaVersion === R2E_META_INPUT_SCHEMA_V2;
+  if ((!isV1 && !isV2) || !Array.isArray(rows)) return { status: 'FAIL', errors: ['R2E_META_INPUT_RECEIPT_SCHEMA_INVALID'] };
+  if (!['R2E_INTAKE', 'R2E_FINAL'].includes(projectionMode)) errors.push('R2E_META_INPUT_PROJECTION_MODE_INVALID');
   if (!Array.isArray(sourceQuestions) || rows.length !== sourceQuestions.length) errors.push('R2E_META_INPUT_DENOMINATOR_MISMATCH');
     const normalizeSource = value => text(value).replaceAll('\\', '/').replace(/^archive\/exams\//, '');
   const seen = new Set();
@@ -647,14 +667,21 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
     if (question && (ctx.standardUnitKey !== question.standardUnitKey || (ctx.subUnitKey || '') !== (question.subUnitKey || ''))) errors.push(`R2E_META_INPUT_CURRICULUM_PARITY_FAIL:${uid}`);
     const candidateMeta = item?.candidateMeta || {};
     if (question) {
-      for (const field of [...ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT, 'standardUnitKey', 'subUnitKey']) {
-        const comparable = value => {
-          if (field === 'problemTypeKey' || field === 'templateKey') return text(value) || null;
-          if (field === 'crossConceptKeys' || field === 'conditionKeys') return Array.isArray(value) ? value : [];
-          if (field === 'integrationPattern') return text(value) || 'NONE';
-          return value ?? null;
-        };
-        if (!equal(comparable(candidateMeta[field]), comparable(question[field]))) errors.push(`R2E_META_INPUT_CANDIDATE_JS_PARITY_FAIL:${uid}:${field}`);
+      const candidateJsFields = isV1 || projectionMode === 'R2E_FINAL'
+        ? [...ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT, 'standardUnitKey', 'subUnitKey']
+        : ['standardUnitKey', 'subUnitKey'];
+      for (const field of candidateJsFields) {
+        if (!equal(comparableMetaProjectionValue(field, candidateMeta[field]), comparableMetaProjectionValue(field, question[field]))) {
+          errors.push(`R2E_META_INPUT_CANDIDATE_JS_PARITY_FAIL:${uid}:${field}`);
+        }
+      }
+      if (isV2) {
+        const sourceProjection = item?.sourceMetaProjection;
+        const projectionSha = item?.sourceMetaProjectionSha;
+        const expectedProjection = makeR2ESourceMetaProjection(question);
+        if (!sourceProjection || !equal(sourceProjection, makeR2ESourceMetaProjection(sourceProjection))) errors.push(`R2E_META_INPUT_SOURCE_JS_PROJECTION_INVALID:${uid}`);
+        if (!sourceProjection || !projectionSha || projectionSha !== objectSha(sourceProjection)) errors.push(`R2E_META_INPUT_SOURCE_JS_PROJECTION_SHA_INVALID:${uid}`);
+        if (projectionMode === 'R2E_INTAKE' && !equal(sourceProjection, expectedProjection)) errors.push(`R2E_META_INPUT_SOURCE_JS_PROJECTION_PARITY_FAIL:${uid}`);
       }
     }
     const resolver = validateResolverEvidence(input, item?.resolverEvidence, { repoRoot, registry: activeRegistry });
