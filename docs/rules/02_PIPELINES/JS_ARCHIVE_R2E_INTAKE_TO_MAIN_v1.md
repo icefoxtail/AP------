@@ -1,10 +1,11 @@
-# JS Archive R2E Intake → Main 운영계약 v2
+# JS Archive R2E Intake → Main 운영계약 v2 (SUPERSEDED FOR NEW RUNS)
 
 > **QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY HARD RULE — ACTIVE 2026-09-28**
 > CREATE/R1/R2E가 학생 노출 `content/choices/problem image/layout`을 다루면 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다. 발문 축약·요약·의역 금지. CREATE/R1은 전 문항 exact parity를 닫고 R2E는 evidence/drift/render를 final integrity로 확인한다.
 
 
-status: ACTIVE
+status: SUPERSEDED_FOR_NEW_RUNS
+superseded-by: JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md
 effective: 2026-09-28
 scope: 중등 JS Archive CREATE/R1 intake 및 Codex R2E 최종 폐쇄
 supersedes-for-new-intake: REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge 기본 흐름

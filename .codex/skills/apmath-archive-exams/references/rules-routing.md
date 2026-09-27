@@ -25,8 +25,9 @@ intermediate extractor contract into a competing lifecycle.
    `작업방식_적응형배치루프_v1.md`, the 1차/2차/3차 domain review protocols,
    and the real-render requirements in the integrated protocol.
    For middle-school R1/R2E closure, also read
-   `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md` and use the durable
-   receipt helpers in `archive/tools/r2e/`.
+   `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md` and use the Repair & Release
+   helpers in `archive/tools/r2e/`. R1 is read-only; normal PASS is integrity reuse;
+   META_ONLY gaps do not block JS release; HOLDs are grouped and mapped by UID.
 6. For a graph, geometry, table, or SVG, read current
    `04_VISUAL/도형추출.md`; read the geometry-equation SVG review protocol
    only when that special lane applies.
@@ -184,6 +185,11 @@ answer/desktop, answer/mobile
 Separate `MACHINE_CURRENT`/`MACHINE_COLLECTOR` capture from independent
 `RENDER_REVIEW`. Capture the last question and every continuation block;
 `NOT_TESTED` is incomplete evidence.
+
+This six-case matrix applies to new Past Exam V3 jobs. For an existing
+middle-school R2E v3 exam, unchanged visual assets reuse R1 evidence; only
+changed SVG/solution visuals receive targeted geometry/parity checks and a
+targeted render. Do not trigger a whole-exam render because of Meta-only HOLDs.
 
 ## GOLD / pilot / holdout isolation
 

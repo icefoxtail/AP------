@@ -80,10 +80,12 @@ AP Math OS / 왕지교육 OS 작업자가 가장 먼저 확인하는 고정 룰�
 - 신규 candidate·production은 `subUnitKey`, `subUnit`, `subUnitConfidence`,
   `subUnitClassificationDepth`를 필수로 하며, legacy 누락·RAW/RRAW/UNMAPPED는 report 예외로 격리한다.
 - 전체 규칙 문서의 작업별 읽기 순서는 `docs/rules/00_RULES_INDEX.md`를 따른다.
-- 최종 JS 아카이브 PASS·ZIP 봉인은 `docs/rules/02_PIPELINES/`의 REAL RENDER GATE와 `docs/rules/03_REVIEW/무결성검수.md`의 실렌더 기준을 함께 충족해야 한다. `exam / solution / answer` 실제 렌더 중 하나라도 `WARN` 또는 `NOT_TESTED`이면 최종 PASS로 승격하지 않는다.
+- 신규 시험지 생성/봉인 및 실제 수정된 시각자료는 `docs/rules/02_PIPELINES/`의 REAL RENDER GATE와 `docs/rules/03_REVIEW/무결성검수.md`의 해당 렌더 기준을 충족해야 한다. 중2·중3 기존 R1 결과의 R2E v3 재사용은 `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 적용해 무변경 visual은 R1 증거를 재사용하고, 변경된 SVG/해설 문항만 targeted render한다.
 - 세부단원 메타데이터 보강은 content·choices·answer·solution·image·layoutTag·wide를 바꾸지 않는다.
 - `types`·`similar`의 DB `school/year/semester/examType`는 자체 파일·`examTitle`·명시 source metadata에 직접 근거가 있을 때만 승격하며, 나머지는 `sourceDependentOnly` report 예외로 관리한다. 2026-08-24 현재 직접 원본이 없는 28개 `emptySchool`·60개 필수 메타 gap은 `CLOSED_SOURCE_UNAVAILABLE` closure ledger로 현재 범위에서 종결했으며, 새 직접 출처가 있을 때만 재개한다. 세부 기준은 `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md` 4-4를 따른다.
 - rules source pack의 현재 운영 파일 목록과 바이트/hash는 `docs/rules/MANIFEST.md`와 일치해야 한다. `05_DESIGN/`과 `90_ARCHIVE/`는 manifest 범위에서 제외되며, 제외 사실을 manifest에 명시한다.
+- 중2·중3 R2E는 `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 따른다. R1은 read-only authority이며 R2E 목적은 cohort HOLD 유형 분류·batch mapping·문항별 최소 repair/release다. Meta-only gaps는 별도 추적으로 보존하되 JS release blocker로 사용하지 않는다.
+- 신규 CREATE/R1은 current RPM/ACTIVE authority로 결정 가능한 Meta/materialization과 알려진 visual defect를 READY 전에 닫는다. R2E의 read-only legacy HOLD batch exception은 이미 READY_FOR_R2E인 frozen backlog에만 적용한다.
 
 ## 6. UI 문구와 운영 용어 보존
 

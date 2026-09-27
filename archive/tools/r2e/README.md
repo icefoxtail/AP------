@@ -1,165 +1,78 @@
-# Codex R2E 예약 실행 보조
+# Codex R2E Repair & Release
 
-운영 정본은 `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`다.
-이 디렉터리는 검수·수정·승격 알고리즘을 다시 구현하지 않는다. Codex가 정본과 기존
-Archive/Meta/RPM 도구를 적용할 때 사용하는 실행 잠금, 입력 snapshot, 최종 gate만 제공한다.
-새 intake 작업에는 legacy Library/Apply Bridge 경로를 사용하지 않는다.
+Current contract: docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md.
+The previous v1 snapshot/final-gate helpers remain available only to inspect and resume legacy v1 artifacts. New R2E runs use the Repair & Release v3 helpers in this directory.
 
-## 시작 순서
+## Operating purpose
 
-1. `.agent/BOOT.md`.
-2. 연결된 Notion `GPT 작업 전 필독 라우터`.
-3. Notion `Archive 2.0 / JS Archive 시작 페이지`.
-4. 최신 `origin/main` fetch 및 시작 SHA 기록.
-5. 최신 main의 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`, rules index/manifest,
-   해당 source/correction/Meta/RPM/visual/검증 정본.
-6. 이 구현의 `AUTOMATION_PROMPT.md`. 예약 run의 구체 scope와 stop condition은 이 파일을 따른다.
+R2E batches R1 HOLD findings across the frozen m2/m3 cohort, groups repeated causes, maps existing middle-school L3/L4 where supported, and routes true individual exceptions with their own question evidence. Normal R1 PASS questions are not re-solved, reclassified, reprojected, or re-rendered.
 
-현재 사용자 지시가 기존 기본 금지보다 우선한다. 기존 dirty 파일을 수정하지 않는다.
+The legacy R1 adapter is read-only. Missing, old, stale, or incompatible Meta sidecars are recorded as META_ONLY. They never create a JS release blocker by themselves.
 
-## 6시간 예약
+## Required read order
 
-서울 시간 03:00 / 09:00 / 15:00 / 21:00. 모델 `gpt-6-luna`, reasoning `max`.
-사용자에게 보이는 예약 prompt는 `AUTOMATION_PROMPT.md`를 사용한다.
-새 run은 Git receipt와 checkpoint에서 상태를 복원하며 채팅을 authority로 사용하지 않는다.
+1. Repository .agent/BOOT.md and relevant archive skills.
+2. Connected Notion GPT router, Archive start page, lifecycle, and current R2E v3 contract.
+3. Latest origin/main and the current R2E v3 contract.
+4. Existing work/r2e-state checkpoint before new intake.
+5. Current L1/RPM and active L3/L4 records for grouped mapping.
+6. Source correction and visual rules only for affected repairs.
 
-## 실행 보조
+## Execution helpers
 
-아래 MODULE은 이 구현이 있는 worktree의 `archive/tools/r2e` 경로다. REPO는 동일 Git 저장소의
-checkout이다. 모듈은 working branch와 관계없이 Git common directory의 하나의 OS lock을 사용한다.
+- guard.mjs keeps the single-writer lock and fencing token.
+- repair-release-snapshot.mjs freezes latest m2/m3 input heads and resumes durable checkpoints. It reads R1 sidecars without modifying them.
+- hold-inventory.mjs emits R2E_HOLD_INVENTORY_v2, groups repeated findings, and validates one batch decision plus UID-specific application records.
+- The hold inventory also freezes the current ACTIVE L3/L4 catalog, existing middle-school bindings, and exact m2/m3 RPM crosswalk rows as read-only lookup evidence for the batch adjudication.
+- repair-release-gate.mjs checks exam integrity, release blockers, HOLD routing, and only the targeted evidence required by actual changes.
+- final-gate.mjs and snapshot.mjs are retained for legacy v1 records; they are not the v2 R2E authority.
 
-```powershell
-node MODULE/guard.mjs start --repo REPO --run-id RUN_ID
-node MODULE/snapshot.mjs --repo REPO --run-id RUN_ID --out tmp/RUN_ID/snapshot.json
-node MODULE/guard.mjs heartbeat --repo REPO --run-id RUN_ID
-node MODULE/guard.mjs check --repo REPO --run-id RUN_ID
-node MODULE/final-gate.mjs --repo CANDIDATE_WORKTREE --ledger LEDGER_JSON --validation VALIDATION_JSON
-node MODULE/guard.mjs stop --repo REPO --run-id RUN_ID
-```
+The optional group-decisions JSON uses schemaVersion R2E_HOLD_GROUP_DECISIONS_v2 and a groups array. Each group row names groupId, decisionId, action, reason, evidenceRefs, selectedExistingKeys, and uidApplications. Each UID application names findingId, questionUid, ordinal, outcome, reason, evidenceRefs, and appliedExistingKeys when mapped. A group decision may map existing keys, route an item to the visual/JS repair workflow, or route an exception to upper-model review; new L3/L4 key creation is rejected.
 
-`start`는 살아 있는 background terminal로 유지한다. `RUN_ALREADY_ACTIVE`면 해당 실행은 종료한다.
-Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 종료 시 OS가 해제한다.
-다른 호스트의 잔여 owner는 자동으로 훔치지 않는다. fencing token은 획득마다 증가한다.
-검수 중 stage 사이에 heartbeat를 보내고 모든 Git mutation 직전에 자기 runId로 check한다.
-90분 동안 worker heartbeat가 없으면 guard가 종료되어 오래 방치된 무작업 프로세스가
-이후 예약을 계속 차단하지 않는다. 만료 후 이전 worker는 mutation 전에 check 실패로 멈춘다.
+Example helper order:
 
-## Snapshot과 receipt
+    node archive/tools/r2e/repair-release-snapshot.mjs --repo . --run-id <runId> --out tmp/<runId>/snapshot.json
+    node archive/tools/r2e/hold-inventory.mjs --repo . --run-id <runId> --snapshot tmp/<runId>/snapshot.json --out tmp/<runId>/hold-inventory.json
+    node archive/tools/r2e/hold-inventory.mjs --repo . --run-id <runId> --snapshot tmp/<runId>/snapshot.json --decisions tmp/<runId>/group-decisions.json --out tmp/<runId>/hold-inventory-decided.json
+    node archive/tools/r2e/repair-release-gate.mjs --repo <candidate-repo> --ledger <r2e-final-ledger.json> --validation <validation.json>
 
-- 입력 branch는 `work/intake/m2`, `work/intake/m3` 두 개만 allowlist에 있다.
-- receipt는 정본의 `archive/data/r2e-intake/<grade>/<examUid>.json`을 읽는다.
-- `*.evidence.json`은 item-level R1 evidence sidecar이므로 receipt inventory에서 제외한다.
-- `nextState=READY_FOR_R2E`와 정본 최소 필드를 확인한다. item-level review evidence는
-  Codex가 연결된 실제 ledger에서 확인하며 receipt 자체를 수학 PASS로 보지 않는다.
-- 구형 receipt의 `examFile`이 basename만 담으면 receipt commit의 고정 grade exam tree에서
-  정확히 하나인 JS path를 찾아 학기/시험 구분 디렉터리까지 정규화하고, frozen tree의 실제 JS
-  blob과 question denominator를 확인한다. `inputCommit`이 빠진 구형 receipt는 receipt
-  commit을 검증된 input commit으로 사용하되, 현재 JS/SVG blob이 동일하고 receipt lineage가
-  유효할 때만 허용한다. 구형 receipt의 `authorityRefs` 누락은 resolver sidecar 안의
-  최신 SHA-bound authority evidence로 보완되는 경우에만 허용한다. 새 receipt는 최신 정본의
-  필드를 그대로 기록해야 한다.
-- READY receipt에서 `metaResolutionEvidenceRef` 및/또는
-  `metaResolverContractVersion`이 빠지고, 그 밖의 누락이 위에서 설명한 검증 가능한
-  구형 `inputCommit`/`authorityRefs` 필드뿐이면
-  snapshot은 이를 R2E candidate로 세지 않고 `META_RECOVERY_REQUIRED`의
-  `metaRecoveryCandidates`로 반환한다. `AUTOMATION_PROMPT.md`의 bounded contract recovery를
-  먼저 수행한다. receipt/sidecar commit 뒤 새 snapshot을 만들 때는 시작 시 동결한 examUid
-  cohort만 R2E 대상으로 유지하고, 새로 들어온 UID는 다음 run으로 넘긴다.
-- receipt가 Meta sidecar/version ref를 이미 갖고 있어도 resolver recompute, validator receipt,
-  candidate projection, difficulty projection 또는 relational evidence 검증이 실패하면 해당
-  Meta evidence 오류를 `validationErrors`와 함께 `META_RECOVERY_REQUIRED` queue에 노출한다.
-  resolver validator가 PASS하기 전까지는 READY candidate가 아니다. source/choices/solution/image
-  identity hash, UID/ordinal, denominator, receipt lineage 불일치는 이 자동 recovery로 숨기지 않는다.
-- R1 sidecar에 최신 resolver input/evidence/difficulty가 없을 수 있다. 누락됐다는 이유만으로
-  중단하지 않고 frozen JS 및 verified final solution bytes에서 새 decision-isolated input,
-  shared resolver evidence, fresh blind difficulty와 relational evidence를 생성한다. 이전
-  candidate, verdict, difficulty는 semantic first pass에 재사용하지 않는다.
-- Legacy recovery는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2`를 사용한다. `sourceMetaProjection`
-  은 frozen R1 JS의 기존 9개 Meta/difficulty field를 증명하고, `candidateMeta`는 fresh R2E
-  decision output을 담는다. Intake validator는 source projection과 original bytes를 검사하고
-  candidateMeta/evidence parity를 검사한다. Final R2E gate는 별도로 candidateMeta와 completed
-  JS/runtime projection의 exact parity를 강제한다.
-- receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
-  서로 독립인 입력의 진행을 막지 않는다. R1에서 문항 오류로 지정된 UID는
-  `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`로 오류를 확인한 뒤
-  `docs/rules/02_PIPELINES/수정프로토콜.md`를 따라 지적 필드만 최소 수정한다. Meta HOLD와
-  연결된 projection parity 결함도 승인된 해당 UID/필드만 resolver evidence에 맞춰 수정할 수
-  있다. 이 근거와 연결되지 않는 drift/parity 실패는 `CONTRACT_RECOVERY_BLOCKED`로 남긴다.
-  `R2E_FINAL` JS에는 denominator 전체 UID의 9개 advanced Meta/difficulty projection을 fresh
-  evidence와 exact parity로 materialize한다. 이는 모든 UID의 metadata completion이며, 일반 R1
-  PASS 문항의 content/choices/answer/solution을 다시 쓰는 권한은 주지 않는다. R1 flagged
-  question error는 별도로 지정된 UID/원인 필드만 수정프로토콜로 최소 수리한다. Meta HOLD,
-  migration gap, taxonomy proposal은 canonical crosswalk/ACTIVE owner에 evidence-backed
-  materialization/rebind/proposal adjudication을 수행한다. validator 완화나 검증 우회는 금지한다.
-- 두 HEAD를 먼저 고정한 뒤 각 고정 tree에서 inventory를 만든다.
-- 결과 receipt가 실제 들어간 commit을 `inputCommit`으로 동결한다. receipt 내부 inputCommit은
-  `declaredInputCommit`으로 따로 보존하고 snapshot history의 조상인지 확인한다.
-  이것은 같은 commit에 자기 SHA를 적어 넣는 순환 문제를 피한다.
-- receipt 이후 JS/SVG byte drift가 있으면 새 receipt 없이는 READY로 인정하지 않는다.
-- 원격 `work/r2e-state`가 있으면 `archive/data/r2e/<grade>/exams/*.json`을 먼저 복원한다.
-- 현재 run이 끝날 때까지 snapshot을 다시 만들어 대상 시험지를 추가하지 않는다.
-- 검증된 receipt/sidecar 또는 exam repair를 commit한 뒤 cohort 내 결과를 판정하려면 frozen
-  examUid 집합만 대상으로 새 snapshot을 만든다. run 시작 뒤 새로 들어온 UID는 추가하지 않는다.
-- `NO_WORK`면 guard를 종료한다. 잘못된 receipt는 파일별 오류로 남겨 다른 유효 입력을 막지 않는다.
+The v2 snapshot must be called with the current run ID and an output path under that run's tmp directory. Store snapshots, HOLD ledgers, decisions, validation reports, and run state under a durable R2E state commit when checkpointing. Never stage temporary reports to production main.
 
-`META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
-요구하면 먼저 receipt/sidecar backfill과 필요한 Meta projection materialization을 수행한다. 그
-뒤 새 snapshot에서 contract PASS한 독립 candidates는 active prompt에 따라 selective R2E를
-진행할 수 있다. 모든 UID의 current resolver/fresh difficulty projection을 최종 JS에 materialize하고
-exact parity를 검증한다. R1 item-level `REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
-필요하거나 `CONTRACT_RECOVERY_BLOCKED`인 시험지는 R2E ledger/final gate에 넣지 않는다.
-이 blocker가 다른 시험지의 유효한 candidate/resume 처리를 막아서는 안 된다.
+## HARD RULES
 
-Snapshot과 stage 결과는 정본 경로의 파일로 저장하고 R2E 전용 durable branch에
-명시적으로 commit/push한다. ACK된 remote commit까지의 결과만 resume authority다.
-수학/Meta/SVG 판단과 각 단계 수행은 예약 Codex가 한다. 새로운 HTTP controller나
-checkpoint transaction framework, 자동 수학 판정기는 필요하지 않다.
+1. RELEASE_BLOCKING is separate from META_ONLY. RPM gaps, absent resolver sidecars, difficulty metadata, and taxonomy-only findings do not block JS release.
+2. R1 receipts, source JS, and all sidecars are read-only. No legacy sidecar backfill or full-denominator Meta regeneration occurs in R2E.
+3. HOLD groups are adjudicated once; every affected questionUid gets an application record with groupDecisionId, applied key/action, evidence, and targeted result.
+4. Only existing active L3/L4 keys may be selected in a normal R2E mapping. New taxonomy goes to an individual upper-model case.
+5. R1 PASS rows receive integrity reuse only unless a reproducible defect invalidates that exact UID.
+6. Repair SVGs through the existing visual repair lane: source/solution EXPECTED FACT, SVG repair or rebuild, geometry/parity validation, targeted render, then JS asset-reference verification.
+7. The whole exam gets a quick integrity scan. Full-exam render, all-question resolver/difficulty projection, global runtime/catalog rebuild, and broad canonical regeneration are not R2E steps.
+8. Every HOLD is either grouped, repaired, routed to an upper-model case, or retained as a true hold with its release effect explicit. No unclassified item is allowed.
+9. A release-blocking student-facing defect must be closed before R2E_FINAL. META_ONLY items may remain open and are recorded in the final receipt.
+10. Each exam is integrated in its own main commit. After remote byte/ancestry checks, record R2E_MAIN_FINAL and any META_ONLY follow-up count.
 
-## 최종 gate의 입력
+## Status meanings
 
-정본 ledger 필드에 `examFile`, `inputBranch`, `inputCommit`, `dependencyShas[]`,
-`denominator`, `integrityScanned`(실제로 확인한 문항 수), `deepReviewItems[]`,
-`resolvedItems[]`, `remainingItems[]`, `unresolvedItems[]`, `items[]`, 그리고
-`JS_ARCHIVE_R2E_META_RECEIPT_v1`인 `metaResolutionReceipt`를 제공한다. 각 UID의
-Meta evidence는 `archive/tools/meta-foundation/rpm-active-resolver.mjs`와
-`validate-rpm-active-receipt.mjs`의 공용 계약을 사용하며 resolver/difficulty/
-validator SHA와 runtime metadata projection을 포함한다. Final receipt의
-`receiptSha`는 그 모든 item evidence에 대한 deterministic self-hash다.
-정상 R1 PASS는 `reviewMode=INTEGRITY_REUSE`. 실제 invalidation이 있으면 이유를 기록한다.
-최종 disposition은 정본의 `MATERIALIZED`를 포함한 7종을 사용한다.
+- NO_WORK: no resumable checkpoint and no eligible R1 receipt.
+- READY: one or more frozen R1 inputs are available for integrity and HOLD collection.
+- READY_WITH_ITEM_ERRORS: some receipts are invalid, while independent valid exams remain processable.
+- INPUT_ERRORS: no eligible exam was found because the frozen R1 receipts contain item-level authority/integrity errors; these are not Notion/access WAIT_RESOURCE failures.
+- WAIT_RESOURCE: remote intake/state or required identity authority cannot be read.
+- RESUME: a durable work/r2e-state checkpoint takes precedence over new intake.
+- R2E_FINAL: every release-blocking issue is closed; all R1 HOLD findings have a type/UID route; META_ONLY may remain pending.
+- R2E_MAIN_FINAL: production commit is present on remote main and the committed bytes and required targeted dependencies match the receipt.
+- HUMAN_REQUIRED: source truth for a release-blocking issue remains undetermined after source recovery and the authorized repair routes.
 
-검증 보고서는 `artifactSha256`, `inputCommit`, `artifacts[]`와 `gates`를 가진다.
-각 gate는 실제 검사 결과와 `{status, evidenceRef:{path,sha256}}`를 담는다.
-`REQUIRED_GATES`는 shared Meta resolver, independent difficulty evidence,
-runtime/Archive parity, 정본 검증 목록 및 actual render다. 보고서는 기존 도구의 실제
-출력/검수 evidence를 연결해야 하며 빈 PASS 문자열을 만들어 넣지 않는다.
-gate는 JS VM load·분모·identity·blank·문자열을 직접 확인하고, dependency/asset/evidence
-SHA와 검증 coverage, 미해결 Meta를 확인한다. Final gate는 R2E receipt를 shared
-resolver로 재검증하고 UID/disposition/source fingerprint를 item ledger와 대조한다.
-나머지 의미 검증은 기존 정본 도구의 증거를 소비한다.
-결과의 `productionAuthorized=false`는 이 helper 하나가 production 승격 권한을
-만들지 않는다는 뜻이다. main 반영은 정본의 전체 조건과 사용자 권한을 함께 적용한다.
+Exam release and cohort hold-batch closure are separate results. META_ONLY issues may remain pending on an R2E_MAIN_FINAL exam. The cohort ledger is holdBatchStatus=CLASSIFIED only when every finding has a group decision with UID applications or a question-scoped upper-model case; it may separately report upperModelPendingCount.
 
-Per-question resolver evidence는 independent semantic judgement 뒤에 다음 helper로 만든다.
+## Targeted validation rules
 
-```powershell
-node archive/tools/meta-foundation/build-rpm-active-resolution.mjs --input <decision-input.json> --out <resolver-evidence.json>
-node archive/tools/meta-foundation/validate-rpm-active-receipt.mjs --r2e-receipt <r2e-meta-receipt.json>
-```
+- No change: quick exam integrity only; render NOT_REQUIRED with the unchanged R1 visual evidence reference.
+- Existing L3/L4 mapping: validate selected keys are ACTIVE, verify parentage, and record each UID application. Do not rebuild global metadata.
+- JS/answer/solution repair: run the correction protocol and validate only the changed UID and direct protected fields.
+- SVG repair: use the current visual lane, freeze expected facts from source and solution, validate geometry/topology/labels, render only the changed question, then verify JS linkage.
+- If a changed UID is consumed by a metadata/runtime feature, update that UID's record only. Do not regenerate all runtime packs or the whole catalog.
 
-## Production 및 reopen
+## Durable state
 
-Codex가 최신 main의 격리 integration worktree에서 최종 파일만 명시 stage한다.
-시험지 하나의 final production commit, 필요 시 별도의 shared Meta commit.
-intake/state branch 전체 merge, `git add .`, `git add -A`, force push는 금지한다.
-checkpoint/scratch/input ZIP은 main에 넣지 않는다. push 후 ancestry·최종 bytes와
-canonical/runtime/catalog parity를 확인한 receipt를 durable state에 기록한다.
-이미 완료된 항목은 정본의 source 변경·final byte drift·관련 canonical/rule invalidation·
-regression·사용자 지시가 있을 때만 reopen한다.
-
-## 테스트 범위
-
-`node --test archive/tools/r2e/tests/*.test.mjs`.
-임시 bare Git 저장소에서 remote READY snapshot, resume 우선, malformed receipt 격리,
-lane authority 배제, late commit 동결, OS lock과 fencing, final gate 거부 조건을 검사한다.
-실제 시험지 검수나 production main push는 테스트에서 실행하지 않는다.
+Use work/r2e-state for immutable run/exam ledgers, group decisions, per-UID applications, validation receipts, production commits, and final status. Intake branches are never modified by R2E. Main never receives snapshots, R1 sidecars, HOLD scratch files, or upper-model handoff payloads.\n

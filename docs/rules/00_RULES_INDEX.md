@@ -17,7 +17,7 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 **모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
 
 
-### JS Archive R2E Intake → Main 작업 선행 규칙
+### JS Archive R2E Repair & Release v3 작업 선행 규칙
 
 **CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
 
@@ -29,15 +29,24 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 
 중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
-`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 현재 생명주기 정본으로 함께 적용한다. **파일 경로는 호환상 v1을 유지하지만 내용 authority는 v2(2026-09-28)다.**
+`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 현재 생명주기 정본으로 함께 적용한다. **v1 helper는 과거 receipt/checkpoint 복구 전용이다.**
 
 새 표준 흐름은
-`CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → Codex R2E → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
+`CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → HOLD inventory/grouping → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
 
 중2 intake authority는 `work/intake/m2`, 중3은 `work/intake/m3`이다.
 과거 `REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge` 경로는 새 intake 생산에 적용하지 않고 legacy artifact 복구에만 사용한다.
-R2E는 intake branch를 수정·통째 merge하지 않고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
-정상 PASS 문항의 불필요한 전체 재검수보다 HOLD/REPAIR/CONFLICT/proposal/migration/source defect의 최종 adjudication에 집중한다.
+R2E는 intake branch를 read-only로 사용하고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
+정상 PASS 문항은 다시 풀이·재분류하지 않는다. 동결된 legacy R1 cohort의 HOLD는 유형별 batch로 묶어 existing L3/L4에 매핑하고, student-facing defect는 affected UID만 repair한다.
+
+R2E v3 legacy HOLD batch HARD RULE:
+- READY_FOR_R2E 당시 이미 존재한 frozen legacy backlog만을 대상으로 한다. New CREATE/R1은 ZERO-RESOLVABLE gate를 유지한다.
+- 구형 backlog는 R1 receipt/evidence/JS를 read-only로 읽으며 Meta sidecar backfill을 하지 않는다.
+- 기존 중등 active L3/L4/RPM 목록으로 공통 유형을 묶고, group decision 1회와 UID별 applied key/reason/evidence를 기록한다.
+- Existing-key batch mapping은 신규 taxonomy 생성이나 전역 crosswalk rewrite가 아니다. 맞는 기존 key가 확인되지 않는 문항만 question-scoped upper-model case로 넘긴다.
+- RPM/sidecar/difficulty/runtime/catalog gap은 META_ONLY로 남길 수 있고 JS release를 막지 않는다. BASIC_HARD_HOLD에 해당하는 실제 source/math/asset/JS defect만 release를 차단한다.
+- R2E v3는 normal R1 PASS reclassification, all-question Meta projection, whole-exam render, global runtime/catalog rebuild를 하지 않는다.
+- 무변경 visual은 R1 evidence를 재사용한다. 실제 수정된 SVG/해설 visual만 current pipeline-core closure와 targeted render를 실행한다.
 
 ### Codex Meta Foundation 작업 선행 규칙
 
@@ -120,6 +129,8 @@ apmath-visual-upgrade router
 `archive/tools/past-exam-pipeline/build-visual-candidate.mjs`와 `archive/tools/geometry-equation/visual_engine/`은 frozen EXPECTED FACT를 입력받는 **candidate-only builder**다. 코드가 production READ_ONLY / production write false / publicationAuthorized false를 강제하므로, 지원되는 visual에서 candidate 생성에 적극 활용할 수 있지만 current pipeline-core closure 없이 production FINAL/promotion authority로 사용하지 않는다.
 
 예약 GPT가 정책상 실제 render를 실행하지 않는 경우 `NOT_RUN_CODEX_HANDOFF`를 기록하고 render PASS를 선언하지 않는다. final production closure에서 render가 요구되면 Codex/R2E가 current render-capture + independent render-review를 닫는다.
+
+R2E v3는 이 visual route를 실제로 변경한 SVG/해설 문항에 targeted 적용한다. R1과 바이트가 같은 정상 visual은 R1 evidence를 재사용하며, Meta-only HOLD나 다른 문항의 변경 때문에 whole-exam render를 반복하지 않는다.
 
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`

@@ -15,6 +15,7 @@
 
 | 우선순위 | 작업 | 영역 | 완료 기준 | 업데이트 문서 |
 |---|---|---|---|---|
+| P1 | 구형 중2·중3 R1 HOLD batch 정리 | archive/R2E | 예약 재개 후 frozen cohort HOLD 전체 수집, 공통 유형 batch decision, UID별 적용, 개별 상위 모델 handoff, student-facing blocker 없는 시험지별 R2E_MAIN_FINAL | `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`, `archive/tools/r2e/`, R2E durable ledger |
 | P0 | 문서 구조 정리 검수 | 문서 | docs 루트, `_index`, archive 이동 이력, review pack 확인 | 3대 기준 문서, `README`, `_index` |
 | P0 | review pack final gate 유지 | Codex workflow | 새 zip 경로와 entries 확인 | `CODEX_RESULT.md`, review SOP |
 | P1 | 하위 문서 stale 경로 감사 | 문서 | 이동된 경로 참조 중 현재 문서에 필요한 것 보정 | 관련 하위 문서 |
