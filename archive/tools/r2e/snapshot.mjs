@@ -26,6 +26,26 @@ const resolveExamPath = (repo, commit, value, grade) => {
   }
   return relative(fullExamPath(normalized));
 };
+function buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath, receipt, receiptBytes, js,
+  sourceQuestions, missingFields = [], recoveryReason, validationErrors = [], metaEvidenceSha256 = null } = {}) {
+  ensure(sourceQuestions.length === receipt.totalQuestions, 'META_RESOLVER_SOURCE_DENOMINATOR_MISMATCH');
+  const svgFiles = receipt.changedSvgFiles.map(value => relative(typeof value === 'string' ? value : value.path));
+  const assets = svgFiles.map(assetPath => {
+    const bytes = blob(repo, inputCommit, assetPath);
+    ensure(sha(bytes) === sha(blob(repo, head.sha, assetPath)), 'POST_RECEIPT_SVG_DRIFT');
+    return { path: assetPath, sha256: sha(bytes) };
+  });
+  const source = String(receipt.sourceBlobSha).replace(/^sha256:/, '');
+  ensure(/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(source), 'SOURCE_SHA_REQUIRED');
+  const inputSha256 = digest({ examFile, jsSha256: sha(js), assets, ...(metaEvidenceSha256 ? { metaEvidenceSha256 } : {}),
+    sourceBlobSha: receipt.sourceBlobSha, receiptSha256: sha(receiptBytes) });
+  return {
+    grade, intakeBranch: head.branch, intakeHead: head.sha, inputCommit, declaredInputCommit: receipt.inputCommit || null,
+    examFile, examUid: receipt.examUid, receiptPath, receiptSha256: sha(receiptBytes), jsSha256: sha(js), assets,
+    inputSha256, totalQuestions: sourceQuestions.length, missingFields, recoveryReason, validationErrors,
+    ...(receipt.metaResolutionEvidenceRef ? { existingMetaResolutionEvidenceRef: receipt.metaResolutionEvidenceRef } : {}),
+  };
+}
 export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {}) {
   const heads = {}, errors = [], candidates = [], metaRecoveryCandidates = [], checkpoints = [];
   // Capture both authoritative HEADs before looking inside either tree.
@@ -66,22 +86,8 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
         ensure(sha(js) === sha(blob(repo, head.sha, examFile)), 'POST_RECEIPT_INPUT_DRIFT');
         if (recoverableMetaGap) {
           const sourceQuestions = parseQuestionBank(js.toString('utf8'), examFile);
-          ensure(sourceQuestions.length === receipt.totalQuestions, 'META_RESOLVER_SOURCE_DENOMINATOR_MISMATCH');
-          const svgFiles = receipt.changedSvgFiles.map(value => relative(typeof value === 'string' ? value : value.path));
-          const assets = svgFiles.map(assetPath => {
-            const bytes = blob(repo, inputCommit, assetPath);
-            ensure(sha(bytes) === sha(blob(repo, head.sha, assetPath)), 'POST_RECEIPT_SVG_DRIFT');
-            return { path: assetPath, sha256: sha(bytes) };
-          });
-          const source = String(receipt.sourceBlobSha).replace(/^sha256:/, '');
-          ensure(/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(source), 'SOURCE_SHA_REQUIRED');
-          const inputSha256 = digest({ examFile, jsSha256: sha(js), assets, sourceBlobSha: receipt.sourceBlobSha, receiptSha256: sha(receiptBytes) });
-          metaRecoveryCandidates.push({
-            grade, intakeBranch: head.branch, intakeHead: head.sha, inputCommit, declaredInputCommit: receipt.inputCommit || null,
-            examFile, examUid: receipt.examUid, receiptPath: rel, receiptSha256: sha(receiptBytes),
-            jsSha256: sha(js), assets, inputSha256, totalQuestions: sourceQuestions.length,
-            missingFields,
-          });
+          metaRecoveryCandidates.push(buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath: rel,
+            receipt, receiptBytes, js, sourceQuestions, missingFields, recoveryReason: 'META_CONTRACT_FIELDS_MISSING' }));
           continue;
         }
         ensure(receipt.metaResolutionEvidenceRef && typeof receipt.metaResolutionEvidenceRef.path === 'string'
@@ -98,11 +104,21 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
         const metaCheck = validateR2EIntakeMetaReceipt(metaEvidence, {
           sourceArchiveFile: examFile.replace(/^archive\/exams\//, ''), sourceQuestions, repoRoot: metaAuthorityRoot,
         });
-        ensure(metaCheck.status === 'PASS', `META_RESOLVER_EVIDENCE_INVALID:${metaCheck.errors.slice(0, 8).join(',')}`);
+        if (metaCheck.status !== 'PASS') {
+          metaRecoveryCandidates.push(buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath: rel,
+            receipt, receiptBytes, js, sourceQuestions, recoveryReason: 'META_RESOLVER_EVIDENCE_INVALID',
+            validationErrors: metaCheck.errors, metaEvidenceSha256: metaEvidenceSha }));
+          continue;
+        }
         const dispositionCounts = Object.fromEntries(metaEvidence.items.reduce((rows, item) => {
           rows.set(item.disposition, (rows.get(item.disposition) || 0) + 1); return rows;
         }, new Map()));
-        ensure(JSON.stringify(Object.entries(dispositionCounts).sort()) === JSON.stringify(Object.entries(receipt.metaDispositionSummary || {}).sort()), 'META_DISPOSITION_SUMMARY_MISMATCH');
+        if (JSON.stringify(Object.entries(dispositionCounts).sort()) !== JSON.stringify(Object.entries(receipt.metaDispositionSummary || {}).sort())) {
+          metaRecoveryCandidates.push(buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath: rel,
+            receipt, receiptBytes, js, sourceQuestions, recoveryReason: 'META_DISPOSITION_SUMMARY_MISMATCH',
+            validationErrors: ['META_DISPOSITION_SUMMARY_MISMATCH'], metaEvidenceSha256: metaEvidenceSha }));
+          continue;
+        }
         ensure(Number.isSafeInteger(receipt.totalQuestions) && receipt.totalQuestions > 0 && Array.isArray(receipt.unresolvedItems)
           && (receipt.authorityRefs === undefined || Array.isArray(receipt.authorityRefs)), 'RECEIPT_DENOMINATOR_OR_EVIDENCE_INVALID');
         const svgFiles = receipt.changedSvgFiles.map(value => relative(typeof value === 'string' ? value : value.path));
