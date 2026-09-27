@@ -30,7 +30,7 @@
   "lastCompletedItem": "B28",
   "nextStartPoint": "Continue R2E repairs and promotions for the remaining 22 exams in work/m1-b01-b31-r2e, starting with recoverable B25/B27/B31 and other open records. B19 Q6 remains HUMAN_REQUIRED pending authoritative source/key clarification.",
   "initialMainSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
-  "latestMainAfterAdvance": "25e53c3f63df0950fd43834578209b66a16b76db",
+  "latestMainAfterAdvance": "8dcc176eff3c1544cfcea95041600c505cad13c8",
   "candidateHead": "fff5ceb942ed03a736dc2eeb62e8186b0b0b2db3",
   "candidateBranch": "codex/m1-r2e-main-final-20260927",
   "readyCandidateBSet": [],
@@ -64,14 +64,13 @@
   "branchFinalPendingMainBSet": [],
   "physicalLedgerBranch": "work/r2e-state",
   "lastObservedMainAdvance": {
-    "from": "fff5ceb942ed03a736dc2eeb62e8186b0b0b2db3",
-    "to": "25e53c3f63df0950fd43834578209b66a16b76db",
+    "from": "25e53c3f63df0950fd43834578209b66a16b76db",
+    "to": "8dcc176eff3c1544cfcea95041600c505cad13c8",
     "changedFiles": [
+      "archive/data/archive2-catalog.json",
       "archive/data/basic-scope-parent-links.json",
-      "\"archive/exams/original/high/h1/2mid/25_\\353\\247\\244\\354\\202\\260\\354\\227\\254\\352\\263\\240_2\\355\\225\\231\\352\\270\\260_\\354\\244\\221\\352\\260\\204_\\352\\263\\2401_\\352\\263\\265\\355\\206\\265\\354\\210\\230\\355\\225\\2312.js\"",
-      "\"archive/exams/original/high/h1/2mid/25_\\355\\232\\250\\354\\262\\234\\352\\263\\240_2\\355\\225\\231\\352\\270\\260_\\354\\244\\221\\352\\260\\204_\\352\\263\\2401_\\352\\270\\260\\354\\266\\234.js\"",
       "archive/question-index-report.md"
     ],
-    "dependencyImpact": "Audited latest main advance. Changes are basic-scope parent links, question-index report, and two H1 exam presentation files; no M1 R2E exam, M1 solution asset, RPM crosswalk, canonical Meta, catalog, runtime, or engine dependencies changed."
+    "dependencyImpact": "Catalog index advanced with the main sync, so all nine R2E_MAIN_FINAL receipts were rebuilt. The M1 exam artifacts, solution assets, RPM crosswalk, canonical Meta, runtime, and engine are unchanged; production byte parity remains PASS."
   }
 }

@@ -32,3 +32,5 @@ f53fffdf88d14731ac4313de33c881fde3327fdb
 - origin/main advanced to 25e53c3f63df0950fd43834578209b66a16b76db; its post-promotion changes were audited and do not touch M1 R2E dependencies. Continue remaining 22 exams; B19 Q6 remains HUMAN_REQUIRED.
 
 - All nine official rpm-active-resolver checks passed on their producer/main checkout. A separate state-worktree run exposed a Windows core.autocrlf raw-byte mismatch on several text authority refs; JSON values and Git blobs are unchanged. State-only line-ending edits were restored, and the checkout-specific validation caveat is recorded for continuation.
+
+- origin/main advanced to 8dcc176eff3c1544cfcea95041600c505cad13c8; archive2 catalog index changed alongside registration artifacts, while M1 exam/asset, canonical Meta, crosswalk, runtime and engine dependencies remained unchanged. Rebuilt and self-checked all nine R2E_MAIN_FINAL receipts against latest main; all production artifact and visual report hashes still match.
