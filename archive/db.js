@@ -2469,7 +2469,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "original/high/h1/2mid/25_매산여고_2학기_중간_고1_공통수학2.js",
+      "file": "original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
       "school": "매산여고",
       "topic": "",
       "grade": "고1",
@@ -2655,7 +2655,7 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
-      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_공통수학2.js",
+      "file": "original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
       "school": "순천여고",
       "topic": "",
       "grade": "고1",
