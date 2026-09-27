@@ -43,5 +43,5 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 105170 bytes | sha256 6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
 - 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
-- 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 14152 bytes | sha256 36fbcecf233815b1b12ade2dee371c630391dadb7fbd00127baf836c36443588
+- 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16069 bytes | sha256 b9fbe6939b9541e7086bf3dd44393610eda5e76aa5507e04f1f99063d69aa1c3
 - 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 8234 bytes | sha256 78effad235335e58e918b3874d9c1207b9ce2cb14eb3b470c8caebfa16ea0d9d

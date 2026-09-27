@@ -40,7 +40,12 @@
    validator receipt가 없으면 advanced Meta FINAL/PASS/promotion을 허용하지 않는다. Migration gap은
    임의 key로 채우지 않는다.
 10. **S8 Visual 이후 단계**: verified solution과 Meta disposition을 동결한 뒤 전 문항 visual triage → EXPECTED FACT 동결
-    → Python 수치 모델 → 필요한 SVG 생성.
+    → Python 수치 모델 → 필요한 SVG 생성. 새 geometry visual engine 후보를 만들 때는
+    `NUMERIC_VISUAL_BUILD` 안에서 `node archive/tools/past-exam-pipeline/build-visual-candidate.mjs`
+    adapter를 선택적으로 실행한다. adapter는 동결된 typed EXPECTED FACT bundle만 canonicalize하고
+    hash-bound visualSpec으로 바꿔 `archive/_generated/geometry-visual-engine/<runId>/candidate/`에 쓴다.
+    정적·actual SVG parity와 독립 review 권한은 기존 S9 검수에 남고, candidate 생성은 FINAL/APPLY 권한을
+    부여하지 않는다. 기존 예약 pipeline의 SVG 생성·review·FINAL/APPLY는 이 adapter 적용 여부와 독립이다.
 11. **S9~S14**: STATIC/METADATA 및 exam/solution/answer × desktop/mobile 실렌더 수집,
    한 번의 FINAL_AUDIT에서 sealed U1(SOURCE/MATH_A1/V1), U2(V2 artifact-only),
    U3(MATH_A2/SOLUTION/V3/RENDER_REVIEW) 검수. 독립 U1 판정은 builder 예상과 다를 수 있다.
@@ -142,6 +147,21 @@ required/beneficial인데 실제 해설 시각자료가 없으면 `SOLUTION_VISU
 geometryPolicyRef는 `past-exam-pipeline/completion-contract.json`의 path/version/raw SHA와
 동일해야 하고, applied run rule input에도 같은 ref를 넣는다. 전역 채택 선언은 하지 않는다.
 집합·명제 Semantic Overlay v1.4는 qualification-only이며 production release 권위로 승격하지 않는다.
+
+### Geometry visual engine 후보 adapter 경계
+
+`EXPECTED_FACT_FREEZE → NUMERIC_VISUAL_BUILD` 경계에서만 실행하며 lifecycle stage를 추가하지 않는다.
+입력은 `past-exam-expected-facts-v1` frozen bundle이다. Adapter는 bundle 전체의 sorted-key canonical JSON에
+SHA-256을 계산해 outer `independentFactHash`와 `visualSpec.sourceFacts.independentFactHash`에 같은 값을
+넣고, 전달된 `objects`, `derivedFacts`, `displayFacts`를 구조화한다. 해시나 기대 사실을 생성 SVG·builder
+metadata로부터 역산하지 않는다. STANDARD와 등록된 SPECIAL route 모두 semantic verifier를 통과해야 하고
+SVG와 sidecar는 candidate `_generated` 경로에만 기록한다. production asset, exam JS, `source`, `content`,
+`choices`, `answer`, `image` 및 기존 `solutionImage*` 외 production 필드는 쓰지 않는다.
+
+신형 엔진 적용 상태는 작업 ledger/sidecar에만 둔다. `SVG_ENGINE_UPGRADE_PENDING`,
+`SVG_ENGINE_UPGRADE_COMPLETE`, `SVG_ENGINE_UPGRADE_EXEMPT`는 기존 시험 FINAL/APPLY를 단독 차단하지 않으며,
+`solutionImage` completion contract를 확장하지 않는다. 중1·중2·중3 도형·함수 그래프의
+`VISUAL_POSITIVE_DEFAULT` 확대 정책은 이 통합 범위가 아니다.
 
 ## 인계·변경·이행
 
