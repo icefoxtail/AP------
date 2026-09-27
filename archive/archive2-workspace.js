@@ -143,7 +143,7 @@
                     record.curriculumKey === filters.curriculumKey) &&
                   C.subjectProjectionMatches(record, filters),
               )
-              .map((record) => C.pathKey(record, 4)),
+              .flatMap((record) => [C.pathKey(record, 4), C.pathKey({ ...record, ...(C.basicScopeParent(record, state.catalog.basicScopeLinks) || {}) }, 4)]),
           )
         : null;
     return (state.catalog.basicTaxonomy || state.catalog.taxonomy).filter((r) => {
@@ -320,6 +320,8 @@
       indexVersion: state.indexVersion,
       updatedAt: new Date().toISOString(),
       ...Object.fromEntries(keys.map((k) => [k, state[k]])),
+      scopeSourcePaths: selectedScopePaths(),
+      scopeQuestionUids: selectedScopeQuestionUids(),
       selected: state.selected.map((r) => ({
         questionUid: r.questionUid,
         rowId: r.rowId,
@@ -432,13 +434,25 @@
     }
     const allowed = Object.keys(draft()).filter(
       (k) =>
-        !["schemaVersion", "taxonomyVersion", "updatedAt", "selected"].includes(
+        !["schemaVersion", "taxonomyVersion", "updatedAt", "selected", "scopeSourcePaths", "scopeQuestionUids"].includes(
           k,
         ),
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.filters = restoredFilters;
+    // A renamed display parent must not drop the source range in a saved paper.
+    const currentScopes = scopeOptions();
+    if (state.scopes.some(key => !currentScopes.some(s => s.key === key || s.paths.includes(key)))) {
+      const previousPaths = unique(data.scopeSourcePaths || data.rows.flatMap(row => row.paths || (row.path ? [row.path] : [])));
+      const previousUids = unique(data.scopeQuestionUids || data.rows.flatMap(row => row.scopeQuestionUids || []));
+      state.scopes = unique([
+        ...state.scopes.filter(key => currentScopes.some(s => s.key === key || s.paths.includes(key))),
+        ...currentScopes.filter(s => previousUids.length
+          ? s.scopeQuestionUids.some(uid => previousUids.includes(uid))
+          : s.paths.some(p => previousPaths.includes(p))).map(s => s.key),
+      ]);
+    }
     // Old unopened drafts inherited [2, 3] without a user choosing difficulty.
     if (!data.selected.length && data.difficultyFilterVersion !== "optional-v1" &&
         data.distribution !== "custom" && JSON.stringify(data.buckets) === "[2,3]") {
@@ -509,22 +523,19 @@
     const canonicalRows = taxonomyRowsForFilters(state.filters);
     const canonicalParents = new Set(canonicalRows.map(r =>
       [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|")));
-    const counts = new Map(), eligibleCounts = new Map(),
-      excluded = C.composeExclusions(context()).union;
+    const excluded = C.composeExclusions(context()).union;
     const pool = state.catalog.records.filter((r) =>
       C.matches(r, { ...state.filters, L3: "", L4: "", difficultyBuckets: [], sourceFiles: state.sources }),
     );
-    for (const r of pool) {
-      if (!r.L1 || !r.L2) continue;
-      const path = C.pathKey(r, 4);
-      counts.set(path, (counts.get(path) || 0) + 1);
-      if (C.matches(r, state.filters) && C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
-          C.eligibility(r, state).ok && !excluded.has(r.questionUid))
-        eligibleCounts.set(path, (eligibleCounts.get(path) || 0) + 1);
-    }
+    const sourceRows = pool.map(r => ({
+      ...r, ...(C.basicScopeParent(r, state.catalog.basicScopeLinks) || {}),
+      sourceScopePath: C.pathKey(r, 4),
+      scopeEligible: C.matches(r, state.filters) && C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
+        C.eligibility(r, state).ok && !excluded.has(r.questionUid),
+    }));
     const units = new Map();
     // Source units remain visible even before their advanced taxonomy is published.
-    for (const r of [...canonicalRows, ...pool]) {
+    for (const r of [...canonicalRows, ...sourceRows]) {
       if (!r.L1 || !r.L2) continue;
       const key = [
         r.curriculumKey,
@@ -543,9 +554,14 @@
       units.get(key).rows.push(r);
     }
     const semanticGroups = new Map();
+    const displayGroups = state.catalog.basicScopeGroups || [];
+    const displayGroupFor = unit => !state.filters.curriculumKey && displayGroups.findIndex(group =>
+      group.members.some(member => (!unit.curriculumKey || member.curriculumKey === unit.curriculumKey) &&
+        scopeCourseKey(member) === unit.courseKey && scopeText(member.L1) === scopeText(unit.L1) && scopeText(member.L2) === scopeText(unit.L2)));
     for (const unit of units.values()) {
       const semanticKey = [scopeText(unit.L1), scopeText(unit.L2)].join("|");
-      const key = state.filters.curriculumKey
+      const displayGroup = displayGroupFor(unit);
+      const key = displayGroup !== false && displayGroup >= 0 ? `display-group-${displayGroup}` : state.filters.curriculumKey
         ? [unit.curriculumKey, unit.courseKey, semanticKey].join("|")
         : semanticKey;
       if (!semanticGroups.has(key)) semanticGroups.set(key, []);
@@ -554,7 +570,9 @@
     const groups = [];
     for (const candidates of semanticGroups.values()) {
       if (!state.filters.curriculumKey && candidates.length > 1) {
-        const first = candidates[0];
+        const displayGroup = displayGroupFor(candidates[0]);
+        const preferred = displayGroup >= 0 ? displayGroups[displayGroup].preferredCurriculum : "";
+        const first = candidates.find(unit => unit.curriculumKey === preferred) || candidates[0];
         groups.push({
           curriculumKey: "all",
           courseKey: "all",
@@ -572,11 +590,14 @@
       displayKeys.set(key, (displayKeys.get(key) || 0) + 1);
     }
     return groups.map((group, index) => {
-      const paths = unique(group.rows.map((r) => C.pathKey(r, 4)));
+      const paths = unique(group.rows.map((r) => r.sourceScopePath || C.pathKey(r, 4)));
+      const sources = group.rows.filter(r => r.sourceScopePath);
       const displayKey = scopeText(group.L1) + "|" + scopeText(group.L2);
       const suffix =
         displayKeys.get(displayKey) > 1
           ? ` · ${group.curriculumKey === "all" ? "통합" : group.curriculumKey}`
+          : !state.filters.curriculumKey && !sources.length && ["2015", "2022"].includes(group.curriculumKey)
+            ? ` · ${group.curriculumKey}`
           : "";
       return {
         key: `scope-${index}-${scopeText(group.L1)}-${scopeText(group.L2)}-${group.curriculumKey}`,
@@ -586,8 +607,9 @@
         basicScope: group.rows.some(r => canonicalParents.has(
           [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|"))),
         paths,
-        count: paths.reduce((sum, path) => sum + (counts.get(path) || 0), 0),
-        eligibleCount: paths.reduce((sum, path) => sum + (eligibleCounts.get(path) || 0), 0),
+        scopeQuestionUids: unique(sources.map(r => r.questionUid)),
+        count: sources.length,
+        eligibleCount: sources.filter(r => r.scopeEligible).length,
       };
     });
   }
@@ -603,6 +625,9 @@
   function selectedScopePaths() {
     return unique(selectedScopeOptions().flatMap((scope) => scope.paths));
   }
+  function selectedScopeQuestionUids() {
+    return unique(selectedScopeOptions().flatMap(scope => scope.scopeQuestionUids));
+  }
   function planRows() {
     const scopes = selectedScopeOptions();
     if (state.distribution === "pool")
@@ -613,6 +638,7 @@
               count: Number(state.count),
               difficultyBuckets: state.buckets,
               paths: selectedScopePaths(),
+              scopeQuestionUids: selectedScopeQuestionUids(),
             },
           ]
         : [];
@@ -620,6 +646,7 @@
       .map((s) => ({
         id: s.key,
         paths: s.paths,
+        scopeQuestionUids: s.scopeQuestionUids,
         depth: 4,
         label: s.label,
         count:
@@ -630,6 +657,7 @@
                     ...state.filters,
                     sourceFiles: state.sources,
                     primaryPaths: s.paths,
+                    scopeQuestionUids: s.scopeQuestionUids,
                   }) &&
                   C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
                   C.eligibility(r, state).ok &&
@@ -648,19 +676,27 @@
       .filter((r) => r.count > 0 || state.distribution !== "all");
   }
   function pool() {
-    const paths = selectedScopePaths();
+    const scopes = selectedScopeOptions();
+    if (!scopes.length) return state.catalog.records;
+    const uids = new Set(scopes.flatMap(scope => scope.scopeQuestionUids));
     return state.catalog.records.filter(
-      (r) => !paths.length || paths.includes(C.pathKey(r, 4)),
+      (r) => uids.has(r.questionUid),
     );
   }
   function request(useFrozen = false) {
+    const rows = useFrozen ? state.rows : planRows();
+    const paths = useFrozen ? unique(rows.flatMap(row => row.paths || (row.path ? [row.path] : []))) : selectedScopePaths();
+    const scopeQuestionUids = useFrozen
+      ? unique(rows.flatMap(row => row.scopeQuestionUids || state.catalog.records.filter(r => C.rowMatches(r, row)).map(r => r.questionUid)))
+      : selectedScopeQuestionUids();
     return {
       filters: {
         ...state.filters,
         sourceFiles: state.sources,
-        primaryPaths: selectedScopePaths(),
+        primaryPaths: paths,
+        scopeQuestionUids,
       },
-      rows: useFrozen ? state.rows : planRows(),
+      rows,
       pins: state.selected
         .filter((r) => state.pins.includes(r.questionUid))
         .map((r) => ({ questionUid: r.questionUid, rowId: r.rowId })),
