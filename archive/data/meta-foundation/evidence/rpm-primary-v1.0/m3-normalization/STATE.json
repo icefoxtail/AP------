@@ -2,7 +2,8 @@
   "schemaVersion": "RPM_PRIMARY_M3_NORMALIZATION_STATE_v1",
   "task": "M3 RPM completeness and GLOBAL ACTIVE crosswalk semantic normalization",
   "branch": "work/meta-rpm-m1-m2-normalization",
-  "baseMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "baseMainSha": "a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f",
+  "baselineCapturedAtMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
   "currentStage": "M3_NORMALIZATION_AND_RUNTIME_VALIDATED",
   "denominator": {
     "rpmRecords": 181,
@@ -20,21 +21,22 @@
     "M3_BINDING_OWNER_PARITY_CORRECTED",
     "M3_R2E_RECEIPT_REASSESSMENT",
     "M3_RESOLVER_COMPILED_RUNTIME_REGRESSION_PASS",
-    "M1_M2_RHS_RHA_AND_RESOLVER_REGRESSION_PASS"
+    "M1_M2_RHS_RHA_AND_RESOLVER_REGRESSION_PASS",
+    "LATEST_ORIGIN_MAIN_MERGED_INTO_WORK_BRANCH"
   ],
   "remainingStages": [
     "MERGE_LATEST_ORIGIN_MAIN",
-    "REFRESH_AUDIT_SHA_AFTER_MAIN_MERGE",
     "REMOTE_PUSH",
     "NOTION_CLOSEOUT"
   ],
   "lastCompletedItem": "All 181 M3 RPM rows were paired; all 181 crosswalk records were semantically reviewed; six false DIRECT_ACTIVE rows with a wrong-owner exact-path binding were reconciled to DIRECT_BINDING_GAP; runtime regression passed for every M3 row.",
   "normalizationSummary": {
     "rpmSemanticRelation": { "BOTH_PRESENT": 173, "LEGIT_CURRICULUM_DIFFERENCE": 7, "NEEDS_EVIDENCE": 1 },
-    "crosswalk": { "KEEP": 127, "DIRECT_TO_FAMILY": 0, "DIRECT_OR_FAMILY_TO_RPM_ONLY": 43, "PT_TPL_REMAP": 3, "RPM_ONLY_TO_EXISTING_CANONICAL": 2, "BINDING_STATUS_RECONCILED": 6, "BINDING_REPAIR": 0, "UNRESOLVED": 0 },
+    "crosswalk": { "KEEP": 127, "DIRECT_TO_FAMILY": 0, "DIRECT_OR_FAMILY_TO_RPM_ONLY": 43, "PT_TPL_REMAP": 3, "RPM_ONLY_TO_EXISTING_CANONICAL": 2, "BINDING_STATUS_RECONCILED": 6, "WRONG_OWNER_BINDINGS_RECONCILED": 6, "BINDING_REPAIR": 0, "UNRESOLVED": 0 },
     "finalMappingStatus": { "DIRECT_ACTIVE": 13, "FAMILY_ACTIVE": 4, "DIRECT_BINDING_GAP": 41, "FAMILY_BINDING_GAP": 7, "RPM_ONLY": 116 },
     "m3R2EReceipts": 0
   },
-  "nextStartPoint": "Merge origin/main d2899c0f36d3bc5603f3dc9039b787778cb2867a without rewriting the already-pushed M1/M2 branch, refresh the audit base metadata, then push and update Notion.",
+  "latestMainMergedSha": "a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f",
+  "nextStartPoint": "Run final post-merge M1/M2/M3 validation, push this fast-forward work branch, and update the M3/CURRENT Notion records with the final remote SHA.",
   "hardBlockers": []
 }

@@ -13,6 +13,10 @@ The semantic aliases for quadratic functions account for the 2015/2022 L3 reorga
 - **Boxplots:** the 2022 curriculum includes boxplots in middle school (`[9수04-08]`); the 2015 middle-school statistics scope does not contain boxplots. The three 2022 boxplot rows are preserved as a legitimate curriculum difference.
 - **Outlier interpretation:** the 2022 RPM row is already marked `RPM_EXTENDED_CANDIDATE` and not default-selectable. The reviewed official standards establish boxplot use but did not establish a separate middle-school outlier-interpretation L4. This one row remains `NEEDS_EVIDENCE` and `RPM_ONLY`.
 
+## Exact ACTIVE binding ownership
+
+Six 2015 M3-2 chord/tangent rows had been marked `DIRECT_ACTIVE` because an exact curriculum path binding existed under `MIDDLE_GEOMETRY`. The compiled GLOBAL ACTIVE registry selects the duplicate-key PT/TPL identity owned by `GEOMETRY_EQUATIONS`, so the other pack's binding is not exact for the selected canonical identity. The semantic PT/TPL links remain valid, but those six rows are now `DIRECT_BINDING_GAP`; the crosswalk records the mismatching owner pack as evidence. No binding row or canonical definition was changed.
+
 ## Primary sources
 
 - [2015 개정 교육과정 총론 및 각론 확정·발표 — 교육부](https://www.moe.go.kr/boardCnts/view.do?boardID=294&boardSeq=60753&lev=0&m=0204). This page hosts the official 2015 mathematics curriculum documents.

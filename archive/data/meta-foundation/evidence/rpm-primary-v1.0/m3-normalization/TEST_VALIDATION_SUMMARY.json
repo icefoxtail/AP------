@@ -1,6 +1,7 @@
 {
   "schemaVersion": "RPM_PRIMARY_M1_M2_M3_VALIDATION_SUMMARY_v1",
   "validationStatus": "PASS",
+  "latestMainSha": "a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f",
   "testFiles": [
     "archive/tools/meta-foundation/rpm-primary-m1-m2-crosswalk.test.mjs",
     "archive/tools/meta-foundation/rpm-active-resolver.test.mjs",
@@ -23,6 +24,24 @@
   "m3Validation": {
     "rpmRows": 181,
     "crosswalkRows": 181,
+    "crosswalkNormalization": {
+      "KEEP": 127,
+      "DIRECT_TO_FAMILY": 0,
+      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 43,
+      "PT_TPL_REMAP": 3,
+      "RPM_ONLY_TO_EXISTING_CANONICAL": 2,
+      "BINDING_STATUS_RECONCILED": 6,
+      "WRONG_OWNER_BINDINGS_RECONCILED": 6,
+      "BINDING_REPAIR": 0,
+      "UNRESOLVED": 0
+    },
+    "finalMappingStatuses": {
+      "DIRECT_ACTIVE": 13,
+      "FAMILY_ACTIVE": 4,
+      "DIRECT_BINDING_GAP": 41,
+      "FAMILY_BINDING_GAP": 7,
+      "RPM_ONLY": 116
+    },
     "viewParity": "PASS",
     "missingRows": 0,
     "orphanRows": 0,
@@ -31,6 +50,7 @@
     "exactBindingStatusMismatchErrors": 0,
     "incompleteFamilyCandidateSets": 0,
     "directSemanticEquivalenceErrors": 0,
+    "exactBindingGapRows": 48,
     "runtimeRoutes": { "EXISTING_REUSE": 13, "FAMILY_REUSE": 4, "RPM_PRIMARY_MIGRATION_GAP": 164 },
     "perRowResolverEvidenceParity": "PASS",
     "activeRuntimeProjectionParityFailures": 0
