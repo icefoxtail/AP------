@@ -1,0 +1,2293 @@
+{
+  "schemaVersion": "m1-current-r2e-crosswalk-materialization/v1",
+  "baseMainSha": "1ac9b712a5c759cf8189b5e6ff8c828be0935e98",
+  "inputBranch": "origin/work/m1-b01-b31-r2e",
+  "inputCommit": "92cf91b383d2e622c1c1aa22582e0903cc40da0a",
+  "updatedRows": 72,
+  "rows": [
+    {
+      "id": "M1-RPM-089",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B21:1",
+        "B22:2",
+        "B22:15",
+        "B22:16"
+      ]
+    },
+    {
+      "id": "M1-RPM-091",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B21:2",
+        "B23:21"
+      ]
+    },
+    {
+      "id": "M1-RPM-096",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ],
+      "uses": [
+        "B21:3",
+        "B22:7",
+        "B23:8",
+        "B23:22"
+      ]
+    },
+    {
+      "id": "M1-RPM-099",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+        "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT"
+      ],
+      "uses": [
+        "B21:4",
+        "B22:11",
+        "B23:10",
+        "B23:11"
+      ]
+    },
+    {
+      "id": "M1-RPM-100",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B21:5",
+        "B21:6",
+        "B22:17",
+        "B23:12"
+      ]
+    },
+    {
+      "id": "M1-RPM-102",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B21:7",
+        "B21:8",
+        "B22:12"
+      ]
+    },
+    {
+      "id": "M1-RPM-106",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SOLID_FIGURE_ROTATION_VOLUME_COMPARISON"
+      ],
+      "uses": [
+        "B21:9",
+        "B23:13",
+        "B23:16",
+        "B23:23"
+      ]
+    },
+    {
+      "id": "M1-RPM-105",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B21:10",
+        "B22:19",
+        "B23:15"
+      ]
+    },
+    {
+      "id": "M1-RPM-113",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_DATA_ORDER_AND_VALUE",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_DATA_ORDER_AND_VALUE_CORE"
+      ],
+      "uses": [
+        "B21:11",
+        "B21:12"
+      ]
+    },
+    {
+      "id": "M1-RPM-108",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "sub": "M1-08-DATA_ORGANIZATION",
+      "templates": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION"
+      ],
+      "uses": [
+        "B21:13",
+        "B21:14",
+        "B21:15",
+        "B21:20",
+        "B22:14",
+        "B23:17",
+        "B23:19"
+      ]
+    },
+    {
+      "id": "M1-RPM-109",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "sub": "M1-08-DATA_ORGANIZATION",
+      "templates": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION"
+      ],
+      "uses": [
+        "B21:16",
+        "B21:17",
+        "B21:23",
+        "B22:21"
+      ]
+    },
+    {
+      "id": "M1-RPM-110",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_CLASS_GROUP_SUM"
+      ],
+      "uses": [
+        "B21:18",
+        "B21:24",
+        "B23:20"
+      ]
+    },
+    {
+      "id": "M1-RPM-112",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON"
+      ],
+      "uses": [
+        "B21:19",
+        "B23:18"
+      ]
+    },
+    {
+      "id": "M1-RPM-092",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B21:21",
+        "B22:18",
+        "B23:7"
+      ]
+    },
+    {
+      "id": "M1-RPM-107",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B21:22",
+        "B22:20",
+        "B22:24"
+      ]
+    },
+    {
+      "id": "M1-RPM-095",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ],
+      "uses": [
+        "B22:1"
+      ]
+    },
+    {
+      "id": "M1-RPM-084",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR"
+      ],
+      "uses": [
+        "B22:3",
+        "B22:5"
+      ]
+    },
+    {
+      "id": "M1-RPM-081",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ],
+      "uses": [
+        "B22:4"
+      ]
+    },
+    {
+      "id": "M1-RPM-083",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+      ],
+      "uses": [
+        "B22:6"
+      ]
+    },
+    {
+      "id": "M1-RPM-088",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ],
+      "uses": [
+        "B22:8",
+        "B22:22",
+        "B23:5"
+      ]
+    },
+    {
+      "id": "M1-RPM-098",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_ROTATION_SOLID_GENERATION",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE"
+      ],
+      "uses": [
+        "B22:10"
+      ]
+    },
+    {
+      "id": "M1-RPM-093",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B22:13"
+      ]
+    },
+    {
+      "id": "M1-RPM-085",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+      ],
+      "uses": [
+        "B22:23"
+      ]
+    },
+    {
+      "id": "M1-RPM-086",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+      ],
+      "uses": [
+        "B23:1",
+        "B23:2"
+      ]
+    },
+    {
+      "id": "M1-RPM-082",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ],
+      "uses": [
+        "B23:3"
+      ]
+    },
+    {
+      "id": "M1-RPM-090",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B23:6"
+      ]
+    },
+    {
+      "id": "M1-RPM-094",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+      ],
+      "uses": [
+        "B23:9"
+      ]
+    },
+    {
+      "id": "M1-RPM-103",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B23:14"
+      ]
+    },
+    {
+      "id": "M1-RPM-141",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION"
+      ],
+      "uses": [
+        "B26:1"
+      ]
+    },
+    {
+      "id": "M1-RPM-140",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION"
+      ],
+      "uses": [
+        "B26:2",
+        "B26:22"
+      ]
+    },
+    {
+      "id": "M1-RPM-142",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      ],
+      "uses": [
+        "B26:3"
+      ]
+    },
+    {
+      "id": "M1-RPM-143",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      ],
+      "uses": [
+        "B26:4"
+      ]
+    },
+    {
+      "id": "M1-RPM-144",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT"
+      ],
+      "uses": [
+        "B26:5"
+      ]
+    },
+    {
+      "id": "M1-RPM-145",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS"
+      ],
+      "uses": [
+        "B26:6"
+      ]
+    },
+    {
+      "id": "M1-RPM-146",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+      ],
+      "uses": [
+        "B26:7",
+        "B26:9"
+      ]
+    },
+    {
+      "id": "M1-RPM-147",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "sub": "M1-03-ALGEBRAIC_EXPRESSION",
+      "templates": [
+        "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION"
+      ],
+      "uses": [
+        "B26:8"
+      ]
+    },
+    {
+      "id": "M1-RPM-161",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_MODELING",
+      "sub": "M1-03-LINEAR_EQUATION_WORD",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY"
+      ],
+      "uses": [
+        "B26:10"
+      ]
+    },
+    {
+      "id": "M1-RPM-149",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "sub": "M1-03-LINEAR_EQUATION",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION"
+      ],
+      "uses": [
+        "B26:11"
+      ]
+    },
+    {
+      "id": "M1-RPM-148",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "sub": "M1-03-LINEAR_EQUATION",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT"
+      ],
+      "uses": [
+        "B26:12"
+      ]
+    },
+    {
+      "id": "M1-RPM-151",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "sub": "M1-03-LINEAR_EQUATION",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION"
+      ],
+      "uses": [
+        "B26:13"
+      ]
+    },
+    {
+      "id": "M1-RPM-153",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "sub": "M1-03-LINEAR_EQUATION",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY"
+      ],
+      "uses": [
+        "B26:14"
+      ]
+    },
+    {
+      "id": "M1-RPM-163",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_COORDINATE_POINT_READING",
+      "sub": "M1-04-COORDINATE_PLANE",
+      "templates": [
+        "TPL_COORDINATE_POINT_READING_CORE",
+        "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+        "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM"
+      ],
+      "uses": [
+        "B26:15",
+        "B26:16",
+        "B26:17"
+      ]
+    },
+    {
+      "id": "M1-RPM-165",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "sub": "M1-04-GRAPH_RELATION",
+      "templates": [
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH"
+      ],
+      "uses": [
+        "B26:18"
+      ]
+    },
+    {
+      "id": "M1-RPM-166",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "sub": "M1-04-GRAPH_RELATION",
+      "templates": [
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT"
+      ],
+      "uses": [
+        "B26:19",
+        "B26:24"
+      ]
+    },
+    {
+      "id": "M1-RPM-167",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+      "sub": "M1-04-GRAPH_RELATION",
+      "templates": [
+        "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
+      ],
+      "uses": [
+        "B26:20"
+      ]
+    },
+    {
+      "id": "M1-RPM-171",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "sub": "M1-04-GRAPH_RELATION",
+      "templates": [
+        "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS"
+      ],
+      "uses": [
+        "B26:21"
+      ]
+    },
+    {
+      "id": "M1-RPM-156",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_LINEAR_EQUATION_MODELING",
+      "sub": "M1-03-LINEAR_EQUATION_WORD",
+      "templates": [
+        "TPL_M1_LINEAR_EQUATION_MODEL_RATE"
+      ],
+      "uses": [
+        "B26:23"
+      ]
+    },
+    {
+      "id": "M1-RPM-197",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR"
+      ],
+      "uses": [
+        "B29:1"
+      ]
+    },
+    {
+      "id": "M1-RPM-194",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ],
+      "uses": [
+        "B29:2"
+      ]
+    },
+    {
+      "id": "M1-RPM-199",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+      ],
+      "uses": [
+        "B29:3"
+      ]
+    },
+    {
+      "id": "M1-RPM-201",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ],
+      "uses": [
+        "B29:4",
+        "B30:2"
+      ]
+    },
+    {
+      "id": "M1-RPM-198",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+      ],
+      "uses": [
+        "B29:5"
+      ]
+    },
+    {
+      "id": "M1-RPM-209",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ],
+      "uses": [
+        "B29:6",
+        "B30:4"
+      ]
+    },
+    {
+      "id": "M1-RPM-196",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "sub": "M1-06-POLYGON_CIRCLE",
+      "templates": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+      ],
+      "uses": [
+        "B29:7"
+      ]
+    },
+    {
+      "id": "M1-RPM-205",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
+      ],
+      "uses": [
+        "B29:8",
+        "B29:21",
+        "B30:3"
+      ]
+    },
+    {
+      "id": "M1-RPM-207",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+      ],
+      "uses": [
+        "B29:9",
+        "B30:1"
+      ]
+    },
+    {
+      "id": "M1-RPM-212",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_ROTATION_SOLID_PROPERTIES",
+      "sub": "M1-07-SOLID_FIGURE",
+      "templates": [
+        "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+        "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+        "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION"
+      ],
+      "uses": [
+        "B29:10",
+        "B30:5",
+        "B30:21"
+      ]
+    },
+    {
+      "id": "M1-RPM-217",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT"
+      ],
+      "uses": [
+        "B29:11",
+        "B29:13"
+      ]
+    },
+    {
+      "id": "M1-RPM-216",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B29:12"
+      ]
+    },
+    {
+      "id": "M1-RPM-215",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B29:14"
+      ]
+    },
+    {
+      "id": "M1-RPM-226",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_CENTRAL_TENDENCY",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+        "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+      ],
+      "uses": [
+        "B29:15",
+        "B29:16",
+        "B29:23"
+      ]
+    },
+    {
+      "id": "M1-RPM-231",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "sub": "M1-08-DATA_ORGANIZATION",
+      "templates": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+      ],
+      "uses": [
+        "B29:17",
+        "B29:18",
+        "B29:19",
+        "B29:20",
+        "B30:14",
+        "B30:16",
+        "B30:17",
+        "B30:19"
+      ]
+    },
+    {
+      "id": "M1-RPM-219",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B29:22",
+        "B30:8",
+        "B30:11",
+        "B30:22"
+      ]
+    },
+    {
+      "id": "M1-RPM-228",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+      "sub": "M1-08-DATA_ORGANIZATION",
+      "templates": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY"
+      ],
+      "uses": [
+        "B29:24",
+        "B30:15",
+        "B30:18"
+      ]
+    },
+    {
+      "id": "M1-RPM-214",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B30:6"
+      ]
+    },
+    {
+      "id": "M1-RPM-213",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ],
+      "uses": [
+        "B30:7"
+      ]
+    },
+    {
+      "id": "M1-RPM-220",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_SOLID_FIGURE_MEASURE",
+      "sub": "M1-07-SOLID_FIGURE_MEASURE",
+      "templates": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM"
+      ],
+      "uses": [
+        "B30:9"
+      ]
+    },
+    {
+      "id": "M1-RPM-203",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_CIRCLE_ANGLE_RELATIONS",
+      "sub": "M1-06-PLANE_FIGURE_MEASURE",
+      "templates": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ],
+      "uses": [
+        "B30:10"
+      ]
+    },
+    {
+      "id": "M1-RPM-223",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_CENTRAL_TENDENCY",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+      ],
+      "uses": [
+        "B30:12",
+        "B30:13"
+      ]
+    },
+    {
+      "id": "M1-RPM-229",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_RELATIVE_FREQUENCY_RATIO"
+      ],
+      "uses": [
+        "B30:20"
+      ]
+    },
+    {
+      "id": "M1-RPM-222",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "pt": "PT_M1_CENTRAL_TENDENCY",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      ],
+      "uses": [
+        "B30:23"
+      ]
+    },
+    {
+      "id": "M1-RPM-232",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "pt": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "sub": "M1-08-DATA_INTERPRETATION",
+      "templates": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_TOP_CUTOFF_GROUP_COMPARISON"
+      ],
+      "uses": [
+        "B30:24"
+      ]
+    }
+  ],
+  "l2Alignments": [
+    {
+      "id": "M1-RPM-088",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:8",
+        "B22:22",
+        "B23:5"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-201",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:4",
+        "B30:2"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-231",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "questionRefs": [
+        "B29:17",
+        "B29:18",
+        "B29:19",
+        "B29:20",
+        "B30:14",
+        "B30:16",
+        "B30:17",
+        "B30:19"
+      ],
+      "templateKeys": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+      ]
+    }
+  ],
+  "normalizedCrosswalkSha256": "fc46aa9357b1570827ebe6ffde532c48269dce2f39022e65f4d6404da63dc0a5",
+  "materializedCrosswalkSha256": "c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+  "routeChanges": [
+    {
+      "id": "M1-RPM-089",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:1",
+        "B22:2",
+        "B22:15",
+        "B22:16"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-091",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:2",
+        "B23:21"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-096",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B21:3",
+        "B22:7",
+        "B23:8",
+        "B23:22"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-099",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B21:4",
+        "B22:11",
+        "B23:10",
+        "B23:11"
+      ],
+      "templateKeys": [
+        "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+        "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-100",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:5",
+        "B21:6",
+        "B22:17",
+        "B23:12"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-102",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:7",
+        "B21:8",
+        "B22:12"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-106",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:9",
+        "B23:13",
+        "B23:16",
+        "B23:23"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SOLID_FIGURE_ROTATION_VOLUME_COMPARISON"
+      ]
+    },
+    {
+      "id": "M1-RPM-105",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:10",
+        "B22:19",
+        "B23:15"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-113",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B21:11",
+        "B21:12"
+      ],
+      "templateKeys": [
+        "TPL_M1_DATA_ORDER_AND_VALUE_CORE"
+      ]
+    },
+    {
+      "id": "M1-RPM-108",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "questionRefs": [
+        "B21:13",
+        "B21:14",
+        "B21:15",
+        "B21:20",
+        "B22:14",
+        "B23:17",
+        "B23:19"
+      ],
+      "templateKeys": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-109",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "questionRefs": [
+        "B21:16",
+        "B21:17",
+        "B21:23",
+        "B22:21"
+      ],
+      "templateKeys": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-110",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B21:18",
+        "B21:24",
+        "B23:20"
+      ],
+      "templateKeys": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_CLASS_GROUP_SUM"
+      ]
+    },
+    {
+      "id": "M1-RPM-112",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B21:19",
+        "B23:18"
+      ],
+      "templateKeys": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON"
+      ]
+    },
+    {
+      "id": "M1-RPM-092",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:21",
+        "B22:18",
+        "B23:7"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-107",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B21:22",
+        "B22:20",
+        "B22:24"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-095",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B22:1"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-084",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:3",
+        "B22:5"
+      ],
+      "templateKeys": [
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR"
+      ]
+    },
+    {
+      "id": "M1-RPM-081",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:4"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ]
+    },
+    {
+      "id": "M1-RPM-083",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:6"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+      ]
+    },
+    {
+      "id": "M1-RPM-088",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:8",
+        "B22:22",
+        "B23:5"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-098",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B22:10"
+      ],
+      "templateKeys": [
+        "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE"
+      ]
+    },
+    {
+      "id": "M1-RPM-093",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B22:13"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-085",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B22:23"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+      ]
+    },
+    {
+      "id": "M1-RPM-086",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B23:1",
+        "B23:2"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-082",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B23:3"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ]
+    },
+    {
+      "id": "M1-RPM-090",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B23:6"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-094",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B23:9"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+      ]
+    },
+    {
+      "id": "M1-RPM-103",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B23:14"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-141",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:1"
+      ],
+      "templateKeys": [
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION"
+      ]
+    },
+    {
+      "id": "M1-RPM-140",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:2",
+        "B26:22"
+      ],
+      "templateKeys": [
+        "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION"
+      ]
+    },
+    {
+      "id": "M1-RPM-142",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:3"
+      ],
+      "templateKeys": [
+        "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-143",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:4"
+      ],
+      "templateKeys": [
+        "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-144",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:5"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-145",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:6"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS"
+      ]
+    },
+    {
+      "id": "M1-RPM-146",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:7",
+        "B26:9"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+      ]
+    },
+    {
+      "id": "M1-RPM-147",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "materializedSubUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+      "questionRefs": [
+        "B26:8"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+        "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION"
+      ]
+    },
+    {
+      "id": "M1-RPM-161",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "questionRefs": [
+        "B26:10"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY"
+      ]
+    },
+    {
+      "id": "M1-RPM-149",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "questionRefs": [
+        "B26:11"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-148",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "questionRefs": [
+        "B26:12"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-151",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "questionRefs": [
+        "B26:13"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-153",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "questionRefs": [
+        "B26:14"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY"
+      ]
+    },
+    {
+      "id": "M1-RPM-163",
+      "fromStatus": "DIRECT_ACTIVE",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-04-COORDINATE_PLANE",
+      "materializedSubUnitKey": "M1-04-COORDINATE_PLANE",
+      "questionRefs": [
+        "B26:15",
+        "B26:16",
+        "B26:17"
+      ],
+      "templateKeys": [
+        "TPL_COORDINATE_POINT_READING_CORE",
+        "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+        "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM"
+      ]
+    },
+    {
+      "id": "M1-RPM-165",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "materializedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "questionRefs": [
+        "B26:18"
+      ],
+      "templateKeys": [
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH"
+      ]
+    },
+    {
+      "id": "M1-RPM-166",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "materializedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "questionRefs": [
+        "B26:19",
+        "B26:24"
+      ],
+      "templateKeys": [
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
+        "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-167",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "materializedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "questionRefs": [
+        "B26:20"
+      ],
+      "templateKeys": [
+        "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
+      ]
+    },
+    {
+      "id": "M1-RPM-171",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "materializedSubUnitKey": "M1-04-GRAPH_RELATION",
+      "questionRefs": [
+        "B26:21"
+      ],
+      "templateKeys": [
+        "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS"
+      ]
+    },
+    {
+      "id": "M1-RPM-156",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "materializedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "questionRefs": [
+        "B26:23"
+      ],
+      "templateKeys": [
+        "TPL_M1_LINEAR_EQUATION_MODEL_RATE"
+      ]
+    },
+    {
+      "id": "M1-RPM-197",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:1"
+      ],
+      "templateKeys": [
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
+        "TPL_M1_TRIANGLE_ANGLE_CONDITION_BISECTOR"
+      ]
+    },
+    {
+      "id": "M1-RPM-194",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:2"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM"
+      ]
+    },
+    {
+      "id": "M1-RPM-199",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:3"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-201",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:4",
+        "B30:2"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-198",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:5"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA"
+      ]
+    },
+    {
+      "id": "M1-RPM-209",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B29:6",
+        "B30:4"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-196",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "materializedSubUnitKey": "M1-06-POLYGON_CIRCLE",
+      "questionRefs": [
+        "B29:7"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE"
+      ]
+    },
+    {
+      "id": "M1-RPM-205",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B29:8",
+        "B29:21",
+        "B30:3"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER"
+      ]
+    },
+    {
+      "id": "M1-RPM-207",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B29:9",
+        "B30:1"
+      ],
+      "templateKeys": [
+        "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE"
+      ]
+    },
+    {
+      "id": "M1-RPM-212",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "questionRefs": [
+        "B29:10",
+        "B30:5",
+        "B30:21"
+      ],
+      "templateKeys": [
+        "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
+        "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
+        "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
+        "TPL_M1_ROTATION_SOLID_FRUSTUM_NET_AXIS_SECTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-217",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B29:11",
+        "B29:13"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SPHERE_IN_CYLINDER_VOLUME_CONSTRAINT"
+      ]
+    },
+    {
+      "id": "M1-RPM-216",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B29:12"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-215",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B29:14"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-226",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B29:15",
+        "B29:16",
+        "B29:23"
+      ],
+      "templateKeys": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+        "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION"
+      ]
+    },
+    {
+      "id": "M1-RPM-231",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "questionRefs": [
+        "B29:17",
+        "B29:18",
+        "B29:19",
+        "B29:20",
+        "B30:14",
+        "B30:16",
+        "B30:17",
+        "B30:19"
+      ],
+      "templateKeys": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_STEM_LEAF_AUDIT",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+        "TPL_M1_FREQUENCY_DISTRIBUTION_STEM_LEAF_TO_FREQUENCY_TABLE"
+      ]
+    },
+    {
+      "id": "M1-RPM-219",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B29:22",
+        "B30:8",
+        "B30:11",
+        "B30:22"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-228",
+      "fromStatus": "DIRECT_BINDING_GAP",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "materializedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "questionRefs": [
+        "B29:24",
+        "B30:15",
+        "B30:18"
+      ],
+      "templateKeys": [
+        "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY"
+      ]
+    },
+    {
+      "id": "M1-RPM-214",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B30:6"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-213",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B30:7"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-220",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "questionRefs": [
+        "B30:9"
+      ],
+      "templateKeys": [
+        "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+        "TPL_M1_SOLID_FIGURE_VOLUME_DIFFERENCE",
+        "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+        "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+        "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+        "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM"
+      ]
+    },
+    {
+      "id": "M1-RPM-203",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "materializedSubUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+      "questionRefs": [
+        "B30:10"
+      ],
+      "templateKeys": [
+        "TPL_CIRCLE_ANGLE_SECTOR_MEASURE"
+      ]
+    },
+    {
+      "id": "M1-RPM-223",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B30:12",
+        "B30:13"
+      ],
+      "templateKeys": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+        "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+        "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+      ]
+    },
+    {
+      "id": "M1-RPM-229",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B30:20"
+      ],
+      "templateKeys": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_POPULATION_RECONSTRUCTION",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_RELATIVE_FREQUENCY_RATIO"
+      ]
+    },
+    {
+      "id": "M1-RPM-222",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "DIRECT_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B30:23"
+      ],
+      "templateKeys": [
+        "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      ]
+    },
+    {
+      "id": "M1-RPM-232",
+      "fromStatus": "RPM_ONLY",
+      "toStatus": "FAMILY_ACTIVE",
+      "normalizedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "materializedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "questionRefs": [
+        "B30:24"
+      ],
+      "templateKeys": [
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_GROUP_COUNT_COMPARISON",
+        "TPL_M1_DATA_CATEGORY_PERCENTAGE_TOP_CUTOFF_GROUP_COMPARISON"
+      ]
+    }
+  ],
+  "r1AssignmentSubUnitOverrides": [
+    {
+      "exam": "B21",
+      "q": 4,
+      "crosswalkRecordId": "M1-RPM-099",
+      "sourceSubUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+      "selectedSubUnitKey": "M1-07-SOLID_FIGURE",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B21",
+      "q": 15,
+      "crosswalkRecordId": "M1-RPM-108",
+      "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B21",
+      "q": 16,
+      "crosswalkRecordId": "M1-RPM-109",
+      "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B21",
+      "q": 17,
+      "crosswalkRecordId": "M1-RPM-109",
+      "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B21",
+      "q": 20,
+      "crosswalkRecordId": "M1-RPM-108",
+      "sourceSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "selectedSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B26",
+      "q": 10,
+      "crosswalkRecordId": "M1-RPM-161",
+      "sourceSubUnitKey": "M1-03-LINEAR_EQUATION",
+      "selectedSubUnitKey": "M1-03-LINEAR_EQUATION_WORD",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B30",
+      "q": 20,
+      "crosswalkRecordId": "M1-RPM-229",
+      "sourceSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "selectedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    },
+    {
+      "exam": "B30",
+      "q": 24,
+      "crosswalkRecordId": "M1-RPM-232",
+      "sourceSubUnitKey": "M1-08-DATA_ORGANIZATION",
+      "selectedSubUnitKey": "M1-08-DATA_INTERPRETATION",
+      "evidence": "Explicit R2E assignment aligned the curriculum L2 to the exact active RPM/canonical binding."
+    }
+  ],
+  "remainingUnassignedCrosswalkCounts": {
+    "recordCount": 232,
+    "DIRECT_ACTIVE": 73,
+    "RPM_ONLY": 108,
+    "DIRECT_BINDING_GAP": 11,
+    "FAMILY_ACTIVE": 38,
+    "FAMILY_BINDING_GAP": 2
+  }
+}
