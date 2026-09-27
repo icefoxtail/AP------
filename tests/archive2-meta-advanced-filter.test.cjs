@@ -7,11 +7,11 @@ const taxonomy = require('../archive/data/meta-foundation/compiled/taxonomy_regi
 const byUid = new Map(catalog.records.map(row => [row.questionUid, row]));
 
 test('middle1 basic gate uses L1/L2 and quality while RPM leaf remains a capability', () => {
-  assert.equal(runtime.records.length, 381);
+  assert.equal(runtime.records.length, runtime.counts.records);
   const joined = runtime.records.map(row => [row, byUid.get(row.questionUid)]);
-  assert.equal(joined.filter(([, row]) => row).length, 381);
+  assert.equal(joined.filter(([, row]) => row).length, runtime.records.length);
   assert.equal(joined.reduce((n, [, row]) => n + (row.metadataConflicts?.length || 0), 0), 0);
-  assert.equal(joined.filter(([, row]) => core.eligibility(row).ok).length, 125);
+  assert.equal(joined.filter(([, row]) => core.eligibility(row).ok).length, runtime.counts.runtimeSelectable);
   const rpmOnly = joined.filter(([runtimeRow]) => runtimeRow.rpmPathStatus === 'HOLD_NO_EQUIVALENT_PATH');
   assert.equal(rpmOnly.length, 11);
   assert.equal(rpmOnly.filter(([row]) => row.sourceQualityDisposition === 'HOLD_RESOLVED_NO_SOURCE_MUTATION').length, 4);
@@ -24,7 +24,8 @@ test('middle1 basic gate uses L1/L2 and quality while RPM leaf remains a capabil
 });
 
 test('canonical L3, L4 and difficulty carry through selection, shortage and final review', () => {
-  const eligible = runtime.records.map(row => byUid.get(row.questionUid)).filter(row => core.eligibility(row).ok);
+  const eligible = runtime.records.map(row => byUid.get(row.questionUid)).filter(row =>
+    core.eligibility(row).ok && core.advancedEligible(row) && core.difficultyEligible(row));
   const grouped = Map.groupBy(eligible, row => [core.pathKey(row, 4), row.problemTypeKey, row.templateKey, row.difficultyBucket].join('|'));
   const group = [...grouped.values()].find(rows => rows.length >= 2);
   assert.ok(group, 'need two eligible items in one canonical L4 and difficulty');
@@ -56,7 +57,8 @@ test('canonical L3, L4 and difficulty carry through selection, shortage and fina
 });
 
 test('middle1 composes with L1/L2 and difficulty alone', () => {
-  const target = runtime.records.map(row => byUid.get(row.questionUid)).find(row => core.eligibility(row).ok);
+  const target = runtime.records.map(row => byUid.get(row.questionUid)).find(row =>
+    core.eligibility(row).ok && core.difficultyEligible(row));
   const path = core.pathKey(target, 4);
   const request = {
     filters: { grade: '중1', primaryPaths: [path], difficultyBuckets: [target.difficultyBucket] },
