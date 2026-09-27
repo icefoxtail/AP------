@@ -33,11 +33,8 @@
     "HOLD": 0
   },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 21,
-    "PROPOSED_NEW_L3": 0,
-    "PROPOSED_NEW_L4": 0,
-    "RPM_PRIMARY_MIGRATION_GAP": 0,
-    "TRUE_HOLD": 0
+    "EXISTING_REUSE": 19,
+    "FAMILY_REUSE": 2
   },
   "crossConceptDispositionSummary": {
     "ACTIVE_REUSE": 2,
@@ -49,17 +46,7 @@
     "HOLD": 0
   },
   "unresolvedItems": [],
-  "authorityRefs": [
-    "branch:work/intake/m2",
-    "parent:e6ae05ad02b2b357c2de239eab463e30d6f6b373",
-    "main:128ecbab0b67143c2bee53c41665daf1ef6ec3ce",
-    "sourceBlob:1a791354a985bf7dcc1703af23433d9a5d7aa321",
-    "normalization:work/meta-rpm-m1-m2-normalization@6f6bb93656055ebd1b0e32c9de5afb9b81c4b83a",
-    "crosswalk:0b9765009fdf8c1a832d248cf255a3c1fa609b59",
-    "migrationGapReassessment:62827b10da98076c4fa7d1c3fffa8dd4aade202d",
-    "rhsRhaCurriculumEvidence:6da3c391e8548d705e5fbf7e4b5a29bce98ef6c7",
-    "evidence:archive/data/r2e-intake/m2/24_신흥중_2학기_중간_중2_수학.evidence.json"
-  ],
+  "authorityRefs": [],
   "inputAuthority": {
     "branch": "work/intake/m2",
     "inputCommit": "e6ae05ad02b2b357c2de239eab463e30d6f6b373",
@@ -88,6 +75,21 @@
     }
   },
   "nextState": "READY_FOR_R2E",
-  "updatedAt": "2026-09-27T13:08:13+09:00",
-  "commitBinding": "SELF"
+  "updatedAt": "2026-09-27T13:45:35.227Z",
+  "commitBinding": "SELF",
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/24_신흥중_2학기_중간_중2_수학.meta.json",
+    "sha256": "21bf09b66b8ead99a0f5b95b5ab557a10ebb1795e263fac4df63f3e6ece33a36"
+  },
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "validatorSummary": {
+    "status": "PASS",
+    "validatorId": "rpm-active-resolver-v1",
+    "schemaVersion": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2",
+    "questionCount": 21,
+    "resolverPassCount": 21,
+    "difficultyPassCount": 21,
+    "relationalEvidenceCount": 21,
+    "receiptCommit": "05af01347f2630a46bf0939c05bd01ce57fb2646"
+  }
 }
