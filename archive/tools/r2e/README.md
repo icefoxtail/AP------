@@ -13,12 +13,13 @@ Archive/Meta/RPM 도구를 적용할 때 사용하는 실행 잠금, 입력 snap
 4. 최신 `origin/main` fetch 및 시작 SHA 기록.
 5. 최신 main의 `JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`, rules index/manifest,
    해당 source/correction/Meta/RPM/visual/검증 정본.
+6. 이 구현의 `AUTOMATION_PROMPT.md`. 예약 run의 구체 scope와 stop condition은 이 파일을 따른다.
 
 현재 사용자 지시가 기존 기본 금지보다 우선한다. 기존 dirty 파일을 수정하지 않는다.
 
 ## 6시간 예약
 
-서울 시간 00:00 / 06:00 / 12:00 / 18:00. 모델 `gpt-6-luna`, reasoning `max`.
+서울 시간 01:00 / 07:00 / 13:00 / 19:00. 모델 `gpt-6-luna`, reasoning `max`.
 사용자에게 보이는 예약 prompt는 `AUTOMATION_PROMPT.md`를 사용한다.
 새 run은 Git receipt와 checkpoint에서 상태를 복원하며 채팅을 authority로 사용하지 않는다.
 
@@ -47,8 +48,25 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 
 - 입력 branch는 `work/intake/m2`, `work/intake/m3` 두 개만 allowlist에 있다.
 - receipt는 정본의 `archive/data/r2e-intake/<grade>/<examUid>.json`을 읽는다.
+- `*.evidence.json`은 item-level R1 evidence sidecar이므로 receipt inventory에서 제외한다.
 - `nextState=READY_FOR_R2E`와 정본 최소 필드를 확인한다. item-level review evidence는
   Codex가 연결된 실제 ledger에서 확인하며 receipt 자체를 수학 PASS로 보지 않는다.
+- 구형 receipt의 `examFile`이 basename만 담으면 receipt commit의 고정 grade exam tree에서
+  정확히 하나인 JS path를 찾아 학기/시험 구분 디렉터리까지 정규화하고, frozen tree의 실제 JS
+  blob과 question denominator를 확인한다. `inputCommit`이 빠진 구형 receipt는 receipt
+  commit을 검증된 input commit으로 사용하되, 현재 JS/SVG blob이 동일하고 receipt lineage가
+  유효할 때만 허용한다. 구형 receipt의 `authorityRefs` 누락은 resolver sidecar 안의
+  최신 SHA-bound authority evidence로 보완되는 경우에만 허용한다. 새 receipt는 최신 정본의
+  필드를 그대로 기록해야 한다.
+- READY receipt에서 `metaResolutionEvidenceRef` 및/또는
+  `metaResolverContractVersion`이 빠지고, 그 밖의 누락이 위에서 설명한 검증 가능한
+  구형 `inputCommit`/`authorityRefs` 필드뿐이면
+  snapshot은 이를 R2E candidate로 세지 않고 `META_RECOVERY_REQUIRED`의
+  `metaRecoveryCandidates`로 반환한다. 먼저 `AUTOMATION_PROMPT.md`의 제한된
+  contract recovery를 수행하고, 검증 완료 뒤 새 snapshot에서 R2E eligibility를 판단한다.
+- receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
+  서로 독립인 입력의 진행을 막지 않는다. sidecar-only recovery가 exact projection parity를
+  만족할 수 없으면 `CONTRACT_RECOVERY_BLOCKED`로 남기며 validator나 exam bytes를 우회하지 않는다.
 - 두 HEAD를 먼저 고정한 뒤 각 고정 tree에서 inventory를 만든다.
 - 결과 receipt가 실제 들어간 commit을 `inputCommit`으로 동결한다. receipt 내부 inputCommit은
   `declaredInputCommit`으로 따로 보존하고 snapshot history의 조상인지 확인한다.
@@ -57,6 +75,10 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 - 원격 `work/r2e-state`가 있으면 `archive/data/r2e/<grade>/exams/*.json`을 먼저 복원한다.
 - 현재 run이 끝날 때까지 snapshot을 다시 만들어 대상 시험지를 추가하지 않는다.
 - `NO_WORK`면 guard를 종료한다. 잘못된 receipt는 파일별 오류로 남겨 다른 유효 입력을 막지 않는다.
+
+`META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
+요구하면 먼저 별도 receipt/sidecar backfill을 수행한다. pending recovery를 R2E final gate에
+넘기지 않는다.
 
 Snapshot과 stage 결과는 정본 경로의 파일로 저장하고 R2E 전용 durable branch에
 명시적으로 commit/push한다. ACK된 remote commit까지의 결과만 resume authority다.
