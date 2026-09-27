@@ -69,9 +69,10 @@ python archive/tools/geometry-equation/freeze-visual-baseline.py --run archive/_
 python archive/tools/geometry-equation/tests/build_visual_fixtures.py --run archive/_generated/geometry-visual-engine/<runId>
 ```
 
-The baseline binds the current integration branch name and HEAD. The seal
-requires that HEAD remains descended from that frozen baseline and checks the
-current branch against the recorded value. The original 996 source-branch
+The baseline binds the fetched `origin/main` SHA, integration branch name, and
+integration start HEAD. The seal requires that integration HEAD remains
+descended from the frozen main SHA and checks the current branch against the
+recorded value. The original 996 source-branch
 evidence files are historical only; requalification evidence is regenerated
 under the new run id and remains ignored.
 
@@ -80,7 +81,7 @@ and environment configuration. No personal executable paths are embedded.
 Performance is measured after correctness, without inventing a latency budget.
 
 The original v22 production verifier runs in a byte-identical shadow. The
-Phase0 baseline already has 99 targets against its fixed historical 94 and
+Source-branch Phase0 had 99 targets against its fixed historical 94 and
 eight raw FAIL rows. Code regression uses baseline input/verifier parity and
 retains every raw FAIL. The readiness seal records these inherited findings
 outside its code qualification scope; they still block those production rows
@@ -144,6 +145,8 @@ This branch intentionally committed its qualification evidence for the experimen
 
 The branch-specific `.gitattributes` rule for `/archive/_generated/geometry-visual-engine/**` is also not a production requirement and must not override the current generated-artifact policy.
 
+These are historical source-branch review findings. The current-main integration outcome is recorded below.
+
 ### Required integration sequence
 
 1. Start from the **latest main**, not the stale branch tip.
@@ -158,6 +161,20 @@ The branch-specific `.gitattributes` rule for `/archive/_generated/geometry-visu
    - 12 native Archive cases
    - inherited v22 regression
 6. Only after the current-main qualification passes, enter the **Geometry Equation FULL PILOT**.
+
+## Latest-main integration qualification — 2026-09-27
+
+- Frozen base: `a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f` (`origin/main`)
+- Integration branch: `codex/geometry-visual-engine-main-integration`
+- Code-ready run: `archive/_generated/geometry-visual-engine/main-integration-v2/`
+- Source inventory import: 51 files from the source seal's 52 codeFiles (branch-only `.gitattributes` excluded)
+- Qualification: Python 88 PASS; Node 37 PASS; static/actual SVG 13/13; deterministic rebuild 13/13; rendered bbox 26/26; native Archive 12/12
+- Protected production mutation: 0 across 4,498 files; six existing independent verifiers remain byte-identical
+- New-engine `REGRESSION_FAIL=0`, `UNRESOLVED_P0=0`, `UNRESOLVED_P1=0`
+- Latest-main v22 raw verifier: 89 PASS / 10 FAIL. All eight inherited source-qualification FAILs remain; two additional latest-main findings are recorded separately. No v22 finding was repaired or relabeled PASS.
+- Generated evidence is local and ignored; no `archive/_generated/**` files are in the integration diff.
+
+This qualifies shared visual-engine code and isolated candidate fixtures. It does not make engine modernization a prerequisite for ordinary Past Exam FINAL/APPLY or authorize production SVG migration.
 7. Production-wide migration and canonical pipeline promotion remain blocked until that FULL PILOT and independent review pass.
 
 ### Pipeline connection decision
