@@ -2,7 +2,7 @@
   "originMain": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
   "successfulExamCountForBatchDate": 5,
   "batchDate": "2026-09-27",
-  "updatedAt": "2026-09-27T20:59:05.6146324Z",
+  "updatedAt": "2026-09-27T21:38:55Z",
   "activeRunId": null,
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 5,
@@ -16,7 +16,15 @@
       "runId": "source-intake-2026-09-27-2343-kst",
       "skippedDuplicates": 3,
       "queueRevision": 2,
-      "updatedAt": "2026-09-27T20:26:31.561Z"
+      "updatedAt": "2026-09-27T20:26:31.561Z",
+      "questionLayoutBackfillStatus": "PASS_STATIC_RENDER_HANDOFF",
+      "questionLayoutBackfillTargetSha": "sha256:15ec46edea3ce2f5b0f97fa4aac90505e35a218e43b1f36e6bee5d2a24a9dd6c",
+      "questionLayoutChangedCount": 14,
+      "questionLayoutHoldCount": 0,
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "questionLayoutFreezeStatus": "PASS_STATIC_RENDER_HANDOFF"
     }
   ],
   "owner": "primary-worker",
@@ -29,7 +37,7 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-09-28T05:59:05+09:00",
+  "updatedAtKst": "2026-09-28T06:38:55+09:00",
   "heldExamCount": 2,
   "priorityGroupRemainingAfterBatch": 0,
   "questionLayoutBackfillTargets": [
@@ -48,6 +56,100 @@
     }
   ],
   "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "questionLayoutBackfillStatus": "PENDING_BACKFILL",
-  "nextStartPoint": "Next scheduled execution starts with the new transcription/layout gates. This run is the only designated prior-batch backfill target; do not add other completed historical batches."
+  "questionLayoutBackfillStatus": "PASS_STATIC_RENDER_HANDOFF",
+  "nextStartPoint": "Backfill closed for these five exams. The next scheduled source-intake run rechecks eligible high1 second-semester finals from the newest year under the unchanged queue rules, applying exact transcription and layout gates from the start.",
+  "questionLayoutBackfillCompletedAtUtc": "2026-09-27T21:38:55Z",
+  "questionLayoutBackfillCompletedAtKst": "2026-09-28T06:38:55+09:00",
+  "questionLayoutChangedCount": 14,
+  "questionLayoutHoldCount": 0,
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "questionLayoutBackfillTargetSha": "sha256:77ae10f14918cdf35761b299fb3a222c4de139df5a9f8c747112cb80507287b0",
+  "questionLayoutFreezeStatus": "PASS_STATIC_RENDER_HANDOFF",
+  "questionLayoutChangedQuestions": [
+    {
+      "examId": "20_매산여고_2학기_기말_고1_기출",
+      "qid": 20,
+      "sourceQuestionNo": "주관식3",
+      "sourcePageNo": 6
+    },
+    {
+      "examId": "20_매산여고_2학기_기말_고1_기출",
+      "qid": 21,
+      "sourceQuestionNo": "주관식4",
+      "sourcePageNo": 6
+    },
+    {
+      "examId": "20_매산여고_2학기_기말_고1_기출",
+      "qid": 22,
+      "sourceQuestionNo": "주관식5",
+      "sourcePageNo": 6
+    },
+    {
+      "examId": "20_순천여고_2학기_기말_고1_기출",
+      "qid": 21,
+      "sourceQuestionNo": "서술형1",
+      "sourcePageNo": 5
+    },
+    {
+      "examId": "20_순천여고_2학기_기말_고1_기출",
+      "qid": 22,
+      "sourceQuestionNo": "서술형2",
+      "sourcePageNo": 5
+    },
+    {
+      "examId": "20_순천여고_2학기_기말_고1_기출",
+      "qid": 23,
+      "sourceQuestionNo": "서술형3",
+      "sourcePageNo": 5
+    },
+    {
+      "examId": "19_강남여고_2학기_기말_고1_기출",
+      "qid": 23,
+      "sourceQuestionNo": "서술형1",
+      "sourcePageNo": 4
+    },
+    {
+      "examId": "19_강남여고_2학기_기말_고1_기출",
+      "qid": 24,
+      "sourceQuestionNo": "서술형2",
+      "sourcePageNo": 4
+    },
+    {
+      "examId": "19_강남여고_2학기_기말_고1_기출",
+      "qid": 25,
+      "sourceQuestionNo": "서술형3",
+      "sourcePageNo": 4
+    },
+    {
+      "examId": "19_금당고_2학기_기말_고1_기출",
+      "qid": 21,
+      "sourceQuestionNo": "서술형1",
+      "sourcePageNo": 4
+    },
+    {
+      "examId": "19_금당고_2학기_기말_고1_기출",
+      "qid": 22,
+      "sourceQuestionNo": "서술형2",
+      "sourcePageNo": 4
+    },
+    {
+      "examId": "19_팔마고_2학기_기말_고1_기출",
+      "qid": 19,
+      "sourceQuestionNo": "서술형1",
+      "sourcePageNo": 5
+    },
+    {
+      "examId": "19_팔마고_2학기_기말_고1_기출",
+      "qid": 20,
+      "sourceQuestionNo": "서술형2",
+      "sourcePageNo": 6
+    },
+    {
+      "examId": "19_팔마고_2학기_기말_고1_기출",
+      "qid": 21,
+      "sourceQuestionNo": "서술형3",
+      "sourcePageNo": 6
+    }
+  ]
 }
