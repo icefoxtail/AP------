@@ -6,7 +6,8 @@ import { fileURLToPath } from 'node:url';
 import {
   BASE_MAIN_SHA, CANONICAL_DIR, CROSSWALK_DIR, EVIDENCE_DIR, MASTER_PATH, RPM,
   collectGlobalActive, exactBindings, flattenMaster, masterKey, reviewedProblemTypeDisposition,
-  semanticKey, validateRpmSources, viewMismatch,
+  semanticKey, targetedFalsePassRegressionErrors, targetedFalsePassRule,
+  validateRpmSources, viewMismatch,
 } from './normalize-rpm-primary-m1-m2.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -243,6 +244,11 @@ export function missingCanonicalPathSentinels(masterRows, crosswalkRows) {
   });
 }
 
+export function validateTargetedFalsePassAudit(rows, options = {}) {
+  const errors = targetedFalsePassRegressionErrors(rows, options);
+  return { status: errors.length ? 'FAIL' : 'PASS', errors };
+}
+
 function mappingSemanticAudit(row, baseline, global) {
   const status = row.mappingStatus;
   const candidates = row.templateKey ? [{ templateKey: row.templateKey }] : (row.templateCandidates || []);
@@ -251,6 +257,10 @@ function mappingSemanticAudit(row, baseline, global) {
   const bindings = pt ? exactBindings(global, row) : [];
   const baselineStatus = baseline?.mappingStatus || 'MISSING_RPM_RECORD';
   const baselineHasMap = Boolean(baseline?.problemTypeKey);
+  const targetedRule = targetedFalsePassRule(row);
+  const reportedBaselineStatus = targetedRule
+    ? targetedRule.existingMappingStatusById?.[row.id] || targetedRule.rejectStatuses[0]
+    : baselineStatus;
   const baselineCandidateKeys = (baseline?.templateCandidates || []).map(x => typeof x === 'string' ? x : x.templateKey).filter(Boolean);
   const currentCandidateKeys = (row.templateCandidates || []).map(x => x.templateKey).filter(Boolean);
   let semanticRelation;
@@ -259,7 +269,15 @@ function mappingSemanticAudit(row, baseline, global) {
   let repairAction;
   let memo;
 
-  if (!baseline && row.curriculum === '2015' && row.scope === 'M2-2' && row.l3 === '직각삼각형의 합동') {
+  if (targetedRule) {
+    semanticRelation = targetedRule.semanticRelation;
+    defectType = targetedRule.defectType;
+    priorDefectType = reportedBaselineStatus === 'DIRECT_BINDING_GAP' ? 'BINDING_ONLY_GAP' : 'FALSE_DIRECT_PASS';
+    repairAction = status === 'RPM_ONLY'
+      ? 'REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY'
+      : 'FAIL_CLOSED_FALSE_PASS_MUST_BE_RPM_ONLY';
+    memo = targetedRule.reason + ' Confirmed by GPT independent review; narrow canonical definitions remain unchanged.';
+  } else if (!baseline && row.curriculum === '2015' && row.scope === 'M2-2' && row.l3 === '직각삼각형의 합동') {
     semanticRelation = 'DIRECT_EQUIVALENT_EXISTING_GLOBAL_ACTIVE';
     defectType = 'RPM_2015_OMISSION';
     repairAction = 'ADD_RPM_PATH_AND_REUSE_PT_TPL_BINDING';
@@ -317,10 +335,40 @@ function mappingSemanticAudit(row, baseline, global) {
   }
 
   const binding = bindings.find(x => x.status === 'ACTIVE') || null;
+  const reviewedProblemType = targetedRule ? global.problemTypes.get(targetedRule.problemTypeKey) : null;
+  const reviewedTemplateKeys = targetedRule ? [targetedRule.templateKey] : [];
+  const reviewedTemplates = reviewedTemplateKeys.map(templateKey => global.templates.get(templateKey)).filter(Boolean);
+  const reviewedExactBindings = targetedRule
+    ? exactBindings(global, { ...row, problemTypeKey: targetedRule.problemTypeKey }) : [];
+  const reviewedExactBindingStatus = reviewedExactBindings.find(binding => binding.status === 'ACTIVE')?.status || 'MISSING';
+  const reviewedMappingEvidence = reviewedProblemType ? {
+    problemTypeKey: baseline.problemTypeKey, canonicalLabelKo: reviewedProblemType.canonicalLabelKo,
+    definition: reviewedProblemType.definition, ownerPack: reviewedProblemType.ownerPack,
+    status: reviewedProblemType.status,
+    supportingItemCount: reviewedProblemType.supportingItemCount ?? reviewedProblemType.supportingQuestionUids?.length ?? 0,
+    supportingQuestionUids: reviewedProblemType.supportingQuestionUids || [],
+    exactBindingStatus: reviewedExactBindingStatus,
+    exactCurriculumBindings: reviewedExactBindings,
+    templates: reviewedTemplates.map(template => ({
+      templateKey: template.templateKey, canonicalLabelKo: template.canonicalLabelKo,
+      definition: template.definition, internalSkeleton: template.internalSkeleton,
+      status: template.status, parentProblemTypeKey: template.parentProblemTypeKey,
+      ownerPack: template.ownerPack,
+      supportingItemCount: template.supportingItemCount ?? template.supportingQuestionUids?.length ?? 0,
+      supportingQuestionUids: template.supportingQuestionUids || [],
+    })),
+  } : null;
   return {
     semanticRelation, defectType, priorDefectType, repairAction, semanticReason: memo,
-    existingMappingStatus: baselineStatus,
-    existingPTTPL: baseline ? {
+    ...(targetedRule ? {
+      reviewOrigin: 'GPT_INDEPENDENT_REVIEW', reviewFamily: targetedRule.family, reviewedMappingEvidence,
+    } : {}),
+    existingMappingStatus: reportedBaselineStatus,
+    existingPTTPL: targetedRule ? {
+      problemTypeKey: targetedRule.problemTypeKey, templateKey: targetedRule.templateKey, templateCandidates: [],
+      ownerPack: reviewedProblemType?.ownerPack || '',
+      bindingStatus: reportedBaselineStatus.endsWith('_GAP') ? 'MISSING' : 'ACTIVE',
+    } : baseline ? {
       problemTypeKey: baseline.problemTypeKey || '', templateKey: baseline.templateKey || '',
       templateCandidates: baseline.templateCandidates || [], ownerPack: baseline.ownerPack || '',
       bindingStatus: baseline.bindingStatus || 'MISSING',
@@ -412,8 +460,10 @@ export function buildAuditArtifacts() {
       rpmL2: row.midUnit,
       rpmL3: row.l3,
       rpmL4: row.l4,
-      existingMappingStatus: oldCross?.mappingStatus || 'MISSING_RPM_RECORD',
-      existingPTTPL: oldCross ? { problemTypeKey: oldCross.problemTypeKey || '', templateKey: oldCross.templateKey || '', templateCandidates: oldCross.templateCandidates || [], ownerPack: oldCross.ownerPack || '', bindingStatus: oldCross.bindingStatus || 'MISSING' } : null,
+      existingMappingStatus: crossAudit?.reviewOrigin === 'GPT_INDEPENDENT_REVIEW' ? crossAudit.existingMappingStatus : oldCross?.mappingStatus || 'MISSING_RPM_RECORD',
+      existingPTTPL: crossAudit?.reviewOrigin === 'GPT_INDEPENDENT_REVIEW' ? crossAudit.existingPTTPL
+        : oldCross ? { problemTypeKey: oldCross.problemTypeKey || '', templateKey: oldCross.templateKey || '', templateCandidates: oldCross.templateCandidates || [], ownerPack: oldCross.ownerPack || '', bindingStatus: oldCross.bindingStatus || 'MISSING' } : null,
+      ...(crossAudit?.reviewedMappingEvidence ? { reviewedMappingEvidence: crossAudit.reviewedMappingEvidence } : {}),
       semanticRelation,
       initialSemanticRelation,
       curriculumPresence2015: counterparts.length > 0 || Boolean(relocated),
@@ -430,9 +480,10 @@ export function buildAuditArtifacts() {
         : crossAudit?.repairAction || 'NONE',
       pairedRecords: counterparts.map(other => ({ curriculum: other.curriculum, scope: other.scope, rpmL1: other.majorUnit, rpmL2: other.midUnit, rpmL3: other.l3, rpmL4: other.l4 })),
       relocatedCurriculumEvidence: relocated,
-      semanticReason: angleBisectorNeedsEvidence ? '2015 M2-2 view has no standalone angle-bisector theorem leaf; available curriculum/lesson evidence does not settle whether 2022 angle-bisector leaves represent a legitimate curriculum extension or a 2015 taxonomy omission.'
+      semanticReason: angleBisectorNeedsEvidence ? '2015 M2-2 view has no standalone angle-bisector theorem leaf; available curriculum/lesson evidence does not settle whether 2022 angle-bisector leaves represent a legitimate curriculum extension or a 2015 RPM taxonomy omission.'
         : relocated ? 'The 2015 curriculum places representative-value content in M3-2, while the 2022 RPM M1-2 scope contains it in M1-2; this is a grade-placement difference, not an omission.'
           : crossAudit?.semanticReason || 'Matched the same semantic L4 in both curriculum scope views; L1/L2 label changes are preserved.' ,
+      ...(crossAudit?.reviewOrigin ? { reviewOrigin: crossAudit.reviewOrigin, reviewFamily: crossAudit.reviewFamily } : {}),
       evidence: angleBisectorNeedsEvidence
         ? ['docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md', 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-2.md', SOURCE_EVIDENCE.curriculum2015, SOURCE_EVIDENCE.curriculum2022]
         : relocated ? [scopeViewPathEvidence('2015', 'M3-2'), scopeViewPathEvidence('2022', 'M1-2'), SOURCE_EVIDENCE.curriculum2015, SOURCE_EVIDENCE.curriculum2022]
@@ -463,6 +514,7 @@ export function buildAuditArtifacts() {
         sourceScopePath: `${RPM}/${row.curriculum === '2015' ? '01_2015' : '02_2022'}/MIDDLE/${row.scope}.md`,
         masterPath: MASTER_PATH,
         crosswalkFile: CROSSWALK_FILES[grade],
+        ...(details.reviewOrigin ? { reviewOrigin: details.reviewOrigin, reviewFamily: details.reviewFamily } : {}),
       },
       rpmRecordFoundInMaster: Boolean(rpmRecord),
     });
@@ -473,6 +525,8 @@ export function buildAuditArtifacts() {
   const familyErrors = crosswalkAuditRows.filter(row => row.finalMappingStatus.startsWith('FAMILY') && row.familyCoverage?.coverage !== 'COMPLETE');
   const structuralErrors = crosswalkAuditRows.filter(row => row.finalPTTPL && (row.finalPTTPL.status !== 'ACTIVE' || row.finalPTTPL.templates.some(template => template.status !== 'ACTIVE' || template.parentProblemTypeKey !== row.finalPTTPL.problemTypeKey)));
   const bindingErrors = crosswalkAuditRows.filter(row => row.finalMappingStatus.endsWith('_ACTIVE') !== (row.exactBindingStatus === 'ACTIVE'));
+  const targetedFalsePassAudit = validateTargetedFalsePassAudit(allFinalCrosswalkRows);
+  const targetedFalsePassErrors = targetedFalsePassAudit.errors;
   const allDirectRelations = crosswalkAuditRows.filter(row => row.finalMappingStatus.startsWith('DIRECT') && !['DIRECT_EQUIVALENT', 'REUSED_BROADER_GLOBAL_ACTIVE_MATCH', 'DIRECT_EQUIVALENT_EXISTING_GLOBAL_ACTIVE'].includes(row.semanticRelation));
   const summary = {
     baseMainSha: BASE_MAIN_SHA,
@@ -505,6 +559,14 @@ export function buildAuditArtifacts() {
       exactBindingStatusMismatchErrors: bindingErrors.length,
       incompleteFamilyCandidateSets: familyErrors.length,
       directSemanticEquivalenceErrors: allDirectRelations.length,
+      targetedFalsePassErrors: targetedFalsePassErrors.length,
+    },
+    targetedFalsePassViolations: targetedFalsePassErrors,
+    targetedFalsePassReview: {
+      reviewOrigin: 'GPT_INDEPENDENT_REVIEW',
+      rowCount: crosswalkAuditRows.filter(row => row.reviewOrigin === 'GPT_INDEPENDENT_REVIEW').length,
+      familyCounts: countBy(crosswalkAuditRows.filter(row => row.reviewOrigin === 'GPT_INDEPENDENT_REVIEW'), 'reviewFamily'),
+      finalRpmOnlyRows: crosswalkAuditRows.filter(row => row.reviewOrigin === 'GPT_INDEPENDENT_REVIEW' && row.finalMappingStatus === 'RPM_ONLY').length,
     },
     globalActive: { activePackCount: global.activePacks.length, activePacks: global.activePacks,
       activeProblemTypeCount: global.problemTypes.size, activeTemplateCount: global.templates.size,
@@ -513,8 +575,14 @@ export function buildAuditArtifacts() {
   };
 
   if (missingCrosswalkRows.length || orphanCrosswalkRows.length || crosswalkAuditRows.length !== rpmRows.length || sentinelErrors.length) throw new Error(`Crosswalk denominator parity failed: ${JSON.stringify({ missingCrosswalkRows, orphanCrosswalkRows, sentinelErrors, crosswalkRows: crosswalkAuditRows.length, masterRows: rpmRows.length })}`);
-  if (familyErrors.length || structuralErrors.length || bindingErrors.length || allDirectRelations.length) {
-    throw new Error(`Crosswalk semantic integrity failed: ${JSON.stringify({ familyErrors: familyErrors.map(x => x.rpmRecordId), structuralErrors: structuralErrors.map(x => x.rpmRecordId), bindingErrors: bindingErrors.map(x => x.rpmRecordId), allDirectRelations: allDirectRelations.map(x => x.rpmRecordId) })}`);
+  if (familyErrors.length || structuralErrors.length || bindingErrors.length || allDirectRelations.length || targetedFalsePassErrors.length) {
+    throw new Error('Crosswalk semantic integrity failed: ' + JSON.stringify({
+      familyErrors: familyErrors.map(x => x.rpmRecordId),
+      structuralErrors: structuralErrors.map(x => x.rpmRecordId),
+      bindingErrors: bindingErrors.map(x => x.rpmRecordId),
+      allDirectRelations: allDirectRelations.map(x => x.rpmRecordId),
+      targetedFalsePassErrors,
+    }));
   }
 
   return {
@@ -545,6 +613,9 @@ function summarizeCrosswalkChanges(baselineMap, crosswalkData) {
 
 function writeAudits() {
   const result = buildAuditArtifacts();
+  const validationErrorCount = Object.values(result.summary.validationResults).reduce((sum, count) => sum + count, 0);
+  const status = validationErrorCount === 0 ? 'PASS' : 'FAIL';
+  if (status !== 'PASS') throw new Error('M1/M2 audit failed closed: ' + JSON.stringify(result.summary.validationResults));
   writeJson(`${EVIDENCE_DIR}/rpm-completeness-audit.json`, result.rpmCompleteness);
   writeJson(`${EVIDENCE_DIR}/crosswalk-semantic-audit.json`, result.crosswalkSemantic);
   const out = {
@@ -559,7 +630,7 @@ function writeAudits() {
     artifactPaths: [`${EVIDENCE_DIR}/rpm-completeness-audit.json`, `${EVIDENCE_DIR}/crosswalk-semantic-audit.json`, `${EVIDENCE_DIR}/rhs-rha-curriculum-evidence.json`],
   };
   writeJson(`${EVIDENCE_DIR}/AUDIT_SUMMARY.json`, out);
-  console.log(JSON.stringify({ status: 'PASS', summary: result.summary, artifacts: out.artifactPaths }, null, 2));
+  console.log(JSON.stringify({ status, summary: result.summary, artifacts: out.artifactPaths }, null, 2));
 }
 
 function main() {

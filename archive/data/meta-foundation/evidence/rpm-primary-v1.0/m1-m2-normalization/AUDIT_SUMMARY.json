@@ -10,14 +10,15 @@
       "NEEDS_EVIDENCE": 2
     },
     "rpmDefectTypeRows": {
-      "SAFE_EXISTING_REUSE": 97,
+      "SAFE_EXISTING_REUSE": 80,
       "DIRECT_OVERMAPPING": 26,
       "FAMILY_INCOMPLETE": 16,
+      "WRONG_TEMPLATE": 28,
       "WRONG_PT": 19,
       "RPM_ONLY_VALID": 186,
-      "BINDING_ONLY_GAP": 102,
-      "WRONG_TEMPLATE": 12,
+      "BINDING_ONLY_GAP": 101,
       "RPM_2015_OMISSION": 2,
+      "SEMANTIC_DIRECTION_MISMATCH": 2,
       "LEGIT_CURRICULUM_DIFFERENCE": 6,
       "NEEDS_EVIDENCE": 2
     },
@@ -49,36 +50,37 @@
     "crosswalkFinalSummary": {
       "middle1": {
         "recordCount": 232,
-        "DIRECT_ACTIVE": 61,
+        "DIRECT_ACTIVE": 45,
         "FAMILY_ACTIVE": 2,
         "DIRECT_BINDING_GAP": 22,
         "FAMILY_BINDING_GAP": 2,
-        "RPM_ONLY": 145
+        "RPM_ONLY": 161
       },
       "middle2": {
         "recordCount": 236,
-        "DIRECT_ACTIVE": 32,
+        "DIRECT_ACTIVE": 31,
         "FAMILY_ACTIVE": 2,
-        "DIRECT_BINDING_GAP": 68,
+        "DIRECT_BINDING_GAP": 67,
         "FAMILY_BINDING_GAP": 14,
-        "RPM_ONLY": 120
+        "RPM_ONLY": 122
       }
     },
     "crosswalkDefectTypeRows": {
-      "SAFE_EXISTING_REUSE": 97,
+      "SAFE_EXISTING_REUSE": 80,
       "DIRECT_OVERMAPPING": 26,
       "FAMILY_INCOMPLETE": 16,
+      "WRONG_TEMPLATE": 28,
       "WRONG_PT": 23,
       "RPM_ONLY_VALID": 188,
-      "BINDING_ONLY_GAP": 106,
-      "WRONG_TEMPLATE": 12
+      "BINDING_ONLY_GAP": 105,
+      "SEMANTIC_DIRECTION_MISMATCH": 2
     },
-    "crosswalkFinalRpmOnlyRows": 265,
-    "bindingOnlyGapCrosswalkRows": 106,
+    "crosswalkFinalRpmOnlyRows": 283,
+    "bindingOnlyGapCrosswalkRows": 105,
     "semanticRepairs": {
-      "KEEP": 379,
+      "KEEP": 361,
       "DIRECT_TO_FAMILY": 6,
-      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 77,
+      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 95,
       "PT_TPL_REMAP": 4,
       "BINDING_STATUS_RECONCILED": 0,
       "NEW_RPM_PATH": 2,
@@ -93,7 +95,8 @@
       "activeProblemTypeTemplateParentIntegrityErrors": 0,
       "exactBindingStatusMismatchErrors": 0,
       "incompleteFamilyCandidateSets": 0,
-      "directSemanticEquivalenceErrors": 0
+      "directSemanticEquivalenceErrors": 0,
+      "targetedFalsePassErrors": 0
     },
     "globalActive": {
       "activePackCount": 10,
@@ -130,6 +133,18 @@
         "l4": "거리 관계"
       }
     ],
+    "targetedFalsePassViolations": [],
+    "targetedFalsePassReview": {
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "rowCount": 18,
+      "familyCounts": {
+        "M1_RATIONAL_PROPERTY_JUDGMENT": 6,
+        "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT": 6,
+        "M1_SPATIAL_OBJECT_MISMATCH": 4,
+        "M2_PARALLEL_CONVERSE_DIRECTION": 2
+      },
+      "finalRpmOnlyRows": 18
+    },
     "migrationGapReassessment": {
       "previousMigrationGapItems": 20,
       "existingReuseRecovered": 4,
@@ -171,5 +186,30 @@
     "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json",
     "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json"
   ],
-  "branchRebasedOntoMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d"
+  "branchRebasedOntoMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "pinpointFalsePassReview": {
+    "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+    "rowCount": 18,
+    "familyCounts": {
+      "M1_RATIONAL_PROPERTY_JUDGMENT": 6,
+      "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT": 6,
+      "M1_SPATIAL_OBJECT_MISMATCH": 4,
+      "M2_PARALLEL_CONVERSE_DIRECTION": 2
+    },
+    "finalRpmOnlyRows": 18,
+    "targetedRegression": "PASS",
+    "resolver468Rows": "PASS",
+    "activeResolverRuntime": "PASS",
+    "activeResolverTestCount": "16/16",
+    "m1M2CrosswalkTestCount": "9/9",
+    "rhsRhaRegression": "PASS",
+    "shinheungQ6Q7": "EXISTING_REUSE",
+    "middle3GitBlobUnchanged": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "m3NormalizationArtifactsChanged": 0,
+    "mainMutationCount": 0,
+    "mainMerged": false,
+    "latestMainObservedSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
+    "targetFilesDriftedSinceReviewSha": [],
+    "reviewedBranchSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333"
+  }
 }
