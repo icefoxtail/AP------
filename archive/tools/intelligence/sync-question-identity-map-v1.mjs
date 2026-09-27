@@ -77,10 +77,33 @@ function readWorkingBank(sourceFile) {
 }
 function readHistoricalBank(ref, sourceFile) {
   const file = normalizeFile(sourceFile);
-  const code = execFileSync('git', ['-C', repoRoot, 'show', `${ref}:archive/exams/${file}`], {
-    maxBuffer: 32 * 1024 * 1024
-  }).toString('utf8');
-  return runJs(`${ref}:archive/exams/${file}`, code);
+  const target = `archive/exams/${file}`;
+  const candidates = [];
+  if (ref) candidates.push(ref);
+
+  try {
+    const history = execFileSync(
+      'git',
+      ['-C', repoRoot, 'log', '-n', '12', '--format=%H', '--all', '--', target],
+      { maxBuffer: 2 * 1024 * 1024 }
+    ).toString('utf8').trim().split(/\r?\n/).filter(Boolean);
+    for (const commit of history) {
+      candidates.push(commit, commit + '^');
+    }
+  } catch {}
+
+  const seen = new Set();
+  for (const candidate of candidates) {
+    if (!candidate || seen.has(candidate)) continue;
+    seen.add(candidate);
+    try {
+      const code = execFileSync('git', ['-C', repoRoot, 'show', `${candidate}:${target}`], {
+        maxBuffer: 32 * 1024 * 1024
+      }).toString('utf8');
+      return runJs(`${candidate}:${target}`, code);
+    } catch {}
+  }
+  throw new Error('historical source not found for rename verification: ' + file);
 }
 function detectSourcePathRenames(records, dbFiles, identitySourceCommit) {
   const dbSet = new Set(dbFiles);
@@ -122,6 +145,17 @@ function detectSourcePathRenames(records, dbFiles, identitySourceCommit) {
       usedStaleFiles.add(from);
       renameMap.set(from, freshFile);
       renamedFiles.push({ from, to: freshFile, questionCount: currentBank.length });
+      continue;
+    }
+
+    const sameFamilyStale = staleFiles.filter(staleFile =>
+      !usedStaleFiles.has(staleFile) && sourceRenameFamily(staleFile) === family
+    );
+    if (sameFamilyStale.length) {
+      throw new Error(
+        'source path rename candidate could not be verified: ' +
+        freshFile + ' <- ' + sameFamilyStale.join(', ')
+      );
     }
   }
   return { renameMap, renamedFiles, currentBanks };
