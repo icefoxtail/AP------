@@ -19,7 +19,7 @@ import {
 } from './normalize-rpm-primary-m1-m2.mjs';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-export const M3_BASE_MAIN_SHA = '1baada0ab3ae6f13528edc6a6feb12ff8848479d';
+export const M3_BASE_MAIN_SHA = 'a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f';
 export const M3_SCOPES = ['M3-1', 'M3-2'];
 export const M3_CROSSWALK_PATH = `${CROSSWALK_DIR}/middle3.json`;
 export const M3_EVIDENCE_DIR = 'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization';
@@ -763,7 +763,8 @@ function buildM3SemanticAudit() {
     rpm: { totalRecords: auditRows.length, semanticRelationCounts: semanticCounts,
       omissions: { initial2015: 0, repaired2015: 0, 2022: 0 }, finalDefectTypeCounts: defectCounts },
     crosswalk: { totalRecords: crosswalk.records.length, finalMappingStatusCounts: statusCounts,
-      normalizationCounts: normalization, exactBindingGaps: statusCounts.DIRECT_BINDING_GAP + statusCounts.FAMILY_BINDING_GAP },
+      normalizationCounts: normalization, exactBindingGaps: statusCounts.DIRECT_BINDING_GAP + statusCounts.FAMILY_BINDING_GAP,
+      wrongOwnerActiveBindingsReconciled: crosswalk.records.filter(row => row.m3OwnerMismatchBinding).length },
     migration: { previousM3MigrationGapReceipts: 0, recoveredExistingReuse: 0, actualBindingOnlyGaps: 0,
     remainingSemanticGaps: 0, unresolvedCurriculumEvidenceRows: auditRows.filter(row => row.semanticRelation === 'NEEDS_EVIDENCE').length,
       resolverBindingGaps: statusCounts.DIRECT_BINDING_GAP + statusCounts.FAMILY_BINDING_GAP },

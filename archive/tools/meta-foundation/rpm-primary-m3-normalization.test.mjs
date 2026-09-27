@@ -13,7 +13,7 @@ import {
   validateResolverEvidence,
   validateRuntimeMetaParity,
 } from './rpm-active-resolver.mjs';
-import { M3_CROSSWALK_PATH, M3_EVIDENCE_DIR, ROOT, validateM3Sources } from './normalize-rpm-primary-m3.mjs';
+import { M3_BASE_MAIN_SHA, M3_CROSSWALK_PATH, M3_EVIDENCE_DIR, ROOT, validateM3Sources } from './normalize-rpm-primary-m3.mjs';
 
 const crosswalk = JSON.parse(fs.readFileSync(path.join(ROOT, M3_CROSSWALK_PATH), 'utf8'));
 const ledger = JSON.parse(fs.readFileSync(path.join(ROOT, M3_EVIDENCE_DIR, 'semantic-audit-ledger.json'), 'utf8'));
@@ -139,6 +139,7 @@ test('every M3 crosswalk row resolves deterministically against compiled GLOBAL 
   assert.deepEqual(results, { EXISTING_REUSE: 13, FAMILY_REUSE: 4, RPM_PRIMARY_MIGRATION_GAP: 164 });
   const receipt = {
     schemaVersion: 'RPM_PRIMARY_M3_RESOLVER_RUNTIME_REGRESSION_v1',
+    latestMainSha: M3_BASE_MAIN_SHA,
     compiledRegistrySha: registry.registrySha,
     rpmCrosswalkSha: objectSha(crosswalk),
     totalRows: crosswalk.records.length,
