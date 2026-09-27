@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 DEFAULT_BATCH_ID = "1final_middle_m2_2022_2025"
-DEFAULT_BATCH_DIR = Path("archive/_generated/past-exams/_batch")
+DEFAULT_BATCH_DIR = Path("archive-work/evidence/batch")
 
 V2_EXTERNAL_STATUS = "external_agent_required"
 V2_ALLOWED_BLANK_ANSWER_STATUSES = {V2_EXTERNAL_STATUS, "not_in_pipeline", "pending_external_agent"}
@@ -233,7 +233,10 @@ def is_objective_question(question):
 
 def candidate_root_for(candidate_file):
     candidate_file = Path(candidate_file).resolve()
-    # V2 output usually uses <examRoot>/candidate/*.candidate.js.
+    for parent in candidate_file.parents:
+        if parent.name == "exams":
+            return parent.parent / "evidence" / candidate_file.stem
+    # Legacy frozen runs remain readable.
     if candidate_file.parent.name == "candidate":
         return candidate_file.parent.parent
     # Legacy generated candidates sometimes sit under output/ or nested term folders.

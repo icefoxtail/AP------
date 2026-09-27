@@ -1,3 +1,4 @@
+import { examStorage } from '../pipeline-core/archive-workspace.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -162,7 +163,7 @@ function main() {
     expectedSourceIdentities,
     closure: commonClosure,
   });
-  const receiptFile = path.join(path.dirname(candidateFile), "..", "reports", "production_promotion_receipt.json");
+  const receiptFile = path.join(examStorage(candidateFile).evidenceRoot, "reports", "production_promotion_receipt.json");
   if (fs.existsSync(receiptFile)) throw new Error(`PROMOTION_RECEIPT_ALREADY_EXISTS:${receiptFile}`);
   fs.mkdirSync(path.dirname(receiptFile), { recursive: true });
   fs.writeFileSync(receiptFile, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
@@ -173,7 +174,7 @@ function main() {
   fs.copyFileSync(candidateFile, liveJs);
   const stagingRoot = path.resolve(path.dirname(candidateFile), "..");
   let cleanup = { status: "SKIPPED", reason: "LIFECYCLE_MARKER_MISSING" };
-  if (fs.existsSync(path.join(stagingRoot, ".lifecycle.json"))) {
+  if (manifest.storageLayout !== "ARCHIVE_FOLDERS" && fs.existsSync(path.join(stagingRoot, ".lifecycle.json"))) {
     markGeneratedRun(stagingRoot, "SUCCEEDED", {
       canonicalPaths: [".lifecycle.json", "reports/production_promotion_receipt.json"],
     });

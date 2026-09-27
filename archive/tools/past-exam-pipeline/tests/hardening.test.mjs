@@ -148,6 +148,26 @@ function fixture() {
   return { root, examRoot, reportsDir, candidateFile, question, review, manifest, writeCandidate, setExamId(value) { currentExamId = value; manifest.examId = value; review.examId = value; }, cleanup: () => fs.rmSync(root, { recursive: true, force: true }) };
 }
 
+test('actual Archive filename in a working folder keeps promotion evidence and asset hashes bound', () => {
+  const f = fixture();
+  try {
+    const workRoot = path.join(f.root, 'archive-work');
+    const workingFile = path.join(workRoot, 'exams/original/high/h1/1final/fixture.js');
+    const evidenceRoot = path.join(workRoot, 'evidence/fixture');
+    fs.mkdirSync(path.dirname(workingFile), { recursive: true });
+    fs.copyFileSync(f.candidateFile, workingFile);
+    fs.cpSync(f.reportsDir, path.join(evidenceRoot, 'reports'), { recursive: true });
+    fs.cpSync(path.join(f.examRoot, 'pages'), path.join(evidenceRoot, 'pages'), { recursive: true });
+    fs.cpSync(path.join(f.examRoot, 'assets'), path.join(workRoot, 'assets'), { recursive: true });
+    const result = validatePastExamPromotion({ candidateFile: workingFile, manifest: f.manifest, review: f.review });
+    assert.equal(result.status, 'PASS', result.errors.join('\n'));
+    assert.equal(result.sourceInventorySha, fileSha(path.join(evidenceRoot, 'reports/source_inventory.json')));
+    assert.equal(result.sourceIdentityMapSha, fileSha(path.join(evidenceRoot, 'reports/source_identity_map.json')));
+    fs.appendFileSync(path.join(workRoot, 'assets/q001_visual.png'), 'changed');
+    assert.equal(validatePastExamPromotion({ candidateFile: workingFile, manifest: f.manifest, review: f.review }).status, 'BLOCKED');
+  } finally { f.cleanup(); }
+});
+
 function activateV3(f, disposition = 'REUSE') {
   const root = repoRoot;
   const crosswalkPath = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json';

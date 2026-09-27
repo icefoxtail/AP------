@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import crypto from 'node:crypto';
+import { archiveWorkspace } from '../pipeline-core/archive-workspace.mjs';
+import { safePath } from '../pipeline-core/canonical.mjs';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -28,7 +30,7 @@ function loadQuestions(file) {
 
 function main() {
   const manifestFile = arg('manifest');
-  const candidateFile = arg('candidate');
+  const candidateFile = arg('working-exam') || arg('candidate');
   const inventoryFile = arg('inventory');
   const outputDir = arg('out-dir');
   if (![manifestFile, candidateFile, inventoryFile, outputDir].every(Boolean)) throw new Error('--manifest --candidate --inventory --out-dir are required');
@@ -43,7 +45,9 @@ function main() {
   }
   const root = path.resolve(process.cwd());
   const destination = path.resolve(outputDir);
-  const stagingRoot = path.resolve(root, 'archive/_generated') + path.sep;
+  const folder = manifest.storageLayout === 'ARCHIVE_FOLDERS' ? archiveWorkspace(root, { workRoot: manifest.workRoot, examFile: manifest.archiveRelativePath }) : null;
+  if (folder && path.resolve(candidateFile) !== safePath(root, folder.examPath)) throw new Error('WORKING_EXAM_PATH_CONFLICT');
+  const stagingRoot = folder ? safePath(root, `${folder.evidenceDir}/reports`, { mustExist: false }) + path.sep : path.resolve(root, 'archive/_generated') + path.sep;
   const tempRoot = path.resolve(os.tmpdir()) + path.sep;
   const within = (target, parent) => target.toLowerCase().startsWith(parent.toLowerCase());
   if (!within(destination + path.sep, stagingRoot) && !within(destination + path.sep, tempRoot)) throw new Error('COMPLETION_EVIDENCE_STAGING_ONLY');

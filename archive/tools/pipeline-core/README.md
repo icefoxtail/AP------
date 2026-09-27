@@ -1,3 +1,7 @@
+> 신규 작업 폴더/실제 파일명 인터페이스: [Folder workflow](FOLDER_WORKFLOW.md).
+> `_generated`/`.candidate.js` 없이 작업 루트를 지정한다. 아래의 candidate는
+> 검수 schema의 호환용 input role이며 물리 파일명/폴더 요구가 아니다.
+
 > Current v2 execution authority: [Agent / Token Budget Architecture](AGENT_BUDGET.md).
 > Produce the entire requested job in the main worker. Past Exam work batches
 > use one FINAL_AUDIT followed by a bounded repair/recheck loop; legacy profiles
@@ -55,14 +59,14 @@ hard-coded batch finalizer. Old PASS records are not converted into fresh review
 node archive/tools/pipeline-core/cli.mjs rules
 node archive/tools/pipeline-core/cli.mjs inventory
 node archive/tools/pipeline-core/cli.mjs template --pipeline logic-visual --out <NEW-template.json>
-node archive/tools/pipeline-core/cli.mjs prepare --pipeline logic-visual --run-id <new-id> --source <source.js> --candidate <candidate.js> --workdir archive/_generated/pipeline-runs/<new-id>
+node archive/tools/pipeline-core/cli.mjs prepare --pipeline logic-visual --run-id <new-id> --source <source.js> --working-exam <working-folder/exams/actual-name.js> --workdir archive-work/evidence/reviews/<new-id>
 node archive/tools/pipeline-core/cli.mjs fact --file <typed-fact.json>
 node archive/tools/pipeline-core/cli.mjs parity --expected <expected.json> --observed <observed.json>
-python -X utf8 archive/tools/pipeline-core/generator.py --fact <typed-fact.json> --out <NEW-candidate.svg> --evidence <NEW-generator-witness.json>
-node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir archive/_generated/pipeline-renders/<new-attempt>
+python -X utf8 archive/tools/pipeline-core/generator.py --fact <typed-fact.json> --out <working-folder/assets/images/exam/q001-solution.svg> --evidence <NEW-generator-witness.json>
+node archive/tools/pipeline-core/cli.mjs render --manifest <run.json> --workdir archive-work/evidence/captures/<new-attempt>
 node archive/tools/pipeline-core/cli.mjs render-review --manifest <run.json> --capture-ref <capture-file-ref.json> --decision <independent-decision.json> --out <NEW-render-review.json>
 node archive/tools/pipeline-core/cli.mjs audit --pipeline logic-visual --manifest <run.json> --out <NEW-closure.json>
-node archive/tools/pipeline-core/cli.mjs prepare --v2 --pipeline logic-visual --run-id <new-id> --builder-id <id> --builder-session-id <session> --builder-model <model> --source <source.js> --candidate <candidate.js> --workdir archive/_generated/pipeline-runs/<new-id>
+node archive/tools/pipeline-core/cli.mjs prepare --v2 --pipeline logic-visual --run-id <new-id> --builder-id <id> --builder-session-id <session> --builder-model <model> --source <source.js> --working-exam <working-folder/exams/actual-name.js> --workdir archive-work/evidence/reviews/<new-id>
 node archive/tools/pipeline-core/cli.mjs audit-v2 --manifest <run-v2.json>
 node archive/tools/pipeline-core/cli.mjs semantic-diff --previous <old-questions.json> --current <new-questions.json>
 node archive/tools/pipeline-core/cli.mjs change-impact --diff <semantic-diff.json> --current <new-questions.json>

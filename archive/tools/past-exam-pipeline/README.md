@@ -1,3 +1,18 @@
+# 실제 파일명과 작업 폴더 — 신규 기본 경로
+
+[공용 Folder workflow](../pipeline-core/FOLDER_WORKFLOW.md)를 따른다.
+기본 config는 `archive-work/exams/<실제 Archive 상대 경로>.js`,
+`archive-work/assets/images/<시험지전체명>/`, `archive-work/evidence/<시험지전체명>/`를
+사용한다. `_generated`/`candidate/`/`.candidate.js`와 generated lifecycle 정리를
+신규 작업에 사용하지 않는다. 기존 generatedRoot config와 봉인된 검수 schema는
+legacy recovery 호환용으로 읽는다.
+
+발문·에셋만 만드는 명시적 범위는 `run-source-exam.mjs` 또는
+`run-batch.mjs --source-only`다. 이 범위는 정답·해설 완성 job이 아니며
+calibration/풀이/Meta/production 등록을 실행하지 않는다. 원본 inventory·번호·발문·
+에셋 검증은 유지하고 결과를 `SOURCE_EXTRACTED_REVIEW_REQUIRED`로 기록한다.
+전체 제작은 아래 V3 조건을 그대로 충족해야 한다.
+
 # Past Exam V3 COMPLETE — current start and completion route
 
 V2 full-page extraction remains the source transcription engine. The current
