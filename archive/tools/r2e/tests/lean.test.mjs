@@ -105,6 +105,50 @@ test('grade snapshot is immutable; late and malformed receipts do not block heal
   const next = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot }); assert.equal(next.heads.m2.sha, late); assert.equal(next.candidates.length, 1); assert.equal(next.errors.length, 1);
   const oldLanes = 'work/intake/m2-a'; git(f.repo, ['push', 'origin', `${late}:refs/heads/${oldLanes}`]); assert.deepEqual(Object.keys(inventory(f.repo, { metaAuthorityRoot: currentRepoRoot }).heads), ['m2', 'm3']);
 });
+test('READY-marked R1 evidence sidecars are not misclassified as intake receipts', () => {
+  const f = fixture(), sidecarPath = 'archive/data/r2e-intake/m2/test.evidence.json';
+  f.write(sidecarPath, { nextState: 'READY_FOR_R2E', schemaVersion: 'R1_EVIDENCE_v1' });
+  const sidecarCommit = f.commit([sidecarPath], 'R1 evidence sidecar'); git(f.repo, ['push', 'origin', 'work/intake/m2']);
+  const snapshot = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot });
+  assert.equal(snapshot.heads.m2.sha, sidecarCommit);
+  assert.equal(snapshot.status, 'READY');
+  assert.equal(snapshot.candidates.length, 1);
+  assert.equal(snapshot.errors.length, 0);
+});
+test('legacy READY receipt with missing resolver contract is exposed for bounded Meta recovery', () => {
+  const f = fixture(), receipt = structuredClone(f.receipt);
+  receipt.examFile = 'test.js';
+  delete receipt.inputCommit; delete receipt.authorityRefs;
+  delete receipt.metaResolutionEvidenceRef; delete receipt.metaResolverContractVersion;
+  const sidecarPath = 'archive/data/r2e-intake/m2/test.evidence.json';
+  f.write(f.receiptPath, receipt); f.write(sidecarPath, { nextState: 'READY_FOR_R2E', schemaVersion: 'R1_EVIDENCE_v1' });
+  const recoveryCommit = f.commit([f.receiptPath, sidecarPath], 'legacy READY receipt needs Meta recovery');
+  git(f.repo, ['push', 'origin', 'work/intake/m2']);
+  const snapshot = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot });
+  assert.equal(snapshot.heads.m2.sha, recoveryCommit);
+  assert.equal(snapshot.status, 'META_RECOVERY_REQUIRED');
+  assert.equal(snapshot.candidates.length, 0);
+  assert.equal(snapshot.metaRecoveryCandidates.length, 1);
+  assert.deepEqual(snapshot.metaRecoveryCandidates[0].missingFields.sort(), ['authorityRefs', 'inputCommit', 'metaResolutionEvidenceRef', 'metaResolverContractVersion'].sort());
+  assert.equal(snapshot.metaRecoveryCandidates[0].examUid, 'test');
+  assert.equal(snapshot.metaRecoveryCandidates[0].examFile, 'archive/exams/original/middle/m2/1mid/test.js');
+  assert.equal(snapshot.metaRecoveryCandidates[0].inputCommit, recoveryCommit);
+  assert.equal(snapshot.errors.length, 0);
+});
+test('backfilled legacy receipt without inputCommit or authorityRefs passes snapshot using verified receipt lineage', () => {
+  const f = fixture(), receipt = structuredClone(f.receipt);
+  receipt.examFile = 'test.js'; delete receipt.inputCommit; delete receipt.authorityRefs;
+  f.write(f.receiptPath, receipt);
+  const backfillCommit = f.commit([f.receiptPath], 'legacy receipt gains Meta reference');
+  git(f.repo, ['push', 'origin', 'work/intake/m2']);
+  const snapshot = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot });
+  assert.equal(snapshot.status, 'READY');
+  assert.equal(snapshot.errors.length, 0);
+  assert.equal(snapshot.candidates.length, 1);
+  assert.equal(snapshot.candidates[0].inputCommit, backfillCommit);
+  assert.equal(snapshot.candidates[0].declaredInputCommit, null);
+  assert.equal(snapshot.candidates[0].examFile, 'archive/exams/original/middle/m2/1mid/test.js');
+});
 test('remote physical checkpoint takes resume precedence; final input is skipped', () => {
   const f = fixture(); git(f.repo, ['checkout', '-b', 'work/r2e-state', f.main]);
   const rel = 'archive/data/r2e/m2/exams/test.json'; f.write(rel, { examUid: 'test', inputCommit: f.ready, finalStatus: 'R2E_IN_PROGRESS', nextAction: 'continue q1' }); f.commit([rel], 'checkpoint'); git(f.repo, ['push', 'origin', 'work/r2e-state']);
