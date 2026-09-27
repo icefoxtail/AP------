@@ -280,7 +280,7 @@ window.questionBank=[
       "$240^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 내심의 각 공식과 외심의 중심각 성질을 차례로 사용한다.\\n조건 정리: $I$는 내심, $O$는 외심이고 $\\angle BIC=130^\\circ$, $\\angle A=x$이다.\\n풀이 방향: 먼저 $x$를 구한 뒤 같은 호 $BC$에 대한 중심각 $y$를 구한다.\\n정석 풀이: 내심의 성질에 의해 $\\angle BIC=90^\\circ+\\dfrac{x}{2}$이다. 따라서 $130=90+\\dfrac{x}{2}$에서 $x=80^\\circ$이다. 같은 호 $BC$에 대한 중심각 $\\angle BOC$는 원주각 $\\angle BAC$의 두 배이므로 $y=160^\\circ$이다. 그러므로 $x+y=80^\\circ+160^\\circ=240^\\circ$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 먼저 내심의 각 관계로 $x$를 구하고, 외심에서는 $OA=OB=OC$인 이등변삼각형의 각을 이용해 $y$를 구한다.\\n조건 정리: $I$는 $\\triangle ABC$의 내심이고 $\\angle BIC=130^\\circ$이다. $O$는 외심이고 $x=\\angle BAC$, $y=\\angle BOC$이다.\\n풀이 방향: 내심에서 $x$를 구한 뒤, $\\angle OAB=p$, $\\angle OAC=q$로 두고 외심의 등거리 성질을 사용한다.\\n정석 풀이: 내심의 성질에 의해 $\\angle BIC=90^\\circ+\\dfrac{x}{2}$이므로 $130^\\circ=90^\\circ+\\dfrac{x}{2}$에서 $x=80^\\circ$이다. $\\angle OAB=p$, $\\angle OAC=q$라 하면 $p+q=80^\\circ$이다. $OA=OB$이므로 $\\triangle AOB$에서 $\\angle AOB=180^\\circ-2p$이고, $OA=OC$이므로 $\\triangle AOC$에서 $\\angle AOC=180^\\circ-2q$이다. 점 $O$ 주위의 각의 합은 $360^\\circ$이므로 $y=360^\\circ-(180^\\circ-2p)-(180^\\circ-2q)=2(p+q)=160^\\circ$이다.\\n따라서 $x+y=240^\\circ$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중2_수학/q09.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -313,7 +313,7 @@ window.questionBank=[
       "$60^\\circ$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 외심을 중심으로 한 세 중심각의 합은 $360^\\circ$이다.\\n조건 정리: $\\angle AOB:\\angle BOC:\\angle COA=4:6:5$이다.\\n풀이 방향: 한 비의 크기를 구하고, 호 $AB$에 대한 중심각과 원주각의 관계를 적용한다.\\n정석 풀이: 비의 합은 $4+6+5=15$이므로 한 비의 크기는 $360^\\circ\\div15=24^\\circ$이다. 따라서 $\\angle AOB=4\\times24^\\circ=96^\\circ$이다. 같은 호 $AB$에 대한 원주각 $\\angle ACB$는 중심각의 절반이므로 $48^\\circ$이다.\\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 중심각의 비로 세 중심각을 구한 뒤, $OA=OB=OC$인 이등변삼각형의 밑각을 이용한다.\\n조건 정리: $O$는 $\\triangle ABC$의 외심이고 $\\angle AOB:\\angle BOC:\\angle COA=4:6:5$이다.\\n풀이 방향: 세 중심각의 합이 $360^\\circ$임을 이용한 뒤 $\\triangle AOC$, $\\triangle BOC$의 밑각을 더해 $\\angle ACB$를 구한다.\\n정석 풀이: 비의 합은 $15$이므로 한 비는 $360^\\circ\\div15=24^\\circ$이다. 따라서 $\\angle AOB=96^\\circ$, $\\angle BOC=144^\\circ$, $\\angle COA=120^\\circ$이다. $OA=OC$이므로 $\\angle ACO=(180^\\circ-120^\\circ)\\div2=30^\\circ$이고, $OB=OC$이므로 $\\angle OCB=(180^\\circ-144^\\circ)\\div2=18^\\circ$이다. 그러므로 $\\angle ACB=30^\\circ+18^\\circ=48^\\circ$이다.\\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_중간_중2_수학/q10.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -610,7 +610,7 @@ window.questionBank=[
       "$7\\pi$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 직각삼각형의 외접원 반지름과 내접원 반지름을 각각 구한다.\\n조건 정리: 세 변의 길이는 $3,4,5$이고 빗변은 $AB=5\\,\\mathrm{cm}$이다.\\n풀이 방향: 외접원의 반지름은 빗변의 절반, 내접원의 반지름은 $(두 직각변의 합-빗변)\\div2$를 이용한다.\\n정석 풀이: 직각삼각형의 외접원 반지름은 $R=\\dfrac52$이므로 외접원의 둘레는 $2\\pi R=5\\pi$이다. 내접원 반지름은 $r=\\dfrac{3+4-5}{2}=1$이므로 내접원의 둘레는 $2\\pi$이다. 따라서 둘레의 합은 $5\\pi+2\\pi=7\\pi\\,\\mathrm{cm}$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 내접원의 반지름은 삼각형의 넓이를 세 부분으로 나누어 구한다.\\n조건 정리: $\\angle C=90^\\circ$, $BC=3\\,\\mathrm{cm}$, $CA=4\\,\\mathrm{cm}$, $AB=5\\,\\mathrm{cm}$이다.\\n풀이 방향: 외접원의 반지름 $R$과 내접원의 반지름 $r$을 각각 구한 뒤 두 원의 둘레를 더한다.\\n정석 풀이: 직각삼각형의 외심 $O$는 빗변 $AB$의 중점이므로 $R=\\dfrac{5}{2}$이고 외접원의 둘레는 $2\\pi R=5\\pi$이다. 한편 $\\triangle ABC$의 넓이는 $\\dfrac12\\times3\\times4=6$이다. 내심에서 세 변까지의 거리를 $r$이라 하면 세 작은 삼각형의 넓이의 합에서 $6=\\dfrac12r(3+4+5)=6r$이므로 $r=1$이다. 따라서 내접원의 둘레는 $2\\pi$이다. 그러므로 두 원의 둘레의 합은 $5\\pi+2\\pi=7\\pi\\,\\mathrm{cm}$이다.\\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_연향중_2학기_중간_중2_수학/q19.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
