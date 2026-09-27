@@ -43,7 +43,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:1ca70002342c14eff91d65e03fb6b04fd99f477f2d7884f5ef5b32a4bd787f00",
+      "resolverEvidenceSha": "sha256:ace565466eff1a23621dc18c418aa6292e7c6ba9aaa696c7955d3674fb957634",
       "difficultyEvidenceSha": "sha256:9156287a63be5026911dbbdc4611467dd108367d29694af69ac446bb0cd382d4",
       "solutionImageAlt": "삼각형 ABC에서 AD가 ∠A를 이등분하고 ∠B=30°, ∠C=70°인 각 관계 그림",
       "solutionImageCaption": "∠A를 이등분한 뒤 두 삼각형의 내각합을 적용한다.",
@@ -90,7 +90,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ee48c650aa846d0feb74ec698cbe6e3e3cd4f0522f66bdfccc7ba62f9c410be4",
+      "resolverEvidenceSha": "sha256:194bc521924d24d32479360a56962c65609c487a9654a5597f93f53b7f11f1e9",
       "difficultyEvidenceSha": "sha256:9b15ef07e83813b6c0be50f4b204e68d2e44b881fe800467285da86d3d2d4f5e"
     },
     {
@@ -133,7 +133,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:1f2e026a53c03190a687108415d3eb8b23be0679249affd98d9e87f83aaa165e",
+      "resolverEvidenceSha": "sha256:f599fcd494404284405464a993cca7e5406407de29113ae29c485dfb5beb700e",
       "difficultyEvidenceSha": "sha256:87236305a192934b8b24ccfd633b03e5569b2b5715b8bc786caa779494214780"
     },
     {
@@ -179,7 +179,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e700817c93c9483d9598255e7f49ae927f1b1dbe02e270650c6ccebf6e136914",
+      "resolverEvidenceSha": "sha256:af4339126be47dd5b16fdf89f877084bba713dad9c2ed20c7190d0f75df884ea",
       "difficultyEvidenceSha": "sha256:a2501e59229ce59194ad4c9bd6859c0ec3bc846b55c1800161c50e991feae38f",
       "solutionImageAlt": "원 O에서 같은 크기의 호 AB, CD, DE와 중심각 및 현을 표시한 그림",
       "solutionImageCaption": "호의 크기와 중심각, 현의 관계를 보기의 진술과 대조한다.",
@@ -223,7 +223,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:52225a92ff77272e3899725d73b5dc28beee9f2f69c06f60f6835f2c899e1cfb",
+      "resolverEvidenceSha": "sha256:391a5ac0a182513fddc6ad77c08c1c2b046a9653f7e4d4ec48b206357bed1acb",
       "difficultyEvidenceSha": "sha256:60f43127c23c66c4006808dbb9b5695f0515c09353af666d9bb9b779ef27ebe1"
     },
     {
@@ -264,7 +264,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:05a9e5a82d2a30f86fb242e1963df6d3c06a15446b7c66f43b5fd83464669850",
+      "resolverEvidenceSha": "sha256:f5321f3b1292f28a344415547115efb9992cf3e5f6161b7a9495a8eff32b774a",
       "difficultyEvidenceSha": "sha256:c93a0481828496dcced04eedd3e6c6746fd357cf9519f4e24bcef0ea22e8e33a"
     },
     {
@@ -305,7 +305,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a836514ade232b21a41cd34402403349993146c357faf9c18fa0b45c31a688ad",
+      "resolverEvidenceSha": "sha256:ac404653a8ef948c28525105de364e945c0b45fb3c9730d4c19d0c0a963edcc5",
       "difficultyEvidenceSha": "sha256:a441f3609b9e1c10918610dee91d1f7f0fe4bf09c4411b6027f76dc7a5362766"
     },
     {
@@ -350,7 +350,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:d73b18df5c8da26ef5cecc3282b08e656ee0e230ec863b2150af49eaf738491a",
+      "resolverEvidenceSha": "sha256:8c89922776075b552c2208eeb12d78a5cf20bb0ee10e45cecd48d252c9ab5101",
       "difficultyEvidenceSha": "sha256:65580be6c307eb78160cb4e9167d878c066db446480fa52f33c4116714be5202"
     },
     {
@@ -391,7 +391,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:637781a3ef7d4084891f6ad17263167cc4a4397330c3b73a9f3968059ed56523",
+      "resolverEvidenceSha": "sha256:d36caa931c03b9e2a99ea074c8b82f8e6432b5cda5942fb5403a7777f7ec70dc",
       "difficultyEvidenceSha": "sha256:d14e21ad4063fc3eb2b15ad6b1d232f702194f3f955802a235aeb3a5cc0cb4d8"
     },
     {
@@ -432,7 +432,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:9467517ab8a76d5b58309aa368fc9c1c14ebe5ef1d8e73141fd0b9922fed4e03",
+      "resolverEvidenceSha": "sha256:8921bc9c8ed830bc5019cb411f9ed36ff39722d268ef6d471226a74f58792413",
       "difficultyEvidenceSha": "sha256:47505e06f29e2fd1d1ca252ff5f6ddd945bdb60fca063cc11827f0be3c2f561c"
     },
     {
@@ -476,7 +476,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:f2aa1d8575303e86dfc3b28a25a32e89fca8c9a5571a712cb1c46080e45e4976",
+      "resolverEvidenceSha": "sha256:95b12b993113650960a51fef6ada74e6edb934e692c3d2c019bf9582fa4b428e",
       "difficultyEvidenceSha": "sha256:2b7e823da1998d0b58e5eab45efbb0e9f1ed5609636edd2ac8259b7f4aa068e7"
     },
     {
@@ -521,7 +521,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4eb0efe365edf46096fe94ad9f302db792032f6dfa616e9430cd3cf1746f3e8c",
+      "resolverEvidenceSha": "sha256:0577d876faad7ac931aad8f498c6a559c11ccbb611208861857f6342614f2c5f",
       "difficultyEvidenceSha": "sha256:6f15cf79a445b03c4a53ce9ad7b5dbd4ffd2b6d529e359574eb1ab0086ee4223",
       "solutionImageAlt": "모선의 길이가 12 cm이고 밑면 반지름이 r인 원뿔 그림",
       "solutionImageCaption": "옆넓이 식으로 반지름을 구하고 밑넓이를 더한다.",
@@ -569,7 +569,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:dce0a0f3f93cd758ddf2a4c4ec336ea73b05800cd26a6b54d9ed207048e93cd7",
+      "resolverEvidenceSha": "sha256:635dfa3248329b3be8038f57e0527765f5bc66f67b97245b8a448f0347f284f6",
       "difficultyEvidenceSha": "sha256:25af8204b54bcf54e4d95576b4db046da812a607f3dd011e567077d3efc5e377",
       "solutionImageAlt": "반지름 r인 공 3개가 높이 6r인 원기둥 안에 위아래로 꼭 맞게 놓인 그림",
       "solutionImageCaption": "원기둥 부피 조건에서 r을 구한 뒤 공 하나의 겉넓이를 계산한다.",
@@ -616,7 +616,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:53d1dfaa773a45d5ac3f00219caa4e57bc2050fc02d604e0a3d9e3423722dbb1",
+      "resolverEvidenceSha": "sha256:197d4b1b7169dcfd108866cfdd5d011253f72f1137afd644df36937183c06322",
       "difficultyEvidenceSha": "sha256:b02d844cc3303fabb6e680dcd62c14a514da1212d6ffffadafcc54a77f12b605"
     },
     {
@@ -659,7 +659,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ea3d510f35f2c22e430e04e89da53f9582e89a29162ec2a34511561bb8b2aac4",
+      "resolverEvidenceSha": "sha256:b9102423574dfdd32207cf2bfc6dc0d62fcabce4f9f26fdc438df0881ce3319b",
       "difficultyEvidenceSha": "sha256:c9fc47a940895cd2fe83c9c6db552c38a750fa0d4c6b8533358c5f70499f3818"
     },
     {
@@ -702,7 +702,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:dd1859feb628560e7ecbf267df8c73459384d2b5d28087212ce74858290bfb46",
+      "resolverEvidenceSha": "sha256:1c7be4d9c36d7e27971b75058786476e075b1b43d2c14b8de2e6d19c25ff8a7b",
       "difficultyEvidenceSha": "sha256:75039aa3161c9dcdb258c1111c0483f1e6784c4c370d21f7c96cdea4846fbfef"
     },
     {
@@ -745,7 +745,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:dcefbe37b3e88fca498ab00dd4195bd319442df7939f3c60700785f0a8576d1f",
+      "resolverEvidenceSha": "sha256:13945ff7507e9f1cef59388ba7afc49816297faa5882ae602d1fac47eb41d9d5",
       "difficultyEvidenceSha": "sha256:400355d75af644e3009c67436cc502ebc188add1f7064e9b272bd0b7ad1f0fe5"
     },
     {
@@ -788,7 +788,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:0020323c22e850ba63ebdaff573dfc7ffe14ec9c67b7a42f2c2631eb06da2d19",
+      "resolverEvidenceSha": "sha256:8b345017ff9d21122fe4d44909ab41c16b7404e8999ade68ecc918395c378742",
       "difficultyEvidenceSha": "sha256:f5c472d57e71bc65f7bddcfe3edc7d7f47c78fd0e6f03a3da64d8d90ebab7e9e"
     },
     {
@@ -832,7 +832,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:d5f75d83eb139d9f04b5bd8e7b27f93b12673fdeff8695fb7e9ae2f3acccc3f9",
+      "resolverEvidenceSha": "sha256:67dca6a2e9e2017f7e9d8fffcbb4e316d9a2d09484fd8ee84b024027a51c926e",
       "difficultyEvidenceSha": "sha256:c6a485eda601057b76b014f2535b66adceb46fdbb1c22342ca7dd93e58a15a4f"
     },
     {
@@ -877,7 +877,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:aa30ae3166d4e821b643089a0a5820e371960ad5e2e879f42cc144d15e1298c7",
+      "resolverEvidenceSha": "sha256:047601fc11ad4135899bbe1af4522fcaa9b8c1855e4c8a515a1d4d609aaaa8d0",
       "difficultyEvidenceSha": "sha256:64c44d8143f5f8ae5f2a91fae8e0256a36320d325ca1d95a36ebd5e3b86ef999"
     },
     {
@@ -917,7 +917,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:fc6ed28f14581502fef0587dbb167fb7598aaf47ede278e3de0b03632ee37d90",
+      "resolverEvidenceSha": "sha256:76f82ef9c81a277d38c83e3d40b4381c7b669b808d8f19b2ab642ac2bce28efd",
       "difficultyEvidenceSha": "sha256:e00a4fd0c498be04452a99be9058c87d84a3a99750c73d9041dd38bab5821a29",
       "solutionImageAlt": "중심각 45°, 안쪽 반지름 8 cm, 바깥쪽 반지름 12 cm인 환형 부채꼴 그림",
       "solutionImageCaption": "바깥 호·안쪽 호·두 직선 변을 각각 계산해 둘레를 더한다.",
@@ -960,7 +960,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7b737d2f340cbcb19cb9dee59118fdfd633898a197da10614c77660930609af2",
+      "resolverEvidenceSha": "sha256:bbcea2f5ca5cd2ade61a529ffb0488d5d5a0faef8a2eadb0eeb9661d6d7bbe36",
       "difficultyEvidenceSha": "sha256:e322bfb317d99e68e0bc6a9a45b16c5793239a863105e45f3cf6d44eaeb658fa",
       "solutionImageAlt": "반지름 6 cm인 사분원에서 직각삼각형 부분을 뺀 색칠 영역과 회전축 l을 나타낸 그림",
       "solutionImageCaption": "색칠 영역의 회전체를 반구 부피에서 원뿔 부피를 빼어 계산한다.",
@@ -1001,7 +1001,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:c686302e6652818d754179f056a533f7a99c54dfd6dbd88119dcfe65506da966",
+      "resolverEvidenceSha": "sha256:f6b71971e1bc03c4f5e2fa33446caf7c3dbe1374d3b740f547b15bbb769960e4",
       "difficultyEvidenceSha": "sha256:2278a676f378bb7ec6bc31754eecdf153f93ead5d4ebe1a536e7fd2914789aac"
     },
     {
@@ -1039,7 +1039,7 @@ window.questionBank = [
       "legacyLevelCompatibility": "NORMAL",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:cf3f36625939a8bbdd822f029c7d71a2083879ac387cb4bfeb266cd76acee93c",
+      "resolverEvidenceSha": "sha256:218c9dd57041c5d0aeb5c7bb999028cb194122e53e8931a91a795bd94159150f",
       "difficultyEvidenceSha": "sha256:a66e0dab86c267a4d37ecfd363b108d731e86055760287b99d43f0bfb44b55ca"
     }
   ];

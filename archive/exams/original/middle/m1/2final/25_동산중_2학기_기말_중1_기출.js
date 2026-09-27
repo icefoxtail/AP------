@@ -41,7 +41,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:36563e0ab9cd05da3d4512b268ae29c4d243c41b049d16bc974a7125df4b43ab",
+      "resolverEvidenceSha": "sha256:75108dc7029a21862a4a824a083c324edda62d4dd08c1d6835a6d4611dcddacc",
       "difficultyEvidenceSha": "sha256:cb78f902a20def36cb81f389f1d71129ab97d23e671582a7d2c365d1b3a59b0c"
     },
     {
@@ -84,7 +84,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:329a325b058d960adea3f6f190c8ce126e6e31ae97406ce3f259f6a989e5b42e",
+      "resolverEvidenceSha": "sha256:fba5374c27e5035bc0be2e9c23124607c09581b47a72adf0360743c0568a9ecd",
       "difficultyEvidenceSha": "sha256:e4b011f427b074274d6c2f3c0d0d98ff8e703713f924a8327a7eb6f4139845d4"
     },
     {
@@ -127,7 +127,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:92dc717378fd4df2da4291da6800621472577abe11e6c30d538624138a0696e3",
+      "resolverEvidenceSha": "sha256:07681e49a1bf63bc8df2030af9b68f887f1d8299cfc5ddd66628afac6a1bcc14",
       "difficultyEvidenceSha": "sha256:1c1cbf55e45b28d48868b5c142eb698693f73f1b8a500f52fbd2ab3fa2b56c38"
     },
     {
@@ -170,7 +170,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:b414c3737c4223f3478d54d1c74c34cb3702f48e51590e72f55b9095cc2e71e8",
+      "resolverEvidenceSha": "sha256:6af8a86a43a49d3be21e4dad8c81406382e7593f7478312cbc193251da138ee0",
       "difficultyEvidenceSha": "sha256:9144f834b7a5c37772ed1c4669aaa8105722286824f3b38043da96a402b259a5"
     },
     {
@@ -213,7 +213,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:5d7c8bf0f752102fbe89e2644690373ffb4b38348eff254864d05ba19bc031e6",
+      "resolverEvidenceSha": "sha256:4cfd76a1ade131500c632eacfb42ead52a930278ed2d468c7b1d274f07f004fb",
       "difficultyEvidenceSha": "sha256:66dbff4fe15d018908e4da5ca8d7cf89ce1bbed9297d41aa15cf03bfdd861d04"
     },
     {
@@ -256,7 +256,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a6abe89a2a57698709b1cc207979e105cec026472ec84e6616f5c787356bfe1e",
+      "resolverEvidenceSha": "sha256:37d4abe3c61f534a8fa803358f78aa244f662dd8ac488297bd674b51c622762c",
       "difficultyEvidenceSha": "sha256:628e92d02eb895c737d6e5c6ea05ebe40333ea9f5f4ff7f77cebad67144fc428"
     },
     {
@@ -299,7 +299,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:6397b95abcbc5fc4c9507cf71b2b4c6c3779ae31072a61dd24620fb0fe2d7dee",
+      "resolverEvidenceSha": "sha256:89418ee1cb011a761bb12c2cae3dd8ab2a11114b5574d87428f96a4d0b65f279",
       "difficultyEvidenceSha": "sha256:70de84eedf8094ea49c483019c8babc7924027b073d4be0cc8789c3c22d15fca"
     },
     {
@@ -342,7 +342,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4f47ec62e8bdebd0c6a7f223d1ce01b1b502559ed8b73f10f7525fac209388e9",
+      "resolverEvidenceSha": "sha256:4c3728cb270b4a4cfeb7b6cbee0c6795f6b4b0b783e1f63b8e8c1637a0b4ddf9",
       "difficultyEvidenceSha": "sha256:76d10e011df29677f504de0b9afee2db5a15b667b327eb760fed6527d9e47b1e"
     },
     {
@@ -385,7 +385,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a045ecff4865ad8ef08ac32cfb4ecf55def4a456c0efd035a4207eb5e4bbbbc4",
+      "resolverEvidenceSha": "sha256:140e5615c66ddb3191032ec07eebf478649de2a6f7b05994f3d528e8547fe98d",
       "difficultyEvidenceSha": "sha256:f34f9a0266484fc2365be93e0a86e19538ed75f78ced7caee08912f550dfe8d3"
     },
     {
@@ -428,7 +428,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:dd3a1d2317375b797ff7f19ed197e205463a964282a87c5bbc10dd1ab5f87ec0",
+      "resolverEvidenceSha": "sha256:09f033653a830d167a71578366c49256776ac2e22b899e744123b2a69155629b",
       "difficultyEvidenceSha": "sha256:2e407d3de68fe6ba39235e307815840985fc807c06b7c996d8cd2761adf199e3"
     },
     {
@@ -471,7 +471,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7b0b6372452ae6255ebc03ed5d4fab5d465bcb2ea30e480d3331942f023dacf2",
+      "resolverEvidenceSha": "sha256:ef8f87524d9150079c89021260b50a70437233faaa60b18ffffd76ed2bf18711",
       "difficultyEvidenceSha": "sha256:89e66c1c7f9e61f461790f0464002245921aeeaec27a3cc6dd70d2dce213ac6e"
     },
     {
@@ -514,7 +514,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:74d9c35aa4e33dd5692503683374130bc5be56e91abfc84961e8b8e50a1f9686",
+      "resolverEvidenceSha": "sha256:c50a7c881def1c289a0a6662fc246ed84be10fb556ad390e979803749ae4f25f",
       "difficultyEvidenceSha": "sha256:856c032a4c731218c0cf88f6dcd9c1f9acd355949587750681ccd8feeea20bc7"
     },
     {
@@ -557,7 +557,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:55ed388b1df3d3c12c3f328117fd1b2619eceff2301674d5a564aa08c61e0e2a",
+      "resolverEvidenceSha": "sha256:4995284718142b051b1fc0ba8f9d8f233292fead5f02aa1f9cb4ec06bf06cb6c",
       "difficultyEvidenceSha": "sha256:bad93fb7c7ca52fc7bfe333a198f37e9af604745d1efbedabff9a166f1c7515a"
     },
     {
@@ -600,7 +600,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:92dd404d23fd6a5e474a688412e649316115cb7d4f378f0e261e2f2d1a56c41d",
+      "resolverEvidenceSha": "sha256:e6446fecf532e50ab4930137f6218ecc05e019425ffc11686fb979dbd9c51cc2",
       "difficultyEvidenceSha": "sha256:15da8f37668ee13cdb1ca4ac9344220dee4c81fa6270d0f3dbeff880dbd1a707"
     },
     {
@@ -642,15 +642,15 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q15-solution.svg",
-      "solutionImageAlt": "좌표평면에 A(-3,2), B(0,1), C(4,3), D(3,-2)를 표시한 그림",
-      "solutionImageCaption": "각 점에서 x좌표를 먼저, y좌표를 다음에 읽어 보기의 좌표와 대조한다.",
-      "solutionImageSize": "large",
       "problemTypeKey": "PT_COORDINATE_POINT_READING",
       "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:737abf8b342166e9a707ef0de56de56c4a73797aef9821d701809b3e9a59bcb7",
-      "difficultyEvidenceSha": "sha256:e4b0daae697509326df1dfdac7a8be9503d859de4244b0ce748c448b0bb0007e"
+      "resolverEvidenceSha": "sha256:df33bda6cbf9a0f3cec2f1dfd668d2a521704917159104b1b3737042fd40decb",
+      "difficultyEvidenceSha": "sha256:e4b0daae697509326df1dfdac7a8be9503d859de4244b0ce748c448b0bb0007e",
+      "solutionImageAlt": "좌표평면에 A(-3,2), B(0,1), C(4,3), D(3,-2)를 표시한 그림",
+      "solutionImageCaption": "각 점에서 x좌표를 먼저, y좌표를 다음에 읽어 보기의 좌표와 대조한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 16,
@@ -694,7 +694,7 @@ window.questionBank = [
       "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:9d00c6a41bad2e501fb197b2c39abd461afb75dd3dd69a0489bad09a8017639e",
+      "resolverEvidenceSha": "sha256:a0668d1286ecef01686b1e835b48f37b7f4abdc4ba61e06a7bc64643dbb06e8d",
       "difficultyEvidenceSha": "sha256:8d392402d5bbea4843897be5d2e30e32e89cad8225258dc3fbf9cc23c21b0eba"
     },
     {
@@ -737,7 +737,7 @@ window.questionBank = [
       "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:31ce93d2fef66887493320b3f4349276d865d8cf5d46e257a3b8589b86ab28eb",
+      "resolverEvidenceSha": "sha256:0858fcfe212742f90a487b2f4a223c6c83fd487d45d06d9147f3e0df398e24c6",
       "difficultyEvidenceSha": "sha256:d69d7b1a3d3001b2ebc5f34402953682bb7941bd8463a7c4a786f86d904c95f5"
     },
     {
@@ -773,15 +773,15 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q18-solution.svg",
-      "solutionImageAlt": "시간에 따라 속력이 증가한 뒤 일정해지는 속력-시간 그래프",
-      "solutionImageCaption": "속력이 증가하는 선분 뒤에 속력이 일정한 수평선이 이어진다.",
-      "solutionImageSize": "large",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:0cec140411767618a442c87621d37b381acb3a705be92648c9ba523df4167481",
-      "difficultyEvidenceSha": "sha256:b8a73c8f58b5b8d0751a5bea9ac1b59572cefc3ec62c9d38ca238634db3ccdef"
+      "resolverEvidenceSha": "sha256:ab6a66ddb6538de1e229fcb3040a249a462f6dc2c9343552835fcef7fa659e16",
+      "difficultyEvidenceSha": "sha256:b8a73c8f58b5b8d0751a5bea9ac1b59572cefc3ec62c9d38ca238634db3ccdef",
+      "solutionImageAlt": "시간에 따라 속력이 증가한 뒤 일정해지는 속력-시간 그래프",
+      "solutionImageCaption": "속력이 증가하는 선분 뒤에 속력이 일정한 수평선이 이어진다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 19,
@@ -824,13 +824,13 @@ window.questionBank = [
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution.svg",
-      "solutionImageAlt": "관람차 높이가 주기적으로 변하고 10분, 30분, 50분에 최고 높이 30 m에 이르는 그래프",
-      "solutionImageCaption": "최고점 사이 간격은 20분이며 높이 20 m를 지나는 횟수를 60분 동안 읽는다.",
-      "solutionImageSize": "large",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7c1ca9a80a39a08a264dec71579d4346e1fedaded2fbe35a9b30514b43ac8fe8",
-      "difficultyEvidenceSha": "sha256:f082cde6837f66e959f43da5e9b67036a44490ceccadf3a93081dd6b49eeae29"
+      "resolverEvidenceSha": "sha256:02ef3878c6bb21540aac868829ce18fc073c188b2382e75eb8bb319fc0365f4a",
+      "difficultyEvidenceSha": "sha256:f082cde6837f66e959f43da5e9b67036a44490ceccadf3a93081dd6b49eeae29",
+      "solutionImageAlt": "관람차 높이가 주기적으로 변하고 10분, 30분, 50분에 최고 높이 30 m에 이르는 그래프",
+      "solutionImageCaption": "최고점 사이 간격은 20분이며 높이 20 m를 지나는 횟수를 60분 동안 읽는다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 20,
@@ -872,7 +872,7 @@ window.questionBank = [
       "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:43bb476d0fc757ed3dfaa7d9cd6587e105b98937597a872133c5bdc973698958",
+      "resolverEvidenceSha": "sha256:94dd3e3c46513e522f03b5c390662f17ed7eb80eed1a1937bf9fb009a6a2fc9e",
       "difficultyEvidenceSha": "sha256:ba6031c438d8b8a0efba9672ab419cede3ebcc594192b42b0cadce6f423813ca"
     },
     {
@@ -914,15 +914,15 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q21-solution.svg",
-      "solutionImageAlt": "y=ax와 y=b/x 그래프가 (-6,2)에서 만나며 a=-1/3, b=-12임을 표시한 좌표평면",
-      "solutionImageCaption": "공통 교점 (-6,2)를 두 식에 각각 대입해 ab를 구한다.",
-      "solutionImageSize": "large",
       "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
       "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4a67e75fa3a40d43e6fd0ad97f0be6af03cef284d8a0621e0fe14e9c92617431",
-      "difficultyEvidenceSha": "sha256:327ab8acf47b8c5601e5fa3f7c58a78f7463fe6e6a89688a7e228d0157cca2b7"
+      "resolverEvidenceSha": "sha256:e2c97832fb407814635035046260cad45441c3db568ec7020c814e200426c446",
+      "difficultyEvidenceSha": "sha256:327ab8acf47b8c5601e5fa3f7c58a78f7463fe6e6a89688a7e228d0157cca2b7",
+      "solutionImageAlt": "y=ax와 y=b/x 그래프가 (-6,2)에서 만나며 a=-1/3, b=-12임을 표시한 좌표평면",
+      "solutionImageCaption": "공통 교점 (-6,2)를 두 식에 각각 대입해 ab를 구한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 22,
@@ -961,7 +961,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:30b4d2bee3630292a5defc17ea014f643757d307747d1ba722b5d8bcb2546647",
+      "resolverEvidenceSha": "sha256:f32bc6f8de919725e6078f766277c434de040700f9cffbe3352534711b9d1c2a",
       "difficultyEvidenceSha": "sha256:0b8c9f43fa204f6a4abdc8ab46dae5b8ed3792be348f38e29af392b05ca27996"
     },
     {
@@ -999,7 +999,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:258a5525cba4d62a3dc589e607d7c5309741e68fc21881bf8e1ba4c6a12d04fd",
+      "resolverEvidenceSha": "sha256:120ef5f5c395cbcfdab84953fd003118bf537fd78748c944a2235c3379c99f69",
       "difficultyEvidenceSha": "sha256:78ab25ed5947fcb8e5483dfe44e86ab05e005322b236b10eb9f2aa84cbc35883"
     },
     {
@@ -1036,14 +1036,14 @@ window.questionBank = [
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q24-solution.svg",
-      "solutionImageAlt": "시간-거리 그래프에서 토끼는 (10,0)에서 출발하고 거북은 (60,2)를 지나는 모습",
-      "solutionImageCaption": "두 선에서 토끼의 출발 시각과 거북이 2 km에 도달한 시각을 좌표로 읽는다.",
-      "solutionImageSize": "large",
       "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:37f5dd6c2ae60e0230f318e58f6d55a4ddb5a9fa4d2323e26c4f62cdb651004a",
-      "difficultyEvidenceSha": "sha256:ad5d1819bca1244eaee6dc80b0e43f28a5b0de60db471c324368a6b9126269a6"
+      "resolverEvidenceSha": "sha256:bcdfe87832a06d6efaa87eb1fe6832aa15b6dcb8b27fae9653c2b25d395fbbac",
+      "difficultyEvidenceSha": "sha256:ad5d1819bca1244eaee6dc80b0e43f28a5b0de60db471c324368a6b9126269a6",
+      "solutionImageAlt": "시간-거리 그래프에서 토끼는 (10,0)에서 출발하고 거북은 (60,2)를 지나는 모습",
+      "solutionImageCaption": "두 선에서 토끼의 출발 시각과 거북이 2 km에 도달한 시각을 좌표로 읽는다.",
+      "solutionImageSize": "large"
     }
   ];
