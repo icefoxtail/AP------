@@ -4,11 +4,11 @@
     if (root) root.APRenderStateNormalizer = api;
 }(typeof globalThis === 'undefined' ? this : globalThis, function () {
     'use strict';
-    const VERSION = 'archive-candidate-v1';
+    const VERSION = 'archive-candidate-v2';
     const MODE_MAP = Object.freeze({ exam: 'exam', sol: 'solution', ans: 'answer' });
     const CANONICAL_TO_APP_MODE = Object.freeze({ exam: 'exam', solution: 'sol', answer: 'ans' });
-    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid', 'reviewSourceRef']);
-    const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'layoutTag', 'choiceColumns', 'wide']);
+    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid', 'reviewSourceRef']);
+    const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide']);
     const ownedImmutableValues = new WeakSet();
     const serializedValues = new WeakMap();
 
