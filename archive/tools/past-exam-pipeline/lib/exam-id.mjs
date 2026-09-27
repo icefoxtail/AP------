@@ -17,6 +17,8 @@ const COURSE_TOKENS = [
   "미적분",
   "미적분I",
   "미적분II",
+  "미적분Ⅰ",
+  "미적분Ⅱ",
   "미적분1",
   "미적분2",
   "확률과통계",
@@ -34,7 +36,9 @@ const COURSE_ALIASES = new Map([
   ["확통", "확률과통계"],
   ["확률과 통계", "확률과통계"],
   ["미적분1", "미적분I"],
-  ["미적분2", "미적분II"]
+  ["미적분2", "미적분II"],
+  ["미적분Ⅰ", "미적분I"],
+  ["미적분Ⅱ", "미적분II"]
 ]);
 
 function normalizeYear(raw) {
@@ -71,7 +75,9 @@ function parseGrade(text) {
 }
 
 function parseCourse(text) {
-  const found = COURSE_TOKENS.find((token) => text.includes(token)) || "";
+  const compact = String(text).replace(/\s+/g, "");
+  const found = [...COURSE_TOKENS].sort((a, b) => b.length - a.length)
+    .find((token) => compact.includes(token.replace(/\s+/g, ""))) || "";
   return COURSE_ALIASES.get(found) || found;
 }
 
@@ -106,9 +112,13 @@ export function parseExamPdfMetadata(file, sourceRoot = "") {
   const tokens = normalizedName.split(/[_\-\s]+/).filter(Boolean);
   const yearMatch = normalizedName.match(/(?:^|[^\d])(\d{2}|\d{4})(?:[^\d]|$)/);
   const year = normalizeYear(yearMatch?.[1] || tokens[0] || "");
-  const term = parseTermFromPath(file);
-  const grade = parseGrade(normalizedName);
-  const course = parseCourse(`${normalizedName}_${file}`);
+  const basenameTerm = parseTermFromPath(name);
+  const pathTerm = parseTermFromPath(file);
+  const semester = basenameTerm.semester || pathTerm.semester;
+  const examType = basenameTerm.examType || pathTerm.examType;
+  const term = { semester, semesterLabel: semester ? `${semester}학기` : "", examType, examTypeLabel: examType === "mid" ? "중간" : examType === "final" ? "기말" : "" };
+  const grade = parseGrade(name);
+  const course = parseCourse(name) || parseCourse(file);
   const schoolName = parseSchool(tokens);
   const pdfKind = parsePdfKind(normalizedName);
   const sourceType = "past_exam";
