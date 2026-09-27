@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {assertExactCoverage,assertActualEvidence,assertPerformanceRow} from '../seal-visual-engine-code-ready.mjs';
+import {assertExactCoverage,assertActualEvidence,assertPerformanceRow,ORIGINAL_INDEPENDENT_VERIFIERS} from '../seal-visual-engine-code-ready.mjs';
 test('readiness rejects synthetic and unmeasured actual capture',()=>{
   const row={status:'PASS',runtime:'playwright-chromium',synthetic:false,errors:[],missingGlyphCount:0,labelCollisionCount:0,criticalCollisionCount:0,clippedTextCount:0,overflowCount:0};
   assertActualEvidence(row);
@@ -19,4 +19,8 @@ test('performance must be physically measured with finite metrics',()=>{
   assert.throws(()=>assertPerformanceRow({...row,browserLayoutTimeMs:null}),/TIMING_UNMEASURED/);
   assert.throws(()=>assertPerformanceRow({...row,renderTimeMs:Infinity}),/TIMING_UNMEASURED/);
   assert.throws(()=>assertPerformanceRow({...row,textNodeCount:undefined}),/DOM_METRICS_UNMEASURED/);
+});
+test('original verifier parity excludes newly added visual-engine validators',()=>{
+  assert.equal(ORIGINAL_INDEPENDENT_VERIFIERS.length,6);
+  assert.ok(ORIGINAL_INDEPENDENT_VERIFIERS.every(file=>file.startsWith('archive/tools/geometry-equation/verify-')));
 });

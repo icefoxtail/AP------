@@ -11,6 +11,14 @@ const requireGate=(condition,name)=>{if(!condition)throw Error(name);};
 const json=file=>JSON.parse(fs.readFileSync(file,'utf8'));
 const digest=file=>sha256(fs.readFileSync(file));
 const zeroMetrics=['missingGlyphCount','labelCollisionCount','criticalCollisionCount','clippedTextCount','overflowCount'];
+export const ORIGINAL_INDEPENDENT_VERIFIERS=[
+  'archive/tools/geometry-equation/verify-b-static-full.mjs',
+  'archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs',
+  'archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs',
+  'archive/tools/geometry-equation/verify-pilot-static.mjs',
+  'archive/tools/geometry-equation/verify-production-parity-s15.mjs',
+  'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs',
+];
 export function assertExactCoverage(actual,expected,label='COVERAGE'){
   requireGate(new Set(actual).size===actual.length,label+'_DUPLICATE');
   requireGate(actual.length===expected.length&&expected.every(v=>actual.includes(v)),label+'_MISSING');
@@ -44,8 +52,8 @@ export function qualifyCode({run,archiveAttempt,bboxReceipt}){
   const actualProtected=walk(path.join(repoRoot,'archive/assets')).concat(walk(path.join(repoRoot,'archive/exams')));
   assertExactCoverage(actualProtected.map(v=>path.relative(repoRoot,v).replaceAll('\\','/')),Object.keys(baseline.protectedFiles),'PROTECTED_INVENTORY');
   for(const [file,hash] of Object.entries(baseline.protectedFiles))requireGate(digest(path.join(repoRoot,file))===hash,'PRODUCTION_MUTATION:'+file);
-  const verifiers=Object.keys(baseline.coreFiles).filter(v=>v.includes('/verify-')&&v.endsWith('.mjs'));
-  requireGate(verifiers.length===6,'ORIGINAL_VERIFIER_COVERAGE');
+  const verifiers=ORIGINAL_INDEPENDENT_VERIFIERS;
+  requireGate(verifiers.every(file=>Object.hasOwn(baseline.coreFiles,file)),'ORIGINAL_VERIFIER_COVERAGE');
   for(const file of verifiers)requireGate(digest(path.join(repoRoot,file))===baseline.coreFiles[file],'INDEPENDENCE_BROKEN:'+file);
   for(const [file,evidence] of Object.entries(baseline.rules))requireGate(digest(path.join(repoRoot,'docs/rules',file))===evidence.sha256,'RULE_DRIFT:'+file);
 
