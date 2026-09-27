@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M1_M2_NORMALIZATION_INVENTORY_v1",
+  "baselineMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+  "latestOriginMainFetchedBeforePush": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "branchRebasedOntoMainSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "scope": [
+    "2015/M1-1",
+    "2015/M1-2",
+    "2015/M2-1",
+    "2015/M2-2",
+    "2022/M1-1",
+    "2022/M1-2",
+    "2022/M2-1",
+    "2022/M2-2"
+  ],
+  "rpmDenominator": {
+    "initialRecords": 466,
+    "finalRecords": 468,
+    "initial2015M2_2RhsRha": 0,
+    "final2015M2_2RhsRha": 2,
+    "final2022M2_2RhsRha": 2,
+    "repairedOmissions": [
+      {
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "l3": "직각삼각형의 합동",
+        "l4": "RHS",
+        "rpmRecordId": "M2-RPM-070"
+      },
+      {
+        "curriculum": "2015",
+        "scope": "M2-2",
+        "l3": "직각삼각형의 합동",
+        "l4": "RHA",
+        "rpmRecordId": "M2-RPM-071"
+      }
+    ],
+    "pairedSemanticRelationRecordRows": {
+      "BOTH_PRESENT": 460,
+      "LEGIT_CURRICULUM_DIFFERENCE": 6,
+      "NEEDS_EVIDENCE": 2
+    },
+    "remainingNeedsEvidence": [
+      {
+        "curriculum": "2022",
+        "scope": "M2-2",
+        "l3": "각의 이등분선",
+        "l4": "각의 이등분선 성질",
+        "rpmRecordId": "M2-RPM-182"
+      },
+      {
+        "curriculum": "2022",
+        "scope": "M2-2",
+        "l3": "각의 이등분선",
+        "l4": "거리 관계",
+        "rpmRecordId": "M2-RPM-183"
+      }
+    ]
+  },
+  "crosswalkDenominator": {
+    "initialMiddle1": 232,
+    "initialMiddle2": 234,
+    "finalMiddle1": 232,
+    "finalMiddle2": 236,
+    "finalTotal": 468,
+    "missing": 0,
+    "orphan": 0,
+    "duplicateSemanticTuples": 0,
+    "finalIntentionalRpmOnlyRows": 283,
+    "finalExactBindingOnlyGapRows": 105
+  },
+  "normalizationChanges": {
+    "KEEP": 361,
+    "DIRECT_TO_FAMILY": 6,
+    "DIRECT_OR_FAMILY_TO_RPM_ONLY": 95,
+    "PT_TPL_REMAP": 4,
+    "bindingStatusRepair": 0,
+    "newRpmPaths": 2
+  },
+  "globalActiveSnapshot": {
+    "activePackCount": 10,
+    "activeProblemTypeCount": 244,
+    "activeTemplateCount": 655,
+    "exactActiveBindingCount": 722,
+    "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2"
+  },
+  "migrationGapReassessment": {
+    "previousGapItems": 20,
+    "existingReuseRecovered": 4,
+    "bindingOnlyGaps": 4,
+    "remainingSemanticGaps": 12,
+    "relatedPreexistingReuseWithMissingRpmPointer": 1
+  },
+  "validation": {
+    "curriculumViews": "8/8 PASS",
+    "rpmMatrices": "PASS",
+    "rpmPackageManifest": "38/38 PASS",
+    "rootRulesManifestMasterHash": "PASS",
+    "activeStatusAndParentIntegrityErrors": 0,
+    "exactBindingStatusMismatchErrors": 0,
+    "incompleteFamilyCandidateSets": 0,
+    "directSemanticEquivalenceErrors": 0,
+    "activeResolverTests": "16/16 PASS",
+    "m1M2CrosswalkAndRuntimeTests": "9/9 PASS",
+    "deterministicResolverRows": "468/468 PASS",
+    "targetedFalsePassRegression": "PASS",
+    "targetedFalsePassRows": "18/18 RPM_ONLY",
+    "rhsRhaRegression": "PASS",
+    "middle3BytesUnchanged": "PASS",
+    "m3NormalizationArtifactsChanged": 0
+  },
+  "artifactPaths": [
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/baseline-snapshot.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/migration-gap-reassessment.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/AUDIT_SUMMARY.json"
+  ],
+  "activeAuthorityReadGloballyNotOwnerLimited": true,
+  "baselineSnapshotSha256": "b55b35b84db2cb06ecf19c9f7306ced7007d477ebb607e14ae85eabb72fd64cc",
+  "targetedFalsePassReview": {
+    "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+    "rowCount": 18,
+    "familyCounts": {
+      "M1_RATIONAL_PROPERTY_JUDGMENT": 6,
+      "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT": 6,
+      "M1_SPATIAL_OBJECT_MISMATCH": 4,
+      "M2_PARALLEL_CONVERSE_DIRECTION": 2
+    },
+    "finalRpmOnlyRows": 18,
+    "targetedRegression": "PASS",
+    "resolver468Rows": "PASS",
+    "activeResolverRuntime": "PASS",
+    "activeResolverTestCount": "16/16",
+    "m1M2CrosswalkTestCount": "9/9",
+    "rhsRhaRegression": "PASS",
+    "shinheungQ6Q7": "EXISTING_REUSE",
+    "middle3GitBlobUnchanged": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "m3NormalizationArtifactsChanged": 0,
+    "mainMutationCount": 0,
+    "mainMerged": false,
+    "latestMainObservedSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
+    "targetFilesDriftedSinceReviewSha": [],
+    "reviewedBranchSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333"
+  }
+}
