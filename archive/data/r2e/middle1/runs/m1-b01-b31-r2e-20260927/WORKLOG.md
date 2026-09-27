@@ -23,3 +23,5 @@ f53fffdf88d14731ac4313de33c881fde3327fdb
 - Interim archive aggregate commit 1623d065 and follow-up normalized-RPM resolver commit 9b988082fdc991f2098d197a6aa7846ff70747eb are on origin/main. Six exams B21/B22/B23/B26/B29/B30 have current resolver receipts PASS, byte parity on main, current runtime/catalog parity, and R2E_MAIN_FINAL receipts. B20/B24/B28 remain R2E branch-final pending main integration. Continue B25/B27/B31 and remaining B01-B31.
 
 - Interim archive aggregate commit 1623d065 and follow-up normalized-RPM resolver commit 9b988082fdc991f2098d197a6aa7846ff70747eb are on origin/main. Six exams B21/B22/B23/B26/B29/B30 have current resolver receipts PASS, byte parity on main, current runtime/catalog parity, and R2E_MAIN_FINAL receipts. B20/B24/B28 remain R2E branch-final pending main integration. Continue B25/B27/B31 and remaining B01-B31.
+
+- origin/main advanced to 77242953defe643a349c495535e76bfcaa96ef36 after interim promotion. The sole changed path was rchive/question-index-report.md; it does not affect the six R2E_MAIN_FINAL receipts or production artifacts. The durable state branch now includes that main commit.
