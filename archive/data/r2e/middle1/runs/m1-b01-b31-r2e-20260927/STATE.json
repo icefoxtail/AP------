@@ -4,7 +4,7 @@
   "baseMainSha": "9b988082fdc991f2098d197a6aa7846ff70747eb",
   "inputBranch": "work/m1-b01-b31-r2e",
   "inputCommit": "92cf91b383d2e622c1c1aa22582e0903cc40da0a",
-  "currentStage": "INTERIM_MAIN_FINAL_PARTIAL",
+  "currentStage": "HOLD_ONLY_REVIEW_CHECKPOINT",
   "denominator": 31,
   "completedCount": 9,
   "remainingCount": 22,
@@ -27,18 +27,18 @@
   "blockingIssues": [
     "B19 q6 HUMAN_REQUIRED: contradictory source/answer evidence"
   ],
-  "lastCompletedItem": "B28",
-  "nextStartPoint": "B27 remaining held Meta Q2-10,Q12-Q16,Q18,Q22-Q23; then B31 held Meta Q1-Q23. Do not inspect PASS items. B19 Q6 remains HUMAN_REQUIRED.",
+  "lastCompletedItem": "B31 HOLD subset 22/23",
+  "nextStartPoint": "B27 Q2: straight-angle-only method has no exact current shared RPM→ACTIVE route. B31 Q15: grouped interval data cannot determine an individual exact value; no exact current ACTIVE template. B19 Q6 source/key contradiction remains HUMAN_REQUIRED. PASS questions stay outside current review scope.",
   "initialMainSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
-  "latestMainAfterAdvance": "9868a7a933c460d552b9d7d48c6d039fd48dd2de",
-  "candidateHead": "8b383b0fbbcd50cddfa5b063598b09e32dd345a1",
+  "latestMainAfterAdvance": "d6fd4bebf6e817f1545de54f07ba9b600ebe93c8",
+  "candidateHead": "d6fd4bebf6e817f1545de54f07ba9b600ebe93c8",
   "candidateBranch": "codex/m1-r2e-main-final-20260927",
   "readyCandidateBSet": [],
   "readyCandidateCount": 0,
   "closedOrReadyCount": 9,
   "closedOrReadyPercent": 29,
   "mainPromotedCount": 9,
-  "lastCompletedStage": "B27 Q7/Q16/Q22/Q23 targeted SVG interim production commit; B27 still R2E_PENDING with 17 Meta holds.",
+  "lastCompletedStage": "B27 16/17 held Meta repairs + 4 SVG local repairs; B31 22/23 held Meta repairs. Independent whole-exam closure remains open.",
   "visualReviewEvidencePath": "archive/data/r2e/middle1/visual/B20_B24_B28_BATCH_REVIEW.json",
   "visualReviewEvidenceSha256": "188445f88dbe0643ed89b24d6538d46f391267ed2fd0e230e0fa628114fa5e2e",
   "mainPromotionStatus": "R2E_MAIN_FINAL_PARTIAL",
@@ -73,5 +73,10 @@
     ],
     "dependencyImpact": "Catalog index advanced with the main sync, so all nine R2E_MAIN_FINAL receipts were rebuilt. The M1 exam artifacts, solution assets, RPM crosswalk, canonical Meta, runtime, and engine are unchanged; production byte parity remains PASS."
   },
-  "updatedAt": "2026-09-27T10:53:36.354152+00:00"
+  "updatedAt": "2026-09-27T12:13:19.572160+00:00",
+  "scopedHoldDenominator": 40,
+  "scopedHoldMetaResolved": 38,
+  "scopedHoldMetaRemaining": 2,
+  "scopedHoldMetaPercent": 95,
+  "scopedSvgReviewed": 4
 }
