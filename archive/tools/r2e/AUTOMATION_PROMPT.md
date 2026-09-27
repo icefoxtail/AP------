@@ -1,6 +1,6 @@
 작업 시작 전에 `.agent/BOOT.md` → 연결된 Notion 「GPT 작업 전 필독 라우터」 → 「Archive 2.0 / JS Archive 시작 페이지」 → 「Archive 전체 작업 생명주기 — 단계별 필독 문서」를 순서대로 읽는다. Notion은 `notion_fetch({id:"self"})`로 실제 도구 접근을 확인한다. `get_tool_access` 도구가 없다는 이유만으로 멈추지 않는다. `ai_search`가 plan-required이고 일반 `search`가 available이면 일반 search로 찾고, URL/ID를 알면 직접 fetch한다. 실제 fetch/search 경로가 모두 실패할 때만 `WAIT_RESOURCE`다.
 
-그 다음 최신 `origin/main`을 fetch하고 다음 정본·구현 파일을 읽는다.
+최신 `origin/main`을 fetch하고 다음 정본·구현 파일을 읽는다.
 
 - `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`
 - `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`
@@ -8,28 +8,26 @@
 - `archive/tools/meta-foundation/rpm-active-resolver.mjs`
 - `archive/tools/meta-foundation/build-rpm-active-resolution.mjs`
 - `archive/tools/meta-foundation/validate-rpm-active-receipt.mjs`
-- `archive/tools/r2e/snapshot.mjs`
+- `archive/tools/r2e/snapshot.mjs`, `archive/tools/r2e/final-gate.mjs`
 
-## 현재 run 목적
+## 대상과 intake 복구
 
-이 예약 단계는 `work/intake/m2`의 `READY_FOR_R2E` receipt에서 빠진 최신 Meta resolver evidence 참조와 contract version을 기존 final JS/SVG bytes를 보존하며 backfill한다. R1 재검수나 R2E adjudication이 아니다. 이번 run에서 `work/intake/m3`는 수정하지 않는다. 매 run은 원격 M2 HEAD를 동결하고 receipt 파일을 다시 inventory한다. 분모는 unique `examUid` 수다. 이전 보고서의 파일/시험지 수를 재사용하지 않는다.
+대상은 `work/intake/m2`, `work/intake/m3`의 최신 `READY_FOR_R2E` receipt와 검증 가능한 `work/r2e-state` resume checkpoint다. 중1 및 예전 레인 branch는 대상이 아니다. 매 run에서 remote HEAD를 새로 고정하고 READY 분모는 unique `examUid`로 계산한다. 이전 보고서의 숫자를 재사용하지 않으며 run 시작 뒤 들어온 commit은 다음 run으로 넘긴다. 기존 resume checkpoint는 신규 intake보다 먼저 처리한다.
 
-최신 `snapshot.mjs`가 `META_RECOVERY_REQUIRED`와 `metaRecoveryCandidates`를 반환하면 이것은 실행 가능한 bounded recovery inventory다. `archive/data/r2e-intake/m2/*.evidence.json` 같은 item-level evidence sidecar를 시험지 receipt로 취급하지 않는다. identity/lineage 필수 필드가 빠진 receipt, source identity 불일치, receipt 이후 JS/SVG drift는 그 시험지만 `CONTRACT_RECOVERY_BLOCKED`로 기록하고 다음 시험지로 진행한다.
+snapshot이 `META_RECOVERY_REQUIRED`를 반환하면 `metaRecoveryCandidates`를 먼저 처리한다. `*.evidence.json`은 receipt가 아니다. 구형 receipt의 경로·lineage를 검증하고, 필요한 공용 resolver/difficulty sidecar와 Meta receipt field를 canonical validator로 backfill한다. 공식 validator를 통과한 경우에만 receipt를 갱신하고 새 snapshot으로 다시 확인한다. frozen JS/SVG 이후 drift, source identity 불일치, 또는 sidecar만으로 exact candidate/difficulty parity를 충족하지 못하는 시험지는 `CONTRACT_RECOVERY_BLOCKED`로 남긴다. 이를 위해 JS/SVG나 canonical validator를 바꾸거나 검증을 우회하지 않는다. 그 시험지에 R2E final gate를 발급하지 않지만, 독립적으로 유효한 다른 candidates/resumes는 계속 진행한다.
 
-## 시험지별 backfill
+## R2E selective final adjudication
 
-1. 격리 worktree의 최신 `origin/main`에서 실행하고, guard를 획득한 뒤 frozen M2 snapshot을 만든다. 자신의 runId/fencing token만 사용하고 모든 Git mutation 전에 guard를 확인한다. 원본 checkout의 dirty/untracked 상태를 보존한다.
-2. receipt가 가리키는 examUid, examFile, sourceBlobSha, input commit lineage, current final JS blob, changed SVG blobs와 question denominator를 확인한다. receipt 이후 JS/SVG bytes가 달라졌거나 identity를 증명할 수 없으면 그 시험지를 치료하지 말고 `CONTRACT_RECOVERY_BLOCKED`로 남긴다.
-3. sidecar input은 frozen JS의 실제 content, choices, image reference, verified final solution, standardUnitKey, subUnitKey에 결속한다. semantic first pass는 `sourceIdentity`, verified `solutionIdentity`, `curriculumContext`, `semanticDecision`만 받는다. 기존 candidate key, 기존 R1 Meta verdict, 이전 difficulty를 새 의미 판단 입력으로 사용하지 않는다.
-4. 순서는 source + verified final solution → primaryMethod → decisiveStep → RPM Primary README → CANONICAL_MASTER → exact curriculum/scope RPM view → grade-specific RPM→ACTIVE crosswalk → GLOBAL ACTIVE owner → exact curriculum binding → shared resolver disposition이다. 공용 resolver로 최신 authority hashes를 만든다. difficulty는 fresh independent blind evidence로 생성하며 legacy `level`에서 추론하지 않는다. relational evidence도 동일한 frozen source identity와 resolver input bundle에 결속한다.
-5. 전 UID 전체가 포함된 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` sidecar를 만든다. current validator가 요구하는 UID/ordinal, source/solution/image/content/choices hashes, curriculum/L1/L2, candidate projection, resolver, difficulty, relational provenance, validator receipt, disposition과 denominator parity를 모두 검증한다. 공식 `validateR2EIntakeMetaReceipt(...)` 및 deterministic resolver validator가 PASS하지 않으면 봉인하지 않는다.
-6. 공식 validator가 frozen JS projection과 fresh difficulty evidence의 exact parity 등으로 sidecar-only 복구를 거부하면 validator를 느슨하게 하거나 JS/SVG를 수정하지 않는다. 그 시험지는 `CONTRACT_RECOVERY_BLOCKED`로 기록하고 validator 오류와 필드 근거를 남긴다. unrelated 시험지는 계속한다.
-7. 검증된 sidecar가 있을 때만 해당 시험지 receipt에 실제 raw SHA-256을 가진 `metaResolutionEvidenceRef`와 정확한 `metaResolverContractVersion: "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1"`를 추가한다. 다른 R1 receipt 내용은 이유 없이 다시 쓰지 않는다. Meta summary는 최신 resolver evidence 불일치가 공식 snapshot을 막을 때만 authority에 맞춰 동기화한다.
+R2E는 문항 전체의 3차 deep review가 아니다. 모든 문항에 integrity scan을 하고, deep review는 정본이 지정한 R1 HOLD/REPAIR, CREATE↔R1 conflict, quality blocker, 새 taxonomy proposal, RPM migration gap, Meta canonical/pack HOLD, CrossConcept 경계, source/answer/visual hard HOLD, receipt 이후 byte drift, validator가 새로 발견한 defect에 한정한다. 근거 없는 정상 R1 PASS는 처음부터 다시 풀지 않고 `INTEGRITY_REUSE`로 기록한다.
 
-수정 가능한 intake 파일은 해당 시험지 receipt와 해당 최신 Meta sidecar/evidence뿐이다. JS, SVG, L1/L2, 다른 시험지 파일, canonical validator, main은 수정하지 않는다. 시험지별로 수정 파일만 명시 stage하고 독립 commit/push한다. `git add .`, `git add -A`, force push 및 다른 writer의 변경 덮어쓰기는 금지한다. remote branch가 전진하면 최신 remote 위에서 해당 시험지 변경만 재적용하고 재검증한다.
+**Meta HOLD는 이번 예약 작업에서 실제로 adjudicate하고 해소해야 한다.** `META_PACK_GAP_HOLD`, `META_CANONICAL_HOLD`, `RPM_PRIMARY_MIGRATION_GAP`, `PROPOSED_NEW_L3`, `PROPOSED_NEW_L4`, 미결 CrossConcept, validator 미실행, difficulty/source/solution SHA 불일치, runtime/Archive parity 불일치를 다음 단계로 넘기거나 단순히 disposition 이름만 바꿔 통과시키지 않는다. 각 UID에 대해 frozen source와 verified final solution에서 fresh decision-isolated input을 만들고 shared RPM→ACTIVE resolver, fresh independent difficulty evidence, relational provenance 및 deterministic validator를 적용한다. Candidate key, 이전 verdict, 기존 difficulty 또는 `level` 추론은 semantic first pass에 넣지 않는다.
 
-## 종료 조건과 handoff
+resolver의 actual evidence를 따라 `EXISTING_REUSE`, `REBIND`, `MATERIALIZED`, `NEW_L4`, `NEW_L3`, `CROSS_CONCEPT`, 또는 유효한 `ROUTE_OUT`으로 최종화한다. RPM Primary → exact curriculum/scope crosswalk → GLOBAL ACTIVE owner → exact binding 순서를 지킨다. Materialization/rebind/taxonomy 변경 뒤에는 current ACTIVE snapshot으로 resolver를 다시 실행해 final metadata와 runtime/archive parity를 검증한다. answer/solution/source/SVG/render 문제도 정본에서 요구하는 실제 결함일 때만 최소 범위로 고치고, 영향을 받는 gate와 render/regression을 다시 확인한다.
 
-모든 frozen READY receipt에서 기존 최신 계약 PASS(A), backfill PASS(B), `CONTRACT_RECOVERY_BLOCKED`(C)를 계산해 `A + B + C = N`인지 확인한다. 공식 snapshot에서 `INVALID_READY_RECEIPT`, resolver ref/version/SHA/evidence 오류, Meta summary mismatch가 0이고 snapshot READY candidate가 실제 계약 충족 시험지와 같을 때만 recovery 완료다. `BLOCKED > 0`이면 완료로 표시하지 않는다.
+한 run에서는 여러 시험지의 신규 proposal을 의미 cluster로 비교하되 taxonomy를 과분화하지 않는다. 시험지별 intake commit을 main에 병합하지 않는다. 각 R2E exam의 ledger, evidence, checkpoint는 정본이 정한 durable state 경로에 저장하고 명시 파일만 stage/push한다. final gate가 모든 UID에서 integrity, shared Meta resolver, difficulty, visual/render, regression 및 HOLD Zero를 확인하고 `R2E_MAIN_FINAL`을 승인한 시험지만 정본 절차에 따라 최신 main에 통합한다.
 
-Notion의 기존 R2E intake/작업 기록에 frozen intake HEAD, unique examUid 분모, A/B/C, sidecar/receipt 수, validator 및 snapshot 결과, JS 변경 수, SVG 변경 수, 시험지별 commit과 remote HEAD, blocker 및 다음 정확한 handoff를 기록한다. 이 단계가 끝나면 종료한다. R2E adjudication, checkpoint 복원/소비, main 통합으로 넘어가지 않는다.
+## 종료 조건과 기록
+
+대상별로 resume/R2E_MAIN_FINAL/명시적 blocker를 기록하고, 실제 resolver evidence와 final disposition이 일치하는지 확인한다. `R2E_FINAL`에는 Meta HOLD/proposal/migration gap/unresolved CrossConcept/runtime parity failure가 하나도 남으면 안 된다. final gate PASS와 승인된 main integration/parity가 모두 확인되기 전에는 완료로 표시하지 않는다.
+
+Notion의 기존 R2E intake/작업 기록에 frozen intake HEAD, unique examUid 분모, recovery PASS/BLOCKED 수, R2E 완료/미완료 수, Meta HOLD 전후 및 resolver dispositions, 테스트/validator/snapshot 결과, 변경 파일, 시험지별 commit과 final main SHA, 남은 blocker와 다음 handoff를 기록한다. guard는 자기 runId/fencing token만 사용하며 종료 시 직접 해제한다.

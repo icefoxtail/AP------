@@ -19,7 +19,7 @@ Archive/Meta/RPM 도구를 적용할 때 사용하는 실행 잠금, 입력 snap
 
 ## 6시간 예약
 
-서울 시간 01:00 / 07:00 / 13:00 / 19:00. 모델 `gpt-6-luna`, reasoning `max`.
+서울 시간 03:00 / 09:00 / 15:00 / 21:00. 모델 `gpt-6-luna`, reasoning `max`.
 사용자에게 보이는 예약 prompt는 `AUTOMATION_PROMPT.md`를 사용한다.
 새 run은 Git receipt와 checkpoint에서 상태를 복원하며 채팅을 authority로 사용하지 않는다.
 
@@ -62,8 +62,9 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
   `metaResolverContractVersion`이 빠지고, 그 밖의 누락이 위에서 설명한 검증 가능한
   구형 `inputCommit`/`authorityRefs` 필드뿐이면
   snapshot은 이를 R2E candidate로 세지 않고 `META_RECOVERY_REQUIRED`의
-  `metaRecoveryCandidates`로 반환한다. 먼저 `AUTOMATION_PROMPT.md`의 제한된
-  contract recovery를 수행하고, 검증 완료 뒤 새 snapshot에서 R2E eligibility를 판단한다.
+  `metaRecoveryCandidates`로 반환한다. `AUTOMATION_PROMPT.md`의 bounded contract recovery를
+  먼저 수행한다. receipt/sidecar commit 뒤 새 snapshot을 만들 때는 시작 시 동결한 examUid
+  cohort만 R2E 대상으로 유지하고, 새로 들어온 UID는 다음 run으로 넘긴다.
 - receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
   서로 독립인 입력의 진행을 막지 않는다. sidecar-only recovery가 exact projection parity를
   만족할 수 없으면 `CONTRACT_RECOVERY_BLOCKED`로 남기며 validator나 exam bytes를 우회하지 않는다.
@@ -77,8 +78,10 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 - `NO_WORK`면 guard를 종료한다. 잘못된 receipt는 파일별 오류로 남겨 다른 유효 입력을 막지 않는다.
 
 `META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
-요구하면 먼저 별도 receipt/sidecar backfill을 수행한다. pending recovery를 R2E final gate에
-넘기지 않는다.
+요구하면 먼저 receipt/sidecar backfill을 수행한다. 그 뒤 새 snapshot에서 contract PASS한
+독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. 아직 recovery가
+필요하거나 `CONTRACT_RECOVERY_BLOCKED`인 시험지는 R2E ledger/final gate에 넣지 않는다.
+이 blocker가 다른 시험지의 유효한 candidate/resume 처리를 막아서는 안 된다.
 
 Snapshot과 stage 결과는 정본 경로의 파일로 저장하고 R2E 전용 durable branch에
 명시적으로 commit/push한다. ACK된 remote commit까지의 결과만 resume authority다.
