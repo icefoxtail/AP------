@@ -173,3 +173,49 @@ The intended operational split is:
 
 Do not connect this engine as an unconditional replacement backend before the Geometry Equation FULL PILOT.
 
+### Current Past Exam adapter gap
+
+Current main already has the correct lifecycle slots in
+`archive/tools/past-exam-pipeline/completion-contract.json`:
+
+```text
+ALL_QUESTION_VISUAL_TRIAGE
+→ EXPECTED_FACT_FREEZE
+→ NUMERIC_VISUAL_BUILD
+→ STATIC_AND_RENDER_CAPTURE
+```
+
+However, current main does not yet produce the new engine input contract
+(`independentFactHash + visualSpec`). Therefore the engine is **not yet wired
+into Past Exam V3** even though the lifecycle has the right place for it.
+
+The integration adapter must be explicit and candidate-only:
+
+```text
+frozen EXPECTED FACT bundle
+→ canonical frozen-fact SHA
+→ fact.independentFactHash
+→ visualSpec.sourceFacts.independentFactHash
+→ visualSpec objects / displayFacts
+→ geometry visual engine STANDARD or SPECIAL route
+→ archive/_generated/... candidate
+```
+
+The outer and inner fact hash must match. The adapter must not derive expected
+facts from the generated SVG or from builder metadata.
+
+`READY_FOR_LOCAL_VISUAL_QA` is a run/evidence lifecycle state, **not a new
+production JS field**. `completion-contract.json` already limits production
+visual fields to the existing `solutionImage*` contract.
+
+Recommended timing:
+
+1. latest-main source-only integration and full code requalification
+2. add this feature-gated S8 adapter
+3. run the Geometry Equation FULL PILOT through the adapter
+4. independent review
+5. only then consider making the backend canonical/default
+
+This adapter is required **before the FULL PILOT** if the pilot is intended to
+exercise the real Past Exam path. It must not grant automatic promotion.
+
