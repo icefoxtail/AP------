@@ -176,7 +176,8 @@
     scopes: [],
     distribution: "equal",
     count: 10,
-    buckets: [2, 3],
+    buckets: [],
+    difficultyFilterVersion: "optional-v1",
     custom: {},
     selected: [],
     pins: [],
@@ -282,6 +283,7 @@
       "distribution",
       "count",
       "buckets",
+      "difficultyFilterVersion",
       "custom",
       "seed",
       "rows",
@@ -427,6 +429,13 @@
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
     state.filters = restoredFilters;
+    // Old unopened drafts inherited [2, 3] without a user choosing difficulty.
+    if (!data.selected.length && data.difficultyFilterVersion !== "optional-v1" &&
+        data.distribution !== "custom" && JSON.stringify(data.buckets) === "[2,3]") {
+      state.buckets = [];
+      state.rows = state.rows.map(row => ({ ...row, difficultyBuckets: [] }));
+    }
+    state.difficultyFilterVersion = "optional-v1";
     if (!state.receipts.length && !state.sealed)
       reconcileFinderSchool(state.filters);
     state.selected = data.selected.map((r) => ({
@@ -607,7 +616,7 @@
                     sourceFiles: state.sources,
                     primaryPaths: s.paths,
                   }) &&
-                  state.buckets.includes(r.difficultyBucket) &&
+                  C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
                   C.eligibility(r, state).ok &&
                   !C.composeExclusions(context()).union.has(r.questionUid),
               ).length
@@ -1098,7 +1107,7 @@
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1));
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 시험지에 있는 전체 문항 수이며, 자동 출제 가능 수는 별도로 표시합니다.</p>
+      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 시험지에 있는 전체 문항 수입니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
         0,
@@ -1115,14 +1124,14 @@
               .filter((s) => s.L1 === g)
               .map(
                 (s) =>
-                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항${s.eligibleCount !== s.count ? ` · 자동 출제 ${s.eligibleCount}` : ""}</small></div>`,
+                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`,
               )
               .join("")}</div>`,
         )
         .join("")}</div>`;
   }
   function bucketButtons(current, row = "") {
-    return `<div class="bucket-set" aria-label="5단계 난이도">${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
+    return `<div class="bucket-set" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
   }
   function composeAdvancedChoices(selectionFilters) {
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
@@ -1181,9 +1190,9 @@
       ],
       state.distribution,
       null,
-    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><label>난이도 (1~5)${bucketButtons(state.buckets)}</label></div>
-      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
-      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ")}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
+    )}</select></label><label>${state.distribution === "pool" ? "총 문항 수" : "단원당 문항 수"}<input id="count" type="number" min="1" max="400" value="${state.count}" ${state.distribution === "all" || state.sealed ? "disabled" : ""}></label><span class="muted">난이도: ${state.buckets.length ? state.buckets.join(" · ") : "전체 (미지정 포함)"}</span></div>
+      <details class="compose-detail" ${state.composeDetailOpen ? "open" : ""}><summary>세부 조건</summary><label>난이도 (선택)${bucketButtons(state.buckets)}</label><p class="muted">전체는 난이도 미지정 문항도 포함합니다. 특정 난이도를 선택하면 해당 난이도가 확인된 문항만 선택합니다.</p>${filterMarkup(state.filters, "compose", "detail")}<div class="compose-taxonomy"><strong>개념·유형으로 더 좁히기</strong><div class="compose-detail-fields"><label>개념<select data-filter="L3" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.concepts, state.filters.L3, "전체 개념")}</select></label><label>유형<select data-filter="L4" data-group="compose" ${state.sealed ? "disabled" : ""}>${advancedOptions(advanced.types, state.filters.L4, "전체 유형")}</select></label></div></div></details>
+      ${rows.length ? `<table class="composition"><thead><tr><th>범위</th><th>난이도</th><th>요청</th></tr></thead><tbody>${rows.map((row) => `<tr><td>${esc(row.label || "선택한 전체 범위")}</td><td>${state.distribution === "custom" ? bucketButtons(row.difficultyBuckets, row.id) : row.difficultyBuckets.join(" · ") || "전체"}</td><td>${state.distribution === "custom" ? `<input type="number" min="1" max="400" data-row-count="${esc(row.id)}" value="${row.count}" aria-label="${esc(row.label)} 문항 수" ${state.sealed ? "disabled" : ""}>` : row.count}</td></tr>`).join("")}</tbody></table>` : '<p class="muted">위에서 출제할 범위를 선택하세요.</p>'}
       ${shortages.length ? `<div class="callout danger"><strong>현재 조건에서 ${shortages.reduce((n, s) => n + s.row.count - s.available, 0)}문항이 부족합니다.</strong>${shortages.map((s) => `<div>${esc(s.row.label || "선택 범위")} · 요청 ${s.row.count} / 신규 가능 ${s.available}</div>`).join("")}<p>문항 수를 낮추거나, 난이도·출처 범위를 직접 조정하세요.</p></div>` : ""}
       <div class="resultbar compose-create-bar"><strong>총 ${total}문항 · ${Math.max(1, Math.ceil(total / 50))}개 문제지</strong>${button("generate", state.selected.length ? "다시 만들기" : "문제지 만들기", `class="primary" ${!rows.length || state.sealed || state.busy || shortages.length ? "disabled" : ""}`)}</div><p class="muted">조건에 맞는 최신 연도 문항부터 선택합니다. 같은 연도 안에서는 문항을 섞고, 연도 미상 자료는 마지막에 선택합니다. 50문항 기준으로 분할하며, 단원·난이도·출처 조건을 그대로 지킵니다.</p></section>`;
   }
@@ -2086,6 +2095,8 @@
       selected: [],
       sources: [],
       scopes: [],
+      buckets: [],
+      custom: {},
       pins: [],
       rows: [],
       round: 1,
@@ -2162,6 +2173,7 @@
           "scope-range",
           "scope-group",
           "bucket",
+          "bucket-all",
           "source-toggle",
           "sources-clear",
           "targets-clear",
@@ -2208,6 +2220,8 @@
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
         if (state.selected.length || state.receipts.length || state.sealed) newDraft();
         state.sources = sources;
+        state.buckets = [];
+        state.custom = {};
         state.view = "compose";
         state.filters = { school: "", ...state.find };
         if (!state.filters.grade) state.filters.grade = "고1";
@@ -2312,16 +2326,15 @@
         }
         invalidate();
         render();
-      } else if (a === "bucket") {
+      } else if (a === "bucket" || a === "bucket-all") {
         const n = Number(b.dataset.bucket),
           row = b.dataset.row;
         const values = row
           ? state.custom[row]?.buckets || state.buckets
           : state.buckets;
-        const next = values.includes(n)
+        const next = a === "bucket-all" ? [] : values.includes(n)
           ? values.filter((v) => v !== n)
           : [...values, n].sort();
-        if (!next.length) throw new Error("난이도를 하나 이상 선택하세요.");
         if (row) state.custom[row] = { ...state.custom[row], buckets: next };
         else state.buckets = next;
         invalidate();
@@ -2520,6 +2533,8 @@
             delete state.filters.L4;
             if (el.dataset.filter === "grade") {
               state.sources = [];
+              state.buckets = [];
+              state.custom = {};
               state.filters.curriculumKey = "";
               state.filters.courseKey = "";
               state.filters.semanticSubject = "";

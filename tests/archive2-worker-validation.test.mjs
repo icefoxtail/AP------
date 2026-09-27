@@ -95,6 +95,69 @@ test("BASIC middle3 questions without advanced taxonomy pass server validation",
   }));
 });
 
+test("BASIC restores current source bytes with optional metadata missing and passes server validation", async () => {
+  for (const grade of ["중1", "중2", "중3", "고1", "고2"]) {
+    const record = catalog.records.find(row => row.effectiveBrowseGrade === grade &&
+      row.difficultyBucket === "UNKNOWN" && core.basicEligibility(row).ok);
+    assert.ok(record, grade + " needs an unclassified BASIC source question");
+    const original = source.evaluate(fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"), record.sourceFile)[record.sourceOrdinal - 1];
+    const previousFetch = globalThis.fetch, previousDocument = globalThis.document;
+    let restored;
+    try {
+      globalThis.document = { baseURI: "https://archive.test/archive/workspace.html" };
+      globalThis.fetch = async url => new Response(fs.readFileSync(path.join(root,
+        decodeURIComponent(new URL(String(url)).pathname).replace(/^\//, "")), "utf8"));
+      [restored] = await source.restore([record], catalog);
+    } finally {
+      globalThis.fetch = previousFetch;
+      if (previousDocument === undefined) delete globalThis.document;
+      else globalThis.document = previousDocument;
+    }
+    for (const field of ["content", "choices", "answer", "solution", "image", "layoutTag", "wide", "level"])
+      assert.deepEqual(restored[field], original[field], grade + ": " + field);
+    assert.equal(restored.difficultyBucket, "UNKNOWN");
+    await validateApprovedMixedQuestions(env, [restored], input({ grade,
+      primaryPaths: [core.pathKey(record, 4)],
+    }));
+  }
+});
+
+test("BASIC current-source integrity is independent of stale advanced metadata approval", async () => {
+  const record = catalog.records.find(row => row.sourceStatus === "HOLD" &&
+    row.sourceIntegrityStatus === "VERIFIED" && core.basicEligibility(row).ok);
+  assert.ok(record);
+  assert.equal(core.difficultyEligible(record), false);
+  assert.equal(core.advancedEligible(record), false);
+  const original = source.evaluate(fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"), record.sourceFile)[record.sourceOrdinal - 1];
+  await validateApprovedMixedQuestions(env, [materialize(record)], input({
+    grade: record.effectiveBrowseGrade, primaryPaths: [core.pathKey(record, 4)],
+  }));
+  assert.ok(original.content);
+});
+
+test("BASIC restores a UTF-8 BOM source through browser-style fetch decoding", async () => {
+  const record = catalog.records.find(row => core.basicEligibility(row).ok &&
+    fs.readFileSync(path.join(root, "archive/exams", row.sourceFile), "utf8").startsWith("\uFEFF"));
+  assert.ok(record, "need an actual BOM-prefixed source regression");
+  const original = source.evaluate(fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"), record.sourceFile)[record.sourceOrdinal - 1];
+  const previousFetch = globalThis.fetch, previousDocument = globalThis.document;
+  try {
+    globalThis.document = { baseURI: "https://archive.test/archive/workspace.html" };
+    globalThis.fetch = async url => new Response(fs.readFileSync(path.join(root,
+      decodeURIComponent(new URL(String(url)).pathname).replace(/^\//, "")), "utf8"));
+    const [restored] = await source.restore([record], catalog);
+    assert.equal(restored.content, original.content);
+    assert.equal(restored.solution, original.solution);
+    await validateApprovedMixedQuestions(env, [restored], input({
+      grade: record.effectiveBrowseGrade, primaryPaths: [core.pathKey(record, 4)],
+    }));
+  } finally {
+    globalThis.fetch = previousFetch;
+    if (previousDocument === undefined) delete globalThis.document;
+    else globalThis.document = previousDocument;
+  }
+});
+
 test("curriculum and course filters remain optional additions, when present", async () => {
   await validateApprovedMixedQuestions(env, [baseQuestion], input(fullFilters));
 });

@@ -50,7 +50,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, newDraft, draft, applyDraft};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, planRows, request, bucketButtons, newDraft, draft, applyDraft};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -79,7 +79,9 @@ function basicRecord(grade, change = {}) {
     L1: '원본 대단원', L2: '원본 세부단원', L3: '', L4: '',
     taxonomyStatus: 'UNKNOWN', foundationTaxonomyStatus: undefined,
     metaFoundationPackVersion: undefined, problemTypeKey: '', templateKey: '',
-    reviewStatus: 'reviewed_pass', difficultyBucket: 2, metadataConflicts: [],
+    reviewStatus: 'reviewed_pass', difficultyBucket: 2, difficultyConfidence: 'high',
+    difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL',
+    curriculumApplicability: 'DEFAULT_SCOPE', defaultSelectable: true, metadataConflicts: [],
     ...change,
   };
 }
@@ -188,4 +190,84 @@ test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const file of ['archive2-core.js', 'archive2-workspace.js', 'meta-foundation-runtime.js'])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260927-'));
+});
+
+test('fresh BASIC includes every difficulty and unclassified metadata without preselecting 2 and 3', () => {
+  for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
+    const records = [1, 2, 3, 4, 5, 'UNKNOWN'].map((difficultyBucket, i) => basicRecord(grade, {
+      questionUid: 'qid_v1_' + crypto.createHash('sha256').update(grade + i).digest('hex'),
+      difficultyBucket, reviewStatus: undefined, curriculumApplicability: undefined,
+      defaultSelectable: undefined,
+    }));
+    const { w } = harness({ ...catalog, records, taxonomy: [] });
+    w.state.filters = { grade };
+    w.state.scopes = w.scopeOptions().map(scope => scope.key);
+    w.state.distribution = 'all';
+    assert.deepEqual(plain(w.state.buckets), []);
+    const request = w.request();
+    assert.equal(request.rows[0].count, 6, grade);
+    assert.deepEqual(plain(request.rows[0].difficultyBuckets), []);
+    const result = core.selectBlueprint(records, request);
+    assert.equal(result.ok, true, grade);
+    assert.equal(result.selected.length, 6, grade);
+    assert.notEqual(core.review(result.selected, request).status, 'HARD_BLOCK', grade);
+    assert.doesNotMatch(w.renderScopes(), /자동 출제/);
+    assert.match(w.renderComposition(), /전체 \(미지정 포함\)/);
+  }
+});
+
+test('difficulty filters apply only after an explicit choice and can return to all', async () => {
+  const records = [1, 2, 3, 4, 5, 'UNKNOWN'].map((difficultyBucket, i) => basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update(String(i)).digest('hex'), difficultyBucket,
+  }));
+  const { w, click } = harness({ ...catalog, records, taxonomy: [] });
+  w.state.filters = { grade: '중3' };
+  await click({ action: 'bucket', bucket: '2' });
+  await click({ action: 'bucket', bucket: '3' });
+  w.state.scopes = w.scopeOptions().map(scope => scope.key);
+  w.state.distribution = 'all';
+  let request = w.request();
+  assert.equal(request.rows[0].count, 2);
+  let result = core.selectBlueprint(records, request);
+  assert.equal(result.ok, true);
+  assert.deepEqual(result.selected.map(row => row.difficultyBucket).sort(), [2, 3]);
+  assert.equal(core.review([{ ...records[5], rowId: request.rows[0].id }, { ...records[1], rowId: request.rows[0].id }], request).status, 'HARD_BLOCK');
+  await click({ action: 'bucket-all' });
+  w.state.scopes = w.scopeOptions().map(scope => scope.key);
+  assert.deepEqual(plain(w.state.buckets), []);
+  assert.equal(w.request().rows[0].count, 6);
+  await click({ action: 'bucket', bucket: '4' });
+  await click({ action: 'bucket', bucket: '4' });
+  assert.deepEqual(plain(w.state.buckets), []);
+});
+
+test('new entry, grade changes and new drafts restore BASIC all-difficulty defaults', async () => {
+  const { w, click, change } = harness();
+  w.state.buckets = [2, 3];
+  w.state.custom = { old: { buckets: [4] } };
+  w.newDraft();
+  assert.deepEqual(plain(w.state.buckets), []);
+  assert.deepEqual(plain(w.state.custom), {});
+  w.state.buckets = [2, 3];
+  await change('compose', 'grade', '중3');
+  assert.deepEqual(plain(w.state.buckets), []);
+  w.state.buckets = [2, 3];
+  await click({ action: 'go-compose' });
+  assert.deepEqual(plain(w.state.buckets), []);
+});
+
+test('old unopened 2/3 defaults migrate to all while saved explicit and generated-paper choices survive', () => {
+  const { w } = harness();
+  const old = plain(w.draft());
+  old.buckets = [2, 3];
+  delete old.difficultyFilterVersion;
+  w.applyDraft(old);
+  assert.deepEqual(plain(w.state.buckets), []);
+  const explicit = { ...old, difficultyFilterVersion: 'optional-v1' };
+  w.applyDraft(explicit);
+  assert.deepEqual(plain(w.state.buckets), [2, 3]);
+  const record = catalog.records.find(row => core.basicEligibility(row).ok);
+  const generated = { ...old, selected: [{ questionUid: record.questionUid, rowId: 'paper', sourceFingerprint: record.sourceFingerprint }] };
+  w.applyDraft(generated);
+  assert.deepEqual(plain(w.state.buckets), [2, 3]);
 });
