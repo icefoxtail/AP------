@@ -3,62 +3,167 @@
   "examFile": "23_신흥중_2학기_중간_중2_수학.js",
   "examUid": "23_신흥중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "A",
-  "stage": "CREATE",
+  "lane": "D",
+  "stage": "R1",
   "sourceBlobSha": "67919c6d54b3f98d6a4513661cd4802e0a8d7fc9",
+  "inputCommit": "a19942ec9f9019f8a91fe187d826dfac5f0c0985",
   "totalQuestions": 24,
   "changedQuestions": [
-    19,
-    20,
-    21,
-    24
+    22
   ],
-  "changedSvgFiles": [
-    "archive/assets/images/23_신흥중_2학기_중간_중2_수학/q19-solution.svg",
-    "archive/assets/images/23_신흥중_2학기_중간_중2_수학/q20-solution.svg",
-    "archive/assets/images/23_신흥중_2학기_중간_중2_수학/q21-solution.svg",
-    "archive/assets/images/23_신흥중_2학기_중간_중2_수학/q24-solution.svg"
-  ],
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "l1l2DispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 1,
+    "HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "KEEP": 4,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "render": "NOT_RUN_BY_POLICY"
+  },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 19,
+    "EXISTING_REUSE": 20,
     "PROPOSED_NEW_L3": 0,
     "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 4,
+    "RPM_PRIMARY_MIGRATION_GAP": 3,
     "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 0,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0,
+    "NONE_REQUIRED": 24
+  },
+  "difficultyDispositionSummary": {
+    "ADJUDICATED": 24,
+    "HOLD": 0,
+    "buckets": {
+      "1": 3,
+      "2": 9,
+      "3": 4,
+      "4": 8,
+      "5": 0
+    }
   },
   "unresolvedItems": [
     {
       "questionNo": 1,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-055",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "reason": "RPM_ONLY; ACTIVE exact mapping 없음"
     },
     {
       "questionNo": 2,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "DIRECT_BINDING_GAP"
     },
     {
       "questionNo": 3,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "DIRECT_BINDING_GAP"
     },
     {
       "questionNo": 6,
       "disposition": "PROPOSED_NEW_L4",
-      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "proposedLabelKo": "직각삼각형 합동 조건 종합 판별"
-    },
-    {
-      "questionNo": 22,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP"
+      "rpmPrimary": null,
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CONDITION_JUDGMENT",
+      "reason": "RHS/RHA existing L4만 있고 종합 판별 exact L4 없음"
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "repairs": [
+    {
+      "questionNo": 22,
+      "field": "subUnitKey/subUnit",
+      "before": "M2-05-TRIANGLE_PROPERTIES / 삼각형의 성질",
+      "after": "M2-05-QUADRILATERAL_PROPERTIES / 사각형의 성질",
+      "reason": "평행사변형 성질·판정이 primary"
+    }
+  ],
+  "proposedNewL3": [],
+  "proposedNewL4": [
+    {
+      "questionNo": 6,
+      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CONDITION_JUDGMENT",
+      "labelKo": "직각삼각형 합동 조건 종합 판별",
+      "searchedExistingTemplates": [
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+        "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE"
+      ],
+      "reason": "RHS/RHA/두 직각변/AA 비합동을 한 문항에서 비교하는 반복 가능한 판별 skeleton"
+    }
+  ],
+  "rpmMigrationGaps": [
+    {
+      "questionNo": 1,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-055",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "reason": "RPM_ONLY; ACTIVE exact mapping 없음"
+    },
+    {
+      "questionNo": 2,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "DIRECT_BINDING_GAP"
+    },
+    {
+      "questionNo": 3,
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "DIRECT_BINDING_GAP"
+    }
+  ],
+  "sourceHardHolds": [],
+  "validatorSummary": {
+    "sourceIdentity": "24/24 PASS",
+    "mathSolution": "24/24 PASS",
+    "smallBlackboard": "24/24 PASS",
+    "l1l2": "24/24; q22 REPAIR 1",
+    "svg": "4/4 semantic parity PASS; render NOT_RUN_BY_POLICY",
+    "difficulty": "24/24 ADJUDICATED",
+    "blankSolutionCount": 0,
+    "runtimeControlCharCount": 0,
+    "objectiveAnswerEndingMismatchCount": 0,
+    "jsStructuralParse": "PASS",
+    "trueHold": 0
+  },
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "8e12f496bf49f70a1490d55f5176d67d5bd1da10",
-    "mainReadSha": "7bf8f80a3d953b6eb9f0a7d0f3532e29c5313e69",
+    "inputCommit": "a19942ec9f9019f8a91fe187d826dfac5f0c0985",
+    "mainReadSha": "51e0963feb61028c6004973a681b5de284f2900f",
     "sourcePath": "archive/exams/original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
     "sourceBlobSha": "67919c6d54b3f98d6a4513661cd4802e0a8d7fc9",
-    "rpmCrosswalkBlobSha": "d76e7bfa87898fdf3102b4988765026141a53ff2",
+    "r1InputJsBlobSha": "d53425196678ca8055de3531a9dbb8a89ec1c089",
+    "r1FinalJsBlobSha": "1c92cd38b61dc6b13c3dce79f1a666a79cf8a780",
+    "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "middleGeometryTaxonomyBlobSha": "f3b2880cee6047202a8558a62e97949ddca34971",
+    "middleGeometryBindingsBlobSha": "32339f1b96e2d85d2471c30ad9a29bebe651222b",
+    "planeGeometryConceptsBlobSha": "f4a745320dc97940baf17b65032f47d3c292e15d",
     "evidencePath": "archive/data/r2e-intake/m2/23_신흥중_2학기_중간_중2_수학.evidence.json"
   },
-  "updatedAt": "2026-09-27T02:08:33+09:00"
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T15:41:26+09:00",
+  "commitBinding": "SELF",
+  "durableCommit": "SELF"
 }
