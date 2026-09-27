@@ -3,11 +3,26 @@
   "examFile": "22_연향중_2학기_기말_중2_기출.js",
   "examUid": "22_연향중_2학기_기말_중2_기출",
   "grade": "M2",
-  "lane": "C",
-  "stage": "CREATE",
+  "lane": "B",
+  "stage": "R1",
   "sourceBlobSha": "be856061ee70bfab8909ac02e298074ec49311d0",
+  "inputCommit": "cee3a8a350b0314334cd1f93b69a73ea115e57b9",
   "totalQuestions": 23,
   "changedQuestions": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11,
+    21,
+    22,
+    23
+  ],
+  "metaReviewedQuestions": [
     1,
     2,
     3,
@@ -16,8 +31,13 @@
     6,
     7,
     8,
+    9,
     10,
     11,
+    12,
+    13,
+    14,
+    15,
     16,
     17,
     18,
@@ -32,7 +52,6 @@
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q2-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q3-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q4-solution.svg",
-    "archive/assets/images/22_연향중_2학기_기말_중2_기출/q5-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q6-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q7-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q8-solution.svg",
@@ -42,6 +61,13 @@
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q22-solution.svg",
     "archive/assets/images/22_연향중_2학기_기말_중2_기출/q23-solution.svg"
   ],
+  "primaryMetaSummary": {
+    "EXISTING_REUSE": 6,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 1,
+    "RPM_PRIMARY_MIGRATION_GAP": 16,
+    "TRUE_HOLD": 0
+  },
   "metaDispositionSummary": {
     "EXISTING_REUSE": 6,
     "PROPOSED_NEW_L3": 0,
@@ -51,186 +77,184 @@
   },
   "unresolvedItems": [
     {
-      "questionNo": 5,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-097",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COORD_CENTROID",
-      "templateKey": "TPL_CENTROID_APPLICATION",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "type": "PROPOSED_NEW_L4",
+      "questionNo": 10,
+      "key": "TPL_PYTHAGOREAN_SEMICIRCLE_LUNES"
     },
     {
-      "questionNo": 6,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-095",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COORD_CENTROID",
-      "templateKey": "TPL_CENTROID_REVERSE",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "type": "RPM_PRIMARY_MIGRATION_GAP",
+      "questions": [
+        5,
+        6,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23
+      ]
+    }
+  ],
+  "repairs": [
+    {
+      "type": "SVG",
+      "questions": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        10,
+        11,
+        21,
+        22,
+        23
+      ],
+      "summary": "source geometry, ratio, label, orientation parity corrected; q5 SVG retained"
     },
     {
-      "questionNo": 8,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-099",
-      "nearbyRpm": null,
-      "problemTypeKey": null,
-      "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
+      "type": "DIFFICULTY",
+      "questions": [
+        21
+      ],
+      "summary": "bucket 4→3 after independent R1; guided scaffold removes bucket-4 structural burden"
     },
     {
-      "questionNo": 9,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-101",
-      "nearbyRpm": null,
-      "problemTypeKey": null,
-      "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
-    },
+      "type": "META_EVIDENCE",
+      "questions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "summary": "re-routed against current RPM Primary, M2 crosswalk and GLOBAL ACTIVE registry"
+    }
+  ],
+  "proposedNewL3": [],
+  "proposedNewL4": [
     {
       "questionNo": 10,
-      "disposition": "PROPOSED_NEW_L4",
-      "rpmPrimary": null,
-      "nearbyRpm": "M2-RPM-103",
-      "problemTypeKey": null,
-      "templateKey": "TPL_PYTHAGOREAN_SEMICIRCLE_LUNES",
-      "proposedLabelKo": "피타고라스 정리와 반원 초승달 넓이",
-      "reason": "exact RPM L4/GLOBAL ACTIVE template 없음; nearby M2-RPM-103 family 아래 신규 L4 proposal"
+      "key": "TPL_PYTHAGOREAN_SEMICIRCLE_LUNES",
+      "labelKo": "피타고라스 정리와 반원 초승달 넓이",
+      "nearbyRpm": "M2-RPM-105"
+    }
+  ],
+  "rpmMigrationGaps": [
+    5,
+    6,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    22,
+    23
+  ],
+  "crossConceptCandidates": [
+    {
+      "questionNo": 6,
+      "keys": [
+        "CC_MIDPOINT"
+      ]
+    },
+    {
+      "questionNo": 7,
+      "keys": [
+        "CC_TRIANGLE_AREA"
+      ]
     },
     {
       "questionNo": 11,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-103",
-      "nearbyRpm": null,
-      "problemTypeKey": null,
-      "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
-    },
-    {
-      "questionNo": 12,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-105",
-      "nearbyRpm": null,
-      "problemTypeKey": null,
-      "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
-    },
-    {
-      "questionNo": 13,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-107",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 14,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-108",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
-      "templateKey": "TPL_COMBINATION_SELECTION",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 15,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-107",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 16,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-112",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 17,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-112",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "keys": [
+        "CC_TRIANGLE_AREA"
+      ]
     },
     {
       "questionNo": 18,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-112",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "keys": [
+        "CC_LINE_EQUATION"
+      ]
     },
     {
-      "questionNo": 19,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-113",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 20,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-115",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
-    },
-    {
-      "questionNo": 22,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-116",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
-      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "questionNo": 21,
+      "keys": [
+        "CC_PYTHAGOREAN",
+        "CC_REFLECTION"
+      ]
     },
     {
       "questionNo": 23,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": "M2-RPM-097",
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_COORD_CENTROID",
-      "templateKey": "TPL_CENTROID_APPLICATION",
-      "proposedLabelKo": null,
-      "reason": "DIRECT_BINDING_GAP"
+      "keys": [
+        "CC_TRIANGLE_AREA"
+      ]
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "sourceHardHolds": [],
+  "validatorSummary": {
+    "denominator": "23/23",
+    "protectedFieldParity": "PASS 23/23",
+    "sourceImageParity": "PASS 13/13",
+    "solutionMath": "PASS 23/23",
+    "smallBoard": "PASS 23/23",
+    "svgStructural": "PASS 13/13",
+    "svgSemantic": "PASS 13/13 after 12 repairs",
+    "runtimeStringBasic": "PASS",
+    "trueHold": 0,
+    "render": "NOT_RUN_BY_POLICY"
+  },
+  "authorityRefs": [
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "archive/data/meta-foundation/canonical/registry_index.json",
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md"
+  ],
+  "nextState": "READY_FOR_R2E",
+  "commitBinding": "SELF",
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "0ec18f37371c181ccda0fabb72ca46f35af055ca",
-    "mainReadSha": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+    "inputCommit": "cee3a8a350b0314334cd1f93b69a73ea115e57b9",
+    "mainReadSha": "03a22b807e35c29f25e02717e605ccba5fad6d56",
     "sourcePath": "archive/exams/original/middle/m2/2final/22_연향중_2학기_기말_중2_기출.js",
     "sourceBlobSha": "be856061ee70bfab8909ac02e298074ec49311d0",
     "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "rpmCrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
     "evidencePath": "archive/data/r2e-intake/m2/22_연향중_2학기_기말_중2_기출.evidence.json"
   },
-  "updatedAt": "2026-09-27T09:07:47+09:00"
+  "updatedAt": "2026-09-27T16:41:39+09:00"
 }
