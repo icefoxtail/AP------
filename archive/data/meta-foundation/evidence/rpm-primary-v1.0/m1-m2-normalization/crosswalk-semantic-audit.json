@@ -10,14 +10,15 @@
       "NEEDS_EVIDENCE": 2
     },
     "rpmDefectTypeRows": {
-      "SAFE_EXISTING_REUSE": 97,
+      "SAFE_EXISTING_REUSE": 80,
       "DIRECT_OVERMAPPING": 26,
       "FAMILY_INCOMPLETE": 16,
+      "WRONG_TEMPLATE": 28,
       "WRONG_PT": 19,
       "RPM_ONLY_VALID": 186,
-      "BINDING_ONLY_GAP": 102,
-      "WRONG_TEMPLATE": 12,
+      "BINDING_ONLY_GAP": 101,
       "RPM_2015_OMISSION": 2,
+      "SEMANTIC_DIRECTION_MISMATCH": 2,
       "LEGIT_CURRICULUM_DIFFERENCE": 6,
       "NEEDS_EVIDENCE": 2
     },
@@ -49,36 +50,37 @@
     "crosswalkFinalSummary": {
       "middle1": {
         "recordCount": 232,
-        "DIRECT_ACTIVE": 61,
+        "DIRECT_ACTIVE": 45,
         "FAMILY_ACTIVE": 2,
         "DIRECT_BINDING_GAP": 22,
         "FAMILY_BINDING_GAP": 2,
-        "RPM_ONLY": 145
+        "RPM_ONLY": 161
       },
       "middle2": {
         "recordCount": 236,
-        "DIRECT_ACTIVE": 32,
+        "DIRECT_ACTIVE": 31,
         "FAMILY_ACTIVE": 2,
-        "DIRECT_BINDING_GAP": 68,
+        "DIRECT_BINDING_GAP": 67,
         "FAMILY_BINDING_GAP": 14,
-        "RPM_ONLY": 120
+        "RPM_ONLY": 122
       }
     },
     "crosswalkDefectTypeRows": {
-      "SAFE_EXISTING_REUSE": 97,
+      "SAFE_EXISTING_REUSE": 80,
       "DIRECT_OVERMAPPING": 26,
       "FAMILY_INCOMPLETE": 16,
+      "WRONG_TEMPLATE": 28,
       "WRONG_PT": 23,
       "RPM_ONLY_VALID": 188,
-      "BINDING_ONLY_GAP": 106,
-      "WRONG_TEMPLATE": 12
+      "BINDING_ONLY_GAP": 105,
+      "SEMANTIC_DIRECTION_MISMATCH": 2
     },
-    "crosswalkFinalRpmOnlyRows": 265,
-    "bindingOnlyGapCrosswalkRows": 106,
+    "crosswalkFinalRpmOnlyRows": 283,
+    "bindingOnlyGapCrosswalkRows": 105,
     "semanticRepairs": {
-      "KEEP": 379,
+      "KEEP": 361,
       "DIRECT_TO_FAMILY": 6,
-      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 77,
+      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 95,
       "PT_TPL_REMAP": 4,
       "BINDING_STATUS_RECONCILED": 0,
       "NEW_RPM_PATH": 2,
@@ -93,7 +95,8 @@
       "activeProblemTypeTemplateParentIntegrityErrors": 0,
       "exactBindingStatusMismatchErrors": 0,
       "incompleteFamilyCandidateSets": 0,
-      "directSemanticEquivalenceErrors": 0
+      "directSemanticEquivalenceErrors": 0,
+      "targetedFalsePassErrors": 0
     },
     "globalActive": {
       "activePackCount": 10,
@@ -129,7 +132,19 @@
         "l3": "각의 이등분선",
         "l4": "거리 관계"
       }
-    ]
+    ],
+    "targetedFalsePassViolations": [],
+    "targetedFalsePassReview": {
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "rowCount": 18,
+      "familyCounts": {
+        "M1_RATIONAL_PROPERTY_JUDGMENT": 6,
+        "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT": 6,
+        "M1_SPATIAL_OBJECT_MISMATCH": 4,
+        "M2_PARALLEL_CONVERSE_DIRECTION": 2
+      },
+      "finalRpmOnlyRows": 18
+    }
   },
   "records": [
     {
@@ -1048,11 +1063,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "수 체계",
       "rpmL4": "양수·음수 분류",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -1062,7 +1077,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -1092,60 +1147,29 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+              "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+              "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
-          "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
-          "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2015",
@@ -1155,11 +1179,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "수 체계",
       "rpmL4": "정수와 유리수의 포함 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -1169,7 +1193,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -1199,60 +1263,29 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+              "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+              "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
-          "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
-          "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2015",
@@ -1480,11 +1513,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "절댓값",
       "rpmL4": "절댓값의 뜻",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -1494,7 +1527,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -1524,60 +1597,29 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
+              "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
+              "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_3363e812a7a3f7319a14073c2bcbdcd2d74720fcccf1193892a84fbd1867a781",
-          "qid_v1_79584db57d20285e8c16d62e84acfcb485b884c33e748e3e31a909df45d6f046",
-          "qid_v1_d83ad2dd352d8d082ccae25cb70b3e1f8a3a2eefbc41c3e8644c6fda51e23b17"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2015",
@@ -2042,11 +2084,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "부호가 있는 수의 곱셈",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -2056,7 +2098,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -2100,68 +2182,37 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 11,
+            "supportingQuestionUids": [
+              "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+              "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+              "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+              "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+              "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+              "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
+              "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
+              "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+              "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+              "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
+              "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 11,
-        "supportingQuestionUids": [
-          "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
-          "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
-          "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
-          "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
-          "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
-          "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
-          "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
-          "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
-          "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
-          "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
-          "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2015",
@@ -2171,11 +2222,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "부호가 있는 수의 나눗셈",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -2185,7 +2236,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -2229,68 +2320,37 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 11,
+            "supportingQuestionUids": [
+              "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+              "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+              "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+              "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+              "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+              "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
+              "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
+              "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+              "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+              "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
+              "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 11,
-        "supportingQuestionUids": [
-          "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
-          "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
-          "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
-          "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
-          "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
-          "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
-          "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
-          "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
-          "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
-          "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
-          "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2015",
@@ -2300,11 +2360,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "곱셈·나눗셈 혼합",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -2314,7 +2374,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -2358,68 +2458,37 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 11,
+            "supportingQuestionUids": [
+              "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
+              "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
+              "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
+              "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
+              "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
+              "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
+              "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
+              "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
+              "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
+              "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
+              "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 11,
-        "supportingQuestionUids": [
-          "qid_v1_60eb0dda897e286683d9da9e5f2852f4614eb596b43a319bb4df266288409b03",
-          "qid_v1_83c412a3308f831b03eed898edf409f7d1b65289e93b0f7ef2b7db74d8ede53f",
-          "qid_v1_91d784a517b8189453143963b36c0b7149367677da0d197a245ec46ed12543b7",
-          "qid_v1_b7a086a864c87e23776e9cb4fa2a0e4ad569738ff8941781840727b1cddc61c6",
-          "qid_v1_c31e81e72813f0fa1b77783e52280931b4787b3c2af24c2feb2e09a576b00fe3",
-          "qid_v1_d8845483a88e1059b9d3c92b2cf18014832e6c031bd7a277276f4145f005768e",
-          "qid_v1_ddc3c56a31615a03f25e6bf6f60ef41d8ef83386265a8a1d9433593d5448cca3",
-          "qid_v1_e384da943546de44fcb90867f7a5d42405c19e82c98ca93d67c628d5f14e4dca",
-          "qid_v1_f2870c5885f295e4f909155855d9539dd42c070928696824244ca13115d05add",
-          "qid_v1_f703ac681cae516e503795efe9109a721cef8bec802a4d9d7e927934e5d3aad1",
-          "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2015",
@@ -5849,11 +5918,11 @@
       "rpmL2": "위치 관계",
       "rpmL3": "공간에서의 위치 관계",
       "rpmL4": "직선과 평면의 위치 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "공간에서 직선·평면·평면 사이의 위치 관계를 판단하는 leaf와 spatial relationship TPL의 대상·결론이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL classifies positions of two spatial lines; these RPM leaves ask for line-plane or plane-plane relations, so the objects do not match. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -5863,7 +5932,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-05",
+        "targetSubUnitKey": "M1-05-POSITION_RELATION",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
         "canonicalLabelKo": "공간 직선·평면의 위치관계",
         "definition": "공간의 직선·평면 관계에 대한 복수 진술 중 참인 항목을 고른다.",
@@ -5894,61 +6003,30 @@
               "qid_v1_83779527fffc7efb3eeb23ad1c9569dc500651968a2cb1a086dba2e5a20b5353"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "supportingItemCount": 4,
+            "supportingQuestionUids": [
+              "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+              "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
+              "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
+              "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "supportingItemCount": 4,
-        "supportingQuestionUids": [
-          "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
-          "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
-          "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
-          "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-05",
-        "targetSubUnitKey": "M1-05-POSITION_RELATION",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
     },
     {
       "curriculum": "2015",
@@ -5958,11 +6036,11 @@
       "rpmL2": "위치 관계",
       "rpmL3": "공간에서의 위치 관계",
       "rpmL4": "평면과 평면의 위치 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "공간에서 직선·평면·평면 사이의 위치 관계를 판단하는 leaf와 spatial relationship TPL의 대상·결론이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL classifies positions of two spatial lines; these RPM leaves ask for line-plane or plane-plane relations, so the objects do not match. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -5972,7 +6050,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-05",
+        "targetSubUnitKey": "M1-05-POSITION_RELATION",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
         "canonicalLabelKo": "공간 직선·평면의 위치관계",
         "definition": "공간의 직선·평면 관계에 대한 복수 진술 중 참인 항목을 고른다.",
@@ -6003,61 +6121,30 @@
               "qid_v1_83779527fffc7efb3eeb23ad1c9569dc500651968a2cb1a086dba2e5a20b5353"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "curriculum": "2015",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "supportingItemCount": 4,
+            "supportingQuestionUids": [
+              "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+              "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
+              "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
+              "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "curriculum": "2015",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "supportingItemCount": 4,
-        "supportingQuestionUids": [
-          "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
-          "qid_v1_d3134f5d95ebf506c86a8ff7a830bc16276e31985ac93d7e4747e30248343612",
-          "qid_v1_e1bcc70dc2b0537276eb86a9d9009b5e793e2055b096f78e60b9b04d26743576",
-          "qid_v1_eff7f8107f766ba99341dc2bc69e605805951dc37751e729afe457036817f0f0"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-05",
-        "targetSubUnitKey": "M1-05-POSITION_RELATION",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M1-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
     },
     {
       "curriculum": "2015",
@@ -11073,11 +11160,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "수 체계",
       "rpmL4": "양수·음수 분류",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -11087,7 +11174,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -11117,58 +11244,27 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2022",
@@ -11178,11 +11274,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "수 체계",
       "rpmL4": "정수와 유리수의 포함 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -11192,7 +11288,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -11222,58 +11358,27 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2022",
@@ -11497,11 +11602,11 @@
       "rpmL2": "정수와 유리수",
       "rpmL3": "절댓값",
       "rpmL4": "절댓값의 뜻",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호·절댓값·수 체계 포함 관계에 대한 참/거짓 판단 leaf와 general property TPL이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
@@ -11511,7 +11616,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
         "canonicalLabelKo": "정수·유리수와 절댓값의 성질 판단",
         "definition": "The target is the correct general property among statements about absolute value; definition and sign/order reasoning are decisive.",
@@ -11541,58 +11686,27 @@
               "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_e73ef001a031c20dc0cd040594a6a687ee3340e640b593f5b4b945a122262eb6"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_PROPERTY_JUDGMENT"
     },
     {
       "curriculum": "2022",
@@ -12033,11 +12147,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "부호가 있는 수의 곱셈",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -12047,7 +12161,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -12091,60 +12245,29 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+              "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+              "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
-          "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
-          "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2022",
@@ -12154,11 +12277,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "부호가 있는 수의 나눗셈",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -12168,7 +12291,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -12212,60 +12375,29 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+              "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+              "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
-          "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
-          "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2022",
@@ -12275,11 +12407,11 @@
       "rpmL2": "정수와 유리수의 계산",
       "rpmL3": "곱셈과 나눗셈",
       "rpmL4": "곱셈·나눗셈 혼합",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "부호 있는 수의 사칙계산과 혼합 계산 leaf를 계산 TPL들이 직접 수행한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
@@ -12289,7 +12421,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-02",
+        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
         "canonicalLabelKo": "정수와 유리수의 사칙계산",
         "definition": "The goal is a numeric value; the efficient decisive method factors a shared multiplier before adding.",
@@ -12333,60 +12505,29 @@
               "qid_v1_fe58d551288ba1ba6ab85c4bab2048a741ad35c8d755f3bb7e9759ee5b1b137f"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-02",
+            "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
+            "supportingItemCount": 3,
+            "supportingQuestionUids": [
+              "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
+              "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
+              "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "supportingItemCount": 3,
-        "supportingQuestionUids": [
-          "qid_v1_329df17ceeac0625c4b5435899c7fa5e743fa2b5abf6bd6e4eb8910101db2d08",
-          "qid_v1_7fbca7386596d7cbc1fe1623bf8dd4edea690e9c243a4d319f7ca611b5b630f5",
-          "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-02",
-        "targetSubUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-1.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
     },
     {
       "curriculum": "2022",
@@ -15728,11 +15869,11 @@
       "rpmL2": "위치 관계",
       "rpmL3": "공간에서의 위치 관계",
       "rpmL4": "직선과 평면의 위치 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "공간에서 직선·평면·평면 사이의 위치 관계를 판단하는 leaf와 spatial relationship TPL의 대상·결론이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL classifies positions of two spatial lines; these RPM leaves ask for line-plane or plane-plane relations, so the objects do not match. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -15742,7 +15883,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-05",
+        "targetSubUnitKey": "M1-05-POSITION_RELATION",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
         "canonicalLabelKo": "공간 직선·평면의 위치관계",
         "definition": "공간의 직선·평면 관계에 대한 복수 진술 중 참인 항목을 고른다.",
@@ -15773,58 +15954,27 @@
               "qid_v1_83779527fffc7efb3eeb23ad1c9569dc500651968a2cb1a086dba2e5a20b5353"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_ccaa61036908e881ead9a8211a5c41910933f40eb441d177700eb14b17f1d038"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_ccaa61036908e881ead9a8211a5c41910933f40eb441d177700eb14b17f1d038"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-05",
-        "targetSubUnitKey": "M1-05-POSITION_RELATION",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
     },
     {
       "curriculum": "2022",
@@ -15834,11 +15984,11 @@
       "rpmL2": "위치 관계",
       "rpmL3": "공간에서의 위치 관계",
       "rpmL4": "평면과 평면의 위치 관계",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "공간에서 직선·평면·평면 사이의 위치 관계를 판단하는 leaf와 spatial relationship TPL의 대상·결론이 일치한다.",
+      "semanticRelation": "DIRECT_NOT_SEMANTIC_EQUIVALENT",
+      "defectType": "WRONG_TEMPLATE",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL classifies positions of two spatial lines; these RPM leaves ask for line-plane or plane-plane relations, so the objects do not match. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
@@ -15848,7 +15998,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M1-05",
+        "targetSubUnitKey": "M1-05-POSITION_RELATION",
+        "globalOwnerPack": "MIDDLE1",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
         "canonicalLabelKo": "공간 직선·평면의 위치관계",
         "definition": "공간의 직선·평면 관계에 대한 복수 진술 중 참인 항목을 고른다.",
@@ -15879,58 +16069,27 @@
               "qid_v1_83779527fffc7efb3eeb23ad1c9569dc500651968a2cb1a086dba2e5a20b5353"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+            "curriculum": "2022",
+            "standardCourse": "중1 수학",
+            "standardUnitKey": "M1-05",
+            "subUnitKey": "M1-05-POSITION_RELATION",
+            "supportingItemCount": 1,
+            "supportingQuestionUids": [
+              "qid_v1_ccaa61036908e881ead9a8211a5c41910933f40eb441d177700eb14b17f1d038"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE1",
+            "packDirectory": "middle1"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
-        "curriculum": "2022",
-        "standardCourse": "중1 수학",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-POSITION_RELATION",
-        "supportingItemCount": 1,
-        "supportingQuestionUids": [
-          "qid_v1_ccaa61036908e881ead9a8211a5c41910933f40eb441d177700eb14b17f1d038"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE1",
-        "packDirectory": "middle1"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M1-05",
-        "targetSubUnitKey": "M1-05-POSITION_RELATION",
-        "globalOwnerPack": "MIDDLE1",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M1-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M1_SPATIAL_OBJECT_MISMATCH"
     },
     {
       "curriculum": "2022",
@@ -32512,11 +32671,11 @@
       "rpmL2": "평행선과 선분의 길이의 비",
       "rpmL3": "삼각형과 평행선",
       "rpmL4": "평행선 판정",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "SAFE_EXISTING_REUSE",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "평행 조건, 선분비, 미지 길이, 삼각형/일반 도형 subtype을 triangle/general templates로 구분한다.",
+      "semanticRelation": "SEMANTIC_DIRECTION_MISMATCH",
+      "defectType": "SEMANTIC_DIRECTION_MISMATCH",
+      "priorDefectType": "FALSE_DIRECT_PASS",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL starts with a given parallel line and uses similarity or ratios to find lengths; the RPM leaf asks for the converse inference from ratio conditions to prove parallelism. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_ACTIVE",
       "existingPTTPL": {
         "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -32526,7 +32685,47 @@
         "bindingStatus": "ACTIVE"
       },
       "finalMappingStatus": "DIRECT_ACTIVE",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M2-06",
+        "targetSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "globalOwnerPack": "MIDDLE_GEOMETRY",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M2_PARALLEL_CONVERSE_DIRECTION"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "canonicalLabelKo": "평행선과 선분의 길이의 비",
         "definition": "평행선에 의해 나뉘는 선분의 길이비와 비례 관계를 이용하는 유형.",
@@ -32621,100 +32820,69 @@
               "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
             ]
           }
+        ],
+        "exactBindingStatus": "ACTIVE",
+        "exactCurriculumBindings": [
+          {
+            "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+            "curriculum": "2015",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+            "supportingItemCount": 43,
+            "supportingQuestionUids": [
+              "qid_v1_02838721674952fe74d57f1e53fcd946cd5b3548b35e1b903d115e3a759e177a",
+              "qid_v1_0fc64493d70adeeb7e15027aa5842e0e2776a75870028335cc2da273b890ee26",
+              "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+              "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+              "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
+              "qid_v1_278a9dcc74a22697cf4025538e8724cdb8f52eb88603dc16bd47c6757f641bc1",
+              "qid_v1_27bd8e28888abbddded366fbe2a8473aa63d9c247d3c05520386d58487455b43",
+              "qid_v1_291009ffad3fbe060bc5b14ad63f65d0aef7554bf3da05e75d62907a3365222e",
+              "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+              "qid_v1_39cfce1b27c0882095663e82cf44ff82ded0942cd57e646fd395f5e1c1ca2362",
+              "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
+              "qid_v1_52217195cbb8fd87b8eb2983352fc0fa3086d9e007e516fc9be2d365dfe6efc5",
+              "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+              "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+              "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+              "qid_v1_6c62d76b472a6ad0d1ba98aa2e7f70156abaefbe317edd7a9ffe19cc7300b123",
+              "qid_v1_7118efb828e11d5b320e7691e14d0578272e6690902f53033e336b7ce55f3807",
+              "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
+              "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+              "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
+              "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
+              "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
+              "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+              "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
+              "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
+              "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
+              "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
+              "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+              "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+              "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
+              "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
+              "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
+              "qid_v1_d7e5277f2acfc875e8776a50f3095f27f4d5f933567e0af5cf5a50c8f80752aa",
+              "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
+              "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
+              "qid_v1_de4fac88f4d698894be503f3de503378196069a66a58ffef4916eaa4e7988b02",
+              "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
+              "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+              "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+              "qid_v1_fa2fa6b4ef0a78013104779fc845a6a792f1769a44caa5e8726a563d4ac6c060",
+              "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
+              "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5",
+              "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
+            ],
+            "status": "ACTIVE",
+            "ownerPack": "MIDDLE_GEOMETRY",
+            "packDirectory": "middle-geometry"
+          }
         ]
       },
-      "activeBinding": {
-        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-        "curriculum": "2015",
-        "standardCourse": "중2 수학",
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "supportingItemCount": 43,
-        "supportingQuestionUids": [
-          "qid_v1_02838721674952fe74d57f1e53fcd946cd5b3548b35e1b903d115e3a759e177a",
-          "qid_v1_0fc64493d70adeeb7e15027aa5842e0e2776a75870028335cc2da273b890ee26",
-          "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
-          "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
-          "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
-          "qid_v1_278a9dcc74a22697cf4025538e8724cdb8f52eb88603dc16bd47c6757f641bc1",
-          "qid_v1_27bd8e28888abbddded366fbe2a8473aa63d9c247d3c05520386d58487455b43",
-          "qid_v1_291009ffad3fbe060bc5b14ad63f65d0aef7554bf3da05e75d62907a3365222e",
-          "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
-          "qid_v1_39cfce1b27c0882095663e82cf44ff82ded0942cd57e646fd395f5e1c1ca2362",
-          "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
-          "qid_v1_52217195cbb8fd87b8eb2983352fc0fa3086d9e007e516fc9be2d365dfe6efc5",
-          "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
-          "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
-          "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
-          "qid_v1_6c62d76b472a6ad0d1ba98aa2e7f70156abaefbe317edd7a9ffe19cc7300b123",
-          "qid_v1_7118efb828e11d5b320e7691e14d0578272e6690902f53033e336b7ce55f3807",
-          "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
-          "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
-          "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
-          "qid_v1_826a35829c515296d28c799f17e8610d2ece6e8ea45c812778822d082b9efee1",
-          "qid_v1_8b84cb8330e0b70a74975b204c53a6a1f49e907b57205bcb72755db857993904",
-          "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
-          "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
-          "qid_v1_9f84d23896f6cc1dd2e908e8c9d749b6aec821b15604beff803e4a8f57672e7e",
-          "qid_v1_a274d67956f69f6cf75d5274ad19905483d2b463863737a03a59f67de9bdca30",
-          "qid_v1_a9ae09608eb4d5b6a031c3fb54affa375839c4d212591f9f9b2f69fe9531a86f",
-          "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
-          "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
-          "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
-          "qid_v1_ceb33b5cc9903d60759cddeeed4a4dbde6aa07cd61d59727bf539e5e1b2e27a9",
-          "qid_v1_d3f58984f546344820f5d79b540bb7454f46e07e51a6e4219d9551527faae1b9",
-          "qid_v1_d7e5277f2acfc875e8776a50f3095f27f4d5f933567e0af5cf5a50c8f80752aa",
-          "qid_v1_d92b55d7318b8e8f359c2261548c4332b8440a17cd9119378a716bffd2a24550",
-          "qid_v1_da8b30f15b81ef1e6c1e003f3c02685c497fd4c8e78107f7a416249c24a3b04d",
-          "qid_v1_de4fac88f4d698894be503f3de503378196069a66a58ffef4916eaa4e7988b02",
-          "qid_v1_e2c219bac2ff8bfe4c27b99067e43e408c75cfa9599891a55c6a7cec3b584851",
-          "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
-          "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
-          "qid_v1_fa2fa6b4ef0a78013104779fc845a6a792f1769a44caa5e8726a563d4ac6c060",
-          "qid_v1_fbe1585c663bd4f0ea45dfd2a68eb09ca0771d24334dc1f126b3d8e85faed417",
-          "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5",
-          "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
-        ],
-        "status": "ACTIVE",
-        "ownerPack": "MIDDLE_GEOMETRY",
-        "packDirectory": "middle-geometry"
-      },
-      "exactBindingStatus": "ACTIVE",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
-        ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
-      },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_ACTIVE",
-      "evidence": {
-        "targetStandardUnitKey": "M2-06",
-        "targetSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "globalOwnerPack": "MIDDLE_GEOMETRY",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M2_PARALLEL_CONVERSE_DIRECTION"
     },
     {
       "curriculum": "2015",
@@ -46376,11 +46544,11 @@
       "rpmL2": "평행선 사이의 선분의 길이의 비",
       "rpmL3": "삼각형과 평행선",
       "rpmL4": "평행선 판정",
-      "semanticRelation": "DIRECT_EQUIVALENT",
-      "defectType": "BINDING_ONLY_GAP",
-      "priorDefectType": "",
-      "repairAction": "KEEP_DIRECT_EQUIVALENT_MAPPING",
-      "semanticReason": "평행 조건, 선분비, 미지 길이, 삼각형/일반 도형 subtype을 triangle/general templates로 구분한다.",
+      "semanticRelation": "SEMANTIC_DIRECTION_MISMATCH",
+      "defectType": "SEMANTIC_DIRECTION_MISMATCH",
+      "priorDefectType": "BINDING_ONLY_GAP",
+      "repairAction": "REMOVE_FALSE_PASS_MAPPING_AND_CLOSE_AS_RPM_ONLY",
+      "semanticReason": "The TPL starts with a given parallel line and uses similarity or ratios to find lengths; the RPM leaf asks for the converse inference from ratio conditions to prove parallelism. Confirmed by GPT independent review; narrow canonical definitions remain unchanged.",
       "existingMappingStatus": "DIRECT_BINDING_GAP",
       "existingPTTPL": {
         "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
@@ -46390,7 +46558,47 @@
         "bindingStatus": "MISSING"
       },
       "finalMappingStatus": "DIRECT_BINDING_GAP",
-      "finalPTTPL": {
+      "finalPTTPL": null,
+      "activeBinding": null,
+      "exactBindingStatus": "NO_ACTIVE_MAPPING",
+      "familyCoverage": null,
+      "globalActiveSearch": {
+        "activePackCount": 10,
+        "activePacks": [
+          "DERIVATIVE",
+          "FUNCTIONS_GRAPHS",
+          "GEOMETRY_EQUATIONS",
+          "H1_FOUNDATION",
+          "INTEGRAL_CALCULUS",
+          "LIMIT_CONTINUITY",
+          "MIDDLE1",
+          "MIDDLE_GEOMETRY",
+          "PROBABILITY_STATISTICS",
+          "SETS_PROPOSITIONS"
+        ],
+        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "relatedCandidateKeysReviewed": [],
+        "relatedGlobalCandidateDefinitions": []
+      },
+      "curriculumPresence2015": true,
+      "curriculumPresence2022": true,
+      "curriculumPresence2015AtScope": true,
+      "curriculumPresence2022AtScope": true,
+      "semanticCurriculumRelation": "BOTH_PRESENT",
+      "finalDisposition": "RPM_ONLY",
+      "evidence": {
+        "targetStandardUnitKey": "M2-06",
+        "targetSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+        "globalOwnerPack": "MIDDLE_GEOMETRY",
+        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-2.md",
+        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+        "reviewFamily": "M2_PARALLEL_CONVERSE_DIRECTION"
+      },
+      "rpmRecordFoundInMaster": true,
+      "reviewedMappingEvidence": {
         "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
         "canonicalLabelKo": "평행선과 선분의 길이의 비",
         "definition": "평행선에 의해 나뉘는 선분의 길이비와 비례 관계를 이용하는 유형.",
@@ -46485,45 +46693,12 @@
               "qid_v1_ffd1817a98a2cdc42cbfba5f3eda1946e70474632aadaa62c9522a8e2b2ffae3"
             ]
           }
-        ]
-      },
-      "activeBinding": null,
-      "exactBindingStatus": "MISSING",
-      "familyCoverage": null,
-      "globalActiveSearch": {
-        "activePackCount": 10,
-        "activePacks": [
-          "DERIVATIVE",
-          "FUNCTIONS_GRAPHS",
-          "GEOMETRY_EQUATIONS",
-          "H1_FOUNDATION",
-          "INTEGRAL_CALCULUS",
-          "LIMIT_CONTINUITY",
-          "MIDDLE1",
-          "MIDDLE_GEOMETRY",
-          "PROBABILITY_STATISTICS",
-          "SETS_PROPOSITIONS"
         ],
-        "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "relatedCandidateKeysReviewed": [],
-        "relatedGlobalCandidateDefinitions": []
+        "exactBindingStatus": "MISSING",
+        "exactCurriculumBindings": []
       },
-      "curriculumPresence2015": true,
-      "curriculumPresence2022": true,
-      "curriculumPresence2015AtScope": true,
-      "curriculumPresence2022AtScope": true,
-      "semanticCurriculumRelation": "BOTH_PRESENT",
-      "finalDisposition": "DIRECT_BINDING_GAP",
-      "evidence": {
-        "targetStandardUnitKey": "M2-06",
-        "targetSubUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "globalOwnerPack": "MIDDLE_GEOMETRY",
-        "globalActiveRegistryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
-        "sourceScopePath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-2.md",
-        "masterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
-        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json"
-      },
-      "rpmRecordFoundInMaster": true
+      "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+      "reviewFamily": "M2_PARALLEL_CONVERSE_DIRECTION"
     },
     {
       "curriculum": "2022",

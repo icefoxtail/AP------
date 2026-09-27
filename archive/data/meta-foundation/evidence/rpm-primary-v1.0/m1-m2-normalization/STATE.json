@@ -7,26 +7,60 @@
   "branchRebasedOntoMain": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
   "currentStage": "COMPLETE_PUSHED_AND_NOTION_RECORDED",
   "scope": [
-    "2015/M1-1", "2015/M1-2", "2015/M2-1", "2015/M2-2",
-    "2022/M1-1", "2022/M1-2", "2022/M2-1", "2022/M2-2"
+    "2015/M1-1",
+    "2015/M1-2",
+    "2015/M2-1",
+    "2015/M2-2",
+    "2022/M1-1",
+    "2022/M1-2",
+    "2022/M2-1",
+    "2022/M2-2"
   ],
   "rpm": {
     "initialRecordCount": 466,
     "finalRecordCount": 468,
-    "semanticRelations": { "BOTH_PRESENT": 460, "LEGIT_CURRICULUM_DIFFERENCE": 6, "2015_OMISSIONS_REPAIRED": 2, "2022_OMISSIONS": 0, "NEEDS_EVIDENCE": 2 },
+    "semanticRelations": {
+      "BOTH_PRESENT": 460,
+      "LEGIT_CURRICULUM_DIFFERENCE": 6,
+      "2015_OMISSIONS_REPAIRED": 2,
+      "2022_OMISSIONS": 0,
+      "NEEDS_EVIDENCE": 2
+    },
     "masterViewParity": "8/8 PASS",
     "duplicateSemanticTuples": 0,
     "packageManifest": "38/38 PASS"
   },
   "crosswalk": {
     "finalRecordCount": 468,
-    "middle1": { "total": 232, "DIRECT_ACTIVE": 61, "FAMILY_ACTIVE": 2, "DIRECT_BINDING_GAP": 22, "FAMILY_BINDING_GAP": 2, "RPM_ONLY": 145 },
-    "middle2": { "total": 236, "DIRECT_ACTIVE": 32, "FAMILY_ACTIVE": 2, "DIRECT_BINDING_GAP": 68, "FAMILY_BINDING_GAP": 14, "RPM_ONLY": 120 },
-    "changes": { "KEEP": 379, "DIRECT_TO_FAMILY": 6, "DIRECT_OR_FAMILY_TO_RPM_ONLY": 77, "PT_TPL_REMAP": 4, "bindingRepair": 0, "newRpmPath": 2 },
+    "middle1": {
+      "total": 232,
+      "DIRECT_ACTIVE": 45,
+      "FAMILY_ACTIVE": 2,
+      "DIRECT_BINDING_GAP": 22,
+      "FAMILY_BINDING_GAP": 2,
+      "RPM_ONLY": 161
+    },
+    "middle2": {
+      "total": 236,
+      "DIRECT_ACTIVE": 31,
+      "FAMILY_ACTIVE": 2,
+      "DIRECT_BINDING_GAP": 67,
+      "FAMILY_BINDING_GAP": 14,
+      "RPM_ONLY": 122
+    },
+    "changes": {
+      "KEEP": 361,
+      "DIRECT_TO_FAMILY": 6,
+      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 95,
+      "PT_TPL_REMAP": 4,
+      "bindingRepair": 0,
+      "newRpmPath": 2
+    },
     "missingRows": 0,
     "orphanRows": 0,
-    "bindingOnlyGapRows": 106,
-    "activeParentBindingFamilyAndDirectErrors": 0
+    "bindingOnlyGapRows": 105,
+    "activeParentBindingFamilyAndDirectErrors": 0,
+    "finalIntentionalRpmOnlyRows": 283
   },
   "globalActive": {
     "packCount": 10,
@@ -58,10 +92,36 @@
     "R2E_MIGRATION_GAPS_REASSESSED_WITH_SEPARATE_AUTHORITY",
     "ACTIVE_RESOLVER_COMPILED_REGISTRY_AND_RUNTIME_REGRESSION_PASS",
     "REMOTE_BRANCH_PUSHED",
-    "NOTION_SCOPE_DENOMINATOR_DEFECT_REPAIR_AND_SHA_RECORDED"
+    "NOTION_SCOPE_DENOMINATOR_DEFECT_REPAIR_AND_SHA_RECORDED",
+    "GPT_INDEPENDENT_REVIEW_M1_M2_FALSE_PASS_18_CLOSED"
   ],
   "remainingStages": [],
-  "lastCompletedItem": "The pushed branch is based on latest fetched main, the worktree is clean, Notion contains the full closeout, and main remains unmerged.",
+  "lastCompletedItem": "The 18 GPT independent-review M1/M2 false passes are RPM_ONLY with no stale PT/TPL or binding pointers. Targeted regression 18/18, 468/468 resolver routes, active resolver 16/16, RHS/RHA, and Shinheung q6/q7 EXISTING_REUSE all PASS.",
   "nextStartPoint": "R2E consumes migration-gap-reassessment.json through authorityRefs[] and replays the affected items against this pushed snapshot.",
-  "hardBlockers": []
+  "hardBlockers": [],
+  "targetedFalsePassReview": {
+    "reviewOrigin": "GPT_INDEPENDENT_REVIEW",
+    "rowCount": 18,
+    "familyCounts": {
+      "M1_RATIONAL_PROPERTY_JUDGMENT": 6,
+      "M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT": 6,
+      "M1_SPATIAL_OBJECT_MISMATCH": 4,
+      "M2_PARALLEL_CONVERSE_DIRECTION": 2
+    },
+    "finalRpmOnlyRows": 18,
+    "targetedRegression": "PASS",
+    "resolver468Rows": "PASS",
+    "activeResolverRuntime": "PASS",
+    "activeResolverTestCount": "16/16",
+    "m1M2CrosswalkTestCount": "9/9",
+    "rhsRhaRegression": "PASS",
+    "shinheungQ6Q7": "EXISTING_REUSE",
+    "middle3GitBlobUnchanged": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "m3NormalizationArtifactsChanged": 0,
+    "mainMutationCount": 0,
+    "mainMerged": false,
+    "latestMainObservedSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
+    "targetFilesDriftedSinceReviewSha": [],
+    "reviewedBranchSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333"
+  }
 }

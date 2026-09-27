@@ -14,8 +14,12 @@ import {
   validateResolverEvidence,
   validateRuntimeMetaParity,
 } from './rpm-active-resolver.mjs';
-import { reviewedProblemTypeDisposition } from './normalize-rpm-primary-m1-m2.mjs';
-import { buildAuditArtifacts, familyCoverage, missingCanonicalPathSentinels } from './audit-rpm-primary-m1-m2.mjs';
+import {
+  GPT_INDEPENDENT_REVIEW_FALSE_PASS_RULES, flattenMaster, MASTER_PATH,
+  reviewedProblemTypeDisposition, targetedFalsePassRegressionErrors, targetedFalsePassRowError,
+  validateRpmSources,
+} from './normalize-rpm-primary-m1-m2.mjs';
+import { familyCoverage, missingCanonicalPathSentinels, validateTargetedFalsePassAudit } from './audit-rpm-primary-m1-m2.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const crosswalkDir = path.join(ROOT, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0');
@@ -88,43 +92,51 @@ function makeRuntimeProjection(input, resolverEvidence) {
   return { difficultyEvidence, candidateMeta, runtimeRecord };
 }
 
-test('RPM views/master and crosswalk close the full M1/M2 denominator with the omission sentinel', () => {
-  const audit = buildAuditArtifacts();
-  assert.equal(audit.summary.rpmFinalRecordCount, 468);
-  assert.equal(audit.summary.crosswalkFinalRecordCount, 468);
-  assert.equal(audit.summary.crosswalkMissingRows, 0);
-  assert.equal(audit.summary.crosswalkOrphanRows, 0);
-  assert.equal(audit.summary.duplicateRpmSemanticTuples, 0);
-  assert.equal(audit.summary.viewParityErrors, 0);
-  assert.equal(audit.summary.crosswalkFinalRpmOnlyRows, 265);
-  assert.equal(audit.summary.bindingOnlyGapCrosswalkRows, 106);
-  assert.deepEqual(audit.summary.validationResults, {
-    activeProblemTypeTemplateParentIntegrityErrors: 0,
-    exactBindingStatusMismatchErrors: 0,
-    incompleteFamilyCandidateSets: 0,
-    directSemanticEquivalenceErrors: 0,
-  });
-  assert.equal(audit.summary.omissions.initial2015, 2);
-  assert.equal(audit.summary.omissions.repaired2015, 2);
-  assert.equal(audit.summary.omissions['2022'], 0);
-  assert.equal(audit.summary.rpmSemanticRelationRows.BOTH_PRESENT, 460);
-  assert.equal(audit.summary.rpmSemanticRelationRows.LEGIT_CURRICULUM_DIFFERENCE, 6);
-  assert.equal(audit.summary.rpmSemanticRelationRows.NEEDS_EVIDENCE, 2);
+test('RPM source and persisted crosswalk denominator remain closed with the omission sentinel', () => {
+  const sourceValidation = validateRpmSources();
+  assert.equal(sourceValidation.status, 'PASS', JSON.stringify(sourceValidation.errors));
+  assert.equal(sourceValidation.rows, 468);
+  assert.equal(sourceValidation.viewCount, 8);
+  assert.equal(sourceValidation.duplicateSemanticTupleCount, 0);
 
-  const master = audit.rpmCompleteness.records;
-  const crosswalk = audit.crosswalkSemantic.records;
+  const master = flattenMaster(JSON.parse(fs.readFileSync(path.join(ROOT, MASTER_PATH), 'utf8')));
+  const crosswalks = {
+    middle1: JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle1.json'), 'utf8')),
+    middle2: JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle2.json'), 'utf8')),
+  };
+  assert.deepEqual(crosswalks.middle1.summary, {
+    recordCount: 232, DIRECT_ACTIVE: 45, FAMILY_ACTIVE: 2, DIRECT_BINDING_GAP: 22, FAMILY_BINDING_GAP: 2, RPM_ONLY: 161,
+  });
+  assert.deepEqual(crosswalks.middle2.summary, {
+    recordCount: 236, DIRECT_ACTIVE: 31, FAMILY_ACTIVE: 2, DIRECT_BINDING_GAP: 67, FAMILY_BINDING_GAP: 14, RPM_ONLY: 122,
+  });
+
+  const crosswalkRows = [...crosswalks.middle1.records, ...crosswalks.middle2.records];
+  assert.equal(crosswalkRows.length, 468);
+  const masterKeys = new Set(master.map(row => [
+    row.curriculum, row.scope, row.majorUnit, row.midUnit, row.l3, row.l4,
+  ].join('|')));
+  const crosswalkKeys = crosswalkRows.map(row => [
+    row.curriculum, row.scope, row.rpmPath.majorUnit, row.rpmPath.midUnit, row.rpmPath.l3, row.rpmPath.l4,
+  ].join('|'));
+  assert.equal(new Set(crosswalkKeys).size, 468, 'crosswalk semantic tuples are unique');
+  assert.deepEqual(crosswalkKeys.filter(key => !masterKeys.has(key)), [], 'no orphan crosswalk rows');
+  const crosswalkKeySet = new Set(crosswalkKeys);
+  assert.deepEqual([...masterKeys].filter(key => !crosswalkKeySet.has(key)), [], 'no missing crosswalk rows');
+
+  const completeness = JSON.parse(fs.readFileSync(path.join(ROOT,
+    'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json'), 'utf8'));
+  const semanticAudit = JSON.parse(fs.readFileSync(path.join(ROOT,
+    'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json'), 'utf8'));
+  assert.equal(completeness.records.length, 468);
+  assert.equal(semanticAudit.records.length, 468);
+  assert.deepEqual(missingCanonicalPathSentinels(master, completeness.records), []);
   const requiredLedgerFields = ['curriculum', 'scope', 'rpmRecordId', 'rpmL1', 'rpmL2', 'rpmL3', 'rpmL4',
     'existingMappingStatus', 'existingPTTPL', 'semanticRelation', 'curriculumPresence2015', 'curriculumPresence2022',
     'activeBinding', 'defectType', 'finalDisposition', 'repairAction', 'evidence'];
-  assert.equal(crosswalk.filter(row => requiredLedgerFields.some(field => !Object.hasOwn(row, field))).length, 0,
-    'each machine-audit row carries the required RPM, mapping, curriculum, binding and evidence fields');
-  assert.deepEqual(missingCanonicalPathSentinels(master, crosswalk), []);
-  const intentionallyIncompleteMaster = master.filter(row => !(row.curriculum === '2015' && row.scope === 'M2-2'
-    && row.rpmL3 === '직각삼각형의 합동' && ['RHS', 'RHA'].includes(row.rpmL4)));
-  const intentionallyIncompleteCrosswalk = crosswalk.filter(row => !(row.curriculum === '2015' && row.scope === 'M2-2'
-    && row.rpmL3 === '직각삼각형의 합동' && ['RHS', 'RHA'].includes(row.rpmL4)));
-  assert.equal(missingCanonicalPathSentinels(intentionallyIncompleteMaster, intentionallyIncompleteCrosswalk).length, 4,
-    'a shared master/crosswalk omission must fail even when their mutual denominator parity is zero');
+  assert.equal(semanticAudit.records.filter(row => requiredLedgerFields.some(field => !Object.hasOwn(row, field))).length, 0);
+  assert.deepEqual(targetedFalsePassRegressionErrors(crosswalkRows), []);
+  assert.equal(semanticAudit.summary.validationResults.targetedFalsePassErrors, 0);
 });
 
 test('narrow direct/family mappings fail closed and a complete line-equation family passes', () => {
@@ -143,6 +155,56 @@ test('narrow direct/family mappings fail closed and a complete line-equation fam
     { templateKey: 'TPL_LINE_TWO_POINTS' }, { templateKey: 'TPL_LINE_MULTI_CONDITION' },
   ]);
   assert.equal(lineFamily.coverage, 'COMPLETE');
+});
+
+test('GPT independent review false-pass families fail closed on all 18 reviewed mappings', () => {
+  const finalRows = [
+    ...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle1.json'), 'utf8')).records,
+    ...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle2.json'), 'utf8')).records,
+  ];
+  const finalById = new Map(finalRows.map(row => [row.id, row]));
+  const ledger = JSON.parse(fs.readFileSync(path.join(ROOT,
+    'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json'), 'utf8'));
+  const ledgerById = new Map(ledger.records.map(row => [row.rpmRecordId, row]));
+  let checked = 0;
+  for (const rule of GPT_INDEPENDENT_REVIEW_FALSE_PASS_RULES) {
+    for (const id of rule.ids) {
+      const final = finalById.get(id);
+      assert.ok(final, id + ': final crosswalk row exists');
+      const unsafeStatus = id === 'M2-RPM-210' ? 'DIRECT_BINDING_GAP' : 'DIRECT_ACTIVE';
+      const unsafe = {
+        ...final,
+        mappingStatus: unsafeStatus,
+        problemTypeKey: rule.problemTypeKey,
+        templateKey: rule.templateKey,
+        bindingStatus: unsafeStatus === 'DIRECT_BINDING_GAP' ? 'MISSING' : 'ACTIVE',
+      };
+      assert.ok(rule.rejectStatuses.includes(unsafe.mappingStatus), id + ': reviewed mapping status');
+      assert.equal(reviewedProblemTypeDisposition(unsafe), rule.disposition, id + ': normalizer must reject the false pass');
+      assert.equal(targetedFalsePassRowError(unsafe)?.error, 'EXPECTED_RPM_ONLY', id + ': false-pass reason');
+      assert.equal(validateTargetedFalsePassAudit([unsafe], { requireAll: false }).status, 'FAIL', id + ': auditor must fail the unsafe status');
+
+      assert.equal(final.mappingStatus, 'RPM_ONLY', id + ': final status');
+      assert.equal(final.mappingDispositionMemo, rule.disposition, id + ': deterministic normalizer disposition');
+      assert.equal(final.bindingStatus, 'NO_ACTIVE_MAPPING', id + ': no active binding');
+      for (const field of ['problemTypeKey', 'problemTypeLabelKo', 'ownerPack', 'templateKey',
+        'templateLabelKo', 'templateCandidates', 'selectionRule', 'binding']) {
+        assert.equal(Object.hasOwn(final, field), false, id + ': stale ' + field + ' pointer');
+      }
+      const auditRow = ledgerById.get(id);
+      assert.equal(auditRow.reviewOrigin, 'GPT_INDEPENDENT_REVIEW', id + ': independent-review provenance');
+      assert.equal(auditRow.finalDisposition, 'RPM_ONLY', id + ': audit ledger final status');
+      assert.equal(auditRow.existingPTTPL.problemTypeKey, rule.problemTypeKey, id + ': pre-fix PT evidence');
+      assert.equal(auditRow.existingPTTPL.templateKey, rule.templateKey, id + ': pre-fix TPL evidence');
+      assert.ok(auditRow.reviewedMappingEvidence?.templates?.[0]?.definition, id + ': unsafe TPL definition preserved');
+      const activeReviewedBinding = auditRow.reviewedMappingEvidence.exactCurriculumBindings.some(binding => binding.status === 'ACTIVE');
+      assert.equal(auditRow.reviewedMappingEvidence.exactBindingStatus, activeReviewedBinding ? 'ACTIVE' : 'MISSING', id + ': exact pre-fix binding evidence');
+      checked++;
+    }
+  }
+  assert.equal(checked, 18);
+  assert.deepEqual(targetedFalsePassRegressionErrors(finalRows), []);
+  assert.equal(validateTargetedFalsePassAudit(finalRows).status, 'PASS');
 });
 
 test('24 Sinheung q6/q7 resolve to the exact existing 2015 RHS binding and runtime projection', () => {
@@ -248,11 +310,10 @@ test('the repaired 2015 RHA path resolves through the existing RHA template and 
 
 test('compiled ACTIVE registry and all resolver routes remain deterministic for 468 rows', () => {
   assert.equal(activeRegistry.status, 'ACTIVE', JSON.stringify(activeRegistry.errors));
-  const audit = buildAuditArtifacts();
   const allRows = [...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle1.json'), 'utf8')).records,
     ...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle2.json'), 'utf8')).records];
   assert.equal(allRows.length, 468);
-  const dispositionFor = new Map(audit.crosswalkSemantic.records.map(row => [row.rpmRecordId, row.finalMappingStatus]));
+  const dispositionFor = new Map(allRows.map(row => [row.id, row.mappingStatus]));
   for (let index = 0; index < allRows.length; index++) {
     const row = allRows[index];
     const sourceArchiveFile = `original/middle/m${row.scope.slice(1, 2)}/2mid/crosswalk-regression-${row.id}.js`;

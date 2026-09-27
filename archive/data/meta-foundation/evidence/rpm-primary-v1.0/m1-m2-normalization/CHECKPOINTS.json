@@ -62,6 +62,37 @@
         "archive/tools/meta-foundation/rpm-primary-m1-m2-crosswalk.test.mjs"
       ],
       "commitSha": "922b598d534b41a08c446074bb1fa5a316da51b2"
+    },
+    {
+      "name": "GPT_INDEPENDENT_REVIEW_FALSE_PASS_PINPOINT",
+      "stage": "TARGETED_M1_M2_FALSE_PASS_REPAIR_AND_REGRESSION_PASS",
+      "rows": 18,
+      "coverage": "M1 property 6, rational arithmetic 6, spatial relation 4; M2 converse direction 2. All are RPM_ONLY with stale PT/TPL and binding pointers removed.",
+      "reviewedBranchSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333",
+      "latestMainObservedSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
+      "targetFilesDriftedSinceReviewSha": [],
+      "validation": {
+        "targetedFalsePass": "18/18 PASS",
+        "middle1": "232/232; 45/2/22/2/161",
+        "middle2": "236/236; 31/2/67/14/122",
+        "deterministicResolver": "468/468 PASS",
+        "activeResolverRuntime": "16/16 PASS",
+        "rhsRha": "PASS",
+        "shinheungQ6Q7": "EXISTING_REUSE",
+        "middle3": "unchanged",
+        "m3NormalizationArtifactsChanged": 0,
+        "mainMutationCount": 0
+      },
+      "artifacts": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json",
+        "archive/tools/meta-foundation/normalize-rpm-primary-m1-m2.mjs",
+        "archive/tools/meta-foundation/audit-rpm-primary-m1-m2.mjs",
+        "archive/tools/meta-foundation/rpm-primary-m1-m2-crosswalk.test.mjs"
+      ],
+      "mainMerge": "NOT_REQUESTED"
     }
   ],
   "completion": {

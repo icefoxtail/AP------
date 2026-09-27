@@ -430,7 +430,101 @@ function loadBaselineIndex() {
   return out;
 }
 
+export const GPT_INDEPENDENT_REVIEW_FALSE_PASS_RULES = Object.freeze([
+  {
+    family: 'M1_RATIONAL_PROPERTY_JUDGMENT',
+    ids: ['M1-RPM-013', 'M1-RPM-014', 'M1-RPM-017', 'M1-RPM-126', 'M1-RPM-127', 'M1-RPM-130'],
+    problemTypeKey: 'PT_M1_RATIONAL_PROPERTY_JUDGMENT',
+    templateKey: 'TPL_M1_RATIONAL_PROPERTY_JUDGMENT_CORE',
+    rejectStatuses: ['DIRECT_ACTIVE'],
+    disposition: 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_WRONG_TEMPLATE',
+    defectType: 'WRONG_TEMPLATE',
+    semanticRelation: 'DIRECT_NOT_SEMANTIC_EQUIVALENT',
+    reason: 'The core TPL is grounded in a narrow multi-statement judgment combining absolute-value counts, integer counts, negative-number order, and minimum absolute value; it does not represent generic sign classification, number-set inclusion, or the definition of absolute value.',
+  },
+  {
+    family: 'M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT',
+    ids: ['M1-RPM-022', 'M1-RPM-023', 'M1-RPM-024', 'M1-RPM-135', 'M1-RPM-136', 'M1-RPM-137'],
+    problemTypeKey: 'PT_M1_RATIONAL_ARITHMETIC',
+    templateKey: 'TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT',
+    rejectStatuses: ['DIRECT_ACTIVE'],
+    disposition: 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_WRONG_TEMPLATE',
+    defectType: 'WRONG_TEMPLATE',
+    semanticRelation: 'DIRECT_NOT_SEMANTIC_EQUIVALENT',
+    reason: 'The product/quotient PT and TPL target shared-multiplier factoring such as (41.6+58.4)×1.7; they do not represent generic signed multiplication, signed division, or mixed multiplication/division.',
+  },
+  {
+    family: 'M1_SPATIAL_OBJECT_MISMATCH',
+    ids: ['M1-RPM-068', 'M1-RPM-069', 'M1-RPM-181', 'M1-RPM-182'],
+    problemTypeKey: 'PT_M1_SPATIAL_LINE_PLANE_RELATIONS',
+    templateKey: 'TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION',
+    rejectStatuses: ['DIRECT_ACTIVE'],
+    disposition: 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_WRONG_TEMPLATE',
+    defectType: 'WRONG_TEMPLATE',
+    semanticRelation: 'DIRECT_NOT_SEMANTIC_EQUIVALENT',
+    reason: 'The TPL classifies positions of two spatial lines; these RPM leaves ask for line-plane or plane-plane relations, so the objects do not match.',
+  },
+  {
+    family: 'M2_PARALLEL_CONVERSE_DIRECTION',
+    ids: ['M2-RPM-092', 'M2-RPM-210'],
+    problemTypeKey: 'PT_PARALLEL_SEGMENT_RATIO',
+    templateKey: 'TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE',
+    rejectStatuses: ['DIRECT_ACTIVE', 'DIRECT_BINDING_GAP'],
+    existingMappingStatusById: { 'M2-RPM-092': 'DIRECT_ACTIVE', 'M2-RPM-210': 'DIRECT_BINDING_GAP' },
+    disposition: 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_SEMANTIC_DIRECTION_MISMATCH',
+    defectType: 'SEMANTIC_DIRECTION_MISMATCH',
+    semanticRelation: 'SEMANTIC_DIRECTION_MISMATCH',
+    reason: 'The TPL starts with a given parallel line and uses similarity or ratios to find lengths; the RPM leaf asks for the converse inference from ratio conditions to prove parallelism.',
+  },
+]);
+
+const GPT_INDEPENDENT_REVIEW_RULE_BY_ID = new Map(
+  GPT_INDEPENDENT_REVIEW_FALSE_PASS_RULES.flatMap(rule => rule.ids.map(id => [id, rule])),
+);
+
+export function targetedFalsePassRule(row) {
+  return GPT_INDEPENDENT_REVIEW_RULE_BY_ID.get(row?.id) || null;
+}
+
+export function targetedFalsePassRowError(row) {
+  const rule = targetedFalsePassRule(row);
+  if (!rule) return null;
+  if (row.mappingStatus !== 'RPM_ONLY') {
+    return { rpmRecordId: row.id, family: rule.family, error: 'EXPECTED_RPM_ONLY', actualMappingStatus: row.mappingStatus || '' };
+  }
+  const staleFields = ['problemTypeKey', 'problemTypeLabelKo', 'ownerPack', 'templateKey', 'templateLabelKo', 'templateCandidates', 'selectionRule', 'binding']
+    .filter(field => field === 'templateCandidates' ? Array.isArray(row[field]) && row[field].length > 0 : row[field] !== undefined && row[field] !== '');
+  if (staleFields.length) {
+    return { rpmRecordId: row.id, family: rule.family, error: 'STALE_META_POINTERS', staleFields };
+  }
+  if (row.bindingStatus !== 'NO_ACTIVE_MAPPING') {
+    return { rpmRecordId: row.id, family: rule.family, error: 'EXPECTED_NO_ACTIVE_MAPPING', actualBindingStatus: row.bindingStatus || '' };
+  }
+  return null;
+}
+
+export function targetedFalsePassRegressionErrors(rows, { requireAll = true } = {}) {
+  const errors = [];
+  const rowsById = new Map();
+  for (const row of rows) {
+    if (!targetedFalsePassRule(row)) continue;
+    const existing = rowsById.get(row.id);
+    if (existing) errors.push({ rpmRecordId: row.id, error: 'DUPLICATE_TARGET_ROW' });
+    else rowsById.set(row.id, row);
+    const rowError = targetedFalsePassRowError(row);
+    if (rowError) errors.push(rowError);
+  }
+  if (requireAll) {
+    for (const rule of GPT_INDEPENDENT_REVIEW_FALSE_PASS_RULES) {
+      for (const id of rule.ids) if (!rowsById.has(id)) errors.push({ rpmRecordId: id, family: rule.family, error: 'MISSING_TARGET_ROW' });
+    }
+  }
+  return errors;
+}
+
 export function reviewedProblemTypeDisposition(row) {
+  const targetedRule = targetedFalsePassRule(row);
+  if (targetedRule) return targetedRule.disposition;
   const pt = row.problemTypeKey || '';
   const l3 = row.rpmPath.l3;
   const l4 = row.rpmPath.l4;
@@ -470,7 +564,9 @@ function applyMappingDecision(row, global) {
       || decision === 'RPM_ONLY_TARGET_IS_ALGEBRAIC_CLASSIFIER'
       || decision === 'RPM_ONLY_WRONG_SEMANTIC_TEMPLATE'
       || decision === 'RPM_ONLY_WRONG_PROBLEM_TYPE'
-      || decision === 'RPM_ONLY_FAMILY_OR_TEMPLATE_TOO_NARROW') {
+      || decision === 'RPM_ONLY_FAMILY_OR_TEMPLATE_TOO_NARROW'
+      || decision === 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_WRONG_TEMPLATE'
+      || decision === 'RPM_ONLY_GPT_INDEPENDENT_REVIEW_SEMANTIC_DIRECTION_MISMATCH') {
     return { ...row, mappingStatus: 'RPM_ONLY', bindingStatus: 'NO_ACTIVE_MAPPING', mappingDispositionMemo: decision };
   }
   if (decision === 'REMAP_REGULAR_POLYGON_ANGLE_COUNT') {
