@@ -29,11 +29,15 @@ def protected():
 def freeze(run):
     run = run_path(run)
     branch = git('branch', '--show-current')
+    main_head = git('rev-parse', 'origin/main')
+    ancestor = subprocess.run(['git', 'merge-base', '--is-ancestor', main_head, 'HEAD'], cwd=ROOT)
+    if ancestor.returncode != 0:
+        raise ValueError('LATEST_MAIN_NOT_ANCESTOR_OF_INTEGRATION')
     if (run/'config/baseline.json').exists():
         raise ValueError('BASELINE_ALREADY_FROZEN')
     baseline = {
         'schemaVersion': 'GEOMETRY_VISUAL_BASELINE_v1',
-        'branch': branch, 'head': git('rev-parse', 'HEAD'),
+        'branch': branch, 'head': main_head, 'integrationStartHead': git('rev-parse', 'HEAD'),
         'productionBaselinePolicy': 'READ_ONLY', 'allowProductionWrite': False,
         'initialStatus': git('status', '--porcelain=v1', '-uall'),
         'protectedFiles': {str(p.relative_to(ROOT)).replace('\\','/'): digest(p) for p in protected()},
