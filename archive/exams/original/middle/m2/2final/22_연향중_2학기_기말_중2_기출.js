@@ -30,7 +30,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q1-solution.svg"
   },
   {
     "id": 2,
@@ -61,7 +62,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q2-solution.svg"
   },
   {
     "id": 3,
@@ -89,10 +91,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 사다리꼴의 양 옆변의 중점을 이은 선분은 두 밑변과 평행하고, 그 선은 두 대각선의 중점을 지난다.\n$M$, $N$이 각각 $\\overline{AB}$, $\\overline{DC}$의 중점이므로 $\\overline{MN}$은 두 밑변과 평행하다.\n따라서 $P$, $Q$는 각각 두 대각선의 중점이 되고, $\\overline{PQ}$의 길이는 두 밑변의 길이의 차의 절반이다.\n즉 $PQ=\\dfrac{14-8}{2}=3\\rm\\,cm$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "M2-06-SIMILAR_FIGURE",
-    "subUnit": "도형의 닮음",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q3-solution.svg"
   },
   {
     "id": 4,
@@ -123,7 +126,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q4-solution.svg"
   },
   {
     "id": 5,
@@ -153,7 +157,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q5-solution.svg"
   },
   {
     "id": 6,
@@ -184,7 +189,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -215,7 +221,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q7-solution.svg"
   },
   {
     "id": 8,
@@ -246,7 +253,8 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q8-solution.svg"
   },
   {
     "id": 9,
@@ -305,7 +313,8 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q10-solution.svg"
   },
   {
     "id": 11,
@@ -336,7 +345,8 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q11-solution.svg"
   },
   {
     "id": 12,
@@ -473,10 +483,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 서로 다른 동전 $3$개의 앞뒤 결과 $8$가지를 기준으로 각 사건의 경우의 수를 비교한다.\n가능한 결과는 모두 $8$가지이다.\n① 앞면 두 개가 나오는 경우는 $3$가지이므로 $\\dfrac38$이다.\n② 적어도 한 개가 앞면인 경우는 모두 뒷면인 한 경우만 제외하여 $7$가지이므로 $\\dfrac78$이다.\n③ 세 개 모두 앞면은 $1$가지이므로 $\\dfrac18$이다.\n④ 앞면이 하나도 나오지 않는 경우도 $1$가지이므로 $\\dfrac18$이다.\n⑤ 앞면이 한 개만 나오는 경우는 $3$가지이므로 $\\dfrac38$이다.\n가장 큰 확률은 ②이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 17,
@@ -501,10 +511,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 회장과 부회장은 서로 다른 자리이므로 순서를 구별하여 경우의 수를 센다.\n전체 $10$명 중 회장을 뽑는 방법은 $10$가지, 이어서 부회장을 뽑는 방법은 $9$가지이므로 전체는 $10\\times9=90$가지이다.\n두 자리 모두 남학생이 되는 경우는 회장 $6$가지, 부회장 $5$가지이므로 $6\\times5=30$가지이다.\n따라서 확률은 $\\dfrac{30}{90}=\\dfrac13$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 18,
@@ -529,10 +539,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 점 $(2,1)$을 직선의 식에 대입하여 가능한 주사위 눈의 순서쌍을 찾는다.\n$ax-by=1$에 $(x,y)=(2,1)$을 대입하면 $2a-b=1$, 즉 $b=2a-1$이다.\n$a$, $b$가 모두 $1$부터 $6$까지이므로 가능한 순서쌍은 $(1,1)$, $(2,3)$, $(3,5)$의 $3$가지이다.\n두 번 던진 주사위의 전체 순서쌍은 $6\\times6=36$가지이다.\n따라서 확률은 $\\dfrac3{36}=\\dfrac1{12}$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 19,
@@ -557,10 +567,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "[키포인트] 적어도 한 명이 당첨되는 확률은 두 명 모두 꽝일 확률을 $1$에서 빼면 빠르게 구할 수 있다.\n꽝 제비는 $5$개이다.\n$A$가 꽝을 뽑을 확률은 $\\dfrac59$이고, 그 뒤 $B$도 꽝을 뽑을 확률은 $\\dfrac48$이다.\n따라서 두 사람 모두 꽝일 확률은 $\\dfrac59\\times\\dfrac48=\\dfrac5{18}$이다.\n그러므로 적어도 한 사람이 당첨될 확률은 $1-\\dfrac5{18}=\\dfrac{13}{18}$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 20,
@@ -585,10 +595,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 두 주사위의 바닥면에 나온 수를 순서쌍으로 생각하여 합이 $8$ 이상인 경우를 센다.\n전체 경우의 수는 $4\\times6=24$가지이다.\n정사면체 주사위의 수가 $1$이면 합이 $8$ 이상인 경우가 없다.\n$2$이면 정육면체 주사위가 $6$인 $1$가지, $3$이면 $5$, $6$의 $2$가지, $4$이면 $4$, $5$, $6$의 $3$가지이다.\n따라서 유리한 경우는 $1+2+3=6$가지이다.\n확률은 $\\dfrac6{24}=\\dfrac14$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 21,
@@ -613,7 +623,8 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q21-solution.svg"
   },
   {
     "id": 22,
@@ -636,10 +647,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac7{36}$",
     "solution": "[키포인트] 정오각형에서는 $5$칸을 이동하면 원래 꼭짓점으로 돌아오므로 두 눈의 합을 $5$로 나눈 나머지를 본다.\n$A$에서 시계 반대 방향으로 $B$에 가려면 전체 이동 칸 수가 $5$로 나눈 나머지가 $1$이어야 한다.\n두 주사위 눈의 합은 $2$부터 $12$까지이므로 가능한 합은 $6$, $11$이다.\n합이 $6$인 순서쌍은 $(1,5)$, $(2,4)$, $(3,3)$, $(4,2)$, $(5,1)$의 $5$가지이다.\n합이 $11$인 순서쌍은 $(5,6)$, $(6,5)$의 $2$가지이다.\n따라서 유리한 경우는 $7$가지이고 전체 경우는 $36$가지이므로 확률은 $\\dfrac7{36}$이다.\n따라서 구하는 확률은 $\\dfrac7{36}$이다.",
-    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
-    "subUnit": "경우의 수와 확률",
-    "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitKey": "M2-08-PROBABILITY_BASIC",
+    "subUnit": "확률의 기본 성질과 활용",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q22-solution.svg"
   },
   {
     "id": 23,
@@ -664,6 +676,7 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/22_연향중_2학기_기말_중2_기출/q23-solution.svg"
   }
 ];
