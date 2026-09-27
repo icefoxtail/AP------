@@ -38,7 +38,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:d41922bb78744f6d1cfb8e4fedfaf29ae5de3f551084e63b8166d5d277dac33d",
+      "resolverEvidenceSha": "sha256:0f89bff1ff812bc709ca5648ccf88cc52effc0ed17b604303fcf1f33820012b0",
       "difficultyEvidenceSha": "sha256:43da196d933739cac69ba8b91a18e6169ec3513ab137ddf27586920d9c017ce2"
     },
     {
@@ -83,8 +83,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:9032a675769b3f38237463bde915be46342a862ce02be701812561c42b33604e",
-      "difficultyEvidenceSha": "sha256:a3d8e0c838836b2a0876dbe887fd979e508f0a729993a438ef566ccf08a9a174"
+      "resolverEvidenceSha": "sha256:7c686f34b6d2478c2a22daac1baf81ba0c5b93e59d5acd4c5e7cf456c010cb44",
+      "difficultyEvidenceSha": "sha256:a3d8e0c838836b2a0876dbe887fd979e508f0a729993a438ef566ccf08a9a174",
+      "solutionImageAlt": "원 O에서 중심각 40°에 대한 호 길이가 8 cm이고 중심각 80°에 대한 호 길이가 x cm인 그림",
+      "solutionImageCaption": "같은 원에서 두 호의 길이와 중심각의 비례 관계를 쓴다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 3,
@@ -128,8 +131,11 @@ window.questionBank = [
       "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:cb14f055a941585f8b3f509474147bb5320b5d2d206446a1f570b6ee55147f66",
-      "difficultyEvidenceSha": "sha256:6a3ef68db556c55d9a5e90f8f2db060bdee8018ca2fbf1bff3afe0a68f9e4b4c"
+      "resolverEvidenceSha": "sha256:71355e492bb3245604608c72f078c53c1eb68b9ce6e00b11ec8c5f085c2d3c65",
+      "difficultyEvidenceSha": "sha256:6a3ef68db556c55d9a5e90f8f2db060bdee8018ca2fbf1bff3afe0a68f9e4b4c",
+      "solutionImageAlt": "삼각형의 세 외각이 x°, (x−14)°, 124°인 외각 관계 그림",
+      "solutionImageCaption": "삼각형 외각의 합 360°로 x를 결정한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 4,
@@ -173,8 +179,11 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:848bc5b9f9ade423283e35d1cd79b07f38e4f63561c14ab182c2b7541a4e160e",
-      "difficultyEvidenceSha": "sha256:82c3423fc93edf8a198aa5d4c8f4f9f6657b29025654fcc1ae1ef3c75008efd9"
+      "resolverEvidenceSha": "sha256:5d910c344f64f1d6b1b09a9468d3a186cbdf179226a6a0b71073ac63c89120b0",
+      "difficultyEvidenceSha": "sha256:82c3423fc93edf8a198aa5d4c8f4f9f6657b29025654fcc1ae1ef3c75008efd9",
+      "solutionImageAlt": "오각형의 내각 85°, 110°, 2x°, 90°, (195−x)°를 표시한 그림",
+      "solutionImageCaption": "오각형 내각의 합 540°에 주어진 다섯 내각을 넣는다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 5,
@@ -214,7 +223,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ffaa64cd27a62c7bc785d002209575492fb858bc9d8ba06acaf8a79dc588e4c8",
+      "resolverEvidenceSha": "sha256:42c4641254bd769f05b419095861e67b8ba1440a27203e442d494f545eee0a2a",
       "difficultyEvidenceSha": "sha256:fa658af9a1956b358d1c40332ccf35782e02893cc23bc55918985f7c8ab06497"
     },
     {
@@ -256,7 +265,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:8c8e7d453a2a236e1cc02a08c035679eaf88b1d5430fbe84fe996e68503378a1",
+      "resolverEvidenceSha": "sha256:784077c14ce0fa186c2ac01ba76110b01ee6d3f65735c283e41461cd4239d2f5",
       "difficultyEvidenceSha": "sha256:692b1461300f829a0d2a6edc7c10897eb76843523ced5da8c9fc47642211ea81"
     },
     {
@@ -297,7 +306,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a33cd3483fd3a29c407cad9946e7c92f03910a04fc540669642adb78bca9a43d",
+      "resolverEvidenceSha": "sha256:ebf175af8d88450f4d94d498b32263547e5098ff3cc0c9225d60e43238419f86",
       "difficultyEvidenceSha": "sha256:c85f11c036208f7bfbf587242be99551b21a3754c05b35c0ae6a95c1a32cfb85"
     },
     {
@@ -339,7 +348,7 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:64d8e12fc54a0cade42e444dee43ef3906e4ec659d95ca0c9cc27c8e67618b8b",
+      "resolverEvidenceSha": "sha256:e6d854aea05e66f35a4bb0ac167b76c7cb70eba97def810a2e79e41c22d16e7d",
       "difficultyEvidenceSha": "sha256:c95ba560bd9081b53b10f61869a2515a6b4dcc1022fb818aa510a595e6813cdd"
     },
     {
@@ -411,7 +420,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:272a8775a6bc4353edfd52ba1dfcdd0b5e49a537c597b86565427d783efbc89b",
+      "resolverEvidenceSha": "sha256:d6b912df85bdb329abc8b4d6972f257d0ff058c5138326d09786c2516ec1d21d",
       "difficultyEvidenceSha": "sha256:0194f388ea15d629b0c598c7c88dbe23bc4d50f4d8aba56fcd5a871e3e8b9729"
     },
     {
@@ -452,7 +461,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_ROTATION_SOLID_PROPERTIES_CLAIM_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4c8d7a117b84bf0849054ec8f599675dfff89f13e8f2ffdfd8f44b1ed2c727f6",
+      "resolverEvidenceSha": "sha256:93462b2420901c7df7eeff01c9cef7b2f313617a25e59bf3e292b462e8c2c39e",
       "difficultyEvidenceSha": "sha256:17f13c513af51d5c0a4b72197d4e28fc6f79e262737b7037aabc16e411f6aad6"
     },
     {
@@ -496,7 +505,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4bfa769cf53cc55e7715dab2562a18f952f9f7a22e3053f5875bf681009486cb",
+      "resolverEvidenceSha": "sha256:4906649d684ae928e01f46292932fe80435f92e751f16bdfcb55a6eaaa13ad42",
       "difficultyEvidenceSha": "sha256:698d221e4fa0ffa46f5063b37d393f09781d49ba805602d065ccef20f03f3b60"
     },
     {
@@ -540,7 +549,7 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:3619e953f82d54aef01f8b3f8dbe772b2ddbd8fb7f635dcf95f9432817e0cc2f",
+      "resolverEvidenceSha": "sha256:0569504de020b9feff2f8876303665fbefa1fa25e4732b82192f554125c997e7",
       "difficultyEvidenceSha": "sha256:468080c76b57bbb0c121c36a7a95b71bcf6cabf4d2cb26902054cc43b57ec51f"
     },
     {
@@ -584,7 +593,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:631a0f8bb710110658a72a1ed9f81685ef85235f1e00fb946f0b2b252d4261e9",
+      "resolverEvidenceSha": "sha256:cbb0b834712c5f426a99974409fad1920a1c83c0b792515b76bcf49b41b67e12",
       "difficultyEvidenceSha": "sha256:604aa42fe01795b435a81f7e0219b6c098987076570e5af4267a1cacee291b83"
     },
     {
@@ -629,8 +638,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:cc32a3f9f0171e38fb8fe862e098b5229e24c01b033963702ccbb8f8f3267eb3",
-      "difficultyEvidenceSha": "sha256:0a80d25be42959ecb997a08068effeb92c0e025341e4a1aa0eeac42b0390ceba"
+      "resolverEvidenceSha": "sha256:c40e9800e340c6a328fd722557546cdf133a8ab2f18bff9ec94d0c044fa513d6",
+      "difficultyEvidenceSha": "sha256:0a80d25be42959ecb997a08068effeb92c0e025341e4a1aa0eeac42b0390ceba",
+      "solutionImageAlt": "지름 AB인 원에서 ∠COA=50°, 호 AC=5 cm, BD가 OC와 평행한 그림",
+      "solutionImageCaption": "평행선으로 중심각 ∠BOD를 구하고 호의 길이를 비례시킨다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 16,
@@ -673,7 +685,7 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:7716b401e3a5955f37dc11fea057e5eac5394c31df2b723747d1d9bcf4225204",
+      "resolverEvidenceSha": "sha256:4b957f0d802aa55aeabf45312144aeac6f7074e065a075ee481e404576727ff7",
       "difficultyEvidenceSha": "sha256:02a549379a5ff6b64b7e18927161ea1c92d77e8b68f413058a0b965c40cbc851"
     },
     {
@@ -718,8 +730,11 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:b09f4c6baa1179fdce25b0df43ed32c2ed3386df69575b7ee5eba4f4dbb611bf",
-      "difficultyEvidenceSha": "sha256:ee7c8e82ba9cafa97f100f0d5507c3e1ca7d70cb29b2e589778daa2c52d8b7ac"
+      "resolverEvidenceSha": "sha256:9672be97ea17a1bc8cf5e65049914bb643a1456dfa24c360b0ece92a88439d63",
+      "difficultyEvidenceSha": "sha256:ee7c8e82ba9cafa97f100f0d5507c3e1ca7d70cb29b2e589778daa2c52d8b7ac",
+      "solutionImageAlt": "사다리꼴 밑면의 윗변 3 cm, 아랫변 7 cm, 높이 3 cm와 기둥 높이 8 cm인 사각기둥",
+      "solutionImageCaption": "두 밑면의 넓이와 밑면 둘레×기둥 높이를 더한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 18,
@@ -763,8 +778,11 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:46ef03c6915eea47d8616b6e0558bb4d0b738b09f54de0dce93ea853f1207e16",
-      "difficultyEvidenceSha": "sha256:03c55595a4e58ad914713daed57a04adb648005018791bcc7dc211be70911aca"
+      "resolverEvidenceSha": "sha256:7c0af8593ca09ab70554984777b87906e320b206fe1b361c538bb201c86c15ef",
+      "difficultyEvidenceSha": "sha256:03c55595a4e58ad914713daed57a04adb648005018791bcc7dc211be70911aca",
+      "solutionImageAlt": "반지름 3 cm인 같은 원형 캔 세 개가 서로 접해 있고 팽팽한 테이프가 둘러싼 그림",
+      "solutionImageCaption": "세 직선 구간 18 cm와 합쳐 한 바퀴인 원호 길이 6π cm를 더한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 19,
@@ -807,7 +825,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:240a5628fa6b1b13c9c678ea2716f74d145e9e83cb476b8cc6461d2450ef8725",
+      "resolverEvidenceSha": "sha256:9ae8c723a541fe8d930d69efe4fa2649c61bcbe39573837bd54487e97c3b71ac",
       "difficultyEvidenceSha": "sha256:14d027ab36928b466ef04b2d6a31b41a981159e04596e074014175f429fdd340"
     },
     {
@@ -853,8 +871,11 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:bf4ef9726d2fa276d55032982b113cbedc12730aeff787e628294719db201ad5",
-      "difficultyEvidenceSha": "sha256:edf0077b8b1b449dba29f834f5001177ff6785be364188113f64d223d1c5b4c6"
+      "resolverEvidenceSha": "sha256:7a4d5f012aeeae0488e0426a06da8bccca76e051cd1d26116e8dcec2510aa8b0",
+      "difficultyEvidenceSha": "sha256:edf0077b8b1b449dba29f834f5001177ff6785be364188113f64d223d1c5b4c6",
+      "solutionImageAlt": "직사각형이 회전축 l에서 2 cm 떨어져 회전해 생긴 속 빈 원기둥: 안쪽 반지름 2 cm, 바깥 반지름 5 cm, 높이 6 cm",
+      "solutionImageCaption": "두 옆면과 위아래 환형 면의 넓이를 합한다.",
+      "solutionImageSize": "large"
     },
     {
       "id": 21,
@@ -889,15 +910,15 @@ window.questionBank = [
       "difficultyBoundaryFlag": "B23",
       "legacyLevelCompatibility": "NORMAL",
       "solutionImage": "assets/images/23_왕운중_2학기_기말_중1_기출/q21.png",
-      "solutionImageSize": "small",
-      "solutionImageAlt": "도수분포표에서 옮길 히스토그램의 좌표축",
-      "solutionImageCaption": "각 계급의 도수를 높이로 표시한다.",
+      "solutionImageSize": "large",
+      "solutionImageAlt": "방문자 수 10명부터 35명까지 계급 눈금과 일수 0부터 8일까지 눈금이 있는 히스토그램 축",
+      "solutionImageCaption": "주어진 계급별 도수 2, 5, 4, 8, 1을 각 직사각형의 높이로 표시한다.",
       "solutionReminderImagePolicy": "STRIP_INLINE",
       "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
       "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_GRAPH_CONSTRUCTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:716da95b4634cb2541fe9818abae173268cdc8bc54e789c1b6a33cdc635f1091",
+      "resolverEvidenceSha": "sha256:c8584d6101afc2ee679b0661737295a3a589565aaea5c260ab3a99a645358455",
       "difficultyEvidenceSha": "sha256:b057936f54f9c240719aa4068c96cf4ee16ddf42e908ce459704a9fc84c4df8b"
     },
     {
@@ -936,7 +957,7 @@ window.questionBank = [
       "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e5b8a100d70f38ae7a5f48ff17f0726984ed063c3d05ac6a5620e4ce6f123160",
+      "resolverEvidenceSha": "sha256:4e85620aee61b95426a519c05765f3d1267003ee2696c6d342ea6d5a1c08b6c4",
       "difficultyEvidenceSha": "sha256:3fe94521e40a3e43f75b0b603152be79f92fa929146e79885b3d559d652acc5f"
     },
     {
@@ -973,7 +994,7 @@ window.questionBank = [
       "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_FORMULA",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:d091c8d7a4bd9bfb6c970e4af30e1208634b3aa00c9022d646c52f67a51302de",
+      "resolverEvidenceSha": "sha256:61a91223ebaadb2e04cf7706e7271ef6c035fdea3554d27aafe0ed7521843abd",
       "difficultyEvidenceSha": "sha256:378eb4d67e7104149e4639eb5af8eb1abbf1b66849c40ad500ca39d4fcae80e4"
     },
     {
@@ -1013,7 +1034,10 @@ window.questionBank = [
       "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e19d7d9cc7b6e0702d08b2233acb11c2a7c3014be7c55831e7fffd62bcde9092",
-      "difficultyEvidenceSha": "sha256:17087a0f9b58793030dd99b57669288f76b2ad5cbcb82b35eca77c567b9bf218"
+      "resolverEvidenceSha": "sha256:c5865e94c2bb8f64312ea861f30db802b8d70aed1c3cc3e78c65b9192d1bb839",
+      "difficultyEvidenceSha": "sha256:17087a0f9b58793030dd99b57669288f76b2ad5cbcb82b35eca77c567b9bf218",
+      "solutionImageAlt": "윗면 반지름 3 cm, 아랫면 반지름 9 cm인 원뿔대의 전개도: 모선 15 cm, 5 cm와 중심각 216°인 고리 부채꼴",
+      "solutionImageCaption": "옆면 전개도의 고리 부채꼴 넓이와 두 원의 넓이를 더한다.",
+      "solutionImageSize": "large"
     }
   ];
