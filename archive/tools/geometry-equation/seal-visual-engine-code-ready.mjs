@@ -170,6 +170,8 @@ export function saveSeal(result,run){
   const folder=assertOutput(path.join(run,'seal'));fs.mkdirSync(folder,{recursive:true});
   const git=(...args)=>execFileSync('git',args,{cwd:repoRoot,encoding:'utf8'}).trim();
   const baseline=json(path.join(run,'config/baseline.json'));
+  const raw=json(path.join(run,'legacy-contract/qualification.json'));
+  const legacy=json(path.join(run,'legacy-contract/summary.json'));
   const names=new Set(git('diff','--name-only','-z',baseline.head).split('\0').filter(Boolean));
   for(const name of git('ls-files','--others','--exclude-standard','-z','--','archive/tools/geometry-equation').split('\0').filter(Boolean))names.add(name);
   const code=[...names].filter(v=>!v.startsWith('archive/_generated/')).sort().map(file=>({path:file,sha256:digest(path.join(repoRoot,file)),bytes:fs.statSync(path.join(repoRoot,file)).size}));
