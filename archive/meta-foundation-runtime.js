@@ -159,6 +159,7 @@
         effectiveBrowseGrade: base.effectiveBrowseGrade,
         identityStatus: identityRepair ? "VERIFIED" : base.identityStatus,
         sourceStatus: identityRepair ? "VERIFIED" : base.sourceStatus,
+        sourceIntegrityStatus: identityRepair ? "VERIFIED" : base.sourceIntegrityStatus,
         sourceFingerprint: base.sourceFingerprint,
         rawQuestionHash: base.rawQuestionHash,
         approvedSourceFingerprint: base.approvedSourceFingerprint,

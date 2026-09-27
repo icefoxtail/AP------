@@ -120,6 +120,17 @@ test('actual catalog and all active runtime packs expose every middle-school sou
   const { w, ctx } = harness();
   vm.runInContext(read('meta-foundation-runtime.js'), ctx);
   const overlaid = await ctx.applyArchiveMetaFoundationCatalog(catalog);
+  const repairOverlay = ctx.ARCHIVE_META_FOUNDATION_RUNTIME.records.find(row => row.catalogIdentityRepairVerified);
+  assert.ok(repairOverlay);
+  const repairBase = catalog.records.find(row => row.questionUid === repairOverlay.questionUid);
+  assert.ok(repairBase);
+  const oldIndex = { ...catalog, records: catalog.records.map(row => row === repairBase ? {
+    ...row, questionUid: '', identityStatus: 'UNRESOLVED', sourceStatus: 'HOLD', sourceIntegrityStatus: 'UNRESOLVED',
+  } : row) };
+  const repairedIndex = await ctx.applyArchiveMetaFoundationCatalog(oldIndex);
+  const repaired = repairedIndex.records.find(row => row.questionUid === repairOverlay.questionUid);
+  assert.equal(repaired.identityStatus, 'VERIFIED');
+  assert.equal(repaired.sourceIntegrityStatus, 'VERIFIED');
   for (const data of [catalog, overlaid]) {
     w.state.catalog = data;
     for (const grade of ['중1', '중2', '중3']) {
