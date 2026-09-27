@@ -43,6 +43,90 @@ function readDbFiles() {
   return [...new Set(exams.map(x => normalizeFile(x?.file)).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'en'));
 }
 
+
+const PATH_RENAME_EXCLUDED_FIELDS = new Set([
+  'image',
+  'solutionImage',
+  'solutionImageAlt',
+  'solutionImageCaption',
+  'solutionImageSize'
+]);
+
+function pathRenameQuestionFingerprint(question) {
+  const stable = {};
+  for (const [key, value] of Object.entries(question || {})) {
+    if (!PATH_RENAME_EXCLUDED_FIELDS.has(key)) stable[key] = value;
+  }
+  return sha256(JSON.stringify(stable));
+}
+function pathRenameBankFingerprint(bank) {
+  return sha256(JSON.stringify((bank || []).map(pathRenameQuestionFingerprint)));
+}
+function sourceRenameFamily(sourceFile) {
+  const file = normalizeFile(sourceFile);
+  const dir = path.posix.dirname(file);
+  const stem = path.posix.basename(file, '.js');
+  const parts = stem.split('_');
+  const identityStem = parts.length >= 5 ? parts.slice(0, 5).join('_') : stem;
+  return dir + '|' + identityStem;
+}
+function readWorkingBank(sourceFile) {
+  const file = normalizeFile(sourceFile);
+  const full = path.join(examsDir, file);
+  return runJs(full, fs.readFileSync(full, 'utf8'));
+}
+function readHistoricalBank(ref, sourceFile) {
+  const file = normalizeFile(sourceFile);
+  const code = execFileSync('git', ['-C', repoRoot, 'show', `${ref}:archive/exams/${file}`], {
+    maxBuffer: 32 * 1024 * 1024
+  }).toString('utf8');
+  return runJs(`${ref}:archive/exams/${file}`, code);
+}
+function detectSourcePathRenames(records, dbFiles, identitySourceCommit) {
+  const dbSet = new Set(dbFiles);
+  const identityFiles = new Set(records.map(r => normalizeFile(r.sourceArchiveFile)));
+  const staleFiles = [...identityFiles].filter(file => !dbSet.has(file)).sort((a, b) => a.localeCompare(b, 'en'));
+  const freshFiles = dbFiles.filter(file => !identityFiles.has(file));
+  const renameMap = new Map();
+  const renamedFiles = [];
+  const currentBanks = new Map();
+  if (!staleFiles.length || !freshFiles.length || !identitySourceCommit) {
+    return { renameMap, renamedFiles, currentBanks };
+  }
+  const historicalBanks = new Map();
+  for (const staleFile of staleFiles) {
+    try {
+      historicalBanks.set(staleFile, readHistoricalBank(identitySourceCommit, staleFile));
+    } catch {
+      historicalBanks.set(staleFile, null);
+    }
+  }
+  const usedStaleFiles = new Set();
+  for (const freshFile of freshFiles) {
+    const currentBank = readWorkingBank(freshFile);
+    currentBanks.set(freshFile, currentBank);
+    const family = sourceRenameFamily(freshFile);
+    const currentFingerprint = pathRenameBankFingerprint(currentBank);
+    const matches = staleFiles.filter(staleFile => {
+      if (usedStaleFiles.has(staleFile) || sourceRenameFamily(staleFile) !== family) return false;
+      const historicalBank = historicalBanks.get(staleFile);
+      return Array.isArray(historicalBank)
+        && historicalBank.length === currentBank.length
+        && pathRenameBankFingerprint(historicalBank) === currentFingerprint;
+    });
+    if (matches.length > 1) {
+      throw new Error('ambiguous source path rename: ' + freshFile + ' <- ' + matches.join(', '));
+    }
+    if (matches.length === 1) {
+      const from = matches[0];
+      usedStaleFiles.add(from);
+      renameMap.set(from, freshFile);
+      renamedFiles.push({ from, to: freshFile, questionCount: currentBank.length });
+    }
+  }
+  return { renameMap, renamedFiles, currentBanks };
+}
+
 function addArray(obj, key, value) {
   if (!obj[key]) obj[key] = [];
   obj[key].push(value);
@@ -76,33 +160,45 @@ function main() {
   if (!fs.existsSync(identityPath)) throw new Error('identity map missing: ' + identityPath);
   const current = JSON.parse(fs.readFileSync(identityPath, 'utf8'));
   const records = (current.records || []).map(x => ({ ...x, sourceArchiveFile: normalizeFile(x.sourceArchiveFile) }));
+  const dbFiles = readDbFiles();
+  const rename = detectSourcePathRenames(records, dbFiles, current.sourceCommit);
+  let renamedRecords = 0;
+  const renamedSourceFiles = new Set();
+  for (const record of records) {
+    const from = normalizeFile(record.sourceArchiveFile);
+    const to = rename.renameMap.get(from);
+    if (!to) continue;
+    const bank = rename.currentBanks.get(to) || readWorkingBank(to);
+    const question = bank[Number(record.sourceOrdinal) - 1];
+    if (!question) throw new Error('renamed source ordinal missing: ' + to + '#' + record.sourceOrdinal);
+    record.sourceArchiveFile = to;
+    record.sourceQuestionNo = question?.id ?? record.sourceQuestionNo ?? '';
+    record.legacyQKey = to + '_' + String(record.sourceQuestionNo ?? '');
+    record.sourceFingerprint = sourceFingerprint(question);
+    renamedRecords += 1;
+    renamedSourceFiles.add(to);
+  }
   const bySourceOrdinal = new Map(records.map(r => [r.sourceArchiveFile + '#' + Number(r.sourceOrdinal), r]));
   const existingFiles = new Set(records.map(r => r.sourceArchiveFile));
   const usedUids = new Set(records.map(r => r.questionUid));
   const newSourceFiles = [];
   let newRecords = 0;
-
-  for (const sourceFile of readDbFiles()) {
+  for (const sourceFile of dbFiles) {
     const full = path.join(examsDir, sourceFile);
     if (!fs.existsSync(full)) throw new Error('db source missing: ' + sourceFile);
     const questions = runJs(full, fs.readFileSync(full, 'utf8'));
     const prior = records.filter(r => r.sourceArchiveFile === sourceFile);
-
     if (prior.length && prior.length !== questions.length) {
-      throw new Error(
-        'existing source cardinality changed; identity migration required: ' +
-        sourceFile + ' ' + prior.length + ' -> ' + questions.length
-      );
+      throw new Error('existing source cardinality changed; identity migration required: ' +
+        sourceFile + ' ' + prior.length + ' -> ' + questions.length);
     }
     if (!prior.length) newSourceFiles.push(sourceFile);
-
     for (let i = 0; i < questions.length; i += 1) {
       const ordinal = i + 1;
       const q = questions[i];
       const key = sourceFile + '#' + ordinal;
       if (bySourceOrdinal.has(key)) continue;
       if (existingFiles.has(sourceFile)) throw new Error('identity ordinal gap in existing source: ' + key);
-
       const uid = ordinalUid(sourceFile, ordinal);
       if (usedUids.has(uid)) throw new Error('questionUid collision: ' + uid);
       usedUids.add(uid);
@@ -120,19 +216,16 @@ function main() {
       newRecords += 1;
     }
   }
-
-  if (!newRecords) {
-    console.log(JSON.stringify({ status: 'NO_CHANGE', records: records.length, newFiles: 0, newRecords: 0 }, null, 2));
+  if (!newRecords && !renamedRecords) {
+    console.log(JSON.stringify({ status: 'NO_CHANGE', records: records.length, newFiles: 0, newRecords: 0, renamedFiles: 0, renamedRecords: 0 }, null, 2));
     return;
   }
-
   records.sort((a, b) =>
     a.sourceArchiveFile.localeCompare(b.sourceArchiveFile, 'en') ||
     Number(a.sourceOrdinal) - Number(b.sourceOrdinal)
   );
   const uniqueUidCount = new Set(records.map(r => r.questionUid)).size;
   if (uniqueUidCount !== records.length) throw new Error('duplicate questionUid after incremental sync');
-
   const sourceCommit = execFileSync('git', ['-C', repoRoot, 'rev-parse', 'HEAD']).toString('utf8').trim();
   const next = {
     ...current,
@@ -148,11 +241,14 @@ function main() {
       failures: 0
     },
     incrementalSync: {
-      schemaVersion: 'question-identity-incremental-sync-v1',
+      schemaVersion: 'question-identity-incremental-sync-v2',
       sourceCommit,
       newFiles: newSourceFiles.length,
       newRecords,
-      newSourceFiles
+      newSourceFiles,
+      renamedFiles: rename.renamedFiles,
+      renamedRecords,
+      renamedSourceFiles: [...renamedSourceFiles].sort((a, b) => a.localeCompare(b, 'en'))
     },
     generatedAt: new Date().toISOString()
   };
@@ -160,7 +256,6 @@ function main() {
   const stable = { ...next };
   delete stable.generatedAt;
   next.identityDigest = sha256(JSON.stringify(stable));
-
   fs.writeFileSync(identityPath, JSON.stringify(next, null, 2) + '\n', 'utf8');
   console.log(JSON.stringify({
     status: 'UPDATED',
@@ -168,6 +263,8 @@ function main() {
     newFiles: newSourceFiles.length,
     newRecords,
     newSourceFiles,
+    renamedFiles: rename.renamedFiles,
+    renamedRecords,
     identityDigest: next.identityDigest
   }, null, 2));
 }
