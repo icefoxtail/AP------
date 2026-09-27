@@ -1,26 +1,70 @@
 import { blob, ensure, relative, sha } from './common.mjs';
 import { parseQuestionBank } from '../meta-foundation/reviewed-apply-core.mjs';
 
-const META_TOKENS = /RPM_PRIMARY_MIGRATION_GAP|META_CANONICAL_HOLD|META_PACK_GAP_HOLD|PROPOSED_NEW_L[34]|PROPOSED_NEW_CROSS_CONCEPT|CROSS_CONCEPT_CANDIDATE|DIFFICULTY_(?:MISSING|GAP)|META_(?:MISSING|STALE|GAP)/i;
+const META_TOKENS = /RPM_PRIMARY_MIGRATION_GAP|R2_ADJUDICATION_REQUIRED|RELATIONAL_ACTIVE_KEY_GAP|ACTIVE_KEY_GAP|META_CANONICAL_HOLD|META_PACK_GAP_HOLD|PROPOSED_NEW_L[34]|PROPOSED_NEW_CROSS_CONCEPT|CROSS_CONCEPT_CANDIDATE|DIFFICULTY_(?:MISSING|GAP)|META_(?:MISSING|STALE|GAP)/i;
 const SVG_TOKENS = /SVG|VISUAL|GEOMETRY|IMAGE|ASSET|DIAGRAM/i;
 const JS_TOKENS = /JS|SYNTAX|SERIALIZATION|CONTROL.?CHAR|LATEX|ANSWER|SOLUTION|CONTENT|CHOICE|SOURCE|IDENTITY|DENOMINATOR/i;
-const OPEN_TOKENS = /HOLD|REPAIR|FAIL|CONFLICT|GAP|PROPOSAL|UNRESOLVED|MISMATCH|ERROR/i;
 const META_SOURCE = /(?:rpmMigrationGaps|proposedNewL3|proposedNewL4|proposedNewCrossConcept|crossConceptCandidates|metaAdjudications)/i;
-const ACTION_SOURCE = /(?:unresolvedItems|repairs|sourceHardHolds|rpmMigrationGaps|proposedNewL3|proposedNewL4|proposedNewCrossConcept|crossConceptCandidates|l1l2RepairCandidates|answerRepairs|solutionRepairs|svgRepairs|visualHolds|trueHold)$/i;
+const OPEN_STATE = /(?:^|[_\s:])(?:HOLD|REPAIR|REPAIR_REQUIRED|REPAIR_PENDING|FAIL|CONFLICT|GAP|PROPOSAL|PROPOSED_NEW|UNRESOLVED|MISMATCH|ERROR|R2_ADJUDICATION_REQUIRED)(?:[_\s:]|$)/i;
+const CLOSED_STATE = /(?:^|_)(?:PASS|KEEP|EXISTING_REUSE|REPAIRED|FIXED|RESOLVED|CLOSED|VERIFIED_NO_CHANGE|MAPPED_EXISTING|GROUP_RESOLVED|APPLIED)(?:_|$)/i;
+const HOLD_AUTHORITY_FIELDS = new Set([
+  'unresolvedItems', 'sourceHardHolds', 'rpmMigrationGaps', 'proposedNewL3', 'proposedNewL4',
+  'proposedNewCrossConcept', 'crossConceptCandidates', 'visualHolds', 'trueHold',
+]);
+const ITEMIZED_HOLD_FIELDS = [
+  'unresolvedItems', 'sourceHardHolds', 'rpmMigrationGaps', 'proposedNewL3', 'proposedNewL4',
+  'proposedNewCrossConcept', 'crossConceptCandidates', 'perQuestion', 'rpmByQ', 'items', 'holdItems', 'visualHolds', 'trueHold',
+];
 
 function clean(value) {
   return String(value == null ? '' : value).trim();
 }
+function stateValues(row) {
+  if (typeof row === 'string') return [row];
+  if (!row || typeof row !== 'object') return [];
+  return [
+    row.disposition, row.status, row.code, row.errorCode, row.reasonCode,
+    row.outcome, row.reviewStatus, row.questionDisposition, row.r1Status,
+    row.finalStatus, row.holdType, row.repairType, row.svgDisposition,
+    row.svgReview, row.svgStatus, row.visualReview, row.visualStatus,
+    row.solutionDisposition, row.solutionReview, row.solutionStatus,
+    row.answerDisposition, row.answerReview, row.answerStatus,
+  ].map(clean).filter(Boolean);
+}
+function isClosedR1Row(row) {
+  return stateValues(row).some(value => CLOSED_STATE.test(value.toUpperCase().replaceAll('-', '_').replaceAll(' ', '_')));
+}
+function hasOpenR1State(row) {
+  return stateValues(row).some(value => OPEN_STATE.test(value.toUpperCase().replaceAll('-', '_')));
+}
+function isAuthoritativeHoldSource(sourceName) {
+  return HOLD_AUTHORITY_FIELDS.has(String(sourceName).split('.').at(-1));
+}
 function itemOrdinal(row) {
   const value = row && (row.sourceOrdinal ?? row.questionNo ?? row.ordinal ?? row.q ?? row.question ?? row.id);
   const n = Number(value);
-  return Number.isSafeInteger(n) && n > 0 ? n : null;
+  if (Number.isSafeInteger(n) && n > 0) return n;
+  const match = String(value ?? '').match(/(?:^|\b)q\s*(\d+)\b/i);
+  return match ? Number(match[1]) : null;
+}
+function expandQuestionScope(row) {
+  if (!row || typeof row !== 'object' || itemOrdinal(row)) return [row];
+  const values = [row.questions, row.questionNumbers, row.questionOrdinals].find(Array.isArray);
+  if (!values) return [row];
+  return values.map(value => ({
+    ...row,
+    sourceOrdinal: Number(value) || undefined,
+    questionNo: Number(value) || value,
+    questions: undefined,
+    questionNumbers: undefined,
+    questionOrdinals: undefined,
+  }));
 }
 function rowText(row) {
   if (typeof row === 'string') return row;
   if (!row || typeof row !== 'object') return '';
   return [
-    row.disposition, row.status, row.code, row.errorCode, row.reasonCode, row.reason,
+    row.type, row.disposition, row.status, row.code, row.errorCode, row.reasonCode, row.reason,
     row.field, row.category, row.holdType, row.repairType, row.reviewStatus,
     row.outcome, row.holdReason, row.questionDisposition, row.r1Status, row.finalStatus,
     row.solutionDisposition, row.solutionReview, row.sourceStatus, row.solutionStatus,
@@ -29,9 +73,10 @@ function rowText(row) {
   ].map(clean).filter(Boolean).join(' ');
 }
 function classification(row, sourceName) {
+  if (isClosedR1Row(row)) return null;
+  if (!isAuthoritativeHoldSource(sourceName) && !hasOpenR1State(row)) return null;
   const text = rowText(row);
-  const disposition = clean(row && (row.disposition || row.status || row.code || row.errorCode || row.reasonCode)) || sourceName;
-  if (!OPEN_TOKENS.test(text) && !ACTION_SOURCE.test(sourceName)) return null;
+  const disposition = clean(row && (row.disposition || row.status || row.code || row.errorCode || row.reasonCode || row.type)) || sourceName;
   const field = clean(row && (row.field || row.targetField));
   if (META_SOURCE.test(sourceName) || META_TOKENS.test(text) || /META|RPM|L3|L4|CROSS.?CONCEPT|DIFFICULTY|CURRICULUM.?BINDING/i.test(field)) {
     const reason = clean(row && (row.reasonCode || row.dispositionReason || row.reason || row.code)) || disposition;
@@ -60,7 +105,7 @@ function classification(row, sourceName) {
   };
 }
 function isCleanPerQuestion(row) {
-  return !OPEN_TOKENS.test(rowText(row));
+  return isClosedR1Row(row) || !hasOpenR1State(row);
 }
 function optionalBlob(repo, commit, filePath) {
   try {
@@ -113,18 +158,20 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map() 
     ...(metaBlob.sha256 ? [{ role: 'META_EVIDENCE_READ_ONLY', path: metaBlob.path, sha256: metaBlob.sha256, inputCommit: candidate.inputCommit }] : []),
   ];
   const findings = new Map();
-  const add = (row, sourceName, sourcePath) => {
-    const rowObject = row && typeof row === 'object' ? row : { reason: String(row) };
+  const addOne = (rowObject, sourceName, sourcePath) => {
     if (!itemOrdinal(rowObject) && (Number(rowObject.count) > 0 || /\bq\s*\d+\s*[-–]/i.test(clean(rowObject.scope)))) return;
     const classificationResult = classification(rowObject, sourceName);
     if (!classificationResult) return;
+    const normalizedReasonCode = classificationResult.category === 'SOURCE_OR_MATH_HOLD'
+      && (/trueHold/i.test(sourceName) || /\bTRUE_HOLD\b/i.test(rowText(rowObject)))
+      ? 'TRUE_HOLD' : classificationResult.reasonCode;
     const ordinal = itemOrdinal(rowObject);
     const explicitUid = clean(rowObject.questionUid || rowObject.uid || rowObject.qid) || null;
     const sourceArchiveFile = examFile.replace(/^archive\/exams\//, '');
     const identity = ordinal ? identityBySource.get(sourceArchiveFile + '#' + ordinal) : null;
     const questionUid = explicitUid || identity && identity.questionUid || null;
     const reason = clean(rowObject.reason || rowObject.reasonCode || rowObject.dispositionReason || rowObject.code) || classificationResult.reasonCode;
-    const key = [candidate.examUid, questionUid || 'NO_UID', ordinal || 'NO_ORDINAL', classificationResult.category, classificationResult.reasonCode].join('|');
+    const key = [candidate.examUid, questionUid || 'NO_UID', ordinal || 'NO_ORDINAL', classificationResult.category, normalizedReasonCode].join('|');
     const existing = findings.get(key);
     const sourceSha = sourceName.startsWith('R1_EVIDENCE.') ? evidenceBlob.sha256
       : sourceName.startsWith('R1_META_SIDECAR.') ? metaBlob.sha256 : sha(receiptBytes);
@@ -155,7 +202,7 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map() 
       ordinal,
       releaseEffect: classificationResult.releaseEffect,
       category: classificationResult.category,
-      reasonCode: classificationResult.reasonCode,
+      reasonCode: normalizedReasonCode,
       status: 'COLLECTED',
       groupId: null,
       upperModelCaseId: null,
@@ -164,6 +211,10 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map() 
     };
     body.findingId = 'hold_' + sha(Buffer.from(JSON.stringify({ examUid: body.examUid, questionUid, ordinal, releaseEffect: body.releaseEffect, category: body.category, reasonCode: body.reasonCode }))).slice(0, 20);
     findings.set(key, body);
+  };
+  const add = (row, sourceName, sourcePath) => {
+    const rowObject = row && typeof row === 'object' ? row : { reason: String(row) };
+    for (const scopedRow of expandQuestionScope(rowObject)) addOne(scopedRow, sourceName, sourcePath);
   };
 
   const rowFields = [
@@ -203,12 +254,7 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map() 
     }
   }
 
-  const r1ItemizedFields = [
-    'unresolvedItems', 'sourceHardHolds', 'rpmMigrationGaps', 'proposedNewL3',
-    'proposedNewL4', 'proposedNewCrossConcept', 'crossConceptCandidates',
-    'perQuestion', 'rpmByQ', 'items', 'holdItems',
-  ];
-  const r1HoldEvidenceComplete = r1ItemizedFields.some(field => Array.isArray(receipt[field]) || Array.isArray(evidence && evidence[field]));
+  const r1HoldEvidenceComplete = ITEMIZED_HOLD_FIELDS.some(field => Array.isArray(receipt[field]) || Array.isArray(evidence && evidence[field]));
   if (!r1HoldEvidenceComplete) add({
     disposition: 'R1_HOLD_INVENTORY_SOURCE_MISSING', reason: 'R1 receipt and read-only evidence sidecar contain no itemized disposition array.',
   }, 'R1_AUTHORITY_INCOMPLETE', receiptPath);
