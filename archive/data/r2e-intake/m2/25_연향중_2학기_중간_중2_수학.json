@@ -3,333 +3,157 @@
   "examFile": "25_연향중_2학기_중간_중2_수학.js",
   "examUid": "25_연향중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "A",
-  "stage": "CREATE",
+  "lane": "D",
+  "stage": "R1",
   "sourceBlobSha": "b5aaffe993d8b3042cb4de53011a84faa749e288",
+  "inputCommit": "8fb0640aa454d51ff666f94f851378059ba46c19",
   "totalQuestions": 23,
-  "changedQuestions": [],
+  "changedQuestions": [
+    2,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
   "changedSvgFiles": [],
-  "solutionSummary": {
-    "KEEP": 23,
-    "REPAIR": 0,
-    "TRUE_HOLD": 0
-  },
-  "svgSummary": {
-    "sourceImagesReviewed": 16,
-    "visualInspection": "16/16 PASS",
-    "ADD": 0,
-    "REPAIR": 0,
-    "HOLD": 0,
-    "render": "NOT_RUN_BY_POLICY"
-  },
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 14,
-    "PROPOSED_NEW_L3": 2,
-    "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 6,
-    "TRUE_HOLD": 0
-  },
   "unresolvedItems": [
     {
       "questionNo": 1,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-055",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "reason": "normalized crosswalk RPM_ONLY; safe ACTIVE exact M2 binding 없음"
     },
     {
       "questionNo": 3,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-056",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 4,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-057",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 5,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-048",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 6,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "questionNo": 11,
-      "status": "PROPOSED_NEW_L4",
-      "labelKo": "내접원의 접선 길이 분할"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-058",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "reason": "normalized crosswalk RPM_ONLY"
     },
     {
       "questionNo": 16,
-      "status": "PROPOSED_NEW_L3",
-      "labelKo": "도형 접기와 대칭 각 추론"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": null,
+      "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+      "reason": "GLOBAL ACTIVE canonical은 존재하나 M2 exact binding 부재; 신규 L3 proposal 금지"
     },
     {
       "questionNo": 17,
-      "status": "PROPOSED_NEW_L3",
-      "labelKo": "같은 높이 삼각형의 넓이비"
+      "disposition": "PROPOSED_NEW_L3",
+      "rpmPrimary": null,
+      "problemTypeKey": "PT_TRIANGLE_SAME_HEIGHT_AREA_RATIO",
+      "templateKey": "TPL_TRIANGLE_SAME_HEIGHT_BASE_RATIO",
+      "reason": "GLOBAL ACTIVE exact M2 primary 구조 검색에서 no-match; 실제 신규 primary 후보"
     },
     {
       "questionNo": 21,
-      "status": "RPM_PRIMARY_MIGRATION_GAP"
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "rpmPrimary": "M2-RPM-059",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "authorityRefs": [
+    "branch:work/intake/m2",
+    "parent:8fb0640aa454d51ff666f94f851378059ba46c19",
+    "main:e49deeb7609c621d098836292cfb35324c04b5b1",
+    "sourceBlob:b5aaffe993d8b3042cb4de53011a84faa749e288",
+    "normalization:work/meta-rpm-m1-m2-normalization@eec92a0fbaf6a7bfd0720850558837a8fc765607",
+    "crosswalk:archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@75a021bbf7095893f7ea5e22f92dc721d6d367ae",
+    "evidence:archive/data/r2e-intake/m2/25_연향중_2학기_중간_중2_수학.evidence.json"
+  ],
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T11:42:38+09:00",
+  "solutionDispositionSummary": {
+    "KEEP": 20,
+    "REPAIR": 3,
+    "TRUE_HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "KEEP": 0,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "sourceImagesReviewed": 16,
+    "sourceImageParity": "16/16 PASS"
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 15,
+    "PROPOSED_NEW_L3": 1,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 7,
+    "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 6,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0
+  },
+  "difficultyDispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "ADJUDICATED": 23
+  },
+  "difficultyBuckets": {
+    "1": 1,
+    "2": 10,
+    "3": 8,
+    "4": 4,
+    "5": 0
+  },
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "65d373b609bf8098028492cae3c51772f8622829",
-    "mainReadSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+    "inputCommit": "8fb0640aa454d51ff666f94f851378059ba46c19",
+    "mainReadSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
     "sourcePath": "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
-    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "sourceBlobSha": "b5aaffe993d8b3042cb4de53011a84faa749e288",
+    "r1InputJsBlobSha": "b5aaffe993d8b3042cb4de53011a84faa749e288",
+    "r1FinalJsBlobSha": "dbbe02b175101b6a4954d37ee31d1867c5d2ab45",
+    "rpmCrosswalkBlobSha": "75a021bbf7095893f7ea5e22f92dc721d6d367ae",
+    "normalizationBranch": "work/meta-rpm-m1-m2-normalization",
+    "normalizationReadSha": "eec92a0fbaf6a7bfd0720850558837a8fc765607",
     "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
-    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477"
+    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477",
+    "evidencePath": "archive/data/r2e-intake/m2/25_연향중_2학기_중간_중2_수학.evidence.json"
   },
-  "evidence": {
-    "authorityOrder": [
-      "source+final solution",
-      "primaryMethod",
-      "decisiveStep",
-      "RPM Primary",
-      "middle2 crosswalk",
-      "GLOBAL ACTIVE canonical",
-      "exact binding"
-    ],
-    "sourceIdentity": "23/23 PASS; intake/main source blob identical; source/answer/identity HOLD 0",
-    "imageReview": "16/16 source images visually inspected",
-    "perQuestion": [
-      {
-        "questionNo": 1,
-        "rpmPrimary": "M2-RPM-055",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "x=4 수직선",
-        "reason": "RPM_ONLY"
-      },
-      {
-        "questionNo": 2,
-        "rpmPrimary": "M2-RPM-072",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "평행사변형 판정조건 비교",
-        "reason": null
-      },
-      {
-        "questionNo": 3,
-        "rpmPrimary": "M2-RPM-056",
-        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
-        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "교점 대입",
-        "reason": "M2 exact binding 없음"
-      },
-      {
-        "questionNo": 4,
-        "rpmPrimary": "M2-RPM-057",
-        "problemTypeKey": "PT_LINE_RELATION",
-        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "평행선 기울기 비교",
-        "reason": "M2 exact binding 없음"
-      },
-      {
-        "questionNo": 5,
-        "rpmPrimary": "M2-RPM-048",
-        "problemTypeKey": "PT_LINE_EQUATION",
-        "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "절편·기울기 부호",
-        "reason": "M2 exact binding 없음"
-      },
-      {
-        "questionNo": 6,
-        "rpmPrimary": "M2-RPM-058",
-        "problemTypeKey": null,
-        "templateKey": null,
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "세 직선 교점→삼각형 넓이",
-        "reason": "RPM_ONLY"
-      },
-      {
-        "questionNo": 7,
-        "rpmPrimary": null,
-        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "RHA 합동",
-        "reason": "GLOBAL ACTIVE + exact M2 binding"
-      },
-      {
-        "questionNo": 8,
-        "rpmPrimary": "M2-RPM-064",
-        "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "수직이등분선 등거리",
-        "reason": null
-      },
-      {
-        "questionNo": 9,
-        "rpmPrimary": "M2-RPM-069",
-        "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "내심각+외심 중심각",
-        "reason": null
-      },
-      {
-        "questionNo": 10,
-        "rpmPrimary": "M2-RPM-065",
-        "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "중심각 비+원주각",
-        "reason": null
-      },
-      {
-        "questionNo": 11,
-        "rpmPrimary": "M2-RPM-068",
-        "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": null,
-        "disposition": "PROPOSED_NEW_L4",
-        "primaryMethod": "내접원 접선 길이 분할",
-        "reason": "기존 center template이 decisive step을 정확히 표현하지 못함"
-      },
-      {
-        "questionNo": 12,
-        "rpmPrimary": null,
-        "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
-        "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "각이등분선 등거리",
-        "reason": "GLOBAL ACTIVE + exact M2 binding"
-      },
-      {
-        "questionNo": 13,
-        "rpmPrimary": "M2-RPM-077",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "마름모 성질 비교",
-        "reason": null
-      },
-      {
-        "questionNo": 14,
-        "rpmPrimary": "M2-RPM-070",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "평행사변형 각+각이등분+직각",
-        "reason": null
-      },
-      {
-        "questionNo": 15,
-        "rpmPrimary": "M2-RPM-080",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "특수사각형 판정",
-        "reason": null
-      },
-      {
-        "questionNo": 16,
-        "rpmPrimary": null,
-        "problemTypeKey": null,
-        "templateKey": null,
-        "disposition": "PROPOSED_NEW_L3",
-        "primaryMethod": "접기 대칭 각 추론",
-        "reason": "CC_REFLECTION/CC_PERPENDICULAR_BISECTOR는 있으나 M2 exact primary binding 없음"
-      },
-      {
-        "questionNo": 17,
-        "rpmPrimary": null,
-        "problemTypeKey": null,
-        "templateKey": null,
-        "disposition": "PROPOSED_NEW_L3",
-        "primaryMethod": "같은 높이 삼각형 넓이비",
-        "reason": "CC_TRIANGLE_AREA는 있으나 M2 primary L3 없음"
-      },
-      {
-        "questionNo": 18,
-        "rpmPrimary": null,
-        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "RHA 합동으로 길이·각 전달",
-        "reason": "GLOBAL ACTIVE + exact M2 binding"
-      },
-      {
-        "questionNo": 19,
-        "rpmPrimary": "M2-RPM-068",
-        "problemTypeKey": "PT_TRIANGLE_CENTERS",
-        "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "외접·내접 반지름",
-        "reason": "null"
-      },
-      {
-        "questionNo": 20,
-        "rpmPrimary": "M2-RPM-076",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "마름모+이등변 구조",
-        "reason": "null"
-      },
-      {
-        "questionNo": 21,
-        "rpmPrimary": "M2-RPM-057",
-        "problemTypeKey": "PT_LINE_RELATION",
-        "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-        "primaryMethod": "평행 또는 한점 통과 분류",
-        "reason": "M2 exact binding 없음"
-      },
-      {
-        "questionNo": 22,
-        "rpmPrimary": "M2-RPM-060",
-        "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-        "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "밑각+각이등분",
-        "reason": null
-      },
-      {
-        "questionNo": 23,
-        "rpmPrimary": "M2-RPM-077",
-        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-        "disposition": "EXISTING_REUSE",
-        "primaryMethod": "정사각형 대각선 성질",
-        "reason": null
-      }
-    ],
-    "proposals": [
-      {
-        "questionNo": 11,
-        "status": "PROPOSED_NEW_L4",
-        "labelKo": "내접원의 접선 길이 분할",
-        "scope": "M2-05-TRIANGLE_PROPERTIES"
-      },
-      {
-        "questionNo": 16,
-        "status": "PROPOSED_NEW_L3",
-        "labelKo": "도형 접기와 대칭 각 추론",
-        "scope": "M2-05-QUADRILATERAL_PROPERTIES",
-        "crossConceptKeys": [
-          "CC_REFLECTION",
-          "CC_PERPENDICULAR_BISECTOR"
-        ]
-      },
-      {
-        "questionNo": 17,
-        "status": "PROPOSED_NEW_L3",
-        "labelKo": "같은 높이 삼각형의 넓이비",
-        "scope": "M2-05-TRIANGLE_PROPERTIES",
-        "crossConceptKeys": [
-          "CC_TRIANGLE_AREA"
-        ]
-      }
-    ],
-    "note": "시험지 JS와 SVG는 수정 필요가 없어 그대로 유지. receipt/evidence만 intake commit."
-  },
-  "updatedAt": "2026-09-27T08:17:21+09:00"
+  "commitBinding": "SELF"
 }
