@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M1_M2_M3_VALIDATION_SUMMARY_v1",
+  "validationStatus": "PASS",
+  "testFiles": [
+    "archive/tools/meta-foundation/rpm-primary-m1-m2-crosswalk.test.mjs",
+    "archive/tools/meta-foundation/rpm-active-resolver.test.mjs",
+    "archive/tools/meta-foundation/rpm-primary-m3-normalization.test.mjs"
+  ],
+  "testTotals": { "passed": 26, "failed": 0 },
+  "m1M2Regressions": {
+    "rpmDenominator": 468,
+    "compiledActiveResolverRows": 468,
+    "knownRhsRha2015Rows": ["2015/M2-2/RHS", "2015/M2-2/RHA"],
+    "shinheungQ6Q7": {
+      "source": "24_신흥중_2학기_중간_중2_수학",
+      "questions": [6, 7],
+      "disposition": "EXISTING_REUSE",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "exactBinding": "ACTIVE"
+    }
+  },
+  "m3Validation": {
+    "rpmRows": 181,
+    "crosswalkRows": 181,
+    "viewParity": "PASS",
+    "missingRows": 0,
+    "orphanRows": 0,
+    "duplicateSemanticTuples": 0,
+    "activeParentAndTemplateIntegrityErrors": 0,
+    "exactBindingStatusMismatchErrors": 0,
+    "incompleteFamilyCandidateSets": 0,
+    "directSemanticEquivalenceErrors": 0,
+    "runtimeRoutes": { "EXISTING_REUSE": 13, "FAMILY_REUSE": 4, "RPM_PRIMARY_MIGRATION_GAP": 164 },
+    "perRowResolverEvidenceParity": "PASS",
+    "activeRuntimeProjectionParityFailures": 0
+  },
+  "globalActive": {
+    "packCount": 10,
+    "problemTypeCount": 244,
+    "templateCount": 655,
+    "exactBindingCount": 722,
+    "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+    "compiledRegistrySha": "sha256:a2a8f55ff6a1e55c817d1d6ccfe471b58a81cdfdd257b9a52a2ef9e679e6f352"
+  }
+}

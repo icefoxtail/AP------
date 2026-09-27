@@ -9,14 +9,14 @@
   ],
   "rpmRecords": 181,
   "crosswalkRecords": 181,
-  "viewParity": "8/8 views parsed; final parity validation pending after audit",
+  "viewParity": "8/8 views parsed; all 4 M3 view/master pairs PASS",
   "currentCrosswalkSummary": {
     "recordCount": 181,
-    "DIRECT_ACTIVE": 22,
+    "DIRECT_ACTIVE": 13,
     "FAMILY_ACTIVE": 4,
-    "DIRECT_BINDING_GAP": 73,
+    "DIRECT_BINDING_GAP": 41,
     "FAMILY_BINDING_GAP": 7,
-    "RPM_ONLY": 75
+    "RPM_ONLY": 116
   },
   "globalActive": {
     "activePacks": [
@@ -34,7 +34,8 @@
     "problemTypeCount": 244,
     "templateCount": 655,
     "exactBindingCount": 722,
-    "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2"
+    "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2",
+    "compiledRegistrySha": "sha256:a2a8f55ff6a1e55c817d1d6ccfe471b58a81cdfdd257b9a52a2ef9e679e6f352"
   },
   "priorM3Ledger": {
     "sourceInventory": "archive/_generated/intelligence/phase1/middle3-foundation/M3_FRESH_INVENTORY.json",
@@ -43,5 +44,10 @@
     "l3AssignmentDenominator": 526,
     "usePolicy": "Not treated as semantic FINAL authority; this task audits RPM and crosswalk meaning, and does not restart the 1,646-question / 526-row M3 L3 assignment work."
   },
-  "baselineSnapshotPath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/baseline-snapshot.json"
+  "baselineSnapshotPath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/baseline-snapshot.json",
+  "semanticAuditPath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/semantic-audit-ledger.json",
+  "globalActiveSnapshotPath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/global-active-registry-snapshot.json",
+  "curriculumEvidencePath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/CURRICULUM_EVIDENCE.md",
+  "m3R2EScanPath": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m3-normalization/M3_R2E_RECEIPT_SCAN.json",
+  "semanticRelationCounts": { "BOTH_PRESENT": 173, "LEGIT_CURRICULUM_DIFFERENCE": 7, "NEEDS_EVIDENCE": 1 }
 }
