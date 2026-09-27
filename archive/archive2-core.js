@@ -12,6 +12,12 @@
   const TAXONOMY_VERSION = "rpm-primary-v1.0";
   const UID = /^qid_v1_[a-f0-9]{64}$/;
   const PATH_FIELDS = ["curriculumKey", "courseKey", "L1", "L2", "L3", "L4"];
+  const OPTIONAL_METADATA_FIELDS = Object.freeze([
+    "L3", "L4", "secondaryConceptKeys", "problemTypeKey", "templateKey", "crossConceptKeys",
+    "conditionKeys", "integrationPattern", "foundationTaxonomy", "foundationTaxonomyStatus",
+    "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
+    "tagConfidence", "tagStatus", "reviewStatus", "metadataRevision", "defaultSelectable",
+  ]);
   const META_FIELDS = [
     ...PATH_FIELDS,
     "secondaryConceptKeys",
@@ -33,6 +39,11 @@
     "tagConfidence",
     "tagStatus",
     "reviewStatus",
+    "sourceQualityDisposition",
+    "sourceIssueHold",
+    "sourceDefectCandidate",
+    "basicSemanticDisposition",
+    "semanticDisposition",
     "metadataRevision",
   ];
   const text = (value) => String(value ?? "").trim();
@@ -525,47 +536,49 @@
       record.identityStatus !== "VERIFIED"
     )
       reasons.push("identity");
-    if (record.sourceStatus !== "VERIFIED") reasons.push("source");
+    // BASIC uses the current indexed source. Approval of optional metadata is
+    // required only when that metadata is selected as a filter.
+    if ((record.sourceIntegrityStatus || record.sourceStatus) !== "VERIFIED") reasons.push("source");
     // A missing RPM/Foundation leaf does not invalidate a known source unit.
-    if (PATH_FIELDS.slice(0, 4).some(field => !text(record[field])) ||
-        record.taxonomyStatus === "HOLD") reasons.push("taxonomy");
+    if (["courseKey", "L1", "L2"].some(field => !text(record[field])) ||
+        record.basicTaxonomyStatus === "HOLD" || record.l1l2ParentValid === false)
+      reasons.push("taxonomy");
     if (record.gradeConflict) reasons.push("grade");
-    if (record.reviewStatus !== "reviewed_pass") reasons.push("review");
-    if (record.semanticDisposition === "HOLD" || record.semanticDisposition === "ROUTE_OUT")
+    // Missing metadata and a pending classification are not source defects.
+    if (["HOLD", "reviewed_hold", "route_out", "ROUTE_OUT",
+      "SOURCE_DEFECT_CANDIDATE"].includes(record.reviewStatus)) reasons.push("review");
+    if (["HOLD", "ROUTE_OUT"].includes(record.semanticDisposition) ||
+        ["HOLD", "ROUTE_OUT"].includes(record.basicSemanticDisposition))
       reasons.push("semantic");
-    if (record.sourceQualityDisposition === "SOURCE_BLOCKED" || record.sourceQualityDisposition === "SOLUTION_REPAIR_REQUIRED")
+    if (["SOURCE_BLOCKED", "SOURCE_REPAIR_REQUIRED", "SOLUTION_REPAIR_REQUIRED",
+      "ANSWER_REPAIR_REQUIRED"].includes(record.sourceQualityDisposition))
       reasons.push("solution");
-    if (
-      !Number.isInteger(record.difficultyBucket) ||
-      record.difficultyBucket < 1 ||
-      record.difficultyBucket > 5 ||
-      !["high", "medium", "low"].includes(record.difficultyConfidence) ||
-      !["NONE", "B12", "B23", "B34", "B45"].includes(
-        record.difficultyBoundaryFlag,
-      ) ||
-      !["NORMAL", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT"].includes(
-        record.legacyLevelCompatibility,
-      )
-    )
-      reasons.push("difficulty");
-    if (
-      !(
-        record.curriculumApplicability === "DEFAULT_SCOPE" &&
-        record.defaultSelectable === true
-      ) &&
-      !(
-        options.includeExtended &&
-        record.curriculumApplicability === "RPM_EXTENDED"
-      )
-    )
+    if (record.sourceIssueHold === true || record.sourceDefectCandidate === true)
+      reasons.push("source_issue");
+    const applicability = record.basicScopeApplicability || record.curriculumApplicability;
+    if (record.basicScopeDefaultSelectable === false ||
+      (applicability && applicability !== "UNKNOWN" && applicability !== "DEFAULT_SCOPE" &&
+        !(options.includeExtended && applicability === "RPM_EXTENDED")))
       reasons.push("applicability");
-    if (record.metadataConflicts?.length) reasons.push("conflict");
+    if ((record.metadataConflicts || []).some(field => !OPTIONAL_METADATA_FIELDS.includes(field)))
+      reasons.push("conflict");
     return { ok: reasons.length === 0, reasons };
   }
   const eligibility = basicEligibility;
+  function difficultyEligible(record) {
+    return record.sourceStatus === "VERIFIED" &&
+      Number.isInteger(record.difficultyBucket) && record.difficultyBucket >= 1 && record.difficultyBucket <= 5 &&
+      ["high", "medium", "low"].includes(record.difficultyConfidence) &&
+      ["NONE", "B12", "B23", "B34", "B45"].includes(record.difficultyBoundaryFlag) &&
+      ["NORMAL", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT"].includes(record.legacyLevelCompatibility) &&
+      !(record.metadataConflicts || []).some(field => [
+        "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
+      ].includes(field));
+  }
   function advancedEligible(record) {
-    return record.taxonomyStatus === "CONFIRMED" &&
-      (!record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED");
+    return record.sourceStatus === "VERIFIED" && record.taxonomyStatus === "CONFIRMED" &&
+      (!record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
+      !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
   function matches(record, filters = {}) {
     if (
@@ -607,7 +620,7 @@
     }
     if (
       filters.difficultyBuckets?.length &&
-      !filters.difficultyBuckets.includes(record.difficultyBucket)
+      (!difficultyEligible(record) || !filters.difficultyBuckets.includes(record.difficultyBucket))
     )
       return false;
     if (
@@ -666,7 +679,7 @@
     return (
       pathsMatch &&
       (!row.difficultyBuckets?.length ||
-        row.difficultyBuckets.includes(record.difficultyBucket))
+        (difficultyEligible(record) && row.difficultyBuckets.includes(record.difficultyBucket)))
     );
   }
   function validatePlan(request) {
@@ -880,6 +893,7 @@
     UID,
     PATH_FIELDS,
     META_FIELDS,
+    OPTIONAL_METADATA_FIELDS,
     pathKey,
     normalizeFile,
     normalizeSearch,
@@ -911,6 +925,7 @@
     taxonomyPaths,
     eligibility,
     basicEligibility,
+    difficultyEligible,
     advancedEligible,
     advancedAuthority,
     advancedFilterValue,

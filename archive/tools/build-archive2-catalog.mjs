@@ -10,7 +10,7 @@ const root = path.resolve(
   "../..",
 );
 const read = (file) =>
-  fs.readFileSync(path.join(root, file), "utf8").replace(/\r\n/g, "\n");
+  fs.readFileSync(path.join(root, file), "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
@@ -217,6 +217,7 @@ for (const exam of exams) {
       legacyStandardUnitKey: question.standardUnitKey || "",
       legacySubUnitKey: question.subUnitKey || "",
       identityStatus,
+      sourceIntegrityStatus: identityStatus === "VERIFIED" ? "VERIFIED" : "UNRESOLVED",
       sourceFingerprint: fingerprint,
       rawQuestionHash: hash(JSON.stringify(question)),
       approvedSourceFingerprint: meta?.sourceFingerprint || "",
@@ -268,6 +269,9 @@ for (const exam of exams) {
     const sourceParent = sourceScope(question, exam);
     for (const field of core.PATH_FIELDS.slice(0, 4))
       if (!record[field] && sourceParent[field]) record[field] = sourceParent[field];
+    for (const field of ["reviewStatus", "sourceQualityDisposition", "sourceIssueHold",
+      "sourceDefectCandidate", "basicSemanticDisposition", "semanticDisposition"])
+      if (record[field] === undefined && question[field] !== undefined) record[field] = question[field];
     record.automatic = core.eligibility(record).ok;
     core.eligibility(record).reasons.forEach(count);
     if (record.automatic) count("automatic");

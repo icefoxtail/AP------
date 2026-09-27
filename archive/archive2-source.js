@@ -1,8 +1,9 @@
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports
+    ? require("./archive2-core.js") : root.Archive2Core);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Source = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (core) {
   "use strict";
   const cache = new Map();
   function evaluate(source, file) {
@@ -57,7 +58,7 @@
           const source = await response.text();
           if (
             sourceHash &&
-            (await digest(source.replace(/\r\n/g, "\n"))) !== sourceHash
+            (await digest(source.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n"))) !== sourceHash
           )
             throw new Error(
               "원본 파일이 변경되었습니다. catalog를 새로고침하세요: " + file,
@@ -106,7 +107,11 @@
             .filter(Boolean)
             .join(" · "),
         };
-        for (const field of [
+        const optionalFields = new Set(core?.OPTIONAL_METADATA_FIELDS || ["L3", "L4", "secondaryConceptKeys", "problemTypeKey",
+          "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket",
+          "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "tagConfidence",
+          "tagStatus", "reviewStatus", "metadataRevision", "defaultSelectable"]);
+        for (const field of core?.META_FIELDS || [
           "curriculumKey",
           "courseKey",
           "L1",
@@ -129,10 +134,12 @@
             question[field] !== undefined &&
             question[field] !== null &&
             String(question[field]).trim() !== "" &&
-            JSON.stringify(question[field]) !== JSON.stringify(record[field])
+            JSON.stringify(question[field]) !== JSON.stringify(record[field]) &&
+            !optionalFields.has(field)
           )
             throw new Error("source metadata 충돌: " + field);
           if (record[field] !== undefined) result[field] = record[field];
+          else if (optionalFields.has(field)) delete result[field];
         }
         return result;
       }),
