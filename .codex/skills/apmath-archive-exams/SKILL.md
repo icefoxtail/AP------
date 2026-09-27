@@ -1,4 +1,7 @@
 ---
+
+> **GLOBAL QUESTION MICRO_LAYOUT HARD RULE:** Archive exam JS의 `content/choices/problem image/layout` 생성·수정·검수·promotion 시 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 반드시 읽는다. 원문 freeze 후 layout-only build, SOURCE_TEXT_EXACT_PARITY 100%가 필수이며 의미 동일만으로 원문 변경을 허용하지 않는다.
+
 name: apmath-archive-exams
 description: Archive classified Korean math exam scans and audit, correct, or upgrade existing APMath JavaScript archive exams with full-page-first extraction, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA; use the similar-question skill for generating variants.
 ---

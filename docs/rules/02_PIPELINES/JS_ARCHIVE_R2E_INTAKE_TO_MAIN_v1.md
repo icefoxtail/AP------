@@ -1,5 +1,9 @@
 # JS Archive R2E Intake → Main 운영계약 v2
 
+> **QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY HARD RULE — ACTIVE 2026-09-28**
+> CREATE/R1/R2E가 학생 노출 `content/choices/problem image/layout`을 다루면 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다. 발문 축약·요약·의역 금지. CREATE/R1은 전 문항 exact parity를 닫고 R2E는 evidence/drift/render를 final integrity로 확인한다.
+
+
 status: ACTIVE
 effective: 2026-09-28
 scope: 중등 JS Archive CREATE/R1 intake 및 Codex R2E 최종 폐쇄
@@ -806,3 +810,15 @@ STOP: <해당 단계 완료>
 ```
 
 세부 안전규칙은 본 문서와 연결된 canonical/review 문서가 담당한다.
+
+---
+
+## QUESTION MICRO_LAYOUT stage binding — HARD GATE
+
+CREATE: source freeze → 전 문항 KEEP/POLISH/REFORMAT/HOLD → known repair 직접 수정 → SOURCE_TEXT_EXACT_PARITY/choices exact 100% → CREATE_SELF_CHECK 재검. READY_FOR_REVIEW 전에 `questionLayoutStatus=PASS`, `sourceTextExactParityStatus=PASS`, `choicesExactParityStatus=PASS`, `knownQuestionLayoutRepairPending=0`, `questionLayoutHoldCount=0`, `questionLayoutEvidenceRef` 필수. render 미실행은 `questionLayoutRenderStatus=NOT_RUN_CODEX_HANDOFF`.
+
+R1: CREATE 자기보고를 신뢰하지 않고 전 문항 fresh QUESTION MICRO_LAYOUT + exact parity 독립감사. 안전한 defect는 최소 수정 후 재검. READY_FOR_R2E 전 question layout/exact/choices PASS, repair pending 0, HOLD 0.
+
+R2E: 정상 R1 PASS item을 이유 없이 재조판하지 않는다. evidence denominator, R1 이후 content/layout drift, exact parity, final exam render split/asset/choice/overcompression을 integrity scan하고 새 defect/drift만 targeted repair한다. source text correction은 SOURCE_FIDELITY repair로 분리한다.
+
+receipt/evidence 최소 필드: `questionLayoutStatus, sourceTextExactParityStatus, choicesExactParityStatus, questionLayoutChangedCount, questionLayoutHoldCount, knownQuestionLayoutRepairPending, questionLayoutEvidenceRef, questionLayoutRenderStatus`.

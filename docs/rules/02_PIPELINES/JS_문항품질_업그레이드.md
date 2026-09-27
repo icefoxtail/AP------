@@ -1,5 +1,8 @@
 # JS 발문·보기·정답·해설 품질 업그레이드 GPT 에이전트 지시서
 
+> **QUESTION MICRO_LAYOUT v1 REQUIRED:** 기존 JS 품질 업그레이드에서 시험지 `content/choices/problem image/layout`을 건드리면 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`가 정본이다. 원문 exact 보존과 AUTO-FIRST를 지키며 해설 품질 개선을 이유로 발문을 축약·의역하지 않는다.
+
+
 > **CURRENT AUTHORITY (2026-09-23):** 학생용 `solution`의 최종 내용·표현·계산 전개·줄바꿈과 기존 production 업그레이드 disposition은 `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 과거의 `100% 재작성` 운영은 기존 production 업그레이드 기준으로 사용하지 않는다.
 
 너는 AP Math JS아카이브 기출 문항의 발문·보기·정답·해설 품질 보정 전담 에이전트다.

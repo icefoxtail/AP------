@@ -1,5 +1,8 @@
 🤖 JS아카이브 발문·보기 추출 프로토콜 v4.0
 
+> **QUESTION MICRO_LAYOUT v1 REQUIRED:** full-page 원문 전사를 먼저 SOURCE_TEXT_FREEZE하고 그 뒤 조판만 수행한다. 축약·요약·의역 금지, SOURCE_TEXT_EXACT_PARITY 100%, choices exact equality 100% 필수. 정본: `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`.
+
+
 Full Page First · Question Crop Optional · CONTENT_CHOICES_ONLY
 
 룰북/마스터테이블 비수정 · JS 직접 반영 · Manual Review 최소화
@@ -709,3 +712,9 @@ full page에서 보이는 문항은 비워두지 않는다.
 엔진에서 바로 도는 JS를 만든다.
 
 최종 목표는 full page 기반으로 교재 DB 발문/보기 입력을 대량 생산 가능한 수준으로 자동화하는 것이다.
+
+---
+
+## QUESTION MICRO_LAYOUT v1 handoff
+
+`full page source truth → exact content/choices transcription → SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. 오독·누락이면 source transcription을 먼저 정정하고 새 freeze 뒤 다시 조판한다. `semantic parity`만으로 통과시키지 않는다.
