@@ -66,8 +66,12 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
   먼저 수행한다. receipt/sidecar commit 뒤 새 snapshot을 만들 때는 시작 시 동결한 examUid
   cohort만 R2E 대상으로 유지하고, 새로 들어온 UID는 다음 run으로 넘긴다.
 - receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
-  서로 독립인 입력의 진행을 막지 않는다. sidecar-only recovery가 exact projection parity를
-  만족할 수 없으면 `CONTRACT_RECOVERY_BLOCKED`로 남기며 validator나 exam bytes를 우회하지 않는다.
+  서로 독립인 입력의 진행을 막지 않는다. R1에서 문항 오류로 지정된 UID는
+  `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`로 오류를 확인한 뒤
+  `docs/rules/02_PIPELINES/수정프로토콜.md`를 따라 지적 필드만 최소 수정한다. Meta HOLD와
+  연결된 projection parity 결함도 승인된 해당 UID/필드만 resolver evidence에 맞춰 수정할 수
+  있다. 이 근거와 연결되지 않는 drift/parity 실패는 `CONTRACT_RECOVERY_BLOCKED`로 남긴다.
+  validator 완화나 검증 우회는 금지한다.
 - 두 HEAD를 먼저 고정한 뒤 각 고정 tree에서 inventory를 만든다.
 - 결과 receipt가 실제 들어간 commit을 `inputCommit`으로 동결한다. receipt 내부 inputCommit은
   `declaredInputCommit`으로 따로 보존하고 snapshot history의 조상인지 확인한다.
@@ -79,7 +83,8 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 
 `META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
 요구하면 먼저 receipt/sidecar backfill을 수행한다. 그 뒤 새 snapshot에서 contract PASS한
-독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. 아직 recovery가
+독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. R1 item-level
+`REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
 필요하거나 `CONTRACT_RECOVERY_BLOCKED`인 시험지는 R2E ledger/final gate에 넣지 않는다.
 이 blocker가 다른 시험지의 유효한 candidate/resume 처리를 막아서는 안 된다.
 
