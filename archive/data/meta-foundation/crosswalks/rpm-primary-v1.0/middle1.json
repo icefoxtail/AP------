@@ -2,7 +2,7 @@
   "schemaVersion": "rpm-primary-active-crosswalk-v1",
   "status": "ACTIVE_REFERENCE",
   "grade": "M1",
-  "generatedAgainstMain": "7720c9f6dd38d0639c16e62cedaa8bfa0a67f072",
+  "generatedAgainstMain": "9868a7a933c460d552b9d7d48c6d039fd48dd2de",
   "rpmAuthority": {
     "version": "RPM_PRIMARY_TAXONOMY_v1.0",
     "status": "LOCKED",
@@ -35,8 +35,8 @@
   },
   "summary": {
     "recordCount": 232,
-    "DIRECT_ACTIVE": 83,
-    "RPM_ONLY": 95,
+    "DIRECT_ACTIVE": 86,
+    "RPM_ONLY": 92,
     "DIRECT_BINDING_GAP": 10,
     "FAMILY_ACTIVE": 42,
     "FAMILY_BINDING_GAP": 2
@@ -4761,8 +4761,19 @@
       },
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "problemTypeLabelKo": "원주각·중심각과 원의 각 관계",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "templateLabelKo": "부채꼴과 원이 포함된 도형의 길이·넓이",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
     },
     {
       "id": "M1-RPM-205",
@@ -4863,8 +4874,19 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+      "problemTypeLabelKo": "다면체의 모서리·면 관계",
+      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+      "templateLabelKo": "다면체의 면·꼭짓점 성질 판단",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "id": "M1-RPM-209",
@@ -4919,8 +4941,19 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_M1_ROTATION_SOLID_GENERATION",
+      "problemTypeLabelKo": "평면도형을 회전시켜 생기는 입체",
+      "templateKey": "TPL_M1_ROTATION_SOLID_GENERATION_SHAPE",
+      "templateLabelKo": "회전축과 도형 위치로 입체 판정",
+      "ownerPack": "MIDDLE1",
+      "binding": {
+        "curriculum": "2022",
+        "standardUnitKey": "M1-07",
+        "subUnitKey": "M1-07-SOLID_FIGURE",
+        "ownerPack": "MIDDLE1"
+      }
     },
     {
       "id": "M1-RPM-212",
