@@ -163,15 +163,25 @@ verified solution / EXPECTED FACT
 → promotion authority
 ```
 
-For scheduled GPT/Work production, SVG generation may occur automatically, but GPT-side creation does not grant render FINAL. This preserves the current reservation rule `NOT_RUN_CODEX_HANDOFF`.
+For scheduled GPT/Work production, the existing Archive workflow may continue to create, review, seal, and promote SVGs under its current authority. A production exam reaching its normal FINAL state does **not** imply that every SVG has already been modernized by geometry-visual-v1.
+
+SVG modernization is tracked as a separate capability state in the Archive work ledger. Recommended states are:
+
+```text
+SVG_ENGINE_UPGRADE_PENDING
+SVG_ENGINE_UPGRADE_COMPLETE
+SVG_ENGINE_UPGRADE_EXEMPT
+```
+
+Therefore an older/legacy SVG may remain production-valid and the exam may close normally, while that asset stays `SVG_ENGINE_UPGRADE_PENDING` for a later local upgrade pass.
 
 The intended operational split is:
 
-- scheduled pipeline: candidate generation + math/semantic evidence
-- local Codex: final rendered layout, typography, clipping/collision, Archive desktop/mobile QA
-- promotion: only after existing independent review/release gates
+- scheduled pipeline: may create/finalize production SVG under the existing review/seal rules; also record whether the asset is upgraded by the new engine
+- local Codex upgrade pass: select only `SVG_ENGINE_UPGRADE_PENDING` assets and apply geometry-visual-v1 rendered-bbox / typography / clipping / collision / Archive desktop-mobile QA
+- promotion: follows the normal Archive authority for the current job; visual-engine modernization is a separate later upgrade unless the job explicitly requires it
 
-Do not connect this engine as an unconditional replacement backend before the Geometry Equation FULL PILOT.
+Do not make geometry-visual-v1 modernization a blanket prerequisite for ordinary Archive FINAL before the Geometry Equation FULL PILOT.
 
 ### Current Past Exam adapter gap
 
