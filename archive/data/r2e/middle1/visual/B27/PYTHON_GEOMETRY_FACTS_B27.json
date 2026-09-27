@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "M1_R2E_PYTHON_GEOMETRY_EVIDENCE_v1",
+  "examCode": "B27",
+  "rule": "도형추출.md v3.0 §§1-2, 6-4~6-18",
+  "assets": [
+    {
+      "q": 7,
+      "path": "archive/assets/images/25_연향중_2학기_기말_중1_기출/q7-solution.svg",
+      "sha256": "34aeccabdeb3b8cc50f9004a2ad2df1d4baf9fadc86f8fb783704a4a298ee0ac",
+      "bytes": 2893,
+      "factHash": "ab565bc0a0972d9b5c88ddeaac4f6447537b226a2180720bb14cfd0ae1a17cea",
+      "coordinates": [
+        {
+          "pivot": "B",
+          "radiusCm": 6,
+          "pixelRadius": 20.4,
+          "center": [
+            77,
+            184
+          ],
+          "arcStart": [
+            77,
+            163.6
+          ],
+          "arcEnd": [
+            97.4,
+            184
+          ]
+        },
+        {
+          "pivot": "C",
+          "radiusCm": 10,
+          "pixelRadius": 34.0,
+          "center": [
+            271,
+            184
+          ],
+          "arcStart": [
+            271,
+            150.0
+          ],
+          "arcEnd": [
+            305.0,
+            184
+          ]
+        },
+        {
+          "pivot": "D",
+          "radiusCm": 8,
+          "pixelRadius": 27.2,
+          "center": [
+            465,
+            184
+          ],
+          "arcStart": [
+            465,
+            156.8
+          ],
+          "arcEnd": [
+            492.2,
+            184
+          ]
+        }
+      ]
+    },
+    {
+      "q": 16,
+      "path": "archive/assets/images/25_연향중_2학기_기말_중1_기출/q16-solution.svg",
+      "sha256": "28bbbb8d1db7c5a20b812d1263cd04020f014f855109f925d77e9906ad9bbd52",
+      "bytes": 2739,
+      "factHash": "635e1553be71173329d62b3ad4ebf750b8f3628417265b5a557b5917629bc24e",
+      "coordinates": {
+        "center": [
+          154,
+          222
+        ],
+        "radiusPx": 104,
+        "startAngleDeg": 150,
+        "endAngleDeg": 390,
+        "arcStart": [
+          63.93335800641837,
+          170.0
+        ],
+        "arcEnd": [
+          244.0666419935816,
+          170.0
+        ],
+        "sweepDeg": 240
+      }
+    },
+    {
+      "q": 22,
+      "path": "archive/assets/images/25_연향중_2학기_기말_중1_기출/q22-solution.svg",
+      "sha256": "2424a171bd36dac0e020e717d7433e6804a6a988a3b4e17ce2cee946fa70bade",
+      "bytes": 3649,
+      "factHash": "b421747d9bdb9572a00bac95664671a5845b675ebff2b92417ff626963203d5b",
+      "coordinates": {
+        "A": [
+          43.0,
+          190.0
+        ],
+        "B": [
+          223.0,
+          190.0
+        ],
+        "C": [
+          72.77824542770276,
+          123.11696570703452
+        ],
+        "D": [
+          219.5135526344487,
+          165.19263797647008
+        ],
+        "O": [
+          133.0,
+          190.0
+        ],
+        "P": [
+          306.02710526889734,
+          190.0
+        ],
+        "odPx": 90.0,
+        "dpPx": 89.99999999999994,
+        "anglesDeg": {
+          "AOC": 48.0,
+          "BOD": 16.0,
+          "COD": 116.0
+        },
+        "arcLengthsCm": {
+          "AC": 12,
+          "BD": 4.0,
+          "CD": 29.0
+        }
+      }
+    },
+    {
+      "q": 23,
+      "path": "archive/assets/images/25_연향중_2학기_기말_중1_기출/q23-solution.svg",
+      "sha256": "a61848305f33bdafd3af9998ca3b25aa5a19300aecf97d74149c7c503e040491",
+      "bytes": 3526,
+      "factHash": "b324cfb62a0b2088117856c0d44b337ee8fcb6c2ca9571e731dfb4ae42f9fb70",
+      "coordinates": {
+        "radiusPx": 52.0,
+        "heightPx": 104.0,
+        "ellipseRyPx": 14.0,
+        "commonScale": "same pixel length for r and 2r"
+      }
+    }
+  ],
+  "checks": {
+    "pythonGeneratedEveryGeometryCoordinate": true,
+    "sourceFactsFrozenBeforeCoordinates": true,
+    "grayscaleStructureRetained": true,
+    "expectedFactChecks": [
+      "Q7 quarter-turn radii 6:10:8; last pivot A displacement 0",
+      "Q16 sector angle 240; area pieces 24π,12π,36",
+      "Q22 180−3x=132; x=16; ∠COD=116; arcs 4 cm,29 cm; OD=DP coordinate parity",
+      "Q23 same r and 2r scale; ratio 1:2:3"
+    ]
+  }
+}
