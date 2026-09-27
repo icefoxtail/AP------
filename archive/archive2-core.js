@@ -49,6 +49,80 @@
   const text = (value) => String(value ?? "").trim();
   const pathKey = (record, depth = 6) =>
     JSON.stringify(PATH_FIELDS.slice(0, depth).map((k) => text(record[k])));
+  // Display/selection adapters preserve the original metadata and source paths.
+  function middle1ScopeParent(record) {
+    if (record.effectiveBrowseGrade !== "중1") return null;
+    const unit = text(record.standardUnitKey || record.legacyStandardUnitKey);
+    const sub = text(record.subUnitKey || record.legacySubUnitKey);
+    if (unit === "M1-07") {
+      if (sub === "M1-07-SOLID_FIGURE") return { L1: "입체도형", L2: "다면체와 회전체" };
+      if (sub === "M1-07-SOLID_FIGURE_MEASURE") return { L1: "입체도형", L2: "입체도형의 겉넓이와 부피" };
+    }
+    const solid = unit.match(/^M1-2-GEOM-SOLID-(0[1-7])$/);
+    if (solid) return { L1: "입체도형", L2: Number(solid[1]) <= 3 ? "다면체와 회전체" : "입체도형의 겉넓이와 부피" };
+    if (unit === "M1-08") {
+      if (record.curriculumKey === "2015" || !record.curriculumKey)
+        return { L1: "통계", L2: "자료의 정리와 해석" };
+      if (record.curriculumKey === "2022") {
+        if (sub === "M1-08-DATA_ORGANIZATION")
+          return { L1: "통계", L2: "도수분포표와 상대도수" };
+      }
+    }
+    if (/^M1-2-STAT-0[1-5]$/.test(unit))
+      return { L1: "통계", L2: record.curriculumKey === "2015" ? "자료의 정리와 해석" : "도수분포표와 상대도수" };
+    return null;
+  }
+  const basicScopeIndexes = new WeakMap();
+  function basicScopeParent(record, links = []) {
+    const middle1 = middle1ScopeParent(record);
+    const checkedIdentity = normalizeFile(record.sourceFile) + "#" + Number(record.sourceOrdinal);
+    if (middle1) return middle1;
+    if (!Array.isArray(links) || !links.length) return null;
+    if (!basicScopeIndexes.has(links)) {
+      const index = { byGrade: new Map(), byUid: new Map(), bySource: new Map() };
+      for (const link of links) {
+        if (link.questionUid) { index.byUid.set(link.questionUid, link); continue; }
+        if (link.sourceFile) { index.bySource.set(link.sourceFile + "#" + link.sourceOrdinal, link); continue; }
+        if (!index.byGrade.has(link.grade)) index.byGrade.set(link.grade, []);
+        index.byGrade.get(link.grade).push(link);
+      }
+      basicScopeIndexes.set(links, index);
+    }
+    const index = basicScopeIndexes.get(links);
+    const grade = record.effectiveBrowseGrade === "고3" ? "고2" : record.effectiveBrowseGrade;
+    const course = normalizeCourseIdentity(record.courseKey);
+    const reviewedSource = index.byUid.get(record.questionUid) || index.bySource.get(checkedIdentity);
+    if (reviewedSource && reviewedSource.grade === record.effectiveBrowseGrade &&
+      text(reviewedSource.curriculumKey) === text(record.curriculumKey)) {
+      if (reviewedSource.sourceFingerprint !== record.sourceFingerprint) return null;
+      if (!reviewedSource.metadataParent || JSON.stringify(reviewedSource.metadataParent) ===
+        JSON.stringify([record.courseKey || "", record.L1 || "", record.L2 || ""]))
+        return { courseKey: reviewedSource.courseKey, L1: reviewedSource.L1, L2: reviewedSource.L2 };
+    }
+    const compatible = (index.byGrade.get(grade) || []).filter(link =>
+      (!record.curriculumKey || link.curriculumKey === record.curriculumKey) &&
+      (normalizeCourseIdentity(link.courseKey) === course || /^중[123]수학$/.test(course)));
+    const uniqueParent = candidates => {
+      const parents = new Map(candidates.map(link => [[link.courseKey, link.L1, link.L2].join("|"), link]));
+      if (parents.size !== 1) return null;
+      const parent = [...parents.values()][0];
+      return { courseKey: parent.courseKey, L1: parent.L1, L2: parent.L2 };
+    };
+    const existing = compatible.filter(link => normalizeCourseIdentity(link.L1) === normalizeCourseIdentity(record.L1) &&
+      normalizeCourseIdentity(link.L2) === normalizeCourseIdentity(record.L2));
+    const existingParent = uniqueParent(existing);
+    if (existingParent) return existingParent;
+    const unit = text(record.standardUnitKey || record.legacyStandardUnitKey);
+    const sub = text(record.subUnitKey || record.legacySubUnitKey);
+    let candidates = compatible.filter(link => link.standardUnitKey === unit);
+    if (sub) {
+      const exact = candidates.filter(link => link.subUnitKey === sub);
+      const suffix = value => text(value).replace(/^(?:M[123]-\d{2}|H(?:15|22)-[A-Z0-9]+-\d{2}(?:-\d{2})?)-/, "");
+      candidates = exact.length ? exact : candidates.filter(link => suffix(link.subUnitKey) === suffix(sub));
+    }
+    const sameMid = candidates.filter(link => normalizeCourseIdentity(link.L2) === normalizeCourseIdentity(record.L2));
+    return uniqueParent(sameMid.length ? sameMid : candidates);
+  }
   const advancedAuthority = (record) =>
     record.metaFoundationPackVersion && record.problemTypeKey && record.templateKey
       ? "mf" : "rpm";
@@ -581,6 +655,8 @@
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
   function matches(record, filters = {}) {
+    if (Array.isArray(filters.scopeQuestionUids) && !filters.scopeQuestionUids.includes(record.questionUid))
+      return false;
     if (
       filters.primaryPaths?.length &&
       !filters.primaryPaths.includes(pathKey(record, 4))
@@ -678,6 +754,7 @@
       : !row.path || pathKey(record, row.depth || 4) === row.path;
     return (
       pathsMatch &&
+      (!Array.isArray(row.scopeQuestionUids) || row.scopeQuestionUids.includes(record.questionUid)) &&
       (!row.difficultyBuckets?.length ||
         (difficultyEligible(record) && row.difficultyBuckets.includes(record.difficultyBucket)))
     );
@@ -895,6 +972,7 @@
     META_FIELDS,
     OPTIONAL_METADATA_FIELDS,
     pathKey,
+    basicScopeParent,
     normalizeFile,
     normalizeSearch,
     gradeRank,
