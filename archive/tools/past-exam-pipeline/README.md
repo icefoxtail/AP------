@@ -58,6 +58,22 @@ if stale. Keep locks under repository staging so core can bind relative refs.
    as the single advanced Meta contract. SVG facts come after the verified
    solution and cannot change its math. The common preparer then binds the completed candidate:
 
+   For a candidate-only build with the new geometry visual engine, run the
+   optional adapter at the existing `EXPECTED_FACT_FREEZE → NUMERIC_VISUAL_BUILD`
+   boundary:
+
+```powershell
+node archive/tools/past-exam-pipeline/build-visual-candidate.mjs --facts <frozen-expected-facts.json> --run-id <run-id>
+```
+
+The frozen bundle uses schema `past-exam-expected-facts-v1`. Its typed source,
+derived, display and object facts are hash-bound before engine validation. The
+adapter writes only below `archive/_generated/geometry-visual-engine/<runId>/`
+and never edits production JS/assets or creates production fields. Engine QA,
+independent review and existing FINAL/APPLY authority remain separate; the
+`SVG_ENGINE_UPGRADE_PENDING|COMPLETE|EXEMPT` work state belongs in a ledger or
+sidecar and does not block ordinary FINAL/APPLY.
+
 ```powershell
 node archive/tools/pipeline-core/cli.mjs prepare-v2 --pipeline past-exam --past-exam-manifest <staged-manifest.json> --source <frozen-extraction.js> --candidate <completed-candidate.js> --source-registry-ref <registry-file-ref.json> --run-id <run-id> --work-batch-id <job-id> --builder-id <reader-id> --builder-session-id <reader-session-id> --builder-model <actual-model> --workdir <new-staging-directory>
 ```
