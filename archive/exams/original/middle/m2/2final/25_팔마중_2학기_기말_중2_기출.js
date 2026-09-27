@@ -55,9 +55,10 @@ window.questionBank = [
       "$4$",
       "$5$"
     ],
-    "answer": "⑤",
-    "solution": "[키포인트] 평행선으로 생기는 닮음과 각의 이등분선의 성질을 차례로 이용한다.\n그림에서 $AB=6$, $DB=2$이므로 $AD=4$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고 $AD:AB=AE:AC=2:3$이다. $EC=3$이므로 $AC=9$, $AE=6$이다.\n$AG$는 $\\angle BAC$의 이등분선이므로 $AF$는 $\\angle DAE$의 이등분선이다. 각의 이등분선의 성질에 따라 $DF:FE=AD:AE=4:6=2:3$이다.\n$FE=2$이므로 $DF=\\dfrac43$, 따라서 $DE=\\dfrac{10}{3}$이다.\n닮음에서 $DE:BC=AD:AB=2:3$이므로 $BC=\\dfrac32\\times\\dfrac{10}{3}=5$이다.\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "[키포인트] 평행선으로 생기는 닮음으로 전체 밑변의 길이를 구한 뒤, 각의 이등분선의 성질로 $x=GC$를 구한다.\n그림에서 $AB=6$, $DB=2$이므로 $AD=4$이다.\n$DE\\parallel BC$이므로 $\\triangle ADE\\sim\\triangle ABC$이고 $AD:AB=AE:AC=2:3$이다. $EC=3$이므로 $AC=9$, $AE=6$이다.\n$AG$는 $\\angle BAC$의 이등분선이고 $F$는 $AG$와 $DE$의 교점이므로 $AF$는 $\\angle DAE$의 이등분선이다. 따라서 $DF:FE=AD:AE=4:6=2:3$이다.\n$FE=2$이므로 $DF=\\dfrac43$, 따라서 $DE=\\dfrac{10}{3}$이다.\n닮음에서 $DE:BC=AD:AB=2:3$이므로 $BC=5$이다.\n또 $AG$는 $\\angle BAC$의 이등분선이므로 $BG:GC=AB:AC=6:9=2:3$이다. $BC=5$이므로 $GC=3$이다.\n따라서 $x=3$이고 정답은 ③이다.",
     "image": "assets/images/25_팔마중_2학기_기말_중2_기출/q2.png",
+    "solutionImage": "assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution.svg",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
