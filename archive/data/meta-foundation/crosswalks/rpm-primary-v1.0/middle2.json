@@ -2,7 +2,7 @@
   "schemaVersion": "rpm-primary-active-crosswalk-v1",
   "status": "ACTIVE_REFERENCE",
   "grade": "M2",
-  "generatedAgainstMain": "2457000a2255e1a12914f69f96d1a219d54abbbd",
+  "generatedAgainstMain": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
   "rpmAuthority": {
     "version": "RPM_PRIMARY_TAXONOMY_v1.0",
     "status": "LOCKED",
@@ -11,10 +11,16 @@
   "activeAuthority": {
     "source": "archive/data/meta-foundation/canonical/",
     "packs": [
-      "MIDDLE_GEOMETRY",
-      "GEOMETRY_EQUATIONS",
+      "DERIVATIVE",
       "FUNCTIONS_GRAPHS",
-      "PROBABILITY_STATISTICS"
+      "GEOMETRY_EQUATIONS",
+      "H1_FOUNDATION",
+      "INTEGRAL_CALCULUS",
+      "LIMIT_CONTINUITY",
+      "MIDDLE1",
+      "MIDDLE_GEOMETRY",
+      "PROBABILITY_STATISTICS",
+      "SETS_PROPOSITIONS"
     ]
   },
   "policy": {
@@ -28,12 +34,12 @@
     "precedence": "source + verified final solution → RPM Primary path → this crosswalk → current ACTIVE canonical/binding validation"
   },
   "summary": {
-    "recordCount": 234,
-    "DIRECT_ACTIVE": 30,
+    "recordCount": 236,
+    "DIRECT_ACTIVE": 31,
     "FAMILY_ACTIVE": 2,
-    "DIRECT_BINDING_GAP": 74,
-    "FAMILY_BINDING_GAP": 8,
-    "RPM_ONLY": 120
+    "DIRECT_BINDING_GAP": 67,
+    "FAMILY_BINDING_GAP": 14,
+    "RPM_ONLY": 122
   },
   "records": [
     {
@@ -758,13 +764,30 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
       "id": "M2-RPM-049",
@@ -778,13 +801,30 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
       "id": "M2-RPM-050",
@@ -878,13 +918,30 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
       "id": "M2-RPM-055",
@@ -1284,7 +1341,59 @@
       }
     },
     {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "rpmPath": {
+        "majorUnit": "삼각형의 성질",
+        "midUnit": "삼각형의 성질",
+        "l3": "직각삼각형의 합동",
+        "l4": "RHS"
+      },
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
       "id": "M2-RPM-070",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+      "problemTypeLabelKo": "직각삼각형의 합동",
+      "templateLabelKo": "빗변과 한 변이 같은 직각삼각형의 합동",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "curriculum": "2015",
+      "scope": "M2-2",
+      "rpmPath": {
+        "majorUnit": "삼각형의 성질",
+        "midUnit": "삼각형의 성질",
+        "l3": "직각삼각형의 합동",
+        "l4": "RHA"
+      },
+      "standardUnitKey": "M2-05",
+      "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "id": "M2-RPM-071",
+      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "problemTypeLabelKo": "직각삼각형의 합동",
+      "templateLabelKo": "빗변과 한 예각이 같은 직각삼각형의 합동",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "binding": {
+        "curriculum": "2015",
+        "standardUnitKey": "M2-05",
+        "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+        "ownerPack": "MIDDLE_GEOMETRY"
+      }
+    },
+    {
+      "id": "M2-RPM-072",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1310,7 +1419,7 @@
       }
     },
     {
-      "id": "M2-RPM-071",
+      "id": "M2-RPM-073",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1336,7 +1445,7 @@
       }
     },
     {
-      "id": "M2-RPM-072",
+      "id": "M2-RPM-074",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1362,7 +1471,7 @@
       }
     },
     {
-      "id": "M2-RPM-073",
+      "id": "M2-RPM-075",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1388,7 +1497,7 @@
       }
     },
     {
-      "id": "M2-RPM-074",
+      "id": "M2-RPM-076",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1403,7 +1512,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-075",
+      "id": "M2-RPM-077",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1418,7 +1527,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-076",
+      "id": "M2-RPM-078",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1444,7 +1553,7 @@
       }
     },
     {
-      "id": "M2-RPM-077",
+      "id": "M2-RPM-079",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1470,7 +1579,7 @@
       }
     },
     {
-      "id": "M2-RPM-078",
+      "id": "M2-RPM-080",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1496,7 +1605,7 @@
       }
     },
     {
-      "id": "M2-RPM-079",
+      "id": "M2-RPM-081",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1516,7 +1625,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-080",
+      "id": "M2-RPM-082",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1542,7 +1651,7 @@
       }
     },
     {
-      "id": "M2-RPM-081",
+      "id": "M2-RPM-083",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1568,7 +1677,7 @@
       }
     },
     {
-      "id": "M2-RPM-082",
+      "id": "M2-RPM-084",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1594,7 +1703,7 @@
       }
     },
     {
-      "id": "M2-RPM-083",
+      "id": "M2-RPM-085",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1620,7 +1729,7 @@
       }
     },
     {
-      "id": "M2-RPM-084",
+      "id": "M2-RPM-086",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1646,7 +1755,7 @@
       }
     },
     {
-      "id": "M2-RPM-085",
+      "id": "M2-RPM-087",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1672,7 +1781,7 @@
       }
     },
     {
-      "id": "M2-RPM-086",
+      "id": "M2-RPM-088",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1698,7 +1807,7 @@
       }
     },
     {
-      "id": "M2-RPM-087",
+      "id": "M2-RPM-089",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1724,7 +1833,7 @@
       }
     },
     {
-      "id": "M2-RPM-088",
+      "id": "M2-RPM-090",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1750,7 +1859,7 @@
       }
     },
     {
-      "id": "M2-RPM-089",
+      "id": "M2-RPM-091",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1776,7 +1885,7 @@
       }
     },
     {
-      "id": "M2-RPM-090",
+      "id": "M2-RPM-092",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1787,22 +1896,12 @@
       },
       "standardUnitKey": "M2-06",
       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "problemTypeLabelKo": "평행선과 선분의 길이의 비",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-      "templateLabelKo": "삼각형에서 평행선과 선분의 비",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M2-06",
-        "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-        "ownerPack": "MIDDLE_GEOMETRY"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "mappingDispositionMemo": "RPM_ONLY_GPT_INDEPENDENT_REVIEW_SEMANTIC_DIRECTION_MISMATCH"
     },
     {
-      "id": "M2-RPM-091",
+      "id": "M2-RPM-093",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1828,7 +1927,7 @@
       }
     },
     {
-      "id": "M2-RPM-092",
+      "id": "M2-RPM-094",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1854,7 +1953,7 @@
       }
     },
     {
-      "id": "M2-RPM-093",
+      "id": "M2-RPM-095",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1880,7 +1979,7 @@
       }
     },
     {
-      "id": "M2-RPM-094",
+      "id": "M2-RPM-096",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1906,7 +2005,7 @@
       }
     },
     {
-      "id": "M2-RPM-095",
+      "id": "M2-RPM-097",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1916,7 +2015,7 @@
         "l4": "2:1 비"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -1926,7 +2025,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-096",
+      "id": "M2-RPM-098",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1936,7 +2035,7 @@
         "l4": "좌표·길이"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -1959,7 +2058,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-097",
+      "id": "M2-RPM-099",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1969,7 +2068,7 @@
         "l4": "넓이 분할"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -1979,7 +2078,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-098",
+      "id": "M2-RPM-100",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -1989,7 +2088,7 @@
         "l4": "무게중심을 이용한 복합도형"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -1999,7 +2098,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-099",
+      "id": "M2-RPM-101",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2014,7 +2113,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-100",
+      "id": "M2-RPM-102",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2029,7 +2128,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-101",
+      "id": "M2-RPM-103",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2044,7 +2143,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-102",
+      "id": "M2-RPM-104",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2059,7 +2158,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-103",
+      "id": "M2-RPM-105",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2074,7 +2173,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-104",
+      "id": "M2-RPM-106",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2089,7 +2188,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-105",
+      "id": "M2-RPM-107",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2104,7 +2203,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-106",
+      "id": "M2-RPM-108",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2119,7 +2218,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-107",
+      "id": "M2-RPM-109",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2139,7 +2238,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-108",
+      "id": "M2-RPM-110",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2159,7 +2258,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-109",
+      "id": "M2-RPM-111",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2174,7 +2273,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-110",
+      "id": "M2-RPM-112",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2189,7 +2288,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-111",
+      "id": "M2-RPM-113",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2209,7 +2308,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-112",
+      "id": "M2-RPM-114",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2229,7 +2328,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-113",
+      "id": "M2-RPM-115",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2249,7 +2348,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-114",
+      "id": "M2-RPM-116",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2269,7 +2368,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-115",
+      "id": "M2-RPM-117",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2289,7 +2388,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-116",
+      "id": "M2-RPM-118",
       "curriculum": "2015",
       "scope": "M2-2",
       "rpmPath": {
@@ -2309,7 +2408,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-117",
+      "id": "M2-RPM-119",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2324,7 +2423,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-118",
+      "id": "M2-RPM-120",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2339,7 +2438,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-119",
+      "id": "M2-RPM-121",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2354,7 +2453,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-120",
+      "id": "M2-RPM-122",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2369,7 +2468,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-121",
+      "id": "M2-RPM-123",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2384,7 +2483,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-122",
+      "id": "M2-RPM-124",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2399,7 +2498,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-123",
+      "id": "M2-RPM-125",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2414,7 +2513,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-124",
+      "id": "M2-RPM-126",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2429,7 +2528,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-125",
+      "id": "M2-RPM-127",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2444,7 +2543,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-126",
+      "id": "M2-RPM-128",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2459,7 +2558,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-127",
+      "id": "M2-RPM-129",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2474,7 +2573,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-128",
+      "id": "M2-RPM-130",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2489,7 +2588,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-129",
+      "id": "M2-RPM-131",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2504,7 +2603,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-130",
+      "id": "M2-RPM-132",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2519,7 +2618,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-131",
+      "id": "M2-RPM-133",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2534,7 +2633,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-132",
+      "id": "M2-RPM-134",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2549,7 +2648,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-133",
+      "id": "M2-RPM-135",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2564,7 +2663,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-134",
+      "id": "M2-RPM-136",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2579,7 +2678,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-135",
+      "id": "M2-RPM-137",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2594,7 +2693,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-136",
+      "id": "M2-RPM-138",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2609,7 +2708,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-137",
+      "id": "M2-RPM-139",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2624,7 +2723,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-138",
+      "id": "M2-RPM-140",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2639,7 +2738,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-139",
+      "id": "M2-RPM-141",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2654,7 +2753,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-140",
+      "id": "M2-RPM-142",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2669,7 +2768,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-141",
+      "id": "M2-RPM-143",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2684,7 +2783,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-142",
+      "id": "M2-RPM-144",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2699,7 +2798,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-143",
+      "id": "M2-RPM-145",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2714,7 +2813,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-144",
+      "id": "M2-RPM-146",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2729,7 +2828,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-145",
+      "id": "M2-RPM-147",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2744,7 +2843,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-146",
+      "id": "M2-RPM-148",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2759,7 +2858,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-147",
+      "id": "M2-RPM-149",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2774,7 +2873,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-148",
+      "id": "M2-RPM-150",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2789,7 +2888,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-149",
+      "id": "M2-RPM-151",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2804,7 +2903,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-150",
+      "id": "M2-RPM-152",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2819,7 +2918,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-151",
+      "id": "M2-RPM-153",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2834,7 +2933,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-152",
+      "id": "M2-RPM-154",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2849,7 +2948,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-153",
+      "id": "M2-RPM-155",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2864,7 +2963,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-154",
+      "id": "M2-RPM-156",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2879,7 +2978,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-155",
+      "id": "M2-RPM-157",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2894,7 +2993,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-156",
+      "id": "M2-RPM-158",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2909,7 +3008,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-157",
+      "id": "M2-RPM-159",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2924,7 +3023,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-158",
+      "id": "M2-RPM-160",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2939,7 +3038,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-159",
+      "id": "M2-RPM-161",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2954,7 +3053,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-160",
+      "id": "M2-RPM-162",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2969,7 +3068,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-161",
+      "id": "M2-RPM-163",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -2984,7 +3083,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-162",
+      "id": "M2-RPM-164",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3004,7 +3103,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-163",
+      "id": "M2-RPM-165",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3019,7 +3118,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-164",
+      "id": "M2-RPM-166",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3030,16 +3129,33 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
-      "id": "M2-RPM-165",
+      "id": "M2-RPM-167",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3050,16 +3166,33 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
-      "id": "M2-RPM-166",
+      "id": "M2-RPM-168",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3079,7 +3212,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-167",
+      "id": "M2-RPM-169",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3099,7 +3232,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-168",
+      "id": "M2-RPM-170",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3119,7 +3252,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-169",
+      "id": "M2-RPM-171",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3139,7 +3272,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-170",
+      "id": "M2-RPM-172",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3150,16 +3283,33 @@
       },
       "standardUnitKey": "M2-04",
       "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
+      "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_LINE_EQUATION",
       "problemTypeLabelKo": "직선의 방정식 구하기",
       "ownerPack": "GEOMETRY_EQUATIONS",
-      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "templateLabelKo": "직선의 계수와 그래프",
-      "bindingStatus": "MISSING"
+      "bindingStatus": "MISSING",
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+          "templateLabelKo": "직선의 계수와 그래프"
+        },
+        {
+          "templateKey": "TPL_LINE_POINT_SLOPE",
+          "templateLabelKo": "한 점과 기울기가 주어진 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_TWO_POINTS",
+          "templateLabelKo": "두 점을 지나는 직선"
+        },
+        {
+          "templateKey": "TPL_LINE_MULTI_CONDITION",
+          "templateLabelKo": "조건이 주어진 직선의 방정식"
+        }
+      ],
+      "selectionRule": "최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다."
     },
     {
-      "id": "M2-RPM-171",
+      "id": "M2-RPM-173",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3174,7 +3324,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-172",
+      "id": "M2-RPM-174",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3194,7 +3344,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-173",
+      "id": "M2-RPM-175",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3214,7 +3364,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-174",
+      "id": "M2-RPM-176",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3229,7 +3379,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-175",
+      "id": "M2-RPM-177",
       "curriculum": "2022",
       "scope": "M2-1",
       "rpmPath": {
@@ -3262,7 +3412,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-176",
+      "id": "M2-RPM-178",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3291,7 +3441,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-177",
+      "id": "M2-RPM-179",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3311,7 +3461,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-178",
+      "id": "M2-RPM-180",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3331,7 +3481,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-179",
+      "id": "M2-RPM-181",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3351,7 +3501,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-180",
+      "id": "M2-RPM-182",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3380,7 +3530,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-181",
+      "id": "M2-RPM-183",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3400,7 +3550,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-182",
+      "id": "M2-RPM-184",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3420,7 +3570,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-183",
+      "id": "M2-RPM-185",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3440,7 +3590,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-184",
+      "id": "M2-RPM-186",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3460,7 +3610,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-185",
+      "id": "M2-RPM-187",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3480,7 +3630,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-186",
+      "id": "M2-RPM-188",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3517,7 +3667,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-187",
+      "id": "M2-RPM-189",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3554,7 +3704,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-188",
+      "id": "M2-RPM-190",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3574,7 +3724,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-189",
+      "id": "M2-RPM-191",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3594,7 +3744,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-190",
+      "id": "M2-RPM-192",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3614,7 +3764,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-191",
+      "id": "M2-RPM-193",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3634,7 +3784,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-192",
+      "id": "M2-RPM-194",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3649,7 +3799,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-193",
+      "id": "M2-RPM-195",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3664,7 +3814,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-194",
+      "id": "M2-RPM-196",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3684,7 +3834,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-195",
+      "id": "M2-RPM-197",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3704,7 +3854,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-196",
+      "id": "M2-RPM-198",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3724,7 +3874,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-197",
+      "id": "M2-RPM-199",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3744,7 +3894,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-198",
+      "id": "M2-RPM-200",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3764,7 +3914,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-199",
+      "id": "M2-RPM-201",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3784,7 +3934,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-200",
+      "id": "M2-RPM-202",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3804,7 +3954,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-201",
+      "id": "M2-RPM-203",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3824,7 +3974,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-202",
+      "id": "M2-RPM-204",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3844,7 +3994,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-203",
+      "id": "M2-RPM-205",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3864,7 +4014,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-204",
+      "id": "M2-RPM-206",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3884,7 +4034,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-205",
+      "id": "M2-RPM-207",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3904,7 +4054,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-206",
+      "id": "M2-RPM-208",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3924,7 +4074,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-207",
+      "id": "M2-RPM-209",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3944,7 +4094,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-208",
+      "id": "M2-RPM-210",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3955,16 +4105,12 @@
       },
       "standardUnitKey": "M2-06",
       "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "problemTypeLabelKo": "평행선과 선분의 길이의 비",
-      "ownerPack": "MIDDLE_GEOMETRY",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
-      "templateLabelKo": "삼각형에서 평행선과 선분의 비",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING",
+      "mappingDispositionMemo": "RPM_ONLY_GPT_INDEPENDENT_REVIEW_SEMANTIC_DIRECTION_MISMATCH"
     },
     {
-      "id": "M2-RPM-209",
+      "id": "M2-RPM-211",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -3984,7 +4130,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-210",
+      "id": "M2-RPM-212",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4004,7 +4150,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-211",
+      "id": "M2-RPM-213",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4024,7 +4170,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-212",
+      "id": "M2-RPM-214",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4044,7 +4190,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-213",
+      "id": "M2-RPM-215",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4054,7 +4200,7 @@
         "l4": "2:1 비"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -4064,7 +4210,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-214",
+      "id": "M2-RPM-216",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4074,7 +4220,7 @@
         "l4": "좌표·길이"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "FAMILY_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -4097,7 +4243,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-215",
+      "id": "M2-RPM-217",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4107,7 +4253,7 @@
         "l4": "넓이 분할"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -4117,7 +4263,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-216",
+      "id": "M2-RPM-218",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4127,7 +4273,7 @@
         "l4": "무게중심을 이용한 복합도형"
       },
       "standardUnitKey": "M2-06",
-      "subUnitKey": null,
+      "subUnitKey": "",
       "mappingStatus": "DIRECT_BINDING_GAP",
       "problemTypeKey": "PT_COORD_CENTROID",
       "problemTypeLabelKo": "삼각형의 무게중심",
@@ -4137,7 +4283,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-217",
+      "id": "M2-RPM-219",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4152,7 +4298,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-218",
+      "id": "M2-RPM-220",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4167,7 +4313,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-219",
+      "id": "M2-RPM-221",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4182,7 +4328,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-220",
+      "id": "M2-RPM-222",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4197,7 +4343,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-221",
+      "id": "M2-RPM-223",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4212,7 +4358,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-222",
+      "id": "M2-RPM-224",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4227,7 +4373,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-223",
+      "id": "M2-RPM-225",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4242,7 +4388,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-224",
+      "id": "M2-RPM-226",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4257,7 +4403,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-225",
+      "id": "M2-RPM-227",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4277,7 +4423,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-226",
+      "id": "M2-RPM-228",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4297,7 +4443,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-227",
+      "id": "M2-RPM-229",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4312,7 +4458,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-228",
+      "id": "M2-RPM-230",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4327,7 +4473,7 @@
       "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
-      "id": "M2-RPM-229",
+      "id": "M2-RPM-231",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4347,7 +4493,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-230",
+      "id": "M2-RPM-232",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4367,7 +4513,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-231",
+      "id": "M2-RPM-233",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4387,7 +4533,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-232",
+      "id": "M2-RPM-234",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4407,7 +4553,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-233",
+      "id": "M2-RPM-235",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
@@ -4427,7 +4573,7 @@
       "bindingStatus": "MISSING"
     },
     {
-      "id": "M2-RPM-234",
+      "id": "M2-RPM-236",
       "curriculum": "2022",
       "scope": "M2-2",
       "rpmPath": {
