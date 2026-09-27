@@ -2,11 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { fixture } from './fixture.mjs';
 import { archiveWorkspace, initArchiveWorkspace, workingExamOptions, examStorage } from '../archive-workspace.mjs';
 import { prepareDraft } from '../prepare.mjs';
 import { runtimeDependencyBundle } from '../runtime.mjs';
 import { serveWorkspacePreview } from '../workspace-preview.mjs';
+import { buildSourceMetadataFirstPass, makeSourceMetadataRecheckDraft, metadataProjection, reconcileSourceMetadata } from '../../past-exam-pipeline/lib/source-metadata.mjs';
 
 const examFile = 'original/high/h1/1mid/25_학교_1학기_중간_고1_공통수학1.js';
 
@@ -46,6 +48,23 @@ test('common prepare uses the working JS and its own assets while source assets 
     const sourceBundle = JSON.parse(fs.readFileSync(path.join(f.root, layout.evidenceDir, 'reviews/folder-test/bundles/q1-v1.json')));
     assert.equal(sourceBundle.problemAssets[0].path, 'archive/assets/source.svg');
     assert.equal(result.status, 'DRAFT_NOT_EXECUTABLE');
+    const context = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(f.root, layout.examPath), 'utf8'), context);
+    const current = JSON.parse(JSON.stringify(context.window.questionBank[0]));
+    const manifest = { archiveRelativePath: layout.archiveRelativePath };
+    const first = buildSourceMetadataFirstPass([{ ...current, sourceIdentityKey: 'source-fixture|1', answer: '', solution: '' }], manifest);
+    const solved = { ...first.questions[0], answer: current.answer, solution: current.solution };
+    f.write(`${layout.evidenceDir}/reports/source_metadata_first_pass.json`, first.report);
+    f.write(layout.examPath, `window.examTitle="fixture";window.questionBank=${JSON.stringify([solved])};`);
+    assert.throws(() => prepareDraft(f.root, { pipeline: 'logic-visual', runId: 'unreconciled', workRoot: 'archive-work', examFile }), /SOURCE_METADATA_SOLUTION_RECHECK_REQUIRED/);
+    const decision = makeSourceMetadataRecheckDraft([solved]);
+    Object.assign(decision.items[0], { values: metadataProjection(solved), reason: '현재 해설의 교집합 계산을 별도로 확인했다. 이 synthetic fixture는 semantic PASS를 부여하지 않는다.', solutionExcerpts: ['교집합의 상한과 하한을 계산한다.'] });
+    const final = reconcileSourceMetadata([solved], first.report, decision, manifest);
+    f.write(`${layout.evidenceDir}/reports/solution_metadata_reconciliation.json`, final.report);
+    f.write(layout.examPath, `window.examTitle="fixture";window.questionBank=${JSON.stringify(final.questions)};`);
+    const prepared = prepareDraft(f.root, { pipeline: 'logic-visual', runId: 'reconciled', workRoot: 'archive-work', examFile });
+    const bound = JSON.parse(fs.readFileSync(path.join(f.root, prepared.manifestPath)));
+    assert.ok(bound.inputs.some(ref => ref.path === `${layout.evidenceDir}/reports/source_metadata_first_pass.json` && ref.role === 'dependency'));
+    assert.ok(bound.inputs.some(ref => ref.path === `${layout.evidenceDir}/reports/solution_metadata_reconciliation.json` && ref.role === 'dependency'));
   } finally { f.cleanup(); }
 });
 

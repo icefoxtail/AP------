@@ -1,5 +1,9 @@
 # 실제 파일명과 작업 폴더 — 신규 기본 경로
 
+발문 판독 때 가능한 태그를 최대한 채우고 해설 단계에서 새로 판단·조정한다.
+[SOURCE_METADATA.md](SOURCE_METADATA.md)의 `initialMetadata` 입력과 source-first snapshot,
+해설 재조정 CLI를 따른다. 1차 태그는 최종 Meta PASS가 아니다.
+
 [공용 Folder workflow](../pipeline-core/FOLDER_WORKFLOW.md)를 따른다.
 기본 config는 `archive-work/exams/<실제 Archive 상대 경로>.js`,
 `archive-work/assets/images/<시험지전체명>/`, `archive-work/evidence/<시험지전체명>/`를
@@ -9,7 +13,7 @@ legacy recovery 호환용으로 읽는다.
 
 발문·에셋만 만드는 명시적 범위는 `run-source-exam.mjs` 또는
 `run-batch.mjs --source-only`다. 이 범위는 정답·해설 완성 job이 아니며
-calibration/풀이/Meta/production 등록을 실행하지 않는다. 원본 inventory·번호·발문·
+calibration/학생용 해설 작성/최종 Meta 승인/production 등록을 실행하지 않는다. 원문 기반 1차 태그 작성은 포함한다. 원본 inventory·번호·발문·
 에셋 검증은 유지하고 결과를 `SOURCE_EXTRACTED_REVIEW_REQUIRED`로 기록한다.
 전체 제작은 아래 V3 조건을 그대로 충족해야 한다.
 

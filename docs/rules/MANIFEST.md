@@ -12,12 +12,12 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
-- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 47813 bytes | sha256 6a02139e5f716e1f07043bbbf5b414108a9bd22dfbd545e071ebb76ef4a6faef
+- 01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md | 48949 bytes | sha256 2cd7571321e91a47ba5fc849e2d6c7101b71615fe8ccc99534895685126fad61
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md | 1839 bytes | sha256 3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332
 - 01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json | 558523 bytes | sha256 0f6721c61f7e31df5cce43f48c60dc5732dfd96347e47813beffd4fe6a8dd509
 - 01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md | 70509 bytes | sha256 89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 94556 bytes | sha256 88668b3e35b813bef036571686e8205d2e6189601ce3c25b09ae14032c328213
-- 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
+- 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 38408 bytes | sha256 71775db0b373a2fb8d4f4f7542b77e4b7849b0a9da86f21dd328861c0756556c
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 15842 bytes | sha256 bcf8fee3fa34f6a77d5e13610549ff5e208b60a8fe278c01ac466efb11b9e8b3
@@ -43,5 +43,5 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md | 105170 bytes | sha256 6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 7347 bytes | sha256 971625ca5fd8228d01969521d8c2c4933b57e5088d6548d747101deeea6523c2
 - 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
-- 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16069 bytes | sha256 b9fbe6939b9541e7086bf3dd44393610eda5e76aa5507e04f1f99063d69aa1c3
+- 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 17889 bytes | sha256 b8d2ba0769e7144f5d32e33579c5d00b9360b33f1655b75655113ebb98f76c69
 - 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 8234 bytes | sha256 78effad235335e58e918b3874d9c1207b9ce2cb14eb3b470c8caebfa16ea0d9d

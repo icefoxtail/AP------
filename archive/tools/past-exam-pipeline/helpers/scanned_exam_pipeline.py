@@ -431,6 +431,8 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
                 "examId": manifest["examId"],
                 "sourceFile": source_reference(manifest),
                 "sourceQuestionNo": display_no,
+                "sourceArchiveFile": manifest.get("archiveRelativePath", ""),
+                "sourceOrdinal": int(source_item.get("sourceOrdinal") or qid),
                 "displayNo": display_no,
                 "sourcePageNo": int(source_item["sourcePageNo"]),
                 "pageNo": int(source_item["sourcePageNo"]),
@@ -454,6 +456,7 @@ def normalize_vision_questions(manifest, page_items, vision_data, root, source_i
                 "contentConfidence": as_float(raw_q.get("contentConfidence"), 0.0),
                 "choicesConfidence": as_float(raw_q.get("choicesConfidence"), 0.0),
                 "visualAssetConfidence": as_float(raw_q.get("visualAssetConfidence"), 0.0),
+                "initialMetadataInput": raw_q.get("initialMetadata"),
                 "tagConfidence": "low",
                 "tagStatus": "manual_review",
             }
@@ -716,6 +719,7 @@ def write_vision_contract_reports(root, manifest, page_items):
                                 "properties": {
                                     "displayNo": {"type": "string"},
                                     "questionType": {"type": "string", "description": "객관식 or 서술형"},
+                                    "initialMetadata": {"type": ["object", "null"], "description": "Source-first metadata decision: values, confidence, reason, exact sourceExcerpts, unresolvedFields. Canonical keys only; all fields require solution-stage recheck."},
                                     "content": {"type": "string"},
                                     "choices": {"type": "array", "items": {"type": "string"}},
                                     "hasVisualAsset": {"type": "boolean"},
@@ -740,6 +744,8 @@ def write_vision_contract_reports(root, manifest, page_items):
         "task": "Analyze each full page image and return only the JSON matching reports/vision_page_extract_schema.json.",
         "strictRules": [
             "Extract displayNo, questionType, content, choices, hasVisualAsset, visualAssetType, visualAssetBBox, confidence fields, reviewNeeded, and reviewReason from full-page evidence.",
+            "While reading the original question, provide initialMetadata with as many source-supported fields as possible: curriculum, standardCourse, L1/L2, active L3/L4, CrossConcept/Condition, integrationPattern, conceptClusterKey, difficulty estimates, category/tags/layout. Consult the canonical catalog; never invent keys.",
+            "initialMetadata contains values, confidence (high/medium/low), reason, exact sourceExcerpts, and unresolvedFields [{field,reason}]. All are SOURCE_FIRST_PASS and will be reconsidered after solving; do not present tentative difficulty or strategy as final blind evidence.",
             "Do not solve questions.",
             "Do not fill answer.",
             "Do not write solution.",
@@ -969,6 +975,8 @@ def write_source_reports(root, manifest, page_items, questions, manual_review_ro
                   "visualAssetCropCount": sum(item.get("status") == "asset_crop_success" for item in crop_results),
                   "manualReviewCount": len(manual_review_rows), "sourceFidelity": "REVIEW_REQUIRED",
                   "assetSemantics": "REVIEW_REQUIRED", "productionAuthorized": False,
+                  "metadataPolicy": "SOURCE_FIRST_PASS_THEN_SOLUTION_RECONCILIATION",
+                  "metadataClassifiedCount": sum(q.get("metadataStatus") == "SOURCE_FIRST_PASS" and q.get("standardUnitKey") != "" for q in questions),
                   "answerSolutionPolicy": "OUT_OF_SCOPE", "imageFieldPolicy": "visual_asset_only_never_question_crop"}
     write_json(reports / "validation_summary.json", validation)
     return validation
@@ -1063,7 +1071,7 @@ def main():
                                    "status": "UNVERIFIED", "pageCount": len(page_items), "questions": []})
         print(json.dumps({"status": "SOURCE_PAGES_READY", "pageCount": len(page_items),
                           "inventoryDraft": str(draft_path), "extractionRequest": str(reports / "vision_page_extract_request.json"),
-                          "workingExam": working_file, "jsWritten": False}, ensure_ascii=False, indent=2))
+                          "workingExam": working_file, "jsWritten": False, "metadataPolicy": "SOURCE_FIRST_PASS_THEN_SOLUTION_RECONCILIATION"}, ensure_ascii=False, indent=2))
         return
 
     source_inventory = load_frozen_source_inventory(manifest, page_items)
@@ -1109,14 +1117,25 @@ def main():
         raise ValueError("SOURCE_EXTRACTION_INCOMPLETE: existing JS is preserved")
     crop_results = crop_visual_assets(root, questions, manifest["examId"], manifest.get("assetRoot") if folder_mode else None)
     image_gate = image_path_gate(questions)
-    if not source_only:
-        write_candidate_js(manifest, questions, Path(working_file))
-
     debug_items = []
     debug_contact_sheet = ""
     if args.create_question_crops:
         debug_items = make_debug_question_crops(root, page_items, int(manifest.get("expectedQuestionCount") or 0))
         debug_contact_sheet = make_debug_contact_sheet(root, debug_items)
+
+    if source_only or any(q.get("initialMetadataInput") for q in questions):
+        metadata_input = reports / "source_metadata_payload.json"
+        metadata_output = reports / "source_metadata_result.json"
+        write_json(metadata_input, {"questions": questions})
+        subprocess.run(["node", str(Path(__file__).resolve().parents[1] / "source-metadata.mjs"),
+                        "first-pass", "--input", str(metadata_input), "--manifest", str(root / "manifest.json"),
+                        "--out", str(metadata_output)], check=True, stdout=subprocess.PIPE, encoding="utf-8")
+        metadata_result = json.loads(metadata_output.read_text(encoding="utf-8"))
+        questions = metadata_result["questions"]
+        write_json(reports / "source_metadata_first_pass.json", metadata_result["report"])
+    else:
+        for q in questions:
+            q.pop("initialMetadataInput", None)
 
     if source_only:
         for q in questions:
@@ -1125,6 +1144,7 @@ def main():
         write_candidate_js(manifest, questions, Path(working_file))
         validation = write_source_reports(root, manifest, page_items, questions, manual_review_rows, crop_results, image_gate, Path(working_file))
     else:
+        write_candidate_js(manifest, questions, Path(working_file))
         validation = write_final_reports(root, manifest, page_items, questions, manual_review_rows, schema_errors, crop_results, image_gate, Path(working_file), debug_items, debug_contact_sheet)
     print(json.dumps(validation, ensure_ascii=False, indent=2))
 
