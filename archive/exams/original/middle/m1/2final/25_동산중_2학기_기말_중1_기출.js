@@ -41,8 +41,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:75108dc7029a21862a4a824a083c324edda62d4dd08c1d6835a6d4611dcddacc",
-      "difficultyEvidenceSha": "sha256:cb78f902a20def36cb81f389f1d71129ab97d23e671582a7d2c365d1b3a59b0c"
+      "resolverEvidenceSha": "sha256:30301dd4dbc92d7ff1efeb5b18328d9707ffe828b13bb7c6536208bb4cabef03",
+      "difficultyEvidenceSha": "sha256:7f3d14431e1141141e39b7dd139d5017d18e4514e30468a473d6feb42a96b5d8"
     },
     {
       "id": 2,
@@ -84,8 +84,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:fba5374c27e5035bc0be2e9c23124607c09581b47a72adf0360743c0568a9ecd",
-      "difficultyEvidenceSha": "sha256:e4b011f427b074274d6c2f3c0d0d98ff8e703713f924a8327a7eb6f4139845d4"
+      "resolverEvidenceSha": "sha256:542ea0dba44de9910be82ebccd9c766d6fd99868016de42ea9bd3b51aa93c12d",
+      "difficultyEvidenceSha": "sha256:b298b66329eeb5a64914b916fe622daecb9a81e0ee4f0c203b6e0a99d3ea025f"
     },
     {
       "id": 3,
@@ -127,8 +127,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:07681e49a1bf63bc8df2030af9b68f887f1d8299cfc5ddd66628afac6a1bcc14",
-      "difficultyEvidenceSha": "sha256:1c1cbf55e45b28d48868b5c142eb698693f73f1b8a500f52fbd2ab3fa2b56c38"
+      "resolverEvidenceSha": "sha256:a8341ded57ca4a15452b1bd4b9e3ca0b285c6908facd1a3761626c4897a12e84",
+      "difficultyEvidenceSha": "sha256:6372ce5639a0f136c1c3890c933e0b6662e2fb957a1c0eb7af90a28d5e68eb0d"
     },
     {
       "id": 4,
@@ -170,8 +170,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:6af8a86a43a49d3be21e4dad8c81406382e7593f7478312cbc193251da138ee0",
-      "difficultyEvidenceSha": "sha256:9144f834b7a5c37772ed1c4669aaa8105722286824f3b38043da96a402b259a5"
+      "resolverEvidenceSha": "sha256:033c6e9a12a236a1297a096b6a319cbd8616d4dd35f74d83f2df27082cc73a37",
+      "difficultyEvidenceSha": "sha256:afd8ef53e8ed315df8b7cfec37937a00431391acc0e3725df8d759dbdafb9c69"
     },
     {
       "id": 5,
@@ -213,8 +213,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4cfd76a1ade131500c632eacfb42ead52a930278ed2d468c7b1d274f07f004fb",
-      "difficultyEvidenceSha": "sha256:66dbff4fe15d018908e4da5ca8d7cf89ce1bbed9297d41aa15cf03bfdd861d04"
+      "resolverEvidenceSha": "sha256:9f9ad7947c09768ae018302fc9fbce9841856b668b9a7295046c44a0c81b1f60",
+      "difficultyEvidenceSha": "sha256:33a7a632cc9031a2e2247bb85490e3ab12691778720bcf24a5bbc2671716f4c6"
     },
     {
       "id": 6,
@@ -256,8 +256,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:37d4abe3c61f534a8fa803358f78aa244f662dd8ac488297bd674b51c622762c",
-      "difficultyEvidenceSha": "sha256:628e92d02eb895c737d6e5c6ea05ebe40333ea9f5f4ff7f77cebad67144fc428"
+      "resolverEvidenceSha": "sha256:51f2535d678ac43a7c652728c7a886f512577ddf4d4df9b97a259eee4238c4ab",
+      "difficultyEvidenceSha": "sha256:ba4de1cc28ae9273657b8515229e82e936824880f08821991f6faa351e1d86e6"
     },
     {
       "id": 7,
@@ -299,8 +299,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:89418ee1cb011a761bb12c2cae3dd8ab2a11114b5574d87428f96a4d0b65f279",
-      "difficultyEvidenceSha": "sha256:70de84eedf8094ea49c483019c8babc7924027b073d4be0cc8789c3c22d15fca"
+      "resolverEvidenceSha": "sha256:9a5f44804e2d48df43aef4a80ed0447e80891f38edf1733620e8d255ab92275f",
+      "difficultyEvidenceSha": "sha256:97b7b6a36113adafeadab0789454ebd2175ad69c7861cd4fe9c4ea3f68c9baa7"
     },
     {
       "id": 8,
@@ -342,8 +342,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4c3728cb270b4a4cfeb7b6cbee0c6795f6b4b0b783e1f63b8e8c1637a0b4ddf9",
-      "difficultyEvidenceSha": "sha256:76d10e011df29677f504de0b9afee2db5a15b667b327eb760fed6527d9e47b1e"
+      "resolverEvidenceSha": "sha256:86dfd6b8135db0b5ac28b3b7c38e93900b3ebaf1a232c098f0ee8209cc0fb517",
+      "difficultyEvidenceSha": "sha256:8ed20ec2b72f87b92ed8df0086c007fe134a82e926cef1218501a30d7160eddb"
     },
     {
       "id": 9,
@@ -385,8 +385,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:140e5615c66ddb3191032ec07eebf478649de2a6f7b05994f3d528e8547fe98d",
-      "difficultyEvidenceSha": "sha256:f34f9a0266484fc2365be93e0a86e19538ed75f78ced7caee08912f550dfe8d3"
+      "resolverEvidenceSha": "sha256:e34df3b24e722e5cb987d3db5ae991bbf446572d3ac4c3437d0dba000222bf8e",
+      "difficultyEvidenceSha": "sha256:ba6e126540a4d2c6c7ca7cd089bc0bf1aa322f1c5a7c22a72078c118d2971d12"
     },
     {
       "id": 10,
@@ -428,8 +428,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:09f033653a830d167a71578366c49256776ac2e22b899e744123b2a69155629b",
-      "difficultyEvidenceSha": "sha256:2e407d3de68fe6ba39235e307815840985fc807c06b7c996d8cd2761adf199e3"
+      "resolverEvidenceSha": "sha256:27dcfa56c3442eafad6ee09ad03967a70b8027b99d3cccc5bef27e3eff84aa0e",
+      "difficultyEvidenceSha": "sha256:1d2daab6afe48dc22f30421ad9f31833be6660ca17ef73b5e470fc12557b7ed2"
     },
     {
       "id": 11,
@@ -471,8 +471,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_SOLUTION_SUBSTITUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ef8f87524d9150079c89021260b50a70437233faaa60b18ffffd76ed2bf18711",
-      "difficultyEvidenceSha": "sha256:89e66c1c7f9e61f461790f0464002245921aeeaec27a3cc6dd70d2dce213ac6e"
+      "resolverEvidenceSha": "sha256:c9ffe3cb93c647a77710adf9eaec35a2cd1941f3e6843acba9928c64f3a30942",
+      "difficultyEvidenceSha": "sha256:503dab72464511ff9de02b864f26fdb65fb2d4cdb680b97156ae0b38a6c0313d"
     },
     {
       "id": 12,
@@ -514,8 +514,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:c50a7c881def1c289a0a6662fc246ed84be10fb556ad390e979803749ae4f25f",
-      "difficultyEvidenceSha": "sha256:856c032a4c731218c0cf88f6dcd9c1f9acd355949587750681ccd8feeea20bc7"
+      "resolverEvidenceSha": "sha256:9c7cfd9ba6349e915cd3250a25afbc48fe5af2cffbf77e8be17d824ae6f1337e",
+      "difficultyEvidenceSha": "sha256:9fdae46ec8da6f728c460977264c4ecd4a251ecf1fc3002275396563132189a8"
     },
     {
       "id": 13,
@@ -557,8 +557,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:4995284718142b051b1fc0ba8f9d8f233292fead5f02aa1f9cb4ec06bf06cb6c",
-      "difficultyEvidenceSha": "sha256:bad93fb7c7ca52fc7bfe333a198f37e9af604745d1efbedabff9a166f1c7515a"
+      "resolverEvidenceSha": "sha256:3ae748d1783a534162c3b351f8ee57b05b923f2ac67e02828867a630df2c9eb2",
+      "difficultyEvidenceSha": "sha256:20a846119d3c080bda6e5de87f9a571b42189823c5dff2e2040ef536b743ef71"
     },
     {
       "id": 14,
@@ -600,8 +600,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_COEFFICIENT_RECOVERY",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e6446fecf532e50ab4930137f6218ecc05e019425ffc11686fb979dbd9c51cc2",
-      "difficultyEvidenceSha": "sha256:15da8f37668ee13cdb1ca4ac9344220dee4c81fa6270d0f3dbeff880dbd1a707"
+      "resolverEvidenceSha": "sha256:d7fc6158893d60bcf2729cb983724690d04b6cea9cd6bd8265fcb288ee2e7c02",
+      "difficultyEvidenceSha": "sha256:03d44c0b222616eedef497f5a66b2da59441aeaa1d8a57c41dca9be3156bbc1d"
     },
     {
       "id": 15,
@@ -646,8 +646,8 @@ window.questionBank = [
       "templateKey": "TPL_COORDINATE_POINT_READING_CORE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:df33bda6cbf9a0f3cec2f1dfd668d2a521704917159104b1b3737042fd40decb",
-      "difficultyEvidenceSha": "sha256:e4b0daae697509326df1dfdac7a8be9503d859de4244b0ce748c448b0bb0007e",
+      "resolverEvidenceSha": "sha256:1c1d7548b352a18a16cf37b363d4a155262a07a5545513fed554d6a19c08eacf",
+      "difficultyEvidenceSha": "sha256:2aa9edaa445704efe903bd35bf50bd766898af3988c5230cdb8062deba7cd180",
       "solutionImageAlt": "좌표평면에 A(-3,2), B(0,1), C(4,3), D(3,-2)를 표시한 그림",
       "solutionImageCaption": "각 점에서 x좌표를 먼저, y좌표를 다음에 읽어 보기의 좌표와 대조한다.",
       "solutionImageSize": "large"
@@ -694,8 +694,8 @@ window.questionBank = [
       "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:a0668d1286ecef01686b1e835b48f37b7f4abdc4ba61e06a7bc64643dbb06e8d",
-      "difficultyEvidenceSha": "sha256:8d392402d5bbea4843897be5d2e30e32e89cad8225258dc3fbf9cc23c21b0eba"
+      "resolverEvidenceSha": "sha256:4469175f086af71b4b9e19208effe04b4b3023353040e75617cebfcbd63dd843",
+      "difficultyEvidenceSha": "sha256:8996827d9aecff0f35075843c0501011b038b41f46d874e533e8a21e871120bd"
     },
     {
       "id": 17,
@@ -737,8 +737,8 @@ window.questionBank = [
       "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:0858fcfe212742f90a487b2f4a223c6c83fd487d45d06d9147f3e0df398e24c6",
-      "difficultyEvidenceSha": "sha256:d69d7b1a3d3001b2ebc5f34402953682bb7941bd8463a7c4a786f86d904c95f5"
+      "resolverEvidenceSha": "sha256:9c3412cff450e9e800c6503d4142494a2b24879ad22d595905bb6e2c1dcc670a",
+      "difficultyEvidenceSha": "sha256:c0c33868c1323fea5717f5e0d25fad9b339a4758f4d349e2ea0d7dddec220441"
     },
     {
       "id": 18,
@@ -777,8 +777,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:ab6a66ddb6538de1e229fcb3040a249a462f6dc2c9343552835fcef7fa659e16",
-      "difficultyEvidenceSha": "sha256:b8a73c8f58b5b8d0751a5bea9ac1b59572cefc3ec62c9d38ca238634db3ccdef",
+      "resolverEvidenceSha": "sha256:532cf3e11e77b37589f4435ee5a5d3e751d51fe7ad797b664c28dc857463db3a",
+      "difficultyEvidenceSha": "sha256:775c0d9cc75835b8c845e1970c92d0204fc2fb9c27d539c8be8904017801ada8",
       "solutionImageAlt": "시간에 따라 속력이 증가한 뒤 일정해지는 속력-시간 그래프",
       "solutionImageCaption": "속력이 증가하는 선분 뒤에 속력이 일정한 수평선이 이어진다.",
       "solutionImageSize": "large"
@@ -826,8 +826,8 @@ window.questionBank = [
       "solutionImage": "assets/images/25_동산중_2학기_기말_중1_기출/q19-solution.svg",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:02ef3878c6bb21540aac868829ce18fc073c188b2382e75eb8bb319fc0365f4a",
-      "difficultyEvidenceSha": "sha256:f082cde6837f66e959f43da5e9b67036a44490ceccadf3a93081dd6b49eeae29",
+      "resolverEvidenceSha": "sha256:3ed3500e6a23a86d78ac44e69d1401f9f9113c0183bd50ca13ad2daaf3734cba",
+      "difficultyEvidenceSha": "sha256:c258280068cac2119e51230b43955dcaf56b564429b913d25189640226de9453",
       "solutionImageAlt": "관람차 높이가 주기적으로 변하고 10분, 30분, 50분에 최고 높이 30 m에 이르는 그래프",
       "solutionImageCaption": "최고점 사이 간격은 20분이며 높이 20 m를 지나는 횟수를 60분 동안 읽는다.",
       "solutionImageSize": "large"
@@ -872,8 +872,8 @@ window.questionBank = [
       "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:94dd3e3c46513e522f03b5c390662f17ed7eb80eed1a1937bf9fb009a6a2fc9e",
-      "difficultyEvidenceSha": "sha256:ba6031c438d8b8a0efba9672ab419cede3ebcc594192b42b0cadce6f423813ca"
+      "resolverEvidenceSha": "sha256:72cd4df7345f2b459f12cb09042273841c37ef7805888ca2b1ed0c5863809dec",
+      "difficultyEvidenceSha": "sha256:25a947a99e73a670c404a2068d6616ece0930e8d7f301fc176a51e5fb9c3134e"
     },
     {
       "id": 21,
@@ -918,8 +918,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:e2c97832fb407814635035046260cad45441c3db568ec7020c814e200426c446",
-      "difficultyEvidenceSha": "sha256:327ab8acf47b8c5601e5fa3f7c58a78f7463fe6e6a89688a7e228d0157cca2b7",
+      "resolverEvidenceSha": "sha256:793a6a1756667755e2b05eda598d5d660c142a58b292dbdf4c976ea823ae3d72",
+      "difficultyEvidenceSha": "sha256:d0cbb131c289d1861d60e00f03c808d3f9f7bdfb884c7308a0c9314871f1d5a2",
       "solutionImageAlt": "y=ax와 y=b/x 그래프가 (-6,2)에서 만나며 a=-1/3, b=-12임을 표시한 좌표평면",
       "solutionImageCaption": "공통 교점 (-6,2)를 두 식에 각각 대입해 ab를 구한다.",
       "solutionImageSize": "large"
@@ -961,8 +961,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:f32bc6f8de919725e6078f766277c434de040700f9cffbe3352534711b9d1c2a",
-      "difficultyEvidenceSha": "sha256:0b8c9f43fa204f6a4abdc8ab46dae5b8ed3792be348f38e29af392b05ca27996"
+      "resolverEvidenceSha": "sha256:015d26d1ae72d46f015d54f34a5e888e33893b74976473a07654b9a8afe854ca",
+      "difficultyEvidenceSha": "sha256:9ab028f5f9cad8414f32ac9e83ab9ccf92f112954f2ac95388985767d58c9261"
     },
     {
       "id": 23,
@@ -999,8 +999,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:120ef5f5c395cbcfdab84953fd003118bf537fd78748c944a2235c3379c99f69",
-      "difficultyEvidenceSha": "sha256:78ab25ed5947fcb8e5483dfe44e86ab05e005322b236b10eb9f2aa84cbc35883"
+      "resolverEvidenceSha": "sha256:70d8deddd88b9e812216587f23653f089c9c136f22b70a6f461be04639d8d5a6",
+      "difficultyEvidenceSha": "sha256:a82f70d9af92c22fb2559c91ba94bc5b24078154aadd5c7395f3fb39538a5422"
     },
     {
       "id": 24,
@@ -1040,8 +1040,8 @@ window.questionBank = [
       "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
       "l3Disposition": "EXISTING_L3_REUSE",
       "l4Disposition": "ASSIGNED",
-      "resolverEvidenceSha": "sha256:bcdfe87832a06d6efaa87eb1fe6832aa15b6dcb8b27fae9653c2b25d395fbbac",
-      "difficultyEvidenceSha": "sha256:ad5d1819bca1244eaee6dc80b0e43f28a5b0de60db471c324368a6b9126269a6",
+      "resolverEvidenceSha": "sha256:a07a4b1aeff5a7cbf19374f205530c22d536c70026ea32de216340ce19799ff9",
+      "difficultyEvidenceSha": "sha256:5424c9aedc3d3a281cf2df5a3a6712bc420f41a00a9930296343f91b62357b05",
       "solutionImageAlt": "시간-거리 그래프에서 토끼는 (10,0)에서 출발하고 거북은 (60,2)를 지나는 모습",
       "solutionImageCaption": "두 선에서 토끼의 출발 시각과 거북이 2 km에 도달한 시각을 좌표로 읽는다.",
       "solutionImageSize": "large"
