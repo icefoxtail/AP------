@@ -1,45 +1,64 @@
 {
   "schemaVersion": "RPM_PRIMARY_M1_M2_NORMALIZATION_STATE_v1",
   "task": "M1-M2 RPM completeness and global ACTIVE crosswalk semantic normalization",
-  "baseMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
   "branch": "work/meta-rpm-m1-m2-normalization",
-  "currentStage": "RPM_COMPLETENESS_REPAIR_FROZEN",
-  "initialRpmL4RecordCount": 466,
-  "repairedRpmL4RecordCount": 468,
+  "baselineMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+  "latestMainFetchedBeforePush": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "currentStage": "VALIDATION_PASS_WAITING_FOR_PUSH",
   "scope": [
-    "2015/M1-1",
-    "2015/M1-2",
-    "2015/M2-1",
-    "2015/M2-2",
-    "2022/M1-1",
-    "2022/M1-2",
-    "2022/M2-1",
-    "2022/M2-2"
+    "2015/M1-1", "2015/M1-2", "2015/M2-1", "2015/M2-2",
+    "2022/M1-1", "2022/M1-2", "2022/M2-1", "2022/M2-2"
   ],
+  "rpm": {
+    "initialRecordCount": 466,
+    "finalRecordCount": 468,
+    "semanticRelations": { "BOTH_PRESENT": 460, "LEGIT_CURRICULUM_DIFFERENCE": 6, "2015_OMISSIONS_REPAIRED": 2, "2022_OMISSIONS": 0, "NEEDS_EVIDENCE": 2 },
+    "masterViewParity": "8/8 PASS",
+    "duplicateSemanticTuples": 0,
+    "packageManifest": "38/38 PASS"
+  },
+  "crosswalk": {
+    "finalRecordCount": 468,
+    "middle1": { "total": 232, "DIRECT_ACTIVE": 61, "FAMILY_ACTIVE": 2, "DIRECT_BINDING_GAP": 22, "FAMILY_BINDING_GAP": 2, "RPM_ONLY": 145 },
+    "middle2": { "total": 236, "DIRECT_ACTIVE": 32, "FAMILY_ACTIVE": 2, "DIRECT_BINDING_GAP": 68, "FAMILY_BINDING_GAP": 14, "RPM_ONLY": 120 },
+    "changes": { "KEEP": 379, "DIRECT_TO_FAMILY": 6, "DIRECT_OR_FAMILY_TO_RPM_ONLY": 77, "PT_TPL_REMAP": 4, "bindingRepair": 0, "newRpmPath": 2 },
+    "missingRows": 0,
+    "orphanRows": 0,
+    "bindingOnlyGapRows": 106,
+    "activeParentBindingFamilyAndDirectErrors": 0
+  },
+  "globalActive": {
+    "packCount": 10,
+    "problemTypeCount": 244,
+    "templateCount": 655,
+    "exactBindingCount": 722,
+    "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2"
+  },
+  "migrationGapReassessment": {
+    "priorGapsAffected": 20,
+    "existingReuseRecovered": 4,
+    "actualBindingOnlyGaps": 4,
+    "remainingSemanticGaps": 12,
+    "relatedPreexistingReuseWithMissingRpmPointer": 1,
+    "shinheungQ6Q7": "EXISTING_REUSE via M2-RPM-070 + PT_RIGHT_TRIANGLE_CONGRUENCE + TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE + exact ACTIVE 2015 binding"
+  },
   "completedStages": [
     "NOTION_START_GATE",
     "LATEST_ORIGIN_MAIN_FETCH",
-    "WORKTREE_CREATED",
-    "REQUIRED_GIT_DOCUMENTS_READ",
-    "ACTIVE_GLOBAL_REGISTRY_INVENTORIED",
-    "KNOWN_RHS_RHA_SOURCE_REVIEWED",
-    "BASELINE_RPM_RECORD_CENSUS",
-    "BASELINE_CROSSWALK_DENOMINATOR_AND_GLOBAL_ACTIVE_SNAPSHOT",
-    "CURRICULUM_SEMANTIC_PAIRING_BASELINE",
-    "2015_M2_2_RHS_RHA_OMISSION_REPAIR",
-    "RPM_MASTER_VIEW_CSV_PACKAGE_MANIFEST_PARITY",
-    "2015_M2_2_RHS_RHA_RPM_PATH_RESTORED",
-    "2015_2022_COURSE_VIEW_AND_MASTER_PARITY_PASS"
+    "ISOLATED_WORKTREE_AND_BRANCH_CREATED",
+    "REQUIRED_GIT_RULES_AND_CANONICAL_SOURCES_READ",
+    "GLOBAL_ACTIVE_REGISTRY_AND_EXACT_BINDINGS_INVENTORIED",
+    "BASELINE_RPM_AND_CROSSWALK_DENOMINATOR_FROZEN",
+    "2015_2022_SEMANTIC_PAIRING_COMPLETED",
+    "2015_M2_2_RHS_RHA_OMISSION_REPAIRED",
+    "RPM_MASTER_VIEWS_MATRICES_MANIFESTS_VALIDATED",
+    "MIDDLE1_AND_MIDDLE2_CROSSWALKS_SEMANTICALLY_AUDITED_AND_NORMALIZED",
+    "468_RECORD_MACHINE_AUDIT_LEDGER_WRITTEN",
+    "R2E_MIGRATION_GAPS_REASSESSED_WITH_SEPARATE_AUTHORITY",
+    "ACTIVE_RESOLVER_COMPILED_REGISTRY_AND_RUNTIME_REGRESSION_PASS"
   ],
-  "remainingStages": [
-    "CROSSWALK_SEMANTIC_AUDIT_AND_NORMALIZATION",
-    "FINAL_RECORD_LEVEL_AUDIT",
-    "MIGRATION_GAP_REASSESSMENT",
-    "RESOLVER_COMPILED_RUNTIME_VALIDATION",
-    "REMOTE_PUSH",
-    "NOTION_CLOSEOUT"
-  ],
-  "lastCompletedItem": "Restored 2015/M2-2/삼각형의 성질/삼각형의 합동/RHS+RHA; exact 2015 M2-05/M2-05-TRIANGLE_PROPERTIES GLOBAL ACTIVE binding is reused.",
-  "nextStartPoint": "Apply semantic crosswalk decisions to all M1/M2 rows, regenerate ids from the repaired master, then write final 468-row audit ledgers.",
+  "remainingStages": ["FINAL_BRANCH_REBASE_CHECK", "REMOTE_BRANCH_PUSH", "NOTION_CLOSEOUT"],
+  "lastCompletedItem": "All M1/M2 RPM and crosswalk rows were semantically audited; migration q6/q7 resolve through existing 2015 RHS key and binding; 8 M1/M2 regression tests and 16 existing resolver tests pass.",
+  "nextStartPoint": "Rebase the committed branch onto fetched origin/main if the unrelated remote advance is still present, verify, push work/meta-rpm-m1-m2-normalization, then record commit and remote SHA in Notion.",
   "hardBlockers": []
 }

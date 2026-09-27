@@ -2,7 +2,7 @@
   "schemaVersion": "rpm-primary-active-crosswalk-v1",
   "status": "ACTIVE_REFERENCE",
   "grade": "M1",
-  "generatedAgainstMain": "39da5120f5d5d11ea3f8ea02878a1d35e8bdb8c4",
+  "generatedAgainstMain": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
   "rpmAuthority": {
     "version": "RPM_PRIMARY_TAXONOMY_v1.0",
     "status": "LOCKED",
@@ -11,9 +11,16 @@
   "activeAuthority": {
     "source": "archive/data/meta-foundation/canonical/",
     "packs": [
-      "MIDDLE1",
+      "DERIVATIVE",
+      "FUNCTIONS_GRAPHS",
       "GEOMETRY_EQUATIONS",
-      "MIDDLE_GEOMETRY"
+      "H1_FOUNDATION",
+      "INTEGRAL_CALCULUS",
+      "LIMIT_CONTINUITY",
+      "MIDDLE1",
+      "MIDDLE_GEOMETRY",
+      "PROBABILITY_STATISTICS",
+      "SETS_PROPOSITIONS"
     ]
   },
   "policy": {
@@ -28,11 +35,11 @@
   },
   "summary": {
     "recordCount": 232,
-    "DIRECT_ACTIVE": 98,
-    "FAMILY_ACTIVE": 10,
-    "DIRECT_BINDING_GAP": 46,
-    "FAMILY_BINDING_GAP": 10,
-    "RPM_ONLY": 68
+    "DIRECT_ACTIVE": 61,
+    "FAMILY_ACTIVE": 2,
+    "DIRECT_BINDING_GAP": 22,
+    "FAMILY_BINDING_GAP": 2,
+    "RPM_ONLY": 145
   },
   "records": [
     {
@@ -99,19 +106,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
-      "problemTypeLabelKo": "소인수 구조 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_ORDERED_FACTOR_STRUCTURE",
-      "templateLabelKo": "소인수 구조 판별 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-004",
@@ -125,19 +121,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
-      "problemTypeLabelKo": "소인수 지수로 약수·배수 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
-      "templateLabelKo": "소인수 지수로 약수·배수 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-005",
@@ -151,19 +136,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIVISOR_COUNT",
-      "problemTypeLabelKo": "약수의 개수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIVISOR_COUNT_CORE",
-      "templateLabelKo": "약수의 개수 조건 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-006",
@@ -177,19 +151,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
-      "problemTypeLabelKo": "소인수 구조 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_CONSTRAINED_NUMBER_RECOVERY",
-      "templateLabelKo": "소인수 구조 판별 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-007",
@@ -203,19 +166,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-008",
@@ -229,19 +181,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-009",
@@ -255,19 +196,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-010",
@@ -281,19 +211,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-011",
@@ -307,32 +226,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
-      "problemTypeLabelKo": "공약수·공배수 조건 검사",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_MULTIPLE_CHECK",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_GCD_CONDITION_FILTER",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "final solution decisive step이 공약수/공배수/최대공약수 조건 중 무엇인지에 따라 listed template 중 하나를 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-012",
@@ -346,36 +241,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_LCM_APPLICATION",
-      "problemTypeLabelKo": "최소공배수의 상황 적용",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_TILING_BY_LCM",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_SHIFTED_REMAINDER",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "주기·타일링·기어·나머지 조건 중 실제 decisive step과 일치하는 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-GCD_LCM",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-013",
@@ -519,19 +386,8 @@
       },
       "standardUnitKey": "M1-02",
       "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
-      "problemTypeLabelKo": "절댓값 조건에서 가능한 극값",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_ABSOLUTE_VALUE_SIGN_EXTREMES_CORE",
-      "templateLabelKo": "절댓값 조건에서 가능한 극값 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-02",
-        "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-019",
@@ -805,19 +661,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
-      "problemTypeLabelKo": "문자식에 수 대입·계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
-      "templateLabelKo": "문자식에 수 대입·계산 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-03",
-        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-030",
@@ -831,19 +676,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
-      "problemTypeLabelKo": "문자식에 수 대입·계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
-      "templateLabelKo": "문자식에 수 대입·계산 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-03",
-        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-031",
@@ -857,19 +691,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
-      "problemTypeLabelKo": "문장과 식의 대응·표기 검사",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
-      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-03",
-        "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-032",
@@ -1199,22 +1022,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-      "problemTypeLabelKo": "상황을 그래프의 변화로 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "상황/주기 그래프의 실제 decisive step에 맞는 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-053",
@@ -1228,22 +1037,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-      "problemTypeLabelKo": "상황을 그래프의 변화로 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "상황/주기 그래프의 실제 decisive step에 맞는 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-054",
@@ -1257,22 +1052,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "표·관계식 직접 계산인지 반비례 점 대입인지에 따라 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-055",
@@ -1286,19 +1067,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-056",
@@ -1312,22 +1082,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "표·관계식 직접 계산인지 반비례 점 대입인지에 따라 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-057",
@@ -1341,19 +1097,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-058",
@@ -1367,13 +1112,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
-      "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-059",
@@ -1387,19 +1127,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-060",
@@ -1439,28 +1168,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-      "problemTypeLabelKo": "선분 분할·중점과 길이 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
-          "templateLabelKo": "선분 분할·중점과 길이 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
-          "templateLabelKo": "선분 분할·중점과 길이 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "중점 연쇄인지 비와 중점 결합인지에 따라 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-062",
@@ -1474,19 +1183,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-      "problemTypeLabelKo": "기본도형의 용어·관계 진술 판단",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
-      "templateLabelKo": "기본도형의 용어·관계 진술 판단 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-063",
@@ -1573,12 +1271,12 @@
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
       "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
-      "problemTypeLabelKo": "각 조건으로 평행 판정",
+      "bindingStatus": "MISSING",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
-      "templateLabelKo": "각 조건으로 평행 판정 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "problemTypeLabelKo": "동위각·엇각의 위치 판정",
+      "templateLabelKo": "동위각·엇각의 위치 판정 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-066",
@@ -1690,13 +1388,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-POSITION_RELATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-      "problemTypeLabelKo": "기본도형의 용어·관계 진술 판단",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
-      "templateLabelKo": "기본도형의 용어·관계 진술 판단 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-071",
@@ -1730,19 +1423,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-073",
@@ -1756,19 +1438,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-074",
@@ -1782,19 +1453,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-075",
@@ -2121,11 +1781,11 @@
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-POLYGON_CIRCLE",
       "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
-      "problemTypeLabelKo": "정다각형을 결합한 각 계산",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
-      "templateLabelKo": "정다각형을 결합한 각 계산 — 조건별 풀이 골격",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "ACTIVE",
       "binding": {
         "curriculum": "2015",
@@ -2267,19 +1927,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-      "problemTypeLabelKo": "다면체의 모서리·면 관계",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
-      "templateLabelKo": "다면체의 모서리·면 관계 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-096",
@@ -2293,19 +1942,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-      "problemTypeLabelKo": "다면체의 모서리·면 관계",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
-      "templateLabelKo": "다면체의 모서리·면 관계 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-097",
@@ -2319,19 +1957,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-      "problemTypeLabelKo": "다면체의 꼭짓점·모서리·면 개수",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
-      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-098",
@@ -2495,19 +2122,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_ORGANIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 도수 진술 검증",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_ORGANIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-109",
@@ -2521,19 +2137,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_ORGANIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_ORGANIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-110",
@@ -2547,19 +2152,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
-      "problemTypeLabelKo": "자료 범주의 상대도수 백분율",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
-      "templateLabelKo": "자료 범주의 상대도수 백분율 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_INTERPRETATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-111",
@@ -2573,19 +2167,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_INTERPRETATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-112",
@@ -2599,28 +2182,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-          "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
-          "templateLabelKo": "도수분포표·다각형의 누적 해석 — 도수 진술 검증"
-        }
-      ],
-      "selectionRule": "누적 기준 해석인지 진술 검증인지에 따라 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_INTERPRETATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-113",
@@ -2634,28 +2197,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-          "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
-          "templateLabelKo": "도수분포표·다각형의 누적 해석 — 도수 진술 검증"
-        }
-      ],
-      "selectionRule": "누적 기준 해석인지 진술 검증인지에 따라 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2015",
-        "standardUnitKey": "M1-08",
-        "subUnitKey": "M1-08-DATA_INTERPRETATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-114",
@@ -2721,19 +2264,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
-      "problemTypeLabelKo": "소인수 구조 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_ORDERED_FACTOR_STRUCTURE",
-      "templateLabelKo": "소인수 구조 판별 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-117",
@@ -2747,19 +2279,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
-      "problemTypeLabelKo": "소인수 지수로 약수·배수 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
-      "templateLabelKo": "소인수 지수로 약수·배수 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-118",
@@ -2773,13 +2294,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_DIVISOR_COUNT",
-      "problemTypeLabelKo": "약수의 개수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIVISOR_COUNT_CORE",
-      "templateLabelKo": "약수의 개수 조건 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-119",
@@ -2793,19 +2309,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_PRIME_FACTOR_STRUCTURE",
-      "problemTypeLabelKo": "소인수 구조 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PRIME_FACTOR_STRUCTURE_CONSTRAINED_NUMBER_RECOVERY",
-      "templateLabelKo": "소인수 구조 판별 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-01",
-        "subUnitKey": "M1-01-PRIME_FACTORIZATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-120",
@@ -2819,13 +2324,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-121",
@@ -2839,13 +2339,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-122",
@@ -2859,13 +2354,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_MIN_MAX_RATIO",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-123",
@@ -2879,13 +2369,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
-      "problemTypeLabelKo": "최대공약수·최소공배수의 소인수 지수 조건",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY",
-      "templateLabelKo": "최대공약수·최소공배수의 소인수 지수 조건 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-124",
@@ -2899,26 +2384,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_COMMON_DIVISIBILITY_FILTER",
-      "problemTypeLabelKo": "공약수·공배수 조건 검사",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_DIVISOR_CHECK",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_COMMON_MULTIPLE_CHECK",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_COMMON_DIVISIBILITY_FILTER_GCD_CONDITION_FILTER",
-          "templateLabelKo": "공약수·공배수 조건 검사 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "final solution decisive step이 공약수/공배수/최대공약수 조건 중 무엇인지에 따라 listed template 중 하나를 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-125",
@@ -2932,30 +2399,8 @@
       },
       "standardUnitKey": "M1-01",
       "subUnitKey": "M1-01-GCD_LCM",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_LCM_APPLICATION",
-      "problemTypeLabelKo": "최소공배수의 상황 적용",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_LCM_APPLICATION_REPEATED_EVENT_CYCLE",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_TILING_BY_LCM",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_GEAR_CYCLE",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_LCM_APPLICATION_SHIFTED_REMAINDER",
-          "templateLabelKo": "최소공배수의 상황 적용 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "주기·타일링·기어·나머지 조건 중 실제 decisive step과 일치하는 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-126",
@@ -3099,13 +2544,8 @@
       },
       "standardUnitKey": "M1-02",
       "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
-      "problemTypeLabelKo": "절댓값 조건에서 가능한 극값",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_ABSOLUTE_VALUE_SIGN_EXTREMES_CORE",
-      "templateLabelKo": "절댓값 조건에서 가능한 극값 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-132",
@@ -3367,13 +2807,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
-      "problemTypeLabelKo": "문자식에 수 대입·계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
-      "templateLabelKo": "문자식에 수 대입·계산 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-143",
@@ -3387,13 +2822,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
-      "problemTypeLabelKo": "문자식에 수 대입·계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE",
-      "templateLabelKo": "문자식에 수 대입·계산 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-144",
@@ -3407,13 +2837,8 @@
       },
       "standardUnitKey": "M1-03",
       "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
-      "problemTypeLabelKo": "문장과 식의 대응·표기 검사",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_SYMBOLIC_VALIDITY",
-      "templateLabelKo": "문장과 식의 대응·표기 검사 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-145",
@@ -3743,28 +3168,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-      "problemTypeLabelKo": "상황을 그래프의 변화로 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "상황/주기 그래프의 실제 decisive step에 맞는 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-166",
@@ -3778,28 +3183,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
-      "problemTypeLabelKo": "상황을 그래프의 변화로 해석",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_PERIODIC_GRAPH_CLAIMS",
-          "templateLabelKo": "상황을 그래프의 변화로 해석 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "상황/주기 그래프의 실제 decisive step에 맞는 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-167",
@@ -3813,22 +3198,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "표·관계식 직접 계산인지 반비례 점 대입인지에 따라 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-168",
@@ -3842,19 +3213,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-169",
@@ -3868,22 +3228,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "FAMILY_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
-          "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "표·관계식 직접 계산인지 반비례 점 대입인지에 따라 listed template 선택",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-170",
@@ -3897,19 +3243,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-171",
@@ -3923,13 +3258,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
-      "problemTypeLabelKo": "정비례·반비례 상수와 값 계산",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
-      "templateLabelKo": "정비례·반비례 상수와 값 계산 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-172",
@@ -3943,19 +3273,8 @@
       },
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-GRAPH_RELATION",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
-      "problemTypeLabelKo": "정비례·반비례 관계 판별",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE",
-      "templateLabelKo": "정비례·반비례 관계 판별 — 기본 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-04",
-        "subUnitKey": "M1-04-GRAPH_RELATION",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-173",
@@ -3989,28 +3308,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "FAMILY_ACTIVE",
-      "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
-      "problemTypeLabelKo": "선분 분할·중점과 길이 계산",
-      "ownerPack": "MIDDLE1",
-      "templateCandidates": [
-        {
-          "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
-          "templateLabelKo": "선분 분할·중점과 길이 계산 — 조건별 풀이 골격"
-        },
-        {
-          "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
-          "templateLabelKo": "선분 분할·중점과 길이 계산 — 조건별 풀이 골격"
-        }
-      ],
-      "selectionRule": "중점 연쇄인지 비와 중점 결합인지에 따라 listed template 선택",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-175",
@@ -4024,13 +3323,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-      "problemTypeLabelKo": "기본도형의 용어·관계 진술 판단",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
-      "templateLabelKo": "기본도형의 용어·관계 진술 판단 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-176",
@@ -4117,12 +3411,12 @@
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
       "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
-      "problemTypeLabelKo": "각 조건으로 평행 판정",
+      "bindingStatus": "MISSING",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE",
-      "templateLabelKo": "각 조건으로 평행 판정 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "problemTypeLabelKo": "동위각·엇각의 위치 판정",
+      "templateLabelKo": "동위각·엇각의 위치 판정 — 조건별 풀이 골격"
     },
     {
       "id": "M1-RPM-179",
@@ -4234,13 +3528,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-POSITION_RELATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
-      "problemTypeLabelKo": "기본도형의 용어·관계 진술 판단",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
-      "templateLabelKo": "기본도형의 용어·관계 진술 판단 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-184",
@@ -4274,19 +3563,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-186",
@@ -4300,19 +3578,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-187",
@@ -4326,19 +3593,8 @@
       },
       "standardUnitKey": "M1-05",
       "subUnitKey": "M1-05-BASIC_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
-      "problemTypeLabelKo": "기본 작도 도구와 절차",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
-      "templateLabelKo": "기본 작도 도구와 절차 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-05",
-        "subUnitKey": "M1-05-BASIC_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-188",
@@ -4629,11 +3885,11 @@
       "standardUnitKey": "M1-06",
       "subUnitKey": "M1-06-POLYGON_CIRCLE",
       "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
-      "problemTypeLabelKo": "정다각형을 결합한 각 계산",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "problemTypeLabelKo": "다각형의 각·대각선과 변 수 관계",
       "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_REGULAR_POLYGON_ANGLE_CHASE",
-      "templateLabelKo": "정다각형을 결합한 각 계산 — 조건별 풀이 골격",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+      "templateLabelKo": "다각형의 각·대각선과 변 수 관계 — 조건별 풀이 골격",
       "bindingStatus": "MISSING"
     },
     {
@@ -4763,19 +4019,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-      "problemTypeLabelKo": "다면체의 모서리·면 관계",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
-      "templateLabelKo": "다면체의 모서리·면 관계 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-209",
@@ -4789,19 +4034,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_ACTIVE",
-      "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-      "problemTypeLabelKo": "다면체의 모서리·면 관계",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SPATIAL_CLAIM_AUDIT",
-      "templateLabelKo": "다면체의 모서리·면 관계 — 조건별 풀이 골격",
-      "bindingStatus": "ACTIVE",
-      "binding": {
-        "curriculum": "2022",
-        "standardUnitKey": "M1-07",
-        "subUnitKey": "M1-07-SOLID_FIGURE",
-        "ownerPack": "MIDDLE1"
-      }
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-210",
@@ -4815,13 +4049,8 @@
       },
       "standardUnitKey": "M1-07",
       "subUnitKey": "M1-07-SOLID_FIGURE",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
-      "problemTypeLabelKo": "다면체의 꼭짓점·모서리·면 개수",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
-      "templateLabelKo": "다면체의 꼭짓점·모서리·면 개수 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-211",
@@ -5015,13 +4244,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "problemTypeLabelKo": "자료의 순서 통계량 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
-      "templateLabelKo": "자료의 순서 통계량 해석 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-224",
@@ -5035,13 +4259,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "problemTypeLabelKo": "자료의 순서 통계량 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
-      "templateLabelKo": "자료의 순서 통계량 해석 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-225",
@@ -5055,13 +4274,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "problemTypeLabelKo": "자료의 순서 통계량 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
-      "templateLabelKo": "자료의 순서 통계량 해석 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-226",
@@ -5075,13 +4289,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
-      "problemTypeLabelKo": "자료의 순서 통계량 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_ORDER_AND_VALUE_CORE",
-      "templateLabelKo": "자료의 순서 통계량 해석 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-227",
@@ -5095,13 +4304,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_ORGANIZATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 도수 진술 검증",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-228",
@@ -5135,13 +4339,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
-      "problemTypeLabelKo": "자료 범주의 상대도수 백분율",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
-      "templateLabelKo": "자료 범주의 상대도수 백분율 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-230",
@@ -5155,13 +4354,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
-      "problemTypeLabelKo": "자료 범주의 상대도수 백분율",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CORE",
-      "templateLabelKo": "자료 범주의 상대도수 백분율 — 기본 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-231",
@@ -5175,13 +4369,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     },
     {
       "id": "M1-RPM-232",
@@ -5195,13 +4384,8 @@
       },
       "standardUnitKey": "M1-08",
       "subUnitKey": "M1-08-DATA_INTERPRETATION",
-      "mappingStatus": "DIRECT_BINDING_GAP",
-      "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
-      "problemTypeLabelKo": "도수분포표·다각형의 누적 해석",
-      "ownerPack": "MIDDLE1",
-      "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
-      "templateLabelKo": "도수분포표·다각형의 누적 해석 — 조건별 풀이 골격",
-      "bindingStatus": "MISSING"
+      "mappingStatus": "RPM_ONLY",
+      "bindingStatus": "NO_ACTIVE_MAPPING"
     }
   ]
 }

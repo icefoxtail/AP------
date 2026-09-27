@@ -4,13 +4,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-const RPM = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
-const MASTER_PATH = `${RPM}/00_POLICY/CANONICAL_MASTER.json`;
-const CROSSWALK_DIR = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0';
-const CANONICAL_DIR = 'archive/data/meta-foundation/canonical';
-const EVIDENCE_DIR = 'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization';
-const BASE_MAIN_SHA = '2a425e2a970c00c20bba87f3eb9301b4359c106d';
+export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+export const RPM = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0';
+export const MASTER_PATH = `${RPM}/00_POLICY/CANONICAL_MASTER.json`;
+export const CROSSWALK_DIR = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0';
+export const CANONICAL_DIR = 'archive/data/meta-foundation/canonical';
+export const EVIDENCE_DIR = 'archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization';
+export const BASE_MAIN_SHA = '2a425e2a970c00c20bba87f3eb9301b4359c106d';
 const CURRICULA = ['2015', '2022'];
 const GRADES = ['M1', 'M2'];
 const SCOPES = { M1: ['M1-1', 'M1-2'], M2: ['M2-1', 'M2-2'] };
@@ -22,12 +22,12 @@ const readJson = relative => JSON.parse(readText(relative));
 const writeJson = (relative, value) => fs.writeFileSync(path.join(ROOT, relative), `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 const fileSha = relative => sha256(fs.readFileSync(path.join(ROOT, relative)));
-const semanticKey = row => [row.curriculum, row.scope, row.rpmPath.majorUnit, row.rpmPath.midUnit, row.rpmPath.l3, row.rpmPath.l4].join('|');
-const masterKey = row => [row.curriculum, row.scope, row.majorUnit, row.midUnit, row.l3, row.l4].join('|');
+export const semanticKey = row => [row.curriculum, row.scope, row.rpmPath.majorUnit, row.rpmPath.midUnit, row.rpmPath.l3, row.rpmPath.l4].join('|');
+export const masterKey = row => [row.curriculum, row.scope, row.majorUnit, row.midUnit, row.l3, row.l4].join('|');
 const activeBindingKey = row => [row.curriculum, row.standardUnitKey, row.subUnitKey || '', row.problemTypeKey].join('|');
 const text = value => String(value ?? '').trim();
 
-function flattenMaster(master, { curricula = CURRICULA, scopes = new Set(SCOPE_ORDER) } = {}) {
+export function flattenMaster(master, { curricula = CURRICULA, scopes = new Set(SCOPE_ORDER) } = {}) {
   const rows = [];
   for (const block of master.records) {
     if (block.level !== 'middle' || !curricula.includes(block.curriculum) || !scopes.has(block.scope)) continue;
@@ -59,7 +59,7 @@ function flattenMaster(master, { curricula = CURRICULA, scopes = new Set(SCOPE_O
   return rows;
 }
 
-function parseView(relative, curriculum, scope) {
+export function parseView(relative, curriculum, scope) {
   const lines = readText(relative).split(/\r?\n/);
   let majorUnit = '';
   let midUnit = '';
@@ -81,12 +81,12 @@ function parseView(relative, curriculum, scope) {
   return rows;
 }
 
-function scopeViewPaths(curriculum, scope) {
+export function scopeViewPaths(curriculum, scope) {
   const dir = curriculum === '2015' ? '01_2015' : '02_2022';
   return `${RPM}/${dir}/MIDDLE/${scope}.md`;
 }
 
-function collectGlobalActive() {
+export function collectGlobalActive() {
   const index = readJson(`${CANONICAL_DIR}/registry_index.json`);
   const activePackIds = new Set((index.activePacks || []).filter(x => x.status === 'ACTIVE').map(x => x.id));
   const problemTypes = new Map();
@@ -112,7 +112,7 @@ function collectGlobalActive() {
   return { index, activePacks, problemTypes, templates, bindings, registryFingerprint };
 }
 
-function exactBindings(global, row) {
+export function exactBindings(global, row) {
   const key = row.problemTypeKey;
   if (!key) return [];
   return global.bindings.filter(binding => binding.problemTypeKey === key
@@ -121,7 +121,7 @@ function exactBindings(global, row) {
     && text(binding.subUnitKey) === text(row.subUnitKey));
 }
 
-function viewMismatch(masterRows) {
+export function viewMismatch(masterRows) {
   const mismatches = [];
   for (const curriculum of CURRICULA) for (const scope of SCOPE_ORDER) {
     const master = masterRows.filter(x => x.curriculum === curriculum && x.scope === scope);
@@ -369,7 +369,7 @@ function refreshDerivedStatsAndManifests() {
   return { L1: l1Keys.size, L2: master.records.length, L3: l3, L4: l4, masterSha256: fileSha(MASTER_PATH) };
 }
 
-function validateRpmSources() {
+export function validateRpmSources() {
   const master = readJson(MASTER_PATH);
   const rows = flattenMaster(master);
   const errors = [];
@@ -430,11 +430,13 @@ function loadBaselineIndex() {
   return out;
 }
 
-function reviewedProblemTypeDisposition(row) {
+export function reviewedProblemTypeDisposition(row) {
   const pt = row.problemTypeKey || '';
   const l3 = row.rpmPath.l3;
   const l4 = row.rpmPath.l4;
   if (pt === 'PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE') return 'REMAP_REGULAR_POLYGON_ANGLE_COUNT';
+  if (pt === 'PT_M1_PARALLELISM_CONVERSE') return 'REMAP_PARALLEL_ANGLE_POSITION';
+  if (pt === 'PT_LINE_EQUATION' && ['기울기·절편', '그래프 그리기', '일차방정식의 그래프'].includes(l4)) return 'REMAP_LINE_EQUATION_FAMILY';
   if (pt === 'PT_M1_FREQUENCY_DISTRIBUTION_READING') return l4 === '도수분포표 완성' ? 'KEEP_DIRECT' : 'RPM_ONLY_FAMILY_OR_TEMPLATE_TOO_NARROW';
   const unsafe = new Set([
     'PT_ABSOLUTE_VALUE_SIGN_EXTREMES',
@@ -457,6 +459,7 @@ function reviewedProblemTypeDisposition(row) {
   if (unsafe.has(pt)) return 'RPM_ONLY_TARGET_TOO_NARROW_OR_FAMILY_INCOMPLETE';
   if (pt === 'PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION' && /그래프|활용/.test(l4)) return 'RPM_ONLY_TARGET_IS_ALGEBRAIC_CLASSIFIER';
   if (pt === 'PT_M1_BASIC_GEOMETRY_JUDGMENT' && l4 !== '직선·반직선·선분') return 'RPM_ONLY_WRONG_SEMANTIC_TEMPLATE';
+  if (pt === 'PT_M1_POLYHEDRON_COMPONENT_COUNT' && l4.includes('관계')) return 'RPM_ONLY_WRONG_SEMANTIC_TEMPLATE';
   if (pt === 'PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION' && l3 === '일차식') return 'RPM_ONLY_WRONG_PROBLEM_TYPE';
   return 'KEEP_REVIEWED_MAPPING';
 }
@@ -477,6 +480,21 @@ function applyMappingDecision(row, global) {
       problemTypeLabelKo: global.problemTypes.get(problemTypeKey)?.canonicalLabelKo || '', ownerPack: global.problemTypes.get(problemTypeKey)?.ownerPack || '',
       templateKey, templateLabelKo: global.templates.get(templateKey)?.canonicalLabelKo || '', templateCandidates: undefined,
       selectionRule: undefined, mappingDispositionMemo: 'REMAP_TO_BROADER_ACTIVE_POLYGON_ANGLE_AND_COUNT' };
+  }
+  if (decision === 'REMAP_PARALLEL_ANGLE_POSITION') {
+    const problemTypeKey = 'PT_M1_PARALLEL_ANGLE_POSITION';
+    const templateKey = 'TPL_M1_PARALLEL_ANGLE_POSITION_ANGLE_POSITION_CLAIM_AUDIT';
+    return { ...row, mappingStatus: 'DIRECT_ACTIVE', problemTypeKey,
+      problemTypeLabelKo: global.problemTypes.get(problemTypeKey)?.canonicalLabelKo || '', ownerPack: global.problemTypes.get(problemTypeKey)?.ownerPack || '',
+      templateKey, templateLabelKo: global.templates.get(templateKey)?.canonicalLabelKo || '', templateCandidates: undefined,
+      selectionRule: undefined, mappingDispositionMemo: 'REMAP_TO_ACTIVE_PARALLEL_ANGLE_CRITERION_TEMPLATE' };
+  }
+  if (decision === 'REMAP_LINE_EQUATION_FAMILY') {
+    const templateKeys = ['TPL_LINE_GRAPH_BY_COEFFICIENTS', 'TPL_LINE_POINT_SLOPE', 'TPL_LINE_TWO_POINTS', 'TPL_LINE_MULTI_CONDITION'];
+    return { ...row, mappingStatus: 'FAMILY_BINDING_GAP', templateKey: undefined, templateLabelKo: undefined,
+      templateCandidates: templateKeys.map(templateKey => ({ templateKey, templateLabelKo: global.templates.get(templateKey)?.canonicalLabelKo || '' })),
+      selectionRule: '최종 풀이의 입력 구조에 따라 기울기·절편 계수 판독, 한 점과 기울기, 두 점 또는 복합 조건 후보 중 decisive step과 일치하는 listed template을 선택한다.',
+      mappingDispositionMemo: 'DIRECT_TO_COMPLETE_LINE_EQUATION_FAMILY' };
   }
   return row;
 }
@@ -513,11 +531,23 @@ function rebuildCrosswalks() {
     const gradeRows = allRows.filter(row => row.scope.startsWith(grade));
     const records = gradeRows.map((flat, index) => {
       const key = [flat.curriculum, flat.scope, flat.majorUnit, flat.midUnit, flat.l3, flat.l4].join('|');
-      let row = samePathRows.get(key) ? { ...samePathRows.get(key) } : {
+      const currentRow = samePathRows.get(key);
+      const baselineRow = baseline.get(key);
+      let row = currentRow ? { ...currentRow } : {
         curriculum: flat.curriculum, scope: flat.scope, rpmPath: pathRow(flat),
         standardUnitKey: flat.standardUnitKey, subUnitKey: flat.subUnitKey,
         mappingStatus: 'RPM_ONLY', bindingStatus: 'NO_ACTIVE_MAPPING',
       };
+      if (currentRow && baselineRow?.problemTypeKey && currentRow.mappingStatus === 'RPM_ONLY') {
+        row = { ...row,
+          mappingStatus: baselineRow.mappingStatus,
+          problemTypeKey: baselineRow.problemTypeKey,
+          templateKey: baselineRow.templateKey || undefined,
+          templateCandidates: baselineRow.templateCandidates?.length ? baselineRow.templateCandidates.map(templateKey => ({ templateKey })) : undefined,
+          ownerPack: baselineRow.ownerPack || undefined,
+          bindingStatus: baselineRow.bindingStatus || 'MISSING',
+        };
+      }
       row.id = `${grade}-RPM-${String(index + 1).padStart(3, '0')}`;
       row.curriculum = flat.curriculum;
       row.scope = flat.scope;
@@ -639,4 +669,4 @@ function main() {
   throw new Error('Usage: normalize-rpm-primary-m1-m2.mjs --snapshot-baseline | --repair-rpm | --normalize-crosswalk | --refresh-derived-stats-and-manifests');
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

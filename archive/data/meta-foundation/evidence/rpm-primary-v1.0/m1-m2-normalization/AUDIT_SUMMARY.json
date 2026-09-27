@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "RPM_PRIMARY_M1_M2_AUDIT_SUMMARY_v1",
+  "summary": {
+    "baseMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+    "rpmInitialRecordCount": 466,
+    "rpmFinalRecordCount": 468,
+    "rpmSemanticRelationRows": {
+      "BOTH_PRESENT": 460,
+      "LEGIT_CURRICULUM_DIFFERENCE": 6,
+      "NEEDS_EVIDENCE": 2
+    },
+    "rpmDefectTypeRows": {
+      "SAFE_EXISTING_REUSE": 97,
+      "DIRECT_OVERMAPPING": 26,
+      "FAMILY_INCOMPLETE": 16,
+      "WRONG_PT": 19,
+      "RPM_ONLY_VALID": 186,
+      "BINDING_ONLY_GAP": 102,
+      "WRONG_TEMPLATE": 12,
+      "RPM_2015_OMISSION": 2,
+      "LEGIT_CURRICULUM_DIFFERENCE": 6,
+      "NEEDS_EVIDENCE": 2
+    },
+    "omissions": {
+      "2022": 0,
+      "initial2015": 2,
+      "repaired2015": 2
+    },
+    "crosswalkInitialRecordCount": 466,
+    "crosswalkFinalRecordCount": 468,
+    "crosswalkInitialSummary": {
+      "middle1": {
+        "recordCount": 232,
+        "DIRECT_ACTIVE": 98,
+        "FAMILY_ACTIVE": 10,
+        "DIRECT_BINDING_GAP": 46,
+        "FAMILY_BINDING_GAP": 10,
+        "RPM_ONLY": 68
+      },
+      "middle2": {
+        "recordCount": 234,
+        "DIRECT_ACTIVE": 30,
+        "FAMILY_ACTIVE": 2,
+        "DIRECT_BINDING_GAP": 74,
+        "FAMILY_BINDING_GAP": 8,
+        "RPM_ONLY": 120
+      }
+    },
+    "crosswalkFinalSummary": {
+      "middle1": {
+        "recordCount": 232,
+        "DIRECT_ACTIVE": 61,
+        "FAMILY_ACTIVE": 2,
+        "DIRECT_BINDING_GAP": 22,
+        "FAMILY_BINDING_GAP": 2,
+        "RPM_ONLY": 145
+      },
+      "middle2": {
+        "recordCount": 236,
+        "DIRECT_ACTIVE": 32,
+        "FAMILY_ACTIVE": 2,
+        "DIRECT_BINDING_GAP": 68,
+        "FAMILY_BINDING_GAP": 14,
+        "RPM_ONLY": 120
+      }
+    },
+    "crosswalkDefectTypeRows": {
+      "SAFE_EXISTING_REUSE": 97,
+      "DIRECT_OVERMAPPING": 26,
+      "FAMILY_INCOMPLETE": 16,
+      "WRONG_PT": 23,
+      "RPM_ONLY_VALID": 188,
+      "BINDING_ONLY_GAP": 106,
+      "WRONG_TEMPLATE": 12
+    },
+    "crosswalkFinalRpmOnlyRows": 265,
+    "bindingOnlyGapCrosswalkRows": 106,
+    "semanticRepairs": {
+      "KEEP": 379,
+      "DIRECT_TO_FAMILY": 6,
+      "DIRECT_OR_FAMILY_TO_RPM_ONLY": 77,
+      "PT_TPL_REMAP": 4,
+      "BINDING_STATUS_RECONCILED": 0,
+      "NEW_RPM_PATH": 2,
+      "unresolvedSemantic": 2
+    },
+    "crosswalkMissingRows": 0,
+    "crosswalkOrphanRows": 0,
+    "curriculumCoverageSentinelErrors": 0,
+    "duplicateRpmSemanticTuples": 0,
+    "viewParityErrors": 0,
+    "validationResults": {
+      "activeProblemTypeTemplateParentIntegrityErrors": 0,
+      "exactBindingStatusMismatchErrors": 0,
+      "incompleteFamilyCandidateSets": 0,
+      "directSemanticEquivalenceErrors": 0
+    },
+    "globalActive": {
+      "activePackCount": 10,
+      "activePacks": [
+        "DERIVATIVE",
+        "FUNCTIONS_GRAPHS",
+        "GEOMETRY_EQUATIONS",
+        "H1_FOUNDATION",
+        "INTEGRAL_CALCULUS",
+        "LIMIT_CONTINUITY",
+        "MIDDLE1",
+        "MIDDLE_GEOMETRY",
+        "PROBABILITY_STATISTICS",
+        "SETS_PROPOSITIONS"
+      ],
+      "activeProblemTypeCount": 244,
+      "activeTemplateCount": 655,
+      "exactActiveBindingCount": 722,
+      "registryFingerprint": "49086c030f2d770d18191be7b680997884ae7149ed71edfed637880b4f46d2a2"
+    },
+    "remainingNeedsEvidenceRows": [
+      {
+        "curriculum": "2022",
+        "scope": "M2-2",
+        "rpmRecordId": "M2-RPM-182",
+        "l3": "각의 이등분선",
+        "l4": "각의 이등분선 성질"
+      },
+      {
+        "curriculum": "2022",
+        "scope": "M2-2",
+        "rpmRecordId": "M2-RPM-183",
+        "l3": "각의 이등분선",
+        "l4": "거리 관계"
+      }
+    ],
+    "migrationGapReassessment": {
+      "previousMigrationGapItems": 20,
+      "existingReuseRecovered": 4,
+      "actualBindingOnlyGap": 4,
+      "remainingSemanticGap": 12,
+      "affectedM1Items": 10,
+      "affectedM2Items": 10,
+      "relatedPreexistingReuseCount": 1,
+      "shinheungQ6Q7": [
+        {
+          "questionNo": 6,
+          "finalDisposition": "EXISTING_REUSE",
+          "rpmRecordId": "M2-RPM-070",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+          "exactBindingStatus": "ACTIVE"
+        },
+        {
+          "questionNo": 7,
+          "finalDisposition": "EXISTING_REUSE",
+          "rpmRecordId": "M2-RPM-070",
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+          "exactBindingStatus": "ACTIVE"
+        }
+      ]
+    },
+    "migrationGapAuthoritySha256": "3f8f92151574895863c6789bb0e239b13a28183942ba8f5f18cb11d3c3c5dcc1"
+  },
+  "sourceEvidence": {
+    "curriculum2015": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=60747&lev=0&m=0404",
+    "curriculum2022": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0",
+    "teacherLearningResource2015": "https://padlet-uploads.storage.googleapis.com/2380002185/d62b651f86a28ba20eb917bfa0c4892c/2015_______________________.pdf",
+    "rhsRhaSpecificEvidence": "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json"
+  },
+  "artifactPaths": [
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/migration-gap-reassessment.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json",
+    "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json"
+  ]
+}
