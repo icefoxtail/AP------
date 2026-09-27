@@ -1,0 +1,83 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_V1",
+  "examFile": "25_왕운중_2학기_기말_중2_기출.js",
+  "examUid": "25_왕운중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "lane": "B",
+  "stage": "CREATE",
+  "sourceBlobSha": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925",
+  "inputCommit": "9e75d7c2be5ae50b962dade49cc403b51bef6887",
+  "totalQuestions": 23,
+  "changedQuestions": [],
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "ADD": 0,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 8,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 15,
+    "TRUE_HOLD": 0
+  },
+  "unresolvedItems": [
+    {
+      "questions": [
+        6,
+        7,
+        8,
+        10,
+        11,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "reason": "RPM path exists but exact middle2 crosswalk/ACTIVE binding is unavailable; see meta sidecar"
+    }
+  ],
+  "nextState": "READY_FOR_REVIEW",
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "9e75d7c2be5ae50b962dade49cc403b51bef6887",
+    "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+    "sourcePath": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+    "sourceBlobSha": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925"
+  },
+  "authorityRefs": [
+    "meta:archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.meta.json",
+    "evidence:archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.evidence.json",
+    "resolver:a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+    "resolverContract:75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+    "crosswalk:0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeRegistry:c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "rpmMaster:73ba7fef0a16081e4772d40c0a874cf45c486857"
+  ],
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.meta.json",
+    "sha256": "sha256:cb1109f7736c835361980467d395379ef3bf5a1a83410ddb8ae5512a3cd356a4"
+  },
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "validatorSummary": {
+    "status": "CREATE_CONTRACT_PROJECTION_PASS",
+    "officialResolverCli": "NOT_RUN_IN_CONNECTOR_RUNTIME",
+    "questionCount": 23,
+    "sourceHoldCount": 0
+  },
+  "commitBinding": "SELF",
+  "updatedAt": "2026-09-28T00:38:28+09:00"
+}
