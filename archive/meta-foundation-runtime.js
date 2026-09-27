@@ -196,6 +196,9 @@
     const next = {
       ...catalog,
       records: nextRecords,
+      // Pack taxonomy rows describe advanced capabilities and legacy routes.
+      // Keep the published RPM parents as the authority for the basic scope UI.
+      basicTaxonomy: catalog.basicTaxonomy || catalog.taxonomy || [],
       taxonomy: legacyTaxonomy.concat(runtime.taxonomyRows || []),
       indexVersion: String(catalog.indexVersion || "") + ":mf:" + runtime.runtimeVersion,
       metaFoundationRuntimeVersion: runtime.runtimeVersion,
