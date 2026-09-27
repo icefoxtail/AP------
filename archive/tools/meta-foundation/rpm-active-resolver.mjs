@@ -591,7 +591,11 @@ export function mapResolverDispositionToR2E(disposition) {
 export function validateRuntimeMetaParity({ questionUid, sourceFingerprint, resolverEvidence, difficultyEvidence, candidateMeta, runtimeRecord } = {}) {
   const errors = [];
   if (!runtimeRecord || runtimeRecord.questionUid !== questionUid) errors.push('RUNTIME_META_UID_MISMATCH');
-  if (runtimeRecord?.sourceFingerprint !== sourceFingerprint) errors.push('RUNTIME_META_SOURCE_FINGERPRINT_MISMATCH');
+  // Runtime sourceFingerprint remains the Archive2/identity-map fingerprint.
+  // The resolver has a separate canonical fingerprint over source tuple hashes.
+  const resolverSourceFingerprint = runtimeRecord?.resolverSourceFingerprint || runtimeRecord?.sourceFingerprint;
+  if (resolverSourceFingerprint !== sourceFingerprint) errors.push('RUNTIME_META_SOURCE_FINGERPRINT_MISMATCH');
+  if (candidateMeta?.archiveSourceFingerprint && runtimeRecord?.sourceFingerprint !== candidateMeta.archiveSourceFingerprint) errors.push('RUNTIME_META_ARCHIVE_SOURCE_FINGERPRINT_MISMATCH');
   for (const field of ['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']) {
     if (!equal(runtimeRecord?.[field], candidateMeta?.[field])) errors.push(`RUNTIME_META_FIELD_PARITY_FAIL:${field}`);
   }
@@ -641,7 +645,13 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
     const candidateMeta = item?.candidateMeta || {};
     if (question) {
       for (const field of [...ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT, 'standardUnitKey', 'subUnitKey']) {
-        if (!equal(candidateMeta[field] ?? null, question[field] ?? null)) errors.push(`R2E_META_INPUT_CANDIDATE_JS_PARITY_FAIL:${uid}:${field}`);
+        const comparable = value => {
+          if (field === 'problemTypeKey' || field === 'templateKey') return text(value) || null;
+          if (field === 'crossConceptKeys' || field === 'conditionKeys') return Array.isArray(value) ? value : [];
+          if (field === 'integrationPattern') return text(value) || 'NONE';
+          return value ?? null;
+        };
+        if (!equal(comparable(candidateMeta[field]), comparable(question[field]))) errors.push(`R2E_META_INPUT_CANDIDATE_JS_PARITY_FAIL:${uid}:${field}`);
       }
     }
     const resolver = validateResolverEvidence(input, item?.resolverEvidence, { repoRoot, registry: activeRegistry });

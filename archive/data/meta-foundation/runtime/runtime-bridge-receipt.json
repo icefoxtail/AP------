@@ -15,10 +15,10 @@
     "limitContinuityCatalogJoinMismatch": 0,
     "limitContinuityDifficultyDeferred": 0,
     "limitContinuityAutomaticEligibleExpected": 184,
-    "combinedRuntimeRecords": 5087,
-    "combinedUniqueUid": 5087,
-    "combinedUniqueSourceIdentity": 5087,
-    "combinedRuntimeCatalogJoin": 5087,
+    "combinedRuntimeRecords": 5228,
+    "combinedUniqueUid": 5228,
+    "combinedUniqueSourceIdentity": 5228,
+    "combinedRuntimeCatalogJoin": 5228,
     "combinedRuntimeCatalogJoinMismatch": 0,
     "productionExamJsMutation": 2,
     "limitContinuityDifficultyReviewed": 104,
@@ -128,7 +128,11 @@
       "PROBABILITY_STATISTICS": 704,
       "MIDDLE_GEOMETRY": 928,
       "MIDDLE1": 381
-    }
+    },
+    "combinedRuntimeCatalogDirectJoin": 5228,
+    "combinedRuntimeCatalogSourceIdentityRepairJoin": 0,
+    "reviewOverrideUidCount": 141,
+    "reviewOverrideDigest": "f4ca4724d6576056d052ea191f351bb084f5c63c88628b80a552d9d3ce4fb3f0"
   },
   "archive2JoinContract": {
     "identityAuthority": "questionUid with sourceFile#sourceOrdinal parity; reviewed source-identity repair only when catalogIdentityRepairVerified=true",
@@ -166,5 +170,88 @@
     "Current active runtime join is 5087/5087 with UID/source-identity duplicate counts 0.",
     "H1_FOUNDATION joins Archive 2.0 by direct questionUid for 1170/1170 rows.",
     "H1_FOUNDATION retains 130 explicit item holds; 650 rows are selectable by the production eligibility gate."
-  ]
+  ],
+  "reviewedApplyV1": {
+    "schemaVersion": "archive-reviewed-runtime-receipt-v1",
+    "status": "PASS",
+    "activePackCount": 10,
+    "runtimeRecordCount": 5228,
+    "uniqueUidCount": 5228,
+    "uniqueSourceIdentityCount": 5228,
+    "archive2DirectJoinCount": 5228,
+    "archive2SourceIdentityRepairJoinCount": 0,
+    "archive2JoinMismatchCount": 0,
+    "canonicalGateCounts": {
+      "brokenL4ParentCount": 0,
+      "unregisteredL3Count": 0,
+      "unregisteredL4Count": 0,
+      "unregisteredCrossConceptCount": 0,
+      "bindingMismatchCount": 0
+    },
+    "overrideUidCount": 141,
+    "overrideDigest": "f4ca4724d6576056d052ea191f351bb084f5c63c88628b80a552d9d3ce4fb3f0",
+    "packCounts": [
+      {
+        "packId": "DERIVATIVE",
+        "records": 320,
+        "runtimeFile": "derivative-v1.json",
+        "runtimeSha256": "f0e14ab3d0f87031eb106c24cb9551a3802f4bd22cbe08b3f9db50f86e0d74f4"
+      },
+      {
+        "packId": "FUNCTIONS_GRAPHS",
+        "records": 520,
+        "runtimeFile": "functions-graphs-v1.json",
+        "runtimeSha256": "cadef07b9f1226759ed8ce4773ada654b182a81491fcbce0046458b75c96dc79"
+      },
+      {
+        "packId": "GEOMETRY_EQUATIONS",
+        "records": 400,
+        "runtimeFile": "geometry-equations-v1.json",
+        "runtimeSha256": "1e8383e786785654c2be467c83e8645494ae40bab54a7ab97b02332fd1cbac8b"
+      },
+      {
+        "packId": "H1_FOUNDATION",
+        "records": 1170,
+        "runtimeFile": "h1-foundation-v1.json",
+        "runtimeSha256": "eaf24ce14b13cb9a7fb4b19dc64dedc6a47e10d7c63548d687dce20af54f87a8"
+      },
+      {
+        "packId": "INTEGRAL_CALCULUS",
+        "records": 126,
+        "runtimeFile": "integral-calculus-v1.json",
+        "runtimeSha256": "3357a57c1d1512f08c9f87c61da020669d9b47bd06a6f106629a4f70d786acd4"
+      },
+      {
+        "packId": "LIMIT_CONTINUITY",
+        "records": 184,
+        "runtimeFile": "limit-continuity-v1.json",
+        "runtimeSha256": "3e1cf8802f66d420bc33fce4e1238f8bf3050e11b6a5004d78322c8050653049"
+      },
+      {
+        "packId": "MIDDLE_GEOMETRY",
+        "records": 948,
+        "runtimeFile": "middle-geometry-v1.json",
+        "runtimeSha256": "272d3f943bd81a4989d5a98759ad790724157bf971bce5992dcd032ae89ff4d8"
+      },
+      {
+        "packId": "MIDDLE1",
+        "records": 502,
+        "runtimeFile": "middle1-v1.json",
+        "runtimeSha256": "9a65fb07fd4e6cd10eef3c083e5ef23e6723c0c9ee229475293e6688981866c4"
+      },
+      {
+        "packId": "PROBABILITY_STATISTICS",
+        "records": 704,
+        "runtimeFile": "probability-statistics-v1.json",
+        "runtimeSha256": "1eb818dc465fc03a0563cc07f4fe3a3e72af64c064a05b84de951bb96d2cf5c7"
+      },
+      {
+        "packId": "SETS_PROPOSITIONS",
+        "records": 354,
+        "runtimeFile": "sets-propositions-v1.json",
+        "runtimeSha256": "3b443aa78c44bd0c121f5ccfb83c85034cba702391933d0c50ad35dcd7bb8e6e"
+      }
+    ],
+    "latestPacketApplyId": ""
+  }
 }
