@@ -1,8 +1,8 @@
 {
   "schemaVersion": "M1_R2E_HOLD_SOURCE_ADJUDICATION_v1",
   "runId": "m1-b01-b31-r2e-20260927",
-  "updatedAt": "2026-09-27T17:38:41.9317231Z",
-  "productionCandidateHead": "e614023c975e8dfd47427ec34a6fdf68b90b76e6",
+  "updatedAt": "2026-09-27T17:43:36.7514041Z",
+  "productionCandidateHead": "e17d9d8a41874b5f5423ae809fdf55ea80b42e00",
   "scope": "Only inherited HOLD and source-correction cases B07-B15. Ordinary PASS items were not inspected.",
   "sourceDocuments": [
     {
@@ -90,7 +90,9 @@
       "B": 7,
       "hold": "IMPOSSIBLE_SOURCE_TRIANGLE",
       "candidateCommit": "ad6b2e8ba",
-      "disposition": "MINIMAL_SOURCE_REPAIR"
+      "disposition": "MINIMAL_SOURCE_REPAIR",
+      "followupSolutionCommit": "e17d9d8a4",
+      "studentSolutionLevel": "M1 congruence criteria; no sine law in the student explanation"
     },
     {
       "sourcePage": 1,
@@ -121,11 +123,12 @@
     {
       "sourcePage": 2,
       "q": 8,
-      "status": "R2E_META_CLOSURE_PENDING",
-      "disposition": "D_SOURCE_VISUAL_CONFIRMED",
+      "status": "SOLUTION_REPAIRED_LOCAL_R2E_FINAL_PENDING",
+      "disposition": "D_SOURCE_CONFIRMED_AND_SOLUTION_REPAIRED",
       "hold": "UNVERIFIABLE_VISUAL_ANGLE_SECTORS",
-      "finding": "Full original page confirms parallel-line angle marks and labels; keyed answer ① retained.",
-      "B": 9
+      "finding": "The full source shows the 150° turn, 2x and 3x transfers across parallel lines, and the 55° end angle. The resulting equations give x=30° and y=145°.",
+      "B": 9,
+      "candidateCommit": "309e2fd1b"
     },
     {
       "sourcePage": 3,
