@@ -81,11 +81,11 @@
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_POLYGON_ANGLE_AND_COUNT|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:8795a6e3c398147b7f130e665511bb2310a18e5a24e6ec832c1427103720b8f7",
@@ -150,19 +150,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -179,8 +179,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -197,12 +197,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342"
+        "evidenceSha": "sha256:25e876dcdfa8d78d24c6ff61146271853baaeba985e9ca200b2017b794fd978c"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -215,14 +215,14 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 1 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 1 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:a0e68e23bf0d93886a07e1338c6ee43b4fa815396a3831e5b6a855c84bffae1a",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:8c58ddeb211ff6cd24ef959974f7994c77e36d54ba7df8ed0e777f6e2cc1be2a"
+        "evidenceSha": "sha256:33e4a1d17050614201cdef7be4f2c45ce201c91bc78968532e4c7eeadbc631eb"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -236,9 +236,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342",
+        "inputEvidenceSha": "sha256:25e876dcdfa8d78d24c6ff61146271853baaeba985e9ca200b2017b794fd978c",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:fddad39bdca81d272771f137cf8ad12dcc2deb3c4879121dd0b4813135da71ae"
+        "runSha": "sha256:59e9f6fc93f42173b493eaaec10d6e020d3b08b4b2d1cba78c829e866a2f2424"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_a9eac3f5e2ddf8b92962e58e0c8b7c73e365880c90157dd5526ccdae563bd145",
@@ -280,18 +280,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: 각 보기를 하나씩 확인하자; 각 보기를 하나씩 확인하자.\n\n② 삼각형의 내각의 합은 $180^\\circ$이다.\n③ 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.\n④ 삼각형의 한 외각은 그 외각과 이웃하지 않는 두 내각의 합과 같다.\n⑤ 한 꼭짓점에서 내각과 그에 이웃한 외각의 합은 $180^\\circ$이다.\n\n정다각형은 삼각형, 사각형, 오각형처럼 변의 수가 $3$ 이상이면 계속 만들 수 있으므로 $5$가지만 있는 것이 아니다.\n\n따라서 옳지 않은 것은 ①이다.",
-        "resolverEvidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342",
-        "difficultyEvidenceSha": "sha256:8c58ddeb211ff6cd24ef959974f7994c77e36d54ba7df8ed0e777f6e2cc1be2a"
+        "resolverEvidenceSha": "sha256:25e876dcdfa8d78d24c6ff61146271853baaeba985e9ca200b2017b794fd978c",
+        "difficultyEvidenceSha": "sha256:33e4a1d17050614201cdef7be4f2c45ce201c91bc78968532e4c7eeadbc631eb"
       },
-      "r2eFinalDisposition": "NEW_L4",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_a9eac3f5e2ddf8b92962e58e0c8b7c73e365880c90157dd5526ccdae563bd145",
-        "resolverEvidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342",
-        "action": "R2E_TEMPLATE_CROSSWALK_MIGRATION"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:8795a6e3c398147b7f130e665511bb2310a18e5a24e6ec832c1427103720b8f7",
@@ -333,8 +327,8 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:7acc88a65794e3e98980a11d8d500fd3bbc55338d99ce76904a6599263ead342",
-        "difficultyEvidenceSha": "sha256:8c58ddeb211ff6cd24ef959974f7994c77e36d54ba7df8ed0e777f6e2cc1be2a",
+        "resolverEvidenceSha": "sha256:25e876dcdfa8d78d24c6ff61146271853baaeba985e9ca200b2017b794fd978c",
+        "difficultyEvidenceSha": "sha256:33e4a1d17050614201cdef7be4f2c45ce201c91bc78968532e4c7eeadbc631eb",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -344,9 +338,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "03e80a270fdc5eed3b7a3583fe721da2aad3ae05c8eabc4f6713a0d174240f34"
+        "rawQuestionHash": "6bbdf5dfcecc75951c22c264e28eb63a47eea15b0b818a47e2c65d696e59987f"
       }
     },
     {
@@ -416,11 +410,11 @@
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_POLYGON_ANGLE_AND_COUNT|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:4d6e1bd18cc7ae1ef681f504870cc975870bd070b5dd2f44d87f3bd875bb851d",
@@ -485,19 +479,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -514,8 +508,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -532,12 +526,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:852292a6b103328d2e0f6b045db6cd4801bd45d85b0d8eb73e9a1cfdfaee223e"
+        "evidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -550,14 +544,14 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 1 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 1 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:65d6263c3548ac7c48bc10b08b14edb815e74b705920d30dd9c59bbdf36fec84",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:ff914cc13df21281a79e9aceafd5b3a19c559e92ce0d1ad83742f9db4d6c9edb"
+        "evidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -571,9 +565,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:852292a6b103328d2e0f6b045db6cd4801bd45d85b0d8eb73e9a1cfdfaee223e",
+        "inputEvidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:fc4e09634b34c96d4ba67e65b17fdcbff84a3f194b7951af925ed7bbe2ec6569"
+        "runSha": "sha256:1e81bb5c12f6cba923f1a5611c7f6c191aa61d8ef6d64cb469e9d01a58c0ba44"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_daa7ce7f210c6a3765a516e3a08afc1576426ae519c240a1724b71e67faf5ee9",
@@ -615,10 +609,10 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 정육각형의 내각의 합부터 구하자; 정육각형의 내각의 합부터 구하자.\n\n$(6-2)\\times180^\\circ=720^\\circ$\n\n정육각형은 여섯 내각의 크기가 모두 같으므로\n\n$720^\\circ\\div6=120^\\circ$\n\n따라서 정답은 ④이다.",
-        "resolverEvidenceSha": "sha256:852292a6b103328d2e0f6b045db6cd4801bd45d85b0d8eb73e9a1cfdfaee223e",
-        "difficultyEvidenceSha": "sha256:ff914cc13df21281a79e9aceafd5b3a19c559e92ce0d1ad83742f9db4d6c9edb"
+        "resolverEvidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389",
+        "difficultyEvidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7"
       },
       "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
@@ -662,8 +656,8 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevel": "하",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:852292a6b103328d2e0f6b045db6cd4801bd45d85b0d8eb73e9a1cfdfaee223e",
-        "difficultyEvidenceSha": "sha256:ff914cc13df21281a79e9aceafd5b3a19c559e92ce0d1ad83742f9db4d6c9edb",
+        "resolverEvidenceSha": "sha256:2e864fcdc4955680d10a11c3f1b50dc958752b71ce100c2cbb069769f154b389",
+        "difficultyEvidenceSha": "sha256:878ba92bb30dbfa9cbdee24a7b9b1b5524511289f55bb6770ec49e980b16c5e7",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -673,9 +667,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "549701c879a0d4982ae7461e2d1dee93dbcf9a4a2b8bcec27755a3eb8f64ba68"
+        "rawQuestionHash": "6ade4a67bb1f4c702cf4105aaccc20b947bce21abbd044b49697e637b47a8d78"
       }
     },
     {
@@ -738,11 +732,11 @@
         "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
         "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-06|M1-06-POLYGON_CIRCLE|PT_M1_POLYGON_ANGLE_AND_COUNT|MIDDLE1",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -801,19 +795,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -830,8 +824,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -848,12 +842,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39"
+        "evidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -866,14 +860,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:db05bdeedb04687d51f853f041ed2e1a439ec5beeabb370a88c8f51cc5131e59",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:c91d87be7af67dd00fe58b2d967576c5ba4f85b7c6fe07de4bec5bac7389e89f"
+        "evidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -887,9 +881,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39",
+        "inputEvidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:a0f3cf03448ec44faf7d85fcc13bf89eecdcead4af73797dfa23c451218524ea"
+        "runSha": "sha256:41aba2c8a63f341a471791c7427561c5fb33a2030e0b642105c949a3b64e8d72"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_5542a4c2aaae9f9f4837f6596b552e9ff372475fdbc11c51d9a57817f4309d34",
@@ -931,18 +925,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다; 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.\n\n주어진 네 외각의 합은\n\n$70^\\circ+80^\\circ+60^\\circ+60^\\circ=270^\\circ$\n\n따라서\n\n$x=360^\\circ-270^\\circ=90^\\circ$\n\n정답은 ③이다.",
-        "resolverEvidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39",
-        "difficultyEvidenceSha": "sha256:c91d87be7af67dd00fe58b2d967576c5ba4f85b7c6fe07de4bec5bac7389e89f"
+        "resolverEvidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1",
+        "difficultyEvidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_5542a4c2aaae9f9f4837f6596b552e9ff372475fdbc11c51d9a57817f4309d34",
-        "resolverEvidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_5542a4c2aaae9f9f4837f6596b552e9ff372475fdbc11c51d9a57817f4309d34",
@@ -978,8 +966,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:44c5df4321314941b102f9dc64bcf92432ee277cc3ea2611694e6e6cf0a6bd39",
-        "difficultyEvidenceSha": "sha256:c91d87be7af67dd00fe58b2d967576c5ba4f85b7c6fe07de4bec5bac7389e89f",
+        "resolverEvidenceSha": "sha256:eb20a879bca779d2586314004198e49a412efdf3593354c370142243c24f5ca1",
+        "difficultyEvidenceSha": "sha256:20dd554ad3d9a9fd30ae26913ecbdf5fca1384427f640110c5344c3d3602f546",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -989,9 +977,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "a52a607c0c91c6a9d67205a9995ff8870468b71bd91cb4aea597c06a3e5ea2a9"
+        "rawQuestionHash": "89c1886edb74eb921d25540f036ecc2bbfdece70af16791135ea74350155b041"
       }
     },
     {
@@ -1062,7 +1050,7 @@
             "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
             "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO"
           ],
-          "registrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+          "registrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
           "searchMethod": "GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2",
           "searchedScope": {
             "curriculum": "2015",
@@ -1087,7 +1075,7 @@
         "ownerVersion": "",
         "bindingIdentity": "",
         "disposition": "ROUTE_OUT",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "activeSearchEvidence": {
           "status": "COMPLETED_NO_MATCH",
           "searchedGlobalActive": true,
@@ -1117,7 +1105,7 @@
             "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
             "TPL_M1_TRIANGLE_ANGLE_CONDITION_RATIO"
           ],
-          "registrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+          "registrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
           "searchMethod": "GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2",
           "searchedScope": {
             "curriculum": "2015",
@@ -1209,19 +1197,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1238,8 +1226,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1256,12 +1244,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:a24efa1bf9e291d8d4e8fb43625caeff62aa108a883f58a8f5b8cd1ff041ed7f"
+        "evidenceSha": "sha256:79bb2b59af69ad024499963b06249adf910e55660c8541c83da5c6f85d846f41"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1274,14 +1262,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:e1060c4c67a9044a0a7a167271f2ce65d266f063a8e183e09f703d121364fd01",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:1dfeafe31c7bc4a080cb4edaab5283eaa77322c9bc8a68211e6d3ec3759062cd"
+        "evidenceSha": "sha256:58ec3c0c78b3db3962fbbd5be3f99b303f9d8874bdddd3ee396c2a4c43c8a65b"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1295,9 +1283,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:a24efa1bf9e291d8d4e8fb43625caeff62aa108a883f58a8f5b8cd1ff041ed7f",
-        "validationResultSha": "sha256:bd3ba39406b1df401527880e31694ea9ab74e4e7170df654a7b97374fac949bc",
-        "runSha": "sha256:18094a195ba67d819f5fa6f5e1b0213c9404e2c6cff02cd6e334f2d31b8fd5be"
+        "inputEvidenceSha": "sha256:79bb2b59af69ad024499963b06249adf910e55660c8541c83da5c6f85d846f41",
+        "validationResultSha": "sha256:e6c7a59e7fb0a6a63bc6193fef72839b78f079af32bf58255709d807c6a255c2",
+        "runSha": "sha256:92a07076987bd929d97337bc724b5866a5f6bc081ec70656f7529f170fa9d91f"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_687ce5362087736e16f97dc38772d92ad95affd965b566237a494a69f3c6b993",
@@ -1329,7 +1317,7 @@
         "runtimeParity": {
           "status": "PASS",
           "questionUid": "qid_v1_687ce5362087736e16f97dc38772d92ad95affd965b566237a494a69f3c6b993",
-          "resolverEvidenceSha": "sha256:a24efa1bf9e291d8d4e8fb43625caeff62aa108a883f58a8f5b8cd1ff041ed7f"
+          "resolverEvidenceSha": "sha256:79bb2b59af69ad024499963b06249adf910e55660c8541c83da5c6f85d846f41"
         }
       }
     },
@@ -1404,7 +1392,7 @@
         "bindingIdentity": "2015|M1-06|M1-06-POLYGON_CIRCLE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:73b2e56a953a27601ab9178eb162564aa57566048a4d6e81d036242ae19abbe5",
@@ -1469,19 +1457,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1498,8 +1486,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1516,12 +1504,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a"
+        "evidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1534,14 +1522,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:a0cbc4bb48089bc93470dfe4430518983cbaf268cff3f38b60010af799bb0b13",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:7d992fe85c2818bae9af554b1ce2f3bd156ed0d91a79122efcf8a2fdcf11a975"
+        "evidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1555,9 +1543,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a",
+        "inputEvidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:1669278ca48962d0d93685dd274652040ad321a78808abe478c40442124fbe29"
+        "runSha": "sha256:aabc4e2391884cbea75af727887c5e49a48f2235f7037b7c68d7cfe60cfc6e1b"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_b5d0cf0bef81b009219e5d2ebc810d16a2774853c9742ef2acd0f6a02a476069",
@@ -1601,16 +1589,10 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "integrationReason": "CASE_BRANCH: 각 보기를 원의 기본 성질과 비교하자; 각 보기를 원의 기본 성질과 비교하자.\n\n① 지름으로 나눈 반원은 부채꼴이면서 활꼴이 될 수 있다.\n② 원 위의 두 점을 지나는 직선은 할선이다.\n④ 같은 원에서 중심각의 크기가 같으면 두 부채꼴의 넓이도 같다.\n⑤ 원 위의 두 점은 원을 두 개의 호로 나눈다.\n\n하지만 현의 길이는 중심각의 크기에 정비례하지 않는다.\n\n따라서 옳지 않은 것은 ③이다.",
-        "resolverEvidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a",
-        "difficultyEvidenceSha": "sha256:7d992fe85c2818bae9af554b1ce2f3bd156ed0d91a79122efcf8a2fdcf11a975"
+        "resolverEvidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e",
+        "difficultyEvidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_b5d0cf0bef81b009219e5d2ebc810d16a2774853c9742ef2acd0f6a02a476069",
-        "resolverEvidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:73b2e56a953a27601ab9178eb162564aa57566048a4d6e81d036242ae19abbe5",
@@ -1652,8 +1634,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:6ee94b487ce8e034b43d50fef036891ed903f22a7e6d797e279a5bea7aa2be1a",
-        "difficultyEvidenceSha": "sha256:7d992fe85c2818bae9af554b1ce2f3bd156ed0d91a79122efcf8a2fdcf11a975",
+        "resolverEvidenceSha": "sha256:83d81fbca12283dd487281d4a31f1bdea92359ceee901e98038c2172d780060e",
+        "difficultyEvidenceSha": "sha256:1cb7c7c80f11af746e44c9b26c49ca8892ca9ba7d9458e1e6e4e4cece23c3776",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -1665,7 +1647,7 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "713af096e33104f59eed8992cf171374fb2ff435ede1b6d5d9681db517f58cdd"
+        "rawQuestionHash": "9325526ea09318fd60ef14e105029b0dfcccffafa650048abf1ce143b5ef8e34"
       }
     },
     {
@@ -1732,7 +1714,7 @@
         "bindingIdentity": "2015|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -1791,19 +1773,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1820,8 +1802,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -1838,12 +1820,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d"
+        "evidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1856,14 +1838,14 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 1 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 1 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:615f7793dde1633befe4f8a0be156595f9f1c91e8ead835b766fcfd02f8d3641",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:86706124f687f281928f30eb3d34c5b55699248c78c0ab22d819dd4534948f72"
+        "evidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1877,9 +1859,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d",
+        "inputEvidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:5afc105edf22542af7b676999228aeda43e649efc49c053d4214e68d6c9f6636"
+        "runSha": "sha256:a5c821881bc59111b359c79c4e3909e9b4d3a5bc8b38cb307ea232f9789dfa19"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_cceaf0a96c549c2f15b488a46b3f238a7747d6acd06b837da44c8e0dcc75fe15",
@@ -1923,16 +1905,10 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "integrationReason": "SEQUENTIAL: 같은 원에서 부채꼴의 넓이는 중심각의 크기에 비례한다; 같은 원에서 부채꼴의 넓이는 중심각의 크기에 비례한다.\n\n넓이가 $3\\rm\\,cm^2$인 부채꼴의 중심각이 $30^\\circ$이고, 넓이가 $16\\rm\\,cm^2$인 부채꼴의 중심각이 $x^\\circ$이므로\n\n$3:16=30:x$\n\n$3x=480$\n\n$x=160$\n\n따라서 정답은 ④이다.",
-        "resolverEvidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d",
-        "difficultyEvidenceSha": "sha256:86706124f687f281928f30eb3d34c5b55699248c78c0ab22d819dd4534948f72"
+        "resolverEvidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d",
+        "difficultyEvidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_cceaf0a96c549c2f15b488a46b3f238a7747d6acd06b837da44c8e0dcc75fe15",
-        "resolverEvidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_cceaf0a96c549c2f15b488a46b3f238a7747d6acd06b837da44c8e0dcc75fe15",
@@ -1968,8 +1944,8 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:20bdb2a75245bbd0de46cb265de53ef5f4c8a7bac4793ba4a070af06dbe7064d",
-        "difficultyEvidenceSha": "sha256:86706124f687f281928f30eb3d34c5b55699248c78c0ab22d819dd4534948f72",
+        "resolverEvidenceSha": "sha256:d705a0e1029788b39237d3456d694782854229f8b2bc09223c914022906ac58d",
+        "difficultyEvidenceSha": "sha256:bebc5da45230a1e198956daba85e6134c7db2e7a83f353a73e47e86702c80902",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -1981,7 +1957,7 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "cd2d4d679ca8451f8183d7856b8358db7a67da4f00a97a5d009761894d6731a5"
+        "rawQuestionHash": "a0484f818a3342868e9f7e2d46d705df386815fbbd61f668160b11b61e9f916e"
       }
     },
     {
@@ -2048,7 +2024,7 @@
         "bindingIdentity": "2015|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -2107,19 +2083,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2136,8 +2112,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2154,12 +2130,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74"
+        "evidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2172,14 +2148,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 3 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 3 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:25d33d9db57e1cc7341badcb40c42c821af4f59062910a8f367a1f11c45d43ba",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:33a594d77602711b129c72add2549ef3384385cbbf956ef659eccc43575e751a"
+        "evidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2193,9 +2169,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74",
+        "inputEvidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:3352e5c088c76bcdef23549771a7901b7d21406f87e6392dda9382d2188808df"
+        "runSha": "sha256:faa9d64289a0baf2d8495063ccb80d21ac7ea7e202a98877edbbbe8c2f8d406f"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_13dcd5dfc42ba575f593fb72120beda274e3381a167b5c7362da4caef839c622",
@@ -2239,16 +2215,10 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "integrationReason": "SEQUENTIAL: 어두운 두 부분의 둘레를 이루는 원호와 선분을 각각 묶어 계산하자; 원호의 길이는\n\n$\\pi\\times6=6\\pi\\rm\\,cm$\n\n이다.\n\n왼쪽 끝점을 중심으로 보는 바깥쪽 원호는 반지름 $12\\rm\\,cm$, 중심각 $45^\\circ$인 원호이므로\n\n$2\\pi\\times12\\times\\dfrac{45}{360}=3\\pi\\rm\\,cm$\n\n이다.\n\n또 어두운 두 부분에 나타나는 직선 경계의 길이를 합하면 $12\\rm\\,cm$이다.\n\n따라서 전체 둘레는\n\n$6\\pi+3\\pi+12=9\\pi+12\\rm\\,cm$\n\n이므로 정답은 ②이다.",
-        "resolverEvidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74",
-        "difficultyEvidenceSha": "sha256:33a594d77602711b129c72add2549ef3384385cbbf956ef659eccc43575e751a"
+        "resolverEvidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023",
+        "difficultyEvidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_13dcd5dfc42ba575f593fb72120beda274e3381a167b5c7362da4caef839c622",
-        "resolverEvidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_13dcd5dfc42ba575f593fb72120beda274e3381a167b5c7362da4caef839c622",
@@ -2284,8 +2254,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:e41ce6a138477694a60fe41df4ce1ab67e55dcad118e094eb159aec7d87eda74",
-        "difficultyEvidenceSha": "sha256:33a594d77602711b129c72add2549ef3384385cbbf956ef659eccc43575e751a",
+        "resolverEvidenceSha": "sha256:71aee6927b09997a920592ebe2ec0b040447df3d8dec80b11375a71e6b1c3023",
+        "difficultyEvidenceSha": "sha256:3977667ef2bcace9e5ac1dc116516fe6f595ee94f2f3b75228da633138dbcb69",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -2297,7 +2267,7 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "833ae257967950e532ad15403644aa00d8ea6b121d345b07d52ab530871eedc6"
+        "rawQuestionHash": "0bd36960e3355afddf77879449e299e1f7c256c66941bbe882fab072a28d01f0"
       }
     },
     {
@@ -2360,11 +2330,11 @@
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
         "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE|PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS|MIDDLE1",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -2423,19 +2393,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2452,8 +2422,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2470,12 +2440,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231"
+        "evidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2488,14 +2458,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:4f02be2602f27a5eac6dbc51ded1715f9aa3de0504fec01d99ae1bb4d0b01d33",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:0652125e4336d61de1d07167590236e11ef3fc23f0cd36c1cbfdcee136d47ecc"
+        "evidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2509,9 +2479,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231",
+        "inputEvidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:79e17ae3127d4de187ff972284ba1463bda27e079354202de79c6c010b27ea23"
+        "runSha": "sha256:c9e5402a5eee662c9e91a9a1949e11a70b5c458d5a92e00f71f3dd9bdea2668d"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_5c4e9cf6e09e83dfc8025ef2bbb0b69d4c3bdcedd72209ed27fbd26b00c723b0",
@@ -2553,18 +2523,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: 각 보기를 다면체의 성질과 비교하자; 각 보기를 다면체의 성질과 비교하자.\n\n① $n$각뿔은 밑면의 모서리 $n$개와 옆모서리 $n$개가 있으므로 모서리는 $2n$개이다.\n② 사각뿔대의 옆면은 사다리꼴이다.\n④ 정십이면체의 한 면은 정오각형이다.\n⑤ 육각뿔은 $7$면체이고 오각기둥도 $7$면체이다.\n\n각뿔대의 두 밑면은 서로 평행하고 닮은 도형이지만 일반적으로 크기가 다르므로 합동이 아니다.\n\n따라서 옳지 않은 것은 ③이다.",
-        "resolverEvidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231",
-        "difficultyEvidenceSha": "sha256:0652125e4336d61de1d07167590236e11ef3fc23f0cd36c1cbfdcee136d47ecc"
+        "resolverEvidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89",
+        "difficultyEvidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_5c4e9cf6e09e83dfc8025ef2bbb0b69d4c3bdcedd72209ed27fbd26b00c723b0",
-        "resolverEvidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_5c4e9cf6e09e83dfc8025ef2bbb0b69d4c3bdcedd72209ed27fbd26b00c723b0",
@@ -2600,8 +2564,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:9ede09d5551d073e77df3626fadb0e7feca833593210154328acca386758a231",
-        "difficultyEvidenceSha": "sha256:0652125e4336d61de1d07167590236e11ef3fc23f0cd36c1cbfdcee136d47ecc",
+        "resolverEvidenceSha": "sha256:551bbacb93ff10be9bf0184920ee6bbe6b5401bc156639905a06deb024505c89",
+        "difficultyEvidenceSha": "sha256:28df010cfda0c36a36df3d071357d17af441d57874f96df09037e148e1bfa5a7",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -2611,9 +2575,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "09ec9b2d281d5f4a357e2b8a7861d277f3827c8e2b4c35b4df8546a5ee09460c"
+        "rawQuestionHash": "31b6f88b648bc91b0f1c102b2639237dfb471134e901153f2f09f28794db4c06"
       }
     },
     {
@@ -2676,11 +2640,11 @@
         "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
         "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE|PT_M1_POLYHEDRON_COMPONENT_COUNT|MIDDLE1",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -2739,19 +2703,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2768,8 +2732,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -2786,12 +2750,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:1a1f42d99328a3229c312c6a98275c2bbdb365b68f4b4bb4ab97b551695287ef"
+        "evidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2804,14 +2768,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:d17f5d800aec2b069d6070520d4c518f9d2024855a3e0e3f03b75d57f3afe33e",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:04d40f18c272b580797a7ac3e1ee1065673dc27718766b09a06ffcc6174154ad"
+        "evidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2825,9 +2789,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:1a1f42d99328a3229c312c6a98275c2bbdb365b68f4b4bb4ab97b551695287ef",
+        "inputEvidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:895c59e3ca822a73a6eb58e3bf2b716ec23d231a28595ebf92663d680a8bdd3f"
+        "runSha": "sha256:199d4aaed65fc0f0f88ef6482a6b8e253ec99d6a4e635827f7db9e7bf163a99f"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_18321791eaafc4be1438f33e31121ab50222eee576b517569efab13047159b30",
@@ -2869,10 +2833,10 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 옆면이 등변사다리꼴이고 두 밑면이 서로 평행하므로 이 다면체는 각뿔대이다; 옆면이 등변사다리꼴이고 두 밑면이 서로 평행하므로 이 다면체는 각뿔대이다.\n\n$n$각뿔대의 모서리는\n\n위 밑면 $n$개 + 아래 밑면 $n$개 + 옆모서리 $n$개\n\n이므로 모두 $3n$개이다.\n\n$3n=18$\n\n$n=6$\n\n따라서 육각뿔대이므로 정답은 ①이다.",
-        "resolverEvidenceSha": "sha256:1a1f42d99328a3229c312c6a98275c2bbdb365b68f4b4bb4ab97b551695287ef",
-        "difficultyEvidenceSha": "sha256:04d40f18c272b580797a7ac3e1ee1065673dc27718766b09a06ffcc6174154ad"
+        "resolverEvidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624",
+        "difficultyEvidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573"
       },
       "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
@@ -2910,8 +2874,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:1a1f42d99328a3229c312c6a98275c2bbdb365b68f4b4bb4ab97b551695287ef",
-        "difficultyEvidenceSha": "sha256:04d40f18c272b580797a7ac3e1ee1065673dc27718766b09a06ffcc6174154ad",
+        "resolverEvidenceSha": "sha256:477712b9e8eaeded7df46b7298b5ffc3ea70689be42c1d25fdb9f6e4a38c7624",
+        "difficultyEvidenceSha": "sha256:1ec15da8c08d5789c108ecddc0d040bed3a49478682b1f8dbc346868c2b89573",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -2921,9 +2885,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "4e0a29289cf1fe8e081f9625b50123e9e73f9e6adf38cd85859843565897b996"
+        "rawQuestionHash": "3facb575eafbfe1982cf536fd071230d16c2b74753c06ae9f54a4b0d6e0e000a"
       }
     },
     {
@@ -2993,11 +2957,11 @@
         "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
         "templateKey": "TPL_M1_ROTATION_SOLID_AXIS_SECTION",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE|PT_M1_ROTATION_SOLID_PROPERTIES|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:6d0bdd03d8970f21a7f53bc4b4f2b1e46cb4ca15708bc057ee1228a8df7530fc",
@@ -3062,19 +3026,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3091,8 +3055,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3109,12 +3073,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b"
+        "evidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3127,14 +3091,14 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 1 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 1 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:8fb104dc011a8bea2e5c90ad5856ca536b1f7408cca5c8d8758fe9870fd1afb3",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:9b1e6f19d094c4cff975f163c1c45096657264bef5c73cdb8d2d7a72caffedae"
+        "evidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3148,9 +3112,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b",
+        "inputEvidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:42fcb932737b3eb7223a66128994e2b1951c4ec1890ffb0b155ca332c9d4edc7"
+        "runSha": "sha256:c4db8b36068351b542c910a7eef84ef48af71495369bef8f3d0049f2abbc8f2c"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_767cce253e71a1f40f7db804e3c363a909683d451c0dbc960938ddb0613df1f5",
@@ -3192,18 +3156,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: 회전축을 포함하는 평면으로 자른 단면을 생각하자; 회전축을 포함하는 평면으로 자른 단면을 생각하자.\n\n원뿔의 단면은 이등변삼각형, 원뿔대의 단면은 등변사다리꼴, 원기둥의 단면은 직사각형 모양이 된다.\n\n구는 중심을 지나는 평면으로 자르면 단면의 경계가 원이 된다.\n\n따라서 바르게 짝 지어진 것은 ⑤이다.",
-        "resolverEvidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b",
-        "difficultyEvidenceSha": "sha256:9b1e6f19d094c4cff975f163c1c45096657264bef5c73cdb8d2d7a72caffedae"
+        "resolverEvidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530",
+        "difficultyEvidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_767cce253e71a1f40f7db804e3c363a909683d451c0dbc960938ddb0613df1f5",
-        "resolverEvidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:6d0bdd03d8970f21a7f53bc4b4f2b1e46cb4ca15708bc057ee1228a8df7530fc",
@@ -3245,8 +3203,8 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevel": "하",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:7c3d9d154c0ff91b9433221fb5b7461f189b2ab89dbb78419fed4b70bd5b920b",
-        "difficultyEvidenceSha": "sha256:9b1e6f19d094c4cff975f163c1c45096657264bef5c73cdb8d2d7a72caffedae",
+        "resolverEvidenceSha": "sha256:4032a8f12213adaec890203597f10e9a0fc14ffbb1495b78309f1cadb2482530",
+        "difficultyEvidenceSha": "sha256:242ba46f8a436a35675fd16aa4b93956df57550f339dc6c9fe7c1aa20c957744",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -3256,9 +3214,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "b8b8e3b559a98f2b90c80bb3484bd1094b42778221886a307c0ac2a22eace6e5"
+        "rawQuestionHash": "c75110bb196f2e6bb9001ca502f372e3b0041d7e6e3beac3910b4d4a001bfc5c"
       }
     },
     {
@@ -3328,11 +3286,11 @@
         "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
         "templateKey": "TPL_M1_ROTATION_SOLID_PERPENDICULAR_SECTION",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE|PT_M1_ROTATION_SOLID_PROPERTIES|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:5e70e95ef51ca29d3dc1ef1d5f6512a369b5322a05003da450d754f2218f8e97",
@@ -3397,19 +3355,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3426,8 +3384,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3444,12 +3402,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13"
+        "evidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3462,14 +3420,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:57d37751492628d17d7f340eb4590937c259310cd28db3f0b15c2b698f993140",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:5181ccb0b62c2ae0473c7bb29d8f055dbaf2f7feba48dec82fe1e823245e932f"
+        "evidenceSha": "sha256:ef8f6a5dd5c98727010404b958946b10729c9daf203a1f3d21b21cf118d9afce"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3483,9 +3441,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13",
+        "inputEvidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:15fa2a852e9cee85488cc17f87a6a378c7107c72ffd4324434aec61acba1bb82"
+        "runSha": "sha256:749a6a8d2e158c0fea20d46a92fcf7afa2e29103aea5017f7bc125fd9efb26cf"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_5e64614e69b0b4a528623b9989f85b37b9b54ce44adad1d2b325502aa3072776",
@@ -3527,18 +3485,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: 회전축에 수직인 평면으로 잘랐을 때 단면이 가운데까지 채워지는지 확인하자; 회전축에 수직인 평면으로 잘랐을 때 단면이 가운데까지 채워지는지 확인하자.\n\n①~④는 회전시키는 평면도형이 회전축에 닿아 있으므로 수직 단면이 중심까지 채워진 원판이 되고, 단면의 경계는 원 하나이다.\n\n⑤는 직사각형이 회전축에서 떨어져 있다.\n직사각형을 회전시키면 가운데가 빈 원기둥 모양이 되므로 수직 단면은 고리 모양이다.\n\n고리 모양의 경계는 바깥 원과 안쪽 원 두 개이므로 '경계가 원' 하나인 도형이 아니다.\n\n따라서 정답은 ⑤이다.",
-        "resolverEvidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13",
-        "difficultyEvidenceSha": "sha256:5181ccb0b62c2ae0473c7bb29d8f055dbaf2f7feba48dec82fe1e823245e932f"
+        "resolverEvidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26",
+        "difficultyEvidenceSha": "sha256:ef8f6a5dd5c98727010404b958946b10729c9daf203a1f3d21b21cf118d9afce"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_5e64614e69b0b4a528623b9989f85b37b9b54ce44adad1d2b325502aa3072776",
-        "resolverEvidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:5e70e95ef51ca29d3dc1ef1d5f6512a369b5322a05003da450d754f2218f8e97",
@@ -3580,8 +3532,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:b6ec7ca4d6e22625a467f21ec69e4d6a673466a56aca8fa7db9e757d4f7eed13",
-        "difficultyEvidenceSha": "sha256:5181ccb0b62c2ae0473c7bb29d8f055dbaf2f7feba48dec82fe1e823245e932f",
+        "resolverEvidenceSha": "sha256:eff2022f98e03372bb47263eef6db47b1c45168fdb0de40b96562466a64f0c26",
+        "difficultyEvidenceSha": "sha256:ef8f6a5dd5c98727010404b958946b10729c9daf203a1f3d21b21cf118d9afce",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -3591,9 +3543,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "59915edb22b0a4b3fce6cdbca6c06bbb30396aed0ef06936f6c8d8c4a724f47c"
+        "rawQuestionHash": "17e1118bb384d6063302a996c8d2ddc9d23b56471a3306da198253999082e00e"
       }
     },
     {
@@ -3663,11 +3615,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:5d9bbef0fa568bac5e25d462953de00e26dba8e8ae2ee651a8e36ab049c2b26e",
@@ -3732,19 +3684,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3761,8 +3713,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -3779,12 +3731,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7"
+        "evidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3797,14 +3749,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:c26a262ed077c538ca43a57b2761de9a19e6fd40a0786b647a0bbd250ad111ea",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:d6b1499692751be80833f6abb668f1d48d617749a65c5356ff658075de26461d"
+        "evidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3818,9 +3770,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7",
+        "inputEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:47f28701cb53a5b53a6d9d5b17cb04f73311c92d2a0ad32d59ac7776e11f091b"
+        "runSha": "sha256:b159b21cba73e6944544ca52f71f1e43e07bb191515d2bd399e74fd6fb8843d9"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_c380ba8de538c5185e14448c060a1a6b1be3237cd4f2c0b9c7262c1a38a02142",
@@ -3862,18 +3814,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 사각기둥의 부피는 밑넓이에 기둥의 높이를 곱해 구한다; 사각기둥의 부피는 밑넓이에 기둥의 높이를 곱해 구한다.\n\n밑면은 두 평행한 변의 길이가 $6\\rm\\,cm$, $10\\rm\\,cm$이고 높이가 $6\\rm\\,cm$인 사다리꼴이므로\n\n$\\dfrac{(6+10)\\times6}{2}=48\\rm\\,cm^2$\n\n기둥의 높이가 $8\\rm\\,cm$이므로\n\n$48\\times8=384\\rm\\,cm^3$\n\n따라서 정답은 ②이다.",
-        "resolverEvidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7",
-        "difficultyEvidenceSha": "sha256:d6b1499692751be80833f6abb668f1d48d617749a65c5356ff658075de26461d"
+        "resolverEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
+        "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_c380ba8de538c5185e14448c060a1a6b1be3237cd4f2c0b9c7262c1a38a02142",
-        "resolverEvidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:5d9bbef0fa568bac5e25d462953de00e26dba8e8ae2ee651a8e36ab049c2b26e",
@@ -3915,8 +3861,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:265b5aa66865c7acbaa42f52b163229f8ceb515abe4512f9db2178cf428de3e7",
-        "difficultyEvidenceSha": "sha256:d6b1499692751be80833f6abb668f1d48d617749a65c5356ff658075de26461d",
+        "resolverEvidenceSha": "sha256:032a212086b664ff97adc37820249a11aee2c1a1bf7078e962cbf6b3410b3e6e",
+        "difficultyEvidenceSha": "sha256:607ca07c5d6ac78eb9310837c80abcf2a1358d0d3b7e419f812306f042ff5eae",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -3926,9 +3872,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "9a680f911b268fb6ede705c5f29cc0036787a3787b65c9fe154fc6a00d782cff"
+        "rawQuestionHash": "6127a205477d7d515720fe0ec6bba9ba4f7b4e6ea9fa294016879f1fe412c848"
       }
     },
     {
@@ -3998,11 +3944,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:56aea8d2564ef6233a45099c4cdb8da484feb6a30aef41ba6e4c34be1645e71d",
@@ -4067,19 +4013,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4096,8 +4042,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4114,12 +4060,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d"
+        "evidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -4132,14 +4078,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 3 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 3 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:f579a842de23a09091f0d19d11daaa6fcc895eeb03c1b9936c4ac9d4e79324c2",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:226b6613e8b0f8e68c3e0b6190074ff87eaf50575436b4516ca6591cecc7c922"
+        "evidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -4153,9 +4099,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d",
+        "inputEvidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:e5e4fdd923c4717089efd064a071b381312933344b8f82480fee37499dbc12f9"
+        "runSha": "sha256:fe3b744c293abbeda6c565858a5f6833f53c80041da9741d7e3b7eaf698b65ec"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_efcd39636571da1f614c7ddd75093c47677f02c19b081babd925f51b32fdf44f",
@@ -4197,18 +4143,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 구멍의 안쪽 반지름은 $5\\rm\\,cm$이고 두께가 $4\\rm\\,cm$이므로 바깥 반지름은; \\rm\\,cm$이므로 바깥 반지름은\n\n$5+4=9\\rm\\,cm$\n\n이다. 높이는 $9\\rm\\,cm$이다.\n\n바깥쪽 옆넓이\n\n$2\\pi\\times9\\times9=162\\pi\\rm\\,cm^2$\n\n안쪽 옆넓이\n\n$2\\pi\\times5\\times9=90\\pi\\rm\\,cm^2$\n\n위아래 두 고리의 넓이\n\n$2\\pi(9^2-5^2)=112\\pi\\rm\\,cm^2$\n\n따라서 겉넓이는\n\n$162\\pi+90\\pi+112\\pi=364\\pi\\rm\\,cm^2$\n\n이므로 정답은 ⑤이다.",
-        "resolverEvidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d",
-        "difficultyEvidenceSha": "sha256:226b6613e8b0f8e68c3e0b6190074ff87eaf50575436b4516ca6591cecc7c922"
+        "resolverEvidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c",
+        "difficultyEvidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_efcd39636571da1f614c7ddd75093c47677f02c19b081babd925f51b32fdf44f",
-        "resolverEvidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:56aea8d2564ef6233a45099c4cdb8da484feb6a30aef41ba6e4c34be1645e71d",
@@ -4250,8 +4190,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:a7e2d9fd92b4f4aab1a4f4ec4b4bbe4638f44ed97e78a0a1e357c4e1de6baf3d",
-        "difficultyEvidenceSha": "sha256:226b6613e8b0f8e68c3e0b6190074ff87eaf50575436b4516ca6591cecc7c922",
+        "resolverEvidenceSha": "sha256:af4c59b03c0f31b76af542f165f3213221d82edd159c3723692029835cda781c",
+        "difficultyEvidenceSha": "sha256:afaeac95d91755fbcc07c88736764475e3e0e6f23508ab079fd0851bf3f90e6e",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -4261,9 +4201,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "ad910819eb269c0c56c9b81d2fdba64dccb332e2d642fffc341a6488e5e5be0c"
+        "rawQuestionHash": "84fdbaf6e812b9bf67a1de697d94226a27debf1df7bb68c9936e34cbf61b8cba"
       }
     },
     {
@@ -4333,11 +4273,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:531b99a52fbac36a58eb3286c7ec020ec8705d4135fcf12406b0bccb141b35d6",
@@ -4402,19 +4342,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4431,8 +4371,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4449,12 +4389,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699"
+        "evidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -4467,14 +4407,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:a96676db18969d89dd0e3ea62fc5ea458427e8c533674a5c582915eda4ec15dc",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:26c5fd933750e1ff0e2e9765713985ebd2392c8f772384ea5886d06ddcce461d"
+        "evidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -4488,9 +4428,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699",
+        "inputEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:3af8e633b9d64b69a441dbec1796fe70d0b4f77f43bda20f48ce513c77b0b60e"
+        "runSha": "sha256:b2f2db35778cdebc49fab2beb20db3fd894504cbb49b2d496ebf99b41c37f822"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_7ee583a6f035d52d87cbee33e22094ec767345471ceca06fdf3660f137ea314f",
@@ -4532,18 +4472,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 두 컵은 모두 원뿔 모양이므로 $\\dfrac13\\pi r^2h$에서 $r^2h$만 비교해도 된다; $\\dfrac13\\pi r^2h$에서 $r^2h$만 비교해도 된다.\n\n컵 A는 지름이 $20\\rm\\,cm$이므로 반지름이 $10\\rm\\,cm$이고 높이가 $9\\rm\\,cm$이다.\n\n$10^2\\times9=900$\n\n컵 B는 지름이 $10\\rm\\,cm$이므로 반지름이 $5\\rm\\,cm$이고 높이가 $18\\rm\\,cm$이다.\n\n$5^2\\times18=450$\n\n$900:450=2:1$\n\n따라서 컵 A에 담을 수 있는 물의 양은 컵 B의 $2$배이므로 정답은 ②이다.",
-        "resolverEvidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699",
-        "difficultyEvidenceSha": "sha256:26c5fd933750e1ff0e2e9765713985ebd2392c8f772384ea5886d06ddcce461d"
+        "resolverEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
+        "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_7ee583a6f035d52d87cbee33e22094ec767345471ceca06fdf3660f137ea314f",
-        "resolverEvidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:531b99a52fbac36a58eb3286c7ec020ec8705d4135fcf12406b0bccb141b35d6",
@@ -4585,8 +4519,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:28c9ec09f4f5fe43e6581eef800b160bff63265be56bfdc6e1199c4d25678699",
-        "difficultyEvidenceSha": "sha256:26c5fd933750e1ff0e2e9765713985ebd2392c8f772384ea5886d06ddcce461d",
+        "resolverEvidenceSha": "sha256:08ccce0abec0839f421af9a15b57d5ea694404784fe3366e35fc9836325a9bc4",
+        "difficultyEvidenceSha": "sha256:c1f1deca08ec259162cdcecd1c13d845123c7d5a8f13ab931fbf620f0b2b131a",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -4596,9 +4530,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "86485e1b9c81b10413086e0581c306efb1db2e8ff5e0854e155b9a469852f762"
+        "rawQuestionHash": "8c06b01b70bb1e771513e866f247bf3cb89e9e3c0d6586c0e4fdb6576ded0587"
       }
     },
     {
@@ -4668,11 +4602,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:7e08673b3f3e42d9e1780317ee8a44ea2bcb1232183f060af48a9a40d7febeb0",
@@ -4737,19 +4671,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4766,8 +4700,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -4784,12 +4718,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916"
+        "evidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -4802,14 +4736,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 3 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 3 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:1a68d379d796b37bf39c01e4c311b73161b98f1fcd8c9ba898c61a21c9cf4091",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:82bfdc39f331a5ba023fdd0269f0fb3bb86ae72796fe7396d52e03ca2e501f33"
+        "evidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -4823,9 +4757,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916",
+        "inputEvidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:73eb2c81fb591b9c7ac3705fb06dbe082d8954bc0ea1c632356b5f27d138cf8a"
+        "runSha": "sha256:5384975f6cdb99e1e00bed373b0c94881154fcbd2a182aab8bef7f7fedf40068"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_e2e3d832af63a269ff4e173a97f83861e9cac71f739eb6dc6ac292e8acf20793",
@@ -4867,18 +4801,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "INTERDEPENDENT: 먼저 부피가 같다는 조건으로 작은 구의 개수 $a$를 구하자; t(\\dfrac r2\\right)^3=\\dfrac18\\times\\dfrac43\\pi r^3$\n\n이므로 작은 구는 $8$개 필요하다.\n\n$a=8$\n\n이제 겉넓이를 비교하면 큰 구는 $4\\pi r^2$, 작은 구 하나는\n\n$4\\pi\\left(\\dfrac r2\\right)^2=\\pi r^2$\n\n이므로 작은 구 $8$개의 겉넓이의 합은 $8\\pi r^2$이다.\n\n$4\\pi r^2:8\\pi r^2=1:2$\n\n따라서 $b=2$이고\n\n$a+b=8+2=10$\n\n정답은 ①이다.",
-        "resolverEvidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916",
-        "difficultyEvidenceSha": "sha256:82bfdc39f331a5ba023fdd0269f0fb3bb86ae72796fe7396d52e03ca2e501f33"
+        "resolverEvidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8",
+        "difficultyEvidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_e2e3d832af63a269ff4e173a97f83861e9cac71f739eb6dc6ac292e8acf20793",
-        "resolverEvidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:7e08673b3f3e42d9e1780317ee8a44ea2bcb1232183f060af48a9a40d7febeb0",
@@ -4920,8 +4848,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:b5fd93c4a25913f0ceb0dc5f9b3910395c7585681d5e2edb1b5a29e7fe2b1916",
-        "difficultyEvidenceSha": "sha256:82bfdc39f331a5ba023fdd0269f0fb3bb86ae72796fe7396d52e03ca2e501f33",
+        "resolverEvidenceSha": "sha256:b038631447bf0b09623dfe9e38d57da674a70889ee96fb97e59e787aea85bdc8",
+        "difficultyEvidenceSha": "sha256:5ede53f23ab75dbc890ea5132d324723fb8502cfe67d9ee45fc0c299f7e3fef6",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -4931,9 +4859,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "ab5840ad3d4fdccac46f8bfae295fb01a018e624962daa49aa046681b0a3a593"
+        "rawQuestionHash": "06f75b48e519eda93db2b7259436d91961a745b6883f3c581c8d1fa175a79668"
       }
     },
     {
@@ -5003,11 +4931,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_ROTATION_VOLUME_COMPARISON",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:8710dfb6fd1546b6bcf3ba4f46eba1e9be6961c00c710e451e3060ed42a040c8",
@@ -5072,19 +5000,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5101,8 +5029,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5119,12 +5047,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452"
+        "evidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -5137,14 +5065,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 4 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 4 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:acd7fc4b6afb86bce348d9fe41d576f101615c05e13ef19ac56d1e6aac718264",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:7c80f4cd1a81b4bdcbd0208e15cf636d418f5cb7315c6c289f747699bce61c66"
+        "evidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -5158,9 +5086,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452",
+        "inputEvidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:841853f26ad616d7907df25dfa5301ef811ab9c101a069576ccf0a56414d09e1"
+        "runSha": "sha256:0846d3003922c7661205479353a1a7d084093c3a2fff9b4ea44f2bd1a83cfad8"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_58e3e50052fa1b796ae73b1f75f94dbfb3a2200b1134db6e15ed8f773e09e2c6",
@@ -5202,18 +5130,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "INTERDEPENDENT: 각 회전축에서 생기는 회전체를 원기둥과 원뿔의 합 또는 차로 나타내자; ,cm$인 원뿔을 뺀 모양이다.\n\n$b=\\pi\\times6^2\\times5-\\dfrac13\\pi\\times6^2\\times3=144\\pi$\n\n$n$을 축으로 회전하면 반지름 $6\\rm\\,cm$, 높이 $2\\rm\\,cm$인 원기둥과 반지름 $6\\rm\\,cm$, 높이 $3\\rm\\,cm$인 원뿔을 더한 모양이다.\n\n$c=\\pi\\times6^2\\times2+\\dfrac13\\pi\\times6^2\\times3=108\\pi$\n\n따라서\n\n$b>c>a$\n\n이므로 정답은 ④이다.",
-        "resolverEvidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452",
-        "difficultyEvidenceSha": "sha256:7c80f4cd1a81b4bdcbd0208e15cf636d418f5cb7315c6c289f747699bce61c66"
+        "resolverEvidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead",
+        "difficultyEvidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08"
       },
-      "r2eFinalDisposition": "NEW_L4",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_58e3e50052fa1b796ae73b1f75f94dbfb3a2200b1134db6e15ed8f773e09e2c6",
-        "resolverEvidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452",
-        "action": "R2E_TEMPLATE_CROSSWALK_MIGRATION"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:8710dfb6fd1546b6bcf3ba4f46eba1e9be6961c00c710e451e3060ed42a040c8",
@@ -5255,8 +5177,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:651112eba7dd69c5a480264eba0d39e998d3d4a4218999fbc382b76e0756f452",
-        "difficultyEvidenceSha": "sha256:7c80f4cd1a81b4bdcbd0208e15cf636d418f5cb7315c6c289f747699bce61c66",
+        "resolverEvidenceSha": "sha256:42760ca03bfa321267a984ec00aa5ffd6ede6cb2923f4581be254cd296a90ead",
+        "difficultyEvidenceSha": "sha256:c95a18e275e4d1c2c5931fc6ad25dfc459e02a3f7c82b484132df75a75734e08",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -5266,9 +5188,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "a5d692c3f2d4783b5fd92487c93c78eeaa240635c4876159fc2fccfbee3ed96c"
+        "rawQuestionHash": "1b6385993acdf094ef900b6e4b589ffe30320aabb3f735fd00542523bc28b446"
       }
     },
     {
@@ -5338,11 +5260,11 @@
         "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
         "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-08|M1-08-DATA_ORGANIZATION|PT_M1_FREQUENCY_DISTRIBUTION_READING|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:71251b7941a58407390f53fe30d34536b101fdd54415b751f966704e37a458d3",
@@ -5407,19 +5329,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5436,8 +5358,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5454,12 +5376,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:ab7ca7d96a971999007b56bb7808726c8b4d9b2193a42a3fc9ced9ecfddd2a18"
+        "evidenceSha": "sha256:4c769365892b4d823296073405171d870435f8e3e5d6b595b07e1d77ed449dc8"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -5472,14 +5394,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:339818ff3e363587843b459d6296b336da9ff148099b64b51b54368ed5149cd9",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:87d9b68ece18b0f48f2743fd44dcbb069ef90db8e4ab931852c86d4c74bbb1b2"
+        "evidenceSha": "sha256:5a487c0000bffa8e0c664fa82790a507c7e78b439916610db422b8b1f5eb8901"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -5493,9 +5415,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:ab7ca7d96a971999007b56bb7808726c8b4d9b2193a42a3fc9ced9ecfddd2a18",
+        "inputEvidenceSha": "sha256:4c769365892b4d823296073405171d870435f8e3e5d6b595b07e1d77ed449dc8",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:d02beda890df965e2ff8ef920b3706ef474b483682accb2a1ea659c8ea5fad0d"
+        "runSha": "sha256:2406fac888945ad64f36cad9563b436388d8513498bfcd64c3a0e289515ebdf9"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_aaeb79b0f170e889c00dca8a7b0e8f74112b539ee5dbced0fbf41eaec1a9f85d",
@@ -5537,10 +5459,10 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 상대도수의 합은 $1$이다; 상대도수의 합은 $1$이다.\n\n알려진 상대도수의 합은\n\n$0.15+0.2+0.25+0.1=0.7$\n\n이므로 $40$분 이상 $60$분 미만 계급의 상대도수는\n\n$1-0.7=0.3$\n\n이다.\n\n전체 학생이 $40$명이므로 학생 수는\n\n$40\\times0.3=12$명\n\n이다.\n\n따라서 정답은 ⑤이다.",
-        "resolverEvidenceSha": "sha256:ab7ca7d96a971999007b56bb7808726c8b4d9b2193a42a3fc9ced9ecfddd2a18",
-        "difficultyEvidenceSha": "sha256:87d9b68ece18b0f48f2743fd44dcbb069ef90db8e4ab931852c86d4c74bbb1b2"
+        "resolverEvidenceSha": "sha256:4c769365892b4d823296073405171d870435f8e3e5d6b595b07e1d77ed449dc8",
+        "difficultyEvidenceSha": "sha256:5a487c0000bffa8e0c664fa82790a507c7e78b439916610db422b8b1f5eb8901"
       },
       "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
@@ -5584,8 +5506,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:ab7ca7d96a971999007b56bb7808726c8b4d9b2193a42a3fc9ced9ecfddd2a18",
-        "difficultyEvidenceSha": "sha256:87d9b68ece18b0f48f2743fd44dcbb069ef90db8e4ab931852c86d4c74bbb1b2",
+        "resolverEvidenceSha": "sha256:4c769365892b4d823296073405171d870435f8e3e5d6b595b07e1d77ed449dc8",
+        "difficultyEvidenceSha": "sha256:5a487c0000bffa8e0c664fa82790a507c7e78b439916610db422b8b1f5eb8901",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -5595,9 +5517,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "e6e98f41174f8077ada8825aa2340b534f81254586707245c9901bd2be60677b"
+        "rawQuestionHash": "21d45f1faaf5ede5c6399f10a8f7a309ca8acece8eb5199b782c07d082a47f87"
       }
     },
     {
@@ -5667,11 +5589,11 @@
         "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
         "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_DISTRIBUTION_GRAPH_COMPARISON",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-08|M1-08-DATA_INTERPRETATION|PT_M1_DATA_CATEGORY_PERCENTAGE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:d211d46d47fe8069fb5e95def21e65a82830a9b55d3939a41d5a0009d1964876",
@@ -5736,19 +5658,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5765,8 +5687,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -5783,12 +5705,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89"
+        "evidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -5801,14 +5723,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 3 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 3 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:550bd088cb0ba02a16cb68b8d84a4b86348c2ebf2f494a2f039f30eb34b14224",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:3c78f2fd8dbdcbabd526e17c2131db82a3c884ec82190b1391c31638ba1d0651"
+        "evidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -5822,9 +5744,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89",
+        "inputEvidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:30fe600a6acdcf6fbb3a92279ab27a1c83d1871506c3726b603d3588fb8d272c"
+        "runSha": "sha256:44c06b753e2764025f8c4b896fd1d716f4538a40f7a36510e710a3ef11d284b2"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_94b9edd5af5208527e7259ed4dcf08fc04febf24cd888ddbdb30740819639294",
@@ -5866,18 +5788,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: ㄱ, ㄴ, ㄷ을 하나씩 확인하자; 에 있다.\n따라서 ㄱ은 옳지 않다.\n\nㄴ. $7$시간 이상 $9$시간 미만인 학생 수는\n\n남학생: $200\\times0.20=40$명\n여학생: $150\\times0.24=36$명\n\n이므로 여학생이 더 적다. 따라서 ㄴ은 옳다.\n\nㄷ. 그래프의 오른쪽 구간에서는 여학생의 상대도수가 남학생보다 대체로 크고, 왼쪽 구간에서는 남학생이 더 크다.\n따라서 여학생이 남학생보다 독서 시간이 많은 편이라고 볼 수 있으므로 ㄷ은 옳다.\n\n옳은 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
-        "resolverEvidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89",
-        "difficultyEvidenceSha": "sha256:3c78f2fd8dbdcbabd526e17c2131db82a3c884ec82190b1391c31638ba1d0651"
+        "resolverEvidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e",
+        "difficultyEvidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac"
       },
-      "r2eFinalDisposition": "NEW_L4",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_94b9edd5af5208527e7259ed4dcf08fc04febf24cd888ddbdb30740819639294",
-        "resolverEvidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89",
-        "action": "R2E_TEMPLATE_CROSSWALK_MIGRATION"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:d211d46d47fe8069fb5e95def21e65a82830a9b55d3939a41d5a0009d1964876",
@@ -5919,8 +5835,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:c2ae866b6386605ca686b89e3c50798f7f0281f383c30948fed2d98a7c8e3a89",
-        "difficultyEvidenceSha": "sha256:3c78f2fd8dbdcbabd526e17c2131db82a3c884ec82190b1391c31638ba1d0651",
+        "resolverEvidenceSha": "sha256:5b9bb5d75dba91941ca80ce9e61ef994d3f038004a637920aaf183356939836e",
+        "difficultyEvidenceSha": "sha256:390e38f3357423e0818216f4ce1ee71d6155ed92008da454ae406cd483cc66ac",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -5930,9 +5846,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "1a4770c8cf68de3e7dd1a51c4f51e10751f2f2696e8c3390743b45726f9f0545"
+        "rawQuestionHash": "f5beea0de871c5ea642c09547c4044e814f8e76bc2857fe18f362ae420a4638d"
       }
     },
     {
@@ -6002,11 +5918,11 @@
         "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
         "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MULTI_CELL_RECONSTRUCTION",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-08|M1-08-DATA_ORGANIZATION|PT_M1_FREQUENCY_DISTRIBUTION_READING|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:415801ae1a01199ca7cddd519ca4d140efa957e44c13138a1bb9846a458349b9",
@@ -6071,19 +5987,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6100,8 +6016,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6118,12 +6034,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a"
+        "evidenceSha": "sha256:0678560f9b08cd0e75bb69e5684551a88275bb95010ff0c1313bc406d0e23741"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -6136,14 +6052,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:3aadabbff411e3f412c5e2e4e5f6048bb0083bde43408531e7312d78ebebbf4d",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:990cc26910bea7a38fa56f68f80798ad012d43d870a71439e8b6a788012df8ac"
+        "evidenceSha": "sha256:f0c3935a464a361aab00ec6fecff183297c66bb78bc9d3a00cc6470858da387a"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -6157,9 +6073,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a",
+        "inputEvidenceSha": "sha256:0678560f9b08cd0e75bb69e5684551a88275bb95010ff0c1313bc406d0e23741",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:24fe677ce512cd455b7333f94dde6a07d6d754145353aa8f65e3328d09ab9b33"
+        "runSha": "sha256:a84c34914c8f5e392eda07a9f8f7e377bc31a8336ef62573fbdbfab60038106d"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_ed0efba4d420b3d02c67d2d06511807dba69d77c427689423b2830fcdc1f61b3",
@@ -6201,18 +6117,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: $400\\rm\\,mL$ 이상 $600\\rm\\,mL$ 미만 계급에서 학생 $24$명의 상대도수가 $0; $400\\rm\\,mL$ 이상 $600\\rm\\,mL$ 미만 계급에서 학생 $24$명의 상대도수가 $0.3$이다.\n\n따라서 전체 학생 수는\n\n$E=24\\div0.3=80$명\n\n이다.\n\n$A=80\\times0.1=8$\n\n$B=16\\div80=0.2$\n\n남은 상대도수는\n\n$D=1-(0.1+0.2+0.3+0.15)=0.25$\n\n이므로\n\n$C=80\\times0.25=20$\n\n이다.\n\n따라서 $C=18$이라고 한 ③이 옳지 않다.",
-        "resolverEvidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a",
-        "difficultyEvidenceSha": "sha256:990cc26910bea7a38fa56f68f80798ad012d43d870a71439e8b6a788012df8ac"
+        "resolverEvidenceSha": "sha256:0678560f9b08cd0e75bb69e5684551a88275bb95010ff0c1313bc406d0e23741",
+        "difficultyEvidenceSha": "sha256:f0c3935a464a361aab00ec6fecff183297c66bb78bc9d3a00cc6470858da387a"
       },
-      "r2eFinalDisposition": "NEW_L4",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_ed0efba4d420b3d02c67d2d06511807dba69d77c427689423b2830fcdc1f61b3",
-        "resolverEvidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a",
-        "action": "R2E_TEMPLATE_CROSSWALK_MIGRATION"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:415801ae1a01199ca7cddd519ca4d140efa957e44c13138a1bb9846a458349b9",
@@ -6254,8 +6164,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:eebca1c168a2b462976c0fdca09f60e152273071e73cf869d3041254a916c77a",
-        "difficultyEvidenceSha": "sha256:990cc26910bea7a38fa56f68f80798ad012d43d870a71439e8b6a788012df8ac",
+        "resolverEvidenceSha": "sha256:0678560f9b08cd0e75bb69e5684551a88275bb95010ff0c1313bc406d0e23741",
+        "difficultyEvidenceSha": "sha256:f0c3935a464a361aab00ec6fecff183297c66bb78bc9d3a00cc6470858da387a",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -6265,9 +6175,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "a7f576651c16dc56d73cc304b62ddaee912b100289c478f80d8f79cce1abd359"
+        "rawQuestionHash": "0b8d00bc05fbc7cd1b1ef8abaf54dd39545558bf144ae7f0f185549b12c7d742"
       }
     },
     {
@@ -6337,11 +6247,11 @@
         "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
         "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_CLASS_GROUP_SUM",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-08|M1-08-DATA_INTERPRETATION|PT_M1_DATA_CATEGORY_PERCENTAGE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:25f3cba3e24ae011d58153413dd67c886690a506f35df8326749a8efc3ad1bd4",
@@ -6406,19 +6316,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6435,8 +6345,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6453,12 +6363,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883"
+        "evidenceSha": "sha256:c7468f0aa0d6273b080645a7108e08f98168fcd78b5318be05397abc004497e4"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -6471,14 +6381,14 @@
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 1 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 1 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:3598dcc735d97f9cb0236cb4e9ddda0bdbde1aba4f4ac09c262cfc6efdbb8e89",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:a8aec3ce44af243f07523f770a0d7db86dcf1b7cc5edc27211fb179055756e22"
+        "evidenceSha": "sha256:8f912dd8652f5fbc807af0637c8b8fcb1f700c483eebb18dc8023e5b4b0cc6b5"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -6492,9 +6402,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883",
+        "inputEvidenceSha": "sha256:c7468f0aa0d6273b080645a7108e08f98168fcd78b5318be05397abc004497e4",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:c84e14dcdc98923512204eb791e2a5ae7947cfeb177a5fc05e10249985b5317d"
+        "runSha": "sha256:689db0742623f8755979bfccbbc5c7e7ccbceacdb1396e4f2cb3f72f48c28f9f"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_8160dd980836a6fc8f40919a382fb6f018b1853a16a50eb41a6c04583ed18f1c",
@@ -6536,18 +6446,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: $400\\rm\\,mL$ 이상 $800\\rm\\,mL$ 미만에는 두 계급이 포함된다; $400\\rm\\,mL$ 이상 $800\\rm\\,mL$ 미만에는 두 계급이 포함된다.\n\n$400\\sim600\\rm\\,mL$의 상대도수는 $0.3$,\n$600\\sim800\\rm\\,mL$의 상대도수는 $0.25$이므로\n\n$0.3+0.25=0.55$\n\n$0.55=55\\%$\n\n따라서 정답은 ②이다.",
-        "resolverEvidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883",
-        "difficultyEvidenceSha": "sha256:a8aec3ce44af243f07523f770a0d7db86dcf1b7cc5edc27211fb179055756e22"
+        "resolverEvidenceSha": "sha256:c7468f0aa0d6273b080645a7108e08f98168fcd78b5318be05397abc004497e4",
+        "difficultyEvidenceSha": "sha256:8f912dd8652f5fbc807af0637c8b8fcb1f700c483eebb18dc8023e5b4b0cc6b5"
       },
-      "r2eFinalDisposition": "NEW_L4",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_8160dd980836a6fc8f40919a382fb6f018b1853a16a50eb41a6c04583ed18f1c",
-        "resolverEvidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883",
-        "action": "R2E_TEMPLATE_CROSSWALK_MIGRATION"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:25f3cba3e24ae011d58153413dd67c886690a506f35df8326749a8efc3ad1bd4",
@@ -6589,8 +6493,8 @@
         "difficultyBoundaryFlag": "NONE",
         "legacyLevel": "하",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:2873c9003e8ffa0bb251e93e053b6fbe928d2f6fe269da641fd0857fe97c9883",
-        "difficultyEvidenceSha": "sha256:a8aec3ce44af243f07523f770a0d7db86dcf1b7cc5edc27211fb179055756e22",
+        "resolverEvidenceSha": "sha256:c7468f0aa0d6273b080645a7108e08f98168fcd78b5318be05397abc004497e4",
+        "difficultyEvidenceSha": "sha256:8f912dd8652f5fbc807af0637c8b8fcb1f700c483eebb18dc8023e5b4b0cc6b5",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -6600,9 +6504,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "c4cb28cabc369000253eb57f54e924d4f0e514514879ef222e59f9e7406ae375"
+        "rawQuestionHash": "1beac03943eacf9d5205fdfed8cac1f471b58e9d05273832651848aace007995"
       }
     },
     {
@@ -6669,7 +6573,7 @@
         "bindingIdentity": "2015|M1-06|M1-06-PLANE_FIGURE_MEASURE|PT_CIRCLE_ANGLE_RELATIONS|MIDDLE_GEOMETRY",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -6728,19 +6632,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6757,8 +6661,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -6775,12 +6679,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6"
+        "evidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -6793,14 +6697,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:695fd5823a641ebbfedddb626869abab4552cf40cb5582dc9c1517d16b2a4821",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:688f158968849afa43b8d9bff70f10568df595a70770beabcfde38b9c33861d1"
+        "evidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -6814,9 +6718,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6",
+        "inputEvidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:b8b4de3b858eac338db8d62961ad04253b66866672911a2cc7985159ba50fb76"
+        "runSha": "sha256:d594976209c0fcb0fc75ccf95ba603968ecd3098f0bba4fd7ec66002589d72c9"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_b6d949f7de31096eedde22d4cce57043bf8932244561d09e7c8c5cfd5a270bc3",
@@ -6860,16 +6764,10 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "integrationReason": "SEQUENTIAL: 호의 길이를 이용해 반지름부터 구하자; 해 반지름부터 구하자.\n\n중심각이 $135^\\circ$이고 호의 길이가 $6\\pi\\rm\\,cm$이므로\n\n$2\\pi r\\times\\dfrac{135}{360}=6\\pi$\n\n$\\dfrac34\\pi r=6\\pi$\n\n$r=8\\rm\\,cm$\n\n이다.\n\n따라서 부채꼴의 넓이는\n\n$\\pi r^2\\times\\dfrac{135}{360}$\n$=64\\pi\\times\\dfrac38$\n$=24\\pi\\rm\\,cm^2$\n\n이다.\n\n따라서 구하는 넓이는 $24\\pi\\rm\\,cm^2$이다.",
-        "resolverEvidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6",
-        "difficultyEvidenceSha": "sha256:688f158968849afa43b8d9bff70f10568df595a70770beabcfde38b9c33861d1"
+        "resolverEvidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f",
+        "difficultyEvidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_b6d949f7de31096eedde22d4cce57043bf8932244561d09e7c8c5cfd5a270bc3",
-        "resolverEvidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_b6d949f7de31096eedde22d4cce57043bf8932244561d09e7c8c5cfd5a270bc3",
@@ -6905,8 +6803,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:9642cb7014b45aaa5087c47bf29377470de0a83414cd92d7893a968e1b6352c6",
-        "difficultyEvidenceSha": "sha256:688f158968849afa43b8d9bff70f10568df595a70770beabcfde38b9c33861d1",
+        "resolverEvidenceSha": "sha256:87cca012b34d470531cc773f085cafe2f6e632f4c37f5209f6b2039f266d4a9f",
+        "difficultyEvidenceSha": "sha256:e0382407a27bfe163191af49c23f86d3ded6a5c9e9ff2dc0f35925376f2d7859",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -6918,7 +6816,7 @@
         "metaFoundationPackId": "MIDDLE_GEOMETRY",
         "metaFoundationPackVersion": "1.0.0",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "2eb4275fb4ce2cbe23fb8d472c179f922ce4d725b02fe7c4521ca5edb3b9df66"
+        "rawQuestionHash": "936283feb4f8a141f1ace6eaa7c444f4e366902660019146c29c04aef9fe85ea"
       }
     },
     {
@@ -6981,11 +6879,11 @@
         "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
         "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE|PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS|MIDDLE1",
         "disposition": "EXISTING_REUSE",
         "dispositionReason": "DIRECT_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": null,
         "advancedMetaEligible": true,
         "semanticInputBundle": {
@@ -7044,19 +6942,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -7073,8 +6971,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -7091,12 +6989,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d"
+        "evidenceSha": "sha256:4ae0db8624e595ad44abfafeb0528a4e6241e0a151355f552176e9ecad7c6b87"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -7109,14 +7007,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B23",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 2 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 2 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:14565341a19af0c01a722bc2d309a4919b8e7cddfd10365f915bc69906ce73f3",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:a8522f3de4878d685e3beda7bddcc926a5cfce155b6ba5f2d4a14128bf165084"
+        "evidenceSha": "sha256:17c7f7a6cd64b7f3347c51fc9fbd9d47c0534e5361ddb2241dc64048d19f06d4"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -7130,9 +7028,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d",
+        "inputEvidenceSha": "sha256:4ae0db8624e595ad44abfafeb0528a4e6241e0a151355f552176e9ecad7c6b87",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:6bdabca67d0c9f921c8d1ccb9729d04492465362e72a3844233bf2ff84b2b98b"
+        "runSha": "sha256:12f445a1efe93191c9cf1072cdf79f27469789ab1dd5b8448d440b8bd96c9137"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_bb49422ce0b1be2f3b668a2b3527b9c13b9828d091ad83ae5aace69b1c40249c",
@@ -7174,18 +7072,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "CASE_BRANCH: 정다면체의 조건을 먼저 쓰자; 정다면체의 조건을 먼저 쓰자.\n\n정다면체는 모든 면이 서로 합동인 정다각형이고, 각 꼭짓점에 모이는 면의 수가 모두 같은 다면체이다.\n\n정다면체는\n정사면체, 정육면체, 정팔면체, 정십이면체, 정이십면체\n의 다섯 종류이다.\n\n제시된 축구공 모양의 입체도형에는 정오각형인 면과 정육각형인 면이 함께 있다.\n따라서 모든 면이 서로 합동인 정다각형이라는 조건을 만족하지 않는다.\n\n그러므로 제시된 도형은 정다면체가 아니다.",
-        "resolverEvidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d",
-        "difficultyEvidenceSha": "sha256:a8522f3de4878d685e3beda7bddcc926a5cfce155b6ba5f2d4a14128bf165084"
+        "resolverEvidenceSha": "sha256:4ae0db8624e595ad44abfafeb0528a4e6241e0a151355f552176e9ecad7c6b87",
+        "difficultyEvidenceSha": "sha256:17c7f7a6cd64b7f3347c51fc9fbd9d47c0534e5361ddb2241dc64048d19f06d4"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_bb49422ce0b1be2f3b668a2b3527b9c13b9828d091ad83ae5aace69b1c40249c",
-        "resolverEvidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": null,
       "runtimeRecord": {
         "questionUid": "qid_v1_bb49422ce0b1be2f3b668a2b3527b9c13b9828d091ad83ae5aace69b1c40249c",
@@ -7221,8 +7113,8 @@
         "difficultyBoundaryFlag": "B23",
         "legacyLevel": "중",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:6693f48ec4644a8901fa3c42baf1ebf5511ef7371f7d9b541a5aec7e1139666d",
-        "difficultyEvidenceSha": "sha256:a8522f3de4878d685e3beda7bddcc926a5cfce155b6ba5f2d4a14128bf165084",
+        "resolverEvidenceSha": "sha256:4ae0db8624e595ad44abfafeb0528a4e6241e0a151355f552176e9ecad7c6b87",
+        "difficultyEvidenceSha": "sha256:17c7f7a6cd64b7f3347c51fc9fbd9d47c0534e5361ddb2241dc64048d19f06d4",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -7232,9 +7124,9 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "81bd62832fbc0e1b6b9732e413c1c49d1e95e444ecdaaebdbcb4e52a28d081fe"
+        "rawQuestionHash": "8f751936b6cdda1f0c1c1cbf0f6678af1e2cb57c6e7dcf865d7caebba2e030ea"
       }
     },
     {
@@ -7304,11 +7196,11 @@
         "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
         "templateKey": "TPL_M1_SOLID_FIGURE_FRUSTUM_SURFACE",
         "ownerPack": "MIDDLE1",
-        "ownerVersion": "1.0.0",
+        "ownerVersion": "1.0.1",
         "bindingIdentity": "2015|M1-07|M1-07-SOLID_FIGURE_MEASURE|PT_M1_SOLID_FIGURE_MEASURE|MIDDLE1",
         "disposition": "FAMILY_REUSE",
         "dispositionReason": "FAMILY_ACTIVE",
-        "activeRegistrySha": "sha256:13262b30bf55cdd4d68a309fa8a7dc34380a0d550a25391547ebee6c7aa05b55",
+        "activeRegistrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
         "familySelection": {
           "stage": "POST_CROSSWALK",
           "inputBundleSha": "sha256:58808e4b11128ce013672c9569ac78315ccac527f4a1b6b4e2111827d590b000",
@@ -7373,19 +7265,19 @@
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852"
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35"
           },
           {
             "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
-            "bytes": 189324,
-            "sha256": "sha256:c585f9e71ecf54fda8c0b64433a77737962843baa92a06f90c2043c02bffb852",
+            "bytes": 199273,
+            "sha256": "sha256:3a3a292eb73d5b1f7a620c0059f1d73b3d38016427fb7a9c5258fecf16e67e35",
             "role": "RPM_TO_ACTIVE_CROSSWALK"
           },
           {
             "path": "archive/data/meta-foundation/canonical/registry_index.json",
-            "bytes": 14035,
-            "sha256": "sha256:336f559c26e84c6f819042596d8b335ee26dad6b443f702667c46d9424d91e0a",
+            "bytes": 14444,
+            "sha256": "sha256:a49a2cfab90a8d01ae3e80b8c3dfd09c5d73048854824cee4e3a6b93aae9875e",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -7402,8 +7294,8 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-            "bytes": 1653707,
-            "sha256": "sha256:57205f1edec625843f8455b44ee5cbba7ee28de6da5add41bfd6f8ed431834a9",
+            "bytes": 1685055,
+            "sha256": "sha256:29db8c86f5ab07029d995fee31eb2a1d64dda69bf63e2dfbda2eec60bbdca96f",
             "role": "ACTIVE_META_FOUNDATION"
           },
           {
@@ -7420,12 +7312,12 @@
           },
           {
             "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-            "bytes": 742411,
-            "sha256": "sha256:a2c0f013f1a51949b338dcbbb9c731bb9f031584a1fb0b79be9b727e1a633a58",
+            "bytes": 758493,
+            "sha256": "sha256:ac8b31860b78bdd47348fcc0a8cef28aaa00a7f435ccfb33dc361c5e42f4bfa0",
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160"
+        "evidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -7438,14 +7330,14 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "B34",
         "legacyLevelCompatibility": "NORMAL",
-        "rationale": "R1 difficulty ledger archive/data/r2e-input/middle1/evidence/B23/META_REVIEW_LEDGER.json retained after R2E source/solution identity check; bucket 4 confirmed independently of taxonomy mapping.",
+        "rationale": "R1/R2 branch-final difficulty evidence retained after resolver migration; bucket 4 is reused independently of taxonomy mapping.",
         "blindReviewerId": "R1_DIFFICULTY:B23",
         "decisionSha": "sha256:b1fba72d0017814d125979eed0e16dd61384ba487f397c74b759eb1dd525f163",
         "reviewMode": "INTEGRITY_REUSE",
         "independentRecheckCompleted": true,
         "boundaryRecheckCompleted": true,
         "adjudicationCompleted": true,
-        "evidenceSha": "sha256:87c130e3c5d5e8e682b52493a9f42fc7395744c628a1cc8f1ddb1571f4f4172c"
+        "evidenceSha": "sha256:e7067b3daf3a96466dcc83c803d9bc0ca308d93752ac8aa7380c2dbf9d4d6b40"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -7459,9 +7351,9 @@
       "validatorReceipt": {
         "status": "PASS",
         "validatorId": "rpm-active-resolver-v1",
-        "inputEvidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160",
+        "inputEvidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f",
         "validationResultSha": "sha256:7a5a4557a80ccfce6c1fb3ce695227ef2361cff5eb8df76c44f282c3ca93755a",
-        "runSha": "sha256:4b3ed8cc88bc0d3aaa26cc03b2e0fef242136771153d57a5ed6ffd7595edfdaf"
+        "runSha": "sha256:f9b38a4c1e2d7cfb272f66d3e8f3f4f681f08c9b1fbd33025370deea8cfa9abd"
       },
       "candidateMeta": {
         "questionUid": "qid_v1_b716a3dd5fc980a75557262333d3cfef3807fc7ff3113b6be5a6696fb56156fa",
@@ -7503,18 +7395,12 @@
         "semanticDisposition": "CONFIRMED",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "integrationReason": "SEQUENTIAL: 사다리꼴을 직선 $l$을 축으로 회전시키면 두 밑면의 반지름이 $6\\rm\\,cm$, $3\\rm\\,cm$이고 모선이 $5\\rm\\,cm$인 원뿔대가 된다; 2)\\times\\dfrac{216}{360}=45\\pi\\rm\\,cm^2$\n\n두 밑면의 넓이의 합은\n\n$\\pi\\times6^2+\\pi\\times3^2=45\\pi\\rm\\,cm^2$\n\n이다.\n\n따라서 겉넓이는\n\n$45\\pi+45\\pi=90\\pi\\rm\\,cm^2$\n\n이다.\n\n전개도는 반지름 $6\\rm\\,cm$, $3\\rm\\,cm$인 두 원과 바깥반지름 $10\\rm\\,cm$, 안쪽반지름 $5\\rm\\,cm$, 중심각 $216^\\circ$인 고리 모양의 부채꼴로 이루어진다.",
-        "resolverEvidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160",
-        "difficultyEvidenceSha": "sha256:87c130e3c5d5e8e682b52493a9f42fc7395744c628a1cc8f1ddb1571f4f4172c"
+        "resolverEvidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f",
+        "difficultyEvidenceSha": "sha256:e7067b3daf3a96466dcc83c803d9bc0ca308d93752ac8aa7380c2dbf9d4d6b40"
       },
-      "r2eFinalDisposition": "REBIND",
-      "actionEvidence": {
-        "status": "PASS",
-        "questionUid": "qid_v1_b716a3dd5fc980a75557262333d3cfef3807fc7ff3113b6be5a6696fb56156fa",
-        "resolverEvidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160",
-        "action": "R2E_ACTIVE_CROSSWALK_REBIND"
-      },
+      "r2eFinalDisposition": "EXISTING_REUSE",
       "familyTemplateSelection": {
         "stage": "POST_CROSSWALK",
         "inputBundleSha": "sha256:58808e4b11128ce013672c9569ac78315ccac527f4a1b6b4e2111827d590b000",
@@ -7556,8 +7442,8 @@
         "difficultyBoundaryFlag": "B34",
         "legacyLevel": "상",
         "legacyLevelCompatibility": "NORMAL",
-        "resolverEvidenceSha": "sha256:a1f5051fc14e6268d758bbfc3f5db166aa0b5123d72a2b9f8e16ed5a4f157160",
-        "difficultyEvidenceSha": "sha256:87c130e3c5d5e8e682b52493a9f42fc7395744c628a1cc8f1ddb1571f4f4172c",
+        "resolverEvidenceSha": "sha256:d8382b2fdb7804c05978f5208d0829f7791bcad9c45c97016fa5301641d8d85f",
+        "difficultyEvidenceSha": "sha256:e7067b3daf3a96466dcc83c803d9bc0ca308d93752ac8aa7380c2dbf9d4d6b40",
         "foundationTaxonomyStatus": "CONFIRMED",
         "curriculumApplicability": "DEFAULT_SCOPE",
         "defaultSelectable": true,
@@ -7567,11 +7453,11 @@
         "metadataRevision": "archive-metadata-v1-phase1b-20260825",
         "metaFoundationStatus": "ACTIVE",
         "metaFoundationPackId": "MIDDLE1",
-        "metaFoundationPackVersion": "1.0.0",
+        "metaFoundationPackVersion": "1.0.1",
         "catalogIdentityRepairVerified": true,
-        "rawQuestionHash": "b3221e07c6ae716ea578bc12079788c4a1099b62d7852290de229cb63b8625e5"
+        "rawQuestionHash": "b4b808bc12617d8c0523eb3a4a9cfdbf3586c3cb61cd532d1c41f431ee1d21a3"
       }
     }
   ],
-  "receiptSha": "sha256:59361cf4efd0b72d66fbd4156f67a51577fb29f32817397bc1604ae336a91b92"
+  "receiptSha": "sha256:7e7a997fef98e1c15a0bb3f87ff2e7cf0a09bbd854a1b99d4bef93e9b1bc5d78"
 }

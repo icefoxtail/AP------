@@ -25,3 +25,10 @@ f53fffdf88d14731ac4313de33c881fde3327fdb
 - Interim archive aggregate commit 1623d065 and follow-up normalized-RPM resolver commit 9b988082fdc991f2098d197a6aa7846ff70747eb are on origin/main. Six exams B21/B22/B23/B26/B29/B30 have current resolver receipts PASS, byte parity on main, current runtime/catalog parity, and R2E_MAIN_FINAL receipts. B20/B24/B28 remain R2E branch-final pending main integration. Continue B25/B27/B31 and remaining B01-B31.
 
 - origin/main advanced to 77242953defe643a349c495535e76bfcaa96ef36 after interim promotion. The sole changed path was rchive/question-index-report.md; it does not affect the six R2E_MAIN_FINAL receipts or production artifacts. The durable state branch now includes that main commit.
+
+- Urgent user-authorized M1 archive batch promotion is on origin/main: production batch 0bb9baf75d46290d25dd88569987f7c5df4daabb; B22 visual metadata follow-up fff5ceb942ed03a736dc2eeb62e8186b0b0b2db3; latest main 25e53c3f63df0950fd43834578209b66a16b76db.
+- R2E_MAIN_FINAL is closed for B20, B21, B22, B23, B24, B26, B28, B29, and B30 (9/31, 29%). Each exam has byte-parity, current runtime/catalog/canonical/RPM hashes, a PASS R2E receipt, and durable physical ledger receipt/event/state.
+- Visual QA followed 도형추출.md v3.0 §6-4 using actual desktop/mobile browser renders and inspected SVG/image crops; no clipping or label collision remains. B22 Q21 latest axis PNG render evidence is archived.
+- origin/main advanced to 25e53c3f63df0950fd43834578209b66a16b76db; its post-promotion changes were audited and do not touch M1 R2E dependencies. Continue remaining 22 exams; B19 Q6 remains HUMAN_REQUIRED.
+
+- All nine official rpm-active-resolver checks passed on their producer/main checkout. A separate state-worktree run exposed a Windows core.autocrlf raw-byte mismatch on several text authority refs; JSON values and Git blobs are unchanged. State-only line-ending edits were restored, and the checkout-specific validation caveat is recorded for continuation.
