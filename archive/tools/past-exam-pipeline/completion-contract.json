@@ -1,7 +1,7 @@
 {
   "schemaVersion": "PAST_EXAM_V3_COMPLETE",
   "executionAuthority": "archive/tools/pipeline-core/AGENT_BUDGET.md",
-  "allowedCompletionFields": ["answer", "solution", "answerStatus", "solutionStatus", "level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize"],
+  "allowedCompletionFields": ["answer", "solution", "answerStatus", "solutionStatus", "level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "solutionImage", "solutionImageAlt", "solutionImageCaption", "solutionImageSize", "curriculum", "conceptClusterKey", "tags", "tagConfidence", "tagStatus", "metadataStatus", "metadataReviewRequired"],
   "completionFieldContract": {
     "schemaVersion": "PAST_EXAM_COMPLETION_FIELDS_v2",
     "solutionAuthority": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
@@ -61,5 +61,14 @@
   "geometryPolicyScope": "PROJECT_REFERENCED_ONLY",
   "logicOverlayAuthority": "QUALIFICATION_ONLY_NOT_PRODUCTION_RELEASE",
   "sampleRole": "QUALITY_CALIBRATION_ONLY",
-  "targetTruth": "FULL_PAGE_SOURCE_ONLY"
+  "targetTruth": "FULL_PAGE_SOURCE_ONLY",
+  "sourceMetadataFirstPass": {
+    "schema": "PAST_EXAM_SOURCE_METADATA_FIRST_PASS_v1",
+    "scope": "Source reading may populate every canonical metadata field that has source evidence; values are provisional until the solution-stage reconciliation.",
+    "initialStatus": "SOURCE_FIRST_PASS",
+    "finalRecheckStatus": "SOLUTION_RECONCILED",
+    "firstPassShaField": "sourceMetadataFirstPassSha",
+    "reconciliationFile": "reports/solution_metadata_reconciliation.json",
+    "solutionSemanticDecision": "Fresh solution-based primaryMethod/decisiveStep before comparing previous tags; canonical RPM/ACTIVE and blind difficulty final gates remain required."
+  }
 }

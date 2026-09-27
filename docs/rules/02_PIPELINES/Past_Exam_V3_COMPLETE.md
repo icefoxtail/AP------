@@ -4,6 +4,30 @@
 학생용 해설·분류·시각자료 완성을 공통 pipeline-core v2에 연결한다.
 추출 성공, 소프트웨어 테스트 성공, 실제 문항 품질 PASS는 서로 다른 상태다.
 
+## 원문 판독 시 1차 태그 → 해설 기반 재조정
+
+명시적 발문·에셋 선행 작업은 원문을 읽는 같은 단계에서 가능한 메타데이터를 최대한
+작성한다. `initialMetadata`에 과목/교육과정, L1/L2, 존재하는 ACTIVE L3/L4,
+CrossConcept/Condition, conceptCluster, integrationPattern, category/tags,
+난이도 예상과 confidence를 넣을 수 있다. 새 key는 만들지 않으며 parent·course·
+cohort·ACTIVE binding·enum을 검증한다. 발문 인용과 판단 근거, 결정 못 한 필드의
+사유를 남긴다. L1의 label/order와 L2의 label은 master에서 가져온다.
+
+이 값은 `metadataStatus=SOURCE_FIRST_PASS`, `metadataReviewRequired=true`,
+`tagStatus=manual_review`로 표시한다. `source_metadata_first_pass.json`의 문항별
+SHA를 JS에 결박한다. 난이도 예상은 source reading의 provisional 값이며 최종
+blind difficulty evidence나 production final_bucket으로 사용하지 않는다.
+
+해설 작성 후 실제 solution에서 새 primaryMethod/decisiveStep와 난이도를 먼저 판단한다.
+그 뒤 1차 태그와 비교하여 유지/수정한다. `source-metadata.mjs reconcile`은 source와
+solution SHA에 결박한 전체 새 projection, 해설 인용과 이유를 받아 변경 이력을
+`solution_metadata_reconciliation.json`에 남긴다. 정답·해설·source payload를 바꾸는
+명령이 아니다. 재조정 이후에도 기존 independent semantic/difficulty/final audit가 필요하다.
+
+원본과 1차 태그의 hash, 현재 해설과 재조정 metadata의 hash가 다르거나 재검 기록이
+없으면 공용 prepare/기출 promotion은 완료로 처리하지 않는다. 초기 태그를 새 판단의
+정답으로 사용하거나 그대로 복사하여 VERIFIED_FINAL이라고 주장하지 않는다.
+
 ## 실행 순서
 
 1. **S0 RULE PREFLIGHT**: 현재 index/manifest 및 적용 규칙을 읽고 raw SHA를 확인한다.

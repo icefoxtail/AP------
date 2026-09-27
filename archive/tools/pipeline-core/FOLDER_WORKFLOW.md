@@ -82,6 +82,10 @@ node archive/tools/past-exam-pipeline/run-source-exam.mjs --manifest <입력mani
 node archive/tools/past-exam-pipeline/run-source-exam.mjs --manifest <입력manifest.json> --work-root archive-work
 ```
 
+원문을 읽는 같은 단계에서 가능한 태그를 최대한 1차 작성한다. 각 판독 문항의
+`initialMetadata`를 통해 L1/L2와 ACTIVE L3/L4·관계 태그·난이도 예상까지 근거와 함께
+JS에 저장하며 해설 단계에서 다시 조정한다. [입력·재조정 계약](../past-exam-pipeline/SOURCE_METADATA.md)을 따른다.
+
 성공하면 실제 파일명의 JS와 필요한 문제 그림이 작업 폴더에 작성된다. 정답·해설은
 빈 값이며 결과는 `SOURCE_EXTRACTED_REVIEW_REQUIRED`다. 발문 원본 대조와 그림의
 잘림·라벨·다른 문항 오염 검수는 여전히 필요하다. 자동 추출 성공은 semantic PASS나
@@ -114,3 +118,16 @@ calibration과 최종 검증은 유지한다. 과거 `generatedRoot`를 명시�
 textbook 실행기의 기존 기본 출력 위치까지 자동으로 일괄 변경하지 않는다.
 해당 실행기들도 이 공용 작업 루트를 전달하도록 후속 전환할 수 있다.
 production 반영은 최종 검증된 JS/에셋만 대상으로 하며 기존 DB/index 절차를 따른다.
+
+## Notion 도구 조회와 로컬 권한
+
+Notion의 특정 도구 이름이 없다는 것만으로 전체 작업을 중단하지 않는다.
+`get_tool_access`가 노출되지 않으면 Notion fetch의 `self`로 current_tool_access를
+확인한다. ai_search가 요금제상 불가이고 keyword search가 available이면 search를
+사용한다. 필독 페이지 URL/ID가 있으면 search 없이 직접 fetch할 수 있다.
+라우터: https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd
+Archive 시작: https://app.notion.com/p/3e10e68bd69f81898cc8fb85cb4b1398
+실제 fetch가 실패한 경우에는 오류를 기록하고 명시적 source-first 원문/JS/에셋 작업을
+독립적으로 계속하며 Notion 기록을 PENDING으로 남긴다. 실제 source-dependent
+production finalization 게이트는 별도로 유지한다. 도구 활성화/전체 로컬 액세스는
+연결 계정의 인증이나 요금제 자체를 변경하지 않는다.

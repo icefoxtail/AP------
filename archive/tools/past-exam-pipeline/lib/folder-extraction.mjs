@@ -6,6 +6,7 @@ import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { archiveWorkspace, initArchiveWorkspace } from '../../pipeline-core/archive-workspace.mjs';
 import { fileRef, objectSha, bytesSha } from '../../pipeline-core/canonical.mjs';
+import { parseExamPdfMetadata } from './exam-id.mjs';
 import { freezeSourceInventory } from './hardening.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -16,7 +17,9 @@ export function folderExtractionManifest(root, manifest, workRoot) {
   const layout = archiveWorkspace(root, { workRoot: workRoot || manifest.workRoot || 'archive-work', examFile: manifest.archiveRelativePath });
   if (manifest.examId !== layout.examId) throw new Error('ARCHIVE_FILENAME_EXAM_ID_MISMATCH');
   const absolute = value => value ? path.resolve(root, value) : '';
-  const normalized = { ...manifest, storageLayout: 'ARCHIVE_FOLDERS', workRoot: layout.workRoot, projectRoot: root, outputDir: path.resolve(root, layout.evidenceDir), workingExamPath: path.resolve(root, layout.examPath), assetRoot: path.resolve(root, layout.assetRoot), outputFileName: `${layout.examId}.js`, pdfPath: absolute(manifest.pdfPath), sourcePageImagePaths: (manifest.sourcePageImagePaths || []).map(absolute), sourceInventoryPath: absolute(manifest.sourceInventoryPath), visionPageExtractJsonPath: absolute(manifest.visionPageExtractJsonPath || manifest.visionExtractJsonPath) };
+  const inferred = parseExamPdfMetadata(manifest.examId);
+  const sourceInferred = parseExamPdfMetadata(manifest.pdfPath || manifest.examId);
+  const normalized = { ...manifest, course: manifest.course || inferred.course || sourceInferred.course, grade: manifest.grade || inferred.grade || sourceInferred.grade, year: manifest.year || inferred.year || sourceInferred.year, storageLayout: 'ARCHIVE_FOLDERS', workRoot: layout.workRoot, projectRoot: root, outputDir: path.resolve(root, layout.evidenceDir), workingExamPath: path.resolve(root, layout.examPath), assetRoot: path.resolve(root, layout.assetRoot), outputFileName: `${layout.examId}.js`, pdfPath: absolute(manifest.pdfPath), sourcePageImagePaths: (manifest.sourcePageImagePaths || []).map(absolute), sourceInventoryPath: absolute(manifest.sourceInventoryPath), visionPageExtractJsonPath: absolute(manifest.visionPageExtractJsonPath || manifest.visionExtractJsonPath) };
   if (Boolean(normalized.pdfPath) === Boolean(normalized.sourcePageImagePaths.length)) throw new Error('ONE_SOURCE_FORMAT_REQUIRED');
   if (normalized.pdfPath && path.extname(normalized.pdfPath).toLowerCase() !== '.pdf') throw new Error('PDF_OR_PAGE_IMAGES_REQUIRED');
   for (const file of normalized.pdfPath ? [normalized.pdfPath] : normalized.sourcePageImagePaths) if (!fs.statSync(file).isFile()) throw new Error('SOURCE_FILE_REQUIRED');

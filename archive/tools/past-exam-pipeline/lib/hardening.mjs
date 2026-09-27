@@ -1,3 +1,4 @@
+import { validateSourceMetadataReconciliation } from "./source-metadata.mjs";
 import { examStorage } from '../../pipeline-core/archive-workspace.mjs';
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -575,6 +576,7 @@ function validateBasicCompletionFields(question) {
 export function validatePastExamPromotion({ candidateFile, manifest, review, reviewFile = "" }) {
   const loaded = loadCandidate(candidateFile);
   const errors = [];
+  errors.push(...validateSourceMetadataReconciliation(candidateFile, loaded.questions));
   if (loaded.window.examTitle !== manifest.examId) errors.push("EXAM_IDENTITY_MISMATCH");
   const source = validateSourceInventoryAndCoverage(candidateFile, loaded.questions);
   errors.push(...source.errors);

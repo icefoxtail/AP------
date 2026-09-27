@@ -1542,3 +1542,13 @@ INDEPENDENT_REVIEW
 → LOCK
 → Metadata Contract v2
 ```
+
+## 원문 선행 작업의 난이도 예상치 경계
+
+명시적 source-first 작업본은 `metadataStatus=SOURCE_FIRST_PASS` 및
+`metadataReviewRequired=true`로 표시하고, 원문 근거가 있는 난이도 예상치를 기록할
+수 있다. 이는 canonical final_bucket export 또는 fresh independent blind evidence가
+아니다. 해설 작성 후 새로 판단하고 1차 예상과의 유지/수정을 기록한 뒤 본 문서의
+기존 blind difficulty / boundary / legacy compatibility / final gate를 통과해야 한다.
+`level`에서 difficultyBucket을 역산하거나 1차 예상의 confidence를 final evidence로
+재사용하지 않는다. source-only 작업본은 production에 등록하지 않는다.

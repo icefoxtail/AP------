@@ -12,7 +12,8 @@ import { assertBuilderStart } from '../past-exam-pipeline/lib/calibration.mjs';
 import { solutionQualityDraft } from './solution-quality.mjs';
 import { visualBenefitDraft } from './solution-visual-benefit.mjs';
 import { evaluateGoldSourceEligibility } from './gold-contract.mjs';
-import { workingExamOptions } from './archive-workspace.mjs';
+import { examStorage, workingExamOptions } from './archive-workspace.mjs';
+import { validateSourceMetadataReconciliation } from '../past-exam-pipeline/lib/source-metadata.mjs';
 
 export function prepareDraft(root, options) {
   const { pipeline, runId, sourcePath, candidatePath, workdir, workspace = null, schemaVersion = RUN_VERSION, builderId = null, builderSessionId = null, builderModelOrAgent = null, sourceExamIdRegistryRef = null, workBatchId = null, pastExamManifestPath = null, assetRoot = null, sourceAssetRoot = null, benchmarkKind = null } = workingExamOptions(root, options);
@@ -50,6 +51,14 @@ export function prepareDraft(root, options) {
   const candidateInputRef = { ...fileRef(root, candidatePath), role: 'candidate' };
   const run = { schemaVersion, status: 'DRAFT_NOT_REVIEWED', pipeline, runId, revision: 1, builderId: v2 ? builderId : null, builderSessionId: v2 ? builderSessionId : null, builderModelOrAgent: v2 ? builderModelOrAgent : null, canonicalRecordId: `${runId}:r1`, inputs: [sourceInputRef, candidateInputRef, ...rulePack.refs], questions: [], evidence: [], registry: [], denominator: { status: 'UNFROZEN', stale: true }, inputSha: null };
   if (workspace) run.workspace = workspace;
+  if (candidate.questionBank.some(q => q.sourceMetadataFirstPassSha || q.metadataStatus === 'SOURCE_FIRST_PASS')) {
+    const errors = validateSourceMetadataReconciliation(safePath(root, candidatePath), candidate.questionBank);
+    if (errors.length) throw new Error(errors.join(';'));
+    for (const name of ['source_metadata_first_pass.json', 'solution_metadata_reconciliation.json']) {
+      const absolute = path.join(examStorage(safePath(root, candidatePath)).evidenceRoot, 'reports', name);
+      run.inputs.push({ ...fileRef(root, path.relative(root, absolute).split(path.sep).join('/')), role: 'dependency' });
+    }
+  }
   if (v2) {
     run.sourceAuthority = { sourceTruthRefs: [], sourceTruthBundleSha: objectSha([]), activeBaselineRef: null, activeBaselineSha: null, baselineDiscoveryEvidenceRef: null, approvedSourceRepairLedgerRef: null, approvedSourceExceptionLedgerRef: null };
     run.uidAuthority = { sourceExamIdRegistryRef: null, sourceExamIdRegistryEntrySha: null, uidMigrationEvidenceRefs: [], uidMigrationEvidenceSetSha: objectSha([]) };

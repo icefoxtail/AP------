@@ -168,6 +168,22 @@ standardCourse = 공통수학2
 2015/2022 문항은 curriculum identity를 보존한다.
 서로 대응하는 유형이 존재하더라도 한 교육과정 key를 다른 교육과정 key로 자동 변환하지 않는다.
 
+### 원문 판독 단계의 1차 분류
+
+사용자가 발문·에셋을 먼저 구축하도록 지시한 경우, 원문 판독에서 근거를 얻을 수 있는
+L1~L4·관계 태그·category/tags·난이도 예상치를 기존 JS 필드에 먼저 작성할 수 있다.
+이는 `metadataStatus=SOURCE_FIRST_PASS`, `metadataReviewRequired=true`,
+`tagStatus=manual_review`로 구분하는 작업본이며 canonical key/parent/binding/enum을
+지키되 advanced FINAL, R2E_FINAL, production eligibility를 부여하지 않는다.
+필드별 1차 완료/해설 재검 필요와 원문 인용·사유·snapshot SHA를 sidecar에 기록한다.
+
+해설 작성자는 verified solution에서 fresh semantic/difficulty 판단을 먼저 수행한 뒤
+1차 snapshot과 비교한다. `SOLUTION_RECONCILED`는 변경 이력 작성 완료 상태이고
+independent semantic PASS가 아니다. 최종 RPM→ACTIVE resolver, current binding,
+blind difficulty 및 source/solution/hash parity는 기존 계약 그대로 적용한다.
+실행 계약과 CLI는 `Past_Exam_V3_COMPLETE.md` 및
+`archive/tools/past-exam-pipeline/SOURCE_METADATA.md`를 따른다.
+
 ## 2.2 Primary Taxonomy
 
 학생 문제 분류용 정식 논리 계층은 아래 네 단계다.

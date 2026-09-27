@@ -1,0 +1,70 @@
+{
+  "scope": "Source-first metadata software and follow-up solution reconciliation; not real exam quality certification",
+  "branch": "codex/archive-folder-pipeline",
+  "sourceIntakeBranch": "codex/archive-source-intake",
+  "tests": {
+    "pipelineCore": {
+      "pass": 282,
+      "fail": 0
+    },
+    "pastExam": {
+      "pass": 73,
+      "fail": 0
+    },
+    "finalTagExtractionAndReconciliation": {
+      "pass": 20,
+      "fail": 0
+    }
+  },
+  "browser": [
+    {
+      "profile": "desktop",
+      "questions": 1,
+      "math": 2,
+      "images": [
+        120
+      ],
+      "overflow": false,
+      "sourceTextPresent": true,
+      "unit": "H22-C-01",
+      "subunit": "H22-C-01-POLYNOMIAL_BASIC",
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "errors": [],
+      "failed": []
+    },
+    {
+      "profile": "mobile",
+      "questions": 1,
+      "math": 2,
+      "images": [
+        120
+      ],
+      "overflow": false,
+      "sourceTextPresent": true,
+      "unit": "H22-C-01",
+      "subunit": "H22-C-01-POLYNOMIAL_BASIC",
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "errors": [],
+      "failed": []
+    }
+  ],
+  "fieldPolicy": "Source reading may fill every canonical supported field. SOURCE_FIRST_PASS values remain review-required until a fresh solution-stage reconciliation and final independent quality gates.",
+  "protectedPayload": "content, choices, source identity, problem image preserved by the metadata reconciliation command",
+  "initialEvidence": "reports/source_metadata_first_pass.json",
+  "followupEvidence": "reports/solution_metadata_reconciliation.json with immutable revision history",
+  "productionWrites": 0,
+  "notionRead": {
+    "selfAccessDiscovery": "SUCCESS",
+    "routerDirectFetch": "SUCCESS",
+    "archiveStartDirectFetch": "SUCCESS",
+    "aiSearch": "PLAN_REQUIRED_USE_KEYWORD_SEARCH_OR_DIRECT_FETCH"
+  },
+  "localPermissionConfiguration": {
+    "sandbox_mode": "danger-full-access",
+    "approval_policy": "never",
+    "appsDefaultEnabled": true,
+    "toolsApprovalMode": "approve",
+    "actualConnectedAccountPermissionsAreSeparate": true
+  },
+  "optionalGlobalInstructionsEdit": "BLOCKED_BY_POLICY; no bypass attempted; workflow documentation and automation prompts provide the fallback instead"
+}

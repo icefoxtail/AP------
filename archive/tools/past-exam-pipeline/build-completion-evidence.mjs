@@ -7,6 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import { makeSourceMetadataRecheckDraft } from './lib/source-metadata.mjs';
 import { createMetaDecisionDraft, makeSolutionIdentityDraft } from './lib/completion-evidence.mjs';
 
 function arg(name) {
@@ -62,6 +63,8 @@ function main() {
   fs.mkdirSync(destination, { recursive: true });
   fs.writeFileSync(identityPath, identityBytes, 'utf8');
   fs.writeFileSync(metaPath, `${JSON.stringify(meta, null, 2)}\n`, 'utf8');
+  const recheck = makeSourceMetadataRecheckDraft(questions);
+  if (recheck.items.length) fs.writeFileSync(path.join(destination, 'source_metadata_solution_recheck_draft.json'), `${JSON.stringify(recheck, null, 2)}\n`, 'utf8');
   const result = {
     status: 'DRAFTS_CREATED_REVIEW_REQUIRED',
     solutionIdentityEvidence: path.relative(root, identityPath).replaceAll('\\', '/'),

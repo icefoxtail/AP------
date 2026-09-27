@@ -9,6 +9,7 @@ import { runFolderExtraction, folderExtractionManifest } from '../lib/folder-ext
 import { loadConfig } from '../lib/config.mjs';
 import { buildManifestFromInventoryItem } from '../lib/exam-id.mjs';
 import { fileURLToPath } from 'node:url';
+import { makeSourceMetadataRecheckDraft, metadataProjection, validateSourceMetadataReconciliation } from '../lib/source-metadata.mjs';
 
 function fixture(t, format = 'pdf') {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-folder-extract-'));
@@ -102,4 +103,43 @@ test('batch source preparation uses the same folder layout and rejects duplicate
   assert.equal(result.results[0].layout.workRoot, 'archive-work');
   fs.writeFileSync(selected, JSON.stringify({ jobs: [f.manifest, f.manifest] }));
   assert.throws(() => execFileSync(process.execPath, args, { cwd: f.root, encoding: 'utf8', stdio: 'pipe' }), /DUPLICATE_EXAM_ID/);
+});
+
+test('actual extractor keeps first-pass tags in JS and solution CLI adjusts them with source-preserving evidence', async t => {
+  const f = fixture(t);
+  f.q.content = '다항식 $P(x)=x^2+2x+1$에서 $x$의 계수는?';
+  f.q.initialMetadata = { confidence: 'high', reason: '다항식의 계수를 직접 묻는 발문이므로 다항식 연산의 기본 세부단원으로 1차 분류한다.', sourceExcerpts: ['다항식', '계수'], values: { standardUnitKey: 'H22-C-01', subUnitKey: 'H22-C-01-POLYNOMIAL_BASIC', difficultyBucket: 3, difficultyConfidence: 'medium', difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL', level: '중', tags: ['기출', '계수'] } };
+  fs.writeFileSync(f.vision, JSON.stringify({ pages: [{ pageNo: 1, questions: [f.q] }] }));
+  const result = await runFolderExtraction(f.manifest, { root: f.root, dpi: 72 });
+  const file = path.join(f.root, result.layout.examPath), evidence = path.join(f.root, result.layout.evidenceDir);
+  const context = { window: {} }; vm.runInNewContext(fs.readFileSync(file, 'utf8'), context);
+  const q = JSON.parse(JSON.stringify(context.window.questionBank[0]));
+  assert.equal(q.standardCourse, '공통수학1'); assert.equal(q.standardUnitKey, 'H22-C-01'); assert.equal(q.subUnitKey, 'H22-C-01-POLYNOMIAL_BASIC'); assert.equal(q.metadataStatus, 'SOURCE_FIRST_PASS');
+  assert.equal(q.difficultyBucket, 3); assert.equal(q.sourceArchiveFile, f.manifest.archiveRelativePath);
+  const protectedBefore = { content: q.content, choices: q.choices, image: q.image, sourceIdentityKey: q.sourceIdentityKey };
+  q.answer = '2'; q.solution = '다항식 $P(x)$에서 $x$의 계수는 2이다.';
+  fs.writeFileSync(file, `window.examTitle=${JSON.stringify(f.manifest.examId)};window.questionBank=${JSON.stringify([q])};`);
+  assert.deepEqual(validateSourceMetadataReconciliation(file, [q]), ['SOURCE_METADATA_SOLUTION_RECHECK_REQUIRED']);
+  const decision = makeSourceMetadataRecheckDraft([q]);
+  Object.assign(decision.items[0], { values: { ...metadataProjection(q), difficultyBucket: 1, difficultyConfidence: 'high', level: '하' }, reason: '풀이에서 계수를 바로 읽으므로 처음 예상한 계산 부담보다 낮게 조정한다.', solutionExcerpts: ['계수는 2이다.'] });
+  const decisionFile = path.join(f.root, 'solution-metadata.json'); fs.writeFileSync(decisionFile, JSON.stringify(decision));
+  const script = fileURLToPath(new URL('../source-metadata.mjs', import.meta.url));
+  const output = JSON.parse(execFileSync(process.execPath, [script, 'reconcile', '--working-exam', file, '--manifest', path.join(evidence, 'manifest.json'), '--decision', decisionFile], { encoding: 'utf8' }));
+  assert.equal(output.adjustedCount, 1); assert.equal(output.productionAuthorized, false);
+  const final = { window: {} }; vm.runInNewContext(fs.readFileSync(file, 'utf8'), final);
+  const updated = JSON.parse(JSON.stringify(final.window.questionBank[0]));
+  assert.equal(updated.difficultyBucket, 1); assert.equal(updated.metadataStatus, 'SOLUTION_RECONCILED');
+  assert.deepEqual({ content: updated.content, choices: updated.choices, image: updated.image, sourceIdentityKey: updated.sourceIdentityKey }, protectedBefore);
+  assert.deepEqual(validateSourceMetadataReconciliation(file, [updated]), []);
+  const second = makeSourceMetadataRecheckDraft([updated]);
+  Object.assign(second.items[0], { values: { ...metadataProjection(updated), difficultyBucket: 2 }, reason: '재검에서 이 문항의 계산 범위를 다시 판단해 2로 조정했다.', solutionExcerpts: ['계수는 2이다.'] });
+  fs.writeFileSync(decisionFile, JSON.stringify(second));
+  const baseArgs = [script, 'reconcile', '--working-exam', file, '--manifest', path.join(evidence, 'manifest.json'), '--decision', decisionFile];
+  assert.throws(() => execFileSync(process.execPath, baseArgs, { encoding: 'utf8', stdio: 'pipe' }), /NEW_RECONCILIATION_REVISION_REQUIRED/);
+  execFileSync(process.execPath, [...baseArgs, '--revision', '2'], { encoding: 'utf8' });
+  const revision = JSON.parse(fs.readFileSync(path.join(evidence, 'reports/solution_metadata_reconciliation.json')));
+  assert.equal(revision.revision, 2);
+  assert.ok(revision.items[0].changes.some(row => row.field === 'difficultyBucket' && row.before === 1 && row.after === 2));
+  assert.ok(fs.existsSync(path.join(evidence, 'reports/metadata-reconciliation/revision-001.json')));
+  assert.ok(fs.existsSync(path.join(evidence, 'reports/metadata-reconciliation/revision-002.json')));
 });
