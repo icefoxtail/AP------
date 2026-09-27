@@ -431,7 +431,7 @@
           candidates = canonicalByIdentity.get(identity) || [];
         for (const key of candidates) courseKeys.add(key);
         const curriculum = finderCourseCodeCurriculum(range.courseCode);
-        if (curriculum && candidates.size)
+        if (curriculum && candidates.size && !exam.curriculums?.length)
           curriculumKeys.add(curriculum);
       }
       if (!curriculumKeys.size && hasNeutralMiddleRange) {
@@ -518,7 +518,7 @@
         }
     return paths;
   }
-  function eligibility(record, options = {}) {
+  function basicEligibility(record, options = {}) {
     const reasons = [];
     if (
       !UID.test(record.questionUid || "") ||
@@ -526,17 +526,15 @@
     )
       reasons.push("identity");
     if (record.sourceStatus !== "VERIFIED") reasons.push("source");
-    if (record.taxonomyStatus !== "CONFIRMED") reasons.push("taxonomy");
+    // A missing RPM/Foundation leaf does not invalidate a known source unit.
+    if (PATH_FIELDS.slice(0, 4).some(field => !text(record[field])) ||
+        record.taxonomyStatus === "HOLD") reasons.push("taxonomy");
     if (record.gradeConflict) reasons.push("grade");
     if (record.reviewStatus !== "reviewed_pass") reasons.push("review");
     if (record.semanticDisposition === "HOLD" || record.semanticDisposition === "ROUTE_OUT")
       reasons.push("semantic");
     if (record.sourceQualityDisposition === "SOURCE_BLOCKED" || record.sourceQualityDisposition === "SOLUTION_REPAIR_REQUIRED")
       reasons.push("solution");
-    if (record.foundationTaxonomyStatus && (
-      record.foundationTaxonomyStatus !== "CONFIRMED" ||
-      !record.curriculumKey || !record.courseKey || !record.L1 || !record.L2
-    )) reasons.push("foundation_scope");
     if (
       !Number.isInteger(record.difficultyBucket) ||
       record.difficultyBucket < 1 ||
@@ -564,6 +562,11 @@
     if (record.metadataConflicts?.length) reasons.push("conflict");
     return { ok: reasons.length === 0, reasons };
   }
+  const eligibility = basicEligibility;
+  function advancedEligible(record) {
+    return record.taxonomyStatus === "CONFIRMED" &&
+      (!record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED");
+  }
   function matches(record, filters = {}) {
     if (
       filters.primaryPaths?.length &&
@@ -588,8 +591,8 @@
       return false;
     for (const level of [3, 4]) {
       const selected = filters[`L${level}`];
-      if (selected && advancedFilterValue(record, level) !==
-        (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`))
+      if (selected && (!advancedEligible(record) || advancedFilterValue(record, level) !==
+        (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`)))
         return false;
     }
     for (const field of PATH_FIELDS) {
@@ -907,6 +910,8 @@
     compareNewest,
     taxonomyPaths,
     eligibility,
+    basicEligibility,
+    advancedEligible,
     advancedAuthority,
     advancedFilterValue,
     matches,
