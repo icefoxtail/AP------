@@ -2,7 +2,7 @@
   "originMain": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
   "successfulExamCountForBatchDate": 5,
   "batchDate": "2026-09-27",
-  "updatedAt": "2026-09-27T20:26:31.561Z",
+  "updatedAt": "2026-09-27T20:59:05.6146324Z",
   "activeRunId": null,
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 5,
@@ -29,7 +29,25 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-09-28T05:26:31+09:00",
+  "updatedAtKst": "2026-09-28T05:59:05+09:00",
   "heldExamCount": 2,
-  "priorityGroupRemainingAfterBatch": 0
+  "priorityGroupRemainingAfterBatch": 0,
+  "questionLayoutBackfillTargets": [
+    {
+      "batchDate": "2026-09-27",
+      "runId": "source-intake-2026-09-27-2343-kst",
+      "status": "PENDING_BACKFILL",
+      "targetPath": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json",
+      "examIds": [
+        "20_매산여고_2학기_기말_고1_기출",
+        "20_순천여고_2학기_기말_고1_기출",
+        "19_강남여고_2학기_기말_고1_기출",
+        "19_금당고_2학기_기말_고1_기출",
+        "19_팔마고_2학기_기말_고1_기출"
+      ]
+    }
+  ],
+  "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "questionLayoutBackfillStatus": "PENDING_BACKFILL",
+  "nextStartPoint": "Next scheduled execution starts with the new transcription/layout gates. This run is the only designated prior-batch backfill target; do not add other completed historical batches."
 }

@@ -1,0 +1,102 @@
+{
+  "schema": "APMATH_QUESTION_LAYOUT_BACKFILL_TARGET_v1",
+  "batchDate": "2026-09-27",
+  "runId": "source-intake-2026-09-27-2343-kst",
+  "status": "PENDING_BACKFILL",
+  "reason": "User added QUESTION MICRO_LAYOUT HARD GATE after this batch had completed its prior source-only contract. Do not retroactively interrupt or re-extract; this completed batch alone is designated for bounded layout backfill.",
+  "gateSequence": [
+    "exact transcription",
+    "SOURCE_TEXT_FREEZE",
+    "QUESTION_LAYOUT_BUILD",
+    "SOURCE_TEXT_EXACT_PARITY",
+    "QUESTION_LAYOUT_FREEZE"
+  ],
+  "requirements": {
+    "sourceTextExactParity": "100%",
+    "choicesStringAndOrderExactEquality": "100%",
+    "answerSolutionScope": "remain empty and out of scope",
+    "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "exams": [
+    {
+      "examId": "20_매산여고_2학기_기말_고1_기출",
+      "workingExamPath": "archive-work/exams/original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+      "sourceFidelityEvidence": "archive-work/evidence/20_매산여고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+      "questionLayoutStatus": "PENDING_BACKFILL",
+      "sourceTextExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "choicesExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "questionLayoutChangedCount": 0,
+      "questionLayoutHoldCount": 0,
+      "knownQuestionLayoutRepairPending": false,
+      "questionLayoutEvidenceRef": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json#20_매산여고_2학기_기말_고1_기출",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+    },
+    {
+      "examId": "20_순천여고_2학기_기말_고1_기출",
+      "workingExamPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+      "sourceFidelityEvidence": "archive-work/evidence/20_순천여고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+      "questionLayoutStatus": "PENDING_BACKFILL",
+      "sourceTextExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "choicesExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "questionLayoutChangedCount": 0,
+      "questionLayoutHoldCount": 0,
+      "knownQuestionLayoutRepairPending": false,
+      "questionLayoutEvidenceRef": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json#20_순천여고_2학기_기말_고1_기출",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+    },
+    {
+      "examId": "19_강남여고_2학기_기말_고1_기출",
+      "workingExamPath": "archive-work/exams/original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
+      "sourceFidelityEvidence": "archive-work/evidence/19_강남여고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+      "questionLayoutStatus": "PENDING_BACKFILL",
+      "sourceTextExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "choicesExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "questionLayoutChangedCount": 0,
+      "questionLayoutHoldCount": 0,
+      "knownQuestionLayoutRepairPending": false,
+      "questionLayoutEvidenceRef": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json#19_강남여고_2학기_기말_고1_기출",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+    },
+    {
+      "examId": "19_금당고_2학기_기말_고1_기출",
+      "workingExamPath": "archive-work/exams/original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+      "sourceFidelityEvidence": "archive-work/evidence/19_금당고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+      "questionLayoutStatus": "PENDING_BACKFILL",
+      "sourceTextExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "choicesExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "questionLayoutChangedCount": 0,
+      "questionLayoutHoldCount": 0,
+      "knownQuestionLayoutRepairPending": false,
+      "questionLayoutEvidenceRef": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json#19_금당고_2학기_기말_고1_기출",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+    },
+    {
+      "examId": "19_팔마고_2학기_기말_고1_기출",
+      "workingExamPath": "archive-work/exams/original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+      "sourceFidelityEvidence": "archive-work/evidence/19_팔마고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+      "questionLayoutStatus": "PENDING_BACKFILL",
+      "sourceTextExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "choicesExactParityStatus": "PENDING_BACKFILL_FREEZE_GATE",
+      "questionLayoutChangedCount": 0,
+      "questionLayoutHoldCount": 0,
+      "knownQuestionLayoutRepairPending": false,
+      "questionLayoutEvidenceRef": "archive-work/evidence/nightly/runs/2026-09-27/question-layout-backfill-target.json#19_팔마고_2학기_기말_고1_기출",
+      "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF"
+    }
+  ],
+  "excludedFromBackfill": [
+    {
+      "examId": "20_매산고_2학기_기말_고1_기출",
+      "status": "SOURCE_DEFECT_HOLD",
+      "reason": "Q13 literally states 5 participants while assigning 2,3,3 to three groups (total 8); kept verbatim. Extractor returns NEEDS_WORK/manual review 1, so not credited. q12 diagram crop visually checked for all labels and boundaries."
+    },
+    {
+      "examId": "20_효천고_2학기_기말_고1_기출",
+      "status": "SOURCE_DEFECT_HOLD",
+      "reason": "서술형4 source defect: the prompt identifies only 1 and 8 as prefilled and asks to place the remaining numbers excluding 1 and 8, while the source diagram also visibly pre-fills 3. Transcribed literally and marked SOURCE_DEFECT; not credited."
+    }
+  ],
+  "otherHistoricalBatches": "NOT_TARGETED",
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "nextStartPoint": "Next scheduled execution starts with the new transcription/layout gates. This run is the only designated prior-batch backfill target; do not add other completed historical batches."
+}
