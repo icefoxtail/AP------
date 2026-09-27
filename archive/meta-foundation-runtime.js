@@ -199,6 +199,8 @@
       // Pack taxonomy rows describe advanced capabilities and legacy routes.
       // Keep the published RPM parents as the authority for the basic scope UI.
       basicTaxonomy: catalog.basicTaxonomy || catalog.taxonomy || [],
+      basicScopeLinks: runtime.basicScopeLinks,
+      basicScopeGroups: runtime.basicScopeGroups,
       taxonomy: legacyTaxonomy.concat(runtime.taxonomyRows || []),
       indexVersion: String(catalog.indexVersion || "") + ":mf:" + runtime.runtimeVersion,
       metaFoundationRuntimeVersion: runtime.runtimeVersion,
@@ -243,8 +245,18 @@
         if (data?.status !== "DERIVED_READ_ONLY" || !Array.isArray(data.problemTypes) || !Array.isArray(data.templates))
           throw new Error("Meta Foundation taxonomy invalid");
         return data;
+      }),
+    fetch(new URL("data/basic-scope-parent-links.json", document.baseURI), { cache: "no-cache" })
+      .then(response => {
+        if (!response.ok) throw new Error("Basic scope parent links HTTP " + response.status);
+        return response.json();
       })
-  ]).then(([packs, taxonomy]) => {
+      .then(data => {
+        if (data?.schemaVersion !== "archive2-basic-scope-parent-links-v1" || data.status !== "DERIVED_READ_ONLY" || !Array.isArray(data.records))
+          throw new Error("Basic scope parent links invalid");
+        return { records: data.records.concat(data.sourceParents || []), groups: data.groups || [] };
+      })
+  ]).then(([packs, taxonomy, basicScopeData]) => {
     const uniqueRows = (rows, fields) => {
       const seen = new Set();
       return rows.filter(row => {
@@ -284,6 +296,8 @@
         counts: pack.counts
       })),
       records,
+      basicScopeLinks: basicScopeData.records,
+      basicScopeGroups: basicScopeData.groups,
       taxonomyRows,
       ownedScopes,
       counts: {

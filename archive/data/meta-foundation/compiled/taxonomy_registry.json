@@ -12,7 +12,7 @@
     },
     {
       "packId": "FUNCTIONS_GRAPHS",
-      "version": "1.0.1"
+      "version": "1.0.2"
     },
     {
       "packId": "LIMIT_CONTINUITY",
@@ -36,7 +36,7 @@
     },
     {
       "packId": "MIDDLE1",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     {
       "packId": "H1_FOUNDATION",
@@ -44,7 +44,7 @@
     }
   ],
   "problemTypeCount": 253,
-  "templateCount": 707,
+  "templateCount": 708,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -2118,7 +2118,7 @@
       "aliases": [],
       "ownerPack": "FUNCTIONS_GRAPHS",
       "status": "ACTIVE",
-      "supportingItemCount": 23,
+      "supportingItemCount": 24,
       "mergedFromRawProblemTypes": [
         "graph_properties"
       ],
@@ -2140,6 +2140,7 @@
         "qid_v1_882a11f43235a0c863d874f9bd052c92a7cdfeb2a5a01b64737da95c0228554f",
         "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
         "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
+        "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
         "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
         "qid_v1_c5febce4d879758546ccf23f4edcdc792aaaf0111de6c2bcdceeb76dd7e97a14",
         "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0",
@@ -6183,9 +6184,11 @@
       ],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE1",
-      "supportingItemCount": 2,
+      "supportingItemCount": 4,
       "supportingQuestionUids": [
+        "qid_v1_20ba66f038b43a1810b3d13daca8cff6e8d4069a93aba69c5a362d03c3c28ebb",
         "qid_v1_222d3ad259687e42ee4d3623a91cea2265a6a7a4ab4794636a88652492317baf",
+        "qid_v1_29c09a9c15229d9ac8ae34ce96bd91f37aefbbd8a37fb6a5907af59f691ad11f",
         "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e"
       ],
       "sourceUnits": [
@@ -14981,7 +14984,7 @@
       ],
       "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
       "status": "ACTIVE",
-      "supportingItemCount": 20,
+      "supportingItemCount": 21,
       "mergedFromRawTemplates": [
         "TM_IRRATIONAL_GRAPH_MULTI_PROPERTY_JUDGMENT",
         "TM_IRRATIONAL_GRAPH_MULTI_PROPERTY_PARAMETER_SIGN",
@@ -15007,6 +15010,7 @@
         "qid_v1_829285b1f5bd5829cd736f6cf5e96cda4191a033383f234da826d8a032b3870c",
         "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
         "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
+        "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
         "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
         "qid_v1_c5febce4d879758546ccf23f4edcdc792aaaf0111de6c2bcdceeb76dd7e97a14",
         "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0",
@@ -21326,33 +21330,6 @@
       ]
     },
     {
-      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTIES_CORE",
-      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
-      "canonicalLabelKo": "함수 그래프의 성질 — 기본 풀이 골격",
-      "definition": "The template distinguishes plotted change y from actual measurement by adding the 9 kg initial baseline.",
-      "internalSkeleton": "At week 1 the plotted change is −0.5 kg, so the actual weight is 8.5 kg, not 8 kg; statement ③ is false.",
-      "status": "ACTIVE",
-      "ownerPack": "MIDDLE1",
-      "aliases": [
-        "TPL_M1_TIME_SERIES_CHANGE_PLUS_BASELINE"
-      ],
-      "supportingItemCount": 1,
-      "supportingQuestionUids": [
-        "qid_v1_29c09a9c15229d9ac8ae34ce96bd91f37aefbbd8a37fb6a5907af59f691ad11f"
-      ],
-      "observedConditionKeys": [],
-      "observedIntegrationPatterns": [
-        "SEQUENTIAL"
-      ],
-      "evidenceProvenance": [
-        {
-          "source": "B01_B16_CONSENSUS",
-          "representativeQuestionUid": "qid_v1_29c09a9c15229d9ac8ae34ce96bd91f37aefbbd8a37fb6a5907af59f691ad11f",
-          "representativeStep": "At week 1 the plotted change is −0.5 kg, so the actual weight is 8.5 kg, not 8 kg; statement ③ is false."
-        }
-      ]
-    },
-    {
       "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE",
       "parentProblemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
       "canonicalLabelKo": "수위 그래프와 용기 모양 대응 — 기본 풀이 골격",
@@ -26952,6 +26929,58 @@
           "representativeQuestionUid": "qid_v1_15f2e47348bf63423576837a477fe973019ceaa68f5facc7366620b289359948",
           "representativePrimaryMethod": "줄기·잎 자료를 계급별로 분류해 도수를 세고 표의 기호값을 대조한다.",
           "representativeDecisiveStep": "계급 도수는 4, 6, 5, 3, 2이고 총도수는 20이며 표에서 틀린 계급값은 d=60이다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_BASELINE_ADJUSTMENT",
+      "parentProblemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "canonicalLabelKo": "변화량 그래프에서 기준값을 더해 실제값 복원",
+      "definition": "그래프가 초기값에 대한 변화량을 나타낼 때 초기 기준값과 그래프의 변화량을 더해 실제 측정값과 그 변화를 해석한다.",
+      "internalSkeleton": "초기 몸무게 9 kg에 1주 후 변화량 −0.5 kg을 더하면 실제 몸무게는 8.5 kg이다. 이를 8 kg이라고 한 ③이 옳지 않다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_29c09a9c15229d9ac8ae34ce96bd91f37aefbbd8a37fb6a5907af59f691ad11f"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_M1_B01_B31_FINAL_ADJUDICATION",
+          "representativeQuestionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93",
+          "representativePrimaryMethod": "거리-시간 그래프의 시작 좌표와 특정 거리에 도달하는 좌표를 읽는다.",
+          "representativeDecisiveStep": "토끼는 10분 뒤 출발하고 거북은 60분에 2km 지점에 도착한다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_TIME_SERIES_FACT_AUDIT",
+      "parentProblemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "canonicalLabelKo": "시간대별 기온 그래프의 사실 확인",
+      "definition": "시간에 따른 기온 그래프에서 특정 시각의 기온, 두 시각 사이의 차, 최댓값이 나타나는 시각과 같은 높이의 시각을 읽어 진술을 확인한다.",
+      "internalSkeleton": "그래프에서 3시와 9시의 기온을 각각 23℃와 24℃로 읽어 차가 1℃임을 확인한다. 차를 2℃라고 한 ①이 옳지 않다.",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "aliases": [],
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_20ba66f038b43a1810b3d13daca8cff6e8d4069a93aba69c5a362d03c3c28ebb"
+      ],
+      "observedConditionKeys": [],
+      "observedIntegrationPatterns": [
+        "SEQUENTIAL"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "R2E_M1_B01_B31_FINAL_ADJUDICATION",
+          "representativeQuestionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93",
+          "representativePrimaryMethod": "거리-시간 그래프의 시작 좌표와 특정 거리에 도달하는 좌표를 읽는다.",
+          "representativeDecisiveStep": "토끼는 10분 뒤 출발하고 거북은 60분에 2km 지점에 도착한다."
         }
       ]
     },
