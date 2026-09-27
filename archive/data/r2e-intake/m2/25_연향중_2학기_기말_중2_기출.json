@@ -1,0 +1,89 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_V1",
+  "examFile": "25_연향중_2학기_기말_중2_기출.js",
+  "examUid": "25_연향중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "lane": "A",
+  "stage": "CREATE",
+  "sourceBlobSha": "d7fcfc423f2399924ed126311ff3c0088e06bee2",
+  "inputCommit": "73b2d2a5316667a2c8c316019d5e4d9cc1f12d02",
+  "totalQuestions": 23,
+  "changedQuestions": [],
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 21,
+    "REPAIR": 0,
+    "TRUE_HOLD": 2
+  },
+  "svgDispositionSummary": {
+    "ADD": 0,
+    "REPAIR": 0,
+    "HOLD": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 7,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 14,
+    "TRUE_HOLD": 2
+  },
+  "unresolvedItems": [
+    {
+      "questions": [
+        17,
+        23
+      ],
+      "disposition": "TRUE_HOLD",
+      "reason": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED"
+    },
+    {
+      "questions": [
+        2,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        19,
+        20,
+        22
+      ],
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "reason": "resolver/crosswalk exact binding unavailable or exact L1/L2 mismatch; see meta sidecar"
+    }
+  ],
+  "nextState": "READY_FOR_REVIEW",
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "73b2d2a5316667a2c8c316019d5e4d9cc1f12d02",
+    "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+    "sourcePath": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+    "sourceBlobSha": "d7fcfc423f2399924ed126311ff3c0088e06bee2"
+  },
+  "authorityRefs": [
+    "meta:archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+    "evidence:archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.evidence.json",
+    "resolver:a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+    "resolverContract:75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+    "crosswalk:0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeRegistry:c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+  ],
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+    "sha256": "aa9cdf77f12a231235ecc33e2fda2f6c20b26f796503db112db643036eeacee5"
+  },
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "validatorSummary": {
+    "status": "CREATE_CONTRACT_PROJECTION_PASS",
+    "officialResolverCli": "NOT_RUN_IN_CONNECTOR_RUNTIME",
+    "questionCount": 23,
+    "sourceHoldCount": 2
+  },
+  "commitBinding": "SELF",
+  "updatedAt": "2026-09-28T00:08:35+09:00"
+}

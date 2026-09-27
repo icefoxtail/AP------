@@ -1,0 +1,132 @@
+{
+  "schema": "JS_ARCHIVE_R2E_INTAKE_EVIDENCE_V1",
+  "examFile": "25_연향중_2학기_기말_중2_기출.js",
+  "examUid": "25_연향중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "lane": "A",
+  "stage": "CREATE",
+  "sourcePath": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+  "sourceBlobSha": "d7fcfc423f2399924ed126311ff3c0088e06bee2",
+  "totalQuestions": 23,
+  "sourceIdentity": {
+    "coverage": "23/23",
+    "contentChoicesAnswerSolutionCoverage": "23/23",
+    "sourceImageCoverage": "14/14",
+    "sourceImagesVisualReview": "PASS 14/14",
+    "imageBlobShas": {
+      "1": "bbdd0f7366f3ef38d75feb19715f3add1138dab8",
+      "2": "d1257e35bc1a68dbfde716f0ba0bf383f897711f",
+      "3": "4d884238e3f469d4fa8c9d3611310fe1fa277bec",
+      "5": "810c0bf7c431fe9e37c9931b14819dcda5f289c0",
+      "6": "02a54f0877e076485d6de0a00a7f7efed59d66e1",
+      "7": "f181f88a4aad148d1d86992a59d14b7ae3b129c6",
+      "8": "06ad549a887d9054f1df7958bb09cae590efa600",
+      "9": "0270608e52b0872b4e3c4a8de2500bbc72d71ad9",
+      "10": "3883ced3e20149eda9dd631404267acc551a2a82",
+      "13": "e4bc5dfb6c91c57424fa692d001aaa2367d3a94c",
+      "14": "a6f75363e339dc643b56172872827530fee838dd",
+      "18": "c2bff43338580b4db04ea3e3012378995ee257bc",
+      "21": "0af01a049ad73eb03fab3bf447a10b75092b83e1",
+      "22": "bf54689763414053388c4bb6a1f2d87a625a2a86"
+    }
+  },
+  "solutionSummary": {
+    "KEEP": 21,
+    "REPAIR": 0,
+    "TRUE_HOLD": 2,
+    "TRUE_HOLD_QUESTIONS": [
+      17,
+      23
+    ]
+  },
+  "svgSummary": {
+    "ADD": 0,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "reason": "원본 도형 이미지 14/14를 직접 대조했고 기존 학생용 해설로 풀이 관계가 충분히 재현되어 이번 CREATE에서 별도 solution SVG 추가가 필수인 문항은 없음",
+    "renderReview": "NOT_RUN_BY_POLICY"
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 7,
+    "PROPOSED_NEW_L3": 0,
+    "PROPOSED_NEW_L4": 0,
+    "RPM_PRIMARY_MIGRATION_GAP": 14,
+    "TRUE_HOLD": 2
+  },
+  "existingReuseQuestions": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    8,
+    21
+  ],
+  "migrationGapQuestions": [
+    2,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    22
+  ],
+  "trueHold": [
+    {
+      "q": 17,
+      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
+      "detail": "두 사람의 개별 약속 이행확률만으로 두 사람이 모두 약속을 지킬 결합확률은 결정되지 않는다. 제시 정답 11/20은 독립을 추가 가정할 때만 성립한다."
+    },
+    {
+      "q": 23,
+      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
+      "detail": "두 사람의 개별 합격확률만으로 동시 합격·동시 불합격·적어도 한 명 합격 확률은 결정되지 않는다. 제시 정답들은 독립을 추가 가정할 때만 성립한다."
+    }
+  ],
+  "difficulty": {
+    "mode": "FRESH_BLIND_FROM_SOURCE_PLUS_VERIFIED_SOLUTION",
+    "coverage": "23/23",
+    "bucketCounts": {
+      "1": 5,
+      "2": 10,
+      "3": 3,
+      "4": 5,
+      "5": 0
+    }
+  },
+  "resolver": {
+    "contractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+    "sidecarPath": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+    "sidecarSha256": "aa9cdf77f12a231235ecc33e2fda2f6c20b26f796503db112db643036eeacee5",
+    "decisionIsolation": "PASS",
+    "perUidEvidence": "23/23",
+    "contractProjectionCheck": "PASS",
+    "officialResolverCli": "NOT_RUN_IN_CONNECTOR_RUNTIME"
+  },
+  "authority": {
+    "intakeReadSha": "73b2d2a5316667a2c8c316019d5e4d9cc1f12d02",
+    "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+    "resolverBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
+    "resolverContractBlobSha": "75d9f7a4a2dadde2b73e4ede548614e9a9520cd9",
+    "middle2CrosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeRegistryIndexBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "metaBlobSha": "e26e20d298ba1f01f4083a97fa7f75d1be0c88ca"
+  },
+  "validation": {
+    "questionDenominator": "23/23",
+    "sourceAnswerIdentity": "PASS 21 + TRUE_HOLD q17,q23",
+    "runtimeStringBasic": "PASS_BY_SOURCE_PARSE",
+    "imageReview": "PASS 14/14",
+    "metaDecisionIsolation": "PASS",
+    "renderReview": "NOT_RUN_BY_POLICY"
+  },
+  "nextState": "READY_FOR_REVIEW",
+  "updatedAt": "2026-09-28T00:08:35+09:00"
+}
