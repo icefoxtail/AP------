@@ -222,7 +222,25 @@ sourceHardHolds[]
 validatorSummary
 ```
 
-`metaResolutionEvidenceRef`는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` sidecar를 가리킨다. 모든 UID의 input bundle, resolver evidence, candidate projection, relational evidence, fresh difficulty blind evidence, validator receipt를 포함한다. Intake snapshot은 frozen exam JS와 sidecar를 UID/ordinal/content/choices/image/solution hash로 대조한 뒤 공용 resolver로 재검증한다. Receipt는 item-level evidence를 대체하지 않는다.
+`metaResolutionEvidenceRef`는 `JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1` 또는
+`JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2` sidecar를 가리킨다. 두 형식 모두 전 UID의 input
+bundle, resolver evidence, candidate projection, relational evidence, fresh difficulty blind
+evidence, deterministic validator receipt를 포함한다. Intake snapshot은 frozen exam JS와
+UID/ordinal/content/choices/image/solution/curriculum identity를 대조한 뒤 공용 resolver로
+재검증한다. Receipt는 item-level evidence를 대체하지 않는다.
+
+- **v1 legacy projection contract:** `candidateMeta`는 frozen JS advanced Meta/difficulty
+  projection과 exact parity여야 한다. 예전 R1이 이미 해당 projection을 materialize한 경우에
+  유지한다.
+- **v2 staged-candidate contract:** 사용 대상 JS가 아직 advanced projection을 갖지 않지만 R2E가
+  fresh Meta/difficulty adjudication을 해야 하는 legacy recovery에서 사용한다. `sourceMetaProjection`
+  과 `sourceMetaProjectionSha`는 frozen JS의 기존 advanced projection을 정확히 기록한다.
+  `candidateMeta`는 fresh resolver/difficulty decision의 출력이며 evidence와 exact parity여야
+  하지만, intake-stage source JS와 같을 필요는 없다. 이 단계에서는 source hashes, curriculum,
+  UID/ordinal parity를 계속 강제한다.
+- `R2E_FINAL`은 최종 강화 gate다. v1/v2 어느 intake에서 시작했든 모든 UID의 `candidateMeta`가
+  완성 final JS 및 runtime projection과 exact parity여야 하고, Meta HOLD/proposal/migration gap은
+  0이어야 한다. v2는 source projection 불일치를 final JS로 통과시키는 예외가 아니다.
 
 ---
 
