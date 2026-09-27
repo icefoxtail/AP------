@@ -1,0 +1,118 @@
+{
+  "phase": "PHASE_15_FINAL_CODE_READY_QUALIFICATION",
+  "attempt": "phase-15-attempt-01",
+  "status": "PASS",
+  "counts": {
+    "pythonTests": 77,
+    "nodeTests": 31,
+    "codeTestCommands": 83,
+    "staticFixtures": 13,
+    "renderedBboxCases": 26,
+    "nativeArchiveCases": 12,
+    "determinismCases": 13,
+    "performanceBuildCases": 13,
+    "browserSvgViewportCases": 26,
+    "archiveBrowserCases": 12,
+    "regressionFail": 0,
+    "unresolvedP0": 0,
+    "unresolvedP1": 0,
+    "protectedFiles": 4493,
+    "productionMutations": 0,
+    "inheritedRawStatus": "FAIL",
+    "inheritedRawFailures": 8
+  },
+  "performanceRanges": {
+    "svgBytes": {
+      "min": 6950,
+      "max": 47526
+    },
+    "domNodeCount": {
+      "min": 62,
+      "max": 99
+    },
+    "buildMedianMs": {
+      "min": 4.116699914447963,
+      "max": 56.28000001888722
+    },
+    "browserLayoutMs": {
+      "min": 0.3999999761581421,
+      "max": 0.8999999761581421
+    },
+    "desktopRenderMs": {
+      "min": 76.39300000000003,
+      "max": 179.1481000000001
+    },
+    "mobileRenderMs": {
+      "min": 73.92949999999973,
+      "max": 105.5600000000004
+    },
+    "nativeRenderReadyMs": {
+      "min": 321.9,
+      "max": 15485.3
+    }
+  },
+  "browser": {
+    "runtime": "playwright-chromium",
+    "synthetic": false,
+    "versions": [
+      "153.0.8010.53"
+    ],
+    "candidateHashesMatchBuild": true,
+    "nativeMetricsFinite": true
+  },
+  "inventory": {
+    "codeFileCount": 52,
+    "evidenceFileCount": 993,
+    "scope": "all changed source files and owned run evidence; shadow input copies and self-referential seal outputs excluded",
+    "legacyContractShadowEntries": 0
+  },
+  "evidencePaths": {
+    "codeTests": "archive/_generated/geometry-visual-engine/upgrade-v1/tests/phase-15-code-tests.json",
+    "buildPerformance": "archive/_generated/geometry-visual-engine/upgrade-v1/performance/build.json",
+    "browserPerformance": "archive/_generated/geometry-visual-engine/upgrade-v1/performance/browser.json",
+    "codeReadySeal": "archive/_generated/geometry-visual-engine/upgrade-v1/seal/code-ready.json",
+    "inventory": "archive/_generated/geometry-visual-engine/upgrade-v1/seal/inventory.json",
+    "finalReport": "archive/_generated/geometry-visual-engine/upgrade-v1/seal/FINAL_REPORT.md"
+  },
+  "commands": [
+    {
+      "name": "record-visual-code-tests",
+      "command": "python -X utf8 archive/tools/geometry-equation/record-visual-code-tests.py --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "status": "PASS",
+      "exitCode": 0,
+      "stdout": "phase-15-attempt-01-code-tests.stdout.txt",
+      "stderr": "phase-15-attempt-01-code-tests.stderr.txt"
+    },
+    {
+      "name": "measure-visual-build-performance",
+      "command": "python -X utf8 archive/tools/geometry-equation/measure-visual-build-performance.py --run archive/_generated/geometry-visual-engine/upgrade-v1",
+      "status": "PASS",
+      "exitCode": 0,
+      "stdout": "phase-15-attempt-01-build-performance.stdout.txt",
+      "stderr": "phase-15-attempt-01-build-performance.stderr.txt"
+    },
+    {
+      "name": "measure-visual-browser-performance",
+      "command": "node archive/tools/geometry-equation/measure-visual-browser-performance.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --archive-attempt phase-14-attempt-02",
+      "status": "PASS",
+      "exitCode": 0,
+      "stdout": "phase-15-attempt-01-browser-performance.stdout.txt",
+      "stderr": "phase-15-attempt-01-browser-performance.stderr.txt"
+    },
+    {
+      "name": "seal-visual-engine-code-ready",
+      "command": "node archive/tools/geometry-equation/seal-visual-engine-code-ready.mjs --run archive/_generated/geometry-visual-engine/upgrade-v1 --archive-attempt phase-14-attempt-02 --bbox-receipt archive/_generated/geometry-visual-engine/upgrade-v1/tests/phase-14-attempt-02-reanalysis.json",
+      "status": "PASS",
+      "exitCode": 0,
+      "stdout": "phase-15-attempt-01-seal.stdout.txt",
+      "stderr": "phase-15-attempt-01-seal.stderr.txt"
+    }
+  ],
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/measure-visual-build-performance.py": "c4be5411ae11f056523b11f6bc56c0c8dd56b19fc45d651f985aa216d6e89594",
+    "archive/tools/geometry-equation/measure-visual-browser-performance.mjs": "a6fda2f676d55933b73498674693990127323985341a2dba2bf214fa4fb9cd34",
+    "archive/tools/geometry-equation/record-visual-code-tests.py": "d8f84d98c57b9df8b3a2db6ae56bc11fa554171d3b3b14e701c95f3047447e04",
+    "archive/tools/geometry-equation/seal-visual-engine-code-ready.mjs": "17ec6d9c37adc23a6a791f9415a3deaff8800f3df8e62aee0f520320c1a7efb1",
+    "archive/tools/geometry-equation/tests/verify-code-ready.test.mjs": "b3794a9d0fd13921b50643ed9b1bd02c8b43fb90adc8a84d660a399c58d6875a"
+  }
+}

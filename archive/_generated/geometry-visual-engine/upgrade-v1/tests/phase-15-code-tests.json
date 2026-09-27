@@ -1,0 +1,1004 @@
+{
+  "status": "PASS",
+  "pythonTests": 77,
+  "nodeTests": 31,
+  "commands": [
+    {
+      "name": "pycompile",
+      "command": [
+        "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "py_compile",
+        "archive\\tools\\geometry-equation\\build-65-review-report-20260904.py",
+        "archive\\tools\\geometry-equation\\freeze-visual-baseline.py",
+        "archive\\tools\\geometry-equation\\generate-svg-assets.py",
+        "archive\\tools\\geometry-equation\\generate-svg-from-independent-facts.py",
+        "archive\\tools\\geometry-equation\\legacy_assets_parser.py",
+        "archive\\tools\\geometry-equation\\legacy_independent_builder.py",
+        "archive\\tools\\geometry-equation\\measure-visual-build-performance.py",
+        "archive\\tools\\geometry-equation\\record-visual-code-tests.py",
+        "archive\\tools\\geometry-equation\\repair-65-svg-assets-20260904.py",
+        "archive\\tools\\geometry-equation\\tests\\build_visual_fixtures.py",
+        "archive\\tools\\geometry-equation\\tests\\test_config.py",
+        "archive\\tools\\geometry-equation\\tests\\test_engine.py",
+        "archive\\tools\\geometry-equation\\tests\\test_function_sampling.py",
+        "archive\\tools\\geometry-equation\\tests\\test_geometry_model.py",
+        "archive\\tools\\geometry-equation\\tests\\test_label_layout.py",
+        "archive\\tools\\geometry-equation\\tests\\test_math_expression.py",
+        "archive\\tools\\geometry-equation\\tests\\test_regression.py",
+        "archive\\tools\\geometry-equation\\tests\\test_semantic_model.py",
+        "archive\\tools\\geometry-equation\\tests\\test_svg_composer.py",
+        "archive\\tools\\geometry-equation\\tests\\test_tikz_adapter.py",
+        "archive\\tools\\geometry-equation\\verify-visual-determinism.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\__init__.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\config.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\differential.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\engine.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\entrypoints.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\function_sampling.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\geometry_model.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\label_layout.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\math_expression.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\semantic_model.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\style_tokens.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\svg_composer.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\tikz_adapter.py",
+        "archive\\tools\\geometry-equation\\visual_engine\\viewport.py"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "python-unit",
+      "command": [
+        "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "unittest",
+        "discover",
+        "archive/tools/geometry-equation/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-apply-approved-s6-repairs",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\apply-approved-s6-repairs.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-apply-external-review-pinpoint-repairs",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\apply-external-review-pinpoint-repairs.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-apply-solution-text-patch",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\apply-solution-text-patch.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-apply-svg-metadata",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\apply-svg-metadata.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-audit-c-integrity",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\audit-c-integrity.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-audit-line-equation-assets",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\audit-line-equation-assets.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-audit-line-equation-independent",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\audit-line-equation-independent.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-audit-production-working-tree-drift",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\audit-production-working-tree-drift.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-augment-short-solutions",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\augment-short-solutions.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-build-external-evidence-pack",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\build-external-evidence-pack.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-build-inventory",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\build-inventory.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-build-render-matrix-input",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\build-render-matrix-input.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-build-visual-render-matrix",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\build-visual-render-matrix.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-cleanup-pre-independent-rollback",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\cleanup-pre-independent-rollback.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-complete-inventory-artifacts",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\complete-inventory-artifacts.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-compute-release-sha",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\compute-release-sha.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-a-s14-integrated-a-lock",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-a-s14-integrated-a-lock.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-a-s15-integrated-lock",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-a-s15-integrated-lock.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-bc-s14-integrated-locks",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-bc-s14-integrated-locks.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-bc-s15-integrated-locks",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-bc-s15-integrated-locks.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-mother-final-seal-s15",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-mother-final-seal-s15.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-mother-preseal-s12",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-mother-preseal-s12.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-create-mother-preseal",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\create-mother-preseal.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-finalize-line-equation-current",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\finalize-line-equation-current.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-finalize-line-equation-external-51-report",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\finalize-line-equation-external-51-report.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-fix-solution-script-labels",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\fix-solution-script-labels.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-fix-third-script-syntax",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\fix-third-script-syntax.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-freeze-project-config",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\freeze-project-config.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-invalidate-pre-independent-svg",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\invalidate-pre-independent-svg.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-measure-visual-browser-performance",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\measure-visual-browser-performance.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-merge-independent-A-reports",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\merge-independent-A-reports.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-merge-visual-adjudication-into-facts",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\merge-visual-adjudication-into-facts.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-normalize-math-newlines-in-solutions",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\normalize-math-newlines-in-solutions.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-prepare-build-pack",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\prepare-build-pack.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-prepare-pilot-manifest",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\prepare-pilot-manifest.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-prepare-staging",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\prepare-staging.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-promote-s15-release-all-or-rollback",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\promote-s15-release-all-or-rollback.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-quarantine-svg-before-generator-fix",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\quarantine-svg-before-generator-fix.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-rebuild-full-svg-metadata-ledger",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\rebuild-full-svg-metadata-ledger.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-reconcile-out-of-scope-baseline-s5",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\reconcile-out-of-scope-baseline-s5.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-reconcile-svg-visual-policy",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\reconcile-svg-visual-policy.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-record-browser-evidence",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\record-browser-evidence.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-record-v22-final-evidence",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\record-v22-final-evidence.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-record-visual-browser-evidence",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\record-visual-browser-evidence.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-refresh-a-facts-s14-q11",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\refresh-a-facts-s14-q11.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-refresh-a-facts-s15-q261",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\refresh-a-facts-s15-q261.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-refresh-s6-protection-ledger",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\refresh-s6-protection-ledger.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-fourth-a-q10-vectors",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-fourth-a-q10-vectors.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-line-equation-caption-parity-v22",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-line-equation-caption-parity-v22.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-line-equation-external-51",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-line-equation-external-51.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-second-a-findings",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-second-a-findings.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-solution-only-final",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-solution-only-final.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-solutions-from-a",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-solutions-from-a.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-svg-metadata-syntax",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-svg-metadata-syntax.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-repair-third-a-q10",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\repair-third-a-q10.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-rollback-excess-pilot-metadata",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\rollback-excess-pilot-metadata.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-run-deterministic-audit-s11",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\run-deterministic-audit-s11.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-run-deterministic-audit-s5",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\run-deterministic-audit-s5.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-run-self-check",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\run-self-check.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-seal-visual-engine-code-ready",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\seal-visual-engine-code-ready.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-sync-staging-question-index-targets",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\sync-staging-question-index-targets.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-sync-staging-render-dependencies",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\sync-staging-render-dependencies.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-run-legacy-contract",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\run-legacy-contract.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-run-rendered-fixtures",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\run-rendered-fixtures.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-code-ready.test",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\verify-code-ready.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-rendered-layout.test",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\verify-rendered-layout.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-svg-coordinate-parity.test",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\verify-svg-coordinate-parity.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-visual-engine-static.test",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\tests\\verify-visual-engine-static.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-b-static-full",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-b-static-full.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-line-equation-v22-actual-svg",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-line-equation-v22-actual-svg.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-line-equation-v22-qualification",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-line-equation-v22-qualification.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-pilot-static",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-pilot-static.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-production-parity-s15",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-production-parity-s15.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-rendered-layout",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-rendered-layout.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-svg-coordinate-parity",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-svg-coordinate-parity.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-visual-engine-static",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-visual-engine-static.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-verify-visual-extra-primitives",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\verify-visual-extra-primitives.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-check-visual-browser-runtime",
+      "command": [
+        "node",
+        "--check",
+        "archive\\tools\\geometry-equation\\visual-browser-runtime.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "node-unit",
+      "command": [
+        "node",
+        "--test",
+        "archive\\tools\\geometry-equation\\tests\\verify-code-ready.test.mjs",
+        "archive\\tools\\geometry-equation\\tests\\verify-rendered-layout.test.mjs",
+        "archive\\tools\\geometry-equation\\tests\\verify-svg-coordinate-parity.test.mjs",
+        "archive\\tools\\geometry-equation\\tests\\verify-visual-engine-static.test.mjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "baseline",
+      "command": [
+        "C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\USER\\.codex\\worktrees\\geometry-visual-engine-upgrade\\archive\\tools\\geometry-equation\\freeze-visual-baseline.py",
+        "--verify"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "status": "PASS"
+    }
+  ],
+  "codeFileHashes": {
+    "archive/tools/geometry-equation/apply-approved-s6-repairs.mjs": "d96d9ab81dda9c7adcd1041f9890352ec38b9b9b103311706661b9a95ba06764",
+    "archive/tools/geometry-equation/apply-external-review-pinpoint-repairs.mjs": "8ef01834f8f9f6516ed97ab27e69d1384745ab57ebf7b537345900f2b988cc4c",
+    "archive/tools/geometry-equation/apply-solution-text-patch.mjs": "ec4e13a84b10088a8389f4e3506b94080e9535dacd3b6710d96808e12e66cb97",
+    "archive/tools/geometry-equation/apply-svg-metadata.mjs": "ed3f494cc2a852357423ef40bcc1adefd0eff1caa32ce0e4f0cd21d99e274d0d",
+    "archive/tools/geometry-equation/audit-c-integrity.mjs": "21301f1643a21ebd3fa7610722f66697c4d139c918a8e29682f8e2cbc49e8b4c",
+    "archive/tools/geometry-equation/audit-line-equation-assets.mjs": "a2d837ffabe20e3c3b0ac546f416809f4c0d817de645e2b228185a77210873e3",
+    "archive/tools/geometry-equation/audit-line-equation-independent.mjs": "0db6d405753d21e8d880e25cb5eb96ee77439b6576db5dd1eeeee34a6a7e3a92",
+    "archive/tools/geometry-equation/audit-production-working-tree-drift.mjs": "65020b7245f028c002c753d3ca3ea1f15aae1b6c4aec4524270dfc74ba4f327b",
+    "archive/tools/geometry-equation/augment-short-solutions.mjs": "177f9c5ba5ea9500f804c4ddae0bb97488197875035a62d7f3c7f1a95f3c3b79",
+    "archive/tools/geometry-equation/build-65-review-report-20260904.py": "c4155f4bf8a94a29626f0e55b0d26560c440d6f8dde83eaa02229a7e9c6dae6c",
+    "archive/tools/geometry-equation/build-external-evidence-pack.mjs": "439967f8283ed04b0818dbb3fb6be08fefc548a8566d2805a8c5338a814ef940",
+    "archive/tools/geometry-equation/build-inventory.mjs": "ff5fffbbd6de71a66deb1db24a70403105d20079b098e9be299625f8843cdfb3",
+    "archive/tools/geometry-equation/build-render-matrix-input.mjs": "482516d35e352f4d75c525c2d2695c4cf4c590d467d275743bcaf03cea6e54f4",
+    "archive/tools/geometry-equation/build-visual-render-matrix.mjs": "2f73f9730b3d90cfd0bc986051db6a5bb602bab43e546da170038a73b82938be",
+    "archive/tools/geometry-equation/cleanup-pre-independent-rollback.mjs": "40a6e1c6b1d06525a6d2d0ed6d41d1fccbf31e1fec409948350b7aa9101dc4de",
+    "archive/tools/geometry-equation/complete-inventory-artifacts.mjs": "5d393923011b110a2c1749f9187af1ad1abb7ec2584217205cfa3bd471e1c7dd",
+    "archive/tools/geometry-equation/compute-release-sha.mjs": "16a235c0ad00d5c6a5e6eaa677368aac3e9682a5cff3195ce03d09383a3979ee",
+    "archive/tools/geometry-equation/create-a-s14-integrated-a-lock.mjs": "ee5f8ede6a31afa36ae41c5013cc2624efcf440f4bf97a9dd82a61e18ec88500",
+    "archive/tools/geometry-equation/create-a-s15-integrated-lock.mjs": "219ebb97adba9ffacc64fb4fe5be992b644d379a5afd66e96ee2104f33df0096",
+    "archive/tools/geometry-equation/create-bc-s14-integrated-locks.mjs": "96986b8c98f04c0ff682f51db5766087b7925f7fc45f744e7eea0b553aeeecf8",
+    "archive/tools/geometry-equation/create-bc-s15-integrated-locks.mjs": "c591d5bdb5a6f7597170fd36e5f69743733b56a7d529d77133ee3bff08bf646b",
+    "archive/tools/geometry-equation/create-mother-final-seal-s15.mjs": "a093c8d171ffdc55cdaf086d1d6c24e74090f91463b2bef604f555322682b849",
+    "archive/tools/geometry-equation/create-mother-preseal-s12.mjs": "a7dc1a4f6adf0652f894b8d79880f0301220d2387c96ad9b6aaf6b2c90477977",
+    "archive/tools/geometry-equation/create-mother-preseal.mjs": "7f5ffd514d786dc3a2dbe6c09b957fb8ce1f374b89129fca04ec239573b52a65",
+    "archive/tools/geometry-equation/finalize-line-equation-current.mjs": "8f4be120570dd970bb356be948c998577dfbaf5180b4d12c66287e7926e8e89a",
+    "archive/tools/geometry-equation/finalize-line-equation-external-51-report.mjs": "1361381fb5cbe3538988e8892603ded31d9744bf5d64a7016dbeb772d757e444",
+    "archive/tools/geometry-equation/fix-solution-script-labels.mjs": "db058183f56dc9498d0125ff0305a39b292bde98be84b98831cddaa225d73d19",
+    "archive/tools/geometry-equation/fix-third-script-syntax.mjs": "97d59444cb07ef3bd4be00535038c103173f0f535b11a7af704e0d889081abb1",
+    "archive/tools/geometry-equation/freeze-project-config.mjs": "e964189519aa235f137dadeefde5af05c92419b85d0cd5498dea58398b233723",
+    "archive/tools/geometry-equation/freeze-visual-baseline.py": "7570f41fb039f3e377b52ed56ade2e11f47f134f1352f8e559cc1c0a209215b0",
+    "archive/tools/geometry-equation/generate-svg-assets.py": "836a40ab04ee52cf068e099e45405f48c540443ef0227536ff2b30c1bc654a61",
+    "archive/tools/geometry-equation/generate-svg-from-independent-facts.py": "344183c047eaee14a69d53f1df70e31a84f66b29c1b06333aef48ce0b8dff9f8",
+    "archive/tools/geometry-equation/invalidate-pre-independent-svg.mjs": "03810c787bc02894ea349826f6fc89d901943440ec813d813b685789ad9b0e52",
+    "archive/tools/geometry-equation/legacy_assets_parser.py": "b8694ff043a3b442fccdbaa92dcc8716c1177164def0cfe3e22891bdf26e94da",
+    "archive/tools/geometry-equation/legacy_independent_builder.py": "d24a5fd50058e2420cf4803cb88f7cd810df5e760d302ca396e69d18b3a53ceb",
+    "archive/tools/geometry-equation/measure-visual-browser-performance.mjs": "a6fda2f676d55933b73498674693990127323985341a2dba2bf214fa4fb9cd34",
+    "archive/tools/geometry-equation/measure-visual-build-performance.py": "c4be5411ae11f056523b11f6bc56c0c8dd56b19fc45d651f985aa216d6e89594",
+    "archive/tools/geometry-equation/merge-independent-A-reports.mjs": "edfccdcde1b188c16bf548137d4902c9b6780fc11e14696c2327b5e82f9153e7",
+    "archive/tools/geometry-equation/merge-visual-adjudication-into-facts.mjs": "8f8f9ee7dacde4dd15207fa442f5edfcb5248b119defff972d6b109270fcc4d3",
+    "archive/tools/geometry-equation/normalize-math-newlines-in-solutions.mjs": "9f1f4326d708886e5e54ce1180ae414e5aeeccf86f142a7af5422a05eefa7100",
+    "archive/tools/geometry-equation/prepare-build-pack.mjs": "f6afb0e794fdae27a4490ea8e6ac00239ffa0d0abbfad6155c2f0f7b24bda506",
+    "archive/tools/geometry-equation/prepare-pilot-manifest.mjs": "dfc4fd0752d0684ed89b4847b8b74688e3ee8694a6c9618e833a4d3c61b5bd80",
+    "archive/tools/geometry-equation/prepare-staging.mjs": "446bf1b3c563f10bf1324e214872379858ce124c803016943d355bfb8c93ab2b",
+    "archive/tools/geometry-equation/promote-s15-release-all-or-rollback.mjs": "5060bb22d7714412455804ac609b15cb48bed7cc6870e945db33cb26b43b42fc",
+    "archive/tools/geometry-equation/quarantine-svg-before-generator-fix.mjs": "2e500b05e5443c6e7470ddf0a31e063ea132b05caf15122370061c9e721de551",
+    "archive/tools/geometry-equation/rebuild-full-svg-metadata-ledger.mjs": "e5cbcd31cff41d6590bd83d8d52776394d1e4da3699ef1190dab668a8b292450",
+    "archive/tools/geometry-equation/reconcile-out-of-scope-baseline-s5.mjs": "a5818e17724d586ba0ed5195c86da140f0f9f6f58dddc49d33eed6721bd80164",
+    "archive/tools/geometry-equation/reconcile-svg-visual-policy.mjs": "edbbb14f73566ad4e0c6add0cb51f6b0a931e79a170715c1fd66f0c190c2249e",
+    "archive/tools/geometry-equation/record-browser-evidence.mjs": "2f68758e2e10cd735bf65c29549ef71ca5bc6260b60fc96d99c0cbffc1a78a67",
+    "archive/tools/geometry-equation/record-v22-final-evidence.mjs": "3a0f844636da1e117b996ac97ba2bc7c52223a0dcbd3a3ddcc9ea16a622e843f",
+    "archive/tools/geometry-equation/record-visual-browser-evidence.mjs": "87b525d80c5c61258bb36cd2c0a74d71b93fca90cfd0d88cd4094c246388368a",
+    "archive/tools/geometry-equation/record-visual-code-tests.py": "d8f84d98c57b9df8b3a2db6ae56bc11fa554171d3b3b14e701c95f3047447e04",
+    "archive/tools/geometry-equation/refresh-a-facts-s14-q11.mjs": "f7cba087ed807a9ff5064943a1cd1d054a9cdfdbdebce078703fd000f0e289f2",
+    "archive/tools/geometry-equation/refresh-a-facts-s15-q261.mjs": "e722507b56ffe83af9065688041f2114f44fea5eb09071104a2fd6dff9f8adf2",
+    "archive/tools/geometry-equation/refresh-s6-protection-ledger.mjs": "fadfaa1ada3e3c0002ed35c440f9e8c0b9b0e0f9bb284fc38c221aee75beb3b7",
+    "archive/tools/geometry-equation/repair-65-svg-assets-20260904.py": "e8af271dc39114f17a4e25ca9ab3d8441a27989af0d62939b10b6b6a9d363fde",
+    "archive/tools/geometry-equation/repair-fourth-a-q10-vectors.mjs": "9b42d1b50a14d547014fbf3b630514a8bc78cd7aa72f3f6d0db13b27135b0584",
+    "archive/tools/geometry-equation/repair-line-equation-caption-parity-v22.mjs": "666ac88d027e092e50b19c28215d16f04b7f3862308e09b0b189944cfa6e9284",
+    "archive/tools/geometry-equation/repair-line-equation-external-51.mjs": "42777995bf429518006ff817449d54cff4431d8f82e8c754b58dd5bab2eb2cad",
+    "archive/tools/geometry-equation/repair-second-a-findings.mjs": "b8e383cf53c08d6646ec58a01a1154184d0bf3eae5385b3566d8f44b6d6d913e",
+    "archive/tools/geometry-equation/repair-solution-only-final.mjs": "67bd06f883ed14c32fcee488b5b9630cafbe0b82d7136989b0da44f906797826",
+    "archive/tools/geometry-equation/repair-solutions-from-a.mjs": "69c1688828d5b82e9c83332408d6d6d23a153d99ee75ebbe3cebdba4a693a97a",
+    "archive/tools/geometry-equation/repair-svg-metadata-syntax.mjs": "cdb2923075f5367e856bbb540192751fcc0784d0de08b966f2a017aed288ec45",
+    "archive/tools/geometry-equation/repair-third-a-q10.mjs": "2193ef4968b174059d7b727730ab035e4fff19fe3f37b02aef3cee040af9992d",
+    "archive/tools/geometry-equation/rollback-excess-pilot-metadata.mjs": "9318e1ae34ae1f4a21aa3ac6b1d3598ccf6e3dcf0c528a17a6f17555f1fed29d",
+    "archive/tools/geometry-equation/run-deterministic-audit-s11.mjs": "85e056a525a1ce988a43542c9a11c99266a6b8510e7969b69d483167249c00b6",
+    "archive/tools/geometry-equation/run-deterministic-audit-s5.mjs": "239a9168cfef89b49adb9d7daa9b84f4057fc5d425add0055cbf881968f9280e",
+    "archive/tools/geometry-equation/run-self-check.mjs": "8f20c90c664458aab99d55998cae14fb1f0ab973ae6b8b54518958caba0b8ee3",
+    "archive/tools/geometry-equation/seal-visual-engine-code-ready.mjs": "17ec6d9c37adc23a6a791f9415a3deaff8800f3df8e62aee0f520320c1a7efb1",
+    "archive/tools/geometry-equation/sync-staging-question-index-targets.mjs": "f3d73329c9046194cbf4369228747dd9147bc29a9ba6730c76a455d5212b742f",
+    "archive/tools/geometry-equation/sync-staging-render-dependencies.mjs": "3575bdcee3a2f77cbdf8ac5c00e1071e708207428fc92f121cbc1cd29253cf0c",
+    "archive/tools/geometry-equation/tests/build_visual_fixtures.py": "c1820fcaec7a3d21b8a5ccf8a7b480f03b10b6dcd7b2f46a0c600887b3a0434a",
+    "archive/tools/geometry-equation/tests/run-legacy-contract.mjs": "1660594764672882d49cfba7ae9ec8efdec0428f1c96248cbab689068e5b7c84",
+    "archive/tools/geometry-equation/tests/run-rendered-fixtures.mjs": "c3f891e986fac925c7559db6c9a1355aad5f2cbaca71e86f1b0fc08e8734d03a",
+    "archive/tools/geometry-equation/tests/test_config.py": "e70a1ebab01c42fa912c4274cb78e435b3b86402adeaaa5fa94e109c7f601b1e",
+    "archive/tools/geometry-equation/tests/test_engine.py": "cccbe1792d376bdc2c6908cb0054eb2bdb9864ec4edba3dbe2826fa198167fb6",
+    "archive/tools/geometry-equation/tests/test_function_sampling.py": "3a0e110da79c7cea9456f6485a93287d66ccd4a530e4073ede4cf6ac3153dbf2",
+    "archive/tools/geometry-equation/tests/test_geometry_model.py": "912be445e01cec4edb46059613ec334e4a76412bb2b877c750dfe25625c928d1",
+    "archive/tools/geometry-equation/tests/test_label_layout.py": "097be4a5fc90a95ca804e6e930636e8dceda8313121cd399ba88f3b842264e1e",
+    "archive/tools/geometry-equation/tests/test_math_expression.py": "8d3e382ddaef1015007d862b90e3579134728c9fbe85bdf0696355c6731d8aeb",
+    "archive/tools/geometry-equation/tests/test_regression.py": "f6e35c655ad376e45846a14c64453d2bd2d9aa11fc988eb67916ca6e46cdfb50",
+    "archive/tools/geometry-equation/tests/test_semantic_model.py": "6bf05919863e96bbf4258a1ae1511b8a236aa994562334c448ff5035ebfd725a",
+    "archive/tools/geometry-equation/tests/test_svg_composer.py": "dd2113aead3b956c5d5838a5703793b4dcb289e77d87cc07cdbaf74497293380",
+    "archive/tools/geometry-equation/tests/test_tikz_adapter.py": "f2eac989abbd36dfd553d3b589878072ea013526c3a5f885fc6a088f55f6ffa0",
+    "archive/tools/geometry-equation/tests/verify-code-ready.test.mjs": "b3794a9d0fd13921b50643ed9b1bd02c8b43fb90adc8a84d660a399c58d6875a",
+    "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs": "1868d2c789413f372e1ea7dd943d66b651ddb0ef5a3e9a5821ee04b7683ea3bd",
+    "archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs": "c6c0e7f66a77376da55301244c643dba935f1963a09ffe03fcf4479c3b749c9b",
+    "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs": "ae11fddf3151172d301d8d9cacc4a9600b3fcd5a89ce8fdaffdc07f2915ca25e",
+    "archive/tools/geometry-equation/verify-b-static-full.mjs": "5af6e96710973b6cecd97773e4238382a864ea018c163bf1ec286f5448ea6a22",
+    "archive/tools/geometry-equation/verify-line-equation-v22-actual-svg.mjs": "8b041ed896d13051c0fa605ef38168102f8b43cffd18ebf1bff7a337df3ac387",
+    "archive/tools/geometry-equation/verify-line-equation-v22-qualification.mjs": "f09ce27c52174ac79c766b53caefdecc785149b94d64b3818dac40aa30cff53a",
+    "archive/tools/geometry-equation/verify-pilot-static.mjs": "a2f30dbdb90a7936a1350758dc0a04ae27e8003e025e5645878130572ec6de08",
+    "archive/tools/geometry-equation/verify-production-parity-s15.mjs": "09cf59e1877765938eefaf23fc902f9ac7024ec5b73e7fb18f68d39a95d17d5b",
+    "archive/tools/geometry-equation/verify-rendered-layout.mjs": "8a3828ec6c7f5548d48b23bc520ac0a774d0e8358dd0c2c1bafc45a3a5af6c7b",
+    "archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs": "86ad2bb1081f436eb3fc50ed921484860cdaf913f8f1480faf0b29865f4f7e21",
+    "archive/tools/geometry-equation/verify-visual-determinism.py": "ed82c09adbc768b57399751f727d375218836aa7e458a8d65a6ec427a838e3f7",
+    "archive/tools/geometry-equation/verify-visual-engine-static.mjs": "0ccb430ca228aae42fe961674624f32c2eebfb3a84bd0f85697ce9e7152d9748",
+    "archive/tools/geometry-equation/verify-visual-extra-primitives.mjs": "b02fabee9a36e5cef94c3758916e69a0522188839d3865ec057692c6424e2cfa",
+    "archive/tools/geometry-equation/visual-browser-runtime.mjs": "cf3e658383d9b9739ea4f0dcac604d8136ca43b55acb7221845ec3743aa83c33",
+    "archive/tools/geometry-equation/visual_engine/__init__.py": "f6346fb2944efc4ccca3af788d78695b6f645e2ac8abcbe2163c5d50dee672dc",
+    "archive/tools/geometry-equation/visual_engine/config.py": "8a1cf713af1a3f662a5430e1c71228c18e0abdfc5bceb292d5d98a41acd21268",
+    "archive/tools/geometry-equation/visual_engine/differential.py": "a411299279d12dbef321177cf15a7fe4b00c8c2f1cda5bb26455017fbd715b0c",
+    "archive/tools/geometry-equation/visual_engine/engine.py": "9a43d7e4eb542d197fc8fd171353ff2f223ce15bfba5151040d8a303eb61d529",
+    "archive/tools/geometry-equation/visual_engine/entrypoints.py": "a7d36ad12aaa93e5a572c9f99d75a5736dbe8e1a8df545444409c23cb8612cc9",
+    "archive/tools/geometry-equation/visual_engine/function_sampling.py": "476787521e82b336476782fdfa7f2e54c15b930efdb2860ae0ec62c146293e2a",
+    "archive/tools/geometry-equation/visual_engine/geometry_model.py": "0f03acf264bef55b7ba1e07078e53acba5cf0272d8e1309749b38ffd6c925160",
+    "archive/tools/geometry-equation/visual_engine/label_layout.py": "2aadf65f89c523c5c0717b8db185b54ad1f9410c3d6a7f4b4f0e1ecda30d7b1e",
+    "archive/tools/geometry-equation/visual_engine/legacy_registry.json": "5b8b28b1c9d524bf23e3a724152f675849901d03e98347df84ed637a3b281792",
+    "archive/tools/geometry-equation/visual_engine/math_expression.py": "e9af8c019a55c4dddb19949db984876ebaa26bb41b2e31dd3bbfdac5b8b1e0f9",
+    "archive/tools/geometry-equation/visual_engine/semantic_model.py": "0ca10433e7b5201ecdae9c7db7fec9d4cc6cede7b78fd121c2746a98957cbe59",
+    "archive/tools/geometry-equation/visual_engine/special_registry.json": "ed0a45a38606735c70d63a1e6c885f607dda109d7739df352300281950d83e33",
+    "archive/tools/geometry-equation/visual_engine/style_tokens.json": "44d2507576c60baa9c33d294093bc2f7ef31a8f4b440a4929de9a49d54506901",
+    "archive/tools/geometry-equation/visual_engine/style_tokens.py": "069804bdf537721af5f4036152c0bca1e134194f7de445c24592d4daa7a574d2",
+    "archive/tools/geometry-equation/visual_engine/svg_composer.py": "4640e0e1c017195ba59494295220dc35258039b8b30ad0e5c5326a7cc6be937d",
+    "archive/tools/geometry-equation/visual_engine/tikz_adapter.py": "73f0536539f89e9972bee4885179280892d17ffa705da5e6d639b8ad0b23cc4d",
+    "archive/tools/geometry-equation/visual_engine/viewport.py": "24a218c13f229df0c36e1bde4452c6d05cbe1b9339523c1a6c11bfb19c13a094",
+    "archive/tools/geometry-equation/visual_engine/visual_spec.schema.json": "fedfc7553d056a9fa3b1c6ed857e9af94c9adca022531c0f52e80bee8fcef6e9"
+  }
+}

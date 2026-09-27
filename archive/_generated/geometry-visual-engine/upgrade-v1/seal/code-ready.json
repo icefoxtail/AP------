@@ -1,0 +1,531 @@
+{
+  "status": "GEOMETRY_VISUAL_ENGINE_CODE_READY",
+  "scope": "shared code and 13 isolated qualification fixtures",
+  "publicationAuthorized": false,
+  "productionPromotion": false,
+  "engineVersion": "geometry-visual-v1",
+  "branch": "codex/geometry-visual-engine-upgrade",
+  "qualifiedBaseHead": "d234a232c794ef13d10c8c89d83aa35910a6af89",
+  "phaseCommits": [
+    "cbf74dcb69142f85d829a1c8f9c32f48457686b3 chore(geometry): freeze visual engine upgrade baseline",
+    "78202c0352bf220f4c88d3ca80d1191902938805 refactor(geometry): add shared numeric geometry model",
+    "76c1ff3c36ead20eebc7e1fd07ad07198c6a23f0 feat(geometry): add semantic visual specification",
+    "d8d75f66331300b2813c7b0b25b8b24e88e57f75 fix(geometry): add safe math expression serializer",
+    "d74e292757c9b82334e5589d1c2b37e255ee10e4 feat(geometry): add adaptive graph sampling and viewport",
+    "e5394bb6857b71d03940b391c815a0deb80a2755 feat(geometry): add collision-aware label layout",
+    "65e2a9c31d842ed0c82103867442385aafd4571b refactor(geometry): add shared SVG composer and style tokens",
+    "ac340fc9ad69a5b5ae51c02727f6f62443e37be1 feat(geometry): add optional safe TikZ draft adapter",
+    "c6a0caeeff0346897c88a08979b56b24c7567360 refactor(geometry): route candidate entrypoints through shared engine",
+    "0f0084cccbfcd0910a129340752de06e4c923e4a feat(geometry): add independent static and actual SVG gates",
+    "91277df0c142786592748bf9dc5edb4b59307b0f feat(geometry): add real rendered bbox collision QA",
+    "12d5135d19a963d96053dc233dff52914d6f6ef5 feat(geometry): add generic native archive render evidence",
+    "d7a7753d20812eebfa542dceef8b5b8f4e4b273c chore(geometry): bind config workspace and deterministic bytes",
+    "23b378b4114e187b8a99e627f83a4dba3343d913 test(geometry): qualify full visual engine regression corpus",
+    "d234a232c794ef13d10c8c89d83aa35910a6af89 test(geometry): preserve legacy contract and qualify all archive modes"
+  ],
+  "gates": {
+    "SHARED_NUMERIC_MODEL_PASS": "PASS",
+    "SEMANTIC_MODEL_PASS": "PASS",
+    "SAFE_MATH_SERIALIZER_PASS": "PASS",
+    "FUNCTION_SAMPLING_PASS": "PASS",
+    "LABEL_LAYOUT_PASS": "PASS",
+    "SVG_COMPOSER_PASS": "PASS",
+    "ACTUAL_SVG_PARITY_VERIFIER_PASS": "PASS",
+    "RENDERED_BBOX_QA_PASS": "PASS",
+    "ARCHIVE_RENDER_QA_PASS": "PASS",
+    "DETERMINISTIC_REBUILD_PASS": "PASS",
+    "PERFORMANCE_MEASURED_PASS": "PASS"
+  },
+  "REGRESSION_FAIL": 0,
+  "UNRESOLVED_P0": 0,
+  "UNRESOLVED_P1": 0,
+  "tests": {
+    "python": 77,
+    "node": 31,
+    "static": 13,
+    "renderedBbox": 26,
+    "nativeArchive": 12,
+    "determinism": 13
+  },
+  "production": {
+    "protectedFiles": 4493,
+    "mutations": 0,
+    "originalIndependentVerifiers": 6
+  },
+  "inheritedProductionQualification": {
+    "status": "FAIL",
+    "targets": {
+      "total": 99,
+      "h15": 63,
+      "h22": 36,
+      "files": 29,
+      "expected": {
+        "total": 94,
+        "h15": 63,
+        "h22": 31,
+        "files": 28
+      },
+      "reviewed": 99,
+      "coverage": 1.053191489361702
+    },
+    "failures": 8,
+    "findings": [
+      {
+        "key": "22_금당고_1학기_기말_고1_기출.js#19",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      },
+      {
+        "key": "25_매산여고_2학기_중간_고1_공통수학2.js#2",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_매산여고_2학기_중간_고1_공통수학2.js#4",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_매산여고_2학기_중간_고1_공통수학2.js#8",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_매산여고_2학기_중간_고1_공통수학2.js#15",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_매산여고_2학기_중간_고1_공통수학2.js#17",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "METADATA_OBSERVED_PARITY"
+        ]
+      },
+      {
+        "key": "25_순천고_2학기_중간_고1_기출.js#18",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "SOURCE_ACTUAL_LINE_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      },
+      {
+        "key": "25_제일고_2학기_중간_고1_기출.js#15",
+        "failedGates": [
+          "REQUIRED_GEOMETRY_PRESENCE",
+          "NONZERO_LINE_GEOMETRY",
+          "LINE_LABEL_COEFFICIENT_PARITY",
+          "CAPTION_SEMANTIC_PARITY"
+        ]
+      }
+    ],
+    "severity": "not reclassified by this code-only job; production FINAL remains blocked for these rows",
+    "outsideCodeScope": true,
+    "requires": "subsequent frozen inventory triage/FULL PILOT"
+  },
+  "evidenceHashes": {
+    "tests/phase-15-code-tests.json": "b77f9d8e2d790811082c83db01d38c33c2b4be1e34e1fb1ce8d20fe7771d432e",
+    "config/baseline.json": "eb4716620d44675bd69ce68031e9c72e23bcb99eceebb066bad09413e21f18d5",
+    "config/run.json": "9dc89a5245c7f5684569565f8a14ee4ebb1713f2ceddda97ba89b9db99e166e7",
+    "fixtures/manifest.json": "71834e19b08e325ac86a2d8a1a8353edb0f3363e892e897d22022dbffc4c9036",
+    "determinism/summary.json": "27510d1ec672ec13d266dd0789ddfa41c511e57bd0191572d767f247ec19e97f",
+    "archive-render-matrix.json": "e7a1dfd9e3106c6bae31aab5675e24a918a71181208438d56f1f31a16f4df677",
+    "legacy-contract/summary.json": "b4542e9cda332d67078cc902cc965d6c1c26c0839706593d5483e972eae2fded",
+    "legacy-contract/qualification.json": "2c4391f2589a569835b67a518fab7024ea555ee1eb0d167aacbdbc9b490a47db",
+    "performance/build.json": "b8d86fedef8821a9c554432cf3ad43132e7d19e742ba886d368de1a8d6b5c3fa",
+    "performance/browser.json": "2877e0ed7af2dd855a02901ee322948908cbac5636a21ada42a354e8e52b47c3",
+    "bboxReceipt": "69c4ad56a042718113abb31a467bbde3f78816073f6a48350d82d2c6873dd5ef",
+    "nativeSummary": "46192e667f14bb1e7ceb7244caa36e690e04a53247144647cc90017315bec921"
+  },
+  "artifactBindings": [
+    {
+      "id": "circle-source",
+      "files": {
+        "visual.svg": "885eefc140a57bd657cf96d8d18f160e80f679d8ae628286437c35e340d7743e",
+        "visual.tex": "54d560fd50162e079b61e6cd537664dd1bafe118cf1a04fe839fe0f3f967c807",
+        "spec.json": "47391cfb9e5651c4f5a6d8a3f40e8ca2a47de5678e25236e5fc98d7a3d19f990",
+        "witness.json": "4d19c7d14b6f7c612019426f36d424151adff9ea3d380b8985121bab4ec371b4"
+      },
+      "staticInputSha256": "3f0c0f081a5cb452ccfa0e81238543d371c52249b3134cd054b7b749a9a7111d"
+    },
+    {
+      "id": "circle-cluster",
+      "files": {
+        "visual.svg": "c1828db81ae5fe006f5eb23018a40ea6950e244d156c537be617045e810a5589",
+        "visual.tex": "b849959f47cd8ee531e81af6a8cd11c4eddca7d866f2f77f13d4006b844fbc27",
+        "spec.json": "0e04a8b5c0ab40537da99a866ac286a2773dab5e5b3f99e46509586186eda70b",
+        "witness.json": "8d059b3cc13affca428c10b6e6ccfb50dd53743f9839ffc1023febe36602aa83"
+      },
+      "staticInputSha256": "a904cab01d96df0019ff5ec3f1716209760398b61e9f01f1365b56441c6863e7"
+    },
+    {
+      "id": "graph-quadratic",
+      "files": {
+        "visual.svg": "48adc468317190c1628c73cf8da0ee7358b472b0fad0b9a5fe07dddcb105ccf0",
+        "visual.tex": "4bedda6abec3f4522af22bb6e06d9d0a2ddbc064dc71b3e76180aacc8e429da2",
+        "spec.json": "799e79e9563d89aa96ca9a19e9308789ded93c6128bdcf0f803cec683795b087",
+        "witness.json": "4adcfae951e25aa703f5e2a624f8a44f2195de612766ead2e728f16a11fd62c0"
+      },
+      "staticInputSha256": "cb0ccd052904888d7ca915fbe29ff5335f11b4535c07ecd071a88100bbb0f286"
+    },
+    {
+      "id": "graph-cubic",
+      "files": {
+        "visual.svg": "4237254952312cc119ab563e3684de8e16a24e9df6e77bd369f30493d2ea61ed",
+        "visual.tex": "783ee6923d37f4e12640e9832f211ccccf1fd793b8bd8ef98dc15f2a7223b1bb",
+        "spec.json": "3be9248f29513ae7e8ecb532f3f278b80e7a80e7d737dfc16467fbaf28c66115",
+        "witness.json": "f5f3384e1199e92aee9b037b1624f7f7f6737b41e811f430606258ab5ca4be8d"
+      },
+      "staticInputSha256": "b863a7a9c4936d8f5ed32016a8fcb6405feeb6a8e4c6b8eb9bfc33aaf1103a16"
+    },
+    {
+      "id": "graph-quartic",
+      "files": {
+        "visual.svg": "bdb6f6839fb59dd719f231a8158d19f585727c7bcbcaf3c6cf7e8db7f3f5e898",
+        "visual.tex": "045c5480f2372addb015be31f919918f6fa3994d02fe7a48ddfb7fc4cad2126c",
+        "spec.json": "74d3aaf1ee316db0b220807871ac4edc5c91c580809409468c742f20a9519e17",
+        "witness.json": "8bde2866b074b6cadcea641bdf506106f02a5ec405dddc98cbc81750d0adda3c"
+      },
+      "staticInputSha256": "235e752fa111e93b86b1872a9bd129015809ed8700add573cb86d425c2c2657d"
+    },
+    {
+      "id": "graph-rational",
+      "files": {
+        "visual.svg": "04517360d207be612ad3df8bf9da8a1ace78bd71162b554370146945868aaffa",
+        "visual.tex": "81df271c206c70f6da485c9e53cbc688b01d634eb514db4e6b8c44d4e1b056f6",
+        "spec.json": "735edb316cf6045244bad78da9be558375005e420b176f75211029f40a33a4a0",
+        "witness.json": "7ff74219d11e4aac3e4b0a56acca9b7e6f73a5603e8a2b8a3f0f8ace3c5bbe14"
+      },
+      "staticInputSha256": "6b596ea3509845ea0907e443fac390a6af3cbe43d0ffcca7ddab7d364843ed50"
+    },
+    {
+      "id": "graph-radical",
+      "files": {
+        "visual.svg": "12ddcb0e04fd7827672d6fe4cd8db21840f32c956be72ed4f1b79ecb1de6b469",
+        "visual.tex": "0686536b4d10f2e5abfbc9a8f39af2b62ecf64a391329045993855e30d97ce9d",
+        "spec.json": "6e321e6c84f6332661fdb981f202c3d5ca266732a0584fa3195efd0f875c0bbd",
+        "witness.json": "37070fa6e3b9368bc5445ef9cbad6ce1ca28383d23acce768ba2c136d7b8352c"
+      },
+      "staticInputSha256": "48d617381b2eb08bf0f12d49fda032a30f731d979ff0a7ef74d722b70c6dd7ea"
+    },
+    {
+      "id": "graph-exp",
+      "files": {
+        "visual.svg": "9a813d4d4b5c499efcc831530bf2170db3b0c5989f0f58656bd0598985da8c14",
+        "visual.tex": "67aae4793a0ad02246cde3690d3bc29a20f4f501656e9626d128a8c84414e9c6",
+        "spec.json": "654c685c17c9b81abf627f0fb187a72bf03eb117b27ddc81ce3718a8eacd30dc",
+        "witness.json": "9be7280ca7f3ebbff167f4d846425dd0bff714646665339dc059c754dc46a1f4"
+      },
+      "staticInputSha256": "899c64445436bd58154607bb2fbc51150f4ba3ee865aaf779b8db2979df7c620"
+    },
+    {
+      "id": "graph-log",
+      "files": {
+        "visual.svg": "a7971c96eafb0dfb01194dff1a645d2452a6312385906a74ee761fac6a9b346b",
+        "visual.tex": "14416f01864d331e9ca92336f709b70b9c28e6958005454a11a411e5568bf41c",
+        "spec.json": "0b693bd57f07fdb58299f9010770276e8468da5f9d51c8501ea3c2d6ec1d523b",
+        "witness.json": "19ac3282c81333437cdf1d8c8c3858825b9ff7d0e3500d40f751dc5df52cab31"
+      },
+      "staticInputSha256": "ceb0cb5ea833a5dfa60e67e01d9b71262af80c08b2196fd1dab2c8fcbff23da6"
+    },
+    {
+      "id": "graph-sin",
+      "files": {
+        "visual.svg": "68ce85b9fbec2f8b171135ced54ce19096752089d48038bddbb00f3d99ae502f",
+        "visual.tex": "75ab1529969e3c048d7a150b7c95526980626e8a20474ba887bd67afd3fa7078",
+        "spec.json": "6e1ceb9dd7ce5032d4edbbe4946e2a2501263de3e5226978754b0394733521f3",
+        "witness.json": "0a13b9768282b33c7fa259614eb788527294e63d20e1a23838633dff3b76bce4"
+      },
+      "staticInputSha256": "48f763854e98709a12a673e8f615c1c70dab2ea3e195bb80c505cddc1659f114"
+    },
+    {
+      "id": "graph-cos",
+      "files": {
+        "visual.svg": "4b04b4d4d5196a20b9745e557388c1080181d87faf69a86cef4b2612e7c276ea",
+        "visual.tex": "6b522c73a9f2e882775d17990bfafb18e7c1f256411cf8b76b19d8da581322ff",
+        "spec.json": "5b69ee2fd49e3fccd5dabec340ab4ca3e017bb3614538e9c8b5dfbffa04c3380",
+        "witness.json": "ad83179531e0220b81c5267258bb1eaddf3dceee055bdf6fca3b5b256b935fd1"
+      },
+      "staticInputSha256": "278c39b86de4f765d399677e63de218d5df3087717f69b0071b3d40aa1bbe13c"
+    },
+    {
+      "id": "graph-tan",
+      "files": {
+        "visual.svg": "285a69b00d1716c4e9aa86fbc617201720a99dcef9dc2444eaf2cb7c0181a57e",
+        "visual.tex": "8ac2a93cd40aef56d5455afe52df64822933be5f853f3470edfb9103390f6fd7",
+        "spec.json": "044c5271d8662e2b7acd45edccfb78a3f03358ca5ec3752c64ccad3cb7415a62",
+        "witness.json": "936154f470f3035888c9ec82a742fe53b52ceb103f9a771c5fe62e7ba5007fc5"
+      },
+      "staticInputSha256": "ce1530db40d77a639d79fbeabb8a38236918ef21fbe855159bde1a2e45a1b34d"
+    },
+    {
+      "id": "graph-segmented",
+      "files": {
+        "visual.svg": "4b5cd1153cd54691db41596f50e3379f4afe9da2e3b6c5f0d45e7c8d54537738",
+        "visual.tex": "929c29732be0422adbf49da24c8a8bd338d4bb569aa871c9a8f99513cc348ffc",
+        "spec.json": "cd4fb06663e9e4a4c6460d75ced779e2e33a394ac27f2b0bf686e44ab6377449",
+        "witness.json": "06203669c63bf73b6d0bab7ff3eff9115d0bf3906605d27d51df14467b2602ee"
+      },
+      "staticInputSha256": "a69e99a399129f241b00083d3c276f077d68f142bc8e9dd9cf105a4e6a41bdde"
+    }
+  ],
+  "staticRows": [
+    {
+      "id": "circle-source",
+      "status": "PASS"
+    },
+    {
+      "id": "circle-cluster",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-quadratic",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-cubic",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-quartic",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-rational",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-radical",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-exp",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-log",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-sin",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-cos",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-tan",
+      "status": "PASS"
+    },
+    {
+      "id": "graph-segmented",
+      "status": "PASS"
+    }
+  ],
+  "nativeRows": [
+    {
+      "id": "source-0-exam-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-0-exam-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-0-sol-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 2,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-0-sol-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 2,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-0-ans-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-0-ans-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-exam-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-exam-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-sol-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 1,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-sol-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 1,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-ans-desktop",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    },
+    {
+      "id": "source-1-ans-mobile",
+      "status": "PASS",
+      "capture": {
+        "status": "MEASURED",
+        "missingGlyphCount": 0,
+        "labelCollisionCount": 0,
+        "criticalCollisionCount": 0,
+        "clippedTextCount": 0,
+        "overflowCount": 0,
+        "loadedSvgCount": 0,
+        "failedSvgCount": 0
+      }
+    }
+  ],
+  "limitations": [
+    "optional TikZ adapter is candidate draft only; converted SVG must pass the same gates",
+    "archive mobile keeps existing fitted print-page preview; physical print/publication QA is reserved for FULL PILOT",
+    "seal does not qualify all pre-existing production assets or authorize question publication"
+  ],
+  "inventorySha256": "eee7cc288b484b2103420e07f8c07dae64e7b44b4e751b0c5363238704e078ec"
+}

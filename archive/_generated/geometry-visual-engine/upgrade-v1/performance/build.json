@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "scope": "pure build including validation, sampling, layout, SVG and TeX serialization",
+  "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "timingClock": "perf_counter",
+  "warmupExcluded": true,
+  "rows": [
+    {
+      "id": "circle-source",
+      "status": "PASS",
+      "svgSha256": "885eefc140a57bd657cf96d8d18f160e80f679d8ae628286437c35e340d7743e",
+      "svgBytes": 6950,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 4.026400041766465,
+        "median": 4.116699914447963,
+        "max": 4.325999994762242
+      },
+      "samplesMs": [
+        4.2508000042289495,
+        4.108199966140091,
+        4.116699914447963,
+        4.026400041766465,
+        4.325999994762242
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "circle-cluster",
+      "status": "PASS",
+      "svgSha256": "c1828db81ae5fe006f5eb23018a40ea6950e244d156c537be617045e810a5589",
+      "svgBytes": 7196,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 12.95220002066344,
+        "median": 12.991499970667064,
+        "max": 13.113899971358478
+      },
+      "samplesMs": [
+        13.010299997404218,
+        13.113899971358478,
+        12.991499970667064,
+        12.98619993031025,
+        12.95220002066344
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-quadratic",
+      "status": "PASS",
+      "svgSha256": "48adc468317190c1628c73cf8da0ee7358b472b0fad0b9a5fe07dddcb105ccf0",
+      "svgBytes": 9588,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 10.930099990218878,
+        "median": 11.168900062330067,
+        "max": 12.070000055246055
+      },
+      "samplesMs": [
+        11.168900062330067,
+        11.2809999845922,
+        10.930099990218878,
+        10.985500062815845,
+        12.070000055246055
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-cubic",
+      "status": "PASS",
+      "svgSha256": "4237254952312cc119ab563e3684de8e16a24e9df6e77bd369f30493d2ea61ed",
+      "svgBytes": 10647,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 22.266200045123696,
+        "median": 22.77679997496307,
+        "max": 30.009200097993016
+      },
+      "samplesMs": [
+        24.777299957349896,
+        22.77679997496307,
+        22.561300080269575,
+        22.266200045123696,
+        30.009200097993016
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-quartic",
+      "status": "PASS",
+      "svgSha256": "bdb6f6839fb59dd719f231a8158d19f585727c7bcbcaf3c6cf7e8db7f3f5e898",
+      "svgBytes": 16957,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 43.382300063967705,
+        "median": 44.75530004128814,
+        "max": 46.775000053457916
+      },
+      "samplesMs": [
+        44.75530004128814,
+        45.69440009072423,
+        46.775000053457916,
+        43.71890006586909,
+        43.382300063967705
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-rational",
+      "status": "PASS",
+      "svgSha256": "04517360d207be612ad3df8bf9da8a1ace78bd71162b554370146945868aaffa",
+      "svgBytes": 47526,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 55.89660000987351,
+        "median": 56.28000001888722,
+        "max": 58.45939996652305
+      },
+      "samplesMs": [
+        58.45939996652305,
+        56.020200019702315,
+        56.28000001888722,
+        56.70850002206862,
+        55.89660000987351
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-radical",
+      "status": "PASS",
+      "svgSha256": "12ddcb0e04fd7827672d6fe4cd8db21840f32c956be72ed4f1b79ecb1de6b469",
+      "svgBytes": 15274,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 16.406500013545156,
+        "median": 16.791600035503507,
+        "max": 20.172599935904145
+      },
+      "samplesMs": [
+        16.85160002671182,
+        16.791600035503507,
+        16.406500013545156,
+        20.172599935904145,
+        16.498100012540817
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-exp",
+      "status": "PASS",
+      "svgSha256": "9a813d4d4b5c499efcc831530bf2170db3b0c5989f0f58656bd0598985da8c14",
+      "svgBytes": 10374,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 12.118899961933494,
+        "median": 12.230499996803701,
+        "max": 13.053799979388714
+      },
+      "samplesMs": [
+        12.536800000816584,
+        13.053799979388714,
+        12.215499999001622,
+        12.118899961933494,
+        12.230499996803701
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-log",
+      "status": "PASS",
+      "svgSha256": "a7971c96eafb0dfb01194dff1a645d2452a6312385906a74ee761fac6a9b346b",
+      "svgBytes": 27343,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 26.10889996867627,
+        "median": 27.452300069853663,
+        "max": 30.042200000025332
+      },
+      "samplesMs": [
+        26.10889996867627,
+        28.44689995981753,
+        27.452300069853663,
+        30.042200000025332,
+        26.719599962234497
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-sin",
+      "status": "PASS",
+      "svgSha256": "68ce85b9fbec2f8b171135ced54ce19096752089d48038bddbb00f3d99ae502f",
+      "svgBytes": 10740,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 11.098399991169572,
+        "median": 11.21440005954355,
+        "max": 11.914500035345554
+      },
+      "samplesMs": [
+        11.261199950240552,
+        11.098399991169572,
+        11.914500035345554,
+        11.21440005954355,
+        11.167200049385428
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-cos",
+      "status": "PASS",
+      "svgSha256": "4b04b4d4d5196a20b9745e557388c1080181d87faf69a86cef4b2612e7c276ea",
+      "svgBytes": 10500,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 12.8927999176085,
+        "median": 13.266599969938397,
+        "max": 13.428100035525858
+      },
+      "samplesMs": [
+        13.266599969938397,
+        12.8927999176085,
+        13.02630000282079,
+        13.428100035525858,
+        13.294400065205991
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-tan",
+      "status": "PASS",
+      "svgSha256": "285a69b00d1716c4e9aa86fbc617201720a99dcef9dc2444eaf2cb7c0181a57e",
+      "svgBytes": 45356,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 44.35629991348833,
+        "median": 44.79770001489669,
+        "max": 45.78939999919385
+      },
+      "samplesMs": [
+        44.48039992712438,
+        44.79770001489669,
+        44.35629991348833,
+        45.78939999919385,
+        45.51749990787357
+      ],
+      "pureBuildByteParity": true
+    },
+    {
+      "id": "graph-segmented",
+      "status": "PASS",
+      "svgSha256": "4b5cd1153cd54691db41596f50e3379f4afe9da2e3b6c5f0d45e7c8d54537738",
+      "svgBytes": 20264,
+      "repetitions": 5,
+      "buildTimeMs": {
+        "min": 17.831800039857626,
+        "median": 18.00459995865822,
+        "max": 19.32600000873208
+      },
+      "samplesMs": [
+        17.831800039857626,
+        17.91259995661676,
+        18.245700048282743,
+        18.00459995865822,
+        19.32600000873208
+      ],
+      "pureBuildByteParity": true
+    }
+  ]
+}

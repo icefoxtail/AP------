@@ -1,0 +1,196 @@
+TAP version 13
+# Subtest: readiness rejects synthetic and unmeasured actual capture
+ok 1 - readiness rejects synthetic and unmeasured actual capture
+  ---
+  duration_ms: 1.5103
+  type: 'test'
+  ...
+# Subtest: readiness rejects missing or duplicated required coverage
+ok 2 - readiness rejects missing or duplicated required coverage
+  ---
+  duration_ms: 0.2893
+  type: 'test'
+  ...
+# Subtest: performance must be physically measured with finite metrics
+ok 3 - performance must be physically measured with finite metrics
+  ---
+  duration_ms: 1.0147
+  type: 'test'
+  ...
+# Subtest: clear rendered bbox passes
+ok 4 - clear rendered bbox passes
+  ---
+  duration_ms: 1.4891
+  type: 'test'
+  ...
+# Subtest: synthetic capture cannot pass
+ok 5 - synthetic capture cannot pass
+  ---
+  duration_ms: 0.5212
+  type: 'test'
+  ...
+# Subtest: critical label overlap fails
+ok 6 - critical label overlap fails
+  ---
+  duration_ms: 0.3058
+  type: 'test'
+  ...
+# Subtest: actual line through label fails
+ok 7 - actual line through label fails
+  ---
+  duration_ms: 0.3642
+  type: 'test'
+  ...
+# Subtest: clipping and glyph errors fail
+ok 8 - clipping and glyph errors fail
+  ---
+  duration_ms: 0.3733
+  type: 'test'
+  ...
+# Subtest: own condition box must contain rendered multiline text
+ok 9 - own condition box must contain rendered multiline text
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: leader crossing a core line is a hard rendered failure
+ok 10 - leader crossing a core line is a hard rendered failure
+  ---
+  duration_ms: 0.831
+  type: 'test'
+  ...
+# Subtest: good point: geometry parity passes
+ok 11 - good point: geometry parity passes
+  ---
+  duration_ms: 14.9516
+  type: 'test'
+  ...
+# Subtest: coordinate model spoof: mismatched anchors block SVG math pass
+ok 12 - coordinate model spoof: mismatched anchors block SVG math pass
+  ---
+  duration_ms: 10.4242
+  type: 'test'
+  ...
+# Subtest: fake origin helper point cannot replace the actual axis intersection
+ok 13 - fake origin helper point cannot replace the actual axis intersection
+  ---
+  duration_ms: 5.5125
+  type: 'test'
+  ...
+# Subtest: oversized global and per-fact tolerances are rejected
+ok 14 - oversized global and per-fact tolerances are rejected
+  ---
+  duration_ms: 2.1478
+  type: 'test'
+  ...
+# Subtest: bent polyline cannot be used to spoof a line slope fact
+ok 15 - bent polyline cannot be used to spoof a line slope fact
+  ---
+  duration_ms: 10.2273
+  type: 'test'
+  ...
+# Subtest: open or closed state without explicit circle fill is not tested
+ok 16 - open or closed state without explicit circle fill is not tested
+  ---
+  duration_ms: 2.9606
+  type: 'test'
+  ...
+# Subtest: open or closed state requires a circle element
+ok 17 - open or closed state requires a circle element
+  ---
+  duration_ms: 3.8502
+  type: 'test'
+  ...
+# Subtest: CLI writes machine-readable evidence for a passing SVG
+ok 18 - CLI writes machine-readable evidence for a passing SVG
+  ---
+  duration_ms: 99.3496
+  type: 'test'
+  ...
+# Subtest: wrong point: correct text cannot spoof geometry parity
+ok 19 - wrong point: correct text cannot spoof geometry parity
+  ---
+  duration_ms: 3.8737
+  type: 'test'
+  ...
+# Subtest: wrong slope: correct line label cannot spoof geometry parity
+ok 20 - wrong slope: correct line label cannot spoof geometry parity
+  ---
+  duration_ms: 9.4367
+  type: 'test'
+  ...
+# Subtest: wrong midpoint: point relation is checked from actual coordinates
+ok 21 - wrong midpoint: point relation is checked from actual coordinates
+  ---
+  duration_ms: 3.1197
+  type: 'test'
+  ...
+# Subtest: actual geometry, circle radius, display scope and structure pass
+ok 22 - actual geometry, circle radius, display scope and structure pass
+  ---
+  duration_ms: 18.9906
+  type: 'test'
+  ...
+# Subtest: correct metadata cannot spoof actual circle radius
+ok 23 - correct metadata cannot spoof actual circle radius
+  ---
+  duration_ms: 5.1821
+  type: 'test'
+  ...
+# Subtest: old GOLD greedy exponent corruption fails display parity
+ok 24 - old GOLD greedy exponent corruption fails display parity
+  ---
+  duration_ms: 4.0072
+  type: 'test'
+  ...
+# Subtest: item unresolved cannot be hidden by aggregate
+ok 25 - item unresolved cannot be hidden by aggregate
+  ---
+  duration_ms: 4.071
+  type: 'test'
+  ...
+# Subtest: structural rejects duplicate IDs, unsafe tags and malformed XML
+ok 26 - structural rejects duplicate IDs, unsafe tags and malformed XML
+  ---
+  duration_ms: 0.5903
+  type: 'test'
+  ...
+# Subtest: math display expectation omission fails closed
+ok 27 - math display expectation omission fails closed
+  ---
+  duration_ms: 0.576
+  type: 'test'
+  ...
+# Subtest: graph samples and discontinuity are actual polyline checks
+ok 28 - graph samples and discontinuity are actual polyline checks
+  ---
+  duration_ms: 10.9998
+  type: 'test'
+  ...
+# Subtest: wrong sample cannot be rescued by correct function text
+ok 29 - wrong sample cannot be rescued by correct function text
+  ---
+  duration_ms: 8.5293
+  type: 'test'
+  ...
+# Subtest: nested superscript scopes cannot collapse to a flat exponent
+ok 30 - nested superscript scopes cannot collapse to a flat exponent
+  ---
+  duration_ms: 0.5115
+  type: 'test'
+  ...
+# Subtest: right angle orientation is observed from actual vertices and rays
+ok 31 - right angle orientation is observed from actual vertices and rays
+  ---
+  duration_ms: 18.302
+  type: 'test'
+  ...
+1..31
+# tests 31
+# suites 0
+# pass 31
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 340.7163
