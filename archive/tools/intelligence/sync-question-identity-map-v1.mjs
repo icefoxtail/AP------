@@ -79,7 +79,6 @@ function readHistoricalBank(ref, sourceFile) {
   const file = normalizeFile(sourceFile);
   const target = `archive/exams/${file}`;
   const candidates = [];
-  if (ref) candidates.push(ref);
 
   try {
     const history = execFileSync(
@@ -91,6 +90,8 @@ function readHistoricalBank(ref, sourceFile) {
       candidates.push(commit, commit + '^');
     }
   } catch {}
+
+  if (ref) candidates.push(ref);
 
   const seen = new Set();
   for (const candidate of candidates) {
