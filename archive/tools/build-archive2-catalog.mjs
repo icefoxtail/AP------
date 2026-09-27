@@ -67,6 +67,11 @@ const identityBySource = new Map(
     r,
   ]),
 );
+const pathRenameTargets = new Set(
+  (identity.incrementalSync?.renamedFiles || [])
+    .map((row) => core.normalizeFile(row.to))
+    .filter(Boolean),
+);
 if (
   metaByUid.size !== metadata.records.length ||
   identityBySource.size !== identity.records.length
@@ -190,9 +195,15 @@ for (const exam of exams) {
     if (foundationScoped && meta?.foundationTaxonomyStatus === "CONFIRMED" && foundationValid !== true)
       metadataConflicts.push("foundationTaxonomy");
     const formula = "qid_v1_" + hash(file + "#" + ordinal);
-    // qid_v1 authority removes the exams/ wrapper. Never mint missing identities here.
+    // A normal source keeps the deterministic path+ordinal UID. A verified file rename
+    // preserves the pre-rename UID and is authoritative only when the identity+metadata
+    // join already points at the new source path and the identity sync recorded the rename.
+    const verifiedPathRename =
+      Boolean(id && validJoin && pathRenameTargets.has(file));
     const identityStatus =
-      id && id.questionUid === formula ? "VERIFIED" : "UNRESOLVED";
+      id && (id.questionUid === formula || verifiedPathRename)
+        ? "VERIFIED"
+        : "UNRESOLVED";
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,
