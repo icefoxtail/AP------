@@ -239,7 +239,7 @@
 
         const solutionBoxes = data.map((q, i) => {
             const solutionText = q.solution || q.explanation || q.sol || '';
-            const reminderRawContent = deps.stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+            const reminderRawContent = deps.stripInlineImagesFromContent(q.content || q.question || '', !!q.image || q.solutionReminderImagePolicy === 'STRIP_INLINE');
             const reminderContent = deps.sanitizeProtectedSegments(
                 deps.normalizeQuestionNotes(
                     deps.normalizeViewBlocks(
