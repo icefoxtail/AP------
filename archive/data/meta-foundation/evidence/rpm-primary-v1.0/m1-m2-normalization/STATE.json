@@ -4,7 +4,8 @@
   "branch": "work/meta-rpm-m1-m2-normalization",
   "baselineMainSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
   "latestMainFetchedBeforePush": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
-  "currentStage": "VALIDATION_PASS_WAITING_FOR_PUSH",
+  "branchRebasedOntoMain": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "currentStage": "VALIDATION_PASS_READY_FOR_PUSH",
   "scope": [
     "2015/M1-1", "2015/M1-2", "2015/M2-1", "2015/M2-2",
     "2022/M1-1", "2022/M1-2", "2022/M2-1", "2022/M2-2"
@@ -57,8 +58,8 @@
     "R2E_MIGRATION_GAPS_REASSESSED_WITH_SEPARATE_AUTHORITY",
     "ACTIVE_RESOLVER_COMPILED_REGISTRY_AND_RUNTIME_REGRESSION_PASS"
   ],
-  "remainingStages": ["FINAL_BRANCH_REBASE_CHECK", "REMOTE_BRANCH_PUSH", "NOTION_CLOSEOUT"],
+  "remainingStages": ["REMOTE_BRANCH_PUSH", "NOTION_CLOSEOUT"],
   "lastCompletedItem": "All M1/M2 RPM and crosswalk rows were semantically audited; migration q6/q7 resolve through existing 2015 RHS key and binding; 8 M1/M2 regression tests and 16 existing resolver tests pass.",
-  "nextStartPoint": "Rebase the committed branch onto fetched origin/main if the unrelated remote advance is still present, verify, push work/meta-rpm-m1-m2-normalization, then record commit and remote SHA in Notion.",
+  "nextStartPoint": "Repeat the regression and Git status checks after the clean rebase, push work/meta-rpm-m1-m2-normalization, then record all commit and remote SHAs in Notion.",
   "hardBlockers": []
 }
