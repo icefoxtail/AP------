@@ -1,0 +1,128 @@
+{
+  "schema": "JS_ARCHIVE_RESET_CREATE_RECEIPT_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "examFile": "25_팔마중_2학기_기말_중2_기출.js",
+  "examUid": "25_팔마중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "lane": "B",
+  "stage": "CREATE",
+  "nextState": "READY_FOR_REVIEW",
+  "status": "READY",
+  "sourceBlobSha": "21327cd871efe317996e234624a6ba0196520dd8",
+  "totalQuestions": 24,
+  "changedQuestions": [
+    1,
+    2,
+    9,
+    21,
+    22,
+    23,
+    24
+  ],
+  "changedSvgFiles": [
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q9-solution.svg"
+  ],
+  "questionLayoutSummary": {
+    "KEEP": 20,
+    "REFORMAT": 4,
+    "HOLD": 0,
+    "status": "PASS",
+    "modifiedQuestions": [
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "solutionDispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 1,
+    "TRUE_HOLD": 0
+  },
+  "visualDispositionSummary": {
+    "REBUILD": 1,
+    "ADD": 1,
+    "EXEMPT": 22,
+    "HOLD": 0,
+    "requiredVisualMissing": 0
+  },
+  "metaDispositionSummary": {
+    "EXISTING_REUSE": 3,
+    "RPM_PRIMARY_MIGRATION_GAP": 21,
+    "TRUE_TAXONOMY_GAP": 0,
+    "ROUTE_OUT": 0,
+    "TRUE_HOLD": 0
+  },
+  "difficultySummary": {
+    "distribution": {
+      "1": 3,
+      "2": 6,
+      "3": 10,
+      "4": 5,
+      "5": 0
+    },
+    "freshBlindStatus": "PASS"
+  },
+  "sourceTextExactParityStatus": "PASS",
+  "choicesExactParityStatus": "PASS",
+  "answerExactParityStatus": "PASS",
+  "problemImageExactParityStatus": "PASS",
+  "questionLayoutStatus": "PASS",
+  "solutionSelfCheckStatus": "PASS",
+  "svgRuleComplianceStatus": "PASS",
+  "createSelfCheckStatus": "PASS",
+  "createSelfCheckPass": true,
+  "knownRepairPending": {
+    "solution": 0,
+    "visual": 0,
+    "layout": 0,
+    "meta": 0,
+    "requiredVisualMissing": 0
+  },
+  "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+    "sha256": "sha256:0779c6bcc5116a6e2a2a4546b44871eafc30c355d5f7576ab46d6c4c21a0c3a7"
+  },
+  "evidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.evidence.json",
+    "sha256": "sha256:e1005e09d444b8301960170a3368fb7ac81ab5615665c6ff67f5599422256ecc"
+  },
+  "validatorSummary": {
+    "status": "CREATE_CONTRACT_PROJECTION_PASS",
+    "officialResolverCli": "NOT_RUN_CONNECTOR_RUNTIME",
+    "questionCount": 24,
+    "basicHardHoldCount": 0,
+    "migrationGapCount": 21
+  },
+  "authorityRefs": [
+    {
+      "kind": "SOURCE_BRANCH",
+      "branch": "work/rebuild/m2-full-20260928-source",
+      "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+      "path": "archive/exams/original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
+      "gitBlobSha": "21327cd871efe317996e234624a6ba0196520dd8"
+    },
+    {
+      "kind": "MAIN_RULE_AUTHORITY",
+      "commit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3"
+    },
+    {
+      "kind": "RPM_CROSSWALK",
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+      "gitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
+    },
+    {
+      "kind": "VISUAL_ROUTER",
+      "path": ".codex/skills/apmath-visual-upgrade/SKILL.md",
+      "gitBlobSha": "8edf54ca2c42c35cf913851ccaecc29a615cd516"
+    }
+  ],
+  "commitBinding": "SELF",
+  "updatedAt": "2026-09-28T08:09:21+09:00"
+}
