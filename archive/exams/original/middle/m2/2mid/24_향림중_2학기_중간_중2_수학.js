@@ -442,7 +442,7 @@ window.questionBank=[
       "$115$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리는 같고, 같은 호에 대한 중심각은 원주각의 두 배이다.\n조건 정리: $OA=OC$이고 그림에서 $\\angle BAO=15^\\circ$, $\\angle ACO=40^\\circ$이다. $x=\\angle BOC$이다.\n풀이 방향: 이등변삼각형 $AOC$에서 $\\angle OAC$를 구해 $\\angle BAC$을 찾은 뒤 중심각을 구한다.\n정석 풀이: $OA=OC$이므로 삼각형 $AOC$는 이등변삼각형이다. 따라서 $\\angle OAC=\\angle ACO=40^\\circ$이다. 그러므로 $\\angle BAC=\\angle BAO+\\angle OAC=15^\\circ+40^\\circ=55^\\circ$이다. 같은 호 $BC$에 대한 중심각 $\\angle BOC$는 원주각 $\\angle BAC$의 두 배이므로 $x=2\\times55^\\circ=110^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 외심은 세 꼭짓점에서 같은 거리에 있으므로 $OA=OB=OC$이고, 이등변삼각형의 밑각을 이용해 중심에서 생기는 각을 구할 수 있다.\n조건 정리: 점 $O$는 $\\triangle ABC$의 외심이고 $\\angle BAO=15^\\circ$, $\\angle ACO=40^\\circ$이며 $x=\\angle BOC$이다.\n풀이 방향: $\\triangle AOB$, $\\triangle AOC$에서 각각 $\\angle AOB$, $\\angle AOC$를 구한 뒤 점 $O$ 둘레의 각의 합을 이용한다.\n정석 풀이: $OA=OB$이므로 $\\angle ABO=\\angle BAO=15^\\circ$이다. 따라서 $\\angle AOB=180^\\circ-15^\\circ-15^\\circ=150^\\circ$이다. 또 $OA=OC$이므로 $\\angle OAC=\\angle ACO=40^\\circ$이고, $\\angle AOC=180^\\circ-40^\\circ-40^\\circ=100^\\circ$이다. 점 $O$ 둘레에서 $\\angle AOB+\\angle BOC+\\angle COA=360^\\circ$이므로 $150^\\circ+x+100^\\circ=360^\\circ$이다. 따라서 $x=110^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q14.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
@@ -543,7 +543,7 @@ window.questionBank=[
       "$17\\,\\mathrm{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼각형의 넓이는 내접원의 반지름과 반둘레의 곱이고, 한 점에서 내접원에 그은 두 접선의 길이는 같다.\n조건 정리: 세 변의 길이는 $15$, $14$, $13$이고 전체 넓이는 $84\\,\\mathrm{cm}^2$이다. $IE$는 내접원의 반지름이다.\n풀이 방향: 반둘레로 내접원의 반지름을 구하고, 접선 길이로 $BE$를 구해 삼각형 $IBE$의 넓이를 계산한다.\n정석 풀이: 반둘레는 $s=\\dfrac{15+14+13}{2}=21$이다. 삼각형의 넓이가 $rs$이므로 내접원의 반지름은 $r=\\dfrac{84}{21}=4\\,\\mathrm{cm}$이고 $IE=4\\,\\mathrm{cm}$이다. $AD=AF=u$, $BD=BE=v$, $CE=CF=w$라 하면 $u+v=15$, $v+w=14$, $u+w=13$이다. 앞의 두 식을 더하고 셋째 식을 빼면 $2v=16$이므로 $BE=v=8\\,\\mathrm{cm}$이다. 따라서 $\\triangle IBE$의 넓이는 $\\dfrac{1}{2}\\times8\\times4=16\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 내심에서 세 변까지의 거리는 같고, 생기는 직각삼각형의 합동을 이용하면 한 꼭짓점에서 두 수선의 발까지의 길이가 같음을 직접 보일 수 있다.\n조건 정리: $ID\\perp AB$, $IE\\perp BC$, $IF\\perp CA$이고 $ID=IE=IF=r$이다. 또 $AB=15\\,\\mathrm{cm}$, $BC=14\\,\\mathrm{cm}$, $AC=13\\,\\mathrm{cm}$이며 $\\triangle ABC$의 넓이는 $84\\,\\mathrm{cm}^2$이다.\n풀이 방향: $\\triangle ABC$를 $\\triangle IAB$, $\\triangle IBC$, $\\triangle ICA$로 나누어 $r$을 구하고, 직각삼각형의 합동으로 $BE$를 구한다.\n정석 풀이: 세 작은 삼각형의 높이가 모두 $r$이므로 $84=\\dfrac{1}{2}\\times15r+\\dfrac{1}{2}\\times14r+\\dfrac{1}{2}\\times13r=21r$이다. 따라서 $r=4\\,\\mathrm{cm}$이고 $IE=4\\,\\mathrm{cm}$이다. $\\triangle IBD$와 $\\triangle IBE$는 직각삼각형이고 빗변 $IB$가 공통이며 $ID=IE$이므로 합동이다. 따라서 $BD=BE$이다. 같은 방법으로 $AD=AF$, $CE=CF$이다. $AD=AF=u$, $BD=BE=v$, $CE=CF=w$라 하면 $u+v=15$, $v+w=14$, $u+w=13$이다. 앞의 두 식을 더하고 셋째 식을 빼면 $2v=16$이므로 $v=8$이다. 따라서 $BE=8\\,\\mathrm{cm}$이고 $\\triangle IBE$의 넓이는 $\\dfrac{1}{2}\\times8\\times4=16\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q17.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",

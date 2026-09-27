@@ -3,40 +3,54 @@
   "examFile": "24_향림중_2학기_중간_중2_수학.js",
   "examUid": "24_향림중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "C",
-  "stage": "CREATE",
+  "lane": "B",
+  "stage": "R1",
   "sourceBlobSha": "831da26e3095153b49e8d926200284649a26c3e1",
   "totalQuestions": 24,
   "changedQuestions": [
-    2,
-    6,
-    8,
     12,
+    13,
     14,
     16,
+    17,
     18,
-    21,
-    22,
+    19,
+    20,
     23,
     24
   ],
   "changedSvgFiles": [
-    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q2-solution.svg",
-    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q6-solution.svg",
     "archive/assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg",
     "archive/assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg",
     "archive/assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg",
     "archive/assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg",
-    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q22-solution.svg",
-    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg",
-    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q24-solution.svg"
+    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg"
   ],
+  "solutionDispositionSummary": {
+    "KEEP": 22,
+    "REPAIR": 2,
+    "TRUE_HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "KEEP": 4,
+    "REPAIR": 5,
+    "HOLD": 0
+  },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 10,
+    "EXISTING_REUSE": 11,
     "PROPOSED_NEW_L3": 0,
     "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 13,
+    "RPM_PRIMARY_MIGRATION_GAP": 12,
     "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 1,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0
+  },
+  "difficultyDispositionSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0
   },
   "unresolvedItems": [
     {
@@ -46,8 +60,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 2,
@@ -56,8 +69,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 3,
@@ -66,8 +78,7 @@
       "nearbyRpm": "M2-RPM-051",
       "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
       "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-      "proposedLabelKo": null,
-      "reason": "exact 2015 RPM L4는 없지만 GLOBAL ACTIVE graph-property family가 존재하고 M2-04 binding은 미완성이라 신규 key보다 migration gap으로 보존"
+      "reason": "exact 2015 RPM L4는 없고 nearby M2-RPM-051 / GLOBAL ACTIVE graph-property family는 있으나 exact M2 binding 미materialize"
     },
     {
       "questionNo": 4,
@@ -76,8 +87,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_RELATION",
       "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 5,
@@ -86,8 +96,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_TWO_POINTS",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 6,
@@ -96,8 +105,7 @@
       "nearbyRpm": null,
       "problemTypeKey": null,
       "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
       "questionNo": 7,
@@ -106,8 +114,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_MULTI_CONDITION",
-      "proposedLabelKo": null,
-      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate를 evidence로 보존"
+      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate만 evidence 보존"
     },
     {
       "questionNo": 8,
@@ -116,8 +123,7 @@
       "nearbyRpm": null,
       "problemTypeKey": null,
       "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
       "questionNo": 9,
@@ -126,8 +132,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 10,
@@ -136,18 +141,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_RELATION",
       "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
-      "proposedLabelKo": null,
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
-    },
-    {
-      "questionNo": 13,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "rpmPrimary": null,
-      "nearbyRpm": "M2-RPM-179 (2022)",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
-      "proposedLabelKo": null,
-      "reason": "GLOBAL ACTIVE pair는 존재하지만 2015 middle2 exact RPM path/binding이 없어 2022 path 역이식 대신 migration gap"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 21,
@@ -156,8 +150,7 @@
       "nearbyRpm": null,
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_MULTI_CONDITION",
-      "proposedLabelKo": null,
-      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate를 evidence로 보존"
+      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate만 evidence 보존"
     },
     {
       "questionNo": 22,
@@ -166,30 +159,32 @@
       "nearbyRpm": null,
       "problemTypeKey": null,
       "templateKey": null,
-      "proposedLabelKo": null,
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
-      "questionNo": 23,
+      "questionNo": 13,
       "disposition": "PROPOSED_NEW_L4",
-      "rpmPrimary": null,
-      "nearbyRpm": null,
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_RIGHT_TRIANGLE_ANGLE_TRISECTION",
-      "proposedLabelKo": "이등변직각삼각형의 각 삼등분",
-      "reason": "2015 RPM과 GLOBAL ACTIVE에서 이 decisive step을 보존하는 exact L4/template을 찾지 못해 existing L3 family 아래 신규 L4 proposal"
+      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "proposalKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA_CLASSIFICATION",
+      "reason": "여러 직각삼각형 합동 충분조건을 비교·판별하는 exact ACTIVE L4 없음."
     }
   ],
-  "nextState": "READY_FOR_REVIEW",
+  "nextState": "READY_FOR_R2E",
   "inputAuthority": {
     "branch": "work/intake/m2",
-    "inputCommit": "3b100969af789655e684d14a9fb5e45483fd4197",
-    "mainReadSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+    "inputCommit": "316d328476410877e10094fa834bc6f5e504053b",
+    "mainReadSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
     "sourcePath": "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
     "sourceBlobSha": "831da26e3095153b49e8d926200284649a26c3e1",
-    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636",
+    "r1InputJsBlobSha": "fdb8b68703f4af5267afc55f3c84a57da21c6626",
+    "r1FinalJsBlobSha": "197a923c85467cffac9c9e15ba19de7af92c26ad",
+    "normalizationBranch": "work/meta-rpm-m1-m2-normalization",
+    "normalizationReadSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333",
+    "rpmCrosswalkBlobSha": "75a021bbf7095893f7ea5e22f92dc721d6d367ae",
+    "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
+    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477",
     "evidencePath": "archive/data/r2e-intake/m2/24_향림중_2학기_중간_중2_수학.evidence.json"
   },
-  "updatedAt": "2026-09-27T07:09:15+09:00"
+  "commitBinding": "SELF",
+  "updatedAt": "2026-09-27T12:41:59+09:00"
 }

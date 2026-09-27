@@ -3,62 +3,136 @@
   "examFile": "24_향림중_2학기_중간_중2_수학.js",
   "examUid": "24_향림중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "C",
-  "stage": "CREATE",
-  "sourcePath": "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
-  "sourceBlobSha": "831da26e3095153b49e8d926200284649a26c3e1",
-  "totalQuestions": 24,
+  "lane": "B",
+  "stage": "R1",
+  "denominator": 24,
+  "inputAuthority": {
+    "branch": "work/intake/m2",
+    "inputCommit": "316d328476410877e10094fa834bc6f5e504053b",
+    "mainReadSha": "e49deeb7609c621d098836292cfb35324c04b5b1",
+    "sourcePath": "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+    "sourceBlobSha": "831da26e3095153b49e8d926200284649a26c3e1",
+    "r1InputJsBlobSha": "fdb8b68703f4af5267afc55f3c84a57da21c6626",
+    "r1FinalJsBlobSha": "197a923c85467cffac9c9e15ba19de7af92c26ad"
+  },
+  "normalizationAuthority": {
+    "branch": "work/meta-rpm-m1-m2-normalization",
+    "readSha": "944b84f891ceb0d8aabc1f2899fe20cdd7044333",
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "crosswalkBlobSha": "75a021bbf7095893f7ea5e22f92dc721d6d367ae",
+    "middleGeometryTaxonomyBlobSha": "3125d1eeaad98ede1335c2f7bb9e36205560464b",
+    "middleGeometryBindingsBlobSha": "fea2ce4b4d6f9c2e30f6d9f11cae779eafa53477"
+  },
+  "authorityOrder": [
+    "source+final solution",
+    "primaryMethod",
+    "decisiveStep",
+    "RPM Primary",
+    "middle2 crosswalk",
+    "GLOBAL ACTIVE canonical",
+    "exact binding"
+  ],
   "sourceIdentity": {
+    "status": "PASS",
     "coverage": "24/24",
-    "protectedFieldParity": "PASS 24/24",
-    "solutionParity": "KEEP 24/24",
-    "sourceImageCoverage": "14/14 from exact source-locked prior CREATE artifact",
-    "priorArtifactReuse": "READY_FOR_REVIEW__24_향림중_2학기_중간_중2_수학.js.zip",
-    "priorArtifactSha256": "a85224ff5b7a396f977cb090b6a3c8c18872018bac9c6842ac13253f1e88c2c6",
-    "exactSourceBlobMatch": true,
+    "protectedFields": "content+choices+answer+image 24/24 unchanged",
+    "sourceImageBlobParity": "14/14 PASS against current main",
     "trueHold": 0
   },
-  "solutionSummary": {
-    "KEEP": 24,
-    "REPAIR": 0,
-    "TRUE_HOLD": 0
+  "mathSolution": {
+    "coverage": "24/24",
+    "KEEP": 22,
+    "REPAIR": 2,
+    "TRUE_HOLD": 0,
+    "repairedQuestions": [
+      14,
+      17
+    ],
+    "repairReasons": {
+      "14": "중3 원주각 의존을 제거하고 M2 외심 등거리→두 이등변삼각형 중심각→점 O 둘레 360°로 재작성.",
+      "17": "접선 길이 정리/Δ=rs 압축 대신 넓이 분할로 r=4를 유도하고 RHS 직각삼각형 합동으로 BE=8을 직접 증명."
+    }
   },
-  "svgSummary": {
-    "ADD": 9,
-    "REPAIR": 0,
-    "HOLD": 0,
-    "questions": [
-      2,
-      6,
+  "smallBlackboard": {
+    "coverage": "24/24",
+    "KEEP": 22,
+    "REPAIR": 2,
+    "HOLD": 0
+  },
+  "visual": {
+    "sourceImages": 14,
+    "sourceImageBlobParity": "14/14 PASS",
+    "solutionSvgPresent": 9,
+    "svgKEEP": 4,
+    "svgREPAIR": 5,
+    "svgHOLD": 0,
+    "repairedQuestions": [
       12,
       14,
       16,
       18,
-      22,
-      23,
-      24
+      23
     ],
-    "xmlStructural": "PASS 9/9",
-    "renderReview": "NOT_RUN_BY_POLICY"
+    "repairReasons": {
+      "12": "D/E/F를 실제 각의 이등분선 교점 좌표로 재구성해 60°/140° 관계를 geometry와 일치.",
+      "14": "O가 A/B/C에서 정확히 등거리인 외접원·중심 구조로 재구축; 새 M2 풀이의 150°/100°/110°와 일치.",
+      "16": "∠A=60°인 실제 삼각형과 계산된 내심 좌표를 사용해 ∠BIC=120° 관계를 일치.",
+      "18": "AD=BC=4, CD=CE=6, BE=2 및 D각 이등분선이 실제 비례로 성립하도록 재구축.",
+      "23": "AB=AC, ∠A=90°인 정확한 이등변직각삼각형과 양쪽 삼등분선 교점을 재구축."
+    },
+    "svgStructural": "9/9 PASS",
+    "render": "NOT_RUN_BY_POLICY"
   },
-  "jsMetaRepairs": {
-    "questions": [
-      6,
-      8,
-      21
-    ],
-    "changes": [
-      "q6 M2-04-LINEAR_FUNCTION_BASIC → M2-04-LINEAR_FUNCTION_EQUATION",
-      "q8 M2-04-LINEAR_FUNCTION_BASIC → M2-04-LINEAR_FUNCTION_EQUATION",
-      "q21 M2-04-LINEAR_FUNCTION_BASIC → M2-04-LINEAR_FUNCTION_EQUATION"
-    ]
+  "l1l2": {
+    "coverage": "24/24",
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "note": "CREATE의 q6/q8/q21 M2-04-LINEAR_FUNCTION_EQUATION repair를 독립 확인 후 유지."
   },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 10,
+    "EXISTING_REUSE": 11,
     "PROPOSED_NEW_L3": 0,
     "PROPOSED_NEW_L4": 1,
-    "RPM_PRIMARY_MIGRATION_GAP": 13,
+    "RPM_PRIMARY_MIGRATION_GAP": 12,
     "TRUE_HOLD": 0
+  },
+  "crossConceptDispositionSummary": {
+    "ACTIVE_REUSE": 1,
+    "PROPOSED_NEW_CROSS_CONCEPT": 0,
+    "items": [
+      {
+        "questionNo": 15,
+        "keys": [
+          "CC_PYTHAGOREAN"
+        ]
+      }
+    ]
+  },
+  "difficultyBlindPass": {
+    "coverage": "24/24",
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "buckets": {
+      "1": 4,
+      "2": 12,
+      "3": 2,
+      "4": 6,
+      "5": 0
+    }
+  },
+  "integrity": {
+    "jsParse": "PASS",
+    "questionCount": 24,
+    "idSequence": "1..24 PASS",
+    "uniqueIds": "24/24",
+    "blankSolutions": 0,
+    "protectedIdentity": "24/24 PASS",
+    "runtimeStringBasic": "PASS",
+    "runtimeLiteralBackslashN": 0,
+    "runtimeControlChars": 0,
+    "svgStructural": "9/9 PASS"
   },
   "perQuestion": [
     {
@@ -68,9 +142,7 @@
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
       "difficultyBucket": 1,
-      "primaryMethod": "x절편·y절편 정의 적용",
-      "decisiveStep": "y=0, x=0을 각각 대입해 두 절편 확정",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 2,
@@ -79,9 +151,7 @@
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
       "difficultyBucket": 1,
-      "primaryMethod": "그래프의 두 점으로 기울기 계산",
-      "decisiveStep": "(0,-3),(2,1)의 Δy/Δx=4/2",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "FAMILY_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 3,
@@ -90,10 +160,8 @@
       "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
       "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
       "difficultyBucket": 3,
-      "primaryMethod": "기울기·절편 부호로 사분면 통과 판정",
-      "decisiveStep": "제2사분면 비통과에서 a>0,b<0 확정 후 변환 직선 판정",
       "nearbyRpm": "M2-RPM-051",
-      "reason": "exact 2015 RPM L4는 없지만 GLOBAL ACTIVE graph-property family가 존재하고 M2-04 binding은 미완성이라 신규 key보다 migration gap으로 보존"
+      "reason": "exact 2015 RPM L4는 없고 nearby M2-RPM-051 / GLOBAL ACTIVE graph-property family는 있으나 exact M2 binding 미materialize"
     },
     {
       "questionNo": 4,
@@ -102,9 +170,7 @@
       "problemTypeKey": "PT_LINE_RELATION",
       "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
       "difficultyBucket": 1,
-      "primaryMethod": "평행한 두 직선의 기울기 비교",
-      "decisiveStep": "3/a=9에서 a=1/3",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 5,
@@ -113,9 +179,7 @@
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_TWO_POINTS",
       "difficultyBucket": 2,
-      "primaryMethod": "두 점으로 기울기와 절편 결정",
-      "decisiveStep": "m=3 뒤 (1,2) 대입해 절편 -1",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 6,
@@ -124,9 +188,7 @@
       "problemTypeKey": null,
       "templateKey": null,
       "difficultyBucket": 2,
-      "primaryMethod": "두 직선과 x=4가 만드는 삼각형 넓이",
-      "decisiveStep": "교점 (0,0),(4,4),(4,8)에서 1/2×4×4",
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
       "questionNo": 7,
@@ -135,9 +197,7 @@
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_MULTI_CONDITION",
       "difficultyBucket": 4,
-      "primaryMethod": "세 점의 공선 조건을 기울기 동일로 변환",
-      "decisiveStep": "PQ 기울기=QR 기울기에서 a=5",
-      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate를 evidence로 보존"
+      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate만 evidence 보존"
     },
     {
       "questionNo": 8,
@@ -146,9 +206,7 @@
       "problemTypeKey": null,
       "templateKey": null,
       "difficultyBucket": 2,
-      "primaryMethod": "y축에 평행한 직선의 x좌표 동일",
-      "decisiveStep": "3=a-1에서 a=4",
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
       "questionNo": 9,
@@ -157,9 +215,7 @@
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
       "difficultyBucket": 2,
-      "primaryMethod": "x축 위 교점의 y=0 조건",
-      "decisiveStep": "첫 식에서 x=-2 후 둘째 식으로 a=-10",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 10,
@@ -168,9 +224,7 @@
       "problemTypeKey": "PT_LINE_RELATION",
       "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
       "difficultyBucket": 2,
-      "primaryMethod": "두 일차방정식의 계수비·상수항 비교",
-      "decisiveStep": "③은 좌변 비례지만 상수항 불일치라 평행",
-      "reason": "2015 RPM direct path는 있으나 exact ACTIVE binding이 MISSING"
+      "reason": "DIRECT_BINDING_GAP; exact M2 binding 미materialize"
     },
     {
       "questionNo": 11,
@@ -178,9 +232,7 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
       "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
-      "difficultyBucket": 1,
-      "primaryMethod": "이등변삼각형 꼭짓점 수선 성질",
-      "decisiveStep": "BD=DC=BC/2에서 x=4"
+      "difficultyBucket": 1
     },
     {
       "questionNo": 12,
@@ -188,21 +240,17 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 4,
-      "primaryMethod": "이등변삼각형 밑각과 두 각의 이등분선",
-      "decisiveStep": "밑각을 구해 교점 각을 내각·외각 관계로 확정"
+      "difficultyBucket": 4
     },
     {
       "questionNo": 13,
       "rpmPrimary": null,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "disposition": "PROPOSED_NEW_L4",
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+      "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA_CLASSIFICATION",
       "difficultyBucket": 2,
-      "primaryMethod": "직각삼각형 RHA 합동",
-      "decisiveStep": "빗변과 한 예각이 같아 합동임을 확정",
-      "nearbyRpm": "M2-RPM-179 (2022)",
-      "reason": "GLOBAL ACTIVE pair는 존재하지만 2015 middle2 exact RPM path/binding이 없어 2022 path 역이식 대신 migration gap"
+      "reason": "RHS·RHA뿐 아니라 두 직각변/한 직각변+예각 등 여러 충분조건을 비교하는 분류형 decisive step으로, 현 ACTIVE RHS/RHA 단일 template 어느 쪽에도 exact하지 않음.",
+      "proposalLabelKo": "직각삼각형 합동 조건 판별"
     },
     {
       "questionNo": 14,
@@ -211,8 +259,7 @@
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
       "difficultyBucket": 3,
-      "primaryMethod": "외심의 세 꼭짓점 등거리",
-      "decisiveStep": "OA=OC로 각을 옮겨 목표각 계산"
+      "solutionAction": "REPAIR"
     },
     {
       "questionNo": 15,
@@ -220,12 +267,10 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "difficultyBucket": 4,
       "crossConceptKeys": [
         "CC_PYTHAGOREAN"
-      ],
-      "difficultyBucket": 4,
-      "primaryMethod": "직각삼각형 외심·피타고라스 관계",
-      "decisiveStep": "외심 구조와 변 길이 관계로 넓이 계산"
+      ]
     },
     {
       "questionNo": 16,
@@ -233,9 +278,7 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 2,
-      "primaryMethod": "내심의 두 각 이등분선",
-      "decisiveStep": "∠BIC=120°와 반각 합으로 ∠A=60°"
+      "difficultyBucket": 2
     },
     {
       "questionNo": 17,
@@ -244,38 +287,31 @@
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
       "difficultyBucket": 4,
-      "primaryMethod": "내접원 반지름과 접선 길이",
-      "decisiveStep": "Δ=rs로 r=4, 접선길이 BE=8 후 넓이 16"
+      "solutionAction": "REPAIR"
     },
     {
       "questionNo": 18,
-      "rpmPrimary": "M2-RPM-070",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 2,
-      "primaryMethod": "평행사변형 평행선·각이등분",
-      "decisiveStep": "△CDE 이등변 → CE=CD=6 → BE=2"
-    },
-    {
-      "questionNo": 19,
-      "rpmPrimary": "M2-RPM-070",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 2,
-      "primaryMethod": "평행사변형의 평행 관계와 수선",
-      "decisiveStep": "AF⊥AB에서 90°-20°=70°"
-    },
-    {
-      "questionNo": 20,
       "rpmPrimary": "M2-RPM-072",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 19,
+      "rpmPrimary": "M2-RPM-072",
+      "disposition": "EXISTING_REUSE",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "difficultyBucket": 2
+    },
+    {
+      "questionNo": 20,
+      "rpmPrimary": "M2-RPM-074",
+      "disposition": "EXISTING_REUSE",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-      "difficultyBucket": 2,
-      "primaryMethod": "평행사변형 충분조건 판정",
-      "decisiveStep": "⑤는 한 쌍 평행+다른 대변 같음으로 충분하지 않음"
+      "difficultyBucket": 2
     },
     {
       "questionNo": 21,
@@ -284,9 +320,7 @@
       "problemTypeKey": "PT_LINE_EQUATION",
       "templateKey": "TPL_LINE_MULTI_CONDITION",
       "difficultyBucket": 2,
-      "primaryMethod": "점 통과와 두 절편 동일 조건",
-      "decisiveStep": "(1,3)으로 a=2, x절편=1 조건으로 b=-2",
-      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate를 evidence로 보존"
+      "reason": "FAMILY_BINDING_GAP; decisive step에 맞는 existing family candidate만 evidence 보존"
     },
     {
       "questionNo": 22,
@@ -295,48 +329,98 @@
       "problemTypeKey": null,
       "templateKey": null,
       "difficultyBucket": 4,
-      "primaryMethod": "이동거리로 사다리꼴 두 평행변을 식으로 표현",
-      "decisiveStep": "y=1/2{(18-x)+3x}×8=8x+72",
-      "reason": "RPM path는 존재하지만 crosswalk가 RPM_ONLY / NO_ACTIVE_MAPPING"
+      "reason": "RPM_ONLY / NO_ACTIVE_MAPPING"
     },
     {
       "questionNo": 23,
-      "rpmPrimary": null,
-      "disposition": "PROPOSED_NEW_L4",
+      "rpmPrimary": "M2-RPM-060",
+      "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_RIGHT_TRIANGLE_ANGLE_TRISECTION",
-      "proposedLabelKo": "이등변직각삼각형의 각 삼등분",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
       "difficultyBucket": 4,
-      "primaryMethod": "이등변직각삼각형의 내각·외각 삼등분",
-      "decisiveStep": "45°→15°씩, 135°→45°씩 나눈 뒤 두 삼각형 내각합",
-      "reason": "2015 RPM과 GLOBAL ACTIVE에서 이 decisive step을 보존하는 exact L4/template을 찾지 못해 existing L3 family 아래 신규 L4 proposal"
+      "reason": "CREATE의 과도한 각 삼등분 전용 proposal을 제거. primary decisive structure는 이등변직각삼각형의 밑각 45° 확정이고 주어진 삼등분선은 후속 조건."
     },
     {
       "questionNo": 24,
-      "rpmPrimary": "M2-RPM-071",
+      "rpmPrimary": "M2-RPM-073",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 2,
-      "primaryMethod": "평행사변형 대변·대각선 이등분",
-      "decisiveStep": "AD=BC로 x=3, BD=2OD로 y=1"
+      "difficultyBucket": 2
     }
   ],
-  "integrity": {
-    "javascriptParse": "PASS",
-    "questionCardinality": "24/24",
-    "protectedFieldParity": "PASS 24/24",
-    "solutionParity": "PASS 24/24",
-    "solutionBlankCount": 0,
-    "svgXml": "9/9 structural PASS",
-    "renderReview": "NOT_RUN_BY_POLICY"
-  },
-  "authorityRefs": {
-    "inputBranch": "work/intake/m2",
-    "inputCommit": "3b100969af789655e684d14a9fb5e45483fd4197",
-    "mainReadSha": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
-    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636"
-  },
-  "createdAt": "2026-09-27T07:09:15+09:00"
+  "proposalEvidence": [
+    {
+      "questionNo": 13,
+      "status": "PROPOSED_NEW_L4",
+      "parentProblemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+      "proposedTemplateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA_CLASSIFICATION",
+      "labelKo": "직각삼각형 합동 조건 판별",
+      "scope": "2015/M2/M2-05/TRIANGLE_PROPERTIES",
+      "reason": "현 ACTIVE RHS/RHA 단일 template 어느 하나로는 여러 합동 충분조건을 비교·판별하는 decisive step을 보존하지 못함."
+    }
+  ],
+  "metaChanges": [
+    {
+      "q": 13,
+      "before": "RPM_PRIMARY_MIGRATION_GAP",
+      "after": "PROPOSED_NEW_L4"
+    },
+    {
+      "q": 18,
+      "beforeRpm": "M2-RPM-070",
+      "afterRpm": "M2-RPM-072"
+    },
+    {
+      "q": 19,
+      "beforeRpm": "M2-RPM-070",
+      "afterRpm": "M2-RPM-072"
+    },
+    {
+      "q": 20,
+      "beforeRpm": "M2-RPM-072",
+      "afterRpm": "M2-RPM-074"
+    },
+    {
+      "q": 23,
+      "before": "PROPOSED_NEW_L4",
+      "after": "EXISTING_REUSE",
+      "beforeTemplate": "TPL_ISOSCELES_RIGHT_TRIANGLE_ANGLE_TRISECTION",
+      "afterRpm": "M2-RPM-060",
+      "afterTemplate": "TPL_ISOSCELES_BASE_ANGLES"
+    },
+    {
+      "q": 24,
+      "beforeRpm": "M2-RPM-071",
+      "afterRpm": "M2-RPM-073"
+    }
+  ],
+  "finalFiles": [
+    {
+      "path": "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+      "gitBlobSha": "197a923c85467cffac9c9e15ba19de7af92c26ad"
+    },
+    {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg",
+      "gitBlobSha": "5a7626e8abe8eb279b1f006f9a7ce8c52a053c26"
+    },
+    {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg",
+      "gitBlobSha": "18170b92c75b3a39d6af6745282b064d0b662f16"
+    },
+    {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg",
+      "gitBlobSha": "6a1fe9f3116a4e5114982857a15f12c6a7b2ad93"
+    },
+    {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg",
+      "gitBlobSha": "16ae11123fc18e381890f5d0be7dc1aa94ae6f43"
+    },
+    {
+      "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg",
+      "gitBlobSha": "61290c27d6b0556f3e9b0dd2ea8600d6d0d05df3"
+    }
+  ],
+  "nextState": "READY_FOR_R2E",
+  "updatedAt": "2026-09-27T12:41:59+09:00"
 }
