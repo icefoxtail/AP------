@@ -118,6 +118,16 @@
       .normalize("NFC")
       .replace(/\s+/g, "")
       .replace(/[·・ㆍ]/g, "");
+  const scopeCourseKey = (row) => {
+    const course = C.normalizeCourseIdentity(row.courseKey);
+    const grade = course.match(/^중([123])(?:수학)?$/)?.[1];
+    if (!grade) return course;
+    const unit = String(row.standardUnitKey || row.legacyStandardUnitKey || "");
+    const major = unit.match(new RegExp(`^M${grade}-(\\d{2})$`));
+    if (major) return `M${grade}-${Number(major[1]) <= 4 ? 1 : 2}`;
+    const semester = unit.match(new RegExp(`^M${grade}-([12])-`))?.[1];
+    return semester ? `M${grade}-${semester}` : course;
+  };
   const taxonomyRowsForFilters = (filters) => {
     const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
       projected = C.hasSubjectProjection?.(filters.grade) === true;
@@ -136,7 +146,7 @@
               .map((record) => C.pathKey(record, 4)),
           )
         : null;
-    return state.catalog.taxonomy.filter((r) => {
+    return (state.catalog.basicTaxonomy || state.catalog.taxonomy).filter((r) => {
       const projectionMatch =
         !filters.semanticSubject ||
         (filters.grade === "고1"
@@ -496,6 +506,9 @@
     };
   }
   function scopeOptions() {
+    const canonicalRows = taxonomyRowsForFilters(state.filters);
+    const canonicalParents = new Set(canonicalRows.map(r =>
+      [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|")));
     const counts = new Map(), eligibleCounts = new Map(),
       excluded = C.composeExclusions(context()).union;
     const pool = state.catalog.records.filter((r) =>
@@ -511,18 +524,18 @@
     }
     const units = new Map();
     // Source units remain visible even before their advanced taxonomy is published.
-    for (const r of [...taxonomyRowsForFilters(state.filters), ...pool]) {
+    for (const r of [...canonicalRows, ...pool]) {
       if (!r.L1 || !r.L2) continue;
       const key = [
         r.curriculumKey,
-        r.courseKey,
+        scopeCourseKey(r),
         scopeText(r.L1),
         scopeText(r.L2),
       ].join("|");
       if (!units.has(key))
         units.set(key, {
           curriculumKey: r.curriculumKey,
-          courseKey: r.courseKey,
+          courseKey: scopeCourseKey(r),
           L1: r.L1,
           L2: r.L2,
           rows: [],
@@ -570,6 +583,8 @@
         L1: group.L1,
         L2: group.L2,
         label: `${group.L2}${suffix}`,
+        basicScope: group.rows.some(r => canonicalParents.has(
+          [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|"))),
         paths,
         count: paths.reduce((sum, path) => sum + (counts.get(path) || 0), 0),
         eligibleCount: paths.reduce((sum, path) => sum + (eligibleCounts.get(path) || 0), 0),
@@ -1105,30 +1120,28 @@
     )
       return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">고2·고3은 과목을 먼저 선택하면 해당 과목의 2015·2022 범위를 하나로 묶어 보여줍니다.</p>`;
     const scopes = scopeOptions(),
-      groups = unique(scopes.map((s) => s.L1));
+      groups = unique(scopes.map((s) => s.L1)),
+      basic = scopes.filter(s => s.basicScope),
+      detailed = scopes.filter(s => !s.basicScope);
+    const rangeOptions = scopes.flatMap((s, i) => s.basicScope
+      ? [{ value: i, label: s.L1 + " · " + s.label }] : []);
+    const groupMarkup = (rows, detail) => `<div class="scope-list">${unique(rows.map(s => s.L1)).map(g =>
+      `<div class="scope-group"><div class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${groups.indexOf(g)}" data-scope-kind="${detail ? "detail" : "basic"}" class="small"`)}</div>${rows.filter(s => s.L1 === g).map(s =>
+        `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`
+      ).join("")}</div>`
+    ).join("")}</div>`;
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
       <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 시험지에 있는 전체 문항 수입니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
-        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
-        0,
+        rangeOptions,
+        rangeOptions[0]?.value ?? 0,
         null,
       )}</select></label><label>범위 끝<select id="scope-end">${options(
-        scopes.map((s, i) => ({ value: i, label: s.L1 + " · " + s.label })),
-        Math.max(0, scopes.length - 1),
+        rangeOptions,
+        rangeOptions.at(-1)?.value ?? 0,
         null,
       )}</select></label>${button("scope-range", "연속 범위 선택")}</div>
-      <div class="scope-list">${groups
-        .map(
-          (g, gi) =>
-            `<div class="scope-group"><div class="group-head"><h3>${esc(g)}</h3>${button("scope-group", "모두", `data-group-index="${gi}" class="small"`)}</div>${scopes
-              .filter((s) => s.L1 === g)
-              .map(
-                (s) =>
-                  `<div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(s.key)}" ${scopeIsSelected(s) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(s.label)}</label><small>${s.count}문항</small></div>`,
-              )
-              .join("")}</div>`,
-        )
-        .join("")}</div>`;
+      ${groupMarkup(basic, false)}${detailed.length ? `<details class="compose-detail source-scope-detail"${detailed.some(scopeIsSelected) ? " open" : ""}><summary>상세 원본 분류 · ${detailed.length}개 항목</summary><p class="muted">정식 단원 목록과 일치하지 않는 기존 원본 분류입니다. 분류명을 확인한 뒤 필요한 항목을 선택할 수 있습니다.</p>${groupMarkup(detailed, true)}</details>` : ""}`;
   }
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;
@@ -2308,21 +2321,22 @@
         if (state.sealed) return;
         const scopes = scopeOptions();
         if (a === "scope-clear") state.scopes = [];
-        else if (a === "scope-all") state.scopes = scopes.map((s) => s.key);
+        else if (a === "scope-all") state.scopes = scopes.filter(s => s.basicScope).map((s) => s.key);
         else if (a === "scope-group") {
           const g = unique(scopes.map((s) => s.L1))[
             Number(b.dataset.groupIndex)
           ];
           state.scopes = unique([
             ...state.scopes,
-            ...scopes.filter((s) => s.L1 === g).map((s) => s.key),
+            ...scopes.filter((s) => s.L1 === g &&
+              s.basicScope === (b.dataset.scopeKind !== "detail")).map((s) => s.key),
           ]);
         } else {
           const from = Number($("scope-start").value),
             to = Number($("scope-end").value);
           if (from > to)
             throw new Error("끝 단원은 시작 단원 뒤에 있어야 합니다.");
-          state.scopes = scopes.slice(from, to + 1).map((s) => s.key);
+          state.scopes = scopes.slice(from, to + 1).filter(s => s.basicScope).map((s) => s.key);
         }
         invalidate();
         render();
