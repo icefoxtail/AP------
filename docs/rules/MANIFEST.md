@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 19797 bytes | sha256 9f546ebcfd8643ae8be8aefc8f5ea55d167df99033a8a6e56d1aa96569e5a3b1
+- 00_RULES_INDEX.md | 20446 bytes | sha256 477ab235e2a20fe21f7e66765a13ab1bee6a22167cb9a498abccfed76314b8c1
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md | 16671 bytes | sha256 119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55
@@ -20,7 +20,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
-- 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 17048 bytes | sha256 26232d59d48314808a1236b62d0f4cc71edc43932ada3c917f175001fb5a1d28
+- 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 20453 bytes | sha256 d67eb3c309d8515ff71d84e033605cc7a524354ba265583387f308fc3e731b4a
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 27352 bytes | sha256 cd3135e43015ca8f1d437d83a394524b5f7ef448585a8d2a98db96dc128af26b
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 17795 bytes | sha256 efa2cc23237b12ffa2508d998dfb78612738359e8c1bca11cf97513f03d609a5
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 131125 bytes | sha256 da233083c7651ff8f18f3439a7b92706e1a5ddd985a4cbf7cda78ddcf86f077e

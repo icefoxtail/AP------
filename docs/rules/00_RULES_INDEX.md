@@ -15,8 +15,11 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 ### JS Archive R2E Intake → Main 작업 선행 규칙
 
+**CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
+
+
 중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
-`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 현재 생명주기 정본으로 함께 적용한다.
+`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md`를 현재 생명주기 정본으로 함께 적용한다. **파일 경로는 호환상 v1을 유지하지만 내용 authority는 v2(2026-09-28)다.**
 
 새 표준 흐름은
 `CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → Codex R2E → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
@@ -62,8 +65,8 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - **Meta/L3/L4 작업은 RPM Primary v1.0을 선조회한다.** `01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `LOCKED` semantic path reference authority이며, 신규 L3/L4·HOLD를 판정하기 전에 `README.md` → `00_POLICY/CANONICAL_MASTER.json` → 대상 curriculum/scope view를 확인한다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지한다.
 - L3/L4/CrossConcept/Condition/alias/curriculum binding의 **production machine-key 정의·승격·검증 authority**는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md` + `archive/data/meta-foundation/canonical/`이다.
-- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/migration 판단 → 둘 다 없을 때만 신규 taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding만 빠진 경우는 `RPM_PRIMARY_MIGRATION_GAP`이며 새 수학 유형 부재로 보지 않는다.
-- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서만 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP` / `RPM_ONLY`는 반복 전역검색이나 임의 신규 key 생성 없이 `RPM_PRIMARY_MIGRATION_GAP`으로 처리한다. crosswalk 이후에는 **current ACTIVE의 관련 row/binding만 targeted validation**하며, 관련 canonical/binding drift가 없으면 이미 계산된 mapping을 다시 전역 조사하지 않는다.
+- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/rebind/materialization 판단 → 그래도 결정 불가할 때만 adjudication/taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding이 빠졌더라도 **exact materialization target이 deterministic하면 CREATE/R1에서 patch를 만들어 닫아야 하며**, 단순 `RPM_PRIMARY_MIGRATION_GAP`으로 R2E에 넘기지 않는다.
+- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP`은 exact target이 결정되면 CREATE에서 `materializationPatch`를 만들고 R1에서 독립 검증·수정한다. `RPM_ONLY`도 GLOBAL ACTIVE에 안전한 reuse가 있으면 CREATE/R1에서 REBIND/REUSE로 닫는다. **READY_FOR_R2E는 `resolvablePending=0`이 HARD gate**이며, R2E에는 exact target 자체가 비결정적인 `R2_ADJUDICATION_REQUIRED`만 넘긴다.
 - 모든 ACTIVE Meta 생성·3차검수·repair·R1/R2E 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
