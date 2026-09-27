@@ -12,6 +12,10 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+### QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY 선행 규칙
+
+**모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
+
 
 ### JS Archive R2E Intake → Main 작업 선행 규칙
 
@@ -76,6 +80,7 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - 모든 ACTIVE Meta 생성·3차검수·repair·R1/R2E 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
+- 학생에게 노출되는 문제 `content/choices/problem image/layout`의 조판·원문 보호 authority는 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`다. 의미 동일 비교가 아니라 SOURCE_TEXT_EXACT_PARITY를 요구한다.
 - L3/L4/CrossConcept semantic assignment의 FINAL authority는 **decision-isolated input bundle + item-level semantic evidence + deterministic validator**의 결합으로만 생성한다.
 - 같은 stage의 기존 candidate/templateKey/CrossConcept suggestion/heuristic hint를 semantic decision 입력으로 사용한 결과는 구조 검사가 PASS여도 semantic authority가 아니다.
 - `sourceReadStatus` 같은 모델 자기보고만으로 FINAL을 허용하지 않으며, validator 미구현·미실행 상태에서는 semantic FINAL/PASS/promotion을 금지한다.

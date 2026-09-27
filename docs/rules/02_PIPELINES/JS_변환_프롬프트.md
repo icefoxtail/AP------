@@ -1,4 +1,7 @@
 
+
+> **QUESTION MICRO_LAYOUT v1 REQUIRED:** JS 변환은 원문 전사 완료 후 SOURCE_TEXT_FREEZE를 만들고 text atom 변경 없이 조판한다. 축약·요약·의역 금지, SOURCE_TEXT_EXACT_PARITY/choices exact 100% 필수. 정본: `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`.
+
 [후속훈련 문항 JS 변환 프롬프트 v1.2]
 [ 텍스트 → JS 변환 / 본문 누락 절대 금지 / 표준단원 자동매핑판 / 기본필드 고정판]
 

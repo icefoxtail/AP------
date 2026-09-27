@@ -1,5 +1,8 @@
 # Past Exam V3 COMPLETE — 작성·검수 실행 계약 v1
 
+> **QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY ACTIVE:** S1~S3 SOURCE_FIDELITY는 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 포함한다. source text/choices freeze → layout-only build → exact parity 뒤에만 SOURCE_FIDELITY_FREEZE를 닫는다. S4 이후 silent rewrite 금지.
+
+
 적용: 2026-09-09. V2 full-page-first 추출은 유지하고 시작 calibration과
 학생용 해설·분류·시각자료 완성을 공통 pipeline-core v2에 연결한다.
 추출 성공, 소프트웨어 테스트 성공, 실제 문항 품질 PASS는 서로 다른 상태다.
@@ -204,3 +207,7 @@ evidence 없이는 closure할 수 없다. Diagnostic continuation은 downstream
 
 19 강남여고 q1/q10/q20/q21/q23~25의 결함 유형은 회귀 대상으로 사용하되,
 테스트용 reviewer FAIL 기록을 실제 시험 전수검수 완료로 보고하지 않는다.
+
+## QUESTION MICRO_LAYOUT binding
+
+S3 SOURCE_FIDELITY_FREEZE 내부 sub-gate로 `FULL_PAGE_EXACT_EXTRACTION → SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE → SOURCE_FIDELITY_FREEZE`를 실행한다. S9~S14 actual exam render에서 page/column split, problem asset size, choice wrap, auto-fit overcompression을 검수한다. source correction은 S3 reopen 후 새 SOURCE_TEXT_FREEZE부터 재결속한다.

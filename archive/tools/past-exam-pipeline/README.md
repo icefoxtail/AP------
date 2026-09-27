@@ -1,5 +1,8 @@
 # Past Exam V3 COMPLETE — current start and completion route
 
+> **QUESTION MICRO_LAYOUT v1 REQUIRED:** S1~S3에서 exact transcription → SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE를 닫고 S4 이후 source text를 보호한다. 정본: `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`.
+
+
 V2 full-page extraction remains the source transcription engine. The current
 start/completion authority is
 [`Past_Exam_V3_COMPLETE.md`](../../../docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md).
@@ -309,3 +312,7 @@ For content and choices, the full page image is the source of truth.
 - Use crops only as auxiliary zoom evidence.
 - Do not let crop failure decide content/choice PASS or FAIL.
 - `contentSource: "vision_required"` or `choicesSource: "vision_required"` means manual review is still required; downstream agents must not write dummy content.
+
+### Question layout gate before S4
+
+S4 전에 source text/choices freeze, 전 문항 layout disposition, SOURCE_TEXT_EXACT_PARITY/choices exact 100%가 필요하다. AUTO가 적정하면 manual override를 추가하지 않는다. promotion 전 exam render에서 page/column split, asset size, choice wrap, overcompression을 닫는다.

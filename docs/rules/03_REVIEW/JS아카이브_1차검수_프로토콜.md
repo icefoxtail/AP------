@@ -1,5 +1,8 @@
 [JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]
 
+> **QUESTION MICRO_LAYOUT 독립검수 HARD GATE:** `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 필독한다. 전 문항 SOURCE_TEXT_EXACT_PARITY + choices exact + 발문/수식/nested structure/problem asset/choices/page-flow를 fresh 판정한다. CREATE PASS 자기보고를 자동 신뢰하지 않는다.
+
+
 > **세부단원 운영 동기화(2026-08-22):** 신규 candidate·production은
 > `subUnitKey`, `subUnit`, `subUnitConfidence`, `subUnitClassificationDepth`를 구조 필수 필드로 검사한다.
 > 기존 파일 누락은 `legacy_exception` report로 분리하고, 분류 필드 보강으로 원문·정답·해설을 수정하지 않는다.
@@ -269,3 +272,9 @@ window.questionBank = [
 - 일부 문항만 보고 PASS라고 쓰지 마라.
 - 후반 문항을 확인하지 않았으면 PASS 금지.
 - 애매하면 PASS 금지.
+
+---
+
+## QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY
+
+전수 분모에서 source exact 100%, choices exact 100%, 축약·요약·의역 0, formula break 0, nested flattening 0, buried ask 0, known asset/choice/page-flow defect 0, 불필요 manual override 0을 확인한다. 안전한 결함은 최소 수정 후 exact parity 재검. 원문 수정 필요 시 SOURCE_FIDELITY/수정프로토콜로 분리한다.
