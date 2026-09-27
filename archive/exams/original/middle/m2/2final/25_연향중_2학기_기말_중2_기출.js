@@ -30,7 +30,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -56,7 +67,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -87,7 +109,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -117,7 +150,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -148,7 +192,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -179,7 +234,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -207,10 +273,21 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점 쪽에서 $2:1$로 나눈다.\n정석 풀이: $D$는 $BC$의 중점이다. $G'$는 $\\triangle GBC$의 무게중심이므로 중선 $GD$에서 $GG':G'D=2:1$이다. $GG'=2\\rm\\,cm$이므로 $GD=3\\rm\\,cm$이다. 또한 $G$는 $\\triangle ABC$의 무게중심이므로 $AG:GD=2:1$이다. 따라서 $AG=2\\times3=6\\rm\\,cm$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q7.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "",
+    "subUnit": "삼각형의 무게중심",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -241,7 +318,20 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -272,7 +362,18 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -303,7 +404,20 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_TRIANGLE_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -331,7 +445,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -359,7 +484,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -388,7 +524,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -416,10 +563,21 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 선분 하나는 서로 다른 두 점을 고르면 하나씩 정해진다.\n정석 풀이: $5$개의 점에서 두 점을 고르는 방법은 $\\dfrac{5\\times4}{2}=10$가지이다. 따라서 만들 수 있는 선분은 $10$개이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q14.png",
-    "subUnitKey": "M2-08-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 성질",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -447,7 +605,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -475,7 +644,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -499,11 +679,22 @@ window.questionBank = [
       "$\\dfrac9{10}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 사람이 만나려면 두 사람 모두 약속을 지켜야 하므로 여사건을 이용한다.\n정석 풀이: 두 사람이 모두 약속을 지킬 확률은 $\\dfrac34\\times\\dfrac35=\\dfrac9{20}$이다. 따라서 만나지 못할 확률은 $1-\\dfrac9{20}=\\dfrac{11}{20}$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 두 사람의 약속 이행 여부 사이의 관계가 주어져야 만나지 않을 확률을 하나로 정할 수 있다.\n주어진 정보만으로는 민아와 우빈의 약속 이행 사건이 서로 독립인지 알 수 없으므로, 만나지 않을 확률은 유일하게 결정되지 않는다.\n만약 두 사건이 서로 독립이라고 가정하면 두 사람 모두 약속을 지키지 않을 확률은 $\\dfrac14\\times\\dfrac25=\\dfrac1{10}$이고, 한 사람만 약속을 지킬 확률은 $\\dfrac34\\times\\dfrac25+\\dfrac14\\times\\dfrac35=\\dfrac9{20}$이므로 만나지 않을 확률은 $\\dfrac{11}{20}$이다. 그러나 이 독립 조건은 발문에 제시되어 있지 않다.",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -532,7 +723,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -560,7 +762,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -588,7 +801,18 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -600,7 +824,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -614,7 +838,18 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "단일 주개념 경로로 풀이되며 별도 통합패턴이 필요하지 않음",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -626,7 +861,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -637,10 +872,23 @@ window.questionBank = [
     "answer": "(1) $10\\rm\\,cm$ (2) $16\\rm\\,cm$",
     "solution": "[키포인트] 무게중심의 $2:1$ 성질과 직각삼각형의 빗변의 중점 성질을 차례로 이용한다.\n(1) $G$는 무게중심이므로 중선 $AD$를 $AG:GD=2:1$로 나눈다. 따라서 $AD=3\\times GD=3\\times\\dfrac{10}{3}=10\\rm\\,cm$이다.\n(2) $D$는 $BC$의 중점이고 $\\angle A=90^\\circ$이므로 직각삼각형의 빗변의 중점 성질에 따라 $AD=BD=CD=10\\rm\\,cm$이다. 따라서 $BC=20\\rm\\,cm$이다. 피타고라스 정리를 적용하면 $AB^2+AC^2=BC^2$이므로 $AB^2+12^2=20^2$, $AB^2=256$이다. 길이는 양수이므로 $AB=16\\rm\\,cm$이다.\n따라서 (1) $10\\rm\\,cm$, (2) $16\\rm\\,cm$이다.",
     "image": "assets/images/25_연향중_2학기_기말_중2_기출/q22.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "",
+    "subUnit": "삼각형의 무게중심",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "integrationReason": "무게중심의 2:1 비를 먼저 적용한 뒤 피타고라스 정리로 두 번째 물음을 해결하는 순차 결합",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -652,7 +900,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],
@@ -660,10 +908,21 @@ window.questionBank = [
     "content": "[서술형 3] 어떤 자격 시험에서 서웅이가 합격할 확률은 $\\dfrac67$, 지호가 합격할 확률은 $\\dfrac13$일 때, 다음을 구하시오. [6점]\n(1) 두 사람 모두 합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]\n(2) 두 사람 모두 불합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]\n(3) 적어도 한 사람은 합격할 확률을 구하고, 구하는 과정을 서술하시오. [2점]",
     "choices": [],
     "answer": "(1) $\\dfrac27$ (2) $\\dfrac2{21}$ (3) $\\dfrac{19}{21}$",
-    "solution": "[키포인트] 두 사람의 합격 여부를 독립인 사건으로 보고 곱셈법칙과 여사건을 이용한다.\n(1) 두 사람 모두 합격할 확률은 $\\dfrac67\\times\\dfrac13=\\dfrac27$이다.\n(2) 서웅이가 불합격할 확률은 $1-\\dfrac67=\\dfrac17$, 지호가 불합격할 확률은 $1-\\dfrac13=\\dfrac23$이다. 따라서 두 사람 모두 불합격할 확률은 $\\dfrac17\\times\\dfrac23=\\dfrac2{21}$이다.\n(3) 적어도 한 사람이 합격하는 사건은 두 사람 모두 불합격하는 사건의 여사건이다. 따라서 $1-\\dfrac2{21}=\\dfrac{19}{21}$이다.\n따라서 (1) $\\dfrac27$, (2) $\\dfrac2{21}$, (3) $\\dfrac{19}{21}$이다.",
+    "solution": "[키포인트] 두 사람의 합격 여부 사이의 관계가 주어져야 '서웅이만 합격', '둘 다 합격', '적어도 한 명 합격'의 확률을 하나로 정할 수 있다.\n주어진 정보만으로는 서웅이와 지호의 합격 사건이 서로 독립인지 알 수 없으므로 (1)~(3)의 확률은 유일하게 결정되지 않는다.\n만약 두 사건이 서로 독립이라고 가정하면 (1) $\\dfrac23\\times\\dfrac37=\\dfrac27$, (2) $\\dfrac23\\times\\dfrac17=\\dfrac2{21}$, (3) $1-\\dfrac13\\times\\dfrac67=\\dfrac{19}{21}$이다. 그러나 이 독립 조건은 발문에 제시되어 있지 않다.",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2015",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
