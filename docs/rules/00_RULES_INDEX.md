@@ -17,6 +17,8 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 **CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
 
+**CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 CURRENT VISUAL ROUTER를 처음 제작부터 적용한다. `VISUAL_REQUIRED`와 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL`은 CREATE에서 KEEP/ADD/REBUILD를 끝내며, known visual repair를 R1/R2E로 의도적으로 미루지 않는다. CREATE 종료 시 visual preflight PASS, required visual missing 0, known visual repair pending 0, 지원 가능한 visual math parity pending 0을 요구한다. 예약 GPT가 render를 실행하지 않는 정책이면 `NOT_RUN_CODEX_HANDOFF`만 허용하며 render PASS를 허위 선언하지 않는다.
+
 **R2E HOLD-SAFE HARD RULE:** R2E가 full evidence와 허용 repair를 소진해도 안전한 판정이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 taxonomy/Meta/visual FINAL을 금지한다. R1/R2E에서 수정 가능한 solution·Meta·visual defect는 `수정프로토콜.md`로 직접 repair하고, visual 생성·재생성은 CURRENT VISUAL ROUTER를 반드시 따른다.
 
 
@@ -85,7 +87,7 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 ### CURRENT VISUAL ROUTER — SVG / graph / geometry / solutionImage
 
-SVG·graph·geometry·`solutionImage`를 생성·수정·재생성·부착·검수하는 모든 작업은 **`.codex/skills/apmath-visual-upgrade/SKILL.md`를 router로 사용**한다. visual 작업 전에 `node tools/skills/verify-skills.mjs`를 실행하고, MANIFEST-covered 필수 문서의 path/version/bytes/SHA와 current working bytes를 일치시킨다.
+CREATE/R1/R2E를 포함해 SVG·graph·geometry·`solutionImage`를 생성·수정·재생성·부착·검수하는 모든 작업은 **`.codex/skills/apmath-visual-upgrade/SKILL.md`를 router로 사용**한다. visual 작업 전에 `node tools/skills/verify-skills.mjs`를 실행하고, MANIFEST-covered 필수 문서의 path/version/bytes/SHA와 current working bytes를 일치시킨다.
 
 현재 실행 경로:
 ```text
