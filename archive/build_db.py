@@ -1856,6 +1856,11 @@ def run_archive_registration_sync():
         repo_root,
     )
     run_pipeline_command(
+        "기본 L1/L2 부모 연결 갱신",
+        ["node", archive_dir / "tools" / "build-basic-scope-parent-links.mjs"],
+        repo_root,
+    )
+    run_pipeline_command(
         "Archive 2.0 crosswalk inventory 갱신",
         ["node", archive_dir / "tools" / "build-archive2-crosswalk-inventory.mjs"],
         repo_root,

@@ -14,7 +14,8 @@ test('actual middle1 default shows the eight canonical L1 groups and nineteen L2
   assert.doesNotMatch(detail.slice(0, detail.indexOf('>')), /\bopen\b/);
   for (const label of ['다면체의 옆면의 모양', '원뿔, 원뿔대의 전개도의 성질', '구의 부피', '히스토그램의 직사각형의 넓이']) {
     assert.ok(!main.includes(label), label);
-    assert.ok(detail.includes(label), label);
+    const source = catalog.records.find(r => r.L1 === label);
+    assert.ok(scopes.some(s => s.scopeQuestionUids.includes(source.questionUid)), label + ' source remains selectable');
   }
   assert.ok(!main.includes('도형의 방정식'));
   const sourcePaths = new Set(catalog.records.filter(r => core.matches(r, { grade: '중1' }) && r.L1 && r.L2).map(r => core.pathKey(r, 4)));
@@ -32,16 +33,16 @@ test('all and continuous range choose only canonical scopes while detailed scope
   app.controls['scope-end'] = { value: String(scopes.length - 1) };
   await app.click({ action: 'scope-range' });
   assert.equal(app.state.scopes.length, 19);
-  const target = scopes.find(s => s.L1 === '구의 부피');
+  const target = scopes.find(s => !s.basicScope && s.eligibleCount > 0);
   const groups = [...new Set(scopes.map(s => s.L1))];
   await app.click({ action: 'scope-clear' });
   await app.click({ action: 'scope-group', groupIndex: String(groups.indexOf(target.L1)), scopeKind: 'detail' });
   assert.ok(app.state.scopes.includes(target.key));
   assert.ok(app.renderScopes().includes('class="compose-detail source-scope-detail" open'));
-  const req = { filters: { grade: '중1', primaryPaths: app.selectedScopePaths() }, rows: [{ id: 'detail', paths: target.paths, count: 1 }], seed: 'scope-display' };
+  const req = { filters: { grade: '중1', primaryPaths: app.selectedScopePaths(), scopeQuestionUids: app.selectedScopeQuestionUids() }, rows: [{ id: 'detail', paths: target.paths, scopeQuestionUids: target.scopeQuestionUids, count: 1 }], seed: 'scope-display' };
   const selected = core.selectBlueprint(catalog.records, req);
   assert.equal(selected.ok, true);
-  assert.equal(selected.selected[0].L1, '구의 부피');
+  assert.ok(target.scopeQuestionUids.includes(selected.selected[0].questionUid));
   assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
 });
 
@@ -66,7 +67,8 @@ test('all ten live runtime packs preserve the basic parent authority before addi
   const [main, detail] = app.renderScopes().split('<details class="compose-detail source-scope-detail"');
   for (const label of ['신뢰구간', '확률변수와 기댓값', '순열과 조합 핵심 개념']) {
     assert.ok(!main.includes(label), label);
-    assert.ok(detail.includes(label), label);
+    const original = data.records.find(r => core.matches(r, app.state.filters) && r.L2 === label);
+    assert.ok(app.scopeOptions().some(s => s.scopeQuestionUids.includes(original.questionUid)), label + ' source remains selectable under a basic parent or detail');
   }
 });
 

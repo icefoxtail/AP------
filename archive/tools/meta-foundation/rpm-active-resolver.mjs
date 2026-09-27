@@ -597,7 +597,10 @@ export function validateRuntimeMetaParity({ questionUid, sourceFingerprint, reso
   if (resolverSourceFingerprint !== sourceFingerprint) errors.push('RUNTIME_META_SOURCE_FINGERPRINT_MISMATCH');
   if (candidateMeta?.archiveSourceFingerprint && runtimeRecord?.sourceFingerprint !== candidateMeta.archiveSourceFingerprint) errors.push('RUNTIME_META_ARCHIVE_SOURCE_FINGERPRINT_MISMATCH');
   for (const field of ['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility']) {
-    if (!equal(runtimeRecord?.[field], candidateMeta?.[field])) errors.push(`RUNTIME_META_FIELD_PARITY_FAIL:${field}`);
+    // NO_SEPARATE_L4 is stored as an empty string in R2E metadata and as null in runtime rows.
+    const runtimeValue = field === 'templateKey' && !runtimeRecord?.[field] ? null : runtimeRecord?.[field];
+    const candidateValue = field === 'templateKey' && !candidateMeta?.[field] ? null : candidateMeta?.[field];
+    if (!equal(runtimeValue, candidateValue)) errors.push('RUNTIME_META_FIELD_PARITY_FAIL:' + field);
   }
   if (runtimeRecord?.resolverEvidenceSha !== resolverEvidence?.evidenceSha) errors.push('RUNTIME_META_RESOLVER_EVIDENCE_SHA_MISMATCH');
   if (runtimeRecord?.difficultyEvidenceSha !== difficultyEvidence?.evidenceSha) errors.push('RUNTIME_META_DIFFICULTY_EVIDENCE_SHA_MISMATCH');

@@ -11,7 +11,7 @@ function workspace(filters = { grade: '중1' }, data = catalog) {
   const listeners = {}, controls = {};
   const window = { Archive2Core: core };
   vm.runInNewContext(workspaceSource.slice(0, workspaceSource.indexOf('  document.addEventListener("submit"')) +
-    '\nrender = () => {}; scheduleSave = () => {}; window.scopeTest = { state, scopeOptions, renderScopes, selectedScopePaths, taxonomyRowsForFilters };\n})();', {
+    '\nrender = () => {}; scheduleSave = () => {}; window.scopeTest = { state, scopeOptions, renderScopes, selectedScopePaths, selectedScopeQuestionUids, taxonomyRowsForFilters, planRows, request, pool };\n})();', {
     window, crypto,
     document: { addEventListener: (name, fn) => listeners[name] = fn, getElementById: id => controls[id] },
   });
