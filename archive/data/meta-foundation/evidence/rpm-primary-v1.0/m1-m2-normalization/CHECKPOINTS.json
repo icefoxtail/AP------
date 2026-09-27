@@ -1,5 +1,8 @@
 {
   "schemaVersion": "RPM_PRIMARY_M1_M2_NORMALIZATION_CHECKPOINTS_v1",
+  "baseMainShaAtBaseline": "2a425e2a970c00c20bba87f3eb9301b4359c106d",
+  "latestOriginMainObservedBeforePush": "1baada0ab3ae6f13528edc6a6feb12ff8848479d",
+  "branch": "work/meta-rpm-m1-m2-normalization",
   "checkpoints": [
     {
       "name": "AUDIT_BASELINE",
@@ -12,13 +15,13 @@
         "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/INVENTORY.json"
       ],
       "baselineSnapshotSha256": "b55b35b84db2cb06ecf19c9f7306ced7007d477ebb607e14ae85eabb72fd64cc",
-      "commitSha": "b1390e04adf3b23d98d60de4f09865d798a40b33"
+      "commitShaAtBaseline": "b1390e04adf3b23d98d60de4f09865d798a40b33"
     },
     {
       "name": "RPM_OMISSION_REPAIR",
       "stage": "RPM_COMPLETENESS_REPAIR_FROZEN",
       "rows": 468,
-      "coverage": "8/8 views; 468/468 master L4; duplicate semantic tuples 0; 2015 RHS/RHA repaired 2/2; exact existing binding active",
+      "coverage": "8/8 views; 468/468 master L4; duplicate semantic tuples 0; 2015 RHS/RHA repaired 2/2; exact existing binding ACTIVE",
       "artifacts": [
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
@@ -27,11 +30,43 @@
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/STATS.json",
         "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/MANIFEST.json",
         "docs/rules/MANIFEST.md",
-        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json",
         "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rhs-rha-curriculum-evidence.json"
       ],
       "masterSha256": "5783a2fec07af03463780b1d594d8b768424f4521b790b6341d4bd79d69890a1",
+      "commitShaAtBaseline": "84d8951b4d935a4fc549269bc426c0a14ed6e599"
+    },
+    {
+      "name": "CROSSWALK_SEMANTIC_NORMALIZATION",
+      "stage": "GLOBAL_ACTIVE_SEMANTIC_AUDIT_AND_NORMALIZATION_PASS",
+      "rows": 468,
+      "coverage": "middle1 232/232 and middle2 236/236; missing/orphan/duplicate tuples 0; binding-only rows 106; final intentional RPM_ONLY rows 265; active parent/binding/family/direct integrity errors 0",
+      "artifacts": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/rpm-completeness-audit.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/crosswalk-semantic-audit.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/AUDIT_SUMMARY.json",
+        "archive/data/meta-foundation/evidence/rpm-primary-v1.0/m1-m2-normalization/migration-gap-reassessment.json"
+      ],
+      "changes": { "KEEP": 379, "directToFamily": 6, "directOrFamilyToRpmOnly": 77, "ptTplRemap": 4, "bindingStatusRepaired": 0, "newRpmPaths": 2 },
+      "commitSha": "PENDING"
+    },
+    {
+      "name": "RESOLVER_COMPILED_RUNTIME_REGRESSION",
+      "stage": "VALIDATION_PASS",
+      "coverage": "RPM package manifest 38/38; active resolver 16/16; M1/M2 audit and resolver regression 8/8; 468/468 deterministic routes; RHS/RHA actual-question and runtime projection checks PASS",
+      "artifacts": [
+        "archive/tools/meta-foundation/audit-rpm-primary-m1-m2.mjs",
+        "archive/tools/meta-foundation/audit-rpm-primary-m1-m2-migration-gaps.mjs",
+        "archive/tools/meta-foundation/rpm-primary-m1-m2-crosswalk.test.mjs"
+      ],
       "commitSha": "PENDING"
     }
-  ]
+  ],
+  "remaining": [
+    "REBASE_ON_LATEST_ORIGIN_MAIN_IF_UNRELATED_ADVANCE_REMAINS",
+    "PUSH_REMOTE_BRANCH",
+    "NOTION_CLOSEOUT"
+  ],
+  "mainMerge": "NOT_REQUESTED"
 }
