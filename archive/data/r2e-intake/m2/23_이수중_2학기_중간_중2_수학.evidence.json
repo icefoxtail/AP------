@@ -1,338 +1,306 @@
 {
-  "schema": "JS_ARCHIVE_R2E_INTAKE_EVIDENCE_V1",
-  "examFile": "23_이수중_2학기_중간_중2_수학.js",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_V2",
   "examUid": "23_이수중_2학기_중간_중2_수학",
+  "examFile": "23_이수중_2학기_중간_중2_수학.js",
   "grade": "M2",
-  "lane": "D",
-  "stage": "CREATE",
-  "sourcePath": "archive/exams/original/middle/m2/2mid/23_이수중_2학기_중간_중2_수학.js",
-  "sourceBlobSha": "35324bdbb4365bd6b19e92b4f4956a7d85fec022",
-  "totalQuestions": 24,
+  "lane": "C",
+  "stage": "R1",
+  "denominator": 24,
   "sourceIdentity": {
-    "status": "PASS",
-    "checkedQuestions": 24,
-    "sourceAnswerIdentityHolds": 0
+    "mainSourceBlobSha": "35324bdbb4365bd6b19e92b4f4956a7d85fec022",
+    "intakeInputJsBlobSha": "e2feb27506d0be45ec7a00d41280337b8ec240f2",
+    "sourceAnswerIdentity": "PASS_24_OF_24"
   },
-  "solutionSummary": {
+  "solution": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0,
+    "smallBoardPass": 24
+  },
+  "svg": {
+    "examSvgDenominator": 6,
+    "KEEP": 5,
+    "REPAIR": 1,
+    "HOLD": 0,
+    "repairFiles": [
+      "archive/assets/images/23_이수중_2학기_중간_중2_수학/q21-solution.svg"
+    ],
+    "repairReason": "q21 source parity: upper point is I with y=130°, lower point is O with x=160°; existing solution SVG had the center labels/angle labels reversed."
+  },
+  "l1l2": {
     "KEEP": 23,
     "REPAIR": 1,
-    "TRUE_HOLD": 0,
-    "repairQuestions": [
-      12
-    ]
-  },
-  "svgSummary": {
-    "ADD": 6,
-    "REPAIR": 0,
-    "addedQuestions": [
-      12,
-      13,
-      21,
-      22,
-      23,
-      24
-    ]
-  },
-  "l2RepairSummary": {
-    "REPAIR": 2,
-    "questions": [
-      19,
-      22
-    ],
-    "unmaterializedGapQuestions": [
-      20
+    "HOLD": 0,
+    "repairs": [
+      {
+        "questionNo": 20,
+        "before": {
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "subUnit": "평행선 사이의 선분의 길이의 비"
+        },
+        "after": {
+          "subUnitKey": "",
+          "subUnit": "삼각형의 무게중심"
+        },
+        "reason": "문항의 결정 개념은 무게중심이며 최신 RPM M2-RPM-097은 현재 exact L2 binding 미물리화 상태라 잘못된 평행선 L2를 제거하고 migration gap으로 보존."
+      }
     ]
   },
   "metaDispositionSummary": {
     "EXISTING_REUSE": 21,
-    "PROPOSED_NEW_L3": 0,
-    "PROPOSED_NEW_L4": 0,
-    "RPM_PRIMARY_MIGRATION_GAP": 3,
-    "TRUE_HOLD": 0
+    "FAMILY_REUSE": 2,
+    "RPM_PRIMARY_MIGRATION_GAP": 1
+  },
+  "crossConcept": {
+    "ACTIVE_REUSE": 2,
+    "questions": [
+      {
+        "questionNo": 23,
+        "keys": [
+          "CC_ANGLE_BISECTOR",
+          "CC_TRIANGLE_AREA"
+        ]
+      }
+    ]
+  },
+  "difficulty": {
+    "freshIndependent": 24,
+    "hold": 0
+  },
+  "integrity": {
+    "questionCount": 24,
+    "answerIdentityPass": 24,
+    "solutionPass": 24,
+    "svgSemanticParityPass": 6,
+    "runtimeStringBasic": "PASS",
+    "resolverBackedMetaPreflight": "PASS",
+    "r2eMetaInputSchema": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1"
+  },
+  "authority": {
+    "mainReadSha": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
+    "intakeReadSha": "e39bdca34a24fcc4a82fee0f0af886126f772c26",
+    "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+    "middle2CrosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "registryIndexGitBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "metaSidecarPath": "archive/data/r2e-intake/m2/23_이수중_2학기_중간_중2_수학.meta.json",
+    "metaSidecarSha256": "6983da7a68894ff8fa254a33d78bebc19d8c00318adbc7637436e75ee2039414"
   },
   "perQuestion": [
     {
       "questionNo": 1,
-      "primaryMethod": "이등변 밑각·외각",
-      "decisiveStep": "120→60→60",
-      "rpmPrimary": "M2-RPM-060",
+      "questionUid": "qid_v1_48699887eeb8beecdc4efaed4c1641d2b568d63481c1ca6023ca225626b730f1",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:db436c3cbe4fe27a6aea5a45d0f7a0c4c216b2cf81998cb7ca91517408d09f40",
+      "difficultyEvidenceSha": "sha256:d7e3a4fb5a37e79f7f035667b8e121f9aac07f344b20e6d88c4e5da53c125b5a",
+      "relationalEvidenceSha": "sha256:82011b7a0cc28fe0b2bc19b9e0a592c589020981c635e80b221b25e87d0a7281",
+      "validatorRunSha": "sha256:f07389665f9edc555a3392fe42cf01e872c7db54f1ef754e9109b7cfd78ec4f5"
     },
     {
       "questionNo": 2,
-      "primaryMethod": "같은 각의 대변",
-      "decisiveStep": "B=C=50→AB=AC",
-      "rpmPrimary": "M2-RPM-060",
+      "questionUid": "qid_v1_f79602b4b00d7a9d9501abe8027cea374d5167488219a5062d963f3d76c12911",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
-      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:01cf2ecc4ddeeb0692ff0d59406568b62b544d0d6464fa109f32cdbef5c3905e",
+      "difficultyEvidenceSha": "sha256:f837bd2cc57cdd034b9caf6a7925d30f757b74c1a33bac718b537f3392682b70",
+      "relationalEvidenceSha": "sha256:23c92300202edd12af6c6068dec8efb0f58b6807b9661516bbfcad1b4405150f",
+      "validatorRunSha": "sha256:d708b7102636a56dc7d6aa764e4865d4b50170d4d9c6e3d3ed6fd4ad164362c6"
     },
     {
       "questionNo": 3,
-      "primaryMethod": "RHS·RHA 조건 대조",
-      "decisiveStep": "①⑤ RHS·②④ RHA",
-      "rpmPrimary": "M2-RPM-178",
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": null,
-      "difficultyBucket": 2,
-      "searchedRpmPrimaryCandidates": [
-        "M2-RPM-178",
-        "M2-RPM-179"
-      ]
+      "questionUid": "qid_v1_2617c93580d88efbf74f9b780f119735d761afb3fbb1f32c9cbdff6ba552574e",
+      "disposition": "EXISTING_REUSE",
+      "resolverEvidenceSha": "sha256:d3b0b1babbcdcaa42209b95f8a080205c16b1eeaa00e4265625a13dca7585e37",
+      "difficultyEvidenceSha": "sha256:d436efe4e3ec0d471a05b97e16333688ebe3f6498e2a650cbc90046719524a1e",
+      "relationalEvidenceSha": "sha256:ac4379114e8f6018a24f5e203c841f169f28c49981f6038e57125c9471bd4cb6",
+      "validatorRunSha": "sha256:dacaf2dcfc317cf1865f32d964ae1c8b8f4884c79d67edcfecc226bba574ad0e"
     },
     {
       "questionNo": 4,
-      "primaryMethod": "RHS 성립 확인",
-      "decisiveStep": "직선각→이등변→RHA",
-      "rpmPrimary": "M2-RPM-178",
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
-      "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
-      "difficultyBucket": 3,
-      "searchedRpmPrimaryCandidates": [
-        "M2-RPM-178",
-        "M2-RPM-179"
-      ]
+      "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
+      "disposition": "EXISTING_REUSE",
+      "resolverEvidenceSha": "sha256:47b50a708274d290c7381d787940228b6f4e5a1b3cfa869c35be352d72b16193",
+      "difficultyEvidenceSha": "sha256:9cd9ec0afbf2ba04187b0e3832b19f9c208cb22d8c9e6998e4c1d7b66f886382",
+      "relationalEvidenceSha": "sha256:ccf16bd833b18a1fe58d0024fe869d779cd1e83d451fdfc658a159a52a625f13",
+      "validatorRunSha": "sha256:01e811b57bc8ed381e8d7fddd246dd285e8226657686eac911870e1c72a3b052"
     },
     {
       "questionNo": 5,
-      "primaryMethod": "내심 각 관계",
-      "decisiveStep": "114=90+A/2",
-      "rpmPrimary": "M2-RPM-066",
+      "questionUid": "qid_v1_029e922c45313570290b440c270cb1a0a2b5f53544b6db7a6e0f1fd326df983c",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:986228dba0fdd07af65e0e10bf2733fd45081c4c8da84e0b0c397475f56d55fa",
+      "difficultyEvidenceSha": "sha256:0f7b7bac17458a0dcb203c825d95b3c1621e90337ca0ff0b35680f91404e33e2",
+      "relationalEvidenceSha": "sha256:8f7a4fa77ad20db9c1610e9052a8d233c6182cecb755cfd5211faf20b636593c",
+      "validatorRunSha": "sha256:803c8459958de9421f89d3905bbbb6f97cca185090c04175d41a6e805ec6a8f8"
     },
     {
       "questionNo": 6,
-      "primaryMethod": "외심 등거리 각 추적",
-      "decisiveStep": "OA=OB=OC→x=10",
-      "rpmPrimary": "M2-RPM-065",
+      "questionUid": "qid_v1_122ae06f3b6f931f59e7bad4e5278e96c4c99955421ec31e544ccbf15ad4b7b4",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
-      "difficultyBucket": 3
+      "resolverEvidenceSha": "sha256:a81610204ccaadbbb766be9ef003a5961f9978a4ae857aa69a37d49c3166542b",
+      "difficultyEvidenceSha": "sha256:1ac733ce4d867167618096cd2a6a971671101d744d016c14a19942a2a94c9dab",
+      "relationalEvidenceSha": "sha256:0c2781663ef0269bdee2d4dfa28f2379ead6652cf8ae9384dd77eb82de72861b",
+      "validatorRunSha": "sha256:5b0269c53c1937ee6690470341f5c97fab7d0eb7c24cce47b078b7228e27cf5b"
     },
     {
       "questionNo": 7,
-      "primaryMethod": "내접원 접선 길이",
-      "decisiveStep": "접선길이 같음→BE=7",
-      "rpmPrimary": "M2-RPM-068",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 3
+      "questionUid": "qid_v1_72e49a2a2750e5d84eb7fafebe43c1fc6f7a06148692d51525383206e8de0901",
+      "disposition": "FAMILY_REUSE",
+      "resolverEvidenceSha": "sha256:33546daae599fbc5b8f2b6e543d5476fb088e7a49c90fe141eaf1358f9c22c51",
+      "difficultyEvidenceSha": "sha256:20d74f7201af031500d1b77a34943fea605c03a734981b9eca01c3f51f5d4aa9",
+      "relationalEvidenceSha": "sha256:09776f74676faaebd5d9b97288b31eead87495a133507d4114cb6ced365e536f",
+      "validatorRunSha": "sha256:683138e285f0b359e9bce7ab5e3c3d8ffc3e222c85dabcda819105172a38e9e0"
     },
     {
       "questionNo": 8,
-      "primaryMethod": "평행사변형 대각선",
-      "decisiveStep": "OC=4,OD=6,CD=5",
-      "rpmPrimary": "M2-RPM-071",
+      "questionUid": "qid_v1_73d597dd1f8762886bf19b4dd9b725682b5eda5253fffac149ef7d0aecba94d2",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:09f310e9bd27de5613885e9da8ac3657743b26d3f3ef003e6b3aff19066e7f80",
+      "difficultyEvidenceSha": "sha256:77fddeea951cf594d52727992c2592a3132c26b6bc7141ef2f65d75b1bdc56cf",
+      "relationalEvidenceSha": "sha256:1d75b6a18f3531c64d407e6d8cd7dc91dd9bc99304cc35f6b67c6c557c83fafb",
+      "validatorRunSha": "sha256:b24fbee9464e1fc6db78cf13786f49958431e53c8177638c1170a558d6ffec1c"
     },
     {
       "questionNo": 9,
-      "primaryMethod": "평행사변형 변·각",
-      "decisiveStep": "x=65,y=5",
-      "rpmPrimary": "M2-RPM-070",
+      "questionUid": "qid_v1_97f145491b0da158f9974de4783f0eb9e51150cdf357c75dd9ac8d0fb4ab11e5",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:65719479878979a72e11abfba35d37f5bb80209040b86b56313d54a45afd8373",
+      "difficultyEvidenceSha": "sha256:8e0012103a346e4dcd5f55177cd6da0261e81b63c227ab9c996f45d013357abf",
+      "relationalEvidenceSha": "sha256:e459549a4b488a01cd85b17f8e4472587a6097de963b416c2a224c33b3e371fa",
+      "validatorRunSha": "sha256:74274196c642d5a4567567940334aa66cca4c016242789dd76360862af14ff77"
     },
     {
       "questionNo": 10,
-      "primaryMethod": "평행사변형 판정",
-      "decisiveStep": "①만 충분조건 아님",
-      "rpmPrimary": "M2-RPM-072",
+      "questionUid": "qid_v1_ef2732975bb8c7e04e71a8c8cc99735d6fff7980c3aeda10f4d1217cdec1d039",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_CRITERIA",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:2c1c7bb8ba5989376872c0774f977e8bb94cb545500eb558c613c9f38eef6d5e",
+      "difficultyEvidenceSha": "sha256:707e190d99654b52dcec90ee01f79f8724e90bf7fb18055603ed70cd1dc787cb",
+      "relationalEvidenceSha": "sha256:894900c2b4feb86e03378724bafbd55d84b0bb531fd887eacd47a1149ee23bf7",
+      "validatorRunSha": "sha256:8edefb865021bb660cc33d1a9bfa53e7f8c1f28863445a4be8ca83eceb04a964"
     },
     {
       "questionNo": 11,
-      "primaryMethod": "마름모 대각선",
-      "decisiveStep": "x=8,y=30",
-      "rpmPrimary": "M2-RPM-077",
+      "questionUid": "qid_v1_d4edb719f8af918f15ffc77a3eec6158c856bb18dba548ad89d3e8de9b43bf9b",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:c31a5652f7b3d18c5791c87eb6a32a2a7d2f38cf1261b9cc3c7b83843519153e",
+      "difficultyEvidenceSha": "sha256:0116210e0c567050cd2af3ba5efeefc58fcfd1828c559e5c8861fc0859857c73",
+      "relationalEvidenceSha": "sha256:2b2abf64511ab6006d1177dcc47806319ec7bff5842e06f97d415b90726bcff3",
+      "validatorRunSha": "sha256:e8d5d0a09e1a9fa0b561fea27ac16b53be85864151798af3f7cd1b476e546b97"
     },
     {
       "questionNo": 12,
-      "primaryMethod": "직사각형 대각선",
-      "decisiveStep": "OB=OC→DBC=42→BDC=48",
-      "rpmPrimary": "M2-RPM-077",
+      "questionUid": "qid_v1_d73f321d3488f5b6c220bd5cfc4b742cef64f34861434d3447e3c22a24fd6a09",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:5b66f3c910e68c496ee91039cce9ea7cf5cff862abee8500ccfd17dc2a5f9261",
+      "difficultyEvidenceSha": "sha256:d9a488c2db44d4eeadd14a3739e2586e6fa6f0b612ad9d7ea1ff2bfa7bb2b32d",
+      "relationalEvidenceSha": "sha256:27cddf5ca4efbb3185ee13fbb322a44472d94fbc9c185995daed60ed10a188e2",
+      "validatorRunSha": "sha256:7a196dc504cc25d423970862f6918310a84e9e85c9af8fd8529d7b79bac8abe9"
     },
     {
       "questionNo": 13,
-      "primaryMethod": "등변사다리꼴 대칭",
-      "decisiveStep": "BD=AC→y=4, OB=OC→x=44",
-      "rpmPrimary": "M2-RPM-078",
+      "questionUid": "qid_v1_c23cd794995f2092597e22f1af7b0f35423e538d15e1582f803e5969020177a3",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 3
+      "resolverEvidenceSha": "sha256:37368f3c34c2f7aec2a149f3670a7b58b8a4071baff65ab53a6a62368994592f",
+      "difficultyEvidenceSha": "sha256:a7a2f3221621b966ca54e0efed0c239a0c72dda964408086faad085aa8452738",
+      "relationalEvidenceSha": "sha256:92e299c482506a8810ffb005e38bf314eef3b7d42f804b20f04662b5809a4b52",
+      "validatorRunSha": "sha256:452adb032dbd0643c47e927ad73667e146fc854428104b31d7e2a823a25ca352"
     },
     {
       "questionNo": 14,
-      "primaryMethod": "세 평행선 선분비",
-      "decisiveStep": "x:(10-x)=5:7",
-      "rpmPrimary": "M2-RPM-091",
+      "questionUid": "qid_v1_cabeb01d604c16c39e86b56cb545700147864caafc640dfef6d4b2782d418f0a",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:34152ec02ed1725d4be055ad1eb19abc47f160d49d7073a65ddb098ff0328dc0",
+      "difficultyEvidenceSha": "sha256:cf1eeace3b34f834a589422d0c417316d724ccf739d6adf90003b3da5304c9f2",
+      "relationalEvidenceSha": "sha256:eb2fce6b1d6dc64e3ac8b346862ed3a3bcdab3477dd26b200930fe2b6260e972",
+      "validatorRunSha": "sha256:1c11ef934d2974e60ab43c32def171c1b309a31abfac49218854b2069b3dc41f"
     },
     {
       "questionNo": 15,
-      "primaryMethod": "닮은 도형 대응관계",
-      "decisiveStep": "대응각 비 1:1",
-      "rpmPrimary": "M2-RPM-083",
+      "questionUid": "qid_v1_2dbe074968a39a72d85171ebf0ea5ab7438e801d2f2973b29974636e94d37a36",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:84899ad1dffcce32f349ce6caf903b4880d66f185efb142dd9c3d46086abde28",
+      "difficultyEvidenceSha": "sha256:b8aecee79a17c8c771340354661ac427b077182106adc926424c6378a59191d2",
+      "relationalEvidenceSha": "sha256:e64d4c2f4c9be8e3d8b87a331870a43ce81781c43b000116ad47cb3fc99804c7",
+      "validatorRunSha": "sha256:e8c14efe2664f8d0292b9ea8ade6ad6ae3e58e2b5a17bb7e8dc8c2e862f9eb44"
     },
     {
       "questionNo": 16,
-      "primaryMethod": "닮은 입체 겉넓이비",
-      "decisiveStep": "9:16→48",
-      "rpmPrimary": "M2-RPM-088",
+      "questionUid": "qid_v1_d31a0ac582f6caf524088510149a1a99cb521778936702dd9f903793769d2dc2",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "difficultyBucket": 1
+      "resolverEvidenceSha": "sha256:e56d9f564a5fb00d1150ca86464fbef76dbafbb97049165231a53dcd267167f1",
+      "difficultyEvidenceSha": "sha256:522e3b3bceae83d5963e76aea23112244fcc30e8953dc7bbc6e1217f2ba0354f",
+      "relationalEvidenceSha": "sha256:1f069fb7cba46eaac161b68dc3428fcf0ee2c202665c76149c79dd26734e3c4b",
+      "validatorRunSha": "sha256:68cdfeeac7571acf0ca0e150964372e95f8aa628c6924012449353da7d4a3ed5"
     },
     {
       "questionNo": 17,
-      "primaryMethod": "닮은 입체 넓이·부피",
-      "decisiveStep": "2:1→4:1→240",
-      "rpmPrimary": "M2-RPM-088",
+      "questionUid": "qid_v1_ad78c39cb384b8f7c42183424b8cf37172d3c0577ed584c52b42c50bee1ece10",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_SIMILAR_FIGURES",
-      "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:ad13c7d92bf2c058d9787e2def97f99af313f6c55a65915f3ccebf6b588d2938",
+      "difficultyEvidenceSha": "sha256:11dc44f984f18d85a37624bfe4e9ef5b4a07d89755b63ef38e76d7663ad4c929",
+      "relationalEvidenceSha": "sha256:9102ff272db6c8108175fd07c46ee68e580af0b566141b757e5b30270deebdc0",
+      "validatorRunSha": "sha256:95b6cd6d45f1022fe976cfd2623c6667099c6e36ae8fd85dc794ae55178799cc"
     },
     {
       "questionNo": 18,
-      "primaryMethod": "SAS 닮음 길이",
-      "decisiveStep": "SAS→1:2→14",
-      "rpmPrimary": "M2-RPM-087",
+      "questionUid": "qid_v1_149693b41bb7c7d07f61089bf7e98ff1b5505ac01e2164e1f5b9cae121172453",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-      "difficultyBucket": 3
+      "resolverEvidenceSha": "sha256:93e24692e5d15f02633ce3329bd0bc1fd49eed676d6e49b60197d928584d040d",
+      "difficultyEvidenceSha": "sha256:f1d979fc17929dfb8b1d98b99ef47889c41d1cd457b1e4603a3f8d8f033f33c6",
+      "relationalEvidenceSha": "sha256:9cd5ca7ce0859dd3243609c8390ef58203db8a4af5bb44cf6e8985887ec1369c",
+      "validatorRunSha": "sha256:eab76b623887204072441704d5c137526a732013079666bd786561e3d150e200"
     },
     {
       "questionNo": 19,
-      "primaryMethod": "평행선 닮음 선분비",
-      "decisiveStep": "DE∥BC→2:3→18",
-      "rpmPrimary": "M2-RPM-094",
+      "questionUid": "qid_v1_2e129f6257b3e65287cd624222c6ef1b54dbdd4e91b3b1f85363ff4165de1804",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
-      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
-      "difficultyBucket": 2
+      "resolverEvidenceSha": "sha256:9c47ea9f85018b1ddf8aee329b0f36d17cb368db7d558e4b743d7c9157230957",
+      "difficultyEvidenceSha": "sha256:d39edf07c74305e2da5511372be40be7343893ab3ecdf7de4df1dfad8e38fd25",
+      "relationalEvidenceSha": "sha256:9af9d029a9e1e77b2f50679fcee339f99af13e076c45b3d39d770a76b28a217b",
+      "validatorRunSha": "sha256:6776ec478b67bd81bf4d8a6925a944def514c38cfef5ad8cb8111f2b08581518"
     },
     {
       "questionNo": 20,
-      "primaryMethod": "무게중심 성질",
-      "decisiveStep": "2:1·6등분 성질 판정",
-      "rpmPrimary": "M2-RPM-095",
+      "questionUid": "qid_v1_01b63ab1f20fee132af096170dcf8e8f4d99023cfa56b2e8b94c225f8240c748",
       "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "problemTypeKey": "PT_COORD_CENTROID",
-      "templateKey": null,
-      "difficultyBucket": 2,
-      "l2Status": "RPM_PRIMARY_HAS_NO_CURRENT_M2_L2_BINDING"
+      "resolverEvidenceSha": "sha256:c61d30d0ca685e5ea661bc8f68e68b22b3ca207e7c35a97f56af1efb3a382e90",
+      "difficultyEvidenceSha": "sha256:01bd3a526f778acb1d804b17122b8456f548f6c6296a316373d0d66063899bf9",
+      "relationalEvidenceSha": "sha256:ab5d07964476299b4becd093353c28e2d49efc81d3b6fbdf32cd2022566cc267",
+      "validatorRunSha": "sha256:3bf268fa963d77119fbe7f177c0f73b91cb12d835dc325403139f46d69751bae"
     },
     {
       "questionNo": 21,
-      "primaryMethod": "외심·내심 복합",
-      "decisiveStep": "x=160,y=130",
-      "rpmPrimary": "M2-RPM-069",
-      "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_CENTERS",
-      "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
-      "difficultyBucket": 3
+      "questionUid": "qid_v1_8990c9c9fa76871210a4690b9e27e1f43bab743072b3235f224d0b2d20d5da58",
+      "disposition": "FAMILY_REUSE",
+      "resolverEvidenceSha": "sha256:ca4c9c8a5aac519d599ee8e4d86c7c7a3ad9e121386271d38254c7de7209623c",
+      "difficultyEvidenceSha": "sha256:1694562b2dcc47c64aaab482010e487837b31b16723665483b43c47ee943ae31",
+      "relationalEvidenceSha": "sha256:02ac45a0bd97cdce195adf46f699a6a33d87fd8d54effd705bbc44eb0fbd165e",
+      "validatorRunSha": "sha256:543e835870e8b9d007a4bed901cf60fab2e12d390842e20abd4ff5a578549279"
     },
     {
       "questionNo": 22,
-      "primaryMethod": "정사각형 대각선·합동",
-      "decisiveStep": "SAS→20→65",
-      "rpmPrimary": "M2-RPM-077",
+      "questionUid": "qid_v1_296d10458b92438351df35ee9f31908c44448145b806b9c9f7bd2f3cc8fb4abc",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
-      "difficultyBucket": 4
+      "resolverEvidenceSha": "sha256:6a14165d556beec48d87ad46b0d2f4e74a9f11b9a00941263e28340ddbb7f941",
+      "difficultyEvidenceSha": "sha256:ee67d29ec3e119c9cb9ef8e885b9f3d44a583cdcd96d8775f18f636d21a453c7",
+      "relationalEvidenceSha": "sha256:d221b947a8e5eccfc8b612fafedd30abf03c984c63ffc34ae2a6d8be4e39d3fd",
+      "validatorRunSha": "sha256:a5d52854a9499ec9ed76d6a527e57dc62dec595d8e1978330864e2fc26df8472"
     },
     {
       "questionNo": 23,
-      "primaryMethod": "각 이등분선·평행사변형 넓이",
-      "decisiveStep": "ED=BF=3,h=6→18",
-      "rpmPrimary": "M2-RPM-070",
+      "questionUid": "qid_v1_b702bf78495a4a65e6c15b164c9e41b299269f9bc253d54868adf87a584785d2",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
-      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 4,
-      "crossConceptKeys": [
-        "CC_ANGLE_BISECTOR",
-        "CC_TRIANGLE_AREA"
-      ]
+      "resolverEvidenceSha": "sha256:78cc84c4f77a720d594c3151fc3aab874361d7956f91c576b53c42fab52da5cd",
+      "difficultyEvidenceSha": "sha256:1b054d4687f4b3ef6c371245606e1208bd94adb304e5d83ceb6a99c8f5c23857",
+      "relationalEvidenceSha": "sha256:c0e7c1f3cf5ad24f307255ca5934de5d98a34750611c254dcf186d31dffd5756",
+      "validatorRunSha": "sha256:bd75c61976818f1797a92197892aee5ec4b78d61b8e415c34036dbb5e96fe79e"
     },
     {
       "questionNo": 24,
-      "primaryMethod": "빗변 높이 닮음",
-      "decisiveStep": "AB²=BD·BC→CD=9/2",
-      "rpmPrimary": "M2-RPM-087",
+      "questionUid": "qid_v1_40ab56f5f5e00e5cae9652c7b1173eba524b4d1909ccdc687ddc335d37ca6469",
       "disposition": "EXISTING_REUSE",
-      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
-      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
-      "difficultyBucket": 3
+      "resolverEvidenceSha": "sha256:e2279be54b674ea5fa5c72356f50b694799561cce9a590e28a212e1aa9f6c4fd",
+      "difficultyEvidenceSha": "sha256:9dc7bb11da8441cb5c528227ab1f264f9b4252bccaf91af4d71b9f7874bfe88d",
+      "relationalEvidenceSha": "sha256:eaccaea3740b77d59b12f5e66355b6481d46d077dbb7bc0d951b800d2ba3a080",
+      "validatorRunSha": "sha256:f8bcad760c7104ea52c0b563de580cdc9ca88113e85f0937507be24949a7d1ff"
     }
-  ],
-  "unresolvedItems": [
-    {
-      "questionNo": 3,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "reason": "RHS/RHA RPM path exists but 2015 exact binding missing"
-    },
-    {
-      "questionNo": 4,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "reason": "RHS family exists but 2015 exact binding missing"
-    },
-    {
-      "questionNo": 20,
-      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
-      "reason": "centroid RPM path exists; M2 subUnit/exact binding not materialized"
-    }
-  ],
-  "authorityRefs": {
-    "inputBranch": "work/intake/m2",
-    "inputCommit": "fe467be47228f68ad37562e768596809cd275249",
-    "mainReadSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
-    "rpmCrosswalkBlobSha": "d76e7b313658035f8455e399422a28861b34b636"
-  },
-  "validation": {
-    "denominator": "24/24",
-    "blankSolution": 0,
-    "controlChar": 0,
-    "render": "NOT_RUN"
-  },
-  "createdAt": "2026-09-27T05:37:41+09:00"
+  ]
 }
