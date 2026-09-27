@@ -16,6 +16,7 @@ compatibility-path: 이 파일명은 기존 호출부 호환을 위해 v1 경로
 > - 해결 방법이 이미 확정된 `RPM_PRIMARY_MIGRATION_GAP`을 R2E로 넘기는 것은 R1 종료 계약 위반이다.
 > - R2E는 신규 taxonomy 필요성, 비결정적 semantic conflict, source hard hold, multi-exam semantic cluster처럼 CREATE/R1에서 실제로 닫을 수 없는 adjudication만 deep review한다.
 > - **R2E HOLD-SAFE + CURRENT VISUAL ROUTE HARD RULE:** full evidence·허용 repair를 소진해도 안전한 판단이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 FINAL을 금지한다. R1/R2E의 SVG 생성·재생성·수학적 수정은 `.codex/skills/apmath-visual-upgrade/SKILL.md`가 라우팅하는 current ruleset과 pipeline-core closure를 실제로 적용한다.
+> - **CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 동일한 current visual router/ruleset을 **처음 제작부터** 적용한다. visual 필요 문항을 나중 R1/R2E 보완 대상으로 의도적으로 미루지 않는다.
 
 ---
 
@@ -123,6 +124,8 @@ CREATE는 전체 denominator를 source-first로 읽고 **현재 authority로 결
 - 기존 solution / 필요한 image
 - 학생용 작은칠판 final solution
 - 필요한 solution SVG
+- visualRequirement / visualAction / applicable visual rule refs
+- EXPECTED FACT / builder witness / V2-V3 parity evidence 또는 명시적 visual exemption evidence
 - L1/L2 baseline과 명백한 conflict
 - `primaryMethod`
 - `decisiveStep`
@@ -151,6 +154,51 @@ source + final solution
 공용 resolver/validator는 `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와
 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다.
 
+### CREATE VISUAL FIRST-BUILD HARD RULE
+
+CREATE는 visual을 "일단 대충 만들고 R1에서 고치는 단계"로 취급하지 않는다. **처음 제작에서 current visual ruleset을 그대로 적용해 가능한 범위의 visual quality를 완결**한다.
+
+적용 대상:
+- 신규 SVG / graph / geometry / `solutionImage`
+- 기존 visual 재사용 여부 판단
+- 기존 visual이 틀리거나 부족한 경우의 REBUILD
+- source에는 그림이 없어도 solution 이해를 위해 필요한 해설 visual
+
+CREATE visual 시작 경로는 R1/R2E와 동일하다.
+
+```text
+.codex/skills/apmath-visual-upgrade/SKILL.md
+→ node tools/skills/verify-skills.mjs
+→ 00_RULES_INDEX + MANIFEST
+→ COMMON_PROTOCOL
+→ 공통파이프라인 실행계약
+→ 적응형배치루프
+→ pipeline-core README + AGENT_BUDGET
+→ applicable VISUAL / geometry domain / unit rules
+```
+
+문항별로 먼저 V1 student-understanding benefit / `visualRequirement`를 판단한다.
+- `VISUAL_REQUIRED` → CREATE에서 visual을 반드시 제작 또는 정상 existing visual을 검증해 KEEP한다.
+- 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL` → CREATE에서 적극 `ADD` 또는 `REBUILD`한다.
+- `VISUAL_EXEMPT` → 적극적 면제 근거가 있어야 하며, source 그림 없음·기존 SVG 없음·쉬운 문항은 면제 근거가 아니다.
+- 기하 문항은 current geometry domain policy의 **`GEOMETRY_SOLUTION_VISUAL_DEFAULT = CREATE_UNLESS_JUSTIFIED_EXEMPT`**를 적용한다.
+
+신규/수정 visual의 CREATE lineage:
+```text
+V1 benefit / requirement triage
+→ EXPECTED FACT freeze
+→ deterministic artifact build
+→ V2 artifact-only OBSERVED FACT / geometry extraction
+→ V3 expected ↔ observed parity
+→ static/style/publication checks
+→ render가 현재 실행 범위면 render-capture + independent render-review
+→ render가 예약 GPT 정책상 제외면 NOT_RUN_CODEX_HANDOFF
+```
+
+지원되는 visual에서는 `archive/tools/past-exam-pipeline/build-visual-candidate.mjs` + `archive/tools/geometry-equation/visual_engine/`을 candidate 생성에 적극 활용한다. 다만 이 엔진은 현재 candidate-only이며 production write/promotion authority가 아니다. candidate 결과는 current visual/pipeline closure를 통과한 뒤에만 final asset으로 채택한다.
+
+CREATE에서 이미 확인 가능한 visual defect를 "R1에서 고칠 예정"으로 남기지 않는다. **known visual repair pending = 0**이 원칙이다. R1은 CREATE 결과를 독립검수하다 새로 발견한 defect만 repair한다.
+
 ### CREATE RESOLVABLE-FIRST HARD RULE
 
 - existing ACTIVE PT/TPL + exact binding이 있으면 즉시 final Meta projection에 반영한다.
@@ -166,7 +214,14 @@ CREATE 종료 gate:
 resolvablePending = 0
 deterministicMaterializationPending = 0
 safeExistingReusePending = 0
+visualRulePreflightStatus = PASS                    # visual-capable item이 있으면
+knownVisualRepairPending = 0
+requiredVisualMissingCount = 0
+visualMathParityPending = 0                         # 지원 가능한 범위
+renderStatus = PASS | NOT_RUN_CODEX_HANDOFF         # 현재 실행 정책에 따라
 ```
+
+`NOT_RUN_CODEX_HANDOFF`는 render를 실제로 실행하지 않았다는 뜻일 뿐 visual 제작 미완료를 뜻하지 않는다. CREATE는 render 전 단계의 수학적/semantic/static visual 결함을 모두 닫고 넘겨야 하며, render PASS를 허위 선언하지 않는다.
 
 shared production canonical/binding writer 충돌을 피하기 위해 CREATE가 main shared Meta를 직접 갱신하지 않아도 된다.
 대신 **final Meta projection + exact materializationPatch를 intake artifact에 물리화**해야 하며,
@@ -281,6 +336,9 @@ inputCommit
 totalQuestions
 changedQuestions[]
 changedSvgFiles[]
+visualDispositionSummary
+visualEvidenceRef
+visualRenderStatus
 metaDispositionSummary
 metaResolutionEvidenceRef: { path, sha256 }
 metaResolverContractVersion = JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1
