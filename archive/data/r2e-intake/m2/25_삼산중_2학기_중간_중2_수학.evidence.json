@@ -69,7 +69,7 @@
       "questionNo": 2,
       "primaryMethod": "외심 등거리+RHS",
       "decisiveStep": "OA=OB, OD 공통, 직각 → 합동",
-      "rpmPrimary": "M2-RPM-178",
+      "rpmPrimary": "M2-RPM-070",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
       "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
@@ -79,7 +79,7 @@
       "questionNo": 3,
       "primaryMethod": "RHA 합동",
       "decisiveStep": "빗변 5와 예각 40°",
-      "rpmPrimary": "M2-RPM-179",
+      "rpmPrimary": "M2-RPM-071",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
       "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
@@ -89,7 +89,7 @@
       "questionNo": 4,
       "primaryMethod": "RHA 합동",
       "decisiveStep": "ABD≡CAE → DE=7",
-      "rpmPrimary": "M2-RPM-179",
+      "rpmPrimary": "M2-RPM-071",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
       "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
@@ -103,7 +103,7 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_INCENTER",
-      "difficultyBucket": 3
+      "difficultyBucket": 4
     },
     {
       "questionNo": 6,
@@ -113,7 +113,10 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_TRIANGLE_CENTERS",
       "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
-      "difficultyBucket": 2
+      "difficultyBucket": 2,
+      "crossConceptKeys": [
+        "CC_TANGENCY"
+      ]
     },
     {
       "questionNo": 7,
@@ -129,7 +132,7 @@
       "questionNo": 8,
       "primaryMethod": "평행사변형 판정",
       "decisiveStep": "ㄴ,ㄷ만 충분조건",
-      "rpmPrimary": "M2-RPM-072",
+      "rpmPrimary": "M2-RPM-074",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_CRITERIA",
@@ -139,25 +142,31 @@
       "questionNo": 9,
       "primaryMethod": "평행사변형 각+이등분",
       "decisiveStep": "CAD=70°, CAE=35°, E=35°",
-      "rpmPrimary": "M2-RPM-070",
+      "rpmPrimary": "M2-RPM-072",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ]
     },
     {
       "questionNo": 10,
       "primaryMethod": "마름모 넓이 분할",
       "decisiveStep": "126→63→42",
-      "rpmPrimary": "M2-RPM-075",
-      "disposition": "EXISTING_REUSE",
-      "difficultyBucket": 3
+      "rpmPrimary": "M2-RPM-077",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ]
     },
     {
       "questionNo": 11,
       "primaryMethod": "직사각형 대각선",
       "decisiveStep": "AC=OB=4",
-      "rpmPrimary": "M2-RPM-077",
+      "rpmPrimary": "M2-RPM-079",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
@@ -167,7 +176,7 @@
       "questionNo": 12,
       "primaryMethod": "사각형 포함관계",
       "decisiveStep": "가=이등분, 나=같음, 다=평행",
-      "rpmPrimary": "M2-RPM-081",
+      "rpmPrimary": "M2-RPM-083",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
@@ -177,7 +186,7 @@
       "questionNo": 13,
       "primaryMethod": "정사각형 대각선",
       "decisiveStep": "AO=5, y=10 → 15",
-      "rpmPrimary": "M2-RPM-077",
+      "rpmPrimary": "M2-RPM-079",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_SPECIAL_QUADRILATERALS",
@@ -187,7 +196,7 @@
       "questionNo": 14,
       "primaryMethod": "중점+SAS 합동",
       "decisiveStep": "AMD≡CNB → BMD=130°",
-      "rpmPrimary": "M2-RPM-070",
+      "rpmPrimary": "M2-RPM-072",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
@@ -197,18 +206,18 @@
       "questionNo": 15,
       "primaryMethod": "동전 조합",
       "decisiveStep": "z=0 2가지, z=1 4가지",
-      "rpmPrimary": "M2-RPM-108",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-110",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
       "templateKey": "TPL_COMBINATION_SELECTION",
-      "difficultyBucket": 3
+      "difficultyBucket": 4
     },
     {
       "questionNo": 16,
       "primaryMethod": "자리 순서 세기",
       "decisiveStep": "5+4+4=13",
-      "rpmPrimary": "M2-RPM-107",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-109",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
       "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
       "difficultyBucket": 2
@@ -217,16 +226,16 @@
       "questionNo": 17,
       "primaryMethod": "가위바위보 결과쌍",
       "decisiveStep": "승부 3+3=6",
-      "rpmPrimary": "M2-RPM-105",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-107",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "difficultyBucket": 1
     },
     {
       "questionNo": 18,
       "primaryMethod": "악수 쌍 선택",
       "decisiveStep": "AB,AC,BC=3",
-      "rpmPrimary": "M2-RPM-108",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-110",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
       "templateKey": "TPL_COMBINATION_SELECTION",
       "difficultyBucket": 1
@@ -235,16 +244,16 @@
       "questionNo": 19,
       "primaryMethod": "합·곱의 법칙",
       "decisiveStep": "8+4×4=24",
-      "rpmPrimary": "M2-RPM-105",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-107",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "difficultyBucket": 2
     },
     {
       "questionNo": 20,
       "primaryMethod": "경로 합·곱",
       "decisiveStep": "2×3+2=8",
-      "rpmPrimary": "M2-RPM-105",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-107",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "difficultyBucket": 2
     },
     {
@@ -255,13 +264,16 @@
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
       "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
-      "difficultyBucket": 3
+      "difficultyBucket": 3,
+      "crossConceptKeys": [
+        "CC_ANGLE_BISECTOR"
+      ]
     },
     {
       "questionNo": 22,
       "primaryMethod": "평행사변형 판정",
       "decisiveStep": "대각선 이등분 / 두 쌍 대변 같음",
-      "rpmPrimary": "M2-RPM-072",
+      "rpmPrimary": "M2-RPM-074",
       "disposition": "EXISTING_REUSE",
       "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
       "templateKey": "TPL_QUADRILATERAL_CRITERIA",
@@ -271,8 +283,8 @@
       "questionNo": 23,
       "primaryMethod": "선형 조건으로 경우 필터",
       "decisiveStep": "b=2a−2 → 3쌍",
-      "rpmPrimary": "M2-RPM-105",
-      "disposition": "EXISTING_REUSE",
+      "rpmPrimary": "M2-RPM-107",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "difficultyBucket": 3
     },
     {
@@ -610,5 +622,9 @@
     "mainReadSha": "a39b4c5b725a94da5cd3b5885a0ff7a6b4fcf74f"
   },
   "nextState": "READY_FOR_R2E",
-  "updatedAt": "2026-09-27T11:08:15+09:00"
+  "updatedAt": "2026-09-27T11:08:15+09:00",
+  "correction": {
+    "supersedesCommit": "00ee1b8434811c05b3137c2fa61cffdc606ca70b",
+    "reason": "R1 summary was correct, but perQuestion rows retained CREATE field names/values after schema-key mismatch; corrected row-level RPM/disposition/difficulty/CrossConcept parity."
+  }
 }
