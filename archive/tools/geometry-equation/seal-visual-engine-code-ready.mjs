@@ -153,7 +153,8 @@ export function qualifyCode({run,archiveAttempt,bboxReceipt}){
   evidenceHashes.bboxReceipt=digest(receiptFile);evidenceHashes.nativeSummary=digest(path.join(nativeFolder,'summary.json'));
   const result={status:'GEOMETRY_VISUAL_ENGINE_CODE_READY',scope:'shared code and 13 isolated qualification fixtures',
     publicationAuthorized:false,productionPromotion:false,engineVersion:config.engineVersion,branch:baseline.branch,
-    qualifiedBaseHead:git('rev-parse','HEAD'),phaseCommits:git('log','--reverse','--format=%H %s',baseline.head+'..HEAD').split('\n'),
+    qualifiedBaseHead:baseline.head,integrationStartHead:baseline.integrationStartHead,integrationHead:git('rev-parse','HEAD'),
+    phaseCommits:git('log','--reverse','--format=%H %s',baseline.head+'..HEAD').split('\n'),
     gates:Object.fromEntries(gateNames.map(v=>[v,'PASS'])),REGRESSION_FAIL:0,UNRESOLVED_P0:0,UNRESOLVED_P1:0,
     tests:{python:proof.pythonTests,node:proof.nodeTests,static:staticRows.length,renderedBbox:receipt.rows.length,nativeArchive:nativeRows.length,determinism:deterministic.rows.length},
     production:{protectedFiles:actualProtected.length,mutations:0,originalIndependentVerifiers:verifiers.length},
