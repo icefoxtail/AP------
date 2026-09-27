@@ -25,23 +25,23 @@
     28
   ],
   "blockingIssues": [
-    "B09 Q08 and B14 Q12 source/metadata adjudication remains open.",
-    "B07-B15 corrected/confirmed HOLD items await resolver-backed Meta and R2E_MAIN_FINAL closure.",
+    "B14 Q12 source-hold authority and exact final metadata closure remain open.",
+    "B07-B15 held source cases still lack complete resolver-backed Meta/difficulty and R2E_MAIN_FINAL receipts.",
     "B01-B18 whole-batch R2E closure remains open.",
     "Independent pipeline closure for B19/B25/B27/B31 remains pending."
   ],
-  "lastCompletedItem": "B08 Q06, B09 Q21/Q22, B11 Q10 and B12 Q10 source-derived solution fixes committed locally; D-source HOLD review still pending R2E metadata closure.",
-  "nextStartPoint": "Resolve remaining source HOLD B09 Q08 and B14 Q12, assign resolver-backed metadata and difficulty for the held B07-B15 set, then run affected exam and batch final closure.",
+  "lastCompletedItem": "B09 Q08 solution completed from D-source angle relations; B07 Q23 student solution restored to M1 congruence language.",
+  "nextStartPoint": "Resolve B14 Q12 hold authority; materialize resolver-backed PT/TPL, exact curriculum binding and difficulty evidence for B07-B15 held items; then process B17-B18 and close all non-main-final exams.",
   "initialMainSha": "f53fffdf88d14731ac4313de33c881fde3327fdb",
   "latestMainAfterAdvance": "d6fd4bebf6e817f1545de54f07ba9b600ebe93c8",
-  "candidateHead": "e614023c975e8dfd47427ec34a6fdf68b90b76e6",
+  "candidateHead": "e17d9d8a41874b5f5423ae809fdf55ea80b42e00",
   "candidateBranch": "codex/m1-r2e-main-final-20260927",
   "readyCandidateBSet": [],
   "readyCandidateCount": 0,
   "closedOrReadyCount": 9,
   "closedOrReadyPercent": 29,
   "mainPromotedCount": 9,
-  "lastCompletedStage": "Local held/source repairs: B07 Q23; B08 Q06/Q16; B09 Q21/Q22; B10 Q10/Q14/Q17/Q19; B11 Q10; B12 Q10; B14 Q22; B15 Q15.",
+  "lastCompletedStage": "Local hold repairs cover B07, B08, B09, B10, B11, B12, B14, B15; B13 Q18 and B07 Q19 are route-outs. R2E Meta/runtime/final receipts are still pending.",
   "visualReviewEvidencePath": "archive/data/r2e/middle1/visual/B20_B24_B28_BATCH_REVIEW.json",
   "visualReviewEvidenceSha256": "188445f88dbe0643ed89b24d6538d46f391267ed2fd0e230e0fa628114fa5e2e",
   "mainPromotionStatus": "R2E_MAIN_FINAL_PARTIAL",
@@ -76,7 +76,7 @@
     ],
     "dependencyImpact": "Catalog index advanced with the main sync, so all nine R2E_MAIN_FINAL receipts were rebuilt. The M1 exam artifacts, solution assets, RPM crosswalk, canonical Meta, runtime, and engine are unchanged; production byte parity remains PASS."
   },
-  "updatedAt": "2026-09-27T17:38:41.9695002Z",
+  "updatedAt": "2026-09-27T17:43:36.7880427Z",
   "scopedHoldDenominator": 40,
   "scopedHoldMetaResolved": 38,
   "scopedHoldMetaRemaining": 2,
@@ -84,54 +84,64 @@
   "scopedSvgReviewed": 4,
   "localHoldRepairCommits": [
     {
-      "item": "Q23",
       "B": 7,
-      "sha": "ad6b2e8ba"
+      "sha": "ad6b2e8ba",
+      "item": "Q23 minimum source correction"
     },
     {
-      "item": "Q16 option repair + SVG",
+      "B": 7,
+      "sha": "e17d9d8a4",
+      "item": "Q23 M1-level solution"
+    },
+    {
       "B": 8,
-      "sha": "2a1143731"
+      "sha": "2a1143731",
+      "item": "Q16 choice repair + SVG"
     },
     {
-      "item": "Q6 solution",
       "B": 8,
-      "sha": "0f43c162e"
+      "sha": "0f43c162e",
+      "item": "Q6 solution"
     },
     {
-      "item": "Q21/Q22 solutions",
       "B": 9,
-      "sha": "23b9dc253"
+      "sha": "23b9dc253",
+      "item": "Q21/Q22 solutions"
     },
     {
-      "item": "Q10/Q14/Q17/Q19 solutions",
+      "B": 9,
+      "sha": "309e2fd1b",
+      "item": "Q8 solution"
+    },
+    {
       "B": 10,
-      "sha": "90784e19e"
+      "sha": "90784e19e",
+      "item": "Q10/Q14/Q17/Q19 solutions"
     },
     {
-      "item": "Q19 full-pentagon SVG",
       "B": 10,
-      "sha": "8a58d1b62"
+      "sha": "8a58d1b62",
+      "item": "Q19 full-pentagon SVG"
     },
     {
-      "item": "Q10 solution",
       "B": 11,
-      "sha": "58f10c023"
+      "sha": "58f10c023",
+      "item": "Q10 solution"
     },
     {
-      "item": "Q10 solution",
       "B": 12,
-      "sha": "e614023c9"
+      "sha": "e614023c9",
+      "item": "Q10 solution"
     },
     {
-      "item": "Q22",
       "B": 14,
-      "sha": "510226ce6"
+      "sha": "510226ce6",
+      "item": "Q22 domain correction"
     },
     {
-      "item": "Q15 solution",
       "B": 15,
-      "sha": "f6497b6b1"
+      "sha": "f6497b6b1",
+      "item": "Q15 solution"
     }
   ]
 }
