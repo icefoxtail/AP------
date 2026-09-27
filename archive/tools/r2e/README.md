@@ -65,6 +65,11 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
   `metaRecoveryCandidates`로 반환한다. `AUTOMATION_PROMPT.md`의 bounded contract recovery를
   먼저 수행한다. receipt/sidecar commit 뒤 새 snapshot을 만들 때는 시작 시 동결한 examUid
   cohort만 R2E 대상으로 유지하고, 새로 들어온 UID는 다음 run으로 넘긴다.
+- receipt가 Meta sidecar/version ref를 이미 갖고 있어도 resolver recompute, validator receipt,
+  candidate projection, difficulty projection 또는 relational evidence 검증이 실패하면 해당
+  Meta evidence 오류를 `validationErrors`와 함께 `META_RECOVERY_REQUIRED` queue에 노출한다.
+  resolver validator가 PASS하기 전까지는 READY candidate가 아니다. source/choices/solution/image
+  identity hash, UID/ordinal, denominator, receipt lineage 불일치는 이 자동 recovery로 숨기지 않는다.
 - receipt identity/lineage 누락, source mismatch 또는 JS/SVG drift는 시험지별 오류다.
   서로 독립인 입력의 진행을 막지 않는다. R1에서 문항 오류로 지정된 UID는
   `docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md`로 오류를 확인한 뒤
@@ -83,8 +88,9 @@ Python 표준 라이브러리의 Windows byte lock/POSIX flock은 프로세스 �
 
 `META_RECOVERY_REQUIRED`는 입력 접근 장애가 아니다. 해당 run의 active prompt가 recovery를
 요구하면 먼저 receipt/sidecar backfill을 수행한다. 그 뒤 새 snapshot에서 contract PASS한
-독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. R1 item-level
-`REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
+  독립 candidates는 active prompt에 따라 selective R2E를 진행할 수 있다. 모든 UID의 current
+  resolver/fresh difficulty projection을 최종 JS에 materialize하고 exact parity를 검증한다. R1
+  item-level `REPAIR`/문항 오류는 수정 프로토콜로 대상 UID만 최소 수리한다. 아직 recovery가
 필요하거나 `CONTRACT_RECOVERY_BLOCKED`인 시험지는 R2E ledger/final gate에 넣지 않는다.
 이 blocker가 다른 시험지의 유효한 candidate/resume 처리를 막아서는 안 된다.
 

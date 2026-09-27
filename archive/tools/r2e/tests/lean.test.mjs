@@ -149,6 +149,40 @@ test('backfilled legacy receipt without inputCommit or authorityRefs passes snap
   assert.equal(snapshot.candidates[0].declaredInputCommit, null);
   assert.equal(snapshot.candidates[0].examFile, 'archive/exams/original/middle/m2/1mid/test.js');
 });
+test('READY receipt with stale resolver evidence is queued for rebuild without being treated as R2E-ready', () => {
+  const f = fixture(), meta = structuredClone(f.metaResolutionEvidence), item = meta.items[0];
+  const { evidenceSha: _oldSha, ...resolverBody } = item.resolverEvidence;
+  item.resolverEvidence = { ...resolverBody, dispositionReason: 'stale authority snapshot' };
+  item.resolverEvidence.evidenceSha = objectSha(item.resolverEvidence);
+  item.disposition = item.resolverEvidence.disposition;
+  const metaPath = 'archive/data/r2e-intake/m2/test.meta.json';
+  const metaRef = f.write(metaPath, meta), receipt = { ...f.receipt, metaResolutionEvidenceRef: metaRef };
+  f.write(f.receiptPath, receipt);
+  const staleCommit = f.commit([metaPath, f.receiptPath], 'legacy READY has stale resolver evidence');
+  git(f.repo, ['push', 'origin', 'work/intake/m2']);
+  const snapshot = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot });
+  assert.equal(snapshot.heads.m2.sha, staleCommit);
+  assert.equal(snapshot.status, 'META_RECOVERY_REQUIRED');
+  assert.equal(snapshot.candidates.length, 0);
+  assert.equal(snapshot.metaRecoveryCandidates.length, 1);
+  assert.equal(snapshot.metaRecoveryCandidates[0].recoveryReason, 'META_RESOLVER_EVIDENCE_INVALID');
+  assert.ok(snapshot.metaRecoveryCandidates[0].validationErrors.some(error => error.startsWith('META_RESOLUTION_RECOMPUTE_MISMATCH:')));
+  assert.equal(snapshot.errors.length, 0);
+});
+test('READY receipt whose Meta disposition summary is stale is queued for synchronization', () => {
+  const f = fixture(), receipt = { ...f.receipt, metaDispositionSummary: { ROUTE_OUT: 1 } };
+  f.write(f.receiptPath, receipt);
+  const summaryCommit = f.commit([f.receiptPath], 'legacy READY has stale Meta summary');
+  git(f.repo, ['push', 'origin', 'work/intake/m2']);
+  const snapshot = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot });
+  assert.equal(snapshot.heads.m2.sha, summaryCommit);
+  assert.equal(snapshot.status, 'META_RECOVERY_REQUIRED');
+  assert.equal(snapshot.candidates.length, 0);
+  assert.equal(snapshot.metaRecoveryCandidates.length, 1);
+  assert.equal(snapshot.metaRecoveryCandidates[0].recoveryReason, 'META_DISPOSITION_SUMMARY_MISMATCH');
+  assert.deepEqual(snapshot.metaRecoveryCandidates[0].validationErrors, ['META_DISPOSITION_SUMMARY_MISMATCH']);
+  assert.equal(snapshot.errors.length, 0);
+});
 test('remote physical checkpoint takes resume precedence; final input is skipped', () => {
   const f = fixture(); git(f.repo, ['checkout', '-b', 'work/r2e-state', f.main]);
   const rel = 'archive/data/r2e/m2/exams/test.json'; f.write(rel, { examUid: 'test', inputCommit: f.ready, finalStatus: 'R2E_IN_PROGRESS', nextAction: 'continue q1' }); f.commit([rel], 'checkpoint'); git(f.repo, ['push', 'origin', 'work/r2e-state']);

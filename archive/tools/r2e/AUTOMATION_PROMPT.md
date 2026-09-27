@@ -16,9 +16,11 @@
 
 대상은 `work/intake/m2`, `work/intake/m3`의 최신 `READY_FOR_R2E` receipt와 검증 가능한 `work/r2e-state` resume checkpoint다. 중1 및 예전 레인 branch는 대상이 아니다. 매 run에서 remote HEAD를 새로 고정하고 READY 분모는 unique `examUid`로 계산한다. 이전 보고서의 숫자를 재사용하지 않으며 run 시작 뒤 들어온 commit은 다음 run으로 넘긴다. 기존 resume checkpoint는 신규 intake보다 먼저 처리한다.
 
-snapshot이 `META_RECOVERY_REQUIRED`를 반환하면 `metaRecoveryCandidates`를 먼저 처리한다. `*.evidence.json`은 receipt가 아니다. 구형 receipt의 경로·lineage를 검증하고, 필요한 공용 resolver/difficulty sidecar와 Meta receipt field를 canonical validator로 backfill한다. 공식 validator를 통과한 경우에만 receipt를 갱신하고 새 snapshot으로 다시 확인한다.
+snapshot이 `META_RECOVERY_REQUIRED`를 반환하면 `metaRecoveryCandidates`를 처리한다. `*.evidence.json`은 receipt가 아니다. 구형 receipt와 stale/invalid resolver sidecar를 구분하고, 오류 코드와 UID별 source/solution identity를 읽는다. Resolver recompute mismatch, validator receipt 누락, stale disposition summary는 final HOLD로 통과시키지 말고 이번 run의 frozen `origin/main` authority에서 새 resolver/difficulty evidence를 생성해 다시 검증한다. 공식 validator가 PASS한 sidecar/receipt만 snapshot READY candidate가 된다.
 
-receipt 이후 발견된 JS/SVG drift와 **R1에서 item-level 오류로 이미 지정한 UID**는 구분한다. 설명되지 않는 drift나 source identity 불일치는 `CONTRACT_RECOVERY_BLOCKED`로 남기고 임의 복구하지 않는다. R1이 `REPAIR`/문항 오류로 표시한 UID는 이번 R2E의 승인된 수정 대상이다. sidecar exact projection parity가 현재 JS의 오류 때문에 실패하면 그 UID의 검증된 R1 defect 및 Meta HOLD와 연결되는지 확인하고, 아래 `수정프로토콜` 절차로 해당 문제/메타 필드만 최소 수정한 뒤 evidence를 다시 만든다. R1 근거와 연결되지 않는 불일치, 독립적으로 안전하게 수정할 근거가 없는 경우에는 `CONTRACT_RECOVERY_BLOCKED`로 남긴다. 어느 경우에도 validator 완화나 검증 우회는 금지한다. 오류 문항만 수정 대상이며 다른 PASS 문항은 재검수·재작성하지 않는다.
+R2E FINAL JS에는 **모든 denominator UID**의 current resolver disposition과 fresh independent difficulty가 투영되어야 한다. 따라서 기존 R1 PASS 문항도 content/choices/answer/solution을 재검수·재작성하지는 않지만, 현재 shared resolver가 결정한 advanced Meta/difficulty projection 필드는 최신 canonical binding에 맞춰 JS에 materialize한다. `candidateMeta`와 fresh evidence의 exact parity, sidecar/receipt SHA, deterministic validator PASS를 모두 닫는다. `EXISTING_REUSE`·`FAMILY_REUSE`를 legacy 필드 누락만으로 HOLD 처리하지 않으며, 실제 evidence를 새로 생성하고 현재 projection을 완성한다.
+
+receipt 이후 발견된 JS/SVG drift와 **R1에서 item-level 오류로 이미 지정한 UID**는 구분한다. 설명되지 않는 drift나 source identity/lineage 불일치는 `CONTRACT_RECOVERY_BLOCKED`로 남기고 임의 복구하지 않는다. R1이 `REPAIR`/문항 오류로 표시한 UID는 이번 R2E의 승인된 수정 대상이다. `수학_문항오류_검증_프로토콜_v2.1`로 오류를 해당 UID만 직접 검산하고, 아래 `수정프로토콜` 절차로 오류 원인 필드만 최소 수정한다. 기존 normal PASS의 source/question fields는 그대로 유지한다. R1 근거와 연결되지 않는 content/choices/answer/solution 변경은 금지한다. Resolver/difficulty projection은 모든 UID의 R2E completion에 필요한 metadata 산출물이므로 별도 adjudication evidence에 따라 재료화한다. 어느 경우에도 validator 완화나 검증 우회는 금지한다.
 
 ## R2E selective final adjudication
 
