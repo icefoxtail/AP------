@@ -1121,7 +1121,10 @@ function wrapLatex(text) {
     s = s.split(mathSegmentRe).map((seg, idx) => {
         if (idx % 2 === 1) return seg;
         const trimmed = seg.trim(); if (!trimmed) return seg;
-        const hasKorean = /[가-힣]/.test(seg); const hasLatex = /\\[a-zA-Z]/.test(seg);
+        const hasKorean = /[가-힣]/.test(seg);
+        // Source strings may encode line breaks as a literal backslash-n before
+        // HTML blocks; exclude that token from TeX-macro detection.
+        const hasLatex = /\\[a-zA-Z]/.test(seg.replace(/\\n(?![a-zA-Z])/g, ''));
         if (!hasKorean && /\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}/.test(seg)) return `$$${seg}$$`;
         if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) return `$${trimmed}$`;
         if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
@@ -2663,7 +2666,7 @@ async function renderSolLegacy(area, data, ctx = null) {
 
         const solutionBoxes = data.map((q, i) => {
             const solutionText = q.solution || q.explanation || q.sol || '';
-            const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+            const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image || q.solutionReminderImagePolicy === 'STRIP_INLINE');
             const reminderContent = sanitizeProtectedSegments(
                 normalizeQuestionNotes(
                     normalizeViewBlocks(
@@ -2764,7 +2767,7 @@ async function renderSolLegacy(area, data, ctx = null) {
     let { cols } = makeGridPage(); let colIdx = 0;
     for (let i = 0; i < data.length; i++) {
         const q = data[i]; const solutionText = q.solution || q.explanation || q.sol || '해설이 없습니다.';
-        const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image);
+        const reminderRawContent = stripInlineImagesFromContent(q.content || q.question || '', !!q.image || q.solutionReminderImagePolicy === 'STRIP_INLINE');
         const reminderContent = sanitizeProtectedSegments(
             normalizeQuestionNotes(
                 normalizeViewBlocks(
