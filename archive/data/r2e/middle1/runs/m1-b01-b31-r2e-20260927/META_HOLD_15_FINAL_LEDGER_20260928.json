@@ -1,0 +1,719 @@
+{
+  "schemaVersion": "M1_META_HOLD_15_FINAL_LEDGER_v1",
+  "stage": "STEP6_FINAL_LEDGER_AND_REPORT",
+  "status": "COMPLETE_STOP_BEFORE_NEXT_STAGE",
+  "completedAgainstMain": "9573ca2dbbf20752b680d8f8ff857d23efa8b87d",
+  "physicalStateHeadBefore": "386177b724f610332464ffd2a570fb4e3ef4db02",
+  "lineage": {
+    "step2": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+      "blobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+      "commitSha": "85d97a2822e600e0734145fd2d29acd449e64086"
+    },
+    "step3": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_STEP3_RPM_SEMANTIC_20260928.json",
+      "blobSha": "e57ed20ff31e532d5bc45664738915bf2cb88794",
+      "commitSha": "0cf9e6f823940aac57fcc5cf0015fe8a02db8db1"
+    },
+    "step4": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_STEP4_PROJECTION_DISPOSITION_20260928.json",
+      "blobSha": "e2286fa96bdf6d5f8e58eb1c4884cc6fa6477a39",
+      "commitSha": "22eb54e2fb149be2be60b277c7d581f64b096118"
+    },
+    "step5": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_STEP5_MUTATION_GATE_20260928.json",
+      "blobSha": "79951f462e4eaa707fa493e3202543304c1505a5",
+      "commitSha": "386177b724f610332464ffd2a570fb4e3ef4db02"
+    }
+  },
+  "summary": {
+    "TARGET": 15,
+    "RPM_SEMANTIC_FINAL": 0,
+    "META_ONLY": 10,
+    "TRUE_META_HOLD": 5,
+    "SEMANTIC_FINAL_TOTAL": 10,
+    "JS_CHANGED": {
+      "exams": 0,
+      "questions": 0
+    }
+  },
+  "trueMetaHoldReport": [
+    {
+      "B": "B15",
+      "q": 20,
+      "exactlyUndecidableInRpm": "Current 2022 M1-2 RPM has no L4 for the decisive midpoint-under-perpendicular-projections / projected-length transfer structure. Re-labeling it as a congruence criterion would replace the verified decisive method rather than classify it."
+    },
+    {
+      "B": "B16",
+      "q": 14,
+      "exactlyUndecidableInRpm": "Current 2022 M1-2 RPM contains '수직이등분선 작도' but no L4 for perpendicular-bisector definition/property judgment. Treating a non-construction claim audit as the construction L4 would not be an exact semantic path."
+    },
+    {
+      "B": "B17",
+      "q": 23,
+      "exactlyUndecidableInRpm": "RPM L4 under triangle congruence contains only SSS/SAS/ASA criteria. It has no exact L4 for equality of corresponding sides after congruence is already given."
+    },
+    {
+      "B": "B18",
+      "q": 6,
+      "exactlyUndecidableInRpm": "RPM has L3 '공간에서의 위치 관계' but its L4s are only '직선과 평면의 위치 관계' and '평면과 평면의 위치 관계'. The required two-line/skew-line L4 is absent."
+    },
+    {
+      "B": "B18",
+      "q": 13,
+      "exactlyUndecidableInRpm": "RPM triangle-congruence L4s are congruence criteria SSS/SAS/ASA only; there is no exact L4 for corresponding-angle/side properties after congruence is given."
+    }
+  ],
+  "safeguards": {
+    "b25Reopened": false,
+    "b19Reopened": false,
+    "r2eMainFinalReopened": 0,
+    "normalPassReopened": 0,
+    "questionLayoutTouched": false,
+    "mathSolutionSvgDifficultyReopened": false,
+    "globalTaxonomyRedesign": false,
+    "catalogRuntimeIndexRegeneration": false,
+    "productionMutation": false
+  },
+  "nextStage": {
+    "status": "DO_NOT_START_IN_THIS_RUN",
+    "items": [
+      "B08 Q16 final-pending closure",
+      "B27 Q2 semantic closure",
+      "B27 changed SVG independent closure",
+      "B31 Q15 semantic closure"
+    ]
+  },
+  "records": [
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "sourceFingerprint": "2719dad58c1a3b8f9c7ea1e3792580d1e054ed94966571526ca670a1fd9c2fae",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "AB=5 from y-coordinates 4 and -1; distance from C(3,0) to x=-1 is 4; area = 1/2*5*4 = 10.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "A,B have x=-1 so AB=5; C has x=3 so the perpendicular horizontal distance to x=-1 is 4.",
+      "primaryMethod": "Use the coordinate values to obtain a vertical base and horizontal distance, then compute triangle area.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기",
+        "recordId": "M1-RPM-050"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "currentProjectionKeys": {
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 24,
+      "questionUid": "qid_v1_f1bd6587483700dbf5fbda6b6f4a67b9720041a49332e37e9e536248a1cc6f7c",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/23_금당중_2학기_중간_중1_기출.js",
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "sourceFingerprint": "94dc85d7c6e5eb06e45b10c6c52f9fb744ed8e664da5c3fad26fac80d7a73130",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "Image confirms AB=4 cm, BE=10 cm, AD∥BE, AF=EF. Vertical angles at F and alternate angles from AD∥CE give ASA: AFD≡EFC, hence AD=EC. Therefore AD+BC=BE=10 and trapezoid area=(AD+BC)/2*AB=10/2*4=20.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AF=EF, vertical angles at F are equal, and AD∥CE gives alternate angles; therefore AFD≡EFC by ASA.",
+      "primaryMethod": "Prove AFD and EFC congruent by two angles and the included corresponding side, then transfer AD=EC.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동",
+        "recordId": "M1-RPM-080"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+        "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B07",
+      "examFile": "23_연향중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_3d02ddc05460c2f4ecc679ccbf597d4e55e170cf21ecdda8df64e0f0756c94c8",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/23_연향중_2학기_중간_중1_기출.js",
+        "examBlobSha": "486bb019cb87187c1d25a953f10290e11e61b538",
+        "sourceFingerprint": "b3bbfd7bbafe2286cf85f0023778fb6dba106b1976e215282a9822937b04da8d",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "Square side BC=AB=8. In equilateral BCE, E lies on the perpendicular bisector of BC, so its horizontal distance to vertical AB is 4. Area ABE=1/2*8*4=16 cm² -> ①.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "In equilateral BCE the apex lies above the midpoint of BC; with BC=8, the distance from E to vertical AB is 4.",
+      "primaryMethod": "Identify the perpendicular distance from E to line AB and use it as the triangle height.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "486bb019cb87187c1d25a953f10290e11e61b538",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION",
+        "templateKey": "TPL_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B08",
+      "examFile": "23_왕운중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
+        "examBlobSha": "6581bb49c63a2da9cdb88f9a158d1c54ff686b6f",
+        "sourceFingerprint": "2b0d414c12a1a6effbf341d669d5597e09cbc3cf5f8d32b241e4b099cce55a18",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "AB and CD are parallel vertical sides with lengths 7 and 3; their horizontal separation is 10. Area=(7+3)/2*10=50.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AB=7, CD=3, and the x-coordinate separation is 10, so the coordinate quadrilateral area follows.",
+      "primaryMethod": "Read coordinate differences to obtain the two parallel vertical sides and their horizontal separation.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기",
+        "recordId": "M1-RPM-050"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "currentProjectionKeys": {
+        "examBlobSha": "6581bb49c63a2da9cdb88f9a158d1c54ff686b6f",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+        "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B10",
+      "examFile": "24_매산중_2학기_중간_중1_기출.js",
+      "q": 7,
+      "questionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/24_매산중_2학기_중간_중1_기출.js",
+        "examBlobSha": "566d91d199dd2e2683598c41a8f3eb216075758f",
+        "sourceFingerprint": "42d1d9779523f7234fbed151e4fbc5bcbae1c461ee3d83a0c667f1f0f2fb1f22",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "Image gives AD=5, AB=10, DE=8, CE=6, AF=4 and AF⊥CD. Coordinate reconstruction B=(0,0), A=(6,8), D=(11,8), E=(11,0), C=(5,0) confirms ㄱ true, ㄴ false, ㄷ true, ㄹ false; hence ㄱ,ㄷ -> ②.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AF is perpendicular to CD and the reconstructed parallel relation makes AF the perpendicular from F to line AB; the correct pair is the distance/perpendicular statements ㄱ,ㄷ.",
+      "primaryMethod": "Audit which displayed segments are perpendicular feet/distances after the figure's parallel/perpendicular relations are fixed.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "566d91d199dd2e2683598c41a8f3eb216075758f",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 3,
+      "questionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "sourceFingerprint": "ee3cfc777f2b68e67429cdaae154c8b9ddd5e450e419e29f9cbf35a78f7ee159",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "Image gives trapezoid bases 3 cm and 5 cm and area 16 cm². 16=(3+5)/2*h=4h, so height=distance(D,BC)=4 cm -> ③.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "The area equation gives h=4, and that h is exactly distance(D,BC).",
+      "primaryMethod": "Interpret the trapezoid height as the distance from point D to line BC.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+        "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "sourceFingerprint": "3a9cf50897f5589e361a58aea512288da07f126681703232d8dda9f139b2da38",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "AC and BD bisect each other perpendicularly; image gives AO=OC=3 and BO=OD=4, so each side is 5 and BCD area is 12; AB∥CD. Statement ⑤ writes △OBC≡△OAD with wrong vertex correspondence (OB≠OA); correct order would match B↔D, C↔A. Thus ⑤ is the unique false statement.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "OB=OD, OC=OA, and ∠BOC=∠DOA; the relevant triangles are congruent by SAS, but option ⑤ writes the correspondence in the wrong order.",
+      "primaryMethod": "Use two equal side pairs around O and the included right/vertical angle to establish triangle congruence and correct correspondence.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동",
+        "recordId": "M1-RPM-079"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B13",
+      "examFile": "24_향림중_2학기_중간_중1_기출.js",
+      "q": 11,
+      "questionUid": "qid_v1_729249365108e33f409510fecc0e581fdfed1cc728c4584ecd3d65afa2974846",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/24_향림중_2학기_중간_중1_기출.js",
+        "examBlobSha": "2fe814ae701495c429086d3ae06dfc4d90fb90d1",
+        "sourceFingerprint": "ec15a53a204237062fb30831ef1a5d5439c15523ec3890fb5ecf55bbdd32b3fb",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "M is midpoint of AC and BD. Vertical angles plus AM=CM and BM=DM give SAS congruences, yielding AD=BC, AB=CD and ∠MBA=∠MDC. Statement ⑤ △MAB≡△MDA uses an unsupported correspondence, so ⑤ is false.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AM=CM, BM=DM and vertical angles at M give SAS congruences, which determine the corresponding sides/angles and isolate option ⑤.",
+      "primaryMethod": "Use midpoint equalities and vertical angles to establish the paired triangles by SAS.",
+      "RPM": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동",
+        "recordId": "M1-RPM-079"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "currentProjectionKeys": {
+        "examBlobSha": "2fe814ae701495c429086d3ae06dfc4d90fb90d1",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+        "examBlobSha": "e11d2f1b93f8c41def9c21386b81d986751a2b4e",
+        "sourceFingerprint": "bbf2d74776f9e0d877ef328bcbdfafe90e6539866a102d65d58b84a40e1a1edd",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "Orthogonal projection onto line AM sends midpoint M of BC to midpoint M of DE, so DM=ME=4 and signed distances give CE=BD=10. Image order is A-E-M-D; AD=18 and DM=4 give AM=14, hence AE=10. Area ACE=1/2*10*10=50 cm² -> ⑤.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "The verified evidence uses orthogonal projection of midpoint M onto AM to obtain DM=ME and CE=BD, then AE and the triangle area.",
+      "primaryMethod": "Use midpoint plus two perpendicular projections to transfer midpoint/distance information and recover AE and CE before computing area.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": "Current 2022 M1-2 RPM has no L4 for the decisive midpoint-under-perpendicular-projections / projected-length transfer structure. Re-labeling it as a congruence criterion would replace the verified decisive method rather than classify it."
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+        "examBlobSha": "e11d2f1b93f8c41def9c21386b81d986751a2b4e",
+        "sourceFingerprint": "0f8d9fac05c904672b7892801993d0934862553fbfadc524bcf961114a02f668",
+        "currentSolutionEvidence": "GENERIC_TEXT_MATH_RECOVERED_IN_LEDGER",
+        "independentVerification": "B=(8,0) is the perpendicular foot, so A has x=8. On y=5x/4, A=(8,10). Triangle AOB is right with legs 8 and 10, so area=40.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "B=(8,0) fixes A's x-coordinate at 8; y=5x/4 gives A=(8,10).",
+      "primaryMethod": "Substitute x=8 into the direct-proportion relation y=5x/4 to determine A, then compute a right-triangle area.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L3": "정비례",
+        "L4": "정비례 관계식",
+        "recordId": "M1-RPM-167"
+      },
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "currentProjectionKeys": {
+        "examBlobSha": "e11d2f1b93f8c41def9c21386b81d986751a2b4e",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    },
+    {
+      "B": "B16",
+      "examFile": "25_왕운중_2학기_중간_중1_수학.js",
+      "q": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_왕운중_2학기_중간_중1_수학.js",
+        "examBlobSha": "dc586d6039320c9d9f9142b8ed78eddd5ed5ebd4",
+        "sourceFingerprint": "51b42e7228e4e6a31342094b6e4d872df4529d5352f6c0d32fd483b3cb5b02b0",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "Image marks AO=OC, BO=OD and AC⊥BD. Thus ②-⑤ follow; ① is false because BD meets segment AO at endpoint O rather than bisecting AO, so it is not the perpendicular bisector of AO.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "BD meets AO at endpoint O and therefore cannot bisect AO; this falsifies the perpendicular-bisector claim.",
+      "primaryMethod": "Apply the definition/necessary conditions of a perpendicular bisector to a claim about segment AO.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "oldHOLD": "HOLD_NO_EQUIVALENT_PATH",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": "Current 2022 M1-2 RPM contains '수직이등분선 작도' but no L4 for perpendicular-bisector definition/property judgment. Treating a non-construction claim audit as the construction L4 would not be an exact semantic path."
+    },
+    {
+      "B": "B17",
+      "examFile": "25_왕의중_2학기_중간_중1_수학.js",
+      "q": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_왕의중_2학기_중간_중1_수학.js",
+        "examBlobSha": "a689928f800b4faa3003d8adf14ae47bdc52b478",
+        "sourceFingerprint": "4468c9323d6b687a9652db3ad95eca12ed788f4b39a83bd91e74511ebb4ff774",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "∠B=90°, BC=6 and area ABC=21 give 1/2*AB*6=21, hence AB=7. From ABC≡DEF, AB corresponds to DE, so DE=7 cm.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "ABC≡DEF is given; after AB=7 is found from area, AB↔DE gives DE=7.",
+      "primaryMethod": "Use the given congruence only to transfer the already-computed corresponding side AB to DE.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "oldHOLD": "REMAINING_META_HOLD_CANDIDATE",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": "RPM L4 under triangle congruence contains only SSS/SAS/ASA criteria. It has no exact L4 for equality of corresponding sides after congruence is already given."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 6,
+      "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+        "examBlobSha": "9c0697d4d2469e3c1d243d657f1b26750673a291",
+        "sourceFingerprint": "93a301b059828b0b810282e49f3735bae55992d5074ffe0614ce256d8cdffb09",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "ㄱ false: skew lines do not meet. ㄴ true: two intersecting lines determine a plane. ㄷ false: two nonintersecting lines may be skew. ㄹ true: parallel lines are coplanar. Thus ㄴ,ㄹ -> ⑤.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "Two nonintersecting lines in space need not be parallel because they may be skew; intersecting lines determine a plane and parallel lines are coplanar.",
+      "primaryMethod": "Classify the possible positional relations of two lines in space, including skew lines.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "oldHOLD": "REMAINING_META_HOLD_CANDIDATE",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": "RPM has L3 '공간에서의 위치 관계' but its L4s are only '직선과 평면의 위치 관계' and '평면과 평면의 위치 관계'. The required two-line/skew-line L4 is absent."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 13,
+      "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+        "examBlobSha": "9c0697d4d2469e3c1d243d657f1b26750673a291",
+        "sourceFingerprint": "9d1d9275861db19130b45837507f35d6edc98a44259829b41ba7aabf3bd2bb5c",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "ABC≡DEF gives A↔D, B↔E, C↔F. Image has ∠B=55°, ∠F=50°, BC=5. Hence ∠C=50°, a=∠A=75°, and b=EF=BC=5; a+b=80 -> ⑤.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "ABC≡DEF is given; ∠F=50 gives ∠C=50, then triangle angle sum gives A=75 and BC=EF=5.",
+      "primaryMethod": "Use the given congruence to transfer corresponding angle C↔F and side BC↔EF.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "oldHOLD": "REMAINING_META_HOLD_CANDIDATE",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": "RPM triangle-congruence L4s are congruence criteria SSS/SAS/ASA only; there is no exact L4 for corresponding-angle/side properties after congruence is given."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 19,
+      "questionUid": "qid_v1_042036eea262c6da17d921050700e22a258401d7ecc79ee1e0cf83a0c1aceb5f",
+      "sourceFinalSolutionEvidence": {
+        "sourceArtifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "sourceArtifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "examPath": "archive/exams/original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+        "examBlobSha": "9c0697d4d2469e3c1d243d657f1b26750673a291",
+        "sourceFingerprint": "995eb3335fc8d63d2d4743144a00a4c0afd7ba3ba06e9519433ad6f2a408303a",
+        "currentSolutionEvidence": "SPECIFIC_AND_VERIFIED",
+        "independentVerification": "Each segment is determined by an unordered pair among 12 points: C(12,2)=12*11/2=66 -> ②.",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "Each unordered pair of the 12 points determines exactly one segment, giving 66; this is the side/diagonal-count structure for a 12-gon.",
+      "primaryMethod": "Count all segments determined by pairs of 12 vertices/points; equivalently count polygon sides plus diagonals.",
+      "RPM": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": "삼각형·다각형의 각",
+        "L4": "변·대각선 개수",
+        "recordId": "M1-RPM-198"
+      },
+      "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+      "projectionReason": "FAMILY_TEMPLATE_SELECTION_PENDING",
+      "currentProjectionKeys": {
+        "examBlobSha": "9c0697d4d2469e3c1d243d657f1b26750673a291",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "canonicalKeyValidity": "NO_POPULATED_KEYS",
+      "oldHOLD": "REMAINING_META_HOLD_CANDIDATE",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING",
+      "mutation": {
+        "required": false,
+        "performed": false,
+        "jsChanged": false
+      },
+      "trueMetaHoldReason": null
+    }
+  ]
+}
