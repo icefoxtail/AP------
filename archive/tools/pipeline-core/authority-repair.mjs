@@ -4,8 +4,13 @@ import { objectSha, nonempty } from './canonical.mjs';
 export const AUTHORITY_REPAIR_VERSION = 'APMATH_AUTHORITY_BINDING_REPAIR_v1';
 export const FINAL_AUTHORITY_STATUS = 'RESOLVED';
 
-const derivedRequirement = question => {
+const derivedRequirement = (question, authorityEvidenceRef) => {
   const visual = question.visual || {};
+  const declared = ['VISUAL_REQUIRED', 'VISUAL_OPTIONAL', 'VISUAL_EXEMPT'].includes(visual.requirement) ? visual.requirement : null;
+  if (authorityEvidenceRef && declared) {
+    if ((visual.problemVisualMathDependency === true || visual.sharedVisualMathDependency === true) && declared !== 'VISUAL_REQUIRED') throw new Error('AUTHORITY_EVIDENCE_CONTRADICTS_VISUAL_DEPENDENCY');
+    return declared;
+  }
   if (visual.problemVisualMathDependency === true || visual.sharedVisualMathDependency === true || visual.actualSolutionVisualAttached === true) return 'VISUAL_REQUIRED';
   if (visual.requirement === 'VISUAL_REQUIRED') return 'VISUAL_REQUIRED';
   if (visual.requirement === 'VISUAL_EXEMPT' || question.sourceRecord?.visualAssetStatus === 'no_visual_asset_required') return 'VISUAL_EXEMPT';
@@ -15,13 +20,14 @@ const derivedRequirement = question => {
 export function materializeAuthorityBinding(run, { questionUids = null, adjudicationStatus = FINAL_AUTHORITY_STATUS, authorityEvidenceRef = null } = {}) {
   if (!run || !Array.isArray(run.questions) || !nonempty(run.runId)) throw new Error('AUTHORITY_REPAIR_RUN_REQUIRED');
   if (adjudicationStatus !== FINAL_AUTHORITY_STATUS) throw new Error('AUTHORITY_REPAIR_TERMINAL_STATUS_REQUIRED');
+  if (authorityEvidenceRef && !run.inputs?.some(ref => ref.path === authorityEvidenceRef.path && ref.bytes === authorityEvidenceRef.bytes && ref.sha256 === authorityEvidenceRef.sha256)) throw new Error('AUTHORITY_EVIDENCE_REF_NOT_BOUND');
   const selected = questionUids ? new Set(questionUids) : new Set(run.questions.map(question => question.questionUid));
   const next = structuredClone(run);
   const changedQuestionUids = [];
   for (const question of next.questions) {
     if (!selected.has(question.questionUid)) continue;
     const visual = { ...(question.visual || {}) };
-    const requirement = derivedRequirement(question);
+    const requirement = derivedRequirement(question, authorityEvidenceRef);
     const adjudicationId = visual.adjudicationId || `${question.questionUid}:authority`;
     const authorityEvidenceSha = objectSha({ questionUid: question.questionUid, requirement, adjudicationId, adjudicationStatus, authorityEvidenceRef });
     if (visual.requirement !== requirement || visual.adjudicationStatus !== adjudicationStatus || visual.adjudicationId !== adjudicationId || visual.authorityEvidenceSha !== authorityEvidenceSha) changedQuestionUids.push(question.questionUid);
