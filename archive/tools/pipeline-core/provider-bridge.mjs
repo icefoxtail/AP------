@@ -33,6 +33,12 @@ function loadBridgeJson(root, relative) {
   return { ref, value: JSON.parse(readBoundFile(root, ref).toString('utf8')) };
 }
 
+export function providerAdapterDiagnosticCode(stderr) {
+  const firstLine = String(stderr ?? '').trim().split(/\r?\n/, 1)[0]?.trim() ?? '';
+  const match = firstLine.match(/^(?:HOLD:)?(CODEX_APPSERVER_[A-Z0-9_]+(?::[A-Za-z0-9_-]+)*)$/);
+  return match?.[1] ?? null;
+}
+
 function transportCall(transport, request) {
   check(nonempty(transport?.command), 'PROVIDER_TRANSPORT_COMMAND_REQUIRED');
   check(Array.isArray(transport.args || []) && transport.args.every(nonempty), 'PROVIDER_TRANSPORT_ARGS_INVALID');
@@ -44,8 +50,9 @@ function transportCall(transport, request) {
     maxBuffer: 8 * 1024 * 1024,
   });
   if (result.error || result.status !== 0) {
-    const error = new Error('HOLD:PROVIDER_TRANSPORT_UNAVAILABLE');
-    error.failureCode = 'PROVIDER_TRANSPORT_UNAVAILABLE';
+    const failureCode = providerAdapterDiagnosticCode(result.stderr) || 'PROVIDER_TRANSPORT_UNAVAILABLE';
+    const error = new Error('HOLD:' + failureCode);
+    error.failureCode = failureCode;
     error.responseReturned = false;
     error.responseAttestationReturned = false;
     error.evidenceReturned = false;

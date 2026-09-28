@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { AUDITOR_OUTPUT_SCHEMA } from '../../../../alive/runtime/provider-bridge/auditor-output-schema.mjs';
 import { parseJsonObjectItems } from '../../../../alive/runtime/provider-bridge/auditor-output-normalizer.mjs';
 import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead, completedTurnFromTurnsList, completedTurnText, parseAuditorOutputText, summarizeAppServerMessage, turnFromStartResponse, withTimeout } from '../../../../alive/runtime/provider-bridge/auditor-turn-output.mjs';
-import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope, validatePacketVisualAndAuthority } from '../provider-bridge.mjs';
+import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope, providerAdapterDiagnosticCode, validatePacketVisualAndAuthority } from '../provider-bridge.mjs';
 import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 import { getOrCreateLaunchContext, phaseContextForLaunch } from '../../../../alive/runtime/provider-bridge/codex-appserver-launch-state.mjs';
 import { bindU2DefectsToPacketAssetSha, nativeImageInput } from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
@@ -25,6 +25,11 @@ test('provider auditor output normalizer restores strict JSON-string evidence it
   assert.throws(() => parseJsonObjectItems(['[]'], 'defects'), /ITEM_OBJECT_REQUIRED/);
 });
 
+test('safe adapter parser codes survive transport errors without free-form output', () => {
+  assert.equal(providerAdapterDiagnosticCode('CODEX_APPSERVER_OUTPUT_ITEM_STRING_REQUIRED:evidence:0\nprivate model text'), 'CODEX_APPSERVER_OUTPUT_ITEM_STRING_REQUIRED:evidence:0');
+  assert.equal(providerAdapterDiagnosticCode('HOLD:CODEX_APPSERVER_AGENT_OUTPUT_NOT_JSON'), 'CODEX_APPSERVER_AGENT_OUTPUT_NOT_JSON');
+  assert.equal(providerAdapterDiagnosticCode('SyntaxError: Unexpected token private reviewer text'), null);
+});
 test('provider adapter falls back to the completed turn final agent message', () => {
   const notifications = [{
     method: 'turn/completed',
