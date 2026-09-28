@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { fileRef } from '../canonical.mjs';
@@ -122,4 +123,24 @@ test('native render witness keeps source evidence metadata and reports transfer 
   assert.equal(projected.nativeImageInputs[0].mimeType, 'image/png');
   assert.equal(projected.nativeImageInputs[0].transferMimeType, native[1].url.match(/^data:(image\/[^;]+)/)[1]);
   assert.ok(projected.nativeImageInputs[0].transferBytes <= projected.nativeImageInputs[0].originalBytes);
+});
+
+test('native SVG preview transfer flattens transparent pixels to white without changing the source SHA', async () => {
+  const requireFromRuntime = createRequire(path.join(process.env.APMATH_NODE_MODULES, '..', 'package.json'));
+  const sharp = requireFromRuntime('sharp');
+  const image = {
+    path: 'assets/q10-solution.svg',
+    sha256: 'sha256:' + 'c'.repeat(64),
+    mimeType: 'image/png',
+    dataUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAEUlEQVQImWNgYGD4DwIM5AMANR0E/MB/CVgAAAAASUVORK5CYII=',
+  };
+  const packet = { phase: 'U2', payload: [{ questionUid: 'exam|10', artifact: image }] };
+  const native = await buildNativeTurnInput(JSON.stringify({ packet }), packet);
+  const projected = JSON.parse(native[0].text);
+  assert.equal(projected.nativeImageInputs[0].sha256, image.sha256);
+  assert.equal(projected.nativeImageInputs[0].mimeType, 'image/png');
+  const bytes = Buffer.from(native[1].url.split(',')[1], 'base64');
+  const { data, info } = await sharp(bytes).raw().toBuffer({ resolveWithObject: true });
+  assert.equal(info.channels, 3, 'flattened PNG has no transparent alpha channel');
+  assert.deepEqual([...data.subarray(3, 6)], [255, 255, 255], 'transparent source canvas is white in the native transfer');
 });
