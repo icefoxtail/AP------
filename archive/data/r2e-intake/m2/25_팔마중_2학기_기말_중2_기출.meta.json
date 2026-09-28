@@ -1,23 +1,23 @@
 {
-  "schemaVersion": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1",
+  "schemaVersion": "JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2",
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-  "lane": "B",
-  "stage": "CREATE",
+  "lane": "D",
+  "stage": "R1",
   "examUid": "25_팔마중_2학기_기말_중2_기출",
   "examFile": "25_팔마중_2학기_기말_중2_기출.js",
   "grade": "M2",
   "generatedAgainst": {
-    "mainReadSha": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-    "sourceBlobSha": "21327cd871efe317996e234624a6ba0196520dd8",
-    "sourceArchiveFile": "original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js"
+    "mainCommit": "5ca1fa34cff6000c3f0d32092b86f7df5acde4d6",
+    "intakeParentCommit": "0c03d60ce4e346ffbb2338496a9e7ee84d551676",
+    "sourceBlobSha": "21327cd871efe317996e234624a6ba0196520dd8"
   },
   "decisionIsolation": {
-    "candidateVisibleDuringSemanticDecision": false,
-    "reviewer": "GPT_M2_RESET_CREATE_B_20260928"
+    "sameStageCandidateUsedAsSemanticInput": false,
+    "sourceAndIndependentlyVerifiedFinalSolution": true,
+    "rpmPrimarySemanticAuthority": true
   },
   "createGate": {
     "status": "PASS",
@@ -45,7 +45,7 @@
         "solutionIdentity": {
           "status": "VERIFIED_FINAL",
           "independentVerification": true,
-          "solutionHash": "sha256:14a7dfdbc9eb31cb8779b9e772ab4c9272b3adea36cce39992d9036e6b84c31a"
+          "solutionHash": "sha256:f2fd23b2a386e366280670ff6dca227762e32c52b45d524498423408ecbc676f"
         },
         "curriculumContext": {
           "grade": "M2",
@@ -147,7 +147,9 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:8156f28654abc1499a4ec2cdc4bf48a7821096ec601cdf946324361e0e941cc1"
+        "evidenceSha": "sha256:8156f28654abc1499a4ec2cdc4bf48a7821096ec601cdf946324361e0e941cc1",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -165,7 +167,8 @@
         "rationale": "q1 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:c82a002a434bf24c574b16fa1b94c7ede9c1ef8a090a5bee362794827e97691d",
-        "evidenceSha": "sha256:8146c61e1184d9fdec6156c355e2e8dff964a7e11af1595833eefe63c7560fc9"
+        "evidenceSha": "sha256:8146c61e1184d9fdec6156c355e2e8dff964a7e11af1595833eefe63c7560fc9",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -177,9 +180,8 @@
         "evidenceSha": "sha256:b9269136d7de911aa59256b709a7592292c05775a4f1c11f5d39854b6cdac5d7"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -196,6 +198,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "status": "KEEP",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -318,7 +333,9 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:532da513c2e768aa46669bd4fc6c736e3e78fcff1b4bd1e13452d558146f9c1e"
+        "evidenceSha": "sha256:532da513c2e768aa46669bd4fc6c736e3e78fcff1b4bd1e13452d558146f9c1e",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -336,7 +353,8 @@
         "rationale": "q2 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:fcf82386afd06da6f74eaace81b573d61142e938dae0e251d7b3a9bad7eeafef",
-        "evidenceSha": "sha256:233d56d3b43a11bbd34ff2aaf8144e828b4b9778a17a7b07e5c7d9e094a80604"
+        "evidenceSha": "sha256:233d56d3b43a11bbd34ff2aaf8144e828b4b9778a17a7b07e5c7d9e094a80604",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -354,9 +372,8 @@
         "evidenceSha": "sha256:7cd4e633826291cb378ed4e6fb1e6c0cc04590624308bb0e7393ffbb0b44a28e"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -375,6 +392,25 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "status": "KEEP",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [
+          {
+            "key": "CC_ANGLE_BISECTOR_THEOREM",
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
+          }
+        ],
+        "conditionDecisions": []
       }
     },
     {
@@ -503,7 +539,9 @@
         ],
         "mappedOwnerPack": "GEOMETRY_EQUATIONS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:a8ffa2a22acf7fc330916e9e49301505c831e9e8f5607f91d282961a43755d01"
+        "evidenceSha": "sha256:a8ffa2a22acf7fc330916e9e49301505c831e9e8f5607f91d282961a43755d01",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -521,7 +559,8 @@
         "rationale": "q3 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:01a982318e10bfb4cddcd9f17e799b0e47808bc48c14ad6fb6630d0720fefa10",
-        "evidenceSha": "sha256:a61ae69993c7de5d1a682cab5d841ed0c05090780c11e694b7d9dfe0522e01b3"
+        "evidenceSha": "sha256:a61ae69993c7de5d1a682cab5d841ed0c05090780c11e694b7d9dfe0522e01b3",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -533,9 +572,8 @@
         "evidenceSha": "sha256:9501ce8bf4765abc06a92e6f5fc2a34e0c7f7127f8d5fad72418c58efbfb2c18"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -552,6 +590,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -680,7 +731,9 @@
         ],
         "mappedOwnerPack": "GEOMETRY_EQUATIONS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:64c2f95f685c701b17093a888dfcae124ecb114172cec8619ffd8523bad221dc"
+        "evidenceSha": "sha256:64c2f95f685c701b17093a888dfcae124ecb114172cec8619ffd8523bad221dc",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -698,7 +751,8 @@
         "rationale": "q4 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:4a305feb4bc5bc53268c25813063dad93bddfd6f587afde2555986bb388f821d",
-        "evidenceSha": "sha256:5db095b2344bdd09798a76b58faeb547011d284712ec37a8376752282c3d2755"
+        "evidenceSha": "sha256:5db095b2344bdd09798a76b58faeb547011d284712ec37a8376752282c3d2755",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -710,9 +764,8 @@
         "evidenceSha": "sha256:3df1dd17842123a444174ce4e4567290681fb3c68d39d7522258594e51bd87dc"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -729,6 +782,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -758,7 +824,8 @@
           "subjectFamily": "",
           "standardCourse": "중2 수학",
           "standardUnitKey": "M2-06",
-          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "subUnit": "도형의 닮음"
         },
         "semanticDecision": {
           "primaryMethod": "두 단계의 무게중심 2:1 비를 차례로 적용한다.",
@@ -857,7 +924,9 @@
         ],
         "mappedOwnerPack": "GEOMETRY_EQUATIONS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:f05bafe8749588a389ec961cd19e0d97b7c7d4a0d27f679408cfd1e6eab6d911"
+        "evidenceSha": "sha256:f05bafe8749588a389ec961cd19e0d97b7c7d4a0d27f679408cfd1e6eab6d911",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -875,7 +944,8 @@
         "rationale": "q5 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:79df96bad81bf6d6b8d0aeb85270561d8fa84d09cb97bb08c427e36e58e3f4fb",
-        "evidenceSha": "sha256:f54a547adaa403e4f5126b600617ed18e9e85e74301147d11f74714d1adf47f3"
+        "evidenceSha": "sha256:f54a547adaa403e4f5126b600617ed18e9e85e74301147d11f74714d1adf47f3",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -887,9 +957,8 @@
         "evidenceSha": "sha256:f2c1949e3af47875c8805bbf144ee7cb90fb72bdba33bca171bc45fc3d60f446"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -906,6 +975,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -1032,7 +1114,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:9f5ddc81b048b8e61ad30e8b2b22d019b8e0f721afdbea36dcc6bcfffae0408b"
+        "evidenceSha": "sha256:9f5ddc81b048b8e61ad30e8b2b22d019b8e0f721afdbea36dcc6bcfffae0408b",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1050,7 +1134,8 @@
         "rationale": "q6 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:beb1748735dc12df1c3947b989a2371690b154c70807c191a2c72b717a6195d7",
-        "evidenceSha": "sha256:c062e88f6431354ef4cfd7d5ac4c93b792ef5f8f5a679e15d294e2f7487fc8c4"
+        "evidenceSha": "sha256:c062e88f6431354ef4cfd7d5ac4c93b792ef5f8f5a679e15d294e2f7487fc8c4",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1062,9 +1147,8 @@
         "evidenceSha": "sha256:5299ac79939ef9e509acbc723ac66e99f83ba00e4367c5ec090fb98509f473a7"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1081,6 +1165,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -1207,7 +1304,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:733bc80a08c261c87108ef87269875eac56af59385cb1b71b1d8cc6b693579a5"
+        "evidenceSha": "sha256:733bc80a08c261c87108ef87269875eac56af59385cb1b71b1d8cc6b693579a5",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1225,7 +1324,8 @@
         "rationale": "q7 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:83c4c52c64a0cefea3942fcc20ac9ecd4a48da0d2214f9e4dfa1e199e2104ae4",
-        "evidenceSha": "sha256:2d146c5bffd765e252eef9f624a7d619c9a47a6dae4f6805d5d9133d4948f9f0"
+        "evidenceSha": "sha256:2d146c5bffd765e252eef9f624a7d619c9a47a6dae4f6805d5d9133d4948f9f0",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1237,9 +1337,8 @@
         "evidenceSha": "sha256:fc5fecc6b2b6516b7fd18d51553f847851dc10717e815b58716232fe0fbcd9c0"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1256,6 +1355,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -1382,7 +1494,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:005f3b801574af12a7dd568482fc38e524ab6d0e5dc74e245cd967e4aa77cc24"
+        "evidenceSha": "sha256:005f3b801574af12a7dd568482fc38e524ab6d0e5dc74e245cd967e4aa77cc24",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1400,7 +1514,8 @@
         "rationale": "q8 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:fb7d3f5bdcc89688cf8d1270f5f6ed81896c4228b32b9e6d2de017abc433acb5",
-        "evidenceSha": "sha256:f25dd75289404fc25c9086cc435d48a64f3900d49a4016bf60efef12cfd2e46a"
+        "evidenceSha": "sha256:f25dd75289404fc25c9086cc435d48a64f3900d49a4016bf60efef12cfd2e46a",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1412,9 +1527,8 @@
         "evidenceSha": "sha256:5ceb4d1b976a3faaf70d7a1d1ae53f896a1aef99eb12ed78fed7934c1575e656"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1431,6 +1545,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -1557,7 +1684,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:a359d08b5ca365b9a3174a71fb8b12fbd6a4ae647005ca59f8b743b9347302ea"
+        "evidenceSha": "sha256:a359d08b5ca365b9a3174a71fb8b12fbd6a4ae647005ca59f8b743b9347302ea",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1575,7 +1704,8 @@
         "rationale": "q9 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:64c7f00f76c1cb73e1a19f230980e459d78617c76a455b30d7f8c5796f8d7d13",
-        "evidenceSha": "sha256:a901b8ae30c3380f6427b3c3749b7e709adb617ac6b07a2850460a0d47d9977b"
+        "evidenceSha": "sha256:a901b8ae30c3380f6427b3c3749b7e709adb617ac6b07a2850460a0d47d9977b",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1593,9 +1723,8 @@
         "evidenceSha": "sha256:be955ac8008e51232e0b3f2de68b16d24d14fd53cfa1aed1587f93c769d294c9"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1614,6 +1743,25 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [
+          {
+            "key": "CC_TRIANGLE_AREA",
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
+          }
+        ],
+        "conditionDecisions": []
       }
     },
     {
@@ -1740,7 +1888,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:3ac0e59165a5c795f0c4afa93126c7b2bde74e82b1d5ff11012531b2ce48032a"
+        "evidenceSha": "sha256:3ac0e59165a5c795f0c4afa93126c7b2bde74e82b1d5ff11012531b2ce48032a",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1758,7 +1908,8 @@
         "rationale": "q10 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:27531c1acb4b9da09b5310412d67969d1d3e1b2f6dde9643d33b20e9b022a798",
-        "evidenceSha": "sha256:9d2acb8c60513c4f11d4d925384b3fda84b5ea0fb2e35daf6090a4ebe1df08df"
+        "evidenceSha": "sha256:9d2acb8c60513c4f11d4d925384b3fda84b5ea0fb2e35daf6090a4ebe1df08df",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1770,9 +1921,8 @@
         "evidenceSha": "sha256:3cb9e6f2e50da6a0ea0cb309af0f7f2e7c7520e8630ebb03141013b4deec9190"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1789,6 +1939,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -1917,7 +2080,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:fdae9f0eeb23e0b236f22ef189228bf8dd3cb30f0ee6509caead3e92add43972"
+        "evidenceSha": "sha256:fdae9f0eeb23e0b236f22ef189228bf8dd3cb30f0ee6509caead3e92add43972",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -1935,7 +2100,8 @@
         "rationale": "q11 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:b5bf5f23d702dae3785e799a4d3c75b5a244e2339ba82744840c4fad67ac267c",
-        "evidenceSha": "sha256:29d748397cd1dcc9995532d6254740825b414dd4a476cb7d5264d77a42a39ae5"
+        "evidenceSha": "sha256:29d748397cd1dcc9995532d6254740825b414dd4a476cb7d5264d77a42a39ae5",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -1947,9 +2113,8 @@
         "evidenceSha": "sha256:53222d06688db03e57c12dadd67158342f39d6ae457e99d54463f80cfedd9fa1"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -1966,6 +2131,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2092,7 +2270,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:a15151e58b2ec95bfd3843e46c64da418add5b863e8c04db4b805776b07947de"
+        "evidenceSha": "sha256:a15151e58b2ec95bfd3843e46c64da418add5b863e8c04db4b805776b07947de",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2110,7 +2290,8 @@
         "rationale": "q12 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:181e46b388523e65cb53e920268c38977b858389e13e5d86a4b18a84e0980739",
-        "evidenceSha": "sha256:6e098541cb800e9321e6b137c8acfcc41a64bc987cc7d339b76634a8a90fa22f"
+        "evidenceSha": "sha256:6e098541cb800e9321e6b137c8acfcc41a64bc987cc7d339b76634a8a90fa22f",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2122,9 +2303,8 @@
         "evidenceSha": "sha256:46528fd6fa77a96fc25de49a46f03d3acbcf22e0a993c1e81ea43c8c93354d8f"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -2141,6 +2321,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2269,7 +2462,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:e6faaceb4d098351cfdbf9644881201dd72fb753cfe63446107b8737beb6ead4"
+        "evidenceSha": "sha256:e6faaceb4d098351cfdbf9644881201dd72fb753cfe63446107b8737beb6ead4",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2287,7 +2482,8 @@
         "rationale": "q13 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:6b3729fe24bea774dc56051050c093e02c0fde359fda82002e590bdcb29d81a8",
-        "evidenceSha": "sha256:eec2f4d7afa531db41a0af4e7faaba6f4d792188eafc325de2e2ba7743c78d53"
+        "evidenceSha": "sha256:eec2f4d7afa531db41a0af4e7faaba6f4d792188eafc325de2e2ba7743c78d53",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2299,9 +2495,8 @@
         "evidenceSha": "sha256:3d937e313322887afc881e5b275fd784ab588efdf4403aedc4490f40a791685f"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -2318,6 +2513,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2347,7 +2555,8 @@
           "subjectFamily": "",
           "standardCourse": "중2 수학",
           "standardUnitKey": "M2-08",
-          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "subUnit": "경우의 수와 확률"
         },
         "semanticDecision": {
           "primaryMethod": "인접 영역의 색이 다르도록 순서대로 색을 배정한다.",
@@ -2444,7 +2653,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:8a6bd3da3e80f67bb884f4975048a1ec8a44aa3bf979465666fc06f7ab2b96bb"
+        "evidenceSha": "sha256:8a6bd3da3e80f67bb884f4975048a1ec8a44aa3bf979465666fc06f7ab2b96bb",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2462,7 +2673,8 @@
         "rationale": "q14 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:49cb04e65ecfe7a140814086e29a6a40c7c03f9fec25e21b35f56fd9e43cb649",
-        "evidenceSha": "sha256:c43b17c4788ec2a817dbc5b736e34ec54583d2b232fa8002f5fa03759acf3c41"
+        "evidenceSha": "sha256:c43b17c4788ec2a817dbc5b736e34ec54583d2b232fa8002f5fa03759acf3c41",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2474,9 +2686,8 @@
         "evidenceSha": "sha256:5d6b9a0a752ef99fa10e6810130634fa7c1dfe7991cd36d127cc7acd2ca3d7b6"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -2493,6 +2704,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2619,7 +2843,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:08c8ea93052836b56b5ddecff80e3568b4df6b8a8bde386516dde80a84fc00ac"
+        "evidenceSha": "sha256:08c8ea93052836b56b5ddecff80e3568b4df6b8a8bde386516dde80a84fc00ac",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2637,7 +2863,8 @@
         "rationale": "q15 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:3d60dc59a8f136a26c12069577279011dcaf20f9851be80c0acc60b6a3d843ac",
-        "evidenceSha": "sha256:adad63ed52d2f318a1d46f702084a902cc461ef055080db2e96805ffdead6e9c"
+        "evidenceSha": "sha256:adad63ed52d2f318a1d46f702084a902cc461ef055080db2e96805ffdead6e9c",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2649,9 +2876,8 @@
         "evidenceSha": "sha256:e87c1e5912f601747ecf067aece380335e3768e111d813d1aeddbac8f47690f6"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -2668,6 +2894,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2796,7 +3035,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:6b678d042e80b99fd11dc0f3b2e12eef77917785d029c7f1d19757e0496a0cde"
+        "evidenceSha": "sha256:6b678d042e80b99fd11dc0f3b2e12eef77917785d029c7f1d19757e0496a0cde",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2814,7 +3055,8 @@
         "rationale": "q16 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:af350e08bc85b05716b19bb4f52178c02dd4bbc89e80b2694da693a732dde68f",
-        "evidenceSha": "sha256:09f2734b361b0768db75470f7a28d18270df0030c48a3297d591e682c99655dc"
+        "evidenceSha": "sha256:09f2734b361b0768db75470f7a28d18270df0030c48a3297d591e682c99655dc",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2826,9 +3068,8 @@
         "evidenceSha": "sha256:8697bf0167be396e0527aa888aac06a29476658fcf1e20ad1d02ab8257a9bc3d"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -2845,6 +3086,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -2973,7 +3227,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:026b0e0b70cb4784d3580118f2251271a0467f4f0de85af6e98e4a77499ce174"
+        "evidenceSha": "sha256:026b0e0b70cb4784d3580118f2251271a0467f4f0de85af6e98e4a77499ce174",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -2991,7 +3247,8 @@
         "rationale": "q17 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:d677a06dd0cf70c7e357180254c044e5c16f6e8ad0991004c237470710d12635",
-        "evidenceSha": "sha256:4d0dce985378d25a0e2dc1cb162cb0ef7e9be427dcd62cf9807496eba03114ff"
+        "evidenceSha": "sha256:4d0dce985378d25a0e2dc1cb162cb0ef7e9be427dcd62cf9807496eba03114ff",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -2999,13 +3256,17 @@
         "inputBundleSha": "sha256:93ff45b8678d47b312d9e4a68975fc5b4cf31e96087bf4f28f6d83718d05ab17",
         "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
-        "conditionDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ],
         "evidenceSha": "sha256:9cba8c8adf702a8b6850a0cfe4352521a0b181d5d5980f3d7a9cb3592266dcf2"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3022,6 +3283,24 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ]
       }
     },
     {
@@ -3150,7 +3429,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:0433abf2b81f018b68207d3257a8be2e8ad5031a366658f180dd4acd795ab1c9"
+        "evidenceSha": "sha256:0433abf2b81f018b68207d3257a8be2e8ad5031a366658f180dd4acd795ab1c9",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3168,7 +3449,8 @@
         "rationale": "q18 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:d01ae83e73f4566de031f675d601980b92ec31fec1e8a259d148219368336e1b",
-        "evidenceSha": "sha256:225717319bbed0e84f5f0df23b5ff311a221f2e07fe78d4776273b85ceb73f3b"
+        "evidenceSha": "sha256:225717319bbed0e84f5f0df23b5ff311a221f2e07fe78d4776273b85ceb73f3b",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3176,13 +3458,17 @@
         "inputBundleSha": "sha256:c6ddf49589115629d76fec01dba13f5cf8121eff830e10a4fea00c51a12f60bc",
         "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
-        "conditionDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ],
         "evidenceSha": "sha256:9beb3b64463be10a8cf1e778e2d04998de9db84cb373e037a95d6fc8df8d6683"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3199,6 +3485,24 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ]
       }
     },
     {
@@ -3327,7 +3631,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:400c32796617223643f046b610db858ea78009dbb57fdf1587ca2b8adf1e854c"
+        "evidenceSha": "sha256:400c32796617223643f046b610db858ea78009dbb57fdf1587ca2b8adf1e854c",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3345,7 +3651,8 @@
         "rationale": "q19 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:8093d35bb95d903dc1ad39ddfa49e2af5a65bb16dd84e6f9d99722512819a7b0",
-        "evidenceSha": "sha256:fed21e893375e5d6303e08a4bfb5e4b95e74fdd13cd758cb9674cf9f934ff12b"
+        "evidenceSha": "sha256:fed21e893375e5d6303e08a4bfb5e4b95e74fdd13cd758cb9674cf9f934ff12b",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3353,13 +3660,17 @@
         "inputBundleSha": "sha256:4b46a339ec137564a8cde0ff621759cbcdafc66ea2b8d99ead66457caecdbe87",
         "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
-        "conditionDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ],
         "evidenceSha": "sha256:e80edbc279372a8c32c47d67fb164211adb4b347fca6e6dbcb835ef34ea6b5e0"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3376,6 +3687,24 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ]
       }
     },
     {
@@ -3504,7 +3833,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:d18b306311440e5cb7d88b7e69ed40fcaa827bda61e9cf34cd0f840579c2efb2"
+        "evidenceSha": "sha256:d18b306311440e5cb7d88b7e69ed40fcaa827bda61e9cf34cd0f840579c2efb2",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3522,7 +3853,8 @@
         "rationale": "q20 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:68fe3f21b0f4a303644b99a2d38832e8668b82755efdf89fdb74aadd38614cd7",
-        "evidenceSha": "sha256:2178b5c4ddd0ff41de653e5f5899af52b5a7e1a87662b52348d04a44a770fbb5"
+        "evidenceSha": "sha256:2178b5c4ddd0ff41de653e5f5899af52b5a7e1a87662b52348d04a44a770fbb5",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3530,13 +3862,17 @@
         "inputBundleSha": "sha256:c90fe16e03042dd66fb965dcc71e15c5adc332681079b6f4274140da84793207",
         "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
-        "conditionDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ],
         "evidenceSha": "sha256:53b240c0eab5b5a4235158702d132bd383836f7686b03131a3d650ae08b91402"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3553,6 +3889,24 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ]
       }
     },
     {
@@ -3582,7 +3936,8 @@
           "subjectFamily": "",
           "standardCourse": "중2 수학",
           "standardUnitKey": "M2-06",
-          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "subUnit": "평행선 사이의 선분의 길이의 비"
         },
         "semanticDecision": {
           "primaryMethod": "사다리꼴의 두 변의 중점을 이은 선분 관계를 이용한다.",
@@ -3675,7 +4030,9 @@
             "role": "ACTIVE_META_FOUNDATION"
           }
         ],
-        "evidenceSha": "sha256:f1cc90d67c7ed466432f5b5b4ca3ff31bbca59aa3ba04179f82a2b06c91672c8"
+        "evidenceSha": "sha256:f1cc90d67c7ed466432f5b5b4ca3ff31bbca59aa3ba04179f82a2b06c91672c8",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3693,7 +4050,8 @@
         "rationale": "q21 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:dfc0b2db3ca123d4fee09bf20080e373d8cec84a8afae940534c17f23a93fa6f",
-        "evidenceSha": "sha256:4cdd749c527ffd85dd403e7b5ef7f8ca4bb5c4a53ccb2dc1d982bfa32d51926b"
+        "evidenceSha": "sha256:4cdd749c527ffd85dd403e7b5ef7f8ca4bb5c4a53ccb2dc1d982bfa32d51926b",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3705,9 +4063,8 @@
         "evidenceSha": "sha256:a6a34f7097b15195e27eb7319026165db870c8c947b4193f825a70cdbcc0c0ac"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3724,6 +4081,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "status": "KEEP",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -3850,7 +4220,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:24bd5fe89966efd4b143c4b57fd79671de395a90e5e5462807dc707f8d29b809"
+        "evidenceSha": "sha256:24bd5fe89966efd4b143c4b57fd79671de395a90e5e5462807dc707f8d29b809",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -3868,7 +4240,8 @@
         "rationale": "q22 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:8a2c8b57e7981f28f9e137bb529dd6755a67355ef2511c96713640df9061b545",
-        "evidenceSha": "sha256:2debbbe65d5107f13005f407d2e351f8f40c5646f47f7832992da8ef2a0f222e"
+        "evidenceSha": "sha256:2debbbe65d5107f13005f407d2e351f8f40c5646f47f7832992da8ef2a0f222e",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -3886,9 +4259,8 @@
         "evidenceSha": "sha256:8f677682ee89c18ebd3d332de696afc7fa15cbe84fbe146b1da5c05295937236"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -3907,6 +4279,25 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [
+          {
+            "key": "CC_TRIANGLE_AREA",
+            "decision": "KEEP_IF_CANONICAL_VALID",
+            "reason": "secondary concept only; excluded from primary semantic input"
+          }
+        ],
+        "conditionDecisions": []
       }
     },
     {
@@ -4033,7 +4424,9 @@
         "mappedTemplateKeys": [],
         "mappedOwnerPack": "",
         "activeMaterializationStatus": "ACTIVE_KEY_MISSING",
-        "evidenceSha": "sha256:867d9623b8613c1edb50494ae03523de0f64165d2c11c96da41c1655b7e1573b"
+        "evidenceSha": "sha256:867d9623b8613c1edb50494ae03523de0f64165d2c11c96da41c1655b7e1573b",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -4051,7 +4444,8 @@
         "rationale": "q23 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:224ad12f409f9173d4018ed666e88a9cfcd112b36c9fb092f06337f2f8c1712e",
-        "evidenceSha": "sha256:eb8fe4cde794dcca74dd29e521ee35b7e4d5b68d3966c9382e42d217781629ac"
+        "evidenceSha": "sha256:eb8fe4cde794dcca74dd29e521ee35b7e4d5b68d3966c9382e42d217781629ac",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -4063,9 +4457,8 @@
         "evidenceSha": "sha256:fbe7ccccf293881a596e74a2c6e1813e38a1357a6dc5c6bfeb02ff9d18834485"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -4082,6 +4475,19 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": []
       }
     },
     {
@@ -4210,7 +4616,9 @@
         ],
         "mappedOwnerPack": "PROBABILITY_STATISTICS",
         "activeMaterializationStatus": "ACTIVE_KEY_PRESENT",
-        "evidenceSha": "sha256:cddb1bdd2b1f5035a13a855b780e3c9444b2c8f25a3b1bbc8e66539506e24301"
+        "evidenceSha": "sha256:cddb1bdd2b1f5035a13a855b780e3c9444b2c8f25a3b1bbc8e66539506e24301",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING"
       },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
@@ -4228,7 +4636,8 @@
         "rationale": "q24 source+verified final solution only fresh difficulty judgement",
         "blindReviewerId": "GPT_M2_RESET_CREATE_B_20260928",
         "decisionSha": "sha256:55ab1957e2ccc5fac95825a2b012780310ac6e5f00942c88b3a6737925fef883",
-        "evidenceSha": "sha256:5489905d9045fa3a21131fbf4083d1e471d5bfa999de346f6b5f5d65e4973c70"
+        "evidenceSha": "sha256:5489905d9045fa3a21131fbf4083d1e471d5bfa999de346f6b5f5d65e4973c70",
+        "reviewer": "GPT_M2_PRIORITY4_R1_D_20260928"
       },
       "semanticMetaEvidence": {
         "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
@@ -4236,13 +4645,17 @@
         "inputBundleSha": "sha256:b97e3ce759f7b9169c8dd823c2be49ad869eec359b998c3755233c3fb32cd0d8",
         "candidateFieldsUsedAsSemanticInput": false,
         "crossConceptDecisions": [],
-        "conditionDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ],
         "evidenceSha": "sha256:e3d80a3776e55b37edc3d1d7bffa3f9d0a81e11112c7972d18bcd89d559da4fb"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "scheduled GPT connector runtime; current authority projection preserved for R1 resolver re-run"
+        "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+        "validatorId": "rpm-active-resolver-v1"
       },
       "candidateMeta": {
         "curriculum": "2015",
@@ -4259,7 +4672,58 @@
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
+      },
+      "r1Resolution": {
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "status": "META_ONLY",
+        "resolvablePending": false,
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "relationalEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "crossConceptDecisions": [],
+        "conditionDecisions": [
+          {
+            "condition": "independence",
+            "decision": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT"
+          }
+        ]
       }
     }
-  ]
+  ],
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "D",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
+  "sourceLane": "B",
+  "r1Gate": {
+    "status": "READY_FOR_R2E",
+    "basicHardHoldCount": 0,
+    "visualComplianceHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "resolvablePending": 0,
+    "projectionMetaOnlyCount": 21,
+    "readyForR2E": true
+  },
+  "rpmSemanticSummary": {
+    "FINAL": 24,
+    "HOLD": 0,
+    "unresolved": 0
+  },
+  "projectionSummary": {
+    "DIRECT_ACTIVE": 3,
+    "META_ONLY": 21,
+    "releaseBlocking": 0
+  },
+  "difficultySummary": {
+    "distribution": {
+      "1": 3,
+      "2": 6,
+      "3": 10,
+      "4": 5,
+      "5": 0
+    },
+    "changedQuestions": []
+  }
 }

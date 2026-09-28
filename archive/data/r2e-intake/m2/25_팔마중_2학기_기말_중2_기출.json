@@ -1,59 +1,80 @@
 {
-  "schema": "JS_ARCHIVE_RESET_CREATE_RECEIPT_v1",
+  "schema": "JS_ARCHIVE_R1_INTAKE_RECEIPT_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "25_팔마중_2학기_기말_중2_기출.js",
   "examUid": "25_팔마중_2학기_기말_중2_기출",
   "grade": "M2",
-  "lane": "B",
-  "stage": "CREATE",
-  "nextState": "READY_FOR_REVIEW",
+  "sourceLane": "B",
+  "lane": "D",
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "D",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
+  "stage": "R1",
   "status": "READY",
+  "nextState": "READY_FOR_R2E",
   "sourceBlobSha": "21327cd871efe317996e234624a6ba0196520dd8",
+  "inputCommit": "0c03d60ce4e346ffbb2338496a9e7ee84d551676",
   "totalQuestions": 24,
   "changedQuestions": [
     1,
-    2,
-    9,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    14,
     21,
     22,
-    23,
     24
   ],
   "changedSvgFiles": [
-    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q2-solution.svg",
-    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q9-solution.svg"
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q1-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q3-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q4-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q5-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q6-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q7-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q8-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q21-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q22-solution.svg",
+    "archive/assets/images/25_팔마중_2학기_기말_중2_기출/q24-solution.svg"
   ],
-  "questionLayoutSummary": {
-    "KEEP": 20,
-    "REFORMAT": 4,
-    "HOLD": 0,
-    "status": "PASS",
-    "modifiedQuestions": [
-      21,
-      22,
-      23,
-      24
-    ]
-  },
   "solutionDispositionSummary": {
     "KEEP": 23,
     "REPAIR": 1,
     "TRUE_HOLD": 0
   },
-  "visualDispositionSummary": {
-    "REBUILD": 1,
-    "ADD": 1,
-    "EXEMPT": 22,
+  "reproducibilitySummary": {
+    "PASS": 23,
+    "FIX": 1,
+    "HOLD": 0
+  },
+  "microLayoutSummary": {
+    "KEEP": 23,
+    "POLISH": 1,
+    "REFORMAT": 0,
     "HOLD": 0,
-    "requiredVisualMissing": 0
+    "polishQuestions": [
+      1
+    ]
+  },
+  "svgDispositionSummary": {
+    "PASS": 12,
+    "KEEP": 2,
+    "ADD": 10,
+    "REBUILD": 0,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "EXEMPT": 12
   },
   "metaDispositionSummary": {
-    "EXISTING_REUSE": 3,
-    "RPM_PRIMARY_MIGRATION_GAP": 21,
-    "TRUE_TAXONOMY_GAP": 0,
-    "ROUTE_OUT": 0,
+    "RPM_SEMANTIC_FINAL": 24,
+    "PROJECTION_DIRECT_ACTIVE": 3,
+    "PROJECTION_META_ONLY": 21,
+    "ADVANCED_META_HOLD": 0,
     "TRUE_HOLD": 0
   },
   "difficultySummary": {
@@ -64,17 +85,52 @@
       "4": 5,
       "5": 0
     },
-    "freshBlindStatus": "PASS"
+    "changedQuestions": []
   },
-  "sourceTextExactParityStatus": "PASS",
-  "choicesExactParityStatus": "PASS",
-  "answerExactParityStatus": "PASS",
-  "problemImageExactParityStatus": "PASS",
-  "questionLayoutStatus": "PASS",
-  "solutionSelfCheckStatus": "PASS",
-  "svgRuleComplianceStatus": "PASS",
-  "createSelfCheckStatus": "PASS",
-  "createSelfCheckPass": true,
+  "questionLayoutSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "status": "PASS",
+    "subjective2UpQuestions": [
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "sourceParitySummary": {
+    "contentExact": "24/24 PASS",
+    "choices": "24/24 PASS",
+    "answer": "24/24 PASS",
+    "imageRefs": "24/24 PASS",
+    "referencedSourceImages": "15/15 PASS"
+  },
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      14,
+      21,
+      22,
+      24
+    ],
+    "falsePassAxes": [
+      "SOLUTION_LITERAL_NEWLINE_Q1",
+      "L2_Q5_Q14_Q21",
+      "VISUAL_REQUIREMENT_FALSE_EXEMPT_Q1_Q3_Q4_Q5_Q6_Q7_Q8_Q21_Q22_Q24"
+    ]
+  },
+  "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_23_REPAIR_1_HOLD_0",
+  "svgRuleComplianceStatus": "PASS_12_VISUALS_V2_V3_RENDER_HANDOFF",
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
@@ -82,47 +138,32 @@
     "meta": 0,
     "requiredVisualMissing": 0
   },
-  "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "r1ZeroResolvable": {
+    "resolvablePending": 0,
+    "rpmSemanticUnresolved": 0,
+    "deterministicBindingMaterializationPending": 0,
+    "safeReuseRpmOnlyPending": 0,
+    "createR1ResolvableConflicts": 0,
+    "projectionMetaOnly": 21
+  },
   "metaResolutionEvidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
-    "sha256": "sha256:0779c6bcc5116a6e2a2a4546b44871eafc30c355d5f7576ab46d6c4c21a0c3a7"
+    "sha256": "sha256:3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81"
   },
   "evidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.evidence.json",
-    "sha256": "sha256:e1005e09d444b8301960170a3368fb7ac81ab5615665c6ff67f5599422256ecc"
+    "sha256": "sha256:db76e6d3c90691344352eefeede05b1aa51c017fd66a855d429ccbb44170e926"
   },
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "validatorSummary": {
-    "status": "CREATE_CONTRACT_PROJECTION_PASS",
-    "officialResolverCli": "NOT_RUN_CONNECTOR_RUNTIME",
-    "questionCount": 24,
-    "basicHardHoldCount": 0,
-    "migrationGapCount": 21
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 21,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
-  "authorityRefs": [
-    {
-      "kind": "SOURCE_BRANCH",
-      "branch": "work/rebuild/m2-full-20260928-source",
-      "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-      "path": "archive/exams/original/middle/m2/2final/25_팔마중_2학기_기말_중2_기출.js",
-      "gitBlobSha": "21327cd871efe317996e234624a6ba0196520dd8"
-    },
-    {
-      "kind": "MAIN_RULE_AUTHORITY",
-      "commit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3"
-    },
-    {
-      "kind": "RPM_CROSSWALK",
-      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-      "gitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
-    },
-    {
-      "kind": "VISUAL_ROUTER",
-      "path": ".codex/skills/apmath-visual-upgrade/SKILL.md",
-      "gitBlobSha": "8edf54ca2c42c35cf913851ccaecc29a615cd516"
-    }
-  ],
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "commitBinding": "SELF",
-  "updatedAt": "2026-09-28T08:09:21+09:00"
+  "updatedAt": "2026-09-28T11:39:11+09:00"
 }
