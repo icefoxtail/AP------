@@ -127,7 +127,7 @@
   },
   "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
   "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_22_REPAIR_2_HOLD_0",
-  "svgRuleComplianceStatus": "PASS_8_TARGETED_ADD_V2_V3_RENDER_HANDOFF",
+  "svgRuleComplianceStatus": "PASS_8_TARGETED_ADD_V2_V3_EXACT_COORDINATE_PARITY_RENDER_HANDOFF",
   "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
@@ -150,7 +150,7 @@
   },
   "evidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_기말_중2_기출.evidence.json",
-    "sha256": "sha256:8d9ec472ac98199b51db5cfff334e2b08726964798c526c3139cc4e02e560ca4"
+    "sha256": "sha256:5e3c5a21f8088699e1f500a99675e28f5c379b6cc7c44dd417524cdca54788c8"
   },
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "validatorSummary": {
@@ -159,9 +159,26 @@
     "rpmSemanticUnresolved": 0,
     "visualComplianceHoldCount": 0,
     "projectionMetaOnlyCount": 15,
-    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME",
+    "postPushSvgEvidenceParity": "PASS"
   },
   "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "commitBinding": "SELF",
-  "updatedAt": "2026-09-28T12:39:39+09:00"
+  "updatedAt": "2026-09-28T12:50:00+09:00",
+  "postPushCorrection": {
+    "reason": "V2_GEOMETRY_COORDINATE_PARITY_REPAIR",
+    "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+    "correctedQuestions": [
+      8,
+      10,
+      12,
+      19,
+      20,
+      22,
+      23,
+      24
+    ],
+    "status": "PASS",
+    "effect": "receipt/evidence and SVG coordinates only; math/source/meta semantic authority unchanged"
+  }
 }

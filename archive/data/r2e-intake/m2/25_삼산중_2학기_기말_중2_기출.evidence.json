@@ -158,24 +158,37 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "27.5 px/unit",
+          "screenCoordinates": [
+            "A=(162.5,80)",
+            "B=(162.5,300)",
+            "C=(437.5,300)",
+            "D=(437.5,80)",
+            "C'=(327.5,80)",
+            "E=(437.5,162.5)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q8-solution.svg",
-        "finalSvgGitBlobSha": "f1bb2760c40c574fe1871c1a353c48e53820d0fb",
-        "finalSvgSha256": "sha256:babd783620e89c4fc68b1d6f3de28c583b9bff0aa525f8c133f47cc57328537f",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "99f58e99f0d8d744908daf146a0ec47bacaf888b",
+        "finalSvgSha256": "sha256:0accaa07dcde5aba5099a29aa9b5ab31bf7015290ba606d7e89544af654f3292",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "BC'=10",
           "EC'=5",
           "C'D=4",
           "6:8:10 and 3:4:5 are proportional"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 9,
@@ -198,24 +211,39 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "26 px/unit",
+          "screenCoordinates": [
+            "A=(183,92)",
+            "B=(105,300)",
+            "C=(417,300)",
+            "D=(495,92)",
+            "M=(261,300)",
+            "N=(456,196)",
+            "P=(235,230.667)",
+            "Q=(365,161.333)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q10-solution.svg",
-        "finalSvgGitBlobSha": "1b81c3225ee3f218e03941d179d8b83ec804eb7c",
-        "finalSvgSha256": "sha256:5c9d513c5333c3cc727fa65fef5c2c7293118b08c521a70b564ea73da9287e5a",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "41ed37249ac02bf8bc31fc4a04fb0068b18880e7",
+        "finalSvgSha256": "sha256:f15c3d60ef7badc55d90f4675130a1e1ea8b410a6ac0ec6070d244299d06dae5",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "M,N are side midpoints",
           "P,Q trisect BD",
           "BP=PQ=QD",
           "[PMNQ]=5S/24"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 11,
@@ -240,14 +268,23 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "32.5 px/unit",
+          "screenCoordinates": [
+            "A=(251.25,85.033)",
+            "B=(105,300)",
+            "C=(495,300)",
+            "D=(178.125,192.516)",
+            "E=(300,300)",
+            "F=(373.125,192.516)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12-solution.svg",
-        "finalSvgGitBlobSha": "d620ed928d8be77a2a83fdd95b8ddf4d9d5930ac",
-        "finalSvgSha256": "sha256:5a03c74ab191f856d6b035f4b4fd3c69a93ab104446cd43714019d0642687fe4",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "f342721bbc68260acf2d9d791cef4ae8d154c8e1",
+        "finalSvgSha256": "sha256:86e0c17a6413dbd8c080b79a14bb613914a4ccad9e9ec98e0e8a95ea897af91a",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "D,E,F are side midpoints",
           "DE=5",
@@ -256,10 +293,14 @@
           "centroids coincide",
           "area ratio 1:4"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 13,
@@ -317,24 +358,41 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "18.333 px/unit",
+          "screenCoordinates": [
+            "A=(300,80)",
+            "B=(190,300)",
+            "C=(410,300)",
+            "G=(300,226.667)",
+            "M=(245,190)",
+            "N=(355,190)",
+            "D=(226.667,226.667)",
+            "E=(373.333,226.667)",
+            "P=(300,190)",
+            "L=(300,300)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q19-solution.svg",
-        "finalSvgGitBlobSha": "2e3e414440e99ec9f22ae54a657484a21fd07f96",
-        "finalSvgSha256": "sha256:5e05a56bab439c066c454c35d609cdf3b4919ab44d443d1655e117919a6e5ab8",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "640f2acae2f0f6a741f980174ce0ffffbf642c1d",
+        "finalSvgSha256": "sha256:61d2b9faf82cdc5e6728d337e9b99262332bee66a2aed71e42071753d674739a",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "G centroid",
           "M,N midpoints",
           "MP:DG:BL=3:4:6",
           "[MDG]:[MPG]=4:3"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 20,
@@ -350,24 +408,37 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "27.5 px/unit",
+          "screenCoordinates": [
+            "B=(121.25,300)",
+            "C=(341.25,300)",
+            "D=(341.25,80)",
+            "A=(341.25,162.5)",
+            "E=(478.75,300)",
+            "H=(378.329,139.326)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution.svg",
-        "finalSvgGitBlobSha": "edb4e6b36163e9e803ea9c0a612ef1201ffc9806",
-        "finalSvgSha256": "sha256:8eafb8fbb8cb022ba64e0de4343efc012cbead8dc610ce9c51dc9d0dbcbdadbd",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "0a05560997edd4d76582a261db254bdbddf90588",
+        "finalSvgSha256": "sha256:5bed6389c879e30d0ff989ba6993a9318986fcda3c9a5f80072f88b2130ea5af",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "DBC and ACE are right isosceles triangles",
           "ABC≡EDC by SAS",
           "DE=AB=c",
           "(a²+b²)/2=c²/2"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 21,
@@ -391,14 +462,26 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "30 px/unit",
+          "screenCoordinates": [
+            "A=(437.308,141.538)",
+            "B=(105,280)",
+            "C=(495,280)"
+          ],
+          "derivedChecks": [
+            "AB_screen=360",
+            "AC_screen=150",
+            "BC_screen=390",
+            "semicircle_radii=180,75,195"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q22-solution.svg",
-        "finalSvgGitBlobSha": "d72654522e94ff900dca15fb091af31e757d78ee",
-        "finalSvgSha256": "sha256:a6cca5e131267f9c606e7e07d69820a5a175d971304cc3fc42abd9857b9c397a",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "fe6377085e91d9911f50694dc4598cddb93aedd1",
+        "finalSvgSha256": "sha256:ddb0e85a9bfbe3d2c0018c52bee12ce89029f22ea2ec7a7ca901342c9c66cd4d",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "AB=12",
           "AC=5",
@@ -406,10 +489,14 @@
           "S1+S2=S3",
           "lune area sum=30"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 23,
@@ -426,14 +513,26 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "27.5 px/unit",
+          "screenCoordinates": [
+            "A=(162.5,80)",
+            "B=(107.5,300)",
+            "C=(437.5,300)",
+            "D=(492.5,80)",
+            "M=(272.5,300)",
+            "N=(465,190)",
+            "E=(235.833,226.667)",
+            "F=(364.167,153.333)",
+            "O=(300,190)"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q23-solution.svg",
-        "finalSvgGitBlobSha": "e5a0fb7d028365e546c0be066de12f2bfc497cf5",
-        "finalSvgSha256": "sha256:7bdc9ae307a75493cf9f4ffa6e5e65848993083de371d938061cae277ea50995",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "9915c92f33fbd519eb2d807a8fc5b7969694d2c2",
+        "finalSvgSha256": "sha256:565747fbd54529356a66f56579ecb989b48a8c45dff4a4ee21b95f7b89f16640",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "BD=18",
           "E,F are centroids",
@@ -441,10 +540,14 @@
           "EO=OF=3",
           "EF=6"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       },
       {
         "sourceOrdinal": 24,
@@ -462,14 +565,30 @@
         "numericPreflight": {
           "engine": "PYTHON_ACTUAL_RUN",
           "status": "PASS",
-          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+          "coordinateTransform": "UNIFORM_SCALE_Y_FLIPPED",
+          "scale": "36.6667 px/unit",
+          "screenCoordinates": [
+            "A=(153.333,80)",
+            "B=(153.333,300)",
+            "C=(446.667,300)",
+            "D=(446.667,80)",
+            "O=(300,190)",
+            "E=(217.5,80)",
+            "F=(382.5,300)"
+          ],
+          "derivedChecks": [
+            "BD·EF=0 in source-coordinate model",
+            "BD=10",
+            "OF=15/4",
+            "EF=15/2"
+          ]
         },
         "builder": "DETERMINISTIC_LITERAL_SVG",
         "candidateOnly": true,
         "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q24-solution.svg",
-        "finalSvgGitBlobSha": "16e176b4fbbcf304d28f3959e62a6d41975db13d",
-        "finalSvgSha256": "sha256:d5d6eed3050ae727ba7a7942b63935c502edf47748a26b74a74d7564abf33768",
-        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "finalSvgGitBlobSha": "85ecf672b089f2f1ebc8e88d9c4d5abe79af8dfd",
+        "finalSvgSha256": "sha256:25e2d763f56d19be23a2b50f6d0ee1b52fd2a6b668e535a33337cf58ceeaf257",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED_EXACT_COORDINATES",
         "observedFacts": [
           "rectangle 8×6",
           "BD=10",
@@ -478,16 +597,35 @@
           "OF=15/4",
           "area=75/2"
         ],
-        "v3Parity": "PASS",
+        "v3Parity": "PASS_AFTER_GEOMETRY_COORDINATE_CORRECTION",
         "solutionVisualDecisiveStepParity": "PASS",
         "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+        "postPushCorrection": {
+          "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486",
+          "reason": "initial SVG literal coordinates were not uniformly transformed for every geometry; corrected to Python-preflight exact uniform coordinate model"
+        }
       }
     ],
     "knownVisualRepairPending": 0,
     "requiredVisualMissing": 0,
     "svgRuleComplianceStatus": "PASS_V1_EXPECTED_BUILD_V2_V3",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "postPushCorrection": {
+      "status": "PASS",
+      "questions": [
+        8,
+        10,
+        12,
+        19,
+        20,
+        22,
+        23,
+        24
+      ],
+      "reason": "V2_GEOMETRY_COORDINATE_PARITY_REPAIR",
+      "priorCommit": "888f2d8b81ee1e84e0e7fdd980bb0957e9531486"
+    }
   },
   "meta": {
     "denominator": 24,
@@ -562,7 +700,18 @@
       "VISUAL_REQUIREMENT_FALSE_EXEMPT",
       "PROBABILITY_FALSE_SOURCE_HOLD_Q18",
       "SUBJECTIVE_2UP_WITHOUT_EVIDENCE_Q21"
-    ]
+    ],
+    "postPushCorrectionQuestions": [
+      8,
+      10,
+      12,
+      19,
+      20,
+      22,
+      23,
+      24
+    ],
+    "postPushCorrectionStatus": "PASS"
   },
   "validator": {
     "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
@@ -570,7 +719,8 @@
     "basicHardHoldCount": 0,
     "visualHoldCount": 0,
     "projectionMetaOnlyCount": 15,
-    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME",
+    "postPushSvgEvidenceParity": "PASS"
   },
   "snapshot": {
     "status": "READY_CANDIDATE_BY_CURRENT_RULE_CONDITIONS",
