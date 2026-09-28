@@ -1,0 +1,1371 @@
+{
+  "schema": "SOURCE_METADATA_RPM_FIRST_PASS_v1",
+  "status": "SOURCE_FIRST_PASS",
+  "metadataReviewRequired": true,
+  "solutionRecheckRequired": true,
+  "examId": "23_매산고_2학기_기말_고2_기하",
+  "sourceDocumentSha256": "sha256:a91ae7d2dbaf4b22d702a036aa4fdc21b73c86199661596d449e71f3a74122de",
+  "scope": "SOURCE_ONLY",
+  "nonfinalWarning": "RPM L3/L4 entries below are tentative source-first-pass candidates only. No question is marked FINAL. Current crosswalk projection gaps are diagnostic metadata and do not block source-only extraction.",
+  "authority": {
+    "rpmReadme": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+    "rpmCanonicalMaster": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "rpmView": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+    "rpmViewSha256": "sha256:4ee9c77e58af0002616d8c460c702cb5ee7603167bd3f102f247a2126f48c264",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+    "crosswalkSha256": "sha256:e0ab34e762c5aa078b386d40f6dab590b1ee17caefbc0e925012ca72a6d75718",
+    "crosswalkSummary": {
+      "recordCount": 82,
+      "DIRECT_ACTIVE": 0,
+      "FAMILY_ACTIVE": 0,
+      "DIRECT_BINDING_GAP": 0,
+      "FAMILY_BINDING_GAP": 0,
+      "RPM_ONLY": 82,
+      "byCurriculum": {
+        "2015": {
+          "RPM_ONLY": 38
+        },
+        "2022": {
+          "RPM_ONLY": 44
+        }
+      }
+    },
+    "activeProjectionPackFiles": [
+      "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json"
+    ],
+    "activeProjectionTaxonomySha256": "sha256:ccd2ba1dd284a45b768905a2ed2f7be43be4690d9ccfa89bdceb870cfca93da9",
+    "activeProjectionBindingsSha256": "sha256:dd0f85adaf2d45c372725d7efcb367f6a6ca026b4b03ecf8a072dfab170e242e",
+    "catalogSha": "sha256:d9ee6aa3224541ddb7171eb5e326519bcc8473ccd3f153c4c208a318a11ea840",
+    "metadataCatalogRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+      },
+      {
+        "path": "archive/data/master_tables/js_archive_tag_master.json",
+        "sha256": "sha256:1ba5319b4358896d5a88453b648771a53edd52a4b63d7377e0a0610b4170afe0"
+      }
+    ]
+  },
+  "coverage": {
+    "questionDenominator": 20,
+    "standardUnitL1Filled": 20,
+    "archiveSubUnitL2KeyFilled": 0,
+    "sourceDifficultyEstimateFilled": 20,
+    "advancedProjectionFieldsFinal": 0,
+    "activeMappingStatus": "RPM_ONLY for H15-GV-05/06/08/09; no record for H15-GV-07"
+  },
+  "items": [
+    {
+      "questionNo": "1",
+      "pageNo": 1,
+      "sourceExcerpt": "위치벡터를 각각 $\\vec{a}$, $\\vec{b}$, $2\\vec{a}+\\vec{b}$라고 할 때, 벡터 $\\overrightarrow{AC}-\\overrightarrow",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-05",
+        "standardUnit": "벡터의 연산",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "벡터의 연산",
+        "l3Candidate": "벡터의 덧셈과 뺄셈",
+        "l4Candidate": "위치벡터",
+        "confidence": "high",
+        "reason": "원문 단서 '위치벡터를 각각'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 2,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "2",
+      "pageNo": 1,
+      "sourceExcerpt": "세 벡터 $\\vec{a}=(1,4)$, $\\vec{b}=(3,-1)$, $\\vec{c}=(x,y)$에 대하여 벡터 $\\vec{c}$와 $3\\vec{a}+2\\vec{b}$가 ",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "평면벡터의 성분과 내적",
+        "l3Candidate": "벡터의 성분",
+        "l4Candidate": "성분 계산",
+        "confidence": "medium",
+        "reason": "원문은 좌표성분으로 주어진 벡터와 3a+2b의 평행 조건에서 x/y를 묻는다. RPM L2 벡터의 성분과 내적 아래에서 성분 계산을 우선 후보로 두며, 해설의 primaryMethod 확인 후 재검한다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 2,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "3",
+      "pageNo": 1,
+      "sourceExcerpt": "두 평면 $\\alpha$, $\\beta$가 이루는 각의 크기가 $30^\\circ$이고 평면 $\\alpha$ 위에 반지름이 5인 원이 있다. 이 원의 평면 $\\beta$ 위로",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "정사영",
+        "confidence": "high",
+        "reason": "원문 단서 '두 평면'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 2,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "4",
+      "pageNo": 1,
+      "sourceExcerpt": "정육면체에서 $\\overline{AG}$와 꼬인위치에 있는 모서리의 개수를 $a$, 평면 $AEHD$와 평행한 모서리의 개수를 $b$라고 할 때, $ab$의 값은? [4.0",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "평행·수직",
+        "confidence": "medium",
+        "reason": "원문 단서 '정육면체'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "5",
+      "pageNo": 2,
+      "sourceExcerpt": "좌표공간의 점 $P(2,10,-5)$를 $x$축에 대하여 대칭이동시킨 점을 $Q$라 하자. 선분 $\\overline{PQ}$를 $3:2$로 내분하는 점을 $R$라 할 때, ",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-09",
+        "standardUnit": "공간좌표",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간좌표",
+        "l3Candidate": "분점과 중점",
+        "l4Candidate": "내분점·외분점",
+        "confidence": "medium",
+        "reason": "원문 단서 '3:2로 내분하는 점'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 2,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "6",
+      "pageNo": 2,
+      "sourceExcerpt": "좌표평면 위의 두 점 $A(4,-2)$, $B(-2,6)$에 대하여 $\\overrightarrow{AP}\\cdot\\overrightarrow{BP}=0$을 만족시키는 점 $",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "평면벡터의 성분과 내적",
+        "l3Candidate": "도형에의 활용",
+        "l4Candidate": "원의 방정식",
+        "confidence": "medium",
+        "reason": "원문 단서 '내적'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "7",
+      "pageNo": 2,
+      "sourceExcerpt": "좌표평면 위 두 직선 $l$, $m$이 다음의 조건을 만족시킨다.\n(가) 직선 $l$은 $(0,2)$를 지나고 법선벡터가 $\\vec{n}=(1,1)$이다.\n(나) 직선 $m$의 방정식은 $2x-y+3=0$이다.\n두 직선 $l$, $m$이 이루는 각 $\\theta$에 대",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-07",
+        "standardUnit": "직선과 원의 방정식",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "UNRESOLVED_SOURCE_FIRST_PASS",
+        "l1": null,
+        "l2": null,
+        "l3Candidate": null,
+        "l4Candidate": null,
+        "confidence": "low",
+        "reason": "원문 단서 '법선벡터'에 대응하는 H15-GV-07 RPM/crosswalk record가 없어 현재 source-only에서 RPM path를 만들지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "NO_RPM_RECORD_FOR_STANDARD_UNIT",
+        "activeProjectionReason": "high2-geometry crosswalk에 이 legacy standardUnitKey가 없다. 임의 ACTIVE mapping을 만들지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "8",
+      "pageNo": 2,
+      "sourceExcerpt": "세 모서리 $\\overline{OA}$, $\\overline{OB}$, $\\overline{OC}$가 서로 수직이고 $\\overline{OA}=1$, $\\overline{O",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "삼수선 정리",
+        "l4Candidate": "거리·각",
+        "confidence": "medium",
+        "reason": "원문 단서 '수선의 발'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "9",
+      "pageNo": 3,
+      "sourceExcerpt": "서로 다른 세 직선 $l$, $m$, $n$과 서로 다른 세 평면 $\\alpha$, $\\beta$, $\\gamma$에 대하여 <보기>에서 옳은 것만의 개수를 구하면? [4.",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "평행·수직",
+        "confidence": "high",
+        "reason": "원문 단서 '꼬인 위치'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "10",
+      "pageNo": 3,
+      "sourceExcerpt": "좌표공간에서 점 $(-3,0,2)$를 중심으로 하고 $yz$평면에 접하는 구의 방정식은 $x^2+y^2+z^2+ax+by+cz+d=0$이다. $a+b+c+d$의 값은? (단",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-09",
+        "standardUnit": "공간좌표",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간좌표",
+        "l3Candidate": "구의 방정식",
+        "l4Candidate": "중심·반지름",
+        "confidence": "high",
+        "reason": "원문 단서 '구의 방정식'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "11",
+      "pageNo": 3,
+      "sourceExcerpt": "좌표공간에서 구 $(x-a)^2+(y-a+1)^2+(z-a+2)^2=49$와 $zx$평면이 만나서 생기는 원의 넓이가 $24\\pi$일 때, 양수 $a$의 값은? [4.6점]",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-09",
+        "standardUnit": "공간좌표",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간좌표",
+        "l3Candidate": "구의 방정식",
+        "l4Candidate": "구와 좌표조건",
+        "confidence": "high",
+        "reason": "원문 단서 '구'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "12",
+      "pageNo": 3,
+      "sourceExcerpt": "좌표평면 위 세 점 $A(2,1)$, $B$, $P$가 다음 조건을 만족시킨다.\n(가) $|\\overrightarrow{OB}|=1$\n(나) $\\overrightarrow{OA}+\\overrightarrow{OB}\\parallel(1,1)$\n(다) $|\\overrigh",
+      "sourceConfidence": "medium",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "평면벡터의 성분과 내적",
+        "l3Candidate": "도형에의 활용",
+        "l4Candidate": "원의 방정식",
+        "confidence": "low",
+        "reason": "원문 단서 '점 P가 그리는 도형'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "standardUnitKey",
+          "reason": "평면벡터 조건과 원 자취·둘레가 결합되어 H15-GV-06/H15-GV-07 중 풀이의 decisive path로 재검한다."
+        },
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "13",
+      "pageNo": 4,
+      "sourceExcerpt": "밑면이 정사각형이고 옆면이 정삼각형인 사각뿔에서 네 옆면의 내접원의 밑면 $ABCD$로의 정사영을 각각 $S_1$, $S_2$, $S_3$, $S_4$라 하자. $\\over",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "정사영 활용",
+        "confidence": "medium",
+        "reason": "원문 단서 '정사영'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "14",
+      "pageNo": 4,
+      "sourceExcerpt": "AB}=4$, $\\angle ABC=\\angle ABD=\\angle DBC=\\frac{\\pi}{3}$, $\\angle BCD=\\frac{\\pi}{2}$인 사면체 $ABCD$",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "삼수선 정리",
+        "l4Candidate": "거리·각",
+        "confidence": "medium",
+        "reason": "원문 단서 '수선의 발'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "15",
+      "pageNo": 5,
+      "sourceExcerpt": "한 모서리의 길이가 3인 정육면체의 내부에 밑면이 정육면체의 한 면과 합동이고 옆면의 모양이 정삼각형인 사각뿔이 들어있다. 평면 $OEH$와 평면 $AEHD$가 이루는 각의",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "이면각",
+        "l4Candidate": "이면각",
+        "confidence": "high",
+        "reason": "원문 단서 '평면 OEH'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "16",
+      "pageNo": 5,
+      "sourceExcerpt": "좌표공간 위의 두 점 $A(1,2,4)$, $B(2,7,3)$와 $yz$평면 위의 점 $P$에 대하여 $\\overline{AP}+\\overline{BP}$의 최솟값을 구하시",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-09",
+        "standardUnit": "공간좌표",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간좌표",
+        "l3Candidate": "공간의 좌표",
+        "l4Candidate": "두 점 사이 거리",
+        "confidence": "medium",
+        "reason": "원문 단서 '최솟값'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "17",
+      "pageNo": 5,
+      "sourceExcerpt": "좌표공간에 평면 $\\alpha$가 있다. 평면 $\\alpha$ 위에 있지 않은 서로 다른 두 점 $A$, $B$의 평면 $\\alpha$ 위로의 정사영을 각각 $A'$, $B",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "정사영 활용",
+        "confidence": "medium",
+        "reason": "원문 단서 '정사영'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "18",
+      "pageNo": 5,
+      "sourceExcerpt": "삼각형 $ABC$의 내부의 한 점 $D$에 대하여 $3\\overrightarrow{DA}+3\\overrightarrow{DB}+2\\overrightarrow{DC}=\\vec",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-05",
+        "standardUnit": "벡터의 연산",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "벡터의 연산",
+        "l3Candidate": "벡터의 실수배",
+        "l4Candidate": "내분·외분",
+        "confidence": "medium",
+        "reason": "원문 단서 '3\\overrightarrow{DA}'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 3,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "19",
+      "pageNo": 6,
+      "sourceExcerpt": "반지름의 길이가 1인 원이 있다. 두 점 $A(-3,0)$, $B(2,0)$와 원 위의 점 $P(a,b)$에 대하여 $b\\ge0$일 때, $\\overrightarrow{AP",
+      "sourceConfidence": "high",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-06",
+        "standardUnit": "평면벡터의 성분과 내적",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "평면벡터",
+        "l2": "평면벡터의 성분과 내적",
+        "l3Candidate": "내적",
+        "l4Candidate": "도형에의 활용",
+        "confidence": "medium",
+        "reason": "원문 단서 '내적'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 4,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    },
+    {
+      "questionNo": "20",
+      "pageNo": 6,
+      "sourceExcerpt": "※ 서술형 문제는 답만 기재할 경우 0점 처리합니다. <서술형2> 아래 그림과 같이 점 $O$가 중심이고 반지름 $OA$의 길이가 3인 원 $C$를 밑면으로 하고 높이 $AB$의 길이가 12인 원기둥이 있다. $\\angle AOP$가 예각이 되도록 하는 원 $C$ 위의",
+      "sourceConfidence": "medium",
+      "archiveFirstPass": {
+        "standardCourse": "기하와 벡터",
+        "standardUnitKey": "H15-GV-08",
+        "standardUnit": "공간도형",
+        "subUnitKey": null,
+        "subUnitStatus": "DEFERRED; no H15 subunit row returned by current source metadata catalog"
+      },
+      "rpmPrimarySourceFirstPass": {
+        "status": "TENTATIVE_SOURCE_FIRST_PASS",
+        "l1": "공간도형과 공간좌표",
+        "l2": "공간도형",
+        "l3Candidate": "직선과 평면",
+        "l4Candidate": "정사영 활용",
+        "confidence": "medium",
+        "reason": "원문 단서 '정사영'와 2015 HIGH 기하 RPM L1/L2/L3/L4 view를 대조해 만든 후보다. 해설의 primaryMethod/decisiveStep를 확인하지 않아 최종으로 확정하지 않는다.",
+        "solutionRecheckRequired": true,
+        "activeProjection": "RPM_ONLY",
+        "activeProjectionReason": "high2-geometry crosswalk의 2015 geometry row는 RPM_ONLY이며 현재 ACTIVE direct/family materialization이 없다. projection gap은 SOURCE_ONLY 생성을 막지 않는다."
+      },
+      "difficultyEstimate": {
+        "bucket": 5,
+        "confidence": "low",
+        "status": "SOURCE_FIRST_PASS; solution recheck required",
+        "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "2015 표준단원 하위 key가 source-metadata catalog 및 현재 crosswalk에 확인되지 않아 임의 key를 만들지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "templateKey",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "solution이 없어 decisiveStep·필요 관계 개념·조건을 판단할 수 없으므로 해설 재조정까지 미결."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "question text와 시험지 배점/구성만으로 만든 low-confidence first-pass estimate; 독립 풀이 후 재조정."
+        },
+        {
+          "field": "tags",
+          "reason": "source keyword만으로 자유 태그를 부여하지 않고 풀이 및 canonical evidence 뒤 확정한다."
+        }
+      ]
+    }
+  ],
+  "metadataCourseNote": {
+    "printedCourse": "기하",
+    "archiveLegacyCurriculum": "2015",
+    "canonicalStandardCourse": "기하와 벡터",
+    "reason": "legacy H15-GV standardUnit catalog associates these H15 keys with standardCourse 기하와 벡터; official title and examId remain 기하."
+  }
+}

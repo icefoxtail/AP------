@@ -1,0 +1,61 @@
+{
+  "schema": "SOURCE_PILOT_STAGE_TIMING_v1",
+  "timezone": "UTC",
+  "taskStartExact": "NOT_CAPTURED",
+  "firstTimestampedArtifact": "2026-09-28T09:45:57Z",
+  "finalEvidenceFreeze": "2026-09-28T10:27:20Z",
+  "measuredElapsedFromFirstArtifact": "00:41:23",
+  "estimatedOverallElapsedIncludingUntimedPreflight": "about 00:54:00",
+  "estimateBasis": "first Git/Notion/rule preflight was performed before first timestamped artifact; several minutes are not clock-instrumented, so this total is approximate.",
+  "stages": [
+    {
+      "stage": "RULE_PREFLIGHT_NOTION_IDENTITY",
+      "start": "before 2026-09-28T09:45:57Z",
+      "end": "2026-09-28T09:45:57Z",
+      "elapsed": "not separately instrumented",
+      "basis": "First shell preflight happened before the first task-owned artifact timestamp; exact task-start clock was not captured."
+    },
+    {
+      "stage": "SOURCE_PDF_PREPARE",
+      "start": "2026-09-28T09:45:57Z",
+      "end": "2026-09-28T09:46:03Z",
+      "elapsed": "00:00:06",
+      "basis": "source_manifest.json creation and vision request generatedAt"
+    },
+    {
+      "stage": "FULL_PAGE_REVIEW_INVENTORY_TRANSCRIPTION",
+      "start": "2026-09-28T09:46:03Z",
+      "end": "2026-09-28T09:59:12Z",
+      "elapsed": "00:13:09",
+      "basis": "page images inspected; inventory and first assembled extraction file timestamps"
+    },
+    {
+      "stage": "SOURCE_TEXT_FREEZE_METADATA_AND_PIPELINE_REPAIR",
+      "start": "2026-09-28T09:59:12Z",
+      "end": "2026-09-28T10:15:07Z",
+      "elapsed": "00:15:55",
+      "basis": "Q17 zoom correction, source metadata first-pass report timestamp, extractor completion"
+    },
+    {
+      "stage": "QUESTION_LAYOUT_BUILD_CROP_REVIEW",
+      "start": "2026-09-28T10:08:10Z",
+      "end": "2026-09-28T10:14:59Z",
+      "elapsed": "00:06:49",
+      "basis": "visual crop creation through last corrected crop; overlaps source-text metadata work"
+    },
+    {
+      "stage": "SOURCE_TEXT_EXACT_PARITY_FULL_PAGE_RECHECK",
+      "start": "2026-09-28T10:19:23Z",
+      "end": "2026-09-28T10:22:02Z",
+      "elapsed": "00:02:39",
+      "basis": "parity receipt file timestamps; all six full pages reread after generation"
+    },
+    {
+      "stage": "RPM_FIRST_PASS_AND_FINAL_EVIDENCE",
+      "start": "2026-09-28T10:23:54Z",
+      "end": "2026-09-28T10:27:20Z",
+      "elapsed": "00:03:26",
+      "basis": "RPM metadata report and item-level receipt timestamps"
+    }
+  ]
+}
