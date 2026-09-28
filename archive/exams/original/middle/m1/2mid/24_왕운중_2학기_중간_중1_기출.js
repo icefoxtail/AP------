@@ -376,11 +376,24 @@ window.questionBank = [
       "‘엇각의 크기가 서로 같으면 두 직선은 평행하다.’는 원리가 사용되었다."
     ],
     "answer": "④",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ④이다.",
+    "solution": "평행선을 작도할 때에는 원래 교점 C에서 같은 반지름의 호를 그리고, 점 P에서 그 호를 다시 그린다. 이어 원래 호의 두 교점 사이 거리를 새 호에 옮겨 대응점을 만든 뒤 P를 통과하도록 연결한다. D 원본의 표시와 길이·각 관계를 대조하면 이 작도 순서와 맞지 않는 진술은 ④이다.",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_CONVERSE_ANGLE_CHECK",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "l3Disposition": "EXISTING_L3_REUSE",
+    "l4Disposition": "ASSIGNED",
+    "resolverEvidenceSha": "sha256:da9945725b7a2b3bd447d48f26688a9b65475c2ad140b1d1cf7f1909211cc3fa",
+    "difficultyEvidenceSha": "sha256:adbaf5d720c945b803c9c3eac444aa2a4f4a2750d5d72368e86afc1b7f17b263"
   },
   {
     "id": 11,
