@@ -34,7 +34,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COORDINATE_POINT_READING",
+    "templateKey": "TPL_COORDINATE_POINT_READING_CORE"
   },
   {
     "id": 2,
@@ -67,7 +69,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_COORDINATE_POINT_CONSTRAINT",
+    "templateKey": "TPL_M1_COORDINATE_POINT_CONSTRAINT_AXIS_ZERO_COMPONENT"
   },
   {
     "id": 3,
@@ -100,7 +104,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+    "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM"
   },
   {
     "id": 4,
@@ -133,7 +139,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-COORDINATE_PLANE",
     "subUnit": "좌표평면",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_COORDINATE_POINT_READING",
+    "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT"
   },
   {
     "id": 5,
@@ -159,10 +167,12 @@ window.questionBank = [
     "solution": "[키포인트] 그릇의 단면이 넓어질수록 같은 양의 물을 부어도 높이는 천천히 올라간다.\n물컵은 위로 갈수록 넓어지는 모양이다.\n따라서 물을 일정한 양으로 계속 넣으면 처음에는 물의 높이가 빠르게 올라가지만, 위로 갈수록 단면이 넓어지므로 높이가 올라가는 속도는 점점 느려진다.\n즉 그래프는 계속 올라가되 기울기가 점점 완만해지는 곡선이어야 한다.\n②는 점점 가팔라지는 곡선, ③은 일정한 기울기의 직선이므로 알맞지 않고, ④와 ⑤는 중간에 기울기가 꺾이는 그래프이므로 알맞지 않다.\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q05.png",
     "imageSize": "tall",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+    "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_CORE"
   },
   {
     "id": 6,
@@ -191,7 +201,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
   },
   {
     "id": 7,
@@ -222,10 +234,12 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] $y$가 $x$에 정비례하면 $y=kx$이고, 한 쌍의 값으로 비례상수 $k$를 먼저 구한다.\n$x=2$일 때 $y=5$이므로 $5=k \\times 2$에서 $k=\\dfrac{5}{2}$이다.\n즉 $y=\\dfrac{5}{2}x$이다.\n$x=1$일 때 $y=a$이므로 $a=\\dfrac{5}{2}$이다.\n$x=4$일 때 $y=b$이므로 $b=\\dfrac{5}{2} \\times 4=10$이다.\n$x=c$일 때 $y=25$이므로 $25=\\dfrac{5}{2}c$에서 $c=10$이다.\n따라서 $ab-c=\\dfrac{5}{2} \\times 10-10=25-10=15$이므로 정답은 ⑤이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q07.png",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
   },
   {
     "id": 8,
@@ -256,10 +270,12 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 그래프가 지나는 점의 좌표를 $y=ax$에 대입하여 비례상수를 먼저 구한다.\n그림에서 그래프는 점 $(-3,\\,-2)$를 지나므로 $-2=a \\times (-3)$에서 $a=\\dfrac{2}{3}$이다.\n즉 $y=\\dfrac{2}{3}x$이다.\n또 그래프는 점 $(2,\\,b)$를 지나므로 $b=\\dfrac{2}{3} \\times 2=\\dfrac{4}{3}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q08.png",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT"
   },
   {
     "id": 9,
@@ -292,7 +308,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
+    "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CORE"
   },
   {
     "id": 10,
@@ -321,10 +339,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] $y$가 $x$에 반비례하면 $y=\\dfrac{k}{x}$이고, $xy$의 값이 항상 일정하다.\n$y$가 $x$에 반비례하므로 $y=\\dfrac{k}{x}$로 놓을 수 있다.\n$x=6$일 때 $y=-3$이므로 $-3=\\dfrac{k}{6}$에서 $k=-18$이다.\n즉 $y=-\\dfrac{18}{x}$이다.\n$x=-9$를 대입하면 $y=-\\dfrac{18}{-9}=2$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M1-04-COORDINATE_PLANE",
-    "subUnit": "좌표평면",
+    "subUnitKey": "M1-04-GRAPH_RELATION",
+    "subUnit": "그래프와 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION"
   },
   {
     "id": 11,
@@ -359,7 +379,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_SEGMENT_RAY_OBJECT_IDENTITY"
   },
   {
     "id": 12,
@@ -394,7 +416,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_TRANSFER"
   },
   {
     "id": 13,
@@ -429,7 +453,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE",
+    "templateKey": "TPL_M1_POINT_TO_LINE_PERPENDICULAR_DISTANCE_CORE"
   },
   {
     "id": 14,
@@ -437,9 +463,9 @@ window.questionBank = [
     "category": "기본도형",
     "originalCategory": "기본도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-05",
-    "standardUnit": "기본도형",
-    "standardUnitOrder": 5,
+    "standardUnitKey": "M1-07",
+    "standardUnit": "입체도형의 성질",
+    "standardUnitOrder": 7,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -461,10 +487,12 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 전개도를 접었을 때 겹쳐지는 꼭짓점을 먼저 찾은 뒤 위치 관계를 판단한다.\n전개도를 접으면 가운데 가로줄의 네 정사각형이 옆면이 되고, 위쪽 정사각형과 아래쪽 정사각형이 각각 윗면과 아랫면이 된다.\n이때 겹쳐지는 꼭짓점은 $A$와 $I$와 $M$, $B$와 $H$, $J$와 $L$, $C$와 $G$, $D$와 $F$이다.\n모서리 $KJ$와 평행한 모서리는 $\\overline{AN}$, $\\overline{BC}$, $\\overline{DE}$의 세 개이다.\n한편 모서리 $IH$는 $A$와 $I$, $B$와 $H$가 겹쳐지므로 모서리 $AB$와 같은 모서리이다.\n$\\overline{AN}$은 점 $A$에서, $\\overline{BC}$는 점 $B$에서 모서리 $IH$와 만나므로 꼬인 위치가 아니다.\n$\\overline{DE}$는 모서리 $IH$와 만나지도 않고 평행하지도 않으므로 꼬인 위치에 있다.\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q14.png",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-07-SOLID_FIGURE",
+    "subUnit": "입체도형",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_RELATION"
   },
   {
     "id": 15,
@@ -497,10 +525,12 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 직선의 평행 여부는 서로 다른 두 교점에서 생기는 동위각 또는 엇각으로 판단한다.\n①: $\\angle b$와 $\\angle f$는 두 교점에서 각각 왼쪽 아래에 있는 각이므로 동위각이다. 크기가 같으면 $l \\parallel m$이다. 옳다.\n②: $\\angle c$와 $\\angle e$는 두 직선 사이에서 서로 반대쪽에 있는 각이므로 엇각이다. 크기가 같으면 $l \\parallel m$이다. 옳다.\n③: $\\angle f$와 $\\angle h$는 모두 직선 $m$과 $n$의 같은 교점에서 생기는 각이므로 맞꼭지각이고, 항상 크기가 같다. 즉 이 조건은 $l$과 $m$의 평행과 아무 관계가 없다. 옳지 않다.\n④: $\\angle a$의 동위각은 $\\angle e$이고 $\\angle g$는 $\\angle e$의 맞꼭지각이므로, $l \\parallel m$이면 $\\angle a=\\angle e=\\angle g$이다. 옳다.\n⑤: $\\angle b$와 $\\angle e$는 두 직선 사이에서 같은 쪽에 있는 각이므로, $l \\parallel m$이면 그 합은 $180^\\circ$이다. 옳다.\n따라서 정답은 ③이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q15.png",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
+    "templateKey": "TPL_M1_PARALLELISM_CONVERSE_CORE"
   },
   {
     "id": 16,
@@ -532,10 +562,12 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 접는 선은 원래의 변과 접힌 변이 이루는 각을 이등분하고, 직사각형의 마주 보는 두 변은 평행하다.\n직사각형의 위쪽 변과 아래쪽 변이 평행하므로, 직선 $ABD$를 자르는 직선으로 보면 $\\angle ABC$와 $\\angle BDG$는 동위각이다.\n따라서 $\\angle BDG=\\angle ABC=68^\\circ$이다.\n$\\overline{CD}$를 따라 접었으므로 아래쪽 변 위의 반직선 $DG$는 접힌 뒤 반직선 $DB$로 옮겨진다.\n즉 $\\overline{CD}$는 $\\angle BDG$를 이등분하므로 $\\angle CDG=\\dfrac{1}{2} \\times 68^\\circ=34^\\circ$이다.\n한편 점 $D$에서 아래쪽 변은 평각을 이루므로 $\\angle GDB+\\angle BDE+\\angle EDF=180^\\circ$이다.\n$68^\\circ+60^\\circ+\\angle EDF=180^\\circ$에서 $\\angle EDF=52^\\circ$이다.\n따라서 $\\angle CDG+\\angle EDF=34^\\circ+52^\\circ=86^\\circ$이므로 정답은 ①이다.",
     "image": "assets/images/25_왕의중_2학기_중간_중1_수학/q16.png",
-    "subUnitKey": "M1-05-POSITION_RELATION",
-    "subUnit": "위치 관계",
+    "subUnitKey": "M1-05-BASIC_FIGURE",
+    "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_FOLDED_RECTANGLE_PARALLEL_TRANSFER"
   },
   {
     "id": 17,
@@ -569,7 +601,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ARC_CHORD_ANGLE_COPY"
   },
   {
     "id": 18,
@@ -602,7 +636,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+    "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES"
   },
   {
     "id": 19,
@@ -634,7 +670,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_UNIQUE_TRIANGLE_DATA"
   },
   {
     "id": 20,
@@ -669,7 +707,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION"
   },
   {
     "id": 21,
@@ -698,7 +738,9 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO"
   },
   {
     "id": 22,
@@ -727,7 +769,9 @@ window.questionBank = [
     "subUnitKey": "M1-04-GRAPH_RELATION",
     "subUnit": "그래프와 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+    "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS"
   },
   {
     "id": 23,
@@ -783,6 +827,8 @@ window.questionBank = [
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_SAS_TRANSFER"
   }
 ];
