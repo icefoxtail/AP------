@@ -6,7 +6,7 @@ import { classifyAppServerMessage, completedTurnFor, completedTurnFromThreadRead
 import { applyVisualApplicabilityToDefects, bindProviderDefectsToLaunchScope, validatePacketVisualAndAuthority } from '../provider-bridge.mjs';
 import { visualApplicabilityForQuestion } from '../review-isolation-runner.mjs';
 import { getOrCreateLaunchContext, phaseContextForLaunch } from '../../../../alive/runtime/provider-bridge/codex-appserver-launch-state.mjs';
-import { nativeImageInput } from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
+import { bindU2DefectsToPacketAssetSha, nativeImageInput } from '../../../../alive/runtime/provider-bridge/codex-appserver-adapter.mjs';
 import { bytesSha } from '../canonical.mjs';
 
 test('provider auditor output arrays bind explicit JSON Schema item types', () => {
@@ -153,6 +153,14 @@ test('Codex app-server launch registry reuses only same launchId/requestSha and 
 test('Codex adapter emits the native image contract directly', () => {
   const input = nativeImageInput('data:image/png;base64,AA==');
   assert.deepEqual(input, { type: 'image', url: 'data:image/png;base64,AA==', detail: 'original' });
+});
+
+test('U2 adapter binds a subjectSha-only visual finding to its unique packet artifact UID', () => {
+  const assetSha = `sha256:${'a'.repeat(64)}`;
+  const packet = { phase: 'U2', payload: [{ questionUid: 'exam|10', artifact: { path: 'assets/q10.svg', sha256: assetSha, nativeSha256: `sha256:${'b'.repeat(64)}` } }] };
+  const bound = bindU2DefectsToPacketAssetSha(packet, [{ type: 'visual_defect', subjectSha: assetSha, detail: 'label overlap' }]);
+  assert.deepEqual(bound, [{ type: 'visual_defect', subjectSha: assetSha, detail: 'label overlap', questionUid: 'exam|10', subjectShaBinding: { status: 'PASS', matchedField: 'artifact.sha256|nativeSha256', questionUid: 'exam|10' } }]);
+  assert.deepEqual(bindU2DefectsToPacketAssetSha(packet, [{ type: 'visual_defect', subjectSha: `sha256:${'c'.repeat(64)}` }]), [{ type: 'visual_defect', subjectSha: `sha256:${'c'.repeat(64)}` }]);
 });
 
 function finalizedApplicability(status = 'VISUAL_REQUIRED') {
