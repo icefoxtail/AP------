@@ -1,0 +1,124 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW2_EVIDENCE_v1",
+  "examFile": "24_향림중_2학기_기말_중2_기출.js",
+  "examUid": "24_향림중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "stage": "REVIEW2",
+  "status": "REVIEW2_DONE",
+  "nextState": "READY_FOR_COMMIT",
+  "lane": "REVIEW2-2",
+  "inventoryOrdinal": 8,
+  "partitionRule": "ordinal 2,5,8,11... (mod 3 = 2), fixed/no-renumber",
+  "reviewScope": "FULL_INDEPENDENT",
+  "blindReview": true,
+  "reviewBaseBranch": "work/intake/m2",
+  "reviewBaseCommit": "628b0c93206f7310480a64bcaffdbb274ee71064",
+  "reviewWorkBranch": "work/middle/m2/24-hyangrim-2final",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceBlobSha": "0c3bea75cc0c886434c536361c7f2f52c53b2965",
+  "baselineExamBlobSha": "2446c5e2b9caed211654cc5e0bcca35ec5a85458",
+  "finalExamBlobSha": "2446c5e2b9caed211654cc5e0bcca35ec5a85458",
+  "totalQuestions": 24,
+  "sourceParity": {
+    "content": "24/24 PASS",
+    "choices": "24/24 PASS",
+    "answer": "24/24 PASS",
+    "imageRefs": "24/24 PASS",
+    "referencedSourceImages": "17/17 GIT_BLOB_EXACT_PASS"
+  },
+  "independentReview": {
+    "mathAnswer": "24/24 PASS",
+    "solutionReproducibility": "24/24 PASS",
+    "smallBoard": "24/24 PASS",
+    "curriculumTerminology": "24/24 PASS",
+    "studentLanguage": "24/24 PASS",
+    "microLayout": "24/24 PASS; grid 24/24 retained",
+    "jsIntegrity": "24/24 PASS"
+  },
+  "svgReview": {
+    "linked": 17,
+    "codeFirstChecked": 17,
+    "keep": 13,
+    "repair": 4,
+    "finalPass": 17,
+    "hold": 0,
+    "repairs": [
+      {
+        "question": 2,
+        "kind": "CLIPPING_LAYOUT",
+        "before": {
+          "gitBlob": "fcc987cf2e8d722e4f7c7ae24e7018c30639b6e7",
+          "viewBoxHeight": 260,
+          "summaryY": 258
+        },
+        "after": {
+          "gitBlob": "2cf633d811d3d6594747854b6a35662bfdda4c1f",
+          "viewBoxHeight": 280,
+          "summaryY": 268
+        },
+        "result": "TARGETED_RENDER_PASS"
+      },
+      {
+        "question": 4,
+        "kind": "MATH_PARITY_LABELS",
+        "before": {
+          "gitBlob": "0c663d6b61f22c60f2ef5c02d688dff36b805837",
+          "issue": "SVG labels used AB=24/BC=7 and corner topology inconsistent with source"
+        },
+        "after": {
+          "gitBlob": "e409a11f3716c8844602d2072ef3cfb2d2f080c3",
+          "fix": "source topology A(top-left),B(bottom-left),C(bottom-right),D(top-right); AB=7, BC=24, AC=25"
+        },
+        "result": "TARGETED_RENDER_PASS"
+      },
+      {
+        "question": 7,
+        "kind": "LABEL_OVERLAP_CLIPPING",
+        "before": {
+          "gitBlob": "589e15dc4c137f7b33cce3c35a5d6926449de40d",
+          "viewBoxHeight": 260,
+          "issue": "bottom endpoint/length/summary labels overlapped and clipped"
+        },
+        "after": {
+          "gitBlob": "2cc68927a1d0352f4ea5a9ff6961524dd7f49d25",
+          "viewBoxHeight": 280,
+          "fix": "separated F/B/C/E, BF/CE and summary labels"
+        },
+        "result": "TARGETED_RENDER_PASS"
+      },
+      {
+        "question": 13,
+        "kind": "LABEL_OVERLAP_CLIPPING",
+        "before": {
+          "gitBlob": "d4f39ded84cdbe820a13e1666ec9da33d15e0cad",
+          "issue": "M and bottom summary crowded/clipping risk"
+        },
+        "after": {
+          "gitBlob": "ef6ac1d9224db1b4ba1707df192d8c6de1c4ae76",
+          "fix": "repositioned M label and summary"
+        },
+        "result": "TARGETED_RENDER_PASS"
+      }
+    ]
+  },
+  "changedQuestions": [
+    2,
+    4,
+    7,
+    13
+  ],
+  "changedFiles": [
+    "archive/assets/images/24_향림중_2학기_기말_중2_기출/q2-solution.svg",
+    "archive/assets/images/24_향림중_2학기_기말_중2_기출/q4-solution.svg",
+    "archive/assets/images/24_향림중_2학기_기말_중2_기출/q7-solution.svg",
+    "archive/assets/images/24_향림중_2학기_기말_중2_기출/q13-solution.svg"
+  ],
+  "examJsChanged": false,
+  "solutionTextChanged": false,
+  "unresolvedItems": [],
+  "holdCount": 0,
+  "readyForCommit": true,
+  "targetedRenderNote": "q2/q4/q7/q13 rendered after repair; geometry, label separation, and clipping checked PASS. Local renderer font fallback did not affect geometry validation.",
+  "updatedAt": "2026-09-28T19:10:00+09:00"
+}
