@@ -273,7 +273,7 @@
     }
   },
   "dispatchHold": "PROVIDER_DEFECT_SCOPE_REQUIRED",
-  "decision": "Review4 remains historical partial HOLD. Q16 source conflict is resolved in the candidate’s favor. Fresh review5b froze with 17 targets/0 authority defects, 34 local machine checks and six captures; FINAL_AUDIT stopped at U2 because the provider used an unsupported defect scope field. No retry or release closure.",
+  "decision": "Preserve review5b partial audit HOLD. Q16 source conflict is resolved and Q9/Q14/Q17 confirmed label collisions were repaired without geometry changes. Fresh current-core review7 is frozen and review-ready with 17 targets/0 authority defects, 34 machine checks, and 6 captures. No provider launch until the workbook thread releases the shared slot.",
   "postFreezeChange": {
     "event": "q11 label-only solution SVG repair requested by independent visual review",
     "currentCandidateSha256": "sha256:a24fd1772f81191c5779e4af93f4fb4039e01fd25af95be1e9894bc9f078e652",
@@ -380,5 +380,26 @@
       "retry": "NOT_DISPATCHED"
     },
     "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/fresh_final_audit_partial_hold_review5b.json"
+  },
+  "freshReview7": {
+    "status": "FROZEN_REVIEW_READY",
+    "runId": "visang-geometry-major-sol-review7-20260929",
+    "revision": 2,
+    "inputSha": "sha256:cdd4fcf26550b6a99a0cbb2d93f64b4834ad3632c41b0e5dd8b3cf665fcb6dee",
+    "freezeSha": "sha256:ed9b9192fc37d84b545706191363be3a2d584163686b477d4e07b229d07f42f0",
+    "targets": 17,
+    "authorityDefects": 0,
+    "machineChecks": "34/34 PASS",
+    "renderCaptures": "6/6 PASS",
+    "readability": "NOT_TESTED",
+    "currentCoreCommit": "3484318a24b07e880688b44e7585df7eba10edc7",
+    "providerAction": "NOT_STARTED_WAITING_FOR_WORKBOOK_SLOT_RELEASE",
+    "nextAction": "FINAL_AUDIT / REVIEW_READY"
+  },
+  "providerU2VisualRepairReview7": {
+    "status": "3_OF_3_COLLISIONS_CONFIRMED_AND_LABEL_ONLY_REPAIRED",
+    "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/u2_q9_q14_q17_visual_repairs.json",
+    "localFactSvgAudit": "PASS_LOCAL_MACHINE_ONLY",
+    "independentPipelineV2": "PENDING"
   }
 }

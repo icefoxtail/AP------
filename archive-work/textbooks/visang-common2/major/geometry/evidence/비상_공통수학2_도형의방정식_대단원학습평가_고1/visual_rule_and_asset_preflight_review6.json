@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "VISUAL_RULE_AND_ASSET_PREFLIGHT_review6_v1",
+  "status": "PASS_PREFLIGHT_LOCAL_GEOMETRY_ONLY",
+  "sourceWorkBatch": "visang-geometry-major-sol-review5b-20260929",
+  "currentSharedCoreCommit": "3484318a24b07e880688b44e7585df7eba10edc7",
+  "rulePackSha256": "sha256:b5207bfa4b318d30279e13a3b9aa86ee46b236bd064766032c6b5b2da18b35ee",
+  "rulePackStatus": "PASS",
+  "repositorySkillVerification": "PASS",
+  "ruleRefs": [
+    {
+      "path": "docs/rules/00_RULES_INDEX.md",
+      "declaredVersion": "INDEX",
+      "bytes": 36254,
+      "sha256": "sha256:9b3382dfb3185460f0063deb349b17c86b3fe3ef085e34a0cade57319585b5c0",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "declaredVersion": "v2.6",
+      "bytes": 95451,
+      "sha256": "sha256:35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
+      "declaredVersion": "v1.2.10",
+      "bytes": 200952,
+      "sha256": "sha256:69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/공통파이프라인_실행계약_v1.md",
+      "declaredVersion": "v1",
+      "bytes": 8150,
+      "sha256": "sha256:052ac837de80f4728a4500adb4f0fd222a14164bd4c6ffe74bfdfb283605258a",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/작업방식_적응형배치루프_v1.md",
+      "declaredVersion": "v1",
+      "bytes": 9468,
+      "sha256": "sha256:ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "declaredVersion": "v3.0",
+      "bytes": 57487,
+      "sha256": "sha256:5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "declaredVersion": "v1.1",
+      "bytes": 105170,
+      "sha256": "sha256:6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md",
+      "declaredVersion": "v1",
+      "bytes": 8227,
+      "sha256": "sha256:7335b90e96f1d9d01f945666275901b51757b30eebb82bedc4044ce2b0bac978",
+      "manifestEntryFound": true
+    },
+    {
+      "path": "archive/tools/pipeline-core/README.md",
+      "declaredVersion": "current pipeline-core v2",
+      "bytes": 18798,
+      "sha256": "sha256:afc61809f9a37b5d62dccad6d45ca19166724b3fe919702c72ceee412ef01a12",
+      "manifestEntryFound": false
+    },
+    {
+      "path": "archive/tools/pipeline-core/AGENT_BUDGET.md",
+      "declaredVersion": "current v2 budget contract",
+      "bytes": 18362,
+      "sha256": "sha256:2f764f34e1548bf20606043e8c9cf2a9777a4d75c7337e42e743c0236ed6efc5",
+      "manifestEntryFound": false
+    }
+  ],
+  "unitOverlay": "No applicable UNIT_OVERLAY file is present under docs/rules for this target; 공통수학2.md is taxonomy, not UNIT_OVERLAY. Qualification-ready geometry visual overlay explicitly says it is not a UNIT_OVERLAY and is not adopted.",
+  "negativeCalibrationRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/golden_negative_calibration_20260929.json",
+  "repairEvidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/u2_q9_q14_q17_visual_repairs.json",
+  "candidateJsSha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
+  "manifest": {
+    "assetCount": 17,
+    "status": "PASS",
+    "mismatchedDisplayNos": []
+  },
+  "localVisualAudit": {
+    "status": "PASS_LOCAL_MACHINE_ONLY",
+    "assetCount": 15,
+    "geometryParityPassCount": 14,
+    "nonGeometryNotAdapterChecked": [
+      {
+        "displayNo": 13,
+        "visualType": "case-table"
+      }
+    ]
+  },
+  "confirmedRepairs": [
+    {
+      "displayNo": 9,
+      "assetRef": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q09-solution.svg",
+      "beforeSha256": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+      "afterSha256": "sha256:7c0e89b54fa28a6e275230360de668a6e2bca5daed8124d358056148c605ba02",
+      "geometryPrimitivesUnchanged": true,
+      "factSemanticsUnchanged": true
+    },
+    {
+      "displayNo": 14,
+      "assetRef": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q14-solution.svg",
+      "beforeSha256": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+      "afterSha256": "sha256:d3b207ee5cda0e68ced440c601b5301e21708c1a149c3a8ac9c0739f83da4bcb",
+      "geometryPrimitivesUnchanged": true,
+      "factSemanticsUnchanged": true
+    },
+    {
+      "displayNo": 17,
+      "assetRef": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q17-solution-reviewed.svg",
+      "beforeSha256": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+      "afterSha256": "sha256:d31c9c7da6ef2eefddceb122234811be93c7554e77d7e8102913982dbb5f5848",
+      "geometryPrimitivesUnchanged": true,
+      "factSemanticsUnchanged": true
+    }
+  ],
+  "geometryPrimitiveOrFactDrift": [],
+  "independentVisualReview": "PENDING_FRESH_PIPELINE_V2_CLOSURE",
+  "review5bFinalAuditStatus": "HOLD_PARTIAL_U1_U2_SCOPE_BINDING_FAILURE",
+  "freshRun": {
+    "runId": "visang-geometry-major-sol-review7-20260929",
+    "revision": 2,
+    "inputSha": "sha256:cdd4fcf26550b6a99a0cbb2d93f64b4834ad3632c41b0e5dd8b3cf665fcb6dee",
+    "freezeSha": "sha256:ed9b9192fc37d84b545706191363be3a2d584163686b477d4e07b229d07f42f0",
+    "workBatchStatus": "FROZEN",
+    "targetCount": 17,
+    "machineChecks": "34/34 PASS",
+    "captures": "6/6 PASS",
+    "providerLaunch": "NOT_STARTED"
+  }
+}
