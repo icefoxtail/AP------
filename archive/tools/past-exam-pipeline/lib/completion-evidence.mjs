@@ -115,16 +115,27 @@ function validateMetaRow({ row, question, identity, solutionReview, repoRoot, re
     candidateMeta, semanticMetaEvidence: row.semanticMetaEvidence, validatorReceipt: row.validatorReceipt, repoRoot, registry,
   }) : { status: 'FAIL', errors: ['META_RESOLVER_EVIDENCE_MISSING'] };
   advancedErrors.push(...semanticFinalization.errors.filter(error => error !== 'META_FINAL_CANDIDATE_REQUIRED').map(error => `${error}:${key}`));
-  const disposition = resolution?.disposition || 'ROUTE_OUT';
-  const advancedEligible = !advancedErrors.length && !structural.errors.length
-    && semanticFinalization.status === 'PASS' && resolution?.advancedMetaEligible === true;
+  const effectiveResolution = resolverCheck.recomputed || resolution || {};
+  const disposition = effectiveResolution.disposition || 'ROUTE_OUT';
+  const rpmSemanticStatus = effectiveResolution.semanticStatus || 'UNAVAILABLE';
+  const projectionStatus = effectiveResolution.projectionStatus || 'NOT_ATTEMPTED';
+  const semanticFinal = rpmSemanticStatus === 'FINAL' && !advancedErrors.length && !structural.errors.length
+    && semanticFinalization.status === 'PASS';
+  const projectionReady = projectionStatus === 'PROJECTION_REUSE';
+  const advancedEligible = semanticFinal && projectionReady;
   return {
     disposition,
+    rpmSemanticStatus,
+    projectionStatus,
+    semanticFinal,
+    projectionReady,
     advancedEligible,
-    rpmPathExists: Boolean(resolution?.rpmPath),
-    crosswalkRecordId: resolution?.crosswalkRecordId || '',
+    rpmPathExists: Boolean(effectiveResolution.rpmPath),
+    crosswalkRecordId: effectiveResolution.crosswalkRecordId || '',
+    canonicalOwnerPack: effectiveResolution.ownerPack || effectiveResolution.legacyProjection?.canonicalOwnerPack || '',
+    bindingOwnerPack: effectiveResolution.bindingOwnerPack || effectiveResolution.legacyProjection?.bindingOwnerPack || '',
     advancedErrors: [...new Set(advancedErrors)],
-    basicMetaErrors: structural.errors.map(error => `${error}:${key}`),
+    basicMetaErrors: structural.errors.map(error => error + ':' + key),
   };
 }
 
@@ -223,22 +234,44 @@ export function validateCompletionEvidence({ candidateFile, questions, manifest,
   if (!identityData || !fs.existsSync(identityPath) || metaData?.solutionIdentityEvidenceSha !== digest(fs.readFileSync(identityPath))) metaEvidenceErrors.push('META_EVIDENCE_SOLUTION_IDENTITY_STALE');
   advancedMetaErrors.push(...metaEvidenceErrors);
   const allAdvanced = metaResults.length === questions.length && metaResults.every(row => row.advancedEligible);
-  const migrationGapCount = metaResults.filter(row => row.disposition === 'RPM_PRIMARY_MIGRATION_GAP').length;
-  const trueTaxonomyGapCount = metaResults.filter(row => row.disposition === 'TRUE_TAXONOMY_GAP').length;
-  const routeOutCount = metaResults.filter(row => row.disposition === 'ROUTE_OUT').length;
+  const rpmSemanticCounts = {
+    FINAL: metaResults.filter(row => row.rpmSemanticStatus === 'FINAL').length,
+    HOLD: metaResults.filter(row => row.rpmSemanticStatus === 'HOLD').length,
+    UNAVAILABLE: metaResults.filter(row => row.rpmSemanticStatus !== 'FINAL' && row.rpmSemanticStatus !== 'HOLD').length,
+  };
+  const legacyProjectionCounts = {
+    PROJECTION_REUSE: metaResults.filter(row => row.projectionStatus === 'PROJECTION_REUSE').length,
+    PROJECTION_BINDING_PENDING: metaResults.filter(row => row.projectionStatus === 'PROJECTION_BINDING_PENDING').length,
+    PROJECTION_UNMATERIALIZED: metaResults.filter(row => row.projectionStatus === 'PROJECTION_UNMATERIALIZED').length,
+    META_ONLY_COMPATIBILITY_PENDING: metaResults.filter(row => row.projectionStatus === 'META_ONLY_COMPATIBILITY_PENDING').length,
+  };
+  const projectionPendingCount = legacyProjectionCounts.PROJECTION_BINDING_PENDING
+    + legacyProjectionCounts.PROJECTION_UNMATERIALIZED + legacyProjectionCounts.META_ONLY_COMPATIBILITY_PENDING;
+  const trueMetaHoldCount = rpmSemanticCounts.HOLD;
+  const invalidCanonicalProjectionCount = metaResults.filter(row => row.basicMetaErrors.length > 0).length;
+  // RPM path finality is the semantic completion contract. Legacy PT/TPL, exact
+  // binding, relational metadata, and difficulty validation remain separate
+  // advanced/projection checks and must not turn a final RPM path into a HOLD.
+  const semanticComplete = questions.length > 0 && rpmSemanticCounts.FINAL === questions.length;
   const advancedMetaEligible = allAdvanced && metaData?.status === 'PASS' && advancedMetaErrors.length === 0 && evidenceErrors.length === 0;
   return {
     errors: [...new Set(evidenceErrors)],
     solutionIdentityEvidenceSha: identityData && digest(fs.readFileSync(identityPath)),
     metaDecisionEvidenceSha: metaData && digest(fs.readFileSync(metaPath)),
     metaEligibility: {
-      schema: 'PAST_EXAM_META_ELIGIBILITY_v1',
+      schema: 'PAST_EXAM_META_ELIGIBILITY_v2',
       basicArchiveEligible: false,
+      rpmSemantic: rpmSemanticCounts,
+      legacyProjection: legacyProjectionCounts,
+      rpmSemanticComplete: semanticComplete,
+      trueMetaHoldCount,
+      projectionPendingCount,
+      resolvablePending: trueMetaHoldCount + rpmSemanticCounts.UNAVAILABLE + invalidCanonicalProjectionCount,
       advancedMetaEligible,
-      status: advancedMetaEligible ? 'PASS' : migrationGapCount ? 'MIGRATION_GAP' : 'HOLD',
-      migrationGapCount,
-      trueTaxonomyGapCount,
-      routeOutCount,
+      status: trueMetaHoldCount > 0 ? 'TRUE_META_HOLD' : semanticComplete ? 'PASS' : 'HOLD',
+      migrationGapCount: projectionPendingCount,
+      trueTaxonomyGapCount: trueMetaHoldCount,
+      routeOutCount: metaResults.filter(row => row.disposition === 'ROUTE_OUT').length,
       advancedErrors: [...new Set(advancedMetaErrors)],
       solutionIdentityEvidenceSha: identityData && digest(fs.readFileSync(identityPath)),
       metaDecisionEvidenceSha: metaData && digest(fs.readFileSync(metaPath)),
@@ -248,7 +281,6 @@ export function validateCompletionEvidence({ candidateFile, questions, manifest,
     },
   };
 }
-
 export function createMetaDecisionDraft({ questions, manifest, inventory, solutionIdentityEvidenceSha }) {
   const inventoryByKey = new Map((inventory?.questions || []).map(row => [row.sourceIdentityKey, row]));
   return {

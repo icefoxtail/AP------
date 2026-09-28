@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { git, sha, atomicWrite } from '../common.mjs';
 import { acquireLease } from '../lock.mjs';
+import { classification } from '../read-only-r1-adapter.mjs';
 import { inventory } from '../snapshot.mjs';
 import { finalGate, REQUIRED_GATES } from '../final-gate.mjs';
 import { objectSha } from '../../pipeline-core/canonical.mjs';
@@ -77,6 +78,20 @@ function fixture() {
   write(receiptPath, receipt); const ready = commit([receiptPath, metaEvidencePath], 'R1 READY'); git(repo, ['push', 'origin', 'work/intake/m2']);
   return { root, repo, write, commit, examFile, sourceArchiveFile, question, metaResolutionEvidence, main, receiptPath, receipt, ready };
 }
+test('R1 Meta disposition separates RPM semantic HOLD from legacy projection pending', () => {
+  const pendingProjection = classification({ disposition: 'RPM_SEMANTIC_FINAL', semanticStatus: 'FINAL',
+    projectionStatus: 'PROJECTION_BINDING_PENDING', reasonCode: 'DIRECT_BINDING_GAP' }, 'rpmMigrationGaps');
+  assert.equal(pendingProjection.releaseEffect, 'META_ONLY');
+  assert.equal(pendingProjection.category, 'RPM_PROJECTION_PENDING');
+  const unmaterialized = classification({ disposition: 'RPM_SEMANTIC_FINAL', semanticStatus: 'FINAL',
+    legacyProjection: { status: 'PROJECTION_UNMATERIALIZED', reasonCode: 'RPM_ONLY_COMPATIBILITY_PROJECTION' } }, 'rpmMigrationGaps');
+  assert.equal(unmaterialized.releaseEffect, 'META_ONLY');
+  const trueHold = classification({ disposition: 'TRUE_META_HOLD', semanticStatus: 'HOLD',
+    rpmSemantic: { status: 'HOLD', reasonCode: 'RPM_PRIMARY_PATH_AMBIGUOUS' } }, 'trueHold');
+  assert.equal(trueHold.releaseEffect, 'RELEASE_BLOCKING');
+  assert.equal(trueHold.category, 'RPM_SEMANTIC_HOLD');
+});
+
 test('grade snapshot is immutable; late and malformed receipts do not block healthy input', () => {
   const f = fixture(), first = inventory(f.repo, { metaAuthorityRoot: currentRepoRoot }); assert.equal(first.status, 'READY'); assert.equal(first.candidates[0].inputCommit, f.ready);
   const intakeItem = f.metaResolutionEvidence.items[0];
@@ -224,10 +239,38 @@ test('final gate needs current bytes, complete evidence, HOLD Zero and integrity
   const invalidDisposition = structuredClone(ledger); invalidDisposition.items[0].disposition = 'NOT_A_FINAL_DISPOSITION';
   assert.ok(finalGate(f.repo, invalidDisposition, validation, { validateMetaReceipt: metaValidator }).errors.includes('FINAL_DISPOSITION_INVALID'));
   for (const code of ['META_PACK_GAP_HOLD', 'META_CANONICAL_HOLD', 'RPM_PRIMARY_MIGRATION_GAP', 'PROPOSED_NEW_L3', 'PROPOSED_NEW_L4', 'CROSS_CONCEPT_CANDIDATE']) {
-    const modified = structuredClone(ledger); modified.items[0].disposition = code; assert.equal(finalGate(f.repo, modified, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
+    const modified = structuredClone(ledger);
+    modified.items[0].projectionStatus = 'META_ONLY_COMPATIBILITY_PENDING';
+    modified.items[0].legacyProjectionReason = code;
+    modified.items[0].unresolvedItems = [code];
+    assert.equal(finalGate(f.repo, modified, validation, { validateMetaReceipt: metaValidator }).status, 'PASS',
+      'projection-only status must not be interpreted as a release blocker: ' + code);
   }
-  const deep = structuredClone(ledger); deep.items[0].reviewMode = 'DEEP'; assert.equal(finalGate(f.repo, deep, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
+  const trueMetaHold = structuredClone(ledger);
+  trueMetaHold.items[0].disposition = 'TRUE_META_HOLD';
+  trueMetaHold.items[0].status = 'HOLD';
+  trueMetaHold.items[0].unresolvedItems = ['TRUE_META_HOLD'];
+  assert.equal(finalGate(f.repo, trueMetaHold, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');  const deep = structuredClone(ledger); deep.items[0].reviewMode = 'DEEP'; assert.equal(finalGate(f.repo, deep, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
   const proposal = structuredClone(ledger); proposal.crossConceptCandidates = ['unresolved']; assert.equal(finalGate(f.repo, proposal, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
+  const projectionPending = structuredClone(ledger);
+  projectionPending.rpmMigrationGaps = [1];
+  projectionPending.unresolvedItems = ['q1 RPM_PRIMARY_MIGRATION_GAP'];
+  projectionPending.remainingItems = ['q1 ADVANCED_META_HOLD'];
+  projectionPending.items[0].status = 'HOLD';
+  projectionPending.items[0].disposition = 'ADVANCED_META_HOLD';
+  projectionPending.items[0].metaDisposition = 'RPM_SEMANTIC_FINAL';
+  projectionPending.metaResolutionReceipt.items[0] = {
+    questionUid: 'qid-test-001',
+    disposition: 'RPM_SEMANTIC_FINAL',
+    resolverEvidence: { disposition: 'RPM_SEMANTIC_FINAL', semanticStatus: 'FINAL', projectionStatus: 'PROJECTION_BINDING_PENDING', sourceFingerprint: 'fixture' },
+  };
+  const projectionValidation = structuredClone(validation);
+  for (const name of ['rpmCrosswalk', 'l3l4Parent', 'globalCanonical', 'curriculumBinding', 'compiledRuntimeParity',
+    'runtimeArchiveParity', 'affectedUidMetadata', 'archive2CatalogIndexJoin', 'metaHoldZero']) projectionValidation.gates[name].status = 'FAIL';
+  delete projectionValidation.gates.metaHoldZero.evidenceRef;
+  const semanticProjectionValidator = () => ({ status: 'PASS', errors: [], questionCount: 1,
+    rpmSemantic: { FINAL: 1, HOLD: 0, UNAVAILABLE: 0 }, legacyProjection: { PROJECTION_BINDING_PENDING: 1 }, projectionPendingCount: 1 });
+  assert.equal(finalGate(f.repo, projectionPending, projectionValidation, { validateMetaReceipt: semanticProjectionValidator }).status, 'PASS');
   const wrongIdentity = structuredClone(ledger); wrongIdentity.items[0].ordinal = 2; assert.equal(finalGate(f.repo, wrongIdentity, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');
   const missing = structuredClone(validation); delete missing.gates.compiledRuntimeParity; assert.equal(finalGate(f.repo, ledger, missing, { validateMetaReceipt: metaValidator }).status, 'FAIL');
   f.write(evidence.path, 'changed dependency'); assert.equal(finalGate(f.repo, ledger, validation, { validateMetaReceipt: metaValidator }).status, 'FAIL');

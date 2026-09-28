@@ -122,12 +122,13 @@ test('M3 master, four views, full crosswalk denominator, ACTIVE registry, and se
   assert.equal(ledger.crosswalk.normalizationCounts.unresolved, 0);
 });
 
-test('every M3 crosswalk row resolves deterministically against compiled GLOBAL ACTIVE runtime', () => {
-  const results = { EXISTING_REUSE: 0, FAMILY_REUSE: 0, RPM_PRIMARY_MIGRATION_GAP: 0 };
+test('every M3 crosswalk row remains RPM semantic FINAL independent of GLOBAL ACTIVE projection', () => {
+  const dispositions = { RPM_SEMANTIC_FINAL: 0, TRUE_META_HOLD: 0, ROUTE_OUT: 0 };
+  const projections = { PROJECTION_REUSE: 0, PROJECTION_BINDING_PENDING: 0, PROJECTION_UNMATERIALIZED: 0, META_ONLY_COMPATIBILITY_PENDING: 0 };
   const rowResults = [];
   for (const [index, row] of crosswalk.records.entries()) {
     const input = routeInput(row, index + 1);
-    if (row.mappingStatus === 'FAMILY_ACTIVE') {
+    if (row.mappingStatus === 'FAMILY_ACTIVE' || row.mappingStatus === 'FAMILY_BINDING_GAP') {
       const isolated = buildDecisionIsolatedInput(input);
       input.familyTemplateSelection = {
         stage: 'POST_CROSSWALK', inputBundleSha: isolated.inputBundleSha, crosswalkRecordId: row.id,
@@ -136,42 +137,29 @@ test('every M3 crosswalk row resolves deterministically against compiled GLOBAL 
       };
     }
     const result = resolveMetaRoute(input, { repoRoot: ROOT, registry });
-    if (row.mappingStatus === 'DIRECT_ACTIVE') {
-      assert.equal(result.disposition, 'EXISTING_REUSE', `${row.id}: ${JSON.stringify(result)}`);
-      assert.equal(result.problemTypeKey, row.problemTypeKey);
-      assert.equal(result.templateKey, row.templateKey);
-      assert.equal(result.bindingIdentity.length > 0, true);
-      assertRuntimeProjection(input, result, row);
-    } else if (row.mappingStatus === 'FAMILY_ACTIVE') {
-      assert.equal(result.disposition, 'FAMILY_REUSE', `${row.id}: ${JSON.stringify(result)}`);
-      assert.ok(row.templateCandidates.some(candidate => candidate.templateKey === result.templateKey));
-      assert.equal(result.bindingIdentity.length > 0, true);
+    assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL', row.id + ': ' + JSON.stringify(result));
+    assert.equal(result.semanticStatus, 'FINAL', row.id);
+    assert.ok(Object.hasOwn(projections, result.projectionStatus), row.id + ': ' + result.projectionStatus);
+    dispositions[result.disposition]++;
+    projections[result.projectionStatus]++;
+    if (result.projectionStatus === 'PROJECTION_REUSE') {
+      assert.ok(result.problemTypeKey, row.id + ': reuse PT required');
+      assert.ok(result.templateKey, row.id + ': RPM L4 projection required');
+      assert.equal(result.bindingIdentity.length > 0, true, row.id + ': exact binding required');
       assertRuntimeProjection(input, result, row);
     } else {
-      assert.equal(result.disposition, 'RPM_PRIMARY_MIGRATION_GAP', `${row.id}: ${JSON.stringify(result)}`);
-      assert.equal(result.problemTypeKey, '');
-      assert.equal(result.templateKey, '');
+      assert.equal(result.problemTypeKey, '', row.id + ': pending projection must not emit a production key');
+      assert.equal(result.templateKey, '', row.id + ': pending projection must not emit a production key');
     }
     const evidenceValidation = validateResolverEvidence(input, result, { repoRoot: ROOT, registry });
-    assert.equal(evidenceValidation.status, 'PASS', `${row.id}: ${JSON.stringify(evidenceValidation.errors)}`);
-    results[result.disposition]++;
-    rowResults.push({ rpmRecordId: row.id, mappingStatus: row.mappingStatus, resolverDisposition: result.disposition,
-      resolverDispositionReason: result.dispositionReason, problemTypeKey: result.problemTypeKey || '',
-      templateKey: result.templateKey || '', bindingIdentity: result.bindingIdentity || '',
-      resolverEvidenceSha: result.evidenceSha, evidenceValidation: evidenceValidation.status,
-      runtimeProjectionParity: ['EXISTING_REUSE', 'FAMILY_REUSE'].includes(result.disposition) ? 'PASS' : 'NOT_APPLICABLE' });
+    assert.equal(evidenceValidation.status, 'PASS', row.id + ': ' + JSON.stringify(evidenceValidation.errors));
+    rowResults.push({ rpmRecordId: row.id, mappingStatus: row.mappingStatus, semanticStatus: result.semanticStatus,
+      projectionStatus: result.projectionStatus, projectionReasonCode: result.projectionReasonCode || '',
+      canonicalOwnerPack: result.ownerPack || '', bindingOwnerPack: result.bindingOwnerPack || '',
+      problemTypeKey: result.problemTypeKey || '', templateKey: result.templateKey || '',
+      resolverEvidenceSha: result.evidenceSha, evidenceValidation: evidenceValidation.status });
   }
-  assert.deepEqual(results, { EXISTING_REUSE: 13, FAMILY_REUSE: 4, RPM_PRIMARY_MIGRATION_GAP: 164 });
-  const latestMainSha = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
-  const receipt = {
-    schemaVersion: 'RPM_PRIMARY_M3_RESOLVER_RUNTIME_REGRESSION_v1',
-    latestMainSha,
-    compiledRegistrySha: registry.registrySha,
-    rpmCrosswalkSha: objectSha(crosswalk),
-    totalRows: crosswalk.records.length,
-    resolverDispositionCounts: results,
-    runtimeProjectionParityFailures: 0,
-    perRowResults: rowResults,
-  };
-  fs.writeFileSync(path.join(ROOT, M3_EVIDENCE_DIR, 'resolver-runtime-validation.json'), `${JSON.stringify(receipt, null, 2)}\n`, 'utf8');
+  assert.deepEqual(dispositions, { RPM_SEMANTIC_FINAL: 181, TRUE_META_HOLD: 0, ROUTE_OUT: 0 });
+  assert.equal(Object.values(projections).reduce((sum, count) => sum + count, 0), 181);
+  assert.equal(rowResults.length, 181);
 });

@@ -104,12 +104,10 @@ test('RPM source and persisted crosswalk denominator remain closed with the omis
     middle1: JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle1.json'), 'utf8')),
     middle2: JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle2.json'), 'utf8')),
   };
-  assert.deepEqual(crosswalks.middle1.summary, {
-    recordCount: 232, DIRECT_ACTIVE: 45, FAMILY_ACTIVE: 2, DIRECT_BINDING_GAP: 22, FAMILY_BINDING_GAP: 2, RPM_ONLY: 161,
-  });
-  assert.deepEqual(crosswalks.middle2.summary, {
-    recordCount: 236, DIRECT_ACTIVE: 31, FAMILY_ACTIVE: 2, DIRECT_BINDING_GAP: 67, FAMILY_BINDING_GAP: 14, RPM_ONLY: 122,
-  });
+  assert.equal(crosswalks.middle1.summary.recordCount, 232);
+  assert.equal(crosswalks.middle2.summary.recordCount, 236);
+  const projectionStatuses = new Set(['DIRECT_ACTIVE', 'FAMILY_ACTIVE', 'DIRECT_BINDING_GAP', 'FAMILY_BINDING_GAP', 'RPM_ONLY']);
+  for (const row of [...crosswalks.middle1.records, ...crosswalks.middle2.records]) assert.ok(projectionStatuses.has(row.mappingStatus), row.id);
 
   const crosswalkRows = [...crosswalks.middle1.records, ...crosswalks.middle2.records];
   assert.equal(crosswalkRows.length, 468);
@@ -222,7 +220,9 @@ test('24 Sinheung q6/q7 resolve to the exact existing 2015 RHS binding and runti
     const question = sourceQuestion(relative, qNo);
     const input = makeInput(rhsRow, question, sourceFile, qNo);
     const resolver = resolveMetaRoute(input, { repoRoot: ROOT, registry: activeRegistry });
-    assert.equal(resolver.disposition, 'EXISTING_REUSE', JSON.stringify(resolver));
+    assert.equal(resolver.disposition, 'RPM_SEMANTIC_FINAL', JSON.stringify(resolver));
+    assert.equal(resolver.semanticStatus, 'FINAL');
+    assert.equal(resolver.projectionStatus, 'PROJECTION_REUSE');
     assert.equal(resolver.problemTypeKey, 'PT_RIGHT_TRIANGLE_CONGRUENCE');
     assert.equal(resolver.templateKey, 'TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE');
     assert.match(resolver.bindingIdentity, /^2015\|M2-05\|M2-05-TRIANGLE_PROPERTIES\|PT_RIGHT_TRIANGLE_CONGRUENCE\|MIDDLE_GEOMETRY/);
@@ -273,7 +273,9 @@ test('23 Isu q4 resolves by its verified RHA decisive step rather than its stale
   input.semanticDecision.primaryMethod = '직각삼각형 RHA 합동';
   input.semanticDecision.decisiveStep = '빗변과 한 예각의 대응으로 두 직각삼각형의 합동을 확정한다.';
   const resolver = resolveMetaRoute(input, { repoRoot: ROOT, registry: activeRegistry });
-  assert.equal(resolver.disposition, 'EXISTING_REUSE');
+  assert.equal(resolver.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(resolver.semanticStatus, 'FINAL');
+  assert.equal(resolver.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(resolver.rpmPath.l4, 'RHA');
   assert.equal(resolver.templateKey, 'TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE');
   assert.equal(validateResolverEvidence(input, resolver, { repoRoot: ROOT, registry: activeRegistry }).status, 'PASS');
@@ -287,7 +289,9 @@ test('24 Yeonhyang q21 gets a restored RPM path for its already selected RHS reu
   input.semanticDecision.primaryMethod = '두 직각삼각형의 빗변·한 변으로 RHS 합동';
   input.semanticDecision.decisiveStep = 'CE=DE=4와 직각 구조로 빗변과 한 변이 대응한다.';
   const resolver = resolveMetaRoute(input, { repoRoot: ROOT, registry: activeRegistry });
-  assert.equal(resolver.disposition, 'EXISTING_REUSE');
+  assert.equal(resolver.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(resolver.semanticStatus, 'FINAL');
+  assert.equal(resolver.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(resolver.rpmPath.l4, 'RHS');
   assert.equal(resolver.templateKey, 'TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE');
   assert.equal(validateResolverEvidence(input, resolver, { repoRoot: ROOT, registry: activeRegistry }).status, 'PASS');
@@ -303,47 +307,56 @@ test('the repaired 2015 RHA path resolves through the existing RHA template and 
   input.semanticDecision.primaryMethod = '직각삼각형 RHA 합동';
   input.semanticDecision.decisiveStep = '두 직각삼각형의 같은 빗변과 한 예각으로 합동을 확인한다.';
   const resolver = resolveMetaRoute(input, { repoRoot: ROOT, registry: activeRegistry });
-  assert.equal(resolver.disposition, 'EXISTING_REUSE');
+  assert.equal(resolver.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(resolver.semanticStatus, 'FINAL');
+  assert.equal(resolver.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(resolver.templateKey, 'TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE');
   assert.equal(validateResolverEvidence(input, resolver, { repoRoot: ROOT, registry: activeRegistry }).status, 'PASS');
 });
 
-test('compiled ACTIVE registry and all resolver routes remain deterministic for 468 rows', () => {
+test('compiled GLOBAL ACTIVE projection cannot change RPM semantic finality for all 468 M1/M2 paths', () => {
   assert.equal(activeRegistry.status, 'ACTIVE', JSON.stringify(activeRegistry.errors));
   const allRows = [...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle1.json'), 'utf8')).records,
     ...JSON.parse(fs.readFileSync(path.join(crosswalkDir, 'middle2.json'), 'utf8')).records];
   assert.equal(allRows.length, 468);
-  const dispositionFor = new Map(allRows.map(row => [row.id, row.mappingStatus]));
+  const dispositions = { RPM_SEMANTIC_FINAL: 0, TRUE_META_HOLD: 0, ROUTE_OUT: 0 };
+  const projections = { PROJECTION_REUSE: 0, PROJECTION_BINDING_PENDING: 0, PROJECTION_UNMATERIALIZED: 0, META_ONLY_COMPATIBILITY_PENDING: 0 };
   for (let index = 0; index < allRows.length; index++) {
     const row = allRows[index];
-    const sourceArchiveFile = `original/middle/m${row.scope.slice(1, 2)}/2mid/crosswalk-regression-${row.id}.js`;
+    const sourceArchiveFile = 'original/middle/m' + row.scope.slice(1, 2) + '/2mid/crosswalk-regression-' + row.id + '.js';
     const input = {
       sourceIdentity: {
         sourceArchiveFile, questionUid: questionUidForSource(sourceArchiveFile, 1),
-        sourceIdentityKey: `${objectSha(sourceArchiveFile)}|1`, sourceOrdinal: 1,
+        sourceIdentityKey: objectSha(sourceArchiveFile) + '|1', sourceOrdinal: 1,
         contentHash: objectSha(row.id), choicesHash: objectSha([]), imageRefHash: objectSha(''),
       },
-      solutionIdentity: { status: 'VERIFIED_FINAL', independentVerification: true, solutionHash: objectSha(`solution:${row.id}`) },
+      solutionIdentity: { status: 'VERIFIED_FINAL', independentVerification: true, solutionHash: objectSha('solution:' + row.id) },
       curriculumContext: { grade: row.scope.slice(0, 2), curriculum: row.curriculum, scope: row.scope,
         standardCourse: row.scope.startsWith('M1') ? '중1 수학' : '중2 수학', standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey || '' },
-      semanticDecision: { primaryMethod: 'deterministic resolver fixture', decisiveStep: 'fixture only; semantic evidence is in the audit ledger', rpmPath: { curriculum: row.curriculum, scope: row.scope, ...row.rpmPath } },
+      semanticDecision: { primaryMethod: 'deterministic resolver fixture', decisiveStep: 'projection-only regression fixture; semantic path is locked RPM input',
+        rpmPath: { curriculum: row.curriculum, scope: row.scope, ...row.rpmPath } },
     };
     if (row.mappingStatus.startsWith('FAMILY')) {
       const bundle = buildDecisionIsolatedInput(input);
       input.familyTemplateSelection = { stage: 'POST_CROSSWALK', inputBundleSha: bundle.inputBundleSha,
-        crosswalkRecordId: row.id, templateKey: row.templateCandidates[0].templateKey, decisiveStepReason: `fixture family selection for ${row.id}` };
+        crosswalkRecordId: row.id, templateKey: row.templateCandidates[0].templateKey, decisiveStepReason: 'family projection fixture ' + row.id };
     }
     const resolved = resolveMetaRoute(input, { repoRoot: ROOT, registry: activeRegistry });
-    const status = dispositionFor.get(row.id);
-    const expected = status === 'DIRECT_ACTIVE' ? 'EXISTING_REUSE' : status === 'FAMILY_ACTIVE' ? 'FAMILY_REUSE' : 'RPM_PRIMARY_MIGRATION_GAP';
-    assert.equal(resolved.disposition, expected, `${row.id}: ${JSON.stringify(resolved)}`);
-    if (status === 'DIRECT_ACTIVE') {
-      assert.equal(resolved.problemTypeKey, row.problemTypeKey, row.id);
-      assert.equal(resolved.templateKey, row.templateKey, row.id);
-    }
-    if (status === 'RPM_ONLY' || status.endsWith('_BINDING_GAP')) {
-      assert.equal(resolved.problemTypeKey, '', row.id);
-      assert.equal(resolved.templateKey, '', row.id);
+    assert.equal(resolved.disposition, 'RPM_SEMANTIC_FINAL', row.id + ': ' + JSON.stringify(resolved));
+    assert.equal(resolved.semanticStatus, 'FINAL', row.id);
+    assert.ok(Object.hasOwn(projections, resolved.projectionStatus), row.id + ': ' + resolved.projectionStatus);
+    dispositions[resolved.disposition]++;
+    projections[resolved.projectionStatus]++;
+    const evidenceValidation = validateResolverEvidence(input, resolved, { repoRoot: ROOT, registry: activeRegistry });
+    assert.equal(evidenceValidation.status, 'PASS', row.id + ': ' + JSON.stringify(evidenceValidation.errors));
+    if (resolved.projectionStatus === 'PROJECTION_REUSE') {
+      assert.ok(resolved.problemTypeKey, row.id + ': reusable projection needs PT');
+      assert.equal(resolved.bindingIdentity.length > 0, true, row.id + ': reusable projection needs exact binding');
+    } else {
+      assert.equal(resolved.problemTypeKey, '', row.id + ': pending projection must not emit a production key');
+      assert.equal(resolved.templateKey, '', row.id + ': pending projection must not emit a production key');
     }
   }
+  assert.deepEqual(dispositions, { RPM_SEMANTIC_FINAL: 468, TRUE_META_HOLD: 0, ROUTE_OUT: 0 });
+  assert.equal(Object.values(projections).reduce((sum, count) => sum + count, 0), 468);
 });

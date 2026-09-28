@@ -17,13 +17,14 @@ This contract supersedes the prior R2E release gate while retaining current CREA
 - RPM L3/L4가 deterministic하면 semantic Meta는 FINAL이다. crosswalk/PT/TPL/binding은 이후 compatibility projection이며 부재·stale·binding gap이 semantic FINAL을 무효화하지 않는다.
 - CREATE self-check와 R1 independent review는 RPM semantic judgement를 독립 검증한다. `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP/RPM_ONLY`는 projection 상태로만 기록한다.
 - READY_FOR_R2E의 zero-resolvable gate는 **RPM semantic unresolved=0**을 뜻한다. PT/TPL projection/binding 미완료는 `resolvablePending`, `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`로 세지 않는다.
+- `resolvablePending`에는 true RPM semantic HOLD와 production에 실제 기록된 invalid canonical key만 포함한다. Missing projection, exact binding, runtime parity, 또는 owner-pack 차이는 포함하지 않는다.
 - 실제 source/math/RPM semantic ambiguity만 itemized semantic HOLD로 남긴다.
 - visual/self-check/source/blob/denominator evidence 요구는 기존 current contract를 유지한다.
 - legacy `RPM_PRIMARY_MIGRATION_GAP` enum이 필요한 receipt는 `META_ONLY` compatibility finding으로 해석한다.
 
-The R1 receipt should keep semantic and projection summaries separate whenever the schema permits, e.g. `rpmSemanticStatus` and `projectionStatus`. Older schemas may retain legacy fields, but projection gaps must not be interpreted as semantic HOLD.
+The R1 receipt should keep semantic and projection summaries separate whenever the schema permits: `rpmSemantic` (`FINAL`, `HOLD`, `UNAVAILABLE`), `legacyProjection`, `invalidCanonicalProjectionCount`, and `resolvablePending`. Older schemas may retain legacy fields, but projection gaps must not be interpreted as semantic HOLD or counted as `resolvablePending`.
 
-### Frozen legacy READY_FOR_R2E cohort### Frozen legacy READY_FOR_R2E cohort
+### Frozen legacy READY_FOR_R2E cohort
 
 The existing READY_FOR_R2E cohort present when this contract is adopted is processed from its frozen R1 authority. Its receipts, exam JS and sidecars are read-only whether Meta evidence is absent, old or current. R2E does not backfill or regenerate those sidecars, and does not reclassify normal R1 PASS rows. This compatibility path exists to aggregate and classify the legacy HOLD backlog, including existing RPM-to-L3/L4 mappings.
 
@@ -61,7 +62,7 @@ R1 결과와 시험지 원본은 authority로 보존한다. R2E는 intake branch
 
 ### 1.1 RELEASE_BLOCKING과 META_ONLY를 분리한다
 
-**RPM semantic FINAL과 legacy projection completeness를 분리한다.** RPM L3/L4가 FINAL인 문항의 다음 상태는 HOLD가 아니라 META_ONLY compatibility finding이다.
+**RPM semantic FINAL과 legacy projection completeness를 분리한다.** RPM L3/L4가 FINAL인 문항의 다음 상태는 HOLD가 아니라 META_ONLY compatibility finding이다. Projection-only status는 R1 READY 또는 R2E release를 차단하지 않는다.
 
 - `RPM_PRIMARY_MIGRATION_GAP` legacy compatibility enum
 - `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP`
@@ -74,6 +75,8 @@ R1 결과와 시험지 원본은 authority로 보존한다. R2E는 intake branch
 
 RELEASE_BLOCKING은 학생에게 잘못된 JS 결과를 제공하거나 시험지 구조를 신뢰할 수 없게 만드는 finding이다. R1/RPM 계약의 BASIC_HARD_HOLD와 같은 release effect로 기록하며, 다음은 영향이 닫히기 전 시험지 release를 막는다.
 
+- source/independently verified solution으로 RPM L3/L4를 결정할 수 없는 TRUE_META_HOLD
+- production JS에 실제 기록된 invalid/deprecated canonical PT/TPL key
 - JS parse/runtime 실패, 분모·문항 순서·UID/source identity 불일치
 - 필수 image/SVG 참조 누락 또는 hash/보호 필드 불일치
 - source/answer/solution의 실질적인 충돌이나 수학 오류
@@ -148,12 +151,12 @@ R2E_HOLD_INVENTORY_v2는 시험지 authority, item-level holds, groups, upperMod
 
 ## 5. 기존 L3/L4/RPM 묶음 매핑
 
-RPM gap은 release blocker가 아니라 먼저 기존 목록을 조회할 Meta-only HOLD 유형이다.
+RPM semantic은 source와 verified solution의 decisive path를 이용해 먼저 확정한다. RPM L3/L4가 FINAL인 뒤의 crosswalk/PT/TPL/exact binding gap은 `META_ONLY` compatibility 상태이며 semantic HOLD나 release blocker가 아니다.
 
-- source + verified final solution에서 primaryMethod와 decisiveStep을 확인한다.
-- 기존 중등 RPM/L3/L4 목록과 current ACTIVE PT/TPL 및 적용 가능한 binding을 조회한다.
+- source + verified final solution에서 primaryMethod와 decisiveStep을 확인하고, RPM Primary curriculum/scope L3/L4를 semantic FINAL로 확정한다.
+- semantic FINAL 뒤 기존 crosswalk, GLOBAL ACTIVE PT/TPL 및 적용 가능한 binding을 compatibility projection으로 조회한다.
 - 기존 key가 맞으면 group decision으로 선택하고 group 내 각 UID에 동일한 decision ID와 적용 근거를 기록한다.
-- 직접 binding이 다르거나 L2가 충돌하면 해당 group의 affected UID만 맞는 기존 경로로 REBIND한다.
+- projection binding이 다르거나 L2가 충돌하면 해당 group의 affected UID만 맞는 기존 경로로 REBIND하거나 META_ONLY compatibility pending으로 기록한다.
 - R2E는 신규 L3/L4를 만들지 않는다. 기존 taxonomy로 설명할 수 없는 실제 예외는 individual upperModelReview case로 보낸다.
 - R1 PASS이고 매핑 defect가 없는 문항은 전혀 재분류하지 않는다.
 - 개별 예외가 남아도 JS release는 META_ONLY 규칙을 적용한다.

@@ -5,21 +5,21 @@ import { fileURLToPath } from 'node:url';
 import { objectSha, fileRef } from '../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry, validateActiveMetaFields } from './active-registry.mjs';
 
-export const META_RESOLUTION_SCHEMA = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1';
+export const LEGACY_META_RESOLUTION_SCHEMA_V1 = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1';
+export const META_RESOLUTION_SCHEMA = 'JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v2';
 export const META_DIFFICULTY_SCHEMA = 'JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1';
 export const R2E_META_INPUT_SCHEMA_V1 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1';
 export const R2E_META_INPUT_SCHEMA_V2 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2';
 export const META_LOOKUP_ORDER = Object.freeze([
-  'RPM_PRIMARY_README', 'RPM_CANONICAL_MASTER', 'RPM_CURRICULUM_SCOPE_VIEW', 'RPM_TO_ACTIVE_CROSSWALK', 'ACTIVE_META_FOUNDATION',
+  'RPM_PRIMARY_README', 'RPM_CANONICAL_MASTER', 'RPM_CURRICULUM_SCOPE_VIEW', 'RPM_SEMANTIC_CLASSIFICATION_FINAL', 'RPM_TO_ACTIVE_CROSSWALK', 'ACTIVE_META_FOUNDATION',
 ]);
 export const DECISION_ISOLATED_INPUT_FIELDS = Object.freeze(['sourceIdentity', 'solutionIdentity', 'curriculumContext', 'semanticDecision']);
 export const ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT = Object.freeze([
   'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern',
   'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility',
 ]);
-export const META_ROUTE_DISPOSITIONS = Object.freeze([
-  'EXISTING_REUSE', 'FAMILY_REUSE', 'RPM_PRIMARY_MIGRATION_GAP', 'TRUE_TAXONOMY_GAP', 'ROUTE_OUT',
-]);
+export const META_ROUTE_DISPOSITIONS = Object.freeze(['RPM_SEMANTIC_FINAL', 'TRUE_META_HOLD', 'ROUTE_OUT']);
+export const META_PROJECTION_STATUSES = Object.freeze(['PROJECTION_REUSE', 'PROJECTION_BINDING_PENDING', 'PROJECTION_UNMATERIALIZED', 'META_ONLY_COMPATIBILITY_PENDING', 'NOT_ATTEMPTED']);
 export const DIFFICULTY_BUCKETS = Object.freeze([1, 2, 3, 4, 5]);
 export const DIFFICULTY_CONFIDENCE = Object.freeze(['high', 'medium', 'low']);
 export const DIFFICULTY_BOUNDARY_FLAGS = Object.freeze(['NONE', 'B12', 'B23', 'B34', 'B45']);
@@ -29,6 +29,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(here, '../../..');
 const text = value => typeof value === 'string' ? value.trim() : '';
 const equal = (a, b) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+const equalCountSummary = (actual, expected) => Boolean(actual && typeof actual === 'object' && !Array.isArray(actual)
+  && Object.keys(actual).length === Object.keys(expected).length
+  && Object.entries(expected).every(([key, count]) => Number(actual[key]) === count));
 const comparableMetaProjectionValue = (field, value) => {
   if (field === 'problemTypeKey' || field === 'templateKey') return text(value) || null;
   if (field === 'crossConceptKeys' || field === 'conditionKeys') return Array.isArray(value) ? value : [];
@@ -206,8 +209,8 @@ export function buildDecisionIsolatedInput(input) {
   return { bundle, sourceFingerprint, inputBundleSha: objectSha(bundle) };
 }
 
-function findRpmRecord(master, rpmPath) {
-  if (![rpmPath.curriculum, rpmPath.scope, rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4].every(Boolean)) return null;
+function findRpmRecords(master, rpmPath) {
+  if (![rpmPath.curriculum, rpmPath.scope, rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4].every(Boolean)) return [];
   const records = (master.records || []).filter(row => row.curriculum === rpmPath.curriculum && row.scope === rpmPath.scope
     && row.majorUnit === rpmPath.majorUnit && row.midUnit === rpmPath.midUnit);
   const hits = [];
@@ -215,7 +218,7 @@ function findRpmRecord(master, rpmPath) {
     if (concept.concept !== rpmPath.l3) continue;
     for (const item of concept.problemTypes || []) if (item.problemType === rpmPath.l4) hits.push({ row, concept, item });
   }
-  return hits.length === 1 ? hits[0] : null;
+  return hits;
 }
 
 function crosswalkMatch(file, context, rpmPath) {
@@ -238,11 +241,12 @@ export function activeCandidateKeysForScope(registry, { curriculum, standardUnit
     if (binding.status !== 'ACTIVE' || binding.curriculum !== curriculum
       || binding.standardUnitKey !== standardUnitKey || (binding.subUnitKey ?? '') !== (subUnitKey ?? '')) continue;
     const pt = registry.problemTypes.get(binding.problemTypeKey);
-    const pack = registry.activePacks.get(binding.ownerPack);
-    if (pt?.status !== 'ACTIVE' || pt.ownerPack !== binding.ownerPack || !pack) continue;
+    const bindingPack = registry.activePacks.get(binding.ownerPack);
+    if (pt?.status !== 'ACTIVE' || !registry.activePacks.has(pt.ownerPack) || !bindingPack) continue;
     candidates.add(binding.problemTypeKey);
     for (const tpl of registry.templates.values()) {
-      if (tpl.status === 'ACTIVE' && tpl.parentProblemTypeKey === binding.problemTypeKey && tpl.ownerPack === binding.ownerPack) candidates.add(tpl.templateKey);
+      if (tpl.status === 'ACTIVE' && tpl.parentProblemTypeKey === binding.problemTypeKey
+        && registry.activePacks.has(tpl.ownerPack)) candidates.add(tpl.templateKey);
     }
   }
   return [...candidates].sort();
@@ -253,8 +257,150 @@ function bindingIdentity(binding) {
   return [binding.curriculum, binding.standardUnitKey, binding.subUnitKey ?? '<DIRECT>', binding.problemTypeKey, binding.ownerPack].join('|');
 }
 
-function migrationResult(base, reason) {
-  return { ...base, disposition: 'RPM_PRIMARY_MIGRATION_GAP', dispositionReason: reason, problemTypeKey: '', templateKey: '', advancedMetaEligible: false };
+function semanticRecord(fields) {
+  const { bundle, rpmHit, refs = [], ...rest } = fields;
+  const rpmPath = bundle.semanticDecision.rpmPath;
+  const semantic = {
+    status: 'FINAL',
+    authorityVersion: 'RPM_PRIMARY_TAXONOMY_v1.0',
+    curriculum: rpmPath.curriculum,
+    scope: rpmPath.scope,
+    majorUnit: rpmPath.majorUnit,
+    midUnit: rpmPath.midUnit,
+    l3: rpmPath.l3,
+    l4: rpmPath.l4,
+    primaryMethod: bundle.semanticDecision.primaryMethod,
+    decisiveStep: bundle.semanticDecision.decisiveStep,
+    sourceFingerprint: rest.sourceFingerprint,
+    inputBundleSha: rest.inputBundleSha,
+    rpmRecordSha: objectSha(rpmHit),
+  };
+  const projectionStatus = rest.projectionStatus || 'PROJECTION_UNMATERIALIZED';
+  const projection = rest.legacyProjection || { status: projectionStatus };
+  return buildEvidence({
+    bundle,
+    ...rest,
+    disposition: 'RPM_SEMANTIC_FINAL',
+    semanticStatus: 'FINAL',
+    rpmSemantic: semantic,
+    projectionStatus,
+    legacyProjection: projection,
+    advancedMetaEligible: projectionStatus === 'PROJECTION_REUSE',
+    refs,
+  });
+}
+
+function semanticHold(fields) {
+  const { bundle, refs = [], sourceFingerprint, inputBundleSha, reasonCode, detail = '' } = fields;
+  const rpmPath = bundle.semanticDecision.rpmPath;
+  return buildEvidence({
+    bundle,
+    sourceFingerprint,
+    inputBundleSha,
+    rpmPath,
+    rpmL3: rpmPath.l3,
+    rpmL4: rpmPath.l4,
+    disposition: 'TRUE_META_HOLD',
+    semanticStatus: 'HOLD',
+    problemTypeKey: '',
+    templateKey: '',
+    ownerPack: '',
+    bindingOwnerPack: '',
+    rpmSemantic: {
+      status: 'HOLD',
+      authorityVersion: 'RPM_PRIMARY_TAXONOMY_v1.0',
+      curriculum: rpmPath.curriculum,
+      scope: rpmPath.scope,
+      majorUnit: rpmPath.majorUnit,
+      midUnit: rpmPath.midUnit,
+      l3: rpmPath.l3,
+      l4: rpmPath.l4,
+      reasonCode,
+      detail,
+      sourceFingerprint,
+      inputBundleSha,
+    },
+    projectionStatus: 'NOT_ATTEMPTED',
+    legacyProjection: { status: 'NOT_ATTEMPTED', reasonCode },
+    reasonCode,
+    reason: detail || reasonCode,
+    refs,
+  });
+}
+
+function projectionPending(fields, projectionStatus, reasonCode, details = {}) {
+  const { bundle, rpmHit, refs = [], ...base } = fields;
+  const canonicalOwnerPack = text(details.canonicalOwnerPack || '');
+  const bindingOwnerPack = text(details.bindingOwnerPack || '');
+  const mappedProblemTypeKey = text(details.problemTypeKey || '');
+  const mappedTemplateKeys = (details.mappedTemplateKeys || []).filter(Boolean);
+  const reusable = projectionStatus === 'PROJECTION_REUSE';
+  return semanticRecord({
+    ...base,
+    bundle,
+    rpmHit,
+    refs,
+    projectionStatus,
+    projectionReasonCode: reasonCode,
+    crosswalkFile: details.crosswalkFile || base.crosswalkFile || '',
+    crosswalkRecordId: details.crosswalkRecordId || base.crosswalkRecordId || '',
+    crosswalkStatus: details.crosswalkStatus || base.crosswalkStatus || '',
+    problemTypeKey: reusable ? mappedProblemTypeKey : '',
+    templateKey: reusable ? text(details.templateKey || '') : '',
+    mappedProblemTypeKey,
+    mappedTemplateKeys,
+    ownerPack: canonicalOwnerPack,
+    ownerVersion: details.ownerVersion || '',
+    bindingOwnerPack,
+    bindingIdentity: details.bindingIdentity || '',
+    legacyProjection: {
+      status: projectionStatus,
+      reasonCode,
+      problemTypeKey: mappedProblemTypeKey,
+      templateKey: reusable ? text(details.templateKey || '') : '',
+      candidateTemplateKeys: mappedTemplateKeys,
+      canonicalOwnerPack,
+      bindingOwnerPack,
+      bindingIdentity: details.bindingIdentity || '',
+    },
+  });
+}
+
+function exactProjectionBindings(registry, row, context, problemTypeKey) {
+  const binding = row.binding || {};
+  const curriculum = text(binding.curriculum || context.curriculum);
+  const standardUnitKey = text(binding.standardUnitKey || context.standardUnitKey);
+  const subUnitKey = Object.hasOwn(binding, 'subUnitKey')
+    ? binding.subUnitKey : Object.hasOwn(row, 'subUnitKey') ? row.subUnitKey : context.subUnitKey;
+  const standardCourse = text(binding.standardCourse || row.standardCourse || context.standardCourse);
+  return (registry.bindingRows || []).filter(item => item.status === 'ACTIVE'
+    && item.curriculum === curriculum
+    && item.standardUnitKey === standardUnitKey
+    && (item.subUnitKey ?? null) === (subUnitKey ?? null)
+    && item.problemTypeKey === problemTypeKey
+    && (!standardCourse || !item.standardCourse || item.standardCourse === standardCourse));
+}
+
+export function validateCanonicalProjectionKeys(candidateMeta, registry) {
+  const errors = [];
+  const problemTypeKey = text(candidateMeta?.problemTypeKey);
+  const templateKey = text(candidateMeta?.templateKey);
+  if (!problemTypeKey) {
+    if (templateKey) errors.push('ADVANCED_META_TEMPLATE_WITHOUT_PROBLEM_TYPE');
+    return { status: errors.length ? 'FAIL' : 'PASS', errors };
+  }
+  if (registry?.status !== 'ACTIVE') return { status: 'FAIL', errors: ['ACTIVE_META_REGISTRY_UNAVAILABLE_WITH_KEYS'] };
+  const problemType = registry.problemTypes.get(problemTypeKey);
+  if (!problemType || problemType.status !== 'ACTIVE') errors.push('ADVANCED_META_PROBLEM_TYPE_INVALID');
+  const canonicalOwnerPack = text(problemType?.ownerPack);
+  if (!canonicalOwnerPack || !registry.activePacks.has(canonicalOwnerPack)) errors.push('ADVANCED_META_CANONICAL_OWNER_INVALID');
+  if (templateKey) {
+    const template = registry.templates.get(templateKey);
+    if (!template || template.status !== 'ACTIVE') errors.push('ADVANCED_META_TEMPLATE_INVALID');
+    else if (template.parentProblemTypeKey !== problemTypeKey) errors.push('ADVANCED_META_TEMPLATE_PARENT_MISMATCH');
+    else if (text(template.ownerPack) !== canonicalOwnerPack) errors.push('ADVANCED_META_TEMPLATE_CANONICAL_OWNER_MISMATCH');
+  }
+  return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
 
 export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: suppliedRegistry } = {}) {
@@ -268,155 +414,143 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
     try { const ref = pathRef(root, relative); refs.push(ref); return ref; }
     catch { return null; }
   };
-  const rpmReadme = readRef(`${rpmBase}/README.md`);
-  const rpmMasterRef = readRef(`${rpmBase}/00_POLICY/CANONICAL_MASTER.json`);
-  if (!rpmReadme || !rpmMasterRef) return buildEvidence({ bundle, sourceFingerprint, inputBundleSha, refs, disposition: 'ROUTE_OUT', reason: 'RPM_PRIMARY_AUTHORITY_MISSING' });
+  const rpmReadme = readRef(rpmBase + '/README.md');
+  const rpmMasterRef = readRef(rpmBase + '/00_POLICY/CANONICAL_MASTER.json');
+  if (!rpmReadme || !rpmMasterRef) {
+    return buildEvidence({ bundle, sourceFingerprint, inputBundleSha, refs, rpmPath, disposition: 'ROUTE_OUT',
+      semanticStatus: 'UNAVAILABLE', projectionStatus: 'NOT_ATTEMPTED', reasonCode: 'RPM_PRIMARY_AUTHORITY_UNAVAILABLE' });
+  }
   const master = readJson(path.join(root, rpmMasterRef.path));
-  const rpmHit = findRpmRecord(master, rpmPath);
+  const rpmHits = findRpmRecords(master, rpmPath);
+  if (rpmHits.length === 0) {
+    return semanticHold({ bundle, refs, sourceFingerprint, inputBundleSha,
+      reasonCode: 'RPM_PRIMARY_PATH_NOT_FOUND', detail: 'The supplied curriculum/scope/L3/L4 tuple is not present in locked RPM Primary.' });
+  }
+  if (rpmHits.length > 1) {
+    return semanticHold({ bundle, refs, sourceFingerprint, inputBundleSha,
+      reasonCode: 'RPM_PRIMARY_PATH_AMBIGUOUS', detail: 'The locked RPM Primary tuple matches ' + rpmHits.length + ' rows.' });
+  }
+  const rpmHit = rpmHits[0];
   const viewPath = viewPathFor(context, rpmPath);
   const viewRef = viewPath ? readRef(viewPath) : null;
-  if (!viewRef) return buildEvidence({ bundle, sourceFingerprint, inputBundleSha, refs, rpmPath, disposition: 'ROUTE_OUT', reason: 'RPM_SCOPE_VIEW_MISSING' });
+  if (!viewRef) {
+    return buildEvidence({ bundle, sourceFingerprint, inputBundleSha, refs, rpmPath, rpmL3: rpmPath.l3, rpmL4: rpmPath.l4,
+      disposition: 'ROUTE_OUT', semanticStatus: 'UNAVAILABLE', projectionStatus: 'NOT_ATTEMPTED', reasonCode: 'RPM_SCOPE_VIEW_UNAVAILABLE' });
+  }
   const viewText = fs.readFileSync(path.join(root, viewRef.path), 'utf8');
-  const rpmVerified = Boolean(rpmHit && viewText.includes(rpmPath.l3) && viewText.includes(rpmPath.l4));
-  if (rpmHit && !rpmVerified) return buildEvidence({ bundle, sourceFingerprint, inputBundleSha, refs, rpmPath, disposition: 'ROUTE_OUT', reason: 'RPM_SCOPE_VIEW_PATH_MISMATCH' });
+  if (!viewText.includes(rpmPath.l3) || !viewText.includes(rpmPath.l4)) {
+    return semanticHold({ bundle, refs, sourceFingerprint, inputBundleSha,
+      reasonCode: 'RPM_PRIMARY_MASTER_VIEW_CONTRADICTION', detail: 'The locked master and its curriculum/scope view disagree on the supplied path.' });
+  }
 
+  const rpmSemanticBase = {
+    bundle, rpmHit, refs, sourceFingerprint, inputBundleSha,
+    rpmPath, rpmL3: rpmPath.l3, rpmL4: rpmPath.l4,
+  };
   const crosswalkPath = crosswalkPathFor(context);
   const crosswalkRef = crosswalkPath ? readRef(crosswalkPath) : null;
-  if (crosswalkRef) {
-    // The crosswalk is intentionally read only after RPM Primary was resolved.
-    refs.push({ ...crosswalkRef, role: 'RPM_TO_ACTIVE_CROSSWALK' });
-  }
-  const registry = suppliedRegistry || loadActiveMetaRegistry(root);
-  const activeReferencePaths = registry.paths ? [registry.paths.index, registry.paths.rules, registry.paths.conditionsCanonical,
-    registry.paths.taxonomy, registry.paths.concepts, registry.paths.conditions, registry.paths.bindings] : [];
+  if (crosswalkRef) refs.push({ ...crosswalkRef, role: 'RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION' });
+  let activeRegistry;
+  try { activeRegistry = suppliedRegistry || loadActiveMetaRegistry(root); }
+  catch { return projectionPending(rpmSemanticBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_COMPATIBILITY_REGISTRY_UNAVAILABLE'); }
+  const activeReferencePaths = activeRegistry.paths ? [
+    activeRegistry.paths.index, activeRegistry.paths.rules, activeRegistry.paths.conditionsCanonical,
+    activeRegistry.paths.taxonomy, activeRegistry.paths.concepts, activeRegistry.paths.conditions, activeRegistry.paths.bindings,
+  ] : [];
   for (const relative of activeReferencePaths) {
-    try { refs.push({ ...pathRef(root, relative), role: 'ACTIVE_META_FOUNDATION' }); }
-    catch { /* active registry status below records missing/stale runtime inputs */ }
+    try { refs.push({ ...pathRef(root, relative), role: 'ACTIVE_META_COMPATIBILITY_PROJECTION' }); }
+    catch { /* a missing projection source never invalidates RPM semantic classification */ }
   }
-  const base = {
-    sourceFingerprint,
-    inputBundleSha,
-    rpmPath: rpmVerified ? rpmPath : null,
-    rpmL3: rpmVerified ? rpmPath.l3 : '',
-    rpmL4: rpmVerified ? rpmPath.l4 : '',
-    crosswalkFile: crosswalkRef?.path || '',
-    crosswalkRecordId: '',
-    crosswalkStatus: '',
-    problemTypeKey: '',
-    templateKey: '',
-    ownerPack: '',
-    ownerVersion: '',
-    bindingIdentity: '',
-    refs,
-  };
-  if (registry.status !== 'ACTIVE') return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason: 'ACTIVE_META_REGISTRY_UNAVAILABLE', activeRegistrySha: registry.registrySha || '' });
-  if (!rpmVerified) {
-    const exactScope = { curriculum: context.curriculum, standardUnitKey: context.standardUnitKey, subUnitKey: context.subUnitKey };
-    const recomputedCandidateKeys = activeCandidateKeysForScope(registry, exactScope);
-    const suppliedCandidateKeys = input.activeSearchEvidence?.candidateKeys;
-    if (input.activeSearchEvidence?.status !== 'COMPLETED_NO_MATCH'
-      || input.activeSearchEvidence?.registrySha !== registry.registrySha
-      || input.activeSearchEvidence?.searchedGlobalActive !== true
-      || input.activeSearchEvidence?.searchMethod !== 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2'
-      || !equal(input.activeSearchEvidence?.searchedScope, exactScope)
-      || !Array.isArray(suppliedCandidateKeys)
-      || !equal([...suppliedCandidateKeys].sort(), recomputedCandidateKeys)
-      || recomputedCandidateKeys.length) {
-      const reason = input.activeSearchEvidence?.registrySha !== registry.registrySha ? 'ACTIVE_TARGETED_SEARCH_REGISTRY_SHA_STALE'
-        : !equal(input.activeSearchEvidence?.searchedScope, exactScope) ? 'ACTIVE_TARGETED_SEARCH_SCOPE_MISMATCH'
-          : Array.isArray(suppliedCandidateKeys) && !equal([...suppliedCandidateKeys].sort(), recomputedCandidateKeys) ? 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH'
-            : recomputedCandidateKeys.length ? 'ACTIVE_TARGETED_SEARCH_FOUND_CANDIDATES' : 'ACTIVE_TARGETED_SEARCH_EVIDENCE_REQUIRED';
-      return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason, activeRegistrySha: registry.registrySha,
-        activeSearchEvidence: input.activeSearchEvidence, recomputedActiveCandidateKeys: recomputedCandidateKeys });
-    }
-    return buildEvidence({ bundle, ...base, disposition: 'TRUE_TAXONOMY_GAP', reason: 'RPM_AND_ACTIVE_TARGETED_SEARCH_EMPTY', activeRegistrySha: registry.registrySha,
-      activeSearchEvidence: input.activeSearchEvidence });
-  }
-  if (!crosswalkRef) return buildEvidence({ bundle, ...base, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'EXACT_CROSSWALK_ROUTE_UNAVAILABLE' });
-  const matched = crosswalkMatch(path.join(root, crosswalkRef.path), context, rpmPath);
-  if (matched.duplicate) return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason: 'CROSSWALK_PATH_DUPLICATE' });
-  if (matched.standardCourseMismatch) return buildEvidence({ bundle, ...base, disposition: 'ROUTE_OUT', reason: 'EXACT_CROSSWALK_SUBJECT_MISMATCH' });
-  if (matched.l2Mismatch) return buildEvidence({ bundle, ...base, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'CROSSWALK_EXACT_L2_BINDING_MISSING' });
-  const row = matched.row;
-  if (!row) return buildEvidence({ bundle, ...base, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'RPM_PATH_NOT_MATERIALIZED_IN_EXACT_CROSSWALK' });
-  const currentBase = { ...base, crosswalkRecordId: row.id || '', crosswalkStatus: row.mappingStatus || '' };
-  if (['RPM_ONLY', 'DIRECT_BINDING_GAP', 'FAMILY_BINDING_GAP'].includes(row.mappingStatus) || row.bindingStatus !== 'ACTIVE') {
-    const mappedProblemTypeKey = text(row.problemTypeKey);
-    const mappedTemplateKeys = row.templateKey ? [text(row.templateKey)] : (row.templateCandidates || []).map(item => text(item.templateKey)).filter(Boolean);
-    const mappedPT = registry.problemTypes.get(mappedProblemTypeKey);
-    const mappedOwner = text(mappedPT?.ownerPack || row.ownerPack);
-    const mappedOwnerVersion = registry.activePacks?.get(mappedOwner)?.version || '';
-    const mappedBinding = row.binding ? bindingIdentity({ ...row.binding, problemTypeKey: mappedProblemTypeKey }) : '';
-    return buildEvidence({ bundle, ...currentBase, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: row.mappingStatus || 'CROSSWALK_BINDING_UNAVAILABLE',
-      mappedProblemTypeKey, mappedTemplateKeys, mappedOwnerPack: mappedOwner, mappedOwnerVersion,
-      mappedBindingIdentity: mappedBinding, activeMaterializationStatus: mappedPT?.status === 'ACTIVE' ? 'ACTIVE_KEY_PRESENT' : 'ACTIVE_KEY_MISSING' });
-  }
-  if (!['DIRECT_ACTIVE', 'FAMILY_ACTIVE'].includes(row.mappingStatus)) return buildEvidence({ bundle, ...currentBase, disposition: 'ROUTE_OUT', reason: 'CROSSWALK_STATUS_UNSUPPORTED' });
+  const base = { ...rpmSemanticBase, crosswalkFile: crosswalkRef?.path || '', crosswalkRecordId: '', crosswalkStatus: '' };
+  if (!crosswalkRef) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROUTE_UNAVAILABLE');
 
-  const ptKey = text(row.problemTypeKey);
-  const pt = registry.problemTypes.get(ptKey);
-  const ownerPack = text(pt?.ownerPack || row.ownerPack);
-  const pack = registry.activePacks?.get(ownerPack);
-  if (!pt || pt.status !== 'ACTIVE' || !pack || ownerPack !== text(row.ownerPack)) {
-    return buildEvidence({ bundle, ...currentBase, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'ACTIVE_PROBLEM_TYPE_NOT_MATERIALIZED',
-      mappedProblemTypeKey: ptKey, mappedTemplateKeys: row.templateKey ? [text(row.templateKey)] : (row.templateCandidates || []).map(item => text(item.templateKey)).filter(Boolean),
-      mappedOwnerPack: ownerPack, mappedOwnerVersion: pack?.version || '', activeMaterializationStatus: 'ACTIVE_KEY_MISSING', activeRegistrySha: registry.registrySha });
+  let matched;
+  try { matched = crosswalkMatch(path.join(root, crosswalkRef.path), context, rpmPath); }
+  catch { return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_DATA_UNAVAILABLE'); }
+  if (matched.duplicate) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
+  if (matched.standardCourseMismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_STANDARD_COURSE_PROJECTION_MISMATCH');
+  if (matched.l2Mismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_L2_PROJECTION_MISMATCH');
+  const row = matched.row;
+  if (!row) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_PROJECTION_ROW_MISSING');
+  const currentBase = { ...base, crosswalkRecordId: row.id || '', crosswalkStatus: row.mappingStatus || '' };
+  const mappingStatus = text(row.mappingStatus);
+  if (mappingStatus === 'RPM_ONLY' || !['DIRECT_ACTIVE', 'FAMILY_ACTIVE', 'DIRECT_BINDING_GAP', 'FAMILY_BINDING_GAP'].includes(mappingStatus)) {
+    return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED',
+      mappingStatus === 'RPM_ONLY' ? 'RPM_ONLY_COMPATIBILITY_PROJECTION' : 'CROSSWALK_PROJECTION_STATUS_UNSUPPORTED');
+  }
+
+  const problemTypeKey = text(row.problemTypeKey);
+  const mappedTemplateKeys = row.templateKey ? [text(row.templateKey)] : (row.templateCandidates || []).map(item => text(item.templateKey)).filter(Boolean);
+  if (!problemTypeKey || activeRegistry.status !== 'ACTIVE') {
+    return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED',
+      !problemTypeKey ? 'CROSSWALK_PROBLEM_TYPE_NOT_MAPPED' : 'ACTIVE_COMPATIBILITY_REGISTRY_UNAVAILABLE',
+      { problemTypeKey, mappedTemplateKeys });
+  }
+  const problemType = activeRegistry.problemTypes.get(problemTypeKey);
+  if (!problemType || problemType.status !== 'ACTIVE') {
+    return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_PROBLEM_TYPE_PROJECTION_NOT_MATERIALIZED',
+      { problemTypeKey, mappedTemplateKeys });
+  }
+  const canonicalOwnerPack = text(problemType.ownerPack);
+  const canonicalPack = activeRegistry.activePacks.get(canonicalOwnerPack);
+  if (!canonicalOwnerPack || !canonicalPack) {
+    return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_CANONICAL_OWNER_NOT_ACTIVE',
+      { problemTypeKey, canonicalOwnerPack, mappedTemplateKeys });
   }
 
   let templateKey = '';
-  let disposition = 'EXISTING_REUSE';
-  if (row.mappingStatus === 'FAMILY_ACTIVE') {
-    disposition = 'FAMILY_REUSE';
+  if (mappingStatus === 'FAMILY_ACTIVE' || mappingStatus === 'FAMILY_BINDING_GAP') {
     const selection = input.familyTemplateSelection;
-    const candidates = new Set((row.templateCandidates || []).map(item => item.templateKey));
-    if (selection?.stage !== 'POST_CROSSWALK' || selection?.inputBundleSha !== inputBundleSha
-      || selection?.crosswalkRecordId !== row.id || !candidates.has(selection?.templateKey)
-      || !text(selection?.decisiveStepReason)) {
-      return buildEvidence({ bundle, ...currentBase, disposition, dispositionReason: 'FAMILY_TEMPLATE_SELECTION_REQUIRED',
-        mappedProblemTypeKey: ptKey, mappedTemplateKeys: [...candidates], mappedOwnerPack: ownerPack, mappedOwnerVersion: pack.version,
-        activeRegistrySha: registry.registrySha });
+    const candidates = new Set(mappedTemplateKeys);
+    if (!selection || selection.stage !== 'POST_CROSSWALK' || selection.inputBundleSha !== inputBundleSha
+      || selection.crosswalkRecordId !== row.id || !candidates.has(selection.templateKey) || !text(selection.decisiveStepReason)) {
+      const existingBindings = exactProjectionBindings(activeRegistry, row, context, problemTypeKey);
+      return projectionPending(currentBase, 'META_ONLY_COMPATIBILITY_PENDING', 'FAMILY_TEMPLATE_SELECTION_PENDING',
+        { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys,
+          bindingOwnerPack: existingBindings.length === 1 ? text(existingBindings[0].ownerPack) : '' });
     }
     templateKey = selection.templateKey;
-  } else templateKey = text(row.templateKey);
-
-  if (templateKey) {
-    const tpl = registry.templates.get(templateKey);
-    if (!tpl || tpl.status !== 'ACTIVE' || tpl.parentProblemTypeKey !== ptKey || tpl.ownerPack !== ownerPack) {
-      return buildEvidence({ bundle, ...currentBase, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'ACTIVE_TEMPLATE_PARENT_OR_OWNER_MISMATCH',
-        mappedProblemTypeKey: ptKey, mappedTemplateKeys: [templateKey], mappedOwnerPack: ownerPack, mappedOwnerVersion: pack.version,
-        activeMaterializationStatus: tpl?.status === 'ACTIVE' ? 'ACTIVE_TEMPLATE_PARENT_MISMATCH' : 'ACTIVE_TEMPLATE_MISSING', activeRegistrySha: registry.registrySha });
-    }
-  } else if (row.mappingStatus === 'FAMILY_ACTIVE') {
-    return buildEvidence({ bundle, ...currentBase, disposition: 'FAMILY_REUSE', dispositionReason: 'FAMILY_TEMPLATE_SELECTION_REQUIRED',
-      mappedProblemTypeKey: ptKey, mappedTemplateKeys: (row.templateCandidates || []).map(item => item.templateKey),
-      mappedOwnerPack: ownerPack, mappedOwnerVersion: pack.version, activeRegistrySha: registry.registrySha });
+  } else {
+    templateKey = text(row.templateKey);
+    if (!templateKey) return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_TEMPLATE_PROJECTION_NOT_MAPPED',
+      { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys });
   }
 
-  const binding = row.binding || {
-    curriculum: context.curriculum,
-    standardUnitKey: context.standardUnitKey,
-    subUnitKey: row.subUnitKey ?? null,
-    problemTypeKey: ptKey,
-    ownerPack,
-  };
-  const bindingRow = (registry.bindingRows || []).find(item => item.curriculum === binding.curriculum
-    && item.standardUnitKey === binding.standardUnitKey && (item.subUnitKey ?? null) === (binding.subUnitKey ?? null)
-    && item.problemTypeKey === ptKey && item.ownerPack === ownerPack);
-  if (!bindingRow) return buildEvidence({ bundle, ...currentBase, disposition: 'RPM_PRIMARY_MIGRATION_GAP', reason: 'EXACT_ACTIVE_BINDING_NOT_MATERIALIZED',
-    mappedProblemTypeKey: ptKey, mappedTemplateKeys: templateKey ? [templateKey] : [], mappedOwnerPack: ownerPack, mappedOwnerVersion: pack.version,
-    activeMaterializationStatus: 'ACTIVE_KEYS_PRESENT_BINDING_MISSING', activeRegistrySha: registry.registrySha });
-  return buildEvidence({ bundle, ...currentBase, disposition, dispositionReason: row.mappingStatus, problemTypeKey: ptKey, templateKey,
-    ownerPack, ownerVersion: pack.version, bindingIdentity: bindingIdentity(bindingRow), activeRegistrySha: registry.registrySha, familySelection: input.familyTemplateSelection || null });
-}
+  const template = templateKey ? activeRegistry.templates.get(templateKey) : null;
+  if (!templateKey || !template || template.status !== 'ACTIVE' || template.parentProblemTypeKey !== problemTypeKey
+    || text(template.ownerPack) !== canonicalOwnerPack || !activeRegistry.activePacks.has(text(template.ownerPack))) {
+    return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_TEMPLATE_PROJECTION_NOT_MATERIALIZED',
+      { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: templateKey ? [templateKey] : [] });
+  }
 
+  const bindingRows = exactProjectionBindings(activeRegistry, row, context, problemTypeKey);
+  const bindingOwnerHint = text(row.bindingOwnerPack || row.binding?.bindingOwnerPack || row.binding?.ownerPack);
+  const hintedBindings = bindingOwnerHint ? bindingRows.filter(binding => text(binding.ownerPack) === bindingOwnerHint) : [];
+  const eligibleBindings = bindingOwnerHint ? hintedBindings : bindingRows;
+  if (eligibleBindings.length !== 1) {
+    const pendingStatus = eligibleBindings.length > 1 ? 'META_ONLY_COMPATIBILITY_PENDING' : 'PROJECTION_BINDING_PENDING';
+    return projectionPending(currentBase, pendingStatus,
+      eligibleBindings.length > 1 ? 'EXACT_BINDING_OWNER_AMBIGUOUS' : 'EXACT_ACTIVE_BINDING_PENDING',
+      { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: [templateKey],
+        bindingOwnerPack: bindingOwnerHint || (bindingRows.length === 1 ? text(bindingRows[0].ownerPack) : '') });
+  }
+  const bindingRow = eligibleBindings[0];
+  const bindingOwnerPack = text(bindingRow.ownerPack);
+  if (!activeRegistry.activePacks.has(bindingOwnerPack)) {
+    return projectionPending(currentBase, 'PROJECTION_BINDING_PENDING', 'BINDING_OWNER_PACK_NOT_ACTIVE',
+      { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: [templateKey], bindingOwnerPack });
+  }
+  return projectionPending(currentBase, 'PROJECTION_REUSE', 'ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE',
+    { projectionReusable: true, problemTypeKey, templateKey, canonicalOwnerPack, ownerVersion: canonicalPack.version,
+      mappedTemplateKeys: [templateKey], bindingOwnerPack, bindingIdentity: bindingIdentity(bindingRow) });
+}
 function buildEvidence(fields) {
   const { bundle, refs = [], ...rest } = fields;
   const dispositionReason = text(rest.dispositionReason || rest.reason);
   delete rest.reason;
   rest.dispositionReason = dispositionReason;
   if (!Object.hasOwn(rest, 'advancedMetaEligible')) {
-    rest.advancedMetaEligible = ['EXISTING_REUSE', 'FAMILY_REUSE'].includes(rest.disposition)
-      && !(rest.disposition === 'FAMILY_REUSE' && !text(rest.templateKey));
+    rest.advancedMetaEligible = rest.semanticStatus === 'FINAL' && rest.projectionStatus === 'PROJECTION_REUSE';
   }
   const evidence = {
     schemaVersion: META_RESOLUTION_SCHEMA,
@@ -434,16 +568,34 @@ export function validateResolverEvidence(input, evidence, { repoRoot = DEFAULT_R
   let recomputed;
   try { recomputed = resolveMetaRoute(input, { repoRoot, registry }); }
   catch (error) { return { status: 'FAIL', errors: [String(error.message || error)] }; }
-  if (!evidence || evidence.schemaVersion !== META_RESOLUTION_SCHEMA) errors.push('META_RESOLUTION_SCHEMA_INVALID');
-  if (evidence?.inputBundleSha !== recomputed.inputBundleSha || evidence?.sourceFingerprint !== recomputed.sourceFingerprint) errors.push('META_RESOLUTION_INPUT_BINDING_MISMATCH');
-  const { evidenceSha, ...body } = evidence || {};
+  if (!evidence || typeof evidence !== 'object') return { status: 'FAIL', errors: ['META_RESOLUTION_SCHEMA_INVALID'] };
+  const { evidenceSha, ...body } = evidence;
   if (!evidenceSha || evidenceSha !== objectSha(body)) errors.push('META_RESOLUTION_EVIDENCE_SHA_INVALID');
+
+  if (evidence.schemaVersion === LEGACY_META_RESOLUTION_SCHEMA_V1) {
+    const isolated = buildDecisionIsolatedInput(input);
+    const legacyDispositions = new Set(['EXISTING_REUSE', 'FAMILY_REUSE', 'RPM_PRIMARY_MIGRATION_GAP', 'TRUE_TAXONOMY_GAP', 'ROUTE_OUT']);
+    if (!legacyDispositions.has(evidence.disposition)) errors.push('LEGACY_META_RESOLUTION_DISPOSITION_INVALID');
+    if (evidence.inputBundleSha !== isolated.inputBundleSha || evidence.sourceFingerprint !== isolated.sourceFingerprint) errors.push('META_RESOLUTION_INPUT_BINDING_MISMATCH');
+    if (!equal(evidence.semanticInputBundle, isolated.bundle)) errors.push('META_RESOLUTION_SEMANTIC_INPUT_MISMATCH');
+    if (evidence.rpmPath && !equal(evidence.rpmPath, recomputed.rpmPath)) errors.push('META_RESOLUTION_RPM_PATH_RECLASSIFICATION_MISMATCH');
+    return {
+      status: errors.length ? 'FAIL' : 'PASS',
+      errors,
+      recomputed,
+      reclassifiedLegacyProjection: true,
+      priorDisposition: evidence.disposition,
+    };
+  }
+
+  if (evidence.schemaVersion !== META_RESOLUTION_SCHEMA) errors.push('META_RESOLUTION_SCHEMA_INVALID');
+  if (evidence?.inputBundleSha !== recomputed.inputBundleSha || evidence?.sourceFingerprint !== recomputed.sourceFingerprint) errors.push('META_RESOLUTION_INPUT_BINDING_MISMATCH');
   const { evidenceSha: expectedSha, ...expectedBody } = recomputed;
   if (!equal(body, expectedBody)) errors.push('META_RESOLUTION_RECOMPUTE_MISMATCH');
   if (!META_ROUTE_DISPOSITIONS.includes(evidence?.disposition)) errors.push('META_RESOLUTION_DISPOSITION_INVALID');
+  if (evidence?.semanticStatus === 'FINAL' && !META_PROJECTION_STATUSES.includes(evidence?.projectionStatus)) errors.push('META_PROJECTION_STATUS_INVALID');
   return { status: errors.length ? 'FAIL' : 'PASS', errors, recomputed };
 }
-
 export function validateBlindDifficulty(evidence, { sourceFingerprint, solutionHash } = {}) {
   const errors = [];
   if (evidence?.schemaVersion !== META_DIFFICULTY_SCHEMA) errors.push('DIFFICULTY_SCHEMA_INVALID');
@@ -479,35 +631,50 @@ export function validateMetaFinalization({ input, resolverEvidence, difficultyEv
   const errors = [];
   const resolution = validateResolverEvidence(input, resolverEvidence, { repoRoot, registry });
   errors.push(...resolution.errors);
+  const resolved = resolution.recomputed || resolverEvidence || {};
   const difficulty = validateBlindDifficulty(difficultyEvidence, {
-    sourceFingerprint: resolverEvidence?.sourceFingerprint,
-    solutionHash: resolverEvidence?.semanticInputBundle?.solutionIdentity?.solutionHash,
+    sourceFingerprint: resolved?.sourceFingerprint,
+    solutionHash: resolved?.semanticInputBundle?.solutionIdentity?.solutionHash,
   });
   errors.push(...difficulty.errors);
   errors.push(...validateDifficultyProjectionParity(candidateMeta, difficultyEvidence).errors);
   if (!candidateMeta || typeof candidateMeta !== 'object') errors.push('META_FINAL_CANDIDATE_REQUIRED');
   else {
     const activeRegistry = registry || loadActiveMetaRegistry(repoRoot);
-    const fieldCheck = validateActiveMetaFields(candidateMeta, activeRegistry, { requireFields: true });
-    errors.push(...fieldCheck.errors);
-    if (candidateMeta.problemTypeKey !== resolverEvidence?.problemTypeKey || (candidateMeta.templateKey || '') !== (resolverEvidence?.templateKey || '')) errors.push('META_FINAL_RESOLVER_KEY_PARITY_FAIL');
-    if (!fieldCheck.activeBinding || !fieldCheck.l3Active || (candidateMeta.templateKey && !fieldCheck.l4Active)) errors.push('META_FINAL_ACTIVE_BINDING_REQUIRED');
+    const projectionReady = resolved?.projectionStatus === 'PROJECTION_REUSE';
+    const fieldCheck = validateActiveMetaFields(candidateMeta, activeRegistry, { requireFields: projectionReady });
+    const canonicalCheck = validateCanonicalProjectionKeys(candidateMeta, activeRegistry);
+    const fieldErrors = projectionReady ? fieldCheck.errors
+      : fieldCheck.errors.filter(error => error !== 'ADVANCED_META_CURRICULUM_BINDING_INVALID');
+    errors.push(...fieldErrors, ...canonicalCheck.errors.map(error => 'META_FINAL_INVALID_CANONICAL_PROJECTION:' + error));
+    const candidatePT = text(candidateMeta.problemTypeKey);
+    const candidateTPL = text(candidateMeta.templateKey);
+    if (candidatePT && resolved?.problemTypeKey && candidatePT !== resolved.problemTypeKey) errors.push('META_FINAL_RESOLVER_KEY_PARITY_FAIL');
+    if (candidateTPL && resolved?.templateKey && candidateTPL !== resolved.templateKey) errors.push('META_FINAL_RESOLVER_KEY_PARITY_FAIL');
+    if (projectionReady && (!fieldCheck.activeBinding || !fieldCheck.l3Active || (candidateTPL && !fieldCheck.l4Active))) {
+      errors.push('META_FINAL_ACTIVE_BINDING_REQUIRED');
+    }
+    if (resolved?.semanticStatus === 'HOLD') errors.push('META_RPM_SEMANTIC_HOLD_UNRESOLVED');
+    else if (resolved?.semanticStatus !== 'FINAL') errors.push('META_RPM_SEMANTIC_FINAL_REQUIRED');
+    if (resolved?.projectionStatus === 'PROJECTION_REUSE' && candidatePT && candidatePT !== resolved.problemTypeKey) {
+      errors.push('META_FINAL_RESOLVER_KEY_PARITY_FAIL');
+    }
     if (candidateMeta.crossConceptKeys?.includes(candidateMeta.problemTypeKey) || candidateMeta.crossConceptKeys?.includes(candidateMeta.templateKey)) errors.push('META_FINAL_PRIMARY_CROSSCONCEPT_DUPLICATE');
     if (!text(candidateMeta.integrationReason)) errors.push('META_FINAL_INTEGRATION_REASON_REQUIRED');
     const auditByKey = (items, keys, kind) => {
       const expected = new Set(keys || []);
       const actual = new Set((items || []).map(item => item.key));
-      if (expected.size !== actual.size || [...expected].some(key => !actual.has(key))) errors.push(`META_FINAL_${kind}_EVIDENCE_PARITY_FAIL`);
+      if (expected.size !== actual.size || [...expected].some(key => !actual.has(key))) errors.push('META_FINAL_' + kind + '_EVIDENCE_PARITY_FAIL');
       for (const item of items || []) {
-        if (item.status !== 'FINAL' || !text(item.reason) || item.sourceFingerprint !== resolverEvidence?.sourceFingerprint
-          || item.inputBundleSha !== resolverEvidence?.inputBundleSha) errors.push(`META_FINAL_${kind}_EVIDENCE_INVALID:${item.key || '<missing>'}`);
+        if (item.status !== 'FINAL' || !text(item.reason) || item.sourceFingerprint !== resolved?.sourceFingerprint
+          || item.inputBundleSha !== resolved?.inputBundleSha) errors.push('META_FINAL_' + kind + '_EVIDENCE_INVALID:' + (item.key || '<missing>'));
       }
     };
     auditByKey(semanticMetaEvidence?.crossConceptDecisions, candidateMeta.crossConceptKeys, 'CROSS_CONCEPT');
     auditByKey(semanticMetaEvidence?.conditionDecisions, candidateMeta.conditionKeys, 'CONDITION');
     if (semanticMetaEvidence?.schemaVersion !== 'JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1'
-      || semanticMetaEvidence?.sourceFingerprint !== resolverEvidence?.sourceFingerprint
-      || semanticMetaEvidence?.inputBundleSha !== resolverEvidence?.inputBundleSha
+      || semanticMetaEvidence?.sourceFingerprint !== resolved?.sourceFingerprint
+      || semanticMetaEvidence?.inputBundleSha !== resolved?.inputBundleSha
       || semanticMetaEvidence?.candidateVisibleDuringDecision !== false) errors.push('META_FINAL_RELATIONAL_PROVENANCE_INVALID');
     const { evidenceSha: semanticSha, ...semanticBody } = semanticMetaEvidence || {};
     if (!semanticSha || semanticSha !== objectSha(semanticBody)) errors.push('META_FINAL_RELATIONAL_EVIDENCE_SHA_INVALID');
@@ -515,15 +682,13 @@ export function validateMetaFinalization({ input, resolverEvidence, difficultyEv
   if (requireValidatorReceipt) {
     const preflight = validateMetaFinalization({ input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence,
       requireValidatorReceipt: false, repoRoot, registry });
-    if (preflight.status !== 'PASS' || !validateMetaValidatorReceipt(validatorReceipt, resolverEvidence?.evidenceSha, preflight)) {
+    if (preflight.status !== 'PASS' || !validateMetaValidatorReceipt(validatorReceipt, resolverEvidence?.evidenceSha, resolverEvidence?.schemaVersion === LEGACY_META_RESOLUTION_SCHEMA_V1 ? undefined : preflight)) {
       errors.push('META_DETERMINISTIC_VALIDATOR_NOT_RUN');
     }
   }
-  if (['RPM_PRIMARY_MIGRATION_GAP', 'TRUE_TAXONOMY_GAP', 'ROUTE_OUT'].includes(resolverEvidence?.disposition)) errors.push('META_ADVANCED_CLOSURE_UNRESOLVED');
-  if (resolverEvidence?.disposition === 'FAMILY_REUSE' && !resolverEvidence?.templateKey) errors.push('META_FAMILY_REUSE_TEMPLATE_UNRESOLVED');
-  return { status: errors.length ? 'FAIL' : 'PASS', errors, resolutionStatus: resolution.status, difficultyStatus: difficulty.status };
+  return { status: errors.length ? 'FAIL' : 'PASS', errors, resolutionStatus: resolution.status, difficultyStatus: difficulty.status,
+    rpmSemanticStatus: resolved?.semanticStatus || 'UNAVAILABLE', projectionStatus: resolved?.projectionStatus || 'NOT_ATTEMPTED' };
 }
-
 export function validateMetaValidatorReceipt(validatorReceipt, evidenceSha, validationResult) {
   if (!validatorReceipt || validatorReceipt.status !== 'PASS' || validatorReceipt.validatorId !== 'rpm-active-resolver-v1'
     || validatorReceipt.inputEvidenceSha !== evidenceSha || !text(validatorReceipt.validationResultSha)) return false;
@@ -538,39 +703,59 @@ export function validateR2EReceipt(receipt, options = {}) {
   const { receiptSha, ...receiptBody } = receipt || {};
   if (!receiptSha || receiptSha !== objectSha(receiptBody)) errors.push('R2E_META_RECEIPT_SHA_INVALID');
   const seen = new Set();
+  const semanticCounts = { FINAL: 0, HOLD: 0, UNAVAILABLE: 0 };
+  const projectionCounts = { PROJECTION_REUSE: 0, PROJECTION_BINDING_PENDING: 0, PROJECTION_UNMATERIALIZED: 0, META_ONLY_COMPATIBILITY_PENDING: 0 };
   for (const item of receipt?.items || []) {
-    if (!text(item.questionUid) || seen.has(item.questionUid)) errors.push(`R2E_META_UID_INVALID:${item.questionUid || '<missing>'}`);
-    seen.add(item.questionUid);
-    if (item.resolverEvidence?.semanticInputBundle?.sourceIdentity?.questionUid !== item.questionUid) errors.push(`R2E_META_UID_BINDING_MISMATCH:${item.questionUid}`);
-    const routeOut = item.resolverEvidence?.disposition === 'ROUTE_OUT' && item.r2eFinalDisposition === 'ROUTE_OUT';
+    const uid = text(item.questionUid);
+    if (!uid || seen.has(uid)) errors.push('R2E_META_UID_INVALID:' + (uid || '<missing>'));
+    seen.add(uid);
+    const resolverEvidence = item.resolverEvidence || {};
+    if (resolverEvidence.semanticInputBundle?.sourceIdentity?.questionUid !== uid) errors.push('R2E_META_UID_BINDING_MISMATCH:' + uid);
+    const routeCheck = validateResolverEvidence(item.input, resolverEvidence, { repoRoot: options.repoRoot, registry: options.registry });
+    for (const error of routeCheck.errors) errors.push(error + ':' + uid);
+    const effective = routeCheck.recomputed || resolverEvidence;
+    if (effective.semanticStatus === 'FINAL') semanticCounts.FINAL++;
+    else if (effective.semanticStatus === 'HOLD') semanticCounts.HOLD++;
+    else semanticCounts.UNAVAILABLE++;
+    if (projectionCounts[effective.projectionStatus] !== undefined) projectionCounts[effective.projectionStatus]++;
+    const routeOut = effective.disposition === 'ROUTE_OUT' && item.r2eFinalDisposition === 'ROUTE_OUT';
     if (routeOut) {
-      const routeCheck = validateResolverEvidence(item.input, item.resolverEvidence, { repoRoot: options.repoRoot, registry: options.registry });
-      for (const error of routeCheck.errors) errors.push(`${error}:${item.questionUid}`);
-      if (!text(item.routeOutEvidence?.reason) || item.routeOutEvidence?.status !== 'FINAL') errors.push(`R2E_ROUTE_OUT_EVIDENCE_REQUIRED:${item.questionUid}`);
-      if (!validateMetaValidatorReceipt(item.validatorReceipt, item.resolverEvidence?.evidenceSha, routeCheck)) errors.push(`R2E_VALIDATOR_NOT_RUN:${item.questionUid}`);
+      if (!text(item.routeOutEvidence?.reason) || item.routeOutEvidence?.status !== 'FINAL') errors.push('R2E_ROUTE_OUT_EVIDENCE_REQUIRED:' + uid);
+      if (!validateMetaValidatorReceipt(item.validatorReceipt, resolverEvidence.evidenceSha, routeCheck)) errors.push('R2E_VALIDATOR_NOT_RUN:' + uid);
       if (item.routeOutEvidence?.runtimeParity?.status !== 'PASS'
-        || item.routeOutEvidence?.runtimeParity?.questionUid !== item.questionUid
-        || item.routeOutEvidence?.runtimeParity?.resolverEvidenceSha !== item.resolverEvidence?.evidenceSha) errors.push(`R2E_ROUTE_OUT_RUNTIME_PARITY_REQUIRED:${item.questionUid}`);
-    } else {
-      const result = validateMetaFinalization({ ...item, repoRoot: options.repoRoot, registry: options.registry });
-      for (const error of result.errors) errors.push(`${error}:${item.questionUid}`);
-      const mapped = item.resolverEvidence?.disposition === 'EXISTING_REUSE' || item.resolverEvidence?.disposition === 'FAMILY_REUSE';
-      if (!mapped) errors.push(`R2E_RESOLVER_DISPOSITION_NOT_FINAL:${item.questionUid}`);
-      const allowedFinal = new Set(['EXISTING_REUSE', 'REBIND', 'MATERIALIZED', 'NEW_L4', 'NEW_L3', 'CROSS_CONCEPT']);
-      if (!allowedFinal.has(item.r2eFinalDisposition)) errors.push(`R2E_FINAL_DISPOSITION_INVALID:${item.questionUid}`);
-      if (item.r2eFinalDisposition !== 'EXISTING_REUSE') {
-        if (item.actionEvidence?.status !== 'PASS' || item.actionEvidence?.questionUid !== item.questionUid
-          || item.actionEvidence?.resolverEvidenceSha !== item.resolverEvidence?.evidenceSha) errors.push(`R2E_ACTION_EVIDENCE_INVALID:${item.questionUid}`);
-      }
+        || item.routeOutEvidence?.runtimeParity?.questionUid !== uid
+        || item.routeOutEvidence?.runtimeParity?.resolverEvidenceSha !== resolverEvidence.evidenceSha) errors.push('R2E_ROUTE_OUT_RUNTIME_PARITY_REQUIRED:' + uid);
+      continue;
+    }
+
+    const result = validateMetaFinalization({ ...item, repoRoot: options.repoRoot, registry: options.registry });
+    for (const error of result.errors) errors.push(error + ':' + uid);
+    if (effective.semanticStatus !== 'FINAL') errors.push('R2E_RPM_SEMANTIC_FINAL_REQUIRED:' + uid);
+    if (item.disposition !== resolverEvidence.disposition
+      && resolverEvidence.schemaVersion !== LEGACY_META_RESOLUTION_SCHEMA_V1) errors.push('R2E_META_ITEM_DISPOSITION_MISMATCH:' + uid);
+
+    const projectionPending = effective.projectionStatus !== 'PROJECTION_REUSE';
+    const allowedFinal = new Set(['EXISTING_REUSE', 'REBIND', 'MATERIALIZED', 'NEW_L4', 'NEW_L3', 'CROSS_CONCEPT', 'META_ONLY_COMPATIBILITY_PENDING', 'META_ONLY']);
+    if (!allowedFinal.has(item.r2eFinalDisposition)) errors.push('R2E_FINAL_DISPOSITION_INVALID:' + uid);
+    if (projectionPending && !['META_ONLY_COMPATIBILITY_PENDING', 'META_ONLY'].includes(item.r2eFinalDisposition)) {
+      errors.push('R2E_COMPATIBILITY_PENDING_NOT_META_ONLY:' + uid);
+    }
+    if (!projectionPending && item.r2eFinalDisposition !== 'EXISTING_REUSE') {
+      if (item.actionEvidence?.status !== 'PASS' || item.actionEvidence?.questionUid !== uid
+        || item.actionEvidence?.resolverEvidenceSha !== resolverEvidence.evidenceSha) errors.push('R2E_ACTION_EVIDENCE_INVALID:' + uid);
+    }
+    if (!projectionPending || item.actionEvidence?.status === 'PASS') {
       const runtimeParity = validateRuntimeMetaParity({
-        questionUid: item.questionUid,
-        sourceFingerprint: item.resolverEvidence?.sourceFingerprint,
-        resolverEvidence: item.resolverEvidence,
+        questionUid: uid,
+        sourceFingerprint: effective.sourceFingerprint,
+        resolverEvidence,
         difficultyEvidence: item.difficultyEvidence,
         candidateMeta: item.candidateMeta,
         runtimeRecord: item.runtimeRecord,
       });
-      for (const error of runtimeParity.errors) errors.push(`${error}:${item.questionUid}`);
+      for (const error of runtimeParity.errors) errors.push(error + ':' + uid);
+    } else if (item.runtimeRecord && item.runtimeRecord.questionUid !== uid) {
+      errors.push('RUNTIME_META_UID_MISMATCH:' + uid);
     }
   }
   if (Array.isArray(options.sourceQuestions)) {
@@ -582,28 +767,50 @@ export function validateR2EReceipt(receipt, options = {}) {
         disposition: item.resolverEvidence?.disposition })),
     }, { sourceArchiveFile: options.sourceArchiveFile, sourceQuestions: options.sourceQuestions, repoRoot: options.repoRoot,
       registry: options.registry, requireResolverReceipt: false, projectionMode: 'R2E_FINAL' });
-    for (const error of sourceCheck.errors) errors.push(`R2E_FINAL_SOURCE_BINDING:${error}`);
+    for (const error of sourceCheck.errors) errors.push('R2E_FINAL_SOURCE_BINDING:' + error);
   }
   if (receipt?.stage === 'R2E_FINAL') {
-    for (const field of ['unresolvedSemanticCount', 'unresolvedProposalCount', 'unresolvedCrossConceptCandidateCount', 'metaHoldCount', 'migrationGapCount', 'runtimeParityFailureCount']) {
-      if (receipt[field] !== 0) errors.push(`R2E_FINAL_${field.toUpperCase()}_NOT_ZERO`);
+    const declaredHoldCount = receipt.rpmSemanticHoldCount ?? receipt.trueMetaHoldCount;
+    if (declaredHoldCount !== undefined && declaredHoldCount !== semanticCounts.HOLD) errors.push('R2E_FINAL_RPM_SEMANTIC_HOLD_COUNT_MISMATCH');
+    const declaredSemantic = receipt.rpmSemantic || receipt.rpmSemanticSummary;
+    if (declaredSemantic && !equalCountSummary(declaredSemantic, semanticCounts)) errors.push('R2E_FINAL_RPM_SEMANTIC_SUMMARY_MISMATCH');
+    const declaredProjection = receipt.legacyProjection || receipt.legacyProjectionSummary;
+    if (declaredProjection && !equalCountSummary(declaredProjection, projectionCounts)) errors.push('R2E_FINAL_LEGACY_PROJECTION_SUMMARY_MISMATCH');
+    const hasNewProjectionSummary = receipt.projectionPendingCount !== undefined || declaredProjection !== undefined;
+    if (hasNewProjectionSummary && receipt.migrationGapCount !== undefined && Number(receipt.migrationGapCount) !== projectionCounts.PROJECTION_BINDING_PENDING
+      + projectionCounts.PROJECTION_UNMATERIALIZED + projectionCounts.META_ONLY_COMPATIBILITY_PENDING) {
+      errors.push('R2E_FINAL_PROJECTION_PENDING_COUNT_MISMATCH');
     }
-    if (errors.length) errors.push('R2E_FINAL_META_HOLD_ZERO_FAIL');
+    // Legacy aggregate HOLD/proposal/runtime counters mixed semantic and
+    // projection debt. Current per-item resolver, canonical-key and runtime
+    // validation below are authoritative; stale aggregate values cannot turn a
+    // projection-only gap into a release blocker.
+    if (semanticCounts.HOLD > 0 || semanticCounts.UNAVAILABLE > 0) errors.push('R2E_FINAL_RPM_SEMANTIC_NOT_CLOSED');
+    if (errors.length) errors.push('R2E_FINAL_META_SEMANTIC_CLOSURE_FAIL');
   }
-  return { status: errors.length ? 'FAIL' : 'PASS', errors, questionCount: seen.size };
+  return {
+    status: errors.length ? 'FAIL' : 'PASS',
+    errors,
+    questionCount: seen.size,
+    rpmSemantic: semanticCounts,
+    legacyProjection: projectionCounts,
+    projectionPendingCount: projectionCounts.PROJECTION_BINDING_PENDING + projectionCounts.PROJECTION_UNMATERIALIZED + projectionCounts.META_ONLY_COMPATIBILITY_PENDING,
+  };
 }
-
 export function sealR2EMetaReceipt(receipt) {
   const { receiptSha: _discard, ...body } = receipt || {};
   return { ...body, receiptSha: objectSha(body) };
 }
 
-export function mapResolverDispositionToR2E(disposition) {
+export function mapResolverDispositionToR2E(dispositionOrEvidence, projectionStatus = '') {
+  const disposition = typeof dispositionOrEvidence === 'string' ? dispositionOrEvidence : dispositionOrEvidence?.disposition;
+  const projection = projectionStatus || (typeof dispositionOrEvidence === 'object' ? dispositionOrEvidence?.projectionStatus : '');
+  if (disposition === 'RPM_SEMANTIC_FINAL') return projection === 'PROJECTION_REUSE' ? 'EXISTING_REUSE' : 'META_ONLY_COMPATIBILITY_PENDING';
   if (disposition === 'EXISTING_REUSE' || disposition === 'FAMILY_REUSE') return 'EXISTING_REUSE';
+  if (disposition === 'TRUE_META_HOLD' || disposition === 'TRUE_TAXONOMY_GAP') return 'TRUE_META_HOLD';
   if (disposition === 'ROUTE_OUT') return 'ROUTE_OUT';
   return null;
 }
-
 export function validateRuntimeMetaParity({ questionUid, sourceFingerprint, resolverEvidence, difficultyEvidence, candidateMeta, runtimeRecord } = {}) {
   const errors = [];
   if (!runtimeRecord || runtimeRecord.questionUid !== questionUid) errors.push('RUNTIME_META_UID_MISMATCH');
@@ -635,6 +842,9 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
     const normalizeSource = value => text(value).replaceAll('\\', '/').replace(/^archive\/exams\//, '');
   const seen = new Set();
   const activeRegistry = registry || loadActiveMetaRegistry(repoRoot);
+  const rpmSemanticSummary = { FINAL: 0, HOLD: 0, UNAVAILABLE: 0 };
+  const legacyProjectionSummary = { PROJECTION_REUSE: 0, PROJECTION_BINDING_PENDING: 0, PROJECTION_UNMATERIALIZED: 0, META_ONLY_COMPATIBILITY_PENDING: 0, NOT_ATTEMPTED: 0 };
+  let invalidCanonicalProjectionCount = 0;
   for (let i = 0; i < rows.length; i += 1) {
     const item = rows[i];
     const question = sourceQuestions?.[i];
@@ -685,8 +895,14 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
       }
     }
     const resolver = validateResolverEvidence(input, item?.resolverEvidence, { repoRoot, registry: activeRegistry });
-    for (const error of resolver.errors) errors.push(`${error}:${uid}`);
-    if (item?.disposition !== item?.resolverEvidence?.disposition) errors.push(`R2E_META_INPUT_DISPOSITION_MISMATCH:${uid}`);
+    for (const error of resolver.errors) errors.push(error + ':' + uid);
+    const effectiveResolution = resolver.recomputed || item?.resolverEvidence || {};
+    if (effectiveResolution.semanticStatus === 'FINAL') rpmSemanticSummary.FINAL++;
+    else if (effectiveResolution.semanticStatus === 'HOLD') rpmSemanticSummary.HOLD++;
+    else rpmSemanticSummary.UNAVAILABLE++;
+    if (legacyProjectionSummary[effectiveResolution.projectionStatus] !== undefined) legacyProjectionSummary[effectiveResolution.projectionStatus]++;
+    if (item?.disposition !== item?.resolverEvidence?.disposition
+      && item?.resolverEvidence?.schemaVersion !== LEGACY_META_RESOLUTION_SCHEMA_V1) errors.push('R2E_META_INPUT_DISPOSITION_MISMATCH:' + uid);
     const difficulty = validateBlindDifficulty(item?.difficultyEvidence, {
       sourceFingerprint: item?.resolverEvidence?.sourceFingerprint,
       solutionHash: item?.resolverEvidence?.semanticInputBundle?.solutionIdentity?.solutionHash,
@@ -719,19 +935,31 @@ export function validateR2EIntakeMetaReceipt(receipt, { sourceArchiveFile, sourc
       if (expected.size !== actual.size || [...expected].some(key => !actual.has(key))) errors.push(`R2E_META_INPUT_RELATIONAL_FIELD_PARITY_FAIL:${uid}:${field}`);
     }
     if (!text(candidateMeta.integrationReason)) errors.push(`R2E_META_INPUT_INTEGRATION_REASON_MISSING:${uid}`);
-    const activeCheck = validateActiveMetaFields({ ...candidateMeta, curriculum: candidateMeta.curriculum || ctx.curriculum }, activeRegistry, { requireFields: true });
-    for (const error of activeCheck.errors) errors.push(`${error}:${uid}`);
+    const projectionReady = effectiveResolution.projectionStatus === 'PROJECTION_REUSE';
+    const projectedCandidate = { ...candidateMeta, curriculum: candidateMeta.curriculum || ctx.curriculum };
+    const activeCheck = validateActiveMetaFields(projectedCandidate, activeRegistry, { requireFields: projectionReady });
+    const canonicalCheck = validateCanonicalProjectionKeys(projectedCandidate, activeRegistry);
+    const activeErrors = projectionReady ? activeCheck.errors
+      : activeCheck.errors.filter(error => error !== 'ADVANCED_META_CURRICULUM_BINDING_INVALID');
+    for (const error of activeErrors) errors.push(error + ':' + uid);
+    for (const error of canonicalCheck.errors) errors.push('R2E_META_INVALID_CANONICAL_PROJECTION:' + error + ':' + uid);
     const validator = item?.validatorReceipt;
-    if (requireResolverReceipt && !validateMetaValidatorReceipt(validator, item?.resolverEvidence?.evidenceSha, resolver)) errors.push(`R2E_META_INPUT_VALIDATOR_NOT_RUN:${uid}`);
-    const disposition = item?.resolverEvidence?.disposition;
-    if (['RPM_PRIMARY_MIGRATION_GAP', 'TRUE_TAXONOMY_GAP', 'ROUTE_OUT'].includes(disposition)
-      && (candidateMeta.problemTypeKey || candidateMeta.templateKey)) errors.push(`R2E_META_INPUT_GAP_KEY_MUST_REMAIN_BLANK:${uid}`);
-    if (['EXISTING_REUSE', 'FAMILY_REUSE'].includes(disposition)) {
-      if (candidateMeta.problemTypeKey !== item?.resolverEvidence?.problemTypeKey
-        || (candidateMeta.templateKey || '') !== (item?.resolverEvidence?.templateKey || '')) errors.push(`R2E_META_INPUT_REUSE_FIELD_MISMATCH:${uid}`);
+    if (requireResolverReceipt && !validateMetaValidatorReceipt(validator, item?.resolverEvidence?.evidenceSha, item?.resolverEvidence?.schemaVersion === LEGACY_META_RESOLUTION_SCHEMA_V1 ? undefined : resolver)) errors.push(`R2E_META_INPUT_VALIDATOR_NOT_RUN:${uid}`);
+    const hasProjectionKey = Boolean(text(candidateMeta.problemTypeKey) || text(candidateMeta.templateKey));
+    if (effectiveResolution.semanticStatus === 'HOLD' && hasProjectionKey) errors.push('R2E_META_INPUT_TRUE_HOLD_KEY_MUST_REMAIN_BLANK:' + uid);
+    if (effectiveResolution.semanticStatus === 'FINAL' && hasProjectionKey) {
+      const projectionCheck = validateActiveMetaFields({ ...candidateMeta, curriculum: candidateMeta.curriculum || ctx.curriculum }, activeRegistry);
+      if (projectionCheck.errors.length) invalidCanonicalProjectionCount++;
+      if (effectiveResolution.projectionStatus === 'PROJECTION_REUSE'
+        && ((candidateMeta.problemTypeKey && candidateMeta.problemTypeKey !== effectiveResolution.problemTypeKey)
+          || (candidateMeta.templateKey && candidateMeta.templateKey !== effectiveResolution.templateKey))) {
+        errors.push('R2E_META_INPUT_REUSE_FIELD_MISMATCH:' + uid);
+      }
     }
   }
-  return { status: errors.length ? 'FAIL' : 'PASS', errors, questionCount: rows.length };
+  const resolvablePending = rpmSemanticSummary.HOLD + rpmSemanticSummary.UNAVAILABLE + invalidCanonicalProjectionCount;
+  return { status: errors.length ? 'FAIL' : 'PASS', errors, questionCount: rows.length,
+    rpmSemantic: rpmSemanticSummary, legacyProjection: legacyProjectionSummary, invalidCanonicalProjectionCount, resolvablePending };
 }
 
 export function makeMetaValidatorReceipt(resolverEvidence, validationResult) {

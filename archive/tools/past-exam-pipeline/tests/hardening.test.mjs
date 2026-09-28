@@ -585,7 +585,9 @@ test('source → candidate → solution identity → RPM/ACTIVE metadata → pre
     assert.equal(pass.eligibility.BASIC_ARCHIVE_ELIGIBLE, true);
     assert.equal(pass.eligibility.ADVANCED_META_ELIGIBLE, true, JSON.stringify({ errors: pass.errors, metaEligibility: pass.metaEligibility }));
     assert.equal(pass.metaEligibility.status, 'PASS');
-    assert.equal(pass.metaEligibility.rows[0].disposition, 'EXISTING_REUSE');
+    assert.equal(pass.metaEligibility.rows[0].disposition, 'RPM_SEMANTIC_FINAL');
+    assert.equal(pass.metaEligibility.rows[0].rpmSemanticStatus, 'FINAL');
+    assert.equal(pass.metaEligibility.rows[0].projectionStatus, 'PROJECTION_REUSE');
     const metaEvidence = JSON.parse(fs.readFileSync(path.join(f.reportsDir, 'meta_decision_evidence.json'), 'utf8'));
     const resolvedItem = metaEvidence.items[0];
     const r2eCandidateMeta = {
@@ -612,6 +614,7 @@ test('source → candidate → solution identity → RPM/ACTIVE metadata → pre
         questionUid: resolvedItem.resolverInput.sourceIdentity.questionUid,
         input: resolvedItem.resolverInput,
         resolverEvidence: resolvedItem.resolverEvidence,
+        disposition: resolvedItem.resolverEvidence.disposition,
         difficultyEvidence: resolvedItem.difficultyEvidence,
         candidateMeta: r2eCandidateMeta,
         semanticMetaEvidence: resolvedItem.semanticMetaEvidence,
@@ -645,8 +648,10 @@ for (const [disposition, reason] of [
     assert.equal(report.status, 'PASS', JSON.stringify(report.errors));
     assert.equal(report.eligibility.BASIC_ARCHIVE_ELIGIBLE, true);
     assert.equal(report.eligibility.ADVANCED_META_ELIGIBLE, false);
-    assert.equal(report.metaEligibility.status, disposition === 'TRUE_TAXONOMY_GAP' ? 'HOLD' : 'MIGRATION_GAP');
-    assert.equal(report.metaEligibility.rows[0].disposition, disposition === 'TRUE_TAXONOMY_GAP' ? 'TRUE_TAXONOMY_GAP' : 'RPM_PRIMARY_MIGRATION_GAP');
+    assert.equal(report.metaEligibility.status, disposition === 'TRUE_TAXONOMY_GAP' ? 'TRUE_META_HOLD' : 'PASS');
+    assert.equal(report.metaEligibility.rows[0].disposition, disposition === 'TRUE_TAXONOMY_GAP' ? 'TRUE_META_HOLD' : 'RPM_SEMANTIC_FINAL');
+    assert.equal(report.metaEligibility.rows[0].rpmSemanticStatus, disposition === 'TRUE_TAXONOMY_GAP' ? 'HOLD' : 'FINAL');
+    if (disposition !== 'TRUE_TAXONOMY_GAP') assert.ok(['PROJECTION_BINDING_PENDING', 'PROJECTION_UNMATERIALIZED'].includes(report.metaEligibility.rows[0].projectionStatus));
     assert.equal(f.question.problemTypeKey, '');
     assert.equal(f.question.templateKey, '');
   } finally { f.cleanup(); }

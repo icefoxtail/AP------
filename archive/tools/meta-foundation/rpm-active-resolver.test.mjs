@@ -92,13 +92,16 @@ test('DIRECT_ACTIVE resolves through RPM, exact crosswalk, active owner and bind
   assert.equal(generated.validation.status, 'PASS');
   assert.equal(validateMetaValidatorReceipt(generated.validatorReceipt, generated.resolverEvidence.evidenceSha, generated.validation), true);
   const result = resolveMetaRoute(input, { repoRoot: root });
-  assert.equal(result.disposition, 'EXISTING_REUSE');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(result.crosswalkFile, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json');
   assert.equal(result.crosswalkRecordId, 'H1-RPM-001');
   assert.equal(result.ownerPack, 'H1_FOUNDATION');
+  assert.equal(result.bindingOwnerPack, 'H1_FOUNDATION');
   assert.match(result.bindingIdentity, /^2015\|H15-SA-01\|H15-SA-01-POLYNOMIAL_BASIC\|/);
   assert.ok(result.authorityRefs.findIndex(ref => ref.path.endsWith('CANONICAL_MASTER.json')) < result.authorityRefs.findIndex(ref => ref.path.includes('/crosswalks/')));
-  assert.ok(result.authorityRefs.some(ref => ref.role === 'ACTIVE_META_FOUNDATION'));
+  assert.ok(result.authorityRefs.some(ref => ref.role === 'ACTIVE_META_COMPATIBILITY_PROJECTION'));
   assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
 });
 
@@ -111,34 +114,43 @@ test('FAMILY_ACTIVE only reuses a template selected after crosswalk lookup', () 
     templateKey: row.templateCandidates[0].templateKey, decisiveStepReason: '합성 제수 조건을 인수 관계로 분리한다.',
   };
   const result = resolveMetaRoute(input, { repoRoot: root });
-  assert.equal(result.disposition, 'FAMILY_REUSE');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
   assert.equal(result.templateKey, row.templateCandidates[0].templateKey);
   assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
 });
 
 test('FAMILY_ACTIVE remains unclosed without post-crosswalk template selection', () => {
   const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-010')), { repoRoot: root });
-  assert.equal(result.disposition, 'FAMILY_REUSE');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'META_ONLY_COMPATIBILITY_PENDING');
   assert.equal(result.advancedMetaEligible, false);
-  assert.equal(result.dispositionReason, 'FAMILY_TEMPLATE_SELECTION_REQUIRED');
+  assert.equal(result.projectionReasonCode, 'FAMILY_TEMPLATE_SELECTION_PENDING');
   assert.equal(result.problemTypeKey, '');
   assert.equal(result.templateKey, '');
 });
 
-test('RPM path with missing exact binding is a migration gap and emits no key', () => {
+test('RPM semantics remain final when its exact compatibility binding is missing', () => {
   const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-029')), { repoRoot: root });
-  assert.equal(result.disposition, 'RPM_PRIMARY_MIGRATION_GAP');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_BINDING_PENDING');
+  assert.equal(result.mappedProblemTypeKey, 'PT_H1_ROOT_COEFFICIENT_RELATION');
   assert.equal(result.problemTypeKey, '');
   assert.equal(result.templateKey, '');
 });
 
-test('RPM path without ACTIVE materialization is a migration gap and emits no key', () => {
+test('RPM semantics remain final when no legacy PT/TPL projection exists', () => {
   const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-009')), { repoRoot: root });
-  assert.equal(result.disposition, 'RPM_PRIMARY_MIGRATION_GAP');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_UNMATERIALIZED');
   assert.equal(result.problemTypeKey, '');
 });
 
-test('truthful exact-scope ACTIVE no-match remains a true taxonomy gap', () => {
+test('a path absent from RPM Primary is a true semantic hold', () => {
   const row = rowFor('H1-RPM-001');
   const input = makeInput(row);
   input.curriculumContext.standardUnitKey = 'H15-UNMAPPED-FIXTURE';
@@ -150,41 +162,43 @@ test('truthful exact-scope ACTIVE no-match remains a true taxonomy gap', () => {
     searchedScope: { curriculum: '2015', standardUnitKey: input.curriculumContext.standardUnitKey, subUnitKey: input.curriculumContext.subUnitKey },
   };
   const result = resolveMetaRoute(input, { repoRoot: root, registry });
-  assert.equal(result.disposition, 'TRUE_TAXONOMY_GAP');
+  assert.equal(result.disposition, 'TRUE_META_HOLD');
+  assert.equal(result.semanticStatus, 'HOLD');
   assert.equal(result.problemTypeKey, '');
 });
 
-test('false empty ACTIVE receipt is rejected when exact-scope candidates exist', () => {
-  const row = rowFor('H1-RPM-001');
-  const scope = { curriculum: row.curriculum, standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey };
-  const input = makeInput(row);
-  input.semanticDecision.rpmPath = { curriculum: row.curriculum, scope: row.scope, majorUnit: '검증용 단원', midUnit: '검증용 중단원', l3: '없는 유형', l4: '없는 풀이 구조' };
-  input.activeSearchEvidence = { status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys: [], registrySha: registry.registrySha,
-    searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2', searchedScope: scope };
+test('a verified RPM path stays semantic FINAL regardless of an empty or stale ACTIVE search receipt', () => {
+  const input = makeInput(rowFor('H1-RPM-001'));
+  input.activeSearchEvidence = { status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true,
+    candidateKeys: [], registrySha: 'sha256:stale', searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2',
+    searchedScope: { curriculum: '2015', standardUnitKey: 'WRONG', subUnitKey: '' } };
   const result = resolveMetaRoute(input, { repoRoot: root, registry });
-  assert.equal(result.disposition, 'ROUTE_OUT');
-  assert.equal(result.dispositionReason, 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH');
-  assert.ok(result.recomputedActiveCandidateKeys.length > 0);
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
 });
-
-test('ACTIVE no-match receipt rejects stale registry SHA, mismatched scope, and omitted candidates', () => {
-  const row = rowFor('H1-RPM-001');
-  const scope = { curriculum: row.curriculum, standardUnitKey: row.standardUnitKey, subUnitKey: row.subUnitKey };
-  const candidateKeys = activeCandidateKeysForScope(registry, scope);
-  assert.ok(candidateKeys.length > 1);
-  const makeNoMatchInput = () => {
+test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () => {
+  const fixtures = [
+    ['M1', 'middle1.json', 'original/middle/m1/1mid/fixture.js'],
+    ['M2', 'middle2.json', 'original/middle/m2/1mid/fixture.js'],
+    ['M3', 'middle3.json', 'original/middle/m3/1mid/fixture.js'],
+  ];
+  for (const [grade, crosswalkFile] of fixtures) {
+    const file = root + '\\archive\\data\\meta-foundation\\crosswalks\\rpm-primary-v1.0\\' + crosswalkFile;
+    const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const row = doc.records.find(candidate => candidate.mappingStatus === 'RPM_ONLY' && candidate.rpmPath?.l3 && candidate.rpmPath?.l4);
+    assert.ok(row, grade + ' fixture needs an RPM_ONLY projection row');
     const input = makeInput(row);
-    input.semanticDecision.rpmPath = { curriculum: row.curriculum, scope: row.scope, majorUnit: '검증용 단원', midUnit: '검증용 중단원', l3: '없는 유형', l4: '없는 풀이 구조' };
-    input.activeSearchEvidence = { status: 'COMPLETED_NO_MATCH', searchedGlobalActive: true, candidateKeys, registrySha: registry.registrySha,
-      searchMethod: 'GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2', searchedScope: scope };
-    return input;
-  };
-  const stale = makeNoMatchInput(); stale.activeSearchEvidence.registrySha = 'sha256:stale';
-  assert.equal(resolveMetaRoute(stale, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_REGISTRY_SHA_STALE');
-  const mismatch = makeNoMatchInput(); mismatch.activeSearchEvidence.searchedScope = { ...scope, subUnitKey: 'WRONG_SCOPE' };
-  assert.equal(resolveMetaRoute(mismatch, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_SCOPE_MISMATCH');
-  const partial = makeNoMatchInput(); partial.activeSearchEvidence.candidateKeys = candidateKeys.slice(1);
-  assert.equal(resolveMetaRoute(partial, { repoRoot: root, registry }).dispositionReason, 'ACTIVE_TARGETED_SEARCH_CANDIDATE_SET_MISMATCH');
+    input.curriculumContext.grade = grade;
+    input.sourceIdentity.sourceArchiveFile = 'original/middle/' + grade.toLowerCase() + '/1mid/fixture.js';
+    input.sourceIdentity.questionUid = questionUidForSource(input.sourceIdentity.sourceArchiveFile, 1);
+    input.sourceIdentity.sourceIdentityKey = input.sourceIdentity.questionUid;
+    const evidence = resolveMetaRoute(input, { repoRoot: root });
+    assert.equal(evidence.disposition, 'RPM_SEMANTIC_FINAL', grade + ' semantic disposition');
+    assert.equal(evidence.semanticStatus, 'FINAL', grade + ' semantic status');
+    assert.equal(evidence.projectionStatus, 'PROJECTION_UNMATERIALIZED', grade + ' projection status');
+    assert.equal(validateResolverEvidence(input, evidence, { repoRoot: root }).status, 'PASS', grade + ' receipt parity');
+  }
 });
 
 test('candidate leakage in the first semantic decision is rejected', () => {
@@ -193,24 +207,24 @@ test('candidate leakage in the first semantic decision is rejected', () => {
   assert.throws(() => resolveMetaRoute(input, { repoRoot: root }), /FORBIDDEN_CANDIDATE_INPUT/);
 });
 
-test('invalid ACTIVE template parent prevents reuse', () => {
+test('an invalid ACTIVE template affects only the compatibility projection', () => {
   const badRegistry = { ...registry, templates: new Map(registry.templates) };
   const template = badRegistry.templates.get('TPL_H1_POLY_OPERATION_DIRECT');
   badRegistry.templates.set(template.templateKey, { ...template, parentProblemTypeKey: 'PT_WRONG_PARENT' });
   const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-001')), { repoRoot: root, registry: badRegistry });
-  assert.equal(result.disposition, 'RPM_PRIMARY_MIGRATION_GAP');
-  assert.equal(result.dispositionReason, 'ACTIVE_TEMPLATE_PARENT_OR_OWNER_MISMATCH');
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_UNMATERIALIZED');
+  assert.equal(result.projectionReasonCode, 'ACTIVE_TEMPLATE_PROJECTION_NOT_MATERIALIZED');
 });
 
-test('missing exact curriculum binding prevents direct reuse', () => {
-  const binding = registry.bindingRows.find(row => row.problemTypeKey === 'PT_H1_POLY_OPERATION_EXPANSION'
-    && row.curriculum === '2015' && row.standardUnitKey === 'H15-SA-01' && row.subUnitKey === 'H15-SA-01-POLYNOMIAL_BASIC');
-  assert.ok(binding, 'fixture requires the direct ACTIVE binding');
-  const badRegistry = { ...registry, bindingRows: registry.bindingRows.filter(row => row !== binding) };
-  const result = resolveMetaRoute(makeInput(rowFor('H1-RPM-001')), { repoRoot: root, registry: badRegistry });
-  assert.equal(result.disposition, 'RPM_PRIMARY_MIGRATION_GAP');
-  assert.equal(result.dispositionReason, 'EXACT_ACTIVE_BINDING_NOT_MATERIALIZED');
-  assert.equal(result.problemTypeKey, '');
+test('canonical PT owner may differ from exact curriculum binding owner', () => {
+  const row = rowFor('H1-RPM-124');
+  const result = resolveMetaRoute(makeInput(row), { repoRoot: root });
+  assert.equal(result.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.equal(result.ownerPack, 'PROBABILITY_STATISTICS');
+  assert.equal(result.bindingOwnerPack, 'H1_FOUNDATION');
 });
 
 test('validator run receipt is mandatory before Meta finalization', () => {
@@ -263,6 +277,33 @@ test('crosswalk binding gap cannot pass FINAL even if caller adds a selectable k
   assert.equal(result.status, 'FAIL');
 });
 
+test('RPM semantic FINAL with a pending legacy projection is META_ONLY and does not block R2E release', () => {
+  const input = makeInput(rowFor('H1-RPM-029'));
+  const resolverEvidence = resolveMetaRoute(input, { repoRoot: root });
+  assert.equal(resolverEvidence.semanticStatus, 'FINAL');
+  assert.equal(resolverEvidence.disposition, 'RPM_SEMANTIC_FINAL');
+  assert.equal(resolverEvidence.projectionStatus, 'PROJECTION_BINDING_PENDING');
+  const difficultyEvidence = makeDifficulty(resolverEvidence);
+  const candidateMeta = makeCandidate(resolverEvidence);
+  assert.equal(candidateMeta.problemTypeKey, '');
+  assert.equal(candidateMeta.templateKey, '');
+  const semanticMetaEvidence = makeRelational(resolverEvidence);
+  const preflight = validateMetaFinalization({ input, resolverEvidence, difficultyEvidence, candidateMeta,
+    semanticMetaEvidence, requireValidatorReceipt: false, repoRoot: root });
+  assert.equal(preflight.status, 'PASS', JSON.stringify(preflight.errors));
+  const validatorReceipt = makeMetaValidatorReceipt(resolverEvidence, preflight);
+  const item = {
+    questionUid: input.sourceIdentity.questionUid, input, resolverEvidence, disposition: resolverEvidence.disposition, difficultyEvidence, candidateMeta,
+    semanticMetaEvidence, validatorReceipt, r2eFinalDisposition: 'META_ONLY_COMPATIBILITY_PENDING',
+  };
+  const receipt = sealR2EMetaReceipt({
+    schemaVersion: 'JS_ARCHIVE_R2E_META_RECEIPT_v1', stage: 'R2E_FINAL',
+    rpmSemanticHoldCount: 0, projectionPendingCount: 1,
+    unresolvedSemanticCount: 1, unresolvedProposalCount: 1, unresolvedCrossConceptCandidateCount: 1,
+    metaHoldCount: 1, migrationGapCount: 1, runtimeParityFailureCount: 1, items: [item],
+  });
+  assert.equal(validateR2EReceipt(receipt, { repoRoot: root }).status, 'PASS', JSON.stringify(validateR2EReceipt(receipt, { repoRoot: root }).errors));
+});
 test('same resolver decision closes through R2E and an exact runtime projection', () => {
   const input = makeInput(rowFor('H1-RPM-001'));
   const resolverEvidence = resolveMetaRoute(input, { repoRoot: root });
@@ -278,7 +319,7 @@ test('same resolver decision closes through R2E and an exact runtime projection'
     ...Object.fromEntries(['problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys', 'integrationPattern', 'difficultyBucket', 'difficultyConfidence', 'difficultyBoundaryFlag', 'legacyLevelCompatibility'].map(key => [key, candidateMeta[key]])),
   };
   const item = {
-    questionUid: input.sourceIdentity.questionUid, input, resolverEvidence, difficultyEvidence, candidateMeta, semanticMetaEvidence,
+    questionUid: input.sourceIdentity.questionUid, input, resolverEvidence, disposition: resolverEvidence.disposition, difficultyEvidence, candidateMeta, semanticMetaEvidence,
     validatorReceipt, r2eFinalDisposition: 'EXISTING_REUSE', runtimeRecord,
   };
   const receipt = sealR2EMetaReceipt({
@@ -286,9 +327,9 @@ test('same resolver decision closes through R2E and an exact runtime projection'
     unresolvedSemanticCount: 0, unresolvedProposalCount: 0, unresolvedCrossConceptCandidateCount: 0, metaHoldCount: 0, migrationGapCount: 0, runtimeParityFailureCount: 0,
     items: [item],
   });
-  assert.equal(validateR2EReceipt(receipt, { repoRoot: root }).status, 'PASS');
-  const unresolvedReceipt = sealR2EMetaReceipt({ ...receipt, receiptSha: undefined, migrationGapCount: 1 });
-  assert.equal(validateR2EReceipt(unresolvedReceipt, { repoRoot: root }).status, 'FAIL');
+  assert.equal(validateR2EReceipt(receipt, { repoRoot: root }).status, 'PASS', JSON.stringify(validateR2EReceipt(receipt, { repoRoot: root }).errors));
+  const compatibilityPendingReceipt = sealR2EMetaReceipt({ ...receipt, receiptSha: undefined, migrationGapCount: 1, projectionPendingCount: 1 });
+  assert.equal(validateR2EReceipt(compatibilityPendingReceipt, { repoRoot: root }).status, 'FAIL', 'declared compatibility gap count must match per-item projections');
   assert.equal(validateRuntimeMetaParity({ questionUid: item.questionUid, sourceFingerprint: resolverEvidence.sourceFingerprint,
     resolverEvidence, difficultyEvidence, candidateMeta, runtimeRecord }).status, 'PASS');
   assert.equal(validateRuntimeMetaParity({ questionUid: item.questionUid, sourceFingerprint: resolverEvidence.sourceFingerprint,

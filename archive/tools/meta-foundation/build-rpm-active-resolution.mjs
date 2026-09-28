@@ -17,6 +17,8 @@ if (!destination.startsWith(`${root}${path.sep}`)) throw new Error('OUTPUT_PATH_
 fs.mkdirSync(path.dirname(destination), { recursive: true });
 fs.writeFileSync(destination, `${JSON.stringify(output, null, 2)}\n`, 'utf8');
 console.log(JSON.stringify({ status: output.validation.status, disposition: output.resolverEvidence.disposition,
+  rpmSemanticStatus: output.resolverEvidence.semanticStatus || 'UNAVAILABLE',
+  projectionStatus: output.resolverEvidence.projectionStatus || 'NOT_ATTEMPTED',
   sourceFingerprint: output.resolverEvidence.sourceFingerprint, inputBundleSha: output.resolverEvidence.inputBundleSha,
   evidenceSha: output.resolverEvidence.evidenceSha, validatorReceipt: output.validatorReceipt?.status || null }, null, 2));
 if (output.validation.status !== 'PASS') process.exitCode = 1;

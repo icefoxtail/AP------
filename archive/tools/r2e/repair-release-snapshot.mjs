@@ -109,7 +109,7 @@ export function inventoryRepairRelease(repo, { fetch = true } = {}) {
           examFile, examUid: receipt.examUid, receiptPath, receiptSha256: sha(receiptBytes),
           examJsSha256: sha(examBytes), assets, denominator: bank.length,
         };
-        const r1Authority = readR1Authority(repo, candidate, { identityBySource });
+        const r1Authority = readR1Authority(repo, candidate, { identityBySource, metaAuthorityRoot: repo });
         const alreadyFinal = checkpoints.some(row => row.grade === grade && row.ledger.examUid === receipt.examUid
           && row.ledger.inputCommit === inputCommit && row.ledger.finalStatus === 'R2E_MAIN_FINAL');
         if (!alreadyFinal) candidates.push({
@@ -133,6 +133,7 @@ export function inventoryRepairRelease(repo, { fetch = true } = {}) {
     createdAt: new Date().toISOString(), baseMainSha: mainSha, heads, stateHead,
     resume, candidates, errors, authorityMode: 'R1_READ_ONLY',
     metaOnlyPolicy: 'META_SIDECARE_ABSENCE_OR_VERSION_NEVER_BLOCKS_JS_RELEASE',
+    rpmProjectionPolicy: 'RPM_SEMANTIC_FINAL_WITH_PROJECTION_PENDING_IS_NOT_A_HOLD',
   };
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
@@ -145,6 +146,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     ensure(opt('out'), 'SNAPSHOT_OUTPUT_REQUIRED');
     const output = { ...result, runId };
     atomicWrite(path.resolve(opt('out')), JSON.stringify(output, null, 2) + '\n');
-    console.log(JSON.stringify({ status: result.status, baseMainSha: result.baseMainSha, candidates: result.candidates.length, resume: result.resume.length, metaOnly: result.candidates.reduce((sum, c) => sum + c.r1Authority.metaOnlyFindings.length, 0), errors: result.errors.length }));
+    console.log(JSON.stringify({ status: result.status, baseMainSha: result.baseMainSha, candidates: result.candidates.length, resume: result.resume.length, metaOnly: result.candidates.reduce((sum, c) => sum + c.r1Authority.metaOnlyFindings.length, 0), projectionPending: result.candidates.reduce((sum, c) => sum + (c.r1Authority.projectionPending || []).length, 0), errors: result.errors.length }));
   } catch (error) { console.log(JSON.stringify({ status: 'FAIL', reason: error.message })); process.exitCode = 1; }
 }

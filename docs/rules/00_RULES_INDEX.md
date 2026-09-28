@@ -65,14 +65,14 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 중2 intake authority는 `work/intake/m2`, 중3은 `work/intake/m3`이다.
 과거 `REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge` 경로는 새 intake 생산에 적용하지 않고 legacy artifact 복구에만 사용한다.
 R2E는 intake branch를 read-only로 사용하고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
-정상 PASS 문항은 다시 풀이·재분류하지 않는다. 동결된 legacy R1 cohort의 HOLD는 유형별 batch로 묶어 existing L3/L4에 매핑하고, student-facing defect는 affected UID만 repair한다.
+정상 PASS 문항은 다시 풀이·재분류하지 않는다. 동결된 legacy R1 cohort의 projection-only Meta HOLD는 frozen RPM semantic path로 재판정해 META_ONLY로 옮기고, true semantic/source/math HOLD와 student-facing defect만 affected UID 범위에서 처리한다.
 
 R2E v3 legacy HOLD batch HARD RULE:
 - READY_FOR_R2E 당시 이미 존재한 frozen legacy backlog만을 대상으로 한다. New CREATE/R1은 ZERO-RESOLVABLE gate를 유지한다.
 - 구형 backlog는 R1 receipt/evidence/JS를 read-only로 읽으며 Meta sidecar backfill을 하지 않는다.
-- 기존 중등 active L3/L4/RPM 목록으로 공통 유형을 묶고, group decision 1회와 UID별 applied key/reason/evidence를 기록한다.
-- Existing-key batch mapping은 신규 taxonomy 생성이나 전역 crosswalk rewrite가 아니다. 맞는 기존 key가 확인되지 않는 문항만 question-scoped upper-model case로 넘긴다.
-- RPM/sidecar/difficulty/runtime/catalog gap은 META_ONLY로 남길 수 있고 JS release를 막지 않는다. BASIC_HARD_HOLD에 해당하는 실제 source/math/asset/JS defect만 release를 차단한다.
+- RPM semantic은 frozen source+verified solution evidence로 재판정한다. RPM L3/L4가 FINAL이면 projection-only row는 group decision/UID repair 없이도 META_ONLY로 기록할 수 있다.
+- 실제 existing-key batch mapping이 필요할 때만 group decision과 UID별 applied key/reason/evidence를 기록한다. R2E는 신규 taxonomy 생성이나 전역 crosswalk rewrite를 하지 않는다.
+- RPM/sidecar/difficulty/runtime/catalog/projection gap은 META_ONLY로 남기며 JS release를 막지 않는다. RELEASE_BLOCKING은 실제 BASIC/source/math/asset/JS defect, TRUE RPM semantic HOLD, production에 기록된 invalid canonical key다.
 - R2E v3는 normal R1 PASS reclassification, all-question Meta projection, whole-exam render, global runtime/catalog rebuild를 하지 않는다.
 - 무변경 visual은 R1 evidence를 재사용한다. 실제 수정된 SVG/해설 visual만 current pipeline-core closure와 targeted render를 실행한다.
 
@@ -231,7 +231,7 @@ Meta Foundation은 RPM semantic taxonomy reference와 production machine-key can
 - **RPM→ACTIVE deterministic crosswalk:** `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/` — RPM path 확정 직후 exact 학년/과목 파일을 조회하는 재탐색 방지 reference. production authority 자체는 아니며 current ACTIVE 관련 row/binding으로 targeted validation한다.
 - 운영규칙 정본: `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`
 - 실제 Meta Foundation production machine-key 정본: `../../archive/data/meta-foundation/canonical/`
-- RPM path가 있는데 ACTIVE `problemTypeKey/templateKey` 또는 binding이 없는 상태는 **migration gap**이다. 기존 RPM 의미를 무시하고 임의 신규 key를 만들거나 `META_PACK_GAP_HOLD`로 닫지 않는다.
+- RPM path가 있는데 ACTIVE `problemTypeKey/templateKey` 또는 binding이 없는 상태는 **compatibility/projection pending**이다. semantic FINAL을 무효화하거나 Meta HOLD/release blocker로 만들지 않는다. 기존 RPM 의미를 무시하거나 임의 신규 key를 만들지 않는다.
 - 대단원별 L3/L4 정본: `../../archive/data/meta-foundation/canonical/packs/`
 - 공용 CrossConcept 정본: `../../archive/data/meta-foundation/canonical/concepts/`
 - 전역 compiled 결과: `../../archive/data/meta-foundation/compiled/` — 기계 생성 파생본이며 직접 수정 금지

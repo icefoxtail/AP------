@@ -4,11 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { INTAKES, STATE_BRANCH, atomicWrite, blob, digest, ensure, fetchRef, files, git, relative, sha } from './common.mjs';
 import { checkGuard } from './guard.mjs';
 import { parseQuestionBank } from '../meta-foundation/reviewed-apply-core.mjs';
-import { META_RESOLUTION_SCHEMA, validateR2EIntakeMetaReceipt } from '../meta-foundation/rpm-active-resolver.mjs';
+import { LEGACY_META_RESOLUTION_SCHEMA_V1, META_RESOLUTION_SCHEMA, validateR2EIntakeMetaReceipt } from '../meta-foundation/rpm-active-resolver.mjs';
 
 const required = ['examUid', 'examFile', 'grade', 'lane', 'stage', 'sourceBlobSha', 'totalQuestions', 'changedQuestions', 'changedSvgFiles', 'metaDispositionSummary', 'metaResolutionEvidenceRef', 'metaResolverContractVersion', 'unresolvedItems', 'nextState', 'updatedAt'];
 const recoverableSchemaFields = new Set(['inputCommit', 'authorityRefs', 'metaResolutionEvidenceRef', 'metaResolverContractVersion']);
 const metaRecoveryFields = new Set(['metaResolutionEvidenceRef', 'metaResolverContractVersion']);
+const sameCountSummary = (actual, expected) => Boolean(actual && typeof actual === 'object' && !Array.isArray(actual)
+  && Object.keys(actual).length === Object.keys(expected).length
+  && Object.entries(expected).every(([key, count]) => Number(actual[key]) === count));
 const fullExamPath = value => {
   const normalized = String(value || '').replaceAll('\\', '/').replace(/^\.\//, '');
   if (normalized.startsWith('archive/exams/')) return normalized;
@@ -92,7 +95,7 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
         }
         ensure(receipt.metaResolutionEvidenceRef && typeof receipt.metaResolutionEvidenceRef.path === 'string'
           && /^[a-f0-9]{64}$/.test(String(receipt.metaResolutionEvidenceRef.sha256 || '').replace(/^sha256:/, '')), 'META_RESOLVER_EVIDENCE_REF_REQUIRED');
-        ensure(receipt.metaResolverContractVersion === META_RESOLUTION_SCHEMA, 'META_RESOLVER_CONTRACT_VERSION_MISMATCH');
+        ensure([LEGACY_META_RESOLUTION_SCHEMA_V1, META_RESOLUTION_SCHEMA].includes(receipt.metaResolverContractVersion), 'META_RESOLVER_CONTRACT_VERSION_UNSUPPORTED');
         const metaEvidencePath = relative(receipt.metaResolutionEvidenceRef.path);
         ensure(metaEvidencePath.startsWith(`archive/data/r2e-intake/${grade}/`), 'META_RESOLVER_EVIDENCE_PATH_INVALID');
         const metaEvidenceBytes = blob(repo, inputCommit, metaEvidencePath);
@@ -108,6 +111,18 @@ export function inventory(repo, { fetch = true, metaAuthorityRoot = repo } = {})
           metaRecoveryCandidates.push(buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath: rel,
             receipt, receiptBytes, js, sourceQuestions, recoveryReason: 'META_RESOLVER_EVIDENCE_INVALID',
             validationErrors: metaCheck.errors, metaEvidenceSha256: metaEvidenceSha }));
+          continue;
+        }
+        const declaredSemantic = receipt.rpmSemantic || receipt.rpmSemanticSummary;
+        const declaredProjection = receipt.legacyProjection || receipt.legacyProjectionSummary;
+        const summaryMismatches = [];
+        if (declaredSemantic && !sameCountSummary(declaredSemantic, metaCheck.rpmSemantic)) summaryMismatches.push('R1_RPM_SEMANTIC_SUMMARY_MISMATCH');
+        if (declaredProjection && !sameCountSummary(declaredProjection, metaCheck.legacyProjection)) summaryMismatches.push('R1_LEGACY_PROJECTION_SUMMARY_MISMATCH');
+        if (receipt.resolvablePending !== undefined && receipt.resolvablePending !== metaCheck.resolvablePending) summaryMismatches.push('R1_RESOLVABLE_PENDING_MISMATCH');
+        if (summaryMismatches.length) {
+          metaRecoveryCandidates.push(buildMetaRecoveryCandidate({ repo, grade, head, inputCommit, examFile, receiptPath: rel,
+            receipt, receiptBytes, js, sourceQuestions, recoveryReason: 'META_DISPOSITION_SUMMARY_MISMATCH',
+            validationErrors: summaryMismatches, metaEvidenceSha256: metaEvidenceSha }));
           continue;
         }
         const dispositionCounts = Object.fromEntries(metaEvidence.items.reduce((rows, item) => {
