@@ -7,44 +7,72 @@
   "examUid": "25_삼산중_2학기_기말_중2_기출",
   "grade": "M2",
   "sourceLane": "A",
-  "lane": "C",
+  "lane": "A",
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "A",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
   "stage": "R1",
-  "status": "HOLD",
+  "status": "READY",
+  "nextState": "READY_FOR_R2E",
   "sourceBlobSha": "70c6cf40bfcbe85c127bb6d48c9f5a6464734530",
-  "inputCommit": "9c115d743fcead2a5467ae6229e33953c58d8c48",
+  "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de",
   "totalQuestions": 24,
   "changedQuestions": [
+    8,
     9,
+    10,
+    12,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
     24
   ],
-  "changedSvgFiles": [],
+  "changedSvgFiles": [
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q8-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q10-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q19-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q22-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q23-solution.svg",
+    "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q24-solution.svg"
+  ],
   "solutionDispositionSummary": {
     "KEEP": 22,
-    "REPAIR": 1,
-    "TRUE_HOLD": 1
+    "REPAIR": 2,
+    "TRUE_HOLD": 0
   },
   "reproducibilitySummary": {
     "PASS": 22,
-    "FIX": 1,
-    "HOLD": 1
+    "FIX": 2,
+    "HOLD": 0
   },
   "microLayoutSummary": {
     "KEEP": 23,
     "POLISH": 1,
     "REFORMAT": 0,
-    "HOLD": 0
+    "HOLD": 0,
+    "polishQuestions": [
+      9
+    ]
   },
   "svgDispositionSummary": {
-    "PASS": 0,
+    "PASS": 8,
+    "ADD": 8,
     "REBUILD": 0,
-    "HOLD": 8,
+    "REPAIR": 0,
+    "HOLD": 0,
     "EXEMPT": 16
   },
   "metaDispositionSummary": {
-    "KEEP": 7,
-    "REPAIR": 2,
-    "ADVANCED_META_HOLD": 14,
-    "TRUE_HOLD": 1
+    "RPM_SEMANTIC_FINAL": 24,
+    "PROJECTION_DIRECT_ACTIVE": 9,
+    "PROJECTION_META_ONLY": 15,
+    "ADVANCED_META_HOLD": 0,
+    "TRUE_HOLD": 0
   },
   "difficultySummary": {
     "distribution": {
@@ -57,136 +85,50 @@
     "changedQuestions": []
   },
   "questionLayoutSummary": {
-    "KEEP": 24,
-    "REPAIR": 0,
+    "KEEP": 23,
+    "REPAIR": 1,
     "HOLD": 0,
     "status": "PASS",
-    "whitespaceOnlyLayoutQuestions": [
+    "repairedQuestions": [
+      21
+    ],
+    "subjective2UpQuestions": [
       22,
       23,
       24
     ]
   },
   "sourceParitySummary": {
-    "contentSemantic": "24/24 PASS",
-    "contentByteExact": "21/24",
-    "layoutWhitespaceOnly": "q22,q23,q24",
+    "contentExact": "24/24 PASS (text-atom exact)",
     "choices": "24/24 PASS",
     "answer": "24/24 PASS",
     "imageRefs": "24/24 PASS",
-    "sourceImages": "17/17 PASS"
+    "referencedSourceImages": "17/17 PASS"
   },
   "createSelfCheckAudit": {
-    "status": "FALSE_PASS",
+    "status": "FALSE_PASS_REPAIRED_IN_R1",
     "falsePassQuestions": [
       8,
       10,
       12,
+      18,
       19,
       20,
+      21,
       22,
       23,
       24
     ],
-    "falsePassAxis": "VISUAL_REQUIREMENT_TRIAGE"
+    "falsePassAxes": [
+      "VISUAL_REQUIREMENT",
+      "PROBABILITY_SOURCE_INTERPRETATION_Q18",
+      "QUESTION_LAYOUT_Q21"
+    ]
   },
   "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "createSelfCheckStatus": "FALSE_PASS_RECORDED_R1",
-  "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_23_HOLD_1",
-  "svgRuleComplianceStatus": "HOLD_8_MISSING_CURRENT_PIPELINE_EVIDENCE",
-  "unresolvedItems": [
-    {
-      "q": 18,
-      "disposition": "BASIC_HARD_HOLD",
-      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-      "reason": "독립/결합확률 조건 부재로 정답 ⑤를 deterministic하게 증명할 수 없음",
-      "next": "HUMAN_REQUIRED"
-    },
-    {
-      "q": 1,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "RPM_ONLY_NO_ACTIVE_CANONICAL:M2-RPM-101"
-    },
-    {
-      "q": 5,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_CANONICAL_OWNER_CONFLICT:PT_COORD_CENTROID"
-    },
-    {
-      "q": 6,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "RPM_ONLY_NO_ACTIVE_CANONICAL:M2-RPM-101"
-    },
-    {
-      "q": 7,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "RPM_ONLY_NO_ACTIVE_CANONICAL:M2-RPM-105"
-    },
-    {
-      "q": 13,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-114"
-    },
-    {
-      "q": 14,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-114"
-    },
-    {
-      "q": 15,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-116"
-    },
-    {
-      "q": 16,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-118"
-    },
-    {
-      "q": 17,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-115"
-    },
-    {
-      "q": 19,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_CANONICAL_OWNER_CONFLICT:PT_COORD_CENTROID"
-    },
-    {
-      "q": 20,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "RPM_ONLY_NO_ACTIVE_CANONICAL:M2-RPM-101"
-    },
-    {
-      "q": 21,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_NO_M2_BINDING:M2-RPM-117"
-    },
-    {
-      "q": 22,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "RPM_ONLY_NO_ACTIVE_CANONICAL:M2-RPM-105"
-    },
-    {
-      "q": 23,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED",
-      "reason": "DIRECT_BINDING_GAP_CANONICAL_OWNER_CONFLICT:PT_COORD_CENTROID"
-    }
-  ],
+  "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_22_REPAIR_2_HOLD_0",
+  "svgRuleComplianceStatus": "PASS_8_TARGETED_ADD_V2_V3_RENDER_HANDOFF",
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
@@ -196,56 +138,30 @@
   },
   "r1ZeroResolvable": {
     "resolvablePending": 0,
+    "rpmSemanticUnresolved": 0,
     "deterministicBindingMaterializationPending": 0,
     "safeReuseRpmOnlyPending": 0,
-    "createR1ResolvableConflicts": 0
+    "createR1ResolvableConflicts": 0,
+    "projectionMetaOnly": 15
   },
-  "authorityRefs": [
-    {
-      "kind": "SOURCE_BRANCH",
-      "branch": "work/rebuild/m2-full-20260928-source",
-      "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-      "path": "archive/exams/original/middle/m2/2final/25_삼산중_2학기_기말_중2_기출.js",
-      "gitBlobSha": "70c6cf40bfcbe85c127bb6d48c9f5a6464734530"
-    },
-    {
-      "kind": "MAIN_RULE_AUTHORITY",
-      "commit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3"
-    },
-    {
-      "kind": "INTAKE_R1_BASE",
-      "commit": "9c115d743fcead2a5467ae6229e33953c58d8c48"
-    },
-    {
-      "kind": "RPM_CROSSWALK",
-      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
-      "gitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
-    },
-    {
-      "kind": "VISUAL_ROUTER",
-      "path": ".codex/skills/apmath-visual-upgrade/SKILL.md",
-      "gitBlobSha": "8edf54ca2c42c35cf913851ccaecc29a615cd516"
-    }
-  ],
   "metaResolutionEvidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_기말_중2_기출.meta.json",
-    "sha256": "sha256:13ece233cc9f286fa51a8ed87ef08467e503d821968bec29104048171c2ac36f"
+    "sha256": "sha256:d54055334e2c9d1690290987e14087985fc1b1a6cc6033df3fd61d822622b1e5"
   },
   "evidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_기말_중2_기출.evidence.json",
-    "sha256": "sha256:f5fec38c5cf966454168f16d70cac62cc50fee98acc11272d2c05d000e1df2f3"
+    "sha256": "sha256:8d9ec472ac98199b51db5cfff334e2b08726964798c526c3139cc4e02e560ca4"
   },
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "validatorSummary": {
-    "status": "BLOCKED_BY_BASIC_HARD_HOLD",
-    "officialResolverCli": "NOT_RUN_CONNECTOR_RUNTIME",
-    "snapshot": "NOT_READY_CANDIDATE_EXPECTED",
-    "questionCount": 24,
-    "basicHardHoldCount": 1,
-    "advancedMetaHoldCount": 14
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 15,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
   "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "nextState": "HUMAN_REQUIRED",
   "commitBinding": "SELF",
-  "updatedAt": "2026-09-28T07:11:45+09:00"
+  "updatedAt": "2026-09-28T12:39:39+09:00"
 }

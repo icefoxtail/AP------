@@ -1,69 +1,90 @@
 {
-  "schema": "JS_ARCHIVE_RESET_R1_EVIDENCE_v1",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "A",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "examFile": "25_삼산중_2학기_기말_중2_기출.js",
   "examUid": "25_삼산중_2학기_기말_중2_기출",
-  "lane": "C",
+  "grade": "M2",
+  "lane": "A",
   "stage": "R1",
-  "denominator": 24,
-  "authority": {
-    "intakeReadSha": "9c115d743fcead2a5467ae6229e33953c58d8c48",
-    "mainReadSha": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-    "sourceBlobSha": "70c6cf40bfcbe85c127bb6d48c9f5a6464734530"
-  },
-  "sourceParity": {
-    "protected": "24/24 PASS",
-    "choices": "24/24 PASS",
-    "answer": "24/24 PASS",
-    "imageRefs": "24/24 PASS",
-    "sourceImages": "17/17 PASS",
-    "contentByteExact": "21/24",
-    "layoutWhitespaceOnly": [
-      22,
-      23,
-      24
-    ]
-  },
-  "createSelfCheckAudit": {
-    "status": "FALSE_PASS",
-    "axis": "VISUAL_REQUIREMENT_TRIAGE",
-    "questions": [
-      8,
-      10,
-      12,
-      19,
-      20,
-      22,
-      23,
-      24
-    ]
+  "sourceBlobSha": "70c6cf40bfcbe85c127bb6d48c9f5a6464734530",
+  "totalQuestions": 24,
+  "mainReadSha": "5ca1fa34cff6000c3f0d32092b86f7df5acde4d6",
+  "intakeReadSha": "fb62080e50369773f3938bbf47de64e8ad1228de",
+  "sourceIdentity": {
+    "status": "PASS",
+    "contentExact": "24/24 PASS (text-atom exact; q22-q24 layout-only newline)",
+    "choicesExact": "24/24 PASS",
+    "answerExact": "24/24 PASS",
+    "imageRefExact": "24/24 PASS",
+    "referencedAssetsExact": "17/17 PASS",
+    "sourceImageDrift": "0"
   },
   "math": {
-    "pass": 23,
-    "repair": 0,
-    "hold": [
-      18
-    ]
+    "denominator": 24,
+    "PASS": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "repairedQuestions": [],
+    "probabilityConvention": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT_WHEN_NO_SEPARATE_DEPENDENCY_CONDITION",
+    "q18": "3/4×2/3 + 1/4×1/3 = 7/12, answer ⑤; SOURCE_CONDITION_INDEPENDENCE_UNSTATED is invalid under current authority"
   },
   "solution": {
-    "reproducibilityFix": [
-      9
+    "denominator": 24,
+    "KEEP": 22,
+    "REPAIR": 2,
+    "HOLD": 0,
+    "repairedQuestions": [
+      9,
+      18
     ],
-    "microLayoutPolish": [
-      9
-    ],
-    "curriculumTerminologyFix": [],
-    "studentLanguageFix": []
+    "repairs": {
+      "9": "derive BE and ED by triangle similarity instead of invoking the derived ratio as an unexplained theorem",
+      "18": "remove stale false source-hold interpretation and restore the valid middle-school default-independence solution"
+    },
+    "reproducibility": "24/24 PASS",
+    "microLayout": "24/24 PASS",
+    "curriculumTerminology": "24/24 PASS",
+    "studentLanguage": "24/24 PASS"
   },
   "questionLayout": {
-    "keep": 24,
-    "repair": 0,
-    "hold": 0
+    "denominator": 24,
+    "status": "PASS",
+    "sourceTextExactParity": "24/24 PASS",
+    "choicesExactParity": "24/24 PASS",
+    "newRepairs": 1,
+    "repairedQuestions": [
+      21
+    ],
+    "repairReason": {
+      "21": "SUBJECTIVE_2UP_WITHOUT_EVIDENCE → grid"
+    },
+    "retainedSubjective2Up": [
+      22,
+      23,
+      24
+    ],
+    "staticCapacityEvidence": {
+      "22": "two-part written response plus problem figure and formula work make grid-slot writing space clearly insufficient",
+      "23": "two-part explanation/calculation plus parallelogram figure make grid-slot writing space clearly insufficient",
+      "24": "two-part proof/calculation plus rectangle figure make grid-slot writing space clearly insufficient"
+    },
+    "knownRepairPending": 0,
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "visual": {
-    "solutionVisuals": 0,
-    "exempt": 16,
-    "complianceHold": [
+    "denominator": 24,
+    "sourceAssetReview": "17/17 PASS",
+    "ADD": 8,
+    "REBUILD": 0,
+    "REPAIR": 0,
+    "EXEMPT": 16,
+    "HOLD": 0,
+    "addedQuestions": [
       8,
       10,
       12,
@@ -73,24 +94,416 @@
       23,
       24
     ],
-    "reason": "MISSING_CURRENT_PIPELINE_EVIDENCE",
-    "render": "NOT_RUN_CODEX_HANDOFF"
+    "items": [
+      {
+        "sourceOrdinal": 1,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure already exposes the direct right-triangle data; one Pythagorean equation is sufficient",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 2,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes both similar triangles and all corresponding data",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 3,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes D on AC and the two angle facts; solution is direct similarity",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 4,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes the three parallel lines and all four segment labels",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 5,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes centroid G and midpoint D; equal-area conclusion is direct",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 6,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure already contains the dissection construction used only to motivate the direct area relation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 7,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes both right triangles and side lengths; solution is direct two-step Pythagorean calculation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 8,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "BC'=10",
+          "EC'=5",
+          "C'D=4",
+          "6:8:10 and 3:4:5 are proportional"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q8-solution.svg",
+        "finalSvgGitBlobSha": "f1bb2760c40c574fe1871c1a353c48e53820d0fb",
+        "finalSvgSha256": "sha256:babd783620e89c4fc68b1d6f3de28c583b9bff0aa525f8c133f47cc57328537f",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "BC'=10",
+          "EC'=5",
+          "C'D=4",
+          "6:8:10 and 3:4:5 are proportional"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 9,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source rectangle already exposes altitude AE to BD and all side lengths; fresh solution supplies the similarity derivation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 10,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "M,N are side midpoints",
+          "P,Q trisect BD",
+          "BP=PQ=QD",
+          "[PMNQ]=5S/24"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q10-solution.svg",
+        "finalSvgGitBlobSha": "1b81c3225ee3f218e03941d179d8b83ec804eb7c",
+        "finalSvgSha256": "sha256:5c9d513c5333c3cc727fa65fef5c2c7293118b08c521a70b564ea73da9287e5a",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "M,N are side midpoints",
+          "P,Q trisect BD",
+          "BP=PQ=QD",
+          "[PMNQ]=5S/24"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 11,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure exposes all side lengths and point D; decision is the SAS criterion check",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 12,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "D,E,F are side midpoints",
+          "DE=5",
+          "EF=4",
+          "FD=6",
+          "centroids coincide",
+          "area ratio 1:4"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q12-solution.svg",
+        "finalSvgGitBlobSha": "d620ed928d8be77a2a83fdd95b8ddf4d9d5930ac",
+        "finalSvgSha256": "sha256:5a03c74ab191f856d6b035f4b4fd3c69a93ab104446cd43714019d0642687fe4",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "D,E,F are side midpoints",
+          "DE=5",
+          "EF=4",
+          "FD=6",
+          "centroids coincide",
+          "area ratio 1:4"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 13,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only direct probability comparison",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 14,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only one-variable probability equation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 15,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only disjoint event addition",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 16,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only independent repeated-trial multiplication",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 17,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only complement probability count",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 18,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only independent two-person probability split",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 19,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "G centroid",
+          "M,N midpoints",
+          "MP:DG:BL=3:4:6",
+          "[MDG]:[MPG]=4:3"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q19-solution.svg",
+        "finalSvgGitBlobSha": "2e3e414440e99ec9f22ae54a657484a21fd07f96",
+        "finalSvgSha256": "sha256:5e05a56bab439c066c454c35d609cdf3b4919ab44d443d1655e117919a6e5ab8",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "G centroid",
+          "M,N midpoints",
+          "MP:DG:BL=3:4:6",
+          "[MDG]:[MPG]=4:3"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 20,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "DBC and ACE are right isosceles triangles",
+          "ABC≡EDC by SAS",
+          "DE=AB=c",
+          "(a²+b²)/2=c²/2"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q20-solution.svg",
+        "finalSvgGitBlobSha": "edb4e6b36163e9e803ea9c0a612ef1201ffc9806",
+        "finalSvgSha256": "sha256:8eafb8fbb8cb022ba64e0de4343efc012cbead8dc610ce9c51dc9d0dbcbdadbd",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "DBC and ACE are right isosceles triangles",
+          "ABC≡EDC by SAS",
+          "DE=AB=c",
+          "(a²+b²)/2=c²/2"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 21,
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only finite dice inequality enumeration",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 22,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "AB=12",
+          "AC=5",
+          "BC=13",
+          "S1+S2=S3",
+          "lune area sum=30"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q22-solution.svg",
+        "finalSvgGitBlobSha": "d72654522e94ff900dca15fb091af31e757d78ee",
+        "finalSvgSha256": "sha256:a6cca5e131267f9c606e7e07d69820a5a175d971304cc3fc42abd9857b9c397a",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "AB=12",
+          "AC=5",
+          "BC=13",
+          "S1+S2=S3",
+          "lune area sum=30"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 23,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "BD=18",
+          "E,F are centroids",
+          "BE=DF=6",
+          "EO=OF=3",
+          "EF=6"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q23-solution.svg",
+        "finalSvgGitBlobSha": "e5a0fb7d028365e546c0be066de12f2bfc497cf5",
+        "finalSvgSha256": "sha256:7bdc9ae307a75493cf9f4ffa6e5e65848993083de371d938061cae277ea50995",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "BD=18",
+          "E,F are centroids",
+          "BE=DF=6",
+          "EO=OF=3",
+          "EF=6"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "sourceOrdinal": 24,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
+        "expectedFacts": [
+          "rectangle 8×6",
+          "BD=10",
+          "BO=5",
+          "EF perpendicular BD",
+          "OF=15/4",
+          "area=75/2"
+        ],
+        "numericPreflight": {
+          "engine": "PYTHON_ACTUAL_RUN",
+          "status": "PASS",
+          "evidence": "deterministic coordinates/lengths computed before SVG build in this R1 run"
+        },
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_삼산중_2학기_기말_중2_기출/q24-solution.svg",
+        "finalSvgGitBlobSha": "16e176b4fbbcf304d28f3959e62a6d41975db13d",
+        "finalSvgSha256": "sha256:d5d6eed3050ae727ba7a7942b63935c502edf47748a26b74a74d7564abf33768",
+        "v2ArtifactOnly": "PASS_STATIC_REPARSED",
+        "observedFacts": [
+          "rectangle 8×6",
+          "BD=10",
+          "BO=5",
+          "EF perpendicular BD",
+          "OF=15/4",
+          "area=75/2"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS_STATIC_CONNECTOR",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    ],
+    "knownVisualRepairPending": 0,
+    "requiredVisualMissing": 0,
+    "svgRuleComplianceStatus": "PASS_V1_EXPECTED_BUILD_V2_V3",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "meta": {
-    "keep": [
-      2,
-      3,
-      4,
-      8,
-      10,
-      11,
-      12
+    "denominator": 24,
+    "rpmSemanticFinal": 24,
+    "KEEP_ACTIVE_REUSE": 9,
+    "META_ONLY_PROJECTION": 15,
+    "HOLD": 0,
+    "repairedQuestions": [
+      18
     ],
-    "repair": [
-      9,
-      24
-    ],
-    "advancedHold": [
+    "repairs": {
+      "18": "probability semantic route finalized as M2-RPM-118; projection binding gap is META_ONLY"
+    },
+    "genuineUnresolved": [],
+    "resolvablePending": 0,
+    "projectionOnlyQuestions": [
       1,
       5,
       6,
@@ -100,16 +513,14 @@
       15,
       16,
       17,
+      18,
       19,
       20,
       21,
       22,
       23
     ],
-    "basicHold": [
-      18
-    ],
-    "resolvablePending": 0
+    "metaSidecarSha256": "sha256:d54055334e2c9d1690290987e14087985fc1b1a6cc6033df3fd61d822622b1e5"
   },
   "difficulty": {
     "distribution": {
@@ -119,20 +530,51 @@
       "4": 4,
       "5": 0
     },
-    "changed": []
+    "changedFromPrior": [],
+    "freshBlindStatus": "24/24 FRESH_INDEPENDENT"
   },
-  "integrity": {
-    "jsRuntime": "PASS",
-    "questionCount": 24,
-    "uniqueIds": 24,
+  "basicIntegrity": {
+    "questionCount": "24/24",
+    "idSequence": "PASS",
+    "duplicateId": "0",
+    "protectedSourceDrift": "0",
+    "jsonQuestionBankParse": "PASS",
+    "node": "NOT_RUN_CONNECTOR_RUNTIME",
     "controlChars": "PASS",
-    "officialValidator": "NOT_RUN_BASIC_HARD_HOLD",
-    "snapshot": "NOT_READY_CANDIDATE_EXPECTED"
+    "latexBasic": "PASS",
+    "assetRefs": "PASS"
   },
-  "basicHoldEvidence": {
-    "q": 18,
-    "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-    "reason": "두 사람의 개별 합격확률만 있고 독립 또는 결합확률 정보가 없어 한 사람만 합격할 확률이 유일하게 결정되지 않음"
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS_REPAIRED_IN_R1",
+    "falsePassQuestions": [
+      8,
+      10,
+      12,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "axes": [
+      "VISUAL_REQUIREMENT_FALSE_EXEMPT",
+      "PROBABILITY_FALSE_SOURCE_HOLD_Q18",
+      "SUBJECTIVE_2UP_WITHOUT_EVIDENCE_Q21"
+    ]
+  },
+  "validator": {
+    "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+    "rpmSemanticUnresolved": 0,
+    "basicHardHoldCount": 0,
+    "visualHoldCount": 0,
+    "projectionMetaOnlyCount": 15,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "snapshot": {
+    "status": "READY_CANDIDATE_BY_CURRENT_RULE_CONDITIONS",
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
   "render": "NOT_RUN_CODEX_HANDOFF"
 }
