@@ -1,0 +1,90 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW2_EVIDENCE_v1",
+  "examFile": "25_왕운중_2학기_기말_중2_기출.js",
+  "examUid": "25_왕운중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "inventoryOrdinal": 51,
+  "lane": "REVIEW2-3",
+  "stage": "REVIEW2_DONE",
+  "nextState": "READY_FOR_COMMIT",
+  "status": "PASS_AFTER_REPAIR",
+  "independentReview": true,
+  "priorReviewDetailVisibility": "NOT_USED_BEFORE_VERDICT",
+  "authority": {
+    "source": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+    "intake": "72d8d6bf8e9a82c1fc79324fd503ef9b925d4b59",
+    "main": "f100a1415193947152c29bdccdefc28126f5c433",
+    "sourceBlob": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925",
+    "inputBlob": "84a4abaff9e648c1ec0fb53288f0af4eba994155",
+    "finalBlob": "d7616aea26cf0d07b0145298a9593719d09759ae"
+  },
+  "coverage": {
+    "questions": "23/23",
+    "protected": "id/content/choices/answer/image 23/23 EXACT",
+    "math": "23/23 PASS",
+    "solution": "23/23 PASS",
+    "smallBoard": "23/23 PASS",
+    "microLayout": "23/23 PASS_AFTER_REPAIR",
+    "problemAssets": "17/17 PASS",
+    "solutionVisuals": "10/10 CODE_FIRST PASS_AFTER_REPAIR",
+    "holds": 0
+  },
+  "questionChecks": [
+    "q1 15:9=5:3, DE=6 -> AB=10 ④",
+    "q2 area 1:16 -> similarity 1:4 ④",
+    "q3 AA; 12:6=AB:8 ->16 ①",
+    "q4 horizontal 110+70=180; 49:60=h:180 ->147 ③",
+    "q5 4:12=6:x ->18 ④",
+    "q6 BD=5, CD=15 ->20 ⑤",
+    "q7 17²-15²=8² ①",
+    "q8 CD²=23²+7²=578 ->289π/4 ③",
+    "q9 midpoint theorem+SSS, all true ⑤",
+    "q10 reverse not guaranteed; 15:12!=11:8 ->⑤",
+    "q11 AH:HG=3:1; IBCJ:AFE=20:9; FGE=35/12 ->㉠㉡ only ②",
+    "q12 OA:OB=20:70=2:7 ③",
+    "q13 four die outcomes ->②",
+    "q14 3x2=6 ->④",
+    "q15 5x4=20 ->③",
+    "q16 complement 1-p and 0<=p<=1 ->②,⑤",
+    "q17 AA or SAS cards 2/4=1/2 ->③",
+    "q18 25+14-3=36 ->9/25 ①",
+    "q19 independence default; x=2/3 ①",
+    "q20 (1,3),(3,1) ->1/18 ④",
+    "q21 intercepts 5,12, hypotenuse13; area ->60/13",
+    "q22 sums 4 or10 give 6/36=1/6",
+    "q23 3/5*2/5=6/25"
+  ],
+  "repairs": {
+    "layout": {
+      "q23": "subjective-2up -> grid; no image, short 3-step calculation, no STATIC_CAPACITY_EVIDENCE"
+    },
+    "svg": {
+      "q9": "English footer -> 학생용 한국어",
+      "q11": "ambiguous area footer -> [IBCJ]:[AFE]=20:9 and [FGE]=[ABC]/12",
+      "q12": "English parallel/similarity footer -> Korean math notation",
+      "q17": "AA/SAS/card judgments -> Korean student labels",
+      "q20": "start/target -> 성준/윤태; route note Koreanized",
+      "q21": "area -> 넓이",
+      "q22": "English mod note -> Korean 4/10-step explanation"
+    }
+  },
+  "layoutEvidence": {
+    "q21": "prompt+grading condition+image+multi-step derivation => grid writing space insufficient; keep 2up",
+    "q22": "long prompt+image+six ordered pairs+probability derivation => grid writing space insufficient; keep 2up"
+  },
+  "finalSvgShas": {
+    "q3": "c503fbe1b6827747f9792b379432605c45be1a61",
+    "q4": "f52d1f821cbb82f6bcae1160ec0aecf83a13c73f",
+    "q8": "f425f52ad5ebbe7aca1956a3022a43bff5e226fb",
+    "q9": "8130b3c5a097d06a8c0876cfdce097dc6517a71c",
+    "q11": "3171fba04e53e82e20c3d01b4331c78abef13bd4",
+    "q12": "9e58f8af0d8c083fdfe8a348c8051d3c72e27e6e",
+    "q17": "45ac0b03f523050f937cd737013740aa975d2efd",
+    "q20": "60f2fd6f31da8686034579186267ae24aa1f46f6",
+    "q21": "e7826f7e81cb20aaad0cc3d7e48ef4a7d3011d0c",
+    "q22": "2ffce19401e5c4db8a07fed13b47bdff1072c698"
+  },
+  "renderStatus": "NOT_RUN; repaired SVG geometry coordinates unchanged and text/labels are deterministic",
+  "r1ReceiptBlob": "4f9368d2ba587d2251753344a939adbc3e8c63f7",
+  "r1EvidenceBlob": "759a754e73839b99ca2f6f87b8ea5d720152e94a"
+}
