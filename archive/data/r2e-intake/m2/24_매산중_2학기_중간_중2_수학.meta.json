@@ -1,0 +1,570 @@
+{
+  "schema": "JS_ARCHIVE_RESET_CREATE_META_v2",
+  "resetRunId": "M2_RESET_20260928",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "mainAuthorityCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+  "examUid": "24_매산중_2학기_중간_중2_수학",
+  "lane": "A",
+  "stage": "CREATE",
+  "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "decisionIsolationStatus": "PASS",
+  "authority": {
+    "rpmView": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md",
+    "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+  },
+  "summary": {
+    "denominator": 24,
+    "rpmSemanticFinal": 24,
+    "rpmSemanticUnresolved": 0,
+    "projectionReuse": 24,
+    "metaOnly": 0,
+    "difficultyBuckets": {
+      "1": 3,
+      "2": 5,
+      "3": 9,
+      "4": 7,
+      "5": 0
+    }
+  },
+  "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME",
+  "items": [
+    {
+      "qid": 1,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-061",
+      "rpmSemantic": {
+        "l3": "이등변삼각형의 성질",
+        "l4": "꼭짓각의 이등분선",
+        "status": "FINAL"
+      },
+      "primaryMethod": "이등변삼각형의 꼭짓각 이등분선",
+      "decisiveStep": "BD=DC=9 및 AD⊥BC",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 2,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 2,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-060",
+      "rpmSemantic": {
+        "l3": "이등변삼각형의 성질",
+        "l4": "밑각",
+        "status": "FINAL"
+      },
+      "primaryMethod": "이등변삼각형의 밑각",
+      "decisiveStep": "외각 106°에서 꼭짓각 32°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 1,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 3,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-071",
+      "rpmSemantic": {
+        "l3": "직각삼각형의 합동",
+        "l4": "RHA",
+        "status": "FINAL"
+      },
+      "primaryMethod": "직각삼각형 RHA 합동",
+      "decisiveStep": "AM=BM, 직각, 맞꼭지각으로 합동",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 4,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-065",
+      "rpmSemantic": {
+        "l3": "외심",
+        "l4": "외심의 위치·각",
+        "status": "FINAL"
+      },
+      "primaryMethod": "외심의 같은 반지름과 각 관계",
+      "decisiveStep": "OA=OB=OC 및 AOB=100°로 x=50°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 5,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-064",
+      "rpmSemantic": {
+        "l3": "외심",
+        "l4": "수직이등분선과 외심",
+        "status": "FINAL"
+      },
+      "primaryMethod": "외심과 현의 수직이등분",
+      "decisiveStep": "보기별 외심 성질 판정",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 6,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-066",
+      "rpmSemantic": {
+        "l3": "내심",
+        "l4": "각의 이등분선과 내심",
+        "status": "FINAL"
+      },
+      "primaryMethod": "내심의 각 이등분",
+      "decisiveStep": "BIC 내각합으로 x=24°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 2,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 7,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-067",
+      "rpmSemantic": {
+        "l3": "내심",
+        "l4": "내심과 거리",
+        "status": "FINAL"
+      },
+      "primaryMethod": "내심에서 세 변까지의 같은 거리",
+      "decisiveStep": "y=10, BIC 내각합으로 x=115°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 2,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 8,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-069",
+      "rpmSemantic": {
+        "l3": "외접원·내접원 활용",
+        "l4": "외심·내심을 이용한 복합도형",
+        "status": "FINAL"
+      },
+      "primaryMethod": "내심과 외심의 각 관계 결합",
+      "decisiveStep": "IBC=26°, OBC=14°로 IBO=12°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 9,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-072",
+      "rpmSemantic": {
+        "l3": "평행사변형의 성질",
+        "l4": "변·각의 성질",
+        "status": "FINAL"
+      },
+      "primaryMethod": "평행사변형의 대변·이웃각",
+      "decisiveStep": "x=6, y=110",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 1,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 10,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-074",
+      "rpmSemantic": {
+        "l3": "평행사변형의 판정",
+        "l4": "변·각 조건",
+        "status": "FINAL"
+      },
+      "primaryMethod": "평행사변형 판정 조건 비교",
+      "decisiveStep": "⑤의 이웃각 합 180°만으로는 판정 불가",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 11,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-079",
+      "rpmSemantic": {
+        "l3": "직사각형·마름모·정사각형",
+        "l4": "특수 사각형의 대각선 성질",
+        "status": "FINAL"
+      },
+      "primaryMethod": "마름모 대각선 성질",
+      "decisiveStep": "OD=OB=10, 대각선 각이등분으로 x+y=58",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 12,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-082",
+      "rpmSemantic": {
+        "l3": "사각형의 포함 관계",
+        "l4": "조건으로 사각형 판정",
+        "status": "FINAL"
+      },
+      "primaryMethod": "평행사변형의 직사각형 판정",
+      "decisiveStep": "대각선 수직은 직사각형 충분조건 아님",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 13,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-079",
+      "rpmSemantic": {
+        "l3": "직사각형·마름모·정사각형",
+        "l4": "특수 사각형의 대각선 성질",
+        "status": "FINAL"
+      },
+      "primaryMethod": "정사각형 대각선 45°와 합동",
+      "decisiveStep": "CHD 각 계산으로 ABE=35°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 14,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-080",
+      "rpmSemantic": {
+        "l3": "사다리꼴",
+        "l4": "등변사다리꼴",
+        "status": "FINAL"
+      },
+      "primaryMethod": "등변사다리꼴 대각선과 평행사변형",
+      "decisiveStep": "AE=DB=AC로 x=43°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 15,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-085",
+      "rpmSemantic": {
+        "l3": "닮은 도형",
+        "l4": "대응변·대응각",
+        "status": "FINAL"
+      },
+      "primaryMethod": "항상 닮은 도형 판정",
+      "decisiveStep": "정삼각형·원·정오각형 선택",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 2,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 16,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-084",
+      "rpmSemantic": {
+        "l3": "닮은 도형",
+        "l4": "닮음비",
+        "status": "FINAL"
+      },
+      "primaryMethod": "닮은 입체의 대응 길이비",
+      "decisiveStep": "4:12=1:3",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 1,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 17,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-085",
+      "rpmSemantic": {
+        "l3": "닮은 도형",
+        "l4": "대응변·대응각",
+        "status": "FINAL"
+      },
+      "primaryMethod": "닮은 사각형 대응 관계",
+      "decisiveStep": "EF=10, H=120°",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 2,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 18,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-095",
+      "rpmSemantic": {
+        "l3": "비례 활용",
+        "l4": "미지 길이",
+        "status": "FINAL"
+      },
+      "primaryMethod": "평행선에서 생긴 닮음의 선분비",
+      "decisiveStep": "AE=14 후 ED=7",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 19,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-089",
+      "rpmSemantic": {
+        "l3": "닮음의 활용",
+        "l4": "길이",
+        "status": "FINAL"
+      },
+      "primaryMethod": "직각삼각형 닮음 연쇄",
+      "decisiveStep": "BF=15/2, AF=21/2, AH=21",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 20,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-089",
+      "rpmSemantic": {
+        "l3": "닮음의 활용",
+        "l4": "길이",
+        "status": "FINAL"
+      },
+      "primaryMethod": "AA 닮음 후 길이비",
+      "decisiveStep": "ADC∼EDB로 AE:EB=7:2",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 21,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-060",
+      "rpmSemantic": {
+        "l3": "이등변삼각형의 성질",
+        "l4": "밑각",
+        "status": "FINAL"
+      },
+      "primaryMethod": "이등변삼각형 밑각 성질",
+      "decisiveStep": "두 소문항 72°, 48° 재현",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_REFLECTION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 22,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-068",
+      "rpmSemantic": {
+        "l3": "외접원·내접원 활용",
+        "l4": "반지름·각 계산",
+        "status": "FINAL"
+      },
+      "primaryMethod": "내심 각과 원의 중심각 계산",
+      "decisiveStep": "35°, 16π-32 재현",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 23,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-079",
+      "rpmSemantic": {
+        "l3": "직사각형·마름모·정사각형",
+        "l4": "특수 사각형의 대각선 성질",
+        "status": "FINAL"
+      },
+      "primaryMethod": "마름모 대각선과 넓이",
+      "decisiveStep": "120cm², 50cm² 재현",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    },
+    {
+      "qid": 24,
+      "semanticInput": {
+        "candidateVisibleDuringDecision": false,
+        "source": "protected source + independently verified final solution"
+      },
+      "rpmRecordId": "M2-RPM-089",
+      "rpmSemantic": {
+        "l3": "닮음의 활용",
+        "l4": "길이",
+        "status": "FINAL"
+      },
+      "primaryMethod": "빗변에 내린 높이로 생긴 닮음",
+      "decisiveStep": "BC=25 후 CH=16",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "difficulty": {
+        "bucket": 3,
+        "status": "FRESH_INDEPENDENT",
+        "derivedFromLegacyLevel": false
+      }
+    }
+  ]
+}
