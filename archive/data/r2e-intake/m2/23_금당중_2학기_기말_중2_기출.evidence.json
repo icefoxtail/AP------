@@ -1,0 +1,289 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW1_EVIDENCE_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "examFile": "23_금당중_2학기_기말_중2_기출.js",
+  "examUid": "23_금당중_2학기_기말_중2_기출",
+  "grade": "M2",
+  "inventoryOrdinal": 15,
+  "createShard": 3,
+  "reviewLane": "REVIEW1-3",
+  "workingBranch": "work/middle/m2/23-geumdang-2final",
+  "reviewAuthorityBranch": "work/intake/m2",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "createCommit": "48f695026a14dd952d6a04fe9366620d72fd1124",
+  "reviewBaseIntakeCommit": "3f8b49744e6906ac62e9f7c9c3fdfe79b32906e9",
+  "mainAuthorityCommit": "9a955143a4d636c69c4aa27430459f513d03879d",
+  "sourceBlobSha": "25417702d489f86be2f37f5ac77b88b64320a96d",
+  "finalExamBlobSha": "25417702d489f86be2f37f5ac77b88b64320a96d",
+  "denominator": 25,
+  "independentReview": true,
+  "protectedParity": {
+    "content": "25/25 EXACT_PASS",
+    "choices": "25/25 EXACT_PASS",
+    "answer": "25/25 EXACT_PASS",
+    "imageRefs": "25/25 EXACT_PASS",
+    "questionIds": "1..25 UNIQUE_PASS",
+    "objectiveChoiceCardinality": "21/21 FIVE_CHOICES_PASS",
+    "examBlob": "SOURCE_WORKING_INTAKE_MAIN_IDENTICAL"
+  },
+  "mathReview": {
+    "status": "PASS",
+    "pass": 25,
+    "repair": 0,
+    "hold": 0,
+    "reproducibility": "25/25 PASS",
+    "curriculum": "25/25 M2 PASS",
+    "studentLanguage": "25/25 PASS"
+  },
+  "solutionReview": {
+    "status": "PASS",
+    "keep": 25,
+    "repair": 0,
+    "hold": 0,
+    "smallBoardFlow": "25/25 PASS",
+    "decisiveIntermediateSteps": "25/25 PASS"
+  },
+  "questionMicroLayout": {
+    "status": "PASS",
+    "keep": 25,
+    "polish": 0,
+    "reformat": 0,
+    "hold": 0,
+    "layoutTag": "grid",
+    "subjectiveQuestions": [
+      22,
+      23,
+      24,
+      25
+    ],
+    "staticCapacity2upQuestions": [],
+    "reason": "GRID_DEFAULT; subjective marker/subquestions/image alone are not promotion evidence; no deterministic STATIC_CAPACITY_EVIDENCE established without actual grid render",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "visualReview": {
+    "status": "PASS",
+    "problemRasterInventory": 10,
+    "problemRasterPass": 10,
+    "problemRasterQuestions": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      12,
+      14,
+      16,
+      23
+    ],
+    "solutionSvgInventory": 0,
+    "solutionImageInventory": 0,
+    "connectedSolutionVisualDenominator": 0,
+    "connectedSolutionVisualPass": 0,
+    "sourceProblemAssetBlobs": {
+      "q4": "dcb5b0b1a0e937d9d0078ad25262da8d14a97f14",
+      "q5": "f3d25abed50fbb6dfd7739d9adb056425e062e14",
+      "q6": "4dbf5a41539554b35599b5b5151411c9ef81d794",
+      "q7": "2c03650ee95d26490fd39d4b798e1433c6afd26e",
+      "q8": "c7789d4f8d34c1c1da3af9d5fe5f8841d77e8527",
+      "q9": "9f2a688e95f0974988ddac64b830769edab3a0ae",
+      "q12": "69d487c186e29f8f3228fca39a0766e517984f22",
+      "q14": "22d779b5cd20ad8251a068e54584c87c5a670024",
+      "q16": "2dacb888d86d05843f63c49f43bf3c2e43fe0fdd",
+      "q23": "9a2e0dc7f8418ff31132cea1a28f310e6a05755b"
+    },
+    "assetBlobParity": "10/10 source=working=main PASS",
+    "notes": {
+      "q4": "graph points (-1,-3),(2,3) agree with solution",
+      "q5": "decreasing line with positive y-intercept agrees with a<0,b<0",
+      "q6": "rectangle A(1,3),B(1,1),C(3,1),D(3,3) agrees with range calculation",
+      "q7": "source line y=-2 horizontal; parallel-through-(4,2) answer y=2",
+      "q8": "rectangle x=2..5,y=3..5; center (7/2,4) agrees with slope 8/7",
+      "q9": "visible intersection (1,-2) agrees with a=1,b=4",
+      "q12": "3 food x 3 drink choices visible",
+      "q14": "balls 1..15 visible; union count matches 9",
+      "q16": "road grid supports A→P 2R+2U and P→B 2R+1U",
+      "q23": "A through (0,3),(3,4),(6,5); B through (0,1),(2,2),(4,3),(6,4)"
+    }
+  },
+  "itemChecks": [
+    {
+      "qid": 1,
+      "status": "PASS",
+      "math": "only y=x+1 is nonconstant linear",
+      "answer": "②"
+    },
+    {
+      "qid": 2,
+      "status": "PASS",
+      "math": "x-intercept -2 gives a=-9; y-intercept -6",
+      "answer": "④"
+    },
+    {
+      "qid": 3,
+      "status": "PASS",
+      "math": "slope -3, b=5, so a-b=-8",
+      "answer": "③"
+    },
+    {
+      "qid": 4,
+      "status": "PASS",
+      "math": "from (-1,-3),(2,3): a=2,b=-1,b/a=-1/2",
+      "answer": "③",
+      "asset": "PASS"
+    },
+    {
+      "qid": 5,
+      "status": "PASS",
+      "math": "decreasing graph and positive -b intercept imply a<0,b<0",
+      "answer": "⑤",
+      "asset": "PASS"
+    },
+    {
+      "qid": 6,
+      "status": "PASS",
+      "math": "a=(y+1)/x on rectangle gives 2/3≤a≤4, sum 14/3",
+      "answer": "①",
+      "asset": "PASS"
+    },
+    {
+      "qid": 7,
+      "status": "PASS",
+      "math": "parallel to y=-2 through (4,2) gives y=2",
+      "answer": "⑤",
+      "asset": "PASS"
+    },
+    {
+      "qid": 8,
+      "status": "PASS",
+      "math": "rectangle center (7/2,4), origin-center slope 8/7",
+      "answer": "④",
+      "asset": "PASS"
+    },
+    {
+      "qid": 9,
+      "status": "PASS",
+      "math": "intersection (1,-2) gives a=1,b=4,a-b=-3",
+      "answer": "①",
+      "asset": "PASS"
+    },
+    {
+      "qid": 10,
+      "status": "PASS",
+      "math": "line intersection has x=-2; y-axis-parallel line x=-2",
+      "answer": "②"
+    },
+    {
+      "qid": 11,
+      "status": "PASS",
+      "math": "non-triangle a values 1/4,-3/4,1/2 sum to 0",
+      "answer": "③"
+    },
+    {
+      "qid": 12,
+      "status": "PASS",
+      "math": "3 food choices × 3 drink choices = 9",
+      "answer": "④",
+      "asset": "PASS"
+    },
+    {
+      "qid": 13,
+      "status": "PASS",
+      "math": "three tie outcomes in rock-paper-scissors",
+      "answer": "①"
+    },
+    {
+      "qid": 14,
+      "status": "PASS",
+      "math": "multiples of 2 or 5: 7+3-1=9",
+      "answer": "③",
+      "asset": "PASS"
+    },
+    {
+      "qid": 15,
+      "status": "PASS",
+      "math": "BC adjacent: 3 placements×2 internal×2 remaining=12",
+      "answer": "②"
+    },
+    {
+      "qid": 16,
+      "status": "PASS",
+      "math": "A→P 6 shortest paths, P→B 3; total 18",
+      "answer": "③",
+      "asset": "PASS"
+    },
+    {
+      "qid": 17,
+      "status": "PASS",
+      "math": "6 unordered pairs; B appears in 3, so correct ①,④",
+      "answer": "①, ④"
+    },
+    {
+      "qid": 18,
+      "status": "PASS",
+      "math": "sum 5 has 4 outcomes, sum 10 has 3; probability 7/36",
+      "answer": "⑤"
+    },
+    {
+      "qid": 19,
+      "status": "PASS",
+      "math": "without replacement 3/9×6/8=1/4",
+      "answer": "③"
+    },
+    {
+      "qid": 20,
+      "status": "PASS",
+      "math": "current M2 independence default: even/odd cases 1/6+1/3=1/2",
+      "answer": "②"
+    },
+    {
+      "qid": 21,
+      "status": "PASS",
+      "math": "complement 1-(2/3)^3=19/27",
+      "answer": "⑤"
+    },
+    {
+      "qid": 22,
+      "status": "PASS",
+      "math": "y=(3/5)x+331; y=346 gives x=25",
+      "answer": "(1) y=3/5 x+331, (2) 25°C",
+      "layout": "KEEP_GRID"
+    },
+    {
+      "qid": 23,
+      "status": "PASS",
+      "math": "A:y=x/3+3, B:y=x/2+1, equality gives x=12",
+      "answer": "12분",
+      "asset": "PASS",
+      "layout": "KEEP_GRID"
+    },
+    {
+      "qid": 24,
+      "status": "PASS",
+      "math": "even two-digit numbers: ones 0→5,2→4,4→4; total 13",
+      "answer": "13개",
+      "layout": "KEEP_GRID"
+    },
+    {
+      "qid": 25,
+      "status": "PASS",
+      "math": "divisor counts for b+3=4..9 total 15 of 36 =5/12",
+      "answer": "5/12",
+      "layout": "KEEP_GRID"
+    }
+  ],
+  "changedQuestions": [],
+  "changedSolutionQuestions": [],
+  "changedSvgFiles": [],
+  "knownRepairPending": {
+    "solution": 0,
+    "visual": 0,
+    "layout": 0
+  },
+  "unresolvedItems": [],
+  "holdBox": false,
+  "stageDecision": "REVIEW1_DONE",
+  "nextState": "READY_FOR_REVIEW2",
+  "reviewedAt": "2026-09-28T19:55:53+09:00"
+}
