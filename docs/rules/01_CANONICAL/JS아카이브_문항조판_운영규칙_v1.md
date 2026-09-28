@@ -67,23 +67,67 @@ choices는 engine 번호 authority를 유지하고 장문·수식이 부자연�
 page/column 내부 분리, asset 때문에 질문/보기가 떨어짐, 과도한 auto-fit 축소는 FAIL 후보다.
 정적 PASS와 render PASS를 분리하며 미실행 render는 `NOT_RUN_CODEX_HANDOFF`.
 
-### SUBJECTIVE_WRITING_SPACE_FIRST — 서술형/단답형/서논술형 답안 공간 HARD RULE
+### SUBJECTIVE_LAYOUT_DEFAULT_GRID — 서술형 외부 공간 과승격 방지 HARD RULE
 
-학생이 실제로 풀이·답안을 써야 하는 문항은 **내용 수용보다 작성 공간을 우선**한다.
+학생이 실제로 풀이·답안을 쓰는 문항도 **외부 layout의 기본값은 `grid`**다.
+문항 성격과 필요한 외부 공간은 별도 축으로 판정한다.
 
-- 기본 layout은 기존 `grid`를 유지한다.
-- 단답형·서술형·서논술형 또는 choices가 없는 주관식에서, 현재 grid가 학생 답안 작성에 좁다고 판단되면 **`layoutTag: "subjective-2up"`으로 승격**한다.
-- `(1) (2)`, `(1)~(5)`, ①/②처럼 문제 안에 소문항이 여러 개 있으면 각 소문항의 경계를 명확히 줄바꿈하고, 학생이 각 항목에 답을 적을 수 있는 충분한 세로 간격을 확보한다.
-- 답안 공간 부족을 해결하기 위해 font/image를 먼저 과도하게 축소하지 않는다. **`grid → subjective-2up` 공간 확보가 압축보다 우선**이다.
-- 기본 escalation은 여기까지다. `subjective-4up`·`fullwidth`로 자동 확대하는 별도 단계는 두지 않는다. `subjective-2up`으로도 실제 render에서 부족한 특수 문항만 별도 HOLD/후속 엔진 개선 대상으로 남긴다.
-- 원문에 이미 `단답형`, `서술형`, `서논술형` 표지가 있으면 renderer-only bold/간격/괄호·배지 스타일로 시각 계층을 강화할 수 있다. **원문에 없는 유형 라벨을 새로 쓰거나 기존 문구를 바꾸지 않는다.**
-- 유형 표시 styling은 SOURCE_TEXT_EXACT_PARITY의 text atom을 바꾸지 않는 presentation layer여야 한다.
-- CREATE/R1은 정적 구조를 판정하고, 실제 답안 공간 충분성은 Codex exam render에서 다시 확인한다.
+#### 6-1. 자동 승격 금지
+
+다음 사실은 **단독으로 `grid → subjective-2up` 승격 근거가 될 수 없다.**
+
+- `questionType`이 `서술형`, `단답형`, `서논술형`인 경우
+- `choices: []`인 경우
+- tags에 `서술형`/주관식 계열 표지가 있는 경우
+- 발문에 `구하시오`, `과정을 서술하시오`, `설명하시오` 등이 있는 경우
+- 배점이 높거나 시험지 후반의 서술형 영역인 경우
+- `(1)(2)(3)`, ①/② 등의 소문항이 존재하는 경우
+- 발문이 길거나 problem image/표/도형이 존재하는 경우
+
+**애매하면 `grid`를 유지한다.** questionType/choices/tag/source marker 기반 일괄 `subjective-2up` 승격은 `OVERESCALATED_SUBJECTIVE_LAYOUT` 결함이다.
+
+#### 6-2. subjective-2up 허용 조건
+
+`layoutTag: "subjective-2up"`은 다음 중 하나가 있을 때만 허용한다.
+
+1. **actual exam render evidence**에서 현재 grid가 발문·asset·소문항을 배치한 뒤 학생이 실제로 답안을 작성할 공간을 명백히 확보하지 못함이 확인된 경우
+2. 사용자가 해당 문항/범위에 대해 `subjective-2up`을 명시적으로 지시한 경우
+
+렌더를 실행하지 않은 GPT/예약/Codex 단계에서는 답안 공간 부족을 추측해 선제 승격하지 않는다.
+그 경우 **`grid` 유지 + `NOT_RUN_CODEX_HANDOFF`**로 넘긴다.
+
+`subjective-2up`으로도 실제 render에서 부족한 특수 문항은 자동 `subjective-4up`/fullwidth로 확대하지 않고 HOLD/후속 엔진 개선 대상으로 분리한다.
+
+#### 6-3. 내부 소문항 구조와 외부 layout 분리
+
+`(1)(2)(3)` 같은 내부 소문항의 줄바꿈·읽기 구조·답안 공간 배분은 중요하지만,
+**소문항 존재 자체가 `subjective-2up` 승격 사유는 아니다.**
+
+- grid 공간이 충분하면 grid 안에서 소문항 구조를 살린다.
+- grid 공간이 실제로 부족하다는 render evidence가 있을 때만 subjective-2up을 검토한다.
+- 내부 소문항 균등 공간 배분은 별도 renderer/layout 계약으로 다루며 외부 layoutTag 자동 승격과 결합하지 않는다.
+
+#### 6-4. 기존 2up 재판정
+
+기존 `subjective-2up`은 과거 판정을 자동 상속하지 않는다.
+actual render evidence 또는 사용자 명시 지시가 확인되지 않으면 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 후보로 기록하고,
+새 기준에서 grid로 충분한지 targeted recheck한다.
+
+2026-09-28 negative regression fixture:
+`codex/archive-source-intake@64207516e85f79da822cefc930e9e416ea68615c`의 고1 기말 5시험지 backfill에서
+서술형 14문항이 일괄 `grid → subjective-2up`으로 승격된 결과는 **선례/authority가 아니다.**
+해당 14건은 새 규칙 기준 `OVERESCALATED_SUBJECTIVE_LAYOUT` 재검 후보이며 다른 시험지로 확대 적용하지 않는다.
+
+원문에 이미 `단답형`, `서술형`, `서논술형` 표지가 있으면 renderer-only bold/간격/괄호·배지 스타일로 시각 계층을 강화할 수 있다.
+원문에 없는 유형 라벨을 새로 쓰거나 기존 문구를 바꾸지 않는다.
+유형 표시 styling은 SOURCE_TEXT_EXACT_PARITY의 text atom을 바꾸지 않는 presentation layer여야 한다.
 
 결함 코드:
 - `SUBQUESTION_WRITING_SPACE_TIGHT`
 - `SUBJECTIVE_GRID_TOO_TIGHT`
 - `SUBJECTIVE_TYPE_HIERARCHY_WEAK`
+- `SUBJECTIVE_2UP_WITHOUT_EVIDENCE`
+- `OVERESCALATED_SUBJECTIVE_LAYOUT`
 
 ## 7. disposition / defect code
 
