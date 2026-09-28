@@ -1,0 +1,182 @@
+{
+  "schema": "JS_ARCHIVE_CREATE_SELF_CHECK_EVIDENCE_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "examFile": "24_신흥중_2학기_중간_중2_수학.js",
+  "examUid": "24_신흥중_2학기_중간_중2_수학",
+  "inventoryOrdinal": 11,
+  "createShard": 2,
+  "lane": "CREATE-2",
+  "workingBranch": "work/middle/m2/24-shinheung-2mid",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceBlobSha": "223ee9e521790780933e03fb264f66d0d4bdc540",
+  "finalExamBlobSha": "0b71cdfe669efb295bd13a92d3a2b026d6d25231",
+  "baseMainSha": "9a955143a4d636c69c4aa27430459f513d03879d",
+  "denominator": 21,
+  "protectedParity": {
+    "content": "21/21 PASS",
+    "choices": "21/21 PASS",
+    "answer": "21/21 PASS",
+    "imageRefs": "21/21 PASS",
+    "sourceExamBlob": "FROZEN_AUTHORITY",
+    "sourceProblemAssets": "17/17 PRESENT_AND_VISUALLY_CROSSCHECKED"
+  },
+  "sourceProblemAssetBlobs": {
+    "q01": "a81d8f0a40409298289e33e82078457f79b636f3",
+    "q02": "aeac0b1f04408d53d2f116b984798fc1206a611e",
+    "q03": "f7f4b0e48590d79e335af57043cc33c281109b4e",
+    "q04": "549537bcd1d256d5c7baa1daec3f0562d72803a2",
+    "q05": "84f46ef279a1d0e1fc5683fdf82b0772583084e9",
+    "q06": "c6ae083accb44f606577696a4523f898c90525b2",
+    "q07": "193efd4f1b4ea823bac9a1b07abeec5d90c1e4ec",
+    "q09": "d4f151c64252f3e6984cd3c49c9aa3bdd7046c1a",
+    "q10": "d6df06a7730d645b0a409882fd89ff211b6dcf7a",
+    "q11": "7ee6f6cadf587d1ec10d5368af85104628a80595",
+    "q13": "a68984309b17491cf15d7bba0c0bc0a09cf13cde",
+    "q14": "219e2a00ad810b2ca5024882eb8b74c49a1c0bdf",
+    "q15": "c5d11525b7ce098763dae14c934c89eb07ec0590",
+    "q16": "fc1dce47105d66b9b0cb3bf7b6e3dded414cd85c",
+    "q19": "f09c13e26ecea07ed1763625b85b479a7a53799d",
+    "q20": "7223ace98c9e59a56184f4c4243a5f6e2a686672",
+    "q21": "d9c2ab499b0abed92a05f274cb42aa9f0d1ada5c"
+  },
+  "mathSelfCheck": {
+    "status": "PASS",
+    "pass": 21,
+    "repair": 0,
+    "hold": 0,
+    "independentlyCheckedQuestions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "diagramCrossChecks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      19,
+      20,
+      21
+    ]
+  },
+  "solutionSelfCheck": {
+    "status": "PASS",
+    "keep": 21,
+    "repair": 0,
+    "hold": 0,
+    "requiredSections": "21/21 PASS",
+    "studentReproducibility": "21/21 PASS"
+  },
+  "questionMicroLayout": {
+    "status": "PASS",
+    "keep": 21,
+    "reformat": 0,
+    "hold": 0,
+    "layoutTag": "grid",
+    "subjectiveGridKept": [
+      18,
+      19,
+      20,
+      21
+    ],
+    "subjective2upPromoted": [],
+    "reason": "STATIC_CAPACITY_EVIDENCE_NOT_ESTABLISHED; grid default retained"
+  },
+  "visualSelfCheck": {
+    "status": "PASS",
+    "sourceProblemVisuals": "17/17 PRESENT_AND_PARITY_PASS",
+    "noProblemVisualQuestions": [
+      8,
+      12,
+      17,
+      18
+    ],
+    "sourceCarriedSolutionSvgInventory": 7,
+    "sourceCarriedSolutionSvgQuestions": [
+      5,
+      7,
+      10,
+      13,
+      15,
+      19,
+      20
+    ],
+    "sourceCarriedSolutionSvgCodeFirst": "7/7 PASS",
+    "addedSolutionSvg": 2,
+    "addedSolutionSvgQuestions": [
+      18,
+      21
+    ],
+    "finalSolutionSvgInventory": 9,
+    "requiredVisualMissing": 0,
+    "v1ExpectedFact": {
+      "q18": "VISUAL_OPTIONAL_WITH_CLEAR_BENEFIT: AB=AC, D on BC, AD angle-bisector/common side, SAS congruence, base angles equal",
+      "q21": "VISUAL_OPTIONAL_WITH_CLEAR_BENEFIT: parallelogram ABCD, add diagonal AC used by proof, two alternate-angle pairs, common AC, ASA congruence"
+    },
+    "v2ObservedFact": {
+      "q18": "Symmetric triangle ABC with D on BC, AD drawn, equal-side ticks, angle-bisector annotation and SAS/conclusion text",
+      "q21": "Parallelogram ABCD with diagonal AC and both equality-of-angle pairs plus ASA/conclusion text"
+    },
+    "v3Parity": "q18 PASS; q21 PASS",
+    "targetedRenderSelfCheck": "q18 PASS; q21 PASS (no clipping/geometry defect in generated canvas)",
+    "independentRenderReview": "PENDING_REVIEW1"
+  },
+  "solutionSvgBlobs": {
+    "q5": "edded08e9d83bc8244327d0f4742c7e517621ada",
+    "q7": "682161ca16fe68a3d6c4c8eab874b602420339b2",
+    "q10": "766677ffdb878eee0e5c6765950a7ce0d614820b",
+    "q13": "bc16a9763db1d9dc00cd517f84b17ab9d2481247",
+    "q15": "1a8fdad2572edb2df3e2c582dcdcd356ad6fb218",
+    "q18": "63be8506b5135e03d4790e16717b5139dcdaf63e",
+    "q19": "1a072b899c3fbd0960b3e6f5d4f489b5223b0e47",
+    "q20": "3f54cc34551383ea065bee3b3b1dff527cbc8673",
+    "q21": "21fcd3fead3dc2dfc20ab24d1c4b28868a2f7108"
+  },
+  "changedQuestions": [
+    18,
+    21
+  ],
+  "changedSolutionQuestions": [],
+  "changedSvgFiles": [
+    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q18-solution.svg",
+    "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q21-solution.svg"
+  ],
+  "knownRepairPending": {
+    "solution": 0,
+    "visual": 0,
+    "layout": 0
+  },
+  "unresolvedItems": [],
+  "stageDecision": "CREATE_DONE",
+  "nextState": "READY_FOR_REVIEW",
+  "createdAt": "2026-09-28T18:28:49+09:00"
+}
