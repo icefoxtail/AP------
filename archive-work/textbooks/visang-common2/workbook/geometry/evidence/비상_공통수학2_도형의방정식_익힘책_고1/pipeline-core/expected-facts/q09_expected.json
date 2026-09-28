@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_74c9cd183dbd93b71fc0f21ee23950d1293891da0fec0f384fd8b4dc05dd6d9a",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "T",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 1.8,
+        "y": 2.4
+      },
+      {
+        "id": "Q",
+        "x": 1.8,
+        "y": -2.4
+      }
+    ],
+    "circles": [
+      {
+        "id": "circleO",
+        "x": 0,
+        "y": 0,
+        "radius": 3
+      }
+    ],
+    "segments": [
+      {
+        "id": "OP",
+        "start": "O",
+        "end": "P"
+      },
+      {
+        "id": "PT",
+        "start": "P",
+        "end": "T"
+      },
+      {
+        "id": "OQ",
+        "start": "O",
+        "end": "Q"
+      },
+      {
+        "id": "QT",
+        "start": "Q",
+        "end": "T"
+      },
+      {
+        "id": "PQ",
+        "start": "P",
+        "end": "Q"
+      }
+    ],
+    "relations": [
+      {
+        "from": "OP",
+        "to": "PT",
+        "relation": "perpendicular"
+      },
+      {
+        "from": "OQ",
+        "to": "QT",
+        "relation": "perpendicular"
+      }
+    ],
+    "scalePolicy": "SCHEMATIC_DECLARED"
+  }
+}

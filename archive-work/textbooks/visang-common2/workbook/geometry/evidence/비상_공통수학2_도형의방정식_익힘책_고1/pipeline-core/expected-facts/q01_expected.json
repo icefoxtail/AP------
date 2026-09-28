@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": -3
+      },
+      {
+        "id": "P",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "id": "B",
+        "x": 7,
+        "y": 7
+      }
+    ],
+    "circles": [],
+    "segments": [
+      {
+        "id": "AP",
+        "start": "A",
+        "end": "P"
+      },
+      {
+        "id": "PB",
+        "start": "P",
+        "end": "B"
+      },
+      {
+        "id": "AB",
+        "start": "A",
+        "end": "B"
+      }
+    ],
+    "relations": [
+      {
+        "from": "A",
+        "to": "P",
+        "relation": "segment"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "relation": "segment"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

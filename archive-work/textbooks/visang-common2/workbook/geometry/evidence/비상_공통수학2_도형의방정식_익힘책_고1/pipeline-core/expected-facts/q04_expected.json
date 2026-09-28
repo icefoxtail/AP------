@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_1d3d39f7f7a680bb3533173b8eecb519aecbb1ac78329baa2397856dce86273a",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "P",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "id": "H",
+        "x": -2,
+        "y": -2
+      },
+      {
+        "id": "A",
+        "x": 3,
+        "y": -1
+      },
+      {
+        "id": "B",
+        "x": 1,
+        "y": -4
+      },
+      {
+        "id": "H2",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "id": "C",
+        "x": 5,
+        "y": 2
+      }
+    ],
+    "circles": [],
+    "segments": [
+      {
+        "id": "L",
+        "start": "P",
+        "end": "A"
+      },
+      {
+        "id": "M",
+        "start": "H",
+        "end": "B"
+      },
+      {
+        "id": "N",
+        "start": "P",
+        "end": "H"
+      },
+      {
+        "id": "M2",
+        "start": "H2",
+        "end": "C"
+      },
+      {
+        "id": "N2",
+        "start": "P",
+        "end": "H2"
+      }
+    ],
+    "relations": [
+      {
+        "from": "L",
+        "to": "M",
+        "relation": "parallel"
+      },
+      {
+        "from": "N",
+        "to": "L",
+        "relation": "perpendicular"
+      },
+      {
+        "from": "L",
+        "to": "M2",
+        "relation": "parallel"
+      },
+      {
+        "from": "N2",
+        "to": "L",
+        "relation": "perpendicular"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_7f949c1ed08debe451e83f14d4bb65dbb82b088ab7301fd98972956fbb763c25",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "C",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "id": "Cp",
+        "x": -3,
+        "y": 3
+      },
+      {
+        "id": "Ty",
+        "x": 0,
+        "y": 6
+      },
+      {
+        "id": "Tx",
+        "x": -3,
+        "y": 0
+      },
+      {
+        "id": "Ty2",
+        "x": 0,
+        "y": 3
+      }
+    ],
+    "circles": [
+      {
+        "id": "initial",
+        "x": 3,
+        "y": 6,
+        "radius": 3
+      },
+      {
+        "id": "translated",
+        "x": -3,
+        "y": 3,
+        "radius": 3
+      }
+    ],
+    "segments": [
+      {
+        "id": "oldRadius",
+        "start": "C",
+        "end": "Ty"
+      },
+      {
+        "id": "xTangencyRadius",
+        "start": "Cp",
+        "end": "Tx"
+      },
+      {
+        "id": "yTangencyRadius",
+        "start": "Cp",
+        "end": "Ty2"
+      }
+    ],
+    "relations": [
+      {
+        "from": "C",
+        "to": "Ty",
+        "relation": "segment"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

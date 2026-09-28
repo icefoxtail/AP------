@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_47f15fd93f79484f6b466be24bd688d5abbfba734895462d97674396280d8219",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 14
+      },
+      {
+        "id": "B",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "id": "C",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "id": "G",
+        "x": 5,
+        "y": 8
+      }
+    ],
+    "circles": [],
+    "segments": [
+      {
+        "id": "AB",
+        "start": "A",
+        "end": "B"
+      },
+      {
+        "id": "BC",
+        "start": "B",
+        "end": "C"
+      },
+      {
+        "id": "CA",
+        "start": "C",
+        "end": "A"
+      }
+    ],
+    "relations": [
+      {
+        "from": "A",
+        "to": "B",
+        "relation": "segment"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "relation": "segment"
+      },
+      {
+        "from": "C",
+        "to": "A",
+        "relation": "segment"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

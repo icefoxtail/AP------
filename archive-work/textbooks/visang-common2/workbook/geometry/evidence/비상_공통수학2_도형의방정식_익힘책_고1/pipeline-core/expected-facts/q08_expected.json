@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_0c587370973c7d176eb219c11f5aa99f7771d53ba225fe222730eb1fd0f333bb",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "C",
+        "x": 5,
+        "y": -3
+      },
+      {
+        "id": "M",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "id": "A",
+        "x": 8,
+        "y": 1
+      },
+      {
+        "id": "B",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "circles": [
+      {
+        "id": "circleC",
+        "x": 5,
+        "y": -3,
+        "radius": 5
+      }
+    ],
+    "segments": [
+      {
+        "id": "AB",
+        "start": "A",
+        "end": "B"
+      },
+      {
+        "id": "CM",
+        "start": "C",
+        "end": "M"
+      },
+      {
+        "id": "AM",
+        "start": "A",
+        "end": "M"
+      }
+    ],
+    "relations": [
+      {
+        "from": "CM",
+        "to": "AB",
+        "relation": "perpendicular"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

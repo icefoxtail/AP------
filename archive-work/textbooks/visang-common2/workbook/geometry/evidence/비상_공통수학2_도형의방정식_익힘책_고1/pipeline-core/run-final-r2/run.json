@@ -1,0 +1,3723 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_RUN_v2",
+  "status": "DRAFT_NOT_REVIEWED",
+  "pipeline": "textbook",
+  "runId": "visang-workbook-geometry-20260929-run",
+  "revision": 3,
+  "builderId": "codex-main-worker",
+  "builderSessionId": "01a0e821-8339-7803-890a-4b0ddc19dd9d",
+  "builderModelOrAgent": "gpt-6-luna",
+  "canonicalRecordId": "visang-workbook-geometry-20260929-run:r1",
+  "inputs": [
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "bytes": 21044,
+      "sha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b",
+      "role": "source"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "bytes": 34513,
+      "sha256": "sha256:d7c2b5ff11d3f41c2aca8b7de221f468ef97d1dfcae76f2a64e18e0ddfa338d9",
+      "role": "candidate"
+    },
+    {
+      "path": "docs/rules/MANIFEST.md",
+      "bytes": 6173,
+      "sha256": "sha256:701e5bffc134b12b702c7130ba5d315c9b1521fb0cd6ddd1aefa0f20fc423595",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/00_RULES_INDEX.md",
+      "bytes": 33623,
+      "sha256": "sha256:7ee2198222b34d0bbe73707d643785f02fb2a0112ca7d7107c073da11505d3c0",
+      "declaredVersion": "# JS아카이브 규칙 통합 인덱스",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/프로젝트_컨텍스트.md",
+      "bytes": 18965,
+      "sha256": "sha256:c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6",
+      "declaredVersion": "Gemini",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "bytes": 20257,
+      "sha256": "sha256:f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae",
+      "declaredVersion": "# JS아카이브 학생용 해설 운영규칙 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md",
+      "bytes": 12133,
+      "sha256": "sha256:737df504f0940793746d0a0f41d1c6c0476ac6b3d6652fdf1689d0702e6eff37",
+      "declaredVersion": "# JS Archive 문항 조판 운영규칙 v1 — QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+      "bytes": 16671,
+      "sha256": "sha256:119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55",
+      "declaredVersion": "# JS아카이브 세부단원 운영규칙 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+      "bytes": 48107,
+      "sha256": "sha256:0427680151104832dc9906e2fcd1856099199ac359be0c29f07a807d2998af63",
+      "declaredVersion": "# JS아카이브 문항 메타 파운데이션 운영규칙 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+      "bytes": 1839,
+      "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332",
+      "declaredVersion": "# JS아카이브 Taxonomy Canonical Pack — RPM Primary v1.0",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+      "bytes": 558523,
+      "sha256": "sha256:0f6721c61f7e31df5cce43f48c60dc5732dfd96347e47813beffd4fe6a8dd509",
+      "declaredVersion": "{",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "bytes": 70509,
+      "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e",
+      "declaredVersion": "# JS아카이브 표준단원키 마스터 테이블",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md",
+      "bytes": 95451,
+      "sha256": "sha256:35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700",
+      "declaredVersion": "# JS아카이브 프로젝트 룰북 (v2.6)",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "bytes": 37687,
+      "sha256": "sha256:3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab",
+      "declaredVersion": "# JS아카이브 `difficultyBucket` 5단계 운영규칙 v1.3",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md",
+      "bytes": 200952,
+      "sha256": "sha256:69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac",
+      "declaredVersion": "# JS아카이브 전수 품질 업그레이드 · 다중 독립 검수 · 최종 봉인 공통 프로토콜 v1.2.10 — 정본",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md",
+      "bytes": 7700,
+      "sha256": "sha256:eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c",
+      "declaredVersion": "# GPT 격리 작업공간 실행규칙 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md",
+      "bytes": 37090,
+      "sha256": "sha256:d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff",
+      "declaredVersion": "# JS Archive R2E Intake → Main 운영계약 v2 (SUPERSEDED FOR NEW RUNS)",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md",
+      "bytes": 18689,
+      "sha256": "sha256:5a0d5c47fb61780f729ce7625d7840e5b2d91096c92ce4ab439253c3df41a7ed",
+      "declaredVersion": "# JS Archive R2E Intake → Main 운영계약 v3 — Repair & Release",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md",
+      "bytes": 26401,
+      "sha256": "sha256:82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b",
+      "declaredVersion": "# CODEX Meta Foundation 단원정리 실행 프로토콜 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md",
+      "bytes": 18488,
+      "sha256": "sha256:9c3484c80709a7f798290a1bc416b13c51eb0069f50e4dff3efb3029094dd185",
+      "declaredVersion": "🤖 JS아카이브 발문·보기 추출 프로토콜 v4.0",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md",
+      "bytes": 131125,
+      "sha256": "sha256:da233083c7651ff8f18f3439a7b92706e1a5ddd985a4cbf7cda78ddcf86f077e",
+      "declaredVersion": "# 코드검사실 / JS아카이브 시험지 작업 통합 운영 프로토콜",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/문제해설추출.md",
+      "bytes": 28727,
+      "sha256": "sha256:35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140",
+      "declaredVersion": "# 🤖 JS아카이브 수학 발문·해설 원패스 추출 엔진 v2.8 FINAL",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/수정프로토콜.md",
+      "bytes": 33763,
+      "sha256": "sha256:c8a5ad75d986ccdafeb72a1bb48b0304796a1cea2c7c14acda8ccef34052ea32",
+      "declaredVersion": "# 🛠 JS아카이브 수정 프로토콜 v1.7 FINAL",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/작업방식_적응형배치루프_v1.md",
+      "bytes": 9468,
+      "sha256": "sha256:ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685",
+      "declaredVersion": "# 작업 방식 — 적응형 배치 루프 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/수정후보고프로토콜.md",
+      "bytes": 880,
+      "sha256": "sha256:bbdd866d15e6dc7e03ee265cf3b02571f6ef3ed4a15c03ebacb816d3311cbc4f",
+      "declaredVersion": "수정 끝나면 바로 자체 재검 보고해라.",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/작업방식_5문항배치루프_필수.md",
+      "bytes": 5586,
+      "sha256": "sha256:03ff3af80c2ce350181a142377955cc6657fa7f2d419c7461c6a09e7b1013858",
+      "declaredVersion": "[작업 방식 — 5문항 배치 루프 필수]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/해설프로토콜.md",
+      "bytes": 46033,
+      "sha256": "sha256:1d01f0b40cf2cd8ae5d0bc2f8625145fe771c4e5a5a9f44913c401e075dfb2dc",
+      "declaredVersion": "[JS아카이브 해설 전용 생성 프롬프트 v1.5 FINAL]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_문항품질_업그레이드.md",
+      "bytes": 26312,
+      "sha256": "sha256:c3583a3316c613e4993ea81fb17069c2bbbf74659b7e3d22d39e8bf556e9d4d1",
+      "declaredVersion": "# JS 발문·보기·정답·해설 품질 업그레이드 GPT 에이전트 지시서",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/JS_변환_프롬프트.md",
+      "bytes": 11447,
+      "sha256": "sha256:dba2fb3d74bef50632c50c41b37bfd34567a3661957bba2e679d3821725967e7",
+      "declaredVersion": "",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/무결성검수.md",
+      "bytes": 53916,
+      "sha256": "sha256:3e4815e868f21ad5c2b19738f31a257956ee8e526108456103d2c351be68f868",
+      "declaredVersion": "# 🔍 JS아카이브 수학 최종 검수 프로토콜 v1.7 FINAL",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md",
+      "bytes": 8439,
+      "sha256": "sha256:35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9",
+      "declaredVersion": "[수학 문항 오류 검증 프로토콜 v2.1]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/JS아카이브_1차검수_프로토콜.md",
+      "bytes": 13171,
+      "sha256": "sha256:958faf1eab55ab3d67a6421db00b74c26c4a591b81fad79e109de0a2b1485d3e",
+      "declaredVersion": "[JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/JS아카이브_2차검수_프로토콜.md",
+      "bytes": 10397,
+      "sha256": "sha256:fe07bb14f1f6530a7bb50811519e4a8dd6e006b2108ca84be6a8f3f6be244075",
+      "declaredVersion": "[JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md",
+      "bytes": 18739,
+      "sha256": "sha256:b21c022f5a21c222a7dc3924d32f4ac0e7bf0a8d5560c7218f5d37f61e1e6a46",
+      "declaredVersion": "[JS아카이브 3차 검수 프로토콜 — 분류·메타·난이도 태그 검수 v1.0]",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "bytes": 57152,
+      "sha256": "sha256:80e5a2833e8498f58f517c74b1a6cefea09095f95cdef9bf1d783ec4edfc499e",
+      "declaredVersion": "# JS아카이브 표·도형·그래프 생성 프로토콜 v3.0",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md",
+      "bytes": 72613,
+      "sha256": "sha256:26f2277598a1b217888e10d0ec17e61630982709f9e464de804fec30c7f656ad",
+      "declaredVersion": "# 기하 시각자료·해설·독립검수 통합 운영규정 v1.1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md",
+      "bytes": 66253,
+      "sha256": "sha256:0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b",
+      "declaredVersion": "# AP MATH OS — 집합·명제 논리 시각자료 Semantic Overlay v1.4",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md",
+      "bytes": 105170,
+      "sha256": "sha256:6a57ebc03f2211be32de230f55dae646552b2d0e003dae0e2e1007b2961a2407",
+      "declaredVersion": "# 도형의 방정식 해설 품질 + SVG 제작/독립검수 통합 운영규정 v1.1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/공통파이프라인_실행계약_v1.md",
+      "bytes": 8150,
+      "sha256": "sha256:052ac837de80f4728a4500adb4f0fd222a14164bd4c6ffe74bfdfb283605258a",
+      "declaredVersion": "# APMath 공통 파이프라인 실행 계약 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md",
+      "bytes": 11585,
+      "sha256": "sha256:fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56",
+      "declaredVersion": "# Generated Artifact Git Policy v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md",
+      "bytes": 16860,
+      "sha256": "sha256:b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca",
+      "declaredVersion": "# Past Exam V3 COMPLETE — 작성·검수 실행 계약 v1",
+      "role": "rule"
+    },
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+      "bytes": 10104,
+      "sha256": "sha256:0d03b2f0bff2b0439f1874377f19fa92b002d90792f89fb59e6589c7f225e22a",
+      "declaredVersion": "# JS Archive Meta RPM→ACTIVE 공용 Resolver 계약 v1",
+      "role": "rule"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_geometry_core_final.svg",
+      "bytes": 1945,
+      "sha256": "sha256:8538b5f2491781020671cc92864f27af4fb5509be393c70d061030a5f0741214",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q02_geometry_core_final.svg",
+      "bytes": 2274,
+      "sha256": "sha256:aa1b45ea46100cd8f5d959081064495c7030efeb19d7a8ddf44ba781f492f4b9",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q04_geometry_core_final.svg",
+      "bytes": 3180,
+      "sha256": "sha256:5d99f4b0f2e0e13200d5915c5bf7aaf3d0bf79d24f3109462da2e44f0b58c78a",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q05_geometry_core_final.svg",
+      "bytes": 1756,
+      "sha256": "sha256:236e620af144cb8b6ce04d6c987e5c96053c044f015e8dd1aee56b04dfe24d9c",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q06_geometry_core_final.svg",
+      "bytes": 2408,
+      "sha256": "sha256:8f74bccfcd99c36ded2b0ba3dcf7cdb28f6f650937604a5eefe6f5fb4c4e8f8a",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q07_geometry_core_final.svg",
+      "bytes": 2666,
+      "sha256": "sha256:df87d876829874ca26db3995ff13d9afc462d66f16a5c787bf364fe4d24eacc7",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q08_geometry_core_final.svg",
+      "bytes": 2544,
+      "sha256": "sha256:6e7f4b58984e22be78ace6164630350d7c805b716f5bdeafddef7462ff44ea6e",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q09_geometry_core_final.svg",
+      "bytes": 2817,
+      "sha256": "sha256:93097dec8e53a16c0a711c62d737bb6028fb55c6139f09d39b49da758d0d5553",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q10_geometry_core_final.svg",
+      "bytes": 1915,
+      "sha256": "sha256:a6e7f2576c4bd2d2b524874e15ca8f3739b283f19561d1792632e98e3ce25b0c",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q12_geometry_core_final.svg",
+      "bytes": 3068,
+      "sha256": "sha256:e9fe28781d13cfd9e7aca2ff18d4c3dc2366611a1492edcbae2e7575c6467721",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_reflection_path.png",
+      "bytes": 8206,
+      "sha256": "sha256:ee6355a403ed72be3efa2769ed36e30545bfe251b32daac967eccd21e20f8ac3",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_geometry_core_final.svg",
+      "bytes": 2993,
+      "sha256": "sha256:9cb1732e2e969cc2e62ed8b40c23e3565e4fe7fb55815ff6327fe3b8faed2d47",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_translation_reflection.png",
+      "bytes": 7705,
+      "sha256": "sha256:8ad964ed8b74b3011732b56e94825c71f9862f6f1174e8c8d3c1cf81b39c7dd6",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_geometry_core_final2.svg",
+      "bytes": 4657,
+      "sha256": "sha256:eaec800faa96dc0ed875678513e7bfd74f7b7e1e7be1be2619597cd8959f27c0",
+      "role": "asset"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_exam_id_registry.json",
+      "bytes": 10468,
+      "sha256": "sha256:07c76411ec93e58910a9c1c7e3d0b647b41a8eb912df6adc0f776426833dacc9",
+      "role": "dependency"
+    },
+    {
+      "path": "archive/tools/pipeline-core/visual-contract.json",
+      "bytes": 8569,
+      "sha256": "sha256:f483601f4d0691a95ad5b30c6bcc4a2fa2faab0d0bb5717a149600cd2e3703df",
+      "role": "spec"
+    },
+    {
+      "path": "archive/tools/pipeline-core/closure.mjs",
+      "bytes": 52080,
+      "sha256": "sha256:89df92fe5c38f967a6504a933597668bd5b4704e72a30b158c4c79500b05baf4",
+      "role": "verifier"
+    },
+    {
+      "path": "archive/tools/pipeline-core/generator.py",
+      "bytes": 22993,
+      "sha256": "sha256:1f8bc3a85eae574755d72e103ccd61d267fc7636009bbd41298afdff7d749f03",
+      "role": "generator"
+    },
+    {
+      "path": "archive/answer-render-executor.js",
+      "bytes": 3128,
+      "sha256": "sha256:87a73df7cc0ded42d062aa5f8955e1d3e8edca01ec5502e3336f6e76d9f54726",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/archive2-preview-mobile.css",
+      "bytes": 6865,
+      "sha256": "sha256:4f86625526fde85eab0b385c0da1a4d706752a61ff8e8c3b6b3fbb0a16ea7914",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/archive2-review.css",
+      "bytes": 488,
+      "sha256": "sha256:956a692d7949424b88a19b8641af24215a206c9a236d4d4c3306c79aaf8f8e3c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/archive2-review.js",
+      "bytes": 413,
+      "sha256": "sha256:e706739784346f32347a609a08e99245f3acf3c3626474b5318a625695b0f138",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/concept_map.js",
+      "bytes": 8453,
+      "sha256": "sha256:da30d15d75872d0190f06c6a5acd6b058d2c4a75914c116ef866984594ed6ff9",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/css/js-archive-theme-override.css",
+      "bytes": 16183,
+      "sha256": "sha256:5c7225d0fb5fd4bab3c222acc4589981a80f81dd5aecda441e9f28d0b161e6fd",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "bytes": 30310483,
+      "sha256": "sha256:2b7c8639e8fc9d48ef675d948861176cce3701e48ab8c22c7b69255e49b8a583",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/engine.html",
+      "bytes": 179800,
+      "sha256": "sha256:777ede0287dea2a46b0cf86ad275089ce3980f0da5281029f84f8d21fbe53254",
+      "role": "engine"
+    },
+    {
+      "path": "archive/equal-slot-engine.css",
+      "bytes": 1847,
+      "sha256": "sha256:2e7f18061f400c320163412f0a09e00e43af3128d800824dd210ceb5829edcf2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/equal-slot-engine.js",
+      "bytes": 20576,
+      "sha256": "sha256:499d7b255b47be1e7cb0b69bbf3bafb662b6ed8e7495095264d13c0af0f02e49",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/exam-render-executor.js",
+      "bytes": 24516,
+      "sha256": "sha256:aa783b92883cd331f162fb935f942eaa06b1c06f802865d92cfb49acc0c0c369",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/layout-authority.js",
+      "bytes": 84946,
+      "sha256": "sha256:be10c5cc8c1fd70a06216cb40b2f2e1ebe23b42f49df2b40f47d03fa11d5c532",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/layout-materializer.js",
+      "bytes": 10595,
+      "sha256": "sha256:ed6f44d62e3e76dd4c7f0384f8a12092f55cb0fb1f247a5cd74121d59a033e56",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/mathjax_render_loop.js",
+      "bytes": 3546,
+      "sha256": "sha256:5ce90d2b951bb8890f6b1c60ff63f27d37a985b3b757e2cee3d2ed56e74b331b",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/native_print.js",
+      "bytes": 18532,
+      "sha256": "sha256:7afbb40b56f4e1d930f6d57e208e211a7ae1c74e5ab84f2c5c5b3f2c146ffc11",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/print-contract.js",
+      "bytes": 27665,
+      "sha256": "sha256:d254821e71ee6ff7a1b6747843dd4a1cdea4a56bbfcf5e33c637f57894969cf2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/print-runtime.js",
+      "bytes": 4173,
+      "sha256": "sha256:c92b4b4133c8e1bbe7e909c6418e3c966262cf476584607ede77cf8d47cbda75",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/print_image_optimizer.js",
+      "bytes": 7372,
+      "sha256": "sha256:9c07c4619d27c30e9262714daae34442317ec568a1131aa261c8918536880700",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/question-image-readiness.js",
+      "bytes": 7106,
+      "sha256": "sha256:b5e67eabfde5d4909fa70c72746f1ec530be6377a55ea6c13a270523ad6c6043",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/question-meta.js",
+      "bytes": 27357,
+      "sha256": "sha256:f57c08ed243a483e4c38f17022ec7f6a6a2f34453531e5cd0cd129782df2b9fe",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/render-authority.js",
+      "bytes": 27193,
+      "sha256": "sha256:425c8a0b1b651bbfe9dc62f528c7db6ce670a10f89e25664795eddc52a4f66bd",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/render-state-normalizer.js",
+      "bytes": 7161,
+      "sha256": "sha256:fbbe498d85024a2fcc5904f0c1172531506624c19c6fd8fed8ab4849bd07a727",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/review-preview-bridge.js",
+      "bytes": 20569,
+      "sha256": "sha256:8db7dcc2cbd1b7565a24dce81f08ba8e90c53cd77de82a2308dc81b58d17119d",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/screen-runtime-adapter.js",
+      "bytes": 35413,
+      "sha256": "sha256:2d81c3c4038e8aba434fa616d4e95e344d84ca18ff2e023351436f4bc584ae56",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/screen-runtime.js",
+      "bytes": 19548,
+      "sha256": "sha256:2ef7caab4db8ea86dab2b5d23cb1f71823e840b96941800f73f856c2ce9ac8b2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/side-effect-ledger.js",
+      "bytes": 2861,
+      "sha256": "sha256:8de8fb7b3da6178800b634d6908a565734a95deb7c5497529908a4845140890a",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/snapshot-contract.js",
+      "bytes": 5926,
+      "sha256": "sha256:60a365e82448a539ce170da227e112891f95e1ddd6c3bb7056a0364ed4b18b78",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/solution-render-executor.js",
+      "bytes": 30303,
+      "sha256": "sha256:641500ff487acf189b9a3a406446452bcfeea9daf7ea1bd2a29068fa457cff84",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/html2canvas/html2canvas.min.js",
+      "bytes": 198708,
+      "sha256": "sha256:4917b15ac829f7546ab1c053b06499786b45a053169f31f436c16c8eb821414e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/LICENSE",
+      "bytes": 11560,
+      "sha256": "sha256:3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml.js",
+      "bytes": 80986,
+      "sha256": "sha256:1ff6fa2f22384fa16c0575f09b98ee4d900a61d185f6fcee4e960c0d2190d0c9",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-b.woff2",
+      "bytes": 19340,
+      "sha256": "sha256:69e45ca329dd2fcc3671dc20884f2baf29348a43833104266be098eba544fda2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-bi.woff2",
+      "bytes": 1484,
+      "sha256": "sha256:d0c95edf7b3223c8e66fcb4b6faaf74fc3376eea59c20f23677f4d54905a356e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+      "bytes": 980,
+      "sha256": "sha256:4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-c.woff2",
+      "bytes": 6644,
+      "sha256": "sha256:1faef92bbe440c459bcea0b7530044827749507e39bf49248c2203f9eb422bce",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-cb.woff2",
+      "bytes": 7064,
+      "sha256": "sha256:03de6a3467f88e79425df3505a936e6b336efbc5c0421f40905d1d52fddbe4ed",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-f.woff2",
+      "bytes": 5932,
+      "sha256": "sha256:6cb008e934883d1f4652562276469dfc1ade06ee4ceebd6979e79b1c98472b47",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-fb.woff2",
+      "bytes": 6180,
+      "sha256": "sha256:303b28cdca9c064d93dc1672b843933ab20e28f777adb08b9eafa6f442f074d7",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-i.woff2",
+      "bytes": 7472,
+      "sha256": "sha256:82c82a2e0c8bc89421ce9cbb4ecea806c8ceec4b4fd0269726b9439ca853b365",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-lo.woff2",
+      "bytes": 5160,
+      "sha256": "sha256:98b20475232f47749126ae098177b5c71d3b6512e068efedb3a912c2c8f6ed0f",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-m.woff2",
+      "bytes": 8552,
+      "sha256": "sha256:82e8abfaecf005f639e18b1e7dece8700c56df76eac8ea94e4b5915bedee7567",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-mi.woff2",
+      "bytes": 9676,
+      "sha256": "sha256:4bd1e8cefc7cf1b9aa2f2c6beb01ecef7ebf5d1f81d82f954a9688360a399fc3",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+      "bytes": 164864,
+      "sha256": "sha256:fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ob.woff2",
+      "bytes": 8412,
+      "sha256": "sha256:62f1a8f7ced532d6ab1f6af3a5b3363eb6c774fe40d29092bbea27ac95a9f89e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-os.woff2",
+      "bytes": 8164,
+      "sha256": "sha256:01bc6e82013dca9c1cbb132c353a0f63add97325bb979bba5e619591525c2a6e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+      "bytes": 2560,
+      "sha256": "sha256:07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s4.woff2",
+      "bytes": 4352,
+      "sha256": "sha256:b20a0e1b03043ae1a540857bdf1b220297ff0e78b110b1e15554addf91ad0937",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+      "bytes": 6472,
+      "sha256": "sha256:0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ss.woff2",
+      "bytes": 6168,
+      "sha256": "sha256:e0d564a939fce2e4d0c09a86f0dc936c2a9cdb42e44eb264dbc5ef01d71e179c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ssb.woff2",
+      "bytes": 4896,
+      "sha256": "sha256:4a2e4827bad85a9ae5fe906f179ccfce154bfc29e19115ceb8d7f1f6e8ce31cd",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ssi.woff2",
+      "bytes": 8472,
+      "sha256": "sha256:b6dfb310dd7b5c059e9b748b4766fcdd6fa0005c17d9229f3bb1bd095acfae1a",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-v.woff2",
+      "bytes": 6716,
+      "sha256": "sha256:bd9d7db0883dc1adca7ed1c20042609e4e3d1f07f106b6bc8eeeab49d560393b",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+      "bytes": 960,
+      "sha256": "sha256:2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+      "bytes": 968520,
+      "sha256": "sha256:b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/LICENSE",
+      "bytes": 11560,
+      "sha256": "sha256:3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/action.js",
+      "bytes": 1843,
+      "sha256": "sha256:7c46fc1ef8118723bf2f386d704ab289e5dd683471e0ad4e1e717244959b565b",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/ams.js",
+      "bytes": 21194,
+      "sha256": "sha256:6ff85ab489da04ec533a22b9b93d5d5d51f9f51ef02c723439734e65d9257d14",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/amscd.js",
+      "bytes": 4310,
+      "sha256": "sha256:81d6115aa4358a98da5e6d477ac4198cbc11c2c2752745b3529a8b6e2761202f",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/autoload.js",
+      "bytes": 3331,
+      "sha256": "sha256:8da941fdea660944fc6a4434823dce9cf369b88cb6c0ab50b00700b7a92dbf0c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/bbm.js",
+      "bytes": 2143,
+      "sha256": "sha256:fb780f6e8ca565439b3c6dc78f3e42b525905fd43c5e15471994a2a1da914ca8",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/bboldx.js",
+      "bytes": 7397,
+      "sha256": "sha256:772503b34ac5b7c56e56c7698403bad6ff3ea3fd1882c22b4e1ef518e6ef86c5",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/bbox.js",
+      "bytes": 2323,
+      "sha256": "sha256:9d9ff6d1c592d2a4fe728412d2d5ec29379f4721bfa3b8356ad2045eb939b848",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/begingroup.js",
+      "bytes": 4266,
+      "sha256": "sha256:0f606d5a71301992e92d8697ccbf8318736110691d8a94303f3f254cd589421a",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+      "bytes": 2460,
+      "sha256": "sha256:baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/braket.js",
+      "bytes": 4653,
+      "sha256": "sha256:d401832d91ca89fc8f76cf1ea67ce25b21c4a2b1d9da0db605204f262c8d69ee",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/bussproofs.js",
+      "bytes": 12204,
+      "sha256": "sha256:87451074cc17e2c8064d630b91cc56171182cc5a46c1313006014f56c498d8d4",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/cancel.js",
+      "bytes": 2255,
+      "sha256": "sha256:9ff91ff84d9776606cdb66da62ffe9bb39cfdfabcf070f214d35e553689ffece",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/cases.js",
+      "bytes": 4277,
+      "sha256": "sha256:6805d481aaee3f78d82bb9f0b6b9ac47b0804c30f10253394724459d95d41a8c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/centernot.js",
+      "bytes": 2148,
+      "sha256": "sha256:e3c08e96d11f020027a9b325e7b8661f08940babba218b786ac29d50d822dfba",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/color.js",
+      "bytes": 6818,
+      "sha256": "sha256:f569ebbf53726afeb3f7a7803500ac2088aada400a2000394879d0b503311b17",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/colortbl.js",
+      "bytes": 3185,
+      "sha256": "sha256:dff289abcff30d0e109eb51a6f6be2d09e46b7e1db5bc881719f9f1bf483ab8f",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/colorv2.js",
+      "bytes": 1524,
+      "sha256": "sha256:434397a8b307ee5e824b065ecf3145ce8ffae58f465e054b3d9b853f5f904baf",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/configmacros.js",
+      "bytes": 2588,
+      "sha256": "sha256:5a7b6e7b7980f8d3425ddbcbbe21299da5b1254d5702e91bdbb9d04f487f4664",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/dsfont.js",
+      "bytes": 1898,
+      "sha256": "sha256:74a9961b43c43644c28c582fc14031b7f42bac0b771140a5d80af383415ea978",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/empheq.js",
+      "bytes": 5946,
+      "sha256": "sha256:028e775eca9919375d3397a947d6086383ec99a501a5080b2833ffda5d578a14",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/enclose.js",
+      "bytes": 1731,
+      "sha256": "sha256:5301d91e2e7d6f86a29c13c1b9726b7476b9de9b1745011886c914372fab4cf3",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/extpfeil.js",
+      "bytes": 2445,
+      "sha256": "sha256:2d1f82bf22acefe6c358e3a3dca293cc2fda338f2db4fd147befc75122c41841",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/fontsizev3.js",
+      "bytes": 1637,
+      "sha256": "sha256:0e8fe554424a274d5809efc11f3a48602713bb7d2b2280ae4fcac04181f128f2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/gensymb.js",
+      "bytes": 1588,
+      "sha256": "sha256:cd5cb8a68719acc0c215f4377e4d37eb35d4f49bab26c7e46efff5e4dbc7f6d3",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/html.js",
+      "bytes": 2813,
+      "sha256": "sha256:a647d13d009d5ecee4239cfe681ef831f2bd0f2a91033b922ae6bf3481d156e0",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/mathtools.js",
+      "bytes": 22389,
+      "sha256": "sha256:0a403d24ff0fbb698cb0efd1cfe8569bfb47e492165204170481e7e6619a1dcc",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/mhchem.js",
+      "bytes": 38953,
+      "sha256": "sha256:04a579df179662c0292ae956229198ea3ed2a02916cfc971cf45b4fe0c7394e2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/newcommand.js",
+      "bytes": 8833,
+      "sha256": "sha256:27bc6df0fc8567eaff5153e679e5de53e9cf0918aae714d8dd72fd3a40ca2293",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/noerrors.js",
+      "bytes": 1243,
+      "sha256": "sha256:479c00d274f7f38e25d44a13e407bf8adeb83b02dd05639a302ca7c0db3d4cc2",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/noundefined.js",
+      "bytes": 1384,
+      "sha256": "sha256:d29d871d8d38802cc1581f6e4f5d673c357a8bf9802114ea57f51a53d0a0fef3",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/physics.js",
+      "bytes": 19564,
+      "sha256": "sha256:3a1d1b0ab203b446a2c04d9f5a0bf59e6225c83a27aea0b2403f28293aadb79a",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/require.js",
+      "bytes": 4007,
+      "sha256": "sha256:6ccbfb7f9a6e627fabdc39ce034f99355172b9778891cce33243844501098130",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/setoptions.js",
+      "bytes": 3729,
+      "sha256": "sha256:756100054a264bcfd47c1b5c03b7e4dcdd7cca679b78b693a6926e887ab59c39",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/tagformat.js",
+      "bytes": 1975,
+      "sha256": "sha256:9da0f12949eb209f8cfa06fd88ddce12bf6b8880d29c067a7ad08f42164a3a57",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/texhtml.js",
+      "bytes": 2504,
+      "sha256": "sha256:6269dda09c28b4291cd4d95e880c9dc053cc95b41c644ce057bab5640cb83113",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/textcomp.js",
+      "bytes": 5135,
+      "sha256": "sha256:d085215c2d77df0c8dbf460b991c59efa9e69cbd7e1f6e94bf5cbb363aa1c69c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/textmacros.js",
+      "bytes": 10279,
+      "sha256": "sha256:12a52659988472d8f160a96a774e970f89153a0f2e329d2a1d0e318d4ab9bdab",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/unicode.js",
+      "bytes": 3586,
+      "sha256": "sha256:bf1ddc9fe506f782c0e9271c0c52c4b258f9e4eac3d2905274d0c5d239e2a2b3",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/units.js",
+      "bytes": 2118,
+      "sha256": "sha256:25278814cbc050fcd4e8849c014c238cf6801e00405e0acaf5d98924fd1e26a7",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/upgreek.js",
+      "bytes": 2157,
+      "sha256": "sha256:0f4c96104699aeada37446dfb3d50438efec4e11c58982abaa2ff781d42d3667",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/input/tex/extensions/verb.js",
+      "bytes": 1779,
+      "sha256": "sha256:b2290ff1be4d33c57dd476d87d1753d4cde0a5991612b4a24db881a15c85a250",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/af.json",
+      "bytes": 267538,
+      "sha256": "sha256:93d1c1a8be2fcdf8ed5a38ce09edf81192bca0523fbed86e52323eb75383e744",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+      "bytes": 217297,
+      "sha256": "sha256:52a3d2c1fbaaabd74d6a49b7868db11cea16f45e2832aee35193466cdcfdde38",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/ca.json",
+      "bytes": 247468,
+      "sha256": "sha256:e3fc00f4a9cfa725c873690d037a434c585fbee9c8990cb0ac90c3b0bd5323bf",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/da.json",
+      "bytes": 247508,
+      "sha256": "sha256:455787ec107ef78ab05a66a0754eda04b56c1ed99f6b05521adab0b9d612fbab",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/de.json",
+      "bytes": 284226,
+      "sha256": "sha256:711493683d1db278d2d2281fe4c5fb427a82e584b1422ef1ba7a9dc66c9bf77e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+      "bytes": 364362,
+      "sha256": "sha256:a4b07bd66f18143e61bdfee91103086e46dc0495592a59bc832dd8b0210f4ce6",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/es.json",
+      "bytes": 251061,
+      "sha256": "sha256:8e4ecfa5e5d04d146a2ecf0859f721088449d15801bcc8629a4b08c9a9082080",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/euro.json",
+      "bytes": 12813,
+      "sha256": "sha256:f9f2746255eaa5600d59c494d5dccf0db06ca984fa19031f9f167a3a27b3413b",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/fr.json",
+      "bytes": 276549,
+      "sha256": "sha256:e1a9d40f6bcb645a5a4f6c11003d24e8481cbe42c47e52dfdab9c9ca4be13f3a",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/hi.json",
+      "bytes": 394714,
+      "sha256": "sha256:8ab6ad0353bd7f72839480db963751f3e9dc477d14a035cc1f0f10a36d06e37c",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/it.json",
+      "bytes": 282211,
+      "sha256": "sha256:981863fcd552dfa7883c7ccb5c3bf7852a42bff0e6591d5d8ac71fdf59679c89",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/ko.json",
+      "bytes": 392160,
+      "sha256": "sha256:958f82f6e4301083f51d4b1ec7315e7ca8742b49cd22f6fdb241ad55ee8c3569",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/nb.json",
+      "bytes": 260891,
+      "sha256": "sha256:8bc0e2986767e6c311564d32ca2d118a99f0faebb9abb625c98b93b765a4d057",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+      "bytes": 227597,
+      "sha256": "sha256:859638d56039b28251b877911ce532b056c315a96d3df5a4050c3f60cdfc4414",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/nn.json",
+      "bytes": 262304,
+      "sha256": "sha256:098bb5f203a87792710ab5c334cb15a3664083528b70bd915f0c3f72409809fe",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/mathmaps/sv.json",
+      "bytes": 272100,
+      "sha256": "sha256:523dd5a662e61b079a8138d72a03c50f2f24b2c6e46c074fc15ab4c987cc2691",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/require.d.mts",
+      "bytes": 45,
+      "sha256": "sha256:529cb780b7d6b2d69f0804524579b880a054e4f21cadbf6697c5d06fbcc4063e",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/require.mjs",
+      "bytes": 89,
+      "sha256": "sha256:1bc5768791578e065a9323fd1c40a3dd20a0238986e82cbdf2cd75efdb69d39d",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/sre/speech-worker.js",
+      "bytes": 425256,
+      "sha256": "sha256:80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/tex-chtml-nofont.js",
+      "bytes": 888469,
+      "sha256": "sha256:7bdac90a30f926c017b5dd45be9e5291b49749e324e854f539ec6387fde39a58",
+      "role": "runtime"
+    },
+    {
+      "path": "archive/vendor/mathjax/tex-chtml.js",
+      "bytes": 997445,
+      "sha256": "sha256:6ecd14970a73fca8bb115f8d6967aef818135dee0091339061c41ada230072b6",
+      "role": "runtime"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+      "bytes": 55709,
+      "sha256": "sha256:817b7f9add03a25641fb0f531a7c525b533f0d8e0a7919e044d4b0479143214b",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+      "bytes": 10527,
+      "sha256": "sha256:4c395fdb9306c2095e6403be6a7d8d0b511e3ffe643abab3d8db01c902986162",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/solution_identity_and_quality_ledger.json",
+      "bytes": 54348,
+      "sha256": "sha256:e5cc366b87a353f4f0e695290937ae5c14831e6da4b493588b8f9412ba974b3b",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+      "bytes": 12042,
+      "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/ASSET_MANIFEST.json",
+      "bytes": 19042,
+      "sha256": "sha256:339aa515d23d009ebf8c6bb55d7c13ba74a0bb9db0ef7044f1e85eb5fa8abba5",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/v2_exact_geometry_parity_report.json",
+      "bytes": 20430,
+      "sha256": "sha256:bd08e88730356fb6c3c43829917d4c13b5027c4058b8fd56dd10cf4157277c59",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/identity_resolver.json",
+      "bytes": 12305,
+      "sha256": "sha256:db9098d699b5003d3fb2e916dd07a85b0606938336384c41190d30df29d742e8",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/js/비상_공통수학2_도형의방정식_익힘책_고1.js",
+      "bytes": 30168,
+      "sha256": "sha256:0b060f7ceb6be271065da82ab270fc74bca79ddcf053d6bd857d4d8c49d0f1b9",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/baselineDiscoveryEvidenceRef.json",
+      "bytes": 209,
+      "sha256": "sha256:dce25e46bfc664e6066ef8400756d0e2d094285cd75fd02a2ef6c2c6d8ba5699",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/approvedSourceRepairLedgerRef.json",
+      "bytes": 202,
+      "sha256": "sha256:fca9bb1c2786755a371df17cc85f71b1275b0061fda09c8154b19f21fefc80fd",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/approvedSourceExceptionLedgerRef.json",
+      "bytes": 213,
+      "sha256": "sha256:7e93e70279eb36f0e5cd1445dbffa37808cd6fd4524167b9cd5654215b1f9eb9",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q01_expected.json",
+      "bytes": 926,
+      "sha256": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q01_final_build_witness.json",
+      "bytes": 14820,
+      "sha256": "sha256:db32d1470935151869da115adb548ae3518519da2d65f6b2f49101a021bbb4d4",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q02_expected.json",
+      "bytes": 1080,
+      "sha256": "sha256:cd5899beed19d29c21e80ba1e7e5e14d66c966793528f3c4d7b84d2b937bb49b",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q02_final_build_witness.json",
+      "bytes": 15147,
+      "sha256": "sha256:d706ad348b664fafb8bf8342ca43094d62bc5acb99ccc8823ef502a468edb03f",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q04_expected.json",
+      "bytes": 1476,
+      "sha256": "sha256:82ffd38837e32b5ac73e8d0356b87602c2ac1d68f43bc6eaf8f1875b7a68f62e",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q04_final_build_witness.json",
+      "bytes": 15605,
+      "sha256": "sha256:d5d14257e13e2f8c13481c2d0c404d0dfcfbde80a9b86984309b501cb5e6c0ce",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q05_expected.json",
+      "bytes": 716,
+      "sha256": "sha256:7e405308f1198fa89310bee4aa3a7dc559ef7c92d26dfdb86621e8c789599e66",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q05_final_build_witness.json",
+      "bytes": 14733,
+      "sha256": "sha256:c209eb0ccdc1d03cac92b7ccde146d0ed60ca73c7c8ee9d345e01a15b27e658d",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q06_expected.json",
+      "bytes": 1030,
+      "sha256": "sha256:ff7432c739714f7310f545eea1ac6023c52b6fe69d783a1bc633d34df80e3e9e",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q06_final_build_witness.json",
+      "bytes": 15184,
+      "sha256": "sha256:759a342385d8bfab375b2e5b6416337c63c04d8404bff90967c4d330bfa11d26",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q07_expected.json",
+      "bytes": 1276,
+      "sha256": "sha256:869c5f7303e92d9c65398ceca4be9d2ebb80c63d5b599f0d4235deef8bef72fd",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q07_final_build_witness.json",
+      "bytes": 15423,
+      "sha256": "sha256:70db822374437edb3b79d04a5b13f90bd1015dc99a210c7fec3207fc0959edf6",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q08_expected.json",
+      "bytes": 1013,
+      "sha256": "sha256:3b90f1d9d38099ca67a12127d05a4e4e493d48de099e5d91089a31cf0312290f",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q08_final_build_witness.json",
+      "bytes": 15041,
+      "sha256": "sha256:b9c98eb92e7537f33b2286a880441f8b881a83e849023062ea53db9976da0a48",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q09_expected.json",
+      "bytes": 1272,
+      "sha256": "sha256:c865f3adeb2a6399436367513cbaaad3d8a4f04180fb8e1d2952715b9f3394ab",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q09_final_build_witness.json",
+      "bytes": 15211,
+      "sha256": "sha256:23941b381f535953bb09cef4a69a239e8017bfe74841687f9ac6c66aea6f1599",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q10_expected.json",
+      "bytes": 849,
+      "sha256": "sha256:212fea03bdcb773163cb2493d8dd9ff2c87e470a7695de0beb684acdda21f928",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q10_final_build_witness.json",
+      "bytes": 14847,
+      "sha256": "sha256:9ea5a1aa7a96b3c462d26503e7b0d4124cbb58081407f2bb53d26fbe296f72e9",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q12_expected.json",
+      "bytes": 1215,
+      "sha256": "sha256:7cd0bba60962008ee5a2c1579bfa6af3119bf6540c5a3c9392dc80932b286855",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q12_final_build_witness.json",
+      "bytes": 15462,
+      "sha256": "sha256:8c7cb03c1e5a61998c4c1ad7b560402bac15a9e2f94df41f491c8ed1f2651953",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q13_expected.json",
+      "bytes": 1234,
+      "sha256": "sha256:ec1c1c4bdb9ed539d70da40a696822b0b1161c9cc27b18dfb73cadfe5a24a124",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q13_final_build_witness.json",
+      "bytes": 15455,
+      "sha256": "sha256:4851931cfc9605e1bbf9308e8319c54d2c1a94b891ce252f38a71f7518495f3f",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q14_expected.json",
+      "bytes": 3283,
+      "sha256": "sha256:7f8ea709f0d857c71ae073176197641ef8766582d0d5b7a7ee5d777333876268",
+      "role": "dependency"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q14_final_build_witness.json",
+      "bytes": 17459,
+      "sha256": "sha256:ec8967195f59ba23d79d0116b01292a1f070103ba2acfedea84ae20c74ca1a79",
+      "role": "dependency"
+    }
+  ],
+  "questions": [
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|1",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "01",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|1",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|1",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 1,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 1,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|1:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q01_expected.json",
+          "bytes": 926,
+          "sha256": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d",
+        "finalArtifactSha": "sha256:8538b5f2491781020671cc92864f27af4fb5509be393c70d061030a5f0741214",
+        "expectedFactQuestionUid": "qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3",
+        "authorityEvidenceSha": "sha256:90ba6416fd5973e082f240dafb64418f3970fe4d64f963f9282d8217c8b90b3b"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3",
+        "sourceIdentityFingerprint": "sha256:2bc70a64d81be97c811ff5d875abdf13541790ffcd0db53b0d9ee04c0a3a556a",
+        "sourceContentHash": "sha256:e5ccb991fa8c79e8b903612baa8dc89cf61e8f9e8cc15c9b75fc2770c561dcb6",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:cbec0298d727adcee438f9b1a943d7e031c8e97a219e30436e8c2648c8fb244a",
+        "officialAnswerHash": "sha256:a0a44d2836ca7d5396ffcd8d2cfa2ea9b86c609f08c0bc6834fb769fd1776721",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:3bda694175205d9d9abddc0aa3cbd7fe89e5825096c046d27ea31a7948481fac",
+        "MATH_A2": "sha256:a1495edf4d940176a02cdaafd0523fef3c42af39f75727dee443354042d92f0e",
+        "METADATA": "sha256:4ba675aaaecdf1f5aa083db740f2912bd88d089cf4c5409e7c49d3d65cb0f457",
+        "RENDER_CAPTURE": "sha256:2e61796f8225a9453dcb7263c9a88f5dbae90c64a1cc4049770fd121e606e86d",
+        "RENDER_REVIEW": "sha256:7184d8ee5b3283d1172c16fa901518e0af305fda31d7cac1652f851c273496c0",
+        "SOLUTION": "sha256:efac65a31579da139a94c9b44c77e92d1e3ab2d0584548a04688222938804b41",
+        "SOURCE": "sha256:7ca26516b4023a3968277feb49a91954ba4353d543b90f7f5919c649015d4cfe",
+        "STATIC": "sha256:a15edccbd65368add7343e66756076d002d4730fa18b78ca99a4b9157aa45057",
+        "V1": "sha256:fa49c495ed6ed21f055e0b2281a2b0e4efe5949e64afd1fed787b41c1f5096f2",
+        "V2": "sha256:7d24791f90fc3eee636a8dcfd5e69a60e8509631aeaefda0dbb8696853bef990",
+        "V3": "sha256:dd9dc644b2ee37904092ebda5d254286fb651eb83045f7e9d504f9edc270d2b8"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q01_final_build_witness.json",
+        "bytes": 14820,
+        "sha256": "sha256:db32d1470935151869da115adb548ae3518519da2d65f6b2f49101a021bbb4d4",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|2",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "02",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|2",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|2",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 2,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 2,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|2:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q02_expected.json",
+          "bytes": 1080,
+          "sha256": "sha256:cd5899beed19d29c21e80ba1e7e5e14d66c966793528f3c4d7b84d2b937bb49b",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:cd5899beed19d29c21e80ba1e7e5e14d66c966793528f3c4d7b84d2b937bb49b",
+        "finalArtifactSha": "sha256:aa1b45ea46100cd8f5d959081064495c7030efeb19d7a8ddf44ba781f492f4b9",
+        "expectedFactQuestionUid": "qid_v1_47f15fd93f79484f6b466be24bd688d5abbfba734895462d97674396280d8219",
+        "authorityEvidenceSha": "sha256:5d069f9bf0585c0ea4c29fe6ac574e6e9c97e769b08f561ef2683f20b065a5b5"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q02_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_47f15fd93f79484f6b466be24bd688d5abbfba734895462d97674396280d8219",
+        "sourceIdentityFingerprint": "sha256:84a50262ed1537a74094368ab34734aec7a40166530bf8c9493e2d6d16f99949",
+        "sourceContentHash": "sha256:68aff41f00a53f2dd9912b1a3ad76fd7a804c1a25ca233c5ef0e6d78dcf56fff",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:fbb8c0be5e5c63d95531c8e6e764f38ee86dda0b98c7d5b5361972ffb4be25ca",
+        "officialAnswerHash": "sha256:3acc5829cdf0afb7b7e28a512eec3e143b6fac477a255e993bb0d1e985099ef4",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:0c0f61489184e7a144edde3d5c8b18f1da93b712ad4e15e8d0950d609b7bd71c",
+        "MATH_A2": "sha256:a22473254c309b85e9866c22f2518d4f3cb0c26476bfb0e063ed1f6f93cbaebd",
+        "METADATA": "sha256:a105a2ab578d7306eb397addd98a7c58673c69dfe93f2d7f811747ff1e671d87",
+        "RENDER_CAPTURE": "sha256:7652c3619632ec8507a36cb1c7cba5e5b05ae1249a8a45f1a433550e1862122e",
+        "RENDER_REVIEW": "sha256:5836503405d0631e56292c5d90477abdeba54ec7f51c16d872c0818f0fd97347",
+        "SOLUTION": "sha256:1d5ce9444c9329cca85e0b31e4990f956bd1d1159f90cb62f07c10a805928821",
+        "SOURCE": "sha256:659642055f57b90994e23f1cbf3a7c546f43192e797d5b425c62a994b8270a67",
+        "STATIC": "sha256:1a6f4598929f01d603810c50be98b5f0a6b5035582cabd31c810a49f20ec8d6f",
+        "V1": "sha256:20b79dd4846159b4d832d7135ce0e938caf68f67b9e7420ea0bf7715034df1a8",
+        "V2": "sha256:cd0198e1ab782b7cbb59326ae962f0317523f2fa5a581e638c151815c732c7cb",
+        "V3": "sha256:7cf91ce3940a85fbfebc9855b5e1dd8be82f597aba6a2944f95fcdb75a7ee412"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q02_final_build_witness.json",
+        "bytes": 15147,
+        "sha256": "sha256:d706ad348b664fafb8bf8342ca43094d62bc5acb99ccc8823ef502a468edb03f",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|3",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "03",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|3",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|3",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 3,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 3,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "actualSolutionVisualAttached": false,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|3:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": "문제는 a,b의 모든 가능한 개별 값을 요구하지 않고 ab만 묻는다. 그림으로 한 쌍을 고정하면 허용되는 다른 계수쌍을 대표하지 못하고, 두 기울기의 곱 식이 관계를 정확히 보존한다.",
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": null,
+        "expectedFactSha": null,
+        "finalArtifactSha": null,
+        "authorityEvidenceSha": "sha256:3cde7674d2e43552ea383c7e20157922fa9c0fc1a7ab3ffc32f3e966ad7731bb"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_e2625f0daf829b818c03659ac5c15f973a15a2a557ce4d9b7a64860155ac62d6",
+        "sourceIdentityFingerprint": "sha256:071cdf07ef38f0a1c2c8203d8565cb6b411e6fdd2f8affc2ecb4854574fa6314",
+        "sourceContentHash": "sha256:25118acc18429edc51db13b418b26d853eb13b242d0708bfb92634720d00c0da",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:66618c0e2a049824deb837b0d24874705e0d7503e9227e1c3e3a44cf68a485f5",
+        "officialAnswerHash": "sha256:d3ebf3523b0938d367d93dc66a3f5adf65a9e73aa903c7031e9740cf65e903d9",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:169e66b5e7431f5a4faab65176b1efbea5cd8f2872662e080738e99a9dae8bb9",
+        "MATH_A2": "sha256:6ffd69298f1591a7cbd215f3fd6885b4e9e7f6975dd5eaf20316e4b279bb71a0",
+        "METADATA": "sha256:8c043b9aaf3146dd9e93a0ae1547859f5d218ae6fef0b700db6a765f0638cfdb",
+        "RENDER_CAPTURE": "sha256:a5893623edaff7b55e2f7ed667a409608510c3edf62bf56e6709f2ebbdf5e527",
+        "RENDER_REVIEW": "sha256:f673887898723b8e08b303a6fad6503abf6a2e651c9ab68651c0fba4317d380b",
+        "SOLUTION": "sha256:1cce0a4f9bfd04553b8c4eaa43dfc425f4d041630621237881bca948d07a4e4d",
+        "SOURCE": "sha256:e14e68b69598b365acf5c7034512c8f41ab3ea286570db546a5896d9077ffe6d",
+        "STATIC": "sha256:dd52dd3013aecf50702a7ce5ada5d9d6c0dcfc3b959a37673a0e4da85320b44b",
+        "V1": "sha256:7cb87e87b4897f6241482416a4f5bf8a01dbdc3586df75ccd0aefb8fae7c9e60",
+        "V3": "sha256:cf11110cddcc9e3d280dd1d1858af266fe40714137417bb0fdc1f829ab0b8166"
+      },
+      "generationEvidence": null
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|4",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "04",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|4",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|4",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 4,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 4,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|4:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q04_expected.json",
+          "bytes": 1476,
+          "sha256": "sha256:82ffd38837e32b5ac73e8d0356b87602c2ac1d68f43bc6eaf8f1875b7a68f62e",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:82ffd38837e32b5ac73e8d0356b87602c2ac1d68f43bc6eaf8f1875b7a68f62e",
+        "finalArtifactSha": "sha256:5d99f4b0f2e0e13200d5915c5bf7aaf3d0bf79d24f3109462da2e44f0b58c78a",
+        "expectedFactQuestionUid": "qid_v1_1d3d39f7f7a680bb3533173b8eecb519aecbb1ac78329baa2397856dce86273a",
+        "authorityEvidenceSha": "sha256:0b1e243b57416835d10f1c3af74a0560ada8a2da84c7e0e01dc80aa9b565555f"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q04_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_1d3d39f7f7a680bb3533173b8eecb519aecbb1ac78329baa2397856dce86273a",
+        "sourceIdentityFingerprint": "sha256:bb928fdbf3027dcf97ab83754bd9d6ba04103721691ca8189bfc50827dcd83ce",
+        "sourceContentHash": "sha256:8616b74279fcdb928ee6fd0b6c60bc9d9bc32a993812a81789678040a9f2cfd6",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:3490f18aabb2254c1d267562859c907bca1532af91b3e4fe923b76e9a8d1ff3d",
+        "officialAnswerHash": "sha256:41367bc4fbcf922325d0a497f39ba141cb9c75a5c576a165a4d01b3ae528d1ad",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:ebbb2688c9957d3d9f371d6284fc03ee35a914317716517085a571996435f9c4",
+        "MATH_A2": "sha256:8a49107c88ee86b57fef7f945b6a93b2e94845a7032d09abc264b21f4b13727e",
+        "METADATA": "sha256:4c15f28391447b40d3297fb186e5b5c2f9db43c321b85873d161636bcb2cf042",
+        "RENDER_CAPTURE": "sha256:2476dae9c43db038cf1ea416be9ca7b0772bb132459285a4e476442495e871bd",
+        "RENDER_REVIEW": "sha256:e996ba59dca863948d02be47911b9a5ecbed84ec166d3c15cac8e292471ccb5e",
+        "SOLUTION": "sha256:f81993de8bb66d53dcc90a2601275d2a30d9e0e7d884b6400b02057b21e456d7",
+        "SOURCE": "sha256:4c9b7d8be4b66269eb04770595f86dd18809efc6ac1c2361600157caecb56031",
+        "STATIC": "sha256:034d7ea4ff411c50480826946f3ed856d8652ad4c2f54fc3bc34fce7fc808e74",
+        "V1": "sha256:debe2592d0917617ca671dd3e54924a0c5e38e943301872441852f134fefac80",
+        "V2": "sha256:b5015e7bf1ca7c9cedf3111ab7ad27da54f24b3b4197ae66ea861bb4452004cf",
+        "V3": "sha256:fe1e4db1e6d531f55d476f1d39a9b352fbff3d86b1cdcddcdb56fb9db3e69795"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q04_final_build_witness.json",
+        "bytes": 15605,
+        "sha256": "sha256:d5d14257e13e2f8c13481c2d0c404d0dfcfbde80a9b86984309b501cb5e6c0ce",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|5",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "05",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|5",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|5",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 5,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 5,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|5:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q05_expected.json",
+          "bytes": 716,
+          "sha256": "sha256:7e405308f1198fa89310bee4aa3a7dc559ef7c92d26dfdb86621e8c789599e66",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:7e405308f1198fa89310bee4aa3a7dc559ef7c92d26dfdb86621e8c789599e66",
+        "finalArtifactSha": "sha256:236e620af144cb8b6ce04d6c987e5c96053c044f015e8dd1aee56b04dfe24d9c",
+        "expectedFactQuestionUid": "qid_v1_81b028a97af61d9c5c85f34737b9e38ae63c37818a14bb40a0f74f2c59708d07",
+        "authorityEvidenceSha": "sha256:2dd4b5ef78575f648fd66e614ce24a143a5337d84eb9d81e78697f6f3cd6c323"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q05_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_81b028a97af61d9c5c85f34737b9e38ae63c37818a14bb40a0f74f2c59708d07",
+        "sourceIdentityFingerprint": "sha256:d67f9f5c8e1a14eb6f48e75d575a999cc0a4239a8d9bd965ae7bf2e3f25bb5f0",
+        "sourceContentHash": "sha256:84e462996e55d4a9382f9eefec72c14027c4b35cf8d7afa64f2d5c1d0dfc64a1",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:dc8ecec9e765b3bb575abe9ed915fc3476d30ba5d0ae028fb3a7ad81a4d2ac02",
+        "officialAnswerHash": "sha256:4744619e242f97cd64e0c3fa5235121acb49f6a19f3dfcd735549eb1213916c8",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:4c61ebc151c621bf6baaa0e5ee71e8e25a160eacd6a250408565139c05dbb892",
+        "MATH_A2": "sha256:a88f239b132d40e78919bf168606f11ada803a9bbc352d13ef71b977a342dc50",
+        "METADATA": "sha256:9d8d18ac03342e183e09c4f0614af150e27f660e5c1bd29c62f8877315e23ed2",
+        "RENDER_CAPTURE": "sha256:2116e57b05bcde0424e9b6058d7e8fd12198758fa74057d364c70dfc9617690f",
+        "RENDER_REVIEW": "sha256:9b9c2a9be6a6c29b4100fbe48c4f5850bda84c355db099f112d489ce1082064e",
+        "SOLUTION": "sha256:bee16c346f22e610fd95d82f261df8b47e89344422c7b218e5621b9fbc921a4c",
+        "SOURCE": "sha256:1bb99dfb0d3f5adc1c3ad1d2064d0ee773102cb511f7af33560398a1c0d8df09",
+        "STATIC": "sha256:0cbc28bb4a0c311c62245357d90529580500ff1afe29d2271519c44c69dd7393",
+        "V1": "sha256:20c6be45404d839b01200582f29d1a3ae989fcd256deb9160dcead6571e1019a",
+        "V2": "sha256:261e4ce32bd08dd852b1a7732f3cd82189b924f107f717a7ccf69915932e1c94",
+        "V3": "sha256:c710ff80c488187ea7537b462ea3aab8e9239e9057dd01e9f98d9e6509178f10"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q05_final_build_witness.json",
+        "bytes": 14733,
+        "sha256": "sha256:c209eb0ccdc1d03cac92b7ccde146d0ed60ca73c7c8ee9d345e01a15b27e658d",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|6",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "06",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|6",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|6",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 6,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 6,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|6:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q06_expected.json",
+          "bytes": 1030,
+          "sha256": "sha256:ff7432c739714f7310f545eea1ac6023c52b6fe69d783a1bc633d34df80e3e9e",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:ff7432c739714f7310f545eea1ac6023c52b6fe69d783a1bc633d34df80e3e9e",
+        "finalArtifactSha": "sha256:8f74bccfcd99c36ded2b0ba3dcf7cdb28f6f650937604a5eefe6f5fb4c4e8f8a",
+        "expectedFactQuestionUid": "qid_v1_685ceda707cd7842ae2889000b6b75efda29af06ad2fce6a19a10f5ffcadd118",
+        "authorityEvidenceSha": "sha256:de8f1a951e3268699544064c0b95054529e9232ba9238291c4d8e93b9cb1f833"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q06_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_685ceda707cd7842ae2889000b6b75efda29af06ad2fce6a19a10f5ffcadd118",
+        "sourceIdentityFingerprint": "sha256:d6776918a24a3eeb2bbcbcbd4a7629fc3a82d9fceaf2de9c233bda0da1f37643",
+        "sourceContentHash": "sha256:9c0bf2503c386928cc18ca516e9a094274973d410bbb6d2982b9c66966401b9c",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:c8851f373a12d6a61fe9de21640cedf3651f0911b3bd61aff88c63d19f74d132",
+        "officialAnswerHash": "sha256:7381bdb92da5ff8030ce808ab6c12946ee158a521800d2fc455ae0a77c1e75f1",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:cc0a2cf18474bf385004bb8f03d13b9b23e667bdc17597378fe479e2bd619c71",
+        "MATH_A2": "sha256:afab2f7b910b0b29565ace874ae57f96c954be49000ee074a2cf7d115fb697c5",
+        "METADATA": "sha256:a38d10eb988cc7518272cf4390b649de34ea31f7ce99e9e52821c5f539e8df72",
+        "RENDER_CAPTURE": "sha256:af1087c7e292e8a25cba1e7a7c8cc99e4d80b2c99619844c06e8661aaec14c82",
+        "RENDER_REVIEW": "sha256:ecd0f55f6d8821a962e113a72c7d643ac47dec9fc4aa9d038142222d115a3d8a",
+        "SOLUTION": "sha256:1c9a018d245c2951291f40c03984726f8342c19c43a29fdeeef33496b552847c",
+        "SOURCE": "sha256:8e8aa0007842d6b39e934a37aef6a5739e33d041eae5633a3227a64e45b4da80",
+        "STATIC": "sha256:3b6d29462236ae98f9e5e75d0a5327eb87a564e6cbaa419aa5172b9e4db9b654",
+        "V1": "sha256:c9dfdeb3a6d3ceae9b6717caf7977f531688344d34e164bb848359f97d2a9267",
+        "V2": "sha256:f9d226e008e8fcc03c1b0faab8c0dba93261e93b7a16a06701044862cc07ef98",
+        "V3": "sha256:7084d59976a19f758b2f799cb08f8aab2022fab58d1f64e67d84443ce951e2f0"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q06_final_build_witness.json",
+        "bytes": 15184,
+        "sha256": "sha256:759a342385d8bfab375b2e5b6416337c63c04d8404bff90967c4d330bfa11d26",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|7",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "07",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|7",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|7",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 7,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 7,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|7:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q07_expected.json",
+          "bytes": 1276,
+          "sha256": "sha256:869c5f7303e92d9c65398ceca4be9d2ebb80c63d5b599f0d4235deef8bef72fd",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:869c5f7303e92d9c65398ceca4be9d2ebb80c63d5b599f0d4235deef8bef72fd",
+        "finalArtifactSha": "sha256:df87d876829874ca26db3995ff13d9afc462d66f16a5c787bf364fe4d24eacc7",
+        "expectedFactQuestionUid": "qid_v1_0251148df84aac752249499886748271b339fb63a6172551608793f9162e0368",
+        "authorityEvidenceSha": "sha256:d9a31f1c299259b534dd7d10927d868c24dd6364617c2621ca5c3a6fcea5652b"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q07_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_0251148df84aac752249499886748271b339fb63a6172551608793f9162e0368",
+        "sourceIdentityFingerprint": "sha256:8d02aa1ecd094b4a13b2ddb0d840138fd2442d8a4bcfd6cd1ca16a74cd00b916",
+        "sourceContentHash": "sha256:c5e3d59e40b8863d9d9c83ba7d070741b0bab4bee0474149b20e2751b9c77259",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:24e5b2adf854d95cb2611dd2e902cee83460fcbeeafc1d1307e97dd329fcf04e",
+        "officialAnswerHash": "sha256:1fe6ba616f50cea721a0c618c8e1dd0d3050df19b3646803865334c989480037",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:3d216470574b7d54c0bd4e3bcce4483eaa1902ef81518de91b2aebe34c057f72",
+        "MATH_A2": "sha256:bb5fa42e7f75d477b8c3fc6ed4daea16476b41ea2a49941efd1f7f83e8332d56",
+        "METADATA": "sha256:081a6b8b333f883134a67e57d0a5fa220baf8218a1c32854740832d725be1072",
+        "RENDER_CAPTURE": "sha256:40d8cfe139c581f8596d427866ba94c53bbe9f2e76512740a14d99247c80e9ca",
+        "RENDER_REVIEW": "sha256:2506e8d23de53c0bb6faace9c102b017d43f3f15eabaabb2f6865b1111a349e1",
+        "SOLUTION": "sha256:ed94f2c3f71a0bd7ffca2ea413e2dc88c1c7ee09b50a862b1f294b079cd58fd3",
+        "SOURCE": "sha256:262f201306fbe3971b3f01590f1bebde76031537e9d6f41b4216b2db579b2bc1",
+        "STATIC": "sha256:36a79bde8ae0d6f55bc3e61436b5d747e385b6fef24f4c668bf8d396e644f946",
+        "V1": "sha256:7638d5808db53f77124d31f0117febf2f145d5072ced33fda5632b0dbba5aeb7",
+        "V2": "sha256:f8094461d483a91d3f1b400c387009277679112d8481c345f542d81e964a2c8e",
+        "V3": "sha256:93871c17097d610696d8da96e233350e3bb01eb8aff1240671f4de8ed78de8fe"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q07_final_build_witness.json",
+        "bytes": 15423,
+        "sha256": "sha256:70db822374437edb3b79d04a5b13f90bd1015dc99a210c7fec3207fc0959edf6",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|8",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "08",
+      "sourcePageNo": 41,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|8",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|8",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 8,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 8,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|8:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q08_expected.json",
+          "bytes": 1013,
+          "sha256": "sha256:3b90f1d9d38099ca67a12127d05a4e4e493d48de099e5d91089a31cf0312290f",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:3b90f1d9d38099ca67a12127d05a4e4e493d48de099e5d91089a31cf0312290f",
+        "finalArtifactSha": "sha256:6e7f4b58984e22be78ace6164630350d7c805b716f5bdeafddef7462ff44ea6e",
+        "expectedFactQuestionUid": "qid_v1_0c587370973c7d176eb219c11f5aa99f7771d53ba225fe222730eb1fd0f333bb",
+        "authorityEvidenceSha": "sha256:f72b60d62702e4d8d57c9b061e96e89a84d8585bc4336c860f64424ff7c9aa82"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q08_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_0c587370973c7d176eb219c11f5aa99f7771d53ba225fe222730eb1fd0f333bb",
+        "sourceIdentityFingerprint": "sha256:9eab74b1c3b3f22e1414ca30f758aa86bcab7008309b83a919cc2a885ff126f2",
+        "sourceContentHash": "sha256:a456b5e281d01cc5d69fb76f37774ba9c5e1e29dd88438a5610e0541d7966060",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:39da287fa96f10bb4c097eb1a6176b31caf7948e5308070b0a8dba87069156c1",
+        "officialAnswerHash": "sha256:c961e9847bd5e03be2635a4d6e02d857f9907983f230791313be6e485293abcd",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "136",
+        "sourcePhysicalPage": "41"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:635af822cbea67b0ad71b29b922792f475f951175fca1ca28ef109383109ca96",
+        "MATH_A2": "sha256:6206326b7a94fca6402f97d624c02c459e0544d70f7fb88de593ef81fe96221a",
+        "METADATA": "sha256:28415411ebe4019e4a9eea345c0ba88f8840b4941df33f88ed22cc24865c9459",
+        "RENDER_CAPTURE": "sha256:7531d8a2ed94bd453625eb24871aad08090ed94f5570b14b8b368dbe5022bfe8",
+        "RENDER_REVIEW": "sha256:a2557f2603bdabd2ab9ab95f9c8fff93013ae172ca71dd2559ae74fd8868c0ce",
+        "SOLUTION": "sha256:33389d1a0ddf56e40c7e3615fdde6035f808cc74b34feb4fc6f3a71fee5369c9",
+        "SOURCE": "sha256:0040c999f3cb6d991f48f6579d0007de472a5572203746db6b24f8dd8b478588",
+        "STATIC": "sha256:4a8d6314ced889f239f6f68583f7681d79e926614137ff1db7cb8f6f1f3a4a9c",
+        "V1": "sha256:7074f2f7d94b7697363719c8fa6651ad1fb8aa44d9aa50af3bfbc36675a9483c",
+        "V2": "sha256:613429319ae22d7d512d3f8b3a5f857c54298e8e98de705c30aa3db69dda260f",
+        "V3": "sha256:1129db4b9396bd19d98916640833d8f101365e7d4f26899d0a459f8f97df11ed"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q08_final_build_witness.json",
+        "bytes": 15041,
+        "sha256": "sha256:b9c98eb92e7537f33b2286a880441f8b881a83e849023062ea53db9976da0a48",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|9",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "09",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|9",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|9",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 9,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 9,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|9:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q09_expected.json",
+          "bytes": 1272,
+          "sha256": "sha256:c865f3adeb2a6399436367513cbaaad3d8a4f04180fb8e1d2952715b9f3394ab",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:c865f3adeb2a6399436367513cbaaad3d8a4f04180fb8e1d2952715b9f3394ab",
+        "finalArtifactSha": "sha256:93097dec8e53a16c0a711c62d737bb6028fb55c6139f09d39b49da758d0d5553",
+        "expectedFactQuestionUid": "qid_v1_74c9cd183dbd93b71fc0f21ee23950d1293891da0fec0f384fd8b4dc05dd6d9a",
+        "authorityEvidenceSha": "sha256:47627f8accbcad111b706e37acfcf03506ee837711e7484e700dc2d9c283735d"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q09_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_74c9cd183dbd93b71fc0f21ee23950d1293891da0fec0f384fd8b4dc05dd6d9a",
+        "sourceIdentityFingerprint": "sha256:2178586b7ace53314c3934a27d8115644cc048d4905fb48fbd600e89591d7ad7",
+        "sourceContentHash": "sha256:ca15f3c373d0191b79b7b430cddd40e54ea50d918077374c3770994ae9e47d93",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:61fb5ad6078e1011392c4956ae0c3e361edf302e29f4f8b91cb8ecc8baa91d50",
+        "officialAnswerHash": "sha256:b71be43b02045b8b4173d0bc2a348d09d5082ab0b79985e03def8bb55c796534",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:7e5382e8f30be2a4bfec1196c3f2a0481edd8cf0afdfaa81a98c1d585c36b6ff",
+        "MATH_A2": "sha256:5216da69a6bc551e21ba27bab406ef1bfc1d2fb5629d28d209dbc8109bc99dfd",
+        "METADATA": "sha256:b8dd84e9eb22bb4b3700b2160bca630e3b1066ede92bf530b7406d3c58208866",
+        "RENDER_CAPTURE": "sha256:769fadf77f157dcb35535825cef7bf19647229762948f36a918917b01e913d6f",
+        "RENDER_REVIEW": "sha256:cb676bb076542cf933aea559ed286d343726756e418deaaa3fbc79e49a5fd247",
+        "SOLUTION": "sha256:521a766379fa0f680d0117fcc7a2de6b12e5cde7e4f0e827c0309750bd4c1de5",
+        "SOURCE": "sha256:fca3e974c762878028fc8637f61d76c1b4b08503d7b09b7b152de9c48b15a850",
+        "STATIC": "sha256:7cd6f01ec375f083a15bd87078d51dbb8dce96d245e36ef0ddb064b8f889367b",
+        "V1": "sha256:de5a8fa2871b8df8206d032ebe29f793aa95eb00126c3c82de7927c1b2457e07",
+        "V2": "sha256:755b0342d29634d7283f75d5b4087570b106bf1a0f028a349421525f5fc62c04",
+        "V3": "sha256:cdce0615b5230aeaa3f53ca6aff25d1c6c31583962bfc92e933cc74f0761ae01"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q09_final_build_witness.json",
+        "bytes": 15211,
+        "sha256": "sha256:23941b381f535953bb09cef4a69a239e8017bfe74841687f9ac6c66aea6f1599",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|10",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "10",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|10",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|10",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 10,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 10,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|10:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q10_expected.json",
+          "bytes": 849,
+          "sha256": "sha256:212fea03bdcb773163cb2493d8dd9ff2c87e470a7695de0beb684acdda21f928",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:212fea03bdcb773163cb2493d8dd9ff2c87e470a7695de0beb684acdda21f928",
+        "finalArtifactSha": "sha256:a6e7f2576c4bd2d2b524874e15ca8f3739b283f19561d1792632e98e3ce25b0c",
+        "expectedFactQuestionUid": "qid_v1_1c509b7d2139da0f76e7a30f4501fdcaf43e38f054e6b2300f2f1ce46cb235de",
+        "authorityEvidenceSha": "sha256:c01b339ff1244aa119d1c804ef8bd079959408d0b5cfa74b8fc3fe30ae5858fd"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q10_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_1c509b7d2139da0f76e7a30f4501fdcaf43e38f054e6b2300f2f1ce46cb235de",
+        "sourceIdentityFingerprint": "sha256:8e6b5eeb1d5f8f2c316635c298a2a9a6753ffb2f241b918653a76ad8486bf5b4",
+        "sourceContentHash": "sha256:86e49776d2f80773f07b64895fa2d8835279b38f201d98ace9177ba9ff3e20c1",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:a316c3cc27181d484f243ec3fde74d3fef0d2a0ff6a67e439b733b68e1d00c4d",
+        "officialAnswerHash": "sha256:ae7f4c9a7732069859b731e409f740172f8803602cd51f8197aff1c3bc90ff58",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:b6268f35f003527e3aa33e56b29a5380a09f9aa8e1ee25d02445e9303d28e6df",
+        "MATH_A2": "sha256:c13848205121dd9abcc2fe0aba70b80cd4742b1dec4753603d37e641facb9650",
+        "METADATA": "sha256:e89ce721963fcb65d939f9721941f25e3b9fbc55319c6dc7270dd1c54b1b04cd",
+        "RENDER_CAPTURE": "sha256:1495642ec0e59023fa744aed5ce73d1540d7c91db3e5f9694ea959abee018684",
+        "RENDER_REVIEW": "sha256:e7ad897578cfe87a1c02041afdfdf84554e426ba13d72ba817d7cdca092bac12",
+        "SOLUTION": "sha256:8a93bf15e77b28131f79770af78f88a24c80174b084a35cf42576ccfa6477123",
+        "SOURCE": "sha256:b3d2d7c5477b3d2742910e07bd7f5a244b558a396728b83d12a3bb27a9c6e15d",
+        "STATIC": "sha256:d5b6ece0dc352b32ca620853248e5b1a471b33f8dfc96c02cfc3e20eda5909b2",
+        "V1": "sha256:cb295c75a043ba037b7da814d0adea1efc25c6c6365e5b660726d7694ea1ba6e",
+        "V2": "sha256:1bce20d56fadf9c9777192de4e8035ad00a1f701b414b7dfa2e1b0372feaf3c3",
+        "V3": "sha256:cb6e60a8841630ef2ec07fea1446be71242e83c4fc681685cd729ed63f0a5dc0"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q10_final_build_witness.json",
+        "bytes": 14847,
+        "sha256": "sha256:9ea5a1aa7a96b3c462d26503e7b0d4124cbb58081407f2bb53d26fbe296f72e9",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|11",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "11",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|11",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|11",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 11,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 11,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "actualSolutionVisualAttached": false,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|11:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": "세 문장은 서로 다른 변환 대상을 다룬다. 세 개의 무관한 좌표 그림을 한 좌표계에 합치면 도형들이 같은 문제의 대상인 것처럼 오해할 수 있다. ㄱ·ㄴ·ㄷ의 각각의 역좌표/중심 계산이 더 직접적이고 재현 가능하다.",
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": null,
+        "expectedFactSha": null,
+        "finalArtifactSha": null,
+        "authorityEvidenceSha": "sha256:1319e787599c99c354d9a04a2a8ceb4265978a0a824aa620c845dbff1fbbdba0"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_7c7fc67c408e346e1b95989775fcfc7bc378691f4fa3cd8e71f7900f2cc30887",
+        "sourceIdentityFingerprint": "sha256:0759ef02ae7b4df0a56a60018b818ece04e902ac31fe0ba1a7acf1ce5676c8af",
+        "sourceContentHash": "sha256:35bd3a9889f95834cc1dfd9ba134526108beed7f67e0be8d450dcf2c08829eec",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:4558362a815dea30ca64f47c666f054de08e1f2e7be74809a424e0c2a1e4eb5b",
+        "officialAnswerHash": "sha256:22243836e02b6be7e3ed90932888303b06c434605c98b3d137d90a44d38bb187",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:0a4ad659f2ac9e28bb7ebf21a64c04ccf666914747fbb73f04423c60663e21f7",
+        "MATH_A2": "sha256:e7119bf20fb237d30b8c40a2a5e189d27d18455ef7f42f558c3518e7351b12d9",
+        "METADATA": "sha256:2e90dc7d0f30da62a1cc950813ab128879c19b9770e38f24e416c17bc7e7014e",
+        "RENDER_CAPTURE": "sha256:c076abfce26d3558cef9b275f2f43490c2ed134546f9a6f1110b086feb620e49",
+        "RENDER_REVIEW": "sha256:d235c410a203a01e6f0a4fe649ea41bc771d055159e90eaf07eb5b27ff89c003",
+        "SOLUTION": "sha256:a78737b5644b635511549358158b35ff4bf669adabd7c8f8766688b650a7bb5e",
+        "SOURCE": "sha256:0730bfdc29f0de5255d2304371a4b8eeef6b2250e32c46372ab6ea1c644a6df0",
+        "STATIC": "sha256:ec1d9a3726ab80fc479b2824c5698a815a160b1936cf0deda151f2b2ea8e9f7e",
+        "V1": "sha256:8f4e77f48ea191e5a4f04df73293a0e0ba4ef8f34338ffa42b05e989b399d091",
+        "V3": "sha256:f5f658b8f878a89ac08c8bdb0ea8324b12f590298b68a5736d560669831180c8"
+      },
+      "generationEvidence": null
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|12",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "12",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|12",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|12",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 12,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 12,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": false,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|12:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q12_expected.json",
+          "bytes": 1215,
+          "sha256": "sha256:7cd0bba60962008ee5a2c1579bfa6af3119bf6540c5a3c9392dc80932b286855",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:7cd0bba60962008ee5a2c1579bfa6af3119bf6540c5a3c9392dc80932b286855",
+        "finalArtifactSha": "sha256:e9fe28781d13cfd9e7aca2ff18d4c3dc2366611a1492edcbae2e7575c6467721",
+        "expectedFactQuestionUid": "qid_v1_7f949c1ed08debe451e83f14d4bb65dbb82b088ab7301fd98972956fbb763c25",
+        "authorityEvidenceSha": "sha256:30f58427646eee3c46302dbc27772f4bb4171e6a23b47fbeefc2112b92b59c40"
+      },
+      "problemAssetPaths": [],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q12_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_7f949c1ed08debe451e83f14d4bb65dbb82b088ab7301fd98972956fbb763c25",
+        "sourceIdentityFingerprint": "sha256:0277818cf43d9e5e86b4aa9dad189e0bd35c5c7673e77a903c50eaf776caff83",
+        "sourceContentHash": "sha256:fbac802336a69166ee2b21ce511e291d3150f6590733cc3b45f698d801b1fbfe",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "solutionHash": "sha256:90afe5949971184ea4135d5c256feb0ffdd4b7005492d7caa7cb211eb29a714c",
+        "officialAnswerHash": "sha256:1d91fd167b8105cb97c95b9e1db2e81eadbf048b0c4b8ca208d0520729a63d3b",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:7dfd02dc73805e9f6c081e597d2fb42a2640661b52592bd105d32aa912f029ab",
+        "MATH_A2": "sha256:d8734a2c86e4ceb35b0aab375eeb211f97564eac79e11654fb5602e07a1f72e4",
+        "METADATA": "sha256:5f2ea25049dec1a32caaac81455f7c44a6e9825f3a8aa2c51076fb32da25275e",
+        "RENDER_CAPTURE": "sha256:172fc2dd2728a0a9cc6427d87359e5bdfb97ccbcff1a4037db2e51a33bf0527a",
+        "RENDER_REVIEW": "sha256:d5d2747fdb0b47eeef32090685eb3689ccd89f5c4f5ddf52af47261ad04b8330",
+        "SOLUTION": "sha256:f886626cc5b2739d47fb5845bb92f103d1ffe40aee79c8f6179a076444d58aa2",
+        "SOURCE": "sha256:b1cc53f96098bd928c6c0e725d115f30b5e4054b63b5c6f6c40f50d2a11ede55",
+        "STATIC": "sha256:30d8fa10fda58a86924496c0ff7ac033b3bdcb5e2a2ee7ef71fde43d3919ace6",
+        "V1": "sha256:fd25396c5b0b03e654e321591b99069fbb689c9f2b691bd86ee8360f96a944a1",
+        "V2": "sha256:3b032ea1987f6cba12e38d741b24b9d10b7c661de808a99fc43dd58d9f95dc39",
+        "V3": "sha256:1891f2354c77344c2a841b4ffe4e0c55ed5467d924c3378f4036a96b4a519e84"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q12_final_build_witness.json",
+        "bytes": 15462,
+        "sha256": "sha256:8c7cb03c1e5a61998c4c1ad7b560402bac15a9e2f94df41f491c8ed1f2651953",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|13",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "13",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|13",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|13",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 13,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 13,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": true,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|13:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q13_expected.json",
+          "bytes": 1234,
+          "sha256": "sha256:ec1c1c4bdb9ed539d70da40a696822b0b1161c9cc27b18dfb73cadfe5a24a124",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:ec1c1c4bdb9ed539d70da40a696822b0b1161c9cc27b18dfb73cadfe5a24a124",
+        "finalArtifactSha": "sha256:9cb1732e2e969cc2e62ed8b40c23e3565e4fe7fb55815ff6327fe3b8faed2d47",
+        "expectedFactQuestionUid": "qid_v1_7c398cc5fde486d4b5aac52199efbe23a22765a2a119b395e3cdec7a15ff9431",
+        "authorityEvidenceSha": "sha256:c60ee28384946b97bd376d5e56838b93f13d85b99cd3ec529517bb706a3cefcb"
+      },
+      "problemAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_reflection_path.png"
+      ],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q13_geometry_core_final.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_7c398cc5fde486d4b5aac52199efbe23a22765a2a119b395e3cdec7a15ff9431",
+        "sourceIdentityFingerprint": "sha256:0b3c28e7ca4d060aedf70465c7e96b0135620c2fa2fee9d531f714665ce40cb9",
+        "sourceContentHash": "sha256:524f5b72c1f927eb1986787f616f6a6b2597780f9c9d0f6d868001b5efb07a72",
+        "sourceChoicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "sourceImageRefHash": "sha256:81911a4804e4e63f33204cddf8d453357b62810a5d21c40a62159c70690d3f00",
+        "solutionHash": "sha256:65a9a205e8a2644fd65918e48bcc56ebb1bda1cce73f1d3e30af35ff41e574ad",
+        "officialAnswerHash": "sha256:81efe3cfd901c6ad26b31b7a4b8795aad8d3f487326cf5c4503e618b2cc37757",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:dc4b0bb50e2035797753f71a3b2035670710616cd886e0bfd5d936c080088db7",
+        "MATH_A2": "sha256:66ec3cac154431762a5a27c3e459daf72c71ff4d8357b2d4116671f535fe1263",
+        "METADATA": "sha256:bca73ba3613748ca5b32357f8e1da0d806360bc3b2748026b6b881005dd1485f",
+        "RENDER_CAPTURE": "sha256:0adfd12fc640a8abde4a6acc6885b9384b95123374b5e86a4aafb57a8a7a3d81",
+        "RENDER_REVIEW": "sha256:81605309e155ee17eea071234198956b5f16f9e44ed7fd83f8381514e2700796",
+        "SOLUTION": "sha256:f7589d9cf9bf69f96f36a183e8e5d6a5f9d65582bd3d13ed08261c2d10652890",
+        "SOURCE": "sha256:ac847dad383e1c6939e71b3fcb29164bcc7fb2dc736475159ddfa1b36c1c39c9",
+        "STATIC": "sha256:c35029ab4379be757c4e06a3f1e629c477e9bbc19c10e28f87066f4537a0ee2b",
+        "V1": "sha256:923ebfd9c8892ea2b2fef184fda2d251b12b9e844d06a7542df7b88042abccc0",
+        "V2": "sha256:5710372a8a324379fb6335de229c87601e5ea84611a040331e230ff790d883ca",
+        "V3": "sha256:dd40b2dbadd963559ee2c64a48ebc529430553abf6da059c7b2638322e51f3dd"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q13_final_build_witness.json",
+        "bytes": 15455,
+        "sha256": "sha256:4851931cfc9605e1bbf9308e8319c54d2c1a94b891ce252f38a71f7518495f3f",
+        "role": "dependency"
+      }
+    },
+    {
+      "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|14",
+      "sourceDocumentSha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "sourceQuestionNo": "14",
+      "sourcePageNo": 42,
+      "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+      "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|14",
+      "legacyQuestionUid": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js|비상 공통수학2 도형의 방정식 익힘책 고1|14",
+      "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+      "sourceQuestionOrdinal": 14,
+      "requiredAxes": [
+        "MATH_A1",
+        "MATH_A2",
+        "METADATA",
+        "RENDER_CAPTURE",
+        "RENDER_REVIEW",
+        "SOLUTION",
+        "SOURCE",
+        "STATIC",
+        "V1",
+        "V2",
+        "V3"
+      ],
+      "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "candidatePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/review_candidate_adapter.js",
+      "examId": "비상 공통수학2 도형의 방정식 익힘책 고1",
+      "qid": 14,
+      "sourceStatus": "RESOLVED",
+      "visual": {
+        "origin": "NATIVE",
+        "requirement": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "actualSolutionVisualAttached": true,
+        "problemVisualMathDependency": true,
+        "sharedVisualMathDependency": false,
+        "adjudicationId": "비상_공통수학2_도형의방정식_익힘책_고1|14:visang-geometry-triage-v1",
+        "adjudicationStatus": "RESOLVED",
+        "exemptReason": null,
+        "authorityEvidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/visual_benefit_ledger.json",
+          "bytes": 12042,
+          "sha256": "sha256:6157c9f4a24c810d55d39a4916e9ab5656e9829ac5f5cf8d2b8e392c3f666904",
+          "role": "dependency"
+        },
+        "expectedFactRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q14_expected.json",
+          "bytes": 3283,
+          "sha256": "sha256:7f8ea709f0d857c71ae073176197641ef8766582d0d5b7a7ee5d777333876268",
+          "role": "dependency"
+        },
+        "expectedFactSha": "sha256:7f8ea709f0d857c71ae073176197641ef8766582d0d5b7a7ee5d777333876268",
+        "finalArtifactSha": "sha256:eaec800faa96dc0ed875678513e7bfd74f7b7e1e7be1be2619597cd8959f27c0",
+        "expectedFactQuestionUid": "qid_v1_18411ece86836f4a41191861b1763f6ed5763e3982a0c6acd0497e95b2fee41f",
+        "authorityEvidenceSha": "sha256:75b87904cd789fcbb39ed55849689b37ec65f53f35e0f0dfbd14f77218597c25"
+      },
+      "problemAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_translation_reflection.png"
+      ],
+      "solutionAssetPaths": [
+        "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q14_geometry_core_final2.svg"
+      ],
+      "evidence": {
+        "finalArchiveQid": "qid_v1_18411ece86836f4a41191861b1763f6ed5763e3982a0c6acd0497e95b2fee41f",
+        "sourceIdentityFingerprint": "sha256:de3e9eda4781e3b2939df289f952a172945d47ba5d785c01f26f67de146cb7c2",
+        "sourceContentHash": "sha256:260bcf4aae85dd8686c25ba75ddfbd27b7c3ca7958e874ee4cf439020a310972",
+        "sourceChoicesHash": "sha256:3af0760ed34271b2a2ff090430252f008c40f32188b2d598dad1ded0f421ab97",
+        "sourceImageRefHash": "sha256:3806cc9e5293f3cc6546ccf43e2ca9e5ee600ffba0f9595dfe323dea6191c2c5",
+        "solutionHash": "sha256:c587086a74b1bce2535cc845e05bb775850bacfd5a1ba354851feab0d1377d43",
+        "officialAnswerHash": "sha256:6958a3e7105064751a96bf1e52cd5e9916d71e127193b12ffae234c0fddac50f",
+        "sourceInventoryPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "answerCrosswalkPath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/answer_solution_crosswalk.json",
+        "sourcePrintedPage": "137",
+        "sourcePhysicalPage": "42"
+      },
+      "axisInputShas": {
+        "MATH_A1": "sha256:9065e500f18629bf0a06210d91a7c90224b999d597dcce83f6fcb51f7a1bf439",
+        "MATH_A2": "sha256:14b3b37e6e07038b337cf746878ff6e7993cdabc124fda89db92c0232106f99e",
+        "METADATA": "sha256:158ea020b47123057d77edce38c01f288bf9231ae4c585725d7fa129e7d0bf7d",
+        "RENDER_CAPTURE": "sha256:81199b9268acdb15fc9f1c377f4ca80acef4e8706075c2b6c6c69b13cd9c2f52",
+        "RENDER_REVIEW": "sha256:7a04d67e8e49857fdac6fc7de6de76ab7b30aefd81655620337bbfd650ada717",
+        "SOLUTION": "sha256:6b416b73c4785ff1989f2359377975089c64132ee6f277a3c62e80708b198da9",
+        "SOURCE": "sha256:932f7e4e14474c2d5b0589824d1ce48c469db3a015e873a297fedb1283bbcc67",
+        "STATIC": "sha256:57b01003560221139f4d0790817e74602349f184e3bb5ecbff3550b1d46b9b9a",
+        "V1": "sha256:68400249c39950c3de92a60c145a83c250a2ee78dbd2abecb8e10104a9bc3743",
+        "V2": "sha256:1b423949547a20744ce49b600688d56d226b31c1798c16dc3888420b54b282b6",
+        "V3": "sha256:9acda9b10c490582a050cf0fc8764ff7956629b8a3ff787d106280077db6253c"
+      },
+      "generationEvidence": {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/final-witnesses/q14_final_build_witness.json",
+        "bytes": 17459,
+        "sha256": "sha256:ec8967195f59ba23d79d0116b01292a1f070103ba2acfedea84ae20c74ca1a79",
+        "role": "dependency"
+      }
+    }
+  ],
+  "evidence": [],
+  "registry": [],
+  "denominator": {
+    "status": "UNFROZEN",
+    "stale": true
+  },
+  "inputSha": "sha256:146fb8a68b1f2da3e20964c533158b3322c7d089bb6d27468389bdb4e97dd9dc",
+  "sourceAuthority": {
+    "sourceTruthRefs": [
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "bytes": 21044,
+        "sha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b",
+        "role": "source"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/source_inventory.json",
+        "bytes": 55709,
+        "sha256": "sha256:817b7f9add03a25641fb0f531a7c525b533f0d8e0a7919e044d4b0479143214b"
+      }
+    ],
+    "sourceTruthBundleSha": "sha256:b350e0c408a4d57517e1ca0b3a72e88e4729ed0c9aa97eadf1747767d6096578",
+    "activeBaselineRef": {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+      "bytes": 21044,
+      "sha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b",
+      "role": "source"
+    },
+    "activeBaselineSha": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b",
+    "baselineDiscoveryEvidenceRef": null,
+    "approvedSourceRepairLedgerRef": null,
+    "approvedSourceExceptionLedgerRef": null,
+    "applicability": {
+      "baselineDiscoveryEvidenceRef": {
+        "status": "NOT_APPLICABLE",
+        "reason": "NEW_BOOK_SECTION_INVENTORY_FROZEN",
+        "evidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/baselineDiscoveryEvidenceRef.json",
+          "bytes": 209,
+          "sha256": "sha256:dce25e46bfc664e6066ef8400756d0e2d094285cd75fd02a2ef6c2c6d8ba5699",
+          "role": "dependency"
+        }
+      },
+      "approvedSourceRepairLedgerRef": {
+        "status": "NOT_APPLICABLE",
+        "reason": "NO_SOURCE_REPAIRS_REQUIRED",
+        "evidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/approvedSourceRepairLedgerRef.json",
+          "bytes": 202,
+          "sha256": "sha256:fca9bb1c2786755a371df17cc85f71b1275b0061fda09c8154b19f21fefc80fd",
+          "role": "dependency"
+        }
+      },
+      "approvedSourceExceptionLedgerRef": {
+        "status": "NOT_APPLICABLE",
+        "reason": "NO_SOURCE_EXCEPTIONS_OR_MANUAL_REVIEW",
+        "evidenceRef": {
+          "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/source-applicability/approvedSourceExceptionLedgerRef.json",
+          "bytes": 213,
+          "sha256": "sha256:7e93e70279eb36f0e5cd1445dbffa37808cd6fd4524167b9cd5654215b1f9eb9",
+          "role": "dependency"
+        }
+      }
+    }
+  },
+  "uidAuthority": {
+    "sourceExamIdRegistryRef": {
+      "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_exam_id_registry.json",
+      "bytes": 10468,
+      "sha256": "sha256:07c76411ec93e58910a9c1c7e3d0b647b41a8eb912df6adc0f776426833dacc9"
+    },
+    "sourceExamIdRegistryEntrySha": "sha256:cac0dec27d709d18352867a7e7acff798b0b8b6f2883fa5c90b143656c0fa760",
+    "uidMigrationEvidenceRefs": [
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q1.json",
+        "bytes": 817,
+        "sha256": "sha256:78085bc74aa9f68b242a690339e9f9fb126bf280b8deaf6e5fecb99c91e253a8"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q2.json",
+        "bytes": 817,
+        "sha256": "sha256:e6a9b0593d8d42fff8039ab665680596462268fba12eca18b5babe578017b062"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q3.json",
+        "bytes": 817,
+        "sha256": "sha256:26a24d03e3f6dcc7e0b0705ec7e16716b09bee6046b16d7da8c3a9df6542f064"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q4.json",
+        "bytes": 817,
+        "sha256": "sha256:9b5373a79583f015d94abbfee220e522a112c05a290115524b10ec6a950c3079"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q5.json",
+        "bytes": 817,
+        "sha256": "sha256:dd3c743403d7558bab8ee6cf3666212dc7ba7b003f01a82f6682aa54153ff041"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q6.json",
+        "bytes": 817,
+        "sha256": "sha256:5f1d7cc0f24ae35f028677e198955126ff43da93cb6f1a62fa04c3ad2987b6cb"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q7.json",
+        "bytes": 817,
+        "sha256": "sha256:cde1ac104f79a1e207a5b45a7afea9474913c6f6082627137bdd2075ab7b8b7f"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q8.json",
+        "bytes": 817,
+        "sha256": "sha256:add64720c696a4cc377605b7783587ebfc9f259499d068d520383a394d819b2d"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q9.json",
+        "bytes": 817,
+        "sha256": "sha256:1f1cb3d5888c2292d5cbb132687b31dc2bc8ca97a72ceaaa1f5689a7b1de4039"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q10.json",
+        "bytes": 820,
+        "sha256": "sha256:2fe017d1a4be877f4f94d39f7766d3828aad509df35063b1949f7d86acbbfee5"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q11.json",
+        "bytes": 820,
+        "sha256": "sha256:7a8147b8512e363875e8a3a9de89842bdfb3b444e73e2e684b54d6af62387d8d"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q12.json",
+        "bytes": 820,
+        "sha256": "sha256:18cea965283014d94709b1621b1a9e55e8d13c6006ef2ee39768c16ad3bdb0a7"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q13.json",
+        "bytes": 820,
+        "sha256": "sha256:ffa04233f237199575927b9a06b7f5b1b60ace7cac32ed266ee969e46ededb02"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/uid-migration/q14.json",
+        "bytes": 820,
+        "sha256": "sha256:a40d5b1d84addd40e3e9c50b452fb6f250201364342f7551d84b84ccb5242d55"
+      }
+    ],
+    "uidMigrationEvidenceSetSha": "sha256:15ac0cf59f55dd9df66305bfed16e3656e445f3e35bf067965c1baaa32b58bef"
+  },
+  "semanticDependencyBindings": {},
+  "workBatchId": "visang-workbook-geometry-20260929",
+  "benchmarkKind": null,
+  "assetRoot": "archive-work/textbooks/visang-common2/workbook/geometry",
+  "sourceExamIdRegistry": {
+    "schemaVersion": "SOURCE_EXAM_ID_REGISTRY_v1",
+    "entries": [
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 1,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|1",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 10,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|10",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 11,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|11",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 12,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|12",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 13,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|13",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 14,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|14",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 2,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|2",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 3,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|3",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 4,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|4",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 5,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|5",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 6,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|6",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 7,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|7",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 8,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|8",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      },
+      {
+        "canonicalSourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceIdentityKey": "VISANG_TEXTBOOK_SET:비상_공통수학2_도형의방정식_익힘책_고1",
+        "status": "ACTIVE",
+        "sourceExamId": "비상_공통수학2_도형의방정식_익힘책_고1",
+        "sourceQuestionOrdinal": 9,
+        "questionUidV2": "비상_공통수학2_도형의방정식_익힘책_고1|9",
+        "legacyQuestionUid": null,
+        "sourcePath": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+        "sourceSha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+      }
+    ]
+  },
+  "renderRuntime": {
+    "schemaVersion": "APMATH_RENDER_RUNTIME_BUNDLE_v1",
+    "enginePath": "archive/engine.html",
+    "localFiles": [
+      {
+        "path": "archive/answer-render-executor.js",
+        "bytes": 3128,
+        "sha256": "sha256:87a73df7cc0ded42d062aa5f8955e1d3e8edca01ec5502e3336f6e76d9f54726"
+      },
+      {
+        "path": "archive/archive2-preview-mobile.css",
+        "bytes": 6865,
+        "sha256": "sha256:4f86625526fde85eab0b385c0da1a4d706752a61ff8e8c3b6b3fbb0a16ea7914"
+      },
+      {
+        "path": "archive/archive2-review.css",
+        "bytes": 488,
+        "sha256": "sha256:956a692d7949424b88a19b8641af24215a206c9a236d4d4c3306c79aaf8f8e3c"
+      },
+      {
+        "path": "archive/archive2-review.js",
+        "bytes": 413,
+        "sha256": "sha256:e706739784346f32347a609a08e99245f3acf3c3626474b5318a625695b0f138"
+      },
+      {
+        "path": "archive/concept_map.js",
+        "bytes": 8453,
+        "sha256": "sha256:da30d15d75872d0190f06c6a5acd6b058d2c4a75914c116ef866984594ed6ff9"
+      },
+      {
+        "path": "archive/css/js-archive-theme-override.css",
+        "bytes": 16183,
+        "sha256": "sha256:5c7225d0fb5fd4bab3c222acc4589981a80f81dd5aecda441e9f28d0b161e6fd"
+      },
+      {
+        "path": "archive/data/question_metadata.json",
+        "bytes": 30310483,
+        "sha256": "sha256:2b7c8639e8fc9d48ef675d948861176cce3701e48ab8c22c7b69255e49b8a583"
+      },
+      {
+        "path": "archive/engine.html",
+        "bytes": 179800,
+        "sha256": "sha256:777ede0287dea2a46b0cf86ad275089ce3980f0da5281029f84f8d21fbe53254"
+      },
+      {
+        "path": "archive/equal-slot-engine.css",
+        "bytes": 1847,
+        "sha256": "sha256:2e7f18061f400c320163412f0a09e00e43af3128d800824dd210ceb5829edcf2"
+      },
+      {
+        "path": "archive/equal-slot-engine.js",
+        "bytes": 20576,
+        "sha256": "sha256:499d7b255b47be1e7cb0b69bbf3bafb662b6ed8e7495095264d13c0af0f02e49"
+      },
+      {
+        "path": "archive/exam-render-executor.js",
+        "bytes": 24516,
+        "sha256": "sha256:aa783b92883cd331f162fb935f942eaa06b1c06f802865d92cfb49acc0c0c369"
+      },
+      {
+        "path": "archive/layout-authority.js",
+        "bytes": 84946,
+        "sha256": "sha256:be10c5cc8c1fd70a06216cb40b2f2e1ebe23b42f49df2b40f47d03fa11d5c532"
+      },
+      {
+        "path": "archive/layout-materializer.js",
+        "bytes": 10595,
+        "sha256": "sha256:ed6f44d62e3e76dd4c7f0384f8a12092f55cb0fb1f247a5cd74121d59a033e56"
+      },
+      {
+        "path": "archive/mathjax_render_loop.js",
+        "bytes": 3546,
+        "sha256": "sha256:5ce90d2b951bb8890f6b1c60ff63f27d37a985b3b757e2cee3d2ed56e74b331b"
+      },
+      {
+        "path": "archive/native_print.js",
+        "bytes": 18532,
+        "sha256": "sha256:7afbb40b56f4e1d930f6d57e208e211a7ae1c74e5ab84f2c5c5b3f2c146ffc11"
+      },
+      {
+        "path": "archive/print-contract.js",
+        "bytes": 27665,
+        "sha256": "sha256:d254821e71ee6ff7a1b6747843dd4a1cdea4a56bbfcf5e33c637f57894969cf2"
+      },
+      {
+        "path": "archive/print-runtime.js",
+        "bytes": 4173,
+        "sha256": "sha256:c92b4b4133c8e1bbe7e909c6418e3c966262cf476584607ede77cf8d47cbda75"
+      },
+      {
+        "path": "archive/print_image_optimizer.js",
+        "bytes": 7372,
+        "sha256": "sha256:9c07c4619d27c30e9262714daae34442317ec568a1131aa261c8918536880700"
+      },
+      {
+        "path": "archive/question-image-readiness.js",
+        "bytes": 7106,
+        "sha256": "sha256:b5e67eabfde5d4909fa70c72746f1ec530be6377a55ea6c13a270523ad6c6043"
+      },
+      {
+        "path": "archive/question-meta.js",
+        "bytes": 27357,
+        "sha256": "sha256:f57c08ed243a483e4c38f17022ec7f6a6a2f34453531e5cd0cd129782df2b9fe"
+      },
+      {
+        "path": "archive/render-authority.js",
+        "bytes": 27193,
+        "sha256": "sha256:425c8a0b1b651bbfe9dc62f528c7db6ce670a10f89e25664795eddc52a4f66bd"
+      },
+      {
+        "path": "archive/render-state-normalizer.js",
+        "bytes": 7161,
+        "sha256": "sha256:fbbe498d85024a2fcc5904f0c1172531506624c19c6fd8fed8ab4849bd07a727"
+      },
+      {
+        "path": "archive/review-preview-bridge.js",
+        "bytes": 20569,
+        "sha256": "sha256:8db7dcc2cbd1b7565a24dce81f08ba8e90c53cd77de82a2308dc81b58d17119d"
+      },
+      {
+        "path": "archive/screen-runtime-adapter.js",
+        "bytes": 35413,
+        "sha256": "sha256:2d81c3c4038e8aba434fa616d4e95e344d84ca18ff2e023351436f4bc584ae56"
+      },
+      {
+        "path": "archive/screen-runtime.js",
+        "bytes": 19548,
+        "sha256": "sha256:2ef7caab4db8ea86dab2b5d23cb1f71823e840b96941800f73f856c2ce9ac8b2"
+      },
+      {
+        "path": "archive/side-effect-ledger.js",
+        "bytes": 2861,
+        "sha256": "sha256:8de8fb7b3da6178800b634d6908a565734a95deb7c5497529908a4845140890a"
+      },
+      {
+        "path": "archive/snapshot-contract.js",
+        "bytes": 5926,
+        "sha256": "sha256:60a365e82448a539ce170da227e112891f95e1ddd6c3bb7056a0364ed4b18b78"
+      },
+      {
+        "path": "archive/solution-render-executor.js",
+        "bytes": 30303,
+        "sha256": "sha256:641500ff487acf189b9a3a406446452bcfeea9daf7ea1bd2a29068fa457cff84"
+      },
+      {
+        "path": "archive/vendor/html2canvas/html2canvas.min.js",
+        "bytes": 198708,
+        "sha256": "sha256:4917b15ac829f7546ab1c053b06499786b45a053169f31f436c16c8eb821414e"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/LICENSE",
+        "bytes": 11560,
+        "sha256": "sha256:3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml.js",
+        "bytes": 80986,
+        "sha256": "sha256:1ff6fa2f22384fa16c0575f09b98ee4d900a61d185f6fcee4e960c0d2190d0c9"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-b.woff2",
+        "bytes": 19340,
+        "sha256": "sha256:69e45ca329dd2fcc3671dc20884f2baf29348a43833104266be098eba544fda2"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-bi.woff2",
+        "bytes": 1484,
+        "sha256": "sha256:d0c95edf7b3223c8e66fcb4b6faaf74fc3376eea59c20f23677f4d54905a356e"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-brk.woff2",
+        "bytes": 980,
+        "sha256": "sha256:4f03a0d86ff005f12cbb0ffd162bae0766415e48e07ed3fa5970e685594de15d"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-c.woff2",
+        "bytes": 6644,
+        "sha256": "sha256:1faef92bbe440c459bcea0b7530044827749507e39bf49248c2203f9eb422bce"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-cb.woff2",
+        "bytes": 7064,
+        "sha256": "sha256:03de6a3467f88e79425df3505a936e6b336efbc5c0421f40905d1d52fddbe4ed"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-f.woff2",
+        "bytes": 5932,
+        "sha256": "sha256:6cb008e934883d1f4652562276469dfc1ade06ee4ceebd6979e79b1c98472b47"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-fb.woff2",
+        "bytes": 6180,
+        "sha256": "sha256:303b28cdca9c064d93dc1672b843933ab20e28f777adb08b9eafa6f442f074d7"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-i.woff2",
+        "bytes": 7472,
+        "sha256": "sha256:82c82a2e0c8bc89421ce9cbb4ecea806c8ceec4b4fd0269726b9439ca853b365"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-lo.woff2",
+        "bytes": 5160,
+        "sha256": "sha256:98b20475232f47749126ae098177b5c71d3b6512e068efedb3a912c2c8f6ed0f"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-m.woff2",
+        "bytes": 8552,
+        "sha256": "sha256:82e8abfaecf005f639e18b1e7dece8700c56df76eac8ea94e4b5915bedee7567"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-mi.woff2",
+        "bytes": 9676,
+        "sha256": "sha256:4bd1e8cefc7cf1b9aa2f2c6beb01ecef7ebf5d1f81d82f954a9688360a399fc3"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-n.woff2",
+        "bytes": 164864,
+        "sha256": "sha256:fad3b88ec7aac4959e3de19044931682bd4d1500c72a85d2d113b73b694c4133"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ob.woff2",
+        "bytes": 8412,
+        "sha256": "sha256:62f1a8f7ced532d6ab1f6af3a5b3363eb6c774fe40d29092bbea27ac95a9f89e"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-os.woff2",
+        "bytes": 8164,
+        "sha256": "sha256:01bc6e82013dca9c1cbb132c353a0f63add97325bb979bba5e619591525c2a6e"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s3.woff2",
+        "bytes": 2560,
+        "sha256": "sha256:07165a0e10ae4b6b24db34b28d0a8c46bd4ac53b4d1682098ee7a3e88d2f1c83"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-s4.woff2",
+        "bytes": 4352,
+        "sha256": "sha256:b20a0e1b03043ae1a540857bdf1b220297ff0e78b110b1e15554addf91ad0937"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-so.woff2",
+        "bytes": 6472,
+        "sha256": "sha256:0e9f0e5baa090d44c728e2ddaa39b4c465ff15d349e3547488503eb318628a45"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ss.woff2",
+        "bytes": 6168,
+        "sha256": "sha256:e0d564a939fce2e4d0c09a86f0dc936c2a9cdb42e44eb264dbc5ef01d71e179c"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ssb.woff2",
+        "bytes": 4896,
+        "sha256": "sha256:4a2e4827bad85a9ae5fe906f179ccfce154bfc29e19115ceb8d7f1f6e8ce31cd"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-ssi.woff2",
+        "bytes": 8472,
+        "sha256": "sha256:b6dfb310dd7b5c059e9b748b4766fcdd6fa0005c17d9229f3bb1bd095acfae1a"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-v.woff2",
+        "bytes": 6716,
+        "sha256": "sha256:bd9d7db0883dc1adca7ed1c20042609e4e3d1f07f106b6bc8eeeab49d560393b"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/chtml/woff2/mjx-tex-zero.woff2",
+        "bytes": 960,
+        "sha256": "sha256:2c146f72c9a345aa282398a752d03af71d83a011f3d067297b533a31f0c5f5cb"
+      },
+      {
+        "path": "archive/vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js",
+        "bytes": 968520,
+        "sha256": "sha256:b4ee932e3dddcbaa59bf6097793e951257d651c85d235086dc295b5f7b71b185"
+      },
+      {
+        "path": "archive/vendor/mathjax/LICENSE",
+        "bytes": 11560,
+        "sha256": "sha256:3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/action.js",
+        "bytes": 1843,
+        "sha256": "sha256:7c46fc1ef8118723bf2f386d704ab289e5dd683471e0ad4e1e717244959b565b"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/ams.js",
+        "bytes": 21194,
+        "sha256": "sha256:6ff85ab489da04ec533a22b9b93d5d5d51f9f51ef02c723439734e65d9257d14"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/amscd.js",
+        "bytes": 4310,
+        "sha256": "sha256:81d6115aa4358a98da5e6d477ac4198cbc11c2c2752745b3529a8b6e2761202f"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/autoload.js",
+        "bytes": 3331,
+        "sha256": "sha256:8da941fdea660944fc6a4434823dce9cf369b88cb6c0ab50b00700b7a92dbf0c"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/bbm.js",
+        "bytes": 2143,
+        "sha256": "sha256:fb780f6e8ca565439b3c6dc78f3e42b525905fd43c5e15471994a2a1da914ca8"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/bboldx.js",
+        "bytes": 7397,
+        "sha256": "sha256:772503b34ac5b7c56e56c7698403bad6ff3ea3fd1882c22b4e1ef518e6ef86c5"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/bbox.js",
+        "bytes": 2323,
+        "sha256": "sha256:9d9ff6d1c592d2a4fe728412d2d5ec29379f4721bfa3b8356ad2045eb939b848"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/begingroup.js",
+        "bytes": 4266,
+        "sha256": "sha256:0f606d5a71301992e92d8697ccbf8318736110691d8a94303f3f254cd589421a"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/boldsymbol.js",
+        "bytes": 2460,
+        "sha256": "sha256:baaabd9fb430fe4fdbfa9db74aa60b118dd650a68239280368abfd1bc30a0e10"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/braket.js",
+        "bytes": 4653,
+        "sha256": "sha256:d401832d91ca89fc8f76cf1ea67ce25b21c4a2b1d9da0db605204f262c8d69ee"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/bussproofs.js",
+        "bytes": 12204,
+        "sha256": "sha256:87451074cc17e2c8064d630b91cc56171182cc5a46c1313006014f56c498d8d4"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/cancel.js",
+        "bytes": 2255,
+        "sha256": "sha256:9ff91ff84d9776606cdb66da62ffe9bb39cfdfabcf070f214d35e553689ffece"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/cases.js",
+        "bytes": 4277,
+        "sha256": "sha256:6805d481aaee3f78d82bb9f0b6b9ac47b0804c30f10253394724459d95d41a8c"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/centernot.js",
+        "bytes": 2148,
+        "sha256": "sha256:e3c08e96d11f020027a9b325e7b8661f08940babba218b786ac29d50d822dfba"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/color.js",
+        "bytes": 6818,
+        "sha256": "sha256:f569ebbf53726afeb3f7a7803500ac2088aada400a2000394879d0b503311b17"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/colortbl.js",
+        "bytes": 3185,
+        "sha256": "sha256:dff289abcff30d0e109eb51a6f6be2d09e46b7e1db5bc881719f9f1bf483ab8f"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/colorv2.js",
+        "bytes": 1524,
+        "sha256": "sha256:434397a8b307ee5e824b065ecf3145ce8ffae58f465e054b3d9b853f5f904baf"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/configmacros.js",
+        "bytes": 2588,
+        "sha256": "sha256:5a7b6e7b7980f8d3425ddbcbbe21299da5b1254d5702e91bdbb9d04f487f4664"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/dsfont.js",
+        "bytes": 1898,
+        "sha256": "sha256:74a9961b43c43644c28c582fc14031b7f42bac0b771140a5d80af383415ea978"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/empheq.js",
+        "bytes": 5946,
+        "sha256": "sha256:028e775eca9919375d3397a947d6086383ec99a501a5080b2833ffda5d578a14"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/enclose.js",
+        "bytes": 1731,
+        "sha256": "sha256:5301d91e2e7d6f86a29c13c1b9726b7476b9de9b1745011886c914372fab4cf3"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/extpfeil.js",
+        "bytes": 2445,
+        "sha256": "sha256:2d1f82bf22acefe6c358e3a3dca293cc2fda338f2db4fd147befc75122c41841"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/fontsizev3.js",
+        "bytes": 1637,
+        "sha256": "sha256:0e8fe554424a274d5809efc11f3a48602713bb7d2b2280ae4fcac04181f128f2"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/gensymb.js",
+        "bytes": 1588,
+        "sha256": "sha256:cd5cb8a68719acc0c215f4377e4d37eb35d4f49bab26c7e46efff5e4dbc7f6d3"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/html.js",
+        "bytes": 2813,
+        "sha256": "sha256:a647d13d009d5ecee4239cfe681ef831f2bd0f2a91033b922ae6bf3481d156e0"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/mathtools.js",
+        "bytes": 22389,
+        "sha256": "sha256:0a403d24ff0fbb698cb0efd1cfe8569bfb47e492165204170481e7e6619a1dcc"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/mhchem.js",
+        "bytes": 38953,
+        "sha256": "sha256:04a579df179662c0292ae956229198ea3ed2a02916cfc971cf45b4fe0c7394e2"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/newcommand.js",
+        "bytes": 8833,
+        "sha256": "sha256:27bc6df0fc8567eaff5153e679e5de53e9cf0918aae714d8dd72fd3a40ca2293"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/noerrors.js",
+        "bytes": 1243,
+        "sha256": "sha256:479c00d274f7f38e25d44a13e407bf8adeb83b02dd05639a302ca7c0db3d4cc2"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/noundefined.js",
+        "bytes": 1384,
+        "sha256": "sha256:d29d871d8d38802cc1581f6e4f5d673c357a8bf9802114ea57f51a53d0a0fef3"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/physics.js",
+        "bytes": 19564,
+        "sha256": "sha256:3a1d1b0ab203b446a2c04d9f5a0bf59e6225c83a27aea0b2403f28293aadb79a"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/require.js",
+        "bytes": 4007,
+        "sha256": "sha256:6ccbfb7f9a6e627fabdc39ce034f99355172b9778891cce33243844501098130"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/setoptions.js",
+        "bytes": 3729,
+        "sha256": "sha256:756100054a264bcfd47c1b5c03b7e4dcdd7cca679b78b693a6926e887ab59c39"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/tagformat.js",
+        "bytes": 1975,
+        "sha256": "sha256:9da0f12949eb209f8cfa06fd88ddce12bf6b8880d29c067a7ad08f42164a3a57"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/texhtml.js",
+        "bytes": 2504,
+        "sha256": "sha256:6269dda09c28b4291cd4d95e880c9dc053cc95b41c644ce057bab5640cb83113"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/textcomp.js",
+        "bytes": 5135,
+        "sha256": "sha256:d085215c2d77df0c8dbf460b991c59efa9e69cbd7e1f6e94bf5cbb363aa1c69c"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/textmacros.js",
+        "bytes": 10279,
+        "sha256": "sha256:12a52659988472d8f160a96a774e970f89153a0f2e329d2a1d0e318d4ab9bdab"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/unicode.js",
+        "bytes": 3586,
+        "sha256": "sha256:bf1ddc9fe506f782c0e9271c0c52c4b258f9e4eac3d2905274d0c5d239e2a2b3"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/units.js",
+        "bytes": 2118,
+        "sha256": "sha256:25278814cbc050fcd4e8849c014c238cf6801e00405e0acaf5d98924fd1e26a7"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/upgreek.js",
+        "bytes": 2157,
+        "sha256": "sha256:0f4c96104699aeada37446dfb3d50438efec4e11c58982abaa2ff781d42d3667"
+      },
+      {
+        "path": "archive/vendor/mathjax/input/tex/extensions/verb.js",
+        "bytes": 1779,
+        "sha256": "sha256:b2290ff1be4d33c57dd476d87d1753d4cde0a5991612b4a24db881a15c85a250"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/af.json",
+        "bytes": 267538,
+        "sha256": "sha256:93d1c1a8be2fcdf8ed5a38ce09edf81192bca0523fbed86e52323eb75383e744"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/base.json",
+        "bytes": 217297,
+        "sha256": "sha256:52a3d2c1fbaaabd74d6a49b7868db11cea16f45e2832aee35193466cdcfdde38"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/ca.json",
+        "bytes": 247468,
+        "sha256": "sha256:e3fc00f4a9cfa725c873690d037a434c585fbee9c8990cb0ac90c3b0bd5323bf"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/da.json",
+        "bytes": 247508,
+        "sha256": "sha256:455787ec107ef78ab05a66a0754eda04b56c1ed99f6b05521adab0b9d612fbab"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/de.json",
+        "bytes": 284226,
+        "sha256": "sha256:711493683d1db278d2d2281fe4c5fb427a82e584b1422ef1ba7a9dc66c9bf77e"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/en.json",
+        "bytes": 364362,
+        "sha256": "sha256:a4b07bd66f18143e61bdfee91103086e46dc0495592a59bc832dd8b0210f4ce6"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/es.json",
+        "bytes": 251061,
+        "sha256": "sha256:8e4ecfa5e5d04d146a2ecf0859f721088449d15801bcc8629a4b08c9a9082080"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/euro.json",
+        "bytes": 12813,
+        "sha256": "sha256:f9f2746255eaa5600d59c494d5dccf0db06ca984fa19031f9f167a3a27b3413b"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/fr.json",
+        "bytes": 276549,
+        "sha256": "sha256:e1a9d40f6bcb645a5a4f6c11003d24e8481cbe42c47e52dfdab9c9ca4be13f3a"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/hi.json",
+        "bytes": 394714,
+        "sha256": "sha256:8ab6ad0353bd7f72839480db963751f3e9dc477d14a035cc1f0f10a36d06e37c"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/it.json",
+        "bytes": 282211,
+        "sha256": "sha256:981863fcd552dfa7883c7ccb5c3bf7852a42bff0e6591d5d8ac71fdf59679c89"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/ko.json",
+        "bytes": 392160,
+        "sha256": "sha256:958f82f6e4301083f51d4b1ec7315e7ca8742b49cd22f6fdb241ad55ee8c3569"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/nb.json",
+        "bytes": 260891,
+        "sha256": "sha256:8bc0e2986767e6c311564d32ca2d118a99f0faebb9abb625c98b93b765a4d057"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/nemeth.json",
+        "bytes": 227597,
+        "sha256": "sha256:859638d56039b28251b877911ce532b056c315a96d3df5a4050c3f60cdfc4414"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/nn.json",
+        "bytes": 262304,
+        "sha256": "sha256:098bb5f203a87792710ab5c334cb15a3664083528b70bd915f0c3f72409809fe"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/mathmaps/sv.json",
+        "bytes": 272100,
+        "sha256": "sha256:523dd5a662e61b079a8138d72a03c50f2f24b2c6e46c074fc15ab4c987cc2691"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/require.d.mts",
+        "bytes": 45,
+        "sha256": "sha256:529cb780b7d6b2d69f0804524579b880a054e4f21cadbf6697c5d06fbcc4063e"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/require.mjs",
+        "bytes": 89,
+        "sha256": "sha256:1bc5768791578e065a9323fd1c40a3dd20a0238986e82cbdf2cd75efdb69d39d"
+      },
+      {
+        "path": "archive/vendor/mathjax/sre/speech-worker.js",
+        "bytes": 425256,
+        "sha256": "sha256:80bd663f2d48505291dcc256728a4fe3be1be4b73d3675b905bd51b1c431745b"
+      },
+      {
+        "path": "archive/vendor/mathjax/tex-chtml-nofont.js",
+        "bytes": 888469,
+        "sha256": "sha256:7bdac90a30f926c017b5dd45be9e5291b49749e324e854f539ec6387fde39a58"
+      },
+      {
+        "path": "archive/vendor/mathjax/tex-chtml.js",
+        "bytes": 997445,
+        "sha256": "sha256:6ecd14970a73fca8bb115f8d6967aef818135dee0091339061c41ada230072b6"
+      }
+    ],
+    "externalUrls": [
+      "http://127.0.0.1:43191",
+      "http://localhost/",
+      "http://www.apache.org/licenses/LICENSE-2.0",
+      "http://www.w3.org/1998/Math/MathML",
+      "http://www.w3.org/1999/xhtml",
+      "http://www.w3.org/1999/xlink",
+      "http://www.w3.org/2000/svg",
+      "http://www.w3.org/2000/xmlns/",
+      "http://www.w3.org/2001/10/synthesis",
+      "http://www.w3.org/XML/1998/namespace",
+      "https://ap-math-os-v2612.js-pdf.workers.dev/api",
+      "https://ap.invalid/",
+      "https://cdn.jsdelivr.net",
+      "https://cdn.jsdelivr.net/npm/@mathjax",
+      "https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js",
+      "https://cdn.jsdelivr.net/npm/speech-rule-engine@",
+      "https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js",
+      "https://docs.mathjax.org/en/latest/basic/accessibility.html",
+      "https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap",
+      "https://github.com/mhchem/mhchemParser",
+      "https://hertzen.com",
+      "https://html2canvas.hertzen.com",
+      "https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/APMath-Print-Agent-Installer.zip",
+      "https://www.mathjax.org",
+      "https://www.mathjax.org/"
+    ],
+    "bundleSha": "sha256:419fbd85a6bdcb64b44b08095f2f18efda772d84e67227ff9a8b5445e8a7f358"
+  },
+  "reviewPreparation": {
+    "status": "REQUIRES_BLIND_REVIEW_AND_REQUIREMENT_ADJUDICATION",
+    "bundleManifest": [
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q1-v1.json",
+        "bytes": 302,
+        "sha256": "sha256:932619ea37b604a58002b2c0031c921990952caa7469d949c81a534b18b4f54f"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q1-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:520e339f6d3a6bfae038009709cc408d532ccade0146908aef4ed36417a76e4e"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q2-v1.json",
+        "bytes": 308,
+        "sha256": "sha256:fae695ec1b0b1183b5e892b976988b95a96aa7ea83b1110a14dd3b86c0678092"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q2-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:ef65c72947c76ab933e159c1fad3f5775bc241455d7bb9e46dfbb262548bd66d"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q3-v1.json",
+        "bytes": 255,
+        "sha256": "sha256:dd44f22d43b706eefb3ad3ffb987f379a1b092506f67e9e6baaddfd93cc0b4d1"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q4-v1.json",
+        "bytes": 296,
+        "sha256": "sha256:ee72caef2995d0d51d981fc4375c4c90e99f5da54aa7c0e6ad120ae709ef5b98"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q4-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:590b9afd4c1d9227d1e639bc8dc82ed6b5567eadfd39db5e8f094be2514c430c"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q5-v1.json",
+        "bytes": 248,
+        "sha256": "sha256:cf8eb37060dc9c791c590ac4dd37212164bea8dca6d07674333ac0285f6f2efd"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q5-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:152945bbef413caf737c7beb0e8ef85e8d8bbad5c57f903cfb08e9337125ba61"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q6-v1.json",
+        "bytes": 241,
+        "sha256": "sha256:637f89a4aad32e33443eef2b3f8339908de422f7a4af29d457e68ceaa1a4ec64"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q6-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:d16f3d21308d7a4aaf92104b189a4bc601e7cc54ef59eb24a21658cd2071523b"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q7-v1.json",
+        "bytes": 256,
+        "sha256": "sha256:ef5ecec78eb8a05865df80cf76ed6e8ca81ac55b2d535d766f75d7d6f1f1da1d"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q7-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:2c751872285671e1ceebfd227f90c5600655d0b76363376e9e8affeabd415bda"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q8-v1.json",
+        "bytes": 357,
+        "sha256": "sha256:04509e24dc331eb02b014e9b22c5a92df8c729cb626695963edc711b39c7d16e"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q8-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:09250953677709d29a0fb47d3fd3f0c91beca224b6f2f21fedd485792f103b00"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q9-v1.json",
+        "bytes": 315,
+        "sha256": "sha256:fd4d2b610f2a92aac7c84200843821af91a13daf2b5b989ff072173ca081f547"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q9-v2.json",
+        "bytes": 401,
+        "sha256": "sha256:8605838c9fc8df0a6fc779df0ac99b779b680203fb222f7d1f57d1580f6ff8f6"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q10-v1.json",
+        "bytes": 291,
+        "sha256": "sha256:637b70f983e2b40b2e15de4cabbde802d2f1f3d58f2755e8097f9fa0155446e6"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q10-v2.json",
+        "bytes": 402,
+        "sha256": "sha256:e512ce1bdbef6b1e03bd08484c38e1d9961b375d3484a2ca58f229be281cc04c"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q11-v1.json",
+        "bytes": 685,
+        "sha256": "sha256:956157cecba73f46dda73410a7a41084dff4f1995726d5a9520e080525d4fee3"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q12-v1.json",
+        "bytes": 360,
+        "sha256": "sha256:ee4a22b82947ac17eb2b055889997ada0364d721d18879f113414485c37826c0"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q12-v2.json",
+        "bytes": 402,
+        "sha256": "sha256:202ac1f6e438ff4cfedfaf4c15a0c0a13d57703d8a231f4bc15df33a7be8fabd"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q13-v1.json",
+        "bytes": 709,
+        "sha256": "sha256:1f2b496da3e16085301119e8f236f4d0bbb92b6473d8784f68d5bd6c20d89562"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q13-v2.json",
+        "bytes": 402,
+        "sha256": "sha256:4a41f110ba48ce9898eb46314dc99996345e76b9ce2b0af75b1dca0ce44b7ac9"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q14-v1.json",
+        "bytes": 708,
+        "sha256": "sha256:0038207afb34f99d4e7db3387b4c76a9229f227cc72dd52b0011bde7049aa764"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/bundles/q14-v2.json",
+        "bytes": 403,
+        "sha256": "sha256:d64563d159740a67a408bc196c988f5faf3b8a0b35a2c2efd2946b599d61a7a8"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q1-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:d6dccbbc5a90c8887a207b1e1133d80443f4aa9e5c7a6e878ad6176c040f3739"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q2-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:109dff89d98c69ea96cc3919edcb8a70e6b1e95bf34410212d785228c5c004c9"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q3-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:ec46dc6f0462b0c407b1e7c535fdd36c93df9a0a5fa4cfaf0709706fc37e35e7"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q4-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:a859cebd1f9fe3b9406b9af5ec8c7453a3939e3df4f4cee7a529e366028ab5fd"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q5-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:b69cf0e873fdd016ab0ff1b54e3e53e4cf27f55447b32197aeef72ab8b211459"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q6-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:0294494aafe9638a9bb8871e066d25bcae6711b000b133383d8f6df96f58f7d7"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q7-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:97b8c2d74b731093fb9e79faa5f2bbd924af0a0a7a16c69b16f545a1e1850942"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q8-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:57ff006c9085389ddce66e281554a49ad9f603f040ce86f11fe19e571773d1b4"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q9-quality.json",
+        "bytes": 3062,
+        "sha256": "sha256:6b83b0f84a5c0ad614e8cd30849931bf77e9414213056181f8ff192135093785"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q10-quality.json",
+        "bytes": 3063,
+        "sha256": "sha256:3989a487d081a58676f2a960353d7b7a401d42d6102997f9e1efe19a422fb300"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q11-quality.json",
+        "bytes": 3063,
+        "sha256": "sha256:c19bdae482c275c400a9821b98854b80fab9b383290699c2168b6d122e9e3c72"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q12-quality.json",
+        "bytes": 3063,
+        "sha256": "sha256:3445fe26772fb8d53f905eb33de407dc4e027a43adfc70320c5d4f998a0e3520"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q13-quality.json",
+        "bytes": 3063,
+        "sha256": "sha256:a7fd5a59ba2801c3d421bc16206b3734e76af3e0400e20fb320304a95c463883"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/run-final-r2/review-drafts/q14-quality.json",
+        "bytes": 3063,
+        "sha256": "sha256:c1b7aa5ac7fc7c8f0f53dd80371bd5a3735a5439189434c069785860e6b10b98"
+      }
+    ],
+    "bundleManifestSha": "sha256:c6094e0c5edaa5f336d836e7579408f91cf6d3f6576b63278881675aef6a1fba",
+    "note": "No reviewer, PASS or final requirement is fabricated. Freeze builder/input plan before review; changed plans need a new revision."
+  }
+}

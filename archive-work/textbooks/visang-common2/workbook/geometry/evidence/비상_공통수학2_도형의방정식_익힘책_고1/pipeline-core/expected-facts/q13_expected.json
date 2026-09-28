@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "qid_v1_7c398cc5fde486d4b5aac52199efbe23a22765a2a119b395e3cdec7a15ff9431",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "A",
+        "x": -3,
+        "y": 2
+      },
+      {
+        "id": "B",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "id": "Apr",
+        "x": -3,
+        "y": -2
+      },
+      {
+        "id": "Bpr",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "id": "P",
+        "x": -0.2,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 0.5,
+        "y": 0.5
+      }
+    ],
+    "circles": [],
+    "segments": [
+      {
+        "id": "A_P",
+        "start": "A",
+        "end": "P"
+      },
+      {
+        "id": "P_Q",
+        "start": "P",
+        "end": "Q"
+      },
+      {
+        "id": "Q_B",
+        "start": "Q",
+        "end": "B"
+      },
+      {
+        "id": "Apr_Bpr",
+        "start": "Apr",
+        "end": "Bpr"
+      }
+    ],
+    "relations": [
+      {
+        "from": "P",
+        "to": "Q",
+        "relation": "segment"
+      },
+      {
+        "from": "Apr",
+        "to": "Bpr",
+        "relation": "segment"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}
