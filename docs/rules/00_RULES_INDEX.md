@@ -38,9 +38,11 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 **CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 CURRENT VISUAL ROUTER를 처음 제작부터 적용한다. `VISUAL_REQUIRED`와 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL`은 CREATE에서 KEEP/ADD/REBUILD를 끝내며, known visual repair를 R1/R2E로 의도적으로 미루지 않는다. CREATE 종료 시 visual preflight PASS, required visual missing 0, known visual repair pending 0, 지원 가능한 visual math parity pending 0을 요구한다. 예약 GPT가 render를 실행하지 않는 정책이면 `NOT_RUN_CODEX_HANDOFF`만 허용하며 render PASS를 허위 선언하지 않는다.
 
+**SVG NO-HOLD / REPAIR-AND-REPORT HARD RULE (2026-09-28):** CREATE/R1에서 SVG·solutionImage 결함, 누락, stale/missing evidence, rule-compliance failure를 발견하면 **visual HOLD로 종결하지 않는다.** source+verified solution으로 visual truth를 결정할 수 있으면 같은 단계에서 `ADD / REPAIR / REBUILD → 새 evidence/SHA 결속 → 영향 축 재검 → PASS`까지 직접 닫는다. 보고는 `HOLD n건`이 아니라 **문항번호 + 발견 결함 + 실제 수정 방법 + 재검 결과**를 기록한다. source/math 자체가 불확정하여 visual truth를 결정할 수 없는 경우에는 SVG HOLD가 아니라 해당 `SOURCE_HOLD / MATH_HOLD`로 분류한다. generator/tool capability 부족은 `ENGINE_CAPABILITY_BLOCK`이며 SVG HOLD가 아니다. **SVG/VISUAL HOLD enum은 신규 CREATE/R1 결과에 사용하지 않는다.**
+
 **CREATE_SELF_CHECK HARD RULE:** CREATE는 작은칠판 solution·visual·Meta 최종 저장본을 제작 직후 1회 다시 읽고 known defect를 직접 수정한다. `READY_FOR_REVIEW` 전 `CREATE_SELF_CHECK_PASS=true`가 필수다. 특히 visual은 **`SVG_RULE_COMPLIANCE_PASS`를 수학/표현 PASS보다 먼저** 확인한다: current visual router/verify-skills/rule SHA preflight → artifact 이전 V1 → artifact 이전 EXPECTED FACT → deterministic build evidence → final actual SVG의 V2 OBSERVED FACT → V3 parity → final SVG SHA/evidence 결속. 생성 순서가 뒤집혔거나 evidence가 없으면 결과 SVG가 그럴듯해도 PASS 금지. R1은 이 제작자 self-check를 독립검수의 대체물로 신뢰하지 않고 evidence/final SHA를 독립 감사한다.
 
-**R2E HOLD-SAFE HARD RULE:** R2E가 full evidence와 허용 repair를 소진해도 안전한 판정이 불가능하면 `R2E_HOLD`로 보존한다. HOLD 0을 만들기 위한 추측 taxonomy/Meta/visual FINAL을 금지한다. R1/R2E에서 수정 가능한 solution·Meta·visual defect는 `수정프로토콜.md`로 직접 repair하고, visual 생성·재생성은 CURRENT VISUAL ROUTER를 반드시 따른다.
+**R2E HOLD-SAFE HARD RULE:** source/math semantic truth 자체가 불확정한 경우만 해당 source/math HOLD를 보존한다. **SVG/visual 자체는 HOLD로 종결하지 않는다.** visual defect·누락·evidence 결함은 `SVG_REPAIR_REQUIRED`로 라우팅하여 직접 ADD/REPAIR/REBUILD하고 재검 PASS까지 닫는다. generator/tool capability 부족은 `ENGINE_CAPABILITY_BLOCK`으로 분리한다.
 
 
 중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
