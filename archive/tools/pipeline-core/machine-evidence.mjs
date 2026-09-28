@@ -213,4 +213,3 @@ export function collectMachineEvidence(root, manifestPath, { manifestOut = null,
   writeNewJson(outputFile, outputRun);
   return { status: 'MACHINE_EVIDENCE_READY', bridgeVersion: MACHINE_EVIDENCE_BRIDGE_VERSION, runId: run.runId, revision: run.revision, inputSha: run.inputSha, manifestRef: fileRef(root, outputRelative), evidenceRefs, questionCount: run.questions.length, machineEvidenceCount: evidenceRefs.length };
 }
-

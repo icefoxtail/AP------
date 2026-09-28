@@ -287,4 +287,3 @@ test('H15-GV-08 has a canonical and compiled parent entry but no unsupported chi
   assert.equal(parent?.labelKo, '공간도형');
   assert.equal(compiled.filter(row => row.keyType === 'subUnitKey' && row.standardUnitKey === 'H15-GV-08').length, 0);
 });
-
