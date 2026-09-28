@@ -6,7 +6,7 @@
 - Requested START_SHA: `9a955143a4d636c69c4aa27430459f513d03879d` (ancestor of initial worktree HEAD).
 - Initial worktree HEAD: `f100a1415193947152c29bdccdefc28126f5c433`; before final staging it was fast-forwarded to latest `origin/main` `3c5bb5d81878f5c0bc74c3565ae93f8dc43d199f`. No overlap with the remote changes was found in this set's dedicated artifact paths.
 - Scope: one Visang Common Math II middle-unit check set only; printed questions 01–11.
-- Elapsed: approximately 37 minutes (first task worktree timestamp ~21:49 KST through ~22:27 KST).
+- Elapsed: approximately 42 minutes (first task worktree timestamp ~21:49 KST through ~22:31 KST).
 
 ## 1. Created files
 
@@ -40,6 +40,6 @@
 Only the assigned JS, its one Q08 image, and this set's evidence are changed. No generated/candidate shared folders, shared pipeline code, root production archive, DB, question index, sibling worktree, major assessment, or workbook was changed. No master project documents were updated because this is a single task artifact under the existing textbook CURRENT scope; the dedicated textbook CURRENT Notion record will be closed with final SHA and evidence paths.
 
 - Temporary scratch source renders/scripts were removed. The temporary renderer on port 8767 was stopped.
-- Git: one allowlisted task commit created; push of this dedicated branch is pending. The final SHA will be recorded in the textbook CURRENT Notion entry and the completion response.
+- Git: the task artifact commit was pushed; this report was finalized in a follow-up evidence commit after push. Final branch SHA is recorded in the textbook CURRENT Notion entry and the completion response.
 - Main merge: not performed and not in scope.
 - Next category/set: not started, per the task boundary.
