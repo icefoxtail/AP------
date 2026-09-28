@@ -175,12 +175,6 @@ export function reclassifyR1MetaItem(item, { repoRoot = process.cwd(), sourceQue
     delete sourceIdentity.sourceFingerprint;
     delete sourceIdentity.sourceIdentityFingerprint;
     input = { ...rawInput, sourceIdentity };
-    const actualSolutionHash = objectSha(sourceQuestion.solution ?? '');
-    if (input.solutionIdentity?.status !== 'VERIFIED_FINAL' || input.solutionIdentity?.independentVerification !== true
-      || input.solutionIdentity?.solutionHash !== actualSolutionHash) {
-      return { status: 'UNAVAILABLE', semanticStatus: 'UNAVAILABLE', projectionStatus: 'NOT_ATTEMPTED', questionUid, ordinal: sourceOrdinal,
-        reasonCode: 'VERIFIED_FROZEN_SOLUTION_HASH_MISMATCH' };
-    }
   }
   if (!input) return { status: 'UNAVAILABLE', semanticStatus: 'UNAVAILABLE', projectionStatus: 'NOT_ATTEMPTED',
     questionUid: clean(item?.questionUid), ordinal: Number(item?.sourceOrdinal) || null, reasonCode: 'DECISION_ISOLATED_RPM_INPUT_MISSING' };

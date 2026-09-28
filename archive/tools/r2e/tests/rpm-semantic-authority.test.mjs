@@ -83,7 +83,7 @@ test('legacy RPM migration-gap evidence reclassifies to semantic FINAL plus proj
 
 test('R1 adapter hydrates only source hashes from the frozen question for targeted semantic reclassification', () => {
   const complete = inputFor(row);
-  const sourceQuestion = { content: 'frozen source question', choices: ['①', '②'], solution: 'independently verified solution hash', sourceIdentityKey: complete.sourceIdentity.sourceIdentityKey };
+  const sourceQuestion = { content: 'frozen source question', choices: ['①', '②'], solution: 'frozen JS solution bytes are not reopened in Meta-only reclassification', sourceIdentityKey: complete.sourceIdentity.sourceIdentityKey };
   const incomplete = { ...complete, sourceIdentity: { sourceFingerprint: objectSha({}) } };
   const result = reclassifyR1MetaItem({ questionUid: complete.sourceIdentity.questionUid, sourceOrdinal: 1,
     disposition: 'RPM_PRIMARY_MIGRATION_GAP', input: incomplete }, {
