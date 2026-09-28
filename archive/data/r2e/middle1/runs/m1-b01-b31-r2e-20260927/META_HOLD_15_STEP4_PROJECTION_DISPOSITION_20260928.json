@@ -1,0 +1,669 @@
+{
+  "schemaVersion": "M1_META_HOLD_15_STEP4_PROJECTION_DISPOSITION_v1",
+  "stage": "STEP4_COMPATIBILITY_PROJECTION_AND_FINAL_DISPOSITION",
+  "status": "COMPLETE_CHECKPOINT_STOP_BEFORE_ANY_JS_MUTATION",
+  "createdAgainstMain": "9573ca2dbbf20752b680d8f8ff857d23efa8b87d",
+  "priorMainAtStep3": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+  "mainAdvanceImpact": {
+    "status": "NO_M1_META_AUTHORITY_IMPACT",
+    "note": "Main advanced only through M2 production/assets and registration artifacts; target M1 exam blobs and middle1 RPM crosswalk remain unchanged."
+  },
+  "physicalStateHeadBefore": "912ad6fb94028ab9ac2b3459a4845e586da0beba",
+  "inputs": {
+    "step2": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+      "blobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+      "commitSha": "85d97a2822e600e0734145fd2d29acd449e64086"
+    },
+    "step3": {
+      "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_STEP3_RPM_SEMANTIC_20260928.json",
+      "blobSha": "e57ed20ff31e532d5bc45664738915bf2cb88794",
+      "commitSha": "0cf9e6f823940aac57fcc5cf0015fe8a02db8db1"
+    },
+    "middle1Crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json",
+      "blobSha": "c58b07b93900bfa85ef4c1d392bea9405717c984"
+    },
+    "activeCanonicalRefs": [
+      {
+        "pack": "MIDDLE1",
+        "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+        "blobSha": "c144374e954c752fa6e0844f9b39cc1470dad97c"
+      },
+      {
+        "pack": "MIDDLE_GEOMETRY",
+        "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+        "blobSha": "f3b2880cee6047202a8558a62e97949ddca34971"
+      },
+      {
+        "pack": "GEOMETRY_EQUATIONS",
+        "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+        "blobSha": "dea309fa49338a2228c0828f660578e075fec7f9"
+      },
+      {
+        "pack": "FUNCTIONS_GRAPHS",
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "blobSha": "a6684bdfec3ff8beaff25c19346b4865a24f7b81"
+      }
+    ]
+  },
+  "summary": {
+    "TARGET": 15,
+    "RPM_SEMANTIC_FINAL": 0,
+    "META_ONLY": 10,
+    "TRUE_META_HOLD": 5,
+    "semanticFinalTotal": 10,
+    "currentPopulatedInvalidCanonicalKeyQuestions": 0,
+    "JS_CHANGED": {
+      "exams": 0,
+      "questions": 0
+    }
+  },
+  "safeguards": {
+    "b19Reopened": false,
+    "b25Reopened": false,
+    "r2eMainFinalReopened": 0,
+    "normalPassReopened": 0,
+    "mathSolutionSvgDifficultyLayoutReviewed": false,
+    "globalTaxonomyRedesign": false,
+    "catalogRuntimeIndexRegeneration": false,
+    "productionMutation": false
+  },
+  "records": [
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "A,B have x=-1 so AB=5; C has x=3 so the perpendicular horizontal distance to x=-1 is 4.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기",
+        "recordId": "M1-RPM-050"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_DIRECT"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-050",
+          "standardUnitKey": "M1-04",
+          "subUnitKey": "M1-04-GRAPH_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 24,
+      "questionUid": "qid_v1_f1bd6587483700dbf5fbda6b6f4a67b9720041a49332e37e9e536248a1cc6f7c",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_f1bd6587483700dbf5fbda6b6f4a67b9720041a49332e37e9e536248a1cc6f7c",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AF=EF, vertical angles at F are equal, and AD∥CE gives alternate angles; therefore AFD≡EFC by ASA.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동",
+        "recordId": "M1-RPM-080"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "e4deedf8ac90dfea7a4337952272ad1b0c3fcc8c",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+        "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-080",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B07",
+      "examFile": "23_연향중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_3d02ddc05460c2f4ecc679ccbf597d4e55e170cf21ecdda8df64e0f0756c94c8",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_3d02ddc05460c2f4ecc679ccbf597d4e55e170cf21ecdda8df64e0f0756c94c8",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "In equilateral BCE the apex lies above the midpoint of BC; with BC=8, the distance from E to vertical AB is 4.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "486bb019cb87187c1d25a953f10290e11e61b538",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION",
+        "templateKey": "TPL_TRIANGLE_AREA_FROM_SQUARE_EQUILATERAL_POSITION_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-071",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B08",
+      "examFile": "23_왕운중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AB=7, CD=3, and the x-coordinate separation is 10, so the coordinate quadrilateral area follows.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-1",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기",
+        "recordId": "M1-RPM-050"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "6581bb49c63a2da9cdb88f9a158d1c54ff686b6f",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+        "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_COORDINATE_QUADRILATERAL_AREA"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-050",
+          "standardUnitKey": "M1-04",
+          "subUnitKey": "M1-04-GRAPH_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B10",
+      "examFile": "24_매산중_2학기_중간_중1_기출.js",
+      "q": 7,
+      "questionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AF is perpendicular to CD and the reconstructed parallel relation makes AF the perpendicular from F to line AB; the correct pair is the distance/perpendicular statements ㄱ,ㄷ.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "566d91d199dd2e2683598c41a8f3eb216075758f",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-071",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 3,
+      "questionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "The area equation gives h=4, and that h is exactly distance(D,BC).",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리",
+        "recordId": "M1-RPM-071"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+        "problemTypeKey": "PT_M1_TRAPEZOID_AREA",
+        "templateKey": "TPL_M1_TRAPEZOID_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-071",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-POSITION_RELATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "OB=OD, OC=OA, and ∠BOC=∠DOA; the relevant triangles are congruent by SAS, but option ⑤ writes the correspondence in the wrong order.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동",
+        "recordId": "M1-RPM-079"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "ec17346c6f8586972db62807bc88dc4cbd98a6c7",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-079",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B13",
+      "examFile": "24_향림중_2학기_중간_중1_기출.js",
+      "q": 11,
+      "questionUid": "qid_v1_729249365108e33f409510fecc0e581fdfed1cc728c4584ecd3d65afa2974846",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_729249365108e33f409510fecc0e581fdfed1cc728c4584ecd3d65afa2974846",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "AM=CM, BM=DM and vertical angles at M give SAS congruences, which determine the corresponding sides/angles and isolate option ⑤.",
+      "rpm": {
+        "curriculum": "2015",
+        "scope": "M1-2",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동",
+        "recordId": "M1-RPM-079"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "2fe814ae701495c429086d3ae06dfc4d90fb90d1",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_QUADRILATERAL_PROPERTIES"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-079",
+          "standardUnitKey": "M1-05",
+          "subUnitKey": "M1-05-BASIC_FIGURE",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_PROJECTION_ROW_MISSING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "The verified evidence uses orthogonal projection of midpoint M onto AM to obtain DM=ME and CE=BD, then AE and the triangle area.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "TRUE_META_HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD"
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "B=(8,0) fixes A's x-coordinate at 8; y=5x/4 gives A=(8,10).",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-1",
+        "L3": "정비례",
+        "L4": "정비례 관계식",
+        "recordId": "M1-RPM-167"
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "e11d2f1b93f8c41def9c21386b81d986751a2b4e",
+        "standardUnitKey": "M1-04",
+        "subUnitKey": "M1-04-COORDINATE_PLANE",
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+      },
+      "canonicalKeyValidity": "PASS_ACTIVE_KEYS",
+      "crosswalkRecordId": null,
+      "crosswalkStatus": null,
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-167",
+          "standardUnitKey": "M1-04",
+          "subUnitKey": "M1-04-GRAPH_RELATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionReason": "CROSSWALK_L2_PROJECTION_MISMATCH",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    },
+    {
+      "B": "B16",
+      "examFile": "25_왕운중_2학기_중간_중1_수학.js",
+      "q": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "BD meets AO at endpoint O and therefore cannot bisect AO; this falsifies the perpendicular-bisector claim.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "oldHold": "HOLD_NO_EQUIVALENT_PATH",
+      "mutation": false,
+      "semanticStatus": "TRUE_META_HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD"
+    },
+    {
+      "B": "B17",
+      "examFile": "25_왕의중_2학기_중간_중1_수학.js",
+      "q": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "ABC≡DEF is given; after AB=7 is found from area, AB↔DE gives DE=7.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "oldHold": "REMAINING_META_HOLD_CANDIDATE",
+      "mutation": false,
+      "semanticStatus": "TRUE_META_HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD"
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 6,
+      "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "Two nonintersecting lines in space need not be parallel because they may be skew; intersecting lines determine a plane and parallel lines are coplanar.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "oldHold": "REMAINING_META_HOLD_CANDIDATE",
+      "mutation": false,
+      "semanticStatus": "TRUE_META_HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD"
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 13,
+      "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "ABC≡DEF is given; ∠F=50 gives ∠C=50, then triangle angle sum gives A=75 and BC=EF=5.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": null,
+        "L4": null,
+        "recordId": null
+      },
+      "oldHold": "REMAINING_META_HOLD_CANDIDATE",
+      "mutation": false,
+      "semanticStatus": "TRUE_META_HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "projectionReason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION",
+      "currentProjectionKeys": null,
+      "canonicalKeyValidity": "NOT_EVALUATED",
+      "finalSemanticDisposition": "TRUE_META_HOLD",
+      "releaseEffect": "REMAINS_RELEASE_BLOCKING_META_HOLD"
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 19,
+      "questionUid": "qid_v1_042036eea262c6da17d921050700e22a258401d7ecc79ee1e0cf83a0c1aceb5f",
+      "sourceFinalEvidence": {
+        "artifact": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+        "artifactBlobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+        "questionUid": "qid_v1_042036eea262c6da17d921050700e22a258401d7ecc79ee1e0cf83a0c1aceb5f",
+        "verificationResult": "PASS"
+      },
+      "decisiveStep": "Each unordered pair of the 12 points determines exactly one segment, giving 66; this is the side/diagonal-count structure for a 12-gon.",
+      "rpm": {
+        "curriculum": "2022",
+        "scope": "M1-2",
+        "L3": "삼각형·다각형의 각",
+        "L4": "변·대각선 개수",
+        "recordId": "M1-RPM-198"
+      },
+      "oldHold": "REMAINING_META_HOLD_CANDIDATE",
+      "mutation": false,
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "currentProjectionKeys": {
+        "examBlobSha": "9c0697d4d2469e3c1d243d657f1b26750673a291",
+        "standardUnitKey": "M1-06",
+        "subUnitKey": "M1-06-POLYGON_CIRCLE",
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "canonicalKeyValidity": "NO_POPULATED_KEYS",
+      "crosswalkRecordId": "M1-RPM-198",
+      "crosswalkStatus": "FAMILY_ACTIVE",
+      "semanticCrosswalkRow": [
+        {
+          "id": "M1-RPM-198",
+          "standardUnitKey": "M1-06",
+          "subUnitKey": "M1-06-POLYGON_CIRCLE",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+      "projectionReason": "FAMILY_TEMPLATE_SELECTION_PENDING",
+      "finalSemanticDisposition": "RPM_SEMANTIC_FINAL_META_ONLY",
+      "releaseEffect": "SEMANTIC_META_HOLD_RELEASED_PROJECTION_NONBLOCKING"
+    }
+  ]
+}
