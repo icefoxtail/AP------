@@ -307,3 +307,24 @@ L3/L4/CrossConcept/Condition/alias/curriculum binding 및 Pack/Shard/Compiled/Ow
 - `../../archive/textbook/`: 교재 전용 파이프라인과 결과
 - `../../archive/archive/docs/`: historical rulebook·구현계획·이전 설계
 - `../../archive/analysis/`: 특정 작업의 분석·계획 메모
+
+## 🚨 CURRENT — SVG SEMANTIC ANCHOR / LABEL-OWNER BINDING HARD RULE (2026-09-28)
+
+SVG/solutionImage의 PASS는 **필요한 숫자·문구가 존재한다는 사실만으로 성립하지 않는다.**
+CREATE와 모든 REVIEW 단계는 최종 SVG bytes의 실제 좌표/위상에서 다음 네 축을 독립 확인한다.
+
+- **ANGLE_LABEL_OWNER_BINDING:** 각도 숫자/기호는 해당 꼭짓점과 두 ray가 만드는 의도한 각 영역에 귀속되어야 한다. 값이 맞아도 다른 꼭짓점·다른 각처럼 읽히는 위치면 FAIL.
+- **SEGMENT_POINT_LABEL_COLLISION:** 길이·점·각 라벨은 자기 대상에 가장 자연스럽게 결속되고 서로 겹치지 않아야 한다. 점 이름과 길이값, 각도값과 선분/점 이름의 겹침은 FAIL.
+- **COORDINATE_SEMANTIC_PARITY:** 외심·내심·무게중심·중점·수직·평행·등거리·합동·닮음 등 SVG가 주장하는 수학적 성질은 실제 SVG 좌표/선분/교점에서도 성립해야 한다. 설명문만 맞고 그림 좌표가 틀리면 FAIL.
+- **TARGETED_RENDER_ESCALATION:** XML/좌표만으로 라벨 귀속·겹침·각 영역·clipping·가독성을 확정할 수 없으면 해당 SVG만 targeted render를 실행한다. "CODE-FIRST"는 render를 영구 생략한다는 뜻이 아니다.
+
+시각 PASS 최소식:
+`GEOMETRY_FACT_PASS && LABEL_OWNER_BINDING_PASS && LABEL_COLLISION_PASS && COORDINATE_SEMANTIC_PASS`
+이며 render escalation 조건이 발생한 경우 targeted render/recheck PASS까지 필요하다.
+
+2026-09-28 negative regression fixtures:
+`24_신흥중_2학기_중간_중2_수학 q5`(각도값-꼭짓점 귀속),
+`25_삼산중_2학기_기말_중2_기출 q12`(점/길이 라벨 겹침),
+`25_삼산중_2학기_중간_중2_수학 q13`(D의 각도값 귀속),
+`25_삼산중_2학기_중간_중2_수학 q24`(외심/수직이등분선 실제 좌표 불일치).
+이 4건과 동형 결함은 향후 생성·검수에서 반드시 FAIL/REPAIR 대상으로 잡아야 한다.
