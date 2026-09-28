@@ -1,0 +1,339 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW1_EVIDENCE_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "examFile": "23_신흥중_2학기_중간_중2_수학.js",
+  "examUid": "23_신흥중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "inventoryOrdinal": 18,
+  "createShard": 3,
+  "reviewLane": "REVIEW1-3",
+  "workingBranch": "work/middle/m2/23-sinheung-2mid",
+  "reviewAuthorityBranch": "work/intake/m2",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "createCommit": "b4c34370a54dbae7aea17cd4f4e15873a13a8df1",
+  "reviewBaseIntakeCommit": "72d8d6bf8e9a82c1fc79324fd503ef9b925d4b59",
+  "mainAuthorityCommit": "a6210adffb4a71714537a595ac781f80c1689d16",
+  "sourceBlobSha": "1c92cd38b61dc6b13c3dce79f1a666a79cf8a780",
+  "finalExamBlobSha": "1c92cd38b61dc6b13c3dce79f1a666a79cf8a780",
+  "denominator": 24,
+  "independentReview": true,
+  "calibration": {
+    "goldenSampleRefs": [
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js#q3 + archive/assets/images/25_효천고_2학기_중간_고1_기출/q03-solution.svg",
+      "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js#q8 + archive/assets/images/25_순천여고_2학기_중간_고1_기출/q08-solution.svg"
+    ],
+    "negativeSampleRefs": [
+      "archive/assets/images/24_신흥중_2학기_중간_중2_수학/q5-solution.svg — angle/label owner-binding regression fixture"
+    ],
+    "calibrationAxes": [
+      "small_board_reproducibility",
+      "visual_label_owner_binding",
+      "coordinate_semantic_parity",
+      "clipping_collision"
+    ],
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS"
+  },
+  "protectedParity": {
+    "content": "24/24 EXACT_PASS",
+    "choices": "24/24 EXACT_PASS",
+    "answer": "24/24 EXACT_PASS",
+    "imageRefs": "24/24 EXACT_PASS",
+    "questionIds": "1..24 UNIQUE_PASS",
+    "objectiveChoiceCardinality": "18/18 FIVE_CHOICES_PASS",
+    "sourceVsWorkingExamBlob": "IDENTICAL"
+  },
+  "mathReview": {
+    "status": "PASS",
+    "pass": 24,
+    "repair": 0,
+    "hold": 0,
+    "reproducibility": "24/24 PASS",
+    "curriculum": "24/24 M2 PASS",
+    "studentLanguage": "24/24 PASS"
+  },
+  "solutionReview": {
+    "status": "PASS",
+    "keep": 24,
+    "repair": 0,
+    "hold": 0,
+    "smallBoardFlow": "24/24 PASS",
+    "decisiveIntermediateSteps": "24/24 PASS"
+  },
+  "questionMicroLayout": {
+    "status": "PASS",
+    "keep": 24,
+    "polish": 0,
+    "reformat": 0,
+    "hold": 0,
+    "layoutTag": "grid",
+    "subjectiveQuestions": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "staticCapacity2upQuestions": [],
+    "reason": "GRID_DEFAULT; no deterministic STATIC_CAPACITY_EVIDENCE requiring 2up; content preserved",
+    "renderStatus": "NOT_RUN_CODE_FIRST_SUFFICIENT"
+  },
+  "jsIntegrity": {
+    "status": "PASS",
+    "questionBankJsonParse": "PASS",
+    "questionCount": 24,
+    "idsUnique": true,
+    "idsContiguous": true,
+    "objectiveFiveChoices": "18/18 PASS",
+    "answerPresent": "24/24 PASS",
+    "solutionPresent": "24/24 PASS",
+    "solutionImageRefs": [
+      "q19",
+      "q20",
+      "q21",
+      "q24"
+    ],
+    "duplicateProblemImageRefs": 0
+  },
+  "visualReview": {
+    "status": "PASS",
+    "problemRasterInventory": 21,
+    "problemRasterPass": 21,
+    "problemRasterQuestions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "sourceProblemAssetBlobs": {
+      "q1": "ce443d0c80274aae3e9bbac8a2ab8abdb683b8be",
+      "q2": "a9cf0197cd3a0ebc0753655c89790ac95bd24d73",
+      "q3": "b39b51c076b50747feb1d92dfc4121bc56598737",
+      "q4": "aca31f8224c21a6cbf4d39baebd1b5ad471f1f2d",
+      "q5": "ba4156a47f6bc43be838986dfdbba1ed6224993b",
+      "q6": "2c184df856f2b2e97a645e5a6eccf25b9ba5e939",
+      "q7": "d7ea93e4def8a6cc9188b700d6baf53502d9f7dc",
+      "q8": "78d878d0179cbf3c41942dbd8536da1b094d86ec",
+      "q9": "87de057e7d588fdbcac623a4cfd2a71ad13d33d7",
+      "q10": "2fc3a691b6772b8aeaa5165884b99915eab3defa",
+      "q11": "6600f7299361c01d792befb7a18fe67bbfde166f",
+      "q12": "ea941d9659af1f96077fa87a8581ea043d0a44c5",
+      "q13": "75fd2dab938a09861b5e97c3c7c19cb9a8b18ad3",
+      "q14": "570da2559f53bd766de4b55e1551c78453a837f0",
+      "q15": "606ed6c8b53b635784cf79c6f899f4634ebfe56f",
+      "q18": "a4af54a785f448ada442d22b3b95721065e259a7",
+      "q19": "9147c96bdea6e60bc927768d5e0edf9d5180838e",
+      "q20": "d20f3fd471279614b0810a0634ef7af16841f25c",
+      "q21": "fb6dba6f4bd1596ff8d14c07c22e1b3eaf90f77d",
+      "q22": "f5ed4ec514bd05907ad0c13ca47185e92ae88e75",
+      "q23": "1ee75f3b7a7300be7aa5b3e3c6f065dabb7f9ae4"
+    },
+    "solutionSvgInventory": 4,
+    "solutionSvgPass": 4,
+    "solutionSvgQuestions": [
+      19,
+      20,
+      21,
+      24
+    ],
+    "solutionSvgBlobs": {
+      "q19": "a6cd95babea4d9d4b9ebc398d197e7374180d68a",
+      "q20": "92faef6325dba0748edb7387ed7103fab0b87a01",
+      "q21": "bf7874baf7e711d7e9f6af2d598034c3ae713356",
+      "q24": "6668165464db0ad756a6b446edd36e34b1df8065"
+    },
+    "solutionSvgCodeFirst": "4/4 PASS",
+    "semanticBindingChecks": {
+      "q19": "AB=AC geometry symmetric; AD is actual apex angle bisector; labels/ticks bind to intended owners",
+      "q20": "two chord perpendicular bisectors pass through their chord midpoints and intersect at O=(180,145), the drawn circle center",
+      "q21": "I=(143.5,153.6) matches triangle incenter; IH is perpendicular to BC and H lies on BC",
+      "q24": "OA=OB=60 and OC=OD=90 in SVG scale; O is not midpoint of AC or BD, so counterexample is mathematically valid"
+    },
+    "labelCollision": "0/4 solution SVG PASS",
+    "clipping": "0/4 solution SVG PASS",
+    "renderStatus": "NOT_RUN_CODE_FIRST_SUFFICIENT_SOURCE_CARRIED_UNCHANGED"
+  },
+  "itemChecks": [
+    {
+      "qid": 1,
+      "status": "PASS",
+      "math": "graph y=-2 => a=0,b=-2,a+b=-2",
+      "visual": "PASS"
+    },
+    {
+      "qid": 2,
+      "status": "PASS",
+      "math": "intersection (1,-2) => a=1,b=4,a-b=-3",
+      "visual": "PASS"
+    },
+    {
+      "qid": 3,
+      "status": "PASS",
+      "math": "50x=150(x-10) => x=15",
+      "visual": "PASS"
+    },
+    {
+      "qid": 4,
+      "status": "PASS",
+      "math": "AB=BC,B=40 => exterior x=110",
+      "visual": "PASS"
+    },
+    {
+      "qid": 5,
+      "status": "PASS",
+      "math": "chained isosceles angle chase => EDF=80",
+      "visual": "PASS"
+    },
+    {
+      "qid": 6,
+      "status": "PASS",
+      "math": "angle-only condition gives similarity not congruence; choice ①",
+      "visual": "PASS"
+    },
+    {
+      "qid": 7,
+      "status": "PASS",
+      "math": "BC=DC and ED⊥AC lead to EBC≅EDC and DEC=68",
+      "visual": "PASS"
+    },
+    {
+      "qid": 8,
+      "status": "PASS",
+      "math": "circumcenter gives OA=OB=OC and OBN≅OCN; choices ②,⑤",
+      "visual": "PASS"
+    },
+    {
+      "qid": 9,
+      "status": "PASS",
+      "math": "BOC=120,COA=110 => AOB=130",
+      "visual": "PASS"
+    },
+    {
+      "qid": 10,
+      "status": "PASS",
+      "math": "incenter halves B,C => A=60",
+      "visual": "PASS"
+    },
+    {
+      "qid": 11,
+      "status": "PASS",
+      "math": "hypotenuse midpoint plus 30° side => AMC perimeter 15",
+      "visual": "PASS"
+    },
+    {
+      "qid": 12,
+      "status": "PASS",
+      "math": "A+B/2=100 and A/2+B=110 => C=40",
+      "visual": "PASS"
+    },
+    {
+      "qid": 13,
+      "status": "PASS",
+      "math": "parallelogram diagonals bisect => AO=4,BO=6; perimeter 16",
+      "visual": "PASS"
+    },
+    {
+      "qid": 14,
+      "status": "PASS",
+      "math": "angle-bisector/parallel relations => BE=CF=8,BF=2,EF=6",
+      "visual": "PASS"
+    },
+    {
+      "qid": 15,
+      "status": "PASS",
+      "math": "isosceles trapezoid projections 3+3 => BC=15, perimeter 36",
+      "visual": "PASS"
+    },
+    {
+      "qid": 16,
+      "status": "PASS",
+      "math": "general trapezoid does not have mutually bisecting diagonals; choice ①",
+      "visual": "EXEMPT"
+    },
+    {
+      "qid": 17,
+      "status": "PASS",
+      "math": "correct classification statements are ③,④",
+      "visual": "EXEMPT"
+    },
+    {
+      "qid": 18,
+      "status": "PASS",
+      "math": "E∈AC; triangle BEC gives ABE=20 and SAS ABE≅ADE => EDA=20",
+      "visual": "PASS"
+    },
+    {
+      "qid": 19,
+      "status": "PASS",
+      "math": "AB=AC, AD common, BAD=DAC => SAS and base angles equal",
+      "visual": "SVG_PASS"
+    },
+    {
+      "qid": 20,
+      "status": "PASS",
+      "math": "circle center is intersection of perpendicular bisectors of two chords",
+      "visual": "SVG_PASS"
+    },
+    {
+      "qid": 21,
+      "status": "PASS",
+      "math": "incircle radius is perpendicular distance IH from I to a side",
+      "visual": "SVG_PASS"
+    },
+    {
+      "qid": 22,
+      "status": "PASS",
+      "math": "two alternate-angle pairs plus common AC => triangle congruence",
+      "visual": "PASS"
+    },
+    {
+      "qid": 23,
+      "status": "PASS",
+      "math": "equal opposite angles + 360 sum => adjacent 180; corresponding angles imply parallel opposite sides",
+      "visual": "PASS"
+    },
+    {
+      "qid": 24,
+      "status": "PASS",
+      "math": "OA=OB and OC=OD do not imply diagonal bisection; 2/2 vs 3/3 counterexample",
+      "visual": "SVG_PASS"
+    }
+  ],
+  "changedQuestions": [],
+  "changedSolutionQuestions": [],
+  "changedSvgFiles": [],
+  "knownRepairPending": {
+    "solution": 0,
+    "visual": 0,
+    "layout": 0
+  },
+  "unresolvedItems": [],
+  "holdBox": false,
+  "createSelfCheckAudit": {
+    "status": "PASS_CONFIRMED_AFTER_INDEPENDENT_REVIEW",
+    "falsePassQuestions": [],
+    "falsePassAxes": []
+  },
+  "stageDecision": "REVIEW1_DONE",
+  "nextState": "READY_FOR_REVIEW2",
+  "reviewedAt": "2026-09-28T23:54:09+09:00"
+}
