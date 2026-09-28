@@ -17,6 +17,17 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 **모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
 
 
+### MIDDLE-SCHOOL PROBABILITY INDEPENDENCE DEFAULT — CURRENT HARD RULE (2026-09-28)
+
+**JS Archive 중학교 확률 문항의 source interpretation에서는 독립을 기본값으로 둔다.** 여러 시행/선택의 종속 관계가 문제 성립에 필요하면 원문이 그 종속 조건·연결 규칙을 별도로 제시하는 것으로 취급한다.
+
+- 원문에 별도 종속 조건·연결 규칙이 없다는 이유만으로 `독립이라는 말이 안 쓰였다`고 조건 부족/HOLD를 만들지 않는다.
+- 중학교 확률 문항에서 별도 종속 조건이 없으면 current project convention에 따라 독립 시행/선택으로 해석하고 정상 검산한다.
+- 원문이 종속 조건을 명시하면 그 조건을 그대로 적용하며 독립 기본값으로 덮어쓰지 않는다.
+- `SOURCE_CONDITION_INDEPENDENCE_UNSTATED`는 중학교 문항에서 **유효한 HOLD 코드로 사용하지 않는다.**
+- 실제 HOLD는 원문에 서로 충돌하는 종속 조건이 있거나, 명시된 종속 관계 자체가 불완전해 수학적 결과를 결정할 수 없는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
+- 기존 R1 receipt의 `SOURCE_CONDITION_INDEPENDENCE_UNSTATED`는 false source-HOLD 후보로 targeted refresh하여 제거하고, 수학/해설 전수 재검은 반복하지 않는다.
+
 ### RPM PRIMARY SEMANTIC AUTHORITY — CURRENT HARD RULE (2026-09-28)
 
 **RPM Primary의 curriculum/scope L3/L4 semantic path가 JS Archive L3/L4 분류의 최상위 정본이다.** source + independently verified final solution에서 RPM L3/L4가 deterministic하게 확정되면 그 문항의 semantic classification은 FINAL이다.

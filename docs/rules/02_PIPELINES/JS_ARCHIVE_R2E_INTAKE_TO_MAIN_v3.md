@@ -27,6 +27,16 @@ The R1 receipt should keep semantic and projection summaries separate whenever t
 
 The existing READY_FOR_R2E cohort present when this contract is adopted is processed from its frozen R1 authority. Its receipts, exam JS and sidecars are read-only whether Meta evidence is absent, old or current. R2E does not backfill or regenerate those sidecars, and does not reclassify normal R1 PASS rows. This compatibility path exists to aggregate and classify the legacy HOLD backlog, including existing RPM-to-L3/L4 mappings.
 
+### Middle-school probability independence default
+
+중학교 확률 source interpretation에서는 **별도 종속 조건·연결 규칙이 없으면 독립을 기본값**으로 적용한다. 따라서 `독립`이라는 단어가 원문에 직접 없다는 이유만으로 source condition 부족을 만들지 않는다.
+
+- `SOURCE_CONDITION_INDEPENDENCE_UNSTATED`는 중학교 R1/R2E에서 valid source HOLD가 아니다.
+- 기존 receipt에 이 코드가 있으면 current authority targeted refresh 대상으로 분류하고 false HOLD를 제거한다.
+- 원문이 별도 종속 조건을 제시하면 그 조건을 그대로 사용한다.
+- 실제 source/math HOLD는 명시된 종속 관계가 서로 충돌하거나 불완전하여 결과를 결정할 수 없을 때만 남긴다.
+- 이 targeted refresh는 해당 probability disposition/solution 영향만 재검하고 정상 수학·해설 전체를 다시 열지 않는다.
+
 ### Visual route
 
 Every new or changed SVG/geometry/solutionImage uses the current visual router, including EXPECTED FACT freeze, deterministic repair/build, geometry/parity review and required independent closure for that changed visual. R2E opens only the affected question and direct dependencies; an unchanged exam does not trigger whole-exam rendering. A proven SVG defect enters SVG_REPAIR_REQUIRED and routes through the existing repair/generation lane before targeted render.
