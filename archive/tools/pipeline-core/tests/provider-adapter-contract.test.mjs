@@ -172,6 +172,19 @@ function finalizedApplicability(status = 'VISUAL_REQUIRED') {
   return { status, artifactRequired: status !== 'VISUAL_EXEMPT', renderWitnessRequired: status !== 'VISUAL_EXEMPT', authority: { requirement: status, visualAssetStatus: status === 'VISUAL_EXEMPT' ? 'no_visual_asset_required' : 'cropped_from_full_page_bbox', action: status === 'VISUAL_EXEMPT' ? 'NONE' : 'KEEP', adjudicationId: 'q:v3', adjudicationStatus: 'RESOLVED', problemDependency: status === 'VISUAL_REQUIRED', sharedDependency: false, sourceNoVisualAssetRequired: status === 'VISUAL_EXEMPT' } };
 }
 
+test('U2 adapter binds subject plus matching artifactSha to the exact question UID', () => {
+  const a = 'sha256:' + 'a'.repeat(64);
+  const packet = { phase: 'U2', payload: [{ questionUid: 'exam|10', artifact: { path: 'assets/q10.svg', sha256: a } }] };
+  const defects = bindU2DefectsToPacketAssetSha(packet, [{ type: 'visual_defect', subject: 'exam|10', artifactSha: a, detail: 'collision' }]);
+  assert.deepEqual(defects, [{ type: 'visual_defect', subject: 'exam|10', artifactSha: a, detail: 'collision', questionUid: 'exam|10', subjectBinding: { status: 'PASS', matchedField: 'subject', questionUid: 'exam|10' }, artifactShaBinding: { status: 'PASS', matchedField: 'artifactSha', questionUid: 'exam|10' } }]);
+});
+
+test('U2 adapter does not bind a subject UID that contradicts the artifact hash', () => {
+  const a = 'sha256:' + 'a'.repeat(64), b = 'sha256:' + 'b'.repeat(64);
+  const packet = { phase: 'U2', payload: [{ questionUid: 'exam|10', artifact: { path: 'assets/q10.svg', sha256: a } }, { questionUid: 'exam|11', artifact: { path: 'assets/q11.svg', sha256: b } }] };
+  const defects = bindU2DefectsToPacketAssetSha(packet, [{ type: 'visual_defect', subject: 'exam|10', artifactSha: b, detail: 'mismatch' }]);
+  assert.equal(defects[0].questionUid, undefined);
+});
 test('U2 authority preflight rejects every non-final authority status regardless of visual applicability', () => {
   const expected = finalizedApplicability('VISUAL_EXEMPT');
   const sourceContext = { visualApplicabilities: new Map([['q', expected]]) };
