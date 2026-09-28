@@ -398,7 +398,7 @@ export function validateCanonicalProjectionKeys(candidateMeta, registry) {
     const template = registry.templates.get(templateKey);
     if (!template || template.status !== 'ACTIVE') errors.push('ADVANCED_META_TEMPLATE_INVALID');
     else if (template.parentProblemTypeKey !== problemTypeKey) errors.push('ADVANCED_META_TEMPLATE_PARENT_MISMATCH');
-    else if (text(template.ownerPack) !== canonicalOwnerPack) errors.push('ADVANCED_META_TEMPLATE_CANONICAL_OWNER_MISMATCH');
+    else if (!registry.activePacks.has(text(template.ownerPack))) errors.push('ADVANCED_META_TEMPLATE_OWNER_INVALID');
   }
   return { status: errors.length ? 'FAIL' : 'PASS', errors };
 }
@@ -518,7 +518,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
 
   const template = templateKey ? activeRegistry.templates.get(templateKey) : null;
   if (!templateKey || !template || template.status !== 'ACTIVE' || template.parentProblemTypeKey !== problemTypeKey
-    || text(template.ownerPack) !== canonicalOwnerPack || !activeRegistry.activePacks.has(text(template.ownerPack))) {
+    || !activeRegistry.activePacks.has(text(template.ownerPack))) {
     return projectionPending(currentBase, 'PROJECTION_UNMATERIALIZED', 'ACTIVE_TEMPLATE_PROJECTION_NOT_MATERIALIZED',
       { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: templateKey ? [templateKey] : [] });
   }

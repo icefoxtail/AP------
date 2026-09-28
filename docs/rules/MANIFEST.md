@@ -46,4 +46,4 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 8150 bytes | sha256 052ac837de80f4728a4500adb4f0fd222a14164bd4c6ffe74bfdfb283605258a
 - 02_PIPELINES/GENERATED_ARTIFACT_GIT_POLICY_v1.md | 11585 bytes | sha256 fc42c0b7928ad340eae694a99b74eac845fcd4c333b631515c7a1c15f7c22b56
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16860 bytes | sha256 b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca
-- 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 10104 bytes | sha256 0d03b2f0bff2b0439f1874377f19fa92b002d90792f89fb59e6589c7f225e22a
+- 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 10340 bytes | sha256 545f21969ac9fdaf994561d4ebd15493e98d485746e2275b5ce6353b4c379e19

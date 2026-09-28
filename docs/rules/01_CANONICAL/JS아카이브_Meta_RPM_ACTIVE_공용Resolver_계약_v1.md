@@ -69,7 +69,7 @@ crosswalk의 `DIRECT_ACTIVE/FAMILY_ACTIVE`는 주로 `PROJECTION_REUSE`, `*_BIND
 
 legacy schema에서 `RPM_PRIMARY_MIGRATION_GAP`을 유지해야 하면 `BINDING_PENDING/UNMATERIALIZED`의 compatibility alias로만 사용하며 `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`, `resolvablePending>0`로 승격하지 않는다.
 
-canonical ownerPack과 curriculum binding ownerPack이 다른 것은 정상 cross-pack projection이다. GLOBAL ACTIVE canonical uniqueness와 exact curriculum binding은 각각 독립 검증하며 owner 차이를 conflict로 처리하지 않는다. 실제 populated PT/TPL/CrossConcept/Condition key가 invalid이면 invalid canonical projection 오류로 별도 기록한다. 이는 projection status나 RPM semantic hold와 합치지 않는다.
+canonical PT owner, canonical TPL owner, curriculum binding owner는 서로 다른 필드다. PT와 TPL은 각자의 unique ACTIVE canonical key와 owner를 확인하고, template의 parent 관계도 별도로 확인한다. Exact curriculum binding owner는 달라도 정상 cross-pack projection이다 (예: PT canonical owner `GEOMETRY_EQUATIONS`, M2 binding owner `MIDDLE_GEOMETRY`). owner 차이 자체를 conflict로 처리하지 않는다. 실제 populated PT/TPL/CrossConcept/Condition key가 inactive·unknown이거나 parent가 틀린 경우는 invalid canonical projection 오류로 별도 기록한다. 이는 projection status나 RPM semantic hold와 합치지 않는다.
 
 ### 3.3 R2E v3
 

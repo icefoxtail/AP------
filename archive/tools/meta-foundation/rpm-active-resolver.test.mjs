@@ -227,6 +227,20 @@ test('canonical PT owner may differ from exact curriculum binding owner', () => 
   assert.equal(result.bindingOwnerPack, 'H1_FOUNDATION');
 });
 
+test('active TPL owner can differ from canonical PT owner and grade binding owner', () => {
+  assert.ok(registry.activePacks.has('MIDDLE1'), 'fixture requires the active middle-school pack');
+  const splitRegistry = { ...registry, templates: new Map(registry.templates) };
+  const template = splitRegistry.templates.get('TPL_H1_POLY_OPERATION_DIRECT');
+  splitRegistry.templates.set(template.templateKey, { ...template, ownerPack: 'MIDDLE1' });
+  const input = makeInput(rowFor('H1-RPM-001'));
+  const result = resolveMetaRoute(input, { repoRoot: root, registry: splitRegistry });
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.equal(result.ownerPack, 'H1_FOUNDATION');
+  assert.equal(result.bindingOwnerPack, 'H1_FOUNDATION');
+  assert.equal(validateResolverEvidence(input, result, { repoRoot: root, registry: splitRegistry }).status, 'PASS');
+});
+
 test('validator run receipt is mandatory before Meta finalization', () => {
   const input = makeInput(rowFor('H1-RPM-001'));
   const resolution = resolveMetaRoute(input, { repoRoot: root });

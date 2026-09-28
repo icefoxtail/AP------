@@ -142,6 +142,7 @@ function summarizeExam(target) {
   const semantic = {
     FINAL: rows.filter(row => row.rpmSemanticStatus === 'FINAL').length,
     HOLD: rows.filter(row => row.rpmSemanticStatus === 'HOLD').length,
+    UNAVAILABLE: rows.filter(row => row.rpmSemanticStatus === 'UNAVAILABLE').length,
     NOT_EVALUATED_SOURCE_HOLD: rows.filter(row => row.rpmSemanticStatus === 'NOT_EVALUATED_SOURCE_HOLD').length,
   };
   const projection = uniqueCounts(rows.filter(row => row.rpmSemanticStatus === 'FINAL'), 'legacyProjectionStatus');
@@ -194,12 +195,12 @@ const mainSha = gitText(['rev-parse', intakeRef]);
 const exams = targets.map(summarizeExam);
 const result = {
   schemaVersion: 'RPM_SEMANTIC_AUTHORITY_RESET_RECLASSIFICATION_v1',
-  status: exams.every(exam => exam.reclassifiedOldAdvancedMetaHold.HOLD === 0
-    && exam.reclassifiedOldMigrationGap.HOLD === 0 && exam.rpmSemantic.HOLD === 0) ? 'PASS' : 'HOLD',
+  status: exams.every(exam => exam.rpmSemantic.UNAVAILABLE === 0) ? 'PASS_WITH_TRUE_HOLD_REPORT' : 'REVIEW_REQUIRED',
   intakeRef,
   intakeHead: mainSha,
   reclassificationMode: 'FROZEN_R1_SEMANTIC_INPUT_ONLY_NO_SOURCE_OR_SOLUTION_REVIEW',
   createdAgainstMain: gitText(['rev-parse', 'origin/main']),
+  resolverBranchCommit: gitText(['rev-parse', 'HEAD']),
   exams,
 };
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
@@ -222,4 +223,4 @@ process.stdout.write(JSON.stringify({
     trueMetaHoldCount: exam.trueMetaHoldItems.length,
   })),
 }, null, 2) + '\n');
-if (result.status !== 'PASS') process.exitCode = 1;
+if (result.status === 'REVIEW_REQUIRED') process.exitCode = 1;
