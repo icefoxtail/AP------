@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "operation": "INVOKE_STATELESS_AUDITOR_PHASE",
+  "status": "COMPLETED",
+  "inputSha": "sha256:095f080b332052f1372f897158e0ab554e02259c57d2aa4bcf7a97c13f1b77ee",
+  "packetSha": "sha256:133981bb759f50517e06aa5f14c25c3e53cc4656ed4ba191dd7b4a3468671149",
+  "externalTaskId": "01a0e965-21ee-7890-af29-23e6cdab08c0",
+  "phase": "U2",
+  "sessionId": "01a0e965-2364-7802-805c-919eba78a4bd",
+  "contextId": "01a0e965-2364-7802-805c-919eba78a4bd",
+  "providerInvocationId": "01a0e969-bd19-7452-9b95-751d029bbde9",
+  "inputVisibilityProfile": "ARTIFACT_ONLY",
+  "priorReviewVisibility": "NONE",
+  "subagentToolsEnabled": false,
+  "usedTokens": "NOT_AVAILABLE",
+  "evidence": [
+    {
+      "type": "visual_observation",
+      "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+      "detail": "The supplied q10 render shows the circle, axes, point labels, and coordinate annotations; the circle is tangent to the horizontal axis at X and to the vertical axis at Y, consistent with the displayed coordinates."
+    },
+    {
+      "type": "visual_observation",
+      "subjectSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+      "detail": "The supplied q14 render shows the circle and chord AB passing through M, with OM drawn perpendicular to AB; the displayed coordinates place M at the midpoint of AB and make OM perpendicular to AB."
+    },
+    {
+      "type": "visual_observation",
+      "subjectSha": "sha256:8ba06a80594fd7cf4ab8f2614f5a8b138d211b4e3f6a679a12e8d5827a965793",
+      "detail": "The supplied q15 render shows A, B, C, D, E, and H with the indicated perpendicular constructions; the displayed coordinates are consistent with AD perpendicular to BC, CE perpendicular to AB, and H at their intersection."
+    },
+    {
+      "type": "visual_observation",
+      "subjectSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+      "detail": "The supplied q17 render shows the circle, tangent points T1 and T2, and the labeled tangent lines; the points and lines are visible in the supplied image."
+    }
+  ],
+  "defects": [
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+      "detail": "The q10 render has severe label overlap at the circle center: the C label collides with the word 'circle', and nearby coordinate/point annotations overlap around X and Y, reducing legibility."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+      "detail": "The q11 render crowds the A1 label against the lower endpoint of the vertical segment and the slanted line, making the point label difficult to distinguish."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+      "detail": "The supplied q10 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+      "detail": "The supplied q11 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:373311189fd4eebf2220b6c66318fc5b138f308e26ae6607331e93db3cfd1dea",
+      "detail": "The supplied q12 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:9875e7e1af0ec321981dbf1961fcafaf231c6c6579330e118541810cb2fc0cec",
+      "detail": "The supplied q13 image has very low contrast: its dark gray text is difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+      "detail": "The supplied q14 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:8ba06a80594fd7cf4ab8f2614f5a8b138d211b4e3f6a679a12e8d5827a965793",
+      "detail": "The supplied q15 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:51a1a9852ed7bb3ac6a97c31bf6c3999f1b70020fd1d24ec943c5a5fc50675ae",
+      "detail": "The supplied q16 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+      "detail": "The supplied q17 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:02afd922cec765b9f838983653387c961803c2c100f235e089b6af955d9d5f31",
+      "detail": "The supplied q02 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:df1f55c854cec21abae3c1a153faf9210e4aae6e614edafed58f76c09a685666",
+      "detail": "The supplied q03 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:32e3b33243accd6baf02f97e1d316edb9715952156003b2b4da056f8377db57f",
+      "detail": "The supplied q04 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:94d2155bbc2658ab871371cdf504a8ee32ced9465e53a6e8c2a3a0200077575f",
+      "detail": "The supplied q05 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:7c9ffcfb04dc66430e1849a197405c829e2cb047ddc0f637ce634a8f406757fe",
+      "detail": "The supplied q06 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:71d1a632adb601bcc1c59efad75d32801ae6ed8ad8fe470f346a1e2ec962379b",
+      "detail": "The supplied q08 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+    },
+    {
+      "type": "visual_defect",
+      "subjectSha": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+      "detail": "The supplied q09 image has very low contrast: its dark gray circles, line, and labels are difficult to distinguish from the black background."
+    }
+  ]
+}

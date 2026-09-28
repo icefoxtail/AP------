@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "PROVIDER_PARTIAL_FINAL_AUDIT_HOLD_v1",
+  "status": "HOLD",
+  "workBatchId": "visang-geometry-major-sol-review4-20260929",
+  "runId": "visang-geometry-major-sol-review4-20260929",
+  "freezeSha": "sha256:897d3cf86b170e5204fed2d442327a95c675d7956d72cbe3b0ea444a1d12cdab",
+  "launchId": "visang-geometry-major-sol-review4-20260929:2",
+  "externalId": "01a0e965-21ee-7890-af29-23e6cdab08c0",
+  "phaseReached": "U2",
+  "completedPhases": [
+    "U1",
+    "U2"
+  ],
+  "notInvoked": [
+    "U3"
+  ],
+  "sourceResponses": {
+    "U1": {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review4-20260929/u1-response.json",
+      "sha256": "sha256:a191773150bf89a3008eec655100f0776dcd8653545e3f362069f94f118b827c",
+      "providerInvocationId": "01a0e969-1860-7e03-b274-9a16d3a1f76e",
+      "evidenceCount": 2
+    },
+    "U2": {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review4-20260929/u2-response.json",
+      "sha256": "sha256:5f295d3c98a12ab21fc2c123987ab5af65bd183fe1b801da9d36f86a0dc6da42",
+      "providerInvocationId": "01a0e969-bd19-7452-9b95-751d029bbde9",
+      "evidenceCount": 4,
+      "rawDefectCount": 17
+    }
+  },
+  "dispatchError": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED",
+  "errorInterpretation": "The provider returned U1 and U2 responses, but the U2 defects omitted questionUid and recognized scope. The pipeline dispatcher stopped while binding U2 defects to the frozen launch scope before invoking U3.",
+  "u2DefectScopeCrosswalk": [
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+        "detail": "The q10 render has severe label overlap at the circle center: the C label collides with the word 'circle', and nearby coordinate/point annotations overlap around X and Y, reducing legibility."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+        "detail": "The q11 render crowds the A1 label against the lower endpoint of the vertical segment and the slanted line, making the point label difficult to distinguish."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+        "detail": "The supplied q10 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+        "detail": "The supplied q11 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:373311189fd4eebf2220b6c66318fc5b138f308e26ae6607331e93db3cfd1dea",
+        "detail": "The supplied q12 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:9875e7e1af0ec321981dbf1961fcafaf231c6c6579330e118541810cb2fc0cec",
+        "detail": "The supplied q13 image has very low contrast: its dark gray text is difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+        "detail": "The supplied q14 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:8ba06a80594fd7cf4ab8f2614f5a8b138d211b4e3f6a679a12e8d5827a965793",
+        "detail": "The supplied q15 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:51a1a9852ed7bb3ac6a97c31bf6c3999f1b70020fd1d24ec943c5a5fc50675ae",
+        "detail": "The supplied q16 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+        "detail": "The supplied q17 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:02afd922cec765b9f838983653387c961803c2c100f235e089b6af955d9d5f31",
+        "detail": "The supplied q02 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:df1f55c854cec21abae3c1a153faf9210e4aae6e614edafed58f76c09a685666",
+        "detail": "The supplied q03 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:32e3b33243accd6baf02f97e1d316edb9715952156003b2b4da056f8377db57f",
+        "detail": "The supplied q04 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:94d2155bbc2658ab871371cdf504a8ee32ced9465e53a6e8c2a3a0200077575f",
+        "detail": "The supplied q05 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:7c9ffcfb04dc66430e1849a197405c829e2cb047ddc0f637ce634a8f406757fe",
+        "detail": "The supplied q06 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:71d1a632adb601bcc1c59efad75d32801ae6ed8ad8fe470f346a1e2ec962379b",
+        "detail": "The supplied q08 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    },
+    {
+      "rawDefect": {
+        "type": "visual_defect",
+        "subjectSha": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+        "detail": "The supplied q09 image has very low contrast: its dark gray circles, line, and labels are difficult to distinguish from the black background."
+      },
+      "scopeMapping": null,
+      "scopeMappingMethod": "Exact subjectSha match to the committed visual_asset_manifest; raw provider defect remains unchanged and unscoped in its source response."
+    }
+  ],
+  "u1MathConsistencyObservation": {
+    "questionUidV2": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|16",
+    "providerReportedIndependentAnswer": "a=9, b=3",
+    "candidateAnswer": "a=6, b=3",
+    "independentRecalculation": "B=(-a,-b); after x-axis reflection D=(-a,b); after y=x reflection C=(b,-a). G=((a-a+b)/3,(b-b-a)/3)=(b/3,-a/3)=(1,-2), so b=3 and a=6.",
+    "disposition": "REVIEW_CONFLICT_REQUIRES_INDEPENDENT_U3_ADJUDICATION; do not treat the candidate as wrong from this aggregate text alone."
+  },
+  "dispatchExecution": {
+    "modelInvocationCount": 2,
+    "semanticEvidenceCount": 6,
+    "providerTurnU3": 0,
+    "preDispatchFailure": false,
+    "actualProviderResponsesReturned": true,
+    "retryAuthorizedByThisReport": false
+  },
+  "providerRoute": {
+    "provider": "CodexAppServer",
+    "model": "gpt-6-luna/max",
+    "reasoningEffort": null
+  },
+  "nextStep": "Keep this launch as FAILED/MODEL_STATE_AMBIGUOUS_FAILURE. No retry, no U3 completion is fabricated. Require coordinator/user decision for a corrected audit run or supported provider output repair."
+}

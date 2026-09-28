@@ -4,7 +4,7 @@
   "runId": "visang-geometry-major-sol-review3-20260929",
   "revision": 2,
   "inputSha": "sha256:079e29d0448269ead3f38a0202d03b5c8a7c5e7fc6129f4eb46b536c3048fe40",
-  "status": "REVIEW_READY_WAITING_FOR_PROVIDER_SLOT",
+  "status": "HOLD_PARTIAL_FINAL_AUDIT_POST_FREEZE_VISUAL_REPAIR",
   "providerPreflightReservedDispatched": false,
   "recoveredCandidateGenerationFailures": [
     {
@@ -218,5 +218,81 @@
       "mergeCommit": "ffb470f78",
       "purpose": "provider model/reasoning environment configuration"
     }
-  ]
-}\n
+  ],
+  "nativeProviderInputSizeCheck": {
+    "reportRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/provider_native_input_size_audit.json",
+    "status": "PASS_SIZE_ONLY",
+    "phases": [
+      {
+        "phase": "U1",
+        "serializedInputBytes": 617017,
+        "limitBytes": 1048576,
+        "under1MiB": true
+      },
+      {
+        "phase": "U2",
+        "serializedInputBytes": 525572,
+        "limitBytes": 1048576,
+        "under1MiB": true
+      },
+      {
+        "phase": "U3",
+        "serializedInputBytes": 525595,
+        "limitBytes": 1048576,
+        "under1MiB": true
+      }
+    ],
+    "packetsSealed": false,
+    "preflightReservedDispatched": false,
+    "requiredRecheck": "Repeat against sealed U1/U2/U3 packets before reservation."
+  },
+  "providerRoute": {
+    "model": "gpt-6-luna",
+    "reasoningEffort": "max",
+    "envVars": {
+      "APMATH_CODEX_MODEL": "gpt-6-luna",
+      "APMATH_CODEX_REASONING_EFFORT": "max",
+      "APMATH_NODE_MODULES": "C:/Users/USER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    },
+    "status": "CONFIGURED_NOT_PREFLIGHTED"
+  },
+  "providerPhaseResults": {
+    "U1": {
+      "status": "RESPONSE_RECEIVED",
+      "invocationId": "01a0e969-1860-7e03-b274-9a16d3a1f76e",
+      "evidenceCount": 2
+    },
+    "U2": {
+      "status": "RESPONSE_RECEIVED_SCOPE_BINDING_FAILED",
+      "invocationId": "01a0e969-bd19-7452-9b95-751d029bbde9",
+      "evidenceCount": 4,
+      "rawDefectCount": 17
+    },
+    "U3": {
+      "status": "NOT_INVOKED"
+    }
+  },
+  "dispatchHold": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+  "decision": "Preserve review4 as a historical failed partial audit. The repaired candidate needs a new hash-bound run and fresh FINAL_AUDIT; no PASS or release closure is claimed.",
+  "postFreezeChange": {
+    "event": "q11 label-only solution SVG repair requested by independent visual review",
+    "currentCandidateSha256": "sha256:a24fd1772f81191c5779e4af93f4fb4039e01fd25af95be1e9894bc9f078e652",
+    "candidateHashAlignedWithFrozenReview4": false,
+    "localVisualFactSvgParity": "PASS",
+    "supplementaryActualSolutionBrowserRender": "OBSERVED",
+    "pipelineV2FinalReview": "PENDING",
+    "freshRunRequired": true,
+    "providerRetry": "NOT_DISPATCHED"
+  },
+  "postFreezeCandidateRepair": {
+    "frozenCandidateSha256": "sha256:7da3c700983712e7adab9390eda3c6306799ef652f0904dd55dd8251382745c",
+    "currentCandidateSha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
+    "candidateHashAlignedWithFrozenReview4": false,
+    "q10Q11LocalParity": "PASS",
+    "assetManifestRebound": true,
+    "solutionRender": "SUPPLEMENTARY_BROWSER_OBSERVED",
+    "pipelineFinalReview": "PENDING",
+    "freshRunRequired": true,
+    "providerRetry": "NOT_DISPATCHED"
+  }
+}

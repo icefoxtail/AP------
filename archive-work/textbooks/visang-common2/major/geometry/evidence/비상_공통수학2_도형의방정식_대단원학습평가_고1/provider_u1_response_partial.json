@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "operation": "INVOKE_STATELESS_AUDITOR_PHASE",
+  "status": "COMPLETED",
+  "inputSha": "sha256:34a2704fca9247fae8732eecdfe06722c349987100a68118856ea7e2ec8b2151",
+  "packetSha": "sha256:764e4c02ec17804c8211910e6e3dbf228e8f62ecb5d5f1b63da0f1b3ebb7642b",
+  "externalTaskId": "01a0e965-21ee-7890-af29-23e6cdab08c0",
+  "phase": "U1",
+  "sessionId": "01a0e965-2289-72e1-81d5-80cde71c1282",
+  "contextId": "01a0e965-2289-72e1-81d5-80cde71c1282",
+  "providerInvocationId": "01a0e969-1860-7e03-b274-9a16d3a1f76e",
+  "inputVisibilityProfile": "SOURCE_ONLY",
+  "priorReviewVisibility": "NONE",
+  "subagentToolsEnabled": false,
+  "usedTokens": "NOT_AVAILABLE",
+  "evidence": [
+    {
+      "domain": "SOURCE",
+      "status": "PASS",
+      "subjectSha": "sha256:764e4c02ec17804c8211910e6e3dbf228e8f62ecb5d5f1b63da0f1b3ebb7642b",
+      "detail": "Reviewed all 17 declared question UIDs against the supplied source text and the two supplied images. The q05 and q15 diagrams are consistent with their accompanying text."
+    },
+    {
+      "domain": "MATH",
+      "status": "PASS",
+      "subjectSha": "sha256:764e4c02ec17804c8211910e6e3dbf228e8f62ecb5d5f1b63da0f1b3ebb7642b",
+      "detail": "Independent solutions: 1) 2; 2) 8√2; 3) (0,−7); 4) y=4x+9; 5) 6; 6) 7; 7) (−4,6); 8) 2√5; 9) −2; 10) a=7, b=4; 11) 2√2+2√5; 12) 1/5<k<3/5; 13) a=−1 or 2; 14) maximum 7 and minimum 3; 15) (1) √5, (2) 10√5−10; 16) a=9, b=3; 17) k=4 or −6."
+    }
+  ],
+  "defects": []
+}

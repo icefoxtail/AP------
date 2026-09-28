@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "PARTIAL_PROVIDER_FINAL_AUDIT_HOLD_v1",
+  "status": "HOLD",
+  "sourceExamId": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT",
+  "denominator": 17,
+  "workBatchId": "visang-geometry-major-sol-review4-20260929",
+  "runId": "visang-geometry-major-sol-review4-20260929",
+  "revision": 2,
+  "inputSha": "sha256:af920ee11a3d0fbd23f395023c631bd887b7135dea2cb8a802724742408db5f9",
+  "freezeSha": "sha256:897d3cf86b170e5204fed2d442327a95c675d7956d72cbe3b0ea444a1d12cdab",
+  "plan": {
+    "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review4-20260929/final-audit-plan-attempt2.json",
+    "launchId": "visang-geometry-major-sol-review4-20260929:2",
+    "model": "gpt-6-luna/max",
+    "externalId": "01a0e965-21ee-7890-af29-23e6cdab08c0"
+  },
+  "reconciledLaunches": [
+    {
+      "launchId": "visang-geometry-major-sol-review4-20260929:1",
+      "status": "FAILED",
+      "failureClass": "PRE_MODEL_EXECUTION_FAILURE",
+      "modelInvocationCount": 0,
+      "reason": "duplicate local reserve call was rejected before provider dispatch"
+    },
+    {
+      "launchId": "visang-geometry-major-sol-review4-20260929:2",
+      "status": "FAILED",
+      "failureClass": "MODEL_STATE_AMBIGUOUS_FAILURE",
+      "modelInvocationCount": 2,
+      "completedPhases": [
+        "U1",
+        "U2"
+      ],
+      "notInvoked": [
+        "U3"
+      ],
+      "error": "HOLD:PROVIDER_DEFECT_SCOPE_REQUIRED"
+    }
+  ],
+  "u1": {
+    "status": "COMPLETED",
+    "providerInvocationId": "01a0e969-1860-7e03-b274-9a16d3a1f76e",
+    "domainAssessments": [
+      {
+        "domain": "SOURCE",
+        "status": "PASS",
+        "subjectSha": "sha256:764e4c02ec17804c8211910e6e3dbf228e8f62ecb5d5f1b63da0f1b3ebb7642b",
+        "detail": "Reviewed all 17 declared question UIDs against the supplied source text and the two supplied images. The q05 and q15 diagrams are consistent with their accompanying text."
+      },
+      {
+        "domain": "MATH",
+        "status": "PASS",
+        "subjectSha": "sha256:764e4c02ec17804c8211910e6e3dbf228e8f62ecb5d5f1b63da0f1b3ebb7642b",
+        "detail": "Independent solutions: 1) 2; 2) 8√2; 3) (0,−7); 4) y=4x+9; 5) 6; 6) 7; 7) (−4,6); 8) 2√5; 9) −2; 10) a=7, b=4; 11) 2√2+2√5; 12) 1/5<k<3/5; 13) a=−1 or 2; 14) maximum 7 and minimum 3; 15) (1) √5, (2) 10√5−10; 16) a=9, b=3; 17) k=4 or −6."
+      }
+    ],
+    "defects": [],
+    "responseRef": "alive/runtime/provider-bridge/visang-geometry-major-sol-review4-20260929/u1-response.json"
+  },
+  "u1AggregateMathConflict": {
+    "questionUidV2": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|16",
+    "providerAggregateAnswer": "a=9, b=3",
+    "candidateAnswer": "a=6, b=3",
+    "independentRecalculation": "B=(-a,-b); after reflecting B over x-axis D=(-a,b); reflecting D over y=x gives C=(b,-a). The centroid is (b/3,-a/3)=(1,-2), so b=3 and a=6.",
+    "disposition": "CONFLICT_IN_U1_OUTPUT; U3 did not run, so the final mathematical review is unresolved."
+  },
+  "u2": {
+    "status": "COMPLETED",
+    "providerInvocationId": "01a0e969-bd19-7452-9b95-751d029bbde9",
+    "evidence": [
+      {
+        "type": "visual_observation",
+        "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+        "detail": "The supplied q10 render shows the circle, axes, point labels, and coordinate annotations; the circle is tangent to the horizontal axis at X and to the vertical axis at Y, consistent with the displayed coordinates."
+      },
+      {
+        "type": "visual_observation",
+        "subjectSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+        "detail": "The supplied q14 render shows the circle and chord AB passing through M, with OM drawn perpendicular to AB; the displayed coordinates place M at the midpoint of AB and make OM perpendicular to AB."
+      },
+      {
+        "type": "visual_observation",
+        "subjectSha": "sha256:8ba06a80594fd7cf4ab8f2614f5a8b138d211b4e3f6a679a12e8d5827a965793",
+        "detail": "The supplied q15 render shows A, B, C, D, E, and H with the indicated perpendicular constructions; the displayed coordinates are consistent with AD perpendicular to BC, CE perpendicular to AB, and H at their intersection."
+      },
+      {
+        "type": "visual_observation",
+        "subjectSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+        "detail": "The supplied q17 render shows the circle, tangent points T1 and T2, and the labeled tangent lines; the points and lines are visible in the supplied image."
+      }
+    ],
+    "rawDefectCount": 17,
+    "rawDefects": [
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+          "detail": "The q10 render has severe label overlap at the circle center: the C label collides with the word 'circle', and nearby coordinate/point annotations overlap around X and Y, reducing legibility."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|10",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+          "detail": "The q11 render crowds the A1 label against the lower endpoint of the vertical segment and the slanted line, making the point label difficult to distinguish."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|11",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:7205f518dd6c7d462a2bf0dfc6991b6cc3038f90fc3fcdadb7548d2c602f282f",
+          "detail": "The supplied q10 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|10",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:a81d143bf933193fa67f378d1cb46f387974d7d4e2ebda2ec0b135a7d9913efa",
+          "detail": "The supplied q11 image has very low contrast: its dark gray lines and text are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|11",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:373311189fd4eebf2220b6c66318fc5b138f308e26ae6607331e93db3cfd1dea",
+          "detail": "The supplied q12 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|12",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:9875e7e1af0ec321981dbf1961fcafaf231c6c6579330e118541810cb2fc0cec",
+          "detail": "The supplied q13 image has very low contrast: its dark gray text is difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|13",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+          "detail": "The supplied q14 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:8ba06a80594fd7cf4ab8f2614f5a8b138d211b4e3f6a679a12e8d5827a965793",
+          "detail": "The supplied q15 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|15",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:51a1a9852ed7bb3ac6a97c31bf6c3999f1b70020fd1d24ec943c5a5fc50675ae",
+          "detail": "The supplied q16 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|16",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+          "detail": "The supplied q17 image has very low contrast: its dark gray circle, lines, and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:02afd922cec765b9f838983653387c961803c2c100f235e089b6af955d9d5f31",
+          "detail": "The supplied q02 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|2",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:df1f55c854cec21abae3c1a153faf9210e4aae6e614edafed58f76c09a685666",
+          "detail": "The supplied q03 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|3",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:32e3b33243accd6baf02f97e1d316edb9715952156003b2b4da056f8377db57f",
+          "detail": "The supplied q04 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|4",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:94d2155bbc2658ab871371cdf504a8ee32ced9465e53a6e8c2a3a0200077575f",
+          "detail": "The supplied q05 image has very low contrast: its dark gray lines and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|5",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:7c9ffcfb04dc66430e1849a197405c829e2cb047ddc0f637ce634a8f406757fe",
+          "detail": "The supplied q06 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|6",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:71d1a632adb601bcc1c59efad75d32801ae6ed8ad8fe470f346a1e2ec962379b",
+          "detail": "The supplied q08 image has very low contrast: its dark gray line and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|8",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      },
+      {
+        "original": {
+          "type": "visual_defect",
+          "subjectSha": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+          "detail": "The supplied q09 image has very low contrast: its dark gray circles, line, and labels are difficult to distinguish from the black background."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+        "scopeMappingStatus": "EXACT_PACKET_ARTIFACT_SHA_MATCH",
+        "mappingSource": "U2 packet artifact.sha256 and questionUid; provider defect object itself did not contain questionUid/scope."
+      }
+    ],
+    "unresolvedScopeCount": 0,
+    "responseRef": "alive/runtime/provider-bridge/visang-geometry-major-sol-review4-20260929/u2-response.json"
+  },
+  "dispatchFailure": {
+    "code": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+    "details": "The U2 response returned visual_defect objects with subjectSha/detail but no questionUid or recognized scope. The pipeline dispatcher threw while binding provider defects to the frozen 17-item launch before U3 could start."
+  },
+  "resolution": "The raw U1/U2 provider responses and partial-failure receipt are preserved. No U3 result, FINAL_AUDIT PASS, visual-parity PASS, or pipeline V2 closeout is claimed. No retry was dispatched after the scope error.",
+  "workBatchState": {
+    "status": "HOLD",
+    "lastHold": {
+      "at": "2026-09-28T19:16:34.642Z",
+      "code": "HOLD:MODEL_STATE_AMBIGUOUS_FAILURE",
+      "failureClass": "MODEL_STATE_AMBIGUOUS_FAILURE",
+      "failedLaunchId": "visang-geometry-major-sol-review4-20260929:2",
+      "freezeSha": "sha256:897d3cf86b170e5204fed2d442327a95c675d7956d72cbe3b0ea444a1d12cdab",
+      "executionFailureFingerprint": "sha256:cd1fe411ffdb346f6334321f1b8da6571770858496953ae2145ef9235226a771",
+      "executionAttempt": 1
+    },
+    "executionRecoveryNextAction": "HUMAN_DECISION_REQUIRED_FOR_ANOTHER_MODEL_ATTEMPT"
+  },
+  "candidateAtFreeze": {
+    "path": "archive-work/textbooks/visang-common2/major/geometry/js/비상_공통수학2_도형의방정식_대단원학습평가_고1.js",
+    "sha256": "sha256:7da3c700983712e7adab9390eda3c6306799ef652f0904dd55dd8251382745c6"
+  },
+  "currentCandidateAfterVisualRepairs": {
+    "path": "archive-work/textbooks/visang-common2/major/geometry/js/비상_공통수학2_도형의방정식_대단원학습평가_고1.js",
+    "sha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
+    "changes": [
+      "Q10 solutionImage switched to q10-solution-reviewed-v2.svg",
+      "Q11 solutionImage points to label-repositioned q11-solution-reviewed.svg"
+    ],
+    "manifestDriftQ02Q12Q13Q15": "CURRENT_MANIFEST_REBOUND_TO_LIVE_CANDIDATE_REFS_AFTER_FREEZE"
+  },
+  "freezeValidityForCurrentCandidate": "HISTORICAL_ONLY_CANDIDATE_HASH_MISMATCH"
+}

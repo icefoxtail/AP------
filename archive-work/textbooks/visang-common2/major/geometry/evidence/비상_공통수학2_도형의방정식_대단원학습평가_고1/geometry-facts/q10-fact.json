@@ -10,11 +10,6 @@
         "y": 0
       },
       {
-        "id": "C",
-        "x": -2,
-        "y": 2
-      },
-      {
         "id": "X",
         "x": -2,
         "y": 0
@@ -23,31 +18,11 @@
         "id": "Y",
         "x": 0,
         "y": 2
-      },
-      {
-        "id": "xL",
-        "x": -4,
-        "y": 0
-      },
-      {
-        "id": "xR",
-        "x": 1,
-        "y": 0
-      },
-      {
-        "id": "yB",
-        "x": 0,
-        "y": -1
-      },
-      {
-        "id": "yT",
-        "x": 0,
-        "y": 4
       }
     ],
     "circles": [
       {
-        "id": "Ccircle",
+        "id": "C",
         "x": -2,
         "y": 2,
         "radius": 2
@@ -55,35 +30,20 @@
     ],
     "segments": [
       {
-        "id": "CX",
-        "start": "C",
+        "id": "xAxis",
+        "start": "O",
         "end": "X"
       },
       {
-        "id": "CY",
-        "start": "C",
-        "end": "Y"
-      },
-      {
-        "id": "xAxis",
-        "start": "xL",
-        "end": "xR"
-      },
-      {
         "id": "yAxis",
-        "start": "yB",
-        "end": "yT"
+        "start": "O",
+        "end": "Y"
       }
     ],
     "relations": [
       {
-        "from": "C",
+        "from": "O",
         "to": "X",
-        "relation": "segment"
-      },
-      {
-        "from": "C",
-        "to": "Y",
         "relation": "segment"
       }
     ],

@@ -287,7 +287,7 @@ window.questionBank = [
     "subUnit": "원의 방정식",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q10-solution-reviewed.svg",
+    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q10-solution-reviewed-v2.svg",
     "solutionImageAlt": "제2사분면에 중심을 둔 원과 두 좌표축에 접하는 점.",
     "solutionImageCaption": "이동과 원점대칭을 마친 원의 중심은 (-2,2), 반지름은 2이며 두 좌표축에 접한다.",
     "solutionImageSize": "medium"
@@ -316,7 +316,7 @@ window.questionBank = [
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q11-solution.svg",
+    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_대단원학습평가_고1/q11-solution-reviewed.svg",
     "solutionImageAlt": "A를 x축에 대칭한 점 A′와 선분 A′B가 x축과 만나는 점 C.",
     "solutionImageCaption": "최단 경로는 A′, C, B가 한 직선 위에 놓일 때이며 C=(5/2,0)이다.",
     "solutionImageSize": "medium"
