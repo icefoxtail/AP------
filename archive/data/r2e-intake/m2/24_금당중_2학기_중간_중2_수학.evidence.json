@@ -1,199 +1,157 @@
 {
-  "schema": "JS_ARCHIVE_RESET_CREATE_EVIDENCE_v2",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-  "mainAuthorityCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+  "mainAuthorityCommit": "9a955143a4d636c69c4aa27430459f513d03879d",
   "examFile": "24_금당중_2학기_중간_중2_수학.js",
   "examUid": "24_금당중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "B",
-  "stage": "CREATE",
+  "sourceLane": "B",
+  "lane": "REVIEW1-2",
+  "stage": "R1",
+  "reviewStage": "REVIEW1_DONE",
   "denominator": 25,
   "source": {
     "jsSourceGitBlobSha": "60f6b46801aaa68132c85d8c71d5dafecf62ccda",
+    "sourceAuthorityGitBlobSha": "60f6b46801aaa68132c85d8c71d5dafecf62ccda",
     "sourceTextExactParityStatus": "PASS",
     "sourceTextExactParity": "25/25",
     "choicesExactParityStatus": "PASS",
     "choicesExactParity": "25/25",
     "answerExactParity": "25/25",
     "problemImageRefExactParity": "25/25",
-    "problemPngAssetBlobParity": "12/12",
-    "finalJsAuthority": "SOURCE_EXACT_BYTES"
+    "referencedProblemImages": "12/12 CODE_FIRST_SOURCE_PARITY"
+  },
+  "math": {
+    "PASS": 25,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
   },
   "questionLayout": {
     "status": "PASS",
-    "denominator": 25,
     "KEEP": 25,
+    "POLISH": 0,
     "REFORMAT": 0,
     "HOLD": 0,
-    "policy": "AUTO-FIRST",
-    "staticCapacityEvidence": "all 25 retained grid; no deterministic static-capacity evidence requiring subjective-2up",
-    "knownQuestionLayoutRepairPending": 0,
+    "staticCapacity2upQuestions": [],
     "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "solution": {
-    "solutionSelfCheckStatus": "PASS",
-    "denominator": 25,
     "KEEP": 25,
     "REPAIR": 0,
     "TRUE_HOLD": 0,
-    "knownSolutionRepairPending": 0,
-    "verification": "fresh independent arithmetic/algebra/geometry verification; all 25 reproduce protected answers",
-    "probabilityIndependenceInterpretation": "NOT_APPLICABLE_NO_PROBABILITY_ITEM"
+    "knownSolutionRepairPending": 0
+  },
+  "reproducibility": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "microLayout": {
+    "KEEP": 25,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0
+  },
+  "curriculumTerminology": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "studentLanguage": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0
   },
   "visual": {
-    "status": "PASS",
-    "svgRuleComplianceStatus": "PASS",
-    "sourceProblemVisuals": "12/12 GIT_BLOB_EXACT_PARITY",
-    "solutionSvgInventory": 3,
-    "solutionSvgCreatedOrChanged": 3,
+    "status": "PASS_CODE_FIRST",
+    "sourceProblemVisuals": "12/12 PASS",
+    "connectedSolutionSvg": "3/3 PASS_AFTER_REPAIR",
     "dispositionSummary": {
-      "SATISFIED_BY_SOURCE_PROBLEM_VISUAL": 9,
-      "VISUAL_EXEMPT": 13,
-      "SOLUTION_SVG_PRESENT": 3,
-      "ADD_FROM_SOURCE_AUTHORITY": 3,
-      "REPAIR": 0,
-      "REBUILD": 0
+      "KEEP": 0,
+      "REPAIR": 3,
+      "REBUILD": 0,
+      "HOLD": 0
     },
-    "svgItems": [
+    "repairedQuestions": [
+      9,
+      10,
+      23
+    ],
+    "repairedFiles": [
       {
-        "qid": 9,
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q9-solution.svg",
-        "action": "ADD_FROM_SOURCE_AUTHORITY",
-        "gitBlobSha": "5511b0bcb0f86e486c9e3ff27d2989be9ccc56e7",
-        "sha256": "sha256:bc2d48a3d0210d87d81ee1ff938913dd31c27b1d85abe948d9d9b1380ff119b4",
-        "expectedFacts": [
-          "DE∥BC",
-          "A-DE 높이 h/2",
-          "G-DE 높이 h/6",
-          "[ADE]:[GDE]=3:1"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
-        "solutionVisualParity": "PASS"
+        "oldGitBlobSha": "5511b0bcb0f86e486c9e3ff27d2989be9ccc56e7",
+        "newGitBlobSha": "a499c0fa84f1ea581486847362998eea0b9208d7",
+        "sha256": "sha256:e40321b8e68d58f85826735733b7a72bbf26cd5e0de3c4ed7422800ee8567003",
+        "reason": "BOTTOM_CAPTION_CLIP_RISK"
       },
       {
-        "qid": 10,
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q10-solution.svg",
-        "action": "ADD_FROM_SOURCE_AUTHORITY",
-        "gitBlobSha": "4fc57777e13807c59b63df9d293ab00cde7c7e17",
-        "sha256": "sha256:b31364465ef84db749544e36a05c85f584da41aa2ec1f5a34b47e945f297419f",
-        "expectedFacts": [
-          "BC'=BC=10",
-          "AB=8",
-          "AC'=6",
-          "AD=10",
-          "DC'=4"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
-        "solutionVisualParity": "PASS"
+        "oldGitBlobSha": "4fc57777e13807c59b63df9d293ab00cde7c7e17",
+        "newGitBlobSha": "8a88e16a6f2dd0aee8cad3e0cc19e753f5458166",
+        "sha256": "sha256:e3e8ff28e213be238886cfccd64ccd0a1cce77e50535dd289949240e41b66b2f",
+        "reason": "BOTTOM_CAPTION_CLIP_RISK"
       },
       {
-        "qid": 23,
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q23-solution.svg",
-        "action": "ADD_FROM_SOURCE_AUTHORITY",
-        "gitBlobSha": "3b788ee88f6e3ec077348a9dc2086dee64fb4217",
-        "sha256": "sha256:13fa5370ed85abff164511e02ae1cdf26676ac145a56c40fb6e7047e6be2bb95",
-        "expectedFacts": [
-          "AD∥EF∥BC",
-          "AE:EB=8:4",
-          "EP=2",
-          "EQ=10",
-          "PQ=8"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
-        "solutionVisualParity": "PASS"
+        "oldGitBlobSha": "3b788ee88f6e3ec077348a9dc2086dee64fb4217",
+        "newGitBlobSha": "9df12766a8f0655c7ec2feab93b2bf022d787c1a",
+        "sha256": "sha256:ffffa58442b464cb058bb7060eab207ff801bf458066caeaac73b17aafd59cc5",
+        "reason": "GEOMETRY_SCALE_PARITY_AND_CAPTION_CLIP_RISK"
       }
     ],
     "requiredVisualMissing": 0,
     "knownVisualRepairPending": 0,
-    "visualMathParityPending": 0,
-    "V1": "25/25 ROUTED",
-    "V2": "3/3 PASS",
-    "V3": "3/3 PASS",
     "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "meta": {
-    "status": "PASS_STATIC_CONTRACT_PROJECTION",
-    "denominator": 25,
-    "decisionIsolationStatus": "PASS",
-    "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-    "rpmSemantic": {
-      "FINAL": 25,
-      "HOLD": 0,
-      "unresolved": 0
-    },
-    "projection": {
-      "PROJECTION_REUSE": 7,
-      "PROJECTION_BINDING_PENDING": 1,
-      "PROJECTION_UNMATERIALIZED": 17,
-      "META_ONLY_COMPATIBILITY_PENDING": 0,
-      "META_ONLY": 18
-    },
-    "knownMetaRepairPending": 0,
-    "resolvablePending": 0,
-    "difficultyBuckets": {
-      "1": 3,
-      "2": 7,
-      "3": 8,
-      "4": 7,
-      "5": 0
-    },
-    "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME"
+    "reviewStatus": "INHERITED_NOT_REVIEWED_IN_PRODUCTION_REVIEW",
+    "rpmSemanticFinal": 25,
+    "projectionReuse": 7,
+    "projectionMetaOnly": 18
   },
   "basicIntegrity": {
-    "status": "PASS",
+    "status": "PASS_STATIC",
     "finalQuestionCount": 25,
     "uniqueIds": "25/25",
     "duplicateIdCount": 0,
     "nonemptyAnswer": "25/25 PASS",
     "nonemptySolution": "25/25 PASS",
-    "controlCharCount": 0,
-    "latexDollarBalance": "PASS",
-    "runtimeStringBasicIntegrity": "PASS_STATIC",
     "protectedFieldParity": "25/25 PASS",
     "nodeSyntaxRuntime": "NOT_RUN_CONNECTOR_RUNTIME"
   },
-  "createSelfCheck": {
-    "CREATE_SELF_CHECK_PASS": true,
-    "solutionSelfCheckStatus": "PASS",
-    "svgRuleComplianceStatus": "PASS",
-    "questionLayoutStatus": "PASS",
-    "sourceTextExactParityStatus": "PASS",
-    "choicesExactParityStatus": "PASS",
-    "knownRepairPending": {
-      "solution": 0,
-      "visual": 0,
-      "layout": 0,
-      "meta": 0
-    },
-    "requiredVisualMissing": 0,
-    "rpmSemanticUnresolved": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      9,
+      10,
+      23
+    ],
+    "falsePassAxes": [
+      "SOLUTION_SVG_CLIP_SAFETY",
+      "SOLUTION_SVG_GEOMETRY_SCALE_PARITY"
+    ],
+    "note": "R1 independently found and repaired three visual defects while math/source/solution remained correct."
   },
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "visualRepairPending": 0,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "items": [
     {
-      "qid": 1,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 1,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -212,24 +170,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 2,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 2,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -247,24 +195,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 3,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 3,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -283,24 +221,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 4,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 4,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -319,24 +247,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 5,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 5,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -355,24 +273,14 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 6,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 6,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -391,24 +299,14 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 7,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 7,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -427,24 +325,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 8,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 8,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -463,40 +351,25 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 9,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 9,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
+        "disposition": "REPAIR",
         "requirement": "VISUAL_REQUIRED",
-        "disposition": "SOLUTION_SVG_PRESENT",
         "problemImage": "assets/images/24_금당중_2학기_중간_중2_수학/q9.png",
-        "solutionSvgAction": "ADD_FROM_SOURCE_AUTHORITY",
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q9-solution.svg",
-        "gitBlobSha": "5511b0bcb0f86e486c9e3ff27d2989be9ccc56e7",
-        "sha256": "sha256:bc2d48a3d0210d87d81ee1ff938913dd31c27b1d85abe948d9d9b1380ff119b4",
-        "expectedFacts": [
-          "DE∥BC",
-          "A-DE 높이 h/2",
-          "G-DE 높이 h/6",
-          "[ADE]:[GDE]=3:1"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
+        "oldGitBlobSha": "5511b0bcb0f86e486c9e3ff27d2989be9ccc56e7",
+        "gitBlobSha": "a499c0fa84f1ea581486847362998eea0b9208d7",
+        "sha256": "sha256:e40321b8e68d58f85826735733b7a72bbf26cd5e0de3c4ed7422800ee8567003",
+        "repairReason": "BOTTOM_CAPTION_CLIP_RISK",
+        "V2ArtifactOnly": "PASS_CODE_FIRST",
+        "V3Parity": "PASS_CODE_FIRST",
         "solutionVisualParity": "PASS",
         "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
@@ -510,41 +383,25 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 10,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 10,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
+        "disposition": "REPAIR",
         "requirement": "VISUAL_REQUIRED",
-        "disposition": "SOLUTION_SVG_PRESENT",
         "problemImage": "assets/images/24_금당중_2학기_중간_중2_수학/q10.png",
-        "solutionSvgAction": "ADD_FROM_SOURCE_AUTHORITY",
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q10-solution.svg",
-        "gitBlobSha": "4fc57777e13807c59b63df9d293ab00cde7c7e17",
-        "sha256": "sha256:b31364465ef84db749544e36a05c85f584da41aa2ec1f5a34b47e945f297419f",
-        "expectedFacts": [
-          "BC'=BC=10",
-          "AB=8",
-          "AC'=6",
-          "AD=10",
-          "DC'=4"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
+        "oldGitBlobSha": "4fc57777e13807c59b63df9d293ab00cde7c7e17",
+        "gitBlobSha": "8a88e16a6f2dd0aee8cad3e0cc19e753f5458166",
+        "sha256": "sha256:e3e8ff28e213be238886cfccd64ccd0a1cce77e50535dd289949240e41b66b2f",
+        "repairReason": "BOTTOM_CAPTION_CLIP_RISK",
+        "V2ArtifactOnly": "PASS_CODE_FIRST",
+        "V3Parity": "PASS_CODE_FIRST",
         "solutionVisualParity": "PASS",
         "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
@@ -558,24 +415,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 11,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 11,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -594,24 +441,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 12,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 12,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -629,24 +466,14 @@
       "difficultyBucket": 1
     },
     {
-      "qid": 13,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 13,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -664,24 +491,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 14,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 14,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -699,24 +516,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 15,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 15,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -734,24 +541,14 @@
       "difficultyBucket": 1
     },
     {
-      "qid": 16,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 16,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -769,24 +566,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 17,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 17,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -804,24 +591,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 18,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 18,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -839,24 +616,14 @@
       "difficultyBucket": 2
     },
     {
-      "qid": 19,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 19,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -874,24 +641,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 20,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 20,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -909,24 +666,14 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 21,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 21,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -944,24 +691,14 @@
       "difficultyBucket": 1
     },
     {
-      "qid": 22,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 22,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_REQUIRED",
         "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
@@ -980,41 +717,25 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 23,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 23,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
+        "disposition": "REPAIR",
         "requirement": "VISUAL_REQUIRED",
-        "disposition": "SOLUTION_SVG_PRESENT",
         "problemImage": "assets/images/24_금당중_2학기_중간_중2_수학/q23.png",
-        "solutionSvgAction": "ADD_FROM_SOURCE_AUTHORITY",
         "path": "archive/assets/images/24_금당중_2학기_중간_중2_수학/q23-solution.svg",
-        "gitBlobSha": "3b788ee88f6e3ec077348a9dc2086dee64fb4217",
-        "sha256": "sha256:13fa5370ed85abff164511e02ae1cdf26676ac145a56c40fb6e7047e6be2bb95",
-        "expectedFacts": [
-          "AD∥EF∥BC",
-          "AE:EB=8:4",
-          "EP=2",
-          "EQ=10",
-          "PQ=8"
-        ],
-        "V2ArtifactOnly": "PASS",
-        "V3Parity": "PASS",
+        "oldGitBlobSha": "3b788ee88f6e3ec077348a9dc2086dee64fb4217",
+        "gitBlobSha": "9df12766a8f0655c7ec2feab93b2bf022d787c1a",
+        "sha256": "sha256:ffffa58442b464cb058bb7060eab207ff801bf458066caeaac73b17aafd59cc5",
+        "repairReason": "GEOMETRY_SCALE_PARITY_AND_CAPTION_CLIP_RISK",
+        "V2ArtifactOnly": "PASS_CODE_FIRST",
+        "V3Parity": "PASS_CODE_FIRST",
         "solutionVisualParity": "PASS",
         "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
@@ -1028,24 +749,14 @@
       "difficultyBucket": 4
     },
     {
-      "qid": 24,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 24,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
@@ -1063,24 +774,14 @@
       "difficultyBucket": 3
     },
     {
-      "qid": 25,
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": []
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "q": 25,
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
       "visual": {
         "requirement": "VISUAL_EXEMPT",
         "disposition": "VISUAL_EXEMPT",
