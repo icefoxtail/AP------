@@ -156,7 +156,28 @@
     "retry": "NOT_DISPATCHED"
   },
   "nextAction": "FINAL_AUDIT / REVIEW_READY",
-  "providerSlot": "WAIT_FOR_WORKBOOK_EXPLICIT_RELEASE",
+  "providerSlot": {
+    "status": "WAIT_FOR_WORKBOOK_EXPLICIT_RELEASE",
+    "providerLaunchStarted": false
+  },
   "providerLaunchStarted": false,
-  "productionAuthorized": false
+  "productionAuthorized": false,
+  "providerPreflight": {
+    "status": "READY",
+    "provider": "CodexAppServer",
+    "model": "gpt-6-luna/max",
+    "reasoningEffort": null,
+    "planPath": "alive/runtime/provider-bridge/visang-geometry-major-sol-review8-20260929/final-audit-plan.json",
+    "planSha256": "sha256:6d71610c3f5e5bd7603d2753de70173f663328a8555c36f9ada9e2b33d8f0c4e",
+    "packetPreflightStatus": "PASS",
+    "packetPreflightSummaryRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/provider_packet_preflight_summary_review8.json",
+    "nativeInputSizes": {
+      "U1": 51741,
+      "U2": 581086,
+      "U3": 611130
+    },
+    "allUnder1MiB": true,
+    "reservation": "NOT_RESERVED",
+    "dispatch": "NOT_DISPATCHED"
+  }
 }
