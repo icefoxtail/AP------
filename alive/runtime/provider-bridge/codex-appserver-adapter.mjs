@@ -435,8 +435,10 @@ async function main() {
       packet: request.packet,
       reviewContract: request.reviewContract,
       outputContract: {
-        evidence: 'Return an array of JSON-encoded strings. Each string must encode exactly one evidence object.',
-        defects: 'Return an array of JSON-encoded strings. Each string must encode exactly one defect object.',
+        format: 'Return exactly one JSON object with evidence and defects arrays; no prose or Markdown fences.',
+        example: "{\"evidence\":[\"{\\\"questionUid\\\":\\\"exam|1\\\",\\\"domain\\\":\\\"MATH\\\",\\\"finding\\\":\\\"...\\\"}\"],\"defects\":[]}",
+        evidence: 'Return an array of JSON-encoded strings, not objects. Each item must be one JSON object encoded as a string.',
+        defects: 'Return an array of JSON-encoded strings, not objects. Each item must be one JSON object encoded as a string.',
         assessments: 'For an explicit correctness claim, evidence.payload.assessments may contain {domain: SOURCE|MATH|VISUAL|SOLUTION, status: PASS|FAIL, subjectSha: the reviewed source/candidate/artifact SHA}. Report only domains you actually reviewed. Never infer agreement from absent findings. Conflicts are resolved by a deterministic merger, not by an auditor.',
       },
     }),
