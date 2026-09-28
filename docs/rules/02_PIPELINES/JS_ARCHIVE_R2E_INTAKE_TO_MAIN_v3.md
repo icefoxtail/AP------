@@ -158,13 +158,13 @@ Batch decision과 UID application은 분리된 기록이다. Batch는 유형·�
 
 ### SVG
 
-확인된 SVG defect는 VISUAL_HOLD에 바로 종결하지 않고 SVG_REPAIR_REQUIRED로 보낸다. Repair는 .codex/skills/apmath-visual-upgrade/SKILL.md가 라우팅하는 현재 SVG 수정·생성 경로에서 수행한다.
+확인된 SVG defect는 **어떠한 SVG/VISUAL HOLD로도 종결하지 않고** `SVG_REPAIR_REQUIRED`로 보낸다. Repair는 `.codex/skills/apmath-visual-upgrade/SKILL.md`가 라우팅하는 현재 SVG 수정·생성 경로에서 수행하며, ADD/REPAIR/REBUILD 후 새 evidence/SHA와 targeted recheck PASS까지 닫는다.
 
 수정 visual의 current closure는 V1 benefit triage → source/solution EXPECTED FACT freeze → deterministic artifact repair/build → V2 artifact-only OBSERVED FACT → V3 expected/observed parity → current render-capture → independent render-review → affected UID TARGETED_RECHECK다. .codex/skills/apmath-visual-upgrade/SKILL.md, current visual rules, pipeline-core README와 AGENT_BUDGET를 따른다. R2E는 이 closure를 변경한 SVG/문항에만 적용하고, 무변경 시험지의 전체 render matrix를 다시 실행하지 않는다.
 
 source와 해설에서 EXPECTED FACT를 동결 → 기존 SVG 수정 또는 재생성 경로 호출 → geometry/topology/label parity 검증 → 수정 문항 targeted render → JS asset 연결 및 hash 확인 순으로 처리한다. PASS면 repaired asset과 R2E receipt에 반영한다.
 
-HOLD는 operative source recovery와 SVG 생성·수정·검증 경로를 모두 적용해도 수학적 truth를 확정할 수 없는 경우에만 허용한다. Math/SVG truth를 해소하지 못한 student-facing defect는 release-blocking 상태로 남긴다.
+**SVG 자체 HOLD는 없다.** visual truth를 결정할 수 없는 원인이 source/answer/solution의 수학적 불확정이면 해당 `SOURCE_HOLD/MATH_HOLD`로 분류한다. generator/tool capability 부족이면 `ENGINE_CAPABILITY_BLOCK`으로 분리한다. source+solution truth가 확정된 SVG defect는 반드시 repair/build 경로로 수정하고, 최종 보고에는 문항별 defect와 실제 수정 방법 및 재검 결과를 남긴다.
 
 ### Other validator findings
 
