@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "M1_META_HOLD_15_RPM_SEMANTIC_ADJUDICATION_v1",
+  "stage": "STEP3_RPM_SEMANTIC_ADJUDICATION",
+  "status": "COMPLETE_CHECKPOINT_STOP_BEFORE_FINAL_DISPOSITION",
+  "baseMainSha": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+  "physicalStateHeadBefore": "85d97a2822e600e0734145fd2d29acd449e64086",
+  "inputAuthority": {
+    "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_INPUT_AUTHORITY_20260928.json",
+    "blobSha": "e7869f191459c6416fb571329b446868c8a31e52",
+    "commitSha": "85d97a2822e600e0734145fd2d29acd449e64086",
+    "status": "PASS_READY_FOR_RPM_SEMANTIC_ADJUDICATION"
+  },
+  "authorityOrder": [
+    "source",
+    "independently verified final solution",
+    "primaryMethod/decisiveStep",
+    "RPM Primary exact curriculum/scope",
+    "RPM L3",
+    "RPM L4",
+    "compatibility projection (non-semantic)"
+  ],
+  "safeguards": {
+    "targetCount": 15,
+    "normalPassReopened": 0,
+    "b19Reopened": false,
+    "b25Reopened": false,
+    "r2eMainFinalReopened": 0,
+    "questionLayoutTouched": false,
+    "difficultyReviewed": false,
+    "svgReviewed": false,
+    "jsMutations": 0,
+    "globalTaxonomyRedesign": false,
+    "globalCatalogRuntimeIndexRegeneration": false
+  },
+  "semanticSummary": {
+    "TARGET": 15,
+    "RPM_SEMANTIC_FINAL": 10,
+    "TRUE_META_HOLD": 5
+  },
+  "note": "This checkpoint records Step 3 semantic authority only. Projection/final disposition and any production mutation belong to later steps and were not executed.",
+  "records": [
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+      "curriculum": "2015",
+      "scope": "M1-1",
+      "primaryMethod": "Use the coordinate values to obtain a vertical base and horizontal distance, then compute triangle area.",
+      "decisiveStep": "A,B have x=-1 so AB=5; C has x=3 so the perpendicular horizontal distance to x=-1 is 4.",
+      "rpmRecordId": "M1-RPM-050",
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The coordinate reading is the decisive M1 concept; area is an auxiliary elementary calculation. Current RPM explicitly projects coordinate-composite-area use through this semantic row.",
+      "projectionHint": "DIRECT_ACTIVE row exists; exact legacy-key/L2 compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B05",
+      "examFile": "23_금당중_2학기_중간_중1_기출.js",
+      "q": 24,
+      "questionUid": "qid_v1_f1bd6587483700dbf5fbda6b6f4a67b9720041a49332e37e9e536248a1cc6f7c",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Prove AFD and EFC congruent by two angles and the included corresponding side, then transfer AD=EC.",
+      "decisiveStep": "AF=EF, vertical angles at F are equal, and AD∥CE gives alternate angles; therefore AFD≡EFC by ASA.",
+      "rpmRecordId": "M1-RPM-080",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "ASA 합동"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The question explicitly asks the congruent triangles and criterion, and the same ASA result is necessary for the area part.",
+      "projectionHint": "DIRECT_ACTIVE row exists; current area-oriented legacy projection compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B07",
+      "examFile": "23_연향중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_3d02ddc05460c2f4ecc679ccbf597d4e55e170cf21ecdda8df64e0f0756c94c8",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Identify the perpendicular distance from E to line AB and use it as the triangle height.",
+      "decisiveStep": "In equilateral BCE the apex lies above the midpoint of BC; with BC=8, the distance from E to vertical AB is 4.",
+      "rpmRecordId": "M1-RPM-071",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The decisive geometry quantity in the verified solution is the point-to-line perpendicular distance; triangle-area arithmetic is auxiliary.",
+      "projectionHint": "DIRECT_BINDING_GAP -> projection pending only; not semantic HOLD."
+    },
+    {
+      "B": "B08",
+      "examFile": "23_왕운중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_6f04c1010d2c5e543786ce7fea6670525ed7cd819bb662a81899e77d994180d9",
+      "curriculum": "2015",
+      "scope": "M1-1",
+      "primaryMethod": "Read coordinate differences to obtain the two parallel vertical sides and their horizontal separation.",
+      "decisiveStep": "AB=7, CD=3, and the x-coordinate separation is 10, so the coordinate quadrilateral area follows.",
+      "rpmRecordId": "M1-RPM-050",
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "좌표와 그래프",
+        "L3": "좌표평면",
+        "L4": "점의 좌표 읽기"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "Current RPM crosswalk explicitly uses this semantic row for coordinate-composite-area items; no new RPM path is required.",
+      "projectionHint": "DIRECT_ACTIVE semantic row; exact legacy subUnit projection compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B10",
+      "examFile": "24_매산중_2학기_중간_중1_기출.js",
+      "q": 7,
+      "questionUid": "qid_v1_3cd854ea4a712a9475c3e3acc967b65c510dfcffbef214f3920b6d4dc1b16d19",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Audit which displayed segments are perpendicular feet/distances after the figure's parallel/perpendicular relations are fixed.",
+      "decisiveStep": "AF is perpendicular to CD and the reconstructed parallel relation makes AF the perpendicular from F to line AB; the correct pair is the distance/perpendicular statements ㄱ,ㄷ.",
+      "rpmRecordId": "M1-RPM-071",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The answer-discriminating statements are point-to-line distance/perpendicular-foot claims. Other length reconstruction is supporting evidence, not a separate semantic parent.",
+      "projectionHint": "DIRECT_BINDING_GAP -> projection pending only; not semantic HOLD."
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 3,
+      "questionUid": "qid_v1_c196967fdb47be7201f394895bc8dd0472346af850ccc65f9fbe4dfd843cc482",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Interpret the trapezoid height as the distance from point D to line BC.",
+      "decisiveStep": "The area equation gives h=4, and that h is exactly distance(D,BC).",
+      "rpmRecordId": "M1-RPM-071",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "위치 관계",
+        "L3": "수직과 거리",
+        "L4": "점과 직선 사이의 거리"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The requested M1 geometry quantity is explicitly point-to-line distance; the trapezoid area formula supplies its numeric value.",
+      "projectionHint": "DIRECT_BINDING_GAP -> projection pending only; not semantic HOLD."
+    },
+    {
+      "B": "B12",
+      "examFile": "24_왕운중_2학기_중간_중1_기출.js",
+      "q": 14,
+      "questionUid": "qid_v1_13df8a5f19ee2556e27d279d1eb83a1cb2173f2a9bddd4ca9d7cf65f0b153658",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Use two equal side pairs around O and the included right/vertical angle to establish triangle congruence and correct correspondence.",
+      "decisiveStep": "OB=OD, OC=OA, and ∠BOC=∠DOA; the relevant triangles are congruent by SAS, but option ⑤ writes the correspondence in the wrong order.",
+      "rpmRecordId": "M1-RPM-079",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The false-choice decision is determined by SAS congruence plus vertex correspondence.",
+      "projectionHint": "DIRECT_ACTIVE semantic row; current quadrilateral legacy projection compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B13",
+      "examFile": "24_향림중_2학기_중간_중1_기출.js",
+      "q": 11,
+      "questionUid": "qid_v1_729249365108e33f409510fecc0e581fdfed1cc728c4584ecd3d65afa2974846",
+      "curriculum": "2015",
+      "scope": "M1-2",
+      "primaryMethod": "Use midpoint equalities and vertical angles to establish the paired triangles by SAS.",
+      "decisiveStep": "AM=CM, BM=DM and vertical angles at M give SAS congruences, which determine the corresponding sides/angles and isolate option ⑤.",
+      "rpmRecordId": "M1-RPM-079",
+      "rpmPath": {
+        "majorUnit": "기본 도형",
+        "midUnit": "작도와 합동",
+        "L3": "삼각형의 합동",
+        "L4": "SAS 합동"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "SAS is the actual decisive proof structure rather than a generic quadrilateral-property label.",
+      "projectionHint": "DIRECT_ACTIVE semantic row; legacy quadrilateral projection compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Use midpoint plus two perpendicular projections to transfer midpoint/distance information and recover AE and CE before computing area.",
+      "decisiveStep": "The verified evidence uses orthogonal projection of midpoint M onto AM to obtain DM=ME and CE=BD, then AE and the triangle area.",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "TRUE_META_HOLD",
+      "semanticReason": "Current 2022 M1-2 RPM has no L4 for the decisive midpoint-under-perpendicular-projections / projected-length transfer structure. Re-labeling it as a congruence criterion would replace the verified decisive method rather than classify it.",
+      "projectionHint": "NOT_ATTEMPTED until an exact RPM semantic path exists."
+    },
+    {
+      "B": "B15",
+      "examFile": "25_연향중_2학기_중간_중1_기출.js",
+      "q": 21,
+      "questionUid": "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6",
+      "curriculum": "2022",
+      "scope": "M1-1",
+      "primaryMethod": "Substitute x=8 into the direct-proportion relation y=5x/4 to determine A, then compute a right-triangle area.",
+      "decisiveStep": "B=(8,0) fixes A's x-coordinate at 8; y=5x/4 gives A=(8,10).",
+      "rpmRecordId": "M1-RPM-167",
+      "rpmPath": {
+        "majorUnit": "좌표평면과 그래프",
+        "midUnit": "정비례와 반비례",
+        "L3": "정비례",
+        "L4": "정비례 관계식"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "Direct-proportion substitution is the decisive M1 step; area is a downstream calculation.",
+      "projectionHint": "DIRECT_ACTIVE row exists; current area-oriented legacy PT/TPL compatibility is deferred to Step 4."
+    },
+    {
+      "B": "B16",
+      "examFile": "25_왕운중_2학기_중간_중1_수학.js",
+      "q": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Apply the definition/necessary conditions of a perpendicular bisector to a claim about segment AO.",
+      "decisiveStep": "BD meets AO at endpoint O and therefore cannot bisect AO; this falsifies the perpendicular-bisector claim.",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "TRUE_META_HOLD",
+      "semanticReason": "Current 2022 M1-2 RPM contains '수직이등분선 작도' but no L4 for perpendicular-bisector definition/property judgment. Treating a non-construction claim audit as the construction L4 would not be an exact semantic path.",
+      "projectionHint": "NOT_ATTEMPTED until an exact RPM semantic path exists."
+    },
+    {
+      "B": "B17",
+      "examFile": "25_왕의중_2학기_중간_중1_수학.js",
+      "q": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Use the given congruence only to transfer the already-computed corresponding side AB to DE.",
+      "decisiveStep": "ABC≡DEF is given; after AB=7 is found from area, AB↔DE gives DE=7.",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "TRUE_META_HOLD",
+      "semanticReason": "RPM L4 under triangle congruence contains only SSS/SAS/ASA criteria. It has no exact L4 for equality of corresponding sides after congruence is already given.",
+      "projectionHint": "NOT_ATTEMPTED until an exact RPM semantic path exists."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 6,
+      "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Classify the possible positional relations of two lines in space, including skew lines.",
+      "decisiveStep": "Two nonintersecting lines in space need not be parallel because they may be skew; intersecting lines determine a plane and parallel lines are coplanar.",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "TRUE_META_HOLD",
+      "semanticReason": "RPM has L3 '공간에서의 위치 관계' but its L4s are only '직선과 평면의 위치 관계' and '평면과 평면의 위치 관계'. The required two-line/skew-line L4 is absent.",
+      "projectionHint": "NOT_ATTEMPTED until an exact RPM semantic path exists."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 13,
+      "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Use the given congruence to transfer corresponding angle C↔F and side BC↔EF.",
+      "decisiveStep": "ABC≡DEF is given; ∠F=50 gives ∠C=50, then triangle angle sum gives A=75 and BC=EF=5.",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "TRUE_META_HOLD",
+      "semanticReason": "RPM triangle-congruence L4s are congruence criteria SSS/SAS/ASA only; there is no exact L4 for corresponding-angle/side properties after congruence is given.",
+      "projectionHint": "NOT_ATTEMPTED until an exact RPM semantic path exists."
+    },
+    {
+      "B": "B18",
+      "examFile": "25_팔마중_2학기_중간_중1_기출.js",
+      "q": 19,
+      "questionUid": "qid_v1_042036eea262c6da17d921050700e22a258401d7ecc79ee1e0cf83a0c1aceb5f",
+      "curriculum": "2022",
+      "scope": "M1-2",
+      "primaryMethod": "Count all segments determined by pairs of 12 vertices/points; equivalently count polygon sides plus diagonals.",
+      "decisiveStep": "Each unordered pair of the 12 points determines exactly one segment, giving 66; this is the side/diagonal-count structure for a 12-gon.",
+      "rpmRecordId": "M1-RPM-198",
+      "rpmPath": {
+        "majorUnit": "평면도형",
+        "midUnit": "다각형",
+        "L3": "삼각형·다각형의 각",
+        "L4": "변·대각선 개수"
+      },
+      "semanticStatus": "RPM_SEMANTIC_FINAL",
+      "semanticReason": "The current RPM L4 explicitly covers side/diagonal count; the circle placement does not change the pair-count structure.",
+      "projectionHint": "FAMILY_ACTIVE row exists; exact template selection is deferred to Step 4."
+    }
+  ]
+}
