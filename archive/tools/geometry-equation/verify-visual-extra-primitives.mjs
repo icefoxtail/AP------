@@ -16,6 +16,12 @@ function evalFrozen(tree,x) {
 }
 export function observeExtraPrimitives(svg,input) {
   const model=input.coordinateModel;const errors=[];const observed=[];
+  let circleElementScope=null;
+  if(input.circleElementScope!==undefined){
+    const scope=input.circleElementScope;
+    if(!Array.isArray(scope)||scope.some(id=>typeof id!=='string'||!id)||new Set(scope).size!==scope.length)errors.push({fact:'circleElementScope',error:'INVALID_CIRCLE_ELEMENT_SCOPE'});
+    else circleElementScope=new Set(scope);
+  }
   const elements=new Map([...svg.matchAll(/<(circle|polyline|line)\b([^>]*)\/?\s*>/g)].map(m=>{const a=attrs(m[2]);return[a.id,{kind:m[1],a}];}));
   const inverse=p=>[(p[0]-model.originX)/model.sx,(model.originY-p[1])/model.sy];
   const read=id=>{const e=elements.get(id);if(!e)throw Error('ELEMENT_MISSING:'+id);return e;};
@@ -51,6 +57,6 @@ export function observeExtraPrimitives(svg,input) {
       } else throw Error('UNSUPPORTED_EXTRA_FACT');
     }catch(error){errors.push({fact:fact.element||fact.prefix,error:String(error.message)});}
   }
-  for(const [id,e] of elements)if(e.kind==='circle'&&!covered.has(id))errors.push({fact:id,error:'UNVERIFIED_CIRCLE_OR_POINT'});
+  for(const [id,e] of elements)if(e.kind==='circle'&&(!circleElementScope||circleElementScope.has(id))&&!covered.has(id))errors.push({fact:id,error:'UNVERIFIED_CIRCLE_OR_POINT'});
   return {status:errors.length?'FAIL':'PASS',observed,errors};
 }

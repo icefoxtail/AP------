@@ -13,6 +13,14 @@ function fixture(mutate=s=>s) {
   return {root,input,cleanup:()=>fs.rmSync(root,{recursive:true,force:true})};
 }
 test('actual geometry, circle radius, display scope and structure pass',()=>{const f=fixture();try{assert.equal(verifyVisualEngineStatic(f).status,'PASS');}finally{f.cleanup();}});
+test('composite multi-panel SVG scopes circle verification to the selected expected-fact panel',()=>{
+ const f=fixture(s=>s.replace('</svg>','<circle id="other-panel-circle" cx="480" cy="180" r="60" fill="none"/></svg>'));
+ try{f.input.circleElementScope=['P','circle'];assert.equal(verifyVisualEngineStatic(f).status,'PASS');f.input.circleElementScope=['P','circle','other-panel-circle'];assert.equal(verifyVisualEngineStatic(f).status,'FAIL');}finally{f.cleanup();}
+});
+
+test('invalid composite circle scope fails closed',()=>{
+ const f=fixture();try{f.input.circleElementScope=['circle','circle'];assert.ok(verifyVisualEngineStatic(f).errors.includes('INVALID_CIRCLE_ELEMENT_SCOPE'));}finally{f.cleanup();}
+});
 test('correct metadata cannot spoof actual circle radius',()=>{const f=fixture(s=>s.replace('r="120"','data-radius="2" r="60"'));try{assert.equal(verifyVisualEngineStatic(f).status,'FAIL');}finally{f.cleanup();}});
 test('old GOLD greedy exponent corruption fails display parity',()=>{const f=fixture(s=>s.replace('2</tspan>−3x+4','2−3x+4</tspan>'));try{assert.equal(verifyVisualEngineStatic(f).DISPLAYED_MATH_PARITY_PASS,false);}finally{f.cleanup();}});
 test('item unresolved cannot be hidden by aggregate',()=>{const f=fixture();try{f.input.review={items:[{unresolved:1}],aggregateUnresolved:0};assert.ok(verifyVisualEngineStatic(f).errors.includes('AGGREGATE_EVIDENCE_FAIL'));}finally{f.cleanup();}});
