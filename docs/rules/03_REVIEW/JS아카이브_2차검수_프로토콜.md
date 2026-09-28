@@ -222,3 +222,21 @@ answer와 solution이 실제 정답과 일치하는지를 검증하는 것이다
 - 정답 유일성을 확인하지 않고 PASS 금지.
 - 문항 성립이 애매하면 PASS 금지.
 - 수정본 JS를 출력하지 마라.
+
+## 2026-09-28 CURRENT HARD GATE — SVG LABEL-OWNER / COORDINATE SEMANTIC REVIEW
+
+REVIEW2에서 SVG/solutionImage를 확인할 때 **"필요한 숫자와 문구가 들어 있다"는 이유만으로 PASS 금지**다.
+모든 연결 visual은 `도형추출.md`와 `기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`의 2026-09-28 addendum을 적용한다.
+
+필수 확인:
+- 각도 숫자/기호가 정확한 꼭짓점과 두 ray의 의도한 각 영역에 귀속되는가.
+- 길이 라벨이 정확한 선분에 결속되고 점/각/다른 길이 라벨과 겹치지 않는가.
+- 점 라벨이 해당 vertex/node에 명확히 귀속되는가.
+- 외심·내심·무게중심·중점·수직·평행·등거리·합동·닮음 등 설명문이 실제 SVG 좌표/위상에서도 성립하는가.
+- XML/좌표만으로 label owner, overlap, wedge membership, clipping을 확정할 수 없으면 해당 SVG targeted render를 실행하는가.
+
+최소 PASS 축:
+`GEOMETRY_FACT_PASS / LABEL_OWNER_BINDING_PASS / LABEL_COLLISION_PASS / COORDINATE_SEMANTIC_PASS`.
+
+회귀 기준으로 다음 4건과 동형 결함을 반드시 적발한다:
+`24 신흥중 중2 중간 q5`, `25 삼산중 중2 기말 q12`, `25 삼산중 중2 중간 q13`, `25 삼산중 중2 중간 q24`.
