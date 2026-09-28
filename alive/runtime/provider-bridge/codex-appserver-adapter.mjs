@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
@@ -26,24 +27,94 @@ export function nativeImageInput(url) {
   return { type: 'image', url, detail: 'original' };
 }
 
-// Only traverse the phase-authorized visual lanes, never arbitrary metadata.
-export function buildNativeTurnInput(prompt, packet) {
-  const urls = new Set();
+let sharp;
+function loadSharp() {
+  if (!sharp) {
+    const require = createRequire(process.env.APMATH_NODE_MODULES
+      ? path.join(process.env.APMATH_NODE_MODULES, '..', 'package.json') : import.meta.url);
+    sharp = require('sharp');
+  }
+  return sharp;
+}
+
+async function optimizeNativeImage(record) {
+  const match = record.url.match(/^data:image\/(png|jpe?g|webp);base64,(.*)$/s);
+  if (!match) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: null, transferBytes: null };
+  const original = Buffer.from(match[2], 'base64');
+  const renderWitness = /(?:^|\/)pipeline-renders\//.test(record.path || '');
+  if (original.length <= 150_000 && !renderWitness) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
+  const pipeline = loadSharp()(original, { limitInputPixels: 40_000_000 });
+  const optimized = renderWitness
+    ? await pipeline.resize({ width: 960, height: 800, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 75, mozjpeg: true }).toBuffer()
+    : await pipeline.jpeg({ quality: 85, mozjpeg: true }).toBuffer();
+  if (optimized.length >= original.length) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
+  return { ...record, transferUrl: `data:image/jpeg;base64,${optimized.toString('base64')}`, transferMimeType: 'image/jpeg', originalBytes: original.length, transferBytes: optimized.length };
+}
+
+function phaseImageLanes(packet) {
+  const records = [];
   const collect = value => {
     if (!value || typeof value !== 'object') return;
-    if (typeof value.dataUrl === 'string') urls.add(value.dataUrl);
+    if (typeof value.dataUrl === 'string' && value.dataUrl.startsWith('data:image/')) {
+      if (!records.some(record => record.url === value.dataUrl)) records.push({
+        index: records.length,
+        url: value.dataUrl,
+        path: typeof value.path === 'string' ? value.path : null,
+        sha256: typeof value.sha256 === 'string' ? value.sha256 : null,
+        mimeType: typeof value.mimeType === 'string' ? value.mimeType : null,
+      });
+    }
     if (Array.isArray(value)) value.forEach(collect);
-    else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef') collect(child);
+    else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef' && key !== 'dataUrl') collect(child);
   };
   for (const row of Array.isArray(packet.payload) ? packet.payload : [packet.payload]) {
     if (packet.phase === 'U1') { collect(row.problemAssets); collect(row.sourcePixels); }
     if (packet.phase === 'U2') { collect(row.artifact); collect(row.renderWitnesses); }
     if (packet.phase === 'U3') {
       collect(row.currentQuestion?.problemAssets);
-      collect(row.renderWitnesses);
+      // U3 audits the student solution. The full six-case render matrix is
+      // already hash-bound to the work batch; attach only the desktop solution
+      // witness per item, which is the view needed for item-level readability.
+      for (const witness of (row.renderWitnesses || []).filter(witness => witness.mode === 'solution'
+        && witness.viewportProfile === 'desktop'
+        && !/-b\d+-s\d+\.png$/i.test(witness.screenshot?.path || ''))) collect(witness.screenshot);
     }
   }
-  return [{ type: 'text', text: prompt }, ...[...urls].map(nativeImageInput)];
+  return records;
+}
+
+function promptPacketWithoutImageBytes(value, imageIndexByUrl) {
+  if (Array.isArray(value)) return value.map(item => promptPacketWithoutImageBytes(item, imageIndexByUrl));
+  if (!value || typeof value !== 'object') return value;
+  const result = {};
+  for (const [key, child] of Object.entries(value)) {
+    if (key === 'dataUrl') {
+      const imageInputIndex = imageIndexByUrl.get(child);
+      if (imageInputIndex !== undefined) result.nativeImageInputIndex = imageInputIndex;
+      else result.nativeImageInputOmitted = true;
+      continue;
+    }
+    result[key] = promptPacketWithoutImageBytes(child, imageIndexByUrl);
+  }
+  return result;
+}
+
+function compactPromptText(prompt, packet, images) {
+  if (typeof prompt !== 'string' || !images.length) return prompt;
+  let parsed;
+  try { parsed = JSON.parse(prompt); } catch { return prompt; }
+  if (!parsed || typeof parsed !== 'object' || !Object.hasOwn(parsed, 'packet')) return prompt;
+  const imageIndexByUrl = new Map(images.map(record => [record.url, record.index]));
+  parsed.packet = promptPacketWithoutImageBytes(parsed.packet, imageIndexByUrl);
+  parsed.nativeImageInputs = images.map(({ index, path, sha256, mimeType, transferMimeType, originalBytes, transferBytes }) => ({ index, path, sha256, mimeType, transferMimeType, originalBytes, transferBytes }));
+  return JSON.stringify(parsed);
+}
+
+// Only traverse the phase-authorized visual lanes, never arbitrary metadata.
+export async function buildNativeTurnInput(prompt, packet) {
+  const images = await Promise.all(phaseImageLanes(packet).map(optimizeNativeImage));
+  const compactPrompt = compactPromptText(prompt, packet, images);
+  return [{ type: 'text', text: compactPrompt }, ...images.map(image => nativeImageInput(image.transferUrl))];
 }
 
 const readStdin = () => new Promise((resolve, reject) => {
@@ -220,7 +291,7 @@ async function handleDaemonRequest(runtime, request) {
     threadId,
     model: MODEL,
     effort: REASONING_EFFORT,
-    input: buildNativeTurnInput(request.prompt, request.packet),
+    input: await buildNativeTurnInput(request.prompt, request.packet),
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
