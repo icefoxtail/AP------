@@ -5,7 +5,7 @@ import crypto from "node:crypto";
 import source from "../archive/archive2-source.js";
 export async function runRc2({ db, mf, catalog, post, root }) {
   const record = catalog.records.find(
-    (r) => r.automatic && r.sourceFile.startsWith("original/"),
+    (r) => r.automatic && r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || "original/"),
   );
   const exam = catalog.exams.find((e) => e.file === record.sourceFile),
     raw = source.evaluate(

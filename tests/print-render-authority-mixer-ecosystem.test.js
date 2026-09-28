@@ -35,6 +35,8 @@ test('unit-past producer writes the real mixed storage contract with canonical p
     core: {
       getSubUnitLabel: record => record.subUnitLabel || '다항식',
       getDifficultyBucket: record => record.difficulty || '중',
+      getProblemTypeKey: record => record.problemTypeKey || '',
+      getTemplateKey: record => record.templateKey || '',
       getQuestionUid: question => question.sourceQuestionUid || '',
       getExamYear: record => Number(record.examYear || 2026),
       getSchool: record => record.school || '',
@@ -50,7 +52,7 @@ test('unit-past producer writes the real mixed storage contract with canonical p
   const paper = {
     title: '단원별 기출 fixture', snapshotKey: 'unit-past-fixture-key', school: 'Fixture School', schoolKey: 'fixture',
     selection: { mode: 'quick', collection: { scopeLabel: '1학기 중간', course: '수학' } },
-    records: [{ sourceFile: 'exams/fixture.js', school: 'Fixture School', examYear: 2026, semester: 1, examType: 'mid', subUnitKey: 'poly', subUnitLabel: '다항식', difficulty: '중', metadataRevision: 'archive-metadata-v1' }]
+    records: [{ sourceFile: 'exams/fixture.js', school: 'Fixture School', examYear: 2026, semester: 1, examType: 'mid', subUnitKey: 'poly', subUnitLabel: '다항식', difficulty: '중', problemTypeKey: 'poly-type', templateKey: 'poly-template', metadataRevision: 'archive-metadata-v1' }]
   };
   const questions = [{ id: 1, sourceQuestionUid: 'unit-past-q-1' }];
   const meta = context.storeMixedPayload(unit, paper, questions);
@@ -60,6 +62,8 @@ test('unit-past producer writes the real mixed storage contract with canonical p
   assert.equal(storedMeta.title, paper.title);
   assert.equal(storedMeta.printHeaderOptions.metaRight, '중3 수학 단원별 기출');
   assert.deepEqual(storedMeta.questionUids, ['unit-past-q-1']);
+  assert.deepEqual(storedMeta.problemTypeKeys, ['poly-type']);
+  assert.deepEqual(storedMeta.templateKeys, ['poly-template']);
   assert.equal(meta.sourceSummary, '출처: 2026 · Fixture School · 1학기 중간');
 });
 

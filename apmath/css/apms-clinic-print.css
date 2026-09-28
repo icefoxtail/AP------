@@ -52,6 +52,37 @@
     gap: 10px;
 }
 
+.clinic-print-period-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-bottom: 6px;
+}
+.clinic-print-period-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.clinic-print-period-heading select { min-height: 34px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 12px; }
+
+.clinic-print-period-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.clinic-print-period-card[data-exam-period="all"] { grid-column: 1 / -1; }
+.clinic-print-period-card small { color: var(--secondary); font-weight: 500; }
+.clinic-print-period-card:hover { background: var(--surface-2); }
+.clinic-print-period-card--active { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); }
+.clinic-print-period-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
 .clinic-print-section-title {
     font-size: 12px;
     font-weight: 600;

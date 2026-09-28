@@ -17,7 +17,7 @@ const catalogText = fs.readFileSync(
   path.join(root, "archive/data/archive2-catalog.json"),
   "utf8",
 );
-const base = catalog.records.find((record) => record.automatic);
+const base = catalog.records.find((record) => record.automatic && (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || record.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
 assert.ok(base, "catalog must contain an automatic record");
 const basePath = core.pathKey(base, 4);
 const alternate = catalog.records.find(

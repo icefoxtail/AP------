@@ -502,6 +502,24 @@ async function renderComposed({ area, items, deps }) {
     }
 
     makeGridPage();
+    // Clinic can prepare a large cohort once at the real column width. Moving
+    // already typeset boxes into equal-width columns preserves their geometry
+    // and avoids repeatedly walking the growing MathJax document per question.
+    if (deps.batchTypeset === true) {
+        const boxes = items.map(makeBox);
+        const firstColumn = cols[0];
+        // Bounded batches keep a full-grade paper responsive and avoid a single
+        // column containing hundreds of large solution images during typeset.
+        for (let start = 0; start < boxes.length; start += 24) {
+            const batch = boxes.slice(start, start + 24);
+            firstColumn.append(...batch);
+            await applyAutoImageSizeClasses(firstColumn);
+            await deps.typesetMath('composition-solution-batch', batch);
+            for (const box of batch) { preparedBoxes.add(box); box.remove(); }
+            for (const box of batch) await placeBox(box);
+        }
+        return;
+    }
     for (let idx = 0; idx < items.length; idx++) {
         await placeBox(makeBox(items[idx], idx));
     }

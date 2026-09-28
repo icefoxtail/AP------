@@ -26,6 +26,7 @@ function loadEngineExports() {
     const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     global.Node = { TEXT_NODE: 3, ELEMENT_NODE: 1 };
     global.document = {
+        baseURI: 'https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html',
         createElement(tag) {
             const el = {
                 tagName: String(tag).toUpperCase(),

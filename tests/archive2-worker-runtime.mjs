@@ -24,6 +24,7 @@ const bundle = await build({
   stdin: {
     contents: `import { handleExams } from './routes/exams.js';
 import { handleStudentPortal } from './routes/student-portal.js';
+import { handleWrongClinics } from './routes/wrong-clinics.js';
 let splitFault=false;
 export default {async fetch(request, env) {
 const url=new URL(request.url);
@@ -35,6 +36,7 @@ if(url.pathname==='/api/class-exam-assignments/studio'&&splitFault){const body=a
 if(url.pathname==='/api/qr-classes'&&teacher)return Response.json({success:true,classes:(await env.DB.prepare('SELECT * FROM classes').all()).results});
 if(url.pathname==='/api/student-portal/home')return Response.json({success:true,read_only:!!teacher,access_mode:teacher?'teacher_preview':'student',student:await env.DB.prepare('SELECT id,name,grade,school_name FROM students WHERE id=?').bind(url.searchParams.get('student_id')).first(),classes:[],assignments:[],class_exam_assignments:[]});
 if(url.pathname==='/api/student-portal/wrong-clinics')return Response.json({success:true,packets:[]});
+if(url.pathname.startsWith('/api/wrong-clinics'))return handleWrongClinics(request,env,teacher,url.pathname.split('/').filter(Boolean),url);
 if(url.pathname.startsWith('/api/student-portal/'))return handleStudentPortal(request,env,teacher,url.pathname.split('/').filter(Boolean),url);
 return handleExams(request,env,teacher,url.pathname.split('/').filter(Boolean),url);
 }}`,
@@ -184,11 +186,12 @@ try {
   await db.exec(
     "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A'),('class-b','고1 검증반 B','Teacher B');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
   );
-  const base = catalog.records.find((r) => r.automatic);
+  const base = catalog.records.find((r) => r.automatic && (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
   const records = catalog.records
     .filter(
       (r) =>
         r.automatic &&
+        (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)) &&
         r.curriculumKey === base.curriculumKey &&
         r.courseKey === base.courseKey,
     )
@@ -466,6 +469,7 @@ try {
     .filter(
       (r) =>
         r.automatic &&
+        (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)) &&
         r.curriculumKey === base.curriculumKey &&
         r.courseKey === base.courseKey,
     )
@@ -623,6 +627,50 @@ try {
     .run();
   if (!process.argv.includes("--audit-rc2"))
     await runRc2({ db, mf, catalog, post, root });
+  if (process.argv.includes('--clinic-m3')) {
+    const midterms = catalog.exams.filter(exam => exam.file.startsWith('original/middle/m3/2mid/'));
+    let submitted = 0;
+    for (const exam of midterms) {
+      const raw = source.evaluate(fs.readFileSync(path.join(root, 'archive/exams', exam.file), 'utf8'), exam.file);
+      const issued = await post('', {
+        contract_version: 'archive2-v1', class_id: 'class-a', student_ids: ['student-a'],
+        exam_title: '중3 2학기 중간 ' + exam.file, exam_date: '2026-09-28',
+        archive_file: 'exams/' + exam.file, question_count: raw.length, pdf_qpp: 4,
+        original_payload_json: { questions: raw, meta: { includeQr: false } }
+      });
+      assert.equal(issued.body.saved, true, JSON.stringify(issued));
+      const assignmentId = issued.body.assignment.id;
+      const token = crypto.createHash('sha256').update('student-a::student-portal:v1').digest('hex');
+      const response = await mf.dispatchFetch('http://local/api/student-portal/omr-submit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ student_id: 'student-a', student_token: token, assignment_id: assignmentId, wrong_ids: [raw.length] })
+      });
+      assert.equal(response.status, 200, await response.text());
+      const linked = await db.prepare(`SELECT bp.source_question_ordinal,bp.source_question_uid,bp.source_archive_file,
+        w.question_id,e.archive_file FROM wrong_answers w JOIN exam_sessions e ON e.id=w.session_id
+        JOIN exam_blueprints bp ON bp.archive_file=e.archive_file AND bp.question_no=CAST(w.question_id AS INTEGER)
+        WHERE e.assignment_id=?`).bind(assignmentId).first();
+      assert.equal(Number(linked.question_id), raw.length);
+      assert.equal(Number(linked.source_question_ordinal), raw.length);
+      const clinicItem = { archiveFile: linked.archive_file, questionNo: raw.length, sourceArchiveFile: linked.source_archive_file || linked.archive_file,
+        sourceQuestionNo: Number(raw[raw.length - 1].id) || raw.length, sourceQuestionOrdinal: linked.source_question_ordinal, sourceQuestionUid: linked.source_question_uid };
+      const clinicResponse = await mf.dispatchFetch('http://local/api/wrong-clinics', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Fixture-Role': 'admin' },
+        body: JSON.stringify({ title: '중3 중간 오답', mode: 'grade', source: { class_id: 'class-a', grade: '중3', scope_type: 'grade' },
+          targets: [{ type: 'student', student_id: 'student-a', class_id: 'class-a' }],
+          payload: { mode: 'grade', gradeName: '중3', gradeWrongItems: [clinicItem] } })
+      });
+      const clinic = await clinicResponse.json();
+      assert.equal(clinicResponse.status, 200, JSON.stringify(clinic));
+      const storedResponse = await mf.dispatchFetch('http://local/api/wrong-clinics/set/' + clinic.public_set_key);
+      const stored = await storedResponse.json();
+      assert.equal(stored.payload.gradeWrongItems[0].sourceQuestionOrdinal, raw.length);
+      assert.equal(stored.payload.gradeWrongItems[0].sourceQuestionUid, linked.source_question_uid);
+      assert.equal(stored.payload.recipients.length, 1);
+      submitted += 1;
+    }
+    console.log(JSON.stringify({ middle3MidtermClinic: 'PASS', originalAssignments: midterms.length, omrSubmissions: submitted, storedGradeClinics: submitted, pdf: 'EXPECTED_FAILURE_NO_BROWSER_BINDING' }));
+  }
   console.log(
     JSON.stringify({
       status: "PASS",

@@ -149,7 +149,7 @@
             cleanup(node) { if (node) { root.MathJax?.typesetClear?.([node]); node.remove(); } },
             release(ctx) { if (ctx.stagingHost) { root.MathJax?.typesetClear?.([ctx.stagingHost]); ctx.stagingHost.remove(); } },
             visible(ctx) { policy.visible?.(ctx); },
-            onRequest(promise) { cancelWarm(); root.__AP_RENDER_READY__ = promise; },
+            onRequest(promise) { cancelWarm(); root.__AP_RENDER_READY__ = promise; policy.onRequest?.(promise); },
             observe(event, ctx) {
                 if (ctx.background) return;
                 document.documentElement.dataset.apCommonFastRuntime = JSON.stringify({ adapter: policy.name, event, generation: ctx.requestGeneration, cache: ctx.cacheStatus, error: ctx.error || null });

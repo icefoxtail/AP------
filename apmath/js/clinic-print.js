@@ -5,6 +5,12 @@
 
 const AP_CLINIC_PRINT_STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
 const AP_CLINIC_PRINT_ASSIGNMENT_FROM_DATE = '2026-06-01';
+const AP_CLINIC_EXAM_PERIODS = [
+    ['all', '전체'], ['1mid', '1학기 중간'], ['1final', '1학기 기말'],
+    ['2mid', '2학기 중간'], ['2final', '2학기 기말'], ['other', '기타 시험']
+];
+const clinicPrintExamPeriodFilters = new Map();
+const clinicPrintExamYearFilters = new Map();
 
 function clinicPrintEscapeHtml(value) {
     if (typeof apEscapeHtml === 'function') return apEscapeHtml(value);
@@ -197,7 +203,7 @@ function clinicPrintGetGradeStudents(classId) {
 }
 
 function clinicPrintGetSessionArchiveFile(session) {
-    return String(session?.archive_file || '').trim();
+    return clinicPrintNormalizeArchiveFile(session?.archive_file || '');
 }
 
 function clinicPrintIsOnOrAfterFromDate(value) {
@@ -495,8 +501,8 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
         const sessionQuestionCount = Number(session.question_count || 0);
         const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
         return key === examGroupKey || (
+            !!group.archiveFile &&
             String(session.exam_date || '') === group.examDate &&
-            String(session.exam_title || '') === group.examTitle &&
             String(clinicPrintGetSessionArchiveFile(session) || '') === String(group.archiveFile || '') &&
             countsCompatible
         );
@@ -514,8 +520,7 @@ function clinicPrintGetGradeSessionsForExamGroup(classId, examGroupKey) {
         const sessionQuestionCount = Number(session.question_count || 0);
         const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
         const dateCompatible = !group.examDate || !session.exam_date || String(session.exam_date || '') === String(group.examDate || '');
-        const titleCompatible = !group.examTitle || !session.exam_title || String(session.exam_title || '') === String(group.examTitle || '');
-        return !!groupArchive && sessionArchive === groupArchive && countsCompatible && dateCompatible && titleCompatible;
+        return !!groupArchive && sessionArchive === groupArchive && countsCompatible && dateCompatible;
     });
 }
 
@@ -572,13 +577,16 @@ function clinicPrintFindBlueprint(session, questionNo) {
 function clinicPrintGetSourceIdentity(bp, archiveFile, questionNo) {
     const sourceArchiveFile = clinicPrintNormalizeArchiveFile(bp?.source_archive_file || archiveFile || '');
     const sourceQuestionNo = Number(bp?.source_question_no) || Number(questionNo) || 0;
-    return { sourceArchiveFile, sourceQuestionNo };
+    const sourceQuestionOrdinal = Number(bp?.source_question_ordinal) || null;
+    const sourceQuestionUid = String(bp?.source_question_uid || '').trim();
+    return { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid };
 }
 
 function clinicPrintGetWrongItemSourceKey(item) {
     const file = clinicPrintNormalizeArchiveFile(item?.sourceArchiveFile || item?.archiveFile || '');
+    const ordinal = Number(item?.sourceQuestionOrdinal || 0);
     const no = Number(item?.sourceQuestionNo || item?.questionNo || 0);
-    return `${file}|${no}`;
+    return ordinal > 0 ? `${file}|ordinal:${ordinal}` : `${file}|${no}`;
 }
 
 function clinicPrintDedupeWrongItemsBySource(items) {
@@ -609,7 +617,7 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
-                const { sourceArchiveFile, sourceQuestionNo } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
+                const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
                     examKey,
                     examTitle: session.exam_title || '',
@@ -618,6 +626,8 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
                     questionNo,
                     sourceArchiveFile,
                     sourceQuestionNo,
+                    sourceQuestionOrdinal,
+                    sourceQuestionUid,
                     unitKey: bp?.standard_unit_key || '',
                     unit: bp?.standard_unit || '',
                     course: bp?.standard_course || '',
@@ -688,7 +698,7 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
-                const { sourceArchiveFile, sourceQuestionNo } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
+                const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
                     examKey,
                     examTitle: session.exam_title || '',
@@ -697,6 +707,8 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
                     questionNo,
                     sourceArchiveFile,
                     sourceQuestionNo,
+                    sourceQuestionOrdinal,
+                    sourceQuestionUid,
                     unitKey: bp?.standard_unit_key || '',
                     unit: bp?.standard_unit || '',
                     course: bp?.standard_course || '',
@@ -754,6 +766,8 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
                     questionNo: Number(item.questionNo),
                     sourceArchiveFile: clinicPrintNormalizeArchiveFile(item.sourceArchiveFile || item.archiveFile),
                     sourceQuestionNo: Number(item.sourceQuestionNo) || Number(item.questionNo),
+                    sourceQuestionOrdinal: item.sourceQuestionOrdinal || null,
+                    sourceQuestionUid: item.sourceQuestionUid || '',
                     wrongCount: 0,
                     totalCount,
                     correctRate: null,
@@ -1725,8 +1739,105 @@ function clinicPrintGetExamListScope() {
     return 'class';
 }
 
+function clinicPrintGetExamPeriod(group = {}) {
+    // The paper's academic period is independent of the day students submitted OMR.
+    const source = [group.archiveFile, group.examTitle].filter(Boolean).join(' ');
+    const path = source.match(/(?:^|\/)([12])(mid|final)(?:\/|$)/i);
+    if (path) return path[1] + path[2].toLowerCase();
+    const semester = source.match(/([12])\s*학기/);
+    const kind = /중간/.test(source) ? 'mid' : /기말/.test(source) ? 'final' : '';
+    if (semester && kind) return semester[1] + kind;
+    for (const assignment of group.assignments || []) {
+        try {
+            const payload = JSON.parse(assignment.mixed_payload_json || '{}');
+            const meta = payload.meta || {};
+            const term = String(meta.semester || '').replace(/\D/g, '');
+            const exam = String(meta.examType || meta.exam_type || '');
+            const type = /^(mid|중간)$/.test(exam) ? 'mid' : /^(final|기말)$/.test(exam) ? 'final' : '';
+            if (/^[12]$/.test(term) && type) return term + type;
+        } catch (error) { /* Legacy assignments can have no saved paper metadata. */ }
+    }
+    return 'other';
+}
+
+function clinicPrintGetExamPeriodFilter(classId) {
+    const key = String(classId);
+    if (clinicPrintExamPeriodFilters.has(key)) return clinicPrintExamPeriodFilters.get(key);
+    let stored = '';
+    try { stored = localStorage.getItem(`AP_CLINIC_EXAM_PERIOD:${key}`) || ''; } catch (error) {}
+    const groups = clinicPrintGetClassExamGroups(classId, 'grade');
+    const month = new Date().getMonth() + 1;
+    const current = month <= 5 ? '1mid' : month <= 7 ? '1final' : month <= 10 ? '2mid' : '2final';
+    const value = AP_CLINIC_EXAM_PERIODS.some(([id]) => id === stored) ? stored
+        : groups.some(group => clinicPrintGetExamPeriod(group) === current) ? current
+        : groups.length ? clinicPrintGetExamPeriod(groups[0]) : 'all';
+    clinicPrintExamPeriodFilters.set(key, value);
+    return value;
+}
+
+function clinicPrintRenderExamPeriodFilters(classId, scope = 'class') {
+    const year = clinicPrintGetExamYearFilter(classId);
+    const groups = clinicPrintGetClassExamGroups(classId, scope)
+        .filter(group => year === 'all' || clinicPrintGetExamYear(group) === year);
+    const selected = clinicPrintGetExamPeriodFilter(classId);
+    const safeClassId = clinicPrintEscapeJsString(classId);
+    return AP_CLINIC_EXAM_PERIODS.map(([period, label]) => {
+        const count = groups.filter(group => period === 'all' || clinicPrintGetExamPeriod(group) === period).length;
+        if (period === 'other' && !count && selected !== 'other') return '';
+        return `<button type="button" class="clinic-print-period-card${selected === period ? ' clinic-print-period-card--active' : ''}" data-exam-period="${period}" aria-pressed="${selected === period}" onclick="clinicPrintSetExamPeriodFilter('${safeClassId}','${period}')"><span>${label}</span><small>${count}개</small></button>`;
+    }).join('');
+}
+
+function clinicPrintGetExamYear(group = {}) {
+    for (const value of [String(group.archiveFile || '').split(/[\\/]/).pop(), group.examTitle]) {
+        const match = String(value || '').match(/^(20\d{2}|\d{2})(?=[_\s])/);
+        if (match) return match[1].length === 2 ? '20' + match[1] : match[1];
+    }
+    return String(group.examDate || '').slice(0, 4);
+}
+
+function clinicPrintGetExamYearFilter(classId) {
+    const key = String(classId);
+    if (clinicPrintExamYearFilters.has(key)) return clinicPrintExamYearFilters.get(key);
+    let stored = '';
+    try { stored = localStorage.getItem(`AP_CLINIC_EXAM_YEAR:${key}`) || ''; } catch (error) {}
+    const groups = clinicPrintGetClassExamGroups(classId, 'grade');
+    const period = clinicPrintGetExamPeriodFilter(classId);
+    const matching = groups.filter(group => period === 'all' || clinicPrintGetExamPeriod(group) === period);
+    const years = [...new Set((matching.length ? matching : groups).map(clinicPrintGetExamYear).filter(year => /^20\d{2}$/.test(year)))].sort().reverse();
+    const value = stored === 'all' || /^20\d{2}$/.test(stored) ? stored : years[0] || 'all';
+    clinicPrintExamYearFilters.set(key, value);
+    return value;
+}
+
+function clinicPrintRenderExamYearOptions(classId) {
+    const selected = clinicPrintGetExamYearFilter(classId);
+    const years = [...new Set(clinicPrintGetClassExamGroups(classId, 'grade').map(clinicPrintGetExamYear).filter(year => /^20\d{2}$/.test(year)))].sort().reverse();
+    if (selected !== 'all' && !years.includes(selected)) years.unshift(selected);
+    return ['all', ...years].map(year => `<option value="${year}"${year === selected ? ' selected' : ''}>${year === 'all' ? '전체 연도' : year + '년'}</option>`).join('');
+}
+
+function clinicPrintSetExamYearFilter(classId, year) {
+    if (year !== 'all' && !/^20\d{2}$/.test(year)) return;
+    clinicPrintExamYearFilters.set(String(classId), year);
+    try { localStorage.setItem(`AP_CLINIC_EXAM_YEAR:${classId}`, year); } catch (error) {}
+    clinicPrintUpdateExamList(classId);
+    clinicPrintOnExamChange(classId);
+}
+
+function clinicPrintSetExamPeriodFilter(classId, period) {
+    if (!AP_CLINIC_EXAM_PERIODS.some(([id]) => id === period)) return;
+    clinicPrintExamPeriodFilters.set(String(classId), period);
+    try { localStorage.setItem(`AP_CLINIC_EXAM_PERIOD:${classId}`, period); } catch (error) {}
+    clinicPrintUpdateExamList(classId);
+    clinicPrintOnExamChange(classId);
+}
+
 function clinicPrintRenderExamListHtml(classId, scope = 'class') {
-    const groups = clinicPrintGetClassExamGroups(classId, scope);
+    const period = clinicPrintGetExamPeriodFilter(classId);
+    const year = clinicPrintGetExamYearFilter(classId);
+    const groups = clinicPrintGetClassExamGroups(classId, scope)
+        .filter(group => (period === 'all' || clinicPrintGetExamPeriod(group) === period) && (year === 'all' || clinicPrintGetExamYear(group) === year));
     const printableGroups = groups.filter(group => group.printable);
     const currentClassPrintableGroups = printableGroups.filter(group => (group.sourceClassIds || []).map(String).includes(String(classId)));
     const initialSource = scope === 'grade' && !currentClassPrintableGroups.length ? printableGroups : (currentClassPrintableGroups.length ? currentClassPrintableGroups : printableGroups);
@@ -1735,7 +1846,7 @@ function clinicPrintRenderExamListHtml(classId, scope = 'class') {
     const initialKeys = currentChecked.size ? currentChecked : new Set(initialSource.length ? [initialSource[0].examKey] : []);
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
-    if (!groups.length) return '<div class="clinic-print-empty">시험 기록이 없습니다.</div>';
+    if (!groups.length) return '<div class="clinic-print-empty">선택한 기간의 시험이 없습니다. 다른 기간 또는 전체를 선택하세요.</div>';
 
     return groups.map(group => {
         const disabled = group.printable ? '' : 'disabled';
@@ -1766,6 +1877,10 @@ function clinicPrintUpdateExamList(classId) {
     const root = document.getElementById('clinic-print-exam-list');
     if (!root) return;
     root.innerHTML = clinicPrintRenderExamListHtml(classId, clinicPrintGetExamListScope());
+    const filters = document.getElementById('clinic-print-exam-period-filters');
+    if (filters) filters.innerHTML = clinicPrintRenderExamPeriodFilters(classId, clinicPrintGetExamListScope());
+    const year = document.getElementById('clinic-print-exam-year');
+    if (year) year.innerHTML = clinicPrintRenderExamYearOptions(classId);
 }
 
 async function openClinicPrintCenter(classId, options = {}) {
@@ -1777,38 +1892,8 @@ async function openClinicPrintCenter(classId, options = {}) {
         await clinicPrintRefreshClassAssignments(classId);
         await clinicPrintRefreshGradeClinicData(classId);
     }
-    const groups = clinicPrintGetClassExamGroups(classId, 'class');
-    const printableGroups = groups.filter(group => group.printable);
-    const currentClassPrintableGroups = printableGroups.filter(group => (group.sourceClassIds || []).map(String).includes(String(classId)));
-    const initialSource = currentClassPrintableGroups.length ? currentClassPrintableGroups : printableGroups;
-    const initialKeys = initialSource.length ? [initialSource[0].examKey] : [];
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
-
-    const examHtml = groups.length
-        ? groups.map((group, idx) => {
-            const disabled = group.printable ? '' : 'disabled';
-            const checked = initialKeys.includes(group.examKey) ? 'checked' : '';
-            const safeExamKey = clinicPrintEscapeJsString(group.examKey || '');
-            const displayTitle = clinicPrintGetExamGroupDisplayTitle(group);
-            const currentClassAssignment = (group.assignments || [])
-                .find(row => String(row.class_id || '') === String(classId || '') && row.can_manage !== false);
-            const deleteDisplay = currentClassAssignment ? '' : ' style="--clinic-print-delete-display:none;"';
-            const status = group.printable
-                ? `${group.questionCount || '-'}문항 · 제출 ${group.sessions.length}명 · 오답 ${group.wrongCount}문항`
-                : '원문 연결 불가';
-            const metaCls = group.printable ? 'clinic-print-exam-row__meta' : 'clinic-print-exam-row__meta clinic-print-exam-row__meta--error';
-            return `
-                <label class="clinic-print-exam-row${group.printable ? '' : ' clinic-print-exam-row--disabled'}"${deleteDisplay}>
-                    <input type="checkbox" class="clinic-print-exam-row__check" name="clinic-print-exam" value="${clinicPrintEscapeAttr(group.examKey)}" ${checked} ${disabled} onchange="clinicPrintOnExamChange('${safeClassIdForJs}')">
-                    <span class="clinic-print-exam-row__main">
-                        <span class="clinic-print-exam-row__title">${clinicPrintEscapeHtml(displayTitle)}</span>
-                        <span class="${metaCls}">${clinicPrintEscapeHtml(status)}</span>
-                    </span>
-                    <button type="button" class="btn apms-button apms-button--quiet btn-danger clinic-print-exam-row__delete" title="시험 삭제" onclick="event.preventDefault(); event.stopPropagation(); clinicPrintDeleteExamGroup('${safeClassIdForJs}','${safeExamKey}')">삭제</button>
-                </label>
-            `;
-        }).join('')
-        : '<div class="clinic-print-empty">시험 기록이 없습니다.</div>';
+    const examHtml = clinicPrintRenderExamListHtml(classId, 'class');
 
     showModal('오답 클리닉 출력 센터', `
         <div class="clinic-print-layout">
@@ -1846,6 +1931,11 @@ async function openClinicPrintCenter(classId, options = {}) {
             </section>
 
             <section class="clinic-print-section">
+                <div class="clinic-print-period-heading">
+                    <div class="clinic-print-section-title">학기별 시험 선택</div>
+                    <select id="clinic-print-exam-year" aria-label="시험 연도" onchange="clinicPrintSetExamYearFilter('${safeClassIdForJs}',this.value)">${clinicPrintRenderExamYearOptions(classId)}</select>
+                </div>
+                <div id="clinic-print-exam-period-filters" class="clinic-print-period-grid" role="group" aria-label="학기별 시험 필터">${clinicPrintRenderExamPeriodFilters(classId, 'class')}</div>
                 <div class="clinic-print-section-head">
                     <div class="clinic-print-section-title">시험 목록</div>
                     <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-exam\\']:not(:disabled)').forEach(el=>el.checked=true); clinicPrintOnExamChange('${safeClassIdForJs}');">전체 선택</button>
