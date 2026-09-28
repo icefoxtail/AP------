@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "PIPELINE_EXECUTION_LOG_v2",
+  "workBatchId": "visang-geometry-major-sol-review3-20260929",
+  "runId": "visang-geometry-major-sol-review3-20260929",
+  "revision": 2,
+  "inputSha": "sha256:079e29d0448269ead3f38a0202d03b5c8a7c5e7fc6129f4eb46b536c3048fe40",
+  "status": "REVIEW_READY_WAITING_FOR_PROVIDER_SLOT",
+  "providerPreflightReservedDispatched": false,
+  "recoveredCandidateGenerationFailures": [
+    {
+      "attempt": "Initial q02 visual",
+      "stdout": "ValueError: UNSUPPORTED_GEOMETRY_RELATION",
+      "outcome": "revised typed segment witness; final q02 reviewed SVG is exact-source consistent"
+    },
+    {
+      "attempt": "Initial q04 visual",
+      "stdout": "ValueError: GEOMETRY_RELATION_FALSE",
+      "outcome": "revised perpendicular direction geometry and explanatory auxiliary-line caption"
+    },
+    {
+      "attempt": "Initial q06 visual",
+      "stdout": "ValueError: UNSUPPORTED_GEOMETRY_RELATION",
+      "outcome": "revised typed point witness"
+    },
+    {
+      "attempt": "Radical label width",
+      "stdout": "ValueError: LABEL_REQUIRES_BOUNDED_REWRITE_OR_HTML_TABLE",
+      "outcome": "q08 exact rigid-isometry frame with source/diagram coordinate crosswalk"
+    },
+    {
+      "attempt": "q08 identifier validation",
+      "stdout": "VISUAL_CONTRACT_BLOCKED: $.semantic.segments[0].id:PATTERN; $.semantic.relations[0].to:PATTERN",
+      "outcome": "schema-valid point/segment IDs"
+    },
+    {
+      "attempt": "q09 label width",
+      "stdout": "ValueError: LABEL_REQUIRES_BOUNDED_REWRITE_OR_HTML_TABLE",
+      "outcome": "dropped unnecessary algebraic tangent-point coordinates while retaining exact nested-circle facts"
+    },
+    {
+      "attempt": "Wrong course label machine check",
+      "stdout": "MACHINE_CHECK_FAILED:METADATA:curriculumBinding on all 17 rows",
+      "outcome": "normalized standardCourse from 고등 공통수학2 to canonical 공통수학2; recorded in curriculum_metadata_normalization.json"
+    }
+  ],
+  "supersededWorkBatchEvents": [
+    {
+      "workBatchId": "visang-geometry-major-sol-20260928",
+      "status": "HOLD",
+      "reason": "Run ID did not match its declared whole-job runIds; no provider launch."
+    },
+    {
+      "workBatchId": "visang-geometry-major-sol-review-20260929",
+      "status": "HOLD",
+      "reason": "Corrected capture was ready but the first freeze attempt lacked RENDER_CAPTURE; no provider launch."
+    },
+    {
+      "workBatchId": "visang-geometry-major-sol-review2-20260929",
+      "status": "HOLD",
+      "reason": "A valid freeze was followed by a redundant second freeze call; preserve its state, do not reuse."
+    }
+  ],
+  "currentRenderCapture": {
+    "status": "PASS_MACHINE_CAPTURE",
+    "reportRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review3-20260929/pipeline-run/render-capture/capture-report.json",
+    "captureCount": 6,
+    "checks": [
+      {
+        "mode": "exam",
+        "viewport": "desktop",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      },
+      {
+        "mode": "exam",
+        "viewport": "mobile",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      },
+      {
+        "mode": "solution",
+        "viewport": "desktop",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      },
+      {
+        "mode": "solution",
+        "viewport": "mobile",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      },
+      {
+        "mode": "answer",
+        "viewport": "desktop",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      },
+      {
+        "mode": "answer",
+        "viewport": "mobile",
+        "status": "PASS",
+        "checks": {
+          "runtime": "PASS",
+          "mathJax": "PASS",
+          "fonts": "PASS",
+          "imageDecode": "PASS",
+          "assetAssociation": "PASS",
+          "questionCount": "PASS",
+          "lastQuestion": "PASS",
+          "clipping": "PASS",
+          "overflow": "PASS",
+          "readability": "NOT_TESTED"
+        },
+        "questionCount": 17
+      }
+    ]
+  },
+  "currentFreeze": {
+    "freezeSha": "sha256:58f0b5217785516b0e908a7ee9d60a2e70c58f2e6c1e6a6ec50be75b7e573660",
+    "targetCount": 17,
+    "openDefectCount": 0
+  },
+  "auditQueue": "The movement batch owns the first expensive FINAL_AUDIT slot. Wait for the coordinator's release; never preflight/reserve early.",
+  "remainingGates": [
+    "U1 source/solution review",
+    "U2 artifact-only visual review",
+    "U3 candidate/visual-benefit review",
+    "independent render readability review",
+    "FINAL_AUDIT receipt and pipeline V2 closure"
+  ],
+  "productionAuthorized": false,
+  "rendererCountFix": {
+    "upstreamCommit": "bd36169c8",
+    "topicMergeCommit": "61d211cb6",
+    "sharedRendererModifiedByThisTask": false
+  },
+  "currentCaptureRunId": "visang-geometry-major-sol-review3-20260929",
+  "currentFreezeSha": "sha256:58f0b5217785516b0e908a7ee9d60a2e70c58f2e6c1e6a6ec50be75b7e573660",
+  "reviewerRoute": {
+    "model": "gpt-6-luna",
+    "reasoningEffort": "max",
+    "selectedBy": "coordinator",
+    "envVars": [
+      "APMATH_CODEX_MODEL",
+      "APMATH_CODEX_REASONING_EFFORT",
+      "APMATH_NODE_MODULES"
+    ],
+    "status": "WAITING_FOR_SLOT_RELEASE"
+  },
+  "sharedRendererAndProviderConfigMerges": [
+    {
+      "commit": "bd36169c8",
+      "mergeCommit": "61d211cb6",
+      "purpose": "source-backed render question count"
+    },
+    {
+      "commit": "b63d1c9c0",
+      "mergeCommit": "ffb470f78",
+      "purpose": "provider model/reasoning environment configuration"
+    }
+  ]
+}\n

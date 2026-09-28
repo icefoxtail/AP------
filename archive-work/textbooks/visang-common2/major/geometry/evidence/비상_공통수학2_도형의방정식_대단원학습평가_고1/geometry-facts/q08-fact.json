@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "APMATH_VISUAL_FACT_v2",
+  "questionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|8",
+  "visualType": "geometry",
+  "semantic": {
+    "points": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "id": "L",
+        "x": -3,
+        "y": 2
+      },
+      {
+        "id": "R",
+        "x": 3,
+        "y": 2
+      }
+    ],
+    "circles": [
+      {
+        "id": "circle",
+        "x": 0,
+        "y": 0,
+        "radius": 3
+      }
+    ],
+    "segments": [
+      {
+        "id": "chordline",
+        "start": "L",
+        "end": "R"
+      },
+      {
+        "id": "OM",
+        "start": "O",
+        "end": "M"
+      }
+    ],
+    "relations": [
+      {
+        "from": "OM",
+        "to": "chordline",
+        "relation": "perpendicular"
+      }
+    ],
+    "scalePolicy": "EXACT_EQUAL_UNITS"
+  }
+}

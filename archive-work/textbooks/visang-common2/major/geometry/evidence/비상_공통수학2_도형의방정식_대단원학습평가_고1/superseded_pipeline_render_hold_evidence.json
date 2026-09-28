@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "CURRENT_PIPELINE_RENDER_HOLD_EVIDENCE_v1",
+  "status": "HOLD",
+  "productionAuthorized": false,
+  "denominator": 17,
+  "sourceExamId": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT",
+  "currentRun": {
+    "runId": "visang-geometry-major-sol-review-20260929",
+    "revision": 2,
+    "workBatchId": "visang-geometry-major-sol-review-20260929",
+    "inputSha": "sha256:bfb162df45811b26f7d4dcbbe378442f9068404bc7a6d7e6a1ed1183ba7310f6",
+    "manifestRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review-20260929/pipeline-run/run-machine.json",
+    "manifestSha256": "sha256:4703055464fb5a5a58a456088c6eeb3d0db530f823279db6a19076102853842a"
+  },
+  "supersededPreUpgradeBatch": {
+    "workBatchId": "visang-geometry-major-sol-20260928",
+    "status": "HOLD",
+    "runIds": [
+      "visang-geometry-major-sol"
+    ],
+    "freezes": 0,
+    "launches": 0,
+    "lastHold": {
+      "at": "2026-09-28T16:55:29.607Z",
+      "code": "HOLD:WHOLE_JOB_FREEZE_REQUIRED"
+    },
+    "evidenceFile": "alive/runtime/work-batches/visang-geometry-major-sol-20260928/state.json",
+    "stateSha256": "sha256:35baa71f8db41901e14cd879fe774e8c3bc8e1dab7de921965bd7412be3183ce"
+  },
+  "currentBatch": {
+    "workBatchId": "visang-geometry-major-sol-review-20260929",
+    "status": "HOLD",
+    "runIds": [
+      "visang-geometry-major-sol-review-20260929"
+    ],
+    "freezes": 0,
+    "freezeSha": null,
+    "launches": 0,
+    "lastHold": {
+      "at": "2026-09-28T17:04:35.650Z",
+      "code": "HOLD:WHOLE_JOB_RENDER_CAPTURE_REQUIRED"
+    },
+    "stateFile": "alive/runtime/work-batches/visang-geometry-major-sol-review-20260929/state.json",
+    "stateSha256": "sha256:cd5daaef9695419ed16f1ead34c5b598774cbd3338307be55e2db21774f1567d",
+    "holdEvidenceRef": "HOLD:WHOLE_JOB_RENDER_CAPTURE_REQUIRED"
+  },
+  "pipelineCaptureAttempt": {
+    "command": "node archive/tools/pipeline-core/cli.mjs render --manifest archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review-20260929/pipeline-run/run-machine.json --workdir archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review-20260929/pipeline-run/pipeline-render-attempt-current --browser-channel chrome",
+    "status": "BLOCKED",
+    "errors": [
+      "page.waitForFunction: Timeout 45000ms exceeded."
+    ],
+    "reportSha": "sha256:022e8f32702183665dbcfb91f1e9134eade70da94c5ceb0f4ccca8cb7daf7b30",
+    "manifestSha256": "sha256:4703055464fb5a5a58a456088c6eeb3d0db530f823279db6a19076102853842a",
+    "inputSha": "sha256:bfb162df45811b26f7d4dcbbe378442f9068404bc7a6d7e6a1ed1183ba7310f6",
+    "interpretation": "The current pipeline-core render collector cannot complete its count wait in exam mode; no RENDER_CAPTURE evidence was generated."
+  },
+  "examSelectorDiagnosis": {
+    "mode": "exam",
+    "expectedQuestionDenominator": 17,
+    "actualQBoxDomCount": 20,
+    "actualDistinctQuestionSourceRefs": 17,
+    "coreWaitPredicateUniqueCount": 20,
+    "extraNodes": [
+      {
+        "selector": ".ap-equal-slot",
+        "count": 3,
+        "dataEmpty": "true",
+        "ariaHidden": "true",
+        "dataSourceRef": null
+      }
+    ],
+    "reason": "captureRender waits for exactly questionBank.length distinct values from every #print-area .q-box, using data-source-ref or the DOM index. The three aria-hidden empty equal-slot placeholders are also .q-box elements, so they add three unique index values and the predicate can never reach 17."
+  },
+  "supplementaryBrowserObservations": {
+    "exam": {
+      "status": "OBSERVED",
+      "questionBankCount": 17,
+      "pages": 5,
+      "problemImagesLoaded": 2,
+      "errors": [],
+      "captureRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/browser-exam-render/capture.json",
+      "captureSha256": "sha256:aa024ad0c73df25d4c3f4337faa4ada5ff398eafaf0f08b405dd1bb09fc72580"
+    },
+    "solution": {
+      "status": "OBSERVED",
+      "questionBoxes": 17,
+      "solutionSvgImagesLoaded": 15,
+      "pages": 8,
+      "errors": [],
+      "captureRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/browser-sol-render/capture.json",
+      "captureSha256": "sha256:86187996d511dc40360c33b1f23650f53954b8a32f52bcd7ea750bfb605c7784"
+    },
+    "answer": {
+      "status": "OBSERVED",
+      "answerEntries": 17,
+      "pages": 1,
+      "answerOrdinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "errors": [],
+      "captureRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/browser-ans-render/capture.json",
+      "captureSha256": "sha256:eaf4c0d8aadf024312f07fcc995c8a0ab6aa2f5fe82793b94a730c185e5ed0ab"
+    },
+    "qualification": "These direct Playwright observations show that the archive engine rendered each mode and all referenced assets decoded. They are supplementary visual evidence and do not satisfy the pipeline-core RENDER_CAPTURE contract."
+  },
+  "machineChecks": {
+    "count": 34,
+    "pass": 34,
+    "fail": 0,
+    "axes": [
+      "STATIC",
+      "METADATA"
+    ],
+    "machineEvidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review-20260929/pipeline-run/machine-evidence-r2"
+  },
+  "independentReview": {
+    "U1": "NOT_STARTED",
+    "U2": "NOT_STARTED",
+    "U3": "NOT_STARTED",
+    "finalAudit": "NOT_RESERVED",
+    "providerLaunches": 0,
+    "note": "The movement batch currently owns the sole expensive FINAL_AUDIT slot. The corrected batch was not preflighted, reserved, or dispatched because the mandatory render-capture gate is blocked."
+  },
+  "blockingGates": [
+    "No pipeline-core RENDER_CAPTURE PASS for exam/solution/answer × desktop/mobile.",
+    "Whole-job freeze is unavailable until current RENDER_CAPTURE evidence closes.",
+    "U1/U2/U3 and independent source/answer/solution alignment review remain pending."
+  ],
+  "nextAllowedAction": "Resolve the pipeline renderer count semantics or receive an explicitly authorized alternative verified engine-capture route; then rebuild a fresh run revision, collect RENDER_CAPTURE, re-run machine checks, freeze the same current work batch if still recoverable or initialize a new unique batch, and wait for coordinator slot release before provider-preflight/reservation/dispatch."
+}
