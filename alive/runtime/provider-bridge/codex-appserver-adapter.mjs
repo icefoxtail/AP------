@@ -13,6 +13,9 @@ const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
 const HISTORY_RPC_TIMEOUT_MS = 1000;
 const JOB = process.argv[process.argv.indexOf('--job') + 1];
+const MODEL = process.env.APMATH_CODEX_MODEL || 'gpt-5.6-luna';
+const REASONING_EFFORT = process.env.APMATH_CODEX_REASONING_EFFORT || 'xhigh';
+const MODEL_ROUTE = `${MODEL}/${REASONING_EFFORT}`;
 const stateRelative = JOB ? `alive/runtime/provider-bridge/${JOB}/codex-appserver-state.json` : null;
 const statePath = stateRelative ? path.resolve(ROOT, stateRelative.replaceAll('/', path.sep)) : null;
 const stateDir = statePath ? path.dirname(statePath) : null;
@@ -118,7 +121,7 @@ class AppServerClient {
 }
 
 const threadParams = (phase, developerInstructions) => ({
-  model: 'gpt-5.6-luna',
+  model: MODEL,
   cwd: ROOT,
   ephemeral: true,
   approvalPolicy: 'never',
@@ -135,6 +138,10 @@ async function daemonMain() {
   const app = new AppServerClient();
   await app.request('initialize', { clientInfo: { name: 'apmath-codex-provider-bridge', version: '1.0.0' }, capabilities: { experimentalApi: true } });
   app.proc.stdin.write(`${JSON.stringify({ jsonrpc: '2.0', method: 'initialized', params: {} })}\n`);
+  const catalog = await app.request('model/list', { limit: 100, includeHidden: true });
+  const model = (catalog.data || []).find(row => row.model === MODEL || row.id === MODEL);
+  const supportedEfforts = (model?.supportedReasoningEfforts || []).map(row => typeof row === 'string' ? row : row.reasoningEffort);
+  if (!model || !supportedEfforts.includes(REASONING_EFFORT)) throw new Error(`CODEX_APPSERVER_MODEL_EFFORT_UNAVAILABLE:${MODEL_ROUTE}`);
   const priorState = fs.existsSync(statePath) ? readState() : null;
   const legacyBootstrap = priorState && !priorState.adapterVersion ? { control: priorState.control || null, contexts: priorState.contexts || null, pid: priorState.pid || null, startedAt: priorState.startedAt || null } : priorState?.legacyBootstrap || null;
   const runtime = {
@@ -143,7 +150,7 @@ async function daemonMain() {
       adapterVersion: 'APMATH_CODEX_APPSERVER_ADAPTER_v2',
       job: JOB,
       provider: 'CodexAppServer',
-      model: 'gpt-5.6-luna/xhigh',
+      model: MODEL_ROUTE,
       pid: process.pid,
       launches: priorState?.launches || {},
       ...(legacyBootstrap ? { legacyBootstrap } : {})
@@ -211,12 +218,13 @@ async function handleDaemonRequest(runtime, request) {
   const threadId = context.threadId;
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
-    model: 'gpt-5.6-luna',
+    model: MODEL,
+    effort: REASONING_EFFORT,
     input: buildNativeTurnInput(request.prompt, request.packet),
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
-    collaborationMode: { mode: 'default', settings: { model: 'gpt-5.6-luna', developer_instructions: null } }
+    collaborationMode: { mode: 'default', settings: { model: MODEL, developer_instructions: null } }
   });
   const turn = turnFromStartResponse(turnResponse);
   if (!turn?.id) throw new Error('CODEX_APPSERVER_TURN_ID_MISSING');
