@@ -1,5 +1,5 @@
 {
-  "schema": "JS_ARCHIVE_RESET_CREATE_EVIDENCE_v2",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
@@ -7,1029 +7,1325 @@
   "examFile": "24_향림중_2학기_기말_중2_기출.js",
   "examUid": "24_향림중_2학기_기말_중2_기출",
   "grade": "M2",
-  "lane": "A",
-  "stage": "CREATE",
+  "sourceLane": "A",
+  "lane": "C",
+  "stage": "R1",
   "denominator": 24,
   "source": {
-    "jsSourceGitBlobSha": "0c3bea75cc0c886434c536361c7f2f52c53b2965",
-    "sourceTextExactParityStatus": "PASS",
-    "sourceTextExactParity": "24/24",
-    "choicesExactParityStatus": "PASS",
-    "choicesExactParity": "24/24",
-    "answerExactParity": "24/24",
-    "problemImageRefExactParity": "24/24",
-    "problemPngAssetBlobParity": "17/17",
-    "assetSemanticReviewBoundary": "BINARY_CONNECTOR_UNAVAILABLE; exact source/intake Git blob parity used"
+    "sourceBlobSha": "0c3bea75cc0c886434c536361c7f2f52c53b2965",
+    "preR1IntakeBlobSha": "0c3bea75cc0c886434c536361c7f2f52c53b2965",
+    "finalCandidateGitBlobSha": "2446c5e2b9caed211654cc5e0bcca35ec5a85458",
+    "contentExact": "24/24 PASS",
+    "choicesExact": "24/24 PASS",
+    "answerExact": "24/24 PASS",
+    "imageRefsExact": "24/24 PASS",
+    "referencedSourceImages": "17/17 GIT_BLOB_EXACT_PASS"
+  },
+  "math": {
+    "PASS": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "probabilityIndependenceDefaultQuestions": [
+      19,
+      20,
+      24
+    ]
   },
   "questionLayout": {
-    "status": "PASS",
-    "denominator": 24,
-    "KEEP": 24,
-    "REFORMAT": 0,
+    "PASS": 24,
+    "REPAIR": 0,
     "HOLD": 0,
-    "policy": "AUTO-FIRST",
-    "staticCapacityEvidence": "all source grid retained; no deterministic static overflow evidence sufficient to justify subjective-2up",
-    "knownQuestionLayoutRepairPending": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "sourceTextExactParity": "24/24",
+    "choicesExactParity": "24/24",
+    "staticCapacity2up": [],
+    "unnecessaryManualOverride": 0,
+    "render": "NOT_RUN_CODEX_HANDOFF"
   },
   "solution": {
-    "solutionSelfCheckStatus": "PASS",
-    "denominator": 24,
     "KEEP": 24,
     "REPAIR": 0,
-    "TRUE_HOLD": 0,
-    "knownSolutionRepairPending": 0,
-    "verification": "fresh independent arithmetic/geometry/probability check; middle-school independence default applied; all 24 reproduce protected answers"
+    "HOLD": 0
+  },
+  "reproducibility": {
+    "PASS": 24,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "microLayout": {
+    "KEEP": 24,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0
+  },
+  "curriculumTerminology": {
+    "PASS": 24,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "studentLanguage": {
+    "PASS": 24,
+    "FIX": 0,
+    "HOLD": 0
   },
   "visual": {
-    "status": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "sourceProblemVisuals": "17/17 GIT_BLOB_EXACT_PARITY",
-    "solutionSvgCreatedOrChanged": 0,
-    "dispositionSummary": {
-      "SATISFIED_BY_SOURCE_PROBLEM_VISUAL": 17,
-      "VISUAL_EXEMPT": 7,
-      "ADD": 0,
-      "REPAIR": 0,
-      "REBUILD": 0
-    },
-    "requiredVisualMissing": 0,
-    "knownVisualRepairPending": 0,
-    "visualMathParityPending": 0,
-    "V1": "24/24 ROUTED",
-    "V2": "NOT_APPLICABLE_NO_NEW_SVG",
-    "V3": "NOT_APPLICABLE_NO_NEW_SVG",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "targets": 17,
+    "PASS": 17,
+    "ADD": 17,
+    "REPAIR": 0,
+    "REBUILD": 0,
+    "EXEMPT": 7,
+    "HOLD": 0,
+    "items": [
+      {
+        "q": 1,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AO=3",
+          "AC=6",
+          "∠ABO=30°",
+          "∠OCD=60°"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q1-solution.svg",
+        "gitBlobSha": "b98064b67ec630c77f7e9c7e360a68418e4efbbd",
+        "svgSha256": "sha256:e12d768ae4442a5d5e84adbb15c3f418c2a9858fe7125f1bf67965b046c077e6",
+        "bytes": 1664,
+        "v2ObservedFacts": [
+          "AO=3",
+          "AC=6",
+          "∠ABO=30°",
+          "∠OCD=60°"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 2,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AC∥DE",
+          "BA:BD=8:13",
+          "[ABE]=26"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q2-solution.svg",
+        "gitBlobSha": "fcc987cf2e8d722e4f7c7ae24e7018c30639b6e7",
+        "svgSha256": "sha256:93c9a2dedb77f5725e0e03de43b40f75945a55105cc05b85c6883546664ef277",
+        "bytes": 1602,
+        "v2ObservedFacts": [
+          "AC∥DE",
+          "BA:BD=8:13",
+          "[ABE]=26"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 3,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "밑변 10,4",
+          "다리 5",
+          "높이 4",
+          "넓이 28"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q3-solution.svg",
+        "gitBlobSha": "31c4f486f79227d90217ee911b35a47a32dcc110",
+        "svgSha256": "sha256:7266a073df129a6bf9d42b227bf56371eb4c4f1d88a1b8e4e1940e3c4689d818",
+        "bytes": 1722,
+        "v2ObservedFacts": [
+          "밑변 10,4",
+          "다리 5",
+          "높이 4",
+          "넓이 28"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 4,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "24-7-25 직각삼각형",
+          "둘레 62"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q4-solution.svg",
+        "gitBlobSha": "0c663d6b61f22c60f2ef5c02d688dff36b805837",
+        "svgSha256": "sha256:f326ba708bc8b0fd19d7dde4ac99fe215342dd5780fc6ae9b1d39ed58cb60d76",
+        "bytes": 1504,
+        "v2ObservedFacts": [
+          "24-7-25 직각삼각형",
+          "둘레 62"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 5,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "닮음비 2:1",
+          "넓이비 4:1",
+          "작은 넓이 25"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q5-solution.svg",
+        "gitBlobSha": "256c56d3f1e79145ed2dcd90bc6b4a5cd4e7cf0d",
+        "svgSha256": "sha256:497a06ba20bd191aae2cda62ef897e0ba976216a23a2c7ef13467ac39df4bdc8",
+        "bytes": 2134,
+        "v2ObservedFacts": [
+          "닮음비 2:1",
+          "넓이비 4:1",
+          "작은 넓이 25"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 6,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "DE∥BC",
+          "AD:AB=5:8",
+          "DE=5"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q6-solution.svg",
+        "gitBlobSha": "0ad2d676952d4822636fca061cba9de42b9a1228",
+        "svgSha256": "sha256:592201a41481fca877c3f7b8b2ec7b8162e8979e515f75b66ea2799b8e63f518",
+        "bytes": 1583,
+        "v2ObservedFacts": [
+          "DE∥BC",
+          "AD:AB=5:8",
+          "DE=5"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 7,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "FE=10",
+          "DF=10",
+          "△ADG∽△EFG",
+          "DG=15/4"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q7-solution.svg",
+        "gitBlobSha": "589e15dc4c137f7b33cce3c35a5d6926449de40d",
+        "svgSha256": "sha256:88df1c95948e2b0cd14e91433518dfe903c8dec2b2fbb21550289ea57f9ccefb",
+        "bytes": 1995,
+        "v2ObservedFacts": [
+          "FE=10",
+          "DF=10",
+          "△ADG∽△EFG",
+          "DG=15/4"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 8,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AD,BE 각의 이등분선",
+          "DE∥AB",
+          "DC=8"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q8-solution.svg",
+        "gitBlobSha": "d6b49292b924e3f2a57c9f775b0030a59f919407",
+        "svgSha256": "sha256:71d428d88532d045d0eb9e981eff5db1a20fc77ffc684b47245c5f6b28feec07",
+        "bytes": 1766,
+        "v2ObservedFacts": [
+          "AD,BE 각의 이등분선",
+          "DE∥AB",
+          "DC=8"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 9,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "l∥m∥n",
+          "20:15=16:12",
+          "DF=28"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q9-solution.svg",
+        "gitBlobSha": "49eaedae86b10667dc89cb767dd974c27a92e815",
+        "svgSha256": "sha256:b4f0dbb7aad11065f4dabbb08e9e403a5fe807bedbaa4745fee85cdf27b0d78f",
+        "bytes": 2722,
+        "v2ObservedFacts": [
+          "l∥m∥n",
+          "20:15=16:12",
+          "DF=28"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 10,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "DF∥EG∥BC",
+          "EG=12",
+          "EH=9",
+          "GH=3"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q10-solution.svg",
+        "gitBlobSha": "962a5d60a260dc6040792303aca227f24e7a5802",
+        "svgSha256": "sha256:9726bf0995d2a96f758769bcaf20503fb5ee6a91e6d24cd3fb6b95f62ad6ba3c",
+        "bytes": 2393,
+        "v2ObservedFacts": [
+          "DF∥EG∥BC",
+          "EG=12",
+          "EH=9",
+          "GH=3"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 11,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AB∥DC",
+          "BE:DE=3:4",
+          "[ADE]=16"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q11-solution.svg",
+        "gitBlobSha": "aef73b422e99a6c5a4fbe7217a418f78ba22a6ff",
+        "svgSha256": "sha256:fbada2fb5eadc94eaceeeae552fa4618cf42f73c0d61b525a44b0430e03690d6",
+        "bytes": 1828,
+        "v2ObservedFacts": [
+          "AB∥DC",
+          "BE:DE=3:4",
+          "[ADE]=16"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 12,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "G는 무게중심",
+          "GE=5",
+          "CG=10"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg",
+        "gitBlobSha": "eb167f54b698bdb66f926f740432db0e36d26019",
+        "svgSha256": "sha256:6e41ac3f63f49df4cda7344c1f89b5c8f1250c37781d81d618540f1aeee2b43f",
+        "bytes": 1677,
+        "v2ObservedFacts": [
+          "G는 무게중심",
+          "GE=5",
+          "CG=10"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 13,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "DE∥BC",
+          "AN=AM/2",
+          "AG=2AM/3",
+          "넓이비 3:1"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q13-solution.svg",
+        "gitBlobSha": "d4f39ded84cdbe820a13e1666ec9da33d15e0cad",
+        "svgSha256": "sha256:6b13efbd8a5d01b87d2808ab13c3d114df4718912b5805dbbc2b96854470220c",
+        "bytes": 2189,
+        "v2ObservedFacts": [
+          "DE∥BC",
+          "AN=AM/2",
+          "AG=2AM/3",
+          "넓이비 3:1"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 16,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "직접 3",
+          "B 경유 2×2",
+          "전체 7"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q16-solution.svg",
+        "gitBlobSha": "35528a707685c8b8b449ea932bcd816b72a42514",
+        "svgSha256": "sha256:0e5e54b023cc1f4ac941ad220512c763402924c598db1ce7511ec37a69779da6",
+        "bytes": 1746,
+        "v2ObservedFacts": [
+          "직접 3",
+          "B 경유 2×2",
+          "전체 7"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 19,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "전체 6쌍",
+          "다른 수 4쌍",
+          "확률 2/3"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q19-solution.svg",
+        "gitBlobSha": "46bec69fe4dcf991f2ab58affe2237bed4228946",
+        "svgSha256": "sha256:1368a23df7d47cecf5910b4fd28ef93474b28586f9c47ef9e3df027b05fa34ec",
+        "bytes": 1745,
+        "v2ObservedFacts": [
+          "전체 6쌍",
+          "다른 수 4쌍",
+          "확률 2/3"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 21,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "5-12-13",
+          "r=5",
+          "h=12",
+          "100π"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q21-solution.svg",
+        "gitBlobSha": "c342ae3350959bf78cb250559adb41ff609fb574",
+        "svgSha256": "sha256:34fe5f47042180faa225efdb6d7e6772ac67e1cf187130c681395efb1f4861d2",
+        "bytes": 1983,
+        "v2ObservedFacts": [
+          "5-12-13",
+          "r=5",
+          "h=12",
+          "100π"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 22,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AB∥EF∥DC",
+          "x=15",
+          "y=30"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "PYTHON_NUMERIC_VERIFIED_DETERMINISTIC_SVG",
+        "pythonNumericVerification": "PASS",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q22-solution.svg",
+        "gitBlobSha": "95b9926e751e5b878895a4bb6ee0f25a631e3a51",
+        "svgSha256": "sha256:d8de1ce40f2b0e1665489781f445f34806228dcae8d797729ba796551f7f9189",
+        "bytes": 2290,
+        "v2ObservedFacts": [
+          "AB∥EF∥DC",
+          "x=15",
+          "y=30"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      }
+    ],
+    "render": "NOT_RUN_CODEX_HANDOFF"
   },
   "meta": {
-    "status": "PASS_STATIC_CONTRACT_PROJECTION",
-    "denominator": 24,
-    "decisionIsolationStatus": "PASS",
-    "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-    "rpmSemantic": {
-      "FINAL": 24,
-      "HOLD": 0,
-      "unresolved": 0
-    },
-    "projection": {
-      "PROJECTION_REUSE": 10,
-      "PROJECTION_BINDING_PENDING": 5,
-      "PROJECTION_UNMATERIALIZED": 9,
-      "META_ONLY_COMPATIBILITY_PENDING": 0,
-      "META_ONLY": 14
-    },
-    "knownMetaRepairPending": 0,
-    "resolvablePending": 0,
-    "difficultyBuckets": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "RPM_SEMANTIC_FINAL": 24,
+    "RPM_SEMANTIC_UNRESOLVED": 0,
+    "PROJECTION_REUSE": 10,
+    "PROJECTION_META_ONLY": 14,
+    "resolvablePending": 0
+  },
+  "difficulty": {
+    "distribution": {
       "1": 3,
       "2": 7,
       "3": 9,
       "4": 5,
       "5": 0
     },
-    "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME"
+    "changedQuestions": []
   },
   "basicIntegrity": {
-    "status": "PASS",
-    "finalQuestionCount": 24,
-    "uniqueIds": "24/24",
-    "duplicateIdCount": 0,
-    "nonemptyAnswer": "24/24 PASS",
-    "nonemptySolution": "24/24 PASS",
-    "controlCharCount": 0,
-    "latexDollarBalance": "PASS",
-    "runtimeStringBasicIntegrity": "PASS_STATIC",
-    "protectedFieldParity": "24/24 PASS",
-    "nodeSyntaxRuntime": "NOT_RUN_CONNECTOR_RUNTIME"
+    "questionCount": 24,
+    "ids": "1..24 UNIQUE PASS",
+    "answers": "24/24 PRESENT",
+    "solutions": "24/24 PRESENT",
+    "advancedMetaStructuralFields": "24/24 MATERIALIZED",
+    "controlChar": "PASS",
+    "latexBasic": "PASS",
+    "assetRefs": "PASS",
+    "jsonQuestionBankParse": "PASS",
+    "officialNodeCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
-  "createSelfCheck": {
-    "CREATE_SELF_CHECK_PASS": true,
-    "solutionSelfCheckStatus": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "questionLayoutStatus": "PASS",
-    "sourceTextExactParityStatus": "PASS",
-    "choicesExactParityStatus": "PASS",
-    "knownRepairPending": {
-      "solution": 0,
-      "visual": 0,
-      "layout": 0,
-      "meta": 0
-    },
-    "requiredVisualMissing": 0,
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      16,
+      19,
+      21,
+      22
+    ],
+    "falsePassAxes": [
+      "SOLUTION_VISUAL_TRIAGE"
+    ]
+  },
+  "metaResolutionEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/24_향림중_2학기_기말_중2_기출.meta.json",
+    "sha256": "sha256:c5486bf58ccf46e6f7699e7237c99089f100ed6dd40ddaca5ca9cc8abbbe7045"
+  },
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
     "rpmSemanticUnresolved": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 14,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "items": [
     {
-      "qid": 1,
+      "q": 1,
       "questionUid": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q1.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q1-solution.svg",
+        "svgSha256": "sha256:e12d768ae4442a5d5e84adbb15c3f418c2a9858fe7125f1bf67965b046c077e6",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-079",
-        "l3": "직사각형·마름모·정사각형",
-        "l4": "특수 사각형의 대각선 성질",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-079",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 2
     },
     {
-      "qid": 2,
+      "q": 2,
       "questionUid": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q2-solution.svg",
+        "svgSha256": "sha256:93c9a2dedb77f5725e0e03de43b40f75945a55105cc05b85c6883546664ef277",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-096",
-        "l3": "비례 활용",
-        "l4": "선분비를 이용한 복합도형",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-096",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 4
     },
     {
-      "qid": 3,
+      "q": 3,
       "questionUid": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q3.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q3-solution.svg",
+        "svgSha256": "sha256:7266a073df129a6bf9d42b227bf56371eb4c4f1d88a1b8e4e1940e3c4689d818",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-105",
-        "l3": "도형에의 활용",
-        "l4": "평면도형 길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-105",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     },
     {
-      "qid": 4,
+      "q": 4,
       "questionUid": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q4.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q4-solution.svg",
+        "svgSha256": "sha256:f326ba708bc8b0fd19d7dde4ac99fe215342dd5780fc6ae9b1d39ed58cb60d76",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-101",
-        "l3": "피타고라스 정리",
-        "l4": "직각삼각형의 변 길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-101",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 1
     },
     {
-      "qid": 5,
+      "q": 5,
       "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q5.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q5-solution.svg",
+        "svgSha256": "sha256:497a06ba20bd191aae2cda62ef897e0ba976216a23a2c7ef13467ac39df4bdc8",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-090",
-        "l3": "닮음의 활용",
-        "l4": "넓이·부피 비",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-090",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 3
     },
     {
-      "qid": 6,
+      "q": 6,
       "questionUid": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q6.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q6-solution.svg",
+        "svgSha256": "sha256:592201a41481fca877c3f7b8b2ec7b8162e8979e515f75b66ea2799b8e63f518",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-095",
-        "l3": "비례 활용",
-        "l4": "미지 길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-095",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "미지 길이"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 2
     },
     {
-      "qid": 7,
+      "q": 7,
       "questionUid": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q7.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q7-solution.svg",
+        "svgSha256": "sha256:88df1c95948e2b0cd14e91433518dfe903c8dec2b2fbb21550289ea57f9ccefb",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-089",
-        "l3": "닮음의 활용",
-        "l4": "길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-089",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 4
     },
     {
-      "qid": 8,
+      "q": 8,
       "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q8.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q8-solution.svg",
+        "svgSha256": "sha256:71d428d88532d045d0eb9e981eff5db1a20fc77ffc684b47245c5f6b28feec07",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-096",
-        "l3": "비례 활용",
-        "l4": "선분비를 이용한 복합도형",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-096",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 4
     },
     {
-      "qid": 9,
+      "q": 9,
       "questionUid": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q9.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q9-solution.svg",
+        "svgSha256": "sha256:b4f0dbb7aad11065f4dabbb08e9e403a5fe807bedbaa4745fee85cdf27b0d78f",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-093",
-        "l3": "평행선 사이 선분비",
-        "l4": "여러 평행선",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-093",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 2
     },
     {
-      "qid": 10,
+      "q": 10,
       "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q10.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q10-solution.svg",
+        "svgSha256": "sha256:9726bf0995d2a96f758769bcaf20503fb5ee6a91e6d24cd3fb6b95f62ad6ba3c",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-096",
-        "l3": "비례 활용",
-        "l4": "선분비를 이용한 복합도형",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-096",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 4
     },
     {
-      "qid": 11,
+      "q": 11,
       "questionUid": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q11.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q11-solution.svg",
+        "svgSha256": "sha256:fbada2fb5eadc94eaceeeae552fa4618cf42f73c0d61b525a44b0430e03690d6",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-089",
-        "l3": "닮음의 활용",
-        "l4": "길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-089",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 3
     },
     {
-      "qid": 12,
+      "q": 12,
       "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg",
+        "svgSha256": "sha256:6e41ac3f63f49df4cda7344c1f89b5c8f1250c37781d81d618540f1aeee2b43f",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-097",
-        "l3": "중선과 무게중심",
-        "l4": "2:1 비",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-097",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     },
     {
-      "qid": 13,
+      "q": 13,
       "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q13.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q13-solution.svg",
+        "svgSha256": "sha256:6b13efbd8a5d01b87d2808ab13c3d114df4718912b5805dbbc2b96854470220c",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-099",
-        "l3": "넓이와 무게중심",
-        "l4": "넓이 분할",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-099",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 4
     },
     {
-      "qid": 14,
+      "q": 14,
       "questionUid": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-107",
-        "l3": "합의 법칙과 곱의 법칙",
-        "l4": "단계별 선택",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-107",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 1
     },
     {
-      "qid": 15,
+      "q": 15,
       "questionUid": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-109",
-        "l3": "배열과 선택",
-        "l4": "순서가 있는 경우",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-109",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        }
       },
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     },
     {
-      "qid": 16,
+      "q": 16,
       "questionUid": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q16.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q16-solution.svg",
+        "svgSha256": "sha256:0e5e54b023cc1f4ac941ad220512c763402924c598db1ce7511ec37a69779da6",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-107",
-        "l3": "합의 법칙과 곱의 법칙",
-        "l4": "단계별 선택",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-107",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 2
     },
     {
-      "qid": 17,
+      "q": 17,
       "questionUid": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-113",
-        "l3": "확률의 뜻",
-        "l4": "동등가능한 경우",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-113",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "동등가능한 경우"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     },
     {
-      "qid": 18,
+      "q": 18,
       "questionUid": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-118",
-        "l3": "확률의 활용",
-        "l4": "연속 시행",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-118",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        }
       },
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 1
     },
     {
-      "qid": 19,
+      "q": 19,
       "questionUid": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q19.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q19-solution.svg",
+        "svgSha256": "sha256:1368a23df7d47cecf5910b4fd28ef93474b28586f9c47ef9e3df027b05fa34ec",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-113",
-        "l3": "확률의 뜻",
-        "l4": "동등가능한 경우",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-113",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "동등가능한 경우"
+        }
       },
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 2
     },
     {
-      "qid": 20,
+      "q": 20,
       "questionUid": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-118",
-        "l3": "확률의 활용",
-        "l4": "연속 시행",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-118",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        }
       },
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 2
     },
     {
-      "qid": 21,
+      "q": 21,
       "questionUid": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q21.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q21-solution.svg",
+        "svgSha256": "sha256:34fe5f47042180faa225efdb6d7e6772ac67e1cf187130c681395efb1f4861d2",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-105",
-        "l3": "도형에의 활용",
-        "l4": "평면도형 길이",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-105",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     },
     {
-      "qid": 22,
+      "q": 22,
       "questionUid": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q22.png",
-        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
-        "visualRequirement": "VISUAL_REQUIRED",
-        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "ADD",
+        "path": "archive/assets/images/24_향림중_2학기_기말_중2_기출/q22-solution.svg",
+        "svgSha256": "sha256:d8de1ce40f2b0e1665489781f445f34806228dcae8d797729ba796551f7f9189",
+        "v3Parity": "PASS"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-096",
-        "l3": "비례 활용",
-        "l4": "선분비를 이용한 복합도형",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-096",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        }
       },
-      "projectionStatus": "PROJECTION_REUSE",
+      "projectionStatus": "EXISTING_REUSE",
       "difficultyBucket": 3
     },
     {
-      "qid": 23,
+      "q": 23,
       "questionUid": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-114",
-        "l3": "확률의 뜻",
-        "l4": "확률 계산",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-114",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "확률 계산"
+        }
       },
-      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 2
     },
     {
-      "qid": 24,
+      "q": 24,
       "questionUid": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
+      "sourceExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
       "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "visualRequirement": "VISUAL_EXEMPT",
-        "disposition": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+        "disposition": "EXEMPT"
       },
       "rpmSemantic": {
-        "recordId": "M2-RPM-118",
-        "l3": "확률의 활용",
-        "l4": "연속 시행",
-        "status": "FINAL"
+        "status": "FINAL",
+        "rpmRecordId": "M2-RPM-118",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        }
       },
-      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "projectionStatus": "META_ONLY",
       "difficultyBucket": 3
     }
   ]
