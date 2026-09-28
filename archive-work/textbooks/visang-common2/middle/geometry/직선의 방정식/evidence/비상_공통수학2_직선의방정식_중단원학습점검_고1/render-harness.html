@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Visang Straight Line Browser Render Check</title>
+<style>body{font:16px system-ui,sans-serif;margin:20px}iframe{width:1280px;height:900px;border:1px solid #888;margin:8px 0}pre{white-space:pre-wrap}</style>
+<h1>비상 공통수학2 직선의 방정식 · 8문항 browser render</h1>
+<pre id="status">Assigned JS loads through an origin-local Blob URL so the archive engine can render this archive-work file without adding it to production exams.</pre>
+<section id="frames"></section>
+<script>
+(async () => {
+  const jsPath = '/archive-work/textbooks/visang-common2/middle/geometry/직선의 방정식/js/비상_공통수학2_직선의방정식_중단원학습점검_고1.js';
+  const source = await fetch(jsPath).then(r => { if (!r.ok) throw new Error(`JS fetch ${r.status}`); return r.text(); });
+  const blob = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+  const modes = ['exam', 'sol', 'ans'];
+  const frames = document.getElementById('frames');
+  for (const mode of modes) {
+    const label = document.createElement('h2'); label.textContent = mode; frames.appendChild(label);
+    const frame = document.createElement('iframe');
+    frame.title = mode;
+    frame.src = `/archive/engine.html?mode=${mode}&qpp=4&preview=1&data=${encodeURIComponent(blob)}`;
+    frames.appendChild(frame);
+  }
+  document.getElementById('status').dataset.jsLoaded = 'true';
+})();
+</script>
