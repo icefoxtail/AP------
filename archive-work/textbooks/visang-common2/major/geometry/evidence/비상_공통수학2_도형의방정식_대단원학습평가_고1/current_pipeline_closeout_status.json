@@ -226,5 +226,38 @@
     "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/q10_q11_visual_repair_evidence.json",
     "pipelineV2Review": "PENDING"
   },
-  "currentVisualAssetManifestSha256": "sha256:3d00f176bf986a98d2967f655b82a27f80e3c049431e395d6589724ec4d31daf"
+  "currentVisualAssetManifestSha256": "sha256:3d00f176bf986a98d2967f655b82a27f80e3c049431e395d6589724ec4d31daf",
+  "currentMainIntegration": {
+    "mainSha": "14ff950d4a76104d10950494aa05c7dc894624cc",
+    "featureMergeCommit": "e7cc433a59b01bfd4b8f516ab8b6a3904bf60127",
+    "mergeTreePreflight": "CLEAN",
+    "rulePackSha256": "sha256:b5207bfa4b318d30279e13a3b9aa86ee46b236bd064766032c6b5b2da18b35ee"
+  },
+  "currentPreflights": {
+    "repositorySkills": "PASS",
+    "rulePackManifest": "PASS",
+    "candidateSyntax": "PASS",
+    "candidateIdentity": {
+      "status": "PASS",
+      "denominator": 17
+    },
+    "localVisualFactSvgAudit": {
+      "status": "PASS_LOCAL_MACHINE_ONLY",
+      "geometryParityPass": 14,
+      "caseTableAdapter": "NOT_APPLICABLE"
+    },
+    "assetManifest": {
+      "count": 17,
+      "status": "PASS",
+      "mismatchedDisplayNos": []
+    }
+  },
+  "goldenNegativeCalibration": {
+    "status": "PASS",
+    "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/golden_negative_calibration_20260929.json",
+    "goldenSampleCount": 3,
+    "negativeSampleCount": 2,
+    "sampleReadBeforeFreshRun": true
+  },
+  "nextStep": "WAIT_FOR_SERIALIZED_PROVIDER_SLOT_RELEASE_THEN_CREATE_FRESH_HASH_BOUND_RUN_AND_AUDIT"
 }

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "GOLDEN_NEGATIVE_CALIBRATION_v1",
+  "status": "PASS_CALIBRATION_RECORDED_FRESH_RUN_NOT_STARTED",
+  "task": {
+    "candidatePath": "archive-work/textbooks/visang-common2/major/geometry/js/비상_공통수학2_도형의방정식_대단원학습평가_고1.js",
+    "candidateSha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
+    "denominator": 17,
+    "workBatchState": "HOLD_PARTIAL_FINAL_AUDIT_POST_FREEZE_VISUAL_REPAIR"
+  },
+  "mainIntegration": {
+    "mainSha": "14ff950d4a76104d10950494aa05c7dc894624cc",
+    "featureMergeCommit": "e7cc433a59b01bfd4b8f516ab8b6a3904bf60127",
+    "mergeTreePreflight": "CLEAN",
+    "rulePackSha256": "sha256:b5207bfa4b318d30279e13a3b9aa86ee46b236bd064766032c6b5b2da18b35ee"
+  },
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "displayNo": 4,
+      "axes": [
+        "solution",
+        "visual"
+      ],
+      "observations": [
+        "States a unit-slope line, converts to general form, then uses center-to-line distance equal to radius.",
+        "Shows both absolute-value sign branches before finding tangent intercepts and segment length.",
+        "Diagram labels both tangent lines, contact points, center, and requested segment."
+      ],
+      "bytes": 54538,
+      "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+      "solutionImageRef": "archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg",
+      "solutionImageSha256": "sha256:c1b3b1604763fa3528bbef03bc6c76f956f58d02267f4470e1d036f71c52176b",
+      "solutionTextReviewed": true,
+      "diagramReviewed": true
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "displayNo": 7,
+      "axes": [
+        "solution",
+        "visual",
+        "transformation"
+      ],
+      "observations": [
+        "Reflects the line explicitly, substitutes center coordinates into the transformed line, and compares distance with |k|.",
+        "The diagram overlays the reflected line and circle with center-to-line/radius geometry and a compact equation crosswalk."
+      ],
+      "bytes": 36579,
+      "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+      "solutionImageRef": "archive/assets/images/25_순천여고_2학기_중간_고1_기출/q07-solution.svg",
+      "solutionImageSha256": "sha256:318150db02c9f74a4d47e048f251cb35c448adf908d85bdbfa6b421be3e75186",
+      "solutionTextReviewed": true,
+      "diagramReviewed": true
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "displayNo": 7,
+      "axes": [
+        "solution",
+        "visual",
+        "transformation"
+      ],
+      "observations": [
+        "Completes the square, records center and radius, follows the center through each transformation in order, and states that radius is invariant.",
+        "Diagram separates the original/stepwise/final circles and records each center and final equation in a side panel."
+      ],
+      "bytes": 70618,
+      "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+      "solutionImageRef": "archive/assets/images/25_매산여고_2학기_중간_고1_기출/q7-solution.svg",
+      "solutionImageSha256": "sha256:6a0fc9a55f1d1aa365366f2ddf784550feb1df78ac01571dcc84dbd288f0ba7d",
+      "solutionTextReviewed": true,
+      "diagramReviewed": true
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-28/02_25_삼산중_2학기_기말_중2_기출_q12_LABEL_COLLISION_FAIL.svg",
+      "sha256": "sha256:5d75c0c69d8d0948f3077fbcb8a926f49e132e7beb62b08df7fb17814c0ca9d8",
+      "frozenGitBlob": "f342721bbc68260acf2d9d791cef4ae8d154c8e1",
+      "finding": "BC=12 baseline text collides with point E label; verifies point-label/length-label separation."
+    },
+    {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-28/04_25_삼산중_2학기_중간_중2_수학_q24_COORDINATE_SEMANTIC_FAIL.svg",
+      "sha256": "sha256:7847250910c973b1a4e4b6f3db531fc3a121e873a66e78ebeae76a1b09d6475e",
+      "frozenGitBlob": "1cc25a0229fe0e57205e81f10ddfd93a9bc93d5e",
+      "finding": "Unrelated triangle has one dashed line while caption claims equal radii and circumcenter; coordinate geometry does not support the semantic text."
+    }
+  ],
+  "calibrationAxes": [
+    "student-reproducible solution sequence",
+    "coordinate/circle geometry fidelity",
+    "visual label ownership and collision",
+    "text-to-coordinate semantic parity",
+    "post-repair hash binding"
+  ],
+  "observations": [
+    "State the geometric relation before substituting coordinates.",
+    "Show both sign/case branches when absolute values determine alternatives.",
+    "For sequential transformations, record each center in order and state the invariant radius.",
+    "Keep labels attached to their intended points and apart from side lengths.",
+    "Every diagram claim must follow from the shown coordinates and geometry."
+  ],
+  "sampleReadBeforeFreshRun": true,
+  "blindDecisionFrozenBeforeCompare": "NOT_APPLICABLE_TO_THE_LABEL/ASSET-REF-ONLY_REPAIR; no new answer or semantic determination was made.",
+  "calibrationStatus": "PASS",
+  "taskPreflights": {
+    "repositorySkills": "PASS",
+    "rulePackManifest": "PASS",
+    "candidateSyntax": "PASS",
+    "candidateIdentity": {
+      "status": "PASS",
+      "denominator": 17
+    },
+    "localVisualFactSvgAudit": {
+      "status": "PASS_LOCAL_MACHINE_ONLY",
+      "geometryParityPass": 14,
+      "caseTableAdapter": "NOT_APPLICABLE"
+    },
+    "assetManifest": {
+      "count": 17,
+      "status": "PASS",
+      "mismatchedDisplayNos": []
+    }
+  },
+  "providerSlot": {
+    "status": "WAITING_FOR_WORKBOOK_TASK_RELEASE",
+    "freshRunStarted": false,
+    "providerLaunchStarted": false
+  },
+  "limitations": [
+    "This calibration evidence does not close the prior FINAL_AUDIT HOLD.",
+    "Fresh WorkBatch/run freeze and independent FINAL_AUDIT require the serialized provider slot; review4 partial outputs remain historical."
+  ]
+}

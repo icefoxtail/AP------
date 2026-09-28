@@ -273,7 +273,7 @@
     }
   },
   "dispatchHold": "PROVIDER_DEFECT_SCOPE_REQUIRED",
-  "decision": "Preserve review4 as a historical failed partial audit. The repaired candidate needs a new hash-bound run and fresh FINAL_AUDIT; no PASS or release closure is claimed.",
+  "decision": "Preserve HOLD. Latest main is integrated and rule/sample/task preflights pass, but no fresh run or provider audit has started because the serialized slot is in use by the workbook task.",
   "postFreezeChange": {
     "event": "q11 label-only solution SVG repair requested by independent visual review",
     "currentCandidateSha256": "sha256:a24fd1772f81191c5779e4af93f4fb4039e01fd25af95be1e9894bc9f078e652",
@@ -294,5 +294,65 @@
     "pipelineFinalReview": "PENDING",
     "freshRunRequired": true,
     "providerRetry": "NOT_DISPATCHED"
+  },
+  "latestMainAndCalibrationPreflight": {
+    "mainSha": "14ff950d4a76104d10950494aa05c7dc894624cc",
+    "featureMergeCommit": "e7cc433a59b01bfd4b8f516ab8b6a3904bf60127",
+    "rulePackSha256": "sha256:b5207bfa4b318d30279e13a3b9aa86ee46b236bd064766032c6b5b2da18b35ee",
+    "preflights": {
+      "repositorySkills": "PASS",
+      "rulePackManifest": "PASS",
+      "candidateSyntax": "PASS",
+      "candidateIdentity": {
+        "status": "PASS",
+        "denominator": 17
+      },
+      "localVisualFactSvgAudit": {
+        "status": "PASS_LOCAL_MACHINE_ONLY",
+        "geometryParityPass": 14,
+        "caseTableAdapter": "NOT_APPLICABLE"
+      },
+      "assetManifest": {
+        "count": 17,
+        "status": "PASS",
+        "mismatchedDisplayNos": []
+      }
+    },
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "displayNo": 4
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:ab37a1bdb3343be7b31db66ac2ee204abec339f35a4bc8eb9ca6252f92656f99",
+        "displayNo": 7
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "displayNo": 7
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-28/02_25_삼산중_2학기_기말_중2_기출_q12_LABEL_COLLISION_FAIL.svg",
+        "sha256": "sha256:5d75c0c69d8d0948f3077fbcb8a926f49e132e7beb62b08df7fb17814c0ca9d8",
+        "frozenGitBlob": "f342721bbc68260acf2d9d791cef4ae8d154c8e1",
+        "finding": "BC=12 baseline text collides with point E label; verifies point-label/length-label separation."
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-28/04_25_삼산중_2학기_중간_중2_수학_q24_COORDINATE_SEMANTIC_FAIL.svg",
+        "sha256": "sha256:7847250910c973b1a4e4b6f3db531fc3a121e873a66e78ebeae76a1b09d6475e",
+        "frozenGitBlob": "1cc25a0229fe0e57205e81f10ddfd93a9bc93d5e",
+        "finding": "Unrelated triangle has one dashed line while caption claims equal radii and circumcenter; coordinate geometry does not support the semantic text."
+      }
+    ],
+    "providerSlot": {
+      "status": "WAITING_FOR_WORKBOOK_TASK_RELEASE",
+      "freshRunStarted": false,
+      "providerLaunchStarted": false
+    }
   }
 }
