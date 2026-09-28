@@ -29,9 +29,11 @@ export function nativeImageInput(url) {
 
 export function bindU2DefectsToPacketAssetSha(packet, defects) {
   const bySha = new Map();
+  const questionUids = new Set();
   for (const row of packet?.payload || []) {
     const uid = row?.questionUid;
     if (typeof uid !== 'string') continue;
+    questionUids.add(uid);
     const assets = [row.artifact, ...(Array.isArray(row.problemAssets) ? row.problemAssets : [])];
     for (const asset of assets) for (const key of ['sha256', 'nativeSha256']) {
       const sha = asset?.[key];
@@ -43,13 +45,25 @@ export function bindU2DefectsToPacketAssetSha(packet, defects) {
   }
   return defects.map(defect => {
     if (typeof defect?.questionUid === 'string') return defect;
-    const matches = bySha.get(defect?.subjectSha);
+    const hashFields = ['subjectSha', 'artifactSha', 'artifactHash'].filter(key => typeof defect?.[key] === 'string').map(key => ({ key, value: defect[key] }));
+    if (new Set(hashFields.map(row => row.value)).size > 1) return defect;
+    const statedHash = hashFields[0] ?? null;
+    if (typeof defect?.subject === 'string' && questionUids.has(defect.subject)) {
+      const shaMatches = statedHash ? bySha.get(statedHash.value) : null;
+      if (statedHash && (!shaMatches || !shaMatches.has(defect.subject))) return defect;
+      return {
+        ...defect,
+        questionUid: defect.subject,
+        subjectBinding: { status: 'PASS', matchedField: 'subject', questionUid: defect.subject },
+        ...(statedHash ? { artifactShaBinding: { status: 'PASS', matchedField: statedHash.key, questionUid: defect.subject } } : {}),
+      };
+    }
+    const matches = statedHash ? bySha.get(statedHash.value) : null;
     if (matches?.size !== 1) return defect;
     const questionUid = [...matches][0];
     return { ...defect, questionUid, subjectShaBinding: { status: 'PASS', matchedField: 'artifact.sha256|nativeSha256', questionUid } };
   });
 }
-
 let sharp;
 function loadSharp() {
   if (!sharp) {
