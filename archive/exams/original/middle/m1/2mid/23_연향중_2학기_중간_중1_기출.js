@@ -791,7 +791,11 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -930,14 +934,27 @@ window.questionBank = [
       "삼각형의 합동"
     ],
     "wide": false,
-    "content": "다음 중 서로 항상 합동이 아닌 삼각형을 찾고, 합동이 아닌 이유를 서술하시오.<div class=\"note-box\">(a) $\\triangle ABC$: $\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{BC}=4\\,\\mathrm{cm}$, $\\overline{CA}=5\\,\\mathrm{cm}$<br>$\\triangle DEF$: $\\overline{DE}=5\\,\\mathrm{cm}$, $\\overline{EF}=3\\,\\mathrm{cm}$, $\\overline{FD}=4\\,\\mathrm{cm}$<br>(b) $\\triangle GHI$: $\\overline{GH}=3\\,\\mathrm{cm}$, $\\angle H=45^\\circ$, $\\overline{HI}=6\\,\\mathrm{cm}$<br>$\\triangle JKL$: $\\overline{JK}=6\\,\\mathrm{cm}$, $\\angle K=45^\\circ$, $\\overline{LJ}=3\\,\\mathrm{cm}$<br>(c) $\\triangle MNO$: $\\angle M=45^\\circ$, $\\overline{MN}=6\\,\\mathrm{cm}$, $\\angle N=75^\\circ$<br>$\\triangle PQR$: $\\overline{PQ}=6\\,\\mathrm{cm}$, $\\angle P=45^\\circ$, $\\angle R=60^\\circ$</div> [5점]",
+    "content": "다음 중 서로 항상 합동이 아닌 삼각형을 찾고, 합동이 아닌 이유를 서술하시오.<div class=\"note-box\">(a) $\\triangle ABC$: $\\overline{AB}=3\\,\\mathrm{cm}$, $\\overline{BC}=4\\,\\mathrm{cm}$, $\\overline{CA}=5\\,\\mathrm{cm}$<br>$\\triangle DEF$: $\\overline{DE}=5\\,\\mathrm{cm}$, $\\overline{EF}=3\\,\\mathrm{cm}$, $\\overline{FD}=4\\,\\mathrm{cm}$<br>(b) $\\triangle GHI$: $\\overline{GH}=3\\,\\mathrm{cm}$, $\\angle H=45^\\circ$, $\\overline{HI}=6\\,\\mathrm{cm}$<br>$\\triangle JKL$: $\\overline{JK}=6\\,\\mathrm{cm}$, $\\angle K=45^\\circ$, $\\overline{LJ}=5\\,\\mathrm{cm}$<br>(c) $\\triangle MNO$: $\\angle M=45^\\circ$, $\\overline{MN}=6\\,\\mathrm{cm}$, $\\angle N=75^\\circ$<br>$\\triangle PQR$: $\\overline{PQ}=6\\,\\mathrm{cm}$, $\\angle P=45^\\circ$, $\\angle R=60^\\circ$</div> [5점]",
     "choices": [],
     "answer": "(b)",
-    "solution": "(a)는 세 변의 길이가 각각 3, 4, 5 cm로 같으므로 SSS 합동이다. (c)는 두 각과 그 사이의 변이 주어져 ASA 또는 AAS로 합동이 정해진다. (b)는 한 삼각형에서는 두 변과 끼인각이 주어졌지만 다른 삼각형에서는 주어진 각이 두 변의 끼인각이 아니어서 SSA 조건이다. SSA는 서로 다른 삼각형이 가능하므로 항상 합동이 아닌 것은 (b)이다.",
+    "solution": "(a)는 세 변의 길이가 각각 3, 4, 5 cm로 같으므로 SSS 합동이다. (c)는 두 각과 그 사이의 변이 주어져 ASA 합동이다. (b)의 두 번째 삼각형은 두 변과 끼인각이 아닌 각이 주어진 SSA 조건이다. SSA는 삼각형의 합동을 보장하는 조건이 아니므로 서로 다른 삼각형이 가능하다. 따라서 항상 합동이 아닌 것은 (b)이다.",
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
+    "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_CONGRUENCE_CRITERION_SELECTION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "l3Disposition": "EXISTING_L3_REUSE",
+    "l4Disposition": "ASSIGNED",
+    "resolverEvidenceSha": "sha256:3b3f9f183756adc42d81382dfb95c72ca2b67ab5bd5f5469c4e7fb93ff413077",
+    "difficultyEvidenceSha": "sha256:f9803ca99c42b02d098f82ffdac8385bd636158cd2134c28e6f01297f4a16e72"
   },
   {
     "id": 24,
