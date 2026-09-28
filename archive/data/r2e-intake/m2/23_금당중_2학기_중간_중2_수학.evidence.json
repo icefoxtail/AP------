@@ -137,7 +137,7 @@
     "geometrySolutionVisualAssessment": {
       "q10": "EXEMPT: source historical-text image already supplies the visual context; solution is equation modeling",
       "q12": "KEEP: similarity correspondence and decisive 2:1 ratio shown",
-      "q13": "ADD: 3-4-5 triangle altitude AH and equal-area equation are decisive",
+      "q13": "ADD: 3-4-5 triangle altitude AH and equal-area equation are decisive; right-angle indicators derived from the actual ray directions",
       "q14": "ADD: DE parallel BC and 2:3 scale relation are decisive",
       "q15": "ADD: midpoint triangle makes the 5,4,6 side lengths explicit",
       "q16": "KEEP: midpoint/parallel structure and CN:ME=3:2 shown",
@@ -156,7 +156,55 @@
         "AC": 4,
         "BC": 5,
         "AH": 2.4,
-        "AHExact": "12/5"
+        "AHExact": "12/5",
+        "rightAngleAtA": {
+          "rayAB": [
+            -0.6,
+            0.8
+          ],
+          "rayAC": [
+            0.8,
+            0.6
+          ],
+          "marker": [
+            [
+              292.8,
+              147.6
+            ],
+            [
+              302.4,
+              154.8
+            ],
+            [
+              309.6,
+              145.2
+            ]
+          ]
+        },
+        "rightAngleAtH": {
+          "rayHA": [
+            0,
+            -1
+          ],
+          "rayHB": [
+            -1,
+            0
+          ],
+          "marker": [
+            [
+              300,
+              318
+            ],
+            [
+              288,
+              318
+            ],
+            [
+              288,
+              330
+            ]
+          ]
+        }
       },
       "q14": {
         "AB": 12,
@@ -203,7 +251,7 @@
       "q19": "GD=AD/3 and G'D=AD/9; GG'=2AD/9=4 so AD=18"
     },
     "v2ObservedFact": {
-      "q13": "right triangle with AB=3, AC=4, BC=5, altitude AH=12/5 and area equation",
+      "q13": "right triangle with AB=3, AC=4, BC=5, altitude AH=12/5 and ray-derived right-angle marks at A and H",
       "q14": "D,E are exact 2/3 points and DE is parallel to BC, with AD=8",
       "q15": "midpoint triangle with computed side labels 5,4,6",
       "q17": "parallel AB,EF,DC with exact intersection E and EF=12",
@@ -216,7 +264,7 @@
   },
   "solutionSvgBlobs": {
     "q12": "46f4425a72b9265d62d9d110840fc87594eb44ec",
-    "q13": "6ddb93d4fd786b4cdf7102bdcb6c7c28ff15d0c2",
+    "q13": "41348526e3e072774181a67f10661d747198a090",
     "q14": "4b206f80a525ab556f3d295217f098d74ae0ec83",
     "q15": "b2e363db5091a1d5978ce87a7841db8b3e638987",
     "q16": "d03ab54e518d474fd99ded5bec0581fe0c3df033",
