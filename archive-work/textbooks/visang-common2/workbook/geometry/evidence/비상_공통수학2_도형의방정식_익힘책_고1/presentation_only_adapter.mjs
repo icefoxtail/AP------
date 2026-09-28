@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { extractSvgGeometry, verifySvgGeometry } from '../../../../../../../archive/tools/pipeline-core/visual.mjs';
-import { objectSha } from '../../../../../../../archive/tools/pipeline-core/canonical.mjs';
+import { objectSha, fileRef } from '../../../../../../../archive/tools/pipeline-core/canonical.mjs';
 
 const root=process.cwd();
 const base='archive-work/textbooks/visang-common2/workbook/geometry';
@@ -47,12 +47,36 @@ for(let i=0;i<bank.length;i++){
   const currentSha=sha(svg);
   const prior=priorRows.get(q.id);
   const finalWitnessPath=path.join(witnessDir,'q'+no+'_final_build_witness.json');
-  if(prior&&prior.finalArtifactSha===currentSha&&fs.existsSync(finalWitnessPath)){
+  if(no!=='01'&&prior&&prior.finalArtifactSha===currentSha&&fs.existsSync(finalWitnessPath)){
     const currentWitness=JSON.parse(fs.readFileSync(finalWitnessPath,'utf8'));
     if(currentWitness.artifactSha===currentSha&&currentWitness.presentationOnlyAdapter?.v2FinalParity==='PASS'){
       rows.push(prior);
       continue;
     }
+  }
+  if(no==='01'){
+    const previous=priorRows.get(q.id);
+    if(!previous||previous.geometryVerification!=='PASS')throw new Error('Q01_PRIOR_CORE_WITNESS_REQUIRED');
+    const previousCoreWitnessPath=path.join(root,previous.coreGeneratorWitnessPath);
+    const coreWitness=JSON.parse(fs.readFileSync(previousCoreWitnessPath,'utf8'));
+    if(coreWitness.artifactSha!==previous.baseArtifactSha)throw new Error('Q01_CORE_WITNESS_BASE_SHA_MISMATCH');
+    const priorFinalPath=path.join(root,base,'assets','images',setKey,'q01_geometry_core_final.svg');
+    const priorFinalObservation=extractSvgGeometry(fs.readFileSync(priorFinalPath,'utf8'));
+    const priorFinalParity=verifySvgGeometry(fact,priorFinalObservation);
+    if(priorFinalParity.status!=='PASS')throw new Error('Q01_PRIOR_FINAL_V2_FAIL');
+    const currentObservation=extractSvgGeometry(svg);
+    const currentParity=verifySvgGeometry(fact,currentObservation);
+    if(currentParity.status!=='PASS')throw new Error('Q01_COORDINATE_CONTEXT_V2_FAIL:'+JSON.stringify(currentParity.errors));
+    const targetPrimitiveKey=primitive=>JSON.stringify(primitive);
+    const currentPrimitiveSet=new Set(currentObservation.primitives.map(targetPrimitiveKey));
+    if(priorFinalObservation.primitives.some(primitive=>!currentPrimitiveSet.has(targetPrimitiveKey(primitive))))throw new Error('Q01_TARGET_GEOMETRY_CHANGED');
+    const repairEvidencePath=path.join(pipelineEvidence,'q01_coordinate_context_repair.json');
+    const repairEvidence=JSON.parse(fs.readFileSync(repairEvidencePath,'utf8'));
+    if(repairEvidence.artifactSha!==currentSha||repairEvidence.v2GeometryParity!=='PASS'||repairEvidence.sourceTargetPrimitivesPreserved!==true)throw new Error('Q01_COORDINATE_CONTEXT_EVIDENCE_MISMATCH');
+    const finalWitness={...coreWitness,artifactSha:currentSha,presentationOnlyAdapter:{path:path.relative(root,path.join(evidence,'presentation_only_adapter.mjs')).replaceAll('\\','/'),adapterSha:sha(fs.readFileSync(path.join(evidence,'presentation_only_adapter.mjs'))),baseArtifactSha:previous.baseArtifactSha,sourcePresentationArtifactSha:previous.finalArtifactSha,coordinateGeometryChanged:false,textOnlyChanges:false,coordinateContextAdded:true,targetGeometryPrimitivesPreserved:true,coordinateContextEvidence:fileRef(root,path.relative(root,repairEvidencePath).replaceAll('\\','/')),v2FinalParity:currentParity.status}};
+    fs.writeFileSync(finalWitnessPath,JSON.stringify(finalWitness,null,2),'utf8');
+    rows.push({...previous,expectedFactPath:path.relative(root,factPath).replaceAll('\\','/'),expectedFactSha:sha(fs.readFileSync(factPath)),coreGeneratorWitnessPath:path.relative(root,previousCoreWitnessPath).replaceAll('\\','/'),coreGeneratorWitnessSha:sha(fs.readFileSync(previousCoreWitnessPath)),finalArtifactPath:path.relative(root,svgPath).replaceAll('\\','/'),finalArtifactSha:currentSha,finalWitnessPath:path.relative(root,finalWitnessPath).replaceAll('\\','/'),observedPrimitiveCount:currentObservation.primitives.length,geometryVerification:currentParity.status,textOnlyAdapter:false,coordinateGeometryChanged:false,coordinateContextAdded:true,coordinateTextReplacements:0,addedTextAnnotations:['A (2, −3)','P (5, 3)','B (7, 7)','AP:PB = 3:2']});
+    continue;
   }
   const baseSha=sha(svg);
   const baseObservation=extractSvgGeometry(svg);

@@ -34,7 +34,7 @@ const methods=[
   ['도형의 평행이동과 축 대칭의 방정식 변환',['평행이동 후 원래 좌표를 새 좌표로 나타낸다.','축 대칭은 y를 −y로 바꾸어 적용한다.','보기의 함수식과 대조한다.']]
 ];
 const visual=[
-  ['VISUAL_REQUIRED','DECISIVE_REASONING','내분점의 위치와 AP:PB=3:2가 핵심 조건이므로 A-P-B의 실제 순서와 비를 한 그림에서 확인한다.'],
+  ['VISUAL_REQUIRED','DECISIVE_REASONING','A(2,−3), P(5,3), B(7,7)의 좌표와 A-P-B 순서, 등단위 좌표평면에서 AP:PB=3:2를 함께 보여 내분점 조건을 source 좌표에 연결한다.'],
   ['VISUAL_REQUIRED','REPRESENTATION_SUPPORT','삼각형과 무게중심 G 및 조건 직선을 같이 보여 주어 계산 좌표가 놓이는 관계를 확인한다.'],
   ['VISUAL_EXEMPT','NONE','문제는 a,b의 모든 가능한 개별 값을 요구하지 않고 ab만 묻는다. 그림으로 한 쌍을 고정하면 허용되는 다른 계수쌍을 대표하지 못하고, 두 기울기의 곱 식이 관계를 정확히 보존한다.'],
   ['VISUAL_REQUIRED','DECISIVE_REASONING','두 k값에서 평행선이 기준선의 같은 쪽/반대쪽에 놓이는 경우를 분리하고 공통 수선의 √13 길이를 보여 준다.'],

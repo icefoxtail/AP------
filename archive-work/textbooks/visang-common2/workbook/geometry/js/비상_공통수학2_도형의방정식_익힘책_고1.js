@@ -34,9 +34,9 @@ window.questionBank = [
     "difficultyConfidence": "UNKNOWN",
     "difficultyBoundaryFlag": "UNKNOWN",
     "legacyLevelCompatibility": "UNKNOWN",
-    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_geometry_core_final.svg",
-    "solutionImageAlt": "A, P, B의 순서와 AP:PB=3:2를 보이는 좌표 그림",
-    "solutionImageCaption": "내분점의 위치와 비",
+    "solutionImage": "assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_coordinate_plane_final.svg",
+    "solutionImageAlt": "등단위 좌표평면에서 A(2,−3), P(5,3), B(7,7)의 순서와 AP:PB=3:2를 보이는 그림",
+    "solutionImageCaption": "좌표와 내분비를 나타낸 A-P-B",
     "solutionImageSize": "medium"
   },
   {

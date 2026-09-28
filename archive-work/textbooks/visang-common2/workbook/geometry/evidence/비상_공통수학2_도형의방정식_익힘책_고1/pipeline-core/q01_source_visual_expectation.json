@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "APMATH_VISUAL_V1_SOURCE_EXPECTATION_v1",
+  "status": "PASS",
+  "questionUid": "qid_v1_e096c669bb99f512a57e7383e36d57ef2534ab78aeb794605c9c197430bc48a3",
+  "sourceIdentityFingerprint": "sha256:2bc70a64d81be97c811ff5d875abdf13541790ffcd0db53b0d9ee04c0a3a556a",
+  "sourceContentHash": "sha256:e5ccb991fa8c79e8b903612baa8dc89cf61e8f9e8cc15c9b75fc2770c561dcb6",
+  "sourceRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/inputs/source_snapshot.js",
+    "bytes": 21044,
+    "sha256": "sha256:7530720d5ecfc051cbb14a869d5be7ad278408a081aea03f02034c72e1931e7b"
+  },
+  "expectedFactRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q01_expected.json",
+    "bytes": 926,
+    "sha256": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d"
+  },
+  "expectedFactSha": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d",
+  "expectedSemanticSha": "sha256:27affdce6ee6e4fc84db771abd69f9fc3c3677d74fa47cb5f052f2061ce14ad1",
+  "expectedStructureFingerprint": "sha256:cda5b18e9334743f8a2ce2fab30a0b55dabac20520aad18b01a2e6c5ed1a052d",
+  "expectedCoordinatePoints": [
+    {
+      "id": "A",
+      "x": 2,
+      "y": -3
+    },
+    {
+      "id": "P",
+      "x": 5,
+      "y": 3
+    },
+    {
+      "id": "B",
+      "x": 7,
+      "y": 7
+    }
+  ],
+  "expectedOrder": [
+    "A",
+    "P",
+    "B"
+  ],
+  "exactEqualUnitScale": true,
+  "sourceDerivedRatio": {
+    "expression": "AP:PB = 3:2",
+    "derivation": "AP = √((5−2)²+(3−(−3))²)=3√5; PB = √((7−5)²+(7−3)²)=2√5."
+  },
+  "expectedVisualNeed": "Show both the exact coordinate locations and the A-P-B internal-division order on a coordinate plane, with the ratio label fully inside the figure.",
+  "currentArtifactRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_coordinate_plane_final.svg",
+    "bytes": 4396,
+    "sha256": "sha256:66b80bd348f129e1486954ecf57224f891714f82655ded4f9ac8b91ebdf0d545"
+  },
+  "appliesTo": "source-only visual expectation and V1 packet authority; does not state the correct answer or solution steps",
+  "evidenceSha": "sha256:deeecaf5ef89b2c9237e7bc2c27551bbbd891e8abc3c20172d9444d9b955c0c9"
+}

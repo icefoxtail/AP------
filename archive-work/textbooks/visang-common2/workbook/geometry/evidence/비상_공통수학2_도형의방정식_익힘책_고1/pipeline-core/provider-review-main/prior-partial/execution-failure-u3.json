@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_EXECUTION_FAILURE_EVIDENCE_v1",
+  "status": "FAILED",
+  "workBatchId": "visang-workbook-geometry-20260929-main",
+  "launchId": "visang-workbook-geometry-20260929-main:1",
+  "externalId": "01a0e9a3-1c2a-7420-aedc-b122d047fa3f",
+  "provider": "CodexAppServer",
+  "model": "gpt-6-luna/max",
+  "phase": "U3",
+  "failureCode": "PROVIDER_TRANSPORT_UNAVAILABLE",
+  "error": "HOLD:PROVIDER_TRANSPORT_UNAVAILABLE",
+  "preDispatchFailure": false,
+  "modelInvocationCount": null,
+  "semanticEvidenceCount": 0,
+  "responseReturned": false,
+  "responseAttestationReturned": false,
+  "evidenceReturned": false,
+  "phaseAttestationRefs": [
+    {
+      "phase": "U1",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/visang-workbook-geometry-20260929-main/u1-request.json",
+        "bytes": 30217,
+        "sha256": "sha256:aea2bd773137abb5523f1de9536a89296be8c00e8ddcf8e44b54a927315114e3"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/visang-workbook-geometry-20260929-main/u1-response.json",
+        "bytes": 4647,
+        "sha256": "sha256:782f7b736011d6c7c37d7af1c69bb68d99d07022272ba510be8b081b7ce36b84"
+      },
+      "inputSha": "sha256:25e73633b879708b4caeb9c0b3edaa9ece2305c9bc8e6593c0dd5fc119d84e7f",
+      "providerInvocationId": "01a0e9ae-9367-7410-afb8-d0525b7555e8"
+    },
+    {
+      "phase": "U2",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/visang-workbook-geometry-20260929-main/u2-request.json",
+        "bytes": 782956,
+        "sha256": "sha256:234711bac80032e5d9b8b2bcb2c6e5da1ffce2209fcb7d5bb1f070e6df9589e3"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/visang-workbook-geometry-20260929-main/u2-response.json",
+        "bytes": 1059,
+        "sha256": "sha256:defb372b82dbe9fd9067468bd48c0a6aef7b8e334304a3e0de8914187572b5b8"
+      },
+      "inputSha": "sha256:ac458f7b13efc3b89e0ef0ab49e009da867854040f2b616eb43b93c8be74df7b",
+      "providerInvocationId": "01a0e9af-5c76-7ed2-8da2-300ebe3a80e9"
+    }
+  ],
+  "observedAt": "2026-09-28T20:25:01.425Z"
+}

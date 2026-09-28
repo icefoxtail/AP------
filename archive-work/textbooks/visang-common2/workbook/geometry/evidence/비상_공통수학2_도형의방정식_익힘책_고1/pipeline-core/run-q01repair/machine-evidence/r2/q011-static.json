@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "APMATH_PIPELINE_EVIDENCE_v2",
+  "evidenceId": "machine:visang-workbook-geometry-20260929-q01repair-run:r2:11:STATIC",
+  "runId": "visang-workbook-geometry-20260929-q01repair-run",
+  "revision": 2,
+  "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|11",
+  "axis": "STATIC",
+  "inputSha": "sha256:f3fa1dc3b08f58212c6bc55587d9c5bab8fffa69b6387dca7a4c1a91075e02dc",
+  "axisInputSha": "sha256:81310ceeb3f8c404546a81cb1e0ed88fb8b9839c5ea23bc8d26e3a0e6c4ffd7d",
+  "mode": "MACHINE_CURRENT",
+  "status": "FAIL",
+  "validityStatus": "FROZEN",
+  "reviewerId": "pipeline-core-machine-collector",
+  "reviewSessionId": "visang-workbook-geometry-20260929-q01repair-run:r2:machine-checks",
+  "reviewerModelOrAgent": "pipeline-core deterministic machine checks",
+  "auditorPrincipalType": "MACHINE_COLLECTOR",
+  "startedAt": "2026-09-28T21:20:43.937Z",
+  "frozenAt": "2026-09-28T21:20:43.937Z",
+  "priorReviewVisibility": "NONE",
+  "inputVisibilityProfile": "MACHINE_CURRENT",
+  "findings": [
+    {
+      "status": "OPEN",
+      "code": "MACHINE_CHECK_FAILED:STATIC:schema",
+      "source": "pipeline-core-machine-collector"
+    }
+  ],
+  "reviewIsolationProvenanceSha": "sha256:ec926e17ccba9d5a6eb91e7579622c6dcbf790e69c46d1029dc22f00cd48a5da",
+  "reviewStartInputSha": "sha256:f3fa1dc3b08f58212c6bc55587d9c5bab8fffa69b6387dca7a4c1a91075e02dc",
+  "reviewEndInputSha": "sha256:f3fa1dc3b08f58212c6bc55587d9c5bab8fffa69b6387dca7a4c1a91075e02dc",
+  "withdrawalStatus": "ACTIVE",
+  "revocationStatus": "NOT_REVOKED",
+  "supersessionStatus": "VALID",
+  "sourceAuthorityStatus": "VALID",
+  "eligibilityStatus": "ELIGIBLE",
+  "machineProvenance": {
+    "bridge": "APMATH_MACHINE_EVIDENCE_BRIDGE_v1",
+    "collector": "pipeline-core-machine-collector",
+    "runId": "visang-workbook-geometry-20260929-q01repair-run",
+    "revision": 2,
+    "inputSha": "sha256:f3fa1dc3b08f58212c6bc55587d9c5bab8fffa69b6387dca7a4c1a91075e02dc",
+    "currentArtifactSha": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "CURRENT_ARTIFACT_SHA": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "evidenceInputSha": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "EVIDENCE_INPUT_SHA": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "authorityStartSha": null,
+    "questionUid": "비상_공통수학2_도형의방정식_익힘책_고1|11",
+    "axis": "STATIC",
+    "axisInputSha": "sha256:81310ceeb3f8c404546a81cb1e0ed88fb8b9839c5ea23bc8d26e3a0e6c4ffd7d"
+  },
+  "payload": {
+    "checkedInputSha": "sha256:f3fa1dc3b08f58212c6bc55587d9c5bab8fffa69b6387dca7a4c1a91075e02dc",
+    "currentArtifactSha": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "CURRENT_ARTIFACT_SHA": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "evidenceInputSha": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "EVIDENCE_INPUT_SHA": "sha256:dbf56aa421973ab48bd0a489c46a7105c042b8dfe20239c6c436491c7955f44c",
+    "authorityStartSha": null,
+    "checks": {
+      "schema": "FAIL",
+      "jsLoad": "PASS",
+      "hashes": "PASS",
+      "assetBinding": "PASS",
+      "fileParity": "PASS",
+      "studentSerialization": "PASS"
+    }
+  }
+}

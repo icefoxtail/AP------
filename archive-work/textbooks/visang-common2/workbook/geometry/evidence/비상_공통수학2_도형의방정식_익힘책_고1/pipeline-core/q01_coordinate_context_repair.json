@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "VISANG_Q01_COORDINATE_CONTEXT_REPAIR_v1",
+  "status": "PASS",
+  "sourceArtifactRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_geometry_core_final.svg",
+    "bytes": 1945,
+    "sha256": "sha256:8538b5f2491781020671cc92864f27af4fb5509be393c70d061030a5f0741214"
+  },
+  "artifactRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/assets/images/비상_공통수학2_도형의방정식_익힘책_고1/q01_coordinate_plane_final.svg",
+    "bytes": 4396,
+    "sha256": "sha256:66b80bd348f129e1486954ecf57224f891714f82655ded4f9ac8b91ebdf0d545"
+  },
+  "expectedFactRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/expected-facts/q01_expected.json",
+    "bytes": 926,
+    "sha256": "sha256:66c86f1f03243b2227106aa75e9b3127da8bbdff856d0d0a0ea9c0e4d60a751d"
+  },
+  "sourceArtifactSha": "sha256:8538b5f2491781020671cc92864f27af4fb5509be393c70d061030a5f0741214",
+  "artifactSha": "sha256:66b80bd348f129e1486954ecf57224f891714f82655ded4f9ac8b91ebdf0d545",
+  "sourcePrimitiveCount": 6,
+  "artifactPrimitiveCount": 48,
+  "sourceTargetPrimitivesPreserved": true,
+  "newCoordinateContextPrimitives": 42,
+  "v2GeometryParity": "PASS",
+  "v1ExpectationRef": {
+    "path": "archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/pipeline-core/q01_source_visual_expectation_repair.json",
+    "bytes": 3072,
+    "sha256": "sha256:d34893e7e800c5b7525a6b6b1451fe9ce60b94fd3773139069d80e144f20195c"
+  },
+  "changes": [
+    "Add equal-unit coordinate grid and labeled axes.",
+    "Show A(2,−3), P(5,3), B(7,7) explicitly.",
+    "Preserve the source A-P-B segment primitives and display AP:PB=3:2."
+  ],
+  "note": "Coordinate context is added around the previously verified core geometry. The underlying A, P, B coordinates and segment primitives are byte-level-derived from the prior core SVG and still pass the typed expected fact.",
+  "evidenceSha": "sha256:9f021b69aa69b54a12723a538b6356ea4724384e94db8868c3900828fd9496db"
+}
