@@ -582,12 +582,25 @@ window.questionBank = [
       "$160^\\circ$"
     ],
     "answer": "①",
-    "solution": "문항의 정의와 제시된 조건을 순서대로 적용하여 보기 또는 계산 결과를 확인한다. 그림의 대응 위치와 조건을 함께 확인하면 주어진 정답과 일치하는 결과는 ①이다.",
+    "solution": "평행선의 같은 쪽 내각은 합이 180°이므로 b=180°-110°=70°이다. 엇각의 크기는 같으므로 a=50°이다. 따라서 a+b=50°+70°=120°이다.",
     "image": "assets/images/25_연향중_2학기_중간_중1_기출/q15.png",
     "subUnitKey": "M1-05-POSITION_RELATION",
     "subUnit": "위치 관계",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+    "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_PARALLEL_ANGLE_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "l3Disposition": "EXISTING_L3_REUSE",
+    "l4Disposition": "ASSIGNED",
+    "resolverEvidenceSha": "sha256:b2cc37d022e573d0c8b92c49871189b38536f6eb8ea43095c0ec1af52b396334",
+    "difficultyEvidenceSha": "sha256:5644fa21369b2a03d40a392cc3bd3f01d1823ca1409608c4882b7af30107d7e3"
   },
   {
     "id": 16,
