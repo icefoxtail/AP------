@@ -9,6 +9,10 @@
 
 > **현재 운영 부록:** 이 룰북의 기존 기본 스키마·기출·렌더링 원칙은 유지하되, 신규 아카이브 JS의 세부단원 계약은 [`JS아카이브_세부단원_운영규칙_v1.md`](JS아카이브_세부단원_운영규칙_v1.md)를 함께 적용한다. 기존 JS의 누락 필드는 legacy 예외로만 허용하며 신규 파일의 기본값으로 복사하지 않는다. `types`·`similar` DB 카드의 source-dependent 필드 보류 기준은 아래 4-4를 따른다. 함수·좌표 그래프와 도형 SVG의 세부 style token·sampling·indicator·hatching·3D 정책은 [`04_VISUAL/도형추출.md`](../04_VISUAL/도형추출.md) v3.0을 따른다.
 
+> **CURRENT QUESTION LAYOUT OVERRIDE — 2026-09-28:** 학생 노출 문제 layout은 `JS아카이브_문항조판_운영규칙_v1.md`가 최신 authority다.
+> **grid DEFAULT / subjective-2up EXCEPTION**을 적용한다. 서술형·단답형·서논술형, `choices: []`, 소문항, 장문, 그림/표만으로 2up 자동 승격 금지.
+> 실제 grid render에서 답안 작성 공간 부족이 확인되거나 사용자 명시 지시가 있을 때만 2up을 허용하며, render 미실행이면 grid 유지 + `NOT_RUN_CODEX_HANDOFF`가 기본이다.
+> evidence 없는 기존 2up은 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 재판정 대상이다.
 ## 0. 한 줄 원칙
 
 > **"Gemini는 검수 완료된 함수를 절대 건드리지 않는다."**

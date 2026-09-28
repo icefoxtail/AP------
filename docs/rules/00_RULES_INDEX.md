@@ -16,6 +16,8 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 
 **모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
 
+**SUBJECTIVE-2UP OVERESCALATION HARD RULE:** `grid`가 기본이다. `questionType`, `choices: []`, 서술형/단답형 표지, 소문항 존재, 긴 발문, 그림·표 존재만으로 `subjective-2up`을 자동 부여하지 않는다. `subjective-2up`은 grid 실렌더에서 실제 답안 작성 공간 부족이 확인되거나 사용자가 명시 지시한 경우에만 허용한다. render 미실행 단계는 grid 유지 + `NOT_RUN_CODEX_HANDOFF`가 기본이며, evidence 없는 기존 2up은 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 재판정 대상이다.
+
 
 ### MIDDLE-SCHOOL PROBABILITY INDEPENDENCE DEFAULT — CURRENT HARD RULE (2026-09-28)
 
