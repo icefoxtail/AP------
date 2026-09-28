@@ -1,86 +1,149 @@
 {
-  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_v1",
+  "schema": "JS_ARCHIVE_R1_INTAKE_RECEIPT_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "25_삼산중_2학기_중간_중2_수학.js",
   "examUid": "25_삼산중_2학기_중간_중2_수학",
-  "lane": "A",
-  "stage": "CREATE",
-  "nextState": "READY_FOR_REVIEW",
+  "grade": "M2",
+  "sourceLane": "A",
+  "lane": "C",
+  "stage": "R1",
+  "status": "READY",
+  "nextState": "READY_FOR_R2E",
   "sourceBlobSha": "497827aaccd18428f2b3c0c336fc1ad66e0ed0fa",
+  "inputCommit": "b92a21a6f5c22a02da16902e8849a4c018d5a7f6",
   "totalQuestions": 24,
-  "sourceTextExactParityStatus": "PASS",
-  "choicesExactParityStatus": "PASS",
-  "questionLayoutStatus": "PASS",
-  "solutionSelfCheckStatus": "PASS",
-  "svgRuleComplianceStatus": "PASS",
-  "CREATE_SELF_CHECK_PASS": true,
-  "requiredVisualMissing": 0,
+  "changedQuestions": [
+    13
+  ],
+  "changedSvgFiles": [],
+  "solutionDispositionSummary": {
+    "KEEP": 23,
+    "REPAIR": 1,
+    "TRUE_HOLD": 0
+  },
+  "reproducibilitySummary": {
+    "PASS": 23,
+    "FIX": 1,
+    "HOLD": 0
+  },
+  "microLayoutSummary": {
+    "KEEP": 24,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0
+  },
+  "curriculumTerminologySummary": {
+    "PASS": 24,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "studentLanguageSummary": {
+    "PASS": 24,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "svgDispositionSummary": {
+    "PASS": 6,
+    "KEEP": 6,
+    "ADD": 0,
+    "REPAIR": 0,
+    "REBUILD": 0,
+    "HOLD": 0,
+    "EXEMPT": 18
+  },
+  "metaDispositionSummary": {
+    "KEEP": 19,
+    "REPAIR": 5,
+    "HOLD": 0,
+    "RPM_SEMANTIC_FINAL": 24,
+    "PROJECTION_DIRECT_ACTIVE": 14,
+    "PROJECTION_FAMILY_ACTIVE": 2,
+    "PROJECTION_META_ONLY": 8,
+    "TRUE_HOLD": 0,
+    "repairQuestions": [
+      6,
+      10,
+      15,
+      17,
+      23
+    ]
+  },
+  "difficultySummary": {
+    "distribution": {
+      "1": 3,
+      "2": 7,
+      "3": 8,
+      "4": 6,
+      "5": 0
+    },
+    "changedQuestions": []
+  },
+  "questionLayoutSummary": {
+    "KEEP": 24,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "status": "PASS"
+  },
+  "sourceParitySummary": {
+    "contentExact": "24/24 PASS",
+    "choices": "24/24 PASS",
+    "answer": "24/24 PASS",
+    "imageRefs": "24/24 PASS",
+    "referencedSourceImages": "17/17 PASS"
+  },
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      6,
+      10,
+      13,
+      15,
+      17,
+      23
+    ],
+    "falsePassAxes": [
+      "META_RPM",
+      "SOLUTION_REPRODUCIBILITY"
+    ]
+  },
+  "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_23_REPAIR_1_HOLD_0",
+  "svgRuleComplianceStatus": "PASS_6_KEEP_V2_V3_RENDER_HANDOFF",
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
     "layout": 0,
-    "meta": 0
+    "meta": 0,
+    "requiredVisualMissing": 0
   },
-  "sourceParity": {
-    "content": "24/24 PASS",
-    "choices": "24/24 PASS",
-    "answer": "24/24 PASS",
-    "problemImageRef": "24/24 PASS",
-    "problemPngAssetGitBlob": "17/17 PASS"
-  },
-  "questionLayout": {
-    "KEEP": 24,
-    "REFORMAT": 0,
-    "HOLD": 0,
-    "policy": "AUTO-FIRST",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  },
-  "solution": {
-    "KEEP": 24,
-    "REPAIR": 0,
-    "TRUE_HOLD": 0
-  },
-  "visual": {
-    "sourceProblemVisuals": "17/17 PASS",
-    "solutionSvgInventory": "6/6",
-    "currentStyleRebuilt": [
-      5,
-      10,
-      13
-    ],
-    "sourceLegacyExempt": [
-      14,
-      21,
-      24
-    ],
-    "requiredVisualMissing": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  },
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 15,
-    "FAMILY_REUSE": 2,
-    "RPM_PRIMARY_MIGRATION_GAP": 7,
-    "TRUE_HOLD": 0
-  },
-  "difficultyBucketSummary": {
-    "1": 3,
-    "2": 7,
-    "3": 8,
-    "4": 6,
-    "5": 0
-  },
-  "evidenceRef": {
-    "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_중간_중2_수학.evidence.json",
-    "sha256": "sha256:5c87a75dc06e98e3dba01ffd8efeeb1a40eadb1b348076165f39a22da3af9878"
+  "r1ZeroResolvable": {
+    "resolvablePending": 0,
+    "rpmSemanticUnresolved": 0,
+    "deterministicBindingMaterializationPending": 0,
+    "safeReuseRpmOnlyPending": 0,
+    "createR1ResolvableConflicts": 0,
+    "projectionMetaOnly": 8
   },
   "metaResolutionEvidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_중간_중2_수학.meta.json",
-    "sha256": "sha256:78d3d12017cca10faeee26068cf52263c8c0c4048682291511ec26c145b2dc68"
+    "sha256": "sha256:9107995bd84753dd59e2261768cc10be6cdc87d77214a776d7ff3cdff9463761"
+  },
+  "evidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_삼산중_2학기_중간_중2_수학.evidence.json",
+    "sha256": "sha256:5deffebf9473eb79e26a88dd0f7920c80d98a4373859ab96a571ff981f1dc9f9"
   },
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-  "mainAuthorityCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 8,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
   "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "commitBinding": "SELF"
 }
