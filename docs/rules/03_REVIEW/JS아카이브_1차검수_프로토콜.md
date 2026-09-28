@@ -7,9 +7,9 @@
 - **기본은 항상 `layoutTag: "grid"`다.**
 - `questionType: "서술형" / "단답형" / "서논술형"`, `choices: []`, 서술형/주관식 태그, 배점, 시험지 후반 배치, `구하시오`·`과정을 서술하시오` 문구만으로 `subjective-2up`을 부여하지 않는다.
 - `(1)(2)(3)` 같은 소문항 존재, 긴 발문, 그림/표 존재도 **단독 승격 근거가 아니다.**
-- `subjective-2up`은 **현재 grid 실렌더에서 학생 답안 작성 공간이 명백히 부족하다는 evidence**가 있거나, 사용자가 해당 문항에 명시적으로 지시한 경우에만 허용한다.
-- render를 실행하지 않은 GPT/예약/Codex 단계에서는 공간 부족을 추측하여 미리 `subjective-2up`으로 올리지 않는다. **grid 유지 + `NOT_RUN_CODEX_HANDOFF`**가 기본이다.
-- 기존 `subjective-2up`도 근거를 상속하지 않는다. actual render evidence/명시 지시가 없으면 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` / `OVERESCALATED_SUBJECTIVE_LAYOUT` 후보로 재판정한다.
+- `subjective-2up`은 **코드/정적 구조상 grid 한 칸에서 발문·이미지·표·소문항 점유 때문에 답안 작성 공간이 명백히 부족한 STATIC_CAPACITY_EVIDENCE**, actual render evidence, 또는 사용자 명시 지시가 있을 때만 허용한다.
+- render 미실행 자체는 승격 금지 사유가 아니다. 정적 공간 부족이 명확하면 2up으로 승격할 수 있다. **근거가 애매할 때만 grid 유지 + `NOT_RUN_CODEX_HANDOFF`**로 넘긴다.
+- 기존 `subjective-2up`도 근거를 자동 상속하지 않는다. STATIC_CAPACITY_EVIDENCE / actual render evidence / 명시 지시가 없으면 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` / `OVERESCALATED_SUBJECTIVE_LAYOUT` 후보로 재판정한다.
 - 외부 문항 공간(`grid` / `subjective-2up`)과 내부 소문항 공간 배분은 서로 다른 축이다. 소문항 구조 때문에 외부 layout을 자동 승격하지 않는다.
 
 

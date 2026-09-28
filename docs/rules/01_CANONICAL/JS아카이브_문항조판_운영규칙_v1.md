@@ -90,11 +90,13 @@ page/column 내부 분리, asset 때문에 질문/보기가 떨어짐, 과도한
 
 `layoutTag: "subjective-2up"`은 다음 중 하나가 있을 때만 허용한다.
 
-1. **actual exam render evidence**에서 현재 grid가 발문·asset·소문항을 배치한 뒤 학생이 실제로 답안을 작성할 공간을 명백히 확보하지 못함이 확인된 경우
-2. 사용자가 해당 문항/범위에 대해 `subjective-2up`을 명시적으로 지시한 경우
+1. **STATIC_CAPACITY_EVIDENCE** — 코드/정적 구조상 현재 grid 한 칸의 공간에서 발문 길이·줄수, problem image/표/도형의 점유, 소문항 수와 각 발문 구조를 함께 보았을 때 학생이 실제 답안을 쓸 세로 공간이 명백히 부족하다고 판정되는 경우
+2. **actual exam render evidence**에서 현재 grid가 발문·asset·소문항을 배치한 뒤 학생 답안 작성 공간을 명백히 확보하지 못함이 확인된 경우
+3. 사용자가 해당 문항/범위에 대해 `subjective-2up`을 명시적으로 지시한 경우
 
-렌더를 실행하지 않은 GPT/예약/Codex 단계에서는 답안 공간 부족을 추측해 선제 승격하지 않는다.
-그 경우 **`grid` 유지 + `NOT_RUN_CODEX_HANDOFF`**로 넘긴다.
+actual render는 필수 전제조건이 아니다. GPT/예약/Codex가 렌더를 실행하지 않더라도 **문항별 STATIC_CAPACITY_EVIDENCE가 명확하면** `subjective-2up`으로 승격할 수 있다.
+단, `서술형이라서`, `choices가 없어서`, `소문항이 있어서` 같은 유형 근거만으로는 STATIC_CAPACITY_EVIDENCE가 성립하지 않는다. 정적 공간 부족이 애매하면 **`grid` 유지 + `NOT_RUN_CODEX_HANDOFF`**로 넘긴다.
+승격 시 ledger의 `reason`에는 최소한 `grid slot + prompt/asset/subquestion occupancy → writing-space insufficient`의 구체적 근거를 남긴다.
 
 `subjective-2up`으로도 실제 render에서 부족한 특수 문항은 자동 `subjective-4up`/fullwidth로 확대하지 않고 HOLD/후속 엔진 개선 대상으로 분리한다.
 
@@ -104,19 +106,19 @@ page/column 내부 분리, asset 때문에 질문/보기가 떨어짐, 과도한
 **소문항 존재 자체가 `subjective-2up` 승격 사유는 아니다.**
 
 - grid 공간이 충분하면 grid 안에서 소문항 구조를 살린다.
-- grid 공간이 실제로 부족하다는 render evidence가 있을 때만 subjective-2up을 검토한다.
+- grid 공간이 **정적 코드/구조 판정 또는 actual render**에서 실제로 부족하다고 확인될 때 subjective-2up을 검토한다.
 - 내부 소문항 균등 공간 배분은 별도 renderer/layout 계약으로 다루며 외부 layoutTag 자동 승격과 결합하지 않는다.
 
 #### 6-4. 기존 2up 재판정
 
 기존 `subjective-2up`은 과거 판정을 자동 상속하지 않는다.
-actual render evidence 또는 사용자 명시 지시가 확인되지 않으면 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 후보로 기록하고,
+STATIC_CAPACITY_EVIDENCE, actual render evidence, 사용자 명시 지시 중 어느 근거도 확인되지 않으면 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 후보로 기록하고,
 새 기준에서 grid로 충분한지 targeted recheck한다.
 
 2026-09-28 negative regression fixture:
 `codex/archive-source-intake@64207516e85f79da822cefc930e9e416ea68615c`의 고1 기말 5시험지 backfill에서
 서술형 14문항이 일괄 `grid → subjective-2up`으로 승격된 결과는 **선례/authority가 아니다.**
-해당 14건은 새 규칙 기준 `OVERESCALATED_SUBJECTIVE_LAYOUT` 재검 후보이며 다른 시험지로 확대 적용하지 않는다.
+해당 14건은 새 규칙 기준 **일괄 승격 authority가 아니며 문항별 STATIC_CAPACITY_EVIDENCE로 재검**한다. 정적으로 공간 부족이 명백한 문항은 2up을 유지할 수 있고, 유형만으로 승격된 문항은 grid로 되돌린다. 다른 시험지에 일괄 선례로 확대 적용하지 않는다.
 
 원문에 이미 `단답형`, `서술형`, `서논술형` 표지가 있으면 renderer-only bold/간격/괄호·배지 스타일로 시각 계층을 강화할 수 있다.
 원문에 없는 유형 라벨을 새로 쓰거나 기존 문구를 바꾸지 않는다.
