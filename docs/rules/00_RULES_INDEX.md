@@ -12,6 +12,18 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+### ARCHIVE GPT ARTIFACT-FIRST LIGHTWEIGHT — M3부터 적용 (2026-09-28)
+
+중3 정상 시험지 생산부터 `02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`를 기본 작업 방식으로 적용한다.
+
+- CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다.
+- Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
+- REVIEW1/2는 완성본을 처음 보는 것처럼 fresh review하고, 발견 결함은 같은 작업에서 직접 수정한다.
+- receipt/evidence는 최소 상태 기록으로 줄이고, 긴 packet/seal/snapshot은 공통 시스템 문제나 명시적 필요가 있을 때만 사용한다.
+- Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review와 분리한다.
+- Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질은 경량화 대상이 아니다.
+- M2 진행 중에는 기존 레인을 변경하지 않으며, **M2 전체 완료 후 M3 전환 시 활성화**한다.
+
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 
 **Archive 2.0 / JS Archive의 분석·제작·수정·검수·해설·조판·SVG·Meta·난이도 등 품질 작업은 실제 target 작업 전에 `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`를 적용한다.**
