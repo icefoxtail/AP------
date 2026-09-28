@@ -158,7 +158,10 @@ export async function captureRender(root, run, workdir, { channel = 'chrome', co
         const startedAt = new Date().toISOString();
         const engineMode = { exam: 'exam', solution: 'sol', answer: 'ans' }[mode];
         const url = `http://127.0.0.1:${port}/${run.renderRuntime.enginePath}?data=exams/__pipeline_review__/${index}.js&mode=${engineMode}&qpp=4&fit=screen`;
-        const selector = mode === 'answer' ? '#print-area .ans-n' : '#print-area .q-box';
+        // Equal-slot layout may add empty `.q-box` placeholders. Count only
+        // renderer-owned source-backed question blocks so the coverage gate
+        // matches the frozen question denominator in exam and solution modes.
+        const selector = mode === 'answer' ? '#print-area .ans-n' : '#print-area .q-box[data-source-ref]';
         await page.goto(url, { waitUntil: 'load', timeout: 45000 });
         await page.waitForFunction(({ selector, count }) => new Set([...document.querySelectorAll(selector)].map((node, index) => node.dataset.sourceRef || String(index))).size === count, { selector, count: bank.length }, { timeout: 45000 });
         await page.evaluate(async () => {
