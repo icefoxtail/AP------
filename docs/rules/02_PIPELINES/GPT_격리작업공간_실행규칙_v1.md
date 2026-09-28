@@ -37,6 +37,9 @@ GPT 저장소 작업은 별도 지시가 없으면 다음을 기본값으로 한
 1. 작업 시작 전에 현재 `origin/main` 최신 HEAD를 실제 조회한다.
 2. 그 SHA를 `BASE_MAIN_SHA`로 기록한다.
 3. 필요한 원본과 규칙을 그 SHA 기준으로 확보한다.
+
+**Archive Golden Sample preflight:** 학생 노출 품질·해설·SVG·조판·검수·Meta evidence 등 Archive 품질 작업이면 `Archive_작업전_Golden_Sample_Calibration_v1.md`를 읽고 현재 target과 가까운 Golden/Negative Sample로 품질 눈높이를 맞춘다. 단, 정답·수학·difficulty·RPM/L3/L4·Meta/CrossConcept 같은 독립 semantic 판정은 target blind decision을 먼저 동결한 뒤 비교한다.
+
 4. 장시간 분석·생성·전수검수·candidate 제작은 저장소 밖 격리 작업공간에서 수행한다.
 5. main과 일반 작업 브랜치는 작업 중 production baseline으로 간주하고 직접 누적 수정하지 않는다.
 6. 모든 검수와 테스트가 끝나기 전에는 commit/push하지 않는다.
