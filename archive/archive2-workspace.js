@@ -611,7 +611,7 @@
         count: sources.length,
         eligibleCount: sources.filter(r => r.scopeEligible).length,
       };
-    });
+    }).filter((scope) => scope.basicScope);
   }
   function scopeIsSelected(scope) {
     return (
@@ -1157,8 +1157,7 @@
       return `<div class="resultbar"><h2>출제 범위</h2></div><p class="muted">고2·고3은 과목을 먼저 선택하면 해당 과목의 2015·2022 범위를 하나로 묶어 보여줍니다.</p>`;
     const scopes = scopeOptions(),
       groups = unique(scopes.map((s) => s.L1)),
-      basic = scopes.filter(s => s.basicScope),
-      detailed = scopes.filter(s => !s.basicScope);
+      basic = scopes;
     const rangeOptions = scopes.flatMap((s, i) => s.basicScope
       ? [{ value: i, label: s.L1 + " · " + s.label }] : []);
     const groupMarkup = (rows, detail) => `<div class="scope-list">${unique(rows.map(s => s.L1)).map(g =>
@@ -1177,7 +1176,7 @@
         rangeOptions.at(-1)?.value ?? 0,
         null,
       )}</select></label>${button("scope-range", "연속 범위 선택")}</div>
-      ${groupMarkup(basic, false)}${detailed.length ? `<details class="compose-detail source-scope-detail"${detailed.some(scopeIsSelected) ? " open" : ""}><summary>상세 원본 분류 · ${detailed.length}개 항목</summary><p class="muted">정식 단원 목록과 일치하지 않는 기존 원본 분류입니다. 분류명을 확인한 뒤 필요한 항목을 선택할 수 있습니다.</p>${groupMarkup(detailed, true)}</details>` : ""}`;
+      ${groupMarkup(basic, false)}`;
   }
   function bucketButtons(current, row = "") {
     return `<div class="bucket-set" aria-label="난이도 선택">${button("bucket-all", "전체", `data-row="${esc(row)}" aria-pressed="${!current.length}" ${state.sealed ? "disabled" : ""}`)}${[1, 2, 3, 4, 5].map((n) => button("bucket", n, `data-bucket="${n}" data-row="${esc(row)}" aria-pressed="${current.includes(n)}" ${state.sealed ? "disabled" : ""}`)).join("")}</div>`;

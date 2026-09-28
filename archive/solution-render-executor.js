@@ -508,13 +508,48 @@ async function renderComposed({ area, items, deps }) {
     if (deps.batchTypeset === true) {
         const boxes = items.map(makeBox);
         const firstColumn = cols[0];
+        const checkpointStore = deps.solutionCheckpointStore;
         // Bounded batches keep a full-grade paper responsive and avoid a single
         // column containing hundreds of large solution images during typeset.
         for (let start = 0; start < boxes.length; start += 24) {
-            const batch = boxes.slice(start, start + 24);
-            firstColumn.append(...batch);
-            await applyAutoImageSizeClasses(firstColumn);
-            await deps.typesetMath('composition-solution-batch', batch);
+            let batch = boxes.slice(start, start + 24);
+            // Fingerprint each completed batch independently: an edit to question 311
+            // must not invalidate already checked solution batches 1–288.
+            const checkpointKey = await checkpointStore?.createKey(batch);
+            if (checkpointKey) deps.onSolutionCheckpointKey?.(checkpointKey);
+            let restored = null;
+            if (checkpointKey) restored = await checkpointStore.load(checkpointKey, start, batch.length);
+            if (Array.isArray(restored) && restored.length === batch.length) {
+                const cachedBoxes = restored.map((html, index) => {
+                    const template = document.createElement('template');
+                    template.innerHTML = String(html || '').trim();
+                    const cached = template.content.firstElementChild;
+                    const source = batch[index];
+                return cached?.classList.contains('sol-box') &&
+                        cached.dataset.sourceRef === source.dataset.sourceRef &&
+                        cached.dataset.solutionHtml === source.dataset.solutionHtml &&
+                        !cached.querySelector('mjx-merror') && !root.APRenderLoop.unrenderedMathCount(cached) ? cached : null;
+                });
+                if (cachedBoxes.every(Boolean)) {
+                    batch = cachedBoxes;
+                    boxes.splice(start, batch.length, ...batch);
+                    for (const box of batch) preparedBoxes.add(box);
+                    if (start > 0) deps.onSolutionCheckpointResume?.(start, items.length);
+                }
+            }
+            const needsTypeset = !batch.every(box => preparedBoxes.has(box));
+            if (needsTypeset) {
+                firstColumn.append(...batch);
+                await applyAutoImageSizeClasses(firstColumn);
+                const mathReady = await deps.typesetMath('composition-solution-batch', batch);
+                if (mathReady !== true || batch.some(box => box.querySelector('mjx-merror') || root.APRenderLoop.unrenderedMathCount(box))) {
+                    throw Error('MATH_TYPESET_INCOMPLETE');
+                }
+                for (const box of batch) preparedBoxes.add(box);
+                if (checkpointKey && batch.every(box => preparedBoxes.has(box))) {
+                    await checkpointStore.save(checkpointKey, start, batch.map(box => box.outerHTML));
+                }
+            }
             for (const box of batch) { preparedBoxes.add(box); box.remove(); }
             for (const box of batch) await placeBox(box);
         }

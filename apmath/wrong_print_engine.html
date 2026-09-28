@@ -175,8 +175,9 @@
     <script src="../archive/equal-slot-engine.js?v=20260915.1"></script>
     <link rel="stylesheet" href="../archive/equal-slot-engine.css?v=20260915.1">
     <script src="../archive/exam-render-executor.js?v=20260915.1"></script>
-    <script src="../archive/solution-render-executor.js?v=20260928.1"></script>
+    <script src="../archive/solution-render-executor.js?v=20260928.2"></script>
     <script src="../archive/answer-render-executor.js?v=20260912.1"></script>
+    <script src="js/clinic-solution-checkpoint.js?v=20260928.1"></script>
 </head>
 <body>
     <div id="mode-ctrl">
@@ -299,6 +300,10 @@ function setClinicRenderStatus(status, message = '') {
         const button = document.getElementById(id);
         if (button) button.disabled = status !== 'ready';
     }
+}
+
+function setClinicRenderProgressBase(count) {
+    clinicRenderPreparedCount = Math.max(clinicRenderPreparedCount, Math.max(0, Number(count) || 0));
 }
 
 function clinicRenderErrorMessage(code, failedMode = '') {
@@ -3091,6 +3096,15 @@ function wrongSolutionDeps(meta) {
 
     return { document, makeBox, makeSolutionHtmlChunks, makeLongSolutionShell, applyAutoImageSizeClasses, autoCompress, raf,
         batchTypeset: true,
+        solutionCheckpointStore: window.APClinicSolutionCheckpoint,
+        onSolutionCheckpointKey(key) {
+            state.solutionCheckpointKeys ||= [];
+            if (!state.solutionCheckpointKeys.includes(key)) state.solutionCheckpointKeys.push(key);
+        },
+        onSolutionCheckpointResume(completed, total) {
+            window.setClinicRenderProgressBase?.(completed);
+            window.setClinicRenderStatus?.('loading', `저장된 해설 ${completed}/${total}문항을 불러와 이어서 생성하는 중입니다`);
+        },
         stagingHost: buildContext.stagingHost, clearMath: nodes => window.MathJax?.typesetClear?.(nodes),
         typesetMath: buildContext.typeset,
         makePage: (area, no) => makePage(area, 'sol', getGroupTitle(meta.title), meta.metaLeft || '', meta.metaRight || '', no, { recipientId: meta.recipientId || '', sectionId: meta.sectionId || '' })
@@ -3139,6 +3153,7 @@ return { state,
     openClinicFastPrintDialog,
     closeClinicFastPrintDialog,
     confirmClinicFastPrint,
+    setClinicRenderProgressBase,
     escapeHtml,
     clampText,
     getDefaultPrintHeaderOptions,
@@ -3303,6 +3318,13 @@ if (window.APCommonFastRuntime?.isAvailable() && new URLSearchParams(location.se
             }
             const binding = createWrongSourceAdapter({ ...ctx, buildState: state });
             await binding.loadAllQuestionBanks(state.payload);
+        },
+        afterCommit(ctx) {
+            const checkpointKeys = [...new Set(wrongSourceAdapter.state.solutionCheckpointKeys || [])];
+            const mode = ctx.input?.mode || ctx.result?.mode || ctx.candidate?.mode;
+            if (!checkpointKeys.length || !['sol', 'review'].includes(mode)) return;
+            delete wrongSourceAdapter.state.solutionCheckpointKeys;
+            for (const key of checkpointKeys) window.APClinicSolutionCheckpoint?.clear(key);
         },
         createBuild: createWrongSourceAdapter,
         onRequest: wrongSourceAdapter.trackClinicRenderRequest,
