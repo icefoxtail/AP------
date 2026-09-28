@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 33623 bytes | sha256 7ee2198222b34d0bbe73707d643785f02fb2a0112ca7d7107c073da11505d3c0
+- 00_RULES_INDEX.md | 34893 bytes | sha256 1ab3c1dfea2f6625127faa5d3a661529cea84cfb8ede3b50c0d7d584c312d2bd
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12133 bytes | sha256 737df504f0940793746d0a0f41d1c6c0476ac6b3d6652fdf1689d0702e6eff37
@@ -20,7 +20,8 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브룰북_v2.6.md | 95451 bytes | sha256 35aaaff1edcf77d80131cf0b25b311ec60e5422a949d16dee53cbe113c825700
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
-- 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 7700 bytes | sha256 eccc893807496ee6bcf101f4afa567b3aec2ff773f56e53aab85f1346e16c01c
+- 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
+- 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 7892 bytes | sha256 12b8221b0e23c4fbb244bebdc18c1dd54c3673eaf11c71f7a97166ed5cc8b319
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 18689 bytes | sha256 5a0d5c47fb61780f729ce7625d7840e5b2d91096c92ce4ab439253c3df41a7ed
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 26401 bytes | sha256 82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b
