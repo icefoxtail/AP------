@@ -90,7 +90,7 @@ Meta Foundation은 난이도 정의를 복제하거나 재정의하지 않는다
 
 ## 1.3 Meta Foundation이 정식 소유하는 범위
 
-Meta Foundation v1은 다음을 canonical authority로 소유한다.
+Meta Foundation v1은 다음 **machine-key / compatibility projection layer**를 canonical하게 소유한다. **L3/L4 semantic 의미의 최상위 정본은 §1.4의 RPM Primary**이며, `problemTypeKey/templateKey`는 그 RPM 의미를 기존 runtime/Archive 소비자에 연결하는 projection key다.
 
 ```text
 problemTypeKey
@@ -105,47 +105,57 @@ candidate/runtime/canonical 경계
 forward/reverse consistency audit
 ```
 
-## 1.4 RPM Primary v1.0 선조회와 Meta Foundation materialization bridge
+## 1.4 RPM Primary v1.0 — L3/L4 semantic Source of Truth
 
-`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `TAXONOMY_AUTHORITY=LOCKED`인 **semantic path reference authority**다. 이는 RPM 내부 문구를 그대로 production key로 복제하라는 뜻이 아니라, 교육과정/L1/L2 안에서 이미 정규화·감사된 L3/L4 의미가 존재하는지 먼저 확인하는 기준이다.
+`docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `TAXONOMY_AUTHORITY=LOCKED`인 **L3/L4 semantic source of truth**다. current source와 independently verified final solution에서 `primaryMethod / decisiveStep`을 확정한 뒤 해당 curriculum/scope의 RPM L3/L4 path가 deterministic하게 선택되면 **그 문항의 semantic classification은 FINAL**이다.
 
-Meta Foundation ACTIVE Pack/Binding은 위 의미를 실제 production에서 사용하는 `problemTypeKey/templateKey + curriculum binding`으로 materialize한 **machine-key authority**다.
+기존 Meta Foundation의 `problemTypeKey/templateKey`, ACTIVE Pack taxonomy, curriculum binding과 학년별 crosswalk는 RPM semantic을 기존 machine-key/runtime/Archive2 소비자에 연결하는 **compatibility/projection layer**다. projection layer가 비어 있거나 stale하더라도 RPM semantic FINAL을 무효화하지 않는다.
 
-따라서 L3/L4 생성·수정·검수·HOLD 판정의 강제 순서는 다음과 같다.
+강제 순서:
 
 ```text
-current source + verified final solution
-→ primaryMethod / decisiveStep 확정
-→ RPM Primary v1.0 해당 curriculum/scope L1→L4 semantic path 조회
-→ ACTIVE Meta Foundation PT/TPL + curriculum binding 조회
-→ semantic crosswalk / reuse / migration gap 판정
-→ RPM과 ACTIVE 양쪽에 적절한 path가 없을 때만 신규 taxonomy gap
+current source + independently verified final solution
+→ primaryMethod / decisiveStep
+→ RPM Primary exact curriculum/scope L3
+→ RPM Primary exact L4
+= RPM_SEMANTIC_FINAL
+→ grade/subject crosswalk
+→ existing PT/TPL + exact binding projection lookup
+→ PROJECTION_REUSE / PROJECTION_BINDING_PENDING / PROJECTION_UNMATERIALIZED
 ```
 
 판정 규칙:
 
-1. RPM path와 의미가 같고 ACTIVE PT/TPL+binding이 있으면 기존 machine key를 재사용한다.
-2. RPM path와 의미가 같고 ACTIVE PT/TPL은 있으나 해당 curriculum/L2 binding만 없으면 **binding migration gap**이다. 신규 L3/L4를 만들지 않는다.
-3. RPM path는 있으나 대응 ACTIVE PT/TPL 자체가 아직 없으면 **key migration gap**이다. 이를 새 수학 유형 부재로 취급하지 않는다.
-4. RPM Primary와 ACTIVE semantic registry 양쪽을 모두 실제 검색한 뒤에도 적절한 path가 없을 때만 신규 L3/L4 candidate 또는 진짜 taxonomy gap을 연다.
-5. 예약 CREATE/REVIEW처럼 global canonical write 권한이 없는 작업은 2~3을 직접 승격하지 않고 evidence/HOLD로 넘긴다. 기존 상태 enum을 써야 하면 `META_CANONICAL_HOLD`를 사용하고 `holdReason`에 **`RPM_PRIMARY_MIGRATION_GAP`**을 명시한다.
-6. **`META_PACK_GAP_HOLD`는 RPM Primary 해당 경로에도 적용 가능한 L3/L4가 없고 ACTIVE Pack/binding에도 재사용 가능한 semantic path가 없는 경우에만 허용한다.**
+1. RPM L3/L4가 deterministic하면 semantic FINAL이다.
+2. 기존 ACTIVE PT/TPL+binding이 의미적으로 맞으면 `PROJECTION_REUSE`로 사용한다.
+3. PT/TPL은 맞고 exact curriculum binding만 없으면 `PROJECTION_BINDING_PENDING`이다. **semantic HOLD가 아니다.**
+4. crosswalk가 `RPM_ONLY`이거나 안전한 PT/TPL projection이 없으면 `PROJECTION_UNMATERIALIZED`다. **semantic HOLD가 아니다.**
+5. canonical ownerPack과 curriculum binding ownerPack이 달라도 GLOBAL ACTIVE key가 unique하고 binding이 유효하면 정상 cross-pack reuse다.
+6. legacy compatibility 때문에 `RPM_PRIMARY_MIGRATION_GAP` 문자열을 유지해야 하면 `META_ONLY` projection status로만 기록한다. R1/R2E gate를 차단하지 않는다.
+7. TRUE Meta semantic HOLD/taxonomy gap은 source+verified solution으로 RPM L3/L4 자체를 결정할 수 없거나, 해당 curriculum/scope RPM path가 실제로 누락·모순되어 deterministic semantic classification이 불가능할 때만 허용한다.
+8. PT/TPL projection을 새로 materialize할지는 별도 compatibility/runtime 작업이다. **RPM semantic FINAL을 만들기 위한 필수 선행조건이 아니다.**
 
-HOLD/candidate evidence에는 가능한 범위에서 최소 다음을 남긴다.
+evidence는 최소 다음 두 축을 분리한다.
 
 ```text
+rpmSemanticStatus: FINAL | HOLD | ROUTE_OUT
 rpmPrimaryPath
-searchedRpmPrimaryCandidates[]
-searchedCanonicalCandidates[]
+rpmL3
+rpmL4
 primaryMethod
 decisiveStep
-migrationDisposition
-holdReason
+
+projectionStatus: REUSE | BINDING_PENDING | UNMATERIALIZED | INVALID
+problemTypeKey?
+templateKey?
+canonicalOwnerPack?
+bindingOwnerPack?
+projectionReason?
 ```
 
-RPM Primary는 production JS의 PT/TPL field를 직접 덮어쓰지 않는다. 실제 승격은 이 문서의 candidate/evidence → ownership/binding → compile/runtime 검증 절차를 따라 Meta Foundation canonical로 materialize한다.
-
 ---
+
+# 2. 정식 메타 구조---
 
 # 2. 정식 메타 구조
 
@@ -170,73 +180,52 @@ standardCourse = 공통수학2
 
 ## 2.2 Primary Taxonomy
 
-학생 문제 분류용 정식 논리 계층은 아래 네 단계다.
+학생 문제 분류의 정식 semantic 계층은 아래 네 단계다.
 
 ```text
 L1 = standardUnitKey
 L2 = subUnitKey
-L3 = problemTypeKey
-L4 = templateKey
+L3 = RPM Primary L3 semantic path
+L4 = RPM Primary L4 semantic path
 ```
 
-| Level | canonical field | 의미 |
-|---|---|---|
-| L1 | `standardUnitKey` | 공식 표준단원 |
-| L2 | `subUnitKey` | L1 내부 공식 세부단원 |
-| L3 | `problemTypeKey` | 무엇을 묻고 어떤 핵심 전략으로 푸는 문제인가 |
-| L4 | `templateKey` | 같은 L3 안에서 조건 배치·풀이 골격까지 유사한 출제 템플릿 |
+`problemTypeKey/templateKey`는 L3/L4 의미를 기존 Meta Foundation/runtime에 연결하는 **projection field**다. projection field가 존재할 때는 canonical-valid key와 parent/binding 무결성을 만족해야 하지만, projection 부재 자체가 RPM L3/L4 semantic FINAL을 무효화하지 않는다.
 
-논리적 분류 경로는 항상:
+논리적 semantic 경로는 항상:
 
 ```text
 standardUnitKey
 → subUnitKey
-→ problemTypeKey
-→ templateKey
+→ RPM Primary L3
+→ RPM Primary L4
 ```
 
-이다.
-
-단, L3 semantic definition을 하나의 L2 레코드 안에 종속 저장하지 않는다.
-
-## 2.3 Shared Semantic L3/L4 + Curriculum Binding
-
-도형의 방정식 전수 Pilot에서 동일하거나 실질적으로 동일한 L3/L4가 2015/2022 및 서로 다른 L2에서 재사용되는 사례가 확인되었다.
-
-따라서 정식 구조는 다음으로 고정한다.
+이고, compatibility projection은 그 뒤에 붙는다.
 
 ```text
-[semantic registry]
-problemTypeKey
-templateKey
-
-+
-
-[curriculum binding registry]
-curriculum
-standardCourse
-standardUnitKey
-subUnitKey
-problemTypeKey
+RPM L3/L4
+→ problemTypeKey/templateKey (있는 경우)
+→ curriculum binding (있는 경우)
 ```
 
-문항의 L3 유효성은 단순히 `problemTypeKey`가 존재하는지만 보지 않는다.
+## 2.3 Shared Semantic L3/L4 + Curriculum Binding## 2.3 PT/TPL Projection + Curriculum Binding
 
-다음을 모두 만족해야 한다.
+기존 `problemTypeKey/templateKey` registry와 curriculum binding은 RPM L3/L4 semantic을 기존 consumer에 연결하는 projection layer다.
+
+projection이 존재하는 경우 다음 무결성을 요구한다.
 
 ```text
 1. standardUnitKey → subUnitKey parent 정상
-2. (curriculum, standardCourse, standardUnitKey, subUnitKey, problemTypeKey)
-   ACTIVE binding 존재
+2. problemTypeKey가 GLOBAL ACTIVE에서 unique canonical key
 3. templateKey.parentProblemTypeKey == problemTypeKey
+4. exact curriculum binding이 있으면 ACTIVE
 ```
 
-동일 semantic L3를 여러 curriculum/L2에서 재사용할 수 있다.
+단, **2~4의 projection이 아직 없다는 사실은 RPM semantic classification의 HOLD 사유가 아니다.** 이 경우 semantic은 FINAL로 유지하고 projectionStatus를 `BINDING_PENDING` 또는 `UNMATERIALIZED`로 기록한다.
 
-L4는 semantic registry에서 하나의 `parentProblemTypeKey`를 가진다.
-L4의 curriculum별 사용 제한이 필요하면 §7의 curriculum applicability rule로 제어한다.
+canonical ownerPack과 curriculum binding ownerPack은 서로 달라도 된다. 한 pack의 local taxonomy만 보고 canonical absent/owner conflict를 선언하지 않는다.
 
-## 2.4 conceptClusterKey의 지위
+## 2.4 conceptClusterKey의 지위## 2.4 conceptClusterKey의 지위
 
 `conceptClusterKey`는 Primary Taxonomy level이 아니다.
 
