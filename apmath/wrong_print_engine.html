@@ -193,7 +193,9 @@
     </div>
     <div id="clinic-render-status" role="status" aria-live="polite" hidden>
         <span id="clinic-render-message"></span>
-        <button id="clinic-render-retry" type="button" onclick="boot()" hidden>다시 불러오기</button>
+        <button id="clinic-render-retry" type="button" onclick="clinicRetryFailedMode()" hidden>다시 불러오기</button>
+        <button id="clinic-render-fallback" type="button" onclick="clinicRetryLegacyMode()" hidden>기본 방식으로 다시 생성</button>
+        <button id="clinic-render-reload" type="button" onclick="location.reload()" hidden>페이지 새로고침</button>
     </div>
     <div id="fast-print-dialog" hidden style="display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;background:rgba(24,24,27,.42);" onclick="if(event.target === this) closeClinicFastPrintDialog()">
         <div role="dialog" aria-modal="true" aria-labelledby="fast-print-dialog-title" style="width:min(360px,calc(100vw - 32px));padding:22px;border-radius:12px;background:white;box-sizing:border-box;">
@@ -259,6 +261,8 @@ let clinicRenderTimer = null;
 let clinicRenderStartedAt = 0;
 let clinicRenderMessage = '';
 let clinicRenderPreparedCount = 0;
+let clinicRequestedMode = '';
+let clinicFailedMode = '';
 function setClinicRenderStatus(status, message = '') {
     const notice = document.getElementById('clinic-render-status');
     if (!notice) return;
@@ -267,8 +271,19 @@ function setClinicRenderStatus(status, message = '') {
     notice.dataset.status = status;
     notice.hidden = status === 'ready';
     if (status === 'ready') delete document.documentElement.dataset.apClinicRenderError;
+    if (status === 'loading') delete document.documentElement.dataset.apClinicRenderError;
     notice.setAttribute('role', status === 'error' ? 'alert' : 'status');
-    document.getElementById('clinic-render-retry').hidden = status !== 'error';
+    const retryButton = document.getElementById('clinic-render-retry');
+    retryButton.hidden = status !== 'error';
+    retryButton.textContent = status === 'error' && clinicFailedMode
+        ? `${({ exam: '문제지', sol: '해설지', ans: '정답표', review: '복습지' })[clinicFailedMode] || '오답지'} 다시 생성`
+        : '다시 불러오기';
+    document.getElementById('clinic-render-reload').hidden = status !== 'error';
+    const code = document.documentElement.dataset.apClinicRenderError || '';
+    const hasLegacyAlternative = status === 'error' && !!clinicFailedMode
+        && new URLSearchParams(location.search).get('runtime') !== 'legacy'
+        && !/SOURCE_LOAD_FAILED|ARCHIVE_BANK|ARCHIVE_FILE|AbortError|fetch/i.test(code);
+    document.getElementById('clinic-render-fallback').hidden = !hasLegacyAlternative;
     clinicRenderMessage = message;
     if (status === 'loading' && !wasLoading) { clinicRenderStartedAt = Date.now(); clinicRenderPreparedCount = 0; }
     const update = () => {
@@ -286,12 +301,14 @@ function setClinicRenderStatus(status, message = '') {
     }
 }
 
-function clinicRenderErrorMessage(code) {
+function clinicRenderErrorMessage(code, failedMode = '') {
+    const modeName = ({ exam: '문제지', sol: '해설지', ans: '정답표', review: '복습지' })[failedMode] || '오답지';
+    const previousOutputHint = `현재 보이는 내용은 이전에 정상 생성된 출력입니다. ${modeName}가 생성된 것은 아니에요.`;
     if (/SOURCE_LOAD_FAILED|ARCHIVE_BANK|ARCHIVE_FILE|AbortError|fetch|timeout/i.test(code)) return '원문 시험 파일을 불러오지 못했습니다. 연결 상태와 아카이브 파일을 확인한 뒤 다시 불러오세요.';
-    if (/MATH|MathJax/i.test(code)) return '수식 표시를 준비하지 못했습니다. 다시 불러오기를 눌러주세요.';
-    if (/QR/i.test(code)) return '정답·해설 QR을 준비하지 못했습니다. 다시 불러오기를 눌러주세요.';
-    if (/IMAGE/i.test(code)) return '문항 이미지를 불러오지 못했습니다. 연결 상태를 확인한 뒤 다시 불러오세요.';
-    return '오답지 생성 중 오류가 발생했습니다. 다시 불러오기를 눌러주세요.';
+    if (/MATH|MathJax/i.test(code)) return `${modeName}의 수식 표시를 준비하지 못해 생성을 완료하지 못했습니다. ${previousOutputHint} 다시 생성을 누르고, 계속 실패하면 페이지를 새로고침하세요.`;
+    if (/QR/i.test(code)) return `${modeName}를 생성하지 못했습니다. 정답·해설 QR을 준비하지 못했어요. ${previousOutputHint}`;
+    if (/IMAGE/i.test(code)) return `${modeName}를 생성하지 못했습니다. 문항 이미지를 불러오지 못했어요. ${previousOutputHint} 연결을 확인한 뒤 다시 생성하세요.`;
+    return `${modeName} 생성에 실패했습니다. ${previousOutputHint} 다시 생성하거나 페이지를 새로고침하세요.`;
 }
 
 function trackClinicRenderRequest(promise) {
@@ -301,15 +318,46 @@ function trackClinicRenderRequest(promise) {
     setClinicRenderStatus('loading', '오답지를 만드는 중입니다');
     Promise.resolve(promise).then(outcome => {
         if (serial !== clinicRenderSerial) return;
-        if (outcome?.ok) setClinicRenderStatus('ready');
+        if (outcome?.ok) {
+            clinicRequestedMode = '';
+            clinicFailedMode = '';
+            setClinicRenderStatus('ready');
+        }
         else {
             const code = String(outcome?.code || 'RENDER_FAILED');
+            clinicFailedMode = clinicRequestedMode || state.mode || 'exam';
+            clinicRequestedMode = '';
             document.documentElement.dataset.apClinicRenderError = code;
-            setClinicRenderStatus('error', clinicRenderErrorMessage(code));
+            setClinicRenderStatus('error', clinicRenderErrorMessage(code, clinicFailedMode));
         }
     }, error => {
-        if (serial === clinicRenderSerial) setClinicRenderStatus('error', clinicRenderErrorMessage(String(error?.message || error)));
+        if (serial === clinicRenderSerial) {
+            clinicFailedMode = clinicRequestedMode || state.mode || 'exam';
+            clinicRequestedMode = '';
+            setClinicRenderStatus('error', clinicRenderErrorMessage(String(error?.message || error), clinicFailedMode));
+        }
     });
+}
+
+function clinicRetryFailedMode() {
+    document.getElementById('clinic-print-error')?.remove();
+    if (!state.payload || typeof state.payload !== 'object') return boot();
+    const mode = isQrSolutionMode() ? 'review' : (clinicFailedMode || state.mode || 'exam');
+    clinicFailedMode = '';
+    clinicRequestedMode = mode;
+    if (window.wrongFastHost) return window.wrongFastHost.runtime.request({ type: 'MODE_CHANGE', requestedMode: mode });
+    state.mode = mode;
+    document.querySelectorAll('.mode-tab').forEach(tab => tab.classList.toggle('active', tab.dataset.mode === mode));
+    return render();
+}
+
+function clinicRetryLegacyMode() {
+    if (!state.payload || typeof state.payload !== 'object') return clinicRetryFailedMode();
+    const mode = isQrSolutionMode() ? 'review' : (clinicFailedMode || state.mode || 'exam');
+    const url = new URL(location.href);
+    url.searchParams.set('runtime', 'legacy');
+    url.searchParams.set('mode', mode);
+    location.replace(url.href);
 }
 
 function openClinicFastPrintDialog() {
@@ -2852,10 +2900,11 @@ function enableHeaderInlineEdit() {
 }
 
 function switchMode(mode) {
-    if (window.wrongFastHost) return window.wrongFastHost.runtime.request({ type: 'MODE_CHANGE', requestedMode: isQrSolutionMode() ? 'review' : mode });
     if (isQrSolutionMode() && mode !== 'review') {
         mode = 'review';
     }
+    clinicRequestedMode = mode;
+    if (window.wrongFastHost) return window.wrongFastHost.runtime.request({ type: 'MODE_CHANGE', requestedMode: mode });
     state.mode = mode;
     document.querySelectorAll('.mode-tab').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
     render();
@@ -3083,6 +3132,8 @@ return { state,
     markClinicReadiness,
     failClinicReadiness,
     clinicSafePrint,
+    clinicRetryFailedMode,
+    clinicRetryLegacyMode,
     setClinicRenderStatus,
     trackClinicRenderRequest,
     openClinicFastPrintDialog,
