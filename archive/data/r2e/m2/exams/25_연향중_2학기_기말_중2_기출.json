@@ -84,8 +84,8 @@
   "cohortHoldBatchStatus": "CLASSIFIED",
   "upperModelPendingCount": 0,
   "releaseGate": "PASS",
-  "finalStatus": "R2E_FINAL",
-  "productionCommit": null,
+  "finalStatus": "R2E_MAIN_FINAL",
+  "productionCommit": "303eafdd85a901ac9ee636a16ecf7eea522b5678",
   "productionFileAllowlist": [
     {
       "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
@@ -135,7 +135,7 @@
   ],
   "productionAllowlistFileCount": 9,
   "missingMainAssetCount": 8,
-  "mainFinalParityStatus": "PENDING",
+  "mainFinalParityStatus": "PASS",
   "artifactRefs": [
     {
       "path": "archive/data/r2e/m2/runs/r2e-20260928-150024-cebe350f/HOLD_INVENTORY_CLASSIFIED.json",
@@ -149,5 +149,9 @@
       "path": "archive/data/r2e/m2/runs/r2e-20260928-150024-cebe350f/gates/25_연향중_2학기_기말_중2_기출.repair-release-gate.json",
       "sha256": "d99937e5bfacfc91caa302b6393003d53be0dd57ce6fad8d2680d3b5c6514f99"
     }
-  ]
+  ],
+  "productionCommitParent": "9573ca2dbbf20752b680d8f8ff857d23efa8b87d",
+  "remoteMainSha": "9a955143a4d636c69c4aa27430459f513d03879d",
+  "mainParityReport": "r2e-20260928-150024-cebe350f/MAIN_PARITY_25_연향중_2학기_기말_중2_기출.json",
+  "mainFinalAtUtc": "2026-09-28T07:54:45.714Z"
 }

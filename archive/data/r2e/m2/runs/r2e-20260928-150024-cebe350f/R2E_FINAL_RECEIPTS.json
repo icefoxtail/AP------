@@ -26,7 +26,7 @@
   "releaseBlockingRemaining": 0,
   "holdBatchStatus": "CLASSIFIED",
   "upperModelPendingCount": 0,
-  "productionCommitCount": 2,
+  "productionCommitCount": 3,
   "examReceipts": [
     {
       "schemaVersion": "JS_ARCHIVE_R2E_FINAL_RECEIPT_v2",
@@ -347,8 +347,8 @@
       "cohortHoldBatchStatus": "CLASSIFIED",
       "upperModelPendingCount": 0,
       "releaseGate": "PASS",
-      "finalStatus": "R2E_FINAL",
-      "productionCommit": null,
+      "finalStatus": "R2E_MAIN_FINAL",
+      "productionCommit": "303eafdd85a901ac9ee636a16ecf7eea522b5678",
       "productionFileAllowlist": [
         {
           "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
@@ -398,7 +398,11 @@
       ],
       "productionAllowlistFileCount": 9,
       "missingMainAssetCount": 8,
-      "mainFinalParityStatus": "PENDING"
+      "mainFinalParityStatus": "PASS",
+      "productionCommitParent": "9573ca2dbbf20752b680d8f8ff857d23efa8b87d",
+      "remoteMainSha": "9a955143a4d636c69c4aa27430459f513d03879d",
+      "mainParityReportPath": "r2e-20260928-150024-cebe350f/MAIN_PARITY_25_연향중_2학기_기말_중2_기출.json",
+      "mainFinalAtUtc": "2026-09-28T07:54:45.714Z"
     },
     {
       "schemaVersion": "JS_ARCHIVE_R2E_FINAL_RECEIPT_v2",
@@ -876,8 +880,8 @@
       "mainFinalParityStatus": "PENDING"
     }
   ],
-  "r2eMainFinalCount": 2,
-  "currentRemoteMainSha": "b5d5a4d4153f0fee608b560b890daef0f6bb8cef",
+  "r2eMainFinalCount": 3,
+  "currentRemoteMainSha": "9a955143a4d636c69c4aa27430459f513d03879d",
   "productionCommits": [
     {
       "examUid": "25_삼산중_2학기_기말_중2_기출",
@@ -887,6 +891,11 @@
     {
       "examUid": "25_삼산중_2학기_중간_중2_수학",
       "commit": "b5d5a4d4153f0fee608b560b890daef0f6bb8cef",
+      "parityStatus": "PASS"
+    },
+    {
+      "examUid": "25_연향중_2학기_기말_중2_기출",
+      "commit": "303eafdd85a901ac9ee636a16ecf7eea522b5678",
       "parityStatus": "PASS"
     }
   ],
