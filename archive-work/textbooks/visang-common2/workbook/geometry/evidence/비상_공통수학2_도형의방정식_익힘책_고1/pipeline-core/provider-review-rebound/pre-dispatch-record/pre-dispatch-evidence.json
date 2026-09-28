@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_EXECUTION_FAILURE_EVIDENCE_v1",
+  "status": "FAILED",
+  "workBatchId": "visang-workbook-geometry-20260929-rebound",
+  "launchId": "visang-workbook-geometry-20260929-rebound:1",
+  "externalId": "01a0e988-5838-7341-acb5-ed21be207217",
+  "provider": "CodexAppServer",
+  "model": "gpt-6-luna/max",
+  "phase": null,
+  "failureCode": "STALE_FILE_DOCS_RULES_MANIFEST",
+  "error": "Local cancellation before provider task/model turn: latest-main merge changed docs/rules/MANIFEST.md bytes bound by the frozen run.",
+  "preDispatchFailure": true,
+  "modelInvocationCount": 0,
+  "semanticEvidenceCount": 0,
+  "responseReturned": false,
+  "responseAttestationReturned": false,
+  "evidenceReturned": false,
+  "independentAgentLaunchCount": 0,
+  "expensiveAgentLaunchCount": 0,
+  "concurrentExpensiveAgentPeak": 0,
+  "recursiveSubagentLaunchCount": 0,
+  "localCancellationCorrelationId": "local-cancel:visang-workbook-geometry-20260929-rebound:main-manifest-stale-20260929",
+  "freezeSha": "sha256:c7d40739019c7a045ab5567984f030de48d14cfb1d900a83eaa515d3cae5aa8b",
+  "runId": "visang-workbook-geometry-20260929-rebound-run",
+  "runInputSha": "sha256:0e97da22cf5a653776f336b8ad2a5f3a42d5afc76bfc6b675182aeaa7daec9a5",
+  "planRef": {
+    "path": "alive/runtime/provider-bridge/visang-workbook-geometry-20260929-rebound/preflight-plan.json",
+    "bytes": 9547,
+    "sha256": "sha256:003456435e3d0962796a7bb54dcb778fd70fa2e76132fbbd59db1dece38fc304"
+  },
+  "staleInput": {
+    "path": "docs/rules/MANIFEST.md",
+    "boundBytes": 6173,
+    "boundSha256": "sha256:701e5bffc134b12b702c7130ba5d315c9b1521fb0cd6ddd1aefa0f20fc423595",
+    "currentBytes": 6472,
+    "currentSha256": "sha256:80e8de107a0d36df352a5cedbf2d2bfbef1aa015b10ec80947c399d44c851aaa"
+  },
+  "observedAt": "2026-09-28T20:00:36.241Z"
+}

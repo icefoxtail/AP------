@@ -1,0 +1,65 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileRef, objectSha } from '../../../../../../../archive/tools/pipeline-core/canonical.mjs';
+
+const root = process.cwd();
+const output = 'archive-work/textbooks/visang-common2/workbook/geometry/evidence/비상_공통수학2_도형의방정식_익힘책_고1/golden_sample_calibration_refs.json';
+const refs = relative => fileRef(root, relative);
+const golden = [
+  {
+    exam: '2025 매산여고 고1 2학기 중간',
+    questionNumbers: [4],
+    sourceRef: refs('archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js'),
+    solutionImageRefs: [],
+    axes: ['중간식 재현 가능성', '수직 기울기 관계', '점-직선 거리', '절댓값 조건분기'],
+    observation: '기울기 변환, 거리 공식 대입, 절댓값의 두 경우, b>0 적용까지 학생이 따라갈 수 있게 단계를 모두 적는다.',
+  },
+  {
+    exam: '2025 효천고 고1 2학기 중간',
+    questionNumbers: [4],
+    sourceRef: refs('archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js'),
+    solutionImageRefs: [refs('archive/assets/images/25_효천고_2학기_중간_고1_기출/q04-solution.svg')],
+    axes: ['원과 접선', '중심에서 직선까지의 거리', '부호 두 경우', '학생 풀이와 SVG 대응'],
+    observation: '접선 판정을 중심-직선 거리로 설명하고, 두 부호 경우에서 접점 위치와 최종 길이로 이어지는 이유를 보인다.',
+  },
+  {
+    exam: '2025 순천여고 고1 2학기 중간',
+    questionNumbers: [6, 7],
+    sourceRef: refs('archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js'),
+    solutionImageRefs: [
+      refs('archive/assets/images/25_순천여고_2학기_중간_고1_기출/q06-solution.svg'),
+      refs('archive/assets/images/25_순천여고_2학기_중간_고1_기출/q07-solution.svg'),
+    ],
+    axes: ['축 대칭 최단거리', '등호가 실제로 성립하는 교점', '직선 대칭 후 중심-직선 거리', '기하 주장과 SVG 좌표 일치'],
+    observation: '최단거리 하한에 더해 등호를 만드는 실제 교점 조건을 확인하고, 대칭이동 뒤 접선 판정을 동일한 거리 원리로 마무리한다.',
+  },
+];
+const negativeDirectory = 'archive/fixtures/visual-negative-regressions/2026-09-28';
+const negative = [
+  {
+    sourceRef: refs(`${negativeDirectory}/02_25_삼산중_2학기_기말_중2_기출_q12_LABEL_COLLISION_FAIL.svg`),
+    axis: 'LABEL_COLLISION',
+    defect: 'E/F 점 표지와 변 길이 표지가 실제 렌더에서 충돌한다.',
+  },
+  {
+    sourceRef: refs(`${negativeDirectory}/04_25_삼산중_2학기_중간_중2_수학_q24_COORDINATE_SEMANTIC_FAIL.svg`),
+    axis: 'COORDINATE_SEMANTIC_PARITY',
+    defect: '외심/수직이등분선 문장과 실제 SVG 좌표 기하가 일치하지 않는다.',
+  },
+];
+const calibration = {
+  schemaVersion: 'APMATH_GOLDEN_SAMPLE_CALIBRATION_v1',
+  status: 'PASS',
+  taskScope: '비상 공통수학Ⅱ 도형의 방정식 익힘책 — 14문항 해설·SVG 및 독립 검수 준비',
+  sampleReadBeforeWork: true,
+  negativeSampleReadBeforeWork: false,
+  blindDecisionFrozenBeforeCompare: 'NOT_APPLICABLE: sample review was used for authoring quality calibration; independent U1/U2/U3 packets contain no golden or negative sample payloads.',
+  calibrationAxes: ['학생 재현 가능성', '도형의 방정식 단원 방법', '해설과 SVG의 대응', 'label collision', 'coordinate semantic parity'],
+  goldenSampleRefs: golden,
+  negativeSampleRefs: negative,
+  negativeRegistryRef: refs(`${negativeDirectory}/README.md`),
+  note: 'Three latest high-school grade 1 samples were used for relevant solution and visual quality axes. Two frozen negative fixtures cover label collision and coordinate/claim mismatch. These references calibrate presentation and regression checks only; they do not provide answer or solution authority for the workbook items.',
+};
+calibration.calibrationSha = objectSha(calibration);
+fs.writeFileSync(path.join(root, output), `${JSON.stringify(calibration, null, 2)}\n`);
+console.log(JSON.stringify({ output, goldenSamples: golden.length, questionExamples: golden.reduce((sum, item) => sum + item.questionNumbers.length, 0), negativeSamples: negative.length, calibrationSha: calibration.calibrationSha }, null, 2));
