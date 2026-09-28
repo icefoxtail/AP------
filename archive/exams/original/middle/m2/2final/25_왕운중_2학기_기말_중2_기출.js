@@ -681,7 +681,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형"
     ],
