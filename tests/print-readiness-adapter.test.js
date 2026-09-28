@@ -23,8 +23,9 @@ test('all three adapters load the shared readiness tracker without collapsing tr
   assert.match(mixer, /safePrint\('vector'\)/);
   assert.match(archive, /APNativePrint\.printGdi/);
   assert.match(mixer, /APNativePrint\.printGdi/);
-  assert.match(clinic, /async function clinicSafePrint\(\)/);
-  assert.match(clinic, /transport: 'browser'/);
+  assert.match(clinic, /async function clinicSafePrint\(transport = 'browser'\)/);
+  assert.match(clinic, /APNativePrint\.printGdi/);
+  assert.match(clinic, /markClinicReadiness\('PRINT_READY', \{ transport,/);
 });
 
 test('adapters record success-only RENDER_READY and reject incomplete render/image transactions before PRINT_READY', () => {
