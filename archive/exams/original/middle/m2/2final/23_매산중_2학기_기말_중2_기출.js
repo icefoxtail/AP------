@@ -30,7 +30,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 2,
@@ -61,7 +70,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -89,10 +107,19 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 무게중심은 중선을 꼭짓점에서 $2:1$로 나눈다.\n$G$는 $\\triangle ABC$의 무게중심이므로 $AG:GM=2:1$이다. 따라서 $GM=36\\times\\dfrac13=12\\,\\mathrm{cm}$이고 $AG=24\\,\\mathrm{cm}$이다.\n$G'$은 $\\triangle GBC$의 무게중심이고 $M$은 $\\overline{BC}$의 중점이므로 $GG':G'M=2:1$이다. 따라서 $GG'=12\\times\\dfrac23=8\\,\\mathrm{cm}$이다.\n그러므로 $AG'=AG+GG'=24+8=32\\,\\mathrm{cm}$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q3.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "",
+    "subUnit": "삼각형의 무게중심",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -123,7 +150,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
@@ -149,12 +185,21 @@ window.questionBank = [
       "$\\dfrac72$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 중점 연결 정리를 두 번 적용하여 $x$, $y$를 차례로 구한다.\n그림에서 $BE=EG=GA$이고 $BD=DC$이므로, $\\triangle BGC$에서 $E$, $D$는 각각 $\\overline{BG}$, $\\overline{BC}$의 중점이다.\n따라서 $ED\\parallel GC$이고 $GC=2ED=4\\,\\mathrm{cm}$이므로 $x=4$이다.\n또 $E,D,F$가 한 직선 위에 있으므로 $EF\\parallel GC$이다. $\\triangle AEF$에서 $G$는 $\\overline{AE}$의 중점이므로 $C$는 $\\overline{AF}$의 중점이고 $GC=\\dfrac12EF$이다.\n따라서 $EF=8\\,\\mathrm{cm}$이고 $DF=EF-DE=8-2=6\\,\\mathrm{cm}$이므로 $y=6$이다.\n그러므로 $\\dfrac{y}{x}=\\dfrac{6}{4}=\\dfrac32$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 중점 연결 정리를 두 번 적용하여 $x$, $y$를 차례로 구한다.\n그림에서 $BE=EG=GA$이고 $BD=DC$이므로, $\\triangle BGC$에서 $E$, $D$는 각각 $\\overline{BG}$, $\\overline{BC}$의 중점이다.\n따라서 $ED\\parallel GC$이고 $GC=2ED=4\\,\\mathrm{cm}$이므로 $x=4$이다.\n또 $E,D,F$가 한 직선 위에 있으므로 $EF\\parallel GC$이다. $\\triangle AEF$에서 $G$는 $\\overline{AE}$의 중점이고, $G$를 지나 $EF$에 평행한 직선이 $\\overline{AF}$와 $C$에서 만난다. 따라서 $C$는 $\\overline{AF}$의 중점이고 $GC=\\dfrac12EF$이다.\n따라서 $EF=8\\,\\mathrm{cm}$이고 $DF=EF-DE=8-2=6\\,\\mathrm{cm}$이므로 $y=6$이다.\n그러므로 $\\dfrac{y}{x}=\\dfrac{6}{4}=\\dfrac32$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q5.png",
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 6,
@@ -185,7 +230,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+    "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 7,
@@ -216,7 +270,16 @@ window.questionBank = [
     "subUnitKey": "M2-06-SIMILAR_FIGURE",
     "subUnit": "도형의 닮음",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_SIMILAR_FIGURES",
+    "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 8,
@@ -242,11 +305,20 @@ window.questionBank = [
       "$9,\\ 12,\\ 15$"
     ],
     "answer": "②, ③",
-    "solution": "[키포인트] 가장 긴 변의 제곱과 나머지 두 변의 제곱의 합을 비교한다.\n① $3^2+4^2=25=5^2$이므로 직각삼각형이다.\n② $4^2+5^2=41\\ne 6^2$이므로 직각삼각형이 아니다.\n③ $5^2+6^2=61\\ne 8^2$이므로 직각삼각형이 아니다.\n④ $6^2+8^2=100=10^2$, ⑤ $9^2+12^2=225=15^2$이므로 둘 다 직각삼각형이다.\n따라서 정답은 ②, ③이다.",
+    "solution": "[키포인트] 가장 긴 변의 제곱과 나머지 두 변의 제곱의 합을 비교한다.\n① $3^2+4^2=25=5^2$이므로 직각삼각형이다.\n② $4^2+5^2=41\\ne 6^2$이므로 직각삼각형이 아니다.\n③ $5^2+6^2=61\\ne 8^2$이므로 직각삼각형이 아니다.\n④ $6^2+8^2=100=10^2$이므로 직각삼각형이다.\n⑤ $9^2+12^2=225=15^2$이므로 직각삼각형이다.\n따라서 정답은 ②, ③이다.",
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 9,
@@ -277,7 +349,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 10,
@@ -308,7 +389,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 11,
@@ -339,7 +429,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 12,
@@ -370,7 +469,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
     "subUnit": "피타고라스 정리",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 13,
@@ -378,9 +486,9 @@ window.questionBank = [
     "category": "피타고라스 정리",
     "originalCategory": "피타고라스 정리",
     "standardCourse": "중2 수학",
-    "standardUnitKey": "M2-07",
-    "standardUnit": "피타고라스 정리",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "M2-06",
+    "standardUnit": "도형의 닮음",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -396,12 +504,23 @@ window.questionBank = [
       "$\\dfrac{15}{2}\\,\\mathrm{cm}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 먼저 두 정사각형의 한 변의 길이를 구하고 닮음을 이용한다.\n정사각형 $ABCD$의 한 변은 $6\\,\\mathrm{cm}$, 정사각형 $GCEF$의 한 변은 $2\\,\\mathrm{cm}$이다. 따라서 $AB=6$, $BE=BC+CE=8$이다.\n직각삼각형 $ABE$에서 $AE=\\sqrt{6^2+8^2}=10\\,\\mathrm{cm}$이다.\n$CH\\parallel AB$이고 $\\angle CEH=\\angle BEA$이므로 $\\triangle ECH\\sim\\triangle EBA$이다.\n닮음비는 $EC:EB=2:8=1:4$이므로 $EH:EA=1:4$, 따라서 $EH=\\dfrac{10}{4}=\\dfrac52\\,\\mathrm{cm}$이다.\n그러므로 $AH=AE-EH=10-\\dfrac52=\\dfrac{15}{2}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 먼저 두 정사각형의 한 변의 길이를 구하고 닮음을 이용한다.\n정사각형 $ABCD$의 한 변은 $6\\,\\mathrm{cm}$, 정사각형 $GCEF$의 한 변은 $2\\,\\mathrm{cm}$이다. 따라서 $AB=6$, $BE=BC+CE=8$이다.\n직각삼각형 $ABE$에서 $6^2+8^2=10^2$이므로 피타고라스 정리에 따라 $AE=10\\,\\mathrm{cm}$이다.\n$CH\\parallel AB$이고 $\\angle CEH=\\angle BEA$이므로 $\\triangle ECH\\sim\\triangle EBA$이다.\n닮음비는 $EC:EB=2:8=1:4$이므로 $EH:EA=1:4$, 따라서 $EH=\\dfrac{10}{4}=\\dfrac52\\,\\mathrm{cm}$이다.\n그러므로 $AH=AE-EH=10-\\dfrac52=\\dfrac{15}{2}\\,\\mathrm{cm}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q13.png",
-    "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
-    "subUnit": "피타고라스 정리의 활용",
+    "subUnitKey": "M2-06-SIMILAR_FIGURE",
+    "subUnit": "닮은 도형",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+    "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 14,
@@ -432,7 +551,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 15,
@@ -460,7 +588,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 16,
@@ -488,10 +625,19 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 세 자리 자연수이므로 백의 자리에는 $0$이 올 수 없다.\n백의 자리에는 $1,2,3,4$ 중 하나가 오므로 $4$가지이다.\n백의 자리를 정한 뒤 십의 자리는 남은 $4$장 중 하나, 일의 자리는 다시 남은 $3$장 중 하나를 고른다.\n따라서 만들 수 있는 세 자리 자연수의 개수는 $4\\times4\\times3=48$개이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q16.png",
-    "subUnitKey": "M2-08-PROBABILITY_BASIC",
-    "subUnit": "확률의 뜻과 성질",
+    "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+    "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 17,
@@ -515,11 +661,20 @@ window.questionBank = [
       "절대로 일어나지 않는 사건의 확률은 $0$이다."
     ],
     "answer": "②",
-    "solution": "[키포인트] 확률의 범위에는 $0$과 $1$도 포함된다는 점을 확인한다.\n확률 $p$는 항상 $0\\le p\\le 1$이다. 사건이 절대로 일어나지 않으면 $p=0$, 반드시 일어나면 $p=1$이 될 수 있다.\n따라서 ②의 $0\\lt p\\lt 1$은 $p=0$과 $p=1$인 경우를 제외하므로 옳지 않다.\n①은 모든 경우가 같은 가능성일 때의 확률 정의이고, ③은 여사건의 확률, ④와 ⑤는 각각 반드시 일어나는 사건과 절대로 일어나지 않는 사건의 확률이므로 모두 옳다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 확률의 범위에는 $0$과 $1$도 포함된다는 점을 확인한다.\n확률 $p$는 항상 $0\\le p\\le 1$이다. 사건이 절대로 일어나지 않으면 $p=0$, 반드시 일어나면 $p=1$이 될 수 있다.\n따라서 ②의 $0\\lt p\\lt 1$은 $p=0$과 $p=1$인 경우를 제외하므로 옳지 않다.\n① 모든 경우가 같은 가능성일 때의 확률 정의이므로 옳다.\n③ 여사건의 확률에 대한 설명이므로 옳다.\n④ 반드시 일어나는 사건의 확률은 $1$이므로 옳다.\n⑤ 절대로 일어나지 않는 사건의 확률은 $0$이므로 옳다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 18,
@@ -547,7 +702,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 19,
@@ -575,7 +739,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 20,
@@ -606,7 +779,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 21,
@@ -627,12 +809,23 @@ window.questionBank = [
     "content": "[서답형 1][서술형]\n[수준별 1-①] 다음 그림에서 점 $G$는 삼각형 $ABC$의 무게중심이다. 삼각형 $GDC$의 넓이가 $3\\,\\mathrm{cm}^2$일 때, 삼각형 $ABC$의 넓이를 구하는 풀이과정과 답을 쓰시오. (4점)\n[수준별 1-②] 다음 그림에서 점 $G$와 $G'$는 삼각형 $ABD$와 삼각형 $ADC$의 무게중심이고 $\\overline{BD}:\\overline{DC}=3:2$일 때, 삼각형 $AGG'$의 넓이를 구하는 풀이과정과 답을 쓰시오. (5점)",
     "choices": [],
     "answer": "① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$",
-    "solution": "[키포인트] ① 무게중심이 만드는 작은 삼각형들의 넓이 관계, ② 중점 연결 정리와 무게중심의 $2:1$ 성질을 이용한다.\n① 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나눈다. $\\triangle GDC$의 넓이가 $3\\,\\mathrm{cm}^2$이므로 $\\triangle ABC$의 넓이는 $3\\times6=18\\,\\mathrm{cm}^2$이다.\n② 그림에서 $AB=15$, $AC=20$, $BC=25$이므로 $15^2+20^2=25^2$이다. 따라서 $\\angle A=90^\\circ$이고 $[\\triangle ABC]=\\dfrac12\\times15\\times20=150$이다.\n$M$, $N$을 각각 $\\overline{BD}$, $\\overline{DC}$의 중점이라 하자. 그러면 $MN=\\dfrac12BC$이고 $[\\triangle AMN]=\\dfrac12[\\triangle ABC]=75$이다.\n$G$, $G'$은 각각 $\\triangle ABD$, $\\triangle ADC$의 무게중심이므로 $AG:AM=AG':AN=2:3$이다. 따라서 $\\triangle AGG'\\sim\\triangle AMN$이고 닮음비는 $2:3$이다.\n그러므로 $[\\triangle AGG']=75\\times\\left(\\dfrac23\\right)^2=\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 값은 ① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.",
+    "solution": "[키포인트] ① 무게중심이 만드는 작은 삼각형들의 넓이 관계, ② 각 선분의 중점과 무게중심의 $2:1$ 성질을 이용한다.\n① 세 중선은 삼각형을 넓이가 같은 $6$개의 작은 삼각형으로 나눈다. $\\triangle GDC$의 넓이가 $3\\,\\mathrm{cm}^2$이므로 $\\triangle ABC$의 넓이는 $3\\times6=18\\,\\mathrm{cm}^2$이다.\n② 그림에서 $AB=15$, $AC=20$, $BC=25$이므로 $15^2+20^2=25^2$이다. 따라서 $\\angle A=90^\\circ$이고 $[\\triangle ABC]=\\dfrac12\\times15\\times20=150$이다.\n$M$, $N$을 각각 $\\overline{BD}$, $\\overline{DC}$의 중점이라 하자.\n$MN=MD+DN=\\dfrac12BD+\\dfrac12DC=\\dfrac12BC=\\dfrac{25}{2}$이다.\n$M$, $N$은 $\\overline{BC}$ 위에 있으므로 $[\\triangle AMN]=\\dfrac{MN}{BC}[\\triangle ABC]=\\dfrac12\\times150=75$이다.\n$G$, $G'$은 각각 $\\triangle ABD$, $\\triangle ADC$의 무게중심이므로 $AG:AM=AG':AN=2:3$이다. 따라서 $\\triangle AGG'\\sim\\triangle AMN$이고 닮음비는 $2:3$이다.\n그러므로 $[\\triangle AGG']=75\\times\\left(\\dfrac23\\right)^2=\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.\n따라서 구하는 값은 ① $18\\,\\mathrm{cm}^2$, ② $\\dfrac{100}{3}\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q21.png",
-    "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
-    "subUnit": "평행선 사이의 선분의 길이의 비",
+    "subUnitKey": "",
+    "subUnit": "삼각형의 무게중심",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [
+      "CC_PYTHAGOREAN"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 22,
@@ -658,7 +851,16 @@ window.questionBank = [
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 23,
@@ -682,7 +884,16 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_COUNTING",
     "subUnit": "경우의 수와 확률",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 24,
@@ -709,6 +920,15 @@ window.questionBank = [
     "subUnitKey": "M2-08-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "",
+    "templateKey": "",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL"
   }
 ];
