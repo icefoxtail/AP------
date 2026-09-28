@@ -1,0 +1,94 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW2_EVIDENCE_v1",
+  "examFile": "24_연향중_2학기_중간_중2_수학.js",
+  "examUid": "24_연향중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "inventoryOrdinal": 40,
+  "legacyResetInventoryOrdinal": 12,
+  "reviewLane": "REVIEW2-1",
+  "disposition": "PASS",
+  "stage": "REVIEW2_DONE",
+  "nextState": "READY_FOR_COMMIT",
+  "sourceAuthority": {
+    "ref": "work/rebuild/m2-full-20260928-source",
+    "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858"
+  },
+  "reviewInputAuthority": {
+    "ref": "work/intake/m2",
+    "stageReceiptBlobSha": "43e6427ae5e7fe5133947dae3a15c61e837bb689",
+    "reviewCandidateHead": "98dfa137bca89e93afdc01e367e6fadb134e4de0"
+  },
+  "workBranch": "work/middle/m2/24-yeonhyang-2mid",
+  "artifact": {
+    "examPath": "archive/exams/original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+    "jsBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+    "frozenSourceJsBlobSha": "6a96cbd5c2671c61a63b0e964777ec6d6ac3369d",
+    "exactJsByteParity": true,
+    "mainAtReview": "14ff950d4a76104d10950494aa05c7dc894624cc"
+  },
+  "denominator": 23,
+  "coverage": {
+    "sourceContentChoicesAnswer": "23/23 PASS",
+    "math": "23/23 PASS",
+    "solutionReproducibility": "23/23 PASS",
+    "smallBoard": "23/23 PASS",
+    "curriculumStudentLanguage": "23/23 PASS",
+    "microLayout": "23/23 PASS",
+    "jsIntegrity": "23/23 PASS",
+    "problemImages": "21/21 SOURCE_BLOB_EXACT + VISUAL_PASS",
+    "solutionImages": "12/12 CODE_FIRST_PASS"
+  },
+  "integrity": {
+    "questionCount": 23,
+    "idsSequential": true,
+    "uniqueIds": 23,
+    "questionTypes": {"objective": 20, "subjective": 3},
+    "layoutTag": {"grid": 23, "other": 0},
+    "parseStatus": "PASS"
+  },
+  "problemImageBlobParity": {
+    "q01":"9fcf3d3970c3c9f7541cfb03a28b1fff74c584cf","q02":"fd1f4b906e2a1a082721d15359691cd618b5397a","q03":"86b5456976502d0c45efee56af2b94ea620839f4","q04":"ba964a2ca0c255adfc9a0075c49a9d3ac18a9214","q05":"e488df3006b46f2a696232137db4148ac84c5f10","q06":"ec8f072ae813d912bd88f52848a0fbadc2155c8a","q07":"4bff7cec92729a830f96924d771b38ac3921d6d7","q08":"16d331605ae20b05b72845814255084c43f21ea8","q09":"e2acdc4cf16ee1355403b1a82ba44d7d183d4106","q10":"b3b6f042bf54b71023d872b8a056249d21703160","q12":"df80b3e61c1f859a77e1ca9219e4339ceb993a88","q13":"a1de0bf26b9bc968086b6faecc7e802d1a523c9b","q14":"41e710c0a4555dd6d5e5120e9efbe0013af56f2a","q16":"b631718e8c5eb39915da984eb09eb50cc4f6a0a0","q17":"7ae074cd74f82a630b8acb8fb525ea55901ac2bc","q18":"af600a3cf0feaeb5ae1bd3ba56a527e3a36d7496","q19":"f07a7409535f58fbfcf361089c2fd82651d18d02","q20":"5788bd0314cc778a71eefdbc4fc68a277c6a3035","q21":"e9be24a2b2bcf88a3d460a0aadbabb3b4040be0f","q22":"16295690d6f08ff963cd16355ca4d78ec1f81dae","q23":"8bd1b949203af1d0657ae6f97f173ff87f08b9d8"
+  },
+  "solutionSvgCodeFirst": {
+    "q02":"501cb2268009c8e7bf8ef5cdc615c08d297c452a","q09":"fa061a9b61b4eec02234a5ab4c262e2d1a43e616","q12":"f4e8e43b09d022697c09ffbd21dc7b8b638482ca","q13":"8a99a19afc1a62358627a9c9429a11017eda664a","q14":"9e95243b77c174064d4408b3dc5f413fbb0bbd44","q16":"2320fbcfeeb9a5f18f1a141aa346c02e9b85ac9d","q17":"9eff246d62039458dfdd2fe42c8fc5b362177475","q19":"8d43cd9980bc052075806db63a3b92165fa9adbe","q20":"29698f364167c01f5086388d713dc2e272b7ef9c","q21":"175d1c4c8a829c6e39dfb96822cc07890a3ea82e","q22":"c439bb5a0352185fba5f99dd77835c63d572a580","q23":"ef576d66d669a3ec610b639310032e9fa5a16bf6"
+  },
+  "questionPass": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+  "complexMathChecks": {
+    "q04":"incenter + DE parallel BC; only BI=CI is false; ADE perimeter 24",
+    "q09":"ABE~FCE, midpoint E gives 1:1 and DF=12",
+    "q13":"OCD=15 and equal-area trapezoid decomposition gives AOB=15",
+    "q19":"MQN is 1/8 of the parallelogram, so total=48",
+    "q20":"fold equidistance + BDE~CEF gives AF=21/2",
+    "q21":"RHS congruence then 45-45-90 gives DB+DE=8",
+    "q22":"ASA congruence makes overlap area triangle OBC=9",
+    "q23":"AA similarity 5:3 gives CD=36/5"
+  },
+  "layoutReview": {
+    "status": "PASS",
+    "subjectiveQuestions": [21,22,23],
+    "subjective2upDecision": "KEEP_GRID",
+    "reason": "Static writing-space insufficiency is not established; type/length/subquestion/image alone cannot trigger 2up.",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "calibration": {
+    "goldenSampleRefs": [
+      "25_매산여고_2학기_중간_고1_기출 q7-q9",
+      "25_효천고_2학기_중간_고1_기출 q2-q6",
+      "25_순천여고_2학기_중간_고1_기출 q6-q9"
+    ],
+    "negativeSampleRefs": [
+      "01_24_신흥중_2학기_중간_중2_수학_q5_ANGLE_LABEL_OWNER_BINDING_FAIL.svg",
+      "02_25_삼산중_2학기_기말_중2_기출_q12_LABEL_COLLISION_FAIL.svg"
+    ],
+    "calibrationAxes": ["small-board reproducibility","student-language density","SVG label ownership","SVG collision/clipping","evidence-final-SHA binding"],
+    "sampleReadBeforeWork": false,
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS"
+  },
+  "modifications": {"r2QuestionChanges":[],"r2JsChanges":[],"r2SvgChanges":[],"r2ProblemImageChanges":[]},
+  "unresolvedItems": [],
+  "holdBox": [],
+  "metaReviewStatus": "OUT_OF_SCOPE_INHERITED",
+  "finalStatus": "REVIEW2_DONE",
+  "readyForCommit": true
+}
