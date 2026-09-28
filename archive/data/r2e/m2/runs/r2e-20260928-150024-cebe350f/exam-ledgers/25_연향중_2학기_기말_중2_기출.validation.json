@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "R2E_REPAIR_RELEASE_VALIDATION_v2",
+  "runId": "r2e-20260928-150024-cebe350f",
+  "examUid": "25_연향중_2학기_기말_중2_기출",
+  "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5",
+  "artifactSha256": "b7b1b77964704543e794d1363ee79978a686fbcae0f31563a99917cb51d597e1",
+  "gates": {
+    "fastIntegrity": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "tmp/r2e-20260928-150024-cebe350f/evidence/fast-integrity.json",
+        "sha256": "2bd6cb7edf02efe9eb65ad595a073bc44150c6c59f83cd88eacbf2c202963f83",
+        "role": "R2E_FAST_INTEGRITY"
+      }
+    },
+    "r1ReadOnlyAuthority": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "tmp/r2e-20260928-150024-cebe350f/evidence/R1_AUTHORITY_EVIDENCE.json",
+        "sha256": "06b493bc00f3389c2e2bdc79b606958e87ce9e1fcfa33b89d0d84bf30d03bec8",
+        "role": "R2E_R1_READ_ONLY_AUTHORITY"
+      }
+    },
+    "holdInventoryCoverage": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "tmp/r2e-20260928-150024-cebe350f/evidence/HOLD_INVENTORY_CLASSIFIED.json",
+        "sha256": "18446d1ac12682530f882b1e622d8442aa368e7a561adced09af71f32db4f1d3",
+        "role": "R2E_CLASSIFIED_HOLD_INVENTORY"
+      }
+    },
+    "protectedParity": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "tmp/r2e-20260928-150024-cebe350f/evidence/fast-integrity.json",
+        "sha256": "2bd6cb7edf02efe9eb65ad595a073bc44150c6c59f83cd88eacbf2c202963f83",
+        "role": "R2E_FAST_INTEGRITY"
+      }
+    },
+    "targetedMath": {
+      "status": "PASS",
+      "evidenceRef": {
+        "path": "tmp/r2e-20260928-150024-cebe350f/evidence/TARGETED_MATH_VERIFICATION.json",
+        "sha256": "670dd9c036e263738b0204b43feffb19124d9e1f8c029c10e896c7dc041156e8",
+        "role": "R2E_TARGETED_MATH_VERIFICATION"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+      "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+      "role": "R2E_SEMANTIC_FIRST_PASS"
+    },
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+      "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+      "role": "R2E_CURRENT_RPM_LOOKUP"
+    },
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SOLUTION_REPAIR_REPORT.json",
+      "sha256": "82255a56a34d3154b8dacb3a18063a69e368304b36200cdf21d7e96462765fef",
+      "role": "R2E_TARGETED_SOLUTION_REPAIR"
+    },
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/R1_AUTHORITY_EVIDENCE.json",
+      "sha256": "06b493bc00f3389c2e2bdc79b606958e87ce9e1fcfa33b89d0d84bf30d03bec8",
+      "role": "R2E_R1_READ_ONLY_AUTHORITY"
+    },
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/fast-integrity.json",
+      "sha256": "2bd6cb7edf02efe9eb65ad595a073bc44150c6c59f83cd88eacbf2c202963f83",
+      "role": "R2E_FAST_INTEGRITY"
+    },
+    {
+      "path": "tmp/r2e-20260928-150024-cebe350f/evidence/HOLD_INVENTORY_CLASSIFIED.json",
+      "sha256": "18446d1ac12682530f882b1e622d8442aa368e7a561adced09af71f32db4f1d3",
+      "role": "R2E_CLASSIFIED_HOLD_INVENTORY"
+    }
+  ]
+}

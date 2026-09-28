@@ -1,0 +1,1251 @@
+{
+  "schemaVersion": "R2E_HOLD_GROUP_DECISIONS_v2",
+  "runId": "r2e-20260928-150024-cebe350f",
+  "groups": [
+    {
+      "groupId": "grp_07b09e5e9c75f3cb4fbf",
+      "decisionId": "decision_r2e-20260928-150024-cebe350f_1",
+      "action": "META_ONLY_COMPATIBILITY_PENDING",
+      "reason": "The resolver input is absent from the frozen Meta sidecar, but source plus final solution determines the RPM Primary path for each UID. Record the current RPM/crosswalk outcome; missing projection input remains META_ONLY and is not regenerated.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+          "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+          "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+          "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+          "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+          "role": "R2E_SEMANTIC_FIRST_PASS"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+          "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+          "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+        }
+      ],
+      "selectedExistingKeys": [],
+      "uidApplications": [
+        {
+          "findingId": "hold_171d064cccfd858e249a",
+          "questionUid": "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
+          "ordinal": 4,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "두 직선과 y축이 만드는 삼각형 넓이",
+          "decisiveStep": "y절편 차 6을 밑변으로, 교점 x좌표의 절댓값 2를 높이로 하여 넓이 1/2×6×2=6을 얻는다.",
+          "rpmPrimary": "M2-RPM-058",
+          "rpmPath": {
+            "l3": "그래프 활용",
+            "l4": "넓이"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "projectionStatus": "META_ONLY_PROJECTION_UNMATERIALIZED",
+          "selectedExistingKeyCandidates": [],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_296b1820293a20ecc663",
+          "questionUid": "qid_v1_dddabee939ce84c05724506511da85d5aa9c1f8b43cf0cd212fa4c085e2f1e05",
+          "ordinal": 3,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "x축과 평행한 직선의 y좌표 불변",
+          "decisiveStep": "점 (-3,4)를 지나고 x축과 평행하므로 모든 점의 y좌표가 4이며 식은 y=4이다.",
+          "rpmPrimary": "M2-RPM-055",
+          "rpmPath": {
+            "l3": "방정식과 그래프",
+            "l4": "x축·y축에 평행한 직선"
+          },
+          "mappingStatus": "RPM_ONLY",
+          "projectionStatus": "META_ONLY_PROJECTION_UNMATERIALIZED",
+          "selectedExistingKeyCandidates": [],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_3540526b1afbd7363e71",
+          "questionUid": "qid_v1_748dd9d1390c542e32f42844160ae6e2a90e96d4fae64d1ca0df78099b5d6a21",
+          "ordinal": 2,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "기울기-절편형 변환으로 매개변수 부호 판정",
+          "decisiveStep": "y=(1/a)x+b/a에서 음의 기울기로 a<0, 양의 y절편으로 b/a>0이므로 b<0이다.",
+          "rpmPrimary": "M2-RPM-048",
+          "rpmPath": {
+            "l3": "일차함수의 그래프",
+            "l4": "기울기·절편"
+          },
+          "mappingStatus": "FAMILY_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_LINE_EQUATION",
+            "TPL_LINE_GRAPH_BY_COEFFICIENTS"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_601f4e75b92906dc04a9",
+          "questionUid": "qid_v1_9549de6dcae441fa62b29252cbe4c99d8eef48b32cf6097a2a0e5cfb7e51713a",
+          "ordinal": 23,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "두 직선의 방정식 결정 후 교점 계산",
+          "decisiveStep": "그래프에서 각 직선의 두 점을 읽어 식 y=1/2x+3, y=3x−1을 세우고 연립하여 (8/5,19/5)를 얻는다.",
+          "rpmPrimary": "M2-RPM-056",
+          "rpmPath": {
+            "l3": "두 직선의 관계",
+            "l4": "교점과 연립방정식"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_FUNCTION_GRAPH_INTERSECTION",
+            "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_871382efee744897b0c8",
+          "questionUid": "qid_v1_8de296c7b15803f43d72cc1c8f1fc64186c874c73686af201b4555313e63d363",
+          "ordinal": 1,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "평행한 직선의 기울기 비교",
+          "decisiveStep": "주어진 직선의 두 절편 (-2,0),(0,4)에서 기울기 2를 구하고 같은 기울기의 보기 ③을 고른다.",
+          "rpmPrimary": "M2-RPM-050",
+          "rpmPath": {
+            "l3": "그래프의 성질",
+            "l4": "일차함수 그래프의 평행·일치"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_LINE_RELATION",
+            "TPL_RELATION_MULTIPLE_POSITION"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_9164be33ca769b593224",
+          "questionUid": "qid_v1_1d4e83144518225ea6df3aa105afa66d2ec1b04bc8a2564eb3984ab1c3a070d3",
+          "ordinal": 5,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "두 직선의 교점으로 연립방정식 해 결정",
+          "decisiveStep": "x+y=4와 2x−y=5를 풀어 교점 (3,1)을 얻는다.",
+          "rpmPrimary": "M2-RPM-056",
+          "rpmPath": {
+            "l3": "두 직선의 관계",
+            "l4": "교점과 연립방정식"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_FUNCTION_GRAPH_INTERSECTION",
+            "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_9193e2440be82f6f010e",
+          "questionUid": "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
+          "ordinal": 17,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "평행사변형 대각선 넓이 분할과 중심대칭",
+          "decisiveStep": "대각선 교점이 만드는 네 삼각형은 각각 넓이 8이고, O 중심 180도 회전으로 대칭인 부분의 넓이를 비교한다.",
+          "rpmPrimary": "M2-RPM-073",
+          "rpmPath": {
+            "l3": "평행사변형의 성질",
+            "l4": "평행사변형의 대각선 성질"
+          },
+          "mappingStatus": "DIRECT_ACTIVE",
+          "projectionStatus": "EXISTING_PROJECTION_REUSE",
+          "selectedExistingKeyCandidates": [
+            "PT_QUADRILATERAL_PROPERTIES",
+            "TPL_QUADRILATERAL_PROPERTIES"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        },
+        {
+          "findingId": "hold_cfa0334b5047ff08e3eb",
+          "questionUid": "qid_v1_466f0b3af9ac162a98d1258879ab0c7e8bb2259f6cac9e0ca3d140261b509ff4",
+          "ordinal": 6,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_중간_중2_수학.meta.json",
+              "sha256": "17f2e0014402b7e14e8b6c9ed8a4ae08d84765ddbaae7b7f72319e6ad7d6ce8d",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "53c98cda322dd69142635fec11a965769ca385c9"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "해의 개수에 따른 두 직선 평행·일치 관계",
+          "decisiveStep": "해가 없으므로 기울기를 같게 하여 a=4를 얻고, y절편 −1/3을 2로 올리는 이동량 7/3을 구한다.",
+          "rpmPrimary": "M2-RPM-057",
+          "rpmPath": {
+            "l3": "두 직선의 관계",
+            "l4": "두 직선의 평행·일치"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_LINE_RELATION",
+            "TPL_RELATION_MULTIPLE_POSITION"
+          ],
+          "groupId": "grp_07b09e5e9c75f3cb4fbf",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_1"
+        }
+      ]
+    },
+    {
+      "groupId": "grp_18a884d1a07c3252df6c",
+      "decisionId": "decision_r2e-20260928-150024-cebe350f_2",
+      "action": "META_ONLY_COMPATIBILITY_PENDING",
+      "reason": "The frozen R1 Meta sidecar solution hash is stale. This is metadata evidence only and does not invalidate the R1 student-facing exam bytes; preserve the sidecar read-only and leave compatibility evidence pending without reprojecting normal R1 PASS rows.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+          "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+          "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+          "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+        },
+        {
+          "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+          "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+          "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        }
+      ],
+      "selectedExistingKeys": [],
+      "uidApplications": [
+        {
+          "findingId": "hold_02bcf91c4579e4731c9a",
+          "questionUid": "qid_v1_4400f43c0d22b4b2b02489c120621148e432e94443fa131496dbd6f33701f32d",
+          "ordinal": 4,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_0452ca170c645c4dea88",
+          "questionUid": "qid_v1_b482ca36af05654e55333172e5d37be318ea5008c64ca0184779bdb47bcb1303",
+          "ordinal": 15,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_0ccecb5227151734b4e1",
+          "questionUid": "qid_v1_6e391c87ec064258ea1ebdcfa50c3437e99bbc6a66c420b67b2001b987413924",
+          "ordinal": 9,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_1ffa225960e9cc5fc4ea",
+          "questionUid": "qid_v1_f757ff18a35d5ea0e85c8f7835cf155abf8b1e4bfefa0f1d940d83f10dc8e9ab",
+          "ordinal": 12,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_36e4e68ecf8d7d6c770c",
+          "questionUid": "qid_v1_0bbde60f5e56773018f842479fd28c13e2cf64672a6ed20380c9812d4dc8b948",
+          "ordinal": 14,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_38289b4d08459b049e0b",
+          "questionUid": "qid_v1_677635b64a18059cfac192079c22842d239628580db6cbc622fc7152f3e0bf50",
+          "ordinal": 24,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_38d9a2df897fdd4248d8",
+          "questionUid": "qid_v1_15129ceb429088f8682c26f1da1ab3f29e840b04baecc78f806bcc6f0ab27458",
+          "ordinal": 7,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_43f53edc9e2c2ce75758",
+          "questionUid": "qid_v1_d0f54d67c3b99b4c0280466d2a134c82ea7ce4229c42f07871cdc7d4bfec394f",
+          "ordinal": 13,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_4bb5c355d312b3ea0cd3",
+          "questionUid": "qid_v1_48b073685f281394e5fcd2a5f0bc7f478e9274835dc672b5386c4318c7ce0a38",
+          "ordinal": 16,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_552f8f8bc65cb7e98859",
+          "questionUid": "qid_v1_246dade97a3094e87cd2c407842a04d1688a82ccb24afd02b079e603ed2ca17d",
+          "ordinal": 10,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_55780c55049001955da2",
+          "questionUid": "qid_v1_96a3b46003d94242ee31f25390e05ae48f9144cd2821f425a033bdd894d1b0a7",
+          "ordinal": 14,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_60729a8bff742da897b5",
+          "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
+          "ordinal": 2,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_6390e60a88cbb0494c18",
+          "questionUid": "qid_v1_403e6ecbb245b6a508b38c532726446007fe25cdde6d2386787e5181bc5798b1",
+          "ordinal": 15,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_6837e4f00087d0213c52",
+          "questionUid": "qid_v1_eee85f4abcd64f88961a65cbd01b6247df0c538571a2feda009854666ae06d06",
+          "ordinal": 19,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_7557af032353ad79695d",
+          "questionUid": "qid_v1_5cc65dcae052d39bfc312258d15e009791dfd819843a13e7b9196d4175963e08",
+          "ordinal": 20,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_79027b181f83594def52",
+          "questionUid": "qid_v1_d2166d16084d91f47d3495bf24ee7c83721f0bf0691fac6df62bbf2dde93f515",
+          "ordinal": 12,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_95a855675949282ff580",
+          "questionUid": "qid_v1_93188b11a2ee4d30e37a994c891a873a1d92e4d490fa5b2d7e61b633c82f996e",
+          "ordinal": 11,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_a98046349ab5cfd93442",
+          "questionUid": "qid_v1_390ecd771302444f0cd24c796e540bbc66940a9f0d1fd25cfbdc457c9c07d780",
+          "ordinal": 11,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_aca110ef8828ce9f3720",
+          "questionUid": "qid_v1_b242f768d82f1e35bf388919c719635e2416b98d58ed6131fc6ff6b99b61d02a",
+          "ordinal": 18,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_af54b2e4617ad0c1d530",
+          "questionUid": "qid_v1_f9ee8702ec4a84e19e2af4c6b5b84b1199f55398d7c94d4695f3b447fd09acd5",
+          "ordinal": 23,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_b43679667951a2efa45a",
+          "questionUid": "qid_v1_85f86c6ac2ed347146d706a7535237e414da67d6f2c80145420b1f67a00b08e5",
+          "ordinal": 16,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_bb5b3e6c5079f6ff647a",
+          "questionUid": "qid_v1_b4343792f41cffd6015ca0d66043e268841051041758591fe82750188f9cf00c",
+          "ordinal": 22,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_c2d301e7d9233dea1304",
+          "questionUid": "qid_v1_4de779271e414d2ef99a76f256cae6463c70d162e4ec520540b3344e8b05d677",
+          "ordinal": 6,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_c4c2413450f07bd57608",
+          "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
+          "ordinal": 7,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_c56b2c4097b51da16ecd",
+          "questionUid": "qid_v1_56f0de5e7ff0f2af8cb788f50c49214a03027419f7e8199ef2d4d3c0598fbb17",
+          "ordinal": 3,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_c6507cd47ae92f78d19e",
+          "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
+          "ordinal": 22,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_d1c9198133dd49ff36ab",
+          "questionUid": "qid_v1_f93aa64f94b75d8b674a1782890e37d0726323ef7bc3ae4c91137796a434bbd8",
+          "ordinal": 20,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_d7436abc1ec1e7ae57bd",
+          "questionUid": "qid_v1_f68c0134e44f19ff3cc3c8532a2468379cf618e6132eeec03df18a1a62031581",
+          "ordinal": 13,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_dc94afaecb1d15e5492d",
+          "questionUid": "qid_v1_55a8e289c5da640ded8d966f3e8e6f5b10f5d37a3141b123a86b3d61f49fc2a8",
+          "ordinal": 18,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_dcbf3d22f64ed19fd001",
+          "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87",
+          "ordinal": 10,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_e18e015af5dd1bbf6e60",
+          "questionUid": "qid_v1_218dd8bb3cc6b92f9f121c476d80ebbd932c01142f7255fca9086da1f4ce55cc",
+          "ordinal": 5,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_e9c305c7169824ba3751",
+          "questionUid": "qid_v1_7abeee37ce5a8b631621faeedcfe20528a81c2288c39740daf865c4dd5578c37",
+          "ordinal": 8,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_f1e0c7820d6ff01a5c98",
+          "questionUid": "qid_v1_3630c955a38335fd4e69e46a9dab65d2afd1fb677a95dd60b1f487017be8b1f8",
+          "ordinal": 9,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_fd65f56f7beb56aef20e",
+          "questionUid": "qid_v1_202860e4d6d5a4bc9e13a8652d25e468f4e3e31edf0cb4d8732055f92ba259ef",
+          "ordinal": 17,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        },
+        {
+          "findingId": "hold_fe3ee5432dae37010dd4",
+          "questionUid": "qid_v1_78d943af9a732886e4fc0b20dcb1c587616787f1fa43de2b16ef8f0f56579ded",
+          "ordinal": 19,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_팔마중_2학기_기말_중2_기출.meta.json",
+              "sha256": "3a0b058f1ffe91f771c2ceb895117365ee5f63e67d52341a902e30424a9edd81",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "fb62080e50369773f3938bbf47de64e8ad1228de"
+            }
+          ],
+          "groupId": "grp_18a884d1a07c3252df6c",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_2"
+        }
+      ]
+    },
+    {
+      "groupId": "grp_bb5cc33bf508cf4f1304",
+      "decisionId": "decision_r2e-20260928-150024-cebe350f_3",
+      "action": "META_ONLY_COMPATIBILITY_PENDING",
+      "reason": "The frozen R1 Meta sidecar solution hash is stale for these two UIDs. Source-derived probability semantics map to existing M2-RPM-118 and active probability keys; the sidecar remains read-only and META_ONLY pending. No backfill or projection write.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+          "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+          "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+          "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+          "role": "R2E_SEMANTIC_FIRST_PASS"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+          "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+          "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+        }
+      ],
+      "selectedExistingKeys": [],
+      "uidApplications": [
+        {
+          "findingId": "hold_3e0ba149c491feec94ff",
+          "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
+          "ordinal": 17,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "독립인 두 약속 이행 사건의 여사건",
+          "decisiveStep": "별도 종속 조건이 없으므로 두 사건을 독립으로 해석한다. 모두 이행할 확률은 3/4×3/5=9/20, 만나지 못할 확률은 1−9/20=11/20이다.",
+          "rpmPrimary": "M2-RPM-118",
+          "rpmPath": {
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_PROBABILITY_REPEATED_TRIALS",
+            "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+          ],
+          "groupId": "grp_bb5cc33bf508cf4f1304",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_3"
+        },
+        {
+          "findingId": "hold_6ebabfee3f17559efcb1",
+          "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
+          "ordinal": 23,
+          "outcome": "META_ONLY_PENDING",
+          "reason": "Semantic review complete or intentionally reused from R1; only the nonblocking Meta sidecar/projection evidence remains pending.",
+          "evidenceRefs": [
+            {
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "role": "R1_META_SIDECAR.RPM_PRIMARY_MIGRATION_GAP",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "독립인 두 합격 사건의 결합확률과 여사건",
+          "decisiveStep": "별도 종속 조건이 없으므로 독립으로 해석한다. (1) 6/7×1/3=2/7, (2) 1/7×2/3=2/21, (3) 1−2/21=19/21.",
+          "rpmPrimary": "M2-RPM-118",
+          "rpmPath": {
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_PROBABILITY_REPEATED_TRIALS",
+            "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+          ],
+          "groupId": "grp_bb5cc33bf508cf4f1304",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_3"
+        }
+      ]
+    },
+    {
+      "groupId": "grp_300f449fc5aec7280dce",
+      "decisionId": "decision_r2e-20260928-150024-cebe350f_4",
+      "action": "JS_SOLUTION_REPAIR",
+      "reason": "Common cause: both questions used an unstated-dependence caveat contrary to the middle-school independence default. R2E applies one rule decision and repairs only the two affected solution fields.",
+      "evidenceRefs": [
+        {
+          "role": "R1_RECEIPT",
+          "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.json",
+          "sha256": "9861bd671f437af45cc886eb929005dc73c5651a7af21afab4a45ab7c9127a62",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        },
+        {
+          "role": "R1_EVIDENCE",
+          "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.evidence.json",
+          "sha256": "2b80e99c0d4e32f6eb442d9f3e9b1a1f6bb94e19e4bd09443515aaf2bbf1f3d3",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        },
+        {
+          "role": "META_EVIDENCE_READ_ONLY",
+          "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+          "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        },
+        {
+          "role": "R2E_FROZEN_SOURCE_JS",
+          "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+          "sha256": "c14bc05fe3f7cae5f7517373fca20dca53ec4761788b49d1ff5cb6d9b09f60c1",
+          "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+          "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+          "role": "R2E_SEMANTIC_FIRST_PASS"
+        },
+        {
+          "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SOLUTION_REPAIR_REPORT.json",
+          "sha256": "82255a56a34d3154b8dacb3a18063a69e368304b36200cdf21d7e96462765fef",
+          "role": "R2E_TARGETED_SOLUTION_REPAIR"
+        }
+      ],
+      "selectedExistingKeys": [],
+      "uidApplications": [
+        {
+          "findingId": "hold_r2e_independence_17",
+          "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
+          "ordinal": 17,
+          "outcome": "REPAIRED",
+          "reason": "Solution repaired to follow the independence default; answer and every other field remain unchanged.",
+          "evidenceRefs": [
+            {
+              "role": "R1_RECEIPT",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.json",
+              "sha256": "9861bd671f437af45cc886eb929005dc73c5651a7af21afab4a45ab7c9127a62",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "R1_EVIDENCE",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.evidence.json",
+              "sha256": "2b80e99c0d4e32f6eb442d9f3e9b1a1f6bb94e19e4bd09443515aaf2bbf1f3d3",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "META_EVIDENCE_READ_ONLY",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "R2E_FROZEN_SOURCE_JS",
+              "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+              "sha256": "c14bc05fe3f7cae5f7517373fca20dca53ec4761788b49d1ff5cb6d9b09f60c1",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SOLUTION_REPAIR_REPORT.json",
+              "sha256": "82255a56a34d3154b8dacb3a18063a69e368304b36200cdf21d7e96462765fef",
+              "role": "R2E_TARGETED_SOLUTION_REPAIR"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "독립인 두 약속 이행 사건의 여사건",
+          "decisiveStep": "별도 종속 조건이 없으므로 두 사건을 독립으로 해석한다. 모두 이행할 확률은 3/4×3/5=9/20, 만나지 못할 확률은 1−9/20=11/20이다.",
+          "rpmPrimary": "M2-RPM-118",
+          "rpmPath": {
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_PROBABILITY_REPEATED_TRIALS",
+            "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+          ],
+          "changedFields": [
+            "solution"
+          ],
+          "afterSolutionSha256": "43dd880f1004f53ed1f631650a560dee82562ba16270cf38e1452552d87d14e5",
+          "groupId": "grp_300f449fc5aec7280dce",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_4"
+        },
+        {
+          "findingId": "hold_r2e_independence_23",
+          "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
+          "ordinal": 23,
+          "outcome": "REPAIRED",
+          "reason": "Solution repaired to follow the independence default; answer and every other field remain unchanged.",
+          "evidenceRefs": [
+            {
+              "role": "R1_RECEIPT",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.json",
+              "sha256": "9861bd671f437af45cc886eb929005dc73c5651a7af21afab4a45ab7c9127a62",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "R1_EVIDENCE",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.evidence.json",
+              "sha256": "2b80e99c0d4e32f6eb442d9f3e9b1a1f6bb94e19e4bd09443515aaf2bbf1f3d3",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "META_EVIDENCE_READ_ONLY",
+              "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
+              "sha256": "c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "role": "R2E_FROZEN_SOURCE_JS",
+              "path": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+              "sha256": "c14bc05fe3f7cae5f7517373fca20dca53ec4761788b49d1ff5cb6d9b09f60c1",
+              "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_FIRST_PASS.json",
+              "sha256": "3afcfbed92c502ad9c6739489dcbed2d762eb30dd6e1cfc77553ab7d642f6cda",
+              "role": "R2E_SEMANTIC_FIRST_PASS"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SOLUTION_REPAIR_REPORT.json",
+              "sha256": "82255a56a34d3154b8dacb3a18063a69e368304b36200cdf21d7e96462765fef",
+              "role": "R2E_TARGETED_SOLUTION_REPAIR"
+            },
+            {
+              "path": "tmp/r2e-20260928-150024-cebe350f/evidence/SEMANTIC_RPM_MAPPING.json",
+              "sha256": "7b1f53f0020d7c67c1d7ec835de5652e6013074491020ec925c3fe624c2a6463",
+              "role": "R2E_CURRENT_RPM_CROSSWALK_LOOKUP"
+            }
+          ],
+          "primaryMethod": "독립인 두 합격 사건의 결합확률과 여사건",
+          "decisiveStep": "별도 종속 조건이 없으므로 독립으로 해석한다. (1) 6/7×1/3=2/7, (2) 1/7×2/3=2/21, (3) 1−2/21=19/21.",
+          "rpmPrimary": "M2-RPM-118",
+          "rpmPath": {
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          },
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "projectionStatus": "META_ONLY_PROJECTION_PENDING",
+          "selectedExistingKeyCandidates": [
+            "PT_PROBABILITY_REPEATED_TRIALS",
+            "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+          ],
+          "changedFields": [
+            "solution"
+          ],
+          "afterSolutionSha256": "0ab03041b523f4bae42ea858df66265c47230fa317c04e3c796e64a7fd04b002",
+          "groupId": "grp_300f449fc5aec7280dce",
+          "decisionId": "decision_r2e-20260928-150024-cebe350f_4"
+        }
+      ]
+    }
+  ]
+}

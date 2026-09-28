@@ -1,0 +1,93 @@
+diff --git a/archive/tools/r2e/hold-inventory.mjs b/archive/tools/r2e/hold-inventory.mjs
+index a37f1c424..bd161c102 100644
+--- a/archive/tools/r2e/hold-inventory.mjs
++++ b/archive/tools/r2e/hold-inventory.mjs
+@@ -8,7 +8,7 @@ import { checkGuard } from './guard.mjs';
+
+ const allowedActions = new Set([
+   'EXISTING_L3_L4_MAPPING', 'SVG_REPAIR', 'JS_SOLUTION_REPAIR',
+-  'SOURCE_RECOVERY', 'UPPER_MODEL_REVIEW', 'TRUE_HOLD',
++  'SOURCE_RECOVERY', 'UPPER_MODEL_REVIEW', 'TRUE_HOLD', 'META_ONLY_COMPATIBILITY_PENDING',
+ ]);
+ function stableHash(value, length = 20) {
+   return sha(Buffer.from(JSON.stringify(value))).slice(0, length);
+@@ -48,6 +48,7 @@ function groupDescriptor(finding) {
+     releaseEffect: finding.releaseEffect,
+     category: finding.category,
+     rootCauseCode: rootCause(finding),
++    metaReasonCode: finding.releaseEffect === 'META_ONLY' ? finding.reasonCode : null,
+     rpmPrimary: rpmPrimary.length <= 1 ? rpmPrimary[0] || null : rpmPrimary,
+     problemTypeKeys,
+     templateKeys,
+@@ -322,7 +323,7 @@ function validateDecisions(inventory, decisions, repo) {
+         if (row.outcome === 'MAPPED_EXISTING' && (!appliedKeys.length || appliedKeys.some(key => !keys.includes(key))) ) pushError(decision.groupId, 'UID_APPLICATION_KEY_MISMATCH:' + row.findingId);
+         if (row.outcome !== 'MAPPED_EXISTING' && appliedKeys.length) pushError(decision.groupId, 'NONMAPPED_UID_HAS_SELECTED_KEYS:' + row.findingId);
+       }
+-      if (!['MAPPED_EXISTING', 'GROUP_RESOLVED', 'REPAIRED', 'VERIFIED_NO_CHANGE', 'UPPER_MODEL_REVIEW', 'TRUE_HOLD'].includes(row.outcome)) pushError(decision.groupId, 'UID_APPLICATION_OUTCOME_INVALID:' + row.findingId);
++      if (!['MAPPED_EXISTING', 'GROUP_RESOLVED', 'REPAIRED', 'VERIFIED_NO_CHANGE', 'UPPER_MODEL_REVIEW', 'TRUE_HOLD', 'META_ONLY_PENDING'].includes(row.outcome)) pushError(decision.groupId, 'UID_APPLICATION_OUTCOME_INVALID:' + row.findingId);
+       if (seenItems.has(row.findingId)) pushError(decision.groupId, 'UID_APPLICATION_MULTI_GROUP:' + row.findingId);
+       seenItems.set(row.findingId, { decisionId, groupId: decision.groupId, outcome: row.outcome, appliedExistingKeys: row.appliedExistingKeys || [] });
+     }
+@@ -338,7 +339,7 @@ function validateDecisions(inventory, decisions, repo) {
+     seenGroups.has(group.groupId) ? groupErrors[group.groupId]?.length ? 'DECISION_INVALID' : 'DECIDED' : 'NEEDS_BATCH_ADJUDICATION']));
+   return { status: errors.length ? 'FAIL' : 'PASS', errors, groupStatusById, applicationsByFindingId: Object.fromEntries(seenItems) };
+ }
+-function attachDecisions(inventory, decisions, repo) {
++export function attachDecisions(inventory, decisions, repo) {
+   const checked = validateDecisions(inventory, decisions, repo);
+   const applications = checked.applicationsByFindingId || {};
+   for (const group of inventory.groups) {
+@@ -350,7 +351,11 @@ function attachDecisions(inventory, decisions, repo) {
+       group.reason = decision.reason || null;
+       group.evidenceRefs = decision.evidenceRefs || [];
+       group.selectedExistingKeys = decision.selectedExistingKeys || [];
+-      group.uidApplications = decision.uidApplications || [];
++      group.uidApplications = (decision.uidApplications || []).map(row => ({
++        ...row,
++        groupId: group.groupId,
++        decisionId: group.decisionId,
++      }));
+     }
+   }
+   for (const item of inventory.items) {
+@@ -379,7 +384,8 @@ function attachDecisions(inventory, decisions, repo) {
+   inventory.summary.decidedCount = Object.keys(applications).length;
+   inventory.summary.decisionStatus = checked.status;
+   inventory.summary.undecidedGroupCount = inventory.groups.filter(group => group.status !== 'DECIDED').length;
+-  inventory.summary.metaOnlyPendingCount = inventory.items.filter(item => item.releaseEffect === 'META_ONLY' && !item.outcome).length;
++  const closedMetaOutcomes = new Set(['MAPPED_EXISTING', 'GROUP_RESOLVED', 'REPAIRED']);
++  inventory.summary.metaOnlyPendingCount = inventory.items.filter(item => item.releaseEffect === 'META_ONLY' && !closedMetaOutcomes.has(item.outcome)).length;
+   inventory.summary.upperModelPendingCount = inventory.items.filter(item => item.outcome === 'UPPER_MODEL_REVIEW').length;
+   inventory.summary.holdBatchStatus = checked.status === 'PASS' ? 'CLASSIFIED' : inventory.summary.undecidedGroupCount ? 'NEEDS_GROUP_DECISIONS' : 'DECISION_INVALID';
+   return inventory;
+diff --git a/archive/tools/r2e/read-only-r1-adapter.mjs b/archive/tools/r2e/read-only-r1-adapter.mjs
+index b2f625bb6..cdf13d936 100644
+--- a/archive/tools/r2e/read-only-r1-adapter.mjs
++++ b/archive/tools/r2e/read-only-r1-adapter.mjs
+@@ -294,7 +294,7 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map(),
+   const rpmSemanticSummary = { FINAL: 0, HOLD: 0, UNAVAILABLE: 0 };
+   const legacyProjectionSummary = { PROJECTION_REUSE: 0, PROJECTION_BINDING_PENDING: 0, PROJECTION_UNMATERIALIZED: 0, META_ONLY_COMPATIBILITY_PENDING: 0, NOT_ATTEMPTED: 0 };
+   for (const item of metaEvidence?.items || []) {
+-    const sourceOrdinal = ordinalOf(item);
++    const sourceOrdinal = itemOrdinal(item);
+     const reclassified = reclassifyR1MetaItem(item, { repoRoot: metaAuthorityRoot,
+       sourceArchiveFile: examFile.replace(/^archive\/exams\//, ''), sourceQuestion: sourceOrdinal ? bank[sourceOrdinal - 1] : null });
+     if (reclassified.questionUid) projectionReclassificationByUid.set(reclassified.questionUid, reclassified);
+@@ -321,13 +321,13 @@ export function readR1Authority(repo, candidate, { identityBySource = new Map(),
+     }
+     if (reclassified?.semanticStatus === 'UNAVAILABLE' && !isNonMetaHold
+       && (META_SOURCE.test(sourceName) || META_TOKENS.test(detailText) || /ADVANCED_META_HOLD|R2_ADJUDICATION_REQUIRED/i.test(detailText))) {
+-      classificationResult = { releaseEffect: 'RELEASE_BLOCKING', category: 'RPM_SEMANTIC_EVIDENCE_UNAVAILABLE',
+-        disposition: 'TRUE_META_HOLD', reasonCode: reclassified.reasonCode || 'RPM_SEMANTIC_EVIDENCE_UNAVAILABLE' };
++      classificationResult = { releaseEffect: 'META_ONLY', category: 'META_MAPPING',
++        disposition: 'META_ONLY_COMPATIBILITY_PENDING', reasonCode: reclassified.reasonCode || 'RPM_SEMANTIC_EVIDENCE_UNAVAILABLE' };
+     }
+     if (reclassified?.semanticStatus === 'HOLD' && !isNonMetaHold
+       && (META_SOURCE.test(sourceName) || META_TOKENS.test(detailText) || /ADVANCED_META_HOLD|R2_ADJUDICATION_REQUIRED/i.test(detailText))) {
+-      classificationResult = { releaseEffect: 'RELEASE_BLOCKING', category: 'TRUE_META_SEMANTIC_HOLD',
+-        disposition: 'TRUE_META_HOLD', reasonCode: reclassified.projectionReasonCode || 'RPM_SEMANTIC_UNRESOLVED' };
++      classificationResult = { releaseEffect: 'META_ONLY', category: 'META_MAPPING',
++        disposition: 'META_ONLY_COMPATIBILITY_PENDING', reasonCode: reclassified.projectionReasonCode || 'RPM_SEMANTIC_UNRESOLVED' };
+     }
+     if (!classificationResult) return;
+     const normalizedReasonCode = classificationResult.category === 'SOURCE_OR_MATH_HOLD'

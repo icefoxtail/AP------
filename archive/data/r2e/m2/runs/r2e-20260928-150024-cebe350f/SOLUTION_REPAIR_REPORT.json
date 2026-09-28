@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "R2E_TARGETED_SOLUTION_REPAIR_v1",
+  "runId": "r2e-20260928-150024-cebe350f",
+  "examUid": "25_연향중_2학기_기말_중2_기출",
+  "examFile": "archive/exams/original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js",
+  "sourceInputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5",
+  "questionUids": {
+    "17": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
+    "23": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d"
+  },
+  "changedFields": [
+    "solution"
+  ],
+  "beforeExamSha256": "8de0840d0846f1e51a0c6b72398f734e9165763d52b8100fdf135d6e4428bfb9",
+  "afterExamSha256": "b7b1b77964704543e794d1363ee79978a686fbcae0f31563a99917cb51d597e1",
+  "answerUnchanged": true,
+  "otherFieldsUnchanged": true,
+  "questionCount": 23,
+  "repairs": [
+    {
+      "ordinal": 17,
+      "beforeSolutionSha256": "59ef0d1e03afd85f77dbd115af8ce668fee667fe9117f9fc169e630da373b139",
+      "afterSolutionSha256": "43dd880f1004f53ed1f631650a560dee82562ba16270cf38e1452552d87d14e5",
+      "primaryMethod": "independent joint attendance and complement",
+      "decisiveStep": "3/4×3/5=9/20, so nonmeeting probability is 1−9/20=11/20.",
+      "reason": "The current middle-school rule assumes independence when the source gives no dependency condition; the frozen R1 solutions incorrectly claimed the results were indeterminate."
+    },
+    {
+      "ordinal": 23,
+      "beforeSolutionSha256": "fafe4094fa264247d65dc2cf31b53d9422d9276f73996a528740813893ef99e1",
+      "afterSolutionSha256": "0ab03041b523f4bae42ea858df66265c47230fa317c04e3c796e64a7fd04b002",
+      "primaryMethod": "independent joint pass/fail events and complement",
+      "decisiveStep": "Compute joint pass/fail probabilities by multiplication; at least one pass is the complement of both fail.",
+      "reason": "The current middle-school rule assumes independence when the source gives no dependency condition; the frozen R1 solutions incorrectly claimed the results were indeterminate."
+    }
+  ]
+}
