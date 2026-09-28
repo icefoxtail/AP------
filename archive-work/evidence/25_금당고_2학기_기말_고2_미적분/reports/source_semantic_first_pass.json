@@ -1,0 +1,1779 @@
+{
+  "schema": "APMATH_SOURCE_SEMANTIC_FIRST_PASS_v1",
+  "status": "SOURCE_FIRST_PASS",
+  "sourceDocumentSha256": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020",
+  "examId": "25_금당고_2학기_기말_고2_미적분",
+  "denominator": 21,
+  "semanticAuthority": {
+    "name": "RPM Primary v1.0",
+    "refs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/README.md",
+        "sha256": "sha256:3e093ce89158ec59a7a97477334de49861a5709fa93d700e95f27634bacb3332"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "sha256:0f6721c61f7e31df5cce43f48c60dc5732dfd96347e47813beffd4fe6a8dd509"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/미적분.md",
+        "sha256": "sha256:18aeb1f7662e4e4902673c69923eb4f90439eb5948d2db166a3251afe01de1c6"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-calculus-calculus2.json",
+        "sha256": "sha256:ae6caf77e1205e4f7b1ad201af0202d4bbdf880ceee25a526a9cfbd1976aa182"
+      }
+    ],
+    "crosswalkGeneratedAgainstMain": "acd1446c648bb0001bbd392349f468f2af9cebe1",
+    "activePackRefs": [
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+        "sha256": "sha256:ee00082d2aa505f61b4da8424f7a959a12cca5b5a73ac51f5324ef3b0be07fb4",
+        "originMainSha256": "sha256:3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+        "sha256": "sha256:061f9511e318baf936c2e72b726004ace9fbd66a16b56e89c53736d84fba91c1",
+        "originMainSha256": "sha256:749352f85c414239687ed44e9f0ca8b372f6c4f57fe7bb356cdbe8f751e96df5"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+        "sha256": "sha256:c4780af9f904100a367334ea8882bd6ebcdd8ba7e4ed9c9e25dfd256a4b4409d",
+        "originMainSha256": "sha256:2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+        "sha256": "sha256:3cbeff27ecdb110230f2582724aa093f96fac76f43a9284cc3ca99b2fb901120",
+        "originMainSha256": "sha256:b6fdbe6d462617c257673cb6cb23ad24abdd6993c753979d34e2e54db8a2f71e"
+      }
+    ]
+  },
+  "items": [
+    {
+      "displayNo": "1",
+      "sourceOrdinal": 1,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "다음은 함수를 미분한 것이다. 옳은 것은?"
+      ],
+      "confidence": "medium",
+      "reason": "Source choices test multiple differentiation forms; the correct option and decisive method require solving.",
+      "semanticDecisionStatus": "L3_L4_REQUIRES_SOLUTION",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "여러 가지 미분법",
+        "l3": null,
+        "l4": null,
+        "confidence": "medium",
+        "reason": "Source choices test multiple differentiation forms; the correct option and decisive method require solving."
+      },
+      "activeProjection": {
+        "status": "NO_EXACT_SINGLE_MAPPING_IN_SOURCE_ONLY"
+      },
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "2",
+      "sourceOrdinal": 2,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "곡선 $y=3+\\ln x$에 접하고 기울기가 1인 접선의 방정식은?"
+      ],
+      "confidence": "high",
+      "reason": "The stem directly asks for a tangent with a specified slope.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "접선",
+        "l4": "접선의 방정식",
+        "confidence": "high",
+        "reason": "The stem directly asks for a tangent with a specified slope."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-028",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "3",
+      "sourceOrdinal": 3,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "좌표평면 위를 움직이는 점 $P$의 시각 $t$에서의 위치가 $(x,y)$이고"
+      ],
+      "confidence": "high",
+      "reason": "The moving point position, velocity, speed and acceleration are explicitly stated.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "위치·속도",
+        "confidence": "high",
+        "reason": "The moving point position, velocity, speed and acceleration are explicitly stated."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-036",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "4",
+      "sourceOrdinal": 4,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "닫힌구간 $[-3,1]$에서 함수 $f(x)=e^x-x$의 최댓값과 최솟값이 올바르게 짝지어진 것은?"
+      ],
+      "confidence": "high",
+      "reason": "The stem asks absolute maximum and minimum on a closed interval.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "최대·최소",
+        "l4": "구간 최대·최소",
+        "confidence": "high",
+        "reason": "The stem asks absolute maximum and minimum on a closed interval."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-032",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "5",
+      "sourceOrdinal": 5,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "다음 부정적분 중 계산이 틀린 것은? (단, $C$는 적분상수이다.)"
+      ],
+      "confidence": "high",
+      "reason": "The item compares antiderivative formulae.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "여러 가지 적분법",
+        "l3": "여러 함수의 부정적분",
+        "l4": "지수·로그함수",
+        "confidence": "high",
+        "reason": "The item compares antiderivative formulae."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-038",
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "6",
+      "sourceOrdinal": 6,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "다음 정적분"
+      ],
+      "confidence": "high",
+      "reason": "The definite integral has a direct substitution structure.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "여러 가지 적분법",
+        "l3": "치환적분",
+        "l4": "치환 설정",
+        "confidence": "high",
+        "reason": "The definite integral has a direct substitution structure."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-040",
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "7",
+      "sourceOrdinal": 7,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "함수 $f(x)$에 대하여 $f'(x)=(4x+1)\\ln x$이고"
+      ],
+      "confidence": "high",
+      "reason": "A derivative is supplied and a function value is requested, requiring antiderivative work.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "여러 가지 적분법",
+        "l3": "여러 함수의 부정적분",
+        "l4": "지수·로그함수",
+        "confidence": "high",
+        "reason": "A derivative is supplied and a function value is requested, requiring antiderivative work."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-038",
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "8",
+      "sourceOrdinal": 8,
+      "sourcePageNo": 1,
+      "sourceExcerpts": [
+        "정적분과 급수의 합 사이의 관계를 이용하여 극한값"
+      ],
+      "confidence": "high",
+      "reason": "The source explicitly invokes the relation between definite integrals and sums.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "정적분",
+        "l3": "정적분의 뜻",
+        "l4": "정적분 계산",
+        "confidence": "high",
+        "reason": "The source explicitly invokes the relation between definite integrals and sums."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-044",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "9",
+      "sourceOrdinal": 9,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "점 $(-2,0)$에서 곡선 $y=\\dfrac{1}{x}$에 그은 접선의 방정식을 구하면?"
+      ],
+      "confidence": "high",
+      "reason": "A tangent to y=1/x through the stated external point is requested.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "접선",
+        "l4": "접선의 방정식",
+        "confidence": "high",
+        "reason": "A tangent to y=1/x through the stated external point is requested."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-028",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "10",
+      "sourceOrdinal": 10,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "함수 $f(x)$가 $f(x)=-\\dfrac{1}{x}-\\dfrac{1}{x^2}-\\dfrac{1}{x^3}-\\cdots-\\dfrac{1}{x^{10}}$일 때"
+      ],
+      "confidence": "high",
+      "reason": "The item asks for a derivative of a finite sum of reciprocal powers.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "여러 가지 미분법",
+        "l3": "함수의 몫과 합성",
+        "l4": "몫의 미분",
+        "confidence": "high",
+        "reason": "The item asks for a derivative of a finite sum of reciprocal powers."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-023",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION"
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "11",
+      "sourceOrdinal": 11,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "미분 가능한 함수 $f(x)$가"
+      ],
+      "confidence": "high",
+      "reason": "The inverse function and its derivative are explicitly used.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "여러 가지 미분법",
+        "l3": "역함수의 미분",
+        "l4": "역함수 미분",
+        "confidence": "high",
+        "reason": "The inverse function and its derivative are explicitly used."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-027",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION"
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "12",
+      "sourceOrdinal": 12,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "곡선 $y=xe^{-x}$의 변곡점을 $A$라 하고"
+      ],
+      "confidence": "high",
+      "reason": "The tangent at an inflection point and its axis intercepts define the target area.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "접선",
+        "l4": "접선의 방정식",
+        "confidence": "high",
+        "reason": "The tangent at an inflection point and its axis intercepts define the target area."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-028",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "13",
+      "sourceOrdinal": 13,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "실수 전체의 집합에서 미분가능한 함수 $f(x)$에 대하여"
+      ],
+      "confidence": "high",
+      "reason": "A difference of function values is given the derivative as cos x.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "정적분",
+        "l3": "정적분과 함수",
+        "l4": "미분과 적분 관계",
+        "confidence": "high",
+        "reason": "A difference of function values is given the derivative as cos x."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-049",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "14",
+      "sourceOrdinal": 14,
+      "sourcePageNo": 2,
+      "sourceExcerpts": [
+        "함수 $y=f(x)$의 그래프 위의 임의의 점 $(x,f(x))$에서의 접선의 기울기가"
+      ],
+      "confidence": "high",
+      "reason": "The tangent slope defines f′ and one point value anchors a definite change.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "정적분",
+        "l3": "정적분과 함수",
+        "l4": "미분과 적분 관계",
+        "confidence": "high",
+        "reason": "The tangent slope defines f′ and one point value anchors a definite change."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-049",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "15",
+      "sourceOrdinal": 15,
+      "sourcePageNo": 3,
+      "sourceExcerpts": [
+        "실수 전체의 집합에서 미분가능한 함수 $f(x)$가 다음 조건을 만족시킨다."
+      ],
+      "confidence": "medium",
+      "reason": "The quotient derivative expression and initial value require solving to select a decisive RPM path.",
+      "semanticDecisionStatus": "L3_L4_REQUIRES_SOLUTION",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "여러 가지 적분법",
+        "l3": null,
+        "l4": null,
+        "confidence": "medium",
+        "reason": "The quotient derivative expression and initial value require solving to select a decisive RPM path."
+      },
+      "activeProjection": {
+        "status": "NO_EXACT_SINGLE_MAPPING_IN_SOURCE_ONLY"
+      },
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "16",
+      "sourceOrdinal": 16,
+      "sourcePageNo": 3,
+      "sourceExcerpts": [
+        "수직선 위를 움직이는 두 점 $P$, $Q$의 시각 $t$에서의 위치가 각각"
+      ],
+      "confidence": "high",
+      "reason": "Opposite directions of two moving points are described by their position functions.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "도함수의 활용",
+        "l3": "속도와 가속도",
+        "l4": "위치·속도",
+        "confidence": "high",
+        "reason": "Opposite directions of two moving points are described by their position functions."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-036",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-06",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-06",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "단답형 1",
+      "sourceOrdinal": 17,
+      "sourcePageNo": 3,
+      "sourceExcerpts": [
+        "극한값"
+      ],
+      "confidence": "medium",
+      "reason": "This is an x→0 function-limit expression. Current 2015 Calculus RPM L1/L2 has no exact function-limit path; do not map it to sequence limits.",
+      "semanticDecisionStatus": "DEFERRED_NO_EXACT_RPM_L1_L2",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": null,
+        "l2": null,
+        "l3": null,
+        "l4": null,
+        "confidence": "medium",
+        "reason": "This is an x→0 function-limit expression. Current 2015 Calculus RPM L1/L2 has no exact function-limit path; do not map it to sequence limits."
+      },
+      "activeProjection": {
+        "status": "NO_EXACT_SINGLE_MAPPING_IN_SOURCE_ONLY"
+      },
+      "currentJsProjection": {
+        "standardUnitKey": null,
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "정확한 source L1/L2가 미결이므로 L2 key도 임의 지정하지 않는다."
+        },
+        {
+          "field": "standardUnitKey",
+          "reason": "원문은 함수극한이다. 현재 미적분 RPM L1/L2·ACTIVE projection에 이에 정확히 대응하는 key를 확인하지 못해 sequence-limit 등으로 임의 대체하지 않는다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "단답형 2",
+      "sourceOrdinal": 18,
+      "sourcePageNo": 3,
+      "sourceExcerpts": [
+        "매개변수 $\\theta$로 나타내어진 함수"
+      ],
+      "confidence": "high",
+      "reason": "The curve is explicitly given parametrically and requests d²y/dx².",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "여러 가지 미분법",
+        "l3": "매개변수·음함수",
+        "l4": "매개변수 미분",
+        "confidence": "high",
+        "reason": "The curve is explicitly given parametrically and requests d²y/dx²."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-025",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION"
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "서·논술형 1",
+      "sourceOrdinal": 19,
+      "sourcePageNo": 4,
+      "sourceExcerpts": [
+        "모든 실수 $x$에 대하여 미분가능한 함수 $f(x)$가"
+      ],
+      "confidence": "medium",
+      "reason": "The equality is an integral identity and asks for a function value.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "적분법",
+        "l2": "정적분",
+        "l3": "정적분과 함수",
+        "l4": "미분과 적분 관계",
+        "confidence": "medium",
+        "reason": "The equality is an integral identity and asks for a function value."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-049",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-07",
+          "subUnitKey": ""
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-07",
+        "standardUnitOrder": null,
+        "subUnitKey": null,
+        "availability": "NO_ACTIVE_JS_L2_PROJECTION"
+      },
+      "unresolvedFields": [
+        {
+          "field": "subUnitKey",
+          "reason": "RPM Primary에는 해당 L2 범위가 확인되나 현재 JS Archive ACTIVE subUnitKey projection이 없어 임의 key를 만들지 않고 풀이 재조정 단계에 남긴다."
+        },
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "서·논술형 2",
+      "sourceOrdinal": 20,
+      "sourcePageNo": 4,
+      "sourceExcerpts": [
+        "자연수 $n$에 대하여 $a_n="
+      ],
+      "confidence": "medium",
+      "reason": "A sequence is defined by integrals and an infinite series of products is requested.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "수열의 극한",
+        "l2": "급수",
+        "l3": "급수의 성질",
+        "l4": "급수 계산",
+        "confidence": "medium",
+        "reason": "A sequence is defined by integrals and an infinite series of products is requested."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-011",
+          "mappingStatus": "RPM_ONLY",
+          "bindingStatus": "NO_ACTIVE_MAPPING",
+          "standardUnitKey": "H15-CALC-02",
+          "subUnitKey": "H15-CALC-02-SERIES"
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-02",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    },
+    {
+      "displayNo": "서·논술형 3",
+      "sourceOrdinal": 21,
+      "sourcePageNo": 4,
+      "sourceExcerpts": [
+        "함수 $f(x)=(x^2+ax+b)e^x$와 함수 $g(x)$가 다음 조건을 만족시킨다."
+      ],
+      "confidence": "medium",
+      "reason": "The inverse derivative and composition identity appear explicitly; solution-stage reconciliation remains required.",
+      "semanticDecisionStatus": "SOURCE_FIRST_PASS",
+      "rpmPrimaryFirstPass": {
+        "curriculum": "2015",
+        "scope": "미적분",
+        "l1": "미분법",
+        "l2": "여러 가지 미분법",
+        "l3": "역함수의 미분",
+        "l4": "역함수 미분",
+        "confidence": "medium",
+        "reason": "The inverse derivative and composition identity appear explicitly; solution-stage reconciliation remains required."
+      },
+      "activeProjection": [
+        {
+          "crosswalkRecordId": "H2-CALC-RPM-027",
+          "mappingStatus": "DIRECT_BINDING_GAP",
+          "bindingStatus": "MISSING",
+          "standardUnitKey": "H15-CALC-05",
+          "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION"
+        }
+      ],
+      "currentJsProjection": {
+        "standardUnitKey": "H15-CALC-05",
+        "standardUnitOrder": null,
+        "subUnitKey": "H15-CALC-05-OTHER_DIFFERENTIATION",
+        "availability": "ACTIVE"
+      },
+      "unresolvedFields": [
+        {
+          "field": "problemTypeKey",
+          "reason": "원문만으로 풀이의 decisive step과 ACTIVE 유형 binding을 확정할 수 없어 해설 단계에서 확인한다."
+        },
+        {
+          "field": "templateKey",
+          "reason": "풀이 골격과 현재 ACTIVE template binding을 풀이 확인 후 대조한다."
+        },
+        {
+          "field": "crossConceptKeys",
+          "reason": "추가 개념의 실질적인 풀이 기여 여부는 풀이 후 재판정한다."
+        },
+        {
+          "field": "conditionKeys",
+          "reason": "전용 조건키 적용 여부를 풀이와 current ACTIVE catalog 대조 후 재판정한다."
+        },
+        {
+          "field": "integrationPattern",
+          "reason": "단일 기법인지 여러 개념의 상호의존 풀이인지 해설을 확인한 뒤 판정한다."
+        },
+        {
+          "field": "difficultyBucket",
+          "reason": "SOURCE_FIRST_PASS 예상이며 독립 blind difficulty는 풀이 단계에서 별도 판단한다."
+        },
+        {
+          "field": "difficultyConfidence",
+          "reason": "출처 단계의 잠정 추정이므로 풀이 후 다시 평가한다."
+        },
+        {
+          "field": "difficultyBoundaryFlag",
+          "reason": "난이도 경계는 풀이 단계를 거쳐 확인한다."
+        },
+        {
+          "field": "legacyLevelCompatibility",
+          "reason": "최종 난이도와 별개로 해설 단계에서 호환성을 재검토한다."
+        },
+        {
+          "field": "level",
+          "reason": "level을 difficultyBucket에서 역산하지 않고 해설 단계로 미룬다."
+        }
+      ],
+      "metadataStatus": "SOURCE_FIRST_PASS",
+      "solutionReconciliationRequired": true
+    }
+  ]
+}
