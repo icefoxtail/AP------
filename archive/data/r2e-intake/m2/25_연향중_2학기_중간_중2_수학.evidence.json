@@ -1,102 +1,555 @@
 {
-  "schema": "JS_ARCHIVE_RESET_CREATE_EVIDENCE_v1",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-  "mainAuthorityCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
+  "mainAuthorityCommit": "9a955143a4d636c69c4aa27430459f513d03879d",
   "examFile": "25_연향중_2학기_중간_중2_수학.js",
   "examUid": "25_연향중_2학기_중간_중2_수학",
   "grade": "M2",
-  "lane": "B",
-  "stage": "CREATE",
-  "totalQuestions": 23,
+  "sourceLane": "B",
+  "lane": "REVIEW1-2",
+  "stage": "R1",
+  "reviewStage": "REVIEW1_DONE",
+  "denominator": 23,
+  "inputCommit": "cb023aec1d671fdc1a6eb169d8b29bce5e642e70",
   "source": {
     "jsSourceGitBlobSha": "dbbe02b175101b6a4954d37ee31d1867c5d2ab45",
+    "sourceAuthorityGitBlobSha": "dbbe02b175101b6a4954d37ee31d1867c5d2ab45",
     "sourceTextExactParityStatus": "PASS",
     "sourceTextExactParity": "23/23",
     "choicesExactParityStatus": "PASS",
     "choicesExactParity": "23/23",
     "answerExactParity": "23/23",
     "problemImageRefExactParity": "23/23",
-    "problemPngAssetBlobParity": "16/16",
-    "manualProblemVisualReview": "16/16 PASS"
+    "referencedProblemImages": "16/16 CURRENT_BYTES_MANUAL_REVIEW_PASS"
+  },
+  "math": {
+    "PASS": 23,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
   },
   "questionLayout": {
     "status": "PASS",
-    "denominator": 23,
     "KEEP": 23,
+    "POLISH": 0,
     "REFORMAT": 0,
     "HOLD": 0,
-    "policy": "AUTO-FIRST",
-    "reason": "no deterministic static layout defect; existing grid is retained",
-    "knownQuestionLayoutRepairPending": 0,
+    "staticCapacity2upQuestions": [],
+    "note": "Default grid retained; no deterministic STATIC_CAPACITY_EVIDENCE requiring 2up.",
     "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "solution": {
-    "solutionSelfCheckStatus": "PASS",
-    "denominator": 23,
     "KEEP": 23,
     "REPAIR": 0,
     "TRUE_HOLD": 0,
-    "knownSolutionRepairPending": 0,
-    "verification": "fresh independent math check from protected source; all 23 source solutions reproduce the answers"
+    "knownSolutionRepairPending": 0
+  },
+  "reproducibility": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "microLayout": {
+    "KEEP": 23,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0
+  },
+  "curriculumTerminology": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "studentLanguage": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0
   },
   "visual": {
     "status": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "sourceProblemVisuals": "16/16 PASS",
-    "solutionSvgInventory": "0",
+    "sourceProblemVisuals": "16/16 MANUAL_CURRENT_BYTES_PASS",
+    "connectedSolutionSvg": "0/0",
+    "connectedSolutionImage": "0/0",
+    "dispositionSummary": {
+      "KEEP": 0,
+      "REPAIR": 0,
+      "REBUILD": 0,
+      "HOLD": 0
+    },
     "requiredVisualMissing": 0,
     "knownVisualRepairPending": 0,
-    "routerDecision": "source figures already carry decisive geometry where a figure is needed; q1-q6/q21 are algebraic/coordinate computations reproducible from text; no distinct solution-only construction is required",
-    "V1": "23/23 PASS",
-    "V2": "NOT_APPLICABLE_NO_NEW_SVG",
-    "V3": "NOT_APPLICABLE_NO_NEW_SVG",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "note": "All raster problem visuals were inspected against the final source/solution facts. No connected solution SVG/solutionImage exists, so CODE-FIRST connected-visual denominator is 0."
   },
   "meta": {
-    "status": "PASS_STATIC_CONTRACT_PROJECTION",
-    "denominator": 23,
-    "decisionIsolationStatus": "PASS",
-    "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-    "EXISTING_REUSE": 13,
-    "FAMILY_REUSE": 3,
-    "RPM_PRIMARY_MIGRATION_GAP": 6,
-    "ROUTE_OUT": 1,
-    "TRUE_HOLD": 0,
-    "knownMetaRepairPending": 0,
-    "difficultyBuckets": {
-      "1": 1,
-      "2": 7,
-      "3": 10,
-      "4": 5,
-      "5": 0
-    },
-    "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME",
-    "metaIndexGitBlobSha": "de721a53740d3455e46bfed26a87835579999fe7",
-    "resolverEvidenceShardCount": 8
+    "reviewStatus": "INHERITED_NOT_REVIEWED_IN_PRODUCTION_REVIEW",
+    "note": "Meta/RPM/L3/L4/CrossConcept/difficulty adjudication is excluded from current 3-review production scope."
   },
   "basicIntegrity": {
     "status": "PASS",
     "finalQuestionCount": 23,
-    "sourceResetMode": "EXACT_SOURCE_BLOB",
-    "runtimeStringBasicIntegrity": "PASS_STATIC",
-    "protectedFieldParity": "23/23 PASS"
+    "uniqueIds": "23/23",
+    "duplicateIdCount": 0,
+    "objectiveChoiceCount": "20/20 have 5 choices",
+    "subjectiveChoiceCount": "3/3 have 0 choices",
+    "nonemptyAnswer": "23/23 PASS",
+    "nonemptySolution": "23/23 PASS",
+    "protectedFieldParity": "23/23 PASS",
+    "connectorV8Parse": "PASS"
   },
-  "createSelfCheck": {
-    "CREATE_SELF_CHECK_PASS": true,
-    "solutionSelfCheckStatus": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "questionLayoutStatus": "PASS",
-    "sourceTextExactParityStatus": "PASS",
-    "choicesExactParityStatus": "PASS",
-    "knownRepairPending": {
-      "solution": 0,
-      "visual": 0,
-      "layout": 0,
-      "meta": 0
+  "createSelfCheckAudit": {
+    "status": "PASS_CONFIRMED",
+    "falsePassQuestions": [],
+    "falsePassAxes": [],
+    "note": "Independent REVIEW1 found no source/math/solution/layout/active-visual defect."
+  },
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "visualRepairPending": 0,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "items": [
+    {
+      "q": 1,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
     },
-    "requiredVisualMissing": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  }
+    {
+      "q": 2,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 3,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 4,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 5,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 6,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 7,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q07_diagram.png",
+        "gitBlobSha": "449f56c5f54ff140ccd97af02737e37078686e5a",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 8,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q08.png",
+        "gitBlobSha": "3b1267d6dc7be3bd6d02a6aa295750e2a92de221",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 9,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q09.png",
+        "gitBlobSha": "889459d5125813e4a49611a91456e62c68797dc2",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 10,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q10.png",
+        "gitBlobSha": "dfa1e782b0ce1a61d9e3ec9a74bf500dab40005b",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 11,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q11.png",
+        "gitBlobSha": "eeb2d52162ae0b578f97409990c6ed7f82c13456",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 12,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q12.png",
+        "gitBlobSha": "74ab56520f6a42c400499ce02b436a9d01a8d800",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 13,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q13.png",
+        "gitBlobSha": "4baaf492d9178ae493488a1331c738ecc79afddf",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 14,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q14.png",
+        "gitBlobSha": "c3580fea20bb28c51ecc182b7eaf0cf167656f3e",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 15,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q15.png",
+        "gitBlobSha": "16b4e5e1d4d6baada622fb88f23a6ae4dce6083b",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 16,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q16.png",
+        "gitBlobSha": "dbcd1145a342c65daaf2e7e8d1fbfa360c53b415",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 17,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q17.png",
+        "gitBlobSha": "7e6751b6e875ff7f757004485abd49edd72ea5fa",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 18,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q18.png",
+        "gitBlobSha": "ce24857672af598504dbb1cdad421c16767f274c",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 19,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q19.png",
+        "gitBlobSha": "c5adcd6805ebd09af43b7d565c6b5272646bc54c",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 20,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q20.png",
+        "gitBlobSha": "b1b2db98d996e9378acdc81d809c028a64759864",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 21,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "VISUAL_EXEMPT_OR_TEXT_SUFFICIENT",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false
+      }
+    },
+    {
+      "q": 22,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q22.png",
+        "gitBlobSha": "1c07911435754b7dd6193ccaa1301827d63b368f",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    },
+    {
+      "q": 23,
+      "sourceExactParity": "PASS",
+      "choicesExactParity": "PASS",
+      "answerExactParity": "PASS",
+      "math": "PASS",
+      "solution": "KEEP",
+      "reproducibility": "PASS",
+      "microLayout": "KEEP",
+      "curriculumTerminology": "PASS",
+      "studentLanguage": "PASS",
+      "visual": {
+        "disposition": "SOURCE_PROBLEM_VISUAL_REVIEWED",
+        "problemImage": "assets/images/25_연향중_2학기_중간_중2_수학/q23.png",
+        "gitBlobSha": "41a3c5ae385eeab6106bc8b98075f2002cf0adb5",
+        "connectedSolutionSvg": false,
+        "connectedSolutionImage": false,
+        "review": "MANUAL_CURRENT_BYTES_PASS"
+      }
+    }
+  ]
 }

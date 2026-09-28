@@ -1,77 +1,107 @@
 {
-  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_v1",
+  "schema": "JS_ARCHIVE_R1_INTAKE_RECEIPT_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "25_연향중_2학기_중간_중2_수학.js",
   "examUid": "25_연향중_2학기_중간_중2_수학",
-  "lane": "B",
-  "stage": "CREATE",
-  "nextState": "READY_FOR_REVIEW",
+  "lane": "REVIEW1-2",
+  "stage": "R1",
+  "nextState": "READY_FOR_REVIEW2",
   "sourceBlobSha": "dbbe02b175101b6a4954d37ee31d1867c5d2ab45",
   "totalQuestions": 23,
-  "sourceTextExactParityStatus": "PASS",
-  "choicesExactParityStatus": "PASS",
-  "questionLayoutStatus": "PASS",
-  "solutionSelfCheckStatus": "PASS",
-  "svgRuleComplianceStatus": "NOT_APPLICABLE",
-  "CREATE_SELF_CHECK_PASS": true,
-  "requiredVisualMissing": 0,
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
-    "layout": 0,
-    "meta": 0
+    "layout": 0
   },
-  "sourceParity": {
-    "content": "23/23 PASS",
+  "evidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_연향중_2학기_중간_중2_수학.evidence.json",
+    "gitBlobSha": "7745c5057e1f82c3191b1bb07fcb6b6d12dccfa6"
+  },
+  "mainAuthorityCommit": "9a955143a4d636c69c4aa27430459f513d03879d",
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "commitBinding": "SELF",
+  "grade": "M2",
+  "sourceLane": "B",
+  "reviewStage": "REVIEW1_DONE",
+  "status": "READY",
+  "inputCommit": "cb023aec1d671fdc1a6eb169d8b29bce5e642e70",
+  "changedQuestions": [],
+  "changedSolutionQuestions": [],
+  "changedSvgFiles": [],
+  "sourceParitySummary": {
+    "contentExact": "23/23 PASS",
     "choices": "23/23 PASS",
     "answer": "23/23 PASS",
-    "problemImageRef": "23/23 PASS",
-    "problemPngAssetGitBlob": "16/16 PASS"
+    "imageRefs": "23/23 PASS",
+    "referencedSourceImages": "16/16 MANUAL_CURRENT_BYTES_PASS"
   },
-  "questionLayout": {
-    "KEEP": 23,
-    "REFORMAT": 0,
-    "HOLD": 0,
-    "policy": "AUTO-FIRST",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  "mathDispositionSummary": {
+    "PASS": 23,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
   },
-  "solution": {
+  "solutionDispositionSummary": {
     "KEEP": 23,
     "REPAIR": 0,
     "TRUE_HOLD": 0
   },
-  "visual": {
-    "sourceProblemVisuals": "16/16 PASS",
-    "solutionSvgInventory": "0",
-    "requiredVisualMissing": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  "reproducibilitySummary": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0
   },
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 13,
-    "FAMILY_REUSE": 3,
-    "RPM_PRIMARY_MIGRATION_GAP": 6,
-    "ROUTE_OUT": 1,
-    "TRUE_HOLD": 0
+  "microLayoutSummary": {
+    "KEEP": 23,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0,
+    "polishQuestions": []
   },
-  "difficultyBucketSummary": {
-    "1": 1,
-    "2": 7,
-    "3": 10,
-    "4": 5,
-    "5": 0
+  "curriculumTerminologySummary": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0,
+    "fixQuestions": []
   },
-  "evidenceRef": {
-    "path": "archive/data/r2e-intake/m2/25_연향중_2학기_중간_중2_수학.evidence.json",
-    "sha256": "sha256:6659d6e6a3783a88e247d51ea110c36dbd0f2b9e33ed4ea0e43fdb4a52a6364b"
+  "studentLanguageSummary": {
+    "PASS": 23,
+    "FIX": 0,
+    "HOLD": 0,
+    "fixQuestions": []
   },
-  "metaResolutionEvidenceRef": {
-    "path": "archive/data/r2e-intake/m2/25_연향중_2학기_중간_중2_수학.meta.json",
-    "sha256": "sha256:0b368fa3198938b3231a131c3a0b533247e9256fb4863ebc71a77a13eeb43bd1"
+  "sourceVisualSummary": {
+    "referencedRasterProblemImages": 16,
+    "manualReviewPass": 16,
+    "connectedSolutionSvg": 0,
+    "connectedSolutionImage": 0
   },
-  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-  "mainAuthorityCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "commitBinding": "SELF"
+  "svgDispositionSummary": {
+    "PASS_AFTER_REPAIR": 0,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "CONNECTED": 0
+  },
+  "questionLayoutSummary": {
+    "KEEP": 23,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "status": "PASS",
+    "staticCapacity2upQuestions": []
+  },
+  "createSelfCheckAudit": {
+    "status": "PASS_CONFIRMED",
+    "falsePassQuestions": [],
+    "falsePassAxes": []
+  },
+  "unresolvedItems": [],
+  "metaReviewStatus": "INHERITED_NOT_REVIEWED_IN_PRODUCTION_REVIEW",
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "visualRepairPending": 0,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "updatedAt": "2026-09-28T18:53:12+09:00"
 }
