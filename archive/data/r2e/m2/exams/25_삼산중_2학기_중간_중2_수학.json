@@ -53,8 +53,8 @@
   "cohortHoldBatchStatus": "CLASSIFIED",
   "upperModelPendingCount": 0,
   "releaseGate": "PASS",
-  "finalStatus": "R2E_FINAL",
-  "productionCommit": null,
+  "finalStatus": "R2E_MAIN_FINAL",
+  "productionCommit": "b5d5a4d4153f0fee608b560b890daef0f6bb8cef",
   "productionFileAllowlist": [
     {
       "path": "archive/exams/original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
@@ -94,7 +94,7 @@
   ],
   "productionAllowlistFileCount": 7,
   "missingMainAssetCount": 6,
-  "mainFinalParityStatus": "PENDING",
+  "mainFinalParityStatus": "PASS",
   "artifactRefs": [
     {
       "path": "archive/data/r2e/m2/runs/r2e-20260928-150024-cebe350f/HOLD_INVENTORY_CLASSIFIED.json",
@@ -108,5 +108,9 @@
       "path": "archive/data/r2e/m2/runs/r2e-20260928-150024-cebe350f/gates/25_삼산중_2학기_중간_중2_수학.repair-release-gate.json",
       "sha256": "93cb5d318918ac55796430ff728b57797cb7c4c346ae251e41156177b255103c"
     }
-  ]
+  ],
+  "productionCommitParent": "547519fbd3e8148fc58d04aa07cc09c46034ec43",
+  "remoteMainSha": "b5d5a4d4153f0fee608b560b890daef0f6bb8cef",
+  "mainParityReport": "r2e-20260928-150024-cebe350f/MAIN_PARITY_25_삼산중_2학기_중간_중2_수학.json",
+  "mainFinalAtUtc": "2026-09-28T07:26:50.815Z"
 }
