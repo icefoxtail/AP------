@@ -1,0 +1,116 @@
+{
+  "schema": "JS_ARCHIVE_REVIEW2_EVIDENCE_v1",
+  "examFile": "23_신흥중_2학기_중간_중2_수학.js",
+  "globalInventoryOrdinal": 48,
+  "lane": "REVIEW2-3",
+  "denominator": 24,
+  "independentReview": true,
+  "reviewBaseIntakeCommit": "6a15db8917ef628d34f449ada3ccf5ee6b71445b",
+  "sourceAuthority": "work/rebuild/m2-full-20260928-source@8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "mainAuthority": "e8a815d4b1defe2f9c7c86bc82ff4fbfafda62a2",
+  "sourceExamBlob": "1c92cd38b61dc6b13c3dce79f1a666a79cf8a780",
+  "finalExamBlob": "1c92cd38b61dc6b13c3dce79f1a666a79cf8a780",
+  "result": "PASS_AFTER_REPAIR",
+  "summary": {
+    "sourceContentChoicesAnswer": "24/24 EXACT_PASS",
+    "math": "24/24 PASS",
+    "solutionReproducibility": "24/24 PASS",
+    "smallBoardCurriculumStudentLanguage": "24/24 PASS",
+    "questionMicroLayout": "24/24 PASS; grid 24/24; 2up 0",
+    "jsIntegrity": "PASS",
+    "problemRaster": "21/21 DIRECT_VISUAL_PASS + SOURCE_BLOB_EXACT",
+    "solutionSvg": "4/4 CODE_FIRST_PASS_AFTER_REPAIR",
+    "hold": 0
+  },
+  "calibration": {
+    "blindDecisionFrozenBeforeCompare": true,
+    "golden": [
+      "25_효천고_2학기_중간_고1_기출 q3",
+      "25_순천여고_2학기_중간_고1_기출 q8"
+    ],
+    "negative": [
+      "24_신흥중_2학기_중간_중2_수학 q5 angle-owner fixture",
+      "25_삼산중_2학기_기말_중2_기출 q12 collision fixture"
+    ],
+    "status": "PASS_AFTER_BLIND_COMPARE"
+  },
+  "visual": {
+    "problemImageQuestions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "solutionSvgQuestions": [
+      19,
+      20,
+      21,
+      24
+    ],
+    "finalSvgBlobs": {
+      "q19": "973b54f32f6644871d15bfd65a2030408ce15979",
+      "q20": "92faef6325dba0748edb7387ed7103fab0b87a01",
+      "q21": "bf7874baf7e711d7e9f6af2d598034c3ae713356",
+      "q24": "6668165464db0ad756a6b446edd36e34b1df8065"
+    },
+    "repair": {
+      "qid": 19,
+      "defect": "LABEL_GEOMETRY_COLLISION",
+      "before": "a6cd95babea4d9d4b9ebc398d197e7374180d68a",
+      "after": "973b54f32f6644871d15bfd65a2030408ce15979",
+      "change": "move ∠BAD=∠DAC annotation x126,y59 -> x18,y58; geometry unchanged",
+      "targetedRender": "PASS",
+      "semanticParity": "PASS"
+    }
+  },
+  "itemMath": {
+    "q1": "-2",
+    "q2": "-3",
+    "q3": "15min",
+    "q4": "110deg",
+    "q5": "80deg",
+    "q6": "choice1",
+    "q7": "68deg",
+    "q8": "choices2,5",
+    "q9": "130deg",
+    "q10": "60deg",
+    "q11": "15cm",
+    "q12": "40deg",
+    "q13": "16cm",
+    "q14": "6cm",
+    "q15": "36cm",
+    "q16": "choice1",
+    "q17": "choices3,4",
+    "q18": "20deg",
+    "q19": "SAS isosceles proof",
+    "q20": "two chord perpendicular bisectors",
+    "q21": "incenter-to-side perpendicular radius",
+    "q22": "ASA via parallel alternate angles",
+    "q23": "opposite angles equal -> opposite sides parallel",
+    "q24": "conditions insufficient; counterexample valid"
+  },
+  "changedSvgFiles": [
+    "archive/assets/images/23_신흥중_2학기_중간_중2_수학/q19-solution.svg"
+  ],
+  "unresolved": [],
+  "stageDecision": "REVIEW2_DONE",
+  "nextState": "READY_FOR_COMMIT",
+  "reviewedAt": "2026-09-29T00:29:00+09:00"
+}
