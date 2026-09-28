@@ -1,68 +1,170 @@
 {
-  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_v1",
+  "schema": "JS_ARCHIVE_R1_INTAKE_RECEIPT_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "25_왕운중_2학기_기말_중2_기출.js",
   "examUid": "25_왕운중_2학기_기말_중2_기출",
-  "lane": "A",
-  "stage": "CREATE",
-  "nextState": "READY_FOR_REVIEW",
+  "grade": "M2",
+  "sourceLane": "A",
+  "lane": "C",
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "C",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
+  "stage": "R1",
+  "status": "READY",
+  "nextState": "READY_FOR_R2E",
   "sourceBlobSha": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925",
+  "inputCommit": "3b74efd8abec4fd7ea108268293626f91bc86bc5",
   "totalQuestions": 23,
   "changedQuestions": [
+    3,
+    4,
+    8,
+    9,
+    11,
+    12,
+    17,
     19,
+    20,
     21,
-    22,
-    23
+    22
   ],
-  "changedSvgFiles": [],
-  "sourceParity": {
-    "content": "23/23 PASS",
+  "changedSvgFiles": [
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q3-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q4-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q8-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q9-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q11-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q12-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q17-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q20-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q21-solution.svg",
+    "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q22-solution.svg"
+  ],
+  "solutionDispositionSummary": {
+    "KEEP": 20,
+    "REPAIR": 3,
+    "TRUE_HOLD": 0
+  },
+  "reproducibilitySummary": {
+    "PASS": 20,
+    "FIX": 3,
+    "HOLD": 0
+  },
+  "microLayoutSummary": {
+    "KEEP": 22,
+    "POLISH": 1,
+    "REFORMAT": 0,
+    "HOLD": 0,
+    "polishQuestions": [
+      11
+    ]
+  },
+  "svgDispositionSummary": {
+    "PASS": 10,
+    "ADD": 10,
+    "REBUILD": 0,
+    "HOLD": 0,
+    "EXEMPT": 13
+  },
+  "metaDispositionSummary": {
+    "RPM_SEMANTIC_FINAL": 23,
+    "PROJECTION_DIRECT_ACTIVE": 8,
+    "PROJECTION_META_ONLY": 15,
+    "ADVANCED_META_HOLD": 0,
+    "TRUE_HOLD": 0
+  },
+  "difficultySummary": {
+    "distribution": {
+      "1": 4,
+      "2": 8,
+      "3": 9,
+      "4": 2,
+      "5": 0
+    },
+    "changedQuestions": [
+      19
+    ]
+  },
+  "questionLayoutSummary": {
+    "KEEP": 23,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "status": "PASS",
+    "subjective2UpQuestions": [
+      21,
+      22,
+      23
+    ]
+  },
+  "sourceParitySummary": {
+    "contentExact": "23/23 PASS",
     "choices": "23/23 PASS",
     "answer": "23/23 PASS",
-    "imageRef": "23/23 PASS",
-    "assetFolderGitBlobParity": "18/18 PASS"
+    "imageRefs": "23/23 PASS",
+    "referencedSourceImages": "17/17 PASS",
+    "sourceAssetFolder": "18/18 PASS"
   },
-  "questionLayoutStatus": "PASS",
-  "solutionSelfCheckStatus": "PASS",
-  "svgRuleComplianceStatus": "NOT_APPLICABLE",
-  "metaDispositionSummary": {
-    "EXISTING_REUSE": 8,
-    "RPM_PRIMARY_MIGRATION_GAP": 14,
-    "TRUE_HOLD": 1
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      3,
+      4,
+      8,
+      9,
+      11,
+      12,
+      17,
+      19,
+      20,
+      21,
+      22
+    ],
+    "falsePassAxes": [
+      "VISUAL_REQUIREMENT",
+      "PROBABILITY_SOURCE_INTERPRETATION_Q19",
+      "CURRICULUM_TERMINOLOGY_Q8",
+      "MICRO_NOTATION_Q11"
+    ]
   },
-  "unresolvedItems": [
-    {
-      "questionUid": "qid_v1_7ae33b94c82f02e93ff48e0d24e27e3dc5351640d9db4c017bd9afb899c6eb00",
-      "sourceOrdinal": 19,
-      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-      "class": "GENUINE_SOURCE_HOLD"
-    }
-  ],
+  "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_20_REPAIR_3_HOLD_0",
+  "svgRuleComplianceStatus": "PASS_10_TARGETED_ADD_V2_V3_RENDER_HANDOFF",
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
     "layout": 0,
-    "meta": 0
+    "meta": 0,
+    "requiredVisualMissing": 0
   },
-  "requiredVisualMissing": 0,
-  "CREATE_SELF_CHECK_PASS": true,
-  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "inputAuthority": {
-    "sourceCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-    "mainCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "intakeBaseHead": "ce631d25b8fa369074576bc5276bbd30dbaad2e3"
-  },
-  "evidenceRef": {
-    "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.evidence.json",
-    "sha256": "sha256:f087e217f283b8ab2d4a65ddf42e0e79a4c1259da2e4dc23ab0e127d032e6b93"
+  "r1ZeroResolvable": {
+    "resolvablePending": 0,
+    "rpmSemanticUnresolved": 0,
+    "deterministicBindingMaterializationPending": 0,
+    "safeReuseRpmOnlyPending": 0,
+    "createR1ResolvableConflicts": 0,
+    "projectionMetaOnly": 15
   },
   "metaResolutionEvidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.meta.json",
-    "sha256": "sha256:0ff34551a13cb614ebde77f8df28fe4fbcc28862a207434d9e44c6065fc1682c"
+    "sha256": "sha256:a07ec1ef93fcf93914e153afdce89cad63a98187220199773f838c8787fc0edf"
+  },
+  "evidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_왕운중_2학기_기말_중2_기출.evidence.json",
+    "sha256": "sha256:3f41cb421de388f2021406f4aa3265647476223724e2bdb709141b72864beb81"
   },
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 15,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
   "commitBinding": "SELF",
-  "updatedAt": "2026-09-28T07:08:52+09:00"
+  "updatedAt": "2026-09-28T10:40:00+09:00"
 }
