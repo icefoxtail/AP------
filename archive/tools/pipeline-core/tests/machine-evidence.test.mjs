@@ -10,7 +10,7 @@ import { profiles, runInputSha } from '../closure.mjs';
 import { requiredAxesForQuestion } from '../projection.mjs';
 import { computeV2AxisInputShas } from '../v2-audit.mjs';
 import { initWorkBatch, freezeWorkBatch, reserveWorkBatchReview, readWorkBatch } from '../work-batch.mjs';
-import { collectMachineEvidence, isChoicesContractValid } from '../machine-evidence.mjs';
+import { collectMachineEvidence, isChoicesContractValid, isInlineStatementObjective } from '../machine-evidence.mjs';
 import { validateCurriculumBinding, validateStudentSerialization } from '../student-output.mjs';
 import { validateEvidenceFreshness, validateMachineEvidence, validateTypedEvidence } from '../review-evidence-v2.mjs';
 import { validateSchema } from '../schema.mjs';
@@ -55,6 +55,14 @@ function fixture(t, options = {}) {
 
 test('choices contract keeps normal objective arrays valid', () => {
   assert.equal(isChoicesContractValid({ questionType: '객관식', choices: ['1', '2', '3', '4', '5'] }), true);
+});
+
+test('choices contract accepts source statements embedded in content without renderer-injected duplicates', () => {
+  const inline = { questionType: '객관식', choices: [], content: '다음은 보기 중 옳은 것을 모두 고르시오.\n보기\nㄱ. 첫째 문장\nㄴ. 둘째 문장\nㄷ. 셋째 문장' };
+  assert.equal(isInlineStatementObjective(inline), true);
+  assert.equal(isChoicesContractValid(inline), true);
+  assert.equal(isInlineStatementObjective({ ...inline, content: '보기\nㄱ. 하나' }), false);
+  assert.equal(isChoicesContractValid({ ...inline, content: '선택할 내용 없음' }), false);
 });
 
 test('choices contract accepts an image-only objective with omitted choices', () => {

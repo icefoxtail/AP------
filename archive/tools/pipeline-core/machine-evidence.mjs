@@ -31,10 +31,17 @@ export function isImageOnlyObjective(question) {
     question.tags.includes(IMAGE_ONLY_OBJECTIVE_TAG);
 }
 
+export function isInlineStatementObjective(question) {
+  if (!OBJECTIVE_TYPES.has(questionType(question)) || !Array.isArray(question?.choices) || question.choices.length !== 0) return false;
+  const content = typeof question?.content === 'string' ? question.content : '';
+  if (!/보기/.test(content)) return false;
+  const labels = [...content.matchAll(/^\s*([ㄱ-ㅎ])\s*[.．)）]\s*/gm)].map(match => match[1]);
+  return new Set(labels).size >= 2;
+}
 export function isChoicesContractValid(question) {
   if (Object.hasOwn(question || {}, 'choices')) {
     if (!Array.isArray(question.choices)) return false;
-    if (question.choices.length === 0) return isImageOnlyObjective(question) || /^(서술형|서답형|단답형|주관식|subjective|essay|short_answer)$/.test(questionType(question));
+    if (question.choices.length === 0) return isImageOnlyObjective(question) || isInlineStatementObjective(question) || /^(서술형|서답형|단답형|주관식|subjective|essay|short_answer)$/.test(questionType(question));
     return true;
   }
   return isImageOnlyObjective(question);
