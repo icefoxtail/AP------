@@ -161,7 +161,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q5-solution.svg"
   },
   {
     "id": 6,
@@ -226,7 +227,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q7-solution.svg"
   },
   {
     "id": 8,
@@ -321,7 +323,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q10-solution.svg"
   },
   {
     "id": 11,
@@ -416,7 +419,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -480,7 +484,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q15-solution.svg"
   },
   {
     "id": 16,
@@ -567,6 +572,7 @@ window.questionBank=[
     "choices": [],
     "answer": "$\\angle B=\\angle C$",
     "solution": "[키포인트] 꼭지각의 이등분선으로 두 삼각형을 만들고 SAS 합동을 증명한다.\n조건 정리: $AB=AC$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선이 $BC$와 만나는 점을 $D$라 한다.\n풀이 방향: $\\triangle ABD$와 $\\triangle ACD$의 두 변과 그 끼인각을 비교한다.\n정석 풀이: (1) $AB=AC$인 삼각형 $ABC$를 그리고, $\\angle A$의 이등분선 $AD$를 그어 $BC$와 만나게 한다. (2) $AB=AC$이고, $AD$는 공통인 변이다. 또한 $AD$가 $\\angle A$의 이등분선이므로 $\\angle BAD=\\angle CAD$이다. 따라서 두 변과 그 끼인각이 각각 같으므로 $\\triangle ABD\\cong\\triangle ACD$이다. 합동인 두 삼각형의 대응각은 같으므로 $\\angle ABD=\\angle ACD$, 즉 $\\angle B=\\angle C$이다.\n따라서 두 밑각의 크기는 같다.",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q18-solution.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -597,7 +603,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q19-solution.svg"
   },
   {
     "id": 20,
@@ -624,7 +631,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q20-solution.svg"
   },
   {
     "id": 21,
@@ -648,6 +656,7 @@ window.questionBank=[
     "answer": "$AB=CD$, $BC=AD$",
     "solution": "[키포인트] 평행사변형에 대각선을 그어 두 삼각형의 ASA 합동을 증명한다.\n조건 정리: 평행사변형 $ABCD$에서 $AB\\parallel CD$, $BC\\parallel AD$이다.\n풀이 방향: 대각선 $AC$를 그어 $\\triangle ABC$와 $\\triangle CDA$의 두 각과 공통변을 비교한다.\n정석 풀이: $AB\\parallel CD$이므로 엇각 $\\angle BAC=\\angle DCA$이다. 또한 $BC\\parallel AD$이므로 엇각 $\\angle BCA=\\angle DAC$이다. 두 삼각형에서 $AC$는 공통인 변이므로 두 각과 그 사이의 변이 각각 같아 $\\triangle ABC\\cong\\triangle CDA$이다. 따라서 대응변의 길이가 같아 $AB=CD$, $BC=AD$이다.\n따라서 평행사변형의 두 쌍의 대변의 길이는 각각 같다.",
     "image": "assets/images/24_신흥중_2학기_중간_중2_수학/q21.png",
+    "solutionImage": "assets/images/24_신흥중_2학기_중간_중2_수학/q21-solution.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
