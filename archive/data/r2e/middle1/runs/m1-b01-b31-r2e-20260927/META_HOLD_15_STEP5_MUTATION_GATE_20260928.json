@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "M1_META_HOLD_15_STEP5_MUTATION_GATE_v1",
+  "stage": "STEP5_MUTATION_GATE",
+  "status": "NOOP_CLOSED_NO_PRODUCTION_MUTATION_REQUIRED",
+  "createdAgainstMain": "9573ca2dbbf20752b680d8f8ff857d23efa8b87d",
+  "physicalStateHeadBefore": "22eb54e2fb149be2be60b277c7d581f64b096118",
+  "input": {
+    "path": "archive/data/r2e/middle1/runs/m1-b01-b31-r2e-20260927/META_HOLD_15_STEP4_PROJECTION_DISPOSITION_20260928.json",
+    "blobSha": "e2286fa96bdf6d5f8e58eb1c4884cc6fa6477a39",
+    "commitSha": "22eb54e2fb149be2be60b277c7d581f64b096118"
+  },
+  "gateEvidence": {
+    "targetCount": 15,
+    "semanticFinalTotal": 10,
+    "metaOnlyCount": 10,
+    "trueMetaHoldCount": 5,
+    "currentPopulatedInvalidCanonicalKeyQuestions": 0,
+    "priorJsChanged": {
+      "exams": 0,
+      "questions": 0
+    },
+    "mainDriftSinceStep4": false,
+    "reason": "Step 4 established zero populated invalid canonical-key questions. Current main is unchanged since Step 4, so no target JS requires canonical-key repair."
+  },
+  "mutationDecision": {
+    "productionJsMutationRequired": false,
+    "examsChanged": 0,
+    "questionsChanged": 0,
+    "stagedFiles": [],
+    "commitsCreatedOnMain": 0,
+    "pushesToMain": 0,
+    "generatedGlobalFilesChanged": 0
+  },
+  "safeguards": {
+    "b19Reopened": false,
+    "b25Reopened": false,
+    "r2eMainFinalReopened": 0,
+    "normalPassReopened": 0,
+    "sourceMathSolutionSvgDifficultyLayoutReopened": false,
+    "newL3L4Created": false,
+    "globalTaxonomyRedesign": false,
+    "catalogRuntimeIndexRegeneration": false,
+    "gitAddDotUsed": false,
+    "gitAddAllUsed": false
+  },
+  "remainingSemanticBlockers": [
+    {
+      "B": "B15",
+      "q": 20,
+      "questionUid": "qid_v1_aa67f2a9ec608f26ddcb2a911e675f1db7ebef15bd969c2b9dde373fde0bbeb3",
+      "reason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "B": "B16",
+      "q": 14,
+      "questionUid": "qid_v1_5dc391015ed027a806eaf6697a7f49cbf59c8c1a68b99a62a59c67aeb1be5194",
+      "reason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "B": "B17",
+      "q": 23,
+      "questionUid": "qid_v1_4449ad0a401e744e39838df6077b897146763b5bbb3750a66c6747134db68357",
+      "reason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "B": "B18",
+      "q": 6,
+      "questionUid": "qid_v1_d00a79792c83e1631d2684f7a460bb3c452534b44b4d33fa3f158e73776c4e53",
+      "reason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION"
+    },
+    {
+      "B": "B18",
+      "q": 13,
+      "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
+      "reason": "SEMANTIC_HOLD_NO_COMPATIBILITY_PROJECTION"
+    }
+  ],
+  "releaseEffect": {
+    "semanticFinalMetaOnlyItems": "NONBLOCKING",
+    "trueMetaHoldItems": "REMAIN_BLOCKING",
+    "mutationGate": "PASS_NOOP"
+  },
+  "nextStartPoint": "STEP6_FINAL_LEDGER_AND_REPORT"
+}
