@@ -281,12 +281,13 @@ window.questionBank=[
       "$15\\mathrm{cm}^2$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 중점연결선 $DE$와 무게중심의 위치를 이용해 같은 밑변을 가진 두 삼각형의 높이비를 구한다.\n조건 정리: $D,E$는 각각 $AB,AC$의 중점이고, 중선 $CD$, $BE$가 $G$에서 만난다. $[ADE]=30$이다.\n풀이 방향: $DE\\parallel BC$에서 $A$와 $G$가 $DE$까지 가지는 높이의 비를 구한다.\n정석 풀이: 좌표 또는 닮음 관계로 보면 $DE$는 $BC$와 평행하며 $A$에서 $DE$까지의 높이는 전체 높이의 $\\dfrac12$이다. 무게중심 $G$는 꼭짓점에서 밑변까지 높이의 $\\dfrac23$ 지점에 있으므로 $G$에서 $DE$까지의 높이는 전체 높이의 $\\dfrac16$이다. 따라서 높이의 비는 $\\dfrac16:\\dfrac12=1:3$이다. 두 삼각형은 밑변 $DE$가 같으므로 $[GDE]=30\\div3=10\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 중점연결선 $DE$와 무게중심의 $2:1$ 성질을 높이비로 바꾸면 같은 밑변 $DE$를 가진 두 삼각형의 넓이비를 구할 수 있다.\n조건 정리: $D,E$는 각각 $AB,AC$의 중점이므로 $DE\\parallel BC$이고, $G$는 무게중심이다. $[ADE]=30$이다.\n풀이 방향: $\\triangle ABC$의 높이를 $h$라 두고 $A$와 $G$에서 $DE$까지의 거리를 비교한다.\n정석 풀이: $D,E$가 중점이므로 $DE\\parallel BC$이고, $A$에서 $DE$까지의 거리는 $\\dfrac h2$이다. 무게중심 $G$는 중선을 꼭짓점 쪽에서 $2:1$로 나누므로 $G$에서 $BC$까지의 거리는 $\\dfrac h3$이다. 따라서 $G$에서 $DE$까지의 거리는 $\\dfrac h2-\\dfrac h3=\\dfrac h6$이다. $\\triangle ADE$와 $\\triangle GDE$는 밑변 $DE$가 같으므로 넓이비는 $\\dfrac h2:\\dfrac h6=3:1$이다. 따라서 $[GDE]=30\\div3=10\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_금당중_2학기_중간_중2_수학/q9.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q9-solution.svg"
   },
   {
     "id": 10,
@@ -318,7 +319,8 @@ window.questionBank=[
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q10-solution.svg"
   },
   {
     "id": 11,
@@ -377,8 +379,8 @@ window.questionBank=[
     ],
     "answer": "①",
     "solution": "[키포인트] 미지수가 두 개이고 각 미지수의 차수가 $1$이며 등호가 있는 식이어야 한다.\n조건 정리: 보기의 식을 방정식인지, 미지수의 개수가 두 개인지, 차수가 모두 $1$인지 확인한다.\n풀이 방향: 세 조건을 동시에 만족하는 보기를 찾는다.\n정석 풀이: ① $x-3y=12$는 미지수 $x,y$가 각각 일차로 나타나는 방정식이다. ②는 등호가 없는 식이고, ③과 ④에는 제곱항이 있으며, ⑤는 미지수가 $x$ 하나뿐이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -407,8 +409,8 @@ window.questionBank=[
     ],
     "answer": "②",
     "solution": "[키포인트] 자연수 $x$의 가능한 범위를 먼저 정한 뒤 $y$가 자연수가 되는지 확인한다.\n조건 정리: $4x+3y=19$이고 $x,y$는 양의 자연수이다.\n풀이 방향: $4x<19$이므로 $x=1,2,3,4$만 대입하면 된다.\n정석 풀이: $x=1$이면 $y=5$, $x=2$이면 $y=\\dfrac{11}{3}$, $x=3$이면 $y=\\dfrac73$, $x=4$이면 $y=1$이다. 자연수 순서쌍은 $(1,5)$와 $(4,1)$의 두 개이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
-    "subUnit": "연립일차방정식의 활용",
+    "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+    "subUnit": "연립일차방정식",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -704,7 +706,8 @@ window.questionBank=[
     "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
     "subUnit": "평행선 사이의 선분의 길이의 비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_금당중_2학기_중간_중2_수학/q23-solution.svg"
   },
   {
     "id": 24,

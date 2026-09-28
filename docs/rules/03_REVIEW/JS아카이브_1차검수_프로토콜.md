@@ -308,4 +308,6 @@ REVIEW1에서 SVG/solutionImage를 확인할 때 **"필요한 숫자와 문구�
 `GEOMETRY_FACT_PASS / LABEL_OWNER_BINDING_PASS / LABEL_COLLISION_PASS / COORDINATE_SEMANTIC_PASS`.
 
 회귀 기준으로 다음 4건과 동형 결함을 반드시 적발한다:
+> **Negative Sample authority (2026-09-28 repair closure):** 아래 4건의 실패본은 `archive/fixtures/visual-negative-regressions/2026-09-28/README.md`와 같은 폴더의 frozen SVG를 사용한다. 현재 production `archive/assets/images/...` SVG는 정상 수리본이며 Negative Sample authority로 사용하지 않는다.
+
 `24 신흥중 중2 중간 q5`, `25 삼산중 중2 기말 q12`, `25 삼산중 중2 중간 q13`, `25 삼산중 중2 중간 q24`.
