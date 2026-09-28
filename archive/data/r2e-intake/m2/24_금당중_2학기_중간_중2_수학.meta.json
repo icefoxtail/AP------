@@ -1,0 +1,3527 @@
+{
+  "schemaVersion": "JS_ARCHIVE_RESET_CREATE_META_EVIDENCE_v2",
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "lane": "B",
+  "stage": "CREATE",
+  "examUid": "24_금당중_2학기_중간_중2_수학",
+  "examFile": "24_금당중_2학기_중간_중2_수학.js",
+  "grade": "M2",
+  "generatedAgainst": {
+    "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+    "sourceCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858"
+  },
+  "decisionIsolation": {
+    "status": "PASS",
+    "candidateVisibleDuringDecision": false,
+    "semanticOrder": "source+verified final solution→primaryMethod→decisiveStep→RPM Primary→middle2 crosswalk→GLOBAL ACTIVE compatibility projection"
+  },
+  "authority": {
+    "archive/tools/meta-foundation/rpm-active-resolver.mjs": "438dd30d846198875a71404e8910bc9a0c69d372",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-1.md": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+    "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md": "779aa2f9b78997505104492cf2adfe07f520a475"
+  },
+  "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME",
+  "rpmSemanticSummary": {
+    "FINAL": 25,
+    "HOLD": 0,
+    "unresolved": 0
+  },
+  "projectionSummary": {
+    "PROJECTION_REUSE": 7,
+    "PROJECTION_BINDING_PENDING": 1,
+    "PROJECTION_UNMATERIALIZED": 17,
+    "META_ONLY_COMPATIBILITY_PENDING": 0,
+    "META_ONLY": 18
+  },
+  "difficultySummary": {
+    "1": 3,
+    "2": 7,
+    "3": 8,
+    "4": 7,
+    "5": 0
+  },
+  "knownMetaRepairPending": 0,
+  "resolvablePending": 0,
+  "items": [
+    {
+      "q": 1,
+      "questionUid": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+      "sourceOrdinal": 1,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+          "sourceIdentityKey": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+          "sourceOrdinal": 1,
+          "contentHash": "sha256:0053da1da060c0eefe87098354b800e0dcbca573d8587fa21336aa9710179adb",
+          "choicesHash": "sha256:aa69d1e20857d7ca0602123c1fd970ad1d22d4d128eda90f5a23e3aadd9a1935",
+          "imageRefHash": "sha256:680bee2f2a3b7ae731a603619ba67964a3b5ed37895912159eee22b6831f8692",
+          "sourceFingerprint": "sha256:38b50b789047b9d275a5bbb40e2910a0101a5f4f1bfc0f279f339828983102b7"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:267fd981d92599560c9b866349bb0661c10a4e86ee275bd2b426544887613189",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "닮음비로 대응변 길이를 복원",
+          "decisiveStep": "닮음비 3:1에서 EF=8, DF=6이므로 둘레는 21",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮은 도형",
+            "l4": "닮음비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:38b50b789047b9d275a5bbb40e2910a0101a5f4f1bfc0f279f339828983102b7",
+        "inputBundleSha": "sha256:76a3195c5eacff204ec0c5ce6c9a333fd5b1138fc3a0607d4be40607b6fda150",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+            "sourceIdentityKey": "qid_v1_38648119a7cfd40c88704b2ac057158b9cff04df390338d3abcec8126182bc8f",
+            "sourceOrdinal": 1,
+            "contentHash": "sha256:0053da1da060c0eefe87098354b800e0dcbca573d8587fa21336aa9710179adb",
+            "choicesHash": "sha256:aa69d1e20857d7ca0602123c1fd970ad1d22d4d128eda90f5a23e3aadd9a1935",
+            "imageRefHash": "sha256:680bee2f2a3b7ae731a603619ba67964a3b5ed37895912159eee22b6831f8692",
+            "sourceFingerprint": "sha256:38b50b789047b9d275a5bbb40e2910a0101a5f4f1bfc0f279f339828983102b7"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:267fd981d92599560c9b866349bb0661c10a4e86ee275bd2b426544887613189",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "닮음비로 대응변 길이를 복원",
+            "decisiveStep": "닮음비 3:1에서 EF=8, DF=6이므로 둘레는 21",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮은 도형",
+              "l4": "닮음비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-084",
+        "crosswalkRecordId": "M2-RPM-084",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:a6ccb8e5e136a459a6027568243ce8d6297502c8a80d5d83c1e92216c2c9826d"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:38b50b789047b9d275a5bbb40e2910a0101a5f4f1bfc0f279f339828983102b7",
+        "solutionHash": "sha256:267fd981d92599560c9b866349bb0661c10a4e86ee275bd2b426544887613189",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:a300221c608f603761b4d887242c5181281bb7ad7113c4d1ed972880f06a6b55"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:38b50b789047b9d275a5bbb40e2910a0101a5f4f1bfc0f279f339828983102b7",
+        "inputBundleSha": "sha256:76a3195c5eacff204ec0c5ce6c9a333fd5b1138fc3a0607d4be40607b6fda150",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:7eb634c6d7251ef4953bb5fb7f3930606ca87b041e5a1aeb4d67e888f9204b77"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 2,
+      "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+      "sourceOrdinal": 2,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+          "sourceIdentityKey": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+          "sourceOrdinal": 2,
+          "contentHash": "sha256:9d66c89be16e03d4267061f1a8acb41584548fc41616b9a7b53b46ee1ea4b5f0",
+          "choicesHash": "sha256:e53f9b86070c8a17b865caf5f39deaf0b94c10ed25ac8f73a0afa35b3d5a9fb4",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:ef51595c43c103c60b9ac3582333faefb4ed96bd164deeaa21527ab8b4de5cca"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:0bfb51261689b58987046c38f85cd90dd116c697a4ed57a1aca6f1bf7ba60a7a",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "대응각 구조로 항상 닮음 여부 판정",
+          "decisiveStep": "같은 한 각이 꼭지각과 밑각에 다르게 대응할 수 있어 항상 닮지는 않음",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮은 도형",
+            "l4": "대응변·대응각"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:ef51595c43c103c60b9ac3582333faefb4ed96bd164deeaa21527ab8b4de5cca",
+        "inputBundleSha": "sha256:c28ee25b8770a53b4a78776e043a21da85fc59669e488c20e32e21cc79efb915",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+            "sourceIdentityKey": "qid_v1_ac4b1e15bc214e9bf15040ae0bc244703d15a0123d96f8e5867296ca6acb39e6",
+            "sourceOrdinal": 2,
+            "contentHash": "sha256:9d66c89be16e03d4267061f1a8acb41584548fc41616b9a7b53b46ee1ea4b5f0",
+            "choicesHash": "sha256:e53f9b86070c8a17b865caf5f39deaf0b94c10ed25ac8f73a0afa35b3d5a9fb4",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:ef51595c43c103c60b9ac3582333faefb4ed96bd164deeaa21527ab8b4de5cca"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:0bfb51261689b58987046c38f85cd90dd116c697a4ed57a1aca6f1bf7ba60a7a",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "대응각 구조로 항상 닮음 여부 판정",
+            "decisiveStep": "같은 한 각이 꼭지각과 밑각에 다르게 대응할 수 있어 항상 닮지는 않음",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮은 도형",
+              "l4": "대응변·대응각"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-085",
+        "crosswalkRecordId": "M2-RPM-085",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:fe5db3a5998b5d52b872d1b0b94c6e401767c33842825f0df86450a0239134b6"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:ef51595c43c103c60b9ac3582333faefb4ed96bd164deeaa21527ab8b4de5cca",
+        "solutionHash": "sha256:0bfb51261689b58987046c38f85cd90dd116c697a4ed57a1aca6f1bf7ba60a7a",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:1809f495997d83da639dd07af432e9bba27ab26810885ebca075096b05c5471b"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:ef51595c43c103c60b9ac3582333faefb4ed96bd164deeaa21527ab8b4de5cca",
+        "inputBundleSha": "sha256:c28ee25b8770a53b4a78776e043a21da85fc59669e488c20e32e21cc79efb915",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:945dcca8fe1be7716ce121087dbde9681dab26b671fb97d0eaf2d8e9ba9c5167"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 3,
+      "questionUid": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+      "sourceOrdinal": 3,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+          "sourceIdentityKey": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+          "sourceOrdinal": 3,
+          "contentHash": "sha256:35d868fc425ad5cd4b4cd01ef9636465034d4da95e06fc35af10ea9556101dc6",
+          "choicesHash": "sha256:d2155b54d5c70bda79180a3cc3a161c75f561ed9222893401611ec590202fc24",
+          "imageRefHash": "sha256:c30f6d3f5bfb823b324e04b65f5af339b776ebb007672cb98d2664281c5fb023",
+          "sourceFingerprint": "sha256:f77279e565b02d77cc716777f6ee775015f1cb25993ff8ac0d7f0add2408632b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:c1a6e145a9fbbfc7f040406dba6e869a4812b0452bb5721cd602db7a18666746",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중점과 평행선을 이용한 기본 비례",
+          "decisiveStep": "M이 중점이고 MN∥BC이므로 AM=7/2, MN=11/2, 합은 9",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "삼각형과 평행선",
+            "l4": "기본 비례"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:f77279e565b02d77cc716777f6ee775015f1cb25993ff8ac0d7f0add2408632b",
+        "inputBundleSha": "sha256:b9f50ab68a2929d15e834f22af63c23ec96d873b8518bb7a9a30b977ed6d5325",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+            "sourceIdentityKey": "qid_v1_69e8e806a6dbb7c913710ef88977575f0df80c0350e5d3b2505e2975c112430d",
+            "sourceOrdinal": 3,
+            "contentHash": "sha256:35d868fc425ad5cd4b4cd01ef9636465034d4da95e06fc35af10ea9556101dc6",
+            "choicesHash": "sha256:d2155b54d5c70bda79180a3cc3a161c75f561ed9222893401611ec590202fc24",
+            "imageRefHash": "sha256:c30f6d3f5bfb823b324e04b65f5af339b776ebb007672cb98d2664281c5fb023",
+            "sourceFingerprint": "sha256:f77279e565b02d77cc716777f6ee775015f1cb25993ff8ac0d7f0add2408632b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:c1a6e145a9fbbfc7f040406dba6e869a4812b0452bb5721cd602db7a18666746",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "중점과 평행선을 이용한 기본 비례",
+            "decisiveStep": "M이 중점이고 MN∥BC이므로 AM=7/2, MN=11/2, 합은 9",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "삼각형과 평행선",
+              "l4": "기본 비례"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-091",
+        "crosswalkRecordId": "M2-RPM-091",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:255fc92170cc448ed8b4f1e83a9b90a8522b2e70fdb87d5247dd833612cf7dd8"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:f77279e565b02d77cc716777f6ee775015f1cb25993ff8ac0d7f0add2408632b",
+        "solutionHash": "sha256:c1a6e145a9fbbfc7f040406dba6e869a4812b0452bb5721cd602db7a18666746",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:2c402cf0aba5ed4ad184cc7526cb5cb76cb3fd820dbc3d5aa1c9e556e3cb0eb5"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:f77279e565b02d77cc716777f6ee775015f1cb25993ff8ac0d7f0add2408632b",
+        "inputBundleSha": "sha256:b9f50ab68a2929d15e834f22af63c23ec96d873b8518bb7a9a30b977ed6d5325",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:ed57577678379d336889794b2dcf05040969e3da74237e1b82aee41ea5baaab0"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 4,
+      "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+      "sourceOrdinal": 4,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+          "sourceIdentityKey": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+          "sourceOrdinal": 4,
+          "contentHash": "sha256:17ef1f2b1d77bd06cb44156d2b63daca1428baf16298d4541d35fb948c763f55",
+          "choicesHash": "sha256:f5ec1a32e9201bd175f7be51015a1b6fa73b252f0aae99246d6b92c6f417f1d2",
+          "imageRefHash": "sha256:c767b8feb7dc3c7fc95e28e4db12ac8a1cccb0b0d19d98df4588de81e45c8ed6",
+          "sourceFingerprint": "sha256:e5ae96ad0bc664aba011229cdb85a287403039cefbda1e758ccdada54ebddca0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:2df1d488cbc27075589a3b3c05e88e2fb203534bc015b9cdb9de0e2743272eb7",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "닮은 입체의 부피비 적용",
+          "decisiveStep": "모서리비 1:2이므로 부피비 1:8, 큰 부피는 96",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "넓이·부피 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:e5ae96ad0bc664aba011229cdb85a287403039cefbda1e758ccdada54ebddca0",
+        "inputBundleSha": "sha256:4fb4f99d2ab24a1b16001673224681d7265384991dc2b7458bf77f33a2aa7133",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+            "sourceIdentityKey": "qid_v1_30911c662dbb9da6dd2ee544347ee0c8a0366688572ac46f42270954f61e758e",
+            "sourceOrdinal": 4,
+            "contentHash": "sha256:17ef1f2b1d77bd06cb44156d2b63daca1428baf16298d4541d35fb948c763f55",
+            "choicesHash": "sha256:f5ec1a32e9201bd175f7be51015a1b6fa73b252f0aae99246d6b92c6f417f1d2",
+            "imageRefHash": "sha256:c767b8feb7dc3c7fc95e28e4db12ac8a1cccb0b0d19d98df4588de81e45c8ed6",
+            "sourceFingerprint": "sha256:e5ae96ad0bc664aba011229cdb85a287403039cefbda1e758ccdada54ebddca0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:2df1d488cbc27075589a3b3c05e88e2fb203534bc015b9cdb9de0e2743272eb7",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "닮은 입체의 부피비 적용",
+            "decisiveStep": "모서리비 1:2이므로 부피비 1:8, 큰 부피는 96",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮음의 활용",
+              "l4": "넓이·부피 비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-090",
+        "crosswalkRecordId": "M2-RPM-090",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비"
+        },
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ac780e4994a0c2f5695aaf0579c0b593c469748bdd9c022c8e87d802809ef064"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:e5ae96ad0bc664aba011229cdb85a287403039cefbda1e758ccdada54ebddca0",
+        "solutionHash": "sha256:2df1d488cbc27075589a3b3c05e88e2fb203534bc015b9cdb9de0e2743272eb7",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:1405735ec9fc65605e06f0b9ba4db50475584f7839d81ced7ab3e862f1f03bfb"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:e5ae96ad0bc664aba011229cdb85a287403039cefbda1e758ccdada54ebddca0",
+        "inputBundleSha": "sha256:4fb4f99d2ab24a1b16001673224681d7265384991dc2b7458bf77f33a2aa7133",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:1799b84f24d66ae5efc30b312492c5260b13cdb571023e593b73d64095d00e9e"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 5,
+      "questionUid": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+      "sourceOrdinal": 5,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+          "sourceIdentityKey": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+          "sourceOrdinal": 5,
+          "contentHash": "sha256:f4b05af07d7998d5449003a05bafebe0a50628fb95997d71a96df3d23bb6385d",
+          "choicesHash": "sha256:7328554bf73a60237ee4d00655df7001cad61c2abd12b391d3d4ad10c4bf0d26",
+          "imageRefHash": "sha256:56ca659aa977996e78caefeb261217dfb63c5d346ed6d83478076765699d62a7",
+          "sourceFingerprint": "sha256:bcbb7fc1fa5445616d7c4c50ce371ea1afd9ade4e34ad1240342b41233b1d25e"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:afdff9b5c9d459f501b768a3fe4f167ab70f2cf86199425e447ecb2fa1047e04",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "평행선으로 생긴 닮음에서 대응 길이 계산",
+          "decisiveStep": "AB:AD=2:3에서 BC=6, AC=6이므로 둘레 20",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "sourceFingerprint": "sha256:bcbb7fc1fa5445616d7c4c50ce371ea1afd9ade4e34ad1240342b41233b1d25e",
+        "inputBundleSha": "sha256:0a5e3a85a55f3f336c9c79753a6c646233683c410eee64442789bdf568ba8380",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+            "sourceIdentityKey": "qid_v1_7e311e740cbeb63ce1a756cd34e9483f2538819e7af575aa8e7c13781ad0f161",
+            "sourceOrdinal": 5,
+            "contentHash": "sha256:f4b05af07d7998d5449003a05bafebe0a50628fb95997d71a96df3d23bb6385d",
+            "choicesHash": "sha256:7328554bf73a60237ee4d00655df7001cad61c2abd12b391d3d4ad10c4bf0d26",
+            "imageRefHash": "sha256:56ca659aa977996e78caefeb261217dfb63c5d346ed6d83478076765699d62a7",
+            "sourceFingerprint": "sha256:bcbb7fc1fa5445616d7c4c50ce371ea1afd9ade4e34ad1240342b41233b1d25e"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:afdff9b5c9d459f501b768a3fe4f167ab70f2cf86199425e447ecb2fa1047e04",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "평행선으로 생긴 닮음에서 대응 길이 계산",
+            "decisiveStep": "AB:AD=2:3에서 BC=6, AC=6이므로 둘레 20",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮음의 활용",
+              "l4": "길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-089",
+        "crosswalkRecordId": "M2-RPM-089",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:0787a07f270122a51e96eb4f52ec7d6ea00deaa17c9eee5231d698bcb559b21f"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:bcbb7fc1fa5445616d7c4c50ce371ea1afd9ade4e34ad1240342b41233b1d25e",
+        "solutionHash": "sha256:afdff9b5c9d459f501b768a3fe4f167ab70f2cf86199425e447ecb2fa1047e04",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:24801badaab55ec9d32265f6426ce3e84e7d237db17a54ca6910e3e1ad5def50"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:bcbb7fc1fa5445616d7c4c50ce371ea1afd9ade4e34ad1240342b41233b1d25e",
+        "inputBundleSha": "sha256:0a5e3a85a55f3f336c9c79753a6c646233683c410eee64442789bdf568ba8380",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:a87187e2ceb48e89b9259bd898ee72252f6e04c5ef23e8d2d56e931748651082"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 6,
+      "questionUid": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+      "sourceOrdinal": 6,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+          "sourceIdentityKey": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+          "sourceOrdinal": 6,
+          "contentHash": "sha256:748409007f8fbe1bdfcd7ca8436928a0bd09bb0ebc7343f1732743671dc1be3d",
+          "choicesHash": "sha256:5fc59e06d10d1b92fa95700ae117001bf7e95526833bfbcb49922b0e2397712e",
+          "imageRefHash": "sha256:d13faa54e688d10006c79eb70728defa2784574e93c67e6caa6c119d6c08a3dc",
+          "sourceFingerprint": "sha256:0b88e40b75523d0babb3c8ebdf0945fd552377ac3d940951b31b57f1ed261cb0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:28932471204c821965604988659d5c67b8d28da48962d6d545591e679c0346fb",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "두 평행 조건의 선분비를 연쇄 적용",
+          "decisiveStep": "AD:AB=AF:AE=3:5이고 AE:AC=3:5이므로 EC=10",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:0b88e40b75523d0babb3c8ebdf0945fd552377ac3d940951b31b57f1ed261cb0",
+        "inputBundleSha": "sha256:c395df2b2e7b808d038973f5b42ce6019c29438acdb1edafc097e516a1cf3398",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+            "sourceIdentityKey": "qid_v1_bc22c829da7ecd8043ae570e69908ce564a80dbbc4120ebc091453bd2e21bf41",
+            "sourceOrdinal": 6,
+            "contentHash": "sha256:748409007f8fbe1bdfcd7ca8436928a0bd09bb0ebc7343f1732743671dc1be3d",
+            "choicesHash": "sha256:5fc59e06d10d1b92fa95700ae117001bf7e95526833bfbcb49922b0e2397712e",
+            "imageRefHash": "sha256:d13faa54e688d10006c79eb70728defa2784574e93c67e6caa6c119d6c08a3dc",
+            "sourceFingerprint": "sha256:0b88e40b75523d0babb3c8ebdf0945fd552377ac3d940951b31b57f1ed261cb0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:28932471204c821965604988659d5c67b8d28da48962d6d545591e679c0346fb",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "두 평행 조건의 선분비를 연쇄 적용",
+            "decisiveStep": "AD:AB=AF:AE=3:5이고 AE:AC=3:5이므로 EC=10",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-096",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:3ab02d04edbdbad4fd7be1c21ae193b5c08078f3a8e24cdbd670927501e5cf0f"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:0b88e40b75523d0babb3c8ebdf0945fd552377ac3d940951b31b57f1ed261cb0",
+        "solutionHash": "sha256:28932471204c821965604988659d5c67b8d28da48962d6d545591e679c0346fb",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:5dd37627b2a7c0054287438695192f4a0063bf918aea76473006f120ea81fcb7"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:0b88e40b75523d0babb3c8ebdf0945fd552377ac3d940951b31b57f1ed261cb0",
+        "inputBundleSha": "sha256:c395df2b2e7b808d038973f5b42ce6019c29438acdb1edafc097e516a1cf3398",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:4f38231c2340d338a79ceae1a7c716e6e77e3a014370dc528913607d0f471521"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 7,
+      "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+      "sourceOrdinal": 7,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+          "sourceIdentityKey": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+          "sourceOrdinal": 7,
+          "contentHash": "sha256:e9f648c5d327afb49e092bae2fe9086be2104075d3175980f8c7d7d21a7cad43",
+          "choicesHash": "sha256:97e10d3d76cb2e373ad0152eef00e11602109237397240a268739a9afb1cf3dc",
+          "imageRefHash": "sha256:79d5d8f333f768cef375fb84b0b407c36b7378225cc71b4b412ca77f255bbb43",
+          "sourceFingerprint": "sha256:3f0c5f5ed077470eef6274c346eb7acd3e5263563ad03650884ae49ea49fae6b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:fba4cf65fcc09742c4f1383884bbc258be5bc0063b59513e901f81e1b7ed89c6",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "semanticDecision": {
+          "primaryMethod": "무게중심의 중선 2:1 성질로 보기 검증",
+          "decisiveStep": "CG:GF=2:1이므로 GF=CG/2이고 GB=GC는 일반적으로 성립하지 않음",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "중선과 무게중심",
+            "l4": "2:1 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "sourceFingerprint": "sha256:3f0c5f5ed077470eef6274c346eb7acd3e5263563ad03650884ae49ea49fae6b",
+        "inputBundleSha": "sha256:a330f05db24c5f72f03a280ee190b313481bb1dd8612635765af28520944eb4e",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+            "sourceIdentityKey": "qid_v1_c864233b4efacfd2761b77937754d8c923321cff193ade18ac5c55628ab82ac3",
+            "sourceOrdinal": 7,
+            "contentHash": "sha256:e9f648c5d327afb49e092bae2fe9086be2104075d3175980f8c7d7d21a7cad43",
+            "choicesHash": "sha256:97e10d3d76cb2e373ad0152eef00e11602109237397240a268739a9afb1cf3dc",
+            "imageRefHash": "sha256:79d5d8f333f768cef375fb84b0b407c36b7378225cc71b4b412ca77f255bbb43",
+            "sourceFingerprint": "sha256:3f0c5f5ed077470eef6274c346eb7acd3e5263563ad03650884ae49ea49fae6b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:fba4cf65fcc09742c4f1383884bbc258be5bc0063b59513e901f81e1b7ed89c6",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+          },
+          "semanticDecision": {
+            "primaryMethod": "무게중심의 중선 2:1 성질로 보기 검증",
+            "decisiveStep": "CG:GF=2:1이므로 GF=CG/2이고 GB=GC는 일반적으로 성립하지 않음",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "중선과 무게중심",
+              "l4": "2:1 비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-097",
+        "crosswalkRecordId": null,
+        "crosswalkStatus": "NO_CONTEXT_MATCH",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:65c6e98b69b045d3b74a8de7d0c34bef3e3c6403c799e5e62ae4c988292d0d9d"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:3f0c5f5ed077470eef6274c346eb7acd3e5263563ad03650884ae49ea49fae6b",
+        "solutionHash": "sha256:fba4cf65fcc09742c4f1383884bbc258be5bc0063b59513e901f81e1b7ed89c6",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:db12d8521d2306bb6a38bb206d9761cea2003ea4b38b398134a5c5fc26808fd0"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:3f0c5f5ed077470eef6274c346eb7acd3e5263563ad03650884ae49ea49fae6b",
+        "inputBundleSha": "sha256:a330f05db24c5f72f03a280ee190b313481bb1dd8612635765af28520944eb4e",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:4f09c2840ee25a381f34bd9e9f5a2a6a82070739c272cd48c288d5a4d3c97e53"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 8,
+      "questionUid": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+      "sourceOrdinal": 8,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+          "sourceIdentityKey": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+          "sourceOrdinal": 8,
+          "contentHash": "sha256:4ea549409c58de80544d6d0a9132fa5b938d6e04daf24c719c060eb28893fecd",
+          "choicesHash": "sha256:bb83d43624c340ce11cfe90cb10bfb92dd65e95d643d4cd858b297d00311abef",
+          "imageRefHash": "sha256:836592f5def11b40299911a2daed8e9c3bfdedbc1c13554faa8a4506c34c60a6",
+          "sourceFingerprint": "sha256:48ab90267f74dd9c565d6f9c149f701b3db8eb6486c3dd19dcb59b8041f9afa4"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:565b3fbf723c53bd919f422e0fd100ff48bee0f70a22ad412d8b5e071acf2a93",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "semanticDecision": {
+          "primaryMethod": "무게중심 2:1과 중점연결정리 결합",
+          "decisiveStep": "AG=12에서 GD=6, AD=18이고 EF=AD/2=9",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "중선과 무게중심",
+            "l4": "2:1 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "sourceFingerprint": "sha256:48ab90267f74dd9c565d6f9c149f701b3db8eb6486c3dd19dcb59b8041f9afa4",
+        "inputBundleSha": "sha256:821522665bd227423d384e365ea06c2ce102d18a9c19417f82e902e83eab5f33",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+            "sourceIdentityKey": "qid_v1_b54475bafe0fc231fa7c803607535b73330eb03bdf3742fb94b0e2668834e480",
+            "sourceOrdinal": 8,
+            "contentHash": "sha256:4ea549409c58de80544d6d0a9132fa5b938d6e04daf24c719c060eb28893fecd",
+            "choicesHash": "sha256:bb83d43624c340ce11cfe90cb10bfb92dd65e95d643d4cd858b297d00311abef",
+            "imageRefHash": "sha256:836592f5def11b40299911a2daed8e9c3bfdedbc1c13554faa8a4506c34c60a6",
+            "sourceFingerprint": "sha256:48ab90267f74dd9c565d6f9c149f701b3db8eb6486c3dd19dcb59b8041f9afa4"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:565b3fbf723c53bd919f422e0fd100ff48bee0f70a22ad412d8b5e071acf2a93",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+          },
+          "semanticDecision": {
+            "primaryMethod": "무게중심 2:1과 중점연결정리 결합",
+            "decisiveStep": "AG=12에서 GD=6, AD=18이고 EF=AD/2=9",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "중선과 무게중심",
+              "l4": "2:1 비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-097",
+        "crosswalkRecordId": null,
+        "crosswalkStatus": "NO_CONTEXT_MATCH",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:507402723ccbd2de9efd7f16f03762d058e73bcfa3cc90afa7ae510eda01fdff"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:48ab90267f74dd9c565d6f9c149f701b3db8eb6486c3dd19dcb59b8041f9afa4",
+        "solutionHash": "sha256:565b3fbf723c53bd919f422e0fd100ff48bee0f70a22ad412d8b5e071acf2a93",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:60b6e0e1cecf9df46e16a010b775a4dae4b3a62815669de0795dcf7ae04e6696"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:48ab90267f74dd9c565d6f9c149f701b3db8eb6486c3dd19dcb59b8041f9afa4",
+        "inputBundleSha": "sha256:821522665bd227423d384e365ea06c2ce102d18a9c19417f82e902e83eab5f33",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:ab2aef9255dd9992e67cfeffa5747f27885b41b119c4fa2200e7f59fdf0acaf6"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 9,
+      "questionUid": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+      "sourceOrdinal": 9,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+          "sourceIdentityKey": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+          "sourceOrdinal": 9,
+          "contentHash": "sha256:186be426f2868c8726bcb678116e221e6bf067d505151ab458955fc0d75b330f",
+          "choicesHash": "sha256:07f12975189e514fbd272187b84f184ce7b02a92b99bd5972a20e48ff52b871a",
+          "imageRefHash": "sha256:c9c0e79d211e66c198a6a768c637a9f328688cb4fb61f2209877b17a014787e9",
+          "sourceFingerprint": "sha256:80ca42738612b9fdb021320efea0fd0edcee1cdb46c1324f79e9eaf6a40af1e0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:e47f103cd737bb67f7bd7f2482c1b184aa40554e496d0af1b1624f5dd20d977e",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+        },
+        "semanticDecision": {
+          "primaryMethod": "무게중심과 중점연결선을 높이비로 변환",
+          "decisiveStep": "A-DE 높이 h/2, G-DE 높이 h/6이므로 넓이비 3:1",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "넓이와 무게중심",
+            "l4": "넓이 분할"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_PROJECTION_ROW_MISSING",
+        "sourceFingerprint": "sha256:80ca42738612b9fdb021320efea0fd0edcee1cdb46c1324f79e9eaf6a40af1e0",
+        "inputBundleSha": "sha256:bd92b4fd891b628dbe5c95a2f3ecf5ccbd2e9bd599545c192b83278b967ae931",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+            "sourceIdentityKey": "qid_v1_ba90c2bc8fd5d7e8585402b17acb189f82ff980e47309fea04cb0fa5e4f56be6",
+            "sourceOrdinal": 9,
+            "contentHash": "sha256:186be426f2868c8726bcb678116e221e6bf067d505151ab458955fc0d75b330f",
+            "choicesHash": "sha256:07f12975189e514fbd272187b84f184ce7b02a92b99bd5972a20e48ff52b871a",
+            "imageRefHash": "sha256:c9c0e79d211e66c198a6a768c637a9f328688cb4fb61f2209877b17a014787e9",
+            "sourceFingerprint": "sha256:80ca42738612b9fdb021320efea0fd0edcee1cdb46c1324f79e9eaf6a40af1e0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:e47f103cd737bb67f7bd7f2482c1b184aa40554e496d0af1b1624f5dd20d977e",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-TRIANGLE_PROPERTIES"
+          },
+          "semanticDecision": {
+            "primaryMethod": "무게중심과 중점연결선을 높이비로 변환",
+            "decisiveStep": "A-DE 높이 h/2, G-DE 높이 h/6이므로 넓이비 3:1",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "넓이와 무게중심",
+              "l4": "넓이 분할"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-099",
+        "crosswalkRecordId": null,
+        "crosswalkStatus": "NO_CONTEXT_MATCH",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ddf033142b6936039da7d7560dbb4b49c263fd85268868d8b7e650aa72f83e02"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:80ca42738612b9fdb021320efea0fd0edcee1cdb46c1324f79e9eaf6a40af1e0",
+        "solutionHash": "sha256:e47f103cd737bb67f7bd7f2482c1b184aa40554e496d0af1b1624f5dd20d977e",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:9f3e7bec37d4a400641b755ae987f73db494c7fb770a613a64b80c463e39eee8"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:80ca42738612b9fdb021320efea0fd0edcee1cdb46c1324f79e9eaf6a40af1e0",
+        "inputBundleSha": "sha256:bd92b4fd891b628dbe5c95a2f3ecf5ccbd2e9bd599545c192b83278b967ae931",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:422d35216c5fded5ebde2ff3fd621c8443ce6bda6e6bab213b0dd6a7832e24c5"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 10,
+      "questionUid": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+      "sourceOrdinal": 10,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+          "sourceIdentityKey": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+          "sourceOrdinal": 10,
+          "contentHash": "sha256:62414916bf0f9172cfe1bd9cd7d6e2e68e3a63e64e46ea5c1a1a6f13ba23a7d0",
+          "choicesHash": "sha256:458a00fc2009f4e5a47f2062a7c919d13db9119b9ec69cee63902ade1e2857fc",
+          "imageRefHash": "sha256:1ae9c7e0efedef1e1cb87891413199fe3f5cf8c28e45ce7a387d85e38447f7ce",
+          "sourceFingerprint": "sha256:5bb0c0286b593fd4e749004672667147c569a1220c3d1412aaa99a9d090fd7c2"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:6e5c03d16b3088e8a5d82256277b9343b7a66f477d7f8697f002c63ba2c58143",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "접기 등거리와 피타고라스 정리로 길이 계산",
+          "decisiveStep": "BC'=10, AB=8에서 AC'=6, AD=10이므로 DC'=4",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:5bb0c0286b593fd4e749004672667147c569a1220c3d1412aaa99a9d090fd7c2",
+        "inputBundleSha": "sha256:24caddc914e59411797cd03fadea8e103b496f1ed9d1eb7782321a0250dc0a98",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+            "sourceIdentityKey": "qid_v1_73c08c74f83de93f9bdd52128ae2312e88624e354a4a97d1a96a17809aebf4a6",
+            "sourceOrdinal": 10,
+            "contentHash": "sha256:62414916bf0f9172cfe1bd9cd7d6e2e68e3a63e64e46ea5c1a1a6f13ba23a7d0",
+            "choicesHash": "sha256:458a00fc2009f4e5a47f2062a7c919d13db9119b9ec69cee63902ade1e2857fc",
+            "imageRefHash": "sha256:1ae9c7e0efedef1e1cb87891413199fe3f5cf8c28e45ce7a387d85e38447f7ce",
+            "sourceFingerprint": "sha256:5bb0c0286b593fd4e749004672667147c569a1220c3d1412aaa99a9d090fd7c2"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:6e5c03d16b3088e8a5d82256277b9343b7a66f477d7f8697f002c63ba2c58143",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "접기 등거리와 피타고라스 정리로 길이 계산",
+            "decisiveStep": "BC'=10, AB=8에서 AC'=6, AD=10이므로 DC'=4",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-105",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:6a65f76bf0ee1a62b2e00564c05b3b55ace5d0e177902c8b702eed05857287a1"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:5bb0c0286b593fd4e749004672667147c569a1220c3d1412aaa99a9d090fd7c2",
+        "solutionHash": "sha256:6e5c03d16b3088e8a5d82256277b9343b7a66f477d7f8697f002c63ba2c58143",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:f770f0813946da648cc344563abe1f4881f9b16cda1a8723c8430b7b3225a74a"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:5bb0c0286b593fd4e749004672667147c569a1220c3d1412aaa99a9d090fd7c2",
+        "inputBundleSha": "sha256:24caddc914e59411797cd03fadea8e103b496f1ed9d1eb7782321a0250dc0a98",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:443c16a88a46acba3d5d456d6adccfefe6915cdb1104d0ea2e6b57d79caa2f19"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 11,
+      "questionUid": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+      "sourceOrdinal": 11,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+          "sourceIdentityKey": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+          "sourceOrdinal": 11,
+          "contentHash": "sha256:7c7743992ac8f722d3f3761c35f64484e2ee98faea8d3d987cc7c9d5ec0fdedb",
+          "choicesHash": "sha256:8caab1ebec631c66f47809fac0b92559e8ebb545081d28f03142a5fef38bf1a1",
+          "imageRefHash": "sha256:9e521abf696dd9fae3de7bae2cde57b5a9d94a98ab2817a71ea71f20e8fbf4e0",
+          "sourceFingerprint": "sha256:9c4f75d23876036328c0667219862913c1b38759086fce2f4275e3f0d5420c24"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:8e2e21a9410a69fdc0fd276fe5817b763016cb3df986390cc6618dd1c57e5cb7",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        },
+        "semanticDecision": {
+          "primaryMethod": "두 직각삼각형에 피타고라스 정리 순차 적용",
+          "decisiveStep": "x=12, y=9이므로 합은 21",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:9c4f75d23876036328c0667219862913c1b38759086fce2f4275e3f0d5420c24",
+        "inputBundleSha": "sha256:3a317c6f4f3774f5002ddda9e14ff6d243689b221f3e55f81829f155dd58ce5b",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+            "sourceIdentityKey": "qid_v1_2bde5cfc3397edb41708e8560a9f80a267dc05eedb4af7258c4146de77f93390",
+            "sourceOrdinal": 11,
+            "contentHash": "sha256:7c7743992ac8f722d3f3761c35f64484e2ee98faea8d3d987cc7c9d5ec0fdedb",
+            "choicesHash": "sha256:8caab1ebec631c66f47809fac0b92559e8ebb545081d28f03142a5fef38bf1a1",
+            "imageRefHash": "sha256:9e521abf696dd9fae3de7bae2cde57b5a9d94a98ab2817a71ea71f20e8fbf4e0",
+            "sourceFingerprint": "sha256:9c4f75d23876036328c0667219862913c1b38759086fce2f4275e3f0d5420c24"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:8e2e21a9410a69fdc0fd276fe5817b763016cb3df986390cc6618dd1c57e5cb7",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+          },
+          "semanticDecision": {
+            "primaryMethod": "두 직각삼각형에 피타고라스 정리 순차 적용",
+            "decisiveStep": "x=12, y=9이므로 합은 21",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "피타고라스 정리",
+              "l4": "직각삼각형의 변 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-101",
+        "crosswalkRecordId": "M2-RPM-101",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ff96367f64e9ab8b271f7f0bc931729e2d396716dceba60cb62b0c1593977e56"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9c4f75d23876036328c0667219862913c1b38759086fce2f4275e3f0d5420c24",
+        "solutionHash": "sha256:8e2e21a9410a69fdc0fd276fe5817b763016cb3df986390cc6618dd1c57e5cb7",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:5abf30e53f689731cd4c372b370ecee4a226ef6eeedae68e93c83818cef84d2e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9c4f75d23876036328c0667219862913c1b38759086fce2f4275e3f0d5420c24",
+        "inputBundleSha": "sha256:3a317c6f4f3774f5002ddda9e14ff6d243689b221f3e55f81829f155dd58ce5b",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:329bf7b794f4636a3d7380c77ada191fe5cdd2249cb796a9c32a2b666cf78b53"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 12,
+      "questionUid": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+      "sourceOrdinal": 12,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+          "sourceIdentityKey": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+          "sourceOrdinal": 12,
+          "contentHash": "sha256:cd2a9563e6d34717b84f0ce555c2c81c70fa7750ed21d7de81ab4c20d6912083",
+          "choicesHash": "sha256:fa7e33cecbdf3cd81cdd52056f0e7a76cbdfa7980d06249d3f813be855a8fa65",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:7fdebed37fd1dae8c7f5779a1eb9c7d421d0b4540ffedd674d87216d78099813"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:fa1b2d77fb89206dbfde2a7e8bc0767a4b3862b34baf24e963f1c62ff339fb68",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "두 미지수 일차관계의 해 구조를 기준으로 식 판별",
+          "decisiveStep": "x,y가 모두 1차로 나타나는 x-3y=12만 조건을 만족",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "해가 주어진 연립방정식"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:7fdebed37fd1dae8c7f5779a1eb9c7d421d0b4540ffedd674d87216d78099813",
+        "inputBundleSha": "sha256:0e3ac562facb3929cfabde3a7fd4a84bb2e890c56c05cdc8a1c46d15cd2b68f6",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+            "sourceIdentityKey": "qid_v1_42756250959b91402f97ac30faf5d236aa47c47fc591884ea6fb3edfe35abe73",
+            "sourceOrdinal": 12,
+            "contentHash": "sha256:cd2a9563e6d34717b84f0ce555c2c81c70fa7750ed21d7de81ab4c20d6912083",
+            "choicesHash": "sha256:fa7e33cecbdf3cd81cdd52056f0e7a76cbdfa7980d06249d3f813be855a8fa65",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:7fdebed37fd1dae8c7f5779a1eb9c7d421d0b4540ffedd674d87216d78099813"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:fa1b2d77fb89206dbfde2a7e8bc0767a4b3862b34baf24e963f1c62ff339fb68",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "두 미지수 일차관계의 해 구조를 기준으로 식 판별",
+            "decisiveStep": "x,y가 모두 1차로 나타나는 x-3y=12만 조건을 만족",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "해가 주어진 연립방정식"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-032",
+        "crosswalkRecordId": "M2-RPM-032",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:92540e810a9e299a10f9d94743b6cfc527e1772830877908637fbefaf5156608"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:7fdebed37fd1dae8c7f5779a1eb9c7d421d0b4540ffedd674d87216d78099813",
+        "solutionHash": "sha256:fa1b2d77fb89206dbfde2a7e8bc0767a4b3862b34baf24e963f1c62ff339fb68",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:c8a00b341451b78112ca04559255533dfe387bf8c5d3dc77aa5b88ae6e2f52b6"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:7fdebed37fd1dae8c7f5779a1eb9c7d421d0b4540ffedd674d87216d78099813",
+        "inputBundleSha": "sha256:0e3ac562facb3929cfabde3a7fd4a84bb2e890c56c05cdc8a1c46d15cd2b68f6",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:0a0978743b2308bbf04d5251b73e1d4fecbadc749ba5d4fe1d482ae8e4037cff"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 13,
+      "questionUid": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+      "sourceOrdinal": 13,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+          "sourceIdentityKey": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+          "sourceOrdinal": 13,
+          "contentHash": "sha256:ebe5a41ad3feb1ec6bd03e65c4afa6f685085359dd2d43feaeba3158b79e0000",
+          "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:b871aea21974a0fbc226c594b7ab323b747c4e93be225e34bd0679d2d6ee7732"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:fd729e0b8bd1079fb9f4ddb8c1b6b383b2843ed4a5094b605f6a585958e1629c",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "두 미지수 일차관계의 자연수 해를 열거",
+          "decisiveStep": "4x+3y=19의 자연수 해는 (1,5),(4,1)",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "해가 주어진 연립방정식"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:b871aea21974a0fbc226c594b7ab323b747c4e93be225e34bd0679d2d6ee7732",
+        "inputBundleSha": "sha256:1820aa642d5e8cca95ddefaf0c6b5787ac79d8263da622d3729a7196e6961481",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+            "sourceIdentityKey": "qid_v1_fb53ae76d1d6eeb1e07c9e03837d475fb132a4b0792061d191eef2bf55928b18",
+            "sourceOrdinal": 13,
+            "contentHash": "sha256:ebe5a41ad3feb1ec6bd03e65c4afa6f685085359dd2d43feaeba3158b79e0000",
+            "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:b871aea21974a0fbc226c594b7ab323b747c4e93be225e34bd0679d2d6ee7732"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:fd729e0b8bd1079fb9f4ddb8c1b6b383b2843ed4a5094b605f6a585958e1629c",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "두 미지수 일차관계의 자연수 해를 열거",
+            "decisiveStep": "4x+3y=19의 자연수 해는 (1,5),(4,1)",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "해가 주어진 연립방정식"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-032",
+        "crosswalkRecordId": "M2-RPM-032",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:1648e6b84ac3868a6f683ca9721447bf5cb30bd434acbdfd9278cbd8f55146a5"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:b871aea21974a0fbc226c594b7ab323b747c4e93be225e34bd0679d2d6ee7732",
+        "solutionHash": "sha256:fd729e0b8bd1079fb9f4ddb8c1b6b383b2843ed4a5094b605f6a585958e1629c",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:e5433858a469d938a51fda1927e10ee8a0f1b3e4175e225d7e3323d495498c75"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:b871aea21974a0fbc226c594b7ab323b747c4e93be225e34bd0679d2d6ee7732",
+        "inputBundleSha": "sha256:1820aa642d5e8cca95ddefaf0c6b5787ac79d8263da622d3729a7196e6961481",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:15d645f6ede78e412683559ba9750577c34795d8c96b69b8ead6dbeff20abd2d"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 14,
+      "questionUid": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+      "sourceOrdinal": 14,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+          "sourceIdentityKey": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+          "sourceOrdinal": 14,
+          "contentHash": "sha256:d5a14134ff04eb9ecdcb80a1f49325a59e66f37efa91d9a6c02c06b12cd83230",
+          "choicesHash": "sha256:4c174b11d79d95ea167dd8930db041a499adc479d1bc421379def00ae59ff4ad",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:fe486943c1d4bd6e5d8487fedf217e7ea6d3c227380525ccfba01f4df07aaa0d"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:813a22ed285a40c88500b40e8cc0d970db100435c36b8878789529a427a2c7d8",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "주어진 해 조건을 대입해 계수 결정",
+          "decisiveStep": "(1,2)로 a=2, (p,-p/2)로 p=16",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:fe486943c1d4bd6e5d8487fedf217e7ea6d3c227380525ccfba01f4df07aaa0d",
+        "inputBundleSha": "sha256:23370a2d95f9ddf5225a2f5b8aa170bc19849ecb9cf23a4812633f016aef365e",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+            "sourceIdentityKey": "qid_v1_3457078b36211a1489d5c4523a545b0a3a7543c487ca85968722fd4af605e51b",
+            "sourceOrdinal": 14,
+            "contentHash": "sha256:d5a14134ff04eb9ecdcb80a1f49325a59e66f37efa91d9a6c02c06b12cd83230",
+            "choicesHash": "sha256:4c174b11d79d95ea167dd8930db041a499adc479d1bc421379def00ae59ff4ad",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:fe486943c1d4bd6e5d8487fedf217e7ea6d3c227380525ccfba01f4df07aaa0d"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:813a22ed285a40c88500b40e8cc0d970db100435c36b8878789529a427a2c7d8",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "주어진 해 조건을 대입해 계수 결정",
+            "decisiveStep": "(1,2)로 a=2, (p,-p/2)로 p=16",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "계수 결정"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crosswalkRecordId": "M2-RPM-033",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:7c078d700f6c81c7ddb1b8a0a96648c4d2728cf6ce991e4bd6d7114080994d25"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:fe486943c1d4bd6e5d8487fedf217e7ea6d3c227380525ccfba01f4df07aaa0d",
+        "solutionHash": "sha256:813a22ed285a40c88500b40e8cc0d970db100435c36b8878789529a427a2c7d8",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:efdf233ae057595ac7a96dc7670c53087025d01d23f201f0a67b9989c266beaa"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:fe486943c1d4bd6e5d8487fedf217e7ea6d3c227380525ccfba01f4df07aaa0d",
+        "inputBundleSha": "sha256:23370a2d95f9ddf5225a2f5b8aa170bc19849ecb9cf23a4812633f016aef365e",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:0d4a2859d14641f39b2a541e2df44dfb3879f91b5ca860bf63207016b190cdda"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 15,
+      "questionUid": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+      "sourceOrdinal": 15,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+          "sourceIdentityKey": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+          "sourceOrdinal": 15,
+          "contentHash": "sha256:379d7abc37f02f6a3655e74fdb4ea45363f6de9b15fb72e2ff26bd6dbf55ead9",
+          "choicesHash": "sha256:ab394e33d09fdc8f8520a5164ddf8507fa753b1453158bff161a27a01f0b1135",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:bd88c5ff0fbe579ce2262fc41385df6c37e38a6f0e372c05c531c090b54865b0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:b1bd338c473f7c1a9af6484b4d609e9488c61f8a8c0979ef6da7afadfc086271",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "순서쌍을 두 식에 대입해 해 판정",
+          "decisiveStep": "(1,-1)이 두 식을 모두 만족",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "해가 주어진 연립방정식"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:bd88c5ff0fbe579ce2262fc41385df6c37e38a6f0e372c05c531c090b54865b0",
+        "inputBundleSha": "sha256:a356e78086fd85b04a401171c10358ad69187767008a23e2ebcbc2e2d85e19d0",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+            "sourceIdentityKey": "qid_v1_2edcfc8ddfc30e559de855e4f040d8c2d66b9f593f978607c420defec40587dc",
+            "sourceOrdinal": 15,
+            "contentHash": "sha256:379d7abc37f02f6a3655e74fdb4ea45363f6de9b15fb72e2ff26bd6dbf55ead9",
+            "choicesHash": "sha256:ab394e33d09fdc8f8520a5164ddf8507fa753b1453158bff161a27a01f0b1135",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:bd88c5ff0fbe579ce2262fc41385df6c37e38a6f0e372c05c531c090b54865b0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:b1bd338c473f7c1a9af6484b4d609e9488c61f8a8c0979ef6da7afadfc086271",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "순서쌍을 두 식에 대입해 해 판정",
+            "decisiveStep": "(1,-1)이 두 식을 모두 만족",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "해가 주어진 연립방정식"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-032",
+        "crosswalkRecordId": "M2-RPM-032",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:2d83c77fd80d95aeafba9d27a7ff5c92e5d8fb766b8735b2ed889e150ef10003"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:bd88c5ff0fbe579ce2262fc41385df6c37e38a6f0e372c05c531c090b54865b0",
+        "solutionHash": "sha256:b1bd338c473f7c1a9af6484b4d609e9488c61f8a8c0979ef6da7afadfc086271",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:b8483391fb74592c4741f132436da696c4e0c8c23608b3e84c1949c94b7c5a76"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:bd88c5ff0fbe579ce2262fc41385df6c37e38a6f0e372c05c531c090b54865b0",
+        "inputBundleSha": "sha256:a356e78086fd85b04a401171c10358ad69187767008a23e2ebcbc2e2d85e19d0",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:8d717077886c6c722c7b27519c304ee9474a986cb6d9d7475d721286e8dd88f5"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 16,
+      "questionUid": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+      "sourceOrdinal": 16,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+          "sourceIdentityKey": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+          "sourceOrdinal": 16,
+          "contentHash": "sha256:f574fa0a2952fd7672978187e0fec2f30a4397594a3e2d4995842ddb21ffd3d2",
+          "choicesHash": "sha256:e911dbd3896bf13468cd54e952809aa8e0c82efae0f0979a686ced6a1aca39ac",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:9bd066599aabe9366ef1226a6d5d0e4b877d1c16569c9e0caf050b6080310c65"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:5981db3ae973e2e0221e9ab2105484190db432ef4e9ba59b505569336a3bbea7",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "괄호를 풀어 표준형으로 만든 뒤 소거",
+          "decisiveStep": "2x+y=3, 2x+3y=5에서 (1,1)",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "복잡한 꼴의 연립방정식",
+            "l4": "괄호가 있는 연립방정식"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:9bd066599aabe9366ef1226a6d5d0e4b877d1c16569c9e0caf050b6080310c65",
+        "inputBundleSha": "sha256:d64e19691257e9b1714302fb61bea676308142e9893647c9c5bfc20b6edfe92f",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+            "sourceIdentityKey": "qid_v1_8a7d40c5255442ae4759bf43b5b0de1e79562230f9107ff03530d549083b466c",
+            "sourceOrdinal": 16,
+            "contentHash": "sha256:f574fa0a2952fd7672978187e0fec2f30a4397594a3e2d4995842ddb21ffd3d2",
+            "choicesHash": "sha256:e911dbd3896bf13468cd54e952809aa8e0c82efae0f0979a686ced6a1aca39ac",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:9bd066599aabe9366ef1226a6d5d0e4b877d1c16569c9e0caf050b6080310c65"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:5981db3ae973e2e0221e9ab2105484190db432ef4e9ba59b505569336a3bbea7",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "괄호를 풀어 표준형으로 만든 뒤 소거",
+            "decisiveStep": "2x+y=3, 2x+3y=5에서 (1,1)",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "복잡한 꼴의 연립방정식",
+              "l4": "괄호가 있는 연립방정식"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-034",
+        "crosswalkRecordId": "M2-RPM-034",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "괄호가 있는 연립방정식"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:0b7102b4d5eb00ccc23d267bd6930ea8671b3a6c2fa20e154f4d4880086f7a69"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9bd066599aabe9366ef1226a6d5d0e4b877d1c16569c9e0caf050b6080310c65",
+        "solutionHash": "sha256:5981db3ae973e2e0221e9ab2105484190db432ef4e9ba59b505569336a3bbea7",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:2b5c209ade89e007b2eb70eeacced846382e7cbedce8f4b1295ccf4c2632fc1e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9bd066599aabe9366ef1226a6d5d0e4b877d1c16569c9e0caf050b6080310c65",
+        "inputBundleSha": "sha256:d64e19691257e9b1714302fb61bea676308142e9893647c9c5bfc20b6edfe92f",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:d9c2e7d1a493d7b1c707fbe3bc1343e8c1e7822a0fda7c23e13c271a437869c4"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 17,
+      "questionUid": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+      "sourceOrdinal": 17,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+          "sourceIdentityKey": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+          "sourceOrdinal": 17,
+          "contentHash": "sha256:4600d99202eb0fcb14d9963d31b5c45ea05b83b3921812b48033e5c589315b34",
+          "choicesHash": "sha256:7dd630f845f9c6665f2b18478330c4588832161e07a56f47b2ba6035502dde8b",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:995dcb93f049c0ed6e54dc194324ff87f4e62b10403c48e2b63fc3bec6e2178b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:3efdf97a68f077c7b43dab8dd4bed65269db01a3d6e3482aea25a1a90cb23b02",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "추가 조건식으로 해를 고정한 뒤 계수 결정",
+          "decisiveStep": "(x,y)=(1,2), 5-2a=7에서 a=-1",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:995dcb93f049c0ed6e54dc194324ff87f4e62b10403c48e2b63fc3bec6e2178b",
+        "inputBundleSha": "sha256:8f0ca36bf46d1b535a205371371586fa0b7244d544c663a5d3c09d5c88755996",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+            "sourceIdentityKey": "qid_v1_5a89b8ba4ff48d475b8ba0c578b8f459d9ee0385a92da71f9faa724e39786479",
+            "sourceOrdinal": 17,
+            "contentHash": "sha256:4600d99202eb0fcb14d9963d31b5c45ea05b83b3921812b48033e5c589315b34",
+            "choicesHash": "sha256:7dd630f845f9c6665f2b18478330c4588832161e07a56f47b2ba6035502dde8b",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:995dcb93f049c0ed6e54dc194324ff87f4e62b10403c48e2b63fc3bec6e2178b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:3efdf97a68f077c7b43dab8dd4bed65269db01a3d6e3482aea25a1a90cb23b02",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "추가 조건식으로 해를 고정한 뒤 계수 결정",
+            "decisiveStep": "(x,y)=(1,2), 5-2a=7에서 a=-1",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "계수 결정"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crosswalkRecordId": "M2-RPM-033",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:15c20f53208796c653c450e04a9ecb1c05b2dcc239741eac6ef957dbdec9c808"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:995dcb93f049c0ed6e54dc194324ff87f4e62b10403c48e2b63fc3bec6e2178b",
+        "solutionHash": "sha256:3efdf97a68f077c7b43dab8dd4bed65269db01a3d6e3482aea25a1a90cb23b02",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:1809dd3be9ed3ecc2dae0f23175242d090b47573323c053657e71619ebbc036d"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:995dcb93f049c0ed6e54dc194324ff87f4e62b10403c48e2b63fc3bec6e2178b",
+        "inputBundleSha": "sha256:8f0ca36bf46d1b535a205371371586fa0b7244d544c663a5d3c09d5c88755996",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:c74d688d265728c8ce3a1424fc9281273dac7f6ac2eeab7eafd0a9e0d1816820"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 18,
+      "questionUid": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+      "sourceOrdinal": 18,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+          "sourceIdentityKey": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+          "sourceOrdinal": 18,
+          "contentHash": "sha256:0f03025266d1ee5e26b27eea8e1ba897a80a7506ba1ef75445e69d2a8fb38140",
+          "choicesHash": "sha256:b142fed6d755074188ebb5438d0c053a79e8b5b430ddaf0958fab119b073144d",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:e065649c5e08b8ce5a0912c9927fb7e0371d0d01499d4505bd0436bb75f7bd90"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:f510cf76aa196e1ed731880d7e7f28e7a3ec43561e1c69e912d5a1bd95822783",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "소수·분수 계수를 정수계수 식으로 바꾸어 소거",
+          "decisiveStep": "4x+y=11, 3x-y=3에서 (2,3)",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "복잡한 꼴의 연립방정식",
+            "l4": "분수·소수가 있는 연립방정식"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:e065649c5e08b8ce5a0912c9927fb7e0371d0d01499d4505bd0436bb75f7bd90",
+        "inputBundleSha": "sha256:174c8cd61cb95f134932077c7d4cb315d8dd2b7c21f8a0db6872fa2466e15931",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+            "sourceIdentityKey": "qid_v1_cd8595c2450cc744e0462719e23e67a7b9f2fd78cb54db125b56ed71e86c4048",
+            "sourceOrdinal": 18,
+            "contentHash": "sha256:0f03025266d1ee5e26b27eea8e1ba897a80a7506ba1ef75445e69d2a8fb38140",
+            "choicesHash": "sha256:b142fed6d755074188ebb5438d0c053a79e8b5b430ddaf0958fab119b073144d",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:e065649c5e08b8ce5a0912c9927fb7e0371d0d01499d4505bd0436bb75f7bd90"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:f510cf76aa196e1ed731880d7e7f28e7a3ec43561e1c69e912d5a1bd95822783",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "소수·분수 계수를 정수계수 식으로 바꾸어 소거",
+            "decisiveStep": "4x+y=11, 3x-y=3에서 (2,3)",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "복잡한 꼴의 연립방정식",
+              "l4": "분수·소수가 있는 연립방정식"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-035",
+        "crosswalkRecordId": "M2-RPM-035",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:14be11db33f8a493fab1d243fca2435397b776692569630f7ad0dbb74cfb4fb0"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:e065649c5e08b8ce5a0912c9927fb7e0371d0d01499d4505bd0436bb75f7bd90",
+        "solutionHash": "sha256:f510cf76aa196e1ed731880d7e7f28e7a3ec43561e1c69e912d5a1bd95822783",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:b96580c146183263e5fddeb2778fa2bc7525e5069cb42d30984ba52c0c527df6"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:e065649c5e08b8ce5a0912c9927fb7e0371d0d01499d4505bd0436bb75f7bd90",
+        "inputBundleSha": "sha256:174c8cd61cb95f134932077c7d4cb315d8dd2b7c21f8a0db6872fa2466e15931",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:cd7a915e6fa9ad635163ce08dd7acc9e38b501db6ee7fa82d508235fe0cdfbbd"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 19,
+      "questionUid": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+      "sourceOrdinal": 19,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+          "sourceIdentityKey": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+          "sourceOrdinal": 19,
+          "contentHash": "sha256:fd6ca4d7adc6747eebf1116e77e2d38e3ffb7dede44b6e7dcab8b09452edf606",
+          "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:ad11b08f6c0b0cece886adc07e5a8a6b325dac554d8af4b0aec3e370759960a9"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:27969df64eccb19b1b964bf4d9cf89be14b390332c8e13479184fa895771845f",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+        },
+        "semanticDecision": {
+          "primaryMethod": "승패 횟수를 두 미지수로 두어 수량 관계를 연립화",
+          "decisiveStep": "w-2l=-1, l-2w=-4에서 w=3,l=2",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "수와 개수",
+            "l4": "두 수 관계"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:ad11b08f6c0b0cece886adc07e5a8a6b325dac554d8af4b0aec3e370759960a9",
+        "inputBundleSha": "sha256:81a93d8d5720b9947dab6c09eb47dcd5cdf10a7e8b9e097af3b15bc7887a8da9",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+            "sourceIdentityKey": "qid_v1_74db45b14609526f7edd9dad08e110d8d8c0d6af7c4564c45851fb402e4aa3c6",
+            "sourceOrdinal": 19,
+            "contentHash": "sha256:fd6ca4d7adc6747eebf1116e77e2d38e3ffb7dede44b6e7dcab8b09452edf606",
+            "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:ad11b08f6c0b0cece886adc07e5a8a6b325dac554d8af4b0aec3e370759960a9"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:27969df64eccb19b1b964bf4d9cf89be14b390332c8e13479184fa895771845f",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+          },
+          "semanticDecision": {
+            "primaryMethod": "승패 횟수를 두 미지수로 두어 수량 관계를 연립화",
+            "decisiveStep": "w-2l=-1, l-2w=-4에서 w=3,l=2",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식의 활용",
+              "l3": "수와 개수",
+              "l4": "두 수 관계"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-038",
+        "crosswalkRecordId": "M2-RPM-038",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "두 수 관계"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:95125f004fc5dc26279735aefb3bdc3dc432c1de7b91a5b0435c2dcabbc1b31d"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:ad11b08f6c0b0cece886adc07e5a8a6b325dac554d8af4b0aec3e370759960a9",
+        "solutionHash": "sha256:27969df64eccb19b1b964bf4d9cf89be14b390332c8e13479184fa895771845f",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:b1cba632094d75d070c70d31852202170a019c42e469881000cbb4c2bd9ef54a"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:ad11b08f6c0b0cece886adc07e5a8a6b325dac554d8af4b0aec3e370759960a9",
+        "inputBundleSha": "sha256:81a93d8d5720b9947dab6c09eb47dcd5cdf10a7e8b9e097af3b15bc7887a8da9",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:8d4c8ee286e1ea341b992b170833df3569dd1a14f8b8f237a047b9fa214a5421"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 20,
+      "questionUid": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+      "sourceOrdinal": 20,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+          "sourceIdentityKey": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+          "sourceOrdinal": 20,
+          "contentHash": "sha256:fa45fa16ba2d148a62f96f2ddc663c8c400ea8f3cd2c22e8750f69f3f17e2716",
+          "choicesHash": "sha256:b27ed4a9acbb96ac08c18af37f25c5d156455604e4b1a0f9da1fd50830e40d0f",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:7401937b4949f62dd54c43a3de9f511f3f1fae50554a54dc35bd869083892d82"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:787aab2439e3cbc5cb08c1eaa1aaa9d7418a29a8e3babf931df437d17149438b",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "잘못 바꾼 계수의 해로 원래 계수를 복원",
+          "decisiveStep": "(1,-2)로 a=2,b=-1을 복원하고 원래 식의 해는 (0,2)",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:7401937b4949f62dd54c43a3de9f511f3f1fae50554a54dc35bd869083892d82",
+        "inputBundleSha": "sha256:339cb0a60c7b4cffc9a2a5f5543aa631c718092f02b602c94dc385c0537525c2",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+            "sourceIdentityKey": "qid_v1_a4ff064d0bb53736e2008ad159d35fbffbb96089164d4391b2883cd573c93093",
+            "sourceOrdinal": 20,
+            "contentHash": "sha256:fa45fa16ba2d148a62f96f2ddc663c8c400ea8f3cd2c22e8750f69f3f17e2716",
+            "choicesHash": "sha256:b27ed4a9acbb96ac08c18af37f25c5d156455604e4b1a0f9da1fd50830e40d0f",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:7401937b4949f62dd54c43a3de9f511f3f1fae50554a54dc35bd869083892d82"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:787aab2439e3cbc5cb08c1eaa1aaa9d7418a29a8e3babf931df437d17149438b",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "잘못 바꾼 계수의 해로 원래 계수를 복원",
+            "decisiveStep": "(1,-2)로 a=2,b=-1을 복원하고 원래 식의 해는 (0,2)",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "계수 결정"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crosswalkRecordId": "M2-RPM-033",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:e83f1f56b005be008cb6833c0c01a6fce1e5d2fa3934d6f82cc283b7b966598b"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:7401937b4949f62dd54c43a3de9f511f3f1fae50554a54dc35bd869083892d82",
+        "solutionHash": "sha256:787aab2439e3cbc5cb08c1eaa1aaa9d7418a29a8e3babf931df437d17149438b",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:3f720ca3ed68fd94f4ff02eca307592f7de95d7ca940dd31d9b09a36fd9d7571"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:7401937b4949f62dd54c43a3de9f511f3f1fae50554a54dc35bd869083892d82",
+        "inputBundleSha": "sha256:339cb0a60c7b4cffc9a2a5f5543aa631c718092f02b602c94dc385c0537525c2",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:8f6db066acb9162377dd51c0d953d00a4204bbc0fd1dbd1f287e2827462c8111"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 21,
+      "questionUid": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+      "sourceOrdinal": 21,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+          "sourceIdentityKey": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+          "sourceOrdinal": 21,
+          "contentHash": "sha256:bb8a60ce63b2ff4c71fe68e92f1e84eb8fa72b23c38d8cb7b8bdb05fe23e0286",
+          "choicesHash": "sha256:a9836513b4963f86f7db5ed2d166b12f7fef34b0e0747f2fe7301f6d52054a2b",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:8d79083ac5ba0bfd64b77cb5eff2df7b92baf6619e4af795ecc89abf75063e7a"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:6a7e9ccd16a154daa21ff345d86a519c904ec3c399dc574cb9eb6780b6f08297",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-04",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "함수식에 입력값을 직접 대입해 함숫값 비교",
+          "decisiveStep": "x=3일 때 ㄷ과 ㄹ만 7",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차함수",
+            "midUnit": "일차함수와 그 그래프",
+            "l3": "일차함수의 뜻",
+            "l4": "함숫값"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "ACTIVE_COMPATIBILITY_BINDING_PENDING",
+        "sourceFingerprint": "sha256:8d79083ac5ba0bfd64b77cb5eff2df7b92baf6619e4af795ecc89abf75063e7a",
+        "inputBundleSha": "sha256:90e4d3e8cf4623db653e91a6d24c0c0dc4996b4ebb60400967a457aac61ee2d8",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+            "sourceIdentityKey": "qid_v1_90ac5a7fb6467664db6d68da40147e06aa2f5041c0748f21375327f18abcad90",
+            "sourceOrdinal": 21,
+            "contentHash": "sha256:bb8a60ce63b2ff4c71fe68e92f1e84eb8fa72b23c38d8cb7b8bdb05fe23e0286",
+            "choicesHash": "sha256:a9836513b4963f86f7db5ed2d166b12f7fef34b0e0747f2fe7301f6d52054a2b",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:8d79083ac5ba0bfd64b77cb5eff2df7b92baf6619e4af795ecc89abf75063e7a"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:6a7e9ccd16a154daa21ff345d86a519c904ec3c399dc574cb9eb6780b6f08297",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-04",
+            "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "함수식에 입력값을 직접 대입해 함숫값 비교",
+            "decisiveStep": "x=3일 때 ㄷ과 ㄹ만 7",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차함수",
+              "midUnit": "일차함수와 그 그래프",
+              "l3": "일차함수의 뜻",
+              "l4": "함숫값"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-046",
+        "crosswalkRecordId": "M2-RPM-046",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차함수",
+          "midUnit": "일차함수와 그 그래프",
+          "l3": "일차함수의 뜻",
+          "l4": "함숫값"
+        },
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+        "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:3ab091811dfd109cdcd8e094e320cc6bfed1cc649ae4cbaa283150d6a7c86865"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:8d79083ac5ba0bfd64b77cb5eff2df7b92baf6619e4af795ecc89abf75063e7a",
+        "solutionHash": "sha256:6a7e9ccd16a154daa21ff345d86a519c904ec3c399dc574cb9eb6780b6f08297",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:22f6382742b47089036fb8d2668a88890fc5e79c58f246f9a699c1b6da7cdfcc"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:8d79083ac5ba0bfd64b77cb5eff2df7b92baf6619e4af795ecc89abf75063e7a",
+        "inputBundleSha": "sha256:90e4d3e8cf4623db653e91a6d24c0c0dc4996b4ebb60400967a457aac61ee2d8",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:e6ea98063be1d786cf9ede3cb0c4ee245c0ce4f86182665396dc4f9acc8ffb1a"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 22,
+      "questionUid": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+      "sourceOrdinal": 22,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+          "sourceIdentityKey": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+          "sourceOrdinal": 22,
+          "contentHash": "sha256:a6686da956e2a57cf64046fd33ea9207cd48c216b1d7255d4f0431f12ca7cc35",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:23b78ae1bbe45d1d419541fe87bcc2701e5cac7369b41a36b5019fc1806d0e64",
+          "sourceFingerprint": "sha256:ce60ed1868fa255b3c8d03c0a3a1bcac305c3cde96737892e215b08d9fbbcf3b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:6d5546a62d42d8db1249bf16ab1acbc181c428480815a5f428563687b0504f0a",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "직각과 평행선 각으로 AA 닮음을 확정",
+          "decisiveStep": "△DOE∽△BCD, DO:BC=5:8에서 EO=15/4",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "삼각형의 닮음",
+            "l4": "AA"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:ce60ed1868fa255b3c8d03c0a3a1bcac305c3cde96737892e215b08d9fbbcf3b",
+        "inputBundleSha": "sha256:4aecee1d81363689381cc21aa3e421bc9aa2b0e8cbc71e4e6950c0820405193f",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+            "sourceIdentityKey": "qid_v1_5e2041681f37e0e221edc5419aedfb576a0cfeee8769004702c48cf5791726f2",
+            "sourceOrdinal": 22,
+            "contentHash": "sha256:a6686da956e2a57cf64046fd33ea9207cd48c216b1d7255d4f0431f12ca7cc35",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:23b78ae1bbe45d1d419541fe87bcc2701e5cac7369b41a36b5019fc1806d0e64",
+            "sourceFingerprint": "sha256:ce60ed1868fa255b3c8d03c0a3a1bcac305c3cde96737892e215b08d9fbbcf3b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:6d5546a62d42d8db1249bf16ab1acbc181c428480815a5f428563687b0504f0a",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "직각과 평행선 각으로 AA 닮음을 확정",
+            "decisiveStep": "△DOE∽△BCD, DO:BC=5:8에서 EO=15/4",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "삼각형의 닮음",
+              "l4": "AA"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-086",
+        "crosswalkRecordId": "M2-RPM-086",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:4fe7aab579ef802ecd3733dbe563fc8a0d7dac57cc80677911f2dce02b534919"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:ce60ed1868fa255b3c8d03c0a3a1bcac305c3cde96737892e215b08d9fbbcf3b",
+        "solutionHash": "sha256:6d5546a62d42d8db1249bf16ab1acbc181c428480815a5f428563687b0504f0a",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:8ec9db6e08caad79550923656b90c8623ef8d35171af3edbc28f11584f928425"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:ce60ed1868fa255b3c8d03c0a3a1bcac305c3cde96737892e215b08d9fbbcf3b",
+        "inputBundleSha": "sha256:4aecee1d81363689381cc21aa3e421bc9aa2b0e8cbc71e4e6950c0820405193f",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:94da883e25f0ee1c1a4e2b2726123380a2c6757450db1037a9a1e7804016f9b1"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 23,
+      "questionUid": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+      "sourceOrdinal": 23,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+          "sourceIdentityKey": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+          "sourceOrdinal": 23,
+          "contentHash": "sha256:eb9cdbc921f31491f3f832cbd6d60d670b9f022e9c0661ce62481337d90e6dc4",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:e5c4e99c56e243b2c7a1789e18118021367afc9648749c1b1c778a2af7190d23",
+          "sourceFingerprint": "sha256:10d65f9354c44c96496f4ddd49a29122f365088fc5ba73547daf494df28cd5d0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:6a12e11e6174fabeb7c19de1ee4ef8be43fafc10c8f95dfc6409dff82577c4dd",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "사다리꼴의 평행선과 대각선 닮음으로 선분 길이 계산",
+          "decisiveStep": "EP=2, EQ=10이므로 PQ=8",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "평행선 사이 선분비",
+            "l4": "사다리꼴"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "ACTIVE_COMPATIBILITY_PROJECTION_AVAILABLE",
+        "sourceFingerprint": "sha256:10d65f9354c44c96496f4ddd49a29122f365088fc5ba73547daf494df28cd5d0",
+        "inputBundleSha": "sha256:47a518ee3d043c2cf476a888749084a716b2ed9977da143a376c643bfe740fa0",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+            "sourceIdentityKey": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
+            "sourceOrdinal": 23,
+            "contentHash": "sha256:eb9cdbc921f31491f3f832cbd6d60d670b9f022e9c0661ce62481337d90e6dc4",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:e5c4e99c56e243b2c7a1789e18118021367afc9648749c1b1c778a2af7190d23",
+            "sourceFingerprint": "sha256:10d65f9354c44c96496f4ddd49a29122f365088fc5ba73547daf494df28cd5d0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:6a12e11e6174fabeb7c19de1ee4ef8be43fafc10c8f95dfc6409dff82577c4dd",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "사다리꼴의 평행선과 대각선 닮음으로 선분 길이 계산",
+            "decisiveStep": "EP=2, EQ=10이므로 PQ=8",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "평행선 사이 선분비",
+              "l4": "사다리꼴"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-094",
+        "crosswalkRecordId": "M2-RPM-094",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "사다리꼴"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:b8d78d1b9279337413256355eebb7b647e31c07e681608ef588e8bceaa2b4f09"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:10d65f9354c44c96496f4ddd49a29122f365088fc5ba73547daf494df28cd5d0",
+        "solutionHash": "sha256:6a12e11e6174fabeb7c19de1ee4ef8be43fafc10c8f95dfc6409dff82577c4dd",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:e71dc376390c33854dcdc5528babb43c5baced6dd43eba4adb66bd7b0759321e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:10d65f9354c44c96496f4ddd49a29122f365088fc5ba73547daf494df28cd5d0",
+        "inputBundleSha": "sha256:47a518ee3d043c2cf476a888749084a716b2ed9977da143a376c643bfe740fa0",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:b8e9c606c18fc77984be4a4b86384963a24b6ae8e91bc2982d0c8d6a91d165bd"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE"
+    },
+    {
+      "q": 24,
+      "questionUid": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+      "sourceOrdinal": 24,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+          "sourceIdentityKey": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+          "sourceOrdinal": 24,
+          "contentHash": "sha256:24e7c3481ae9286c0cb2268ed667cfeacbe171b47ba3a6bac9375e73662ef199",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:afa20f1174f029f5307dd9195a1ebd89a3198850b1be29f2335d5c576aa4d129"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:781f8d8da77ff0cec3741f6499d381afe6e3a7762ebd148635ad0df1c5ae8fad",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+        },
+        "semanticDecision": {
+          "primaryMethod": "가격·개수 조건을 연립방정식으로 모델링",
+          "decisiveStep": "24x+6y=34200,20x+10y=33000에서 x=1200,y=900",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식의 활용",
+            "l3": "수와 개수",
+            "l4": "개수·가격"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:afa20f1174f029f5307dd9195a1ebd89a3198850b1be29f2335d5c576aa4d129",
+        "inputBundleSha": "sha256:1b61633df1d1508911f19fce4f8782a5bc5cbadea02479eea8de8aa1f647c349",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+            "sourceIdentityKey": "qid_v1_c118faa664dc8384876d4f590e9b5682a392683e13079fe9f42af294accd2e4f",
+            "sourceOrdinal": 24,
+            "contentHash": "sha256:24e7c3481ae9286c0cb2268ed667cfeacbe171b47ba3a6bac9375e73662ef199",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:afa20f1174f029f5307dd9195a1ebd89a3198850b1be29f2335d5c576aa4d129"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:781f8d8da77ff0cec3741f6499d381afe6e3a7762ebd148635ad0df1c5ae8fad",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD"
+          },
+          "semanticDecision": {
+            "primaryMethod": "가격·개수 조건을 연립방정식으로 모델링",
+            "decisiveStep": "24x+6y=34200,20x+10y=33000에서 x=1200,y=900",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식의 활용",
+              "l3": "수와 개수",
+              "l4": "개수·가격"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-039",
+        "crosswalkRecordId": "M2-RPM-039",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식의 활용",
+          "l3": "수와 개수",
+          "l4": "개수·가격"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:8a349b6e957751b43a7fbb6ed229d007d9974e036b5b9f61bec516423bcfc934"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:afa20f1174f029f5307dd9195a1ebd89a3198850b1be29f2335d5c576aa4d129",
+        "solutionHash": "sha256:781f8d8da77ff0cec3741f6499d381afe6e3a7762ebd148635ad0df1c5ae8fad",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:d84f7802b530a9283d8b5eff8a79221791bc4d4ef372e3cc9a42dcbb3e7fa4bf"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:afa20f1174f029f5307dd9195a1ebd89a3198850b1be29f2335d5c576aa4d129",
+        "inputBundleSha": "sha256:1b61633df1d1508911f19fce4f8782a5bc5cbadea02479eea8de8aa1f647c349",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:f4f0148c8776b6c32e2e3acb26c6157ecbbd406ba60a6832bb04eefa2868003c"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    },
+    {
+      "q": 25,
+      "questionUid": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+      "sourceOrdinal": 25,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+          "questionUid": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+          "sourceIdentityKey": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+          "sourceOrdinal": 25,
+          "contentHash": "sha256:8276557403e94042809601762c1360fab6be5e0e70ad0759ae495bde98a69750",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "sourceFingerprint": "sha256:92ea82ee61d7ef8018ec507fffbc82d2b5e3d8fb33524401ee72889f5eca0d3d"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:0f5ec14c7aa725560f2f72e0a4e36ef833cc099945ced4115e70c674da44ab77",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-03",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "공통해를 구한 뒤 미지 계수를 결정",
+          "decisiveStep": "공통해 (4,-3)에서 a=4,b=5로 ab=20",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "majorUnit": "일차부등식과 연립일차방정식",
+            "midUnit": "연립일차방정식",
+            "l3": "해와 계수",
+            "l4": "계수 결정"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:92ea82ee61d7ef8018ec507fffbc82d2b5e3d8fb33524401ee72889f5eca0d3d",
+        "inputBundleSha": "sha256:53a18e8ad141cef4d9b067a761765c953fccbaad6f2ca4bbdfd4738c4b837e52",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2mid/24_금당중_2학기_중간_중2_수학.js",
+            "questionUid": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+            "sourceIdentityKey": "qid_v1_b42607f6957f8c1a99ab7da17c6a2263fe20f3dc257792573638b37cb636dc61",
+            "sourceOrdinal": 25,
+            "contentHash": "sha256:8276557403e94042809601762c1360fab6be5e0e70ad0759ae495bde98a69750",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sourceFingerprint": "sha256:92ea82ee61d7ef8018ec507fffbc82d2b5e3d8fb33524401ee72889f5eca0d3d"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:0f5ec14c7aa725560f2f72e0a4e36ef833cc099945ced4115e70c674da44ab77",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-1",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-03",
+            "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "공통해를 구한 뒤 미지 계수를 결정",
+            "decisiveStep": "공통해 (4,-3)에서 a=4,b=5로 ab=20",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-1",
+              "majorUnit": "일차부등식과 연립일차방정식",
+              "midUnit": "연립일차방정식",
+              "l3": "해와 계수",
+              "l4": "계수 결정"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-033",
+        "crosswalkRecordId": "M2-RPM-033",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-1",
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "계수 결정"
+        },
+        "problemTypeKey": null,
+        "templateKey": null,
+        "canonicalOwnerPack": null,
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "34d512ee8d056ddd464285c4ea93d5c79a2597e8",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:28126316fa95f8b4136b7bb8f593d08a48f05660fa51e3fefc2b8bcfc1798950"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:92ea82ee61d7ef8018ec507fffbc82d2b5e3d8fb33524401ee72889f5eca0d3d",
+        "solutionHash": "sha256:0f5ec14c7aa725560f2f72e0a4e36ef833cc099945ced4115e70c674da44ab77",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_B_20260928",
+        "evidenceSha": "sha256:4ef34ade4bd833638ce48087fc1bbde70b1631e2e1781d48d373cae40df00feb"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:92ea82ee61d7ef8018ec507fffbc82d2b5e3d8fb33524401ee72889f5eca0d3d",
+        "inputBundleSha": "sha256:53a18e8ad141cef4d9b067a761765c953fccbaad6f2ca4bbdfd4738c4b837e52",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:17b3d66b82afff6799cd56ef3c59efc85f3384e60ae8c9b7b704970d8dd00049"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY_COMPATIBILITY_PENDING"
+    }
+  ]
+}
