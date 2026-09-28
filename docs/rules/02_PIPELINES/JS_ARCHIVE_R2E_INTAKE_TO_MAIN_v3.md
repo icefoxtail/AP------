@@ -13,16 +13,17 @@ This contract supersedes the prior R2E release gate while retaining current CREA
 
 ### New CREATE/R1 inputs
 
-- CREATE reads every source question, writes the student solution and required visual, and materializes Meta decisions that are deterministic under the current RPM/ACTIVE authority.
-- CREATE performs one self-check of its final JS, solution, Meta and visual artifacts. READY_FOR_REVIEW requires CREATE_SELF_CHECK_PASS and SVG_RULE_COMPLIANCE_PASS when a visual is present.
-- CREATE builds and checks known student-benefit visuals at first build; it does not knowingly defer an existing visual defect to R1/R2E.
-- R1 independently rechecks CREATE. Before READY_FOR_R2E it closes every deterministic binding/materialization/reuse case, repairs proven defects in scope, and records only genuinely unresolved semantic/source issues for R2E.
-- New READY_FOR_R2E receipts continue to satisfy the current R1 receipt contract. These upstream duties do not authorize R2E to re-run Meta across the full denominator.
-- New R1 receipts retain the current source/blob/input/denominator and itemized HOLD/repair evidence requirements, including the current resolver reference/version where CREATE/R1 creates one and applicable visual/self-check references. Those are forward-looking CREATE/R1 gates, not a migration job for already-READY legacy receipts.
+- CREATE는 모든 source question을 읽고 student solution/visual을 작성하며, source+verified solution에서 **RPM Primary exact L3/L4 semantic path를 확정**한다.
+- RPM L3/L4가 deterministic하면 semantic Meta는 FINAL이다. crosswalk/PT/TPL/binding은 이후 compatibility projection이며 부재·stale·binding gap이 semantic FINAL을 무효화하지 않는다.
+- CREATE self-check와 R1 independent review는 RPM semantic judgement를 독립 검증한다. `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP/RPM_ONLY`는 projection 상태로만 기록한다.
+- READY_FOR_R2E의 zero-resolvable gate는 **RPM semantic unresolved=0**을 뜻한다. PT/TPL projection/binding 미완료는 `resolvablePending`, `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`로 세지 않는다.
+- 실제 source/math/RPM semantic ambiguity만 itemized semantic HOLD로 남긴다.
+- visual/self-check/source/blob/denominator evidence 요구는 기존 current contract를 유지한다.
+- legacy `RPM_PRIMARY_MIGRATION_GAP` enum이 필요한 receipt는 `META_ONLY` compatibility finding으로 해석한다.
 
-The new R1 receipt minimum remains examUid, examFile, grade, lane, stage, sourceBlobSha, inputCommit, totalQuestions, changedQuestions, changedSvgFiles, visualDispositionSummary, visualEvidenceRef, visualRenderStatus, createSelfCheckStatus, solutionSelfCheckStatus, svgRuleComplianceStatus, createSelfCheckEvidenceRef, metaDispositionSummary, resolver evidence ref/version when produced, unresolvedItems, authorityRefs, nextState and updatedAt. R1 itemized repair/gap arrays remain the source of HOLD inventory. R2E v3 reads these fields without writing them back.
+The R1 receipt should keep semantic and projection summaries separate whenever the schema permits, e.g. `rpmSemanticStatus` and `projectionStatus`. Older schemas may retain legacy fields, but projection gaps must not be interpreted as semantic HOLD.
 
-### Frozen legacy READY_FOR_R2E cohort
+### Frozen legacy READY_FOR_R2E cohort### Frozen legacy READY_FOR_R2E cohort
 
 The existing READY_FOR_R2E cohort present when this contract is adopted is processed from its frozen R1 authority. Its receipts, exam JS and sidecars are read-only whether Meta evidence is absent, old or current. R2E does not backfill or regenerate those sidecars, and does not reclassify normal R1 PASS rows. This compatibility path exists to aggregate and classify the legacy HOLD backlog, including existing RPM-to-L3/L4 mappings.
 
@@ -50,16 +51,16 @@ R1 결과와 시험지 원본은 authority로 보존한다. R2E는 intake branch
 
 ### 1.1 RELEASE_BLOCKING과 META_ONLY를 분리한다
 
-META_ONLY는 advanced metadata의 완성도만 낮추는 finding이다. R1/RPM 계약의 ADVANCED_META_HOLD와 같은 release effect로 기록하며, 단독으로 R2E_FINAL 또는 R2E_MAIN_FINAL을 차단하지 않는다.
+**RPM semantic FINAL과 legacy projection completeness를 분리한다.** RPM L3/L4가 FINAL인 문항의 다음 상태는 HOLD가 아니라 META_ONLY compatibility finding이다.
 
-- RPM_PRIMARY_MIGRATION_GAP
-- 기존 L3/L4 key 또는 curriculum binding의 미연결
-- 기존 CrossConcept와의 미결 매핑
-- R1 resolver/difficulty sidecar가 구형이거나 없거나 stale한 상태
-- metadata projection/runtime/catalog의 누락 또는 stale 상태
-- 신규 taxonomy proposal 등 student-facing JS를 직접 손상시키지 않는 Meta finding
+- `RPM_PRIMARY_MIGRATION_GAP` legacy compatibility enum
+- `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP`
+- `RPM_ONLY`
+- 기존 PT/TPL key 또는 curriculum binding의 미연결
+- resolver/difficulty sidecar의 구형·누락·stale
+- metadata projection/runtime/catalog의 누락 또는 stale
 
-META_ONLY는 HOLD inventory와 R2E receipt에 남긴다. 기존 분류표로 해결되면 대상 UID만 매핑하고, 해결되지 않으면 해당 문항만 upperModelReview case로 넘긴다.
+이들은 단독으로 R2E_FINAL/R2E_MAIN_FINAL을 차단하지 않으며 **HOLD inventory가 아니라 META_ONLY inventory**에 기록한다. projection materialization을 하지 않았다는 이유로 upper-model semantic adjudication을 열지 않는다.
 
 RELEASE_BLOCKING은 학생에게 잘못된 JS 결과를 제공하거나 시험지 구조를 신뢰할 수 없게 만드는 finding이다. R1/RPM 계약의 BASIC_HARD_HOLD와 같은 release effect로 기록하며, 다음은 영향이 닫히기 전 시험지 release를 막는다.
 

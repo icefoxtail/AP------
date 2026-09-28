@@ -68,8 +68,8 @@ RPM → ACTIVE 재탐색 방지
 L3/L4/CrossConcept/Condition/alias/binding/ownership production machine key
 → Meta Foundation 운영규칙 + ACTIVE canonical Pack/Binding
 
-gap 판정
-→ source+solution → RPM Primary → exact crosswalk → current ACTIVE targeted validation 순으로 대조. RPM path가 있고 machine key/binding만 빠졌으면 `RPM_PRIMARY_MIGRATION_GAP`, 둘 다 없을 때만 신규 taxonomy gap
+semantic 판정
+→ source+solution → RPM Primary exact L3/L4에서 종료. RPM L3/L4가 deterministic하면 semantic FINAL. exact crosswalk/current ACTIVE는 이후 compatibility projection만 판정하며 PT/TPL/binding 부재는 semantic HOLD가 아님
 
 difficulty
 → difficultyBucket 운영규칙
@@ -80,36 +80,30 @@ compiled/
 
 ### 1.1 RPM → ACTIVE CROSSWALK FIRST LOOKUP HARD
 
-RPM Primary에서 문항의 semantic path를 확정한 **직후**, ACTIVE pack/binding을 전역 재검색하기 전에 반드시 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`의 정확한 학년/과목 JSON을 먼저 조회한다.
+RPM Primary에서 문항의 L3/L4 semantic path를 확정한 순간 **semantic assignment는 FINAL 후보**다. 그 뒤 학년/과목 crosswalk는 기존 PT/TPL/binding projection을 찾기 위한 lookup reference로만 사용한다.
 
-현재 선택표:
+현재 선택표는 기존과 같다.
 
 - 중1 → `middle1.json`
 - 중2 → `middle2.json`
 - 중3 → `middle3.json`
-- 고1 2015 수학(상)/(하), 2022 공통수학1/2 → `high1.json`
-- 고2 2015 수학I / 2022 대수 → `high2-math1-algebra.json`
-- 고2 2015 수학II / 2022 미적분I → `high2-math2-calculus1.json`
-- 고2 2015 미적분 / 2022 미적분II → `high2-calculus-calculus2.json`
-- 고2 확률과통계 → `high2-probability-statistics.json`
-- 고2 기하 → `high2-geometry.json`
+- 고1 → `high1.json`
+- 고2 → 해당 과목별 crosswalk
 
-상태별 행동은 다음으로 고정한다.
+상태별 projection 해석:
 
-- `DIRECT_ACTIVE`: mapped PT/TPL + exact binding을 우선 사용하고 current ACTIVE 관련 row/binding만 targeted validation한다.
-- `FAMILY_ACTIVE`: crosswalk에 적힌 PT와 template 후보군 안에서만 final solution의 decisive step과 맞는 1개를 고른다. 후보군 밖 전역 탐색을 기본값으로 하지 않는다.
-- `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP`: 새 key를 만들거나 같은 의미를 전역 재검색하지 않는다. mapped key와 RPM path를 evidence로 보존하고 `RPM_PRIMARY_MIGRATION_GAP`으로 넘긴다.
-- `RPM_ONLY`: ACTIVE에 안전한 대응 machine key가 아직 materialize되지 않은 것으로 취급한다. 억지 유사키 매핑·반복 전역검색·임의 신규 canonical 생성 금지. `RPM_PRIMARY_MIGRATION_GAP` evidence로 보존한다.
+- `DIRECT_ACTIVE`: 기존 PT/TPL projection 우선 재사용.
+- `FAMILY_ACTIVE`: listed 기존 projection 후보 중 decisive step과 맞는 것을 선택.
+- `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP`: RPM semantic FINAL + projection binding pending. **semantic HOLD 금지.**
+- `RPM_ONLY`: RPM semantic FINAL + legacy projection unmateralized. **semantic HOLD 금지.**
 
-Crosswalk는 **production canonical authority가 아니라 deterministic lookup reference**다. 따라서:
+Crosswalk는 production semantic authority가 아니며 `generatedAgainstMain` 이후 관련 projection drift가 있으면 영향 row만 targeted validation한다.
 
-1. crosswalk의 `generatedAgainstMain` 이후 **관련 canonical/binding drift가 없으면** 이미 계산된 mapping availability를 그대로 재사용하고 전역 재조사하지 않는다.
-2. 관련 canonical/binding이 바뀌었으면 영향받은 RPM path/row만 targeted revalidation한다. 전체 학년/과목 crosswalk를 매 작업마다 재생성하거나 ACTIVE 전체를 처음부터 다시 검색하지 않는다.
-3. 정확한 학년/과목 crosswalk가 아직 없으면 기존 `RPM Primary → ACTIVE PT/TPL+binding` 직접 대조로 fallback한다. 다른 학년/과목 파일을 대신 사용하지 않는다.
+`RPM_PRIMARY_MIGRATION_GAP` legacy enum이 필요한 경우에도 projection/META_ONLY 상태로만 사용한다. 이를 `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`, semantic unresolved로 올리지 않는다.
 
-사용자의 현재 명시적 지시는 프로젝트 내부 실행 규칙보다 우선한다.
+PT/TPL 신규 materialization은 별도 compatibility/runtime 목표가 있을 때 수행한다. **RPM semantic FINAL을 만들기 위한 필수 단계가 아니다.**
 
-## 2. GPT와 Codex 작업 방식 분리
+## 2. GPT와 Codex 작업 방식 분리## 2. GPT와 Codex 작업 방식 분리
 
 ### GPT
 장시간 작업은 컨텍스트/타임아웃 위험 때문에 단계 또는 하위 배치마다 상태를 보존하고 보고 후 STOP하는 방식을 기본으로 한다.
@@ -314,11 +308,11 @@ SOURCE_BLOCKED
 - 질문 목표
 - decisive strategy
 - **RPM Primary 해당 curriculum/L1/L2의 L3 semantic path 선조회**
-- RPM path 확정 직후 **정확한 학년/과목 crosswalk JSON을 먼저 조회**하고, 그 결과로 ACTIVE 탐색 범위를 제한
-- 기존 ACTIVE L3 + curriculum binding 재사용
-- 타 Pack canonical L3 참조 가능성
-- RPM path ↔ ACTIVE key/binding migration gap 여부
-- **RPM과 ACTIVE 양쪽에 적절한 path가 없을 때만** 신규 L3 필요성
+- **RPM Primary exact L3를 확정하면 semantic L3는 FINAL 후보**
+- 그 뒤 정확한 학년/과목 crosswalk에서 legacy PT/TPL projection availability를 조회
+- 기존 ACTIVE projection이 있으면 재사용하고, 없으면 `BINDING_PENDING/UNMATERIALIZED`로 분리
+- projection 부재를 L3 HOLD 또는 신규 semantic taxonomy 필요성으로 해석하지 않음
+- RPM L3 자체가 source/solution으로 결정 불가하거나 RPM taxonomy에 실제 omission/contradiction이 있을 때만 semantic HOLD
 
 미등록 key는 candidate일 뿐 canonical이 아니다.
 
@@ -336,10 +330,10 @@ SOURCE_BLOCKED
 
 ### Stage 4 — L4 Fresh Assignment
 L3 내부에서 조건 배치·decisive step 순서·반복 가능한 풀이 골격으로 판정.
-- 선택된 L3의 **RPM Primary L4 semantic path를 먼저 확인**하고, 즉시 정확한 학년/과목 crosswalk JSON에서 mapping status와 mapped PT/TPL/template candidates를 조회한다.
-- `DIRECT_ACTIVE` / `FAMILY_ACTIVE`는 crosswalk가 제한한 범위에서만 current ACTIVE targeted validation을 수행한다.
-- RPM에 적절한 L4가 있는데 ACTIVE template만 없거나 crosswalk가 `*_BINDING_GAP` / `RPM_ONLY`이면 `RPM_PRIMARY_MIGRATION_GAP`으로 기록하고 즉석 신규 template을 만들거나 ACTIVE 전체를 재검색하지 않는다.
-- RPM과 ACTIVE 양쪽에 적절한 L4가 없을 때만 신규 L4 candidate를 연다.
+- 선택된 L3의 **RPM Primary L4 semantic path를 확정하면 semantic L4는 FINAL 후보**다.
+- 즉시 정확한 학년/과목 crosswalk에서 기존 PT/TPL projection을 조회하되, `*_BINDING_GAP` / `RPM_ONLY`는 `BINDING_PENDING/UNMATERIALIZED` projection 상태로 기록한다.
+- projection gap은 semantic HOLD가 아니며, RPM L4를 다시 PT/TPL 기준으로 재판정하지 않는다.
+- 신규 PT/TPL materialization은 별도 compatibility/runtime 요구가 있을 때만 candidate로 연다. RPM semantic FINAL의 필수 조건이 아니다.
 
 새 L4 근거가 아닌 것:
 - 숫자/계수 차이

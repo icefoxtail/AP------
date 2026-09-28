@@ -14,18 +14,21 @@
 current source + independently verified final student solution
 → decision-isolated semantic judgement
 → RPM Primary README → CANONICAL_MASTER → exact curriculum/scope view
-→ exact grade/subject RPM→ACTIVE crosswalk
-→ GLOBAL ACTIVE Meta Foundation targeted PT/TPL lookup
-→ exact curriculum/L1/L2 binding and parent validation
-→ EXISTING_REUSE / FAMILY_REUSE / RPM_PRIMARY_MIGRATION_GAP / TRUE_TAXONOMY_GAP / ROUTE_OUT
+→ exact RPM L3/L4 path
+= RPM_SEMANTIC_FINAL
+→ exact grade/subject crosswalk
+→ GLOBAL ACTIVE PT/TPL + binding projection lookup
+→ projectionStatus(REUSE / BINDING_PENDING / UNMATERIALIZED / INVALID)
 → separate fresh difficulty blind pass
 → deterministic Meta validator receipt
 → runtime / Archive parity
 ```
 
-Semantic first pass는 source identity, content/choices/image reference hash, verified solution hash, curriculum/L1/L2, `primaryMethod`, `decisiveStep`만 사용한다. same-stage candidate의 `problemTypeKey`, `templateKey`, CrossConcept/Condition suggestion, 이전 verdict, heuristic/tag-enrichment 결과는 입력하지 않는다. family template 선택은 crosswalk 조회 뒤 별도 `POST_CROSSWALK` evidence로 기록하고 semantic `inputBundleSha`에 연결한다.
+**RPM L3/L4가 deterministic하게 확정되는 순간 semantic classification은 FINAL이다.** crosswalk/PT/TPL/binding은 그 semantic을 기존 machine-key consumer에 투영하는 compatibility layer이며, projection gap은 semantic HOLD가 아니다.
 
-## 2. Resolver API와 evidence
+Semantic first pass는 source identity, content/choices/image reference hash, verified solution hash, curriculum/L1/L2, `primaryMethod`, `decisiveStep`만 사용한다. same-stage candidate의 `problemTypeKey`, `templateKey`, CrossConcept/Condition suggestion, 이전 verdict, heuristic/tag-enrichment 결과는 입력하지 않는다.
+
+## 2. Resolver API와 evidence## 2. Resolver API와 evidence
 
 Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `semanticDecision`의 명시 필드만 허용한다. 결정 단계에서 `problemTypeKey`, `templateKey`, CrossConcept/Condition key, difficulty, candidate, heuristic, 이전 판정 필드는 거부한다.
 
@@ -38,34 +41,40 @@ Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `s
 - `curriculum`, `grade`, RPM `scope`, `standardUnitKey`, `subUnitKey`
 - semantic `primaryMethod`, `decisiveStep`, RPM L3/L4 path
 
-Resolver 출력은 RPM path/L3/L4, 실제 crosswalk file·row·status, ACTIVE PT/TPL owner·version, exact binding identity, disposition, `sourceFingerprint`, `inputBundleSha`, authority file hashes, `evidenceSha`를 포함한다. `build-rpm-active-resolution.mjs`는 독립 judgement input에서 resolver 결과와 validation receipt를 생성한다. 각 검수/repair/R2E 단계는 같은 resolver 결과를 UID와 SHA로 결속한다.
+Resolver 출력은 RPM path/L3/L4와 **`rpmSemanticStatus`**, 실제 crosswalk file·row·status, 기존 ACTIVE PT/TPL/binding projection과 **`projectionStatus`**, `sourceFingerprint`, `inputBundleSha`, authority file hashes, `evidenceSha`를 포함한다. semantic status와 projection status를 하나의 HOLD/disposition으로 합치지 않는다. `build-rpm-active-resolution.mjs`는 독립 judgement input에서 resolver 결과와 validation receipt를 생성한다. 각 검수/repair/R2E 단계는 같은 resolver 결과를 UID와 SHA로 결속한다.
 
 ## 3. Disposition
 
-| Resolver disposition | 조건 | canonical key 동작 | BASIC 영향 |
-|---|---|---|---|
-| `EXISTING_REUSE` | RPM path와 DIRECT crosswalk, ACTIVE PT/TPL 및 exact binding 일치 | 기존 key 사용 | 유효한 L1/L2·source·solution이면 가능 |
-| `FAMILY_REUSE` | crosswalk의 명시 template 후보 안에서 post-crosswalk decisive-step 선택, ACTIVE parent/binding 일치 | 고른 기존 key만 사용 | 유효한 L1/L2·source·solution이면 가능 |
-| `RPM_PRIMARY_MIGRATION_GAP` | RPM path는 있으나 crosswalk·ACTIVE key·parent·binding materialization이 없음/불일치 | key 생성 금지; blank key + evidence | advanced만 미완료; BASIC은 별도 판정 |
-| `TRUE_TAXONOMY_GAP` | RPM path가 없고 현재 GLOBAL ACTIVE targeted lookup도 완료했으나 적합 경로 없음 | candidate/HOLD evidence만; key 생성 금지 | advanced만 미완료; BASIC은 별도 판정 |
-| `ROUTE_OUT` | scope/curriculum/source가 해당 route 밖이거나 현재 authority를 판정할 수 없음 | metadata apply 금지; route-out evidence | 별도 BASIC gate가 결정 |
+Resolver는 semantic과 projection을 분리한다.
 
-RPM path가 있고 active key나 exact binding이 없는 상태는 항상 `RPM_PRIMARY_MIGRATION_GAP`이다. 이를 true taxonomy gap 또는 `META_PACK_GAP_HOLD`로 바꾸지 않는다.
+### 3.1 Semantic status
 
-### R2E Repair & Release v3 release impact
+| rpmSemanticStatus | 조건 | R1/R2E 영향 |
+|---|---|---|
+| `FINAL` | source+verified solution으로 exact RPM L3/L4를 deterministic하게 확정 | semantic PASS |
+| `HOLD` | RPM L3/L4 자체가 source/solution/RPM omission·contradiction 때문에 결정 불가 | Meta semantic HOLD 가능 |
+| `ROUTE_OUT` | 해당 curriculum/scope route 밖 | 별도 route 처리 |
 
-이 resolver 계약은 실제 Meta key를 생성·재사용·수정하는 UID에 계속 적용한다. 다만 신규 R2E v3는 전체 시험지의 Meta 완성을 목표로 하지 않는다.
+### 3.2 Projection status
 
-- RPM migration gap과 resolver/difficulty sidecar 누락은 Meta disposition으로 보존하며 `META_ONLY`다. 그 이유만으로 시험지 JS release를 막지 않는다.
-- R2E가 특정 HOLD UID에 existing PT/TPL을 적용하는 경우에는 해당 UID의 active key/parent 근거와 group decision/UID application evidence를 남긴다. 새로운 L3/L4 key 생성 권한을 만들지 않는다.
-- production JS의 Meta field를 실제 변경하는 경우에만 해당 UID를 shared resolver/validator와 직접 영향 runtime consumer로 targeted 검증한다. 정상 R1 PASS 전체의 fresh resolver/difficulty pass, reprojection, runtime/catalog regeneration은 요구하지 않는다.
-- `JS_ARCHIVE_R2E_META_RECEIPT_v1`와 Meta HOLD Zero는 기존 v1 receipt/artifact 호환 경로에서만 사용한다. 신규 R2E v3는 `JS_ARCHIVE_R2E_FINAL_RECEIPT_v2`의 RELEASE_BLOCKING/META_ONLY 분리를 사용한다. Meta Foundation promotion 자체는 이 예외를 적용하지 않는다.
+| projectionStatus | 조건 | semantic 영향 |
+|---|---|---|
+| `REUSE` | 기존 PT/TPL 및 필요한 binding을 안전하게 사용 가능 | 없음 |
+| `BINDING_PENDING` | PT/TPL 의미는 맞으나 exact curriculum binding 미구축 | **META_ONLY, HOLD 아님** |
+| `UNMATERIALIZED` | RPM path는 FINAL이나 안전한 legacy PT/TPL projection이 없음 | **META_ONLY, HOLD 아님** |
+| `INVALID` | 존재하는 projection key 자체가 canonical-invalid/parent-invalid | projection repair 필요; RPM semantic FINAL은 별도 보존 |
 
-`TRUE_TAXONOMY_GAP`에는 current registry SHA와 함께 `searchMethod=GLOBAL_ACTIVE_TARGETED_BY_EXACT_CURRICULUM_L1_L2`, 검색한 exact curriculum/L1/L2 scope, no-match candidate key list를 sidecar에 남긴다. Candidate/heuristic key를 검색 근거로 재사용하지 않는다.
+crosswalk의 `DIRECT_ACTIVE/FAMILY_ACTIVE`는 주로 `REUSE`, `*_BINDING_GAP`은 `BINDING_PENDING`, `RPM_ONLY`는 `UNMATERIALIZED`의 lookup hint다. **crosswalk status가 semantic status를 결정하지 않는다.**
 
-R2E final receipt 매핑은 `EXISTING_REUSE`/`FAMILY_REUSE → EXISTING_REUSE`, `ROUTE_OUT → ROUTE_OUT`이다. Migration gap과 taxonomy gap은 unresolved이므로 R2E_FINAL에 남길 수 없다. Canonical materialization/repair 후에는 갱신된 ACTIVE registry를 대상으로 resolver를 다시 실행하고 그 결과를 self-hash `receiptSha`와 durable ledger로 봉인한다.
+legacy schema에서 `RPM_PRIMARY_MIGRATION_GAP`을 유지해야 하면 `BINDING_PENDING/UNMATERIALIZED`의 compatibility alias로만 사용하며 `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`, `resolvablePending>0`로 승격하지 않는다.
 
-## 4. Difficulty blind pass
+canonical ownerPack과 curriculum binding ownerPack이 다른 것은 정상 cross-pack projection일 수 있다. GLOBAL ACTIVE canonical uniqueness와 exact binding을 각각 독립 검증한다.
+
+### 3.3 R2E v3
+
+R2E v3 release authority에서 projection gap은 `META_ONLY`다. `rpmSemanticStatus=FINAL`인 문항은 projection gap만으로 R2E_FINAL/R2E_MAIN_FINAL을 막지 않는다. TRUE semantic HOLD만 item-level adjudication 대상으로 남긴다.
+
+## 4. Difficulty blind pass## 4. Difficulty blind pass
 
 Difficulty는 `JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1`로 L3/L4 semantic pass와 분리한다. source fingerprint와 verified solution hash에 결속된 fresh independent pass, bucket 1–5, confidence, boundary flag, legacy compatibility, rationale, reviewer/decision provenance를 요구한다. 기존 `level`은 blind 판정 입력이나 bucket 변환식으로 사용할 수 없다. legacy level은 fresh bucket 결정 뒤 비교 evidence로만 허용한다.
 

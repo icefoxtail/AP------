@@ -17,9 +17,24 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 **모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
 
 
+### RPM PRIMARY SEMANTIC AUTHORITY — CURRENT HARD RULE (2026-09-28)
+
+**RPM Primary의 curriculum/scope L3/L4 semantic path가 JS Archive L3/L4 분류의 최상위 정본이다.** source + independently verified final solution에서 RPM L3/L4가 deterministic하게 확정되면 그 문항의 semantic classification은 FINAL이다.
+
+학년/과목 crosswalk, 기존 `problemTypeKey/templateKey`, ACTIVE Pack taxonomy, curriculum binding은 **RPM semantic을 기존 Meta Foundation/runtime 소비자에 연결하는 compatibility/projection layer**다. 이 projection의 부재·stale·binding gap은 RPM semantic FINAL을 무효화하지 않는다.
+
+- `DIRECT_ACTIVE/FAMILY_ACTIVE`: 기존 PT/TPL projection 재사용.
+- `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP`: RPM semantic FINAL + projection binding pending. **Meta HOLD 금지.**
+- `RPM_ONLY`: RPM semantic FINAL + legacy PT/TPL projection unmateralized. **Meta HOLD 금지.**
+- canonical ownerPack과 curriculum binding ownerPack이 다른 cross-pack reuse는 정상이며 conflict가 아니다.
+- legacy enum `RPM_PRIMARY_MIGRATION_GAP`을 유지해야 하는 경로에서는 **META_ONLY compatibility status**로만 기록하고 R1/R2E 진입·release를 차단하지 않는다.
+- TRUE Meta semantic HOLD는 source/solution으로 RPM L3/L4 자체를 결정할 수 없거나, 해당 curriculum의 RPM semantic path가 실제로 없거나 모순되어 deterministic classification이 불가능한 경우에만 허용한다.
+
+**CREATE/R1의 `resolvablePending=0`은 RPM semantic unresolved 기준이다. PT/TPL projection/binding 미완료는 resolvablePending 또는 ADVANCED_META_HOLD로 세지 않는다.**
+
 ### JS Archive R2E Repair & Release v3 작업 선행 규칙
 
-**CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE는 현재 authority로 결정 가능한 Meta를 적극 반영하고 exact materialization patch까지 만든다. R1은 이를 독립 재판정·수정하여 `READY_FOR_R2E` 전에 `resolvablePending=0`을 만든다. R2E는 routine binding/materialization cleanup을 하지 않고 true adjudication만 deep review한다.
+**CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE/R1은 source+verified solution으로 RPM Primary L3/L4 semantic path를 확정하고 `READY_FOR_R2E` 전에 **RPM semantic unresolved=0**을 만든다. PT/TPL projection·binding·runtime compatibility 미완료는 `resolvablePending`/Meta HOLD로 세지 않고 `META_ONLY` projection status로 분리한다. R2E는 true semantic/source adjudication만 deep review한다.
 
 **CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 CURRENT VISUAL ROUTER를 처음 제작부터 적용한다. `VISUAL_REQUIRED`와 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL`은 CREATE에서 KEEP/ADD/REBUILD를 끝내며, known visual repair를 R1/R2E로 의도적으로 미루지 않는다. CREATE 종료 시 visual preflight PASS, required visual missing 0, known visual repair pending 0, 지원 가능한 visual math parity pending 0을 요구한다. 예약 GPT가 render를 실행하지 않는 정책이면 `NOT_RUN_CODEX_HANDOFF`만 허용하며 render PASS를 허위 선언하지 않는다.
 
@@ -81,11 +96,13 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - agent/provider 실행 수·동시성·phase isolation·freeze·launch/recheck·retry/fallback 및
   provider 실행은 [`AGENT_BUDGET.md`](../../archive/tools/pipeline-core/AGENT_BUDGET.md)가
   유일한 실행 정본이다.
-- **Meta/L3/L4 작업은 RPM Primary v1.0을 선조회한다.** `01_CANONICAL/taxonomy/rpm-primary-v1.0/`은 `LOCKED` semantic path reference authority이며, 신규 L3/L4·HOLD를 판정하기 전에 `README.md` → `00_POLICY/CANONICAL_MASTER.json` → 대상 curriculum/scope view를 확인한다.
+- **Meta/L3/L4 semantic 정본은 RPM Primary v1.0이다.** `01_CANONICAL/taxonomy/rpm-primary-v1.0/`의 `README.md → CANONICAL_MASTER.json → 대상 curriculum/scope view`를 source+verified solution과 함께 사용해 RPM L3/L4를 확정한다. RPM path가 deterministic하면 semantic classification은 FINAL이다.
 - L1/L2의 표준단원·세부단원 authority는 기존 `표준단원키 마스터`와 `세부단원 운영규칙`이 유지한다.
-- L3/L4/CrossConcept/Condition/alias/curriculum binding의 **production machine-key 정의·승격·검증 authority**는 `01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md` + `archive/data/meta-foundation/canonical/`이다.
-- 강제 조회 순서는 **source+verified solution → RPM Primary semantic path → 학년/과목별 RPM→ACTIVE crosswalk → current ACTIVE PT/TPL + curriculum binding validation → reuse/rebind/materialization 판단 → 그래도 결정 불가할 때만 adjudication/taxonomy gap**이다. RPM path는 있는데 ACTIVE key/binding이 빠졌더라도 **exact materialization target이 deterministic하면 CREATE/R1에서 patch를 만들어 닫아야 하며**, 단순 `RPM_PRIMARY_MIGRATION_GAP`으로 R2E에 넘기지 않는다.
-- **RPM→ACTIVE CROSSWALK FIRST LOOKUP HARD:** RPM path를 확정한 직후 `../../archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/`에서 정확한 학년/과목 JSON을 먼저 조회한다. `DIRECT_ACTIVE`는 mapped PT/TPL을 우선 사용하고, `FAMILY_ACTIVE`는 파일에 기록된 template 후보 안에서 decisive step으로 선택한다. `DIRECT_BINDING_GAP` / `FAMILY_BINDING_GAP`은 exact target이 결정되면 CREATE에서 `materializationPatch`를 만들고 R1에서 독립 검증·수정한다. `RPM_ONLY`도 GLOBAL ACTIVE에 안전한 reuse가 있으면 CREATE/R1에서 REBIND/REUSE로 닫는다. **READY_FOR_R2E는 `resolvablePending=0`이 HARD gate**이며, R2E에는 exact target 자체가 비결정적인 `R2_ADJUDICATION_REQUIRED`만 넘긴다.
+- 기존 `problemTypeKey/templateKey`, ACTIVE Pack taxonomy, CrossConcept/Condition, curriculum binding은 **RPM semantic의 machine-key/compatibility projection authority**다. projection key가 존재하면 canonical-valid key만 사용하지만, projection 부재가 RPM semantic FINAL을 뒤집지 않는다.
+- 강제 조회 순서는 **source+verified solution → RPM Primary L3/L4 semantic FINAL → 학년/과목 crosswalk → 기존 PT/TPL/binding projection 조회**다. crosswalk/ACTIVE는 semantic 재판정기가 아니라 projection lookup이다.
+- **RPM→ACTIVE CROSSWALK STATUS:** `DIRECT_ACTIVE/FAMILY_ACTIVE`는 projection reuse, `*_BINDING_GAP`은 projection binding pending, `RPM_ONLY`는 projection unmateralized다. 뒤의 두 상태를 `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`, semantic unresolved로 승격하지 않는다. legacy `RPM_PRIMARY_MIGRATION_GAP` enum이 필요한 경우에도 `META_ONLY` compatibility status로만 사용한다.
+- canonical ownerPack과 curriculum binding ownerPack은 다를 수 있다. GLOBAL ACTIVE canonical key가 unique하고 exact curriculum binding이 별도 pack에 있으면 정상 cross-pack reuse다.
+- **TRUE semantic gap/HOLD는 RPM L3/L4 자체를 deterministic하게 확정할 수 없는 경우에만 연다.** PT/TPL/binding 부재만으로 신규 taxonomy gap이나 Meta HOLD를 만들지 않는다.
 - 모든 ACTIVE Meta 생성·3차검수·repair·R1/R2E 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
