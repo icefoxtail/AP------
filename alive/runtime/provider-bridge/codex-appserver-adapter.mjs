@@ -27,6 +27,29 @@ export function nativeImageInput(url) {
   return { type: 'image', url, detail: 'original' };
 }
 
+export function bindU2DefectsToPacketAssetSha(packet, defects) {
+  const bySha = new Map();
+  for (const row of packet?.payload || []) {
+    const uid = row?.questionUid;
+    if (typeof uid !== 'string') continue;
+    const assets = [row.artifact, ...(Array.isArray(row.problemAssets) ? row.problemAssets : [])];
+    for (const asset of assets) for (const key of ['sha256', 'nativeSha256']) {
+      const sha = asset?.[key];
+      if (typeof sha !== 'string' || !/^sha256:[0-9a-f]{64}$/.test(sha)) continue;
+      const matches = bySha.get(sha) || new Set();
+      matches.add(uid);
+      bySha.set(sha, matches);
+    }
+  }
+  return defects.map(defect => {
+    if (typeof defect?.questionUid === 'string') return defect;
+    const matches = bySha.get(defect?.subjectSha);
+    if (matches?.size !== 1) return defect;
+    const questionUid = [...matches][0];
+    return { ...defect, questionUid, subjectShaBinding: { status: 'PASS', matchedField: 'artifact.sha256|nativeSha256', questionUid } };
+  });
+}
+
 let sharp;
 function loadSharp() {
   if (!sharp) {
@@ -42,12 +65,22 @@ async function optimizeNativeImage(record) {
   if (!match) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: null, transferBytes: null };
   const original = Buffer.from(match[2], 'base64');
   const renderWitness = /(?:^|\/)pipeline-renders\//.test(record.path || '');
-  if (original.length <= 150_000 && !renderWitness) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
-  const pipeline = loadSharp()(original, { limitInputPixels: 40_000_000 });
+  const nativeSvg = path.extname(record.path || '').toLowerCase() === '.svg';
+  if (original.length <= 150_000 && !renderWitness && !nativeSvg) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
+  const image = loadSharp()(original, { limitInputPixels: 40_000_000 });
+  const metadata = await image.metadata();
+  // SVG-native PNGs may carry a transparent canvas. Codex displays those
+  // alpha pixels as black in some native image paths, so flatten them to the
+  // white canvas used by the archive renderer before transfer encoding.
+  const flattened = metadata.hasAlpha ? await loadSharp()(original, { limitInputPixels: 40_000_000 }).flatten({ background: '#ffffff' }).png().toBuffer() : original;
+  const flattenedUrl = metadata.hasAlpha ? `data:image/png;base64,${flattened.toString('base64')}` : record.url;
+  const transferBase = metadata.hasAlpha ? flattened : original;
+  if (transferBase.length <= 150_000 && !renderWitness) return { ...record, transferUrl: flattenedUrl, transferMimeType: 'image/png', originalBytes: original.length, transferBytes: transferBase.length };
+  const pipeline = loadSharp()(transferBase, { limitInputPixels: 40_000_000 });
   const optimized = renderWitness
     ? await pipeline.resize({ width: 960, height: 800, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 75, mozjpeg: true }).toBuffer()
     : await pipeline.jpeg({ quality: 85, mozjpeg: true }).toBuffer();
-  if (optimized.length >= original.length) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
+  if (optimized.length >= transferBase.length) return { ...record, transferUrl: flattenedUrl, transferMimeType: metadata.hasAlpha ? 'image/png' : record.mimeType, originalBytes: original.length, transferBytes: transferBase.length };
   return { ...record, transferUrl: `data:image/jpeg;base64,${optimized.toString('base64')}`, transferMimeType: 'image/jpeg', originalBytes: original.length, transferBytes: optimized.length };
 }
 
@@ -344,7 +377,8 @@ async function handleDaemonRequest(runtime, request) {
   const output = JSON.parse(text.slice(start, end + 1));
   const evidence = parseJsonObjectItems(output.evidence, 'evidence');
   const defects = parseJsonObjectItems(output.defects, 'defects');
-  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: launch.control.id, phase: request.phase, sessionId: context.sessionId, contextId: context.contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects };
+  const scopedDefects = request.phase === 'U2' ? bindU2DefectsToPacketAssetSha(request.packet, defects) : defects;
+  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: launch.control.id, phase: request.phase, sessionId: context.sessionId, contextId: context.contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects: scopedDefects };
 }
 
 function callDaemon(request) {
