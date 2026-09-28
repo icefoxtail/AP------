@@ -1,6 +1,6 @@
 {
   "schemaVersion": "TEXTBOOK_SET_PIPELINE_CLOSEOUT_STATUS_v1",
-  "status": "HOLD_PARTIAL_FINAL_AUDIT_POST_FREEZE_VISUAL_REPAIR",
+  "status": "HOLD_PARTIAL_FINAL_AUDIT_SCOPE_BINDING_FAILURE",
   "denominator": 17,
   "sourceExamId": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT",
   "candidate": {
@@ -175,19 +175,17 @@
     "readability": "PENDING_INDEPENDENT_REVIEW"
   },
   "providerReview": {
-    "status": "HOLD_PARTIAL_PROVIDER_OUTPUT",
+    "status": "HOLD_PARTIAL_U1_U2",
     "purpose": "FINAL_AUDIT",
     "model": "gpt-6-luna/max",
-    "launch1": "PRE_MODEL_EXECUTION_FAILURE (0 model invocations)",
-    "launch2": "MODEL_STATE_AMBIGUOUS_FAILURE (U1/U2 outputs, U3 not invoked)",
-    "providerPreflight": true,
-    "packetPreflight": true,
-    "reserved": true,
-    "dispatched": true,
-    "U1": "RESPONSE_RECEIVED_WITH_INTERNAL_MATH_CONFLICT",
-    "U2": "RESPONSE_RECEIVED_WITH_UNSCOPED_DEFECTS",
+    "launchId": "visang-geometry-major-sol-review5b-20260929:1",
+    "U1": "RESPONSE_RECEIVED",
+    "U2": "RESPONSE_RECEIVED_SCOPE_BINDING_FAILED",
     "U3": "NOT_INVOKED",
-    "retry": "NO_RETRY_AFTER_PARTIAL_FAILURE; CURRENT_CANDIDATE_REQUIRES_NEW_RUN"
+    "failureCode": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+    "failureClass": "MODEL_STATE_AMBIGUOUS_FAILURE",
+    "modelInvocationCount": 2,
+    "retry": "NOT_DISPATCHED"
   },
   "supersededHolds": {
     "legacyRunIdMismatchWorkBatch": "visang-geometry-major-sol-20260928",
@@ -259,5 +257,23 @@
     "negativeSampleCount": 2,
     "sampleReadBeforeFreshRun": true
   },
-  "nextStep": "WAIT_FOR_SERIALIZED_PROVIDER_SLOT_RELEASE_THEN_CREATE_FRESH_HASH_BOUND_RUN_AND_AUDIT"
+  "nextStep": "WAIT_FOR_SERIALIZED_PROVIDER_SLOT_RELEASE_THEN_CREATE_FRESH_HASH_BOUND_RUN_AND_AUDIT",
+  "q16ProviderMathConflict": {
+    "status": "RESOLVED_OFFICIAL_SOURCE_CONFIRMS_CANDIDATE_ANSWER_AND_SOLUTION",
+    "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/q16_official_source_adjudication.json",
+    "solutionChanged": false
+  },
+  "freshPipelineRun": {
+    "runId": "visang-geometry-major-sol-review5b-20260929",
+    "revision": 2,
+    "inputSha": "sha256:107510d5688c1a6b9e049066f4a3e1046b4a6d27a977f27c84e66c864ef86238",
+    "candidateSha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
+    "freezeSha": "sha256:daf7fe02d66bbfc56f4149909b3837eb97acc134b1052838b4a226d1e09f533b",
+    "runRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/run-captured-authority-r2.json",
+    "workBatchId": "visang-geometry-major-sol-review5b-20260929",
+    "workBatchStatus": "HOLD",
+    "targetCount": 17,
+    "openDefectCount": 0
+  },
+  "freshPartialAuditEvidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/fresh_final_audit_partial_hold_review5b.json"
 }

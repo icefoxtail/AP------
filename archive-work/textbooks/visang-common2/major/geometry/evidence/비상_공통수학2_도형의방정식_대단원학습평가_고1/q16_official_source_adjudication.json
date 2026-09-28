@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "Q16_OFFICIAL_SOURCE_CONFLICT_ADJUDICATION_v1",
+  "status": "RESOLVED_OFFICIAL_SOURCE_CONFIRMS_CANDIDATE_ANSWER_AND_SOLUTION",
+  "questionUidV2": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|16",
+  "displayNo": 16,
+  "providerClaim": {
+    "sourceRef": "provider_u1_response_partial.json",
+    "reportedAnswer": "a=9, b=3",
+    "status": "CONTRADICTED_BY_OFFICIAL_SOLUTION"
+  },
+  "officialSourceCrosswalk": {
+    "problemPdf": {
+      "filename": "[비상교육]_고등_공통수학2_교과서_중단원&대단원&수학익힘책.pdf",
+      "sha256": "sha256:c1ba1424c5e28f04c64afa0fdc3f97479bef2b1e6fe422f668e98dac9846305c",
+      "physicalPage": 16,
+      "printedBookPage": 56,
+      "questionOrdinal": 16,
+      "promptSha256": "sha256:sha256:c78d7ecbd72c0f72569d7821e36de3a3f47c5cf84f1b731e02e607de18a53cae",
+      "pageCaptureRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/hi16-16.png",
+      "pageCaptureSha256": "sha256:e79cf805ad8d99ca8ee96a0fd5c6e224a5e838c52b7e972bdc85f3ab28e6f7c3"
+    },
+    "answerSolutionPdf": {
+      "filename": "[비상교육]_공통수학2(김원경)_교과서_정답과_해설.pdf",
+      "sha256": "sha256:b3b127f9f26e54778717e776898fba1e755744d043e33f62c43e0df1d1ee0db0",
+      "physicalPage": 6,
+      "printedPage": 147,
+      "officialAnswerCropRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/official-answer-q16-p147.png",
+      "officialAnswerCropSha256": "sha256:5833d4a33739373ad58d55ad9146e71ff796c8735614b1a888dc0dcaf36f0722",
+      "fullPageRenderRef": ".codex_tmp/official-answer-page6.png",
+      "fullPageRenderSha256": "sha256:c10c83b0fbcfe8554220db2b1a4ab1b9060bac49fbcfcd6c86a1f8d0f4e3a915"
+    },
+    "sourceAlignmentEvidence": {
+      "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/solution_source_alignment_evidence.json",
+      "candidateSolutionSha256": "sha256:ef117784d50b079ac978e4ffa7131c9eda3eef747e8cec7dd4295415c6e378a4",
+      "sourceQuestionCrosswalkRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/source_question_crosswalk.json",
+      "answerPdfPages": [
+        6
+      ]
+    }
+  },
+  "officialDerivation": [
+    "A(a,b) reflected through the origin gives B(-a,-b).",
+    "Reflecting B over the x-axis gives D(-a,b).",
+    "Reflecting D over y=x gives C(b,-a).",
+    "The centroid is ((a-a+b)/3,(b-b-a)/3)=(b/3,-a/3).",
+    "Set (b/3,-a/3)=(1,-2): b=3 and a=6."
+  ],
+  "officialPrintedResult": "a=6, b=3",
+  "candidateCurrentAnswer": "$a=6,\\ b=3$",
+  "candidateSolutionSha256": "sha256:ef117784d50b079ac978e4ffa7131c9eda3eef747e8cec7dd4295415c6e378a4",
+  "candidateSolutionDisposition": "NO_CHANGE_OFFICIAL_SOURCE_CONFIRMS_EXISTING_SOLUTION",
+  "sourceAdjudication": "U1 aggregate answer is inaccurate; candidate answer and existing solution agree with official answer PDF and independent coordinate derivation.",
+  "pipelineClosure": "NOT_CLOSED: review4 remains historical partial HOLD; U3 was not invoked. This source adjudication resolves the answer discrepancy only and does not substitute for a fresh frozen FINAL_AUDIT."
+}

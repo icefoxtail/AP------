@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "APMATH_PROVIDER_ATTESTATION_BRIDGE_v1",
+  "launchId": "visang-geometry-major-sol-review5b-20260929:1",
+  "externalId": "01a0e9b3-bef1-7442-aacc-4a6a2c940eca",
+  "status": "FAILED",
+  "preDispatchFailure": false,
+  "provider": "CodexAppServer",
+  "model": "gpt-6-luna/max",
+  "reasoningEffort": "max",
+  "providerPlanRef": {
+    "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/final-audit-plan.json",
+    "bytes": 10653,
+    "sha256": "sha256:2bccea27b54fd9378a640338834354208e4a5ad6b314211059abc9291394aa9e"
+  },
+  "failedPhase": "U2",
+  "failureCode": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+  "executionFailureClass": "MODEL_STATE_AMBIGUOUS_FAILURE",
+  "executionFailureFingerprint": "sha256:146fbbb6dbc5ec14cabeac5053587dd4737efa3141835ad6d22a29d297fd11f2",
+  "modelInvocationCount": 2,
+  "semanticEvidenceCount": 16,
+  "responseReturned": true,
+  "responseAttestationReturned": true,
+  "evidenceReturned": true,
+  "independentAgentLaunchCount": 1,
+  "expensiveAgentLaunchCount": 1,
+  "concurrentExpensiveAgentPeak": 1,
+  "recursiveSubagentLaunchCount": 0,
+  "retryLaunchCount": 0,
+  "usedTokens": null,
+  "phaseAttestationRefs": [
+    {
+      "phase": "U1",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-request.json",
+        "bytes": 51844,
+        "sha256": "sha256:65cc21a0e4ae1ee7434ca7052a8909b8d9def1dd0f26f9abad776829bf6f6ad8"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-response.json",
+        "bytes": 1673,
+        "sha256": "sha256:5326c8944b949e16876f00d1fa9aed4d2913ef3dfce2c642fbd2b2855b2730b6"
+      },
+      "inputSha": "sha256:75154fc70c6c6f416e9c76790bb0bff88458040ac3056245eb801d170a42872b",
+      "providerInvocationId": "01a0e9b7-3281-7cb2-8adf-31d8370ebf49"
+    },
+    {
+      "phase": "U2",
+      "requestRef": {
+        "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u2-request.json",
+        "bytes": 506004,
+        "sha256": "sha256:b1d6065c25d0745a03df5fa5be1d83ccc2f77b052e6804b5b1b40d63fdee3458"
+      },
+      "responseRef": {
+        "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u2-response.json",
+        "bytes": 6861,
+        "sha256": "sha256:8cdf494fa34683800469201e3f7aca8ecbc30ee22b0709684b6f6d3cbc550e7c"
+      },
+      "inputSha": "sha256:3d04a37e4ac1698df79ae13d7418ce96db62f75f07854cfb5ff5bf35c5235c51",
+      "providerInvocationId": "01a0e9b7-e5ca-76a1-b5be-92543e3c3ba7"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/partial-final-audit-scope-failure.json",
+      "bytes": 4317,
+      "sha256": "sha256:e1e9a747c81a4245a2bf858af706a110a519e75ce6c8d32cce3ca3388e12c073"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/final-audit-packet-preflight-report.json",
+      "bytes": 1462,
+      "sha256": "sha256:0d6f587436892f1e057ccce9ed9859d9734988e084e5e0b06e1f1dc5e8e803d3"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-response.json",
+      "bytes": 1673,
+      "sha256": "sha256:5326c8944b949e16876f00d1fa9aed4d2913ef3dfce2c642fbd2b2855b2730b6"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u2-response.json",
+      "bytes": 6861,
+      "sha256": "sha256:8cdf494fa34683800469201e3f7aca8ecbc30ee22b0709684b6f6d3cbc550e7c"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-evidence-1.json",
+      "bytes": 526,
+      "sha256": "sha256:99b79982ebfc170ab5dfd357a52da506f81a6ec39698c60b203d702757f3ace3"
+    },
+    {
+      "path": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-evidence-2.json",
+      "bytes": 347,
+      "sha256": "sha256:b8eed98c9aee1daa0d20972ceb2f029dbabe3fcc57cbf9824f6feccfd71f5c2a"
+    },
+    {
+      "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/provider_native_input_size_audit_visang-geometry-major-sol-review5b-20260929-attempt-1.json",
+      "bytes": 9204,
+      "sha256": "sha256:42f8dca52c0ed2691337ed823f0e4c95b2dcee40ffe05c63baf7a42c2aacba05"
+    }
+  ],
+  "defects": [],
+  "executionIdentity": {
+    "schemaVersion": "APMATH_GOLD_EXECUTION_CONTRACT_v1",
+    "jobKind": "PRODUCTION",
+    "requestedModel": null,
+    "requestedReasoningEffort": null,
+    "actualModel": "gpt-6-luna/max",
+    "actualReasoningEffort": null,
+    "modelRouteObservedAtStart": "2026-09-28T20:27:47.346Z",
+    "modelRouteObservedAtClosure": null,
+    "modelRouteChanged": false,
+    "routeStatus": "NOT_APPLICABLE",
+    "MODEL_ROUTE_PARITY": "NOT_APPLICABLE"
+  },
+  "failedAt": "2026-09-28T20:36:05.784Z"
+}

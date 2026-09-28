@@ -273,7 +273,7 @@
     }
   },
   "dispatchHold": "PROVIDER_DEFECT_SCOPE_REQUIRED",
-  "decision": "Preserve HOLD. Latest main is integrated and rule/sample/task preflights pass, but no fresh run or provider audit has started because the serialized slot is in use by the workbook task.",
+  "decision": "Review4 remains historical partial HOLD. Q16 source conflict is resolved in the candidate’s favor. Fresh review5b froze with 17 targets/0 authority defects, 34 local machine checks and six captures; FINAL_AUDIT stopped at U2 because the provider used an unsupported defect scope field. No retry or release closure.",
   "postFreezeChange": {
     "event": "q11 label-only solution SVG repair requested by independent visual review",
     "currentCandidateSha256": "sha256:a24fd1772f81191c5779e4af93f4fb4039e01fd25af95be1e9894bc9f078e652",
@@ -354,5 +354,31 @@
       "freshRunStarted": false,
       "providerLaunchStarted": false
     }
+  },
+  "q16ProviderConflictAdjudication": {
+    "status": "RESOLVED_OFFICIAL_SOURCE_CONFIRMS_CANDIDATE_ANSWER_AND_SOLUTION",
+    "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/q16_official_source_adjudication.json",
+    "solutionChanged": false
+  },
+  "freshReview5b": {
+    "status": "HOLD_PARTIAL_U1_U2_SCOPE_BINDING_FAILURE",
+    "runId": "visang-geometry-major-sol-review5b-20260929",
+    "revision": 2,
+    "inputSha": "sha256:107510d5688c1a6b9e049066f4a3e1046b4a6d27a977f27c84e66c864ef86238",
+    "freezeSha": "sha256:daf7fe02d66bbfc56f4149909b3837eb97acc134b1052838b4a226d1e09f533b",
+    "targets": 17,
+    "machineChecks": "34/34 PASS",
+    "captures": "6/6 PASS",
+    "provider": {
+      "launchId": "visang-geometry-major-sol-review5b-20260929:1",
+      "phases": [
+        "U1",
+        "U2"
+      ],
+      "U3": "NOT_INVOKED",
+      "failure": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+      "retry": "NOT_DISPATCHED"
+    },
+    "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/fresh_final_audit_partial_hold_review5b.json"
   }
 }

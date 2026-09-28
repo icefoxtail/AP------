@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "FRESH_FINAL_AUDIT_PARTIAL_HOLD_SUMMARY_v1",
+  "status": "HOLD_PARTIAL_U1_U2_SCOPE_BINDING_FAILURE",
+  "workBatchId": "visang-geometry-major-sol-review5b-20260929",
+  "runId": "visang-geometry-major-sol-review5b-20260929",
+  "revision": 2,
+  "inputSha": "sha256:107510d5688c1a6b9e049066f4a3e1046b4a6d27a977f27c84e66c864ef86238",
+  "freezeSha": "sha256:daf7fe02d66bbfc56f4149909b3837eb97acc134b1052838b4a226d1e09f533b",
+  "targetCount": 17,
+  "machineChecks": {
+    "status": "PASS",
+    "count": 34,
+    "axes": [
+      "STATIC",
+      "METADATA"
+    ]
+  },
+  "renderCapture": {
+    "status": "CAPTURED_REVIEW_REQUIRED",
+    "caseCount": 6,
+    "cases": [
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-exam-desktop.json",
+        "sha256": "sha256:1027f35306b3a6a5e8ed715243cb90286030ec54fabbab69f09eedb2b77d3bfe"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-exam-mobile.json",
+        "sha256": "sha256:7a02ad0149857f310be5aa53ec4e9e90c4e6c9b0e147ab261998c17c7d5e397f"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-solution-desktop.json",
+        "sha256": "sha256:6c2360810fb144bfd10a18e6a7c278638cc13cb1aa8e3f0d78439800dd0f28be"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-solution-mobile.json",
+        "sha256": "sha256:cadebc854dd6406a7e48d2d62a1175d9b274078c14ddea820c67b03b92bbddb9"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-answer-desktop.json",
+        "sha256": "sha256:e8ed79c500f3c9965b91bbaf1d7e2085ae9992e560095cf9812926d034bc0902"
+      },
+      {
+        "path": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review5b-20260929/pipeline-run-review5b/render-capture-authority-r2/candidate-0-answer-mobile.json",
+        "sha256": "sha256:597bf999f52315f7d6dad9d5c6d433cd8cfff1597f4867131fae1455c2c3570a"
+      }
+    ],
+    "readability": "NOT_TESTED"
+  },
+  "provider": {
+    "model": "gpt-6-luna/max",
+    "reasoningEffort": null,
+    "launchId": "visang-geometry-major-sol-review5b-20260929:1",
+    "invokedPhases": [
+      "U1",
+      "U2"
+    ],
+    "notInvoked": [
+      "U3"
+    ],
+    "u1": {
+      "status": "COMPLETED",
+      "evidenceCount": 2,
+      "defectCount": 0,
+      "responseRef": "provider_u1_response_review5b.json"
+    },
+    "u2": {
+      "status": "COMPLETED",
+      "evidenceCount": 14,
+      "defectCount": 3,
+      "responseRef": "provider_u2_response_review5b.json",
+      "defects": [
+        {
+          "rawDefect": {
+            "type": "visual_defect",
+            "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+            "artifactSha": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+            "issue": "At the common center, the O and c1 labels overlap the center marker and each other, making the center annotation difficult to read."
+          },
+          "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+          "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+          "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+        },
+        {
+          "rawDefect": {
+            "type": "visual_defect",
+            "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+            "artifactSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+            "issue": "The word 'circle' overlaps the center label C and center marker, obscuring the center annotation."
+          },
+          "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+          "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+          "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+        },
+        {
+          "rawDefect": {
+            "type": "visual_defect",
+            "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17",
+            "artifactSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+            "issue": "The word 'circle' overlaps the center label C and the center marker; the nearby O label is also crowded against that annotation."
+          },
+          "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17",
+          "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+          "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+        }
+      ]
+    },
+    "dispatchFailure": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+    "failureClass": "MODEL_STATE_AMBIGUOUS_FAILURE",
+    "retry": "NOT_DISPATCHED",
+    "serializedNativeInputBytes": {
+      "U1": 51742,
+      "U2": 583715,
+      "U3": 611205
+    },
+    "packetRefPath": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/packets/final-audit-packet-refs-attempt-1.json",
+    "packetSizeAuditStatus": "PASS_SIZE_ONLY",
+    "U2DefectQuestionUids": [
+      "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+      "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+      "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17"
+    ]
+  },
+  "q16AdjudicationRef": "q16_official_source_adjudication.json",
+  "rawEvidenceCopies": {
+    "provider_final_audit_plan_review5b.json": {
+      "path": "provider_final_audit_plan_review5b.json",
+      "bytes": 10653,
+      "sha256": "sha256:2bccea27b54fd9378a640338834354208e4a5ad6b314211059abc9291394aa9e"
+    },
+    "provider_packet_refs_review5b.json": {
+      "path": "provider_packet_refs_review5b.json",
+      "bytes": 869,
+      "sha256": "sha256:43f49a9cb6859186869344b645399146a852bd354f28e9593f866f5ca9a0d5cc"
+    },
+    "provider_packet_u1_review5b.json": {
+      "path": "provider_packet_u1_review5b.json",
+      "bytes": 50759,
+      "sha256": "sha256:a0fde1ea9a633ba7f4be08bcf8a99512212edab1afd511666630c2f2c994853e"
+    },
+    "provider_packet_u2_review5b.json": {
+      "path": "provider_packet_u2_review5b.json",
+      "bytes": 504305,
+      "sha256": "sha256:91f9aa7def5df12926f488809d69428c78a1e6bc295dcfd4fab318543f54e444"
+    },
+    "provider_u1_request_review5b.json": {
+      "path": "provider_u1_request_review5b.json",
+      "bytes": 51844,
+      "sha256": "sha256:65cc21a0e4ae1ee7434ca7052a8909b8d9def1dd0f26f9abad776829bf6f6ad8"
+    },
+    "provider_u1_response_review5b.json": {
+      "path": "provider_u1_response_review5b.json",
+      "bytes": 1673,
+      "sha256": "sha256:5326c8944b949e16876f00d1fa9aed4d2913ef3dfce2c642fbd2b2855b2730b6"
+    },
+    "provider_u1_evidence_review5b_01.json": {
+      "path": "provider_u1_evidence_review5b_01.json",
+      "bytes": 526,
+      "sha256": "sha256:99b79982ebfc170ab5dfd357a52da506f81a6ec39698c60b203d702757f3ace3"
+    },
+    "provider_u1_evidence_review5b_02.json": {
+      "path": "provider_u1_evidence_review5b_02.json",
+      "bytes": 347,
+      "sha256": "sha256:b8eed98c9aee1daa0d20972ceb2f029dbabe3fcc57cbf9824f6feccfd71f5c2a"
+    },
+    "provider_u2_request_review5b.json": {
+      "path": "provider_u2_request_review5b.json",
+      "bytes": 506004,
+      "sha256": "sha256:b1d6065c25d0745a03df5fa5be1d83ccc2f77b052e6804b5b1b40d63fdee3458"
+    },
+    "provider_u2_response_review5b.json": {
+      "path": "provider_u2_response_review5b.json",
+      "bytes": 6861,
+      "sha256": "sha256:8cdf494fa34683800469201e3f7aca8ecbc30ee22b0709684b6f6d3cbc550e7c"
+    },
+    "provider_packet_preflight_report_review5b.json": {
+      "path": "provider_packet_preflight_report_review5b.json",
+      "bytes": 1462,
+      "sha256": "sha256:0d6f587436892f1e057ccce9ed9859d9734988e084e5e0b06e1f1dc5e8e803d3"
+    },
+    "provider_partial_failure_report_review5b.json": {
+      "path": "provider_partial_failure_report_review5b.json",
+      "bytes": 4317,
+      "sha256": "sha256:e1e9a747c81a4245a2bf858af706a110a519e75ce6c8d32cce3ca3388e12c073"
+    },
+    "provider_partial_failure_receipt_review5b.json": {
+      "path": "provider_partial_failure_receipt_review5b.json",
+      "bytes": 4964,
+      "sha256": "sha256:fe5b16978f454699a36c6190a4eeed6d7500fccd97389e23de239600c55dd185"
+    },
+    "provider_partial_failure_reconcile_request_review5b.json": {
+      "path": "provider_partial_failure_reconcile_request_review5b.json",
+      "bytes": 443,
+      "sha256": "sha256:cf80b27e5cb27c92b861bf01201308dc927079c93f0c220a6518e23c73b93f39"
+    },
+    "provider_packet_u3_review5b_json": {
+      "path": "provider_packet_u3_review5b.json",
+      "bytes": 799809,
+      "sha256": "sha256:9710681ee6ec45374954c4e8d8f0866cb1eb0bb0dc3355e5e1f4abc554b44ddd"
+    }
+  },
+  "releaseStatus": "NOT_AUTHORIZED",
+  "packetCopyCrosswalkRef": "provider_packet_copy_crosswalk_review5b.json"
+}

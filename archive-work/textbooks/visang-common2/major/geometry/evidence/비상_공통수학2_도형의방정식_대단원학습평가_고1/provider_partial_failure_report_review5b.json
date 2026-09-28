@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "PARTIAL_PROVIDER_FINAL_AUDIT_HOLD_v1",
+  "status": "HOLD",
+  "workBatchId": "visang-geometry-major-sol-review5b-20260929",
+  "runId": "visang-geometry-major-sol-review5b-20260929",
+  "freezeSha": "sha256:daf7fe02d66bbfc56f4149909b3837eb97acc134b1052838b4a226d1e09f533b",
+  "launchId": "visang-geometry-major-sol-review5b-20260929:1",
+  "externalId": "01a0e9b3-bef1-7442-aacc-4a6a2c940eca",
+  "phaseReached": "U2",
+  "completedPhases": [
+    "U1",
+    "U2"
+  ],
+  "notInvoked": [
+    "U3"
+  ],
+  "providerRoute": {
+    "provider": "CodexAppServer",
+    "model": "gpt-6-luna/max",
+    "reasoningEffort": null
+  },
+  "u1": {
+    "status": "COMPLETED",
+    "providerInvocationId": "01a0e9b7-3281-7cb2-8adf-31d8370ebf49",
+    "evidenceCount": 2,
+    "responseRef": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u1-response.json"
+  },
+  "u2": {
+    "status": "COMPLETED",
+    "providerInvocationId": "01a0e9b7-e5ca-76a1-b5be-92543e3c3ba7",
+    "evidenceCount": 14,
+    "defectCount": 3,
+    "defectScopeCrosswalk": [
+      {
+        "rawDefect": {
+          "type": "visual_defect",
+          "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+          "artifactSha": "sha256:e9c5b85781dacbe6983c2be28bb578fd474db0c3ed7198c0d66a0a3c4d7d7c0a",
+          "issue": "At the common center, the O and c1 labels overlap the center marker and each other, making the center annotation difficult to read."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|9",
+        "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+        "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+      },
+      {
+        "rawDefect": {
+          "type": "visual_defect",
+          "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+          "artifactSha": "sha256:54bcb40e31896e0a7bbef41d3bd32d92af915ba85e942335dd1ea1a72056e65c",
+          "issue": "The word 'circle' overlaps the center label C and center marker, obscuring the center annotation."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|14",
+        "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+        "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+      },
+      {
+        "rawDefect": {
+          "type": "visual_defect",
+          "subject": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17",
+          "artifactSha": "sha256:5b251c853495993fc16b4f62fba44ecd569e459431656848905241a9e8aafb07",
+          "issue": "The word 'circle' overlaps the center label C and the center marker; the nearby O label is also crowded against that annotation."
+        },
+        "derivedQuestionUid": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT|17",
+        "scopeBindingStatus": "EXACT_UID_IN_UNSUPPORTED_subject_FIELD",
+        "note": "Dispatcher requires questionUid or recognized scope; provider used subject plus artifactSha, so this value was not accepted as bound defect scope."
+      }
+    ],
+    "responseRef": "alive/runtime/provider-bridge/visang-geometry-major-sol-review5b-20260929/u2-response.json"
+  },
+  "dispatchFailure": {
+    "code": "PROVIDER_DEFECT_SCOPE_REQUIRED",
+    "details": "U2 returned visual_defect objects with subject=<questionUid>, artifactSha, and issue. The dispatcher did not recognize subject as a scope field and stopped before U3."
+  },
+  "dispatchExecution": {
+    "modelInvocationCount": 2,
+    "semanticEvidenceCount": 16,
+    "providerTurnU3": 0,
+    "actualProviderResponsesReturned": true,
+    "retryAuthorizedByThisReport": false
+  },
+  "sourceAdjudicationRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/q16_official_source_adjudication.json",
+  "resolution": "U1/U2 raw outputs are preserved. Q16 conflict is source-adjudicated separately; U2 visual findings remain partial and U3 was not invoked. No final audit PASS or release closure is claimed. No retry launched."
+}
