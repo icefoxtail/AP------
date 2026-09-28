@@ -1,0 +1,3647 @@
+{
+  "schemaVersion": "JS_ARCHIVE_RESET_CREATE_META_EVIDENCE_v2",
+  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+  "resetRunId": "M2_RESET_20260928",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "lane": "A",
+  "stage": "CREATE",
+  "examUid": "24_향림중_2학기_기말_중2_기출",
+  "examFile": "24_향림중_2학기_기말_중2_기출.js",
+  "grade": "M2",
+  "generatedAgainst": {
+    "mainReadSha": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+    "intakeReadSha": "PARENT_AT_COMMIT",
+    "sourceBlobSha": "0c3bea75cc0c886434c536361c7f2f52c53b2965"
+  },
+  "decisionIsolation": {
+    "sameStageAdvancedMetaUsedAsSemanticInput": false,
+    "semanticInput": "source + independently verified final solution only",
+    "reviewer": "GPT_M2_RESET_CREATE_A_20260928"
+  },
+  "authority": {
+    "archive/tools/meta-foundation/rpm-active-resolver.mjs": "438dd30d846198875a71404e8910bc9a0c69d372",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M2-2.md": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+    "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md": "779aa2f9b78997505104492cf2adfe07f520a475",
+    "docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md": "3d9ba67281688e260fba377ed3b17d51cb07d8e0",
+    ".codex/skills/apmath-visual-upgrade/SKILL.md": "8edf54ca2c42c35cf913851ccaecc29a615cd516"
+  },
+  "officialNodeCliStatus": "NOT_RUN_CONNECTOR_RUNTIME",
+  "rpmSemanticSummary": {
+    "FINAL": 24,
+    "HOLD": 0,
+    "unresolved": 0
+  },
+  "projectionSummary": {
+    "PROJECTION_REUSE": 10,
+    "PROJECTION_BINDING_PENDING": 5,
+    "PROJECTION_UNMATERIALIZED": 9,
+    "META_ONLY_COMPATIBILITY_PENDING": 0,
+    "META_ONLY": 14,
+    "releaseBlocking": 0
+  },
+  "difficultySummary": {
+    "distribution": {
+      "1": 3,
+      "2": 7,
+      "3": 9,
+      "4": 5,
+      "5": 0
+    }
+  },
+  "knownMetaRepairPending": 0,
+  "resolvablePending": 0,
+  "items": [
+    {
+      "q": 1,
+      "questionUid": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+      "sourceOrdinal": 1,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+          "sourceIdentityKey": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+          "sourceOrdinal": 1,
+          "contentHash": "sha256:d403163df1a986d885e64ab93998364706004c0abc18d7f97e4ccec3e92aab2d",
+          "choicesHash": "sha256:7d99f9801bad25df815144d8f1472e61825bd28fc3d2571b69edfeb4fb1fcc79",
+          "imageRefHash": "sha256:7725713c3ab24035a44500484a2e1963e9f6b0aa72f50409ff781775cc73d569",
+          "sourceFingerprint": "sha256:4bfc26ee664de09992e84fdb335293b219f046eea389eb9b3e4dec4eaf4fa2a0"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:49c66d85d371de764ca9df9bc714c32fc986a833d20961f577cfe1df422d85bb",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-05",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+        },
+        "semanticDecision": {
+          "primaryMethod": "마름모의 대각선·각 성질을 적용",
+          "decisiveStep": "AO=3에서 AC=6, 마름모의 각 이등분 성질로 ∠OCD=60°",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "사각형의 성질",
+            "midUnit": "여러 가지 사각형",
+            "l3": "직사각형·마름모·정사각형",
+            "l4": "특수 사각형의 대각선 성질"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:4bfc26ee664de09992e84fdb335293b219f046eea389eb9b3e4dec4eaf4fa2a0",
+        "inputBundleSha": "sha256:0bd2a2a6f093915175e94da76a1b25d6a8a50fd01839a958a3be7dba9e7aaa6a",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+            "sourceIdentityKey": "qid_v1_8db53d983b644b16b8c5868696bd70052dc7520df3b4e3f8d61dc7af910b1e4a",
+            "sourceOrdinal": 1,
+            "contentHash": "sha256:d403163df1a986d885e64ab93998364706004c0abc18d7f97e4ccec3e92aab2d",
+            "choicesHash": "sha256:7d99f9801bad25df815144d8f1472e61825bd28fc3d2571b69edfeb4fb1fcc79",
+            "imageRefHash": "sha256:7725713c3ab24035a44500484a2e1963e9f6b0aa72f50409ff781775cc73d569",
+            "sourceFingerprint": "sha256:4bfc26ee664de09992e84fdb335293b219f046eea389eb9b3e4dec4eaf4fa2a0"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:49c66d85d371de764ca9df9bc714c32fc986a833d20961f577cfe1df422d85bb",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-05",
+            "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES"
+          },
+          "semanticDecision": {
+            "primaryMethod": "마름모의 대각선·각 성질을 적용",
+            "decisiveStep": "AO=3에서 AC=6, 마름모의 각 이등분 성질로 ∠OCD=60°",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "사각형의 성질",
+              "midUnit": "여러 가지 사각형",
+              "l3": "직사각형·마름모·정사각형",
+              "l4": "특수 사각형의 대각선 성질"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-079",
+        "crosswalkRecordId": "M2-RPM-079",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "사각형의 성질",
+          "midUnit": "여러 가지 사각형",
+          "l3": "직사각형·마름모·정사각형",
+          "l4": "특수 사각형의 대각선 성질"
+        },
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+        "mappedTemplateKeys": [
+          "TPL_SPECIAL_QUADRILATERALS"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:94ef295e0b39b91503ac67bce5040332cac84441d4facc0bb3650100a847d2ea"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:4bfc26ee664de09992e84fdb335293b219f046eea389eb9b3e4dec4eaf4fa2a0",
+        "solutionHash": "sha256:49c66d85d371de764ca9df9bc714c32fc986a833d20961f577cfe1df422d85bb",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:0e3bfa74f9a6192ecb3c1329f9e933987e755cb0f77aef95134fbaf11485aced"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:4bfc26ee664de09992e84fdb335293b219f046eea389eb9b3e4dec4eaf4fa2a0",
+        "inputBundleSha": "sha256:0bd2a2a6f093915175e94da76a1b25d6a8a50fd01839a958a3be7dba9e7aaa6a",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:803f6884068cb348c6675e79da91ccef111b374d625c8a85149604928f51c5b2"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q1.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 2,
+      "questionUid": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+      "sourceOrdinal": 2,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+          "sourceIdentityKey": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+          "sourceOrdinal": 2,
+          "contentHash": "sha256:df331dfdf8a44416ba1becdec660091244b6876cb85a6f8b2305ff20817befcc",
+          "choicesHash": "sha256:a0598a4ebb09f846e4376fe85cfc1b478e47b42fa15f6612a62895a56bb70864",
+          "imageRefHash": "sha256:f0cdb17e8d22d1e0c37379f72d7edfa96e0227ab540a39ac5779c727e55e43fa",
+          "sourceFingerprint": "sha256:80446bb1d50fdc9307374365679621a4298897eb4c8d364fddabcfdcbae4e894"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:965a97e049076e88a6e2f32a22cb314096db9beaf87d6b33f31e89c66137cb95",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "평행선으로 생기는 닮음과 선분비를 넓이비에 연결",
+          "decisiveStep": "AB:AD=8:5 → BA:BD=8:13 → BC:BE=8:13 → 넓이 26",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:80446bb1d50fdc9307374365679621a4298897eb4c8d364fddabcfdcbae4e894",
+        "inputBundleSha": "sha256:4105e42e7a1317e3d831c80da6cddcb7501ccb40b3917c221c5c017f45423900",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+            "sourceIdentityKey": "qid_v1_585f68a002a5178588d50a8c288e4bde43cbd9a7b9da81c1346da57ec22b9281",
+            "sourceOrdinal": 2,
+            "contentHash": "sha256:df331dfdf8a44416ba1becdec660091244b6876cb85a6f8b2305ff20817befcc",
+            "choicesHash": "sha256:a0598a4ebb09f846e4376fe85cfc1b478e47b42fa15f6612a62895a56bb70864",
+            "imageRefHash": "sha256:f0cdb17e8d22d1e0c37379f72d7edfa96e0227ab540a39ac5779c727e55e43fa",
+            "sourceFingerprint": "sha256:80446bb1d50fdc9307374365679621a4298897eb4c8d364fddabcfdcbae4e894"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:965a97e049076e88a6e2f32a22cb314096db9beaf87d6b33f31e89c66137cb95",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "평행선으로 생기는 닮음과 선분비를 넓이비에 연결",
+            "decisiveStep": "AB:AD=8:5 → BA:BD=8:13 → BC:BE=8:13 → 넓이 26",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-096",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:6b27a128eb1a8669f5415afd251dc6b346bf382725d206570a3284598c3fa1cb"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:80446bb1d50fdc9307374365679621a4298897eb4c8d364fddabcfdcbae4e894",
+        "solutionHash": "sha256:965a97e049076e88a6e2f32a22cb314096db9beaf87d6b33f31e89c66137cb95",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:6b38647edaac0c0e385ce8d2e4eb9b45c91468415661d83950581bfcdc299052"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:80446bb1d50fdc9307374365679621a4298897eb4c8d364fddabcfdcbae4e894",
+        "inputBundleSha": "sha256:4105e42e7a1317e3d831c80da6cddcb7501ccb40b3917c221c5c017f45423900",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:927d386e5a94bc446cd52146da42e4f2a4db55586db43a16477133286391032f"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q2.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 3,
+      "questionUid": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
+      "sourceOrdinal": 3,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
+          "sourceIdentityKey": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
+          "sourceOrdinal": 3,
+          "contentHash": "sha256:50ebd7aecb6be6c7f2292f5b8076b8ca0c86cd87f7732e3c220074354d9fb9ea",
+          "choicesHash": "sha256:8e5cc06e2aa5efd10ab9585ce5fd9940fd8d95df33318f8c823e2c0cb88537a4",
+          "imageRefHash": "sha256:87cbb2f0bf934a4c7ec714295a7bcf3515e615584bd5457e87fef2dd6e3e9194",
+          "sourceFingerprint": "sha256:31830853aff1ace726b8d5adcc1a6255c55008b749ed39b1a1ac4a00f8d1e56d"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:a0ebd46134daa45c78f4217a95b328e95be40411de547343bfe028a9fafea678",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "등변사다리꼴의 높이를 피타고라스 정리로 계산",
+          "decisiveStep": "밑변 차의 절반 3과 빗변 5로 높이 4 → 넓이 28",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:31830853aff1ace726b8d5adcc1a6255c55008b749ed39b1a1ac4a00f8d1e56d",
+        "inputBundleSha": "sha256:cfd0c4f81797a35e32159e0455eceead868e14fc80ba3f27ea890b503b62daf0",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
+            "sourceIdentityKey": "qid_v1_82b6e2bcaf84a15489cd4dcd4091352ee7ce7f9d0e2d44840f9c4b04fc6ed126",
+            "sourceOrdinal": 3,
+            "contentHash": "sha256:50ebd7aecb6be6c7f2292f5b8076b8ca0c86cd87f7732e3c220074354d9fb9ea",
+            "choicesHash": "sha256:8e5cc06e2aa5efd10ab9585ce5fd9940fd8d95df33318f8c823e2c0cb88537a4",
+            "imageRefHash": "sha256:87cbb2f0bf934a4c7ec714295a7bcf3515e615584bd5457e87fef2dd6e3e9194",
+            "sourceFingerprint": "sha256:31830853aff1ace726b8d5adcc1a6255c55008b749ed39b1a1ac4a00f8d1e56d"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:a0ebd46134daa45c78f4217a95b328e95be40411de547343bfe028a9fafea678",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "등변사다리꼴의 높이를 피타고라스 정리로 계산",
+            "decisiveStep": "밑변 차의 절반 3과 빗변 5로 높이 4 → 넓이 28",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-105",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedTemplateKeys": [],
+        "canonicalOwnerPack": "",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:7721cdfc92d7ba81dc167573ac97be0bcad932c07b1eddb2fd37685b549388bf"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:31830853aff1ace726b8d5adcc1a6255c55008b749ed39b1a1ac4a00f8d1e56d",
+        "solutionHash": "sha256:a0ebd46134daa45c78f4217a95b328e95be40411de547343bfe028a9fafea678",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:b1d544baa7ecba403088161561f9fc72027509c130485ccceecf92371e373d0e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:31830853aff1ace726b8d5adcc1a6255c55008b749ed39b1a1ac4a00f8d1e56d",
+        "inputBundleSha": "sha256:cfd0c4f81797a35e32159e0455eceead868e14fc80ba3f27ea890b503b62daf0",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:4b53d0eea7ea1487eeeb957f1b6bbe6810bd8017c6a2f91b50ac5a7a6e222672"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q3.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 4,
+      "questionUid": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
+      "sourceOrdinal": 4,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
+          "sourceIdentityKey": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
+          "sourceOrdinal": 4,
+          "contentHash": "sha256:9d555244f206109374407ad963b05eb8fa9eaf126384ac731b82c54b5f12581a",
+          "choicesHash": "sha256:76927ffcc8540571aafd7b19e58680bfd1fd5daf1f9f0a28ed2c536be87535a9",
+          "imageRefHash": "sha256:a1072563f4cb2f6cb02819a0158d8862dd25d1e6ef3f74483ff729472ea0efe1",
+          "sourceFingerprint": "sha256:10d1efd18ed35633a0aa603d17b3004b7feee6a141e0b6a0ca39c7ef5824e7e7"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:29504a0f5e8f1d89a0f19b7af855c59403fe6a4fd5f7c5a6cde744df222cdf79",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+        },
+        "semanticDecision": {
+          "primaryMethod": "직사각형 대각선이 만드는 직각삼각형에 피타고라스 정리 적용",
+          "decisiveStep": "25²-24²=7² → 둘레 2(24+7)=62",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "피타고라스 정리",
+            "l4": "직각삼각형의 변 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:10d1efd18ed35633a0aa603d17b3004b7feee6a141e0b6a0ca39c7ef5824e7e7",
+        "inputBundleSha": "sha256:43c6e0f1b91db71913f4ebec900b75ef49bc2d53e95c3adc3da47b2bccb8f1d2",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
+            "sourceIdentityKey": "qid_v1_5471fb1dc95b6ad6f5127fdc1e7f591095c66dae9309a322beb29d23b6efe16c",
+            "sourceOrdinal": 4,
+            "contentHash": "sha256:9d555244f206109374407ad963b05eb8fa9eaf126384ac731b82c54b5f12581a",
+            "choicesHash": "sha256:76927ffcc8540571aafd7b19e58680bfd1fd5daf1f9f0a28ed2c536be87535a9",
+            "imageRefHash": "sha256:a1072563f4cb2f6cb02819a0158d8862dd25d1e6ef3f74483ff729472ea0efe1",
+            "sourceFingerprint": "sha256:10d1efd18ed35633a0aa603d17b3004b7feee6a141e0b6a0ca39c7ef5824e7e7"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:29504a0f5e8f1d89a0f19b7af855c59403fe6a4fd5f7c5a6cde744df222cdf79",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM"
+          },
+          "semanticDecision": {
+            "primaryMethod": "직사각형 대각선이 만드는 직각삼각형에 피타고라스 정리 적용",
+            "decisiveStep": "25²-24²=7² → 둘레 2(24+7)=62",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "피타고라스 정리",
+              "l4": "직각삼각형의 변 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-101",
+        "crosswalkRecordId": "M2-RPM-101",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        },
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedTemplateKeys": [],
+        "canonicalOwnerPack": "",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:dcfdbdb80a16e5e8a584356f0f5ae34ceee0f135f63aa7caa15df06124eeb081"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:10d1efd18ed35633a0aa603d17b3004b7feee6a141e0b6a0ca39c7ef5824e7e7",
+        "solutionHash": "sha256:29504a0f5e8f1d89a0f19b7af855c59403fe6a4fd5f7c5a6cde744df222cdf79",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:97b5c87cbc757e64cda04515dd575692bddc8b88589130590dae6abd13d4385b"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:10d1efd18ed35633a0aa603d17b3004b7feee6a141e0b6a0ca39c7ef5824e7e7",
+        "inputBundleSha": "sha256:43c6e0f1b91db71913f4ebec900b75ef49bc2d53e95c3adc3da47b2bccb8f1d2",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:685a1c48973c973786f4c4102aa58edbb8fefcb6dca411a3cb46bfd71b209169"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q4.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 5,
+      "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+      "sourceOrdinal": 5,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+          "sourceIdentityKey": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+          "sourceOrdinal": 5,
+          "contentHash": "sha256:eebf4aa2c16a82c5ee5a145ec614fb8379b254d61c516ef74ed032d9a96126cd",
+          "choicesHash": "sha256:a84af4de28a467c70f0a22553553d829f8c95501f0c03f4d1b0cdf073723960d",
+          "imageRefHash": "sha256:e721980e1ce6b5f53ab4d64d1fbfe977f459ffa97a201d0b5bb345fba1aa3442",
+          "sourceFingerprint": "sha256:c396ea1d8a97f2a81845b0e48949af2effecc6cbbfec7c927718f6e5d88c6267"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:98851b947279e140034f29164a44b690495cc1c9e7b73305cb5fba223f01f471",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "닮음비와 넓이비의 제곱 관계 적용",
+          "decisiveStep": "닮음비 2:1 → 작은 도형 넓이 25이므로 ④가 거짓",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "넓이·부피 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:c396ea1d8a97f2a81845b0e48949af2effecc6cbbfec7c927718f6e5d88c6267",
+        "inputBundleSha": "sha256:4775b19c3409cff08514bbf0cfed9e526da8b7f4304fb363612e4d9ee2ef3617",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+            "sourceIdentityKey": "qid_v1_f3fba2de253b38cab38675605796ab01f17928228c1a099b7ba27b4e0f6b1a6b",
+            "sourceOrdinal": 5,
+            "contentHash": "sha256:eebf4aa2c16a82c5ee5a145ec614fb8379b254d61c516ef74ed032d9a96126cd",
+            "choicesHash": "sha256:a84af4de28a467c70f0a22553553d829f8c95501f0c03f4d1b0cdf073723960d",
+            "imageRefHash": "sha256:e721980e1ce6b5f53ab4d64d1fbfe977f459ffa97a201d0b5bb345fba1aa3442",
+            "sourceFingerprint": "sha256:c396ea1d8a97f2a81845b0e48949af2effecc6cbbfec7c927718f6e5d88c6267"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:98851b947279e140034f29164a44b690495cc1c9e7b73305cb5fba223f01f471",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "닮음비와 넓이비의 제곱 관계 적용",
+            "decisiveStep": "닮음비 2:1 → 작은 도형 넓이 25이므로 ④가 거짓",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮음의 활용",
+              "l4": "넓이·부피 비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-090",
+        "crosswalkRecordId": "M2-RPM-090",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "넓이·부피 비"
+        },
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+        "mappedTemplateKeys": [
+          "TPL_SIMILAR_FIGURES_AREA_VOLUME"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:786c144061bf11fe609824531f8b5fd69e9029a261c594e0a414d310aa3afdcb"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:c396ea1d8a97f2a81845b0e48949af2effecc6cbbfec7c927718f6e5d88c6267",
+        "solutionHash": "sha256:98851b947279e140034f29164a44b690495cc1c9e7b73305cb5fba223f01f471",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:e111cd5fd68a7af1661877d4744c63d8497cc6df2c36b40d92d16fc3127bce10"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:c396ea1d8a97f2a81845b0e48949af2effecc6cbbfec7c927718f6e5d88c6267",
+        "inputBundleSha": "sha256:4775b19c3409cff08514bbf0cfed9e526da8b7f4304fb363612e4d9ee2ef3617",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:cd7c6309d5f4a341e6abaffddf047880d15a83f308ab42928d269e0f6e0e9f0e"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q5.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 6,
+      "questionUid": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+      "sourceOrdinal": 6,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+          "sourceIdentityKey": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+          "sourceOrdinal": 6,
+          "contentHash": "sha256:537837d6202a387c0b4be17c9d92b0461af2d8510835a53833dde89c020cd869",
+          "choicesHash": "sha256:07c561b997d02194de00b867a01400e9e21730434fec704644d61bf039f7f6eb",
+          "imageRefHash": "sha256:af2230525e0c36fba7c6508e4430bec68bca7eaa6ff006742c97c9487544b8a6",
+          "sourceFingerprint": "sha256:e03671712d8a11b1d8daf5540cb4a881449d1f070e2e0ccbf22a2d2140815b36"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:fe1793be60a1ce861ba82a03d893268f6f60e4aac6066f30de8c0ca363196a13",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "삼각형의 평행선 비례로 미지 길이 계산",
+          "decisiveStep": "AD:AB=5:8=DE:BC, BC=8 → DE=5",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "미지 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:e03671712d8a11b1d8daf5540cb4a881449d1f070e2e0ccbf22a2d2140815b36",
+        "inputBundleSha": "sha256:cbb4b2e9f694ca6ff2a4e8bcd1c277abeccf8b2e4923f5a4b3352bd2ab730784",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+            "sourceIdentityKey": "qid_v1_13b90c50a9b5071100a262047b2e8cdbde652bf003e85e9e718012a12485b303",
+            "sourceOrdinal": 6,
+            "contentHash": "sha256:537837d6202a387c0b4be17c9d92b0461af2d8510835a53833dde89c020cd869",
+            "choicesHash": "sha256:07c561b997d02194de00b867a01400e9e21730434fec704644d61bf039f7f6eb",
+            "imageRefHash": "sha256:af2230525e0c36fba7c6508e4430bec68bca7eaa6ff006742c97c9487544b8a6",
+            "sourceFingerprint": "sha256:e03671712d8a11b1d8daf5540cb4a881449d1f070e2e0ccbf22a2d2140815b36"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:fe1793be60a1ce861ba82a03d893268f6f60e4aac6066f30de8c0ca363196a13",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "삼각형의 평행선 비례로 미지 길이 계산",
+            "decisiveStep": "AD:AB=5:8=DE:BC, BC=8 → DE=5",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "미지 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-095",
+        "crosswalkRecordId": "M2-RPM-095",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "미지 길이"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ecf2f0cd490707553ece4594d2cf2948f503a24c695471075539fe7967514d66"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:e03671712d8a11b1d8daf5540cb4a881449d1f070e2e0ccbf22a2d2140815b36",
+        "solutionHash": "sha256:fe1793be60a1ce861ba82a03d893268f6f60e4aac6066f30de8c0ca363196a13",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:b40c636ec896ddb028ef0c5b19065550b4b607cec41f10113659d28629959dc6"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:e03671712d8a11b1d8daf5540cb4a881449d1f070e2e0ccbf22a2d2140815b36",
+        "inputBundleSha": "sha256:cbb4b2e9f694ca6ff2a4e8bcd1c277abeccf8b2e4923f5a4b3352bd2ab730784",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:212223eb00e5a54ee8154cc4407d7fd09686c7bc51ef3129e150ef39e8ca1614"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q6.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 7,
+      "questionUid": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+      "sourceOrdinal": 7,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+          "sourceIdentityKey": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+          "sourceOrdinal": 7,
+          "contentHash": "sha256:8087b2c41a06346c2383440ef2993099065f6f5b2e01717da6cf3274eb3de195",
+          "choicesHash": "sha256:3e3c49db2717b77d6fd7505c9cc393a73fdd6a8b7805b2b56b79cc756e451ecb",
+          "imageRefHash": "sha256:fdd08b82f125b540a95f5eb05f38b42fd65a98d642f1c4d53b983c9c3d2e2b94",
+          "sourceFingerprint": "sha256:bb7615e57326bc22b757f84cf43802b124b873267fb84fd7bb03ec4ed597d38d"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:b7db198b13c7a764ac1fa06140dbbe8b0a61cc3a535bcac6d06086bbda401085",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "합동으로 길이를 확정한 뒤 닮음비로 분할 길이 계산",
+          "decisiveStep": "BE=CF=8, FE=10, △ADG∽△EFG, DF=10 → DG=15/4",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:bb7615e57326bc22b757f84cf43802b124b873267fb84fd7bb03ec4ed597d38d",
+        "inputBundleSha": "sha256:410b9af9446a57a9fd9cd611bbd453a8c474c0f975c7eae30ec58271a656033d",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+            "sourceIdentityKey": "qid_v1_a7acf2664f85f108b60bcaecdddd7befc2f6ad4702cb737b94d4319211f277cb",
+            "sourceOrdinal": 7,
+            "contentHash": "sha256:8087b2c41a06346c2383440ef2993099065f6f5b2e01717da6cf3274eb3de195",
+            "choicesHash": "sha256:3e3c49db2717b77d6fd7505c9cc393a73fdd6a8b7805b2b56b79cc756e451ecb",
+            "imageRefHash": "sha256:fdd08b82f125b540a95f5eb05f38b42fd65a98d642f1c4d53b983c9c3d2e2b94",
+            "sourceFingerprint": "sha256:bb7615e57326bc22b757f84cf43802b124b873267fb84fd7bb03ec4ed597d38d"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:b7db198b13c7a764ac1fa06140dbbe8b0a61cc3a535bcac6d06086bbda401085",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "합동으로 길이를 확정한 뒤 닮음비로 분할 길이 계산",
+            "decisiveStep": "BE=CF=8, FE=10, △ADG∽△EFG, DF=10 → DG=15/4",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮음의 활용",
+              "l4": "길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-089",
+        "crosswalkRecordId": "M2-RPM-089",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:f23e84d7a0d18efde38a743d4febb898fa9ecf18ec9e65d40bf0e76d15ecfc7f"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:bb7615e57326bc22b757f84cf43802b124b873267fb84fd7bb03ec4ed597d38d",
+        "solutionHash": "sha256:b7db198b13c7a764ac1fa06140dbbe8b0a61cc3a535bcac6d06086bbda401085",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:fea8c89c55d6676c300d278a5ab394b2ca1521094acefb817625036e4efbc0b5"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:bb7615e57326bc22b757f84cf43802b124b873267fb84fd7bb03ec4ed597d38d",
+        "inputBundleSha": "sha256:410b9af9446a57a9fd9cd611bbd453a8c474c0f975c7eae30ec58271a656033d",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:6f06f281bcca96bf8a7cf0d8869b396d2685daf6797921aca9074fb6807ef10e"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q7.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 8,
+      "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+      "sourceOrdinal": 8,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+          "sourceIdentityKey": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+          "sourceOrdinal": 8,
+          "contentHash": "sha256:e96e109d517970861abe1ce2b76e9b95330d1f42801a8025c2277442d33d6240",
+          "choicesHash": "sha256:3eb818954a10389aa6674ee199c90d0549593682716a65c420f1f949a4918884",
+          "imageRefHash": "sha256:3e5bad541d2603bbee1b0131d55d8c919969acb894e4aeaa4bd9acbbe510bd3e",
+          "sourceFingerprint": "sha256:acf84756f0544ab4d7bb3e0dfba9e0277a0e1139f67c97b5a460472c057f2bf4"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:70e94189917939df1f8e04d385ee1df6f556b0673ad7fdde24e157247867eba5",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "각의 이등분 관계와 평행선 닮음을 결합해 선분비 계산",
+          "decisiveStep": "BD:DC=1:2, CE:CA=2:3, AE:EC=1:2 → BC=12 → DC=8",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:acf84756f0544ab4d7bb3e0dfba9e0277a0e1139f67c97b5a460472c057f2bf4",
+        "inputBundleSha": "sha256:6469f3ebde7369d222a003e56367d96f917b6805c1e3321b33084ba3ab22caac",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+            "sourceIdentityKey": "qid_v1_207a3ceb971ccdc2f23334ba528ac7c6b6c7dd348a9369452753e726ebbf4869",
+            "sourceOrdinal": 8,
+            "contentHash": "sha256:e96e109d517970861abe1ce2b76e9b95330d1f42801a8025c2277442d33d6240",
+            "choicesHash": "sha256:3eb818954a10389aa6674ee199c90d0549593682716a65c420f1f949a4918884",
+            "imageRefHash": "sha256:3e5bad541d2603bbee1b0131d55d8c919969acb894e4aeaa4bd9acbbe510bd3e",
+            "sourceFingerprint": "sha256:acf84756f0544ab4d7bb3e0dfba9e0277a0e1139f67c97b5a460472c057f2bf4"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:70e94189917939df1f8e04d385ee1df6f556b0673ad7fdde24e157247867eba5",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "각의 이등분 관계와 평행선 닮음을 결합해 선분비 계산",
+            "decisiveStep": "BD:DC=1:2, CE:CA=2:3, AE:EC=1:2 → BC=12 → DC=8",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-096",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:de2ac5545b4e4e7820fefdb8dd74a6ed07df848270ffed7db01ef64edcf088b3"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:acf84756f0544ab4d7bb3e0dfba9e0277a0e1139f67c97b5a460472c057f2bf4",
+        "solutionHash": "sha256:70e94189917939df1f8e04d385ee1df6f556b0673ad7fdde24e157247867eba5",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:6712dbf71eb30d6d499f59114bdf1fd08e824432e1185f85e73a1644181a4529"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:acf84756f0544ab4d7bb3e0dfba9e0277a0e1139f67c97b5a460472c057f2bf4",
+        "inputBundleSha": "sha256:6469f3ebde7369d222a003e56367d96f917b6805c1e3321b33084ba3ab22caac",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:e9e5b9f1da54dddac5692b3e794246678faa21f444a133bd882fa817e87105ae"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q8.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 9,
+      "questionUid": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+      "sourceOrdinal": 9,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+          "sourceIdentityKey": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+          "sourceOrdinal": 9,
+          "contentHash": "sha256:a073085a4f645b5e118674fd894e01aeda7ceeea642b0879c42b5e8e23280ae4",
+          "choicesHash": "sha256:2eadd36bc727e52d96eb32044641fdc3f0d0d0bbd1936bfa3337551d434a5989",
+          "imageRefHash": "sha256:72873d71a2fb571975cf432ab9e3a3122dc733c027b751f16a242c22d8e23a73",
+          "sourceFingerprint": "sha256:96ee6303c7bf63805c37a2685baf6421d9e2e354887973bfc40e2aa3e3fe98dd"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:477988989b1a9319ea2bf5b35998a2c2d9e20ebf6ec42ab2a6968053d1e18bad",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "세 평행선이 두 직선을 자를 때의 대응 선분비 적용",
+          "decisiveStep": "20:15=16:EF → EF=12 → DF=28",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "평행선 사이 선분비",
+            "l4": "여러 평행선"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:96ee6303c7bf63805c37a2685baf6421d9e2e354887973bfc40e2aa3e3fe98dd",
+        "inputBundleSha": "sha256:9b8f4e81d1957e626e1db0f03c73af431d0ca0419699b6cf78a5a5ee23f2f1d3",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+            "sourceIdentityKey": "qid_v1_54ba0d232f65e5d9dc8c74dc7d008c69c2e6c0241cfd48b7ca07b151a5e3c0a8",
+            "sourceOrdinal": 9,
+            "contentHash": "sha256:a073085a4f645b5e118674fd894e01aeda7ceeea642b0879c42b5e8e23280ae4",
+            "choicesHash": "sha256:2eadd36bc727e52d96eb32044641fdc3f0d0d0bbd1936bfa3337551d434a5989",
+            "imageRefHash": "sha256:72873d71a2fb571975cf432ab9e3a3122dc733c027b751f16a242c22d8e23a73",
+            "sourceFingerprint": "sha256:96ee6303c7bf63805c37a2685baf6421d9e2e354887973bfc40e2aa3e3fe98dd"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:477988989b1a9319ea2bf5b35998a2c2d9e20ebf6ec42ab2a6968053d1e18bad",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "세 평행선이 두 직선을 자를 때의 대응 선분비 적용",
+            "decisiveStep": "20:15=16:EF → EF=12 → DF=28",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "평행선 사이 선분비",
+              "l4": "여러 평행선"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-093",
+        "crosswalkRecordId": "M2-RPM-093",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "평행선 사이 선분비",
+          "l4": "여러 평행선"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ee2998bd70d04b251316432fa1bbcce4fe808156567217ce76426f2a7149393d"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:96ee6303c7bf63805c37a2685baf6421d9e2e354887973bfc40e2aa3e3fe98dd",
+        "solutionHash": "sha256:477988989b1a9319ea2bf5b35998a2c2d9e20ebf6ec42ab2a6968053d1e18bad",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:f6ce217a47f08262dd7ee57817787f83f0bdc32b7eab16611444e8473a26c57a"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:96ee6303c7bf63805c37a2685baf6421d9e2e354887973bfc40e2aa3e3fe98dd",
+        "inputBundleSha": "sha256:9b8f4e81d1957e626e1db0f03c73af431d0ca0419699b6cf78a5a5ee23f2f1d3",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:8268238f9ad12b912f5035edbc6f37b74d9460f7659e73a39691c4cd37ec7768"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q9.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 10,
+      "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+      "sourceOrdinal": 10,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+          "sourceIdentityKey": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+          "sourceOrdinal": 10,
+          "contentHash": "sha256:03b263a39d4c69a3851b1ee928c03848dcb68c30cc059e002eadad5678da98a6",
+          "choicesHash": "sha256:8c72d176bc5ac1348592789494d04bef252b57a6801aaafc4c6264c28977ba24",
+          "imageRefHash": "sha256:d1078793d7ce13ca6c2f1af19bf849eca15f2e69ba9b52fc0a15138024ecae51",
+          "sourceFingerprint": "sha256:ad2b52ab70113fb5c819bf721d279739cd70f6c6314d8d8847bbe52e7e5b3c89"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:759cb9355324aeb205183b9b0c2bbe4e5b6ac19c824160ecb9f2057036afd0e7",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "여러 평행선과 중점 관계를 결합해 복합 선분 길이 계산",
+          "decisiveStep": "EG=12, EH=9 → GH=3",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:ad2b52ab70113fb5c819bf721d279739cd70f6c6314d8d8847bbe52e7e5b3c89",
+        "inputBundleSha": "sha256:56c20ef3132d7cb2b10b8b9320003f5ab6f24c097e9905b2db1cf7b69c13e684",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+            "sourceIdentityKey": "qid_v1_ad12b81b1c3ab360926638d03489dc016b03554f3c7cbea63f897cd1a435a52c",
+            "sourceOrdinal": 10,
+            "contentHash": "sha256:03b263a39d4c69a3851b1ee928c03848dcb68c30cc059e002eadad5678da98a6",
+            "choicesHash": "sha256:8c72d176bc5ac1348592789494d04bef252b57a6801aaafc4c6264c28977ba24",
+            "imageRefHash": "sha256:d1078793d7ce13ca6c2f1af19bf849eca15f2e69ba9b52fc0a15138024ecae51",
+            "sourceFingerprint": "sha256:ad2b52ab70113fb5c819bf721d279739cd70f6c6314d8d8847bbe52e7e5b3c89"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:759cb9355324aeb205183b9b0c2bbe4e5b6ac19c824160ecb9f2057036afd0e7",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "여러 평행선과 중점 관계를 결합해 복합 선분 길이 계산",
+            "decisiveStep": "EG=12, EH=9 → GH=3",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-096",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:5422a89ef9d95f669dc8b38e0994695cf95167f9fef2525d243b116c6df68c52"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:ad2b52ab70113fb5c819bf721d279739cd70f6c6314d8d8847bbe52e7e5b3c89",
+        "solutionHash": "sha256:759cb9355324aeb205183b9b0c2bbe4e5b6ac19c824160ecb9f2057036afd0e7",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:8273e06d25666d0d87d05705b643941a17fcf2c5a1b6c1d9821f483ee4ca4143"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:ad2b52ab70113fb5c819bf721d279739cd70f6c6314d8d8847bbe52e7e5b3c89",
+        "inputBundleSha": "sha256:56c20ef3132d7cb2b10b8b9320003f5ab6f24c097e9905b2db1cf7b69c13e684",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:6cc49dfede99ad8ef0178a77c4185bc4fc0670dbff84827f6744929754c52254"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q10.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 11,
+      "questionUid": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
+      "sourceOrdinal": 11,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
+          "sourceIdentityKey": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
+          "sourceOrdinal": 11,
+          "contentHash": "sha256:c89f2e45073fe8e22f59f379e265c4c3dfb39776cefbfc8c10212f3d9e0f6349",
+          "choicesHash": "sha256:38c03177b3d834b7d05b9caa67631b2eb3c1963ed9c15e8ae7320b6cfc7f350e",
+          "imageRefHash": "sha256:8df43b180467585d9f1e3f8e9021c0ab5104405d86c88ec44b87d0584abe2809",
+          "sourceFingerprint": "sha256:9a8c37ab7cddfce66fda91f68b8417f704290e53ca69cbb9469426d6ad6e1988"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:85ddfd5d1214a423d5eaa630ef35304bfe0036ed2bcbfb78e912d2eeae6a5d2d",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE"
+        },
+        "semanticDecision": {
+          "primaryMethod": "평행한 두 밑변으로 생기는 닮음에서 대각선 분할비를 얻어 넓이 계산",
+          "decisiveStep": "BE:DE=6:8=3:4, 같은 높이 넓이비 3:4 → 16",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "도형의 닮음",
+            "l3": "닮음의 활용",
+            "l4": "길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:9a8c37ab7cddfce66fda91f68b8417f704290e53ca69cbb9469426d6ad6e1988",
+        "inputBundleSha": "sha256:200dc9733f4e9bdc0aabe1a9fd62358ee7dd734b290ccf4ae4bb55674a7dedc9",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
+            "sourceIdentityKey": "qid_v1_4b3eaf0cf6f18ea09fcc371763fc4b9e7e7d9da34b978a90ac37985f1baebb85",
+            "sourceOrdinal": 11,
+            "contentHash": "sha256:c89f2e45073fe8e22f59f379e265c4c3dfb39776cefbfc8c10212f3d9e0f6349",
+            "choicesHash": "sha256:38c03177b3d834b7d05b9caa67631b2eb3c1963ed9c15e8ae7320b6cfc7f350e",
+            "imageRefHash": "sha256:8df43b180467585d9f1e3f8e9021c0ab5104405d86c88ec44b87d0584abe2809",
+            "sourceFingerprint": "sha256:9a8c37ab7cddfce66fda91f68b8417f704290e53ca69cbb9469426d6ad6e1988"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:85ddfd5d1214a423d5eaa630ef35304bfe0036ed2bcbfb78e912d2eeae6a5d2d",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-SIMILAR_FIGURE"
+          },
+          "semanticDecision": {
+            "primaryMethod": "평행한 두 밑변으로 생기는 닮음에서 대각선 분할비를 얻어 넓이 계산",
+            "decisiveStep": "BE:DE=6:8=3:4, 같은 높이 넓이비 3:4 → 16",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "도형의 닮음",
+              "l3": "닮음의 활용",
+              "l4": "길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-089",
+        "crosswalkRecordId": "M2-RPM-089",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:b59eb4994e1ad115be96f18552b8460e8b1da4da71df775fd3c986a2b4a3b49a"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9a8c37ab7cddfce66fda91f68b8417f704290e53ca69cbb9469426d6ad6e1988",
+        "solutionHash": "sha256:85ddfd5d1214a423d5eaa630ef35304bfe0036ed2bcbfb78e912d2eeae6a5d2d",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:ababe24ebe15f8d339b0f1383fa1e7160ccf40f7d28b552998efaa32f79f6fbb"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9a8c37ab7cddfce66fda91f68b8417f704290e53ca69cbb9469426d6ad6e1988",
+        "inputBundleSha": "sha256:200dc9733f4e9bdc0aabe1a9fd62358ee7dd734b290ccf4ae4bb55674a7dedc9",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:cbdce9ea9dac2f47119093db5bc0399931d466488e76305ba8a714442c089cf0"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q11.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 12,
+      "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+      "sourceOrdinal": 12,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+          "sourceIdentityKey": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+          "sourceOrdinal": 12,
+          "contentHash": "sha256:554b669797011a812e4de3cfa154ef2827d013dae8e9eb95a5268e3981265ce1",
+          "choicesHash": "sha256:feba47a155db3949de94b342228b8395d76dbec3e7b101bc483651d3d4c28dfe",
+          "imageRefHash": "sha256:eac7be5a59a0231ad523f3afb8a2b75e1cf17387a4816518a8d46c282b8babd9",
+          "sourceFingerprint": "sha256:7a2454449217c8e96010f81fbf580c711edc77537b698df9d29c90c54373ddfa"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:d1de5b2bd37a312fc369c02ec6b4042ed0ae6acf3aaf528bf24269faaabeb551",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "삼각형 무게중심의 2:1 분할 성질 적용",
+          "decisiveStep": "GE=5 → BE=15, 이등변 대칭으로 CD=15 → CG=10",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "중선과 무게중심",
+            "l4": "2:1 비"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "sourceFingerprint": "sha256:7a2454449217c8e96010f81fbf580c711edc77537b698df9d29c90c54373ddfa",
+        "inputBundleSha": "sha256:0f7f6e938ec47465150ce9847f14036c388ddcc787e8d3ca3f006f9bc78e602b",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+            "sourceIdentityKey": "qid_v1_7f6b2a2477b2e2d8cc2b2f1fb75fa504f068d8abc725b32f191a3c413bdbab9d",
+            "sourceOrdinal": 12,
+            "contentHash": "sha256:554b669797011a812e4de3cfa154ef2827d013dae8e9eb95a5268e3981265ce1",
+            "choicesHash": "sha256:feba47a155db3949de94b342228b8395d76dbec3e7b101bc483651d3d4c28dfe",
+            "imageRefHash": "sha256:eac7be5a59a0231ad523f3afb8a2b75e1cf17387a4816518a8d46c282b8babd9",
+            "sourceFingerprint": "sha256:7a2454449217c8e96010f81fbf580c711edc77537b698df9d29c90c54373ddfa"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:d1de5b2bd37a312fc369c02ec6b4042ed0ae6acf3aaf528bf24269faaabeb551",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "삼각형 무게중심의 2:1 분할 성질 적용",
+            "decisiveStep": "GE=5 → BE=15, 이등변 대칭으로 CD=15 → CG=10",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "중선과 무게중심",
+              "l4": "2:1 비"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-097",
+        "crosswalkRecordId": "M2-RPM-097",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_REVERSE",
+        "mappedTemplateKeys": [
+          "TPL_CENTROID_REVERSE"
+        ],
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:ba28791db1ee581ec51cef922b2fc28b7cfffe9fbb3c6341cac09f4c2bdb589f"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:7a2454449217c8e96010f81fbf580c711edc77537b698df9d29c90c54373ddfa",
+        "solutionHash": "sha256:d1de5b2bd37a312fc369c02ec6b4042ed0ae6acf3aaf528bf24269faaabeb551",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:42a462fee5c45356adbed0e36ab8f8705ea3924b5ef87f0b3d4e124b2cf8b6ef"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:7a2454449217c8e96010f81fbf580c711edc77537b698df9d29c90c54373ddfa",
+        "inputBundleSha": "sha256:0f7f6e938ec47465150ce9847f14036c388ddcc787e8d3ca3f006f9bc78e602b",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:baf4ead800875b68fcb9c7de09f67fa2b8fa15a649eeeffe46430a004c4c95e0"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q12.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 13,
+      "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+      "sourceOrdinal": 13,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+          "sourceIdentityKey": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+          "sourceOrdinal": 13,
+          "contentHash": "sha256:b758edc3ae0d0d44b556513d862316dfe1dd5507f99e85d349853347a6071854",
+          "choicesHash": "sha256:d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+          "imageRefHash": "sha256:42e4f706fb4af960061fc4c60cf89ca4ec7ceb069369ebecb5c0e0bf396f81c7",
+          "sourceFingerprint": "sha256:714fab6c1c1cfa304c28033d18c391bc2c942147685a4ebf05de2a1a023ec8cd"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:3fc909c5440b8c956eb17822bb8cf12d3a09dd9d679a811cf22d160ccc45a4f5",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중점연결선과 무게중심의 위치로 같은 밑변 삼각형의 높이비 계산",
+          "decisiveStep": "AN=AM/2, AG=2AM/3 → GN=AM/6 → 넓이비 3:1",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "삼각형의 무게중심",
+            "l3": "넓이와 무게중심",
+            "l4": "넓이 분할"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "sourceFingerprint": "sha256:714fab6c1c1cfa304c28033d18c391bc2c942147685a4ebf05de2a1a023ec8cd",
+        "inputBundleSha": "sha256:9ff746953f3fa5eb8a21c694c3caad4f0acce92241d62fe92d89634e56031b44",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+            "sourceIdentityKey": "qid_v1_62dd21ac3b98576cee983447d22b043626850bbe59d9e4ea807c2fa3750a138e",
+            "sourceOrdinal": 13,
+            "contentHash": "sha256:b758edc3ae0d0d44b556513d862316dfe1dd5507f99e85d349853347a6071854",
+            "choicesHash": "sha256:d601fd23445f2769d635c0f649aaf6d04b385a7d56c029a78b68ab105d958e27",
+            "imageRefHash": "sha256:42e4f706fb4af960061fc4c60cf89ca4ec7ceb069369ebecb5c0e0bf396f81c7",
+            "sourceFingerprint": "sha256:714fab6c1c1cfa304c28033d18c391bc2c942147685a4ebf05de2a1a023ec8cd"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:3fc909c5440b8c956eb17822bb8cf12d3a09dd9d679a811cf22d160ccc45a4f5",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "중점연결선과 무게중심의 위치로 같은 밑변 삼각형의 높이비 계산",
+            "decisiveStep": "AN=AM/2, AG=2AM/3 → GN=AM/6 → 넓이비 3:1",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "삼각형의 무게중심",
+              "l3": "넓이와 무게중심",
+              "l4": "넓이 분할"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-099",
+        "crosswalkRecordId": "M2-RPM-099",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "mappedTemplateKeys": [
+          "TPL_CENTROID_APPLICATION"
+        ],
+        "canonicalOwnerPack": "GEOMETRY_EQUATIONS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:efcf586b740f2e0ae7ae6c89d4f90df9da5301b212f4290d1ed7ddccdc98b324"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:714fab6c1c1cfa304c28033d18c391bc2c942147685a4ebf05de2a1a023ec8cd",
+        "solutionHash": "sha256:3fc909c5440b8c956eb17822bb8cf12d3a09dd9d679a811cf22d160ccc45a4f5",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:f628da3f23739b667c118028b19d37232004b3aea73b312c5066e92b0ac4aa6e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:714fab6c1c1cfa304c28033d18c391bc2c942147685a4ebf05de2a1a023ec8cd",
+        "inputBundleSha": "sha256:9ff746953f3fa5eb8a21c694c3caad4f0acce92241d62fe92d89634e56031b44",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:1806719e2629bbaaeff5f93309942ba9fc9e9ec966ed1386272b310f37dc5356"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q13.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 14,
+      "questionUid": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
+      "sourceOrdinal": 14,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
+          "sourceIdentityKey": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
+          "sourceOrdinal": 14,
+          "contentHash": "sha256:0c574bb7fc0a2f394002f2df4c4c5f721d874bcac5806d8c9a9b4de84af0fd1c",
+          "choicesHash": "sha256:48a6a42247cc221568b17352f8cec2c68c50aa0d46a3d19717a8f46e44cdcf17",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:40f9e222ae3df1ab8719009015f614362fa88dd457fec524829a842d207a56a7"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:5b71b93f6078f507afcd17200299627438f289e1bce5a83ae50b7d59d6b8b2fd",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "서로 겹치지 않는 선택 경우의 수를 합산",
+          "decisiveStep": "고기 3가지 + 김치 4가지 = 7가지",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "합의 법칙과 곱의 법칙",
+            "l4": "단계별 선택"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:40f9e222ae3df1ab8719009015f614362fa88dd457fec524829a842d207a56a7",
+        "inputBundleSha": "sha256:4d21ddc681b7b3f9e7f703186cf2b1bc15eccff11e50ac416def161e74d7b1d7",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
+            "sourceIdentityKey": "qid_v1_152cb6ab575e570bbca26c74d15878db9d882595193c3456235927188d506064",
+            "sourceOrdinal": 14,
+            "contentHash": "sha256:0c574bb7fc0a2f394002f2df4c4c5f721d874bcac5806d8c9a9b4de84af0fd1c",
+            "choicesHash": "sha256:48a6a42247cc221568b17352f8cec2c68c50aa0d46a3d19717a8f46e44cdcf17",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:40f9e222ae3df1ab8719009015f614362fa88dd457fec524829a842d207a56a7"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:5b71b93f6078f507afcd17200299627438f289e1bce5a83ae50b7d59d6b8b2fd",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+          },
+          "semanticDecision": {
+            "primaryMethod": "서로 겹치지 않는 선택 경우의 수를 합산",
+            "decisiveStep": "고기 3가지 + 김치 4가지 = 7가지",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "합의 법칙과 곱의 법칙",
+              "l4": "단계별 선택"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-107",
+        "crosswalkRecordId": "M2-RPM-107",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedTemplateKeys": [],
+        "canonicalOwnerPack": "",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:c80126f28903ffc2899c8f567c0d8bfdd090e2162668b1ab4d07cdb5897732b8"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:40f9e222ae3df1ab8719009015f614362fa88dd457fec524829a842d207a56a7",
+        "solutionHash": "sha256:5b71b93f6078f507afcd17200299627438f289e1bce5a83ae50b7d59d6b8b2fd",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:6e3ed44e67d747cbb1eba71938fa24ef1b38757f0f5a8e1359554ba8ee5e9834"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:40f9e222ae3df1ab8719009015f614362fa88dd457fec524829a842d207a56a7",
+        "inputBundleSha": "sha256:4d21ddc681b7b3f9e7f703186cf2b1bc15eccff11e50ac416def161e74d7b1d7",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:c1c358567aeb49be011c4b8172c3e0dd20e9375e2c30d07f8a4d184b793e794f"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 15,
+      "questionUid": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
+      "sourceOrdinal": 15,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
+          "sourceIdentityKey": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
+          "sourceOrdinal": 15,
+          "contentHash": "sha256:5bddbcb7ddbb055a197813d58396a698add44df6a373e67f45fca4adc6d86423",
+          "choicesHash": "sha256:d54721b947ba4d6fd39b1c2435432fac312cd805b4406d948f5c2a0a9887f733",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:46d169937713eebba433697ebb9c0b71553fde0335cffd8573e717686283c177"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:db4049a020829e708be4987796b76a503d60ded13260a23fc7f56182c3695bdc",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "중복 없이 두 카드를 순서 있게 배치하여 짝수 경우를 분할 계산",
+          "decisiveStep": "일의 자리 0/2/4별 4+3+3=10",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "배열과 선택",
+            "l4": "순서가 있는 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "EXACT_BINDING_COMPATIBILITY_PENDING",
+        "sourceFingerprint": "sha256:46d169937713eebba433697ebb9c0b71553fde0335cffd8573e717686283c177",
+        "inputBundleSha": "sha256:22d94c29da7fe0ff6e6d74f32f93cfa399f03b80509eb86f76e6890211d9549b",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
+            "sourceIdentityKey": "qid_v1_56a24cc87be42935999dcbf34a9ca70dc37cef9033931e01ecb735774b5a8438",
+            "sourceOrdinal": 15,
+            "contentHash": "sha256:5bddbcb7ddbb055a197813d58396a698add44df6a373e67f45fca4adc6d86423",
+            "choicesHash": "sha256:d54721b947ba4d6fd39b1c2435432fac312cd805b4406d948f5c2a0a9887f733",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:46d169937713eebba433697ebb9c0b71553fde0335cffd8573e717686283c177"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:db4049a020829e708be4987796b76a503d60ded13260a23fc7f56182c3695bdc",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+          },
+          "semanticDecision": {
+            "primaryMethod": "중복 없이 두 카드를 순서 있게 배치하여 짝수 경우를 분할 계산",
+            "decisiveStep": "일의 자리 0/2/4별 4+3+3=10",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "배열과 선택",
+              "l4": "순서가 있는 경우"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-109",
+        "crosswalkRecordId": "M2-RPM-109",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "mappedTemplateKeys": [
+          "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:64ca2dab80c838236de918a4838f4a8eb4b7f51160db963b2703ef3ca7b337e5"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:46d169937713eebba433697ebb9c0b71553fde0335cffd8573e717686283c177",
+        "solutionHash": "sha256:db4049a020829e708be4987796b76a503d60ded13260a23fc7f56182c3695bdc",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:4c8df1d5110d998dd4b5fdf4864fa7c9c43caace67bad2b2e5441aa52008adf1"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:46d169937713eebba433697ebb9c0b71553fde0335cffd8573e717686283c177",
+        "inputBundleSha": "sha256:22d94c29da7fe0ff6e6d74f32f93cfa399f03b80509eb86f76e6890211d9549b",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:f07c84590c33aff1be45d03cd5d5c06a42131050d66d3f3175a56bdfb0acf1fb"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 16,
+      "questionUid": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+      "sourceOrdinal": 16,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+          "sourceIdentityKey": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+          "sourceOrdinal": 16,
+          "contentHash": "sha256:049d604757fc16033f6a46bd686646c9388e02910b1f2a6980c155453895cddb",
+          "choicesHash": "sha256:fc3dba98889cccd1a96f32fb71f7812a2d3b9dde603c59a1f87b932df48e085f",
+          "imageRefHash": "sha256:e8bef07543fad82a9d791a23b819166f4e7b7aa5b3037bc49d01991d16296e19",
+          "sourceFingerprint": "sha256:9ff62eaf1ccf2547bafafc02c3b2cb2fe113512f335ca6cad2753be580eb4c05"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:c1fee195b350349f85e25c330f480ca673be21a03738ca29d2f4d1f2373736e0",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "직접 경로와 경유 경로를 합의·곱의 법칙으로 계산",
+          "decisiveStep": "직접 3 + B경유 2×2 = 7",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "경우의 수",
+            "l3": "합의 법칙과 곱의 법칙",
+            "l4": "단계별 선택"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:9ff62eaf1ccf2547bafafc02c3b2cb2fe113512f335ca6cad2753be580eb4c05",
+        "inputBundleSha": "sha256:ad5030cc0ccbb0277d59cc149451ede132922926fbeb1cedc95785fcbd75ee04",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+            "sourceIdentityKey": "qid_v1_bdda93986d1b0de288ccd4b929cf4c17b0cc1285b10e74b7e7e4f6e067bff19f",
+            "sourceOrdinal": 16,
+            "contentHash": "sha256:049d604757fc16033f6a46bd686646c9388e02910b1f2a6980c155453895cddb",
+            "choicesHash": "sha256:fc3dba98889cccd1a96f32fb71f7812a2d3b9dde603c59a1f87b932df48e085f",
+            "imageRefHash": "sha256:e8bef07543fad82a9d791a23b819166f4e7b7aa5b3037bc49d01991d16296e19",
+            "sourceFingerprint": "sha256:9ff62eaf1ccf2547bafafc02c3b2cb2fe113512f335ca6cad2753be580eb4c05"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:c1fee195b350349f85e25c330f480ca673be21a03738ca29d2f4d1f2373736e0",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+          },
+          "semanticDecision": {
+            "primaryMethod": "직접 경로와 경유 경로를 합의·곱의 법칙으로 계산",
+            "decisiveStep": "직접 3 + B경유 2×2 = 7",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "경우의 수",
+              "l3": "합의 법칙과 곱의 법칙",
+              "l4": "단계별 선택"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-107",
+        "crosswalkRecordId": "M2-RPM-107",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedTemplateKeys": [],
+        "canonicalOwnerPack": "",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:d4c82e8ed621eedd830ee64812772745ec6221c1586b281dbc54f37f0cd38056"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9ff62eaf1ccf2547bafafc02c3b2cb2fe113512f335ca6cad2753be580eb4c05",
+        "solutionHash": "sha256:c1fee195b350349f85e25c330f480ca673be21a03738ca29d2f4d1f2373736e0",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:c7f6b5476cc2580d5b33d62edc80644012379af53efa1aee7c6d613f41dc2cb4"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9ff62eaf1ccf2547bafafc02c3b2cb2fe113512f335ca6cad2753be580eb4c05",
+        "inputBundleSha": "sha256:ad5030cc0ccbb0277d59cc149451ede132922926fbeb1cedc95785fcbd75ee04",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:128c36d7ab846dc7e8f816deda9e46fbb3e47f26ce1aae9f52e5e305028a378c"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q16.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 17,
+      "questionUid": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
+      "sourceOrdinal": 17,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
+          "sourceIdentityKey": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
+          "sourceOrdinal": 17,
+          "contentHash": "sha256:e1750bf2accdfdbb375fec81e37401800ca82c9ed5aa7885e5f2d05ab0db6d7f",
+          "choicesHash": "sha256:0ca0f1d379c95139d487111a81fec86b354180f0fec3fc6ac38a557b59d48ad7",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:161896e0251a0072d6add201876da6904e99b4e7d62d58b1aed1aa18446ff6c4"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:609329a712eda7efd7ba8348b27e4314280178067d7288705f8811cf2dc1a002",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "동등가능한 두 주사위 순서쌍에서 조건 만족 경우를 계수",
+          "decisiveStep": "전체 36, 차 0/1/2가 6+10+8=24 → 2/3",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "동등가능한 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "sourceFingerprint": "sha256:161896e0251a0072d6add201876da6904e99b4e7d62d58b1aed1aa18446ff6c4",
+        "inputBundleSha": "sha256:84e9f64c2b7c381ee987b87be05fdba033e306bdffe3f9964ab84aa717a3111d",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
+            "sourceIdentityKey": "qid_v1_2bb7ec13c31e493161ebe8f0e8f4e024cc5f91434bace63f5bd541bdaa1d6832",
+            "sourceOrdinal": 17,
+            "contentHash": "sha256:e1750bf2accdfdbb375fec81e37401800ca82c9ed5aa7885e5f2d05ab0db6d7f",
+            "choicesHash": "sha256:0ca0f1d379c95139d487111a81fec86b354180f0fec3fc6ac38a557b59d48ad7",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:161896e0251a0072d6add201876da6904e99b4e7d62d58b1aed1aa18446ff6c4"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:609329a712eda7efd7ba8348b27e4314280178067d7288705f8811cf2dc1a002",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+          },
+          "semanticDecision": {
+            "primaryMethod": "동등가능한 두 주사위 순서쌍에서 조건 만족 경우를 계수",
+            "decisiveStep": "전체 36, 차 0/1/2가 6+10+8=24 → 2/3",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "동등가능한 경우"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-113",
+        "crosswalkRecordId": "M2-RPM-113",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "동등가능한 경우"
+        },
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:8f47c10ebed527055269454abea7ef2586e320595f3b0f53f52a426bd8470c15"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:161896e0251a0072d6add201876da6904e99b4e7d62d58b1aed1aa18446ff6c4",
+        "solutionHash": "sha256:609329a712eda7efd7ba8348b27e4314280178067d7288705f8811cf2dc1a002",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:70cae3ce51aaa842c9a7d971efa2267eab1cd6b2de8b895e878c066c4475e8ca"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:161896e0251a0072d6add201876da6904e99b4e7d62d58b1aed1aa18446ff6c4",
+        "inputBundleSha": "sha256:84e9f64c2b7c381ee987b87be05fdba033e306bdffe3f9964ab84aa717a3111d",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:031feb400c2db540d79103219ab4f5bb7b49912b24c742fe4d392781db338c5d"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 18,
+      "questionUid": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
+      "sourceOrdinal": 18,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
+          "sourceIdentityKey": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
+          "sourceOrdinal": 18,
+          "contentHash": "sha256:f821ceaa55ad6c1027383b10af752c635e491e7d90cefe21ce440802740fdbc9",
+          "choicesHash": "sha256:a99a197870290a661211c2d7045fa9d6556f417069f8e2b17ee36cfca518dc80",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:d4267d3c24d8913fcf504c7c6858047aace1ea97450beb740fd93885d5d8163a"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:12f973b9968ea4d33c395fc4be8a719e153f62d41437c4a8a8d8e2b5019d0379",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "서로 영향을 주지 않는 두 시행의 성공확률을 곱함",
+          "decisiveStep": "0.9×0.9=0.81",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "EXACT_BINDING_COMPATIBILITY_PENDING",
+        "sourceFingerprint": "sha256:d4267d3c24d8913fcf504c7c6858047aace1ea97450beb740fd93885d5d8163a",
+        "inputBundleSha": "sha256:fa64e880a082bc78ba25227f677fbfdcbda95624a991310c05c5a46c050ed827",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
+            "sourceIdentityKey": "qid_v1_6df93ee12ab781e2cbc70e852d457c41b2144a927fcd1d1e4a79ca2721a7ed3b",
+            "sourceOrdinal": 18,
+            "contentHash": "sha256:f821ceaa55ad6c1027383b10af752c635e491e7d90cefe21ce440802740fdbc9",
+            "choicesHash": "sha256:a99a197870290a661211c2d7045fa9d6556f417069f8e2b17ee36cfca518dc80",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:d4267d3c24d8913fcf504c7c6858047aace1ea97450beb740fd93885d5d8163a"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:12f973b9968ea4d33c395fc4be8a719e153f62d41437c4a8a8d8e2b5019d0379",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "서로 영향을 주지 않는 두 시행의 성공확률을 곱함",
+            "decisiveStep": "0.9×0.9=0.81",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "연속 시행"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-118",
+        "crosswalkRecordId": "M2-RPM-118",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "mappedTemplateKeys": [
+          "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:c574ed92964c71b4358ca6e9c9992ea30e1a39ba15f4489c5a824ca09d021a71"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:d4267d3c24d8913fcf504c7c6858047aace1ea97450beb740fd93885d5d8163a",
+        "solutionHash": "sha256:12f973b9968ea4d33c395fc4be8a719e153f62d41437c4a8a8d8e2b5019d0379",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:62c68a4ce3993541ea89b7db61b80ee76ae4bc1650062b496e0630b19cf7eeba"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:d4267d3c24d8913fcf504c7c6858047aace1ea97450beb740fd93885d5d8163a",
+        "inputBundleSha": "sha256:fa64e880a082bc78ba25227f677fbfdcbda95624a991310c05c5a46c050ed827",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:a507065bd98cde3b642c77480910fcd12b118e6e176fa46450dcd30ed9833c57"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 19,
+      "questionUid": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
+      "sourceOrdinal": 19,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
+          "sourceIdentityKey": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
+          "sourceOrdinal": 19,
+          "contentHash": "sha256:7845281be635c742841eb480b4c6d3090c1cb5b24cba5350d8e7edf068a5e1a1",
+          "choicesHash": "sha256:65bcd8b804cec2bfc0e02de7de08709f10ea7df6e9b06471bb016b14e882b6e7",
+          "imageRefHash": "sha256:761f48211672aeaaae38830514dccbefb5a0778ed15837c06864e111d6678e93",
+          "sourceFingerprint": "sha256:28c66ed87a0ef5684ae5b520d29dc27e2ef8ed697a5ce95441edcfae48cb84d9"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:adc6001f2723c74f51a534e4c06fcd7ff33e6dd762a1d44e83fd1b25846e0da0",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "동등가능한 두 원판 결과쌍을 계수",
+          "decisiveStep": "전체 6, 같은 수 2 → 다른 수 4 → 2/3",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "동등가능한 경우"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "EXACT_BINDING_COMPATIBILITY_PENDING",
+        "sourceFingerprint": "sha256:28c66ed87a0ef5684ae5b520d29dc27e2ef8ed697a5ce95441edcfae48cb84d9",
+        "inputBundleSha": "sha256:1ee7ecd986dee12399c152711ae83ad66f4494451fab5a4eac71a26123131045",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
+            "sourceIdentityKey": "qid_v1_1aaa13959c343925c9f54bdccfa4fab60891156e4c7762c879669a7fbb66ef87",
+            "sourceOrdinal": 19,
+            "contentHash": "sha256:7845281be635c742841eb480b4c6d3090c1cb5b24cba5350d8e7edf068a5e1a1",
+            "choicesHash": "sha256:65bcd8b804cec2bfc0e02de7de08709f10ea7df6e9b06471bb016b14e882b6e7",
+            "imageRefHash": "sha256:761f48211672aeaaae38830514dccbefb5a0778ed15837c06864e111d6678e93",
+            "sourceFingerprint": "sha256:28c66ed87a0ef5684ae5b520d29dc27e2ef8ed697a5ce95441edcfae48cb84d9"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:adc6001f2723c74f51a534e4c06fcd7ff33e6dd762a1d44e83fd1b25846e0da0",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "동등가능한 두 원판 결과쌍을 계수",
+            "decisiveStep": "전체 6, 같은 수 2 → 다른 수 4 → 2/3",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "동등가능한 경우"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-113",
+        "crosswalkRecordId": "M2-RPM-113",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "동등가능한 경우"
+        },
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:e208accc0eb0eb13a38d599f298562b39d1bb13129d51622db08fbe246498f1a"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:28c66ed87a0ef5684ae5b520d29dc27e2ef8ed697a5ce95441edcfae48cb84d9",
+        "solutionHash": "sha256:adc6001f2723c74f51a534e4c06fcd7ff33e6dd762a1d44e83fd1b25846e0da0",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:f50580332094756a024de04c0b336dbc1b009645f42f9947522134fa2c8a977e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:28c66ed87a0ef5684ae5b520d29dc27e2ef8ed697a5ce95441edcfae48cb84d9",
+        "inputBundleSha": "sha256:1ee7ecd986dee12399c152711ae83ad66f4494451fab5a4eac71a26123131045",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:222551dda21e0b9280f96bbfa5efa50d21c99c7da46c4f202b937de7ef3f2fdd"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q19.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 20,
+      "questionUid": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
+      "sourceOrdinal": 20,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
+          "sourceIdentityKey": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
+          "sourceOrdinal": 20,
+          "contentHash": "sha256:e3170085f97e76dda1afb7ac726aa97dabad6a1689e2de0a697ca9b27ecf947e",
+          "choicesHash": "sha256:98545f3a528448837d6b11011ef8c8ad550bf9df25c7ffef949307384b900cdd",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:1540379c67627688a7b272cb9723962ad03eb448ebcebbeaeb1c8337f2902c74"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:9ac14c9de2b4238c92ef97963211a92f8f0aef151262104c854379a9495a398a",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "독립인 두 주머니 선택의 사건 확률을 곱함",
+          "decisiveStep": "4/8×3/8=3/16",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "EXACT_BINDING_COMPATIBILITY_PENDING",
+        "sourceFingerprint": "sha256:1540379c67627688a7b272cb9723962ad03eb448ebcebbeaeb1c8337f2902c74",
+        "inputBundleSha": "sha256:eb6fde943370c8c274d833c29bcea8b349a5189fb3f8bfc0c0a013148e0df8fc",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
+            "sourceIdentityKey": "qid_v1_0451b418776276e2d23ea768ab75b9dc6d5321988bdacdc8aec38a0ea9be3c8e",
+            "sourceOrdinal": 20,
+            "contentHash": "sha256:e3170085f97e76dda1afb7ac726aa97dabad6a1689e2de0a697ca9b27ecf947e",
+            "choicesHash": "sha256:98545f3a528448837d6b11011ef8c8ad550bf9df25c7ffef949307384b900cdd",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:1540379c67627688a7b272cb9723962ad03eb448ebcebbeaeb1c8337f2902c74"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:9ac14c9de2b4238c92ef97963211a92f8f0aef151262104c854379a9495a398a",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "독립인 두 주머니 선택의 사건 확률을 곱함",
+            "decisiveStep": "4/8×3/8=3/16",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "연속 시행"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-118",
+        "crosswalkRecordId": "M2-RPM-118",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "mappedTemplateKeys": [
+          "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:bfb77c868aaf06725204ff8817dd3feb45da1f09dbeb60715178f8d4b36c887b"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:1540379c67627688a7b272cb9723962ad03eb448ebcebbeaeb1c8337f2902c74",
+        "solutionHash": "sha256:9ac14c9de2b4238c92ef97963211a92f8f0aef151262104c854379a9495a398a",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:e079a6280ec519fcef9e06e1b93b2b139d7731a30bebdf530fbaef4a92d36aa9"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:1540379c67627688a7b272cb9723962ad03eb448ebcebbeaeb1c8337f2902c74",
+        "inputBundleSha": "sha256:eb6fde943370c8c274d833c29bcea8b349a5189fb3f8bfc0c0a013148e0df8fc",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:25375be418636588777115726e8c7ca089192930e74e8202ba85fa2d57d206be"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 21,
+      "questionUid": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
+      "sourceOrdinal": 21,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
+          "sourceIdentityKey": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
+          "sourceOrdinal": 21,
+          "contentHash": "sha256:f9edadd649a6ca2fa9638d507be2c4ac98d52147c21f8170b518f1b853537bf0",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:73283b27fbe0d440fd5199c797a3886351a32cc91e7b3c50e0a10438add673a9",
+          "sourceFingerprint": "sha256:9779ec251a6c71bf86239156bc8822d3304818214d8c1c19815cb8180f968ac2"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:56b443bd694ad6b0b5250195343b891d4bfedfa553f7d2dab7a3b9d07ff76ce1",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-07",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+        },
+        "semanticDecision": {
+          "primaryMethod": "회전체 높이에 필요한 직각삼각형 길이를 피타고라스 정리로 계산",
+          "decisiveStep": "13²-5²=12² → 원뿔 부피 100π",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "피타고라스 정리",
+            "l3": "도형에의 활용",
+            "l4": "평면도형 길이"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "RPM_ONLY_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:9779ec251a6c71bf86239156bc8822d3304818214d8c1c19815cb8180f968ac2",
+        "inputBundleSha": "sha256:1b419b22c33e421187bbabce2e1fecdaa28ca0fc244a635d24dfdd16e7179f21",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
+            "sourceIdentityKey": "qid_v1_b053e20d6a70ba4fb1aa204eb83dec74e9e1900e931715bd83697d87cd96f6c8",
+            "sourceOrdinal": 21,
+            "contentHash": "sha256:f9edadd649a6ca2fa9638d507be2c4ac98d52147c21f8170b518f1b853537bf0",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:73283b27fbe0d440fd5199c797a3886351a32cc91e7b3c50e0a10438add673a9",
+            "sourceFingerprint": "sha256:9779ec251a6c71bf86239156bc8822d3304818214d8c1c19815cb8180f968ac2"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:56b443bd694ad6b0b5250195343b891d4bfedfa553f7d2dab7a3b9d07ff76ce1",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-07",
+            "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION"
+          },
+          "semanticDecision": {
+            "primaryMethod": "회전체 높이에 필요한 직각삼각형 길이를 피타고라스 정리로 계산",
+            "decisiveStep": "13²-5²=12² → 원뿔 부피 100π",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "피타고라스 정리",
+              "l3": "도형에의 활용",
+              "l4": "평면도형 길이"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-105",
+        "crosswalkRecordId": "M2-RPM-105",
+        "crosswalkStatus": "RPM_ONLY",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "problemTypeKey": "",
+        "templateKey": "",
+        "mappedTemplateKeys": [],
+        "canonicalOwnerPack": "",
+        "bindingStatus": "NO_ACTIVE_MAPPING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:d3e8f9f521732d966b9cda7316d1f92552daa56a7948679c4895730801c7285b"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:9779ec251a6c71bf86239156bc8822d3304818214d8c1c19815cb8180f968ac2",
+        "solutionHash": "sha256:56b443bd694ad6b0b5250195343b891d4bfedfa553f7d2dab7a3b9d07ff76ce1",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:4c28a02dd42070ea6ea6bde62c8408766df916844758a9a6d93624dce0038983"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:9779ec251a6c71bf86239156bc8822d3304818214d8c1c19815cb8180f968ac2",
+        "inputBundleSha": "sha256:1b419b22c33e421187bbabce2e1fecdaa28ca0fc244a635d24dfdd16e7179f21",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:17f571208441096964dd332a8f7163a3dfa875928ec22efcdd5f9a01d18cff52"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q21.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 22,
+      "questionUid": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+      "sourceOrdinal": 22,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+          "sourceIdentityKey": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+          "sourceOrdinal": 22,
+          "contentHash": "sha256:a841fb18333d85cf3a3f88a9b6504555e7832d6d7002899e2bc31c5b48728bfc",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:4c201c92285c7adc7a569f393cc25e29d82f3db1a98e88ed98f894bc26b05308",
+          "sourceFingerprint": "sha256:78b25eab9121f9704f31ea908fe443bc6440b2c6e2249e4c46d9f2f3e92aee65"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:92a240608f92a7dfc8c2b4545454edfa66851e405122024a09ad510182c39f60",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-06",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+        },
+        "semanticDecision": {
+          "primaryMethod": "평행선 닮음비를 두 번 적용해 두 미지 길이를 계산",
+          "decisiveStep": "x/(x+10)=12/20 → x=15, 12/y=10/25 → y=30",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "도형의 닮음과 피타고라스 정리",
+            "midUnit": "평행선과 선분의 길이의 비",
+            "l3": "비례 활용",
+            "l4": "선분비를 이용한 복합도형"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "reasonCode": "DIRECT_ACTIVE_COMPATIBILITY_PROJECTION",
+        "sourceFingerprint": "sha256:78b25eab9121f9704f31ea908fe443bc6440b2c6e2249e4c46d9f2f3e92aee65",
+        "inputBundleSha": "sha256:0904c41f9d303fba1c3b92b417c08fb07b9b905e850c64a2722979ed12225d31",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+            "sourceIdentityKey": "qid_v1_1043620e125a06b4dfe7a8432df4fe7df7fc7e38f1e5199315a9063e90b24bc5",
+            "sourceOrdinal": 22,
+            "contentHash": "sha256:a841fb18333d85cf3a3f88a9b6504555e7832d6d7002899e2bc31c5b48728bfc",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:4c201c92285c7adc7a569f393cc25e29d82f3db1a98e88ed98f894bc26b05308",
+            "sourceFingerprint": "sha256:78b25eab9121f9704f31ea908fe443bc6440b2c6e2249e4c46d9f2f3e92aee65"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:92a240608f92a7dfc8c2b4545454edfa66851e405122024a09ad510182c39f60",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-06",
+            "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO"
+          },
+          "semanticDecision": {
+            "primaryMethod": "평행선 닮음비를 두 번 적용해 두 미지 길이를 계산",
+            "decisiveStep": "x/(x+10)=12/20 → x=15, 12/y=10/25 → y=30",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "도형의 닮음과 피타고라스 정리",
+              "midUnit": "평행선과 선분의 길이의 비",
+              "l3": "비례 활용",
+              "l4": "선분비를 이용한 복합도형"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-096",
+        "crosswalkRecordId": "M2-RPM-096",
+        "crosswalkStatus": "DIRECT_ACTIVE",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선과 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "mappedTemplateKeys": [
+          "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+        ],
+        "canonicalOwnerPack": "MIDDLE_GEOMETRY",
+        "bindingStatus": "ACTIVE",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:d04c54c7b7a3f0d5b7291b375e1727b35a917c0d7638753885f8980c5b833f2f"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:78b25eab9121f9704f31ea908fe443bc6440b2c6e2249e4c46d9f2f3e92aee65",
+        "solutionHash": "sha256:92a240608f92a7dfc8c2b4545454edfa66851e405122024a09ad510182c39f60",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:9352d230c7c3aa9b4491ad2a4e04ad45be637051ae1b8137332350d54b90a12e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:78b25eab9121f9704f31ea908fe443bc6440b2c6e2249e4c46d9f2f3e92aee65",
+        "inputBundleSha": "sha256:0904c41f9d303fba1c3b92b417c08fb07b9b905e850c64a2722979ed12225d31",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:db6c885e5f5870ce6d961c1c68d622f23dc7bf496719897a9c41d8da1bcda374"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "EXISTING_REUSE",
+      "visual": {
+        "problemImage": "assets/images/24_향림중_2학기_기말_중2_기출/q22.png",
+        "problemImageStatus": "SOURCE_ASSET_GIT_BLOB_EXACT_PARITY",
+        "visualRequirement": "VISUAL_REQUIRED",
+        "disposition": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 23,
+      "questionUid": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+      "sourceOrdinal": 23,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+          "sourceIdentityKey": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+          "sourceOrdinal": 23,
+          "contentHash": "sha256:c67836682cf35bc3e40c8d853bd731d1dd135ce85b339e48098ea1ac2f23788f",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:bd24f108d42f992f79fdf00f3eb84aed5517ac966a4dafbad20915583accfa7b"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:c39b43f67918dae80cbf84c2139e1a85a0f962be265ec21d82a50bd6509e628e",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC"
+        },
+        "semanticDecision": {
+          "primaryMethod": "확률 정의식으로 미지 개수를 방정식화",
+          "decisiveStep": "x/(x+8)=2/3 → x=16",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 뜻",
+            "l4": "확률 계산"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "reasonCode": "EXACT_BINDING_COMPATIBILITY_PENDING",
+        "sourceFingerprint": "sha256:bd24f108d42f992f79fdf00f3eb84aed5517ac966a4dafbad20915583accfa7b",
+        "inputBundleSha": "sha256:e73a32b8c09f5e0431dc9978e087a6459e5dbdb9fd8b49b65c97a3e558c3c627",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+            "sourceIdentityKey": "qid_v1_d955df581b45ac8df8403eb2c68cdf330f02c4f40f8b1882b487bdbccee6e956",
+            "sourceOrdinal": 23,
+            "contentHash": "sha256:c67836682cf35bc3e40c8d853bd731d1dd135ce85b339e48098ea1ac2f23788f",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:bd24f108d42f992f79fdf00f3eb84aed5517ac966a4dafbad20915583accfa7b"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:c39b43f67918dae80cbf84c2139e1a85a0f962be265ec21d82a50bd6509e628e",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_BASIC"
+          },
+          "semanticDecision": {
+            "primaryMethod": "확률 정의식으로 미지 개수를 방정식화",
+            "decisiveStep": "x/(x+8)=2/3 → x=16",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 뜻",
+              "l4": "확률 계산"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-114",
+        "crosswalkRecordId": "M2-RPM-114",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 뜻",
+          "l4": "확률 계산"
+        },
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "mappedTemplateKeys": [
+          "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:b7261bcc08c5f0c66d71d2e07a9cf941a77eb5de9ee128bc5f98bf0cd07cd5d1"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:bd24f108d42f992f79fdf00f3eb84aed5517ac966a4dafbad20915583accfa7b",
+        "solutionHash": "sha256:c39b43f67918dae80cbf84c2139e1a85a0f962be265ec21d82a50bd6509e628e",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:0c7f2558b8256595459de220d6777342aa04bd429f0d7aaa423fe19d7f87ccea"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:bd24f108d42f992f79fdf00f3eb84aed5517ac966a4dafbad20915583accfa7b",
+        "inputBundleSha": "sha256:e73a32b8c09f5e0431dc9978e087a6459e5dbdb9fd8b49b65c97a3e558c3c627",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:e8aab7c7f1900fd6a570674d814728343883056d2da088511e4a2b356de5ff5d"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    },
+    {
+      "q": 24,
+      "questionUid": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
+      "sourceOrdinal": 24,
+      "input": {
+        "sourceIdentity": {
+          "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+          "questionUid": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
+          "sourceIdentityKey": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
+          "sourceOrdinal": 24,
+          "contentHash": "sha256:39bdcc64633600471301f89ddcf11cf90599c3b1524bd6fa6f458120d5678d3a",
+          "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+          "sourceFingerprint": "sha256:4412f54ac5dea56dd13324b48ebe3b003ba8ad3824f32f11590a7a4d36be65f7"
+        },
+        "solutionIdentity": {
+          "status": "VERIFIED_FINAL",
+          "solutionHash": "sha256:1df5f6bd9c9e28a45c533b9915936b0285287fe9a4350eb3e78f5cf5a1be9405",
+          "independentVerification": true
+        },
+        "curriculumContext": {
+          "grade": "M2",
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "subjectFamily": "",
+          "standardCourse": "중2 수학",
+          "standardUnitKey": "M2-08",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+        },
+        "semanticDecision": {
+          "primaryMethod": "3회의 독립 시행에서 정확히 한 번 성공하는 경우를 합산",
+          "decisiveStep": "3×0.2×0.8²=0.384",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          }
+        }
+      },
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "disposition": "RPM_SEMANTIC_FINAL",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "reasonCode": "CROSSWALK_L2_PROJECTION_MISMATCH",
+        "sourceFingerprint": "sha256:4412f54ac5dea56dd13324b48ebe3b003ba8ad3824f32f11590a7a4d36be65f7",
+        "inputBundleSha": "sha256:9a88b02bbf661e908425b8a36c100b68e902c8d54f878b708380f401427b1e2e",
+        "semanticInputBundle": {
+          "sourceIdentity": {
+            "sourceArchiveFile": "original/middle/m2/2final/24_향림중_2학기_기말_중2_기출.js",
+            "questionUid": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
+            "sourceIdentityKey": "qid_v1_3e5f6ee62b6360dfcec7e7abf12209154855fe6b96f2f0354112ba8b5e8391db",
+            "sourceOrdinal": 24,
+            "contentHash": "sha256:39bdcc64633600471301f89ddcf11cf90599c3b1524bd6fa6f458120d5678d3a",
+            "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "imageRefHash": "sha256:76dfdd8433dfb9cb0f51c7c40feac6c41ea6ac6ebabae6e0d1e36d5b7606ed36",
+            "sourceFingerprint": "sha256:4412f54ac5dea56dd13324b48ebe3b003ba8ad3824f32f11590a7a4d36be65f7"
+          },
+          "solutionIdentity": {
+            "status": "VERIFIED_FINAL",
+            "solutionHash": "sha256:1df5f6bd9c9e28a45c533b9915936b0285287fe9a4350eb3e78f5cf5a1be9405",
+            "independentVerification": true
+          },
+          "curriculumContext": {
+            "grade": "M2",
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "subjectFamily": "",
+            "standardCourse": "중2 수학",
+            "standardUnitKey": "M2-08",
+            "subUnitKey": "M2-08-PROBABILITY_COUNTING"
+          },
+          "semanticDecision": {
+            "primaryMethod": "3회의 독립 시행에서 정확히 한 번 성공하는 경우를 합산",
+            "decisiveStep": "3×0.2×0.8²=0.384",
+            "rpmPath": {
+              "curriculum": "2015",
+              "scope": "M2-2",
+              "majorUnit": "확률",
+              "midUnit": "확률",
+              "l3": "확률의 활용",
+              "l4": "연속 시행"
+            }
+          }
+        },
+        "rpmRecordId": "M2-RPM-118",
+        "crosswalkRecordId": "M2-RPM-118",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "mappedTemplateKeys": [
+          "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+        ],
+        "canonicalOwnerPack": "PROBABILITY_STATISTICS",
+        "bindingStatus": "MISSING",
+        "authority": {
+          "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+          "rpmViewGitBlobSha": "6cf7ea8ae8345656705940a58e94a852d71a9581",
+          "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+          "resolverGitBlobSha": "438dd30d846198875a71404e8910bc9a0c69d372"
+        },
+        "evidenceSha": "sha256:922cb079dfd46a71db920cd1bcd406332856c60d943fef5f8fc21f102a55ef6a"
+      },
+      "difficultyEvidence": {
+        "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
+        "status": "PASS",
+        "blindPassStatus": "FRESH_INDEPENDENT",
+        "sourceFingerprint": "sha256:4412f54ac5dea56dd13324b48ebe3b003ba8ad3824f32f11590a7a4d36be65f7",
+        "solutionHash": "sha256:1df5f6bd9c9e28a45c533b9915936b0285287fe9a4350eb3e78f5cf5a1be9405",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "OBSERVED_AFTER_BLIND_PASS",
+        "reviewer": "GPT_M2_RESET_CREATE_A_20260928",
+        "evidenceSha": "sha256:4f239d22508bd665f8bd730ae8a13cf81d5579d76995a64671be7ddd8cbdb63e"
+      },
+      "semanticMetaEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RELATIONAL_META_EVIDENCE_v1",
+        "sourceFingerprint": "sha256:4412f54ac5dea56dd13324b48ebe3b003ba8ad3824f32f11590a7a4d36be65f7",
+        "inputBundleSha": "sha256:9a88b02bbf661e908425b8a36c100b68e902c8d54f878b708380f401427b1e2e",
+        "candidateVisibleDuringDecision": false,
+        "crossConceptDecisions": [],
+        "conditionDecisions": [],
+        "evidenceSha": "sha256:4800ed49bc4c8f1265517f1b0e634fd0383335f14e904ecb52e64bdb664c9026"
+      },
+      "semanticResolution": {
+        "status": "FINAL",
+        "resolvablePending": false
+      },
+      "projectionDisposition": "META_ONLY",
+      "visual": {
+        "problemImage": null,
+        "problemImageStatus": "NOT_APPLICABLE",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "disposition": "VISUAL_EXEMPT",
+        "solutionSvgAction": "NONE",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+      }
+    }
+  ]
+}
