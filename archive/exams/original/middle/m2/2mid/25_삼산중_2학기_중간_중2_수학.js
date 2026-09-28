@@ -426,7 +426,7 @@ window.questionBank = [
       "30"
     ],
     "answer": "②",
-    "solution": "[키포인트] 정사각형의 대각선은 서로 수직이등분하고, 꼭지각을 이등분한다.\n$BD=10\\mathrm{cm}$이고 두 대각선은 서로 이등분하므로 $AO=\\dfrac12BD=5\\mathrm{cm}$이다. 따라서 $x=5$이다.\n$P$는 대각선 $AC$ 위에 있으므로 $DO\\perp OP$이다. $\\triangle DOP$에서 $\\angle DOP=90^\\circ$, $\\angle DPO=55^\\circ$이므로 $\\angle ODP=35^\\circ$이다.\n정사각형의 대각선 $BD$는 $\\angle ADC=90^\\circ$를 이등분하므로 $\\angle ODC=45^\\circ$이다. 따라서 $y=\\angle PDC=45^\\circ-35^\\circ=10^\\circ$이다.\n그러므로 $x+y=5+10=15$이고 정답은 ②이다.",
+    "solution": "[키포인트] 정사각형의 두 대각선은 길이가 같고 서로 수직이등분하며, 꼭지각을 이등분한다.\n정사각형의 두 대각선은 길이가 같으므로 $AC=BD=10\\mathrm{cm}$이다. 또 두 대각선은 서로 이등분하므로 $AO=\\dfrac12AC=5\\mathrm{cm}$이다. 따라서 $x=5$이다.\n$P$는 대각선 $AC$ 위에 있으므로 $DO\\perp OP$이다. $\\triangle DOP$에서 $\\angle DOP=90^\\circ$, $\\angle DPO=55^\\circ$이므로 $\\angle ODP=35^\\circ$이다.\n정사각형의 대각선 $BD$는 $\\angle ADC=90^\\circ$를 이등분하므로 $\\angle ODC=45^\\circ$이다. 따라서 $y=\\angle PDC=45^\\circ-35^\\circ=10^\\circ$이다.\n그러므로 $x+y=5+10=15$이고 정답은 ②이다.",
     "image": "assets/images/25_삼산중_2학기_중간_중2_수학/q13.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
