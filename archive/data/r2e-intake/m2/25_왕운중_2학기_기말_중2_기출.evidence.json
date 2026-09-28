@@ -1,879 +1,565 @@
 {
-  "schema": "JS_ARCHIVE_RESET_CREATE_EVIDENCE_v1",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
+  "priorityGroup": "M2_PRIORITY4_R1_20260928",
+  "priorityLane": "C",
+  "fullR1Recheck": "RPM_PRIMARY_SVG_PROBABILITY_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "25_왕운중_2학기_기말_중2_기출.js",
   "examUid": "25_왕운중_2학기_기말_중2_기출",
   "grade": "M2",
-  "lane": "A",
-  "stage": "CREATE",
-  "sourcePath": "archive/exams/original/middle/m2/2final/25_왕운중_2학기_기말_중2_기출.js",
+  "lane": "C",
+  "stage": "R1",
   "sourceBlobSha": "20f83d8036369c46c0c95c10de6bbcf3ff9e4925",
   "totalQuestions": 23,
-  "authority": {
-    "mainCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "rulesIndexGitBlobSha": "456107b5649cd8944005caee620c685ed2a4320b",
-    "manifestGitBlobSha": "4f68e5617f9022aa875419c20cdd58e8d4856056",
-    "studentSolutionRuleGitBlobSha": "ee0d220ee496ea5188493d102e3ff27982cf43e7",
-    "questionLayoutRuleGitBlobSha": "a3caaf556fc4e7067f2bbfd6f93aa1a390a7a17e",
-    "correctionProtocolGitBlobSha": "cf16d880509ac89c02b01e02f6560f2ef47105ef",
-    "visualSkillGitBlobSha": "8edf54ca2c42c35cf913851ccaecc29a615cd516",
-    "resolverGitBlobSha": "a7961aca5f7b8cdf0a4bdf1e0c939c82ca67525e",
-    "crosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
-    "registryIndexGitBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
-    "difficultyRuleGitBlobSha": "fa7735b0a79fa9084ec726ef24a82a4eaaf7dca8",
-    "r2eV3GitBlobSha": "4a72eae402334f22ce5c6d6805a674b8a4614811"
-  },
+  "mainReadSha": "053acd83b34cd6e229b0462eb714fdebfd220618",
+  "intakeReadSha": "3b74efd8abec4fd7ea108268293626f91bc86bc5",
   "sourceIdentity": {
-    "coverage": "23/23",
-    "sourceTextExactParityStatus": "PASS",
-    "sourceTextExactParityPassCount": 23,
-    "choicesExactParityStatus": "PASS",
-    "choicesExactParityPassCount": 23,
-    "answerExactParityStatus": "PASS",
-    "answerExactParityPassCount": 23,
-    "problemImageRefParityStatus": "PASS",
-    "problemImageRefParityPassCount": 23,
-    "sourceAssetFolderInventory": "18/18",
-    "referencedAssetCoverage": "17/17",
-    "sourceAssetsVisualReview": "17/17 PASS (16 PNG + 1 protected source SVG)",
-    "sourceVsIntakeAssetGitBlobParity": "18/18 PASS",
-    "unreferencedSourceAssets": [
-      "q2.png"
-    ]
+    "status": "PASS",
+    "contentExact": "23/23 PASS",
+    "choicesExact": "23/23 PASS",
+    "answerExact": "23/23 PASS",
+    "imageRefExact": "23/23 PASS",
+    "referencedAssetsExact": "17/17 PASS",
+    "assetFolderBytesExact": "18/18 PASS"
+  },
+  "math": {
+    "denominator": 23,
+    "PASS": 23,
+    "REPAIR": 1,
+    "HOLD": 0,
+    "repairedQuestions": [
+      19
+    ],
+    "probabilityConvention": "MIDDLE_SCHOOL_DEFAULT_INDEPENDENT_WHEN_NO_SEPARATE_DEPENDENCY_CONDITION",
+    "q19": "1-(3/5)(1-x)=4/5 => x=2/3, answer ①"
+  },
+  "solution": {
+    "denominator": 23,
+    "KEEP": 20,
+    "REPAIR": 3,
+    "HOLD": 0,
+    "repairedQuestions": [
+      8,
+      11,
+      19
+    ],
+    "repairs": {
+      "8": "replace coordinate-style wording with right-triangle/Pythagorean curriculum language",
+      "11": "normalize statement marker and explicit triangle notation",
+      "19": "remove false independence-missing hold and restore valid complement solution"
+    },
+    "reproducibility": "23/23 PASS",
+    "microLayout": "23/23 PASS",
+    "curriculumTerminology": "23/23 PASS",
+    "studentLanguage": "23/23 PASS"
   },
   "questionLayout": {
     "denominator": 23,
     "status": "PASS",
-    "KEEP": 20,
-    "REFORMAT": 3,
-    "HOLD": 0,
-    "modifiedQuestionIds": [
+    "sourceTextExactParity": "23/23 PASS",
+    "choicesExactParity": "23/23 PASS",
+    "newRepairs": 0,
+    "retainedSubjective2Up": [
       21,
       22,
       23
     ],
-    "knownQuestionLayoutRepairPending": 0,
-    "questionLayoutHoldCount": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-    "items": [
-      {
-        "questionUid": "qid_v1_29031166f1a93f82e220c9f0d80be044fc02ace7ddeaff39424c089470ec46ea",
-        "sourceOrdinal": 1,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_41dfb716e19468ae8fb6a4c5fa0c89ec09351599d1a48da23eb525ae5c54c669",
-        "sourceOrdinal": 2,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_81b6dca47a2640a0e30775446f80877a7300902a47642ee28cb062a20d770e9b",
-        "sourceOrdinal": 3,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
-        "sourceOrdinal": 4,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_278a9dcc74a22697cf4025538e8724cdb8f52eb88603dc16bd47c6757f641bc1",
-        "sourceOrdinal": 5,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_43caae9dae2c8845b031deae8a5c74f86885c05f23725c9c31345d34757e7af9",
-        "sourceOrdinal": 6,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_4f0fc673641b28051cb08d00e90bef93e245ee63668c839f29f27d190c4a063d",
-        "sourceOrdinal": 7,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_3c9afa4462e122cd55647daf7769918695b20db216acb7cedfceec782bc90b66",
-        "sourceOrdinal": 8,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
-        "sourceOrdinal": 9,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5",
-        "sourceOrdinal": 10,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
-        "sourceOrdinal": 11,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_5cd55b089240d3105a07587bcefa2fe2e8efff2f0cf8eba2f67140fc840ac41f",
-        "sourceOrdinal": 12,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_bf7509dd60fbef2cdf6dccbbac69000a349c35a2db860afb76dc111dc3ffc174",
-        "sourceOrdinal": 13,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_5c0eaa557aedb391a5809eb8667183601b5ed3b5ecfdf7051d8ecbc69483080a",
-        "sourceOrdinal": 14,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_14964aa414c4a323f3f35043db25a92be3fca47503177234479c311475b7e868",
-        "sourceOrdinal": 15,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_e274a8114cab357dcb289d2122734b0d32c7723626d097d4808f17a3657bfe3b",
-        "sourceOrdinal": 16,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_79bf915d15b1c0d15044772c4a4e497080a0adeaff64c05edd38b253e7c5770a",
-        "sourceOrdinal": 17,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_f457aaf77454247a1b80f7682dbd8e0b4a12bc1aafd5148006f04230bac37a09",
-        "sourceOrdinal": 18,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_7ae33b94c82f02e93ff48e0d24e27e3dc5351640d9db4c017bd9afb899c6eb00",
-        "sourceOrdinal": 19,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_081f63cdee7859c487ee2648b2b158de8e4aee6d167db02f8ca8337ec81b661d",
-        "sourceOrdinal": 20,
-        "finalDisposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "changedFields": [],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_68f7cbfadc17beac0b6768f25f35afd9efb3e422140172746617264d804a24db",
-        "sourceOrdinal": 21,
-        "finalDisposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "changedFields": [
-          "layoutTag"
-        ],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_ebe9e108b62b2286b7acd08cc9283fcf364e023225dad3bc7f5af5d989d34d6d",
-        "sourceOrdinal": 22,
-        "finalDisposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "changedFields": [
-          "layoutTag"
-        ],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "SOURCE_PROBLEM_IMAGE_EXACT",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      {
-        "questionUid": "qid_v1_c96119ab90ce4e35851da8e3322a9f3ec7c8b5049ec645b2a730a291843d8c5f",
-        "sourceOrdinal": 23,
-        "finalDisposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "changedFields": [
-          "layoutTag"
-        ],
-        "sourceTextExactParity": "PASS",
-        "choicesExactParity": "PASS",
-        "assetStatus": "NOT_APPLICABLE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      }
-    ]
-  },
-  "solution": {
-    "denominator": 23,
-    "solutionSelfCheckStatus": "PASS",
-    "KEEP": 22,
-    "REPAIR": 1,
-    "TRUE_HOLD": 1,
-    "trueHoldQuestions": [
-      19
-    ],
-    "changedSolutionQuestions": [
-      19
-    ],
-    "knownSolutionRepairPending": 0,
-    "items": [
-      {
-        "questionUid": "qid_v1_29031166f1a93f82e220c9f0d80be044fc02ace7ddeaff39424c089470ec46ea",
-        "sourceOrdinal": 1,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_41dfb716e19468ae8fb6a4c5fa0c89ec09351599d1a48da23eb525ae5c54c669",
-        "sourceOrdinal": 2,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_81b6dca47a2640a0e30775446f80877a7300902a47642ee28cb062a20d770e9b",
-        "sourceOrdinal": 3,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
-        "sourceOrdinal": 4,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_278a9dcc74a22697cf4025538e8724cdb8f52eb88603dc16bd47c6757f641bc1",
-        "sourceOrdinal": 5,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_43caae9dae2c8845b031deae8a5c74f86885c05f23725c9c31345d34757e7af9",
-        "sourceOrdinal": 6,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_4f0fc673641b28051cb08d00e90bef93e245ee63668c839f29f27d190c4a063d",
-        "sourceOrdinal": 7,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_3c9afa4462e122cd55647daf7769918695b20db216acb7cedfceec782bc90b66",
-        "sourceOrdinal": 8,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
-        "sourceOrdinal": 9,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5",
-        "sourceOrdinal": 10,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
-        "sourceOrdinal": 11,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_5cd55b089240d3105a07587bcefa2fe2e8efff2f0cf8eba2f67140fc840ac41f",
-        "sourceOrdinal": 12,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_bf7509dd60fbef2cdf6dccbbac69000a349c35a2db860afb76dc111dc3ffc174",
-        "sourceOrdinal": 13,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_5c0eaa557aedb391a5809eb8667183601b5ed3b5ecfdf7051d8ecbc69483080a",
-        "sourceOrdinal": 14,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_14964aa414c4a323f3f35043db25a92be3fca47503177234479c311475b7e868",
-        "sourceOrdinal": 15,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_e274a8114cab357dcb289d2122734b0d32c7723626d097d4808f17a3657bfe3b",
-        "sourceOrdinal": 16,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_79bf915d15b1c0d15044772c4a4e497080a0adeaff64c05edd38b253e7c5770a",
-        "sourceOrdinal": 17,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_f457aaf77454247a1b80f7682dbd8e0b4a12bc1aafd5148006f04230bac37a09",
-        "sourceOrdinal": 18,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_7ae33b94c82f02e93ff48e0d24e27e3dc5351640d9db4c017bd9afb899c6eb00",
-        "sourceOrdinal": 19,
-        "disposition": "REPAIR_AND_TRUE_HOLD",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "SOURCE_UNDERSPECIFIED_TRUE_HOLD",
-        "sourceAnswerPreserved": true,
-        "reason": "독립 조건 누락을 fresh 검산에서 확인; 해설은 추가 가정 여부를 명시"
-      },
-      {
-        "questionUid": "qid_v1_081f63cdee7859c487ee2648b2b158de8e4aee6d167db02f8ca8337ec81b661d",
-        "sourceOrdinal": 20,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_68f7cbfadc17beac0b6768f25f35afd9efb3e422140172746617264d804a24db",
-        "sourceOrdinal": 21,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_ebe9e108b62b2286b7acd08cc9283fcf364e023225dad3bc7f5af5d989d34d6d",
-        "sourceOrdinal": 22,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      },
-      {
-        "questionUid": "qid_v1_c96119ab90ce4e35851da8e3322a9f3ec7c8b5049ec645b2a730a291843d8c5f",
-        "sourceOrdinal": 23,
-        "disposition": "KEEP",
-        "solutionSelfCheckStatus": "PASS",
-        "mathematicalStatus": "PASS",
-        "sourceAnswerPreserved": true,
-        "reason": "fresh independent verification PASS"
-      }
-    ]
+    "knownRepairPending": 0,
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "visual": {
     "denominator": 23,
     "sourceAssetReview": "17/17 PASS",
-    "solutionSvgCreated": 0,
-    "solutionSvgModified": 0,
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "requiredVisualMissing": 0,
-    "knownVisualRepairPending": 0,
-    "routerStatus": "PASS",
+    "ADD": 10,
+    "REBUILD": 0,
+    "REPAIR": 0,
+    "EXEMPT": 13,
+    "HOLD": 0,
+    "addedQuestions": [
+      3,
+      4,
+      8,
+      9,
+      11,
+      12,
+      17,
+      20,
+      21,
+      22
+    ],
     "items": [
       {
-        "questionUid": "qid_v1_29031166f1a93f82e220c9f0d80be044fc02ace7ddeaff39424c089470ec46ea",
         "sourceOrdinal": 1,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q1.png",
-        "sourceAssetGitBlobSha": "a64213b7f2d97ca7f5453efb57d1ac821c0431a8",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "single direct similarity ratio",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_41dfb716e19468ae8fb6a4c5fa0c89ec09351599d1a48da23eb525ae5c54c669",
         "sourceOrdinal": 2,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q2.svg",
-        "sourceAssetGitBlobSha": "ef65ef67b36b2d4ac0c26bd7878f36226de28a0b",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "algebraic area-to-length ratio after source A-series diagram",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_81b6dca47a2640a0e30775446f80877a7300902a47642ee28cb062a20d770e9b",
         "sourceOrdinal": 3,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "D on AB",
+          "AC=12",
+          "BC=8",
+          "DC=6",
+          "AA similarity ABC~CBD"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q3.png",
-        "sourceAssetGitBlobSha": "0d362d2396840c547d66673cadec121ccb8bc85b",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q3-solution.svg",
+        "finalSvgGitBlobSha": "c503fbe1b6827747f9792b379432605c45be1a61",
+        "finalSvgSha256": "sha256:e72d2625585ab8ef95d4089c5585a5574262e46fe5e629f1634e9588fad4bddb",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "D on AB",
+          "AC=12",
+          "BC=8",
+          "DC=6",
+          "AA similarity ABC~CBD"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_8816278d03ba533549c076149c15a7d7349754434514d94e93dda3d0dc907e60",
         "sourceOrdinal": 4,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "49 cm stick",
+          "60 cm stick shadow",
+          "110 m half-base",
+          "70 m outside shadow",
+          "comparison length 180 m"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q4.png",
-        "sourceAssetGitBlobSha": "c44963f3e1cb0f5f35ab029cc9ce651c7a683779",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q4-solution.svg",
+        "finalSvgGitBlobSha": "f52d1f821cbb82f6bcae1160ec0aecf83a13c73f",
+        "finalSvgSha256": "sha256:e6a11e0c65a1acc3ba2199d0ad07e7a609e76adb99e3d27278b728c11b3d93fe",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "49 cm stick",
+          "60 cm stick shadow",
+          "110 m half-base",
+          "70 m outside shadow",
+          "comparison length 180 m"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_278a9dcc74a22697cf4025538e8724cdb8f52eb88603dc16bd47c6757f641bc1",
         "sourceOrdinal": 5,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q5.png",
-        "sourceAssetGitBlobSha": "9904ce8b4ea1177e5cd4a269c9050bd260283e27",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "source figure already exposes all decisive parallel-segment data with no derived construction",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_43caae9dae2c8845b031deae8a5c74f86885c05f23725c9c31345d34757e7af9",
         "sourceOrdinal": 6,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q6.png",
-        "sourceAssetGitBlobSha": "05e16e08704af0d906a03ef6bb35590ad659eaba",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "single midpoint plus centroid 2:1 computation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_4f0fc673641b28051cb08d00e90bef93e245ee63668c839f29f27d190c4a063d",
         "sourceOrdinal": 7,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q7.png",
-        "sourceAssetGitBlobSha": "16c7761f7c2a493693681e3b754f066c0a0ed41f",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "single Pythagorean side calculation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_3c9afa4462e122cd55647daf7769918695b20db216acb7cedfceec782bc90b66",
         "sourceOrdinal": 8,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "right triangle legs 23 and 7",
+          "CD^2=578",
+          "semicircle area 289pi/4"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q8.png",
-        "sourceAssetGitBlobSha": "04d45f54ccb7065d604b733e0542ca5c324f1721",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q8-solution.svg",
+        "finalSvgGitBlobSha": "f425f52ad5ebbe7aca1956a3022a43bff5e226fb",
+        "finalSvgSha256": "sha256:08e991726823e0f91183312d8171dd68302edb5b35b1438947be787b469812c7",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "right triangle legs 23 and 7",
+          "CD^2=578",
+          "semicircle area 289pi/4"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_7dc4026e211e0486d2db8c02619dce566eeaa63e54e2f49b728081fb3354d1d0",
         "sourceOrdinal": 9,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "D,E,F midpoints",
+          "midpoint theorem",
+          "two SSS congruence checks"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q9.png",
-        "sourceAssetGitBlobSha": "180d6616bc3e85c03d0953a37991c5eff73d322d",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q9-solution.svg",
+        "finalSvgGitBlobSha": "1638bd42f7e9fa64f49b080ddad68dce613fca25",
+        "finalSvgSha256": "sha256:ed58f72740a46fbac531fe0295998ef68a80713ee34cf452f3acf38dd8a9e63f",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "D,E,F midpoints",
+          "midpoint theorem",
+          "two SSS congruence checks"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_ff68809eae1dff65f2a6e7a8443c3d42f3fed9f299ae5417e5e1b876014baaa5",
         "sourceOrdinal": 10,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q10.png",
-        "sourceAssetGitBlobSha": "37ccd36a86f63d2904a8004c48ec620b265f6162",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "textual converse and rectangle side-ratio judgement",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_0a9c48e55c5a0d94082e2fe352c1a9d450ad0c16db0baccd66889876f74c34e6",
         "sourceOrdinal": 11,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "midpoints D,E,F",
+          "centroid G",
+          "H=AD intersect FE",
+          "IJ through G parallel BC",
+          "AH:HG=3:1",
+          "area ratios"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q11.png",
-        "sourceAssetGitBlobSha": "64dffea789738bfc454294485b15d2d60157be2e",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q11-solution.svg",
+        "finalSvgGitBlobSha": "26c3cad951296675699fa5691df00ed42310f9ca",
+        "finalSvgSha256": "sha256:14759a962ddcea7576c78f54bf91fb8a3e4a9880afe4d5de7817feca0c8962fd",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "midpoints D,E,F",
+          "centroid G",
+          "H=AD intersect FE",
+          "IJ through G parallel BC",
+          "AH:HG=3:1",
+          "area ratios"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_5cd55b089240d3105a07587bcefa2fe2e8efff2f0cf8eba2f67140fc840ac41f",
         "sourceOrdinal": 12,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "O,A,B collinear",
+          "O,D,E collinear",
+          "AD parallel BE",
+          "OA:OB=20:70=2:7"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q12.png",
-        "sourceAssetGitBlobSha": "61f18a91d36fc7e9069948647942a35f00214a83",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q12-solution.svg",
+        "finalSvgGitBlobSha": "2c59c00290e761e9ba8d400e99a0319ba08bfc49",
+        "finalSvgSha256": "sha256:71639e3e519966f77340f0509c509c21a96cadd79006f184d6689f0821af02ec",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "O,A,B collinear",
+          "O,D,E collinear",
+          "AD parallel BE",
+          "OA:OB=20:70=2:7"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_bf7509dd60fbef2cdf6dccbbac69000a349c35a2db860afb76dc111dc3ffc174",
         "sourceOrdinal": 13,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "direct counting",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_5c0eaa557aedb391a5809eb8667183601b5ed3b5ecfdf7051d8ecbc69483080a",
         "sourceOrdinal": 14,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
-        "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
-        ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q14.png",
-        "sourceAssetGitBlobSha": "6b3ef3c0a7c66e20269323d100463b5d7754b3d4",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "direct product rule",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_14964aa414c4a323f3f35043db25a92be3fca47503177234479c311475b7e868",
         "sourceOrdinal": 15,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "ordered counting",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_e274a8114cab357dcb289d2122734b0d32c7723626d097d4808f17a3657bfe3b",
         "sourceOrdinal": 16,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "probability properties",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_79bf915d15b1c0d15044772c4a4e497080a0adeaff64c05edd38b253e7c5770a",
         "sourceOrdinal": 17,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "AA card pass",
+          "SAS card pass",
+          "two insufficient cards",
+          "probability 2/4"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q17.png",
-        "sourceAssetGitBlobSha": "ddcfb07629533329d32cd67c5a2c645bbb4a7e74",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q17-solution.svg",
+        "finalSvgGitBlobSha": "a687da8d4228735390067a5daa7871e22b1c9ebc",
+        "finalSvgSha256": "sha256:718005953abcd09250e2bdccc67d9693648faa9cddd2373e60903e2c87f0d573",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "AA card pass",
+          "SAS card pass",
+          "two insufficient cards",
+          "probability 2/4"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_f457aaf77454247a1b80f7682dbd8e0b4a12bc1aafd5148006f04230bac37a09",
         "sourceOrdinal": 18,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only union counting",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_7ae33b94c82f02e93ff48e0d24e27e3dc5351640d9db4c017bd9afb899c6eb00",
         "sourceOrdinal": 19,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only complement probability equation",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_081f63cdee7859c487ee2648b2b158de8e4aee6d167db02f8ca8337ec81b661d",
         "sourceOrdinal": 20,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "target one left and one up",
+          "die 3 left",
+          "die 1 up",
+          "orders (1,3),(3,1)",
+          "2/36"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q20.png",
-        "sourceAssetGitBlobSha": "ba77e4245f1f746b5d756605b96e98bc6e1f9e36",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q20-solution.svg",
+        "finalSvgGitBlobSha": "582860fdcccc2ec17b31a4c5fc729ce29433b2ad",
+        "finalSvgSha256": "sha256:ed35f42b863e671465394e2cad9dd7f60a593ff3781b441cc361103bec174417",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "target one left and one up",
+          "die 3 left",
+          "die 1 up",
+          "orders (1,3),(3,1)",
+          "2/36"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_68f7cbfadc17beac0b6768f25f35afd9efb3e422140172746617264d804a24db",
         "sourceOrdinal": 21,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "OA=5",
+          "OB=12",
+          "AB=13",
+          "OC perpendicular AB",
+          "OC=60/13"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q21.png",
-        "sourceAssetGitBlobSha": "37e08c883eddf59c336e10e5ad70b260fc5924d5",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q21-solution.svg",
+        "finalSvgGitBlobSha": "6c549506441f02f0fb6eeb47037285e1e0f95399",
+        "finalSvgSha256": "sha256:32a77cf31c52e206863469cf85175dfa9fba933f05515597501fd1f68dbc6aea",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "OA=5",
+          "OB=12",
+          "AB=13",
+          "OC perpendicular AB",
+          "OC=60/13"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_ebe9e108b62b2286b7acd08cc9283fcf364e023225dad3bc7f5af5d989d34d6d",
         "sourceOrdinal": 22,
-        "v1": "VISUAL_EXEMPT_DUPLICATE_SOURCE_PROBLEM_VISUAL",
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1": "PASS_FROZEN_BEFORE_BUILD",
         "expectedFacts": [
-          "source problem visual already carries decisive objects/labels/relations"
+          "regular hexagon counterclockwise four-step displacement",
+          "sum 4 or 10",
+          "6 favorable ordered pairs"
         ],
-        "sourceAsset": "assets/images/25_왕운중_2학기_기말_중2_기출/q22.png",
-        "sourceAssetGitBlobSha": "9a1c161ad84fe789914dd2ed54d2c07e99130377",
-        "build": "NOT_REQUIRED_BY_V1_EXEMPT",
-        "v2": "NOT_APPLICABLE",
-        "v3": "SOURCE_VISUAL_PARITY_PASS",
-        "reason": "separate solution visual would duplicate the already-visible exact source visual"
+        "builder": "DETERMINISTIC_LITERAL_SVG",
+        "candidateOnly": true,
+        "finalPath": "archive/assets/images/25_왕운중_2학기_기말_중2_기출/q22-solution.svg",
+        "finalSvgGitBlobSha": "f3869de948459a9e88c7f39c5dc52deb96be9321",
+        "finalSvgSha256": "sha256:45345b212caae23038845a9308f6075f34d86a8e589d7476664233c2185c95f5",
+        "v2ArtifactOnly": "PASS",
+        "observedFacts": [
+          "regular hexagon counterclockwise four-step displacement",
+          "sum 4 or 10",
+          "6 favorable ordered pairs"
+        ],
+        "v3Parity": "PASS",
+        "solutionVisualDecisiveStepParity": "PASS",
+        "styleStaticPublicationXmlReference": "PASS",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       },
       {
-        "questionUid": "qid_v1_c96119ab90ce4e35851da8e3322a9f3ec7c8b5049ec645b2a730a291843d8c5f",
         "sourceOrdinal": 23,
-        "v1": "VISUAL_NOT_REQUIRED_TEXT_ONLY",
-        "build": "NOT_REQUIRED",
-        "v2": "NOT_APPLICABLE",
-        "v3": "NOT_APPLICABLE"
+        "disposition": "EXEMPT",
+        "visualRequirement": "VISUAL_EXEMPT",
+        "reason": "text-only two-bag probability counting",
+        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
       }
     ],
+    "knownVisualRepairPending": 0,
+    "requiredVisualMissing": 0,
+    "svgRuleComplianceStatus": "PASS_V1_EXPECTED_BUILD_V2_V3",
     "renderStatus": "NOT_RUN_CODEX_HANDOFF"
   },
   "meta": {
     "denominator": 23,
-    "status": "PASS_WITH_GENUINE_SOURCE_HOLD",
-    "EXISTING_REUSE": 8,
-    "RPM_PRIMARY_MIGRATION_GAP": 14,
-    "TRUE_HOLD": 1,
-    "knownMetaRepairPending": 0,
-    "decisionIsolation": "PASS",
-    "sameStageCandidateFieldsUsed": false,
-    "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-    "resolverExecution": "CONTRACT_EQUIVALENT_STATIC_PROJECTION; official Node CLI NOT_RUN_CONNECTOR_RUNTIME"
+    "rpmSemanticFinal": 23,
+    "KEEP_ACTIVE_REUSE": 8,
+    "META_ONLY_PROJECTION": 15,
+    "HOLD": 0,
+    "repairedQuestions": [
+      19
+    ],
+    "genuineUnresolved": [],
+    "resolvablePending": 0,
+    "projectionOnlyQuestions": [
+      6,
+      7,
+      8,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "metaSidecarSha256": "sha256:a07ec1ef93fcf93914e153afdce89cad63a98187220199773f838c8787fc0edf"
   },
-  "createSelfCheck": {
-    "CREATE_SELF_CHECK_PASS": true,
-    "solutionSelfCheckStatus": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "questionLayoutStatus": "PASS",
-    "sourceTextExactParityStatus": "PASS",
-    "choicesExactParityStatus": "PASS",
-    "knownSolutionRepairPending": 0,
-    "knownVisualRepairPending": 0,
-    "knownLayoutRepairPending": 0,
-    "knownMetaRepairPending": 0,
-    "requiredVisualMissing": 0,
-    "genuineHoldCount": 1,
-    "basicIntegrityStatus": "PASS",
-    "syntaxCompileStatus": "PASS",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  }
+  "difficulty": {
+    "distribution": {
+      "1": 4,
+      "2": 8,
+      "3": 9,
+      "4": 2,
+      "5": 0
+    },
+    "changedFromCreate": [
+      19
+    ],
+    "q19": "UNKNOWN to 3 after probability false-hold removal"
+  },
+  "basicIntegrity": {
+    "questionCount": "23/23",
+    "idSequence": "PASS",
+    "duplicateId": "0",
+    "protectedSourceDrift": "0",
+    "jsonQuestionBankParse": "PASS",
+    "node": "NOT_RUN_CONNECTOR_RUNTIME",
+    "controlChars": "PASS",
+    "latexBasic": "PASS",
+    "assetRefs": "PASS"
+  },
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      3,
+      4,
+      8,
+      9,
+      11,
+      12,
+      17,
+      19,
+      20,
+      21,
+      22
+    ],
+    "axes": [
+      "VISUAL_REQUIREMENT_FALSE_EXEMPT",
+      "PROBABILITY_FALSE_SOURCE_HOLD_Q19",
+      "CURRICULUM_TERMINOLOGY_Q8",
+      "MICRO_NOTATION_Q11"
+    ]
+  },
+  "validator": {
+    "status": "STATIC_CONTRACT_VALIDATION_PASS_CONNECTOR_RUNTIME",
+    "rpmSemanticUnresolved": 0,
+    "basicHardHoldCount": 0,
+    "visualHoldCount": 0,
+    "projectionMetaOnlyCount": 15,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "snapshot": {
+    "status": "READY_CANDIDATE_BY_CURRENT_RULE_CONDITIONS",
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
+  },
+  "render": "NOT_RUN_CODEX_HANDOFF"
 }
