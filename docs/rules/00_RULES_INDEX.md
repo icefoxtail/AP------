@@ -347,6 +347,8 @@ CREATE와 모든 REVIEW 단계는 최종 SVG bytes의 실제 좌표/위상에서
 이며 render escalation 조건이 발생한 경우 targeted render/recheck PASS까지 필요하다.
 
 2026-09-28 negative regression fixtures:
+> **Negative Sample authority (2026-09-28 repair closure):** 아래 4건의 실패본은 `archive/fixtures/visual-negative-regressions/2026-09-28/README.md`와 같은 폴더의 frozen SVG를 사용한다. 현재 production `archive/assets/images/...` SVG는 정상 수리본이며 Negative Sample authority로 사용하지 않는다.
+
 `24_신흥중_2학기_중간_중2_수학 q5`(각도값-꼭짓점 귀속),
 `25_삼산중_2학기_기말_중2_기출 q12`(점/길이 라벨 겹침),
 `25_삼산중_2학기_중간_중2_수학 q13`(D의 각도값 귀속),

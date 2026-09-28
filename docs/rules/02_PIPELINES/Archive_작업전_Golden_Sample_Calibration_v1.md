@@ -136,6 +136,8 @@ Negative Sample은 “이렇게 만들지 말라”는 regression fixture이며,
 발견된 새 false PASS는 원인이 일반화 가능하면 이 문서 또는 해당 domain rule에 추가한다.
 
 ### CURRENT visual negative regression set — 2026-09-28
+> **Negative Sample authority (2026-09-28 repair closure):** 아래 4건의 실패본은 `archive/fixtures/visual-negative-regressions/2026-09-28/README.md`와 같은 폴더의 frozen SVG를 사용한다. 현재 production `archive/assets/images/...` SVG는 정상 수리본이며 Negative Sample authority로 사용하지 않는다.
+
 
 1. `24_신흥중_2학기_중간_중2_수학 q5`
    - 각도 값은 맞지만 실제 꼭짓점/각 영역 귀속 실패
