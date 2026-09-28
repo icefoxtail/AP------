@@ -12,6 +12,18 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
+### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
+
+**Archive 2.0 / JS Archive의 분석·제작·수정·검수·해설·조판·SVG·Meta·난이도 등 품질 작업은 실제 target 작업 전에 `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`를 적용한다.**
+
+기본 순서는 `현재 라우터/생명주기 → 기존 inventory 복원 → 최신 main/정본 → Golden Sample calibration → Negative Sample calibration → 실제 작업`이다.
+
+- 해설·SVG·조판·학생용 표현 작업은 같은 학년/과목/작업유형의 고품질 실물 2~3개를 먼저 보고 품질 눈높이를 맞춘다.
+- 정답·수학·difficulty·RPM/L3/L4/Meta/CrossConcept 같은 독립 의미 판정은 **target blind decision을 먼저 동결한 뒤** sample과 비교한다. sample의 정답/key/난이도를 target 판정 힌트로 사용하지 않는다.
+- Golden Sample은 source/canonical authority가 아니라 quality bar다. 새 결함이 발견되면 즉시 강등할 수 있다.
+- 관련 Negative Sample을 함께 보고 이미 확인된 false PASS를 반복하지 않는다.
+- 학생 노출 품질과 무관한 순수 Git/manifest/기계적 정리 작업은 `EXAM_SAMPLE_NOT_APPLICABLE`로 기록할 수 있다.
+
 ### QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY 선행 규칙
 
 **모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
