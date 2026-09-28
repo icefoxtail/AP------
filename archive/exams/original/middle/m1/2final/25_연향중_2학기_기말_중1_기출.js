@@ -60,7 +60,20 @@ window.questionBank = [
     "subUnitKey": "M1-05-BASIC_FIGURE",
     "subUnit": "점·선·면과 각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+    "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_PAIR",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "l3Disposition": "EXISTING_L3_REUSE",
+    "l4Disposition": "ASSIGNED",
+    "resolverEvidenceSha": "sha256:484501079d31ab68813abe742124421432c46440dfed61ba1963e330ac53fb29",
+    "difficultyEvidenceSha": "sha256:42aa166ed0cb0c8a059f046ef27de4b7c08f091c8fe7a13df4a5672c350ab7e2"
   },
   {
     "id": 3,
@@ -899,6 +912,7 @@ window.questionBank = [
     "l3Disposition": "EXISTING_L3_REUSE",
     "l4Disposition": "ASSIGNED",
     "resolverEvidenceSha": "sha256:03d83aee04a7a546b5f2ed6139deb01eebc9fda56cc93acf5295d214f28b5bf0",
-    "difficultyEvidenceSha": "sha256:dbfbf68f2a94f48e52f6c5727561feb5ce105300d16341b859c766e12161956e"
+    "difficultyEvidenceSha": "sha256:dbfbf68f2a94f48e52f6c5727561feb5ce105300d16341b859c766e12161956e",
+    "solutionReminderImagePolicy": "STRIP_INLINE"
   }
 ];
