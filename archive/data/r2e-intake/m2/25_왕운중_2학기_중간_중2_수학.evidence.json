@@ -1,847 +1,640 @@
 {
-  "schema": "JS_ARCHIVE_CREATE_SELF_CHECK_EVIDENCE_v1",
+  "schema": "JS_ARCHIVE_R1_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
+  "examUid": "25_왕운중_2학기_중간_중2_수학",
   "examFile": "25_왕운중_2학기_중간_중2_수학.js",
-  "denominator": 25,
+  "grade": "M2",
+  "sourceLane": "A",
+  "lane": "C",
+  "stage": "R1",
+  "inputCommit": "44b64a6666ee208df58e54927b9377df828f80a5",
   "sourceAuthority": {
     "branch": "work/rebuild/m2-full-20260928-source",
     "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
     "examBlobSha": "86cbde21edbf9912f9c7775e08f88a88b9709721"
   },
+  "currentRuleAuthority": {
+    "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+    "visualRouterGitBlobSha": "8edf54ca2c42c35cf913851ccaecc29a615cd516",
+    "rpmResolverGitBlobSha": "779aa2f9b78997505104492cf2adfe07f520a475"
+  },
+  "denominator": 25,
   "sourceParity": {
     "content": "25/25 PASS",
     "choices": "25/25 PASS",
     "answer": "25/25 PASS",
-    "problemImageRef": "25/25 PASS",
-    "referencedProblemVisuals": "21/21 VISUALLY_VERIFIED",
-    "assetFolderGitBlobParity": "23/23 SOURCE==INTAKE"
+    "imageRefs": "25/25 PASS",
+    "referencedProblemAssets": "21/21 GIT_BLOB_EXACT_PASS",
+    "drift": 0
+  },
+  "math": {
+    "PASS": 25,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "independentVerification": "ALL_25_RECALCULATED_FROM_PROTECTED_SOURCE_AND_CURRENT_FINAL_SOLUTION"
+  },
+  "reproducibility": {
+    "PASS": 23,
+    "FIX": [
+      12,
+      17
+    ],
+    "HOLD": 0
+  },
+  "smallBoard": {
+    "KEEP": 23,
+    "POLISH": [
+      12,
+      17
+    ],
+    "REFORMAT": 0,
+    "HOLD": 0,
+    "repairs": {
+      "12": "96=24r 결정식을 직접 전개",
+      "17": "180° 회전 대응으로 넓이 이등분 근거 명시"
+    }
+  },
+  "curriculumTerminology": {
+    "PASS": 24,
+    "FIX": [
+      25
+    ],
+    "repair": "SAS 약어 대신 두 변의 길이와 그 끼인각의 크기라는 중학교 문장 사용"
+  },
+  "studentLanguage": {
+    "PASS": 24,
+    "FIX": [
+      25
+    ]
   },
   "questionLayout": {
-    "KEEP": 22,
-    "REFORMAT": 3,
+    "PASS": 25,
+    "REPAIR": 0,
     "HOLD": 0,
-    "modifiedQuestionIds": [
+    "sourceTextExactParity": "25/25",
+    "choicesExactParity": "25/25",
+    "staticCapacity2up": [
+      9,
+      13,
       23,
       24,
       25
     ],
-    "status": "PASS",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "unnecessaryManualOverride": 0,
+    "render": "NOT_RUN_CODEX_HANDOFF"
   },
-  "solution": {
-    "KEEP": 22,
-    "REPAIR": 3,
-    "TRUE_HOLD": 0,
-    "repairedQuestionIds": [
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassAxis": "SOLUTION_VISUAL_TRIAGE",
+    "falsePassQuestions": [
+      7,
+      8,
       9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
       17,
-      24
+      18,
+      19,
+      21,
+      22,
+      24,
+      25
     ],
-    "status": "PASS"
+    "resolution": "R1_ADD_AND_STATIC_V1_V2_V3_SHA_PASS"
   },
   "visual": {
-    "sourceProblemVisuals": "21/21 PASS",
-    "sourceAssetFolderBlobParity": "23/23 PASS",
-    "solutionSvgCreatedOrChanged": 0,
-    "dispositionSummary": {
-      "SATISFIED_BY_SOURCE_PROBLEM_VISUAL": 21,
-      "VISUAL_EXEMPT": 4,
-      "ADD": 0,
-      "REBUILD": 0,
-      "HOLD": 0
-    },
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "requiredVisualMissing": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+    "targets": 17,
+    "PASS": 17,
+    "ADD": 17,
+    "REPAIR": 0,
+    "REBUILD": 0,
+    "EXEMPT": 8,
+    "HOLD": 0,
+    "items": [
+      {
+        "q": 7,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "DB=DC=9",
+          "△ADC의 세 각 60°",
+          "AC=9"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q7-solution.svg",
+        "gitBlobSha": "5d7bcba4cf7a0541d4d42fa894666f76c9ab0396",
+        "svgSha256": "sha256:dfa78b2d82f5090d18b94d200c345f072936326b41ea19f5de96bba94932aae6",
+        "v2ObservedFacts": [
+          "DB=DC=9",
+          "△ADC의 세 각 60°",
+          "AC=9"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 8,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "BD=8",
+          "CE=6",
+          "AD=6",
+          "AE=8",
+          "DE=14"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q8-solution.svg",
+        "gitBlobSha": "9adf9718c7bb43df77c50d4ad5a99a1315664fcb",
+        "svgSha256": "sha256:4df8ea36690b947274ec845b2d197d1b71c679ccf9e06ea2b670bf1de6429a4a",
+        "v2ObservedFacts": [
+          "BD=8",
+          "CE=6",
+          "AD=6",
+          "AE=8",
+          "DE=14"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 9,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "직각삼각형 두 개",
+          "빗변 AB=DE",
+          "한 예각 ∠B=∠E"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q9-solution.svg",
+        "gitBlobSha": "73580d2d09110ca46e8763d89b8de7529e47f959",
+        "svgSha256": "sha256:5a5a7bf0a17fb1981713c157c5ecd69f46f9e28945fc0765f364d83b4a5df149",
+        "v2ObservedFacts": [
+          "직각삼각형 두 개",
+          "빗변 AB=DE",
+          "한 예각 ∠B=∠E"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 10,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "OA=OB=OC",
+          "30°",
+          "50°",
+          "x=10°"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q10-solution.svg",
+        "gitBlobSha": "fb93ce3cb0ce068fa5b3a079108ec50e3768d358",
+        "svgSha256": "sha256:35b978d83665a02f868e9eb86ad4b85a327764d673b5e2266b97e3fc9a6ff0ba",
+        "v2ObservedFacts": [
+          "OA=OB=OC",
+          "30°",
+          "50°",
+          "x=10°"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 11,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "OA=OB=R",
+          "AB=13",
+          "2R+13=29",
+          "R=8"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q11-solution.svg",
+        "gitBlobSha": "cf1a89f5e4f2e94f6b35d722728d46aee05f4ed5",
+        "svgSha256": "sha256:4c2699fcedae33e06911a4d17b7b85f3ba42b7b831383ca64bbce9765f4f61ee",
+        "v2ObservedFacts": [
+          "OA=OB=R",
+          "AB=13",
+          "2R+13=29",
+          "R=8"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 12,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "직각변 12,16",
+          "빗변 20",
+          "내접원 r=4"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q12-solution.svg",
+        "gitBlobSha": "9e094f307797392b4ed477f17e4224bc27c8ea37",
+        "svgSha256": "sha256:1df2855ff09976dfffd776cb4fd48d8a381834383854d3c577ed34792aa544cf",
+        "v2ObservedFacts": [
+          "직각변 12,16",
+          "빗변 20",
+          "내접원 r=4"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 13,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "I는 내심",
+          "BI는 각의 이등분선",
+          "ID=r=2"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q13-solution.svg",
+        "gitBlobSha": "03e9ae10caa14e63041c99f8881f7d9b0eb2d8a5",
+        "svgSha256": "sha256:ee4f12342029c1cc8d01a9e22aa98d59e7f637f4328a7d79634f7c61bbe4cbd0",
+        "v2ObservedFacts": [
+          "I는 내심",
+          "BI는 각의 이등분선",
+          "ID=r=2"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 14,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "평행사변형",
+          "AB=CD=10",
+          "이웃각 125°,55°"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q14-solution.svg",
+        "gitBlobSha": "70ca6198b7287600f7a646a118de62ce99080a45",
+        "svgSha256": "sha256:35207682eaaf5226aac5f152f9577986ca13bd1874c16ab1e71f92904043f937",
+        "v2ObservedFacts": [
+          "평행사변형",
+          "AB=CD=10",
+          "이웃각 125°,55°"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 15,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "대각선 서로 이등분",
+          "AO+BO=18",
+          "AC+BD=36"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q15-solution.svg",
+        "gitBlobSha": "784abe55ab8310e145f38c212c3286fa6e96f726",
+        "svgSha256": "sha256:7dd4b612b117e266a3ca00e6960b702d2897f3ea9e480feb3b02a92625786135",
+        "v2ObservedFacts": [
+          "대각선 서로 이등분",
+          "AO+BO=18",
+          "AC+BD=36"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 16,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AB∥DC",
+          "AD∥BC",
+          "AC 공통",
+          "엇각 두 쌍"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q16-solution.svg",
+        "gitBlobSha": "a1192fc5ff58893d6f3adfdc90872d07402e3756",
+        "svgSha256": "sha256:d5de628fa8c63b40a83077f47544062b782657f0bc462fd745171e12a08a8c7c",
+        "v2ObservedFacts": [
+          "AB∥DC",
+          "AD∥BC",
+          "AC 공통",
+          "엇각 두 쌍"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 17,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "대각선 교점 O",
+          "네 삼각형 넓이 8",
+          "O 중심 180° 대응"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q17-solution.svg",
+        "gitBlobSha": "4c2597e012309345e149127ed85e65270c49ae47",
+        "svgSha256": "sha256:d37a93e8c4b3a70aaef67b426c51b374fbda8a3c83b6752404bd65bc6c6f2ad3",
+        "v2ObservedFacts": [
+          "대각선 교점 O",
+          "네 삼각형 넓이 8",
+          "O 중심 180° 대응"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 18,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AB=BF=8",
+          "DE=AD=BC=8+x",
+          "x=6"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q18-solution.svg",
+        "gitBlobSha": "8e58b11292d47dfc52f5715680db9512e3282ed7",
+        "svgSha256": "sha256:58227c176ffbdf236b8b62549a2f829bd871b9a20fdd9041662f3265e13fdbeb",
+        "v2ObservedFacts": [
+          "AB=BF=8",
+          "DE=AD=BC=8+x",
+          "x=6"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 19,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "직사각형",
+          "AC=BD",
+          "대각선 서로 이등분"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q19-solution.svg",
+        "gitBlobSha": "73e7f9bd2c05ec444f3b63c09633e96ba208fc69",
+        "svgSha256": "sha256:7d6f4a543caf3bb9b76b4e99498c3def2ca8bad9d968e86535e8167c678c5a82",
+        "v2ObservedFacts": [
+          "직사각형",
+          "AC=BD",
+          "대각선 서로 이등분"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 21,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "마름모 x=32°",
+          "정사각형 대각선 10",
+          "y=5"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q21-solution.svg",
+        "gitBlobSha": "331ffe192e76062da648f617d25d2550a903199b",
+        "svgSha256": "sha256:8438af410ea6abf38eda2ef40c96d0a2b0dc9a0be386ed48a361ea2246a9ba34",
+        "v2ObservedFacts": [
+          "마름모 x=32°",
+          "정사각형 대각선 10",
+          "y=5"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 22,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "BP⊥AC",
+          "DQ⊥AC",
+          "∠PBQ=35°",
+          "목표합 55°"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q22-solution.svg",
+        "gitBlobSha": "37acc14a10f892622d9dc7a96a67326b231e6157",
+        "svgSha256": "sha256:cef521d455ef4558952c3c019aa91bdc87aa89eaf071e5c3ff4396eceeb0c684",
+        "v2ObservedFacts": [
+          "BP⊥AC",
+          "DQ⊥AC",
+          "∠PBQ=35°",
+          "목표합 55°"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 24,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "BM=CM",
+          "MD=ME",
+          "직각삼각형 합동",
+          "AB=10"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q24-solution.svg",
+        "gitBlobSha": "34c281c7e27b1e2b1ecbeb27033dc81ec25d915c",
+        "svgSha256": "sha256:e3155b15a1c5a75985e010ec0cb82a5c7a90a966870f1adeca58ac1054727aeb",
+        "v2ObservedFacts": [
+          "BM=CM",
+          "MD=ME",
+          "직각삼각형 합동",
+          "AB=10"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      },
+      {
+        "q": 25,
+        "disposition": "ADD",
+        "visualRequirement": "VISUAL_OPTIONAL",
+        "v1ExpectedFacts": [
+          "AB∥CD",
+          "AB=CD",
+          "AC 공통",
+          "합동 후 BC∥AD"
+        ],
+        "expectedFactFreeze": "BEFORE_ARTIFACT",
+        "builder": "DETERMINISTIC_FIXED_COORDINATE_SVG",
+        "candidateOnly": true,
+        "handTunedGeometry": false,
+        "path": "archive/assets/images/25_왕운중_2학기_중간_중2_수학/q25-solution.svg",
+        "gitBlobSha": "3ce77a14335d136163e5e4a7ce83acfaee3fb969",
+        "svgSha256": "sha256:b9df1feb062e02af1c56c9f8f828ce166898d1ccee08b6fca1966bb9f9b302a7",
+        "v2ObservedFacts": [
+          "AB∥CD",
+          "AB=CD",
+          "AC 공통",
+          "합동 후 BC∥AD"
+        ],
+        "v2Status": "PASS",
+        "v3Parity": "PASS",
+        "solutionParity": "PASS",
+        "xmlStaticPublication": "PASS",
+        "render": "NOT_RUN_CODEX_HANDOFF"
+      }
+    ],
+    "render": "NOT_RUN_CODEX_HANDOFF"
   },
   "meta": {
-    "summary": {
-      "EXISTING_REUSE": 15,
-      "FAMILY_REUSE": 2,
-      "RPM_PRIMARY_MIGRATION_GAP": 8,
-      "TRUE_HOLD": 0
-    },
-    "difficultyBucketSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "RPM_SEMANTIC_FINAL": 25,
+    "RPM_SEMANTIC_UNRESOLVED": 0,
+    "PROJECTION_REUSE": 17,
+    "PROJECTION_META_ONLY": 8,
+    "resolvablePending": 0
+  },
+  "difficulty": {
+    "distribution": {
       "1": 6,
       "2": 4,
       "3": 10,
       "4": 5,
       "5": 0
     },
-    "knownRepairPending": 0
+    "changedQuestions": [],
+    "freshPass": true
   },
-  "selfCheck": {
-    "CREATE_SELF_CHECK_PASS": true,
-    "solutionSelfCheckStatus": "PASS",
-    "svgRuleComplianceStatus": "NOT_APPLICABLE",
-    "questionLayoutStatus": "PASS",
-    "sourceTextExactParityStatus": "PASS",
-    "choicesExactParityStatus": "PASS",
-    "knownRepairPending": {
-      "solution": 0,
-      "visual": 0,
-      "layout": 0,
-      "meta": 0
-    },
-    "requiredVisualMissing": 0,
-    "runtimeParseStatus": "PASS"
+  "integrity": {
+    "v8Syntax": "PASS",
+    "v8Runtime": "PASS",
+    "questionCount": 25,
+    "uniqueIds": 25,
+    "duplicateIds": 0,
+    "answers": 25,
+    "solutions": 25,
+    "controlChars": 0,
+    "latexDollarBalance": "PASS",
+    "problemAssetBlobParity": "21/21 PASS",
+    "officialNodeCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
-  "items": [
-    {
-      "qid": 1,
-      "questionUid": "qid_v1_8de296c7b15803f43d72cc1c8f1fc64186c874c73686af201b4555313e63d363",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q01.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 2,
-      "questionUid": "qid_v1_748dd9d1390c542e32f42844160ae6e2a90e96d4fae64d1ca0df78099b5d6a21",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q02.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 3,
-      "questionUid": "qid_v1_dddabee939ce84c05724506511da85d5aa9c1f8b43cf0cd212fa4c085e2f1e05",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "solutionVisualRequirement": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 4,
-      "questionUid": "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "solutionVisualRequirement": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 5,
-      "questionUid": "qid_v1_1d4e83144518225ea6df3aa105afa66d2ec1b04bc8a2564eb3984ab1c3a070d3",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q05.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 6,
-      "questionUid": "qid_v1_466f0b3af9ac162a98d1258879ab0c7e8bb2259f6cac9e0ca3d140261b509ff4",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "solutionVisualRequirement": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 7,
-      "questionUid": "qid_v1_745010e0892494c24639e339f5870619adfad6973fec17cb6f252badf96775e9",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q07.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 8,
-      "questionUid": "qid_v1_010d977d0827aa4d3e791212a20950580803d68b8f456496cdc5e3bd1ea14415",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q08.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 9,
-      "questionUid": "qid_v1_3fcc44938912568f8136ed7e3467ec33b6937bf93587acc4af6ad7f5c69369fb",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "subjective-2up",
-        "final": "subjective-2up",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "REPAIR",
-        "selfCheck": "PASS",
-        "reason": "CURRICULUM_TERM_STUDENT_LANGUAGE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q09_diagrams.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 10,
-      "questionUid": "qid_v1_172daabd512857c589f3c8ed3e8ddfb11382d06666621e7cb90d206e65b51210",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q10.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 11,
-      "questionUid": "qid_v1_410a62b8e9e1713f083d1450bec7d891fc60becb84a45dee51c07d66bf696590",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q11.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "FAMILY_REUSE"
-    },
-    {
-      "qid": 12,
-      "questionUid": "qid_v1_9922fdb0d30c265378a8f2f73ab4fb0d6ce20236cfe56b7ba8629752aeeb2072",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q12.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "FAMILY_REUSE"
-    },
-    {
-      "qid": 13,
-      "questionUid": "qid_v1_e2b72faac9c9014cbe224d70a4fa9e4779bc00ad402cdcdbd49cd2cbd455507c",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "subjective-2up",
-        "final": "subjective-2up",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q13.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 14,
-      "questionUid": "qid_v1_82797dad4da5c2f449690d234ca101201602583fe5c2e2a37b538b13c07915c7",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q14.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 15,
-      "questionUid": "qid_v1_3649df6924d5ad0aa907d4a21c3f4023c5b6414f2ba84265ca4385e280b9a593",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q15.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 16,
-      "questionUid": "qid_v1_06ba19327af78e760b26248cd76fb73e8162c3c511e2e7b49ee52f703aa8712e",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q16_diagram.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 17,
-      "questionUid": "qid_v1_c8a5e1820215e7468f382af7e81321e41dae636f0ed1c7a2e46642eae9adae02",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "REPAIR",
-        "selfCheck": "PASS",
-        "reason": "CORRUPTED_DUPLICATED_SOLUTION"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q17.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 18,
-      "questionUid": "qid_v1_43100c677921e57a90799b99e024c2c0f99a81d42cf424f62988557c88b88032",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q18.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 19,
-      "questionUid": "qid_v1_e9e65ef026942183612cf357a102c1b7c704e21e32f9530a261a7821760e1142",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q19.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 20,
-      "questionUid": "qid_v1_b1773b7e1c25fc3ec0745881f96fdfe1b8f2ea663c7d45c3b36fb40190da70e5",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": null,
-        "problemImageStatus": "NOT_APPLICABLE",
-        "solutionVisualRequirement": "VISUAL_EXEMPT",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 21,
-      "questionUid": "qid_v1_72c0c65c4562f4f08b129facdbd54539c282965850d165142d0263962be17557",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q21.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 22,
-      "questionUid": "qid_v1_ab4736ee0a41702e65353233a32f961d78f53f86aa58b7146eaa4170db836ff3",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "grid",
-        "disposition": "LAYOUT_KEEP",
-        "issueCodes": [],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q22.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 23,
-      "questionUid": "qid_v1_9549de6dcae441fa62b29252cbe4c99d8eef48b32cf6097a2a0e5cfb7e51713a",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "subjective-2up",
-        "disposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q23.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "RPM_PRIMARY_MIGRATION_GAP"
-    },
-    {
-      "qid": 24,
-      "questionUid": "qid_v1_1ebbad7ce98e6ba9e27dfc3ec5893095633653ab3fcc94c198a8df3f9fa73950",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "subjective-2up",
-        "disposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "REPAIR",
-        "selfCheck": "PASS",
-        "reason": "CURRICULUM_TERM_STUDENT_LANGUAGE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q24.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    },
-    {
-      "qid": 25,
-      "questionUid": "qid_v1_b421e9722c10ae9352bdc3b96c83d2463b4169c1bdbf7f743977bcca04912e4b",
-      "sourceExactParity": {
-        "content": "PASS",
-        "choices": "PASS",
-        "answer": "PASS",
-        "imageRef": "PASS"
-      },
-      "questionLayout": {
-        "before": "grid",
-        "final": "subjective-2up",
-        "disposition": "LAYOUT_REFORMAT",
-        "issueCodes": [
-          "SUBJECTIVE_GRID_TOO_TIGHT"
-        ],
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "solution": {
-        "disposition": "KEEP",
-        "selfCheck": "PASS",
-        "reason": "VERIFIED_REPRODUCIBLE"
-      },
-      "visual": {
-        "problemImage": "assets/images/25_왕운중_2학기_중간_중2_수학/q25.png",
-        "problemImageStatus": "SOURCE_VISUAL_VERIFIED_REUSE",
-        "solutionVisualRequirement": "SATISFIED_BY_SOURCE_PROBLEM_VISUAL",
-        "solutionSvgAction": "NONE",
-        "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-      },
-      "metaDisposition": "EXISTING_REUSE"
-    }
-  ]
+  "finalJs": {
+    "gitBlobSha": "b94871c47eaa962288684be23e4463a61f3211c8",
+    "sha256": "sha256:1108e7be62bc7567487de533e91984368417bfe2714141875cc0d7f0961ec49d"
+  },
+  "outcome": {
+    "status": "READY",
+    "nextState": "READY_FOR_R2E",
+    "genuineBasicHolds": 0
+  }
 }

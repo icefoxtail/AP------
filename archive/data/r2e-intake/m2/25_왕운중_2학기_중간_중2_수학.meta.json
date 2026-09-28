@@ -1,28 +1,26 @@
 {
-  "schema": "JS_ARCHIVE_CREATE_META_EVIDENCE_v1",
+  "schema": "JS_ARCHIVE_R1_META_EVIDENCE_v2",
   "resetRunId": "M2_RESET_20260928",
   "examFile": "25_왕운중_2학기_중간_중2_수학.js",
+  "examUid": "25_왕운중_2학기_중간_중2_수학",
+  "grade": "M2",
+  "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceBlobSha": "86cbde21edbf9912f9c7775e08f88a88b9709721",
+  "sourceLane": "A",
+  "lane": "C",
+  "stage": "R1",
   "denominator": 25,
-  "decisionIsolation": {
-    "sameStageCandidateUsed": false,
-    "sameStageTemplateUsed": false,
-    "sameStageCrossConceptUsed": false,
-    "sameStageDifficultyUsed": false,
-    "previousVerdictUsed": false
-  },
+  "decisionIsolation": "R1_FRESH_SOURCE_PLUS_INDEPENDENT_FINAL_SOLUTION",
   "resolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-  "resolverExecutionStatus": "CONTRACT_EQUIVALENT_STATIC_PROJECTION_PASS",
-  "authority": {
-    "mainCommit": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "sourceCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
-    "sourceBlobSha": "86cbde21edbf9912f9c7775e08f88a88b9709721",
-    "crosswalkBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59"
-  },
+  "semanticAuthority": "RPM_PRIMARY_EXACT_L3_L4",
   "summary": {
-    "EXISTING_REUSE": 15,
-    "FAMILY_REUSE": 2,
-    "RPM_PRIMARY_MIGRATION_GAP": 8,
-    "TRUE_HOLD": 0
+    "RPM_SEMANTIC_FINAL": 25,
+    "RPM_SEMANTIC_HOLD": 0,
+    "PROJECTION_REUSE": 17,
+    "PROJECTION_META_ONLY": 8,
+    "TRUE_HOLD": 0,
+    "resolvablePending": 0
   },
   "difficultyBucketSummary": {
     "1": 6,
@@ -30,6 +28,12 @@
     "3": 10,
     "4": 5,
     "5": 0
+  },
+  "authority": {
+    "mainCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
+    "rpmCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+    "rpmCrosswalkGitBlobSha": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "resolverContractGitBlobSha": "779aa2f9b78997505104492cf2adfe07f520a475"
   },
   "items": [
     {
@@ -75,7 +79,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -134,7 +141,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -193,7 +203,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -252,7 +265,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -311,7 +327,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -370,7 +389,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -429,7 +451,10 @@
         "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -488,7 +513,10 @@
         "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -547,7 +575,10 @@
         "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -606,7 +637,10 @@
         "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -665,7 +699,10 @@
         "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -694,7 +731,7 @@
       "solutionIdentity": {
         "status": "VERIFIED_FINAL",
         "independentVerification": true,
-        "solutionHash": "sha256:cc0ae51938cc02a325aeb50019e82261f43c67808dac593b53dd9fa5787e7521"
+        "solutionHash": "sha256:c0f5562654e3bfe79e606113aeafc621f4a0756a9d4a72eecdd6cc943f435705"
       },
       "curriculumContext": {
         "grade": "M2",
@@ -724,7 +761,10 @@
         "templateKey": "TPL_TRIANGLE_INCENTER",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -783,7 +823,10 @@
         "templateKey": "TPL_TRIANGLE_INCENTER",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -842,7 +885,10 @@
         "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -901,7 +947,10 @@
         "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -960,7 +1009,10 @@
         "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -989,7 +1041,7 @@
       "solutionIdentity": {
         "status": "VERIFIED_FINAL",
         "independentVerification": true,
-        "solutionHash": "sha256:12ea2afc60c0347f6b66e2d6559b45219472e49d766623d9e6ee9da635970490"
+        "solutionHash": "sha256:1e36b1afdbf65f458436c98786682962af19dde4d21311edd35d595c40be5e13"
       },
       "curriculumContext": {
         "grade": "M2",
@@ -1019,7 +1071,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_UNMATERIALIZED",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1078,7 +1133,10 @@
         "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1137,7 +1195,10 @@
         "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1196,7 +1257,10 @@
         "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1255,7 +1319,10 @@
         "templateKey": "TPL_SPECIAL_QUADRILATERALS",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1314,7 +1381,10 @@
         "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1373,7 +1443,10 @@
         "templateKey": "",
         "ownerPack": "",
         "exactBindingStatus": "NOT_MATERIALIZED",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_BINDING_PENDING",
+        "releaseEffect": "META_ONLY"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1432,7 +1505,10 @@
         "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
@@ -1461,7 +1537,7 @@
       "solutionIdentity": {
         "status": "VERIFIED_FINAL",
         "independentVerification": true,
-        "solutionHash": "sha256:7efe8fe24b5b16114a1f831f873760d42942d0aff55a1ac5f6ed7f80853da4a6"
+        "solutionHash": "sha256:a8ffb99e48b0a5e4da84a227f3f0be40a47281d2fb8e6d030f9888b9dd4a8273"
       },
       "curriculumContext": {
         "grade": "M2",
@@ -1491,7 +1567,10 @@
         "templateKey": "TPL_QUADRILATERAL_CRITERIA",
         "ownerPack": "MIDDLE_GEOMETRY",
         "exactBindingStatus": "ACTIVE",
-        "arbitraryCanonicalKeyCreated": false
+        "arbitraryCanonicalKeyCreated": false,
+        "semanticStatus": "FINAL",
+        "projectionStatus": "PROJECTION_REUSE",
+        "releaseEffect": "NONE"
       },
       "relationalEvidence": {
         "crossConceptKeys": [],
