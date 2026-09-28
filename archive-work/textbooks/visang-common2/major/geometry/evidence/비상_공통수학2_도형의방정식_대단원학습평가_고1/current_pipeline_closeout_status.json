@@ -1,6 +1,6 @@
 {
   "schemaVersion": "TEXTBOOK_SET_PIPELINE_CLOSEOUT_STATUS_v1",
-  "status": "REVIEW_READY_FRESH_REVIEW7_WAITING_PROVIDER_SLOT",
+  "status": "REVIEW_READY_FRESH_REVIEW8_WAITING_PROVIDER_SLOT",
   "denominator": 17,
   "sourceExamId": "VISANG_COMMON2_PDF_C1BA1424_P14_16_GEOMETRY_MAJOR_ASSESSMENT",
   "candidate": {
@@ -177,7 +177,7 @@
   "providerReview": {
     "status": "READY_NOT_STARTED",
     "purpose": "FINAL_AUDIT",
-    "workBatchId": "visang-geometry-major-sol-review7-20260929",
+    "workBatchId": "visang-geometry-major-sol-review8-20260929",
     "nextAction": "FINAL_AUDIT / REVIEW_READY",
     "providerSlot": "WAIT_FOR_WORKBOOK_EXPLICIT_RELEASE",
     "providerPreflightStarted": false,
@@ -225,11 +225,12 @@
   "currentMainIntegration": {
     "mainSha": "14ff950d4a76104d10950494aa05c7dc894624cc",
     "mainMergeCommit": "e7cc433a59b01bfd4b8f516ab8b6a3904bf60127",
-    "providerFixMergeCommit": "3484318a24b07e880688b44e7585df7eba10edc7",
-    "providerFixes": [
+    "sharedCoreCommits": [
       "e806d5be4",
-      "c21367459"
-    ]
+      "c21367459",
+      "8dbafb34aae17354f3ca4521285c772440ca865a"
+    ],
+    "featureCoreMergeCommit": "53761f23712c029189018da1b2024604f0de991c"
   },
   "currentPreflights": {
     "repositorySkills": "PASS",
@@ -264,27 +265,26 @@
     "solutionChanged": false
   },
   "freshPipelineRun": {
-    "runId": "visang-geometry-major-sol-review7-20260929",
+    "runId": "visang-geometry-major-sol-review8-20260929",
     "revision": 2,
-    "inputSha": "sha256:cdd4fcf26550b6a99a0cbb2d93f64b4834ad3632c41b0e5dd8b3cf665fcb6dee",
+    "inputSha": "sha256:7fc8269385936ae83c14ea28058acc23884c011a71a94136e0531bc1d5d39392",
+    "freezeSha": "sha256:4bd01b315523832213a6a042c1ef20857691455e75b9b463f1335765d3d2882e",
     "candidateSha256": "sha256:456f03df56043f4159ace17c6f03ac2eb9e003d4fd6023ce67dd69f1ece2feff",
-    "freezeSha": "sha256:ed9b9192fc37d84b545706191363be3a2d584163686b477d4e07b229d07f42f0",
-    "runRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review7-20260929/pipeline-run-review7/run-captured-authority-r2.json",
-    "workBatchId": "visang-geometry-major-sol-review7-20260929",
+    "workBatchId": "visang-geometry-major-sol-review8-20260929",
     "workBatchStatus": "FROZEN",
     "targetCount": 17,
     "openDefectCount": 0,
-    "machineCheckCount": 34,
-    "machineChecks": "PASS",
-    "renderCaptureCount": 6,
-    "renderCapture": "PASS",
-    "readability": "NOT_TESTED"
+    "machineChecks": "34/34 PASS",
+    "captures": "6/6 PASS",
+    "readability": "NOT_TESTED",
+    "runRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/visang-geometry-major-sol-review8-20260929/pipeline-run-review8/run-captured-authority-r2.json"
   },
   "freshPartialAuditEvidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/fresh_final_audit_partial_hold_review5b.json",
   "u2VisualRepairs": {
     "status": "3_OF_3_COLLISIONS_CONFIRMED_AND_LABEL_ONLY_REPAIRED",
     "evidenceRef": "archive-work/textbooks/visang-common2/major/geometry/evidence/비상_공통수학2_도형의방정식_대단원학습평가_고1/u2_q9_q14_q17_visual_repairs.json",
-    "independentPipelineV2Closure": "PENDING"
+    "geometryAndFactsChanged": false,
+    "independentPipelineV2": "PENDING"
   },
   "priorAuditHold": {
     "workBatchId": "visang-geometry-major-sol-review5b-20260929",
