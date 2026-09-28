@@ -1,82 +1,116 @@
 {
-  "schema": "JS_ARCHIVE_R2E_INTAKE_RECEIPT_v1",
+  "schema": "JS_ARCHIVE_R1_INTAKE_RECEIPT_v2",
   "resetRunId": "M2_RESET_20260928",
   "sourceAuthorityBranch": "work/rebuild/m2-full-20260928-source",
   "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
   "examFile": "24_금당중_2학기_중간_중2_수학.js",
   "examUid": "24_금당중_2학기_중간_중2_수학",
-  "lane": "B",
-  "stage": "CREATE",
+  "grade": "M2",
+  "sourceLane": "B",
+  "lane": "REVIEW1-2",
+  "stage": "R1",
+  "reviewStage": "REVIEW1_DONE",
   "status": "READY",
-  "nextState": "READY_FOR_REVIEW",
+  "nextState": "READY_FOR_REVIEW2",
   "sourceBlobSha": "60f6b46801aaa68132c85d8c71d5dafecf62ccda",
+  "inputCommit": "fad45aeff7520189ace56cc5229160f8b85ef100",
   "totalQuestions": 25,
-  "sourceTextExactParityStatus": "PASS",
-  "choicesExactParityStatus": "PASS",
-  "questionLayoutStatus": "PASS",
-  "solutionSelfCheckStatus": "PASS",
-  "svgRuleComplianceStatus": "PASS",
-  "CREATE_SELF_CHECK_PASS": true,
-  "requiredVisualMissing": 0,
-  "rpmSemanticUnresolved": 0,
+  "changedQuestions": [
+    9,
+    10,
+    23
+  ],
+  "changedSolutionQuestions": [],
+  "changedSvgFiles": [
+    "archive/assets/images/24_금당중_2학기_중간_중2_수학/q9-solution.svg",
+    "archive/assets/images/24_금당중_2학기_중간_중2_수학/q10-solution.svg",
+    "archive/assets/images/24_금당중_2학기_중간_중2_수학/q23-solution.svg"
+  ],
+  "sourceParitySummary": {
+    "contentExact": "25/25 PASS",
+    "choices": "25/25 PASS",
+    "answer": "25/25 PASS",
+    "imageRefs": "25/25 PASS",
+    "referencedSourceImages": "12/12 CODE_FIRST_PASS"
+  },
+  "mathDispositionSummary": {
+    "PASS": 25,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "solutionDispositionSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "TRUE_HOLD": 0
+  },
+  "reproducibilitySummary": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0
+  },
+  "microLayoutSummary": {
+    "KEEP": 25,
+    "POLISH": 0,
+    "REFORMAT": 0,
+    "HOLD": 0,
+    "polishQuestions": []
+  },
+  "curriculumTerminologySummary": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0,
+    "fixQuestions": []
+  },
+  "studentLanguageSummary": {
+    "PASS": 25,
+    "FIX": 0,
+    "HOLD": 0,
+    "fixQuestions": []
+  },
+  "svgDispositionSummary": {
+    "PASS_AFTER_REPAIR": 3,
+    "REPAIR": 3,
+    "HOLD": 0,
+    "CONNECTED": 3
+  },
+  "questionLayoutSummary": {
+    "KEEP": 25,
+    "REPAIR": 0,
+    "HOLD": 0,
+    "status": "PASS",
+    "staticCapacity2upQuestions": []
+  },
+  "createSelfCheckAudit": {
+    "status": "FALSE_PASS",
+    "falsePassQuestions": [
+      9,
+      10,
+      23
+    ],
+    "falsePassAxes": [
+      "SOLUTION_SVG_CLIP_SAFETY",
+      "SOLUTION_SVG_GEOMETRY_SCALE_PARITY"
+    ]
+  },
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
     "visual": 0,
-    "layout": 0,
-    "meta": 0
-  },
-  "sourceParity": {
-    "content": "25/25 PASS",
-    "choices": "25/25 PASS",
-    "answer": "25/25 PASS",
-    "problemImageRef": "25/25 PASS",
-    "problemPngAssetGitBlob": "12/12 PASS"
-  },
-  "questionLayout": {
-    "KEEP": 25,
-    "REFORMAT": 0,
-    "HOLD": 0,
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  },
-  "solution": {
-    "KEEP": 25,
-    "REPAIR": 0,
-    "TRUE_HOLD": 0,
-    "probabilityIndependenceInterpretation": "NOT_APPLICABLE_NO_PROBABILITY_ITEM"
-  },
-  "visual": {
-    "sourceProblemVisuals": "12/12 GIT_BLOB_EXACT_PARITY",
-    "solutionSvgInventory": "3",
-    "requiredVisualMissing": 0,
-    "V2": "3/3 PASS",
-    "V3": "3/3 PASS",
-    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
-  },
-  "metaDispositionSummary": {
-    "RPM_SEMANTIC_FINAL": 25,
-    "PROJECTION_REUSE": 7,
-    "META_ONLY": 18,
-    "TRUE_HOLD": 0
-  },
-  "difficultyBucketSummary": {
-    "1": 3,
-    "2": 7,
-    "3": 8,
-    "4": 7,
-    "5": 0
+    "layout": 0
   },
   "evidenceRef": {
     "path": "archive/data/r2e-intake/m2/24_금당중_2학기_중간_중2_수학.evidence.json",
-    "sha256": "sha256:19d3f9f1326300e442e6c05f7e197c83ea662337dabf6c31e0031ec4bf6678c9",
-    "gitBlobSha": "c006722f364eac35dac0473b2f24ae32a4bb1821"
+    "gitBlobSha": "90d3190689d479206c4d10f1f841e7f38ca45b87"
   },
-  "metaResolutionEvidenceRef": {
-    "path": "archive/data/r2e-intake/m2/24_금당중_2학기_중간_중2_수학.meta.json",
-    "sha256": "sha256:58050249e387fc4385bbe0d2f6472bc684c108a5c22649e4d61ee28ca83f9197",
-    "gitBlobSha": "d96b2192f5c179928734e30d583b970b49df016e"
+  "metaReviewStatus": "INHERITED_NOT_REVIEWED_IN_PRODUCTION_REVIEW",
+  "validatorSummary": {
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "visualRepairPending": 0,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
-  "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
-  "mainAuthorityCommit": "d51fdc013d9f82b190c5be173bc87d4248ef2ad3",
   "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "commitBinding": "SELF"
+  "mainAuthorityCommit": "9a955143a4d636c69c4aa27430459f513d03879d",
+  "commitBinding": "SELF",
+  "updatedAt": "2026-09-28T17:48:48+09:00"
 }
