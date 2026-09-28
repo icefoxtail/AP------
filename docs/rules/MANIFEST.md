@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 31631 bytes | sha256 66ab8de536eba735ef9d3befa52495156e44a889554c2dd6438457e32f5b4a0f
+- 00_RULES_INDEX.md | 31631 bytes |- 00_RULES_INDEX.md | 33623 bytes |- 04_VISUAL/도형추출.md | 57152 bytes |- 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 72613 bytes |- 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 13171 bytes |- 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 10397 bytes |- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 18739 bytes | sha256 b21c022f5a21c222a7dc3924d32f4ac0e7bf0a8d5560c7218f5d37f61e1e6a46
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12133 bytes | sha256 737df504f0940793746d0a0f41d1c6c0476ac6b3d6652fdf1689d0702e6eff37
