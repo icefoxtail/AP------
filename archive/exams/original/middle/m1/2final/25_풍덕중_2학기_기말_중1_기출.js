@@ -634,7 +634,20 @@ window.questionBank = [
     "subUnitKey": "M1-08-DATA_ORGANIZATION",
     "subUnit": "자료의 정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+    "templateKey": "TPL_M1_GROUPED_FREQUENCY_INFORMATION_EXACT_VALUE_LIMIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "medium",
+    "difficultyBoundaryFlag": "NONE",
+    "legacyLevelCompatibility": "NORMAL",
+    "l3Disposition": "EXISTING_L3_REUSE",
+    "l4Disposition": "ASSIGNED",
+    "resolverEvidenceSha": "sha256:631fa3836be5cabbdc4a5d6d752dd90292abc2faa086feb0c1f1c680ea849607",
+    "difficultyEvidenceSha": "sha256:409eaa2b96ee9f07488e366a65ca80d363bd86592867f74a228cf3a059e97539"
   },
   {
     "id": 16,
