@@ -9,23 +9,39 @@
   "sourceLane": "B",
   "lane": "D",
   "stage": "R1",
-  "status": "HOLD",
+  "status": "READY",
   "sourceBlobSha": "57b2b66e2985724ca0b4d88bba1a2e027d201988",
   "inputCommit": "2139e1b54064f5bf4b9685fff5e277f8acca2849",
   "totalQuestions": 23,
   "changedQuestions": [
-    23
+    3,
+    5,
+    7,
+    8,
+    9,
+    10,
+    21,
+    22
   ],
-  "changedSvgFiles": [],
+  "changedSvgFiles": [
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q3-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q5-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q7-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q8-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q9-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q10-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q21-solution.svg",
+    "archive/assets/images/25_연향중_2학기_기말_중2_기출/q22-solution.svg"
+  ],
   "solutionDispositionSummary": {
     "KEEP": 22,
     "REPAIR": 1,
-    "TRUE_HOLD": 2
+    "TRUE_HOLD": 0
   },
   "reproducibilitySummary": {
-    "PASS": 21,
+    "PASS": 22,
     "FIX": 1,
-    "HOLD": 2
+    "HOLD": 0
   },
   "microLayoutSummary": {
     "KEEP": 23,
@@ -34,16 +50,18 @@
     "HOLD": 0
   },
   "svgDispositionSummary": {
-    "PASS": 0,
+    "PASS": 8,
+    "ADD": 8,
     "REBUILD": 0,
-    "HOLD": 8,
+    "HOLD": 0,
     "EXEMPT": 15
   },
   "metaDispositionSummary": {
-    "KEEP": 7,
-    "REPAIR": 6,
-    "ADVANCED_META_HOLD": 8,
-    "TRUE_HOLD": 2
+    "RPM_SEMANTIC_FINAL": 23,
+    "PROJECTION_DIRECT_ACTIVE": 7,
+    "PROJECTION_META_ONLY": 16,
+    "ADVANCED_META_HOLD": 0,
+    "TRUE_HOLD": 0
   },
   "difficultySummary": {
     "distribution": {
@@ -103,92 +121,22 @@
   },
   "visualRenderStatus": "NOT_RUN_CODEX_HANDOFF",
   "solutionSelfCheckStatus": "R1_INDEPENDENT_PASS_21_REPAIR_1_BASIC_HOLD_2",
-  "svgRuleComplianceStatus": "HOLD_8_MISSING_CURRENT_PIPELINE_EVIDENCE",
-  "unresolvedItems": [
-    {
-      "q": 17,
-      "disposition": "BASIC_HARD_HOLD",
-      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-      "reason": "두 약속 이행 사건의 독립 여부가 없어 source answer를 deterministic하게 증명할 수 없음",
-      "next": "HUMAN_REQUIRED"
-    },
-    {
-      "q": 23,
-      "disposition": "BASIC_HARD_HOLD",
-      "code": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-      "reason": "두 합격 사건의 독립 여부가 없어 source answers를 deterministic하게 증명할 수 없음",
-      "next": "HUMAN_REQUIRED"
-    },
-    {
-      "q": 2,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_SEMANTIC_DIRECTION_MISMATCH",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 7,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 9,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 10,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 11,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 12,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 13,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    },
-    {
-      "q": 22,
-      "disposition": "ADVANCED_META_HOLD",
-      "code": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
-      "reason": "current RPM/crosswalk/GLOBAL ACTIVE exact binding authority does not provide a safe deterministic production binding",
-      "next": "R2_ADJUDICATION_REQUIRED"
-    }
-  ],
+  "svgRuleComplianceStatus": "PASS_8_TARGETED_ADD_V2_V3_RENDER_HANDOFF",
+  "unresolvedItems": [],
   "knownRepairPending": {
     "solution": 0,
-    "visual": 8,
+    "visual": 0,
     "layout": 0,
     "meta": 0,
-    "requiredVisualMissing": 8
+    "requiredVisualMissing": 0
   },
   "r1ZeroResolvable": {
     "resolvablePending": 0,
+    "rpmSemanticUnresolved": 0,
     "deterministicBindingMaterializationPending": 0,
     "safeReuseRpmOnlyPending": 0,
     "createR1ResolvableConflicts": 0,
-    "materializationPatchReady": 6
+    "projectionMetaOnly": 16
   },
   "authorityRefs": [
     {
@@ -219,24 +167,59 @@
   ],
   "metaResolutionEvidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.meta.json",
-    "sha256": "sha256:25a61d3f2bdaaa87864e21fc47ef2e3b214ce241cf8c4de33bf701711805f28e"
+    "sha256": "sha256:c1c6790b4313e375ee852baa715113409296294ed2d73fa5fc06f9cbccc7d8bb"
   },
   "evidenceRef": {
     "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.evidence.json",
-    "sha256": "sha256:1a0b5e2bf567a33bb8f903a225d35ded3f8acb21922245d910376903995884a4"
+    "sha256": "sha256:2b80e99c0d4e32f6eb442d9f3e9b1a1f6bb94e19e4bd09443515aaf2bbf1f3d3"
   },
   "metaResolverContractVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
   "validatorSummary": {
-    "status": "BLOCKED_BY_BASIC_AND_VISUAL_HOLD",
-    "officialResolverCli": "NOT_RUN_CONNECTOR_RUNTIME",
-    "snapshot": "NOT_READY_CANDIDATE_EXPECTED",
-    "questionCount": 23,
-    "basicHardHoldCount": 2,
-    "visualComplianceHoldCount": 8,
-    "advancedMetaHoldCount": 8
+    "status": "READY_BY_CURRENT_RULE_CONDITIONS",
+    "basicSourceMathHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
+    "visualComplianceHoldCount": 0,
+    "projectionMetaOnlyCount": 16,
+    "officialCli": "NOT_RUN_CONNECTOR_RUNTIME"
   },
   "renderStatus": "NOT_RUN_CODEX_HANDOFF",
-  "nextState": "HUMAN_REQUIRED",
+  "nextState": "READY_FOR_R2E",
   "commitBinding": "SELF",
-  "updatedAt": "2026-09-28T07:37:58+09:00"
+  "updatedAt": "2026-09-28T09:37:06+09:00",
+  "authorityRefresh": "RPM_PRIMARY_SVG_NO_HOLD_PROB_INDEPENDENCE_20260928",
+  "authorityRefreshAt": "2026-09-28T09:37:06+09:00",
+  "authorityRefreshEvidenceRef": {
+    "path": "archive/data/r2e-intake/m2/25_연향중_2학기_기말_중2_기출.authority-refresh.json",
+    "sha256": "sha256:fcdd619213dea82f2017e2b3923b83de4747ca53dace03548994b8dfd1b5b759"
+  },
+  "targetedRefresh": {
+    "type": "OLD_AUTHORITY_TARGETED_REFRESH",
+    "preservedFreshR1MathSourceEvidence": true,
+    "probabilityFalseHoldRemoved": [
+      17,
+      23
+    ],
+    "projectionFalseHoldRemoved": [
+      2,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      22
+    ],
+    "visualHoldRemoved": [
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      21,
+      22
+    ],
+    "remainingBasicSourceMathHolds": [],
+    "currentPolicy": "RPM semantic FINAL; projection META_ONLY; SVG NO-HOLD; middle-school independence default"
+  }
 }

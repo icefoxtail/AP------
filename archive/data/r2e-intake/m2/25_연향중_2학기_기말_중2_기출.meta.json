@@ -11,8 +11,8 @@
   "examFile": "25_연향중_2학기_기말_중2_기출.js",
   "grade": "M2",
   "generatedAgainst": {
-    "mainReadSha": "c8fd6ad53dc0f90c04143fe6f9a040dca3444bd3",
-    "intakeReadSha": "2139e1b54064f5bf4b9685fff5e277f8acca2849",
+    "mainReadSha": "50f0678af71e837a69cb61e05c804d1a5619e98c",
+    "intakeReadSha": "51faeadecf28ac50c52330f04452aedd2da7232f",
     "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
     "sourceBlobSha": "57b2b66e2985724ca0b4d88bba1a2e027d201988",
     "sourceArchiveFile": "original/middle/m2/2final/25_연향중_2학기_기말_중2_기출.js"
@@ -23,24 +23,27 @@
     "reviewer": "GPT_M2_RESET_R1_D_20260928"
   },
   "r1Gate": {
-    "status": "HOLD",
-    "basicHardHoldCount": 2,
-    "visualComplianceHoldCount": 8,
-    "advancedMetaHoldCount": 8,
+    "status": "READY_FOR_R2E",
+    "basicHardHoldCount": 0,
+    "visualComplianceHoldCount": 0,
+    "advancedMetaHoldCount": 0,
+    "rpmSemanticUnresolved": 0,
     "resolvablePending": 0,
-    "readyForR2E": false
+    "projectionMetaOnlyCount": 16,
+    "readyForR2E": true
   },
   "materializationPatchSummary": {
-    "count": 6,
-    "questions": [
+    "count": 0,
+    "questions": [],
+    "status": "META_ONLY_PROJECTION_NOT_RELEASE_BLOCKING",
+    "legacyPatchQuestions": [
       14,
       15,
       16,
       18,
       19,
       20
-    ],
-    "status": "DETERMINISTIC_PATCH_READY"
+    ]
   },
   "items": [
     {
@@ -267,8 +270,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_456d73e6a2578c5999276080557acee53cf464a21fb0adb57e1f06e2f4a30118",
@@ -498,12 +507,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_SEMANTIC_DIRECTION_MISMATCH",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_77bdb41803d8e38bf819ade572a121911b9ef1bf783541203c671df15ec0985f",
@@ -729,8 +743,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_47bef6dc41ad02ca963e72d60e56880bf22e4ef03f260d4f7bbdb8b1d8bf775b",
@@ -956,8 +976,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_62838ae36c190edab501d68ec5a6418356618896240fc1a2eac576fea187452f",
@@ -1183,8 +1209,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_24ab42c5f0e1186703cb09c5869513ccd793bff5f3c8232dc14a59a59e7d7810",
@@ -1410,8 +1442,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_a9dc7e54d336fe53592c53fec8f9d485f4c8cb9c297ef667e6b9a2153103f893",
@@ -1643,12 +1681,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_9484d043f81b1656008d720515835c722bc55356d927de9833796572470fb14b",
@@ -1882,8 +1925,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_6e391c87ec064258ea1ebdcfa50c3437e99bbc6a66c420b67b2001b987413924",
@@ -2113,12 +2162,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_0eec9969fef909c52533d2dfc5839814365284cdce32a6490aa9923d0c63ce87",
@@ -2356,12 +2410,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_07_TARGET",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_390ecd771302444f0cd24c796e540bbc66940a9f0d1fd25cfbdc457c9c07d780",
@@ -2591,12 +2650,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_f757ff18a35d5ea0e85c8f7835cf155abf8b1e4bfefa0f1d940d83f10dc8e9ab",
@@ -2826,12 +2890,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_f68c0134e44f19ff3cc3c8532a2468379cf618e6132eeec03df18a1a62031581",
@@ -3061,12 +3130,17 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_NO_ACTIVE_M2_08_TARGET",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "RPM_ONLY",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_96a3b46003d94242ee31f25390e05ae48f9144cd2821f425a033bdd894d1b0a7",
@@ -3308,9 +3382,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -3319,8 +3393,14 @@
           "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
           "templateKey": "TPL_COMBINATION_SELECTION",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_b482ca36af05654e55333172e5d37be318ea5008c64ca0184779bdb47bcb1303",
@@ -3562,9 +3642,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -3573,8 +3653,14 @@
           "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
           "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_48b073685f281394e5fcd2a5f0bc7f478e9274835dc672b5386c4318c7ce0a38",
@@ -3816,9 +3902,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -3827,13 +3913,19 @@
           "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
           "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_aa8cb9eb15e4095d2f64e74f503fb0b920ea01e018003ec0f17aa8c1a61fa62b",
       "sourceOrdinal": 17,
-      "disposition": "TRUE_HOLD",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "input": {
         "sourceIdentity": {
           "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
@@ -3852,11 +3944,44 @@
           "subUnitKey": "M2-08-PROBABILITY_BASIC"
         },
         "semanticDecision": {
-          "primaryMethod": "주어진 두 주변확률만으로 결합사건의 확률이 결정되는지 먼저 확인한다.",
-          "decisiveStep": "독립 여부가 주어지지 않아 두 사람이 만나지 못할 확률은 유일하게 결정되지 않는다."
+          "primaryMethod": "두 사람의 약속 이행을 독립 사건으로 해석해 두 사람 모두 약속을 지킬 확률을 곱한 뒤 여사건을 구한다.",
+          "decisiveStep": "별도 종속 조건이 없으므로 독립으로 보고 (3/4)(3/5)=9/20, 따라서 만나지 못할 확률은 11/20이다.",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          }
         }
       },
-      "resolverEvidence": {},
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "rpmL3": "확률의 활용",
+        "rpmL4": "연속 시행",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "crosswalkRecordId": "M2-RPM-118",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "ownerPack": "PROBABILITY_STATISTICS",
+        "bindingIdentity": "",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "dispositionReason": "DIRECT_BINDING_GAP",
+        "activeMaterializationStatus": "BINDING_MISSING_META_ONLY",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY"
+      },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
@@ -3885,31 +4010,34 @@
         "evidenceSha": "sha256:f154ab48218fb0e4226d61fdcdca53e0e1cec94c1b846ad4dc00740c433cdb13"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "R1 remains HOLD; READY validator gate not entered"
+        "status": "PASS_TARGETED_AUTHORITY_REFRESH",
+        "validatorId": "rpm-primary-semantic-current-rule",
+        "reason": "M2-RPM-118 deterministic semantic path; projection binding is META_ONLY"
       },
       "candidateMeta": {
         "curriculum": "2015",
         "standardCourse": "중2 수학",
         "standardUnitKey": "M2-08",
         "subUnitKey": "M2-08-PROBABILITY_BASIC",
-        "problemTypeKey": null,
-        "templateKey": null,
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+        "integrationReason": "중학교 확률 current rule: 별도 종속 조건이 없으므로 독립을 기본값으로 적용",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "BASIC_HARD_HOLD",
+        "status": "META_ONLY",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
         "resolvablePending": false,
-        "reason": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-        "humanRequired": true
+        "r2AdjudicationRequired": false,
+        "humanRequired": false,
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_BINDING_PENDING"
       }
     },
     {
@@ -4152,9 +4280,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -4163,8 +4291,14 @@
           "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
           "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_eee85f4abcd64f88961a65cbd01b6247df0c538571a2feda009854666ae06d06",
@@ -4406,9 +4540,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -4417,8 +4551,14 @@
           "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
           "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_5cc65dcae052d39bfc312258d15e009791dfd819843a13e7b9196d4175963e08",
@@ -4660,9 +4800,9 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "MATERIALIZATION_PATCH_READY",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "deterministic DIRECT_BINDING_GAP target closed as explicit materialization patch",
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
         "materializationPatch": {
           "action": "ADD_EXACT_CURRICULUM_BINDING",
           "curriculum": "2015",
@@ -4671,8 +4811,14 @@
           "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
           "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
           "ownerPack": "PROBABILITY_STATISTICS"
-        }
-      }
+        },
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_df7a46a1d2551864d378ffa34389721380b230aa6e36d5a8d064be61aada21ea",
@@ -4898,8 +5044,14 @@
       "r1Resolution": {
         "status": "KEEP",
         "resolvablePending": false,
-        "reason": "fresh path resolves to current DIRECT_ACTIVE owner/binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_ACTIVE_REUSE",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_ACTIVE",
+        "r2AdjudicationRequired": false,
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "ACTIVE_REUSE"
     },
     {
       "questionUid": "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
@@ -5139,17 +5291,22 @@
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "ADVANCED_META_HOLD",
+        "status": "META_ONLY",
         "resolvablePending": false,
-        "reason": "R2_ADJUDICATION_REQUIRED_CANONICAL_OWNER_BINDING_CONFLICT",
-        "r2AdjudicationRequired": true,
-        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding"
-      }
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_PENDING",
+        "r2AdjudicationRequired": false,
+        "searchedAuthority": "RPM Primary → middle2 crosswalk → GLOBAL ACTIVE exact curriculum/L1/L2 binding",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
+        "humanRequired": false
+      },
+      "semanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY"
     },
     {
       "questionUid": "qid_v1_efe4b85d12152d8e9a9381046a7e807cf173a7ad5fd80f528c4489a81caddd3d",
       "sourceOrdinal": 23,
-      "disposition": "TRUE_HOLD",
+      "disposition": "RPM_PRIMARY_MIGRATION_GAP",
       "input": {
         "sourceIdentity": {
           "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
@@ -5168,11 +5325,44 @@
           "subUnitKey": "M2-08-PROBABILITY_BASIC"
         },
         "semanticDecision": {
-          "primaryMethod": "주어진 두 주변확률만으로 결합사건의 확률이 결정되는지 먼저 확인한다.",
-          "decisiveStep": "독립 여부가 주어지지 않아 (1)~(3)의 확률은 유일하게 결정되지 않는다."
+          "primaryMethod": "두 사람의 합격 여부를 독립 사건으로 해석해 곱셈법칙과 여사건을 적용한다.",
+          "decisiveStep": "별도 종속 조건이 없으므로 독립으로 보고 모두 합격 2/7, 모두 불합격 2/21, 적어도 한 사람 합격 19/21이다.",
+          "rpmPath": {
+            "curriculum": "2015",
+            "scope": "M2-2",
+            "majorUnit": "확률",
+            "midUnit": "확률",
+            "l3": "확률의 활용",
+            "l4": "연속 시행"
+          }
         }
       },
-      "resolverEvidence": {},
+      "resolverEvidence": {
+        "schemaVersion": "JS_ARCHIVE_RPM_ACTIVE_RESOLUTION_v1",
+        "sourceFingerprint": "sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "rpmPath": {
+          "curriculum": "2015",
+          "scope": "M2-2",
+          "majorUnit": "확률",
+          "midUnit": "확률",
+          "l3": "확률의 활용",
+          "l4": "연속 시행"
+        },
+        "rpmL3": "확률의 활용",
+        "rpmL4": "연속 시행",
+        "crosswalkFile": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "crosswalkRecordId": "M2-RPM-118",
+        "crosswalkStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "ownerPack": "PROBABILITY_STATISTICS",
+        "bindingIdentity": "",
+        "disposition": "RPM_PRIMARY_MIGRATION_GAP",
+        "dispositionReason": "DIRECT_BINDING_GAP",
+        "activeMaterializationStatus": "BINDING_MISSING_META_ONLY",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "META_ONLY"
+      },
       "difficultyEvidence": {
         "schemaVersion": "JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1",
         "status": "PASS",
@@ -5201,32 +5391,47 @@
         "evidenceSha": "sha256:4980ff2af1f36f0fdc9ab48fd4c1177dbe47c87513738588cdc929a5ff93050a"
       },
       "validatorReceipt": {
-        "status": "NOT_RUN_CONNECTOR_RUNTIME",
-        "validatorId": "rpm-active-resolver-v1",
-        "reason": "R1 remains HOLD; READY validator gate not entered"
+        "status": "PASS_TARGETED_AUTHORITY_REFRESH",
+        "validatorId": "rpm-primary-semantic-current-rule",
+        "reason": "M2-RPM-118 deterministic semantic path; projection binding is META_ONLY"
       },
       "candidateMeta": {
         "curriculum": "2015",
         "standardCourse": "중2 수학",
         "standardUnitKey": "M2-08",
         "subUnitKey": "M2-08-PROBABILITY_BASIC",
-        "problemTypeKey": null,
-        "templateKey": null,
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "integrationReason": "SOURCE_HOLD: 독립 조건 부재로 intended probability route를 deterministic하게 확정할 수 없어 advanced primary key를 주장하지 않음",
+        "integrationReason": "중학교 확률 current rule: 별도 종속 조건이 없으므로 독립을 기본값으로 적용",
         "difficultyBucket": 2,
         "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "legacyLevelCompatibility": "NORMAL"
       },
       "r1Resolution": {
-        "status": "BASIC_HARD_HOLD",
+        "status": "META_ONLY",
+        "semanticStatus": "FINAL",
+        "projectionStatus": "DIRECT_BINDING_GAP",
         "resolvablePending": false,
-        "reason": "SOURCE_CONDITION_INDEPENDENCE_UNSTATED",
-        "humanRequired": true
+        "r2AdjudicationRequired": false,
+        "humanRequired": false,
+        "reason": "RPM_SEMANTIC_FINAL_PROJECTION_BINDING_PENDING"
       }
     }
-  ]
+  ],
+  "authorityRefresh": "RPM_PRIMARY_SVG_NO_HOLD_PROB_INDEPENDENCE_20260928",
+  "authorityRefreshAt": "2026-09-28T09:37:06+09:00",
+  "rpmSemanticSummary": {
+    "FINAL": 23,
+    "HOLD": 0,
+    "unresolved": 0
+  },
+  "projectionSummary": {
+    "DIRECT_ACTIVE": 7,
+    "META_ONLY": 16,
+    "releaseBlocking": 0
+  }
 }
