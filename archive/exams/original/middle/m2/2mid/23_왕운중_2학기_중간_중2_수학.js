@@ -475,6 +475,7 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 중점과 직각삼각형의 빗변의 중점을 이용해 $AD=DH$를 보인다.\n조건 정리: $H$는 $BE$ 위에 있고 $AH\\perp BE$이다. 또한 $E$는 $CD$의 중점이고 $ABCD$는 평행사변형이다.\n풀이 방향: $AB$의 중점을 $M$이라 두고 두 삼각형의 합동을 이용한다.\n정석 풀이: $\\angle ABC=50^\\circ+20^\\circ=70^\\circ$이므로 $\\angle DAB=110^\\circ$이다.\n직각삼각형 $ABH$에서 $\\angle BAH=40^\\circ$이므로 $\\angle DAH=110^\\circ-40^\\circ=70^\\circ$이다.\n$AB$의 중점을 $M$이라 하자.\n직각삼각형 $ABH$에서 빗변의 중점은 세 꼭지점까지의 거리가 같으므로 $MH=MA=MB=\\dfrac{AB}{2}$이다.\n$E$는 $CD$의 중점이고 $AB=CD$이므로 $CE=\\dfrac{AB}{2}=MH$이다.\n또한 $M,E$가 서로 마주 보는 변 $AB,CD$의 중점이므로 점을 둘레 순서로 이은 사각형 $BEDM$은 평행사변형이고 $MD=BE$이다.\n$\\triangle MBH$에서 $MB=MH$이고 $\\angle MBH=50^\\circ$이므로 $\\angle BMH=80^\\circ$이다.\n$MD\\parallel BE$이므로 $\\angle BMD=130^\\circ$, 따라서 $\\angle HMD=50^\\circ$이다.\n한편 $\\triangle BCE$에서 $\\angle CBE=20^\\circ$, $\\angle BCE=110^\\circ$이므로 $\\angle CEB=50^\\circ$이다.\n그러므로 $MH=CE$, $MD=BE$, $\\angle HMD=\\angle CEB$이므로 $\\triangle HMD\\cong\\triangle CEB$이다.\n따라서 $HD=CB=AD$이다.\n$\\triangle ADH$는 $AD=DH$인 이등변삼각형이므로 $\\angle DAH=\\angle AHD=70^\\circ$이고, $\\angle ADH=180^\\circ-70^\\circ-70^\\circ=40^\\circ$이다.\n\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/23_왕운중_2학기_중간_중2_수학/q15-solution.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
