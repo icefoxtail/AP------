@@ -1,0 +1,69 @@
+{
+  "schema": "APMATH_SOURCE_PILOT_TIMING_v1",
+  "examId": "25_금당고_2학기_기말_고2_미적분",
+  "timeBasis": "UTC; filesystem artifact timestamps are Asia/Seoul local time converted to UTC; preparation/validation command durations are measured from tool return timing.",
+  "startAtUtc": "2026-09-28T09:44:08Z",
+  "milestones": [
+    {
+      "stage": "START_AND_SCOPE_LOCK",
+      "atUtc": "2026-09-28T09:44:08Z",
+      "elapsedSeconds": 0,
+      "basis": "Thread dispatch 09:44:06Z; worktree active at 09:44:08Z."
+    },
+    {
+      "stage": "LATEST_MAIN_NOTION_RULES_AND_SOURCE_IDENTITY_GATE",
+      "atUtc": "2026-09-28T09:46:35Z",
+      "elapsedSeconds": 147,
+      "basis": "Completed before the first source page request was generated; includes current origin/main check, required repo and Notion reads, source SHA and backlog/duplicate/HOLD checks."
+    },
+    {
+      "stage": "FULL_PAGE_PREPARE_COMPLETE",
+      "atUtc": "2026-09-28T09:46:50Z",
+      "elapsedSeconds": 162,
+      "durationSeconds": 15,
+      "basis": "Initial SOURCE_PAGES_READY call; 4 pages rendered at 220 dpi."
+    },
+    {
+      "stage": "FULL_PAGE_REVIEW_AND_INVENTORY_FREEZE",
+      "atUtc": "2026-09-28T09:57:02.652Z",
+      "elapsedSeconds": 774.652,
+      "durationSecondsSincePriorSeconds": 612.652,
+      "basis": "Frozen source_inventory.json timestamp; all four pages and 21 item identities checked."
+    },
+    {
+      "stage": "TRANSCRIPTION_AND_SOURCE_METADATA_FIRST_PASS",
+      "atUtc": "2026-09-28T10:01:53Z",
+      "elapsedSeconds": 1065,
+      "durationSecondsSincePriorSeconds": 290.348,
+      "basis": "First extraction artifact timestamp; exact text/choices and initial metadata written, followed by two source-only corrections before final extraction."
+    },
+    {
+      "stage": "MANUAL_SOURCE_PARITY_LAYOUT_FREEZE_AND_RPM_FIRST_PASS",
+      "atUtc": "2026-09-28T10:05:57Z",
+      "elapsedSeconds": 1309,
+      "durationSecondsSincePriorSeconds": 244,
+      "basis": "Manual fidelity, source freeze, exact parity, layout freeze, semantic first-pass, and current projection evidence written after direct page recheck."
+    },
+    {
+      "stage": "JS_VM_AND_STATIC_VALIDATION",
+      "atUtc": "2026-09-28T10:07:50Z",
+      "elapsedSeconds": 1422,
+      "durationSecondsSincePriorSeconds": 113,
+      "basis": "source_only_validation.json timestamp; VM/syntax, SHA, question/page/type/choice/order, blank answer/solution, visual refs, first-pass metadata and grid layout checks PASS."
+    },
+    {
+      "stage": "FINAL_SOURCE_ONLY_RECHECK_AND_REVIEWABLE_ALLOWLIST",
+      "atUtc": "2026-09-28T10:15:11Z",
+      "elapsedSeconds": 1863,
+      "durationSecondsSincePriorSeconds": 441,
+      "basis": "Source SHA, exact extracted-text binding, official identity, inventory/identity coverage, item types, source/JS parity, empty answer/solution fields, zero visual refs, source-first metadata count, freeze dependencies, VM/LaTeX and render directives rechecked; all PASS."
+    }
+  ],
+  "activeDurationAtArtifactWriteSeconds": 1863,
+  "rendering": {
+    "examSolutionAnswerBrowserRender": "NOT_RUN_USER_DIRECTIVE",
+    "questionLayoutRender": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "totalElapsedSecondsAtFinalReport": null,
+  "commitAndRemoteVerification": "Reported with actual commit/push timestamps in task closeout after commit and origin check."
+}
