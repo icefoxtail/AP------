@@ -11,8 +11,8 @@
 
 > **CURRENT QUESTION LAYOUT OVERRIDE — 2026-09-28:** 학생 노출 문제 layout은 `JS아카이브_문항조판_운영규칙_v1.md`가 최신 authority다.
 > **grid DEFAULT / subjective-2up EXCEPTION**을 적용한다. 서술형·단답형·서논술형, `choices: []`, 소문항, 장문, 그림/표만으로 2up 자동 승격 금지.
-> 실제 grid render에서 답안 작성 공간 부족이 확인되거나 사용자 명시 지시가 있을 때만 2up을 허용하며, render 미실행이면 grid 유지 + `NOT_RUN_CODEX_HANDOFF`가 기본이다.
-> evidence 없는 기존 2up은 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 재판정 대상이다.
+> 다만 코드/정적 구조상 grid 한 칸에서 발문·이미지·표·소문항이 차지하는 공간 때문에 학생 답안 작성 영역이 명백히 부족하면 **STATIC_CAPACITY_EVIDENCE**로 실제 렌더 전에도 2up을 허용한다. actual render evidence 또는 사용자 명시 지시도 유효하다.
+> render 미실행 자체는 2up 금지 사유가 아니다. 정적 공간 부족 근거가 애매할 때만 grid 유지 + `NOT_RUN_CODEX_HANDOFF`. evidence 없는 기존 2up은 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 재판정 대상이다.
 ## 0. 한 줄 원칙
 
 > **"Gemini는 검수 완료된 함수를 절대 건드리지 않는다."**
