@@ -1,0 +1,68 @@
+{
+  "stage": "01-detect-environment",
+  "generatedAt": "2026-09-28T12:36:57.770Z",
+  "workspaceRoot": "C:\\Users\\USER\\.codex\\worktrees\\visang-circle-equation\\AP------\\.codex_tmp\\visang-circle-input",
+  "probes": {
+    "node": {
+      "available": true,
+      "command": "node -v",
+      "output": "v22.22.2"
+    },
+    "npm": {
+      "available": false,
+      "command": "npm -v",
+      "error": "spawn npm ENOENT"
+    },
+    "python": {
+      "available": true,
+      "command": "python --version",
+      "output": "Python 3.12.10"
+    },
+    "python3": {
+      "available": false,
+      "command": "python3 --version",
+      "error": "Command failed: python3 --version\nPython was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.\r\n"
+    },
+    "pip": {
+      "available": true,
+      "command": "pip --version",
+      "output": "pip 26.1.2 from C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pip (python 3.12)"
+    },
+    "pip3": {
+      "available": true,
+      "command": "pip3 --version",
+      "output": "pip 26.1.2 from C:\\Users\\USER\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\pip (python 3.12)"
+    },
+    "pdftoppm": {
+      "available": true,
+      "command": "pdftoppm -v",
+      "output": "pdftoppm version 26.07.0\r\nCopyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org\r\nCopyright 1996-2011, 2022 Glyph & Cog, LLC"
+    },
+    "pdftotext": {
+      "available": false,
+      "command": "pdftotext -v",
+      "error": "spawn pdftotext ENOENT"
+    },
+    "pdfinfo": {
+      "available": true,
+      "command": "pdfinfo -v",
+      "output": "pdfinfo version 26.07.0\r\nCopyright 2005-2026 The Poppler Developers - http://poppler.freedesktop.org\r\nCopyright 1996-2011, 2022 Glyph & Cog, LLC"
+    },
+    "magick": {
+      "available": false,
+      "command": "magick -version",
+      "error": "spawn magick ENOENT"
+    },
+    "fitz": {
+      "available": true,
+      "command": "python -c import fitz; print('fitz ok')",
+      "output": "fitz ok"
+    },
+    "PIL": {
+      "available": true,
+      "command": "python -c from PIL import Image; print('PIL ok')",
+      "output": "PIL ok"
+    }
+  },
+  "status": "ok"
+}
