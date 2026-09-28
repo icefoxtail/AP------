@@ -51,9 +51,9 @@ if stale. Keep locks under repository staging so core can bind relative refs.
    `--source-asset-root archive` only read staged/source assets.
 5. Complete S4 onward in this order: independent SOURCE_ONLY solve →
    student-facing small-blackboard solution → L1/L2 → decision-isolated semantic
-   judgement → shared RPM Primary README/master/curriculum view → exact
-   grade/subject crosswalk → GLOBAL ACTIVE PT/TPL → exact curriculum binding →
-   resolver disposition → independent difficulty blind pass → deterministic
+   judgement → shared RPM Primary README/master/curriculum view → final RPM L3/L4
+   path → exact grade/subject crosswalk projection → GLOBAL ACTIVE PT/TPL and
+   exact curriculum binding, when available → independent difficulty blind pass → deterministic
    validator receipt → solution identity evidence → visual triage → EXPECTED FACT
    → needed SVG. Use
    `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` as the canonical
@@ -107,12 +107,14 @@ evidence is produced and revalidated by `archive/tools/meta-foundation/rpm-activ
 and `validate-rpm-active-receipt.mjs`; it binds the lookup order, exact current
 file hashes, resolver disposition, and deterministic validator receipt.
 
-Promotion reports `BASIC_ARCHIVE_ELIGIBLE` separately from
-`ADVANCED_META_ELIGIBLE`. An unresolved migration gap can keep the basic source,
-math, solution and L1/L2 candidate eligible while advanced metadata remains
-HOLD. A candidate/deprecated/free-text key in a production field fails the gate.
-`TRUE_TAXONOMY_GAP` never creates a new canonical key. `RPM_PRIMARY_MIGRATION_GAP`
-is not a taxonomy gap and does not by itself block BASIC eligibility.
+Promotion reports RPM semantic completeness separately from legacy projection
+and `ADVANCED_META_ELIGIBLE`. Once the source and independently verified
+solution establish a unique RPM Primary L3/L4 path, missing PT/TPL or exact
+binding remains compatibility-pending and does not create a semantic HOLD or
+block BASIC/R1/R2E progress. A candidate/deprecated/free-text key actually
+written into a production field fails the gate. `TRUE_META_HOLD` is reserved
+for an undetermined, absent, ambiguous, or contradictory RPM semantic path and
+never creates a new canonical key.
 
 `npm --prefix archive/tools/past-exam-pipeline test` covers calibration and
 handoff hardening. `npm --prefix archive/tools/pipeline-core test` covers common

@@ -40,10 +40,11 @@ frozen source
 → RPM Primary README
 → RPM CANONICAL_MASTER
 → target curriculum/scope view
+→ semantic classification FINAL from the unique RPM L3/L4 path
 → exact grade/subject RPM→ACTIVE crosswalk
 → GLOBAL ACTIVE Meta Foundation PT/TPL
 → exact curriculum/L1/L2 binding
-→ EXISTING_REUSE / FAMILY_REUSE / RPM_PRIMARY_MIGRATION_GAP / TRUE_TAXONOMY_GAP / ROUTE_OUT
+→ PROJECTION_REUSE / PROJECTION_BINDING_PENDING / PROJECTION_UNMATERIALIZED
 → independent difficulty blind pass
 → L3/L4/CrossConcept/Condition/IntegrationPattern deterministic validator receipt
 → solution identity evidence
@@ -52,14 +53,18 @@ frozen source
 → independent U1/U2/U3 review
 ```
 
-Classification starts from current source plus verified final solution,
-`primaryMethod`, and `decisiveStep`. Same-stage candidate keys, template or
-CrossConcept suggestions, heuristics, and prior verdicts are excluded from the
-semantic input. `archive/tools/meta-foundation/rpm-active-resolver.mjs` is the
-shared implementation; consumers must not copy its RPM/crosswalk/ACTIVE lookup
-logic. The RPM lookup order is mandatory; a missing ACTIVE key or binding is
-`RPM_PRIMARY_MIGRATION_GAP`, never a true taxonomy gap or authorization to mint
-a key.
+Classification starts from the current source and independently verified final
+solution, `primaryMethod`, and `decisiveStep`. A unique curriculum/scope/L3/L4
+path in RPM Primary is the semantic result. Same-stage candidate keys, template
+or CrossConcept suggestions, heuristics, and prior verdicts are excluded from
+that semantic input. Crosswalk, GLOBAL ACTIVE PT/TPL, and exact curriculum
+binding are compatibility projection lookups performed only after RPM finality.
+Missing projections, exact bindings, `RPM_ONLY`, `DIRECT_BINDING_GAP`, and
+`FAMILY_BINDING_GAP` remain `META_ONLY` projection states; they do not create a
+semantic HOLD or block BASIC/R1/R2E. `TRUE_META_HOLD` is limited to source/solution
+ambiguity, a missing/ambiguous RPM path, or an RPM master/view contradiction.
+`archive/tools/meta-foundation/rpm-active-resolver.mjs` is the shared implementation;
+consumers must not copy its RPM/crosswalk/ACTIVE lookup logic.
 
 `build-completion-evidence.mjs` creates only hash-bound `NOT_TESTED` drafts for
 `solution_identity_evidence.json` and `meta_decision_evidence.json`. A reviewer
@@ -68,14 +73,16 @@ Solution identity uses `sourceArchiveFile`, `sourceIdentityKey`, `sourceOrdinal`
 `contentHash`, `choicesHash`, `imageRefHash`, `sourceIdentityFingerprint`, and
 `solutionHash` and cannot be bound by question number or array index alone.
 
-`BASIC_ARCHIVE_ELIGIBLE` and `ADVANCED_META_ELIGIBLE` are independent results.
-A migration gap may leave BASIC eligible while advanced metadata remains
-`HOLD`; canonical fields stay blank rather than carrying a candidate/deprecated
-key. A `TRUE_TAXONOMY_GAP` is evidence/HOLD only and cannot create or promote a
-new key. Difficulty is a separate fresh blind pass and is never inferred from
+`BASIC_ARCHIVE_ELIGIBLE`, RPM semantic completeness, legacy projection
+completeness, and `ADVANCED_META_ELIGIBLE` are separate results. RPM semantic
+FINAL remains final when a projection is pending. Keep unavailable PT/TPL keys
+blank; never carry candidate/deprecated keys into production. A true RPM
+semantic HOLD is evidence-only and cannot create or promote a new key. An
+invalid canonical key actually written into production remains a release
+blocker. Difficulty is a separate fresh blind pass and is never inferred from
 legacy `level`. The deterministic validator receipt is required before
 advanced Meta closure; runtime/Archive parity binds the same UID and evidence
-hashes.
+hashes when a projection is materialized.
 
 
 ## Source-of-truth order
