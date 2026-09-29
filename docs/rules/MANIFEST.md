@@ -21,7 +21,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md | 37687 bytes | sha256 3c389e473fcd780079d3caa649f159b56e968a4c779201223d604f54c35008ab
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
-- 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 8227 bytes | sha256 7335b90e96f1d9d01f945666275901b51757b30eebb82bedc4044ce2b0bac978
+- 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 10947 bytes | sha256 9e031446c534e353abb76f8333241b3b270ce7a4425be5463103340c4d88394b
 - 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 6854 bytes | sha256 697d2d8ce9be46f41f58cf63c406a922a2988a9040385065ee8dd1e18ca9d710
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 18689 bytes | sha256 5a0d5c47fb61780f729ce7625d7840e5b2d91096c92ce4ab439253c3df41a7ed
