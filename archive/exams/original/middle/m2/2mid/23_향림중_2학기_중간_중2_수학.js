@@ -148,8 +148,8 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] 그래프를 아래로 $5$만큼 평행이동하면 함수값 전체에서 $5$를 뺀다.\n조건 정리: $2x+y+a=0$은 $y=-2x-a$이고, 이동한 그래프 $bx+y+4=0$은 $y=-bx-4$이다.\n풀이 방향: $y=-2x-a$를 아래로 $5$만큼 이동한 식과 $y=-bx-4$의 계수를 비교한다.\n정석 풀이: 이동한 식은 $y=-2x-a-5$이다. 따라서 $-2x-a-5=-bx-4$이므로 $b=2$, $-a-5=-4$에서 $a=-1$이다. 그러므로 $y=ax+b=-x+2$이다. $x$절편에서는 $y=0$이므로 $0=-x+2$, 따라서 $x=2$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate"
   },
@@ -208,8 +208,8 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] $x=p$, $y=q$와 두 좌표축으로 둘러싸인 직사각형의 가로와 세로는 각각 $p$, $q$이다.\n조건 정리: $p$, $q$는 자연수이고 직사각형의 넓이가 $12$이므로 $pq=12$이다.\n풀이 방향: 각 보기의 두 수를 곱하여 $12$가 되는지 확인한다.\n정석 풀이: $2\\times6=12$, $3\\times4=12$, $4\\times2=8$, $6\\times2=12$, $12\\times1=12$이다. 따라서 넓이가 $12$가 되지 않는 순서쌍은 $(4,2)$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -369,7 +369,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -433,7 +434,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q14-solution.svg"
   },
   {
     "id": 15,
@@ -465,7 +467,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q15-solution.svg"
   },
   {
     "id": 16,
@@ -620,10 +623,11 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 큰 삼각형에서 작은 삼각형을 빼고, 평행선 사이에 있는 두 점에서 같은 밑변으로 만든 삼각형의 넓이가 같음을 이용한다.\n조건 정리: 점 $B$, $C$, $E$는 한 직선 위에 있고 $AC\\parallel DE$이다. $\\triangle ABE$의 넓이는 $17\\,\\mathrm{cm}^2$, $\\triangle ABC$의 넓이는 $8\\,\\mathrm{cm}^2$이다.\n풀이 방향: 먼저 $\\triangle ACE$의 넓이를 구한 뒤, $\\triangle ACD$와 비교한다.\n정석 풀이: $\\triangle ABE$는 $\\triangle ABC$와 $\\triangle ACE$로 나뉘므로 $[ACE]=17-8=9\\,\\mathrm{cm}^2$이다. $AC\\parallel DE$이므로 점 $D$와 $E$에서 직선 $AC$까지의 높이는 같다. 따라서 같은 밑변 $AC$를 가지는 $\\triangle ACD$와 $\\triangle ACE$의 넓이는 같아 $[ACD]=9\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/23_향림중_2학기_중간_중2_수학/q20.png",
-    "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
-    "subUnit": "삼각형의 성질",
+    "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+    "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q20-solution.svg"
   },
   {
     "id": 21,
@@ -699,7 +703,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -725,6 +730,7 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_향림중_2학기_중간_중2_수학/q24-solution.svg"
   }
 ];
