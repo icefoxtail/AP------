@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "GEUMDANG_H1_2MID_VISUAL_OBSERVED_v1",
+  "exam": "26_금당고_2학기_중간_고1_기출",
+  "checkpoint": "03_q11_q15",
+  "reviewedCommit": "22ceda8711765ccb55972dc527fc3e50acf29d2f",
+  "q13RepairCommit": "8e79333460f23224c296ef7cdd72d521cceb2394",
+  "branch": "review/high/h1/26-geumdang-2mid-r1-20260930",
+  "toleranceMathUnit": 0.05,
+  "observed": {
+    "q11": {
+      "svgSha256": "sha256:053568775672450639df3672255c898486f085c938e0fd07372a0e85ceeffa3d",
+      "blob": "077ae8b831bb37595340e4e92063bcbc82074e99",
+      "parallelSlopes": [
+        0.3333333357142857,
+        0.3333333357142857
+      ],
+      "parallelDelta": 0,
+      "perpendicularSlopes": [
+        -1,
+        1
+      ],
+      "perpendicularProduct": -1,
+      "result": "PASS"
+    },
+    "q12": {
+      "svgSha256": "sha256:5474da5b2bf0bb66a7b3413080bbd4ba04a50eaaa4948f29c6aa9171dde2e5e9",
+      "blob": "3fc337f672595060712e3add302841837d0dbc67",
+      "O": [
+        2,
+        -1
+      ],
+      "H": [
+        0.2,
+        1.4
+      ],
+      "A": [
+        3.4,
+        3.8
+      ],
+      "B": [
+        -3,
+        -1
+      ],
+      "OH": 3,
+      "AH": 4,
+      "BH": 4,
+      "OA": 5,
+      "chordPerpendicularOH": true,
+      "result": "PASS_KEEP_EXISTING"
+    },
+    "q13": {
+      "svgSha256": "sha256:a9a8be733f5f3cd3db1247bf7ad5a9a6d23e096fd86b101ddd5a20908fda1493",
+      "blob": "5fe390baeb944705c3151072d20c227bbd8f87f3",
+      "P": [
+        -1,
+        1
+      ],
+      "C": [
+        3,
+        2
+      ],
+      "T1": [
+        2.483006025,
+        0.067975875
+      ],
+      "T2": [
+        1.634641025,
+        3.4614359
+      ],
+      "tangentSlopes": [
+        -0.2675918785714286,
+        0.9342585464285713
+      ],
+      "tangentProduct": -0.24999999951023363,
+      "radiusTangentProducts": [
+        -0.9999999807620016,
+        -1.000000003392903
+      ],
+      "repair": "semantic data-role owner binding crossed before repair; swapped tangent role labels without changing geometry",
+      "result": "PASS_AFTER_REPAIR"
+    },
+    "q14": {
+      "svgSha256": "sha256:a158bf469368a8eee3c629f0938b49c8b2c97b5df4731daab8d247440cd26eb1",
+      "blob": "08c46e39447a914dddcb7a8887abd20d47606400",
+      "A": [
+        -2,
+        -3
+      ],
+      "Aprime": [
+        -3,
+        -2
+      ],
+      "P0": [
+        1,
+        1
+      ],
+      "Q0": [
+        3.4,
+        2.8
+      ],
+      "C": [
+        5,
+        4
+      ],
+      "AprimeP0Q0CCollinear": true,
+      "AprimeQ0": 8,
+      "Q0C": 2,
+      "P0OnYeqX": true,
+      "result": "PASS_KEEP_EXISTING"
+    },
+    "q15": {
+      "svgSha256": "sha256:2fa6d01851da5d374138383a59454fc27426e0140080df685ba7982c1adf1562",
+      "blob": "db92355c17712fe0864279f04f6e5263ddc2eea0",
+      "A": [
+        1,
+        0
+      ],
+      "B": [
+        -1,
+        2
+      ],
+      "C": [
+        2,
+        3
+      ],
+      "P": [
+        4.236066666666667,
+        5.236066666666667
+      ],
+      "radiusObserved": 3.162275806370399,
+      "radiusExpected": 3.1622776601683795,
+      "ABslope": -1,
+      "CPslope": 1,
+      "tangentSlope": -1,
+      "CPTangentPerpendicular": true,
+      "result": "PASS_KEEP_EXISTING"
+    }
+  },
+  "staticSafety": {
+    "q11": {
+      "svgLatex": false,
+      "externalOrScript": false
+    },
+    "q12": {
+      "svgLatex": false,
+      "externalOrScript": false
+    },
+    "q13": {
+      "svgLatex": false,
+      "externalOrScript": false
+    },
+    "q14": {
+      "svgLatex": false,
+      "externalOrScript": false
+    },
+    "q15": {
+      "svgLatex": false,
+      "externalOrScript": false
+    }
+  },
+  "sourceMathSolution": {
+    "q11": "PASS",
+    "q12": "PASS",
+    "q13": "PASS",
+    "q14": "PASS",
+    "q15": "PASS",
+    "answerConflictCount": 0,
+    "curriculumFailureCount": 0
+  },
+  "visualDisposition": {
+    "q11": "ADD_PASS",
+    "q12": "KEEP_PASS",
+    "q13": "ADD_PASS_AFTER_REPAIR",
+    "q14": "KEEP_PASS",
+    "q15": "KEEP_PASS"
+  },
+  "itemHoldCount": 0,
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "cumulativeReview1Progress": "15/20",
+  "nextStartQuestionId": 16,
+  "overall": "PASS_CODE_FIRST"
+}
