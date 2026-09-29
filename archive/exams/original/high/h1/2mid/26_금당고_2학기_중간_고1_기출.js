@@ -55,7 +55,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q01-solution.svg",
+    "solutionImageAlt": "중심 C(-2,3)을 공유하는 세 원과 k=0,1,2,3,4에서의 반지름을 나타낸 해설 그림",
+    "solutionImageCaption": "반지름의 제곱이 5, 8, 9로 양수인 정수 k=0,1,2,3,4에서 원이 성립한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -165,7 +169,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q03-solution.svg",
+    "solutionImageAlt": "원 x²+y²=13과 접점 T(-2,3), 접선 -2x+3y=13, 접선 위의 점 P(1,5)를 나타낸 해설 그림",
+    "solutionImageCaption": "접점 T에서 반지름 OT는 접선에 수직이고, 점 P(1,5)는 접선 -2x+3y=13 위에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -220,7 +228,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "점 A(-2,3)을 x방향으로 1, y방향으로 4만큼 평행이동해 B(-1,7)이 되는 해설 그림",
+    "solutionImageCaption": "좌표 변화량은 x방향 +1, y방향 +4이므로 a=1, b=7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -277,7 +289,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q05-solution.svg",
+    "solutionImageAlt": "중심 C(3,-2), 반지름 4인 원과 y=x 대칭이동 후의 중심 C'(-2,3), 반지름 4인 원을 나타낸 해설 그림",
+    "solutionImageCaption": "y=x에 대한 대칭이동에서는 중심의 두 좌표가 서로 바뀌고 반지름은 그대로 유지된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
