@@ -114,6 +114,29 @@ const metadata = readJson(metadataPath);
 const targetMeta = metadata.records.filter(r=>normalizeFile(r.sourceArchiveFile)===source).sort((a,b)=>Number(a.sourceOrdinal)-Number(b.sourceOrdinal));
 if (targetMeta.length !== bank.length) throw new Error("metadata denominator mismatch");
 
+// A newly registered exam first receives placeholder metadata rows with
+// review_required / registration_pending_semantic_review. REVIEW2 may later
+// promote canonical semantic fields in the production source JS. Only for
+// those still-pending rows, hydrate the sidecar from that reviewed source
+// before the strict source/metadata parity gate below. Already-approved rows
+// remain immutable here: any later source drift must still fail parity.
+const pendingSemanticStatuses = new Set(["registration_pending_semantic_review"]);
+const sourceSemanticFields = [
+  "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit",
+  "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys",
+  "integrationPattern", "difficultyBucket", "difficultyConfidence",
+  "difficultyBoundaryFlag", "legacyLevelCompatibility"
+];
+for (let i=0;i<bank.length;i++) {
+  const q = bank[i], meta = targetMeta[i];
+  if (Number(meta.sourceOrdinal)!==i+1) throw new Error("metadata ordinal mismatch #"+(i+1));
+  const pending = meta.reviewStatus==="review_required" || pendingSemanticStatuses.has(meta.metadataStatus);
+  if (!pending) continue;
+  for (const field of sourceSemanticFields) {
+    if (q[field] !== undefined) meta[field] = Array.isArray(q[field]) ? [...q[field]] : q[field];
+  }
+}
+
 const registry = readJson("archive/data/meta-foundation/canonical/registry_index.json");
 const packVersion = new Map((registry.activePacks||[]).filter(x=>x.status==="ACTIVE").map(x=>[x.id,x.version]));
 const taxonomy = readJson("archive/data/meta-foundation/compiled/taxonomy_registry.json");
