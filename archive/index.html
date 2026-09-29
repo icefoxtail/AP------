@@ -2054,6 +2054,7 @@ async function init() {
     document.getElementById('examPeriodFilter').addEventListener('change', onFilterChange);
 
     renderFeatured();
+    if (await window.openArchive2SavedPaperIssue?.()) return;
     if (await window.openArchive2OriginalIssue?.()) return;
     await openPendingUnitPastAssignmentFromUrl();
 }
@@ -2629,6 +2630,7 @@ function printIndexPendingGeneralExam() {
 }
 
 function getIndexExamTitle(item) {
+    if (item?.savedPaperId) return String(item.title || item.identityTitle || '저장한 시험지').trim();
     if (isUnitPastExamItem(item) && (item?.identityTitle || item?.title)) return String(item.identityTitle || item.title).trim();
     const baseTitle = item.school || item.topic || String(item.file || '').replace('.js', '');
     return `${baseTitle} ${item.subject || ''}`.trim();
@@ -2662,6 +2664,7 @@ function getIndexAssignmentSourceType(item) {
 }
 
 function getIndexAssignmentBatchId(item, gradeLabel) {
+    if (item?.savedPaperId && item?.savedPaperAssignmentBatchId) return item.savedPaperAssignmentBatchId;
     const fileKey = String(item?.unitPastSnapshotKey || item?.file || 'archive').replace(/[^a-zA-Z0-9_-]+/g, '_');
     const gradeKey = String(gradeLabel || 'class').replace(/[^a-zA-Z0-9가-힣_-]+/g, '_');
     return `batch_archive_${fileKey}_${gradeKey}_${Date.now()}`;
@@ -2676,7 +2679,14 @@ async function registerIndexClassExamAssignment(classRow, item, options = {}) {
     const questionCount = resolveExamQuestionCountForAssignment(item);
     if (!questionCount) throw new Error('question count required');
     const gradeLabel = options.gradeLabel || getIndexClassGrade(classRow) || item?.grade || '';
-    const payload = {
+    const payload = item?.savedPaperId ? {
+        contract_version: 'archive2-v1',
+        saved_paper_id: item.savedPaperId,
+        assignment_batch_id: options.assignmentBatchId || getIndexAssignmentBatchId(item, gradeLabel),
+        class_id: classRow.id,
+        student_ids: options.studentIds || [],
+        exam_date: new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0]
+    } : {
         class_id: classRow.id,
         exam_title: getIndexExamTitle(item),
         exam_date: new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -2743,6 +2753,7 @@ function buildAssignTargetPreviewUrl() {
         url.searchParams.set('mode', 'exam');
         url.searchParams.set('qpp', String(AssignTarget.qpp || 4));
         url.searchParams.set('q', String(resolveExamQuestionCountForAssignment(item) || 0));
+        if(item?.savedPaperId)url.searchParams.set('archive2SavedStorageVersion','2');
         return url.toString();
     }
     const url = params.has('archive2Issue')
@@ -3306,6 +3317,15 @@ async function assignTargetProcessOneClass(classId) {
             qpp: AssignTarget.qpp,
             studentIds: st.studentIds ? [...st.studentIds] : (st.roster||[]).map(s=>s.id)
         });
+        if (AssignTarget.item?.savedPaperId && registration.saved && registration.assignment?.id) {
+            AssignTarget.progress[classId] = {
+                status: 'success',
+                assignmentId: registration.assignment.id,
+                pdfPending: Boolean(registration.pdfFailure),
+                pdfError: registration.pdfFailure || ''
+            };
+            return;
+        }
         if (st.studentIds && !registration.saved) {
             const excludedIds = st.roster.filter(s => !st.studentIds.has(s.id)).map(s => s.id);
             if (excludedIds.length) {
@@ -3341,11 +3361,21 @@ function renderAssignTargetProgressView() {
         const st = AssignTarget.classState[id];
         const p = AssignTarget.progress[id];
         const icon = p.status === 'success' ? '✔' : p.status === 'error' ? '✕' : '…';
-        return `<div class="assign-progress-row ${p.status}"><span class="icon">${icon}</span><span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : ''}</span></div>`;
+        const savedPaperPdfState = AssignTarget.item?.savedPaperId && p.status === 'success' && p.pdfPending;
+        return `<div class="assign-progress-row ${p.status}">
+            <span class="icon">${icon}</span>
+            <div style="flex:1 1 auto; min-width:0;">
+                <span>${escapeModalText(st.row.name || '')}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : savedPaperPdfState ? ' — 배포 저장 완료 · PDF 준비 필요' : ''}</span>
+                ${savedPaperPdfState && p.pdfError ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">${escapeModalText(p.pdfError)}</small>` : ''}
+                ${savedPaperPdfState && p.pdfRetrying ? '<small style="display:block; margin-top:4px; color:var(--text-sub);">PDF를 다시 준비하고 있습니다.</small>' : ''}
+            </div>
+            ${savedPaperPdfState && !p.pdfRetrying ? `<button type="button" class="modal-btn-cancel" style="width:auto; min-width:132px; min-height:44px; margin:0; padding:10px 16px; flex:0 0 auto; color:var(--blue-main);" onclick="assignTargetRetrySavedPaperPdf('${escapeModalText(id)}')">PDF 다시 준비</button>` : ''}
+        </div>`;
     }).join('');
 
     const anyError = classIds.some(id => AssignTarget.progress[id].status === 'error');
     const anyPending = classIds.some(id => AssignTarget.progress[id].status === 'pending');
+    const anySavedPaperPdfPending = Boolean(AssignTarget.item?.savedPaperId) && classIds.some(id => AssignTarget.progress[id].status === 'success' && AssignTarget.progress[id].pdfPending);
 
     assignTargetBodyEl().innerHTML = `
         <div class="assign-target-panel">
@@ -3356,13 +3386,40 @@ function renderAssignTargetProgressView() {
                 ${rowsHtml}
             </div>
             <div class="assign-target-foot">
-                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '실패한 반만 다시 시도할 수 있습니다.' : '모두 완료되었습니다.')}</div>
+                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '저장에 실패한 반만 배포를 다시 시도할 수 있습니다.' : anySavedPaperPdfPending ? '학생 배포는 저장됐습니다. 아래 버튼은 기존 과제의 PDF만 다시 준비합니다.' : '모두 완료되었습니다.')}</div>
                 <div class="assign-foot-btns">
                     ${(!anyPending && anyError) ? '<button class="modal-btn-primary" onclick="assignTargetRetryFailed()">실패한 반만 재시도</button>' : ''}
                     ${(!anyPending && !anyError) ? '<button class="modal-btn-primary" onclick="closeModal()">닫기</button>' : ''}
                 </div>
             </div>
         </div>`;
+}
+
+async function assignTargetRetrySavedPaperPdf(classId) {
+    if (!AssignTarget?.item?.savedPaperId) return;
+    const progress = AssignTarget.progress?.[classId];
+    if (!progress?.assignmentId || !progress.pdfPending || progress.pdfRetrying) return;
+    progress.pdfRetrying = true;
+    renderAssignTargetProgressView();
+    try {
+        const authHeader = getIndexAssignmentAuthHeader();
+        if (!authHeader) throw new Error('교사 로그인이 필요합니다.');
+        const response = await fetch(`${ARCHIVE_AP_API_BASE}/class-exam-assignments/${encodeURIComponent(progress.assignmentId)}/pdf`, {
+            method: 'POST',
+            headers: authHeader
+        });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || data.assignment?.pdf_status !== 'ready')
+            throw new Error(data.assignment?.pdf_error || data.error || 'PDF 파일을 아직 준비하지 못했습니다.');
+        progress.pdfPending = false;
+        progress.pdfError = '';
+    } catch (error) {
+        progress.pdfError = String(error?.message || 'PDF 파일을 아직 준비하지 못했습니다.');
+    } finally {
+        progress.pdfRetrying = false;
+        renderAssignTargetProgressView();
+    }
+    assignTargetMaybeFinish();
 }
 
 async function assignTargetRetryFailed() {
@@ -3380,6 +3437,10 @@ function assignTargetMaybeFinish() {
     const allSuccess = Object.values(AssignTarget.progress).every(p => p.status === 'success');
     if (!allSuccess) return;
     if (AssignTarget.grade) loadAssignmentBoardForGrade(AssignTarget.grade);
+    if (AssignTarget.item?.savedPaperId && Object.values(AssignTarget.progress).some(p => p.pdfPending)) {
+        renderAssignTargetProgressView();
+        return;
+    }
     setTimeout(() => assignTargetFinishAndOpenEngine(), 700);
 }
 
@@ -3453,7 +3514,12 @@ function goEngine(item, action, qpp, options = {}) {
 
 function goUnitPastMixedEngine(item, action, qpp, options = {}) {
     const snapshotKey = item?.unitPastSnapshotKey || '';
-    if (!snapshotKey || !localStorage.getItem(`mixedQuestions_${snapshotKey}`)) {
+    let hasSnapshot = false;
+    if (snapshotKey) {
+        try { hasSnapshot = !!sessionStorage.getItem(`mixedQuestions_${snapshotKey}`); } catch (e) {}
+        try { if (!hasSnapshot) hasSnapshot = !!localStorage.getItem(`mixedQuestions_${snapshotKey}`); } catch (e) {}
+    }
+    if (!snapshotKey || !hasSnapshot) {
         alert('단원별 기출 데이터가 만료되었습니다. 단원별 기출 화면에서 다시 준비해 주세요.');
         return;
     }
@@ -3461,6 +3527,7 @@ function goUnitPastMixedEngine(item, action, qpp, options = {}) {
     url.searchParams.set('key', snapshotKey);
     url.searchParams.set('mode', action || 'exam');
     url.searchParams.set('qpp', String(qpp || 4));
+    if(item?.savedPaperId)url.searchParams.set('archive2SavedStorageVersion','2');
     const questionCount = resolveExamQuestionCountForAssignment(item);
     if (questionCount) url.searchParams.set('q', String(questionCount));
     if (options.submitQr) {
@@ -3523,6 +3590,6 @@ window.onload = function () {
 <script src="archive2-core.js"></script>
 <script src="archive2-source.js"></script>
 <script src="archive2-output.js"></script>
-<script src="archive2-entry.js?v=20260917-navigation"></script>
+<script src="archive2-entry.js?v=20260929-saved-paper-session-2"></script>
 </body>
 </html>

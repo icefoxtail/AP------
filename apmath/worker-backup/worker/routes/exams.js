@@ -3,6 +3,7 @@ import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isSt
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
+import { handleArchiveSavedPapers } from './archive-saved-papers.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -1021,6 +1022,11 @@ export async function handleExams(request, env, teacher, path, url) {
   const method = request.method;
   const resource = path[1];
   const id = path[2];
+
+  if (resource === 'archive-saved-papers') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    return handleArchiveSavedPapers(request, env, currentTeacher, path, url);
+  }
 
   if (resource === 'exam-blueprints') {
     const currentTeacher = await requireTeacher(request, env, teacher);

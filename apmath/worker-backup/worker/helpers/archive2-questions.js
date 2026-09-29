@@ -109,9 +109,14 @@ export async function validateNormalBlueprint(env, questions, input) {
     fail("원본 source 파일이 catalog와 일치하지 않습니다.", 409);
   return exam.effectiveBrowseGrade;
 }
-export async function validateApprovedMixedQuestions(env, questions, input) {
+export async function validateApprovedMixedQuestions(
+  env,
+  questions,
+  input,
+  { allowStaleIndex = false } = {},
+) {
   const data = await loadCatalog(env);
-  if (data.indexVersion !== input.index_version)
+  if (!allowStaleIndex && data.indexVersion !== input.index_version)
     fail("catalog 버전이 변경되었습니다. 문제지를 다시 검증하세요.", 409);
   const filters = input?.selection_filters;
   if (
@@ -132,8 +137,16 @@ export async function validateApprovedMixedQuestions(env, questions, input) {
   );
   for (const q of questions || []) {
     const record = byUid.get(q.questionUid);
+    const sourceFile = norm(
+      q.sourceArchiveFile || q._sourceFile || q.sourceFile || q.source_archive_file,
+    );
+    const sourceOrdinal = Number(
+      q.sourceOrdinal ?? q._sourceQuestionOrdinal ?? q.source_question_ordinal,
+    );
     if (
       !record ||
+      sourceFile !== record.sourceFile ||
+      sourceOrdinal !== Number(record.sourceOrdinal) ||
       !core.eligibility(record, {
         includeExtended: input.include_extended === true,
       }).ok ||
@@ -154,15 +167,21 @@ export async function validateApprovedMixedQuestions(env, questions, input) {
       q.sourceFingerprint !== fingerprint
     )
       fail("문항 내용 fingerprint가 일치하지 않습니다.", 409);
-    for (const field of core.META_FIELDS)
-      if (
-        q[field] !== undefined &&
-        JSON.stringify(q[field]) !== JSON.stringify(record[field])
-      )
-        fail("canonical metadata parity mismatch: " + field, 409);
+    // A saved-paper request may have been composed against an older catalog.
+    // In that path, content identity and the current requested scope still have
+    // to match, while canonical metadata is refreshed from the current server
+    // record. Ordinary assignment validation remains strict.
+    if (!allowStaleIndex)
+      for (const field of core.META_FIELDS)
+        if (
+          q[field] !== undefined &&
+          JSON.stringify(q[field]) !== JSON.stringify(record[field])
+        )
+          fail("canonical metadata parity mismatch: " + field, 409);
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
   }
+  return data.indexVersion;
 }
 // Original issue needs verified source bytes/ordinal identity, not automatic
 // selection approval. All raw fields (including visual/layout fields) are hashed.
@@ -392,18 +411,34 @@ export async function blueprintInsertStatements(
   const statements = [];
   for (let i = 0; i < values.length; i += 6) {
     const batch = values.slice(i, i + 6);
-    statements.push(
-      env.DB.prepare(
-        `INSERT ${options.original ? "" : "OR IGNORE "}INTO exam_blueprints (${columns.join(",")}) VALUES ${batch.map(() => `(${columns.map(() => "?").join(",")})`).join(",")}${
-          options.original
-            ? ` ON CONFLICT(archive_file,question_no) DO UPDATE SET ${columns
-                .slice(2)
-                .map((c) => `${c}=excluded.${c}`)
-                .join(",")} WHERE excluded.source_question_uid IS NOT NULL`
-            : ""
-        }`,
-      ).bind(...batch.flat()),
-    );
+    if (options.assignmentGuard?.writeKey) {
+      // Saved-paper assignments can share one archive_file across classes.
+      // Gate each blueprint row on this exact assignment inside the same D1
+      // batch, so a concurrent soft-delete cannot create orphan/shared rows.
+      const guardedRows = batch.map(() =>
+        `SELECT ${columns.map(() => "?").join(",")} WHERE EXISTS (
+          SELECT 1 FROM class_exam_assignments WHERE archive2_write_key=?
+        )`,
+      );
+      statements.push(
+        env.DB.prepare(
+          `INSERT OR IGNORE INTO exam_blueprints (${columns.join(",")}) ${guardedRows.join(" UNION ALL ")}`,
+        ).bind(...batch.flatMap((row) => [...row, options.assignmentGuard.writeKey])),
+      );
+    } else {
+      statements.push(
+        env.DB.prepare(
+          `INSERT ${options.original ? "" : "OR IGNORE "}INTO exam_blueprints (${columns.join(",")}) VALUES ${batch.map(() => `(${columns.map(() => "?").join(",")})`).join(",")}${
+            options.original
+              ? ` ON CONFLICT(archive_file,question_no) DO UPDATE SET ${columns
+                  .slice(2)
+                  .map((c) => `${c}=excluded.${c}`)
+                  .join(",")} WHERE excluded.source_question_uid IS NOT NULL`
+              : ""
+          }`,
+        ).bind(...batch.flat()),
+      );
+    }
   }
   return statements;
 }

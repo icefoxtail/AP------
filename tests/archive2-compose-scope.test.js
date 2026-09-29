@@ -50,7 +50,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, planRows, request, bucketButtons, newDraft, draft, applyDraft};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, planRows, request, bucketButtons, newDraft, draft, applyDraft, saveWorkSignature};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -201,8 +201,10 @@ test('explicit selected-source entry and saved draft restoration retain the inte
 
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
-  for (const file of ['archive2-core.js', 'archive2-workspace.js', 'meta-foundation-runtime.js'])
+  for (const file of ['archive2-core.js', 'meta-foundation-runtime.js'])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260927-'));
+  for (const file of ['archive2-workspace.js', 'archive2-library.js', 'archive2-navigation.js'])
+    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260929-saved-library-'));
 });
 
 test('fresh BASIC includes every difficulty and unclassified metadata without preselecting 2 and 3', () => {
@@ -283,4 +285,43 @@ test('old unopened 2/3 defaults migrate to all while saved explicit and generate
   const generated = { ...old, selected: [{ questionUid: record.questionUid, rowId: 'paper', sourceFingerprint: record.sourceFingerprint }] };
   w.applyDraft(generated);
   assert.deepEqual(plain(w.state.buckets), [2, 3]);
+});
+
+test('saved-paper links are tied to the current work signature and fresh drafts clear prior save identity', () => {
+  const { w } = harness();
+  const record = catalog.records.find(row => core.basicEligibility(row).ok);
+  const scope = core.pathKey(record, 4);
+  w.state.filters = { grade: record.effectiveBrowseGrade };
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  const savedSignature = w.saveWorkSignature();
+  w.state.saveResultSignature = savedSignature;
+  w.state.savedPaperIds = ['00000000-0000-4000-8000-000000000001'];
+  w.state.saveMessage = '시험지 1개를 저장했습니다.';
+  assert.match(w.renderInspector(), /index\.html\?savedPaper=00000000-0000-4000-8000-000000000001/);
+  w.state.header = { ...w.state.header, title: '검수: 저장 이후 수정한 시험지' };
+  assert.notEqual(w.saveWorkSignature(), savedSignature, 'output title changes invalidate the old saved-paper receipt');
+  assert.doesNotMatch(w.renderInspector(), /index\.html\?savedPaper=/, 'editing invalidates the old direct-distribution link');
+  assert.match(w.renderInspector(), /현재 편집본은 저장되지 않았습니다/);
+  w.newDraft();
+  assert.equal(w.state.saveMessage, '');
+  assert.deepEqual(plain(w.state.savedPaperIds), []);
+  assert.equal(w.state.saveBatchId, '');
+  assert.equal(w.state.saveSignature, '');
+  assert.equal(w.state.saveResultSignature, '');
+  const legacyDraft = plain(w.draft());
+  for (const key of ['saveBatchId', 'saveSignature', 'savedPaperIds', 'saveMessage', 'saveError', 'saveResultSignature']) delete legacyDraft[key];
+  w.state.saveBatchId = 'stale-legacy-batch';
+  w.state.saveSignature = 'stale-legacy-signature';
+  w.state.savedPaperIds = ['00000000-0000-4000-8000-000000000001'];
+  w.state.saveMessage = 'stale success';
+  w.state.saveError = 'stale error';
+  w.state.saveResultSignature = 'stale-result';
+  w.applyDraft(legacyDraft);
+  assert.equal(w.state.saveMessage, '');
+  assert.deepEqual(plain(w.state.savedPaperIds), []);
+  assert.equal(w.state.saveBatchId, '');
+  assert.equal(w.state.saveSignature, '');
+  assert.equal(w.state.saveResultSignature, '');
 });
