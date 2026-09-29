@@ -1716,10 +1716,23 @@ def build_engine_db():
         )
 
     generated_by_file = {str(item.get("file", "")): item for item in exams_list}
-    removed = sorted(set(previous_by_file) - set(generated_by_file))
+    # This builder owns only PRODUCTION_EXAM_ROOTS. Other DB roots (for example
+    # textbooks/) are maintained by separate pipelines and must be preserved
+    # verbatim instead of being treated as disappeared production files.
+    managed_previous_by_file = {
+        file: item
+        for file, item in previous_by_file.items()
+        if normalize_slash(file).split("/", 1)[0] in PRODUCTION_EXAM_ROOTS
+    }
+    passthrough_previous = [
+        dict(item)
+        for file, item in previous_by_file.items()
+        if normalize_slash(file).split("/", 1)[0] not in PRODUCTION_EXAM_ROOTS
+    ]
+    removed = sorted(set(managed_previous_by_file) - set(generated_by_file))
     if removed:
         raise ValueError(
-            "production JS disappeared from the inventory; refusing to delete DB entries: "
+            "production JS disappeared from the managed inventory; refusing to delete DB entries: "
             + ", ".join(removed[:20])
             + (f" (외 {len(removed) - 20}개)" if len(removed) > 20 else "")
         )
@@ -1761,6 +1774,8 @@ def build_engine_db():
             merged_exams.append(generated)
             new_count += 1
 
+    merged_exams.extend(passthrough_previous)
+    preserved_count += len(passthrough_previous)
     exams_list = sorted(merged_exams, key=sort_key)
 
     db_content = {"exams": exams_list}
