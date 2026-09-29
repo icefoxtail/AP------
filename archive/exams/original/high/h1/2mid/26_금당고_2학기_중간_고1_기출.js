@@ -649,7 +649,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "k=2/3에서 평행한 두 직선과 k=2에서 수직인 두 직선을 두 패널로 나타낸 해설 그림",
+    "solutionImageCaption": "평행일 때 두 기울기는 모두 1/3이고, 수직일 때 두 기울기는 -1과 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -769,7 +773,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "점 P(-1,1)에서 원에 그은 두 접선과 두 접점 T1, T2, 중심 C(3,2)를 나타낸 해설 그림",
+    "solutionImageCaption": "두 접점에서 반지름은 각 접선에 수직이고, 두 접선의 기울기 곱은 -1/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
