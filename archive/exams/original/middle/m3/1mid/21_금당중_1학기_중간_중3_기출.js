@@ -27,7 +27,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "* ① $\\sqrt{25}=5$입니다.\\n* ② 제곱근 $3$은 $\\sqrt{3}$입니다.\\n* ③ $0$의 제곱근은 $0$입니다.\\n* ④ 음수의 제곱근은 없습니다.\\n* ⑤ 어떤 수 $x$를 제곱하여 $3$이 되는 수는 $\\pm\\sqrt{3}$입니다.\\n* 정답: ⑤",
+    "solution": "[키포인트] 제곱근의 뜻을 보기마다 확인한다.\n① $\\sqrt{25}=5$이므로 거짓이다.\n② $3$의 제곱근은 $\\pm\\sqrt{3}$이므로 거짓이다.\n③ $0$의 제곱근은 $0$ 하나이므로 거짓이다.\n④ 음수 $-4$의 제곱근은 실수 범위에서 없으므로 거짓이다.\n⑤ $3$의 제곱근은 $\\pm\\sqrt{3}$이므로 참이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -61,7 +61,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "* $\\sqrt{16}=4$입니다.\\n* $4$의 제곱근은 제곱하여 $4$가 되는 수이므로 $\\pm2$입니다.\\n* 정답: ②",
+    "solution": "[키포인트] 먼저 $\\sqrt{16}$의 값을 구한 뒤 그 수의 제곱근을 찾는다.\n$\\sqrt{16}=4$이다.\n$4$의 제곱근은 제곱하여 $4$가 되는 두 수이므로 $\\pm2$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -98,7 +98,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
-    "solution": "* [조건1] $\\sqrt{50x} = \\sqrt{2 \\times 5^2 \\times x}$가 자연수가 되려면 $x = 2 \\times k^2$ 꼴이어야 합니다. 최솟값 $x=2$입니다.\\n* [조건2] $\\sqrt{45y} = \\sqrt{3^2 \\times 5 \\times y}$가 자연수가 되려면 $y = 5 \\times m^2$ 꼴이어야 합니다. 최솟값 $y=5$입니다.\\n* 따라서 $x+y$의 최솟값은 $2+5=7$입니다.\\n* 정답: ②",
+    "solution": "[키포인트] 근호 안의 수가 완전제곱수가 되도록 부족한 소인수를 채운다.\n$50=2\\times5^2$이므로 $\\sqrt{50x}$가 자연수가 되게 하는 가장 작은 자연수는 $x=2$이다.\n또 $45=3^2\\times5$이므로 $\\sqrt{45y}$가 자연수가 되게 하는 가장 작은 자연수는 $y=5$이다.\n따라서 $x+y$의 최솟값은\n$2+5=7$이다.\n정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -132,7 +132,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "* ① $4 = \\sqrt{16}$이므로 $\\sqrt{16} > \\sqrt{10}$ (X)\\n* ② $\\frac{1}{2} = \\sqrt{\\frac{1}{4}}$이므로 $\\sqrt{\\frac{1}{4}} < \\sqrt{\\frac{1}{2}}$ (X)\\n* ③ $2+\\sqrt{5} > 5 \\implies \\sqrt{5} > 3 = \\sqrt{9}$ (X)\\n* ④ $-3 = -\\sqrt{9}$이므로 $-\\sqrt{9} < -\\sqrt{3}$ (X)\\n* ⑤ $5-\\sqrt{3} > 3 \\implies 2 > \\sqrt{3} = \\sqrt{4} > \\sqrt{3}$ (O)\\n* 정답: ⑤",
+    "solution": "[키포인트] 양수의 대소는 제곱값이나 간단한 근삿값으로 비교한다.\n① $4=\\sqrt{16}>\\sqrt{10}$이므로 거짓이다.\n② $\\dfrac12=\\sqrt{\\dfrac14}<\\sqrt{\\dfrac12}$이므로 거짓이다.\n③ $\\sqrt5<3$이므로 $2+\\sqrt5<5$라서 거짓이다.\n④ $-3<-\\sqrt3$이므로 거짓이다.\n⑤ $\\sqrt3<2$이므로 $5-\\sqrt3>3$이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -169,7 +169,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $90-n$이 $0$ 또는 완전제곱수여야 합니다.\\n* $90-n = 0, 1, 4, 9, 16, 25, 36, 49, 64, 81$ 이 가능합니다.\\n* $n$은 자연수이므로 $90-n < 90$을 만족하는 값들입니다.\\n* 해당되는 $n$의 값은 $90, 89, 86, 81, 74, 65, 54, 41, 26, 9$로 총 $10$개입니다.\\n* 정답: ③",
+    "solution": "[키포인트] $90-n$이 $0$ 이상의 완전제곱수가 되어야 한다.\n$\\sqrt{90-n}=k$라 하면 $k$는 $0$ 이상의 정수이고\n$90-n=k^2$이다.\n$n$이 자연수이므로 $k^2<90$이고, 가능한 $k$는\n$0,1,2,\\ldots,9$이다.\n각 $k$마다 $n=90-k^2$가 자연수로 하나씩 정해지므로 가능한 $n$은 모두 $10$개이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -206,7 +206,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $\\sqrt{49} = 7$ (유리수)\\n* $0.4\\dot{1}$ (순환소수이므로 유리수)\\n* $-\\sqrt{21}$ (무리수)\\n* $\\sqrt{(-3.14)^2} = 3.14$ (유리수)\\n* $\\sqrt{2}+3$ (무리수)\\n* $\\pi$ (무리수)\\n* 무리수는 $-\\sqrt{21}, \\sqrt{2}+3, \\pi$로 총 $3$개입니다.\\n* 정답: ③",
+    "solution": "[키포인트] 유리수로 나타낼 수 있는지 하나씩 판별한다.\n$\\sqrt{49}=7$은 유리수이다.\n$0.4\\dot1$은 순환소수이므로 유리수이다.\n$-\\sqrt{21}$은 무리수이다.\n$\\sqrt{(-3.14)^2}=3.14$는 유리수이다.\n$\\sqrt2+3$은 무리수이고, $\\pi$도 무리수이다.\n따라서 무리수는 $3$개이므로 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -240,7 +240,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $2.2^2 = 4.84$, $2.3^2 = 5.29$ 이므로 $2.2 < \\sqrt{5} < 2.3$입니다. 따라서 $a=2$입니다.\\n* $2.4^2 = 5.76$, $2.5^2 = 6.25$ 이므로 $2.4 < \\sqrt{6} < 2.5$입니다. 따라서 $b=4$입니다.\\n* $a+b = 2+4 = 6$입니다.\\n* 정답: ②",
+    "solution": "[키포인트] 표에서 제곱값이 $5$, $6$을 사이에 두는 구간을 찾는다.\n$2.2^2=4.84<5<5.29=2.3^2$이므로\n$2.2<\\sqrt5<2.3$이다.\n따라서 $\\sqrt5$의 소수점 첫째 자리 숫자는 $a=2$이다.\n또 $2.4^2=5.76<6<6.25=2.5^2$이므로\n$2.4<\\sqrt6<2.5$이고 $b=4$이다.\n따라서 $a+b=2+4=6$이므로 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -277,7 +277,7 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "solution": "* ① 무한소수 중 순환소수는 유리수입니다.\\n* ② $0$의 제곱근은 $1$개, 음수의 제곱근은 $0$개입니다.\\n* ③ 정수가 아닌 유리수(분수 꼴)가 존재합니다.\\n* ④ $0$은 유리수입니다.\\n* ⑤ (유리수)+(무리수)는 항상 무리수입니다.\\n* 정답: ⑤",
+    "solution": "[키포인트] 유리수와 무리수의 성질을 보기마다 확인한다.\n① 무한소수 중 순환소수는 유리수이므로 거짓이다.\n② $0$의 제곱근은 하나이고 음수는 실수인 제곱근이 없으므로 거짓이다.\n③ 정수가 아닌 유리수도 있으므로 거짓이다.\n④ $0$은 유리수이므로 거짓이다.\n⑤ 유리수와 무리수의 합이 유리수라면 두 유리수의 차가 무리수가 되어 모순이므로 항상 무리수이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -286,7 +286,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "content": "아래 그림과 같이 컴퍼스를 사용하여 원점 $O$를 중심으로 하고 $\\overline{OA}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$라 하였다. 직각삼각형 $OBP$에서 $\\overline{BP}=1$이고, $\\overline{OB}=\\overline{OQ}$일 때, 점 $Q$가 나타내는 수는? (단, $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이다.) [4점]<br><svg width=\"230\" height=\"120\" viewBox=\"0 0 230 120\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"8\" y1=\"92\" x2=\"218\" y2=\"92\" stroke=\"black\" stroke-width=\"1.2\"/><polygon points=\"8,92 14,89 14,95\" fill=\"black\"/><line x1=\"20\" y1=\"92\" x2=\"20\" y2=\"32\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"20\" y1=\"32\" x2=\"54\" y2=\"32\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"54\" y1=\"32\" x2=\"54\" y2=\"92\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"20\" y1=\"92\" x2=\"54\" y2=\"32\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"68.1\" y1=\"92\" x2=\"68.1\" y2=\"32\" stroke=\"black\" stroke-width=\"0.9\" stroke-dasharray=\"3 2\"/><line x1=\"78.9\" y1=\"92\" x2=\"78.9\" y2=\"32\" stroke=\"black\" stroke-width=\"0.9\" stroke-dasharray=\"3 2\"/><line x1=\"20\" y1=\"92\" x2=\"68.1\" y2=\"32\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M54 32 A48.083 48.083 0 0 1 68.083 92\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M68.083 32 A58.890 58.890 0 0 1 78.890 92\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><text x=\"16\" y=\"104\" font-size=\"10px\" font-family=\"serif\">O</text><text x=\"18\" y=\"116\" font-size=\"10px\" font-family=\"serif\">0</text><text x=\"51\" y=\"27\" font-size=\"10px\" font-family=\"serif\">A</text><text x=\"71\" y=\"27\" font-size=\"10px\" font-family=\"serif\">B</text><text x=\"52\" y=\"104\" font-size=\"10px\" font-family=\"serif\">1</text><text x=\"65\" y=\"104\" font-size=\"10px\" font-family=\"serif\">P</text><text x=\"76\" y=\"104\" font-size=\"10px\" font-family=\"serif\">Q</text></svg>",
+    "content": "아래 그림과 같이 컴퍼스를 사용하여 원점 $O$를 중심으로 하고 $\\overline{OA}$의 길이를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$라 하였다. 직각삼각형 $OBP$에서 $\\overline{BP}=1$이고, $\\overline{OB}=\\overline{OQ}$일 때, 점 $Q$가 나타내는 수는? (단, $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이다.) [4점]<br><svg width=\"230\" height=\"120\" viewBox=\"0 0 230 120\" xmlns=\"http://www.w3.org/2000/svg\"><line x1=\"8\" y1=\"90\" x2=\"218\" y2=\"90\" stroke=\"black\" stroke-width=\"1.2\"/><polygon points=\"8,90 14,87 14,93\" fill=\"black\"/><line x1=\"30\" y1=\"90\" x2=\"30\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"60\" x2=\"60\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"60\" y1=\"60\" x2=\"60\" y2=\"90\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"90\" x2=\"60\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"30\" y1=\"90\" x2=\"72.426\" y2=\"60\" stroke=\"black\" stroke-width=\"1.2\"/><line x1=\"72.426\" y1=\"60\" x2=\"72.426\" y2=\"90\" stroke=\"black\" stroke-width=\"0.9\" stroke-dasharray=\"3 2\"/><path d=\"M60 60 A42.426 42.426 0 0 1 72.426 90\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><path d=\"M72.426 60 A51.962 51.962 0 0 1 81.962 90\" fill=\"none\" stroke=\"black\" stroke-width=\"1.2\"/><text x=\"26\" y=\"103\" font-size=\"10px\" font-family=\"serif\">O</text><text x=\"28\" y=\"115\" font-size=\"10px\" font-family=\"serif\">0</text><text x=\"57\" y=\"55\" font-size=\"10px\" font-family=\"serif\">A</text><text x=\"73\" y=\"55\" font-size=\"10px\" font-family=\"serif\">B</text><text x=\"57\" y=\"103\" font-size=\"10px\" font-family=\"serif\">1</text><text x=\"69\" y=\"84\" font-size=\"10px\" font-family=\"serif\">P</text><text x=\"82\" y=\"103\" font-size=\"10px\" font-family=\"serif\">Q</text></svg>",
     "choices": [
       "$\\sqrt{2}$",
       "$\\sqrt{3}$",
@@ -314,7 +314,7 @@ window.questionBank = [
       "수직선"
     ],
     "wide": false,
-    "solution": "* $\\overline{OA}$는 한 변의 길이가 $1$인 정사각형의 대각선이므로 $\\overline{OA} = \\sqrt{1^2+1^2} = \\sqrt{2}$입니다.\\n* 점 $P$는 원점 $O$를 중심으로 반지름이 $\\overline{OA}$인 원 위의 점이므로 $\\overline{OP} = \\sqrt{2}$입니다.\\n* 직각삼각형 $OBP$에서 $\\overline{BP}=1, \\overline{OP}=\\sqrt{2}$이므로 $\\overline{OB} = \\sqrt{(\\sqrt{2})^2 + 1^2} = \\sqrt{3}$입니다.\\n* $\\overline{OB}=\\overline{OQ}$이고 점 $Q$는 양의 방향에 있으므로 점 $Q$가 나타내는 수는 $\\sqrt{3}$입니다.\\n* 정답: ②",
+    "solution": "[키포인트] 두 번의 직각삼각형에서 피타고라스 정리를 이용한다.\n한 변의 길이가 $1$인 정사각형의 대각선이므로\n$OA=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n따라서 원의 반지름 $OP=OA=\\sqrt2$이다.\n직각삼각형 $OBP$에서 $BP=1$이므로\n$OB=\\sqrt{OP^2+BP^2}=\\sqrt{2+1}=\\sqrt3$이다.\n$OB=OQ$이고 $Q$는 수직선의 양의 방향에 있으므로 $Q$가 나타내는 수는 $\\sqrt3$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -348,7 +348,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* ① $\\sqrt{8} \\div \\sqrt{2} = \\sqrt{4} = 2$입니다.\\n* ② $\\sqrt{5} \\times \\sqrt{2} = \\sqrt{10}$입니다.\\n* ③ $\\sqrt{(-5)^2} = \\sqrt{25} = 5$입니다.\\n* ④ $\\sqrt{3} + \\sqrt{3} = 2\\sqrt{3}$입니다.\\n* ⑤ $2\\sqrt{2} - \\sqrt{2} = \\sqrt{2}$ (O)\\n* 정답: ⑤",
+    "solution": "[키포인트] 근호의 곱셈·나눗셈과 동류근호 계산을 확인한다.\n① $\\sqrt8\\div\\sqrt2=\\sqrt4=2$이다.\n② $\\sqrt5\\times\\sqrt2=\\sqrt{10}$이다.\n③ $\\sqrt{(-5)^2}=|-5|=5$이다.\n④ $\\sqrt3+\\sqrt3=2\\sqrt3$이다.\n⑤ $2\\sqrt2-\\sqrt2=\\sqrt2$이다.\n따라서 옳은 것은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -382,7 +382,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $3\\sqrt{24} = 3 \\times 2\\sqrt{6} = 6\\sqrt{6}$\\n* $\\frac{2\\sqrt{3}}{\\sqrt{2}} = \\frac{2\\sqrt{6}}{2} = \\sqrt{6}$\\n* $6\\sqrt{6} - \\sqrt{6} = 5\\sqrt{6}$이므로 $a=5$입니다.\\n* 정답: ①",
+    "solution": "[키포인트] 각 항을 $\\sqrt6$의 배수로 만든다.\n$3\\sqrt{24}=3\\times2\\sqrt6=6\\sqrt6$이다.\n또\n$\\dfrac{2\\sqrt3}{\\sqrt2}=\\dfrac{2\\sqrt6}{2}=\\sqrt6$이다.\n따라서\n$3\\sqrt{24}-\\dfrac{2\\sqrt3}{\\sqrt2}=6\\sqrt6-\\sqrt6=5\\sqrt6$이다.\n그러므로 $a=5$이고 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -416,7 +416,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "* ① $\\sqrt{18} \\approx 4.242$\\n* ② $\\frac{8-\\sqrt{6}}{\\sqrt{2}} = 4\\sqrt{2}-\\sqrt{3} \\approx 5.656 - 1.732 = 3.924$\\n* ③ $\\sqrt{3}+\\sqrt{8} \\approx 1.732 + 2.828 = 4.56$\\n* ④ $\\frac{6+\\sqrt{6}}{\\sqrt{3}} = 2\\sqrt{3}+\\sqrt{2} \\approx 3.464 + 1.414 = 4.878$\\n* ⑤ $2\\sqrt{7}-\\sqrt{2} = \\sqrt{28}-\\sqrt{2} \\approx 5.291 - 1.414 = 3.877$\\n* 가장 작은 수는 ⑤입니다.\\n* 정답: ⑤",
+    "solution": "[키포인트] 각 보기를 같은 정도의 근삿값으로 비교한다.\n$\\sqrt2\\approx1.414$, $\\sqrt3\\approx1.732$, $\\sqrt6\\approx2.449$, $\\sqrt7\\approx2.646$을 이용하면\n① $\\sqrt{18}=3\\sqrt2\\approx4.242$,\n② $\\dfrac{8-\\sqrt6}{\\sqrt2}=4\\sqrt2-\\sqrt3\\approx3.924$,\n③ $\\sqrt3+\\sqrt8=\\sqrt3+2\\sqrt2\\approx4.560$,\n④ $\\dfrac{6+\\sqrt6}{\\sqrt3}=2\\sqrt3+\\sqrt2\\approx4.878$,\n⑤ $2\\sqrt7-\\sqrt2\\approx3.878$이다.\n가장 작은 것은 ⑤이므로 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -452,7 +452,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* 넓이: $A=8, B=4, C=2, D=1$\\n* 한 변의 길이: $A=\\sqrt{8}=2\\sqrt{2}, B=2, C=\\sqrt{2}, D=1$\\n* 둘레의 가로 길이의 합: $2 \\times (2\\sqrt{2}+2+\\sqrt{2}+1) = 6\\sqrt{2}+6$\\n* 둘레의 세로 길이의 합: 가장 큰 변 $A$의 세로 $2\\sqrt{2}$의 $2$배인 $4\\sqrt{2}$\\n* 따라서 둘레의 총 길이는 $(6\\sqrt{2}+6) + 4\\sqrt{2} = 10\\sqrt{2}+6$입니다.\\n* 정답: ④",
+    "solution": "[키포인트] 넓이에서 각 정사각형의 한 변을 구한 뒤, 맞닿은 변은 둘레에서 두 번 빼 준다.\n$A,B,C,D$의 넓이는 차례로 $8,4,2,1$이므로 한 변의 길이는\n$2\\sqrt2,\\ 2,\\ \\sqrt2,\\ 1$이다.\n네 정사각형의 둘레를 따로 더하면\n$4(2\\sqrt2+2+\\sqrt2+1)=12\\sqrt2+12$이다.\n서로 맞닿은 변의 길이의 합은\n$2+\\sqrt2+1=3+\\sqrt2$이고, 이 부분은 두 번씩 더해졌으므로\n$2(3+\\sqrt2)$를 뺀다.\n따라서 전체 둘레는\n$12\\sqrt2+12-(6+2\\sqrt2)=10\\sqrt2+6$이다.\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -486,7 +486,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "* ① $(a+b)^2 = a^2+2ab+b^2$\\n* ② $(a+5)(a-5) = a^2-25$\\n* ③ $(a-3)^2 = a^2-6a+9$ (O)\\n* ④ $(a+3)(a-5) = a^2-2a-15$\\n* ⑤ $(2a+1)(2a-3) = 4a^2-4a-3$\\n* 정답: ③",
+    "solution": "[키포인트] 곱셈공식대로 직접 전개해 확인한다.\n① $(a+b)^2=a^2+2ab+b^2$이다.\n② $(a+5)(a-5)=a^2-25$이다.\n③ $(a-3)^2=a^2-6a+9$로 주어진 식과 같다.\n④ $(a+3)(a-5)=a^2-2a-15$이다.\n⑤ $(2a+1)(2a-3)=4a^2-4a-3$이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -521,7 +521,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* 직사각형의 가로 길이는 사다리꼴의 윗변과 아랫변의 합이므로 $a+b$입니다.\\n* 직사각형의 세로 길이는 사다리꼴의 높이이므로 $a-b$입니다.\\n* 따라서 넓이는 $(a+b)(a-b) = a^2-b^2$입니다.\\n* 정답: ③",
+    "solution": "[키포인트] 두 합동인 사다리꼴을 붙이면 가로와 세로를 바로 읽을 수 있는 직사각형이 된다.\n직사각형의 가로는 두 밑변의 합인 $a+b$이고,\n세로는 사다리꼴의 높이인 $a-b$이다.\n따라서 넓이는\n$(a+b)(a-b)=a^2-b^2$이다.\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -558,7 +558,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* 두 정사각형의 넓이의 합은 $x^2+y^2$입니다.\\n* 곱셈 공식의 변형에 의해 $x^2+y^2 = (x+y)^2 - 2xy$입니다.\\n* 주어진 값을 대입하면 $8^2 - 2(14) = 64 - 28 = 36$입니다.\\n* 정답: ①",
+    "solution": "[키포인트] 두 정사각형의 넓이의 합은 $x^2+y^2$이다.\n$(x+y)^2=x^2+2xy+y^2$이므로\n$x^2+y^2=(x+y)^2-2xy$이다.\n주어진 값을 대입하면\n$x^2+y^2=8^2-2\\times14=64-28=36$이다.\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -594,7 +594,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* 분모의 유리화를 위해 분모, 분자에 $3+\\sqrt{6}$을 곱합니다.\\n* $\\frac{(3+\\sqrt{6})^2}{(3-\\sqrt{6})(3+\\sqrt{6})} = \\frac{9+6\\sqrt{6}+6}{9-6} = \\frac{15+6\\sqrt{6}}{3} = 5+2\\sqrt{6}$\\n* 따라서 $a=5, b=2$이므로 $a+b=7$입니다.\\n* 정답: ③",
+    "solution": "[키포인트] 분모의 켤레식을 곱해 유리화한다.\n$\\dfrac{3+\\sqrt6}{3-\\sqrt6}\n=\\dfrac{(3+\\sqrt6)^2}{3^2-(\\sqrt6)^2}$이다.\n분자는 $9+6\\sqrt6+6=15+6\\sqrt6$, 분모는 $9-6=3$이므로\n$\\dfrac{15+6\\sqrt6}{3}=5+2\\sqrt6$이다.\n따라서 $a=5$, $b=2$이고\n$a+b=7$이다.\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -628,7 +628,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "* $9x^2-1 = (3x)^2-1^2 = (3x+1)(3x-1)$\\n* $3x(x+2)-(x+2) = (x+2)(3x-1)$\\n* 공통인 인수는 $3x-1$입니다.\\n* 정답: ⑤",
+    "solution": "[키포인트] 두 식을 각각 인수분해하여 공통인수를 찾는다.\n$9x^2-1=(3x-1)(3x+1)$이다.\n또\n$3x(x+2)-(x+2)=(x+2)(3x-1)$이다.\n두 식에 공통으로 들어 있는 인수는 $3x-1$이다.\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -662,7 +662,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "* $3x^2+x-10$에서 곱해서 $-30$이 되고 더해서 $1$이 되는 두 수를 찾으면 $6$과 $-5$입니다.\\n* $3x^2+6x-5x-10 = 3x(x+2)-5(x+2) = (3x-5)(x+2)$\\n* 정답: ②",
+    "solution": "[키포인트] $3x^2+x-10$에서 곱이 $-30$, 합이 $1$이 되는 두 수 $6,-5$를 이용한다.\n$3x^2+x-10\n=3x^2+6x-5x-10$이다.\n$=3x(x+2)-5(x+2)$\n$=(x+2)(3x-5)$이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -696,7 +696,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $x^2-12x+a$가 완전제곱식이 되려면 $a = (\\frac{-12}{2})^2 = 36$입니다.\\n* $4x^2+12x+b = (2x)^2+2(2x)(3)+b$이므로 $b = 3^2 = 9$입니다.\\n* 따라서 $a+b = 36+9 = 45$입니다.\\n* 정답: ②",
+    "solution": "[키포인트] 각 이차식의 앞 두 항으로 완전제곱식의 상수항을 정한다.\n$x^2-12x+a=(x-6)^2$이 되려면 $a=36$이다.\n또\n$4x^2+12x+b=(2x+3)^2$이 되려면 $b=9$이다.\n따라서 $a+b=36+9=45$이므로 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -713,7 +713,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "제곱근",
@@ -728,7 +728,7 @@ window.questionBank = [
     "content": "다음 그림은 한 눈금의 길이가 $1$인 모눈종이에 두 선분 $AB$와 $CD$를 그린 후, $\\overline{AB}=\\overline{AP}$, $\\overline{CD}=\\overline{CQ}$가 되도록 수직선 위에 두 점 $P$와 $Q$를 정한 것이다. 물음에 답하시오.\n\n(1) $\\overline{AB}, \\overline{CD}$의 길이를 각각 구하시오.\n(2) 점 $P, Q$가 나타내는 수를 각각 구하시오.\n(3) (2)를 이용하여 $\\overline{PQ}$의 길이를 구하는 식을 세우고, $\\overline{PQ}$의 길이를 구하시오.\n<svg width=\"280\" height=\"120\" viewBox=\"0 0 280 120\" xmlns=\"http://www.w3.org/2000/svg\">\n  <defs>\n    <pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#e0e0e0\" stroke-width=\"0.5\"/>\n    </pattern>\n  </defs>\n  <rect x=\"10\" y=\"10\" width=\"260\" height=\"80\" fill=\"url(#grid)\" />\n  <line x1=\"10\" y1=\"90\" x2=\"270\" y2=\"90\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow_r)\" marker-start=\"url(#arrow_l)\"/>\n  <line x1=\"50\" y1=\"90\" x2=\"130\" y2=\"50\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <line x1=\"170\" y1=\"90\" x2=\"210\" y2=\"70\" stroke=\"black\" stroke-width=\"1.2\"/>\n  <path d=\"M 130,50 A 89.44,89.44 0 0 1 139.44,90\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n  <path d=\"M 210,70 A 44.72,44.72 0 0 1 214.72,90\" fill=\"none\" stroke=\"black\" stroke-width=\"1\" stroke-dasharray=\"2,2\"/>\n  <text x=\"50\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-5</text>\n  <text x=\"70\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-4</text>\n  <text x=\"90\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-3</text>\n  <text x=\"110\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-2</text>\n  <text x=\"130\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">-1</text>\n  <text x=\"150\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">O</text>\n  <text x=\"170\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">1</text>\n  <text x=\"190\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">2</text>\n  <text x=\"210\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">3</text>\n  <text x=\"230\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">4</text>\n  <text x=\"250\" y=\"98\" font-size=\"9px\" text-anchor=\"middle\" font-family=\"serif\">5</text>\n  <text x=\"265\" y=\"98\" font-size=\"9px\" font-family=\"serif\">x</text>\n  <text x=\"45\" y=\"88\" font-size=\"9px\" font-family=\"serif\">A</text>\n  <text x=\"125\" y=\"48\" font-size=\"9px\" font-family=\"serif\">B</text>\n  <text x=\"165\" y=\"88\" font-size=\"9px\" font-family=\"serif\">C</text>\n  <text x=\"205\" y=\"68\" font-size=\"9px\" font-family=\"serif\">D</text>\n  <text x=\"138\" y=\"98\" font-size=\"9px\" font-family=\"serif\">P</text>\n  <text x=\"215\" y=\"98\" font-size=\"9px\" font-family=\"serif\">Q</text>\n  <defs>\n    <marker id=\"arrow_r\" markerWidth=\"6\" markerHeight=\"6\" refX=\"0\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/></marker>\n    <marker id=\"arrow_l\" markerWidth=\"6\" markerHeight=\"6\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M6,0 L6,6 L0,3 z\" fill=\"black\"/></marker>\n  </defs>\n</svg>",
     "choices": [],
     "answer": "(1) $\\overline{AB}=2\\sqrt{5}$, $\\overline{CD}=\\sqrt{5}$ (2) $P: -5+2\\sqrt{5}$, $Q: 1+\\sqrt{5}$ (3) $6-\\sqrt{5}$",
-    "solution": "(1) 선분 $AB$는 가로 $4$, 세로 $2$인 직각삼각형의 빗변이므로 피타고라스 정리에 의해\n$\\overline{AB} = \\sqrt{4^2 + 2^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$\n선분 $CD$는 가로 $2$, 세로 $1$인 직각삼각형의 빗변이므로\n$\\overline{CD} = \\sqrt{2^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$\n\n(2) $\\overline{AB}=\\overline{AP}$이므로 점 $P$는 점 $A(-5)$에서 오른쪽으로 $2\\sqrt{5}$만큼 떨어진 지점이다.\n$P: -5 + 2\\sqrt{5}$\n$\\overline{CD}=\\overline{CQ}$이므로 점 $Q$는 점 $C(1)$에서 오른쪽으로 $\\sqrt{5}$만큼 떨어진 지점이다.\n$Q: 1 + \\sqrt{5}$\n\n(3) 선분 $PQ$의 길이는 큰 좌표에서 작은 좌표를 뺀 값이므로\n$\\overline{PQ} = (1 + \\sqrt{5}) - (-5 + 2\\sqrt{5})$\n$= 1 + \\sqrt{5} + 5 - 2\\sqrt{5}$\n$= 6 - \\sqrt{5}$\n\n최종 정답은 (1) $2\\sqrt{5}, \\sqrt{5}$ (2) $-5+2\\sqrt{5}, 1+\\sqrt{5}$ (3) $6-\\sqrt{5}$ 이다.",
+    "solution": "[키포인트] 모눈의 가로·세로 변화량으로 두 선분의 길이를 구하고, 그 길이를 수직선의 이동량으로 사용한다.\n(1) $A$에서 $B$까지 가로로 $4$, 세로로 $2$만큼 차이가 나므로\n$AB=\\sqrt{4^2+2^2}=\\sqrt{20}=2\\sqrt5$이다.\n$C$에서 $D$까지는 가로로 $2$, 세로로 $1$만큼 차이가 나므로\n$CD=\\sqrt{2^2+1^2}=\\sqrt5$이다.\n\n(2) 점 $A$가 나타내는 수는 $-5$이고 $AP=AB=2\\sqrt5$이므로\n$P=-5+2\\sqrt5$이다.\n점 $C$가 나타내는 수는 $1$이고 $CQ=CD=\\sqrt5$이므로\n$Q=1+\\sqrt5$이다.\n\n(3) $P<Q$이므로\n$PQ=Q-P$이다.\n$PQ=(1+\\sqrt5)-(-5+2\\sqrt5)\n=6-\\sqrt5$이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -757,7 +757,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* $x-2 = \\sqrt{3}$의 양변을 제곱하면 $(x-2)^2 = 3$입니다.\\n* $x^2-4x+4 = 3$이므로 $x^2-4x = -1$입니다.\\n* 따라서 $x^2-4x-5 = -1-5 = -6$입니다.\\n* 정답: -6",
+    "solution": "[키포인트] $x=2+\\sqrt3$을 식에 직접 대입하여 정리한다.\n$x^2=(2+\\sqrt3)^2=7+4\\sqrt3$이고\n$4x=8+4\\sqrt3$이다.\n따라서\n$x^2-4x-5\n=(7+4\\sqrt3)-(8+4\\sqrt3)-5\n=-6$이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -776,7 +776,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "제곱근",
@@ -786,7 +786,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "* (1) 제곱근표에서 $5.5$행과 $3$열이 만나는 수를 찾으면 $2.352$입니다.\\n* (2) $\\sqrt{0.553} = \\sqrt{\\frac{55.3}{100}} = \\frac{\\sqrt{55.3}}{10}$입니다. 표에서 $\\sqrt{55.3} = 7.436$임을 이용하면 $0.7436$이 됩니다.\\n* 정답: (1) 2.352, (2) 0.7436",
+    "solution": "[키포인트] 제곱근표에서 대응하는 값을 읽고, 소수점 이동은 제곱근의 성질로 처리한다.\n(1) 표에서 $5.53$에 대응하는 값은 $2.352$이므로\n$\\sqrt{5.53}\\approx2.352$이다.\n\n(2) $0.553=\\dfrac{55.3}{100}$이므로\n$\\sqrt{0.553}=\\dfrac{\\sqrt{55.3}}{10}$이다.\n표에서 $\\sqrt{55.3}\\approx7.436$이므로\n$\\sqrt{0.553}\\approx0.7436$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
