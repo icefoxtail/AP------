@@ -19,7 +19,7 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 - 재인증 scope: **M3 69 + M1 31 + M2 1학기 34 = 134시험지**.
 - 현재 진행 중인 M2 2학기 고정 20은 reset하지 않고 기존 current REVIEW/BATCH/FINAL을 완주한다.
 - 위 134시험지는 과거 CREATE_DONE/R1/R2E/main 이력을 면제권으로 사용하지 않는다. **동일 current generation receipt + final artifact SHA가 없는 시험지는 반드시 CURRENT CREATE부터 다시 통과**한다.
-- CREATE는 전 문항을 fresh하게 읽어 발문/보기 exact, 발문 조판, 학생용 해설 품질·해설 조판, SVG/solutionImage 필요성과 정확성을 현재 기준으로 다시 판정한다. 이미 좋은 내용은 KEEP할 수 있으나 fresh coverage를 생략할 수 없다.
+- CREATE는 전 문항을 fresh하게 읽어 발문/보기 exact, 발문 조판, 학생용 해설·해설 조판, SVG/solutionImage 필요성과 정확성을 현재 기준으로 다시 판정한다. 재인증 scope의 일반 문항 solution은 전면 새 작성한다. 단, 해결 불가 문항은 문항 단위 ITEM_HOLD로만 넘기며 시험지 전체 HOLD·격리는 금지한다.
 - REVIEW1/2는 완성본을 처음 보는 것처럼 FULL 독립검수하고, 발견 결함은 같은 작업에서 직접 수정한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다.
 - Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
@@ -27,6 +27,22 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 - Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review와 분리한다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질은 경량화 대상이 아니다.
 - 현재 REVIEW는 2회다. 반복 SVG false PASS 등 구체적 품질 근거가 생기면 사용자 지시로 REVIEW3를 추가할 수 있으나 작업자가 임의로 횟수·cadence를 바꾸지 않는다.
+
+### QUESTION-LEVEL HOLD ONLY / EXAM HOLD FORBIDDEN — CURRENT HARD RULE (2026-09-29)
+
+**CREATE / REVIEW 어느 단계에서도 일부 문항의 불확실성·source 충돌·수학 미확정·engine capability 부족을 이유로 시험지 전체를 HOLD·BLOCK·격리하지 않는다. HOLD의 최소 단위는 항상 `questionUid/qid`다.**
+
+- 금지: `EXAM_HOLD`, `CREATE_BLOCKED`, `REVIEW1_BLOCKED`, `REVIEW2_BLOCKED`, 시험지 전체 `SOURCE_REVIEW`, 문항 결함을 이유로 한 시험지 quarantine.
+- 허용: 문항별 `ITEM_HOLD` + 실제 reason code(`SOURCE_HOLD`, `MATH_HOLD`, `ENGINE_CAPABILITY_BLOCK`, `SOURCE_ASSET_MISSING` 등).
+- CREATE에서 미해결 문항이 있어도 나머지 문항을 완료하고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다. CREATE 판단은 최종 판정이 아니며 REVIEW1이 held item을 처음부터 독립 재판정한다.
+- REVIEW1에서 남은 문항 HOLD는 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘기고 REVIEW2가 다시 독립 재판정한다.
+- REVIEW2 뒤에도 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`에 둔다. 시험지 HOLD 상태를 만들지 않는다.
+- BATCH/FINAL은 `itemHoldCount=0`인 시험지만 publish하고, held item이 남은 시험지는 publish pending으로 건너뛴다. 다른 시험지·lane·cohort 진행은 계속한다.
+- authority/connector/Git write 실패는 콘텐츠 HOLD가 아니라 `AUTHORITY_WRITE_PENDING` 등 운영 상태로 기록한다.
+- 문항 HOLD에는 최소 `qid/questionUid / reason / observedEvidence / unresolvedPoint / nextRequiredEvidenceOrCapability / createdStage / lastReviewedStage`를 남긴다.
+- **단계 진행은 held item의 PASS를 의미하지 않는다. 최종 MAIN publish 전에만 해당 시험지의 `itemHoldCount=0`을 강제한다.**
+
+CURRENT full-solution-rewrite gate도 이 규칙을 따른다. 명시적 item hold가 있으면 해당 문항만 rewrite 미완을 허용하고 `solutionRewriteAttempted=N/N`, `solutionRewriteResolved=(N-H)/N`, `itemHoldQuestionIds=[...]`를 기록한다. 이 명시적 lineage가 있는 시험지는 N/N 완료 marker가 없다는 이유만으로 CREATE 전체를 되감거나 REVIEW 진입을 막지 않는다. REVIEW1/2가 held item을 독립 재시도하여 해결 즉시 HOLD를 제거한다.
 
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 
