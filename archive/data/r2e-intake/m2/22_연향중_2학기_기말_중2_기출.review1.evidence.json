@@ -1,0 +1,139 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW1_EVIDENCE_v1",
+  "exam": "22_연향중_2학기_기말_중2_기출.js",
+  "review": "R1",
+  "canonicalGlobalInventoryOrdinal": 61,
+  "lane": "REVIEW1-1",
+  "certificationGeneration": "M2_RESET_20260928",
+  "recertificationException": "M2_2SEM_FIXED20_NO_RETRO_SOLUTION_REWRITE",
+  "branch": "work/middle/m2/22-yeonhyang-2final",
+  "branchBaseHead": "d66a142169a5b4575a7921202438aba09ac0a3f5",
+  "latestRemoteMainObserved": "556c5c5a4f4b52b7ead2380bafa3aabeb9d0e41b",
+  "sourceAuthorityCommit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceExamBlob": "064af08775975df8cd7382cb49e8465688def06e",
+  "finalArtifactSha": "e8183af47234a053ab857de6d1c1c6abb74ec8a8",
+  "solutionRewriteCatchup": "NOT_APPLICABLE_M2_2SEM_FIXED20_RESET_EXCEPTION",
+  "denominator": 23,
+  "coverage": {
+    "sourceContentChoicesAnswer": "23/23 exact; exam blob exact to source authority",
+    "objectiveChoices": "100/100 exact (20 objective questions × 5)",
+    "mathAnswerSolutionReproducibility": "23/23 PASS_AFTER_REPAIR",
+    "studentLanguageCurriculum": "23/23 PASS",
+    "questionMicroLayout": "23/23 PASS; grid 23/23",
+    "jsIntegrity": "23 questions; unique ids 23/23; answers 23/23; solutions 23/23",
+    "problemImages": "13/13 source-byte exact + direct visual truth PASS",
+    "solutionSvg": "13/13 CODE-FIRST parity PASS"
+  },
+  "problemImageBlobs": {
+    "q1": "38760ef9ffa888703c884e728dc4627ff972ce27",
+    "q2": "eb5de28066d03725ac0d8d6458d010050914623f",
+    "q3": "b0d23758f4d94aeab2496c2914217d2baac15ed1",
+    "q4": "f8473d28dea5f25ffad97b2499f32ca36fa2c3c6",
+    "q5": "1c6c8e7dbe768336bc235c240bdcd0b8444118bf",
+    "q6": "22296d88bbe04327dbd153c49eb759234372265d",
+    "q7": "1156c870bee7c9be52bc2dd934175e5dd070be7e",
+    "q8": "7cbb1404ecb6783dc5ee9bc27e216107e3f51814",
+    "q10": "db933efa0d3dd9de77ca8a62088f1b3853d0c1ef",
+    "q11": "57984165718c873f674898e44230e9d1e6e0f517",
+    "q21": "085d74ed9d0a8723e061a0aab3b13f822ec79060",
+    "q22": "ff6d2f08004cf8477de38078511f765753dbc71a",
+    "q23": "e6757226d59d30e547f17acfd4dfc75fac9c08ba"
+  },
+  "solutionSvgBlobs": {
+    "q1": "ef510e38cc38604120214cce40052f4daa5436d3",
+    "q2": "959cba68c789d9b94d9446282ef8532ca8b1301b",
+    "q3": "d9715c5f79a157e382eef92a917139c54014937e",
+    "q4": "859900dc5f8cf77add133e2de96c61fbf0d8fd75",
+    "q5": "b284d57a1708f6ef24686c4f33a4c489c1fe6acb",
+    "q6": "a597b725b3468950a0c0185c9547a5c0e07d88f9",
+    "q7": "2b23de5f4a26a6c126dcd5eab29807a1ead2da31",
+    "q8": "99e0549e5eec7a0d1b9e7a61418ce9a59ef3dc81",
+    "q10": "4eeae60776049d8bc7e7872fa5e58704bce71f07",
+    "q11": "94eee1e432da0111a60154363372eeaf77f6b128",
+    "q21": "e2e04bbb2c138a03f5074193f2618f7232973225",
+    "q22": "3d45df5d3675b1575feb3224906dbd210dab5647",
+    "q23": "b1f88e80bdcf95dba17806d431a175105dc88d45"
+  },
+  "visualHardChecks": {
+    "missingOwnerRay": "PASS",
+    "angleLabelOwnerBinding": "PASS",
+    "labelOwnerBinding": "PASS",
+    "coordinateSemanticParity": "PASS",
+    "clippingCollision": "CODE_FIRST_NO_DEFECT"
+  },
+  "repair": {
+    "q21": {
+      "defect": "SOLUTION_LOGIC_CLOSURE",
+      "before": "AA similarity conclusion did not explicitly name the two equal-angle pairs.",
+      "after": "Explicitly states ∠ABE=∠ECF=90° and ∠BAE=∠CEF using rectangle/fold perpendicular relations, then AA.",
+      "changedFields": [
+        "solution"
+      ],
+      "sourceProtectedFieldsChanged": false,
+      "answerChanged": false,
+      "solutionSvgChanged": false,
+      "recheck": "q21 math/answer/diagram/SVG parity PASS"
+    }
+  },
+  "questionMicroLayout": {
+    "disposition": "KEEP",
+    "gridQuestionIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "subjectiveGridKept": [
+      21,
+      22,
+      23
+    ],
+    "subjective2upPromoted": [],
+    "reason": "Current rule forbids promotion from subjective type/length/image/subquestions alone; STATIC_CAPACITY_EVIDENCE not established without actual render.",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF"
+  },
+  "calibration": {
+    "goldenSampleRefs": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "negativeSampleRefs": [
+      "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "archive/fixtures/visual-negative-regressions/2026-09-29/05_24_향림중_2학기_기말_중2_기출_q12_LABEL_OWNER_BINDING_FAIL.svg",
+      "archive/assets/images/24_향림중_2학기_기말_중2_기출/q12-solution.svg"
+    ],
+    "calibrationAxes": [
+      "solution reproducibility",
+      "student-language explanation density",
+      "visual owner binding",
+      "coordinate semantic parity"
+    ],
+    "sampleReadBeforeWork": false,
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS_AFTER_BLIND_TARGET_FREEZE"
+  },
+  "metaTaxonomyDifficulty": "NOT_OPENED_PER_CURRENT_PRODUCTION_REVIEW_SEPARATION",
+  "repairsCount": 1,
+  "hold": 0,
+  "unresolvedItems": [],
+  "next": "REVIEW2-1"
+}
