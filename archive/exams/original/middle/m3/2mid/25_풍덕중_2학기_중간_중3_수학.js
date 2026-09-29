@@ -24,7 +24,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "⑤",
-    "solution": "$\\angle A$를 기준으로 보면 맞은편 변은 $BC=2$, 이웃한 변은 $AB=1$이다.\n\n따라서\n$\\tan A=\\dfrac{BC}{AB}=\\dfrac{2}{1}=2$\n\n그러므로 정답은 ⑤이다.",
+    "solution": "직각삼각형 $ABC$에서\n$\\tan A=\\dfrac{BC}{AB}$이다.\n\n그림에서 $BC=2$, $AB=1$이므로\n$\\tan A=\\dfrac21=2$이다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -56,7 +56,7 @@ window.questionBank = [
       "$12\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "$AB=6$, $\\angle B=30^\\circ$, $\\angle C=90^\\circ$이고 $AC=x$, $BC=y$이다.\n\n$30^\\circ$의 맞은편 변은 빗변의 절반이므로\n$x=6\\sin30^\\circ=6\\times\\dfrac12=3$\n\n또\n$y=6\\cos30^\\circ=6\\times\\dfrac{\\sqrt3}{2}=3\\sqrt3$\n\n따라서\n$xy=3\\times3\\sqrt3=9\\sqrt3$\n\n그러므로 정답은 ④이다.",
+    "solution": "$BA=6$은 빗변이고 $\\angle B=30^\\circ$이다.\n\n$x=AC=6\\sin30^\\circ\n=6\\times\\dfrac12=3$\n\n$y=BC=6\\cos30^\\circ\n=6\\times\\dfrac{\\sqrt3}{2}\n=3\\sqrt3$\n\n따라서\n$xy=3\\times3\\sqrt3=9\\sqrt3$이다.\n정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q2.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -87,7 +87,7 @@ window.questionBank = [
       "$\\dfrac{3}{2}+\\dfrac{\\sqrt{3}}{3}$"
     ],
     "answer": "④",
-    "solution": "특수각의 삼각비는\n$\\cos60^\\circ=\\dfrac12$, $\\tan60^\\circ=\\sqrt3$, $\\sin90^\\circ=1$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다.\n\n첫째 항은\n$\\cos60^\\circ\\tan60^\\circ=\\dfrac12\\times\\sqrt3=\\dfrac{\\sqrt3}{2}$\n\n둘째 항은\n$\\sin90^\\circ\\div\\tan30^\\circ=1\\div\\dfrac{\\sqrt3}{3}=\\sqrt3$\n\n따라서\n$\\dfrac{\\sqrt3}{2}+\\sqrt3=\\dfrac{3\\sqrt3}{2}$\n\n그러므로 정답은 ④이다.",
+    "solution": "기본 삼각비를 이용하면\n$\\cos60^\\circ=\\dfrac12$,\n$\\tan60^\\circ=\\sqrt3$,\n$\\sin90^\\circ=1$,\n$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다.\n\n따라서\n$\\dfrac12\\times\\sqrt3\n+1\\div\\dfrac{\\sqrt3}{3}\n=\\dfrac{\\sqrt3}{2}+\\sqrt3\n=\\dfrac{3\\sqrt3}{2}$이다.\n\n정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -118,7 +118,7 @@ window.questionBank = [
       "$2.66$"
     ],
     "answer": "④",
-    "solution": "그림에서 $53^\\circ$ 방향의 반지름 끝점의 좌표는 $(0.60,\\,0.80)$이다.\n\n$37^\\circ+53^\\circ=90^\\circ$이므로\n$\\cos37^\\circ=\\sin53^\\circ=0.80$\n\n또 그림에서 $53^\\circ$인 직선이 $x=1$일 때 $y=1.33$을 지나므로\n$\\tan53^\\circ=1.33$\n\n따라서\n$\\cos37^\\circ+\\tan53^\\circ=0.80+1.33=2.13$\n\n그러므로 정답은 ④이다.",
+    "solution": "반지름이 $1$인 사분원에서 그림의 점은\n$(0.60,\\,0.80)$에 해당한다.\n\n따라서\n$\\sin53^\\circ=0.80$,\n$\\tan53^\\circ=\\dfrac{0.80}{0.60}\\approx1.33$이다.\n\n또 $37^\\circ+53^\\circ=90^\\circ$이므로\n$\\cos37^\\circ=\\sin53^\\circ=0.80$이다.\n\n따라서\n$\\cos37^\\circ+\\tan53^\\circ\n\\approx0.80+1.33=2.13$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q4.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -149,7 +149,7 @@ window.questionBank = [
       "$45^\\circ\\lt A\\lt90^\\circ$일 때 $\\sin A$가 $\\cos A$보다 크다."
     ],
     "answer": "③",
-    "solution": "예각에서는 각이 커질수록 $\\sin A$와 $\\tan A$는 커지고, $\\cos A$는 작아진다.\n\n① 예각의 사인값은 $0$과 $1$ 사이이므로 옳다.\n② $A>45^\\circ$이면 $\\tan A>\\tan45^\\circ=1$이므로 옳다.\n③ 각이 커질수록 $\\cos A$는 작아지므로 옳지 않다.\n④ 각이 커질수록 $\\tan A$는 커지므로 옳다.\n⑤ $45^\\circ<A<90^\\circ$이면 $\\sin A>\\cos A$이므로 옳다.\n\n따라서 정답은 ③이다.",
+    "solution": "예각에서 각의 크기가 커질수록\n$\\sin A$와 $\\tan A$는 커지고,\n$\\cos A$는 작아진다.\n\n따라서\n“$\\angle A$의 크기가 클수록 $\\cos A$의 값은 커진다.”는 옳지 않다.\n\n정답은 ③이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -179,7 +179,7 @@ window.questionBank = [
       "$\\dfrac{2\\sqrt{5}}{5}$"
     ],
     "answer": "⑤",
-    "solution": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac{\\sqrt5}{3}$이므로\n$BC=\\sqrt5k$, $AC=3k$로 둘 수 있다.\n\n피타고라스 정리를 쓰면\n$AB^2=AC^2-BC^2$\n$=(3k)^2-(\\sqrt5k)^2$\n$=4k^2$\n\n따라서 $AB=2k$이다.\n\n$\\angle C$에서 맞은편 변은 $AB$, 이웃한 변은 $BC$이므로\n$\\tan C=\\dfrac{AB}{BC}=\\dfrac{2k}{\\sqrt5k}=\\dfrac{2\\sqrt5}{5}$\n\n그러므로 정답은 ⑤이다.",
+    "solution": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac{\\sqrt5}{3}$이므로\n$BC=\\sqrt5$, $AC=3$으로 놓을 수 있다.\n\n피타고라스 정리에 의해\n$AB=\\sqrt{3^2-(\\sqrt5)^2}=2$이다.\n\n$\\angle A+\\angle C=90^\\circ$이므로\n$\\tan C=\\dfrac{AB}{BC}\n=\\dfrac{2}{\\sqrt5}\n=\\dfrac{2\\sqrt5}{5}$이다.\n\n정답은 ⑤이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -210,7 +210,7 @@ window.questionBank = [
       "$6\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "먼저 직각삼각형 $BCD$에서 $BC$를 구한다.\n\n$\\tan30^\\circ=\\dfrac{BC}{CD}$이므로\n$\\dfrac{\\sqrt3}{3}=\\dfrac{BC}{6}$\n$BC=2\\sqrt3$\n\n직각삼각형 $ABC$는 $\\angle A=45^\\circ$이므로 직각이등변삼각형이다.\n따라서 빗변은 한 변의 $\\sqrt2$배이므로\n$AC=BC\\sqrt2=2\\sqrt3\\times\\sqrt2=2\\sqrt6$\n\n그러므로 정답은 ①이다.",
+    "solution": "$\\triangle BCD$에서 $\\angle C=90^\\circ$, $\\angle D=30^\\circ$, $CD=6$이다.\n\n$\\tan30^\\circ=\\dfrac{BC}{CD}$이므로\n$BC=6\\times\\dfrac{\\sqrt3}{3}=2\\sqrt3$이다.\n\n$\\triangle ABC$는 $\\angle B=90^\\circ$, $\\angle A=45^\\circ$이므로\n$AB=BC=2\\sqrt3$이다.\n\n따라서\n$AC=\\sqrt{(2\\sqrt3)^2+(2\\sqrt3)^2}\n=\\sqrt{24}=2\\sqrt6$이다.\n\n정답은 ①이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q7.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -241,7 +241,7 @@ window.questionBank = [
       "$\\sin45^\\circ\\lt\\tan45^\\circ$"
     ],
     "answer": "①",
-    "solution": "① $\\sin90^\\circ=1$이고 $\\tan45^\\circ=1$이므로 두 값은 같다. 따라서 ①은 옳지 않다.\n\n② $25^\\circ<45^\\circ$이므로 $\\sin25^\\circ<\\cos25^\\circ$이다.\n③ $\\cos72^\\circ<1$이고 $\\tan72^\\circ>1$이므로 $\\cos72^\\circ<\\tan72^\\circ$이다.\n④ $50^\\circ>45^\\circ$이므로 $\\sin50^\\circ>\\cos50^\\circ$이다.\n⑤ $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}<1=\\tan45^\\circ$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "①에서\n$\\sin90^\\circ=1$이고\n$\\tan45^\\circ=1$이다.\n\n두 값은 서로 같은데\n①은 $\\sin90^\\circ>\\tan45^\\circ$라고 하였으므로 옳지 않다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "candidate_evidence",
@@ -272,7 +272,7 @@ window.questionBank = [
       "$\\dfrac{2}{5}$"
     ],
     "answer": "③",
-    "solution": "$D$는 $BC$ 위에 있고 $E$는 $AC$ 위에 있으므로 $\\angle DCE=\\angle BCA$이다.\n또 $DE\\perp AC$이므로 직각삼각형 $CDE$에서\n$x+\\angle C=90^\\circ$이다.\n\n직각삼각형 $ABC$에서도 $\\angle B=90^\\circ$이므로\n$\\angle A+\\angle C=90^\\circ$이다.\n\n따라서 $x=\\angle A$이다.\n\n피타고라스 정리에 의해\n$AC=\\sqrt{AB^2+BC^2}=\\sqrt{2^2+5^2}=\\sqrt{29}$\n\n그러므로\n$\\cos x^\\circ=\\cos A=\\dfrac{AB}{AC}=\\dfrac{2}{\\sqrt{29}}=\\dfrac{2\\sqrt{29}}{29}$\n\n따라서 정답은 ③이다.",
+    "solution": "$\\triangle ABC$에서 $\\angle B=90^\\circ$, $AB=2$, $BC=5$이므로\n$AC=\\sqrt{2^2+5^2}=\\sqrt{29}$이다.\n\n또 $DE\\perp AC$, $AB\\perp BC$이므로\n$\\angle CDE=\\angle A=x^\\circ$이다.\n\n따라서\n$\\cos x^\\circ\n=\\cos A\n=\\dfrac{AB}{AC}\n=\\dfrac2{\\sqrt{29}}\n=\\dfrac{2\\sqrt{29}}{29}$이다.\n\n정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q9-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -306,7 +306,7 @@ window.questionBank = [
       "$26^\\circ$"
     ],
     "answer": "②",
-    "solution": "그림에서 빗변의 길이는 $100$, $x^\\circ$의 맞은편 변의 길이는 $39.07$이다.\n\n따라서\n$\\sin x^\\circ=\\dfrac{39.07}{100}=0.3907$\n\n삼각비표에서\n$\\sin23^\\circ=0.3907$\n이므로 $x=23$이다.\n\n따라서 $x^\\circ=23^\\circ$이고 정답은 ②이다.",
+    "solution": "직각삼각형에서\n$\\sin x^\\circ\n=\\dfrac{BC}{AC}\n=\\dfrac{39.07}{100}\n=0.3907$이다.\n\n삼각비표에서\n$\\sin23^\\circ=0.3907$이므로\n$x=23$이다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q10.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -338,7 +338,7 @@ window.questionBank = [
       "$y=\\dfrac{\\sqrt{3}}{2}x+2$"
     ],
     "answer": "③",
-    "solution": "직선이 $x$축의 양의 방향과 이루는 각이 $30^\\circ$이므로 기울기는\n$m=\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다.\n\n또 그림에서 $y$축과 $(0,2)$에서 만나므로 $y$절편은 $2$이다.\n\n따라서 직선의 방정식은\n$y=\\dfrac{\\sqrt3}{3}x+2$\n\n그러므로 정답은 ③이다.",
+    "solution": "직선이 $x$축의 양의 방향과 이루는 각이 $30^\\circ$이므로\n기울기는\n$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이다.\n\n또 그림에서 $y$절편은 $2$이다.\n\n따라서 직선의 방정식은\n$y=\\dfrac{\\sqrt3}{3}x+2$이다.\n\n정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q11.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -369,7 +369,7 @@ window.questionBank = [
       "$2\\sin A+\\cos A-\\tan A$"
     ],
     "answer": "①",
-    "solution": "$0^\\circ<A<45^\\circ$이므로\n$\\sin A<\\cos A$이다.\n또 $0<\\cos A<1$이므로\n$\\tan A=\\dfrac{\\sin A}{\\cos A}>\\sin A$이다.\n\n따라서\n$\\sqrt{(\\sin A-\\cos A)^2}=\\cos A-\\sin A$\n$\\sqrt{(\\tan A-\\sin A)^2}=\\tan A-\\sin A$\n\n주어진 식은\n$(\\cos A-\\sin A)-(\\tan A-\\sin A)$\n$=\\cos A-\\tan A$\n\n그러므로 정답은 ①이다.",
+    "solution": "$0^\\circ<A<45^\\circ$이므로\n$\\sin A<\\cos A$이고\n$\\tan A>\\sin A$이다.\n\n따라서\n$\\sqrt{(\\sin A-\\cos A)^2}\n=\\cos A-\\sin A$,\n\n$\\sqrt{(\\tan A-\\sin A)^2}\n=\\tan A-\\sin A$이다.\n\n그러므로\n$(\\cos A-\\sin A)-(\\tan A-\\sin A)\n=\\cos A-\\tan A$이다.\n\n정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -400,7 +400,7 @@ window.questionBank = [
       "$(4\\sqrt{2}+4\\sqrt{6})\\,\\mathrm{km}$"
     ],
     "answer": "④",
-    "solution": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n\n직각삼각형 $ABH$에서\n$AH=AB\\sin30^\\circ=8\\times\\dfrac12=4$\n$BH=AB\\cos30^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$\n\n직각삼각형 $ACH$에서 $\\angle C=45^\\circ$이므로\n$\\tan45^\\circ=\\dfrac{AH}{CH}=1$\n따라서 $CH=4$이다.\n\n그러므로 터널의 길이는\n$BC=BH+CH=4\\sqrt3+4$\n\n따라서 정답은 ④이다.",
+    "solution": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n\n$AB=8$, $\\angle B=30^\\circ$이므로\n$AH=8\\sin30^\\circ=4$,\n$BH=8\\cos30^\\circ=4\\sqrt3$이다.\n\n또 $\\angle C=45^\\circ$이므로\n$\\triangle AHC$는 직각이등변삼각형이다.\n따라서 $HC=AH=4$이다.\n\n그러므로\n$BC=BH+HC=4\\sqrt3+4$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -432,7 +432,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
-    "solution": "원의 중심에서 현에 내린 수선은 그 현을 이등분한다.\n따라서 위쪽 현의 길이는\n$4+4=8$이다.\n\n아래쪽 현의 길이도 $8$이므로 두 현의 길이는 같다.\n한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다.\n\n아래쪽 현과 중심 사이의 거리가 $3$이므로\n$x=3$\n\n따라서 정답은 ②이다.",
+    "solution": "아래쪽 현의 길이가 $8$이고 중심에서 현까지의 거리가 $3$이다.\n중심에서 현에 내린 수선은 현을 이등분하므로 반쪽 길이는 $4$이다.\n\n원의 반지름을 $r$이라 하면\n$r^2=3^2+4^2=25$이므로\n$r=5$이다.\n\n위쪽 현도 수선에 의해 이등분되고 그림의 반쪽 길이가 $4$이므로\n$x^2+4^2=5^2$이다.\n\n따라서\n$x=3$이다.\n정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q14.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -463,7 +463,7 @@ window.questionBank = [
       "한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있기 때문에"
     ],
     "answer": "⑤",
-    "solution": "문제의 조건은 한 원에서 현들의 길이가 모두 같다는 것이다.\n\n한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다.\n따라서 같은 길이의 현을 계속 그리면 모든 현이 중심에서 일정한 거리를 유지한다.\n\n이 성질을 직접 나타낸 것은 ⑤이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "한 원에서 길이가 같은 현의 중점들은\n원의 중심 $O$에서 모두 같은 거리에 있다.\n\n따라서 그 중점들을 계속 잡아 보면\n항상 중심이 $O$인 같은 원 위에 놓인다.\n\n이 결론을 보장하는 성질은\n“한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다.”이다.\n\n정답은 ⑤이다.",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -494,8 +494,9 @@ window.questionBank = [
       "$16\\pi\\,\\mathrm{cm}$"
     ],
     "answer": "④",
-    "solution": "현 $AB$의 중점을 $D$, 원의 중심을 $O$, 반지름을 $r$라 하자.\n중심에서 현의 중점으로 이은 선은 현에 수직이므로 $OD\\perp AB$이다.\n\n$AD=6$, $DC=3$, $OC=r$이므로\n$OD=r-3$이다.\n\n직각삼각형 $ODA$에서 피타고라스 정리를 쓰면\n$r^2=6^2+(r-3)^2$\n$r^2=36+r^2-6r+9$\n$6r=45$\n$r=\\dfrac{15}{2}$\n\n따라서 접시의 둘레는\n$2\\pi r=2\\pi\\times\\dfrac{15}{2}=15\\pi\\,\\mathrm{cm}$\n\n그러므로 정답은 ④이다.",
+    "solution": "원의 중심을 $O$, 반지름을 $r$이라 하자.\n$AD=DB=6$이므로 $D$는 현 $AB$의 중점이다.\n\n원의 중심과 현의 중점을 이은 선은 현에 수직이므로\n$OD\\perp AB$이다.\n또 $O,D,C$가 한 직선 위에 있고 $C$는 원 위의 점이므로\n$OC=r$이다.\n그림에서 $DC=3$이므로\n$OD=OC-DC=r-3$이다.\n\n직각삼각형 $ODA$에서\n$OA^2=OD^2+AD^2$이므로\n$r^2=(r-3)^2+6^2$이다.\n\n정리하면 $6r=45$이므로\n$r=\\dfrac{15}{2}$이다.\n\n따라서 접시의 둘레는\n$2\\pi r=15\\pi\\,\\mathrm{cm}$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q16.png",
+    "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q16-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
@@ -526,7 +527,7 @@ window.questionBank = [
       "$62^\\circ$"
     ],
     "answer": "②",
-    "solution": "중심 $O$에서 위쪽 현과 오른쪽 현까지의 거리가 같다.\n따라서 두 현의 길이가 같다.\n\n같은 길이의 현에 대한 원주각의 크기도 같으므로, 그림의 두 각은 모두 $x^\\circ$이다.\n\n내접삼각형의 세 각의 합은 $180^\\circ$이므로\n$x+x+62=180$\n$2x=118$\n$x=59$\n\n따라서 정답은 ②이다.",
+    "solution": "중심 $O$에서 두 현에 내린 수선의 길이가 서로 같으므로\n두 현의 길이도 서로 같다.\n\n따라서 그림의 삼각형은 꼭짓각이 $62^\\circ$인 이등변삼각형이다.\n\n두 밑각의 크기는\n$\\dfrac{180^\\circ-62^\\circ}{2}=59^\\circ$이다.\n\n따라서\n$x=59$이다.\n정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q17.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -558,7 +559,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "한 점에서 원에 그은 두 접선의 길이는 같다.\n따라서\n$AP=AR=a$, $BP=BQ=b$, $CR=CQ=x$로 두자.\n\n세 변의 길이에서\n$a+b=3$\n$a+x=6$\n$b+x=7$\n\n뒤의 두 식을 더하고 첫 번째 식을 빼면\n$(a+x)+(b+x)-(a+b)=6+7-3$\n$2x=10$\n$x=5$\n\n따라서 정답은 ⑤이다.",
+    "solution": "접점에서 한 꼭짓점까지의 두 접선의 길이는 서로 같다.\n\n세 변의 길이가\n$AB=3$, $AC=6$, $BC=7$이므로\n$BP=BQ=u$, $AR=AP=w$, $CQ=CR=x$라 하자.\n\n그러면\n$u+w=3$,\n$w+x=6$,\n$u+x=7$이다.\n\n뒤의 두 식을 더하고 첫 식을 빼면\n$2x=6+7-3=10$이다.\n\n따라서\n$x=5$이다.\n정답은 ⑤이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q18.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -590,7 +591,7 @@ window.questionBank = [
       "$\\dfrac{12}{5}$"
     ],
     "answer": "②",
-    "solution": "$AD=t$라 하자.\n점 $D$에서 그은 두 접선의 길이가 같으므로 $DE=t$이다.\n또 점 $C$에서 그은 두 접선의 길이가 같으므로 $CE=BC=5$이다.\n\n따라서\n$CD=DE+EC=t+5$\n\n$AD\\perp AB$, $BC\\perp AB$이므로 점 $D$와 $C$의 가로 방향 거리는 $AB=6$, 세로 방향 높이 차는 $5-t$이다.\n피타고라스 정리에 의해\n$(t+5)^2=6^2+(5-t)^2$\n\n전개하면\n$t^2+10t+25=36+t^2-10t+25$\n$20t=36$\n$t=\\dfrac95$\n\n따라서 $AD=\\dfrac95$이고 정답은 ②이다.",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n\n따라서\n$AD=DE=x$,\n$BC=CE=5$이다.\n\n그러므로\n$DC=DE+EC=x+5$이다.\n\n또 $AB=6$이고 $AD\\perp AB$, $BC\\perp AB$이므로\n$D$, $C$의 높이 차는 $5-x$이다.\n\n따라서\n$DC^2=6^2+(5-x)^2$이다.\n\n즉\n$(x+5)^2=36+(5-x)^2$이고,\n정리하면\n$20x=36$이다.\n\n따라서\n$x=\\dfrac95$이다.\n정답은 ②이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q19-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -623,7 +624,7 @@ window.questionBank = [
       "RHS"
     ],
     "answer": "③",
-    "solution": "접점에서 반지름과 접선은 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n\n두 직각삼각형 $PAO$, $PBO$에서\n$OP$는 공통인 빗변이고\n$OA=OB$는 같은 원의 반지름이다.\n\n따라서 두 삼각형은 RHS 합동이다.\n빈칸은 차례로 $90^\\circ$, $OP$, $OA=OB$, $\\triangle PBO$, RHS가 되어야 한다.\n\n$PA=PB$는 합동을 확인한 뒤 얻는 결론이므로 합동 조건의 빈칸에 들어갈 수 없다.\n\n따라서 정답은 ③이다.",
+    "solution": "접점에서는 반지름과 접선이 수직이므로\n$\\angle PAO=\\angle PBO=90^\\circ$이다.\n\n또 $OP$는 공통이고,\n$OA=OB$는 같은 원의 반지름이다.\n\n따라서\n$\\triangle PAO\\equiv\\triangle PBO$이며\nRHS 합동을 이용한다.\n\n빈칸 ③에는 $OA=OB$가 들어가야 하므로\n보기의 $PA=PB$는 알맞지 않다.\n\n정답은 ③이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q20.png",
     "imageSize": "tall",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -649,7 +650,7 @@ window.questionBank = [
     "content": "[서술형1] $(1+\\tan30^\\circ)(1-\\tan30^\\circ)$의 값을 계산하시오. [3점]",
     "choices": [],
     "answer": "$\\dfrac{2}{3}$",
-    "solution": "$(1+a)(1-a)=1-a^2$를 이용하면\n$(1+\\tan30^\\circ)(1-\\tan30^\\circ)$\n$=1-\\tan^2 30^\\circ$\n\n$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이므로\n$1-\\left(\\dfrac{\\sqrt3}{3}\\right)^2$\n$=1-\\dfrac13$\n$=\\dfrac23$\n\n따라서 구하는 값은 $\\dfrac23$이다.",
+    "solution": "$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이므로\n\n$(1+\\tan30^\\circ)(1-\\tan30^\\circ)\n=1-\\tan^2 30^\\circ$\n\n$=1-\\left(\\dfrac{\\sqrt3}{3}\\right)^2\n=1-\\dfrac13\n=\\dfrac23$이다.\n\n따라서 답은 $\\dfrac23$이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -665,7 +666,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형",
@@ -675,7 +676,7 @@ window.questionBank = [
     "content": "[서술형2] 다음 그림과 같이 순돌이가 나무에 올라간 고양이를 구출하려고 한다. 고양이가 있는 $C$ 지점에서 지면에 수선을 내려 만나는 점을 $E$라 하자. 순돌이가 점 $E$로부터 $4.5\\,\\mathrm{m}$ 떨어진 지점에서 점 $C$를 올려다본 각의 크기가 $54^\\circ$이다. 순돌이의 눈높이가 $1.5\\,\\mathrm{m}$일 때, 다음 표를 이용하여 고양이가 지면으로부터 떨어진 높이 $\\overline{CE}$의 길이를 구하시오. [4점]",
     "choices": [],
     "answer": "$7.71\\,\\mathrm{m}$",
-    "solution": "순돌이의 눈과 같은 높이에서 나무까지 수평선을 그어 직각삼각형을 생각하자.\n눈높이보다 위에 있는 고양이까지의 높이를 $h$라 하면, 수평거리는 $4.5\\,\\mathrm{m}$이고 올려다본 각은 $54^\\circ$이다.\n\n따라서\n$\\tan54^\\circ=\\dfrac{h}{4.5}$\n\n표에서 $\\tan54^\\circ=1.38$이므로\n$h=4.5\\times1.38=6.21\\,\\mathrm{m}$\n\n여기에 순돌이의 눈높이 $1.5\\,\\mathrm{m}$를 더하면\n$CE=6.21+1.5=7.71\\,\\mathrm{m}$\n\n따라서 구하는 높이는 $7.71\\,\\mathrm{m}$이다.",
+    "solution": "순돌이의 눈높이와 같은 높이의 점을 $D$라 하자.\n\n$BD=AE=4.5\\,\\mathrm{m}$이고\n$\\angle CBD=54^\\circ$이다.\n\n$\\tan54^\\circ=\\dfrac{CD}{BD}=1.38$이므로\n\n$CD=4.5\\times1.38=6.21\\,\\mathrm{m}$이다.\n\n또 $DE=1.5\\,\\mathrm{m}$이므로\n\n$CE=CD+DE\n=6.21+1.5\n=7.71\\,\\mathrm{m}$이다.\n\n따라서 고양이의 높이는\n$7.71\\,\\mathrm{m}$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q22.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -692,7 +693,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -701,7 +702,7 @@ window.questionBank = [
     "content": "[서술형3] 다음 $\\square ABCD$에서 $BC=6\\,\\mathrm{cm}$, $CD=8\\,\\mathrm{cm}$이고 $\\angle CAB=30^\\circ$, $\\angle ACD=60^\\circ$일 때, $\\square ABCD$의 넓이를 구하시오. [5점]",
     "choices": [],
     "answer": "$42\\sqrt{3}\\,\\mathrm{cm}^2$",
-    "solution": "대각선 $AC$를 기준으로 사각형을 $\\triangle ABC$와 $\\triangle ACD$로 나누어 넓이를 구한다.\n\n직각삼각형 $ABC$에서\n$\\tan30^\\circ=\\dfrac{BC}{AB}=\\dfrac{6}{AB}$\n이므로 $AB=6\\sqrt3$이다.\n또\n$\\sin30^\\circ=\\dfrac{BC}{AC}=\\dfrac{6}{AC}$\n이므로 $AC=12$이다.\n\n따라서\n$[\\triangle ABC]=\\dfrac12\\times6\\sqrt3\\times6=18\\sqrt3$\n\n이제 $D$에서 $AC$에 내린 높이를 $h$라 하면\n$h=CD\\sin60^\\circ=8\\times\\dfrac{\\sqrt3}{2}=4\\sqrt3$\n\n따라서\n$[\\triangle ACD]=\\dfrac12\\times12\\times4\\sqrt3=24\\sqrt3$\n\n그러므로 사각형의 넓이는\n$18\\sqrt3+24\\sqrt3=42\\sqrt3\\,\\mathrm{cm}^2$\n\n따라서 구하는 넓이는 $42\\sqrt3\\,\\mathrm{cm}^2$이다.",
+    "solution": "대각선 $AC$를 기준으로 두 삼각형의 넓이를 구한다.\n\n$\\triangle ABC$에서\n$\\sin30^\\circ=\\dfrac{BC}{AC}=\\dfrac6{AC}$이므로\n$AC=12$이다.\n\n또\n$AB=AC\\cos30^\\circ\n=12\\times\\dfrac{\\sqrt3}{2}\n=6\\sqrt3$이므로\n\n$[ABC]=\\dfrac12\\times6\\times6\\sqrt3\n=18\\sqrt3$이다.\n\n$\\triangle ACD$에서\n$AC=12$, $CD=8$, $\\angle ACD=60^\\circ$이므로\n\n$[ACD]\n=\\dfrac12\\times12\\times8\\times\\sin60^\\circ\n=24\\sqrt3$이다.\n\n따라서\n$[ABCD]=18\\sqrt3+24\\sqrt3\n=42\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q23.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -718,7 +719,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -727,7 +728,7 @@ window.questionBank = [
     "content": "[서술형4] 다음 그림에서 두 점 $A$, $B$는 점 $P$에서 원 $O$에 그은 두 접선의 접점이다. $PO=16\\,\\mathrm{cm}$, $\\angle APO=30^\\circ$일 때, $\\square APBO$의 넓이를 구하시오. [4점]",
     "choices": [],
     "answer": "$64\\sqrt{3}\\,\\mathrm{cm}^2$",
-    "solution": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n\n직각삼각형 $APO$에서 $PO=16$이고 $\\angle APO=30^\\circ$이므로\n$OA=16\\sin30^\\circ=16\\times\\dfrac12=8$\n$AP=16\\cos30^\\circ=16\\times\\dfrac{\\sqrt3}{2}=8\\sqrt3$\n\n한 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이고, $OA=OB$는 반지름이다.\n따라서 $\\triangle APO$와 $\\triangle BPO$의 넓이는 같다.\n\n그러므로 사각형 $APBO$의 넓이는\n$2\\times\\dfrac12\\times8\\times8\\sqrt3$\n$=64\\sqrt3\\,\\mathrm{cm}^2$\n\n따라서 구하는 넓이는 $64\\sqrt3\\,\\mathrm{cm}^2$이다.",
+    "solution": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp AP$이다.\n\n직각삼각형 $AOP$에서\n$OP=16$, $\\angle APO=30^\\circ$이므로\n$OA=16\\sin30^\\circ=8$,\n$AP=16\\cos30^\\circ=8\\sqrt3$이다.\n\n점 $P$에서 원에 그은 두 접선의 길이는 같으므로\n$AP=BP$이다.\n또 $OA$, $OB$는 같은 원의 반지름이므로\n$OA=OB=8$이다.\n\n따라서 $\\triangle AOP$와 $\\triangle BOP$는\n합동인 직각삼각형이고,\n$\\square APBO$의 넓이는\n\n$2\\times\\dfrac12\\times8\\times8\\sqrt3\n=64\\sqrt3\\,\\mathrm{cm}^2$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q24-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
@@ -745,7 +746,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -754,7 +755,7 @@ window.questionBank = [
     "content": "[서술형5] 다음 그림에서 $PA$, $PB$, $CD$는 원 $O$의 접선이고 세 점 $A$, $B$, $E$는 그 접점이다. $PB=8$, $PC=7$, $CD=3$일 때, $x$의 값을 구하시오. [4점]",
     "choices": [],
     "answer": "$6$",
-    "solution": "점 $P$에서 원에 그은 두 접선의 길이가 같으므로\n$PA=PB=8$이다.\n\n위쪽 접선에서 $PC=7$이므로\n$CA=PA-PC=8-7=1$\n\n점 $C$에서 그은 두 접선의 길이가 같으므로\n$CE=CA=1$\n\n$CD=3$이므로\n$DE=CD-CE=3-1=2$\n\n점 $D$에서 그은 두 접선의 길이가 같으므로\n$DB=DE=2$\n\n아래쪽 접선에서 $PB=PD+DB$이므로\n$8=x+2$\n$x=6$\n\n따라서 구하는 값은 $6$이다.",
+    "solution": "한 점에서 원에 그은 두 접선의 길이는 서로 같다.\n\n$PA=PB=8$이고 $PC=7$이므로\n$CA=PA-PC=1$이다.\n\n점 $C$에서 그은 두 접선의 길이는 같으므로\n$CE=CA=1$이다.\n\n$CD=3$이므로\n$DE=CD-CE=2$이다.\n\n점 $D$에서 그은 두 접선의 길이는 같으므로\n$DB=DE=2$이다.\n\n따라서\n$x=PD=PB-DB=8-2=6$이다.\n\n답은 $6$이다.",
     "image": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25.png",
     "solutionImage": "assets/images/25_풍덕중_2학기_중간_중3_수학/q25-solution.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
