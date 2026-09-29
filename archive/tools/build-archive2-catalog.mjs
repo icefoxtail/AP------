@@ -68,7 +68,7 @@ const identityBySource = new Map(
   ]),
 );
 const pathRenameTargets = new Set(
-  (identity.incrementalSync?.renamedFiles || [])
+  (identity.verifiedPathRenameHistory || identity.incrementalSync?.renamedFiles || [])
     .map((row) => core.normalizeFile(row.to))
     .filter(Boolean),
 );
