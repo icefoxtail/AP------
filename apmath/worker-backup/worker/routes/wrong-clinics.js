@@ -248,7 +248,7 @@ async function loadClassStudents(env, classId) {
 }
 
 // 대상 학생 수만큼 개별 조회하면(학년 전체 배포 등) D1 왕복이 N번 발생한다.
-// 동일한 조회를 IN() 한 번으로 묶되, 학생이 여러 반에 동시 소속된 경우(재원반+특강반 등)
+// 동일한 조회를 최대 100명씩 묶되, 학생이 여러 반에 동시 소속된 경우(재원반+특강반 등)
 // class_name 알파벳순 첫 행을 무조건 고르면 클리닉을 실제로 생성한 반과 다른 반이 배정될 수 있다.
 // 그래서 학생당 모든 소속 반 후보를 모아두고, 호출부가 알려준(fallback) class_id와 일치하는 행을 우선 채택한다.
 async function loadStudentTargetsBatch(env, studentIds, fallbackByStudentId = new Map()) {
@@ -256,27 +256,29 @@ async function loadStudentTargetsBatch(env, studentIds, fallbackByStudentId = ne
   const out = new Map();
   if (!uniqueIds.length) return out;
 
-  const placeholders = uniqueIds.map(() => '?').join(', ');
-  const res = await env.DB.prepare(`
-    SELECT
-      s.id AS student_id,
-      s.name AS student_name,
-      cs.class_id,
-      c.name AS class_name
-    FROM students s
-    LEFT JOIN class_students cs ON cs.student_id = s.id
-    LEFT JOIN classes c ON c.id = cs.class_id
-    WHERE s.id IN (${placeholders})
-      AND COALESCE(s.status, '재원') IN ('재원', 'active')
-    ORDER BY c.name ASC
-  `).bind(...uniqueIds).all();
-
   const rowsByStudent = new Map();
-  for (const row of res.results || []) {
-    const sid = text(row.student_id);
-    if (!sid) continue;
-    if (!rowsByStudent.has(sid)) rowsByStudent.set(sid, []);
-    rowsByStudent.get(sid).push(row);
+  for (let offset = 0; offset < uniqueIds.length; offset += 100) {
+    const ids = uniqueIds.slice(offset, offset + 100);
+    const placeholders = ids.map(() => '?').join(', ');
+    const res = await env.DB.prepare(`
+      SELECT
+        s.id AS student_id,
+        s.name AS student_name,
+        cs.class_id,
+        c.name AS class_name
+      FROM students s
+      LEFT JOIN class_students cs ON cs.student_id = s.id
+      LEFT JOIN classes c ON c.id = cs.class_id
+      WHERE s.id IN (${placeholders})
+        AND COALESCE(s.status, '재원') IN ('재원', 'active')
+      ORDER BY c.name ASC
+    `).bind(...ids).all();
+    for (const row of res.results || []) {
+      const sid = text(row.student_id);
+      if (!sid) continue;
+      if (!rowsByStudent.has(sid)) rowsByStudent.set(sid, []);
+      rowsByStudent.get(sid).push(row);
+    }
   }
 
   for (const sid of uniqueIds) {
@@ -417,15 +419,20 @@ async function canDistributeToGradeStudents(env, sourceClassId, targets) {
   const baseClass = await env.DB.prepare('SELECT grade FROM classes WHERE id = ? LIMIT 1').bind(sourceClassId).first();
   const grade = text(baseClass?.grade || '').replace(/\s+/g, '');
   if (!grade) return false;
-  const placeholders = studentIds.map(() => '?').join(', ');
-  const res = await env.DB.prepare(`
-    SELECT DISTINCT cs.student_id
-    FROM class_students cs
-    JOIN classes c ON c.id = cs.class_id
-    WHERE cs.student_id IN (${placeholders})
-      AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
-  `).bind(...studentIds, grade).all();
-  const allowedIds = new Set((res.results || []).map(row => text(row.student_id)));
+  const allowedIds = new Set();
+  // grade 파라미터 하나를 포함하므로 학생 ID는 쿼리당 최대 99개다.
+  for (let offset = 0; offset < studentIds.length; offset += 99) {
+    const ids = studentIds.slice(offset, offset + 99);
+    const placeholders = ids.map(() => '?').join(', ');
+    const res = await env.DB.prepare(`
+      SELECT DISTINCT cs.student_id
+      FROM class_students cs
+      JOIN classes c ON c.id = cs.class_id
+      WHERE cs.student_id IN (${placeholders})
+        AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?
+    `).bind(...ids, grade).all();
+    for (const row of res.results || []) allowedIds.add(text(row.student_id));
+  }
   return studentIds.every(id => allowedIds.has(id));
 }
 

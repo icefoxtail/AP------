@@ -390,6 +390,16 @@ function getBoardDateOffset(dateText, delta) {
   return date.toISOString().slice(0, 10);
 }
 
+function getPreviousMonthDate(dateText) {
+  const date = new Date(`${dateText}T00:00:00Z`);
+  const day = date.getUTCDate();
+  date.setUTCDate(1);
+  date.setUTCMonth(date.getUTCMonth() - 1);
+  const lastDay = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).getUTCDate();
+  date.setUTCDate(Math.min(day, lastDay));
+  return date.toISOString().slice(0, 10);
+}
+
 function normalizeTargetScope(value) {
   const text = String(value || '').trim();
   return TARGET_SCOPE_VALUES.has(text) ? text : null;
@@ -589,13 +599,18 @@ async function loadClassAssignmentExclusions(env, assignmentIds) {
   const ids = Array.from(new Set((assignmentIds || []).map(id => String(id || '').trim()).filter(Boolean)));
   if (!ids.length || !(await hasClassExamAssignmentExclusions(env))) return [];
   try {
-    const markers = ids.map(() => '?').join(',');
-    const res = await env.DB.prepare(`
-      SELECT assignment_id, student_id, reason
-      FROM class_exam_assignment_exclusions
-      WHERE assignment_id IN (${markers})
-    `).bind(...ids).all();
-    return res.results || [];
+    const rows = [];
+    for (let offset = 0; offset < ids.length; offset += 100) {
+      const batch = ids.slice(offset, offset + 100);
+      const markers = batch.map(() => '?').join(',');
+      const res = await env.DB.prepare(`
+        SELECT assignment_id, student_id, reason
+        FROM class_exam_assignment_exclusions
+        WHERE assignment_id IN (${markers})
+      `).bind(...batch).all();
+      rows.push(...(res.results || []));
+    }
+    return rows;
   } catch (e) {
     console.warn('[assignment-exclusions] list failed:', e);
     return [];
@@ -1890,8 +1905,9 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!isStaffUser(currentTeacher)) return jsonResponse({ error: 'Forbidden' }, 403);
 
       const baseClassId = normalizeOptionalText(url.searchParams.get('class') || url.searchParams.get('class_id'));
-      const from = normalizeBoardDate(url.searchParams.get('from')) || '2026-06-01';
       const to = normalizeBoardDate(url.searchParams.get('to')) || getBoardDateOffset('', 0);
+      const from = normalizeBoardDate(url.searchParams.get('from')) || getPreviousMonthDate(to);
+      if (from > to) return jsonResponse({ success: false, error: 'invalid date range' }, 400);
       if (!baseClassId) {
         return jsonResponse({ error: 'class required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
       }
@@ -1921,53 +1937,51 @@ export async function handleExams(request, env, teacher, path, url) {
         return jsonResponse({ success: true, grade, from, to, classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] });
       }
 
-      const classMarkers = classIds.map(() => '?').join(',');
+      // JOIN으로 범위를 정한다. 학년 전체의 학생/응시 ID를 IN()에 나열하면
+      // 101개부터 D1의 쿼리당 바인딩 100개 제한을 넘는다.
+      const gradeClassWhere = `(c.is_active != 0 OR c.is_active IS NULL)
+        AND REPLACE(COALESCE(c.grade, ''), ' ', '') = ?`;
       const [classStudentsRes, assignmentsRes, sessionsRes] = await Promise.all([
         env.DB.prepare(`
-          SELECT *
-          FROM class_students
-          WHERE class_id IN (${classMarkers})
-        `).bind(...classIds).all(),
+          SELECT cs.*
+          FROM class_students cs JOIN classes c ON c.id = cs.class_id
+          WHERE ${gradeClassWhere}
+        `).bind(grade).all(),
         env.DB.prepare(`
-          SELECT *
-          FROM class_exam_assignments
-          WHERE class_id IN (${classMarkers})
-            AND SUBSTR(COALESCE(exam_date, created_at, updated_at, ''), 1, 10) BETWEEN ? AND ?
-          ORDER BY exam_date DESC, updated_at DESC
-        `).bind(...classIds, from, to).all(),
+          SELECT a.*
+          FROM class_exam_assignments a JOIN classes c ON c.id = a.class_id
+          WHERE ${gradeClassWhere}
+            AND SUBSTR(COALESCE(NULLIF(a.exam_date, ''), a.created_at, a.updated_at, ''), 1, 10) BETWEEN ? AND ?
+          ORDER BY a.exam_date DESC, a.updated_at DESC
+        `).bind(grade, from, to).all(),
         env.DB.prepare(`
-          SELECT *
-          FROM exam_sessions
-          WHERE class_id IN (${classMarkers})
-            AND SUBSTR(COALESCE(exam_date, created_at, updated_at, ''), 1, 10) BETWEEN ? AND ?
-          ORDER BY exam_date DESC, id DESC
-          LIMIT 2000
-        `).bind(...classIds, from, to).all()
+          SELECT es.*
+          FROM exam_sessions es JOIN classes c ON c.id = es.class_id
+          WHERE ${gradeClassWhere}
+            AND SUBSTR(COALESCE(NULLIF(es.exam_date, ''), es.created_at, es.updated_at, ''), 1, 10) BETWEEN ? AND ?
+          ORDER BY es.exam_date DESC, es.id DESC
+        `).bind(grade, from, to).all()
       ]);
 
       const classStudents = classStudentsRes.results || [];
-      const studentIds = [...new Set(classStudents.map(row => String(row.student_id || '').trim()).filter(Boolean))];
-      let students = { results: [] };
-      if (studentIds.length) {
-        const studentMarkers = studentIds.map(() => '?').join(',');
-        students = await env.DB.prepare(`
-          SELECT id, name, school_name, grade, status
-          FROM students
-          WHERE id IN (${studentMarkers})
-            AND COALESCE(status, '재원') IN ('재원', 'active')
-        `).bind(...studentIds).all();
-      }
-
-      const sessionIds = [...new Set((sessionsRes.results || []).map(row => String(row.id || '').trim()).filter(Boolean))];
-      let wrongs = { results: [] };
-      if (sessionIds.length) {
-        const sessionMarkers = sessionIds.map(() => '?').join(',');
-        wrongs = await env.DB.prepare(`
-          SELECT *
-          FROM wrong_answers
-          WHERE session_id IN (${sessionMarkers})
-        `).bind(...sessionIds).all();
-      }
+      const [students, wrongs] = await Promise.all([
+        env.DB.prepare(`
+          SELECT DISTINCT s.id, s.name, s.school_name, s.grade, s.status
+          FROM students s
+          JOIN class_students cs ON cs.student_id = s.id
+          JOIN classes c ON c.id = cs.class_id
+          WHERE ${gradeClassWhere}
+            AND COALESCE(s.status, '재원') IN ('재원', 'active')
+        `).bind(grade).all(),
+        env.DB.prepare(`
+          SELECT wa.*
+          FROM wrong_answers wa
+          JOIN exam_sessions es ON es.id = wa.session_id
+          JOIN classes c ON c.id = es.class_id
+          WHERE ${gradeClassWhere}
+            AND SUBSTR(COALESCE(NULLIF(es.exam_date, ''), es.created_at, es.updated_at, ''), 1, 10) BETWEEN ? AND ?
+        `).bind(grade, from, to).all()
+      ]);
 
       const archiveFiles = [...new Set([
         ...(sessionsRes.results || []).map(row => row.archive_file),
@@ -1975,17 +1989,21 @@ export async function handleExams(request, env, teacher, path, url) {
       ].map(value => normalizeAssignmentArchiveFile(value || '')).filter(Boolean))];
 
       // 옛 데이터 소급 동기화(archive metadata revision/hash가 같을 때만 스킵됨).
-      await Promise.all(archiveFiles.map(file => syncExamBlueprintsFromArchive(env, file)));
+      for (let offset = 0; offset < archiveFiles.length; offset += 4) {
+        await Promise.all(archiveFiles.slice(offset, offset + 4).map(file => syncExamBlueprintsFromArchive(env, file)));
+      }
 
-      let blueprints = { results: [] };
-      if (archiveFiles.length > 0) {
-        const bpMarkers = archiveFiles.map(() => '?').join(',');
-        blueprints = await env.DB.prepare(`
+      const blueprints = [];
+      for (let offset = 0; offset < archiveFiles.length; offset += 100) {
+        const files = archiveFiles.slice(offset, offset + 100);
+        const bpMarkers = files.map(() => '?').join(',');
+        const res = await env.DB.prepare(`
           SELECT *
           FROM exam_blueprints
           WHERE archive_file IN (${bpMarkers})
           ORDER BY archive_file ASC, question_no ASC
-        `).bind(...archiveFiles).all();
+        `).bind(...files).all();
+        blueprints.push(...(res.results || []));
       }
 
       const dedupedAssignments = dedupeClassExamAssignments(assignmentsRes.results || []);
@@ -2001,7 +2019,7 @@ export async function handleExams(request, env, teacher, path, url) {
         students: students.results || [],
         sessions: sessionsRes.results || [],
         wrong_answers: wrongs.results || [],
-        blueprints: blueprints.results || [],
+        blueprints,
         assignments: dedupedAssignments,
         exclusions
       });
