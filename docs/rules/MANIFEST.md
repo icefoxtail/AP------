@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 36254 bytes | sha256 9b3382dfb3185460f0063deb349b17c86b3fe3ef085e34a0cade57319585b5c0
+- 00_RULES_INDEX.md | 36254 bytes |- 00_RULES_INDEX.md | 37148 bytes |- 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 21599 bytes |- 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12518 bytes |- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 9217 bytes | sha256 5e97b8d047ca04e52848da6a62296557c9ed269a113616cccc06148a0d2b6e62
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 20257 bytes | sha256 f24108214a861725bea64e001dc472ce73c68cb695e3ca9256a379747ef6bcae
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12133 bytes | sha256 737df504f0940793746d0a0f41d1c6c0476ac6b3d6652fdf1689d0702e6eff37
