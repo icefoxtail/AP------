@@ -532,7 +532,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "직선\n$3x-y-2+k(x+y-6)=0$\n이 모든 실수 $k$에 대하여 한 점 $P$를 지나려면\n$k$가 없는 부분과 $k$의 계수가 되는 부분이 각각 $0$이어야 한다.\n따라서\n$3x-y-2=0$,\n$x+y-6=0$을 연립한다.\n두 식을 더하면\n$4x-8=0$이므로 $x=2$이고,\n$y=4$이다.\n따라서 $P=(2,4)$이다.\n점 $P$에서 직선 $3x+4y+3=0$까지의 거리는\n$\\dfrac{|3\\cdot2+4\\cdot4+3|}{\\sqrt{3^2+4^2}}\n=\\dfrac{25}{5}=5$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "직선\n$3x-y-2+k(x+y-6)=0$\n이 모든 실수 $k$에 대하여 한 점 $P$를 지나려면\n$k$가 없는 부분과 $k$의 계수가 되는 부분이 각각 $0$이어야 한다.\n따라서\n$3x-y-2=0$,\n$x+y-6=0$을 연립한다.\n두 식을 더하면\n$4x-8=0$이므로 $x=2$이고,\n$y=4$이다.\n따라서 $P=(2,4)$이다.\n점 $P$에서 직선 $3x+4y+3=0$까지의 거리는\n$\\dfrac{|3\\cdot2+4\\cdot4+3|}{\\sqrt{3^2+4^2}}$\n$=\\dfrac{25}{5}=5$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "10",
     "displayNo": "10",
     "sourceOrdinal": 10,
@@ -768,7 +768,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": "직선 $y=x$에 대하여 점 $A(-2,-3)$을 대칭이동한 점을 $A'$라 하면\n$A'=(-3,-2)$이다.\n점 $P$가 $y=x$ 위에 있으므로\n$AP=A'P$이다.\n\n원의 중심을 $C=(5,4)$라 하자.\n최솟값이 되는 점은 원의 바깥쪽에 있으므로, 고정된 $P$에 대해 $PQ$를 최소로 하는 $Q$는 $C,P,Q$가 한 직선 위에 있고\n$PQ=PC-2$가 되도록 잡는다.\n따라서 원 바깥의 $P$에 대해\n$AP+PQ=A'P+PC-2\\ge A'C-2$이다.\n$A'C=\\sqrt{8^2+6^2}=10$이므로 하한은 $8$이다.\n\n선분 $A'C$와 $y=x$의 교점을 구하면\n$A'C$의 방정식은\n$y=\\dfrac34x+\\dfrac14$이고,\n$y=x$와의 교점은 $P_0=(1,1)$이다.\n이때\n$CP_0=5>2$이므로 실제로 원의 바깥에 있고 위의 하한 $8$이 달성된다.\n한편 $y=x$와 원이 만나는 첫 점의 $x$좌표는 $\\dfrac{9-\\sqrt7}{2}>3$이고, 그 구간에서는 이미 $AP>8$이므로 원 내부의 점으로는 더 작은 값을 만들 수 없다.\n따라서 최솟값을 만드는 점은 $P_0=(1,1)$이다.\n\n$C$에서 $P_0$ 방향의 벡터는 $(-4,-3)$이고 그 길이는 $5$이다.\n반지름이 $2$이므로\n$Q_0=C+\\dfrac25(-4,-3)\n=\\left(\\dfrac{17}{5},\\dfrac{14}{5}\\right)$이다.\n\n삼각형 $AP_0Q_0$의 넓이는\n$\\dfrac12\\left|\n\\begin{vmatrix}\n3&4\\\\\n\\dfrac{27}{5}&\\dfrac{29}{5}\n\\end{vmatrix}\n\\right|\n=\\dfrac12\\left|\\dfrac{87-108}{5}\\right|\n=\\dfrac{21}{10}$이다.\n따라서\n$10S=21$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "직선 $y=x$에 대하여 점 $A(-2,-3)$을 대칭이동한 점을 $A'$라 하면\n$A'=(-3,-2)$이다.\n점 $P$가 $y=x$ 위에 있으므로\n$AP=A'P$이다.\n\n원의 중심을 $C=(5,4)$라 하자.\n먼저 원 바깥에 있는 점 $P$를 생각하면, 고정된 $P$에서 $PQ$가 최소가 되는 점 $Q$는 $C,P,Q$가 한 직선 위에 있고\n$PQ=PC-2$가 되도록 잡은 점이다.\n따라서\n$AP+PQ=A'P+PC-2\\ge A'C-2$이다.\n$A'C=\\sqrt{8^2+6^2}=10$이므로\n$AP+PQ\\ge8$이다.\n\n선분 $A'C$와 $y=x$의 교점을 구하면\n$A'C$의 방정식은\n$y=\\dfrac34x+\\dfrac14$이고,\n$y=x$와의 교점은 $P_0=(1,1)$이다.\n이때\n$CP_0=5>2$이므로 $P_0$는 실제로 원의 바깥에 있고\n$AP_0+P_0Q_0=8$을 만들 수 있다.\n\n또 $y=x$와 원이 만나는 두 점 중 작은 $x$좌표는\n$\\dfrac{9-\\sqrt7}{2}>3$이다.\n원 내부의 $P=(t,t)$는 이 값보다 큰 범위에 있고, 그 범위에서는 $AP>8$이므로 원 내부에서는 위의 값 $8$보다 작게 만들 수 없다.\n따라서 최솟값을 만드는 점은 $P_0=(1,1)$이다.\n\n$C$에서 $P_0$ 방향의 벡터는 $(-4,-3)$이고 그 길이는 $5$이다.\n반지름이 $2$이므로\n$Q_0=C+\\dfrac25(-4,-3)=\\left(\\dfrac{17}{5},\\dfrac{14}{5}\\right)$이다.\n\n$\\overrightarrow{AP_0}=(3,4)$,\n$\\overrightarrow{AQ_0}=\\left(\\dfrac{27}{5},\\dfrac{29}{5}\\right)$이므로\n삼각형 $AP_0Q_0$의 넓이는\n$\\dfrac12\\left|3\\cdot\\dfrac{29}{5}-4\\cdot\\dfrac{27}{5}\\right|=\\dfrac{21}{10}$이다.\n따라서\n$10S=21$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "14",
     "displayNo": "14",
     "sourceOrdinal": 14,
@@ -944,7 +944,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "점 $P$가 선분 $AB$ 위에 있으므로\n$P=A+s(B-A)=(s,\\,2-2s)$\n로 두고,\n점 $Q$가 선분 $CD$ 위에 있으므로\n$Q=D+t(C-D)=(2+t,\\,3-2t)$\n로 두자.\n점 $P,Q$가 꼭짓점이 아니므로 $0<s,t<1$이다.\n\n사각형 $ABCD$의 넓이는 좌표를 이용하면 $5$이다.\n$APQD:PBCQ=2:1$이므로\n$APQD$의 넓이는 $\\dfrac{10}{3}$이다.\n좌표를 이용하여 사각형 $APQD$의 넓이를 계산하면\n$\\dfrac52(s+t)$이므로\n$\\dfrac52(s+t)=\\dfrac{10}{3}$,\n즉\n$s+t=\\dfrac43$이다.\n\n이제\n$PQ^2=(2+t-s)^2+(1-2t+2s)^2$이다.\n$d=s-t$라 두면\n$PQ^2=(2-d)^2+(1+2d)^2\n=5+5d^2$이다.\n따라서 $PQ$가 최소가 되려면 $d=0$, 즉 $s=t$이어야 한다.\n$s+t=\\dfrac43$이므로\n$s=t=\\dfrac23$이다.\n\n따라서\n$P=\\left(\\dfrac23,\\dfrac23\\right)$,\n$Q=\\left(\\dfrac83,\\dfrac53\\right)$이다.\n직선 $PQ$의 기울기는\n$m=\\dfrac{\\frac53-\\frac23}{\\frac83-\\frac23}\n=\\dfrac12$이다.\n$P$를 $y=mx+n$에 대입하면\n$\\dfrac23=\\dfrac12\\cdot\\dfrac23+n$이므로\n$n=\\dfrac13$이다.\n따라서\n$30(m+n)=30\\left(\\dfrac12+\\dfrac13\\right)=25$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "점 $P$가 선분 $AB$ 위에 있으므로\n$P=A+s(B-A)=(s,\\,2-2s)$\n로 두고,\n점 $Q$가 선분 $CD$ 위에 있으므로\n$Q=D+t(C-D)=(2+t,\\,3-2t)$\n로 두자.\n점 $P,Q$가 꼭짓점이 아니므로 $0<s,t<1$이다.\n\n사각형 $ABCD$의 넓이는 좌표를 이용하면 $5$이다.\n$APQD:PBCQ=2:1$이므로\n$APQD$의 넓이는 $\\dfrac{10}{3}$이다.\n좌표를 이용하여 사각형 $APQD$의 넓이를 계산하면\n$\\dfrac52(s+t)$이므로\n$\\dfrac52(s+t)=\\dfrac{10}{3}$,\n즉\n$s+t=\\dfrac43$이다.\n\n이제\n$PQ^2=(2+t-s)^2+(1-2t+2s)^2$이다.\n$d=s-t$라 두면\n$PQ^2=(2-d)^2+(1+2d)^2$\n$=5+5d^2$이다.\n따라서 $PQ$가 최소가 되려면 $d=0$, 즉 $s=t$이어야 한다.\n$s+t=\\dfrac43$이므로\n$s=t=\\dfrac23$이다.\n\n따라서\n$P=\\left(\\dfrac23,\\dfrac23\\right)$,\n$Q=\\left(\\dfrac83,\\dfrac53\\right)$이다.\n직선 $PQ$의 기울기는\n$m=\\dfrac{\\frac53-\\frac23}{\\frac83-\\frac23}$\n$=\\dfrac12$이다.\n$P$를 $y=mx+n$에 대입하면\n$\\dfrac23=\\dfrac12\\cdot\\dfrac23+n$이므로\n$n=\\dfrac13$이다.\n따라서\n$30(m+n)=30\\left(\\dfrac12+\\dfrac13\\right)=25$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "17",
     "displayNo": "17",
     "sourceOrdinal": 17,
