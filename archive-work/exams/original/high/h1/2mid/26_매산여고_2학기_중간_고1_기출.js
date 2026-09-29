@@ -276,7 +276,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "중심 C=(-3,-√2), 반지름 3인 원이 y축에 접하는 모습을 나타낸 해설 도형",
+    "solutionImageCaption": "중심의 x좌표 절댓값이 반지름 3이 되는 접선 조건과 제3사분면 조건을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -356,7 +360,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "점 P(1,-3)에서 원에 그은 두 접선과 두 접점을 나타낸 해설 도형",
+    "solutionImageCaption": "접점에서 반지름과 접선이 수직이고 두 접선의 기울기가 이차방정식의 두 근이 됨을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -394,7 +402,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "원래 원과 x축 방향으로 3만큼 이동한 원, 접선과 접점을 나타낸 해설 도형",
+    "solutionImageCaption": "중심이 (3,0)에서 (6,0)으로 이동하고 반지름 2가 유지되어 직선에 접함을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -473,7 +485,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "원래 중심 O와 접은 뒤 중심 O', 공통현 AB와 중점 M을 나타낸 해설 도형",
+    "solutionImageCaption": "접는 선 AB가 OO'의 수직이등분선이며 AB=3√11이 되는 직각삼각형 관계를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -549,7 +565,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "세 직선의 교점으로 이루어진 삼각형과 그 외접원을 나타낸 해설 도형",
+    "solutionImageCaption": "세 교점과 외접원의 중심 (-3,2), 반지름 √10을 한 좌표평면에서 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -663,7 +683,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "A,B의 중점 M과 원의 중심 C, M에서 가장 가까운 원 위의 점 P를 나타낸 해설 도형",
+    "solutionImageCaption": "AP²+BP²를 PM²로 바꾸고 원까지의 최단거리 PM=8을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -701,7 +725,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "m=1과 m=31/17 두 경우의 현 AB와 접점에서의 서로 수직인 접선을 나타낸 해설 도형",
+    "solutionImageCaption": "두 경우 모두 중심에서 현까지의 거리가 √2/2이고 두 접선이 서로 수직임을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -787,7 +815,11 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "대칭점 C와 D,E, 삼각형 ODE의 외접원을 나타낸 해설 도형",
+    "solutionImageCaption": "OE⊥DE이므로 OD가 외접원의 지름이 되어 둘레를 구하는 구조를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
