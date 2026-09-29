@@ -625,7 +625,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "좌표평면 위에 네 점 $A([판독불가])$, $B(1,0)$, $C(3,1)$, $D(2,3)$을 꼭짓점으로 하는 사각형 $ABCD$가 있다. 이 사각형의 내부를 지나는 직선 $l:y=mx+n$이 선분 $AB$와 점 $P$에서 만나고, 선분 $CD$와 점 $Q$에서 만난다. 사각형 $APQD$의 넓이가 사각형 $PBCQ$의 넓이의 2배이고, 선분 $\\overline{PQ}$의 길이가 최소가 될 때, 두 상수 $m,n$에 대하여 $30(m+n)$의 값을 구하면? (단, 점 $P,Q$는 사각형의 꼭짓점이 아니다.) [5점]",
+    "content": "좌표평면 위에 네 점 $A(0,2)$, $B(1,0)$, $C(3,1)$, $D(2,3)$을 꼭짓점으로 하는 사각형 $ABCD$가 있다. 이 사각형의 내부를 지나는 직선 $l:y=mx+n$이 선분 $AB$와 점 $P$에서 만나고, 선분 $CD$와 점 $Q$에서 만난다. 사각형 $APQD$의 넓이가 사각형 $PBCQ$의 넓이의 2배이고, 선분 $\\overline{PQ}$의 길이가 최소가 될 때, 두 상수 $m,n$에 대하여 $30(m+n)$의 값을 구하면? (단, 점 $P,Q$는 사각형의 꼭짓점이 아니다.) [5점]",
     "choices": [
       "5",
       "10",
@@ -643,8 +643,8 @@ window.questionBank = [
     "choicesSource": "uploaded_page_image",
     "answerSource": "not_extracted_by_user_instruction",
     "solutionSource": "not_extracted_by_user_instruction",
-    "extractionStatus": "SOURCE_TEXT_PARTIAL",
-    "reviewStatus": "SOURCE_TEXT_REVIEW_REQUIRED"
+    "extractionStatus": "SOURCE_TEXT_EXTRACTED",
+    "reviewStatus": "SOURCE_ONLY_PENDING"
   },
   {
     "id": 18,
