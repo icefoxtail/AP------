@@ -1,0 +1,75 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW2_EVIDENCE_v1",
+  "examFilename": "23_연향중_2학기_중간_중2_수학.js",
+  "canonicalGlobalInventoryOrdinal": 47,
+  "lane": "REVIEW2-2",
+  "stage": "REVIEW2_DONE",
+  "nextStage": "READY_FOR_COMMIT",
+  "nextOwner": "BATCH_COMMIT",
+  "inputAuthority": "work/middle/m2/23-yeonhyang-2mid@82e260b94f0f6312a9ad40cdbab090e33a26caba",
+  "sourceAuthority": "work/rebuild/m2-full-20260928-source@8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "observedRemoteMain": "17452bacfa71e2bf08fe4ecd556fc251cb5aac12",
+  "sourceJsBlob": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+  "finalArtifactSha": "0c0e4425d625632e56b69f7fd42f66ee2eca1fc3",
+  "fullIndependentReview": true,
+  "previousReviewVerdictUsedAsInput": false,
+  "fullRewriteSafetyNet": "M2_2SEM_FIXED20_RESET_EXCEPTION_NOT_APPLICABLE",
+  "checks": {
+    "protectedParity": "24/24 PASS_EXACT",
+    "mathAnswerSolution": "24/24 PASS_AFTER_REPAIR",
+    "smallBoard": "24/24 PASS_AFTER_REPAIR",
+    "curriculumStudentLanguage": "24/24 PASS",
+    "questionMicroLayout": "grid 24/24 PASS",
+    "jsIntegrity": "PASS (24 unique ids; objective 20x5 choices; subjective 4x0 choices; no empty solution)",
+    "problemAssets": "23/23 source-authority blob exact; direct visual inspection 23/23 PASS; missing 0",
+    "solutionSvg": "3/3 CODE_FIRST_PASS (q3,q11,q24)",
+    "holdCount": 0
+  },
+  "independentMathChecks": {
+    "q1": "AD is perpendicular bisector of BC; PB=PC; only AP=BP=CP is not forced",
+    "q2": "t=∠ECF; chained isosceles angles give t=19°, ∠BAD=28°",
+    "q3": "RHS congruence gives DE=CE=4; 45-45-90 gives DB=4; area=8",
+    "q4": "circumcenter radii give y=45°, x=3; x+y=48",
+    "q5": "∠OBC=(180-2∠A)/2=26°; ∠BIC=90°+A/2=122°; sum=148°",
+    "q6": "DI,EI lie on DE∥BC; ∠BID=B/2, ∠CIE=C/2; A=80°",
+    "q7": "only OA=OB and OC=OD is not a parallelogram criterion",
+    "q8": "opposite-side triangle area sums are equal; 17+13=16+[ABP], so 14",
+    "q9": "rhombus diagonal bisects D; D=114°, C=66°, x=7; sum=73",
+    "q10": "triangle BEC gives ∠BEC=55°; reflection across diagonal AC maps EB to ED, so x=55°",
+    "q11": "△EBI≅△ECJ; [EICJ]=[EBC]; EB=EC=3, area=4.5",
+    "q12": "parallelogram + one right angle => rectangle; option ② only",
+    "q13": "BC:FG=9:12=3:4, hence DC:HG=3:4; option ④",
+    "q14": "similar cuboids ratio 4:6=2:3; x=6,y=12,sum=18",
+    "q15": "△ABD∼△ACB by included angle and side ratio; BD:BC=1:2; BC=10",
+    "q16": "AA similarity ABC∼BCD; AB:BC=BC:CD=1:2; AB=6",
+    "q17": "midpoint triangle perimeter is half of 12+18+15 = 22.5",
+    "q18": "homothety DE→BC gives DF:FE=BG:GC=1:2; x=12; scale 2:3 gives AC=18,y=6; sum=18",
+    "q19": "left total 12 with upper 4 gives lower 8, so 4:8=6:a -> a=12; right total b with lower 8 gives upper b-8, so 18:12=(b-8):8 -> b=20; sum=32",
+    "q20": "first blank must be ∠CAD from angle bisector, so choice ① (∠ABC) is wrong",
+    "q21": "right-triangle congruence gives AD=6, AE=8; AB=AC=10; area=50",
+    "q22": "5-12-13 right triangle: R=13/2, r=2; area sum=185π/4",
+    "q23": "AD∥BC gives ∠CBE=50°; angle bisector makes B=100°, so C=80°",
+    "q24": "△AEO≅△CFO gives EO=FO; diagonals bisect and are perpendicular, so AFCE rhombus; AE=6, perimeter=24"
+  },
+  "visualCodeFirst": {
+    "q3": "A(240,60),B(40,260),C(240,260); D on AB with AD=AC; E on BC; DE⊥AB; DE=CE=DB by coordinates; labels/claims parity PASS",
+    "q11": "ABCD square; E center; second square EFGH has EF⊥EH and equal sides; I=EF∩BC, J=EH∩CD; △EBI/△ECJ geometry parity PASS",
+    "q24": "rectangle coordinates keep AC⊥EF; O is midpoint of both AC and EF; DE:BC=2:8 and AE side relation parity PASS"
+  },
+  "productionRepair": {
+    "changedFiles": [
+      "archive/exams/original/middle/m2/2mid/23_연향중_2학기_중간_중2_수학.js"
+    ],
+    "changedQuestions": [
+      19
+    ],
+    "beforeIssue": "q19 solution treated derived 8 cm and b-8 cm as given segments without explicitly deriving them from total labels 12 cm and b cm in the source image",
+    "repair": "explicitly added 12-4=8 and b-8 derivations before the intercept-theorem ratios",
+    "answerChanged": false,
+    "sourceProtectedFieldsChanged": false,
+    "result": "PASS_AFTER_REPAIR"
+  },
+  "render": "NOT_RUN_CODE_FIRST_SUFFICIENT",
+  "metaReview": "SEPARATED_NOT_OPENED",
+  "completedAtKst": "2026-09-29T16:08:00+09:00"
+}
