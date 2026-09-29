@@ -27,7 +27,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $a$의 값 구하기\\n$(-8)^{2}=64$이므로 $64$의 양의 제곱근 $a = \\sqrt{64} = 8$\\n(2) $b$의 값 구하기\\n$\\sqrt{16}=4$이므로 $4$의 음의 제곱근 $b = -\\sqrt{4} = -2$\\n(3) $a+b$ 계산\\n$a+b = 8 + (-2) = 6$\\n$\\therefore 6$",
+    "solution": "[키포인트] 제곱한 수의 제곱근을 차례로 구한다.\n$(-8)^2=64$이므로 $a=8$이다. 또 $\\sqrt{16}=4$이고, $4$의 음의 제곱근은 $b=-2$이다.\n따라서 $a+b=8+(-2)=6$이다. 정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -63,7 +63,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① $(\\sqrt{8})^{2} = 8$ (옳음)\\n② $-\\sqrt{5^{2}} = -5$ (옳음)\\n③ $\\sqrt{(-\\frac{3}{2})^{2}} = |-\\frac{3}{2}| = \\frac{3}{2}$ (옳음)\\n④ $(-\\sqrt{3})^{2} = 3$ (옳음)\\n⑤ $-\\sqrt{(-21)^{2}} = -\\sqrt{441} = -21$\\n$\\therefore$ 옳지 않은 것은 ⑤",
+    "solution": "각 보기의 값을 확인하면 ① $(\\sqrt8)^2=8$, ② $-\\sqrt{5^2}=-5$, ③ $\\sqrt{(-\\frac32)^2}=\\frac32$, ④ $(-\\sqrt3)^2=3$은 옳다.\n⑤는 $-\\sqrt{(-21)^2}=-21$이므로 $21$이 아니다. 따라서 정답은 ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -98,7 +98,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① $0.\\dot{2}\\dot{4} = \\frac{24}{99}$ (유리수)\\n② $(-\\sqrt{5})^{2} = 5$ (유리수)\\n③ $\\sqrt{64} = 8$ (유리수)\\n④ $-\\sqrt{18} = -3\\sqrt{2}$ (근호를 없앨 수 없으므로 무리수)\\n⑤ $\\pi$ (비순환무한소수이므로 무리수)\\n$\\therefore$ ④, ⑤",
+    "solution": "① $0.\\dot2\\dot4$는 순환소수이므로 유리수이다. ② $(-\\sqrt5)^2=5$, ③ $\\sqrt{64}=8$도 유리수이다.\n④ $-\\sqrt{18}=-3\\sqrt2$, ⑤ $\\pi$는 무리수이다. 따라서 정답은 ④, ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -134,7 +134,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "(1) $x, y$의 부호 결정\\n$\\sqrt{x^{2}}=-x \\implies x < 0$\\n$\\sqrt{(-y)^{2}}=y \\implies -y < 0 \\implies y > 0$\\n(2) 각 항의 성질 파악\\n$y > 0$ 이므로 $\\sqrt{y^{2}} = y$\\n$x < 0, y > 0$ 이므로 $x-y < 0$, $\\therefore \\sqrt{(x-y)^{2}} = -(x-y) = -x+y$\\n$x < 0$ 이므로 $-2x > 0$, $\\therefore \\sqrt{(-2x)^{2}} = -2x$\\n(3) 식 정리\\n$y + (-x+y) - (-2x) = y - x + y + 2x = x + 2y$\\n$\\therefore x+2y$",
+    "solution": "$\\sqrt{x^2}=-x$이므로 $x<0$, $\\sqrt{(-y)^2}=y$이므로 $y>0$이다.\n따라서 $\\sqrt{y^2}=y$, $\\sqrt{(x-y)^2}=y-x$, $\\sqrt{(-2x)^2}=-2x$이다.\n그러므로 $y+(y-x)-(-2x)=x+2y$이고 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -168,7 +168,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① 양변에서 $\\sqrt{5}$를 빼면 $-\\sqrt{3} > -2$ ($\\because \\sqrt{3} < 2$)\\n② $2 > \\sqrt{2}$ 이므로 $4-\\sqrt{2} > 2$\\n③ $4 > \\sqrt{13}$ 이므로 $3+1 > \\sqrt{13} \\implies 3 > \\sqrt{13}-1$\\n④ $\\sqrt{7} < 3$ 이므로 $3+\\sqrt{7} < 6$\\n⑤ $\\sqrt{3} > 1$ 이므로 $\\sqrt{3}+3 > 4$\\n$\\therefore$ 부등호의 방향이 다른 것은 ④",
+    "solution": "① $\\sqrt3<2$이므로 $\\sqrt5-\\sqrt3>\\sqrt5-2$이다. ② $\\sqrt2<2$이므로 $4-\\sqrt2>2$이다.\n③ $\\sqrt{13}<4$이므로 $3>\\sqrt{13}-1$이다. ④ $\\sqrt7<3$이므로 $3+\\sqrt7<6$이다. ⑤ $\\sqrt3>1$이므로 $\\sqrt3+3>4$이다.\n따라서 방향이 다른 것은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -205,7 +205,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 항상 무리수인 것\\n· $a-b$: (유리수)-(무리수)는 항상 무리수\\n· $a+b$: (유리수)+(무리수)는 항상 무리수\\n· $a^{2}+b$: (유리수)+(무리수)는 항상 무리수\\n(2) 유리수가 될 수 있는 예외 상황\\n· $ab$: $a=0$이면 $0$ (유리수)\\n· $a-b^{2}$: $a=2, b=\\sqrt{2}$이면 $2-2=0$ (유리수)\\n· $a \\div b$: $a=0$이면 $0$ (유리수)\\n· $b\\sqrt{a}$: $a=0$이면 $0$ (유리수)\\n· $b-\\sqrt{a}$: $b=\\sqrt{2}, a=2$이면 $0$ (유리수)\\n· $\\sqrt{a}+b$: $a=2, b=-\\sqrt{2}$이면 $0$ (유리수)\\n$\\therefore$ 개수는 3개",
+    "solution": "$a-b$, $a+b$, $a^2+b$는 유리수와 무리수의 차·합이므로 항상 무리수이다.\n나머지는 항상 무리수가 아니다. $a=0$이면 $ab$, $a\\div b$, $b\\sqrt a$가 $0$이 될 수 있다. $a=2, b=\\sqrt2$이면 $a-b^2$, $b-\\sqrt a$도 $0$이 되고, $b=-\\sqrt2$이면 $\\sqrt a+b=0$이다.\n따라서 항상 무리수인 식은 3개이고 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -242,7 +242,7 @@ window.questionBank = [
       "수직선"
     ],
     "wide": false,
-    "solution": "① 무한소수 중 순환소수는 유리수이다. (거짓)\\n② 유리수는 유한소수 또는 순환소수로 나타내어진다. (거짓)\\n③ $\\sqrt{10000}=100$이고 $100$의 제곱근은 $\\pm 10$이다. 따라서 $-100$은 $\\sqrt{10000}$의 제곱근이 아니다. (거짓)\\n④ $\\sqrt{4}=2$와 같이 근호를 사용해도 유리수인 경우가 있다. (거짓)\\n⑤ 수직선은 실수(유리수+무리수)에 대응하는 점들로 완전히 메울 수 있다. (참)\\n$\\therefore$ ⑤",
+    "solution": "① 순환하는 무한소수는 유리수이므로 거짓이다. ② 유리수에는 순환소수도 있으므로 거짓이다.\n③ $\\sqrt{10000}=100$이고 $100$의 제곱근은 $\\pm10$이므로 거짓이다. ④ $\\sqrt4=2$처럼 근호를 써도 유리수인 경우가 있다.\n⑤ 유리수와 무리수를 합친 실수가 수직선을 완전히 메우므로 참이다. 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -276,7 +276,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $a$의 값 구하기\\n$\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3} \\implies a = 5$\\n(2) $b$의 값 구하기\\n$2\\sqrt{3} = \\sqrt{2^{2} \\times 3} = \\sqrt{12} \\implies b = 12$\\n(3) $b-a$ 계산\\n$b-a = 12 - 5 = 7$\\n$\\therefore 7$",
+    "solution": "$\\sqrt{75}=5\\sqrt3$이므로 $a=5$이다. 또 $2\\sqrt3=\\sqrt{12}$이므로 $b=12$이다.\n따라서 $b-a=12-5=7$이고 정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -311,7 +311,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 근호 안의 수 정리\\n$\\sqrt{32} = 4\\sqrt{2}$\\n$2\\sqrt{12} = 2 \\times 2\\sqrt{3} = 4\\sqrt{3}$\\n$\\frac{4}{\\sqrt{24}} = \\frac{4}{2\\sqrt{6}} = \\frac{2}{\\sqrt{6}} = \\frac{2\\sqrt{6}}{6} = \\frac{\\sqrt{6}}{3}$\\n(2) 분배법칙을 이용한 식 전개\\n$\\sqrt{3}(2+\\frac{\\sqrt{6}}{3}) = 2\\sqrt{3} + \\frac{\\sqrt{18}}{3} = 2\\sqrt{3} + \\frac{3\\sqrt{2}}{3} = 2\\sqrt{3} + \\sqrt{2}$\\n(3) 전체 식 계산\\n$4\\sqrt{2} - 4\\sqrt{3} - (2\\sqrt{3} + \\sqrt{2}) = 4\\sqrt{2} - 4\\sqrt{3} - 2\\sqrt{3} - \\sqrt{2} = 3\\sqrt{2} - 6\\sqrt{3}$\\n(4) $a, b$ 및 $2a-b$ 값 구하기\\n$a=3, b=-6$ 이므로\\n$2a-b = 2(3) - (-6) = 6+6=12$\\n$\\therefore 12$",
+    "solution": "$\\sqrt{32}=4\\sqrt2$, $2\\sqrt{12}=4\\sqrt3$, $\\frac4{\\sqrt{24}}=\\frac{\\sqrt6}{3}$이다.\n따라서 $\\sqrt3(2+\\frac4{\\sqrt{24}})=2\\sqrt3+\\sqrt2$이고 전체 식은 $3\\sqrt2-6\\sqrt3$이다.\n즉 $a=3, b=-6$이므로 $2a-b=12$이다. 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -347,7 +347,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "① $\\sqrt{0.08} = \\sqrt{\\frac{8}{100}} = \\frac{2\\sqrt{2}}{10} = 0.2 \\times 1.414 = 0.2828$ (옳음)\\n② $\\sqrt{0.2} = \\sqrt{\\frac{20}{100}} = \\frac{\\sqrt{20}}{10} = 0.4472$ (옳음)\\n③ $\\sqrt{0.5} = \\sqrt{\\frac{50}{100}} = \\frac{5\\sqrt{2}}{10} = 0.5 \\times 1.414 = 0.707$ (옳음)\\n④ $\\sqrt{18} = 3\\sqrt{2} = 3 \\times 1.414 = 4.242$ (옳음)\\n⑤ $\\sqrt{200} = 10\\sqrt{2} = 10 \\times 1.414 = 14.14$ (옳지 않음)\\n$\\therefore$ ⑤",
+    "solution": "주어진 근삿값을 이용하면 ① $\\sqrt{0.08}=0.2828$, ② $\\sqrt{0.2}=0.4472$, ③ $\\sqrt{0.5}=0.707$, ④ $\\sqrt{18}=4.242$이다.\n⑤ $\\sqrt{200}=10\\sqrt2=14.14$이므로 $141.4$가 아니다. 따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -385,7 +385,7 @@ window.questionBank = [
       "(10 + 2\\sqrt{3}) \\text{cm}"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정육각형의 한 변의 길이와 대각선의 길이를 이용하여 새로운 도형의 각 변의 길이를 구한다.\\n\\n[조건 정리]\\n- 정육각형의 한 변의 길이: $s = 2$\\n- 짧은 대각선의 길이: $s\\sqrt{3} = 2\\sqrt{3}$\\n- 긴 대각선의 길이: $2s = 4$\\n- 그림에서 $a$는 정육각형의 변과 긴 대각선의 절반으로 이루어진 삼각형의 빗변($2$), $b$는 짧은 대각선($2\\sqrt{3}$)과 관련이 있다.\\n\\n[풀이 과정]\\n1. 정육각형을 분할한 조각의 변의 길이를 확인한다.\\n   - 정육각형의 한 변의 길이는 $2$이다.\\n   - 정육각형의 짧은 대각선의 길이는 $2\\sqrt{3}$이다.\\n   - 조각에서 라벨 $a$에 해당하는 길이는 정육각형의 한 변의 길이인 $2$이다.\\n   - 조각에서 라벨 $b$에 해당하는 길이는 짧은 대각선의 길이인 $2\\sqrt{3}$이다.\\n2. 새로운 도형의 둘레를 구성하는 변들을 합산한다.\\n   - 새로운 도형의 바깥쪽 테두리는 길이 $2$인 변 4개와 길이 $2\\sqrt{3}$인 변 2개로 이루어져 있다.\\n   - 둘레의 길이 $= 4 \\times 2 + 2 \\times 2\\sqrt{3} = 8 + 4\\sqrt{3}$이다.\\n\\n[결론] 따라서 새로운 도형의 둘레의 길이는 $(8 + 4\\sqrt{3}) \\text{cm}$이다.",
+    "solution": "정육각형의 한 변은 $2\\text{cm}$이고 짧은 대각선은 $2\\sqrt3\\text{cm}$이다. 그림에서 $a=2\\sqrt3$, $b=2$이다.\n새 도형의 바깥쪽에는 길이 $a$인 변 2개와 길이 $b$인 변 4개가 있으므로 둘레는 $2a+4b=2(2\\sqrt3)+4\\cdot2=8+4\\sqrt3$이다. 따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -418,7 +418,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "① $(x+2)^{2} = x^{2}+4x+4 \\implies 4$\\n② $(a-1)(a-2) = a^{2}-3a+2 \\implies -3$\\n③ $(1+3x)(1-3x) = 1-9x^{2} \\implies -9$\\n④ $(5x-2)(x+2) = 5x^{2}+8x-4 \\implies 8$\\n⑤ $(x+2y)(2x+y) = 2x^{2}+5xy+2y^{2} \\implies 2$\\n따라서 가장 작은 수는 -9이다.\\n$\\therefore$ ③",
+    "solution": "빈칸의 수는 차례로 ① $4$, ② $-3$, ③ $-9$, ④ $8$, ⑤ $2$이다.\n가장 작은 수는 $-9$이므로 정답은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -452,7 +452,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 통분을 이용한 계산\\n분모: $(\\sqrt{6}+\\sqrt{2})(\\sqrt{6}-\\sqrt{2}) = 6-2 = 4$\\n분자: $(\\sqrt{6}-\\sqrt{2})^{2} - (\\sqrt{6}+\\sqrt{2})^{2}$\\n(2) 분자 전개 및 정리\\n$(6+2-2\\sqrt{12}) - (6+2+2\\sqrt{12}) = 8-4\\sqrt{3} - (8+4\\sqrt{3}) = -8\\sqrt{3}$\\n(3) 최종 계산\\n$\\frac{-8\\sqrt{3}}{4} = -2\\sqrt{3}$\\n$\\therefore -2\\sqrt{3}$",
+    "solution": "공통분모는 $(\\sqrt6+\\sqrt2)(\\sqrt6-\\sqrt2)=4$이다.\n따라서 주어진 식은 $\\frac{(\\sqrt6-\\sqrt2)^2-(\\sqrt6+\\sqrt2)^2}{4}=\\frac{-8\\sqrt3}{4}=-2\\sqrt3$이다.\n정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -489,7 +489,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "(1) 곱셈공식의 변형 활용\\n$x^{2}+y^{2} = (x-y)^{2} + 2xy$\\n(2) 주어진 값 대입\\n$(2\\sqrt{3})^{2} + 2(8)$\\n(3) 계산\\n$12 + 16 = 28$\\n$\\therefore 28$",
+    "solution": "$(x-y)^2=x^2+y^2-2xy$이므로 $x^2+y^2=(x-y)^2+2xy$이다.\n따라서 $(2\\sqrt3)^2+2\\cdot8=12+16=28$이다. 정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -523,7 +523,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 수의 특징 파악\\n$48 = 50-2, 52 = 50+2$ 이므로\\n$48 \\times 52 = (50-2)(50+2)$\\n(2) 합차 공식 적용\\n이는 $(a-b)(a+b) = a^{2}-b^{2}$ 꼴이다.\\n$\\therefore$ ①",
+    "solution": "$48=50-2$, $52=50+2$이므로 $48\\cdot52=(50-2)(50+2)$이다.\n따라서 $(a-b)(a+b)=a^2-b^2$ 공식을 쓰는 것이 가장 편리하고 정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -560,7 +560,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $a$의 값 구하기\\n$(2x+a)(7x-3) = 14x^{2} - 6x + 7ax - 3a = 14x^{2} + (7a-6)x - 3a$\\n전개식의 상수항에서 $-3a = -3 \\implies a = 1$\\n(2) 바르게 계산한 식 구하기\\n$(2x+1)(3x-7) = 6x^{2} - 14x + 3x - 7 = 6x^{2} - 11x - 7$\\n(3) 계수와 상수항의 합 계산\\n$x$의 계수는 -11, 상수항은 -7이므로\\n$-11 + (-7) = -18$\\n$\\therefore -18$",
+    "solution": "잘못 계산한 식은 $(2x+a)(7x-3)=14x^2+(7a-6)x-3a$이다. 상수항을 비교하면 $a=1$이다.\n바르게 계산하면 $(2x+1)(3x-7)=6x^2-11x-7$이다. $x$의 계수와 상수항의 합은 $-11+(-7)=-18$이므로 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -594,7 +594,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 다항식 인수분해\\n$x^{3}-7x^{2} = x^{2}(x-7)$\\n(2) 인수 확인\\n인수는 $1, x, x^{2}, x-7, x(x-7), x^{2}(x-7)$ 등이 있다.\\n$7x$는 이 다항식의 약수가 될 수 없다.\\n$\\therefore$ ④",
+    "solution": "$x^3-7x^2=x^2(x-7)=x(x^2-7x)$이다.\n따라서 보기의 $x$, $x-7$, $x^2-7x$는 인수이고 $1$도 인수로 볼 수 있다. 이 문제에서 사용하는 중학교 정수계수 다항식의 인수분해 기준으로 $7x$는 해당하지 않는다.\n따라서 정답은 ④이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -631,7 +631,7 @@ window.questionBank = [
       "범위"
     ],
     "wide": false,
-    "solution": "(1) 다항식 정리\\n$(x^{2}+5ax+4b) + (ax+2b) = x^{2}+6ax+6b$\\n(2) 완전제곱식이 될 조건\\n$x$의 계수의 절반의 제곱이 상수항과 같아야 하므로\\n$(\\frac{6a}{2})^{2} = 6b \\implies 9a^{2} = 6b \\implies 3a^{2} = 2b$\\n(3) 순서쌍 $(a, b)$ 구하기 ($a, b \\le 100$ 자연수)\\n$b = \\frac{3}{2}a^{2}$이므로 $a$는 짝수여야 한다.\\n· $a=2 \\implies b=6, a+b=8$\\n· $a=4 \\implies b=24, a+b=28$\\n· $a=6 \\implies b=54, a+b=60$\\n· $a=8 \\implies b=96, a+b=104$\\n· $a=10 \\implies b=150$ (범위 초과)\\n$\\therefore$ 최댓값은 104",
+    "solution": "두 다항식을 더하면 $x^2+6ax+6b$이다. 완전제곱식이면 $(x+3a)^2=x^2+6ax+9a^2$이어야 하므로 $b=\\frac32a^2$이다.\n$a,b\\le100$인 자연수에서 $(a,b)=(2,6),(4,24),(6,54),(8,96)$이다. 따라서 $a+b$의 최댓값은 $104$이고 정답은 ①이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -667,7 +667,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "(1) 첫 번째 식 인수분해\\n$x^{2}+2xy-3y^{2} = (x+3y)(x-y)$\\n(2) 두 번째 식 인수분해 (합차 공식 활용)\\n$(x-1)^{2}-(y-1)^{2} = \\{(x-1)+(y-1)\\}\\{(x-1)-(y-1)\\} = (x+y-2)(x-y)$\\n(3) 공통인수 확인\\n두 식에 공통으로 들어 있는 인수는 $x-y$이다.\\n$\\therefore$ ②",
+    "solution": "$x^2+2xy-3y^2=(x+3y)(x-y)$이고 $(x-1)^2-(y-1)^2=(x+y-2)(x-y)$이다.\n두 식의 공통인수는 $x-y$이므로 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -701,7 +701,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 인수분해 실행\\n$6x^{2}-7x-20 = (3x+4)(2x-5)$\\n(2) 다른 인수 확인\\n$3x+4$ 외의 다른 인수는 $2x-5$이다.\\n$\\therefore$ ③",
+    "solution": "$6x^2-7x-20=(3x+4)(2x-5)$이다.\n따라서 $3x+4$ 이외의 다른 인수는 $2x-5$이고 정답은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -731,7 +731,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) 108 소인수분해\\n$108 = 2^{2} \\times 3^{3}$\\n(2) 자연수가 될 조건\\n근호 안의 수 $\\frac{2^{2} \\times 3^{3}}{x}$가 어떤 자연수의 제곱이어야 한다.\\n따라서 $x$는 $3 \\times (자연수)^{2}$ 꼴이면서 108의 약수여야 한다.\\n(3) 가능한 $x$의 값 구하기\\n· $x = 3 \\times 1^{2} = 3 \\implies \\sqrt{36} = 6$\\n· $x = 3 \\times 2^{2} = 12 \\implies \\sqrt{9} = 3$\\n· $x = 3 \\times 3^{2} = 27 \\implies \\sqrt{4} = 2$\\n· $x = 3 \\times 6^{2} = 108 \\implies \\sqrt{1} = 1$\\n$\\therefore 3, 12, 27, 108$",
+    "solution": "$\\sqrt{\\frac{108}{x}}$가 자연수이려면 $\\frac{108}{x}$가 자연수의 제곱이어야 한다.\n$108=2^2\\cdot3^3$의 제곱수인 약수는 $1,4,9,36$이므로 $x=108,27,12,3$이다.\n따라서 $x=3,12,27,108$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -762,7 +762,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "(1) 식 정리 및 유리화\\n$3a - a\\sqrt{5} + \\frac{10-2\\sqrt{5}}{\\sqrt{5}} = 3a - a\\sqrt{5} + \\frac{(10-2\\sqrt{5})\\sqrt{5}}{5}$\\n$= 3a - a\\sqrt{5} + \\frac{10\\sqrt{5}-10}{5} = 3a - a\\sqrt{5} + 2\\sqrt{5} - 2$\\n(2) 유리수와 무리수 부분 정리\\n$(3a-2) + (2-a)\\sqrt{5}$\\n(3) 유리수가 될 조건\\n무리수 부분의 계수가 0이어야 하므로 $2-a = 0 \\implies a = 2$\\n$\\therefore 2$",
+    "solution": "$\\sqrt{20}=2\\sqrt5$이므로 $\\frac{10-\\sqrt{20}}{\\sqrt5}=2\\sqrt5-2$이다.\n전체 식은 $(3a-2)+(2-a)\\sqrt5$이다. 유리수가 되려면 $2-a=0$이어야 하므로 $a=2$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -792,7 +792,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "(1) $A, B$ 구하기\\n$(x+A)(x-2) = x^{2}+(A-2)x-2A = x^{2}+Bx-16$\\n$-2A = -16 \\implies A = 8$\\n$B = A-2 = 8-2 = 6$\\n(2) $C, D$ 구하기\\n$3x^{2}+2x-8 = (3x-4)(x+2) = (3x-C)(x+D)$\\n$\\therefore C = 4, D = 2$\\n(3) 비밀번호 조합\\n$A=8, B=6, C=4, D=2$\\n$\\therefore 8642$",
+    "solution": "$(x+A)(x-2)=x^2+(A-2)x-2A=x^2+Bx-16$이므로 $A=8$, $B=6$이다.\n또 $3x^2+2x-8=(3x-4)(x+2)$이므로 $C=4$, $D=2$이다.\n따라서 비밀번호 $ABCD$는 $8642$이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -823,7 +823,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "(1) 식 전개 및 계수 비교\\n$(ax+b)(cx+d) = acx^{2}+(ad+bc)x+bd = 4x^{2}+Ax+5$\\n$ac = 4, bd = 5, A = ad+bc$\\n(2) 가능한 자연수 조합 찾기\\n· $ac=4$인 경우: $(a, c)$는 $(1, 4), (2, 2), (4, 1)$\\n· $bd=5$인 경우: $(b, d)$는 $(1, 5), (5, 1)$\\n(3) $A$의 값 계산\\n· $(a,c)=(1,4), (b,d)=(1,5) \\implies A = 1\\cdot5 + 1\\cdot4 = 9$\\n· $(a,c)=(1,4), (b,d)=(5,1) \\implies A = 1\\cdot1 + 5\\cdot4 = 21$\\n· $(a,c)=(2,2), (b,d)=(1,5) \\implies A = 2\\cdot5 + 1\\cdot2 = 12$\\n· $(a,c)=(2,2), (b,d)=(5,1) \\implies A = 2\\cdot1 + 5\\cdot2 = 12$\\n$\\therefore 9, 12, 21$",
+    "solution": "계수를 비교하면 $ac=4$, $bd=5$, $A=ad+bc$이다.\n$(a,c)=(1,4),(2,2),(4,1)$이고 $(b,d)=(1,5),(5,1)$이다. 모든 조합에서 $A$는 $9,21,12,12,21,9$가 된다.\n따라서 $A$가 될 수 있는 수는 $9,12,21$이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
