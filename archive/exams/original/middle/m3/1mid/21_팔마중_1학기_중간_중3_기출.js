@@ -30,7 +30,7 @@ window.questionBank = [
       "⑤ $x^2=4$를 만족시키는 $x$의 값"
     ],
     "answer": "②",
-    "solution": "[풀이] \n1. $\\sqrt{16}=4 \\implies 4$의 제곱근은 $\\pm 2$ \n2. 제곱근 4 = $\\sqrt{4} = 2$ \n3. $(-2)^2=4 \\implies 4$의 제곱근은 $\\pm 2$ \n4. 제곱하여 4가 되는 수는 $\\pm 2$ \n5. $x^2=4 \\implies x = \\pm 2$ \n따라서 2번은 2만을 의미하므로 나머지 넷과 다르다. \n--- \n[결론] 정답: ②이다.",
+    "solution": "$\\sqrt{16}=4$이므로 ①은 4의 제곱근인 $\\pm2$를 뜻한다.\n③도 $(-2)^2=4$이므로 그 제곱근은 $\\pm2$이고, ④와 ⑤ 역시 제곱하여 4가 되는 수이므로 $\\pm2$이다.\n반면 ②의 제곱근 4는 $\\sqrt4=2$만을 뜻한다.\n따라서 값이 다른 것은 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -66,7 +66,7 @@ window.questionBank = [
       "⑤ $-\\frac{5}{3}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\sqrt{(-9)^2}=9 \\implies 9$의 양의 제곱근 $a=3$ \n$\\sqrt{\\frac{256}{81}}=\\frac{16}{9} \\implies \\frac{16}{9}$의 음의 제곱근 $b=-\\sqrt{\\frac{16}{9}}=-\\frac{4}{3}$ \n$\\therefore a+b = 3 + (-\\frac{4}{3}) = \\frac{9-4}{3} = \\frac{5}{3}$ \n--- \n[결론] 정답: ②이다.",
+    "solution": "$\\sqrt{(-9)^2}=9$이므로 9의 양의 제곱근은 $3$이다.\n따라서 $a=3$이다.\n또\n$\\sqrt{\\dfrac{256}{81}}=\\dfrac{16}{9}$이므로 그 음의 제곱근은\n$b=-\\sqrt{\\dfrac{16}{9}}=-\\dfrac43$이다.\n그러므로\n$a+b=3-\\dfrac43=\\dfrac53$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -102,7 +102,7 @@ window.questionBank = [
       "⑤ $\\sqrt{2.25} \\times (-\\sqrt{10})^2$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n1. $11-2=9$ \n2. $\\frac{9}{8} \\times \\frac{16}{9} = 2$ \n3. $9+3=12$ \n4. $0.6 \\div 0.1 = 6$ \n5. $1.5 \\times 10 = 15$ \n따라서 5번의 결과값이 가장 크다. \n--- \n[결론] 정답: ⑤이다.",
+    "solution": "각 보기의 값을 계산한다.\n① $11-2=9$\n② $\\dfrac98\\times\\dfrac{16}{9}=2$\n③ $9+3=12$\n④ $0.6\\div0.1=6$\n⑤ $1.5\\times10=15$\n가장 큰 값은 15이므로 정답은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -138,7 +138,7 @@ window.questionBank = [
       "⑤ $-\\sqrt{(b-a)^2}=a-b$"
     ],
     "answer": "1, 5",
-    "solution": "[풀이] \n$ab<0, a<b \\implies a<0, b>0$ \n① $-\\sqrt{(2a)^2} = -|2a| = -(-2a) = 2a$ (참) \n② $-\\sqrt{(2a)^2} = -|2a| = 2a$ (거짓) \n③ $\\sqrt{(-b)^2} = |-b| = b$ (거짓) \n④ $\\sqrt{(3b)^2} = |3b| = 3b$ (거짓) \n⑤ $b-a > 0 \\implies -\\sqrt{(b-a)^2} = -|b-a| = -(b-a) = a-b$ (참) \n--- \n[결론] 정답: ①, ⑤이다.",
+    "solution": "$ab<0$이므로 $a,b$의 부호는 서로 다르다.\n또 $a<b$이므로 $a<0<b$이다.\n따라서\n① $-\\sqrt{(2a)^2}=-|2a|=2a$이므로 참,\n② $-\\sqrt{4a^2}=2a\\ne-2a$이므로 거짓,\n③ $\\sqrt{(-b)^2}=b\\ne-b$이므로 거짓,\n④ $\\sqrt{(3b)^2}=3b\\ne-3b$이므로 거짓이다.\n또 $b-a>0$이므로\n⑤ $-\\sqrt{(b-a)^2}=-(b-a)=a-b$는 참이다.\n따라서 옳은 것은 ①, ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -176,7 +176,7 @@ window.questionBank = [
       "⑤ $-1-2\\sqrt{2}$"
     ],
     "answer": "③",
-    "solution": "[풀이] \n정사각형의 대각선 길이 $l = \\sqrt{1^2+1^2} = \\sqrt{2}$ \n그림에서 $A(-1), B(0)$이므로 \n$P = A + \\overline{AC} = -1+\\sqrt{2}$ \n$Q = B - \\overline{BD} = 0-\\sqrt{2} = -\\sqrt{2}$ \n$\\overline{PQ} = P-Q = (-1+\\sqrt{2}) - (-\\sqrt{2}) = -1+2\\sqrt{2}$ \n--- \n[결론] 정답: ③이다.",
+    "solution": "정사각형의 한 변의 길이가 1이므로 두 대각선의 길이는\n$AC=BD=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n조건에서 $AP=BQ=\\sqrt2$이다.\n그림에서 점의 순서는 $Q-A-B-P$이고 $AB=1$이므로\n$AQ=BQ-BA=\\sqrt2-1$이다.\n따라서\n$PQ=AQ+AP=(\\sqrt2-1)+\\sqrt2=2\\sqrt2-1$이다.\n그러므로 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -212,7 +212,7 @@ window.questionBank = [
       "⑤ 6개"
     ],
     "answer": "③",
-    "solution": "[풀이] \nㄱ. 3 (유리수) \nㄴ. $-\\sqrt{21}$ (무리수) \nㄷ. $\\pi$ (무리수) \nㄹ. $\\sqrt{12.1}$ (무리수, $121$은 제곱수이나 $12.1$은 아님) \nㅁ. $\\sqrt{0.4}$ (무리수, $4$는 제곱수이나 $0.4$는 아님) \nㅂ. $\\frac{1}{2}$ (유리수) \nㅅ. $3\\sqrt{2}-3\\sqrt{2}=0$ (유리수) \n따라서 무리수는 ㄴ, ㄷ, ㄹ, ㅁ으로 총 4개이다. \n--- \n[결론] 정답: ③이다.",
+    "solution": "각 수를 유리수인지 무리수인지 확인한다.\nㄱ $\\sqrt9=3$은 유리수,\nㄴ $-\\sqrt{21}$은 무리수,\nㄷ $\\pi$는 무리수이다.\nㄹ $\\sqrt{12.1}=\\sqrt{\\dfrac{121}{10}}=\\dfrac{11}{\\sqrt{10}}$은 무리수이고,\nㅁ $\\sqrt{0.4}=\\sqrt{\\dfrac25}$도 무리수이다.\nㅂ $\\sqrt{\\dfrac14}=\\dfrac12$은 유리수,\nㅅ $\\sqrt{18}-3\\sqrt2=3\\sqrt2-3\\sqrt2=0$은 유리수이다.\n따라서 무리수는 ㄴ, ㄷ, ㄹ, ㅁ의 4개이므로 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -248,7 +248,7 @@ window.questionBank = [
       "⑤ $\\sqrt{8}-2>-2+\\sqrt{7}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n1. $\\sqrt{5}>1 \\implies \\sqrt{5}+1>2$ (참) \n2. $3-(\\sqrt{5}+1) = 2-\\sqrt{5} < 0$ ($\\because 2=\\sqrt{4}<\\sqrt{5}$) $\\implies 3<\\sqrt{5}+1$ (거짓) \n3. $2-(\\sqrt{7}-1) = 3-\\sqrt{7} > 0$ ($\\because 3=\\sqrt{9}>\\sqrt{7}$) $\\implies 2>\\sqrt{7}-1$ (참) \n4. 양변에 $\\sqrt{3}$을 더하면 $2<\\sqrt{6}$ (참) \n5. 양변에 $2$를 더하면 $\\sqrt{8}>\\sqrt{7}$ (참) \n--- \n[결론] 정답: ②이다.",
+    "solution": "②를 확인하면 $\\sqrt5>2$이므로\n$\\sqrt5+1>3$이다.\n따라서 $3>\\sqrt5+1$은 옳지 않다.\n나머지는\n① $\\sqrt5>1$,\n③ $3>\\sqrt7$,\n④ $2<\\sqrt6$,\n⑤ $\\sqrt8>\\sqrt7$\n에서 모두 성립한다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -284,7 +284,7 @@ window.questionBank = [
       "⑤ $2\\sqrt{\\frac{3}{4}} = \\sqrt{\\frac{3}{2}}$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n⑤ $2\\sqrt{\\frac{3}{4}} = 2 \\times \\frac{\\sqrt{3}}{2} = \\sqrt{3}$ \n$\\sqrt{3} \\n eq \\sqrt{\\frac{3}{2}}$이므로 옳지 않다. \n--- \n[결론] 정답: ⑤이다.",
+    "solution": "① $\\sqrt3\\cdot\\sqrt5=\\sqrt{15}$,\n② $\\sqrt{30}\\div\\sqrt5=\\sqrt6$,\n③ $2\\sqrt3=\\sqrt{4\\cdot3}=\\sqrt{12}$,\n④ $\\sqrt{1000}=\\sqrt{100\\cdot10}=10\\sqrt{10}$으로 모두 바르다.\n하지만\n$2\\sqrt{\\dfrac34}=2\\cdot\\dfrac{\\sqrt3}{2}=\\sqrt3$이고\n$\\sqrt3\\neq\\sqrt{\\dfrac32}$이다.\n따라서 바르지 않은 것은 ⑤이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -320,7 +320,7 @@ window.questionBank = [
       "⑤ $\\sqrt{\\frac{3}{8}} = \\frac{\\sqrt{6}}{4}$"
     ],
     "answer": "④",
-    "solution": "[풀이] \n④ $\\frac{\\sqrt{15}}{5\\sqrt{6}} = \\frac{\\sqrt{5}}{5\\sqrt{2}} = \\frac{\\sqrt{5} \\times \\sqrt{2}}{5\\sqrt{2} \\times \\sqrt{2}} = \\frac{\\sqrt{10}}{10}$ \n따라서 $\\frac{1}{2}$과 같지 않다. \n--- \n[결론] 정답: ④이다.",
+    "solution": "①, ②, ③은 각각 분모에 있는 근호를 곱해 정리하면 주어진 식이 성립한다.\n⑤도\n$\\sqrt{\\dfrac38}=\\dfrac{\\sqrt3}{2\\sqrt2}=\\dfrac{\\sqrt6}{4}$로 바르다.\n반면\n$\\dfrac{\\sqrt{15}}{5\\sqrt6}=\\dfrac{\\sqrt{90}}{30}=\\dfrac{3\\sqrt{10}}{30}=\\dfrac{\\sqrt{10}}{10}$이므로\n$\\dfrac12$가 아니다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -356,7 +356,7 @@ window.questionBank = [
       "⑤ $(\\sqrt{54}-\\sqrt{18}) \\div \\sqrt{3} = 2\\sqrt{3}$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n1. $3\\sqrt{5}-10\\sqrt{5} = -7\\sqrt{5}$ (바름) \n2. $4\\sqrt{2}+2\\sqrt{2}=6\\sqrt{2}$ \n3. $8\\sqrt{6} \\div 2\\sqrt{3} = 4\\sqrt{2}$ \n4. $\\frac{3}{2} = 1.5$ \n5. $(3\\sqrt{6}-3\\sqrt{2}) \\div \\sqrt{3} = 3\\sqrt{2}-\\sqrt{6}$ \n--- \n[결론] 정답: ①이다.",
+    "solution": "각 식을 간단히 한다.\n① $3\\sqrt5-10\\sqrt5=-7\\sqrt5$\n② $\\sqrt{32}+\\sqrt8=4\\sqrt2+2\\sqrt2=6\\sqrt2$\n③ $4\\sqrt2\\cdot2\\sqrt3\\div\\sqrt{12}=8\\sqrt6\\div2\\sqrt3=4\\sqrt2$\n④ $\\dfrac{3\\sqrt6}{2}\\div\\sqrt6=\\dfrac32$\n⑤ $(\\sqrt{54}-\\sqrt{18})\\div\\sqrt3=3\\sqrt2-\\sqrt6$\n따라서 계산이 바른 것은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -392,7 +392,7 @@ window.questionBank = [
       "⑤ $3\\sqrt{2}+1$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n$2 < \\sqrt{8} < 3$이므로 $\\sqrt{8}$의 정수부분은 2. \n$\\therefore a = \\sqrt{8}-2 = 2\\sqrt{2}-2$ \n$1 < \\sqrt{2} < 2 \\implies 2 < 1+\\sqrt{2} < 3$이므로 \n정수부분 $b=2$ \n$a+b = (2\\sqrt{2}-2)+2 = 2\\sqrt{2}$ \n--- \n[결론] 정답: ①이다.",
+    "solution": "$4<8<9$이므로 $2<\\sqrt8<3$이다.\n따라서 $\\sqrt8$의 정수부분은 2이고 소수부분은\n$a=\\sqrt8-2=2\\sqrt2-2$이다.\n또 $1<\\sqrt2<2$이므로\n$2<1+\\sqrt2<3$이고, 정수부분은 $b=2$이다.\n그러므로\n$a+b=(2\\sqrt2-2)+2=2\\sqrt2$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -428,7 +428,7 @@ window.questionBank = [
       "⑤ 2"
     ],
     "answer": "④",
-    "solution": "[풀이] \n$\\frac{a}{\\sqrt{2}}(4\\sqrt{2}-2)+2\\sqrt{6}(\\frac{\\sqrt{3}}{6}+\\sqrt{6}) = 4a-\\sqrt{2}a+\\frac{2\\sqrt{18}}{6}+12$ \n$= 4a-a\\sqrt{2}+\\frac{6\\sqrt{2}}{6}+12 = (4a+12)+(1-a)\\sqrt{2}$ \n식이 유리수가 되려면 $\\sqrt{2}$의 계수가 0이어야 함. \n$1-a=0 \\implies a=1$ \n--- \n[결론] 정답: ④이다.",
+    "solution": "먼저 식을 근호 $\\sqrt2$에 대하여 정리한다.\n$\\sqrt{32}=4\\sqrt2$, $\\sqrt{24}=2\\sqrt6$이므로\n$\\dfrac{a}{\\sqrt2}(4\\sqrt2-2)=4a-a\\sqrt2$이다.\n또\n$2\\sqrt6\\left(\\dfrac{\\sqrt3}{6}+\\sqrt6\\right)=\\sqrt2+12$이다.\n따라서 전체 식은\n$(4a+12)+(1-a)\\sqrt2$이다.\n$a$가 유리수이므로 이 식이 유리수가 되려면 $\\sqrt2$의 계수가 0이어야 한다.\n$1-a=0$에서 $a=1$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -466,7 +466,7 @@ window.questionBank = [
       "⑤ $10\\sqrt{5}cm$"
     ],
     "answer": "④",
-    "solution": "[풀이] \n각 정사각형의 한 변의 길이는 $\\sqrt{5}, \\sqrt{45}, \\sqrt{125}$이다. \n$\\sqrt{5} = \\sqrt{5}$ \n$\\sqrt{45} = 3\\sqrt{5}$ \n$\\sqrt{125} = 5\\sqrt{5}$ \n$\\overline{AD} = \\sqrt{5}+3\\sqrt{5}+5\\sqrt{5} = 9\\sqrt{5}$ \n--- \n[결론] 정답: ④이다.",
+    "solution": "넓이가 $5,45,125\\,cm^2$인 정사각형의 한 변의 길이는 각각\n$\\sqrt5$, $\\sqrt{45}=3\\sqrt5$, $\\sqrt{125}=5\\sqrt5$ cm이다.\n그림에서 $AD$는 세 정사각형의 밑변 길이의 합이므로\n$AD=\\sqrt5+3\\sqrt5+5\\sqrt5=9\\sqrt5\\,cm$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -502,7 +502,7 @@ window.questionBank = [
       "⑤ $(2x-3)^2$"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n① $x$의 계수: 10, 절댓값: 10 \n② $x$의 계수: $-1$, 절댓값: 1 \n③ $x$의 계수: 0, 절댓값: 0 \n④ $4+1=5$, 절댓값: 5 \n⑤ $2 \\times 2 \\times (-3) = -12$, 절댓값: 12 \n따라서 5번의 절댓값이 가장 크다. \n--- \n[결론] 정답: ⑤이다.",
+    "solution": "각 식에서 $x$의 계수만 비교한다.\n① $(x+5)^2$의 $x$의 계수는 $10$,\n② $(x-4)(x+3)$은 $-1$,\n③ $(3x+1)(3x-1)$은 $0$,\n④ $(x+\\frac12)(2x+4)$는 $5$,\n⑤ $(2x-3)^2$는 $-12$이다.\n절댓값은 각각 $10,1,0,5,12$이므로 가장 큰 것은 ⑤이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -538,7 +538,7 @@ window.questionBank = [
       "⑤ $\\frac{11+4\\sqrt{7}}{3}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\frac{(\\sqrt{7}-2)^2}{(\\sqrt{7}+2)(\\sqrt{7}-2)} = \\frac{7-4\\sqrt{7}+4}{7-4} = \\frac{11-4\\sqrt{7}}{3}$ \n--- \n[결론] 정답: ②이다.",
+    "solution": "분모의 켤레식 $\\sqrt7-2$를 분자와 분모에 곱한다.\n$\\dfrac{\\sqrt7-2}{\\sqrt7+2}=\\dfrac{(\\sqrt7-2)^2}{(\\sqrt7+2)(\\sqrt7-2)}$이다.\n분자는 $7-4\\sqrt7+4=11-4\\sqrt7$이고,\n분모는 $7-4=3$이다.\n따라서\n$\\dfrac{\\sqrt7-2}{\\sqrt7+2}=\\dfrac{11-4\\sqrt7}{3}$이므로 정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -574,7 +574,7 @@ window.questionBank = [
       "⑤ $\\frac{2022}{2021}$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$2021=x$로 치환하면 \n$\\frac{1+(x-1)(x+1)}{x} = \\frac{1+x^2-1}{x} = \\frac{x^2}{x} = x$ \n$x = 2021$ \n--- \n[결론] 정답: ②이다.",
+    "solution": "$2021$을 기준으로 앞뒤 수를 나타내면\n$2020=2021-1$, $2022=2021+1$이다.\n따라서\n$1+2020\\cdot2022=1+(2021-1)(2021+1)=1+(2021^2-1)=2021^2$이다.\n그러므로\n$\\dfrac{1+2020\\cdot2022}{2021}=2021$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -610,7 +610,7 @@ window.questionBank = [
       "⑤ $9x^2-18x+9$"
     ],
     "answer": "③",
-    "solution": "[풀이] \n1. $(x+2)^2$ \n2. $\\frac{1}{6}(x^2-4x+4) = \\frac{1}{6}(x-2)^2$ \n3. $a^2+\\frac{1}{6}a+\\frac{1}{36}$이 완전제곱식이 되려면 일차항이 $2 \\times a \\times \\frac{1}{6} = \\frac{1}{3}a$여야 함. \n4. $(b-2)^2$ \n5. $(3x-3)^2$ \n--- \n[결론] 정답: ③이다.",
+    "solution": "완전제곱식의 꼴로 직접 확인한다.\n① $x^2+4x+4=(x+2)^2$\n② $\\dfrac16x^2-\\dfrac23x+\\dfrac23=\\dfrac16(x-2)^2=\\left(\\dfrac{x-2}{\\sqrt6}\\right)^2$\n④ $b^2-4b+4=(b-2)^2$\n⑤ $9x^2-18x+9=(3x-3)^2$이다.\n③에서 처음과 끝의 항이 $a^2$, $(\\frac16)^2$이므로 완전제곱식이라면 가운데 항은 $\\frac13a$여야 한다.\n주어진 가운데 항은 $\\frac16a$이므로 완전제곱식이 아니다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -646,7 +646,7 @@ window.questionBank = [
       "⑤ $-4x+1$"
     ],
     "answer": "②",
-    "solution": "[풀이] \n$\\sqrt{(3x-1)^2}-\\sqrt{(x-2)^2} = |3x-1|-|x-2|$ \n$\\frac{1}{3}<x<2$일 때, $3x-1>0$이고 $x-2<0$이다. \n$\\implies (3x-1)-(-(x-2)) = 3x-1+x-2 = 4x-3$ \n--- \n[결론] 정답: ②이다.",
+    "solution": "두 근호 안을 완전제곱식으로 바꾸면\n$9x^2-6x+1=(3x-1)^2$,\n$x^2-4x+4=(x-2)^2$이다.\n따라서 주어진 식은\n$|3x-1|-|x-2|$이다.\n$\\frac13<x<2$이므로 $3x-1>0$, $x-2<0$이다.\n따라서\n$|3x-1|=3x-1$, $|x-2|=2-x$이고,\n$(3x-1)-(2-x)=4x-3$이다.\n그러므로 정답은 ②이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -682,7 +682,7 @@ window.questionBank = [
       "⑤ 11"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n$ab=-12, a+b=p$ \n곱이 $-12$인 정수쌍 $(a, b)$ 중 합 $p$가 최대인 경우: \n$(12, -1) \\implies p = 11$ \n$(6, -2) \\implies p = 4$ \n$(4, -3) \\implies p = 1$ \n따라서 최댓값은 11이다. \n--- \n[결론] 정답: ⑤이다.",
+    "solution": "오른쪽을 전개하면\n$(x+a)(x+b)=x^2+(a+b)x+ab$이다.\n따라서\n$a+b=p$, $ab=-12$이다.\n곱이 $-12$인 정수 두 수의 합을 가장 크게 하려면 $12$와 $-1$을 택하면 된다.\n이때 $p=12+(-1)=11$이다.\n따라서 $p$의 최댓값은 11이고 정답은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -718,7 +718,7 @@ window.questionBank = [
       "⑤ 23"
     ],
     "answer": "⑤",
-    "solution": "[풀이] \n$x-3=A, x+2=B$로 치환 \n$A^2-7AB+12B^2 = (A-3B)(A-4B)$ \n원래 식 대입: \n$\\{(x-3)-3(x+2)\\}\\{(x-3)-4(x+2)\\}$ \n$= (x-3-3x-6)(x-3-4x-8)$ \n$= (-2x-9)(-3x-11) = (2x+9)(3x+11)$ \n$a=9, b=3, c=11 \\implies a+b+c = 9+3+11 = 23$ \n--- \n[결론] 정답: ⑤이다.",
+    "solution": "$A=x-3$, $B=x+2$로 놓으면 주어진 식은\n$A^2-7AB+12B^2$이다.\n이를 인수분해하면\n$(A-3B)(A-4B)$이다.\n원래 식을 대입하면\n$\\{(x-3)-3(x+2)\\}\\{(x-3)-4(x+2)\\}=(-2x-9)(-3x-11)=(2x+9)(3x+11)$이다.\n따라서 $a=9$, $b=3$, $c=11$이므로\n$a+b+c=23$이다.\n정답은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -754,7 +754,7 @@ window.questionBank = [
       "⑤ $2x-1$"
     ],
     "answer": "①",
-    "solution": "[풀이] \n$(x-2)(x+5)+6x = x^2+3x-10+6x = x^2+9x-10$ \n인수분해: $(x+10)(x-1)$ \n두 일차식의 합: $(x+10)+(x-1) = 2x+9$ \n--- \n[결론] 정답: ①이다.",
+    "solution": "먼저 주어진 식을 정리한다.\n$(x-2)(x+5)+6x=x^2+3x-10+6x=x^2+9x-10$이다.\n곱이 $-10$이고 합이 $9$인 두 수는 $10,-1$이므로\n$x^2+9x-10=(x+10)(x-1)$이다.\n따라서 두 일차식의 합은\n$(x+10)+(x-1)=2x+9$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -770,7 +770,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "제곱근",
@@ -784,7 +784,7 @@ window.questionBank = [
     "content": "[서술형1] $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 구하려고 한다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 240을 소인수분해 하시오.<br>(2) $\\sqrt{\\frac{240}{x}}$이 자연수가 되도록 하는 자연수 $x$의 값을 모두 구하시오.<br>(3) 위 (2)에서 구한 값 중 가장 작은 값을 구하시오.",
     "choices": [],
     "answer": "(1) $2^4 \\times 3 \\times 5$ (2) 15, 60, 240 (3) 15",
-    "solution": "[풀이] \n(1) $240 = 2^4 \\times 3 \\times 5$ \n(2) $\\sqrt{\\frac{240}{x}}$가 자연수이려면 $\\frac{240}{x}$가 제곱수여야 함. \n$240 = (2^2)^2 \\times 15$ 이므로 $x$는 $15 \\times (\\text{제곱수})$ 형태의 240의 약수여야 함. \n가능한 $x$: $15 \\times 1^2 = 15, 15 \\times 2^2 = 60, 15 \\times 4^2 = 240$ \n(3) 가장 작은 값은 15이다. \n--- \n[결론] 정답: (1) $2^4 \\times 3 \\times 5$ (2) 15, 60, 240 (3) 15이다.",
+    "solution": "(1) $240$을 소인수분해하면\n$240=2^4\\times3\\times5$이다.\n\n(2) $\\sqrt{\\dfrac{240}{x}}$가 자연수가 되려면 $\\dfrac{240}{x}$가 완전제곱수이어야 한다.\n$240$의 완전제곱수인 약수는 $1,4,16$이므로\n$\\dfrac{240}{x}=1,4,16$이다.\n따라서 $x=240,60,15$이다.\n\n(3) 이 중 가장 작은 값은 $15$이다.\n\n따라서 답은\n(1) $2^4\\times3\\times5$\n(2) $15,60,240$\n(3) $15$이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -800,7 +800,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "제곱근",
@@ -814,7 +814,7 @@ window.questionBank = [
     "content": "[서술형2] $\\sqrt{392}=A\\sqrt{2}, \\frac{\\sqrt{0.5}}{\\sqrt{50}}=B$일 때, $A \\div B$의 값을 구하려고 한다. 다음 물음에 풀이 과정을 쓰고 답을 구하시오.<br>(1) $A$의 값을 구하시오.<br>(2) $B$의 값을 구하시오.<br>(3) $A \\div B$의 값을 구하시오.",
     "choices": [],
     "answer": "(1) 14 (2) 0.1 (3) 140",
-    "solution": "[풀이] \n(1) $\\sqrt{392} = \\sqrt{196 \\times 2} = 14\\sqrt{2} \\implies A=14$ \n(2) $\\frac{\\sqrt{0.5}}{\\sqrt{50}} = \\sqrt{\\frac{0.5}{50}} = \\sqrt{0.01} = 0.1 \\implies B=0.1$ \n(3) $A \\div B = 14 \\div 0.1 = 140$ \n--- \n[결론] 정답: (1) 14 (2) 0.1 (3) 140이다.",
+    "solution": "(1)\n$\\sqrt{392}=\\sqrt{196\\times2}=14\\sqrt2$이므로 $A=14$이다.\n\n(2)\n$B=\\dfrac{\\sqrt{0.5}}{\\sqrt{50}}=\\sqrt{\\dfrac{0.5}{50}}=\\sqrt{0.01}=0.1$이다.\n\n(3)\n$A\\div B=14\\div0.1=140$이다.\n\n따라서 답은\n(1) $14$\n(2) $0.1$\n(3) $140$이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -830,7 +830,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "곱셈공식",
@@ -844,7 +844,7 @@ window.questionBank = [
     "content": "[서술형3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다. 두 정사각형의 둘레의 길이의 합은 60이고, 넓이의 합은 117이다. 다음 물음에 대하여 풀이 과정을 쓰고 답을 구하시오.<br>(1) 두 정사각형의 둘레의 길이의 합이 60임을 등식으로 나타내시오.<br>(2) 두 정사각형의 넓이의 합이 117임을 등식으로 나타내시오.<br>(3) 위 (1), (2)에서 구한 값을 이용하여 $xy$의 값을 구하시오.",
     "choices": [],
     "answer": "(1) $4x+4y=60$ (2) $x^2+y^2=117$ (3) 54",
-    "solution": "[풀이] \n(1) $4x+4y=60 \\implies x+y=15$ \n(2) $x^2+y^2=117$ \n(3) $(x+y)^2 = x^2+y^2+2xy$ 대입: \n$15^2 = 117+2xy \\implies 225 = 117+2xy$ \n$2xy = 108 \\implies xy=54$ \n--- \n[결론] 정답: (1) $4x+4y=60$ (2) $x^2+y^2=117$ (3) 54이다.",
+    "solution": "(1) 한 변의 길이가 $x,y$인 정사각형의 둘레는 각각 $4x,4y$이므로\n$4x+4y=60$이다.\n따라서 $x+y=15$이다.\n\n(2) 두 정사각형의 넓이의 합에서\n$x^2+y^2=117$이다.\n\n(3)\n$(x+y)^2=x^2+2xy+y^2$에 위 값을 대입하면\n$15^2=117+2xy$이다.\n$225-117=2xy$이므로 $108=2xy$, 따라서 $xy=54$이다.\n\n따라서 답은\n(1) $4x+4y=60$\n(2) $x^2+y^2=117$\n(3) $54$이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -860,7 +860,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "다항식곱셈",
@@ -877,7 +877,7 @@ window.questionBank = [
     "imageSize": "full",
     "choices": [],
     "answer": "(1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$",
-    "solution": "[풀이] \n(1) $(3a-7)(4a+1) = 12a^2+3a-28a-7 = 12a^2-25a-7$ \n(2) 가로 길 $1 \\times (4a+1)$, 세로 길 $2 \\times (3a-7)$, 겹치는 부분 $1 \\times 2$ \n길의 넓이 $= (4a+1) + (6a-14) - 2 = 10a-15$ \n(3) 전체 - 길 $=$ $(12a^2-25a-7) - (10a-15) = 12a^2-35a+8$ \n인수분해: $(3a-8)(4a-1)$ \n(또는 가로 세로에서 폭을 빼서 계산: $(3a-7-1)(4a+1-2) = (3a-8)(4a-1)$) \n--- \n[결론] 정답: (1) $12a^2-25a-7$ (2) $10a-15$ (3) $(3a-8)(4a-1)$이다.",
+    "solution": "(1) 화단 전체의 넓이는\n$(3a-7)(4a+1)$이다.\n전개하면\n$12a^2+3a-28a-7=12a^2-25a-7$이다.\n\n(2) 폭이 $1$m인 세로 길의 넓이는 $4a+1$이고, 폭이 $2$m인 가로 길의 넓이는 $2(3a-7)$이다.\n두 길이 겹치는 $1\\times2$ 부분은 두 번 더해졌으므로 한 번 빼야 한다.\n따라서 길의 넓이는\n$(4a+1)+2(3a-7)-2=10a-15$이다.\n\n(3) 길을 제외하면 가로 방향에서는 $1$m, 세로 방향에서는 $2$m가 빠진다.\n따라서 남은 화단의 넓이는\n$(3a-7-1)(4a+1-2)=(3a-8)(4a-1)$이다.\n\n따라서 답은\n(1) $12a^2-25a-7$\n(2) $10a-15$\n(3) $(3a-8)(4a-1)$이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
