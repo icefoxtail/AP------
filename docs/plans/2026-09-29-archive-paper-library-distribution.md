@@ -2,7 +2,7 @@
 
 작성일: 2026-09-29
 
-상세 설계 완료: 2026-09-29. 상태: 로컬 구현 완료, 운영 적용 전. 아래 기능 합의와 함께 문서 후반의 데이터 구조·API·변경 파일·구현 순서·검증 기준을 구현 기준으로 사용한다.
+상세 설계 완료: 2026-09-29. 구현 및 운영 반영 완료: 2026-09-30. 상태: 저장 기능은 운영 배포 완료, 실제 학생 과제 배정은 시험지·반·대상·날짜 지정 대기. 아래 기능 합의와 함께 문서 후반의 데이터 구조·API·변경 파일·구현 순서·검증 기준을 구현 기준으로 사용한다.
 
 사용자 요청에 따른 범위 조정: 학생 배포는 기존 아카이브 기능을 그대로 재사용한다. 이번 개편의 중심은 완성 시험지 저장과 저장본을 다시 여는 기능이다. 아래 내용을 이 범위에 맞춰 수정했다.
 
@@ -276,14 +276,15 @@ state에는 `saveBusy`, `saveBatchId`, `saveSignature`, `savedPaperIds`, `saveEr
 
 기능 복구는 UI/신규 endpoint 진입을 되돌리고 새 저장 데이터를 보존하는 방식으로 한다. 보관 테이블을 drop하거나 기존 학생 과제를 삭제하지 않는다. D1 snapshot은 기존 DB backup 대상에 포함되며, 이미지의 실제 보관 위치는 I-1 확인 결과도 함께 운영 문서에 기록한다.
 
-설계 문서 작성 당시에는 계획서만 수정했다. 후속 구현 요청으로 로컬 migration·Worker·UI·기존 배포 연결과 fixture 검증을 완료했다. 운영 migration·Worker 배포·정적 사이트 게시·실제 학생 배포는 실행하지 않았다.
+설계 문서 작성 당시에는 계획서만 수정했다. 후속 구현 요청으로 로컬 migration·Worker·UI·기존 배포 연결과 fixture 검증을 완료한 뒤 2026-09-30에 운영 반영했다. 운영 D1 `ap-math-os`에 `20260929_archive_saved_papers.sql`을 적용하고 이력과 스키마를 확인했다. 기존 D1 이력에 미등록 과거 migration이 다수 있어 이번 migration 하나만 격리 적용했다. Worker `ap-math-os-v2612`를 version `a65f6abe-c2eb-4b9a-bf5d-a87af8f06a59`로 배포했고, GitHub Pages에서 새 보관함 JS가 HTTP 200으로 제공되는 것을 확인했다. 비로그인 API 요청은 401로 차단된다. 실제 학생 과제 배정은 아직 실행하지 않았다.
 
-### L. 구현 시작 시 확인할 항목
+### L. 구현·운영 확인 결과
 
-위의 DB·API·재사용 경로·UI 범위는 이 문서의 기본 결정이다. 구현 중 확인할 항목은 저장 구조를 다시 선택하는 문제가 아니라 다음 세 가지의 실행 검증이다.
+위의 DB·API·재사용 경로·UI 범위는 구현 기준이다. 2026-09-30 운영 반영 결과는 다음과 같다.
 
-1. 운영 schema와 저장소 migration의 설치 상태가 일치하는지, 기존 미커밋 변경에 충돌하는 지점이 있는지 확인한다.
-2. 이미지 참조의 실제 보존 방식과 권별 최대 크기를 대표 시험지로 확인한다. 필요한 자산 보존 작업은 저장 snapshot 기능에 포함한다.
-3. 기존 AssignTarget의 QR·자동 출력·assignment key가 새 저장본 입력에서도 동일 과제를 가리키는지 로컬 통합 검증한다.
-
-로컬 fixture에서는 학생 없이 저장, 다른 세션의 목록·상세 조회, UTF-8 상한, 긴 catalog overlay 버전, idempotent retry, 저장 묶음 rollback, static image byte snapshot 보존, 기존 assignment 경로와의 연결, 같은 날 새 batch로 다른 학생에게 재배포, soft delete 뒤 기존 assignment 보존을 검증했다. 기본 test runner는 통과했다. 별도 `archive2-worker-validation.test.mjs`는 현재 작업 트리의 catalog/source 불일치로 source restoration 1건과 candidate lookup 1건이 실패한다. 운영 환경의 migration 적용 상태, Worker 배포, 정적 사이트 게시, 실제 학생 포털에서의 출제 완료는 아직 검증하지 않았다.
+1. 운영 D1 `ap-math-os`에서 저장 테이블·인덱스·불변/soft-delete 트리거·assignment 참조 컬럼과 migration 이력을 확인했다. 과거 미등록 migration들을 함께 적용하지 않도록 새 migration만 격리 적용했다.
+2. Worker `ap-math-os-v2612` version `a65f6abe-c2eb-4b9a-bf5d-a87af8f06a59`가 활성화됐다.
+3. `https://icefoxtail.github.io/AP------/archive/archive2-library.js`가 HTTP 200으로 제공되고, 비로그인 저장 시험지 API 요청은 HTTP 401을 반환하는 것을 확인했다.
+4. 저장 시험지 회귀 테스트와 Worker dry-run은 통과했다. 전체 runner는 182개 통과, 6개 실패였다. 실패는 기존 archive inline-view-label 검사와 Meta Foundation의 카탈로그/레코드 개수 기대치에 한정되며, 이 기능이 수정한 파일과는 무관하다.
+5. 로컬 fixture에서는 학생 없이 저장, 다른 세션의 목록·상세 조회, UTF-8 상한, 긴 catalog overlay 버전, idempotent retry, 저장 묶음 rollback, static image byte snapshot 보존, 기존 assignment 경로, 같은 날 새 batch 재배포, soft delete 뒤 기존 assignment 보존을 검증했다.
+6. 실제 시험지를 학생에게 배정하는 작업은 실행하지 않았다. 시험지 ID, 반, 대상 학생 범위, 시험일이 지정되면 진행할 수 있다.
