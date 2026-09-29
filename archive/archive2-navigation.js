@@ -28,19 +28,23 @@
     unit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/><path d="M7 8h1M16 8h1M7 12h1M16 12h1"/></svg>',
     compose: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z"/><path d="M15 4v5h5M8 14h8M12 10v8"/></svg>',
     recent: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v11H3z"/><path d="M3 7V5h7l2 2"/></svg>',
+    library: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
+    saved: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6.8c1 0 1.7.7 1.7 1.7v13.3c0-1-.7-1.7-1.7-1.7H4zM20 4.5h-6.8c-1 0-1.7.7-1.7 1.7v13.3c0-1 .7-1.7 1.7-1.7H20z"/></svg>',
   };
   const home = ["home", "홈", "workspace.html?view=home"];
   const tasks = [
     ["find", "기출·자료", "workspace.html?view=find"],
     ["unit", "단원별 기출", "unit-past-exams.html?ready=1"],
     ["compose", "문제지 만들기", "workspace.html?view=compose"],
+    ["saved", "저장한 시험지", "workspace.html?view=saved"],
     ["recent", "출제 내역", "workspace.html?view=recent"],
   ];
 
   function currentKey(mode) {
     if (mode === "unit") return "unit";
-    const view = new URLSearchParams(location.search).get("view");
-    return ["home", "find", "compose", "recent", "health"].includes(view)
+    const search = typeof location === "undefined" ? "" : location.search || "";
+    const view = new URLSearchParams(search).get("view");
+    return ["home", "find", "compose", "saved", "recent", "health"].includes(view)
       ? view
       : "home";
   }
@@ -85,9 +89,9 @@
   }
 
   function bind(host) {
-    const trigger = host.querySelector(".archive-mobile-tools-trigger");
-    const menu = host.querySelector(".archive-mobile-tools-menu");
-    const tools = host.querySelector(".archive-mobile-tools");
+    const trigger = host.querySelector?.(".archive-mobile-tools-trigger");
+    const menu = host.querySelector?.(".archive-mobile-tools-menu");
+    const tools = host.querySelector?.(".archive-mobile-tools");
     if (!trigger || !menu || !tools) return;
 
     let open = false;

@@ -3620,6 +3620,7 @@ async function handleApiRequest(request, env) {
 
         if (
           resource === 'exam-blueprints' ||
+          resource === 'archive-saved-papers' ||
           resource === 'class-exam-assignments' ||
           resource === 'exam-sessions' ||
           resource === 'exam-analysis' ||

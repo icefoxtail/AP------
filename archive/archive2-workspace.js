@@ -228,6 +228,13 @@
     undo: [],
     receipts: [],
     ackWarnings: false,
+    saveBusy: false,
+    saveBatchId: "",
+    saveSignature: "",
+    savedPaperIds: [],
+    saveMessage: "",
+    saveError: "",
+    saveResultSignature: "",
   };
   let autosaveTimer,
     previewTimer,
@@ -260,13 +267,13 @@
       "교사 로그인이 필요합니다. 기존 아카이브에서 로그인한 뒤 돌아와 주세요.",
     );
   }
-  async function api(route, body) {
+  async function api(route, body, method = body ? "POST" : "GET") {
     const base = (
       window.APMATH_API_BASE ||
       "https://ap-math-os-v2612.js-pdf.workers.dev/api"
     ).replace(/\/$/, "");
     const response = await fetch(base + route, {
-      method: body ? "POST" : "GET",
+      method,
       headers: {
         ...headers(),
         ...(body ? { "Content-Type": "application/json" } : {}),
@@ -281,6 +288,7 @@
     }
     return data;
   }
+  window.Archive2Api = { request: api };
   function status(message, error = false) {
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
@@ -313,6 +321,12 @@
       "receipts",
       "failedPart",
       "issueDate",
+      "saveBatchId",
+      "saveSignature",
+      "savedPaperIds",
+      "saveMessage",
+      "saveError",
+      "saveResultSignature",
     ];
     return {
       schemaVersion: C.VERSION,
@@ -440,6 +454,14 @@
     );
     for (const key of allowed)
       if (data[key] !== undefined) state[key] = data[key];
+    if (data.saveResultSignature === undefined) {
+      state.saveBatchId = "";
+      state.saveSignature = "";
+      state.savedPaperIds = [];
+      state.saveMessage = "";
+      state.saveError = "";
+      state.saveResultSignature = "";
+    }
     state.filters = restoredFilters;
     // A renamed display parent must not drop the source range in a saved paper.
     const currentScopes = scopeOptions();
@@ -702,6 +724,27 @@
         .map((r) => ({ questionUid: r.questionUid, rowId: r.rowId })),
       seed: state.seed,
     };
+  }
+  function saveWorkSignature() {
+    const req = request(state.selected.length > 0);
+    return JSON.stringify({
+      indexVersion: state.indexVersion || state.catalog?.indexVersion || "",
+      selectionFilters: req.filters,
+      selected: state.selected.map((record) => [record.questionUid, record.sourceFingerprint]),
+      rows: state.rows,
+      scopes: state.scopes,
+      sources: state.sources,
+      distribution: state.distribution,
+      count: state.count,
+      buckets: state.buckets,
+      custom: state.custom,
+      round: state.round,
+      rounds: state.rounds,
+      title: state.title,
+      header: state.header,
+      qpp: state.qpp,
+      includeQr: state.includeQr,
+    });
   }
   function review() {
     const ctx = ownHistoryContext(),
@@ -1253,34 +1296,6 @@
       <div class="summary-line"><span>선택 범위</span><strong>${selectedScopeOptions().length}개</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((r) => r.questionUids)).length}문항</strong></div>
       ${r ? `<div class="callout ${r.status === "HARD_BLOCK" ? "danger" : r.status === "PASS" ? "good" : ""}"><strong>${r.status === "PASS" ? "검증 통과" : r.status === "WARN" ? "확인할 내용이 있습니다" : "출력·출제 차단"}</strong>${[...r.hardFailures, ...r.warnings].map((m) => `<div>${esc(m)}</div>`).join("")}<div>중복 없이 ${r.metrics.uniqueUidCount}문항 · 원본 ${r.metrics.sourceCount}개 시험</div></div>` : ""}
       ${r?.warnings.length ? `<label class="check"><input type="checkbox" id="ack-warnings" ${state.ackWarnings ? "checked" : ""}>안내를 확인했습니다.</label>` : ""}`;
-    const historyOverlapCount = state.history?.union_question_uids?.length || 0;
-    const historyNotice = !state.studentIds.length
-      ? ""
-      : state.historyMode === "off"
-        ? '<div class="callout">이전 출제 문항 확인을 사용하지 않습니다. 생성된 시험지는 그대로 출제할 수 있습니다.</div>'
-        : state.historyError
-          ? `<div class="callout">이력 확인 실패: ${esc(state.historyError)}<br>확인 결과와 관계없이 이 시험지는 출제할 수 있습니다.</div>`
-          : !state.historyReady
-            ? '<div class="callout">이전 출제 이력을 확인하고 있습니다. 확인 중에도 출제할 수 있습니다.</div>'
-            : `<div class="callout">현재 시험지 중 이전 출제와 겹치는 문항 <strong>${historyOverlapCount}개</strong><br>참고 정보이며 출제를 차단하지 않습니다.</div>`;
-    const targeting = `<h3>출제 대상</h3><p>${esc(state.studentLabels.join(" · ") || "문제지를 만든 뒤 학생을 선택해 출제합니다.")}</p><div class="actions">${button("targets", "학생 선택", 'class="small"')}${state.studentIds.length ? button("targets-clear", "해제", 'class="small"') : ""}</div>
-      <details style="margin-top:12px">
-        <summary>고급 설정</summary>
-        <label style="margin-top:12px">이전 출제 문항 확인<select id="history-mode" ${state.sealed ? "disabled" : ""}>${options(
-          [
-            { value: "off", label: "확인 안 함" },
-            { value: "all", label: "전체 이력 확인" },
-            { value: "90", label: "최근 90일 확인" },
-            { value: "30", label: "최근 30일 확인" },
-          ],
-          state.historyMode === "recent"
-            ? String(state.recentDays)
-            : state.historyMode,
-          null,
-        )}</select></label>
-        ${state.studentIds.length && state.historyMode !== "off" ? button("history-refresh", "이력 다시 확인", 'class="small"') : ""}
-      </details>
-      ${historyNotice}`;
     const frozen = Parts.receipt(state.receipts, state.previewIndex),
       frozenPaper = frozen && frozenPaperCache.get(frozen.key);
     const header =
@@ -1298,9 +1313,22 @@
         "studio",
         Boolean(frozen) || state.sealed,
       );
+    const saveHardFailures = (r?.hardFailures || []).filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
+    const saveBlocked = !state.selected.length || saveHardFailures.length > 0;
+    const saveResultCurrent = Boolean(state.saveResultSignature) &&
+      state.saveResultSignature === saveWorkSignature();
+    const savedResult = state.saveError && saveResultCurrent
+      ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(state.saveError)}</div>`
+      : state.saveMessage && saveResultCurrent
+        ? `<div class="callout good" role="status" aria-live="polite"><strong>${esc(state.saveMessage)}</strong><p>시험지 저장은 학생 배포와 별도입니다.</p>${state.savedPaperIds.map((id, i) => `<div><a href="workspace.html?view=saved&paper_id=${encodeURIComponent(id)}">${state.savedPaperIds.length > 1 ? `${i + 1}권 · ` : ""}저장한 시험지 보기</a> · <a href="index.html?savedPaper=${encodeURIComponent(id)}">학생에게 배포</a></div>`).join("")}</div>`
+        : (state.saveMessage || state.savedPaperIds.length) && !saveResultCurrent
+          ? '<div class="callout" role="status" aria-live="polite">저장 이후 현재 시험지 내용이 변경되었습니다. 현재 편집본은 저장되지 않았습니다.</div>'
+          : "";
+    const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
+      ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
+      : "";
     return `<aside class="inspector ${state.mobileInspectorOpen ? "mobile-open" : ""}"><section class="panel">${button("close-inspector", "설정 닫기", 'class="mobile-sheet-close"')}<div class="tabs" role="tablist">${[
-      ["summary", "출제 확인"],
-      ["targets", "대상"],
+      ["summary", "저장 확인"],
       ["header", "출력 설정"],
     ]
       .map(([k, l]) =>
@@ -1312,20 +1340,8 @@
       )
       .join(
         "",
-      )}</div><div>${state.inspector === "header" ? header : state.inspector === "targets" ? targeting : summary + `<hr style="border:0;border-top:1px solid var(--line);margin:18px 0">` + targeting}</div>
-      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "일반 출력", `class="primary" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 다시 준비" : "학생에게 출제", `${!state.studentIds.length || r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>${state.sealed ? '<p class="callout">확정된 회차입니다. 다음 회차에서 새 문제지를 만드세요.</p>' : ""}<div class="actions" style="margin-top:12px">${button("next-round", "같은 조건으로 다음 회차", !state.sealed ? "disabled" : "")}${button("backup", "작업 파일 저장", 'class="small"')}</div>` : ""}
-      ${renderDeliveryProgress()}</section></aside>`;
-  }
-  function renderDeliveryProgress() {
-    if (!state.receipts.length && !state.failedPart) return "";
-    const p = Parts.status(state.selected.length, state.receipts);
-    return `<section class="delivery-progress"><h3>${p.saved} / ${p.total}개 문제지 출제 저장</h3><p>${p.pending ? "아직 출제하지 않은 문제지만 수정하고 이어서 출제할 수 있습니다." : "선택한 학생의 내 시험지에서 확인할 수 있습니다."}</p>${Array.from(
-      { length: p.total },
-      (_, i) => {
-        const r = Parts.receipt(state.receipts, i);
-        return `<div class="callout"><strong>${i + 1}권 · ${r ? "출제 저장됨" : "아직 출제하지 않음"}</strong><p>${r ? (r.ready ? "PDF 준비 완료" : "PDF 파일 재시도 필요") : state.failedPart?.index === i ? esc(state.failedPart.message) : "문항 수정 가능"}</p>${r ? button("assignment-status", "학생별 확인 · 출력", `data-assignment="${r.id}" class="small"`) : button("recover-part", "이 문제지 수정", `data-part="${i}" class="small"`)}</div>`;
-      },
-    ).join("")}</section>`;
+      )}</div><div>${state.inspector === "header" ? header : summary + saveStaleNotice}</div>
+      ${state.selected.length ? `<div class="actions" style="margin-top:18px">${button("print", "출력", `class="small" ${r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div><div class="actions" style="margin-top:12px">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div>${savedResult}` : '<p class="muted">문항을 선택한 뒤 시험지 저장을 눌러 완성본을 보관하세요.</p>'}</section></aside>`;
   }
   function renderPaper() {
     const modes = [
@@ -1372,10 +1388,11 @@
     const r = review(),
       blocked =
         r.status === "HARD_BLOCK" || (r.warnings.length && !state.ackWarnings);
-    return `<div class="mobile-actions">${button("mobile-inspector", "출력·출제 설정")}${button("print", "일반 출력", `class="primary" ${blocked ? "disabled" : ""}`)}${button("assign", state.receipts.length && !state.sealed ? "남은 문제지 출제" : state.receipts.some((r) => !r.ready) ? "PDF 재시도" : "학생 출제", blocked || !state.studentIds.length ? "disabled" : "")}</div>`;
+    const saveBlocked = r.hardFailures.some((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
+    return `<div class="mobile-actions">${button("mobile-inspector", "출력 설정")}${button("print", "출력", `class="small" ${blocked ? "disabled" : ""}`)}${button("save-paper", state.saveBusy ? "저장 중…" : "시험지 저장", `class="primary" ${state.saveBusy || saveBlocked || (r.warnings.length && !state.ackWarnings) ? "disabled" : ""}`)}</div>`;
   }
   function renderCompose() {
-    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 파일 저장")}${button("import", "백업 불러오기")}</div></div>
+    return `<div class="intro"><div><h1>${esc(state.title)} <span class="badge">${state.round}차</span></h1><p class="muted">범위를 정하고, 실제 문제지를 보며 필요한 문항만 바꾸세요.</p></div><div class="actions">${button("new-draft", "새 작업")}${button("backup", "작업 백업 다운로드")}${button("import", "백업 불러오기")}</div></div>
     <div class="workspace"><div>${!state.selected.length ? `<section class="panel compose-setup">${filterMarkup(state.filters, "compose", "primary")}${state.sources.length ? `<div class="callout">선택한 시험 ${state.sources.length}개 안에서 선택합니다. ${button("sources-clear", "전체 아카이브로 변경", 'class="small"')}</div>` : ""}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div></section>${renderComposition()}` : `<details class="panel plan-panel"><summary>출제 범위·문항 수 설정 ${state.sealed ? "(확정)" : ""}</summary>${filterMarkup(state.filters, "compose", "primary")}<div class="compose-step compose-range"><div class="compose-step-head"><span class="compose-step-number">3</span><h2>범위</h2></div>${renderScopes()}</div>${renderComposition()}</details>${renderPaper()}`}</div>${renderInspector()}</div>${renderMobileActions()}`;
   }
   function recentClassOptions() {
@@ -1582,6 +1599,20 @@
       });
   }
   function render() {
+    if (state.view === "saved") {
+      document.body.dataset.archiveView = state.view;
+      document.querySelectorAll("[data-view]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.view === state.view);
+        button.setAttribute("aria-current", button.dataset.view === state.view ? "page" : "false");
+      });
+      window.Archive2Library.render($("content"), state.savedPaperId || "")
+        .then(() => status("저장한 시험지를 불러왔습니다."))
+        .catch((error) => {
+          $("content").innerHTML = `<section class="panel"><h1>저장한 시험지</h1><p class="callout danger" role="alert">${esc(error.message || "시험지를 불러오지 못했습니다.")}</p><a href="workspace.html?view=saved">목록으로 돌아가기</a></section>`;
+          status(error.message || "저장한 시험지를 불러오지 못했습니다.", true);
+        });
+      return;
+    }
     if (!state.catalog) return;
     const questionList = $("question-list");
     if (questionList) state.questionListOpen = questionList.open;
@@ -1724,6 +1755,74 @@
     prepared.signature = signature;
     state.prepared = prepared;
     return prepared;
+  }
+  async function savePapers() {
+    if (!state.selected.length) throw new Error("저장할 문항을 먼저 선택해 주세요.");
+    if (state.saveBusy) return;
+    const r = review();
+    const blocking = r.hardFailures.filter((failure) => failure !== "문항 목록이 갱신되었습니다. 다시 만들어 주세요.");
+    if (blocking.length) throw new Error(blocking.join(" "));
+    if (r.warnings.length && !state.ackWarnings) {
+      state.inspector = "summary";
+      render();
+      throw new Error("저장 전에 안내를 확인해 주세요.");
+    }
+    state.saveBusy = true;
+    $("content").inert = true;
+    status("문항과 출력 정보를 확인한 뒤 시험지를 저장합니다.");
+    try {
+      const papers = await prepare();
+      const filters = request(true).filters;
+      const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
+      if (!saveIndexVersion) throw new Error("현재 문항 목록 버전을 확인할 수 없습니다.");
+      const signature = JSON.stringify({
+        indexVersion: saveIndexVersion,
+        filters,
+        includeExtended: state.includeExtended === true,
+        papers: papers.map((paper) => ({ part_index: paper.index, questions: paper.questions, meta: paper.meta })),
+      });
+      if (state.saveSignature !== signature || !state.saveBatchId) {
+        state.saveSignature = signature;
+        state.saveBatchId = crypto.randomUUID();
+        state.savedPaperIds = [];
+        state.saveMessage = "";
+        state.saveResultSignature = "";
+      }
+      state.saveError = "";
+      state.saveResultSignature = saveWorkSignature();
+      save();
+      status("시험지 문항과 출제 범위를 서버에서 확인하고 저장하고 있습니다.");
+      const data = await api("/archive-saved-papers", {
+        schema_version: "archive-saved-paper-v1",
+        save_batch_id: state.saveBatchId,
+        index_version: saveIndexVersion,
+        selection_filters: filters,
+        include_extended: state.includeExtended === true,
+        papers: papers.map((paper) => ({
+          part_index: paper.index,
+          questions: paper.questions,
+          meta: paper.meta,
+        })),
+      });
+      state.savedPaperIds = (data.papers || []).map((paper) => paper.id);
+      if (state.savedPaperIds.length !== papers.length)
+        throw new Error("저장 응답의 시험지 수가 요청과 다릅니다.");
+      state.saveMessage = state.savedPaperIds.length > 1
+        ? `시험지 ${state.savedPaperIds.length}권을 저장했습니다.`
+        : "시험지 1개를 저장했습니다.";
+      state.saveError = "";
+      save();
+      status(`${state.saveMessage} 학생 배포는 아직 완료되지 않았습니다.`);
+    } catch (error) {
+      state.saveMessage = "";
+      state.saveError = error.message || "저장 요청에 실패했습니다.";
+      save();
+      status("시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.", true);
+    } finally {
+      state.saveBusy = false;
+      $("content").inert = false;
+      render();
+    }
   }
   function outputUrl(paper, mode = state.outputMode, preview = true) {
     const url = O.engineUrl("mixed_engine.html", location.href);
@@ -2167,6 +2266,12 @@
       ackWarnings: false,
       previewIndex: 0,
       indexVersion: state.catalog.indexVersion,
+      saveBatchId: "",
+      saveSignature: "",
+      savedPaperIds: [],
+      saveMessage: "",
+      saveError: "",
+      saveResultSignature: "",
       view: "compose",
     });
     render();
@@ -2174,12 +2279,13 @@
   }
   document.addEventListener("click", async (event) => {
     const b = event.target.closest("button");
-    if (!b || b.disabled || state.busy) return;
+    if (!b || b.disabled || state.busy || state.saveBusy) return;
     try {
       if (b.dataset.view) {
         if (b.dataset.view === "compose" && state.view !== "compose" && !state.selected.length)
           state.sources = [];
         state.view = b.dataset.view;
+        if (state.view === "saved") state.savedPaperId = "";
         urlState();
         render();
         if (state.view === "recent") await loadRecent();
@@ -2472,6 +2578,7 @@
         await refreshHistory();
       } else if (a === "history-refresh") await refreshHistory();
       else if (a === "print") await print();
+      else if (a === "save-paper") await savePapers();
       else if (a === "assign") await assign();
       else if (a === "next-round") {
         if (!state.sealed) return;
@@ -2835,9 +2942,10 @@
   });
   function readUrl() {
     const p = new URLSearchParams(location.search);
-    state.view = ["home", "find", "compose", "recent", "health"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health"].includes(p.get("view"))
       ? p.get("view")
       : "home";
+    state.savedPaperId = p.get("paper_id") || "";
     state.find = {};
     for (const k of [
       "grade",
@@ -2874,6 +2982,12 @@
     history.replaceState(null, "", url);
   }
   (async () => {
+    readUrl();
+    const savedOnBoot = state.view === "saved";
+    if (savedOnBoot) {
+      render();
+      status("저장한 시험지를 서버에서 불러오고 있습니다.");
+    }
     try {
       const response = await fetch("data/archive2-catalog.json", {
         cache: "no-cache",
@@ -2896,10 +3010,10 @@
           .map((r) => [r.questionUid, r]),
       );
       readUrl();
-      render();
-      status(
-        `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`,
-      );
+      if (!(savedOnBoot && state.view === "saved")) render();
+      status(state.view === "saved"
+        ? "저장한 시험지를 불러왔습니다."
+        : `시험 ${state.catalog.health.exams}개 · 전체 ${state.catalog.health.questions.toLocaleString()}문항 · 문제지 만들기에 사용 가능 ${state.catalog.health.automatic.toLocaleString()}문항`);
       const previous = drafts();
       if(state.view==='recent'){try{await loadRecent();}catch(e){status(e.message,true);}}
       if (previous.length && state.view === "compose")
@@ -2908,6 +3022,11 @@
           `<p>${esc(previous[0].header?.title || previous[0].title)} · ${previous[0].selected?.length || 0}문항</p>${button("restore", "이전 작업 복원", 'data-draft="0" class="primary"')} ${button("close-dialog", "새로 시작")}`,
         );
     } catch (e) {
+      if (state.view === "saved") {
+        if (!savedOnBoot) render();
+        status("문항 목록을 사용할 수 없어도 저장한 시험지는 서버에서 열 수 있습니다.");
+        return;
+      }
       $("content").innerHTML =
         `<div class="empty">${esc(e.message)}<p><a href="index.html">기존 아카이브 열기</a></p></div>`;
       status(e.message, true);

@@ -3146,8 +3146,14 @@ async function init() {
     if (window.__ARCHIVE_METADATA_READY__) await window.__ARCHIVE_METADATA_READY__;
     const p = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
     AppState.key = p.get('key') || '';
-    const rawData = localStorage.getItem('mixedQuestions_' + AppState.key) || sessionStorage.getItem('mixedQuestions');
-    const rawMeta = localStorage.getItem('mixedMeta_' + AppState.key) || sessionStorage.getItem('mixedMeta');
+    let rawData = null;
+    let rawMeta = null;
+    try { rawData = sessionStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
+    try { if (!rawData) rawData = localStorage.getItem('mixedQuestions_' + AppState.key); } catch (e) {}
+    try { if (!rawData) rawData = sessionStorage.getItem('mixedQuestions'); } catch (e) {}
+    try { rawMeta = sessionStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
+    try { if (!rawMeta) rawMeta = localStorage.getItem('mixedMeta_' + AppState.key); } catch (e) {}
+    try { if (!rawMeta) rawMeta = sessionStorage.getItem('mixedMeta'); } catch (e) {}
 
     if (!rawData && p.get('packId')) {
         try {

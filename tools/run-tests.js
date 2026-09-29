@@ -56,6 +56,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-saved-papers-runtime.mjs',
+    args: ['--test', 'tests/archive-saved-papers-runtime.mjs']
+  },
+  {
     label: 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs',
     args: ['--test', 'archive/tools/geometry-equation/tests/verify-svg-coordinate-parity.test.mjs']
   },

@@ -11,10 +11,10 @@ test('unit papers are a primary task in both surfaces and keep legacy escape ava
     const html = navigation.markup(mode);
     assert.match(html, /href="unit-past-exams.html\?ready=1"/);
     assert.match(html, /href="index.html\?legacy=1">아카이브 1.0/);
-    assert.equal((html.match(/>단원별 기출<\/a>/g) || []).length, 1);
+    assert.equal((html.match(/<span class="archive-nav-label">단원별 기출<\/span><\/a>/g) || []).length, 2);
   }
   assert.match(navigation.markup('workspace'), /data-view="compose"/);
-  assert.match(navigation.markup('unit'), /href="unit-past-exams.html\?ready=1" class="active" aria-current="page"/);
+  assert.match(navigation.markup('unit'), /href="unit-past-exams.html\?ready=1" aria-current="page" class="active"/);
   assert.match(navigation.markup('unit'), /href="workspace.html\?view=compose"/);
 });
 
