@@ -121,7 +121,7 @@ const rendered = renderModule(buildProjection());
 const checkOnly = process.argv.includes('--check');
 if (checkOnly) {
   const current = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : '';
-  if (current !== rendered) {
+  if (current.replace(/\r\n/g, '\n') !== rendered.replace(/\r\n/g, '\n')) {
     console.error(`classroom progress taxonomy projection is stale: ${path.relative(repoRoot, outputPath)}`);
     process.exitCode = 1;
   }
