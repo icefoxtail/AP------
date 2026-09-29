@@ -11,6 +11,50 @@ const AP_CLINIC_EXAM_PERIODS = [
 ];
 const clinicPrintExamPeriodFilters = new Map();
 const clinicPrintExamYearFilters = new Map();
+const clinicPrintGradeData = new Map();
+
+function clinicPrintGetGradeWindow(classId) {
+    const loaded = clinicPrintGradeData.get(String(classId));
+    if (loaded?.status === 'ready') return { from: loaded.from, to: loaded.to };
+    const to = new Date(new Date().getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    const date = new Date(`${to}T00:00:00Z`);
+    const day = date.getUTCDate();
+    date.setUTCDate(1);
+    date.setUTCMonth(date.getUTCMonth() - 1);
+    const lastDay = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).getUTCDate();
+    date.setUTCDate(Math.min(day, lastDay));
+    return { from: date.toISOString().slice(0, 10), to };
+}
+
+function clinicPrintGradeDataUnavailable(classId) {
+    const status = clinicPrintGradeData.get(String(classId))?.status;
+    return status === 'loading' || status === 'error';
+}
+
+function clinicPrintIsInGradeWindow(row, classId) {
+    const { from, to } = clinicPrintGetGradeWindow(classId);
+    const date = String(row.exam_date || row.created_at || row.updated_at || '').slice(0, 10);
+    return !!date && date >= from && date <= to;
+}
+
+function clinicPrintGetGradeDataMessage(classId) {
+    const data = clinicPrintGradeData.get(String(classId));
+    if (data?.status === 'loading') return '학년 전체 기록을 불러오는 중입니다.';
+    if (data?.status === 'error') return '학년 전체 기록을 불러오지 못했습니다. 다시 불러오기를 눌러 주세요.';
+    const { from, to } = clinicPrintGetGradeWindow(classId);
+    return `모든 선생님 반 · 최근 1개월 (${from} ~ ${to})`;
+}
+
+async function clinicPrintRetryGradeData(classId) {
+    const pending = clinicPrintRefreshGradeClinicData(classId);
+    clinicPrintUpdateExamList(classId);
+    if (document.querySelector('input[name="clinic-print-mode"]:checked')?.value === 'type') clinicPrintRenderTypePanel(classId);
+    clinicPrintUpdateStudentList(classId);
+    await pending;
+    clinicPrintUpdateExamList(classId);
+    if (document.querySelector('input[name="clinic-print-mode"]:checked')?.value === 'type') clinicPrintRenderTypePanel(classId);
+    clinicPrintUpdateStudentList(classId);
+}
 
 function clinicPrintEscapeHtml(value) {
     if (typeof apEscapeHtml === 'function') return apEscapeHtml(value);
@@ -173,17 +217,28 @@ function clinicPrintGetClassGrade(classId) {
 }
 
 function clinicPrintGetGradeClasses(classId) {
+    if (clinicPrintGradeDataUnavailable(classId)) return [];
     const grade = clinicPrintGetClassGrade(classId);
     if (!grade) return [];
-    return clinicPrintGetActiveClasses().filter(cls => String(cls.grade || '').trim() === grade);
+    const classes = clinicPrintGradeData.get(String(classId))?.classes || clinicPrintGetActiveClasses();
+    return classes.filter(cls => Number(cls.is_active ?? 1) !== 0 &&
+        String(cls.grade || '').replace(/\s+/g, '') === grade.replace(/\s+/g, ''));
 }
 
 function clinicPrintGetGradeStudents(classId) {
     const classes = clinicPrintGetGradeClasses(classId);
     const byStudent = new Map();
+    const loaded = clinicPrintGradeData.get(String(classId));
+    const loadedStudents = loaded?.status === 'ready'
+        ? new Map(loaded.students.map(student => [String(student.id), student])) : null;
 
     classes.forEach(cls => {
-        clinicPrintGetClassStudents(cls.id).forEach(student => {
+        const students = loadedStudents
+            ? loaded.class_students.filter(row => String(row.class_id) === String(cls.id))
+                .map(row => loadedStudents.get(String(row.student_id))).filter(Boolean)
+            : clinicPrintGetClassStudents(cls.id);
+        students.forEach(student => {
+            if (!['재원', 'active'].includes(String(student.status || '재원'))) return;
             const studentId = String(student.id || '');
             if (!studentId || byStudent.has(studentId)) return;
             byStudent.set(studentId, {
@@ -300,14 +355,25 @@ async function clinicPrintRefreshClassAssignments(classId) {
 
 async function clinicPrintRefreshGradeClinicData(classId) {
     const grade = clinicPrintGetClassGrade(classId);
-    if (!grade || typeof api === 'undefined' || typeof api.get !== 'function') return false;
+    const key = String(classId);
+    if (!grade || typeof api === 'undefined' || typeof api.get !== 'function') {
+        clinicPrintGradeData.set(key, { status: 'error' });
+        return false;
+    }
+    clinicPrintGradeData.delete(key);
+    const range = clinicPrintGetGradeWindow(classId);
+    clinicPrintGradeData.set(key, { status: 'loading', ...range });
     try {
         const params = new URLSearchParams({
             class: String(classId || ''),
             grade,
-            from: AP_CLINIC_PRINT_ASSIGNMENT_FROM_DATE
+            ...range
         });
         const res = await api.get(`exam-sessions/by-grade?${params.toString()}`);
+        const tables = ['classes', 'class_students', 'students', 'assignments', 'sessions', 'wrong_answers', 'blueprints', 'exclusions'];
+        if (!res || res.success !== true || res.error || !tables.every(name => Array.isArray(res[name]))) {
+            throw new Error(res?.error || res?.message || '학년 전체 조회 응답을 확인할 수 없습니다.');
+        }
         clinicPrintMergeDbRows('classes', res.classes || []);
         clinicPrintMergeDbRows('class_students', res.class_students || []);
         clinicPrintMergeDbRows('students', res.students || []);
@@ -316,8 +382,10 @@ async function clinicPrintRefreshGradeClinicData(classId) {
         clinicPrintMergeDbRows('wrong_answers', res.wrong_answers || []);
         clinicPrintMergeDbRows('exam_blueprints', res.blueprints || []);
         clinicPrintMergeClassAssignmentExclusions(res.exclusions || []);
+        clinicPrintGradeData.set(key, { ...res, ...range, status: 'ready' });
         return true;
     } catch (e) {
+        clinicPrintGradeData.set(key, { ...range, status: 'error', error: String(e?.message || e) });
         console.warn('[clinic-print] grade clinic data refresh failed:', e);
         return false;
     }
@@ -361,12 +429,15 @@ async function clinicPrintDeleteExamGroup(classId, examKey) {
     }
 }
 
-function clinicPrintIsAssignmentFullyExcluded(classId, assignment) {
+function clinicPrintIsAssignmentFullyExcluded(classId, assignment, gradeData = null) {
     const assignmentId = String(assignment?.id || '').trim();
     if (!assignmentId) return false;
-    const studentIds = clinicPrintGetClassStudents(classId).map(student => String(student.id || '')).filter(Boolean);
+    const activeIds = gradeData?.status === 'ready' ? new Set(gradeData.students.map(row => String(row.id))) : null;
+    const studentIds = activeIds
+        ? gradeData.class_students.filter(row => String(row.class_id) === String(classId) && activeIds.has(String(row.student_id))).map(row => String(row.student_id || '')).filter(Boolean)
+        : clinicPrintGetClassStudents(classId).map(student => String(student.id || '')).filter(Boolean);
     if (!studentIds.length) return false;
-    const excludedIds = new Set((state.db.class_exam_assignment_exclusions || [])
+    const excludedIds = new Set((gradeData?.status === 'ready' ? gradeData.exclusions : (state.db.class_exam_assignment_exclusions || []))
         .filter(row => String(row.assignment_id || '') === assignmentId)
         .map(row => String(row.student_id || ''))
         .filter(Boolean));
@@ -382,10 +453,11 @@ function clinicPrintGetClassExamAssignments(classId) {
 
 function clinicPrintGetGradeExamAssignments(classId) {
     const classIds = new Set(clinicPrintGetGradeClasses(classId).map(cls => String(cls.id)));
-    return (state.db.class_exam_assignments || state.db.exam_assignments || [])
+    const loaded = clinicPrintGradeData.get(String(classId));
+    return (loaded?.status === 'ready' ? loaded.assignments : (state.db.class_exam_assignments || state.db.exam_assignments || []))
         .filter(row => classIds.has(String(row.class_id || '')))
-        .filter(row => !clinicPrintIsAssignmentFullyExcluded(row.class_id || '', row))
-        .filter(row => clinicPrintIsOnOrAfterFromDate(row.exam_date || row.created_at || row.updated_at));
+        .filter(row => !clinicPrintIsAssignmentFullyExcluded(row.class_id || '', row, loaded))
+        .filter(row => clinicPrintIsInGradeWindow(row, classId));
 }
 
 function clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFile, questionCount) {
@@ -412,13 +484,17 @@ function clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFi
     ) || null;
 }
 
-function clinicPrintEnsureExamGroup(grouped, source) {
+function clinicPrintEnsureExamGroup(grouped, source, options = {}) {
     const archiveFile = clinicPrintNormalizeArchiveFile(source.archiveFile || source.archive_file || '');
     const questionCount = Number(source.questionCount || source.question_count || 0);
     const examDate = source.examDate || source.exam_date || '';
     const examTitle = source.examTitle || source.exam_title || '시험명 없음';
-    const matched = clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFile, questionCount);
+    const matched = options.ignoreDate && archiveFile
+        ? Object.values(grouped).find(group => group.archiveFile === archiveFile &&
+            (!group.questionCount || !questionCount || group.questionCount === questionCount))
+        : clinicPrintGetMatchingExamGroup(grouped, examDate, examTitle, archiveFile, questionCount);
     if (matched) {
+        if (options.ignoreDate && String(examDate) > String(matched.examDate)) matched.examDate = examDate;
         if (!matched.archiveFile && archiveFile) matched.archiveFile = archiveFile;
         if (!Number(matched.questionCount || 0) && questionCount) matched.questionCount = questionCount;
         if (source.assignment) {
@@ -434,7 +510,8 @@ function clinicPrintEnsureExamGroup(grouped, source) {
         return matched;
     }
 
-    const key = clinicPrintMakeExamKey(examDate, examTitle, archiveFile, questionCount);
+    const key = clinicPrintMakeExamKey(options.ignoreDate ? '' : examDate,
+        options.ignoreDate && archiveFile ? '' : examTitle, archiveFile, questionCount);
     grouped[key] = {
         examKey: key,
         examTitle,
@@ -464,12 +541,15 @@ function clinicPrintGetClassExamGroups(classId, scope = 'class') {
             questionCount: Number(assignment.question_count || 0),
             assignment,
             classId: assignment.class_id || ''
-        });
+        }, { ignoreDate: isGradeScope });
     });
 
-    (state.db.exam_sessions || []).forEach(session => {
+    const loaded = clinicPrintGradeData.get(String(classId));
+    const sessions = isGradeScope && loaded?.status === 'ready' ? loaded.sessions : (state.db.exam_sessions || []);
+    sessions.forEach(session => {
         if (!studentIds.has(String(session.student_id))) return;
-        if (!clinicPrintIsOnOrAfterFromDate(session.exam_date || session.created_at || session.updated_at)) return;
+        if (isGradeScope ? !clinicPrintIsInGradeWindow(session, classId)
+            : !clinicPrintIsOnOrAfterFromDate(session.exam_date || session.created_at || session.updated_at)) return;
 
         const archiveFile = clinicPrintGetSessionArchiveFile(session);
         const questionCount = Number(session.question_count || 0);
@@ -480,10 +560,15 @@ function clinicPrintGetClassExamGroups(classId, scope = 'class') {
             questionCount,
             session,
             classId: session.class_id || ''
-        });
+        }, { ignoreDate: isGradeScope });
 
         group.sessions.push(session);
-        group.wrongCount += clinicPrintGetWrongIdsBySession(session.id).length;
+        group.wrongCount += clinicPrintGetWrongIdsBySession(session.id, isGradeScope ? classId : null).length;
+    });
+
+    if (isGradeScope) Object.values(grouped).forEach(group => {
+        group.sessions = clinicPrintDedupeLatestSessionByStudent(group.sessions);
+        group.wrongCount = group.sessions.reduce((total, session) => total + clinicPrintGetWrongIdsBySession(session.id, classId).length, 0);
     });
 
     return Object.values(grouped)
@@ -495,18 +580,20 @@ function clinicPrintGetSessionsForExamGroup(classId, examGroupKey) {
     const studentIds = new Set(clinicPrintGetClassStudents(classId).map(student => String(student.id)));
     const group = clinicPrintParseExamKey(examGroupKey);
 
-    return (state.db.exam_sessions || []).filter(session => {
+    const sessions = (state.db.exam_sessions || []).filter(session => {
         if (!studentIds.has(String(session.student_id))) return false;
+        if (!group.examDate && !clinicPrintIsInGradeWindow(session, classId)) return false;
         const key = clinicPrintMakeExamKey(session.exam_date, session.exam_title, clinicPrintGetSessionArchiveFile(session), Number(session.question_count || 0));
         const sessionQuestionCount = Number(session.question_count || 0);
         const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
         return key === examGroupKey || (
             !!group.archiveFile &&
-            String(session.exam_date || '') === group.examDate &&
+            (!group.examDate || String(session.exam_date || '') === group.examDate) &&
             String(clinicPrintGetSessionArchiveFile(session) || '') === String(group.archiveFile || '') &&
             countsCompatible
         );
     });
+    return group.examDate ? sessions : clinicPrintDedupeLatestSessionByStudent(sessions);
 }
 
 function clinicPrintGetGradeSessionsForExamGroup(classId, examGroupKey) {
@@ -514,13 +601,14 @@ function clinicPrintGetGradeSessionsForExamGroup(classId, examGroupKey) {
     const group = clinicPrintParseExamKey(examGroupKey);
     const groupArchive = clinicPrintNormalizeArchiveFile(group.archiveFile || '');
 
-    return (state.db.exam_sessions || []).filter(session => {
+    const loaded = clinicPrintGradeData.get(String(classId));
+    return (loaded?.status === 'ready' ? loaded.sessions : (state.db.exam_sessions || [])).filter(session => {
         if (!studentIds.has(String(session.student_id))) return false;
+        if (!clinicPrintIsInGradeWindow(session, classId)) return false;
         const sessionArchive = clinicPrintNormalizeArchiveFile(clinicPrintGetSessionArchiveFile(session));
         const sessionQuestionCount = Number(session.question_count || 0);
         const countsCompatible = !group.questionCount || !sessionQuestionCount || sessionQuestionCount === group.questionCount;
-        const dateCompatible = !group.examDate || !session.exam_date || String(session.exam_date || '') === String(group.examDate || '');
-        return !!groupArchive && sessionArchive === groupArchive && countsCompatible && dateCompatible;
+        return !!groupArchive && sessionArchive === groupArchive && countsCompatible;
     });
 }
 
@@ -545,8 +633,11 @@ function clinicPrintDedupeLatestSessionByStudent(sessions) {
     return [...byStudent.values()];
 }
 
-function clinicPrintGetWrongIdsBySession(sessionId) {
-    const rows = typeof apmsGetWrongAnswersForSession === 'function'
+function clinicPrintGetWrongIdsBySession(sessionId, gradeClassId = null) {
+    const loaded = gradeClassId == null ? null : clinicPrintGradeData.get(String(gradeClassId));
+    const rows = loaded?.status === 'ready'
+        ? loaded.wrong_answers.filter(row => String(row.session_id) === String(sessionId))
+        : typeof apmsGetWrongAnswersForSession === 'function'
         ? apmsGetWrongAnswersForSession(sessionId)
         : (state.db.wrong_answers || []).filter(row => String(row.session_id) === String(sessionId));
 
@@ -615,7 +706,8 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
             const archiveFile = clinicPrintGetSessionArchiveFile(session);
             if (!archiveFile) return;
 
-            const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
+            const wrongItems = clinicPrintGetWrongIdsBySession(session.id,
+                clinicPrintParseExamKey(examKey).examDate ? null : classId).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
                 const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
@@ -683,10 +775,28 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
     const studentMap = new Map(gradeStudents.map(student => [String(student.id), student]));
     const rowsByStudent = {};
     const cohortCounts = {};
+    const sourceCohorts = new Map();
 
     (selectedExamKeys || []).forEach(examKey => {
         const sessions = clinicPrintDedupeLatestSessionByStudent(clinicPrintGetGradeSessionsForExamGroup(classId, examKey));
         cohortCounts[examKey] = sessions.length;
+
+        // 조립 시험 등 서로 다른 문제지가 같은 원문 문항을 공유할 수 있다.
+        // 오답이 없는 응시자도 포함해 원문 문항별 응시 학생의 합집합을 센다.
+        if (sessions.length) {
+            const representative = sessions[0];
+            const archiveFile = clinicPrintGetSessionArchiveFile(representative);
+            const questionCount = Math.max(clinicPrintParseExamKey(examKey).questionCount,
+                ...sessions.map(session => Number(session.question_count || 0)));
+            const cohortIds = sessions.map(session => String(session.student_id || '')).filter(id => studentMap.has(id));
+            for (let questionNo = 1; questionNo <= questionCount; questionNo++) {
+                const bp = clinicPrintFindBlueprint(representative, questionNo);
+                const identity = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
+                const key = clinicPrintGetWrongItemSourceKey({ archiveFile, questionNo, ...identity });
+                if (!sourceCohorts.has(key)) sourceCohorts.set(key, new Set());
+                for (const id of cohortIds) sourceCohorts.get(key).add(id);
+            }
+        }
 
         sessions.forEach(session => {
             const studentId = String(session.student_id || '');
@@ -696,7 +806,7 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
             const archiveFile = clinicPrintGetSessionArchiveFile(session);
             if (!archiveFile) return;
 
-            const wrongItems = clinicPrintGetWrongIdsBySession(session.id).map(questionNo => {
+            const wrongItems = clinicPrintGetWrongIdsBySession(session.id, classId).map(questionNo => {
                 const bp = clinicPrintFindBlueprint(session, questionNo);
                 const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
                 return {
@@ -733,6 +843,7 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
 
     return {
         cohortCounts,
+        sourceCohorts,
         studentWrongItems: Object.values(rowsByStudent)
             .map(row => ({
                 ...row,
@@ -749,7 +860,7 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
     };
 }
 
-function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {}) {
+function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {}, sourceCohorts = null) {
     const map = {};
 
     (studentWrongItems || []).forEach(student => {
@@ -794,9 +905,11 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
     });
 
     return Object.values(map).map(item => {
-        const total = Number(item.totalCount || 0);
+        const total = sourceCohorts?.has(item.itemKey)
+            ? sourceCohorts.get(item.itemKey).size : Number(item.totalCount || 0);
         return {
             ...item,
+            totalCount: total,
             correctRate: total ? Math.max(0, Math.min(100, Math.round(((total - Number(item.wrongCount || 0)) / total) * 100))) : null
         };
     }).sort((a, b) => {
@@ -825,7 +938,7 @@ function clinicPrintBuildPayload(classId, config) {
         ? clinicPrintBuildGradeWrongSource(classId, selectedExamKeys)
         : { cohortCounts: {}, studentWrongItems: [] };
     const gradeWrongItems = mode === 'grade'
-        ? clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts)
+        ? clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts, gradeSource.sourceCohorts)
         : [];
     const examMap = new Map(clinicPrintGetClassExamGroups(classId, mode === 'grade' ? 'grade' : 'class').map(group => [group.examKey, group]));
     const today = new Date().toLocaleDateString('sv-SE');
@@ -840,8 +953,8 @@ function clinicPrintBuildPayload(classId, config) {
         gradeName,
         range: {
             type: selectedExamKeys.length > 1 ? 'multi_exam' : 'single_exam',
-            from: '',
-            to: ''
+            from: mode === 'grade' ? clinicPrintGetGradeWindow(classId).from : '',
+            to: mode === 'grade' ? clinicPrintGetGradeWindow(classId).to : ''
         },
         options: {
             groupByStudent: mode === 'student',
@@ -1065,7 +1178,7 @@ function clinicPrintSwitchMode(classId) {
 function clinicPrintGetScopeWrongItems(classId, selectedExamKeys, scope) {
     if (scope === 'grade') {
         const gradeSource = clinicPrintBuildGradeWrongSource(classId, selectedExamKeys);
-        return clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts);
+        return clinicPrintBuildClassWrongItems(gradeSource.studentWrongItems, gradeSource.cohortCounts, gradeSource.sourceCohorts);
     }
     const allStudentIds = clinicPrintGetClassStudents(classId).map(student => String(student.id));
     const studentWrongItems = clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, allStudentIds, { excludeEmpty: true });
@@ -1135,8 +1248,10 @@ function clinicPrintFilterTypeItems(items, rateRule) {
             return rateRule === 'gte50' ? rate > 50 : rate <= 50;
         })
         .sort((a, b) =>
-            Number(b.correctRate || 0) - Number(a.correctRate || 0) ||
             Number(b.wrongCount || 0) - Number(a.wrongCount || 0) ||
+            (rateRule === 'gte50' || rateRule === 'gte75'
+                ? Number(b.correctRate || 0) - Number(a.correctRate || 0)
+                : Number(a.correctRate || 0) - Number(b.correctRate || 0)) ||
             Number(a.questionNo || 0) - Number(b.questionNo || 0)
         );
 }
@@ -1231,6 +1346,12 @@ function clinicPrintRenderTypePanel(classId) {
     const scopeLabel = scope === 'grade' ? (clinicPrintGetClassGrade(classId) || '학년') + ' 전체' : '현재 반';
 
     const emptyBox = msg => `<div class="clinic-print-empty">${clinicPrintEscapeHtml(msg)}</div>`;
+
+    if (scope === 'grade' && clinicPrintGradeDataUnavailable(classId)) {
+        root.innerHTML = emptyBox(clinicPrintGetGradeDataMessage(classId));
+        if (summaryEl) summaryEl.textContent = clinicPrintGetGradeDataMessage(classId);
+        return;
+    }
 
     if (!selectedExamKeys.length) {
         root.innerHTML = emptyBox('시험을 선택하세요.');
@@ -1344,6 +1465,7 @@ function clinicPrintComputeScopeUnits(classId) {
 function clinicPrintRenderUnitMode(classId, scopeLabel) {
     const root = document.getElementById('clinic-print-type-result');
     if (!root) return;
+
     const safeClassId = clinicPrintEscapeJsString(classId);
     const activeCls = rate => rate === clinicPrintTypeState.unitRate ? ' clinic-print-rate-btn--active' : '';
     root.innerHTML = `
@@ -1515,6 +1637,13 @@ function clinicPrintUpdateStudentList(classId) {
     const countEl = document.getElementById('clinic-print-summary');
     if (!root) return;
 
+    if (scope === 'grade' && clinicPrintGradeDataUnavailable(classId)) {
+        root.innerHTML = `<div class="clinic-print-empty">${clinicPrintEscapeHtml(clinicPrintGetGradeDataMessage(classId))}</div>`;
+        if (countEl) countEl.textContent = clinicPrintGetGradeDataMessage(classId);
+        clinicPrintSchedulePreviewPush(classId);
+        return;
+    }
+
     if (!selectedExamKeys.length) {
         root.innerHTML = '<div class="clinic-print-empty">시험을 선택하세요.</div>';
         if (countEl && mode !== 'type') countEl.textContent = '시험을 선택하세요.';
@@ -1566,6 +1695,10 @@ function clinicPrintPreview(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
 
+    if (clinicPrintGetDeliveryScope(mode) === 'grade' && clinicPrintGradeDataUnavailable(classId)) {
+        toast(clinicPrintGetGradeDataMessage(classId), 'warn');
+        return;
+    }
     if (!selectedExamKeys.length) {
         toast('출력할 시험을 선택하세요.', 'warn');
         return;
@@ -1615,6 +1748,11 @@ async function clinicPrintSubmit(classId) {
     const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
     const modeEl = document.querySelector('input[name="clinic-print-mode"]:checked');
     const mode = modeEl?.value || 'student';
+
+    if (clinicPrintGetDeliveryScope(mode) === 'grade' && clinicPrintGradeDataUnavailable(classId)) {
+        toast(clinicPrintGetGradeDataMessage(classId), 'warn');
+        return;
+    }
 
     if (!selectedExamKeys.length) {
         toast('출력할 시험을 선택하세요.', 'warn');
@@ -1834,16 +1972,20 @@ function clinicPrintSetExamPeriodFilter(classId, period) {
 }
 
 function clinicPrintRenderExamListHtml(classId, scope = 'class') {
+    if (scope === 'grade' && clinicPrintGradeDataUnavailable(classId)) {
+        return `<div class="clinic-print-empty">${clinicPrintEscapeHtml(clinicPrintGetGradeDataMessage(classId))}</div>`;
+    }
     const period = clinicPrintGetExamPeriodFilter(classId);
     const year = clinicPrintGetExamYearFilter(classId);
     const groups = clinicPrintGetClassExamGroups(classId, scope)
         .filter(group => (period === 'all' || clinicPrintGetExamPeriod(group) === period) && (year === 'all' || clinicPrintGetExamYear(group) === year));
     const printableGroups = groups.filter(group => group.printable);
     const currentClassPrintableGroups = printableGroups.filter(group => (group.sourceClassIds || []).map(String).includes(String(classId)));
-    const initialSource = scope === 'grade' && !currentClassPrintableGroups.length ? printableGroups : (currentClassPrintableGroups.length ? currentClassPrintableGroups : printableGroups);
+    const initialSource = scope === 'grade' ? printableGroups : (currentClassPrintableGroups.length ? currentClassPrintableGroups : printableGroups);
     const groupKeys = new Set(groups.map(group => group.examKey));
     const currentChecked = new Set(clinicPrintGetCheckedValues('clinic-print-exam').filter(key => groupKeys.has(key)));
-    const initialKeys = currentChecked.size ? currentChecked : new Set(initialSource.length ? [initialSource[0].examKey] : []);
+    const initialKeys = currentChecked.size ? currentChecked : new Set(scope === 'grade'
+        ? initialSource.map(group => group.examKey) : (initialSource.length ? [initialSource[0].examKey] : []));
     const safeClassIdForJs = clinicPrintEscapeJsString(classId);
 
     if (!groups.length) return '<div class="clinic-print-empty">선택한 기간의 시험이 없습니다. 다른 기간 또는 전체를 선택하세요.</div>';
@@ -1853,8 +1995,9 @@ function clinicPrintRenderExamListHtml(classId, scope = 'class') {
         const checked = initialKeys.has(group.examKey) ? 'checked' : '';
         const safeExamKey = clinicPrintEscapeJsString(group.examKey || '');
         const displayTitle = clinicPrintGetExamGroupDisplayTitle(group);
-        const currentClassAssignment = (group.assignments || [])
-            .find(row => String(row.class_id || '') === String(classId || '') && row.can_manage !== false);
+        // 학년 행은 여러 반/날짜를 합친 통계다. 개별 시험 삭제는 반 범위에서 처리한다.
+        const currentClassAssignment = scope === 'class' ? (group.assignments || [])
+            .find(row => String(row.class_id || '') === String(classId || '') && row.can_manage !== false) : null;
         const deleteDisplay = currentClassAssignment ? '' : ' style="--clinic-print-delete-display:none;"';
         const status = group.printable
             ? `${group.questionCount || '-'}문항 · 제출 ${group.sessions.length}명 · 오답 ${group.wrongCount}문항`
@@ -1877,6 +2020,13 @@ function clinicPrintUpdateExamList(classId) {
     const root = document.getElementById('clinic-print-exam-list');
     if (!root) return;
     root.innerHTML = clinicPrintRenderExamListHtml(classId, clinicPrintGetExamListScope());
+    const gradeWindow = document.getElementById('clinic-print-grade-window');
+    if (gradeWindow) {
+        gradeWindow.hidden = clinicPrintGetExamListScope() !== 'grade';
+        gradeWindow.innerHTML = clinicPrintEscapeHtml(clinicPrintGetGradeDataMessage(classId)) +
+            (clinicPrintGradeData.get(String(classId))?.status === 'error'
+                ? ` <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRetryGradeData('${clinicPrintEscapeJsString(classId)}')">다시 불러오기</button>` : '');
+    }
     const filters = document.getElementById('clinic-print-exam-period-filters');
     if (filters) filters.innerHTML = clinicPrintRenderExamPeriodFilters(classId, clinicPrintGetExamListScope());
     const year = document.getElementById('clinic-print-exam-year');
@@ -1931,6 +2081,7 @@ async function openClinicPrintCenter(classId, options = {}) {
             </section>
 
             <section class="clinic-print-section">
+                <div id="clinic-print-grade-window" class="clinic-print-note" aria-live="polite" hidden></div>
                 <div class="clinic-print-period-heading">
                     <div class="clinic-print-section-title">학기별 시험 선택</div>
                     <select id="clinic-print-exam-year" aria-label="시험 연도" onchange="clinicPrintSetExamYearFilter('${safeClassIdForJs}',this.value)">${clinicPrintRenderExamYearOptions(classId)}</select>
