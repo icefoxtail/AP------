@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "GEUMDANG_H1_2MID_REVIEW1_CHECKPOINT_v1",
+  "exam": "26_금당고_2학기_중간_고1_기출",
+  "checkpoint": "04_q16_q20",
+  "baseMainSha": "52497b249a35e2c6ea4d90c7347011ccfc6584c3",
+  "parentReviewCommit": "0c0ffbda81555399276ef8403e0aebf58b6e04fc",
+  "branch": "review/high/h1/26-geumdang-2mid-r1-20260930",
+  "denominator": {
+    "examQuestions": 20,
+    "checkpointQuestions": 5,
+    "cumulativeReviewed": 20
+  },
+  "reviewedQuestionIds": [
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "sourceDirectRead": "PASS",
+  "independentMath": {
+    "q16": {
+      "answer": "②",
+      "result": "PASS",
+      "decisive": "2^n-n-1=247 gives n=8; residue 1 mod 4 forbidden by 15; max set sum 624"
+    },
+    "q17": {
+      "answer": "⑤",
+      "result": "PASS",
+      "decisive": "s+t=4/3 and PQ^2=5+5(s-t)^2 -> s=t=2/3 -> m=1/2,n=1/3 ->25"
+    },
+    "q18": {
+      "answer": "2",
+      "result": "PASS",
+      "decisive": "C0(-2,1)->C1(1,3)->C(3,1); |c+1|=5; positive y-intercept selects c=4 ->2"
+    },
+    "q19": {
+      "answer": "336",
+      "result": "PASS",
+      "decisive": "endpoint pairs (1,5),(2,6),(3,7); each contributes 28i+56; total336"
+    },
+    "q20": {
+      "answer": "12",
+      "result": "PASS",
+      "decisive": "g(3)=1 -> k=10 or -20; g4*g9=4 selects 10; g=2 on (3,8) union (8,12); max a=12"
+    }
+  },
+  "solutionCompare": {
+    "q16": "PASS",
+    "q17": "PASS",
+    "q18": "PASS",
+    "q19": "PASS",
+    "q20": "PASS",
+    "curriculumOutOfScopeCount": 0
+  },
+  "visualDecision": {
+    "q16": {
+      "requirement": "VISUAL_EXEMPT",
+      "action": "NONE"
+    },
+    "q17": {
+      "requirement": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_PENDING_OBSERVED_PARITY"
+    },
+    "q18": {
+      "requirement": "VISUAL_REQUIRED",
+      "action": "ADD"
+    },
+    "q19": {
+      "requirement": "VISUAL_EXEMPT",
+      "action": "NONE"
+    },
+    "q20": {
+      "requirement": "VISUAL_REQUIRED",
+      "action": "ADD"
+    }
+  },
+  "expectedFactsFrozenBeforeBuild": true,
+  "pythonCoordinateBuild": {
+    "q18": true,
+    "q20": true
+  },
+  "newSvgSha256": {
+    "q18": "sha256:987b38827a0d3eff3105caecd753bc2154cb9f7eac6a75628bb9b5bb2be9b3c7",
+    "q20": "sha256:c34ede22bd1393b84c947305014065f905fe174a5c6ae18bc658a6d1b4e39e89"
+  },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "reviewStatus": "REVIEW1_20_OF_20_PENDING_OBSERVED_PARITY",
+  "itemHoldCount": 0,
+  "nextStart": "FINAL_REVIEW1_CLOSURE"
+}
