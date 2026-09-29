@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="330" viewBox="0 0 680 330" role="img" aria-labelledby="title desc">
+  <title id="title">조건 p의 진리집합과 q, r의 포함 관계</title>
+  <desc id="desc">P is the closed interval [3,5]. For p implies q, (a−4,∞) must contain P, so a&lt;7. For p implies r to be false, (-∞,b+2) must end at or before 5, so b≤3.</desc>
+  <defs><marker id="left-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="1" refY="5" orient="auto"><path d="M9,1 L1,5 L9,9" fill="none" stroke="#294f64" stroke-width="1.8"/></marker><marker id="right-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#294f64" stroke-width="1.8"/></marker></defs>
+  <rect width="680" height="330" rx="16" fill="#fff"/>
+  <g font-family="sans-serif" fill="#17212b">
+    <text x="28" y="34" font-size="16" font-weight="700">(1) p→q가 참</text>
+    <text x="28" y="178" font-size="16" font-weight="700">(2) p→r가 거짓</text>
+    <text x="340" y="312" text-anchor="middle" font-size="17" font-weight="700">a &lt; 7,  b ≤ 3</text>
+    <text x="116" y="96" font-size="16" font-weight="700" fill="#28718e">P: [3,5]</text>
+    <text x="116" y="132" font-size="16" font-weight="700" fill="#54845c">Q: (a−4,∞)</text>
+    <text x="116" y="244" font-size="16" font-weight="700" fill="#28718e">P: [3,5]</text>
+    <text x="116" y="280" font-size="16" font-weight="700" fill="#a85e37">R: (−∞,b+2)</text>
+    <text x="280" y="154" text-anchor="middle" font-size="13" fill="#526873">a−4</text>
+    <text x="493" y="264" text-anchor="start" font-size="13" fill="#526873">b+2</text>
+  </g>
+  <line x1="300" y1="96" x2="470" y2="96" stroke="#28718e" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="300" cy="96" r="8" fill="#28718e" stroke="#28718e" stroke-width="2"/>
+  <circle cx="470" cy="96" r="8" fill="#28718e" stroke="#28718e" stroke-width="2"/>
+  <line x1="280" y1="132" x2="590" y2="132" stroke="#54845c" stroke-width="7" stroke-linecap="round" marker-end="url(#right-arrow)"/>
+  <circle cx="280" cy="132" r="8" fill="#fff" stroke="#54845c" stroke-width="3"/>
+  <line x1="300" y1="244" x2="470" y2="244" stroke="#28718e" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="300" cy="244" r="8" fill="#28718e" stroke="#28718e" stroke-width="2"/>
+  <circle cx="470" cy="244" r="8" fill="#28718e" stroke="#28718e" stroke-width="2"/>
+  <line x1="180" y1="280" x2="470" y2="280" stroke="#a85e37" stroke-width="7" stroke-linecap="round" marker-start="url(#left-arrow)"/>
+  <circle cx="470" cy="280" r="8" fill="#fff" stroke="#a85e37" stroke-width="3"/>
+  <g stroke="#7d8d95" stroke-width="1.2" stroke-dasharray="4 4">
+    <line x1="300" y1="78" x2="300" y2="146"/><line x1="470" y1="78" x2="470" y2="146"/>
+    <line x1="300" y1="226" x2="300" y2="294"/><line x1="470" y1="226" x2="470" y2="294"/>
+  </g>
+  <g font-family="sans-serif" font-size="14" fill="#17212b">
+    <text x="300" y="70" text-anchor="middle">3</text><text x="470" y="70" text-anchor="middle">5</text>
+    <text x="300" y="218" text-anchor="middle">3</text><text x="470" y="218" text-anchor="middle">5</text>
+  </g>
+</svg>

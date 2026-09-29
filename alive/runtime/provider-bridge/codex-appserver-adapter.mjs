@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
@@ -13,6 +14,9 @@ const ROOT = process.cwd();
 const PHASES = ['U1', 'U2', 'U3'];
 const HISTORY_RPC_TIMEOUT_MS = 1000;
 const JOB = process.argv[process.argv.indexOf('--job') + 1];
+const MODEL = process.env.APMATH_CODEX_MODEL || 'gpt-5.6-luna';
+const REASONING_EFFORT = process.env.APMATH_CODEX_REASONING_EFFORT || 'xhigh';
+const MODEL_ROUTE = `${MODEL}/${REASONING_EFFORT}`;
 const stateRelative = JOB ? `alive/runtime/provider-bridge/${JOB}/codex-appserver-state.json` : null;
 const statePath = stateRelative ? path.resolve(ROOT, stateRelative.replaceAll('/', path.sep)) : null;
 const stateDir = statePath ? path.dirname(statePath) : null;
@@ -23,24 +27,127 @@ export function nativeImageInput(url) {
   return { type: 'image', url, detail: 'original' };
 }
 
-// Only traverse the phase-authorized visual lanes, never arbitrary metadata.
-export function buildNativeTurnInput(prompt, packet) {
-  const urls = new Set();
+export function bindU2DefectsToPacketAssetSha(packet, defects) {
+  const bySha = new Map();
+  for (const row of packet?.payload || []) {
+    const uid = row?.questionUid;
+    if (typeof uid !== 'string') continue;
+    const assets = [row.artifact, ...(Array.isArray(row.problemAssets) ? row.problemAssets : [])];
+    for (const asset of assets) for (const key of ['sha256', 'nativeSha256']) {
+      const sha = asset?.[key];
+      if (typeof sha !== 'string' || !/^sha256:[0-9a-f]{64}$/.test(sha)) continue;
+      const matches = bySha.get(sha) || new Set();
+      matches.add(uid);
+      bySha.set(sha, matches);
+    }
+  }
+  return defects.map(defect => {
+    if (typeof defect?.questionUid === 'string') return defect;
+    const matches = bySha.get(defect?.subjectSha);
+    if (matches?.size !== 1) return defect;
+    const questionUid = [...matches][0];
+    return { ...defect, questionUid, subjectShaBinding: { status: 'PASS', matchedField: 'artifact.sha256|nativeSha256', questionUid } };
+  });
+}
+
+let sharp;
+function loadSharp() {
+  if (!sharp) {
+    const require = createRequire(process.env.APMATH_NODE_MODULES
+      ? path.join(process.env.APMATH_NODE_MODULES, '..', 'package.json') : import.meta.url);
+    sharp = require('sharp');
+  }
+  return sharp;
+}
+
+async function optimizeNativeImage(record) {
+  const match = record.url.match(/^data:image\/(png|jpe?g|webp);base64,(.*)$/s);
+  if (!match) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: null, transferBytes: null };
+  const original = Buffer.from(match[2], 'base64');
+  const renderWitness = /(?:^|\/)pipeline-renders\//.test(record.path || '');
+  const nativeSvg = path.extname(record.path || '').toLowerCase() === '.svg';
+  if (original.length <= 150_000 && !renderWitness && !nativeSvg) return { ...record, transferUrl: record.url, transferMimeType: record.mimeType, originalBytes: original.length, transferBytes: original.length };
+  const image = loadSharp()(original, { limitInputPixels: 40_000_000 });
+  const metadata = await image.metadata();
+  // SVG-native PNGs may carry a transparent canvas. Codex displays those
+  // alpha pixels as black in some native image paths, so flatten them to the
+  // white canvas used by the archive renderer before transfer encoding.
+  const flattened = metadata.hasAlpha ? await loadSharp()(original, { limitInputPixels: 40_000_000 }).flatten({ background: '#ffffff' }).png().toBuffer() : original;
+  const flattenedUrl = metadata.hasAlpha ? `data:image/png;base64,${flattened.toString('base64')}` : record.url;
+  const transferBase = metadata.hasAlpha ? flattened : original;
+  if (transferBase.length <= 150_000 && !renderWitness) return { ...record, transferUrl: flattenedUrl, transferMimeType: 'image/png', originalBytes: original.length, transferBytes: transferBase.length };
+  const pipeline = loadSharp()(transferBase, { limitInputPixels: 40_000_000 });
+  const optimized = renderWitness
+    ? await pipeline.resize({ width: 960, height: 800, fit: 'inside', withoutEnlargement: true }).jpeg({ quality: 75, mozjpeg: true }).toBuffer()
+    : await pipeline.jpeg({ quality: 85, mozjpeg: true }).toBuffer();
+  if (optimized.length >= transferBase.length) return { ...record, transferUrl: flattenedUrl, transferMimeType: metadata.hasAlpha ? 'image/png' : record.mimeType, originalBytes: original.length, transferBytes: transferBase.length };
+  return { ...record, transferUrl: `data:image/jpeg;base64,${optimized.toString('base64')}`, transferMimeType: 'image/jpeg', originalBytes: original.length, transferBytes: optimized.length };
+}
+
+function phaseImageLanes(packet) {
+  const records = [];
   const collect = value => {
     if (!value || typeof value !== 'object') return;
-    if (typeof value.dataUrl === 'string') urls.add(value.dataUrl);
+    if (typeof value.dataUrl === 'string' && value.dataUrl.startsWith('data:image/')) {
+      if (!records.some(record => record.url === value.dataUrl)) records.push({
+        index: records.length,
+        url: value.dataUrl,
+        path: typeof value.path === 'string' ? value.path : null,
+        sha256: typeof value.sha256 === 'string' ? value.sha256 : null,
+        mimeType: typeof value.mimeType === 'string' ? value.mimeType : null,
+      });
+    }
     if (Array.isArray(value)) value.forEach(collect);
-    else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef') collect(child);
+    else for (const [key, child] of Object.entries(value)) if (key !== 'sourceRef' && key !== 'dataUrl') collect(child);
   };
   for (const row of Array.isArray(packet.payload) ? packet.payload : [packet.payload]) {
     if (packet.phase === 'U1') { collect(row.problemAssets); collect(row.sourcePixels); }
     if (packet.phase === 'U2') { collect(row.artifact); collect(row.renderWitnesses); }
     if (packet.phase === 'U3') {
       collect(row.currentQuestion?.problemAssets);
-      collect(row.renderWitnesses);
+      // U3 audits the student solution. The full six-case render matrix is
+      // already hash-bound to the work batch; attach only the desktop solution
+      // witness per item, which is the view needed for item-level readability.
+      for (const witness of (row.renderWitnesses || []).filter(witness => witness.mode === 'solution'
+        && witness.viewportProfile === 'desktop'
+        && !/-b\d+-s\d+\.png$/i.test(witness.screenshot?.path || ''))) collect(witness.screenshot);
     }
   }
-  return [{ type: 'text', text: prompt }, ...[...urls].map(nativeImageInput)];
+  return records;
+}
+
+function promptPacketWithoutImageBytes(value, imageIndexByUrl) {
+  if (Array.isArray(value)) return value.map(item => promptPacketWithoutImageBytes(item, imageIndexByUrl));
+  if (!value || typeof value !== 'object') return value;
+  const result = {};
+  for (const [key, child] of Object.entries(value)) {
+    if (key === 'dataUrl') {
+      const imageInputIndex = imageIndexByUrl.get(child);
+      if (imageInputIndex !== undefined) result.nativeImageInputIndex = imageInputIndex;
+      else result.nativeImageInputOmitted = true;
+      continue;
+    }
+    result[key] = promptPacketWithoutImageBytes(child, imageIndexByUrl);
+  }
+  return result;
+}
+
+function compactPromptText(prompt, packet, images) {
+  if (typeof prompt !== 'string' || !images.length) return prompt;
+  let parsed;
+  try { parsed = JSON.parse(prompt); } catch { return prompt; }
+  if (!parsed || typeof parsed !== 'object' || !Object.hasOwn(parsed, 'packet')) return prompt;
+  const imageIndexByUrl = new Map(images.map(record => [record.url, record.index]));
+  parsed.packet = promptPacketWithoutImageBytes(parsed.packet, imageIndexByUrl);
+  parsed.nativeImageInputs = images.map(({ index, path, sha256, mimeType, transferMimeType, originalBytes, transferBytes }) => ({ index, path, sha256, mimeType, transferMimeType, originalBytes, transferBytes }));
+  return JSON.stringify(parsed);
+}
+
+// Only traverse the phase-authorized visual lanes, never arbitrary metadata.
+export async function buildNativeTurnInput(prompt, packet) {
+  const images = await Promise.all(phaseImageLanes(packet).map(optimizeNativeImage));
+  const compactPrompt = compactPromptText(prompt, packet, images);
+  return [{ type: 'text', text: compactPrompt }, ...images.map(image => nativeImageInput(image.transferUrl))];
 }
 
 const readStdin = () => new Promise((resolve, reject) => {
@@ -118,7 +225,7 @@ class AppServerClient {
 }
 
 const threadParams = (phase, developerInstructions) => ({
-  model: 'gpt-5.6-luna',
+  model: MODEL,
   cwd: ROOT,
   ephemeral: true,
   approvalPolicy: 'never',
@@ -135,6 +242,10 @@ async function daemonMain() {
   const app = new AppServerClient();
   await app.request('initialize', { clientInfo: { name: 'apmath-codex-provider-bridge', version: '1.0.0' }, capabilities: { experimentalApi: true } });
   app.proc.stdin.write(`${JSON.stringify({ jsonrpc: '2.0', method: 'initialized', params: {} })}\n`);
+  const catalog = await app.request('model/list', { limit: 100, includeHidden: true });
+  const model = (catalog.data || []).find(row => row.model === MODEL || row.id === MODEL);
+  const supportedEfforts = (model?.supportedReasoningEfforts || []).map(row => typeof row === 'string' ? row : row.reasoningEffort);
+  if (!model || !supportedEfforts.includes(REASONING_EFFORT)) throw new Error(`CODEX_APPSERVER_MODEL_EFFORT_UNAVAILABLE:${MODEL_ROUTE}`);
   const priorState = fs.existsSync(statePath) ? readState() : null;
   const legacyBootstrap = priorState && !priorState.adapterVersion ? { control: priorState.control || null, contexts: priorState.contexts || null, pid: priorState.pid || null, startedAt: priorState.startedAt || null } : priorState?.legacyBootstrap || null;
   const runtime = {
@@ -143,7 +254,7 @@ async function daemonMain() {
       adapterVersion: 'APMATH_CODEX_APPSERVER_ADAPTER_v2',
       job: JOB,
       provider: 'CodexAppServer',
-      model: 'gpt-5.6-luna/xhigh',
+      model: MODEL_ROUTE,
       pid: process.pid,
       launches: priorState?.launches || {},
       ...(legacyBootstrap ? { legacyBootstrap } : {})
@@ -211,12 +322,13 @@ async function handleDaemonRequest(runtime, request) {
   const threadId = context.threadId;
   const turnResponse = await runtime.app.request('turn/start', {
     threadId,
-    model: 'gpt-5.6-luna',
-    input: buildNativeTurnInput(request.prompt, request.packet),
+    model: MODEL,
+    effort: REASONING_EFFORT,
+    input: await buildNativeTurnInput(request.prompt, request.packet),
     outputSchema: AUDITOR_OUTPUT_SCHEMA,
     approvalPolicy: 'never',
     sandboxPolicy: { type: 'readOnly', networkAccess: false },
-    collaborationMode: { mode: 'default', settings: { model: 'gpt-5.6-luna', developer_instructions: null } }
+    collaborationMode: { mode: 'default', settings: { model: MODEL, developer_instructions: null } }
   });
   const turn = turnFromStartResponse(turnResponse);
   if (!turn?.id) throw new Error('CODEX_APPSERVER_TURN_ID_MISSING');
@@ -265,7 +377,8 @@ async function handleDaemonRequest(runtime, request) {
   const output = JSON.parse(text.slice(start, end + 1));
   const evidence = parseJsonObjectItems(output.evidence, 'evidence');
   const defects = parseJsonObjectItems(output.defects, 'defects');
-  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: launch.control.id, phase: request.phase, sessionId: context.sessionId, contextId: context.contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects };
+  const scopedDefects = request.phase === 'U2' ? bindU2DefectsToPacketAssetSha(request.packet, defects) : defects;
+  return { schemaVersion: 'APMATH_PROVIDER_ATTESTATION_BRIDGE_v1', operation: 'INVOKE_STATELESS_AUDITOR_PHASE', status: 'COMPLETED', inputSha: request.inputSha, packetSha: request.packet.packetSha, externalTaskId: launch.control.id, phase: request.phase, sessionId: context.sessionId, contextId: context.contextId, providerInvocationId: turnId, inputVisibilityProfile: request.packet.inputVisibilityProfile, priorReviewVisibility: request.packet.priorReviewVisibility, subagentToolsEnabled: false, usedTokens: 'NOT_AVAILABLE', evidence, defects: scopedDefects };
 }
 
 function callDaemon(request) {
