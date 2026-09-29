@@ -39,6 +39,36 @@ CURRENT CREATE receipt에는 반드시 `solutionRewrite=FULL_ALL_QUESTIONS`와 `
 
 ---
 
+## CURRENT — QUESTION-LEVEL HOLD ONLY / EXAM HOLD FORBIDDEN
+
+형님 2026-09-29 명시 지시를 HARD RULE로 적용한다. CREATE/REVIEW에서 발견된 불확실성이나 결함의 HOLD 단위는 **항상 개별 문항 `questionUid/qid`**다. **시험지 전체 HOLD·BLOCK·격리는 절대 금지**한다.
+
+`EXAM FLOWS / ITEM HOLDS TRAVEL / FINAL PUBLISH REQUIRES itemHoldCount=0`을 고정한다.
+
+금지 상태/행동:
+- `EXAM_HOLD`, `CREATE_BLOCKED`, `REVIEW1_BLOCKED`, `REVIEW2_BLOCKED`
+- 시험지 전체 `SOURCE_REVIEW`
+- 문항 결함 하나 이상을 이유로 시험지 branch 전체를 quarantine하고 다음 REVIEW 진입을 막는 행위
+- CREATE의 1차 판단을 최종 source/math 판정처럼 고정하는 행위
+
+허용되는 미해결 상태는 문항별 `ITEM_HOLD`뿐이다. reason code는 `SOURCE_HOLD`, `MATH_HOLD`, `ENGINE_CAPABILITY_BLOCK`, `SOURCE_ASSET_MISSING` 등 실제 원인을 기록한다. visual-only 결함은 기존 SVG NO-HOLD 규칙대로 가능한 경우 같은 단계에서 repair한다.
+
+단계 전이:
+- CREATE: 해결 가능한 결함은 즉시 수정한다. 해결 불가 문항만 item hold로 남기고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다.
+- REVIEW1: CREATE의 hold 결론을 신뢰하지 않고 전체 문항과 held item을 처음부터 독립 검수한다. 해결되면 hold를 제거하고, 남으면 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘긴다.
+- REVIEW2: 다시 독립 재판정한다. 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`로 보낸다. 시험지 전체 HOLD를 만들지 않는다.
+- BATCH/FINAL: item hold가 남은 시험지를 그 실행에서 건너뛰되 다른 시험지는 계속 처리한다. 해당 시험지는 item recovery가 끝나 `itemHoldCount=0`이 되면 `READY_FOR_COMMIT`으로 승격한다.
+- authority/connector/Git write 실패는 콘텐츠 HOLD가 아니라 `AUTHORITY_WRITE_PENDING` 같은 운영 상태다.
+
+각 item hold 최소 기록: `questionUid/qid`, `reason`, `observedEvidence`, `unresolvedPoint`, `nextRequiredEvidenceOrCapability`, `createdStage`, `lastReviewedStage`.
+
+CURRENT full-solution-rewrite와의 결합:
+- item hold가 0이면 기존 `solutionRewrite=FULL_ALL_QUESTIONS`, `solutionRewriteCount=N/N`을 그대로 사용한다.
+- item hold가 있으면 held item 때문에 시험지 전체 CREATE를 실패시키지 않는다. `solutionRewriteAttempted=N/N`, `solutionRewriteResolved=(N-H)/N`, `itemHoldQuestionIds=[...]`를 기록하고 다음 REVIEW로 진행한다.
+- REVIEW1/2는 이 명시적 item-hold lineage를 유효한 upstream evidence로 인정하고 held item을 독립 재시도한다. 명시적 item hold 때문에 N/N marker가 없다는 이유만으로 CREATE 전체를 되감거나 REVIEW 진입을 차단하지 않는다.
+- 최종 MAIN publish 직전에만 해당 시험지의 `itemHoldCount=0`을 HARD gate로 요구한다.
+
+---
 ## 0. 목적
 
 정상 시험지 작업에서 모델의 집중력을 pipeline ceremony가 아니라 **학생에게 바로 줄 수 있는 최종 산출물 품질**에 사용한다.
@@ -93,11 +123,12 @@ CREATE 필수 결과:
 - `solutionRewriteCount=N/N`
 - 필요한 visual의 fresh 필요성 판정 + KEEP/ADD/REPAIR/REBUILD 완료
 - micro layout 정상
-- known defect 0
-- 다음 reviewer가 읽을 최종 artifact 존재
+- 해결 가능한 known defect 0
+- 미해결 사항은 반드시 문항별 item hold로 추적되어 untracked defect 0
+- item hold가 있어도 다음 reviewer가 읽을 final/candidate artifact 존재
 
 CREATE 종료 기록은 최소:
-`examFile / certificationGeneration / stage / artifact SHA / changed files / solutionRewrite / solutionRewriteCount / known blocker`.
+`examFile / certificationGeneration / stage / artifact SHA / changed files / solutionRewrite 또는 solutionRewriteAttempted / solutionRewriteCount 또는 solutionRewriteResolved / itemHoldCount / itemHoldQuestionIds / itemHoldReasons`.
 
 재인증 scope에서 `certificationGeneration` 누락은 current CREATE 완료 증거가 아니다.
 
@@ -124,7 +155,9 @@ REVIEW1과 REVIEW2의 전면 지시는 다음으로 단순화한다.
 Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review에서 제외한다.
 
 REVIEW 종료 기록도 최소:
-`examFile / REVIEW stage / PASS_AFTER_REPAIR 여부 / changed files / final SHA / blocker`.
+`examFile / REVIEW stage / PASS_AFTER_REPAIR 또는 DONE_WITH_ITEM_HOLDS / changed files / final SHA / itemHoldCount / itemHoldQuestionIds / itemHoldReasons`.
+
+REVIEW에서 item hold가 남아도 시험지 전체를 BLOCKED로 만들지 않는다. 다음 REVIEW가 있으면 그대로 넘기고, REVIEW2 뒤에는 held UID만 ITEM_RECOVERY_QUEUE로 분리한다.
 
 ---
 
@@ -172,8 +205,9 @@ stage
 base/input SHA
 final artifact SHA
 changedFiles
-PASS / PASS_AFTER_REPAIR / BLOCKED
-blockerReason (있을 때만)
+PASS / PASS_AFTER_REPAIR / DONE_WITH_ITEM_HOLDS / AUTHORITY_WRITE_PENDING
+itemHoldQuestionIds (있을 때만)
+itemHoldReasons (있을 때만)
 ```
 
 문항별 긴 evidence JSON, snapshot dump, render dump, packet/seal은
@@ -250,8 +284,9 @@ MAIN 반영 뒤 SVG/solutionImage만 별도 final audit 1회를 수행하여
 이미지 적절
 SVG 정확하고 읽기 좋음
 조판 정상
-known defect 0
+untracked defect 0
+item hold 0  ← MAIN publish 시점에만 강제
 Git 안전
 ```
 
-이 조건을 만족하면 경량 evidence만 남기고 다음 단계로 넘긴다.
+CREATE/REVIEW 중간 단계에서는 명시적 item hold가 있어도 다음 단계로 넘긴다. 위 `item hold 0`은 MAIN publish 직전 최종 조건이다. 각 중간 단계는 held UID를 정확히 기록하고 다음 독립 reviewer가 다시 판정할 수 있게 artifact와 lineage를 남긴다.
