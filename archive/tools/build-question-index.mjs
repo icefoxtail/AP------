@@ -206,7 +206,9 @@ function normalizeExamYear(value) {
 }
 
 function isProductionExamRelativePath(relativePath) {
-    return /^(?:original|similar|types)\//.test(normalizePath(relativePath));
+    const normalized = normalizePath(relativePath);
+    return /^(?:original|similar|types)\//.test(normalized)
+        || /^textbooks\/[^/]+\/[^/]+\.js$/.test(normalized);
 }
 
 function assertDbSourceParity(examFiles, dbExams) {
@@ -234,13 +236,14 @@ function assertDbSourceParity(examFiles, dbExams) {
 /*
  * 인덱스 대상 시험지 파일 수집.
  *
- * 정합성 기준(SCOPE): production(original/similar/types) 시험지 JS만 인덱싱한다.
+ * 정합성 기준(SCOPE): production(original/similar/types) 및 명시 등록된
+ * 교과서(textbooks/<book>/<title>.js) JS만 인덱싱한다.
  * test-fixtures 및 기타 보조 폴더는 제외하고, DB와 source 파일 집합이
  * 정확히 일치하지 않으면 fail-closed 한다.
- *   - .gitignore 가 `*textbook*` 로 차단하는 외부 교재 문제은행(LIGHTSSEN/RPM/동아/마플/미래앤/비상 등)과
- *     미추적 *_pro.js 드래프트는 정식 아카이브가 아니므로 제외한다.
- *   - 이 범위가 db.js(210) 및 기존 산출물(210파일/5444문항)과 일치한다.
- * git 사용 불가 환경에서는 디렉터리 워크로 폴백하되 textbook 경로는 제외하고 그 사실을 리포트에 남긴다.
+ *   - 외부 교재 문제은행 중 db.js에 등록되지 않은 파일과 미추적 *_pro.js
+ *     드래프트는 정식 아카이브가 아니므로 제외한다.
+ *   - textbook 경로는 위의 한 단계 교재 폴더 규칙과 db.js 등록으로 제한한다.
+ * git 사용 불가 환경에서는 같은 production 경로 규칙으로 디렉터리를 순회한다.
  */
 function getTrackedExamFiles() {
     const out = execFileSync('git', ['-C', repoRoot, 'ls-files', '-z', '--', 'archive/exams/*.js'], { maxBuffer: 64 * 1024 * 1024 });
@@ -269,7 +272,7 @@ function getDbExamFiles() {
 function collectExamFiles() {
     if (process.env.GEOMETRY_ARCHIVE_ROOT) {
         const walked = walkJsFiles(examsDir).filter(f => isProductionExamRelativePath(path.relative(examsDir, f)));
-        return { files: walked, scope: 'GEOMETRY_ARCHIVE_ROOT fs-walk(textbook 제외)' };
+        return { files: walked, scope: 'GEOMETRY_ARCHIVE_ROOT fs-walk(production paths)' };
     }
     try {
         const tracked = getTrackedExamFiles();
@@ -281,7 +284,7 @@ function collectExamFiles() {
         // fall through to directory walk
     }
     const walked = walkJsFiles(examsDir).filter(f => isProductionExamRelativePath(path.relative(examsDir, f)));
-    return { files: walked, scope: 'fs-walk(textbook 제외)' };
+    return { files: walked, scope: 'fs-walk(production paths)' };
 }
 
 function runArchiveScript(file, code) {
@@ -763,7 +766,8 @@ const auditMd = `# question-index 데이터 정합성 감사 (PHASE 4.5)
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): ${report.scope}
   - git 버전관리에 등재된 시험지 JS만 인덱싱(${report.examFileCount}파일).
-  - .gitignore \`*textbook*\` 로 차단되는 외부 교재 문제은행과 미추적 _pro 드래프트는 정식 아카이브가 아니므로 제외(db.js 210건과 일치).
+  - 교과서 파일은 \`textbooks/<book>/<title>.js\` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
+  - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: ${OFFICIAL_KEYS.size} (중등 23 + H22 56 + H15 64)
 - 원본 문항 수: ${report.sourceQuestionCount}
 - 최종 인덱스 문항 수: ${index.length}

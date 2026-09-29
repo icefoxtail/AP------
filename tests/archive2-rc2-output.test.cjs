@@ -23,6 +23,22 @@ test("display title and QR policy preserve identity input", () => {
   assert.equal(on.searchParams.get("solQr"), "1");
   assert.equal(on.searchParams.get("portalQr"), "1");
 });
+test("textbook archive entries stay identifiable and filter as textbooks", () => {
+  const textbook = {
+    file: "textbooks/비상교육_공통수학2/비상_공통수학2_집합_중단원학습점검_고1.js",
+    topic: "비상 공통수학2 교과서 · 집합 중단원학습점검",
+    grade: "고1",
+    semester: "2",
+    examType: "textbook",
+    subject: "공통수학2",
+    contentType: "교과서",
+  };
+  assert.equal(O.materialKind(textbook), "textbook");
+  assert.equal(O.displayTitle(textbook), textbook.topic);
+  assert.equal(O.matchesMaterial(textbook, "textbook"), true);
+  assert.equal(O.matchesMaterial(textbook, "nonexam"), true);
+  assert.equal(O.matchesMaterial(textbook, "exam"), false);
+});
 test("split receipt freezes exactly one paper until remaining paper succeeds", () => {
   const first = Array.from({ length: 80 }, (_, i) => ({
       questionUid: "uid-" + i,
