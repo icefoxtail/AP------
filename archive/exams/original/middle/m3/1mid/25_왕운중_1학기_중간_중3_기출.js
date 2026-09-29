@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 제곱근의 정의와 성질을 이해한다.\n* ① $a$의 제곱근은 $\\pm\\sqrt{a}$ 입니다.\n* ② $x$가 $3$의 제곱근이므로 $x=\\pm\\sqrt{3}$ 이고, $x$의 제곱근은 $\\pm\\sqrt{\\pm\\sqrt{3}}$ 형태가 되어 옳지 않습니다.\n* ③ $0$의 제곱근은 1개, 음수의 제곱근은 0개입니다.\n* ⑤ 제곱근 81은 $\\sqrt{81}=9$ 입니다.\n* 따라서 정답은 ④이다.",
+    "solution": "제곱근의 뜻을 보기마다 확인한다.\n\n① $a>0$일 때 $a$의 제곱근은 $\\pm\\sqrt{a}$이므로 틀리다.\n② $x^2=3$의 해가 $x=\\pm\\sqrt3$이라는 뜻이지, $x$의 제곱근이 $\\pm\\sqrt3$이라는 뜻은 아니다.\n③ $0$의 제곱근은 $0$ 한 개이고, 음수의 제곱근은 없으므로 항상 2개가 아니다.\n④ $(-4)^2=16$이므로 $-4$는 $16$의 음의 제곱근이다.\n⑤ $\\sqrt{81}=9$이다.\n\n따라서 정답은 ④이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -54,7 +54,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 근호를 포함한 수의 성질을 이용하여 $a, b$를 구한다.\n* $\\sqrt{(-16)^2} = 16$. 16의 음의 제곱근 $a = -4$\n* 제곱근 81은 $\\sqrt{81}=9$. 9의 음의 제곱근 $b = -3$\n* $ab = (-4) \\times (-3) = 12$\n* 따라서 정답은 ③이다.",
+    "solution": "$\\sqrt{(-16)^2}=16$이다.\n\n16의 음의 제곱근은 $-4$이므로 $a=-4$이다.\n또 제곱근 $81$은 $9$이고, $9$의 음의 제곱근은 $-3$이므로 $b=-3$이다.\n\n따라서 $ab=(-4)(-3)=12$이므로 정답은 ③이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -88,7 +88,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 근호 안의 수를 소인수분해하여 곱셈과 나눗셈을 수행한다.\n* $\\frac{\\sqrt{15}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{\\sqrt{12}}{7}$\n* $= \\frac{\\sqrt{3} \\times \\sqrt{5}}{3} \\times \\frac{7}{\\sqrt{5}} \\times \\frac{2\\sqrt{3}}{7}$\n* $= \\frac{\\sqrt{3} \\times 2\\sqrt{3}}{3} = \\frac{6}{3} = 2$\n* 따라서 정답은 ①이다.",
+    "solution": "나눗셈은 역수를 곱하는 것으로 바꾼다.\n\n$\\dfrac{\\sqrt{15}}{3}\\times\\dfrac{7}{\\sqrt5}\\div\\dfrac{7}{\\sqrt{12}}\n=\\dfrac{\\sqrt{15}}{3}\\times\\dfrac{7}{\\sqrt5}\\times\\dfrac{\\sqrt{12}}7$\n\n$=\\dfrac{\\sqrt{15}\\sqrt{12}}{3\\sqrt5}\n=\\dfrac{\\sqrt{36}}3=2$\n\n따라서 정답은 ①이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -122,7 +122,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 무리수는 순환소수가 아닌 무한소수로 나타내어짐을 이용한다.\n* 순환소수가 아닌 무한소수는 무리수이다.\n* $\\sqrt{25}=5$ 이므로 유리수이다.\n* $\\pi^{2}$는 무리수이다.\n* $2\\sqrt{81}-3=2\\times 9-3=15$ 이므로 유리수이다.\n* $\\sqrt{3.7}$은 무리수이다.\n* $-6+\\sqrt{36}=-6+6=0$ 이므로 유리수이다.\n* $\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$ 이므로 유리수이다.\n* $\\sqrt{8.1}$은 무리수이다.\n* 따라서 무리수는 $\\pi^{2},\\ \\sqrt{3.7},\\ \\sqrt{8.1}$의 3개이다.\n* 따라서 정답은 ③이다.",
+    "solution": "순환소수가 아닌 무한소수로 나타나는 수는 무리수이다.\n\n$\\sqrt{25}=5$, $2\\sqrt{81}-3=15$, $-6+\\sqrt{36}=0$, $\\sqrt{\\frac14}=\\frac12$는 유리수이다.\n$\\pi^2$, $\\sqrt{3.7}$, $\\sqrt{8.1}$은 무리수이다.\n\n따라서 모두 $3$개이므로 정답은 ③이다.",
     "level": "중",
     "tags": [
       "객관식",
@@ -159,7 +159,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 제곱근표는 세로(행)에서 소수 첫째 자리까지, 가로(열)에서 소수 둘째 자리를 읽는다.\n$\\sqrt{3.25}$이므로 $3.2$행과 $5$열이 만나는 칸의 값을 읽는다.\n$3.2$행은 왼쪽부터 $4$열 $1.800$, $5$열 $1.803$, $6$열 $1.806$ 이므로 $5$열의 값은 $1.803$이다.\n따라서 $\\sqrt{3.25}$의 어림한 값은 $1.803$이다.\n* 따라서 정답은 ②이다.",
+    "solution": "$\\sqrt{3.25}$는 제곱근표에서 $3.2$행과 $5$열이 만나는 값을 읽는다.\n표에서 그 값은 $1.803$이다.\n\n따라서 $\\sqrt{3.25}\\approx1.803$이므로 정답은 ②이다.",
     "level": "하",
     "tags": [
       "표"
@@ -189,7 +189,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 제곱근의 성질 $\\sqrt{a \\times 10^{2n}} = 10^n\\sqrt{a}$를 이용한다.\n$\\sqrt{0.334}=\\sqrt{\\dfrac{33.4}{100}}=\\dfrac{\\sqrt{33.4}}{10}$이다. 제곱근표에서 $\\sqrt{33.4}=5.779$이므로 $\\sqrt{0.334}=0.5779$이다.\n* 따라서 정답은 ④이다.",
+    "solution": "$0.334=\\dfrac{33.4}{100}$이므로\n$\\sqrt{0.334}=\\dfrac{\\sqrt{33.4}}{10}$이다.\n\n제곱근표에서 $\\sqrt{33.4}\\approx5.779$이므로\n$\\sqrt{0.334}\\approx0.5779$이다.\n\n따라서 정답은 ④이다.",
     "level": "중",
     "tags": [
       "객관식",
@@ -225,7 +225,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 합차 공식을 이용하여 $ab$의 값을 먼저 구한다.\n* $ab = (\\sqrt{3}-2)(\\sqrt{3}+2) = 3-4 = -1$\n* $a^8b^6 = (ab)^6 \\times a^2 = (-1)^6 \\times (\\sqrt{3}-2)^2 = 1 \\times (3-4\\sqrt{3}+4) = 7-4\\sqrt{3}$\n* $a^8b^6+4a+1 = (7-4\\sqrt{3}) + 4(\\sqrt{3}-2) + 1 = 7-4\\sqrt{3}+4\\sqrt{3}-8+1 = 0$\n* 따라서 정답은 ④이다.",
+    "solution": "먼저 $ab=(\\sqrt3-2)(\\sqrt3+2)=3-4=-1$이다.\n\n따라서 $a^8b^6=a^2(ab)^6=a^2$이고,\n$a^2=(\\sqrt3-2)^2=7-4\\sqrt3$이다.\n\n그러므로\n$a^8b^6+4a+1=(7-4\\sqrt3)+4(\\sqrt3-2)+1=0$이다.\n\n따라서 정답은 ④이다.",
     "level": "상",
     "tags": [
       "객관식",
@@ -262,7 +262,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 무리수의 어림한 값을 구하여 범위를 파악한다.\n* $3+2.828\\dots = 5.828\\dots < x < 5+4.123\\dots = 9.123\\dots$\n* 자연수 $x$: $6, 7, 8, 9$ (4개)\n* 정수 부분 최대는 9입니다.\n* $4+2\\sqrt{2} = 4+\\sqrt{8} = 4+2.828\\dots = 6.828\\dots$ 이므로 범위에 포함됩니다.\n* 따라서 정답은 ⑤이다.",
+    "solution": "각 경계값을 어림하면\n$3+\\sqrt8\\approx5.828$, $5+\\sqrt{17}\\approx9.123$이다.\n\n따라서 $5.828\\cdots<x<9.123\\cdots$이다.\n자연수는 $6,7,8,9$의 4개이고, 무리수와 실수는 무수히 많으며, 정수 부분의 최댓값은 $9$이다.\n또 $4+2\\sqrt2\\approx6.828$은 범위 안에 있다.\n\n따라서 정답은 ⑤이다.",
     "level": "중",
     "tags": [
       "객관식",
@@ -299,7 +299,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고 기준점으로부터의 거리를 계산한다.\n1. 정사각형 $ABCD$에서 선분 $AB$의 길이를 구한다.\n점 $A$는 $(-3, 0)$, 점 $B$는 $(-2, 3)$에 위치하므로 피타고라스 정리에 의해\n$\\overline{AB} = \\sqrt{(-2 - (-3))^2 + (3 - 0)^2} = \\sqrt{1^2 + 3^2} = \\sqrt{10}$\n점 $P$는 점 $A$를 중심으로 하고 반지름이 $\\sqrt{10}$인 원이 수직선의 오른쪽과 만나는 점이므로\n$P = -3 + \\sqrt{10}$\n\n2. 정사각형 $EFGH$에서 선분 $EF$의 길이를 구한다.\n점 $E$는 $(2, 0)$, 점 $F$는 $(4, 2)$에 위치하므로 피타고라스 정리에 의해\n$\\overline{EF} = \\sqrt{(4 - 2)^2 + (2 - 0)^2} = \\sqrt{8} = 2\\sqrt{2}$\n점 $Q$는 점 $E$를 중심으로 하고 반지름이 $2\\sqrt{2}$인 원이 수직선의 오른쪽과 만나는 점이므로\n$Q = 2 + 2\\sqrt{2}$\n\n따라서 정답은 ④이다.",
+    "solution": "모눈 한 칸의 길이는 $1$이다.\n\n점 $A$는 수직선의 $-3$에 있고, $A$에서 $B$까지 가로 $1$, 세로 $3$이므로\n$AB=\\sqrt{1^2+3^2}=\\sqrt{10}$이다.\n따라서 $P=-3+\\sqrt{10}$이다.\n\n점 $E$는 수직선의 $2$에 있고, $E$에서 $F$까지 가로 $2$, 세로 $2$이므로\n$EF=\\sqrt{2^2+2^2}=2\\sqrt2$이다.\n따라서 $Q=2+2\\sqrt2$이다.\n\n그러므로 정답은 ④이다.",
     "level": "중",
     "tags": [
       "도형"
@@ -310,7 +310,8 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q9-solution.svg"
   },
   {
     "id": 10,
@@ -329,7 +330,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] $\\sqrt{x}$의 범위를 나누어 해당 구간의 짝수 개수를 구한다.\n* $x=20\\sim 35$: $\\sqrt{x}$는 $4.\\dots \\sim 5.\\dots$. 짝수는 $2, 4$로 2개 ($16 \\times 2 = 32$)\n* $x=36\\sim 40$: $\\sqrt{x}$는 $6 \\sim 6.\\dots$. 짝수는 $2, 4, 6$으로 3개 ($5 \\times 3 = 15$)\n* 합: $32 + 15 = 47$\n* 따라서 정답은 ④이다.",
+    "solution": "$f(x)$는 $\\sqrt{x}$ 이하의 자연수 중 짝수의 개수이다.\n\n$20\\le x\\le24$에서는 $2,4$ 두 개이므로 $5\\times2=10$이다.\n$25\\le x\\le35$에서도 두 개이므로 $11\\times2=22$이다.\n$36\\le x\\le40$에서는 $2,4,6$ 세 개이므로 $5\\times3=15$이다.\n\n따라서 $10+22+15=47$이므로 정답은 ④이다.",
     "level": "상",
     "tags": [
       "객관식",
@@ -366,7 +367,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] $\\sqrt{x^2} = |x|$ 성질을 이용하여 부호를 결정한다.\n* $ab < 0$ 이므로 $\\sqrt{(ab)^2} = |ab| = -ab$\n* $-ab > 0$ 이므로 $4\\sqrt{(-ab)^2} = 4|-ab| = -4ab$\n* 합: $-ab - 4ab = -5ab$\n* 따라서 정답은 ③이다.",
+    "solution": "$ab^2>0$이고 $b^2>0$이므로 $a>0$이다.\n또 $ab<0$이므로 $b<0$이고 $ab<0$이다.\n\n따라서\n$\\sqrt{(ab)^2}=|ab|=-ab$,\n$\\sqrt{(-ab)^2}=|-ab|=-ab$이다.\n\n그러므로\n$\\sqrt{(ab)^2}+4\\sqrt{(-ab)^2}=-5ab$이다.\n\n정답은 ③이다.",
     "level": "중",
     "tags": [
       "객관식",
@@ -402,7 +403,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 인수분해 공식 $(x-a)^2 = x^2-2ax+a^2$ 및 전개 공식을 확인한다.\n* ③ $(x-5)^2 = x^2-10x+25$ 이므로 $x^2-25x+10$과 일치하지 않습니다.\n* ⑤ $(x-2)(x-3) = x^2-5x+6$ 으로 옳은 식입니다.\n* 따라서 정답은 ③이다.",
+    "solution": "각 식을 전개하여 확인한다.\n\n① $(x+2)^2=x^2+4x+4$\n② $3a(a-b)=3a^2-3ab$\n④ $(5x+7y)(5x-7y)=25x^2-49y^2$\n⑤ $(x-2)(x-3)=x^2-5x+6$\n\n반면 $(x-5)^2=x^2-10x+25$이므로 ③은 옳지 않다.\n\n따라서 정답은 ③이다.",
     "level": "중",
     "tags": [
       "객관식",
@@ -438,7 +439,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 다항식의 전개식에서 상수항은 각 항의 상수의 곱임을 이용한다.\n* 상수항: $-5A = 15 \\implies A = -3$\n* $x$의 계수: $5-A = 5-(-3) = 8$\n* 따라서 $A=-3$, 계수는 $8$입니다.\n* 따라서 정답은 ⑤이다.",
+    "solution": "$(x+5)(x-A)=x^2+(5-A)x-5A$이다.\n\n상수항이 $15$이므로 $-5A=15$, 따라서 $A=-3$이다.\n이때 $x$의 계수는 $5-(-3)=8$이다.\n\n따라서 정답은 ⑤이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -474,7 +475,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 합차 공식 $a^2-b^2 = (a-b)(a+b)$를 이용하여 항을 분리하고 소거한다.\n* $(\\frac{1}{2}-1)(\\frac{1}{2}+1) \\times (\\frac{1}{3}-1)(\\frac{1}{3}+1) \\dots$\n* $= (-\\frac{1}{2})(\\frac{3}{2}) \\times (-\\frac{2}{3})(\\frac{4}{3}) \\times \\dots \\times (-\\frac{9}{10})(\\frac{11}{10})$\n* 9개의 음수 곱이므로 결과는 음수. 중간 항 소거 후 $-\\frac{1}{2} \\times \\frac{11}{10} = -\\frac{11}{20}$\n* 따라서 정답은 ②이다.",
+    "solution": "$\\dfrac1{n^2}-1=-\\dfrac{(n-1)(n+1)}{n^2}$이다.\n\n주어진 곱의 절댓값은\n$\\left(\\dfrac12\\cdot\\dfrac23\\cdots\\dfrac9{10}\\right)\n\\left(\\dfrac32\\cdot\\dfrac43\\cdots\\dfrac{11}{10}\\right)\n=\\dfrac1{10}\\cdot\\dfrac{11}{2}=\\dfrac{11}{20}$이다.\n\n항이 9개이므로 부호는 음수이다.\n따라서 값은 $-\\dfrac{11}{20}$이고 정답은 ②이다.",
     "level": "상",
     "tags": [
       "객관식",
@@ -508,7 +509,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 이차식 $x^2+ax+b$가 완전제곱식이 될 조건은 $b = (a/2)^2$임을 이용한다.\n* $(x+5)(x-3)-k = x^2+2x-15-k$\n* 완전제곱식이 되려면 상수항이 $(\\frac{2}{2})^2 = 1$ 이어야 함.\n* $-15-k = 1 \\implies k = -16$\n* 따라서 정답은 ②이다.",
+    "solution": "$(x+5)(x-3)-k=x^2+2x-15-k$이다.\n\n$x^2+2x$를 포함하는 완전제곱식은\n$(x+1)^2=x^2+2x+1$이므로\n$-15-k=1$이다.\n\n따라서 $k=-16$이고 정답은 ②이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -543,7 +544,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 곱셈 공식 $(a+b)^2 = a^2+2ab+b^2$ 및 전개 공식을 각 항에 적용한다.\n* ① 16, ② 2, ③ 2, ④ 3, ⑤ 7\n* 가장 큰 수는 16입니다.\n* 따라서 정답은 ①이다.",
+    "solution": "각 보기의 $\\square$ 값을 구한다.\n\n① $16$\n② $2$\n③ $2$\n④ $3$\n⑤ $(3x+y)(2x-3y)=6x^2-7xy-3y^2$이므로 $7$\n\n가장 큰 수는 $16$이다.\n따라서 정답은 ①이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -577,7 +578,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] $(x+p)(x+q) = x^2+(p+q)x+pq$ 임을 이용하여 계수를 비교한다.\n* 상수항: $-3b = 21 \\implies b = -7$\n* $x$의 계수: $-a = -3+b = -3-7 = -10 \\implies a = 10$\n* 따라서 정답은 ③이다.",
+    "solution": "$x^2-ax+21=(x-3)(x+b)$이다.\n\n오른쪽을 전개하면\n$x^2+(b-3)x-3b$이다.\n\n상수항에서 $-3b=21$이므로 $b=-7$이다.\n$x$의 계수에서 $b-3=-10=-a$이므로 $a=10$이다.\n\n따라서 정답은 ③이다.",
     "level": "하",
     "tags": [
       "객관식",
@@ -613,7 +614,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 근호 안을 완전제곱식으로 고친 후 절댓값 기호를 사용하여 범위를 따진다.\n* $\\sqrt{(3a+9)^2} - 7\\sqrt{(\\frac{2}{7}a-\\frac{4}{7})^2} = |3a+9| - |2a-4|$\n* 범위 내에서 $3a+9 > 0, 2a-4 < 0$ 이므로\n* $(3a+9) - \\{-(2a-4)\\} = 3a+9+2a-4 = 5a+5$\n* 따라서 정답은 ③이다.",
+    "solution": "$9a^2+54a+81=9(a+3)^2$이므로\n$\\sqrt{9(a+3)^2}=3|a+3|=3(a+3)$이다.\n\n또\n$\\dfrac{16}{49}-\\dfrac{16}{49}a+\\dfrac4{49}a^2\n=\\dfrac4{49}(a-2)^2$이므로\n$7\\sqrt{\\dfrac4{49}(a-2)^2}=2|a-2|=2(2-a)$이다.\n\n따라서\n$3(a+3)-2(2-a)=5a+5$이다.\n\n정답은 ③이다.",
     "level": "상",
     "tags": [
       "객관식",
@@ -650,7 +651,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 나누어진 각 직사각형의 넓이를 이용하여 가로와 세로의 길이를 다항식으로 나타낸다.\n큰 직사각형의 가로의 길이를 두 부분으로 나누어 $a, b$라 하고, 세로의 길이를 두 부분으로 나누어 $c, d$라고 하면 나누어진 사각형들의 넓이는 다음과 같다.\n$ac = 2x^{2}, bc = 7x, ad = 8x, bd = 28$\n이때 $c(a+b) = 2x^{2} + 7x = x(2x+7)$ 이므로 $c = x, a+b = 2x+7$로 볼 수 있다.\n또한 $d(a+b) = 8x + 28 = 4(2x+7)$ 이므로 $d = 4, a+b = 2x+7$이 성립한다.\n따라서 큰 직사각형의 가로의 길이는 $2x+7$, 세로의 길이는 $c+d = x+4$이다.\n큰 직사각형의 둘레의 길이는 $2\\{(2x+7) + (x+4)\\} = 2(3x+11) = 6x + 22$\n* 따라서 정답은 ①이다.",
+    "solution": "큰 직사각형의 넓이는\n$2x^2+8x+7x+28=2x^2+15x+28$이다.\n\n인수분해하면\n$2x^2+15x+28=(2x+7)(x+4)$이다.\n\n따라서 가로와 세로를 $2x+7$, $x+4$로 볼 수 있고,\n둘레는\n$2\\{(2x+7)+(x+4)\\}=6x+22$이다.\n\n정답은 ①이다.",
     "level": "중",
     "tags": [
       "도형"
@@ -661,7 +662,8 @@ window.questionBank = [
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q19-solution.svg"
   },
   {
     "id": 20,
@@ -680,7 +682,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] $ab$가 제곱수이고 $a, b$가 자연수인 경우를 나열하여 소수 판별을 한다.\n* 가능한 $(a, b)$ 쌍 중 $a+b$가 소수인 경우:\n* (1, 1) $\\implies$ 2, (1, 4) $\\implies$ 5, (4, 9) $\\implies$ 13\n* 소수는 2, 5, 13으로 3개입니다.\n* 따라서 정답은 ⑤이다.",
+    "solution": "$ab$가 제곱수가 되는 경우를 묶어 보면,\n$1,4,9$끼리는 서로 곱해도 제곱수이고,\n$2,8$끼리도 서로 곱해도 제곱수이다.\n$3,5,6,7,10$은 같은 수끼리 곱할 때 제곱수가 된다.\n\n이때 가능한 $a+b$ 중 소수인 값은\n$1+1=2$, $1+4=5$, $4+9=13$의 세 가지이다.\n\n따라서 소수의 개수는 $3$개이므로 정답은 ⑤이다.",
     "level": "상",
     "tags": [
       "객관식",
@@ -711,7 +713,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 제곱근의 정의와 분모의 유리화 방법을 서술한다.\n* (1) $(-3)^2=9$ 이므로 양의 제곱근 $A=3, B=-\\sqrt{7}$이다.\n* (2) $\\frac{1}{3-\\sqrt{7}} = \\frac{3+\\sqrt{7}}{9-7} = \\frac{3+\\sqrt{7}}{2}$이다.\n* 정답: (1) $A=3, B=-\\sqrt{7}$  (2) $\\frac{3+\\sqrt{7}}{2}$",
+    "solution": "(1) $(-3)^2=9$이고 $9$의 양의 제곱근은 $3$이므로 $A=3$이다.\n또 $7$의 음의 제곱근은 $B=-\\sqrt7$이다.\n\n(2)\n$\\dfrac1{A+B}\n=\\dfrac1{3-\\sqrt7}\n=\\dfrac{3+\\sqrt7}{(3-\\sqrt7)(3+\\sqrt7)}\n=\\dfrac{3+\\sqrt7}{2}$이다.\n\n따라서 $A=3$, $B=-\\sqrt7$이고\n$\\dfrac1{A+B}=\\dfrac{3+\\sqrt7}{2}$이다.",
     "level": "중",
     "tags": [
       "서술형"
@@ -735,7 +737,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 식을 인수분해한 후 값을 대입하여 계산 효율을 높인다.\n* $a^2-9a+14 = (a-2)(a-7)$\n* $a=7+\\sqrt{3}$ 대입: $(7+\\sqrt{3}-2)(7+\\sqrt{3}-7) = (5+\\sqrt{3})(\\sqrt{3}) = 3+5\\sqrt{3}$\n* 정답: $3+5\\sqrt{3}$",
+    "solution": "먼저\n$a^2-9a+14=(a-7)(a-2)$로 인수분해한다.\n\n$a=7+\\sqrt3$이므로\n$a-7=\\sqrt3$, $a-2=5+\\sqrt3$이다.\n\n따라서\n$(a-7)(a-2)=\\sqrt3(5+\\sqrt3)=5\\sqrt3+3$이다.\n\n그러므로 값은 $3+5\\sqrt3$이다.",
     "level": "중",
     "tags": [
       "서술형"
@@ -759,7 +761,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "solution": "[키포인트] 식을 정리한 후 완전제곱식이 될 조건을 이용하여 $m, n$의 관계식을 구한다.\n* $(x^2-10mx+n)-(2mx-5n) = x^2-12mx+6n$\n* 완전제곱식 조건: $(12m/2)^2 = 6n \\implies 36m^2 = 6n \\implies n=6m^2$\n* $m=1 \\implies n=6, m=2 \\implies n=24, m=3 \\implies n=54, m=4 \\implies n=96$ (100이하 최대)\n* $n-m = 96-4 = 92$\n* 정답: 92",
+    "solution": "식을 정리하면\n$x^2-10mx+n-(2mx-5n)=x^2-12mx+6n$이다.\n\n완전제곱식이므로\n$x^2-12mx+6n=(x-6m)^2=x^2-12mx+36m^2$이다.\n\n따라서 $n=6m^2$이다.\n$m,n\\le100$이므로 $6m^2\\le100$, 즉 $m\\le4$이다.\n\n$n-m=6m^2-m$은 $m=4$일 때 가장 크고,\n이때 $n=96$이다.\n\n따라서 최댓값은 $96-4=92$이다.",
     "level": "상",
     "tags": [
       "서술형"
@@ -783,18 +785,19 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "solution": "[키포인트] 피타고라스 정리를 이용해 직각삼각형의 빗변 길이를 구하고 수직선 위의 좌표를 결정한다.\n1단계: 왼쪽 직각삼각형의 밑변은 $2$칸, 높이는 $1$칸이므로 빗변의 길이는 $\\sqrt{2^2+1^2}=\\sqrt{5}$이다. 중심점이 $-4$이므로\n$A = -4-\\sqrt{5}, B = -4+\\sqrt{5}$이다.\n\n2단계: 오른쪽 직각삼각형의 밑변은 $1$칸, 높이는 $3$칸이므로 빗변의 길이는 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다. 중심점이 $2$이므로\n$C = 2-\\sqrt{10}, D = 2+\\sqrt{10}$이다.\n\n3단계: 각 선분의 길이를 구하면\n$\\overline{BC} = (2-\\sqrt{10}) - (-4+\\sqrt{5}) = 6-\\sqrt{10}-\\sqrt{5}$\n$\\overline{AD} = (2+\\sqrt{10}) - (-4-\\sqrt{5}) = 6+\\sqrt{10}+\\sqrt{5}$\n\n4단계: 두 길이의 차를 구하면\n$\\overline{AD} - \\overline{BC} = (6+\\sqrt{10}+\\sqrt{5}) - (6-\\sqrt{10}-\\sqrt{5}) = 2\\sqrt{10}+2\\sqrt{5}$\n\n∴ 정답: $A: -4-\\sqrt{5}, B: -4+\\sqrt{5}, C: 2-\\sqrt{10}, D: 2+\\sqrt{10}$, 길이의 차: $2\\sqrt{5}+2\\sqrt{10}$",
+    "solution": "첫 번째 직각삼각형의 빗변은\n$\\sqrt{2^2+1^2}=\\sqrt5$이다.\n중심이 $-4$이므로\n$A=-4-\\sqrt5$, $B=-4+\\sqrt5$이다.\n\n두 번째 직각삼각형의 빗변은\n$\\sqrt{1^2+3^2}=\\sqrt{10}$이다.\n중심이 $2$이므로\n$C=2-\\sqrt{10}$, $D=2+\\sqrt{10}$이다.\n\n따라서\n$BC=6-\\sqrt{10}-\\sqrt5$,\n$AD=6+\\sqrt{10}+\\sqrt5$이다.\n\n그러므로 두 길이의 차는\n$AD-BC=2\\sqrt{10}+2\\sqrt5$이다.",
     "level": "중",
     "tags": [
       "서술형",
       "도형"
     ],
     "wide": false,
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "questionType": "서술형",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_1학기_중간_중3_기출/q24-solution.svg"
   }
 ];
