@@ -1,0 +1,50 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW1_EVIDENCE_v1",
+  "examFilename": "23_연향중_2학기_중간_중2_수학.js",
+  "canonicalGlobalInventoryOrdinal": 47,
+  "lane": "REVIEW1-2",
+  "stage": "REVIEW1_DONE",
+  "nextStage": "READY_FOR_REVIEW2",
+  "nextOwner": "REVIEW2-2",
+  "inputAuthority": "work/middle/m2/23-yeonhyang-2mid@22c3d7772dd64d274049dc26ff0b91cb1e9babe3",
+  "sourceAuthority": "work/rebuild/m2-full-20260928-source@8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "observedRemoteMain": "7c0d997e10167c3ede672ff7b073ffe758a06804",
+  "sourceJsBlob": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+  "finalArtifactSha": "320dd3f528743f8dbd2a5140bccd78f8962b0a90",
+  "fullIndependentReview": true,
+  "previousReviewVerdictUsedAsInput": false,
+  "checks": {
+    "protectedParity": "24/24 PASS_EXACT",
+    "mathAnswerSolution": "24/24 PASS",
+    "smallBoard": "24/24 PASS",
+    "curriculumStudentLanguage": "24/24 PASS",
+    "questionMicroLayout": "grid 24/24 PASS",
+    "jsIntegrity": "PASS (24 unique ids; objective 20x5 choices; subjective 4x0 choices; no empty solution)",
+    "problemAssets": "23/23 source-authority blob exact; missing 0",
+    "solutionSvg": "3/3 CODE_FIRST_PASS (q3,q11,q24)",
+    "holdCount": 0
+  },
+  "decisiveMathChecks": {
+    "q2": "t=19° -> angle BAD=28°",
+    "q3": "RHS congruence gives DE=CE=4; 45-45-90 gives DB=4; area=8",
+    "q5": "circumcenter angle OBC=26°; incenter angle BIC=122°; sum=148°",
+    "q11": "triangle EBI congruent triangle ECJ -> [EICJ]=[EBC]=9/2",
+    "q18": "homothety DE->BC gives BG:GC=DF:FE=1:2; AC=18; x+y=18",
+    "q19": "parallel-line ratios give a=12, b=20; sum=32",
+    "q21": "right-triangle congruence gives AD=6, AE=8, AB=AC=10; area=50",
+    "q22": "R=13/2, r=2; area sum=185π/4",
+    "q24": "AO=CO and triangle AEO congruent triangle CFO -> EO=FO; AFCE rhombus; perimeter=24"
+  },
+  "visualCodeFirst": {
+    "q3": "A,C right-isosceles geometry; D on AB; E on BC; DE⊥AB; DE=CE and DB=DE coordinate parity PASS",
+    "q11": "two congruent squares; I/J intersection ownership; EBI/ECJ congruent-area transfer geometry PASS",
+    "q24": "AC midpoint O; EF through O perpendicular AC; E/F midpoint relation and DE=2, BC=8 scale parity PASS"
+  },
+  "productionRepair": {
+    "changedFiles": [],
+    "result": "NO_REPAIR_REQUIRED"
+  },
+  "render": "NOT_RUN_CODE_FIRST_SUFFICIENT",
+  "metaReview": "SEPARATED_NOT_OPENED",
+  "completedAtKst": "2026-09-29T15:45:00+09:00"
+}
