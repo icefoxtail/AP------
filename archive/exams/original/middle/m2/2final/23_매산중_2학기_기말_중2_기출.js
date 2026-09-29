@@ -424,7 +424,7 @@ window.questionBank = [
       "$64$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 바깥 정사각형의 넓이에서 네 직각삼각형의 넓이를 빼 중앙 정사각형의 넓이를 구한다.\n$\\triangle ABE$는 직각삼각형이고 $AB=17$, $AE=15$이므로 $BE^2=17^2-15^2=64$, 따라서 $BE=8$이다.\n네 직각삼각형은 모두 합동이므로 각 삼각형의 넓이는 $\\dfrac12\\times15\\times8=60$이다.\n정사각형 $ABCD$의 넓이는 $17^2=289$이므로 사각형 $EFGH$의 넓이는 $289-4\\times60=49$이다.\n$EFGH$는 정사각형이므로 한 변의 길이는 $7$, 둘레는 $7\\times4=28$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 바깥 정사각형의 넓이에서 네 직각삼각형의 넓이를 빼 중앙 정사각형의 넓이를 구한다.\n$\\triangle ABE$는 직각삼각형이고 $AB=17$, $AE=15$이므로 $BE^2=17^2-15^2=64$, 따라서 $BE=8$이다.\n네 직각삼각형은 모두 합동이므로 각 삼각형의 넓이는 $\\dfrac12\\times15\\times8=60$이다.\n정사각형 $ABCD$의 넓이는 $17^2=289$이므로 사각형 $EFGH$의 넓이는 $289-4\\times60=49$이다.\n합동인 네 직각삼각형이 같은 방향으로 놓여 중앙 사각형 $EFGH$의 네 각은 직각이고 네 변의 길이는 같으므로 $EFGH$는 정사각형이다.\n$EFGH$의 넓이가 $49$이므로 한 변의 길이는 $7$, 둘레는 $7\\times4=28$이다.\n따라서 정답은 ①이다.",
     "image": "assets/images/23_매산중_2학기_기말_중2_기출/q11.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
@@ -800,7 +800,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -837,7 +837,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -872,7 +872,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],
@@ -905,7 +905,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "표",
