@@ -14,7 +14,7 @@
         var AP_VENDOR_BASE = new URL('vendor/', document.baseURI).href;
         window.MathJax = {
             loader: { paths: { mathjax: AP_VENDOR_BASE + 'mathjax', 'mathjax-tex': AP_VENDOR_BASE + 'mathjax-tex-font' }, load: ['[tex]/boldsymbol'] },
-            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']} },
+            tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], packages: {'[+]': ['ams', 'boldsymbol']}, macros: { wideparen: ['\\overset{\\frown}{#1}', 1] } },
             output: {
                 font: 'mathjax-tex',
                 displayOverflow: 'linebreak',
