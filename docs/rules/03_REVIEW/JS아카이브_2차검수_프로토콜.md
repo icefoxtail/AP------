@@ -1,5 +1,17 @@
 [JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]
 
+## CURRENT OVERRIDE — INDEPENDENT RE-CERTIFICATION + REPAIR_BEFORE_HOLD (2026-09-29)
+
+CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW2에서는 아래 과거의 “FAIL 보고만 하고 수정본을 만들지 않는다” 제한보다 이 섹션이 우선한다.
+- REVIEW1 상세 verdict/수정 이유를 정답으로 사용하지 않고 latest artifact를 대상으로 **독립 풀이·독립 판정**을 먼저 동결한다.
+- 결함이 확인되면 `docs/rules/02_PIPELINES/수정프로토콜.md`의 **REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR**를 적용해 같은 run에서 최소수정 → 영향 축 재검한다.
+- REVIEW1의 `AUDITED_SOURCE_REPAIR`가 있더라도 먼저 독립적으로 문항을 풀고 source truth를 판단한 뒤 ledger를 열어 repair 근거를 재검증한다. 단순히 원본과 다르다는 이유로 수리본을 원복하지 않는다.
+- 수리 성공은 `PASS_AFTER_REPAIR`. deterministic minimal repair가 불가능한 qid만 `ITEM_HOLD`로 남기고 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 자체는 닫는다.
+- ITEM_HOLD는 REVIEW2의 최종 판정이 아니라 held UID만 `ITEM_RECOVERY_QUEUE`로 보내기 위한 상태다. 다른 시험지/코호트 진행을 막지 않는다.
+
+REVIEW2의 목표는 REVIEW1을 추인하는 것이 아니라 **독립적으로 다시 맞는지 확인하고, 발견된 복구 가능 오류는 마지막 검수 단계에서 직접 치료하는 것**이다.
+
+
 ## CURRENT QUESTION LAYOUT HARD RULE — GRID DEFAULT / SUBJECTIVE-2UP EXCEPTION (2026-09-28)
 
 학생 노출 문제 layout은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`의 최신 규칙을 우선한다.

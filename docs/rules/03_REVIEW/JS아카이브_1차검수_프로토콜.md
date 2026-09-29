@@ -1,5 +1,18 @@
 [JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]
 
+## CURRENT OVERRIDE — FULL REVIEW + REPAIR_BEFORE_HOLD (2026-09-29)
+
+CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW1에서는 아래 과거의 “구조만 보고 수정하지 않는다” 제한보다 이 섹션이 우선한다.
+- 최신 artifact를 처음 보는 것처럼 **FULL 독립검수**한 뒤 결함 verdict를 먼저 동결한다.
+- 결함이 있으면 `docs/rules/02_PIPELINES/수정프로토콜.md`의 **REPAIR_BEFORE_HOLD / ONE_SEMANTIC_LOCUS_REPAIR**를 적용해 같은 run에서 최소수정 → 영향 축 재검한다.
+- 수리 성공은 `PASS_AFTER_REPAIR`로 기록한다. source 자체를 최소 보정했으면 receipt/evidence에 `AUDITED_SOURCE_REPAIR`를 남긴다.
+- deterministic minimal repair가 불가능한 qid만 `ITEM_HOLD`로 남기며 시험지 전체 HOLD/BLOCK/격리는 금지한다.
+- REVIEW1은 CREATE의 HOLD/판정을 정답으로 사용하지 않는다. held item도 처음부터 다시 판정하며 해결되면 hold ledger에서 제거한다.
+- current full-solution-rewrite catch-up이 필요한 시험지는 catch-up을 완료한 뒤 동일 기준으로 solution/layout/visual까지 재검·수리한다.
+
+이 override의 목적은 독립성을 약화하는 것이 아니라 **독립 판정 후 복구 가능한 오류를 즉시 치료하여 다음 단계에는 가능한 한 성립한 문항을 넘기는 것**이다.
+
+
 ## CURRENT QUESTION LAYOUT HARD RULE — GRID DEFAULT / SUBJECTIVE-2UP EXCEPTION (2026-09-28)
 
 학생 노출 문제 layout은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`의 최신 규칙을 우선한다.
