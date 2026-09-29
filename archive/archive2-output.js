@@ -11,6 +11,9 @@
       .slice(0, n);
   function displayTitle(exam = {}) {
     const kind = materialKind(exam);
+    if (kind === "textbook") {
+      return text(exam.topic || exam.subject || "교과서", 80);
+    }
     const variant = /유사\s*(\d+)/.exec(exam.file || "");
     if (kind === "unit") {
       return [exam.grade, exam.semester ? exam.semester + "학기" : "", exam.topic || exam.subject, "단원평가", variant ? "유사 " + variant[1] : ""].filter(Boolean).join(" ");
@@ -37,6 +40,7 @@
   }
   // Browse labels only: source contentType and canonical metadata are unchanged.
   function materialKind(exam = {}) {
+    if (exam.contentType === "교과서" || (exam.file || "").startsWith("textbooks/")) return "textbook";
     if (exam.contentType === "단원평가") return "unit";
     if ((exam.file || "").startsWith("similar/") || ["유형", "기출유사", "기출심화"].includes(exam.contentType)) return "similar";
     return exam.contentType === "기출" ? "exam" : "other";
