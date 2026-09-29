@@ -1079,7 +1079,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "원의 중심이 C0(-2,1)에서 C1(1,3), C(3,1)로 이동하는 과정과 점 C에서 거리 √5인 직선 l의 y절편을 나타낸 해설 그림",
+    "solutionImageCaption": "평행이동과 y=x 대칭으로 중심 C=(3,1)을 얻고, x-2y+4=0의 y절편이 2임을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1183,6 +1187,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "k=10에서 t=8일 때 원과 직선이 접하고 t=9일 때 두 점에서 만나는 모습과 g(t)=2인 구간을 나타낸 해설 그림",
+    "solutionImageCaption": "t=8에서는 d=r이라 접점 1개이고, g(t)=2인 범위는 (3,8)∪(8,12)이므로 가장 오른쪽 길이 2 구간은 (10,12)이다.",
+    "solutionImageSize": "full"
   }
 ];
