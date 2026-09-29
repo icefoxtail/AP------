@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 39648 bytes | sha256 4fa8d1de5f51003fa431dd3381d78fd1fe5b21e8e2b458013d43bb1899e6927a
+- 00_RULES_INDEX.md | 40043 bytes | sha256 1d854cc176a9f989a6ae0c9bfb52d32b9459a2124122cf07551391939d982051
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 21599 bytes | sha256 15c8090a5b91b098d0168f911212f7fba0dd4c88ca343e82dbeeab0eff29d4b6
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12518 bytes | sha256 b962ddb79b5d31de8baf319a36a296a460adaa02a57cafe2ea417d8d8baa2abc
@@ -22,7 +22,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 10947 bytes | sha256 9e031446c534e353abb76f8333241b3b270ce7a4425be5463103340c4d88394b
-- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 15066 bytes | sha256 e4a6273b968cc5f185c1290a2848bd38c241b167725a8cf8aa79aaeb27c87c29
+- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 15553 bytes | sha256 5f589c6331b1de2af5050d09d23373181d3fbf46223ef476fa182eb08ccaa281
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 18689 bytes | sha256 5a0d5c47fb61780f729ce7625d7840e5b2d91096c92ce4ab439253c3df41a7ed
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 26401 bytes | sha256 82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b
