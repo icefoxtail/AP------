@@ -3,17 +3,35 @@
   "batch": "PILOT-001",
   "examFile": "25_금당고_2학기_기말_고2_미적분.js",
   "ordinal": 1,
-  "stage": "CREATE_BLOCKED_SOURCE",
-  "status": "BLOCKED",
+  "stage": "CREATE_DONE_WITH_ITEM_HOLDS",
+  "status": "DONE_WITH_ITEM_HOLDS",
   "sourceBranch": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceBlob": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
   "baseMainSha": "0d25c7a53adadec61c81ae1c074ce5530ea57d4d",
   "solvedQuestions": 20,
-  "blockedQuestions": [
+  "blockedQuestions": [],
+  "itemHoldCount": 1,
+  "itemHoldQuestionIds": [
     15
   ],
-  "blockerReason": "Q15 frozen statement yields f(2)=3(e^4-e), which matches none of the five choices; source correction authority is required before CREATE can close.",
-  "restartPoint": "Verify q15 against original PDF/page evidence, then finish q15 and the production artifact.",
-  "notionSyncStatus": "SYNCED",
-  "updatedAtKst": "2026-09-29T12:20:00+09:00"
+  "itemHolds": [
+    {
+      "qid": 15,
+      "status": "SOURCE_HOLD",
+      "reason": "SOURCE_HOLD",
+      "observedEvidence": "The prior receipt records that the frozen statement evaluates to f(2)=3(e^4-e), matching none of the five choices; the source-fidelity record says q15 content and choices were checked PASS.",
+      "unresolvedPoint": "The available records do not establish whether the frozen statement, choices, or intended answer matches the original source. No source text or answer is inferred or changed.",
+      "nextRequiredEvidenceOrCapability": "Original PDF/page evidence for q15, or an authoritative source correction that resolves the statement/choice/answer mismatch.",
+      "createdStage": "CREATE",
+      "lastReviewedStage": "CREATE"
+    }
+  ],
+  "finalArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+  "finalArtifactRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "finalArtifactSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
+  "nextStage": "READY_FOR_REVIEW1_WITH_ITEM_HOLDS",
+  "nextOwner": "REVIEW1",
+  "restartPoint": "Review all questions independently under the review contract; re-evaluate q15 from original PDF/page evidence if available. Keep q15 as ITEM_HOLD if unresolved. Do not reopen or repeat the 20 recorded completed results.",
+  "notionSyncStatus": "PENDING",
+  "updatedAtKst": "2026-09-29T22:23:00+09:00"
 }
