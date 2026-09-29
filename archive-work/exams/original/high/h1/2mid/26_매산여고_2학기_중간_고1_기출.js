@@ -36,7 +36,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 2,
@@ -74,7 +74,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q02-solution.svg",
     "solutionImageAlt": "삼각형 ABC의 세 중선과 무게중심 G(2,-1)을 표시한 해설 도형",
     "solutionImageCaption": "세 꼭짓점 좌표의 평균으로 무게중심 G를 확인한다.",
@@ -116,7 +116,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q03-solution.svg",
     "solutionImageAlt": "A(1,5), P(5,1), B(7,-1)의 내분 관계 AP:PB=2:1을 나타낸 해설 도형",
     "solutionImageCaption": "내분점 P의 위치와 좌표를 함께 확인한다.",
@@ -158,7 +158,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q04-solution.svg",
     "solutionImageAlt": "두 점 (1,-1), (3,5)을 지나는 직선과 기울기 삼각형을 나타낸 해설 도형",
     "solutionImageCaption": "Δx=2, Δy=6에서 기울기 3과 y절편 -4를 확인한다.",
@@ -200,7 +200,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 6,
@@ -238,7 +238,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 7,
@@ -276,7 +276,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q07-solution.svg",
     "solutionImageAlt": "중심 C=(-3,-√2), 반지름 3인 원이 y축에 접하는 모습을 나타낸 해설 도형",
     "solutionImageCaption": "중심의 x좌표 절댓값이 반지름 3이 되는 접선 조건과 제3사분면 조건을 확인한다.",
@@ -318,7 +318,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q08-solution.svg",
     "solutionImageAlt": "A의 x축 대칭점 A'과 A'-C-B 최단 경로를 나타낸 해설 도형",
     "solutionImageCaption": "대칭이동으로 AC+CB를 직선거리 A'B로 바꾸는 과정을 확인한다.",
@@ -360,7 +360,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q09-solution.svg",
     "solutionImageAlt": "점 P(1,-3)에서 원에 그은 두 접선과 두 접점을 나타낸 해설 도형",
     "solutionImageCaption": "접점에서 반지름과 접선이 수직이고 두 접선의 기울기가 이차방정식의 두 근이 됨을 확인한다.",
@@ -402,7 +402,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q10-solution.svg",
     "solutionImageAlt": "원래 원과 x축 방향으로 3만큼 이동한 원, 접선과 접점을 나타낸 해설 도형",
     "solutionImageCaption": "중심이 (3,0)에서 (6,0)으로 이동하고 반지름 2가 유지되어 직선에 접함을 확인한다.",
@@ -444,7 +444,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 12,
@@ -485,7 +485,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_A_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q12-solution.svg",
     "solutionImageAlt": "원래 중심 O와 접은 뒤 중심 O', 공통현 AB와 중점 M을 나타낸 해설 도형",
     "solutionImageCaption": "접는 선 AB가 OO'의 수직이등분선이며 AB=3√11이 되는 직각삼각형 관계를 확인한다.",
@@ -527,7 +527,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 14,
@@ -565,7 +565,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q14-solution.svg",
     "solutionImageAlt": "세 직선의 교점으로 이루어진 삼각형과 그 외접원을 나타낸 해설 도형",
     "solutionImageCaption": "세 교점과 외접원의 중심 (-3,2), 반지름 √10을 한 좌표평면에서 확인한다.",
@@ -607,7 +607,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 16,
@@ -645,7 +645,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 17,
@@ -683,7 +683,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q17-solution.svg",
     "solutionImageAlt": "A,B의 중점 M과 원의 중심 C, M에서 가장 가까운 원 위의 점 P를 나타낸 해설 도형",
     "solutionImageCaption": "AP²+BP²를 PM²로 바꾸고 원까지의 최단거리 PM=8을 확인한다.",
@@ -725,7 +725,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q18-solution.svg",
     "solutionImageAlt": "m=1과 m=31/17 두 경우의 현 AB와 접점에서의 서로 수직인 접선을 나타낸 해설 도형",
     "solutionImageCaption": "두 경우 모두 중심에서 현까지의 거리가 √2/2이고 두 접선이 서로 수직임을 확인한다.",
@@ -770,7 +770,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q19-solution.svg",
     "solutionImageAlt": "두 직선 l,m과 넓이 조건으로 정해지는 점 P의 위치를 나타낸 해설 도형",
     "solutionImageCaption": "두 넓이 조건에서 t=3/7과 P의 위치가 결정되는 구조를 확인한다.",
@@ -815,7 +815,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q20-solution.svg",
     "solutionImageAlt": "대칭점 C와 D,E, 삼각형 ODE의 외접원을 나타낸 해설 도형",
     "solutionImageCaption": "OE⊥DE이므로 OD가 외접원의 지름이 되어 둘레를 구하는 구조를 확인한다.",
@@ -853,7 +853,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE"
+    "reviewStatus": "READY_FOR_REVIEW"
   },
   {
     "id": 22,
@@ -887,7 +887,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q22-solution.svg",
     "solutionImageAlt": "Q의 y좌표가 12 또는 -12인 두 경우와 OP⊥OQ를 나타낸 해설 도형",
     "solutionImageCaption": "두 경우의 Q와 이에 수직인 OP를 비교하여 a의 두 값을 구한다.",
@@ -925,7 +925,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOLUTION_STAGE_B_DONE",
+    "reviewStatus": "READY_FOR_REVIEW",
     "solutionImage": "assets/images/26_매산여고_2학기_중간_고1_기출/q23-solution.svg",
     "solutionImageAlt": "직각이등변삼각형의 두 가능한 C 위치와 OC의 최대·최소를 나타낸 해설 도형",
     "solutionImageCaption": "a=±2 끝점에서 OC=√2 또는 3√2가 되는 배치를 확인한다.",
