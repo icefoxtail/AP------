@@ -29,7 +29,7 @@ window.questionBank = [
       "3의 제곱근"
     ],
     "answer": "②",
-    "solution": "[키포인트] '3의 제곱근'과 '제곱근 3'의 의미를 구분한다.\\n① $x^2=3$을 만족시키는 $x$의 값은 $\\pm\\sqrt{3}$이다.\\n② 제곱근 3은 $\\sqrt{3}$을 뜻한다.\\n③ 제곱하여 3이 되는 수는 $\\pm\\sqrt{3}$이다.\\n④ $\\pm\\sqrt{3}$이다.\\n⑤ 3의 제곱근은 $\\pm\\sqrt{3}$이다.\\n따라서 나머지 넷과 값이 다른 하나는 ②이다.",
+    "solution": "[핵심] '제곱근 3'과 '3의 제곱근'의 뜻을 구분한다.\n① $x^2=3$의 해는 $x=\\pm\\sqrt3$이다.\n② 제곱근 3은 양의 제곱근 $\\sqrt3$을 뜻한다.\n③ 제곱하여 3이 되는 수는 $\\pm\\sqrt3$이다.\n④는 그대로 $\\pm\\sqrt3$이다.\n⑤ 3의 제곱근은 $\\pm\\sqrt3$이다.\n따라서 나머지 넷과 값이 다른 것은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -64,7 +64,7 @@ window.questionBank = [
       "5개"
     ],
     "answer": "③",
-    "solution": "[키포인트] 근호 안의 수가 유리수의 제곱이면 근호를 사용하지 않고 나타낼 수 있다.\\n$\\sqrt{121}=11$\\n$\\sqrt{\\frac{1}{4}}=\\frac{1}{2}$\\n$\\sqrt{0.4}=\\sqrt{\\frac{2}{5}}$이므로 근호 없이 나타낼 수 없다.\\n$\\sqrt{\\frac{2}{9}}=\\frac{\\sqrt{2}}{3}$이므로 근호 없이 나타낼 수 없다.\\n$-\\sqrt{0.36}=-0.6$\\n따라서 근호 없이 나타낼 수 있는 수는 3개이므로 정답은 ③이다.",
+    "solution": "[핵심] 근호 안의 수가 유리수의 제곱인지 확인한다.\n$\\sqrt{121}=11$, $\\sqrt{\\frac14}=\\frac12$이다.\n$\\sqrt{0.4}=\\sqrt{\\frac25}$, $\\sqrt{\\frac29}=\\frac{\\sqrt2}{3}$이므로 이 둘은 근호를 없앨 수 없다.\n또 $-\\sqrt{0.36}=-0.6$이다.\n따라서 근호 없이 나타낼 수 있는 것은 3개이므로 정답은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -100,7 +100,7 @@ window.questionBank = [
       "가, 나, 다, 라"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\sqrt{x^2}=|x|$임을 이용하여 부호를 판단한다.\\n가. $a>0$일 때 $(\\sqrt{a})^2=a$이므로 참이다.\\n나. $a>0$일 때 $\\sqrt{a^2}=a$이므로 $-\\sqrt{a^2}=-a$이다. 참이다.\\n다. $a>0$일 때 $\\sqrt{(-a)^2}=|-a|=a$이므로 참이다.\\n라. $a<0$일 때 $\\sqrt{a^2}=|a|=-a$이므로 참이다.\\n따라서 옳은 것은 가, 나, 다, 라이고 정답은 ⑤이다.",
+    "solution": "[핵심] $\\sqrt{x^2}=|x|$를 이용하여 부호를 확인한다.\n가. $a>0$이면 $(\\sqrt a)^2=a$이므로 참이다.\n나. $a>0$이면 $\\sqrt{a^2}=a$이므로 $-\\sqrt{a^2}=-a$이다.\n다. $a>0$이면 $\\sqrt{(-a)^2}=|-a|=a$이다.\n라. $a<0$이면 $\\sqrt{a^2}=|a|=-a$이다.\n네 문장이 모두 옳으므로 정답은 ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -136,7 +136,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{a^2}=|a|$와 제곱의 성질을 이용한다.\\n$\\sqrt{10^2}=10$이고 $(-\\sqrt{2})^2=2$이다.\\n따라서 $\\sqrt{10^{2}} + (-\\sqrt{2})^{2}=10+2=12$이므로 정답은 ①이다.",
+    "solution": "[핵심] 제곱근과 제곱을 각각 계산한다.\n$\\sqrt{10^2}=|10|=10$이고 $(-\\sqrt2)^2=2$이다.\n따라서 $\\sqrt{10^2}+(-\\sqrt2)^2=10+2=12$이므로 정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -172,7 +172,7 @@ window.questionBank = [
       "7개"
     ],
     "answer": "④",
-    "solution": "[키포인트] $v=\\sqrt{19.6h}$가 자연수가 되도록 $h$의 형태를 정한다.\\n$v=\\sqrt{2\\times 9.8\\times h}=\\sqrt{19.6h}=\\sqrt{\\frac{98}{5}h}$이다.\\n$h=10k^2$이면 $19.6h=196k^2=(14k)^2$가 되어 $v$는 자연수이다.\\n$h$가 세 자리 자연수이므로 $100 \\le 10k^2 \\le 999$이다.\\n$10 \\le k^2 \\le 99$이므로 $k=4,5,6,7,8,9$이다.\\n가능한 값은 6개이므로 정답은 ④이다.",
+    "solution": "[핵심] 속력 $v$가 자연수가 되기 위한 $h$의 꼴을 찾는다.\n$v^2=19.6h=\\frac{98}{5}h$이므로 $5v^2=98h$이다.\n$5$와 $98$은 서로소이므로 $v^2$는 $98=2\\cdot7^2$의 배수이다. 따라서 $v$는 $14$의 배수이다.\n$v=14k$라 두면\n$h=\\frac{5v^2}{98}=10k^2$이다.\n$h$가 세 자리 자연수이므로 $100\\le10k^2\\le999$, 즉 $10\\le k^2<100$이다.\n따라서 $k=4,5,6,7,8,9$의 6가지이므로 정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -209,7 +209,7 @@ window.questionBank = [
       "(유리수)+(무리수)는 모두 무리수이다."
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 유리수와 무리수의 성질을 구분한다.\\n① $\\sqrt{4}=2$이므로 유리수이다.\\n② 유리수와 무리수는 서로 겹치지 않는다.\\n③ 무한소수 중 순환소수는 유리수이다.\\n④ 수직선은 유리수와 무리수를 모두 포함한 실수에 대응하는 점들로 완전히 메울 수 있다.\\n⑤ 유리수에 무리수를 더하면 항상 무리수이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "[핵심] 유리수와 무리수의 정의를 이용해 판단한다.\n① $\\sqrt4=2$이므로 유리수이다.\n② 유리수와 무리수는 서로 겹치지 않는다.\n③ 무한소수 중 순환소수는 유리수이다.\n④ 수직선은 유리수만으로 완전히 메울 수 없고 모든 실수에 대응하는 점으로 메워진다.\n⑤ 유리수에 무리수를 더한 값이 유리수라면 두 유리수의 차가 무리수가 되는 모순이 생긴다. 따라서 그 합은 무리수이다.\n옳은 것은 ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -246,7 +246,7 @@ window.questionBank = [
       "반지름의 길이가 2인 바퀴가 두 바퀴 굴러간 거리"
     ],
     "answer": "③, ⑤",
-    "solution": "[키포인트] 무리수는 유리수로 나타낼 수 없는 수이다.\\n① 넓이가 25인 정사각형의 한 변의 길이는 $5$이므로 유리수이다.\\n② 순환소수 $1.7\\dot{8}$은 유리수이다.\\n③ 한 변의 길이가 4인 정삼각형의 높이는 $2\\sqrt{3}$이므로 무리수이다.\\n④ 한 변의 길이가 $\\sqrt{2}$인 정사각형의 한 대각선의 길이는 $\\sqrt{2}\\times\\sqrt{2}=2$이므로 유리수이다.\\n⑤ 반지름의 길이가 2인 바퀴가 두 바퀴 굴러간 거리는 $2\\times 2\\pi \\times 2=8\\pi$이므로 무리수이다.\\n따라서 정답은 ③, ⑤이다.",
+    "solution": "[핵심] 각 길이 또는 거리를 직접 계산한다.\n① 넓이가 25인 정사각형의 한 변은 $5$이므로 유리수이다.\n② 순환소수는 유리수이다.\n③ 한 변이 4인 정삼각형의 높이는 $2\\sqrt3$이므로 무리수이다.\n④ 한 변이 $\\sqrt2$인 정사각형의 대각선은 $\\sqrt2\\cdot\\sqrt2=2$이므로 유리수이다.\n⑤ 반지름이 2인 바퀴가 두 바퀴 간 거리는 $2(2\\pi\\cdot2)=8\\pi$이므로 무리수이다.\n따라서 정답은 ③, ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -263,7 +263,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -277,7 +277,7 @@ window.questionBank = [
       "$\\sqrt{5}$는 두 점 P, Q 사이에 있는 무리수이다."
     ],
     "answer": "②, ⑤",
-    "solution": "[키포인트] 피타고라스 정리를 이용하여 선분의 길이를 구하고, 수직선 위의 점의 좌표를 결정한다.\\n\\n[조건 정리]\\n- 점 $A$의 좌표: $-2$\\n- 직각삼각형 $ABC$의 밑변 $\\overline{AB}$의 길이: $0 - (-2) = 2$\\n- 직각삼각형 $ABC$의 높이 $\\overline{BC}$의 길이: $3$\\n- 빗변 $\\overline{AC}$의 길이: $\\sqrt{2^2 + 3^2} = \\sqrt{13}$\\n\\n[풀이 과정]\\n- 반지름의 길이가 $\\overline{AC} = \\sqrt{13}$이므로 $\\overline{AP} = \\overline{AQ} = \\sqrt{13}$이다. 따라서 ①, ③은 옳다.\\n- 점 $P$는 점 $A(-2)$에서 오른쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 + \\sqrt{13}$이다. 따라서 ②는 옳지 않다.\\n- 점 $Q$는 점 $A(-2)$에서 왼쪽으로 $\\sqrt{13}$만큼 떨어진 점이므로 대응하는 수는 $-2 - \\sqrt{13}$이다. 따라서 ④는 옳다.\\n- $3 < \\sqrt{13} < 4$이므로 $Q \\approx -5.6$, $P \\approx 1.6$이다. $\\sqrt{5} \\approx 2.23$이므로 $\\sqrt{5}$는 $P$보다 오른쪽에 있다. 따라서 ⑤는 옳지 않다.\\n\\n[결론] 따라서 옳지 않은 것은 ②, ⑤이다.",
+    "solution": "[핵심] 모눈에서 $AB=2$, $BC=3$이므로 원의 반지름 $AC$를 먼저 구한다.\n피타고라스 정리에 의해 $AC=\\sqrt{2^2+3^2}=\\sqrt{13}$이다.\n점 $A$는 수직선의 $-2$에 있으므로\n$P=-2+\\sqrt{13}$, $Q=-2-\\sqrt{13}$이다.\n따라서 ①, ③, ④는 옳고 ②는 옳지 않다.\n또 $\\sqrt{13}<4$이므로 $P<2$이고, $\\sqrt5>2$이므로 $\\sqrt5$는 $P$보다 오른쪽에 있다. 따라서 ⑤도 옳지 않다.\n정답은 ②, ⑤이다.",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -310,7 +310,7 @@ window.questionBank = [
       "$-\\sqrt{2} < -\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양변에 같은 수를 더하거나 빼서 근호 안의 수를 비교한다.\\n① $6-\\sqrt{3}<3$이면 $3<\\sqrt{3}$이어야 하는데 거짓이다.\\n② 양변에 3을 더하면 $\\sqrt{7}<\\sqrt{5}$가 되어 거짓이다.\\n③ $3+\\sqrt{2}$는 양수이므로 $-5$보다 크다.\\n④ $5<3+\\sqrt{5}$는 $2<\\sqrt{5}$와 같고 참이다.\\n⑤ $-\\sqrt{2}<-\\sqrt{3}$은 $\\sqrt{2}>\\sqrt{3}$과 같아 거짓이다.\\n따라서 정답은 ④이다.",
+    "solution": "[핵심] 양변에 같은 수를 더하거나 빼서 비교한다.\n① $6-\\sqrt3<3$은 $3<\\sqrt3$과 같아 거짓이다.\n② $\\sqrt7-3<-3+\\sqrt5$는 $\\sqrt7<\\sqrt5$와 같아 거짓이다.\n③ $3+\\sqrt2$는 양수이므로 $-5$보다 크다.\n④ $5<3+\\sqrt5$는 $2<\\sqrt5$와 같고 $4<5$이므로 참이다.\n⑤ $-\\sqrt2<-\\sqrt3$은 $\\sqrt2>\\sqrt3$과 같아 거짓이다.\n따라서 정답은 ④이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -346,7 +346,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{2}$의 범위를 이용하여 값의 범위를 구한다.\\n$1.4<\\sqrt{2}<1.5$이므로 $4.2<3\\sqrt{2}<4.5$이다.\\n따라서 $1.5<6-3\\sqrt{2}<1.8$이므로 정수 부분은 $1$이다.\\n정답은 ①이다.",
+    "solution": "[핵심] $\\sqrt2$의 범위를 이용하여 식의 범위를 구한다.\n$1.4<\\sqrt2<1.5$이므로 $4.2<3\\sqrt2<4.5$이다.\n따라서 $1.5<6-3\\sqrt2<1.8$이다.\n정수 부분은 $1$이므로 정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -383,7 +383,7 @@ window.questionBank = [
       "30개"
     ],
     "answer": "②",
-    "solution": "[키포인트] $40<\\sqrt{3k}<41$을 만족하는 자연수 $k$의 개수를 센다.\\n$40<\\sqrt{3k}<41$의 각 변을 제곱하면\\n$1600<3k<1681$이다.\\n따라서 $\\frac{1600}{3}<k<\\frac{1681}{3}$이다.\\n$533.\\overline{3}<k<560.\\overline{3}$이므로 가능한 자연수 $k$는 $534,535,\\dots,560$이다.\\n개수는 $560-534+1=27$개이다.\\n따라서 정답은 ②이다.",
+    "solution": "[핵심] 수열의 항을 $\\sqrt{3n}$으로 두고 40과 41 사이에 들어가는 $n$을 센다.\n$40<\\sqrt{3n}<41$이므로\n$1600<3n<1681$이다.\n따라서 $\\frac{1600}{3}<n<\\frac{1681}{3}$이고\n$n=534,535,\\ldots,560$이다.\n개수는 $560-534+1=27$개이므로 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -399,7 +399,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "표현"
     ],
@@ -413,7 +413,7 @@ window.questionBank = [
       "가: 교환, 나: $(\\sqrt{3} \\times \\sqrt{5})^{2}$, 다: 양의 제곱근, 라: $\\sqrt{3 \\times 5}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 양수의 제곱근 중 양의 값을 뜻하는 표현을 찾아야 한다.\\n실수의 곱셈에서는 교환법칙과 결합법칙이 성립하므로 (가)는 교환이다.\\n제곱하는 대상은 $(\\sqrt{3}\\times\\sqrt{5})^2$이므로 (나)는 $(\\sqrt{3} \\times \\sqrt{5})^{2}$이다.\\n$\\sqrt{3}\\times\\sqrt{5}$는 양수이므로 $3\\times5$의 양의 제곱근이다. 따라서 (다)는 양의 제곱근이다.\\n그러므로 $\\sqrt{3}\\times\\sqrt{5}=\\sqrt{3\\times5}$이므로 (라)는 $\\sqrt{3 \\times 5}$이다.\\n정답은 ⑤이다.",
+    "solution": "[핵심] 같은 근호끼리 묶는 과정에 필요한 곱셈 법칙을 찾는다.\n$(\\sqrt3\\cdot\\sqrt5)^2=(\\sqrt3\\cdot\\sqrt5)(\\sqrt3\\cdot\\sqrt5)$이다.\n곱셈의 교환법칙과 결합법칙을 이용하면\n$(\\sqrt3\\cdot\\sqrt3)(\\sqrt5\\cdot\\sqrt5)=3\\cdot5$가 된다.\n$\\sqrt3\\cdot\\sqrt5$는 양수이므로 $3\\cdot5$의 양의 제곱근이다.\n따라서 $\\sqrt3\\cdot\\sqrt5=\\sqrt{3\\cdot5}$이다.\n(가) 교환, (나) $(\\sqrt3\\cdot\\sqrt5)^2$, (다) 양의 제곱근, (라) $\\sqrt{3\\cdot5}$이므로 정답은 ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -447,7 +447,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "①",
-    "solution": "[키포인트] 근호 안의 수를 간단히 하고, $b^2$의 값을 이용한다.\\n$\\sqrt{360}=\\sqrt{36\\times10}=6\\sqrt{10}$이므로 $a=6$이다.\\n$\\frac{\\sqrt{10}}{\\sqrt{2}}=\\sqrt{\\frac{10}{2}}=\\sqrt{5}$이므로 $b=\\sqrt{5}$이다.\\n따라서 $a+b^2=6+(\\sqrt{5})^2=6+5=11$이다.\\n정답은 ①이다.",
+    "solution": "[핵심] 각 식을 가장 간단한 꼴로 바꾼다.\n$\\sqrt{360}=\\sqrt{36\\cdot10}=6\\sqrt{10}$이므로 $a=6$이다.\n또 $b=\\frac{\\sqrt{10}}{\\sqrt2}=\\sqrt5$이므로 $b^2=5$이다.\n따라서 $a+b^2=6+5=11$이므로 정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -484,7 +484,7 @@ window.questionBank = [
       "202.5"
     ],
     "answer": "②",
-    "solution": "[키포인트] 소수의 위치를 $10$의 거듭제곱으로 바꾸어 제곱근을 계산한다.\\n$0.00041=4.1\\times10^{-4}$이다.\\n따라서 $\\sqrt{0.00041}=\\sqrt{4.1\\times10^{-4}}=\\sqrt{4.1}\\times10^{-2}$이다.\\n$\\sqrt{4.1}=2.025$이므로 $\\sqrt{0.00041}\\approx2.025\\times0.01=0.02025$이다.\\n정답은 ②이다.",
+    "solution": "[핵심] $0.00041=4.1\\cdot10^{-4}$로 바꾼다.\n$\\sqrt{0.00041}=\\sqrt{4.1\\cdot10^{-4}}=\\sqrt{4.1}\\cdot10^{-2}$이다.\n$\\sqrt{4.1}=2.025$이므로\n$\\sqrt{0.00041}\\approx2.025\\cdot0.01=0.02025$이다.\n따라서 정답은 ②이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -519,7 +519,7 @@ window.questionBank = [
       "$\\sqrt{3}(\\sqrt{2} + 5) = \\sqrt{6} + 5\\sqrt{3}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 근호가 있는 식을 간단히 하여 등식이 성립하는지 확인한다.\\n① $\\frac{\\sqrt{3}}{2\\sqrt{5}}=\\frac{\\sqrt{15}}{10}$이므로 옳다.\\n② $3\\sqrt{2}\\times\\sqrt{5}\\div 2\\sqrt{10}=\\frac{3\\sqrt{10}}{2\\sqrt{10}}=\\frac{3}{2}$이므로 옳다.\\n③ $\\sqrt{32}+\\sqrt{8}=4\\sqrt{2}+2\\sqrt{2}=6\\sqrt{2}$이므로 $2\\sqrt{10}$과 같지 않다.\\n④ $3\\sqrt{2}-\\sqrt{8}=3\\sqrt{2}-2\\sqrt{2}=\\sqrt{2}$이므로 옳다.\\n⑤ $\\sqrt{3}(\\sqrt{2}+5)=\\sqrt{6}+5\\sqrt{3}$이므로 옳다.\\n따라서 옳지 않은 것은 ③이다.",
+    "solution": "[핵심] 각 식을 간단히 하여 등식이 맞는지 확인한다.\n① $\\frac{\\sqrt3}{2\\sqrt5}=\\frac{\\sqrt{15}}{10}$이다.\n② $3\\sqrt2\\cdot\\sqrt5\\div2\\sqrt{10}=\\frac{3\\sqrt{10}}{2\\sqrt{10}}=\\frac32$이다.\n③ $\\sqrt{32}+\\sqrt8=4\\sqrt2+2\\sqrt2=6\\sqrt2$이므로 $2\\sqrt{10}$과 같지 않다.\n④ $3\\sqrt2-\\sqrt8=\\sqrt2$이다.\n⑤ $\\sqrt3(\\sqrt2+5)=\\sqrt6+5\\sqrt3$이다.\n옳지 않은 것은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -553,7 +553,7 @@ window.questionBank = [
       "$\\frac{\\sqrt{2}}{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 곱셈과 나눗셈을 각각 간단히 한 뒤 동류항을 계산한다.\\n첫째항은\\n$\\sqrt{27}\\times\\frac{3}{\\sqrt{6}}=3\\sqrt{3}\\times\\frac{3}{\\sqrt{6}}=\\frac{9\\sqrt{3}}{\\sqrt{6}}=\\frac{9}{\\sqrt{2}}=\\frac{9\\sqrt{2}}{2}$이다.\\n둘째항은\\n$\\sqrt{24}\\div\\frac{\\sqrt{3}}{2}=\\sqrt{24}\\times\\frac{2}{\\sqrt{3}}=2\\sqrt{8}=4\\sqrt{2}$이다.\\n따라서 전체 식은\\n$\\frac{9\\sqrt{2}}{2}-4\\sqrt{2}=\\frac{9\\sqrt{2}}{2}-\\frac{8\\sqrt{2}}{2}=\\frac{\\sqrt{2}}{2}$이다.\\n정답은 ⑤이다.",
+    "solution": "[핵심] 두 항을 각각 간단히 한 뒤 뺀다.\n$\\sqrt{27}\\cdot\\frac3{\\sqrt6}\n=\\frac{9\\sqrt3}{\\sqrt6}\n=\\frac9{\\sqrt2}\n=\\frac{9\\sqrt2}{2}$이다.\n또\n$\\sqrt{24}\\div\\frac{\\sqrt3}{2}\n=\\sqrt{24}\\cdot\\frac2{\\sqrt3}\n=4\\sqrt2$이다.\n따라서\n$\\frac{9\\sqrt2}{2}-4\\sqrt2=\\frac{\\sqrt2}{2}$이므로 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -587,7 +587,7 @@ window.questionBank = [
       "$-4a^{2} + 4ab + b^{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제곱 공식 $(x+y)^2=x^2+2xy+y^2$을 이용한다.\\n$(-2a-b)^2=\\{-(2a+b)\\}^2=(2a+b)^2$이다.\\n$(2a+b)^2=4a^2+4ab+b^2$이므로 정답은 ①이다.",
+    "solution": "[핵심] 전체 부호를 없앤 뒤 완전제곱식을 전개한다.\n$(-2a-b)^2=(-(2a+b))^2=(2a+b)^2$이다.\n따라서\n$(2a+b)^2=4a^2+4ab+b^2$이므로 정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -623,7 +623,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "[키포인트] 좌변을 전개한 뒤 계수를 비교한다.\\n$(Ax-2)^2=A^2x^2-4Ax+4$이다.\\n이 식이 $9x^2+12x+B$와 같으므로 $A^2=9$, $-4A=12$, $B=4$이다.\\n$-4A=12$에서 $A=-3$이고, $B=4$이다.\\n따라서 $A+B=-3+4=1$이므로 정답은 ④이다.",
+    "solution": "[핵심] 좌변을 전개하여 계수를 비교한다.\n$(Ax-2)^2=A^2x^2-4Ax+4$이다.\n이를 $9x^2+12x+B$와 비교하면\n$-4A=12$이므로 $A=-3$, 상수항에서 $B=4$이다.\n또 $A^2=9$도 만족한다.\n따라서 $A+B=1$이므로 정답은 ④이다.",
     "level": "하",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -655,7 +655,7 @@ window.questionBank = [
       "$(a + 2)(a + 3) = a^2 + 5a + 6$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 직사각형의 넓이 변화를 통해 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 이해한다.\\n\\n[조건 정리]\\n- 처음 정사각형의 넓이: $a^2$\\n- 가로를 $2$ 늘이고 세로를 $2$ 줄인 직사각형의 넓이: $(a+2)(a-2)$\\n\\n[풀이 과정]\\n1. <그림1>에서 색칠된 부분의 가로는 $a+2$, 세로는 $a-2$인 직사각형이다. 이 넓이는 $(a+2)(a-2)$이다.\\n2. <그림1>의 $\\text{Ⓐ}$ 부분을 떼어 <그림2>와 같이 아래에 붙이면, 전체 넓이는 한 변의 길이가 $a$인 정사각형($a^2$)에서 한 변의 길이가 $2$인 작은 정사각형($2^2=4$)이 빠진 모양과 같아진다.\\n3. 따라서 도형의 넓이 관계를 식으로 나타내면 $(a+2)(a-2) = a^2 - 4$가 된다.\\n\\n[결론] 따라서 이 그림이 설명하고 있는 식은 ①이다.",
+    "solution": "[핵심] 도형을 옮겨도 넓이는 변하지 않는다.\n<그림1>의 직사각형은 가로가 $a+2$, 세로가 $a-2$이므로 넓이는 $(a+2)(a-2)$이다.\n색칠된 부분 Ⓐ를 <그림2>처럼 옮기면 한 변이 $a$인 정사각형에서 한 변이 2인 작은 정사각형을 뺀 모양이 된다.\n따라서\n$(a+2)(a-2)=a^2-2^2=a^2-4$이다.\n정답은 ①이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -690,7 +690,7 @@ window.questionBank = [
       "8개"
     ],
     "answer": "④",
-    "solution": "[키포인트] $ab=-6$을 만족하는 정수쌍을 모두 조사한다.\\n$(3x+a)(2x+b)=6x^2+(3b+2a)x+ab$이다.\\n따라서 $ab=-6$, $A=3b+2a$이다.\\n$ab=-6$을 만족하는 정수쌍 $(a,b)$에 대해 $A$를 구하면\\n$(1,-6)\\Rightarrow A=-16$\\n$(-1,6)\\Rightarrow A=16$\\n$(2,-3)\\Rightarrow A=-5$\\n$(-2,3)\\Rightarrow A=5$\\n$(3,-2)\\Rightarrow A=0$\\n$(-3,2)\\Rightarrow A=-5+? $",
+    "solution": "[핵심] $ab=-6$을 만족하는 정수쌍을 모두 조사하고 $A$의 서로 다른 값만 센다.\n$(3x+a)(2x+b)=6x^2+(3b+2a)x+ab$이므로\n$ab=-6$, $A=3b+2a$이다.\n정수쌍에 따른 $A$는\n$(1,-6)\\to-16$, $(-1,6)\\to16$,\n$(2,-3)\\to-5$, $(-2,3)\\to5$,\n$(3,-2)\\to0$, $(-3,2)\\to0$,\n$(6,-1)\\to9$, $(-6,1)\\to-9$이다.\n서로 다른 값은 $-16,-9,-5,0,5,9,16$의 7개이므로 정답은 ④이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -714,7 +714,7 @@ window.questionBank = [
     "content": "<div class='box'>&lt;서술형1&gt; $2\\sqrt{25+a} = 4\\sqrt{5}, \\sqrt{30-b} = 2\\sqrt{3}$을 만족시키는 두 수 $a, b$에 대하여 $a-b$의 값을 구하시오.(7점)</div>",
     "choices": [],
     "answer": "-23",
-    "solution": "[키포인트] 양변을 비교하여 근호 안의 값을 구한다.\\n$2\\sqrt{25+a}=4\\sqrt{5}$의 양변을 2로 나누면 $\\sqrt{25+a}=2\\sqrt{5}$이다.\\n양변을 제곱하면 $25+a=20$이므로 $a=-5$이다.\\n$\\sqrt{30-b}=2\\sqrt{3}$의 양변을 제곱하면 $30-b=12$이므로 $b=18$이다.\\n따라서 $a-b=-5-18=-23$이다.",
+    "solution": "[핵심] 두 식을 각각 제곱하여 $a,b$를 구한다.\n$2\\sqrt{25+a}=4\\sqrt5$에서\n$\\sqrt{25+a}=2\\sqrt5$이므로 $25+a=20$, 따라서 $a=-5$이다.\n또 $\\sqrt{30-b}=2\\sqrt3$이므로 $30-b=12$, 따라서 $b=18$이다.\n그러므로 $a-b=-5-18=-23$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -738,7 +738,7 @@ window.questionBank = [
     "content": "<div class='box'>&lt;서술형2&gt; $x = \\frac{1}{\\sqrt{3}-\\sqrt{2}}, y = \\frac{1}{3-2\\sqrt{2}}$ 일 때, $x-y$의 값을 구하여라.(6점)</div>",
     "choices": [],
     "answer": "$\\sqrt{3}-\\sqrt{2}-3$",
-    "solution": "[키포인트] 분모를 유리화하여 $x$와 $y$를 각각 간단히 한다.\\n$x=\\frac{1}{\\sqrt{3}-\\sqrt{2}}=\\frac{\\sqrt{3}+\\sqrt{2}}{3-2}=\\sqrt{3}+\\sqrt{2}$이다.\\n$y=\\frac{1}{3-2\\sqrt{2}}=\\frac{3+2\\sqrt{2}}{9-8}=3+2\\sqrt{2}$이다.\\n따라서 $x-y=(\\sqrt{3}+\\sqrt{2})-(3+2\\sqrt{2})=\\sqrt{3}-\\sqrt{2}-3$이다.",
+    "solution": "[핵심] 두 분모를 각각 유리화한다.\n$x=\\frac1{\\sqrt3-\\sqrt2}\n=\\frac{\\sqrt3+\\sqrt2}{3-2}\n=\\sqrt3+\\sqrt2$이다.\n$y=\\frac1{3-2\\sqrt2}\n=\\frac{3+2\\sqrt2}{9-8}\n=3+2\\sqrt2$이다.\n따라서\n$x-y=\\sqrt3-\\sqrt2-3$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -754,7 +754,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -763,7 +763,7 @@ window.questionBank = [
     "content": "&lt;서술형3&gt; $(x+a)(x-1)$을 전개하면 $x^{2} + bx - 3$일 때, 다음 그림과 같이 빗변과 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오.(7점)<br><div style='text-align:center; margin: 10px 0;'><svg width='150' height='100' viewBox='0 0 100 80' xmlns='http://www.w3.org/2000/svg'><polygon points='10,70 90,70 10,10' fill='none' stroke='black' stroke-width='1'/><polyline points='10,60 20,60 20,70' fill='none' stroke='black' stroke-width='1'/><text x='50' y='80' font-size='10' text-anchor='middle'>a-b</text><text x='60' y='35' font-size='10' text-anchor='middle'>a+b</text></svg></div>",
     "choices": [],
     "answer": "$\\sqrt{6}$",
-    "solution": "[키포인트] 전개식에서 $a,b$를 구한 뒤 피타고라스 정리로 높이를 구한다.\\n$(x+a)(x-1)=x^2+(a-1)x-a$이다.\\n이 식이 $x^2+bx-3$과 같으므로 $-a=-3$에서 $a=3$이고, $b=a-1=2$이다.\\n따라서 빗변의 길이는 $a+b=5$, 밑변의 길이는 $a-b=1$이다.\\n높이를 $h$라 하면 직각삼각형에서 $h^2+1^2=5^2$이므로 $h^2=24$, $h=2\\sqrt{6}$이다.\\n넓이는 $\\frac{1}{2}\\times1\\times2\\sqrt{6}=\\sqrt{6}$이다.\\n따라서 정답은 $\\sqrt{6}$이다.",
+    "solution": "[핵심] 전개식에서 $a,b$를 구한 뒤 직각삼각형의 높이를 구한다.\n$(x+a)(x-1)=x^2+(a-1)x-a$이다.\n이를 $x^2+bx-3$과 비교하면 $a=3$, $b=2$이다.\n빗변은 $a+b=5$, 밑변은 $a-b=1$이다.\n높이를 $h$라 하면\n$h^2+1^2=5^2$이므로 $h=2\\sqrt6$이다.\n넓이는 $\\frac12\\cdot1\\cdot2\\sqrt6=\\sqrt6$이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
