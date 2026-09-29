@@ -12,17 +12,21 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
-### ARCHIVE GPT ARTIFACT-FIRST LIGHTWEIGHT — M3부터 적용 (2026-09-28)
+### ARCHIVE GPT ARTIFACT-FIRST LIGHTWEIGHT — ACTIVE / CURRENT RECERTIFICATION (2026-09-29)
 
-중3 정상 시험지 생산부터 `02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`를 기본 작업 방식으로 적용한다.
+중등 정상 시험지 생산은 `02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`를 기본 작업 방식으로 적용한다. 현재 재인증 generation은 `MIDDLE_RECERT_2026-09-29_V1`이다.
 
+- 재인증 scope: **M3 69 + M1 31 + M2 1학기 34 = 134시험지**.
+- 현재 진행 중인 M2 2학기 고정 20은 reset하지 않고 기존 current REVIEW/BATCH/FINAL을 완주한다.
+- 위 134시험지는 과거 CREATE_DONE/R1/R2E/main 이력을 면제권으로 사용하지 않는다. **동일 current generation receipt + final artifact SHA가 없는 시험지는 반드시 CURRENT CREATE부터 다시 통과**한다.
+- CREATE는 전 문항을 fresh하게 읽어 발문/보기 exact, 발문 조판, 학생용 해설 품질·해설 조판, SVG/solutionImage 필요성과 정확성을 현재 기준으로 다시 판정한다. 이미 좋은 내용은 KEEP할 수 있으나 fresh coverage를 생략할 수 없다.
+- REVIEW1/2는 완성본을 처음 보는 것처럼 FULL 독립검수하고, 발견 결함은 같은 작업에서 직접 수정한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다.
 - Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
-- REVIEW1/2는 완성본을 처음 보는 것처럼 fresh review하고, 발견 결함은 같은 작업에서 직접 수정한다.
 - receipt/evidence는 최소 상태 기록으로 줄이고, 긴 packet/seal/snapshot은 공통 시스템 문제나 명시적 필요가 있을 때만 사용한다.
 - Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review와 분리한다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질은 경량화 대상이 아니다.
-- M2 진행 중에는 기존 레인을 변경하지 않으며, **M2 전체 완료 후 M3 전환 시 활성화**한다.
+- 현재 REVIEW는 2회다. 반복 SVG false PASS 등 구체적 품질 근거가 생기면 사용자 지시로 REVIEW3를 추가할 수 있으나 작업자가 임의로 횟수·cadence를 바꾸지 않는다.
 
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 
