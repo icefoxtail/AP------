@@ -1,9 +1,39 @@
 # Archive GPT Artifact-First Lightweight v1
 
 - 적용 시점: **중3 생산 라인부터**
-- 상태: PREPARED / ACTIVATE_AFTER_M2_COMPLETE
+- 상태: ACTIVE / CURRENT RECERTIFICATION
 - 적용 대상: JS Archive 정상 시험지 CREATE / REVIEW1 / REVIEW2 / FINAL handoff
 - 비적용: 공통 generator/validator 개발, 대량 migration, 전역 Meta/Foundation 수술, 시스템 파이프라인 구현
+- current certification generation: `MIDDLE_RECERT_2026-09-29_V1`
+
+---
+
+## CURRENT — 중등 current-generation 재인증 HARD RULE
+
+2026-09-29 형님 지시로 다음 134시험지는 과거 stage를 면제권으로 사용하지 않고 **현재 품질 기준으로 전면 재인증**한다.
+
+- M3 전체 69
+- M1 전체 31
+- M2 1학기 중간 16 + 1학기 기말 18 = 34
+- 현재 이미 진행 중인 M2 2학기 고정 20은 본 재인증 reset 대상이 아니며 기존 current REVIEW/BATCH/FINAL 흐름을 그대로 완주한다.
+
+재인증 scope의 모든 시험지는 반드시 다음 current-generation 경로를 새로 통과한다.
+
+```text
+CURRENT CREATE
+→ CURRENT REVIEW1
+→ CURRENT REVIEW2
+→ BATCH / FINAL
+→ MAIN
+```
+
+과거 `CREATE_DONE`, `REVIEW1_DONE`, legacy R2/R2E, 과거 main 반영, 예전 solution/SVG 존재는 **현재 세대 CREATE/REVIEW 면제 근거가 아니다.** 과거 결과는 baseline/reference로만 재사용한다.
+
+`CREATE_DONE 이상이면 skip`, `기존 R1 완료면 승계` 같은 문구는 본 scope에서 **같은 `certificationGeneration=MIDDLE_RECERT_2026-09-29_V1`의 durable receipt + final artifact SHA 일치가 있을 때만** 성립한다. generation 필드가 없거나 다른 generation이면 legacy/history로 취급하고 해당 current stage를 다시 수행한다.
+
+재CREATE는 무조건 문장을 새로 쓰라는 뜻이 아니다. 시험지 전체를 현재 정본과 Golden/Negative Sample 기준으로 fresh audit하여, 이미 좋은 문항은 `KEEP`, 부족한 문항만 `UPGRADE/REPAIR`한다. 그러나 **fresh coverage 자체는 생략할 수 없다.** 전 문항에서 최소한 발문/보기/정답 exact, QUESTION MICRO_LAYOUT, 학생용 solution 품질·조판, visual 필요성 및 기존 SVG/solutionImage 정확성을 다시 판정한다.
+
+현재 REVIEW는 REVIEW1 + REVIEW2 두 번의 FULL 독립검수다. 향후 반복 SVG false PASS 등 구체적 품질 근거가 누적되면 형님 지시에 따라 REVIEW3를 추가할 수 있으나, 문서 작업자가 임의로 review 횟수나 예약 cadence를 바꾸지 않는다.
 
 ---
 
@@ -55,14 +85,17 @@ CREATE의 전면 지시는 다음 정도로 유지한다.
 
 CREATE 필수 결과:
 - source/content/choices/answer/image exact
-- solution 완성
-- 필요한 visual 완성
+- 전 문항 current-generation fresh coverage
+- solution 완성 또는 current 기준 KEEP 판정
+- 필요한 visual의 fresh 필요성 판정 + KEEP/ADD/REPAIR/REBUILD 완료
 - micro layout 정상
 - known defect 0
 - 다음 reviewer가 읽을 최종 artifact 존재
 
 CREATE 종료 기록은 최소:
-`examFile / stage / artifact SHA / changed files / known blocker`.
+`examFile / certificationGeneration / stage / artifact SHA / changed files / known blocker`.
+
+재인증 scope에서 `certificationGeneration` 누락은 current CREATE 완료 증거가 아니다.
 
 ---
 
