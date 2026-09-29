@@ -57,6 +57,7 @@ CURRENT CREATE receipt에는 반드시 `solutionRewrite=FULL_ALL_QUESTIONS`와 `
 - CREATE: 해결 가능한 결함은 즉시 수정한다. 해결 불가 문항만 item hold로 남기고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다.
 - REVIEW1: CREATE의 hold 결론을 신뢰하지 않고 전체 문항과 held item을 처음부터 독립 검수한다. 해결되면 hold를 제거하고, 남으면 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘긴다.
 - REVIEW2: 다시 독립 재판정한다. 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`로 보낸다. 시험지 전체 HOLD를 만들지 않는다.
+- ITEM recovery는 별도 시험지 격리 레인을 만들지 않는다. 기존 REVIEW2 lane이 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 `ITEM_RECOVERY_QUEUE` 시험지 1개의 **held qid만** fresh 재판정한다. 해결된 qid만 제거하고, 모두 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다. 같은 미해결 근거를 새 evidence 없이 무한 반복하지 않는다.
 - BATCH/FINAL: item hold가 남은 시험지를 그 실행에서 건너뛰되 다른 시험지는 계속 처리한다. 해당 시험지는 item recovery가 끝나 `itemHoldCount=0`이 되면 `READY_FOR_COMMIT`으로 승격한다.
 - authority/connector/Git write 실패는 콘텐츠 HOLD가 아니라 `AUTHORITY_WRITE_PENDING` 같은 운영 상태다.
 
