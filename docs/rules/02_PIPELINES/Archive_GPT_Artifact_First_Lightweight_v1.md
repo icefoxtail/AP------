@@ -31,9 +31,11 @@ CURRENT CREATE
 
 `CREATE_DONE 이상이면 skip`, `기존 R1 완료면 승계` 같은 문구는 본 scope에서 **같은 `certificationGeneration=MIDDLE_RECERT_2026-09-29_V1`의 durable receipt + final artifact SHA 일치가 있을 때만** 성립한다. generation 필드가 없거나 다른 generation이면 legacy/history로 취급하고 해당 current stage를 다시 수행한다.
 
-재CREATE는 무조건 문장을 새로 쓰라는 뜻이 아니다. 시험지 전체를 현재 정본과 Golden/Negative Sample 기준으로 fresh audit하여, 이미 좋은 문항은 `KEEP`, 부족한 문항만 `UPGRADE/REPAIR`한다. 그러나 **fresh coverage 자체는 생략할 수 없다.** 전 문항에서 최소한 발문/보기/정답 exact, QUESTION MICRO_LAYOUT, 학생용 solution 품질·조판, visual 필요성 및 기존 SVG/solutionImage 정확성을 다시 판정한다.
+CURRENT CREATE는 기존 해설 검수/보수 단계가 아니다. **모든 문항의 `solution`을 기존 solution 품질과 무관하게 새로 작성한다. 기존 solution KEEP은 금지한다.** 먼저 source/content/choices/answer를 고정하고, 기존 solution을 초안·문장 재사용·판정 기준으로 사용하지 않은 채 source + answer만으로 학생용 작은칠판 solution을 독립 작성한다. 결정적 중간식·경우분리·이유·결론을 학생이 그대로 따라갈 수 있게 현재 교육과정과 학생언어로 작성한다. 새 solution을 완성한 뒤에만 기존 solution을 source truth/계산 사실 누락 여부를 확인하는 비교 참고로 사용할 수 있다. 발문/보기/정답은 source exact를 보존하고, QUESTION MICRO_LAYOUT과 solution 조판, SVG/solutionImage 필요성·정확성은 새 solution 기준으로 다시 판정한다.
 
-현재 REVIEW는 REVIEW1 + REVIEW2 두 번의 FULL 독립검수다. 향후 반복 SVG false PASS 등 구체적 품질 근거가 누적되면 형님 지시에 따라 REVIEW3를 추가할 수 있으나, 문서 작업자가 임의로 review 횟수나 예약 cadence를 바꾸지 않는다.
+CURRENT CREATE receipt에는 반드시 `solutionRewrite=FULL_ALL_QUESTIONS`와 `solutionRewriteCount=N/N`을 기록한다. 이 marker나 전수 문항수 evidence가 없으면 current-generation CREATE_DONE이라도 **해설 전면 재작성 계약 관점에서는 미완**이다.
+
+현재 REVIEW는 REVIEW1 + REVIEW2 두 번의 FULL 독립검수다. 이미 CURRENT CREATE가 완료됐더라도 위 full-rewrite marker가 없는 시험지는 CREATE 큐를 되감지 않는다. **REVIEW1이 전 문항 solution 전면 재작성 catch-up을 수행해 같은 branch에서 닫고, REVIEW2가 그 결과를 처음 보는 것처럼 전 문항 수학·solution·작은칠판·SVG를 독립 재검하여 남은 결함을 직접 수정한다.** REVIEW1 catch-up receipt에는 `solutionRewriteCatchup=FULL_ALL_QUESTIONS`와 문항수 evidence를 남긴다. REVIEW2는 CREATE 또는 REVIEW1 중 하나의 full-rewrite evidence를 확인하되 상세 verdict는 선입력으로 읽지 않는다. 이 catch-up 규칙은 M3 69 → M1 31 → M2 1학기 34에 적용하며, reset 예외인 M2 2학기 고정 20에는 소급 전면재작성 의무를 추가하지 않는다. 향후 반복 SVG false PASS 등 구체적 품질 근거가 누적되면 형님 지시에 따라 REVIEW3를 추가할 수 있으나, 문서 작업자가 임의로 review 횟수나 예약 cadence를 바꾸지 않는다.
 
 ---
 
@@ -86,14 +88,16 @@ CREATE의 전면 지시는 다음 정도로 유지한다.
 CREATE 필수 결과:
 - source/content/choices/answer/image exact
 - 전 문항 current-generation fresh coverage
-- solution 완성 또는 current 기준 KEEP 판정
+- **solution 전 문항 새 작성 완료 — 기존 solution KEEP 0건**
+- `solutionRewrite=FULL_ALL_QUESTIONS`
+- `solutionRewriteCount=N/N`
 - 필요한 visual의 fresh 필요성 판정 + KEEP/ADD/REPAIR/REBUILD 완료
 - micro layout 정상
 - known defect 0
 - 다음 reviewer가 읽을 최종 artifact 존재
 
 CREATE 종료 기록은 최소:
-`examFile / certificationGeneration / stage / artifact SHA / changed files / known blocker`.
+`examFile / certificationGeneration / stage / artifact SHA / changed files / solutionRewrite / solutionRewriteCount / known blocker`.
 
 재인증 scope에서 `certificationGeneration` 누락은 current CREATE 완료 증거가 아니다.
 
@@ -114,6 +118,8 @@ REVIEW1과 REVIEW2의 전면 지시는 다음으로 단순화한다.
 - QUESTION MICRO_LAYOUT
 - 연결 SVG/solutionImage
 - JS 기본 무결성
+- current-generation M3/M1/M2 1학기에서는 CREATE receipt의 `solutionRewrite=FULL_ALL_QUESTIONS` + 문항수 evidence 확인
+- marker가 없으면 REVIEW1이 전 문항 solution full-rewrite catch-up을 수행하고, REVIEW2 시점까지도 marker/catch-up evidence가 없으면 REVIEW2가 직접 catch-up한 뒤 독립검수를 계속한다
 
 Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review에서 제외한다.
 
