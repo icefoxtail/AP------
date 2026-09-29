@@ -64,7 +64,8 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q2-solution.svg"
   },
   {
     "id": 3,
@@ -185,10 +186,11 @@ window.questionBank=[
     ],
     "answer": "③",
     "solution": "[키포인트] 세 직선의 교점을 구하면 둘러싸인 삼각형의 밑변과 높이를 알 수 있다.\n조건 정리: 두 일차함수의 그래프는 원점에서 만나고, 직선 $x=4$에서 각각 $(4,4)$와 $(4,8)$을 지난다.\n풀이 방향: 세 교점을 꼭짓점으로 하는 삼각형의 넓이를 구한다.\n정석 풀이: $y=x$와 $y=2x$의 교점은 $(0,0)$이다. $x=4$를 두 식에 대입하면 나머지 두 꼭짓점은 $(4,4)$와 $(4,8)$이다. $x=4$ 위의 세로 선분 길이는 $8-4=4$이고, 원점에서 직선 $x=4$까지의 가로 거리는 $4$이다. 따라서 넓이는 $\\dfrac{1}{2}\\times4\\times4=8$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q6-solution.svg"
   },
   {
     "id": 7,
@@ -247,10 +249,10 @@ window.questionBank=[
     ],
     "answer": "⑤",
     "solution": "[키포인트] $y$축에 평행한 직선 위의 모든 점은 $x$좌표가 같다.\n조건 정리: 두 점의 $x$좌표는 각각 $3$과 $a-1$이다.\n풀이 방향: 두 $x$좌표를 같게 놓고 $a$를 구한다.\n정석 풀이: 두 점을 지나는 직선이 세로 방향이 되려면 $3=a-1$이어야 한다. 양변에 $1$을 더하면 $a=4$이다. 이때 두 점은 $(3,8)$과 $(3,4)$로 서로 다른 점이므로 실제로 $y$축에 평행한 직선을 정한다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 9,
@@ -342,6 +344,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "[키포인트] 이등변삼각형의 꼭짓점에서 밑변에 내린 수선은 밑변을 이등분한다.\n조건 정리: $AB=AC=10\\,\\mathrm{cm}$이고 $BC=8\\,\\mathrm{cm}$이며 $AD\\perp BC$이다.\n풀이 방향: $BD=DC$를 이용하여 $BD$를 구한다.\n정석 풀이: $AB=AC$인 이등변삼각형에서 꼭짓점 $A$에서 밑변 $BC$에 내린 수선의 발이 $D$이므로 $BD=DC$이다. 따라서 $BD=\\dfrac{BC}{2}=\\dfrac{8}{2}=4\\,\\mathrm{cm}$이다. 그림에서 $BD=x\\,\\mathrm{cm}$이므로 $x=4$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q11.png",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q11-solution.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
@@ -378,7 +381,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg"
   },
   {
     "id": 13,
@@ -408,6 +412,7 @@ window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] 직각삼각형도 각의 크기만 같아서는 크기까지 같다고 할 수 없다.\n조건 정리: 두 삼각형은 모두 직각삼각형이며, 각 보기에서 주어진 변과 각의 조건을 비교한다.\n풀이 방향: 합동을 보장하는 조건과 닮음만 보장하는 조건을 구분한다.\n정석 풀이: ①은 두 예각이 각각 같다는 조건이다. 직각까지 포함하면 세 각의 크기는 모두 같지만, 변의 길이에 대한 조건이 없으므로 크기가 다른 닮은 직각삼각형도 가능하다. ②는 빗변과 한 직각변, ③은 두 직각변, ④는 한 직각변과 한 예각, ⑤는 빗변과 한 예각이 각각 같으므로 직각삼각형의 합동이 결정된다.\n따라서 정답은 ①이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q13.png",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q13-solution.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -439,12 +444,13 @@ window.questionBank=[
       "$115$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 외심에서 세 꼭짓점까지의 거리는 같고, 같은 호에 대한 중심각은 원주각의 두 배이다.\n조건 정리: $OA=OC$이고 그림에서 $\\angle BAO=15^\\circ$, $\\angle ACO=40^\\circ$이다. $x=\\angle BOC$이다.\n풀이 방향: 이등변삼각형 $AOC$에서 $\\angle OAC$를 구해 $\\angle BAC$을 찾은 뒤 중심각을 구한다.\n정석 풀이: $OA=OC$이므로 삼각형 $AOC$는 이등변삼각형이다. 따라서 $\\angle OAC=\\angle ACO=40^\\circ$이다. 그러므로 $\\angle BAC=\\angle BAO+\\angle OAC=15^\\circ+40^\\circ=55^\\circ$이다. 같은 호 $BC$에 대한 중심각 $\\angle BOC$는 원주각 $\\angle BAC$의 두 배이므로 $x=2\\times55^\\circ=110^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 외심은 세 꼭짓점에서 같은 거리에 있으므로 $OA=OB=OC$이고, 이등변삼각형의 밑각을 이용해 중심에서 생기는 각을 구할 수 있다.\n조건 정리: 점 $O$는 $\\triangle ABC$의 외심이고 $\\angle BAO=15^\\circ$, $\\angle ACO=40^\\circ$이며 $x=\\angle BOC$이다.\n풀이 방향: $\\triangle AOB$, $\\triangle AOC$에서 각각 $\\angle AOB$, $\\angle AOC$를 구한 뒤 점 $O$ 둘레의 각의 합을 이용한다.\n정석 풀이: $OA=OB$이므로 $\\angle ABO=\\angle BAO=15^\\circ$이다. 따라서 $\\angle AOB=180^\\circ-15^\\circ-15^\\circ=150^\\circ$이다. 또 $OA=OC$이므로 $\\angle OAC=\\angle ACO=40^\\circ$이고, $\\angle AOC=180^\\circ-40^\\circ-40^\\circ=100^\\circ$이다. 점 $O$ 둘레에서 $\\angle AOB+\\angle BOC+\\angle COA=360^\\circ$이므로 $150^\\circ+x+100^\\circ=360^\\circ$이다. 따라서 $x=110^\\circ$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q14.png",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q14-solution.svg"
   },
   {
     "id": 15,
@@ -474,6 +480,7 @@ window.questionBank=[
     "answer": "②",
     "solution": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 그림의 $45^\\circ$를 이용하면 두 직각변의 길이가 같다.\n조건 정리: 외접원의 넓이는 $16\\pi$이고 $\\angle C=90^\\circ$, $\\angle A=45^\\circ$이다.\n풀이 방향: 외접원의 반지름과 빗변 $AB$를 구한 뒤 이등변직각삼각형의 성질로 넓이를 구한다.\n정석 풀이: 외접원의 반지름을 $R$이라 하면 $\\pi R^2=16\\pi$이므로 $R=4$이다. 직각삼각형의 외심은 빗변 $AB$의 중점이므로 $AB=2R=8$이다. $\\angle A=45^\\circ$이고 $\\angle C=90^\\circ$이므로 $\\angle B=45^\\circ$이며 $AC=BC$이다. $AC=BC=t$라 하면 피타고라스 정리에 의해 $t^2+t^2=8^2$, 즉 $2t^2=64$이므로 $t^2=32$이다. 따라서 삼각형의 넓이는 $\\dfrac{1}{2}AC\\cdot BC=\\dfrac{1}{2}t^2=16$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q15.png",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q15-solution.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -510,7 +517,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q16-solution.svg"
   },
   {
     "id": 17,
@@ -538,8 +546,9 @@ window.questionBank=[
       "$17\\,\\mathrm{cm}^2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼각형의 넓이는 내접원의 반지름과 반둘레의 곱이고, 한 점에서 내접원에 그은 두 접선의 길이는 같다.\n조건 정리: 세 변의 길이는 $15$, $14$, $13$이고 전체 넓이는 $84\\,\\mathrm{cm}^2$이다. $IE$는 내접원의 반지름이다.\n풀이 방향: 반둘레로 내접원의 반지름을 구하고, 접선 길이로 $BE$를 구해 삼각형 $IBE$의 넓이를 계산한다.\n정석 풀이: 반둘레는 $s=\\dfrac{15+14+13}{2}=21$이다. 삼각형의 넓이가 $rs$이므로 내접원의 반지름은 $r=\\dfrac{84}{21}=4\\,\\mathrm{cm}$이고 $IE=4\\,\\mathrm{cm}$이다. $AD=AF=u$, $BD=BE=v$, $CE=CF=w$라 하면 $u+v=15$, $v+w=14$, $u+w=13$이다. 앞의 두 식을 더하고 셋째 식을 빼면 $2v=16$이므로 $BE=v=8\\,\\mathrm{cm}$이다. 따라서 $\\triangle IBE$의 넓이는 $\\dfrac{1}{2}\\times8\\times4=16\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 내심에서 세 변까지의 거리는 같고, 생기는 직각삼각형의 합동을 이용하면 한 꼭짓점에서 두 수선의 발까지의 길이가 같음을 직접 보일 수 있다.\n조건 정리: $ID\\perp AB$, $IE\\perp BC$, $IF\\perp CA$이고 $ID=IE=IF=r$이다. 또 $AB=15\\,\\mathrm{cm}$, $BC=14\\,\\mathrm{cm}$, $AC=13\\,\\mathrm{cm}$이며 $\\triangle ABC$의 넓이는 $84\\,\\mathrm{cm}^2$이다.\n풀이 방향: $\\triangle ABC$를 $\\triangle IAB$, $\\triangle IBC$, $\\triangle ICA$로 나누어 $r$을 구하고, 직각삼각형의 합동으로 $BE$를 구한다.\n정석 풀이: 세 작은 삼각형의 높이가 모두 $r$이므로 $84=\\dfrac{1}{2}\\times15r+\\dfrac{1}{2}\\times14r+\\dfrac{1}{2}\\times13r=21r$이다. 따라서 $r=4\\,\\mathrm{cm}$이고 $IE=4\\,\\mathrm{cm}$이다. $\\triangle IBD$와 $\\triangle IBE$는 직각삼각형이고 빗변 $IB$가 공통이며 $ID=IE$이므로 합동이다. 따라서 $BD=BE$이다. 같은 방법으로 $AD=AF$, $CE=CF$이다. $AD=AF=u$, $BD=BE=v$, $CE=CF=w$라 하면 $u+v=15$, $v+w=14$, $u+w=13$이다. 앞의 두 식을 더하고 셋째 식을 빼면 $2v=16$이므로 $v=8$이다. 따라서 $BE=8\\,\\mathrm{cm}$이고 $\\triangle IBE$의 넓이는 $\\dfrac{1}{2}\\times8\\times4=16\\,\\mathrm{cm}^2$이다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q17.png",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q17-solution.svg",
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -576,7 +585,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q18-solution.svg"
   },
   {
     "id": 19,
@@ -606,6 +616,7 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 평행사변형의 평행 관계와 수선 조건을 이용하면 $AF$가 $AB$에 수직임을 알 수 있다.\n조건 정리: $AE\\perp BC$, $AF\\perp CD$, $AB\\parallel CD$이고 $\\angle BAE=20^\\circ$이다.\n풀이 방향: $AF\\perp AB$에서 $\\angle BAF$를 구하고 그 안에서 $\\angle BAE$를 뺀다.\n정석 풀이: $AB\\parallel CD$이고 $AF\\perp CD$이므로 $AF\\perp AB$이다. 따라서 $\\angle BAF=90^\\circ$이다. 그림에서 반직선 $AE$는 $\\angle BAF$의 내부에 있고 $\\angle BAE=20^\\circ$이므로 $\\angle EAF=\\angle BAF-\\angle BAE=90^\\circ-20^\\circ=70^\\circ$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_향림중_2학기_중간_중2_수학/q19.png",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q19-solution.svg",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -664,10 +675,10 @@ window.questionBank=[
     "choices": [],
     "answer": "$a=2$, $b=-2$",
     "solution": "[키포인트] 한 함수의 점 통과 조건으로 $a$를 먼저 구하고, 두 절편이 같다는 조건으로 $b$를 구한다.\n조건 정리: $y=ax+1$은 $(1,3)$을 지나며, 이 함수의 $y$절편과 $y=ax+b$의 $x$절편이 같다.\n풀이 방향: $(1,3)$을 대입하고, 두 번째 함수의 $x$절편을 식으로 나타낸다.\n정석 풀이: $y=ax+1$에 $(1,3)$을 대입하면 $3=a+1$이므로 $a=2$이다. 이 함수의 $y$절편은 $1$이다. 따라서 $y=2x+b$의 $x$절편도 $1$이어야 한다. $x=1$, $y=0$을 대입하면 $0=2+b$이므로 $b=-2$이다.\n따라서 $a=2$, $b=-2$이다.",
-    "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
-    "subUnit": "일차함수의 뜻과 그래프",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+    "subUnit": "일차함수와 일차방정식의 관계",
+    "subUnitConfidence": "rpm_primary_repair",
+    "subUnitClassificationDepth": "complete_rpm_primary"
   },
   {
     "id": 22,
@@ -694,7 +705,8 @@ window.questionBank=[
     "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
     "subUnit": "일차함수와 일차방정식의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q22-solution.svg"
   },
   {
     "id": 23,
@@ -721,7 +733,8 @@ window.questionBank=[
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q23-solution.svg"
   },
   {
     "id": 24,
@@ -748,6 +761,7 @@ window.questionBank=[
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/24_향림중_2학기_중간_중2_수학/q24-solution.svg"
   }
 ];
