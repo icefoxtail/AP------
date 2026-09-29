@@ -676,7 +676,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "원 C2의 중심 O에서 현 AB에 내린 수선의 발 H와 OH=3, AH=BH=4, 반지름 5를 나타낸 해설 그림",
+    "solutionImageCaption": "중심에서 현에 내린 수선은 현을 이등분하므로 3-4-5 직각삼각형이 만들어진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -768,7 +772,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": "직선 $y=x$에 대하여 점 $A(-2,-3)$을 대칭이동한 점을 $A'$라 하면\n$A'=(-3,-2)$이다.\n점 $P$가 $y=x$ 위에 있으므로\n$AP=A'P$이다.\n\n원의 중심을 $C=(5,4)$라 하자.\n먼저 원 바깥에 있는 점 $P$를 생각하면, 고정된 $P$에서 $PQ$가 최소가 되는 점 $Q$는 $C,P,Q$가 한 직선 위에 있고\n$PQ=PC-2$가 되도록 잡은 점이다.\n따라서\n$AP+PQ=A'P+PC-2\\ge A'C-2$이다.\n$A'C=\\sqrt{8^2+6^2}=10$이므로\n$AP+PQ\\ge8$이다.\n\n선분 $A'C$와 $y=x$의 교점을 구하면\n$A'C$의 방정식은\n$y=\\dfrac34x+\\dfrac14$이고,\n$y=x$와의 교점은 $P_0=(1,1)$이다.\n이때\n$CP_0=5>2$이므로 $P_0$는 실제로 원의 바깥에 있고\n$AP_0+P_0Q_0=8$을 만들 수 있다.\n\n원과 직선 $y=x$의 교점의 $x$좌표는\n$t=\\dfrac{9\\pm\\sqrt7}{2}$이다.\n원 내부의 점 $P=(t,t)$에서는\n$t\\ge\\dfrac{9-\\sqrt7}{2}$이다.\n또\n$AP^2=(t+2)^2+(t+3)^2=2t^2+10t+13$이고,\n$t_0=\\dfrac{9-\\sqrt7}{2}$에서\n$AP^2=102-14\\sqrt7>64$이다.\n$t>-\\dfrac52$에서 $AP$는 증가하므로 원 내부에서는 항상 $AP>8$이다.\n따라서 원 내부의 점은 위에서 얻은 값 $8$보다 작게 만들 수 없고,\n최솟값을 만드는 점은 $P_0=(1,1)$이다.\n\n$C$에서 $P_0$ 방향의 벡터는 $(-4,-3)$이고 그 길이는 $5$이다.\n반지름이 $2$이므로\n$Q_0=C+\\dfrac25(-4,-3)=\\left(\\dfrac{17}{5},\\dfrac{14}{5}\\right)$이다.\n\n$\\overrightarrow{AP_0}=(3,4)$,\n$\\overrightarrow{AQ_0}=\\left(\\dfrac{27}{5},\\dfrac{29}{5}\\right)$이므로\n삼각형 $AP_0Q_0$의 넓이는\n$\\dfrac12\\left|3\\cdot\\dfrac{29}{5}-4\\cdot\\dfrac{27}{5}\\right|=\\dfrac{21}{10}$이다.\n따라서\n$10S=21$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "직선 $y=x$에 대하여 점 $A(-2,-3)$을 대칭이동한 점을 $A'$라 하면\n$A'=(-3,-2)$이다.\n점 $P$가 $y=x$ 위에 있으므로\n$AP=A'P$이다.\n\n원의 중심을 $C=(5,4)$라 하자.\n점 $Q$가 원 위에 있을 때\n$A'P+PQ$는 $A'$에서 $Q$까지 바로 잇는 길이보다 작을 수 없다.\n따라서\n$AP+PQ=A'P+PQ\\ge A'Q$이다.\n\n점 $A'$에서 원까지의 거리가 가장 짧아지는 점을 $Q_0$라 하면\n$A',Q_0,C$는 한 직선 위에 있고\n$A'Q_0=A'C-2$이다.\n$A'C=\\sqrt{(5+3)^2+(4+2)^2}=10$이므로\n$A'Q_0=8$이다.\n따라서 $AP+PQ$의 최솟값은 $8$이다.\n\n직선 $A'C$의 방정식은\n$y=\\dfrac34x+\\dfrac14$이다.\n이 직선과 $y=x$의 교점은\n$P_0=(1,1)$이다.\n\n또\n$A'Q_0:Q_0C=8:2=4:1$이므로\n$Q_0$는 선분 $A'C$를 $4:1$로 내분한다.\n따라서\n$Q_0=\\left(\\dfrac{1(-3)+4(5)}5,\\dfrac{1(-2)+4(4)}5\\right)\n=\\left(\\dfrac{17}{5},\\dfrac{14}{5}\\right)$이다.\n\n이제 삼각형 $AP_0Q_0$의 넓이를 구한다.\n$AP_0=\\sqrt{(1+2)^2+(1+3)^2}=5$이다.\n직선 $AP_0$의 방정식은\n$4x-3y-1=0$이다.\n점 $Q_0$에서 이 직선까지의 거리는\n$\\dfrac{\\left|4\\cdot\\dfrac{17}{5}-3\\cdot\\dfrac{14}{5}-1\\right|}{5}\n=\\dfrac{21}{25}$이다.\n\n따라서\n$S=\\dfrac12\\cdot5\\cdot\\dfrac{21}{25}\n=\\dfrac{21}{10}$이고\n$10S=21$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "14",
     "displayNo": "14",
     "sourceOrdinal": 14,
@@ -792,7 +796,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "점 A의 y=x 대칭점 A'와 원의 중심 C, 최단 경로의 점 P0, 원 위의 점 Q0를 나타낸 좌표 그림",
+    "solutionImageCaption": "A를 y=x에 대칭이동하면 A'–P0–Q0–C가 한 직선 위에 놓일 때 최단 경로가 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -826,7 +834,7 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "①",
-    "solution": "삼각형 $PAB$에서 밑변 $AB$는 고정되어 있으므로 넓이를 최대로 하려면 점 $P$와 직선 $AB$ 사이의 거리가 최대가 되어야 한다.\n두 점 $A(1,0)$, $B(-1,2)$를 지나는 직선은\n$x+y-1=0$이다.\n\n주어진 원을 표준형으로 정리하면\n$(x-2)^2+(y-3)^2=10$이므로 중심은 $C=(2,3)$이고 반지름은 $\\sqrt{10}$이다.\n중심 $C$는 직선 $x+y-1=0$의 양의 쪽에 있으므로, 직선에서 가장 멀리 떨어진 원 위의 점은 중심에서 법선벡터 $(1,1)$ 방향으로 반지름만큼 이동한 점이다.\n단위 법선벡터가 $\\dfrac1{\\sqrt2}(1,1)$이므로 이동량은\n$\\sqrt{10}\\cdot\\dfrac1{\\sqrt2}(1,1)=(\\sqrt5,\\sqrt5)$이다.\n따라서\n$P=(2+\\sqrt5,\\,3+\\sqrt5)$이다.\n\n원 위의 점 $P$에서의 접선은 반지름 $CP$에 수직이다.\n원의 중심형을 이용하면\n$\\sqrt5(x-2)+\\sqrt5(y-3)=10$이고,\n정리하면\n$x+y-5-2\\sqrt5=0$이다.\n이를\n$x+ay+b+c\\sqrt5=0$과 비교하면\n$a=1$, $b=-5$, $c=-2$이다.\n따라서\n$a+b+c=1-5-2=-6$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "삼각형 $PAB$에서 밑변 $AB$는 고정되어 있으므로\n넓이를 최대로 하려면 점 $P$에서 직선 $AB$까지의 거리를 가장 크게 하면 된다.\n\n두 점 $A(1,0)$, $B(-1,2)$를 지나는 직선은\n$x+y-1=0$이다.\n주어진 원을 표준형으로 정리하면\n$(x-2)^2+(y-3)^2=10$이므로\n중심은 $C=(2,3)$이고 반지름은 $\\sqrt{10}$이다.\n\n직선 $AB$의 기울기는 $-1$이므로\n중심 $C$를 지나고 $AB$에 수직인 직선의 기울기는 $1$이다.\n따라서 그 직선은\n$y=x+1$이다.\n\n이 직선과 원의 교점을 구한다.\n$y=x+1$을 원의 식에 대입하면\n$(x-2)^2+(x-2)^2=10$이므로\n$(x-2)^2=5$이다.\n따라서 두 교점은\n$(2+\\sqrt5,3+\\sqrt5)$,\n$(2-\\sqrt5,3-\\sqrt5)$이다.\n\n직선 $x+y-1=0$에서 더 멀리 있는 점은\n$P=(2+\\sqrt5,3+\\sqrt5)$이다.\n따라서 이 점에서 삼각형 $PAB$의 넓이가 최대가 된다.\n\n반지름 $CP$의 기울기는 $1$이므로\n점 $P$에서의 접선의 기울기는 $-1$이다.\n점 $P$를 지나는 접선은\n$y-(3+\\sqrt5)=-\\{x-(2+\\sqrt5)\\}$이고,\n정리하면\n$x+y-5-2\\sqrt5=0$이다.\n\n이를\n$x+ay+b+c\\sqrt5=0$과 비교하면\n$a=1$, $b=-5$, $c=-2$이다.\n따라서\n$a+b+c=1-5-2=-6$이다.\n\n따라서 정답은 ①이다.",
     "sourceQuestionNo": "15",
     "displayNo": "15",
     "sourceOrdinal": 15,
@@ -850,7 +858,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "원 위의 A, B, 중심 C와 넓이를 최대화하는 점 P, 점 P에서의 접선을 나타낸 해설 그림",
+    "solutionImageCaption": "밑변 AB가 고정이므로 P에서 직선 AB까지의 거리가 가장 클 때 삼각형 PAB의 넓이가 최대이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -944,7 +956,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "⑤",
-    "solution": "점 $P$가 선분 $AB$ 위에 있으므로\n$P=A+s(B-A)=(s,\\,2-2s)$\n로 두고,\n점 $Q$가 선분 $CD$ 위에 있으므로\n$Q=D+t(C-D)=(2+t,\\,3-2t)$\n로 두자.\n점 $P,Q$가 꼭짓점이 아니므로 $0<s,t<1$이다.\n\n사각형 $ABCD$의 넓이는 좌표를 이용하면 $5$이다.\n$APQD:PBCQ=2:1$이므로\n$APQD$의 넓이는 $\\dfrac{10}{3}$이다.\n좌표를 이용하여 사각형 $APQD$의 넓이를 계산하면\n$\\dfrac52(s+t)$이므로\n$\\dfrac52(s+t)=\\dfrac{10}{3}$,\n즉\n$s+t=\\dfrac43$이다.\n\n이제\n$PQ^2=(2+t-s)^2+(1-2t+2s)^2$이다.\n$d=s-t$라 두면\n$PQ^2=(2-d)^2+(1+2d)^2$\n$=5+5d^2$이다.\n따라서 $PQ$가 최소가 되려면 $d=0$, 즉 $s=t$이어야 한다.\n$s+t=\\dfrac43$이므로\n$s=t=\\dfrac23$이다.\n\n따라서\n$P=\\left(\\dfrac23,\\dfrac23\\right)$,\n$Q=\\left(\\dfrac83,\\dfrac53\\right)$이다.\n직선 $PQ$의 기울기는\n$m=\\dfrac{\\frac53-\\frac23}{\\frac83-\\frac23}$\n$=\\dfrac12$이다.\n$P$를 $y=mx+n$에 대입하면\n$\\dfrac23=\\dfrac12\\cdot\\dfrac23+n$이므로\n$n=\\dfrac13$이다.\n따라서\n$30(m+n)=30\\left(\\dfrac12+\\dfrac13\\right)=25$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "직선 $AB$의 방정식은\n$y=-2x+2$이다.\n점 $P$가 선분 $AB$ 위에 있으므로\n$P=(s,2-2s)$\n로 둘 수 있고, 점 $P$가 꼭짓점이 아니므로\n$0<s<1$이다.\n\n직선 $CD$의 방정식은\n$y=-2x+7$이다.\n점 $Q$가 선분 $CD$ 위에 있으므로\n$Q=(2+t,3-2t)$\n로 둘 수 있고\n$0<t<1$이다.\n\n사각형 $ABCD$의 넓이는 좌표를 이용하면 $5$이다.\n$APQD:PBCQ=2:1$이므로\n$APQD$의 넓이는 $\\dfrac{10}{3}$이다.\n좌표를 이용하여 사각형 $APQD$의 넓이를 계산하면\n$\\dfrac52(s+t)$이므로\n$\\dfrac52(s+t)=\\dfrac{10}{3}$,\n즉\n$s+t=\\dfrac43$이다.\n\n이제\n$PQ^2=(2+t-s)^2+(1-2t+2s)^2$이다.\n$d=s-t$라 두면\n$PQ^2=(2-d)^2+(1+2d)^2\n=5+5d^2$이다.\n따라서 $PQ$가 최소가 되려면\n$d=0$, 즉 $s=t$이어야 한다.\n$s+t=\\dfrac43$이므로\n$s=t=\\dfrac23$이다.\n\n따라서\n$P=\\left(\\dfrac23,\\dfrac23\\right)$,\n$Q=\\left(\\dfrac83,\\dfrac53\\right)$이다.\n직선 $PQ$의 기울기는\n$m=\\dfrac{\\frac53-\\frac23}{\\frac83-\\frac23}\n=\\dfrac12$이다.\n$P$를 $y=mx+n$에 대입하면\n$\\dfrac23=\\dfrac12\\cdot\\dfrac23+n$이므로\n$n=\\dfrac13$이다.\n\n따라서\n$30(m+n)=30\\left(\\dfrac12+\\dfrac13\\right)=25$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "17",
     "displayNo": "17",
     "sourceOrdinal": 17,
@@ -968,7 +980,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "사각형 ABCD에서 P와 Q가 넓이를 2대1로 나누고 PQ가 최소가 되는 배치를 나타낸 해설 그림",
+    "solutionImageCaption": "넓이 조건에서 s+t=4/3, 거리 조건에서 s=t이므로 P와 Q의 위치가 결정된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
