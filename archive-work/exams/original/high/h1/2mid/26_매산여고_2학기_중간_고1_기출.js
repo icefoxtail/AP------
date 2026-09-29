@@ -663,7 +663,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "세 직선 $l:x-2y+2=0$, $m:2x+y-1=0$, $n:3x-y+11=0$으로 둘러싸인 삼각형의 외접원의 방정식이 있다. 이 외접원의 넓이를 구하면? [4.2점]",
+    "content": "세 직선 $l:x-2y+2=0$, $m:2x+y-1=0$, $n:3x-y+11=0$으로 둘러싸인 삼각형의 외접원의 넓이를 구하면? [4.2점]",
     "choices": [
       "$6\\pi$",
       "$7\\pi$",
@@ -922,7 +922,7 @@ window.questionBank = [
       "$-\\dfrac{29}{7}$"
     ],
     "answer": "③",
-    "solution": "$A=(0,a)$라 하면 $C=(0,3a)$이고, 직선 $l$의 기울기가 $\\dfrac13$이므로 $B=(-3a,0)$이다.\n$P=(x,y)$에 대하여 $0<y<a$이므로 $y=at\\ (0<t<1)$이라 두면 $x=3a(t-1)$이다.\n\n$\\triangle PCB$의 넓이가 $6$이므로\n$3a^2t=6$, 즉 $a^2t=2$이다.\n\n$D=(d,0)$라 하면 $P$가 선분 $CD$ 위에 있으므로\n$d=\\dfrac{3x}{3-t}=-\\dfrac{9a(1-t)}{3-t}$이다.\n사각형 $PDOA$는 $\\triangle COD$에서 $\\triangle CAP$를 뺀 부분이므로 넓이는\n$\\dfrac{3a^2(1-t)(2t+3)}{2(3-t)}$이다.\n이 값도 $6$이고 $a^2t=2$이므로\n$(1-t)(2t+3)=2t(3-t)$,\n따라서 $t=\\dfrac37$이다.\n\n그러므로\n$xy=3a^2t(t-1)=6\\left(\\dfrac37-1\\right)=-\\dfrac{24}{7}$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "$A=(0,a)$라 하면 $\\overline{OC}=3\\overline{OA}$이므로 $C=(0,3a)$이다.\n직선 $l$의 기울기가 $\\dfrac13$이고 $A=(0,a)$를 지나므로\n$l:y=\\dfrac13x+a$이다.\n따라서 $l$의 $x$절편은 $B=(-3a,0)$이다.\n\n점 $P=(x,y)$가 선분 $AB$ 위에 있으므로 $y=at\\ (0<t<1)$이라 두자.\n직선 $l$의 식에 대입하면\n$at=\\dfrac13x+a$,\n$x=3a(t-1)=-3a(1-t)$이다.\n\n$P$는 선분 $AB$를 $B$에서 $A$ 쪽으로 $t$만큼 간 점이므로\n$\\dfrac{BP}{BA}=t$이다.\n삼각형 $ABC$는\n$AC=2a$이고 점 $B$에서 $y$축까지의 거리가 $3a$이므로\n$[ABC]=\\dfrac12\\cdot2a\\cdot3a=3a^2$이다.\n삼각형 $PCB$와 삼각형 $ABC$는 점 $C$에서 직선 $AB$에 내린 높이가 같으므로\n$[PCB]=t[ABC]=3a^2t$이다.\n그런데 $[PCB]=6$이므로\n$a^2t=2$이다.\n\n$D=(d,0)$라 하자.\n점 $P$는 선분 $CD$ 위에 있고 $C$의 $y$좌표가 $3a$, $P$의 $y$좌표가 $at$이므로\n$P$의 $x$좌표는\n$x=d\\left(1-\\dfrac{t}{3}\\right)=\\dfrac{d(3-t)}3$이다.\n따라서\n$d=\\dfrac{3x}{3-t}\n=-\\dfrac{9a(1-t)}{3-t}$이다.\n\n사각형 $PDOA$를 두 삼각형 $POA$, $POD$로 나눈다.\n$x<0$, $d<0$이므로\n$[POA]=\\dfrac12a(-x)$,\n$[POD]=\\dfrac12(-d)at$이다.\n따라서\n$[PDOA]\n=\\dfrac{3a^2(1-t)}2\n+\\dfrac{9a^2t(1-t)}{2(3-t)}\n=\\dfrac{3a^2(1-t)(2t+3)}{2(3-t)}$이다.\n\n이 넓이도 $6$이고 $a^2t=2$이므로\n$(1-t)(2t+3)=2t(3-t)$이다.\n전개하면\n$3-t-2t^2=6t-2t^2$이므로\n$t=\\dfrac37$이다.\n\n그러므로\n$xy=3a^2t(t-1)\n=6\\left(\\dfrac37-1\\right)\n=-\\dfrac{24}{7}$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "19",
     "displayNo": "19",
     "sourceOrdinal": 19,
@@ -1113,7 +1113,7 @@ window.questionBank = [
     "content": "[주관식3 (서술형)] [7점](부분점수 있음)\\n좌표평면 위의 세 점 $A$, $B$, $C$에 대하여 두 점 $A$, $B$의 좌표는 각각 $(0,a)$, $(4,0)$이고, 삼각형 $ABC$는 $\\overline{AC}=\\overline{BC}$인 직각이등변삼각형이다. $-2\\le a\\le2$일 때, 선분 $\\overline{OC}$의 길이의 최댓값과 최솟값을 구하는 풀이 과정과 답을 자세히 서술하시오.",
     "choices": [],
     "answer": "최댓값 $3\\sqrt2$, 최솟값 $\\sqrt2$",
-    "solution": "$\\triangle ABC$는 $AC=BC$인 직각이등변삼각형이므로 $AB$가 빗변이다.\n$AB$의 중점을 $M$이라 하면\n$M=\\left(2,\\dfrac a2\\right)$이고,\n직각삼각형에서 빗변의 중점은 세 꼭짓점에서 같은 거리에 있으므로\n$MC=\\dfrac{AB}{2}$이다.\n또 $C$는 $AB$의 수직이등분선 위에 있다.\n\n따라서 가능한 두 점은\n$C_1=\\left(2+\\dfrac a2,2+\\dfrac a2\\right)$,\n$C_2=\\left(2-\\dfrac a2,\\dfrac a2-2\\right)$이다.\n\n그러므로\n$\\overline{OC_1}=\\dfrac{a+4}{\\sqrt2}$,\n$\\overline{OC_2}=\\dfrac{4-a}{\\sqrt2}$이다.\n$-2\\le a\\le2$이므로 두 경우 모두\n$\\sqrt2\\le\\overline{OC}\\le3\\sqrt2$이다.\n\n따라서 최댓값은 $3\\sqrt2$, 최솟값은 $\\sqrt2$이다.",
+    "solution": "$\\triangle ABC$는 $AC=BC$인 직각이등변삼각형이므로 $AB$가 빗변이다.\n$AB$의 중점을 $M$이라 하면\n$M=\\left(2,\\dfrac a2\\right)$이다.\n\n직각삼각형에서 빗변의 중점은 세 꼭짓점에서 같은 거리에 있으므로\n$MC=\\dfrac{AB}{2}$이다.\n또 $AC=BC$이므로 점 $C$는 선분 $AB$의 수직이등분선 위에 있다.\n\n$\\overline{AB}$의 길이는\n$AB=\\sqrt{(4-0)^2+(0-a)^2}=\\sqrt{16+a^2}$이므로\n$MC=\\dfrac{\\sqrt{16+a^2}}2$이다.\n\n$a\\ne0$일 때 직선 $AB$의 기울기는 $-\\dfrac a4$이므로 수직이등분선의 기울기는 $\\dfrac4a$이다.\n중점 $M$에서 $x$좌표를 $\\dfrac a2$만큼, $y$좌표를 $2$만큼 바꾸면\n그 기울기는 $\\dfrac{2}{a/2}=\\dfrac4a$이고,\n그 거리는\n$\\sqrt{\\left(\\dfrac a2\\right)^2+2^2}\n=\\dfrac{\\sqrt{a^2+16}}2\n=MC$이다.\n따라서 수직이등분선 위에서 $M$과 거리 $MC$만큼 떨어진 두 점은\n$C_1=\\left(2+\\dfrac a2,2+\\dfrac a2\\right)$,\n$C_2=\\left(2-\\dfrac a2,\\dfrac a2-2\\right)$이다.\n$a=0$일 때도 이 두 좌표는 각각 $(2,2)$, $(2,-2)$가 되어 그대로 성립한다.\n\n이제 원점 $O$에서 두 점까지의 거리를 구한다.\n$OC_1^2\n=2\\left(2+\\dfrac a2\\right)^2\n=\\dfrac{(a+4)^2}{2}$이므로\n$OC_1=\\dfrac{a+4}{\\sqrt2}$이다.\n또\n$OC_2^2\n=2\\left(2-\\dfrac a2\\right)^2\n=\\dfrac{(4-a)^2}{2}$이므로\n$OC_2=\\dfrac{4-a}{\\sqrt2}$이다.\n\n$-2\\le a\\le2$이므로\n$2\\le a+4\\le6$,\n$2\\le4-a\\le6$이다.\n따라서 두 경우를 모두 합치면\n$\\sqrt2\\le OC\\le3\\sqrt2$이다.\n\n따라서 최댓값은 $3\\sqrt2$, 최솟값은 $\\sqrt2$이다.",
     "sourceQuestionNo": "주관식3",
     "displayNo": "주관식3",
     "sourceOrdinal": 23,
