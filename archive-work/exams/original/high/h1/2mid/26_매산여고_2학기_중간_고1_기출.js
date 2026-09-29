@@ -25,18 +25,18 @@ window.questionBank = [
       "7",
       "4"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "집합 $A-B$는 $A$의 원소 중에서 $B$에도 속하는 원소를 제외하여 구한다.\n$A=\\{4,7,13\\}$, $B=\\{2,7,11\\}$에서 공통으로 들어 있는 원소는 $7$이다.\n따라서\n$A-B=\\{4,13\\}$이다.\n모든 원소의 합은\n$4+13=17$이다.\n\n따라서 정답은 ①이다.",
     "sourceQuestionNo": "1",
     "displayNo": "1",
     "sourceOrdinal": 1,
     "sourcePageImage": "1000024905.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 2,
@@ -63,18 +63,18 @@ window.questionBank = [
       "9",
       "10"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "삼각형의 무게중심은 세 꼭짓점의 $x$좌표의 평균과 $y$좌표의 평균이다.\n따라서\n$\\dfrac{-3+4+b}{3}=2$,\n$\\dfrac{5+a-10}{3}=-1$이다.\n\n첫째 식에서\n$1+b=6$이므로\n$b=5$이다.\n\n둘째 식에서\n$a-5=-3$이므로\n$a=2$이다.\n\n따라서\n$a+b=2+5=7$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "2",
     "displayNo": "2",
     "sourceOrdinal": 2,
     "sourcePageImage": "1000024905.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 3,
@@ -101,18 +101,18 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "점 $P$가 선분 $AB$를 $2:1$로 내분하므로 내분점 공식에 따라\n$P=\\left(\\dfrac{1\\cdot1+2b}{3},\\dfrac{a+2(-1)}{3}\\right)$이다.\n그런데 $P=(5,1)$이므로 좌표를 각각 비교한다.\n\n$x$좌표에서\n$\\dfrac{1+2b}{3}=5$,\n$1+2b=15$이므로\n$b=7$이다.\n\n$y$좌표에서\n$\\dfrac{a-2}{3}=1$,\n$a-2=3$이므로\n$a=5$이다.\n\n따라서\n$3a-2b=3\\cdot5-2\\cdot7=15-14=1$이다.\n\n따라서 정답은 ①이다.",
     "sourceQuestionNo": "3",
     "displayNo": "3",
     "sourceOrdinal": 3,
     "sourcePageImage": "1000024905.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 4,
@@ -139,18 +139,18 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "두 점 $(3,5)$, $(1,-1)$을 지나는 직선의 기울기는\n$a=\\dfrac{5-(-1)}{3-1}=\\dfrac62=3$이다.\n\n직선은 $y=3x+b$이고 점 $(1,-1)$을 지나므로\n$-1=3+b$이다.\n따라서\n$b=-4$이다.\n\n그러므로\n$3a+b=3\\cdot3-4=5$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "4",
     "displayNo": "4",
     "sourceOrdinal": 4,
     "sourcePageImage": "1000024906.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 5,
@@ -177,18 +177,18 @@ window.questionBank = [
       "ㄱ, ㄷ, ㄹ",
       "ㄴ, ㄷ, ㄹ"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "집합\n$A=\\{\\varnothing,1,\\{2\\},\\{1,2\\}\\}$\n의 원소를 하나씩 확인한다.\n\nㄱ. $\\varnothing$은 $A$에 직접 들어 있는 원소이므로\n$\\varnothing\\in A$는 참이다.\n\nㄴ. $A$에는 $\\{1\\}$이 원소로 들어 있지 않으므로\n$\\{1\\}\\in A$는 거짓이다.\n\nㄷ. $\\{2\\}\\subset A$가 되려면 $\\{2\\}$의 원소인 $2$가 $A$에 속해야 한다.\n그러나 $A$의 원소는 $\\varnothing$, $1$, $\\{2\\}$, $\\{1,2\\}$이므로 $2\\notin A$이다.\n따라서 ㄷ은 거짓이다.\n\nㄹ. $\\{\\varnothing,1\\}$의 두 원소 $\\varnothing$, $1$은 모두 $A$에 속하므로\n$\\{\\varnothing,1\\}\\subset A$는 참이다.\n\n따라서 옳은 것은 ㄱ, ㄹ이고 정답은 ②이다.",
     "sourceQuestionNo": "5",
     "displayNo": "5",
     "sourceOrdinal": 5,
     "sourcePageImage": "1000024906.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 6,
@@ -215,18 +215,18 @@ window.questionBank = [
       "5",
       "4"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "먼저 $A$의 원소 $1,2,3$과 $B=\\{2,4,6\\}$의 원소를 더해 얻는 값을 모은다.\n$1+B=\\{3,5,7\\}$,\n$2+B=\\{4,6,8\\}$,\n$3+B=\\{5,7,9\\}$이므로\n이들로부터\n$\\{3,4,5,6,7,8,9\\}$\n의 $7$개 원소가 생긴다.\n\n또 $a\\notin\\{1,2,3\\}$이고 $a$는 자연수이므로 $a\\ge4$이다.\n$a$에서 새로 생기는 합은\n$a+2,\\ a+4,\\ a+6$이다.\n\n$n(X)=8$이 되려면 기존 $7$개 값에 새로운 값이 정확히 하나만 더 생겨야 한다.\n$a=4$이면\n$6,8,10$ 중 $10$만 새로 생겨 $n(X)=8$이다.\n$a=5$이면\n$7,9,11$ 중 $11$만 새로 생겨 $n(X)=8$이다.\n\n$a\\ge6$이면 $a+4\\ge10$, $a+6\\ge12$이므로 새로운 값이 적어도 두 개 생겨 $n(X)\\ge9$가 된다.\n따라서 가능한 자연수 $a$의 최댓값은 $5$이다.\n\n따라서 정답은 ④이다.",
     "sourceQuestionNo": "6",
     "displayNo": "6",
     "sourceOrdinal": 6,
     "sourcePageImage": "1000024906.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 7,
@@ -253,18 +253,18 @@ window.questionBank = [
       "$4\\sqrt2$",
       "$5\\sqrt2$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "원의 방정식을 완전제곱식으로 정리한다.\n$x^2+6x=(x+3)^2-9$이고\n$y^2+ky=\\left(y+\\dfrac{k}{2}\\right)^2-\\dfrac{k^2}{4}$이므로\n주어진 원은\n$(x+3)^2+\\left(y+\\dfrac{k}{2}\\right)^2\n=7+\\dfrac{k^2}{4}$\n이다.\n\n따라서 중심은\n$\\left(-3,-\\dfrac{k}{2}\\right)$이고\n반지름의 제곱은\n$7+\\dfrac{k^2}{4}$이다.\n\n이 원이 $y$축에 접하므로 중심에서 $y$축까지의 거리와 반지름이 같다.\n중심의 $x$좌표가 $-3$이므로 반지름은 $3$이다.\n따라서\n$7+\\dfrac{k^2}{4}=9$,\n$\\dfrac{k^2}{4}=2$,\n$k^2=8$이다.\n그러므로\n$k=\\pm2\\sqrt2$이다.\n\n중심이 제3사분면에 있으려면 중심의 $y$좌표가 음수여야 하므로\n$-\\dfrac{k}{2}<0$,\n즉 $k>0$이다.\n따라서\n$k=2\\sqrt2$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "7",
     "displayNo": "7",
     "sourceOrdinal": 7,
     "sourcePageImage": "1000024908.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 8,
@@ -291,18 +291,18 @@ window.questionBank = [
       "$3\\sqrt5+2\\sqrt2$",
       "$3\\sqrt5+3\\sqrt2$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "삼각형 $ABC$의 둘레에서 $\\overline{AB}$의 길이는 고정되어 있으므로\n$\\overline{AC}+\\overline{BC}$를 가장 작게 하면 된다.\n\n점 $A(1,3)$을 $x$축에 대하여 대칭이동한 점을 $A'(1,-3)$이라 하자.\n점 $C$가 $x$축 위에 있으므로\n$\\overline{AC}=\\overline{A'C}$이다.\n\n따라서\n$\\overline{AC}+\\overline{BC}\n=\\overline{A'C}+\\overline{CB}\n\\ge \\overline{A'B}$\n이고, $A'$, $C$, $B$가 한 직선 위에 있을 때 등호가 성립한다.\n\n$\\overline{A'B}\n=\\sqrt{(5-1)^2+(1-(-3))^2}\n=\\sqrt{16+16}\n=4\\sqrt2$이다.\n\n또\n$\\overline{AB}\n=\\sqrt{(5-1)^2+(1-3)^2}\n=\\sqrt{16+4}\n=2\\sqrt5$이다.\n\n따라서 삼각형 $ABC$의 둘레의 최솟값은\n$2\\sqrt5+4\\sqrt2$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "8",
     "displayNo": "8",
     "sourceOrdinal": 8,
     "sourcePageImage": "1000024908.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 9,
@@ -329,18 +329,18 @@ window.questionBank = [
       "$\\dfrac13$",
       "$\\dfrac43$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "①",
+    "solution": "점 $(1,-3)$을 지나고 기울기가 $m$인 직선을\n$y+3=m(x-1)$\n이라 하자.\n이를 정리하면\n$mx-y-m-3=0$이다.\n\n원의 중심은 $(2,1)$이고 반지름은 $2$이다.\n이 직선이 원에 접하려면 중심에서 직선까지의 거리가 반지름과 같아야 하므로\n$\\dfrac{|2m-1-m-3|}{\\sqrt{m^2+1}}=2$이다.\n\n따라서\n$\\dfrac{|m-4|}{\\sqrt{m^2+1}}=2$이고\n양변을 제곱하면\n$(m-4)^2=4(m^2+1)$이다.\n\n전개하여 정리하면\n$m^2-8m+16=4m^2+4$,\n$3m^2+8m-12=0$이다.\n\n두 접선의 기울기를 $m_1,m_2$라 하면 근과 계수의 관계에 의해\n$m_1+m_2=-\\dfrac83$이다.\n\n따라서 정답은 ①이다.",
     "sourceQuestionNo": "9",
     "displayNo": "9",
     "sourceOrdinal": 9,
     "sourcePageImage": "1000024908.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 10,
@@ -367,18 +367,18 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "원 $(x-3)^2+y^2=4$의 중심은 $(3,0)$이고 반지름은 $2$이다.\n\n이 원을 $x$축의 방향으로 $k$만큼 평행이동하면 중심은\n$(3+k,0)$이 되고 반지름은 그대로 $2$이다.\n\n이 원이 직선\n$3x+4y-8=0$\n에 접하므로 이동한 중심에서 직선까지의 거리가 $2$이다.\n따라서\n$\\dfrac{|3(3+k)+4\\cdot0-8|}{\\sqrt{3^2+4^2}}=2$이다.\n\n즉\n$\\dfrac{|1+3k|}{5}=2$이므로\n$|1+3k|=10$이다.\n\n따라서\n$1+3k=10$ 또는 $1+3k=-10$이고\n$k=3$ 또는 $k=-\\dfrac{11}{3}$이다.\n\n문제에서 $k$는 양수이므로\n$k=3$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "10",
     "displayNo": "10",
     "sourceOrdinal": 10,
     "sourcePageImage": "1000024909.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 11,
@@ -405,18 +405,18 @@ window.questionBank = [
       "24",
       "25"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "스마트폰 게임을 좋아하는 학생의 집합을 $A$, 컴퓨터 게임을 좋아하는 학생의 집합을 $B$라 하고,\n두 게임을 모두 좋아하는 학생 수를 $x$라 하자.\n\n두 게임을 모두 좋아하지 않는 학생 수를 $r$라 하면\n$n(A\\cup B)=32-r$이다.\n포함배제 원리에 의해\n$17+20-x=32-r$이므로\n$x=5+r$이다.\n\n두 게임을 모두 좋아하지 않는 학생이 적어도 $3$명이므로\n$r\\ge3$이고\n$x\\ge8$이다.\n따라서 교집합의 최솟값은 $8$이다.\n\n한편 교집합의 학생 수는 두 집합 중 작은 집합의 원소 수를 넘을 수 없으므로\n$x\\le17$이다.\n$x=17$이면\n$r=x-5=12$이고 실제로 조건을 만족할 수 있으므로 최댓값은 $17$이다.\n\n따라서 최댓값과 최솟값의 합은\n$17+8=25$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "11",
     "displayNo": "11",
     "sourceOrdinal": 11,
     "sourcePageImage": "1000024909.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 12,
@@ -446,18 +446,18 @@ window.questionBank = [
       "$3\\sqrt{11}$",
       "10"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "④",
+    "solution": "처음 원의 중심을 $O$라 하면\n$O=(0,0)$이고 반지름은 $6$이다.\n\n원을 접은 뒤에도 반지름은 변하지 않는다.\n접힌 원이 $x$축의 점 $(3,0)$에서 접하므로 접힌 원의 중심을 $O'$라 하면\n$O'=(3,6)$으로 둘 수 있다.\n따라서\n$\\overline{OO'}\n=\\sqrt{3^2+6^2}\n=3\\sqrt5$이다.\n\n접는 선 $AB$는 원래 중심 $O$와 접힌 뒤의 중심 $O'$를 서로 대칭이동시키는 직선이므로\n선분 $OO'$의 수직이등분선이다.\n$AB$와 $OO'$의 교점을 $M$이라 하면\n$\\overline{OM}=\\dfrac{3\\sqrt5}{2}$이고,\n$M$은 공통현 $AB$의 중점이다.\n\n직각삼각형 $OMA$에서\n$\\overline{OA}=6$이므로\n$\\overline{AM}^2\n=\\overline{OA}^2-\\overline{OM}^2\n=36-\\dfrac{45}{4}\n=\\dfrac{99}{4}$이다.\n\n따라서\n$\\overline{AM}=\\dfrac{3\\sqrt{11}}{2}$이고\n$\\overline{AB}=2\\overline{AM}=3\\sqrt{11}$이다.\n\n따라서 정답은 ④이다.",
     "sourceQuestionNo": "12",
     "displayNo": "12",
     "sourceOrdinal": 12,
     "sourcePageImage": "1000024909.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_A_DONE"
   },
   {
     "id": 13,
