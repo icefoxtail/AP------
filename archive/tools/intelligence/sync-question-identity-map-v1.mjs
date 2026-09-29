@@ -262,11 +262,21 @@ function main() {
   const uniqueUidCount = new Set(records.map(r => r.questionUid)).size;
   if (uniqueUidCount !== records.length) throw new Error('duplicate questionUid after incremental sync');
   const sourceCommit = execFileSync('git', ['-C', repoRoot, 'rev-parse', 'HEAD']).toString('utf8').trim();
+  const renameHistory = new Map();
+  for (const row of [
+    ...(current.verifiedPathRenameHistory || []),
+    ...(current.incrementalSync?.renamedFiles || []),
+    ...rename.renamedFiles,
+  ]) {
+    const from = normalizeFile(row.from), to = normalizeFile(row.to);
+    if (from && to) renameHistory.set(`${from}\u0000${to}`, { ...row, from, to });
+  }
   const next = {
     ...current,
     sourceCommit,
     records,
     lookup: buildLookups(records),
+    verifiedPathRenameHistory: [...renameHistory.values()].sort((a, b) => a.from.localeCompare(b.from, 'en') || a.to.localeCompare(b.to, 'en')),
     stats: {
       ...(current.stats || {}),
       examFileCount: new Set(records.map(r => r.sourceArchiveFile)).size,

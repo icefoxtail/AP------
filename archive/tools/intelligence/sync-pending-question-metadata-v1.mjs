@@ -95,7 +95,7 @@ function main() {
   const identityByUid = new Map((identity.records || []).map(r => [r.questionUid, r]));
   const byUid = new Map((metadata.records || []).map(r => [r.questionUid, r]));
   const renamePairs = new Map(
-    (identity.incrementalSync?.renamedFiles || []).map(row => [normalizeFile(row.from), normalizeFile(row.to)])
+    (identity.verifiedPathRenameHistory || identity.incrementalSync?.renamedFiles || []).map(row => [normalizeFile(row.from), normalizeFile(row.to)])
   );
   for (const uid of byUid.keys()) {
     if (!identityByUid.has(uid)) throw new Error('metadata row without canonical identity: ' + uid);

@@ -26,8 +26,10 @@ const jsonText = value => JSON.stringify(value, null, 2) + '\n';
 function main() {
   const identity = JSON.parse(fs.readFileSync(identityPath, 'utf8'));
   const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
-  const renameRows = Array.isArray(identity.incrementalSync?.renamedFiles)
-    ? identity.incrementalSync.renamedFiles
+  const renameRows = Array.isArray(identity.verifiedPathRenameHistory)
+    ? identity.verifiedPathRenameHistory
+    : Array.isArray(identity.incrementalSync?.renamedFiles)
+      ? identity.incrementalSync.renamedFiles
     : [];
   const renameByOld = new Map();
 
