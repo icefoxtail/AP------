@@ -24,15 +24,16 @@ test('Archive adapter records opt-in canonical dual-run evidence while retaining
   for (const script of ['mathjax_render_loop', 'layout-authority', 'layout-materializer', 'solution-render-executor', 'exam-render-executor', 'render-state-normalizer', 'side-effect-ledger', 'screen-runtime', 'snapshot-contract', 'question-image-readiness', 'screen-runtime-adapter']) {
     const version = {
       'layout-materializer': '20260914\\.1',
-      'solution-render-executor': '20260914\\.1',
+      'solution-render-executor': '20260924\\.2',
       'exam-render-executor': '20260915\\.1',
       'question-image-readiness': '20260915\\.2',
+      'layout-authority': '20260924\\.1',
       'screen-runtime-adapter': '20260922\\.2',
       'screen-runtime': '20260922\\.2'
     }[script] || (script === 'snapshot-contract' ? '20260923\\.1' : '20260911\\.5');
     assert.match(engine, new RegExp(`${script.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\.js\\?v=${version}`));
   }
-  assert.match(engine, /solution-render-executor\.js\?v=20260914\.1/);
+  assert.match(engine, /solution-render-executor\.js\?v=20260924\.2/);
   assert.match(engine, /answer-render-executor\.js\?v=20260907\.1/);
   assert.match(engine, /exam-render-executor\.js\?v=20260915\.1/);
   assert.match(engine, /function recordArchiveLayoutPromotionGate\(area, ctx(?: = null)?\)/);

@@ -176,13 +176,13 @@ test('condition normalization protects math, tables, SVG, images, choices, and n
 
 test('all production condition candidates pass mechanical marker and structure checks', () => {
   const production = loadProductionQuestions();
-  assert.equal(production.length, 11226);
+  assert.equal(production.length, 11269);
   const candidates = production.filter(question => {
     const visible = maskMarkup(question.content).visible;
     return (visible.match(/[（(][가나다라마][）)]/g) || []).length >= 2
       || (visible.match(/(?<!\S)[가나다라마]\./g) || []).length >= 2;
   });
-  assert.equal(candidates.length, 364);
+  assert.equal(candidates.length, 372);
 
   for (const engineFile of engineFiles) {
     const normalize = loadNormalizer(engineFile);

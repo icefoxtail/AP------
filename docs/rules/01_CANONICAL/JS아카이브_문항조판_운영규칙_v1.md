@@ -21,7 +21,7 @@ pilot lineage: 25 풍덕중 중1 2학기 중간 / 25 제일고 고1 2학기 중�
 신규 기출 JS 추출·변환, CREATE/CREATE_SELF_CHECK, R1, R2E/Codex final, 기존 JS repair/upgrade,
 예약 GPT/Codex, `.codex/skills/apmath-archive-exams`, Past Exam V3, production publish/promotion에 즉시 적용한다.
 METADATA_ONLY는 재조판하지 않고 protected question field drift 0을 요구한다.
-규칙 도입만으로 이미 닫힌 production 시험지를 일괄 backfill하지 않지만 이후 실제 JS 작업 범위에 들어오면 즉시 적용한다.
+일반 작업에서는 규칙 도입만으로 이미 닫힌 production 시험지를 자동 일괄 backfill하지 않는다. **단, `MIDDLE_RECERT_2026-09-29_V1` 재인증 scope(M3 69 + M1 31 + M2 1학기 34)는 형님이 명시적으로 전체 backfill을 지시한 예외**이므로 과거 layout PASS/CREATE/R1/main 이력과 무관하게 CURRENT CREATE에서 전 문항 SOURCE_TEXT_EXACT_PARITY + QUESTION MICRO_LAYOUT을 fresh 재판정한다. 같은 generation의 durable receipt가 없는 과거 PASS는 current 면제 근거가 아니다.
 
 ## 2. 작업 순서
 
