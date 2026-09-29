@@ -10,11 +10,11 @@
     "bindings": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json"
   },
   "counts": {
-    "records": 412,
-    "taxonomyRows": 184,
-    "defaultSelectable": 411,
+    "records": 420,
+    "taxonomyRows": 186,
+    "defaultSelectable": 419,
     "supplementary": 0,
-    "automaticEligibleExpected": 12,
+    "automaticEligibleExpected": 20,
     "sourceHold": 0
   },
   "ownedScopes": [
@@ -1587,7 +1587,7 @@
       "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2022",
@@ -1665,7 +1665,7 @@
       "templateKey": "TT_FOLDING_REFLECTION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2022",
@@ -1728,6 +1728,19 @@
       "L4": "평행이동한 직선의 평행·수직·교점 조건",
       "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
       "templateKey": "TT_LINE_TRANSLATION_RELATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "점의 대칭이동",
+      "L4": "기본 대칭점의 좌표",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_BASIC",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -1821,7 +1834,7 @@
       "templateKey": "TM_CIRCLE_AXIS_TANGENT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2022",
@@ -1847,7 +1860,7 @@
       "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2022",
@@ -2055,7 +2068,7 @@
       "templateKey": "TM_TANGENT_TWO_SLOPES",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 3
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2022",
@@ -2179,6 +2192,19 @@
       "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "직선의 방정식",
+      "L3": "직선의 방정식 구하기",
+      "L4": "두 점을 지나는 직선",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
       "L3": "직선의 교점과 위치 조건",
       "L4": "직선의 사분면 통과 조건",
       "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
@@ -2224,7 +2250,7 @@
       "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2022",
@@ -2890,6 +2916,59 @@
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
       "metaFoundationPackVersion": "1.0.2"
+    },
+    {
+      "questionUid": "qid_v1_06f512b311b44be6ed2ade3ad124eb76e53cb1dddc01bd945ef8811161afc194",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "주관식2",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#22",
+      "sourceFingerprint": "942552a0a5c25dd8d86e927fd5d9feab88863859be3a5b10150d240dabc19b23",
+      "approvedSourceFingerprint": "942552a0a5c25dd8d86e927fd5d9feab88863859be3a5b10150d240dabc19b23",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H22-C2-02-RELATION",
+      "subUnit": "두 직선의 관계",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "두 직선의 위치 관계",
+      "L4": "두 직선의 수직 조건",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "5a556d75a32c7ef283ecb4b65eaa9c5c733b05a334003b19e606dd7d2aa2a6e3"
     },
     {
       "questionUid": "qid_v1_07bc2249e398e0b1816140cf5ef7b59b3d7d3f929a9b5bf67ff2f2c386259c9c",
@@ -3854,6 +3933,57 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_146c404315c6a9e676042e9075f285a5be302e15d82878888fcd05be321b73f8",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#9",
+      "sourceFingerprint": "b24f22ce46ddd275bfe49cf948295883dbd3ac7b7fcb12fc418367ec0cfc5290",
+      "approvedSourceFingerprint": "b24f22ce46ddd275bfe49cf948295883dbd3ac7b7fcb12fc418367ec0cfc5290",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 접선",
+      "L4": "두 접선의 기울기",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_TWO_SLOPES",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [
+        "CC_POINT_LINE_DISTANCE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "74a5703d46d0b4fdbdacb68f189d01376abf72a6f23c4fb2bcd3e9d72a33fbf4"
+    },
+    {
       "questionUid": "qid_v1_150f51b2ffc10b605c5b5ffac2720f421f189940c96eabce9b3b22aaa590a1c1",
       "sourceArchiveFile": "original/high/h1/1final/22_금당고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 4,
@@ -4670,6 +4800,55 @@
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
       "metaFoundationPackVersion": "1.0.2"
+    },
+    {
+      "questionUid": "qid_v1_206d88b6741cd436f63ba0bd35151543d87a40a8bf992a9d0c8473d86558a4c8",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#4",
+      "sourceFingerprint": "2584608b73b5f23c816fa5e4748a435c04d1ddbfc2f621926d9ae8f343057098",
+      "approvedSourceFingerprint": "2584608b73b5f23c816fa5e4748a435c04d1ddbfc2f621926d9ae8f343057098",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-02",
+      "standardUnit": "직선의 방정식",
+      "subUnitKey": "H22-C2-02-LINE_EQUATION",
+      "subUnit": "직선의 방정식",
+      "L1": "도형의 방정식",
+      "L2": "직선의 방정식",
+      "L3": "직선의 방정식 구하기",
+      "L4": "두 점을 지나는 직선",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "하",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "c3e0d89884f5863e31385278750eccca1b74a9d031fb187b440147d1971d0f55"
     },
     {
       "questionUid": "qid_v1_213775ef4d59d3272ff20cc1c70cc3ff1cec199e167b33fa9ec2ee9e2af6a2fa",
@@ -9079,6 +9258,55 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_5ece7e33aa5366561e3ba953f43ed487c2be923d2c5ab58306dbcadb706b2157",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#7",
+      "sourceFingerprint": "221ee9bde8de6258d298140c88041adcce8caf99237221d3c0089a11095b9c05",
+      "approvedSourceFingerprint": "221ee9bde8de6258d298140c88041adcce8caf99237221d3c0089a11095b9c05",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "좌표축에 접하는 원의 방정식",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_AXIS_TANGENT",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "6c7553102337bc0410f28e504e14867579d4f1b27a87ac8b731fe544cb464323"
+    },
+    {
       "questionUid": "qid_v1_5f0eedd669a0c0f2aecd40a20ed3b761ac21c70d41ac0a2d485f74d0f74532b8",
       "sourceArchiveFile": "original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
       "sourceOrdinal": 11,
@@ -11351,6 +11579,59 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#20",
+      "sourceFingerprint": "00b2927dfea7c4d5a2c356387829c109f9d6ba22aa2f31a48e75c3b6bee98b01",
+      "approvedSourceFingerprint": "00b2927dfea7c4d5a2c356387829c109f9d6ba22aa2f31a48e75c3b6bee98b01",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "점의 대칭이동",
+      "L4": "기본 대칭점의 좌표",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_BASIC",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [
+        "CC_LINE_INTERSECTION",
+        "CC_CIRCUMCIRCLE",
+        "CC_PERPENDICULAR"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "a55113fbe6e0a146b6b819d7e4aabf5721282a296ebe9093d7d1440c72bd7eac"
+    },
+    {
       "questionUid": "qid_v1_7f471dca9eb79f227aabb6e68a422340e21064621381db73135650b12734e269",
       "sourceArchiveFile": "original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 16,
@@ -13259,6 +13540,57 @@
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
       "metaFoundationPackVersion": "1.0.2"
+    },
+    {
+      "questionUid": "qid_v1_a7f92fcdca4240ac97899fc0754beaf9ec483302a871380494251713fa040775",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#14",
+      "sourceFingerprint": "e17dfe0512da02debb2fa8dbbc4dd75ea0b4c88125c93ee9a0b300b230a0f4f3",
+      "approvedSourceFingerprint": "e17dfe0512da02debb2fa8dbbc4dd75ea0b4c88125c93ee9a0b300b230a0f4f3",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-03",
+      "standardUnit": "원의 방정식",
+      "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+      "subUnit": "원의 방정식",
+      "L1": "도형의 방정식",
+      "L2": "원의 방정식",
+      "L3": "원의 방정식",
+      "L4": "삼각형의 외접원",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [
+        "CC_LINE_INTERSECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "25dbe273d3a9e92468fd5a9d5b5024771345de0b083ddbbe969f02b451748448"
     },
     {
       "questionUid": "qid_v1_a82493d13fb0c371620017becc4660a805bdf1a2b0360603f52cfe11f7d596a5",
@@ -16814,6 +17146,58 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_e4e9065a7c9b1253985a2f22c19cfbc37cbf425fe90b109255cf7c923cffcaf1",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#12",
+      "sourceFingerprint": "926c0308c37afb1e4c87dd3bafe75941c5112d601f6cb8e063011ac0cb987435",
+      "approvedSourceFingerprint": "926c0308c37afb1e4c87dd3bafe75941c5112d601f6cb8e063011ac0cb987435",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "접기와 대칭이동",
+      "L4": "접기에서의 대칭 관계",
+      "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "templateKey": "TT_FOLDING_REFLECTION",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [
+        "CC_PERPENDICULAR_BISECTOR",
+        "CC_CIRCLE_CENTER_RADIUS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "9e96c20d4aadd67fd81bb59a355ea27110e3f28a7e464e5e30bb4237b805ffe4"
+    },
+    {
       "questionUid": "qid_v1_e5327e97d57c078623b45e2d2e1be2426ac2fad4c87e3b7935cfc31c6930d7d0",
       "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
       "sourceOrdinal": 11,
@@ -18838,6 +19222,57 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_fefd4c354caf3d4e81526e74d2a45936f98b10372dfbc051a0aed0b076561c43",
+      "sourceArchiveFile": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceIdentity": "original/high/h1/2mid/26_매산여고_2학기_중간_고1_기출.js#10",
+      "sourceFingerprint": "a8649370bbbc7c5e513d6a1416390c6191b633d790820abe0f8ab8a4c86103b7",
+      "approvedSourceFingerprint": "a8649370bbbc7c5e513d6a1416390c6191b633d790820abe0f8ab8a4c86103b7",
+      "resolverSourceFingerprint": "",
+      "curriculum": "2022",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-04",
+      "standardUnit": "도형의 이동",
+      "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "L1": "도형의 방정식",
+      "L2": "도형의 이동",
+      "L3": "원의 평행이동",
+      "L4": "평행이동한 원의 접선 조건",
+      "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+      "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "resolverEvidenceSha": "",
+      "difficultyEvidenceSha": "",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "runtimeSelectable": true,
+      "reviewStatus": "reviewed_pass",
+      "metadataStatus": "approved_semantic_review",
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-r2-source-v1",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "GEOMETRY_EQUATIONS",
+      "metaFoundationPackVersion": "1.0.2",
+      "catalogIdentityRepairVerified": true,
+      "rawQuestionHash": "b6f84834270727455217d039668299865b6e809d9c6384af5cb99d7566212095"
+    },
+    {
       "questionUid": "qid_v1_ff5dedbf92494c4493ed2b7163fa91d676e8649c2f0f0745dfacad3e221d7635",
       "sourceArchiveFile": "original/high/h1/1final/23_매산고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 7,
@@ -18951,7 +19386,7 @@
   ],
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 412,
+    "records": 420,
     "problemTypes": [
       {
         "key": "PT_AREA_BISECTING_LINE",
@@ -18964,7 +19399,7 @@
       },
       {
         "key": "PT_CIRCLE_EQUATION",
-        "count": 55,
+        "count": 57,
         "questionUids": [
           "qid_v1_0303fcdceaa62c455ce285e18e3a640b0c158dcf0d8120bec99225a5c3f53029",
           "qid_v1_047ad035972e00c097cd3b09efa782f88dd837687bff8d56880083479237c0f6",
@@ -18984,6 +19419,7 @@
           "qid_v1_563da8f79e0f3190e6ccbf815c7bdd3be2524fada7cc63d8d6af711903d7cc17",
           "qid_v1_5d50ba4d0dcf01793ddc67dcd565b907d73c489bdfd16dd87cbd93a2c0d57e6b",
           "qid_v1_5e9ce6b8a62599b6781fb64f49db06cdcc10e071a43545af6fe56fdb9e3eeb31",
+          "qid_v1_5ece7e33aa5366561e3ba953f43ed487c2be923d2c5ab58306dbcadb706b2157",
           "qid_v1_649f31280d0dab2e45d4da7fd0dfb16c1d65f35cda66a23a09da5c2a20cf0feb",
           "qid_v1_65b1e4cbc70c5444aca2e0b2faa1238caf44a5ec89d6b089430a1c4c35af0378",
           "qid_v1_68101d8b3835f00f8720fc730b6eb740fba7419d0cb46928e2906f276c56e855",
@@ -19005,6 +19441,7 @@
           "qid_v1_988103868c813feeb0e500ee575b3a7ade21442782a2b0abf3a4a998b451da55",
           "qid_v1_9e736813cfc4a688e67b20d2155130fd4073e088003d013f9ca2efd4f8426913",
           "qid_v1_a64fc4c102c07a460ae8f13fe9daf3472f709ef457fc92d13f26e4a50a8f32e8",
+          "qid_v1_a7f92fcdca4240ac97899fc0754beaf9ec483302a871380494251713fa040775",
           "qid_v1_a930d6e17ba17a96528703f4e221d2b9cf7bf2a250ebadf878489aba12314b43",
           "qid_v1_a96464c484b79b6d6f6589aa350bed63020bdd0bad560ceb2c4234355222ed93",
           "qid_v1_ac07f5d306784b9b173db006066f01f654c354e7e93c7ce1af39d7ffef1aaa7c",
@@ -19066,13 +19503,14 @@
       },
       {
         "key": "PT_CIRCLE_TANGENT",
-        "count": 44,
+        "count": 45,
         "questionUids": [
           "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
           "qid_v1_0c2f7b7e8280df7830ce24c2bfab514f8d7a05ee1d5651084518e02006fb598b",
           "qid_v1_0f69ee6c0fab1b7663b7cdf12026634e7c000f994a244efdb40cb6551b63359b",
           "qid_v1_10ea42b0df6fd497b095cbe6c1310b462a7ef0898b36123815d28585dc50dc94",
           "qid_v1_112510787049b446f715c9de67236cd9bd059c243eee742430bc5e33a8c23e03",
+          "qid_v1_146c404315c6a9e676042e9075f285a5be302e15d82878888fcd05be321b73f8",
           "qid_v1_1a3496aad426220f6448fd28b70753787b593c1e371d1b895c306a6dc0e288b7",
           "qid_v1_1d8c71ec12f45dab5914762bee634aa9ce5800a3ec2a23e58cede55fab32f083",
           "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
@@ -19271,10 +19709,11 @@
       },
       {
         "key": "PT_LINE_EQUATION",
-        "count": 22,
+        "count": 23,
         "questionUids": [
           "qid_v1_05d9a725108d3a7af1502c15a390ec45c0c73924c728c34daaebb6fbbd6fa19f",
           "qid_v1_1cbe49434b9940e25ff46f1b899351030e32d2940087bb42dd89258eef0d272b",
+          "qid_v1_206d88b6741cd436f63ba0bd35151543d87a40a8bf992a9d0c8473d86558a4c8",
           "qid_v1_21624626e2bb9bc7693873e38469182efc6558ce0834fe61ff7c50d1bff53d8b",
           "qid_v1_2be507d90c2150b04fde5892933e9fa34e982210e2cf52c79b5a6758899c0ac8",
           "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
@@ -19320,8 +19759,9 @@
       },
       {
         "key": "PT_LINE_RELATION",
-        "count": 20,
+        "count": 21,
         "questionUids": [
+          "qid_v1_06f512b311b44be6ed2ade3ad124eb76e53cb1dddc01bd945ef8811161afc194",
           "qid_v1_0bca49c7c74a2251fb57877b94e1528f8fae44095bc8456905f69e27a8c028f9",
           "qid_v1_47335a0188223d83d65c931bedc8b44e5ffe03c487aa32ecbb5243349ea7182a",
           "qid_v1_516ef0831fac985880e8fca908192a00251f67ada8d150c1cd8c902d681715bb",
@@ -19360,14 +19800,15 @@
       },
       {
         "key": "PT_MOVE_CIRCLE_TRANSLATION",
-        "count": 6,
+        "count": 7,
         "questionUids": [
           "qid_v1_15c9cbaf47ebb4f3e8555e8c1abbd6c02a6eef033bbda43cb0647920914b8364",
           "qid_v1_505850fffc246abf1c614fa0ce4b1d25ef0370cc47ef42a5e4de32cfb057ffce",
           "qid_v1_acc9125b02d38b52338264d2c62b2e7ccdfa2eadee0a2e34984b4b02794a8e31",
           "qid_v1_b57d7976acdcec864b437f4ca506dbb6a04af00f332475878d9a360ea18565f0",
           "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
-          "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5"
+          "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5",
+          "qid_v1_fefd4c354caf3d4e81526e74d2a45936f98b10372dfbc051a0aed0b076561c43"
         ]
       },
       {
@@ -19411,10 +19852,11 @@
       },
       {
         "key": "PT_MOVE_FOLDING_REFLECTION",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_31094438764cc4bf5a49b84c8a0e0fd1b0b4be2b4c182e6f1d9399b10941c428",
-          "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3"
+          "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3",
+          "qid_v1_e4e9065a7c9b1253985a2f22c19cfbc37cbf425fe90b109255cf7c923cffcaf1"
         ]
       },
       {
@@ -19466,13 +19908,14 @@
       },
       {
         "key": "PT_MOVE_POINT_REFLECTION",
-        "count": 11,
+        "count": 12,
         "questionUids": [
           "qid_v1_0b7f8d20d666e1eae0d89422817393a1a68317cc86f6b132e405b41f56ceeb68",
           "qid_v1_0eb99dc3aad54873c087344c1e01779d6dc5872843e8b37ecf483f5e5f82a945",
           "qid_v1_4479f1f43c5538247ed92940d0ae06a8392d048297e0b90847832b95463b8c91",
           "qid_v1_5fb3f6199a29f2dac01d48480a7105178ac0a9d77a410e5681d7d5a438a88ea1",
           "qid_v1_7c0426986e3aa057f18dfdbfc88e65120790ee9fb247d26cc0ee53f0794bac8b",
+          "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802",
           "qid_v1_988d3f33c93ec46d880cb199c86650d96631caee5e8b7f6307a32222f9ea3696",
           "qid_v1_bb8c9938418270a7d6a1c08bd2489db4e61bc503221492e173a6a7f6a5e0578a",
           "qid_v1_c4c5080ce1a508c5b9a321c8b4721ff9c85bd0f1251bb0119fe93d99a8dc1d57",
@@ -19585,9 +20028,10 @@
     "templates": [
       {
         "key": "TM_CIRCLE_AXIS_TANGENT",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_5e9ce6b8a62599b6781fb64f49db06cdcc10e071a43545af6fe56fdb9e3eeb31",
+          "qid_v1_5ece7e33aa5366561e3ba953f43ed487c2be923d2c5ab58306dbcadb706b2157",
           "qid_v1_65b1e4cbc70c5444aca2e0b2faa1238caf44a5ec89d6b089430a1c4c35af0378",
           "qid_v1_6f8ac07756249bc3a996637787aca017643d87f83ffed69b32ce068e9aae7ce9",
           "qid_v1_72c2c7a1a664b480cbdf761fffda8e3717cd2d9c26962f59cc5eb40bb379983f",
@@ -19668,10 +20112,11 @@
       },
       {
         "key": "TM_CIRCLE_CIRCUMCIRCLE",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_1b35dc663ac244483e5a43e37c9007e9ca8a0ac0a82d91fcea00e288bf24ac0e",
-          "qid_v1_7957e9829210491ccb5877ee6b0201cc70a480a4854e477eba7458f098db1c5d"
+          "qid_v1_7957e9829210491ccb5877ee6b0201cc70a480a4854e477eba7458f098db1c5d",
+          "qid_v1_a7f92fcdca4240ac97899fc0754beaf9ec483302a871380494251713fa040775"
         ]
       },
       {
@@ -19885,9 +20330,10 @@
       },
       {
         "key": "TM_TANGENT_TWO_SLOPES",
-        "count": 8,
+        "count": 9,
         "questionUids": [
           "qid_v1_0f69ee6c0fab1b7663b7cdf12026634e7c000f994a244efdb40cb6551b63359b",
+          "qid_v1_146c404315c6a9e676042e9075f285a5be302e15d82878888fcd05be321b73f8",
           "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
           "qid_v1_300f7816d6f5c17498d71a9b364d753531ebb9baf9aa8b20a58ff142f6255fe8",
           "qid_v1_83e46fa862f2c22541a442f4070d167c9031d84a0c129e409c6d1c208ebcd11f",
@@ -20318,8 +20764,9 @@
       },
       {
         "key": "TPL_LINE_TWO_POINTS",
-        "count": 3,
+        "count": 4,
         "questionUids": [
+          "qid_v1_206d88b6741cd436f63ba0bd35151543d87a40a8bf992a9d0c8473d86558a4c8",
           "qid_v1_2be507d90c2150b04fde5892933e9fa34e982210e2cf52c79b5a6758899c0ac8",
           "qid_v1_337f4ad88454eff109bb975f9bce0af5a286a9976dc24e5166b77fd23433441e",
           "qid_v1_7d54c0e0e9769d5cbfbc8647d60c04f1b107d363acec487b44c4c114220cc13c"
@@ -20394,8 +20841,9 @@
       },
       {
         "key": "TPL_RELATION_PERPENDICULAR_PARAMETER",
-        "count": 5,
+        "count": 6,
         "questionUids": [
+          "qid_v1_06f512b311b44be6ed2ade3ad124eb76e53cb1dddc01bd945ef8811161afc194",
           "qid_v1_516ef0831fac985880e8fca908192a00251f67ada8d150c1cd8c902d681715bb",
           "qid_v1_59c380b1cc7762269bd5284b99bba267d72742b346cd835c85b85411026d6d27",
           "qid_v1_654c7e728a970abef0fb5ebb4a5af0882f712f799b4cc063cb24556eb9364687",
@@ -20500,11 +20948,12 @@
       },
       {
         "key": "TT_CIRCLE_TRANSLATION_TANGENCY",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_505850fffc246abf1c614fa0ce4b1d25ef0370cc47ef42a5e4de32cfb057ffce",
           "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
-          "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5"
+          "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5",
+          "qid_v1_fefd4c354caf3d4e81526e74d2a45936f98b10372dfbc051a0aed0b076561c43"
         ]
       },
       {
@@ -20584,10 +21033,11 @@
       },
       {
         "key": "TT_FOLDING_REFLECTION",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_31094438764cc4bf5a49b84c8a0e0fd1b0b4be2b4c182e6f1d9399b10941c428",
-          "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3"
+          "qid_v1_c5cbff8ce1d3468bcff8cde143b97956ca822751e6944ff4c8a5a34c246dfcb3",
+          "qid_v1_e4e9065a7c9b1253985a2f22c19cfbc37cbf425fe90b109255cf7c923cffcaf1"
         ]
       },
       {
@@ -20657,10 +21107,11 @@
       },
       {
         "key": "TT_POINT_REFLECTION_BASIC",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_0b7f8d20d666e1eae0d89422817393a1a68317cc86f6b132e405b41f56ceeb68",
           "qid_v1_0eb99dc3aad54873c087344c1e01779d6dc5872843e8b37ecf483f5e5f82a945",
+          "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802",
           "qid_v1_f05d5fd10c6165a3f37be57654a44773b0358be254b71bf6d1e0052de01a3de0"
         ]
       },
@@ -20804,7 +21255,7 @@
       },
       {
         "key": "CC_CIRCLE_CENTER_RADIUS",
-        "count": 26,
+        "count": 27,
         "questionUids": [
           "qid_v1_0acb91673f43cfaaa06840e90f8f7f5f56106e27e84bcb8b638e03bdd0fb9746",
           "qid_v1_15c9cbaf47ebb4f3e8555e8c1abbd6c02a6eef033bbda43cb0647920914b8364",
@@ -20830,6 +21281,7 @@
           "qid_v1_d0a5a546d9cdf2ea98effc83dee4de182bd647b73fa671a0793311c40d53f100",
           "qid_v1_d3ddda497a3f616c82408f637855dc57fdcc104be76cfdd29c3cd9e6a8c2a1c2",
           "qid_v1_dee4a33985a82c7050913d44e88a51f8ad45198576d9254d080e1def15366df5",
+          "qid_v1_e4e9065a7c9b1253985a2f22c19cfbc37cbf425fe90b109255cf7c923cffcaf1",
           "qid_v1_edf3ae58d5a0af9fda583321f535ab2db5c6a88bee8cc86232255b313c497574",
           "qid_v1_efa6eb16fddb16fb3c572d37fe5f24486f91e85dd7ad7f83c974a905de838d2e"
         ]
@@ -20857,9 +21309,10 @@
       },
       {
         "key": "CC_CIRCUMCIRCLE",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_23f4af059bbca60a0b3642be2ad39a54294055d7d9c3c00e05a3672697b11a1f"
+          "qid_v1_23f4af059bbca60a0b3642be2ad39a54294055d7d9c3c00e05a3672697b11a1f",
+          "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802"
         ]
       },
       {
@@ -20997,14 +21450,16 @@
       },
       {
         "key": "CC_LINE_INTERSECTION",
-        "count": 9,
+        "count": 11,
         "questionUids": [
           "qid_v1_10c3debe9a5749b7470a56b58770bcde00170bf8f1142ad7ec340b5029e24f1e",
           "qid_v1_304c2650897ba1f0a84816b80b75b17cc88c01fbb4fde67732626d8c766f0d37",
           "qid_v1_3abe4b37e32e15bd8ccd81382b327c1e6cabdfa8f91e9fcf757479900b167d08",
           "qid_v1_419e77c0dc721b1785d4e31d48d4f4f744edef7c6cd0558146e0772370138444",
           "qid_v1_50a1254f692780935186c7defc4267ef94060ae1560918c5c0c569f94d7f2613",
+          "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802",
           "qid_v1_921ad117e0afd6a1143e8ed824f4f81c2154cdc7ac0a20235902efa7f625ef61",
+          "qid_v1_a7f92fcdca4240ac97899fc0754beaf9ec483302a871380494251713fa040775",
           "qid_v1_c5307b8fed7affeb71c56ab4b4bc2eeaaf50266ee932e5e5e15b22a415583489",
           "qid_v1_e72428f49edd7ae0e2a368c575a7be76fcf9bfcc177d8558b6998b0055c851c9",
           "qid_v1_e82f96e7b97f32e92b6888ab5c2bda42cb06089270bb59bab43c23c8a490efa6"
@@ -21050,7 +21505,7 @@
       },
       {
         "key": "CC_PERPENDICULAR",
-        "count": 15,
+        "count": 16,
         "questionUids": [
           "qid_v1_02c9ebcf4add4f107fcf1523a3bb7dd639baa466bb4337e788fa7fe8908a69eb",
           "qid_v1_1efb2f41b9894a1499eaec7fb1bdac6e7ad35572108a075a1e15d42b5d906776",
@@ -21061,6 +21516,7 @@
           "qid_v1_65d61f91159289916a954fe80fa23b773468055944aad59e2885e1956fcdbbe2",
           "qid_v1_77c0363b0366560b3bab7a9a326963df170f692ed7313aee4432ffdc9a3e774d",
           "qid_v1_7867b21d27d521bc7769b302ef521094a5fe04c9df7297e8da65a40fa577df47",
+          "qid_v1_7d7cdfe86c1a03460d3f11e50906df9a5c85bd5bf7b42644ee43299201d7d802",
           "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd",
           "qid_v1_8b3967d63aeda1f95b64c62b2578b7eb2cf8d1313db84a1983758ceca7c7617a",
           "qid_v1_b290b129ada0fef16860a658913cf66495c0e58e35aee292d5295d443714f0a4",
@@ -21071,18 +21527,20 @@
       },
       {
         "key": "CC_PERPENDICULAR_BISECTOR",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_e4e9065a7c9b1253985a2f22c19cfbc37cbf425fe90b109255cf7c923cffcaf1",
           "qid_v1_f7cd5749a2556d3044584f0e13c59eaf414c7f883a5d1c9c0e2bf375abcaf93b"
         ]
       },
       {
         "key": "CC_POINT_LINE_DISTANCE",
-        "count": 36,
+        "count": 37,
         "questionUids": [
           "qid_v1_0526f952c7b13ef6ccb6421905531268dfc2ea5651ef348c262e16f6a4e9ca4b",
           "qid_v1_07bc2249e398e0b1816140cf5ef7b59b3d7d3f929a9b5bf67ff2f2c386259c9c",
           "qid_v1_140c246d8642e9415e666a7bda6464375d0ae7834f97ab6b41316f59eae0d1f7",
+          "qid_v1_146c404315c6a9e676042e9075f285a5be302e15d82878888fcd05be321b73f8",
           "qid_v1_1569c53ef8abc937de86d9ece5bac0d7d199b8d7f4127e38bf21cd0c817d46f0",
           "qid_v1_1e0c28d49227938852652872e217220707208e6acbe8b463412513d06d98ca3a",
           "qid_v1_200d92bc0556f5f3ee9c95db7d7389e8116e05cb4a01cfb519ff35379ae63500",
@@ -21269,9 +21727,10 @@
       },
       {
         "key": "CC_TRIANGLE_AREA",
-        "count": 34,
+        "count": 35,
         "questionUids": [
           "qid_v1_0526f952c7b13ef6ccb6421905531268dfc2ea5651ef348c262e16f6a4e9ca4b",
+          "qid_v1_06f512b311b44be6ed2ade3ad124eb76e53cb1dddc01bd945ef8811161afc194",
           "qid_v1_0805ae84c3e5172d1cb0a15052fdbdf1721d27368cbac8b2fa56b9036d66dc62",
           "qid_v1_1112cba4630914cee5e7bc68d03ea93b0485c02f6a95b1586bf0711e37f70a07",
           "qid_v1_112510787049b446f715c9de67236cd9bd059c243eee742430bc5e33a8c23e03",
@@ -21376,15 +21835,16 @@
       },
       {
         "key": "COND_NONZERO",
-        "count": 2,
+        "count": 3,
         "questionUids": [
+          "qid_v1_06f512b311b44be6ed2ade3ad124eb76e53cb1dddc01bd945ef8811161afc194",
           "qid_v1_5b902822d286819e4c1fd1562603fce054be0ddae33057ce012d61dd708f5a38",
           "qid_v1_5ce5cf150075a984529301ce4ad6c893300df444125cb07491bc68985f12399c"
         ]
       },
       {
         "key": "COND_POSITIVE",
-        "count": 8,
+        "count": 9,
         "questionUids": [
           "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
           "qid_v1_65d61f91159289916a954fe80fa23b773468055944aad59e2885e1956fcdbbe2",
@@ -21393,7 +21853,8 @@
           "qid_v1_b2860eb5887ca5a93e907c4357378ba91ebe093dbd6d95fe764736214e531582",
           "qid_v1_b290b129ada0fef16860a658913cf66495c0e58e35aee292d5295d443714f0a4",
           "qid_v1_e53df8308b0f651231fc75210299f56e02222c7ac71983923a1195e04f454280",
-          "qid_v1_ec301c99b8714b7f6c3155fcdcf521ca2eafc4aa7bb2486c3bbc9a894e88f6f0"
+          "qid_v1_ec301c99b8714b7f6c3155fcdcf521ca2eafc4aa7bb2486c3bbc9a894e88f6f0",
+          "qid_v1_fefd4c354caf3d4e81526e74d2a45936f98b10372dfbc051a0aed0b076561c43"
         ]
       },
       {
