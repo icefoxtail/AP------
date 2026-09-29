@@ -552,7 +552,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 자연수 $k$, $m(k\\ge m)$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $m$의 약수$\\}$, $B$가 다음 <조건>을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $B-A=\\{3,8\\}$, $n(A\\cup B^C)=8$<br>(나) 집합 $A$의 모든 원소의 합과 집합 $B$의 모든 원소의 합은 서로 같다.</div>집합 $A^C\\cap B^C$의 모든 원소의 합을 구하면? [4.3점]",
+    "content": "두 자연수 $k$, $m(k\\ge m)$에 대하여 전체집합 $U=\\{x\\mid x$는 $k$ 이하의 자연수$\\}$의 두 부분집합 $A=\\{x\\mid x$는 $m$의 약수$\\}$, $B$가 다음 <조건>을 만족시킨다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;조건&gt;</div>(가) $B-A=\\{3,8\\}$, $n(A\\cup B^c)=8$<br>(나) 집합 $A$의 모든 원소의 합과 집합 $B$의 모든 원소의 합은 서로 같다.</div>집합 $A^c\\cap B^c$의 모든 원소의 합을 구하면? [4.3점]",
     "choices": [
       "24",
       "25",
