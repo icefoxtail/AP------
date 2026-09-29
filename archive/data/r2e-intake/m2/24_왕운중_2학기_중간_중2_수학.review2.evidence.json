@@ -1,0 +1,127 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW2_EVIDENCE_v1",
+  "examFile": "24_왕운중_2학기_중간_중2_수학.js",
+  "examUid": "24_왕운중_2학기_중간_중2_수학",
+  "canonicalGlobalInventoryOrdinal": 39,
+  "lane": "REVIEW2-3",
+  "currentCohort": "M2_FIXED20",
+  "certificationGenerationApplicability": "M2_CURRENT_FIXED20_CONTINUATION_NOT_RESET",
+  "workingBranch": "work/middle/m2/24-wangwoon-2mid",
+  "reviewBaseHead": "5c5a9eb7fd1019fc212e75bcbe1e656da9ef0e4b",
+  "observedMainSha": "d12dcca0d5e1c22f6db95cc2f0ed6d5e997efe93",
+  "independenceStatement": "FULL independent REVIEW2 performed from the latest exam artifact and source authority; REVIEW1 detailed verdict was not used as decision authority.",
+  "sourceAuthority": {
+    "branch": "work/rebuild/m2-full-20260928-source",
+    "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+    "sourceExamBlobSha": "4770d7394bc8d72c27f8dd2da5836bbc959a8d00"
+  },
+  "finalArtifact": {
+    "examPath": "archive/exams/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
+    "beforeExamBlobSha": "4770d7394bc8d72c27f8dd2da5836bbc959a8d00",
+    "finalExamBlobSha": "11f8b1bc99c8b9a05ab6a3d05de0bcfba533d264",
+    "productionChangedFiles": [
+      "archive/exams/original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js"
+    ]
+  },
+  "coverage": {
+    "denominator": 24,
+    "sourceContentChoicesAnswerExact": "24/24 PASS",
+    "mathAnswerTruth": "24/24 PASS",
+    "solutionReproducibility": "24/24 PASS_AFTER_REPAIR",
+    "smallBoard": "24/24 PASS_AFTER_REPAIR",
+    "curriculumAndStudentLanguage": "24/24 PASS",
+    "questionMicroLayout": "24/24 PASS",
+    "jsIntegrity": "PASS",
+    "hold": 0
+  },
+  "protectedParity": {
+    "content": "24/24 PASS",
+    "choices": "24/24 PASS",
+    "answer": "24/24 PASS",
+    "imageRefs": "24/24 PASS",
+    "layoutTag": "24/24 PASS",
+    "postRepairProtectedFieldDrift": 0
+  },
+  "repairs": [
+    {
+      "qid": 14,
+      "axis": "solutionReproducibility",
+      "defect": "CONGRUENCE_JUSTIFICATION_STEP_OMITTED",
+      "before": "AB∥CE, BM=CM, ∠AMB=∠EMC에서 곧바로 △ABM≅△ECM으로 전이하여 평행선에서 얻는 두 번째 각의 같음을 명시하지 않음.",
+      "repair": "AB∥CE로부터 ∠ABM=∠ECM을 먼저 명시한 뒤 BM=CM, ∠AMB=∠EMC와 함께 합동을 결론내도록 한 문장만 보강.",
+      "recheck": "q14 answer ② / area chain 45 unchanged; only solution field changed; content/choices/answer/image/layout exact."
+    }
+  ],
+  "questionMicroLayout": {
+    "grid": "24/24",
+    "subjectiveGrid": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "subjective2up": 0,
+    "staticCapacityDecision": "grid retained; no item has clear STATIC_CAPACITY_EVIDENCE requiring 2up",
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "repair": 0
+  },
+  "problemAssets": {
+    "referenced": 23,
+    "noImageQuestions": [
+      5
+    ],
+    "present": "23/23",
+    "sourceByteExact": "23/23",
+    "directVisualCrossCheck": "23/23 PASS",
+    "clippingOrOwnerMismatch": 0
+  },
+  "solutionVisuals": {
+    "referenced": 0,
+    "codeFirst": "0/0",
+    "status": "NONE_REQUIRED_BY_CURRENT_ARTIFACT"
+  },
+  "jsIntegrity": {
+    "parse": "PASS",
+    "questionCount": 24,
+    "uniqueIds": "24/24",
+    "nonemptyAnswers": "24/24",
+    "nonemptySolutions": "24/24"
+  },
+  "notableIndependentChecks": {
+    "q9": "regular-octagon angle chain independently gives 135°",
+    "q14": "midpoint/congruence/area chain independently gives 45; proof wording repaired to expose both equal-angle facts",
+    "q17": "square + isosceles chains independently give 65°",
+    "q20": "isosceles-angle chain independently solves x=32°",
+    "q22": "perimeter difference reduces to BC=6",
+    "q24": "6-8-10 geometry + right-triangle congruence gives DC=10/3"
+  },
+  "calibration": {
+    "blindDecisionFrozenBeforeCompare": true,
+    "goldenSampleRefs": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "negativeSampleRefs": [
+      "archive/fixtures/visual-negative-regressions/2026-09-29/README.md"
+    ],
+    "calibrationAxes": [
+      "student solution reproducibility",
+      "small-board density",
+      "question layout",
+      "visual owner/parity regression awareness"
+    ],
+    "calibrationStatus": "PASS"
+  },
+  "excludedByCurrent": [
+    "Meta",
+    "RPM",
+    "L3",
+    "L4",
+    "CrossConcept",
+    "difficulty"
+  ],
+  "stageDecision": "REVIEW2_DONE",
+  "nextState": "READY_FOR_COMMIT",
+  "nextOwner": "BATCH_COMMIT",
+  "reviewedAt": "2026-09-29T15:17:00+09:00"
+}

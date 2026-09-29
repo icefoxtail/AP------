@@ -455,7 +455,7 @@ window.questionBank=[
       "60"
     ],
     "answer": "②",
-    "solution": "[키포인트] 평행선과 중점 조건으로 먼저 작은 삼각형의 합동 관계를 찾고, 넓이의 비를 연결한다.\n조건 정리: $M$은 $BC$의 중점, $A,M,E$는 한 직선, $D,C,E$는 한 직선이고 $[\\triangle DME]=30$이다.\n풀이 방향: $\\triangle ABM$과 $\\triangle ECM$을 비교하여 $AM=ME$, $CD=CE$를 보인 뒤 넓이 관계를 구한다.\n정석 풀이: $AB\\parallel CE$, $BM=CM$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM\\cong\\triangle ECM$이다. 따라서 $AM=ME$, $AB=CE$이다. 평행사변형에서 $AB=CD$이므로 $CD=CE$도 성립한다. 따라서 $M$은 $AE$의 중점이고 $C$는 $DE$의 중점이다. $AM=ME$이므로 $[\\triangle DMA]=[\\triangle DME]=30$, 따라서 $[\\triangle ADE]=60$이다. $C$가 $DE$의 중점이므로 $[\\triangle ADC]=30$이고 평행사변형 $ABCD$의 넓이는 그 두 배인 $60$이다. 또 $MC=\\dfrac12BC$이므로 $[\\triangle MCD]=\\dfrac14[ABCD]=15$이다. 따라서 $[ABMD]=60-15=45$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 평행선과 중점 조건으로 먼저 작은 삼각형의 합동 관계를 찾고, 넓이의 비를 연결한다.\n조건 정리: $M$은 $BC$의 중점, $A,M,E$는 한 직선, $D,C,E$는 한 직선이고 $[\\triangle DME]=30$이다.\n풀이 방향: $\\triangle ABM$과 $\\triangle ECM$을 비교하여 $AM=ME$, $CD=CE$를 보인 뒤 넓이 관계를 구한다.\n정석 풀이: $AB\\parallel CE$이므로 $\\angle ABM=\\angle ECM$이고, $BM=CM$, $\\angle AMB=\\angle EMC$이므로 $\\triangle ABM\\cong\\triangle ECM$이다. 따라서 $AM=ME$, $AB=CE$이다. 평행사변형에서 $AB=CD$이므로 $CD=CE$도 성립한다. 따라서 $M$은 $AE$의 중점이고 $C$는 $DE$의 중점이다. $AM=ME$이므로 $[\\triangle DMA]=[\\triangle DME]=30$, 따라서 $[\\triangle ADE]=60$이다. $C$가 $DE$의 중점이므로 $[\\triangle ADC]=30$이고 평행사변형 $ABCD$의 넓이는 그 두 배인 $60$이다. 또 $MC=\\dfrac12BC$이므로 $[\\triangle MCD]=\\dfrac14[ABCD]=15$이다. 따라서 $[ABMD]=60-15=45$이다.\n따라서 정답은 ②이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중2_수학/q14.png",
     "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
     "subUnit": "사각형의 성질",
