@@ -347,7 +347,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q06-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 중선과 무게중심 G(2,1)를 나타낸 해설 그림",
+    "solutionImageCaption": "세 꼭짓점의 좌표 평균으로 구한 G(2,1)은 세 중선의 교점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -404,7 +408,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q07-solution.svg",
+    "solutionImageAlt": "직선 4x+3y-2=0과 점 (-4,1), (4,7)을 지나는 수직인 직선을 나타낸 해설 그림",
+    "solutionImageCaption": "기울기 -4/3인 직선에 수직인 직선의 기울기는 3/4이고, (4,a)가 그 직선 위에 있어 a=7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -491,7 +499,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "$5\\overline{AP}=4\\overline{BP}$이므로\n$\\overline{AP}:\\overline{PB}=4:5$이다.\n점 $P$는 선분 $AB$를 $4:5$로 내분하므로\n$P=\\left(\\dfrac{5(-3)+4(15)}9,\\dfrac{5(-8)+4(1)}9\\right)$이다.\n따라서\n$P=(5,-4)$이므로\n$p+q=5+(-4)=1$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "$5\\overline{AP}=4\\overline{BP}$이므로\n$\\overline{AP}:\\overline{PB}=4:5$이다.\n점 $P$는 선분 $AB$를 $4:5$로 내분한다.\n따라서 $x$좌표와 $y$좌표를 각각 내분점 공식으로 구하면\n$p=\\dfrac{5(-3)+4(15)}9=5$,\n$q=\\dfrac{5(-8)+4(1)}9=-4$이다.\n그러므로\n$P=(5,-4)$이고\n$p+q=5+(-4)=1$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "9",
     "displayNo": "9",
     "sourceOrdinal": 9,
@@ -515,7 +523,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q09-solution.svg",
+    "solutionImageAlt": "A(-3,-8), P(5,-4), B(15,1)이 한 직선 위에서 AP 대 PB가 4 대 5인 위치 관계를 나타낸 해설 그림",
+    "solutionImageCaption": "P는 선분 AB를 4:5로 내분하므로 P=(5,-4)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -572,7 +584,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_pass"
+    "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "직선족이 항상 지나는 점 P(2,4)와 직선 3x+4y+3=0에 내린 수선 PH를 나타낸 해설 그림",
+    "solutionImageCaption": "두 대표 직선의 공통점 P=(2,4)에서 주어진 직선에 내린 수선의 길이는 PH=5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
