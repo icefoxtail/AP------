@@ -484,18 +484,18 @@ window.questionBank = [
       "16",
       "20"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "조건 (가)에서 $n(A\\cup B)=n(A)+n(B)$이므로 $A\\cap B=\\varnothing$이다.\n집합의 분배법칙을 이용하면\n$(A\\cup C)\\cap(B\\cup C)=(A\\cap B)\\cup C=C$이다.\n\n$n(B-C)=x$라 하자.\n조건 (나)에 의해 $n(C)=3x$이다.\n또 $B\\cup C$는 $C$와 $B-C$의 서로 겹치지 않는 합이므로\n$16=n(B\\cup C)=n(C)+n(B-C)=3x+x$이다.\n따라서 $x=4$이고 $n(C)=12$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "13",
     "displayNo": "13",
     "sourceOrdinal": 13,
     "sourcePageImage": "1000024910.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE"
   },
   {
     "id": 14,
@@ -522,18 +522,18 @@ window.questionBank = [
       "$9\\pi$",
       "$10\\pi$"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "먼저 세 직선의 교점을 구한다.\n$l$과 $m$을 연립하면 $(0,1)$,\n$l$과 $n$을 연립하면 $(-4,-1)$,\n$m$과 $n$을 연립하면 $(-2,5)$이다.\n\n외접원의 방정식을\n$x^2+y^2+Dx+Ey+F=0$\n이라 하자.\n세 점을 대입하면\n$1+E+F=0$,\n$17-4D-E+F=0$,\n$29-2D+5E+F=0$\n을 얻는다.\n\n첫째 식을 이용해 정리하면\n$2D+E=8$,\n$D-2E=14$\n이므로\n$D=6$, $E=-4$, $F=3$이다.\n\n따라서 외접원은\n$x^2+y^2+6x-4y+3=0$,\n즉\n$(x+3)^2+(y-2)^2=10$\n이다.\n반지름의 제곱이 $10$이므로 넓이는 $10\\pi$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "14",
     "displayNo": "14",
     "sourceOrdinal": 14,
     "sourcePageImage": "1000024910.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE"
   },
   {
     "id": 15,
@@ -560,18 +560,18 @@ window.questionBank = [
       "27",
       "28"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "③",
+    "solution": "조건 (가)에서 $B-A=\\{3,8\\}$이다.\n또\n$(A\\cup B^c)^c=A^c\\cap B=B-A$\n이므로 $A\\cup B^c$에 속하지 않는 원소는 정확히 두 개이다.\n따라서\n$n(A\\cup B^c)=k-2=8$이므로\n$k=10$이다.\n\n$3,8\\in B-A$이므로 $3,8\\notin A$이다.\n집합 $A$는 $m$의 약수 전체의 집합이고 $m\\le10$이므로\n$m$은 $1,2,4,5,7,10$ 중 하나이다.\n\n조건 (나)에서 $A$와 $B$의 공통 원소들의 합을 양쪽에서 없애면\n$A-B$의 모든 원소의 합은\n$3+8=11$\n이어야 한다.\n$m=1,2,4,5,7$일 때는 모든 약수의 합 자체가 $11$보다 작으므로 불가능하다.\n따라서 $m=10$이고\n$A=\\{1,2,5,10\\}$이다.\n\n$A-B=\\{1,10\\}$이므로\n$A\\cap B=\\{2,5\\}$이고\n$B=\\{2,3,5,8\\}$이다.\n따라서\n$A^c\\cap B^c=\\{4,6,7,9\\}$이고\n모든 원소의 합은\n$4+6+7+9=26$이다.\n\n따라서 정답은 ③이다.",
     "sourceQuestionNo": "15",
     "displayNo": "15",
     "sourceOrdinal": 15,
     "sourcePageImage": "1000024910.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE"
   },
   {
     "id": 16,
@@ -598,18 +598,18 @@ window.questionBank = [
       "9",
       "10"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "②",
+    "solution": "$D=B-A$라 하자.\n조건 (가)에 의해 $n(D)=3$이다.\n조건 (다)에서 $q\\in D$이면 $q+4\\in A$이므로 $D$의 원소는 모두 $6$ 이하이다.\n\n서로 다른 자연수 세 개의 합의 가장 작은 값은 $1+2+3=6$이다.\n$D=\\{1,2,3\\}$이라고 해 보자.\n조건 (나)에 의해 $p\\in A\\cap B$이면 $(p+1)/2\\in D$이므로 가능한 $p$는 $1,3,5$이다.\n그런데 $A\\cap B$와 $B-A$는 서로 겹치지 않으므로 $1,3$은 사용할 수 없다.\n따라서 $n(A\\cap B)=2$를 만족시킬 수 없어 합이 $6$인 경우는 불가능하다.\n\n다음 합인 $7$은 실제로 가능하다.\n$D=\\{1,2,4\\}$,\n$A\\cap B=\\{3,7\\}$로 두면\n$(3+1)/2=2$, $(7+1)/2=4$이므로 조건 (나)를 만족한다.\n또\n$A=\\{3,5,6,7,8\\}$,\n$B=\\{1,2,3,4,7\\}$\n로 두면 조건 (다)도 만족한다.\n\n따라서 $B-A$의 모든 원소의 합의 최솟값은 $7$이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "16",
     "displayNo": "16",
     "sourceOrdinal": 16,
     "sourcePageImage": "1000024910.jpg",
     "contentSource": "uploaded_page_image",
     "choicesSource": "uploaded_page_image",
-    "answerSource": "pending_independent_solve",
-    "solutionSource": "pending_independent_solution",
+    "answerSource": "independent_solve",
+    "solutionSource": "independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "SOURCE_STAGE_ONLY"
+    "reviewStatus": "SOLUTION_STAGE_B_DONE"
   },
   {
     "id": 17,
