@@ -31,7 +31,7 @@ window.questionBank = [
       "⑤ $\\sqrt{3}\\sqrt{10}=\\sqrt{30}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\sqrt{a^2b} = a\\sqrt{b}$임을 이용한다.\\n1단계: $\\sqrt{24} = \\sqrt{2^2 \\times 6} = 2\\sqrt{6}$이다.\\n2단계: $2\\sqrt{6} \\neq 4\\sqrt{6}$이므로 ①번은 옳지 않다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 근호 안에서 완전제곱수를 먼저 묶어 계산한다.\n1단계: $\\sqrt{24}=\\sqrt{4\\times6}=2\\sqrt6$이므로 ①의 $4\\sqrt6$은 틀리다.\n2단계: $\\sqrt{45}=3\\sqrt5$, $-\\sqrt8=-2\\sqrt2$, $\\sqrt{\\frac12}\\sqrt{14}=\\sqrt7$, $\\sqrt3\\sqrt{10}=\\sqrt{30}$은 모두 옳다.\n∴ 정답: ①",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -66,7 +66,7 @@ window.questionBank = [
       "⑤ -1"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분배법칙을 이용하여 다항식을 전개한다.\\n1단계: $(a+1)(3a-4) = 3a^2 - 4a + 3a - 4 = 3a^2 - a - 4$이다.\\n2단계: $a$의 계수 $M = -1$, 상수항 $N = -4$이다.\\n3단계: $M+N = -1 + (-4) = -5$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 분배법칙으로 전개한 뒤 계수와 상수항을 읽는다.\n1단계: $(a+1)(3a-4)=3a^2-4a+3a-4=3a^2-a-4$이다.\n2단계: $M=-1$, $N=-4$이므로 $M+N=-5$이다.\n∴ 정답: ①",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -103,7 +103,7 @@ window.questionBank = [
       "⑤ 5개"
     ],
     "answer": "②",
-    "solution": "[키포인트] 근호가 있다고 해서 모두 무리수인 것은 아니다.\\n1단계: $\\sqrt{16}=4$, $\\sqrt{\\frac{4}{9}}=\\frac{2}{3}$, $1-2=-1$, $0.0\\dot{2}=\\frac{2}{90}$은 모두 유리수이다.\\n2단계: $\\sqrt{10}$과 $\\sqrt{6.4}$는 근호를 벗길 수 없으므로 무리수이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] 근호가 있어도 값이 유리수가 될 수 있으므로 각각 실제 값을 확인한다.\n1단계: $\\sqrt{16}=4$, $\\sqrt{\\frac49}=\\frac23$, $1-\\sqrt{(-2)^2}=1-2=-1$, $0.0\\dot2$는 순환소수이므로 모두 유리수이다.\n2단계: $\\sqrt{10}$은 무리수이고, $\\sqrt{6.4}=\\frac{4\\sqrt{10}}5$도 무리수이다.\n따라서 무리수는 2개이다.\n∴ 정답: ②",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -138,7 +138,7 @@ window.questionBank = [
       "⑤ 9"
     ],
     "answer": "③",
-    "solution": "[키포인트] $x^2+px+q$가 완전제곱식이 되려면 $q = (\\frac{p}{2})^2$이어야 한다.\\n1단계: $k = (\\frac{3}{2})^2 = \\frac{9}{4}$이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] $x^2+px+q$가 완전제곱식이면 $q=\\left(\\frac p2\\right)^2$이다.\n1단계: $x^2+3x+k=\\left(x+\\frac32\\right)^2$ 꼴이 되어야 한다.\n2단계: 따라서 $k=\\left(\\frac32\\right)^2=\\frac94$이다.\n∴ 정답: ③",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -169,7 +169,7 @@ window.questionBank = [
       "⑤ 1.830"
     ],
     "answer": "②",
-    "solution": "[키포인트] 제곱근표 읽는 법을 숙지한다.\\n1단계: 세로 줄 3.2와 가로 줄 5가 만나는 값을 찾으면 1.803이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] $3.25$는 제곱근표의 3.2 행과 5 열에서 찾는다.\n1단계: 표에서 $\\sqrt{3.25}$에 해당하는 값은 $1.803$이다.\n∴ 정답: ②",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -199,7 +199,7 @@ window.questionBank = [
       "⑤ 0.5788"
     ],
     "answer": "④",
-    "solution": "[키포인트] $\\sqrt{0.01a} = 0.1\\sqrt{a}$임을 이용한다.\\n1단계: $\\sqrt{0.334} = \\sqrt{\\frac{33.4}{100}} = \\frac{\\sqrt{33.4}}{10}$이다.\\n2단계: 표에서 $\\sqrt{33.4} = 5.779$이므로 $0.5779$이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 제곱근표에 있는 수가 되도록 소수점을 옮긴다.\n1단계: $0.334=\\frac{33.4}{100}$이므로 $\\sqrt{0.334}=\\frac{\\sqrt{33.4}}{10}$이다.\n2단계: 표에서 $\\sqrt{33.4}\\approx5.779$이므로 $\\sqrt{0.334}\\approx0.5779$이다.\n∴ 정답: ④",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -234,7 +234,7 @@ window.questionBank = [
       "⑤ $\\sqrt{11} < 2\\sqrt{3}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 양변을 제곱하여 비교하거나 근호 안으로 숫자를 넣어 비교한다.\\n1단계: ④의 양변을 제곱하면 $\\frac{1}{2}$과 $\\frac{1}{4}$이다.\\n2단계: $\\frac{1}{2} > \\frac{1}{4}$이므로 부등호 방향이 반대이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 양수의 대소는 필요하면 제곱하여 비교한다.\n1단계: $\\sqrt{25}=5<6$, $\\sqrt{\\frac16}<\\sqrt{\\frac12}$이다.\n2단계: $(3\\sqrt2)^2=18<(2\\sqrt5)^2=20$, 그리고 $\\sqrt{11}<2\\sqrt3$도 $11<12$이므로 옳다.\n3단계: $\\sqrt{\\frac12}=\\frac1{\\sqrt2}>\\frac12$이므로 ④는 옳지 않다.\n∴ 정답: ④",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -269,7 +269,7 @@ window.questionBank = [
       "⑤ 59"
     ],
     "answer": "②",
-    "solution": "[키포인트] 공통인수로 묶어 계산한다.\\n1단계: $11.2(2.9 + 2.1) = 11.2 \\times 5 = 56$이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] 공통인수 $11.2$를 묶는다.\n1단계: $11.2\\times2.9+11.2\\times2.1=11.2(2.9+2.1)$이다.\n2단계: $=11.2\\times5=56$이다.\n∴ 정답: ②",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -299,7 +299,7 @@ window.questionBank = [
       "⑤ $P: \\sqrt{10} \\quad Q: 2\\sqrt{2}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 직각삼각형의 피타고라스 정리를 이용하여 선분의 길이를 구하고, 이를 원의 반지름으로 삼아 수직선 위의 점의 좌표를 구한다.\\n1단계: 점 $A(-3)$를 꼭짓점으로 하는 밑변 $1$, 높이 $3$인 직각삼각형에서 $\\overline{AB} = \\sqrt{1^2 + 3^2} = \\sqrt{10}$이다.\\n2단계: 점 $P$는 기준점 $A(-3)$에서 오른쪽으로 반지름 $\\overline{AB}$만큼 떨어져 있으므로 $P$의 좌표는 $-3 + \\sqrt{10}$이다.\\n3단계: 점 $E(2)$를 꼭짓점으로 하는 밑변 $2$, 높이 $2$인 직각삼각형에서 $\\overline{EF} = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$이다.\\n4단계: 점 $Q$는 기준점 $E(2)$에서 오른쪽으로 반지름 $\\overline{EF}$만큼 떨어져 있으므로 $Q$의 좌표는 $2 + 2\\sqrt{2}$이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] 모눈 한 칸을 1로 보고 정사각형의 한 변 길이를 피타고라스 정리로 구한다.\n1단계: 점 $A$는 $-3$, 점 $E$는 $2$에 대응한다.\n2단계: $AB=\\sqrt{1^2+3^2}=\\sqrt{10}$이므로 오른쪽 교점 $P$는 $-3+\\sqrt{10}$이다.\n3단계: $EF=\\sqrt{2^2+2^2}=2\\sqrt2$이므로 오른쪽 교점 $Q$는 $2+2\\sqrt2$이다.\n∴ 정답: ④",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -333,7 +333,7 @@ window.questionBank = [
       "⑤ $7x+1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 대각선 인수분해법을 이용한다.\\n1단계: $6x^2-x-2 = (2x+1)(3x-2)$이다.\\n2단계: $(2x+1) + (3x-2) = 5x-1$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 가운데항을 둘로 나누어 묶어 인수분해한다.\n1단계: $6x^2-x-2=6x^2+3x-4x-2=(3x-2)(2x+1)$이다.\n2단계: 두 일차식의 합은 $(3x-2)+(2x+1)=5x-1$이다.\n∴ 정답: ①",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -369,7 +369,7 @@ window.questionBank = [
       "⑤ $a^2+10a+20$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 상수항이 (일차항계수/2)²인지 확인한다.\\n1단계: ⑤는 $(\\frac{10}{2})^2 = 25$여야 완전제곱식이 된다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] $(u\\pm v)^2=u^2\\pm2uv+v^2$ 꼴인지 확인한다.\n1단계: ①은 $(a+4)^2$, ②는 $(x-6)^2$, ③은 $(2x+1)^2$, ④는 $(3x+2y)^2$이다.\n2단계: $a^2+10a+20$이 완전제곱식이 되려면 상수항은 $25$여야 하므로 ⑤는 완전제곱식이 아니다.\n∴ 정답: ⑤",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -403,7 +403,7 @@ window.questionBank = [
       "⑤ $\\frac{3\\sqrt{35}}{7}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 나눗셈을 곱셈으로 고쳐 계산한다.\\n1단계: $\\frac{3\\sqrt{10} \\times \\sqrt{6}}{2\\sqrt{21}} = \\frac{3\\sqrt{60}}{2\\sqrt{21}} = \\frac{6\\sqrt{15}}{2\\sqrt{21}}$이다.\\n2단계: $\\frac{3\\sqrt{5}}{\\sqrt{7}} = \\frac{3\\sqrt{35}}{7}$이다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] 곱셈과 나눗셈을 한 분수로 정리한 뒤 근호를 간단히 한다.\n1단계: $3\\sqrt{10}\\div2\\sqrt{21}\\times\\sqrt6=\\frac{3\\sqrt{60}}{2\\sqrt{21}}$이다.\n2단계: $\\sqrt{60}=2\\sqrt{15}$이므로 $\\frac{3\\sqrt{15}}{\\sqrt{21}}=3\\sqrt{\\frac57}$이다.\n3단계: 분모를 유리화하면 $3\\sqrt{\\frac57}=\\frac{3\\sqrt{35}}7$이다.\n∴ 정답: ⑤",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -433,7 +433,7 @@ window.questionBank = [
       "⑤ ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 실수의 체계를 정확히 이해한다.\\n1단계: ㄱ은 $\\sqrt{5}$이므로 틀리다.\\n2단계: ㄴ은 3의 제곱근 $\\pm\\sqrt{3}$이므로 맞다.\\n3단계: ㄷ은 실수의 정의상 맞다.\\n∴ 정답: ⑤",
+    "solution": "[키포인트] ‘제곱근’과 ‘양의 제곱근’의 뜻을 구분한다.\n1단계: ㄱ. $\\sqrt5$는 5의 양의 제곱근 하나를 나타내므로 $\\pm\\sqrt5$와 같지 않아 거짓이다.\n2단계: ㄴ. $\\sqrt9=3$이고, 3의 제곱근은 $\\pm\\sqrt3$이므로 무리수이다. 따라서 참이다.\n3단계: ㄷ. 실수는 유리수와 무리수로 나뉘므로 무리수가 아닌 실수는 유리수이다. 따라서 참이다.\n∴ 정답: ⑤",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "candidate_evidence",
@@ -469,7 +469,7 @@ window.questionBank = [
       "⑤ 15"
     ],
     "answer": "③",
-    "solution": "[키포인트] 분모를 유리화한 후 합을 구한다.\\n1단계: $x = 5+2\\sqrt{6}$, $y = \\frac{(\\sqrt{6}-2)^2}{2} = 5-2\\sqrt{6}$이다.\\n2단계: $x+y = 10$이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 각 분모를 유리화하면 서로 더하기 쉬운 꼴이 된다.\n1단계: $x=\\frac1{5-2\\sqrt6}=5+2\\sqrt6$이다. 왜냐하면 $(5-2\\sqrt6)(5+2\\sqrt6)=1$이기 때문이다.\n2단계: $y=\\frac{\\sqrt6-2}{\\sqrt6+2}\\cdot\\frac{\\sqrt6-2}{\\sqrt6-2}=\\frac{(\\sqrt6-2)^2}{2}=5-2\\sqrt6$이다.\n3단계: $x+y=10$이다.\n∴ 정답: ③",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -506,7 +506,7 @@ window.questionBank = [
       "⑤ 32시간"
     ],
     "answer": "③",
-    "solution": "[키포인트] 주어진 식에 값을 대입하여 간단히 한다.\\n1단계: $\\frac{\\sqrt{24^3}}{\\sqrt{54}} = \\sqrt{\\frac{24 \\times 24 \\times 24}{54}} = \\sqrt{256}$이다.\\n2단계: 16시간이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 주어진 식에 $R=24$를 그대로 대입하고 근호를 약분한다.\n1단계: $\\frac{\\sqrt{24^3}}{\\sqrt{54}}=\\frac{24\\sqrt{24}}{\\sqrt{54}}$이다.\n2단계: $\\sqrt{24}=2\\sqrt6$, $\\sqrt{54}=3\\sqrt6$이므로 $\\frac{24\\cdot2\\sqrt6}{3\\sqrt6}=16$이다.\n∴ 정답: ③",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -540,7 +540,7 @@ window.questionBank = [
       "⑤ $\\frac{\\sqrt{110}}{11}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 규칙을 찾아 약분한다.\\n1단계: 모든 항을 루트 안으로 넣으면 $\\sqrt{\\frac{1}{2} \\times \\frac{4}{6} \\times \\frac{9}{12} \\cdots}$ 형태가 된다.\\n2단계: $\\sqrt{\\frac{1}{11}} = \\frac{\\sqrt{11}}{11}$이 남는다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 각 항을 $\\frac{k}{\\sqrt{k(k+1)}}$ 꼴로 보면 곱이 연속해서 약분된다.\n1단계: $\\frac1{\\sqrt2}=\\frac1{\\sqrt{1\\cdot2}}$, $\\frac2{\\sqrt6}=\\frac2{\\sqrt{2\\cdot3}}$, $\\frac3{2\\sqrt3}=\\frac3{\\sqrt{3\\cdot4}}$이므로 같은 규칙이 이어진다.\n2단계: 전체 곱은 $\\sqrt{\\frac12\\cdot\\frac23\\cdot\\frac34\\cdots\\frac{10}{11}}=\\sqrt{\\frac1{11}}$이다.\n3단계: $\\sqrt{\\frac1{11}}=\\frac{\\sqrt{11}}{11}$이다.\n∴ 정답: ③",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -575,7 +575,7 @@ window.questionBank = [
       "⑤ 15"
     ],
     "answer": "①",
-    "solution": "[키포인트] 방정식의 양변을 제곱하여 근호를 제거한다.\\n1단계: $3\\sqrt{a+10}=9$에서 $\\sqrt{a+10}=3$이므로 $a+10=9$, $a=-1$이다.\\n2단계: $\\frac{20+b}{3}=8$에서 $b=4$이다.\\n3단계: $a+b=3$이다.\\n∴ 정답: ①",
+    "solution": "[키포인트] 양변을 제곱하여 $a$, $b$를 각각 구한다.\n1단계: $3\\sqrt{a+10}=9$이므로 $\\sqrt{a+10}=3$, 따라서 $a=-1$이다.\n2단계: $\\frac{\\sqrt{20+b}}{\\sqrt3}=2\\sqrt2$이므로 $\\frac{20+b}{3}=8$, 따라서 $b=4$이다.\n3단계: $a+b=-1+4=3$이다.\n∴ 정답: ①",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -610,7 +610,7 @@ window.questionBank = [
       "⑤ 100"
     ],
     "answer": "④",
-    "solution": "[키포인트] 곱이 -6인 두 정수쌍을 모두 찾는다.\\n1단계: $(1,-6), (-1,6), (2,-3), (-2,3)$이 있다.\\n2단계: $k$는 $-5, 5, -1, 1$이 가능하며 곱은 25이다.\\n∴ 정답: ④",
+    "solution": "[키포인트] $(x+a)(x+b)=x^2+(a+b)x+ab$에서 $ab=-6$을 이용한다.\n1단계: 정수쌍 $(a,b)$는 $(1,-6),(-1,6),(2,-3),(-2,3)$을 생각하면 된다.\n2단계: 이에 따른 $k=a+b$는 $-5,5,-1,1$이다.\n3단계: 가능한 $k$를 모두 곱하면 $(-5)\\times5\\times(-1)\\times1=25$이다.\n∴ 정답: ④",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -646,7 +646,7 @@ window.questionBank = [
       "⑤ 13"
     ],
     "answer": "③",
-    "solution": "[키포인트] 소수는 1과 자기 자신만을 인수로 갖는다.\\n1단계: $(2n-1)(n+6)$으로 인수분해된다.\\n2단계: $2n-1=1$이어야 하므로 $n=1$이고, 대입하면 7이다.\\n∴ 정답: ③",
+    "solution": "[키포인트] 식을 인수분해한 뒤 소수의 약수 개수가 2개뿐임을 이용한다.\n1단계: $2n^2+11n-6=(2n-1)(n+6)$이다.\n2단계: 자연수 $n$에서 두 인수는 양의 정수이고 $n+6\\ge7$이다. 곱이 소수이려면 다른 인수 $2n-1$이 1이어야 한다.\n3단계: $2n-1=1$에서 $n=1$, 이때 소수는 $(1)(7)=7$이다.\n∴ 정답: ③",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -683,7 +683,7 @@ window.questionBank = [
       "⑤ 39"
     ],
     "answer": "②",
-    "solution": "[키포인트] 인수분해 공식을 이용해 항의 계수 관계를 파악한다.\\n1단계: $px^2+(2n+1)x+q$가 정수 계수의 두 일차식의 곱으로 인수분해된다고 보면 $(px+q)(x+1)$ 또는 $(px+1)(x+q)$ 꼴을 생각할 수 있다.\\n2단계: 이때 $p<q$이고 $p, q$가 소수일 때 최댓값을 만들려면 $pq+1=2n+1$이 되도록 잡는 경우가 유리하므로 $pq=2n$이다.\\n3단계: $pq$가 짝수여야 하므로 $p$는 반드시 2여야 하고 최대 소수 $q=19$일 때 $n=19$이다.\\n∴ 정답: ②",
+    "solution": "[키포인트] 상수항 $q$가 소수이므로 인수의 상수항은 $1$과 $q$로 나뉜다.\n1단계: 가능한 양의 인수분해는 $(px+1)(x+q)$ 또는 $(px+q)(x+1)$이다.\n2단계: 첫째 경우 $2n+1=pq+1$이므로 $2n=pq$이다. $p<q$인 소수에서 곱이 짝수이려면 $p=2$이고, 이때 $n=q$이므로 최대는 $q=19$일 때 $n=19$이다.\n3단계: 둘째 경우 $2n+1=p+q$이다. 홀수 소수끼리는 합이 짝수이므로 불가능하고, $p=2$일 때 $n=\\frac{q+1}{2}\\le10$이다.\n따라서 최댓값은 19이다.\n∴ 정답: ②",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -707,7 +707,7 @@ window.questionBank = [
     "content": "[서술형 1] $\\sqrt{6}$의 정수부분을 $a$, 소수부분을 $b$라 할 때, $a, b$를 각각 구하고, $\\frac{a}{b}$의 값을 구하는 과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "$a=2, b=\\sqrt{6}-2, \\quad \\sqrt{6}+2$",
-    "solution": "[키포인트] 정수부분을 먼저 구한 뒤 원래 수에서 뺀다.\\n1단계: $2 < \\sqrt{6} < 3$이므로 $a=2, b=\\sqrt{6}-2$이다.\\n2단계: $\\frac{2}{\\sqrt{6}-2} = \\sqrt{6}+2$이다.",
+    "solution": "[키포인트] $\\sqrt6$이 어느 두 정수 사이에 있는지 먼저 찾는다.\n1단계: $2<\\sqrt6<3$이므로 정수부분은 $a=2$, 소수부분은 $b=\\sqrt6-2$이다.\n2단계: $\\frac ab=\\frac2{\\sqrt6-2}\\cdot\\frac{\\sqrt6+2}{\\sqrt6+2}=\\frac{2(\\sqrt6+2)}{6-4}$이다.\n3단계: 따라서 $\\frac ab=\\sqrt6+2$이다.\n∴ $a=2,\\ b=\\sqrt6-2,\\ \\frac ab=\\sqrt6+2$",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -731,7 +731,7 @@ window.questionBank = [
     "content": "[서술형 2] 하은이는 상수항을 잘못 보아 $(x+1)(x-5)$로, 정민이는 $x$의 계수를 잘못 보아 $(x-3)(x+4)$로 인수분해 하였다. 원래의 이차식을 구하고 바르게 인수분해 하시오. [5점]",
     "choices": [],
     "answer": "$x^2-4x-12 = (x-6)(x+2)$",
-    "solution": "[키포인트] 각각 바르게 본 항을 찾아 조합한다.\\n1단계: 하은이는 $x$계수 -4를, 정민이는 상수항 -12를 바르게 보았다.\\n2단계: 원래 식은 $x^2-4x-12$이고 인수분해하면 $(x-6)(x+2)$이다.",
+    "solution": "[키포인트] 한 학생이 잘못 본 항 이외의 계수는 원래 식과 같다.\n1단계: 하은이가 만든 $(x+1)(x-5)=x^2-4x-5$에서 $x$의 계수 $-4$는 원래 식과 같다.\n2단계: 정민이가 만든 $(x-3)(x+4)=x^2+x-12$에서 상수항 $-12$는 원래 식과 같다.\n3단계: 원래 식은 $x^2-4x-12$이고, 이를 인수분해하면 $(x-6)(x+2)$이다.\n∴ $x^2-4x-12=(x-6)(x+2)$",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -756,7 +756,7 @@ window.questionBank = [
     "content": "[서술형 3] 아래 그림과 같이 직사각형 모양의 땅이 $A, B, C, D$ $4$개의 땅으로 나누어져 있다. $A, B, C$는 모두 정사각형 모양이다. $A$의 넓이는 $25\\text{m}^2$, $C$의 넓이는 $2\\text{m}^2$일 때, $D$의 넓이를 구하고 넓이를 구하기 위한 과정을 서술하시오.\\n<div style=\"text-align:center; margin:15px 0;\">\\n<svg width=\"190\" height=\"120\" viewBox=\"0 0 190 120\" xmlns=\"http://www.w3.org/2000/svg\">\\n  \\n  \\n  <g stroke=\"#000\" stroke-width=\"1.5\" fill=\"none\">\\n    \\n    <rect x=\"10\" y=\"10\" width=\"171.72\" height=\"100\" />\\n    \\n    <line x1=\"110\" y1=\"10\" x2=\"110\" y2=\"110\" /> \\n    <line x1=\"110\" y1=\"81.72\" x2=\"181.72\" y2=\"81.72\" /> \\n    <line x1=\"153.44\" y1=\"81.72\" x2=\"153.44\" y2=\"110\" /> \\n  </g>\\n  \\n  \\n  <text x=\"60\" y=\"65\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">A</text>\\n  <text x=\"145.86\" y=\"50.86\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">B</text>\\n  <text x=\"131.72\" y=\"100\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">D</text>\\n  <text x=\"167.58\" y=\"100\" font-family=\"serif\" font-size=\"10\" font-weight=\"bold\" text-anchor=\"middle\">C</text>\\n</svg>\\n</div>",
     "choices": [],
     "answer": "$5\\sqrt{2} - 4\\text{ m}^2$",
-    "solution": "[키포인트] 정사각형의 넓이를 통해 한 변의 길이를 무리수로 구하고, 전체 도형의 구조를 이용하여 나머지 변의 길이를 연산한다.\\n1단계: 정사각형 $A$의 넓이가 $25\\text{m}^2$이므로, $A$의 한 변의 길이는 $\\sqrt{25} = 5\\text{m}$이다.\\n2단계: 정사각형 $C$의 넓이가 $2\\text{m}^2$이므로, $C$의 한 변의 길이는 $\\sqrt{2}\\text{m}$이다.\\n3단계: 그림에서 직사각형의 전체 높이는 $A$의 높이인 $5\\text{m}$와 같다. 오른쪽 영역은 정사각형 $B$와 직사각형 $D, C$로 구성되어 있으므로, $B$의 세로 길이는 전체 높이에서 $C$의 세로 길이를 뺀 값이다. 따라서 정사각형 $B$의 한 변의 길이는 $5 - \\sqrt{2} (\\text{m})$이다.\\n4단계: 오른쪽 영역의 전체 가로 길이는 $B$의 가로 길이인 $5 - \\sqrt{2}$와 같으며, 이는 $D$와 $C$의 가로 길이의 합이다.\\n5단계: 직사각형 $D$의 가로 길이는 $(5 - \\sqrt{2}) - \\sqrt{2} = 5 - 2\\sqrt{2} (\\text{m})$이다. 또한 $D$의 세로 길이는 $C$의 세로 길이와 같은 $\\sqrt{2}\\text{m}$이다.\\n6단계: 직사각형 $D$의 넓이는 (가로) $\\times$ (세로) 이므로\\n$(5 - 2\\sqrt{2}) \\times \\sqrt{2} = 5\\sqrt{2} - 4 (\\text{m}^2)$이다.\\n∴ 정답: $5\\sqrt{2} - 4\\text{ m}^2$",
+    "solution": "[키포인트] 정사각형의 넓이에서 한 변의 길이를 구한 뒤 아래쪽 띠의 가로와 세로를 찾는다.\n1단계: $A$의 넓이가 $25$이므로 한 변은 $5$ m이다. $C$의 넓이가 $2$이므로 한 변은 $\\sqrt2$ m이다.\n2단계: 전체 높이가 5 m이므로 위쪽 정사각형 $B$의 한 변은 $5-\\sqrt2$ m이다.\n3단계: 아래쪽에서 $D$의 가로는 $(5-\\sqrt2)-\\sqrt2=5-2\\sqrt2$ m, 세로는 $\\sqrt2$ m이다.\n4단계: $D$의 넓이는 $\\sqrt2(5-2\\sqrt2)=5\\sqrt2-4$이다.\n∴ $D$의 넓이: $5\\sqrt2-4\\text{ m}^2$",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
@@ -780,7 +780,7 @@ window.questionBank = [
     "content": "[서술형 4] $f(n) = \\sqrt{n+1} + \\sqrt{n}$일 때, $3 < \\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} < 10$을 만족하는 자연수 $n$의 개수를 구하시오. [6점]",
     "choices": [],
     "answer": "104개",
-    "solution": "[키포인트] 유리화를 통해 연쇄 소거를 이용한다.\\n1단계: $\\frac{1}{f(1)}+\\frac{1}{f(2)}+\\cdots+\\frac{1}{f(n)} = \\sqrt{n+1}-1$이다.\\n2단계: $4 < \\sqrt{n+1} < 11$에서 $15 < n < 120$이므로 104개이다.",
+    "solution": "[키포인트] 분모의 켤레를 이용하면 각 항이 서로 지워지는 꼴이 된다.\n1단계: $\\frac1{f(k)}=\\frac1{\\sqrt{k+1}+\\sqrt k}=\\sqrt{k+1}-\\sqrt k$이다.\n2단계: 따라서 $\\frac1{f(1)}+\\cdots+\\frac1{f(n)}=(\\sqrt2-1)+(\\sqrt3-\\sqrt2)+\\cdots+(\\sqrt{n+1}-\\sqrt n)=\\sqrt{n+1}-1$이다.\n3단계: $3<\\sqrt{n+1}-1<10$이므로 $4<\\sqrt{n+1}<11$이다.\n4단계: $16<n+1<121$, 즉 $15<n<120$이므로 $n=16,17,\\ldots,119$이다. 개수는 $119-16+1=104$개이다.\n∴ 정답: 104개",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
