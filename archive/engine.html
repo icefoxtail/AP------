@@ -1724,7 +1724,7 @@ function extractChoice(c) {
 }
 
 function stripChoicePrefix(text) {
-    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d)|\d+\))\s*/, '').trim();
+    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|(?:\(?\d+\)|\d+\.(?!\d)|\d+\))(?=\s))\s*/, '').trim();
 }
 
 function detectChoiceRenderMode(choices) {
@@ -1758,7 +1758,8 @@ function renderChoicesHTML(q) {
     const hasCustomGrid = requestedColumns >= 1 && requestedColumns <= 5;
     const mode = hasCustomGrid ? 'grid' : detectChoiceRenderMode(q.choices);
     const itemsHTML = q.choices.map((c, ci) => {
-        const text = wrapLatex(stripChoicePrefix(extractChoice(c)));
+        const choiceText = extractChoice(c);
+        const text = wrapLatex(q.preserveChoicePrefixes ? choiceText : stripChoicePrefix(choiceText));
         return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
     }).join('');
     const gridStyle = hasCustomGrid ? ` style="grid-template-columns:repeat(${requestedColumns}, minmax(0, 1fr))"` : '';
