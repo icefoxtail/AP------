@@ -318,6 +318,17 @@ export const CLASS_PROGRESS_TAXONOMY = [
     "courseKey": "M2-2",
     "courseLabel": "중2 과정 · 2학기",
     "gradeKey": "중2",
+    "canonicalPathKey": "2015/middle/M2-2/%EC%82%BC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%84%B1%EC%A7%88/%EC%82%BC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%84%B1%EC%A7%88",
+    "l1": "삼각형의 성질",
+    "l2": "삼각형의 성질",
+    "label": "삼각형의 성질 · 삼각형의 성질"
+  },
+  {
+    "curriculumKey": "2015",
+    "level": "middle",
+    "courseKey": "M2-2",
+    "courseLabel": "중2 과정 · 2학기",
+    "gradeKey": "중2",
     "canonicalPathKey": "2015/middle/M2-2/%EC%82%AC%EA%B0%81%ED%98%95%EC%9D%98%20%EC%84%B1%EC%A7%88/%ED%8F%89%ED%96%89%EC%82%AC%EB%B3%80%ED%98%95",
     "l1": "사각형의 성질",
     "l2": "평행사변형",

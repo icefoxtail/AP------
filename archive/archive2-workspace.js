@@ -611,7 +611,7 @@
         count: sources.length,
         eligibleCount: sources.filter(r => r.scopeEligible).length,
       };
-    }).filter((scope) => scope.basicScope);
+    });
   }
   function scopeIsSelected(scope) {
     return (

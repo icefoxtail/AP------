@@ -612,7 +612,10 @@
       reasons.push("identity");
     // BASIC uses the current indexed source. Approval of optional metadata is
     // required only when that metadata is selected as a filter.
-    if ((record.sourceIntegrityStatus || record.sourceStatus) !== "VERIFIED") reasons.push("source");
+    const sourceStatus = record.sourceStatus ?? record.sourceIntegrityStatus;
+    if (sourceStatus !== "VERIFIED" ||
+        (record.sourceIntegrityStatus && record.sourceIntegrityStatus !== "VERIFIED"))
+      reasons.push("source");
     // A missing RPM/Foundation leaf does not invalidate a known source unit.
     if (["courseKey", "L1", "L2"].some(field => !text(record[field])) ||
         record.basicTaxonomyStatus === "HOLD" || record.l1l2ParentValid === false)

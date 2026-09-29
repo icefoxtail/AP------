@@ -27,11 +27,12 @@ assert.strictEqual(runtime.counts.finalL3, 921);
 assert.strictEqual(runtime.counts.finalL4, 901);
 assert.strictEqual(runtime.counts.explicitL4Hold, 20);
 assert.strictEqual(runtime.counts.routeOut, 7);
-assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, 3536);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, 3536);
-assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, 3536);
+assert.strictEqual(runtimeReceipt.checked.combinedRuntimeRecords, 5303);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueUid, 5303);
+assert.strictEqual(runtimeReceipt.checked.combinedUniqueSourceIdentity, 5303);
 assert.strictEqual(runtimeReceipt.checked.middleGeometryCatalogJoin, 928);
-assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 8);
+assert.strictEqual(runtimeReceipt.checked.metaFoundationRuntimePackCount, 10);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 54);
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 928);
 assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, 928);
 assert.strictEqual(runtime.records.filter((row) => row.metaFoundationL3Status === "FINAL").length, 921);
@@ -93,7 +94,7 @@ const globalRuntime = [
 assert.strictEqual(new Set(globalRuntime.map((row) => row.questionUid)).size, globalRuntime.length);
 assert.strictEqual(new Set(globalRuntime.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, globalRuntime.length);
 
-const maesan = catalog.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_공통수학2.js"));
+const maesan = catalog.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js"));
 assert.strictEqual(maesan.length, 23);
 
 console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUTE_OUT policy, and Archive2 join");
@@ -138,7 +139,7 @@ console.log("PASS Middle Geometry production runtime, canonical joins, HOLD/ROUT
   assert.strictEqual(routeOut.templateKey, null);
   assert.strictEqual(routeOut.defaultSelectable, false);
   assert.strictEqual(routeOut.reviewStatus, "manual_review");
-  assert.strictEqual(overlaid.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_공통수학2.js")).length, 23);
+  assert.strictEqual(overlaid.records.filter((row) => String(row.sourceFile).includes("25_매산여고_2학기_중간_고1_기출.js")).length, 23);
   console.log("PASS live Meta Foundation bridge applies all 928 rows and preserves explicit holds");
 })().catch((error) => {
   console.error(error);

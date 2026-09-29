@@ -135,6 +135,28 @@ Golden Sample만 보면 같은 유형의 false PASS를 반복할 수 있으므�
 Negative Sample은 “이렇게 만들지 말라”는 regression fixture이며,
 발견된 새 false PASS는 원인이 일반화 가능하면 이 문서 또는 해당 domain rule에 추가한다.
 
+### CURRENT visual negative regression set — 2026-09-29
+
+> **Negative Sample authority (2026-09-29 incremental audit):** 이번 53개 solution SVG 증분감사에서 false PASS로 확인된 5개 실패본은 `archive/fixtures/visual-negative-regressions/2026-09-29/README.md`와 같은 폴더의 frozen SVG를 사용한다. 현재 production `archive/assets/images/...`의 대응 SVG는 commit `0efb9a41c445ac31dd4444b7daaca250e0eacca7`에서 수리된 정상본이다. **실패본과 수리본을 반드시 쌍으로 비교**하고, 실패본을 production으로 복원하지 않는다.
+
+1. `25_왕운중_2학기_중간_중2_수학 q7` — `MISSING_OWNER_RAY`
+   - 풀이가 `△BDC`와 B·C의 30°를 사용하지만 실패 SVG에는 **선분 BC 자체가 없었다**.
+   - 각도 숫자와 텍스트가 맞더라도 그 각을 이루는 두 ray/side가 실제 artifact에 존재하지 않으면 PASS가 아니다.
+2. `25_왕운중_2학기_중간_중2_수학 q21` — `ANGLE_LABEL_OWNER_BINDING`
+   - 마름모의 `x°`, `58°`가 해당 꼭짓점의 실제 angle wedge 밖/반대쪽에 놓여 owner가 모호했다.
+   - **각도값 정확성 ≠ 각도 라벨 귀속 정확성**이다. `vertex + ray1 + ray2` 안쪽에 학생이 즉시 귀속할 수 있게 배치한다.
+3. `25_왕운중_2학기_중간_중2_수학 q24` — `COORDINATE_SEMANTIC_PARITY`
+   - D/E가 각각 AB/AC 위의 수선의 발이어야 하나 실패 SVG 좌표에서는 **D/E가 해당 변 위에 있지 않았고 MD/ME도 수직 조건을 만족하지 않았다**.
+   - 수선발·중점·외심·내심·무게중심 등 수학적 명칭은 실제 좌표 기하로 검증한다.
+4. `24_향림중_2학기_기말_중2_기출 q8` — `COORDINATE_SEMANTIC_PARITY`
+   - 텍스트는 AD와 BE가 각의 이등분선이고 `DE ∥ AB`라고 설명했지만, 실패 SVG의 BE 좌표는 **∠B의 실제 이등분선이 아니었다**.
+   - 여러 기하 조건이 동시에 주어지면 일부만 맞춘 스케치를 PASS하지 말고 **모든 조건의 동시 성립**을 좌표로 확인한다.
+5. `24_향림중_2학기_기말_중2_기출 q12` — `LABEL_OWNER_BINDING`
+   - `CG=10` 라벨이 실제 선분 CG가 아닌 반대쪽 중선 부근에 놓여 길이 owner를 오독하게 했다.
+   - 길이 라벨은 `ownerSegment`에 실제로 붙어 있어야 하며, 다른 선분과의 거리/충돌까지 확인한다.
+
+**2026-09-29 추가 하드 체크:** visual 생성·검수 시 `MISSING_OWNER_RAY / ANGLE_LABEL_OWNER_BINDING / LABEL_OWNER_BINDING / COORDINATE_SEMANTIC_PARITY` 네 축을 관련 문항에서 명시적으로 확인한다. 특히 “텍스트상 맞음”이나 “대충 비슷한 그림”만으로 PASS하지 않는다.
+
 ### CURRENT visual negative regression set — 2026-09-28
 > **Negative Sample authority (2026-09-28 repair closure):** 아래 4건의 실패본은 `archive/fixtures/visual-negative-regressions/2026-09-28/README.md`와 같은 폴더의 frozen SVG를 사용한다. 현재 production `archive/assets/images/...` SVG는 정상 수리본이며 Negative Sample authority로 사용하지 않는다.
 

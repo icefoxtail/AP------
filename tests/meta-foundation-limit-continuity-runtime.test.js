@@ -21,7 +21,7 @@ assert.strictEqual(new Set(runtime.records.map((r) => sourceKey(r.sourceArchiveF
 assert.strictEqual(runtime.records.filter((r) => r.catalogIdentityRepairVerified === true).length, 3);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 181);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 3);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 184);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 133);
 assert.strictEqual(runtime.counts.difficultyDeferred, 0);
 assert.strictEqual(runtime.taxonomyRows.length, 33);
 assert.strictEqual(new Set(runtime.records.map((r) => r.problemTypeKey)).size, 10);
@@ -55,6 +55,8 @@ let direct = 0;
 let repaired = 0;
 let eligibleLimit = 0;
 let eligibleContinuity = 0;
+let sourceHoldLimit = 0;
+let sourceHoldContinuity = 0;
 
 for (const overlay of runtime.records) {
   const base = bySource.get(sourceKey(overlay.sourceArchiveFile, overlay.sourceOrdinal));
@@ -85,18 +87,21 @@ for (const overlay of runtime.records) {
     reviewStatus: "reviewed_pass"
   };
   const gate = C.eligibility(merged);
+  const held = !identityRepair && base.sourceStatus !== "VERIFIED";
+  if (held) assert(gate.reasons.includes("source"), overlay.questionUid);
+  else assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
   if (overlay.standardUnitKey === "H15-M2-01") {
-    assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
-    eligibleLimit += 1;
+    if (held) sourceHoldLimit += 1; else eligibleLimit += 1;
   } else {
-    assert.strictEqual(gate.ok, true, overlay.questionUid + ": " + gate.reasons.join(","));
-    eligibleContinuity += 1;
+    if (held) sourceHoldContinuity += 1; else eligibleContinuity += 1;
   }
 }
 
 assert.strictEqual(direct + repaired, 184);
-assert.strictEqual(eligibleLimit, 104);
-assert.strictEqual(eligibleContinuity, 80);
+assert.strictEqual(eligibleLimit, 73);
+assert.strictEqual(eligibleContinuity, 60);
+assert.strictEqual(sourceHoldLimit, 31);
+assert.strictEqual(sourceHoldContinuity, 20);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
@@ -109,7 +114,7 @@ assert(/courseGrade\(r\.courseKey,\s*r\.curriculumKey\)/.test(workspace));
 const bridge = readText("archive/meta-foundation-runtime.js");
 assert(bridge.includes("data/meta-foundation/runtime/limit-continuity-v1.json"));
 assert(bridge.includes("catalogIdentityRepairVerified"));
-assert(bridge.includes("META_FOUNDATION_MULTI/runtime-bridge-v3:"));
+assert(bridge.includes("META_FOUNDATION_MULTI/runtime-bridge-v5:"));
 
 const combined = [
   ...readJson("archive/data/meta-foundation/runtime/geometry-equations-v1.json").records,
@@ -119,16 +124,16 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records
 ];
-assert.strictEqual(combined.length, 1904);
-assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1904);
-assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1904);
+assert.strictEqual(combined.length, 1907);
+assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, 1907);
+assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, 1907);
 
 assert.strictEqual(receipt.status, "ACTIVE");
-assert.strictEqual(receipt.checked.combinedRuntimeRecords, 3536);
-assert.strictEqual(receipt.checked.combinedUniqueUid, 3536);
-assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 3536);
+assert.strictEqual(receipt.checked.combinedRuntimeRecords, 5303);
+assert.strictEqual(receipt.checked.combinedUniqueUid, 5303);
+assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, 5303);
 assert.strictEqual(receipt.checked.limitContinuityCatalogJoin, 184);
-assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 184);
+assert.strictEqual(receipt.checked.limitContinuityAutomaticEligibleExpected, 133);
 assert(receipt.invariants.includes("Archive2 Finder and Compose grade routing treat 2015 수학II as 고2."));
 
 console.log("PASS MathII limit/continuity Archive2 runtime bridge");

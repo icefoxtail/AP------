@@ -209,10 +209,10 @@ test('all three engines are idempotent for every statement-break fixture', () =>
   }
 });
 
-test('production inventory remains 305 candidate content fields and has zero normalization damage', () => {
+test('production inventory remains 306 candidate content fields and has zero normalization damage', () => {
   const fields = productionContentFields();
   const candidates = fields.filter(field => markerCount(field.content) >= 2);
-  assert.equal(candidates.length, 305, 'production inventory denominator changed');
+  assert.equal(candidates.length, 306, 'production inventory denominator changed');
 
   for (const [engineFile, normalizeViewBlocks] of Object.entries(normalizers)) {
     const failures = [];
