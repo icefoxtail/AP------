@@ -1,0 +1,285 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW1_EVIDENCE_v1",
+  "examFilename": "24_향림중_2학기_중간_중2_수학.js",
+  "canonicalGlobalInventoryOrdinal": 38,
+  "lane": "REVIEW1-2",
+  "stage": "REVIEW1_DONE",
+  "nextStage": "READY_FOR_REVIEW2",
+  "nextOwner": "REVIEW2-2",
+  "independence": {
+    "verdict": "FULL_INDEPENDENT_REVIEW",
+    "inputAuthority": "work/middle/m2/24-hyangrim-2mid@2dd9c871d215173624e3994092a883ef1a107e7e",
+    "priorReviewVerdictReadBeforeReview": false,
+    "workIntakeUsedAsAuthority": false
+  },
+  "calibration": {
+    "rule": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md@dfe613a75ce3c269822c72c8ed92b6e5b242fe62",
+    "goldenSampleRefs": [
+      "work/middle/m2/23-isu-2mid: q21-solution.svg@9819b981b5afb033af450b84797727b2632ee1c3",
+      "25_왕운중_2학기_중간_중2_수학 q21 repaired production@08ec24d04e8a4e1fd6d74434d81bb05a17d852d3"
+    ],
+    "negativeSampleRefs": [
+      "archive/fixtures/visual-negative-regressions/2026-09-29/README.md@f7440339f2532f6e7ea357541c2a09b05847af59"
+    ],
+    "calibrationAxes": [
+      "ANGLE_LABEL_OWNER_BINDING",
+      "LABEL_OWNER_BINDING",
+      "COORDINATE_SEMANTIC_PARITY",
+      "CLIPPING"
+    ],
+    "sampleReadBeforeWork": false,
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS"
+  },
+  "sourceAuthority": {
+    "ref": "work/rebuild/m2-full-20260928-source",
+    "commit": "8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+    "jsBlob": "197a923c85467cffac9c9e15ba19de7af92c26ad"
+  },
+  "observedAuthority": {
+    "branch": "work/middle/m2/24-hyangrim-2mid",
+    "reviewedBranchHead": "2dd9c871d215173624e3994092a883ef1a107e7e",
+    "observedRemoteMain": "0d25c7a53adadec61c81ae1c074ce5530ea57d4d",
+    "finalJsPath": "archive/exams/original/middle/m2/2mid/24_향림중_2학기_중간_중2_수학.js",
+    "finalJsBlob": "ed037b1decc9fcabdb6cb34ec9d38b8e5ba1d497"
+  },
+  "protectedParity": {
+    "sourceContentChoicesAnswer": "24/24 exact",
+    "sourceProblemImageRefs": "24/24 exact",
+    "sourceJsBlob": "197a923c85467cffac9c9e15ba19de7af92c26ad",
+    "finalJsBlob": "ed037b1decc9fcabdb6cb34ec9d38b8e5ba1d497"
+  },
+  "mathReview": {
+    "count": 24,
+    "answerAndSolutionReproduced": "24/24 PASS",
+    "smallBoardStudentLanguage": "24/24 PASS",
+    "curriculumFit": "24/24 PASS",
+    "items": [
+      {
+        "question": 1,
+        "check": "intercepts",
+        "result": "a=2,b=6",
+        "status": "PASS"
+      },
+      {
+        "question": 2,
+        "check": "slope from (0,-3),(2,1)",
+        "result": "2",
+        "status": "PASS"
+      },
+      {
+        "question": 3,
+        "check": "quadrant/sign analysis",
+        "result": "Q4",
+        "status": "PASS"
+      },
+      {
+        "question": 4,
+        "check": "parallel slopes",
+        "result": "a=1/3",
+        "status": "PASS"
+      },
+      {
+        "question": 5,
+        "check": "two-point line",
+        "result": "y=3x-1",
+        "status": "PASS"
+      },
+      {
+        "question": 6,
+        "check": "triangle area between y=x,y=2x,x=4",
+        "result": "8",
+        "status": "PASS"
+      },
+      {
+        "question": 7,
+        "check": "collinearity slopes",
+        "result": "a=5",
+        "status": "PASS"
+      },
+      {
+        "question": 8,
+        "check": "vertical line x-coordinates",
+        "result": "a=4",
+        "status": "PASS"
+      },
+      {
+        "question": 9,
+        "check": "intersection on x-axis",
+        "result": "a=-10",
+        "status": "PASS"
+      },
+      {
+        "question": 10,
+        "check": "inconsistent linear system",
+        "result": "③",
+        "status": "PASS"
+      },
+      {
+        "question": 11,
+        "check": "isosceles altitude/base bisection",
+        "result": "x=4",
+        "status": "PASS"
+      },
+      {
+        "question": 12,
+        "check": "angle-bisector chase",
+        "result": "40°",
+        "status": "PASS"
+      },
+      {
+        "question": 13,
+        "check": "right-triangle congruence classification",
+        "result": "①",
+        "status": "PASS"
+      },
+      {
+        "question": 14,
+        "check": "circumcenter angle sum",
+        "result": "110°",
+        "status": "PASS"
+      },
+      {
+        "question": 15,
+        "check": "right-triangle circumradius/area",
+        "result": "16",
+        "status": "PASS"
+      },
+      {
+        "question": 16,
+        "check": "incenter angle relation",
+        "result": "60°",
+        "status": "PASS"
+      },
+      {
+        "question": 17,
+        "check": "inradius+tangent lengths",
+        "result": "16 cm²",
+        "status": "PASS"
+      },
+      {
+        "question": 18,
+        "check": "parallelogram angle bisector",
+        "result": "BE=2 cm",
+        "status": "PASS"
+      },
+      {
+        "question": 19,
+        "check": "parallel/perpendicular angle transfer",
+        "result": "70°",
+        "status": "PASS"
+      },
+      {
+        "question": 20,
+        "check": "parallelogram sufficiency",
+        "result": "⑤",
+        "status": "PASS"
+      },
+      {
+        "question": 21,
+        "check": "intercept equality",
+        "result": "a=2,b=-2",
+        "status": "PASS"
+      },
+      {
+        "question": 22,
+        "check": "moving points/trapezoid area",
+        "result": "y=8x+72,x=3",
+        "status": "PASS"
+      },
+      {
+        "question": 23,
+        "check": "internal/external angle trisection",
+        "result": "60°,30°",
+        "status": "PASS"
+      },
+      {
+        "question": 24,
+        "check": "parallelogram side/diagonal equations",
+        "result": "x=3,y=1",
+        "status": "PASS"
+      }
+    ]
+  },
+  "questionMicroLayout": {
+    "reviewed": "24/24",
+    "grid": 24,
+    "subjective2up": 0,
+    "decision": "KEEP_GRID",
+    "reason": "No clear STATIC_CAPACITY_EVIDENCE requiring layoutTag change."
+  },
+  "jsIntegrity": {
+    "syntax": "PASS_JSON_PARSE",
+    "questionCount": 24,
+    "uniqueIds": "24/24",
+    "nonemptyAnswer": "24/24",
+    "nonemptySolution": "24/24",
+    "unresolvedReferences": 0
+  },
+  "problemAssets": {
+    "requiredRasterCount": 14,
+    "presentOnBranch": "14/14",
+    "sourceBlobParity": "14/14",
+    "visualClaim": "Source-byte-exact assets retained; no raster byte changes."
+  },
+  "solutionVisuals": {
+    "linkedCount": 14,
+    "codeFirstReviewed": "14/14",
+    "questions": [
+      2,
+      6,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      22,
+      23,
+      24
+    ],
+    "checks": [
+      "GEOMETRY_FACT",
+      "MISSING_OWNER_RAY",
+      "ANGLE_LABEL_OWNER_BINDING",
+      "LABEL_OWNER_BINDING",
+      "COORDINATE_SEMANTIC_PARITY",
+      "CLIPPING"
+    ],
+    "verdict": "PASS_AFTER_REPAIR",
+    "repairs": [
+      {
+        "question": 12,
+        "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg",
+        "oldBlob": "5a7626e8abe8eb279b1f006f9a7ce8c52a053c26",
+        "newBlob": "221dc7a4cb40b5a2e4483238e2ba5c12efc05107",
+        "defect": "60° label sat outside the actual ∠ADB wedge, making owner binding ambiguous.",
+        "fix": "Moved only the 60° text to the interior of the D vertex wedge; geometry coordinates and all other labels unchanged.",
+        "verification": "CODE_FIRST_DETERMINISTIC_PASS"
+      },
+      {
+        "question": 17,
+        "path": "archive/assets/images/24_향림중_2학기_중간_중2_수학/q17-solution.svg",
+        "oldBlob": "c4cc0c039e465d905f79cb00da00993330665152",
+        "newBlob": "5d93e60ac07570b5c51c2db5d27774410a4c8322",
+        "defect": "Single 18px bottom explanation line was too wide for the 440px viewBox and risked horizontal clipping.",
+        "fix": "Split the explanation into two 16px lines and extended viewBox height from 330 to 350; geometry and labels unchanged.",
+        "verification": "CODE_FIRST_BOUNDING_PASS"
+      }
+    ]
+  },
+  "productionChangedFiles": [
+    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q12-solution.svg",
+    "archive/assets/images/24_향림중_2학기_중간_중2_수학/q17-solution.svg"
+  ],
+  "receiptFiles": [
+    "archive/data/r2e-intake/m2/24_향림중_2학기_중간_중2_수학.review1.json",
+    "archive/data/r2e-intake/m2/24_향림중_2학기_중간_중2_수학.review1.evidence.json"
+  ],
+  "unresolvedItems": [],
+  "stageDecision": "REVIEW1_DONE",
+  "completedAtKst": "2026-09-29T12:46:29+09:00"
+}
