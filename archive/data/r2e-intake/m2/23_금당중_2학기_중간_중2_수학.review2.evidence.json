@@ -1,0 +1,60 @@
+{
+  "schema": "JS_ARCHIVE_M2_REVIEW2_EVIDENCE_v1",
+  "examFilename": "23_금당중_2학기_중간_중2_수학.js",
+  "canonicalGlobalInventoryOrdinal": 49,
+  "lane": "REVIEW2-1",
+  "inputAuthority": "work/middle/m2/23-geumdang-2mid@ff2d3487d8ab0262ea715c0db01f2d915df0c395",
+  "reviewedProductionHead": "0d966cbb2448a32052f488bf7c95399b08d8f41a",
+  "observedRemoteMain": "d12dcca0d5e1c22f6db95cc2f0ed6d5e997efe93",
+  "cohortPolicy": {
+    "cohort": "M2_2SEM_FIXED20",
+    "certificationGeneration": null,
+    "exception": "M2 fixed-20 reset exception; preserve existing durable REVIEW/BATCH/FINAL flow per Notion CURRENT"
+  },
+  "sourceAuthority": "work/rebuild/m2-full-20260928-source@8033f85f1eb25ddf33bacaa5ba7f5df13ce02858",
+  "sourceJsBlob": "eea9b496f5061e6c21aa2935a2220d1ccac01f6b",
+  "finalArtifactSha": "0e6c380d6416164ea93b89bfca6181258f0f0c22",
+  "independentReview": {
+    "sourceAndCurrentArtifactRechecked": "25/25",
+    "priorReviewVerdictUsedAsAnswerAuthority": false,
+    "mathAndVisualDecisions": "re-derived from target source/current artifact"
+  },
+  "checks": {
+    "sourceContentChoicesAnswer": "25/25 PASS",
+    "mathAnswerSolutionReproducibility": "25/25 PASS",
+    "studentSmallBoardSolution": "25/25 PASS",
+    "curriculumStudentLanguage": "25/25 PASS",
+    "questionMicroLayout": "25/25 PASS; grid retained; subjective q22-q25 grid",
+    "jsIntegrity": "PASS; 25 unique ids; all answers/solutions present",
+    "problemAssets": "13/13 source-byte exact + direct visual truth PASS",
+    "solutionVisuals": "11/11 CODE-FIRST PASS_AFTER_REPAIR",
+    "visualAxes": "owner rays / angle-label owner / length-label owner / coordinate-semantic parity / clipping-collision",
+    "holdCount": 0
+  },
+  "repair": {
+    "question": 15,
+    "path": "archive/assets/images/23_금당중_2학기_중간_중2_수학/q15-solution.svg",
+    "reason": "BC=12 label was crowded against midpoint label E in the student solution visual",
+    "action": "moved BC=12 label away from E; geometry and all mathematical labels unchanged",
+    "oldBlob": "b2e363db5091a1d5978ce87a7841db8b3e638987",
+    "newBlob": "a4a371ba944dac410255f9ff83c8401da66e68d1",
+    "impactRecheck": "PASS"
+  },
+  "calibration": {
+    "blindTargetDecisionBeforeGoldenCompare": true,
+    "goldenSamples": [
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js"
+    ],
+    "negativeSample": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+    "status": "PASS"
+  },
+  "productionChangedFiles": [
+    "archive/assets/images/23_금당중_2학기_중간_중2_수학/q15-solution.svg"
+  ],
+  "result": "PASS_AFTER_REPAIR",
+  "stageDecision": "REVIEW2_DONE",
+  "nextStage": "READY_FOR_COMMIT",
+  "nextOwner": "BATCH_COMMIT",
+  "runDateKst": "2026-09-29"
+}
