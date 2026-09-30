@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-r2-meta-reviewed-candidate-v1",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "sourceArchiveFile": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+  "inputCommit": "2c7dbdf3fa81a2e37aa033eb8c07a7de0ab4f751",
+  "inputJsBlob": "a7973fba6dd694ed6a3f72d89c5f24a53ceed735",
+  "authorityMainAtReview": "bb358e53aa27128200b2bb5165a5b7ddbf0158e2",
+  "authorityBlobs": {
+    "rpmMi1": "17d704172aee92b8e2a2e5f78587e37917ae5ed4",
+    "high2Math2Calculus1Crosswalk": "3735749fcd510fdf6487e4fbed28fc91ed03ffc4",
+    "limitContinuityTaxonomy": "a103610df452c6158936251920f05bb73559395b",
+    "limitContinuityBindings": "cd587b45c07042aa6896c7f7762a079f2768e60f",
+    "metaFoundationRule": "0eadabee6378010bfc1eeb122f7fdab4d9cb38a5"
+  },
+  "semanticReviewCoverage": "21/21",
+  "l2Policy": "H22-M1 production subUnit master gap preserved; no L2 invented in R2.",
+  "q12": {
+    "id": 12,
+    "primaryMethod": "함수의 극한의 대소 관계를 이용해 사이 함수의 극한을 결정",
+    "decisiveStep": "x→-2에서 -3x와 x^2+x+4가 모두 6으로 수렴하므로 -3x≤f(x)≤x^2+x+4에서 lim f(x)=6으로 확정",
+    "currentRpmParent": {
+      "majorUnit": "함수의 극한과 연속",
+      "midUnit": "함수의 극한",
+      "l3": "극한의 성질"
+    },
+    "currentRpmGap": "L3 극한의 성질 아래 canonical L4는 대수적 계산/미정계수뿐이며 대소관계 L4가 없음",
+    "candidateAction": "ADD_L4_UNDER_EXISTING_L3",
+    "proposedL4": "함수의 극한의 대소 관계",
+    "candidateId": "H2-M2-RPM-098",
+    "activeProjectionReuse": {
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE"
+    },
+    "r2Verdict": "CONFIRMED_EXTENSION_CANDIDATE",
+    "canonicalWrite": false
+  },
+  "q21": {
+    "id": 21,
+    "primaryMethod": "실수 전체에서 g가 연속이 되도록 유리식 분모의 실근을 배제하고 자연수 조건으로 최솟값 결정",
+    "decisiveStep": "x^2+px+2가 실근을 가지지 않도록 p^2-8<0을 적용한 뒤 f(1)=p+3∈N로 p 후보를 제한",
+    "rpmPath": {
+      "majorUnit": "함수의 극한과 연속",
+      "midUnit": "함수의 연속",
+      "l3": "연속 조건",
+      "l4": "미정계수"
+    },
+    "rpmCrosswalkId": "H2-M2-RPM-057",
+    "problemTypeKey": "PT_CONTINUITY_CONDITION",
+    "activeTemplateExactFit": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+    "currentCrosswalkGap": "H2-M2-RPM-057 templateCandidates omits the ACTIVE exact-fit denominator-nonzero template",
+    "candidateAction": "ADD_ACTIVE_TEMPLATE_TO_EXISTING_FAMILY_CANDIDATES",
+    "r2Verdict": "CONFIRMED_CROSSWALK_FAMILY_EXTENSION_CANDIDATE",
+    "newActiveTaxonomyKeyRequired": false,
+    "canonicalWrite": false
+  },
+  "difficulty": {
+    "userWaivedStrictBlind": true,
+    "status": "UNKNOWN_PRESERVED_21_OF_21",
+    "passClaimed": false
+  },
+  "status": "R2_SEMANTIC_REVIEW_COMPLETE_Q12_Q21_CANDIDATES_CONFIRMED"
+}
