@@ -6,18 +6,18 @@
   "inputJsBlob": "7a3926b44c596d5e773674aa85495582d9e9ab41",
   "rpmAuthority": "RPM_PRIMARY_TAXONOMY_v1.0 LOCKED",
   "crosswalkAuthorities": [
-    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
     "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json"
   ],
   "standardUnitMaster": "archive/data/master_tables/js_archive_tag_master.json",
   "identityPolicy": "qid_v1_ + sha256(normalizeNfc(sourceArchiveFile) + '#' + 1-based sourceOrdinal); registration pending production intake",
-  "semanticValidationStatus": "CANDIDATE_READY_FOR_DETERMINISTIC_VALIDATOR",
+  "semanticValidationStatus": "CANDIDATE_REPAIRED_READY_FOR_DETERMINISTIC_VALIDATOR",
   "difficultyStatus": "BLIND_REVIEW_PENDING",
   "difficultyReason": "이 작업자는 앞 단계에서 legacy level을 이미 보았으므로 v1.3의 strict blind first-pass를 주장하지 않는다. JS difficulty 4-field는 UNKNOWN 유지.",
   "globalGaps": {
-    "mi1SubUnitMaster": "H22-M1-* standardUnit은 ACTIVE이나 production subUnitKey master 레코드가 0건. 미적분I 18문항의 L2는 임의 생성 금지.",
+    "mi1SubUnitMaster": "H22-M1-* standardUnit은 ACTIVE이나 production subUnitKey master 레코드가 0건. 미적분I 21문항 L2는 임의 생성 금지.",
     "mi1ProjectionBinding": "2022 미적분I crosswalk 49건은 DIRECT/FAMILY_BINDING_GAP이며 exact bindingStatus=MISSING. RPM semantic 후보는 유지하되 JS PT/TPL 적용 보류.",
-    "identityRegistration": "신규 시험지가 아직 main/db/inventory에 없으므로 global question_identity_map registration은 다음 intake 단계에서 builder로 재생성해야 함."
+    "identityRegistration": "신규 시험지가 아직 main/db/inventory에 없으므로 global question_identity_map registration은 다음 intake 단계에서 builder로 재생성해야 함.",
+    "curriculumBoundary": "q3/q4/q18의 공통수학2 재라우팅을 폐기. 세 문항 모두 미적분I H22-M1-02에 유지하고 교육과정 밖 선수 개념만 CrossConcept로 분리."
   },
   "questions": [
     {
@@ -85,29 +85,33 @@
       "sourceOrdinal": 3,
       "questionUidCandidate": "qid_v1_095831bd2508f54a5485b2c4642983dc7af923036757bf85ffe506ffab17d007",
       "curriculum": "2022",
-      "standardCourseCandidate": "공통수학2",
-      "standardUnitKeyCandidate": "H22-C2-07",
-      "standardUnitCandidate": "함수",
-      "standardUnitOrderCandidate": 7,
-      "subUnitKeyCandidate": "H22-C2-07-FUNCTION_BASIC",
-      "subUnitCandidate": "함수의 뜻과 그래프",
-      "l2Status": "ACTIVE_MASTER_REUSE",
-      "primaryMethod": "분모가 0이 되는 값을 제외해 정의역 결정",
-      "decisiveStep": "x=3을 제외하고 두 구간의 합집합으로 표현",
-      "rpmCrosswalkId": "H1-RPM-252",
+      "standardCourseCandidate": "미적분I",
+      "standardUnitKeyCandidate": "H22-M1-02",
+      "standardUnitCandidate": "함수의 연속",
+      "standardUnitOrderCandidate": 2,
+      "subUnitKeyCandidate": null,
+      "subUnitCandidate": null,
+      "l2Status": "MASTER_GAP_UNMATERIALIZED",
+      "primaryMethod": "미적분I의 연속 구간 해석에서 정의역 경계를 확인",
+      "decisiveStep": "유리함수의 분모가 0이 되는 x=3을 제외해 함수가 정의되는 두 구간을 나눈다.",
+      "rpmCrosswalkId": "H2-M2-RPM-056",
       "rpmPrimaryPath": {
-        "majorUnit": "함수",
-        "midUnit": "함수",
-        "l3": "함수의 뜻",
-        "l4": "정의역·공역·치역"
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속의 뜻",
+        "l4": "구간에서의 연속"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "REUSE",
-      "problemTypeKeyCandidate": "PT_DOMAIN_RANGE_SURJECTIVITY",
-      "templateKeyCandidate": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
-      "crossConceptKeyCandidates": [],
-      "conditionKeyCandidates": [],
-      "integrationPatternCandidate": "NONE",
+      "projectionCandidateStatus": "META_ONLY_COMPATIBILITY_PENDING",
+      "problemTypeKeyCandidate": "PT_CONTINUITY_JUDGMENT",
+      "templateKeyCandidate": null,
+      "crossConceptKeyCandidates": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeyCandidates": [
+        "COND_NONZERO"
+      ],
+      "integrationPatternCandidate": "REINTERPRETATION",
       "difficultyStatus": "BLIND_REVIEW_PENDING"
     },
     {
@@ -115,31 +119,34 @@
       "sourceOrdinal": 4,
       "questionUidCandidate": "qid_v1_23e1e6e923fc432d51aacc87dc34bff83d8d948b3cb7de12dc02ae0b40159752",
       "curriculum": "2022",
-      "standardCourseCandidate": "공통수학2",
-      "standardUnitKeyCandidate": "H22-C2-08",
-      "standardUnitCandidate": "유리함수",
-      "standardUnitOrderCandidate": 8,
-      "subUnitKeyCandidate": "H22-C2-08-FUNCTION_BASIC",
-      "subUnitCandidate": "함수의 뜻과 그래프",
-      "l2Status": "ACTIVE_MASTER_REUSE",
-      "primaryMethod": "유리함수의 구간 내 단조성을 이용해 양 끝점 비교",
-      "decisiveStep": "[3,5]에서 감소함을 확인하고 f(3), f(5)를 계산",
-      "rpmCrosswalkId": "H1-RPM-264",
+      "standardCourseCandidate": "미적분I",
+      "standardUnitKeyCandidate": "H22-M1-02",
+      "standardUnitCandidate": "함수의 연속",
+      "standardUnitOrderCandidate": 2,
+      "subUnitKeyCandidate": null,
+      "subUnitCandidate": null,
+      "l2Status": "MASTER_GAP_UNMATERIALIZED",
+      "primaryMethod": "닫힌구간에서 연속함수의 최댓값·최솟값을 구함",
+      "decisiveStep": "[3,5]에서 유리함수가 감소함을 확인하고 양 끝점의 함수값 6과 2를 비교한다.",
+      "rpmCrosswalkId": "H2-M2-RPM-059",
       "rpmPrimaryPath": {
-        "majorUnit": "함수",
-        "midUnit": "유리함수",
-        "l3": "유리함수의 활용",
-        "l4": "유리함수의 최대·최소"
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속함수의 성질",
+        "l4": "최대·최소 정리"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "UNMATERIALIZED",
-      "problemTypeKeyCandidate": null,
-      "templateKeyCandidate": null,
-      "crossConceptKeyCandidates": [],
+      "projectionCandidateStatus": "BINDING_PENDING",
+      "problemTypeKeyCandidate": "PT_FUNCTION_EXTREMUM",
+      "templateKeyCandidate": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "crossConceptKeyCandidates": [
+        "CC_RATIONAL_FUNCTION",
+        "CC_FUNCTION_MONOTONICITY"
+      ],
       "conditionKeyCandidates": [
         "COND_RANGE"
       ],
-      "integrationPatternCandidate": "NONE",
+      "integrationPatternCandidate": "INTERDEPENDENT",
       "difficultyStatus": "BLIND_REVIEW_PENDING"
     },
     {
@@ -376,7 +383,7 @@
         "l4": "극한값 계산"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING_TEMPLATE_UNRESOLVED",
+      "projectionCandidateStatus": "META_ONLY_COMPATIBILITY_PENDING",
       "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
       "templateKeyCandidate": null,
       "crossConceptKeyCandidates": [],
@@ -544,29 +551,31 @@
       "sourceOrdinal": 18,
       "questionUidCandidate": "qid_v1_5d9a7c68853e2a55b53e788add96e8f01fc376cc10b28dd5383907bc15e9e686",
       "curriculum": "2022",
-      "standardCourseCandidate": "공통수학2",
-      "standardUnitKeyCandidate": "H22-C2-07",
-      "standardUnitCandidate": "함수",
-      "standardUnitOrderCandidate": 7,
-      "subUnitKeyCandidate": "H22-C2-07-FUNCTION_INVERSE",
-      "subUnitCandidate": "역함수",
-      "l2Status": "ACTIVE_MASTER_REUSE",
-      "primaryMethod": "함수와 역함수 그래프의 y=x 대칭을 이용한 교점 배치",
-      "decisiveStep": "x좌표 0,2,4가 대칭쌍이 되도록 가능한 교점 좌표를 판정",
-      "rpmCrosswalkId": "H1-RPM-256",
+      "standardCourseCandidate": "미적분I",
+      "standardUnitKeyCandidate": "H22-M1-02",
+      "standardUnitCandidate": "함수의 연속",
+      "standardUnitOrderCandidate": 2,
+      "subUnitKeyCandidate": null,
+      "subUnitCandidate": null,
+      "l2Status": "MASTER_GAP_UNMATERIALIZED",
+      "primaryMethod": "구간별 함수의 연속 조건으로 계수를 정함",
+      "decisiveStep": "역함수 그래프의 대칭으로 가능한 교점 배치를 판정한 뒤 x=2의 연속 조건으로 a,b,c를 결정한다.",
+      "rpmCrosswalkId": "H2-M2-RPM-058",
       "rpmPrimaryPath": {
-        "majorUnit": "함수",
-        "midUnit": "함수",
-        "l3": "역함수",
-        "l4": "그래프 대칭"
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "구간별 함수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "REUSE",
-      "problemTypeKeyCandidate": "PT_INVERSE_GRAPH",
-      "templateKeyCandidate": "TPL_INVERSE_GRAPH_GEOMETRY",
-      "crossConceptKeyCandidates": [],
+      "projectionCandidateStatus": "BINDING_PENDING",
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "crossConceptKeyCandidates": [
+        "CC_INVERSE_FUNCTION"
+      ],
       "conditionKeyCandidates": [],
-      "integrationPatternCandidate": "NONE",
+      "integrationPatternCandidate": "CASE_BRANCH",
       "difficultyStatus": "BLIND_REVIEW_PENDING"
     },
     {
@@ -657,7 +666,7 @@
         "l4": "미정계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING_TEMPLATE_UNRESOLVED",
+      "projectionCandidateStatus": "META_ONLY_COMPATIBILITY_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
       "templateKeyCandidate": null,
       "crossConceptKeyCandidates": [
@@ -668,6 +677,27 @@
       ],
       "integrationPatternCandidate": "NONE",
       "difficultyStatus": "BLIND_REVIEW_PENDING"
+    }
+  ],
+  "curriculumBoundaryPolicy": "시험 과목/L1/L2는 미적분I 교육과정 경계로 유지한다. 공통수학2 선수·교육과정 밖 개념은 standardCourse/L1/L2로 재라우팅하지 않고 CrossConcept/Condition으로 기록한다.",
+  "correctionOfCommit": "4fd6058bdf9aaf0d6108d961962b54dec13c2b0c",
+  "corrections": [
+    {
+      "questions": [
+        3,
+        4,
+        18
+      ],
+      "code": "KEEP_EXAM_COURSE_PRIMARY_BOUNDARY",
+      "detail": "공통수학2 재라우팅 폐기; 미적분I L1/L2 유지 + 선수/교육과정 밖 개념을 CrossConcept로 분리"
+    },
+    {
+      "questions": [
+        12,
+        21
+      ],
+      "code": "CANONICAL_PROJECTION_STATUS_NORMALIZED",
+      "detail": "FAMILY template 미선택 상태를 META_ONLY_COMPATIBILITY_PENDING으로 정규화"
     }
   ]
 }
