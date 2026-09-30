@@ -29,7 +29,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $\\sqrt{7^2}=7$ $\\implies$ 옳음\\n② $\\sqrt{5^2}=5$ $\\implies$ 옳음\\n③ $\\sqrt{(\\frac{5}{2})^2}=\\frac{5}{2}$ $\\implies$ 옳음\\n④ $-\\sqrt{0.4^2}=-0.4$ $\\implies$ 틀림 ($0.4$로 표기됨)\\n⑤ $-\\sqrt{(\\frac{1}{3})^2}=-\\frac{1}{3}$ $\\implies$ 옳음\\n$\\therefore$ ④",
+    "solution": "④에서 $-\\sqrt{0.16}=-0.4$이므로 $0.4$라고 한 것은 틀리다. 나머지는 모두 $\\sqrt{a^2}=|a|$에 맞는다.\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -38,7 +38,7 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "content": "$\\sqrt{n-3}$의 정수부분이 $3$일 때, $n$이 될 수 있는 자연수의 개수를 구하면?",
+    "content": "$\\sqrt{x}-3$의 정수부분이 $3$일 때, $x$가 될 수 있는 자연수의 개수를 구하면?",
     "choices": [
       "$11$개",
       "$12$개",
@@ -46,7 +46,7 @@ window.questionBank = [
       "$14$개",
       "$15$개"
     ],
-    "answer": "①",
+    "answer": "③",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -65,7 +65,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "정수부분이 $3$이므로 $3 \\le \\sqrt{n-3} < 4$\\n각 변을 제곱하면 $9 \\le n-3 < 16$\\n$\\implies 12 \\le n < 19$\\n자연수 $n$은 $12, 13, 14, 15, 16, 17, 18$로 총 $7$개\\n(※ 원문 보기와 수치상 차이가 있을 수 있으나 논리 전개 우선)\\n$\\therefore$ ①",
+    "solution": "정수부분이 $3$이므로 $3\\le\\sqrt{x}-3<4$이다. 양변에 $3$을 더하면 $6\\le\\sqrt{x}<7$이므로, $36\\le x<49$이다.\n자연수 $x$는 $36,37,\\ldots,48$의 $13$개이다.\n$\\therefore$ ③",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -101,7 +101,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{\\frac{x}{2^4 \\cdot 3 \\cdot 5}}$가 유리수가 되려면 $x = 3 \\cdot 5 \\cdot k^2 = 15k^2$ 꼴이어야 함\\n$10 \\le x \\le 20$ 범위에서 $k=1$일 때 $x=15$가 유일함\\n$\\therefore$ ⑤",
+    "solution": "보기의 값을 확인하면 $x=15$일 때 $\\sqrt{15/240}=\\sqrt{1/16}=1/4$로 유리수이다. 다른 보기에서는 근호가 완전히 없어지지 않는다.\\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -137,7 +137,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{5}$의 정수부분은 $2$이므로 $a = \\sqrt{5}-2 \\implies \\sqrt{5}=a+2$\\n$\\sqrt{45} = 3\\sqrt{5} = 3(a+2) = 3a+6$\\n$\\sqrt{45}$의 정수부분은 $6$ ($\\\\because \\sqrt{36} < \\sqrt{45} < \\sqrt{49}$)\\n소수부분 $= (3a+6) - 6 = 3a$\\n$\\therefore$ ③",
+    "solution": "$a=\\sqrt5-2$이므로 $\\sqrt5=a+2$. $\\sqrt{45}=3a+6$이므로 소수부분은 $3a$.\\n$\\therefore$ ③",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -146,15 +146,15 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "content": "$\\sqrt{63} = \\sqrt{a} + \\sqrt{b}$일 때, $a+b$의 값을 구하면? (단, $a, b$는 자연수)",
+    "content": "다음 식을 간단히 하면? $\\sqrt{32}+\\sqrt{2}-\\sqrt{8}$",
     "choices": [
-      "$14$",
-      "$28$",
-      "$42$",
-      "$235$",
-      "$110$"
+      "$2\\sqrt{2}$",
+      "$3\\sqrt{2}$",
+      "$4\\sqrt{2}$",
+      "$5\\sqrt{2}$",
+      "$7\\sqrt{2}$"
     ],
-    "answer": "③",
+    "answer": "②",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -166,14 +166,15 @@ window.questionBank = [
     "tags": [
       "근호계산",
       "제곱근",
+      "근호정리",
       "동류근호",
-      "근호분해",
-      "자연수분해",
+      "덧셈",
+      "뺄셈",
       "계산",
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{63} = 3\\sqrt{7} = \\sqrt{7} + 2\\sqrt{7} = \\sqrt{7} + \\sqrt{28}$\\n$\\implies a=7, b=28$ (또는 $a=28, b=7$)\\n$\\therefore a+b = 7+28 = 35$ (보기 중 $42$ 혹은 오타 가능성 점검)\\n$\\therefore$ ③",
+    "solution": "각 근호를 제곱인수와 $\\sqrt{2}$의 곱으로 정리한다.\n$\\sqrt{32}=4\\sqrt{2}$, $\\sqrt{8}=2\\sqrt{2}$이므로\n$\\sqrt{32}+\\sqrt{2}-\\sqrt{8}=(4+1-2)\\sqrt{2}=3\\sqrt{2}$이다.\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -209,7 +210,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$2\\sqrt{\\frac{a^2b}{a}} + 3\\sqrt{\\frac{b^2a}{b}} = 2\\sqrt{ab} + 3\\sqrt{ab} = 5\\sqrt{ab}$\\n$ab=4$를 대입하면 $5\\sqrt{4} = 5 \\cdot 2 = 10$\\n$\\therefore$ ①",
+    "solution": "$a,b>0$이므로 $a\\sqrt{b/a}=\\sqrt{ab}$, $b\\sqrt{a/b}=\\sqrt{ab}$. 따라서 $5\\sqrt{ab}=10$.\\n$\\therefore$ ①",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -222,11 +223,11 @@ window.questionBank = [
     "choices": [
       "$3x+4$",
       "$3x-4$",
-      "$x+4$",
-      "$x-4$",
-      "$x+2$"
+      "$-x$",
+      "$-x+4$",
+      "$-x-4$"
     ],
-    "answer": "③",
+    "answer": "④",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -245,7 +246,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$2 < x < 3$ 범위에서:\\n1) $\\sqrt{(x-2)^2} = x-2$\\n2) $\\sqrt{(3-x)^2} = 3-x$\\n3) $\\sqrt{(x-3)^2} = -(x-3) = 3-x$\\n$\\implies (x-2) + (3-x) + (3-x) = -x+4$\\n$\\therefore$ ③",
+    "solution": "$2<x<3$이므로 $x-2>0$, $3-x>0$, $x-3<0$이다.\n따라서 $\\sqrt{(x-2)^2}=|x-2|=x-2$, $\\sqrt{(3-x)^2}=|3-x|=3-x$, $\\sqrt{(x-3)^2}=|x-3|=3-x$이다.\n주어진 식은 $(x-2)+(3-x)+(3-x)=4-x=-x+4$이다.\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -281,7 +282,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$4\\sqrt{2} \\approx 5.65 \\implies A \\approx 4.65$\\n$B = 4$\\n$5\\sqrt{2} \\approx 7.07 \\implies C \\approx 6.07$\\n$\\therefore B < A < C$\\n$\\therefore$ ④",
+    "solution": "$4\\sqrt2>5$이므로 $A>B$, 또 $C-A=\\sqrt2>0$이므로 $B<A<C$.\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -317,7 +318,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "1) $\\sqrt{175} = 5\\sqrt{7} = 5a$\\n2) $\\sqrt{2.8} = \\sqrt{\\frac{280}{100}} = \\frac{2\\sqrt{70}}{10} = \\frac{1}{5}b$\\n$\\implies 5a + \\frac{1}{5}b$\\n$\\therefore$ ④",
+    "solution": "$\\sqrt{175}=5a$, $\\sqrt{2.8}=b/5$이므로 $5a+b/5$.\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -353,7 +354,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x = 7-4\\sqrt{3} \\implies x-7 = -4\\sqrt{3} \\implies x^2-14x+49=48$\\n$\\implies x^2-14x = -1$\\n주어진 식: $(-1+5)(-1-5) = 4 \\cdot (-6) = -24$\\n$\\therefore$ ②",
+    "solution": "$x=7-4\\sqrt3$, $1/x=7+4\\sqrt3$이므로 $x+1/x=14$, 따라서 $x^2-14x=-1$. 주어진 식은 $(-1+5)(-1-5)=-24$.\\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -389,7 +390,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$4\\sqrt{3} - \\frac{\\sqrt{3}}{4} - 2\\sqrt{3} = 2\\sqrt{3} - \\frac{\\sqrt{3}}{4} = \\frac{7\\sqrt{3}}{4}$\\n$\\therefore$ ②",
+    "solution": "$\\sqrt{48}=4\\sqrt3$, $3/(4\\sqrt3)=\\sqrt3/4$. 따라서 값은 $7\\sqrt3/4$.\\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -425,7 +426,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x=1$ 대입 시 $0$이어야 함: $3 + A - 5 = 0 \\implies A=2$\\n$\\therefore$ ②",
+    "solution": "$x-1$이 인수이므로 $x=1$을 대입해 $3+A-5=0$, 따라서 $A=2$.\\n$\\therefore$ ②",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -461,7 +462,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\frac{1}{2}(x^2 - 8x + 2k)$에서 $2k = (-4)^2 = 16 \\implies k=8$\\n$\\therefore$ ⑤",
+    "solution": "$\\frac12x^2-4x+k=\\frac12(x-4)^2+k-8$. 완전제곱식이 되려면 $k=8$.\\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -497,7 +498,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "넓이 $= (4x-3)h = (4x-3)(2x+3) \\implies h = 2x+3$\\n$\\therefore$ ③",
+    "solution": "사다리꼴 넓이는 $(4x-3)h$이고 $8x^2+6x-9=(4x-3)(2x+3)$이므로 높이는 $2x+3$.\\n$\\therefore$ ③",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -514,7 +515,7 @@ window.questionBank = [
       "$12$",
       "$16$"
     ],
-    "answer": "③",
+    "answer": "①",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -533,7 +534,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$(3^8+1)(3^4+1)(10)(4)(2)$의 인수 중 $10$ 미만: $1, 2, 4, 8$\\n합 $= 1+2+4+8=15$\\n$\\therefore$ ③",
+    "solution": "$3^{16}-1=(3^8+1)(3^4+1)(3^2+1)(3+1)(3-1)=2^6\\cdot5\\cdot17\\cdot41\\cdot193$. 따라서 $10$보다 작은 양의 약수는 $1,2,4,5,8$이고 합은 $20$이다.\\n$\\therefore$ ①",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -569,7 +570,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$(x-z)^2 - y^2 = (x-z+y)(x-z-y)$\\n$\\therefore$ ①",
+    "solution": "$x^2-y^2+z^2-2xz=(x-z)^2-y^2=(x-y-z)(x+y-z)$.\\n$\\therefore$ ①",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -605,7 +606,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "곱이 $-18$인 두 수의 합: $\\pm 17, \\pm 7, \\pm 3$ 가능. $13$ 불가.\\n$\\therefore$ ④",
+    "solution": "$x^2+Ax-18=(x+p)(x+q)$에서 $pq=-18$, $A=p+q$. 가능한 합은 $\\pm17,\\pm7,\\pm3$이므로 $13$은 불가능하다.\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -641,7 +642,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$a+b=13$일 때 $ab$ 최댓값은 $6 \\times 7 = 42$\\n$\\therefore$ ④",
+    "solution": "$a+b=13$, $k=ab$. 자연수의 합이 고정되었을 때 곱은 두 수가 가장 가까울 때 최대이므로 $a,b=6,7$, $k=42$.\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -677,7 +678,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$(X+1)(X-5)$ 대입 $\\implies (a+b+1)(a+b-5)$\\n$\\therefore$ ①",
+    "solution": "$t=a+b$로 두면 $t^2-4t-5=(t+1)(t-5)$.\\n$\\therefore$ ①",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -713,7 +714,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$(2x-1)(x-5) \\implies$ 합 $= 3x-6$\\n$\\therefore$ ⑤",
+    "solution": "$2x^2-11x+5=(2x-1)(x-5)$이므로 두 일차식의 합은 $3x-6$.\\n$\\therefore$ ⑤",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -749,7 +750,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$(2019-2020)^2 = (-1)^2 = 1$\\n$\\therefore$ ①",
+    "solution": "$2019^2-2019\\cdot4040+2020^2=2020^2-2019\\cdot2021=1$.\\n$\\therefore$ ①",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -785,7 +786,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$4 - 2(a-2) + 6 = 0 \\implies 14 = 2a \\implies a=7$\\n$\\therefore$ ③",
+    "solution": "$x=-2$를 대입하면 $4-2(a-2)+6=0$, 따라서 $a=7$.\\n$\\therefore$ ③",
     "level": "중",
     "subUnitKey": "M3-03-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
@@ -815,7 +816,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "$39-n \\in \\{1, 4, 9, 16, 25, 36\\} \\implies n \\in \\{38, 35, 30, 23, 14, 3\\}$",
+    "solution": "$39-n$이 $39$보다 작은 양의 완전제곱수여야 하므로 $n=3,14,23,30,35,38$.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -845,7 +846,7 @@ window.questionBank = [
       "계산과정"
     ],
     "wide": false,
-    "solution": "$(2x-3)(x+4)$ 및 $(2x-3)(x+1) \\implies$ 공통인수 $2x-3$",
+    "solution": "$2x^2+5x-12=(2x-3)(x+4)$, $2x^2-x-3=(2x-3)(x+1)$이므로 공통인수는 $2x-3$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -856,7 +857,7 @@ window.questionBank = [
     "id": 25,
     "content": "[서술형3] $a+b = \\sqrt{3}-1$일 때 $a^2 + b^2 + 2ab + 2a + 2b + 1$의 값을 구하여라.",
     "choices": [],
-    "answer": "③",
+    "answer": "$3$",
     "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "다항식의 곱셈과 인수분해",
     "standardCourse": "중3 수학",
@@ -875,7 +876,7 @@ window.questionBank = [
       "대입"
     ],
     "wide": false,
-    "solution": "$(a+b+1)^2 = (\\sqrt{3}-1+1)^2 = (\\sqrt{3})^2 = 3$\\n$\\therefore 3$",
+    "solution": "주어진 식은 $(a+b+1)^2$이다. $a+b=\\sqrt3-1$이므로 $(a+b+1)^2=(\\sqrt3)^2=3$.\\n$\\therefore 3$",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
