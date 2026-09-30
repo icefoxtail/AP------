@@ -1,12 +1,12 @@
 {
-  "originMain": "9a0d00ef76b5345baf49f65373c840fd81cbf1e6",
-  "successfulExamCountForBatchDate": 5,
-  "batchDate": "2026-09-27",
+  "originMain": "0c0bd70bfa42d744fe431b8155721faa5103090b",
+  "successfulExamCountForBatchDate": 2,
+  "batchDate": "2026-09-30",
   "updatedAt": "2026-09-28T08:42:53Z",
-  "activeRunId": null,
+  "activeRunId": "source-intake-heartbeat-2026-09-30-1749-kst",
   "branch": "codex/archive-source-intake",
-  "batchSuccessCap": 5,
-  "intakeHead": "8552eafe751c3e9065c8aa3a9b628b3107d2b813",
+  "batchSuccessCap": 2,
+  "intakeHead": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "schema": "nightly-source-intake-ledger-v1",
   "runs": [
     {
@@ -25,10 +25,44 @@
       "choicesExactParityStatus": "PASS",
       "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
       "questionLayoutFreezeStatus": "PASS_STATIC_RENDER_HANDOFF"
+    },
+    {
+      "runId": "source-intake-heartbeat-2026-09-30-1749-kst",
+      "batchDate": "2026-09-30",
+      "status": "completed_source_only_with_recorded_holds",
+      "startedAtKst": "2026-09-30T17:49:45+09:00",
+      "owner": "codex-thread-automation-10",
+      "selectedExamIds": [
+        "20_매산고_2학기_기말_고1_기출",
+        "20_효천고_2학기_기말_고1_기출"
+      ],
+      "selectedCount": 2,
+      "successCount": 2,
+      "priorityGroup": "high1",
+      "priorityGroupRemainingBefore": 2,
+      "priorityGroupRemainingAfterSelection": 0,
+      "completedAtKst": "2026-09-30T18:34:20+09:00",
+      "verifiedSourceOnlyExamCount": 2,
+      "totalQuestionCount": 43,
+      "totalAssetCount": 6,
+      "sourceDefectCount": 2,
+      "metadataFirstPassFilled": 42,
+      "metadataFirstPassDeferred": 1,
+      "questionLayoutChangedCount": 5,
+      "questionLayoutHoldCount": 0,
+      "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+      "commitStatus": "PENDING_EXPLICIT_STAGE",
+      "pushStatus": "PENDING",
+      "completedExamIds": [
+        "20_매산고_2학기_기말_고1_기출",
+        "20_효천고_2학기_기말_고1_기출"
+      ],
+      "latestOriginMain": "0c0bd70bfa42d744fe431b8155721faa5103090b",
+      "latestOriginIntake": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc"
     }
   ],
-  "owner": "primary-worker",
-  "queueRevision": 2,
+  "owner": "codex-thread-automation-10",
+  "queueRevision": 3,
   "excludedSchoolIdentities": [
     "공고",
     "공업고",
@@ -37,7 +71,7 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-09-28T17:42:53+09:00",
+  "updatedAtKst": "2026-09-30T18:34:20+09:00",
   "heldExamCount": 2,
   "priorityGroupRemainingAfterBatch": 0,
   "questionLayoutBackfillTargets": [
@@ -57,7 +91,7 @@
   ],
   "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
   "questionLayoutBackfillStatus": "PASS_STATIC_RENDER_HANDOFF",
-  "nextStartPoint": "Backfill closed for these five exams. The next scheduled source-intake run rechecks eligible high1 second-semester finals from the newest year under the unchanged queue rules, applying exact transcription and layout gates from the start.",
+  "nextStartPoint": "High1 2-semester-final queue is exhausted after the two 2020 checkpoint receipts. Next heartbeat: rebuild eligible H2 2-semester-final subject queues from the latest origin/main + intake + ledger, normalize only same-subject labels, sort newest year then normalized subject/school/source path, and select at most two papers.",
   "questionLayoutBackfillCompletedAtUtc": "2026-09-27T21:38:55Z",
   "questionLayoutBackfillCompletedAtKst": "2026-09-28T06:38:55+09:00",
   "questionLayoutChangedCount": 14,
@@ -173,5 +207,34 @@
     "completedSourceJsCheckedOffCount": 5,
     "snapshotSha256": "sha256:ca8610d324fb3da33bfe6d4f9a506073bcfa8498e0e17fe68bed321a2112e23a",
     "updatedAtKst": "2026-09-28T17:42:53+09:00"
-  }
+  },
+  "previousBatch": {
+    "date": "2026-09-27",
+    "successCount": 5,
+    "runId": "source-intake-2026-09-27-2343-kst"
+  },
+  "runSuccessCap": 2,
+  "lockStatus": "ACTIVE",
+  "lockOwner": "codex-thread-automation-10",
+  "lockStartedAtKst": "2026-09-30T17:49:45+09:00",
+  "successfulSourceOnlyCountForRun": 2,
+  "lockReleasedAtKst": null,
+  "currentRunSourceOnlyCompletion": {
+    "runId": "source-intake-heartbeat-2026-09-30-1749-kst",
+    "batchDate": "2026-09-30",
+    "status": "completed_source_only_with_recorded_holds",
+    "completedAtKst": "2026-09-30T18:34:20+09:00",
+    "successCount": 2,
+    "totalQuestionCount": 43,
+    "totalAssetCount": 6,
+    "sourceDefectCount": 2,
+    "metadataFirstPassFilled": 42,
+    "metadataFirstPassDeferred": 1,
+    "questionLayoutChangedCount": 5,
+    "questionLayoutHoldCount": 0,
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "productionAuthorized": false
+  },
+  "latestCanonicalRuleBlobSha": "7af7a8dbfed4ce6ee9737020d92d4c427b183ffa",
+  "closeoutStatus": "COMMIT_PUSH_PENDING"
 }

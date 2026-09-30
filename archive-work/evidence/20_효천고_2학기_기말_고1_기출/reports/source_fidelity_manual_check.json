@@ -1,552 +1,411 @@
 {
-  "schema": "APMATH_NIGHTLY_SOURCE_FIDELITY_CHECK_v1",
-  "status": "SOURCE_DEFECT_HOLD",
-  "scope": "SOURCE_ONLY",
-  "batchDate": "2026-09-27",
-  "runId": "source-intake-2026-09-27-2343-kst",
+  "schema": "SOURCE_FIDELITY_MANUAL_CHECK_v2",
+  "runId": "source-intake-heartbeat-2026-09-30-1749-kst",
   "examId": "20_효천고_2학기_기말_고1_기출",
-  "sourcePath": "D:/기출/(4)2기말/수학(하)/2020_효천고1_2기말.pdf",
-  "sourceSha256": "sha256:07dbe35fcb348e7ac2e85ab697ac7f703b0e13710c23e4f3ee0d5e91f3b6c34b",
-  "pageCount": 3,
-  "questionCount": 23,
-  "sourceCourseFromCover": "수학",
-  "sourcePathCourseHint": "수학(하)",
-  "sourceInventoryPath": "reports/source_inventory.json",
-  "sourceInventorySha": "sha256:2511f3252041d45d2403a2bd3041432094cb6121e5fdc559d36617d3cabe44a5",
-  "sourceIdentityMapPath": "reports/source_identity_map.json",
-  "sourceIdentityMapSha": "sha256:1ebc1a581be172288216b9e48b8dbe2a352c423d8cba1f3f5deee83d123a2bf9",
-  "pageExtractionPath": "vision_page_extract.json",
-  "pageExtractionSha256": "sha256:af5429ae15e64e496dba575a1a35c8e3a4bee8c66223df1a5576187d9b74a934",
-  "method": "Primary worker directly read all three source pages, froze the 23-question inventory, and compared all prompts, choices, scores and diagrams with the extracted JavaScript. One original-source contradiction in 서술형4 is preserved without repair.",
-  "checkTotals": {
-    "sourceNumbersChecked": 23,
-    "contentTranscribed": 23,
-    "choicesChecked": 19,
-    "choiceNotApplicable": 4,
-    "visualAssetRequired": 5,
-    "visualAssetNotRequired": 18,
-    "sourceDefects": 1,
-    "failures": 1
-  },
-  "pageEvidence": [
+  "sourcePdfPath": "D:\\기출\\(4)2기말\\수학(하)\\2020_효천고1_2기말.pdf",
+  "sourcePdfSha256": "sha256:07dbe35fcb348e7ac2e85ab697ac7f703b0e13710c23e4f3ee0d5e91f3b6c34b",
+  "reviewedAtKst": "2026-09-30T18:32:29+09:00",
+  "transcriptionMode": "DIRECT_FULL_PAGE_PIXEL_REVIEW",
+  "previousCheckpointManualReviewSha": "sha256:57545f8156186dbfcded68edc74406f3a3a16bd9e34b368ac85fdff04d563dbf",
+  "fullPagesReviewed": [
     {
       "pageNo": 1,
-      "path": "pages/page_p001.png",
+      "path": "archive-work/evidence/20_효천고_2학기_기말_고1_기출/pages/page_p001.png",
       "sha256": "sha256:3db5669dadf5d54770c07b75d91c5ddbe7a5c3eed2a5ec8af94db9c64f9c2eed",
-      "width": 1819,
-      "height": 2572
+      "footerPageNumber": "1/3"
     },
     {
       "pageNo": 2,
-      "path": "pages/page_p002.png",
+      "path": "archive-work/evidence/20_효천고_2학기_기말_고1_기출/pages/page_p002.png",
       "sha256": "sha256:ee952e5ee94642b112818f48dfb970c9ee7cf66eeeddb844d4f67387a278e5bc",
-      "width": 1819,
-      "height": 2572
+      "footerPageNumber": "2/3"
     },
     {
       "pageNo": 3,
-      "path": "pages/page_p003.png",
+      "path": "archive-work/evidence/20_효천고_2학기_기말_고1_기출/pages/page_p003.png",
       "sha256": "sha256:a14f30b0f0763d00c35377f599e57402eb753524199a6b37e8d358420a85d694",
-      "width": 1819,
-      "height": 2572
+      "footerPageNumber": "3/3"
     }
   ],
-  "items": [
+  "expectedQuestionCount": 23,
+  "observedQuestionCount": 23,
+  "questionNumbers": [
     {
-      "sourceQuestionNo": "1",
-      "sourceOrdinal": 1,
-      "sourcePageNo": 1,
       "displayNo": "1",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "2",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "3",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "4",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "5",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "6",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "7",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "8",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "9",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "10",
+      "sourcePageNo": 1
+    },
+    {
+      "displayNo": "11",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "12",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "13",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "14",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "15",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "16",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "17",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "18",
+      "sourcePageNo": 2
+    },
+    {
+      "displayNo": "19",
+      "sourcePageNo": 3
+    },
+    {
+      "displayNo": "서술형1",
+      "sourcePageNo": 3
+    },
+    {
+      "displayNo": "서술형2",
+      "sourcePageNo": 3
+    },
+    {
+      "displayNo": "서술형3",
+      "sourcePageNo": 3
+    },
+    {
+      "displayNo": "서술형4",
+      "sourcePageNo": 3
+    }
+  ],
+  "missingQuestionNumbers": [],
+  "duplicateQuestionNumbers": [],
+  "unreadableSourceItems": [],
+  "sourceTextExactParityStatus": "PASS",
+  "sourceTextExactParityCount": 23,
+  "sourceTextExactParityPercent": 100,
+  "choicesExactParityStatus": "PASS",
+  "choicesExactParityCount": 23,
+  "choicesExactParityPercent": 100,
+  "transcriptionCorrections": [
+    {
+      "displayNo": "14",
+      "pageNo": 2,
+      "stage": "BEFORE_SOURCE_TEXT_FREEZE",
+      "reason": "Restored the three displayed piecewise rows and the middle branch f(x); the previous checkpoint had a collapsed case separator / stray literal \\f(x). The corrected transcription was then frozen."
+    }
+  ],
+  "sourceDefects": [
+    {
+      "displayNo": "서술형4",
+      "pageNo": 3,
+      "code": "SOURCE_DEFECT",
+      "excerpt": "미리 적힌 수는 1과 8",
+      "visualExcerpt": "The 3x3 diagram visibly contains 3, 1, and 8.",
+      "reason": "Printed statement conflicts with the diagram: it says only 1 and 8 are prefilled and asks to place all remaining 1–9 values, while the diagram also pre-fills 3. Text and image are both preserved exactly."
+    }
+  ],
+  "dispositions": [
+    {
+      "displayNo": "1",
+      "sourcePageNo": 1,
       "questionId": 1,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:b07a99dc41eff9e2cd8943b10f828b3b342a14cc64141d370487aee5b14885b1",
       "choicesSha256": "sha256:597db594d9a0d6de8d455828eaf1b29c6dff380c14843bc2600466581ad216f6",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "2",
-      "sourceOrdinal": 2,
-      "sourcePageNo": 1,
       "displayNo": "2",
+      "sourcePageNo": 1,
       "questionId": 2,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:488410ef9c66f4338637aea437cd877548515abfd121d8c10ba8c0a5538b7a1a",
       "choicesSha256": "sha256:46bf4896200bb4c55f5473981339cdb9040a0cbc52a9b4354b8a2dcaa700feb1",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "3",
-      "sourceOrdinal": 3,
-      "sourcePageNo": 1,
       "displayNo": "3",
+      "sourcePageNo": 1,
       "questionId": 3,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:568f2eb246dca0918ed03888bb345739c966cd658c48784ca06d18ad1e854544",
       "choicesSha256": "sha256:bb19c9501a9aa6cd3d97ae3192d6f57167d2ee87a754e1a32249948bfa5e5474",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "4",
-      "sourceOrdinal": 4,
-      "sourcePageNo": 1,
       "displayNo": "4",
+      "sourcePageNo": 1,
       "questionId": 4,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:46e5f54813793aabc6bc71dd24856a25fafbd94f827be99dc14b452e6156defb",
       "choicesSha256": "sha256:942d5f3d5600c2ebbdf15fc1537d8a4d7885573c01ad7101aaa5c1cde21d5b0e",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "5",
-      "sourceOrdinal": 5,
-      "sourcePageNo": 1,
       "displayNo": "5",
+      "sourcePageNo": 1,
       "questionId": 5,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:affe454378505cf828704f27f03ecfbe521262666095535cb10ca7680234022c",
       "choicesSha256": "sha256:66b3191283eb1adaccfced3a2f6ef702de95ee1bd4b7208cca32bf18b16c2a59",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "6",
-      "sourceOrdinal": 6,
-      "sourcePageNo": 1,
       "displayNo": "6",
+      "sourcePageNo": 1,
       "questionId": 6,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:1381eb335d409cb0fc2268782f7f43f0aeeef03e6eb6e79e802bf6ea3688c3af",
       "choicesSha256": "sha256:0790604a86d34f395ce454e4054fc1a2c6396a263c65588d69a6ac1342df6252",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "7",
-      "sourceOrdinal": 7,
-      "sourcePageNo": 1,
       "displayNo": "7",
+      "sourcePageNo": 1,
       "questionId": 7,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:78591ef25ab1727a57d053bd5e70092c13b58abf71a0c71b8e83651aa06032ab",
       "choicesSha256": "sha256:8c9c9fcd577ee0ac4afb407d8d09d9b06ef3c0d2e0fd3fdb79c8e6bc9a5419a1",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "8",
-      "sourceOrdinal": 8,
-      "sourcePageNo": 1,
       "displayNo": "8",
+      "sourcePageNo": 1,
       "questionId": 8,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:9da5c6add8bf955f8450673e1e93123e7940574b0abede31b72dbc4a05afcc30",
       "choicesSha256": "sha256:d190f983180ce089c55e355039e30b904e2283daf1bf072082e83d55ec304592",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "9",
-      "sourceOrdinal": 9,
-      "sourcePageNo": 1,
       "displayNo": "9",
+      "sourcePageNo": 1,
       "questionId": 9,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:8f1d94f495366cf360608e4bffcfc8ece52af4d33ba22d03cf3387e1b90d503d",
       "choicesSha256": "sha256:e269a2a2d43927f2d403a15c216b9fb1ea0eb064fe7cc8ac4fbf6eb9b8ab7274",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "10",
-      "sourceOrdinal": 10,
-      "sourcePageNo": 1,
       "displayNo": "10",
+      "sourcePageNo": 1,
       "questionId": 10,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:43c2952bcb76ed2da3ed08d5fae3a2ec55173442e114728c43a5dbc6e468c047",
       "choicesSha256": "sha256:c9db32090c5553275548a151b5206a11eb7976421bbf3529466da260635e54ae",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "11",
-      "sourceOrdinal": 11,
-      "sourcePageNo": 2,
       "displayNo": "11",
+      "sourcePageNo": 2,
       "questionId": 11,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:b06fedbb637d31dc587fb94eb5585573c78d6f3aadcd1e9f98641227d8102b0c",
       "choicesSha256": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "12",
-      "sourceOrdinal": 12,
-      "sourcePageNo": 2,
       "displayNo": "12",
+      "sourcePageNo": 2,
       "questionId": 12,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:60c4d8df52afda01d7eb61ffc464b156c7dcb4e7a0c664f57840c4b0bad33c5f",
       "choicesSha256": "sha256:4d37539adff2de0b6c2226b53e54c92e0e028d6388be0ef518af9411070c5294",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "13",
-      "sourceOrdinal": 13,
-      "sourcePageNo": 2,
       "displayNo": "13",
+      "sourcePageNo": 2,
       "questionId": 13,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:7caf10a148516e8b51baa6998970a90779edc079242679e7c8d4393ae59be2cd",
       "choicesSha256": "sha256:66edab0d1e730f0f587e2e8ef96d91f3372baf64380c8bf67ce3e90dc66c98cc",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "14",
-      "sourceOrdinal": 14,
-      "sourcePageNo": 2,
       "displayNo": "14",
+      "sourcePageNo": 2,
       "questionId": 14,
-      "questionType": "객관식",
-      "contentSha256": "sha256:a32d885a249d38d26effc737bbd06e6f87c17679884485ec480b172ceb108340",
-      "choicesSha256": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
       "sourceNumberChecked": true,
       "contentChecked": true,
-      "choicesChecked": true
+      "choicesChecked": true,
+      "contentSha256": "sha256:0db6bbc77f426b2d687562b0af4665510a0c7290b62478e2b9055f43ba2ee182",
+      "choicesSha256": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "15",
-      "sourceOrdinal": 15,
-      "sourcePageNo": 2,
       "displayNo": "15",
+      "sourcePageNo": 2,
       "questionId": 15,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:4e31a263650e3be409d986c7b391e383f502cb8a22d96a526e105bbd7a5acdb7",
       "choicesSha256": "sha256:b8d984fd7c15fa1a31b2ec5031600b6c0b52fc3a4dd3e023d17fd868db340647",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "16",
-      "sourceOrdinal": 16,
-      "sourcePageNo": 2,
       "displayNo": "16",
+      "sourcePageNo": 2,
       "questionId": 16,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:e1dfbda541f732fec194a4cd7ee0881b1bd163fe2f619b9716dd15bf9a77e4d0",
       "choicesSha256": "sha256:5baac6bb25edd7af59fce3d2a59c0e9285706c0b78b34ef9c955c716eb4a7b8e",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "17",
-      "sourceOrdinal": 17,
-      "sourcePageNo": 2,
       "displayNo": "17",
+      "sourcePageNo": 2,
       "questionId": 17,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:382a9feaa3991b026a6fe1ba0b393603307bbd8ec12e9e3c87ce56cd69c4325f",
       "choicesSha256": "sha256:1d477263b8c2fdeb32ac29fde481dde1bd5d404bf2413134591874b093630a2f",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "18",
-      "sourceOrdinal": 18,
-      "sourcePageNo": 2,
       "displayNo": "18",
+      "sourcePageNo": 2,
       "questionId": 18,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:573e6f43b77ae3bef532fc914990b6f28d47789e7ac17a0de88042ebf8b002ff",
       "choicesSha256": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "19",
-      "sourceOrdinal": 19,
-      "sourcePageNo": 3,
       "displayNo": "19",
+      "sourcePageNo": 3,
       "questionId": 19,
-      "questionType": "객관식",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:ee72266f9fcdfa41ecd91efebc5d090c838e24c5a185996e5a55cb03d456d997",
       "choicesSha256": "sha256:f35e8840d663fb44469000b14a2a8e78ad4d0b96c45927034b89dd2949c8af41",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": true
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "서술형1",
-      "sourceOrdinal": 20,
-      "sourcePageNo": 3,
       "displayNo": "서술형1",
+      "sourcePageNo": 3,
       "questionId": 20,
-      "questionType": "서술형",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:95be2856a743de85de986edb4cbbe897e48e6820bd43c1825754d62ed18c3527",
       "choicesSha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": false
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "서술형2",
-      "sourceOrdinal": 21,
-      "sourcePageNo": 3,
       "displayNo": "서술형2",
+      "sourcePageNo": 3,
       "questionId": 21,
-      "questionType": "서술형",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:5efb6ec05782b8b7227d17813bdc03aa0af82523dc98930f0cae213569ae2573",
       "choicesSha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": false
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "서술형3",
-      "sourceOrdinal": 22,
-      "sourcePageNo": 3,
       "displayNo": "서술형3",
+      "sourcePageNo": 3,
       "questionId": 22,
-      "questionType": "서술형",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:bb0ef756d4cdf632bef54fd6695d3c3ab4f6df6953d8d607a4de5ef119bf0092",
       "choicesSha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "PASS",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": false
+      "verdict": "PASS_SOURCE_EXACT"
     },
     {
-      "sourceQuestionNo": "서술형4",
-      "sourceOrdinal": 23,
-      "sourcePageNo": 3,
       "displayNo": "서술형4",
+      "sourcePageNo": 3,
       "questionId": 23,
-      "questionType": "서술형",
+      "sourceNumberChecked": true,
+      "contentChecked": true,
+      "choicesChecked": true,
       "contentSha256": "sha256:5223e580b33ec9b307d9d1bd5ad9aff6a0a798e57e530ac3adb7e80fb90b1ef4",
       "choicesSha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "imageReferenceChecked": true,
-      "visualAssetChecked": true,
-      "verdict": "SOURCE_DEFECT",
-      "sourceNumberChecked": true,
-      "contentChecked": true,
-      "choicesChecked": false
+      "verdict": "PASS_SOURCE_EXACT_SOURCE_DEFECT_RECORDED"
     }
   ],
-  "visualAssets": [
-    {
-      "displayNo": "16",
-      "sourcePageNo": 2,
-      "sourcePageSha256": "sha256:ee952e5ee94642b112818f48dfb970c9ee7cf66eeeddb844d4f67387a278e5bc",
-      "sourceBBox": {
-        "x1": 1475,
-        "y1": 570,
-        "x2": 1720,
-        "y2": 790
-      },
-      "path": "assets/images/20_효천고_2학기_기말_고1_기출/q016_visual.png",
-      "sha256": "sha256:c4e11bd1bee4139ef4c416aada0d618ad4bf9d4b000f0d610adb5764972f15d6",
-      "bytes": 26518,
-      "visualAssetType": "diagram",
-      "manualCropReview": "PASS_SOURCE_DIAGRAM_LABELS_AND_BOUNDARIES_VISIBLE"
-    },
-    {
-      "displayNo": "19",
-      "sourcePageNo": 3,
-      "sourcePageSha256": "sha256:a14f30b0f0763d00c35377f599e57402eb753524199a6b37e8d358420a85d694",
-      "sourceBBox": {
-        "x1": 450,
-        "y1": 165,
-        "x2": 870,
-        "y2": 585
-      },
-      "path": "assets/images/20_효천고_2학기_기말_고1_기출/q019_visual.png",
-      "sha256": "sha256:a70ba86922b919230b0f5ec2754fe88d05a62964616dee1fdee1a0372c93c2a7",
-      "bytes": 71861,
-      "visualAssetType": "graph",
-      "manualCropReview": "PASS_SOURCE_DIAGRAM_LABELS_AND_BOUNDARIES_VISIBLE"
-    },
-    {
-      "displayNo": "서술형2",
-      "sourcePageNo": 3,
-      "sourcePageSha256": "sha256:a14f30b0f0763d00c35377f599e57402eb753524199a6b37e8d358420a85d694",
-      "sourceBBox": {
-        "x1": 530,
-        "y1": 1870,
-        "x2": 880,
-        "y2": 2310
-      },
-      "path": "assets/images/20_효천고_2학기_기말_고1_기출/q021_visual.png",
-      "sha256": "sha256:5aca45dd23472b5ef8c38c1d3ac8b86cf169adc9f7df4742381b22160231a0d3",
-      "bytes": 33407,
-      "visualAssetType": "graph",
-      "manualCropReview": "PASS_SOURCE_DIAGRAM_LABELS_AND_BOUNDARIES_VISIBLE"
-    },
-    {
-      "displayNo": "서술형3",
-      "sourcePageNo": 3,
-      "sourcePageSha256": "sha256:a14f30b0f0763d00c35377f599e57402eb753524199a6b37e8d358420a85d694",
-      "sourceBBox": {
-        "x1": 1357,
-        "y1": 140,
-        "x2": 1710,
-        "y2": 680
-      },
-      "path": "assets/images/20_효천고_2학기_기말_고1_기출/q022_visual.png",
-      "sha256": "sha256:20acf72e654ae662e89da699ce93ca3fadd5f831db544ef51a29920cc614aca7",
-      "bytes": 86709,
-      "visualAssetType": "diagram",
-      "manualCropReview": "PASS_SOURCE_DIAGRAM_LABELS_AND_BOUNDARIES_VISIBLE"
-    },
-    {
-      "displayNo": "서술형4",
-      "sourcePageNo": 3,
-      "sourcePageSha256": "sha256:a14f30b0f0763d00c35377f599e57402eb753524199a6b37e8d358420a85d694",
-      "sourceBBox": {
-        "x1": 1385,
-        "y1": 830,
-        "x2": 1735,
-        "y2": 1360
-      },
-      "path": "assets/images/20_효천고_2학기_기말_고1_기출/q023_visual.png",
-      "sha256": "sha256:5741dd6cfd16ad285a58a802499d1641c35d78e8cd627929f1569d9a6a8b3833",
-      "bytes": 56487,
-      "visualAssetType": "diagram",
-      "manualCropReview": "PASS_SOURCE_DIAGRAM_LABELS_AND_BOUNDARIES_VISIBLE"
-    }
-  ],
-  "sourceDefect": {
-    "questionNo": "서술형4",
-    "sourcePageNo": 3,
-    "sourceText": "서술형4 본문에는 “숫자 1과 8이 적혀있다” 및 “빈칸에 1과 8을 제외한 1에서 9까지의 자연수”라고 쓰였으나, 원본 3×3 도형에는 3, 1, 8이 미리 적혀 있다. 3을 다시 배치할지 제외할지 문면상 결정할 수 없으므로 문자 그대로 옮기고 SOURCE_DEFECT/HOLD로 보존했다.",
-    "sourceDiagramValues": [
-      "3",
-      "1",
-      "8"
-    ],
-    "literalPromptValues": [
-      "1",
-      "8"
-    ],
-    "disposition": "SOURCE_DEFECT",
-    "contentPreservedVerbatim": true
-  },
-  "staticIntegrity": {
-    "vmLoad": "PASS",
-    "questionCount": 23,
-    "answerSolutionEmpty": true,
-    "initialMetadataPresent": true,
-    "metadataClassifiedCount": 22,
-    "extractionStatus": "NEEDS_WORK",
-    "manualReviewCount": 1,
-    "workingJsSha256": "sha256:b87fab83d9a73475c8c57a1c86ea8add85fcc57cf9a98dd6dcdc58bae6a8e018",
-    "productionAuthorized": false
-  },
-  "metadataFirstPass": {
-    "status": "SOURCE_FIRST_PASS",
-    "questionCount": 23,
-    "classifiedCount": 22,
-    "unclassifiedCount": 1,
-    "L1L2Filled": 22,
-    "L1L2Deferred": 1,
-    "solutionReviewRequired": 23,
-    "advancedTypeAndTemplateFilled": 22,
-    "difficultyRecheckRequired": 23,
-    "sourceOnly": true
-  },
-  "render": {
-    "status": "NOT_RUN_USER_DIRECTIVE",
-    "reason": "User explicitly excluded browser rendering from the reserved batch. This candidate remains held because source Q23 is internally inconsistent."
-  },
-  "answerAndSolutionStatus": "OUT_OF_SCOPE_EMPTY",
-  "finalStatus": "HOLD_SOURCE_DEFECT_Q23",
+  "pipelineSourceStatus": "NEEDS_WORK",
+  "pipelineManualReviewCount": 1,
   "productionAuthorized": false
 }

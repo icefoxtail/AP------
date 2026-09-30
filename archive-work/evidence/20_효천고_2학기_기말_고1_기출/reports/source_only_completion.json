@@ -1,0 +1,54 @@
+{
+  "schema": "SOURCE_ONLY_COMPLETION_v1",
+  "runId": "source-intake-heartbeat-2026-09-30-1749-kst",
+  "examId": "20_효천고_2학기_기말_고1_기출",
+  "sourceOnlyCompletionStatus": "SOURCE_ONLY_COMPLETE_WITH_RECORDED_ITEM_DEFECTS",
+  "verifiedSourceOnly": true,
+  "productionAuthorized": false,
+  "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
+  "questionCount": 23,
+  "sourcePageCount": 3,
+  "assetCount": 5,
+  "sourceTextExactParityStatus": "PASS",
+  "sourceTextExactParityPercent": 100,
+  "choicesExactParityStatus": "PASS",
+  "choicesExactParityPercent": 100,
+  "pipelineReturnedStatus": "NEEDS_WORK",
+  "pipelineManualReviewCount": 1,
+  "sourceDefectCount": 1,
+  "sourceMetadataStatus": "SOURCE_FIRST_PASS",
+  "metadataFirstPassCounts": {
+    "total": 23,
+    "filled": 22,
+    "deferred": 1,
+    "l1L2FirstPass": 22,
+    "l1L2Deferred": 1,
+    "conceptClusterFirstPass": 22,
+    "problemTypeFirstPass": 22,
+    "templateFirstPass": 22,
+    "conditionFirstPass": 0,
+    "integrationFirstPass": 6,
+    "solutionRecheckRequired": 23,
+    "tagStatus": "manual_review"
+  },
+  "sourceTextFreezeRef": "reports/source_text_freeze.json",
+  "sourceFidelityEvidenceRef": "reports/source_fidelity_manual_check.json",
+  "assetEvidenceRef": "reports/source_asset_crop_audit.json",
+  "layoutEvidenceRef": "reports/question_layout_freeze.json",
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "openItems": [
+    {
+      "displayNo": "서술형4",
+      "code": "SOURCE_DEFECT",
+      "reason": "Printed statement conflicts with the diagram: it says only 1 and 8 are prefilled and asks to place all remaining 1–9 values, while the diagram also pre-fills 3. Text and image are both preserved exactly.",
+      "nextStage": "later source-fidelity/solution review; keep text and asset unchanged unless an authorized source correction is adjudicated"
+    },
+    {
+      "displayNo": "8",
+      "code": "CANONICAL_METADATA_DEFERRED",
+      "reason": "실제 시험 과목은 표지/원본 경로의 수학(하)다. '120의 양의 약수의 개수'는 고등학교 H15 canonical L1/L2와 직접 대응하는 단원이 없어 임의 매핑하지 않고 구체 키를 미결로 둔다.",
+      "nextStage": "reconcile only after solution and canonical taxonomy review"
+    }
+  ],
+  "verifiedAtKst": "2026-09-30T18:32:29+09:00"
+}
