@@ -486,6 +486,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "함수 $y=f(x)$의 그래프가 그림과 같을 때, $\\displaystyle\\lim_{t\\to\\infty}f\\left(\\frac{t-1}{t+1}\\right)+\\lim_{t\\to-\\infty}f\\left(\\frac1t\\right)$의 값은? [5점]",
+    "image": "assets/images/26_금당고_2학기_중간_고2_미적분I/q13.png",
     "choices": [
       "-2",
       "-1",
@@ -604,6 +605,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "그림과 같이 곡선 $y=\\dfrac1x$ 위의 원점 O가 아닌 점 $P\\left(t,\\dfrac1t\\right)$를 지나고 직선 OP에 수직인 직선 $l$이 $x$축과 만나는 점을 Q, $y$축과 만나는 점을 R이라 하자. 삼각형 OPQ의 넓이를 $S_1(t)$, 삼각형 OPR의 넓이를 $S_2(t)$라 할 때, $\\displaystyle\\lim_{t\\to1}\\frac{S_2(t)-S_1(t)}{t-1}$의 값은? [5.2점]",
+    "image": "assets/images/26_금당고_2학기_중간_고2_미적분I/q16.png",
     "choices": [
       "5",
       "4",
