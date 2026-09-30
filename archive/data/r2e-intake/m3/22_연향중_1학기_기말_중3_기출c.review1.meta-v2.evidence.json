@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M3_REVIEW1_META_V2_EVIDENCE_v1",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "stage": "REVIEW1",
+  "canonicalOrdinal": 37,
+  "lane": "REVIEW1-1",
+  "examFile": "22_연향중_1학기_기말_중3_기출c.js",
+  "reviewMode": "FRESH_INDEPENDENT_CURRENT_ARTIFACT",
+  "inputCreateFinalArtifactSha": "ca328f6516037f92a858de22e6c73debb2dbce36",
+  "outputFinalArtifactSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "stageArtifactRef": "git-blob:340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "auditCounts": {
+    "sourceContentChoicesAnswer": "21/21",
+    "objectiveChoices": "90/90",
+    "mathSolution": "21/21",
+    "smallBoard": "21/21",
+    "layoutImageSvg": "21/21_CODE_FIRST",
+    "metadata": "21/21",
+    "difficulty": "21/21"
+  },
+  "protectedFieldDrift": 0,
+  "deterministicRepairs": {
+    "solutionExpanded": [
+      8,
+      16,
+      17
+    ],
+    "metadataCorrected": [
+      4,
+      16,
+      17,
+      21
+    ]
+  },
+  "visualEvidence": {
+    "11": "blob 8a4ef0d4a36e4ea9ea9e27af805bc7c0f4f07ee4 independently read: narrow y=ax^2 passes (1,4), wide y=bx^2 passes (2,1); ab=1 is consistent.",
+    "12": "blob 9880d829b4629c75676a745da3afe60f79d60411 independently read: A is on y=3x^2, B is on y=ax^2, C is on x-axis at x=2. Current stem orders y=ax^2, y=3x^2 and says the intersections are respectively A,B.",
+    "15": "blob ebc8c5555072c45f3af2d96f8b93ec6bbef46c15 independently read: downward-opening parabola with vertex in quadrant I; a<0,p>0,q>0.",
+    "18": "blob 5003c9475f0d9dde4e4bf97a8dc9177c132dd2e2 independently read: x-intercepts -5 and 2, y-intercept -10; a+b+c=-6.",
+    "19": "Stem explicitly references a figure, but image is null and q19.png is absent. Text is sufficient for the motion-area computation, but source visual parity is incomplete.",
+    "20": "blob ef07d8237feaff055640ba2a6b99f00dd89ef826 independently read: y=ax^2 is downward and passes (4,-4); a=-1/4 and reflected graph gives k=9."
+  },
+  "sourceMathNotes": {
+    "12": "Using figure labels gives A=(2,12), B=(2,4a), C=(2,0) and a=3/4, answer ③. Literal current-stem 'respectively' pairing gives A=(2,4a), B=(2,12), which does not produce a listed answer. Protected content is not guessed; exact source page/PDF is required.",
+    "19": "AB=CD=12 and BC=AD=20. For 0<=t<=10, PB=12-t and BQ=2t, so area=t(12-t)=35 gives t=5 or 7; first time is 5 seconds."
+  },
+  "metadataCorrections": {
+    "4": "M3-RPM-034 already carries complete-square semantics; duplicate CC_COMPLETE_SQUARE removed.",
+    "16": "M3-RPM-050 already carries vertex/axis semantics; duplicate CC_VERTEX removed.",
+    "17": "M3-RPM-051 already carries complete-square transformation; duplicate CC_COMPLETE_SQUARE removed, CC_VERTEX retained.",
+    "21": "M3-RPM-051 carries complete-square transformation; duplicate CC_COMPLETE_SQUARE removed. CC_VERTEX retained and ACTIVE CC_FUNCTION_MONOTONICITY added because increase/decrease is explicitly required."
+  },
+  "canonicalValidation": {
+    "rpmCrosswalkSha": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "activeRegistrySha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "functionsGraphsTaxonomySha": "a6684bdfec3ff8beaff25c19346b4865a24f7b81",
+    "functionsGraphsBindingsSha": "89e975174c3aa3339f287db56c35d5db8df2a902",
+    "h1FoundationTaxonomySha": "2d2ce738893a58206072da3f972a832c9adf5eb6",
+    "h1FoundationBindingsSha": "53dc8919232dbd0f86b126c26fbca16d84be0269",
+    "result": "Six projected PT/TPL pairs are ACTIVE, while exact 2015 M3-04 bindings are absent, so BINDING_PENDING is preserved. The other 15 rows remain RPM_ONLY / PROJECTION_UNMATERIALIZED."
+  },
+  "itemHolds": [
+    {
+      "qid": 12,
+      "reason": "SOURCE_TEXT_FIGURE_LABEL_ORDER_CONFLICT",
+      "observedEvidence": "Stem equation order conflicts with A/B positions in the source image and with the listed-answer route.",
+      "unresolvedPoint": "Whether the original page text has the opposite equation order or the source paper itself contains the mismatch.",
+      "nextRequiredEvidenceOrCapability": "Read the exact original q12 source page/PDF before changing protected content.",
+      "createdStage": "REVIEW1",
+      "lastReviewedStage": "REVIEW1"
+    },
+    {
+      "qid": 19,
+      "reason": "SOURCE_ASSET_MISSING",
+      "observedEvidence": "Stem references a figure; image field is null and q19.png is absent. Text alone determines the math.",
+      "unresolvedPoint": "Exact original rectangle/motion diagram is unavailable in the repository artifact.",
+      "nextRequiredEvidenceOrCapability": "Recover the exact original q19 source figure from source PDF/page.",
+      "createdStage": "CREATE",
+      "lastReviewedStage": "REVIEW1"
+    }
+  ],
+  "difficultyBlindPass": {
+    "distribution": {
+      "B1": 6,
+      "B2": 9,
+      "B3": 6,
+      "B4": 0,
+      "B5": 0
+    },
+    "note": "Fresh from problem, choices, required visuals and independently checked solution structure; upstream difficulty verdict was not used as first-pass authority."
+  },
+  "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+  "mainMutation": 0
+}
