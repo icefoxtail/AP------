@@ -1,0 +1,1623 @@
+{
+  "schema": "PAST_EXAM_PAGE_EXTRACTION_v1",
+  "examId": "23_금당고_2학기_기말_고2_확률과통계",
+  "sourceDocumentSha256": "sha256:a53831a367177568b570dca99b14ee33754fdd77d8f1307ed8aa4f0cef0d93b5",
+  "pageCount": 6,
+  "pages": [
+    {
+      "pageNo": 1,
+      "questions": [
+        {
+          "displayNo": "1",
+          "questionType": "객관식",
+          "content": "두 사건 $A,B$가 서로 독립이고, $P(A)=\\frac{3}{5}$, $P(A\\cap B)=\\frac{3}{10}$일 때, $P(B)$의 값은? (3.1점)",
+          "choices": [
+            "$\\frac{1}{2}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{5}$",
+            "$\\frac{2}{5}$"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "두 사건의 독립 조건과 교집합 확률로부터 확률을 구한다. 원문 주제와 일치하는 L2는 확인했으나 현재 ACTIVE binding의 independence key mismatch 때문에 L3/L4를 강제하지 않는다.",
+            "sourceExcerpts": [
+              "서로 독립이고"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-INDEPENDENCE",
+              "subUnit": "독립사건과 곱셈정리",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "problemTypeKey",
+                "reason": "원문 판독만으로 정확한 ACTIVE L3와 source/binding을 확정하지 않아 해설 단계에서 재검토한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "2",
+          "questionType": "객관식",
+          "content": "확률변수 $X$가 이항분포 $B(18,\\frac{2}{3})$을 따를 때, $X$의 평균, 분산의 값은? (3.1점)",
+          "choices": [
+            "6, 2",
+            "8, 4",
+            "10, 2",
+            "12, 4",
+            "16, 6"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "이항분포의 평균과 분산을 묻는 발문이다.",
+            "sourceExcerpts": [
+              "이항분포"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "subUnit": "이항분포와 정규분포",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "하",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+              "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "3",
+          "questionType": "객관식",
+          "content": "다음 확률변수 중 연속확률변수에 해당하는 것은? (3.3점)",
+          "choices": [
+            "가위바위보를 20번 하는 시행에서 이긴 횟수",
+            "주사위 1개를 1번 던지는 시행에서 나오는 눈의 수",
+            "2학기 중간고사에서 받을 수 있는 확률과 통계 성적",
+            "동전 1개를 10번 던지는 시행에서 나오는 앞면의 횟수",
+            "어느 정거장에 정확히 10분 간격으로 도착하는 버스를 기다리는 시행에서 기다리는 시간"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "여러 상황에서 정의한 확률변수의 연속성 여부를 구별한다. 이산·연속 유형 판정에 맞는 세부 template은 풀이 단계에서 재검토한다.",
+            "sourceExcerpts": [
+              "연속확률변수에 해당하는 것은"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+              "subUnit": "확률변수와 기댓값",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 1,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "하",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "4",
+          "questionType": "객관식",
+          "content": "어느 음식점에서 하루의 매출 목표액을 달성할 확률은 그날 비가 오는 경우 $0.9$, 비가 오지 않는 경우 $0.2$이라고 한다. 오늘 비가 올 확률이 $0.7$일 때, 이 음식점에서 오늘 하루의 매출 목표액을 달성할 확률을 구하시오. (3.5점)",
+          "choices": [
+            "0.67",
+            "0.68",
+            "0.69",
+            "0.7",
+            "0.71"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "날씨 조건별 성공확률과 오늘의 비 확률을 결합해 주변확률을 구한다. TOTAL_BAYES L2는 확인했으나 이 키의 exact active L3/L4 binding이 없어 풀이 후 재검토한다.",
+            "sourceExcerpts": [
+              "오늘 비가 올 확률이"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-TOTAL_BAYES",
+              "subUnit": "전확률과 베이즈",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15_PS_04_TOTAL_BAYES",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "problemTypeKey",
+                "reason": "원문 판독만으로 정확한 ACTIVE L3와 source/binding을 확정하지 않아 해설 단계에서 재검토한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "5",
+          "questionType": "객관식",
+          "content": "순천금당고등학교 학생들을 대상으로 학교생활에 대한 만족도를 조사하였더니 전체 학생 중에서 $80\\%$가 만족한다고 응답하였다. 이 학교 학생 $100$명을 임의로 택하였을 때, 학교생활에 만족한다고 응답한 학생이 $76$명 이상 $80$명 이하일 확률을 구하시오. (단, $P(0\\le Z\\le 1)=0.34$로 계산한다.) (3.6점)",
+          "choices": [
+            "0.34",
+            "0.38",
+            "0.66",
+            "0.68",
+            "0.7"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "이항확률을 표준정규분포로 근사해 구간확률을 구한다.",
+            "sourceExcerpts": [
+              "만족한다고 응답하였다"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "subUnit": "이항분포와 정규분포",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+              "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "6",
+          "questionType": "객관식",
+          "content": "승부차기 성공률이 각각 $80\\%,70\\%$인 현수와 정윤이가 차례로 승부차기를 한 번씩만 할 때, 두 명 모두 승부차기에 성공할 확률을 구하시오. (단, 현수와 정윤이가 각각 승부차기에서 성공하는 사건은 서로 독립이다.) (3.6점)",
+          "choices": [
+            "0.06",
+            "0.08",
+            "0.1",
+            "0.54",
+            "0.56"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "서로 독립인 두 성공사건의 동시 발생 확률을 묻는다. 원문과 맞는 L2를 사용하고 exact ACTIVE binding을 확인하지 못해 L3/L4는 보류한다.",
+            "sourceExcerpts": [
+              "성공하는 사건은 서로 독립이다"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-INDEPENDENCE",
+              "subUnit": "독립사건과 곱셈정리",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "problemTypeKey",
+                "reason": "원문 판독만으로 정확한 ACTIVE L3와 source/binding을 확정하지 않아 해설 단계에서 재검토한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pageNo": 2,
+      "questions": [
+        {
+          "displayNo": "7",
+          "questionType": "객관식",
+          "content": "발아율이 $80\\%$인 어떤 씨앗을 $100$개 심었을 때, $k$개 이상이 발아할 확률은 $95\\%$ 이상이라고 한다. $k$의 최댓값을 구하여라. (단, $P(0\\le Z\\le 1.65)=0.45$) (3.6점)",
+          "choices": [
+            "72",
+            "73",
+            "74",
+            "75",
+            "76"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "이항분포 꼬리확률과 표준정규분포 근사를 이용하는 문항이다.",
+            "sourceExcerpts": [
+              "발아율이"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "subUnit": "이항분포와 정규분포",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+              "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "8",
+          "questionType": "객관식",
+          "content": "다음 그림은 표준정규분포 $N(0,1)$을 따르는 확률변수 $Z$의 확률밀도함수의 그래프이다. 정규분포 $N(40,9)$를 따르는 확률변수 $X$에 대하여 $P(a\\le X\\le 43)$이 색칠한 부분의 넓이와 같을 때, 상수 $a$의 값을 구하여라. (3.7점)",
+          "choices": [
+            "30",
+            "31",
+            "32",
+            "33",
+            "34"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "graph",
+          "visualAssetBBox": {
+            "x1": 350,
+            "y1": 3200,
+            "x2": 2450,
+            "y2": 4300
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "표준정규분포 곡선의 색칠한 구간을 다른 정규분포로 대응시킨다. 그래프 원본을 해당 문항의 독립 crop으로 보존한다.",
+            "sourceExcerpts": [
+              "표준정규분포"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "subUnit": "이항분포와 정규분포",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+              "templateKey": "TPL_NORMAL_STANDARDIZATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "9",
+          "questionType": "객관식",
+          "content": "두 사건 $A,B$에 대하여 $P(A)>0$, $P(B)>0$을 만족할 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? (3.7점)\r\n<보기>\r\nㄱ. 두 사건 $A,B$가 독립이라면 $P(B|A)=P(B)$, $P(A|B)=P(A)$를 항상 만족한다.\r\nㄴ. 두 사건 $A,B$가 독립이라면 $A,B$는 서로 배반사건이다.\r\nㄷ. 두 사건 $A,B$가 서로 배반사건이면 $A,B$는 서로 종속이다.",
+          "choices": [
+            "ㄱ",
+            "ㄴ",
+            "ㄷ",
+            "ㄱ, ㄴ",
+            "ㄱ, ㄷ"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "독립과 배반사건의 관계를 판정하는 문항이다. exact ACTIVE binding이 확정되지 않아 L3/L4를 억지로 부여하지 않는다.",
+            "sourceExcerpts": [
+              "독립이라면"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-INDEPENDENCE",
+              "subUnit": "독립사건과 곱셈정리",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15_PS_04_INDEPENDENCE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "problemTypeKey",
+                "reason": "원문 판독만으로 정확한 ACTIVE L3와 source/binding을 확정하지 않아 해설 단계에서 재검토한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "10",
+          "questionType": "객관식",
+          "content": "다음은 확률변수 $X$의 확률분포를 표로 나타낸 것이다. $X$의 분산이 최대가 되도록 하는 상수 $a,b$의 값은? (3.9점)",
+          "choices": [
+            "$\\frac{1}{2},\\frac{1}{2}$",
+            "$\\frac{1}{3},\\frac{1}{3}$",
+            "$\\frac{1}{4},\\frac{1}{4}$",
+            "$\\frac{3}{4},\\frac{3}{4}$",
+            "$\\frac{2}{3},\\frac{4}{5}$"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "table",
+          "visualAssetBBox": {
+            "x1": 2910,
+            "y1": 1320,
+            "x2": 5200,
+            "y2": 1850
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "이산확률변수의 분산이 최대가 되도록 확률을 결정한다. 분포표 전체를 원본 에셋으로 보존한다.",
+            "sourceExcerpts": [
+              "분산이 최대가 되도록"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+              "subUnit": "확률변수와 기댓값",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+              "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "11",
+          "questionType": "객관식",
+          "content": "어느 고등학교에서 $100$명의 학생을 임의추출하여 수학 점수를 조사하였더니 표준편차가 $15$점이었다. 전체 학생들의 평균 수학 점수 $m$을 신뢰도 $99\\%$, $95\\%$로 각각 추정할 때, 두 신뢰구간의 길이의 차는? (단, $P(|Z|\\le 2)=0.95$, $P(|Z|\\le 3)=0.99$) (4.0점)",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "두 신뢰도에 따른 모평균 신뢰구간의 길이를 비교한다.",
+            "sourceExcerpts": [
+              "표준편차가"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-06",
+              "standardUnit": "통계적 추정",
+              "standardUnitOrder": 6,
+              "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+              "subUnit": "신뢰구간",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "통계적 추정",
+              "originalCategory": "통계적 추정",
+              "conceptClusterKey": "H15_PS_06_CONFIDENCE_INTERVAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+              "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "12",
+          "questionType": "객관식",
+          "content": "정규분포 $N(m,\\sigma^2)$을 따르는 모집단에서 크기가 $n_1,n_2$인 표본을 임의추출하여 신뢰도 $95\\%$로 추정한 모평균 $m$의 신뢰구간의 길이가 각각 $l,4l$이라고 한다. $\\frac{n_1}{n_2}$의 값은? (단, $P(|Z|\\le 1.96)=0.95$로 계산한다.) [4점]",
+          "choices": [
+            "1",
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "신뢰구간 길이와 서로 다른 표본크기의 관계를 다룬다.",
+            "sourceExcerpts": [
+              "신뢰도"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-06",
+              "standardUnit": "통계적 추정",
+              "standardUnitOrder": 6,
+              "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
+              "subUnit": "신뢰구간",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "통계적 추정",
+              "originalCategory": "통계적 추정",
+              "conceptClusterKey": "H15_PS_06_CONFIDENCE_INTERVAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+              "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pageNo": 3,
+      "questions": [
+        {
+          "displayNo": "13",
+          "questionType": "객관식",
+          "content": "정규분포 $N(m,\\sigma^2)$을 따르는 모집단에서 크기가 $25,400$인 표본을 임의추출하여 그 표본평균을 각각 $\\bar{X},\\bar{Y}$라 할 때,\r\n$P(m-\\frac{\\sigma}{5}\\le\\bar{X}\\le m+\\frac{\\sigma}{5})=P(m-\\frac{k\\sigma}{5}\\le\\bar{Y}\\le m+\\frac{k\\sigma}{5})$\r\n를 만족시키는 상수 $k$의 값은? (4.3점)",
+          "choices": [
+            "$\\frac{1}{6}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$",
+            "2",
+            "3"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "서로 다른 표본크기의 표본평균 분포를 비교한다.",
+            "sourceExcerpts": [
+              "모집단에서 크기가"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-06",
+              "standardUnit": "통계적 추정",
+              "standardUnitOrder": 6,
+              "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+              "subUnit": "통계적 추정",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "통계적 추정",
+              "originalCategory": "통계적 추정",
+              "conceptClusterKey": "H15_PS_06_ESTIMATION_BASIC",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+              "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "14",
+          "questionType": "객관식",
+          "content": "한 개의 주사위를 계속 던져서 처음으로 $3$ 또는 $6$의 눈이 나오면 던지기를 중단하기로 할 때, 던지는 횟수가 $10$ 이하일 확률은? (4.3점)",
+          "choices": [
+            "$1-(\\frac{1}{3})^9$",
+            "$1-(\\frac{1}{3})^{10}$",
+            "$1-(\\frac{2}{3})^9$",
+            "$1-(\\frac{2}{3})^{10}$",
+            "$1-(\\frac{2}{3})^{11}$"
+          ],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "high",
+            "reason": "성공이 나올 때까지 반복하는 독립시행에서 정해진 횟수 안에 성공할 확률을 묻는다.",
+            "sourceExcerpts": [
+              "주사위를 계속 던져서"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-03",
+              "standardUnit": "확률의 뜻과 활용",
+              "standardUnitOrder": 3,
+              "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "subUnit": "확률의 활용",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률의 뜻과 활용",
+              "originalCategory": "확률의 뜻과 활용",
+              "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 2,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+              "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "15",
+          "questionType": "객관식",
+          "content": "어느 공장에서 생산하는 휴대폰 부품 $A$의 무게는 평균이 $20$, 표준편차가 $1.2$인 정규분포를 따른다고 한다. 이 공장에서 생산한 휴대폰 부품 $A$ 중에서 임의추출한 $n$개의 무게의 평균을 $\\bar{X}$라 할 때, $|\\bar{X}-20|\\ge 1$이면 생산 과정에 이상이 있는 것으로 판단하고 공장을 중지한다. 이 공장이 생산 과정의 이상으로 공장을 중지할 확률이 $1.24\\%$일 때, $n$의 값을 오른쪽 표준정규분포표를 이용하여 구하시오. (단, 무게의 단위는 $\\mathrm{g}$이다.) (4.3점)",
+          "choices": [
+            "1",
+            "4",
+            "9",
+            "16",
+            "25"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "table",
+          "visualAssetBBox": {
+            "x1": 3530,
+            "y1": 1900,
+            "x2": 4600,
+            "y2": 3050
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "표본평균의 정규분포를 이용해 기준확률에 맞는 표본크기를 찾는다. 표 전체를 원본 에셋으로 보존한다.",
+            "sourceExcerpts": [
+              "공장에서 생산하는 휴대폰 부품"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-06",
+              "standardUnit": "통계적 추정",
+              "standardUnitOrder": 6,
+              "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
+              "subUnit": "통계적 추정",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "통계적 추정",
+              "originalCategory": "통계적 추정",
+              "conceptClusterKey": "H15_PS_06_ESTIMATION_BASIC",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+              "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "16",
+          "questionType": "객관식",
+          "content": "성빈이를 포함한 $5$명이 다음 그림과 같은 대진표에 따라 테니스 경기를 한다. 성빈이가 우승했을 때, 두 번 시합했을 확률은? (단, 비기는 경우는 없고, 모든 시합에 이길 확률과 질 확률은 같다.) (4.3점)",
+          "choices": [
+            "$\\frac{3}{5}$",
+            "$\\frac{2}{5}$",
+            "$\\frac{1}{5}$",
+            "$\\frac{3}{4}$",
+            "$\\frac{1}{4}$"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "diagram",
+          "visualAssetBBox": {
+            "x1": 3150,
+            "y1": 5240,
+            "x2": 4700,
+            "y2": 6110
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "우승 조건 아래 대진표에서 경기 횟수의 조건부확률을 구한다. 대진표 원본 도형을 crop한다.",
+            "sourceExcerpts": [
+              "성빈이를 포함한"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+              "subUnit": "조건부확률",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 3,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "중",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+              "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pageNo": 4,
+      "questions": [
+        {
+          "displayNo": "17",
+          "questionType": "객관식",
+          "content": "한 변의 길이가 $2$인 정육각형 $A_1A_2A_3A_4A_5A_6$이 있다. 한 개의 주사위를 $3$번 던져 나오는 눈의 수를 순서대로 $i,j,k$라 할 때, 확률변수 $X$가 다음과 같다.\r\n$X=\\begin{cases}0&((i-j)(j-k)(k-i)=0)\\\\(\\triangle A_iA_jA_k\\text{의 넓이의 제곱})&((i-j)(j-k)(k-i)\\ne0)\\end{cases}$\r\n$E(3X+2)$의 값을 구하시오. (4.8점)",
+          "choices": [
+            "17",
+            "19",
+            "20",
+            "23",
+            "26"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "figure",
+          "visualAssetBBox": {
+            "x1": 900,
+            "y1": 2150,
+            "x2": 2100,
+            "y2": 3300
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "주사위 시행으로 정의된 확률변수의 기댓값 변환과 정육각형 삼각형 넓이가 결합된다. 그림을 원본 asset으로 남기고 geometry CrossConcept는 해설에서 재검토한다.",
+            "sourceExcerpts": [
+              "한 변의 길이가"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+              "subUnit": "확률변수와 기댓값",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-RANDOM_VARIABLE",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+              "templateKey": "TPL_EXPECTATION_TRANSFORM"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "18",
+          "questionType": "객관식",
+          "content": "그림과 같이 정사각형 모양의 도로망이 있는 지역에서 택시운행을 하는 두 택시기사 갑, 을이 있다. 갑은 $P$지점에서 $Q$지점까지 최단거리로 주행하고, 을은 $Q$지점에서 $P$지점까지 최단거리로 주행한 $3520$번 중에 두 택시가 $1045$번 이상 만날 확률을 오른쪽 표준정규분포표를 이용하여 구한 것은? (단, 두 택시가 이동하는 속력은 같고, 갈림길에서 방향을 선택할 확률은 모두 $\\frac{1}{2}$이다.) (4.8점)\r\n| $z$ | $P(0\\le Z\\le z)$ |\r\n|:--:|:--:|\r\n| 0.5 | 0.1915 |\r\n| 1.0 | 0.3413 |\r\n| 1.5 | 0.4332 |\r\n| 2.0 | 0.4772 |",
+          "choices": [
+            "0.0228",
+            "0.0668",
+            "0.8413",
+            "0.9332",
+            "0.9772"
+          ],
+          "hasVisualAsset": true,
+          "visualAssetType": "diagram",
+          "visualAssetBBox": {
+            "x1": 3500,
+            "y1": 1250,
+            "x2": 4750,
+            "y2": 2240
+          },
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 0.95,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "low",
+            "reason": "반복되는 무작위 경로 만남 횟수의 정규근사 확률을 읽는다. 도로망만 그림 asset으로 보존하고 표 값은 원문 순서대로 content에 옮겼다.",
+            "sourceExcerpts": [
+              "정사각형 모양의 도로망"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-05",
+              "standardUnit": "확률분포",
+              "standardUnitOrder": 5,
+              "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "subUnit": "이항분포와 정규분포",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률분포",
+              "originalCategory": "확률분포",
+              "conceptClusterKey": "H15-PS-05-BINOMIAL_NORMAL",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+              "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pageNo": 5,
+      "questions": [
+        {
+          "displayNo": "단답형 1",
+          "questionType": "단답형",
+          "content": "주머니 속에 흰 공 $3$개, 검은 공 $7$개가 들어 있다. 이 중에서 갑이 $2$개 꺼내고 나머지 $8$개 중에서 을이 $3$개 꺼낼 때, 흰 공을 많이 꺼낸 쪽이 이기는 것으로 하자. 갑이 이길 확률, 을이 이길 확률을 차례로 구한 것은? (단, 꺼낸 흰 공의 개수가 같으면 비긴 것으로 한다.) (10점)",
+          "choices": [],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "비복원 추출에서 두 사람의 흰 공 개수를 비교하는 확률 문제다. 조합과 사건 분할이 어떻게 핵심 방법으로 작동하는지는 풀이 후 재검토한다.",
+            "sourceExcerpts": [
+              "주머니 속에 흰 공"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-03",
+              "standardUnit": "확률의 뜻과 활용",
+              "standardUnitOrder": 3,
+              "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "subUnit": "확률의 활용",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률의 뜻과 활용",
+              "originalCategory": "확률의 뜻과 활용",
+              "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "단답형 2",
+          "questionType": "단답형",
+          "content": "하나의 주머니와 두 상자 $A,B$가 있다. 주머니에는 숫자 $1,2,3,4$가 하나씩 적힌 $4$장의 카드가 들어 있고, 상자 $A$에는 흰 공과 검은 공이 각각 $8$개 이상 들어 있고, 상자 $B$는 비어 있다. 이 주머니와 두 상자 $A,B$를 사용하여 다음 시행을 한다.\r\n주머니에서 임의로 한 장의 카드를 꺼내어 카드에 적힌 수를 확인한 후 다시 주머니에 넣는다.\r\n확인한 수가 $1$이면 상자 $A$에 있는 흰 공 $1$개를 상자 $B$에 넣고,\r\n확인한 수가 $2$ 또는 $3$이면 상자 $A$에 있는 흰 공 $1$개와 검은 공 $1$개를 상자 $B$에 넣고,\r\n확인한 수가 $4$이면 상자 $A$에 있는 흰 공 $2$개와 검은 공 $1$개를 상자 $B$에 넣는다.\r\n이 시행을 $5$번 반복한 후 상자 $B$에 들어 있는 공의 개수가 $11$일 때, 상자 $B$에 들어 있는 검은 공의 개수가 $4$일 확률은? (5점)",
+          "choices": [],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "low",
+            "reason": "반복 시행으로 공을 옮긴 뒤 관측된 총 개수를 조건으로 하는 확률 문제다. 정확한 ACTIVE template과 실제 조건 적용은 풀이 후 검토한다.",
+            "sourceExcerpts": [
+              "공의 개수가"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-04",
+              "standardUnit": "조건부확률",
+              "standardUnitOrder": 4,
+              "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+              "subUnit": "조건부확률",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "조건부확률",
+              "originalCategory": "조건부확률",
+              "conceptClusterKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_CONDITIONAL_PROBABILITY"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "pageNo": 6,
+      "questions": [
+        {
+          "displayNo": "서술형 1",
+          "questionType": "서술형",
+          "content": "주머니 속에 흰 공 $3$개, 검은 공 $7$개가 들어 있다. 이 중에서 갑이 $2$개 꺼내고 나머지 $8$개 중에서 을이 $3$개 꺼낼 때, 흰 공을 많이 꺼낸 쪽이 이기는 것으로 하자. 갑이 이길 확률, 을이 이길 확률을 차례로 구하시오. (단, 꺼낸 흰 공의 개수가 같으면 비긴 것으로 한다.) (10점)",
+          "choices": [],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "medium",
+            "reason": "비복원 추출의 사건확률을 계산하고 승패를 구분한다. 조합과의 통합 구조는 풀이 후 재검토한다.",
+            "sourceExcerpts": [
+              "흰 공을 많이 꺼낸 쪽"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-03",
+              "standardUnit": "확률의 뜻과 활용",
+              "standardUnitOrder": 3,
+              "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "subUnit": "확률의 활용",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률의 뜻과 활용",
+              "originalCategory": "확률의 뜻과 활용",
+              "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        },
+        {
+          "displayNo": "서술형 2",
+          "questionType": "서술형",
+          "content": "좌표평면 위의 점 $P$는 한 번 이동할 때마다 다음 네 가지 방법 중 한 가지를 임의로 선택하여 이동한다.\r\n(방법 A) $x$축의 방향으로 $1$만큼 평행이동한다.\r\n(방법 B) $x$축의 방향으로 $-1$만큼 평행이동한다.\r\n(방법 C) $y$축의 방향으로 $1$만큼 평행이동한다.\r\n(방법 D) $y$축의 방향으로 $-1$만큼 평행이동한다.\r\n원점 $O$에서 출발한 점 $P$가 $7$번 이동하여 점 $(3,2)$에 도착하였을 때, 이 점에 처음으로 도착하지 않았을 확률은? (10점)",
+          "choices": [],
+          "hasVisualAsset": false,
+          "visualAssetType": "none",
+          "visualAssetBBox": null,
+          "contentConfidence": 0.99,
+          "choicesConfidence": 0.99,
+          "visualAssetConfidence": 1.0,
+          "reviewNeeded": false,
+          "reviewReason": [],
+          "initialMetadata": {
+            "confidence": "low",
+            "reason": "격자경로에서 처음 도착 여부를 구분하는 확률 문제다. 구체적인 경로 분할과 해법 유형은 풀이 후 검토한다.",
+            "sourceExcerpts": [
+              "다음 네 가지 방법 중 한 가지"
+            ],
+            "values": {
+              "curriculum": "2015",
+              "standardCourse": "확률과 통계",
+              "standardUnitKey": "H15-PS-03",
+              "standardUnit": "확률의 뜻과 활용",
+              "standardUnitOrder": 3,
+              "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "subUnit": "확률의 활용",
+              "subUnitConfidence": "candidate_evidence",
+              "subUnitClassificationDepth": "complete_candidate",
+              "category": "확률의 뜻과 활용",
+              "originalCategory": "확률의 뜻과 활용",
+              "conceptClusterKey": "H15-PS-03-PROBABILITY_APPLICATION",
+              "crossConceptKeys": [],
+              "conditionKeys": [],
+              "integrationPattern": "NONE",
+              "difficultyBucket": 4,
+              "difficultyConfidence": "low",
+              "difficultyBoundaryFlag": "NONE",
+              "legacyLevelCompatibility": "NORMAL",
+              "level": "상",
+              "tags": [
+                "기출"
+              ],
+              "layoutTag": "grid",
+              "wide": false,
+              "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION"
+            },
+            "unresolvedFields": [
+              {
+                "field": "crossConceptKeys",
+                "reason": "직접 읽은 원문만으로 추가 ACTIVE CrossConcept 적용 필요성을 확정하지 않고 풀이 후 재검토한다."
+              },
+              {
+                "field": "conditionKeys",
+                "reason": "조건 구조가 해설의 실제 풀이방법에 어떻게 작용하는지 풀이 후 재검토한다."
+              },
+              {
+                "field": "integrationPattern",
+                "reason": "복합 단계의 실제 풀이 결합 양상을 확인한 뒤 결정한다."
+              },
+              {
+                "field": "templateKey",
+                "reason": "풀이 골격이 필요한 ACTIVE L4 template을 원문만으로 확정하지 않아 해설 단계에서 재검토한다."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

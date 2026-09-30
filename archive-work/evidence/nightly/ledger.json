@@ -1,12 +1,12 @@
 {
-  "originMain": "0c0bd70bfa42d744fe431b8155721faa5103090b",
-  "successfulExamCountForBatchDate": 2,
-  "batchDate": "2026-09-30",
+  "originMain": "af2ca717bc993216d49d786ee94ffb5e6cc22366",
+  "successfulExamCountForBatchDate": 0,
+  "batchDate": "2026-10-01",
   "updatedAt": "2026-09-28T08:42:53Z",
-  "activeRunId": null,
+  "activeRunId": "source-intake-heartbeat-2026-10-01-0401-kst",
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 2,
-  "intakeHead": "c08647e2f85245042488bc2ae11533c850aa8379",
+  "intakeHead": "ec8625cbf0e2d142c52bbdf3f272ecb4d745dbee",
   "schema": "nightly-source-intake-ledger-v1",
   "runs": [
     {
@@ -65,6 +65,57 @@
       "pushedAtKst": "2026-09-30T18:44:43+09:00",
       "notionStatus": "WRITE_SUCCESS",
       "notionUpdatedAtKst": "2026-09-30T18:43:52+09:00"
+    },
+    {
+      "runId": "source-intake-heartbeat-2026-10-01-0401-kst",
+      "batchDate": "2026-10-01",
+      "status": "source_only_verified_pending_push",
+      "startedAtKst": "2026-10-01T04:01:00+09:00",
+      "owner": "codex-thread-automation-10",
+      "selectedExamIds": [
+        "23_강남여고_2학기_기말_고2_확률과통계",
+        "23_금당고_2학기_기말_고2_확률과통계"
+      ],
+      "selectedCount": 2,
+      "successCount": 0,
+      "priorityGroup": "high2",
+      "actualSubject": "확률과 통계",
+      "priorityGroupRemainingBefore": 29,
+      "priorityGroupRemainingAfterSelection": 27,
+      "commitStatus": "PENDING",
+      "pushStatus": "PENDING",
+      "recovery": {
+        "restoredFromBranch": "origin/codex/archive-source-intake",
+        "rebuildStatus": "COMPLETED_FROM_EXACT_SOURCE_PDFS",
+        "fixedWorktreeWasMissingAfterInitialRun": true,
+        "preservationStatus": "NOT_RECOVERABLE_FROM_CURRENT_REMOTE",
+        "lostLocalUntrackedEvidence": [
+          "earlier worktree per-exam generated pages and extraction drafts",
+          "pre-existing unrelated untracked evidence in deleted checkout"
+        ],
+        "localUntrackedEvidenceRecovered": false,
+        "note": "The original fixed checkout disappeared during the run. The fixed path was recreated from origin/codex/archive-source-intake@ec8625cbf0e2d142c52bbdf3f272ecb4d745dbee. Both external PDFs were rehashed against the assigned SHA, and all source-only artifacts were rebuilt. Earlier local-only untracked evidence from the lost checkout was not recovered.",
+        "newFixedWorktreePath": "C:/Users/USER/.codex/worktrees/archive-source-intake-nightly/AP------",
+        "sourcePdfsRehashed": true,
+        "pageImagesRegenerated": true,
+        "generatedPagesPerExam": [
+          4,
+          6
+        ]
+      },
+      "latestOriginMain": "af2ca717bc993216d49d786ee94ffb5e6cc22366",
+      "latestOriginIntake": "ec8625cbf0e2d142c52bbdf3f272ecb4d745dbee",
+      "totalQuestionCount": 47,
+      "totalAssetCount": 14,
+      "metadataFirstPassFilled": 47,
+      "metadataFirstPassDeferred": 0,
+      "sourceDefectCount": 0,
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "sourceQuestionIdentityCoverageStatus": "PASS",
+      "sourceAssetCropAuditStatus": "PASS_VISUAL_REVIEW",
+      "questionLayoutStatus": "STATIC_GRID_DEFAULT_FROZEN_RENDER_NOT_RUN",
+      "renderStatus": "NOT_RUN_USER_DIRECTIVE"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -77,9 +128,9 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-09-30T18:44:43+09:00",
+  "updatedAtKst": "2026-10-01T06:25:38+09:00",
   "heldExamCount": 2,
-  "priorityGroupRemainingAfterBatch": 0,
+  "priorityGroupRemainingAfterBatch": 27,
   "questionLayoutBackfillTargets": [
     {
       "batchDate": "2026-09-27",
@@ -220,10 +271,10 @@
     "runId": "source-intake-2026-09-27-2343-kst"
   },
   "runSuccessCap": 2,
-  "lockStatus": "RELEASED",
-  "lockOwner": null,
-  "lockStartedAtKst": "2026-09-30T17:49:45+09:00",
-  "successfulSourceOnlyCountForRun": 2,
+  "lockStatus": "ACTIVE",
+  "lockOwner": "codex-thread-automation-10",
+  "lockStartedAtKst": "2026-10-01T04:01:00+09:00",
+  "successfulSourceOnlyCountForRun": 0,
   "lockReleasedAtKst": "2026-09-30T18:44:43+09:00",
   "currentRunSourceOnlyCompletion": {
     "runId": "source-intake-heartbeat-2026-09-30-1749-kst",
@@ -252,5 +303,7 @@
   "notionStatus": "WRITE_SUCCESS",
   "notionUpdatedAtKst": "2026-09-30T18:43:52+09:00",
   "notionChecklistPageUrl": "https://app.notion.com/p/3e90e68bd69f813798acc744c274da80",
-  "notionCurrentPageUrl": "https://app.notion.com/p/3e50e68bd69f81c59572faa759240665"
+  "notionCurrentPageUrl": "https://app.notion.com/p/3e50e68bd69f81c59572faa759240665",
+  "priorityGroup": "high2",
+  "actualSubject": "확률과 통계"
 }

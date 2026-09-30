@@ -1,0 +1,60 @@
+{
+  "schema": "SOURCE_ONLY_COMPLETION_v1",
+  "runId": "source-intake-heartbeat-2026-10-01-0401-kst",
+  "examId": "23_금당고_2학기_기말_고2_확률과통계",
+  "sourceOnlyCompletionStatus": "SOURCE_ONLY_VERIFIED_RENDER_UNVERIFIED",
+  "verifiedSourceOnly": true,
+  "productionAuthorized": false,
+  "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
+  "questionCount": 22,
+  "sourcePageCount": 6,
+  "assetCount": 6,
+  "sourceTextExactParityStatus": "PASS",
+  "sourceTextExactParityPercent": 100,
+  "choicesExactParityStatus": "PASS",
+  "choicesExactParityPercent": 100,
+  "pipelineReturnedStatus": "SOURCE_EXTRACTED_REVIEW_REQUIRED",
+  "pipelineManualReviewCount": 0,
+  "sourceDefectCount": 0,
+  "sourceMetadataStatus": "SOURCE_FIRST_PASS",
+  "metadataFirstPassCounts": {
+    "total": 22,
+    "filled": 22,
+    "deferred": 0,
+    "l1L2FirstPass": 22,
+    "l1L2Deferred": 0,
+    "conceptClusterFirstPass": 22,
+    "problemTypeFirstPass": 18,
+    "templateFirstPass": 13,
+    "conditionFirstPass": 0,
+    "integrationFirstPass": 0,
+    "solutionRecheckRequired": 22,
+    "tagStatus": "manual_review"
+  },
+  "sourceTextFreezeRef": "reports/source_text_freeze.json",
+  "sourceTextParityRef": "reports/source_text_exact_parity.json",
+  "sourceFidelityEvidenceRef": "reports/source_fidelity_manual_check.json",
+  "assetEvidenceRef": "reports/source_asset_crop_audit.json",
+  "layoutEvidenceRef": "reports/question_layout_freeze.json",
+  "questionLayoutStatus": "STATIC_GRID_DEFAULT_FROZEN_RENDER_NOT_RUN",
+  "renderStatus": "NOT_RUN_USER_DIRECTIVE",
+  "openItems": [
+    {
+      "code": "SOURCE_RENDER_NOT_RUN",
+      "reason": "Browser and exam render checks were excluded by the source-only user directive.",
+      "nextStage": "If a later authorized workflow needs rendered layout evidence, inspect through the approved review handoff."
+    },
+    {
+      "code": "SOURCE_METADATA_SOLUTION_RECHECK",
+      "reason": "All first-pass tags remain provisional and require reconciliation after answer/solution work.",
+      "nextStage": "Reconcile metadata only during the later solution stage."
+    }
+  ],
+  "verifiedAtUtc": "2026-09-30T21:19:12.025Z",
+  "sourceQuestionIdentityCoverageRef": "reports/source_question_identity_coverage.json",
+  "sourceQuestionIdentityCoverageStatus": "PASS",
+  "sourceIntegrityRef": "reports/source_integrity.json",
+  "sourceIntegrityStatus": "PASS_SOURCE_FILE_IDENTITY",
+  "sourceAssetCropAuditRef": "reports/source_asset_crop_audit.json",
+  "questionLayoutFreezeRef": "reports/question_layout_freeze.json"
+}
