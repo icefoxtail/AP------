@@ -6,6 +6,25 @@
 - 비적용: 공통 generator/validator 개발, 대량 migration, 전역 Meta/Foundation 수술, 시스템 파이프라인 구현
 - current certification generation: `MIDDLE_RECERT_2026-09-30_META_V2`
 
+## CURRENT — MAIN_PRESENT META-ONLY FAST TRACK / 2026-09-30
+
+형님 최신 지시로 `MIDDLE_RECERT_2026-09-30_META_V2` 안에 **MAIN_PRESENT_META_ONLY** 예외 트랙을 둔다.
+
+- 대상: 2026-09-30 physical census에서 확정한 **`MAIN_PRESENT_PRE_META_V2` 21시험지에만 한정**한다.
+- 이 21건은 V1에서 source/content/choices/answer, full solution/small-board, layout/image/SVG가 REVIEW2를 통과하고 실제 main에 publish된 production artifact이므로 Meta 누락만 보완하기 위해 동일 content work를 재제작하지 않는다.
+- V2 경로: **`META_CREATE → META_REVIEW1 → META_REVIEW2 → META_PUBLISH → MAIN_META_V2`**.
+- 일반 CREATE/R1/R2의 content·solution·SVG 재작성/의미 재검은 이 fast track에서 하지 않는다. 각 단계 시작 시 current main exam/SVG/image blob parity만 확인한다.
+- META_CREATE는 current main의 exam JS + final solution을 **frozen semantic source**로 사용하여 전 문항 Meta를 fresh 판정한다. 기존 metadata를 정답으로 사용하지 않는다.
+- Meta 범위: curriculum/course, L1/L2, RPM semantic L3/L4, 가능한 ACTIVE `problemTypeKey/templateKey`, CrossConcept, Condition/IntegrationPattern, category/tags, difficulty fresh blind, canonical/binding/runtime materialization.
+- META_REVIEW1 / META_REVIEW2는 이전 Meta verdict를 정답으로 쓰지 않고 동일 frozen main exam/solution에서 **Meta만 각각 독립 전수검수**한다.
+- 각 receipt 필수: `certificationGeneration=MIDDLE_RECERT_2026-09-30_META_V2`, `certificationTrack=MAIN_PRESENT_META_ONLY`, `contentBaseline=FROZEN_MAIN_V1_REVIEW2`, `metadataAudit=FULL_ALL_QUESTIONS`, `metadataAuditCount=N/N`, `difficultyAudit=FULL_ALL_QUESTIONS`, `difficultyAuditCount=N/N`, metadata hold qids/reasons, metadata payload SHA, frozen exam/SVG parity SHA.
+- META_REVIEW2 PASS 후 exam/SVG/image parity가 current main과 exact이면 BATCH/FINAL은 **production metadata assignment/materialization + 필요한 compiled/runtime 산출물만** publish한다.
+- fast track 도중 exam/solution/SVG의 실제 content drift/defect가 발견되면 그 자리에서 content를 수정하지 않고 `CONTENT_DRIFT_DISCOVERED`로 일반 통합 V2 재인증에 넘긴다.
+- **나머지 Meta 누락 21건 및 아직 V2 완료되지 않은 시험지는 이 예외를 적용하지 않는다.** 이들은 기존 통합 CREATE → REVIEW1 → REVIEW2에서 문제·해설·SVG·Meta를 함께 처리한다.
+- 따라서 아래의 “metadata-only shortcut 금지” 문구는 **MAIN_PRESENT_PRE_META_V2 21건에는 superseded**, 그 외 시험지에는 계속 유효하다.
+
+---
+
 ## CURRENT — META-INTEGRATED RECERTIFICATION V2 / 2026-09-30
 
 형님 최신 지시로 current certification generation을 **`MIDDLE_RECERT_2026-09-30_META_V2`**로 승격한다. 기존 `MIDDLE_RECERT_2026-09-29_V1`은 문제·해설·SVG 작업은 보존 가치가 있으나 Meta 통합 완료를 증명하지 못했으므로 현행 재인증의 완료/skip authority로 사용하지 않는다.
@@ -26,7 +45,7 @@
 
 - 위 42시험지는 전부 **`CREATE_REENTRY_REQUIRED_META_V2`**로 재오픈한다.
 - V1의 CREATE/R1/R2/MAIN receipt는 삭제하지 않고 HISTORY/provenance로 보존하지만 V2 stage 완료/skip 근거가 아니다.
-- **metadata-only catch-up shortcut은 금지한다.** V1에서 R1/R2/MAIN까지 갔더라도 V2 CREATE → V2 REVIEW1 → V2 REVIEW2를 새로 통과한다.
+- **metadata-only catch-up shortcut은 원칙적으로 금지한다.** 단, 위 `MAIN_PRESENT_META_ONLY`로 확정된 21시험지는 예외로 `META_CREATE → META_REVIEW1 → META_REVIEW2`를 통과한다. 그 외 V1 완료본은 V2 CREATE → V2 REVIEW1 → V2 REVIEW2를 새로 통과한다.
 - V1 item hold/verdict도 V2 판정의 정답으로 승계하지 않는다. source + 현재 final artifact에서 fresh 판정한다.
 - 아직 V1 stage를 시작하지 않았거나 완료되지 않은 M3 대상도 처음부터 META_V2 계약으로 수행한다.
 
@@ -39,10 +58,10 @@ productionState = MAIN_PRESENT_PRE_META_V2
 certificationState = CREATE_REENTRY_REQUIRED_META_V2
 ```
 
-- latest main의 시험지 artifact를 새 V2 작업의 live source baseline으로 사용한다.
-- 시험지별 branch를 latest main에서 다시 시작하여 **CREATE → REVIEW1 → REVIEW2 → BATCH/FINAL → MAIN**을 모두 통과한다.
-- V2 final에서 exam JS/SVG/image가 exact unchanged이면 그것들을 억지로 다시 바꾸지 않고, 새로 검증된 production metadata assignment/materialization과 필요한 compiled/runtime payload만 publish할 수 있다.
-- 단, 최종 diff가 metadata-only일 수 있다는 뜻이지 CREATE/R1/R2를 생략한다는 뜻은 아니다.
+- latest main의 시험지 artifact를 `FROZEN_MAIN_V1_REVIEW2` baseline으로 사용한다.
+- 이 21건은 시험지별 branch에서 **META_CREATE → META_REVIEW1 → META_REVIEW2 → META_PUBLISH → MAIN_META_V2**를 통과한다.
+- exam JS/SVG/image는 각 Meta stage에서 blob parity만 확인하고, Meta 누락만을 이유로 solution/SVG를 재작성하거나 의미 재검수하지 않는다.
+- META_REVIEW2 후 exam/SVG/image가 exact unchanged이면 production metadata assignment/materialization과 필요한 compiled/runtime payload만 publish한다. content drift가 확인되면 fast track을 중단하고 일반 통합 V2로 보낸다.
 
 ### V2 CREATE / REVIEW 범위
 
