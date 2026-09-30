@@ -607,7 +607,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "curriculum": "2022",
     "tagConfidence": "review_hold",
-    "tagStatus": "item_hold"
+    "tagStatus": "item_hold",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q11-solution.svg"
   },
   {
     "id": 12,
@@ -662,7 +663,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q12-solution.svg"
   },
   {
     "id": 13,
@@ -717,7 +719,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q13-solution.svg"
   },
   {
     "id": 14,
@@ -1047,7 +1050,8 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "curriculum": "2022",
     "tagConfidence": "review_hold",
-    "tagStatus": "item_hold"
+    "tagStatus": "item_hold",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q19-solution.svg"
   },
   {
     "id": 20,
@@ -1194,6 +1198,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "UNKNOWN",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q22-solution.svg"
   }
 ];
