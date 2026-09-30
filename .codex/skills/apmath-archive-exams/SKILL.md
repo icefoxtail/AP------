@@ -1,554 +1,211 @@
 ---
-
-> **GLOBAL QUESTION MICRO_LAYOUT HARD RULE:** Archive exam JS의 `content/choices/problem image/layout` 생성·수정·검수·promotion 시 `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 반드시 읽는다. 원문 freeze 후 layout-only build, SOURCE_TEXT_EXACT_PARITY 100%가 필수이며 의미 동일만으로 원문 변경을 허용하지 않는다.
-
 name: apmath-archive-exams
-description: Archive classified Korean math exam scans and audit, correct, or upgrade existing APMath JavaScript archive exams with full-page-first extraction, independent answer and solution verification, visual-asset provenance, database and question-index registration, and exam/solution/answer render QA; use the similar-question skill for generating variants.
+description: Route JS Archive exam work. Existing production exam CREATE/REVIEW automation defaults to the lightweight artifact-first lane; new original exam intake uses Past Exam V3 only when the task is actually a new import.
 ---
 
-# APMath exam archiving
+# APMath Archive Exams — CURRENT ROUTER
 
-Import original Korean math exam scans, or audit, correct, and upgrade existing
-Archive JS answers, solutions, metadata, assets, DB/index records, and render
-evidence. Do not declare a final pass until source fidelity, metadata, assets,
-DB/index parity, typed quality evidence, and real browser rendering are closed.
-This full V3 completion bar applies to new original Past Exam jobs. Existing
-middle-school R2E uses the separate Repair & Release v2 contract below.
+This skill is a **route selector**, not a second pipeline.
 
-## Scope and routing
+The user's current instruction and the active automation lane are the task authority.
+Do not expand a bounded exam job merely because a related rule or tool exists.
 
-### Existing middle-school R2E Repair & Release v3
+## 1. ROUTE SELECTION — DO THIS FIRST
 
-For existing m2/m3 R1 intake, apply
-`docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`. R1 is read-only
-authority. Aggregate R1 HOLD findings across the frozen cohort, group common
-causes, map only held rows to existing active middle-school keys, and keep
-question-specific UID applications. Meta-only RPM/sidecar gaps do not block
-JS release. Normal R1 PASS receives integrity reuse without semantic
-re-adjudication, Meta re-projection, or new difficulty review. Existing SVG
-repair routes through the current visual lane; render only changed visuals.
-Do not apply the new-exam V3 all-question/6-case render workflow to an
-unchanged R2E exam.
+Choose exactly one parent route before reading large rule packs.
 
-`docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md` is the top-level execution
-contract for every new original Past Exam job. The execution topology,
-provider launch limits, freeze rules, and recheck budget are governed by
-`archive/tools/pipeline-core/AGENT_BUDGET.md`. Generated reports and the
-intermediate extractor's status strings never outrank those authorities.
+### A. ROUTINE_AUTOMATION — DEFAULT FOR EXISTING EXAMS
 
-The relationship between V3 and the existing extractor is deliberately
-narrow:
+Use this route when any of the following is true:
 
-```text
-Past Exam V3 COMPLETE
-  └─ S1~S3 SOURCE INVENTORY / FULL-PAGE EXTRACTION / SOURCE FIDELITY FREEZE
-       └─ archive/tools/past-exam-pipeline/ V2 full-page-first extractor
-            └─ candidate skeleton and page-level extraction evidence
-  └─ S4~S8 builder solve, solution/classification, visual triage, expected facts,
-       and deterministic visual build
-  └─ S9~S14 static, render capture, and sealed U1/U2/U3 FINAL_AUDIT
-  └─ S15~DONE bounded repair / TARGETED_RECHECK loop, promotion, final closure
-```
+- the target already has an Archive JS file;
+- the task is CURRENT `CREATE`, `REVIEW1`, `REVIEW2`, `BATCH`, `FINAL`, repair, solution upgrade, layout repair, image repair, or SVG/solutionImage repair;
+- the task came from the JS Archive scheduled/automation lanes;
+- an existing exam is being fully re-certified, even when every solution is rewritten;
+- the source PDF/image is reopened only to verify or repair an existing exam.
 
-The V2 extractor is a subordinate S1~S3 implementation. It is not the V3
-pipeline, a production completion authority, or a reason to stop the main
-worker after extraction. Its candidate skeleton, `vision_required`,
-`external_agent_required`, `NEXT_ACTIONS.md`,
-`gpt_gemini_handoff_manifest.json`, and generated reports are evidence and
-diagnostics only. `prepare-v2` is likewise a preparation component; it does
-not by itself establish final closure.
+**Important:** SVG, image, solution, source re-check, layout, or a small metadata field inside an existing-exam job does **not** escalate the whole task to Past Exam V3 or pipeline-core.
 
-This skill owns original-exam source fidelity, builder answer/solution work,
-classification, visual routing, review preparation, promotion quality, and
-archive audits. It does not authorize extra provider or production-agent
-launches. Within one JOB, the main worker performs the complete build and the
-pipeline-core FINAL_AUDIT / TARGETED_RECHECK contracts provide the independent
-U1/U2/U3 semantic review. A coordinator may orchestrate independent JOBs, but
-is never a production builder.
+### B. NEW_IMPORT_V3 — NEW ORIGINAL EXAM ONLY
 
-Verify the active Git worktree skill set before starting a pipeline-dependent
-task:
+Use this route only when the actual job is to ingest a new original exam from PDF/scan/source into Archive production and the exam does not already have a current production JS artifact, or the user explicitly asks for the full Past Exam V3 import pipeline.
 
-~~~powershell
-node tools/skills/verify-skills.mjs
-~~~
+Authority:
 
-### New V3 versus explicitly requested legacy V2
+- `docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md`
+- `archive/tools/pipeline-core/AGENT_BUDGET.md`
+- the current Past Exam V3 tooling
 
-The default route for a new original exam is V3. Do not route it as:
+### C. SYSTEM_PIPELINE
 
-```text
-V2 extraction -> external GPT/Gemini answer/solution fill -> separate completion
-```
+Use this route only when the task itself is common infrastructure:
 
-The main worker continues in the same V3 JOB after source extraction to blind
-solve, answer, write a new student-facing solution, classify, perform all-
-question V1 visual triage, freeze expected facts, build deterministic visual
-artifacts, and prepare machine evidence. An external or independent semantic
-review is only the canonical pipeline-core FINAL_AUDIT / U1/U2/U3 execution;
-it is not an ad hoc answer/solution handoff.
+- shared generator/validator development;
+- pipeline-core or provider bridge work;
+- common visual engine changes;
+- repository-wide migration;
+- canonical/runtime/compiled system surgery;
+- reproducibility/idempotence of the pipeline itself.
 
-The former candidate-plus-handoff route is legacy compatibility only. Use it
-only when the user explicitly requests a legacy V2 extraction/completion job,
-label its evidence as legacy, and do not present its pending handoff status as
-V3 completion or production authorization.
+### D. LEGACY_R2E
 
-## Canonical V3 lifecycle
+Use `docs/rules/02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md` only when the current task is explicitly an R2E/legacy intake release job. Do not route CURRENT CREATE/REVIEW work here merely because old R2E history exists.
 
-Keep these meanings independently visible. Do not replace them with invented
-bundles such as `S3_VISION_EXTRACTION`,
-`S4_S8_COMPLETION_AND_VISUAL_BUILD`, or
-`S9_S14_STATIC_AND_U1_U2_U3`:
+### E. SIMILAR QUESTIONS
 
-```text
-RULE_PREFLIGHT
-CANONICAL_PRODUCTION_SAMPLE_CALIBRATION (CALIBRATION)
-PRODUCTION_QUALITY_PROFILE_FREEZE (PROFILE_FREEZE)
-TARGET_BASELINE_REVIEW
-SOURCE_INVENTORY_FREEZE
-FULL_PAGE_EXACT_EXTRACTION
-SOURCE_FIDELITY_FREEZE
-BUILDER_INDEPENDENT_SOLVE
-SOLUTION_AND_CLASSIFICATION_BUILD
-ALL_QUESTION_VISUAL_TRIAGE
-EXPECTED_FACT_FREEZE
-NUMERIC_VISUAL_BUILD
-STATIC_AND_RENDER_CAPTURE
-FINAL_AUDIT_SEALED_U1_U2_U3
-TARGETED_REPAIR
-TARGETED_RECHECK
-PROMOTION
-FINAL_CLOSURE
-```
+Variant/similar-question generation belongs to the similar-question skill, not this skill.
 
-The canonical spelling and stage contract are in
-`archive/tools/past-exam-pipeline/completion-contract.json`; the full meaning
-and S0.5/S1~S15 ordering are in `Past_Exam_V3_COMPLETE.md`.
+## 2. ROUTINE_AUTOMATION READ ORDER
 
-## Execution topology and independent-exam isolation
+For an existing-exam automation job, keep startup small:
 
-The normal batch capability is unchanged: one pipeline-core JOB may contain
-many `runIds`, selected targets, or an entire unit when that is the user's
-requested scope. The `AGENT_BUDGET.md` rule “No independent production agent
-exists” applies inside that one JOB.
+1. Confirm latest `origin/main`, the assigned exam branch/ref, and the exact target exam.
+2. Read the active automation prompt / CURRENT lane state. If Notion access is available, use the CURRENT router/lifecycle record only to identify the stage and authority.
+3. Read:
+   - `docs/rules/02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`
+   - `docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`
+4. Read only the canonical rule directly needed by the actual edit:
+   - source/layout → `docs/rules/01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`
+   - student solution → `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`
+   - visual → `.codex/skills/apmath-visual-upgrade/SKILL.md` in its **ROUTINE_EXAM_VISUAL** mode
+   - authority write failure → `docs/rules/02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`
+5. Read the target source and current target JS.
+6. Calibrate with the closest Golden Samples and relevant Negative Samples.
+7. Do the assigned stage and stop at that stage's handoff.
 
-When the user asks for GOLD, pilot, holdout, or independent-comparison
-execution of multiple exams, use the stronger isolation route:
+### DO NOT PRELOAD FOR ROUTINE_AUTOMATION
+
+Unless the task explicitly requires them, do **not** enter or preload:
+
+- `Past_Exam_V3_COMPLETE.md`
+- `archive/tools/pipeline-core/`
+- `AGENT_BUDGET.md`
+- provider FINAL_AUDIT / U1-U2-U3 packets
+- workBatch/runId/seal/bridge machinery
+- R2E contracts
+- full Meta Foundation / RPM / L3/L4 / difficulty pipelines
+- DB/index rebuilds
+- six-case exam/solution/answer desktop/mobile render matrices
+
+Reading those systems is not a quality improvement for a normal existing-exam lane; it is route drift.
+
+## 3. ROUTINE_AUTOMATION SCOPE LOCK
+
+The assigned stage is the scope.
+
+Do not create a new job graph, cohort, batch protocol, review tier, provider launch, or release workflow because a subproblem looks related.
+
+For normal exam work:
 
 ```text
-ONE EXAM = ONE INDEPENDENT JOB
+ONE ASSIGNED EXAM
+→ ONE ASSIGNED STAGE
+→ FIX THE ACTUAL ARTIFACT
+→ MINIMAL RECEIPT / HANDOFF
 ```
 
-For every exam create separate, unique `workBatchId`, `builderId`,
-`builderSessionId`, and `runId`, plus independent staging, evidence, freezes,
-and defect ledger. JOB-A and JOB-B may share only the same `START_SHA` and the
-same canonical rule pack. They must not share candidates, solutions, visual
-facts, calibration evidence, intermediate artifacts, defect ledgers, or
-worker context. One exam worker must not inspect or write the other exam, and
-one worker must not complete two independent exams sequentially.
+Subtasks inherit the parent route.
 
-Do not evade the one-main-worker contract by adding a production subagent
-inside either JOB. FINAL_AUDIT and TARGETED_RECHECK allowances are managed
-separately inside each independent JOB.
+Examples:
 
-An upper-level coordinator is orchestration-only. It may confirm the shared
-`START_SHA` and canonical rule pack, create JOB-A/JOB-B, start their separate
-workers, collect completion state and immutable artifact locations, and write
-an aggregate summary. It may not solve questions, write candidates or
-solutions, author visual facts, transfer results between JOBs, repair a failed
-exam, or merge their evidence.
+- CREATE finds a bad SVG → repair that SVG inside CREATE; do not start a visual pipeline campaign.
+- REVIEW1 finds a source typo → apply a deterministic repair when allowed, re-check the affected fields, continue REVIEW1.
+- REVIEW2 finds one label collision → repair/rebuild that asset, targeted re-check, continue REVIEW2.
+- authority write fails after candidate completion → materialize/preserve the exact candidate and hand off to the write-recovery path; do not rebuild the exam from scratch.
 
-## Start: V3 hard gates
+## 4. CURRENT CREATE CONTRACT
 
-Read `docs/rules/02_PIPELINES/Past_Exam_V3_COMPLETE.md` before source inventory,
-extraction, or solution building. Before candidate writes, read 2–3 complete,
-good production exam JS files from the latest Git main and freeze
-`REFERENCE_SAMPLE_LOCK` with whole-question observations and anchored
-`PRODUCTION_QUALITY_PROFILE`. Sample JS is quality calibration only; the
-target PDF/full-page source is source truth; an existing target JS is the
-current baseline and must also be read when present. Existing target solutions
-never set the new solution-quality floor. Missing or weak calibration blocks
-the V3 builder start, direct Python extraction, and core Past Exam preparation.
+For current-generation existing-exam CREATE, follow the Artifact-First lightweight contract:
 
-For a GOLD, pilot, benchmark, or holdout job, verify the required main,
-rule-pack, and calibration baseline before starting the job and freeze the
-`START_SHA` plus calibration identity. After that freeze, a live
-`origin/main` advance is `POST_START_MAIN_ADVANCE` information and does not
-invalidate the running job; `START_TIME_STALE` means the baseline was already
-stale at start. Frozen file/hash changes or evidence that disagrees with the
-frozen identity remain hard failures.
+- preserve source `content/choices/answer/image` exactly unless a verified source repair is part of the task;
+- inspect every question in the assigned exam;
+- write every current-generation `solution` fresh from source + verified answer before comparing with the old solution;
+- keep `solutionRewrite=FULL_ALL_QUESTIONS` and `solutionRewriteCount=N/N` when fully resolved;
+- judge QUESTION MICRO_LAYOUT for every question;
+- judge visual need from the new solution and directly KEEP / ADD / REPAIR / REBUILD as needed;
+- make the student-facing artifact usable, not merely schema-valid;
+- unresolved content issues are question-level `ITEM_HOLD`, never whole-exam HOLD/BLOCK.
 
-1. Locate the repository root and read [archive-layout.md](references/archive-layout.md)
-   and [rules-routing.md](references/rules-routing.md).
-2. Start from `docs/rules/00_RULES_INDEX.md`; read only the current operational
-   rule documents required by the route. Do not treat `docs/rules/90_ARCHIVE/`
-   or generated reports as current authority.
-3. Check `docs/rules/MANIFEST.md` and the compiled master
-   `archive/data/master_tables/js_archive_tag_master.json`. If a required rule
-   file is missing or its manifest hash differs, stop final release and record
-   `SOURCE_PACK_DRIFT`.
-4. Inspect one nearby production exam JS, its DB record, question-index rows,
-   and image directory before generating anything.
-5. Inventory source schools, source pages, expected question counts, answer or
-   solution sources, and visual questions. Preserve unrelated dirty-worktree
-   changes and keep one school or a deliberately bounded sample isolated until
-   its complete route passes.
+Do not perform normal production Meta/RPM/L3/L4/difficulty reclassification unless the current prompt explicitly includes it.
 
-## S1~S3 — source inventory, V2 extraction implementation, fidelity freeze
+## 5. CURRENT REVIEW1 / REVIEW2 CONTRACT
 
-Use the repository extractor as the V2 full-page-first implementation beneath
-the V3 S1~S3 stages:
+REVIEW1 and REVIEW2 are fresh artifact reviews.
 
-~~~powershell
-npm --prefix archive/tools/past-exam-pipeline run check
-node archive/tools/past-exam-pipeline/run-batch.mjs --inventory
-node archive/tools/past-exam-pipeline/run-batch.mjs --create-selected --grade <고1|고2|고3|중1|중2|중3> --semester <1|2> --exam-type <mid|final>
-node archive/tools/past-exam-pipeline/run-batch.mjs --run-selected --selected-manifest archive/_generated/past-exams/_batch/selected_manifest.json
-~~~
+- Do not use previous PASS/verdict text as the answer.
+- Check source, choices, answer, mathematics, student solution reproducibility, image crop, micro-layout, and linked solution visuals.
+- Repair deterministic defects in the same stage when possible, then re-check the affected axes.
+- Keep unresolved findings at the question level.
+- Do not open a second pipeline simply because a visual or source defect was found.
+- Do not add REVIEW3 unless the user/current authority explicitly adds it.
 
-For one explicitly prepared manifest, run
-`node archive/tools/past-exam-pipeline/run-one-exam.mjs --manifest <manifest.json>`
-from the repository root. Its full-page rules remain binding for extraction:
+For current recertification, enforce the upstream full-solution-rewrite evidence rules in the active lightweight/current contract.
 
-- full-page PNG is the source of truth for display number, `content`, and
-  `choices`; crops are auxiliary zoom evidence only;
-- question-wide crops are disabled by default and never become candidate
-  `image` fallbacks;
-- candidate `image` is blank or points only to a visual-asset crop made from a
-  validated `visualAssetBBoxOnPage`;
-- `fullPageImagePath` is evidence, not a production problem image;
-- uncertain text, choices, formula, or visual bbox becomes manual-review
-  evidence;
-- blank `answer` or `solution` in this intermediate candidate is not a V3
-  terminal state.
+## 6. BATCH / FINAL / MAIN BOUNDARY
 
-If the extractor reports `vision_page_extract_json_missing`, `vision_required`,
-or `external_agent_required`, do not HOLD the whole V3 JOB merely because an
-external Vision JSON was not automatically supplied. When the exam worker can
-read the rendered full-page source image/PDF, it must directly inspect the
-source, write fresh page-level extraction evidence in the required schema,
-bind it to the source identity/inventory, feed it back into the extractor as
-needed, and continue to `SOURCE_FIDELITY_FREEZE` and S4. Never guess empty
-content or choices, copy an old candidate, or treat a handoff manifest as
-source truth. HOLD is permitted only for a real capability or physical
-blocker, such as a worker that cannot read source pixels or an unreadable or
-corrupt source.
+BATCH/FINAL are publication handoff stages, not another content-review pass.
 
-Freeze independent `reports/source_inventory.json` and
-`reports/source_identity_map.json` before accepting page-level content. The
-inventory binds source-document SHA, source question number, source page,
-evidence path, and disposition. Vision is not an authority for q-number
-identity. Candidate `id`, array order, and `qNN` asset names never substitute
-for frozen source identity. The candidate must cover 100% of the non-excluded
-inventory set; an unexplained count gap is
-`SOURCE_INVENTORY_COVERAGE_FAIL` and cannot proceed downstream.
+They should:
 
-## S4~S8 — same-worker build
+- consume the completed stage artifact;
+- verify the required final identity/SHA and item-hold gate;
+- avoid unrelated edits;
+- perform only the write/publish responsibility assigned to that lane.
 
-After source fidelity is frozen, the main worker continues the same V3 JOB:
+If `AUTHORITY_WRITE_PENDING` occurs, preserve/materialize the exact candidate and use the dedicated recovery route. Do not repeat CREATE/REVIEW semantics.
 
-1. Independently solve every question from the source and choices.
-2. Write a fresh student-facing answer and solution using
-   `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` as the
-   canonical authority.
-3. Classify L1/L2, then use the shared Meta contract:
-   `source + verified final solution → decision-isolated primaryMethod/decisiveStep
-   → RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL
-   → exact curriculum binding → disposition → independent difficulty blind
-   pass → deterministic validator receipt`. The implementation is
-   `archive/tools/meta-foundation/rpm-active-resolver.mjs` and the canonical
-   contract is `docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`.
-   Keep unresolved advanced fields blank/empty/`UNKNOWN` and record the migration
-   or taxonomy state in sidecar evidence; do not mint keys or map `level` to
-   `difficultyBucket`.
-4. Run `ALL_QUESTION_VISUAL_TRIAGE`, freeze `EXPECTED FACT` records, and build
-   only the required deterministic visual artifacts.
-5. Prepare the typed machine evidence needed for STATIC/METADATA and the
-   sealed U1/U2/U3 audit.
+## 7. ROUTINE VISUALS
 
-Do not start visual generation before the final solution and semantic Meta
-disposition are frozen. Advanced Meta migration gaps may leave
-`BASIC_ARCHIVE_ELIGIBLE=true` while `ADVANCED_META_ELIGIBLE=false` when source,
-solution, L1/L2, and all basic production fields pass.
+When an existing exam needs SVG/graph/geometry/solutionImage work, enter `apmath-visual-upgrade` in **ROUTINE_EXAM_VISUAL** mode.
 
-Do not pass the extraction candidate to GPT/Gemini as the default answer or
-solution completion step. Do not treat extraction completion as the end of
-the worker's role. The allowed completion fields are still exact and
-protected: `archive/tools/past-exam-pipeline/completion-contract.json` is the
-authority for answer, solution, classification, subunit, and solution-visual
-fields; source identity, `content`, `choices`, source `image`, and layout stay
-protected. Actual field differences must be checked against the bound baseline,
-not trusted from `changedFields` self-reporting.
+Routine visual work stays inside the parent exam stage.
 
-### Typed solution quality
+Check the actual mathematical geometry and student readability. Use targeted render only when static/code inspection cannot settle clipping, collision, owner binding, or readability.
 
-Answer equality is not solution PASS. Review the actual student-facing content
-against the current typed contract implemented by pipeline-core
-`solution-quality.mjs`, including:
+The full pipeline-core V1/V2/V3/provider ceremony is reserved for SYSTEM_VISUAL work, not ordinary per-exam repair.
 
-- key idea adequacy;
-- condition interpretation;
-- reasoning direction;
-- intermediate reasoning completeness;
-- independent intermediate arithmetic/count verification;
-- case-split completeness when applicable;
-- student reproducibility;
-- internal consistency;
-- answer conclusion parity; and
-- curriculum boundary.
+## 8. NEW_IMPORT_V3
 
-Also enforce the contract's applicable checks such as mathematical correctness,
-range/uniqueness handling, high-level solution requirements, subjective
-scoring readiness, and forbidden-expression checks. A correct final answer
-does not pass when an intermediate argument, case count, condition, or
-calculation is wrong or missing. The typed `solutionQuality` evidence requires
-`{status, reason, solutionExcerpts[]}` with excerpts that exist in the current
-solution; a string `PASS`, heading, length, MathJax success, or render success
-does not replace content review.
+Only NEW_IMPORT_V3 uses the full new-original-exam lifecycle.
 
-Before promotion, every new candidate/production question must include the
-current `subUnitKey`, `subUnit`, `subUnitConfidence`, and
-`subUnitClassificationDepth`. The key must exist in the canonical/compiled
-master, its parent must match `standardUnitKey`, and its label and
-confidence/depth must follow current rules. Existing legacy files may remain
-visible as `legacy_exception`; do not bulk-remodel them merely to satisfy the
-new rule.
+Once this route is selected, follow `Past_Exam_V3_COMPLETE.md` and current pipeline-core authorities. Do not copy the V3 lifecycle into routine existing-exam work.
 
-### Serialization and curriculum
+## 9. SYSTEM_PIPELINE
 
-Serialization integrity of evaluated student-facing strings is required STATIC
-evidence. Use the current pipeline-core machine checks and do not reproduce
-validator internals in this skill. For high-school questions, validate the
-actual exam cohort against the canonical H15/H22 curriculum system and the
-compiled master table. A malformed or noncanonical high-school key does not
-pass merely because it is non-empty. Record the relevant rule/master evidence
-and fail closed when it is absent or inconsistent.
+For generator/validator/common-engine/migration tasks, read the exact system contracts required by the affected subsystem and run their tests/evidence gates.
 
-### Visual route: V1 → V2 → V3
+A SYSTEM_PIPELINE task may be heavy because the **system is the product**.
+A routine exam task should not become heavy because the system exists.
 
-For every new or modified solution visual, preserve this order:
+## 10. MINIMAL ROUTINE REPORT
+
+For routine exam automation, the useful completion record is small:
 
 ```text
-V1 visual-benefit triage
-  -> EXPECTED FACT freeze
-  -> deterministic numeric artifact build
-  -> V2 artifact-only observed geometry
-  -> expected ↔ observed V3 parity
-  -> actual render review
+examFile
+stage
+base/input SHA
+final artifact SHA
+changedFiles
+PASS | PASS_AFTER_REPAIR | DONE_WITH_ITEM_HOLDS | AUTHORITY_WRITE_PENDING
+solution rewrite evidence when applicable
+itemHoldQuestionIds / reasons when applicable
+nextStage
 ```
 
-V1/V3 `visualBenefit` is required for every question, including questions that
-ultimately need no visual. File existence, `naturalWidth`, or a label's mere
-presence is never semantic PASS. The canonical generator remains the current
-Python-based generator and the active visual contract; an unadopted TikZ/TeX
-pilot is not a new canonical authority. For graph/geometry/table assets, also
-apply the current visual rule pack and keep source-problem `image` separate
-from instructional `solutionImage`.
+Do not generate long packet/seal/evidence trees unless the current task actually needs them.
 
-When V1 returns `ADD`, closure is generated artifact → candidate
-`solutionImage` attachment → V2 artifact-only review → V3 expected/observed
-parity → render review, or explicit defect/HOLD/reclassification evidence.
-Generated-but-unlinked assets, missing assets, orphan SVGs, V2 `NOT_TESTED`,
-V3 without V2, and stale V2/V3 reuse are machine failures. Critical EXPECTED
-FACT coverage must record expected count, observed count, coverage, and parity;
-generation success or numeric curve validity alone is not a V2/V3 PASS.
-Generator witnesses must resolve their declared generator path and SHA to a
-bound canonical repository generator or an immutable run-local specialist
-source (`GENERATOR_PROVENANCE_RESOLVABLE`).
+## 11. ROUTE DRIFT FAIL-SAFE
 
-## S9~S14 — static, six-case render capture, and sealed audit
+Before starting a large secondary pipeline, ask one internal question:
 
-Record `MACHINE_CURRENT` static/metadata evidence and
-`MACHINE_COLLECTOR` render captures separately from the independent
-`RENDER_REVIEW`. The final V3 render matrix is exactly:
+> Is this secondary pipeline the user's actual task, or did I reach it only because the assigned exam contains a visual/metadata/render subtask?
+
+If it is only a subtask, stay in `ROUTINE_AUTOMATION`.
+
+The default goal is simple:
 
 ```text
-exam     × desktop, mobile
-solution × desktop, mobile
-answer   × desktop, mobile
+MAKE THE ASSIGNED EXAM BETTER
+WITHOUT TURNING ONE EXAM INTO A PIPELINE PROJECT.
 ```
-
-Capture and review the last question and every continuation block. A machine
-capture cannot become semantic render PASS by itself; unchanged blocks require
-current validated reuse evidence. In one canonical FINAL_AUDIT, pipeline-core
-seals U1 `SOURCE/MATH_A1/V1`, U2 `V2` artifact-only, and U3
-`MATH_A2/SOLUTION/V3/RENDER_REVIEW` as independent packets from the frozen
-inputs: U1 is `SOURCE_ONLY` / `priorReviewVisibility NONE`, U2 is
-`ARTIFACT_ONLY` / `priorReviewVisibility NONE`, and U3 is `CANDIDATE_ONLY` /
-`priorReviewVisibility NONE`. No auditor consumes another auditor's output;
-the immutable phase results are combined only by the deterministic review
-merger.
-
-An explicit correctness-claim disagreement is `REVIEW_CONFLICT`. It is not
-automatically adjudicated: a bounded `SECOND_AUDIT` is allowed only when
-pipeline-core has an explicit `CONFLICT` or `HIGH_RISK` authorization. Ordinary
-agreement or an ordinary defect does not create a `SECOND_AUDIT`.
-
-After candidate, asset, `solutionImage`, or metadata mutation, prior
-`MACHINE_CURRENT` evidence is `STALE`/`INVALIDATED` and must be recollected.
-Final evidence binds `EVIDENCE_INPUT_SHA` to the current candidate/artifact and
-axis input SHA. BUILD_SIDE source-fidelity freeze and independent U1 canonical
-source fidelity remain separate cells.
-
-V4 GOLD benchmark eligibility is PDF-only with an available source-pixel
-render. HWP/HWPX and other non-PDF sources are recorded as
-`GOLD_INELIGIBLE_SOURCE_FORMAT` and excluded from the benchmark denominator;
-this does not remove production document capability. Benchmark route evidence
-freezes requested/actual model and reasoning effort at start and closure.
-Only observed `gpt-5.6-luna/xhigh` → `gpt-5.6-luna/xhigh` is Luna performance
-evidence; missing or changed identity is `MODEL_ROUTE_PARITY=FAIL` or
-`MIXED_MODEL_ROUTE`, retained for diagnostics but not performance promotion.
-
-Serve the repository and open `archive/engine.html` with the production JS
-path. Record durable evidence for all six cases with `PASS`, `WARN`, `FAIL`,
-or `NOT_TESTED`:
-
-- exam: `.q-box` count equals source count, the last page/question is present,
-  and every referenced image decodes with positive `naturalWidth`;
-- solution: every production question has a non-empty solution, every declared
-  solution visual loads, and labels fit solution-column and print layout;
-- answer: `.ans-n` count equals source count and the last answer is present;
-- all modes: no load-error text, broken images, console errors, unrendered
-  MathJax, or horizontal overflow.
-
-`NOT_TESTED` is incomplete evidence, never final PASS. Visually inspect newly
-cropped assets in context and re-check all six cases after any correction, not
-only the mode that appeared to change.
-
-### Diagnostic continuation and fail-closed release
-
-Machine/static/metadata candidate-quality defects remain explicit `FAIL` or
-`HOLD` findings in evidence. If downstream semantic audit is technically
-executable, those defects alone do not stop observation of FINAL_AUDIT; this is
-diagnostic continuation, not permission to pass.
-
-```text
-DIAGNOSTIC_CONTINUATION != CANONICAL_PASS
-```
-
-The canonical audit may complete with defects, and the main worker repairs them
-locally. Promotion and FINAL_CLOSURE remain fail-closed until every required
-axis, source identity, solution quality, serialization, curriculum, visual,
-render, DB/index, and package obligation is satisfied.
-
-## S15~DONE — repair, promotion, and archive audit
-
-Repair all final-audit defects locally, compute semantic/dependency/render
-impact, freeze again, and reserve the bounded `TARGETED_RECHECK` loop through
-pipeline-core. The persisted Past Exam repair allowance in
-`AGENT_BUDGET.md` is the authority (currently three iterations); legacy
-profiles retain their stored allowance. Accepted unaffected axes require
-direct-root validated reuse evidence, while unchanged input/defect stagnation
-or the iteration limit is `HOLD`.
-
-Completed audit defects enter `REPAIR_REQUIRED` and follow canonical defect
-routing into the appropriate bounded recovery lane. The builder records the
-disposition, creates a new immutable revision/input SHA and freeze, and only
-the impacted semantic/dependency/render scope enters `TARGETED_RECHECK`.
-Crash/provider execution recovery is a separate boundary: reconcile the
-existing immutable lineage and launch identity, and do not treat recovery as a
-new semantic repair or an automatic retry.
-
-New Past Exam completion requires core v2, the calibration lock, the
-project-scoped geometry pin, and whole-exam publication intent. Use
-`prepare-v2 --pipeline past-exam --past-exam-manifest <staged manifest>` only
-as bound preparation with the normal source/candidate/registry/builder/
-work-batch arguments. It emits drafts and does not replace the V3 lifecycle or
-FINAL_AUDIT closure.
-
-Validate a generated candidate before any production write:
-
-~~~powershell
-python -X utf8 archive/tools/past-exam-pipeline/helpers/validate_final_candidates.py `
-  --summary <candidate_generation_summary.json> `
-  --out <final_validation_summary.json>
-~~~
-
-Require a complete `reviewed_pass` envelope and use the repository promotion
-helper with the manifest, candidate, review, and generated asset directory.
-The helper must reject missing/blank subunit fields, invalid confidence/depth,
-missing answer/solution, wrong question identity, and assets outside the
-candidate's canonical asset prefix. Production writes without the canonical
-helper and promotion receipt are `UNAUTHORIZED_PRODUCTION_WRITE`.
-
-Promotion additionally requires source-inventory coverage, source-fidelity
-evidence for `content`/`choices`, SHA-bound independent blind math evidence,
-typed solution quality, visual provenance/semantic evidence, serialization
-integrity, curriculum-valid keys, and the exact source identity set in common
-closure. Direct assets require source-question parity; shared visuals require
-an explicit `SHARED_MATERIAL` UID and dependency set.
-
-After promotion, update `archive/db.js`, rebuild the index with
-`archive/tools/build-question-index.mjs`, and run the production audit with
-`--strict-new` for each newly imported production JS:
-
-~~~powershell
-node <skill-dir>/scripts/audit_archive_batch.mjs `
-  --repo <repo-root> `
-  --strict-new `
-  --exam original/high/h1/1final/<exam>.js
-~~~
-
-Use the non-strict audit for deliberately unchanged legacy production files;
-legacy exceptions must remain visible in the report.
-
-## Source defects and visual asset contracts
-
-After full-page extraction and blind independent solve, classify a finding
-before changing anything:
-
-```text
-EXTRACTION_DEFECT -> SOURCE_FIDELITY_RESTORATION
-ANSWER_KEY_DEFECT -> independent answer/solution + source ledger
-QUESTION_PAYLOAD_DEFECT -> DERIVED_SOURCE_RECOVERY lane
-```
-
-`DERIVED_SOURCE_RECOVERY` preserves original source bytes, choices, visual, and
-hashes while handing a distinct recovery operation to the Similar/recovery
-engine. `APPROVED_SOURCE_REPAIR` keeps its explicit-approval meaning. A
-recovered artifact must not be labeled as the original. Any production slot
-substitution requires separate `slotUid`/`effectiveArtifactUid`,
-`DERIVED_REPLACEMENT_VERIFIED` 1:1 parity, and existing final-closure gates.
-Missing source material is `SOURCE_RECOVERY_EVIDENCE_BLOCKED` with resumable
-`SOURCE_RECHECK`, not automatic human escalation. This is routing only; it
-does not authorize canonical or production promotion.
-
-Preserve every indispensable source graph, table, seating layout, photo, or
-geometry diagram with a clean, generously padded asset. Never use a full page,
-question-wide crop, or `full_page_reference` marker as a production problem
-image. Keep source-problem `image` separate from instructional
-`solutionImage`; do not draw solution annotations onto the source crop. Apply
-the current visual protocol's math, semantic, style, print-publication, and
-render gates. Preserve the distinction between `imageSize` and `layoutTag`.
-
-## Completion gate and report
-
-Report completion only when all are true:
-
-- source-page inventory and JS question counts agree;
-- every question is source-checked and independently solved or explicitly
-  documented as a source defect/uncertain item;
-- every `content` and `choices` value matches the full-page source, including
-  labels, subparts, scores, qualifiers, symbols, and proof/condition blocks;
-- new candidate/production questions have valid subunit and curriculum
-  metadata and all DB fields are accurate;
-- every indispensable source visual and required solution visual has semantic
-  evidence and correct provenance;
-- typed solution-quality evidence is complete and content-backed;
-- serialization integrity is PASS evidence, not inferred from successful load;
-- production and candidate JS match byte-for-byte when parity is required;
-- question-index counts match the JS and DB record for every target;
-- all six exam/solution/answer desktop/mobile cases have independent render
-  review evidence of PASS;
-- when a deliverable ZIP exists, the exact ZIP has passed two independent
-  consumers and fresh extraction; production-only flows record package
-  `NOT_APPLICABLE`;
-- release state is not inferred from BUILT, ZIP_CREATED, PNG decode, or a
-  completed diagnostic audit; and
-- source defects and corrections appear in the relevant answer/solution and
-  final report.
-
-Give a school-by-school count table, corrections, source defects, added assets,
-candidate/production status, DB/index evidence, all six browser evidence
-states, and the exact audit command/result. Do not stage, commit, publish, or
-modify unrelated production files unless asked.
