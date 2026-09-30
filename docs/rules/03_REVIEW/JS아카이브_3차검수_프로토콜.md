@@ -1,5 +1,35 @@
 [JS아카이브 3차 검수 프로토콜 — 분류·메타·난이도 태그 검수 v1.0]
 
+## CURRENT OVERRIDE — RELEASE R3 HARD GATE (2026-10-01)
+
+REVIEW3가 MAIN 직전 release review로 사용되는 경우, 기존 “분류·메타·난이도” 범위에 더해 **학생용 최종 artifact의 교육과정·시각자료 completeness를 독립 HARD GATE로 먼저 수행**한다. 이 gate는 중등/고등 모두 적용 가능하며, 고등 release에는 필수다.
+
+판정 순서:
+`final solution → curriculum method inventory → curriculum PASS/FAIL → visual necessity N/N → 해설/작은칠판/Meta/출판 품질`.
+
+### Curriculum
+전 문항 final solution에서 `concepts[] / formulas[] / notations[] / methods[]`를 새로 inventory하고 현재 학년·과목 curriculum authority와 직접 대조한다. `NOT_ALLOWED` 또는 허용 근거가 없는 `UNCERTAIN` 의존성이 하나라도 있으면 `CURRICULUM_FAIL`; 수학 정답이나 해설 가독성 점수로 상쇄하지 않는다.
+
+필수 완료 marker:
+- `curriculumMethodAuditCount=N/N`
+- `curriculumViolationQids=[]`
+- 문항별 `curriculumMethodInventory` + authority evidence
+
+### Visual completeness
+기존 visual의 정확성 검사와 별도로 전 문항 `visualNecessityAuditCount=N/N`을 수행한다. 필요한 신규 visual 누락은 `SOLUTION_VISUAL_MISSING`.
+
+공통수학2 도형의 방정식 `H22-C2-01~04`이면 `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`를 직접 적용한다. existing SVG가 0개여도 necessity audit 분모에서 제외하지 않는다.
+
+### Main gate
+release-bound R3에서 다음 중 하나라도 성립하면 MAIN_READY 금지:
+- `curriculumViolationQids` 비어 있지 않음
+- unresolved `SOLUTION_VISUAL_MISSING` 존재
+- 해당 시험지 publish를 막는 `itemHoldCount>0`
+- 필수 N/N evidence 부재
+
+회귀 fixture: 26 매산고 고1 2학기 중간 q15·q21 curriculum false PASS, q8·q9·q10·q11·q14 visual necessity 누락.
+
+
 ## CURRENT QUESTION LAYOUT HARD RULE — GRID DEFAULT / SUBJECTIVE-2UP EXCEPTION (2026-09-28)
 
 학생 노출 문제 layout은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`의 최신 규칙을 우선한다.
