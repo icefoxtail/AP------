@@ -1,0 +1,224 @@
+{
+  "schemaVersion": "archive-difficulty-review-v1",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "stage": "REVIEW2_DIFFICULTY_REOPEN",
+  "inputBranchHead": "d247b6fbfed6f4c80d2a325281f51e8b77df7b27",
+  "inputJsBlob": "a7973fba6dd694ed6a3f72d89c5f24a53ceed735",
+  "finalJsBlob": "d27d74658a8fc9496ed7098256fbdc911ab0ee07",
+  "rubric": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+  "rubricBlob": "fa7735b0a79fa9084ec726ef24a82a4eaaf7dca8",
+  "inputBundle": "archive/analysis/26_금당고_2학기_중간_고2_미적분I/r1-difficulty-blind-input.json",
+  "audit": "FULL_ALL_QUESTIONS",
+  "auditCount": "21/21",
+  "method": "ISOLATED_INPUT_FIRST_PASS_THEN_LEGACY_COMPARE",
+  "strictBlindProtocolClaim": false,
+  "strictBlindNote": "동일 대화 컨텍스트에서 이전 turn에 legacy level 분포가 노출된 이력이 있어 protocol-grade strict-blind라고 주장하지 않는다. 실제 재판정은 level/difficulty 필드가 제거된 isolated bundle의 content/choices/verified solution만을 기준으로 먼저 동결한 뒤 current JS level을 비교했다.",
+  "userOverride": "2026-10-01 user explicitly requested difficulty reassessment and code write after prior waiver.",
+  "legacyAdjacentMismatchAdjudication": {
+    "questionIds": [
+      2,
+      4,
+      5
+    ],
+    "firstCompareStatus": "BORDERLINE_REVIEW",
+    "secondPassResult": "KEEP_BUCKET_AND_PRESERVE_LEGACY_LEVEL",
+    "finalCompatibility": "BORDERLINE_ACCEPTABLE",
+    "note": "세 문항 모두 bucket 1↔2 경계의 직접형/한 번 전처리형이며 기존 하 level도 합리적이므로 LEVEL BORDERLINE STABILITY LOCK에 따라 legacy는 수정하지 않고 bucket 2를 유지."
+  },
+  "distribution": {
+    "1": 4,
+    "2": 6,
+    "3": 5,
+    "4": 6,
+    "5": 0
+  },
+  "confidenceDistribution": {
+    "high": 18,
+    "medium": 3,
+    "low": 0
+  },
+  "boundaryDistribution": {
+    "NONE": 18,
+    "B12": 3,
+    "B23": 0,
+    "B34": 0,
+    "B45": 0
+  },
+  "legacyCompatibilityDistribution": {
+    "NORMAL": 18,
+    "BORDERLINE_REVIEW": 0,
+    "BORDERLINE_ACCEPTABLE": 3,
+    "STRONG_CONFLICT": 0,
+    "UNKNOWN": 0
+  },
+  "questions": [
+    {
+      "id": 1,
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "무한대 유리식에서 최고차항 비교가 즉시 결정되는 직접 적용."
+    },
+    {
+      "id": 2,
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B12",
+      "legacy": "BORDERLINE_ACCEPTABLE",
+      "reason": "0/0 근호식에서 유리화라는 익숙한 한 번의 전처리가 필요. 직접대입보다 한 단계 해석 부담이 있어 2로 동결."
+    },
+    {
+      "id": 3,
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "분모가 0인 x=3을 제외하는 정의역 판정의 직접 적용."
+    },
+    {
+      "id": 4,
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B12",
+      "legacy": "BORDERLINE_ACCEPTABLE",
+      "reason": "구간에서 함수가 감소함을 한 번 해석한 뒤 양 끝점 값을 비교하는 표준 초입형."
+    },
+    {
+      "id": 5,
+      "bucket": 2,
+      "confidence": "medium",
+      "boundary": "B12",
+      "legacy": "BORDERLINE_ACCEPTABLE",
+      "reason": "연속함수의 사칙연산을 적용하되 두 몫의 분모 영점 여부를 한 번 판정해야 함."
+    },
+    {
+      "id": 6,
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "도함수 공식을 바로 적용해 한 점의 값을 계산하는 직접형."
+    },
+    {
+      "id": 7,
+      "bucket": 1,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "평균변화율 정의에 두 함수값을 바로 대입하는 직접형."
+    },
+    {
+      "id": 8,
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "증분을 3h로 맞추는 익숙한 변형 후 미분계수 정의를 적용."
+    },
+    {
+      "id": 9,
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "x^3-1 인수분해 후 미분계수 꼴로 환원하는 표준 변형."
+    },
+    {
+      "id": 10,
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "연속성에서 분자의 x-2 인수 조건을 세우고 f(2)=5를 다시 결합해 계수를 결정해야 함."
+    },
+    {
+      "id": 11,
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "중간 조각의 함수값 조건과 두 경계의 연속 조건을 순서화해 세 계수를 결정."
+    },
+    {
+      "id": 12,
+      "bucket": 2,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "상·하한의 극한이 같음을 확인해 조임을 적용하고 절댓값 인자를 곱하는 표준 성질 적용."
+    },
+    {
+      "id": 13,
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "두 합성 입력이 각각 어느 방향에서 1과 0에 접근하는지 판정한 뒤 그래프의 좌극한을 읽어야 함."
+    },
+    {
+      "id": 14,
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "미분가능성의 연속 조건과 좌우 미분계수 일치 조건을 함께 사용해 두 계수를 결정."
+    },
+    {
+      "id": 15,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "두 유한극한에서 함수값 조건과 미분정보를 각각 추출하고 합성 입력까지 정리해 연립해야 하는 복합 구조."
+    },
+    {
+      "id": 16,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "수직 기울기→절편→두 삼각형 넓이→차의 극한으로 이어지는 비정형 기하 모델링이 핵심."
+    },
+    {
+      "id": 17,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "특이점에서 h의 연속·미분가능성이 f의 이중근을 강제함을 구조화한 뒤 도함수 조건으로 마감."
+    },
+    {
+      "id": 18,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "함수와 역함수 교점의 y=x 대칭을 이용해 가능한 대칭 배치를 경우 분기하고 조각함수 조건으로 제거."
+    },
+    {
+      "id": 19,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "두 x절편의 위치, 경계 극한 존재, 매개변수 범위를 함께 구조화하고 보기별 반례까지 판정."
+    },
+    {
+      "id": 20,
+      "bucket": 3,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "무한대 극한에서 차수·최고차항을 정하고 유한점 극한에서 영점 인수를 얻어 다항함수를 복원."
+    },
+    {
+      "id": 21,
+      "bucket": 4,
+      "confidence": "high",
+      "boundary": "NONE",
+      "legacy": "NORMAL",
+      "reason": "곱 항등식에서 유리식 g를 복원하고 전구간 연속을 위한 판별식 조건, 자연수 제약, 최솟값을 연쇄 적용."
+    }
+  ]
+}

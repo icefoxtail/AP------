@@ -68,13 +68,46 @@
     "mainWrite": false
   },
   "difficulty": {
-    "status": "USER_WAIVED_STRICT_BLIND_VALUES_UNKNOWN_PRESERVED",
-    "difficultyPassClaimed": false,
-    "valuesPersisted": "UNKNOWN_21_OF_21"
+    "status": "FULL_ALL_QUESTIONS",
+    "auditCount": "21/21",
+    "method": "ISOLATED_INPUT_FIRST_PASS_THEN_LEGACY_COMPARE",
+    "strictBlindProtocolClaimed": false,
+    "distribution": {
+      "1": 4,
+      "2": 6,
+      "3": 5,
+      "4": 6,
+      "5": 0
+    },
+    "confidenceDistribution": {
+      "high": 18,
+      "medium": 3,
+      "low": 0
+    },
+    "boundaryDistribution": {
+      "NONE": 18,
+      "B12": 3,
+      "B23": 0,
+      "B34": 0,
+      "B45": 0
+    },
+    "legacyCompatibilityDistribution": {
+      "NORMAL": 18,
+      "BORDERLINE_REVIEW": 0,
+      "BORDERLINE_ACCEPTABLE": 3,
+      "STRONG_CONFLICT": 0,
+      "UNKNOWN": 0
+    },
+    "adjacentLegacyRecheckQuestionIds": [
+      2,
+      4,
+      5
+    ],
+    "evidence": "archive/analysis/26_금당고_2학기_중간_고2_미적분I/r2-difficulty-review.json"
   },
   "itemHoldCount": 0,
   "itemHoldQuestionIds": [],
-  "overallStatus": "REVIEW2_DONE",
+  "overallStatus": "REVIEW2_DONE_AFTER_DIFFICULTY_REASSESSMENT",
   "questions": [
     {
       "id": 1,
@@ -85,7 +118,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 2,
@@ -96,7 +133,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 3,
@@ -107,7 +148,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 4,
@@ -118,7 +163,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 5,
@@ -129,7 +178,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B12",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
       "id": 6,
@@ -140,7 +193,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 7,
@@ -151,7 +208,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 8,
@@ -162,7 +223,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 9,
@@ -173,7 +238,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 10,
@@ -184,7 +253,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 11,
@@ -195,7 +268,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 12,
@@ -206,7 +283,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 13,
@@ -217,7 +298,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 14,
@@ -228,7 +313,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 15,
@@ -239,7 +328,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 16,
@@ -250,7 +343,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 17,
@@ -261,7 +358,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 18,
@@ -272,7 +373,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 19,
@@ -283,7 +388,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 20,
@@ -294,7 +403,11 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "NOT_APPLICABLE",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     },
     {
       "id": 21,
@@ -305,7 +418,12 @@
       "uniqueAnswer": true,
       "solutionStatus": "PASS",
       "visualStatus": "PASS_STATIC_SEMANTIC",
-      "difficultyStatus": "USER_WAIVED_UNKNOWN_PRESERVED"
+      "difficultyStatus": "PASS_REASSESSED",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL"
     }
-  ]
+  ],
+  "finalJsBlob": "d27d74658a8fc9496ed7098256fbdc911ab0ee07"
 }
