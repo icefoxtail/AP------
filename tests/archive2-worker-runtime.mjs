@@ -13,11 +13,8 @@ const worker = path.join(root, "apmath/worker-backup/worker");
 const requireWorker = createRequire(path.join(worker, "package.json"));
 const { Miniflare } = requireWorker("miniflare");
 const { build } = requireWorker("esbuild");
-const catalogText = fs.readFileSync(
-  path.join(root, "archive/data/archive2-catalog.json"),
-  "utf8",
-);
-const catalog = core.decodeCatalog(JSON.parse(catalogText));
+const require = createRequire(import.meta.url);
+const { catalog } = require("./helpers/archive2-scope-harness.cjs");
 const serving = process.argv.includes("--serve");
 const fixturePort = Number(process.env.ARCHIVE2_FIXTURE_PORT || 8790);
 const bundle = await build({
@@ -58,18 +55,19 @@ const mf = new Miniflare({
   bindings: { ARCHIVE2_ENABLED: "true" },
   serviceBindings: {
     ARCHIVE2_ASSETS: (request) => {
-      const url = new URL(request.url);
-      if (url.pathname.endsWith("/data/archive2-catalog.json"))
-        return new Response(catalogText, {
-          headers: { "Content-Type": "application/json" },
-        });
-      const file = decodeURIComponent(url.pathname.split("/exams/")[1] || "");
-      if (!file || file.includes(".."))
+      const pathname = decodeURIComponent(new URL(request.url).pathname);
+      const archivePrefix = "/AP------/archive/";
+      const docsPrefix = "/AP------/docs/";
+      const file = pathname.startsWith(archivePrefix)
+        ? path.join(root, "archive", pathname.slice(archivePrefix.length))
+        : pathname.startsWith(docsPrefix)
+          ? path.join(root, "docs", pathname.slice(docsPrefix.length))
+          : "";
+      if (!file) return new Response("Not found", { status: 404 });
+      const relative = path.relative(root, file);
+      if (relative.startsWith("..") || path.isAbsolute(relative) || !fs.existsSync(file) || !fs.statSync(file).isFile())
         return new Response("Not found", { status: 404 });
-      return new Response(
-        fs.readFileSync(path.join(root, "archive/exams", file)),
-        { headers: { "Content-Type": "application/javascript" } },
-      );
+      return new Response(fs.readFileSync(file));
     },
     FIXTURE_ASSETS: (request) => {
       const pathname = decodeURIComponent(new URL(request.url).pathname),
@@ -186,7 +184,8 @@ try {
   await db.exec(
     "INSERT INTO classes VALUES ('class-a','고1 검증반 A','Teacher A'),('class-b','고1 검증반 B','Teacher B');INSERT INTO students(id,name) VALUES ('student-a','검증학생 가'),('student-b','검증학생 나'),('student-c','검증학생 다');INSERT INTO class_students VALUES ('class-a','student-a'),('class-a','student-b'),('class-b','student-c');INSERT INTO teacher_classes VALUES ('teacher-a','class-a');",
   );
-  const base = catalog.records.find((r) => r.automatic && (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
+  const base = catalog.records.find((r) => r.automatic && r.sourceGrade === "고1" &&
+    (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || r.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
   const records = catalog.records
     .filter(
       (r) =>
@@ -344,7 +343,16 @@ try {
     ...payload,
     student_ids: ["student-b"],
   });
-  assert.equal(changed.status, 409);
+  assert.equal(changed.status, 502); // write succeeded; local Browser Rendering is deliberately absent.
+  assert.equal(changed.body.saved, true);
+  const addedRecipient = await db.prepare(`
+    SELECT r.student_id, x.student_id AS excluded_student_id
+    FROM class_exam_assignment_recipients r
+    LEFT JOIN class_exam_assignment_exclusions x ON x.assignment_id=r.assignment_id AND x.student_id=r.student_id
+    WHERE r.assignment_id=? AND r.student_id=?
+  `).bind(id, "student-b").first();
+  assert.equal(addedRecipient.student_id, "student-b");
+  assert.equal(addedRecipient.excluded_student_id, null);
   const duplicate = await post("studio", {
     ...payload,
     archive_file: "MIXED:archive2-second",
@@ -557,6 +565,7 @@ try {
     class_id: "class-a",
     exam_title: "Native original runtime",
     exam_date: "2026-09-17",
+    index_version: catalog.indexVersion,
     question_count: nativeExam.qCount,
     archive_file: "exams/" + nativeExam.file,
     source_type: "archive",
@@ -634,7 +643,7 @@ try {
       const raw = source.evaluate(fs.readFileSync(path.join(root, 'archive/exams', exam.file), 'utf8'), exam.file);
       const issued = await post('', {
         contract_version: 'archive2-v1', class_id: 'class-a', student_ids: ['student-a'],
-        exam_title: '중3 2학기 중간 ' + exam.file, exam_date: '2026-09-28',
+        exam_title: '중3 2학기 중간 ' + exam.file, exam_date: '2026-09-28', index_version: catalog.indexVersion,
         archive_file: 'exams/' + exam.file, question_count: raw.length, pdf_qpp: 4,
         original_payload_json: { questions: raw, meta: { includeQr: false } }
       });

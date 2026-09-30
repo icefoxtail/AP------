@@ -18,6 +18,7 @@ export async function runRc2({ db, mf, catalog, post, root }) {
     student_ids: ["student-a"],
     exam_title: "RC2 원본 출제",
     exam_date: "2026-10-01",
+    index_version: catalog.indexVersion,
     archive_file: "exams/" + exam.file,
     question_count: raw.length,
     pdf_qpp: 4,

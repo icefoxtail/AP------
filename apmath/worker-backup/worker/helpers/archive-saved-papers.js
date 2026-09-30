@@ -215,7 +215,7 @@ export async function prepareSavedPaperBatch(env, input) {
     if (!Array.isArray(paper.meta.questionUids) || stableStringify(paper.meta.questionUids) !== stableStringify(expectedUids))
       fail("문항 순서와 출력 설정의 UID 목록이 다릅니다.", 409);
   }
-  const currentIndexVersion = await validateApprovedMixedQuestions(
+  const currentCatalog = await validateApprovedMixedQuestions(
     env,
     input.papers.flatMap((paper) => paper.questions),
     {
@@ -223,8 +223,8 @@ export async function prepareSavedPaperBatch(env, input) {
       selection_filters: selectionFilters,
       include_extended: input.include_extended === true,
     },
-    { allowStaleIndex: true },
   );
+  const currentIndexVersion = currentCatalog.indexVersion;
   // Keep the exact image bytes inside the immutable snapshot. Source asset
   // paths are stable filenames, so saving only the URL would allow a later
   // asset replacement to silently change an already saved paper.
@@ -254,6 +254,7 @@ export async function prepareSavedPaperBatch(env, input) {
       { question_count: paper.questions.length },
       paper.questions,
       meta,
+      { canonicalAuthority: currentCatalog.canonicalAuthority },
     );
     const snapshot = {
       questions: paper.questions,

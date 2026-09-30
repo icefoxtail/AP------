@@ -3,10 +3,13 @@
     typeof module === "object" && module.exports
       ? require("./mixer-selector.js")
       : root.ArchiveMixerSelector,
+    typeof module === "object" && module.exports
+      ? require("./archive2-canonical.js")
+      : root.Archive2Canonical,
   );
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Core = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (selector) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (selector, canonical) {
   "use strict";
   const VERSION = "archive2-v1";
   const TAXONOMY_VERSION = "rpm-primary-v1.0";
@@ -49,79 +52,10 @@
   const text = (value) => String(value ?? "").trim();
   const pathKey = (record, depth = 6) =>
     JSON.stringify(PATH_FIELDS.slice(0, depth).map((k) => text(record[k])));
-  // Display/selection adapters preserve the original metadata and source paths.
-  function middle1ScopeParent(record) {
-    if (record.effectiveBrowseGrade !== "중1") return null;
-    const unit = text(record.standardUnitKey || record.legacyStandardUnitKey);
-    const sub = text(record.subUnitKey || record.legacySubUnitKey);
-    if (unit === "M1-07") {
-      if (sub === "M1-07-SOLID_FIGURE") return { L1: "입체도형", L2: "다면체와 회전체" };
-      if (sub === "M1-07-SOLID_FIGURE_MEASURE") return { L1: "입체도형", L2: "입체도형의 겉넓이와 부피" };
-    }
-    const solid = unit.match(/^M1-2-GEOM-SOLID-(0[1-7])$/);
-    if (solid) return { L1: "입체도형", L2: Number(solid[1]) <= 3 ? "다면체와 회전체" : "입체도형의 겉넓이와 부피" };
-    if (unit === "M1-08") {
-      if (record.curriculumKey === "2015" || !record.curriculumKey)
-        return { L1: "통계", L2: "자료의 정리와 해석" };
-      if (record.curriculumKey === "2022") {
-        if (sub === "M1-08-DATA_ORGANIZATION")
-          return { L1: "통계", L2: "도수분포표와 상대도수" };
-      }
-    }
-    if (/^M1-2-STAT-0[1-5]$/.test(unit))
-      return { L1: "통계", L2: record.curriculumKey === "2015" ? "자료의 정리와 해석" : "도수분포표와 상대도수" };
-    return null;
-  }
-  const basicScopeIndexes = new WeakMap();
-  function basicScopeParent(record, links = []) {
-    const middle1 = middle1ScopeParent(record);
-    const checkedIdentity = normalizeFile(record.sourceFile) + "#" + Number(record.sourceOrdinal);
-    if (middle1) return middle1;
-    if (!Array.isArray(links) || !links.length) return null;
-    if (!basicScopeIndexes.has(links)) {
-      const index = { byGrade: new Map(), byUid: new Map(), bySource: new Map() };
-      for (const link of links) {
-        if (link.questionUid) { index.byUid.set(link.questionUid, link); continue; }
-        if (link.sourceFile) { index.bySource.set(link.sourceFile + "#" + link.sourceOrdinal, link); continue; }
-        if (!index.byGrade.has(link.grade)) index.byGrade.set(link.grade, []);
-        index.byGrade.get(link.grade).push(link);
-      }
-      basicScopeIndexes.set(links, index);
-    }
-    const index = basicScopeIndexes.get(links);
-    const grade = record.effectiveBrowseGrade === "고3" ? "고2" : record.effectiveBrowseGrade;
-    const course = normalizeCourseIdentity(record.courseKey);
-    const reviewedSource = index.byUid.get(record.questionUid) || index.bySource.get(checkedIdentity);
-    if (reviewedSource && reviewedSource.grade === record.effectiveBrowseGrade &&
-      text(reviewedSource.curriculumKey) === text(record.curriculumKey)) {
-      if (reviewedSource.sourceFingerprint !== record.sourceFingerprint) return null;
-      if (!reviewedSource.metadataParent || JSON.stringify(reviewedSource.metadataParent) ===
-        JSON.stringify([record.courseKey || "", record.L1 || "", record.L2 || ""]))
-        return { courseKey: reviewedSource.courseKey, L1: reviewedSource.L1, L2: reviewedSource.L2 };
-    }
-    const compatible = (index.byGrade.get(grade) || []).filter(link =>
-      (!record.curriculumKey || link.curriculumKey === record.curriculumKey) &&
-      (normalizeCourseIdentity(link.courseKey) === course || /^중[123]수학$/.test(course)));
-    const uniqueParent = candidates => {
-      const parents = new Map(candidates.map(link => [[link.courseKey, link.L1, link.L2].join("|"), link]));
-      if (parents.size !== 1) return null;
-      const parent = [...parents.values()][0];
-      return { courseKey: parent.courseKey, L1: parent.L1, L2: parent.L2 };
-    };
-    const existing = compatible.filter(link => normalizeCourseIdentity(link.L1) === normalizeCourseIdentity(record.L1) &&
-      normalizeCourseIdentity(link.L2) === normalizeCourseIdentity(record.L2));
-    const existingParent = uniqueParent(existing);
-    if (existingParent) return existingParent;
-    const unit = text(record.standardUnitKey || record.legacyStandardUnitKey);
-    const sub = text(record.subUnitKey || record.legacySubUnitKey);
-    let candidates = compatible.filter(link => link.standardUnitKey === unit);
-    if (sub) {
-      const exact = candidates.filter(link => link.subUnitKey === sub);
-      const suffix = value => text(value).replace(/^(?:M[123]-\d{2}|H(?:15|22)-[A-Z0-9]+-\d{2}(?:-\d{2})?)-/, "");
-      candidates = exact.length ? exact : candidates.filter(link => suffix(link.subUnitKey) === suffix(sub));
-    }
-    const sameMid = candidates.filter(link => normalizeCourseIdentity(link.L2) === normalizeCourseIdentity(record.L2));
-    return uniqueParent(sameMid.length ? sameMid : candidates);
+  function basicScopeParent(record, links = [], authority = null) {
+    if (!authority || !canonical?.validateBasicAssignment) return null;
+    const result = canonical.validateBasicAssignment(record, authority);
+    return result.ok ? result.parent : null;
   }
   const advancedAuthority = (record) =>
     record.metaFoundationPackVersion && record.problemTypeKey && record.templateKey
@@ -190,93 +124,9 @@
   const HIGH1_SUBJECT_PROJECTIONS = Object.freeze([
     Object.freeze({ value: "COMMON_MATH_1", label: "공통수학1" }),
     Object.freeze({ value: "COMMON_MATH_2", label: "공통수학2" }),
+    Object.freeze({ value: "H1_2015_MATH_UP", label: "수학(상)" }),
+    Object.freeze({ value: "H1_2015_MATH_DOWN", label: "수학(하)" }),
   ]);
-  const HIGH1_DIRECT_KEY_MAP = Object.freeze({
-    "H15-SA-01": "H22-C-01",
-    "H15-SA-02": "H22-C-02",
-    "H15-SA-03": "H22-C-03",
-    "H15-SA-04": "H22-C-04",
-    "H15-SA-05": "H22-C-05",
-    "H15-SA-06": "H22-C-05",
-    "H15-SA-07": "H22-C-06",
-    "H15-SA-08": "H22-C-06",
-    "H15-SA-09": "H22-C2-01",
-    "H15-SA-10": "H22-C2-02",
-    "H15-SA-11": "H22-C2-03",
-    "H15-SA-12": "H22-C2-04",
-    "H15-SA-13": "H22-C-05",
-    "H15-SB-01": "H22-C2-05",
-    "H15-SB-02": "H22-C2-06",
-    "H15-SB-03": "H22-C2-07",
-    "H15-SB-04": "H22-C2-08",
-    "H15-SB-05": "H22-C2-09",
-    "H15-SB-06": "H22-C-07",
-    "H15-SB-07": "H22-C-08",
-    "H15-SB-08": "H22-C-08",
-    "M3-04": "H22-C-05",
-  });
-  const HIGH1_RAW_KEY_MAP = Object.freeze({
-    "RAW-수치계산의공식화": "H22-C-01",
-    "RAW-다항식의성질": "H22-C-01",
-    "RAW-다항식의변형": "H22-C-01",
-    "RAW-다항식추론": "H22-C-02",
-    "RAW-다항식의결정": "H22-C-02",
-    "RAW-서술형": "H22-C-02",
-    "RAW-서술형2": "H22-C-02",
-    "RAW-서술형3": "H22-C-05",
-  });
-  const HIGH1_QUESTION_OVERRIDES = Object.freeze({
-    "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js#12": "H22-C-06",
-  });
-  function high1CanonicalUnitKeyForRecord(record = {}) {
-    const sourceFile = normalizeFile(record.sourceFile),
-      sourceQuestionNo = text(
-        record.sourceQuestionNo || record.id || record._sourceQuestionNo,
-      ),
-      identity = sourceFile && sourceQuestionNo
-        ? `${sourceFile}#${sourceQuestionNo}`
-        : "";
-    if (identity && HIGH1_QUESTION_OVERRIDES[identity])
-      return HIGH1_QUESTION_OVERRIDES[identity];
-
-    const sourceKey = text(
-      record.legacyStandardUnitKey || record.standardUnitKey || record.unitKey,
-    );
-    if (/^H22-C2-\d{2}$/.test(sourceKey) || /^H22-C-\d{2}$/.test(sourceKey))
-      return sourceKey;
-
-    let mapped = HIGH1_DIRECT_KEY_MAP[sourceKey] || HIGH1_RAW_KEY_MAP[sourceKey] || "";
-    const unitText = [
-      record.standardUnit,
-      record.legacyStandardUnit,
-      record.standardUnitLabel,
-      record.L1,
-      record.L2,
-      record.topic,
-    ]
-      .map(text)
-      .filter(Boolean)
-      .join(" | ");
-
-    if (sourceKey === "H15-SA-02" && unitText.includes("방정식과 부등식"))
-      mapped = "H22-C-06";
-    if (sourceKey === "H15-SA-03" && unitText.includes("복소수"))
-      mapped = "H22-C-04";
-    if (sourceKey === "H15-SA-04" && unitText.includes("이차방정식"))
-      mapped = "H22-C-05";
-    if (sourceKey === "H15-SA-06" && unitText.includes("여러 가지"))
-      mapped = "H22-C-06";
-    if (sourceKey === "H15-SB-02" && unitText.includes("함수"))
-      mapped = "H22-C2-07";
-
-    return mapped;
-  }
-  const high1SubjectProjectionForCanonicalUnit = (unitKey) => {
-    const key = text(unitKey);
-    if (/^H22-C2-\d{2}$/.test(key)) return "COMMON_MATH_2";
-    if (/^H22-C-\d{2}$/.test(key)) return "COMMON_MATH_1";
-    return "";
-  };
   const hasSubjectProjection = (grade) =>
     ["고1", "고2", "고3"].includes(text(grade));
   const subjectProjectionOptions = (grade) => {
@@ -285,25 +135,13 @@
     if (isHighSemanticSubjectGrade(grade)) return highSemanticSubjectOptions();
     return [];
   };
-  function subjectProjectionForRecord(record = {}, grade = "") {
-    const resolvedGrade = text(
-      grade || record.effectiveBrowseGrade || record.sourceGrade || record.grade,
-    );
-    if (resolvedGrade === "고1") {
-      if (text(record.curriculumKey) === "2022") {
-        const courseIdentity = normalizeCourseIdentity(record.courseKey);
-        if (courseIdentity === normalizeCourseIdentity("공통수학1"))
-          return "COMMON_MATH_1";
-        if (courseIdentity === normalizeCourseIdentity("공통수학2"))
-          return "COMMON_MATH_2";
-      }
-      return high1SubjectProjectionForCanonicalUnit(
-        high1CanonicalUnitKeyForRecord(record),
-      );
-    }
-    if (isHighSemanticSubjectGrade(resolvedGrade))
-      return highSemanticSubjectForCourseKey(record.courseKey);
-    return "";
+  function subjectProjectionForRecord(record = {}, grade = "", projectionPolicy = null) {
+    const sourceGrade = text(record.sourceGrade);
+    if (!sourceGrade || (grade && text(grade) !== sourceGrade)) return "";
+    return canonical?.resolveSubjectProjection?.(
+      record,
+      projectionPolicy || record.projectionPolicy || null,
+    ) || "";
   }
   function subjectProjectionLabel(filters = {}) {
     const grade = text(filters.grade);
@@ -315,11 +153,11 @@
       )?.label || ""
     );
   }
-  function subjectProjectionMatches(record, filters = {}) {
+  function subjectProjectionMatches(record, filters = {}, projectionPolicy = null) {
     if (!filters.semanticSubject) return true;
     if (!hasSubjectProjection(filters.grade)) return false;
     return (
-      subjectProjectionForRecord(record, filters.grade) ===
+      subjectProjectionForRecord(record, filters.grade, projectionPolicy) ===
       text(filters.semanticSubject)
     );
   }
@@ -488,7 +326,7 @@
       for (const record of recordsByFile.get(file) || []) {
         if (record.courseKey) courseKeys.add(record.courseKey);
         if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
-        const subjectProjection = subjectProjectionForRecord(record);
+        const subjectProjection = subjectProjectionForRecord(record, "", catalog.projectionPolicy);
         if (subjectProjection) {
           subjectProjections.add(subjectProjection);
           if (record.curriculumKey)
@@ -610,17 +448,19 @@
       record.identityStatus !== "VERIFIED"
     )
       reasons.push("identity");
-    // BASIC uses the current indexed source. Approval of optional metadata is
-    // required only when that metadata is selected as a filter.
-    const sourceStatus = record.sourceStatus ?? record.sourceIntegrityStatus;
-    if (sourceStatus !== "VERIFIED" ||
-        (record.sourceIntegrityStatus && record.sourceIntegrityStatus !== "VERIFIED"))
+    // `sourceStatus` may be stale because the whole-payload fingerprint changed
+    // through an optional answer/solution field. Raw source integrity is checked
+    // separately from the current fingerprint-bound taxonomy assignment.
+    if (record.sourceIntegrityStatus !== "VERIFIED")
       reasons.push("source");
-    // A missing RPM/Foundation leaf does not invalidate a known source unit.
-    if (["courseKey", "L1", "L2"].some(field => !text(record[field])) ||
-        record.basicTaxonomyStatus === "HOLD" || record.l1l2ParentValid === false)
+    const canonicalAuthority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
+    const assignment = canonical?.validateBasicAssignment
+      ? canonical.validateBasicAssignment(record, canonicalAuthority)
+      : { ok: false, reasons: ["canonical_validator_unavailable"] };
+    if (!assignment.ok) {
       reasons.push("taxonomy");
-    if (record.gradeConflict) reasons.push("grade");
+      reasons.push(...assignment.reasons);
+    }
     // Missing metadata and a pending classification are not source defects.
     if (["HOLD", "reviewed_hold", "route_out", "ROUTE_OUT",
       "SOURCE_DEFECT_CANDIDATE"].includes(record.reviewStatus)) reasons.push("review");
@@ -652,13 +492,14 @@
         "difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility",
       ].includes(field));
   }
-  function advancedEligible(record) {
-    const authority = advancedAuthority(record);
-    return record.sourceStatus === "VERIFIED" && record.taxonomyStatus === "CONFIRMED" &&
-      (authority !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
+  function advancedEligible(record, options = {}) {
+    const authority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
+    return record.sourceIntegrityStatus === "VERIFIED" &&
+      Boolean(canonical?.validateAdvancedAssignment?.(record, authority)?.ok) &&
+      (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
-  function matches(record, filters = {}) {
+  function matches(record, filters = {}, options = {}) {
     if (Array.isArray(filters.scopeQuestionUids) && !filters.scopeQuestionUids.includes(record.questionUid))
       return false;
     if (
@@ -666,7 +507,7 @@
       !filters.primaryPaths.includes(pathKey(record, 4))
     )
       return false;
-    if (filters.grade && record.effectiveBrowseGrade !== filters.grade)
+    if (filters.grade && record.sourceGrade !== filters.grade)
       return false;
     if (
       filters.sourceFiles?.length &&
@@ -679,12 +520,16 @@
     if (filters.yearTo && (!sourceYear(record) || sourceYear(record) > Number(filters.yearTo)))
       return false;
     if (filters.axis && record.examAxis !== filters.axis) return false;
-    if (!subjectProjectionMatches(record, filters)) return false;
+    if (!subjectProjectionMatches(
+      record,
+      filters,
+      options.projectionPolicy || options.canonicalAuthority?.projectionPolicy || options.catalog?.projectionPolicy,
+    )) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;
     for (const level of [3, 4]) {
       const selected = filters[`L${level}`];
-      if (selected && (!advancedEligible(record) || advancedFilterValue(record, level) !==
+      if (selected && (!advancedEligible(record, options) || advancedFilterValue(record, level) !==
         (selected.startsWith("mf:") || selected.startsWith("rpm:") ? selected : `rpm:${selected}`)))
         return false;
     }
@@ -724,14 +569,14 @@
       return false;
     return true;
   }
-  function migrateLegacyAdvancedFilters(filters, records, scopePaths, sourceFiles = []) {
+  function migrateLegacyAdvancedFilters(filters, records, scopePaths, sourceFiles = [], canonicalAuthority = null) {
     const next = { ...filters };
     const legacy = ["L3", "L4"].filter(field => next[field] && !/^(mf|rpm):/.test(next[field]));
     if (!legacy.length) return next;
     if (!scopePaths?.length) throw new Error("저장된 개념·유형 조건의 출제 범위를 확인할 수 없습니다. 새 작업에서 조건을 다시 선택해 주세요.");
     const candidates = records.filter(record =>
-      eligibility(record).ok &&
-      matches(record, { ...next, L3: "", L4: "", primaryPaths: scopePaths, sourceFiles }) &&
+      eligibility(record, { canonicalAuthority }).ok &&
+      matches(record, { ...next, L3: "", L4: "", primaryPaths: scopePaths, sourceFiles }, { canonicalAuthority }) &&
       (!next.L3 || (legacy.includes("L3") ? record.L3 === next.L3 : advancedFilterValue(record, 3) === next.L3)) &&
       (!next.L4 || (legacy.includes("L4") ? record.L4 === next.L4 : advancedFilterValue(record, 4) === next.L4))
     );
@@ -807,7 +652,7 @@
     const reasons = {};
     const used = new Set();
     const candidates = records.filter((record) => {
-      if (!matches(record, request.filters)) return false;
+      if (!matches(record, request.filters, request)) return false;
       const gate = eligibility(record, request);
       gate.reasons.forEach((reason) => {
         reasons[reason] = (reasons[reason] || 0) + 1;
@@ -911,7 +756,7 @@
     for (const record of selected) {
       if (seen.has(record.questionUid)) hardFailures.push("중복 UID");
       seen.add(record.questionUid);
-      if (!eligibility(record, request).ok || !matches(record, request.filters))
+      if (!eligibility(record, request).ok || !matches(record, request.filters, request))
         hardFailures.push("문항의 승인·범위 조건이 일치하지 않습니다.");
       if (exclusions.has(record.questionUid))
         hardFailures.push("학생·시리즈·수동 제외 이력과 중복됩니다.");
@@ -969,6 +814,7 @@
     };
   }
   return {
+    Canonical: canonical,
     VERSION,
     TAXONOMY_VERSION,
     UID,
@@ -987,10 +833,6 @@
     highSemanticSubjectForCourseKey,
     highSemanticSubjectCourseKeys,
     HIGH1_SUBJECT_PROJECTIONS,
-    HIGH1_DIRECT_KEY_MAP,
-    HIGH1_RAW_KEY_MAP,
-    HIGH1_QUESTION_OVERRIDES,
-    high1CanonicalUnitKeyForRecord,
     hasSubjectProjection,
     subjectProjectionOptions,
     subjectProjectionForRecord,
