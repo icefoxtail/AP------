@@ -58,8 +58,14 @@
       "packageManifestParity": true,
       "topManifestParity": true
     },
-    "actualNodeResolverSuite": "NOT_RUN_IN_CONNECTOR_RUNTIME",
-    "note": "Repository Node test runner is not executable in the connector runtime; branch-push CI/status is checked separately after commit."
+    "actualNodeResolverSuite": "READY_TO_RUN_AFTER_DENOMINATOR_UPDATE",
+    "note": "Repository Node test runner is not executable in the connector runtime; branch-push CI/status is checked separately after commit.",
+    "regressionDenominatorUpdate": {
+      "file": "archive/tools/meta-foundation/rpm-primary-high-school-semantic-regression.test.mjs",
+      "before": 753,
+      "after": 754,
+      "reason": "H2-M2-RPM-098 adds one new high-school RPM crosswalk record."
+    }
   },
   "packageDigests": {
     "00_POLICY/CANONICAL_MASTER.json": {
