@@ -6,6 +6,22 @@
 - 비적용: 공통 generator/validator 개발, 대량 migration, 전역 Meta/Foundation 수술, 시스템 파이프라인 구현
 - current certification generation: `MIDDLE_RECERT_2026-09-29_V1`
 
+## CURRENT — META-INTEGRATED RECERTIFICATION OVERRIDE / 2026-09-30
+
+형님 현재 명시 지시로 `MIDDLE_RECERT_2026-09-29_V1`의 M3 69 → M1 31 → M2 1학기 34 재인증은 **문제·해설·SVG·Meta 통합 작업**이다. 기존의 “Meta를 정상 production review에서 분리한다”는 규칙은 이 generation에 한해 superseded 한다.
+
+- CREATE는 source/content/choices/answer exact → fresh solution/작은칠판 → layout/image/SVG → **문항별 metadata 전수 판정·수정**을 같은 시험지 작업에서 수행한다.
+- metadata first-pass는 기존 metadata를 정답으로 보지 않는다. 판정 순서는 **source + independently verified final solution → primaryMethod/decisiveStep → RPM Primary exact curriculum/scope L3/L4 → 학년 crosswalk → GLOBAL ACTIVE canonical owner → exact curriculum binding/runtime**이다.
+- 전 문항 최소 범위: curriculum/course, L1 `standardUnitKey`, L2 `subUnitKey`, semantic L3/L4, 가능한 ACTIVE projection `problemTypeKey/templateKey`, `crossConceptKeys[]`, 적용 가능한 Condition/IntegrationPattern, category/tags 일관성, difficulty fresh blind.
+- RPM semantic path가 deterministic하면 semantic classification은 완료다. ACTIVE key/binding이 없으면 임의 key를 만들지 않고 qid별 `RPM_PRIMARY_MIGRATION_GAP` / `META_CANONICAL_HOLD`로 추적한다. 이는 source/math exam HOLD와 구분한다.
+- CREATE receipt 필수 marker: `metadataAudit=FULL_ALL_QUESTIONS`, `metadataAuditCount=N/N`, `difficultyAudit=FULL_ALL_QUESTIONS`, `difficultyAuditCount=N/N`, metadata hold qids/reasons.
+- REVIEW1/REVIEW2도 이전 Meta verdict를 정답으로 쓰지 않고 동일 범위를 독립 재검한다.
+- 이 override 이전에 current-generation stage를 닫았으나 위 marker가 없으면 content/solution/SVG를 불필요하게 되감지 않고 `META_CATCHUP_REQUIRED` metadata-only catch-up으로 보완한다. REVIEW2_DONE/MAIN_DONE도 marker 없이는 “Meta 완료”가 아니다.
+- BASIC publish eligibility와 metadata completeness는 분리한다. true canonical/binding gap은 시험지 전체 publish를 막지 않지만, gap 해소 전에는 해당 qid와 시험지를 Meta 완료로 표시하지 않는다.
+- BATCH/FINAL은 Meta 의미를 재판정하지 않는다. 다만 검증 완료된 **production metadata assignment/materialization 및 그에 필요한 compiled/runtime 산출물**은 해당 시험지의 final production payload에 포함한다. evidence/ledger/temp/snapshot은 제외한다.
+
+---
+
 ---
 
 ## CURRENT — 중등 current-generation 재인증 HARD RULE
@@ -123,13 +139,16 @@ CREATE 필수 결과:
 - `solutionRewrite=FULL_ALL_QUESTIONS`
 - `solutionRewriteCount=N/N`
 - 필요한 visual의 fresh 필요성 판정 + KEEP/ADD/REPAIR/REBUILD 완료
+- 문항별 metadata fresh audit 완료: L1/L2 + RPM semantic L3/L4 + ACTIVE projection + CrossConcept/Condition/IntegrationPattern + difficulty
+- `metadataAudit=FULL_ALL_QUESTIONS`, `metadataAuditCount=N/N`, `difficultyAudit=FULL_ALL_QUESTIONS`, `difficultyAuditCount=N/N`
+- unresolved Meta gap은 qid별 `RPM_PRIMARY_MIGRATION_GAP` / `META_CANONICAL_HOLD`로 명시
 - micro layout 정상
 - 해결 가능한 known defect 0
 - 미해결 사항은 반드시 문항별 item hold로 추적되어 untracked defect 0
 - item hold가 있어도 다음 reviewer가 읽을 final/candidate artifact 존재
 
 CREATE 종료 기록은 최소:
-`examFile / certificationGeneration / stage / artifact SHA / changed files / solutionRewrite 또는 solutionRewriteAttempted / solutionRewriteCount 또는 solutionRewriteResolved / itemHoldCount / itemHoldQuestionIds / itemHoldReasons`.
+`examFile / certificationGeneration / stage / artifact SHA / changed files / solutionRewrite 또는 solutionRewriteAttempted / solutionRewriteCount 또는 solutionRewriteResolved / metadataAudit / metadataAuditCount / difficultyAudit / difficultyAuditCount / metadataHoldQuestionIds / metadataHoldReasons / itemHoldCount / itemHoldQuestionIds / itemHoldReasons`.
 
 재인증 scope에서 `certificationGeneration` 누락은 current CREATE 완료 증거가 아니다.
 
@@ -150,10 +169,12 @@ REVIEW1과 REVIEW2의 전면 지시는 다음으로 단순화한다.
 - QUESTION MICRO_LAYOUT
 - 연결 SVG/solutionImage
 - JS 기본 무결성
+- metadata 독립 재검: L1/L2, RPM semantic L3/L4, ACTIVE projection, CrossConcept/Condition/IntegrationPattern, difficulty fresh blind
+- upstream metadata marker가 없으면 `META_CATCHUP_REQUIRED`로 metadata-only catch-up; content/solution/SVG는 결함 근거가 없으면 재작업하지 않음
 - current-generation M3/M1/M2 1학기에서는 CREATE receipt의 `solutionRewrite=FULL_ALL_QUESTIONS` + 문항수 evidence 확인
 - marker가 없으면 REVIEW1이 전 문항 solution full-rewrite catch-up을 수행하고, REVIEW2 시점까지도 marker/catch-up evidence가 없으면 REVIEW2가 직접 catch-up한 뒤 독립검수를 계속한다
 
-Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review에서 제외한다.
+Meta/RPM/L3/L4/CrossConcept/Condition/IntegrationPattern/difficulty는 현재 재인증 production review의 **통합 독립검수 범위**다. true canonical/binding gap은 문항별 Meta hold로 추적하고 source/math exam HOLD와 구분한다.
 
 REVIEW 종료 기록도 최소:
 `examFile / REVIEW stage / PASS_AFTER_REPAIR 또는 DONE_WITH_ITEM_HOLDS / changed files / final SHA / itemHoldCount / itemHoldQuestionIds / itemHoldReasons`.
@@ -254,6 +275,7 @@ CREATE
 단, CREATE/REVIEW 프롬프트는 본 문서의 Artifact-first 짧은 지시를 사용한다.
 
 BATCH/FINAL은 콘텐츠를 다시 검수하지 않는다.
+Meta 의미도 다시 판정하지 않는다. 대신 REVIEW2에서 검증·동결된 시험지별 production metadata assignment/materialization과 필요한 compiled/runtime 산출물을 final payload에 함께 운반하고 SHA/parity만 기계적으로 확인한다. `Meta sidecar`라는 이유로 production metadata를 누락해서는 안 되며, evidence/ledger/temp/snapshot만 제외한다.
 MAIN 반영 뒤 SVG/solutionImage만 별도 final audit 1회를 수행하여
 새 false PASS가 발견되면 핀포인트 수정하고 Negative Sample/규칙에 일반화 가능한 내용만 추가한다.
 
@@ -285,6 +307,7 @@ MAIN 반영 뒤 SVG/solutionImage만 별도 final audit 1회를 수행하여
 이미지 적절
 SVG 정확하고 읽기 좋음
 조판 정상
+metadata 전 문항 audit 완료 또는 qid별 true Meta gap 명시
 untracked defect 0
 item hold 0  ← MAIN publish 시점에만 강제
 Git 안전
