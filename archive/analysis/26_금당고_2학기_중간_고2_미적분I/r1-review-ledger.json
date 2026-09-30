@@ -1,0 +1,559 @@
+{
+  "schemaVersion": "archive-r1-review-ledger-v1",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "branch": "review/high/h2/26-geumdang-2mid-m1-r1-20260930",
+  "inputCommit": "b2c124cd7f0063cab8a82684bbd0bdb8519e1f96",
+  "inputJsBlob": "97daf2720c84cd4faf18a56f9b0cf77defedadfc",
+  "denominator": 21,
+  "checked": 21,
+  "authorityMainAtReview": "a452eb986f6ebb5ac63c87056aba7bd200915131",
+  "calibration": {
+    "goldenSampleRefs": [
+      "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js"
+    ],
+    "negativeSampleRefs": [
+      "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "bad blob b8a488b8dd9373b7d0866450bcba6c79391ba9e4 -> repaired blob 91e1949f09503c0a8b3fcdd4f0e16eb6394d6232"
+    ],
+    "blindSemanticDecisionFrozenBeforeCompare": true,
+    "strictDifficultyBlindAvailableInThisSession": false,
+    "calibrationStatus": "PASS"
+  },
+  "source": {
+    "stage1SourceSnapshotCommit": "d1d4afdb3a443889b041f2b04619b75be7a21fee",
+    "stage1SourceJsBlob": "65203858c497172f43cce67a835709f60e75250a",
+    "protectedFieldsCompared": [
+      "id",
+      "content",
+      "choices",
+      "answer"
+    ],
+    "protectedFieldParity": "PASS_21_OF_21",
+    "originalFourPagePhotoBytesDirectlyReopenedInR1": "NOT_AVAILABLE_CURRENT_SESSION",
+    "q13ProblemPngDirectCheck": "PASS",
+    "q16ProblemPngDirectCheck": "PASS"
+  },
+  "structure": {
+    "jsSyntax": "PASS",
+    "questionCount": "21/21",
+    "idContinuity": "PASS",
+    "requiredFieldPresence": "PASS"
+  },
+  "math": {
+    "independentlySolved": "21/21",
+    "answerMismatchCount": 0,
+    "nonUniqueAnswerCount": 0,
+    "itemHoldCount": 0,
+    "status": "PASS"
+  },
+  "solution": {
+    "initialPassCount": 20,
+    "repairRequired": [
+      {
+        "id": 18,
+        "code": "CASE_SPLIT_OMISSION",
+        "detail": "역함수 교점 대칭 배치의 4개 경우 중 (0,0),(2,2),(4,4) identity case가 누락됨. 답은 맞지만 경우의 완전성/학생 재현성 결함.",
+        "repair": "누락 case를 계산으로 배제한 뒤 기존 최종 case 유지",
+        "answerChanged": false
+      }
+    ],
+    "postRepairExpected": "PASS_21_OF_21"
+  },
+  "visual": {
+    "problemPngCount": 2,
+    "solutionSvgCount": 12,
+    "staticStructureChecks": "12/12 viewBox/title/desc present; script/foreignObject 0",
+    "semanticStaticChecks": "PASS_12_OF_12",
+    "browserRender": "NOT_RUN_CODEX_HANDOFF",
+    "finalRenderPassClaimed": false
+  },
+  "meta": {
+    "semanticReviewed": "21/21",
+    "q12": "RPM_L4_EXTENSION_SEED_PASS_R1_R2_REQUIRED",
+    "q21": "ACTIVE_TEMPLATE_RECOVERED_CROSSWALK_FAMILY_EXTENSION_SEED",
+    "subUnitMaster": "MASTER_GAP_UNMATERIALIZED_21_OF_21_NO_INVENTION",
+    "activeProblemTypeTemplateValidation": "PASS_FOR_SELECTED_KEYS",
+    "activeCrossConceptConditionValidation": "PASS_FOR_SELECTED_KEYS",
+    "canonicalWrite": false
+  },
+  "difficulty": {
+    "status": "STRICT_BLIND_REVIEW_PENDING_CONTEXT_CONTAMINATED",
+    "reason": "기존 level이 이 R1 reviewer에게 먼저 노출됨. v1.3 최초 판정 blind 계약상 PASS 주장 금지.",
+    "blindInputPath": "archive/analysis/26_금당고_2학기_중간_고2_미적분I/r1-difficulty-blind-input.json"
+  },
+  "overallStatus": "R1_REPAIR_CHECKPOINT_READY_DIFFICULTY_AXIS_PENDING",
+  "questions": [
+    {
+      "id": 1,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "③ (1)",
+      "currentAnswer": "③",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "무한대에서의 극한",
+        "l4": "다항·유리함수"
+      },
+      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "templateKeyCandidate": "TPL_LIMIT_INFINITY_LEADING_TERM",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 2,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "④ (1/4)",
+      "currentAnswer": "④",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "함수의 극한",
+        "l4": "극한값 계산"
+      },
+      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "templateKeyCandidate": "TPL_LIMIT_RATIONALIZATION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 3,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "⑤",
+      "currentAnswer": "⑤",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속의 뜻",
+        "l4": "구간에서의 연속"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_JUDGMENT",
+      "templateKeyCandidate": null,
+      "crossConceptKeyCandidates": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeyCandidates": [
+        "COND_NONZERO"
+      ],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 4,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "③ (8)",
+      "currentAnswer": "③",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속함수의 성질",
+        "l4": "최대·최소 정리"
+      },
+      "problemTypeKeyCandidate": "PT_FUNCTION_EXTREMUM",
+      "templateKeyCandidate": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "crossConceptKeyCandidates": [
+        "CC_RATIONAL_FUNCTION",
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "conditionKeyCandidates": [
+        "COND_RANGE"
+      ],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 5,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "④",
+      "currentAnswer": "④",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속의 뜻",
+        "l4": "구간에서의 연속"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_JUDGMENT",
+      "templateKeyCandidate": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 6,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "③ (6)",
+      "currentAnswer": "③",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "도함수",
+        "l4": "도함수 계산"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKeyCandidate": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 7,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "④ (2)",
+      "currentAnswer": "④",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "평균변화율·순간변화율"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKeyCandidate": "TPL_AVERAGE_RATE_DERIVATIVE_LINK",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 8,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "⑤ (3)",
+      "currentAnswer": "⑤",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "정의로 미분계수"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
+      "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 9,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "① (-3)",
+      "currentAnswer": "①",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "정의로 미분계수"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
+      "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "crossConceptKeyCandidates": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 10,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "① (-5)",
+      "currentAnswer": "①",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_FACTOR_CONDITION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 11,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "③ (-6)",
+      "currentAnswer": "③",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "구간별 함수"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 12,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "① (24)",
+      "currentAnswer": "①",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "극한의 성질",
+        "l4": "함수의 극한의 대소 관계"
+      },
+      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "templateKeyCandidate": "TPL_LIMIT_SQUEEZE",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "R1_PASS_EXTENSION_SEED",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 13,
+      "sourceStatus": "PASS_SNAPSHOT_PARITY_AND_PROBLEM_ASSET_DIRECT_CHECK",
+      "mathStatus": "PASS",
+      "actualAnswer": "⑤ (2)",
+      "currentAnswer": "⑤",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "함수의 극한",
+        "l4": "좌극한·우극한"
+      },
+      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "templateKeyCandidate": "TPL_LIMIT_DIRECTIONAL_APPROACH",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 14,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "④ (8)",
+      "currentAnswer": "④",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분가능성과 연속",
+        "l4": "미분가능 조건"
+      },
+      "problemTypeKeyCandidate": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKeyCandidate": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 15,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "② (9/4)",
+      "currentAnswer": "②",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "정의로 미분계수"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
+      "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "crossConceptKeyCandidates": [],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 16,
+      "sourceStatus": "PASS_SNAPSHOT_PARITY_AND_PROBLEM_ASSET_DIRECT_CHECK",
+      "mathStatus": "PASS",
+      "actualAnswer": "② (4)",
+      "currentAnswer": "②",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "정의로 미분계수"
+      },
+      "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
+      "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "crossConceptKeyCandidates": [
+        "CC_PERPENDICULAR",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 17,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "① (5)",
+      "currentAnswer": "①",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분가능성과 연속",
+        "l4": "미분가능 조건"
+      },
+      "problemTypeKeyCandidate": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKeyCandidate": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "crossConceptKeyCandidates": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 18,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "⑤ (-1)",
+      "currentAnswer": "⑤",
+      "solutionStatus": "REPAIR_APPLIED_CASE_SPLIT_OMISSION",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "구간별 함수"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "crossConceptKeyCandidates": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 19,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "② (ㄱ, ㄴ)",
+      "currentAnswer": "②",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "구간별 함수"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "crossConceptKeyCandidates": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeyCandidates": [
+        "COND_POSITIVE"
+      ],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 20,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "f(x)=3x^2+4x+1",
+      "currentAnswer": "$f(x)=3x^2+4x+1$",
+      "solutionStatus": "PASS",
+      "visualStatus": "NOT_APPLICABLE",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "극한의 성질",
+        "l4": "미정계수"
+      },
+      "problemTypeKeyCandidate": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKeyCandidate": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "crossConceptKeyCandidates": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "conditionKeyCandidates": [],
+      "metaStatus": "PASS_CANDIDATE",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    },
+    {
+      "id": 21,
+      "sourceStatus": "PASS_STAGE1_SNAPSHOT_PARITY",
+      "mathStatus": "PASS",
+      "actualAnswer": "3/5",
+      "currentAnswer": "$\\dfrac35$",
+      "solutionStatus": "PASS",
+      "visualStatus": "PASS_STATIC_SEMANTIC",
+      "rpmPrimaryPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
+      "templateKeyCandidate": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "crossConceptKeyCandidates": [
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeyCandidates": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "metaStatus": "R1_REPAIRED_ACTIVE_TEMPLATE_CROSSWALK_SEED",
+      "difficultyStatus": "STRICT_BLIND_PENDING"
+    }
+  ],
+  "outputJsBlobAfterRepair": "a7973fba6dd694ed6a3f72d89c5f24a53ceed735",
+  "commitBinding": "BRANCH_HEAD_CONTAINING_THIS_LEDGER"
+}

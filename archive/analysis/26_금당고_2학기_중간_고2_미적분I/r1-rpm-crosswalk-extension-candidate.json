@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "archive-r1-rpm-crosswalk-extension-candidate-v1",
+  "status": "REVIEW1_CANDIDATE_R2_REQUIRED",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "reviewBranch": "review/high/h2/26-geumdang-2mid-m1-r1-20260930",
+  "reviewInputCommit": "b2c124cd7f0063cab8a82684bbd0bdb8519e1f96",
+  "canonicalWrite": false,
+  "authority": {
+    "mainSha": "a452eb986f6ebb5ac63c87056aba7bd200915131",
+    "rpmMasterBlob": "73ba7fef0a16081e4772d40c0a874cf45c486857",
+    "rpmMi1ViewBlob": "17d704172aee92b8e2a2e5f78587e37917ae5ed4",
+    "high2CrosswalkBlob": "3735749fcd510fdf6487e4fbed28fc91ed03ffc4",
+    "taxonomyRegistryBlob": "c0b2cb3047d242e2e56920528f5f5c839295e1bb"
+  },
+  "proposals": [
+    {
+      "qid": 12,
+      "questionUid": "qid_v1_4973d97e11f6de07ff27e1dbfe779f75136e8ae75c882336e19b976e2ab10a4d",
+      "action": "ADD_RPM_L4_AND_DIRECT_CROSSWALK_ROW",
+      "l3": {
+        "action": "KEEP",
+        "label": "극한의 성질"
+      },
+      "l4": {
+        "action": "ADD",
+        "label": "함수의 극한의 대소 관계"
+      },
+      "proposedCrosswalkId": "H2-M2-RPM-098",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "newActiveTaxonomyKeyRequired": false,
+      "r1Verdict": "PASS_CANDIDATE_R2_REQUIRED"
+    },
+    {
+      "qid": 21,
+      "questionUid": "qid_v1_e49cb44e9a9b1874c579c795a9939a6dca98b5b7ac522450579f086128c9844f",
+      "action": "EXTEND_EXISTING_RPM_FAMILY_TEMPLATE_CANDIDATES",
+      "existingCrosswalkId": "H2-M2-RPM-057",
+      "rpmPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "addTemplateCandidate": {
+        "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+        "templateLabelKo": "분모가 0이 되지 않는 조건",
+        "activeStatus": "ACTIVE"
+      },
+      "reason": "q21의 결정 단계는 유리식이 실수 전체에서 연속이 되도록 분모의 실근을 판별식으로 배제하는 것. ACTIVE template 정의와 exact match하나 H2-M2-RPM-057 family candidate 목록에 누락.",
+      "newActiveTaxonomyKeyRequired": false,
+      "r1Verdict": "PASS_CANDIDATE_R2_REQUIRED"
+    }
+  ]
+}
