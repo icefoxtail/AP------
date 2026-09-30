@@ -29,18 +29,18 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
 - 현재 REVIEW는 REVIEW1 + REVIEW2 두 번이다. REVIEW3는 사용자 명시 지시가 있을 때만 추가한다.
 
-### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)
+### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 
-CREATE / REVIEW1 / REVIEW2의 write recovery는 `02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`를 적용한다.
+CREATE / REVIEW1 / REVIEW2 / BATCH의 write recovery는 `02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`의 **Stage Authority Continuity v2**를 적용한다.
 
-- `AUTHORITY_WRITE_PENDING`은 exact candidate blob/commit/ref가 Git에 물리 존재하는 경우에만 사용한다.
-- Notion summary/verdict/repair text만 존재하고 exact final candidate bytes가 없으면 write-only pending으로 분류하지 않는다.
-- candidate 완성 직후 authority write 성공 여부와 별개로 final candidate JS/blob 또는 recovery ref/commit을 Git에 먼저 물리 보존한다.
-- exact candidate가 없지만 deterministic parts + input/source SHA + complete hold/layout/asset ledger가 있으면 `CANDIDATE_MATERIALIZATION_PENDING`으로 먼저 물리화한다.
-- exact reconstruction이 불가능하면 `STAGE_REEXECUTION_REQUIRED`이며 전체 pipeline rewind 없이 **해당 CREATE/R1/R2 stage만** fresh 재실행한다.
-- recorded candidate SHA와 reconstruction이 다르면 실제 Git blob이 존재할 때 그 blob을 우선하고, 없으면 임의 복원하지 않는다.
-- 자동 Authority Writer는 exact Git candidate가 존재하는 `AUTHORITY_WRITE_PENDING`만 소비한다.
-- materialization 문제는 ITEM_HOLD/exam HOLD가 아니다.
+- 시험지 단위 `AUTHORITY_WRITE_PENDING`, `CANDIDATE_MATERIALIZATION_PENDING`, `STAGE_REEXECUTION_REQUIRED`, `BATCH_WRITE_PENDING` 신규 생성 금지.
+- candidate가 완성되면 primary authority branch 또는 recovery ref/commit/blob 중 하나에 **exact final artifact를 같은 run에서 물리 보존**한다.
+- primary branch write가 막혀도 exact recovery artifact가 있으면 그 artifact 자체를 `stageArtifactRef`로 삼아 정상 `*_DONE` / `*_DONE_WITH_ITEM_HOLDS`로 stage를 닫는다.
+- deterministic parts만 있으면 같은 run에서 materialize 후 바로 stage close한다. 별도 materialization pending 상태를 만들지 않는다.
+- exact artifact를 만들 수 없으면 전체 pipeline rewind 없이 해당 stage만 fresh 재실행한다. 지속 `STAGE_REEXECUTION_REQUIRED` 상태는 만들지 않는다.
+- Git 전체 write capability가 실제로 막힌 경우만 `GLOBAL_WRITE_CAPABILITY_BLOCKER`로 보고하며 시험지별 HOLD/PENDING을 만들지 않는다. 해당 시험지가 run을 독점하지 않으며 다른 eligible 작업은 계속한다.
+- 2026-10-01 이전 PENDING 기록은 HISTORY다. exact artifact가 있으면 DONE*으로 정합화, deterministic parts면 materialize→DONE*, 둘 다 아니면 해당 stage만 재실행한다.
+- downstream은 고정 branch 이름이 아니라 receipt의 `stageArtifactRef` / `finalArtifactSha`를 authority로 읽는다.
 
 ### QUESTION-LEVEL HOLD ONLY / EXAM HOLD FORBIDDEN — CURRENT HARD RULE (2026-09-29)
 
@@ -53,7 +53,7 @@ CREATE / REVIEW1 / REVIEW2의 write recovery는 `02_PIPELINES/Archive_Authority_
 - REVIEW2 뒤에도 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`에 둔다. 시험지 HOLD 상태를 만들지 않는다.
 - `ITEM_RECOVERY_QUEUE`의 소비 주체는 기존 REVIEW2 lane이다. 각 lane은 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 item-recovery 시험지 1개의 **held qid만** 재판정한다. 시험지 전체 재검은 하지 않는다. 전부 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다.
 - BATCH/FINAL은 `itemHoldCount=0`인 시험지만 publish하고, held item이 남은 시험지는 publish pending으로 건너뛴다. 다른 시험지·lane·cohort 진행은 계속한다.
-- authority/connector/Git write 실패는 콘텐츠 HOLD가 아니라 `AUTHORITY_WRITE_PENDING` 등 운영 상태로 기록한다.
+- authority/connector/Git write 실패는 시험지 상태로 남기지 않는다. exact recovery artifact를 `stageArtifactRef`로 사용해 stage를 정상 완료하고, Git 전체 write capability가 막힌 경우에만 전역 blocker로 보고한다.
 - 문항 HOLD에는 최소 `qid/questionUid / reason / observedEvidence / unresolvedPoint / nextRequiredEvidenceOrCapability / createdStage / lastReviewedStage`를 남긴다.
 - **단계 진행은 held item의 PASS를 의미하지 않는다. 최종 MAIN publish 전에만 해당 시험지의 `itemHoldCount=0`을 강제한다.**
 
