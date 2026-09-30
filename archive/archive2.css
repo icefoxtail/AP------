@@ -2615,3 +2615,329 @@ body[data-archive-view="home"] main {
     font-size: 14px;
   }
 }
+
+
+/* AP Archive Next visual direction — Finder 1C
+   DESIGN-ONLY HARD RULE: preserve Finder DOM/actions/routes/API semantics. */
+body[data-archive-view="find"] {
+  background: #fbfaf6;
+}
+body[data-archive-view="find"] main {
+  max-width: 1480px;
+}
+.finder-surface {
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  --finder-focus: #5f6fd3;
+}
+.finder-intro {
+  margin-bottom: 18px;
+  align-items: center;
+}
+.finder-intro h1 {
+  color: #142033;
+  font-size: 31px;
+  letter-spacing: -.045em;
+}
+.finder-intro p {
+  color: #7a8492;
+  font-size: 13px;
+}
+.finder-intro > button {
+  min-height: 42px;
+  padding-inline: 15px;
+  border-color: #d8d4cc;
+  background: #fff;
+  color: #24344d;
+  box-shadow: 0 2px 6px rgba(20,32,51,.035);
+}
+.finder-intro > button:hover {
+  border-color: #b7bfca;
+  background: #f8f7f3;
+}
+.finder-panel {
+  padding: 18px;
+  border-color: #e0dcd4;
+  border-radius: 12px;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 6px 22px rgba(20,32,51,.035);
+}
+.finder-panel .material-switch {
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.finder-panel .material-switch button {
+  min-height: 36px;
+  padding: 5px 12px;
+  border-color: #ddd8ce;
+  border-radius: 999px;
+  background: #fff;
+  color: #596474;
+  font-size: 12px;
+  font-weight: 700;
+}
+.finder-panel .material-switch [aria-pressed="true"] {
+  border-color: #d8dcf5;
+  background: #eceefa;
+  color: #4356bd;
+}
+.finder-search-zone {
+  gap: 9px;
+  margin-bottom: 12px;
+}
+.finder-search-row {
+  grid-template-columns: minmax(0, 1fr) 76px;
+  gap: 9px;
+}
+.finder-search-box {
+  height: 52px;
+  border-color: #ddd8ce;
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgba(20,32,51,.025);
+}
+.finder-search-box > span {
+  width: 48px;
+  color: #6f7988;
+  font-size: 20px;
+}
+.finder-search-box input {
+  padding-right: 14px;
+  color: #172033;
+  font-size: 14px;
+}
+.finder-search-submit {
+  min-width: 76px;
+  min-height: 52px;
+  border-radius: 8px;
+  background: #142842;
+  border-color: #142842;
+  color: #fff;
+  font-size: 13px;
+}
+.finder-active-zone {
+  margin: 1px 0 8px;
+}
+.finder-chip {
+  min-height: 29px;
+  padding: 2px 9px;
+  border-color: #d8d4cc;
+  background: #f4f2ed;
+  color: #495466;
+}
+.finder-reset-action {
+  color: #687386;
+}
+.finder-filter-core,
+.finder-filter-detail {
+  gap: 11px 12px;
+}
+.finder-filter-core {
+  padding-top: 13px;
+  border-top-color: #ebe7df;
+}
+.finder-field > span:first-child {
+  color: #667080;
+  font-size: 11.5px;
+}
+.finder-field select,
+.finder-field input {
+  min-height: 42px;
+  border-color: #ddd8ce;
+  border-radius: 8px;
+  background: #fffefa;
+  color: #243044;
+}
+.finder-detail-filters {
+  margin-top: 12px;
+}
+.finder-detail-filters > summary {
+  color: #667080;
+}
+.assessment-entry {
+  margin: 16px 0;
+  padding: 15px 17px;
+  border-color: #ddd8ce;
+  border-radius: 10px;
+  background: rgba(255,255,255,.82);
+}
+.assessment-entry:hover {
+  border-color: #b7bfca;
+  background: #fff;
+}
+.finder-resultbar {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  padding-inline: 2px;
+}
+.finder-resultbar > strong {
+  color: #172033;
+  font-size: 14px;
+}
+.finder-resultbar .muted {
+  color: #7d8694;
+}
+.finder-surface .exam-list {
+  gap: 14px;
+}
+.finder-surface .exam {
+  padding: 16px;
+  gap: 10px 12px;
+  border-color: #ddd8ce;
+  border-radius: 12px;
+  background: rgba(255,255,255,.86);
+  box-shadow: 0 3px 12px rgba(20,32,51,.025);
+}
+.finder-surface .exam:last-child {
+  border-bottom-color: #ddd8ce;
+}
+.finder-surface .exam:hover {
+  border-color: #bec5cf;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(20,32,51,.05);
+}
+.finder-surface .exam.selected {
+  border-color: #aeb7eb;
+  background: #f5f6fd;
+  box-shadow: inset 3px 0 #5268c7;
+}
+.finder-surface .badge {
+  min-height: 23px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #f2f0eb;
+  color: #596474;
+  font-size: 11px;
+}
+.finder-surface .exam h2 {
+  margin-top: 8px;
+}
+.finder-surface .exam .exam-title {
+  color: #172033;
+  font-size: 16.5px;
+  font-weight: 770;
+  letter-spacing: -.02em;
+}
+.finder-surface .exam .exam-title:hover {
+  color: #4356bd;
+  background: transparent;
+}
+.finder-surface .exam-range .inline {
+  color: #687386;
+}
+.finder-surface .exam-range .inline strong {
+  color: #344054;
+}
+.finder-surface .exam .range {
+  color: #737d8b;
+}
+.finder-surface .exam-count > strong {
+  color: #263b5b;
+}
+.finder-surface .exam-count small,
+.finder-surface .exam-count > .muted {
+  color: #7b8592;
+}
+.finder-surface .exam .actions {
+  gap: 8px;
+  padding-top: 11px;
+  border-top-color: #ece8e1;
+}
+.finder-surface .exam .actions button {
+  min-height: 38px;
+  border-color: #d9d5cd;
+  border-radius: 8px;
+  background: #fff;
+  color: #354257;
+}
+.finder-surface .exam .actions button:hover {
+  border-color: #b9c0ca;
+  background: #f8f7f3;
+}
+.finder-surface .exam .actions button.primary {
+  border-color: #142842;
+  background: #142842;
+  color: #fff;
+}
+.finder-surface .exam .actions button[aria-pressed="true"] {
+  border-color: #aeb7eb;
+  background: #eceefa;
+  color: #4356bd;
+}
+.finder-selection-bar {
+  border-color: #cbc5bc;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 14px 34px rgba(20,32,51,.11);
+}
+.finder-selection-bar strong {
+  color: #172033;
+}
+.finder-selection-bar .actions button:last-child {
+  border-color: #142842;
+  background: #142842;
+  color: #fff;
+}
+.finder-surface .pager {
+  margin-top: 18px;
+}
+.finder-surface .pager button {
+  border-color: #d9d5cd;
+  background: #fff;
+}
+.finder-surface .pager span {
+  color: #6f7987;
+}
+
+@media (max-width: 700px) {
+  body[data-archive-view="find"] main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .finder-intro {
+    margin-bottom: 12px;
+  }
+  .finder-intro h1 {
+    font-size: 24px;
+  }
+  .finder-panel {
+    padding: 11px;
+    border-radius: 10px;
+  }
+  .finder-panel .material-switch {
+    margin-bottom: 9px;
+  }
+  .finder-panel .material-switch button {
+    border-radius: 8px;
+  }
+  .finder-search-row {
+    grid-template-columns: minmax(0, 1fr) 58px;
+    gap: 6px;
+  }
+  .finder-search-box,
+  .finder-search-submit {
+    min-height: 46px;
+    height: 46px;
+  }
+  .finder-search-submit {
+    width: 58px;
+    min-width: 58px;
+  }
+  .finder-filter-core,
+  .finder-filter-detail {
+    gap: 8px 9px;
+  }
+  .finder-surface .exam {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  .finder-surface .exam .actions {
+    gap: 6px;
+  }
+  .finder-surface .exam .actions button {
+    min-height: 44px;
+    font-size: 11.5px;
+  }
+  .finder-selection-bar {
+    border-color: #cbc5bc;
+    background: rgba(255,255,255,.98);
+  }
+}
