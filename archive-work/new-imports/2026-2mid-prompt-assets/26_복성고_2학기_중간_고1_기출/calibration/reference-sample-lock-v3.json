@@ -1,0 +1,494 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "b2e3aa28b364ddadb97fb0203ef439b51e4662c6",
+  "rulePackSha": "sha256:dcf5d0cf87e0f16c58b9b70c6902481f2604e16f097d16f89581b706d6437ae1",
+  "target": {
+    "examId": "26_복성고_2학기_중간_고1_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p001.jpg",
+        "bytes": 954976,
+        "sha256": "sha256:1f66899ad6b2685e28e5459073afebd68f47bc9b2ab24c6b0aaff309e1fc8e34"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p002.jpg",
+        "bytes": 835064,
+        "sha256": "sha256:663e3c323751492e44c2335c0a07c7099a253d493bd0823eff54c4959a9b1849"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p003.jpg",
+        "bytes": 866192,
+        "sha256": "sha256:c4f4a48afd6f88d8cb1ce6dd4e292e3edd6e984865c9c9f51f8c2d28d857daa2"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p004.jpg",
+        "bytes": 857840,
+        "sha256": "sha256:d75aa893d51d56c239f51f485b2c9a3e218273f2ffd408f7e2fafe4c3df65398"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p005.jpg",
+        "bytes": 769480,
+        "sha256": "sha256:d08c5d2735ed6b5cebef977b9fff11555a33791d75fbb4ca756a5bc4fb47c2ff"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_복성고_2학기_중간_고1_기출\\source\\page_p006.jpg",
+        "bytes": 888800,
+        "sha256": "sha256:675f74d27daed103f4970eae06a9b77e0f00d2bdab1f103e0acbb5947b209d0a"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "Codex GPT-6",
+  "readerSessionId": "branch:codex/archive-2026-2mid-prompt-assets-boksung-continuation",
+  "startedAt": "2026-09-30T11:39:31.296213+00:00",
+  "frozenAt": "2026-09-30T11:39:31.296213+00:00",
+  "baselineObservation": "",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+      "rawSha256": "sha256:c0d195b36579ccd28657c48a415ab6ab7a39ade5f862cc05f490381335b30665",
+      "bytes": 40630,
+      "examTitle": "25_제일고_2학기_중간_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 22,
+      "selectionReason": "최신 main의 2025 고1 공통수학2 2학기 중간 complete production sample. 제일고 파일은 같은 과목·학년·학기·시험 유형이고 Golden Sample Pool에 등록된 품질 참조다.",
+      "qualityAcceptanceReason": "questionBank 전체와 각 solution을 읽었다. 일반 생산 JS 스키마, 학생용 단계 전개, 정답 결론 연결, 문제/해설 시각자료 분리와 조판을 관찰하기에 적합한 최신 production 파일이다. source truth, 정답, Meta 또는 layout 결정의 대체 권위로 사용하지 않는다.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "22개 문항의 questionBank 객체 구조와 id 순서를 확인했다. content/choices/answer/solution 필드 및 문제·해설 이미지 참조가 객체별로 구분된다."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "대표 문항 q1, q8, q15, q19~마지막 문항을 포함해 전 문항의 solution을 읽었다. 개념·조건 해석에서 중간식과 경우 구분을 거쳐 정답 결론으로 이어지는 학생용 전개를 품질 기준으로 잡았다."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "공통수학2 course와 standardUnitKey/subUnitKey 계열의 기존 필드를 확인했다. 기존 값을 target 의미 판정으로 복사하지 않고 분류 품질의 완성도만 참고한다."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "문제 image가 필요한 그래프/기하 문항에서 source problem image를 solutionImage와 분리한 구조를 확인했다. q2/q12/q15/q17/q18 등 시각자료 연결 사례를 품질 참조로 읽었다."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "solutionImage는 풀이 전용으로 분리되어 있으며 별도의 alt/caption/size를 사용한다. SVG/좌표의 사실을 source answer authority로 사용하지 않는다."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "대부분 grid이며 보기/조건 블록과 긴 풀이의 단계별 줄바꿈을 확인했다. 일부 legacy 2up은 자동 승계하지 않으며 신규 대상은 current Git canonical의 grid 기본과 item-level capacity evidence를 따른다."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:48b2be5a13de02fb4c490e83351471beb085ed707946e0e6a48491f62bdbfa0e",
+          "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.\n\n① $1$은 $A$의 원소이므로 $1\\in A$는",
+          "observation": "q1 전체 source item/solution 확인: prompt=‘집합 $A=\\{1,2,\\{1\\}\\}$일 때 다음 중 옳지 않은 것은? [4.0점]’; solution의 첫 핵심 단계=‘집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를 구분하여 각 보기를 판단한다.  ① $1$은 $A$의 원소이므로 $1\\in A$는 참이다.  ② $1$은 집합이 아니’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:73239379fe721186a9c88d754bcd2d81e978c1ad9315a30c5605462735e7eab3",
+          "solutionExcerpt": "함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.\n\n① 서로 다른 $x$좌표에 점들이 하나",
+          "observation": "q2 전체 source item/solution 확인: prompt=‘다음 중 함수의 그래프가 될 수 없는 것은? [4.1점]’; solution의 첫 핵심 단계=‘함수의 그래프는 같은 $x$좌표에 서로 다른 두 $y$좌표가 대응하지 않아야 한다. 각 그림에서 하나의 수직선이 그래프와 두 점 이상에서 만나는지 살펴본다.  ① 서로 다른 $x$좌표에 점들이 하나씩 있으므로 함수의 그래프가 될 수 ’; questionType=객관식, choices=0, layout=grid, problemImage=True, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:6c5d8256138281099faa3b407c4302669d95ecc8ce2212a89c6dfa998ec38a17",
+          "solutionExcerpt": "부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다.\n$c,d,e,f$는 각각 포함하거나 포함하지 않는 두 가지 선택이 있다.\n따라서 부분집합의 수는\n",
+          "observation": "q3 전체 source item/solution 확인: prompt=‘집합 $\\{a,b,c,d,e,f\\}$의 부분집합 중 $a$, $b$를 모두 포함하지 않은 진부분집합의 개수는? [4.2점]’; solution의 첫 핵심 단계=‘부분집합에 $a$, $b$를 모두 포함하지 않으므로 나머지 원소 $c,d,e,f$만 선택하면 된다. $c,d,e,f$는 각각 포함하거나 포함하지 않는 두 가지 선택이 있다. 따라서 부분집합의 수는 $2\\times2\\times2\\tim’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:41a475fe430cff54999eb2aef1fb6b36266a10587d3386867c00b532ac283eae",
+          "solutionExcerpt": "차집합을 교집합으로 바꾸고 드모르간의 법칙을 적용하여 보기들을 같은 꼴로 나타낸다.\n\n① $(X-Y)\\cap Z^C=X\\cap Y^C\\cap Z^C$이다.\n\n② $X\\cap(Y\\cup Z)^C=X\\",
+          "observation": "q4 전체 source item/solution 확인: prompt=‘다음 보기의 집합이 나타내는 영역이 다른 하나는? [4.3점]’; solution의 첫 핵심 단계=‘차집합을 교집합으로 바꾸고 드모르간의 법칙을 적용하여 보기들을 같은 꼴로 나타낸다.  ① $(X-Y)\\cap Z^C=X\\cap Y^C\\cap Z^C$이다.  ② $X\\cap(Y\\cup Z)^C=X\\cap Y^C\\cap Z^C$이다. ’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:00be63ec226daa632f21db8ca917bcb54861efc8a8221da49334dae064871227",
+          "solutionExcerpt": "ㄱ. 차집합은 교집합으로 나타내면\n$A-B=A\\cap B^C$이다.\n이는 $A\\cup B^C$와 항상 같지 않다. 예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$이면 $A-B=\\varnoth",
+          "observation": "q5 전체 source item/solution 확인: prompt=‘다음 전체집합 $U$의 부분집합 $A$, $B$에 대하여 보기의 성질 중 옳은 것만을 있는 대로 고른 것은? [4.5점]   &lt;보기&gt; ㄱ. $’; solution의 첫 핵심 단계=‘ㄱ. 차집합은 교집합으로 나타내면 $A-B=A\\cap B^C$이다. 이는 $A\\cup B^C$와 항상 같지 않다. 예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$이면 $A-B=\\varnothing$이고 $A\\cup B^C=U$’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:cd5562400abc90de7e772eec9ef238a5cfcd63fcd7fea18f396de1a4de0d697b",
+          "solutionExcerpt": "드모르간의 법칙으로\n$A^C\\cup B^C=(A\\cap B)^C$이다.\n따라서\n$n(A^C\\cup B^C)=30-n(A\\cap B)$이다.\n포함배제에 의해\n$n(A\\cup B)=20+15-n(A\\c",
+          "observation": "q6 전체 source item/solution 확인: prompt=‘전체집합 $U$의 부분집합 $A$, $B$에 대하여 $n(U)=30$, $n(A)=20$, $n(B)=15$일 때, $n(A^C\\cup B^C)$의 최댓’; solution의 첫 핵심 단계=‘드모르간의 법칙으로 $A^C\\cup B^C=(A\\cap B)^C$이다. 따라서 $n(A^C\\cup B^C)=30-n(A\\cap B)$이다. 포함배제에 의해 $n(A\\cup B)=20+15-n(A\\cap B)$이다. $A\\cup B\\s’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:16f1f9a79052f6c4c52a8a8029e4d3242e818bd553c7f1516f80e5ff2dc062d5",
+          "solutionExcerpt": "각 원소가 세 원소짜리 부분집합에 몇 번 들어가는지 센다.\n원소 $1$을 고정하면 나머지 다섯 원소 중 두 원소를 고른다. 첫 번째 원소를 5가지로, 다음 원소를 4가지로 고르면 두 원소의 순서만 ",
+          "observation": "q7 전체 source item/solution 확인: prompt=‘집합 $A=\\{1,2,3,4,5,6\\}$의 부분집합 중 원소의 개수가 $3$개인 모든 부분집합의 모든 원소들의 총합은? [4.7점]’; solution의 첫 핵심 단계=‘각 원소가 세 원소짜리 부분집합에 몇 번 들어가는지 센다. 원소 $1$을 고정하면 나머지 다섯 원소 중 두 원소를 고른다. 첫 번째 원소를 5가지로, 다음 원소를 4가지로 고르면 두 원소의 순서만 바뀐 선택을 두 번 세므로 $\\dfr’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:eef34988addde3c7779b67cd48071e8c97b81b7148499beb8a29d7a2d8be8cd2",
+          "solutionExcerpt": "$A$와 $B$는 서로소이고 $A\\cup B=U$이므로 두 집합의 원소 수는\n$n(A)+n(B)=5$이다.\n$n(B)=3$이므로 $n(A)=2$이다. $A$의 원소는 소수여야 하므로 $A$는 $\\{",
+          "observation": "q8 전체 source item/solution 확인: prompt=‘전체집합 $U=\\{1,2,3,4,5\\}$의 두 부분집합 $A$, $B$가 다음 조건을 만족시킬 때, 집합 $B$의 모든 원소의 합의 최댓값은? [4.8점’; solution의 첫 핵심 단계=‘$A$와 $B$는 서로소이고 $A\\cup B=U$이므로 두 집합의 원소 수는 $n(A)+n(B)=5$이다. $n(B)=3$이므로 $n(A)=2$이다. $A$의 원소는 소수여야 하므로 $A$는 $\\{2,3,5\\}$ 중 두 원소로 이루어’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:384493696f39925776df92d7165611c350b176e645a3a9ea0729db78e935f3a5",
+          "solutionExcerpt": "$f(3)=4$이고 함숫값이 증가하므로\n$f(1)<f(2)<4<f(4)$이다.\n$f(1),f(2)$는 $1,2,3$ 중에서 순서대로 두 값을 골라야 한다.\n가능한 순서쌍은 $(1,2),(1,3),(",
+          "observation": "q9 전체 source item/solution 확인: prompt=‘두 집합 $X=\\{1,2,3,4\\}$, $Y=\\{1,2,3,4,5,6\\}$에 대하여 $f(3)=4$일 때, $f(1)\\lt f(2)\\lt f(3)\\lt ’; solution의 첫 핵심 단계=‘$f(3)=4$이고 함숫값이 증가하므로 $f(1) 4$이고 $Y=\\{1,2,3,4,5,6\\}$이므로 $f(4)$는 5 또는 6, 2가지이다. 따라서 함수의 개수는 $3\\times2=6$이다. 정답은 ①이다.’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:df9bffff302d9b74f02b0f2d1434d9309e0e8e0d53631dc585bc2233a0c04e99",
+          "solutionExcerpt": "두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다.\n$AB^2=(3-1)^2+(0-2)^2$\n$=4+4=8$이다.\n$BC^2=(-1-3)^2+(-2-0)^2$\n$=16+4=20$이다.\n$C",
+          "observation": "q10 전체 source item/solution 확인: prompt=‘세 점 $A(1,2)$, $B(3,0)$, $C(-1,-2)$를 꼭짓점으로 하는 삼각형 $ABC$는 어떤 삼각형인가? [4.0점]’; solution의 첫 핵심 단계=‘두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다. $AB^2=(3-1)^2+(0-2)^2$ $=4+4=8$이다. $BC^2=(-1-3)^2+(-2-0)^2$ $=16+4=20$이다. $CA^2=(1-(-1))^2+(2-(-’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:6b671ab169c35730760561cfc02fd5dc25ae5210bc847eb6c31096b8eb6d90ea",
+          "solutionExcerpt": "삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다.\n$x$좌표에 대하여\n$\\dfrac{2+x_B+x_C}{3}=0$,\n$x_B+x_C=-2$이다.\n$y$좌표에 대",
+          "observation": "q11 전체 source item/solution 확인: prompt=‘서로 다른 세 점 $A(2,4)$, $B$, $C$에 대하여 삼각형 $ABC$의 무게중심은 원점 $O$이다. 삼각형 $OBC$의 무게중심 좌표를 $(a,’; solution의 첫 핵심 단계=‘삼각형 $ABC$의 무게중심이 $O(0,0)$이므로 꼭짓점 좌표의 평균은 각각 0이다. $x$좌표에 대하여 $\\dfrac{2+x_B+x_C}{3}=0$, $x_B+x_C=-2$이다. $y$좌표에 대하여 $\\dfrac{4+y_B+y_C’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:a16afa8b9f67170ff81a6f1f98e58329ab3c81b12cb07ffb2a96a08a5d022a34",
+          "solutionExcerpt": "주어진 직선을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac cb$이다.\n그림에서 기울기는 양수이고 $y$절편은 음수이므로\n$-\\dfrac ab>0$,\n$-\\dfrac cb<0$이",
+          "observation": "q12 전체 source item/solution 확인: prompt=‘세 실수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 다음 그림과 같을 때, 직선 $cx+by+a=0$의 개형으로 알맞은 것은? [4.’; solution의 첫 핵심 단계=‘주어진 직선을 $y$에 대하여 정리하면 $y=-\\dfrac abx-\\dfrac cb$이다. 그림에서 기울기는 양수이고 $y$절편은 음수이므로 $-\\dfrac ab>0$, $-\\dfrac cb 0$이다. 새 직선은 $cx+by+a=0$’; questionType=객관식, choices=0, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:c10d318cb8c518f892fab6cc2425fe3a37a9b94cff4f96c4188d2dc43524a1b3",
+          "solutionExcerpt": "원의 중심은 $(2,-4)$이고 반지름은 $\\sqrt{10}$이다.\n중심에서 직선 $x+3y+k=0$까지의 거리는\n$\\dfrac{|2+3(-4)+k|}{\\sqrt{1^2+3^2}}$\n$=\\dfrac",
+          "observation": "q13 전체 source item/solution 확인: prompt=‘원 $(x-2)^2+(y+4)^2=10$과 직선 $x+3y+k=0$이 접하도록 하는 모든 실수 $k$의 곱은? [4.4점]’; solution의 첫 핵심 단계=‘원의 중심은 $(2,-4)$이고 반지름은 $\\sqrt{10}$이다. 중심에서 직선 $x+3y+k=0$까지의 거리는 $\\dfrac{|2+3(-4)+k|}{\\sqrt{1^2+3^2}}$ $=\\dfrac{|k-10|}{\\sqrt{10}}$’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:737ae9ec195c5d58ac667005eb2717ae5e8807543d6a54362ce1efc1ba335a52",
+          "solutionExcerpt": "먼저 $a=3$인지 확인한다.\n$a=3$이면 첫째 직선은\n$x+7=0$이고 둘째 직선은\n$y=5$이다.\n하나는 수직선이고 다른 하나는 수평선이므로 서로 수직이다. 따라서 $a=3$은 가능한 값이다.",
+          "observation": "q14 전체 source item/solution 확인: prompt=‘두 직선 $(a-2)x-(a-3)y+7=0$, $(a^2-3a)x-y+5=0$이 서로 수직이 되도록 하는 모든 실수 $a$값의 곱은? [4.5점]’; solution의 첫 핵심 단계=‘먼저 $a=3$인지 확인한다. $a=3$이면 첫째 직선은 $x+7=0$이고 둘째 직선은 $y=5$이다. 하나는 수직선이고 다른 하나는 수평선이므로 서로 수직이다. 따라서 $a=3$은 가능한 값이다. 이제 $a\\ne3$이라 하자. 첫째’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:41c009eea71cea559bd207d9b17a87c63b339fc9c556ea55d8ede80dadca8714",
+          "solutionExcerpt": "$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다.\n넓이의 비는 대응하는 변의 비의 제곱이므로\n$\\dfrac{[ADE]}{[ABC]}=\\left(\\dfrac{AD}{AB}",
+          "observation": "q15 전체 source item/solution 확인: prompt=‘다음 그림과 같이 세 점 $A(2,5)$, $B(-1,-1)$, $C(6,-8)$을 꼭짓점으로 하는 삼각형 $ABC$가 있다. 선분 $AB$ 위의 한 점’; solution의 첫 핵심 단계=‘$DE\\parallel BC$이므로 삼각형 $ADE$와 $ABC$는 닮음이다. 넓이의 비는 대응하는 변의 비의 제곱이므로 $\\dfrac{[ADE]}{[ABC]}=\\left(\\dfrac{AD}{AB}\\right)^2=\\dfrac19$이’; questionType=객관식, choices=5, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:6f881921cef9ecbb26fd06af887f3647512f47aeb2d1bf45fc9bc6df87c4d78a",
+          "solutionExcerpt": "두 직선의 방정식을 기울기-절편 꼴로 나타내면\n$l_1:y=-3x-3$,\n$l_2:y=\\dfrac13x-3$이다.\n두 기울기의 곱이 $-1$이므로 $l_1\\perp l_2$이다. 두 직선의 교점은\n",
+          "observation": "q16 전체 source item/solution 확인: prompt=‘두 직선 $l_1:3x+y+3=0$, $l_2:x-3y-9=0$의 교점을 $A$, 두 직선 $l_1$, $l_2$가 $x$축과 만나는 점을 각각 $B$,’; solution의 첫 핵심 단계=‘두 직선의 방정식을 기울기-절편 꼴로 나타내면 $l_1:y=-3x-3$, $l_2:y=\\dfrac13x-3$이다. 두 기울기의 곱이 $-1$이므로 $l_1\\perp l_2$이다. 두 직선의 교점은 $-3x-3=\\dfrac13x-3$,’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:2c885f0b9e75d7cf6ca0b69413343f5796dbaae4cb90055f85db314a4a10e209",
+          "solutionExcerpt": "선분 $AB$의 좌표 변화는\n$\\overrightarrow{AB}=(2-5,8-4)=(-3,4)$이다.\n$AB=\\sqrt{(-3)^2+4^2}=5$이다. 정사각형의 옆변은 $AB$와 수직이고 길이가",
+          "observation": "q17 전체 source item/solution 확인: prompt=‘다음 그림에서 사각형 $ABCD$는 정사각형이고, $A(5,4)$, $B(2,8)$이다. 선분 $CD$를 지름으로 하는 원의 방정식이 $(x-a)^2+(’; solution의 첫 핵심 단계=‘선분 $AB$의 좌표 변화는 $\\overrightarrow{AB}=(2-5,8-4)=(-3,4)$이다. $AB=\\sqrt{(-3)^2+4^2}=5$이다. 정사각형의 옆변은 $AB$와 수직이고 길이가 5이므로 그 좌표 변화는 $(4,3’; questionType=객관식, choices=5, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:2b7830b3165c3bf9c5cbdb5788a0d4ffa4eac221898c87b114891391068c8f11",
+          "solutionExcerpt": "정사각형의 꼭짓점은\n$O=(0,0)$, $A=(16,0)$, $B=(16,16)$, $C=(0,16)$이다.\n$OD:DC=3:1$이므로 $D=(0,12)$이다. $AE:EB=3:1$이므로 $E=(1",
+          "observation": "q18 전체 source item/solution 확인: prompt=‘다음 그림과 같이 한 변의 길이가 $16$인 정사각형 $OABC$ 모양의 종이를 점 $O$가 원점에, 두 점 $A$, $C$가 각각 $x$축, $y$축 ’; solution의 첫 핵심 단계=‘정사각형의 꼭짓점은 $O=(0,0)$, $A=(16,0)$, $B=(16,16)$, $C=(0,16)$이다. $OD:DC=3:1$이므로 $D=(0,12)$이다. $AE:EB=3:1$이므로 $E=(16,12)$이다. 따라서 선분 $DE’; questionType=객관식, choices=5, layout=subjective-2up, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:cfa18861e85878a3eb75f40614c38745ebf00a883a9d463c03c2800dc31fc025",
+          "solutionExcerpt": "상수함수는 세 정의역 원소의 함숫값을 모두 같게 정한다.\n공통으로 정할 함숫값은 $1,2,3$ 중 하나이므로\n$a=3$이다.\n항등함수는 $1\\mapsto1$, $2\\mapsto2$, $3\\mapst",
+          "observation": "q19 전체 source item/solution 확인: prompt=‘1. 집합 $X=\\{1,2,3\\}$에서 집합 $Y=\\{1,2,3\\}$로의 함수 중에서 상수함수의 개수를 $a$, 항등함수의 개수를 $b$, 일대일대응의 ’; solution의 첫 핵심 단계=‘상수함수는 세 정의역 원소의 함숫값을 모두 같게 정한다. 공통으로 정할 함숫값은 $1,2,3$ 중 하나이므로 $a=3$이다. 항등함수는 $1\\mapsto1$, $2\\mapsto2$, $3\\mapsto3$으로 정해지는 하나뿐이므로 $b’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:f601439b7554254078a0d0c5e8e7270ac593c6885ecf4fd7baaa60366a59e86d",
+          "solutionExcerpt": "두 점 $A(1,3)$, $B(3,6)$ 사이의 거리는\n$AB=\\sqrt{(3-1)^2+(6-3)^2}$,\n$AB=\\sqrt{4+9}=\\sqrt{13}$이다.\n$AP:PB=2:1$이므로 $P$는 $",
+          "observation": "q20 전체 source item/solution 확인: prompt=‘2. 두 점 $A(1,3)$, $B(3,6)$의 두 점 사이의 거리를 구하고, 선분 $AB$를 $2:1$로 내분하는 점 $P$의 좌표를 구하시오. [4점’; solution의 첫 핵심 단계=‘두 점 $A(1,3)$, $B(3,6)$ 사이의 거리는 $AB=\\sqrt{(3-1)^2+(6-3)^2}$, $AB=\\sqrt{4+9}=\\sqrt{13}$이다. $AP:PB=2:1$이므로 $P$는 $A$에서 $B$ 쪽으로 전체 선분의 ’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:45c4d3386d1a16f545b43209915d7c519d391138bfc8d95a63bbff0721de2691",
+          "solutionExcerpt": "$10$ 이하의 소수 집합은\n$P=\\{2,3,5,7\\}$이고, 그 여집합은\n$P^C=\\{1,4,6,8,9,10\\}$이다.\n$a=n(X-P)$라 하면 $a=n(X\\cap P^C)$이고 $0\\le a\\",
+          "observation": "q21 전체 source item/solution 확인: prompt=‘3. 전체집합 $U$는 $10$ 이하의 자연수 전체의 집합이고, $P$는 $10$ 이하의 소수 전체의 집합이다. $n(X-P)\\cdot n(X\\cup P’; solution의 첫 핵심 단계=‘$10$ 이하의 소수 집합은 $P=\\{2,3,5,7\\}$이고, 그 여집합은 $P^C=\\{1,4,6,8,9,10\\}$이다. $a=n(X-P)$라 하면 $a=n(X\\cap P^C)$이고 $0\\le a\\le6$이다. $b=n(X\\cap P’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:0b7885d981f74e645c7349936f0997d56934dc6b5feeb8e6b135f1f27fbd85e9",
+          "solutionExcerpt": "주어진 원의 중심은 $C=(3,4)$이고 반지름은 $4$이다. 중심과 원점 사이의 거리는\n$OC=\\sqrt{3^2+4^2}=5$이다.\n주어진 원 위의 점 $P$에서 $OP$가 가장 짧을 때와 가장 ",
+          "observation": "q22 전체 source item/solution 확인: prompt=‘4. 원 $(x-3)^2+(y-4)^2=16$ 위의 임의의 점 $P$에 대하여 $\\overline{OP}$의 거리가 정수가 되는 점 $P$의 개수를 구하’; solution의 첫 핵심 단계=‘주어진 원의 중심은 $C=(3,4)$이고 반지름은 $4$이다. 중심과 원점 사이의 거리는 $OC=\\sqrt{3^2+4^2}=5$이다. 주어진 원 위의 점 $P$에서 $OP$가 가장 짧을 때와 가장 길 때는 각각 중심 $C$를 향하는 ’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "rawSha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "bytes": 53725,
+      "examTitle": "25_효천고_2학기_중간_고1_기출",
+      "standardCourse": [
+        "공통수학2"
+      ],
+      "questionCount": 23,
+      "selectionReason": "최신 main의 2025 고1 공통수학2 2학기 중간 complete production sample. 효천고 파일은 같은 과목·학년·학기·시험 유형이고 Golden Sample Pool에 등록된 품질 참조다.",
+      "qualityAcceptanceReason": "questionBank 전체와 각 solution을 읽었다. 일반 생산 JS 스키마, 학생용 단계 전개, 정답 결론 연결, 문제/해설 시각자료 분리와 조판을 관찰하기에 적합한 최신 production 파일이다. source truth, 정답, Meta 또는 layout 결정의 대체 권위로 사용하지 않는다.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "23개 문항의 questionBank 객체 구조와 id 순서를 확인했다. content/choices/answer/solution 필드 및 문제·해설 이미지 참조가 객체별로 구분된다."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "대표 문항 q1, q8, q15, q19~마지막 문항을 포함해 전 문항의 solution을 읽었다. 개념·조건 해석에서 중간식과 경우 구분을 거쳐 정답 결론으로 이어지는 학생용 전개를 품질 기준으로 잡았다."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "공통수학2 course와 standardUnitKey/subUnitKey 계열의 기존 필드를 확인했다. 기존 값을 target 의미 판정으로 복사하지 않고 분류 품질의 완성도만 참고한다."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "문제 image가 필요한 그래프/기하 문항에서 source problem image를 solutionImage와 분리한 구조를 확인했다. q2/q12/q15/q17/q18 등 시각자료 연결 사례를 품질 참조로 읽었다."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "solutionImage는 풀이 전용으로 분리되어 있으며 별도의 alt/caption/size를 사용한다. SVG/좌표의 사실을 source answer authority로 사용하지 않는다."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "대부분 grid이며 보기/조건 블록과 긴 풀이의 단계별 줄바꿈을 확인했다. 일부 legacy 2up은 자동 승계하지 않으며 신규 대상은 current Git canonical의 grid 기본과 item-level capacity evidence를 따른다."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:72fa15be581ca4f055898c5522e1418dd95696b3113839b6ff7aa8da6e0600fc",
+          "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)$에 대하여\n$x$좌표의 차는\n$3-(-2)=5$이고,\n$y$좌표의 차는\n$0-5=",
+          "observation": "q1 전체 source item/solution 확인: prompt=‘좌표평면 위의 두 점 $A(-2,5)$, $B(3,0)$이 있다. 두 점 $A$, $B$ 사이의 거리는? [3.1점]’; solution의 첫 핵심 단계=‘두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다. 점 $A(-2,5)$, $B(3,0)$에 대하여 $x$좌표의 차는 $3-(-2)=5$이고, $y$좌표의 차는 $0-5=-5$이다. 따라서 두 점 사이의 거’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:108ed5cb84bc7b050d3e9bd5528aef3ec77fed3ca9231e5f468927239a072595",
+          "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에 대하여 정리한다.\n$3y=-x-2$\n$y=-\\dfrac13x-\\dfrac23$이므로\n첫째",
+          "observation": "q2 전체 source item/solution 확인: prompt=‘두 직선 $x+3y+2=0$, $kx-2y-1=0$이 서로 수직일 때, 실수 $k$의 값은? [3.1점]’; solution의 첫 핵심 단계=‘두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다. 먼저 직선 $x+3y+2=0$ 을 $y$에 대하여 정리한다. $3y=-x-2$ $y=-\\dfrac13x-\\dfrac23$이므로 첫째 직선의 기울기는 $-\\dfrac13’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:7928db90a35249f1c8e84fc025bc6e0aadca17569e4181b9079246d154701c6e",
+          "solutionExcerpt": "원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다.\n주어진 식은\n$x^2+y^2+2x-6y+6=0$이다.\n$x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2",
+          "observation": "q3 전체 source item/solution 확인: prompt=‘원의 방정식 $x^2+y^2+2x-6y+6=0$의 중심 좌표와 반지름의 길이를 순서대로 올바르게 쓴 것은? [3.2점]’; solution의 첫 핵심 단계=‘원의 중심과 반지름을 구하려면 주어진 식을 원의 표준형으로 바꾼다. 주어진 식은 $x^2+y^2+2x-6y+6=0$이다. $x$에 대한 항과 $y$에 대한 항을 각각 완전제곱식으로 만든다. $x^2+2x=(x+1)^2-1$이고, $y’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:5fec1c57af1466aaaee80bb0917f20ef2e0515d2e1c2f8e3f06e39bfbbded7cf",
+          "solutionExcerpt": "기울기가 $1$인 직선을\n$y=x+b$\n라고 하자.\n이를 일반형으로 쓰면\n$x-y+b=0$이다.\n원 $x^2+y^2=5$의 중심은 $O(0,0)$이고 반지름은 $\\sqrt5$이다.\n직선이 원에 접하",
+          "observation": "q4 전체 source item/solution 확인: prompt=‘원 $x^2+y^2=5$에 접하고 기울기가 $1$인 두 직선이 $y$축과 만나는 점을 각각 $A$, $B$라 할 때, $\\overline{AB}$의 길이’; solution의 첫 핵심 단계=‘기울기가 $1$인 직선을 $y=x+b$ 라고 하자. 이를 일반형으로 쓰면 $x-y+b=0$이다. 원 $x^2+y^2=5$의 중심은 $O(0,0)$이고 반지름은 $\\sqrt5$이다. 직선이 원에 접하려면 원의 중심에서 직선까지의 거리가’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:6953295d6b1e0419fdfdda244444f1b0e91d61702aea38c0c2cfbf967f0f375f",
+          "solutionExcerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.\n$A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다.\n따라서 $B=\\{3a,4,2\\}$에도 원소 ",
+          "observation": "q5 전체 source item/solution 확인: prompt=‘두 집합 $A=\\{3,\\ 2a,\\ b-4\\}$, $B=\\{3a,\\ 4,\\ 2\\}$에 대하여 $A=B$일 때, $a+b$의 값은? (단, $a,b$는 상수’; solution의 첫 핵심 단계=‘두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다. $A=\\{3,2a,b-4\\}$에는 원소 $3$이 반드시 들어 있다. 따라서 $B=\\{3a,4,2\\}$에도 원소 $3$이 들어 있어야 한다. $B$에’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:2ec43b906782c50ceb767f8bff22d3a3e3feb62474a5b24f29f0f7d2f96f7870",
+          "solutionExcerpt": "주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다.\n주어진 식은\n$x^2+y^2-kx+2y+2k+1=0$이다.\n$x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다.\n$x^2-k",
+          "observation": "q6 전체 source item/solution 확인: prompt=‘방정식 $x^2+y^2-kx+2y+2k+1=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$의 값의 범위는? [3.5점]’; solution의 첫 핵심 단계=‘주어진 방정식이 실제 원을 나타내려면 반지름의 제곱이 양수여야 한다. 주어진 식은 $x^2+y^2-kx+2y+2k+1=0$이다. $x$와 $y$에 대한 항을 각각 완전제곱식으로 만든다. $x^2-kx=\\left(x-\\dfrac{k}{’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:7dd161892a92697036bc6939d5649ad87e19670e1210422532bd66c6f262b84a",
+          "solutionExcerpt": "두 직선\n$2x-y+1=0$,\n$2x-y+k=0$\n은 $x$, $y$의 계수가 같으므로 서로 평행하다.\n평행한 두 직선\n$Ax+By+C_1=0$, $Ax+By+C_2=0$\n사이의 거리는\n$\\dfra",
+          "observation": "q7 전체 source item/solution 확인: prompt=‘평행한 두 직선 $2x-y+1=0$, $2x-y+k=0$ 사이의 거리가 $\\sqrt5$가 되도록 하는 모든 실수 $k$의 값의 곱은? [3.7점]’; solution의 첫 핵심 단계=‘두 직선 $2x-y+1=0$, $2x-y+k=0$ 은 $x$, $y$의 계수가 같으므로 서로 평행하다. 평행한 두 직선 $Ax+By+C_1=0$, $Ax+By+C_2=0$ 사이의 거리는 $\\dfrac{|C_2-C_1|}{\\sqrt{A’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:55fb65db5b2cea06b1568ad07b5f54deb739e23e37b0c9d22bbb0d735714fcc5",
+          "solutionExcerpt": "빈칸은 앞에서 얻은 관계를 순서대로 따라가면 결정할 수 있다.\n점 $P(x_1,y_1)$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라고 하자.\n직선 $PH$의 기울기는\n$\\dfrac",
+          "observation": "q8 전체 source item/solution 확인: prompt=‘다음 보기는 좌표평면 위의 점 $P(x_1,y_1)$과 점 $P$를 지나지 않는 직선 $l:ax+by+c=0$ ($a\\ne0$ 또는 $b\\ne0$) 사이’; solution의 첫 핵심 단계=‘빈칸은 앞에서 얻은 관계를 순서대로 따라가면 결정할 수 있다. 점 $P(x_1,y_1)$에서 직선 $l$에 내린 수선의 발을 $H(x_2,y_2)$라고 하자. 직선 $PH$의 기울기는 $\\dfrac{y_2-y_1}{x_2-x_1}$이’; questionType=객관식, choices=5, layout=subjective-2up, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:8393798ab52113720b7ec14b6755e7b9544b43d94677ff674aa63a952126f42f",
+          "solutionExcerpt": "집합 $A$의 원소는\n$\\varnothing$, $3$, $5$, $7$, $\\{7\\}$이다.\n이 문제에서는 $\\in$과 $\\subset$을 구분해야 한다.\n$X\\in A$는 $X$ 자체가 $A$의",
+          "observation": "q9 전체 source item/solution 확인: prompt=‘집합 $A=\\{\\varnothing,3,5,7,\\{7\\}\\}$에 대하여 다음 중 옳지 않은 것은? [3.8점]’; solution의 첫 핵심 단계=‘집합 $A$의 원소는 $\\varnothing$, $3$, $5$, $7$, $\\{7\\}$이다. 이 문제에서는 $\\in$과 $\\subset$을 구분해야 한다. $X\\in A$는 $X$ 자체가 $A$의 원소라는 뜻이고, $X\\subset’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:9e200f9cf446fbefbb4edd3f35714b1361247295db70d92c7f67a930ea3ca87f",
+          "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.\n따라서\n$B\\subseteq A$이다.\n이 포함관계를 이용해 각 보기를 확인한다.\n\nㄱ. $B\\subset",
+          "observation": "q10 전체 source item/solution 확인: prompt=‘전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $A\\cap B=B$일 때, 다음 보기 중 항상 옳은 것만을 있는 대로 고른 것은? [3.9점] ’; solution의 첫 핵심 단계=‘주어진 조건 $A\\cap B=B$ 는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다. 따라서 $B\\subseteq A$이다. 이 포함관계를 이용해 각 보기를 확인한다.  ㄱ. $B\\subseteq A$ 주어진 조건에서 바로 얻으’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:ec511d5a26e332bedf8ffdeb33a37199083352c7aecd1eddfb555370a8f2512d",
+          "solutionExcerpt": "원의 중심은 $C(a,a)$이고 반지름은 $\\dfrac13$이다.\n직선\n$y=-x+3$\n을 일반형으로 바꾸면\n$x+y-3=0$이다.\n원이 이 직선과 만나려면 원의 중심에서 직선까지의 거리가 반지름보",
+          "observation": "q11 전체 source item/solution 확인: prompt=‘중심이 점 $(a,a)$이고 반지름의 길이가 $\\dfrac13$인 원이 직선 $y=-x+3$과 만나도록 하는 $a$의 최댓값과 최솟값을 각각 $M$, $’; solution의 첫 핵심 단계=‘원의 중심은 $C(a,a)$이고 반지름은 $\\dfrac13$이다. 직선 $y=-x+3$ 을 일반형으로 바꾸면 $x+y-3=0$이다. 원이 이 직선과 만나려면 원의 중심에서 직선까지의 거리가 반지름보다 크지 않아야 한다. 접하는 경우도’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:8e34693d3c14d2b51781f29f61b0cac64d031b92accf4be53dd1a63ca118064a",
+          "solutionExcerpt": "먼저 원래 포물선을 꼭짓점 꼴로 바꾼다.\n$y=x^2+6x+13$\n$=(x+3)^2+4$이다.\n따라서 원래 포물선의 꼭짓점은 $(-3,4)$이다.\n이 그래프를 원점에 대하여 대칭이동하면\n점 $(x,",
+          "observation": "q12 전체 source item/solution 확인: prompt=‘포물선 $y=x^2+6x+13$을 원점에 대하여 대칭이동한 후, $y$축의 방향으로 $a$만큼 평행이동한 포물선이 $x$축과 점 $(b,0)$에서 접할 ’; solution의 첫 핵심 단계=‘먼저 원래 포물선을 꼭짓점 꼴로 바꾼다. $y=x^2+6x+13$ $=(x+3)^2+4$이다. 따라서 원래 포물선의 꼭짓점은 $(-3,4)$이다. 이 그래프를 원점에 대하여 대칭이동하면 점 $(x,y)$가 $(-x,-y)$로 이동한다’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:71f507b2aa31a723d665bacf915bcf2026f76153e2eca8657faa79821210a8e2",
+          "solutionExcerpt": "그림에서 원래 도형 $f(x,y)=0$의 점들이\n도형 $g(x,y)=0$으로 어떻게 이동했는지 읽는다.\n예를 들어\n$(2,2)\\rightarrow(-5,0)$이고,\n$(5,2)\\rightarrow(",
+          "observation": "q13 전체 source item/solution 확인: prompt=‘두 방정식 $f(x,y)=0$, $g(x,y)=0$이 나타내는 도형이 아래 그림과 같을 때, 다음 중 옳은 것은? [4.3점]’; solution의 첫 핵심 단계=‘그림에서 원래 도형 $f(x,y)=0$의 점들이 도형 $g(x,y)=0$으로 어떻게 이동했는지 읽는다. 예를 들어 $(2,2)\\rightarrow(-5,0)$이고, $(5,2)\\rightarrow(-2,0)$이다. 두 점 모두 $x$’; questionType=객관식, choices=5, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:044ddfbab9511375f5c2a4aa069775b30699eff4a2202731afe34500173eab28",
+          "solutionExcerpt": "점 $I$는 삼각형 $ABC$의 내심이므로\n직선 $AI$는 $\\angle A$의 이등분선이다.\n직선 $AI$와 선분 $BC$의 교점을 $D$라고 하자.\n각의 이등분선 정리에 의해\n$BD:DC=AB:",
+          "observation": "q14 전체 source item/solution 확인: prompt=‘그림과 같이 좌표평면 위의 점 $A(-1,2)$, $B(-3,0)$, $C(2,-1)$을 세 꼭짓점으로 하는 삼각형 $ABC$가 있다. 삼각형 $ABC$’; solution의 첫 핵심 단계=‘점 $I$는 삼각형 $ABC$의 내심이므로 직선 $AI$는 $\\angle A$의 이등분선이다. 직선 $AI$와 선분 $BC$의 교점을 $D$라고 하자. 각의 이등분선 정리에 의해 $BD:DC=AB:AC$이다. 먼저 두 변의 길이를 구’; questionType=객관식, choices=5, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:cc204c7a4bb8ad28109168cff28a901cf2ab1c7d34bf750b3be9ee492a311dec",
+          "solutionExcerpt": "과목 $A$를 선호하는 학생의 집합을 $A$,\n과목 $B$를 선호하는 학생의 집합을 $B$라고 하자.\n주어진 조건은\n$n(A)=12$,\n$n(B)=17$,\n$n(A\\cap B)=x$이고,\n전체 학생",
+          "observation": "q15 전체 source item/solution 확인: prompt=‘성선이네 반 학생 $25$명을 대상으로 두 선택 과목 $A$, $B$에 대한 선호도를 조사한 결과 과목 $A$를 선호하는 학생이 $12$명, 과목 $B$’; solution의 첫 핵심 단계=‘과목 $A$를 선호하는 학생의 집합을 $A$, 과목 $B$를 선호하는 학생의 집합을 $B$라고 하자. 주어진 조건은 $n(A)=12$, $n(B)=17$, $n(A\\cap B)=x$이고, 전체 학생 수는 $25$명이다. 먼저 $x$의’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:5755a9154583abbf7a4edc1f58fc1313dbe186e243401602adcfb0a131ae8f63",
+          "solutionExcerpt": "주어진 집합을 먼저 확인한다.\n$A=\\{1,2,4,7,8\\}$,\n$B=\\{3,4,5,7,9\\}$,\n$C=\\{4,7,10,12,13\\}$이다.\n구하려는 집합은\n$(A\\cap B^c)\\cup(A\\cap",
+          "observation": "q16 전체 source item/solution 확인: prompt=‘전체집합 $U=\\{1,2,3,\\ldots,15\\}$의 세 부분집합 $A$, $B$, $C$에 대해 $A=\\{1,2,4,7,8\\}$, $B=\\{3,4,5,’; solution의 첫 핵심 단계=‘주어진 집합을 먼저 확인한다. $A=\\{1,2,4,7,8\\}$, $B=\\{3,4,5,7,9\\}$, $C=\\{4,7,10,12,13\\}$이다. 구하려는 집합은 $(A\\cap B^c)\\cup(A\\cap C^c)$이다. 분배법칙을 사용하면’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=False. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:d84afe910a88942242f0efd73c1525e1156535391b503c3868406a72f662e6fb",
+          "solutionExcerpt": "먼저 주어진 직선을 평행이동한 뒤의 식을 구한다.\n원래 직선은\n$y=k(x+3)-5$이다.\n$x$축의 방향으로 $5$만큼,\n$y$축의 방향으로 $8$만큼 평행이동한 직선을 $l$이라 하였으므로\n원래",
+          "observation": "q17 전체 source item/solution 확인: prompt=‘직선 $y=k(x+3)-5$를 $x$축의 방향으로 $5$만큼, $y$축의 방향으로 $8$만큼 평행이동한 직선을 $l$이라 하자. 실수 $k$의 값에 관계’; solution의 첫 핵심 단계=‘먼저 주어진 직선을 평행이동한 뒤의 식을 구한다. 원래 직선은 $y=k(x+3)-5$이다. $x$축의 방향으로 $5$만큼, $y$축의 방향으로 $8$만큼 평행이동한 직선을 $l$이라 하였으므로 원래 식의 $x$ 대신 $x-5$, $y’; questionType=객관식, choices=5, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:2974720bcda51133eecf0e01a49509d93590eb6986eb074391395372125e80d0",
+          "solutionExcerpt": "각 변에서 주어진 각의 조건은 반사를 이용하면 한 번에 거리 조건으로 바꿀 수 있다.\n점 $P(-2,1)$을 각 변에 대하여 대칭이동한 점을 차례로 $P_1,P_2,P_3,P_4$라고 하자.\n선분 ",
+          "observation": "q18 전체 source item/solution 확인: prompt=‘그림과 같이 네 점 $O(0,0)$, $A(0,17)$, $B(-10,17)$, $C(-10,0)$을 꼭짓점으로 하는 직사각형 $OABC$가 있다. 직사’; solution의 첫 핵심 단계=‘각 변에서 주어진 각의 조건은 반사를 이용하면 한 번에 거리 조건으로 바꿀 수 있다. 점 $P(-2,1)$을 각 변에 대하여 대칭이동한 점을 차례로 $P_1,P_2,P_3,P_4$라고 하자. 선분 $OA$는 $y$축이므로 $P_1=(’; questionType=객관식, choices=5, layout=grid, problemImage=True, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:fa547c38e54c94a90aa2f3a6935c5d36a12d7f9cae7accae5991df48a7b0d96b",
+          "solutionExcerpt": "점 $A$의 좌표를\n$A=(x,y)$\n라고 하자.\n점 $A$를 $x$축에 대하여 대칭이동한 점은\n$B=(x,-y)$이고,\n$y$축에 대하여 대칭이동한 점은\n$C=(-x,y)$이다.\n또 원점에 대하여",
+          "observation": "q19 전체 source item/solution 확인: prompt=‘[서술형 1] 좌표평면 위의 점 $A$를 $x$축, $y$축, 원점에 대하여 대칭이동한 점을 각각 $B$, $C$, $D$라 하자. $\\overline{’; solution의 첫 핵심 단계=‘점 $A$의 좌표를 $A=(x,y)$ 라고 하자. 점 $A$를 $x$축에 대하여 대칭이동한 점은 $B=(x,-y)$이고, $y$축에 대하여 대칭이동한 점은 $C=(-x,y)$이다. 또 원점에 대하여 대칭이동한 점은 $D=(-x,-y)’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:95b1354f1c2748fbce700ab999aa1adf7b49aa3ff7b82ee82b0b77355aba7f7c",
+          "solutionExcerpt": "드모르간 법칙을 이용하면\n$A^c\\cap B^c=(A\\cup B)^c$이다.\n문제에서\n$n(U)=150$,\n$n(A^c\\cap B^c)=18$\n이라고 했으므로\n$A\\cup B$에 속하지 않는 원소가",
+          "observation": "q20 전체 source item/solution 확인: prompt=‘[서술형 2] 전체집합 $U$의 두 부분집합 $A$, $B$에 대하여 $n(U)=150$, $n(A)=62$, $n(B)=96$, $n(A^c\\cap B’; solution의 첫 핵심 단계=‘드모르간 법칙을 이용하면 $A^c\\cap B^c=(A\\cup B)^c$이다. 문제에서 $n(U)=150$, $n(A^c\\cap B^c)=18$ 이라고 했으므로 $A\\cup B$에 속하지 않는 원소가 $18$개라는 뜻이다. 따라서 $n’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:adcc647614c87be38b06e3120d94c511fd47654d9c74513f7ba1b08c4fac827d",
+          "solutionExcerpt": "조건\n$2\\overline{BC}=3\\overline{AC}$\n에서\n$AC:BC=2:3$이다.\n점 $C$는 직선 $AB$ 위에 있으므로 위치를 나누어 생각해야 한다.\n먼저 $C$가 $A$와 $B$ ",
+          "observation": "q21 전체 source item/solution 확인: prompt=‘[서술형 3] 두 점 $A(-8,-6)$, $B(2,9)$과 직선 $AB$ 위의 점 $C$가 $2\\overline{BC}=3\\overline{AC}$를 ’; solution의 첫 핵심 단계=‘조건 $2\\overline{BC}=3\\overline{AC}$ 에서 $AC:BC=2:3$이다. 점 $C$는 직선 $AB$ 위에 있으므로 위치를 나누어 생각해야 한다. 먼저 $C$가 $A$와 $B$ 사이에 있는 경우이다. 점의 순서는 ’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:1cf6b0b93f5a9e0b2c589a64c4e2f341c437b1876cb48c40e6e7449f5dc1b889",
+          "solutionExcerpt": "반지름을 $r$이라고 하자.\n원이 $x$축과 $y$축에 동시에 접하므로\n원의 중심에서 두 좌표축까지의 거리가 모두 $r$이다.\n따라서 중심의 좌표는\n$(\\pm r,\\pm r)$\n꼴이다.\n원이 점 $",
+          "observation": "q22 전체 source item/solution 확인: prompt=‘[서술형 4] 점 $(-2,3)$을 지나고 $x$축과 $y$축에 동시에 접하는 두 원의 중심 사이의 거리를 구하고 그 과정을 서술하시오. [6점]’; solution의 첫 핵심 단계=‘반지름을 $r$이라고 하자. 원이 $x$축과 $y$축에 동시에 접하므로 원의 중심에서 두 좌표축까지의 거리가 모두 $r$이다. 따라서 중심의 좌표는 $(\\pm r,\\pm r)$ 꼴이다. 원이 점 $P(-2,3)$을 지나야 하므로 가능’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:17ab2be65bf59333d81b82bcd4e8cf8bb0cbd9755507371f63b5d2f12754cad0",
+          "solutionExcerpt": "먼저 원의 중심과 반지름을 구한다.\n$x^2+y^2-8x-4y+18=0$에서 완전제곱식을 만들면\n$(x-4)^2+(y-2)^2=2$이다.\n따라서 원의 중심은\n$O=(4,2)$이고,\n반지름은 $\\sq",
+          "observation": "q23 전체 source item/solution 확인: prompt=‘[서술형 5] $|a|\\le9$, $|b|\\le4$인 두 정수 $a$, $b$에 대하여 함수 $y=|x|$의 그래프를 $x$축의 방향으로 $a$만큼, $’; solution의 첫 핵심 단계=‘먼저 원의 중심과 반지름을 구한다. $x^2+y^2-8x-4y+18=0$에서 완전제곱식을 만들면 $(x-4)^2+(y-2)^2=2$이다. 따라서 원의 중심은 $O=(4,2)$이고, 반지름은 $\\sqrt2$이다. 함수 $y=|x|$의 ’; questionType=서술형, choices=0, layout=grid, problemImage=False, solutionImage=True. 샘플은 품질 calibration 전용이다."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "학생용 solution은 정답만 쓰지 않고 핵심 개념·추론·계산을 이어서 보인다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|3",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|18"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "사용 개념을 먼저 밝히고 적용 이유를 문제 조건과 연결한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|1",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|7"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "조건과 보기/소문항의 논리적 역할을 명시하고 필요한 경우를 빠짐없이 나눈다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|15",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|23"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "결론을 재현하는 데 필요한 중간식과 변형 이유를 생략하지 않는다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|18",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|23"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "객관식 solution의 최종 결론이 choices의 원문 순서/정답 번호와 일치하도록 확인한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|3",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|6"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "상 난이도 문항도 핵심 발상, 조건 전환, 경우 구분의 논리적 연결을 학생이 재현할 수 있어야 한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|15",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|23"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "서술형 풀이에는 조건 해석, 단계별 계산, 마지막 결론이 있어야 한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|19",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|23"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "문제에서 읽어야 하는 source image와 풀이 설명용 solutionImage를 분리한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|15",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|18"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "학생 이해에 실제 도움이 되는 visual은 필요한 경우 유지/추가하며 장식용 visual을 만들지 않는다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|17",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|18"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "solutionImage가 있을 때 alt/caption은 실제 그림의 수학 내용을 구체적으로 설명한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|15",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|18"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "그림의 점, 좌표, 관계, 수치가 학생용 solution의 실제 수학 사실과 일치해야 한다.",
+      "sampleAnchors": [
+        "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js|17",
+        "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js|18"
+      ]
+    }
+  }
+}
