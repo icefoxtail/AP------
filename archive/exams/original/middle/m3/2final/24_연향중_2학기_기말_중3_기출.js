@@ -30,7 +30,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solution": "원의 중심 $O$에서 현 $AB$에 수선을 내리고 발을 $M$이라 하자.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=BM=8\\div2=4\\rm\\,cm$이다.\n\n$OM\\perp AB$이므로 직각삼각형 $OMB$에서\n$OM^2+4^2=6^2$\n$OM^2=36-16=20$\n$OM=2\\sqrt5\\rm\\,cm$이다.\n\n따라서 중심 $O$와 현 $AB$ 사이의 거리는 $2\\sqrt5\\rm\\,cm$이고 정답은 ③이다.",
+    "solution": "원의 중심 \\(O\\)에서 현 \\(AB\\)에 내린 수선의 발을 \\(M\\)이라 하자.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n\\(AM=BM=4\\rm\\,cm\\)이다.\n\n직각삼각형 \\(OAM\\)에서\n\\(OA=6\\rm\\,cm\\)이므로\n\\(OM^2=OA^2-AM^2=6^2-4^2=20\\)이다.\n따라서 \\(OM=2\\sqrt5\\rm\\,cm\\)이다.\n\n그러므로 정답은 ③이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q1.svg"
   },
   {
@@ -62,7 +62,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "접점 $B$에 그은 반지름은 접선 $PB$에 수직이므로 $OB\\perp PB$이다.\n따라서 $\\triangle OPB$는 $B$에서 직각인 삼각형이다.\n\n$PB^2=OP^2-OB^2$\n$=11^2-6^2$\n$=121-36=85$\n\n그러므로 $PB=\\sqrt{85}\\rm\\,cm$이고 정답은 ④이다.",
+    "solution": "접점 \\(B\\)에서 반지름 \\(OB\\)와 접선 \\(PB\\)는 서로 수직이다.\n또 \\(OB=OA=6\\rm\\,cm\\), \\(OP=11\\rm\\,cm\\)이다.\n\n직각삼각형 \\(OPB\\)에서\n\\(PB^2=OP^2-OB^2=11^2-6^2=85\\)이므로\n\\(PB=\\sqrt{85}\\rm\\,cm\\)이다.\n\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q2.svg"
   },
   {
@@ -94,7 +94,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "반원의 반지름이 $3\\rm\\,cm$이므로 지름 $AB=6\\rm\\,cm$이다.\n\n한 점에서 원에 그은 두 접선의 길이는 서로 같으므로\n점 $D$에서 $DA=DE$,\n점 $C$에서 $CB=CE$이다.\n따라서\n$AD+BC=DE+CE=DC=9\\rm\\,cm$이다.\n\n사각형 $ABCD$의 둘레는\n$AB+BC+CD+DA$\n$=6+(BC+DA)+9$\n$=6+9+9=24\\rm\\,cm$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "반원의 반지름이 3 cm이므로 AB=6 cm이다. 점 D에서 DA=DE, 점 C에서 CB=CE이다.\n따라서 AD+BC=DE+EC=DC=9 cm이다. 둘레는 6+9+9=24 cm. 정답 ①.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q3.svg"
   },
   {
@@ -126,7 +126,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$P,B,C$가 한 직선 위에 있으므로\n$\\angle PBA=180^\\circ-95^\\circ=85^\\circ$이다.\n\n$\\triangle PAB$에서\n$\\angle PAB=180^\\circ-35^\\circ-85^\\circ=60^\\circ$이다.\n또 $P,A,D$가 한 직선 위에 있으므로\n$\\angle DAB=180^\\circ-60^\\circ=120^\\circ$이다.\n\n원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle BCD=180^\\circ-120^\\circ=60^\\circ$이다.\n$C$에서 보는 $P$와 $B$의 방향이 같으므로 $\\angle PCD=\\angle BCD=60^\\circ$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "점 \\(P,B,C\\)가 한 직선 위에 있으므로\n\\(\\angle ABP=180^\\circ-\\angle ABC=85^\\circ\\)이다.\n\n삼각형 \\(PAB\\)에서\n\\(\\angle PAB=180^\\circ-35^\\circ-85^\\circ=60^\\circ\\)이다.\n\n또 \\(P,A,D\\)가 한 직선 위에 있으므로\n\\(\\angle DAB=180^\\circ-60^\\circ=120^\\circ\\)이다.\n사각형 \\(ABCD\\)가 원에 내접하므로 마주 보는 두 각의 합은 \\(180^\\circ\\)이다.\n따라서\n\\(\\angle BCD=180^\\circ-120^\\circ=60^\\circ\\)이다.\n\n점 \\(C,B,P\\)가 한 직선 위에 있으므로\n\\(\\angle PCD=\\angle BCD=60^\\circ\\)이다.\n\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q4.svg"
   },
   {
@@ -158,7 +158,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "solution": "$AD=BD=5\\rm\\,cm$이므로 $D$는 현 $AB$의 중점이다.\n또 $AB\\perp CD$이므로 현의 중점을 지나는 수선 $CD$ 위에 원의 중심이 있다.\n\n원의 반지름을 $r\\rm\\,cm$라 하자.\n$CD=1\\rm\\,cm$이므로 중심에서 현 $AB$까지의 거리는 $r-1$이다.\n현의 절반은 $5\\rm\\,cm$이므로 직각삼각형에서\n$r^2=(r-1)^2+5^2$이다.\n\n$r^2=r^2-2r+1+25$\n$2r=26$\n$r=13$\n\n따라서 원의 반지름은 $13\\rm\\,cm$이고 정답은 ③이다.",
+    "solution": "그림에서 \\(AD=BD=5\\rm\\,cm\\), \\(CD=1\\rm\\,cm\\)이다.\n\\(D\\)는 현 \\(AB\\)의 중점이고 \\(CD\\perp AB\\)이므로 원의 중심 \\(O\\)는 직선 \\(CD\\) 위에 있다.\n\n원의 반지름을 \\(r\\rm\\,cm\\)라 하면\n\\(OC=r\\), \\(CD=1\\)이므로\n\\(OD=r-1\\)이다.\n\n직각삼각형 \\(ODA\\)에서\n\\(OA=r\\), \\(AD=5\\)이므로\n\\(r^2=(r-1)^2+5^2\\)이다.\n정리하면\n\\(2r=26\\)이므로 \\(r=13\\)이다.\n\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q5.svg"
   },
   {
@@ -190,7 +190,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$\\angle C=180^\\circ-60^\\circ-70^\\circ=50^\\circ$이다.\n\n$E,F$는 내접원의 접점이므로\n$OE\\perp BC$, $OF\\perp AC$이다.\n따라서 사각형 $OECF$에서\n$\\angle EOF=360^\\circ-90^\\circ-90^\\circ-50^\\circ=130^\\circ$이다.\n\n호 $EF$에 대한 원주각은 중심각의 절반이므로\n$\\angle EDF=130^\\circ\\div2=65^\\circ$이다.\n접선 $EC$와 현 $EF$가 이루는 각은 현 $EF$가 만드는 원주각과 같으므로\n$x=65^\\circ$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "∠C=50°. OE⊥BC, OF⊥AC이므로 사각형 OECF에서 ∠EOF=130°.\nOE=OF이므로 ∠OEF=25°. OE⊥EC이므로 x=90°-25°=65°. 정답 ①.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q6.svg"
   },
   {
@@ -222,7 +222,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AC$가 원의 지름이므로 지름에 대한 원주각\n$\\angle ABC=90^\\circ$이다.\n\n$\\triangle ABC$에서\n$\\angle ACB=180^\\circ-90^\\circ-32^\\circ=58^\\circ$이다.\n\n접선과 현이 이루는 각의 성질에 의해\n$\\angle PAB=\\angle ACB=58^\\circ$이다.\n또 한 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이고,\n$\\angle PBA=58^\\circ$이다.\n\n따라서 $\\triangle PAB$에서\n$\\angle APB=180^\\circ-58^\\circ-58^\\circ=64^\\circ$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "AC가 지름이므로 ∠ABC=90°. ∠BAC=32°이므로 ∠ACB=58°, 따라서 ∠AOB=116°.\n두 접선의 각 ∠APB=180°-116°=64°. 정답 ⑤.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q7.svg"
   },
   {
@@ -254,7 +254,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "원의 반지름을 $r\\rm\\,cm$라 하자.\n$P,A,O$가 한 직선 위에 있고 $PA=6\\rm\\,cm$이므로\n$PO=r+6$이다.\n\n접점 $T$에서 $OT\\perp PT$이고 $\\angle TPO=30^\\circ$이므로\n$\\triangle PTO$는 $30^\\circ$-$60^\\circ$-$90^\\circ$ 직각삼각형이다.\n따라서 빗변은 짧은 변의 두 배이므로\n$PO=2OT=2r$이다.\n\n$r+6=2r$에서 $r=6$이고,\n$PT=OT\\sqrt3=6\\sqrt3\\rm\\,cm$이다.\n\n따라서 정답은 ②이다.",
+    "solution": "접점 \\(T\\)에서 반지름 \\(OT\\)와 접선 \\(PT\\)는 서로 수직이다.\n따라서 삼각형 \\(POT\\)는 직각삼각형이고 \\(\\angle TPO=30^\\circ\\)이다.\n\n그러므로 \\(30^\\circ\\)의 맞은편 변의 길이는 빗변의 절반이어서\n\\(OT=\\dfrac12OP\\)이다.\n\n점 \\(A\\)는 선분 \\(PO\\)와 원의 교점이므로\n\\(AO=OT\\)이고\n\\(OP=PA+AO=6+OT\\)이다.\n따라서\n\\(OP=6+\\dfrac12OP\\)이므로 \\(OP=12\\)이다.\n\n이제\n\\(PT=OP\\cos30^\\circ=12\\cdot\\dfrac{\\sqrt3}{2}=6\\sqrt3\\rm\\,cm\\)이다.\n\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q8.svg"
   },
   {
@@ -286,7 +286,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AB=15\\rm\\,cm$, $AC=9\\rm\\,cm$이고 $\\angle C=90^\\circ$이다.\n피타고라스 정리에 의해\n$BC=\\sqrt{15^2-9^2}$\n$=\\sqrt{225-81}=12\\rm\\,cm$이다.\n\n내접원이 $AC,BC,AB$와 만나는 점을 각각 $F,E,D$라 하고 반지름을 $r\\rm\\,cm$라 하자.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$CF=CE=r$,\n$AF=AD=9-r$,\n$BE=BD=12-r$이다.\n\n따라서 빗변 $AB$에서\n$(9-r)+(12-r)=15$\n$21-2r=15$\n$r=3$이다.\n\n원 $I$의 넓이는\n$\\pi r^2=9\\pi\\rm\\,cm^2$이다.\n\n따라서 정답은 ④이다.",
+    "solution": "직각삼각형 \\(ABC\\)에서\n\\(AB=15\\rm\\,cm\\), \\(AC=9\\rm\\,cm\\)이므로 피타고라스 정리에 따라\n\\(BC=\\sqrt{15^2-9^2}=12\\rm\\,cm\\)이다.\n\n내접원의 반지름을 \\(r\\rm\\,cm\\)라 하자.\n\\(C\\)가 직각이므로 접점까지의 길이는\n\\(CF=CE=r\\)이다.\n같은 점에서 원에 그은 두 접선의 길이는 같으므로\n\\(AF=AD=9-r\\),\n\\(BE=BD=12-r\\)이다.\n\n따라서\n\\(AB=AD+DB=(9-r)+(12-r)=15\\)이므로\n\\(r=3\\)이다.\n\n원의 넓이는\n\\(\\pi r^2=9\\pi\\rm\\,cm^2\\)이다.\n\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q9.svg"
   },
   {
@@ -318,7 +318,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AB$는 지름이므로 아래쪽 반원의 호의 크기는 $180^\\circ$이다.\n$\\wideparen{AC}=\\wideparen{CD}=\\wideparen{DE}=\\wideparen{EB}$이므로\n각 호의 크기는\n$180^\\circ\\div4=45^\\circ$이다.\n\n원주각은 대응하는 호의 크기의 절반이므로\n$x=45^\\circ\\div2=22.5^\\circ$,\n$y=45^\\circ\\div2=22.5^\\circ$이다.\n\n따라서 $x+y=45^\\circ$이고 정답은 ②이다.",
+    "solution": "AB가 지름이므로 아래 반원의 네 같은 호 AC,CD,DE,EB의 합은 180°, 각 호는 45°.\nx,y는 각각 45°인 호 하나를 보는 원주각이므로 x=y=22.5°. 따라서 x+y=45°. 정답 ②.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q10.svg"
   },
   {
@@ -350,7 +350,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$AH\\perp BC$, $AC=10$, $CH=5$이므로 직각삼각형 $AHC$에서\n$AH=\\sqrt{10^2-5^2}$\n$=\\sqrt{75}=5\\sqrt3$이다.\n\n$AQ$가 지름이므로 $\\angle ACQ=90^\\circ$이다.\n또 $\\angle AHB=90^\\circ$이고,\n$\\angle ABH=\\angle ABC=\\angle AQC$이다.\n따라서 $\\triangle ABH\\sim\\triangle AQC$이다.\n\n대응변의 비에서\n$\\dfrac{AB}{AQ}=\\dfrac{AH}{AC}$이므로\n$AQ=\\dfrac{AB\\cdot AC}{AH}$\n$=\\dfrac{16\\cdot10}{5\\sqrt3}$\n$=\\dfrac{32\\sqrt3}{3}$이다.\n\n원의 반지름은 지름 $AQ$의 절반이므로\n$R=\\dfrac{16\\sqrt3}{3}$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "직각삼각형 \\(AHC\\)에서\n\\(AC=10\\), \\(CH=5\\)이므로\n\\(AH=\\sqrt{10^2-5^2}=5\\sqrt3\\)이다.\n\n\\(AQ\\)가 원의 지름이므로\n\\(\\angle ACQ=90^\\circ\\)이다.\n또 \\(AH\\perp BC\\)이므로\n\\(\\angle AHB=90^\\circ\\)이다.\n\n\\(\\angle ABH=\\angle ABC\\)이고,\n\\(\\angle ABC\\)와 \\(\\angle AQC\\)는 같은 호 \\(AC\\)에 대한 원주각이므로\n\\(\\angle ABH=\\angle AQC\\)이다.\n따라서\n\\(\\triangle ABH\\sim\\triangle AQC\\)이다.\n\n그러므로\n\\(\\dfrac{AB}{AQ}=\\dfrac{AH}{AC}\\)이어서\n\\(\\dfrac{16}{AQ}=\\dfrac{5\\sqrt3}{10}\\)이다.\n따라서\n\\(AQ=\\dfrac{32\\sqrt3}{3}\\)이고,\n원의 반지름은\n\\(\\dfrac{AQ}{2}=\\dfrac{16\\sqrt3}{3}\\)이다.\n\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q11.svg"
   },
   {
@@ -379,7 +379,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "③의 자료에는 다른 값들에 비해 매우 큰 값 $40$이 있다.\n이처럼 한 값이 다른 값들과 크게 떨어져 있으면 평균은 그 값의 영향을 크게 받는다.\n\n반면 중앙값은 자료를 크기순으로 나열했을 때 가운데에 놓이는 값으로 정하므로\n이와 같은 극단적인 값의 영향을 평균보다 적게 받는다.\n\n따라서 중앙값이 평균보다 자료의 중심적인 경향을 더 잘 나타내는 것은 ③이다."
+    "solution": "③의 자료에는 40처럼 다른 값들과 크게 떨어진 값이 있다. 이 값은 평균을 크게 끌어올리지만 중앙값에는 영향이 작다.\n따라서 중앙값이 중심 경향을 더 잘 나타내는 것은 ③."
   },
   {
     "id": 13,
@@ -410,7 +410,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "학생 수의 누적합을 구하면\n$3,\\ 13,\\ 25,\\ 42,\\ 50$이다.\n\n자료가 $50$개이므로 중앙값은 $25$번째와 $26$번째 자료의 평균이다.\n$25$번째는 $7$시간, $26$번째는 $8$시간이므로\n$a=\\dfrac{7+8}{2}=7.5$이다.\n\n도수가 가장 큰 값은 학생 수가 $17$명인 $8$시간이므로\n$b=8$이다.\n\n따라서 $a+b=7.5+8=15.5$이고 정답은 ⑤이다."
+    "solution": "누적도수: 5시간까지 3명, 6시간까지 13명, 7시간까지 25명, 8시간까지 42명.\n25번째=7, 26번째=8이므로 중앙값 a=7.5. 최빈값 b=8. a+b=15.5. 정답 ⑤."
   },
   {
     "id": 14,
@@ -439,7 +439,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "회원 $4$명의 평균이 $25$살이므로 나이의 합은\n$25\\times4=100$이다.\n\n가장 어린 회원은 $20$살이고, 최빈값이 $27$살이며 $27$살인 회원이 $2$명이므로\n나이는 $20,\\ x,\\ 27,\\ 27$로 놓을 수 있다.\n\n$20+x+27+27=100$\n$x=26$\n\n따라서 나이를 크기순으로 나열하면 $20,26,27,27$이고,\n중앙값은\n$\\dfrac{26+27}{2}=26.5$살이다.\n\n따라서 정답은 ④이다."
+    "solution": "나이를 20,x,27,27이라 두면 평균 25이므로 합 100. x=26.\n중앙값=(26+27)/2=26.5살. 정답 ④."
   },
   {
     "id": 15,
@@ -468,7 +468,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "자료의 합은\n$9+6+10+8+12+7+8+4=64$이므로\n평균은 $64\\div8=8$이다.\n\n평균 $8$보다 큰 값은 $9,10,12$의 $3$개이므로\n“평균보다 큰 값의 변량은 $4$개이다.”라는 ②의 설명은 옳지 않다.\n\n편차는\n$1,-2,2,0,4,-1,0,-4$이고,\n편차의 제곱의 합은\n$1+4+4+0+16+1+0+16=42$이다.\n따라서 분산은\n$\\dfrac{42}{8}=\\dfrac{21}{4}$,\n표준편차는\n$\\sqrt{\\dfrac{21}{4}}=\\dfrac{\\sqrt{21}}{2}$이다.\n\n따라서 옳지 않은 것은 ②이다."
+    "solution": "자료의 합은\n\\(9+6+10+8+12+7+8+4=64\\)이므로\n평균은 \\(64\\div8=8\\)이다.\n\n평균 \\(8\\)보다 큰 값은\n\\(9,10,12\\)의 \\(3\\)개이다.\n따라서 “평균보다 큰 값의 변량은 \\(4\\)개이다.”라는 ②는 옳지 않다.\n\n나머지 설명도 확인하면 편차의 제곱의 합은\n\\(1+4+4+0+16+1+0+16=42\\)이다.\n따라서 분산은\n\\(\\dfrac{42}{8}=\\dfrac{21}{4}\\),\n표준편차는\n\\(\\sqrt{\\dfrac{21}{4}}=\\dfrac{\\sqrt{21}}2\\)이다.\n\n그러므로 옳지 않은 것은 ②이다."
   },
   {
     "id": 16,
@@ -499,7 +499,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "편차의 합은 항상 $0$이다.\n환자 B의 편차를 $x$라 하면\n$9+x+3-7-2=0$이다.\n\n$x+3=0$\n$x=-3$\n\n편차는 ‘각 변량 - 평균’이므로\n환자 B의 대기 시간은\n$15+(-3)=12$분이다.\n\n따라서 정답은 ④이다."
+    "solution": "편차 합은 0. B의 편차를 x라 하면 9+x+3-7-2=0, x=-3.\n평균 15분이므로 B의 대기 시간은 12분. 정답 ④."
   },
   {
     "id": 17,
@@ -528,7 +528,7 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "첫 번째 자료 $5,8,13,15,a$의 중앙값이 $8$이므로\n$a\\le8$이다.\n\n두 번째 자료는 $2,15,a,b,14$이고 중앙값이 $12$이다.\n$a\\le8$이므로 $12$가 가운데 값이 되려면 $b=12$여야 한다.\n\n또 평균은 $b-2=10$이므로 다섯 자료의 합은 $50$이다.\n따라서\n$2+15+a+12+14=50$\n$a+43=50$\n$a=7$이다.\n\n그러므로 $a+b=7+12=19$이고 정답은 ①이다."
+    "solution": "먼저 (가)의 자료 \\(5,8,13,15,a\\)의 중앙값이 \\(8\\)이다.\n이미 \\(5<8<13<15\\)이므로 중앙값이 \\(8\\)이 되려면\n\\(a\\le8\\)이어야 한다.\n\n(나)의 자료는 \\(2,15,a,b,14\\)이고 중앙값이 \\(12\\)이다.\n\\(a\\le8\\)이므로 작은 두 값은 \\(2,a\\), 큰 두 값은 \\(14,15\\)가 된다.\n따라서 가운데 값인 \\(b\\)가 \\(12\\)이어야 한다.\n\n또 (나)의 평균은 \\(b-2=10\\)이므로\n\\(\\dfrac{2+15+a+12+14}{5}=10\\)이다.\n따라서\n\\(43+a=50\\),\n\\(a=7\\)이다.\n\n그러므로\n\\(a+b=7+12=19\\)이므로 정답은 ①이다."
   },
   {
     "id": 18,
@@ -560,7 +560,7 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "산점도에서 세로축은 듣기 점수이다.\n같은 높이에 있는 점의 개수를 듣기 점수별로 세면\n$8$점에 해당하는 점이 가장 많다.\n\n따라서 듣기 점수의 최빈값은 $8$점이고 정답은 ③이다."
+    "solution": "산점도에서 같은 듣기 점수를 가진 점의 개수를 세면 듣기 8점에 해당하는 점이 가장 많다.\n최빈값은 8점. 정답 ③."
   },
   {
     "id": 19,
@@ -591,7 +591,7 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "읽기 점수가 $8$점 이상인 점 가운데\n듣기 점수도 $8$점 이상인 점만 센다.\n\n즉 산점도에서 $x=8$의 오른쪽 또는 그 선 위이면서,\n동시에 $y=8$의 위쪽 또는 그 선 위에 있는 점을 세면 $4$개이다.\n\n따라서 합격자는 $4$명이고 정답은 ④이다."
+    "solution": "읽기 점수와 듣기 점수가 모두 8점 이상인 점은 4개. 합격자는 4명. 정답 ④."
   },
   {
     "id": 20,
@@ -623,7 +623,7 @@ window.questionBank = [
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "두 축의 눈금이 같으므로\n과학 점수가 사회 점수보다 큰 학생은 산점도에서 $y=x$보다 위쪽에 있는 점으로 찾을 수 있다.\n\n해당 점은 $4$개이고 전체 학생은 $15$명이므로\n구하는 비율은\n$\\dfrac{4}{15}$이다.\n\n따라서 정답은 ③이다."
+    "solution": "사회 점수보다 과학 점수가 높은 점, 즉 y=x 위쪽의 점은 4개.\n전체 15명이므로 비율은 4/15. 정답 ③."
   },
   {
     "id": 21,
@@ -635,7 +635,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -649,7 +649,7 @@ window.questionBank = [
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "$BP=2\\rm\\,cm$, $PC=8\\rm\\,cm$이므로 정사각형의 한 변은\n$BC=10\\rm\\,cm$이다.\n\n원의 중심 $O$에서 $BC$에 내린 수선의 발을 $M$이라 하고,\n원의 반지름을 $r\\rm\\,cm$라 하자.\n원이 $AB$와 $AD$에 접하므로\n$BM=r$, $OM=10-r$이다.\n또 중심에서 현 $PQ$에 내린 수선은 현을 이등분하므로 $M$은 $PQ$의 중점이다.\n$BP=2$이므로 $PM=r-2$이다.\n\n직각삼각형 $OMP$에서 $OP=r$이므로\n$(r-2)^2+(10-r)^2=r^2$이다.\n\n$r^2-24r+104=0$\n$r=12\\pm2\\sqrt{10}$\n\n원의 반지름은 정사각형의 한 변 $10$보다 작으므로\n$r=12-2\\sqrt{10}$이다.\n따라서\n$PQ=2PM=2(r-2)$\n$=20-4\\sqrt{10}\\rm\\,cm$이다.\n\n따라서 구하는 길이는 $20-4\\sqrt{10}\\rm\\,cm$이다.",
+    "solution": "정사각형의 한 변의 길이는\n\\(BC=BP+PC=2+8=10\\rm\\,cm\\)이다.\n\n원의 반지름을 \\(r\\rm\\,cm\\)라 하고,\n중심 \\(O\\)에서 현 \\(PQ\\)에 내린 수선의 발을 \\(M\\)이라 하자.\n원은 \\(AB,AD\\)에 접하므로\n\\(BM=r\\), \\(OM=10-r\\)이다.\n또 \\(BP=2\\)이므로\n\\(PM=BM-BP=r-2\\)이다.\n\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n\\(M\\)은 \\(PQ\\)의 중점이다.\n직각삼각형 \\(OMP\\)에서 \\(OP=r\\)이므로\n\\(r^2=(10-r)^2+(r-2)^2\\)이다.\n\n정리하면\n\\(r^2-24r+104=0\\)이므로\n\\(r=12\\pm2\\sqrt{10}\\)이다.\n반지름은 정사각형의 한 변보다 작으므로\n\\(r=12-2\\sqrt{10}\\)이다.\n\n따라서\n\\(PQ=2PM=2(r-2)=20-4\\sqrt{10}\\rm\\,cm\\)이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q21.svg"
   },
   {
@@ -662,7 +662,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -676,7 +676,7 @@ window.questionBank = [
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "같은 세 호의 크기를\n$\\wideparen{AB}=\\wideparen{BC}=\\wideparen{CD}=x^\\circ$라 하자.\n\n$\\angle DAB$는 호 $DB=\\wideparen{DC}+\\wideparen{CB}=2x^\\circ$에 대한 원주각이므로\n$\\angle DAB=x^\\circ$이다.\n같은 방법으로 $\\angle ADC=x^\\circ$이다.\n\n$E,A,B$가 한 직선 위에 있고 $E,D,C$가 한 직선 위에 있으므로\n$\\angle DAE=180^\\circ-x^\\circ$,\n$\\angle ADE=180^\\circ-x^\\circ$이다.\n\n$\\triangle ADE$에서\n$(180^\\circ-x^\\circ)+(180^\\circ-x^\\circ)+28^\\circ=180^\\circ$\n이므로 $x=104$이다.\n\n$F$는 $AC$와 $BD$의 교점이다.\n$\\angle FAD=\\angle CAD=104^\\circ\\div2=52^\\circ$,\n$\\angle ADF=\\angle ADB=104^\\circ\\div2=52^\\circ$이다.\n\n따라서 $\\triangle AFD$에서\n$\\angle AFD=180^\\circ-52^\\circ-52^\\circ=76^\\circ$이다.\n\n따라서 구하는 각은 $76^\\circ$이다.",
+    "solution": "세 호 \\(\\wideparen{AB},\\wideparen{BC},\\wideparen{CD}\\)의 크기를 모두 \\(x^\\circ\\)라 하자.\n\n점 \\(E,A,B\\)가 한 직선 위에 있으므로\n\\(\\angle EAD=180^\\circ-\\angle BAD\\)이다.\n\\(\\angle BAD\\)는 호 \\(BCD\\)에 대한 원주각이고\n호 \\(BCD\\)의 크기는 \\(2x^\\circ\\)이므로\n\\(\\angle BAD=x^\\circ\\)이다.\n따라서\n\\(\\angle EAD=180^\\circ-x^\\circ\\)이다.\n\n같은 방법으로 \\(E,D,C\\)가 한 직선 위에 있고\n\\(\\angle ADC\\)는 호 \\(ABC\\)에 대한 원주각이므로\n\\(\\angle ADE=180^\\circ-x^\\circ\\)이다.\n\n삼각형 \\(AED\\)의 내각의 합을 이용하면\n\\(28^\\circ+(180^\\circ-x^\\circ)+(180^\\circ-x^\\circ)=180^\\circ\\)이다.\n따라서 \\(x=104\\)이다.\n\n이제\n\\(\\angle FAD=\\angle CAD=\\dfrac{104^\\circ}{2}=52^\\circ\\),\n\\(\\angle ADF=\\angle ADB=\\dfrac{104^\\circ}{2}=52^\\circ\\)이다.\n\n따라서 삼각형 \\(AFD\\)에서\n\\(\\angle AFD=180^\\circ-52^\\circ-52^\\circ=76^\\circ\\)이다.",
     "solutionImage": "assets/images/24_연향중_2학기_기말_중3_기출/solution_q22.svg"
   },
   {
@@ -702,6 +702,6 @@ window.questionBank = [
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "solution": "자료 $2,2a,a-1,a+4,a$의 평균은\n$\\dfrac{2+2a+(a-1)+(a+4)+a}{5}=a+1$이다.\n\n평균 $a+1$에 대한 각 변량의 편차는\n$1-a,\\ a-1,\\ -2,\\ 3,\\ -1$이다.\n따라서 분산은\n$\\dfrac{(1-a)^2+(a-1)^2+(-2)^2+3^2+(-1)^2}{5}$\n$=\\dfrac{2(a-1)^2+14}{5}$이다.\n\n분산이 $4$이므로\n$\\dfrac{2(a-1)^2+14}{5}=4$\n$2(a-1)^2+14=20$\n$(a-1)^2=3$이다.\n\n$a=1\\pm\\sqrt3$인데 $a$는 양수이므로\n$a=1+\\sqrt3$이다.\n따라서 평균은\n$a+1=2+\\sqrt3$이다.\n\n따라서 구하는 평균은 $2+\\sqrt3$이다."
+    "solution": "자료는\n\\(2,\\ 2a,\\ a-1,\\ a+4,\\ a\\)이다.\n평균을 먼저 구하면\n\\(\\dfrac{2+2a+(a-1)+(a+4)+a}{5}=a+1\\)이다.\n\n평균이 \\(a+1\\)이므로 각 변량의 편차는 차례로\n\\(1-a,\\ a-1,\\ -2,\\ 3,\\ -1\\)이다.\n\n분산이 \\(4\\)이므로\n\\(\\dfrac{(1-a)^2+(a-1)^2+(-2)^2+3^2+(-1)^2}{5}=4\\)이다.\n따라서\n\\(\\dfrac{2(a-1)^2+14}{5}=4\\),\n\\(2(a-1)^2=6\\),\n\\((a-1)^2=3\\)이다.\n\n그러므로\n\\(a=1\\pm\\sqrt3\\)이다.\n\\(a\\)는 양수이고 \\(1-\\sqrt3<0\\)이므로\n\\(a=1+\\sqrt3\\)이다.\n\n따라서 평균은\n\\(a+1=2+\\sqrt3\\)이다."
   }
 ];
