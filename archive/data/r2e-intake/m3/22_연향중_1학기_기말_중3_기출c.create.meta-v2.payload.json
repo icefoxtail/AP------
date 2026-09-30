@@ -1,0 +1,826 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M3_CREATE_META_V2_PAYLOAD_v1",
+  "status": "V2_CREATE_METADATA_AUDITED",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "cohort": "M3",
+  "canonicalOrdinal": 37,
+  "lane": "CREATE-1",
+  "examFile": "22_연향중_1학기_기말_중3_기출c.js",
+  "sourceArchiveFile": "archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+  "baseMainSha": "5cb6a311b1364c6186b5961b74681a320f34a55a",
+  "sourceExamBlobSha": "eda24492496203ffc01baef703ff6c8608b71420",
+  "finalArtifactSha": "ca328f6516037f92a858de22e6c73debb2dbce36",
+  "stageArtifactRef": "git-blob:ca328f6516037f92a858de22e6c73debb2dbce36",
+  "solutionRewrite": "FULL_ALL_QUESTIONS",
+  "solutionRewriteAttempted": "21/21",
+  "solutionRewriteResolved": "21/21",
+  "sourceParity": {
+    "denominator": 21,
+    "content": "21/21 exact",
+    "choices": "21/21 exact",
+    "answer": "21/21 exact",
+    "image": "21/21 exact",
+    "solutionImage": "21/21 exact",
+    "protectedFieldDrift": 0
+  },
+  "visualAudit": {
+    "freshReadQuestionIds": [
+      11,
+      12,
+      15,
+      18,
+      20
+    ],
+    "passCount": 5,
+    "sourceAssetDefects": {
+      "19": "SOURCE_ASSET_MISSING: stem references figure; no image field and q19.png absent; text conditions remain sufficient to solve"
+    }
+  },
+  "layoutAudit": {
+    "status": "PASS",
+    "gridQuestionIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "subjective2upQuestionIds": [
+      19,
+      20,
+      21
+    ],
+    "changedQuestionIds": [
+      19,
+      20,
+      21
+    ]
+  },
+  "curriculumCourseAudit": "FULL_ALL_QUESTIONS",
+  "curriculumCourseAuditCount": "21/21",
+  "metadataAudit": "FULL_ALL_QUESTIONS",
+  "metadataAuditCount": "21/21",
+  "taxonomyAudit": "FULL_ALL_QUESTIONS",
+  "taxonomyAuditCount": "21/21",
+  "rpmSemanticAudit": "FULL_ALL_QUESTIONS",
+  "rpmSemanticAuditCount": "21/21",
+  "relationalMetadataAudit": "FULL_ALL_QUESTIONS",
+  "relationalMetadataAuditCount": "21/21",
+  "canonicalBindingRuntimeAudit": "FULL_ALL_QUESTIONS",
+  "canonicalBindingRuntimeAuditCount": "21/21",
+  "difficultyAudit": "FULL_ALL_QUESTIONS",
+  "difficultyAuditCount": "21/21",
+  "itemHoldCount": 1,
+  "itemHoldQuestionIds": [
+    19
+  ],
+  "itemHoldReasons": {
+    "19": "SOURCE_ASSET_MISSING"
+  },
+  "metadataCanonicalHoldCount": 0,
+  "metadataCanonicalHoldQids": [],
+  "metadataCanonicalHoldReasons": {},
+  "semanticFinalCount": 21,
+  "projectionReuseCount": 0,
+  "projectionBindingPendingCount": 6,
+  "projectionUnmaterializedCount": 15,
+  "projectionNotAttemptedCount": 0,
+  "difficultyDistribution": {
+    "B1": 6,
+    "B2": 9,
+    "B3": 6,
+    "B4": 0,
+    "B5": 0
+  },
+  "rows": [
+    {
+      "qid": 1,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-029",
+      "l3": "이차방정식과 해",
+      "l4": "이차방정식 판별",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "이차방정식 판별",
+      "tags": [
+        "객관식",
+        "이차방정식 판별"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 2,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-029",
+      "l3": "이차방정식과 해",
+      "l4": "이차방정식 판별",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "이차방정식 판별",
+      "tags": [
+        "객관식",
+        "이차방정식 판별"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 3,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-031",
+      "l3": "이차방정식과 해",
+      "l4": "해가 주어진 이차방정식의 계수 결정",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "해가 주어진 이차방정식의 계수 결정",
+      "tags": [
+        "객관식",
+        "해가 주어진 이차방정식의 계수 결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 4,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-034",
+      "l3": "제곱근·완전제곱식을 이용한 풀이",
+      "l4": "완전제곱식",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "완전제곱식을 이용한 풀이",
+      "tags": [
+        "객관식",
+        "완전제곱식을 이용한 풀이"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 5,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-035",
+      "l3": "근의 공식",
+      "l4": "근의 공식",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "근의 공식",
+      "tags": [
+        "객관식",
+        "근의 공식"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 6,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "rpmRecordId": "M3-RPM-036",
+      "l3": "근의 공식",
+      "l4": "근의 개수·판별",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "근의 개수·판별",
+      "tags": [
+        "객관식",
+        "근의 개수·판별"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 7,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-043",
+      "l3": "이차함수의 뜻",
+      "l4": "이차함수 판별",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "이차함수 판별",
+      "tags": [
+        "객관식",
+        "이차함수 판별"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 8,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-046",
+      "l3": "y=ax²의 그래프",
+      "l4": "대칭축·증감",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "대칭축·증감",
+      "tags": [
+        "객관식",
+        "대칭축·증감"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 9,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-045",
+      "l3": "y=ax²의 그래프",
+      "l4": "그래프의 모양",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "그래프의 모양",
+      "tags": [
+        "객관식",
+        "그래프의 모양"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 10,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-045",
+      "l3": "y=ax²의 그래프",
+      "l4": "그래프의 모양",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "그래프의 모양",
+      "tags": [
+        "객관식",
+        "그래프의 모양"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 11,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-048",
+      "l3": "그래프와 식",
+      "l4": "계수 결정",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "계수 결정",
+      "tags": [
+        "객관식",
+        "계수 결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 12,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-048",
+      "l3": "그래프와 식",
+      "l4": "계수 결정",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "계수 결정",
+      "tags": [
+        "객관식",
+        "계수 결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 13,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-049",
+      "l3": "꼭짓점형",
+      "l4": "평행이동",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "평행이동",
+      "tags": [
+        "객관식",
+        "평행이동"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 14,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-049",
+      "l3": "꼭짓점형",
+      "l4": "평행이동",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "평행이동",
+      "tags": [
+        "객관식",
+        "평행이동"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 15,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-053",
+      "l3": "그래프와 계수",
+      "l4": "그래프 위치",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_VERTEX"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "그래프 위치",
+      "tags": [
+        "객관식",
+        "그래프 위치"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 16,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-050",
+      "l3": "꼭짓점형",
+      "l4": "꼭짓점·축",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_VERTEX"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "꼭짓점·축",
+      "tags": [
+        "객관식",
+        "꼭짓점·축"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 17,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-051",
+      "l3": "일반형",
+      "l4": "완전제곱식 변형",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "완전제곱식 변형",
+      "tags": [
+        "객관식",
+        "완전제곱식 변형"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 18,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-054",
+      "l3": "그래프와 계수",
+      "l4": "조건으로 식 구하기",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "조건으로 식 구하기",
+      "tags": [
+        "객관식",
+        "조건으로 식 구하기"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 19,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+      "rpmRecordId": "M3-RPM-041",
+      "l3": "거리·속력·기타",
+      "l4": "운동 문제",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "운동 문제",
+      "tags": [
+        "서술형",
+        "운동 문제"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 20,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-048",
+      "l3": "그래프와 식",
+      "l4": "계수 결정",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "계수 결정",
+      "tags": [
+        "서술형",
+        "계수 결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    },
+    {
+      "qid": 21,
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "rpmRecordId": "M3-RPM-051",
+      "l3": "일반형",
+      "l4": "완전제곱식 변형",
+      "semanticStatus": "FINAL",
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_VERTEX"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "완전제곱식 변형",
+      "tags": [
+        "서술형",
+        "완전제곱식 변형"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "legacyLevelAtCompare": "중"
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M3_CREATE_META_V2_SOLUTIONS_PART_v1",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "canonicalOrdinal": 37,
+  "part": "q11-q21",
+  "rows": [
+    {
+      "qid": 11,
+      "solution": "[키포인트] 그래프가 지나는 격자점을 이용해 계수를 구한다.\n정석 풀이:\n폭이 좁은 $y=ax^2$는 $(1,4)$를 지나므로 $a=4$이다. 폭이 넓은 $y=bx^2$는 $(2,1)$을 지나므로 $b=\\dfrac14$이다.\n따라서 $ab=1$이므로 정답은 ③이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 12,
+      "solution": "[키포인트] $x=2$에서 두 그래프의 $y$좌표를 선분 길이로 바꾼다.\n정석 풀이:\n$A=(2,12)$, $B=(2,4a)$, $C=(2,0)$이므로 $AB=12-4a$, $BC=4a$이다. $AB=3BC$에서 $12-4a=12a$이므로 $a=\\dfrac34$이다.\n따라서 정답은 ③이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 13,
+      "solution": "[키포인트] 평행이동으로 포개지려면 $x^2$의 계수가 같아야 한다.\n정석 풀이:\n주어진 그래프의 계수는 $\\dfrac34$이다. 보기 중 같은 계수를 갖는 것은 $y=\\dfrac34(x+1)^2-4$뿐이다.\n따라서 정답은 ⑤이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 14,
+      "solution": "[키포인트] 평행이동한 식을 세우고 점의 좌표를 대입한다.\n정석 풀이:\n$x$축 방향으로 $-1$만큼 옮기면 $y=-3(x+1)^2$이다. $(m,-12)$를 대입하면 $(m+1)^2=4$이므로 $m=1,-3$이다.\n합은 $-2$이므로 정답은 ①이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 15,
+      "solution": "[키포인트] 포물선의 방향과 꼭짓점 $(p,q)$의 위치를 읽는다.\n정석 풀이:\n포물선이 위로 볼록하므로 $a<0$이고, 꼭짓점이 제1사분면에 있으므로 $p>0,q>0$이다.\n따라서 정답은 ④이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 16,
+      "solution": "[키포인트] 축, 꼭짓점, 폭을 식에서 직접 확인한다.\n정석 풀이:\n$y=3x^2-3$의 축은 $x=0$, 꼭짓점은 $(0,-3)$이므로 $y$축에 대칭이다. 또한 $|3|>|1|$이어서 $y=x^2-3$보다 폭이 좁다.\n따라서 정답은 ①이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 17,
+      "solution": "[키포인트] 완전제곱식으로 고쳐 그래프의 성질을 확인한다.\n정석 풀이:\n$y=-x^2+4x-1=-(x-2)^2+3$이므로 축은 $x=2$, 꼭짓점은 $(2,3)$이다. $x=0$이면 $y=-1$이므로 $y$축과의 교점은 $(0,-1)$이다.\n따라서 옳지 않은 것은 ⑤이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 18,
+      "solution": "[키포인트] 두 $x$절편으로 인수형을 세우고 $y$절편으로 계수를 정한다.\n정석 풀이:\n$x$절편이 $-5,2$이므로 $y=k(x+5)(x-2)$이다. $(0,-10)$을 지나므로 $k=1$, 따라서 $y=x^2+3x-10$이다.\n$a+b+c=1+3-10=-6$이므로 정답은 ④이다.",
+      "resolved": true,
+      "layoutTag": "grid"
+    },
+    {
+      "qid": 19,
+      "solution": "[키포인트] 출발 후 $t$초일 때 $PB$, $BQ$를 $t$로 나타낸다.\n정석 풀이:\n$AB=CD=12$이므로 $PB=12-t$, $BQ=2t$이다. 넓이 조건에서 $\\dfrac12(12-t)(2t)=35$, 즉 $(t-5)(t-7)=0$이다.\n처음으로 넓이가 35 cm²가 되는 때는 5초 후이다.",
+      "resolved": true,
+      "layoutTag": "subjective-2up",
+      "itemHoldReason": "SOURCE_ASSET_MISSING",
+      "evidence": "stem references figure; current main has no image field and q19.png is absent; text is sufficient for the mathematics"
+    },
+    {
+      "qid": 20,
+      "solution": "[키포인트] 원래 그래프의 계수를 구한 뒤 $x$축 대칭식을 만든다.\n정석 풀이:\n$(4,-4)$를 지나므로 $-4=16a$에서 $a=-\\dfrac14$이다. $x$축 대칭 그래프는 $y=\\dfrac14x^2$이고 $(6,k)$를 대입하면 $k=9$이다.\n따라서 $k=9$이다.",
+      "resolved": true,
+      "layoutTag": "subjective-2up"
+    },
+    {
+      "qid": 21,
+      "solution": "[키포인트] 완전제곱식으로 고치면 축과 꼭짓점, 증감을 바로 읽을 수 있다.\n정석 풀이:\n$y=-\\dfrac12x^2+x+\\dfrac72=-\\dfrac12(x-1)^2+4$이다. 따라서 축은 $x=1$, 꼭짓점은 $(1,4)$이고 위로 볼록하다.\n$x<1$에서는 $x$가 증가할수록 $y$가 증가하고, $x>1$에서는 $x$가 증가할수록 $y$가 감소한다.",
+      "resolved": true,
+      "layoutTag": "subjective-2up"
+    }
+  ]
+}
