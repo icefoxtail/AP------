@@ -1,14 +1,14 @@
 # rules source pack manifest
 
 created: 2026-09-19T09:21:00+09:00
-updated: 2026-09-30
+updated: 2026-10-01
 scope: current operational rules under `docs/rules/` excluding `05_DESIGN/` and `90_ARCHIVE/`
 excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical rule versions under `90_ARCHIVE/`
 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 39118 bytes | sha256 0187536fc8cd970189dde6e5ef038e51a3911b10371009c834d59abbe2588b0a
+- 00_RULES_INDEX.md | 39515 bytes | sha256 350b80fde83337de05901a4529afacb185dba9bc3bf6bcfb3cb857467e767bb3
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 22529 bytes | sha256 41fa59fcfa892d50f4b9d94d2c99c611a01fc428b3565ac782d19d8b8d4241ed
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12887 bytes | sha256 7642674cf88b5ac9949e12bd867412b6a70be42d6998763446a0883ccbc7a72f
@@ -22,8 +22,8 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 10947 bytes | sha256 9e031446c534e353abb76f8333241b3b270ce7a4425be5463103340c4d88394b
-- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 24589 bytes | sha256 9844766616d7cf9f36b16f3f3643914bdf6faf409e0e16e76fe9d6d9f94b22ba
-- 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 9062 bytes | sha256 e3f8ee3bbb39d84194bb327decf144af23b6c954871eb160e7284953f0e82686
+- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 24858 bytes | sha256 0ce10db60310157e316dabfff94d5ff2bf0a8809980f335740d9af468537dc55
+- 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 5621 bytes | sha256 66f0d7ab53945f9fb7b472522b8fd6eaa39da539bb9ab3c5200590bb605e488b
 - 02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md | 12704 bytes | sha256 06525c1566aa471b90aced31fbf813a55ef9570cb74322ae4ffacc4b3697b735
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 19159 bytes | sha256 2a98dca6246c84bd02b65a0264d1256fef0c31c6db914d14925cb07b6aad9311
