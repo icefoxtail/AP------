@@ -1,0 +1,508 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "a452eb986f6ebb5ac63c87056aba7bd200915131",
+  "rulePackSha": "sha256:dcf5d0cf87e0f16c58b9b70c6902481f2604e16f097d16f89581b706d6437ae1",
+  "target": {
+    "examId": "26_왕운중_2학기_중간_중2_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p001.jpg",
+        "bytes": 713984,
+        "sha256": "sha256:8105dcd31bfa84d7035463ce8b17dffb67983e6d9a111711d3e91513f501e9b6"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p002.jpg",
+        "bytes": 486280,
+        "sha256": "sha256:7c4d013497b105844ee1c18834fff502e269e43bc7ac1a2d9cde5c1ee3e7eef7"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p003.jpg",
+        "bytes": 615616,
+        "sha256": "sha256:80d262d04bbaf4270cb46d2b2ba2b3ee1a33f384541b4fc74b7e2fff9eb0c744"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p004.jpg",
+        "bytes": 462264,
+        "sha256": "sha256:756da1d60eb2993ce5eefb3586d472902e67906b23233d717fde1299842b1641"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p005.jpg",
+        "bytes": 581112,
+        "sha256": "sha256:53f0cd1067d18061e89f0fe0fffc6934c00fbddbede6696269c38fde7b081bc3"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중2_기출\\source\\page_p006.jpg",
+        "bytes": 607056,
+        "sha256": "sha256:9e6f3cd6431b502c8bbbbbef5b256ee9d123bd3dbbc0f40c367ed4f1d7c2e09a"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "Codex extraction session",
+  "readerSessionId": "codex/archive-2026-2mid-prompt-assets/2026-09-30/wangun-m2",
+  "startedAt": "2026-09-30T13:17:23.046Z",
+  "frozenAt": "2026-09-30T13:17:23.046Z",
+  "baselineObservation": "",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js",
+      "rawSha256": "sha256:1108e7be62bc7567487de533e91984368417bfe2714141875cc0d7f0961ec49d",
+      "bytes": 51222,
+      "examTitle": "25_왕운중_2학기_중간_중2_수학",
+      "standardCourse": [
+        "중2 수학"
+      ],
+      "questionCount": 25,
+      "selectionReason": "Latest same-grade, same-course, same-semester/midterm production reference available on the frozen main; one same-school reference and one distinct-school reference.",
+      "qualityAcceptanceReason": "Complete sample banks have populated metadata, answers, solutions, and multi-step reasoning; no answer-only solutions by the checked structure. Static solution-image paths are separate from problem images; older missing caption fields are documented and not copied.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "25 sequential questions; every answer and solution exists; objective and written-response rows match schema."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "All complete solution strings were checked for worked steps and intermediate math; no answer-only solutions were detected."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Course, unit/subunit, confidence/depth, level, and question-type metadata are populated throughout the sample bank."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "21/25 rows point to source problem visuals in separate per-question paths."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "17/25 rows use a distinct solutionImage field; no problem image is reused as a solution visual."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All questions use grid; default prompt and choice placement is retained without blanket overrides."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:4502ff24d76cc52e6244f50d506e69149b739923a49b54936b5f8aa640fdd99c",
+          "solutionExcerpt": "[키포인트] 서로 평행한 두 직선은 기울기가 같다.\n주어진 그래프는 $(-2,0)$과 $(0,4)$를 지나므로 기울기는 $\\dfrac{4-0}{0-(-2)}=2$이다.\n각 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=180, explicit lines=4, math blocks=6, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:06675206f2c1038e456ab9c56a66cbbada1028d8ae13ea92848f30b299de38c0",
+          "solutionExcerpt": "[키포인트] 기울기와 $y$절편의 부호를 식에서 읽는다.\n$x-ay+b=0$을 $y$에 대하여 정리하면 $y=\\dfrac{1}{a}x+\\dfrac{b}{a}$이다.\n그래프가",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=220, explicit lines=4, math blocks=11, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:5cbee0cbb46cda1e41a72d32a1b0e534d37b94a5ef1dfec8ec69cb2ce93fcba3",
+          "solutionExcerpt": "[키포인트] $x$축에 평행한 직선은 모든 점의 $y$좌표가 같다.\n주어진 직선은 점 $(-3,4)$를 지나므로 그 직선 위 모든 점의 $y$좌표는 4이다.\n따라서 직선의 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=117, explicit lines=3, math blocks=5, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:dfd92183d84891bcd20caaf75a7ed277ba740f7150b7e91b82185ddd6bee4d2f",
+          "solutionExcerpt": "[키포인트] 두 직선과 $y$축이 만드는 삼각형의 밑변과 높이를 구한다.\n첫째 직선은 $y=x+4$, 둘째 직선은 $y=-2x-2$이다. 두 직선의 $y$절편은 각각 $(0",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=248, explicit lines=4, math blocks=14, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:2319dae8c5af8f71f96c8739aa27a7dd502a40bcc5af8ad0394dc510c66d1f7e",
+          "solutionExcerpt": "[키포인트] 연립방정식의 해는 두 직선의 교점이다.\n그래프에서 두 직선은 점 $(3,1)$에서 만난다. 식으로 확인하면 $x+y=4$에서 $y=4-x$이고, 이를 $2x-y",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=166, explicit lines=3, math blocks=8, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:a6fe1f1790ab7de311292c83b6d69e651bbd48df313bb7fb58b0799eb7682d79",
+          "solutionExcerpt": "[키포인트] 해가 없으면 두 직선은 평행하고, 해가 무수히 많으면 두 직선이 일치한다.\n첫째 식은 $y=\\dfrac43x+2$, 둘째 식은 $y=\\dfrac a3x-\\dfr",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=270, explicit lines=4, math blocks=8, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:1140f787f3dfebce7ea19573b899f468dedc23457bb6c4485d39e504beef9765",
+          "solutionExcerpt": "[키포인트] 같은 크기의 각을 이용해 이등변삼각형과 정삼각형을 차례로 찾는다.\n$\\triangle BDC$에서 $\\angle DBC=\\angle BCD=30^\\circ$이므",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=300, explicit lines=4, math blocks=10, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:89491afddb2a89c6476eb7467778b0e2d35b44b25d6463c828a3d7eb3d9f3379",
+          "solutionExcerpt": "[키포인트] 두 직각삼각형 $ABD$, $CAE$의 합동을 이용한다.\n$\\angle ADB=\\angle CEA=90^\\circ$이고, 직각이등변삼각형이므로 $AB=AC$이다",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=281, explicit lines=4, math blocks=12, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:9e736b93b45ea166ef518e7a6435a0e01609c9a5b8ef13b7998a93abdb65bc68",
+          "solutionExcerpt": "[키포인트] 증명 과정에서 확인된 조건이 직각삼각형의 어떤 합동 조건인지 판단한다.\n두 삼각형은 모두 직각삼각형이므로 $\\angle C=\\angle F=90^\\circ$이다",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=230, explicit lines=4, math blocks=3, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:931c03361d8856f665b7fd26e2d28d34079296d439be5026194094e639918f2d",
+          "solutionExcerpt": "[키포인트] 외심에서 세 꼭짓점까지의 거리가 같다는 성질을 두 번 이용한다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다. 따라서 $\\angle OBC",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=391, explicit lines=4, math blocks=14, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:bbe5c51099c0c0843eed0b546859009f701f068a07cbaf3ae02b8adb74087780",
+          "solutionExcerpt": "[키포인트] 외심에서 꼭짓점까지의 거리는 모두 외접원의 반지름이다.\n외접원의 반지름을 $R$이라 하면 $OA=OB=R$이다. $\\triangle OAB$의 둘레가 29이므로",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=196, explicit lines=4, math blocks=7, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:5b228f105bfc74babee19bcda5571f80331342f21746273a5b79b3700c16be7f",
+          "solutionExcerpt": "[키포인트] 내심에서 세 변까지의 거리가 같음을 이용해 내접원의 반지름을 구한다.\n직각삼각형 $ABC$의 넓이는 $\\dfrac12\\times12\\times16=96\\math",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=352, explicit lines=6, math blocks=13, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:103b77aa41d995fe42a330a4a7ebca07620cb2017b9464e030df3a941a1362a9",
+          "solutionExcerpt": "[키포인트] 두 내각의 이등분선의 교점은 삼각형의 내심이다.\n점 $I$는 $\\angle A$, $\\angle B$의 이등분선의 교점이므로 내심이다. 따라서 $BI$는 $\\a",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=341, explicit lines=4, math blocks=11, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:736f350c02a738174093fddfb4608af32ed6ed1673824d2ae1ca184cd684fb66",
+          "solutionExcerpt": "[키포인트] 평행사변형의 마주 보는 변과 이웃한 각의 성질을 이용한다.\n마주 보는 변의 길이는 같으므로 $AB=CD=10\\mathrm{cm}$이다. 따라서 $x=10$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=188, explicit lines=4, math blocks=6, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:6a12308c2b353def2ba0fcc5af2c17b90b0cb226a11cc86fae2dbb0ae0fa5d40",
+          "solutionExcerpt": "[키포인트] 평행사변형의 대각선은 서로를 이등분한다.\n평행사변형에서 $AB=CD=10\\mathrm{cm}$이다. $\\triangle ABO$의 둘레가 28cm이므로 $AO+",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=217, explicit lines=4, math blocks=6, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:5aa13a5f72e7ca4efda195ade6805410c38a21597ad3b92f1ca174ae27cbe49c",
+          "solutionExcerpt": "[키포인트] 각 빈칸이 증명 흐름에서 어떤 내용을 나타내는지 확인한다.\n$AB\\parallel DC$이므로 $\\angle BAC=\\angle DCA$이고, $AD\\paral",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=421, explicit lines=4, math blocks=11, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:ba808305c6d182ab88286c145c2e4c703e073cfe01eb237d78c9006f0e4b0288",
+          "solutionExcerpt": "[키포인트] 평행사변형의 대각선 넓이 분할과 중심대칭을 이용해 넓이 관계를 확인한다.\n평행사변형의 두 대각선은 서로를 이등분하므로 $\\triangle AOB$, $\\tria",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=650, explicit lines=6, math blocks=27, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:f11cb8c9fa113f5c4956a9cbbde509b984d102ee09a78a4cb45979faae783a42",
+          "solutionExcerpt": "[키포인트] 각의 이등분선과 평행선의 엇각을 이용해 두 이등변삼각형을 찾는다.\n$AF$는 $\\angle A$의 이등분선이므로 $\\angle BAF=\\angle FAD$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=427, explicit lines=4, math blocks=19, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:00eb14b3e6954850e9f4a8797e636fef670066bc4382cb4936e301a71e6f3592",
+          "solutionExcerpt": "[키포인트] 직사각형의 대각선은 길이가 같고 서로를 이등분한다.\n$AC=BD$이고 $AO=CO=\\dfrac12AC$, $BO=DO=\\dfrac12BD$이다. 두 대각선의 길",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=257, explicit lines=4, math blocks=6, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:3eb34bff37090ab6ca5b5bb68a0c5bbc9a7f2d5d286883b818f3b621deb0d315",
+          "solutionExcerpt": "[키포인트] 주어진 조건이 반드시 마름모를 보장하는지 확인한다.\n④에서 두 쌍의 대각이 각각 같으면 그 사각형은 평행사변형이다. 평행사변형의 두 대각선이 서로 수직이면 마름",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=218, explicit lines=4, math blocks=0, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:f490b8e0f887d3ad985b2f76dcee9689fa33aec495c67a92be4f35e47600afa7",
+          "solutionExcerpt": "[키포인트] 마름모와 정사각형의 대각선 성질을 각각 이용한다.\n마름모의 대각선은 서로 수직이고 꼭짓각을 이등분한다. $\\triangle BOC$에서 $\\angle BOC=9",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=343, explicit lines=4, math blocks=9, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:07fdbe84a82dd16e25a8697cebbe99f974537820638039753dd62e33c6b0e30f",
+          "solutionExcerpt": "[키포인트] 수선과 평행선의 각 관계를 이용해 구하는 두 각을 한 삼각형의 두 각으로 바꾼다.\n$BP\\perp AC$이고 $\\angle PBQ=35^\\circ$이므로 직선 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=408, explicit lines=4, math blocks=13, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:baf2cdc5fa382581bc8e3605dfa98979fb37d2db7b8045903d9fb2f392edc5b2",
+          "solutionExcerpt": "[키포인트] 그래프에서 각 직선 위의 두 점을 읽어 기울기와 절편을 구한 뒤 두 식을 연립한다.\n완만한 직선은 $(-4,1)$, $(-2,2)$를 지나므로 기울기는 $\\df",
+          "observation": "Full source row structurally reviewed: type=서술형, level=중, solution length=451, explicit lines=5, math blocks=19, choice count=0; answer and worked solution are present."
+        },
+        {
+          "qid": 24,
+          "questionSha": "sha256:e811ab4937561b7cb42963ad4dcac07da1a536e4714dff9bb54be51e1afb605c",
+          "solutionExcerpt": "[키포인트] 두 직각삼각형의 빗변과 다른 한 변의 길이를 비교하여 합동을 보인다.\n$M$은 $BC$의 중점이므로 $BM=CM$이다. 또한 $MD\\perp AB$, $ME\\p",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=320, explicit lines=4, math blocks=15, choice count=0; answer and worked solution are present."
+        },
+        {
+          "qid": 25,
+          "questionSha": "sha256:f63f43430c8987761b77e2b86a27cb9cddd25abd68b591b3ddd70b7846f69f61",
+          "solutionExcerpt": "[키포인트] 대각선을 그어 두 삼각형의 합동을 보인 뒤, 나머지 한 쌍의 대변도 평행함을 증명한다.\n대각선 $AC$를 긋는다. $AB\\parallel CD$이므로 엇각인 $",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=405, explicit lines=5, math blocks=14, choice count=0; answer and worked solution are present."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+      "rawSha256": "sha256:77364684e60ada50e2d83df9c11716a24df77267d0a51fd0df5a5224b3716c38",
+      "bytes": 41540,
+      "examTitle": "25_연향중_2학기_중간_중2_수학",
+      "standardCourse": [
+        "중2 수학"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Latest same-grade, same-course, same-semester/midterm production reference available on the frozen main; one same-school reference and one distinct-school reference.",
+      "qualityAcceptanceReason": "Complete sample banks have populated metadata, answers, solutions, and multi-step reasoning; no answer-only solutions by the checked structure. Static solution-image paths are separate from problem images; older missing caption fields are documented and not copied.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "23 sequential questions; every answer and solution exists; objective and written-response rows match schema."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "All complete solution strings were checked for worked steps and intermediate math; no answer-only solutions were detected."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Course, unit/subunit, confidence/depth, level, and question-type metadata are populated throughout the sample bank."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "16/23 rows point to source problem visuals in separate per-question paths."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "0/23 rows use a distinct solutionImage field; no problem image is reused as a solution visual."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All questions use grid; default prompt and choice placement is retained without blanket overrides."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:8068ddb8e99efbc2e62754032639613afc376616767e586174c57eabb0244ddb",
+          "solutionExcerpt": "[키포인트] 방정식 $x=4$의 모든 해는 $x$좌표가 $4$인 점이다.\\n조건 정리: $y$의 값에는 제한이 없고 $x$의 값만 항상 $4$이다.\\n풀이 방향: 좌표평면에",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=247, explicit lines=1, math blocks=12, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:8498651bf4f72fc9169ca29b817af12645690a08d04678aaf2398ffc2109285d",
+          "solutionExcerpt": "[키포인트] 평행사변형이 되는 충분조건인지 각 보기를 하나씩 판단한다.\\n조건 정리: 한 쌍의 대변이 평행하고 길이가 같거나, 두 쌍의 대변 또는 대각이 각각 같거나, 두 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=288, explicit lines=1, math blocks=1, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:377c2932b7e365a0d87f6622863e3cdefea988d04e70841832e44c617c932096",
+          "solutionExcerpt": "[키포인트] 교점의 좌표는 두 직선의 방정식을 모두 만족한다.\\n조건 정리: 교점은 $(1,b)$이고 두 방정식은 $4x-y=5$, $ax-2y=6$이다.\\n풀이 방향: 첫",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=280, explicit lines=1, math blocks=15, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:4d6d11ef6aaf7fc39348ec5e91f70f53fbf4388d93633e0e4906349faa2ec58e",
+          "solutionExcerpt": "[키포인트] 연립방정식의 해가 없으려면 두 직선이 서로 다른 평행선이어야 한다.\\n조건 정리: 두 식을 $y$에 대하여 정리하여 기울기와 $y$절편을 비교한다.\\n풀이 방향",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=275, explicit lines=1, math blocks=8, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:5a52eb43e6d738ed0c52b36889844312aa837bda4a95d64f801a3dfd38d5997b",
+          "solutionExcerpt": "[키포인트] 기울기와 두 절편의 부호로 직선이 지나는 사분면을 판단한다.\\n조건 정리: $a\\gt0$, $b\\lt0$이고 직선은 $x+ay-b=0$이다.\\n풀이 방향: 식을",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=305, explicit lines=1, math blocks=13, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:f5e851a4f87438c0bb4c85cda85b046b54988c7636648e626c8de368d6db0f53",
+          "solutionExcerpt": "[키포인트] 세 직선의 교점을 꼭짓점으로 하는 삼각형의 밑변과 높이를 구한다.\\n조건 정리: 한 직선은 $x=0$이고 나머지 두 직선은 $x+y=4$, $3x-y=4$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=363, explicit lines=1, math blocks=18, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:5bc800e1f05070b6b6228396913407f92c4d0bf3f221f05380759ac7208a6c50",
+          "solutionExcerpt": "[키포인트] 두 직각삼각형의 합동 조건을 정확히 판별한다.\\n조건 정리: $P$는 $\\angle XOY$의 이등분선 위에 있고 $PA\\perp OX$, $PB\\perp OY",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=354, explicit lines=1, math blocks=10, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:39b5c3cb0f6821c8b10053abaddf13b2c6877f29f11d1e02c330921dbe9543a2",
+          "solutionExcerpt": "[키포인트] 수직이등분선 위의 점은 선분의 양 끝점까지의 거리가 같다.\\n조건 정리: $O$는 $AC$와 $BC$의 수직이등분선의 교점이다.\\n풀이 방향: $OA=OC$, ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=357, explicit lines=1, math blocks=15, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:a8ce3d37d84bfcdc4659fb6a9f6d9edbb2a6a6a52a13e789ac1ed9ec3be2a36c",
+          "solutionExcerpt": "[키포인트] 먼저 내심의 각 관계로 $x$를 구하고, 외심에서는 $OA=OB=OC$인 이등변삼각형의 각을 이용해 $y$를 구한다.\\n조건 정리: $I$는 $\\triangle",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=660, explicit lines=1, math blocks=28, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:2787027a5ccec38a7871c1358b374f8100b33476412e6ba0856076173609018a",
+          "solutionExcerpt": "[키포인트] 중심각의 비로 세 중심각을 구한 뒤, $OA=OB=OC$인 이등변삼각형의 밑각을 이용한다.\\n조건 정리: $O$는 $\\triangle ABC$의 외심이고 $\\a",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=556, explicit lines=1, math blocks=18, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:ef45250fb8a54cd3eb0d08256dd3d2e40239642443dceb8ce6a9dee242f82ce2",
+          "solutionExcerpt": "[키포인트] 한 점에서 원에 그은 두 접선의 길이는 같다.\\n조건 정리: $AD=AF=4$, $DB=BE=5$, $CE=CF$이다.\\n풀이 방향: $CE=CF=x$로 두고 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=273, explicit lines=1, math blocks=12, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:66b80757c5dcb34676500390da4f94c58c4dfbd9b086a44b66a51e3517126dcb",
+          "solutionExcerpt": "[키포인트] 각의 이등분선 위의 점에서 각의 두 변까지의 거리는 같다.\\n조건 정리: $AD$는 $\\angle A$의 이등분선이고, $D$에서 $AC$까지의 거리는 $CD=",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=377, explicit lines=1, math blocks=14, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:127648099ffb6449c2e636338470d6517101c4717c9ba4180bc6ebd273abce41",
+          "solutionExcerpt": "[키포인트] 마름모의 대각선과 각의 이등분 성질을 구분한다.\\n조건 정리: 마름모는 평행사변형이면서 네 변의 길이가 모두 같다.\\n풀이 방향: 대각선의 수직·이등분 성질과 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=359, explicit lines=1, math blocks=8, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:03cae2d60005433980434a531971db4654e3eafc8747d4aa494495ac0bd134c6",
+          "solutionExcerpt": "[키포인트] 평행사변형의 각과 각의 이등분, 직각 조건을 연결한다.\\n조건 정리: $\\angle C=108^\\circ$, $DE$는 $\\angle D$의 이등분선이고 $AE",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=405, explicit lines=1, math blocks=16, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:cdf9e7783fb7e3f2fa6f586753bca3f66ba1f4cb19fd412561bed70ef2e74b13",
+          "solutionExcerpt": "[키포인트] 각 도형의 판별 조건이 충분한지 확인한다.\\n조건 정리: 출발 도형은 평행사변형이며, 조건 (1)~(4)를 추가해 직사각형·마름모·정사각형을 판별한다.\\n풀이 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=327, explicit lines=1, math blocks=2, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:065e1d7db4f30d1cf352a4a9859bf0c99df302a9512c4ef0e62bd00ffb793612",
+          "solutionExcerpt": "[키포인트] 점 $C$가 점 $A$에 포개지므로 접는 선 $EF$ 위의 점은 $A$, $C$까지의 거리가 같고, 접기 전후 대응하는 각의 크기도 같다.\n조건 정리: $E$,",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=811, explicit lines=5, math blocks=39, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:9c16913f6ce081d8b0f3d9aa96b157d675af357e64dd43976c47497031f6be99",
+          "solutionExcerpt": "[키포인트] 같은 높이를 갖는 두 삼각형의 넓이비는 밑변의 길이비와 같다.\\n조건 정리: $P$는 $BC$ 위에 있고 $BP:PC=3:2$, $\\triangle ABC$의 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=351, explicit lines=1, math blocks=15, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:4efa4217b38139222449e68c00936025a1ab8ff4c32d7c92cb69408275d1240a",
+          "solutionExcerpt": "[키포인트] 두 직각삼각형의 합동으로 대응변의 길이와 각을 구한다.\\n조건 정리: $AB=AC$, $BD\\perp l$, $CE\\perp l$, $DB=6\\,\\mathrm{",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=497, explicit lines=1, math blocks=18, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:c6082643f6e6c671f9cc2ea1c8c621931f77e49f53f6ba20530ffbb939394916",
+          "solutionExcerpt": "[키포인트] 직각삼각형의 외심은 빗변의 중점이고, 내접원의 반지름은 삼각형의 넓이를 세 부분으로 나누어 구한다.\\n조건 정리: $\\angle C=90^\\circ$, $BC=",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=517, explicit lines=1, math blocks=17, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:a13425de3f892da5e6945d89ffdea7d40ce575457bbf2ba9dc3be145ed9b01ca",
+          "solutionExcerpt": "[키포인트] 이등변삼각형의 밑각과 평행선·맞꼭지각을 이용해 $DF$를 구한다.\\n조건 정리: 마름모이므로 $AB\\parallel CD$, $BC=CD=18$이고 $BE=BF",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=421, explicit lines=1, math blocks=19, choice count=5; answer and worked solution are present."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:8d5cfa7afede6f0edebf57be6e7264d070466a95a8b6f86dde8bad2eaa24f79f",
+          "solutionExcerpt": "[키포인트] 세 직선이 삼각형을 만들지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.\\n조건 정리: 세 번째 직선은 $ax+y+4=0$이고 $a\\",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=401, explicit lines=1, math blocks=16, choice count=0; answer and worked solution are present."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:dad2803f393cb978149d963e53aa5971f6f87d514f2fb1f5b185bb4ed359692c",
+          "solutionExcerpt": "[키포인트] 이등변삼각형의 두 밑각이 같다는 성질과 각의 이등분을 사용한다.\\n조건 정리: $AB=AC$, $\\angle A=56^\\circ$이고 $CD$는 $\\angle ",
+          "observation": "Full source row structurally reviewed: type=서술형, level=중, solution length=505, explicit lines=1, math blocks=18, choice count=0; answer and worked solution are present."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:fbbcdac8f2f20cdadf2335fa7da9db4b82ead334373ce6ebfa0cc05b8a0d7776",
+          "solutionExcerpt": "[키포인트] 정사각형의 대각선은 길이가 같고 서로 수직이등분하며 각 꼭짓각을 이등분한다.\\n조건 정리: $O$는 두 대각선의 교점이고 $OC=6\\,\\mathrm{cm}$, ",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=576, explicit lines=1, math blocks=17, choice count=0; answer and worked solution are present."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Each solution states the governing relationship and a worked reasoned step, not an answer alone.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|1",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|1"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "Use grade-appropriate geometric definitions and justify substitutions.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|1",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|1"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Translate given lengths, angles, equalities, and parallel conditions into explicit relations before calculating.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|23",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|21"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Keep equations and their consequences in a readable sequence.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|4",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|4"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Objective solutions close with the selected choice number.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|1",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|1"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "Level 상 solutions show the key intermediate geometric relations, not a guessed formula.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|17",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|15"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Written responses retain enough ordered construction and reasoning to support partial credit.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|23",
+        "archive/exams/original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js|21"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Keep source problem images separate from solution visuals.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|7"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "Use a solution visual when it helps explain a geometric step.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|7"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "New solution visuals require an accessible caption; legacy uncaptained paths are not copied into new candidates.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|7"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Visual labels and geometry must agree with the equations in the solution text.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m2/2mid/25_왕운중_2학기_중간_중2_수학.js|7"
+      ]
+    }
+  }
+}
