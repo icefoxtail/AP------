@@ -653,8 +653,9 @@
       ].includes(field));
   }
   function advancedEligible(record) {
+    const authority = advancedAuthority(record);
     return record.sourceStatus === "VERIFIED" && record.taxonomyStatus === "CONFIRMED" &&
-      (!record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
+      (authority !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   }
   function matches(record, filters = {}) {
