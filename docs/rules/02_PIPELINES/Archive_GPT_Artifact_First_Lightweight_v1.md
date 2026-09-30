@@ -156,7 +156,7 @@ CURRENT CREATE receipt에는 반드시 `solutionRewrite=FULL_ALL_QUESTIONS`와 `
 - REVIEW2: 다시 독립 재판정한다. 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`로 보낸다. 시험지 전체 HOLD를 만들지 않는다.
 - ITEM recovery는 별도 시험지 격리 레인을 만들지 않는다. 기존 REVIEW2 lane이 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 `ITEM_RECOVERY_QUEUE` 시험지 1개의 **held qid만** fresh 재판정한다. 해결된 qid만 제거하고, 모두 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다. 같은 미해결 근거를 새 evidence 없이 무한 반복하지 않는다.
 - BATCH/FINAL: item hold가 남은 시험지를 그 실행에서 건너뛰되 다른 시험지는 계속 처리한다. 해당 시험지는 item recovery가 끝나 `itemHoldCount=0`이 되면 `READY_FOR_COMMIT`으로 승격한다.
-- authority/connector/Git write 실패는 콘텐츠 HOLD가 아니라 `AUTHORITY_WRITE_PENDING` 같은 운영 상태다.
+- authority/connector/Git write 실패는 시험지 단위 상태로 남기지 않는다. primary write가 막히면 exact recovery ref/commit/blob을 `stageArtifactRef`로 사용해 stage를 정상 DONE*으로 닫는다. 어떤 exact artifact도 저장할 수 없는 Git 전역 장애만 `GLOBAL_WRITE_CAPABILITY_BLOCKER`로 보고하며 다른 eligible 작업은 계속한다.
 
 각 item hold 최소 기록: `questionUid/qid`, `reason`, `observedEvidence`, `unresolvedPoint`, `nextRequiredEvidenceOrCapability`, `createdStage`, `lastReviewedStage`.
 
@@ -308,7 +308,8 @@ stage
 base/input SHA
 final artifact SHA
 changedFiles
-PASS / PASS_AFTER_REPAIR / DONE_WITH_ITEM_HOLDS / AUTHORITY_WRITE_PENDING
+PASS / PASS_AFTER_REPAIR / DONE_WITH_ITEM_HOLDS
+authorityLocation / stageArtifactRef
 itemHoldQuestionIds (있을 때만)
 itemHoldReasons (있을 때만)
 ```
