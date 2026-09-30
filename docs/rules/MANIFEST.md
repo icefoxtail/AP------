@@ -1,7 +1,7 @@
 # rules source pack manifest
 
 created: 2026-09-19T09:21:00+09:00
-updated: 2026-09-30
+updated: 2026-10-01
 scope: current operational rules under `docs/rules/` excluding `05_DESIGN/` and `90_ARCHIVE/`
 excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical rule versions under `90_ARCHIVE/`
 
@@ -28,7 +28,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 19159 bytes | sha256 2a98dca6246c84bd02b65a0264d1256fef0c31c6db914d14925cb07b6aad9311
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 26401 bytes | sha256 82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b
-- 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 18488 bytes | sha256 9c3484c80709a7f798290a1bc416b13c51eb0069f50e4dff3efb3029094dd185
+- 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 20382 bytes | sha256 72cfa8026340f9a8c5aa37a55d5c2a9662186203033156224d8a228a8e43c390
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 131125 bytes | sha256 da233083c7651ff8f18f3439a7b92706e1a5ddd985a4cbf7cda78ddcf86f077e
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
 - 02_PIPELINES/수정프로토콜.md | 37658 bytes | sha256 8aab80144252d41426082064917bb36f4b6fd083fe04aad5c235415d5dc742f6
