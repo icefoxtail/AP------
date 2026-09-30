@@ -18,10 +18,10 @@ pilot lineage: 25 풍덕중 중1 2학기 중간 / 25 제일고 고1 2학기 중�
 
 ## 1. 즉시 적용 범위
 
-신규 기출 JS 추출·변환, CREATE/CREATE_SELF_CHECK, R1, R2E/Codex final, 기존 JS repair/upgrade,
+신규 기출 JS 추출·변환, CREATE/CREATE_SELF_CHECK, REVIEW1, REVIEW2/Codex final, 기존 JS repair/upgrade,
 예약 GPT/Codex, `.codex/skills/apmath-archive-exams`, Past Exam V3, production publish/promotion에 즉시 적용한다.
 METADATA_ONLY는 재조판하지 않고 protected question field drift 0을 요구한다.
-일반 작업에서는 규칙 도입만으로 이미 닫힌 production 시험지를 자동 일괄 backfill하지 않는다. **단, `MIDDLE_RECERT_2026-09-29_V1` 재인증 scope(M3 69 + M1 31 + M2 1학기 34)는 형님이 명시적으로 전체 backfill을 지시한 예외**이므로 과거 layout PASS/CREATE/R1/main 이력과 무관하게 CURRENT CREATE에서 전 문항 SOURCE_TEXT_EXACT_PARITY + QUESTION MICRO_LAYOUT을 fresh 재판정한다. 같은 generation의 durable receipt가 없는 과거 PASS는 current 면제 근거가 아니다.
+일반 작업에서는 규칙 도입만으로 이미 닫힌 production 시험지를 자동 일괄 backfill하지 않는다. **단, `MIDDLE_RECERT_2026-09-30_META_V2`의 `FULL_INTEGRATED_V2` 대상(M3 현재 full-integrated cohort → M1 31 → M2 1학기 34)은 형님이 명시적으로 fresh backfill을 지시한 예외**이므로 과거 layout PASS/CREATE/REVIEW/main 이력과 무관하게 CURRENT CREATE에서 전 문항 SOURCE_TEXT_EXACT_PARITY + QUESTION MICRO_LAYOUT을 fresh 재판정한다. 같은 generation의 durable receipt가 없는 과거 PASS는 current 면제 근거가 아니다. **`MAIN_PRESENT_META_ONLY`로 명시된 frozen-main fast track은 예외로 exam/solution/SVG/image parity만 확인하고 Meta 누락만을 이유로 재조판하지 않는다. content/layout drift가 발견되면 `CONTENT_DRIFT_DISCOVERED`로 `FULL_INTEGRATED_V2`에 재진입한다.**
 
 ## 2. 작업 순서
 
@@ -157,15 +157,15 @@ questionLayoutRenderStatus = PASS | NOT_RUN_CODEX_HANDOFF
 
 CREATE_SELF_CHECK에도 QUESTION MICRO_LAYOUT을 포함한다. READY_FOR_REVIEW 전 정적 gate PASS 필수.
 
-## 9. R1 HARD GATE
+## 9. REVIEW1 HARD GATE
 
 CREATE PASS 자기보고를 자동 신뢰하지 않는다. 전 문항 fresh layout/source exact/choices exact와 formula/nested/problem asset/choices/page-flow를 독립 감사한다.
 안전한 결함은 최소 수정 후 exact parity를 재검한다.
-READY_FOR_R2E 전 question layout/exact/choices PASS, `knownQuestionLayoutRepairPending=0`, `questionLayoutHoldCount=0`.
+READY_FOR_REVIEW2 전 question layout/exact/choices PASS, `knownQuestionLayoutRepairPending=0`, `questionLayoutHoldCount=0`.
 
-## 10. R2E / Codex FINAL
+## 10. REVIEW2 / Codex FINAL
 
-정상 R1 PASS 문항을 이유 없이 재조판하지 않는다.
+정상 REVIEW1 PASS 문항을 이유 없이 재조판하지 않는다.
 evidence denominator, R1 이후 content/layout drift, exact parity, final exam render의 split/asset/choice/overcompression을 integrity scan한다.
 새 defect/drift만 targeted repair하며 source text correction은 SOURCE_FIDELITY repair로 분리한다.
 

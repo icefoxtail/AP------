@@ -12,23 +12,24 @@ GPT가 이 저장소에서 분석·생성·수정·전수검수·Meta Foundation
 GPT는 별도 지시 없이 작업 브랜치를 먼저 만들거나, 중간 candidate를 main/GitHub production 파일에 누적 반영하면 안 된다.
 branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이 있을 때만 사용한다.
 
-### ARCHIVE GPT ARTIFACT-FIRST LIGHTWEIGHT — ACTIVE / CURRENT RECERTIFICATION (2026-09-29)
+### ARCHIVE GPT ARTIFACT-FIRST LIGHTWEIGHT — ACTIVE / CURRENT RECERTIFICATION (2026-09-30 META_V2)
 
-중등 정상 시험지 생산은 `02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`를 기본 작업 방식으로 적용한다. 현재 재인증 generation은 `MIDDLE_RECERT_2026-09-29_V1`이다.
+중등 정상 시험지 생산은 `02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md`를 기본 작업 방식으로 적용한다. 현재 재인증 generation은 `MIDDLE_RECERT_2026-09-30_META_V2`다.
 
-- 재인증 scope: **M3 69 + M1 31 + M2 1학기 34 = 134시험지**.
-- 현재 진행 중인 M2 2학기 고정 20은 reset하지 않고 기존 current REVIEW/BATCH/FINAL을 완주한다.
-- 위 134시험지는 과거 CREATE_DONE/R1/R2E/main 이력을 면제권으로 사용하지 않는다. **동일 current generation receipt + final artifact SHA가 없는 시험지는 반드시 CURRENT CREATE부터 다시 통과**한다.
-- CREATE는 전 문항을 fresh하게 읽어 발문/보기 exact, 발문 조판, 학생용 해설·해설 조판, SVG/solutionImage 필요성과 정확성을 현재 기준으로 다시 판정한다. 재인증 scope의 일반 문항 solution은 전면 새 작성한다. 단, 해결 불가 문항은 문항 단위 ITEM_HOLD로만 넘기며 시험지 전체 HOLD·격리는 금지한다.
-- REVIEW1/2는 완성본을 처음 보는 것처럼 FULL 독립검수하고, 발견 결함은 같은 작업에서 직접 수정한다.
-- CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다.
-- Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
-- receipt/evidence는 최소 상태 기록으로 줄이고, 긴 packet/seal/snapshot은 공통 시스템 문제나 명시적 필요가 있을 때만 사용한다.
-- Meta/RPM/L3/L4/CrossConcept/difficulty는 정상 production review와 분리한다.
-- Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질은 경량화 대상이 아니다.
-- 현재 REVIEW는 2회다. 반복 SVG false PASS 등 구체적 품질 근거가 생기면 사용자 지시로 REVIEW3를 추가할 수 있으나 작업자가 임의로 횟수·cadence를 바꾸지 않는다.
+- 재인증 scope: **M3 69 → M1 31 → M2 1학기 34 = 134시험지**. M3가 현재 선행 cohort이며 M3 stage gate가 닫히기 전 M1로 전환하지 않는다.
+- M3는 **FULL_INTEGRATED_V2**와 **MAIN_PRESENT_META_ONLY** 두 트랙으로 운영한다. 정확한 현재 분모·ordinal·진행 수치는 Notion CURRENT inventory가 authority이며 Git 정본에는 고정 수치를 중복 저장하지 않는다.
+- **FULL_INTEGRATED_V2:** CURRENT CREATE에서 source/content/choices/answer exact, 전 문항 fresh 작은칠판 solution, QUESTION MICRO_LAYOUT, image/SVG/solutionImage, Meta semantic, difficulty를 같은 시험지 작업에서 완료한다. REVIEW1/REVIEW2도 완성본을 처음 보는 것처럼 문제·해설·SVG·Meta를 각각 FULL 독립검수한다.
+- **MAIN_PRESENT_META_ONLY:** V1 REVIEW2를 통과해 main에 이미 publish되었고 current inventory에서 이 track으로 명시된 시험지만 예외다. current main의 exam/solution/SVG/image를 frozen semantic baseline으로 두고 `META_CREATE → META_REVIEW1 → META_REVIEW2 → META_PUBLISH → MAIN_META_V2`만 수행한다. content/solution/SVG는 parity만 확인하며 의미 재검수·재작성하지 않는다. drift가 발견되면 `CONTENT_DRIFT_DISCOVERED`로 FULL_INTEGRATED_V2에 재진입한다.
+- FULL_INTEGRATED_V2 CREATE의 일반 문항 solution은 기존 solution 품질과 무관하게 전 문항 새 작성한다. 완료 증거는 `solutionRewrite=FULL_ALL_QUESTIONS` + `solutionRewriteCount=N/N`이며 item hold가 있으면 attempted/resolved와 held qid를 명시한다.
+- Meta는 별도 후속 production pass가 아니다. source + independently verified final solution을 기준으로 L1/L2 → RPM Primary exact L3/L4 → 학년/과목 crosswalk → ACTIVE projection → CrossConcept/Condition/IntegrationPattern → difficulty fresh blind를 같은 CREATE/REVIEW에서 판정한다.
+- CREATE/REVIEW 완료 증거에는 `metadataAudit=FULL_ALL_QUESTIONS`, `metadataAuditCount=N/N`, `difficultyAudit=FULL_ALL_QUESTIONS`, `difficultyAuditCount=N/N`과 qid별 true Meta hold를 남긴다. projection/binding 부재만으로 source/math exam HOLD를 만들지 않는다.
+- 과거 CREATE_DONE/R1/R2/R2E/main 이력은 current-generation 면제권이 아니다. 동일 `MIDDLE_RECERT_2026-09-30_META_V2` receipt + final artifact SHA가 있을 때만 stage skip 근거가 된다.
+- 현재 진행 중인 M2 2학기 고정 20은 META_V2 reset 대상이 아니며 기존 current REVIEW/PUBLISH tail을 완주한다.
+- CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
+- Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
+- 현재 REVIEW는 REVIEW1 + REVIEW2 두 번이다. REVIEW3는 사용자 명시 지시가 있을 때만 추가한다.
 
-### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)
+### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)
 
 CREATE / REVIEW1 / REVIEW2의 write recovery는 `02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`를 적용한다.
 
@@ -85,7 +86,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 
 ### QUESTION MICRO_LAYOUT / SOURCE_TEXT_EXACT_PARITY 선행 규칙
 
-**모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/R1/R2E/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
+**모든 학생 노출 JS의 발문·보기·problem asset/layout 생성·수정·검수·승격은 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`를 적용한다.** 축약·요약·의역·조사/수치/조건/기호 변경 금지. 신규 추출은 `SOURCE_TEXT_FREEZE → QUESTION_LAYOUT_BUILD → SOURCE_TEXT_EXACT_PARITY → QUESTION_LAYOUT_FREEZE` 순서다. CREATE/REVIEW1/REVIEW2/Past Exam/Codex/예약 작업에서 exact parity 100%와 choices exact equality 100%가 HARD gate다. AUTO가 적정하면 수동 layout override를 추가하지 않는다.
 
 **SUBJECTIVE-2UP OVERESCALATION HARD RULE:** `grid`가 기본이다. `questionType`, `choices: []`, 서술형/단답형 표지, 소문항 존재, 긴 발문, 그림·표 존재만으로 `subjective-2up`을 자동 부여하지 않는다. 다만 **코드/정적 구조상 grid 한 칸에서 발문·이미지·표·소문항이 차지할 공간을 고려했을 때 학생 답안 작성 영역이 명백히 부족하다고 판정되는 경우**에는 실제 렌더 전이라도 `subjective-2up` 승격을 허용한다. actual render evidence 또는 사용자 명시 지시도 유효한 근거다. render 미실행 자체는 승격 금지 사유가 아니며, **정적 공간 부족 근거가 불명확할 때만** grid 유지 + `NOT_RUN_CODEX_HANDOFF`로 넘긴다. evidence 없는 기존 2up은 `SUBJECTIVE_2UP_WITHOUT_EVIDENCE` 재판정 대상이다.
 
@@ -111,45 +112,21 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 - `DIRECT_BINDING_GAP/FAMILY_BINDING_GAP`: RPM semantic FINAL + projection binding pending. **Meta HOLD 금지.**
 - `RPM_ONLY`: RPM semantic FINAL + legacy PT/TPL projection unmateralized. **Meta HOLD 금지.**
 - canonical ownerPack과 curriculum binding ownerPack이 다른 cross-pack reuse는 정상이며 conflict가 아니다.
-- legacy enum `RPM_PRIMARY_MIGRATION_GAP`을 유지해야 하는 경로에서는 **META_ONLY compatibility status**로만 기록하고 R1/R2E 진입·release를 차단하지 않는다.
+- legacy enum `RPM_PRIMARY_MIGRATION_GAP`을 유지해야 하는 경로에서는 **META_ONLY compatibility status**로만 기록하고 REVIEW1/REVIEW2 진입·release를 차단하지 않는다.
 - TRUE Meta semantic HOLD는 source/solution으로 RPM L3/L4 자체를 결정할 수 없거나, 해당 curriculum의 RPM semantic path가 실제로 없거나 모순되어 deterministic classification이 불가능한 경우에만 허용한다.
 
 **CREATE/R1의 `resolvablePending=0`은 RPM semantic unresolved 기준이다. PT/TPL projection/binding 미완료는 resolvablePending 또는 ADVANCED_META_HOLD로 세지 않는다.**
 
-### JS Archive R2E Repair & Release v3 작업 선행 규칙
+### LEGACY — JS Archive R2E Repair & Release v3
 
-**CREATE/R1 ZERO-RESOLVABLE HARD RULE (2026-09-28):** CREATE/R1은 source+verified solution으로 RPM Primary L3/L4 semantic path를 확정하고 `READY_FOR_R2E` 전에 **RPM semantic unresolved=0**을 만든다. PT/TPL projection·binding·runtime compatibility 미완료는 `resolvablePending`/Meta HOLD로 세지 않고 `META_ONLY` projection status로 분리한다. R2E는 true semantic/source adjudication만 deep review한다.
+`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`는 **frozen legacy READY_FOR_R2E cohort / 과거 receipt·checkpoint 복구 전용**으로 보존한다. `MIDDLE_RECERT_2026-09-30_META_V2`의 신규 CURRENT 생산 경로에는 적용하지 않는다.
 
-**CREATE VISUAL FIRST-BUILD HARD RULE:** CREATE도 CURRENT VISUAL ROUTER를 처음 제작부터 적용한다. `VISUAL_REQUIRED`와 학생 이해 benefit이 분명한 `VISUAL_OPTIONAL`은 CREATE에서 KEEP/ADD/REBUILD를 끝내며, known visual repair를 R1/R2E로 의도적으로 미루지 않는다. CREATE 종료 시 visual preflight PASS, required visual missing 0, known visual repair pending 0, 지원 가능한 visual math parity pending 0을 요구한다. 예약 GPT가 render를 실행하지 않는 정책이면 `NOT_RUN_CODEX_HANDOFF`만 허용하며 render PASS를 허위 선언하지 않는다.
+- 현재 기존 시험지 경로: `CREATE → REVIEW1 → REVIEW2 → BATCH/FINAL → MAIN`.
+- held qid 복구는 별도 R2E cohort가 아니라 기존 REVIEW2 lane의 `ITEM_RECOVERY_QUEUE`가 소비한다.
+- 신규 CREATE/REVIEW의 Meta는 Artifact-First META_V2 통합 계약에서 같은 시험지 작업으로 처리한다.
+- legacy R2E 문서의 `READY_FOR_R2E`, cohort HOLD grouping, R2E_FINAL/R2E_MAIN_FINAL은 새 CURRENT stage 이름이나 release authority로 재사용하지 않는다.
 
-**SVG NO-HOLD / REPAIR-AND-REPORT HARD RULE (2026-09-28):** CREATE/R1에서 SVG·solutionImage 결함, 누락, stale/missing evidence, rule-compliance failure를 발견하면 **visual HOLD로 종결하지 않는다.** source+verified solution으로 visual truth를 결정할 수 있으면 같은 단계에서 `ADD / REPAIR / REBUILD → 새 evidence/SHA 결속 → 영향 축 재검 → PASS`까지 직접 닫는다. 보고는 `HOLD n건`이 아니라 **문항번호 + 발견 결함 + 실제 수정 방법 + 재검 결과**를 기록한다. source/math 자체가 불확정하여 visual truth를 결정할 수 없는 경우에는 SVG HOLD가 아니라 해당 `SOURCE_HOLD / MATH_HOLD`로 분류한다. generator/tool capability 부족은 `ENGINE_CAPABILITY_BLOCK`이며 SVG HOLD가 아니다. **SVG/VISUAL HOLD enum은 신규 CREATE/R1 결과에 사용하지 않는다.**
-
-**CREATE_SELF_CHECK HARD RULE:** CREATE는 작은칠판 solution·visual·Meta 최종 저장본을 제작 직후 1회 다시 읽고 known defect를 직접 수정한다. `READY_FOR_REVIEW` 전 `CREATE_SELF_CHECK_PASS=true`가 필수다. 특히 visual은 **`SVG_RULE_COMPLIANCE_PASS`를 수학/표현 PASS보다 먼저** 확인한다: current visual router/verify-skills/rule SHA preflight → artifact 이전 V1 → artifact 이전 EXPECTED FACT → deterministic build evidence → final actual SVG의 V2 OBSERVED FACT → V3 parity → final SVG SHA/evidence 결속. 생성 순서가 뒤집혔거나 evidence가 없으면 결과 SVG가 그럴듯해도 PASS 금지. R1은 이 제작자 self-check를 독립검수의 대체물로 신뢰하지 않고 evidence/final SHA를 독립 감사한다.
-
-**R2E HOLD-SAFE HARD RULE:** source/math semantic truth 자체가 불확정한 경우만 해당 source/math HOLD를 보존한다. **SVG/visual 자체는 HOLD로 종결하지 않는다.** visual defect·누락·evidence 결함은 `SVG_REPAIR_REQUIRED`로 라우팅하여 직접 ADD/REPAIR/REBUILD하고 재검 PASS까지 닫는다. generator/tool capability 부족은 `ENGINE_CAPABILITY_BLOCK`으로 분리한다.
-
-
-중2·중3 예약 CREATE/R1과 Codex 최종 R2E 작업은
-`02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`를 현재 생명주기 정본으로 함께 적용한다. **v1 helper는 과거 receipt/checkpoint 복구 전용이다.**
-
-새 표준 흐름은
-`CREATE → READY_FOR_REVIEW → R1 → READY_FOR_R2E → HOLD inventory/grouping → R2E_FINAL → main → R2E_MAIN_FINAL`이다.
-
-중2 intake authority는 `work/intake/m2`, 중3은 `work/intake/m3`이다.
-과거 `REVIEW2 → Library REVIEW_DONE/APPLY_PACKET → E/Apply Bridge` 경로는 새 intake 생산에 적용하지 않고 legacy artifact 복구에만 사용한다.
-R2E는 intake branch를 read-only로 사용하고 run 시작 시 input commit SHA를 freeze한 뒤 별도 durable ledger로 resume하며,
-정상 PASS 문항은 다시 풀이·재분류하지 않는다. 동결된 legacy R1 cohort의 projection-only Meta HOLD는 frozen RPM semantic path로 재판정해 META_ONLY로 옮기고, true semantic/source/math HOLD와 student-facing defect만 affected UID 범위에서 처리한다.
-
-R2E v3 legacy HOLD batch HARD RULE:
-- READY_FOR_R2E 당시 이미 존재한 frozen legacy backlog만을 대상으로 한다. New CREATE/R1은 ZERO-RESOLVABLE gate를 유지한다.
-- 구형 backlog는 R1 receipt/evidence/JS를 read-only로 읽으며 Meta sidecar backfill을 하지 않는다.
-- RPM semantic은 frozen source+verified solution evidence로 재판정한다. RPM L3/L4가 FINAL이면 projection-only row는 group decision/UID repair 없이도 META_ONLY로 기록할 수 있다.
-- 실제 existing-key batch mapping이 필요할 때만 group decision과 UID별 applied key/reason/evidence를 기록한다. R2E는 신규 taxonomy 생성이나 전역 crosswalk rewrite를 하지 않는다.
-- RPM/sidecar/difficulty/runtime/catalog/projection gap은 META_ONLY로 남기며 JS release를 막지 않는다. RELEASE_BLOCKING은 실제 BASIC/source/math/asset/JS defect, TRUE RPM semantic HOLD, production에 기록된 invalid canonical key다.
-- R2E v3는 normal R1 PASS reclassification, all-question Meta projection, whole-exam render, global runtime/catalog rebuild를 하지 않는다.
-- 무변경 visual은 R1 evidence를 재사용한다. 실제 수정된 SVG/해설 visual만 current pipeline-core closure와 targeted render를 실행한다.
-
-### Codex Meta Foundation 작업 선행 규칙
+### Codex Meta Foundation 작업 선행 규칙### Codex Meta Foundation 작업 선행 규칙
 
 Codex가 Meta Foundation 단원 정리를 수행할 때는 GPT 격리 작업 규칙의 기본 실행형을 그대로 적용하지 않고
 `02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md`를 Codex 실행 정본으로 함께 적용한다.
@@ -189,7 +166,7 @@ JS아카이브 전체 작업 OS의 권위는 다음처럼 분리한다.
 - **RPM→ACTIVE CROSSWALK STATUS:** `DIRECT_ACTIVE/FAMILY_ACTIVE`는 projection reuse, `*_BINDING_GAP`은 projection binding pending, `RPM_ONLY`는 projection unmateralized다. 뒤의 두 상태를 `ADVANCED_META_HOLD`, `R2_ADJUDICATION_REQUIRED`, semantic unresolved로 승격하지 않는다. legacy `RPM_PRIMARY_MIGRATION_GAP` enum이 필요한 경우에도 `META_ONLY` compatibility status로만 사용한다.
 - canonical ownerPack과 curriculum binding ownerPack은 다를 수 있다. GLOBAL ACTIVE canonical key가 unique하고 exact curriculum binding이 별도 pack에 있으면 정상 cross-pack reuse다.
 - **TRUE semantic gap/HOLD는 RPM L3/L4 자체를 deterministic하게 확정할 수 없는 경우에만 연다.** PT/TPL/binding 부재만으로 신규 taxonomy gap이나 Meta HOLD를 만들지 않는다.
-- 모든 ACTIVE Meta 생성·3차검수·repair·R1/R2E 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
+- 모든 ACTIVE Meta 생성·3차검수·repair·REVIEW1/REVIEW2 폐쇄·runtime parity는 `01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md`와 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 공통 계약/구현으로 사용한다. 파이프라인과 skill은 자체 RPM/ACTIVE 판정 로직을 복제하지 않는다.
 - 학생에게 노출되는 `solution`의 내용·표현·계산 전개·줄바꿈·기존 production 업그레이드 판정은
   `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`가 정본이다. 하위 해설/수정/review 문서의 과거 예시가 충돌하면 이 정본을 우선한다.
 - 학생에게 노출되는 문제 `content/choices/problem image/layout`의 조판·원문 보호 authority는 `01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md`다. 의미 동일 비교가 아니라 SOURCE_TEXT_EXACT_PARITY를 요구한다.
@@ -206,35 +183,22 @@ agent launch를 추가·분할·재시도할 권한을 만들 수 없다.
 
 ### CURRENT VISUAL ROUTER — SVG / graph / geometry / solutionImage
 
-CREATE/R1/R2E를 포함해 SVG·graph·geometry·`solutionImage`를 생성·수정·재생성·부착·검수하는 모든 작업은 **`.codex/skills/apmath-visual-upgrade/SKILL.md`를 router로 사용**한다. visual 작업 전에 `node tools/skills/verify-skills.mjs`를 실행하고, MANIFEST-covered 필수 문서의 path/version/bytes/SHA와 current working bytes를 일치시킨다.
+기존 Archive JS가 있는 시험지의 CREATE / REVIEW1 / REVIEW2 / repair 안에서 수행하는 SVG·graph·geometry·`solutionImage` 작업은 `.codex/skills/apmath-visual-upgrade/SKILL.md`의 **`ROUTINE_EXAM_VISUAL`**을 기본 경로로 사용한다. visual 하위작업 때문에 부모 시험지 작업을 Past Exam V3, pipeline-core work batch, provider FINAL_AUDIT, U1/U2/U3, 전역 qualification으로 자동 확대하지 않는다.
 
-현재 실행 경로:
-```text
-apmath-visual-upgrade router
-→ 00_RULES_INDEX + MANIFEST
-→ COMMON_PROTOCOL
-→ 공통파이프라인 실행계약
-→ 적응형배치루프
-→ pipeline-core README + AGENT_BUDGET
-→ applicable VISUAL / geometry domain / unit rule
-→ V1 benefit triage
-→ EXPECTED FACT freeze
-→ deterministic artifact build
-→ V2 artifact-only OBSERVED FACT
-→ V3 expected↔observed parity
-→ render-capture
-→ independent render-review
-→ closure
-```
+ROUTINE_EXAM_VISUAL 최소 기준:
+- 부모 `Archive_GPT_Artifact_First_Lightweight_v1.md` + Golden/Negative Sample + source 문제 + independently verified final solution을 먼저 본다.
+- 실제 점·선·각·길이·좌표·수직·평행·접선·중점·등거리와 label owner/collision을 확인한다.
+- 좌표/수치 기반 SVG는 applicable visual canonical에 따라 계산 근거를 확보하고 실제 geometry와 solution이 일치해야 한다.
+- 정적/code inspection만으로 clipping·collision·owner binding·가독성을 확정할 수 없을 때만 해당 asset/question을 **targeted render**한다.
+- routine per-exam visual의 목적은 **artifact를 고치는 것**이며, full pipeline-core V1/V2/V3/provider ceremony 부재 자체를 blocker로 만들지 않는다.
 
-기하 문항은 `기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`의 2026-09-25 addendum을 포함한다. **`GEOMETRY_SOLUTION_VISUAL_DEFAULT = CREATE_UNLESS_JUSTIFIED_EXEMPT`**이며, source figure 부재·기존 solution SVG 부재·쉬운 문항이라는 이유만으로 VISUAL_EXEMPT하지 않는다. 학생 이해 benefit이 명확한 VISUAL_OPTIONAL도 ADD/REBUILD 적극 대상이다.
+**SYSTEM_VISUAL**은 shared generator/validator, 공통 geometry/graph engine, 재사용 가능한 새 visual family, pipeline-core visual contract, repository-wide migration, 명시적 exhaustive qualification처럼 **시스템 자체가 작업 대상일 때만** 사용한다. 이 경우에만 공통파이프라인·적응형배치·AGENT_BUDGET·pipeline-core의 무거운 evidence/independent audit gate를 전면 적용한다.
 
-`archive/tools/past-exam-pipeline/build-visual-candidate.mjs`와 `archive/tools/geometry-equation/visual_engine/`은 frozen EXPECTED FACT를 입력받는 **candidate-only builder**다. 코드가 production READ_ONLY / production write false / publicationAuthorized false를 강제하므로, 지원되는 visual에서 candidate 생성에 적극 활용할 수 있지만 current pipeline-core closure 없이 production FINAL/promotion authority로 사용하지 않는다.
+실제 새 원본 시험지를 처음 Archive에 입고하는 **NEW_IMPORT_V3**는 `Past_Exam_V3_COMPLETE.md`의 visual lifecycle을 따른다. ROUTINE_EXAM_VISUAL의 경량 경계가 신규 import의 V3 gate를 약화하지 않는다.
 
-예약 GPT가 정책상 실제 render를 실행하지 않는 경우 `NOT_RUN_CODEX_HANDOFF`를 기록하고 render PASS를 선언하지 않는다. final production closure에서 render가 요구되면 Codex/R2E가 current render-capture + independent render-review를 닫는다.
 
-R2E v3는 이 visual route를 실제로 변경한 SVG/해설 문항에 targeted 적용한다. R1과 바이트가 같은 정상 visual은 R1 evidence를 재사용하며, Meta-only HOLD나 다른 문항의 변경 때문에 whole-exam render를 반복하지 않는다.
 
+1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 
 1. `01_CANONICAL/JS아카이브룰북_v2.6.md`
 2. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 문항에만 적용)
