@@ -1,5 +1,28 @@
 [JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]
 
+## CURRENT — R3 FAIL REENTRY: R1 REOPEN CONTRACT (2026-10-01)
+
+R3가 student-facing/release 결함을 발견하면 R3에서 산출물을 직접 고쳐 PASS로 닫지 않는다. 반드시 물리 `R3_FAIL_PACKET`과 함께 이 R1으로 되돌린다.
+
+### 입력
+- exact `r3InputArtifactSha`
+- `failedQids[]`
+- `failureCodes[]`
+- `affectedAxes[]`
+- 문항별 observed evidence / authority evidence
+- protected-field diff 상태
+- `requiredRoute = R1_THEN_R2_THEN_R3`
+
+R1은 이 packet을 **수리 입력**으로 읽을 수 있다. R3가 지적한 locus를 최소수리하되, false PASS가 한 문항만의 우연이 아니라 검수축 누락을 뜻하면 그 축은 시험지 전체 N/N으로 다시 연다.
+- `CURRICULUM_FAIL` 발견 → `curriculumMethodAuditCount=N/N` 전수 재수행.
+- `SOLUTION_VISUAL_MISSING` 또는 visual necessity false PASS → `visualNecessityAuditCount=N/N` 전수 재수행.
+- source/answer/math/layout/Meta 등 다른 축은 R3 packet의 영향범위와 실제 repair impact만 재검하되, 새 systemic defect가 발견되면 해당 축 분모를 확대한다.
+
+R1 완료물은 이전 R2/R3 artifact를 덮어쓰지 않고 새 final artifact SHA를 만든다. receipt에는 최소
+`reentryFrom=R3_FAIL`, `r3FailurePacketRef`, `r3FailedQids`, `r1RepairQids`, `r1OutputArtifactSha`
+를 남기고 다음 owner를 반드시 R2로 둔다. **R1에서 MAIN/R3 직행 금지.**
+
+
 ## CURRENT HARD GATE — CURRICULUM METHOD INVENTORY + VISUAL NECESSITY N/N (2026-10-01)
 
 CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 독립검수한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.

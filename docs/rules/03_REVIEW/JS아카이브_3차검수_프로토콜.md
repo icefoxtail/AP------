@@ -1,5 +1,43 @@
 [JS아카이브 3차 검수 프로토콜 — 분류·메타·난이도 태그 검수 v1.0]
 
+## CURRENT — R3 FAIL → R1 → R2 → R3 CLOSED LOOP (2026-10-01)
+
+R3는 MAIN 직전 **release gate**이며 repair stage가 아니다. R3에서 학생 노출·교육과정·visual·출판·Meta·무결성 결함이 하나라도 확인되면 현재 artifact를 R3 PASS로 고쳐 닫지 않는다.
+
+### R3 FAIL 상태
+즉시 `R3_FAIL_REENTRY_REQUIRED`로 판정하고 다음 물리 packet을 저장한다.
+
+`R3_FAIL_PACKET` 최소 필드:
+- `examId`
+- `r3InputArtifactSha`
+- `reviewedAt`
+- `failedQids[]`
+- `failureCodes[]`
+- `affectedAxes[]`
+- 문항별 `observedEvidence`
+- 대조한 curriculum/visual/Meta authority ref
+- `suspectedSystemicScope`
+- `protectedFieldDiffStatus`
+- `requiredRoute = R1_THEN_R2_THEN_R3`
+
+### 되돌림 순서
+`R3_FAIL → R1_REOPEN → R2_REOPEN → R3_RETRY`
+
+- **R1_REOPEN:** R3 packet을 수리 입력으로 사용한다. 결함 locus를 수리하고, false PASS가 systemic 축 누락을 뜻하면 해당 축을 시험지 전체 N/N으로 재검한다.
+- **R2_REOPEN:** 새 R1 artifact를 대상으로 독립 판정을 먼저 동결한다. R3/R1 상세 내역은 blind freeze 뒤 regression compare에만 사용한다.
+- **R3_RETRY:** 반드시 새 R2 artifact SHA를 입력으로 fresh release audit한다. 이전 R3 verdict는 권위가 아니다. 전체 release HARD gate를 다시 닫고, 이전 R3 failure packet의 모든 defect code가 `CLOSED`인지 마지막에 대조한다.
+
+### 금지
+- R3에서 직접 solution/SVG/image/Meta를 고쳐 바로 `R3_PASS` 선언
+- R3 FAIL 후 R1만 거쳐 R3로 직행
+- R3 FAIL 후 R2만 핀포인트 실행하고 R1 생략
+- 이전 R3 PASS/FAIL receipt 재사용
+- failure packet 없이 말로만 “R1로 되돌림”
+- R3 재시도에서 과거 failure qid만 보고 전체 release gate 생략
+
+R3가 다시 FAIL하면 새 packet을 만들고 같은 루프를 반복한다. **최신 R3 PASS + itemHoldCount=0 + 필수 release evidence**가 없으면 MAIN_READY 금지다.
+
+
 ## CURRENT OVERRIDE — RELEASE R3 HARD GATE (2026-10-01)
 
 REVIEW3가 MAIN 직전 release review로 사용되는 경우, 기존 “분류·메타·난이도” 범위에 더해 **학생용 최종 artifact의 교육과정·시각자료 completeness를 독립 HARD GATE로 먼저 수행**한다. 이 gate는 중등/고등 모두 적용 가능하며, 고등 release에는 필수다.

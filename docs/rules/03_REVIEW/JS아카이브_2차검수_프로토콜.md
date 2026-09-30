@@ -1,5 +1,24 @@
 [JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]
 
+## CURRENT — R3 FAIL REENTRY: R2 INDEPENDENT RECERTIFICATION (2026-10-01)
+
+R3 FAIL 후 R1이 수리한 artifact는 반드시 R2를 다시 통과한다. R3→R1→R3 직행은 금지한다.
+
+R2 독립성:
+1. latest R1 reentry artifact를 source/current authority와 함께 읽고 **R3/R1 상세 verdict를 정답처럼 사용하지 않은 상태에서 독립 판정부터 동결**한다.
+2. 특히 R3에서 실패했던 축은 시험지 전체 N/N 또는 R1이 확정한 systemic 영향범위 전체를 독립 재검한다.
+3. blind decision freeze 후에만 `R3_FAIL_PACKET`과 R1 repair ledger를 열어 기존 결함이 실제로 닫혔는지 regression compare한다.
+4. R2에서 새 결함을 찾으면 기존 REPAIR_BEFORE_HOLD 규칙으로 수리·재검한다.
+
+필수 receipt:
+`reentryFrom=R3_FAIL_AFTER_R1`, `r3FailurePacketRef`, `inputR1ReentryArtifactSha`,
+`blindDecisionFrozenBeforeFailurePacketCompare=true`, `reviewedAffectedAxes[]`,
+`curriculumMethodAuditCount` / `visualNecessityAuditCount` 등 해당 HARD marker,
+`r2OutputArtifactSha`.
+
+R2 완료 후 nextOwner는 반드시 **R3_RETRY**다. 이전 R3 PASS/FAIL을 재사용하지 않는다.
+
+
 ## CURRENT HARD GATE — CURRICULUM METHOD INVENTORY + VISUAL NECESSITY N/N (2026-10-01)
 
 CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 독립검수한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
