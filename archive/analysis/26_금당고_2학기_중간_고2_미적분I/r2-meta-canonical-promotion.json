@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "archive-r2-meta-canonical-promotion-v1",
+  "status": "CANONICAL_PROMOTION_STATIC_CONTRACT_PASS",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "authorityBaseMain": "2326198add2f47013fdf3ac0108d38f3e0cb655a",
+  "branch": "meta/high/h2/26-geumdang-mi1-canonical-20261001",
+  "q12": {
+    "action": "RPM_L4_PROMOTED",
+    "path": {
+      "curriculum": "2022",
+      "scope": "미적분I",
+      "majorUnit": "함수의 극한과 연속",
+      "midUnit": "함수의 극한",
+      "l3": "극한의 성질",
+      "l4": "함수의 극한의 대소 관계"
+    },
+    "crosswalkId": "H2-M2-RPM-098",
+    "projection": {
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "status": "PROJECTION_BINDING_PENDING"
+    },
+    "activeNewKeyCount": 0
+  },
+  "q21": {
+    "action": "CROSSWALK_FAMILY_TEMPLATE_CANDIDATE_ADDED",
+    "crosswalkId": "H2-M2-RPM-057",
+    "addedTemplateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+    "activeNewKeyCount": 0
+  },
+  "countsBefore": {
+    "L4": 1407,
+    "crosswalkRecords": 97,
+    "directBindingGap": 48,
+    "mi1DirectBindingGap": 46
+  },
+  "countsAfter": {
+    "L4": 1408,
+    "crosswalkRecords": 98,
+    "directBindingGap": 49,
+    "mi1DirectBindingGap": 47
+  },
+  "validation": {
+    "mode": "DETERMINISTIC_STATIC_CONTRACT_EQUIVALENT",
+    "checks": {
+      "masterPathUnique": true,
+      "matrixRowUnique": true,
+      "viewRowUnique": true,
+      "l4Count": true,
+      "q12CrosswalkUnique": true,
+      "q12CrosswalkStatus": true,
+      "q12ActiveProjection": true,
+      "q21FamilyCandidateUnique": true,
+      "q21ActiveProjection": true,
+      "crosswalkCount": true,
+      "crosswalkDirectGap": true,
+      "crosswalkMi1DirectGap": true,
+      "packageManifestParity": true,
+      "topManifestParity": true
+    },
+    "actualNodeResolverSuite": "NOT_RUN_IN_CONNECTOR_RUNTIME",
+    "note": "Repository Node test runner is not executable in the connector runtime; branch-push CI/status is checked separately after commit."
+  },
+  "packageDigests": {
+    "00_POLICY/CANONICAL_MASTER.json": {
+      "bytes": 558759,
+      "sha256": "8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b"
+    },
+    "00_POLICY/L1_L4_CANONICAL_DRAFT_MATRIX.csv": {
+      "bytes": 258730,
+      "sha256": "8bb23a2004d4406ee14d7df317ebbb2f2cbaae495ed2227905f92641ea050c1f"
+    },
+    "02_2022/HIGH/미적분I.md": {
+      "bytes": 4738,
+      "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+    },
+    "STATS.json": {
+      "bytes": 382,
+      "sha256": "31dfe0d14bb167c1ca5279d3c9fb534abfc3ea9957e9d2115a280a343a6af097"
+    }
+  },
+  "canonicalMainWrite": false,
+  "finalMainWrite": false
+}
