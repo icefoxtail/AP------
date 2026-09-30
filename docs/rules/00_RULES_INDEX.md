@@ -28,6 +28,19 @@ branch/PR은 사용자의 명시 지시 또는 해당 규칙의 예외 조건이
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질은 경량화 대상이 아니다.
 - 현재 REVIEW는 2회다. 반복 SVG false PASS 등 구체적 품질 근거가 생기면 사용자 지시로 REVIEW3를 추가할 수 있으나 작업자가 임의로 횟수·cadence를 바꾸지 않는다.
 
+### AUTHORITY WRITE PENDING / CANDIDATE MATERIALIZATION — CURRENT HARD RULE (2026-09-30)
+
+CREATE / REVIEW1 / REVIEW2의 write recovery는 `02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`를 적용한다.
+
+- `AUTHORITY_WRITE_PENDING`은 exact candidate blob/commit/ref가 Git에 물리 존재하는 경우에만 사용한다.
+- Notion summary/verdict/repair text만 존재하고 exact final candidate bytes가 없으면 write-only pending으로 분류하지 않는다.
+- candidate 완성 직후 authority write 성공 여부와 별개로 final candidate JS/blob 또는 recovery ref/commit을 Git에 먼저 물리 보존한다.
+- exact candidate가 없지만 deterministic parts + input/source SHA + complete hold/layout/asset ledger가 있으면 `CANDIDATE_MATERIALIZATION_PENDING`으로 먼저 물리화한다.
+- exact reconstruction이 불가능하면 `STAGE_REEXECUTION_REQUIRED`이며 전체 pipeline rewind 없이 **해당 CREATE/R1/R2 stage만** fresh 재실행한다.
+- recorded candidate SHA와 reconstruction이 다르면 실제 Git blob이 존재할 때 그 blob을 우선하고, 없으면 임의 복원하지 않는다.
+- 자동 Authority Writer는 exact Git candidate가 존재하는 `AUTHORITY_WRITE_PENDING`만 소비한다.
+- materialization 문제는 ITEM_HOLD/exam HOLD가 아니다.
+
 ### QUESTION-LEVEL HOLD ONLY / EXAM HOLD FORBIDDEN — CURRENT HARD RULE (2026-09-29)
 
 **CREATE / REVIEW 어느 단계에서도 일부 문항의 불확실성·source 충돌·수학 미확정·engine capability 부족을 이유로 시험지 전체를 HOLD·BLOCK·격리하지 않는다. HOLD의 최소 단위는 항상 `questionUid/qid`다.**
