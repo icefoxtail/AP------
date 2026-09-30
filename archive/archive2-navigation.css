@@ -391,3 +391,185 @@
     flex-direction:column;
   }
 }
+
+
+/* AP Archive Next visual direction — Navigation 1B
+   DESIGN-ONLY HARD RULE: preserve every existing navigation item, action and route. */
+:root {
+  --archive2-focus: #5f6fd3;
+}
+@media (min-width: 961px) {
+  body.archive2-shell {
+    padding-left: 0;
+    padding-top: 68px;
+  }
+  .archive-sidebar {
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 68px;
+    overflow: visible;
+    overscroll-behavior: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 0 20px;
+    background: rgba(251,250,246,.97);
+    backdrop-filter: blur(14px);
+    border-right: 0;
+    border-bottom: 1px solid #e5e0d7;
+    box-shadow: 0 1px 0 rgba(20,32,51,.02);
+  }
+  .archive-navigation-brand {
+    min-height: 44px;
+    margin-right: 16px;
+    padding: 0;
+    gap: 10px;
+  }
+  .archive-brand-mark {
+    width: 31px;
+    height: 31px;
+    border-radius: 8px;
+    background: #142842;
+    font-size: 12px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .archive-brand-copy strong {
+    color: #172033;
+    font-size: 16px;
+    letter-spacing: -.035em;
+  }
+  .archive-sidebar-home {
+    display: flex;
+    padding: 0;
+    border-bottom: 0;
+  }
+  .archive-navigation-tasks {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin: 0 0 0 2px;
+  }
+  .archive-sidebar-home > :is(a,button),
+  .archive-navigation-tasks > :is(a,button) {
+    width: auto;
+    min-height: 38px;
+    padding: 0 10px;
+    gap: 7px;
+    border-radius: 8px;
+    color: #657080;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .archive-sidebar-home > :is(a,button):hover,
+  .archive-navigation-tasks > :is(a,button):hover {
+    background: #f2f0eb;
+    color: #26354d;
+  }
+  .archive-sidebar-home > [aria-current="page"],
+  .archive-sidebar-home > .active,
+  .archive-navigation-tasks > [aria-current="page"],
+  .archive-navigation-tasks > .active {
+    background: #eceefa;
+    color: #4356bd;
+  }
+  .archive-nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .archive-navigation-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    border-top: 0;
+  }
+  .archive-navigation-tools > :is(a,button) {
+    min-height: 34px;
+    padding: 0 2px;
+    color: #7b8491;
+    font-size: 10.5px;
+    font-weight: 650;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .archive-navigation-tools > :is(a,button):hover {
+    color: #4356bd;
+    text-decoration: none;
+  }
+}
+@media (min-width: 961px) and (max-width: 1160px) {
+  .archive-sidebar {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .archive-navigation-brand {
+    margin-right: 8px;
+  }
+  .archive-brand-copy strong {
+    font-size: 14px;
+  }
+  .archive-sidebar-home > :is(a,button),
+  .archive-navigation-tasks > :is(a,button) {
+    min-height: 36px;
+    padding: 0 7px;
+    gap: 5px;
+    font-size: 11.5px;
+  }
+  .archive-nav-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .archive-navigation-tools {
+    gap: 7px;
+  }
+  .archive-navigation-tools > :is(a,button) {
+    font-size: 9.5px;
+  }
+}
+@media (max-width: 960px) {
+  .archive-mobile-topbar {
+    background: rgba(251,250,246,.97);
+    border-bottom-color: #e5e0d7;
+  }
+  .archive-mobile-brand {
+    color: #172033;
+    letter-spacing: -.035em;
+  }
+  .archive-mobile-brand span {
+    color: #5268c7;
+  }
+  .archive-mobile-tools-trigger {
+    color: #667080;
+  }
+  .archive-mobile-tools-trigger:hover,
+  .archive-mobile-tools-trigger[aria-expanded="true"] {
+    background: #f1efe9;
+    color: #26354d;
+  }
+  .archive-mobile-tools-menu {
+    border-color: #ddd8ce;
+    background: #fffefa;
+    box-shadow: 0 14px 30px rgba(20,32,51,.12);
+  }
+  .archive-mobile-tools-menu > :is(a,button) {
+    color: #4c5667;
+  }
+  .archive-mobile-tools-menu > :is(a,button):hover,
+  .archive-mobile-tools-menu > :is(a,button):focus-visible {
+    background: #f3f1ec;
+    color: #26354d;
+  }
+  .archive-mobile-tabs {
+    background: rgba(251,250,246,.98);
+    border-top-color: #e5e0d7;
+  }
+  .archive-mobile-tabs > :is(a,button) {
+    color: #78818e;
+  }
+  .archive-mobile-tabs > [aria-current="page"],
+  .archive-mobile-tabs > .active {
+    background: #eceefa;
+    color: #4356bd;
+  }
+}
