@@ -2386,3 +2386,232 @@ body[data-archive-view="compose"] .compose-create-bar {
   }
 }
 
+
+
+/* AP Archive Next visual direction — Home 1A
+   DESIGN-ONLY HARD RULE: preserve existing Home DOM, actions, routes, data and product registry. */
+body[data-archive-view="home"] {
+  background: #fbfaf6;
+}
+body[data-archive-view="home"] main {
+  padding-top: 52px;
+}
+.archive-home {
+  width: min(1160px, 100%);
+}
+.archive-home-heading {
+  margin: 0 0 30px;
+  text-align: center;
+}
+.archive-home-heading::before {
+  content: "AP수학 교사용 문항 아카이브";
+  display: block;
+  margin-bottom: 9px;
+  color: #5268c7;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -.01em;
+}
+.archive-home-heading::after {
+  content: "필요한 자료를 빠르게 찾고, 이어서 문제지를 완성하세요.";
+  display: block;
+  margin-top: 10px;
+  color: #77808e;
+  font-size: 13px;
+  font-weight: 550;
+}
+.archive-home-heading h1 {
+  color: #142033;
+  font-size: 38px;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+.archive-home-start {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.archive-home-search {
+  grid-template-columns: minmax(0, 1fr) 84px;
+  gap: 10px;
+}
+.archive-home-search-box {
+  min-height: 58px;
+  border-color: #ddd8ce;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(20,32,51,.045);
+}
+.archive-home-search-box > span {
+  width: 52px;
+  color: #687386;
+  font-size: 21px;
+}
+.archive-home-search-box input {
+  padding-right: 16px;
+  color: #172033;
+  font-size: 15px;
+}
+.archive-home-search-submit {
+  min-width: 84px;
+  min-height: 58px;
+  border-radius: 8px;
+  background: #142842;
+  border-color: #142842;
+  font-size: 14px;
+}
+.archive-home-grades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+.archive-home-grades button {
+  width: auto;
+  min-width: 48px;
+  min-height: 36px;
+  padding: 5px 12px;
+  border-color: #ddd8ce;
+  border-radius: 7px;
+  background: #fff;
+  color: #2d3748;
+  box-shadow: 0 2px 6px rgba(20,32,51,.045);
+  font-size: 12px;
+}
+.archive-home-products-section,
+.archive-home-drafts-section {
+  margin-top: 54px;
+}
+.archive-home-section-head {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e7e2d8;
+}
+.archive-home-section-head h2 {
+  color: #172033;
+  font-size: 20px;
+  letter-spacing: -.025em;
+}
+.archive-home-products {
+  gap: 12px;
+}
+.archive-home-product {
+  min-height: 106px;
+  padding: 18px;
+  border-color: #ddd8ce;
+  border-radius: 9px;
+  background: rgba(255,255,255,.86);
+  color: #172033;
+  box-shadow: none;
+  font-size: 15px;
+}
+.archive-home-product.is-available:hover {
+  border-color: #aeb9c9;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(20,32,51,.055);
+}
+.archive-home-product.is-unavailable {
+  border-style: solid;
+  background: #f6f4ef;
+  color: #7f8793;
+}
+.archive-home-drafts {
+  gap: 12px;
+}
+.archive-home-draft {
+  min-height: 128px;
+  padding: 17px;
+  border-color: #ddd8ce;
+  border-radius: 9px;
+  background: rgba(255,255,255,.86);
+  box-shadow: none;
+}
+.archive-home-draft h3 {
+  color: #172033;
+  font-size: 15px;
+}
+.archive-home-draft p {
+  color: #7a8492;
+}
+.archive-home-draft button {
+  border-color: #d7d1c7;
+  background: #fff;
+}
+.archive-home-empty {
+  border-color: #ddd8ce;
+  background: rgba(255,255,255,.75);
+}
+
+@media (max-width: 960px) {
+  body[data-archive-view="home"] main {
+    padding-top: 34px;
+  }
+  .archive-home {
+    width: min(100%, 760px);
+  }
+  .archive-home-heading h1 {
+    font-size: 32px;
+  }
+  .archive-home-heading::after {
+    font-size: 12px;
+  }
+  .archive-home-start {
+    width: 100%;
+  }
+  .archive-home-products-section,
+  .archive-home-drafts-section {
+    margin-top: 38px;
+  }
+}
+@media (max-width: 640px) {
+  body[data-archive-view="home"] main {
+    padding: 30px 14px calc(70px + var(--archive2-mobile-bottom-nav-offset, 0px));
+  }
+  .archive-home-heading {
+    margin-bottom: 24px;
+  }
+  .archive-home-heading h1 {
+    font-size: 29px;
+  }
+  .archive-home-heading::before {
+    font-size: 11px;
+  }
+  .archive-home-heading::after {
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .archive-home-search {
+    grid-template-columns: minmax(0, 1fr) 72px;
+    gap: 7px;
+  }
+  .archive-home-search-box,
+  .archive-home-search-submit {
+    min-height: 52px;
+  }
+  .archive-home-search-box > span {
+    width: 42px;
+  }
+  .archive-home-search-submit {
+    min-width: 72px;
+  }
+  .archive-home-grades {
+    gap: 6px;
+  }
+  .archive-home-grades button {
+    min-width: 42px;
+    padding: 5px 9px;
+  }
+  .archive-home-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .archive-home-product {
+    min-height: 86px;
+    padding: 14px;
+    font-size: 14px;
+  }
+}
