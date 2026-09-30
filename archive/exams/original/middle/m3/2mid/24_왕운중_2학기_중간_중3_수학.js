@@ -25,7 +25,7 @@ window.questionBank = [
       "한 변의 길이가 $x\\,\\mathrm{cm}$인 정육면체의 부피 $y\\,\\mathrm{cm}^3$"
     ],
     "answer": "①, ④",
-    "solution": "각 상황을 $y$와 $x$의 식으로 나타내어 최고차항의 차수를 확인하자.\n① 정다각형의 대각선 수는\n$y=\\dfrac{x(x-3)}{2}=\\dfrac12x^2-\\dfrac32x$이므로 이차함수이다.\n② 정사각형의 둘레는 $y=4x$이므로 이차함수가 아니다.\n③ 달린 거리는 $y=60x$이므로 이차함수가 아니다.\n④ 원의 넓이는 $y=\\pi x^2$이므로 이차함수이다.\n⑤ 정육면체의 부피는 $y=x^3$이므로 이차함수가 아니다.\n\n따라서 이차함수인 것은 ①, ④이다.",
+    "solution": "① 정다각형의 대각선 수를 식으로 쓰면\n$y=\\dfrac{x(x-3)}2=\\dfrac12x^2-\\dfrac32x$이므로 이차함수이다.\n② $y=4x$는 일차함수이다.\n③ $y=60x$는 일차함수이다.\n④ $y=\\pi x^2$이므로 이차함수이다.\n⑤ $y=x^3$은 이차함수가 아니다.\n\n따라서 ①, ④이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -55,7 +55,7 @@ window.questionBank = [
       "$0$"
     ],
     "answer": "②",
-    "solution": "$f(1)$은 식의 $x$에 $1$을 대입하여 구한다.\n$f(1)=-(1)^2+2\\times1-4$\n$=-1+2-4$\n$=-3$\n\n따라서 정답은 ②이다.",
+    "solution": "$f(1)$은 $x=1$을 대입한다.\n$f(1)=-(1)^2+2(1)-4$\n$=-1+2-4=-3$\n\n따라서 정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -86,7 +86,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "그림에서 1단계, 2단계, 3단계의 바둑돌 수는 각각 $1$, $4$, $9$개이다.\n$1=1^2$, $4=2^2$, $9=3^2$이므로 $x$단계의 바둑돌 수는\n$y=x^2$이다.\n\n$y=ax^2+bx+c$와 비교하면\n$a=1$, $b=0$, $c=0$이다.\n따라서\n$a-b-c=1-0-0=1$이다.\n\n정답은 ③이다.",
+    "solution": "그림에서 바둑돌 수는\n1단계 $1$, 2단계 $4$, 3단계 $9$이다.\n즉 $1^2,2^2,3^2$의 규칙이므로\n$x$단계에서는 $y=x^2$이다.\n\n$y=ax^2+bx+c$와 비교하면\n$a=1,\\ b=0,\\ c=0$.\n따라서\n$a-b-c=1$이다.\n\n정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q03.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -118,7 +118,7 @@ window.questionBank = [
       "$x\\lt0$일 때, $x$의 값이 증가하면 $y$의 값도 증가한다."
     ],
     "answer": "③, ④",
-    "solution": "$y=-\\dfrac23x^2$에서 이차항의 계수는 음수이므로 그래프는 위로 볼록하다.\n또 꼭짓점은 $(0,0)$이고 대칭축은 $y$축, 즉 $x=0$이다.\n\n① 위로 볼록하므로 옳다.\n② 꼭짓점은 $(0,0)$이므로 옳다.\n③ 축의 방정식은 $x=0$이므로 옳지 않다.\n④ $y=-\\dfrac23x^2$와 $y=\\dfrac23x^2$는 $x$축에 대하여 대칭이므로 옳지 않다.\n⑤ $x<0$에서는 $x$가 $0$에 가까워질수록 $y$가 증가하므로 옳다.\n\n따라서 옳지 않은 것은 ③, ④이다.",
+    "solution": "$y=-\\dfrac23x^2$은 계수가 음수이므로 위로 볼록하고,\n꼭짓점은 $(0,0)$, 축은 $x=0$이다.\n\n① 옳다.\n② 옳다.\n③ 축은 $y=0$이 아니라 $x=0$이므로 옳지 않다.\n④ $y=\\dfrac23x^2$와는 $x$축 대칭이므로 옳지 않다.\n⑤ $x<0$에서 $x$가 커질수록 $y$도 커진다.\n\n따라서 ③, ④이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -149,7 +149,7 @@ window.questionBank = [
       "$-\\dfrac{3}{2}\\lt a\\lt0$"
     ],
     "answer": "⑤",
-    "solution": "그림의 $y=ax^2$는 아래쪽으로 열린 포물선이므로\n$a<0$이다.\n\n또 $y=ax^2$의 그래프가 $y=-\\dfrac32x^2$보다 폭이 넓으므로 이차항 계수의 절댓값은 더 작다.\n$|a|<\\dfrac32$\n\n$a<0$과 함께 정리하면\n$-\\dfrac32<a<0$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "그림에서 $y=ax^2$도 아래쪽으로 열린다.\n따라서 $a<0$이다.\n\n또 $y=ax^2$의 그래프가\n$y=-\\dfrac32x^2$보다 더 넓으므로\n$|a|<\\dfrac32$이다.\n\n두 조건을 합치면\n$-\\dfrac32<a<0$.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q05.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -180,7 +180,7 @@ window.questionBank = [
       "이차함수 $y=2x^2$의 그래프의 폭보다 넓다."
     ],
     "answer": "③",
-    "solution": "$y=-(x+5)^2$는 $y=-x^2$의 그래프를 왼쪽으로 $5$만큼 평행이동한 그래프이다.\n따라서 꼭짓점은 $(-5,0)$이고 축은 $x=-5$이다.\n\n① 왼쪽으로 $5$만큼 이동했으므로 옳다.\n② 꼭짓점이 $(-5,0)$이므로 옳다.\n③ $y=-x^2$를 $x$축에 대하여 대칭이동하면 $y=x^2$이므로 옳지 않다.\n④ 꼭짓점의 오른쪽에서는 $x$가 증가할수록 $y$가 감소하므로 옳다.\n⑤ $|-1|<2$이므로 $y=2x^2$보다 폭이 넓다.\n\n따라서 정답은 ③이다.",
+    "solution": "$y=-(x+5)^2$의\n꼭짓점은 $(-5,0)$, 축은 $x=-5$이다.\n\n① $y=-x^2$를 왼쪽으로 $5$만큼 옮긴 것: 참\n② 꼭짓점 $(-5,0)$: 참\n③ $x$축 대칭이면 $y=(x+5)^2$이므로 거짓\n④ 축의 오른쪽에서는 $x$가 증가하면 $y$가 감소: 참\n⑤ $|-1|<2$이므로 $y=2x^2$보다 폭이 넓음: 참\n\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -210,7 +210,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solution": "$y=3x^2$의 그래프를 $y$축 방향으로 $q$만큼 평행이동하면\n$y=3x^2+q$이다.\n\n이 그래프가 $(-1,1)$을 지나므로\n$1=3(-1)^2+q$\n$1=3+q$\n\n따라서 $q=-2$이고 정답은 ①이다.",
+    "solution": "평행이동한 식은\n$y=3x^2+q$이다.\n\n점 $(-1,1)$을 지나므로\n$1=3(-1)^2+q$\n$1=3+q$\n\n따라서 $q=-2$이고\n정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -240,7 +240,7 @@ window.questionBank = [
       "$(0,0)$"
     ],
     "answer": "③",
-    "solution": "꼭짓점형\n$y=a(x-p)^2+q$\n의 꼭짓점은 $(p,q)$이다.\n\n$y=4(x+3)^2-2$\n$=4\\{x-(-3)\\}^2-2$이므로\n$p=-3$, $q=-2$이다.\n\n따라서 꼭짓점은 $(-3,-2)$이고 정답은 ③이다.",
+    "solution": "$y=a(x-p)^2+q$의 꼭짓점은 $(p,q)$이다.\n\n$y=4(x+3)^2-2$\n$=4\\{x-(-3)\\}^2-2$이므로\n\n꼭짓점은 $(-3,-2)$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -270,7 +270,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "⑤",
-    "solution": "먼저 $y=-2x^2$의 그래프를 $x$축 방향으로 $p$, $y$축 방향으로 $3$만큼 평행이동하면\n$y=-2(x-p)^2+3$이다.\n\n직선 $y=5$에 대하여 대칭인 두 점은 같은 $x$에서 두 $y$좌표의 합이 $10$이다.\n따라서 대칭이동한 그래프는\n$y=10-\\{-2(x-p)^2+3\\}$\n$=2(x-p)^2+7$이다.\n\n이 식이 $y=2(x-1)^2+q$와 같으므로\n$p=1$, $q=7$이다.\n\n따라서\n$p+q=1+7=8$이고 정답은 ⑤이다.",
+    "solution": "첫 그래프를 평행이동하면\n$y=-2(x-p)^2+3$이다.\n\n직선 $y=5$에 대하여 대칭이면\n같은 $x$에서 두 $y$좌표의 합이 $10$이므로\n대칭된 그래프는\n$y=10-\\{-2(x-p)^2+3\\}$\n$=2(x-p)^2+7$이다.\n\n$y=2(x-1)^2+q$와 비교하면\n$p=1,\\ q=7$.\n\n따라서 $p+q=8$이고\n정답은 ⑤이다.",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q9-solution.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -301,7 +301,7 @@ window.questionBank = [
       "ㄷ, ㄹ, ㅁ"
     ],
     "answer": "②",
-    "solution": "그래프가 제1, 제2, 제4사분면만 지나고 제3사분면은 지나지 않는 조건을 차례로 보자.\n\n제1, 제2사분면까지 양쪽으로 올라가야 하므로 포물선은 위로 열린다.\n따라서 $a>0$이다.\n\n제4사분면을 지나려면 가장 낮은 점인 꼭짓점의 $y$좌표가 음수여야 하므로\n$q<0$이다.\n또 음수인 부분이 $x>0$ 쪽에 있어야 제3사분면을 지나지 않으므로 꼭짓점의 $x$좌표 $-p$는 양수이다.\n따라서 $p<0$이다.\n\n$x=0$일 때의 함숫값은 $ap^2+q$이다.\n이 값이 음수이면 $y$축 바로 왼쪽에서도 제3사분면을 지나게 되므로\n$ap^2+q\\ge0$이다.\n\nㄱ. $a>0$, $q<0$이므로 $aq<0$이다. 거짓.\nㄴ. $ap^2+q\\ge0$이다. 참.\nㄷ. $p<0$, $q<0$이므로 $p+q<0$이다. 참.\nㄹ. 꼭짓점 $(-p,q)$는 제4사분면에 있다. 거짓.\nㅁ. 축은 $x=-p$이다. 거짓.\n\n따라서 옳은 것은 ㄴ, ㄷ이고 정답은 ②이다.",
+    "solution": "그래프가 제1, 제2사분면으로 올라가므로\n포물선은 위로 열려 $a>0$이다.\n제4사분면을 지나려면 꼭짓점의 $y$좌표가 음수이므로 $q<0$이다.\n제3사분면을 지나지 않으려면 음수인 부분이 $x>0$ 쪽에 있어야 하므로\n꼭짓점의 $x$좌표 $-p>0$, 즉 $p<0$이다.\n\n또 $x=0$에서\n$y=ap^2+q$가 음수이면 제3사분면을 지나므로\n$ap^2+q\\ge0$이다.\n\nㄱ. $aq<0$: 거짓\nㄴ. $ap^2+q\\ge0$: 참\nㄷ. $p+q<0$: 참\nㄹ. 꼭짓점 $(-p,q)$는 제4사분면: 거짓\nㅁ. 축은 $x=-p$: 거짓\n\n따라서 ㄴ, ㄷ이고 정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "ㄱ의 그래프는 제3사분면, 제4사분면을 지난다."
     ],
     "answer": "④",
-    "solution": "각 함수의 이차항 계수와 꼭짓점, 축을 정리해 보자.\n\nㄱ. $y=-4(x-1)^2$: 계수 $-4$, 꼭짓점 $(1,0)$, 축 $x=1$\nㄴ. $y=\\dfrac52(x+1)^2-3$: 계수 $\\dfrac52$\nㄷ. $y=3x^2+5$: 계수 $3$, 꼭짓점 $(0,5)$\nㄹ. $y=-\\dfrac12(x-1)^2+2$: 계수 $-\\dfrac12$, 축 $x=1$\n\n① 계수가 양수인 ㄴ, ㄷ은 아래로 볼록하다.\n② ㄱ과 ㄹ의 축은 모두 $x=1$이다.\n③ $|a|$가 가장 큰 ㄱ의 그래프가 가장 좁다.\n④ ㄷ의 꼭짓점 $(0,5)$는 $x$축 위가 아니라 $y$축 위에 있다.\n⑤ ㄱ은 $x\\ne1$에서 $y<0$이므로 제3, 제4사분면을 지난다.\n\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "각 그래프의 계수와 꼭짓점을 본다.\n\nㄱ. $y=-4(x-1)^2$: 축 $x=1$, 위로 볼록\nㄴ. $y=\\dfrac52(x+1)^2-3$: 아래로 볼록\nㄷ. $y=3x^2+5$: 꼭짓점 $(0,5)$, 아래로 볼록\nㄹ. $y=-\\dfrac12(x-1)^2+2$: 축 $x=1$, 위로 볼록\n\n① ㄴ, ㄷ: 참\n② ㄱ, ㄹ의 축은 모두 $x=1$: 참\n③ $|a|$가 가장 큰 ㄱ이 가장 좁음: 참\n④ ㄷ의 꼭짓점은 $x$축 위가 아님: 거짓\n⑤ ㄱ은 제3, 제4사분면을 지남: 참\n\n따라서 정답은 ④이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -363,7 +363,7 @@ window.questionBank = [
       "㉤: $3$"
     ],
     "answer": "④",
-    "solution": "완전제곱식을 직접 만들어 빈칸을 확인하자.\n$y=-x^2+6x-5$\n$=-(x^2-6x)-5$\n\n$x^2-6x$에 $9$를 더하고 빼면\n$y=-(x^2-6x+9-9)-5$\n$=-\\{(x-3)^2-9\\}-5$\n$=-(x-3)^2+9-5$\n$=-(x-3)^2+4$\n\n따라서 ㉠은 $6x$, ㉡은 $9$, ㉢은 $3$, ㉣은 $9$, ㉤은 $3$이다.\n㉣을 $-9$라고 한 ④가 잘못 짝지어졌다.",
+    "solution": "식을 완전제곱식으로 바꾼다.\n$y=-x^2+6x-5$\n$=-(x^2-6x)-5$\n$=-(x^2-6x+9-9)-5$\n$=-(x-3)^2+9-5$\n$=-(x-3)^2+4$\n\n따라서\n㉠ $6x$, ㉡ $9$, ㉢ $3$, ㉣ $9$, ㉤ $3$이다.\n㉣을 $-9$로 적은 ④가 잘못 짝지어졌다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q12.png",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
@@ -394,7 +394,7 @@ window.questionBank = [
       "$y=5x^2+2$"
     ],
     "answer": "②",
-    "solution": "주어진 식을 완전제곱식으로 바꾸면\n$y=-x^2-4x-4$\n$=-(x^2+4x+4)$\n$=-(x+2)^2$이다.\n\n따라서 꼭짓점은 $(-2,0)$이다.\n\n② $y=-5(x+2)^2$의 꼭짓점도 $(-2,0)$이므로 두 그래프의 꼭짓점이 같다.\n\n따라서 정답은 ②이다.",
+    "solution": "$y=-x^2-4x-4$\n$=-(x^2+4x+4)$\n$=-(x+2)^2$.\n\n따라서 꼭짓점은 $(-2,0)$이다.\n\n② $y=-5(x+2)^2$도\n꼭짓점이 $(-2,0)$이므로\n\n정답은 ②이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -424,7 +424,7 @@ window.questionBank = [
       "$y=-x^2+5$"
     ],
     "answer": "①",
-    "solution": "원래 함수를 $f(x)=3x^2+x+3$이라 하자.\n\n그래프를 왼쪽으로 $1$만큼 옮기면 $x$ 대신 $x+1$을 넣고,\n위로 $2$만큼 옮기면 마지막에 $2$를 더한다.\n$y=f(x+1)+2$\n\n$y=3(x+1)^2+(x+1)+3+2$\n$=3(x^2+2x+1)+x+6$\n$=3x^2+6x+3+x+6$\n$=3x^2+7x+9$\n\n따라서 정답은 ①이다.",
+    "solution": "왼쪽으로 $1$, 위로 $2$만큼 옮기므로\n$x$ 대신 $x+1$을 넣고 $2$를 더한다.\n\n$y=3(x+1)^2+(x+1)+3+2$\n$=3x^2+6x+3+x+6$\n$=3x^2+7x+9$\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -455,7 +455,7 @@ window.questionBank = [
       "$-10$"
     ],
     "answer": "⑤",
-    "solution": "첫 번째 그래프\n$y=(x-1)^2-4$\n의 꼭짓점은 $P(1,-4)$이다.\n\n두 꼭짓점의 $y$좌표가 같으므로 $Q$도 $y=-4$ 위에 있다.\n색칠한 직사각형은 $x$축과 $y=-4$ 사이에 있으므로 세로 길이는 $4$이다.\n\n넓이가 $16$이므로 가로 길이는\n$PQ=16\\div4=4$이다.\n\n그림에서 $Q$가 $P$의 오른쪽에 있으므로\n$Q$의 $x$좌표는 $1+4=5$이다.\n\n$y=x^2+ax+21$의 꼭짓점의 $x$좌표는 $-\\dfrac a2$이므로\n$-\\dfrac a2=5$\n\n따라서 $a=-10$이고 정답은 ⑤이다.",
+    "solution": "첫 그래프 $y=(x-1)^2-4$의 꼭짓점은\n$P(1,-4)$이다.\n\n두 꼭짓점의 $y$좌표가 같으므로\n$Q$의 $y$좌표도 $-4$이다.\n색칠한 직사각형의 높이는 $4$이고 넓이가 $16$이므로\n$PQ=16\\div4=4$.\n\n그림에서 $Q$는 $P$의 오른쪽이므로\n$Q=(5,-4)$이다.\n\n$y=x^2+ax+21$의 꼭짓점의 $x$좌표는 $-\\dfrac a2$이므로\n$-\\dfrac a2=5$.\n\n따라서 $a=-10$이고\n정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q15.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q15-solution.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -487,7 +487,7 @@ window.questionBank = [
       "$-8$"
     ],
     "answer": "①",
-    "solution": "점 $A$의 $x$좌표를 $t$, 점 $B$의 $x$좌표를 $s$라 하자.\n$A(t,3t^2)$, $B\\left(s,\\dfrac13s^2\\right)$이다.\n\n두 점의 $y$좌표가 같으므로\n$3t^2=\\dfrac13s^2$\n$s^2=9t^2$\n\n따라서\n$s=3t$ 또는 $s=-3t$이다.\n\n또 두 점의 $y$좌표가 같으므로 $AB$는 수평이고\n$|s-t|=6$이다.\n\n$s=3t$일 때\n$|2t|=6$\n$t=3$ 또는 $t=-3$이다.\n\n$s=-3t$일 때\n$|-4t|=6$\n$t=\\dfrac32$ 또는 $t=-\\dfrac32$이다.\n\n가능한 네 값의 곱은\n$3\\times(-3)\\times\\dfrac32\\times\\left(-\\dfrac32\\right)=\\dfrac{81}{4}$이다.\n\n따라서 정답은 ①이다.",
+    "solution": "$A=(t,3t^2)$, $B=\\left(s,\\dfrac13s^2\\right)$라 하자.\n\n두 점의 $y$좌표가 같으므로\n$3t^2=\\dfrac13s^2$\n$s^2=9t^2$\n따라서 $s=3t$ 또는 $s=-3t$이다.\n\n또 $AB=6$이고 두 점의 높이가 같으므로\n$|s-t|=6$이다.\n\n$s=3t$이면 $|2t|=6$이므로 $t=\\pm3$.\n$s=-3t$이면 $|4t|=6$이므로 $t=\\pm\\dfrac32$.\n\n가능한 값의 곱은\n$3(-3)\\left(\\dfrac32\\right)\\left(-\\dfrac32\\right)=\\dfrac{81}{4}$.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
@@ -518,7 +518,7 @@ window.questionBank = [
       "$\\dfrac{4}{3}$"
     ],
     "answer": "③",
-    "solution": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac35$이므로\n$BC:AC=3:5$이다.\n\n각 $B$가 직각이므로 피타고라스 정리를 이용하면 나머지 변의 비는\n$AB=\\sqrt{5^2-3^2}=4$이다.\n\n따라서\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac45$이다.\n\n정답은 ③이다.",
+    "solution": "$\\sin A=\\dfrac{BC}{AC}=\\dfrac35$이므로\n$BC:AC=3:5$이다.\n\n직각삼각형에서\n$AB=\\sqrt{5^2-3^2}=4$이므로\n$AB:BC:AC=4:3:5$이다.\n\n따라서\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac45$.\n\n정답은 ③이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q17.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q17-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -551,7 +551,7 @@ window.questionBank = [
       "$\\cos E=\\cos A$"
     ],
     "answer": "⑤",
-    "solution": "$\\angle B=\\angle D=90^\\circ$이고 $\\angle A$를 공통으로 가지므로\n$\\triangle ABC\\sim\\triangle ADE$이다.\n\n작은 삼각형에서 $AB=4$, $BC=3$, $AC=5$이고 큰 삼각형에서 $DE=6$이다.\n$BC:DE=3:6=1:2$이므로\n$AD=8$, $AE=10$이다.\n따라서\n$CE=AE-AC=10-5=5$이다.\n\n① 두 삼각형은 닮음이므로 옳다.\n② $CE=5$이므로 옳다.\n③ $\\sin E=\\dfrac{AD}{AE}=\\dfrac8{10}=\\dfrac45=\\dfrac{AB}{AC}$이므로 옳다.\n④ $\\tan A=\\dfrac{BC}{AB}=\\dfrac34$이므로 옳다.\n⑤ $\\cos E=\\dfrac{DE}{AE}=\\dfrac35$이고 $\\cos A=\\dfrac{AB}{AC}=\\dfrac45$이므로 같지 않다.\n\n따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "그림에서\n$AB=4$, $BC=3$, $AC=5$이다.\n또 $\\angle B=\\angle D=90^\\circ$이고 $\\angle A$가 공통이므로\n$\\triangle ABC\\sim\\triangle ADE$이다.\n\n$BC:DE=3:6=1:2$이므로\n$AD=8,\\ AE=10$.\n따라서\n$CE=AE-AC=10-5=5$이다.\n\n① 참\n② 참\n③ $\\sin E=\\dfrac{AD}{AE}=\\dfrac45=\\dfrac{AB}{AC}$: 참\n④ $\\tan A=\\dfrac{BC}{AB}=\\dfrac34$: 참\n⑤ $\\cos E=\\dfrac{DE}{AE}=\\dfrac35$,\n$\\cos A=\\dfrac{AB}{AC}=\\dfrac45$로 서로 다름\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q18.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q18-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -584,7 +584,7 @@ window.questionBank = [
       "$\\tan x=\\dfrac{\\sqrt2}{2}$"
     ],
     "answer": "⑤",
-    "solution": "정육면체의 한 모서리의 길이가 $1$이다.\n\n밑면의 대각선 $EG$는\n$EG=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n\n또 $AE$는 밑면에 수직이므로 $AE\\perp EG$이고\n$AE=1$이다.\n직각삼각형 $AEG$에서\n$AG=\\sqrt{AE^2+EG^2}$\n$=\\sqrt{1+2}=\\sqrt3$이다.\n\n각 $AGE=x$에서 맞은편 변은 $AE=1$, 이웃한 변은 $EG=\\sqrt2$이다.\n따라서\n$\\tan x=\\dfrac{AE}{EG}=\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n\n정답은 ⑤이다.",
+    "solution": "한 모서리의 길이가 $1$이다.\n\n밑면의 대각선\n$EG=\\sqrt{1^2+1^2}=\\sqrt2$이다.\n또 $AE=1$이고 $AE\\perp EG$이므로\n직각삼각형 $AEG$에서\n$AG=\\sqrt{1^2+(\\sqrt2)^2}=\\sqrt3$이다.\n\n$x=\\angle AGE$에서\n$\\tan x=\\dfrac{AE}{EG}$\n$=\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q19.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q19-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
@@ -616,7 +616,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt3}{3}$"
     ],
     "answer": "①",
-    "solution": "특수각의 삼각비를 대입하자.\n$\\tan45^\\circ=1$\n$\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$\n$\\cos60^\\circ=\\dfrac12$\n\n따라서\n$\\sqrt3\\times\\tan45^\\circ-2\\times\\sin60^\\circ\\times\\cos60^\\circ$\n$=\\sqrt3\\times1-2\\times\\dfrac{\\sqrt3}{2}\\times\\dfrac12$\n$=\\sqrt3-\\dfrac{\\sqrt3}{2}$\n$=\\dfrac{\\sqrt3}{2}$\n\n따라서 정답은 ①이다.",
+    "solution": "특수각의 값을 넣는다.\n$\\tan45^\\circ=1$,\n$\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$,\n$\\cos60^\\circ=\\dfrac12$.\n\n따라서\n$\\sqrt3\\tan45^\\circ-2\\sin60^\\circ\\cos60^\\circ$\n$=\\sqrt3-2\\cdot\\dfrac{\\sqrt3}{2}\\cdot\\dfrac12$\n$=\\sqrt3-\\dfrac{\\sqrt3}{2}$\n$=\\dfrac{\\sqrt3}{2}$.\n\n정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -641,7 +641,7 @@ window.questionBank = [
     "content": "[서술형 1] 이차함수 $y=ax^2+bx+c$의 그래프가 다음과 같을 때, 상수 $a$, $b$, $c$의 값을 구하여라. (단, 점 $P$는 포물선의 꼭짓점이다.) [7점]<br>($a$ 구하는 과정: 3점, $b$, $c$ 구하는 과정: 4점)",
     "choices": [],
     "answer": "$a=-\\dfrac{1}{2},\\ b=2,\\ c=1$",
-    "solution": "그림에서 포물선의 꼭짓점은 $P(2,3)$이고, 그래프는 $y$축과 $(0,1)$에서 만난다.\n\n꼭짓점이 $(2,3)$이므로\n$y=a(x-2)^2+3$으로 놓을 수 있다.\n\n점 $(0,1)$을 지나므로\n$1=a(0-2)^2+3$\n$1=4a+3$\n$4a=-2$\n$a=-\\dfrac12$\n\n이를 다시 식에 넣어 전개하면\n$y=-\\dfrac12(x-2)^2+3$\n$=-\\dfrac12(x^2-4x+4)+3$\n$=-\\dfrac12x^2+2x+1$\n\n$y=ax^2+bx+c$와 비교하면\n$a=-\\dfrac12$, $b=2$, $c=1$이다.",
+    "solution": "꼭짓점이 $P(2,3)$이므로\n$y=a(x-2)^2+3$으로 놓는다.\n\n그래프가 $(0,1)$을 지나므로\n$1=a(0-2)^2+3$\n$1=4a+3$\n$a=-\\dfrac12$.\n\n따라서\n$y=-\\dfrac12(x-2)^2+3$\n$=-\\dfrac12x^2+2x+1$.\n\n그러므로\n$a=-\\dfrac12,\\ b=2,\\ c=1$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q21.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q21-solution.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -668,7 +668,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 이차함수 $y=-\\dfrac{1}{2}x^2-2x+3$의 그래프의 꼭짓점을 $A$, $y$축과의 교점을 $B$라고 할 때, $\\triangle AOB$의 넓이를 구하여라. [7점]<br>(점 $A$의 좌표를 구하는 과정: 4점, 점 $B$의 좌표를 구하는 과정: 1점, $\\triangle AOB$의 넓이를 구하는 과정: 2점)",
     "choices": [],
     "answer": "$3$",
-    "solution": "주어진 식을 완전제곱식으로 바꾸어 꼭짓점을 구하자.\n$y=-\\dfrac12x^2-2x+3$\n$=-\\dfrac12(x^2+4x)+3$\n$=-\\dfrac12\\{(x+2)^2-4\\}+3$\n$=-\\dfrac12(x+2)^2+5$\n\n따라서 꼭짓점은\n$A(-2,5)$이다.\n\n$y$축과의 교점은 $x=0$을 대입하여 구한다.\n$y=3$이므로\n$B(0,3)$이다.\n\n$OB=3$이고 점 $A$에서 $y$축까지의 거리는 $2$이므로\n$\\triangle AOB$의 넓이는\n$\\dfrac12\\times3\\times2=3$이다.\n\n따라서 구하는 넓이는 $3$이다.",
+    "solution": "꼭짓점을 구하도록 완전제곱식으로 바꾼다.\n$y=-\\dfrac12x^2-2x+3$\n$=-\\dfrac12(x^2+4x)+3$\n$=-\\dfrac12\\{(x+2)^2-4\\}+3$\n$=-\\dfrac12(x+2)^2+5$.\n\n따라서 $A=(-2,5)$이다.\n$y$축과의 교점은 $x=0$이므로\n$B=(0,3)$이다.\n\n$OB=3$,\n점 $A$에서 $y$축까지의 거리는 $2$이므로\n$[\\triangle AOB]=\\dfrac12\\times3\\times2=3$.\n\n따라서 넓이는 $3$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q22.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q22-solution.svg",
     "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
@@ -695,7 +695,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림과 같은 직각삼각형 $ABC$에서 $\\angle A$의 삼각비의 값을 구하여라. [6점]<br>($AC$의 길이 구하기: 3점, 삼각비 구하기: 3점)",
     "choices": [],
     "answer": "$\\sin A=\\dfrac{2\\sqrt{13}}{13},\\ \\cos A=\\dfrac{3\\sqrt{13}}{13},\\ \\tan A=\\dfrac{2}{3}$",
-    "solution": "그림에서 $AB=3$, $BC=2$, $\\angle B=90^\\circ$이다.\n\n피타고라스 정리에 의해\n$AC=\\sqrt{AB^2+BC^2}$\n$=\\sqrt{3^2+2^2}$\n$=\\sqrt{13}$이다.\n\n각 $A$를 기준으로\n맞은편 변은 $BC=2$, 이웃한 변은 $AB=3$, 빗변은 $AC=\\sqrt{13}$이다.\n\n따라서\n$\\sin A=\\dfrac{2}{\\sqrt{13}}=\\dfrac{2\\sqrt{13}}{13}$\n$\\cos A=\\dfrac{3}{\\sqrt{13}}=\\dfrac{3\\sqrt{13}}{13}$\n$\\tan A=\\dfrac23$\n\n따라서 구하는 삼각비는 위 세 값이다.",
+    "solution": "그림에서 $AB=3$, $BC=2$, $\\angle B=90^\\circ$이다.\n\n피타고라스 정리로\n$AC=\\sqrt{3^2+2^2}=\\sqrt{13}$이다.\n\n각 $A$를 기준으로\n맞은편 변은 $BC=2$,\n이웃한 변은 $AB=3$이다.\n\n따라서\n$\\sin A=\\dfrac2{\\sqrt{13}}=\\dfrac{2\\sqrt{13}}{13}$,\n$\\cos A=\\dfrac3{\\sqrt{13}}=\\dfrac{3\\sqrt{13}}{13}$,\n$\\tan A=\\dfrac23$이다.",
     "image": "assets/images/24_왕운중_2학기_중간_중3_수학/q23.png",
     "solutionImage": "assets/images/24_왕운중_2학기_중간_중3_수학/q23-solution.svg",
     "subUnitKey": "M3-05-TRIG_RATIO",
