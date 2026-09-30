@@ -8,7 +8,7 @@
 
 ## CURRENT — META-INTEGRATED RECERTIFICATION V2 / 2026-09-30
 
-형님 최신 지시로 current certification generation을 **`MIDDLE_RECERT_2026-09-30_META_V2`**로 승격한다. 기존 `MIDDLE_RECERT_2026-09-30_META_V2`은 문제·해설·SVG 작업은 보존 가치가 있으나 Meta 통합 완료를 증명하지 못했으므로 현행 재인증의 완료/skip authority로 사용하지 않는다.
+형님 최신 지시로 current certification generation을 **`MIDDLE_RECERT_2026-09-30_META_V2`**로 승격한다. 기존 `MIDDLE_RECERT_2026-09-29_V1`은 문제·해설·SVG 작업은 보존 가치가 있으나 Meta 통합 완료를 증명하지 못했으므로 현행 재인증의 완료/skip authority로 사용하지 않는다.
 
 2026-09-30 physical 전수조사 결과:
 - M3 inventory denominator: 69시험지
