@@ -1,0 +1,43 @@
+{
+  "schema": "APMATH_HIGH_SOURCE8_REVIEW1_RECEIPT_v1",
+  "batch": "PILOT-001",
+  "examFile": "25_금당고_2학기_기말_고2_미적분.js",
+  "ordinal": 1,
+  "stage": "REVIEW1_DONE_WITH_ITEM_HOLDS",
+  "reviewMode": "FULL_INDEPENDENT_REPAIR_BEFORE_HOLD",
+  "branch": "work/high-source8-r1",
+  "baseCreateHead": "907c013df06b1fe14e369ba6d744d2f89a90e004",
+  "baseMainSha": "a14521821d1dab215ef37d3d812311df93f18efd",
+  "sourceAuthority": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "finalArtifactSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
+  "productionMutationCount": 0,
+  "sourceParity": "21/21 content; 16/16 objective choices; 5 N/A",
+  "structureAudit": "PASS 21/21; grid 21/21; visual assets 0",
+  "independentMathAttempted": "21/21",
+  "independentMathResolved": "20/21",
+  "independentResults": {
+    "1":"④","2":"①","3":"③","4":"⑤","5":"③","6":"②","7":"④","8":"①",
+    "9":"②","10":"②","11":"②","12":"④","13":"③","14":"③","15":null,"16":"①",
+    "17":"11","18":"-16","19":"e^2","20":"1/2","21":"4"
+  },
+  "itemHoldCount": 1,
+  "itemHolds": [{
+    "qid": 15,
+    "reason": "SOURCE_MATH_NO_CHOICE_MATCH",
+    "observedEvidence": "Independent math gives f(2)=3(e^4-e), matching none of five frozen choices; source fidelity evidence binds q15 text/choices exactly to original page 3.",
+    "unresolvedPoint": "No unique deterministic repair: changing e^(x^2) to e^x yields choice ④, while replacing one choice with the derived value is also plausible.",
+    "nextRequiredEvidenceOrCapability": "Authoritative answer/correction identifying intended q15 repair.",
+    "lastReviewedStage": "REVIEW1"
+  }],
+  "repairBeforeHold": "ATTEMPTED_NO_UNIQUE_DETERMINISTIC_REPAIR",
+  "sourceFidelityEvidenceBlob": "f250ec20d16cfcba1dd79eb0441190b4cc2673a8",
+  "sourceTextParityBlob": "1df55177c8bd29c788e7eb476b36473d4db7a2a0",
+  "correctionProtocolBlob": "5991fc5fac223051b6cfd1c76446d1eff386945e",
+  "review1ProtocolBlob": "1c484378d7a7563a9eea922d61cdb8f01eba2766",
+  "blindDecisionFrozenBeforeGoldenCompare": true,
+  "goldenCalibration": "PASS",
+  "nextStage": "READY_FOR_REVIEW2_WITH_ITEM_HOLDS",
+  "nextOwner": "REVIEW1 / ordinal 2",
+  "notionSyncStatus": "PENDING",
+  "updatedAtKst": "2026-09-30T17:22:00+09:00"
+}
