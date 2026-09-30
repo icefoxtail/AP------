@@ -3,30 +3,22 @@
   "exam": "26_금당고_2학기_중간_고2_미적분I",
   "branch": "work/26-geumdang-h2-2mid-m1",
   "inputBranchHead": "06b0ff5c494f53743cfc1dcaa4edf77c4673f71c",
-  "authorityMain": "b2e3aa28b364ddadb97fb0203ef439b51e4662c6",
+  "authorityMain": "7a1a30eecc15e0bb66439705f72db7ac1a16e5a5",
   "scope": "21/21 Stage6 semantic/crosswalk/ACTIVE-key deterministic preflight",
   "canonicalValidatorExecution": "NOT_RUN",
-  "canonicalValidatorReason": "Connected GitHub access can read authority files but does not provide a mounted repository/runtime to execute node archive/tools/meta-foundation/validate-rpm-active-receipt.mjs. No validator PASS is claimed.",
-  "result": "PASS_WITH_ITEM_META_HOLD",
+  "canonicalValidatorReason": "q12 now intentionally defines an RPM Primary extension candidate; current locked authority cannot validate the new path until promotion. No validator PASS is claimed.",
+  "result": "PASS_WITH_TAXONOMY_EXTENSION_SEED",
   "denominator": 21,
   "checked": 21,
   "hardErrorCount": 0,
-  "itemMetaHoldCount": 1,
+  "itemMetaHoldCount": 0,
   "examHold": false,
   "courseBoundaryFailureCount": 0,
   "projectionCounts": {
-    "PROJECTION_BINDING_PENDING": 18,
-    "META_ONLY_COMPATIBILITY_PENDING": 2,
-    "NOT_ATTEMPTED": 1
+    "PROJECTION_BINDING_PENDING": 19,
+    "META_ONLY_COMPATIBILITY_PENDING": 2
   },
-  "itemHolds": [
-    {
-      "id": 12,
-      "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
-      "scope": "META_ONLY",
-      "examHold": false
-    }
-  ],
+  "itemHolds": [],
   "authorityFiles": {
     "rpmMaster": {
       "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
@@ -55,13 +47,21 @@
   },
   "q12Finding": {
     "sourceMethod": "함수의 극한의 대소 관계",
-    "lockedMi1ExactL4Present": false,
-    "action": "TRUE_META_HOLD",
-    "prohibitedFallbacks": [
-      "공통수학2 Primary 재라우팅",
-      "극한값 계산으로 강제 분류",
-      "미적분II의 샌드위치 L4 차용"
-    ]
+    "action": "RPM_PRIMARY_EXTENSION_SEED",
+    "l3": {
+      "action": "KEEP",
+      "label": "극한의 성질"
+    },
+    "l4": {
+      "action": "ADD",
+      "label": "함수의 극한의 대소 관계"
+    },
+    "activeReuse": {
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE"
+    },
+    "proposedCrosswalkId": "H2-M2-RPM-098",
+    "hold": false
   },
   "perQuestion": [
     {
@@ -132,9 +132,9 @@
     },
     {
       "id": 12,
-      "status": "META_HOLD",
+      "status": "TAXONOMY_EXTENSION_SEED",
       "errors": [],
-      "projectionStatus": "NOT_ATTEMPTED"
+      "projectionStatus": "PROJECTION_BINDING_PENDING"
     },
     {
       "id": 13,
@@ -193,8 +193,10 @@
   ],
   "errors": [],
   "nextGate": [
+    "promote q12 RPM extension candidate into RPM Primary master/view/crosswalk with package parity update",
+    "run canonical resolver/validator after promotion",
     "fresh independent blind difficulty 21/21",
-    "actual canonical resolver/validator execution in repo runtime",
-    "q12 RPM Primary taxonomy gap adjudication/promotion"
-  ]
+    "Stage6 final closeout"
+  ],
+  "taxonomyExtensionSeedCount": 1
 }

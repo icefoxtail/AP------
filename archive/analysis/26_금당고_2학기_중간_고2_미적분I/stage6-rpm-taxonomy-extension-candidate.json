@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "rpm-primary-extension-candidate-v1",
+  "status": "REVIEW_READY",
+  "authorityBase": {
+    "mainSha": "7a1a30eecc15e0bb66439705f72db7ac1a16e5a5",
+    "rpmPackage": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0",
+    "rpmAuthorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
+    "activePack": "LIMIT_CONTINUITY",
+    "activePackVersion": "1.1.0"
+  },
+  "sourceSeed": {
+    "exam": "26_금당고_2학기_중간_고2_미적분I",
+    "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+    "sourceOrdinal": 12,
+    "questionUidCandidate": "qid_v1_4973d97e11f6de07ff27e1dbfe779f75136e8ae75c882336e19b976e2ab10a4d",
+    "sourceContent": "함수 f(x)가 모든 실수 x에 대하여 -3x≤f(x)≤x^2+x+4일 때, lim_{x→-2}|(x-2)f(x)|의 값을 구하는 문항",
+    "verifiedSemanticFact": {
+      "primaryMethod": "함수의 극한의 대소 관계를 이용해 사이 함수의 극한을 결정",
+      "decisiveStep": "-3x와 x^2+x+4가 x→-2에서 모두 6으로 수렴하므로 -3x≤f(x)≤x^2+x+4에서 f(x)의 극한을 6으로 결정"
+    }
+  },
+  "taxonomySynthesis": {
+    "curriculum": "2022",
+    "grade": "H2",
+    "scope": "미적분I",
+    "standardCourse": "미적분I",
+    "standardUnitKey": "H22-M1-01",
+    "majorUnit": "함수의 극한과 연속",
+    "midUnit": "함수의 극한",
+    "l3": {
+      "action": "KEEP",
+      "label": "극한의 성질",
+      "reason": "현재 RPM 미적분I에 이미 존재하며 q12의 주개념 parent로 적합함"
+    },
+    "l4": {
+      "action": "ADD",
+      "label": "함수의 극한의 대소 관계",
+      "definition": "두 비교 함수가 같은 값으로 수렴하고 그 사이에 놓인 함수의 극한을 대소 관계로 결정하는 유형.",
+      "reason": "q12의 decisive step을 기존 '극한값 계산' 또는 '대수적 계산'으로 축약하면 풀이 골격이 소실됨"
+    }
+  },
+  "activeFoundationReuse": {
+    "problemTypeKey": {
+      "action": "REUSE",
+      "key": "PT_LIMIT_VALUE_CALC",
+      "label": "함수의 극한값 계산",
+      "definition": "식·그래프·도형·대소 관계 등 다양한 표현을 필요한 계산 구조로 바꾸어 함수의 극한값을 구하는 문제 유형."
+    },
+    "templateKey": {
+      "action": "REUSE",
+      "key": "TPL_LIMIT_SQUEEZE",
+      "label": "함수의 대소 관계를 이용한 극한값 계산",
+      "definition": "상한·하한 함수의 극한을 일치시켜 사이 함수의 극한을 결정한다.",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "existingSupportingItemCount": 10,
+      "existingSupportingQuestionUids": [
+        "qid_v1_8a6aaafcd0328d09a23e3542c7005b412d282fa4a952715cfbdd7263b02c80e6",
+        "qid_v1_377c3ef7e4f52b387400cc04548a4d564511ac70d3f751c1d0cfbb17be23e156",
+        "qid_v1_0eff5f3a0f969a02a9822506df0b30b1473bc816999cfe6a563a1d0ce8d776c9",
+        "qid_v1_c91f2046cac8fb7438f902211227d1159a454ebe3d65857e7db81a3313c746c5",
+        "qid_v1_1dfc665faeae73cf222856bc21662f5e517197bad7a4c51b18474f04cbdfdb2f",
+        "qid_v1_578cfbeb36e52d4e590045f60b70606a238eddc96a300af4ffd859c8de0cdfd8",
+        "qid_v1_f9c85c6481eb11c937874f8b27c8b3acf7a1ef74afdeeb9f60bf7c9e3996e1db",
+        "qid_v1_58749e3f72c40bd8b8a0967bfd8d77457f88c5e2dc90f280d76bac3293568907",
+        "qid_v1_ce1254fcf81fdf11d03e2a4a87df77c6815f3cbba4378a71e8e637aa20eb96cd",
+        "qid_v1_9a89780b15d1973bb73ba4b9edc518ef8e6824639f1651f0d64dd6e4075c648d"
+      ]
+    },
+    "rationale": "ACTIVE Foundation에 이미 동일 반복 skeleton이 있으므로 새 PT/TPL 생성 금지"
+  },
+  "proposedCrosswalkRow": {
+    "id": "H2-M2-RPM-098",
+    "curriculum": "2022",
+    "scope": "미적분I",
+    "rpmPath": {
+      "majorUnit": "함수의 극한과 연속",
+      "midUnit": "함수의 극한",
+      "l3": "극한의 성질",
+      "l4": "함수의 극한의 대소 관계"
+    },
+    "standardUnitKey": "H22-M1-01",
+    "subUnitKey": null,
+    "mappingStatus": "DIRECT_BINDING_GAP",
+    "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+    "problemTypeLabelKo": "함수의 극한값 계산",
+    "ownerPack": "LIMIT_CONTINUITY",
+    "templateKey": "TPL_LIMIT_SQUEEZE",
+    "templateLabelKo": "함수의 대소 관계를 이용한 극한값 계산",
+    "bindingStatus": "MISSING"
+  },
+  "decision": {
+    "q12IsHold": false,
+    "examHold": false,
+    "l3NewKeyRequired": false,
+    "l4RpmPathRequired": true,
+    "activeNewKeyRequired": false,
+    "nextGate": "promote RPM extension candidate into locked master/view/crosswalk with parity/manifest update, then run canonical resolver/validator"
+  }
+}

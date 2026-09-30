@@ -10,7 +10,7 @@
   ],
   "standardUnitMaster": "archive/data/master_tables/js_archive_tag_master.json",
   "identityPolicy": "qid_v1_ + sha256(normalizeNfc(sourceArchiveFile) + '#' + 1-based sourceOrdinal); registration pending production intake",
-  "semanticValidationStatus": "PREFLIGHT_PASS_WITH_ITEM_META_HOLD",
+  "semanticValidationStatus": "PREFLIGHT_PASS_WITH_TAXONOMY_EXTENSION_SEED",
   "difficultyStatus": "BLIND_REVIEW_PENDING",
   "difficultyReason": "이 작업자는 앞 단계에서 legacy level을 이미 보았으므로 v1.3의 strict blind first-pass를 주장하지 않는다. JS difficulty 4-field는 UNKNOWN 유지.",
   "globalGaps": {
@@ -20,9 +20,15 @@
     "curriculumBoundary": "q3/q4/q18의 공통수학2 재라우팅을 폐기. 세 문항 모두 미적분I H22-M1-02에 유지하고 교육과정 밖 선수 개념만 CrossConcept로 분리.",
     "functionLimitOrderRelation": {
       "qid": 12,
-      "status": "TRUE_META_HOLD",
-      "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
-      "detail": "미적분I source/solution은 함수의 극한의 대소 관계를 요구하지만 locked RPM Primary 미적분I에는 exact L4가 없음."
+      "status": "RPM_PRIMARY_EXTENSION_SEED_READY",
+      "action": "ADD_L4_UNDER_EXISTING_L3",
+      "l3": "극한의 성질",
+      "l4": "함수의 극한의 대소 관계",
+      "activeReuse": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "templateKey": "TPL_LIMIT_SQUEEZE"
+      },
+      "bindingStatus": "2022 H22-M1-01 exact ACTIVE binding missing; projection remains PROJECTION_BINDING_PENDING"
     }
   },
   "questions": [
@@ -379,8 +385,8 @@
       "subUnitKeyCandidate": null,
       "subUnitCandidate": null,
       "l2Status": "MASTER_GAP_UNMATERIALIZED",
-      "primaryMethod": "함수의 극한의 대소 관계를 이용해 f(x)의 극한을 결정",
-      "decisiveStep": "-3x와 x^2+x+4가 x→-2에서 모두 6으로 수렴하므로 그 사이의 f(x)도 6으로 수렴한다고 판단",
+      "primaryMethod": "함수의 극한의 대소 관계를 이용해 사이 함수의 극한을 결정",
+      "decisiveStep": "-3x와 x^2+x+4가 x→-2에서 모두 6으로 수렴하므로 -3x≤f(x)≤x^2+x+4에서 f(x)의 극한을 6으로 결정",
       "rpmCrosswalkId": null,
       "rpmPrimaryPath": {
         "majorUnit": "함수의 극한과 연속",
@@ -388,16 +394,23 @@
         "l3": "극한의 성질",
         "l4": "함수의 극한의 대소 관계"
       },
-      "rpmSemanticCandidateStatus": "TRUE_META_HOLD",
-      "projectionCandidateStatus": "NOT_ATTEMPTED",
-      "problemTypeKeyCandidate": null,
-      "templateKeyCandidate": null,
+      "rpmSemanticCandidateStatus": "RPM_PRIMARY_EXTENSION_SEED_READY",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "templateKeyCandidate": "TPL_LIMIT_SQUEEZE",
       "crossConceptKeyCandidates": [],
       "conditionKeyCandidates": [],
       "integrationPatternCandidate": "NONE",
       "difficultyStatus": "BLIND_REVIEW_PENDING",
-      "metadataHoldReason": "RPM_PRIMARY_PATH_NOT_FOUND",
-      "metadataHoldDetail": "source+final solution의 decisive step은 미적분I 내부의 함수의 극한의 대소 관계이지만 locked RPM Primary 미적분I에 대응 L4가 없음. 다른 과목 Primary 또는 부정확한 L4로 강제 매핑 금지."
+      "rpmCrosswalkIdCandidate": "H2-M2-RPM-098",
+      "taxonomyAction": {
+        "l3": "KEEP",
+        "l3Label": "극한의 성질",
+        "l4": "ADD",
+        "l4Label": "함수의 극한의 대소 관계",
+        "activeProblemType": "REUSE",
+        "activeTemplate": "REUSE"
+      }
     },
     {
       "id": 13,
@@ -711,8 +724,8 @@
       "questions": [
         12
       ],
-      "code": "Q12_RPM_SEMANTIC_GAP",
-      "detail": "RPM-050 강제 분류 폐기. 미적분I Primary 유지, '함수의 극한의 대소 관계' exact L4 부재로 TRUE_META_HOLD."
+      "code": "Q12_TAXONOMY_SEED",
+      "detail": "HOLD 폐기. q12를 미적분I 기준문항으로 사용하여 기존 L3 '극한의 성질'을 재사용하고 신규 RPM L4 '함수의 극한의 대소 관계'를 ADD candidate로 생성. ACTIVE PT_LIMIT_VALUE_CALC/TPL_LIMIT_SQUEEZE 재사용."
     }
   ]
 }
