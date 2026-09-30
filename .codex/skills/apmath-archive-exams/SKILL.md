@@ -141,6 +141,21 @@ REVIEW1 and REVIEW2 are fresh artifact reviews.
 
 For current recertification, enforce the upstream full-solution-rewrite evidence rules in the active lightweight/current contract.
 
+## 5A. FINAL ITEM RECOVERY / DIRECT REPLACEMENT
+
+When REVIEW2 has completed and a qid still remains in ITEM_HOLD after the normal repair protocol is exhausted, follow:
+
+- `docs/rules/02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md`
+
+This is a bounded existing-exam recovery route.
+
+- Try local original-source recovery first.
+- If the original item cannot be made sound, directly author **one replacement question for that qid only**.
+- Do **not** invoke the similar-question skill, ALIVE generation CLI, pipeline-core work-batch, or provider audit for this direct replacement.
+- Re-solve the finished replacement, check all five choices when objective, apply the answer-position/choice-quality rules, and refresh only that qid's content-owned Meta.
+- Keep all non-target qids unchanged.
+- Stop at `READY_FOR_COMMIT`; publication remains a separate owner.
+
 ## 6. BATCH / FINAL / MAIN BOUNDARY
 
 BATCH/FINAL are publication handoff stages, not another content-review pass.

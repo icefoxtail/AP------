@@ -58,6 +58,19 @@ CREATE / REVIEW1 / REVIEW2의 write recovery는 `02_PIPELINES/Archive_Authority_
 
 CURRENT full-solution-rewrite gate도 이 규칙을 따른다. 명시적 item hold가 있으면 해당 문항만 rewrite 미완을 허용하고 `solutionRewriteAttempted=N/N`, `solutionRewriteResolved=(N-H)/N`, `itemHoldQuestionIds=[...]`를 기록한다. 이 명시적 lineage가 있는 시험지는 N/N 완료 marker가 없다는 이유만으로 CREATE 전체를 되감거나 REVIEW 진입을 막지 않는다. REVIEW1/2가 held item을 독립 재시도하여 해결 즉시 HOLD를 제거한다.
 
+### FINAL ITEM RECOVERY / DIRECT QUESTION REPLACEMENT — CURRENT HARD RULE (2026-09-30)
+
+REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대체는 `02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md`를 적용한다.
+
+- 원본으로 deterministic repair 가능하면 해당 qid만 직접 복구한다.
+- 기존 문항을 정상화할 수 없으면 **해당 qid 하나만 Codex가 직접 대체문항으로 작성**한다.
+- 이 direct replacement scope에서는 ALIVE generation / pipeline-core / provider work-batch를 열지 않는다.
+- 대체문항은 같은 교육과정·핵심 개념·response form·비슷한 난도/풀이 역할을 유지하고, 직접 재풀이 후에만 적용한다.
+- 객관식은 보기 5개를 전수 검증하며 **③ default를 금지**한다. 현재 시험지에서 덜 쓰인 정답 위치를 우선하되 보기 자연성을 해치는 억지 배치는 금지한다.
+- 숫자형 보기는 같은 표현 체계와 자연스러운 규모를 유지하고 단독 outlier를 만들지 않는다. 오답은 실제 오류 경로에서 만든다.
+- 문항 교체 시 해당 qid의 Meta는 새 문제+새 solution 기준으로 fresh 재판정한다.
+- non-target qid는 불변이며, 완료 시험지는 `READY_FOR_COMMIT`까지만 올리고 main은 별도 writer가 담당한다.
+
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 
 **Archive 2.0 / JS Archive의 분석·제작·수정·검수·해설·조판·SVG·Meta·난이도 등 품질 작업은 실제 target 작업 전에 `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`를 적용한다.**

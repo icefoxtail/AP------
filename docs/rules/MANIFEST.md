@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 41366 bytes | sha256 aa44eaf8c490e375f354d59d31555c322e6207fe9c046566710a4e04ab4296ba
+- 00_RULES_INDEX.md | 42712 bytes | sha256 61aee2a408071d8531a4240a1ae058cb74d584e32763b4b575d8ca1ca054919e
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 21599 bytes | sha256 15c8090a5b91b098d0168f911212f7fba0dd4c88ca343e82dbeeab0eff29d4b6
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12518 bytes | sha256 b962ddb79b5d31de8baf319a36a296a460adaa02a57cafe2ea417d8d8baa2abc
@@ -22,8 +22,9 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/COMMON_PROTOCOL_v1.2.10.md | 200952 bytes | sha256 69982524a063f5c49d252473eaf74eedd4d9a078e64fcc85a6144d838d056dac
 - 02_PIPELINES/GPT_격리작업공간_실행규칙_v1.md | 8137 bytes | sha256 5989e5a1f48b8e9a0a8959aea6d431ac15715beee3e09d7853c470da5bd60d5d
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 10947 bytes | sha256 9e031446c534e353abb76f8333241b3b270ce7a4425be5463103340c4d88394b
-- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 15553 bytes | sha256 5f589c6331b1de2af5050d09d23373181d3fbf46223ef476fa182eb08ccaa281
+- 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 24589 bytes | sha256 9844766616d7cf9f36b16f3f3643914bdf6faf409e0e16e76fe9d6d9f94b22ba
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 9057 bytes | sha256 4c69dcf5ed8d400a9f942262cfe765542149683151e2775b8f05bada1ad94739
+- 02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md | 12704 bytes | sha256 06525c1566aa471b90aced31fbf813a55ef9570cb74322ae4ffacc4b3697b735
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 18689 bytes | sha256 5a0d5c47fb61780f729ce7625d7840e5b2d91096c92ce4ab439253c3df41a7ed
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 26401 bytes | sha256 82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b
