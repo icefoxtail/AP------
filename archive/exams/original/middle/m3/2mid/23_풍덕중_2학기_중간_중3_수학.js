@@ -1,6 +1,5 @@
-
-window.examTitle="23_풍덕중_2학기_중간_중3_수학";
-window.questionBank=[
+window.examTitle = "23_풍덕중_2학기_중간_중3_수학";
+window.questionBank = [
   {
     "id": 1,
     "level": "하",
@@ -26,7 +25,7 @@ window.questionBank=[
       "$\\dfrac{12}{25}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 공통각 $A$를 가진 두 직각삼각형에서 각 $x$는 작은 직각삼각형의 $\\angle C$와 같다.\\n조건 정리: $\\overline{AB}=4$, $\\overline{BC}=3$이고 $\\angle B=90^\\circ$이다.\\n풀이 방향: 먼저 피타고라스 정리로 빗변 $AC$를 구한 뒤, 각 $x$에 대한 사인과 탄젠트를 구한다.\\n정석 풀이: $AC=\\sqrt{4^2+3^2}=5$이다. 각 $x=\\angle C$에 대하여 마주 보는 변은 $AB=4$, 이웃한 변은 $BC=3$, 빗변은 $AC=5$이다. 따라서 $\\sin x=\\dfrac45$, $\\tan x=\\dfrac43$이므로 $\\sin x\\tan x=\\dfrac45\\times\\dfrac43=\\dfrac{16}{15}$이다.\\n따라서 정답은 ③이다.",
+    "solution": "작은 직각삼각형 $ABC$에서\n$AC=\\sqrt{4^2+3^2}=5$이다.\n\n그림에서 $x=\\angle ACB$이므로\n$\\sin x=\\dfrac{AB}{AC}=\\dfrac45$,\n$\\tan x=\\dfrac{AB}{BC}=\\dfrac43$이다.\n\n따라서\n$\\sin x\\times\\tan x=\\dfrac45\\times\\dfrac43=\\dfrac{16}{15}$이므로 정답은 ③이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q1.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -58,7 +57,7 @@ window.questionBank=[
       "$8\\sqrt5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 탄젠트는 직각삼각형에서 높이를 밑변으로 나눈 값의 비이다.\\n조건 정리: $AC=2$, $BC=x$, $AB=y$이고 $\\angle C=90^\\circ$, $\\tan \\alpha=\\dfrac12$이다.\\n풀이 방향: 탄젠트로 $x$를 구하고 피타고라스 정리로 $y$를 구한다.\\n정석 풀이: $\\tan \\alpha=\\dfrac{AC}{BC}=\\dfrac2x=\\dfrac12$이므로 $x=4$이다. 이어서 $y=AB=\\sqrt{AC^2+BC^2}=\\sqrt{2^2+4^2}=2\\sqrt5$이다. 따라서 $xy=4\\times2\\sqrt5=8\\sqrt5$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "직각삼각형 $ABC$에서\n$\\tan\\alpha=\\dfrac{AC}{BC}=\\dfrac2x=\\dfrac12$이다.\n\n따라서 $x=4$이다.\n\n피타고라스 정리에 의해\n$y=AB=\\sqrt{4^2+2^2}=2\\sqrt5$이다.\n\n그러므로\n$x\\times y=4\\times2\\sqrt5=8\\sqrt5$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q2.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -89,7 +88,7 @@ window.questionBank=[
       "$1$"
     ],
     "answer": "①",
-    "solution": "[키포인트] $\\tan A$가 주어지면 두 직각변의 비를 정하고 피타고라스 정리로 빗변의 비를 구한다.\\n조건 정리: $\\tan A=\\dfrac43$이므로 각 $A$의 맞은편 변과 이웃한 변의 비는 $4:3$이다.\\n풀이 방향: 두 직각변을 각각 $4k$, $3k$로 두고 빗변을 구한다.\\n정석 풀이: 빗변은 $\\sqrt{(4k)^2+(3k)^2}=5k$이다. 따라서 각 $A$에 이웃한 변은 $3k$, 빗변은 $5k$이므로 $\\cos A=\\dfrac{3k}{5k}=\\dfrac35$이다.\\n따라서 정답은 ①이다.",
+    "solution": "$\\tan A=\\dfrac43$이므로 각 $A$의 맞은편 변과 이웃한 변의 길이의 비를 $4:3$으로 둘 수 있다.\n\n피타고라스 정리에 의해 빗변의 비는 $\\sqrt{4^2+3^2}=5$이다.\n\n따라서 $\\cos A=\\dfrac35$이므로 정답은 ①이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -120,7 +119,7 @@ window.questionBank=[
       "$\\dfrac{\\sqrt5}{2}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 직각삼각형의 예각 관계를 이용하면 그림의 각 $x$를 큰 삼각형의 $\\angle ACB$와 연결할 수 있다.\\n조건 정리: $\\angle A=90^\\circ$, $\\angle ACG=\\angle ABC$, $AC=18$, $BC=27$이다.\\n풀이 방향: 삼각형 $ACG$와 $ABC$에서 서로 여각인 관계를 이용해 $x=\\angle ACB$임을 확인한다.\\n정석 풀이: 삼각형 $ACG$에서 $x+\\angle ACG=90^\\circ$이고, 삼각형 $ABC$에서 $\\angle ABC+\\angle ACB=90^\\circ$이다. $\\angle ACG=\\angle ABC$이므로 $x=\\angle ACB$이다. 따라서 $\\cos x=\\dfrac{AC}{BC}=\\dfrac{18}{27}=\\dfrac23$이다.\\n따라서 정답은 ②이다.",
+    "solution": "$\\triangle ABC$에서 $\\angle A=90^\\circ$이므로 $\\angle ABC+\\angle ACB=90^\\circ$이다.\n\n또 $G$는 $AB$ 위의 점이므로 $\\angle CAG=90^\\circ$이고, $\\triangle ACG$에서 $x+\\angle ACG=90^\\circ$이다.\n\n$\\angle ACG=\\angle ABC$이므로 $x=\\angle ACB$이다.\n\n따라서 $\\cos x=\\dfrac{AC}{BC}=\\dfrac{18}{27}=\\dfrac23$이므로 정답은 ②이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q4.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -151,7 +150,7 @@ window.questionBank=[
       "$\\sin x$, $\\cos x$값은 $1$보다 작다."
     ],
     "answer": "④",
-    "solution": "[키포인트] $0^\\circ<x<90^\\circ$에서 사인과 탄젠트는 증가하고 코사인은 감소한다.\\n조건 정리: $x$는 예각이다.\\n풀이 방향: 각 선택지를 예각의 삼각비 변화와 특수각 값에 대조한다.\\n정석 풀이: $x$가 커질수록 $\\sin x$와 $\\tan x$는 커지고 $\\cos x$는 작아진다. 또한 $\\tan60^\\circ=\\sqrt3$이고 $60^\\circ<x<90^\\circ$이면 $\\tan x>\\sqrt3$이다. 따라서 탄젠트가 $\\sqrt3$ 이상으로 커질 수 없다는 설명은 틀리다.\\n따라서 정답은 ④이다.",
+    "solution": "$0^\\circ<x<90^\\circ$에서 $x$가 커질수록 $\\sin x$와 $\\tan x$는 커지고, $\\cos x$는 작아진다.\n\n특히 $\\tan60^\\circ=\\sqrt3$이고 $60^\\circ<x<90^\\circ$이면 $\\tan x>\\sqrt3$이 될 수 있다.\n\n따라서 “$\\tan x$값은 $\\sqrt3$ 이상으로 커질 수 없다.”는 설명이 틀리므로 정답은 ④이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -182,7 +181,7 @@ window.questionBank=[
       "$\\dfrac{AC}{BC}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 같은 각 $x$가 들어 있는 여러 직각삼각형에서 맞은편 변과 빗변을 정확히 구분한다.\\n조건 정리: $\\angle ABC=x$, $AD\\perp BC$, $DE\\perp AB$이다.\\n풀이 방향: 각 비가 어느 직각삼각형의 어떤 삼각비인지 하나씩 확인한다.\\n정석 풀이: 삼각형 $BDE$에서 $\\dfrac{DE}{BD}=\\sin x$이다. 삼각형 $ACD$는 삼각형 $ABC$와 닮으므로 $\\dfrac{CD}{AC}=\\sin x$이다. 또한 두 직선의 수직 관계에서 $\\angle EDA=x$이므로 삼각형 $ADE$에서 $\\dfrac{AE}{AD}=\\sin x$, $\\dfrac{DE}{AD}=\\cos x$이다. 큰 삼각형 $ABC$에서는 $\\dfrac{AC}{BC}=\\sin x$이다. 따라서 $\\sin x$가 아닌 것은 $\\dfrac{DE}{AD}$이다.\\n따라서 정답은 ①이다.",
+    "solution": "그림의 $x$는 $\\angle ABC$이다.\n\n$\\triangle BDE$에서 $\\sin x=\\dfrac{DE}{BD}$이다.\n\n$\\triangle ABC\\sim\\triangle ACD$이므로 $\\angle CAD=x$이고 $\\sin x=\\dfrac{CD}{AC}$이다.\n\n또 $DE\\perp AB$이므로 $\\angle EDA=x$이고 $\\sin x=\\dfrac{AE}{AD}$이다.\n\n큰 직각삼각형 $ABC$에서는 $\\sin x=\\dfrac{AC}{BC}$이다.\n\n반면 $\\dfrac{DE}{AD}=\\cos x$이므로 적절하지 않은 것은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q6.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -214,7 +213,7 @@ window.questionBank=[
       "$\\overline{CD}=\\tan x$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 점 $A$는 반지름이 $2$인 사분원 위에 있으므로 $OA=2$이다.\\n조건 정리: 삼각형 $OAB$는 $\\angle B=90^\\circ$인 직각삼각형이고 $\\angle AOB=x$, $OA=2$이다.\\n풀이 방향: 각 $x$에 대한 사인과 코사인을 선분의 길이로 나타낸다.\\n정석 풀이: $\\sin x=\\dfrac{AB}{OA}=\\dfrac{AB}{2}$이므로 $AB=2\\sin x$이다. 또한 $OB=2\\cos x$이므로 ③과 ④는 맞지 않고, $OC=2$이므로 $CD=2\\tan x$여서 ⑤도 맞지 않는다.\\n따라서 정답은 ①이다.",
+    "solution": "점 $A$는 반지름이 $2$인 사분원 위에 있으므로 $OA=2$이다.\n\n직각삼각형 $OAB$에서 $\\angle AOB=x$이므로 $\\sin x=\\dfrac{AB}{OA}=\\dfrac{AB}{2}$이다.\n\n따라서 $AB=2\\sin x$이므로 정답은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q7.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -245,7 +244,7 @@ window.questionBank=[
       "$\\sqrt3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 서로 여각인 두 각의 사인과 코사인, 탄젠트의 관계를 이용한다.\\n조건 정리: $89^\\circ=90^\\circ-1^\\circ$, $88^\\circ=90^\\circ-2^\\circ$, $46^\\circ=90^\\circ-44^\\circ$이다.\\n풀이 방향: $\\sin x=\\cos(90^\\circ-x)$와 $\\tan x\\tan(90^\\circ-x)=1$을 적용한다.\\n정석 풀이: $\\cos89^\\circ=\\sin1^\\circ$, $\\cos88^\\circ=\\sin2^\\circ$이므로 앞의 두 분수는 각각 $1$이다. 또 $\\tan46^\\circ=\\dfrac1{\\tan44^\\circ}$이므로 $\\tan44^\\circ\\tan46^\\circ=1$이다. 따라서 전체 값은 $1$이다.\\n따라서 정답은 ③이다.",
+    "solution": "여각의 삼각비를 이용하면 $\\cos89^\\circ=\\sin1^\\circ$, $\\cos88^\\circ=\\sin2^\\circ$이다.\n\n따라서 앞의 두 분수는 모두 $1$이다.\n\n또 $44^\\circ+46^\\circ=90^\\circ$이므로 $\\tan44^\\circ\\tan46^\\circ=1$이다.\n\n그러므로 전체 값은 $1$이고 정답은 ③이다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -276,7 +275,7 @@ window.questionBank=[
       "$10+\\sqrt3$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 높이 $AH$를 기준으로 두 직각삼각형을 나누어 밑변 $BH$와 $HC$를 $AH$로 나타낸다.\\n조건 정리: $BH+HC=BC=10$, $\\angle B=60^\\circ$, $\\angle C=45^\\circ$이다.\\n풀이 방향: $AH=h$로 두고 탄젠트를 이용해 $BH$, $HC$를 구한다.\\n정석 풀이: $\\tan60^\\circ=\\dfrac{AH}{BH}=\\sqrt3$이므로 $BH=\\dfrac{h}{\\sqrt3}$이다. 또한 $\\tan45^\\circ=\\dfrac{AH}{HC}=1$이므로 $HC=h$이다. 따라서 $\\dfrac{h}{\\sqrt3}+h=10$이고, $h=\\dfrac{10\\sqrt3}{\\sqrt3+1}=5\\sqrt3(\\sqrt3-1)=15-5\\sqrt3$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$AH=h$라 하자.\n\n직각삼각형 $ABH$에서 $\\tan60^\\circ=\\dfrac{h}{BH}=\\sqrt3$이므로 $BH=\\dfrac{h}{\\sqrt3}$이다.\n\n직각삼각형 $ACH$에서 $\\tan45^\\circ=\\dfrac{h}{HC}=1$이므로 $HC=h$이다.\n\n$BH+HC=BC=10$이므로 $\\dfrac{h}{\\sqrt3}+h=10$이다.\n\n정리하면 $h=15-5\\sqrt3$이므로 정답은 ④이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q9.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -308,7 +307,7 @@ window.questionBank=[
       "$54$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $\\tan x=\\dfrac34$에서 $3:4:5$의 변의 비를 만들고, 사분원의 반지름이 $20$임을 이용한다.\\n조건 정리: $OA=OC=20$, $AB\\parallel CD$, $\\tan x=\\dfrac34$이다.\\n풀이 방향: 직각삼각형 $OAB$에서 $AB$, $OB$를 구하고, 직각삼각형 $OCD$에서 $CD$를 구한 뒤 사다리꼴 넓이를 계산한다.\\n정석 풀이: 삼각형 $OAB$에서 빗변 $OA=20$이고 변의 비가 $3:4:5$이므로 $AB=12$, $OB=16$이다. 따라서 $BC=OC-OB=20-16=4$이다. 삼각형 $OCD$에서는 $CD=OC\\tan x=20\\times\\dfrac34=15$이다. 그러므로 사다리꼴의 넓이는 $\\dfrac12(AB+CD)\\times BC=\\dfrac12(12+15)\\times4=54$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "반지름이 $20$이므로 $OA=OC=20$이다.\n\n직각삼각형 $OAB$에서 $\\tan x=\\dfrac{AB}{OB}=\\dfrac34$이고 $OA=20$이므로 $3:4:5$의 비에서 $AB=12$, $OB=16$이다.\n\n따라서 $BC=4$이다.\n\n직각삼각형 $OCD$에서는 $CD=20\\times\\dfrac34=15$이다.\n\n사다리꼴 $ABCD$의 넓이는 $\\dfrac{12+15}{2}\\times4=54$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q10.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -340,7 +339,7 @@ window.questionBank=[
       "$\\overline{AB}=a\\tan x$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주어진 변 $BC=a$를 기준으로 각 $x$, $y$의 삼각비를 각각 세운다.\\n조건 정리: $\\angle B=90^\\circ$, $BC=a$, $\\angle C=x$, $\\angle A=y$이다.\\n풀이 방향: 각 선택지의 식을 탄젠트, 사인, 코사인의 정의와 대조한다.\\n정석 풀이: $\\tan y=\\dfrac{BC}{AB}=\\dfrac{a}{AB}$이므로 $AB=a\\dfrac1{\\tan y}$이다. $\\cos x=\\dfrac{BC}{AC}=\\dfrac{a}{AC}$이므로 $AC=a\\dfrac1{\\cos x}$이다. 또한 $\\sin y=\\dfrac{BC}{AC}=\\dfrac{a}{AC}$이므로 $AC=a\\dfrac1{\\sin y}$이고, $\\tan x=\\dfrac{AB}{BC}=\\dfrac{AB}{a}$이므로 $AB=a\\tan x$이다. 따라서 $AC=a\\cos x$는 잘못된 식이다.\\n따라서 정답은 ②이다.",
+    "solution": "$\\angle B=90^\\circ$, $BC=a$, $\\angle C=x$, $\\angle A=y$이다.\n\n$\\cos x=\\dfrac{a}{AC}$이므로 $AC=\\dfrac{a}{\\cos x}$이다.\n$\\sin y=\\dfrac{a}{AC}$이므로 $AC=\\dfrac{a}{\\sin y}$이다.\n또 $\\tan x=\\dfrac{AB}{a}$, $\\tan y=\\dfrac{a}{AB}$이다.\n\n따라서 $AC=a\\cos x$라고 한 ②가 잘못되었다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q11.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -363,7 +362,7 @@ window.questionBank=[
       "도형"
     ],
     "wide": false,
-    "content": "점 $A$에서 선분 $BC$에 내린 수선 $AH$에 대하여 $\\angle CAH=\\angle ABC=a$, $\\tan a=\\dfrac12$일 때 삼각형 $ABC$의 둘레의 길이로 적절한 것은? [4점]",
+    "content": "점 A에서 선분 BC에 내린 수선 AH에 대하여 ∠CAH=∠ABC=a, tan a=1/2, BC=15일 때 삼각형 ABC의 둘레의 길이로 적절한 것은? [4점]",
     "choices": [
       "$35$",
       "$15+9\\sqrt5$",
@@ -372,7 +371,7 @@ window.questionBank=[
       "$40$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 같은 각 $a$가 들어 있는 두 직각삼각형에서 탄젠트로 밑변을 높이 $AH$에 연결한다.\\n조건 정리: $BC=15$, $AH\\perp BC$, $\\tan a=\\dfrac12$이다.\\n풀이 방향: $AH=h$로 두고 $BH$, $HC$, $AB$, $AC$를 차례로 구한다.\\n정석 풀이: 삼각형 $ABH$에서 $\\tan a=\\dfrac{AH}{BH}=\\dfrac12$이므로 $BH=2h$이다. 삼각형 $AHC$에서 $\\tan a=\\dfrac{HC}{AH}=\\dfrac12$이므로 $HC=\\dfrac h2$이다. 따라서 $2h+\\dfrac h2=15$이므로 $h=6$이다. 그러므로 $BH=12$, $HC=3$이고, $AB=\\sqrt{12^2+6^2}=6\\sqrt5$, $AC=\\sqrt{6^2+3^2}=3\\sqrt5$이다. 둘레는 $15+6\\sqrt5+3\\sqrt5=15+9\\sqrt5$이다.\\n따라서 정답은 ②이다.",
+    "solution": "AH=h라 하자. 삼각형 ABH에서 tan a=AH/BH=1/2이므로 BH=2h이다. 삼각형 AHC에서 tan a=HC/AH=1/2이므로 HC=h/2이다. BC=15이므로 2h+h/2=15에서 h=6이다. 따라서 BH=12, HC=3이다. 피타고라스 정리에 의해 AB=6√5, AC=3√5이다. 따라서 삼각형 ABC의 둘레는 15+9√5이므로 정답은 ②이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q12.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -404,7 +403,7 @@ window.questionBank=[
       "$\\dfrac{\\sqrt6-\\sqrt2}{4}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 두 직각삼각형의 길이를 구해 $15^\\circ$가 들어 있는 삼각형 $ADH$의 코사인을 계산한다.\\n조건 정리: 삼각형 $ACD$는 $C$에서 직각이고 $\\angle CAD=30^\\circ$, $CD=2$이다. 삼각형 $ABC$는 $B$에서 직각이고 $\\angle CAB=45^\\circ$이다.\\n풀이 방향: 먼저 $AD$, $AC$, $BC$를 구한 뒤 점 $D$의 높이 $DH$를 구한다.\\n정석 풀이: $30^\\circ$ 직각삼각형 $ACD$에서 $CD$는 빗변 $AD$의 절반이므로 $AD=4$, $AC=2\\sqrt3$이다. $45^\\circ$ 직각삼각형 $ABC$에서 $AB=BC=\\dfrac{AC}{\\sqrt2}=\\sqrt6$이다. 선분 $DC$는 $AC$에 수직이므로 수평선과 $45^\\circ$를 이루며, $D$는 $C$보다 $2\\sin45^\\circ=\\sqrt2$만큼 높다. 따라서 $DH=BC+\\sqrt2=\\sqrt6+\\sqrt2$이다. $\\angle DAH=30^\\circ+45^\\circ=75^\\circ$이므로 $\\angle ADH=15^\\circ$이다. 따라서 $\\cos15^\\circ=\\dfrac{DH}{AD}=\\dfrac{\\sqrt6+\\sqrt2}{4}$이다.\\n따라서 정답은 ③이다.",
+    "solution": "$\\triangle ACD$는 $C$에서 직각이고 $\\angle CAD=30^\\circ$, $CD=2$이다.\n\n$30^\\circ$-$60^\\circ$-$90^\\circ$ 삼각형이므로 $AD=4$, $AC=2\\sqrt3$이다.\n\n$\\triangle ABC$는 $B$에서 직각이고 $\\angle CAB=45^\\circ$이므로 $AB=BC=\\sqrt6$이다.\n\n또 $CD\\perp AC$이므로 선분 $CD$는 밑변과 $45^\\circ$를 이룬다. 따라서 $D$는 $C$보다 $\\sqrt2$만큼 높고 $DH=\\sqrt6+\\sqrt2$이다.\n\n$\\angle DAH=75^\\circ$이므로 $\\angle ADH=15^\\circ$이다.\n\n따라서 $\\cos15^\\circ=\\dfrac{DH}{AD}=\\dfrac{\\sqrt6+\\sqrt2}{4}$이므로 정답은 ③이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q13.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -436,7 +435,7 @@ window.questionBank=[
       "$302\\,\\mathrm{m}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 관측 지점에서 산 정상까지의 높이는 같으므로 두 탄젠트 식을 연결한다.\\n조건 정리: 가까운 지점에서 산까지의 수평 거리를 $x\\,\\mathrm{m}$, 눈높이보다 높은 부분을 $h\\,\\mathrm{m}$라 둔다.\\n풀이 방향: 가까운 지점의 $37^\\circ$와 먼 지점의 $18^\\circ$에 대해 각각 탄젠트 식을 세운다.\\n정석 풀이: 가까운 지점에서는 $\\tan37^\\circ=\\dfrac hx=0.75$이므로 $h=0.75x$이다. $\\tan72^\\circ=3$이고 $18^\\circ$와 $72^\\circ$는 여각이므로 $\\tan18^\\circ=\\dfrac13$이다. 먼 지점에서는 $\\dfrac{h}{x+500}=\\dfrac13$이므로 $h=\\dfrac{x+500}{3}$이다. 따라서 $0.75x=\\dfrac{x+500}{3}$이고 $x=400$, $h=300$이다. 산의 높이는 눈높이 $2\\,\\mathrm{m}$를 더한 $302\\,\\mathrm{m}$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "가까운 관측 지점에서 산까지의 수평 거리를 $x\\,\\mathrm{m}$, 눈높이에서 정상까지의 높이를 $h\\,\\mathrm{m}$라 하자.\n\n가까운 지점에서는 $\\tan37^\\circ=\\dfrac{h}{x}=0.75$이므로 $h=0.75x$이다.\n\n$\\tan72^\\circ=3$이고 $18^\\circ+72^\\circ=90^\\circ$이므로 $\\tan18^\\circ=\\dfrac13$이다.\n\n먼 지점에서는 $\\dfrac{h}{x+500}=\\dfrac13$이므로 $h=\\dfrac{x+500}{3}$이다.\n\n따라서 $x=400$, $h=300$이다. 눈높이 $2\\,\\mathrm{m}$를 더하면 산의 높이는 약 $302\\,\\mathrm{m}$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q14.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -468,7 +467,7 @@ window.questionBank=[
       "$400\\,\\mathrm{m}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 점 $A$에서 $BC$에 수선을 내려 두 직각삼각형으로 나누어 계산한다.\\n조건 정리: $AB=450$, $BC=420$, $\\angle ABC=53^\\circ$, $\\cos53^\\circ=0.6$이다.\\n풀이 방향: 수선의 발을 $H$라 하고 $BH$, $AH$, $HC$를 차례로 구한다.\\n정석 풀이: $BH=AB\\cos53^\\circ=450\\times0.6=270$이다. $\\sin53^\\circ=\\sqrt{1-0.6^2}=0.8$이므로 $AH=450\\times0.8=360$이다. 따라서 $HC=BC-BH=420-270=150$이다. 직각삼각형 $AHC$에서 $AC=\\sqrt{360^2+150^2}=\\sqrt{152100}=390$이다.\\n따라서 정답은 ④이다.",
+    "solution": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n\n$BH=450\\cos53^\\circ=450\\times0.6=270$이다.\n\n$\\cos53^\\circ=0.6=\\dfrac35$이므로 $\\sin53^\\circ=\\dfrac45=0.8$이다. 따라서 $AH=450\\times0.8=360$이다.\n\n$HC=420-270=150$이므로 피타고라스 정리에 의해 $AC=\\sqrt{360^2+150^2}=390$이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q15.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -500,12 +499,13 @@ window.questionBank=[
       "$\\dfrac{\\sqrt5-1}{4}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 꼭짓각이 $36^\\circ$인 이등변삼각형 안에 닮은 삼각형을 만들어 같은 변의 비를 이용한다.\\n조건 정리: $AB=AC=x$, $BC=4$, $\\angle B=\\angle C=72^\\circ$이다.\\n풀이 방향: $AC$ 위에 점 $D$를 잡아 $\\angle CBD=36^\\circ$가 되게 하고 닮음비로 $x$를 구한다.\\n정석 풀이: $\\angle DBC=36^\\circ$, $\\angle BCD=72^\\circ$이므로 삼각형 $BCD$의 나머지 각도 $72^\\circ$이고 $BD=BC=4$이다. 또 $\\angle ABD=72^\\circ-36^\\circ=36^\\circ$이므로 삼각형 $ABD$에서 $AD=BD=4$이다. 따라서 $DC=x-4$이다. 삼각형 $ABC$와 $BCD$는 각이 각각 $36^\\circ,72^\\circ,72^\\circ$로 닮으므로 $\\dfrac{x}{4}=\\dfrac{4}{x-4}$이다. 즉 $x^2-4x-16=0$이고 양수인 해는 $x=2+2\\sqrt5$이다. $A$에서 $BC$에 내린 수선은 $BC$를 이등분하므로 반쪽 밑변은 $2$이다. 따라서 $\\cos72^\\circ=\\dfrac2x=\\dfrac1{1+\\sqrt5}=\\dfrac{\\sqrt5-1}{4}$이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "$AB=AC=s$라 하자. 그러면 $\\angle B=\\angle C=72^\\circ$이다.\n\n$AC$ 위에 점 $D$를 잡아 $\\angle DBC=36^\\circ$가 되게 하자.\n\n$\\triangle BCD$에서 $\\angle B=36^\\circ$, $\\angle C=72^\\circ$이므로 $\\angle D=72^\\circ$이고 $BD=BC=4$이다.\n\n또 $\\angle ABD=36^\\circ$이므로 $\\triangle ABD$에서 $AD=BD=4$이다. 따라서 $DC=s-4$이다.\n\n$\\triangle ABC\\sim\\triangle BCD$이므로 $\\dfrac{s}{4}=\\dfrac{4}{s-4}$이다.\n\n$s^2-4s-16=0$에서 $s=2+2\\sqrt5$이다.\n\n$A$에서 $BC$에 내린 수선은 $BC$를 이등분하므로 밑변의 절반은 $2$이다.\n\n따라서 $\\cos72^\\circ=\\dfrac2s=\\dfrac1{1+\\sqrt5}=\\dfrac{\\sqrt5-1}{4}$이므로 정답은 ⑤이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q16-solution.svg"
   },
   {
     "id": 17,
@@ -532,7 +532,7 @@ window.questionBank=[
       "$\\sqrt3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 현 $AB$에 대한 원주각과 중심각의 관계를 이용해 반지름이 포함된 직각삼각형을 만든다.\\n조건 정리: 세 각의 비가 $3:5:4$이고 합이 $180^\\circ$이므로 $\\angle A=45^\\circ$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$이다.\\n풀이 방향: 외접원의 중심을 $O$라 하고 현 $AB$에 대한 중심각 $\\angle AOB$를 구한다.\\n정석 풀이: 같은 현 $AB$에 대한 중심각은 원주각의 두 배이므로 $\\angle AOB=2\\angle ACB=120^\\circ$이다. $O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $AM=BM=3$이고 $\\angle BOM=60^\\circ$이다. 반지름을 $R$이라 하면 $\\sin60^\\circ=\\dfrac{BM}{OB}=\\dfrac3R$이므로 $\\dfrac{\\sqrt3}{2}=\\dfrac3R$, 따라서 $R=2\\sqrt3$이다.\\n따라서 정답은 ①이다.",
+    "solution": "세 각의 비가 $3:5:4$이므로 한 비는 $180^\\circ\\div12=15^\\circ$이다.\n\n따라서 $\\angle A=45^\\circ$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$이다.\n\n외접원의 중심을 $O$라 하면 현 $AB$에 대한 중심각은 $\\angle AOB=2\\angle ACB=120^\\circ$이다.\n\n$O$에서 $AB$에 내린 수선의 발을 $M$이라 하면 $BM=3$, $\\angle BOM=60^\\circ$이다.\n\n반지름을 $R$라 하면 $\\sin60^\\circ=\\dfrac3R$이므로 $R=2\\sqrt3$이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q17.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -564,7 +564,7 @@ window.questionBank=[
       "$\\dfrac{5\\sqrt2-\\sqrt5}{3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 삼각형의 넓이를 한 번은 밑변과 높이로, 한 번은 내접원의 반지름과 세 변으로 나타낸다.\\n조건 정리: $\\angle B=\\angle C=30^\\circ$이므로 $AB=AC=2$이고 $\\angle A=120^\\circ$이다.\\n풀이 방향: 밑변 $BC$와 넓이를 구한 뒤 $\\dfrac12r(AB+BC+CA)$를 이용한다.\\n정석 풀이: $A$에서 $BC$에 수선을 내리면 높이는 $2\\sin30^\\circ=1$이고 밑변의 절반은 $2\\cos30^\\circ=\\sqrt3$이므로 $BC=2\\sqrt3$이다. 삼각형의 넓이는 $\\dfrac12\\times2\\sqrt3\\times1=\\sqrt3$이다. 내접원의 반지름을 $r$이라 하면 $\\sqrt3=\\dfrac12r(2+2+2\\sqrt3)=r(2+\\sqrt3)$이다. 따라서 $r=\\dfrac{\\sqrt3}{2+\\sqrt3}=2\\sqrt3-3$이다.\\n따라서 정답은 ②이다.",
+    "solution": "$\\angle B=\\angle C=30^\\circ$이므로 $AB=AC=2$이다.\n\n$A$에서 $BC$에 내린 수선의 발을 $H$라 하면 $AH=2\\sin30^\\circ=1$, $BH=2\\cos30^\\circ=\\sqrt3$이다.\n\n따라서 $BC=2\\sqrt3$이고 삼각형의 넓이는 $\\sqrt3$이다.\n\n내접원의 반지름을 $r$라 하면 삼각형의 넓이는 $\\dfrac12r(AB+BC+CA)$이므로\n$\\sqrt3=r(2+\\sqrt3)$이다.\n\n따라서 $r=2\\sqrt3-3$이므로 정답은 ②이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q18.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
@@ -596,7 +596,7 @@ window.questionBank=[
       "$108\\sqrt2$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정사면체의 밑면은 정삼각형이고, 꼭짓점에서 밑면에 내린 수선은 밑면의 무게중심을 지난다.\\n조건 정리: 모든 모서리의 길이가 $6$이고 밑면 $BCD$는 한 변이 $6$인 정삼각형이다.\\n풀이 방향: 밑면 넓이와 정사면체의 높이를 각각 구한 뒤 부피 공식을 적용한다.\\n정석 풀이: 밑면 정삼각형의 높이는 $\\sqrt{6^2-3^2}=3\\sqrt3$이므로 넓이는 $\\dfrac12\\times6\\times3\\sqrt3=9\\sqrt3$이다. 밑면의 무게중심을 $H$라 하면 $BH$는 중선의 $\\dfrac23$이므로 $BH=2\\sqrt3$이다. 직각삼각형 $ABH$에서 정사면체의 높이 $AH=\\sqrt{6^2-(2\\sqrt3)^2}=2\\sqrt6$이다. 따라서 부피는 $\\dfrac13\\times9\\sqrt3\\times2\\sqrt6=18\\sqrt2$이다.\\n따라서 정답은 ④이다.",
+    "solution": "밑면 $BCD$는 한 변이 $6$인 정삼각형이다.\n\n정삼각형의 높이는 $3\\sqrt3$이므로 밑면의 넓이는 $9\\sqrt3$이다.\n\n$H$를 밑면의 무게중심이라 하면 $BH=\\dfrac23\\times3\\sqrt3=2\\sqrt3$이다.\n\n직각삼각형 $ABH$에서 $AH=\\sqrt{6^2-(2\\sqrt3)^2}=2\\sqrt6$이다.\n\n따라서 정사면체의 부피는 $\\dfrac13\\times9\\sqrt3\\times2\\sqrt6=18\\sqrt2$이므로 정답은 ④이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q19.png",
     "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
     "subUnit": "피타고라스 정리의 활용",
@@ -628,12 +628,13 @@ window.questionBank=[
       "$\\dfrac{2\\sqrt5}{5}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 둔각 $a$의 바깥쪽에 직각삼각형을 만들어 $3:4:5$의 비를 적용한 뒤 이등변삼각형을 반으로 나눈다.\\n조건 정리: $AB=AC=5$, $a>90^\\circ$, $\\tan(a-90^\\circ)=\\dfrac34$이다.\\n풀이 방향: $C$에서 직선 $AB$의 연장선에 수선을 내려 밑변 $BC$를 먼저 구한다.\\n정석 풀이: $C$에서 $BA$의 $A$ 바깥쪽 연장선에 내린 수선의 발을 $H$라 하자. $\\angle CAH=180^\\circ-a=90^\\circ-(a-90^\\circ)$이다. $\\tan(a-90^\\circ)=\\dfrac34$이므로 $3:4:5$의 비에서 $\\cos\\angle CAH=\\dfrac35$, $\\sin\\angle CAH=\\dfrac45$이다. 따라서 $AH=5\\times\\dfrac35=3$, $CH=5\\times\\dfrac45=4$이다. $HB=HA+AB=3+5=8$이므로 $BC=\\sqrt{8^2+4^2}=4\\sqrt5$이다. 이제 $A$에서 $BC$에 내린 수선은 이등변삼각형의 밑변을 이등분하므로 반쪽 밑변은 $2\\sqrt5$이다. 이 직각삼각형에서 높이는 $\\sqrt{5^2-(2\\sqrt5)^2}=\\sqrt5$이므로 $\\cos\\dfrac a2=\\dfrac{\\sqrt5}{5}$이다.\\n따라서 정답은 ③이다.",
+    "solution": "$C$에서 직선 $AB$의 $A$ 쪽 연장선에 내린 수선의 발을 $H$라 하자.\n\n$\\theta=a-90^\\circ$라 하면 $\\tan\\theta=\\dfrac34$이다.\n또 $\\angle CAH=180^\\circ-a=90^\\circ-\\theta$이므로 $\\tan\\angle CAH=\\dfrac43$이다.\n\n직각삼각형 $ACH$에서 $AC=5$이므로 $3:4:5$의 비에 의해 $AH=3$, $CH=4$이다.\n\n따라서 $HB=3+5=8$이고 $BC=\\sqrt{8^2+4^2}=4\\sqrt5$이다.\n\n이등변삼각형 $ABC$에서 $A$에서 $BC$에 내린 수선은 $BC$를 이등분한다. 따라서 반쪽 밑변은 $2\\sqrt5$이고 높이는 $\\sqrt{5^2-(2\\sqrt5)^2}=\\sqrt5$이다.\n\n그러므로 $\\cos\\dfrac a2=\\dfrac{\\sqrt5}{5}$이므로 정답은 ③이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q20.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_풍덕중_2학기_중간_중3_수학/q20-solution.svg"
   },
   {
     "id": 21,
@@ -645,7 +646,7 @@ window.questionBank=[
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형"
     ],
@@ -653,7 +654,7 @@ window.questionBank=[
     "content": "[서술형1] $0^\\circ$, $30^\\circ$, $45^\\circ$, $60^\\circ$, $90^\\circ$의 삼각비 값을 순서대로 서술하여라. [6점]",
     "choices": [],
     "answer": "$\\sin$: $0,\\dfrac12,\\dfrac{\\sqrt2}{2},\\dfrac{\\sqrt3}{2},1$ / $\\cos$: $1,\\dfrac{\\sqrt3}{2},\\dfrac{\\sqrt2}{2},\\dfrac12,0$ / $\\tan$: $0,\\dfrac{\\sqrt3}{3},1,\\sqrt3$, 없음",
-    "solution": "[키포인트] $30^\\circ$-$60^\\circ$-$90^\\circ$와 $45^\\circ$-$45^\\circ$-$90^\\circ$ 직각삼각형의 변의 비를 이용한다.\\n조건 정리: 각도는 $0^\\circ$, $30^\\circ$, $45^\\circ$, $60^\\circ$, $90^\\circ$의 순서이다.\\n풀이 방향: 사인과 코사인은 특수각 직각삼각형의 변의 비로 구하고, 탄젠트는 사인을 코사인으로 나눈다.\\n정석 풀이: 사인 값은 차례로 $0$, $\\dfrac12$, $\\dfrac{\\sqrt2}{2}$, $\\dfrac{\\sqrt3}{2}$, $1$이다. 코사인 값은 차례로 $1$, $\\dfrac{\\sqrt3}{2}$, $\\dfrac{\\sqrt2}{2}$, $\\dfrac12$, $0$이다. 탄젠트 값은 차례로 $0$, $\\dfrac{\\sqrt3}{3}$, $1$, $\\sqrt3$이고, $90^\\circ$에서는 코사인 값이 $0$이므로 탄젠트 값이 없다.\\n따라서 각도 순서대로 사인 값은 $0,\\dfrac12,\\dfrac{\\sqrt2}{2},\\dfrac{\\sqrt3}{2},1$, 코사인 값은 $1,\\dfrac{\\sqrt3}{2},\\dfrac{\\sqrt2}{2},\\dfrac12,0$, 탄젠트 값은 $0,\\dfrac{\\sqrt3}{3},1,\\sqrt3$이며 $90^\\circ$의 탄젠트 값은 없다.",
+    "solution": "특수각의 삼각비를 순서대로 정리하면 다음과 같다.\n\n$\\sin0^\\circ=0$, $\\sin30^\\circ=\\dfrac12$, $\\sin45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$, $\\sin90^\\circ=1$이다.\n\n$\\cos0^\\circ=1$, $\\cos30^\\circ=\\dfrac{\\sqrt3}{2}$, $\\cos45^\\circ=\\dfrac{\\sqrt2}{2}$, $\\cos60^\\circ=\\dfrac12$, $\\cos90^\\circ=0$이다.\n\n$\\tan0^\\circ=0$, $\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$이고, $\\tan90^\\circ$의 값은 없다.",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
@@ -669,7 +670,7 @@ window.questionBank=[
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -678,7 +679,7 @@ window.questionBank=[
     "content": "[서술형2] $\\overline{AB}=2\\sqrt5$, $\\overline{BC}=5\\sqrt2$, $\\angle ABC=72^\\circ$인 삼각형 $ABC$에 대하여 $\\overline{AC}$의 길이를 구하는 과정을 서술하여라. (단, $\\tan18^\\circ=\\dfrac13$) [4점]",
     "choices": [],
     "answer": "$5\\sqrt2$",
-    "solution": "[키포인트] $A$에서 $BC$에 수선을 내리면 $72^\\circ$의 여각인 $18^\\circ$를 이용할 수 있다.\\n조건 정리: $AB=2\\sqrt5$, $BC=5\\sqrt2$, $AH\\perp BC$, $\\angle BAH=18^\\circ$이다.\\n풀이 방향: $\\tan18^\\circ$로 $BH:AH$를 구하고, 피타고라스 정리로 $AC$를 구한다.\\n정석 풀이: $\\tan18^\\circ=\\dfrac{BH}{AH}=\\dfrac13$이므로 $BH:AH=1:3$이다. 이때 $AB$는 빗변이므로 비는 $1:3:\\sqrt{10}$이다. $AB=2\\sqrt5$이고 $\\dfrac{2\\sqrt5}{\\sqrt{10}}=\\sqrt2$이므로 $BH=\\sqrt2$, $AH=3\\sqrt2$이다. 따라서 $HC=BC-BH=5\\sqrt2-\\sqrt2=4\\sqrt2$이다. 직각삼각형 $AHC$에서 $AC=\\sqrt{(3\\sqrt2)^2+(4\\sqrt2)^2}=\\sqrt{18+32}=5\\sqrt2$이다.\\n따라서 구하는 길이는 $5\\sqrt2$이다.",
+    "solution": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하자.\n\n$\\angle B=72^\\circ$이므로 $\\angle BAH=18^\\circ$이다.\n\n$\\tan18^\\circ=\\dfrac{BH}{AH}=\\dfrac13$이므로 $BH:AH=1:3$이다.\n\n직각삼각형 $ABH$에서 변의 비는 $1:3:\\sqrt{10}$이다. $AB=2\\sqrt5$이므로 $BH=\\sqrt2$, $AH=3\\sqrt2$이다.\n\n따라서 $HC=4\\sqrt2$이다.\n\n피타고라스 정리에 의해 $AC=\\sqrt{(3\\sqrt2)^2+(4\\sqrt2)^2}=5\\sqrt2$이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q22.png",
     "subUnitKey": "M3-05-TRIG_RATIO",
     "subUnit": "삼각비",
@@ -695,7 +696,7 @@ window.questionBank=[
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -704,7 +705,7 @@ window.questionBank=[
     "content": "[서술형3] 반지름이 $6$인 반원에 대하여 현 $BC$와 호 $BC$로 둘러싸인 활꼴의 넓이 $S$를 구하는 과정을 서술하여라. [4점]",
     "choices": [],
     "answer": "$15\\pi-9$",
-    "solution": "[키포인트] 활꼴의 넓이는 부채꼴의 넓이에서 두 반지름과 현으로 이루어진 삼각형의 넓이를 뺀 값이다.\\n조건 정리: $OB=OC=6$, $\\angle CBO=15^\\circ$이다.\\n풀이 방향: 이등변삼각형 $BOC$의 중심각을 구한 뒤 부채꼴과 삼각형의 넓이를 각각 계산한다.\\n정석 풀이: $OB=OC$이므로 $\\angle CBO=\\angle BCO=15^\\circ$이다. 따라서 $\\angle BOC=180^\\circ-15^\\circ-15^\\circ=150^\\circ$이다. 부채꼴 $BOC$의 넓이는 $\\dfrac{150}{360}\\times\\pi\\times6^2=15\\pi$이다. 점 $B$의 반대쪽 지름의 끝점을 $A$라 하면 $\\angle COA=180^\\circ-\\angle BOC=30^\\circ$이다. 점 $C$에서 지름 $AB$에 내린 높이는 $OC\\sin30^\\circ=6\\times\\dfrac12=3$이다. 따라서 삼각형 $BOC$의 넓이는 $\\dfrac12\\times OB\\times3=\\dfrac12\\times6\\times3=9$이다. 따라서 활꼴의 넓이는 $15\\pi-9$이다.\\n따라서 구하는 넓이는 $15\\pi-9$이다.",
+    "solution": "$OB=OC=6$이므로 $\\triangle BOC$는 이등변삼각형이다.\n\n그림에서 $\\angle CBO=15^\\circ$이므로 $\\angle BCO=15^\\circ$이고 $\\angle BOC=150^\\circ$이다.\n\n부채꼴 $BOC$의 넓이는 $\\dfrac{150}{360}\\times\\pi\\times6^2=15\\pi$이다.\n\n$C$에서 지름 $AB$에 내린 높이는 $6\\sin30^\\circ=3$이므로 $\\triangle BOC$의 넓이는 $\\dfrac12\\times6\\times3=9$이다.\n\n따라서 활꼴의 넓이는 $15\\pi-9$이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q23.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -721,7 +722,7 @@ window.questionBank=[
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형",
@@ -731,7 +732,7 @@ window.questionBank=[
     "content": "[서술형4] 반지름이 $20\\,\\mathrm{m}$이고 높이가 $30\\pi\\,\\mathrm{m}$인 커다란 굴뚝을 오르기 위해 $A$에서 $B$까지 한 바퀴 돌아가는 계단을 설치하려고 한다. 설치될 계단의 길이를 구하고, 주어진 대략적인 탄젠트 값을 이용해 계단이 지면과 이루는 각도를 $a$라 할 때 대략적인 각도를 구하는 과정을 서술하여라. [6점]",
     "choices": [],
     "answer": "$50\\pi\\,\\mathrm{m}$, $37^\\circ$",
-    "solution": "[키포인트] 원기둥의 옆면을 펼치면 계단은 가로가 원주, 세로가 높이인 직사각형의 대각선이 된다.\\n조건 정리: 밑면의 반지름은 $20\\,\\mathrm{m}$, 원주는 $40\\pi\\,\\mathrm{m}$, 높이는 $30\\pi\\,\\mathrm{m}$이다.\\n풀이 방향: 전개도의 대각선 길이를 피타고라스 정리로 구하고, 높이와 원주의 비로 탄젠트 값을 구한다.\\n정석 풀이: 옆면을 펼친 직사각형의 가로는 $2\\pi\\times20=40\\pi$, 세로는 $30\\pi$이다. 계단의 길이는 대각선이므로 $\\sqrt{(40\\pi)^2+(30\\pi)^2}=\\sqrt{2500\\pi^2}=50\\pi\\,\\mathrm{m}$이다. 계단이 지면과 이루는 각을 $a$라 하면 $\\tan a=\\dfrac{30\\pi}{40\\pi}=0.75$이다. 주어진 표에서 탄젠트 값이 $0.75$인 각은 $37^\\circ$이다.\\n따라서 구하는 계단의 길이는 $50\\pi\\,\\mathrm{m}$이고, 각도는 약 $37^\\circ$이다.",
+    "solution": "원기둥의 옆면을 펼치면 가로가 밑면의 둘레, 세로가 굴뚝의 높이인 직사각형이 된다.\n\n가로의 길이는 $2\\pi\\times20=40\\pi\\,\\mathrm{m}$, 세로의 길이는 $30\\pi\\,\\mathrm{m}$이다.\n\n따라서 계단의 길이는 $\\sqrt{(40\\pi)^2+(30\\pi)^2}=50\\pi\\,\\mathrm{m}$이다.\n\n계단이 지면과 이루는 각을 $a$라 하면 $\\tan a=\\dfrac{30\\pi}{40\\pi}=0.75$이다.\n\n표에서 $\\tan37^\\circ=0.75$이므로 $a\\approx37^\\circ$이다.\n\n따라서 계단의 길이는 $50\\pi\\,\\mathrm{m}$이고, 각도는 약 $37^\\circ$이다.",
     "image": "assets/images/23_풍덕중_2학기_중간_중3_수학/q24.png",
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
