@@ -3,7 +3,7 @@ window.examTitle = "26_금당고_2학기_중간_고2_미적분I";
 window.questionBank = [
   {
     "id": 1,
-    "level": "",
+    "level": "하",
     "category": "함수의 극한",
     "originalCategory": "함수의 극한",
     "standardCourse": "미적분I",
@@ -25,7 +25,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "분자와 분모의 최고차항을 비교하면 된다.\n$(2x+2)(3x-3)=6x^2-6$이므로\n\n$\\displaystyle\\lim_{x\\to\\infty}\\frac{(2x+2)(3x-3)}{6x^2-x-1}\n=\\lim_{x\\to\\infty}\\frac{6-\\frac6{x^2}}{6-\\frac1x-\\frac1{x^2}}\n=1$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -42,7 +42,7 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "level": "",
+    "level": "하",
     "category": "함수의 극한",
     "originalCategory": "함수의 극한",
     "standardCourse": "미적분I",
@@ -64,7 +64,7 @@ window.questionBank = [
       "$\\dfrac15$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "분자와 분모가 모두 $0$으로 가므로 분자를 유리화한다.\n\n$\\displaystyle\\frac{\\sqrt{x+1}-2}{x-3}\n=\\frac{(\\sqrt{x+1}-2)(\\sqrt{x+1}+2)}{(x-3)(\\sqrt{x+1}+2)}\n=\\frac1{\\sqrt{x+1}+2}$이다.\n\n따라서\n\n$\\displaystyle\\lim_{x\\to3}\\frac{\\sqrt{x+1}-2}{x-3}\n=\\frac1{2+2}\n=\\frac14$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -81,7 +81,7 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "level": "",
+    "level": "하",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -103,7 +103,7 @@ window.questionBank = [
       "$(-\\infty,3)\\cup(3,\\infty)$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "분모가 $0$이 되는 값은 함수의 정의역에서 제외한다.\n\n$x-3=0$에서 $x=3$이므로\n$f(x)=\\dfrac1{x-3}$은 $x=3$에서 정의되지 않는다.\n\n따라서 정의역은\n$(-\\infty,3)\\cup(3,\\infty)$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -120,7 +120,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "level": "",
+    "level": "하",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -142,7 +142,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "구간 $[3,5]$에서는 $x-2>0$이고, $x$가 커질수록 분모 $x-2$가 커지므로\n$f(x)=\\dfrac6{x-2}$의 값은 작아진다.\n\n따라서 최댓값은 왼쪽 끝점 $x=3$에서\n\n$f(3)=\\frac6{3-2}=6$\n\n이고, 최솟값은 오른쪽 끝점 $x=5$에서\n\n$f(5)=\\frac6{5-2}=2$\n\n이다.\n\n그러므로 최댓값과 최솟값의 합은 $6+2=8$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -159,7 +159,7 @@ window.questionBank = [
   },
   {
     "id": 5,
-    "level": "",
+    "level": "하",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -181,7 +181,7 @@ window.questionBank = [
       "$f(x)g(x)$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "다항함수 $f(x)$와 $g(x)$는 실수 전체에서 연속이다.\n합, 차, 곱도 실수 전체에서 연속이고, 몫은 분모가 $0$이 아닌 곳에서 연속이다.\n\n$g(x)=x^2+2x+5=(x+1)^2+4>0$이므로\n$\\dfrac{f(x)}{g(x)}$는 실수 전체에서 연속이다.\n\n반면 $f(x)=x+2$는 $x=-2$에서 $0$이므로\n$\\dfrac{g(x)}{f(x)}$는 $x=-2$에서 정의되지 않는다.\n\n따라서 실수 전체에서 연속이 아닌 함수는 ④이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -198,7 +198,7 @@ window.questionBank = [
   },
   {
     "id": 6,
-    "level": "",
+    "level": "하",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -220,7 +220,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "$f(x)=3x^2$이므로\n\n$f'(x)=6x$이다.\n\n따라서 $x=1$에서의 미분계수는\n\n$f'(1)=6$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -237,7 +237,7 @@ window.questionBank = [
   },
   {
     "id": 7,
-    "level": "",
+    "level": "하",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -259,7 +259,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "$x$의 값이 $0$에서 $2$까지 변할 때의 평균변화율은\n\n$\\displaystyle\\frac{f(2)-f(0)}{2-0}$\n\n이다.\n\n$f(2)=2^2-3=1$, $f(0)=-3$이므로\n\n$\\displaystyle\\frac{1-(-3)}2\n=\\frac42\n=2$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -276,7 +276,7 @@ window.questionBank = [
   },
   {
     "id": 8,
-    "level": "",
+    "level": "중",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -298,7 +298,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "미분계수의 정의가 보이도록 분모도 $3h$로 맞춘다.\n\n$\\displaystyle\\frac{f(a+3h)-f(a)}h\n=3\\cdot\\frac{f(a+3h)-f(a)}{3h}$이다.\n\n$h\\to0$이면 $3h\\to0$이므로\n\n$\\displaystyle\\lim_{h\\to0}\\frac{f(a+3h)-f(a)}h\n=3f'(a)\n=3$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -315,7 +315,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "level": "",
+    "level": "중",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -337,7 +337,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "분모를 인수분해하여 미분계수의 꼴을 만든다.\n\n$x^3-1=(x-1)(x^2+x+1)$이므로\n\n$\\displaystyle\\frac{f(x)-f(1)}{x^3-1}\n=\\frac{f(x)-f(1)}{x-1}\\cdot\\frac1{x^2+x+1}$이다.\n\n따라서\n\n$\\displaystyle\\lim_{x\\to1}\\frac{f(x)-f(1)}{x^3-1}\n=f'(1)\\cdot\\frac13\n=-9\\cdot\\frac13\n=-3$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -354,7 +354,7 @@ window.questionBank = [
   },
   {
     "id": 10,
-    "level": "",
+    "level": "중",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -376,7 +376,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$x=2$를 원래 식에 대입하면 왼쪽은 $0$이므로\n\n$4+2a+b=0$이다.\n\n따라서 $x^2+ax+b$는 $x-2$로 나누어떨어지고\n\n$x^2+ax+b=(x-2)(x+a+2)$이다.\n\n$x\\ne2$일 때\n$f(x)=x+a+2$이므로, $f$가 $x=2$에서 연속이고 $f(2)=5$라는 조건에서\n\n$2+a+2=5$\n\n이므로 $a=1$이다.\n\n이 값을 $4+2a+b=0$에 대입하면\n\n$4+2+b=0$\n\n이므로 $b=-6$이다.\n\n따라서 $a+b=1-6=-5$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -393,7 +393,7 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "level": "",
+    "level": "중",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -415,7 +415,7 @@ window.questionBank = [
       "-12"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "$f(0)=-5$이고 $-1<0<2$이므로\n\n$-b=-5$\n\n에서 $b=5$이다.\n\n$x=2$에서 연속이므로\n\n$2a-3=2^2-b=4-5=-1$이다.\n\n따라서 $2a=2$이고 $a=1$이다.\n\n또 $x=-1$에서 연속이므로\n\n$2(-1)+c=(-1)^2-b=1-5=-4$이다.\n\n따라서 $c=-2$이다.\n\n이제\n\n$f(3)=3-3=0$,\n\n$f(-2)=2(-2)-2=-6$\n\n이므로\n\n$f(3)+f(-2)=-6$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -432,7 +432,7 @@ window.questionBank = [
   },
   {
     "id": 12,
-    "level": "",
+    "level": "중",
     "category": "함수의 극한",
     "originalCategory": "함수의 극한",
     "standardCourse": "미적분I",
@@ -454,7 +454,7 @@ window.questionBank = [
       "16"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "주어진 부등식에서 $x\\to-2$일 때 양쪽 함수의 극한을 구한다.\n\n$-3x\\to6$이고\n\n$x^2+x+4\\to4-2+4=6$이다.\n\n따라서 함수의 극한의 대소 관계에 의해\n\n$\\displaystyle\\lim_{x\\to-2}f(x)=6$이다.\n\n또 $|x-2|\\to|-4|=4$이므로\n\n$\\displaystyle\\lim_{x\\to-2}|(x-2)f(x)|\n=4\\cdot6\n=24$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -471,7 +471,7 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "level": "",
+    "level": "중",
     "category": "함수의 극한",
     "originalCategory": "함수의 극한",
     "standardCourse": "미적분I",
@@ -495,7 +495,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "먼저 각 입력값이 어느 방향에서 가까워지는지 확인해야 한다.\n\n$\\displaystyle\\frac{t-1}{t+1}\n=1-\\frac2{t+1}$이므로\n$t\\to\\infty$일 때 $\\dfrac{t-1}{t+1}\\to1-$이다.\n\n그래프에서\n$\\displaystyle\\lim_{x\\to1-}f(x)=1$이다.\n\n또 $t\\to-\\infty$일 때\n$\\dfrac1t\\to0-$이다.\n\n그래프에서\n$\\displaystyle\\lim_{x\\to0-}f(x)=1$이다.\n\n따라서 주어진 값은\n\n$1+1=2$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -512,7 +512,7 @@ window.questionBank = [
   },
   {
     "id": 14,
-    "level": "",
+    "level": "중",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -534,7 +534,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "$x=2$에서 미분가능하려면 먼저 연속이어야 한다.\n\n연속 조건에서\n\n$2^2+a=2b$\n\n이므로\n\n$4+a=2b$이다.\n\n또 $x=2$에서 왼쪽 미분계수는 $2x$에 $x=2$를 대입한 $4$이고,\n오른쪽 미분계수는 $b$이다.\n\n미분가능하므로 두 값이 같아서\n\n$b=4$이다.\n\n이를 $4+a=2b$에 대입하면\n\n$4+a=8$\n\n이므로 $a=4$이다.\n\n따라서 $a+b=8$이다.\n\n따라서 정답은 ④이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -551,7 +551,7 @@ window.questionBank = [
   },
   {
     "id": 15,
-    "level": "",
+    "level": "상",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -573,7 +573,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "(가)의 극한이 유한한 값 $4$이므로 분자는 $x=1$에서 $0$이어야 한다.\n\n$f(1)-g(1)+2=0$이고,\n\n$\\displaystyle\\lim_{x\\to1}\\frac{\\{f(x)-g(x)+2\\}-\\{f(1)-g(1)+2\\}}{x-1}\n=f'(1)-g'(1)=4$이다.\n\n(나)에서도 분자가 $x=1$에서 $0$이어야 하므로\n\n$f(1)+g(1)=0$이다.\n\n두 식을 풀면\n\n$f(1)=-1,\\qquad g(1)=1$이다.\n\n이제 (나)의 분자를\n\n$f(x^2)+x^2g(x^2)$\n$=\\{f(x^2)-f(1)\\}+x^2\\{g(x^2)-g(1)\\}+(x^2-1)$\n\n로 나눈다.\n\n이를 $x-1$로 나누어 $x\\to1$로 보내면\n첫째 항은 $2f'(1)$,\n둘째 항은 $2g'(1)$,\n셋째 항은 $2$로 수렴한다.\n\n따라서\n\n$2f'(1)+2g'(1)+2=3$\n\n이고\n\n$f'(1)+g'(1)=\\frac12$이다.\n\n여기에 $f'(1)-g'(1)=4$를 더하면\n\n$2f'(1)=\\frac92$\n\n이므로\n\n$f'(1)=\\frac94$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -590,7 +590,7 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "",
+    "level": "상",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -614,7 +614,7 @@ window.questionBank = [
       "1"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "$P\\left(t,\\dfrac1t\\right)$이므로 직선 $OP$의 기울기는\n\n$\\displaystyle\\frac{1/t}{t}=\\frac1{t^2}$이다.\n\n따라서 $OP$에 수직인 직선 $l$의 기울기는 $-t^2$이고,\n점 $P$를 지나므로\n\n$\\displaystyle y-\\frac1t=-t^2(x-t)$이다.\n\n$x$절편 $Q$에서는 $y=0$이므로\n\n$\\displaystyle x_Q=t+\\frac1{t^3}$이다.\n\n$y$절편 $R$에서는 $x=0$이므로\n\n$\\displaystyle y_R=t^3+\\frac1t$이다.\n\n$t$가 $1$에 가까울 때 $t>0$이므로\n\n$\\displaystyle S_1(t)\n=\\frac12\\cdot x_Q\\cdot\\frac1t\n=\\frac12\\left(1+\\frac1{t^4}\\right)$,\n\n$\\displaystyle S_2(t)\n=\\frac12\\cdot t\\cdot y_R\n=\\frac12(t^4+1)$이다.\n\n따라서\n\n$\\displaystyle S_2(t)-S_1(t)\n=\\frac12\\left(t^4-\\frac1{t^4}\\right)\n=\\frac12\\cdot\\frac{t^8-1}{t^4}$이다.\n\n그러므로\n\n$\\displaystyle\\lim_{t\\to1}\\frac{S_2(t)-S_1(t)}{t-1}\n=\\frac12\\lim_{t\\to1}\\frac{(t+1)(t^2+1)(t^4+1)}{t^4}\n=4$이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -631,7 +631,7 @@ window.questionBank = [
   },
   {
     "id": 17,
-    "level": "",
+    "level": "상",
     "category": "미분계수",
     "originalCategory": "미분계수",
     "standardCourse": "미적분I",
@@ -653,7 +653,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$x\\ne2$에서는\n\n$h(x)=\\dfrac{f(x)}{x-2}$이다.\n\n$h(x)$가 $x=2$에서 연속이려면 위 식의 극한이 유한해야 하므로\n$f(2)=0$이다.\n\n그러면 $h(2)=f(2)g(2)=0$이고,\n\n$\\displaystyle\\lim_{x\\to2}h(x)\n=\\lim_{x\\to2}\\frac{f(x)-f(2)}{x-2}\n=f'(2)$이다.\n\n연속이므로 $f'(2)=0$이다.\n\n따라서 삼차함수 $f(x)$는 $(x-2)^2$을 인수로 갖는다.\n최고차항의 계수가 $1$이므로\n\n$f(x)=(x-2)^2(x-r)$\n\n로 둘 수 있다.\n\n$x\\ne2$에서\n\n$h(x)=(x-2)(x-r)$이고,\n$x=2$에서도 두 식의 값이 모두 $0$이므로 이 식으로 이어진다.\n\n따라서\n\n$h'(x)=2x-(r+2)$이고\n\n$h'(2)=2-r=6$이다.\n\n그러므로 $r=-4$이고\n\n$f(x)=(x-2)^2(x+4)$이다.\n\n따라서\n\n$f(1)=5$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -670,7 +670,7 @@ window.questionBank = [
   },
   {
     "id": 18,
-    "level": "",
+    "level": "상",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -692,7 +692,7 @@ window.questionBank = [
       "-1"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "함수와 역함수의 그래프는 직선 $y=x$에 대하여 서로 대칭이다.\n따라서 두 그래프의 교점도 $(x,y)$가 있으면 $(y,x)$가 함께 있어야 한다.\n\n교점이 세 개이고 그 $x$좌표가 $0,2,4$이므로 가능한 대칭 배치를 차례로 확인한다.\n\n$(0,0),(2,4),(4,2)$라고 하면\n$f(0)=0$에서 $b=0$,\n$f(2)=4$에서 $c=0$이 되지만\n$f(4)=8\\ne2$이므로 불가능하다.\n\n$(0,2),(2,0),(4,4)$라고 하면\n$b=2$, $c=-1$이 되지만\n$f(4)=-8\\ne4$이므로 불가능하다.\n\n따라서 교점은\n\n$(0,4),\\ (2,2),\\ (4,0)$이다.\n\n$f(0)=4$이므로 $b=4$이고,\n\n$f(2)=2$에서\n\n$4c+4=2$\n\n이므로 $c=-\\frac12$이다.\n\n$x=2$에서 연속이므로\n\n$2a+4=2$\n\n에서 $a=-1$이다.\n\n따라서\n\n$f(-1)=5$,\n\n$f(6)=-\\frac12\\cdot36+12=-6$\n\n이므로\n\n$f(-1)+f(6)=-1$이다.\n\n따라서 정답은 ⑤이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -709,7 +709,7 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "level": "",
+    "level": "상",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -731,7 +731,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "$g(x)$의 $x$절편을 먼저 살펴본다.\n\n$x\\le3$에서는\n$g(x)=(x-k)^2$이므로 $x=k$에서 $0$이 된다.\n\n$x>3$에서는\n$g(x)=k(x-a-k)^2$이므로 $x=a+k$에서 $0$이 된다.\n\n서로 다른 두 점에서 $x$축과 만나려면\n\n$k\\le3,\\qquad a+k>3$이어야 한다.\n\n$k=3$이면 (가)의 좌극한은 $0$인데 우극한은 $3a^2>0$이므로 불가능하다.\n따라서\n\n$0<k<3,\\qquad a>3-k$이다.\n\n(가)에서 좌극한과 우극한이 같으므로\n\n$(3-k)^2=k(3-a-k)^2$이다.\n\n여기서 $3-k>0$이고 $3-a-k<0$이므로\n\n$3-k=\\sqrt{k}(a+k-3)$이다.\n\n이제 보기를 각각 판단한다.\n\nㄱ. $f(1)=1$이면\n$(1-k)^2=1$이다.\n$k>0$이므로 $k=2$이고,\n$g(2)=(2-k)^2=0$이다.\n따라서 참이다.\n\nㄴ. $a+k>3$이고 둘째 식의 꼭짓점이 $x=a+k$이므로\n$g(a+k)=0$이다.\n또 $0<k<3$이므로\n$g(3)=(3-k)^2>0$이다.\n따라서 $g(k+a)<g(3)$이고 참이다.\n\nㄷ. 위 조건에서는 $k$가 $(0,3)$의 값이 될 수 있다.\n예를 들어 $k=\\dfrac32$로 두면 (가)를 만족하는 양수 $a$가 존재하지만\n\n$\\left(\\frac32-1\\right)\\left(\\frac32-2\\right)\n=-\\frac14<0$이다.\n\n따라서 ㄷ은 거짓이다.\n\n옳은 것은 ㄱ, ㄴ이다.\n\n따라서 정답은 ②이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -748,7 +748,7 @@ window.questionBank = [
   },
   {
     "id": 20,
-    "level": "",
+    "level": "중",
     "category": "함수의 극한",
     "originalCategory": "함수의 극한",
     "standardCourse": "미적분I",
@@ -764,7 +764,7 @@ window.questionBank = [
     "content": "다항함수 $f(x)$가 다음 조건을 만족시킬 때, $f(x)$를 구하시오. [8점]<br>(가) $\\displaystyle\\lim_{x\\to\\infty}\\frac{f(x)-x^2}{2x^2+2x-1}=1$<br>(나) $\\displaystyle\\lim_{x\\to-1}\\frac{f(x)}{x^2-2x-3}=\\dfrac12$",
     "choices": [],
     "answer": "$f(x)=3x^2+4x+1$",
-    "solution": "",
+    "solution": "(가)의 극한이 $1$이므로 $f(x)$의 차수는 $2$ 이하이고,\n$f(x)=Ax^2+Bx+C$라 둘 수 있다.\n\n$x\\to\\infty$에서 최고차항의 계수를 비교하면\n\n$\\displaystyle\\frac{A-1}{2}=1$\n\n이므로 $A=3$이다.\n\n따라서\n\n$f(x)=3x^2+Bx+C$이다.\n\n(나)에서\n\n$x^2-2x-3=(x+1)(x-3)$\n\n이고 $x\\to-1$에서 분모가 $0$으로 간다.\n극한이 유한하므로 $f(-1)=0$이어야 하며,\n$f(x)$는 $x+1$을 인수로 갖는다.\n\n최고차항의 계수가 $3$이므로\n\n$f(x)=(x+1)(3x+d)$\n\n로 두자.\n\n그러면\n\n$\\displaystyle\\lim_{x\\to-1}\\frac{f(x)}{(x+1)(x-3)}\n=\\lim_{x\\to-1}\\frac{3x+d}{x-3}\n=\\frac{-3+d}{-4}\n=\\frac12$이다.\n\n따라서 $d=1$이고,\n\n$f(x)=(x+1)(3x+1)\n=3x^2+4x+1$이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
@@ -781,7 +781,7 @@ window.questionBank = [
   },
   {
     "id": 21,
-    "level": "",
+    "level": "상",
     "category": "함수의 연속",
     "originalCategory": "함수의 연속",
     "standardCourse": "미적분I",
@@ -797,7 +797,7 @@ window.questionBank = [
     "content": "최고차항의 계수가 1인 삼차함수 $f(x)$에 대하여 실수 전체의 집합에서 연속인 함수 $g(x)$가 다음 조건을 만족시킨다.<br>(가) 모든 실수 $x$에 대하여 $f(x)g(x)=x(x+4)$<br>(나) $g(0)=2$<br>$f(1)$이 자연수일 때, $g(2)$의 최솟값을 구하시오. [12점]",
     "choices": [],
     "answer": "$\\dfrac35$",
-    "solution": "",
+    "solution": "$g(0)=2$이고 $f(0)g(0)=0$이므로\n\n$f(0)=0$이다.\n\n$f(x)$는 최고차항의 계수가 $1$인 삼차함수이므로\n\n$f(x)=x(x^2+px+q)$\n\n로 두자.\n\n$x\\ne0$에서 조건 (가)에 의해\n\n$\\displaystyle g(x)=\\frac{x+4}{x^2+px+q}$이다.\n\n$g$가 $x=0$에서 연속이고 $g(0)=2$이므로\n\n$\\displaystyle 2=\\lim_{x\\to0}g(x)=\\frac4q$이다.\n\n따라서 $q=2$이고\n\n$f(x)=x(x^2+px+2)$,\n\n$\\displaystyle g(x)=\\frac{x+4}{x^2+px+2}$이다.\n\n$g(x)$가 실수 전체에서 연속이려면 분모 $x^2+px+2$가 실근을 가지면 안 된다.\n만약 $x=-4$가 분모의 근이라 해도 다른 근이 $-\\dfrac12$가 되어 그 점에서 연속일 수 없다.\n\n따라서 판별식이 음수이므로\n\n$p^2-8<0$,\n\n$-2\\sqrt2<p<2\\sqrt2$이다.\n\n또\n\n$f(1)=p+3$\n\n이 자연수이므로 가능한 값은\n\n$f(1)=1,2,3,4,5$,\n\n즉\n\n$p=-2,-1,0,1,2$이다.\n\n한편\n\n$\\displaystyle g(2)=\\frac6{4+2p+2}\n=\\frac3{p+3}$이다.\n\n$p$가 클수록 이 값은 작아지므로 $p=2$일 때 최솟값을 갖는다.\n\n따라서\n\n$\\displaystyle g(2)_{\\min}=\\frac35$이다.",
     "subUnitKey": "",
     "subUnit": "",
     "subUnitConfidence": "",
