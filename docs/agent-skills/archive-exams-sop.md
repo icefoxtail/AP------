@@ -2,6 +2,16 @@
 
 Use for exam source data and image asset work.
 
+## Startup boundary
+
+For a normal existing Archive exam with an already-assigned stage, **do not use `apmath-archive-exams` as a mandatory startup skill**.
+
+Start from the user's/current lane instruction, Notion CURRENT, latest Git main, the target source/current JS, and only the canonical rules directly needed by the edit.
+
+The `apmath-archive-exams` skill is reserved for true route selection: first-time original-exam import, shared system/pipeline work, explicit legacy R2E recovery, genuine route ambiguity, or explicit user invocation.
+
+SVG, Meta, render, difficulty, or repeated local defects inside an assigned exam do not by themselves justify reopening route selection or entering pipeline-core.
+
 ## Protected Areas
 
 - `archive/exams`
