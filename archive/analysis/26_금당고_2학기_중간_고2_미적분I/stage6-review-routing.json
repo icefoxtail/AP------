@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "archive-high-review-routing-v1",
+  "exam": "26_금당고_2학기_중간_고2_미적분I",
+  "sourceArchiveFile": "archive/exams/original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+  "authorityBranch": "work/26-geumdang-h2-2mid-m1",
+  "rollbackOfPrematureCanonicalPromotion": "eae2051776b8e92b6712ace8cf60b59740b5363a",
+  "restoredSeedCommit": "0be0d6503fba6f50051e98df4042ce1114955dcf",
+  "currentStage": "READY_FOR_REVIEW1",
+  "route": [
+    "REVIEW1",
+    "REVIEW2",
+    "POST_REVIEW_META_PROMOTION",
+    "FINAL"
+  ],
+  "reviewPolicy": {
+    "review1": "FULL_INDEPENDENT",
+    "review2": "FULL_INDEPENDENT",
+    "previousVerdictAsAnswer": false,
+    "repairBeforeHold": true
+  },
+  "metaPolicy": {
+    "q12L3": {
+      "action": "KEEP",
+      "label": "극한의 성질"
+    },
+    "q12L4": {
+      "action": "CANDIDATE_ONLY_UNTIL_R2",
+      "label": "함수의 극한의 대소 관계"
+    },
+    "canonicalPromotionBeforeR2": false,
+    "promotionGate": "R1_AND_R2_SEMANTIC_CONFIRMATION_PLUS_CANONICAL_VALIDATOR"
+  },
+  "difficultyPolicy": {
+    "current": "BLIND_REVIEW_PENDING",
+    "review1Input": "stage6-difficulty-blind-input.json",
+    "legacyLevelVisibleBeforeFreeze": false
+  },
+  "notes": [
+    "Stage1~6 builder artifacts are review input, not final review authority.",
+    "The premature RPM master/view/crosswalk promotion is reverted from the current branch tree.",
+    "q12 remains a taxonomy seed candidate and must survive R1 and R2 before canonical promotion."
+  ]
+}

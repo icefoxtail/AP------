@@ -3,11 +3,11 @@
   "exam": "26_금당고_2학기_중간_고2_미적분I",
   "branch": "work/26-geumdang-h2-2mid-m1",
   "inputBranchHead": "06b0ff5c494f53743cfc1dcaa4edf77c4673f71c",
-  "authorityMain": "a452eb986f6ebb5ac63c87056aba7bd200915131",
+  "authorityMain": "7a1a30eecc15e0bb66439705f72db7ac1a16e5a5",
   "scope": "21/21 Stage6 semantic/crosswalk/ACTIVE-key deterministic preflight",
   "canonicalValidatorExecution": "NOT_RUN",
-  "canonicalValidatorReason": "RPM path and crosswalk are promoted on the working branch; actual Node resolver/validator execution is the next gate.",
-  "result": "PASS_PENDING_CANONICAL_VALIDATOR",
+  "canonicalValidatorReason": "q12 now intentionally defines an RPM Primary extension candidate; current locked authority cannot validate the new path until promotion. No validator PASS is claimed.",
+  "result": "PASS_WITH_TAXONOMY_EXTENSION_SEED",
   "denominator": 21,
   "checked": 21,
   "hardErrorCount": 0,
@@ -47,21 +47,20 @@
   },
   "q12Finding": {
     "sourceMethod": "함수의 극한의 대소 관계",
-    "action": "RPM_PRIMARY_EXTENSION_PROMOTED_ON_BRANCH",
+    "action": "RPM_PRIMARY_EXTENSION_SEED",
     "l3": {
       "action": "KEEP",
       "label": "극한의 성질"
     },
     "l4": {
-      "action": "ADD_PROMOTED_ON_BRANCH",
+      "action": "ADD",
       "label": "함수의 극한의 대소 관계"
     },
     "activeReuse": {
       "problemTypeKey": "PT_LIMIT_VALUE_CALC",
       "templateKey": "TPL_LIMIT_SQUEEZE"
     },
-    "rpmCrosswalkId": "H2-M2-RPM-098",
-    "projectionStatus": "PROJECTION_BINDING_PENDING",
+    "proposedCrosswalkId": "H2-M2-RPM-098",
     "hold": false
   },
   "perQuestion": [
@@ -133,7 +132,7 @@
     },
     {
       "id": 12,
-      "status": "PROMOTED_READY_FOR_VALIDATOR",
+      "status": "TAXONOMY_EXTENSION_SEED",
       "errors": [],
       "projectionStatus": "PROJECTION_BINDING_PENDING"
     },
@@ -194,10 +193,10 @@
   ],
   "errors": [],
   "nextGate": [
-    "run canonical resolver/validator against promoted branch authority",
+    "promote q12 RPM extension candidate into RPM Primary master/view/crosswalk with package parity update",
+    "run canonical resolver/validator after promotion",
     "fresh independent blind difficulty 21/21",
     "Stage6 final closeout"
   ],
-  "taxonomyExtensionSeedCount": 0,
-  "taxonomyPromotionCount": 1
+  "taxonomyExtensionSeedCount": 1
 }
