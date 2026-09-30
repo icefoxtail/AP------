@@ -3,7 +3,7 @@
 - 상태: **ACTIVE / CURRENT**
 - 적용 시작: **2026-09-30**
 - 적용 대상: JS Archive current-generation CREATE / REVIEW1 / REVIEW2의 write-finalization 및 recovery
-- current middle generation: `MIDDLE_RECERT_2026-09-29_V1`
+- current middle generation: `MIDDLE_RECERT_2026-09-30_META_V2`
 
 ---
 
