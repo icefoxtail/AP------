@@ -1,0 +1,501 @@
+{
+  "schemaVersion": "PAST_EXAM_REFERENCE_SAMPLE_LOCK_v1",
+  "status": "PASS",
+  "mainCommit": "a452eb986f6ebb5ac63c87056aba7bd200915131",
+  "rulePackSha": "sha256:dcf5d0cf87e0f16c58b9b70c6902481f2604e16f097d16f89581b706d6437ae1",
+  "target": {
+    "examId": "26_왕운중_2학기_중간_중3_기출",
+    "sourceFiles": [
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중3_기출\\source\\page_p001.jpg",
+        "bytes": 914968,
+        "sha256": "sha256:919287bb6c7df42ad9523d86bf0038ea30a43c045b0a6a238df7d7fc8ccc39b8"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중3_기출\\source\\page_p002.jpg",
+        "bytes": 642216,
+        "sha256": "sha256:de1dc80b278a88566a9cad3c6c4aebbe42259f3c994a0267322119ee7ac378a8"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중3_기출\\source\\page_p003.jpg",
+        "bytes": 1130016,
+        "sha256": "sha256:c9227526cd384c2574ecca16d7410167942b7da5c76410ead42a1be1ae43c2d7"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중3_기출\\source\\page_p004.jpg",
+        "bytes": 646856,
+        "sha256": "sha256:ce015dd950382cae44cea4d0d0201fb73e2c470d8b792d509273ee2cb82a982c"
+      },
+      {
+        "path": "C:\\Users\\USER\\.codex\\worktrees\\archive-extract-2mid\\AP------\\archive-work\\new-imports\\2026-2mid-prompt-assets\\26_왕운중_2학기_중간_중3_기출\\source\\page_p005.jpg",
+        "bytes": 740792,
+        "sha256": "sha256:2f5a96fa0f00ae0924b50f79b5b766211353d2e584731e338415167f6251c31b"
+      }
+    ],
+    "baselineStatus": "ABSENT",
+    "baselineRef": null
+  },
+  "readerId": "Codex extraction session",
+  "readerSessionId": "codex/archive-2026-2mid-prompt-assets/2026-09-30/wangun-m3-main-a452eb9",
+  "startedAt": "2026-09-30T13:03:03.918062+00:00",
+  "frozenAt": "2026-09-30T13:03:03.918062+00:00",
+  "baselineObservation": "",
+  "baselineSnapshotBase64": null,
+  "baselineQuestionObservations": [],
+  "sourceTruthPolicy": "TARGET_SOURCE_ONLY",
+  "sampleRole": "QUALITY_CALIBRATION_ONLY",
+  "samples": [
+    {
+      "path": "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+      "rawSha256": "sha256:4d4bb14b9ed60967241f4c426c2f1227f950c067bbcedbcc1e3bc6f277c18280",
+      "bytes": 33015,
+      "examTitle": "25_왕운중_2학기_중간_중3_수학",
+      "standardCourse": [
+        "중3 수학"
+      ],
+      "questionCount": 24,
+      "selectionReason": "Most recent same-grade, same-course, same-semester/midterm production reference available on the frozen latest main; Wangun gives the same school style and Yeonhyang provides a distinct-school cross-check.",
+      "qualityAcceptanceReason": "Full bank coverage checked: every answer and solution exists; 0 answer-only strings by conservative length/structure check; objective choice count and complete unit metadata present. Layout remains grid; source-image and solution-image fields are separate. Existing legacy solution images without alt labels are noted as a future requirement and are not copied into this extraction.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "24 sequential questions; 24/24 answers and 24/24 solutions present; no duplicate IDs."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Every complete solution field was checked for worked structure; all rows contain more than a bare answer and include intermediate equations or explanatory text."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Course, unit, subunit confidence/depth, level, and answer fields are populated throughout the frozen production examples."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "19/24 rows have separate source-problem image refs; diagrams remain linked per question."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "2/24 rows use a separate solutionImage field; no source problem image is repurposed as a solution annotation."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All rows use grid; choices and prompt flow stay within the default layout with no blanket subjective promotion."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:d0ad822e80c7c867fc0f3629ee542c0255ed5a0ee924cdcb087e7e875bb4c7a8",
+          "solutionExcerpt": "직각삼각형에서 $\\sin A$는 $A$의 맞은편 변의 길이를 빗변의 길이로 나눈 값이다.\n$A$의 맞은편 변은 $BC=6$, 빗변은 $AC=10$이므로\n$\\sin A=\\df",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=147, explicit lines=4, math blocks=6, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:1479b112a5523e4fa6c57c971029672d9d3aaf59e874b725137322fa6adec95b",
+          "solutionExcerpt": "$\\tan A=\\dfrac{BC}{AB}=\\dfrac{12}{5}$이므로\n$BC=12k$, $AB=5k$로 둘 수 있다.\n피타고라스 정리에 의해\n$AC=\\sqrt{(12k)",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=168, explicit lines=5, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:82f6b74de0b9aee63c757cf79aea62666b2ced484c9e8302c9a4cc4c904efbb2",
+          "solutionExcerpt": "특수각의 삼각비를 대입한다.\n$\\tan45^\\circ=1$, $\\sin60^\\circ=\\dfrac{\\sqrt3}{2}$이므로\n$\\sqrt2\\tan45^\\circ-\\sqrt3",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=183, explicit lines=6, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:e05489ddc2a7c97cfd0cbe5cc830236703c14f4fb916de2edf81a03983cc2cf7",
+          "solutionExcerpt": "표에서 주어진 값과 같은 삼각비를 찾는다.\n$\\sin79^\\circ=0.9816$이므로 $x=79^\\circ$이다.\n또 $\\cos77^\\circ=0.2250$이므로 $y=7",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=151, explicit lines=4, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:dc358e548df0188531be00578a33d2382058ded153e773cb49270f33ceccf2f3",
+          "solutionExcerpt": "$\\sin90^\\circ=1$이므로 식은\n$\\sqrt{(\\tan A+1)^2}-\\sqrt{(\\sin A-1)^2}$이다.\n$A$가 예각이므로 $\\tan A+1>0$, $0<",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=239, explicit lines=9, math blocks=8, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:61b29f2ada1342e051e2df3f167856812686ca03c902154e4e6b7b84bd325048",
+          "solutionExcerpt": "$BC$가 놓인 직선에 $A$에서 수선을 내려 높이를 $AH$라 하자.\n$\\angle ABC=120^\\circ$이므로 $BA$와 $BC$의 반대 방향이 이루는 예각은 $60",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=299, explicit lines=8, math blocks=11, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:dd29fc234d703bbfbb0c69bb5971629b90c8762bf1d4369946d0519e6153244b",
+          "solutionExcerpt": "그림에서 $47^\\circ$에 해당하는 점을 읽으면\n$\\cos47^\\circ=0.68$, $\\sin47^\\circ=0.73$이고\n$\\tan47^\\circ\\approx1.07",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=243, explicit lines=7, math blocks=8, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:0a9c3add6395b3e40630948815855edbeaa8d112f7c15ef37a67c8bf4d74bea0",
+          "solutionExcerpt": "$AH\\perp BC$이므로 $\\triangle ABH$는 직각삼각형이다.\n$\\angle ABH=45^\\circ$이므로 $45^\\circ$-$45^\\circ$-$90^\\ci",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=255, explicit lines=8, math blocks=12, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:de62e67d3a7f9f610245b08e608c92f47275db924449ecaca569bde12a9dd833",
+          "solutionExcerpt": "$AB=t$라 두면 $AC=3t$이다.\n$\\angle A=90^\\circ$이므로 피타고라스 정리에 의해\n$BC=\\sqrt{t^2+(3t)^2}=\\sqrt{10}\\,t$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=216, explicit lines=8, math blocks=9, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:86ac15f199f032cc8a38ab50216cacf1fa18c31463a79388431b7eb508d97e7b",
+          "solutionExcerpt": "세 내각의 비를 $1:2:3$이라 했으므로\n각을 $k,2k,3k$라 두면\n$k+2k+3k=180^\\circ$이다.\n따라서 $k=30^\\circ$이고\n$A=30^\\circ$,",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=228, explicit lines=9, math blocks=10, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:e953fea28b1aaea120f410113956d1be13c318e389466375ed0b80448f7a846d",
+          "solutionExcerpt": "$BC=8$을 밑변으로 보면 $AH$가 높이이다.\n삼각형의 넓이가 $12\\sqrt3$이므로\n$12\\sqrt3=\\dfrac12\\cdot8\\cdot AH=4AH$이다.\n따라서 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=119, explicit lines=4, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:4c2f72dce6a4f30b7863480fb4377106e14e148b93a628465dafc91293ad3d83",
+          "solutionExcerpt": "정육각형의 한 변과 원의 반지름의 길이는 같다.\n원의 반지름을 $r$라 하면 $\\triangle OAF$는 한 변이 $r$인 정삼각형이고,\n$OH$는 그 높이이므로\n$OH=",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=308, explicit lines=12, math blocks=11, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:b1c55d54d72c3f443cbf3177b3efa141d1899fdee3d1839f223e10d0750a111f",
+          "solutionExcerpt": "원의 중심에서 현 $AB$에 내린 수선은 현을 이등분하므로\n$AH=\\dfrac{AB}{2}=12$이다.\n직각삼각형 $OHA$에서\n$OA^2=OH^2+AH^2=5^2+12^2",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=130, explicit lines=5, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:981ccd2e65d8512bddd77583f0ab5601d263eb5cd8192cfecf624ca5a426572b",
+          "solutionExcerpt": "$OM\\perp AB$이므로\n$\\angle OMA=\\angle OMB=90^\\circ$이다.\n또 $OA=OB$는 같은 원의 반지름이고, $OM$은 두 삼각형의 공통인 변이다",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=235, explicit lines=8, math blocks=7, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:e7f51dddeebb7f1819c1f39c3e08abef02d4ef24d6922d5994c4dd260fc1ae4f",
+          "solutionExcerpt": "원의 중심을 $O$, 반지름을 $r$라 하자.\n$OM\\perp AB$이므로 $M$은 현 $AB$의 중점이고\n$AM=5$이다.\n그림에서 $CM=3$이므로 $OM=r-3$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=238, explicit lines=11, math blocks=14, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:a1be67c505022609e96bab5fb4d10cfcc1a838189a9f3dc7c3a4d65590a4e136",
+          "solutionExcerpt": "중심에서 같은 거리에 있는 현의 길이는 같으므로\n$OD=OE=OF$에서 $AB=BC=CA=12$이다.\n따라서 $\\triangle ABC$는 정삼각형이고,\n같은 현이 만드는 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=384, explicit lines=14, math blocks=15, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:405e5c3182d0a523e06e66cd35340ee9c1137809a6fd5fd005fa3b41fd01b279",
+          "solutionExcerpt": "한 점에서 한 원에 그은 두 접선의 길이는 같다.\n점 $P$에서 그은 접선이므로\n$PA=PB=2$이다.\n따라서 $QB=PQ-PB=5-2=3$이다.\n점 $Q$에서도 두 접선의",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=140, explicit lines=7, math blocks=6, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:3282ea80d7a46fe573b3865b938b8699b66a3f9e99a19ddadabd608fd3e21732",
+          "solutionExcerpt": "같은 점에서 한 원에 그은 두 접선의 길이는 같다는 성질을 연속해서 이용한다.\n그림에서 $AC$, $AD$, $AE$ 위의 접점은 각각 이웃한 두 원이 함께 접하는 같은 점",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=442, explicit lines=17, math blocks=20, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:f87ded0945d2a8de8652502aea7f5f8822e18c18d387d08795bd3bf85e3b8045",
+          "solutionExcerpt": "$AB=5$, $BC=12$이므로 피타고라스 정리에 의해\n$AC=13$이다.\n$M$은 $AC$의 중점이고 $MH\\parallel AB$이므로\n중점 연결 정리에 의해 $H$는",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=330, explicit lines=15, math blocks=16, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:559a26b5611f0d87dcbc48daa28dfbff8b0105afa64f3e828d06d510f1b33145",
+          "solutionExcerpt": "$\\triangle AEF$는 $AF=6$인 직각삼각형이고\n$\\angle EAF=30^\\circ$이므로\n$AE=6\\cos30^\\circ=3\\sqrt3$,\n$EF=6\\sin3",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=501, explicit lines=18, math blocks=18, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:29148bb579b69c160118e638b266ff81bce77077cee16e7b7c020d1033f62718",
+          "solutionExcerpt": "점 $A$에서 $BC$가 놓인 직선에 수선을 내려 높이를 $AH$라 하자.\n각 $B$에 대하여\n$\\sin B=\\dfrac{AH}{AB}$이므로\n$AH=AB\\sin B$\n$=",
+          "observation": "Full source row structurally reviewed: type=서술형, level=중, solution length=260, explicit lines=13, math blocks=13, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:ead06940d19f45e32875c7ceef93b80b7d69947ae0dd24820281cb215570a6f8",
+          "solutionExcerpt": "$\\cos A=\\dfrac{AB}{AC}=\\dfrac35$이므로\n$AB=3k$, $AC=5k$로 둘 수 있다.\n피타고라스 정리에 의해\n$BC=\\sqrt{(5k)^2-(3k)",
+          "observation": "Full source row structurally reviewed: type=서술형, level=중, solution length=180, explicit lines=7, math blocks=6, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:1fd1a232b0c310a04c3833f4688dfafe186a225c0c2a9c9b1c64d128f304a99e",
+          "solutionExcerpt": "작은 원의 반지름 $OM$은 접선 $AB$에 수직이므로\n$OM\\perp AB$이다.\n또 큰 원의 중심에서도 현 $AB$에 내린 수선은 현을 이등분하므로\n$AM=BM$이다.\n",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=311, explicit lines=16, math blocks=16, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 24,
+          "questionSha": "sha256:4c3723046cbc9ae1b7e33285a94aaafebd22b3d7fda7011ef6f10a7a68781c5f",
+          "solutionExcerpt": "비행기에서 산의 바로 아래 지점까지 내린 수선의 발을 $H$라 하자.\n$PH=500\\,\\mathrm{m}$이고 $A$, $H$, $B$는 한 직선 위에 있으며\n그림처럼 $H",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=363, explicit lines=12, math blocks=18, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+      "rawSha256": "sha256:cededd99f1e2b33b7529ec01734c8faae7ad7c89de4ee36bbb5c40e8c3391450",
+      "bytes": 33389,
+      "examTitle": "25_연향중_2학기_중간_중3_수학",
+      "standardCourse": [
+        "중3 수학"
+      ],
+      "questionCount": 23,
+      "selectionReason": "Most recent same-grade, same-course, same-semester/midterm production reference available on the frozen latest main; Wangun gives the same school style and Yeonhyang provides a distinct-school cross-check.",
+      "qualityAcceptanceReason": "Full bank coverage checked: every answer and solution exists; 0 answer-only strings by conservative length/structure check; objective choice count and complete unit metadata present. Layout remains grid; source-image and solution-image fields are separate. Existing legacy solution images without alt labels are noted as a future requirement and are not copied into this extraction.",
+      "checkedAxes": {
+        "schema": {
+          "status": "PASS",
+          "observation": "23 sequential questions; 23/23 answers and 23/23 solutions present; no duplicate IDs."
+        },
+        "solutionQuality": {
+          "status": "PASS",
+          "observation": "Every complete solution field was checked for worked structure; all rows contain more than a bare answer and include intermediate equations or explanatory text."
+        },
+        "metadata": {
+          "status": "PASS",
+          "observation": "Course, unit, subunit confidence/depth, level, and answer fields are populated throughout the frozen production examples."
+        },
+        "problemVisual": {
+          "status": "PASS",
+          "observation": "19/23 rows have separate source-problem image refs; diagrams remain linked per question."
+        },
+        "solutionVisual": {
+          "status": "PASS",
+          "observation": "9/23 rows use a separate solutionImage field; no source problem image is repurposed as a solution annotation."
+        },
+        "layout": {
+          "status": "PASS",
+          "observation": "All rows use grid; choices and prompt flow stay within the default layout with no blanket subjective promotion."
+        }
+      },
+      "questionObservations": [
+        {
+          "qid": 1,
+          "questionSha": "sha256:100e4c310ffc17df61b569e7b4c93f9b5d8a937478a39fd3478ff126be1de0de",
+          "solutionExcerpt": "$\\angle B=90^\\circ$, $AB=3$, $AC=7$이므로\n$BC=\\sqrt{7^2-3^2}=\\sqrt{40}=2\\sqrt{10}$이다.\n\n$D$는 $BC$의 중",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=273, explicit lines=12, math blocks=10, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 2,
+          "questionSha": "sha256:3566fceb05febc0e888e16ebfc321d6bcfead272bc61a0a0562692d9dd5a8752",
+          "solutionExcerpt": "$3\\sin A=-2\\sin A+4$이므로\n$5\\sin A=4$, $\\sin A=\\dfrac45$이다.\n\n$A$는 예각이므로 $\\cos A=\\dfrac35$이고\n$\\tan ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=335, explicit lines=14, math blocks=11, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 3,
+          "questionSha": "sha256:98ca94dbef1393be4af193b6db3f314c1373dfebe12f82ca0efa0206b06ab205",
+          "solutionExcerpt": "$\\angle A=180^\\circ-60^\\circ-90^\\circ=30^\\circ$이므로\n$\\tan A=\\dfrac{\\sqrt3}{3}$이다.\n\n두 분수를 먼저 합치면\n$",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=231, explicit lines=9, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 4,
+          "questionSha": "sha256:c68ca7231852df1e330a15073df5250ce18ba89318e2c01a25119bd680a49264",
+          "solutionExcerpt": "$0^\\circ<x<40^\\circ$이므로\n$10^\\circ<2x+10^\\circ<90^\\circ$이다.\n\n이 범위에서\n$\\cos30^\\circ=\\dfrac{\\sqrt3}{",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=173, explicit lines=9, math blocks=6, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 5,
+          "questionSha": "sha256:aef63f9982c1039658be831d41af9d918d2808b66ee6e9add2013497c31fb2f4",
+          "solutionExcerpt": "$OA=OB=1$이고 $AH\\perp OB$이므로 $\\triangle AOH$는 직각삼각형이다.\n\n$\\cos35^\\circ=\\dfrac{OH}{OA}=OH$이므로\n$OH=\\",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=155, explicit lines=9, math blocks=6, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 6,
+          "questionSha": "sha256:962d61c1cbc69f2d58b0dc1b14785e50ac47ea51a827cc6d18176976d67bf270",
+          "solutionExcerpt": "$x$, $y$는 모두 예각이다.\n$\\tan30^\\circ=\\dfrac{\\sqrt3}{3}$이므로 $x=30^\\circ$이고,\n$\\cos60^\\circ=\\dfrac12$이므",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=182, explicit lines=9, math blocks=8, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 7,
+          "questionSha": "sha256:b2495396f2b60389f0f88f72124a39770d3ae750f1338a978ae4b896e0112c39",
+          "solutionExcerpt": "$25^\\circ<45^\\circ$이므로\n$\\sin25^\\circ<\\sin45^\\circ=\\cos45^\\circ$이다.\n또 $\\cos45^\\circ<\\cos0^\\circ=1",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=246, explicit lines=11, math blocks=7, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 8,
+          "questionSha": "sha256:6aec179355ae8f8d77d6b0693aaffa7e50910b51732680cd4ce2af77b54e53a5",
+          "solutionExcerpt": "표의 탄젠트 열에서\n$\\tan12^\\circ=0.2126$이므로 $x=12$이다.\n\n또 코사인 열에서\n$\\cos13^\\circ=0.9744$이므로 $y=0.9744$이다.\n",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=137, explicit lines=10, math blocks=5, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 9,
+          "questionSha": "sha256:e60c0ad48eb7e04ce27f34bc56edcf97ef26d67a6c733ef5c013eb774e322183",
+          "solutionExcerpt": "빗변이 $AB=9$이고 $\\angle B=34^\\circ$이므로\n$\\sin34^\\circ=\\dfrac{a}{9}$,\n$\\cos34^\\circ=\\dfrac{b}{9}$이다.\n",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=187, explicit lines=12, math blocks=7, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 10,
+          "questionSha": "sha256:d09fe03aa1782fc9fd89212784f8f7fe8daef7c21c9b2917f86a6344d768b375",
+          "solutionExcerpt": "눈높이에서 나무 꼭대기까지의 높이를 $h\\,\\mathrm{m}$라 하자.\n수평거리가 $50\\,\\mathrm{m}$이므로\n$\\tan38^\\circ=\\dfrac{h}{50}$이",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=223, explicit lines=11, math blocks=7, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 11,
+          "questionSha": "sha256:42ca355fedb971fc04e5aacd84468c0471c71b0055ef669e541e138ef766b731",
+          "solutionExcerpt": "$A$에서 $BC$에 내린 수선의 길이를 $h$라 하자.\n$AB=7$이고 $\\angle B=45^\\circ$이므로\n$\\sin45^\\circ=\\dfrac{h}{7}$이다.\n\n",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=267, explicit lines=11, math blocks=9, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 12,
+          "questionSha": "sha256:e470e46aeb045eac185f5c16942c22344f09c8972b91bdc5365c5b0c47c17d4f",
+          "solutionExcerpt": "같은 원에서 호의 길이의 비는 중심각의 비와 같다.\n따라서\n$\\angle AOB=360^\\circ\\times\\dfrac3{3+4+2}=120^\\circ$이다.\n\n$O$에서 ",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=361, explicit lines=18, math blocks=13, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 13,
+          "questionSha": "sha256:6803c4a7cddacc8509d51d4b08384be5fcc1a99ae83677a3649a4ed58ee2784e",
+          "solutionExcerpt": "$A$에서 $BC$에 수선을 내려 발을 $H$라 하자.\n$AB=8\\sqrt2$, $\\angle ABC=45^\\circ$이므로\n$AH=BH=8$이다.\n\n$BC=20$이므로\n$",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=466, explicit lines=21, math blocks=21, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 14,
+          "questionSha": "sha256:637038596281cf3293d2c3857326785b0a0f4e9e3c2f07f988f2fee1ba4103bb",
+          "solutionExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=BM$이다.\n\n직각삼각형 $OAM$에서\n$OA=6$, $OM=2$이므로\n$AM=\\sqrt{6^2-2^2}=\\sqrt",
+          "observation": "Full source row structurally reviewed: type=객관식, level=하, solution length=160, explicit lines=11, math blocks=6, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 15,
+          "questionSha": "sha256:00a6829b38fa9fe0c4251acc56b859b360645d4fcfdb8a426eda32654f19a69c",
+          "solutionExcerpt": "$CD$는 현 $AB$의 수직이등분선이므로 원의 중심 $O$도 $CD$ 위에 있다.\n반지름을 $r$라 하자.\n\n$OC=r$, $CD=2$이므로\n$OD=r-2$이다.\n또 $A",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=206, explicit lines=14, math blocks=15, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 16,
+          "questionSha": "sha256:1b6a48bd9458d279f3ddd91336b6132b93ced6f43c0c77f949902fa80bcea411",
+          "solutionExcerpt": "원 위의 점을 $P$라 하면 $OP=4$이다.\n$P$가 $O$에 오도록 접을 때 접는 선 $AB$는 $OP$의 수직이등분선이다.\n따라서 중심 $O$에서 현 $AB$까지의 거",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=253, explicit lines=13, math blocks=17, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 17,
+          "questionSha": "sha256:91956e225eacb8e4b98069e7d72db5766437d1c5679e12ac5b208054ba9d7144",
+          "solutionExcerpt": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로\n$AB=AC$이다.\n따라서 $\\triangle ABC$는 이등변삼각형이다.\n\n$OM\\perp AB$, $ON\\perp A",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=307, explicit lines=14, math blocks=9, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 18,
+          "questionSha": "sha256:9bb549ec33d26d6524ff4e59446f7ba4d19260bd3e24b0da39e2443e27c66edd",
+          "solutionExcerpt": "접점에서는 반지름과 접선이 수직이므로\n$OA\\perp PA$, $OB\\perp PB$이다.\n또 한 점 $P$에서 그은 두 접선의 길이는 같으므로 $PA=PB$이고,\n$OP$",
+          "observation": "Full source row structurally reviewed: type=객관식, level=중, solution length=352, explicit lines=15, math blocks=14, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 19,
+          "questionSha": "sha256:7ca0302a6eb0a450dd8c11e5b228b209206b1e428e2cb2858cc8352457c36400",
+          "solutionExcerpt": "접점 $T$에서 $OT\\perp AT$이므로 $\\triangle AOT$는 직각삼각형이다.\n$AO=17$, $OT=8$이므로\n$AT=\\sqrt{17^2-8^2}=15$이다.",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=257, explicit lines=16, math blocks=14, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 20,
+          "questionSha": "sha256:4f3995d85cfc5f78d9eebb28c4835df3660914f0b5a3d98c538b69e020f243de",
+          "solutionExcerpt": "$AO=5$이므로 반원의 지름\n$AB=10\\,\\mathrm{cm}$이다.\n\n한 점에서 같은 원에 그은 두 접선의 길이는 같으므로\n$DA=DE$,\n$CB=CE$이다.\n따라서\n",
+          "observation": "Full source row structurally reviewed: type=객관식, level=상, solution length=207, explicit lines=15, math blocks=9, choice count=5, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 21,
+          "questionSha": "sha256:b36623e478d5612f06dbb952b5b91b7d06b41008c53885167597bb6598a6ff81",
+          "solutionExcerpt": "밑면의 가로와 세로가 $6\\,\\mathrm{cm}$, $8\\,\\mathrm{cm}$이므로\n$EG=\\sqrt{6^2+8^2}=10\\,\\mathrm{cm}$이다.\n\n또 $AE=",
+          "observation": "Full source row structurally reviewed: type=서술형, level=중, solution length=334, explicit lines=11, math blocks=10, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 22,
+          "questionSha": "sha256:5382c43d1ff6ddd216a68926fee2eb80ab9a7c51e9dd6eb6d1faa190b78b0f07",
+          "solutionExcerpt": "두 점 사이의 거리로\n$AB^2=(4+2)^2+(3-1)^2=40$,\n$BC=\\sqrt{4^2+(-3)^2}=5$,\n$AC^2=(4-2)^2+(3+2)^2=29$이다.\n\n$",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=433, explicit lines=24, math blocks=17, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        },
+        {
+          "qid": 23,
+          "questionSha": "sha256:28ce52de25c980a2936c9bf1fada98d27a21bb7819f4f15cb06e619d6e1eac68",
+          "solutionExcerpt": "한 점에서 같은 원에 그은 두 접선의 길이는 같으므로\n$AD=AF=8$,\n$CE=CF=12$이다.\n\n내접원의 반지름을 $r$라 하자.\n$\\angle B=90^\\circ$이므",
+          "observation": "Full source row structurally reviewed: type=서술형, level=상, solution length=453, explicit lines=24, math blocks=21, choice count=0, answer present. The solution field contains worked steps rather than answer-only content."
+        }
+      ]
+    }
+  ],
+  "productionQualityProfile": {
+    "noAnswerOnlySolution": {
+      "status": "PASS",
+      "minimumStandard": "Each solution states the governing relationship and a worked reasoned step, not an answer alone.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|5",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|2"
+      ]
+    },
+    "conceptExplained": {
+      "status": "PASS",
+      "minimumStandard": "Use grade-appropriate trigonometric or geometric definitions and justify substitutions.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|1",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|3"
+      ]
+    },
+    "conditionsInterpreted": {
+      "status": "PASS",
+      "minimumStandard": "Translate given lengths, angles, tangencies, and equalities into explicit relations before calculating.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|21",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|23"
+      ]
+    },
+    "intermediateReasoningPreserved": {
+      "status": "PASS",
+      "minimumStandard": "Keep equations and their consequences in a readable sequence.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|15",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|22"
+      ]
+    },
+    "choiceConclusionNumber": {
+      "status": "PASS",
+      "minimumStandard": "Objective solutions close with the selected choice number.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|1",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|2"
+      ]
+    },
+    "highLevelNoLogicJump": {
+      "status": "PASS",
+      "minimumStandard": "Level 상 solutions show the key intermediate geometric relations, not a guessed formula.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|18",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|20"
+      ]
+    },
+    "subjectiveStepsSufficient": {
+      "status": "PASS",
+      "minimumStandard": "Written responses retain enough ordered construction and reasoning to support partial credit.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|24",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|23"
+      ]
+    },
+    "problemSolutionImagesSeparate": {
+      "status": "PASS",
+      "minimumStandard": "Keep source problem images separate from solution visuals.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|23",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|13"
+      ]
+    },
+    "beneficialVisualsUsed": {
+      "status": "PASS",
+      "minimumStandard": "Use a solution visual when it helps explain a geometric step.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|24",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|21"
+      ]
+    },
+    "visualAltCaption": {
+      "status": "PASS",
+      "minimumStandard": "New solution visuals require an accessible caption; legacy uncaptained paths are not copied into new candidates.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|23",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|13"
+      ]
+    },
+    "visualMathParity": {
+      "status": "PASS",
+      "minimumStandard": "Visual labels and geometry must agree with the equations in the solution text.",
+      "sampleAnchors": [
+        "archive/exams/original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js|23",
+        "archive/exams/original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js|13"
+      ]
+    }
+  }
+}
