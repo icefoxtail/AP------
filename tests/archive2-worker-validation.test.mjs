@@ -125,6 +125,23 @@ test("BASIC middle3 questions without advanced taxonomy pass server validation",
   }));
 });
 
+test("Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade", async () => {
+  const record = catalog.records.find(row => row.sourceGrade === "고2" &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok &&
+    core.subjectProjectionForRecord(row, "", catalog.projectionPolicy));
+  assert.ok(record, "need a selectable high2 source with an approved shared semantic projection");
+  const semanticSubject = core.subjectProjectionForRecord(record, "", catalog.projectionPolicy);
+  const question = materialize(record);
+  await validateApprovedMixedQuestions(env, [question], input({
+    grade: "고3",
+    semanticSubject,
+    primaryPaths: [core.pathKey(record, 4)],
+  }));
+  assert.equal(record.sourceGrade, "고2");
+  assert.equal(question.curriculumKey, record.curriculumKey);
+  assert.equal(question.courseKey, record.courseKey);
+});
+
 test("BASIC restores current source bytes with optional metadata missing and passes server validation", async () => {
   for (const grade of ["중1", "중2", "고1", "고2"]) {
     const record = catalog.records.find(row => row.effectiveBrowseGrade === grade &&
@@ -152,16 +169,21 @@ test("BASIC restores current source bytes with optional metadata missing and pas
   }
 });
 
-test("BASIC current-source integrity is independent of stale advanced metadata approval", async () => {
+test("BASIC rejects an unapproved source release despite verified identity and taxonomy", async () => {
   const record = catalog.records.find(row => row.sourceStatus === "HOLD" &&
-    row.sourceIntegrityStatus === "VERIFIED" && core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+    row.sourceIntegrityStatus === "VERIFIED" && core.Canonical.validateBasicAssignment(row, catalog.canonicalAuthority).ok &&
+    core.Canonical.validateAdvancedAssignment(row, catalog.canonicalAuthority).ok);
   assert.ok(record);
+  assert.equal(core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok, false);
   assert.equal(core.difficultyEligible(record), false);
   assert.equal(core.advancedEligible(record), false);
   const original = source.evaluate(fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"), record.sourceFile)[record.sourceOrdinal - 1];
-  await validateApprovedMixedQuestions(env, [materialize(record)], input({
-    grade: record.effectiveBrowseGrade, primaryPaths: [core.pathKey(record, 4)],
-  }));
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [materialize(record)], input({
+      grade: record.effectiveBrowseGrade, primaryPaths: [core.pathKey(record, 4)],
+    })),
+    "승인된 문항·출제 범위와 일치하지 않습니다.",
+  );
   assert.ok(original.content);
 });
 
@@ -290,16 +312,37 @@ test(
   },
 );
 
-test("taxonomy fingerprint excludes solution while full source fingerprint still protects the saved bytes", async () => {
+test("taxonomy fingerprint excludes answer and solution while full source fingerprint protects the saved bytes", async () => {
   const assignmentFingerprint = await core.Canonical.assignmentFingerprint(baseQuestion);
   assert.equal(assignmentFingerprint, base.assignmentFingerprint);
   const solutionOnlyEdit = {
     ...baseQuestion,
     solution: String(baseQuestion.solution || "") + "\n검증용 해설 변경",
   };
+  const answerOnlyEdit = {
+    ...baseQuestion,
+    answer: String(baseQuestion.answer || "") + "\n검증용 정답 변경",
+  };
   assert.equal(await core.Canonical.assignmentFingerprint(solutionOnlyEdit), assignmentFingerprint);
+  assert.equal(await core.Canonical.assignmentFingerprint(answerOnlyEdit), assignmentFingerprint);
+  for (const [label, mutation] of [
+    ["content", { content: String(baseQuestion.content || "") + "\n문항 수정" }],
+    ["choices", { choices: [...(baseQuestion.choices || []), "추가 선택지"] }],
+    ["image", { image: String(baseQuestion.image || "") + "?changed=1" }],
+  ]) {
+    const changed = { ...baseQuestion, ...mutation };
+    assert.notEqual(await core.Canonical.assignmentFingerprint(changed), assignmentFingerprint, label);
+    await expectValidationFailure(
+      () => validateApprovedMixedQuestions(env, [changed], input(gradeOnlyFilters)),
+      "승인된 분류 assignment fingerprint가 일치하지 않습니다.",
+    );
+  }
   await expectValidationFailure(
     () => validateApprovedMixedQuestions(env, [solutionOnlyEdit], input(gradeOnlyFilters)),
+    "문항 내용 fingerprint가 일치하지 않습니다.",
+  );
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [answerOnlyEdit], input(gradeOnlyFilters)),
     "문항 내용 fingerprint가 일치하지 않습니다.",
   );
 });

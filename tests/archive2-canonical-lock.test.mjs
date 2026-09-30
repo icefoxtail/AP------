@@ -140,7 +140,7 @@ test("BASIC requires verified identity, current assignment evidence, and exact c
   ).ok, true);
 });
 
-test("BASIC ignores stored parent booleans and stale optional metadata status, but retains source-quality holds", () => {
+test("BASIC ignores stored parent booleans but requires both raw source and approved release integrity", () => {
   const authority = canonicalAuthority();
   assert.equal(core.basicEligibility(record({ l1l2ParentValid: false }), { canonicalAuthority: authority }).ok, true);
   assert.equal(core.basicEligibility(record({ basicTaxonomyStatus: "HOLD" }), { canonicalAuthority: authority }).ok, true);
@@ -148,10 +148,29 @@ test("BASIC ignores stored parent booleans and stale optional metadata status, b
   assert.equal(core.basicEligibility(record({
     sourceStatus: "HOLD",
     sourceIntegrityStatus: "VERIFIED",
-  }), { canonicalAuthority: authority }).ok, true);
+  }), { canonicalAuthority: authority }).ok, false);
   assert.equal(core.basicEligibility(record({
     sourceQualityDisposition: "SOURCE_BLOCKED",
   }), { canonicalAuthority: authority }).ok, false);
+});
+
+test("solution-only changes preserve taxonomy identity, while answer-release drift fails BASIC", async () => {
+  const authority = canonicalAuthority();
+  const sourceFields = { content: "문항", choices: ["A", "B"], answer: "A", solution: "풀이", image: "img.png" };
+  const approvedAssignmentFingerprint = await canonical.assignmentFingerprint(sourceFields);
+  const solutionOnly = await canonical.assignmentFingerprint({ ...sourceFields, solution: "수정 풀이" });
+  const answerOnly = await canonical.assignmentFingerprint({ ...sourceFields, answer: "B" });
+  assert.equal(solutionOnly, approvedAssignmentFingerprint);
+  assert.equal(answerOnly, approvedAssignmentFingerprint);
+
+  const answerReleaseDrift = record({
+    sourceStatus: "HOLD",
+    sourceIntegrityStatus: "VERIFIED",
+    assignmentFingerprint: "assignment-fingerprint",
+  });
+  assert.equal(canonical.validateBasicAssignment(answerReleaseDrift, authority).ok, true);
+  assert.equal(core.basicEligibility(answerReleaseDrift, { canonicalAuthority: authority }).ok, false);
+  assert.equal(core.basicEligibility(record(), { canonicalAuthority: authority }).ok, true);
 });
 
 test("an invalid advanced parent removes only advanced capability", () => {

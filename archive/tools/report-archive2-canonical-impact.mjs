@@ -38,6 +38,7 @@ function assignmentFailureGroups(basicReasons = [], eligibilityReasons = []) {
   if (["SOURCE_GRADE_CONFLICT", "SOURCE_GRADE_UNRESOLVED"].some(reason => reasons.has(reason))) groups.push("source_grade");
   if (["source_identity_unverified", "source_identity_conflict"].some(reason => reasons.has(reason)) || reasons.has("identity")) groups.push("source_identity");
   if (reasons.has("source")) groups.push("source_integrity");
+  if (reasons.has("source_release")) groups.push("source_release");
   if (reasons.has("course_namespace_invalid")) groups.push("course_namespace");
   if (["assignment_missing", "assignment_conflict", "assignment_identity_mismatch", "assignment_fingerprint_mismatch",
     "assignment_not_approved", "assignment_review_evidence_missing", "assignment_taxonomy_version_mismatch",
@@ -53,7 +54,7 @@ function assignmentFailureGroups(basicReasons = [], eligibilityReasons = []) {
 function primaryReason(groups, missingProjection = false) {
   if (missingProjection) return "final_projection_missing";
   const order = [
-    "source_grade", "source_identity", "source_integrity", "source_quality_hold",
+    "source_grade", "source_identity", "source_integrity", "source_release", "source_quality_hold",
     "semantic_or_metadata_hold", "review_hold", "scope_policy", "assignment_evidence",
     "course_namespace", "canonical_parent",
   ];
@@ -180,7 +181,7 @@ export function createImpactReport({
       population: "Unique questionUid in actual parsed source payloads.",
       sourceAndStageTotals: "Unique questionUid counts; duplicated input rows are recorded separately.",
       overlappingReasonCounts: "Unique UID counts per reason; one UID may appear in several reasons.",
-      primaryReasonCounts: "Mutually exclusive; order is grade, identity, source integrity, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.",
+      primaryReasonCounts: "Mutually exclusive; order is grade, identity, source integrity, approved release fingerprint, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.",
     },
     totals: {
       rawSourceQuestions: sourceRows.length,

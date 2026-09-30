@@ -15,6 +15,7 @@ function fixtureRecord(questionUid, grade, sourceFile, sourceOrdinal, extra = {}
     sourceGradeStatus: "VALID",
     effectiveBrowseGrade: grade,
     identityStatus: "VERIFIED",
+    sourceStatus: "VERIFIED",
     sourceIntegrityStatus: "VERIFIED",
     sourceFingerprint: sha("a"),
     assignmentFingerprint: sha("b"),

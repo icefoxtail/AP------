@@ -125,7 +125,8 @@
       if (parent) allowedParents.add(scopeParentKey({ ...record, ...parent }));
     }
     return (state.catalog.basicTaxonomy || []).filter((row) =>
-      (!filters.grade || row.grade === filters.grade) &&
+      (!filters.grade || row.grade === filters.grade ||
+        (highSemantic && C.isHighSemanticSubjectGrade?.(row.grade) === true)) &&
       (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey) &&
       (!filters.courseKey || filters.semanticSubject || row.courseKey === filters.courseKey) &&
       allowedParents.has(scopeParentKey(row)),
@@ -853,7 +854,6 @@
   }
   function finderUpstreamMatch(exam, filters) {
     if (!O.matchesMaterial(exam, filters.material)) return false;
-    if (filters.grade && exam.effectiveBrowseGrade !== filters.grade) return false;
     return C.finderMatches(
       exam,
       {

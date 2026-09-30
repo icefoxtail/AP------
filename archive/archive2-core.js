@@ -143,6 +143,14 @@
       projectionPolicy || record.projectionPolicy || null,
     ) || "";
   }
+  function browseGradeMatchesRecord(record = {}, grade = "", projectionPolicy = null) {
+    const sourceGrade = text(record.sourceGrade),
+      browseGrade = text(grade);
+    if (!browseGrade || sourceGrade === browseGrade) return true;
+    return isHighSemanticSubjectGrade(sourceGrade) &&
+      isHighSemanticSubjectGrade(browseGrade) &&
+      Boolean(subjectProjectionForRecord(record, "", projectionPolicy));
+  }
   function subjectProjectionLabel(filters = {}) {
     const grade = text(filters.grade);
     if (!hasSubjectProjection(grade)) return text(filters.courseKey);
@@ -156,8 +164,10 @@
   function subjectProjectionMatches(record, filters = {}, projectionPolicy = null) {
     if (!filters.semanticSubject) return true;
     if (!hasSubjectProjection(filters.grade)) return false;
+    const grade = isHighSemanticSubjectGrade(filters.grade) &&
+      isHighSemanticSubjectGrade(record.sourceGrade) ? "" : filters.grade;
     return (
-      subjectProjectionForRecord(record, filters.grade, projectionPolicy) ===
+      subjectProjectionForRecord(record, grade, projectionPolicy) ===
       text(filters.semanticSubject)
     );
   }
@@ -321,9 +331,11 @@
       const file = normalizeFile(exam.file),
         courseKeys = new Set(),
         curriculumKeys = new Set(exam.curriculums || []),
+        sourceGrades = new Set(),
         subjectProjections = new Set(),
         subjectCurriculumPairs = new Set();
       for (const record of recordsByFile.get(file) || []) {
+        if (text(record.sourceGrade)) sourceGrades.add(text(record.sourceGrade));
         if (record.courseKey) courseKeys.add(record.courseKey);
         if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
         const subjectProjection = subjectProjectionForRecord(record, "", catalog.projectionPolicy);
@@ -364,25 +376,14 @@
         );
         if (curriculum) curriculumKeys.add(curriculum);
       }
-      if (
-        isHighSemanticSubjectGrade(
-          exam.effectiveBrowseGrade || exam.grade,
-        )
-      ) {
-        const legacySubjects = new Set(
-          [...courseKeys]
-            .map(highSemanticSubjectForCourseKey)
-            .filter(Boolean),
-        );
-        for (const subject of legacySubjects) {
-          subjectProjections.add(subject);
-          for (const curriculum of curriculumKeys)
-            subjectCurriculumPairs.add(`${subject}|${curriculum}`);
-        }
+      if (!sourceGrades.size) {
+        const registeredGrade = text(exam.sourceGrade || exam.grade);
+        if (registeredGrade) sourceGrades.add(registeredGrade);
       }
       byFile.set(file, {
         courseKeys,
         curriculumKeys,
+        sourceGrades,
         subjectProjections,
         subjectCurriculumPairs,
       });
@@ -391,6 +392,16 @@
   }
   function finderMatches(exam, filters = {}, index = new Map()) {
     const identity = index.get(normalizeFile(exam?.file)),
+      sourceGrades = identity?.sourceGrades || new Set(
+        [text(exam?.sourceGrade || exam?.grade)].filter(Boolean),
+      ),
+      exactGradeMatch = !filters.grade ||
+        (sourceGrades.size === 1 && sourceGrades.has(text(filters.grade))),
+      sharedHighGradeMatch = !exactGradeMatch &&
+        isHighSemanticSubjectGrade(filters.grade) &&
+        sourceGrades.size === 1 &&
+        isHighSemanticSubjectGrade([...sourceGrades][0]) &&
+        Boolean(identity?.subjectProjections?.size),
       semanticMatch =
         !filters.semanticSubject ||
         identity?.subjectProjections?.has(filters.semanticSubject),
@@ -401,6 +412,7 @@
           `${filters.semanticSubject}|${filters.curriculumKey}`,
         );
     return (
+      (exactGradeMatch || sharedHighGradeMatch) &&
       (!filters.curriculumKey ||
         identity?.curriculumKeys?.has(filters.curriculumKey)) &&
       (!filters.courseKey || identity?.courseKeys?.has(filters.courseKey)) &&
@@ -448,11 +460,14 @@
       record.identityStatus !== "VERIFIED"
     )
       reasons.push("identity");
-    // `sourceStatus` may be stale because the whole-payload fingerprint changed
-    // through an optional answer/solution field. Raw source integrity is checked
-    // separately from the current fingerprint-bound taxonomy assignment.
+    // Raw source identity/integrity and approved release content are separate
+    // gates from the narrower taxonomy assignment fingerprint. sourceStatus is
+    // the current approved full-payload release fingerprint; it includes answer
+    // and solution bytes and must remain VERIFIED for BASIC selection.
     if (record.sourceIntegrityStatus !== "VERIFIED")
       reasons.push("source");
+    if (record.sourceStatus !== "VERIFIED")
+      reasons.push("source_release");
     const canonicalAuthority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
     const assignment = canonical?.validateBasicAssignment
       ? canonical.validateBasicAssignment(record, canonicalAuthority)
@@ -494,7 +509,7 @@
   }
   function advancedEligible(record, options = {}) {
     const authority = options.canonicalAuthority || options.catalog?.canonicalAuthority;
-    return record.sourceIntegrityStatus === "VERIFIED" &&
+    return record.sourceIntegrityStatus === "VERIFIED" && record.sourceStatus === "VERIFIED" &&
       Boolean(canonical?.validateAdvancedAssignment?.(record, authority)?.ok) &&
       (advancedAuthority(record) !== "mf" || !record.foundationTaxonomyStatus || record.foundationTaxonomyStatus === "CONFIRMED") &&
       !(record.metadataConflicts || []).some(field => ["L3", "L4", "problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
@@ -507,8 +522,9 @@
       !filters.primaryPaths.includes(pathKey(record, 4))
     )
       return false;
-    if (filters.grade && record.sourceGrade !== filters.grade)
-      return false;
+    const projectionPolicy = options.projectionPolicy ||
+      options.canonicalAuthority?.projectionPolicy || options.catalog?.projectionPolicy;
+    if (!browseGradeMatchesRecord(record, filters.grade, projectionPolicy)) return false;
     if (
       filters.sourceFiles?.length &&
       !filters.sourceFiles.includes(record.sourceFile)
@@ -523,7 +539,7 @@
     if (!subjectProjectionMatches(
       record,
       filters,
-      options.projectionPolicy || options.canonicalAuthority?.projectionPolicy || options.catalog?.projectionPolicy,
+      projectionPolicy,
     )) return false;
     if (filters.family && !record.courseFamilies?.includes(filters.family))
       return false;

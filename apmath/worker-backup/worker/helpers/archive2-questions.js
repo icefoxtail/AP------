@@ -177,6 +177,14 @@ export async function validateApprovedMixedQuestions(
       })
     )
       fail("승인된 문항·출제 범위와 일치하지 않습니다.", 409);
+    let assignmentFingerprint;
+    try {
+      assignmentFingerprint = await canonical.assignmentFingerprint(q);
+    } catch {
+      fail("문항 분류 fingerprint를 확인할 수 없습니다.", 409);
+    }
+    if (!record.assignmentFingerprint || assignmentFingerprint !== record.assignmentFingerprint)
+      fail("승인된 분류 assignment fingerprint가 일치하지 않습니다.", 409);
     const fingerprint = await sha256hex(
       JSON.stringify({
         content: q.content ?? null,
@@ -191,14 +199,6 @@ export async function validateApprovedMixedQuestions(
       q.sourceFingerprint !== fingerprint
     )
       fail("문항 내용 fingerprint가 일치하지 않습니다.", 409);
-    let assignmentFingerprint;
-    try {
-      assignmentFingerprint = await canonical.assignmentFingerprint(q);
-    } catch {
-      fail("문항 분류 fingerprint를 확인할 수 없습니다.", 409);
-    }
-    if (!record.assignmentFingerprint || assignmentFingerprint !== record.assignmentFingerprint)
-      fail("승인된 분류 assignment fingerprint가 일치하지 않습니다.", 409);
     for (const field of core.META_FIELDS)
       if (
         q[field] !== undefined &&
