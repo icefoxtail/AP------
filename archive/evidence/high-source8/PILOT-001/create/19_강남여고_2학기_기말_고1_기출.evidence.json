@@ -1,0 +1,124 @@
+{
+  "schema": "APMATH_HIGH_SOURCE8_CREATE_EVIDENCE_v1",
+  "batch": "PILOT-001",
+  "ordinal": 6,
+  "examFile": "19_강남여고_2학기_기말_고1_기출.js",
+  "phase": "CREATE",
+  "sourceRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceBlob": "c6fc90b3e459603d10fe972088ab3c6ec8072c33",
+  "baseMainSha": "305bb678937c62475cf3d335abc27988407559b7",
+  "denominator": 25,
+  "sourceTruth": {
+    "status": "PASS",
+    "content": "25/25",
+    "choices": "22/22 + 3/3 N/A",
+    "sourceDocumentSha256": "sha256:de92e55e541bb0d823c9a98a8d2868d8dc33391d3cf99f0c92c7e8f382580717",
+    "evidence": "archive-work/evidence/19_강남여고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+    "evidenceBlob": "1eb82e795761fddef3ce4e8fc58a14baf15d773b"
+  },
+  "independentMath": {
+    "status": "PASS",
+    "solvedAttempted": "25/25",
+    "resolved": "25/25",
+    "answers": [
+      "③",
+      "④",
+      "③",
+      "①",
+      "②",
+      "①",
+      "⑤",
+      "④",
+      "④",
+      "①",
+      "③",
+      "②",
+      "②",
+      "③",
+      "⑤",
+      "①",
+      "②",
+      "⑤",
+      "③",
+      "④",
+      "④",
+      "②",
+      "-2",
+      "33",
+      "480"
+    ],
+    "itemHoldCount": 0,
+    "itemHoldQuestionIds": []
+  },
+  "visual": {
+    "status": "PASS",
+    "problemImages": "3/3 fresh pixel inspected",
+    "qids": [
+      13,
+      18,
+      19
+    ],
+    "blobs": {
+      "13": "63741b405bcfe4f37f7a509b8744ce9842a2d2f2",
+      "18": "b41e658c405777b6d3bce7036dbb1b8c4496f193",
+      "19": "5f85039d5f5c971f82bac9e7c4d3f0404821d72e"
+    },
+    "semanticParity": "PASS",
+    "solutionSvgCount": 0
+  },
+  "questionMicroLayout": {
+    "status": "PASS_AFTER_REPAIR",
+    "qids": [
+      23,
+      24,
+      25
+    ],
+    "before": "subjective-2up",
+    "after": "grid",
+    "issueCode": "SUBJECTIVE_2UP_WITHOUT_EVIDENCE",
+    "rationale": "Current canonical default is grid absent per-question STATIC_CAPACITY_EVIDENCE, actual render evidence, or explicit user direction. Three current high-school golden samples use grid for all subjective items.",
+    "protectedFieldDrift": 0,
+    "renderStatus": "NOT_RUN"
+  },
+  "jsIntegrity": {
+    "status": "PASS",
+    "questionCount": 25,
+    "answerSolutionEmpty": "25/25",
+    "layoutOnlyDelta": [
+      23,
+      24,
+      25
+    ]
+  },
+  "calibration": {
+    "golden": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "blob": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "subjectiveLayout": "grid 3/3"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "blob": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "subjectiveLayout": "grid 4/4"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "blob": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "subjectiveLayout": "grid 5/5"
+      }
+    ],
+    "negative": {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "blob": "f7440339f2532f6e7ea357541c2a09b05847af59"
+    },
+    "blindDecisionFrozenBeforeCompare": true
+  },
+  "disposition": "CREATE_DONE",
+  "itemHoldCount": 0,
+  "itemHoldQuestionIds": [],
+  "finalArtifactPath": "archive-work/exams/original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
+  "finalArtifactRef": "work/high-source8-create",
+  "finalArtifactSha": "b4453ef0ff2abe6a7cfd12667e8ef8009601b8c2",
+  "updatedAtKst": "2026-09-30T13:23:27+09:00"
+}
