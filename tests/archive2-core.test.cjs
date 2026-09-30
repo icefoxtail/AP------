@@ -131,6 +131,7 @@ test("BASIC preserves explicit quality holds while optional difficulty remains a
     },
     { identityStatus: "UNRESOLVED" },
     { sourceStatus: "HOLD", sourceIntegrityStatus: "HOLD" },
+    { sourceStatus: "HOLD", sourceIntegrityStatus: "VERIFIED" },
   ])
     assert.equal(core.eligibility({ ...eligibleBase, ...change }, { canonicalAuthority: authority }).ok, false);
   for (const change of [

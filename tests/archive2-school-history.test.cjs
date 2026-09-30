@@ -201,6 +201,40 @@ for (const grade of ['고2', '고3']) test(`${grade}: all five subjects preserve
     assert.deepEqual(schools(h, h.w.state.filters), [`${subject.value}신고`]);
   }
 });
+test('고2·고3 Finder browse shares the same approved high-semantic source pool', () => {
+  const h = harness();
+  const fixture = catalogFixture(h);
+  for (const exam of fixture.exams) exam.school += ` ${exam.grade}`;
+  for (const record of fixture.records) record.school += ` ${record.sourceGrade}`;
+  installCatalog(h, fixture.catalog);
+
+  for (const { value: semanticSubject } of h.c.highSemanticSubjectOptions()) {
+    const expectedSchools = [
+      `${semanticSubject}구고 고2`,
+      `${semanticSubject}구고 고3`,
+      `${semanticSubject}신고 고2`,
+      `${semanticSubject}신고 고3`,
+    ].sort();
+    for (const grade of ['고2', '고3'])
+      assert.deepEqual(
+        schools(h, { grade, semanticSubject }),
+        expectedSchools,
+        `${grade} ${semanticSubject} Finder should browse the shared high-semantic pool`,
+      );
+  }
+});
+test('unapproved high-semantic course labels cannot create a shared cross-grade projection', () => {
+  const { c } = harness();
+  const file = 'original/high/h2/1mid/unapproved-shared-subject.js';
+  const exam = { file, grade: '고2', sourceGrade: '고2', effectiveBrowseGrade: '고2' };
+  const record = { sourceFile: file, sourceGrade: '고2', curriculumKey: '2015', courseKey: '대수' };
+  const index = c.buildFinderIndex({
+    taxonomy: [], records: [record], exams: [exam], projectionPolicy,
+  });
+  assert.equal(c.subjectProjectionForRecord(record, '', projectionPolicy), '');
+  assert.equal(c.matches(record, { grade: '고3', semanticSubject: 'ALGEBRA' }, { projectionPolicy }), false);
+  assert.equal(c.finderMatches(exam, { grade: '고3', semanticSubject: 'ALGEBRA' }, index), false);
+});
 test('high1 projections retain native course identities and reject unapproved unit aliases', () => {
   const { c } = harness();
   assert.equal(c.isHighSemanticSubjectGrade('고1'), false);

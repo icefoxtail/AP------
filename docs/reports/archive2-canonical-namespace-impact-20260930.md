@@ -1,7 +1,7 @@
 # Archive 2.0 Canonical Namespace Impact — 20260930
 
-- Generated: 2026-09-30T13:29:36.407Z
-- Projection: `archive2-canonical-v1:ef0c8a8245e6d82ab945f61f2c412b603052e72e79fea0e82419024430e5ae99`
+- Generated: 2026-09-30T14:32:47.666Z
+- Projection: `archive2-canonical-v1:9292a098571c3e0d3e05a92ac84c638664deb9a00e823f18cedd73d5f151f828`
 - Taxonomy: `0f6721c61f7e31df5cce43f48c60dc5732dfd96347e47813beffd4fe6a8dd509`
 
 ## UID totals
@@ -11,11 +11,11 @@
 | Parsed raw source questions | 11486 |
 | Built catalog | 11486 |
 | Final shared projection | 11486 |
-| BASIC selectable | 2161 |
-| ADVANCED selectable | 2 |
-| BASIC exclusions | 9325 |
+| BASIC selectable | 2160 |
+| ADVANCED selectable | 1 |
+| BASIC exclusions | 9326 |
 
-The source population is keyed by unique `questionUid`. Unique UID counts per reason; one UID may appear in several reasons. Mutually exclusive; order is grade, identity, source integrity, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.
+The source population is keyed by unique `questionUid`. Unique UID counts per reason; one UID may appear in several reasons. Mutually exclusive; order is grade, identity, source integrity, approved release fingerprint, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.
 
 ## Actual source grades
 
@@ -116,19 +116,21 @@ Overlapping reason counts:
 | semantic_or_metadata_hold | 211 |
 | source_grade | 174 |
 | source_quality_hold | 27 |
+| source_release | 1846 |
 
 Mutually exclusive primary reasons:
 
 | Primary reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 8674 |
-| review_hold | 264 |
+| assignment_evidence | 6890 |
+| review_hold | 250 |
 | scope_policy | 1 |
-| semantic_or_metadata_hold | 185 |
+| semantic_or_metadata_hold | 138 |
 | source_grade | 174 |
 | source_quality_hold | 27 |
+| source_release | 1846 |
 
-Primary-reason total: 9325 of 9325 excluded UIDs.
+Primary-reason total: 9326 of 9326 excluded UIDs.
 
 ## Input integrity
 

@@ -101,6 +101,51 @@ function basicRecord(grade, change = {}) {
   };
 }
 
+test('고2·고3 browse는 승인된 shared semantic subject source pool을 공유하고 source metadata를 보존한다', () => {
+  const { w } = harness(catalog);
+  const originalSourceMetadata = new Map(catalog.records.map(record => [
+    record.questionUid,
+    [record.sourceGrade, record.curriculumKey, record.courseKey],
+  ]));
+  let nonEmptySharedPoolCount = 0;
+
+  for (const { value: semanticSubject } of core.highSemanticSubjectOptions()) {
+    const pools = Object.fromEntries(['고2', '고3'].map(grade => [grade, new Set(
+      catalog.records
+        .filter(record => core.eligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok)
+        .filter(record => core.matches(record, { grade, semanticSubject }, { catalog }))
+        .map(record => record.questionUid),
+    )]));
+    const missingFromHigh3 = [...pools['고2']].filter(uid => !pools['고3'].has(uid));
+    const missingFromHigh2 = [...pools['고3']].filter(uid => !pools['고2'].has(uid));
+    assert.equal(missingFromHigh3.length, 0, `${semanticSubject} has items missing from 고3 browse`);
+    assert.equal(missingFromHigh2.length, 0, `${semanticSubject} has items missing from 고2 browse`);
+    if (pools['고2'].size > 0) {
+      nonEmptySharedPoolCount += 1;
+      assert.ok(pools['고2'].size > 0, `고2 ${semanticSubject} browse should not be empty`);
+      assert.ok(pools['고3'].size > 0, `고3 ${semanticSubject} browse should not be empty`);
+    }
+  }
+
+  w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
+  const high2UiPool = new Set(w.scopeOptions().flatMap(scope => scope.scopeQuestionUids));
+  w.state.filters = { grade: '고3', semanticSubject: 'ALGEBRA' };
+  const high3UiPool = new Set(w.scopeOptions().flatMap(scope => scope.scopeQuestionUids));
+  assert.ok(high2UiPool.size > 0, '고2 ALGEBRA scope should contain selectable questions');
+  assert.ok(high3UiPool.size > 0, '고3 ALGEBRA scope should contain selectable questions');
+  assert.equal([...high2UiPool].filter(uid => !high3UiPool.has(uid)).length, 0);
+  assert.equal([...high3UiPool].filter(uid => !high2UiPool.has(uid)).length, 0);
+
+  assert.ok(nonEmptySharedPoolCount > 0, 'catalog should contain at least one shared semantic source pool');
+  for (const record of catalog.records) {
+    assert.deepEqual(
+      [record.sourceGrade, record.curriculumKey, record.courseKey],
+      originalSourceMetadata.get(record.questionUid),
+      `browse must preserve source metadata for ${record.questionUid}`,
+    );
+  }
+});
+
 test('BASIC selection and final review accept UNKNOWN advanced taxonomy for every grade', () => {
   for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
     const row = basicRecord(grade);
@@ -242,8 +287,13 @@ test('explicit selected-source entry and saved draft restoration retain the inte
 
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
-  for (const file of ['archive2-canonical.js', 'archive2-core.js', 'meta-foundation-runtime.js', 'archive2-workspace.js'])
-    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260930-canonical-lock-2'));
+  for (const [file, version] of [
+    ['archive2-canonical.js', '20260930-canonical-lock-2'],
+    ['archive2-core.js', '20260930-h23-shared-browse-1'],
+    ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
+    ['archive2-workspace.js', '20260930-h23-shared-browse-1'],
+  ])
+    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
   for (const file of ['archive2-library.js', 'archive2-navigation.js'])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260929-saved-library-'));
