@@ -1,0 +1,133 @@
+{
+  "schema": "APMATH_HIGH_SOURCE8_CREATE_EVIDENCE_v1",
+  "batch": "PILOT-001",
+  "ordinal": 8,
+  "examFile": "19_팔마고_2학기_기말_고1_기출.js",
+  "phase": "CREATE",
+  "sourceRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceBlob": "0cd299856825042d07fe3d72c489dad4a57b02ee",
+  "baseMainSha": "ba82cbda9c17c13c09105d2a50398ffdce4ab944",
+  "denominator": 21,
+  "sourceTruth": {
+    "status": "PASS",
+    "content": "21/21",
+    "choices": "18/18 + 3/3 N/A",
+    "sourceDocumentSha256": "sha256:4f5c58c3160beb3d445cc5bf60301a966f340d4a3d593bce7687435657ed007a",
+    "evidence": "archive-work/evidence/19_팔마고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+    "evidenceBlob": "e457ea72ac4220157ca917c461fe8b48c6fde6c3",
+    "failures": 0
+  },
+  "independentMath": {
+    "status": "PASS",
+    "solvedAttempted": "21/21",
+    "resolved": "21/21",
+    "answers": [
+      "①",
+      "①",
+      "③",
+      "④",
+      "③",
+      "②",
+      "④",
+      "①",
+      "④",
+      "⑤",
+      "③",
+      "②",
+      "②",
+      "①",
+      "①",
+      "②",
+      "⑤",
+      "⑤",
+      "a=-10, 4",
+      "-2≤k≤1",
+      "90"
+    ],
+    "itemHoldCount": 0,
+    "itemHoldQuestionIds": []
+  },
+  "itemHolds": [],
+  "visual": {
+    "status": "PASS",
+    "problemImages": "3/3 fresh pixel inspected",
+    "qids": [
+      9,
+      10,
+      12
+    ],
+    "blobs": {
+      "9": "f56f2e5787f7c28aa0bac64e84e6b0fa22c988ef",
+      "10": "cbbeaf7d32120ae72a4f0d40d96e9ad01ce86611",
+      "12": "81f7ee6b07094705f1314b73b81d55b2d48ac73c"
+    },
+    "semanticParity": "PASS",
+    "notes": {
+      "9": "Graph shows f(c)=b and f(d)=c via the guide lines, so f^{-1}(b)=c and f^{-1}(c)=d; choice ④.",
+      "10": "Mapping diagram is 1→3, 2→1, 3→2, a 3-cycle; f^150(3)=3 and f^200(3)=1, so choice ⑤.",
+      "12": "Given graph has asymptotes x=1 and y=6 and y-intercept 3, giving a=-1,b=6,c=-3; y=sqrt(-3x+6)-1 matches choice ②."
+    },
+    "solutionSvgCount": 0
+  },
+  "questionMicroLayout": {
+    "status": "PASS_AFTER_REPAIR",
+    "qids": [
+      19,
+      20,
+      21
+    ],
+    "before": "subjective-2up",
+    "after": "grid",
+    "issueCode": "SUBJECTIVE_2UP_WITHOUT_EVIDENCE",
+    "rationale": "All three subjective items are short single-part text-only questions with no table/image and no per-question STATIC_CAPACITY_EVIDENCE, render evidence, or explicit user override. Current canonical default is grid; the three current high-school Golden Samples use grid for all subjective items.",
+    "protectedFieldDrift": 0,
+    "renderStatus": "NOT_RUN"
+  },
+  "jsIntegrity": {
+    "status": "PASS",
+    "questionCount": 21,
+    "answerSolutionEmpty": "21/21",
+    "layoutOnlyDelta": [
+      19,
+      20,
+      21
+    ]
+  },
+  "calibration": {
+    "golden": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "blob": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "subjectiveLayout": "grid 3/3"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "blob": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "subjectiveLayout": "grid 4/4"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "blob": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "subjectiveLayout": "grid 5/5"
+      }
+    ],
+    "negative": {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "blob": "f7440339f2532f6e7ea357541c2a09b05847af59"
+    },
+    "calibrationAxes": [
+      "QUESTION_MICRO_LAYOUT",
+      "VISUAL_SEMANTIC_PARITY"
+    ],
+    "sampleReadBeforeWork": false,
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS"
+  },
+  "disposition": "CREATE_DONE",
+  "itemHoldCount": 0,
+  "itemHoldQuestionIds": [],
+  "finalArtifactPath": "archive-work/exams/original/high/h1/2final/19_팔마고_2학기_기말_고1_기출.js",
+  "finalArtifactRef": "work/high-source8-create",
+  "finalArtifactSha": "e0c1f1c23d4d073ddf3835e7d49bb4e812d34f2d",
+  "updatedAtKst": "2026-09-30T16:15:28+09:00"
+}
