@@ -25,7 +25,7 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "①",
-    "solution": "원의 중심 $O$에서 길이 $16\\rm\\,cm$인 현에 내린 수선의 발을 $M$이라 하자.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로\n$AM=\\dfrac{16}{2}=8$이다.\n반지름 $OA=10$, $OM=x$이고 $\\angle OMA=90^\\circ$이므로\n$x^2+8^2=10^2$\n$x^2=36$\n$x=6$\n이다.\n따라서 정답은 ①이다.",
+    "solution": "원의 중심에서 현에 내린 수선은 현을 이등분한다.\n길이 $16\\rm\\,cm$인 현의 절반은 $8\\rm\\,cm$이다.\n\n반지름이 $10\\rm\\,cm$이므로 직각삼각형에서\n$x^2+8^2=10^2$,\n$x^2=36$이다.\n길이는 양수이므로 $x=6$이다.\n\n따라서 정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q1.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -57,7 +57,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "점 $C$에서 원에 그은 두 접선은 $CA$와 $CE$이다.\n한 점에서 원에 그은 두 접선의 길이는 같으므로\n$CA=CE$이다.\n그림에서 $CE=4\\rm\\,cm$이므로\n$x=CA=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "점 $C$에서 원에 그은 두 접선의 길이는 같다.\n따라서 접선 $CA$와 $CE$에 대하여\n$CA=CE$이다.\n\n그림에서 $CE=4\\rm\\,cm$이므로\n$x=CA=4$이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q2.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -89,7 +89,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "원에 외접하는 사각형에서는 마주 보는 두 변의 길이의 합이 같다.\n따라서\n$AB+CD=BC+AD$\n$9+(3+x)=10+7$\n$x+12=17$\n$x=5$\n이다.\n따라서 정답은 ②이다.",
+    "solution": "원에 외접하는 사각형에서는 서로 마주 보는 두 변의 길이의 합이 같다.\n따라서\n$AB+CD=BC+AD$이다.\n\n그림에서 $CD=3+x$이므로\n$9+(3+x)=10+7$,\n$x+12=17$이다.\n\n따라서 $x=5$이고 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q3.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -121,7 +121,7 @@ window.questionBank = [
       "$70^\\circ$"
     ],
     "answer": "④",
-    "solution": "접점에서 반지름은 접선에 수직이므로\n$\\angle OAP=\\angle OBP=90^\\circ$이다.\n사각형 $OAPB$에서\n$\\angle AOB=360^\\circ-90^\\circ-90^\\circ-50^\\circ=130^\\circ$이다.\n$x$는 호 $AB$를 보는 원주각이므로\n$x=\\dfrac12\\times130^\\circ=65^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "접점 $A,B$에서 반지름은 접선에 수직이므로\n$\\angle OAP=\\angle OBP=90^\\circ$이다.\n\n사각형 $OAPB$에서\n$\\angle AOB=360^\\circ-90^\\circ-90^\\circ-50^\\circ=130^\\circ$이다.\n\n$x$는 호 $AB$를 보는 원주각이므로\n$x=\\dfrac{130^\\circ}{2}=65^\\circ$이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q4.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -153,7 +153,7 @@ window.questionBank = [
       "$31^\\circ$"
     ],
     "answer": "⑤",
-    "solution": "$AB$가 지름이므로\n$\\angle AOB=180^\\circ$이다.\n따라서\n$\\angle BOC=180^\\circ-62^\\circ=118^\\circ$이다.\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n그러므로\n$\\angle BCO=\\dfrac{180^\\circ-118^\\circ}{2}=31^\\circ$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$AB$는 지름이므로\n$\\angle AOB=180^\\circ$이다.\n주어진 $\\angle AOC=62^\\circ$에서\n$\\angle BOC=180^\\circ-62^\\circ=118^\\circ$이다.\n\n$OB=OC$이므로 $\\triangle BOC$는 이등변삼각형이다.\n따라서\n$\\angle BCO=\\dfrac{180^\\circ-118^\\circ}{2}=31^\\circ$이다.\n\n정답은 ⑤이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q5.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -185,12 +185,13 @@ window.questionBank = [
       "$3\\sqrt3$"
     ],
     "answer": "③",
-    "solution": "원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle C=180^\\circ-30^\\circ=150^\\circ$이다.\n대각선 $BD$로 나누어 두 삼각형의 넓이를 각각 구한다.\n$[\\triangle ABD]=\\dfrac12\\cdot2\\cdot3\\sqrt3\\cdot\\sin30^\\circ=\\dfrac{3\\sqrt3}{2}$이다.\n또\n$[\\triangle BCD]=\\dfrac12\\cdot2\\cdot\\sqrt3\\cdot\\sin150^\\circ=\\dfrac{\\sqrt3}{2}$이다.\n따라서\n$[ABCD]=\\dfrac{3\\sqrt3}{2}+\\dfrac{\\sqrt3}{2}=2\\sqrt3$이다.\n따라서 정답은 ③이다.",
+    "solution": "대각선 $BD$를 그어 사각형을 두 삼각형으로 나눈다.\n\n원에 내접하는 사각형의 마주 보는 두 각의 합은 $180^\\circ$이므로\n$\\angle C=180^\\circ-30^\\circ=150^\\circ$이다.\n\n$\\triangle ABD$의 넓이는\n$\\dfrac12\\cdot AB\\cdot AD\\cdot\\sin30^\\circ\n=\\dfrac12\\cdot2\\cdot3\\sqrt3\\cdot\\dfrac12\n=\\dfrac{3\\sqrt3}{2}$이다.\n\n$\\triangle BCD$의 넓이는\n$\\dfrac12\\cdot BC\\cdot CD\\cdot\\sin150^\\circ\n=\\dfrac12\\cdot2\\cdot\\sqrt3\\cdot\\dfrac12\n=\\dfrac{\\sqrt3}{2}$이다.\n\n따라서 사각형의 넓이는\n$\\dfrac{3\\sqrt3}{2}+\\dfrac{\\sqrt3}{2}=2\\sqrt3$이다.\n정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q6-corrected.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_왕운중_2학기_기말_중3_기출/q6-solution.svg"
   },
   {
     "id": 7,
@@ -216,7 +217,7 @@ window.questionBank = [
       "$116^\\circ$"
     ],
     "answer": "④",
-    "solution": "$OA=OC$이므로 $\\triangle AOC$는 이등변삼각형이다.\n$\\angle AOC=180^\\circ-18^\\circ-18^\\circ=144^\\circ$이다.\n또 $OB=OC$이므로 $\\triangle BOC$도 이등변삼각형이다.\n$\\angle BOC=180^\\circ-36^\\circ-36^\\circ=108^\\circ$이다.\n점 $O$ 주위의 각의 합은 $360^\\circ$이므로\n$x=360^\\circ-144^\\circ-108^\\circ=108^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "$OA=OC$이므로 $\\triangle AOC$는 이등변삼각형이다.\n$\\angle CAO=18^\\circ$이므로\n$\\angle AOC=180^\\circ-18^\\circ-18^\\circ=144^\\circ$이다.\n\n또 $OB=OC$이므로 $\\triangle BOC$도 이등변삼각형이고,\n$\\angle CBO=36^\\circ$이므로\n$\\angle BOC=180^\\circ-36^\\circ-36^\\circ=108^\\circ$이다.\n\n점 $O$ 주위의 각의 합은 $360^\\circ$이므로\n$x=360^\\circ-144^\\circ-108^\\circ=108^\\circ$이다.\n\n따라서 정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q7.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -248,7 +249,7 @@ window.questionBank = [
       "$120^\\circ$"
     ],
     "answer": "②",
-    "solution": "$\\angle AED=100^\\circ$가 보는 호 $ABCD$의 크기는\n$2\\times100^\\circ=200^\\circ$이다.\n따라서 나머지 호 $DEA$의 크기는\n$360^\\circ-200^\\circ=160^\\circ$이다.\n$x=\\angle ABC$가 보는 호는 $AEDC$이고, $y=\\angle CAD$가 보는 호는 $CD$이다.\n그러므로 두 원주각의 차는 호 $DEA$의 절반이어서\n$x-y=\\dfrac12\\times160^\\circ=80^\\circ$이다.\n따라서 정답은 ②이다.",
+    "solution": "$\\angle AED=100^\\circ$가 보는 호 $ABCD$의 크기는\n$200^\\circ$이다.\n따라서 나머지 호 $DEA$의 크기는\n$360^\\circ-200^\\circ=160^\\circ$이다.\n\n$x=\\angle ABC$가 보는 호에는 $DEA$와 호 $DC$가 포함되고,\n$y=\\angle CAD$가 보는 호는 $DC$이다.\n따라서 두 원주각의 차는 호 $DEA$의 절반이다.\n\n$x-y=\\dfrac{160^\\circ}{2}=80^\\circ$이다.\n\n따라서 정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q8.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -280,7 +281,7 @@ window.questionBank = [
       "$124^\\circ$"
     ],
     "answer": "③",
-    "solution": "$\\angle DBC=36^\\circ$이므로 호 $DC$의 크기는\n$2\\times36^\\circ=72^\\circ$이다.\n$\\angle BDC=28^\\circ$이므로 호 $BC$의 크기는\n$2\\times28^\\circ=56^\\circ$이다.\n$AC$가 지름이므로 호 $ADC$와 호 $ABC$는 각각 $180^\\circ$이다.\n따라서\n$\\wideparen{AD}=180^\\circ-72^\\circ=108^\\circ$\n$\\wideparen{AB}=180^\\circ-56^\\circ=124^\\circ$이다.\n그러므로\n$x=\\angle ADB=\\dfrac12\\times124^\\circ=62^\\circ$이다.\n두 현 $AC$, $BD$의 교점을 $P$라 하면\n$y=\\angle BPC=\\dfrac12(56^\\circ+108^\\circ)=82^\\circ$이다.\n따라서\n$x+y=62^\\circ+82^\\circ=144^\\circ$이다.\n따라서 정답은 ③이다.",
+    "solution": "$\\angle DBC=36^\\circ$이므로 호 $DC$의 크기는 $72^\\circ$이고,\n$\\angle BDC=28^\\circ$이므로 호 $BC$의 크기는 $56^\\circ$이다.\n\n$AC$가 지름이므로 두 반원의 크기는 각각 $180^\\circ$이다.\n따라서\n$\\wideparen{AD}=180^\\circ-72^\\circ=108^\\circ$,\n$\\wideparen{AB}=180^\\circ-56^\\circ=124^\\circ$이다.\n\n$x=\\angle ADB$이므로\n$x=\\dfrac{124^\\circ}{2}=62^\\circ$이다.\n\n두 현 $AC,BD$의 교점을 $P$라 하면\n$y=\\angle BPC=\\dfrac12(56^\\circ+108^\\circ)=82^\\circ$이다.\n\n따라서 $x+y=62^\\circ+82^\\circ=144^\\circ$이고 정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q9-corrected.svg",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -311,7 +312,7 @@ window.questionBank = [
       "$\\dfrac{5\\pi r}{3}$"
     ],
     "answer": "④",
-    "solution": "그림의 $60^\\circ$와 이웃한 각의 크기는\n$180^\\circ-60^\\circ=120^\\circ$이다.\n이 $120^\\circ$인 각이 호 $AD$와 호 $BC$를 본다.\n원 안에서 두 현이 이루는 각은 두 호의 크기의 합의 절반이므로\n$\\wideparen{AD}+\\wideparen{BC}$에 대응하는 중심각의 합은\n$2\\times120^\\circ=240^\\circ$이다.\n따라서 두 호의 길이의 합은\n$2\\pi r\\times\\dfrac{240}{360}=\\dfrac{4\\pi r}{3}$이다.\n따라서 정답은 ④이다.",
+    "solution": "그림의 $60^\\circ$와 이웃한 각은\n$180^\\circ-60^\\circ=120^\\circ$이다.\n\n원 안에서 두 현이 만날 때 생기는 각의 크기는\n그 각과 맞꼭지각이 보는 두 호의 크기 합의 절반이다.\n따라서 호 $AD$와 호 $BC$의 중심각 크기 합은\n$2\\cdot120^\\circ=240^\\circ$이다.\n\n그러므로 두 호의 길이의 합은\n$2\\pi r\\cdot\\dfrac{240}{360}\n=\\dfrac{4\\pi r}{3}$이다.\n\n정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q10.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -343,7 +344,7 @@ window.questionBank = [
       "$76^\\circ$"
     ],
     "answer": "①",
-    "solution": "접선과 현 $BC$가 이루는 각은 현 $BC$를 보는 원주각과 같으므로\n호 $BC$의 크기는\n$2\\times24^\\circ=48^\\circ$이다.\n호 $AB$는 호 $BC$의 $3$배이므로\n$\\wideparen{AB}=3\\times48^\\circ=144^\\circ$이다.\n따라서 점 $B$를 포함하는 호 $AC$의 크기는\n$144^\\circ+48^\\circ=192^\\circ$이고, $\\angle ABC$가 보는 반대쪽 호 $AC$의 크기는\n$360^\\circ-192^\\circ=168^\\circ$이다.\n그러므로\n$\\angle ABC=\\dfrac12\\times168^\\circ=84^\\circ$이다.\n따라서 정답은 ①이다.",
+    "solution": "접선 $CT$와 현 $CB$가 이루는 각이 $24^\\circ$이므로\n접선과 현의 성질에 의해 호 $BC$의 크기는\n$2\\cdot24^\\circ=48^\\circ$이다.\n\n$\\wideparen{AB}=3\\wideparen{BC}$이므로\n호 $AB$의 크기는 $144^\\circ$이다.\n\n점 $B$를 지나는 호 $AC$의 크기는\n$144^\\circ+48^\\circ=192^\\circ$이므로,\n$\\angle ABC$가 보는 반대쪽 호 $AC$의 크기는\n$360^\\circ-192^\\circ=168^\\circ$이다.\n\n따라서\n$\\angle ABC=\\dfrac{168^\\circ}{2}=84^\\circ$이다.\n정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q11.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -375,7 +376,7 @@ window.questionBank = [
       "$50^\\circ$"
     ],
     "answer": "④",
-    "solution": "$CD$가 지름이므로 지름을 보는 원주각은 직각이다.\n따라서 $\\angle CBD=90^\\circ$이고, $B,D,T$가 일직선이므로 $BC\\perp BT$이다.\n또 $AT\\perp BT$이므로\n$AT\\parallel BC$이다.\n그러므로\n$\\angle BAT=\\angle ABC=68^\\circ$이다.\n접선과 현 $AB$가 이루는 각은 현 $AB$를 보는 원주각과 같으므로\n$\\angle BCA=68^\\circ$이다.\n한편\n$\\angle ABD=90^\\circ-68^\\circ=22^\\circ$이다.\n$\\angle ABD$와 $\\angle ACD$는 같은 호 $AD$를 보는 원주각이므로\n$\\angle ACD=22^\\circ$이다.\n따라서\n$\\angle BCD=68^\\circ-22^\\circ=46^\\circ$이다.\n따라서 정답은 ④이다.",
+    "solution": "$CD$가 지름이므로\n$\\angle CBD=90^\\circ$이다.\n또 $B,D,T$는 한 직선 위에 있으므로 $BC\\perp BT$이다.\n\n$AT\\perp BT$이므로 $AT\\parallel BC$이다.\n따라서\n$\\angle BAT=\\angle ABC=68^\\circ$이다.\n\n접선과 현의 성질에 의해\n$\\angle BCA=\\angle BAT=68^\\circ$이다.\n\n한편\n$\\angle ABD=90^\\circ-68^\\circ=22^\\circ$이고,\n$\\angle ABD$와 $\\angle ACD$는 같은 호 $AD$를 보는 원주각이므로\n$\\angle ACD=22^\\circ$이다.\n\n따라서\n$\\angle BCD=68^\\circ-22^\\circ=46^\\circ$이다.\n정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q12.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -405,7 +406,7 @@ window.questionBank = [
       "ㄷ, ㅁ, ㅅ"
     ],
     "answer": "④",
-    "solution": "각 설명을 하나씩 확인하자.\nㄱ. 중앙값은 자료를 크기순으로 나열했을 때 가운데를 나타내는 하나의 값이므로 거짓이다.\nㄴ. 가장 많이 나타나는 값이 따로 없으면 최빈값이 없을 수 있으므로 거짓이다.\nㄷ. 중앙값은 극단적인 값의 영향을 거의 받지 않으므로 참이다.\nㄹ. 자료의 흩어진 정도는 분산이나 표준편차 같은 산포도로 나타내므로 거짓이다.\nㅁ. 편차의 합은 항상 $0$이므로 참이다.\nㅂ. 평균이 같아도 자료가 흩어진 정도는 다를 수 있으므로 거짓이다.\nㅅ. 분산이 클수록 자료는 평균에서 더 멀리 흩어져 있으므로 거짓이다.\n따라서 옳은 것은 ㄷ, ㅁ이고 정답은 ④이다.",
+    "solution": "각 설명을 확인한다.\n\nㄱ. 중앙값은 자료에서 정해지는 하나의 값이므로 거짓이다.\nㄴ. 자료에 따라 최빈값이 없을 수 있으므로 거짓이다.\nㄷ. 중앙값은 극단적인 값의 영향을 거의 받지 않으므로 참이다.\nㄹ. 자료의 흩어진 정도는 분산이나 표준편차 같은 산포도로 나타내므로 거짓이다.\nㅁ. 각 편차를 모두 더하면 항상 $0$이므로 참이다.\nㅂ. 평균이 같아도 흩어진 정도가 다르면 분산은 달라질 수 있으므로 거짓이다.\nㅅ. 분산이 클수록 자료는 평균에서 더 넓게 흩어져 있으므로 거짓이다.\n\n따라서 옳은 것은 ㄷ, ㅁ이고 정답은 ④이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
@@ -433,7 +434,7 @@ window.questionBank = [
       "$1,2,5,8,9$의 분산"
     ],
     "answer": "⑤",
-    "solution": "각 보기의 값을 직접 구하자.\n① $\\dfrac{2+3+4+7+9}{5}=5$\n② $1,2,3,5,10$의 중앙값은 $3$\n③ 최빈값은 $2$\n④ 평균은 $3$이고 분산은 $\\dfrac{4+1+0+1+4}{5}=2$이므로 표준편차는 $\\sqrt2$\n⑤ 평균은 $5$이고 분산은 $\\dfrac{16+9+0+9+16}{5}=10$\n이다.\n가장 큰 값은 $10$이므로 정답은 ⑤이다.",
+    "solution": "각 보기의 값을 계산한다.\n\n① 평균: $\\dfrac{2+3+4+7+9}{5}=5$\n② 중앙값: $1,2,3,5,10$의 가운데 값이므로 $3$\n③ 최빈값: $2$\n④ 평균이 $3$이므로 분산은 $2$, 표준편차는 $\\sqrt2$\n⑤ 평균이 $5$이므로 분산은\n$\\dfrac{16+9+0+9+16}{5}=10$\n\n가장 큰 값은 $10$이므로 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
@@ -461,7 +462,7 @@ window.questionBank = [
       "$19$"
     ],
     "answer": "③",
-    "solution": "자료가 $6$개이므로 중앙값은 세 번째 값과 네 번째 값의 평균이다.\n따라서\n$\\dfrac{x+(x+4)}{2}=13$\n$x+2=13$\n$x=11$\n이다.\n네 번째 변량은\n$x+4=15$이다.\n따라서 정답은 ③이다.",
+    "solution": "자료가 $6$개이므로 중앙값은 세 번째 값과 네 번째 값의 평균이다.\n\n$\\dfrac{x+(x+4)}{2}=13$에서\n$x+2=13$이므로 $x=11$이다.\n\n따라서 네 번째 변량은\n$x+4=15$이다.\n\n정답은 ③이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
@@ -489,7 +490,7 @@ window.questionBank = [
       "$24,\\ 20$"
     ],
     "answer": "③",
-    "solution": "각 변량을 $2$배 하면 평균도 $2$배이므로 새로운 평균은\n$2\\times8=16$이다.\n원래 편차가 $a-8,b-8,c-8,d-8$이라면 새로운 편차는\n$2a-16=2(a-8)$처럼 모두 $2$배가 된다.\n따라서 편차의 제곱은 모두 $4$배가 되어 분산은\n$4\\times5=20$이다.\n따라서 평균과 분산은 각각 $16$, $20$이고 정답은 ③이다.",
+    "solution": "모든 변량을 $2$배 하면 평균도 $2$배가 된다.\n따라서 새 평균은\n$2\\cdot8=16$이다.\n\n각 편차도 $2$배가 되므로 편차의 제곱은 $4$배가 된다.\n따라서 분산은\n$4\\cdot5=20$이다.\n\n그러므로 평균과 분산은 각각 $16,20$이고 정답은 ③이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
@@ -519,7 +520,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "먼저 도수를 이용해 평균을 구하자.\n$\\dfrac{2\\cdot3+4\\cdot3+6\\cdot7+8\\cdot5+10\\cdot2}{20}$\n$=\\dfrac{120}{20}=6$이다.\n평균이 $6$이므로 편차의 제곱에 각각의 도수를 곱하면\n$(-4)^2\\cdot3+(-2)^2\\cdot3+0^2\\cdot7+2^2\\cdot5+4^2\\cdot2$\n$=48+12+0+20+32=112$이다.\n따라서 분산은\n$\\dfrac{112}{20}=\\dfrac{28}{5}$이다.\n따라서 정답은 ②이다.",
+    "solution": "도수를 이용하여 평균을 먼저 구한다.\n\n$\\dfrac{2\\cdot3+4\\cdot3+6\\cdot7+8\\cdot5+10\\cdot2}{20}\n=\\dfrac{120}{20}=6$이다.\n\n평균 $6$에 대한 편차의 제곱합은\n$(-4)^2\\cdot3+(-2)^2\\cdot3+0^2\\cdot7+2^2\\cdot5+4^2\\cdot2$\n$=48+12+0+20+32=112$이다.\n\n따라서 분산은\n$\\dfrac{112}{20}=\\dfrac{28}{5}$이다.\n\n정답은 ②이다.",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
     "subUnitConfidence": "rule_inferred",
@@ -549,7 +550,7 @@ window.questionBank = [
       "자동차의 속도와 걸리는 시간"
     ],
     "answer": "②",
-    "solution": "산점도의 점들은 오른쪽으로 갈수록 대체로 위쪽에 놓여 있다.\n즉 한 변량이 커질수록 다른 변량도 커지는 양의 상관관계이다.\n여름철에는 실외 기온이 높아질수록 냉방기 사용이 늘어 냉방비도 대체로 증가한다.\n따라서 그림과 같은 관계는 ②이고 정답은 ②이다.",
+    "solution": "산점도의 점들은 오른쪽으로 갈수록 대체로 위로 올라간다.\n즉 한 변량이 커질수록 다른 변량도 커지는 양의 상관관계가 나타난다.\n\n여름철에는 실외 기온이 높을수록 냉방기 사용량이 늘어 냉방비도 대체로 증가한다.\n\n따라서 그림과 같은 관계는 ②이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q18.png",
     "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
     "subUnit": "통계 자료 해석",
@@ -580,7 +581,7 @@ window.questionBank = [
       "$60,\\ \\sqrt{6.8}$"
     ],
     "answer": "⑤",
-    "solution": "C의 편차가 $-4$이고 평균이 $64\\rm\\,kg$이므로\nC의 몸무게는\n$64-4=60\\rm\\,kg$이다.\n편차의 합은 $0$이므로\n$-2+1-4+x+2=0$\n$x=3$이다.\n따라서 분산은\n$\\dfrac{(-2)^2+1^2+(-4)^2+3^2+2^2}{5}$\n$=\\dfrac{34}{5}=6.8$이다.\n표준편차는 분산의 양의 제곱근이므로 $\\sqrt{6.8}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "C의 편차가 $-4$이고 평균이 $64\\rm\\,kg$이므로\nC의 몸무게는\n$64-4=60\\rm\\,kg$이다.\n\n편차의 합은 $0$이므로\n$-2+1-4+x+2=0$에서 $x=3$이다.\n\n분산은\n$\\dfrac{(-2)^2+1^2+(-4)^2+3^2+2^2}{5}\n=\\dfrac{34}{5}=6.8$이다.\n\n따라서 표준편차는 $\\sqrt{6.8}$이다.\nC의 몸무게와 표준편차는 $60,\\sqrt{6.8}$이고 정답은 ⑤이다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
@@ -610,7 +611,7 @@ window.questionBank = [
       "$4\\sqrt2$"
     ],
     "answer": "①",
-    "solution": "$AB=9\\rm\\,cm$이므로 원의 반지름은\n$OA=OT=\\dfrac92\\rm\\,cm$이다.\n접점에서 반지름은 접선에 수직이고 $AH\\perp CT$이므로\n$OT\\parallel AH$이다.\n$AH=8\\rm\\,cm$이므로 $A$와 $O$의 높이 차는\n$8-\\dfrac92=\\dfrac72$이다.\n$OA=\\dfrac92$인 직각삼각형에서 수평 방향의 길이 $HT$는\n$HT^2+\\left(\\dfrac72\\right)^2=\\left(\\dfrac92\\right)^2$\n$HT^2=8$\n$HT=2\\sqrt2$이다.\n따라서\n$[\\triangle AHT]=\\dfrac12\\cdot8\\cdot2\\sqrt2=8\\sqrt2$이다.\n따라서 정답은 ①이다.",
+    "solution": "$AB=9\\rm\\,cm$가 지름이므로 반지름은\n$OA=OT=\\dfrac92\\rm\\,cm$이다.\n\n접점 $T$에서 $OT\\perp CT$이고, $AH\\perp CT$이므로\n$OT\\parallel AH$이다.\n따라서 $A$와 $O$의 높이 차는\n$8-\\dfrac92=\\dfrac72$이다.\n\n직각삼각형에서\n$HT^2+\\left(\\dfrac72\\right)^2=\\left(\\dfrac92\\right)^2$이므로\n$HT^2=8$,\n$HT=2\\sqrt2$이다.\n\n따라서\n$[\\triangle AHT]=\\dfrac12\\cdot8\\cdot2\\sqrt2=8\\sqrt2$이다.\n\n정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q20.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -628,7 +629,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -637,7 +638,7 @@ window.questionBank = [
     "content": "[서술형 1] 다음 그림과 같이 $\\overline{PT}$는 반원 $O$의 접선일 때, 반원 $O$의 넓이를 구하는 과정을 서술하시오. [총 4점]",
     "choices": [],
     "answer": "$\\dfrac{128\\pi}{9}$",
-    "solution": "반원의 반지름을 $r$라 하자.\n그러면 $OB=OT=r$이고 $PB=6$, $PT=10$이므로\n$OP=r+6$이다.\n접점 $T$에서 반지름 $OT$는 접선 $PT$에 수직이므로 $\\triangle OPT$는 직각삼각형이다.\n피타고라스 정리에 의해\n$(r+6)^2=r^2+10^2$\n$r^2+12r+36=r^2+100$\n$12r=64$\n$r=\\dfrac{16}{3}$이다.\n따라서 반원의 넓이는\n$\\dfrac12\\pi r^2=\\dfrac12\\pi\\left(\\dfrac{16}{3}\\right)^2=\\dfrac{128\\pi}{9}$이다.\n따라서 구하는 값은 $\\dfrac{128\\pi}{9}$이다.",
+    "solution": "반원의 반지름을 $r$라 하자.\n그러면 $OB=OT=r$이고 $BP=6$이므로\n$OP=r+6$이다.\n\n$PT$는 접선이므로 접점 $T$에서\n$OT\\perp PT$이다.\n직각삼각형 $OPT$에 피타고라스 정리를 적용하면\n\n$(r+6)^2=r^2+10^2$이다.\n\n정리하면\n$r^2+12r+36=r^2+100$,\n$12r=64$이므로\n$r=\\dfrac{16}{3}$이다.\n\n따라서 반원의 넓이는\n$\\dfrac12\\pi r^2\n=\\dfrac12\\pi\\left(\\dfrac{16}{3}\\right)^2\n=\\dfrac{128\\pi}{9}$이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q21.png",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
@@ -655,7 +656,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -664,7 +665,7 @@ window.questionBank = [
     "content": "[서술형 2] 다음 그림과 같이 원 $O$에 내접하는 육각형 $ABCDEF$에 대하여 $\\angle B+\\angle D+\\angle F$의 크기를 구하는 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$360^\\circ$",
-    "solution": "호 $AB,BC,CD,DE,EF,FA$의 크기를 각각 $a,b,c,d,e,f$라 하자.\n원주각은 자신이 보는 호의 크기의 절반이므로\n$2\\angle B=c+d+e+f$\n$2\\angle D=e+f+a+b$\n$2\\angle F=a+b+c+d$이다.\n세 식을 더하면\n$2(\\angle B+\\angle D+\\angle F)=2(a+b+c+d+e+f)$이다.\n원의 전체 호의 크기는\n$a+b+c+d+e+f=360^\\circ$이므로\n$\\angle B+\\angle D+\\angle F=360^\\circ$이다.\n따라서 구하는 값은 $360^\\circ$이다.",
+    "solution": "원 둘레의 여섯 호 $AB,BC,CD,DE,EF,FA$의 크기를 각각\n$a,b,c,d,e,f$라 하자.\n\n$\\angle B$가 보는 호는 $AFEDC$이므로\n$2\\angle B=c+d+e+f$이다.\n같은 방법으로\n$2\\angle D=e+f+a+b$,\n$2\\angle F=a+b+c+d$이다.\n\n세 식을 더하면\n$2(\\angle B+\\angle D+\\angle F)\n=2(a+b+c+d+e+f)$이다.\n\n한 원의 전체 호의 크기는 $360^\\circ$이므로\n$\\angle B+\\angle D+\\angle F=360^\\circ$이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q22.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -682,7 +683,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -691,7 +692,7 @@ window.questionBank = [
     "content": "[서술형 3] 다음 그림과 같이 $\\triangle ABC$의 외접원 $O$의 $\\overline{AB}$의 연장선과 $C$에서 원에 그은 접선이 만나는 점을 $D$, $\\angle ADC$의 이등분선이 $\\overline{AC}$와 만나는 점을 $E$라 하자. $\\angle ACB=56^\\circ$일 때, $\\angle AED$의 크기를 구하는 과정을 서술하시오. [총 5점]",
     "choices": [],
     "answer": "$118^\\circ$",
-    "solution": "$\\angle BAC=\\alpha$, $\\angle ABC=\\beta$라 하자.\n삼각형 $ABC$에서\n$\\alpha+\\beta=180^\\circ-56^\\circ=124^\\circ$이다.\n접선과 현의 성질에 의해\n$\\angle BCD=\\angle BAC=\\alpha$이다.\n또 $A,B,D$가 일직선이므로\n$\\angle CBD=180^\\circ-\\beta$이다.\n따라서 삼각형 $BCD$에서\n$\\angle ADC=\\beta-\\alpha$이다.\n$DE$가 $\\angle ADC$의 이등분선이므로\n$\\angle ADE=\\dfrac{\\beta-\\alpha}{2}$이다.\n$E$가 $AC$ 위에 있으므로 $\\angle EAD=\\alpha$이다.\n삼각형 $AED$에서\n$\\angle AED=180^\\circ-\\alpha-\\dfrac{\\beta-\\alpha}{2}$\n$=180^\\circ-\\dfrac{\\alpha+\\beta}{2}$\n$=180^\\circ-62^\\circ=118^\\circ$이다.\n따라서 구하는 값은 $118^\\circ$이다.",
+    "solution": "$\\angle BAC=\\alpha$, $\\angle ABC=\\beta$라 하자.\n$\\angle ACB=56^\\circ$이므로\n$\\alpha+\\beta=124^\\circ$이다.\n\n접선과 현의 성질에 의해\n$\\angle BCD=\\angle BAC=\\alpha$이다.\n또 $A,B,D$가 한 직선 위에 있으므로\n$\\angle CBD=180^\\circ-\\beta$이다.\n\n삼각형 $BCD$에서\n$\\angle ADC=\\beta-\\alpha$이다.\n$DE$는 $\\angle ADC$의 이등분선이므로\n$\\angle ADE=\\dfrac{\\beta-\\alpha}{2}$이다.\n\n$E$는 $AC$ 위에 있으므로 $\\angle EAD=\\alpha$이다.\n따라서 삼각형 $AED$에서\n\n$\\angle AED\n=180^\\circ-\\alpha-\\dfrac{\\beta-\\alpha}{2}\n=180^\\circ-\\dfrac{\\alpha+\\beta}{2}\n=180^\\circ-62^\\circ\n=118^\\circ$이다.",
     "image": "assets/images/25_왕운중_2학기_기말_중3_기출/q23.png",
     "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
     "subUnit": "원주각",
@@ -709,7 +710,7 @@ window.questionBank = [
     "standardUnit": "통계",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "표"
@@ -718,7 +719,7 @@ window.questionBank = [
     "content": "[서술형 4] 다음 자료의 대푯값으로 평균, 중앙값, 최빈값을 각각 구하고, 대푯값으로 가장 적절한 것을 고르고, 그 이유를 서술하시오. [총 6점]\n<div class=\"question-table-wrap\"><table class=\"question-table\"><tbody><tr><td>$10$</td><td>$12$</td><td>$290$</td><td>$9$</td><td>$12$</td></tr></tbody></table></div>\n(1) 평균, 중앙값, 최빈값을 구하시오. [총 3점]\n(2) 대푯값으로 가장 적절한 것으로 고르고, 그 이유를 서술하시오. [총 3점]",
     "choices": [],
     "answer": "(1) 평균 $66.6$, 중앙값 $12$, 최빈값 $12$ / (2) 중앙값",
-    "solution": "(1) 평균은\n$\\dfrac{10+12+290+9+12}{5}=\\dfrac{333}{5}=66.6$이다.\n자료를 작은 순서로 나열하면\n$9,10,12,12,290$이므로\n중앙값은 $12$, 최빈값도 $12$이다.\n\n(2) $290$은 나머지 값보다 매우 큰 극단적인 값이어서 평균 $66.6$은 자료의 일반적인 크기를 잘 나타내지 못한다.\n중앙값은 이러한 극단적인 값의 영향을 적게 받으므로 이 자료의 대푯값으로 중앙값 $12$가 가장 적절하다.\n따라서 (1) 평균은 $66.6$, 중앙값은 $12$, 최빈값은 $12$이고, (2) 가장 적절한 대푯값은 중앙값이다.",
+    "solution": "(1) 평균은\n$\\dfrac{10+12+290+9+12}{5}\n=\\dfrac{333}{5}=66.6$이다.\n\n자료를 작은 수부터 나열하면\n$9,10,12,12,290$이므로\n중앙값은 $12$이다.\n가장 많이 나타나는 값도 $12$이므로 최빈값은 $12$이다.\n\n(2) $290$은 다른 값들에 비해 매우 큰 극단적인 값이다.\n이 때문에 평균 $66.6$은 대부분의 자료가 모여 있는 정도를 잘 나타내지 못한다.\n중앙값은 극단적인 값의 영향을 적게 받으므로\n이 자료의 대푯값으로는 중앙값 $12$가 가장 적절하다.",
     "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
     "subUnit": "대푯값과 산포도",
     "subUnitConfidence": "candidate_evidence",
