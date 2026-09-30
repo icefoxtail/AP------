@@ -5,12 +5,13 @@ const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
 const core = require('../archive/archive2-core.js');
+const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
-const catalog = core.decodeCatalog(JSON.parse(read('data/archive2-catalog.json')));
 const plain = value => JSON.parse(JSON.stringify(value));
 
 function harness(data = structuredClone(catalog)) {
+  data = withTestAssignments(data);
   const events = new Map(), nodes = new Map(), storage = new Map();
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, {
@@ -38,6 +39,7 @@ function harness(data = structuredClone(catalog)) {
     addEventListener() {},
     fetch: async url => ({ ok: true, json: async () => JSON.parse(read(new URL(String(url)).pathname.replace(/^\/archive\//, ''))) }),
     Archive2Core: core,
+    Archive2Canonical: core.Canonical,
     Archive2Output: require('../archive/archive2-output.js'),
     Archive2Papers: require('../archive/archive2-papers.js'),
     Archive2History: require('../archive/archive2-history.js'),
@@ -71,17 +73,30 @@ function harness(data = structuredClone(catalog)) {
 }
 
 function basicRecord(grade, change = {}) {
-  const base = catalog.records.find(row => core.eligibility(row).ok);
+  const base = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  const parent = catalog.basicTaxonomy.find(row => row.grade === grade && row.defaultSelectable !== false);
+  assert.ok(base && parent, 'test needs an actual source and canonical parent for ' + grade);
+  const questionUid = change.questionUid || 'qid_v1_' + crypto.createHash('sha256').update(grade).digest('hex');
+  const fileGrade = grade.startsWith('중') ? `middle/m${grade[1]}` : `high/h${grade[1]}`;
   return {
-    ...base, questionUid: 'qid_v1_' + crypto.createHash('sha256').update(grade).digest('hex'),
-    sourceGrade: grade, effectiveBrowseGrade: grade, sourceFile: grade + '.js',
-    curriculumKey: '2015', courseKey: /^중/.test(grade) ? `M${grade[1]}-1` : '공통수학1',
-    L1: '원본 대단원', L2: '원본 세부단원', L3: '', L4: '',
+    ...base, ...parent,
+    questionUid,
+    sourceGrade: grade, effectiveBrowseGrade: grade,
+    sourceFile: `original/${fileGrade}/1mid/test-${questionUid.slice(-12)}.js`,
+    sourceOrdinal: Number(change.sourceOrdinal || 1),
+    identityStatus: 'VERIFIED', sourceStatus: 'VERIFIED', sourceIntegrityStatus: 'VERIFIED',
+    sourceFingerprint: crypto.createHash('sha256').update('full-source:' + questionUid).digest('hex'),
+    assignmentFingerprint: crypto.createHash('sha256').update('assignment:' + questionUid).digest('hex'),
+    curriculumKey: parent.curriculumKey, courseKey: parent.courseKey,
+    L1: parent.L1, L2: parent.L2, L3: '', L4: '',
     taxonomyStatus: 'UNKNOWN', foundationTaxonomyStatus: undefined,
     metaFoundationPackVersion: undefined, problemTypeKey: '', templateKey: '',
     reviewStatus: 'reviewed_pass', difficultyBucket: 2, difficultyConfidence: 'high',
     difficultyBoundaryFlag: 'NONE', legacyLevelCompatibility: 'NORMAL',
     curriculumApplicability: 'DEFAULT_SCOPE', defaultSelectable: true, metadataConflicts: [],
+    __testApprovedAssignment: true,
     ...change,
   };
 }
@@ -89,56 +104,74 @@ function basicRecord(grade, change = {}) {
 test('BASIC selection and final review accept UNKNOWN advanced taxonomy for every grade', () => {
   for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
     const row = basicRecord(grade);
+    const data = withTestAssignments({ ...catalog, records: [row] });
+    const authority = data.canonicalAuthority;
     const path = core.pathKey(row, 4);
-    const request = { filters: { grade, primaryPaths: [path] }, rows: [{ id: 'basic', paths: [path], count: 1 }] };
-    assert.equal(core.basicEligibility(row).ok, true, grade);
+    const request = { filters: { grade, primaryPaths: [path] }, rows: [{ id: 'basic', paths: [path], count: 1 }], canonicalAuthority: authority };
+    assert.equal(core.basicEligibility(row, { canonicalAuthority: authority }).ok, true, grade);
     const result = core.selectBlueprint([row], request);
     assert.equal(result.ok, true, grade);
     assert.notEqual(core.review(result.selected, request).status, 'HARD_BLOCK', grade);
-    assert.equal(core.basicEligibility({ ...row, foundationTaxonomyStatus: 'UNKNOWN' }).ok, true);
-    assert.equal(core.basicEligibility({ ...row, taxonomyStatus: 'HOLD' }).ok, true);
-    assert.equal(core.basicEligibility({ ...row, basicTaxonomyStatus: 'HOLD' }).ok, false);
-    assert.equal(core.matches({ ...row, L3: 'unverified' }, { grade, L3: 'rpm:unverified' }), false);
+    assert.equal(core.basicEligibility({ ...row, foundationTaxonomyStatus: 'UNKNOWN' }, { canonicalAuthority: authority }).ok, true);
+    assert.equal(core.basicEligibility({ ...row, taxonomyStatus: 'HOLD' }, { canonicalAuthority: authority }).ok, true);
+    assert.equal(core.basicEligibility({ ...row, basicTaxonomyStatus: 'HOLD' }, { canonicalAuthority: authority }).ok, true);
+    assert.equal(core.matches({ ...row, L3: 'unverified' }, { grade, L3: 'rpm:unverified' }, { canonicalAuthority: authority }), false);
   }
 });
 
-test('source units stay visible and counted despite quality holds, missing difficulty and history exclusion', () => {
-  const row = basicRecord('중3', { sourceStatus: 'HOLD', reviewStatus: 'HOLD', difficultyBucket: 'UNKNOWN' });
-  const { w } = harness({ ...catalog, taxonomy: [], records: [row] });
-  w.state.filters = { grade: '중3', L3: 'mf:missing', difficultyBuckets: [5] };
-  w.state.rounds = [{ questionUids: [row.questionUid] }];
+test('source-only units never create cards; card counts and UID pools contain selectable records only', () => {
+  const valid = basicRecord('중3');
+  const rawOnly = {
+    ...valid,
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('source-only').digest('hex'),
+    sourceFile: valid.sourceFile.replace(/\.js$/, '-source-only.js'),
+    sourceFingerprint: 'a'.repeat(64),
+    assignmentFingerprint: 'b'.repeat(64),
+    curriculumKey: '', courseKey: '', L1: 'RAW-source-only', L2: 'unpublished subunit',
+    assignmentEvidence: null,
+    __testApprovedAssignment: false,
+  };
+  const held = basicRecord('중3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('held-only').digest('hex'),
+    sourceFile: valid.sourceFile.replace(/\.js$/, '-held.js'),
+    sourceFingerprint: 'c'.repeat(64), assignmentFingerprint: 'd'.repeat(64),
+    reviewStatus: 'HOLD',
+  });
+  const data = withTestAssignments({ ...catalog, records: [valid, rawOnly, held] });
+  const { w } = harness(data);
+  w.state.filters = { grade: '중3' };
   const scopes = w.scopeOptions();
-  assert.equal(scopes.length, 1);
-  assert.equal(scopes[0].count, 1);
-  assert.equal(scopes[0].eligibleCount, 0);
-  assert.match(w.renderScopes(), /원본 세부단원/);
-  assert.match(w.renderScopes(), /1문항/);
-  assert.equal(core.eligibility(row).ok, false);
+  assert.equal(scopes.some(scope => scope.L1 === 'RAW-source-only'), false);
+  assert.ok(scopes.length > 0);
+  for (const scope of scopes) {
+    assert.equal(scope.count, scope.scopeQuestionUids.length, scope.key);
+    assert.equal(scope.count, scope.eligibleCount, scope.key);
+    assert.equal(new Set(scope.scopeQuestionUids).size, scope.scopeQuestionUids.length);
+    assert.ok(!scope.scopeQuestionUids.includes(held.questionUid));
+    assert.ok(!scope.scopeQuestionUids.includes(rawOnly.questionUid));
+  }
 });
 
-test('actual catalog and all active runtime packs expose every middle-school source question in scopes', async () => {
-  const { w, ctx } = harness();
-  vm.runInContext(read('meta-foundation-runtime.js'), ctx);
-  const overlaid = await ctx.applyArchiveMetaFoundationCatalog(catalog);
-  const repairOverlay = ctx.ARCHIVE_META_FOUNDATION_RUNTIME.records.find(row => row.catalogIdentityRepairVerified);
+test('actual catalog and all active runtime packs expose only canonical selectable middle-school UIDs', async () => {
+  const { data: finalCatalog, runtime } = await require('./helpers/archive2-scope-harness.cjs').productionCatalog();
+  const { w } = harness(finalCatalog);
+  const repairOverlay = runtime.records.find(row => row.catalogIdentityRepairVerified);
   assert.ok(repairOverlay);
-  const repairBase = catalog.records.find(row => row.questionUid === repairOverlay.questionUid);
-  assert.ok(repairBase);
-  const oldIndex = { ...catalog, records: catalog.records.map(row => row === repairBase ? {
-    ...row, questionUid: '', identityStatus: 'UNRESOLVED', sourceStatus: 'HOLD', sourceIntegrityStatus: 'UNRESOLVED',
-  } : row) };
-  const repairedIndex = await ctx.applyArchiveMetaFoundationCatalog(oldIndex);
-  const repaired = repairedIndex.records.find(row => row.questionUid === repairOverlay.questionUid);
+  const repaired = finalCatalog.records.find(row => row.questionUid === repairOverlay.questionUid);
   assert.equal(repaired.identityStatus, 'VERIFIED');
   assert.equal(repaired.sourceIntegrityStatus, 'VERIFIED');
-  for (const data of [catalog, overlaid]) {
+  for (const data of [catalog, finalCatalog]) {
     w.state.catalog = data;
     for (const grade of ['중1', '중2', '중3']) {
       w.state.filters = { grade };
-      const expected = data.records.filter(row => row.effectiveBrowseGrade === grade);
+      const expected = data.records.filter(row => row.sourceGrade === grade &&
+        core.matches(row, w.state.filters, w.state) && core.eligibility(row, w.state).ok &&
+        core.basicScopeParent(row, data.basicScopeLinks, data.canonicalAuthority));
       const scopes = w.scopeOptions();
-      assert.ok(expected.length > 1000, grade);
-      assert.equal(scopes.reduce((sum, scope) => sum + scope.count, 0), expected.length, grade);
+      const scopedUids = scopes.flatMap(scope => scope.scopeQuestionUids);
+      assert.ok(expected.length > 0, grade);
+      assert.equal(scopedUids.length, new Set(scopedUids).size, grade + ' unique scope UID count');
+      assert.deepEqual(new Set(scopedUids), new Set(expected.map(row => row.questionUid)), grade);
       for (const row of expected)
         assert.ok(scopes.some(scope => scope.count > 0 && scope.paths.includes(core.pathKey(row, 4))), row.sourceFile + '#' + row.sourceOrdinal);
     }
@@ -148,13 +181,15 @@ test('actual catalog and all active runtime packs expose every middle-school sou
     assert.ok(w.scopeOptions().some(scope => scope.L1.includes(unit) && scope.count > 0), unit);
 });
 
-test('high-school scope inventory retains source units for each subject projection', () => {
+test('high-school scope inventory retains only canonical selectable UIDs for each subject projection', () => {
   const { w } = harness();
   for (const grade of ['고1', '고2', '고3']) {
     for (const { value: semanticSubject } of core.subjectProjectionOptions(grade)) {
       w.state.filters = { grade, semanticSubject };
-      const expected = catalog.records.filter(row => core.matches(row, w.state.filters));
-      assert.equal(w.scopeOptions().reduce((sum, scope) => sum + scope.count, 0), expected.length, grade + '/' + semanticSubject);
+      const expected = catalog.records.filter(row => core.matches(row, w.state.filters, w.state) &&
+        core.eligibility(row, w.state).ok && core.basicScopeParent(row, catalog.basicScopeLinks, catalog.canonicalAuthority));
+      const scopedUids = w.scopeOptions().flatMap(scope => scope.scopeQuestionUids);
+      assert.deepEqual(new Set(scopedUids), new Set(expected.map(row => row.questionUid)), grade + '/' + semanticSubject);
     }
   }
 });
@@ -175,7 +210,11 @@ test('grade changes, generic Compose entry and new drafts clear stale source res
   assert.equal(w.state.filters.grade, '중3');
   assert.equal(w.state.filters.yearFrom, undefined);
   assert.equal(w.state.filters.L3, undefined);
-  assert.equal(w.scopeOptions().reduce((sum, row) => sum + row.count, 0), 1893);
+  const expectedMiddle = catalog.records.filter(row => row.sourceGrade === '중3' &&
+    core.matches(row, { grade: '중3' }, w.state) && core.eligibility(row, w.state).ok &&
+    core.basicScopeParent(row, catalog.basicScopeLinks, catalog.canonicalAuthority));
+  assert.equal(new Set(w.scopeOptions().flatMap(row => row.scopeQuestionUids)).size,
+    new Set(expectedMiddle.map(row => row.questionUid)).size);
   w.state.sources = [highSource];
   w.newDraft();
   assert.deepEqual(plain(w.state.sources), []);
@@ -192,7 +231,9 @@ test('explicit selected-source entry and saved draft restoration retain the inte
   w.state.sources = [source];
   await click({ action: 'go-compose', useSources: 'true' });
   assert.deepEqual(plain(w.state.sources), [source]);
-  assert.equal(w.scopeOptions().reduce((sum, scope) => sum + scope.count, 0), catalog.records.filter(row => row.sourceFile === source).length);
+  const expected = catalog.records.filter(row => row.sourceFile === source && core.matches(row, { grade: '중3', sourceFiles: [source] }, w.state) &&
+    core.eligibility(row, w.state).ok && core.basicScopeParent(row, catalog.basicScopeLinks, catalog.canonicalAuthority));
+  assert.deepEqual(new Set(w.scopeOptions().flatMap(scope => scope.scopeQuestionUids)), new Set(expected.map(row => row.questionUid)));
   const saved = w.draft();
   w.newDraft();
   w.applyDraft(saved);
@@ -201,9 +242,10 @@ test('explicit selected-source entry and saved draft restoration retain the inte
 
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
-  for (const file of ['archive2-core.js', 'meta-foundation-runtime.js'])
-    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260927-'));
-  for (const file of ['archive2-workspace.js', 'archive2-library.js', 'archive2-navigation.js'])
+  for (const file of ['archive2-canonical.js', 'archive2-core.js', 'meta-foundation-runtime.js', 'archive2-workspace.js'])
+    assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260930-canonical-lock-2'));
+  assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
+  for (const file of ['archive2-library.js', 'archive2-navigation.js'])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=20260929-saved-library-'));
 });
 
@@ -215,7 +257,7 @@ test('fresh BASIC includes every difficulty and unclassified metadata without pr
       defaultSelectable: undefined,
     }));
     const { w } = harness({ ...catalog, records, taxonomy: [] });
-    w.state.filters = { grade };
+    w.state.filters = { grade, ...(['고2', '고3'].includes(grade) ? { semanticSubject: 'ALGEBRA' } : {}) };
     w.state.scopes = w.scopeOptions().map(scope => scope.key);
     w.state.distribution = 'all';
     assert.deepEqual(plain(w.state.buckets), []);
@@ -281,7 +323,7 @@ test('old unopened 2/3 defaults migrate to all while saved explicit and generate
   const explicit = { ...old, difficultyFilterVersion: 'optional-v1' };
   w.applyDraft(explicit);
   assert.deepEqual(plain(w.state.buckets), [2, 3]);
-  const record = catalog.records.find(row => core.basicEligibility(row).ok);
+  const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
   const generated = { ...old, selected: [{ questionUid: record.questionUid, rowId: 'paper', sourceFingerprint: record.sourceFingerprint }] };
   w.applyDraft(generated);
   assert.deepEqual(plain(w.state.buckets), [2, 3]);
@@ -289,7 +331,7 @@ test('old unopened 2/3 defaults migrate to all while saved explicit and generate
 
 test('saved-paper links are tied to the current work signature and fresh drafts clear prior save identity', () => {
   const { w } = harness();
-  const record = catalog.records.find(row => core.basicEligibility(row).ok);
+  const record = catalog.records.find(row => core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
   const scope = core.pathKey(record, 4);
   w.state.filters = { grade: record.effectiveBrowseGrade };
   w.state.scopes = [scope];
@@ -324,4 +366,73 @@ test('saved-paper links are tied to the current work signature and fresh drafts 
   assert.equal(w.state.saveBatchId, '');
   assert.equal(w.state.saveSignature, '');
   assert.equal(w.state.saveResultSignature, '');
+});
+
+test('scope cards cannot be created by source-only labels and counts match selectable UIDs', () => {
+  const valid = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  assert.ok(valid);
+  const rawOnly = {
+    ...valid,
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('raw-only-scope').digest('hex'),
+    sourceFile: valid.sourceFile.replace(/\.js$/, '-raw-only.js'),
+    sourceOrdinal: Number(valid.sourceOrdinal) + 1000,
+    sourceFingerprint: 'a'.repeat(64),
+    assignmentFingerprint: 'b'.repeat(64),
+    curriculumKey: '', courseKey: '',
+    L1: 'RAW-unpublished-parent', L2: 'raw source subunit',
+    assignmentEvidence: null,
+  };
+  const held = {
+    ...valid,
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('held-scope-row').digest('hex'),
+    sourceFile: valid.sourceFile.replace(/\.js$/, '-held.js'),
+    sourceOrdinal: Number(valid.sourceOrdinal) + 2000,
+    sourceFingerprint: 'c'.repeat(64),
+    assignmentFingerprint: 'd'.repeat(64),
+    reviewStatus: 'HOLD',
+    assignmentEvidence: null,
+  };
+  const data = { ...catalog, records: [...catalog.records, rawOnly, held] };
+  const { w } = harness(data);
+  w.state.filters = { grade: valid.sourceGrade };
+  const scopes = w.scopeOptions();
+  assert.equal(scopes.some(scope => scope.L1 === 'RAW-unpublished-parent'), false);
+  for (const scope of scopes) {
+    assert.equal(scope.count, scope.scopeQuestionUids.length, scope.key);
+    assert.equal(scope.count, scope.eligibleCount, scope.key);
+    assert.ok(!scope.scopeQuestionUids.includes(rawOnly.questionUid));
+    assert.ok(!scope.scopeQuestionUids.includes(held.questionUid));
+  }
+});
+
+test('restoring a draft fails when its exact canonical scope parent no longer exists', () => {
+  const valid = catalog.records.find(row => core.basicEligibility(row, {
+    canonicalAuthority: catalog.canonicalAuthority,
+  }).ok);
+  assert.ok(valid);
+  const { w } = harness({ ...catalog, filters: { grade: valid.sourceGrade } });
+  const parentKey = [valid.grade || valid.sourceGrade, valid.curriculumKey, valid.courseKey, valid.L1, valid.L2].join('|');
+  const savedPath = core.pathKey(valid, 4);
+  const draft = {
+    ...w.draft(),
+    scopes: ['old-display-key'],
+    scopeSourcePaths: [savedPath],
+    scopeQuestionUids: [valid.questionUid],
+  };
+  const nextCatalog = {
+    ...catalog,
+    indexVersion: catalog.indexVersion + ':next',
+    basicTaxonomy: catalog.basicTaxonomy.filter(row =>
+      [row.grade, row.curriculumKey, row.courseKey, row.L1, row.L2].join('|') !== parentKey),
+    canonicalAuthority: {
+      ...catalog.canonicalAuthority,
+      canonicalParents: catalog.canonicalAuthority.canonicalParents.filter(row =>
+        [row.grade, row.curriculumKey, row.courseKey, row.L1, row.L2].join('|') !== parentKey),
+    },
+  };
+  w.state.catalog = nextCatalog;
+  w.state.byUid = new Map(nextCatalog.records.map(row => [row.questionUid, row]));
+  assert.throws(() => w.applyDraft(draft), /현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다/);
 });

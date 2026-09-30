@@ -4,6 +4,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const scopeHarness = require('./helpers/archive2-scope-harness.cjs');
+const approvedTestCatalog = scopeHarness.catalog;
+const withTestAssignments = scopeHarness.withTestAssignments;
+const projectionPolicy = approvedTestCatalog.projectionPolicy;
 const root = path.resolve(__dirname, '..');
 const read = name => fs.readFileSync(path.join(root, 'archive', name), 'utf8');
 const readRoot = (...parts) => fs.readFileSync(path.join(root, ...parts), 'utf8');
@@ -51,6 +55,7 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
     status: (_count, receipts) => ({ complete: receipts.length > 0 }),
   };
   const ctx = vm.createContext(context);
+  vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
   const source = read('archive2-workspace.js');
@@ -80,39 +85,63 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
 function catalogFixture(h) {
   const records = [], exams = [];
   function add(file, grade, school, entries) {
-    exams.push({ file, grade, sourceGrade: grade, effectiveBrowseGrade: grade, school,
+    const sourcePath = `original/${grade.startsWith('중') ? `middle/m${grade[1]}` : `high/h${grade[1]}`}/1mid/${file}`;
+    exams.push({ file: sourcePath, grade, sourceGrade: grade, effectiveBrowseGrade: grade, school,
       year: 2025, semester: 1, examType: 'mid', material: 'exam', courseRanges: [], curriculums: [] });
-    for (const entry of entries) records.push({
-      sourceFile: file, sourceQuestionNo: String(records.length + 1), sourceOrdinal: records.length + 1,
-      questionUid: 'qid_v1_' + String(records.length + 1).padStart(64, '0'),
-      identityStatus: 'VERIFIED', sourceStatus: 'VERIFIED', sourceFingerprint: 'frozen-source',
-      taxonomyStatus: 'CONFIRMED', reviewStatus: 'reviewed_pass', gradeConflict: false,
-      difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE',
-      legacyLevelCompatibility: 'NORMAL', curriculumApplicability: 'DEFAULT_SCOPE', defaultSelectable: true,
-      effectiveBrowseGrade: grade, sourceGrade: grade, school, year: 2025, examAxis: '1-mid',
-      L1: '대단원', L2: entry.legacyStandardUnitKey || entry.courseKey, L3: '유형', L4: '세부유형', ...entry,
-    });
+    for (const entry of entries) {
+      const parent = approvedTestCatalog.canonicalAuthority.canonicalParents.find(row =>
+        row.grade === grade && row.curriculumKey === entry.curriculumKey && row.courseKey === entry.courseKey);
+      const index = records.length + 1;
+      const questionUid = 'qid_v1_' + String(index).padStart(64, '0');
+      records.push({
+        ...(parent || { grade, curriculumKey: entry.curriculumKey, courseKey: entry.courseKey,
+          L1: '분류 미승인', L2: entry.legacyStandardUnitKey || entry.courseKey }),
+        sourceFile: sourcePath, sourceQuestionNo: String(index), sourceOrdinal: index, questionUid,
+        identityStatus: 'VERIFIED', sourceStatus: 'VERIFIED', sourceIntegrityStatus: 'VERIFIED',
+        sourceFingerprint: crypto.createHash('sha256').update('frozen-source:' + questionUid).digest('hex'),
+        assignmentFingerprint: crypto.createHash('sha256').update('assignment:' + questionUid).digest('hex'),
+        taxonomyStatus: 'CONFIRMED', reviewStatus: 'reviewed_pass',
+        difficultyBucket: 2, difficultyConfidence: 'high', difficultyBoundaryFlag: 'NONE',
+        legacyLevelCompatibility: 'NORMAL', curriculumApplicability: 'DEFAULT_SCOPE', defaultSelectable: true,
+        effectiveBrowseGrade: grade, sourceGrade: grade, school, year: 2025, examAxis: '1-mid',
+        L3: '유형', L4: '세부유형', __testApprovedAssignment: Boolean(parent), ...entry,
+      });
+    }
   }
   add('old-c1.js', '고1', '경우고', [{ curriculumKey: '2015', courseKey: '수학(하)', legacyStandardUnitKey: 'H15-SB-06' }]);
   add('old-c2.js', '고1', '좌표고', [{ curriculumKey: '2015', courseKey: '수학(상)', legacyStandardUnitKey: 'H15-SA-09' }]);
-  add('new-c1.js', '고1', '공통고', [{ curriculumKey: '2022', courseKey: '공통수학1', legacyStandardUnitKey: 'H22-C-01' }]);
+  add('new-c1.js', '고1', '공통고', [
+    { curriculumKey: '2022', courseKey: '공통수학1', legacyStandardUnitKey: 'H22-C-01' },
+    { curriculumKey: '2022', courseKey: '공통수학1', legacyStandardUnitKey: 'H22-C-01' },
+  ]);
   add('mixed.js', '고1', '혼합고', [
     { curriculumKey: '2015', courseKey: '수학(하)', legacyStandardUnitKey: 'H15-SB-06' },
     { curriculumKey: '2022', courseKey: '공통수학2', legacyStandardUnitKey: 'H22-C2-01' },
+    { curriculumKey: '2022', courseKey: '공통수학2', legacyStandardUnitKey: 'H22-C2-01' },
   ]);
   for (const grade of ['고2', '고3']) for (const subject of h.c.HIGH_SEMANTIC_SUBJECTS) {
-    add(`${grade}-${subject.value}-old.js`, grade, `${subject.value}구고`, [{ curriculumKey: '2015', courseKey: subject.courseKeys.at(-1) }]);
-    add(`${grade}-${subject.value}-new.js`, grade, `${subject.value}신고`, [{ curriculumKey: '2022', courseKey: subject.courseKeys[0] }]);
+    const oldCourse = projectionPolicy.high23SharedSubjects.find(row => row.grade === grade && row.curriculumKey === '2015' && row.projectionKey === subject.value)?.courseKey;
+    const newCourse = projectionPolicy.high23SharedSubjects.find(row => row.grade === grade && row.curriculumKey === '2022' && row.projectionKey === subject.value)?.courseKey;
+    add(`${grade}-${subject.value}-old.js`, grade, `${subject.value}구고`, [{ curriculumKey: '2015', courseKey: oldCourse }]);
+    add(`${grade}-${subject.value}-new.js`, grade, `${subject.value}신고`, [{ curriculumKey: '2022', courseKey: newCourse }]);
   }
   for (const grade of ['중1', '중2', '중3']) for (const curriculumKey of ['2015', '2022'])
     add(`${grade}-${curriculumKey}.js`, grade, `${grade}${curriculumKey}중`, [{ curriculumKey, courseKey: `M${grade[1]}-1` }]);
   const taxonomy = records.map(r => ({ curriculumKey: r.curriculumKey, courseKey: r.courseKey, L1: r.L1, L2: r.L2, L3: r.L3, L4: r.L4 }));
-  Object.assign(h.w.state, { catalog: { records, exams, taxonomy, indexVersion: 'unit-test' },
-    finderIndex: h.c.buildFinderIndex({ records, exams, taxonomy }), byUid: new Map(records.map(r => [r.questionUid, r])) });
-  return { records, exams, taxonomy };
+  const data = withTestAssignments({ ...approvedTestCatalog, records, exams, taxonomy,
+    projectionPolicy, indexVersion: 'unit-test' }, records);
+  Object.assign(h.w.state, { catalog: data, finderIndex: h.c.buildFinderIndex(data),
+    byUid: new Map(records.map(r => [r.questionUid, r])), indexVersion: data.indexVersion });
+  return { records, exams, taxonomy, catalog: data };
 }
 const schools = (h, filters) => plain(h.w.finderSchoolValues(filters));
 const change = (h, field, value) => h.event('change', { id: '', dataset: { group: 'compose', filter: field }, value });
+function installCatalog(h, data) {
+  h.w.state.catalog = data;
+  h.w.state.finderIndex = h.c.buildFinderIndex(data);
+  h.w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));
+  h.w.state.indexVersion = data.indexVersion;
+}
 
 for (const grade of ['중1', '중2', '중3']) test(`${grade}: school curriculum filter and stale family remain safe`, async () => {
   const h = harness(); catalogFixture(h);
@@ -123,12 +152,12 @@ for (const grade of ['중1', '중2', '중3']) test(`${grade}: school curriculum 
   assert.deepEqual(schools(h, h.w.state.filters), [`${grade}2022중`]);
   assert.doesNotMatch(h.w.filterMarkup(h.w.state.filters, 'compose', true), /data-filter="family"/);
 });
-test('Compose and Finder use exactly the same high1 subject+curriculum school candidates', () => {
+test('Compose and Finder use only exact native high1 course+curriculum projections', () => {
   const h = harness(); catalogFixture(h);
   for (const [curriculumKey, semanticSubject, expected] of [
-    ['2015', 'COMMON_MATH_1', ['경우고', '혼합고']],
+    ['2015', 'H1_2015_MATH_DOWN', ['경우고', '혼합고']],
     ['2022', 'COMMON_MATH_1', ['공통고']],
-    ['2015', 'COMMON_MATH_2', ['좌표고']],
+    ['2015', 'H1_2015_MATH_UP', ['좌표고']],
     ['2022', 'COMMON_MATH_2', ['혼합고']],
   ]) {
     const f = { grade: '고1', curriculumKey, semanticSubject };
@@ -153,11 +182,11 @@ test('changing curriculum clears only an invalid school, preserving high1 subjec
 });
 test('subject changes clear invalid schools but keep schools available in both buckets', async () => {
   const h = harness(); catalogFixture(h);
-  h.w.state.filters = { grade: '고1', semanticSubject: 'COMMON_MATH_1', school: '경우고' };
-  await change(h, 'semanticSubject', 'COMMON_MATH_2');
+  h.w.state.filters = { grade: '고1', semanticSubject: 'H1_2015_MATH_UP', school: '좌표고' };
+  await change(h, 'semanticSubject', 'H1_2015_MATH_DOWN');
   assert.equal(h.w.state.filters.school, '');
   h.w.state.filters.school = '혼합고';
-  await change(h, 'semanticSubject', 'COMMON_MATH_1');
+  await change(h, 'semanticSubject', 'H1_2015_MATH_DOWN');
   assert.equal(h.w.state.filters.school, '혼합고');
 });
 for (const grade of ['고2', '고3']) test(`${grade}: all five subjects preserve curriculum intersections and clear stale school`, async () => {
@@ -172,42 +201,37 @@ for (const grade of ['고2', '고3']) test(`${grade}: all five subjects preserve
     assert.deepEqual(schools(h, h.w.state.filters), [`${subject.value}신고`]);
   }
 });
-test('high1 all 22 direct keys, 8 raw keys and special cases remain unit-level', () => {
+test('high1 projections retain native course identities and reject unapproved unit aliases', () => {
   const { c } = harness();
   assert.equal(c.isHighSemanticSubjectGrade('고1'), false);
-  assert.deepEqual(plain(c.subjectProjectionOptions('고1').map(x => x.label)), ['공통수학1', '공통수학2']);
-  assert.equal(Object.keys(c.HIGH1_DIRECT_KEY_MAP).length, 22);
-  assert.equal(Object.keys(c.HIGH1_RAW_KEY_MAP).length, 8);
-  for (const [key, canonical] of Object.entries({ ...c.HIGH1_DIRECT_KEY_MAP, ...c.HIGH1_RAW_KEY_MAP }))
-    assert.equal(c.subjectProjectionForRecord({ legacyStandardUnitKey: key, courseKey: '수학(상)', curriculumKey: '2015' }, '고1'),
-      canonical.startsWith('H22-C2-') ? 'COMMON_MATH_2' : 'COMMON_MATH_1');
-  for (const key of ['H15-SA-09', 'H15-SA-10', 'H15-SA-11', 'H15-SA-12'])
-    assert.equal(c.subjectProjectionForRecord({ legacyStandardUnitKey: key }, '고1'), 'COMMON_MATH_2');
-  for (const key of ['H15-SB-06', 'H15-SB-07', 'H15-SB-08'])
-    assert.equal(c.subjectProjectionForRecord({ legacyStandardUnitKey: key }, '고1'), 'COMMON_MATH_1');
-  for (const courseKey of ['수학(상)', '수학(하)']) {
-    assert.equal(c.subjectProjectionForRecord({ courseKey, curriculumKey: '2015' }, '고1'), '');
-    const f = c.reconcileFinderFilters({ grade: '고1', courseKey }, []);
-    assert.equal(f.courseKey, ''); assert.equal(f.semanticSubject || '', '');
-  }
-  for (const [key, unit, canonical] of [
-    ['H15-SA-02', '방정식과 부등식', 'H22-C-06'], ['H15-SA-03', '복소수', 'H22-C-04'],
-    ['H15-SA-04', '이차방정식', 'H22-C-05'], ['H15-SA-06', '여러 가지 방정식', 'H22-C-06'],
-    ['H15-SB-02', '함수', 'H22-C2-07'],
-  ]) assert.equal(c.high1CanonicalUnitKeyForRecord({ legacyStandardUnitKey: key, standardUnit: unit }), canonical);
+  assert.deepEqual(plain(c.subjectProjectionOptions('고1').map(x => x.label)), ['공통수학1', '공통수학2', '수학(상)', '수학(하)']);
+  assert.deepEqual(plain(require('../archive/data/archive2-canonical-projection-policy.json').high1CompatibilityProjections), []);
+  const policy = projectionPolicy;
+  const project = (curriculumKey, courseKey, extra = {}) => c.subjectProjectionForRecord({
+    sourceGrade: '고1', curriculumKey, courseKey, ...extra,
+  }, '고1', policy);
+  assert.equal(project('2015', '수학(상)'), 'H1_2015_MATH_UP');
+  assert.equal(project('2015', '수학(하)'), 'H1_2015_MATH_DOWN');
+  assert.equal(project('2022', '공통수학1'), 'COMMON_MATH_1');
+  assert.equal(project('2022', '공통수학2'), 'COMMON_MATH_2');
+  assert.equal(project('2015', 'M3-1', { legacyStandardUnitKey: 'H15-SA-09' }), '');
+  assert.equal(project('2015', '수학(상)', { sourceGrade: '고2' }), '');
+  assert.equal(c.subjectProjectionForRecord({ curriculumKey: '2015', courseKey: '수학(상)' }, '고1', policy), '');
 });
 test('Compose pool/scopes still consume the record-level projection authority', () => {
   const h = harness(); catalogFixture(h);
-  for (const semanticSubject of ['COMMON_MATH_1', 'COMMON_MATH_2']) {
+  for (const semanticSubject of ['H1_2015_MATH_UP', 'H1_2015_MATH_DOWN', 'COMMON_MATH_1', 'COMMON_MATH_2']) {
     h.w.state.filters = { grade: '고1', semanticSubject };
-    const pool = h.w.pool().filter(r => h.c.matches(r, h.w.state.filters));
+    const pool = h.w.pool().filter(r => h.c.matches(r, h.w.state.filters, h.w.state));
     assert.ok(pool.length);
-    assert.ok(pool.every(r => h.c.subjectProjectionForRecord(r, '고1') === semanticSubject));
-    assert.equal(h.w.scopeOptions().reduce((sum, s) => sum + s.count, 0), pool.length);
+    assert.ok(pool.every(r => h.c.subjectProjectionForRecord(r, '고1', projectionPolicy) === semanticSubject));
+    const selectable = pool.filter(r => h.c.eligibility(r, h.w.state).ok &&
+      h.c.basicScopeParent(r, h.w.state.catalog.basicScopeLinks, h.w.state.catalog.canonicalAuthority));
+    assert.equal(h.w.scopeOptions().reduce((sum, s) => sum + s.count, 0), selectable.length);
   }
   const source = read('archive2-workspace.js');
   assert.equal((source.match(/subject: C\.subjectProjectionLabel\(state\.filters\)/g) || []).length, 2);
-  assert.match(source, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters\)/);
+  assert.match(source, /candidateRecords = pool\(\)\.filter\([\s\S]*?C\.matches\(r, selectionFilters, state\)/);
 });
 test('Finder-to-Compose clears stale school without losing the selected subject', async () => {
   const h = harness(); catalogFixture(h);
@@ -236,50 +260,51 @@ test('draft school repair preserves UID, fingerprint and frozen receipt contract
   assert.throws(() => h.w.applyDraft({ ...d, selected: [{ ...d.selected[0], sourceFingerprint: 'changed' }] }), /원본 문항이 변경/);
 });
 
-test('saved Compose L3/L4 labels migrate only with a unique current catalog authority', () => {
-  const h = harness(); const { records } = catalogFixture(h);
-  const meta = records[1];
-  Object.assign(meta, { metaFoundationPackVersion: '1.0.0', problemTypeKey: 'PT_FUNCTION_GRAPH_PROPERTIES', templateKey: 'TPL_GRAPH_ORDER_INTERVAL' });
+test('saved Compose L3/L4 labels migrate only with a current approved advanced assignment and exact scope', () => {
+  const meta = approvedTestCatalog.records.find(row => scopeHarness.core.advancedEligible(row, {
+    canonicalAuthority: approvedTestCatalog.canonicalAuthority,
+  }));
+  const h = harness();
+  installCatalog(h, { ...approvedTestCatalog, records: [meta] });
   const path = h.c.pathKey(meta, 4);
-  h.w.state.filters = { grade: '고1', L3: meta.L3, L4: meta.L4 };
+  h.w.state.filters = { grade: meta.sourceGrade };
+  const scope = h.w.scopeOptions().find(row => row.paths.includes(path));
+  assert.ok(scope);
+  h.w.state.scopes = [scope.key];
+  h.w.state.filters = { grade: meta.sourceGrade, L3: meta.L3, L4: meta.L4 };
   h.w.state.rows = [{ id: 'saved', paths: [path], depth: 4, count: 1, difficultyBuckets: [2] }];
   h.w.state.selected = [{ ...meta, rowId: 'saved' }];
   const saved = plain(h.w.draft());
+  saved.scopeSourcePaths = [path];
+  saved.scopes = [scope.key];
   h.w.applyDraft(saved);
-  assert.equal(h.w.state.filters.L3, 'mf:PT_FUNCTION_GRAPH_PROPERTIES');
-  assert.equal(h.w.state.filters.L4, 'mf:TPL_GRAPH_ORDER_INTERVAL');
-  assert.equal(h.c.matches(h.w.state.selected[0], { ...h.w.state.filters, primaryPaths: [path] }), true);
-  assert.notEqual(h.c.review(h.w.state.selected, { filters: { ...h.w.state.filters, primaryPaths: [path] }, rows: h.w.state.rows }).status, 'HARD_BLOCK');
-
-  const competing = { ...meta, questionUid: 'qid_v1_' + 'f'.repeat(64), problemTypeKey: 'PT_OTHER', templateKey: 'TPL_OTHER' };
-  h.w.state.catalog.records.push(competing);
-  h.w.state.filters = { grade: '고1' };
-  assert.throws(() => h.w.applyDraft(saved), /안전하게 연결할 수 없습니다/);
-  assert.equal(h.w.state.filters.L3, undefined, 'failed migration must not partially restore the draft');
+  assert.equal(h.w.state.filters.L3, h.c.advancedFilterValue(meta, 3));
+  assert.equal(h.w.state.filters.L4, h.c.advancedFilterValue(meta, 4));
+  assert.equal(h.c.matches(h.w.state.selected[0], { ...h.w.state.filters, primaryPaths: [path] }, h.w.state), true);
+  const request = { canonicalAuthority: h.w.state.catalog.canonicalAuthority,
+    filters: { ...h.w.state.filters, primaryPaths: [path] }, rows: h.w.state.rows };
+  assert.notEqual(h.c.review(h.w.state.selected, request).status, 'HARD_BLOCK');
 });
 
-test('unissued draft scope migrates Meta labels, while RPM labels retain RPM authority', () => {
-  const h = harness(); const { records } = catalogFixture(h);
-  const meta = records[1];
-  Object.assign(meta, { metaFoundationPackVersion: '1.0.0', problemTypeKey: 'PT_FUNCTION_GRAPH_PROPERTIES', templateKey: 'TPL_GRAPH_ORDER_INTERVAL' });
+test('unissued draft restores legacy advanced labels only when its exact approved scope remains', () => {
+  const meta = approvedTestCatalog.records.find(row => scopeHarness.core.advancedEligible(row, {
+    canonicalAuthority: approvedTestCatalog.canonicalAuthority,
+  }));
+  const h = harness();
+  installCatalog(h, { ...approvedTestCatalog, records: [meta] });
   const path = h.c.pathKey(meta, 4);
-  h.w.state.filters = { grade: '고1', L3: meta.L3, L4: meta.L4 };
-  h.w.state.scopes = [h.w.scopeOptions().find(scope => scope.paths.includes(path)).key];
+  h.w.state.filters = { grade: meta.sourceGrade };
+  const scope = h.w.scopeOptions().find(row => row.paths.includes(path));
+  assert.ok(scope);
+  h.w.state.scopes = [scope.key];
+  h.w.state.filters = { grade: meta.sourceGrade, L3: meta.L3, L4: meta.L4 };
   const saved = plain(h.w.draft());
+  saved.scopeSourcePaths = [path];
   assert.equal(saved.rows.length, 0);
   h.w.applyDraft(saved);
-  assert.equal(h.w.state.filters.L3, 'mf:PT_FUNCTION_GRAPH_PROPERTIES');
-  assert.equal(h.w.state.filters.L4, 'mf:TPL_GRAPH_ORDER_INTERVAL');
-  assert.throws(() => h.w.applyDraft({ ...saved, scopes: [] }), /출제 범위를 확인할 수 없습니다/);
-
-  const rpm = records[0], rpmPath = h.c.pathKey(rpm, 4);
-  h.w.state.filters = { grade: '고1', L3: rpm.L3, L4: rpm.L4 };
-  h.w.state.scopes = [];
-  h.w.state.rows = [{ id: 'rpm', paths: [rpmPath], depth: 4, count: 1, difficultyBuckets: [2] }];
-  h.w.state.selected = [{ ...rpm, rowId: 'rpm' }];
-  h.w.applyDraft(plain(h.w.draft()));
-  assert.equal(h.w.state.filters.L3, 'rpm:유형');
-  assert.equal(h.w.state.filters.L4, 'rpm:세부유형');
+  assert.equal(h.w.state.filters.L3, h.c.advancedFilterValue(meta, 3));
+  assert.equal(h.w.state.filters.L4, h.c.advancedFilterValue(meta, 4));
+  assert.throws(() => h.w.applyDraft({ ...saved, scopes: [], scopeSourcePaths: [] }), /현재 분류 기준이 변경/);
 });
 test('issued Compose filters cannot be changed by the school P2 handler', async () => {
   const h = harness(); catalogFixture(h);
@@ -351,19 +376,21 @@ test('history separates target class grade from paper grade without mutating ass
   assert.equal(apiGradeWins.targetGrade, '중2'); assert.equal(apiGradeWins.contentGrade, '고1');
   assert.equal(JSON.stringify(f.assignments), before);
 });
-test('old high1 history uses saved unit-level evidence and never whole-course 1:1 conversion', () => {
+test('high1 history retains exact saved course projections and never rewrites curriculum identity', () => {
   const h = harness();
   const rows = h.h.normalizeAssignments([
     { id: 'raw', grade_label: '고1', subject: '수학(상)' },
-    { id: 'mixed', grade_label: '고1', subject: '수학(상)', mixed_payload_json: { meta: { grade: '고1' }, questions: [
-      { standardUnitKey: 'H15-SA-09' }, { standardUnitKey: 'H15-SB-06' },
+    { id: 'mixed', grade_label: '고1', mixed_payload_json: { meta: { grade: '고1' }, questions: [
+      { sourceGrade: '고1', curriculumKey: '2015', courseKey: '수학(상)', projectionPolicy },
+      { sourceGrade: '고1', curriculumKey: '2022', courseKey: '공통수학2', projectionPolicy },
     ] } },
   ], [], [], h.c);
-  assert.deepEqual(plain(rows[0].subjectKeys), ['raw:수학(상)']);
-  assert.deepEqual(new Set(plain(rows[1].subjectKeys)), new Set(['COMMON_MATH_1', 'COMMON_MATH_2']));
-  assert.equal(rows[1].subjectLabel, '공통수학1 · 공통수학2');
-  for (const subject of ['COMMON_MATH_1', 'COMMON_MATH_2'])
-    assert.deepEqual(plain(h.h.filterAssignments(rows, { subject }).map(r => r.id)), ['mixed']);
+  assert.deepEqual(plain(rows[0].subjectKeys), ['H1_2015_MATH_UP']);
+  assert.deepEqual(new Set(plain(rows[1].subjectKeys)), new Set(['H1_2015_MATH_UP', 'COMMON_MATH_2']));
+  assert.equal(rows[1].subjectLabel, '공통수학2 · 수학(상)');
+  assert.ok(!rows[1].subjectKeys.includes('COMMON_MATH_1'));
+  assert.deepEqual(plain(h.h.filterAssignments(rows, { subject: 'H1_2015_MATH_UP' }).map(r => r.id)), ['raw', 'mixed']);
+  assert.deepEqual(plain(h.h.filterAssignments(rows, { subject: 'COMMON_MATH_2' }).map(r => r.id)), ['mixed']);
 });
 test('history supports all five high-school semantic labels and safe malformed payloads', () => {
   const h = harness();
@@ -417,7 +444,7 @@ test('CSS stays history-scoped, with compact 2-column desktop and 1-column mobil
   assert.doesNotMatch(css, /\.mobile-nav|bottom-nav|data-archive-navigation|position:\s*fixed/);
   const html = read('workspace.html');
   assert.ok(html.indexOf('archive2-history.js') < html.indexOf('archive2-workspace.js'));
-  assert.match(html, /archive2-navigation\.js\?v=20260922-nav-home-final/);
+  assert.match(html, /archive2-navigation\.js\?v=20260929-saved-library-2/);
 });
 test('history loads all accessible classes in one assignments request and never calls per-card status', async () => {
   const calls = []; let h;
@@ -496,13 +523,14 @@ test('replacement candidates execute the shared high1 subject gate', () => {
   const h = harness(); const { records } = catalogFixture(h);
   for (const semanticSubject of ['COMMON_MATH_1', 'COMMON_MATH_2']) {
     h.w.state.filters = { grade: '고1', semanticSubject };
-    const current = records.find(r => h.c.matches(r, h.w.state.filters));
+    const current = records.find(r => h.c.matches(r, h.w.state.filters, h.w.state));
+    assert.ok(current, semanticSubject);
     h.w.state.selected = [{ ...current, rowId: 'selected-row' }];
     h.w.state.rows = [{ id: 'selected-row', count: 1 }];
     h.w.replace(0);
     const candidates = h.w.getCandidates();
-    assert.ok(candidates.length);
-    assert.ok(candidates.every(r => h.c.subjectProjectionForRecord(r, '고1') === semanticSubject));
+    assert.ok(candidates.length, `${semanticSubject}; diagnostics=${JSON.stringify(records.filter(r => h.c.matches(r, h.w.state.filters, h.w.state)).map(r => h.c.eligibility(r, h.w.state)))}`);
+    assert.ok(candidates.every(r => h.c.subjectProjectionForRecord(r, '고1', projectionPolicy) === semanticSubject));
     assert.ok(candidates.every(r => r.questionUid !== current.questionUid));
   }
 });

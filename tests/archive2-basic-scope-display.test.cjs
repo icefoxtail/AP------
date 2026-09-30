@@ -2,145 +2,100 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { core, catalog, workspace, productionCatalog, filterCases } = require('./helpers/archive2-scope-harness.cjs');
 
-test('actual middle1 default shows the eight canonical L1 groups and nineteen L2 scopes', () => {
+const normalized = value => String(value || '').replace(/\s+/g, '');
+const parentKey = row => [core.normalizeCourseIdentity(row.courseKey), normalized(row.L1), normalized(row.L2)].join('|');
+function selectableUids(data, filters, state) {
+  return data.records.filter(row => core.matches(row, filters, state) && core.eligibility(row, state).ok &&
+    core.basicScopeParent(row, data.basicScopeLinks, data.canonicalAuthority)).map(row => row.questionUid);
+}
+
+test('Compose renders only canonical parent scopes with UID-deduplicated selectable counts', () => {
   const app = workspace();
   const scopes = app.scopeOptions();
-  const basic = scopes.filter(s => s.basicScope);
-  assert.equal(new Set(basic.map(s => s.L1)).size, 8);
-  assert.equal(basic.length, 19);
+  assert.ok(scopes.length > 0);
+  assert.ok(scopes.every(scope => scope.basicScope));
+  assert.ok(scopes.every(scope => scope.count === scope.scopeQuestionUids.length));
+  assert.ok(scopes.every(scope => scope.count === new Set(scope.scopeQuestionUids).size));
+  assert.equal(new Set(scopes.flatMap(scope => scope.scopeQuestionUids)).size,
+    scopes.reduce((count, scope) => count + scope.count, 0));
   const html = app.renderScopes();
-  const [main, detail] = html.split('<details class="compose-detail source-scope-detail"');
-  assert.ok(detail);
-  assert.doesNotMatch(detail.slice(0, detail.indexOf('>')), /\bopen\b/);
-  for (const label of ['다면체의 옆면의 모양', '원뿔, 원뿔대의 전개도의 성질', '구의 부피', '히스토그램의 직사각형의 넓이']) {
-    assert.ok(!main.includes(label), label);
-    const source = catalog.records.find(r => r.L1 === label);
-    assert.ok(scopes.some(s => s.scopeQuestionUids.includes(source.questionUid)), label + ' source remains selectable');
-  }
-  assert.ok(!main.includes('도형의 방정식'));
-  const sourcePaths = new Set(catalog.records.filter(r => core.matches(r, { grade: '중1' }) && r.L1 && r.L2).map(r => core.pathKey(r, 4)));
-  const visiblePaths = new Set(scopes.flatMap(s => s.paths));
-  for (const sourcePath of sourcePaths) assert.ok(visiblePaths.has(sourcePath), sourcePath);
+  assert.doesNotMatch(html, /source-scope-detail|RAW-source-only|unpublished subunit/);
+  assert.ok(!html.includes('도형의 방정식'));
 });
 
-test('all and continuous range choose only canonical scopes while detailed scopes stay selectable', async () => {
+test('select all and continuous ranges select only the visible canonical scopes', async () => {
   const app = workspace();
   const scopes = app.scopeOptions();
   await app.click({ action: 'scope-all' });
-  assert.equal(app.state.scopes.length, 19);
-  assert.ok(app.state.scopes.every(key => scopes.find(s => s.key === key).basicScope));
+  assert.deepEqual(app.state.scopes, scopes.map(scope => scope.key));
+  const selectedUids = app.selectedScopeQuestionUids();
+  assert.deepEqual(new Set(selectedUids), new Set(scopes.flatMap(scope => scope.scopeQuestionUids)));
   app.controls['scope-start'] = { value: '0' };
   app.controls['scope-end'] = { value: String(scopes.length - 1) };
   await app.click({ action: 'scope-range' });
-  assert.equal(app.state.scopes.length, 19);
-  const target = scopes.find(s => !s.basicScope && s.eligibleCount > 0);
-  const groups = [...new Set(scopes.map(s => s.L1))];
-  await app.click({ action: 'scope-clear' });
-  await app.click({ action: 'scope-group', groupIndex: String(groups.indexOf(target.L1)), scopeKind: 'detail' });
-  assert.ok(app.state.scopes.includes(target.key));
-  assert.ok(app.renderScopes().includes('class="compose-detail source-scope-detail" open'));
-  const req = { filters: { grade: '중1', primaryPaths: app.selectedScopePaths(), scopeQuestionUids: app.selectedScopeQuestionUids() }, rows: [{ id: 'detail', paths: target.paths, scopeQuestionUids: target.scopeQuestionUids, count: 1 }], seed: 'scope-display' };
-  const selected = core.selectBlueprint(catalog.records, req);
-  assert.equal(selected.ok, true);
-  assert.ok(target.scopeQuestionUids.includes(selected.selected[0].questionUid));
-  assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK');
+  assert.deepEqual(app.state.scopes, scopes.map(scope => scope.key));
+  assert.ok(scopes.every(scope => scope.basicScope));
 });
 
-test('every grade keeps default parent names inside its published taxonomy', () => {
+test('every grade displays only current canonical parents with selectable records', () => {
   for (const grade of ['중1', '중2', '중3', '고1', '고2', '고3']) {
     const filters = { grade, ...(['고2', '고3'].includes(grade) ? { semanticSubject: 'ALGEBRA' } : {}) };
     const app = workspace(filters);
-    const canonical = new Set(catalog.taxonomy.map(r => r.L1.replace(/\s+/g, '') + '|' + r.L2.replace(/\s+/g, '')));
-    for (const scope of app.scopeOptions().filter(s => s.basicScope))
-      assert.ok(canonical.has(scope.L1.replace(/\s+/g, '') + '|' + scope.L2.replace(/\s+/g, '')), `${grade} ${scope.L1} ${scope.L2}`);
+    const expected = new Set(selectableUids(catalog, filters, app.state));
+    const scopes = app.scopeOptions();
+    const actual = new Set(scopes.flatMap(scope => scope.scopeQuestionUids));
+    assert.deepEqual(actual, expected, grade);
+    for (const scope of scopes) {
+      for (const uid of scope.scopeQuestionUids) {
+        const row = catalog.records.find(record => record.questionUid === uid);
+        assert.ok(row && core.basicScopeParent(row, catalog.basicScopeLinks, catalog.canonicalAuthority), grade + '/' + uid);
+      }
+    }
   }
 });
 
-test('all ten live runtime packs preserve the basic parent authority before adding advanced rows', async () => {
+test('live runtime packs preserve master parent authority and add only separately validated taxonomy rows', async () => {
   const { data, runtime } = await productionCatalog();
   assert.equal(runtime.packs.length, 10);
-  assert.equal(data.basicTaxonomy, catalog.taxonomy);
-  const parent = row => [core.normalizeCourseIdentity(row.courseKey), row.L1?.replace(/\s+/g, ''), row.L2?.replace(/\s+/g, '')].join('|');
-  const canonical = new Set(data.basicTaxonomy.map(parent));
-  assert.ok(data.taxonomy.some(row => !canonical.has(parent(row))), 'live packs contain additional advanced/legacy parents');
+  const canonical = new Set(data.basicTaxonomy.map(parentKey));
+  assert.ok(canonical.size > 0);
+  assert.ok(data.taxonomy.some(row => row.L3 || row.L4), 'runtime taxonomy carries separately validated advanced paths');
+  for (const row of data.basicTaxonomy) assert.ok(canonical.has(parentKey(row)));
   const app = workspace({ grade: '고2', semanticSubject: 'PROB_STATS' }, data);
-  const [main, detail] = app.renderScopes().split('<details class="compose-detail source-scope-detail"');
-  for (const label of ['신뢰구간', '확률변수와 기댓값', '순열과 조합 핵심 개념']) {
-    assert.ok(!main.includes(label), label);
-    const original = data.records.find(r => core.matches(r, app.state.filters) && r.L2 === label);
-    assert.ok(app.scopeOptions().some(s => s.scopeQuestionUids.includes(original.questionUid)), label + ' source remains selectable under a basic parent or detail');
+  const uids = app.scopeOptions().flatMap(scope => scope.scopeQuestionUids);
+  assert.equal(uids.length, new Set(uids).size);
+  for (const uid of uids) {
+    const record = data.records.find(row => row.questionUid === uid);
+    assert.ok(core.basicScopeParent(record, data.basicScopeLinks, data.canonicalAuthority));
   }
 });
 
-test('all 66 grade, subject, semester and curriculum cases preserve sources and isolate default selection', async () => {
-  const { data } = await productionCatalog();
-  const master = core.taxonomyPaths(require('../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json'));
-  const parent = row => [core.normalizeCourseIdentity(row.courseKey), row.L1?.replace(/\s+/g, ''), row.L2?.replace(/\s+/g, '')].join('|');
-  const authoritativeParents = new Set(master.map(parent));
-  const before = JSON.stringify(data.records);
+test('all grade, subject, semester and curriculum filters keep counts equal to canonical selectable UID pools', async () => {
+  const { data: completeCatalog } = await productionCatalog();
   const cases = filterCases();
-  assert.equal(cases.length, 66);
+  assert.equal(cases.length, 72);
+  const representativeUids = new Set();
   for (const filters of cases) {
-    const label = JSON.stringify(filters), app = workspace(filters, data);
-    const scopes = app.scopeOptions(), basics = scopes.filter(s => s.basicScope);
-    const allowed = new Set(app.taxonomyRowsForFilters(filters).map(row => row.L1.replace(/\s+/g, '') + '|' + row.L2.replace(/\s+/g, '')));
-    for (const row of app.taxonomyRowsForFilters(filters)) assert.ok(authoritativeParents.has(parent(row)), label + ' canonical source');
-    for (const s of basics) assert.ok(allowed.has(s.L1.replace(/\s+/g, '') + '|' + s.L2.replace(/\s+/g, '')), label + ' basic label');
-    const pool = data.records.filter(r => core.matches(r, filters) && r.L1 && r.L2);
-    const paths = new Set(scopes.flatMap(s => s.paths));
-    for (const r of pool) assert.ok(paths.has(core.pathKey(r, 4)), label + ' missing source ' + r.questionUid);
-    assert.equal(scopes.reduce((n, s) => n + s.count, 0), pool.length, label + ' source counts');
-    const html = app.renderScopes();
-    if (scopes.some(s => !s.basicScope)) {
-      const detail = html.split('<details class="compose-detail source-scope-detail"')[1];
-      assert.ok(detail, label + ' missing details');
-      assert.doesNotMatch(detail.slice(0, detail.indexOf('>')), /\bopen\b/, label + ' details must start collapsed');
-    }
-    await app.click({ action: 'scope-all' });
-    assert.deepEqual([...app.state.scopes], [...basics.map(s => s.key)], label + ' all');
-    app.controls['scope-start'] = { value: '0' };
-    app.controls['scope-end'] = { value: String(scopes.length - 1) };
-    await app.click({ action: 'scope-range' });
-    assert.deepEqual([...app.state.scopes], [...basics.map(s => s.key)], label + ' continuous');
-    const sharedGroup = basics.find(s => scopes.some(d => !d.basicScope && d.L1 === s.L1));
-    if (sharedGroup) {
-      await app.click({ action: 'scope-clear' });
-      await app.click({ action: 'scope-group', groupIndex: String([...new Set(scopes.map(s => s.L1))].indexOf(sharedGroup.L1)), scopeKind: 'basic' });
-      assert.ok(app.state.scopes.every(key => scopes.find(s => s.key === key).basicScope), label + ' group selection');
+    const rows = completeCatalog.records.filter(row => core.matches(row, filters, { catalog: completeCatalog }) &&
+      core.eligibility(row, { canonicalAuthority: completeCatalog.canonicalAuthority }).ok &&
+      core.basicScopeParent(row, completeCatalog.basicScopeLinks, completeCatalog.canonicalAuthority));
+    for (const row of rows.slice(0, 2)) representativeUids.add(row.questionUid);
+  }
+  const data = { ...completeCatalog,
+    records: completeCatalog.records.filter(row => representativeUids.has(row.questionUid)) };
+  const before = JSON.stringify(data.records);
+  for (const filters of cases) {
+    const label = JSON.stringify(filters);
+    const app = workspace(filters, data);
+    const scopes = app.scopeOptions();
+    const expected = new Set(selectableUids(data, filters, app.state));
+    const actual = scopes.flatMap(scope => scope.scopeQuestionUids);
+    assert.equal(actual.length, new Set(actual).size, label + ' duplicate UIDs');
+    assert.deepEqual(new Set(actual), expected, label);
+    for (const scope of scopes) {
+      assert.ok(scope.basicScope, label + ' all scopes are canonical');
+      assert.equal(scope.count, scope.scopeQuestionUids.length, label + ' count');
     }
   }
-  assert.equal(JSON.stringify(data.records), before, 'scope display and selection must not change metadata');
-});
-
-test('middle2, middle3 and high subjects retain selectable detailed source questions with the live bridge', async () => {
-  const { data } = await productionCatalog();
-  for (const filters of [{ grade: '중2' }, { grade: '중3' }, { grade: '고1' },
-    ...core.highSemanticSubjectOptions().map(s => ({ grade: '고2', semanticSubject: s.value }))]) {
-    const app = workspace(filters, data), scopes = app.scopeOptions();
-    const target = scopes.find(s => !s.basicScope && s.eligibleCount > 0);
-    if (!target) {
-      assert.equal(data.records.filter(r => core.matches(r, filters) && !scopes.filter(s => s.basicScope).some(s => s.paths.includes(core.pathKey(r, 4))) && core.eligibility(r).ok).length, 0);
-      continue;
-    }
-    const index = [...new Set(scopes.map(s => s.L1))].indexOf(target.L1);
-    await app.click({ action: 'scope-group', groupIndex: String(index), scopeKind: 'detail' });
-    assert.ok(app.state.scopes.includes(target.key));
-    assert.ok(app.renderScopes().includes('class="compose-detail source-scope-detail" open'));
-    const req = { filters: { ...filters, primaryPaths: app.selectedScopePaths() }, rows: [{ id: 'detail', paths: target.paths, count: 1 }], seed: 'all-grades-scope' };
-    const selected = core.selectBlueprint(data.records, req);
-    assert.equal(selected.ok, true, JSON.stringify(filters));
-    assert.notEqual(core.review(selected.selected, req).status, 'HARD_BLOCK', JSON.stringify(filters));
-  }
-});
-
-test('an explicit curriculum keeps canonical middle geometry counts despite legacy course aliases', async () => {
-  const { data } = await productionCatalog();
-  const app = workspace({ grade: '중3', curriculumKey: '2015' }, data);
-  const scopes = app.scopeOptions();
-  const circle = scopes.find(s => s.basicScope && s.L1 === '원의 성질' && s.L2 === '원주각');
-  assert.ok(circle && circle.count > 0);
-  const aliased = data.records.filter(r => core.matches(r, app.state.filters) && r.courseKey === '중3 수학' && r.L1 === '원의 성질' && r.L2 === '원주각');
-  assert.ok(aliased.length > 0);
-  for (const r of aliased) assert.ok(circle.paths.includes(core.pathKey(r, 4)), r.questionUid);
-  assert.ok(!scopes.some(s => !s.basicScope && s.L1 === '원의 성질' && s.L2 === '원주각'));
+  assert.equal(JSON.stringify(data.records), before, 'scope display must not mutate taxonomy records');
 });

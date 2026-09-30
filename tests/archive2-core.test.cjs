@@ -4,6 +4,7 @@ const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 const core = require("../archive/archive2-core.js");
+const canonical = require("../archive/archive2-canonical.js");
 const source = require("../archive/archive2-source.js");
 const root = path.resolve(__dirname, "..");
 const catalog = core.decodeCatalog(
@@ -15,6 +16,7 @@ const base = catalog.records.find((r) => r.automatic);
 const record = (n) => ({
   ...base,
   sourceOrdinal: n,
+  assignmentFingerprint: "c".repeat(64),
   questionUid:
     "qid_v1_" +
     crypto
@@ -22,7 +24,91 @@ const record = (n) => ({
       .update(base.sourceFile + "#" + n)
       .digest("hex"),
 });
-const request = (rows) => ({
+function canonicalAuthority(records) {
+  const taxonomyVersion = "test-taxonomy-v1";
+  const authority = {
+    taxonomyVersion,
+    examGradeByFile: {},
+    identityByUid: {},
+    gradeCourses: [],
+    canonicalParents: [],
+    assignmentsByUid: {},
+    advancedAssignmentsByUid: {},
+    projectionPolicy: {
+      schemaVersion: "archive2-canonical-projection-policy-v1",
+      version: "test",
+      canonicalMasterSha256: taxonomyVersion,
+      gradeCourseAllowlist: [],
+      high1CompatibilityProjections: [],
+      high23SharedSubjects: [],
+    },
+  };
+  for (const row of records) {
+    const grade = row.sourceGrade;
+    authority.examGradeByFile[row.sourceFile] = grade;
+    authority.identityByUid[row.questionUid] = {
+      questionUid: row.questionUid,
+      sourceArchiveFile: row.sourceFile,
+      sourceOrdinal: row.sourceOrdinal,
+      status: "VERIFIED",
+    };
+    const gradeCourse = { grade, curriculumKey: row.curriculumKey, courseKey: row.courseKey };
+    if (!authority.gradeCourses.some(x => JSON.stringify(x) === JSON.stringify(gradeCourse)))
+      authority.gradeCourses.push(gradeCourse);
+    if (!authority.projectionPolicy.gradeCourseAllowlist.some(x => JSON.stringify(x) === JSON.stringify(gradeCourse)))
+      authority.projectionPolicy.gradeCourseAllowlist.push(gradeCourse);
+    const parent = {
+      grade,
+      curriculumKey: row.curriculumKey,
+      courseKey: row.courseKey,
+      L1: row.L1,
+      L2: row.L2,
+    };
+    if (!authority.canonicalParents.some(x => JSON.stringify(x) === JSON.stringify(parent)))
+      authority.canonicalParents.push(parent);
+    authority.assignmentsByUid[row.questionUid] = [{
+      questionUid: row.questionUid,
+      sourceFile: row.sourceFile,
+      sourceOrdinal: row.sourceOrdinal,
+      sourceFingerprint: row.assignmentFingerprint,
+      assignmentFingerprint: row.assignmentFingerprint,
+      ...parent,
+      approvalStatus: "APPROVED",
+      taxonomyVersion: authority.taxonomyVersion,
+      reviewEvidence: {
+        status: "PASS",
+        reference: "tests/archive2-core.test.cjs",
+        sha256: "d".repeat(64),
+      },
+    }];
+    if (row.sourceGrade === "고1" && row.curriculumKey === "2015") {
+      const unitKey = row.legacyStandardUnitKey || row.standardUnitKey;
+      const projectionKey = unitKey === "H15-SA-09" ? "COMMON_MATH_2"
+        : unitKey === "H15-SB-06" ? "COMMON_MATH_1" : "";
+      if (projectionKey) {
+        const targetCourse = projectionKey === "COMMON_MATH_1" ? "공통수학1" : "공통수학2";
+        const targetGradeCourse = { grade: "고1", curriculumKey: "2022", courseKey: targetCourse };
+        if (!authority.projectionPolicy.gradeCourseAllowlist.some(x => JSON.stringify(x) === JSON.stringify(targetGradeCourse)))
+          authority.projectionPolicy.gradeCourseAllowlist.push(targetGradeCourse);
+        authority.projectionPolicy.high1CompatibilityProjections.push({
+        sourceGrade: "고1",
+        sourceCurriculumKey: "2015",
+        sourceCourseKey: row.courseKey,
+        sourceUnitKey: unitKey,
+        projectionKey,
+        targetCurriculumKey: "2022",
+        targetCourseKey: targetCourse,
+        approvalStatus: "APPROVED",
+        taxonomyVersion,
+        evidenceReference: "tests/archive2-core.test.cjs",
+        evidenceSha256: "e".repeat(64),
+        });
+      }
+    }
+  }
+  return authority;
+}
+const request = (rows, records = [base]) => ({
   filters: {
     grade: base.sourceGrade,
     curriculumKey: base.curriculumKey,
@@ -30,10 +116,13 @@ const request = (rows) => ({
   },
   rows,
   seed: "teacher-test",
+  canonicalAuthority: canonicalAuthority(records),
 });
 
 test("BASIC preserves explicit quality holds while optional difficulty remains a filter", () => {
-  assert.ok(base && core.eligibility(base).ok);
+  const eligibleBase = record(base.sourceOrdinal);
+  const authority = canonicalAuthority([eligibleBase]);
+  assert.ok(base && core.eligibility(eligibleBase, { canonicalAuthority: authority }).ok);
   for (const change of [
     { reviewStatus: "HOLD" },
     {
@@ -43,19 +132,19 @@ test("BASIC preserves explicit quality holds while optional difficulty remains a
     { identityStatus: "UNRESOLVED" },
     { sourceStatus: "HOLD", sourceIntegrityStatus: "HOLD" },
   ])
-    assert.equal(core.eligibility({ ...base, ...change }).ok, false);
+    assert.equal(core.eligibility({ ...eligibleBase, ...change }, { canonicalAuthority: authority }).ok, false);
   for (const change of [
     { difficultyBucket: "중" }, { difficultyBucket: "UNKNOWN" },
     { legacyLevelCompatibility: "BORDERLINE_REVIEW" },
   ]) {
-    const record = { ...base, ...change };
-    assert.equal(core.eligibility(record).ok, true);
-    assert.equal(core.matches(record, { difficultyBuckets: [1, 2, 3, 4, 5] }), false);
+    const record = { ...eligibleBase, ...change };
+    assert.equal(core.eligibility(record, { canonicalAuthority: authority }).ok, true);
+    assert.equal(core.matches(record, { difficultyBuckets: [1, 2, 3, 4, 5] }, { canonicalAuthority: authority }), false);
   }
 });
 test("pin and rebuild retain pins and student/series exclusion; no silent shortage relaxation", () => {
   const pool = Array.from({ length: 20 }, (_, i) => record(i + 1));
-  const req = request([{ id: "a", count: 10 }]);
+  const req = request([{ id: "a", count: 10 }], pool);
   req.pins = [{ questionUid: pool[0].questionUid, rowId: "a" }];
   const context = {
     student: [pool[1].questionUid],
@@ -100,7 +189,7 @@ test("grade-only plans accept a merged set of canonical paths", () => {
 test("newest eligible years fill each row first, independent of input order and seed", () => {
   const pool = [2021, 2025, 2026, 2025, 2026, undefined].map((year, i) => ({ ...record(i + 1), year }));
   for (const seed of ['one', 'two', 'three']) {
-    const req = { ...request([{ id: 'a', count: 4 }]), seed };
+    const req = { ...request([{ id: 'a', count: 4 }], pool), seed };
     const result = core.selectBlueprint([...pool].reverse(), req);
     assert.equal(result.ok, true);
     assert.deepEqual(result.selected.map(r => r.year), [2026, 2026, 2025, 2025]);
@@ -109,16 +198,17 @@ test("newest eligible years fill each row first, independent of input order and 
   }
 });
 test("latest-first keeps year/source restrictions, pins, difficulty and history authoritative", () => {
-  const pool = [2021, 2025, 2026, 2025, 2026].map((year, i) => ({ ...record(i + 1), year, sourceFile: 'exam-' + i + '.js' }));
+  const pool = [2021, 2025, 2026, 2025, 2026].map((year, i) => ({ ...record(i + 1), year, sourceFile: base.sourceFile.replace(/\.js$/, `-${i}.js`) }));
+  const req = request([{ id: 'a', count: 3 }], pool);
   pool[4].reviewStatus = 'HOLD';
-  const req = request([{ id: 'a', count: 3 }]);
   req.pins = [{ questionUid: pool[0].questionUid, rowId: 'a' }];
   const result = core.selectBlueprint(pool, req, { student: [pool[2].questionUid] });
   assert.deepEqual(result.selected.map(r => r.year), [2025, 2025, 2021]);
-  const ranged = core.selectBlueprint(pool, { ...request([{ id: 'a', count: 2 }]), filters: { ...req.filters, yearFrom: 2025, yearTo: 2025 } });
+  const rangedRequest = request([{ id: 'a', count: 2 }], pool);
+  const ranged = core.selectBlueprint(pool, { ...rangedRequest, filters: { ...req.filters, yearFrom: 2025, yearTo: 2025 } });
   assert.equal(ranged.ok, true);
   assert.deepEqual(ranged.selected.map(r => r.year), [2025, 2025]);
-  const sourceOnly = core.selectBlueprint(pool, { ...request([{ id:'a',count:1 }]), filters: { ...req.filters, sourceFiles:[pool[0].sourceFile] } });
+  const sourceOnly = core.selectBlueprint(pool, { ...req, rows: [{ id:'a',count:1 }], filters: { ...req.filters, sourceFiles:[pool[0].sourceFile] } });
   assert.equal(sourceOnly.selected[0].year,2021);
   assert.equal(core.matches({...pool[0],year:undefined},{yearTo:2025}),false);
 });
@@ -134,10 +224,10 @@ test("two source files with equal lexical declarations load independently and or
   assert.equal(a[1].content, 2);
   assert.equal(b[0].content, 3);
 });
-test("all BASIC production records have verified current source identity without requiring optional metadata approval", () => {
+test("raw catalog records cannot bypass the resolved canonical authority with stored flags", () => {
   const ids = new Set();
   for (const r of catalog.records.filter((r) => r.automatic)) {
-    assert.equal(core.eligibility(r).ok, true);
+    assert.equal(core.eligibility({ ...r, l1l2ParentValid: true }).ok, false);
     assert.ok(!ids.has(r.questionUid));
     ids.add(r.questionUid);
     assert.equal(r.sourceIntegrityStatus, "VERIFIED");
@@ -154,7 +244,7 @@ test("grade-aware subject projection keeps high semantic API stable and gives hi
   assert.equal(core.hasSubjectProjection("고1"), true);
   assert.deepEqual(
     core.subjectProjectionOptions("고1").map((item) => item.label),
-    ["공통수학1", "공통수학2"],
+    ["공통수학1", "공통수학2", "수학(상)", "수학(하)"],
   );
   assert.deepEqual(
     core.subjectProjectionOptions("고2"),
@@ -162,94 +252,51 @@ test("grade-aware subject projection keeps high semantic API stable and gives hi
   );
 });
 
-test("high1 projection follows unit-level 2015 to 2022 crosswalk instead of whole-course mapping", () => {
-  const expected = new Map([
-    ["H15-SA-09", "COMMON_MATH_2"],
-    ["H15-SA-10", "COMMON_MATH_2"],
-    ["H15-SA-11", "COMMON_MATH_2"],
-    ["H15-SA-12", "COMMON_MATH_2"],
-    ["H15-SB-06", "COMMON_MATH_1"],
-    ["H15-SB-07", "COMMON_MATH_1"],
-    ["H15-SB-08", "COMMON_MATH_1"],
+test("high1 projection uses exact allowlisted curriculum equivalences and native 2015 course groups", () => {
+  const authority = canonicalAuthority([
+    { ...record(1), sourceGrade: "고1", curriculumKey: "2015", courseKey: "수학(상)", legacyStandardUnitKey: "H15-SA-09" },
+    { ...record(2), sourceGrade: "고1", curriculumKey: "2015", courseKey: "수학(상)", legacyStandardUnitKey: "H15-SA-10" },
   ]);
-  for (const [legacyStandardUnitKey, projection] of expected)
-    assert.equal(
-      core.subjectProjectionForRecord({
-        effectiveBrowseGrade: "고1",
-        curriculumKey: "2015",
-        courseKey: legacyStandardUnitKey.startsWith("H15-SA") ? "수학(상)" : "수학(하)",
-        legacyStandardUnitKey,
-      }),
-      projection,
-      legacyStandardUnitKey,
-    );
-
-  for (const [legacyStandardUnitKey, canonicalUnitKey] of Object.entries(core.HIGH1_DIRECT_KEY_MAP)) {
-    const projection = core.subjectProjectionForRecord({
-      effectiveBrowseGrade: "고1",
-      curriculumKey: "2015",
-      courseKey: legacyStandardUnitKey.startsWith("H15-SA") ? "수학(상)" : "수학(하)",
-      legacyStandardUnitKey,
-    });
-    assert.equal(
-      projection,
-      canonicalUnitKey.startsWith("H22-C2-") ? "COMMON_MATH_2" : "COMMON_MATH_1",
-      `${legacyStandardUnitKey} -> ${canonicalUnitKey}`,
-    );
-  }
-
+  const policy = authority.projectionPolicy;
+  assert.equal(core.subjectProjectionForRecord({
+    sourceGrade: "고1", curriculumKey: "2015", courseKey: "수학(상)", legacyStandardUnitKey: "H15-SA-09",
+  }, "고1", policy), "COMMON_MATH_2");
+  assert.equal(core.subjectProjectionForRecord({
+    sourceGrade: "고1", effectiveBrowseGrade: "고1", curriculumKey: "2015", courseKey: "수학(상)", legacyStandardUnitKey: "H15-SA-10",
+  }, "고1", policy), "H1_2015_MATH_UP");
+  assert.equal(core.subjectProjectionForRecord({
+    sourceGrade: "중3", effectiveBrowseGrade: "고1", legacyStandardUnitKey: "M3-04",
+  }, "고1", policy), "");
+  assert.equal(core.subjectProjectionForRecord({
+    sourceGrade: "고1", curriculumKey: "2015", legacyStandardUnitKey: "RAW-legacy",
+  }, "고1", policy), "");
   assert.equal(
     core.subjectProjectionForRecord({
-      effectiveBrowseGrade: "고1",
-      curriculumKey: "2015",
-      courseKey: "수학(상)",
-    }),
-    "",
-  );
-  assert.equal(
-    core.subjectProjectionForRecord({
-      effectiveBrowseGrade: "고1",
-      curriculumKey: "2015",
-      courseKey: "수학(하)",
-    }),
-    "",
-  );
-  assert.equal(
-    core.subjectProjectionForRecord({
+      sourceGrade: "고1",
       effectiveBrowseGrade: "고1",
       curriculumKey: "2022",
       courseKey: "공통수학1",
-    }),
+    }, "고1", { ...policy, gradeCourseAllowlist: policy.gradeCourseAllowlist.concat({ grade:"고1",curriculumKey:"2022",courseKey:"공통수학1" }) }),
     "COMMON_MATH_1",
   );
   assert.equal(
     core.subjectProjectionForRecord({
+      sourceGrade: "고1",
       effectiveBrowseGrade: "고1",
       curriculumKey: "2022",
       courseKey: "공통수학2",
-    }),
+    }, "고1", { ...policy, gradeCourseAllowlist: policy.gradeCourseAllowlist.concat({ grade:"고1",curriculumKey:"2022",courseKey:"공통수학2" }) }),
     "COMMON_MATH_2",
   );
 });
 
-test("high1 special-case unit mapping matches the verified unit-past candidate reference", () => {
-  const cases = [
-    [{ legacyStandardUnitKey: "H15-SA-02", L2: "방정식과 부등식" }, "H22-C-06"],
-    [{ legacyStandardUnitKey: "H15-SA-03", L2: "복소수" }, "H22-C-04"],
-    [{ legacyStandardUnitKey: "H15-SA-04", L2: "이차방정식" }, "H22-C-05"],
-    [{ legacyStandardUnitKey: "H15-SA-06", L2: "여러 가지 방정식" }, "H22-C-06"],
-    [{ legacyStandardUnitKey: "H15-SB-02", L2: "함수" }, "H22-C2-07"],
-  ];
-  for (const [record, expected] of cases)
-    assert.equal(core.high1CanonicalUnitKeyForRecord(record), expected);
-  assert.equal(
-    core.high1CanonicalUnitKeyForRecord({
-      sourceFile: "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
-      sourceQuestionNo: "12",
-      legacyStandardUnitKey: "H15-SA-02",
-    }),
-    "H22-C-06",
-  );
+test("unapproved legacy, RAW, label, and source-grade projections stay unavailable", () => {
+  const policy = { canonicalMasterSha256: "x", gradeCourseAllowlist: [], high1CompatibilityProjections: [], high23SharedSubjects: [] };
+  for (const row of [
+    { sourceGrade: "고1", curriculumKey: "2015", courseKey: "수학(상)", legacyStandardUnitKey: "RAW-다항식" },
+    { sourceGrade: "중3", effectiveBrowseGrade: "고1", courseKey: "수학(상)", legacyStandardUnitKey: "M3-04" },
+    { effectiveBrowseGrade: "고1", courseKey: "수학(상)", legacyStandardUnitKey: "H15-SA-01" },
+  ]) assert.equal(core.subjectProjectionForRecord(row, "고1", policy), "");
 });
 
 test("user-facing subject label resolver is nonblank only when a real subject is selected", () => {
@@ -274,6 +321,7 @@ test("blueprint and review consume the same high1 subject projection filter", ()
     questionUid: "qid_v1_" + String(n).padStart(64, "0"),
     identityStatus: "VERIFIED",
     sourceStatus: "VERIFIED",
+    sourceIntegrityStatus: "VERIFIED",
     taxonomyStatus: "CONFIRMED",
     gradeConflict: false,
     reviewStatus: "reviewed_pass",
@@ -301,7 +349,12 @@ test("blueprint and review consume the same high1 subject projection filter", ()
   });
   const common2 = make(1, "H15-SA-09");
   const common1 = make(2, "H15-SB-06");
+  common2.sourceFingerprint = "source-1";
+  common1.sourceFingerprint = "source-2";
+  common2.assignmentFingerprint = "assignment-1";
+  common1.assignmentFingerprint = "assignment-2";
   const path = core.pathKey(common2, 4);
+  const authority = canonicalAuthority([common1, common2]);
   const req = {
     filters: {
       grade: "고1",
@@ -311,6 +364,7 @@ test("blueprint and review consume the same high1 subject projection filter", ()
     },
     rows: [{ id: "a", count: 1, paths: [path] }],
     seed: "projection-test",
+    canonicalAuthority: authority,
   };
   const result = core.selectBlueprint([common1, common2], req);
   assert.equal(result.ok, true);
