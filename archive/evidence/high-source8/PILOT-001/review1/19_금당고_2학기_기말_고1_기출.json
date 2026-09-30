@@ -1,0 +1,118 @@
+{
+  "schema": "APMATH_HIGH_SOURCE8_REVIEW1_RECEIPT_v1",
+  "batch": "PILOT-001",
+  "examFile": "19_금당고_2학기_기말_고1_기출.js",
+  "ordinal": 7,
+  "stage": "REVIEW1_DONE_WITH_ITEM_HOLDS",
+  "reviewMode": "FULL_INDEPENDENT_REPAIR_BEFORE_HOLD",
+  "branch": "work/high-source8-r1",
+  "baseReview1Head": "6c5384aa9cc59b44a1c2c2e4703f9f8ec38bbc91",
+  "baseCreateHead": "907c013df06b1fe14e369ba6d744d2f89a90e004",
+  "baseMainSha": "bb358e53aa27128200b2bb5165a5b7ddbf0158e2",
+  "sourceAuthority": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceBlob": "e1ca79af78842cce246f52de15a6fdbb5c178f03",
+  "finalArtifactPath": "archive-work/exams/original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+  "finalArtifactSha": "572b6e321f3e7b53a2e675d3441ff5d6e8e8e284",
+  "productionMutationCount": 0,
+  "sourceParity": "PASS 22/22 content; 20/20 objective choices; 100/100 choice strings exact",
+  "sourceOnlyProtectedFields": "answer/solution blank preserved 22/22",
+  "structureAudit": "PASS 22/22; ids/sourceOrdinal continuous; grid 22/22; wide=false 22/22; source-bound visuals q8/q20/q21 fresh pixel-reviewed 3/3",
+  "questionLayoutAudit": {
+    "denominator": 22,
+    "grid": 22,
+    "modifiedQuestionIds": [],
+    "priorCreateLayoutRepairsIndependentlyValidated": [
+      21,
+      22
+    ],
+    "sourceTextExactParityPassCount": 22,
+    "choicesExactParityPassCount": 20,
+    "choiceStringExactParityPassCount": 100,
+    "knownQuestionLayoutRepairPending": 0,
+    "questionLayoutHoldCount": 0,
+    "renderStatus": "NOT_RUN_CODEX_HANDOFF",
+    "status": "PASS"
+  },
+  "visualAudit": {
+    "count": 3,
+    "qids": [
+      8,
+      20,
+      21
+    ],
+    "status": "PASS",
+    "pixelReviewMode": "FRESH_SOURCE_BRANCH_ASSET_PIXEL_REVIEW",
+    "assetGitBlobs": {
+      "8": "bc3d98597852cb9530227960a1614eb91d3d6aa1",
+      "20": "c89c99a052726f7f4e42125cefc565681576cf7d",
+      "21": "be14b1b9b1e3bac43be063e3fa5be73a9bc42364"
+    },
+    "notes": {
+      "8": "Source crop independently inspected: hyperbola geometry shows vertical asymptote x=-3, horizontal asymptote y=2, and the lower branch x-intercept at -2; this supports -5P(a)=10.",
+      "20": "Source crop independently inspected: translated 3-4-5 right triangle and incircle are present and semantically consistent with the statement.",
+      "21": "Source crop independently inspected: P is explicitly drawn on the right branch x>2 of y=5/(x-2)+3, so the minimization uses t=x-2>0."
+    }
+  },
+  "independentMathAttempted": "22/22",
+  "independentMathResolved": "21/22",
+  "independentResults": {
+    "1": "②",
+    "2": "③",
+    "3": "⑤",
+    "4": "④",
+    "5": "①",
+    "6": "②",
+    "7": "①",
+    "8": "⑤",
+    "9": "④",
+    "10": "④",
+    "11": "②",
+    "12": "④",
+    "13": "③",
+    "14": "⑤",
+    "15": "②",
+    "16": "④",
+    "17": "①",
+    "18": "②",
+    "19": "ITEM_HOLD",
+    "20": "③",
+    "21": "5+2√5",
+    "22": "15√2/4"
+  },
+  "itemHoldCount": 1,
+  "itemHolds": [
+    {
+      "qid": 19,
+      "questionUid": "sha256:546135392a1d56734147a198989e11b66c1736492d26e19c1d837816d131f816|19",
+      "reason": "SOURCE_MATH_UNBOUNDED_MAXIMUM",
+      "observedEvidence": "Fresh REVIEW1 derivation: for k<0 the two radical domains do not overlap. For k>0, intersections satisfy sqrt(k)(sqrt(x+2)+sqrt(2-x))=8 on -2<=x<=2, giving exactly two intersections iff 8<k<=16. Therefore the condition 'do not meet at two distinct points' is also true for every k>16, so the admissible set is unbounded above and has no finite maximum although all five choices are finite.",
+      "unresolvedPoint": "There are multiple plausible source corrections (for example changing the negation versus supplying a missing bound/domain), so no unique ONE_SEMANTIC_LOCUS_REPAIR can be selected from the frozen source alone.",
+      "nextRequiredEvidenceOrCapability": "Original answer key, erratum, or other authoritative correction/range evidence for q19.",
+      "createdStage": "CREATE",
+      "lastReviewedStage": "REVIEW1"
+    }
+  ],
+  "repairBeforeHold": "ATTEMPTED_Q19_NO_DETERMINISTIC_MINIMAL_REPAIR",
+  "blindDecisionFrozenBeforeCompare": false,
+  "decisionIsolationNote": "Prior-stage receipt was opened for physical stage/authority reconstruction before completion of the fresh math pass; no prior answer/verdict was used as an answer key. Every qid was recomputed from source/current artifact, and q19 was rederived independently.",
+  "priorStageVerdictUsedAsAnswerKey": false,
+  "goldenSampleRefs": [
+    "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js@7e811bbe0cb2d440638437588b47ac588e1a47f2",
+    "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js@eb8776d19989f8f4219f4b80db0daf72310109cd"
+  ],
+  "negativeSampleRef": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md@f7440339f2532f6e7ea357541c2a09b05847af59",
+  "calibrationAxes": [
+    "QUESTION_MICRO_LAYOUT",
+    "VISUAL_SEMANTIC_PARITY"
+  ],
+  "sampleReadBeforeWork": false,
+  "calibrationStatus": "PASS_AFTER_BLIND_MATH_RECOMPUTE",
+  "correctionProtocolBlob": "c50731bae827193c717d4258c5715f79ed90a33e",
+  "review1ProtocolBlob": "1c484378d7a7563a9eea922d61cdb8f01eba2766",
+  "microLayoutProtocolBlob": "7af7a8dbfed4ce6ee9737020d92d4c427b183ffa",
+  "goldenCalibrationProtocolBlob": "dfe613a75ce3c269822c72c8ed92b6e5b242fe62",
+  "nextStage": "READY_FOR_REVIEW2_WITH_ITEM_HOLDS",
+  "nextOwner": "REVIEW1 / ordinal 8",
+  "notionSyncStatus": "PENDING",
+  "updatedAtKst": "2026-10-01T01:20:26+09:00"
+}
