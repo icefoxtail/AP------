@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { objectSha } from '../pipeline-core/canonical.mjs';
 import { loadActiveMetaRegistry } from './active-registry.mjs';
 import {
@@ -23,9 +25,9 @@ import {
   questionUidForSource,
 } from './rpm-active-resolver.mjs';
 
-const root = new URL('../../../', import.meta.url).pathname.replace(/^\//, '').replaceAll('/', '\\');
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const registry = loadActiveMetaRegistry(root);
-const crosswalk = JSON.parse(fs.readFileSync(`${root}\\archive\\data\\meta-foundation\\crosswalks\\rpm-primary-v1.0\\high1.json`, 'utf8'));
+const crosswalk = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json'), 'utf8'));
 const rowFor = id => crosswalk.records.find(row => row.id === id);
 
 function makeInput(row, overrides = {}) {
@@ -184,7 +186,7 @@ test('M1/M2/M3 RPM semantic FINAL is independent of legacy projection gaps', () 
     ['M3', 'middle3.json', 'original/middle/m3/1mid/fixture.js'],
   ];
   for (const [grade, crosswalkFile] of fixtures) {
-    const file = root + '\\archive\\data\\meta-foundation\\crosswalks\\rpm-primary-v1.0\\' + crosswalkFile;
+    const file = path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0', crosswalkFile);
     const doc = JSON.parse(fs.readFileSync(file, 'utf8'));
     const row = doc.records.find(candidate => candidate.mappingStatus === 'RPM_ONLY' && candidate.rpmPath?.l3 && candidate.rpmPath?.l4);
     assert.ok(row, grade + ' fixture needs an RPM_ONLY projection row');
