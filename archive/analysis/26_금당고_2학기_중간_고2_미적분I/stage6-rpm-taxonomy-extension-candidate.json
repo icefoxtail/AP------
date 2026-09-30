@@ -1,8 +1,8 @@
 {
   "schemaVersion": "rpm-primary-extension-candidate-v1",
-  "status": "REVIEW_READY",
+  "status": "PROMOTED_ON_BRANCH",
   "authorityBase": {
-    "mainSha": "7a1a30eecc15e0bb66439705f72db7ac1a16e5a5",
+    "mainSha": "a452eb986f6ebb5ac63c87056aba7bd200915131",
     "rpmPackage": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0",
     "rpmAuthorityVersion": "RPM_PRIMARY_TAXONOMY_v1.0",
     "activePack": "LIMIT_CONTINUITY",
@@ -95,5 +95,26 @@
     "l4RpmPathRequired": true,
     "activeNewKeyRequired": false,
     "nextGate": "promote RPM extension candidate into locked master/view/crosswalk with parity/manifest update, then run canonical resolver/validator"
+  },
+  "promotion": {
+    "rpmMasterPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "curriculumViewPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+    "matrixPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/L1_L4_CANONICAL_DRAFT_MATRIX.csv",
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+    "crosswalkId": "H2-M2-RPM-098",
+    "statsAfter": {
+      "L1": 90,
+      "L2": 222,
+      "L3": 681,
+      "L4": 1408
+    },
+    "packageManifestUpdated": true,
+    "topLevelRulesManifestUpdated": true,
+    "activeCanonicalMutation": false,
+    "activeReuse": [
+      "PT_LIMIT_VALUE_CALC",
+      "TPL_LIMIT_SQUEEZE"
+    ],
+    "projectionStatus": "PROJECTION_BINDING_PENDING"
   }
 }
