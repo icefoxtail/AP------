@@ -1,0 +1,703 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW2_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW2_DONE_WITH_ITEM_HOLDS",
+  "readyState": "PUBLISH_PENDING_ITEM_HOLDS",
+  "examId": "26_복성고_2학기_중간_고1_기출",
+  "reviewedAtKst": "2026-10-01T07:58:50+09:00",
+  "input": {
+    "remoteMainSha": "5cb6a311b1364c6186b5961b74681a320f34a55a",
+    "review1Branch": "work/line3/26-bokseong-h1-2mid-review1-20261001",
+    "review1ArtifactCommit": "b4287f176f5f1973ef8e9dc974004a24f1edc532",
+    "review1SealedHead": "ebe9b7f9642a300916ded7caefc3c5b65baba388",
+    "review1FinalArtifactSha": "f8ec4d5c308a26cddd1f93eefff2bdfa4bdf4b2e",
+    "sourceAuthorityBranch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceQuestionTextFreezeBlob": "a6d1fd03ebed6d7dee1db70059d5d402cbd3d822",
+    "sourceDocumentSha256": "sha256:47c548f8d9b598c2260ef2848fab64ae8ab07eed15d57b70c1bff1922337b8c7",
+    "sourceFullPageGitBlobs": [
+      "2f07b2c0a8bdc95d6d2acac9ae5e868bb6b1bb18",
+      "ff02cd4d69bef503de24a88156b64bb9bccc4a0c",
+      "de14e3645eed550a5f525796acb2ddd3a7cddcb1",
+      "a80d66fb1f0d1e1fe9d5ba3953edb82f21e807dd",
+      "d75ac4569e571be162fa5a37a22707074daf6770",
+      "01ae675a60a7a8b3ae4da2c04e8993f8f0982ac2"
+    ],
+    "rpmCrosswalkHigh1Blob": "904b3768b69b300607e52217cad05bf71e34f221",
+    "goldenSampleRefs": [
+      "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_순천여고_2학기_중간_고1_기출.js",
+      "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js"
+    ],
+    "negativeFixtureRef": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md"
+  },
+  "denominator": {
+    "questionCount": 22,
+    "problemImageCount": 1,
+    "solutionSvgCount": 5
+  },
+  "independentAudit": {
+    "sourceContentChoices": "22/22 full-page source inspected; q2 printed source mathematically defective",
+    "answerSolve": "22/22 independently solved; q2 has no valid printed option",
+    "mathSolution": "21/22 PASS + q2 ITEM_HOLD_SOURCE_MATH",
+    "smallBoard": "22/22 audited; q2 explanatory hold solution preserved",
+    "microLayout": "22/22 PASS grid",
+    "problemImages": "1/1 q9 source graph semantic + byte binding PASS",
+    "solutionSvg": "5/5 code-first mathematical parity PASS",
+    "metadata": "22/22 fresh independent",
+    "difficulty": "22/22 fresh independent"
+  },
+  "sourceVisualEvidence": {
+    "fullPages": "6/6 directly inspected",
+    "q9ProblemImageGitBlob": "db464990a515f88fd058aa970ff09016f8d376a6",
+    "q9IndependentRead": "printed line has positive slope, negative y-intercept and positive x-intercept; therefore ab<0 and bc>0",
+    "solutionSvgGitBlobs": {
+      "q11": "b77d72f5197ca4e8f989ea83f5444ae972b68636",
+      "q12": "3146ac6d974c0b12321e6e57436db4c395847a09",
+      "q13": "88ebe907def60eab9d360d4eca8ce34ce17d4613",
+      "q19": "07d09e55b0c3518b79c667b685bbdd2335ddeb79",
+      "q22": "3d7451e911444d34d5e8ddf864132dd6259455e3"
+    }
+  },
+  "repairs": [
+    {
+      "qid": 7,
+      "type": "RELATIONAL_META_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "added ACTIVE CC_QUADRATIC_FUNCTION and SEQUENTIAL because locating A from the quadratic graph precedes internal division"
+    },
+    {
+      "qid": 9,
+      "type": "SOURCE_VISUAL_RESOLUTION_AND_ANSWER_SOLUTION_REPAIR",
+      "result": "MATH_PASS_META_HOLD",
+      "detail": "direct binary graph inspection resolved signs; answer fixed to ④ with fresh reproducible solution; true RPM L4 gap remains"
+    },
+    {
+      "qid": 11,
+      "type": "META_DISPOSITION_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "RPM H1-RPM-228 semantic FINAL; unsafe line-object projection remains null as compatibility pending, which is not semantic HOLD; added CC_DISTANCE_TWO_POINTS"
+    },
+    {
+      "qid": 14,
+      "type": "DIFFICULTY_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "fresh blind boundary judgment bucket 3→2, confidence medium, B23"
+    },
+    {
+      "qid": 16,
+      "type": "RELATIONAL_DIFFICULTY_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "added ACTIVE CC_QUADRATIC_EXTREMUM; bucket4 retained with medium confidence and B34 boundary"
+    },
+    {
+      "qid": 21,
+      "type": "PROJECTION_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "RPM H1-RPM-234 semantic FINAL and PT_SUBSET_COUNT retained; stale BASIC power-set template cleared because constrained counting is not 2^n direct"
+    },
+    {
+      "qid": 8,
+      "type": "LEGACY_COMPATIBILITY_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "level 하 vs fresh bucket3 is STRONG_CONFLICT, not BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "qid": 20,
+      "type": "LEGACY_COMPATIBILITY_REPAIR",
+      "result": "PASS_AFTER_REPAIR",
+      "detail": "level 하 vs fresh bucket3 is STRONG_CONFLICT, not BORDERLINE_ACCEPTABLE"
+    }
+  ],
+  "auditedSourceRepairCount": 0,
+  "itemHolds": [
+    {
+      "qid": 2,
+      "reason": "PRINTED_SOURCE_HAS_NO_VALID_OPTION; true statements are ㄱ,ㄷ,ㄹ but no choice contains that combination; additionally no unique RPM L4 for mixed set judgment"
+    },
+    {
+      "qid": 6,
+      "reason": "TRUE_META_HOLD_TWO_EQUALLY_DECISIVE_RPM_L4_PATHS_H1-RPM-212_AND_H1-RPM-213"
+    },
+    {
+      "qid": 8,
+      "reason": "TRUE_META_HOLD_NO_EXACT_RPM_L4_FOR_EXTERNAL_POINT_TANGENT_LINE_DETERMINATION"
+    },
+    {
+      "qid": 9,
+      "reason": "TRUE_META_HOLD_NO_EXACT_RPM_L4_FOR_LINE_GRAPH_COEFFICIENT_SIGN_JUDGMENT"
+    },
+    {
+      "qid": 19,
+      "reason": "TRUE_META_HOLD_NO_EXACT_RPM_L4_FOR_CIRCLE_POINT_SLOPE_EXTREMA_VIA_TANGENCY"
+    }
+  ],
+  "semanticMetaFinalCount": "17/22",
+  "projectionSummary": {
+    "reuse": 13,
+    "bindingPending": 1,
+    "unmaterialized": 1,
+    "compatibilityPending": 2,
+    "notAttempted": 5
+  },
+  "difficultyAuditCount": "22/22",
+  "questionAudits": [
+    {
+      "id": 1,
+      "answerIndependent": "①",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-211",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 2,
+      "answerIndependent": "NO_VALID_PRINTED_OPTION (ㄱ,ㄷ,ㄹ)",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE_PRINTED_ITEM_MATHEMATICALLY_DEFECTIVE",
+      "mathSolution": "ITEM_HOLD_SOURCE_MATH",
+      "smallBoard": "PASS_HOLD_EXPLANATION",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "ITEM_HOLD_SOURCE_MATH_META",
+      "holdReason": "PRINTED_SOURCE_HAS_NO_VALID_OPTION_AND_NO_UNIQUE_RPM_L4_FOR_MIXED_SET_JUDGMENT"
+    },
+    {
+      "id": 3,
+      "answerIndependent": "⑤",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-215",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 4,
+      "answerIndependent": "③",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-225",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 5,
+      "answerIndependent": "④",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-204",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B12",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 6,
+      "answerIndependent": "③",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "ITEM_HOLD_META",
+      "holdReason": "TWO_EQUALLY_DECISIVE_RPM_L4_PATHS_PARALLEL_AND_PERPENDICULAR_NO_UNIQUE_PRIMARY"
+    },
+    {
+      "id": 7,
+      "answerIndependent": "②",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-206",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 8,
+      "answerIndependent": "②",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "STRONG_CONFLICT"
+      },
+      "verdict": "ITEM_HOLD_META",
+      "holdReason": "RPM_L4_MISSING_FOR_EXTERNAL_POINT_TANGENT_LINE_DETERMINATION"
+    },
+    {
+      "id": 9,
+      "answerIndependent": "④",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "ITEM_HOLD_META",
+      "holdReason": "RPM_L4_MISSING_FOR_LINE_GRAPH_COEFFICIENT_SIGN_JUDGMENT"
+    },
+    {
+      "id": 10,
+      "answerIndependent": "②",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-218",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 11,
+      "answerIndependent": "⑤",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-228",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+      "crossConceptKeys": [
+        "CC_DISTANCE_TWO_POINTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "STRONG_CONFLICT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 12,
+      "answerIndependent": "④",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-222",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 13,
+      "answerIndependent": "①",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-228",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 14,
+      "answerIndependent": "③",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-238",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION",
+        "CC_NUMBER_PRIME_COPRIME"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 15,
+      "answerIndependent": "③",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-238",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 16,
+      "answerIndependent": "⑤",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-237",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EXTREMUM"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 17,
+      "answerIndependent": "⑤",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-242",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 18,
+      "answerIndependent": "②",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-229",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 19,
+      "answerIndependent": "①",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "HOLD",
+      "projectionStatus": "NOT_ATTEMPTED",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "ITEM_HOLD_META",
+      "holdReason": "RPM_L4_MISSING_FOR_CIRCLE_POINT_SLOPE_EXTREMA_VIA_TANGENCY"
+    },
+    {
+      "id": 20,
+      "answerIndependent": "$a=3,\\ b=4,\\ k=-\\dfrac{22}{25}$",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-213",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [
+        "CC_LINE_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE",
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "STRONG_CONFLICT"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 21,
+      "answerIndependent": "$50$",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-234",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "META_ONLY_COMPATIBILITY_PENDING",
+      "crossConceptKeys": [
+        "CC_PRIME_FACTORIZATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 22,
+      "answerIndependent": "$k<-\\dfrac{\\sqrt6}{3}\\ \\text{또는}\\ k\\ge\\dfrac{\\sqrt6}{3}$",
+      "sourceContentChoices": "PASS_FULL_PAGE_SOURCE",
+      "mathSolution": "PASS",
+      "smallBoard": "PASS",
+      "microLayout": "PASS_GRID",
+      "curriculum": "2022",
+      "rpmPrimary": "H1-RPM-219",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "PROJECTION_REUSE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "goldenCalibration": {
+    "decisionOrder": "blind math/meta/difficulty frozen before sample read",
+    "samples": [
+      "25_효천고_2학기_중간_고1_기출.js",
+      "25_순천여고_2학기_중간_고1_기출.js",
+      "25_제일고_2학기_중간_고1_기출.js"
+    ],
+    "negativeVisualChecks": [
+      "COORDINATE_SEMANTIC_PARITY",
+      "LABEL_OWNER_BINDING",
+      "MISSING_OWNER_RAY"
+    ]
+  },
+  "output": {
+    "review2Branch": "work/line3/26-bokseong-h1-2mid-review2-20261001"
+  },
+  "mainMutation": false,
+  "notes": [
+    "REVIEW1 verdict/repair/answer/solution/meta were not used as answer authority; comparison occurred only after independent decisions were frozen.",
+    "q2 defect is present in the printed source itself; no source mutation was made.",
+    "q9 source visual is directly readable in this runtime and its source-visual hold is resolved.",
+    "Projection gaps are not semantic HOLD under the current RPM→ACTIVE resolver contract.",
+    "No source text/image or solution SVG was mutated in REVIEW2."
+  ],
+  "itemHoldCount": 5,
+  "metadataAuditCount": "22/22",
+  "difficultyFullAuditCount": "22/22"
+}
