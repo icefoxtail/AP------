@@ -1,6 +1,6 @@
 {
   "schemaVersion": "archive-r2-meta-canonical-promotion-v1",
-  "status": "CANONICAL_PROMOTION_STATIC_CONTRACT_PASS",
+  "status": "CANONICAL_PROMOTION_VALIDATOR_PASS",
   "exam": "26_금당고_2학기_중간_고2_미적분I",
   "authorityBaseMain": "2326198add2f47013fdf3ac0108d38f3e0cb655a",
   "branch": "meta/high/h2/26-geumdang-mi1-canonical-20261001",
@@ -58,7 +58,7 @@
       "packageManifestParity": true,
       "topManifestParity": true
     },
-    "actualNodeResolverSuite": "RERUN_REQUIRED_AFTER_PORTABILITY_REPAIR",
+    "actualNodeResolverSuite": "PASS",
     "note": "Repository Node test runner is not executable in the connector runtime; branch-push CI/status is checked separately after commit.",
     "regressionDenominatorUpdate": {
       "file": "archive/tools/meta-foundation/rpm-primary-high-school-semantic-regression.test.mjs",
@@ -70,6 +70,50 @@
       "file": "archive/tools/meta-foundation/rpm-active-resolver.test.mjs",
       "issue": "Windows-only path construction caused ENOENT on Linux GitHub Actions.",
       "repair": "Use path.resolve/fileURLToPath/path.join; semantic assertions unchanged."
+    },
+    "nodeValidatorEvidence": {
+      "validationPr": 124,
+      "validationCommit": "bb383b918a6df77ec426d58ad178c185d11e8e4c",
+      "ciRunId": 36768872567,
+      "targetedTests": [
+        {
+          "file": "archive/tools/meta-foundation/rpm-active-resolver.test.mjs",
+          "result": "PASS",
+          "tests": "18/18"
+        },
+        {
+          "file": "archive/tools/meta-foundation/rpm-primary-high-school-semantic-regression.test.mjs",
+          "result": "PASS",
+          "tests": "2/2"
+        },
+        {
+          "file": "archive/tools/meta-foundation/semantic-authority-guard.test.mjs",
+          "result": "PASS",
+          "tests": "2/2"
+        }
+      ],
+      "wrapperResult": "PASS_3_OF_3"
+    },
+    "archiveRegistrationSync": {
+      "validationRunId": 36768872494,
+      "result": "PASS",
+      "targetedRegistrationTests": "PASS",
+      "generatedMutation": "NONE"
+    },
+    "repositoryGeneralCi": {
+      "result": "BASELINE_FAILURES_REMAIN",
+      "passCount": 182,
+      "failCount": 7,
+      "failures": [
+        "archive-inline-view-label.test.js",
+        "meta-foundation-derivative-runtime.test.js",
+        "meta-foundation-global-compile.test.js",
+        "meta-foundation-integral-calculus-runtime.test.js",
+        "meta-foundation-limit-continuity-runtime.test.js",
+        "meta-foundation-middle-geometry-runtime.test.js",
+        "tests/archive-saved-papers-runtime.mjs"
+      ],
+      "attribution": "Same seven unrelated repository baseline failures remained after the targeted validator itself passed. The temporary validator added no new failing test."
     }
   },
   "packageDigests": {
