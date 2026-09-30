@@ -1,0 +1,147 @@
+{
+  "schema": "APMATH_HIGH_SOURCE8_CREATE_EVIDENCE_v1",
+  "batch": "PILOT-001",
+  "ordinal": 7,
+  "examFile": "19_금당고_2학기_기말_고1_기출.js",
+  "phase": "CREATE",
+  "sourceRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceBlob": "e1ca79af78842cce246f52de15a6fdbb5c178f03",
+  "baseMainSha": "c3ebfbe39f4301b3d6f28e0bb399b4cf203d605a",
+  "denominator": 22,
+  "sourceTruth": {
+    "status": "PASS",
+    "content": "22/22",
+    "choices": "20/20 + 2/2 N/A",
+    "sourceDocumentSha256": "sha256:546135392a1d56734147a198989e11b66c1736492d26e19c1d837816d131f816",
+    "evidence": "archive-work/evidence/19_금당고_2학기_기말_고1_기출/reports/source_fidelity_manual_check.json",
+    "evidenceBlob": "d7e0acbb65952633be14eedd77cd9eae789abdf5",
+    "failures": 0
+  },
+  "independentMath": {
+    "status": "PASS_WITH_ITEM_HOLD",
+    "solvedAttempted": "22/22",
+    "resolved": "21/22",
+    "answers": [
+      "②",
+      "③",
+      "⑤",
+      "④",
+      "①",
+      "②",
+      "①",
+      "⑤",
+      "④",
+      "④",
+      "②",
+      "④",
+      "③",
+      "⑤",
+      "②",
+      "④",
+      "①",
+      "②",
+      "ITEM_HOLD",
+      "③",
+      "5+2√5",
+      "15√2/4"
+    ],
+    "itemHoldCount": 1,
+    "itemHoldQuestionIds": [
+      19
+    ]
+  },
+  "itemHolds": [
+    {
+      "qid": 19,
+      "questionUid": "sha256:546135392a1d56734147a198989e11b66c1736492d26e19c1d837816d131f816|19",
+      "reason": "SOURCE_MATH_UNBOUNDED_MAXIMUM",
+      "observedEvidence": "Source-fidelity evidence confirms the frozen statement exactly: two curves y=-sqrt(kx+2k)+4 and y=sqrt(-kx+2k)-4, asking for the maximum nonzero real k such that the curves do not meet at two distinct points. Independent analysis gives two intersections only for 8<k<=16; for every k>16 there are again zero intersections, so the requested set is unbounded above and has no finite maximum although the choices are 14,16,18,20,24.",
+      "unresolvedPoint": "Whether the original intended condition omitted/changed a negation or intended a bounded k-domain cannot be determined without authoritative answer/source correction evidence.",
+      "nextRequiredEvidenceOrCapability": "Original answer key or other authoritative correction/erratum establishing the intended q19 condition/range; REVIEW1 must independently re-solve before using any repair.",
+      "createdStage": "CREATE",
+      "lastReviewedStage": "CREATE"
+    }
+  ],
+  "visual": {
+    "status": "PASS",
+    "problemImages": "3/3 fresh pixel inspected",
+    "qids": [
+      8,
+      20,
+      21
+    ],
+    "blobs": {
+      "8": "bc3d98597852cb9530227960a1614eb91d3d6aa1",
+      "20": "c89c99a052726f7f4e42125cefc565681576cf7d",
+      "21": "be14b1b9b1e3bac43be063e3fa5be73a9bc42364"
+    },
+    "semanticParity": "PASS",
+    "notes": {
+      "8": "Graph shows asymptotes x=-3 and y=2 with x-intercept -2, supporting the blind result choice ⑤.",
+      "20": "Translated 3-4-5 triangle and incircle labels/placement agree with the statement.",
+      "21": "Graph places P on the right branch x>2 of y=5/(x-2)+3; the intended branch is visually explicit."
+    },
+    "solutionSvgCount": 0
+  },
+  "questionMicroLayout": {
+    "status": "PASS_AFTER_REPAIR",
+    "qids": [
+      21,
+      22
+    ],
+    "before": "subjective-2up",
+    "after": "grid",
+    "issueCode": "SUBJECTIVE_2UP_WITHOUT_EVIDENCE",
+    "rationale": "Current canonical default is grid absent per-question STATIC_CAPACITY_EVIDENCE, actual render evidence, or explicit user direction. The three current high-school Golden Samples inspected after blind math use grid for every subjective item.",
+    "protectedFieldDrift": 0,
+    "renderStatus": "NOT_RUN"
+  },
+  "jsIntegrity": {
+    "status": "PASS",
+    "questionCount": 22,
+    "answerSolutionEmpty": "22/22",
+    "layoutOnlyDelta": [
+      21,
+      22
+    ]
+  },
+  "calibration": {
+    "golden": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "blob": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "subjectiveLayout": "grid 3/3"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "blob": "e23fc34093196f68aff6fef48d66b9830e6d9c12",
+        "subjectiveLayout": "grid 4/4"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "blob": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "subjectiveLayout": "grid 5/5"
+      }
+    ],
+    "negative": {
+      "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+      "blob": "f7440339f2532f6e7ea357541c2a09b05847af59"
+    },
+    "calibrationAxes": [
+      "QUESTION_MICRO_LAYOUT",
+      "VISUAL_SEMANTIC_PARITY"
+    ],
+    "sampleReadBeforeWork": false,
+    "blindDecisionFrozenBeforeCompare": true,
+    "calibrationStatus": "PASS"
+  },
+  "disposition": "CREATE_DONE_WITH_ITEM_HOLDS",
+  "itemHoldCount": 1,
+  "itemHoldQuestionIds": [
+    19
+  ],
+  "finalArtifactPath": "archive-work/exams/original/high/h1/2final/19_금당고_2학기_기말_고1_기출.js",
+  "finalArtifactRef": "work/high-source8-create",
+  "finalArtifactSha": "572b6e321f3e7b53a2e675d3441ff5d6e8e8e284",
+  "updatedAtKst": "2026-09-30T15:16:08+09:00"
+}
