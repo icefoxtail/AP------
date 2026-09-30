@@ -1,0 +1,504 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW1_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW1_DONE_WITH_ITEM_HOLDS",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "reviewedAtKst": "2026-10-01T05:58:01+09:00",
+  "input": {
+    "remoteMainSha": "73cbb3b62b1dafcdb9d227cf3239a0104ffdcbbd",
+    "createBranch": "work/line3/26-maesan-h1-2mid-create-20261001-r3",
+    "createSealedHead": "f7087c63fa09190a8883bef2c71ecf69dedf3068",
+    "createArtifactCommit": "9fa80ba827833700d05ddced0063b839655fafaf",
+    "createFinalArtifactSha": "e086cf0738bb3a3d8745bc697c95526e94678f74",
+    "sourceAuthorityBranch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceQuestionTextFreezeBlob": "11c2d220a22cba64ab81b503ae9a649722890dcf",
+    "rpmCrosswalkHigh1Blob": "904b3768b69b300607e52217cad05bf71e34f221"
+  },
+  "denominator": {
+    "questionCount": 21,
+    "problemImageCount": 3,
+    "solutionSvgCount": 5
+  },
+  "independentAudit": {
+    "sourceContentChoices": "21/21",
+    "answerSolve": "20/21 PASS + q18 source-visual ITEM_HOLD",
+    "mathSolution": "20/21 PASS after repairs + q18 ITEM_HOLD",
+    "microLayout": "21/21",
+    "metadata": "21/21 attempted",
+    "difficulty": "21/21 attempted; q18 UNKNOWN due source visual dependency"
+  },
+  "repairs": [
+    {
+      "scope": "all q1-q21",
+      "type": "SCHEMA_ENUM_REPAIR",
+      "detail": "subUnitConfidence/subUnitClassificationDepth normalized to current allowed candidate values"
+    },
+    {
+      "qid": 4,
+      "type": "META_PROJECTION_REPAIR",
+      "detail": "H1-RPM-225 is RPM_ONLY; removed non-authoritative PT_MOVE_POINT_TRANSLATION/TT_POINT_TRANSLATION_COORD projection"
+    },
+    {
+      "qid": 8,
+      "type": "DIFFICULTY_REPAIR",
+      "detail": "blind REVIEW1 = bucket3 medium B23"
+    },
+    {
+      "qid": 10,
+      "type": "SOLUTION_META_DIFFICULTY_REPAIR",
+      "detail": "removed out-of-course trigonometric half-angle method; used angle-bisector equal-distance locus; H1-RPM-215 ACTIVE projection; bucket3 B23"
+    },
+    {
+      "qid": 12,
+      "type": "SVG_DIFFICULTY_REPAIR_AND_META_HOLD",
+      "detail": "redrew coordinate-consistent solution SVG; blind bucket4 B34; semantic RPM H1-RPM-228 but active projection shape does not represent point-reflection shortest-distance item"
+    },
+    {
+      "qid": 15,
+      "type": "SOLUTION_SVG_REPAIR",
+      "detail": "removed trigonometric solution; replaced with projection/distance/Pythagorean algebra; redrew solution SVG with coordinate-consistent A,H,B,O relationships"
+    },
+    {
+      "qid": 18,
+      "type": "SOURCE_VISUAL_ITEM_HOLD",
+      "detail": "full-page/crop identity exists but binary pixels are not readable through current review runtime; answer/solution/difficulty cannot be independently frozen without guessing"
+    },
+    {
+      "qid": 19,
+      "type": "SVG_REPAIR",
+      "detail": "redrew solution SVG on one consistent coordinate scale for A(-2,4), B(4,1), X(6,0)"
+    },
+    {
+      "qid": 21,
+      "type": "SOLUTION_SVG_REPAIR_AND_META_HOLD",
+      "detail": "removed sin formula; used inscribed-angle/central-angle + right-isosceles geometry; redrew coordinate-consistent center locus SVG; exact RPM primary path still missing"
+    }
+  ],
+  "itemHolds": [
+    {
+      "qid": 1,
+      "reason": "NO_EXACT_RPM_L4_FOR_SETNESS_JUDGMENT"
+    },
+    {
+      "qid": 12,
+      "reason": "RPM_H1_RPM_228_ACTIVE_PROJECTION_SHAPE_MISMATCH_POINT_REFLECTION_SHORTEST_DISTANCE"
+    },
+    {
+      "qid": 18,
+      "reason": "SOURCE_VISUAL_BINARY_NOT_READABLE_IN_REVIEW_RUNTIME"
+    },
+    {
+      "qid": 21,
+      "reason": "NO_EXACT_RPM_L4_FOR_INSCRIBED_ANGLE_CIRCLE_CENTER_LOCUS"
+    }
+  ],
+  "questionAudits": [
+    {
+      "id": 1,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:③",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "ITEM_HOLD",
+      "projectionStatus": "NOT_PROJECTED_META_HOLD",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "ITEM_HOLD"
+    },
+    {
+      "id": 2,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:②",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-237",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 3,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:①",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-213",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 4,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:④",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-225",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "UNMATERIALIZED_RPM_ONLY",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 5,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:④",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-217",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 6,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:⑤",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-208",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "BINDING_PENDING",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 7,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:⑤",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-218",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 8,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:①",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-169",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 9,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:④",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-226",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 10,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:④",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-215",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundary": "B23",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 11,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:③",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-215",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 12,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:②",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "DIRECT_SOURCE_CROP_IDENTITY_AND_PROVENANCE_PASS",
+      "solutionSvg": "PASS_AFTER_CODE_FIRST_REPAIR_OR_RECHECK",
+      "rpmPrimary": "H1-RPM-228",
+      "rpmSemanticStatus": "ITEM_HOLD",
+      "projectionStatus": "NOT_PROJECTED_META_HOLD_CROSSWALK_SHAPE_MISMATCH",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "verdict": "ITEM_HOLD"
+    },
+    {
+      "id": 13,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:②",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-242",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 14,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:②",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-219",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 15,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:⑤",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "DIRECT_SOURCE_CROP_IDENTITY_AND_PROVENANCE_PASS",
+      "solutionSvg": "PASS_AFTER_CODE_FIRST_REPAIR_OR_RECHECK",
+      "rpmPrimary": "H1-RPM-220",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundary": "B34",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 16,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:15",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-234",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 17,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:(2,3)",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-208",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "BINDING_PENDING",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 18,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "ITEM_HOLD",
+      "solution": "ITEM_HOLD_UNVERIFIED_SOURCE_VISUAL",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "DIRECT_SOURCE_CROP_BOUND_BUT_SEMANTIC_SOURCE_VISUAL_UNVERIFIED",
+      "solutionSvg": "NOT_REPAIRED_DUE_SOURCE_VISUAL_HOLD",
+      "rpmPrimary": "H1-RPM-229",
+      "rpmSemanticStatus": "ITEM_HOLD",
+      "projectionStatus": "REUSE_ACTIVE_BUT_SOURCE_VISUAL_HOLD",
+      "difficulty": {
+        "bucket": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "boundary": "UNKNOWN",
+        "legacyCompatibility": "UNKNOWN"
+      },
+      "verdict": "ITEM_HOLD"
+    },
+    {
+      "id": 19,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:18√5",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "PASS_AFTER_CODE_FIRST_REPAIR_OR_RECHECK",
+      "rpmPrimary": "H1-RPM-205",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 20,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:15",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "N/A",
+      "rpmPrimary": "H1-RPM-234",
+      "rpmSemanticStatus": "FINAL",
+      "projectionStatus": "REUSE_ACTIVE",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": 21,
+      "sourceContentChoices": "PASS_FULL_PAGE_TEXT_FREEZE",
+      "answerIndependent": "PASS:7",
+      "solution": "PASS",
+      "microLayout": "PASS_GRID_DEFAULT",
+      "problemImage": "N/A",
+      "solutionSvg": "PASS_AFTER_CODE_FIRST_REPAIR_OR_RECHECK",
+      "rpmPrimary": null,
+      "rpmSemanticStatus": "ITEM_HOLD",
+      "projectionStatus": "NOT_PROJECTED_META_HOLD",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "high",
+        "boundary": "NONE",
+        "legacyCompatibility": "NORMAL"
+      },
+      "verdict": "ITEM_HOLD"
+    }
+  ],
+  "mainMutation": false,
+  "sourceMutation": false,
+  "nextOwner": "LINE3 REVIEW2",
+  "notes": [
+    "CREATE verdict/answer/solution/meta/hold were not used as answer authority; comparison occurred only after independent decisions.",
+    "No AUDITED_SOURCE_REPAIR was performed.",
+    "q18 source visual is the only content/math verification gap; exam stage remains stage-complete with qid-level hold."
+  ]
+}
