@@ -10,14 +10,20 @@
   ],
   "standardUnitMaster": "archive/data/master_tables/js_archive_tag_master.json",
   "identityPolicy": "qid_v1_ + sha256(normalizeNfc(sourceArchiveFile) + '#' + 1-based sourceOrdinal); registration pending production intake",
-  "semanticValidationStatus": "CANDIDATE_REPAIRED_READY_FOR_DETERMINISTIC_VALIDATOR",
+  "semanticValidationStatus": "PREFLIGHT_PASS_WITH_ITEM_META_HOLD",
   "difficultyStatus": "BLIND_REVIEW_PENDING",
   "difficultyReason": "이 작업자는 앞 단계에서 legacy level을 이미 보았으므로 v1.3의 strict blind first-pass를 주장하지 않는다. JS difficulty 4-field는 UNKNOWN 유지.",
   "globalGaps": {
     "mi1SubUnitMaster": "H22-M1-* standardUnit은 ACTIVE이나 production subUnitKey master 레코드가 0건. 미적분I 21문항 L2는 임의 생성 금지.",
     "mi1ProjectionBinding": "2022 미적분I crosswalk 49건은 DIRECT/FAMILY_BINDING_GAP이며 exact bindingStatus=MISSING. RPM semantic 후보는 유지하되 JS PT/TPL 적용 보류.",
     "identityRegistration": "신규 시험지가 아직 main/db/inventory에 없으므로 global question_identity_map registration은 다음 intake 단계에서 builder로 재생성해야 함.",
-    "curriculumBoundary": "q3/q4/q18의 공통수학2 재라우팅을 폐기. 세 문항 모두 미적분I H22-M1-02에 유지하고 교육과정 밖 선수 개념만 CrossConcept로 분리."
+    "curriculumBoundary": "q3/q4/q18의 공통수학2 재라우팅을 폐기. 세 문항 모두 미적분I H22-M1-02에 유지하고 교육과정 밖 선수 개념만 CrossConcept로 분리.",
+    "functionLimitOrderRelation": {
+      "qid": 12,
+      "status": "TRUE_META_HOLD",
+      "reasonCode": "RPM_PRIMARY_PATH_NOT_FOUND",
+      "detail": "미적분I source/solution은 함수의 극한의 대소 관계를 요구하지만 locked RPM Primary 미적분I에는 exact L4가 없음."
+    }
   },
   "questions": [
     {
@@ -42,7 +48,7 @@
         "l4": "다항·유리함수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
       "templateKeyCandidate": "TPL_LIMIT_INFINITY_LEADING_TERM",
       "crossConceptKeyCandidates": [],
@@ -72,7 +78,7 @@
         "l4": "극한값 계산"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
       "templateKeyCandidate": "TPL_LIMIT_RATIONALIZATION",
       "crossConceptKeyCandidates": [],
@@ -136,7 +142,7 @@
         "l4": "최대·최소 정리"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_FUNCTION_EXTREMUM",
       "templateKeyCandidate": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
       "crossConceptKeyCandidates": [
@@ -171,7 +177,7 @@
         "l4": "구간에서의 연속"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_JUDGMENT",
       "templateKeyCandidate": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
       "crossConceptKeyCandidates": [],
@@ -201,7 +207,7 @@
         "l4": "도함수 계산"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_RULE_EVALUATION",
       "templateKeyCandidate": "TPL_DERIVATIVE_RULE_CALCULATION",
       "crossConceptKeyCandidates": [],
@@ -231,7 +237,7 @@
         "l4": "평균변화율·순간변화율"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_RATE_RELATION",
       "templateKeyCandidate": "TPL_AVERAGE_RATE_DERIVATIVE_LINK",
       "crossConceptKeyCandidates": [],
@@ -261,7 +267,7 @@
         "l4": "정의로 미분계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
       "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
       "crossConceptKeyCandidates": [],
@@ -291,7 +297,7 @@
         "l4": "정의로 미분계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
       "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
       "crossConceptKeyCandidates": [
@@ -323,7 +329,7 @@
         "l4": "미정계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
       "templateKeyCandidate": "TPL_CONTINUITY_FACTOR_CONDITION",
       "crossConceptKeyCandidates": [],
@@ -353,7 +359,7 @@
         "l4": "구간별 함수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
       "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
       "crossConceptKeyCandidates": [],
@@ -373,23 +379,25 @@
       "subUnitKeyCandidate": null,
       "subUnitCandidate": null,
       "l2Status": "MASTER_GAP_UNMATERIALIZED",
-      "primaryMethod": "함수의 대소 관계로 끼워넣기 극한 결정",
-      "decisiveStep": "양쪽 함수가 x=-2에서 모두 6으로 수렴함을 이용",
-      "rpmCrosswalkId": "H2-M2-RPM-050",
+      "primaryMethod": "함수의 극한의 대소 관계를 이용해 f(x)의 극한을 결정",
+      "decisiveStep": "-3x와 x^2+x+4가 x→-2에서 모두 6으로 수렴하므로 그 사이의 f(x)도 6으로 수렴한다고 판단",
+      "rpmCrosswalkId": null,
       "rpmPrimaryPath": {
         "majorUnit": "함수의 극한과 연속",
         "midUnit": "함수의 극한",
-        "l3": "함수의 극한",
-        "l4": "극한값 계산"
+        "l3": "극한의 성질",
+        "l4": "함수의 극한의 대소 관계"
       },
-      "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "META_ONLY_COMPATIBILITY_PENDING",
-      "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
+      "rpmSemanticCandidateStatus": "TRUE_META_HOLD",
+      "projectionCandidateStatus": "NOT_ATTEMPTED",
+      "problemTypeKeyCandidate": null,
       "templateKeyCandidate": null,
       "crossConceptKeyCandidates": [],
       "conditionKeyCandidates": [],
       "integrationPatternCandidate": "NONE",
-      "difficultyStatus": "BLIND_REVIEW_PENDING"
+      "difficultyStatus": "BLIND_REVIEW_PENDING",
+      "metadataHoldReason": "RPM_PRIMARY_PATH_NOT_FOUND",
+      "metadataHoldDetail": "source+final solution의 decisive step은 미적분I 내부의 함수의 극한의 대소 관계이지만 locked RPM Primary 미적분I에 대응 L4가 없음. 다른 과목 Primary 또는 부정확한 L4로 강제 매핑 금지."
     },
     {
       "id": 13,
@@ -413,7 +421,7 @@
         "l4": "좌극한·우극한"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_LIMIT_VALUE_CALC",
       "templateKeyCandidate": "TPL_LIMIT_DIRECTIONAL_APPROACH",
       "crossConceptKeyCandidates": [],
@@ -443,7 +451,7 @@
         "l4": "미분가능 조건"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DIFFERENTIABILITY_CONDITION",
       "templateKeyCandidate": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
       "crossConceptKeyCandidates": [],
@@ -473,7 +481,7 @@
         "l4": "정의로 미분계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
       "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
       "crossConceptKeyCandidates": [],
@@ -503,7 +511,7 @@
         "l4": "정의로 미분계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DERIVATIVE_DEFINITION",
       "templateKeyCandidate": "TPL_DERIVATIVE_LIMIT_REDUCTION",
       "crossConceptKeyCandidates": [
@@ -536,7 +544,7 @@
         "l4": "미분가능 조건"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_DIFFERENTIABILITY_CONDITION",
       "templateKeyCandidate": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
       "crossConceptKeyCandidates": [
@@ -568,7 +576,7 @@
         "l4": "구간별 함수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
       "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
       "crossConceptKeyCandidates": [
@@ -600,7 +608,7 @@
         "l4": "구간별 함수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_CONTINUITY_CONDITION",
       "templateKeyCandidate": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
       "crossConceptKeyCandidates": [
@@ -634,7 +642,7 @@
         "l4": "미정계수"
       },
       "rpmSemanticCandidateStatus": "DETERMINISTIC_READY_FOR_VALIDATOR",
-      "projectionCandidateStatus": "BINDING_PENDING",
+      "projectionCandidateStatus": "PROJECTION_BINDING_PENDING",
       "problemTypeKeyCandidate": "PT_LIMIT_PARAMETER_DETERMINATION",
       "templateKeyCandidate": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
       "crossConceptKeyCandidates": [
@@ -698,6 +706,13 @@
       ],
       "code": "CANONICAL_PROJECTION_STATUS_NORMALIZED",
       "detail": "FAMILY template 미선택 상태를 META_ONLY_COMPATIBILITY_PENDING으로 정규화"
+    },
+    {
+      "questions": [
+        12
+      ],
+      "code": "Q12_RPM_SEMANTIC_GAP",
+      "detail": "RPM-050 강제 분류 폐기. 미적분I Primary 유지, '함수의 극한의 대소 관계' exact L4 부재로 TRUE_META_HOLD."
     }
   ]
 }
