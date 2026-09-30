@@ -78,11 +78,11 @@
     "canonicalWrite": false
   },
   "difficulty": {
-    "status": "STRICT_BLIND_REVIEW_PENDING_CONTEXT_CONTAMINATED",
-    "reason": "기존 level이 이 R1 reviewer에게 먼저 노출됨. v1.3 최초 판정 blind 계약상 PASS 주장 금지.",
-    "blindInputPath": "archive/analysis/26_금당고_2학기_중간_고2_미적분I/r1-difficulty-blind-input.json"
+    "status": "USER_WAIVED_R1_STRICT_BLIND",
+    "valuesPersisted": "UNKNOWN_21_OF_21",
+    "reason": "형님 명시 지시로 R1 strict-blind difficulty pass를 생략하고 R2로 진행. R1에서 difficulty PASS를 주장하지 않으며 기존 UNKNOWN 값을 그대로 보존한다."
   },
-  "overallStatus": "R1_REPAIR_CHECKPOINT_READY_DIFFICULTY_AXIS_PENDING",
+  "overallStatus": "REVIEW1_DONE_USER_WAIVER_READY_FOR_REVIEW2",
   "questions": [
     {
       "id": 1,
@@ -555,5 +555,13 @@
     }
   ],
   "outputJsBlobAfterRepair": "a7973fba6dd694ed6a3f72d89c5f24a53ceed735",
-  "commitBinding": "BRANCH_HEAD_CONTAINING_THIS_LEDGER"
+  "commitBinding": "BRANCH_HEAD_CONTAINING_THIS_LEDGER",
+  "userOverride": {
+    "scope": "R1_DIFFICULTY_STRICT_BLIND_ONLY",
+    "action": "WAIVE_AND_ADVANCE_TO_REVIEW2",
+    "preservesUnknownDifficulty": true,
+    "affectsMathSolutionVisualMetaVerdicts": false
+  },
+  "itemHoldCount": 0,
+  "nextStage": "REVIEW2"
 }

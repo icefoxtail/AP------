@@ -11,8 +11,8 @@
   "standardUnitMaster": "archive/data/master_tables/js_archive_tag_master.json",
   "identityPolicy": "qid_v1_ + sha256(normalizeNfc(sourceArchiveFile) + '#' + 1-based sourceOrdinal); registration pending production intake",
   "semanticValidationStatus": "R1_SEMANTIC_REVIEW_COMPLETE_WITH_CROSSWALK_EXTENSION_SEEDS",
-  "difficultyStatus": "STRICT_BLIND_REVIEW_PENDING_CONTEXT_CONTAMINATED",
-  "difficultyReason": "R1 reviewer가 수학·해설 전수검수 중 기존 level을 먼저 보았으므로 difficulty v1.3 strict blind first-pass를 주장하지 않는다. 난이도 4필드는 UNKNOWN 유지하고 fresh reviewer에 넘긴다.",
+  "difficultyStatus": "USER_WAIVED_R1_STRICT_BLIND",
+  "difficultyReason": "R1 strict-blind difficulty는 사용자 명시 지시로 생략. difficulty 4-field는 UNKNOWN 유지하며 R2에서 독립 검수 가능.",
   "globalGaps": {
     "mi1SubUnitMaster": "H22-M1-* standardUnit은 ACTIVE이나 production subUnitKey master 레코드가 0건. 미적분I 21문항 L2는 임의 생성 금지.",
     "mi1ProjectionBinding": "2022 미적분I crosswalk 49건은 DIRECT/FAMILY_BINDING_GAP이며 exact bindingStatus=MISSING. RPM semantic 후보는 유지하되 JS PT/TPL 적용 보류.",
@@ -752,5 +752,6 @@
     "taxonomy": "q12 L4 extension seed retained; q21 exact ACTIVE template TPL_CONTINUITY_DENOMINATOR_NONZERO found and selected; no new PT/TPL key required.",
     "subUnit": "H22-M1-* production subUnit master remains unmaterialized; no invented subUnitKey.",
     "difficulty": "strict blind pending due prior level visibility"
-  }
+  },
+  "r1ClosureStatus": "REVIEW1_DONE_USER_WAIVER_READY_FOR_REVIEW2"
 }
