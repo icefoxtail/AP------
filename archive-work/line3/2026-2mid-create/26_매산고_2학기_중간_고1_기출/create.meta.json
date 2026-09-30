@@ -1,0 +1,324 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_2026_2MID_CREATE_META_v1",
+  "stage": "CREATE_DONE_WITH_ITEM_HOLDS",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "baseMainSha": "2326198add2f47013fdf3ac0108d38f3e0cb655a",
+  "finalArtifactSha": "e086cf0738bb3a3d8745bc697c95526e94678f74",
+  "sourceAuthority": {
+    "branch": "codex/archive-2026-2mid-prompt-assets",
+    "branchSha": "c6470f313c09c73faa34bbcad73faafb603668e2",
+    "candidateBlobSha": "9d20caf8712530680ac6ceb5f7738bb546e4394a",
+    "sourceTextFreezeBlobSha": "11c2d220863892e19107cc977559a530ba165b2c",
+    "sourceFidelityEvidenceBlobSha": "8e2040bba39cb4c2ab9f14fc7e5e4f22bafd5b29"
+  },
+  "auditCounts": {
+    "sourceContentChoices": "21/21",
+    "independentAnswer": "21/21",
+    "freshSolution": "21/21",
+    "questionMicroLayout": "21/21",
+    "metadata": "21/21",
+    "difficulty": "21/21"
+  },
+  "itemHoldCount": 4,
+  "itemHoldQuestionIds": [
+    1,
+    10,
+    12,
+    21
+  ],
+  "itemHoldReasons": {
+    "1": "NO_EXACT_RPM_L4_FOR_SET_DEFINITION_JUDGMENT",
+    "10": "NO_EXACT_RPM_L4_FOR_LINE_ANGLE_BISECTOR",
+    "12": "RPM_PATH_MISSING_REFLECTION_SHORTEST_DISTANCE",
+    "21": "NO_EXACT_RPM_L4_FOR_INSCRIBED_ANGLE_CENTER"
+  },
+  "difficultyDistribution": {
+    "1": 7,
+    "2": 4,
+    "3": 5,
+    "4": 5,
+    "5": 0
+  },
+  "rows": [
+    [
+      1,
+      null,
+      null,
+      null,
+      [],
+      [],
+      "NONE",
+      1,
+      "HOLD"
+    ],
+    [
+      2,
+      "H1-RPM-237",
+      "PT_SET_OPERATION",
+      "TPL_DIRECT_MIXED_OPERATION",
+      [],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      3,
+      "H1-RPM-213",
+      "PT_LINE_RELATION",
+      "TPL_RELATION_PERPENDICULAR_PARAMETER",
+      [],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      4,
+      "H1-RPM-225",
+      "PT_MOVE_POINT_TRANSLATION",
+      "TT_POINT_TRANSLATION_COORD",
+      [],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      5,
+      "H1-RPM-217",
+      "PT_CIRCLE_EQUATION",
+      "TM_CIRCLE_CENTER_RADIUS",
+      [],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      6,
+      "H1-RPM-208",
+      "PT_COORD_CENTROID",
+      "TPL_CENTROID_DIRECT",
+      [],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      7,
+      "H1-RPM-218",
+      "PT_CIRCLE_EQUATION",
+      "TM_CIRCLE_EXISTENCE_CONDITION",
+      [],
+      [
+        "COND_RANGE"
+      ],
+      "SEQUENTIAL",
+      2,
+      "FINAL"
+    ],
+    [
+      8,
+      "H1-RPM-169",
+      "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      [
+        "CC_PARALLEL_LINES"
+      ],
+      [],
+      "SEQUENTIAL",
+      2,
+      "FINAL"
+    ],
+    [
+      9,
+      "H1-RPM-226",
+      "PT_MOVE_CIRCLE_TRANSLATION",
+      "TT_CIRCLE_TRANSLATION_CENTER",
+      [
+        "CC_CIRCLE_TANGENCY"
+      ],
+      [],
+      "INTERDEPENDENT",
+      3,
+      "FINAL"
+    ],
+    [
+      10,
+      null,
+      null,
+      null,
+      [],
+      [],
+      "SEQUENTIAL",
+      2,
+      "HOLD"
+    ],
+    [
+      11,
+      "H1-RPM-215",
+      "PT_POINT_LINE_DISTANCE",
+      "TPL_POINT_LINE_DISTANCE_DIRECT",
+      [],
+      [
+        "COND_POSITIVE"
+      ],
+      "CASE_BRANCH",
+      3,
+      "FINAL"
+    ],
+    [
+      12,
+      null,
+      null,
+      null,
+      [
+        "CC_DISTANCE_TWO_POINTS"
+      ],
+      [],
+      "REINTERPRETATION",
+      3,
+      "HOLD"
+    ],
+    [
+      13,
+      "H1-RPM-242",
+      "PT_SET_OPERATION_LAW",
+      "TPL_OPERATION_LAW_JUDGMENT",
+      [],
+      [],
+      "DEEP_COMPOSITE",
+      4,
+      "FINAL"
+    ],
+    [
+      14,
+      "H1-RPM-219",
+      "PT_CIRCLE_LINE_RELATION",
+      "TM_CIRCLE_INTERSECTION_COUNT",
+      [
+        "CC_CIRCLE_TANGENCY"
+      ],
+      [],
+      "SEQUENTIAL",
+      3,
+      "FINAL"
+    ],
+    [
+      15,
+      "H1-RPM-220",
+      "PT_CIRCLE_LINE_RELATION",
+      "TM_CIRCLE_CHORD_LENGTH",
+      [
+        "CC_POINT_LINE_DISTANCE",
+        "CC_PYTHAGOREAN"
+      ],
+      [
+        "COND_RANGE"
+      ],
+      "INTERDEPENDENT",
+      4,
+      "FINAL"
+    ],
+    [
+      16,
+      "H1-RPM-234",
+      "PT_SUBSET_COUNT",
+      "TPL_SUBSET_COUNT_POWERSET_BASIC",
+      [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      [],
+      "NONE",
+      1,
+      "FINAL"
+    ],
+    [
+      17,
+      "H1-RPM-208",
+      "PT_COORD_CENTROID",
+      "TPL_CENTROID_DIRECT",
+      [
+        "CC_INTERNAL_DIVISION"
+      ],
+      [],
+      "SEQUENTIAL",
+      2,
+      "FINAL"
+    ],
+    [
+      18,
+      "H1-RPM-229",
+      "PT_MOVE_COMPOSITE",
+      "TT_COMPOSITE_GRAPH",
+      [],
+      [],
+      "SEQUENTIAL",
+      3,
+      "FINAL"
+    ],
+    [
+      19,
+      "H1-RPM-205",
+      "PT_COORD_DISTANCE",
+      "TPL_COORD_DISTANCE_DIRECT",
+      [
+        "CC_TRIANGLE_INEQUALITY"
+      ],
+      [],
+      "REINTERPRETATION",
+      4,
+      "FINAL"
+    ],
+    [
+      20,
+      "H1-RPM-234",
+      "PT_SUBSET_COUNT",
+      "TPL_SUBSET_COUNT_POWERSET_BASIC",
+      [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      [
+        "COND_NONZERO"
+      ],
+      "INTERDEPENDENT",
+      4,
+      "FINAL"
+    ],
+    [
+      21,
+      null,
+      null,
+      null,
+      [
+        "CC_INSCRIBED_ANGLE",
+        "CC_PERPENDICULAR_BISECTOR"
+      ],
+      [],
+      "INTERDEPENDENT",
+      4,
+      "HOLD"
+    ]
+  ],
+  "rowSchema": [
+    "qid",
+    "rpmRecordId",
+    "problemTypeKey",
+    "templateKey",
+    "crossConceptKeys",
+    "conditionKeys",
+    "integrationPattern",
+    "difficultyBucket",
+    "semanticStatus"
+  ],
+  "notes": {
+    "q12GlobalActiveCandidate": [
+      "PT_MOVE_REFLECTION_SHORTEST",
+      "TT_SHORTEST_ONE_LINE"
+    ],
+    "rpmFirstRule": "ACTIVE projection candidates do not override a missing exact RPM semantic path",
+    "existingCandidateMetadataUsedAsAnswer": false
+  }
+}
