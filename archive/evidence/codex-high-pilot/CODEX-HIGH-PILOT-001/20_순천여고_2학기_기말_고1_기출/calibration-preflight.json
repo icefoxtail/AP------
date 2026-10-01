@@ -1,0 +1,66 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_순천여고_2학기_기말_고1_기출",
+  "ordinal": 5,
+  "stage": "CALIBRATION_PREFLIGHT",
+  "status": "PASS",
+  "branch": "work/high-source8-r2",
+  "originMain": "98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:0f6a4faa3519d8eebaa49e8b28f8ef08e5c773c5118315a8006bb35f3a7bb348",
+  "targetArtifactGitBlobSha": "8abf2fee08bece4d2d4697c639858ac81987e0e5",
+  "targetWasSourceOnlyWithFreshAnswer": true,
+  "sampleReadBeforeSolutionWork": true,
+  "blindDecisionFrozenBeforeCompare": true,
+  "solutionWorkMode": "Fresh student-facing solutions from frozen source, choices, source visuals, and the new answer evidence.",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "CURRICULUM_LANGUAGE",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "representativeQuestions": [
+        {"qid": 11, "solutionSha256": "sha256:89e7a184700b58dc26e660db8aae01aa94ae0f06353b90c6e007ced375495ab6", "excerpt": "두 집합의 식이 뜻하는 포함관계부터 바꾸어 생각한다.", "observation": "Translate the set statements into inclusion relations, then expose each free-element choice before counting."},
+        {"qid": 17, "solutionSha256": "sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145", "excerpt": "세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.", "observation": "Name exhaustive failure cases first and show the parameter equations step by step."},
+        {"qid": 23, "solutionSha256": "sha256:309880c00afd7d04fd63b9827e9a7536ea3167c345e9db40adc1298fd0a2215c", "excerpt": "먼저 선분 $OA$의 길이를 구한다.", "observation": "Derive geometric intermediate lengths, separate both possible foot locations, then connect the maximizing case to the requested distance."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "representativeQuestions": [
+        {"qid": 5, "solutionSha256": "sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109", "excerpt": "두 집합 $A$, $B$가 같으므로 두 집합에 들어 있는 원소가 정확히 같아야 한다.", "observation": "State the set equality consequence before solving parameters, then check membership and the final requested expression."},
+        {"qid": 12, "solutionSha256": "sha256:c77c0042b36d4618b4c94ddb0d784539f8b4521004c45b5ae9467daf7a6d2414", "excerpt": "먼저 원래 포물선을 꼭짓점 꼴로 바꾼다.", "observation": "Put the quadratic in vertex form first and identify the transformed vertex before solving contact conditions."},
+        {"qid": 20, "solutionSha256": "sha256:40bb99e366d1e9f497a07702c138407585607b7d6ef45a1107499c5f9f0d25e1", "excerpt": "드모르간 법칙을 이용하면", "observation": "Use a complement to simplify the set count and keep the substitution into the union formula explicit."}
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "The false PASS includes merged ㄱ/ㄴ/ㄷ blocks, runtime TeX escaping that source inspection missed, and SVG text whose claimed geometry did not match primitive coordinates. Keep enumerated decisions visibly separate and validate runtime strings and any visual against actual content."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "gitBlobSha": "952e3492201bfa100a22c3af830320f84abd14fa",
+      "observation": "The displayed line claims slope −5/6 and y-intercept −7/6, while its primitive crosses the axes' origin; check actual coordinates, not labels alone."
+    }
+  ],
+  "preflightFindings": [],
+  "readyForSolutionWork": true
+}
