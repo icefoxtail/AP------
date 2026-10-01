@@ -1,0 +1,86 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_강남여고_2학기_기말_고2_수학II",
+  "ordinal": 2,
+  "stage": "RELEASE",
+  "status": "PILOT_DONE_WITH_ITEM_HOLDS",
+  "branch": "work/high-source8-r2",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "targetArtifactSha256": "sha256:7ac114bf52365161e87e44987380e58822208c66e075e64805547d6ff93748fc",
+  "targetArtifactGitBlobSha": "1bfb13982a9dff1aaa968fa15a8f30d5b09eee8d",
+  "denominator": 25,
+  "resolvedAnswerCount": 24,
+  "resolvedSolutionCount": 24,
+  "changedSolutionCount": 24,
+  "itemHoldQids": [
+    13
+  ],
+  "calibration": {
+    "status": "MANUAL_SOLUTION_CALIBRATION_PASS_WITH_ITEM_HOLD",
+    "evidence": "golden-calibration.json",
+    "sampleCount": 2
+  },
+  "visual": {
+    "problemSourceImagesKept": 5,
+    "sourceImageQids": [
+      7,
+      12,
+      14,
+      18,
+      24
+    ],
+    "solutionSvgAdded": 0,
+    "solutionSvgModified": 0,
+    "visualEvidence": "visual-evidence.json"
+  },
+  "meta": {
+    "status": "META_PASS_WITH_ITEM_HOLD_AND_LEGACY_COMPARE_UNKNOWN",
+    "resolvedActiveBindingCount": 24,
+    "semanticHoldQids": [
+      13
+    ],
+    "legacyLevelCompatibilityUnknownQidCount": 24,
+    "advancedEligibility": "not complete because source level values are blank; UNKNOWN retained per difficulty v1.3"
+  },
+  "independentReview": {
+    "status": "PASS_WITH_ITEM_HOLD",
+    "evidence": "independent-review.json",
+    "findings": []
+  },
+  "checks": {
+    "nodeSyntax": "PASS",
+    "vmRuntime": "PASS",
+    "texDelimiterAndBraceScan": "PASS",
+    "protectedSourceParity": "25/25",
+    "sourceImageBlobParity": "5/5",
+    "activeRegistry": "ACTIVE",
+    "activeCurriculumBindings": "24/24",
+    "unrelatedMutationCount": 0
+  },
+  "evidenceFiles": [
+    "state.json",
+    "answer.json",
+    "solution.json",
+    "self-review-1.json",
+    "self-review-2.json",
+    "golden-calibration.json",
+    "visual-evidence.json",
+    "meta-blind-input.json",
+    "meta.json",
+    "independent-review.json"
+  ],
+  "stageCommits": {
+    "answer": "8c674d41112f354cb4c8f717ec8870df94ed898d",
+    "solution": "686e254c657e5f3dc9f9458d7a1393b763447940",
+    "selfReview1": "5cd2a861335a1c7ee3ad8e0e2ae9f8d600fc69fe",
+    "selfReview2": "ab9ce0252551662f9183c03a7e9c0a09733322dc",
+    "goldenCompare": "633a460d74ec307d56d948dae6c08f642b0684ac",
+    "visual": "7c4f6ac3b4f56e368c3647bc0a8d4e1d040394fd",
+    "meta": "f2df52b2472b5a907e76750f60c2bc2e97d7ec24",
+    "independentReview": "6f28ca21e362b98310cbc5c74f6ad7d8f2e86971"
+  },
+  "scope": "Candidate closure only; no MAIN merge, PR, publish, or shared-system change."
+}
