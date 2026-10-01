@@ -1,3 +1,16 @@
+## CURRENT HARD RULE — NO-IDLE / FLEX RESCUE (2026-10-01)
+
+- 활성 예약 lane에 eligible backlog가 있는데 반복 NO-OP 또는 장시간 무진행하는 상태를 정상으로 취급하지 않는다.
+- 예약 시각보다 늦게 실행되는 플랫폼 queue delay 자체는 stall 근거가 아니다. liveness는 **durable physical progress**로 판정한다.
+- 운영감시자는 매 run Git/physical receipt에서 CREATE-1/2/3 x/23 + remaining ordinals, REVIEW1/69, REVIEW2/69(Meta-only/Full), initial R3 disposition, ITEM_RECOVERY/post-R3 queue, LINE3 first-pass R2 x/3, automation별 enabled/latest actual run/latest durable progress를 재계산한다.
+- `eligible backlog > 0`인데 durable stage advancement가 **75분 이상 없고**, target branch/receipt/claim에도 **45분 이내 fresh 변화가 없으며**, primary worker in-flight 또는 competing claim도 없을 때만 `STALL_DETECTED / FLEX_RESCUE_REQUIRED`로 판정한다.
+- 조율자/FLEX RESCUE는 위 조건을 만족한 stalled CREATE/R1/R2/lane-local initial R3의 **oldest eligible 1시험지**만 해당 lane의 CURRENT protocol 그대로 대신 처리할 수 있다.
+- rescue 직전 `FLEX_CLAIM(lane, exam, inputSha, claimedAtKST)`을 기록하고 즉시 physical state를 재조회한다. primary worker 또는 다른 claim의 fresh 진행이 보이면 claim을 취소하고 mutation 0으로 종료한다.
+- `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_* / READY_FOR_R3_RETRY`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용, targeted R3_RETRY는 dedicated GPT R3 전용이다.
+- stale Notion selector만 믿고 backlog를 NO-WORK로 처리하지 않는다. physical receipt가 있으면 CURRENT를 정합화하고 진행한다.
+- non-global blocker 하나 때문에 전체 pipeline을 정지하지 않는다.
+- 활성 시간표의 정확한 시각은 Notion `JS Archive 예약 세션 운영 규칙 v2 — CURRENT`를 live authority로 사용한다. 2026-10-01 cutover에서 CREATE-2는 고등 8시험지와의 :20 충돌을 피하도록 분리되었다.
+
 ## CURRENT HARD RULE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
 - 정상 `CREATE → R1 → R2 → initial R3` first-pass가 R3 FAIL 재작업보다 항상 우선한다.
