@@ -2,7 +2,7 @@
   "schema": "archive-source-only-run-v1",
   "runId": "source-intake-heartbeat-2026-10-01-1432-kst",
   "batchDate": "2026-10-01",
-  "status": "source_only_review_passed_receipt_pending",
+  "status": "completed_source_only_render_unverified",
   "startedAtKst": "2026-10-01T14:44:41+09:00",
   "owner": "codex-thread-automation-10",
   "priorityGroup": "high2",
@@ -31,7 +31,7 @@
       "reason": "Assignment omitted B after 657; unchanged PDF matches parent-corrected SHA."
     }
   ],
-  "updatedAtKst": "2026-10-01T16:52:12+09:00",
+  "updatedAtKst": "2026-10-01T16:59:03+09:00",
   "preparedSourceOnlyExamCount": 2,
   "latestOriginMainAtExtraction": "b47f0b12022a966ca28030f19823cd09a73169f2",
   "latestOriginIntakeAtExtraction": "d9451d45909d23b0bc489b6e51e6549fea7fbe5f",
@@ -131,9 +131,9 @@
     }
   ],
   "sourceChecks": "PASS_SHA_IDENTITY_RANGE_SCHOOL_PDF_PROBLEM_KIND_NO_JS_NO_DUPLICATE; COVER_PIXELS_VERIFIED; SOURCE_TEXT_CHOICES_EXACT; ASSET_PROVENANCE_VISUAL_PASS; STATIC_VM_PASS",
-  "commitStatus": "ARTIFACT_COMMITTED",
-  "pushStatus": "ARTIFACT_PUSH_VERIFIED",
-  "nextStartPoint": "Next high2 Math II candidate after SOURCE_QA_PASS: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
+  "commitStatus": "COMMITTED",
+  "pushStatus": "VERIFIED",
+  "nextStartPoint": "Next high2 Math II candidate: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
   "artifactRefs": {
     "selectedManifest": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\selection.json",
     "sourceQuestionIdentityCoverage": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\source_question_identity_coverage.json",
@@ -161,7 +161,7 @@
     "status": "PASS_BYTE_EQUAL_TO_LATEST_MAIN"
   },
   "latestOriginMainAtFinalFetch": "83b9d2c92b76611c0b620e414e9fc4e88396cf71",
-  "latestOriginIntakeAtFinalFetch": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "latestOriginIntakeAtFinalFetch": "985592732858538e963899f67c37ed32240a6cc3",
   "priorityGroupRemainingAfterBatch": 23,
   "sourceExams": [
     {
@@ -293,7 +293,11 @@
   ],
   "artifactCommitSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
   "artifactPushSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-  "receiptCommitStatus": "PENDING_RECEIPT_COMMIT",
-  "receiptCommitSha": null,
-  "receiptPushStatus": "PENDING_RECEIPT_PUSH"
+  "receiptCommitStatus": "COMMITTED",
+  "receiptCommitSha": "985592732858538e963899f67c37ed32240a6cc3",
+  "receiptPushStatus": "VERIFIED",
+  "completedAtKst": "2026-10-01T16:59:03+09:00",
+  "receiptPushSha": "985592732858538e963899f67c37ed32240a6cc3",
+  "remoteBranchHeadAtReceiptVerification": "985592732858538e963899f67c37ed32240a6cc3",
+  "sourceOnlyVerifiedCount": 2
 }

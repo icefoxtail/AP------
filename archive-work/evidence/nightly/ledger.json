@@ -6,7 +6,7 @@
   "activeRunId": "source-intake-heartbeat-2026-10-01-1432-kst",
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 2,
-  "intakeHead": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "intakeHead": "985592732858538e963899f67c37ed32240a6cc3",
   "schema": "nightly-source-intake-ledger-v1",
   "runs": [
     {
@@ -171,7 +171,7 @@
     {
       "runId": "source-intake-heartbeat-2026-10-01-1432-kst",
       "batchDate": "2026-10-01",
-      "status": "source_only_review_passed_receipt_pending",
+      "status": "completed_source_only_render_unverified",
       "owner": "codex-thread-automation-10",
       "priorityGroup": "high2",
       "actualSubject": "Mathematics II",
@@ -196,8 +196,8 @@
       "questionLayoutHoldCount": 0,
       "renderStatus": "NOT_RUN_USER_DIRECTIVE",
       "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
-      "commitStatus": "ARTIFACT_COMMITTED",
-      "pushStatus": "ARTIFACT_PUSH_VERIFIED",
+      "commitStatus": "COMMITTED",
+      "pushStatus": "VERIFIED",
       "path": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\run.json",
       "runEvidenceDir": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst",
       "latestOriginMain": "83b9d2c92b76611c0b620e414e9fc4e88396cf71",
@@ -208,17 +208,23 @@
         "fastForwardPossible": false,
         "action": "Kept the dedicated source-intake branch; did not merge or reset divergent main history."
       },
-      "updatedAtKst": "2026-10-01T16:52:12+09:00",
+      "updatedAtKst": "2026-10-01T16:59:03+09:00",
       "noJsDuplicateCheckStatus": "PASS_NO_MATCH_IN_LATEST_ORIGIN_MAIN_AND_INTAKE",
       "priorityGroupRemainingAfter": 23,
       "artifactCommitSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
       "artifactPushSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-      "receiptCommitSha": null,
+      "receiptCommitSha": "985592732858538e963899f67c37ed32240a6cc3",
       "independentReviewStatus": "SOURCE_QA_PASS",
       "reviewEvidenceRefs": [
         "archive-work/evidence/22_매산고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json",
         "archive-work/evidence/22_복성고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json"
-      ]
+      ],
+      "receiptPushSha": "985592732858538e963899f67c37ed32240a6cc3",
+      "commitSha": "985592732858538e963899f67c37ed32240a6cc3",
+      "pushSha": "985592732858538e963899f67c37ed32240a6cc3",
+      "remoteBranchHeadAtVerification": "985592732858538e963899f67c37ed32240a6cc3",
+      "completedAtKst": "2026-10-01T16:59:03+09:00",
+      "notionWrites": "NOT_PERFORMED"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -231,7 +237,7 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-10-01T16:52:12+09:00",
+  "updatedAtKst": "2026-10-01T16:59:03+09:00",
   "heldExamCount": 2,
   "priorityGroupRemainingAfterBatch": 23,
   "questionLayoutBackfillTargets": [
@@ -251,7 +257,7 @@
   ],
   "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
   "questionLayoutBackfillStatus": "PASS_STATIC_RENDER_HANDOFF",
-  "nextStartPoint": "Next high2 Math II candidate after SOURCE_QA_PASS: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
+  "nextStartPoint": "Next high2 Math II candidate: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
   "questionLayoutBackfillCompletedAtUtc": "2026-09-27T21:38:55Z",
   "questionLayoutBackfillCompletedAtKst": "2026-09-28T06:38:55+09:00",
   "questionLayoutChangedCount": 14,
@@ -374,17 +380,17 @@
     "runId": "source-intake-2026-09-27-2343-kst"
   },
   "runSuccessCap": 2,
-  "lockStatus": "HELD",
+  "lockStatus": "RELEASED",
   "lockOwner": "codex-thread-automation-10",
   "lockStartedAtKst": "2026-10-01T14:44:41+09:00",
   "successfulSourceOnlyCountForRun": 2,
-  "lockReleasedAtKst": "2026-10-01T10:55:26+09:00",
+  "lockReleasedAtKst": "2026-10-01T16:59:03+09:00",
   "currentRunSourceOnlyCompletion": {
     "runId": "source-intake-heartbeat-2026-10-01-1432-kst",
     "batchDate": "2026-10-01",
-    "status": "source_only_review_passed_receipt_pending",
+    "status": "completed_source_only_render_unverified",
     "startedAtKst": "2026-10-01T14:44:41+09:00",
-    "updatedAtKst": "2026-10-01T16:52:12+09:00",
+    "updatedAtKst": "2026-10-01T16:59:03+09:00",
     "priorityGroup": "high2",
     "actualSubject": "Mathematics II",
     "selectedExamIds": [
@@ -423,8 +429,8 @@
     "renderStatus": "NOT_RUN_USER_DIRECTIVE",
     "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
     "productionAuthorized": false,
-    "commitStatus": "ARTIFACT_COMMITTED",
-    "pushStatus": "ARTIFACT_PUSH_VERIFIED",
+    "commitStatus": "COMMITTED",
+    "pushStatus": "VERIFIED",
     "independentReviewStatus": "SOURCE_QA_PASS",
     "runRecordPath": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\run.json",
     "runEvidenceDir": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst",
@@ -449,11 +455,20 @@
     "artifactCommitSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
     "artifactPushStatus": "VERIFIED",
     "artifactPushSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-    "receiptCommitStatus": "PENDING_RECEIPT_COMMIT",
-    "receiptCommitSha": null
+    "receiptCommitStatus": "COMMITTED",
+    "receiptCommitSha": "985592732858538e963899f67c37ed32240a6cc3",
+    "completedAtKst": "2026-10-01T16:59:03+09:00",
+    "receiptPushStatus": "VERIFIED",
+    "receiptPushSha": "985592732858538e963899f67c37ed32240a6cc3",
+    "remoteBranchHeadAtVerification": "985592732858538e963899f67c37ed32240a6cc3",
+    "commitSha": "985592732858538e963899f67c37ed32240a6cc3",
+    "pushSha": "985592732858538e963899f67c37ed32240a6cc3",
+    "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
+    "notionWrites": "NOT_PERFORMED",
+    "nextStartPoint": "Next high2 Math II candidate: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it."
   },
   "latestCanonicalRuleBlobSha": "7af7a8dbfed4ce6ee9737020d92d4c427b183ffa",
-  "closeoutStatus": "SOURCE_QA_PASS_RECEIPT_PENDING",
+  "closeoutStatus": "COMPLETE_SOURCE_ONLY_PUSHED_NOTION_PARENT_PENDING",
   "notionStatus": "WRITE_SUCCESS",
   "notionUpdatedAtKst": "2026-09-30T18:43:52+09:00",
   "notionChecklistPageUrl": "https://app.notion.com/p/3e90e68bd69f813798acc744c274da80",
@@ -461,10 +476,10 @@
   "priorityGroup": "high2",
   "actualSubject": "Mathematics II",
   "currentRunNotionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
-  "currentRunCommitSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-  "currentRunPushSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-  "currentRunRemoteHeadAtVerification": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
-  "lastVerifiedOriginIntake": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "currentRunCommitSha": "985592732858538e963899f67c37ed32240a6cc3",
+  "currentRunPushSha": "985592732858538e963899f67c37ed32240a6cc3",
+  "currentRunRemoteHeadAtVerification": "985592732858538e963899f67c37ed32240a6cc3",
+  "lastVerifiedOriginIntake": "985592732858538e963899f67c37ed32240a6cc3",
   "priorityGroupRemainingAfterSelection": 23,
-  "currentRunReviewReceiptCommitSha": null
+  "currentRunReviewReceiptCommitSha": "985592732858538e963899f67c37ed32240a6cc3"
 }
