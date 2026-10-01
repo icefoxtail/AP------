@@ -18,6 +18,8 @@ on:
       - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
       - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       - "archive/tools/meta-foundation/sync-runtime-source-path-renames.mjs"
+      - "archive/data/r2e-intake/**/*.meta-review2.meta-v2.payload.json"
+      - "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs"
       - "archive/tools/verify-archive-registration.mjs"
       - ".github/workflows/archive-registration-sync.yml"
   push:
@@ -35,6 +37,8 @@ on:
       - "archive/tools/intelligence/sync-question-identity-map-v1.mjs"
       - "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       - "archive/tools/meta-foundation/sync-runtime-source-path-renames.mjs"
+      - "archive/data/r2e-intake/**/*.meta-review2.meta-v2.payload.json"
+      - "archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs"
       - "archive/tools/verify-archive-registration.mjs"
       - ".github/workflows/archive-registration-sync.yml"
   workflow_dispatch:
@@ -66,11 +70,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Materialize current META_V2 payloads
+        run: node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write
+
       - name: Run archive registration sync
         run: python archive/build_db.py
 
       - name: Targeted registration tests
         run: |
+          node tests/archive-meta-v2-materializer.test.mjs
+          node tests/archive2-meta-v2-semantic-authority.test.cjs
+          node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check
           node tests/archive-question-identity-contract.test.mjs
           node tests/archive-question-identity-runtime.test.mjs
           node archive/tools/verify-archive-registration.mjs

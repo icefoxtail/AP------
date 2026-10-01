@@ -10,7 +10,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -29,7 +29,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "4",
-    "solution": "1) $(-\\sqrt{5})^{2} = 5$ 2) $\\sqrt{\\frac{9}{25}} = \\frac{3}{5}$ 3) $-\\sqrt{(-4)^{2}} = -4$ \\\\ $\\implies 5 \\times \\frac{3}{5} - (-4) = 3 + 4 = 7$ \\\\ \\therefore 7",
+    "solution": "$(-\\sqrt5)^2=5$, $\\sqrt{\\frac9{25}}=\\frac35$, $-\\sqrt{(-4)^2}=-4$이다.<br>따라서 $5\\times\\frac35-(-4)=7$이므로 정답은 ④이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -44,7 +44,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -63,7 +63,7 @@ window.questionBank = [
       "7"
     ],
     "answer": "2",
-    "solution": "$(x+b)(x-3) = x^{2}+(b-3)x-3b$ \\\\ $-3b = -21 \\implies b = 7$, $a = b-3 = 4$ \\\\ \\therefore a-b = 4-7 = -3",
+    "solution": "$(x+b)(x-3)=x^2+(b-3)x-3b$이다.<br>$-3b=-21$에서 $b=7$, $a=b-3=4$이므로 $a-b=-3$이다. 따라서 정답은 ②이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -78,7 +78,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -97,7 +97,7 @@ window.questionBank = [
       "x-2y"
     ],
     "answer": "4",
-    "solution": "$3x^{2}y-6xy^{2} = 3xy(x-2y)$ 이므로 $x-y$는 인수가 아님.",
+    "solution": "$3x^2y-6xy^2=3xy(x-2y)$이다.<br>따라서 $x-y$는 인수가 아니므로 정답은 ④이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -112,7 +112,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -131,7 +131,7 @@ window.questionBank = [
       "3(x-1)^{2}"
     ],
     "answer": "1",
-    "solution": "$(-\\frac{1}{3}x-1)^{2} = \\{-\\frac{1}{3}(x+3)\\}^{2} = \\frac{1}{9}(x+3)^{2}$",
+    "solution": "$-\\frac13x-1=-\\frac13(x+3)$이므로 $(-\\frac13x-1)^2=\\frac19(x+3)^2$이다. 따라서 정답은 ①이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -146,7 +146,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -166,7 +166,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "1",
-    "solution": "$(6-2a-1)xy = 3xy \\implies 5-2a=3 \\implies a=1$",
+    "solution": "$(x+3y)^2=x^2+6xy+9y^2$, $(ax+y)(x+2y)=ax^2+(2a+1)xy+2y^2$이다.<br>$xy$의 계수는 $5-2a$이므로 $5-2a=3$, 따라서 $a=1$이고 정답은 ①이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -181,7 +181,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -200,7 +200,7 @@ window.questionBank = [
       "ㄴ, ㄹ"
     ],
     "answer": "2",
-    "solution": "ㄴ. $x^{2}-6xy+9y^{2}$ (참), ㅁ. $6x^{2}-7x-3$ (참)",
+    "solution": "ㄱ은 $-x^2+9$라 거짓, ㄴ은 참, ㄷ은 $4x^2-12xy+9y^2$라 거짓, ㄹ은 $x^2+3x-4$라 거짓, ㅁ은 $6x^2-7x-3$이라 참이다.<br>따라서 ㄴ, ㅁ인 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -215,7 +215,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -237,7 +237,7 @@ window.questionBank = [
       "ㄴ, ㄹ"
     ],
     "answer": "2",
-    "solution": "ㄴ, ㄷ이 참임. ㄹ은 실수로 메워야 함.",
+    "solution": "근호가 있어도 $\\sqrt4=2$처럼 유리수일 수 있다. 유한소수는 유리수이고, 순환하지 않는 무한소수는 무리수이며, 유리수만으로 수직선을 완전히 메울 수 없다.<br>따라서 ㄴ, ㄷ인 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -252,7 +252,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -272,7 +272,7 @@ window.questionBank = [
       "6개"
     ],
     "answer": "3",
-    "solution": "무리수: $\\sqrt{0.5}, -\\frac{1}{\\sqrt{3}}, \\frac{\\pi}{5}, \\sqrt{\\frac{24}{81}}$ (4개)",
+    "solution": "유리수는 $-2,\\frac3{10},-4+\\sqrt{0.01},\\sqrt{\\frac{25}{100}},0.\\dot9$이다.<br>$\\sqrt{0.5},-\\frac1{\\sqrt3},\\frac\\pi5,\\sqrt{\\frac{24}{81}}$는 무리수이므로 4개, 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -287,7 +287,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -307,7 +307,7 @@ window.questionBank = [
       "$\\sqrt{0.0034}=0.05831$"
     ],
     "answer": "5",
-    "solution": "⑤ $\\sqrt{0.0034} = \\frac{\\sqrt{34}}{100} = 0.05831$",
+    "solution": "$\\sqrt{0.0034}=\\sqrt{\\frac{34}{10000}}=\\frac{\\sqrt{34}}{100}=0.05831$이다. 따라서 ⑤가 옳다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -322,7 +322,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -344,7 +344,7 @@ window.questionBank = [
       "29개"
     ],
     "answer": "2",
-    "solution": "$12 \\le \\sqrt{2n-2} < 14 \\implies 144 \\le 2n-2 < 196 \\implies 73 \\le n < 99$. 개수: 26개",
+    "solution": "$12\\le\\sqrt{2n-2}<14$이므로 $144\\le2n-2<196$, 즉 $73\\le n<99$이다.<br>$n=73,\\ldots,98$의 26개이므로 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -378,7 +378,7 @@ window.questionBank = [
       "x^{2}+2xy+y^{2}+1"
     ],
     "answer": "2",
-    "solution": "$(x-y)^{2}-1 = x^{2}-2xy+y^{2}-1$",
+    "solution": "$(x-y-1)(x-y+1)=(x-y)^2-1=x^2-2xy+y^2-1$이므로 정답은 ②이다.",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
@@ -393,7 +393,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -415,7 +415,7 @@ window.questionBank = [
       "ㄷ, ㄹ"
     ],
     "answer": "2",
-    "solution": "ㄱ. $\\sqrt{100}=10$ (유리수) ㄴ. $4\\pi$ (무리수) ㄷ. $\\frac{3}{4}$ (유리수) ㄹ. $3\\sqrt{3}$ (무리수) \\\\ \\therefore ㄴ, ㄹ",
+    "solution": "직사각형 대각선은 $10$, 원의 넓이는 $4\\pi$, 정사각형 한 변은 $\\frac34$, 정삼각형 높이는 $3\\sqrt3$이다.<br>무리수는 ㄴ, ㄹ이므로 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -430,7 +430,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -450,7 +450,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "2",
-    "solution": "$k = \\frac{3}{5},\\ a=5 \\therefore k=\\frac{3}{5}$",
+    "solution": "$-\\frac1{\\sqrt5}\\times(-\\sqrt{90})=3\\sqrt2$, $\\frac{5\\sqrt{32}}{\\sqrt{80}}=\\sqrt{10}$이다.<br>따라서 전체 값은 $\\frac{3\\sqrt2}{\\sqrt{10}}=\\frac{3\\sqrt5}{5}$이므로 $k=\\frac35$, 정답은 ②이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -465,7 +465,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -484,7 +484,7 @@ window.questionBank = [
       "m=-\\frac{2}{3}, n=\\frac{4}{9}"
     ],
     "answer": "5",
-    "solution": "⑤ $m=-\\frac{2}{3} \\implies n=\\frac{1}{9}$ 여야 함.",
+    "solution": "$x^2+mx+n$이 완전제곱식이면 $n=\\frac{m^2}{4}$이다.<br>①~④는 만족하지만 ⑤에서 $m=-\\frac23$이면 $n=\\frac19$이어야 하므로 $\\frac49$는 될 수 없다. 정답은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -499,7 +499,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -518,7 +518,7 @@ window.questionBank = [
       "35"
     ],
     "answer": "5",
-    "solution": "$(x-y)(x+y+4) = 5 \\times 7 = 35$ \\\\ \\therefore 35",
+    "solution": "$x^2-y^2+4x-4y=(x-y)(x+y+4)$이다.<br>$x-y=5$, $x+y=3$이므로 값은 $5\\times7=35$, 정답은 ⑤이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -526,37 +526,37 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "level": "[중]",
-    "category": "인수분해",
-    "originalCategory": "인수분해",
+    "level": "[상]",
+    "category": "제곱근과 실수",
+    "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
-    "standardUnitKey": "M3-02",
-    "standardUnit": "다항식의 곱셈과 인수분해",
-    "standardUnitOrder": 2,
-    "questionType": "",
+    "standardUnitKey": "M3-01",
+    "standardUnit": "실수와 그 계산",
+    "standardUnitOrder": 1,
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
-      "인수분해",
-      "조건해석",
-      "계산",
-      "[중]난도"
+      "제곱근",
+      "근호",
+      "실수의 대소",
+      "조건해석"
     ],
     "wide": false,
-    "content": "$x+y=3, x-y=5$ 일 때, $x^{2}-y^{2}+4x-4y$ 의 값은? [5점]",
+    "content": "다음 중 옳은 것은? [5점]",
     "choices": [
-      "5",
-      "15",
-      "20",
-      "25",
-      "35"
+      "$\\sqrt{3}+\\sqrt{8}<\\sqrt{20}$",
+      "$\\sqrt{7}+\\sqrt{2}>\\sqrt{18}$",
+      "$\\sqrt{5}+\\sqrt{3}<\\sqrt{14}$",
+      "$\\sqrt{5}+\\sqrt{6}<\\sqrt{22}$",
+      "$\\sqrt{6}+\\sqrt{2}>\\sqrt{16}$"
     ],
-    "answer": "5",
-    "solution": "$(x-y)(x+y+4) = 5 \\times 7 = 35$ \\\\ \\therefore 5",
-    "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "인수분해",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "answer": "4",
+    "solution": "각 보기의 양변은 양수이므로 제곱하여 비교한다.<br>① $(\\sqrt{3}+\\sqrt{8})^2=11+4\\sqrt{6}>20$이다. $4\\sqrt{6}>9$는 $96>81$에서 성립하므로 ①은 거짓이다.<br>② $(\\sqrt{7}+\\sqrt{2})^2=9+2\\sqrt{14}<18$이다. $2\\sqrt{14}<9$는 $56<81$에서 성립하므로 ②는 거짓이다.<br>③ $(\\sqrt{5}+\\sqrt{3})^2=8+2\\sqrt{15}>14$이다. $2\\sqrt{15}>6$는 $60>36$에서 성립하므로 ③은 거짓이다.<br>④ $(\\sqrt{5}+\\sqrt{6})^2=11+2\\sqrt{30}<22$이다. $2\\sqrt{30}<11$은 $120<121$에서 성립하므로 ④는 참이다.<br>⑤ $(\\sqrt{6}+\\sqrt{2})^2=8+4\\sqrt{3}<16$이다. $4\\sqrt{3}<8$은 $48<64$에서 성립하므로 ⑤는 거짓이다.<br>따라서 옳은 것은 ④이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
+    "subUnitConfidence": "rule_inferred",
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 17,
@@ -567,7 +567,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -586,7 +586,7 @@ window.questionBank = [
       "\\frac{11}{4}"
     ],
     "answer": "3",
-    "solution": "$a = \\frac{5}{2}, b = -\\frac{3}{2} \\implies a^2-b^2 = 6.25 - 2.25 = 4$.",
+    "solution": "$-\\sqrt3<-\\sqrt{\\frac52}< -\\frac32<\\sqrt5<\\frac52<\\sqrt{\\frac{13}{2}}$이다.<br>따라서 $a=\\frac52$, $b=-\\frac32$이고 $a^2-b^2=4$이므로 정답은 ③이다.",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -601,7 +601,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -620,7 +620,7 @@ window.questionBank = [
       "-9"
     ],
     "answer": "1",
-    "solution": "$4x^2+8x-5+k = (2x+2)^2 \\implies k=9$.",
+    "solution": "$(2x-1)(2x+5)+k=4x^2+8x-5+k$이다.<br>완전제곱식 $(2x+2)^2=4x^2+8x+4$와 비교하면 $k=9$이므로 정답은 ①이다.",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
@@ -635,7 +635,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "객관식",
@@ -650,14 +650,14 @@ window.questionBank = [
     "choices": [
       "ㄱ",
       "ㄴ",
-      "ㄱ, ㄴ",
+      "ㄱ, ㄷ",
       "ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
     ],
-    "answer": "5",
-    "solution": "ㄱ, ㄴ, ㄷ 모두 참임.",
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "answer": "3",
+    "solution": "$A=\\sqrt{(x-1)^2}+2\\sqrt{(x+2)^2}=|x-1|+2|x+2|$이다.<br>$x<-2$이면 $A=(1-x)+2(-x-2)=-3x-3$이므로 ㄱ은 참이다.<br>$-2<x<1$이면 $A=(1-x)+2(x+2)=x+5>3$이므로 ㄴ은 거짓이다.<br>$x>1$이면 $A=(x-1)+2(x+2)=3x+3$이므로 ㄷ은 참이다.<br>따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -670,27 +670,28 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
       "제곱근",
       "근호",
-      "복소수",
       "도형",
-      "원",
+      "원기둥",
       "넓이",
-      "부피"
+      "부피",
+      "계산"
     ],
     "wide": false,
-    "content": "[단답형 1] 원기둥의 부피를 $A$, 겉넓이를 $B$라 할 때, $\\frac{B}{A} = a\\sqrt{2} + b\\sqrt{5}$이다. $a+b$를 구하시오. [4점]",
+    "content": "단답형1. 오른쪽 그림과 같은 원기둥의 부피를 $A\\,\\mathrm{cm}^{3}$, 겉넓이를 $B\\,\\mathrm{cm}^{2}$라고 할 때, $\\frac{B}{A}=a\\sqrt{2}+b\\sqrt{5}$이다. 이때 $a+b$의 값을 구하시오. (단, $a,b$는 유리수) [4점]",
     "answer": "17/15",
-    "solution": "$A = 6\\sqrt{5}\\pi, B = 4\\pi + 6\\sqrt{10}\\pi \\implies \\frac{B}{A} = \\frac{2\\sqrt{5}}{15} + \\sqrt{2} \\implies a+b = \\frac{17}{15}$",
+    "solution": "밑면의 반지름은 $\\sqrt{2}$ cm, 높이는 $3\\sqrt{5}$ cm이다.<br>부피는 $A=\\pi(\\sqrt{2})^{2}(3\\sqrt{5})=6\\sqrt{5}\\pi$이다.<br>겉넓이는 $B=2\\pi(\\sqrt{2})^{2}+2\\pi(\\sqrt{2})(3\\sqrt{5})=4\\pi+6\\sqrt{10}\\pi$이다.<br>따라서 $\\frac{B}{A}=\\frac{4+6\\sqrt{10}}{6\\sqrt{5}}=\\frac{2}{3\\sqrt{5}}+\\sqrt{2}=\\sqrt{2}+\\frac{2\\sqrt{5}}{15}$이다.<br>$a=1$, $b=\\frac{2}{15}$이므로 $a+b=\\frac{17}{15}$이다.",
     "choices": [],
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "image": "assets/images/21_왕운중_1학기_중간_중3_기출/q20.png"
   },
   {
     "id": 21,
@@ -701,24 +702,23 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
       "제곱근",
       "근호",
-      "도형",
-      "원",
+      "실수의 대소",
       "조건해석",
       "계산"
     ],
     "wide": false,
-    "content": "[단답형 2] 연산 규칙을 준수한 계산 값을 구하시오. [4점]",
+    "content": "단답형2. 두 실수 $a,b$에 대하여 $a\\odot b=\\begin{cases}a&(a>b\\text{일 때})\\\\b&(a<b\\text{일 때})\\end{cases}$, $a\\ast b=\\begin{cases}a&(a<b\\text{일 때})\\\\b&(a>b\\text{일 때})\\end{cases}$라 하자. $(3\\sqrt{6}\\odot5\\sqrt{2})\\times\\{(-7\\sqrt{2})\\ast(-4\\sqrt{6})\\}$의 값을 구하시오. [4점]",
     "answer": "-42\\sqrt{3}",
-    "solution": "원문 규칙에 따른 산출 시 $-42\\sqrt{3}$",
+    "solution": "$3\\sqrt{6}>5\\sqrt{2}$이다. 실제로 두 수는 양수이고 $54>50$이므로 $3\\sqrt{6}\\odot5\\sqrt{2}=3\\sqrt{6}$이다.<br>또 $7\\sqrt{2}>4\\sqrt{6}$은 $98>96$에서 알 수 있으므로 $-7\\sqrt{2}<-4\\sqrt{6}$이고, $(-7\\sqrt{2})\\ast(-4\\sqrt{6})=-7\\sqrt{2}$이다.<br>따라서 $(3\\sqrt{6})(-7\\sqrt{2})=-21\\sqrt{12}=-42\\sqrt{3}$이다.",
     "choices": [],
-    "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-    "subUnit": "근호를 포함한 식의 계산",
+    "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+    "subUnit": "제곱근과 실수",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -731,7 +731,7 @@ window.questionBank = [
     "standardUnitKey": "M3-02",
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -744,7 +744,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 1] $A+B$의 값을 구하시오. [6점]\\n$A=\\frac{998\\times996+998\\times4}{999^{2}-1}, B=\\sqrt{2022\\times2020+1}$",
     "answer": "2022",
-    "solution": "$A = 1, B = 2021 \\implies A+B = 2022$",
+    "solution": "$A=\\frac{998(996+4)}{999^2-1}=\\frac{998\\cdot1000}{998\\cdot1000}=1$이다.<br>$B=\\sqrt{2022\\cdot2020+1}=\\sqrt{2021^2}=2021$이므로 $A+B=2022$이다.",
     "choices": [],
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -760,7 +760,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -772,7 +772,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 2] $A=2\\sqrt{2}-1, B=4-2\\sqrt{2}, C=4-\\sqrt{10}$ 의 대소를 비교하시오. [7점]",
     "answer": "C < B < A",
-    "solution": "$A-B > 0, B-C > 0$ 이므로 $C < B < A$",
+    "solution": "$A-B=4\\sqrt2-5>0$, $B-C=\\sqrt{10}-2\\sqrt2>0$이다.<br>따라서 $A>B>C$, 즉 $C<B<A$이다.",
     "choices": [],
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -788,7 +788,7 @@ window.questionBank = [
     "standardUnitKey": "M3-01",
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
       "서술형",
@@ -800,7 +800,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 3] $x=\\frac{2}{\\sqrt{5}+\\sqrt{3}}, y=\\frac{4}{\\sqrt{5}-\\sqrt{3}}$ 일 때, $x^{2}y-xy^{2}$의 값을 구하시오. [7점]",
     "answer": "-4\\sqrt{5}-12\\sqrt{3}",
-    "solution": "$xy(x-y) = 4(-\\sqrt{5}-3\\sqrt{3}) = -4\\sqrt{5}-12\\sqrt{3}$",
+    "solution": "$x=\\sqrt5-\\sqrt3$, $y=2(\\sqrt5+\\sqrt3)$이므로 $xy=4$, $x-y=-\\sqrt5-3\\sqrt3$이다.<br>$x^2y-xy^2=xy(x-y)=-4\\sqrt5-12\\sqrt3$이다.",
     "choices": [],
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",

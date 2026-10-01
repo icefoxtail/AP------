@@ -1,5 +1,60 @@
 [JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]
 
+## CURRENT — R3 FAIL REENTRY: R2 INDEPENDENT RECERTIFICATION (2026-10-01)
+
+R3 FAIL 후 R1이 수리한 artifact는 반드시 R2를 다시 통과한다. R3→R1→R3 직행은 금지한다.
+
+R2 독립성:
+1. latest R1 reentry artifact를 source/current authority와 함께 읽고 **R3/R1 상세 verdict를 정답처럼 사용하지 않은 상태에서 독립 판정부터 동결**한다.
+2. 특히 R3에서 실패했던 축은 시험지 전체 N/N 또는 R1이 확정한 systemic 영향범위 전체를 독립 재검한다.
+3. blind decision freeze 후에만 `R3_FAIL_PACKET`과 R1 repair ledger를 열어 기존 결함이 실제로 닫혔는지 regression compare한다.
+4. R2에서 새 결함을 찾으면 기존 REPAIR_BEFORE_HOLD 규칙으로 수리·재검한다.
+
+필수 receipt:
+`reentryFrom=R3_FAIL_AFTER_R1`, `r3FailurePacketRef`, `inputR1ReentryArtifactSha`,
+`blindDecisionFrozenBeforeFailurePacketCompare=true`, `reviewedAffectedAxes[]`,
+`curriculumMethodAuditCount` / `visualNecessityAuditCount` 등 해당 HARD marker,
+`r2OutputArtifactSha`.
+
+R2 완료 후 nextOwner는 반드시 **R3_RETRY**다. 이전 R3 PASS/FAIL을 재사용하지 않는다.
+
+
+## CURRENT HARD GATE — CURRICULUM METHOD INVENTORY + VISUAL NECESSITY N/N (2026-10-01)
+
+CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 반드시 전 문항 독립검수한다. 이 gate는 **중1·중2·중3·고등 전 과정**에 적용하며, 이전 stage의 PASS·inventory·visual count를 정답으로 사용하지 않는다.
+
+### 1. CURRICULUM METHOD INVENTORY — N/N
+
+final solution에서 실제 풀이가 의존하는 `concepts[] / formulas[] / notations[] / methods[]`를 문항별로 다시 추출한다. 단순 금지어 검색으로 대체하지 않는다.
+
+각 항목을 `standardCourse + standardUnitKey/subUnitKey + 현재 교육과정 authority`에 직접 대조하여 `ALLOWED / NOT_ALLOWED / UNCERTAIN`으로 기록한다.
+- 하나라도 실제 풀이에 필요한 `NOT_ALLOWED`가 있으면 수학적으로 맞아도 즉시 `CURRICULUM_FAIL`.
+- `UNCERTAIN`을 PASS로 올리지 않는다.
+- 안전한 과정 내 풀이로 바꿀 수 있으면 같은 review에서 최소수정 후 inventory부터 다시 검수한다.
+- 완료 증거: `curriculumMethodAuditCount=N/N`, 문항별 inventory/evidence, `curriculumViolationQids=[]`.
+
+### 2. VISUAL NECESSITY AUDIT — N/N
+
+`solutionSvgAuditCount=X/X`는 **현재 존재하는 SVG의 정확성 분모일 뿐**이며 visual completeness를 뜻하지 않는다. 반드시 별도로 `visualNecessityAuditCount=N/N`을 수행한다.
+
+문항별로 final solution의 결정 단계가 그림·좌표평면·관계도·그래프에서 교육적으로 명확해지는지, 해당 domain canonical이 visual을 요구하는지 판정한다. 필요한 visual 누락은 `SOLUTION_VISUAL_MISSING`.
+
+특히:
+- 공통수학2 `H22-C2-01~04` 도형의 방정식/좌표 계열은 `docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md`를 **필독·직접 적용**한다.
+- 일반 도형·기하는 `docs/rules/04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md`.
+- 실제 visual 생성·수정은 `docs/rules/04_VISUAL/도형추출.md`.
+
+`existingVisualAuditCount`와 `visualNecessityAuditCount`를 하나로 합치지 않는다.
+
+### 3. 회귀 fixture — 26 매산고 고1 2학기 중간
+
+- q15 final: 방향벡터·정사영 → `CURRICULUM_FAIL`
+- q21 final: 벡터 표기와 벡터적 중심 결정 → `CURRICULUM_FAIL`
+- q8·q9·q10·q11·q14: 기존 SVG가 없다는 이유로 visual audit 대상에서 빠지면 FAIL. 전 문항 necessity audit에서 잡혀야 한다.
+
+이 fixture와 동형인 결함을 `상위 용어`, `교육과정 순도`, `visual 있으면 좋음` 같은 WARN으로 낮추지 않는다.
+
+
 ## CURRENT OVERRIDE — INDEPENDENT RE-CERTIFICATION + REPAIR_BEFORE_HOLD (2026-09-29)
 
 CURRENT 중등 재인증 및 이에 준하는 예약 REVIEW2에서는 아래 과거의 “FAIL 보고만 하고 수정본을 만들지 않는다” 제한보다 이 섹션이 우선한다.
