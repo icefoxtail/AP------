@@ -230,36 +230,47 @@ export async function validateApprovedMixedQuestions(
   };
 }
 
-export async function resolveSavedPaperSourceGrades(env, questions) {
+export async function resolveSavedPaperSourceGrades(_env, questions) {
   if (!Array.isArray(questions) || !questions.length)
     fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
-  const data = await loadCanonicalCatalog(env);
-  const byUid = new Map(
-    data.records.filter((record) => record.questionUid).map((record) => [record.questionUid, record]),
-  );
   const sourceGrades = new Set();
   for (const question of questions) {
     const uid = String(question?.questionUid || ""),
-      record = byUid.get(uid),
       sourceFile = norm(question?.sourceArchiveFile || question?.sourceFile || question?.source_archive_file),
-      sourceOrdinal = Number(question?.sourceOrdinal ?? question?.source_question_ordinal),
-      identity = data.canonicalAuthority.identityByUid[uid],
-      grade = canonical.resolveSourceGrade({
-        registeredGrade: data.canonicalAuthority.examGradeByFile[sourceFile],
+      sourceOrdinal = Number(question?.sourceOrdinal ?? question?.source_question_ordinal);
+    const identityEvidence = question?.sourceIdentityEvidence;
+    if (
+      !UID.test(uid) ||
+      !sourceFile ||
+      !Number.isInteger(sourceOrdinal) ||
+      sourceOrdinal < 1
+    )
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    if (identityEvidence) {
+      if (
+        identityEvidence.schemaVersion !== "archive2-saved-source-identity-v1" ||
+        identityEvidence.status !== "VERIFIED" ||
+        identityEvidence.questionUid !== uid ||
+        norm(identityEvidence.sourceFile) !== sourceFile ||
+        norm(identityEvidence.identitySourceFile) !== sourceFile ||
+        Number(identityEvidence.sourceOrdinal) !== sourceOrdinal ||
+        String(identityEvidence.sourceGrade || "") !== String(question?.sourceGrade || "")
+      ) fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    } else if (uid !== "qid_v1_" + (await sha256hex(sourceFile + "#" + sourceOrdinal))) {
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    }
+    const grade = canonical.resolveSnapshotSourceGrade({
+        preservedGrade: identityEvidence ? identityEvidence.sourceGrade : "",
         sourceFile,
-        identitySourceFile: identity?.sourceArchiveFile,
+        identitySourceFile: identityEvidence ? identityEvidence.identitySourceFile : sourceFile,
       });
     if (
-      !record ||
-      record.identityStatus !== "VERIFIED" ||
-      identity?.status !== "VERIFIED" ||
-      sourceFile !== record.sourceFile ||
-      sourceOrdinal !== Number(record.sourceOrdinal) ||
       grade.status !== "VALID" ||
-      grade.grade !== record.sourceGrade ||
       !core.gradeRank(grade.grade)
     )
       fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    if (!identityEvidence && question?.sourceGrade && String(question.sourceGrade) !== grade.grade)
+      fail("저장한 시험지 source grade가 source identity와 일치하지 않습니다.", 409);
     sourceGrades.add(grade.grade);
   }
   return [...sourceGrades].sort((a, b) => core.gradeRank(a) - core.gradeRank(b));

@@ -225,6 +225,37 @@ export async function prepareSavedPaperBatch(env, input) {
     },
   );
   const currentIndexVersion = currentCatalog.indexVersion;
+  const sourceGradeByUid = new Map(
+    currentCatalog.records
+      .filter((record) => record.questionUid)
+      .map((record) => [record.questionUid, record.sourceGrade]),
+  );
+  for (const paper of input.papers) {
+    for (const question of paper.questions) {
+      const sourceGrade = sourceGradeByUid.get(question.questionUid);
+      if (!core.gradeRank(sourceGrade))
+        fail("저장한 시험지 source grade를 확인할 수 없습니다.", 409);
+      const identity = currentCatalog.canonicalAuthority.identityByUid?.[question.questionUid];
+      const sourceFile = core.normalizeFile(question.sourceArchiveFile || question.sourceFile);
+      const identitySourceFile = core.normalizeFile(identity?.sourceArchiveFile);
+      if (
+        identity?.status !== "VERIFIED" ||
+        String(identity.questionUid || question.questionUid) !== String(question.questionUid) ||
+        identitySourceFile !== sourceFile ||
+        Number(identity.sourceOrdinal) !== Number(question.sourceOrdinal)
+      ) fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+      question.sourceGrade = sourceGrade;
+      question.sourceIdentityEvidence = {
+        schemaVersion: "archive2-saved-source-identity-v1",
+        status: "VERIFIED",
+        questionUid: question.questionUid,
+        sourceFile,
+        sourceOrdinal: Number(question.sourceOrdinal),
+        identitySourceFile,
+        sourceGrade,
+      };
+    }
+  }
   // Keep the exact image bytes inside the immutable snapshot. Source asset
   // paths are stable filenames, so saving only the URL would allow a later
   // asset replacement to silently change an already saved paper.

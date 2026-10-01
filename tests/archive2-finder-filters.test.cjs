@@ -2,6 +2,9 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const core = require("../archive/archive2-core.js");
+const projectionPolicy = JSON.parse(
+  fs.readFileSync("archive/data/archive2-canonical-projection-policy.json", "utf8"),
+);
 
 const catalog = core.decodeCatalog(
   JSON.parse(fs.readFileSync("archive/data/archive2-catalog.json")),
@@ -364,9 +367,10 @@ test("workspace readUrl and popstate paths reconcile parsed Finder state", () =>
   assert.match(workspace, /history\.replaceState\(null, "", url\)/);
   assert.match(workspace, /window\.addEventListener\("popstate"/);
 });
-test("high1 Finder exam matching is record-level and one mixed 2015 exam can match both projected subjects", () => {
+test("high1 Finder exam matching is record-level across both approved native 2015 subjects", () => {
   const exam = {
     file: "original/high/h1/mixed.js",
+    sourceGrade: "고1",
     effectiveBrowseGrade: "고1",
     curriculums: ["2015"],
     courseRanges: [{ courseCode: "H15-SA", standardCourse: "수학(상)" }],
@@ -374,27 +378,27 @@ test("high1 Finder exam matching is record-level and one mixed 2015 exam can mat
   const records = [
     {
       sourceFile: exam.file,
+      sourceGrade: "고1",
       effectiveBrowseGrade: "고1",
       curriculumKey: "2015",
       courseKey: "수학(상)",
-      legacyStandardUnitKey: "H15-SA-09",
     },
     {
       sourceFile: exam.file,
+      sourceGrade: "고1",
       effectiveBrowseGrade: "고1",
       curriculumKey: "2015",
       courseKey: "수학(하)",
-      legacyStandardUnitKey: "H15-SB-06",
     },
   ];
   const before = JSON.stringify(exam);
-  const index = core.buildFinderIndex({ taxonomy: [], exams: [exam], records });
-  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_1" }, index), true);
-  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_2" }, index), true);
+  const index = core.buildFinderIndex({ taxonomy: [], exams: [exam], records, projectionPolicy });
+  assert.equal(core.finderMatches(exam, { semanticSubject: "H1_2015_MATH_UP" }, index), true);
+  assert.equal(core.finderMatches(exam, { semanticSubject: "H1_2015_MATH_DOWN" }, index), true);
   assert.equal(
     core.finderMatches(
       exam,
-      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2015" },
+      { semanticSubject: "H1_2015_MATH_UP", curriculumKey: "2015" },
       index,
     ),
     true,
@@ -402,7 +406,7 @@ test("high1 Finder exam matching is record-level and one mixed 2015 exam can mat
   assert.equal(
     core.finderMatches(
       exam,
-      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2022" },
+      { semanticSubject: "H1_2015_MATH_UP", curriculumKey: "2022" },
       index,
     ),
     false,
@@ -410,9 +414,10 @@ test("high1 Finder exam matching is record-level and one mixed 2015 exam can mat
   assert.equal(JSON.stringify(exam), before, "source provenance object must not be rewritten");
 });
 
-test("high1 subject plus curriculum uses the same record, preventing cross-record false positives", () => {
+test("high1 subject plus curriculum uses the same record and native course identity", () => {
   const exam = {
     file: "original/high/h1/cross-curriculum.js",
+    sourceGrade: "고1",
     effectiveBrowseGrade: "고1",
     curriculums: ["2015", "2022"],
     courseRanges: [],
@@ -420,31 +425,44 @@ test("high1 subject plus curriculum uses the same record, preventing cross-recor
   const index = core.buildFinderIndex({
     taxonomy: [],
     exams: [exam],
+    projectionPolicy,
     records: [
       {
         sourceFile: exam.file,
+        sourceGrade: "고1",
         effectiveBrowseGrade: "고1",
         curriculumKey: "2015",
         courseKey: "수학(하)",
-        legacyStandardUnitKey: "H15-SB-06",
       },
       {
         sourceFile: exam.file,
+        sourceGrade: "고1",
         effectiveBrowseGrade: "고1",
         curriculumKey: "2022",
         courseKey: "공통수학2",
-        legacyStandardUnitKey: "H22-C2-01",
       },
     ],
   });
-  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_1" }, index), true);
-  assert.equal(core.finderMatches(exam, { curriculumKey: "2022" }, index), true);
+  assert.equal(core.finderMatches(exam, { semanticSubject: "H1_2015_MATH_DOWN" }, index), true);
+  assert.equal(core.finderMatches(exam, { semanticSubject: "COMMON_MATH_2" }, index), true);
   assert.equal(
     core.finderMatches(
       exam,
-      { semanticSubject: "COMMON_MATH_1", curriculumKey: "2022" },
+      { semanticSubject: "H1_2015_MATH_DOWN", curriculumKey: "2015" },
       index,
     ),
+    true,
+  );
+  assert.equal(
+    core.finderMatches(exam, { semanticSubject: "H1_2015_MATH_DOWN", curriculumKey: "2022" }, index),
+    false,
+  );
+  assert.equal(
+    core.finderMatches(exam, { semanticSubject: "COMMON_MATH_2", curriculumKey: "2022" }, index),
+    true,
+  );
+  assert.equal(
+    core.finderMatches(exam, { semanticSubject: "COMMON_MATH_2", curriculumKey: "2015" }, index),
     false,
   );
 });

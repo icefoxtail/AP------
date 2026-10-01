@@ -52,7 +52,7 @@ function harness(data = structuredClone(catalog)) {
   vm.runInContext(source.slice(0, startup) + `
     render = () => {};
     save = () => {};
-    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, planRows, request, bucketButtons, newDraft, draft, applyDraft, saveWorkSignature};
+    globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderComposition, renderInspector, planRows, request, bucketButtons, newDraft, draft, applyDraft, saveWorkSignature, findExams, renderFind, pool};
   })();`, ctx);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -286,6 +286,8 @@ test('explicit selected-source entry and saved draft restoration retain the inte
 });
 
 test('approved shared high2/high3 sources survive Finder-to-Compose in both browse directions', async () => {
+  assert.equal(catalog.exams.filter(exam => exam.sourceGrade === '고3').length, 0,
+    'the current Archive2 source population has no registered 고3 source; the reverse direction is fixture-verified');
   const base = catalog.records.find(row => row.sourceGrade === '고2' &&
     core.subjectProjectionForRecord(row, '', catalog.projectionPolicy));
   assert.ok(base, 'test needs a canonical high2 subject projection');
@@ -324,6 +326,17 @@ test('approved shared high2/high3 sources survive Finder-to-Compose in both brow
       curriculumKey: record.curriculumKey,
       semanticSubject,
     };
+    w.state.sources = [];
+    w.state.find = filters;
+    const finderRows = w.findExams();
+    const listedExam = finderRows.find(row => row.file === record.sourceFile);
+    assert.ok(listedExam,
+      `${browseGrade} actual Finder list should include the approved ${sourceGrade} source`);
+    const examIndex = w.state.catalog.exams.indexOf(listedExam);
+    assert.match(w.renderFind(), new RegExp(`data-action="source-toggle" data-exam="${examIndex}"`),
+      'the actual Finder result must render its source-selection control');
+    await click({ action: 'source-toggle', exam: String(examIndex) });
+    assert.deepEqual(plain(w.state.sources), [record.sourceFile]);
     assert.equal(core.finderMatches(exam, filters, w.state.finderIndex), true,
       `${browseGrade} Finder should show the approved ${sourceGrade} source`);
 
@@ -336,8 +349,6 @@ test('approved shared high2/high3 sources survive Finder-to-Compose in both brow
       .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey }));
     assert.deepEqual(beforeUids, [record.questionUid]);
 
-    w.state.find = filters;
-    w.state.sources = [record.sourceFile];
     await click({ action: 'go-compose', useSources: 'true' });
 
     assert.deepEqual(plain(w.state.sources), [record.sourceFile]);
@@ -347,6 +358,58 @@ test('approved shared high2/high3 sources survive Finder-to-Compose in both brow
       .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey })),
     beforeMetadata, 'source grade and curriculum identity remain unchanged');
   }
+});
+
+test('actual Finder list and Compose keep an approved high2 source in the high3 browse view', async () => {
+  const record = catalog.records.find(row => row.sourceGrade === '고2' &&
+    core.subjectProjectionForRecord(row, '', catalog.projectionPolicy) &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  assert.ok(record, 'test needs a real, verified high2 source with an approved shared-subject projection');
+  const exam = catalog.exams.find(row => row.file === record.sourceFile);
+  assert.ok(exam, 'test source must be present in the production Archive2 catalog');
+  assert.equal(exam.effectiveBrowseGrade, '고2', 'the registered browse projection retains the source grade');
+  const semanticSubject = core.subjectProjectionForRecord(record, '', catalog.projectionPolicy);
+  const { w, click } = harness(catalog);
+  w.state.find = { grade: '고3', curriculumKey: record.curriculumKey, semanticSubject };
+
+  const finderRows = w.findExams();
+  const listedExam = finderRows.find(row => row.file === record.sourceFile);
+  assert.ok(listedExam,
+    'the real findExams() list must apply the shared canonical projection before filtering by grade');
+  const finderPosition = finderRows.indexOf(listedExam);
+  w.state.page = Math.floor(finderPosition / 18);
+  const examIndex = w.state.catalog.exams.indexOf(listedExam);
+  assert.match(w.renderFind(), new RegExp(`data-action="source-toggle" data-exam="${examIndex}"`),
+    'the real Finder renderer must expose a selectable row for this approved source');
+  const before = w.state.catalog.records.filter(row => row.sourceFile === record.sourceFile)
+    .map(({ sourceGrade, curriculumKey, courseKey }) => ({ sourceGrade, curriculumKey, courseKey }));
+  assert.ok(before.some(row => row.sourceGrade === '고2' && row.courseKey === record.courseKey));
+  await click({ action: 'source-toggle', exam: String(examIndex) });
+  assert.deepEqual(plain(w.state.sources), [record.sourceFile]);
+  await click({ action: 'go-compose', useSources: 'true' });
+
+  assert.deepEqual(plain(w.state.sources), [record.sourceFile],
+    'selecting this Finder result must retain its source restriction after go-compose');
+  const sourceScopes = w.scopeOptions();
+  const sourceScope = sourceScopes.find(scope => scope.scopeQuestionUids.includes(record.questionUid));
+  assert.ok(sourceScope, 'the selected source must still provide a canonical Compose scope');
+  const scopeUids = sourceScopes.flatMap(scope => scope.scopeQuestionUids);
+  assert.ok(scopeUids.length > 0);
+  assert.ok(scopeUids.every(uid => w.state.catalog.records.find(row => row.questionUid === uid)?.sourceFile === record.sourceFile),
+    'the actual Compose scope list must not widen beyond the selected source');
+  w.state.scopes = [sourceScope.key];
+  const request = w.request();
+  assert.deepEqual(plain(request.filters.sourceFiles), [record.sourceFile],
+    'the selected source must remain in the save/selection request filters');
+  const selectable = w.pool().filter(row => core.eligibility(row, w.state).ok &&
+    core.matches(row, request.filters, w.state));
+  assert.ok(selectable.length > 0, 'the selected source must still provide selectable Compose candidates');
+  assert.ok(selectable.every(row => row.sourceFile === record.sourceFile),
+    'the executable Compose candidate set must remain limited to the selected source');
+  assert.deepEqual(new Set(selectable.map(row => row.questionUid)), new Set(sourceScope.scopeQuestionUids));
+  assert.deepEqual(w.state.catalog.records.filter(row => row.sourceFile === record.sourceFile)
+    .map(({ sourceGrade, curriculumKey, courseKey }) => ({ sourceGrade, curriculumKey, courseKey })), before,
+  'browse grade must not rewrite source grade, curriculum, or course identity');
 });
 
 test('cross-grade sources without an approved canonical projection remain excluded', async () => {
@@ -382,6 +445,8 @@ test('cross-grade sources without an approved canonical projection remain exclud
   assert.equal(core.finderMatches(exam, filters, w.state.finderIndex), false);
   assert.equal(core.matches(record, filters, { catalog: w.state.catalog, projectionPolicy }), false);
   w.state.find = filters;
+  assert.equal(w.findExams().some(row => row.file === sourceFile), false,
+    'unapproved cross-grade sources must stay out of the actual Finder result list');
   w.state.sources = [sourceFile];
   await click({ action: 'go-compose', useSources: 'true' });
   assert.deepEqual(plain(w.state.sources), []);
@@ -393,7 +458,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-canonical.js', '20261001-canonical-loadset-1'],
     ['archive2-core.js', '20261001-h23-compose-closure-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
-    ['archive2-workspace.js', '20261001-h23-compose-closure-1'],
+    ['archive2-workspace.js', '20261001-shared-grade-finder-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assert.match(html, /archive2-source\.js\?v=20260930-meta-v2-sidecar-1/);
@@ -423,6 +488,27 @@ test('fresh BASIC includes every difficulty and unclassified metadata without pr
     assert.doesNotMatch(w.renderScopes(), /자동 출제/);
     assert.match(w.renderComposition(), /전체 \(미지정 포함\)/);
   }
+});
+
+test('removing advanced metadata leaves the exact BASIC candidate UID set unchanged', () => {
+  const rows = [1, 2, 3, 4, 5, 'UNKNOWN'].map((difficultyBucket, index) =>
+    basicRecord('고2', {
+      questionUid: 'qid_v1_' + crypto.createHash('sha256').update(`advanced-optional-${index}`).digest('hex'),
+      L3: '시험용 L3', L4: '시험용 L4', problemTypeKey: 'PT_OPTIONAL_TEST', templateKey: 'TPL_OPTIONAL_TEST',
+      difficultyBucket, difficultyConfidence: difficultyBucket === 'UNKNOWN' ? 'unknown' : 'high',
+    }));
+  const withoutAdvanced = rows.map(row => ({
+    ...row,
+    L3: '', L4: '', problemTypeKey: '', templateKey: '',
+    difficultyBucket: undefined, difficultyConfidence: undefined, difficultyBoundaryFlag: undefined,
+  }));
+  const selectableUids = records => {
+    const { w } = harness({ ...catalog, records });
+    w.state.filters = { grade: '고2', semanticSubject: core.subjectProjectionForRecord(records[0], '', catalog.projectionPolicy) };
+    return new Set(w.scopeOptions().flatMap(scope => scope.scopeQuestionUids));
+  };
+
+  assert.deepEqual(selectableUids(withoutAdvanced), selectableUids(rows));
 });
 
 test('difficulty filters apply only after an explicit choice and can return to all', async () => {

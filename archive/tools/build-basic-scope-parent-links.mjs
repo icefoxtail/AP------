@@ -9,6 +9,15 @@ import sourceBank from '../archive2-source.js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const read = rel => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
 const sha = text => crypto.createHash('sha256').update(text).digest('hex');
+const inputManifest = JSON.parse(read('archive/data/archive2-canonical-input-manifest.json'));
+const authorityInputFiles = (inputManifest.files || [])
+  .filter(row => !['data/archive2-catalog.json', 'data/basic-scope-parent-links.json'].includes(row.path))
+  .map(({ path: inputPath, sha256 }) => ({ path: inputPath, sha256: String(sha256 || '').toLowerCase() }))
+  .sort((a, b) => a.path < b.path ? -1 : a.path > b.path ? 1 : 0);
+const authorityInputsSha256 = sha(JSON.stringify({
+  resolverVersion: inputManifest.resolverVersion || '',
+  files: authorityInputFiles,
+}));
 const masterPath = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
 const masterText = read(masterPath);
 const parents = core.taxonomyPaths(JSON.parse(masterText));
@@ -50,7 +59,11 @@ for (const record of overrides.records) {
   // Solver-only revisions do not invalidate a reviewed L1/L2 topic. A changed
   // statement, choice set or visual reference requires a new parent review.
   if (bodyFingerprint !== record.sourceBodyFingerprint) continue;
-  records.push({ ...record, sourceFingerprint: await sourceBank.fingerprint(question) });
+  records.push({
+    ...record,
+    assignmentFingerprint: bodyFingerprint,
+    sourceFingerprint: await sourceBank.fingerprint(question),
+  });
 }
 const groupsPath = 'archive/data/basic-scope-parent-groups.json', groupsText = read(groupsPath), groupData = JSON.parse(groupsText);
 if (groupData.status !== 'REVIEWED_DISPLAY_GROUPS' || !Array.isArray(groupData.groups)) throw new Error('Invalid basic parent display groups');
@@ -117,7 +130,8 @@ for (const item of catalog.records) {
     (parent.courseKey && core.normalizeCourseIdentity(parent.courseKey) !== courseKey))) {
     sourceParents.push({ grade: item.effectiveBrowseGrade, curriculumKey: item.curriculumKey || '',
       courseKey: parent.courseKey || item.courseKey, questionUid: item.questionUid,
-      sourceFingerprint: item.sourceFingerprint, metadataParent: [item.courseKey || '', item.L1 || '', item.L2 || ''],
+        sourceFingerprint: item.sourceFingerprint, assignmentFingerprint: item.assignmentFingerprint,
+        metadataParent: [item.courseKey || '', item.L1 || '', item.L2 || ''],
       L1: parent.L1, L2: parent.L2 });
   }
 }
@@ -142,22 +156,104 @@ for (const link of existingParentLinks.sourceParents || []) {
   const currentGradeCourse = gradeCourses.some(row => row.grade === gradeEvidence.grade &&
     row.curriculumKey === item.curriculumKey &&
     core.normalizeCourseIdentity(row.courseKey) === core.normalizeCourseIdentity(item.courseKey));
+  const assignment = core.Canonical.validateBasicAssignment(item, catalog.canonicalAuthority);
+  const assignmentEvidence = (catalog.canonicalAuthority.assignmentsByUid?.[link.questionUid] || [])[0];
   const stillValid = gradeEvidence.status === 'VALID' &&
     gradeEvidence.grade === item.sourceGrade &&
     link.grade === item.sourceGrade &&
-    link.sourceFingerprint === item.sourceFingerprint &&
+    (!link.assignmentFingerprint || link.assignmentFingerprint === item.assignmentFingerprint) &&
     link.curriculumKey === item.curriculumKey &&
     core.normalizeCourseIdentity(link.courseKey) === core.normalizeCourseIdentity(item.courseKey) &&
     link.L1 === item.L1 && link.L2 === item.L2 &&
     Number(identity.sourceOrdinal) === Number(item.sourceOrdinal) &&
     core.normalizeFile(identity.sourceArchiveFile) === sourceFile &&
     canonicalParent && currentGradeCourse &&
-    core.basicEligibility(item, { canonicalAuthority: catalog.canonicalAuthority }).ok;
+    assignment.ok;
   if (!stillValid) continue;
+  const refreshedLink = {
+    ...link,
+    sourceFingerprint: assignmentEvidence?.reviewEvidence?.reviewedSourceFingerprint || link.sourceFingerprint,
+    assignmentFingerprint: item.assignmentFingerprint,
+  };
   const existing = sourceParentByUid.get(link.questionUid);
-  if (existing && JSON.stringify(existing) !== JSON.stringify(link))
+  if (existing && JSON.stringify(existing) !== JSON.stringify(refreshedLink))
     throw new Error(`Conflicting canonical source parents: ${link.questionUid}`);
-  sourceParentByUid.set(link.questionUid, link);
+  sourceParentByUid.set(link.questionUid, refreshedLink);
+}
+// Reviewed source links are recorded by source path and ordinal. Materialize a
+// UID-level assignment only when that exact source identity, assignment-body
+// fingerprint, approved metadata evidence, namespace and canonical parent all
+// join. The full answer/solution fingerprint remains a separate release gate.
+const itemsBySource = new Map(catalog.records.map(item =>
+  [`${core.normalizeFile(item.sourceFile)}#${Number(item.sourceOrdinal)}`, item]));
+const reviewedLinksBySource = new Map();
+for (const link of records.filter(row => row.sourceFile && row.sourceOrdinal && row.sourceBodyFingerprint)) {
+  const key = `${core.normalizeFile(link.sourceFile)}#${Number(link.sourceOrdinal)}`;
+  const prior = reviewedLinksBySource.get(key);
+  if (prior && (prior.L1 !== link.L1 || prior.L2 !== link.L2 ||
+      prior.curriculumKey !== link.curriculumKey || prior.courseKey !== link.courseKey))
+    throw new Error(`Conflicting reviewed source links: ${key}`);
+  reviewedLinksBySource.set(key, link);
+}
+for (const [sourceKey, link] of reviewedLinksBySource) {
+  const item = itemsBySource.get(sourceKey);
+  if (!item?.questionUid || item.identityStatus !== 'VERIFIED') continue;
+  const identity = identityByUid[item.questionUid];
+  const sourceFile = core.normalizeFile(item.sourceFile);
+  const sourceOrdinal = Number(item.sourceOrdinal);
+  const gradeEvidence = core.Canonical.resolveSourceGrade({
+    registeredGrade: sourceGradeByFile[sourceFile],
+    sourceFile,
+    identitySourceFile: identity?.sourceArchiveFile,
+  });
+  const assignmentEvidence = item.metadataAssignmentEvidence || {};
+  const existingAssignments = catalog.canonicalAuthority?.assignmentsByUid?.[item.questionUid] || [];
+  const assignmentFingerprint = item.assignmentFingerprint;
+  const bodyFingerprintMatches = Boolean(assignmentFingerprint) &&
+    assignmentFingerprint === link.sourceBodyFingerprint &&
+    assignmentFingerprint === link.assignmentFingerprint &&
+    assignmentFingerprint === assignmentEvidence.assignmentFingerprint;
+  const identityMatches = identity?.status === 'VERIFIED' &&
+    core.normalizeFile(identity.sourceArchiveFile) === sourceFile &&
+    Number(identity.sourceOrdinal) === sourceOrdinal &&
+    assignmentEvidence.questionUid === item.questionUid &&
+    core.normalizeFile(assignmentEvidence.sourceFile) === sourceFile &&
+    Number(assignmentEvidence.sourceOrdinal) === sourceOrdinal;
+  const metadataStatus = String(assignmentEvidence.metadataStatus || '');
+  const metadataReviewed = (metadataStatus.startsWith('approved_') || metadataStatus === 'MOTHER_FINAL') &&
+    /^approved(?:_|$)/i.test(String(assignmentEvidence.fieldStatus?.standardUnit || '')) &&
+    ( /^approved(?:_|$)/i.test(String(assignmentEvidence.fieldStatus?.subUnit || '')) ||
+      (metadataStatus === 'approved_r2e_final' && assignmentEvidence.fieldStatus?.subUnit === 'r2e_curriculum_binding') ) &&
+    Array.isArray(assignmentEvidence.evidenceRefs) && assignmentEvidence.evidenceRefs.some(ref => String(ref || '').trim()) &&
+    /^[a-f0-9]{64}$/i.test(String(assignmentEvidence.evidenceDigest || ''));
+  const namespaceMatches = gradeEvidence.status === 'VALID' &&
+    gradeEvidence.grade === link.grade && gradeEvidence.grade === item.sourceGrade &&
+    gradeCourses.some(row => row.grade === gradeEvidence.grade &&
+      row.curriculumKey === link.curriculumKey && row.courseKey === link.courseKey);
+  const canonicalParent = parents.some(parent => parent.curriculumKey === link.curriculumKey &&
+    core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
+    parent.L1 === link.L1 && parent.L2 === link.L2);
+  if (!bodyFingerprintMatches || !identityMatches || !metadataReviewed || !namespaceMatches ||
+      !canonicalParent || existingAssignments.length !== 0 || !String(link.reason || '').trim()) continue;
+
+  const metadataTaxonomy = item.unverifiedTaxonomy || {};
+  const joinedLink = {
+    grade: gradeEvidence.grade,
+    curriculumKey: link.curriculumKey,
+    courseKey: link.courseKey,
+    questionUid: item.questionUid,
+    sourceFile,
+    sourceOrdinal,
+    sourceFingerprint: assignmentEvidence.sourceFingerprint || link.sourceFingerprint,
+    assignmentFingerprint,
+    metadataParent: [metadataTaxonomy.courseKey || '', metadataTaxonomy.L1 || '', metadataTaxonomy.L2 || ''],
+    L1: link.L1,
+    L2: link.L2,
+  };
+  const existing = sourceParentByUid.get(item.questionUid);
+  if (existing && JSON.stringify(existing) !== JSON.stringify(joinedLink))
+    throw new Error(`Conflicting canonical source parents: ${item.questionUid}`);
+  sourceParentByUid.set(item.questionUid, joinedLink);
 }
 sourceParents.splice(0, sourceParents.length, ...sourceParentByUid.values());
 const published = [], publishedKeys = new Set();
@@ -169,7 +265,7 @@ for (const row of records) {
 const data = { schemaVersion: 'archive2-basic-scope-parent-links-v1', status: 'DERIVED_READ_ONLY',
   authority: { source: masterPath, sha256: sha(masterText) }, references: refs,
   policy: 'Basic display and selection use only L1/L2 parent links, source identity and fingerprint. L3/L4 and difficulty are optional capabilities and cannot gate basic linkage.',
-  generatedAgainst: { catalogSha256: sha(catalogText) }, records: published, sourceParents, groups: groupData.groups };
+  generatedAgainst: { authorityInputsSha256 }, records: published, sourceParents, groups: groupData.groups };
 const output = JSON.stringify(data, null, 2) + '\n';
 const target = 'archive/data/basic-scope-parent-links.json';
 if (process.argv.includes('--check')) {

@@ -44,6 +44,13 @@ for (const link of basicScopeLinks.sourceParents || []) {
   if (!sourceParentsByUid.has(link.questionUid)) sourceParentsByUid.set(link.questionUid, []);
   sourceParentsByUid.get(link.questionUid).push(link);
 }
+const reviewedScopeLinksBySource = new Map();
+for (const link of basicScopeLinks.records || []) {
+  if (!link.sourceFile || !Number.isInteger(Number(link.sourceOrdinal)) || !link.sourceBodyFingerprint) continue;
+  const key = core.normalizeFile(link.sourceFile) + "#" + Number(link.sourceOrdinal);
+  if (!reviewedScopeLinksBySource.has(key)) reviewedScopeLinksBySource.set(key, []);
+  reviewedScopeLinksBySource.get(key).push(link);
+}
 const metaByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
 const identityBySource = new Map(
   identity.records.map((r) => [
@@ -80,25 +87,45 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
   ) return fail("assignment_identity_mismatch");
   if (!sourceGrade || !assignmentFp || meta.contentFingerprint !== assignmentFp)
     return fail("assignment_fingerprint_mismatch");
+  const metadataStatus = String(meta.metadataStatus || "");
+  const candidates = (sourceParentsByUid.get(id.questionUid) || []).filter((link) =>
+    link.grade === sourceGrade &&
+    (!link.assignmentFingerprint || link.assignmentFingerprint === assignmentFp) &&
+    Boolean(link.curriculumKey && link.courseKey && link.L1 && link.L2) &&
+    gradeCourseAllowlist.has([sourceGrade, link.curriculumKey, link.courseKey].join("\u0000")) &&
+    parentPaths.has(JSON.stringify([link.curriculumKey, link.courseKey, link.L1, link.L2])),
+  );
+  const hasReviewedSourceLink = candidates.some((parentLink) => {
+    const sourceFile = core.normalizeFile(parentLink.sourceFile);
+    const sourceOrdinal = Number(parentLink.sourceOrdinal);
+    if (!sourceFile || !Number.isInteger(sourceOrdinal)) return false;
+    const exactSourceLinks = reviewedScopeLinksBySource.get(`${sourceFile}#${sourceOrdinal}`) || [];
+    return exactSourceLinks.some((sourceLink) =>
+      sourceLink.grade === sourceGrade &&
+      sourceLink.curriculumKey === parentLink.curriculumKey &&
+      sourceLink.courseKey === parentLink.courseKey &&
+      sourceLink.L1 === parentLink.L1 &&
+      sourceLink.L2 === parentLink.L2 &&
+      sourceLink.sourceBodyFingerprint === assignmentFp &&
+      sourceLink.assignmentFingerprint === assignmentFp &&
+      core.normalizeFile(sourceLink.sourceFile) === sourceFile &&
+      Number(sourceLink.sourceOrdinal) === sourceOrdinal &&
+      Boolean(String(sourceLink.reason || "").trim()),
+    );
+  });
+  const subUnitReviewed = approvedFieldStatus(meta.fieldStatus?.subUnit) ||
+    (metadataStatus === "approved_r2e_final" &&
+      meta.fieldStatus?.subUnit === "r2e_curriculum_binding" && hasReviewedSourceLink);
   if (!meta.standardUnitKey || !meta.subUnitKey ||
-      !approvedFieldStatus(meta.fieldStatus?.standardUnit) ||
-      !approvedFieldStatus(meta.fieldStatus?.subUnit))
+      !approvedFieldStatus(meta.fieldStatus?.standardUnit) || !subUnitReviewed)
     return fail("assignment_fields_unreviewed");
   if (!Array.isArray(meta.approvalEvidence) || !meta.approvalEvidence.some((ref) => typeof ref === "string" && ref.trim()) ||
       !String(metadata.approvalStatus || "").startsWith("APPROVED") ||
       !/^[a-f0-9]{64}$/i.test(String(metadata.sourceDigests?.completeClassification || "")))
     return fail("assignment_review_evidence_missing");
-  const metadataStatus = String(meta.metadataStatus || "");
   if (!metadataStatus.startsWith("approved_") && !reviewedMetadataStatuses.has(metadataStatus))
     return fail("assignment_not_approved");
 
-  const candidates = (sourceParentsByUid.get(id.questionUid) || []).filter((link) =>
-    link.grade === sourceGrade &&
-    link.sourceFingerprint === meta.sourceFingerprint &&
-    Boolean(link.curriculumKey && link.courseKey && link.L1 && link.L2) &&
-    gradeCourseAllowlist.has([sourceGrade, link.curriculumKey, link.courseKey].join("\u0000")) &&
-    parentPaths.has(JSON.stringify([link.curriculumKey, link.courseKey, link.L1, link.L2])),
-  );
   const targets = new Map(candidates.map((link) => [
     [link.grade, link.curriculumKey, link.courseKey, link.L1, link.L2].join("\u0000"),
     link,

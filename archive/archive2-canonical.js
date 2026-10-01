@@ -162,6 +162,28 @@
     return { grade: registered, status: "VALID", reason: "" };
   }
 
+  function resolveSnapshotSourceGrade({ preservedGrade, sourceFile, identitySourceFile } = {}) {
+    const preserved = text(preservedGrade);
+    const sourcePath = normalizeFile(sourceFile);
+    const identityPath = normalizeFile(identitySourceFile);
+    if (!sourcePath || !identityPath)
+      return { grade: "", status: "SOURCE_GRADE_UNRESOLVED", reason: "snapshot_identity_missing" };
+    if (sourcePath !== identityPath)
+      return { grade: "", status: "SOURCE_GRADE_CONFLICT", reason: "snapshot_identity_conflict" };
+    const sourcePathGrade = pathGrade(sourcePath);
+    const identityPathGrade = pathGrade(identityPath);
+    if (sourcePathGrade && identityPathGrade !== sourcePathGrade)
+      return { grade: "", status: "SOURCE_GRADE_CONFLICT", reason: "snapshot_path_grade_conflict" };
+    if (preserved && !GRADES.has(preserved))
+      return { grade: "", status: "SOURCE_GRADE_UNRESOLVED", reason: "snapshot_grade_invalid" };
+    if (preserved && sourcePathGrade && preserved !== sourcePathGrade)
+      return { grade: "", status: "SOURCE_GRADE_CONFLICT", reason: "snapshot_grade_conflict" };
+    const grade = preserved || sourcePathGrade || identityPathGrade;
+    if (!GRADES.has(grade))
+      return { grade: "", status: "SOURCE_GRADE_UNRESOLVED", reason: "snapshot_grade_missing" };
+    return { grade, status: "VALID", reason: "" };
+  }
+
   async function assignmentFingerprint(question = {}) {
     if (!globalThis.crypto?.subtle || typeof TextEncoder !== "function")
       throw new Error("Archive2 assignment fingerprint requires Web Crypto");
@@ -955,6 +977,7 @@
     normalizeFile,
     pathGrade,
     resolveSourceGrade,
+    resolveSnapshotSourceGrade,
     assignmentFingerprint,
     validateBasicAssignment,
     validateAdvancedAssignment,
