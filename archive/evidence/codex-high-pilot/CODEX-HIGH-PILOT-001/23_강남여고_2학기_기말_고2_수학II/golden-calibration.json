@@ -1,0 +1,105 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_강남여고_2학기_기말_고2_수학II",
+  "ordinal": 2,
+  "stage": "GOLDEN_COMPARE",
+  "status": "MANUAL_SOLUTION_CALIBRATION_PASS_WITH_ITEM_HOLD",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "targetArtifactSha256": "sha256:f19fdfcf67dc485f8cd284e365c029e5708bfbf5b0655deed19326c6218ab19a",
+  "denominator": 25,
+  "resolvedSolutionCount": 24,
+  "itemHoldQids": [
+    13
+  ],
+  "sampleReadAfterFreshSolutionBeforeCompare": true,
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+      "sha256": "sha256:2433f4d4582a8a83e780372e4fb41af77daf913efa8ba059e3d33b8e2564921b",
+      "gitBlobSha": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248",
+      "denominator": 20,
+      "answerCount": 20,
+      "solutionCount": 20,
+      "representatives": [
+        {
+          "qid": 18,
+          "solutionSha256": "sha256:998ac3ab9d1478305ed0c3c59cd9e52adc5987777ea468ed82fd4ba7953f718b",
+          "solutionExcerpt": "[키포인트] 할선의 기울기를 $S$라 두고, 음수 구간과 양수 구간에서 $f'(c)=S$의 해가 각각 하나씩 존재하는 조건을 구한다.\n조건 정리: $f(-2)=-4$이고, 두 개의 서로 다른 해가 생기려면 열린구간 $(-2,a)$가 $0$의 양쪽을 모",
+          "observation": "Shows the full interval case split and inequalities needed to locate derivative-level solutions."
+        },
+        {
+          "qid": 13,
+          "solutionSha256": "sha256:8275bad923012bb8d5eabc855d6caacc8052b22c576cb3dba4f396439d3ac9c0",
+          "solutionExcerpt": "[키포인트] 외접원의 지름은 삼각형의 세 변과 넓이로 나타내고, 각 길이를 $t$의 최고차항 기준으로 비교한다.\n조건 정리: $P=(t,t^2)$이고 $OP=OQ$이므로 $s=OP=OQ=t\\sqrt{1+t^2}$라 둘 수 있다.\n풀이 방향: $PQ=d",
+          "observation": "Calculus solution connects the source diagram to a geometric formula; a separate SVG/formula panel improves readability."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+      "sha256": "sha256:fef8e3deffb9bfc9bac234193a5ab84326abc39d5d36111855dcf2a003e62171",
+      "gitBlobSha": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442",
+      "denominator": 23,
+      "answerCount": 23,
+      "solutionCount": 23,
+      "representatives": [
+        {
+          "qid": 16,
+          "solutionSha256": "sha256:fcafbbdbb6970e10927f16a23daac3fa936e86a8b543007b088e2ae7202bb355",
+          "solutionExcerpt": "$h'(x)=f'(x)-g'(x)$이므로 두 그래프의 위아래 관계가 곧 $h'$의 부호이다.\n그래프에서 $y=f'(x)$는 $x=0$과 $x=3$을 지나는 아래로 볼록한 포물선이고, $y=g'(x)$는 원점을 지나는 기울기가 양수인 직선이며, 두 그래",
+          "observation": "Keeps ㄱ/ㄴ/ㄷ judgments independent and ties derivative graph order to sign changes."
+        },
+        {
+          "qid": 19,
+          "solutionSha256": "sha256:1c867661cd15724135b1a4420678995b6238e2d82eaee28762d61d2661e27066",
+          "solutionExcerpt": "합성된 극한은 안쪽 식이 어느 값에 어느 쪽에서 다가가는지를 먼저 정해야 한다.\n$f$는 $x\\ge2$에서 $x^2$, $-1\\le x\\lt2$에서 $x$, $x\\lt-1$에서 $-x$이고, $g$는 $x\\gt2$에서 $-x^2+4x-4$, $-1\\l",
+          "observation": "States one-sided inner limits before selecting each piecewise branch."
+        }
+      ]
+    }
+  ],
+  "visualRefs": [
+    {
+      "path": "archive/assets/images/25_매산고_2학기_중간_고2_수학II/q13-solution.svg",
+      "sha256": "sha256:743a8124c7cf88c7dda69739e3918cfd2d85ca121c8813010f5492f0128a1a6c",
+      "gitBlobSha": "2ec0ea83dc90a9904cd9026c458e7d28a6e4c4ab",
+      "observation": "H2 Math II solution visual; inspected actual SVG primitives and solution relation."
+    },
+    {
+      "path": "archive/assets/images/24_매산여고_2학기_중간_고2_수학II/q16-solution.svg",
+      "sha256": "sha256:ef757df3ae930c9f48523c4fbaf9fbf42595bd1e62f991339b88f2a6b4a51838",
+      "gitBlobSha": "0df1c55a9f920af835c8608e5d6f835f9a34cff1",
+      "observation": "H2 Math II solution visual; inspected actual SVG primitives and solution relation."
+    }
+  ],
+  "negativeSamples": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "finding": "Verify actual geometry, independent enumerated blocks, and runtime TeX."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q7-solution.bad.svg",
+      "sha256": "sha256:240dade5ecd6991b156f456fe7036883a59e43df3117d0f2a25b3c790a39eaa4",
+      "gitBlobSha": "2a42b27f3c8ec316334b5c68421f4619b58cdae7",
+      "finding": "Failed parabola misses labelled points."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q8-solution.bad.svg",
+      "sha256": "sha256:5082ba76d12ffc1ceaca34baf7c215607515a5c8378331ab54baed859e5120e5",
+      "gitBlobSha": "04aeff3b443b94c68a714b27eddd8321ece9bd52",
+      "finding": "Failed tangent line contradicts actual primitive slope/contact."
+    }
+  ],
+  "qualityCompareCount": "25/25 dispositions reviewed; 24 resolved solutions compared; q13 ITEM_HOLD",
+  "axes": {
+    "studentReproducibility": "Compared theorem/setup, graph sign analysis, integral reasoning and written proof to H2 Math II examples.",
+    "smallBoardStructure": "Target q19 (가)/(나)/(다), q20 launch/speed conditions, q21 (가)/(나)/(다), and graph/case arguments are split into lines.",
+    "explanationDensity": "Routine computations remain short; q19/q20/q21 include decisive intermediate steps.",
+    "visualSemanticParity": "Target problem PNGs were preserved and read; no solution SVG was added. H2 visual refs and negative graph fixtures were reviewed.",
+    "visualReadability": "Source diagrams are present on graph/net questions and the student text identifies their sign/region/length facts."
+  },
+  "conclusion": "Solution comparison pass for 24 resolved questions; q13 remains a source-level item hold. No H1 sample and no answer/text copied. Minor Q21/Q24 notation repairs were applied after comparison and subsequently rechecked by both self-review stages and the independent reviewer. Q25 received the same minor integral-notation repair as Q21; copy-only repairs were subsequently rechecked in both self-review stages and the independent review."
+}
