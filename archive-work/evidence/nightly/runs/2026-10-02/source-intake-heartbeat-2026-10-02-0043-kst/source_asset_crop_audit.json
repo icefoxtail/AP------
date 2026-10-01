@@ -1,0 +1,105 @@
+{
+  "schema": "SOURCE_ASSET_CROP_AUDIT_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0043-kst",
+  "examId": "22_순천고_2학기_기말_고2_수학II",
+  "sourcePdf": "D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf",
+  "sourcePdfSha256": "sha256:0c470b22688eb20c41e6758b71834066e6e88ae6ae1c7f1672a5bce4490dd851",
+  "pageImages": [
+    {
+      "pageNo": 1,
+      "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sha256": "sha256:db281d2b06f02d4d06c724d54fad62f813905f4271201e9f8c7382d46e40ea8f"
+    },
+    {
+      "pageNo": 2,
+      "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p002.png",
+      "sha256": "sha256:221eecb58a36c6f742909478c7cbc3a4e0035f9e45752001ed704d759a1511c5"
+    },
+    {
+      "pageNo": 3,
+      "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "sha256": "sha256:2ad724ca34c9dde47d987097fa600777f72deff144125185c2fde347b16b4c5f"
+    },
+    {
+      "pageNo": 4,
+      "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p004.png",
+      "sha256": "sha256:f614cc8dcc3e92340d3aa86c4b7c822aab46cd2d10014f5aa6430eb35bd7bed9"
+    },
+    {
+      "pageNo": 5,
+      "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sha256": "sha256:ab3db22206bcf95ed0a69f4df77eb9cbaca9fe32493d392d462864b8ec74be08"
+    }
+  ],
+  "assets": [
+    {
+      "qid": 3,
+      "sourceQuestionNo": "3",
+      "sourcePageNo": 1,
+      "sourcePagePath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "sourcePageSha256": "sha256:db281d2b06f02d4d06c724d54fad62f813905f4271201e9f8c7382d46e40ea8f",
+      "bbox": {
+        "x1": 250,
+        "y1": 2215,
+        "x2": 1050,
+        "y2": 2540,
+        "coordinateSpace": "page-pixel-top-left-origin",
+        "pageWidth": 2226,
+        "pageHeight": 3153
+      },
+      "assetPath": "archive-work/assets/images/22_순천고_2학기_기말_고2_수학II/q003_visual.png",
+      "cropSha256": "sha256:6e177ab280325abdc21f43b109d27cb3b727f23b368c29f5b17d1f6606a4a6fb",
+      "directUnmaskedCropPixelSha256": "sha256:d92f2841936253ef11d76171feaa8a086608d610a43fd3e612fb1c1dcd055ea7",
+      "visualRead": true,
+      "rotationApplied": false,
+      "deskewApplied": false,
+      "contrastApplied": false,
+      "restorationApplied": false,
+      "processing": [
+        "direct pixel crop from source page raster only"
+      ],
+      "pixelIdenticalToDirectPageCrop": true
+    },
+    {
+      "qid": 21,
+      "sourceQuestionNo": "서술형2",
+      "sourcePageNo": 5,
+      "sourcePagePath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "sourcePageSha256": "sha256:ab3db22206bcf95ed0a69f4df77eb9cbaca9fe32493d392d462864b8ec74be08",
+      "bbox": {
+        "x1": 190,
+        "y1": 1610,
+        "x2": 780,
+        "y2": 2250,
+        "coordinateSpace": "page-pixel-top-left-origin",
+        "pageWidth": 2226,
+        "pageHeight": 3153
+      },
+      "assetPath": "archive-work/assets/images/22_순천고_2학기_기말_고2_수학II/q021_visual.png",
+      "cropSha256": "sha256:3fa4b7bb5a91e51889d22a6b36f9b4ede7d127228e4abdd2148c548150ababa8",
+      "directUnmaskedCropPixelSha256": "sha256:a83689e310608afb1ba80b46509fac718a34de0f63b6362eb39408405ba5d763",
+      "visualRead": true,
+      "rotationApplied": false,
+      "deskewApplied": false,
+      "contrastApplied": false,
+      "restorationApplied": false,
+      "processing": [
+        "direct pixel crop from source page raster",
+        "white mask applied only to adjacent printed score text; no graph pixels changed"
+      ],
+      "maskedRegion": {
+        "x1": 510,
+        "y1": 0,
+        "x2": 589,
+        "y2": 45,
+        "coordinateSpace": "crop-local-pixel",
+        "purpose": "remove adjacent printed [7점] score text only"
+      },
+      "pixelDiffInsideMask": 1325,
+      "pixelDiffOutsideMask": 0,
+      "graphPixelsChanged": false
+    }
+  ],
+  "pixelComparisonStatus": "PASS_GRAPH_PIXELS_SOURCE_IDENTICAL_EXCEPT_RECORDED_ADJACENT_TEXT_MASK",
+  "status": "SELF_VISUAL_REVIEW_PASS"
+}

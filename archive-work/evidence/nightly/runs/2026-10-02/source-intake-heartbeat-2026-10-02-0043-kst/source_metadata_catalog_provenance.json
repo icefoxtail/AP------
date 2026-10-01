@@ -1,0 +1,36 @@
+{
+  "schema": "SOURCE_METADATA_CATALOG_PROVENANCE_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0043-kst",
+  "examId": "22_순천고_2학기_기말_고2_수학II",
+  "catalogSha": "sha256:d9ee6aa3224541ddb7171eb5e326519bcc8473ccd3f153c4c208a318a11ea840",
+  "catalogRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "sha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "sha256": "sha256:1ba5319b4358896d5a88453b648771a53edd52a4b63d7377e0a0610b4170afe0"
+    }
+  ],
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "originMainGitBlobChecks": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "originMainBlob": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82",
+      "intakeBlob": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82",
+      "gitBlobEqual": true,
+      "localWorkingTreeSha256": "sha256:89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e"
+    },
+    {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "originMainBlob": "ca504997b839c6265dc4714294bcb54d83430e54",
+      "intakeBlob": "ca504997b839c6265dc4714294bcb54d83430e54",
+      "gitBlobEqual": true,
+      "localWorkingTreeSha256": "sha256:1ba5319b4358896d5a88453b648771a53edd52a4b63d7377e0a0610b4170afe0"
+    }
+  ],
+  "catalogInputGitDiffCountVsLatestMain": 0,
+  "allCatalogInputGitBlobsEqualLatestMain": true,
+  "note": "Git blob IDs match latest main. The Windows working tree stores CRLF where source text files are LF in raw git objects; this newline conversion is reflected only in local workingTreeSha256. No canonical input was modified."
+}
