@@ -1,0 +1,260 @@
+{
+  "schema": "codex-high-pilot-difficulty-blind-v1",
+  "exam": "23_매산고_2학기_기말_고2_기하",
+  "sourceArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
+  "sourceArtifactSha256": "sha256:c4fc51546389408260a5ee0b0e9277c566d40779d20049d0e8059d4b127fa69c",
+  "artifactSha256": "sha256:30989596a3c588766c5dfeaaddf768f35672ec7088a46734f9e9ff07c7fa58e9",
+  "priorDifficultyAndAnswerExcluded": true,
+  "questions": [
+    {
+      "qid": 1,
+      "content": "두 점 $A$, $B$, $C$의 위치벡터를 각각 $\\vec{a}$, $\\vec{b}$, $2\\vec{a}+\\vec{b}$라고 할 때, 벡터 $\\overrightarrow{AC}-\\overrightarrow{CB}$를 $\\vec{a}$, $\\vec{b}$로 나타낸 것은? [3.7점]",
+      "choices": [
+        "$2\\vec{a}+\\vec{b}$",
+        "$3\\vec{a}+\\vec{b}$",
+        "$3\\vec{a}+2\\vec{b}$",
+        "$4\\vec{a}+\\vec{b}$",
+        "$4\\vec{a}+2\\vec{b}$"
+      ],
+      "finalSolution": "위치벡터로 나타내면 $\\overrightarrow{AC}=(2\\vec a+\\vec b)-\\vec a=\\vec a+\\vec b$이고, $\\overrightarrow{CB}=\\vec b-(2\\vec a+\\vec b)=-2\\vec a$이다.\n따라서 $\\overrightarrow{AC}-\\overrightarrow{CB}=3\\vec a+\\vec b$이므로 정답은 ②이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 2,
+      "content": "세 벡터 $\\vec{a}=(1,4)$, $\\vec{b}=(3,-1)$, $\\vec{c}=(x,y)$에 대하여 벡터 $\\vec{c}$와 $3\\vec{a}+2\\vec{b}$가 평행할 때, $\\frac{x}{y}$의 값은? (단, $x$, $y$는 0이 아닌 실수) [3.8점]",
+      "choices": [
+        "$\\frac{4}{5}$",
+        "$\\frac{9}{10}$",
+        "$1$",
+        "$\\frac{11}{10}$",
+        "$\\frac{6}{5}$"
+      ],
+      "finalSolution": "$3\\vec a+2\\vec b=3(1,4)+2(3,-1)=(9,10)$이다. $\\vec c$가 이 벡터와 평행하므로 $(x,y)=t(9,10)$으로 둘 수 있다.\n따라서 $\\dfrac{x}{y}=\\dfrac9{10}$이고 정답은 ②이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 3,
+      "content": "두 평면 $\\alpha$, $\\beta$가 이루는 각의 크기가 $30^\\circ$이고 평면 $\\alpha$ 위에 반지름이 5인 원이 있다. 이 원의 평면 $\\beta$ 위로의 정사영의 넓이는? [3.9점]",
+      "choices": [
+        "$25\\pi$",
+        "$\\frac{25}{2}\\pi$",
+        "$\\frac{25\\sqrt{2}}{2}\\pi$",
+        "$\\frac{25\\sqrt{3}}{2}\\pi$",
+        "$50\\pi$"
+      ],
+      "finalSolution": "평면 $\\alpha$와 $\\beta$가 이루는 각이 $30^\\circ$이므로 정사영 넓이는 원의 넓이에 $\\cos30^\\circ$를 곱한 값이다.\n$25\\pi\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{25\\sqrt3}{2}\\pi$이므로 정답은 ④이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 4,
+      "content": "다음 그림과 같은 정육면체에서 $\\overline{AG}$와 꼬인위치에 있는 모서리의 개수를 $a$, 평면 $AEHD$와 평행한 모서리의 개수를 $b$라고 할 때, $ab$의 값은? [4.0점]",
+      "choices": [
+        "$12$",
+        "$16$",
+        "$20$",
+        "$24$",
+        "$28$"
+      ],
+      "finalSolution": "정육면체의 모서리는 12개이다. $AG$는 꼭짓점 $A,G$를 잇는 공간대각선이므로 두 꼭짓점에 붙은 6개 모서리는 $AG$와 만나고, 나머지 6개는 $AG$와 꼬인 위치이다. 따라서 $a=6$이다.\n평면 $AEHD$는 왼쪽 면이다. 이 면과 만나지 않고 평행한 모서리는 $BC,FG,BF,CG$의 4개이므로 $b=4$이다.\n따라서 $ab=6\\cdot4=24$이고 정답은 ④이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 5,
+      "content": "좌표공간의 점 $P(2,10,-5)$를 $x$축에 대하여 대칭이동시킨 점을 $Q$라 하자. 선분 $\\overline{PQ}$를 $3:2$로 내분하는 점을 $R$라 할 때, 선분 $\\overline{OR}$의 길이는? (단, $O$는 원점이다.) [4.1점]",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "finalSolution": "$x$축 대칭이동은 $y,z$좌표의 부호를 바꾸므로 $Q=(2,-10,5)$이다. $PR:RQ=3:2$이므로 내분점은 $R=\\dfrac{2P+3Q}{5}$이다.\n$R=\\left(\\dfrac{4+6}{5},\\dfrac{20-30}{5},\\dfrac{-10+15}{5}\\right)=(2,-2,1)$이므로 $\\overline{OR}=\\sqrt{2^2+(-2)^2+1^2}=3$이다. 정답은 ③이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 6,
+      "content": "좌표평면 위의 두 점 $A(4,-2)$, $B(-2,6)$에 대하여 $\\overrightarrow{AP}\\cdot\\overrightarrow{BP}=0$을 만족시키는 점 $P$가 그리는 도형의 넓이는? [4.2점]",
+      "choices": [
+        "$5\\pi$",
+        "$10\\pi$",
+        "$15\\pi$",
+        "$20\\pi$",
+        "$25\\pi$"
+      ],
+      "finalSolution": "$\\overrightarrow{AP}\\cdot\\overrightarrow{BP}=0$이므로 $\\angle APB=90^\\circ$이다. 따라서 점 $P$의 자취는 지름이 $AB$인 원이다.\n$AB=\\sqrt{(4+2)^2+(-2-6)^2}=10$이므로 반지름은 5, 넓이는 $\\pi\\cdot5^2=25\\pi$이다. 정답은 ⑤이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 7,
+      "content": "좌표평면 위 두 직선 $l$, $m$이 다음의 조건을 만족시킨다.\n(가) 직선 $l$은 $(0,2)$를 지나고 법선벡터가 $\\vec{n}=(1,1)$이다.\n(나) 직선 $m$의 방정식은 $2x-y+3=0$이다.\n두 직선 $l$, $m$이 이루는 각 $\\theta$에 대하여 $\\sin^2\\theta$의 값은? [4.3점]",
+      "choices": [
+        "$\\frac{3}{5}$",
+        "$\\frac{7}{10}$",
+        "$\\frac{4}{5}$",
+        "$\\frac{9}{10}$",
+        "$1$"
+      ],
+      "finalSolution": "직선 $l$은 법선벡터가 $(1,1)$이므로 방향벡터를 $(1,-1)$로 잡을 수 있다. 직선 $m$은 $y=2x+3$이므로 방향벡터는 $(1,2)$이다.\n두 방향벡터의 행렬식 절댓값은 $3$이고 크기의 곱은 $\\sqrt2\\sqrt5=\\sqrt{10}$이다. 따라서 $\\sin^2\\theta=\\left(\\dfrac3{\\sqrt{10}}\\right)^2=\\dfrac9{10}$, 정답은 ④이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 8,
+      "content": "아래 그림과 같이 세 모서리 $\\overline{OA}$, $\\overline{OB}$, $\\overline{OC}$가 서로 수직이고 $\\overline{OA}=1$, $\\overline{OB}=2$, $\\overline{OC}=3$인 사면체가 있다. 꼭짓점 $C$에서 선분 $AB$에 내린 수선의 발을 $H$라고 할 때, 선분 $CH$의 길이를 $p$라고 하자. $p^2$의 값은? [4.3점]",
+      "choices": [
+        "$\\frac{47}{5}$",
+        "$\\frac{48}{5}$",
+        "$\\frac{49}{5}$",
+        "$10$",
+        "$\\frac{51}{5}$"
+      ],
+      "finalSolution": "$OA,OB,OC$를 서로 수직인 좌표축으로 두면 $A=(1,0,0)$, $B=(0,2,0)$, $C=(0,0,3)$이다.\n$\\overrightarrow{AB}=(-1,2,0)$, $\\overrightarrow{AC}=(-1,0,3)$이고 $|\\overrightarrow{AB}\\times\\overrightarrow{AC}|^2=6^2+3^2+2^2=49$, $|AB|^2=5$이다.\n점과 직선 사이 거리 제곱은 $CH^2=\\dfrac{|AB\\times AC|^2}{|AB|^2}=\\dfrac{49}{5}$이므로 정답은 ③이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 9,
+      "content": "서로 다른 세 직선 $l$, $m$, $n$과 서로 다른 세 평면 $\\alpha$, $\\beta$, $\\gamma$에 대하여 <보기>에서 옳은 것만의 개수를 구하면? [4.4점]\n<보기>\nㄱ. $l\\parallel\\alpha$이고 $m\\parallel\\alpha$이면 $l\\parallel m$이다.\nㄴ. $l\\parallel\\alpha$이고 $m\\perp\\alpha$이면 $l\\perp m$이다.\nㄷ. $\\alpha\\parallel\\beta$이고 $\\beta\\parallel\\gamma$이면 $\\alpha\\parallel\\gamma$이다.\nㄹ. $l\\perp m$이고 $l\\perp n$이면 $m\\perp n$이다.\nㅁ. $l\\perp\\alpha$이고 $l\\parallel\\beta$이면 $\\alpha\\perp\\beta$이다.",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "finalSolution": "ㄱ. $l,m$이 모두 평면 $\\alpha$와 평행해도 방향이 다를 수 있으므로 항상 평행한 것은 아니다. 거짓.\nㄴ. $l$의 방향은 평면 $\\alpha$의 방향과 평행하고, $m$은 그 평면에 수직이므로 두 방향은 수직이다. 따라서 $l\\perp m$이다. 참.\nㄷ. 서로 다른 두 평면의 평행 관계는 추이적이므로 $\\alpha\\parallel\\gamma$이다. 참.\nㄹ. 한 직선에 수직인 두 직선은 서로 평행일 수도 있으므로 반드시 서로 수직인 것은 아니다. 거짓.\nㅁ. $l\\perp\\alpha$이고 $l\\parallel\\beta$이면 평면 $\\beta$ 안에 평면 $\\alpha$의 법선 방향이 있다. 따라서 $\\alpha\\perp\\beta$이다. 참.\n옳은 것은 ㄴ, ㄷ, ㅁ의 3개이므로 정답은 ③이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 10,
+      "content": "좌표공간에서 점 $(-3,0,2)$를 중심으로 하고 $yz$평면에 접하는 구의 방정식은 $x^2+y^2+z^2+ax+by+cz+d=0$이다. $a+b+c+d$의 값은? (단, $a$, $b$, $c$, $d$는 상수이다.) [4.5점]",
+      "choices": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "finalSolution": "중심 $(-3,0,2)$에서 $yz$평면 $x=0$까지의 거리가 3이므로 구의 반지름은 3이다.\n$(x+3)^2+y^2+(z-2)^2=9$를 전개하면 $x^2+y^2+z^2+6x-4z+4=0$이다. 따라서 $(a,b,c,d)=(6,0,-4,4)$이고 $a+b+c+d=6$, 정답은 ①이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 11,
+      "content": "좌표공간에서 구 $(x-a)^2+(y-a+1)^2+(z-a+2)^2=49$와 $zx$평면이 만나서 생기는 원의 넓이가 $24\\pi$일 때, 양수 $a$의 값은? [4.6점]",
+      "choices": [
+        "$4$",
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$"
+      ],
+      "finalSolution": "구의 중심은 $(a,a-1,a-2)$, 반지름은 7이다. $zx$평면은 $y=0$이므로 중심에서 평면까지의 거리는 $|a-1|$이다.\n단면 원의 반지름 제곱이 $49-(a-1)^2$이므로 $49-(a-1)^2=24$이다. 따라서 $(a-1)^2=25$, 즉 $a=6$ 또는 $-4$이다. 양수 조건에서 $a=6$, 정답은 ③이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 12,
+      "content": "좌표평면 위 세 점 $A(2,1)$, $B$, $P$가 다음 조건을 만족시킨다.\n(가) $|\\overrightarrow{OB}|=1$\n(나) $\\overrightarrow{OA}+\\overrightarrow{OB}\\parallel(1,1)$\n(다) $|\\overrightarrow{AP}-\\overrightarrow{OB}|=k$ ($k$는 상수)\n점 $P$가 그리는 도형이 원점을 지날 때, 이 도형의 둘레의 길이의 최댓값을 $m$, 최솟값을 $n$이라 하자. $m^2+n^2$의 값은? (단, $O$는 원점이다.) [4.7점]",
+      "choices": [
+        "$20\\pi^2$",
+        "$25\\pi^2$",
+        "$30\\pi^2$",
+        "$35\\pi^2$",
+        "$40\\pi^2$"
+      ],
+      "finalSolution": "$\\overrightarrow{OB}=(u,v)$라 두면 $u^2+v^2=1$이다. 조건 (나)에서 $(2+u,1+v)\\parallel(1,1)$이므로 $2+u=1+v$, 즉 $v-u=1$이다. 이를 원의 방정식과 함께 풀면 $(u,v)=(-1,0)$ 또는 $(0,1)$이다.\n$(u,v)=(-1,0)$이면 원의 중심은 $A+B=(1,1)$이고, 원점을 지나므로 반지름 $k=\\sqrt2$, 둘레는 $2\\sqrt2\\pi$이다.\n$(u,v)=(0,1)$이면 중심은 $A+B=(2,2)$이므로 $k=2\\sqrt2$, 둘레는 $4\\sqrt2\\pi$이다. 따라서 $m^2+n^2=(2\\sqrt2\\pi)^2+(4\\sqrt2\\pi)^2=40\\pi^2$이고 정답은 ⑤이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 13,
+      "content": "아래 그림과 같이 밑면이 정사각형이고 옆면이 정삼각형인 사각뿔에서 네 옆면의 내접원의 밑면 $ABCD$로의 정사영을 각각 $S_1$, $S_2$, $S_3$, $S_4$라 하자. $\\overline{AB}=4$일 때, 그림과 같이 네 도형 $S_1$, $S_2$, $S_3$, $S_4$로 둘러싸인 빗금친 부분의 넓이를 $A$, 네 도형 $S_1$, $S_2$, $S_3$, $S_4$의 넓이의 합을 $B$라고 하자. $A+B$의 값은? [4.8점]",
+      "choices": [
+        "$\\frac{16}{3}+\\frac{32\\sqrt{3}}{27}\\pi$",
+        "$\\frac{16}{3}+\\frac{4\\sqrt{3}}{3}\\pi$",
+        "$\\frac{16}{3}+\\frac{40\\sqrt{3}}{27}\\pi$",
+        "$\\frac{16}{3}+\\frac{44\\sqrt{3}}{27}\\pi$",
+        "$\\frac{16}{3}+\\frac{16\\sqrt{3}}{9}\\pi$"
+      ],
+      "finalSolution": "옆면은 한 변이 4인 정삼각형이므로 내접원의 반지름은 $r=\\dfrac{2\\sqrt3}{3}$이다. 옆면 높이는 $2\\sqrt3$, 밑면 중심에서 변의 중점까지는 2이므로, 내접원의 밑면 정사영은 반지름이 $a=\\dfrac{2\\sqrt3}{3}$, $b=\\dfrac23$인 타원이다. 따라서 $B=4\\pi ab=\\dfrac{16\\sqrt3}{9}\\pi$이다.\n밑면을 $[0,4]\\times[0,4]$로 두면 이웃한 타원은 $(1,1),(3,1),(3,3),(1,3)$에서 접한다. 가운데 $2\\times2$ 정사각형에서 한 모서리의 $1\\times1$ 구역을 보자. 그 안에서 한 타원이 차지하는 조각을 $T$라 하면, 정사영의 면적비는 $\\cos\\theta=\\dfrac2{2\\sqrt3}=\\dfrac1{\\sqrt3}$이다.\n이 $T$는 원래 내접원에서 중심각 $60^\\circ$인 부채꼴에서 직각삼각형을 뺀 넓이의 정사영이다. 직각삼각형의 두 변은 $r/2$, $\\sqrt3r/2$이므로 그 넓이는 $\\sqrt3r^2/8$이다. 따라서\n$T=\\dfrac1{\\sqrt3}\\left(\\dfrac{\\pi r^2}{6}-\\dfrac{\\sqrt3r^2}{8}\\right)=\\dfrac{2\\sqrt3}{27}\\pi-\\dfrac16$이다.\n가운데 정사각형의 넓이는 4이고, 네 모서리 구역마다 이웃한 두 타원이 각각 넓이 $T$만큼 차지하므로 $A=4(1-2T)=\\dfrac{16}{3}-\\dfrac{16\\sqrt3}{27}\\pi$이다.\n그러므로 $A+B=\\dfrac{16}{3}+\\dfrac{32\\sqrt3}{27}\\pi$이고 정답은 ①이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 14,
+      "content": "아래 그림과 같이 $\\overline{AB}=4$, $\\angle ABC=\\angle ABD=\\angle DBC=\\frac{\\pi}{3}$, $\\angle BCD=\\frac{\\pi}{2}$인 사면체 $ABCD$의 꼭짓점 $A$에서 평면 $BCD$에 내린 수선의 발을 $H$라 하자. 점 $H$가 선분 $CD$ 위의 점일 때, $\\cos(\\angle ABH)$의 값을 $q$라고 하자. $q^2$의 값은? [4.8점]",
+      "choices": [
+        "$\\frac{1}{3}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{4}{3}$",
+        "$\\frac{8}{3}$",
+        "$\\frac{16}{3}$"
+      ],
+      "finalSolution": "$BC=s$라 두자. 삼각형 $BCD$에서 $\\angle BCD=90^\\circ$, $\\angle DBC=60^\\circ$이므로 $BD=2s$, $CD=\\sqrt3s$이다. 좌표를 $B=(0,0,0)$, $C=(s,0,0)$, $D=(s,\\sqrt3s,0)$으로 잡는다.\n$A=(x,y,z)$라 두면 $|A|=4$이고 $AB$는 $BC,BD$와 각각 $60^\\circ$를 이룬다. 따라서 $A\\cdot C=4s\\cos60^\\circ=2s$에서 $x=2$를 얻는다. 또 $A\\cdot D=4(2s)\\cos60^\\circ=4s$이므로 $sx+\\sqrt3sy=4s$에서 $y=2/\\sqrt3$이다. $|A|^2=16$에서 $z^2=16-4-4/3=32/3$이다.\n점 $H$는 $A$의 평면 $BCD$ 위 정사영이므로 $H=(2,2/\\sqrt3,0)$이다. $H$가 $CD$ 위에 있어야 하므로 $s=2$이다. 그러면 $|BH|^2=4+4/3=16/3$이다.\n$BH$는 $BA$의 평면 성분이므로 $\\cos^2\\angle ABH=|BH|^2/|BA|^2=(16/3)/16=1/3$. 정답은 ①이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 15,
+      "content": "아래 그림과 같이 한 모서리의 길이가 3인 정육면체의 내부에 밑면이 정육면체의 한 면과 합동이고 옆면의 모양이 정삼각형인 사각뿔이 들어있다. 평면 $OEH$와 평면 $AEHD$가 이루는 각의 크기를 $\\theta$라고 할 때, $\\cos\\theta$의 값은? [4.9점]",
+      "choices": [
+        "$\\frac{\\sqrt{2}}{3}$",
+        "$\\frac{\\sqrt{3}}{3}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{\\sqrt{5}}{3}$",
+        "$\\frac{\\sqrt{6}}{3}$"
+      ],
+      "finalSolution": "정육면체의 밑면을 $EFGH$로 두고 좌표를 $E=(0,0,0)$, $H=(0,3,0)$, $A=(0,0,3)$로 잡는다. 옆면이 정삼각형이므로 사각뿔의 꼭짓점은 밑면 중심의 수직 위에 있고, 높이는 $\\sqrt{3^2-(3\\sqrt2/2)^2}=3/\\sqrt2$이다. 따라서 $O=(3/2,3/2,3/\\sqrt2)$이다.\n평면 $AEHD$는 $x=0$이므로 법선벡터는 $(1,0,0)$이다. 평면 $OEH$의 법선은 $EH\\times EO=(3h,0,-9/2)$ ($h=3/\\sqrt2$)로 잡을 수 있다.\n따라서 $\\cos\\theta=\\dfrac{3h}{\\sqrt{(3h)^2+(9/2)^2}}=\\dfrac{\\sqrt6}{3}$이고 정답은 ⑤이다.",
+      "questionType": "객관식",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 16,
+      "content": "<단답형1> 좌표공간 위의 두 점 $A(1,2,4)$, $B(2,7,3)$와 $yz$평면 위의 점 $P$에 대하여 $\\overline{AP}+\\overline{BP}$의 최솟값을 구하시오. [4점]",
+      "choices": [],
+      "finalSolution": "$P$가 $yz$평면 위에 있으므로 $A=(1,2,4)$를 $yz$평면에 대칭이동한 점은 $A'=(-1,2,4)$이다. 임의의 $P$에 대하여 $AP=A'P$이므로 $AP+BP=A'P+PB\\ge A'B$이다.\n선분 $A'B$는 $x=-1$에서 $x=2$로 가므로 $yz$평면 $x=0$을 지난다. 등호가 가능해 최솟값은 $A'B=\\sqrt{3^2+5^2+(-1)^2}=\\sqrt{35}$이다.",
+      "questionType": "단답형",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 17,
+      "content": "<단답형2> 좌표공간에 평면 $\\alpha$가 있다. 평면 $\\alpha$ 위에 있지 않은 서로 다른 두 점 $A$, $B$의 평면 $\\alpha$ 위로의 정사영을 각각 $A'$, $B'$이라 할 때, $\\overline{AB}=\\overline{A'B'}=8$이다. 선분 $\\overline{AB}$의 중점 $M$의 평면 $\\alpha$ 위로의 정사영을 $M'$이라 할 때, $\\overline{PM'}\\perp\\overline{A'B'}$, $\\overline{PM'}=8$이 되도록 $\\alpha$ 위에 점 $P$를 잡는다. 삼각형 $A'B'P$의 평면 $ABP$ 위로의 정사영의 넓이가 $\\frac{16}{3}$일 때, 선분 $PM$의 길이를 구하시오. [5점]",
+      "choices": [],
+      "finalSolution": "$AB=A'B'=8$이므로 벡터 $\\overrightarrow{AB}$의 길이와 평면 $\\alpha$ 위로의 정사영 길이가 같다. 따라서 $AB\\parallel\\alpha$이다. 평면 $\\alpha$를 $z=0$으로 두고 $A'=(-4,0,0)$, $B'=(4,0,0)$, $P=(0,8,0)$으로 잡으면 $M'=(0,0,0)$, $M=(0,0,h)$이다.\n삼각형 $A'B'P$의 넓이는 $\\dfrac12\\cdot8\\cdot8=32$이다. 정사영 넓이가 $16/3$이므로 두 평면이 이루는 각의 코사인은 $(16/3)/32=1/6$이다. $\\overrightarrow{AB}=(8,0,0)$, $\\overrightarrow{AP}=(4,8,-h)$이므로 평면 $ABP$의 법선은 $\\overrightarrow{AB}\\times\\overrightarrow{AP}=(0,8h,64)$이다.\n이에 따라 $\\cos\\theta=\\dfrac{64}{\\sqrt{(8h)^2+64^2}}=\\dfrac8{\\sqrt{h^2+64}}=\\dfrac16$이므로 $h^2=2240$이다. 따라서 $PM=\\sqrt{PM'^2+MM'^2}=\\sqrt{64+2240}=48$이다.",
+      "questionType": "단답형",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 18,
+      "content": "<단답형3> 삼각형 $ABC$의 내부의 한 점 $D$에 대하여 $3\\overrightarrow{DA}+3\\overrightarrow{DB}+2\\overrightarrow{DC}=\\vec{0}$이다. 삼각형 $ADB$의 넓이가 15일 때, 삼각형 $DBC$의 넓이를 구하시오. [6점]",
+      "choices": [],
+      "finalSolution": "위치벡터를 쓰면 $3(A-D)+3(B-D)+2(C-D)=0$이므로 $D=\\dfrac{3A+3B+2C}{8}$이다. 즉 $D$는 꼭짓점 $A,B,C$의 무게비 $3:3:2$인 내분점이다.\n$[ADB]/[ABC]$는 $D$의 $C$방향 비율 $2/8=1/4$이므로 $[ABC]=60$이다. 또 $[DBC]/[ABC]$는 $A$방향 비율 $3/8$이므로 $[DBC]=60\\cdot3/8=45/2$이다.",
+      "questionType": "단답형",
+      "hasProblemVisual": false
+    },
+    {
+      "qid": 19,
+      "content": "※ 서술형 문제는 답만 기재할 경우 0점 처리합니다. <서술형1> 아래 그림과 같이 원점을 중심으로 하고 반지름의 길이가 1인 원이 있다. 두 점 $A(-3,0)$, $B(2,0)$와 원 위의 점 $P(a,b)$에 대하여 $b\\ge0$일 때, $\\overrightarrow{AP}\\cdot\\overrightarrow{PB}$의 최댓값을 $m$, 최솟값을 $n$이라 하자. $m+n$의 값을 구하는 과정을 서술하시오. [10점]",
+      "choices": [],
+      "finalSolution": "$a^2+b^2=1$이고 $b\\ge0$이므로 $-1\\le a\\le1$이다.\n$\\overrightarrow{AP}=(a+3,b)$, $\\overrightarrow{PB}=(2-a,-b)$이므로 $\\overrightarrow{AP}\\cdot\\overrightarrow{PB}=(a+3)(2-a)-b^2=5-a$이다.\n따라서 최댓값은 $a=-1$에서 $m=6$, 최솟값은 $a=1$에서 $n=4$이고 $m+n=10$이다.",
+      "questionType": "서술형",
+      "hasProblemVisual": true
+    },
+    {
+      "qid": 20,
+      "content": "※ 서술형 문제는 답만 기재할 경우 0점 처리합니다. <서술형2> 아래 그림과 같이 점 $O$가 중심이고 반지름 $OA$의 길이가 3인 원 $C$를 밑면으로 하고 높이 $AB$의 길이가 12인 원기둥이 있다. $\\angle AOP$가 예각이 되도록 하는 원 $C$ 위의 점 $P$와 세 점 $O$, $A$, $B$의 평면 $\\alpha$ 위로의 정사영을 각각 $P'$, $O'$, $A'$, $B'$이라 하고, 점 $P'$에서 직선 $O'A'$에 내린 수선의 발을 $H$라 할 때, $\\overline{OA}\\parallel\\overline{O'A'}$, $\\overline{P'H}=\\frac{\\sqrt{3}}{2}$, $\\overline{A'B'}=8\\sqrt{2}$이다. 평면 $PAB$와 평면 $\\alpha$가 이루는 예각의 크기를 $\\theta$라 할 때, $\\cos^2\\theta=\\frac{q}{p}$이다. $|p-q|$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.) [10점]",
+      "choices": [],
+      "finalSolution": "서로 수직인 좌표방향에서 $x$축은 $OA$ 방향, $z$축은 평면 $\\alpha$의 법선 방향으로 잡고 점 $O$를 벡터 기준점으로 삼자. 원기둥 축의 길이는 12이고 정사영 길이는 $8\\sqrt2$이므로 $\\overrightarrow{AB}=(0,8\\sqrt2,4)$로 둘 수 있다. $OA\\perp AB$이므로 밑면 안에서 $OA$에 수직인 단위벡터는 $e=(0,1/3,-2\\sqrt2/3)$이다.\n$\\phi=\\angle AOP$라 하면 $\\overrightarrow{OP}=3(\\cos\\phi,\\sin\\phi/3,-2\\sqrt2\\sin\\phi/3)$이다. 정사영에서 $O'A'$는 $x$축과 평행하므로 $P'H=|\\sin\\phi|=\\sqrt3/2$. 또 $\\phi$는 예각이므로 $\\cos\\phi=1/2$이다.\n평면 $PAB$의 법선벡터는 $n=(0,2\\sqrt2/3,1/3)\\times(3(\\cos\\phi-1),\\sin\\phi,-2\\sqrt2\\sin\\phi)=(-3\\sin\\phi,\\cos\\phi-1,-2\\sqrt2(\\cos\\phi-1))$이다. 따라서 $\\cos^2\\theta=\\dfrac{n_z^2}{|n|^2}=\\dfrac{4(1-\\cos\\phi)}9=\\dfrac29$이다.\n그러므로 $p=9,q=2$이고 $|p-q|=7$이다.",
+      "questionType": "서술형",
+      "hasProblemVisual": true
+    }
+  ]
+}

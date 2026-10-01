@@ -1,0 +1,887 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_매산고_2학기_기말_고2_기하",
+  "ordinal": 3,
+  "stage": "META",
+  "status": "META_PASS_WITH_RPM_ONLY_PROJECTION_GAP",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactSha256": "sha256:c4fc51546389408260a5ee0b0e9277c566d40779d20049d0e8059d4b127fa69c",
+  "sourceArtifactGitBlobSha": "8a95f0fe0c2ecd24bef37cc98bf767c6d7354559",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
+  "targetArtifactSha256": "sha256:7879afa47b1403bc3e72bb26a0f416bf47b38d284f15ebe069c94d6175162b1e",
+  "targetArtifactGitBlobSha": "b7a5ee5cb4b5becb0ef3ff58e1aadbea66c2f71e",
+  "denominator": 20,
+  "resolvedMetaRecordCount": 20,
+  "itemHoldQids": [],
+  "activeRegistry": {
+    "status": "ACTIVE",
+    "registrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
+    "validatedFieldRecordCount": 20,
+    "activeH15GVBindingCount": 0,
+    "difficultyCompleteCount": 0,
+    "legacyLevelCompatibilityUnknownCount": 20
+  },
+  "rpmProjection": {
+    "crosswalkStatus": "ACTIVE_REFERENCE",
+    "currentMainBlobSha": "98d2e2d54a9fcc08f9c6eee56c29ef0499e6e6e1",
+    "h15GeometryRows": 38,
+    "rpmOnlyH15GeometryRows": 38,
+    "resolvedQuestionCount": 20,
+    "activeProblemTypeCount": 0,
+    "activeTemplateCount": 0,
+    "activeCurriculumBindingCount": 0,
+    "policy": "Record the source-grounded 2015 RPM path. RPM_ONLY/NO_ACTIVE_MAPPING is a projection gap, not an individual semantic hold; do not substitute H22 or M1 keys."
+  },
+  "authorities": {
+    "rpmPrimaryGeometry": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/기하.md",
+      "gitBlobSha": "a476c36dee0a637160b4095226e56f32e2479e86"
+    },
+    "rpmCrosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-geometry.json",
+      "gitBlobSha": "98d2e2d54a9fcc08f9c6eee56c29ef0499e6e6e1"
+    },
+    "registryIndex": {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "gitBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+    },
+    "taxonomyRegistry": {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "gitBlobSha": "c0b2cb3047d242e2e56920528f5f5c839295e1bb"
+    },
+    "curriculumBindings": {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "gitBlobSha": "be3d5657a16737169ad993278cd96a4c06ecf273"
+    },
+    "conceptRegistry": {
+      "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+      "gitBlobSha": "0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+    },
+    "coordinateGeometryConcepts": {
+      "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
+      "gitBlobSha": "c3bfedfce5c12eb0353006504b6aa3f67789124b"
+    },
+    "planeGeometryConcepts": {
+      "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
+      "gitBlobSha": "f4a745320dc97940baf17b65032f47d3c292e15d"
+    },
+    "functionConcepts": {
+      "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "gitBlobSha": "cc5d035b08919ac0cb9523d9b0338041eca200a6"
+    },
+    "conditions": {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "gitBlobSha": "9c55000cb6f878a7f657ad5d496a6a67cb6aecfb"
+    },
+    "compiledConditions": {
+      "path": "archive/data/meta-foundation/compiled/condition_registry.json",
+      "gitBlobSha": "a9f96a07f3c8b51169c314f9031cb4a628f7370b"
+    },
+    "difficultyRule": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "gitBlobSha": "fa7735b0a79fa9084ec726ef24a82a4eaaf7dca8"
+    },
+    "standardUnitMaster": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+      "gitBlobSha": "8e2a8562f3e4daad70c9af4efd038dffb7b7ae82"
+    },
+    "compiledTagMaster": {
+      "path": "archive/data/master_tables/js_archive_tag_master.json",
+      "gitBlobSha": "ca504997b839c6265dc4714294bcb54d83430e54"
+    }
+  },
+  "l1l2Corrections": [
+    {
+      "qids": [
+        2,
+        12
+      ],
+      "from": "H15-GV-06 平면벡터의 성분과 내적",
+      "to": "H15-GV-05 벡터의 연산",
+      "reason": "The decisive relation is a scalar-multiple/parallel-vector condition and maps to RPM-019 at GV-05."
+    },
+    {
+      "qids": [
+        7
+      ],
+      "from": "H15-GV-07 직선과 원의 방정식",
+      "to": "H15-GV-06 평면벡터의 성분과 내적",
+      "reason": "The decisive calculation is the angle between two direction vectors and maps to RPM-024 at GV-06; no line or circle equation is formed or solved."
+    }
+  ],
+  "subUnitStatus": {
+    "filledCount": 0,
+    "reason": "No current-main H15-GV subUnit keys were found in the standard-unit/subunit master; blank legacy fields are preserved rather than inventing subunits."
+  },
+  "crossConceptAdjudication": {
+    "included": [],
+    "reason": "Current active concept taxonomyRefs found for Geometry point to unrelated coordinate-geometry mappings; no exact active cross-concept mapping applies to the RPM_ONLY H15 geometry paths."
+  },
+  "conditionRationales": {
+    "COND_NONZERO": {
+      "qids": [
+        2
+      ],
+      "reason": "The nonzero x,y restriction makes x/y defined and excludes the zero-vector multiple."
+    },
+    "COND_POSITIVE": {
+      "qids": [
+        11
+      ],
+      "reason": "The positive a condition selects 6 instead of −4."
+    },
+    "COND_RANGE": {
+      "qids": [
+        14,
+        20
+      ],
+      "reason": "The foot-on-segment condition fixes the tetrahedron scale; the acute-angle condition selects the trigonometric branch."
+    },
+    "COND_NATURAL_NUMBER": {
+      "qids": [
+        20
+      ],
+      "reason": "The reduced q/p representation uses unique coprime natural numerator and denominator before evaluating |p−q|."
+    },
+    "omitted": {
+      "q19": "Do not assign COND_RANGE: b≥0 does not alter the attainable a interval [-1,1] or the extrema."
+    }
+  },
+  "difficultyReview": {
+    "primaryBlindReviewer": "ordinal3_difficulty_blind",
+    "independentBlindRecheck": "ordinal3_difficulty_recheck",
+    "q13BoundaryTieBreak": "ordinal3_q13_difficulty_tiebreak",
+    "legacyLevelCompatibility": "UNKNOWN on all qids because source level fields are blank; advanced eligibility is not asserted.",
+    "adjudication": "Two full blind passes and a fresh q13 tie-break were compared after the final Geometry-only q13 solution. q13 is adjudicated bucket5/medium/B45 because the decisive non-routine projection/sector decomposition unlocks the area computation; bucket4 remains the adjacent boundary. Other reviewer differences were resolved item-by-item using v1.3 structural definitions.",
+    "boundaryRecheckQids": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19,
+      20
+    ],
+    "boundaryDisagreements": {
+      "q1": "Two passes placed bucket1; one marked B12/medium while the other marked high/NONE. Adjudicated 1/high/NONE: direct vector subtraction with no method choice.",
+      "q9": "Passes differed 2 vs3; adjudicated 3/medium/B23 because five claims require repeated spatial relationship judgments and counterexamples.",
+      "q12": "Passes differed 3 vs4; adjudicated 3/medium/B34: two cases are central but both use a familiar vector-parallel/circle-locus sequence.",
+      "q13": "Three post-repair blind opinions: 4/medium/B45, 5/medium/B45, 5/medium/B45. Adjudicated 5/medium/B45 for the non-routine projection/area reconstruction insight.",
+      "q15": "Passes differed 3 vs4; adjudicated 3/medium/B34 because after locating the apex the plane-normal computation is standard.",
+      "q16": "Passes differed 2 vs3; adjudicated 2/medium/B23 because reflection is the single recognizable insight and the remaining calculation is direct.",
+      "q19": "Passes differed 2 vs4; adjudicated 2/medium/B23 because the dot product reduces immediately to a linear function over a fixed interval."
+    }
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-018",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 덧셈과 뺄셈",
+        "l4": "위치벡터"
+      },
+      "standardUnitKey": "H15-GV-05",
+      "standardUnit": "벡터의 연산",
+      "standardUnitOrder": 5,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Direct position-vector subtraction; one short routine representation step."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 2,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-019",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 실수배",
+        "l4": "평행 조건"
+      },
+      "standardUnitKey": "H15-GV-05",
+      "standardUnit": "벡터의 연산",
+      "standardUnitOrder": 5,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Linear combination then a standard scalar ratio from parallel vectors."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 3,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-028",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "직선과 평면",
+        "l4": "정사영"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Direct area-times-cosine projection."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 4,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-027",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "직선과 평면",
+        "l4": "평행·수직"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Two standard edge classifications in a labeled cube; spatial incidence is the main burden."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 5,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-035",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간좌표",
+        "l3": "분점과 중점",
+        "l4": "내분점·외분점"
+      },
+      "standardUnitKey": "H15-GV-09",
+      "standardUnit": "공간좌표",
+      "standardUnitOrder": 9,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Reflection, a section point, then distance; familiar route with sequential operations."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 6,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-026",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "평면벡터의 성분과 내적",
+        "l3": "도형에의 활용",
+        "l4": "거리·넓이"
+      },
+      "standardUnitKey": "H15-GV-06",
+      "standardUnit": "평면벡터의 성분과 내적",
+      "standardUnitOrder": 6,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Right-angle locus recognition followed by diameter-circle area."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 7,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-024",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "평면벡터의 성분과 내적",
+        "l3": "내적",
+        "l4": "두 벡터의 각"
+      },
+      "standardUnitKey": "H15-GV-06",
+      "standardUnit": "평면벡터의 성분과 내적",
+      "standardUnitOrder": 6,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Derive line directions and use a standard determinant/sine formula."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 8,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-029",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "삼수선 정리",
+        "l4": "거리·각"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Coordinate a tri-rectangular tetrahedron and select the point-to-line distance formula."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 9,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-027",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "직선과 평면",
+        "l4": "평행·수직"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Evaluate five spatial statements; use counterexamples for false implications."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 10,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-037",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간좌표",
+        "l3": "구의 방정식",
+        "l4": "중심·반지름"
+      },
+      "standardUnitKey": "H15-GV-09",
+      "standardUnit": "공간좌표",
+      "standardUnitOrder": 9,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Radius follows from tangency to a coordinate plane, then expand the standard equation."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 11,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-038",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간좌표",
+        "l3": "구의 방정식",
+        "l4": "구와 좌표조건"
+      },
+      "standardUnitKey": "H15-GV-09",
+      "standardUnit": "공간좌표",
+      "standardUnitOrder": 9,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Relate section area to center-plane distance, solve a quadratic, select positive root."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 12,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-019",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 실수배",
+        "l4": "평행 조건"
+      },
+      "standardUnitKey": "H15-GV-05",
+      "standardUnit": "벡터의 연산",
+      "standardUnitOrder": 5,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Parallelism condition creates two B cases; derive circle centers/radii and compare perimeters."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 13,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-030",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "삼수선 정리",
+        "l4": "정사영 활용"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "difficulty": {
+        "bucket": 5,
+        "confidence": "medium",
+        "boundaryFlag": "B45",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Non-routine reconstruction of four projected ellipses and the central sector-triangle complement; after that insight, standard area operations."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 14,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-029",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "삼수선 정리",
+        "l4": "거리·각"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Coordinate reconstruction from several angle constraints plus a foot-on-segment condition, then calculate angle."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 15,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-031",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "이면각",
+        "l4": "이면각"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Locate regular square-pyramid apex and use two plane normals."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 16,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-029",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "삼수선 정리",
+        "l4": "거리·각"
+      },
+      "standardUnitKey": "H15-GV-09",
+      "standardUnit": "공간좌표",
+      "standardUnitOrder": 9,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Reflection turns constrained path minimum into a straight distance; segment-crossing condition is verified."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 17,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-030",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "삼수선 정리",
+        "l4": "정사영 활용"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Infer parallelism from equal projection length, use projected-area ratio, then solve height and distance."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 18,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-020",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "벡터의 연산",
+        "l3": "벡터의 실수배",
+        "l4": "내분·외분"
+      },
+      "standardUnitKey": "H15-GV-05",
+      "standardUnit": "벡터의 연산",
+      "standardUnitOrder": 5,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Weighted position-vector equation gives barycentric weights and direct area ratios."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 19,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-023",
+      "rpmPath": {
+        "majorUnit": "평면벡터",
+        "midUnit": "평면벡터의 성분과 내적",
+        "l3": "내적",
+        "l4": "내적 계산"
+      },
+      "standardUnitKey": "H15-GV-06",
+      "standardUnit": "평면벡터의 성분과 내적",
+      "standardUnitOrder": 6,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Dot-product expansion reduces to a linear function of the x-coordinate on the allowed semicircle."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    },
+    {
+      "qid": 20,
+      "status": "META_RECORDED_RPM_ONLY",
+      "rpmRecordId": "H2-GEO-RPM-031",
+      "rpmPath": {
+        "majorUnit": "공간도형과 공간좌표",
+        "midUnit": "공간도형",
+        "l3": "이면각",
+        "l4": "이면각"
+      },
+      "standardUnitKey": "H15-GV-08",
+      "standardUnit": "공간도형",
+      "standardUnitOrder": 8,
+      "problemTypeKey": null,
+      "templateKey": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Combine cylinder-axis projection, acute-angle selection, and plane-normal cosine calculation."
+      },
+      "projection": {
+        "mappingStatus": "RPM_ONLY",
+        "activeBindingStatus": "NO_ACTIVE_MAPPING",
+        "activeProblemTypeKey": null,
+        "activeTemplateKey": null,
+        "nullReason": "RPM_ONLY_NO_ACTIVE_H2_GEOMETRY_MAPPING"
+      },
+      "activeBinding": false
+    }
+  ],
+  "adjudications": [
+    {
+      "field": "Difficulty boundary adjudication",
+      "decision": "Use final per-question values and retain B flags where adjacent bucket remains plausible.",
+      "basis": "Adjudication compares structural operations/strategy selection under v1.3; it does not force a smooth distribution."
+    },
+    {
+      "field": "Condition omission q19",
+      "decision": "Do not assign COND_RANGE for b≥0.",
+      "basis": "The objective reduces to 5−a and the upper semicircle still permits every a in [−1,1], so the condition does not alter extrema or candidate selection."
+    }
+  ]
+}
