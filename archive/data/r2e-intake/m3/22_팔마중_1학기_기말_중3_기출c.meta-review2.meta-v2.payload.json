@@ -1,0 +1,1493 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M3_META_REVIEW2_META_V2_PAYLOAD_v1",
+  "status": "META_REVIEW2_METADATA_AUDITED",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "MAIN_PRESENT_META_ONLY",
+  "contentBaseline": "FROZEN_MAIN_V1_REVIEW2",
+  "cohort": "M3",
+  "canonicalOrdinal": 35,
+  "lane": "REVIEW2-2",
+  "examFile": "22_팔마중_1학기_기말_중3_기출c.js",
+  "sourceArchiveFile": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js",
+  "productionState": "MAIN_PRESENT_PRE_META_V2",
+  "stage": "META_REVIEW2_DONE",
+  "readyState": "READY_FOR_META_PUBLISH",
+  "authorityBranch": "work/middle/m3/22-palma-1final-meta-v2",
+  "candidateRecoveryBranch": "archive-recovery/m3-22-palma-1final-meta-review2-v2-20260930-1820-l2-final",
+  "upstreamMetaReview1Commit": "04b3798ca5e75ea407d047c46c95dcd3396f95ce",
+  "upstreamMetaReview1PayloadSha": "7e5128c625f9cb6061de7e0cce88856019d6ea3d",
+  "currentMainSha": "c7618887ce00b8db1d933319cd9083e5d460944c",
+  "inputExamBlobSha": "85987815739e0b55c2b06504655c6c19737edd08",
+  "metadataAudit": "FULL_ALL_QUESTIONS",
+  "metadataAuditCount": "25/25",
+  "difficultyAudit": "FULL_ALL_QUESTIONS",
+  "difficultyAuditCount": "25/25",
+  "itemHoldCount": 0,
+  "itemHoldQuestionIds": [],
+  "metadataCanonicalHoldCount": 2,
+  "metadataCanonicalHoldQids": [
+    "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|18",
+    "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|22"
+  ],
+  "metadataCanonicalHoldReasons": {
+    "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|18": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+    "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|22": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+  },
+  "semanticFinalCount": 23,
+  "semanticHoldCount": 2,
+  "rpmPrimaryMigrationGapCount": 23,
+  "projectionReuseCount": 0,
+  "projectionBindingPendingCount": 6,
+  "projectionUnmaterializedCount": 17,
+  "compiledRuntimeMaterializationRequired": false,
+  "compiledRuntimeReason": "No new canonical key is created in META_REVIEW2. Exact M3 bindings remain missing for binding-gap projections; RPM semantic FINAL rows remain valid while projection is pending/unmaterialized.",
+  "contentMutation": 0,
+  "semanticContentReaudit": "NOT_PERFORMED_FAST_TRACK",
+  "contentDriftDiscovered": false,
+  "authorityFiles": {
+    "lightweightContract": "docs/rules/02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md",
+    "rpmCanonical": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "rpmScopeView": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md",
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json",
+    "resolverContract": "docs/rules/01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md",
+    "difficultyContract": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+    "activeConceptRegistry": "archive/data/meta-foundation/compiled/concept_registry.json",
+    "activeConditionRegistry": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "metadataRules": "archive/data/meta-foundation/canonical/metadata_rules.json",
+    "functionsGraphsTaxonomy": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+    "h1FoundationTaxonomy": "archive/data/meta-foundation/canonical/packs/h1-foundation/taxonomy.json"
+  },
+  "reviewIndependence": "FRESH_FROM_CURRENT_MAIN_EXAM_AND_FINAL_SOLUTION; META_CREATE_AND_META_REVIEW1_VERDICTS_NOT_USED_AS_DECISION_AUTHORITY; UPSTREAM_LEDGER_OPENED_ONLY_AFTER_CURRENT_PASS_FREEZE",
+  "review2Corrections": [
+    {
+      "sourceOrdinal": 6,
+      "fields": {
+        "integrationPattern": {
+          "from": "SEQUENTIAL",
+          "to": "INTERDEPENDENT"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "fields": {
+        "difficultyBucket": {
+          "from": 3,
+          "to": 2
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "fields": {
+        "difficultyBucket": {
+          "from": 3,
+          "to": 2
+        },
+        "difficultyBoundaryFlag": {
+          "from": "B23",
+          "to": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "fields": {
+        "crossConceptKeys": {
+          "from": [
+            "CC_DISCRIMINANT"
+          ],
+          "to": []
+        },
+        "difficultyBoundaryFlag": {
+          "from": "B34",
+          "to": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "fields": {
+        "difficultyBoundaryFlag": {
+          "from": "NONE",
+          "to": "B23"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "fields": {
+        "difficultyBoundaryFlag": {
+          "from": "B12",
+          "to": "NONE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "fields": {
+        "crossConceptKeys": {
+          "from": [],
+          "to": [
+            "CC_REFLECTION"
+          ]
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "fields": {
+        "difficultyBucket": {
+          "from": 2,
+          "to": 1
+        },
+        "difficultyBoundaryFlag": {
+          "from": "NONE",
+          "to": "B12"
+        },
+        "legacyLevelCompatibility": {
+          "from": "NORMAL",
+          "to": "BORDERLINE_ACCEPTABLE"
+        }
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "fields": {
+        "integrationPattern": {
+          "from": "INTERDEPENDENT",
+          "to": "NONE"
+        }
+      }
+    }
+  ],
+  "activeCanonicalChecks": {
+    "functionsGraphsTranslation": {
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "canonicalStatus": "ACTIVE",
+      "canonicalOwnerPack": "FUNCTIONS_GRAPHS",
+      "exactMiddle3Binding": "MISSING",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "appliesToQids": [
+        15,
+        16
+      ]
+    },
+    "h1QuadraticReconstruction": {
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "canonicalStatus": "ACTIVE",
+      "canonicalOwnerPack": "H1_FOUNDATION",
+      "exactMiddle3Binding": "MISSING",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "appliesToQids": [
+        20,
+        21,
+        24,
+        25
+      ]
+    },
+    "crossConceptRegistry": {
+      "CC_REFLECTION": "ACTIVE",
+      "CC_COMPLETE_SQUARE": "ACTIVE",
+      "CC_TRIANGLE_AREA": "ACTIVE",
+      "CC_ROOTS_COEFFICIENTS": "ACTIVE"
+    },
+    "conditions": {
+      "COND_NATURAL_NUMBER": "ACTIVE",
+      "COND_RANGE": "ACTIVE",
+      "COND_POSITIVE": "ACTIVE"
+    }
+  },
+  "rows": [
+    {
+      "sourceOrdinal": 1,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|1",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "식을 한쪽으로 정리해 최고차항 판별",
+      "decisiveStep": "각 보기에서 항 소거 뒤 최고차항이 2차인지 확인한다",
+      "rpmRecordId": "M3-RPM-029",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "이차방정식 판별"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "이차방정식 판별",
+      "tags": [
+        "이차방정식",
+        "차수",
+        "식정리",
+        "개념판별"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q1: 핵심 절차가 즉시 결정되는 직접형로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 2,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|2",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "두 방정식의 해를 구해 공통근 확인",
+      "decisiveStep": "두 해집합의 공통 원소 A를 확정한 뒤 식의 값을 계산한다",
+      "rpmRecordId": "M3-RPM-030",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "해의 확인"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "해의 확인",
+      "tags": [
+        "이차방정식",
+        "공통근",
+        "해의확인",
+        "대입"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q2: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 3,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|3",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "주어진 두 근의 중심과 간격으로 매개변수 결정",
+      "decisiveStep": "p를 두 근의 중심으로, q를 근 사이 간격에서 정한다",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "해가 주어진 이차방정식의 계수 결정"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "해가 주어진 계수 결정",
+      "tags": [
+        "이차방정식",
+        "주어진근",
+        "매개변수",
+        "계수결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q3: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 4,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|4",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "주어진 근 대입 후 계수와 다른 근 결정",
+      "decisiveStep": "-2를 대입해 a를 정한 뒤 완성된 방정식을 풀어 다른 근을 구한다",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "해가 주어진 이차방정식의 계수 결정"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "해가 주어진 계수 결정",
+      "tags": [
+        "이차방정식",
+        "주어진근",
+        "계수결정",
+        "인수분해"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q4: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 5,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|5",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "인수분해로 이차방정식 풀이",
+      "decisiveStep": "x²+4x-5를 두 일차식의 곱으로 바꿔 두 근을 구한다",
+      "rpmRecordId": "M3-RPM-032",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "인수분해를 이용한 풀이",
+        "l4": "기본 인수분해"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "기본 인수분해",
+      "tags": [
+        "이차방정식",
+        "인수분해",
+        "근"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q5: 핵심 절차가 즉시 결정되는 직접형로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 6,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|6",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "두 근 조건을 함께 대입해 두 계수 결정",
+      "decisiveStep": "x=-1과 x=2 조건이 만든 두 식을 함께 풀어 a,b를 확정한다",
+      "rpmRecordId": "M3-RPM-031",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "이차방정식과 해",
+        "l4": "해가 주어진 이차방정식의 계수 결정"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "category": "해가 주어진 계수 결정",
+      "tags": [
+        "이차방정식",
+        "주어진근",
+        "연립조건",
+        "계수결정"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q6: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 7,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|7",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "중근 조건으로 매개변수 결정",
+      "decisiveStep": "완전제곱꼴에서 중근이 되도록 우변이 0인 조건을 적용한다",
+      "rpmRecordId": "M3-RPM-036",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 개수·판별"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "근의 개수·판별",
+      "tags": [
+        "이차방정식",
+        "중근",
+        "완전제곱식",
+        "매개변수"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q7: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 8,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|8",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "근의 공식 결과와 주어진 해의 꼴 비교",
+      "decisiveStep": "근의 공식으로 A가 든 해를 만든 뒤 B와 근호 안 값을 대응시킨다",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 공식"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "근의 공식",
+      "tags": [
+        "이차방정식",
+        "근의공식",
+        "매개변수",
+        "해비교"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q8: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 9,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|9",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "근의 공식과 유리근 조건 결합",
+      "decisiveStep": "근호 안 41-8a가 0 이상의 완전제곱수가 되도록 자연수 a 후보를 제한한다",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 공식"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "category": "근의 공식과 유리근 조건",
+      "tags": [
+        "이차방정식",
+        "근의공식",
+        "유리근",
+        "자연수조건",
+        "완전제곱수"
+      ],
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "상",
+        "rationale": "q9: 자연수·범위와 후보 제거를 구조화해야 하는 준고난도로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 10,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|10",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+      "primaryMethod": "길의 넓이를 이차방정식으로 모델링",
+      "decisiveStep": "바깥 직사각형 넓이에서 화단 넓이를 뺀 식을 세우고 양의 폭을 선택한다",
+      "rpmRecordId": "M3-RPM-039",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 활용",
+        "l3": "도형",
+        "l4": "길이·넓이"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "길이·넓이 활용",
+      "tags": [
+        "이차방정식",
+        "활용",
+        "직사각형",
+        "넓이",
+        "길의폭"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B23",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q10: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 11,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|11",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "계수 부호와 절댓값으로 포물선 모양 비교",
+      "decisiveStep": "a<0인 보기 중 |a|가 가장 작은 그래프를 고른다",
+      "rpmRecordId": "M3-RPM-045",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "그래프의 모양"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "그래프의 모양",
+      "tags": [
+        "이차함수",
+        "y=ax²",
+        "볼록",
+        "폭",
+        "계수"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q11: 핵심 절차가 즉시 결정되는 직접형로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 12,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|12",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "y=ax² 그래프의 증감 성질 판별",
+      "decisiveStep": "x<0에서 x가 증가하면 x²과 y가 감소함을 확인해 옳은 설명을 고른다",
+      "rpmRecordId": "M3-RPM-046",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "y=ax²의 그래프",
+        "l4": "대칭축·증감"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "대칭축·증감",
+      "tags": [
+        "이차함수",
+        "y=ax²",
+        "증감",
+        "그래프성질"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": true,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q12: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 13,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|13",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "대칭이동한 그래프 위 점의 좌표 계산",
+      "decisiveStep": "x축 대칭으로 y=-3x²를 만든 뒤 x=2를 대입해 k를 구한다",
+      "rpmRecordId": "M3-RPM-047",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수와 그 그래프",
+        "l3": "그래프와 식",
+        "l4": "점의 좌표"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_REFLECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "점의 좌표",
+      "tags": [
+        "이차함수",
+        "점의좌표",
+        "대칭이동",
+        "함숫값"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q13: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 14,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|14",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "꼭짓점형에서 꼭짓점의 y좌표 판별",
+      "decisiveStep": "y=a(x-p)²+q에서 q=0인 보기만 고른다",
+      "rpmRecordId": "M3-RPM-050",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "꼭짓점형",
+        "l4": "꼭짓점·축"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "꼭짓점·축",
+      "tags": [
+        "이차함수",
+        "꼭짓점",
+        "x축",
+        "꼭짓점형"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": true,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q14: 핵심 절차가 즉시 결정되는 직접형로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 15,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|15",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "평행이동으로 보존되는 이차항 계수 비교",
+      "decisiveStep": "y=-2x²와 완전히 포개지려면 이차항 계수가 -2로 같아야 함을 이용한다",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "꼭짓점형",
+        "l4": "평행이동"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "평행이동",
+      "tags": [
+        "이차함수",
+        "평행이동",
+        "포물선",
+        "계수"
+      ],
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q15: 핵심 절차가 즉시 결정되는 직접형로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 16,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|16",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "두 포물선 사이 평행이동량으로 대응점 거리 결정",
+      "decisiveStep": "(x+1)²와 (x-6)²의 수평 이동량 7을 같은 높이 대응점의 거리로 읽는다",
+      "rpmRecordId": "M3-RPM-049",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "꼭짓점형",
+        "l4": "평행이동"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "DIRECT_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "평행이동",
+      "tags": [
+        "이차함수",
+        "평행이동",
+        "대응점",
+        "거리"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q16: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 17,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|17",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "일반형을 완전제곱식으로 변형",
+      "decisiveStep": "-5x²+20x-16을 -5(x-2)²+4로 바꿔 a,m,n을 읽는다",
+      "rpmRecordId": "M3-RPM-051",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "일반형",
+        "l4": "완전제곱식 변형"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "완전제곱식 변형",
+      "tags": [
+        "이차함수",
+        "일반형",
+        "완전제곱식",
+        "평행이동"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q17: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 18,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|18",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "여러 그래프 성질을 독립 확인",
+      "decisiveStep": "정답 두 개를 확정하려면 점 통과·볼록성 판단과 완전제곱식 평행이동 판정을 서로 다른 L4로 모두 수행해야 해 단일 primary를 고정할 수 없다",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "HOLD",
+      "semanticDisposition": "META_CANONICAL_HOLD",
+      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "mappingStatus": null,
+      "projectionStatus": "NOT_ATTEMPTED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "복수 그래프 성질 판별",
+      "tags": [
+        "이차함수",
+        "완전제곱식",
+        "점의좌표",
+        "평행이동",
+        "복수정답"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q18: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "HOLD",
+      "metadataDisposition": "META_CANONICAL_HOLD"
+    },
+    {
+      "sourceOrdinal": 19,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|19",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "그래프 위치에서 일반형 계수 부호 판정",
+      "decisiveStep": "볼록 방향으로 a, 축 위치로 b, y절편 위치로 c의 부호를 각각 확정한다",
+      "rpmRecordId": "M3-RPM-053",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "그래프 위치"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "그래프 위치",
+      "tags": [
+        "이차함수",
+        "일반형",
+        "계수부호",
+        "대칭축",
+        "y절편"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q19: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 20,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|20",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "축과 두 x절편 조건으로 함수의 계수 결정",
+      "decisiveStep": "완전제곱으로 축에서 a를 정하고 절편 거리의 대칭성을 이용해 b를 정한다",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "category": "조건으로 식 구하기",
+      "tags": [
+        "이차함수",
+        "축",
+        "x절편",
+        "계수결정",
+        "완전제곱식"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": true,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "상",
+        "rationale": "q20: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 21,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|21",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "두 x절편 조건으로 함수식을 정한 뒤 꼭짓점 활용",
+      "decisiveStep": "근 0,8에서 a를 정하고 완전제곱으로 꼭짓점 높이를 구해 삼각형 넓이를 계산한다",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "조건으로 식 구하기",
+      "tags": [
+        "이차함수",
+        "x절편",
+        "꼭짓점",
+        "삼각형넓이"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q21: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 22,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|22",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "지정된 서로 다른 두 풀이법 수행",
+      "decisiveStep": "(1)은 제곱근 이용, (2)는 완전제곱식 이용이 각각 필수여서 RPM L4 하나를 전체 문항 primary로 고정할 수 없다",
+      "rpmRecordId": null,
+      "rpmPath": null,
+      "semanticStatus": "HOLD",
+      "semanticDisposition": "META_CANONICAL_HOLD",
+      "holdReason": "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY",
+      "mappingStatus": null,
+      "projectionStatus": "NOT_ATTEMPTED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "category": "복수 L4 이차방정식 풀이",
+      "tags": [
+        "이차방정식",
+        "제곱근",
+        "완전제곱식",
+        "서술형"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B12",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": true,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "하",
+        "rationale": "q22: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "HOLD",
+      "metadataDisposition": "META_CANONICAL_HOLD"
+    },
+    {
+      "sourceOrdinal": 23,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|23",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-03",
+      "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+      "primaryMethod": "근의 공식으로 두 근의 합·곱을 구한 뒤 새 근으로 방정식 구성",
+      "decisiveStep": "원래 두 근을 근의 공식으로 구해 M,N을 계산하고 M+1,N+1을 근으로 갖는 인수형을 만든다",
+      "rpmRecordId": "M3-RPM-035",
+      "rpmPath": {
+        "majorUnit": "이차방정식",
+        "midUnit": "이차방정식의 풀이",
+        "l3": "근의 공식",
+        "l4": "근의 공식"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "RPM_ONLY",
+      "projectionStatus": "PROJECTION_UNMATERIALIZED",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ownerPack": null,
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "근의 공식",
+      "tags": [
+        "이차방정식",
+        "근의공식",
+        "근의합",
+        "근의곱",
+        "방정식구성"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q23: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 24,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|24",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "축과 한 점 조건으로 꼭짓점형 매개변수 결정",
+      "decisiveStep": "축에서 p=2를 정한 뒤 x절편 (5,0)을 대입해 q를 결정한다",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "category": "조건으로 식 구하기",
+      "tags": [
+        "이차함수",
+        "꼭짓점형",
+        "대칭축",
+        "점조건",
+        "매개변수"
+      ],
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "NORMAL",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": false,
+        "legacyCompatibilityRecheckCompleted": false,
+        "adjudicationCompleted": false,
+        "legacyLevelAtCompare": "중",
+        "rationale": "q24: 익숙한 방법이 바로 결정되며 한 번의 해석·변형이 필요한 표준 초입로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    },
+    {
+      "sourceOrdinal": 25,
+      "questionUid": "archive/exams/original/middle/m3/1final/22_팔마중_1학기_기말_중3_기출c.js|22_팔마중_1학기_기말_중3_기출c|25",
+      "curriculum": "2015",
+      "course": "중3 수학",
+      "standardUnitKey": "M3-04",
+      "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+      "primaryMethod": "접점·축·y절편 조건으로 이차함수 재구성",
+      "decisiveStep": "접함과 축으로 꼭짓점 (1,0)을 정하고 y절편 (0,-1)로 계수를 확정한다",
+      "rpmRecordId": "M3-RPM-054",
+      "rpmPath": {
+        "majorUnit": "이차함수",
+        "midUnit": "이차함수 y=ax²+bx+c의 그래프",
+        "l3": "그래프와 계수",
+        "l4": "조건으로 식 구하기"
+      },
+      "semanticStatus": "FINAL",
+      "semanticDisposition": "RPM_SEMANTIC_FINAL",
+      "holdReason": null,
+      "mappingStatus": "FAMILY_BINDING_GAP",
+      "projectionStatus": "PROJECTION_BINDING_PENDING",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "ownerPack": "H1_FOUNDATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "category": "조건으로 식 구하기",
+      "tags": [
+        "이차함수",
+        "접점",
+        "대칭축",
+        "y절편",
+        "함수식"
+      ],
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyConfidence": "medium",
+        "difficultyBoundaryFlag": "B34",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+        "blindPassStatus": "FRESH_SOURCE_SOLUTION_ONLY",
+        "derivedFromLegacyLevel": false,
+        "independentOfSemanticPass": true,
+        "boundaryRecheckCompleted": true,
+        "legacyCompatibilityRecheckCompleted": true,
+        "adjudicationCompleted": true,
+        "legacyLevelAtCompare": "상",
+        "rationale": "q25: 조건 관계를 정리하고 적절한 표현·순서를 선택해야 하는 표준 변별로 판정했다."
+      },
+      "metadataReviewStatus": "META_REVIEW2_PASS",
+      "metadataDisposition": "RPM_PRIMARY_MIGRATION_GAP"
+    }
+  ],
+  "reviewedAtKst": "2026-09-30T18:20:00+09:00"
+}
