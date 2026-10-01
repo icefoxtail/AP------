@@ -1,3 +1,11 @@
+## CURRENT OVERRIDE — 2026-10-02 — POST-R3 DIRECT PUBLISH AFTER CODEX INDEPENDENT REVIEW
+- **initial R3는 그대로 유지한다.** GPT initial R3가 시험지 전체를 보는 마지막 전수 release audit이며 PASS면 `READY_FOR_CODEX_PUBLISH`로 간다.
+- initial R3 FAIL 이후 current 경로는 **`R3_FAIL_DEFERRED → CODEX_R3_REPAIR ↔ CODEX_INDEPENDENT_REVIEW`**다.
+- Codex Independent Review가 `PASS`이고 `remainingFailureCodes=[]`, `newDirectDefects=[]`, `lockedScopeMutationCount=0`, finalArtifactSha/evidence/changed-file allowlist/Git parity가 모두 일치하며 unresolved release debt가 0이면 **추가 GPT R3_RETRY 없이 즉시 `READY_FOR_CODEX_PUBLISH → MAIN`**으로 진행한다.
+- Codex Independent Review가 FAIL이면 updated OPEN locus/direct dependency를 남기고 **CODEX_R3_REPAIR로 되돌린다.** 정상 R1/R2나 initial R3 전체 재실행으로 되감지 않는다.
+- `READY_FOR_R3_RETRY`, `GPT_TARGETED_R3_RETRY`, `R3_RETRY_PASS`는 **legacy/HISTORY 상태**다. clean Codex Independent Review PASS가 이미 물리적으로 존재하는 legacy 대상은 기계적 release gate 확인 후 직접 publish한다.
+- 아래 문서의 과거 R3_RETRY 설명과 충돌하면 이 CURRENT OVERRIDE가 우선한다.
+
 # JS아카이브 PHYSICAL EVIDENCE BEFORE PASS v1
 
 ## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER PREFLIGHT
@@ -340,16 +348,18 @@ latest R1 artifact bytes 직접 읽기
 
 `blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`가 없으면 R2 DONE 금지.
 
-### R3 INITIAL vs R3_RETRY
+### R3 INITIAL vs POST-R3 INDEPENDENT REVIEW
 
 **initial R3**는 시험지 전체를 보는 마지막 전수 release audit다.
 - 전 문항 questionRows / visualRows / metaRows를 fresh 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
 
-**R3_RETRY**는 initial R3 FAIL 이후 targeted regression이다.
+**post-R3 Codex Independent Review**는 initial R3 FAIL 이후 수리된 locus의 마지막 독립 품질 검수다.
 - `R3_BASELINE`의 PASS scope를 잠근다.
-- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 재검한다.
+- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 독립 재검한다.
 - LOCKED scope는 semantic row를 다시 만들지 않고 baseline blob/hash와 불변인지 확인한다.
-- 필수 retry evidence: `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `outputArtifactSha`.
+- release evidence에는 `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `remainingFailureCodes=[]`, `newDirectDefects=[]`, `outputArtifactSha`가 필요하다.
+- PASS면 별도 GPT R3_RETRY 없이 기계적 release gate로 넘어가며, FAIL이면 CODEX_R3_REPAIR로 되돌린다.
+- legacy `R3_RETRY` evidence/receipt는 HISTORY로 보존하되 current 필수 stage로 사용하지 않는다.
 - full `questionRows=N`을 다시 만들어 4차·5차 전수검수로 반복하는 것은 금지한다.
 
 ### R3 — INITIAL FULL AUDIT DETAILS
