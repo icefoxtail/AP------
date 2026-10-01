@@ -7,7 +7,7 @@ import core from '../archive2-core.js';
 import sourceBank from '../archive2-source.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const read = rel => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/, '');
+const read = rel => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
 const sha = text => crypto.createHash('sha256').update(text).digest('hex');
 const masterPath = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
 const masterText = read(masterPath);
@@ -88,7 +88,7 @@ vm.runInNewContext(read('archive/meta-foundation-runtime.js'), {
     const fromRoot = path.relative(root, absolute);
     if (fromRoot.startsWith('..') || path.isAbsolute(fromRoot) || !fs.existsSync(absolute))
       return { ok: false, status: 404, text: async () => '', json: async () => ({}) };
-    const body = fs.readFileSync(absolute, 'utf8');
+    const body = fs.readFileSync(absolute, 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
     return { ok: true, text: async () => body, json: async () => JSON.parse(body) };
   },
 });

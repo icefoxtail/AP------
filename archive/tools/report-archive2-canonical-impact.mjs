@@ -337,7 +337,7 @@ async function loadFinalCatalog(repositoryRoot = root) {
     const file = path.resolve(inputArchiveDir, entry.path);
     const relative = path.relative(repositoryRoot, file);
     if (relative.startsWith("..") || path.isAbsolute(relative)) throw new Error(`manifest path escaped repository: ${entry.path}`);
-    const bytes = fs.readFileSync(file);
+    const bytes = Buffer.from(fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n"), "utf8");
     const actual = sha256(bytes);
     if (actual !== entry.sha256) throw new Error(`canonical input digest mismatch: ${entry.path}`);
     resources[entry.path] = JSON.parse(bytes.toString("utf8"));

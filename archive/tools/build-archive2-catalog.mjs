@@ -503,7 +503,7 @@ const manifestFiles = allInputPaths.map((inputPath) => {
     ? Buffer.from(packedText, "utf8")
     : inputPath === "data/archive2-item-review-overrides.json"
       ? Buffer.from(overrideIndexText, "utf8")
-    : fs.readFileSync(path.resolve(root, "archive", inputPath));
+      : Buffer.from(read("archive/" + inputPath), "utf8");
   return { path: inputPath, sha256: hash(bytes) };
 });
 const manifest = {

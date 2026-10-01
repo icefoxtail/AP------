@@ -437,7 +437,7 @@
       if (!entry)
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete: " + inputPath);
       let body;
-      try { body = await read(inputPath); }
+      try { body = (await read(inputPath)).replace(/\r\n/g, "\n"); }
       catch (error) {
         if (error.code) throw error;
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical authority unavailable: " + inputPath);
