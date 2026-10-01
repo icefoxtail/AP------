@@ -43,7 +43,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-190",
     "rpmPrimaryPath": {
@@ -114,7 +114,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-185",
     "rpmPrimaryPath": {
@@ -128,7 +128,9 @@ window.questionBank = [
     "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
     "problemTypeKey": "",
     "templateKey": "",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "PT_M1_CONGRUENCE_UNIQUENESS"
+    ],
     "conditionKeys": [],
     "integrationPattern": "CLAIM_AUDIT",
     "difficultyBucket": 2,
@@ -183,7 +185,7 @@ window.questionBank = [
     "answerSource": "independent_solve_item_hold",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
@@ -211,16 +213,16 @@ window.questionBank = [
   {
     "id": 4,
     "level": "하",
-    "category": "입체도형에서 꼬인 위치",
+    "category": "공간에서 두 직선의 위치 관계 — 꼬인 위치",
     "originalCategory": "입체도형",
     "standardCourse": "중1 수학",
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형",
-    "standardUnitOrder": 7,
-    "subUnitKey": "M1-07-SOLID_FIGURE",
-    "subUnit": "다면체와 회전체",
-    "subUnitConfidence": "fresh_create",
-    "subUnitClassificationDepth": "complete_fresh",
+    "standardUnitKey": "M1-05",
+    "standardUnit": "기본 도형",
+    "standardUnitOrder": 5,
+    "subUnitKey": "M1-05-POSITION_RELATION",
+    "subUnit": "위치 관계",
+    "subUnitConfidence": "review1_fresh",
+    "subUnitClassificationDepth": "fresh_audit_with_item_hold",
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -251,20 +253,15 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
-    "rpmPrimaryRecordId": "M1-RPM-208",
-    "rpmPrimaryPath": {
-      "majorUnit": "입체도형",
-      "midUnit": "다면체와 회전체",
-      "l3": "다면체",
-      "l4": "각기둥·각뿔"
-    },
-    "rpmCrosswalkStatus": "DIRECT_ACTIVE",
-    "canonicalBindingStatus": "ACTIVE",
-    "runtimeMaterializationStatus": "ACTIVE_BOUND",
-    "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
-    "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+    "rpmPrimaryRecordId": "",
+    "rpmPrimaryPath": null,
+    "rpmCrosswalkStatus": "ITEM_HOLD",
+    "canonicalBindingStatus": "UNRESOLVED",
+    "runtimeMaterializationStatus": "ITEM_HOLD",
+    "problemTypeKey": "",
+    "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "RELATION_CLASSIFICATION",
@@ -274,8 +271,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "itemHold": false,
-    "itemHoldReasons": [],
+    "itemHold": true,
+    "itemHoldReasons": [
+      "NO_EXACT_RPM_L4_FOR_SKEW_LINE_LINE_RELATION_IN_SPACE"
+    ],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_visual.png"
   },
   {
@@ -321,7 +320,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-190",
     "rpmPrimaryPath": {
@@ -391,7 +390,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-167",
     "rpmPrimaryPath": {
@@ -416,7 +415,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.png"
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
   },
   {
     "id": 7,
@@ -462,7 +461,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-170",
     "rpmPrimaryPath": {
@@ -476,7 +475,9 @@ window.questionBank = [
     "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
     "problemTypeKey": "",
     "templateKey": "",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION"
+    ],
     "conditionKeys": [],
     "integrationPattern": "CLAIM_AUDIT",
     "difficultyBucket": 2,
@@ -486,7 +487,8 @@ window.questionBank = [
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
     "itemHold": false,
-    "itemHoldReasons": []
+    "itemHoldReasons": [],
+    "solutionImage": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/solution_q7.svg"
   },
   {
     "id": 8,
@@ -531,7 +533,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-169",
     "rpmPrimaryPath": {
@@ -601,7 +603,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -672,7 +674,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -741,7 +743,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-192",
     "rpmPrimaryPath": {
@@ -799,7 +801,7 @@ window.questionBank = [
       "$\\overline{AB}=\\overline{CD}$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 평행선에서 생기는 각과 맞꼭지각으로 두 각의 같음을 먼저 확보합니다.\n\n$l\\parallel m$이므로 $\\angle ACO=\\angle BDO$, 맞꼭지각이므로 $\\angle AOC=\\angle BOD$입니다. 여기에 $AC=BD$가 주어지면 한 변과 그 양 끝각이 각각 같으므로 두 삼각형은 합동입니다.\n\n따라서 정답은 ④입니다.",
+    "solution": "[키포인트] 평행선에서 생기는 두 쌍의 엇각과 한 변을 이용하면 ASA 합동을 만들 수 있습니다.\n\n$l\\parallel m$이고 $AB$, $CD$가 각각 두 평행선을 가로지르므로 $\\angle CAO=\\angle DBO$, $\\angle ACO=\\angle BDO$입니다. 여기에 $AC=BD$가 주어지면 한 변 $AC,BD$와 그 양 끝각이 각각 같으므로 $\\triangle AOC\\equiv\\triangle BOD$입니다.\n\n따라서 정답은 ④입니다.",
     "sourceQuestionNo": "12",
     "displayNo": "12",
     "sourceOrdinal": 12,
@@ -811,7 +813,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-193",
     "rpmPrimaryPath": {
@@ -883,7 +885,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -955,7 +957,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -980,7 +982,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.png"
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
+    "solutionImage": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
   },
   {
     "id": 15,
@@ -1025,7 +1028,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -1039,7 +1042,9 @@ window.questionBank = [
     "runtimeMaterializationStatus": "RPM_PRIMARY_MIGRATION_GAP",
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_ALTERNATE_POSITION_IDENTIFICATION",
-    "crossConceptKeys": [],
+    "crossConceptKeys": [
+      "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+    ],
     "conditionKeys": [],
     "integrationPattern": "DIRECT",
     "difficultyBucket": 1,
@@ -1096,7 +1101,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
@@ -1162,7 +1167,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-223",
     "rpmPrimaryPath": {
@@ -1187,7 +1192,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.png"
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
   },
   {
     "id": 18,
@@ -1232,7 +1237,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-223",
     "rpmPrimaryPath": {
@@ -1302,7 +1307,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-231",
     "rpmPrimaryPath": {
@@ -1374,7 +1379,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-231",
     "rpmPrimaryPath": {
@@ -1440,7 +1445,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-176",
     "rpmPrimaryPath": {
@@ -1506,7 +1511,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -1571,7 +1576,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "READY_FOR_REVIEW1",
+    "reviewStatus": "REVIEW1_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-192",
     "rpmPrimaryPath": {
@@ -1598,7 +1603,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.png",
+    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q23.svg"
   }
 ];
