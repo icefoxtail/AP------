@@ -8,6 +8,16 @@
 
 ---
 
+## CURRENT OVERRIDE — 2026-10-02 — NO-STOP / FINAL-DEBT MODEL
+
+최상위 실행 규칙은 `Archive_No_Stop_Pipeline_Final_Debt_v1.md`다.
+
+- 운영 `BLOCK/BLOCKED/PENDING`은 신규 생성하지 않는다.
+- write 실패는 반드시 **상태 재확인 → 안전 재시도 → stale/moving-target 갱신 → recovery ref/commit/blob 등 대체 경로 → 저장 재조회 → DONE 또는 debt close**까지 수행한다.
+- 끝내 durable artifact를 못 만들면 `STAGE_ATTEMPT_CLOSED_WITH_DEBT` + `WRITE_RECOVERY_DEBT/INFRA_RETRY_DEBT`로 닫고 claim을 해제한 뒤 다음 eligible target으로 진행한다.
+- legacy `GLOBAL_WRITE_CAPABILITY_BLOCKER`는 `WRITE_RECOVERY_DEBT`로 해석하며 lane/cohort를 멈추지 않는다.
+- debt가 남은 시험지는 final MAIN/PUBLISH만 보류한다. 다른 stage/시험지/lane/cohort 진행은 계속한다.
+
 ## 1. 최상위 원칙 — NO EXAM PENDING
 
 시험지 전체를 멈추는 운영 상태를 만들지 않는다.
@@ -19,9 +29,9 @@ CURRENT에서 다음 상태는 **신규 생성 금지**이며 과거 기록에�
 - `STAGE_REEXECUTION_REQUIRED`
 - 그 밖의 시험지 단위 `*_PENDING` / `*_BLOCKED` / quarantine
 
-허용되는 미해결 상태는 문항별 `ITEM_HOLD`뿐이다.
+미해결은 `ITEM_HOLD` 또는 `FINAL_REVIEW_DEBT / WRITE_RECOVERY_DEBT / INFRA_RETRY_DEBT / USER_DECISION_DEBT`로 기록한다. 이 debt들은 selector stop 조건이 아니다.
 
-Git/connector write 실패는 시험지 상태가 아니라 **artifact 저장 위치 선택 문제**다.
+Git/connector write 실패는 시험지 상태가 아니라 **artifact 저장 위치 선택/복구 문제**다.
 
 ---
 
@@ -96,13 +106,18 @@ primary branch write 실패 후에도 가능한 Git 경로를 순서대로 시�
 
 exact artifact를 하나라도 durable하게 보존하면 그 artifact로 stage를 닫는다.
 
-Git 전체 write capability가 실제로 막혀 **어떤 exact artifact도 물리 보존할 수 없는 경우에만** 시험지별 상태를 만들지 않고 `GLOBAL_WRITE_CAPABILITY_BLOCKER`로 짧게 보고한다.
+Git 전체 write capability가 실제로 막혀 **어떤 exact artifact도 물리 보존할 수 없는 경우에도 BLOCKER를 만들지 않는다.**
 
-이 경우:
-- 시험지 HOLD/PENDING 생성 금지
-- 해당 run을 그 시험지가 독점하지 않음
-- 가능한 다른 eligible 시험지는 계속 처리
-- Git capability가 복구된 뒤 해당 stage를 다시 실행/마감
+반드시:
+1. remote/ref/blob 상태를 재확인한다.
+2. 동일 안전 write를 bounded retry한다.
+3. stale expected SHA/moving target이면 최신 상태로 갱신해 재시도한다.
+4. 가능한 recovery ref/commit/blob 대체 경로를 시도한다.
+5. 실제 저장 여부를 재조회한다.
+6. 그래도 실패하면 `STAGE_ATTEMPT_CLOSED_WITH_DEBT` + `WRITE_RECOVERY_DEBT` 또는 `INFRA_RETRY_DEBT`로 닫는다.
+7. claim을 해제하고 가능한 다른 eligible 시험지/다음 cohort를 계속 처리한다.
+
+과거 `GLOBAL_WRITE_CAPABILITY_BLOCKER`는 HISTORY/debt provenance로만 읽는다. Git capability가 복구되면 debt queue에서 해당 stage를 재개한다.
 
 ---
 
@@ -128,7 +143,7 @@ Git 전체 write capability가 실제로 막혀 **어떤 exact artifact도 물�
 - held qid만 다음 REVIEW 또는 ITEM_RECOVERY_QUEUE에서 다시 판정
 - REVIEW2 뒤 item hold가 남으면 publish만 보류
 - 다른 시험지/다른 lane 진행은 계속
-- MAIN publish 직전에만 `itemHoldCount=0` HARD gate
+- MAIN publish 직전에만 `itemHoldCount=0` 및 모든 release debt count=0을 HARD gate로 강제
 
 ---
 
@@ -156,3 +171,18 @@ stage 완료 조건은 branch 이름이 아니라 아래 네 가지다.
 **RECOVERY REF ≠ PENDING**
 
 **EXACT ARTIFACT EXISTS → STAGE DONE***
+
+
+---
+
+## 10. FINAL DEBT SWEEP
+
+정상 lane/cohort 진행 중 debt를 이유로 정지하지 않는다. 모든 즉시 실행 가능한 작업이 전진한 뒤 FINAL/BATCH tail에서 debt를 별도 전수 회수한다.
+
+- `ITEM_HOLD`
+- `FINAL_REVIEW_DEBT`
+- `WRITE_RECOVERY_DEBT`
+- `INFRA_RETRY_DEBT`
+- `USER_DECISION_DEBT`
+
+각 debt는 exact target/SHA/evidence/lastAttempt/nextAction을 가진다. debt가 남은 시험지만 publish에서 제외하고 clean 시험지는 계속 처리한다.
