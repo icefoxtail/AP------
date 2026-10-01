@@ -8,6 +8,17 @@
 
 ---
 
+## CURRENT HARD GATE — META PHYSICAL LOOKUP EVIDENCE / NULL-BUT-RESOLVABLE (2026-10-01)
+
+CREATE/R1/R2/R3의 Meta PASS는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`에 결속한다.
+
+- `metadataAuditCount=N/N` 집계만으로 Meta 검수 완료 금지.
+- qid마다 blind `primaryMethod / decisiveStep`, RPM Primary 판정, crosswalk lookup, GLOBAL ACTIVE taxonomy/template lookup, exact binding lookup evidence를 남긴다.
+- `problemTypeKey` 또는 `templateKey`가 null이면 lookup evidence + `nullReason` 필수.
+- unique `EXACT_ACTIVE` mapping이 존재하는데 field가 null이면 `META_NULL_BUT_RESOLVABLE` FAIL.
+- RPM_ONLY/BINDING_GAP은 기존 CURRENT처럼 비차단 projection debt일 수 있지만, **lookup을 하지 않은 null**과 혼동하지 않는다.
+- 2026-10-01 복성고1 q4/q11/q21은 `22/22` 자기보고 뒤 exact ACTIVE mapping이 누락된 negative regression fixture다.
+
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
 `ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.
