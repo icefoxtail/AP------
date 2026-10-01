@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_TARGETED_INDEPENDENT_RECHECK_LEDGER_v2",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW2_TARGETED_INDEPENDENT_RECHECK_DONE",
+  "readyState": "READY_FOR_R3_RETRY",
+  "reviewedAtKst": "2026-10-01T11:53:53+09:00",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "reentryMode": "TARGETED",
+  "evidence": "TARGETED",
+  "failureClass": "TARGETED_R1_R2",
+  "inputR1": {
+    "branch": "work/line3/26-maesan-h1-2mid-r1-targeted-repair2-20261001",
+    "sealedHead": "3422afc51340cbad7568ceae0244effba4078dc4",
+    "repairCommit": "ae412dbe1832188d302db30368b513bf93c91270",
+    "finalArtifactSha": "e7f054911403216e3c3a2a48a906cf61579e2735",
+    "protectedExamBlob": "01bff3fd0ac028e527680b311c0faa4771ecfe0e"
+  },
+  "sourceAuthority": {
+    "branch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceTextFreezeBlob": "11c2d220863892e19107cc977559a530ba165b2c",
+    "q3SourceTextSha256": "sha256:cdbdb92eba3da1e5ced0ce8606020c8ae42e6a1ea64a98fabd9feffd67f141c4",
+    "q3SourcePageEvidenceSha256": "sha256:9d1d39fcb5b4a6d0e5f62edc67a2dcebe430104c50a3fe8d630c2c2a20d10311"
+  },
+  "blindDecisionFrozen": true,
+  "blindDecisionIsolation": {
+    "solver": "deterministic_sympy_source_only",
+    "solverInputScope": "SOURCE_AND_CURRICULUM_ONLY",
+    "solverInventorySha256": "fbadfe2b37ee0634cf07bd91551cb3bd39142581945f9e50eeb1dd64fe95a043",
+    "candidateSolutionBytesViewedBeforeSolverFreeze": false,
+    "r1RepairLedgerBytesViewedBeforeSolverFreeze": false,
+    "r3FailPacketBytesViewedBeforeSolverFreeze": false,
+    "routingMetadataVisibleToOrchestrator": true,
+    "note": "Operational CURRENT routing was visible to the orchestrator. The independent mathematical solver itself received only q3 source text and curriculum profile; candidate solution bytes and regression packet/ledger bytes were opened after the solver result was frozen."
+  },
+  "recheckedQids": [
+    3
+  ],
+  "independentSolverMethodInventory": {
+    "qid": 3,
+    "curriculum": "2022",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-02",
+    "subUnitKey": "H22-C2-02-RELATION",
+    "sourceOnlyInputs": [
+      "3x-y+2=0",
+      "(k-1)x+y-5=0",
+      "두 직선이 서로 수직"
+    ],
+    "concepts": [
+      "직선의 기울기",
+      "서로 수직인 두 직선의 기울기 관계"
+    ],
+    "formulas": [
+      "m1*m2=-1"
+    ],
+    "methods": [
+      "각 직선을 y=mx+n 꼴로 고쳐 기울기를 읽는다.",
+      "첫째 직선의 기울기 m1=3, 둘째 직선의 기울기 m2=1-k를 얻는다.",
+      "서로 수직이므로 3(1-k)=-1을 세운다.",
+      "일차방정식을 풀어 k=4/3을 얻는다."
+    ],
+    "result": {
+      "k": "4/3",
+      "choice": "①"
+    },
+    "curriculumStatus": "PASS",
+    "usesOutOfCurriculumMethod": false
+  },
+  "candidateSolutionMethodInventory": {
+    "qid": 3,
+    "openedAfterBlindFreeze": true,
+    "candidateAnswer": "①",
+    "methods": [
+      "3x-y+2=0을 y=3x+2로 바꾸어 기울기 3을 얻는다.",
+      "(k-1)x+y-5=0을 y=(1-k)x+5로 바꾸어 기울기 1-k를 얻는다.",
+      "수직 조건 3(1-k)=-1을 적용한다.",
+      "k=4/3을 얻는다."
+    ],
+    "comparisonToIndependent": "EXACT_METHOD_MATCH",
+    "curriculumStatus": "PASS",
+    "q3SolutionSvg": {
+      "path": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q3-solution.svg",
+      "blob": "1066c94ae93ddc11174a1dc23b4949f1fb6826de",
+      "exactIntersectionLabel": "P(9/10,47/10)",
+      "semanticParity": "PASS"
+    }
+  },
+  "regressionCompare": {
+    "r3FailPacketRef": "archive-work/line3/2026-2mid-review3/26_매산고_2학기_중간_고1_기출/r3.retry.fail.packet.20261001-1037.json",
+    "r3FailPacketBlob": "d3419b070afbe0b4eaf92f66b738a212efc3d618",
+    "r1RepairLedgerBlob": "656a7ebb603c8460af753ccc03000c62a0a33746",
+    "failedQids": [
+      3
+    ],
+    "failureCodes": [
+      "STUDENT_DECIMAL_POINT_LABEL_FAIL"
+    ],
+    "result": "CLOSED"
+  },
+  "familyRescanAxis": "STUDENT_DECIMAL_POINT_LABEL_CHECK",
+  "familyRescanScope": {
+    "linkedStudentVisuals": "17/17",
+    "solutionSvgQids": [
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21
+    ],
+    "problemVisualQids": [
+      12,
+      15,
+      18
+    ],
+    "definition": "Student-facing <text> nodes scanned for decimal-number labels; SVG geometry coordinates are not student labels."
+  },
+  "familyRescanCount": "17/17",
+  "familyRescanResult": "PASS",
+  "familyRescanDefectQids": [],
+  "q3RepairClosure": {
+    "oldStudentLabel": "P(0.9,4.7)",
+    "currentStudentLabel": "P(9/10,47/10)",
+    "exactCoordinateCheck": "PASS",
+    "semanticChange": false
+  },
+  "protectedFields": {
+    "examBlob": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+    "status": "PASS_UNCHANGED"
+  },
+  "studentArtifactMutation": false,
+  "newSystemicDefect": false,
+  "fullReentryRequired": false,
+  "itemHoldCount": 0,
+  "questionCount": 21,
+  "targetedRecheckCount": "1/1",
+  "r2OutputArtifactSha": "e7f054911403216e3c3a2a48a906cf61579e2735",
+  "nextOwner": "R3_RETRY",
+  "mainMutation": false,
+  "sourceAuthorityMutation": false
+}
