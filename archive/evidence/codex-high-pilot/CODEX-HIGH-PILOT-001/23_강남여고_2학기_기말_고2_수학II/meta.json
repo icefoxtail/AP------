@@ -1,0 +1,763 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_강남여고_2학기_기말_고2_수학II",
+  "ordinal": 2,
+  "stage": "META",
+  "status": "META_PASS_WITH_ITEM_HOLD_AND_LEGACY_COMPARE_UNKNOWN",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactSha256": "sha256:95c247046cfb4146eba80420018433c1ac992e01bdadd1238cb09f40c63a52fb",
+  "sourceArtifactGitBlobSha": "1374f3a7eb13a0adea4453444f34d9d9be37dbf1",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "targetArtifactSha256": "sha256:7ac114bf52365161e87e44987380e58822208c66e075e64805547d6ff93748fc",
+  "targetArtifactGitBlobSha": "1bfb13982a9dff1aaa968fa15a8f30d5b09eee8d",
+  "denominator": 25,
+  "resolvedMetaCount": 24,
+  "itemHoldQids": [
+    13
+  ],
+  "activeRegistry": {
+    "status": "ACTIVE",
+    "registrySha": "sha256:ae91c24c59dd1446d8607c8e22c752b4df0a4d855c8de66429e283061f2c5c99",
+    "activeCurriculumBindings": 24,
+    "unclassifiedHoldQids": [
+      13
+    ],
+    "metaFieldValidationCount": 24,
+    "difficultyCompleteCount": 0,
+    "advancedEligibilityStatus": "NOT_MET_LEGACY_LEVEL_COMPARISON_UNKNOWN"
+  },
+  "authorities": {
+    "rpmPrimary": {
+      "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/HIGH/수학II.md",
+      "gitBlobSha": "b8590959171a249095aed4a252ace7c99fa3de3e"
+    },
+    "crosswalk": {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+      "gitBlobSha": "a1dfb305834bc21a044e0ae8fcf8708a0496b3bf"
+    },
+    "activeRegistryIndex": {
+      "path": "archive/data/meta-foundation/registry-index.json",
+      "gitBlobSha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be"
+    },
+    "compiledTaxonomy": {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "gitBlobSha": "c0b2cb3047d242e2e56920528f5f5c839295e1bb"
+    },
+    "compiledBindings": {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "gitBlobSha": "be3d5657a16737169ad993278cd96a4c06ecf273"
+    },
+    "conceptFunctions": {
+      "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "gitBlobSha": "cc5d035b08919ac0cb9523d9b0338041eca200a6"
+    },
+    "conceptCalculus": {
+      "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
+      "gitBlobSha": "b81ff3a1fc0cd3c9820186c1e0deffeb14799a64"
+    },
+    "conditions": {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "gitBlobSha": "9c55000cb6f878a7f657ad5d496a6a67cb6aecfb"
+    },
+    "difficultyV1_3": {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md",
+      "gitBlobSha": "fa7735b0a79fa9084ec726ef24a82a4eaaf7dca8"
+    }
+  },
+  "adjudications": [
+    {
+      "field": "Q1 L1/L2",
+      "decision": "H15-M2-04 / H15-M2-04-DERIVATIVE (도함수)",
+      "basis": "RPM 016 and active curriculum binding."
+    },
+    {
+      "field": "Q19 L1/L2",
+      "decision": "H15-M2-08 / H15-M2-08-DEFINITE_INTEGRAL (정적분)",
+      "basis": "RPM 041 variable-upper-limit integral-defined function."
+    },
+    {
+      "field": "conceptClusterKey Q1/Q19",
+      "decision": "Preserve frozen source values",
+      "basis": "Excluded from pilot completion-contract allowed fields; remains provenance from source classification."
+    },
+    {
+      "field": "CC_DEFINITE_INTEGRAL",
+      "decision": "Omit from Q16/Q19/Q22",
+      "basis": "Its active taxonomyRefs do not include selected PT_DEFINITE_INTEGRAL_FUNCTION_RELATION."
+    },
+    {
+      "field": "CrossConcept",
+      "decision": "Q9/Q21 CC_FUNCTION_SYMMETRY; Q19 CC_FUNCTION_EXTREMA",
+      "basis": "Each has a decisive secondary concept and active taxonomy refs."
+    },
+    {
+      "field": "Q3/Q4 RPM L4 adjudication",
+      "decision": "Q3→H2-M2-RPM-022 기울기 조건; Q4→H2-M2-RPM-021 변화율",
+      "basis": "Q3 decisive step is the horizontal-tangent condition f′(c)=0 under Rolle; Q4 explicitly computes average rate of change and equates it to instantaneous rate. Blind Meta reviewer concurred after recheck. Both map to the same active PT/TPL and binding."
+    }
+  ],
+  "conditionRationales": {
+    "COND_RANGE": {
+      "qids": [
+        6,
+        7,
+        14,
+        15,
+        18,
+        22,
+        23
+      ],
+      "reason": "The feasible domain or allowed time/parameter range changes candidate selection."
+    },
+    "COND_NATURAL_NUMBER": {
+      "qids": [
+        17
+      ],
+      "reason": "Natural-number parameter drives the finite root-count cases."
+    },
+    "COND_POSITIVE": {
+      "qids": [
+        20
+      ],
+      "reason": "The stated positive-parameter restriction is part of the motion model."
+    }
+  },
+  "difficultyReview": {
+    "reviewer": "ordinal2_difficulty_blind",
+    "input": "meta-blind-input.json",
+    "legacyLevelCompatibility": "UNKNOWN on all resolved qids because source level is blank; this is non-comparable, not an unfinished source classification. The v1.3 validator therefore leaves advanced eligibility incomplete, while the five-stage difficulty bucket/confidence/boundary are assigned.",
+    "boundaryReview": "All medium-confidence classifications and adjacent-boundary flags received adjudication; no low-confidence assignment retained."
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-016",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-04",
+        "standardUnit": "도함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M2-04-DERIVATIVE",
+        "subUnit": "도함수"
+      },
+      "l3": "PT_DERIVATIVE_RULE_EVALUATION",
+      "l4": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Direct polynomial derivative and substitution."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 2,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-014",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-03",
+        "standardUnit": "미분계수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
+        "subUnit": "미분계수"
+      },
+      "l3": "PT_DERIVATIVE_DEFINITION",
+      "l4": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Rescaled derivative-definition limit."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 3,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-022",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_MEAN_VALUE_THEOREM",
+      "l4": "TPL_MVT_ROLLE_DIRECT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Rolle endpoint check then derivative equation."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 4,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-021",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_MEAN_VALUE_THEOREM",
+      "l4": "TPL_MVT_ROLLE_DIRECT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Secant slope and derivative equation."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 5,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-037",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "l4": "TPL_DEFINITE_EVALUATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Antiderivative and endpoint evaluation."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 6,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-029",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_MOTION",
+      "l4": "TPL_MOTION_EVENT_ANALYSIS",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Position derivative and velocity sign change."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 7,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-024",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EXTREMA",
+      "l4": "TPL_EXTREMA_VALUE_PARAMETER",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Derivative sign chart, including an undefined derivative at x=1."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 8,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-020",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-05",
+        "standardUnit": "접선의 방정식",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M2-05-TANGENT",
+        "subUnit": "접선의 방정식"
+      },
+      "l3": "PT_TANGENT_DERIVATIVE",
+      "l4": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Tangent slope plus point-on-curve condition."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 9,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-040",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "l4": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B12",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Odd-function cancellation on a symmetric interval."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 10,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-024",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EXTREMA",
+      "l4": "TPL_EXTREMA_VALUE_PARAMETER",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Use a local extremum to determine a parameter and the other extremum."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 11,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-028",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "l4": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Global monotonicity and quadratic nonnegativity."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 12,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-043",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용"
+      },
+      "l3": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "l4": "TPL_INTERSECTION_SIGN_AREA",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Graph absolute areas converted to signed integrals."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 13,
+      "status": "ITEM_HOLD",
+      "reason": "For listed a=14,15,16,17,18, distinct intersection counts are 6,5,4,2,2; none equals three. No taxonomy or difficulty assigned."
+    },
+    {
+      "qid": 14,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-026",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_MAX_MIN",
+      "l4": "TPL_MODELED_QUANTITY_OPTIMIZATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Feasible box-volume model and derivative maximum."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 15,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-028",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "l4": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Global inequality converted to a minimum on x≥0."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 16,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-042",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "l4": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Product-derivative recognition followed by integral calculation."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 17,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-027",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+      "l4": "TPL_ROOT_COUNT_BY_EXTREMA",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Root counts over natural-number parameter cases and a repeated-root boundary."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 18,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-047",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용"
+      },
+      "l3": "PT_AREA_BY_DEFINITE_INTEGRAL",
+      "l4": "TPL_AREA_CONDITION_MODEL_DETERMINATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Area equations evaluated on two sign intervals."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 19,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-041",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "l4": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION",
+      "crossConceptKeys": [
+        "CC_FUNCTION_EXTREMA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Variable-upper-limit accumulation function and its extrema/integral claims."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 20,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-046",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-09",
+        "standardUnit": "적분의 활용",
+        "standardUnitOrder": 9,
+        "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
+        "subUnit": "적분의 활용"
+      },
+      "l3": "PT_MOTION_BY_INTEGRAL",
+      "l4": "TPL_VELOCITY_TO_POSITION_DISTANCE",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "medium",
+        "boundaryFlag": "B34",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Integrated velocities with simultaneous position and speed conditions."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 21,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-040",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "l4": "TPL_DEFINITE_PROPERTY_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Odd symmetry and overlapping interval decomposition."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 22,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-042",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "l4": "TPL_DIFFERENTIATE_INTEGRAL_RELATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Differentiate integral identity and use the zero-length condition."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 23,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-029",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_MOTION",
+      "l4": "TPL_MOTION_EVENT_ANALYSIS",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "high",
+        "boundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Equal velocities with nonnegative-time filtering."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 24,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-024",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-06",
+        "standardUnit": "도함수의 활용",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
+        "subUnit": "도함수의 활용"
+      },
+      "l3": "PT_DERIVATIVE_EXTREMA",
+      "l4": "TPL_EXTREMA_VALUE_PARAMETER",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "REINTERPRETATION",
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Derivative graph, integration, and extremum condition."
+      },
+      "activeCurriculumBinding": true
+    },
+    {
+      "qid": 25,
+      "status": "PASS",
+      "rpmRecord": "H2-M2-RPM-038",
+      "l1L2": {
+        "standardUnitKey": "H15-M2-08",
+        "standardUnit": "정적분",
+        "standardUnitOrder": 8,
+        "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
+        "subUnit": "정적분"
+      },
+      "l3": "PT_DEFINITE_INTEGRAL_OPERATION",
+      "l4": "TPL_DEFINITE_EVALUATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "medium",
+        "boundaryFlag": "B23",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "rationale": "Split adjacent definite-integral intervals."
+      },
+      "activeCurriculumBinding": true
+    }
+  ]
+}
