@@ -24,6 +24,56 @@ R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
 - HOLD는 원본 자체가 없거나 판독 불능이고, 가능한 복원이 여러 개라 하나를 고르면 추측이 되는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
 - 특정 worker/runtime에서 binary crop 편집이 불편하다는 사실만으로 콘텐츠 HOLD를 만들지 않는다. 허용된 deterministic fallback으로 닫을 수 있으면 같은 stage에서 수리한다.
 
+#### A-1. CROP COMPLETENESS ≠ SOURCE-TRUTH SUFFICIENCY — HARD
+
+문제 이미지가 **완벽하게 넓게 잘렸는지**와 **그 문항의 source truth를 수학적으로 확정할 수 있는지**는 다른 판정이다.
+
+- image 파일이 실제로 존재하고, 현재 crop + 발문 + 보기 + 정답 + 보이는 기하 관계만으로 정답·풀이에 필요한 결정적 사실을 유일하게 확정할 수 있으면 `ITEM_HOLD` 금지다.
+- 꼭짓점 문자 하나, 선분 끝 일부, 여백, 장식, 이미 발문에 적힌 수치·관계가 crop 밖으로 조금 잘린 정도는 기본적으로 `ASSET_REPAIR_REQUIRED` 또는 `SOURCE_ASSET_OK_WITH_CROP_DEBT`다. 수학 truth가 막히지 않으면 HOLD가 아니다.
+- 반대로 잘린 픽셀 안에 **정답 또는 풀이를 결정하는 유일한 수치·기호·라벨 owner·직각/평행/접선/포함 관계**가 있고, 그 사실을 다른 source 축에서 유일하게 복구할 수 없을 때만 source-visual HOLD 후보가 된다.
+- 현재 worker/runtime가 full-page PDF/scan bytes를 열지 못했다는 사실 자체는 HOLD 사유가 아니다. 먼저 current main의 linked asset을 직접 읽고, 발문/보기/answer/visible geometry와 합쳐 source-truth sufficiency를 판정한다.
+- `SOURCE_ASSET_MISSING`은 **참조해야 할 asset 파일 자체가 실제로 없을 때만** 쓴다. 파일이 존재하지만 crop이 좁은 경우에는 이 reason code를 쓰지 않는다.
+- `SOURCE_ASSET_CROP_INCOMPLETE`는 기본적으로 repair/debt 상태이며 자동 `ITEM_HOLD` 코드가 아니다.
+
+source visual을 HOLD로 입장시키려면 다음 네 항목을 모두 증명해야 한다.
+
+1. `decisiveMissingFacts[]`: crop 밖으로 사라진 **결정적 source fact**가 무엇인지 구체적으로 적는다.
+2. `alternateEvidenceChecked[]`: content / choices / answer / 다른 visible geometry / existing source asset에서 그 사실을 유일하게 복구할 수 없는지 확인한다.
+3. `fullPageLookupResult`: full-page source를 실제로 찾았는지, 찾았는데도 판독 불능인지, 현재 runtime에서만 접근 실패인지 구분한다.
+4. `whyTruthStillNonDeterministic`: repair 또는 deterministic reconstruction 후에도 왜 하나의 truth로 닫히지 않는지 적는다.
+
+위 네 항목 중 하나라도 없으면 source-visual `ITEM_HOLD`는 무효다.
+
+권장 분류:
+
+```text
+SOURCE_ASSET_OK
+SOURCE_ASSET_OK_WITH_CROP_DEBT
+ASSET_REPAIR_REQUIRED
+SOURCE_TRUTH_BLOCKED   ← 이것만 ITEM_HOLD 후보
+```
+
+#### A-2. ITEM_RECOVERY는 HOLD를 상속하지 않고 다시 판정한다 — HARD
+
+`ITEM_RECOVERY_QUEUE`에 들어왔다는 사실은 **그 HOLD가 옳다는 증거가 아니다.**
+
+recovery worker는 held qid마다 latest main의 실제 bytes와 source/canonical을 다시 확인해 먼저 다음 중 하나로 재분류한다.
+
+- `FALSE_HOLD_NO_REPAIR_NEEDED`: 기존 artifact만으로 truth가 충분함 → content mutation 없이 HOLD만 제거.
+- `FALSE_HOLD_ASSET_REPAIR`: truth는 충분하지만 crop/가독성/파일참조 보정이 필요함 → 필요한 asset만 최소수리.
+- `TRUE_HOLD_REPAIRABLE`: 실제 결함이 있으나 deterministic repair로 닫힘 → 해당 qid만 수리.
+- `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`: 결정적 source fact가 실제로 없고 유일복구 불가 → 그때만 Direct Replacement 후보.
+
+upstream R1/R2의 hold reason을 그대로 실행 지시로 복사해 **모든 held qid를 무조건 수정하거나 대체하지 않는다.**
+### CURRENT regression fixture — 24 금당중 중3 2학기 중간 (2026-10-01)
+
+대상: `24_금당중_2학기_중간_중3_수학.js`.
+
+- current main에는 source image가 22/22 실제 존재했고 R1도 `source image direct inspection=22/22`, main blob parity 22/22 exact를 기록했다.
+- 그럼에도 q1/q2/q6/q9/q10/q12/q15/q17/q18/q22/q23 총 11건을 `SOURCE_ASSET_CROP_INCOMPLETE`로 HOLD 승격한 것은 **crop completeness와 source-truth sufficiency를 혼동한 과승격 사례**다.
+- 예를 들어 q10/q12/q22처럼 일부 라벨·끝부분이 잘려도 발문과 visible geometry만으로 필요한 수학 truth가 이미 결정되는 문항은 HOLD가 아니다.
+- 반대로 일부 문항은 실제 recrop/원본 확인이 필요할 수 있다. **정확한 true-HOLD subset은 recovery가 qid별로 다시 판정하며 11건 전체를 true HOLD로 상속하지 않는다.**
+- 이 사례 이후 source-asset HOLD는 반드시 `decisiveMissingFacts[]`와 `whyTruthStillNonDeterministic`를 가져야 한다.
 ### B. Meta / PT·TPL / RPM projection
 - `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
 - `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.

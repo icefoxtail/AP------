@@ -125,6 +125,37 @@ HOLD 최소형:
 
 ---
 
+## 2.1 SOURCE VISUAL SUFFICIENCY / HOLD ADMISSION — HARD
+
+problem image가 연결된 qid는 “파일이 있음/없음” 또는 “crop이 완전/불완전”만 기록하지 않고 **수학적 source-truth sufficiency**를 분리해 남긴다.
+
+권장 evidence:
+
+```json
+{
+  "assetRefExists": true,
+  "assetSha": "git-blob-or-sha256",
+  "cropCompleteness": "COMPLETE | PARTIAL",
+  "decisiveFactsRequired": ["..."],
+  "decisiveFactsVisibleOrRecovered": ["..."],
+  "decisiveMissingFacts": [],
+  "alternateEvidenceChecked": ["content", "choices", "answer", "visible-geometry"],
+  "sourceTruthSufficiency": "SUFFICIENT | REPAIRABLE | BLOCKED",
+  "holdAdmission": "NO_HOLD | ASSET_REPAIR_REQUIRED | ITEM_HOLD"
+}
+```
+
+판정 원칙:
+
+- `cropCompleteness=PARTIAL`이어도 `sourceTruthSufficiency=SUFFICIENT`이면 HOLD 금지.
+- current runtime에서 full-page source를 못 연 사실만으로 `BLOCKED` 금지.
+- `ITEM_HOLD`는 `decisiveMissingFacts[]`가 실제로 있고 다른 source 축으로 유일복구가 안 되는 경우만 허용.
+- `SOURCE_ASSET_MISSING`은 실제 referenced asset file 부재에만 사용.
+- R1/R2와 ITEM_RECOVERY는 upstream hold count를 authority로 사용하지 않고 qid별 sufficiency를 새로 판정한다.
+
+2026-10-01 `24_금당중_2학기_중간_중3_수학.js`의 11개 crop HOLD는 이 구분이 없어서 발생한 false-positive regression 사례다.
+
+---
 ## 3. Runtime string HARD GATE
 
 JS source code에 보이는 문자열과 실제 브라우저/engine이 소비하는 **runtime 문자열을 구분**한다.
