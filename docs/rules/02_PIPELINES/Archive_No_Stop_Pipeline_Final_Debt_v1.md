@@ -173,6 +173,17 @@ STAGE_ATTEMPT_CLOSED_WITH_DEBT
 
 ---
 
+## 6.1 Temporary role override와 upstream backlog ownership
+
+예약/운영 override가 lane의 실제 역할을 임시 변경한 경우(예: 정상 CREATE lane → R3 surge executor), 과거 receipt·ledger의 `nextOwner=CREATE-n` / `REVIEWn-m` 표기는 **routing provenance일 뿐 현재 실행 owner가 아니다.**
+
+- 현재 role이 override된 lane을 stale `nextOwner`만 보고 원래 stage 작업으로 되돌리지 않는다.
+- 해당 target에 필요한 durable upstream artifact가 없으면 dependent REVIEW/R3의 **그 target만 skip**하고 다른 eligible을 계속 처리한다.
+- 원래 stage backlog는 현재 역할을 유지한 채 **FLEX / stage recovery owner**가 원래 stage contract 그대로 회수한다.
+- 한 target에 대해 bounded recovery loop를 수행한 뒤 `WRITE_RECOVERY_DEBT` / `INFRA_RETRY_DEBT`로 닫혔으면, fresh real in-flight claim이 없는 한 같은 target이 이후 FLEX cycle을 반복 독점하지 못한다. 다음 eligible backlog로 순환한다.
+- role override가 끝날 때도 과거 `nextOwner`를 그대로 복구하지 않고 latest durable artifact/debt를 재조회하여 owner를 다시 계산한다.
+- 임시 role override를 해제하지 않아도 upstream backlog 회수는 가능해야 하며, backlog 존재 자체는 surge/다른 lane/cohort 진행을 막지 않는다.
+
 ## 7. R3 / repair
 
 - initial R3 FAIL → `FINAL_REVIEW_DEBT` + scoped repair packet.
