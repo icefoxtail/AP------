@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW2_LEDGER_v2",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW2_DONE",
+  "readyState": "READY_FOR_R3",
+  "examId": "26_왕운중_2학기_중간_중1_기출",
+  "reviewMode": "NORMAL_FULL_INDEPENDENT",
+  "reviewedAtKst": "2026-10-01T19:03:00+09:00",
+  "input": {
+    "startRemoteMainSha": "f432a94df44b2f8ee5350e1abd1a0c2db3747884",
+    "r1Branch": "work/line3/26-wangun-m1-2mid-review1-20261001",
+    "r1ReviewCommit": "52ad98201024b89825e7e370e05f55e72b7d6f5a",
+    "r1SealedHead": "868e80e41f70312d405211ae52ec3a3db23f9ad0",
+    "r1FinalArtifactSha": "8ba59d4a5c0cae47f465d6eea9a1a570b2a35227",
+    "r1LedgerBlob": "013d81e61de81450d80fab89f56a5cebcbc3e0cc",
+    "r1ReceiptBlob": "ccf90c5cc919792658b7a6ba63419ea55550744b",
+    "sourceAuthorityBranch": "codex/archive-2026-2mid-prompt-assets",
+    "sourceDocumentSha256": "sha256:f64f963b3cb0a6451332e97004546344a99f82c0df581dfc07ec02fa1e1d86e7"
+  },
+  "blindIndependence": {
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "r1LedgerOpenedBeforeFreeze": false,
+    "blindFreezeBlob": "799a40e0626b8ab51168b6760dee4c8cd0627ab1",
+    "blindFreezeSha256": "sha256:17bb858c1c3a40d64c94032d014822ebde419bfac3e19ba022faa1a6fa9a969a"
+  },
+  "denominator": {
+    "questionCount": 23,
+    "fullPageSourcePageCount": 4,
+    "problemImageCount": 18,
+    "solutionSvgCount": 11
+  },
+  "independentAudit": {
+    "sourceContentChoices": "23/23 PASS_AFTER_REPAIR; q3 DFE→DEF source transcription repair independently re-solved",
+    "answerSolve": "23/23 PASS",
+    "mathSolution": "23/23 PASS_AFTER_REPAIR",
+    "smallBoard": "23/23 PASS",
+    "microLayout": "23/23 PASS_GRID_DEFAULT",
+    "curriculumMethod": "23/23 PASS; 2022 revised M1",
+    "visualNecessity": "23/23 AUDITED",
+    "problemImages": "18/18 linkage checked; repo-relative path defects normalized",
+    "solutionSvg": "11/11 SHA-bound coordinate/topology checked",
+    "metadata": "23/23 FRESH; q16 false HOLD closed by existing ACTIVE canonical",
+    "difficulty": "23/23 AUDITED"
+  },
+  "deterministicRepairs": [
+    {
+      "qid": 3,
+      "type": "AUDITED_SOURCE_TRANSCRIPTION_REPAIR",
+      "originalValue": "△ABC≡△DFE",
+      "repairedValue": "△ABC≡△DEF",
+      "answer": "③"
+    },
+    {
+      "qid": 16,
+      "type": "META_ACTIVE_REUSE",
+      "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+      "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT"
+    },
+    {
+      "qids": [
+        6,
+        7,
+        14,
+        17,
+        23
+      ],
+      "type": "ASSET_REFERENCE_PATH_NORMALIZATION",
+      "fromPrefix": "archive/assets/",
+      "toPrefix": "assets/"
+    },
+    {
+      "qids": [
+        4,
+        11,
+        12,
+        15
+      ],
+      "type": "SOLUTION_VISUAL_ADDITION",
+      "semanticChange": false
+    }
+  ],
+  "regressionCompareAfterFreeze": {
+    "r1FalsePassOrHoldCorrections": [
+      "q3 source-transcription/multiple-answer false HOLD",
+      "q16 Meta false HOLD",
+      "repo-relative asset-path defects"
+    ],
+    "createOrR1VerdictUsedAsAnswerAuthority": false
+  },
+  "output": {
+    "review2Branch": "work/line3/26-wangun-m1-2mid-review2-20261001",
+    "reviewArtifactCommit": "264c4f03a51367e95c14dfed25c3dfe43d3b8023",
+    "finalArtifactSha": "847ffdec7c0dad0d79573f5d4abe0f50be8f4636",
+    "physicalEvidencePath": "archive-work/line3/2026-2mid-review2/26_왕운중_2학기_중간_중1_기출/review2.physical-evidence.json",
+    "physicalEvidenceBlob": "29a68a9a4b9aa23df2cd153481204260973a1522",
+    "physicalEvidenceSha256": "sha256:d84a46905265641dc3818f44bf4edce726fe335802c7c84462825929bfaaa324"
+  },
+  "physicalEvidenceGate": {
+    "validator": "archive/tools/review-evidence-gate.mjs --stage R2",
+    "validatorSourceBlob": "e170e7cd0052d193db355903002d75be5f26c5ff",
+    "emulatedAgainstExactValidatorContract": true,
+    "ok": true,
+    "disposition": "PASS",
+    "questionEvidenceRows": 23,
+    "linkedSolutionVisualCount": 11,
+    "visualEvidenceRows": 11,
+    "metaEvidenceRows": 23,
+    "itemHoldCount": 0,
+    "itemHoldQids": [],
+    "issues": []
+  },
+  "itemHoldCount": 0,
+  "mainMutation": false,
+  "nextOwner": "LINE3_R3_INITIAL"
+}
