@@ -217,8 +217,8 @@ window.questionBank = [
     "answer": "④",
     "solution": "정삼각형의 중선과 무게중심의 성질을 이용하여 $DH$를 구한 뒤, 직각삼각형 $ADH$에 피타고라스 정리를 적용한다.\n밑면 $\\triangle BCD$는 한 변의 길이가 $6$인 정삼각형이고, $M$은 $BC$의 중점이다.\n무게중심 $H$는 중선 $DM$을 꼭짓점 쪽에서 $2:1$로 나눈다.\n\n$DM$, $DH$, $MH$를 순서대로 구하고, $AH\\perp$ 밑면이므로 직각삼각형 $ADH$에서 $AH$를 구한다.\n\n$BM=CM=3$이므로 $DM=\\sqrt{6^2-3^2}=3\\sqrt3$이다.\n무게중심의 성질에 의하여 $DH=\\dfrac23DM=2\\sqrt3$, $MH=\\dfrac13DM=\\sqrt3$이다.\n또한 $AD=6$이고 $AH\\perp DH$이므로 $AH=\\sqrt{AD^2-DH^2}=\\sqrt{36-12}=2\\sqrt6$이다.\n따라서 ④는 옳다.\n한편 $MC=3$, $MD=3\\sqrt3$, $MH=\\sqrt3$이고 $\\tan x^\\circ=\\dfrac{AH}{DH}=\\sqrt2$이므로 나머지 보기는 옳지 않다.\n따라서 정답은 ④이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q07.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -252,7 +252,8 @@ window.questionBank = [
     "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
     "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q08-solution.svg"
   },
   {
     "id": 9,
@@ -410,10 +411,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "정사각형의 한 변의 길이가 $4$이고 $M$, $N$은 각각 $AD$, $CD$의 중점이므로\n$AM=MD=DN=NC=2$이다.\n\n피타고라스 정리에 의하여\n$BM=BN=\\sqrt{4^2+2^2}=2\\sqrt5$,\n$MN=\\sqrt{2^2+2^2}=2\\sqrt2$이다.\n\n$K$를 $MN$의 중점이라 하자.\n$\\triangle BMN$은 $BM=BN$인 이등변삼각형이므로 $BK\\perp MN$이고\n$MK=\\sqrt2$이다.\n\n따라서\n$BK=\\sqrt{BM^2-MK^2}$\n$=\\sqrt{20-2}=3\\sqrt2$이다.\n그러므로\n$\\triangle BMN$의 넓이는\n$\\dfrac12\\cdot2\\sqrt2\\cdot3\\sqrt2=6$이다.\n\n$M$에서 $BN$에 내린 수선의 발을 $H$라 하면\n$6=\\dfrac12\\cdot BN\\cdot MH$이므로\n$MH=\\dfrac{6}{\\sqrt5}$이다.\n\n직각삼각형 $BMH$에서\n$BH=\\sqrt{BM^2-MH^2}$\n$=\\sqrt{20-\\dfrac{36}{5}}$\n$=\\dfrac8{\\sqrt5}$이다.\n\n따라서\n$\\cos x^\\circ=\\dfrac{BH}{BM}$\n$=\\dfrac{8/\\sqrt5}{2\\sqrt5}=\\dfrac45$이다.\n정답은 ③이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q13.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "archive/assets/images/24_금당중_2학기_중간_중3_수학/q13-solution.svg"
   },
   {
     "id": 14,
@@ -662,8 +664,8 @@ window.questionBank = [
     "answer": "$13.2$",
     "solution": "빗변과 한 예각이 주어졌으므로 사인과 코사인으로 두 직각변을 각각 구한다.\n$AB=10$은 빗변이고, $x=AC$는 $24^\\circ$의 맞은편 변, $y=BC$는 이웃한 변이다.\n\n$\\sin24^\\circ=\\dfrac{x}{10}$, $\\cos24^\\circ=\\dfrac{y}{10}$을 이용한다.\n\n$\\sin24^\\circ=0.41$이므로 $\\dfrac{x}{10}=0.41$, 따라서 $x=4.1$이다.\n$\\cos24^\\circ=0.91$이므로 $\\dfrac{y}{10}=0.91$, 따라서 $y=9.1$이다.\n그러므로 $x+y=4.1+9.1=13.2$이다.\n따라서 구하는 값은 $13.2$이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q21.png",
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -677,7 +679,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -688,8 +690,8 @@ window.questionBank = [
     "answer": "$2-\\sqrt3$",
     "solution": "먼저 $\\triangle ABD$가 이등변삼각형임을 찾고, $30^\\circ$ 직각삼각형 $ACD$의 변의 길이를 구한다.\n$B$, $D$, $C$는 한 직선 위에 있고 $BD=2$, $\\angle ABC=15^\\circ$, $\\angle ADC=30^\\circ$, $\\angle ACB=90^\\circ$이다.\n\n$\\triangle ABD$의 두 각을 비교하여 $AD$를 구한 뒤, $\\triangle ACD$에서 $AC$, $CD$를 구한다.\n\n$DB$와 $DC$는 서로 반대 방향의 반직선이므로 $\\angle ADB=180^\\circ-30^\\circ=150^\\circ$이다.\n따라서 $\\triangle ABD$에서 $\\angle BAD=180^\\circ-15^\\circ-150^\\circ=15^\\circ$이다.\n$\\angle ABD=\\angle BAD$이므로 그 맞은편 변의 길이가 같아 $AD=BD=2$이다.\n$\\triangle ACD$는 빗변 $AD=2$이고 $\\angle ADC=30^\\circ$인 직각삼각형이므로 $AC=1$, $CD=\\sqrt3$이다.\n따라서 $BC=BD+DC=2+\\sqrt3$이고 $\\tan15^\\circ=\\dfrac{AC}{BC}=\\dfrac{1}{2+\\sqrt3}=2-\\sqrt3$이다.\n따라서 구하는 값은 $2-\\sqrt3$이다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q22.png",
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -703,7 +705,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -714,6 +716,7 @@ window.questionBank = [
     "answer": "B",
     "solution": "원의 중심을 찾을 때는 현의 수직이등분선을 이용한다.\n\n한 조각의 원호 위에 서로 다른 세 점 $P$, $Q$, $R$을 잡는다.\n두 현 $PQ$, $QR$을 긋는다.\n\n현 $PQ$의 수직이등분선을 그린다.\n이 직선은 원래 원의 중심을 지난다.\n\n현 $QR$의 수직이등분선도 그린다.\n이 직선 역시 원래 원의 중심을 지난다.\n\n따라서 두 수직이등분선의 교점이 원의 중심이다.\n교점이 조각의 바깥에 있어도 두 직선을 연장하면 찾을 수 있다.\n\n그러므로 어느 조각을 이용하더라도 중심을 찾을 수 있다고 말한 학생 B가 옳다.",
     "image": "assets/images/24_금당중_2학기_중간_중3_수학/q23.png",
+    "imageSize": "full",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
@@ -730,7 +733,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
