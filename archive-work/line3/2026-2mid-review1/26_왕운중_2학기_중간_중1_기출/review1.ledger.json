@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "JS_ARCHIVE_LINE3_REVIEW1_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW1_DONE_WITH_ITEM_HOLDS",
+  "examId": "26_왕운중_2학기_중간_중1_기출",
+  "reviewedAtKst": "2026-10-01T11:41:02+09:00",
+  "input": {
+    "remoteMainSha": "1af914875e746f4d764e450f4e4f5b1b5bfb3dec",
+    "createBranch": "work/line3/26-wangun-m1-2mid-create-20261001",
+    "createSealedHead": "08203a2015118e84858a8bb780135296a9a2fd50",
+    "createArtifactCommit": "e9ccc307b5510e2b5b31d7f38c8252f87be0cb8d",
+    "createFinalArtifactSha": "eed24bdf0f3e79c2545916d9b63b2bb53cd0ecdd",
+    "sourceAuthority": "codex/archive-2026-2mid-prompt-assets@c6470f313c09c73faa34bbcad73faafb603668e2",
+    "sourceDocumentSha256": "sha256:f64f963b3cb0a6451332e97004546344a99f82c0df581dfc07ec02fa1e1d86e7",
+    "rpmCrosswalkMiddle1Blob": "c58b07b93900bfa85ef4c1d392bea9405717c984",
+    "activeRegistryBlob": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "middle1TaxonomyBlob": "c144374e954c752fa6e0844f9b39cc1470dad97c",
+    "middle1BindingsBlob": "a913efaf7a0f4eeebaf2cbf42a82068392b7c4d6",
+    "r1ProtocolBlob": "2352b23921cad68302c53204baa3837a670c0389"
+  },
+  "denominator": {
+    "questionCount": 23,
+    "sourcePageCount": 4,
+    "problemAssetCount": 18,
+    "inputSolutionSvgCount": 5,
+    "activeSolutionSvgCount": 7
+  },
+  "audits": {
+    "sourceContentChoices": "23/23 PASS",
+    "answerIndependentSolve": "22/23 PASS; q3 ITEM_HOLD",
+    "mathSolution": "22/23 PASS_AFTER_REPAIR; q3 ITEM_HOLD",
+    "smallBoard": "22/23 PASS_AFTER_REPAIR; q3 ITEM_HOLD",
+    "microLayout": "23/23 PASS_GRID_DEFAULT",
+    "metadataFullAudit": "23/23; FINAL 20 / ITEM_HOLD 3",
+    "difficultyFullAudit": "23/23 PASS",
+    "curriculumMethodAuditCount": "23/23; curriculumViolationQids=[]",
+    "visualNecessityAuditCount": "23/23; visualMissingQids=[]",
+    "problemAssets": "18/18 PASS_AFTER_AUDITED_SOURCE_REPAIR",
+    "solutionSvg": "7/7 CODE_FIRST_NUMERIC_GEOMETRY"
+  },
+  "repairs": [
+    {
+      "qid": 12,
+      "type": "MATH_SOLUTION_REPAIR",
+      "detail": "ASA proof corrected to two parallel-line alternate-angle equalities plus included side AC=BD."
+    },
+    {
+      "qids": [
+        2,
+        4,
+        7,
+        15
+      ],
+      "type": "META_REPAIR",
+      "detail": "fresh semantic/cross-concept audit; q4 prism-context mapping removed and true spatial-skew metadata hold recorded."
+    },
+    {
+      "qids": [
+        6,
+        14,
+        17,
+        23
+      ],
+      "type": "AUDITED_SOURCE_REPAIR",
+      "detail": "student handwriting/pencil contamination removed via clean source-semantic SVG; source text and math semantics unchanged."
+    },
+    {
+      "qids": [
+        9,
+        13,
+        21,
+        22,
+        23
+      ],
+      "type": "SOLUTION_SVG_REBUILD",
+      "detail": "existing SVG coordinates rebuilt so displayed angles, ratios, and geometry hold in the actual numeric model."
+    },
+    {
+      "qids": [
+        7,
+        14
+      ],
+      "type": "SOLUTION_VISUAL_ADD",
+      "detail": "added visual support for invariant rectangle area and xy<8 lattice-point count."
+    }
+  ],
+  "repairedProblemAssets": {
+    "q6": "0c450e8a05f6d163df03e68beb74d218b3534de1",
+    "q14": "8e66e9326c21c323afac8846ba08667b2948dd54",
+    "q17": "37958fe3f9ba490254371122461f3090a50dbebe",
+    "q23": "6afcb01a8d52577e7296ce1e1ddeac2e4c30e59f"
+  },
+  "solutionSvgBlobs": {
+    "q7": "fd9b7b33da8209582f946e8cb239507e075ab4e0",
+    "q9": "f17d68cdb61756f0a241336dfded3568fe8e8f67",
+    "q13": "226c38e1d9d25bec876be2cc88044872037fc201",
+    "q14": "d1afd85c7c78b4575a188aa0885de91f2b1c18fa",
+    "q21": "ea6ea5c33c4dfadc1412cb614f6128231170eae4",
+    "q22": "c98947d8d3dcbc90dacc0d785abeaf57d777a7e4",
+    "q23": "635fb36c198d08aefae6190663bd1f54074d4b4f"
+  },
+  "itemHolds": [
+    {
+      "qid": 3,
+      "reasons": [
+        "SOURCE_CHOICE_SET_HAS_MULTIPLE_TRUE_OPTIONS",
+        "NO_EXACT_RPM_L4_FOR_CONGRUENCE_CORRESPONDENCE"
+      ],
+      "repairAttempted": true,
+      "authorityLookupAttempted": true,
+      "whyImpossible": "Congruence statement makes choices 2 and 5 both true; changing source or answer would invent evidence.",
+      "nextEvidence": "corrected original source or official key; exact RPM L4 if metadata closure is required"
+    },
+    {
+      "qid": 4,
+      "reasons": [
+        "NO_EXACT_RPM_L4_FOR_SKEW_LINE_LINE_RELATION_IN_SPACE"
+      ],
+      "repairAttempted": true,
+      "authorityLookupAttempted": true,
+      "whyImpossible": "M1-RPM-208 is prism context and M1-RPM-179 is plane-only line relation; no exact current RPM owner for spatial skew lines.",
+      "nextEvidence": "authoritative RPM L4/crosswalk for spatial two-line skew relation"
+    },
+    {
+      "qid": 16,
+      "reasons": [
+        "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
+      ],
+      "repairAttempted": true,
+      "authorityLookupAttempted": true,
+      "whyImpossible": "Item independently spans straight angle, vertical angles, spatial nonintersection, perpendicular bisector, and corresponding-angle conditions.",
+      "nextEvidence": "authoritative multi-L4 claim-audit primary rule or exact RPM owner"
+    }
+  ],
+  "metadataRepairs": {
+    "q2": {
+      "crossConceptKeys": [
+        "PT_M1_CONGRUENCE_UNIQUENESS"
+      ]
+    },
+    "q4": {
+      "standardUnitKey": "M1-05",
+      "subUnitKey": "M1-05-POSITION_RELATION",
+      "rpmPrimaryRecordId": "",
+      "projection": "ITEM_HOLD"
+    },
+    "q7": {
+      "crossConceptKeys": [
+        "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION"
+      ]
+    },
+    "q15": {
+      "crossConceptKeys": [
+        "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      ]
+    }
+  },
+  "difficultyDistribution": {
+    "B1": 4,
+    "B2": 9,
+    "B3": 6,
+    "B4": 4,
+    "B5": 0,
+    "UNKNOWN": 0
+  },
+  "outputFinalArtifactSha": "8ba59d4a5c0cae47f465d6eea9a1a570b2a35227",
+  "itemHoldCount": 3,
+  "itemHoldIds": [
+    3,
+    4,
+    16
+  ],
+  "sourceMutation": false,
+  "mainMutation": false,
+  "nextOwner": "LINE3 REVIEW2",
+  "notes": [
+    "No exam-level HOLD/BLOCK/PENDING.",
+    "R3 PASS required before FINAL/MAIN."
+  ]
+}
