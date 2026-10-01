@@ -45,7 +45,7 @@ TARGETED evidence: `reentryMode=TARGETED`, `r3FailurePacketRef`, `repairQids[]`,
 `CURRICULUM_FAIL`이면 해당 학년·과목 허용 method로 solution을 다시 쓰고 전체 시험지 curriculum N/N을 닫는다.
 `SOLUTION_VISUAL_MISSING`이면 필요한 visual을 제작/수리하고 전체 시험지 visual necessity N/N을 닫는다.
 
-## CURRENT — R3 FAIL REENTRY: R1 REOPEN CONTRACT (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAIL REENTRY: R1 REOPEN CONTRACT (2026-10-01)
 
 R3가 student-facing/release 결함을 발견하면 R3에서 산출물을 직접 고쳐 PASS로 닫지 않는다. 반드시 물리 `R3_FAIL_PACKET`과 함께 이 R1으로 되돌린다.
 
