@@ -24,7 +24,7 @@ Use only the SOPs that match the current task. A skill never widens scope or gra
 Project-specific Codex skills are canonical repository files and must be
 reviewed and changed in the active Git branch. The inventory is maintained in
 tools/skills/manifest.json; verify the current worktree before starting a
-**skill-dependent** task:
+skill-dependent task:
 
     git fetch origin main
     node tools/skills/verify-skills.mjs
@@ -32,14 +32,6 @@ tools/skills/manifest.json; verify the current worktree before starting a
 Do not treat a host-global skill installation as the source of truth for this
 repository. Keep each skill's SKILL.md, references, scripts, and UI metadata
 together in its declared canonical directory.
-
-### Archive exam skill boundary
-
-`.codex/skills/apmath-archive-exams/SKILL.md` is **not a default pre-read for ordinary existing-exam work**.
-
-If an Archive JS already exists and the user/current lane already assigns CREATE, REVIEW1, REVIEW2, BATCH, FINAL, repair, solution, layout, image, SVG, Meta, or difficulty work, go directly from the current instruction/Notion CURRENT/latest main to the target source/JS and only the directly applicable canonical rules.
-
-Use `apmath-archive-exams` only for genuine route ambiguity, true first-time original-exam import, shared system/pipeline work, explicit legacy R2E recovery, or explicit user invocation.
 
 ## Rules
 

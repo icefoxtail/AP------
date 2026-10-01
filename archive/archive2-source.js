@@ -111,9 +111,6 @@
           "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket",
           "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "tagConfidence",
           "tagStatus", "reviewStatus", "metadataRevision", "defaultSelectable"]);
-        const metaV2Sidecar = String(record.metadataRevision || "").startsWith(
-          "meta-foundation:MIDDLE_RECERT_2026-09-30_META_V2:meta-review2-v1",
-        );
         for (const field of core?.META_FIELDS || [
           "curriculumKey",
           "courseKey",
@@ -138,8 +135,7 @@
             question[field] !== null &&
             String(question[field]).trim() !== "" &&
             JSON.stringify(question[field]) !== JSON.stringify(record[field]) &&
-            !optionalFields.has(field) &&
-            !metaV2Sidecar
+            !optionalFields.has(field)
           )
             throw new Error("source metadata 충돌: " + field);
           if (record[field] !== undefined) result[field] = record[field];

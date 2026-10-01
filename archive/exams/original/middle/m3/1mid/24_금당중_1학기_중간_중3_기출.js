@@ -1,4 +1,5 @@
 window.examTitle = "24_금당중_1학기_중간_중3_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -29,7 +30,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 제곱근의 뜻과 기호 $\\sqrt{a}$의 값을 구별한다.\n① 음수 $-4$는 실수 범위에서 제곱근이 없다. ② $5$의 제곱근은 $\\pm\\sqrt5$이고, $\\sqrt5$는 그중 양의 값이다. ③ 음수는 실수인 제곱근이 없으므로 항상 2개가 아니다. ④ $\\sqrt9=3$이다. ⑤ $6^2=36$이므로 $6$은 $36$의 양의 제곱근이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 제곱근의 뜻과 루트 기호의 뜻을 구분한다.\\n① $-4$는 실수인 제곱근을 가지지 않으므로 옳지 않다.\\n② $\\pm\\sqrt{5}$는 $5$의 제곱근이지 '제곱근 $5$'가 아니다.\\n③ 음수는 실수인 제곱근이 없으므로 모든 정수의 제곱근이 2개인 것은 아니다.\\n④ $\\sqrt{9}$는 $9$의 양의 제곱근이므로 $3$이다.\\n⑤ $6^2=36$ 이므로 $6$은 $36$의 양의 제곱근이다.\\n따라서 정답은 ⑤이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -64,7 +65,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "[키포인트] 각 식에 근호의 계산 성질을 직접 적용한다.\n① 서로 다른 근호는 바로 합칠 수 없다. ② $\\sqrt3\\times\\sqrt5=\\sqrt{15}$이다. ③ $\\sqrt{12}=2\\sqrt3$이다. ④ $\\sqrt{12}\\div\\sqrt2=\\sqrt6$이다. ⑤ $-\\sqrt{(-2)^2}=-2$이다.\n따라서 옳은 것은 ④이다.",
+    "solution": "[키포인트] 근호의 덧셈, 곱셈, 나눗셈 성질을 정확히 적용한다.\\n① $\\sqrt{2}+\\sqrt{3}$은 서로 다른 근호이므로 합쳐지지 않는다.\\n② $\\sqrt{3}\\times\\sqrt{5}=\\sqrt{15}$ 이다.\\n③ $\\sqrt{12}=\\sqrt{4\\times 3}=2\\sqrt{3}$ 이다.\\n④ $\\sqrt{12}\\div\\sqrt{2}=\\sqrt{\\dfrac{12}{2}}=\\sqrt{6}$ 이므로 옳다.\\n⑤ $-\\sqrt{(-2)^2}=-\\sqrt{4}=-2$ 이다.\\n따라서 정답은 ④이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -98,7 +99,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "[키포인트] '양의 제곱근'과 '음의 제곱근'을 한 단계씩 해석한다.\n$\\sqrt{81}=9$이므로 $9$의 양의 제곱근은 $a=3$이다. $4$의 양의 제곱근은 $b=2$이고, $(-5)^2=25$의 음의 제곱근은 $c=-5$이다.\n따라서 $a+b+c=3+2-5=0$이므로 정답은 ①이다.",
+    "solution": "[키포인트] 양의 제곱근과 음의 제곱근을 각각 구분하여 구한다.\\n$\\sqrt{81}=9$ 이므로 $9$의 양의 제곱근은 $3$이다. 따라서 $a=3$이다.\\n$4$의 양의 제곱근은 $2$이므로 $b=2$이다.\\n$(-5)^2=25$ 이고 $25$의 음의 제곱근은 $-5$이므로 $c=-5$이다.\\n따라서 $a+b+c=3+2-5=0$이다.\\n정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -132,7 +133,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 양수끼리는 제곱하여 비교하거나 같은 항을 소거한다.\n① $(3\\sqrt2)^2=18>17$이므로 부등호가 반대이다. ② $\\sqrt2<2$이므로 $1+\\sqrt2<3$이다. ③ $\\sqrt7>\\sqrt5$이므로 부등호가 반대이다. ④ $\\sqrt{15}<4$이므로 $\\sqrt6+4>\\sqrt6+\\sqrt{15}$이다. ⑤ $1+\\sqrt5<-1+2\\sqrt5$는 $2<\\sqrt5$와 같고 참이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 근삿값이나 같은 수를 더하고 빼는 방법으로 대소를 비교한다.\\n① $3\\sqrt{2}\\approx 4.24$, $\\sqrt{17}\\approx 4.12$ 이므로 거짓이다.\\n② $1+\\sqrt{2}\\approx 2.41$ 이므로 거짓이다.\\n③ $\\sqrt{7}>\\sqrt{5}$ 이므로 $\\sqrt{7}-2>\\sqrt{5}-2$ 이다.\\n④ 양변에서 $\\sqrt{6}$을 빼면 $4<\\sqrt{15}$ 인데, $\\sqrt{15}\\approx 3.87$ 이므로 거짓이다.\\n⑤ 좌변은 약 $3.24$, 우변은 약 $3.47$이므로 참이다.\\n따라서 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -162,7 +163,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "[키포인트] 모눈에서 정사각형 한 변의 길이를 구한 뒤 그 길이를 수직선에 옮긴다.\n그림에서 $A$는 수직선의 $1$에 있고, 정사각형의 한 변은 가로 2, 세로 1인 이동으로 이어지므로 길이는 $\\sqrt{2^2+1^2}=\\sqrt5$이다.\n$AP=AQ=\\sqrt5$이므로 $P,Q$가 나타내는 수는 각각 $1-\\sqrt5$, $1+\\sqrt5$이다.\n따라서 곱은 $(1-\\sqrt5)(1+\\sqrt5)=1-5=-4$이므로 정답은 ①이다.",
+    "solution": "[키포인트] 모눈의 좌표를 이용해 정사각형의 한 변의 길이를 구하고, 그 길이를 수직선에 옮긴다.\\n그림에서 점 $A$를 $(1,0)$이라 보고 점 $B$, $D$의 위치를 읽으면 $\\overline{AB}=\\overline{AD}=\\sqrt{5}$이다.\\n또 $\\overline{AB}=\\overline{AP}$ 이고 $\\overline{AD}=\\overline{AQ}$ 이므로 점 $P$, $Q$가 나타내는 수는 각각 $1-\\sqrt{5},\\ 1+\\sqrt{5}$이다.\\n따라서 그 곱은 $(1-\\sqrt{5})(1+\\sqrt{5})=1-5=-4$이다.\\n정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -197,7 +198,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] $b^2$의 값을 먼저 구한다.\n$b=\\sqrt3$이므로 $b^2=3$이다. 따라서 $ab^2=\\sqrt2\\cdot3=3\\sqrt2$이다.\n정답은 ③이다.",
+    "solution": "[키포인트] $a,b$를 제곱하여 값을 만든다.\\n$a=\\sqrt{2}$, $b=\\sqrt{3}$ 이므로 $b^2=3$이다.\\n따라서 $ab^2=\\sqrt{2}\\times 3=3\\sqrt{2}$이다.\\n그러므로 바르게 나타낸 것은 $ab^2$이다.\\n정답은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -231,7 +232,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "solution": "[키포인트] 각 항을 가장 간단한 근호 꼴로 고친 뒤 동류근호를 더한다.\n$\\sqrt{75}=5\\sqrt3$, $\\dfrac3{\\sqrt3}=\\sqrt3$, $\\sqrt6\\times\\sqrt2=\\sqrt{12}=2\\sqrt3$이다.\n따라서 $5\\sqrt3+\\sqrt3+2\\sqrt3=8\\sqrt3$이므로 정답은 ①이다.",
+    "solution": "[키포인트] 각 항을 간단히 하여 같은 근호끼리 더한다.\\n$\\sqrt{75}=\\sqrt{25\\times 3}=5\\sqrt{3}$\\n$\\dfrac{3}{\\sqrt{3}}=\\sqrt{3}$\\n$\\sqrt{6}\\times\\sqrt{2}=\\sqrt{12}=2\\sqrt{3}$\\n따라서 $5\\sqrt{3}+\\sqrt{3}+2\\sqrt{3}=8\\sqrt{3}$이다.\\n정답은 ①이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -265,7 +266,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] $m,n$을 각각 따로 구한다.\n$\\sqrt{1000}=\\sqrt{100\\cdot10}=10\\sqrt{10}$이므로 $m=10$이다.\n또 $n=\\dfrac{\\sqrt{0.1}}{\\sqrt{10}}=\\sqrt{0.01}=\\dfrac1{10}$이다.\n따라서 $mn=10\\cdot\\dfrac1{10}=1$이므로 정답은 ③이다.",
+    "solution": "[키포인트] $m,n$을 각각 구한 뒤 곱한다.\\n$\\sqrt{1000}=\\sqrt{100\\times 10}=10\\sqrt{10}$ 이므로 $m=10$이다.\\n또 $\\dfrac{\\sqrt{0.1}}{\\sqrt{10}}=\\sqrt{\\dfrac{0.1}{10}}=\\sqrt{0.01}=0.1=\\dfrac{1}{10}$ 이므로 $n=\\dfrac{1}{10}$이다.\\n따라서 $mn=10\\times\\dfrac{1}{10}=1$이다.\\n정답은 ③이다.",
     "level": "하",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -302,7 +303,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] $50-x$가 0 이상인 완전제곱수가 되어야 한다.\n$50$ 이하의 완전제곱수는 $0,1,4,9,16,25,36,49$이다. 이에 대응하는 $x$는 $50,49,46,41,34,25,14,1$로 모두 자연수이다.\n따라서 가능한 $x$는 8개이므로 정답은 ⑤이다.",
+    "solution": "[키포인트] $50-x$가 0 이상인 완전제곱수가 되도록 한다.\\n$\\sqrt{50-x}$가 정수가 되려면 $50-x$는 0 이상인 완전제곱수여야 한다.\\n$50$보다 작거나 같은 완전제곱수는 $0,1,4,9,16,25,36,49$이다.\\n각각에 대해 $x=50-(50-x)$로 정하면 $x=50,49,46,41,34,25,14,1$이고 모두 자연수이다.\\n따라서 가능한 자연수 $x$의 개수는 8개이다.\\n정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -337,7 +338,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 먼저 $a,b$의 부호를 정한다.\n$ab<0$이므로 두 수의 부호는 다르고, $a<b$이므로 $a<0<b$이다.\n따라서 $\\sqrt{9a^2}=3|a|=-3a$, $\\sqrt{4b^2}=2|b|=2b$이다.\n그러므로 주어진 식은 $-3a+2b$이고 정답은 ③이다.",
+    "solution": "[키포인트] $ab\\lt 0$과 $a\\lt b$에서 두 수의 부호를 판단한다.\\n$ab\\lt 0$ 이므로 $a,b$는 부호가 서로 다르다. 또 $a\\lt b$ 이므로 $a$는 음수, $b$는 양수이다.\\n즉 $a\\lt 0$, $b\\gt 0$이다.\\n$\\sqrt{9a^2}=3|a|=-3a$, $\\sqrt{4b^2}=2|b|=2b$이다.\\n따라서 $\\sqrt{9a^2}+\\sqrt{4b^2}=-3a+2b$이다.\\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -367,7 +368,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "solution": "[키포인트] 세 정사각형의 전체 둘레에서 서로 붙은 변을 두 번씩 뺀다.\n넓이가 $5,45,20$이므로 세 정사각형의 한 변은 각각 $\\sqrt5,3\\sqrt5,2\\sqrt5$ cm이다. 세 둘레의 합은 $4(\\sqrt5+3\\sqrt5+2\\sqrt5)=24\\sqrt5$ cm이다.\n그림에서 붙어 있는 변의 길이는 $\\sqrt5$와 $2\\sqrt5$이므로 $2(\\sqrt5+2\\sqrt5)=6\\sqrt5$ cm를 뺀다.\n따라서 둘레는 $18\\sqrt5$ cm이고 정답은 ④이다.",
+    "solution": "[키포인트] 넓이로부터 각 정사각형의 한 변의 길이를 구한 뒤, 바깥 둘레만 더한다.\\n넓이가 각각 $5\\mathrm{cm}^2$, $45\\mathrm{cm}^2$, $20\\mathrm{cm}^2$ 이므로 한 변의 길이는 각각 $\\sqrt{5}\\mathrm{cm}$, $3\\sqrt{5}\\mathrm{cm}$, $2\\sqrt{5}\\mathrm{cm}$ 이다.\\n세 정사각형의 둘레의 합은 $4\\sqrt{5}+12\\sqrt{5}+8\\sqrt{5}=24\\sqrt{5}$cm이다.\\n서로 붙어 있는 부분은 왼쪽에서 $\\sqrt{5}$cm, 오른쪽에서 $2\\sqrt{5}$cm 이므로, 이 길이들은 둘레 계산에서 두 번씩 포함되었다.\\n따라서 $24\\sqrt{5}-2(\\sqrt{5}+2\\sqrt{5})=24\\sqrt{5}-6\\sqrt{5}=18\\sqrt{5}$이다.\\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -402,7 +403,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 가운데항이 같은 완전제곱식과 상수항을 비교한다.\n$(x+4)(x+8)+k=x^2+12x+32+k$이다. $x^2+12x$를 포함하는 완전제곱식은 $(x+6)^2=x^2+12x+36$이다.\n따라서 $32+k=36$에서 $k=4$이므로 정답은 ④이다.",
+    "solution": "[키포인트] 식을 전개한 뒤 완전제곱꼴과 비교한다.\\n$(x+4)(x+8)+k=x^2+12x+32+k$이다.\\n이 식이 완전제곱식이 되려면 $x^2+12x+32+k=(x+6)^2=x^2+12x+36$이어야 한다.\\n따라서 $32+k=36$이므로 $k=4$이다.\\n정답은 ④이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -438,7 +439,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 전개하여 $ab=24$, $a+b=k$를 이용한다.\n$ab=24$인 정수쌍에서 가능한 합은 $25,14,11,10,-10,-11,-14,-25$이다.\n보기 중 이 목록에 없는 값은 $-5$이므로 정답은 ③이다.",
+    "solution": "[키포인트] 전개하여 $a+b=k$, $ab=24$의 관계를 이용한다.\\n$(x+a)(x+b)=x^2+(a+b)x+ab$이므로 $a+b=k$, $ab=24$이다.\\n$ab=24$를 만족하는 정수쌍은 $(1,24),(2,12),(3,8),(4,6),(-1,-24),(-2,-12),(-3,-8),(-4,-6)$이다.\\n따라서 가능한 $k$값은 $25,14,11,10,-25,-14,-11,-10$이다.\\n보기 중 될 수 없는 값은 $-5$이다.\\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -475,7 +476,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 합의 제곱 공식을 이용한다.\n$(\\sqrt5+3)^2=5+6\\sqrt5+9=14+6\\sqrt5$이다.\n따라서 $a=14$, $b=6$이고 $a+b=20$이므로 정답은 ③이다.",
+    "solution": "[키포인트] 완전제곱 공식을 이용해 전개한다.\\n$(\\sqrt{5}+3)^2=(\\sqrt{5})^2+2\\cdot\\sqrt{5}\\cdot 3+3^2$이다.\\n$=5+6\\sqrt{5}+9=14+6\\sqrt{5}$이다.\\n따라서 $a=14$, $b=6$이므로 $a+b=20$이다.\\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -510,7 +511,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 먼저 공통인수로 묶는다.\n$3x^2-6xy=3x(x-2y)$이다. 따라서 $x$, $3x$, $x-2y$는 모두 인수이고, $x^2-2xy=x(x-2y)$도 전체 식을 $3$배하면 원래 식이 되므로 인수이다.\n반면 $3x-2y$는 이 식의 인수가 아니다. 따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 공통인수로 먼저 묶어 본다.\\n$3x^2-6xy=3x(x-2y)$이다.\\n따라서 $x$, $3x$, $x-2y$는 모두 인수이다.\\n또 $x^2-2xy=x(x-2y)$이므로 이것도 인수이다.\\n반면 $3x-2y$는 $3x(x-2y)$의 인수가 아니다.\\n따라서 인수가 아닌 것은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -519,16 +520,16 @@ window.questionBank = [
   },
   {
     "id": 16,
-    "content": "다항식 $3x^2+5x-2$를 $(x+a)(3x+b)$로 인수분해할 때, 정수 $a,b$에 대하여 $a+b$의 값은? [4점]",
+    "content": "$2x^2-x-3=(x+a)(2x+b)$일 때, $a+b$의 값은? [4점]",
     "choices": [
+      "-2",
       "-1",
+      "0",
       "1",
-      "2",
-      "3",
-      "5"
+      "2"
     ],
-    "answer": "②",
-    "category": "인수분해와 계수 비교",
+    "answer": "①",
+    "category": "다항식의 곱셈과 인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-02",
@@ -540,16 +541,19 @@ window.questionBank = [
       "객관식",
       "다항식",
       "인수분해",
+      "전개",
       "계수비교",
-      "정수조건"
+      "정수조건",
+      "조건해석",
+      "계산"
     ],
     "wide": false,
-    "solution": "전개하면 $(x+a)(3x+b)=3x^2+(3a+b)x+ab$이다.\n계수를 비교하면 $ab=-2$, $3a+b=5$이다.\n곱이 $-2$인 정수쌍은 $(a,b)=(1,-2),(2,-1),(-1,2),(-2,1)$이다.\n각 순서쌍에서 $3a+b$를 계산하면 $1,5,-1,-5$이다. 따라서 조건을 만족하는 것은 $(2,-1)$뿐이다.\n그러므로 $a+b=1$이고, 정답은 ②이다.",
+    "solution": "[키포인트] 우변을 전개하여 계수를 비교한다.\\n$(x+a)(2x+b)=2x^2+(b+2a)x+ab$이다.\\n이 식이 $2x^2-x-3$와 같으므로 $ab=-3$, $b+2a=-1$이다.\\n$ab=-3$을 만족하는 정수쌍 중 $a=1$, $b=-3$이면 $b+2a=-3+2=-1$이므로 조건을 만족한다.\\n따라서 $a+b=1+(-3)=-2$이다.\\n정답은 ①이다.",
     "level": "중",
-    "subUnitKey": "M3-02-FACTORIZATION",
-    "subUnit": "인수분해",
-    "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+    "subUnit": "다항식의 곱셈",
+    "subUnitConfidence": "existing_preserved",
+    "subUnitClassificationDepth": "complete_documented"
   },
   {
     "id": 17,
@@ -580,7 +584,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 공통인수 $xy$로 묶는다.\n$x^2y-xy^2=xy(x-y)$이다. $xy=(\\sqrt2+\\sqrt3)(\\sqrt2-\\sqrt3)=2-3=-1$이고, $x-y=2\\sqrt3$이다.\n따라서 값은 $(-1)(2\\sqrt3)=-2\\sqrt3$이므로 정답은 ②이다.",
+    "solution": "[키포인트] 공통인수 $xy$를 묶는다.\\n$x^2y-xy^2=xy(x-y)$이다.\\n먼저 $xy=(\\sqrt{2}+\\sqrt{3})(\\sqrt{2}-\\sqrt{3})=2-3=-1$이다.\\n또 $x-y=(\\sqrt{2}+\\sqrt{3})-(\\sqrt{2}-\\sqrt{3})=2\\sqrt{3}$이다.\\n따라서 $xy(x-y)=(-1)(2\\sqrt{3})=-2\\sqrt{3}$이다.\\n정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -615,7 +619,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] 식을 인수분해하고 소수가 되기 위한 곱의 조건을 본다.\n$n^2-10n-56=(n-14)(n+4)$이다. 자연수 $n\\le14$이면 값이 양의 소수가 될 수 없고, $n\\ge15$이면 두 인수가 양의 정수이다.\n곱이 소수가 되려면 작은 인수 $n-14=1$이어야 하므로 $n=15$이다. 이때 값은 $1\\cdot19=19$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 식을 인수분해하여 소수가 되기 위한 경우를 찾는다.\\n$n^2-10n-56=(n-14)(n+4)$이다.\\n자연수 $n$에 대하여 $n+4$는 1보다 큰 자연수이다.\\n이 값이 소수가 되려면 $n-14=1$이어야 한다.\\n따라서 $n=15$이다.\\n이때 $(n-14)(n+4)=1\\times19=19$이므로 소수는 $19$이다.\\n정답은 ⑤이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -651,7 +655,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "[키포인트] 가운데 수 155를 기준으로 곱을 합과 차의 곱으로 만든다.\n$11\\cdot14=154$, $12\\cdot13=156$이므로 $11\\cdot12\\cdot13\\cdot14+1=154\\cdot156+1=(155-1)(155+1)+1=155^2$이다.\n따라서 제곱근의 값은 $155$이고 정답은 ⑤이다.",
+    "solution": "[키포인트] $(a-1)a(a+1)(a+2)+1$ 꼴을 이용한다.\\n$11\\times 12\\times 13\\times 14+1$에서 $12\\times 13=156$, $11\\times 14=154$이다.\\n따라서 $11\\times 12\\times 13\\times 14+1=156\\times154+1=(155+1)(155-1)+1$이다.\\n$=155^2-1+1=155^2$이므로 $\\sqrt{11\\times 12\\times 13\\times 14+1}=155$이다.\\n정답은 ⑤이다.",
     "level": "상",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -685,7 +689,7 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "solution": "[키포인트] $x^4-y^4$를 합과 차로 인수분해한다.\n$x^4-y^4=(x-y)(x+y)(x^2+y^2)$이다. 또 $x^2+y^2=\\dfrac{(x+y)^2+(x-y)^2}{2}=\\dfrac{3+2}{2}=\\dfrac52$이다.\n따라서 $x^4-y^4=\\sqrt2\\cdot\\sqrt3\\cdot\\dfrac52=\\dfrac{5\\sqrt6}{2}$이므로 정답은 ③이다.",
+    "solution": "[키포인트] $x^4-y^4=(x^2-y^2)(x^2+y^2)$를 이용한다.\\n먼저 $x^2-y^2=(x+y)(x-y)=\\sqrt{3}\\cdot\\sqrt{2}=\\sqrt{6}$이다.\\n또 $(x+y)^2=x^2+2xy+y^2=3$, $(x-y)^2=x^2-2xy+y^2=2$이다.\\n두 식을 더하면 $2(x^2+y^2)=5$이므로 $x^2+y^2=\\dfrac{5}{2}$이다.\\n따라서 $x^4-y^4=(x^2-y^2)(x^2+y^2)=\\sqrt{6}\\cdot\\dfrac{5}{2}=\\dfrac{5\\sqrt{6}}{2}$이다.\\n정답은 ③이다.",
     "level": "상",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -709,7 +713,7 @@ window.questionBank = [
       "서술형"
     ],
     "wide": false,
-    "solution": "[키포인트] 어떤 수를 제곱하여 25가 되는 수를 찾는다.\n어떤 수를 제곱하여 $a$가 될 때 그 수를 $a$의 제곱근이라고 한다.\n$5^2=(-5)^2=25$이므로 25의 제곱근은 $5$와 $-5$이다.",
+    "solution": "[키포인트] 제곱근의 뜻과 $25$를 제곱하여 되는 수를 찾는다.\\n어떤 수를 제곱하여 $a$가 될 때, 그 수를 $a$의 제곱근이라고 한다.\\n$5^2=25$, $(-5)^2=25$ 이므로 $25$의 제곱근은 $5$와 $-5$이다.\\n따라서 답은 $5$와 $-5$이다.",
     "level": "하",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -728,12 +732,12 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형"
     ],
     "wide": false,
-    "solution": "[키포인트] 두 식을 각각 완전히 인수분해한 뒤 공통된 인수를 찾는다.\n$4x^2-36=4(x^2-9)=4(x-3)(x+3)$, $2x^2-3x-9=(2x+3)(x-3)$이다.\n따라서 두 다항식의 공통인수는 $x-3$이다.",
+    "solution": "[키포인트] 두 식을 각각 인수분해한 뒤 공통인수를 찾는다.\\n먼저 $4x^2-36=4(x^2-9)=4(x-3)(x+3)$이다.\\n또 $2x^2-3x-9=2x^2+3x-6x-9=x(2x+3)-3(2x+3)=(2x+3)(x-3)$이다.\\n따라서 두 식의 공통인수는 $x-3$이다.",
     "level": "중",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
@@ -752,12 +756,12 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형"
     ],
     "wide": false,
-    "solution": "[키포인트] A와 B를 각각 간단히 한 뒤 더한다.\n$A=\\sqrt{15}+4\\sqrt3-\\sqrt{75}+2\\sqrt{15}=3\\sqrt{15}-\\sqrt3$이다. $B=\\sqrt3-3\\sqrt3=-2\\sqrt3$이다.\n따라서 $A+B=3\\sqrt{15}-3\\sqrt3$이다.",
+    "solution": "[키포인트] A와 B를 각각 간단히 한 뒤 더한다.\\n먼저 $A=\\sqrt{3}(\\sqrt{5}+4)-\\sqrt{5}(\\sqrt{15}-2\\sqrt{3})$이다.\\n$=\\sqrt{15}+4\\sqrt{3}-(\\sqrt{75}-2\\sqrt{15})$\\n$=\\sqrt{15}+4\\sqrt{3}-(5\\sqrt{3}-2\\sqrt{15})$\\n$=3\\sqrt{15}-\\sqrt{3}$이다.\\n또 $B=\\sqrt{18}\\div\\sqrt{6}-3\\sqrt{3}=\\sqrt{\\dfrac{18}{6}}-3\\sqrt{3}=\\sqrt{3}-3\\sqrt{3}=-2\\sqrt{3}$이다.\\n따라서 $A+B=(3\\sqrt{15}-\\sqrt{3})+(-2\\sqrt{3})=3\\sqrt{15}-3\\sqrt{3}$이다.\\n정답은 $3\\sqrt{15}-3\\sqrt{3}$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -776,12 +780,12 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형"
     ],
     "wide": false,
-    "solution": "[키포인트] 두 분모를 각각 켤레식으로 유리화한다.\n$x=\\dfrac{3+2\\sqrt2}{9-8}=3+2\\sqrt2$, $y=3-2\\sqrt2$이다.\n따라서 $x^2-y^2=(x-y)(x+y)=(4\\sqrt2)(6)=24\\sqrt2$이다.",
+    "solution": "[키포인트] 분모를 유리화한 뒤 곱셈공식 $x^2-y^2=(x-y)(x+y)$를 이용한다.\\n먼저 $x=\\dfrac{1}{3-2\\sqrt{2}}\\times\\dfrac{3+2\\sqrt{2}}{3+2\\sqrt{2}}=\\dfrac{3+2\\sqrt{2}}{9-8}=3+2\\sqrt{2}$이다.\\n$y=\\dfrac{1}{3+2\\sqrt{2}}\\times\\dfrac{3-2\\sqrt{2}}{3-2\\sqrt{2}}=\\dfrac{3-2\\sqrt{2}}{9-8}=3-2\\sqrt{2}$이다.\\n이제 $x^2-y^2=(x-y)(x+y)$이므로 $x-y=4\\sqrt{2}$, $x+y=6$이다.\\n따라서 $x^2-y^2=(4\\sqrt{2})(6)=24\\sqrt{2}$이다.\\n정답은 $24\\sqrt{2}$이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",

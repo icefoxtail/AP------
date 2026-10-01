@@ -1,15 +1,13 @@
 # JS Archive R2E Intake → Main 운영계약 v3 — Repair & Release
 
-status: LEGACY / SUPERSEDED FOR NEW CURRENT PRODUCTION (2026-09-30)
+status: ACTIVE
 effective: 2026-09-28
-scope: frozen legacy READY_FOR_R2E cohort / 과거 receipt·checkpoint 복구 전용
-historical lineage: superseded v1/v2; current new production authority is Archive_GPT_Artifact_First_Lightweight_v1.md
+scope: 중2·중3 Git intake의 R1 HOLD 집계, 기존 Meta 매핑, 대상 문항 수리, 시험지별 release
+supersedes: JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md and the interim contract-version v2 for new R2E runs
 
 ---
 
-> **CURRENT OVERRIDE — 2026-09-30:** `MIDDLE_RECERT_2026-09-30_META_V2`의 신규/재인증 생산은 이 R2E lifecycle을 사용하지 않는다. 현재 기존 시험지 경로는 `CREATE → REVIEW1 → REVIEW2 → BATCH/FINAL → MAIN`이며 held qid는 REVIEW2 lane의 `ITEM_RECOVERY_QUEUE`가 소비한다. 이 문서는 이미 frozen된 legacy READY_FOR_R2E artifact를 복구·해석할 때만 사용한다.
-
-## 0. LEGACY upstream CREATE/R1 boundary
+## 0. Upstream CREATE/R1 boundary
 
 This contract supersedes the prior R2E release gate while retaining current CREATE/R1 and visual requirements for newly produced inputs.
 

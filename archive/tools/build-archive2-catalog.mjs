@@ -24,9 +24,6 @@ const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r
 const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
 const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
-const metaV2SidecarRevision = value => String(value || "").startsWith(
-  "meta-foundation:MIDDLE_RECERT_2026-09-30_META_V2:meta-review2-v1"
-);
 const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const taxonomy = core.taxonomyPaths(JSON.parse(read(masterFile)));
@@ -163,7 +160,6 @@ for (const exam of exams) {
       meta.sourceOrdinal === ordinal;
     const directNode = validJoin && paths.get(core.pathKey(meta));
     const foundationScoped = meta?.metadataRevision?.startsWith("meta-foundation:");
-    const metaV2Sidecar = metaV2SidecarRevision(meta?.metadataRevision);
     const foundationPresent = foundationScoped && Boolean(meta?.problemTypeKey || meta?.templateKey);
     const template = meta?.templateKey ? foundationTemplates.get(meta.templateKey) : null;
     const explicitNoTemplateDisposition = ["NO_SEPARATE_L4", "HOLD"].includes(meta?.l4Disposition);
@@ -191,8 +187,7 @@ for (const exam of exams) {
         sourceValue !== null &&
         String(sourceValue).trim() !== "" &&
         value !== undefined &&
-        JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
+        JSON.stringify(sourceValue) !== JSON.stringify(value)
       )
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
@@ -241,8 +236,7 @@ for (const exam of exams) {
         validJoin && meta.sourceFingerprint === fingerprint
           ? "VERIFIED"
           : "HOLD",
-      // RPM Primary semantic confirmation is independent of PT/TPL projection materialization.
-      taxonomyStatus: node ? "CONFIRMED" : "UNKNOWN",
+      taxonomyStatus: node && foundationValid !== false ? "CONFIRMED" : "UNKNOWN",
       ...(foundationScoped ? { foundationTaxonomyStatus: meta?.foundationTaxonomyStatus === "HOLD" ? "HOLD" : (foundationValid === true ? "CONFIRMED" : (meta?.foundationTaxonomyStatus || "HOLD")) } : {}),
       metadataConflicts,
       gradeConflict: false,

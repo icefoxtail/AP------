@@ -1,158 +1,262 @@
-# Archive Stage Authority Continuity v2
+# Archive Authority Write Pending & Candidate Materialization v1
 
-- 호환 경로: `docs/rules/02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md`
 - 상태: **ACTIVE / CURRENT**
-- 적용 시작: **2026-10-01**
-- 적용 대상: JS Archive current-generation CREATE / REVIEW1 / REVIEW2 / BATCH의 stage finalization
-- current middle generation: `MIDDLE_RECERT_2026-09-30_META_V2`
+- 적용 시작: **2026-09-30**
+- 적용 대상: JS Archive current-generation CREATE / REVIEW1 / REVIEW2의 write-finalization 및 recovery
+- current middle generation: `MIDDLE_RECERT_2026-09-29_V1`
 
 ---
 
-## 1. 최상위 원칙 — NO EXAM PENDING
+## 1. 목적
 
-시험지 전체를 멈추는 운영 상태를 만들지 않는다.
+Git/connector write 실패와 candidate 자체의 미물리화를 같은 상태로 취급하지 않는다.
 
-CURRENT에서 다음 상태는 **신규 생성 금지**이며 과거 기록에서만 HISTORY로 읽는다.
+`AUTHORITY_WRITE_PENDING`은 **exact candidate bytes가 이미 Git에 물리 보존되어 있고 authority branch 결속/receipt 마감만 남은 경우**에만 사용한다.
 
-- `AUTHORITY_WRITE_PENDING`
-- `CANDIDATE_MATERIALIZATION_PENDING`
-- `STAGE_REEXECUTION_REQUIRED`
-- 그 밖의 시험지 단위 `*_PENDING` / `*_BLOCKED` / quarantine
+candidate exact bytes가 Git에 없으면 write retry를 반복하지 않고 materialization 상태로 분리한다.
 
-허용되는 미해결 상태는 문항별 `ITEM_HOLD`뿐이다.
-
-Git/connector write 실패는 시험지 상태가 아니라 **artifact 저장 위치 선택 문제**다.
-
----
-
-## 2. Stage authority는 branch 이름이 아니라 exact artifact다
-
-CREATE / REVIEW1 / REVIEW2에서 candidate가 완성되면 그 run 안에서 exact final bytes를 물리 보존한다.
-
-우선순위:
-
-1. 기존 authority branch에 exact final artifact 결속
-2. authority branch write가 막히면 recovery ref/commit/blob에 exact final artifact 보존
-3. exact recovery artifact가 보존되면 **그 artifact 자체를 stage authority로 인정**
-
-primary authority branch에 못 들어갔다는 이유만으로 시험지를 멈추지 않는다.
-
-receipt 최소 필드:
+핵심 원칙:
 
 ```text
-examFile
-stage
-certificationGeneration
-inputArtifactSha
-finalArtifactSha
-authorityLocation = PRIMARY_BRANCH | RECOVERY_REF | RECOVERY_COMMIT | RECOVERY_BLOB
-stageArtifactRef
-changedFiles
-itemHoldCount
-itemHoldQuestionIds[]
+CONTENT/REVIEW COMPLETE
+→ EXACT CANDIDATE MUST EXIST PHYSICALLY IN GIT
+→ AUTHORITY BIND
+→ RECEIPT/EVIDENCE
+→ STAGE CLOSE
 ```
 
-downstream REVIEW는 고정 branch 이름을 가정하지 않고 receipt의 `stageArtifactRef` / `finalArtifactSha`를 읽는다.
+**Notion 상세 기록만으로 candidate authority를 대신하지 않는다.**
 
 ---
 
-## 3. Stage close
+## 2. HARD RULE — CANDIDATE PHYSICALIZATION BEFORE RETRY
 
-exact final artifact가 Git에 물리 보존되면 아래처럼 정상 stage를 닫는다.
+CREATE / REVIEW1 / REVIEW2에서 새 candidate가 완성되면 authority write 시도와 별개로 다음 중 하나의 Git 물리 증거를 반드시 남긴다.
 
-- CREATE: `CREATE_DONE` 또는 `CREATE_DONE_WITH_ITEM_HOLDS`
-- REVIEW1: `REVIEW1_DONE` 또는 `REVIEW1_DONE_WITH_ITEM_HOLDS`
-- REVIEW2: `REVIEW2_DONE` 또는 `REVIEW2_DONE_WITH_ITEM_HOLDS`
-- Meta-only track: 대응 `META_*_DONE`
+1. exact final candidate exam blob
+2. candidate를 포함한 recovery commit/ref
+3. deterministic candidate parts + source/input SHA + item-hold ledger + layout/asset delta로 exact reconstruction이 가능한 physical manifest
 
-recovery ref/commit/blob 사용은 DONE을 낮은 등급으로 만들지 않는다.
+권장 순서는 **완성된 final candidate JS/blob 자체를 먼저 보존**하는 것이다.
 
-나중에 primary authority branch와 alias/parity를 맞추는 일은 maintenance이며 다음 stage 진입을 막지 않는다.
+authority write가 실패해도 candidate bytes는 Git에 남아야 한다.
 
----
-
-## 4. Candidate materialization
-
-final JS/blob이 아직 없지만 deterministic parts + exact input/source SHA + complete item-hold/layout/asset ledger가 있으면 **같은 run에서 materialize하고 바로 stage close**한다.
-
-별도 `CANDIDATE_MATERIALIZATION_PENDING` 상태를 만들지 않는다.
-
-deterministic materialization이 불가능하면 해당 stage만 fresh 재실행한다.
-
-- 전체 pipeline rewind 금지
-- upstream durable stage 보존
-- 재실행 후 exact final artifact를 물리 보존하고 바로 DONE*으로 닫는다
-- `STAGE_REEXECUTION_REQUIRED`라는 지속 상태를 만들지 않는다
+금지:
+- Notion page에 solution/repair/layout 내용을 써 놓고 Git candidate를 남기지 않는 것
+- candidate hash만 기록하고 해당 blob/ref를 실제 Git에서 찾을 수 없게 두는 것
+- write 실패 후 다음 retry에서 요약문을 보고 candidate를 임의 재작성하는 것
 
 ---
 
-## 5. Write failure 처리
+## 3. 상태 분류
 
-primary branch write 실패 후에도 가능한 Git 경로를 순서대로 시도해 exact artifact를 남긴다.
+### A. AUTHORITY_WRITE_PENDING
 
-- existing recovery branch
-- new recovery ref
-- commit/blob object
+다음을 모두 만족할 때만 사용한다.
 
-exact artifact를 하나라도 durable하게 보존하면 그 artifact로 stage를 닫는다.
+- exact candidate blob/commit/ref가 Git에 존재
+- candidate identity/hash를 재조회 가능
+- source/protected field 및 item-hold lineage가 물리 확인 가능
+- 남은 작업은 authority branch 결속 + finalArtifactSha + receipt/evidence
 
-Git 전체 write capability가 실제로 막혀 **어떤 exact artifact도 물리 보존할 수 없는 경우에만** 시험지별 상태를 만들지 않고 `GLOBAL_WRITE_CAPABILITY_BLOCKER`로 짧게 보고한다.
+처리:
+- 내용 재작업/재검수 금지
+- exact candidate 재사용
+- non-force 직렬 write-finalization
+- 성공 후 stage close
 
-이 경우:
-- 시험지 HOLD/PENDING 생성 금지
-- 해당 run을 그 시험지가 독점하지 않음
-- 가능한 다른 eligible 시험지는 계속 처리
-- Git capability가 복구된 뒤 해당 stage를 다시 실행/마감
+### B. CANDIDATE_MATERIALIZATION_PENDING
+
+candidate final JS는 아직 Git에 없지만, **exact reconstruction에 충분한 물리/정본 입력**이 존재한다.
+
+예:
+- Git solution chunks + exact input artifact SHA + complete item-hold ledger
+- Notion candidate pages + Git source artifact + complete layout/hold ledger가 있고 결과가 deterministic
+
+처리:
+- 먼저 candidate를 Git recovery ref/blob으로 물리화
+- materialization 직후 hash를 고정
+- 그 다음 A로 승격해 authority 결속
+- 수학 재풀이/REVIEW 재실행 금지
+
+### C. STAGE_REEXECUTION_REQUIRED
+
+다음 중 하나면 해당 stage를 다시 수행한다.
+
+- exact candidate bytes가 Git에 없음
+- summary/verdict/repair intent만 있고 final student-facing bytes가 없음
+- missing source/ledger 때문에 deterministic reconstruction 불가
+- 여러 복원 결과가 가능해 exact candidate를 특정할 수 없음
+
+처리:
+- **전체 파이프라인 rewind 금지**
+- 누락된 해당 stage만 fresh 재실행
+- CREATE면 CREATE만, REVIEW1이면 REVIEW1만, REVIEW2면 REVIEW2만
+- 이전 durable upstream stage는 보존
+- 새 candidate는 반드시 Git에 먼저 물리화
+
+### D. CANDIDATE_HASH_CONFLICT
+
+기록된 candidateArtifactSha와 chunks/재구성 결과가 다를 때 사용한다.
+
+처리 순서:
+1. 기록된 candidate SHA blob이 Git에 실제 존재하면 **그 blob을 authority로 우선 사용**
+2. blob이 없거나 identity가 맞지 않으면 임의 복원 금지
+3. 해당 stage만 fresh 재실행
+
+hash conflict를 authority/content conflict로 과장하지 않는다. 실제 protected field drift가 있을 때만 content conflict다.
 
 ---
 
-## 6. 기존 PENDING 기록 migration
+## 4. Recovery Decision Tree
 
-2026-10-01 이전의 `AUTHORITY_WRITE_PENDING` / `CANDIDATE_MATERIALIZATION_PENDING` 기록은 CURRENT 상태가 아니라 HISTORY다.
-
-각 시험지는 다음처럼 재해석한다.
-
-1. exact Git candidate/ref/commit/blob 존재 → 즉시 해당 stage DONE*으로 정합화
-2. deterministic parts가 충분함 → 같은 run에서 materialize → DONE*
-3. exact artifact도 없고 deterministic materialization도 불가능 → 해당 stage만 fresh 재실행 → DONE*
-
-과거 PENDING ordinal이 뒤 시험지 선택을 막아서는 안 된다.
+```text
+pending 발견
+│
+├─ exact candidate blob/commit/ref가 Git에 있는가?
+│   ├─ YES → AUTHORITY_WRITE_PENDING → exact bind
+│   └─ NO
+│
+├─ deterministic materialization 입력이 완전한가?
+│   ├─ YES → CANDIDATE_MATERIALIZATION_PENDING
+│   │        → Git candidate 물리화
+│   │        → hash 고정
+│   │        → AUTHORITY_WRITE_PENDING
+│   └─ NO
+│
+└─ STAGE_REEXECUTION_REQUIRED
+         → 해당 stage만 fresh 재실행
+         → Git candidate 물리화
+         → authority bind
+```
 
 ---
 
-## 7. Question-level HOLD
+## 5. Retry Writer / Codex 역할 분리
 
-문항별 불확실성은 기존 계약대로 `ITEM_HOLD`만 사용한다.
+자동 Authority Writer는 **A 상태만 소비**한다.
 
-- item hold가 있어도 stage는 DONE_WITH_ITEM_HOLDS로 완료
-- held qid만 다음 REVIEW 또는 ITEM_RECOVERY_QUEUE에서 다시 판정
-- REVIEW2 뒤 item hold가 남으면 publish만 보류
-- 다른 시험지/다른 lane 진행은 계속
+즉 exact Git candidate가 없는 B/C/D 상태는 writer가 반복 선택하지 않는다.
+
+- A: 자동 writer 또는 Codex 수동 drain 가능
+- B: materializer가 먼저 Git candidate 생성
+- C: 해당 CREATE/R1/R2 lane이 stage fresh reexecution
+- D: recorded blob 우선 확인 후 없으면 stage reexecution
+
+같은 pending을 safety gate에 반복 충돌시키는 것으로 B/C/D를 해결하려 하지 않는다.
+
+---
+
+## 6. Question-Level HOLD와의 관계
+
+candidate materialization 상태는 content HOLD가 아니다.
+
+- item hold가 있어도 candidate 전체를 물리화한다.
+- `*_DONE_WITH_ITEM_HOLDS` 경로를 그대로 유지한다.
+- held qid는 별도 `ITEM_RECOVERY_QUEUE`로 이동한다.
+- 시험지 전체 HOLD/BLOCK/격리 금지
 - MAIN publish 직전에만 `itemHoldCount=0` HARD gate
 
 ---
 
-## 8. BATCH / FINAL
+## 7. 최소 Physical Manifest
 
-BATCH도 시험지 단위 `BATCH_WRITE_PENDING`을 만들지 않는다.
+final candidate blob을 바로 만들지 못하고 parts로 저장해야 한다면 최소 다음을 Git에 남긴다.
 
-final buffer primary ref write가 막히면 exact production allowlist candidate를 recovery final ref/commit으로 보존하고 그 ref를 `FINAL_READY` authority로 사용한다.
+```text
+schemaVersion
+certificationGeneration
+examFile
+stage
+authorityBranch
+inputArtifactSha
+candidateArtifactSha (존재하면)
+candidatePartPaths[]
+candidatePartBlobs[]
+protectedFieldBaselineSha
+solutionRewriteAttempted / fullReviewCoverage
+itemHoldCount
+itemHoldQuestionIds[]
+itemHoldLedgerPath/blob
+layoutDelta
+assetDelta
+writeAttemptedAt
+lastRetryAt
+nextAction
+```
 
-FINAL/MAIN writer는 latest main을 다시 읽고 그 exact production delta만 clean reconstruction한다.
+이 정보만으로 exact candidate를 하나로 결정할 수 없으면 B가 아니라 C다.
+
+---
+
+## 8. 2026-09-30 M3 잔여 11건 Recovery Snapshot
+
+이 섹션은 당시 물리 상태에 대한 **snapshot**이며 이후 durable receipt가 생기면 superseded된다.
+
+### 즉시 exact 결속 가능 / Git candidate 존재
+
+- CREATE o17 `21_매산중_1학기_중간_중3_기출.js`
+  - recorded candidate blob `0234ffafa6d60f91542438777e05580a79c241f9` 실제 존재
+  - chunks 재조립 결과와 hash가 달라도 recorded blob을 우선
+- CREATE o25 `26_왕운중_1학기_기말_중3_기출.js`
+  - final candidate blob `f9eede649967be7b9a54d08ee5eea23fbfdd982a` 실제 존재
+- CREATE o54 `25_연향중_2학기_기말_중3_기출.js`
+  - recovery ref에 23/23 candidate parts 6개 물리 보존
+- REVIEW1 o69 `22_매산중_2학기_기말_중3_기출.js`
+  - pending manifest에 q21 layout-only exact repair가 완전 기록됨
+- REVIEW2 o29 `25_연향중_1학기_기말_중3_기출c.js`
+  - frozen REVIEW2 candidate blob `1e22cfbb66a057ed1d086ce2cff3ed23846ee7de`
+  - intended disposition `REVIEW2_DONE → READY_FOR_COMMIT`, itemHoldCount 0
+
+### Materialization 후 결속
+
+- CREATE o26 `26_삼산중_1학기_기말_중3_기출.js`
+  - Notion candidate q1–q12 / q13–q24 + ITEM_HOLD ledger
+  - 24/24 attempted, 22/24 resolved, q15/q19 holds
+- CREATE o43 `25_금당중_2학기_중간_중3_수학.js`
+  - recovery solution chunks 존재
+  - source artifact / item-hold ledger와 결속 후 final candidate를 먼저 Git에 물리화
+
+### 해당 stage fresh 재실행
+
+- REVIEW2 o11 `22_팔마중_1학기_중간_중3_기출.js`
+  - full-review summary는 있으나 exact REVIEW2 candidate bytes 없음
+- REVIEW2 o20 `19_풍덕중_1학기_중간_중3_기출.js`
+  - q2/q5/q7 repair intent는 있으나 exact final candidate bytes 없음
+- REVIEW1 o66 `22_팔마중_2학기_기말_중3_기출.js`
+  - q15 intended solution logic은 있으나 exact student-facing final string/blob 없음
+- CREATE o32
+  - exact final candidate를 물리 특정할 수 없음
+
+위 4건은 전체 시험지 파이프라인을 처음부터 되감지 않고 **해당 stage만 다시 수행**한다.
 
 ---
 
 ## 9. 완료 판정
 
-stage 완료 조건은 branch 이름이 아니라 아래 네 가지다.
+다음 네 가지가 모두 맞아야 stage를 닫는다.
 
-1. exact final artifact bytes가 durable하게 존재
-2. `finalArtifactSha` exact
-3. durable receipt/evidence가 artifact identity를 가리킴
-4. remote ref/blob 재조회로 exact 확인
+1. authority branch에 final candidate bytes 존재
+2. exam blob == recorded finalArtifactSha
+3. durable stage receipt/evidence 존재
+4. remote refetch로 위 세 항목 재확인
 
-**WRITE FAILURE ≠ EXAM HOLD**
+Notion 상태만 바뀌었거나 summary만 존재하면 완료가 아니다.
 
-**RECOVERY REF ≠ PENDING**
+---
 
-**EXACT ARTIFACT EXISTS → STAGE DONE***
+## 10. 운영 목적
+
+이 계약의 목적은 write failure를 숨기는 것이 아니라 다음을 분리하는 것이다.
+
+- **write problem**
+- **candidate storage problem**
+- **stage content/review problem**
+
+분리 후 가장 작은 단계만 복구한다.
+
+```text
+WRITE FAILURE ≠ CONTENT FAILURE
+NOT MATERIALIZED ≠ WRITE RETRY
+MISSING EXACT CANDIDATE → MATERIALIZE OR REEXECUTE ONLY THAT STAGE
+```
