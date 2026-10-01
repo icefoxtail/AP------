@@ -1,0 +1,36 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "classification": "SYSTEM_DEFECT_CANDIDATE",
+  "candidate": "solution-calibration-gate.mjs computes SHA-256 and Git blob SHA from raw Windows checkout bytes; Git clean-filter blob SHA differs for CRLF checkout files.",
+  "evidence": {
+    "latestMain": "ca2910c12845bcdcf86ea1dd021ec27ac1136190",
+    "helperPath": "archive/tools/solution-calibration-gate.mjs",
+    "helperMainSha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
+    "checkoutHelperPresent": false,
+    "sampleFiles": [
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
+        "latestMainBlob": "d8738128ae80e60a7eca4802cd461f85adefc84e",
+        "worktreeGitCleanBlob": "d8738128ae80e60a7eca4802cd461f85adefc84e",
+        "worktreeRawBlob": "2d882cd13c2030826658b75f491a33a91f2d2715"
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js",
+        "latestMainBlob": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248",
+        "worktreeGitCleanBlob": "583dfdc8e6fd00e58fc126ccfcd56c67257ed248",
+        "worktreeRawBlob": "6c48b422d1f2fddd1d6e721ea941237479ea9383"
+      },
+      {
+        "path": "archive/exams/original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+        "latestMainBlob": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442",
+        "worktreeGitCleanBlob": "c259fcfec2766fea67b4b5b1c6e5bd84f3522442",
+        "worktreeRawBlob": "cef85a7fa2df8a56800ab48ad35fc9f1c60e3cfa"
+      }
+    ],
+    "preflightIssues": "Raw SHA-256/blob mismatches on all three samples; required Bokseong negative fixtures are absent from the pinned baseline."
+  },
+  "impact": "A Windows checkout using CRLF may fail calibration refs despite Git-clean blobs matching latest main. This blocks this exam’s Visual preflight. The absent negative fixture is a separate pinned-baseline availability issue.",
+  "scope": "Evidence only; no shared helper, canonical rule, global fixture, other sample, or other exam was modified.",
+  "next": "Investigate only in a separately authorized shared-system task; this exam remains stopped at VISUAL."
+}
