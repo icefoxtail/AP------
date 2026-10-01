@@ -1,4 +1,13 @@
 ## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
+## CURRENT HARD RULE — PROBLEM SOURCE IMAGE = CROP-FIRST / NO SVG REPLACEMENT (2026-10-02)
+- **발문에 실제 원본 도형·그래프·표·조건 이미지가 존재하고 full-page/source crop 픽셀을 사용할 수 있으면, 문제용 시각자산은 그 원본 픽셀을 crop/recrop하여 PNG로 보존하는 것이 1순위이자 기본 종결이다.**
+- usable source pixels가 있는데 문제 도형을 새 SVG/code-first geometry로 다시 그려 `q.image`를 대체하는 행위는 금지한다. 더 예쁘게 만들기, 벡터화, 비율 정리, 가독성 개선도 교체 사유가 아니다.
+- 문제용 `image`와 해설용 `solutionImage`/solution SVG를 엄격히 분리한다. **해설 SVG는 적극 허용**하지만, 그것을 이유로 발문 원본 이미지를 버리거나 재도형화하지 않는다.
+- 문제-side deterministic SVG reconstruction은 **원본 픽셀이 실제로 없거나, full-page/원본 재크롭까지 했는데도 사용 불가능하고, source fact가 유일하게 확정되는 예외 상황에서만 fallback**으로 허용한다. worker/runtime가 crop 편집이 불편하다는 이유는 예외가 아니다.
+- 우선순위는 `SOURCE PIXEL CROP/RECROP → PNG image field 연결 → (예외시에만) deterministic reconstruction → HOLD`다.
+- 기존 source crop PNG가 존재하는데 generated problem SVG가 연결되어 있으면 `PROBLEM_SOURCE_ASSET_REPLACED_BY_RECONSTRUCTION` 결함으로 보고 **원본 crop PNG 연결 복원**을 우선한다.
+- 회귀 사례: `26_왕운중_2학기_중간_중2_기출`의 q21/q24 등은 source crop PNG가 이미 존재했는데 shared generated SVG로 대체되어 incidence topology drift가 발생했다. 이 경우 올바른 repair는 SVG를 다시 잘 그리는 것이 아니라 source crop PNG를 문제 image로 복원하는 것이다.
+
 ## CURRENT — 2026-10-02 — R3 VISUAL DOUBT IS NOT FAIL
 - R3는 SVG 좌표·anchor·primitive 위치를 보고 **추정만으로 새 visual FAIL/HOLD를 만들지 않는다**.
 - upstream CREATE/R1/R2 또는 Codex independent review에서 source 대조 후 PASS한 visual은 그 PASS를 정답으로 복사하지는 않되, R3가 뒤집으려면 **fresh source/problem geometry 또는 실제 rendered visual에서 명백한 semantic contradiction**을 제시해야 한다.
