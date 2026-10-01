@@ -1,0 +1,844 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_REOPEN_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW1_REOPEN_DONE_WITH_ITEM_HOLDS",
+  "reentryFrom": "R3_FAIL",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "inputR3ArtifactSha": "7401a9cd568589637b529131ed56a2b125767302",
+  "r3FailurePacketRef": "work/line3/26-maesan-h1-2mid-r3-fail-20261001@0555e68deed070853ff2a9d583fcf02642e566d9:archive-work/line3/2026-2mid-review3/26_매산고_2학기_중간_고1_기출/r3.fail.packet.json",
+  "r3FailedQids": [
+    1,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    18,
+    20,
+    21
+  ],
+  "r1OutputArtifactSha": "5c4be7cb73134199858d55bb549faab3b839f410",
+  "r1RepairQids": [
+    3,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    20,
+    21
+  ],
+  "fullAxisReaudit": {
+    "curriculumMethodAuditCount": "21/21",
+    "curriculumViolationQids": [],
+    "visualNecessityAuditCount": "21/21",
+    "requiredVisualQids": [
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21
+    ],
+    "totalRequiredVisualsAfterRepair": "14/14",
+    "existingVisualAuditCount": "5/5",
+    "addedVisualCount": 9
+  },
+  "curriculumMethodInventory": [
+    {
+      "qid": 1,
+      "concepts": [
+        "집합의 정의",
+        "원소 소속 판정"
+      ],
+      "formulas": [],
+      "notations": [],
+      "methods": [
+        "분명하게 정해지는 모임 판정"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 2,
+      "concepts": [
+        "합집합"
+      ],
+      "formulas": [],
+      "notations": [
+        "∪"
+      ],
+      "methods": [
+        "중복 없는 원소 결합"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 3,
+      "concepts": [
+        "직선의 기울기",
+        "두 직선의 수직 조건"
+      ],
+      "formulas": [
+        "수직인 두 직선의 기울기 곱=-1"
+      ],
+      "notations": [],
+      "methods": [
+        "기울기 비교"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 4,
+      "concepts": [
+        "평행이동"
+      ],
+      "formulas": [
+        "점 (x,y)→(x+p,y+q)"
+      ],
+      "notations": [],
+      "methods": [
+        "이동 후 좌표 비교"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 5,
+      "concepts": [
+        "원의 표준형",
+        "완전제곱식"
+      ],
+      "formulas": [
+        "(x-a)^2+(y-b)^2=r^2"
+      ],
+      "notations": [],
+      "methods": [
+        "중심·반지름 읽기"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 6,
+      "concepts": [
+        "삼각형의 무게중심"
+      ],
+      "formulas": [
+        "무게중심 좌표=세 꼭짓점 좌표의 평균"
+      ],
+      "notations": [],
+      "methods": [
+        "y좌표 조건 적용"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 7,
+      "concepts": [
+        "원의 방정식"
+      ],
+      "formulas": [
+        "r^2>0"
+      ],
+      "notations": [],
+      "methods": [
+        "완전제곱 후 원 성립 조건"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 8,
+      "concepts": [
+        "이차함수와 직선의 접함",
+        "중근",
+        "평행"
+      ],
+      "formulas": [
+        "접할 때 교점 방정식이 중근"
+      ],
+      "notations": [],
+      "methods": [
+        "미분 없이 중근으로 접선 기울기 결정"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 9,
+      "concepts": [
+        "원의 평행이동",
+        "점과 직선 사이의 거리",
+        "접함"
+      ],
+      "formulas": [
+        "중심-직선 거리=반지름"
+      ],
+      "notations": [],
+      "methods": [
+        "이동한 중심과 거리 공식"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 10,
+      "concepts": [
+        "각의 이등분선",
+        "점과 직선 사이의 거리"
+      ],
+      "formulas": [
+        "각의 이등분선 위 점은 두 변까지 거리가 같다"
+      ],
+      "notations": [],
+      "methods": [
+        "등거리 자취로 이등분선 판정"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 11,
+      "concepts": [
+        "점과 직선 사이의 거리",
+        "절댓값"
+      ],
+      "formulas": [
+        "점과 직선 사이의 거리 공식"
+      ],
+      "notations": [],
+      "methods": [
+        "거리비와 양수 조건"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 12,
+      "concepts": [
+        "직선 대칭이동",
+        "최단거리",
+        "삼각부등식"
+      ],
+      "formulas": [
+        "AQ=A'Q",
+        "두 점과 원 사이 최단거리"
+      ],
+      "notations": [],
+      "methods": [
+        "대칭점으로 꺾인 거리 직선화"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 13,
+      "concepts": [
+        "드모르간 법칙",
+        "집합의 연산",
+        "포함관계"
+      ],
+      "formulas": [
+        "(A∪B^C)^C=A^C∩B"
+      ],
+      "notations": [],
+      "methods": [
+        "세 겹침 영역 분해",
+        "포함관계 직접 증명"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 14,
+      "concepts": [
+        "원과 직선의 접함",
+        "점과 직선 사이의 거리"
+      ],
+      "formulas": [
+        "중심-직선 거리=반지름"
+      ],
+      "notations": [],
+      "methods": [
+        "절댓값 방정식"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 15,
+      "concepts": [
+        "직선의 기울기",
+        "수직 조건",
+        "점과 직선 사이의 거리",
+        "피타고라스 정리"
+      ],
+      "formulas": [
+        "수직인 직선 기울기 곱=-1",
+        "점과 직선 사이의 거리 공식",
+        "AB^2=AH^2+BH^2"
+      ],
+      "notations": [],
+      "methods": [
+        "수선의 발 좌표를 기울기 조건으로 결정",
+        "거리비 적용"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 16,
+      "concepts": [
+        "부분집합의 개수",
+        "진부분집합"
+      ],
+      "formulas": [
+        "n원소 집합의 부분집합 수=2^n"
+      ],
+      "notations": [],
+      "methods": [
+        "자기 자신 1개 제외"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 17,
+      "concepts": [
+        "내분점",
+        "삼각형의 무게중심"
+      ],
+      "formulas": [
+        "내분점 공식",
+        "무게중심 좌표 평균"
+      ],
+      "notations": [],
+      "methods": [
+        "세 내분점 좌표 후 평균"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 18,
+      "concepts": [
+        "좌표 치환",
+        "도형의 이동"
+      ],
+      "formulas": [
+        "u=y-1, v=x+1 → x=v-1, y=u+1"
+      ],
+      "notations": [],
+      "methods": [
+        "원래 점을 새 좌표로 변환"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 19,
+      "concepts": [
+        "두 점 사이의 거리",
+        "삼각부등식"
+      ],
+      "formulas": [
+        "|XA-XB|≤AB"
+      ],
+      "notations": [],
+      "methods": [
+        "등호 성립 조건과 x축 교점"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 20,
+      "concepts": [
+        "켤레복소수",
+        "복소수의 곱",
+        "다항식 인수분해",
+        "부분집합의 개수"
+      ],
+      "formulas": [
+        "z+zbar=1",
+        "zzbar=1",
+        "z^6-1 인수분해"
+      ],
+      "notations": [
+        "zbar"
+      ],
+      "methods": [
+        "B의 원소가 z^2-z+1=0을 만족함을 직접 유도",
+        "B⊂A 증명",
+        "부분집합 계수"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    },
+    {
+      "qid": 21,
+      "concepts": [
+        "원주각과 중심각",
+        "현의 수직이등분선",
+        "직선의 기울기",
+        "두 점 사이의 거리"
+      ],
+      "formulas": [
+        "원주각 45°→작은 중심각 90°",
+        "수직인 직선 기울기 곱=-1"
+      ],
+      "notations": [],
+      "methods": [
+        "반지름 결정",
+        "수직이등분선 방정식과 거리 조건으로 중심 x좌표 결정"
+      ],
+      "curriculumStatus": "ALLOWED",
+      "authorityEvidence": "final solution compared against standardCourse + standardUnitKey/subUnitKey and current 2022 curriculum method gate; prior-course facts allowed only where already learned"
+    }
+  ],
+  "visualNecessity": [
+    {
+      "qid": 1,
+      "status": "VISUAL_EXEMPT",
+      "reason": "집합 정의 판정; 그림이 결정 단계에 불필요"
+    },
+    {
+      "qid": 2,
+      "status": "VISUAL_EXEMPT",
+      "reason": "직접 합집합 계산"
+    },
+    {
+      "qid": 3,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q3-solution.svg"
+    },
+    {
+      "qid": 4,
+      "status": "VISUAL_OPTIONAL",
+      "action": "NONE",
+      "reason": "점 하나의 단순 평행이동은 식 자체가 더 직접적"
+    },
+    {
+      "qid": 5,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q5-solution.svg"
+    },
+    {
+      "qid": 6,
+      "status": "VISUAL_OPTIONAL",
+      "action": "NONE",
+      "reason": "무게중심 y좌표 평균만 사용하는 직접 계산"
+    },
+    {
+      "qid": 7,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q7-solution.svg"
+    },
+    {
+      "qid": 8,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q8-solution.svg"
+    },
+    {
+      "qid": 9,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q9-solution.svg"
+    },
+    {
+      "qid": 10,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q10-solution.svg"
+    },
+    {
+      "qid": 11,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q11-solution.svg"
+    },
+    {
+      "qid": 12,
+      "status": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_SOLUTION_VISUAL",
+      "asset": "q12-solution.svg"
+    },
+    {
+      "qid": 13,
+      "status": "VISUAL_EXEMPT",
+      "reason": "집합 연산 증명"
+    },
+    {
+      "qid": 14,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q14-solution.svg"
+    },
+    {
+      "qid": 15,
+      "status": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_SOLUTION_VISUAL",
+      "asset": "q15-solution.svg"
+    },
+    {
+      "qid": 16,
+      "status": "VISUAL_EXEMPT",
+      "reason": "부분집합 개수 직접 계산"
+    },
+    {
+      "qid": 17,
+      "status": "VISUAL_REQUIRED",
+      "action": "ADD_NEW_VISUAL",
+      "asset": "q17-solution.svg"
+    },
+    {
+      "qid": 18,
+      "status": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_SOLUTION_VISUAL",
+      "asset": "q18-solution.svg"
+    },
+    {
+      "qid": 19,
+      "status": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_SOLUTION_VISUAL",
+      "asset": "q19-solution.svg"
+    },
+    {
+      "qid": 20,
+      "status": "VISUAL_EXEMPT",
+      "reason": "복소수 대수+집합 계수; 시각화보다 인수분해가 직접적"
+    },
+    {
+      "qid": 21,
+      "status": "VISUAL_REQUIRED",
+      "action": "KEEP_EXISTING_SOLUTION_VISUAL",
+      "asset": "q21-solution.svg"
+    }
+  ],
+  "repairs": [
+    {
+      "qid": 13,
+      "type": "CURRICULUM_REPAIR",
+      "detail": "removed non-curriculum symmetric-difference notation from student solution; rewrote with intersections/complements and direct inclusion proof"
+    },
+    {
+      "qid": 15,
+      "type": "CURRICULUM_REPAIR",
+      "detail": "removed direction-vector/projection terminology; rebuilt solution with slope perpendicularity, foot coordinates, point-line distance and Pythagorean theorem"
+    },
+    {
+      "qid": 20,
+      "type": "SOLUTION_REPRODUCIBILITY_REPAIR",
+      "detail": "made B⊂A decisive algebra explicit via zbar=1-z, z^2-z+1=0 and factorization of z^6-1"
+    },
+    {
+      "qid": 21,
+      "type": "CURRICULUM_REPAIR",
+      "detail": "removed vector notation/vector displacement; used perpendicular-bisector slope equation plus OM distance"
+    },
+    {
+      "qids": [
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        17
+      ],
+      "type": "SOLUTION_VISUAL_ADD",
+      "detail": "added nine Python-verified solution SVGs after full visual-necessity audit"
+    }
+  ],
+  "newlyDiscoveredDuringReaudit": [
+    {
+      "qid": 3,
+      "code": "SOLUTION_VISUAL_MISSING",
+      "resolution": "CLOSED_IN_R1"
+    },
+    {
+      "qid": 5,
+      "code": "SOLUTION_VISUAL_MISSING",
+      "resolution": "CLOSED_IN_R1"
+    },
+    {
+      "qid": 7,
+      "code": "SOLUTION_VISUAL_MISSING",
+      "resolution": "CLOSED_IN_R1"
+    },
+    {
+      "qid": 17,
+      "code": "SOLUTION_VISUAL_MISSING",
+      "resolution": "CLOSED_IN_R1"
+    },
+    {
+      "qid": 13,
+      "code": "CURRICULUM_FAIL_NONSTANDARD_SYMMETRIC_DIFFERENCE_NOTATION",
+      "resolution": "CLOSED_IN_R1"
+    }
+  ],
+  "pythonVisualMathEvidence": {
+    "q3": {
+      "intersection": [
+        0.9,
+        4.7
+      ],
+      "slopes": [
+        3,
+        -0.3333333333333333
+      ]
+    },
+    "q5": {
+      "c1": {
+        "center": [
+          -2,
+          1
+        ],
+        "radius": 3
+      },
+      "c2": {
+        "center": [
+          3,
+          -5
+        ],
+        "radius": 4
+      }
+    },
+    "q7": {
+      "center": [
+        -2,
+        1
+      ],
+      "r2": "4-k",
+      "validCondition": "k<4"
+    },
+    "q8": {
+      "touch": [
+        1,
+        0
+      ],
+      "tangentSlope": 2,
+      "parallelPoint": [
+        2,
+        3
+      ],
+      "curveSampling": "241 samples; in-view points retained"
+    },
+    "q9": {
+      "centers": [
+        [
+          7.513878188659973,
+          1
+        ],
+        [
+          -10.513878188659973,
+          1
+        ]
+      ],
+      "feet": [
+        [
+          4.740377207533827,
+          5.160251471689218
+        ],
+        [
+          -7.740377207533827,
+          -3.160251471689218
+        ]
+      ],
+      "distances": [
+        5,
+        5
+      ]
+    },
+    "q10": {
+      "R": [
+        2,
+        1
+      ],
+      "feet": [
+        [
+          2,
+          0
+        ],
+        [
+          1.2,
+          1.6
+        ]
+      ],
+      "distances": [
+        1,
+        1
+      ]
+    },
+    "q11": {
+      "A": [
+        -1,
+        4
+      ],
+      "B": [
+        4,
+        19
+      ],
+      "Afoot": [
+        5,
+        7
+      ],
+      "Bfoot": [
+        0,
+        17
+      ],
+      "intersection": [
+        2,
+        13
+      ],
+      "distances": [
+        "3√5",
+        "2√5"
+      ]
+    },
+    "q14": {
+      "cases": [
+        {
+          "a": "2/3",
+          "center": [
+            "-2/3",
+            "2/3"
+          ],
+          "radius": "2/3"
+        },
+        {
+          "a": 4,
+          "center": [
+            -4,
+            4
+          ],
+          "radius": 4
+        }
+      ]
+    },
+    "q17": {
+      "M": [
+        -2,
+        6
+      ],
+      "N": [
+        4,
+        1
+      ],
+      "P": [
+        4,
+        2
+      ],
+      "G": [
+        2,
+        3
+      ]
+    }
+  },
+  "protectedFieldDiffStatus": {
+    "id": "UNCHANGED_21_21",
+    "content": "UNCHANGED_21_21",
+    "choices": "UNCHANGED_21_21",
+    "answer": "UNCHANGED_21_21",
+    "sourceIdentityKey": "UNCHANGED_21_21",
+    "sourceDocumentSha256": "UNCHANGED_21_21"
+  },
+  "itemHolds": [
+    {
+      "qid": 1,
+      "reason": "META_CANONICAL_HOLD_NO_EXACT_RPM_L4_FOR_SETNESS_JUDGMENT"
+    },
+    {
+      "qid": 12,
+      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_LABEL_EDGE_CLIP"
+    },
+    {
+      "qid": 15,
+      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_LABEL_EDGE_CLIP"
+    },
+    {
+      "qid": 18,
+      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_NEIGHBOR_HANDWRITING_INTRUSION"
+    },
+    {
+      "qid": 21,
+      "reason": "META_CANONICAL_HOLD_NO_EXACT_RPM_L4_FOR_INSCRIBED_ANGLE_CIRCLE_CENTER_LOCUS"
+    }
+  ],
+  "itemHoldCount": 5,
+  "unresolvedR3Codes": [
+    {
+      "code": "META_CANONICAL_HOLD",
+      "qids": [
+        1,
+        21
+      ]
+    },
+    {
+      "code": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL",
+      "qids": [
+        12,
+        15,
+        18
+      ]
+    }
+  ],
+  "closedR3Codes": [
+    {
+      "code": "CURRICULUM_FAIL",
+      "qids": [
+        13,
+        15,
+        21
+      ]
+    },
+    {
+      "code": "SOLUTION_VISUAL_MISSING",
+      "qids": [
+        3,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        17
+      ]
+    },
+    {
+      "code": "SOLUTION_LOGIC_GAP",
+      "qids": [
+        20
+      ]
+    }
+  ],
+  "nextOwner": "R2_REOPEN",
+  "mainMutation": false,
+  "sourceMutation": false
+}
