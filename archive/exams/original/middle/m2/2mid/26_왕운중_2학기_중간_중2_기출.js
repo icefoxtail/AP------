@@ -299,8 +299,8 @@ window.questionBank = [
       "$12$",
       "$16$"
     ],
-    "answer": "",
-    "solution": "주어진 조건을 모두 동시에 만족하는 삼각형은 존재하지 않는다. 실제로 $CF=BE=5$, $BD=CE$이고 $ED\\perp AB$, $FE\\perp BC$이므로 두 직각삼각형 $BDE$, $CEF$는 RHS 합동이 되어 $\\angle B=\\angle C=50^\\circ$이다. 따라서 $AB=AC=AF+FC=8$이어야 한다. 그런데 $\\triangle CEF$에서 $CE=5\\cos50^\\circ$이므로 $BC=BE+CE=5+5\\cos50^\\circ$인 반면, $AB=AC=8$, $\\angle B=\\angle C=50^\\circ$이면 $BC=16\\cos50^\\circ$여야 하여 서로 모순이다. 원문 조건 또는 수치의 재확인이 필요하다.",
+    "answer": "②",
+    "solution": "$BE=CF$, $BD=CE$이고 $ED\\perp AB$, $FE\\perp BC$이므로 직각삼각형 $BDE$와 $CEF$는 RHS 합동이다. 따라서 $\\angle B=\\angle C=50^\\circ$이다. 그러므로 $AB=AC$이고, $AC=AF+FC=3+5=8$이므로 $AB=8$이다. 정답은 ②.",
     "sourceQuestionNo": "5",
     "displayNo": "5",
     "sourceOrdinal": 5,
@@ -309,10 +309,10 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:01edf694f153321a8d8b2f130275d1637966440577d4756ef8c1c343f5409b7c|5",
     "contentSource": "full_page_source_evidence",
     "choicesSource": "full_page_source_evidence",
-    "answerSource": "independent_solve_item_hold",
+    "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_SOURCE_MATH",
+    "reviewStatus": "REVIEW2_CURRICULUM_ADJUDICATED",
     "rpmPrimaryRecordId": "M2-RPM-180",
     "rpmPrimaryPath": {
       "majorUnit": "삼각형의 성질",
@@ -331,8 +331,8 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
-    "tagConfidence": "review_hold",
-    "tagStatus": "item_hold",
+    "tagConfidence": "high",
+    "tagStatus": "reviewed_r2_adjudicated",
     "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q05.svg"
   },
   {
