@@ -81,7 +81,7 @@ window.questionBank = [
       "집합의 포함·연산 종합"
     ],
     "wide": false,
-    "content": "두 집합 $A=\\\\{x\\\\mid x는 12 이하의 양의 홀수\\\\}$, $B=\\\\{2,3,5,7,11\\\\}$에 대하여 다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\\\{1,3,5\\\\}\\\\in A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\\\subset A$<br>ㄹ. $A\\\\cap B^C=\\\\{1,9\\\\}$</div>",
+    "content": "두 집합 $A=\\{x\\mid x는 12 이하의 양의 홀수\\}$, $B=\\{2,3,5,7,11\\}$에 대하여 다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\{1,3,5\\}\\in A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\subset A$<br>ㄹ. $A\\cap B^C=\\{1,9\\}$</div>",
     "choices": [
       "ㄹ",
       "ㄱ, ㄷ",
@@ -90,7 +90,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄹ"
     ],
     "answer": "①",
-    "solution": "$A=\\\\{1,3,5,7,9,11\\\\}$이다. ㄱ의 $\\\\{1,3,5\\\\}$는 집합이므로 $A$의 원소 하나가 아니어서 거짓이다. ㄴ은 $n(A)=6$이므로 거짓이다. ㄷ은 $2\\\\in B$이지만 $2\\\\notin A$이므로 거짓이다. ㄹ은 $A\\\\cap B^C=A-B=\\\\{1,9\\\\}$이므로 참이다.\\n\\n따라서 옳은 것은 ㄹ뿐이고 정답은 ①이다.",
+    "solution": "먼저 $A=\\{1,3,5,7,9,11\\}$임을 확인한다.\n\nㄱ. $\\{1,3,5\\}$는 집합이므로 $A$의 원소 하나가 아니어서 거짓이다.\n\nㄴ. $n(A)=6$이므로 $n(A)=7$은 거짓이다.\n\nㄷ. $2\\in B$이지만 $2\\notin A$이므로 $B\\subset A$는 거짓이다.\n\nㄹ. $A\\cap B^C=A-B=\\{1,9\\}$이므로 참이다.\n\n따라서 옳은 것은 ㄹ뿐이고 정답은 ①이다.",
     "sourceQuestionNo": "2",
     "displayNo": "2",
     "sourceOrdinal": 2,
@@ -221,8 +221,8 @@ window.questionBank = [
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
     "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+    "templateKey": "TT_LINE_TRANSLATION_EQUATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -385,7 +385,7 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "②",
-    "solution": "$f(x)=-(2x+1)^2$이므로 $A=(-\\\\dfrac12,0)$이고, $x=0$을 대입하면 $B=(0,-1)$이다. $AC:CB=4:1$이므로 내분점 공식에서\\n$a=\\\\dfrac{1\\\\cdot(-1/2)+4\\\\cdot0}{5}=-\\\\dfrac1{10},\\\\qquad b=\\\\dfrac{1\\\\cdot0+4\\\\cdot(-1)}{5}=-\\\\dfrac45.$\\n따라서 $\\\\dfrac ba=8$이다.\\n\\n따라서 정답은 ②이다.",
+    "solution": "$f(x)=-(2x+1)^2$이므로 $A=(-\\dfrac12,0)$이고, $x=0$을 대입하면 $B=(0,-1)$이다. $AC:CB=4:1$이므로 내분점 공식에서\\n$a=\\dfrac{1\\cdot(-1/2)+4\\cdot0}{5}=-\\dfrac1{10},\\qquad b=\\dfrac{1\\cdot0+4\\cdot(-1)}{5}=-\\dfrac45.$\\n따라서 $\\dfrac ba=8$이다.\\n\\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "7",
     "displayNo": "7",
     "sourceOrdinal": 7,
@@ -645,8 +645,8 @@ window.questionBank = [
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
     "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+    "templateKey": "TT_SHORTEST_ONE_LINE",
     "crossConceptKeys": [
       "CC_DISTANCE_TWO_POINTS"
     ],
@@ -993,7 +993,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "⑤",
-    "solution": "ㄱ은 차집합을 교집합과 여집합으로 쓰면 양변이 모두 $(A\\cup B)\\cap C^C$이다. ㄴ의 양변은 모두 $A,B$ 중 정확히 한 집합에 속하는 원소의 집합이다. ㄷ은 $(A\\cap B)-(A\\cap C)=A\\cap B\\cap C^C=A\\cap(B-C)$이다. 모두 참이다.\\n\\n따라서 정답은 ⑤이다.",
+    "solution": "ㄱ. 차집합을 교집합과 여집합으로 쓰면 양변이 모두 $(A\\cup B)\\cap C^C$이므로 참이다.\n\nㄴ. 양변은 모두 $A,B$ 중 정확히 한 집합에 속하는 원소의 집합이므로 참이다.\n\nㄷ. $(A\\cap B)-(A\\cap C)=A\\cap B\\cap C^C=A\\cap(B-C)$이므로 참이다.\n\n따라서 모두 참이고 정답은 ⑤이다.",
     "sourceQuestionNo": "17",
     "displayNo": "17",
     "sourceOrdinal": 17,
@@ -1164,7 +1164,7 @@ window.questionBank = [
     "content": "좌표평면 위의 점 $P(6, 3)$에서 직선 $\\ell: ax+by-8=0$ (단, $a$, $b$는 5 이하의 자연수)에 내린 수선의 발을 $H(x_1,y_1)$라 하자. 어떤 실수 $k$ ($k\\ne0$)에 대하여<br>$$x_1-6=3k,\\qquad y_1-3=4k$$<br>가 성립할 때, 다음 물음에 대하여 풀이과정과 함께 답하시오. (총 4점, 부분점수 있음.)<br>1-(1). $a$, $b$의 값을 풀이과정과 함께 각각 구하시오. (2점)<br>1-(2). 실수 $k$의 값을 풀이과정과 함께 구하시오. (2점)",
     "choices": [],
     "answer": "$a=3,\\ b=4,\\ k=-\\dfrac{22}{25}$",
-    "solution": "$k\\\\ne0$이므로 $PH$의 기울기는 $\\\\dfrac{y_1-3}{x_1-6}=\\\\dfrac{4k}{3k}=\\\\dfrac43$이다. $PH$는 직선 $\\\\ell$에 수직이므로 $\\\\ell$의 기울기는 $-\\\\dfrac34$이다. 한편 $\\\\ell:ax+by-8=0$의 기울기는 $-\\\\dfrac ab$이므로 $\\\\dfrac ab=\\\\dfrac34$이다. $a,b$는 5 이하의 자연수이므로 $a=3$, $b=4$이다.\\n\\n이때 $H=(6+3k,3+4k)$이고 $H$는 $3x+4y-8=0$ 위에 있으므로\\n$3(6+3k)+4(3+4k)-8=0$.\\n따라서 $22+25k=0$에서 $k=-\\\\dfrac{22}{25}$이다.\\n\\n따라서 $a=3$, $b=4$, $k=-\\\\dfrac{22}{25}$이다.",
+    "solution": "$k\\ne0$이므로 $PH$의 기울기는 $\\dfrac{y_1-3}{x_1-6}=\\dfrac{4k}{3k}=\\dfrac43$이다. $PH$는 직선 $\\ell$에 수직이므로 $\\ell$의 기울기는 $-\\dfrac34$이다. 한편 $\\ell:ax+by-8=0$의 기울기는 $-\\dfrac ab$이므로 $\\dfrac ab=\\dfrac34$이다. $a,b$는 5 이하의 자연수이므로 $a=3$, $b=4$이다.\\n\\n이때 $H=(6+3k,3+4k)$이고 $H$는 $3x+4y-8=0$ 위에 있으므로\\n$3(6+3k)+4(3+4k)-8=0$.\\n따라서 $22+25k=0$에서 $k=-\\dfrac{22}{25}$이다.\\n\\n따라서 $a=3$, $b=4$, $k=-\\dfrac{22}{25}$이다.",
     "sourceQuestionNo": "서논술형1",
     "displayNo": "서논술형1",
     "sourceOrdinal": 20,
@@ -1238,7 +1238,7 @@ window.questionBank = [
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
     "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SUBSET_COUNT",
-    "templateKey": null,
+    "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION",
     "crossConceptKeys": [
       "CC_PRIME_FACTORIZATION"
     ],
