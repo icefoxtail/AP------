@@ -157,17 +157,32 @@ forward/reverse consistency audit
 ```text
 current source + independently verified final solution
 → primaryMethod / decisiveStep
-→ RPM Primary exact curriculum/scope L3
-→ RPM Primary exact L4
-= RPM_SEMANTIC_FINAL
-→ grade/subject crosswalk
-→ existing PT/TPL + exact binding projection lookup
+→ RPM Primary current curriculum/scope L3/L4 lookup
+→ current scope에 exact semantic path가 없거나 decisive step과 맞지 않으면
+   이미 이수한 prerequisite scope를 아래 방향으로만 lookup
+   (prior same-grade scope when ordered → lower grades; future/higher scope 금지)
+→ prerequisite RPM L3/L4가 deterministic하면 semantic source scope를 기록하고 FINAL
+→ target grade/subject crosswalk + GLOBAL ACTIVE shared semantic/binding projection lookup
 → PROJECTION_REUSE / PROJECTION_BINDING_PENDING / PROJECTION_UNMATERIALIZED
 ```
 
+### 1.4.1 PREREQUISITE SEMANTIC FALLBACK — LOWER-ONLY HARD RULE
+
+수학 교육과정은 누적형이다. **현재 학년/과목의 L1/L2는 현재 문항 범위를 그대로 유지하되, Primary L3/L4와 CrossConcept·풀이 도구는 이미 이수한 하위 학년/선행 scope의 canonical semantic을 재사용할 수 있다.** 현재 scope에 같은 개념을 반복 정의하지 않는다.
+
+- 중1: 현재 scope와 이미 이수한 중1 선행 scope만 허용. 중2·중3 semantic lookup 금지.
+- 중2: 중1 + 현재 중2의 이미 이수한 선행 scope lookup 허용. 중3 semantic lookup 금지.
+- 중3: 중1·중2 + 현재 중3의 이미 이수한 선행 scope lookup 허용.
+- 고1: 중1·중2·중3 + 현재 고1의 이미 이수한 선행 scope lookup 허용. 고2 이후 개념 lookup 금지.
+- 고2 이상: 중등 및 이전 학년 과정은 prerequisite로 허용하되, 같은 학년의 다른 과목/후속과정은 별도 prerequisite authority가 없으면 자동 허용하지 않는다.
+- 하위 학년에서 semantic L3/L4를 재사용해도 `standardCourse`, `standardUnitKey`, `subUnitKey`를 하위 학년 값으로 바꾸지 않는다. target 문항의 L1/L2는 현재 교육과정 위치를 유지하고 `semanticSourceScope`/`semanticScopeRelation` evidence로 provenance를 남긴다.
+- prerequisite lookup에서 찾은 L3/L4가 current target에 exact binding이 없으면 `PROJECTION_BINDING_PENDING` 또는 `PROJECTION_UNMATERIALIZED`로 기록한다. **semantic HOLD가 아니다.**
+- 현재 scope에 exact leaf가 없다는 사실만으로 `NO_EXACT_RPM_L4...` HOLD를 만들지 않는다. current scope → prerequisite lower scope → GLOBAL ACTIVE shared semantic/current binding까지 확인한 뒤에도 primary semantic을 deterministic하게 닫을 수 없을 때만 TRUE Meta HOLD 후보가 된다.
+- 상위 학년/미이수 후속 scope의 L3/L4를 아래 학년 문항에 역으로 가져오는 것은 금지한다.
+
 판정 규칙:
 
-1. RPM L3/L4가 deterministic하면 semantic FINAL이다.
+1. current 또는 허용된 prerequisite lower scope의 RPM L3/L4가 deterministic하면 semantic FINAL이다.
 2. 기존 ACTIVE PT/TPL+binding이 의미적으로 맞으면 `PROJECTION_REUSE`로 사용한다.
 3. PT/TPL은 맞고 exact curriculum binding만 없으면 `PROJECTION_BINDING_PENDING`이다. **semantic HOLD가 아니다.**
 4. crosswalk가 `RPM_ONLY`이거나 안전한 PT/TPL projection이 없으면 `PROJECTION_UNMATERIALIZED`다. **semantic HOLD가 아니다.**
