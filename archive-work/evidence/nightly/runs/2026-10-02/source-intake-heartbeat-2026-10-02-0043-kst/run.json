@@ -36,9 +36,9 @@
   "latestOriginIntake": "3d51827a3898d87e6555dd4ea216c7e9372a8ab2",
   "branchDrift": {
     "mainAheadOfIntake": 315,
-    "intakeAheadOfMain": 27,
+    "intakeAheadOfMain": 30,
     "fastForwardPossible": false,
-    "action": "Kept the dedicated intake branch; no merge, reset, or main modification."
+    "action": "No merge/reset; the dedicated source-intake branch stays separate from main."
   },
   "sourceInventory": {
     "inputStatus": "INDEPENDENT_INVENTORY_VERIFIED",
@@ -107,12 +107,12 @@
   "priorCohortExams": "EXCLUDED_FROM_SCOPE_PER_PARENT_ASSIGNMENT",
   "sourceArtifactCommitSha": "79a082fda7522da09d973591173260b9efa18bb6",
   "sourceArtifactPushSha": "79a082fda7522da09d973591173260b9efa18bb6",
-  "reviewReceiptCommitSha": null,
-  "reviewReceiptPushSha": null,
-  "remoteBranchHeadAtVerification": null,
+  "reviewReceiptCommitSha": "457fd282216df8c643ceda01968f1dda73872637",
+  "reviewReceiptPushSha": "457fd282216df8c643ceda01968f1dda73872637",
+  "remoteBranchHeadAtVerification": "457fd282216df8c643ceda01968f1dda73872637",
   "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
   "notionWrites": "NOT_PERFORMED",
-  "nextStartPoint": "Parent verifies the detailed source QA report and handles the Notion source-JS checklist/count; then continue the high2 per-subject queue.",
+  "nextStartPoint": "Parent verifies SOURCE_QA_PASS and handles the Notion checklist/count; then continue the high2 per-subject queue.",
   "artifactPushStatus": "VERIFIED",
   "sourceJsSha256": "sha256:6db84565095fd1c38db5833ba57c7aa1045b54a3b5e6e47e49bb290ec7ecdf20",
   "sourceQuestionIdentityCoverageStatus": "PASS_22_OF_22",
@@ -133,5 +133,11 @@
   "handoffStatus": "PENDING_PARENT_VERIFICATION",
   "independentReviewExamCount": 1,
   "independentReviewQuestionCount": 22,
-  "independentReviewAssetCount": 2
+  "independentReviewAssetCount": 2,
+  "reviewReceiptReportSha256": "sha256:3d26aa450a4b1cd6451f0c17248b801f1c100b201d1e841fffe388f04d62005b",
+  "remoteBranchHeadAtSourceArtifact": "79a082fda7522da09d973591173260b9efa18bb6",
+  "remoteBranchHeadAtSourceReceipt": "956cf60b7923f9a8166705ddbaa1ff1c5a580f5b",
+  "remoteBranchHeadAtReviewReceipt": "457fd282216df8c643ceda01968f1dda73872637",
+  "completedAtKst": "2026-10-02T02:20:00+09:00",
+  "lockReleasedAtKst": "2026-10-02T02:20:00+09:00"
 }
