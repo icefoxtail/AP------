@@ -33,7 +33,7 @@ window.questionBank = [
       "11"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "$_{11}P_x=\\dfrac{11!}{(11-x)!}$이다.\n주어진 식과 비교하면 $11-x=7$이므로 $x=4$이다. 또 $y={}_8C_0=1$이다.\n따라서 $xy=4\\cdot1=4$이고 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -120,7 +120,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "$f(g(x))=x$이므로\n$\\dfrac12g(x)+3=x$이다.\n양변에서 3을 빼고 2를 곱하면 $g(x)=2x-6$이다.\n따라서 $g(2)=4-6=-2$이고 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -207,7 +207,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "십의 자리에는 0을 쓸 수 없으므로 십의 자리 숫자는 1,2,3,4,5이다. 두 자리 수의 자리 숫자 합이 홀수이려면 한 자리는 홀수, 다른 자리는 짝수여야 한다.\n십의 자리가 홀수이면 1,3,5 중 3가지이고, 일의 자리는 짝수 0,2,4 중 3가지이므로 $3\\cdot3=9$가지이다.\n십의 자리가 짝수이면 2,4 중 2가지이고, 일의 자리는 홀수 1,3,5 중 3가지이므로 $2\\cdot3=6$가지이다. 두 경우는 겹치지 않는다.\n따라서 $9+6=15$개이고 정답은 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -294,7 +294,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "두 분수를 통분하면 분자는\n$(x-1)^2-(x-2)(x+2)$이다.\n이를 계산하면 $x^2-2x+1-(x^2-4)=-2x+5$이므로 $a=-2$, $b=5$이다.\n따라서 $a+b=3$이고 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -381,7 +381,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "먼저 $f\\circ g$를 구하면\n$(f\\circ g)(x)=-4(2x-1)+7=-8x+11$이다.\n따라서 $(f\\circ g)^{-1}(x)=\\dfrac{11-x}{8}$이다.\n주어진 합성함수에 안쪽부터 대입하면 $f(2)=-1$,\n$(f\\circ g)^{-1}(-1)=\\dfrac{12}{8}=\\dfrac32$,\n$f(\\dfrac32)=-4\\cdot\\dfrac32+7=1$이다.\n정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -468,7 +468,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "세 점 중 어느 세 점도 한 직선 위에 있지 않으므로 세 점을 고를 때마다 삼각형 하나가 만들어진다. 따라서\n${}_nC_3=120$이다.\n${}_{10}C_3=\\dfrac{10\\cdot9\\cdot8}{3\\cdot2\\cdot1}=120$이므로 $n=10$이다. 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -555,7 +555,7 @@ window.questionBank = [
       "54"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "양 끝에 설 남학생 두 명을 순서 있게 고르는 방법은 ${}_3P_2=3\\cdot2=6$가지이다.\n가운데 세 자리는 남은 남학생 한 명과 여학생 두 명을 배열하므로 $3!=6$가지이다.\n따라서 전체 방법의 수는 $6\\cdot6=36$이고 정답은 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -642,7 +642,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "점 $(-2,1)$이 $y=f(x)$ 위에 있으므로 $f(-2)=1$이다. 또 이 점은 역함수 그래프 위에도 있으므로 $f^{-1}(-2)=1$, 즉 $f(1)=-2$이다.\n따라서\n$-2a+b=1$,\n$a+b=-2$이다.\n첫째 식에서 둘째 식을 빼면 $-3a=3$이므로 $a=-1$이고, $a+b=-2$에서 $b=-1$이다.\n따라서 $ab=1$이고 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -729,7 +729,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "그래프에서 $f(2)=1$이고 $f(3)=2$임을 읽을 수 있다.\n따라서 $f(f(3))=f(2)=1$이다. 즉 $f\\circ f$의 값이 1이 되는 입력은 3이므로\n$(f\\circ f)^{-1}(1)=3$이다. 정답은 ③이다.",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q009_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q009_visual.png",
     "hasVisualAsset": true,
@@ -854,7 +854,7 @@ window.questionBank = [
       "360"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "서로 다른 공 4개를 서로 다른 상자 6개 중 서로 다른 4개에 넣는 것이므로, 상자를 고르는 순서까지 포함해\n${}_6P_4=6\\cdot5\\cdot4\\cdot3=360$가지이다. 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -941,7 +941,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$y=\\sqrt{-x+a}+2$는 정의역에서 $x$가 커질수록 제곱근 안의 값이 작아지므로 감소한다. 따라서 최솟값은 $x=1$에서 나온다.\n$\\sqrt{a-1}+2=4$이므로 $\\sqrt{a-1}=2$, $a=5$이다.\n최댓값은 $x=-4$에서 나오므로 $\\sqrt{4+5}+2=3+2=5$이다. 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1028,7 +1028,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "식의 분자를 $2(x-1)+(k-1)$로 바꾸면\n$y=2+\\dfrac{k-1}{x-1}$이다. 제3사분면을 지나려면 $x<0$인 곳에서 $y<0$이어야 한다.\n$k>3$이면 $x$를 0보다 조금 작은 수로 잡을 때 $y$는 $3-k<0$에 가까워져 음수가 된다. 따라서 이때는 제3사분면을 지난다.\n반대로 $k\\le1$이면 $x<0$에서 분수항이 0 이상이어서 $y\\ge2$이다. $1<k\\le3$이면 $x-1<-1$이므로\n$\\dfrac{k-1}{x-1}>-(k-1)$이고, 따라서 $y>3-k\\ge0$이다.\n그러므로 제3사분면을 지나지 않으려면 $k\\le3$이고, 최댓값은 3이다. 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1115,7 +1115,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "$y=\\sqrt{x+a}+2$의 역함수를 구한다.\n$y-2=\\sqrt{x+a}$이므로 $x=(y-2)^2-a$이다. 따라서\n$f^{-1}(x)=(x-2)^2-a$이고, 역함수의 정의역은 원래 함수의 치역이므로 $x\\ge2$이다.\n주어진 식은 $x^2-4x+7=(x-2)^2+3$이다. 비교하면 $a=-3$, $b=2$이다.\n따라서 $b-a=2-(-3)=5$이고 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1202,7 +1202,7 @@ window.questionBank = [
       "25"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "전체 순서쌍은 $6\\cdot6=36$개이다. $|a-b|\\le1$인 경우를 빼면 된다.\n$a=b$인 경우는 6개이다. $|a-b|=1$인 경우는 $(1,2),(2,1),\\ldots,(5,6),(6,5)$로 10개이다.\n따라서 구하는 수는 $36-6-10=20$이고 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1290,7 +1290,7 @@ window.questionBank = [
       "8"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "직선 $l$의 기울기를 $m$이라 하면 두 교점은 $P=(t,mt)$, $Q=(-t,-mt)$ 꼴이다. 두 점 모두 $y=-3/x$ 위에 있으므로 $mt^2=-3$이다.\n점 $R$은 $P$의 $x$좌표와 $Q$의 $y$좌표를 가지므로 $R=(t,-mt)$이다. 따라서 $RP=2|mt|$, $RQ=2|t|$이고 $\\angle PRQ=90^\\circ$이다.\n삼각형의 넓이는\n$\\dfrac12(2|mt|)(2|t|)=2|m|t^2=2\\cdot3=6$이다. 정답은 ③이다.",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q015_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q015_visual.png",
     "hasVisualAsset": true,
@@ -1415,7 +1415,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "곡선 위 점의 $y$좌표를 각각 $u,v$라 하자. 곡선에서 $x=(y+1)^2-2$이므로 두 점의 중점 $y$좌표 조건은 $u+v=2$이다.\n직선 $PQ$의 기울기는\n$\\dfrac{u-v}{(u+1)^2-(v+1)^2}=\\dfrac{u-v}{(u-v)(u+v+2)}=\\dfrac1{u+v+2}$이다.\n$u+v=2$를 대입하면 기울기는 $\\dfrac14$이고 정답은 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1502,7 +1502,7 @@ window.questionBank = [
       "49"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "**(가), (나)** 원소가 5개이고 1,2를 반드시 포함하므로 나머지 세 원소는 $\\{3,4,5,6,7,8\\}$에서 고른다.\n${}_6C_3=20$가지이다.\n**(다)** 여기서 $\\{1,5,7\\}\\subset A$인 경우를 뺀다. 1은 이미 들어 있으므로 5,7을 고정하고, 남은 한 원소를 $\\{3,4,6,8\\}$에서 고르는 4가지이다.\n따라서 조건을 모두 만족하는 집합은 $20-4=16$개이고 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1589,7 +1589,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$z=\\dfrac{1+i}{\\sqrt2}$이므로\n$z^2=\\dfrac{(1+i)^2}{2}=i$이고, $z^4=i^2=-1$이다. 따라서 $z^{36}=(z^4)^9=-1$이다.\n또 $w=z-\\sqrt2=\\dfrac{-1+i}{\\sqrt2}$라 하면\n$w^2=\\dfrac{(-1+i)^2}{2}=-i$,\n$w^4=(-i)^2=-1$이다. 따라서 $w^{36}=(w^4)^9=-1$이다.\n그러므로 $f(36)=z^{36}+w^{36}=-1-1=-2$이고 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1676,7 +1676,7 @@ window.questionBank = [
       "3"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$t=x+1$이라 두면 $t\\ne0$이고\n$\\dfrac{x-2}{x+1}=1-\\dfrac3t$, $mx+n=m(t-1)+n$이다. 교점은\n$mt^2+(n-m-1)t+3=0$의 실근 $t\\ne0$에 해당한다.\n$m\\ne0$일 때 판별식은\n$\\Delta=(n-m-1)^2-12m=m^2-(2n+10)m+(n-1)^2$이다. 이를 $m$에 대한 이차식으로 보면 $m=n+5$일 때 최솟값은 $-12(n+2)$이다. $n>-2$이면 이 기울기는 0이 아니고 판별식이 음수이므로 교점이 없다. 따라서 모든 기울기에서 교점이 있으려면 $n\\le-2$여야 한다.\n$n=-2$이면 $\\Delta=(m-3)^2\\ge0$이고, 두 근의 곱은 $3/m\\ne0$이므로 $t\\ne0$인 교점이 있다. $m=0$일 때에는 $-3t+3=0$에서 $t=1$을 얻는다. 따라서 모든 $m$에 대해 교점이 존재하고, 가능한 $n$의 최댓값은 $-2$이다. 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1764,7 +1764,7 @@ window.questionBank = [
       "4"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "그림과 같이 $A=(s^2,ks)$라 두면 $s=\\sqrt{x_A}>0$이다. $B$는 높이가 $ks$인 $y=\\sqrt{x}$ 위의 점이므로 $B=(k^2s^2,ks)$이고, $C$는 $x$좌표가 $s^2$인 점이므로 $C=(s^2,s)$이다.\n따라서 $AB=(k^2-1)s^2$, $AC=(k-1)s$이다. 두 선분은 서로 수직이고 삼각형이 이등변이므로\n$(k^2-1)s^2=(k-1)s$이다. $k>1$, $s>0$이므로 $(k+1)s=1$이다.\n공통인 두 직각변의 길이는 $(k-1)s=\\dfrac{k-1}{k+1}$이다. 넓이 조건에서\n$\\dfrac12\\left(\\dfrac{k-1}{k+1}\\right)^2=\\dfrac1{18}$이다. 양변을 정리하면 $\\dfrac{k-1}{k+1}=\\dfrac13$이고 $3k-3=k+1$이므로 $k=2$이다. 정답은 ②이다.",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q020_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q020_visual.png",
     "hasVisualAsset": true,
@@ -1883,7 +1883,7 @@ window.questionBank = [
     "content": "무리함수 $f(x)=-\\sqrt{2x+a}+b$의 그래프가 다음 그림과 같을 때, 다음을 구하시오. [6점]\n(1) 상수 $a,b$의 값을 각각 구하시오. [2점]\n(2) 무리함수 $f$의 역함수를 $g$라 할 때, 함수 $y=f(x)$와 함수 $y=g(x)$의 만나는 점의 좌표가 $(p,q)$이다. $p+q$의 값을 풀이과정과 함께 서술하시오. [4점]",
     "choices": [],
     "answer": "a=2, b=2; p+q=6−2√7",
-    "solution": "",
+    "solution": "**(1)** 그래프의 시작점은 $(-1,2)$이다. 제곱근 안이 0이 되는 곳이 시작점이므로 $2(-1)+a=0$, 따라서 $a=2$이다. 그때 함수값은 $b$이므로 $b=2$이다.\n**(2)** 이제 $f(x)=2-\\sqrt{2x+2}$이고 정의역은 $x\\ge-1$, 치역은 $y\\le2$이다. $y=f(x)$에서 $x,y$를 바꾸어 풀면 역함수는 $f^{-1}(x)=\\dfrac{(2-x)^2}{2}-1$이며 정의역은 $x\\le2$이다.\n두 그래프의 공통점 $(p,q)$는 $q=f(p)$, $p=f(q)$를 만족한다. 따라서\n$2-q=\\sqrt{2p+2}$, $2-p=\\sqrt{2q+2}$이다. 두 식을 제곱하고 빼면\n$(p-q)(4-p-q)=2(p-q)$이다. 만약 $p\\ne q$이면 $p+q=2$이다. 이를 첫째 식에 대입하면 $p^2=2p+2$이므로 $p=1\\pm\\sqrt3$이고, 두 값 중 하나는 2보다 크다. 그런데 공통점의 두 좌표는 모두 역함수의 정의역 조건 때문에 2 이하이므로 모순이다. 따라서 $p=q$이다.\n$p=2-\\sqrt{2p+2}$에서 $p\\le2$이므로 제곱하면 $p^2-6p+2=0$이다. 가능한 값은 $p=3-\\sqrt7$이다.\n따라서 $p+q=2p=6-2\\sqrt7$이다.",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q021_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q021_visual.png",
     "hasVisualAsset": true,
@@ -2003,7 +2003,7 @@ window.questionBank = [
     "content": "최고차항의 계수가 양수인 이차함수 $f(x)$에 대하여 함수 $g(x)$를 다음과 같이 정의하자.\n$g(x)=\\begin{cases}x-4&(x<-1)\\\\f(x)&(-1\\le x\\le2)\\\\x+2&(x>2)\\end{cases}$\n함수 $g(x)$의 치역이 실수 전체의 집합이고, 함수 $g(x)$의 역함수가 존재할 때, $g(0)=-1$, $g(-1)=4$를 만족하는 $f(x)$를 풀이과정과 함께 서술하시오. [7점]",
     "choices": [],
     "answer": "x^2-4x-1",
-    "solution": "",
+    "solution": "$x<-1$에서 $g(x)=x-4$의 치역은 $(-\\infty,-5)$이고, $x>2$에서 $g(x)=x+2$의 치역은 $(4,\\infty)$이다. 따라서 가운데 이차함수는 이 두 구간과 겹치지 않으면서 빠진 값 $[-5,4]$를 모두 만들어야 한다.\n$f(0)=g(0)=-1$이므로 $f(x)=Ax^2+Bx-1$이라 둘 수 있다. $g(-1)=4$이므로 $f(-1)=4$에서 $A-B=5$이다.\n가운데 이차함수는 구간 $[-1,2]$에서 일대일이어야 하므로 그 구간 안에서 방향이 바뀔 수 없다. 만약 증가하면 $f(-1)=4$보다 큰 값도 가져 오른쪽 조각의 치역 $(4,\\infty)$와 겹치므로 일대일이 깨진다. 따라서 가운데에서는 감소하고, 빠진 치역의 왼쪽 끝을 채우려면 $f(2)=-5$이다. 그러므로 $2A+B=-2$이다.\n$A-B=5$, $2A+B=-2$를 풀면 $A=1$, $B=-4$이다. 따라서 $f(x)=x^2-4x-1=(x-2)^2-5$이다. 이 함수는 $[-1,2]$에서 4부터 −5까지 감소하므로 바깥 두 조각과 함께 치역은 실수 전체이고 일대일이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -2084,7 +2084,7 @@ window.questionBank = [
     "content": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 $f=f^{-1}$을 만족하는 함수 $f:X\\to X$의 개수를 풀이과정과 함께 서술하시오. [7점]",
     "choices": [],
     "answer": "26",
-    "solution": "",
+    "solution": "$f=f^{-1}$이면 $f(f(x))=x$이고 $f$는 집합의 순열이다. 따라서 순열의 순환은 길이 1인 고정점이나 길이 2인 맞바꿈으로만 이루어진다.\n맞바꿈이 0개이면 1가지이다. 1개이면 두 원소를 고르는 ${}_5C_2=10$가지이다. 2개이면 먼저 네 원소를 고르고, 그 네 원소를 두 쌍으로 나누는 방법이 3가지이므로 ${}_5C_4\\cdot3=15$가지이다.\n전체는 $1+10+15=26$개이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
