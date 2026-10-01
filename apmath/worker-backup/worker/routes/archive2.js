@@ -14,6 +14,8 @@ import {
   validateApprovedMixedQuestions,
   validateNormalBlueprint,
   checkTargetGrade,
+  checkTargetGrades,
+  resolveSavedPaperSourceGrades,
   blueprintInsertStatements,
   validateOriginalSnapshot,
 } from "../helpers/archive2-questions.js";
@@ -123,7 +125,10 @@ export async function handleArchive2(
       savedSnapshot = await readAndVerifySavedSnapshot(savedPaper);
       if (savedSnapshot.questions.length !== Number(savedPaper.question_count))
         fail("저장한 시험지 문항 수가 일치하지 않습니다.", 409);
-      checkTargetGrade(classRow, savedPaper.grade);
+      checkTargetGrades(
+        classRow,
+        await resolveSavedPaperSourceGrades(env, savedSnapshot.questions),
+      );
       title = savedPaper.title;
       file = `MIXED:archive2-saved-${paperId}-${batchId}`;
     }
@@ -240,10 +245,10 @@ export async function handleArchive2(
       meta = payload?.meta || {};
       if (JSON.stringify(payload || {}).length > 900000)
         fail("mixed payload exceeds 900KB", 413);
-      if (!existing) checkTargetGrade(classRow, input.selection_filters?.grade);
       if (!existing) {
         const verified = await validateApprovedMixedQuestions(env, questions, input);
         canonicalAuthority = verified.canonicalAuthority;
+        checkTargetGrades(classRow, verified.sourceGrades);
       }
     } else {
       if (!file.startsWith("exams/") || file.includes(".."))

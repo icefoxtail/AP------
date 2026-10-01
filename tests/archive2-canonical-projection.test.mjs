@@ -406,12 +406,24 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
   assert.equal(typeof canonical.computeProjectionVersion, "function");
   const payload = "{\"status\":\"DERIVED_READ_ONLY\"}";
   const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
-  const payloads = new Map(canonical.REQUIRED_INPUT_PATHS.map((path) => [path, path === masterPath ? payload : "{}"]));
+  const payloads = new Map(canonical.MANIFEST_REQUIRED_PATHS.map((path) => [path, path === masterPath ? payload : "{}"]));
+  const unneededEvidencePath = "data/meta-foundation/evidence/unneeded-runtime-input.json";
+  const referencedEvidencePath = "data/meta-foundation/evidence/runtime-source.json";
+  payloads.set(canonical.RUNTIME_INPUT_PATHS[0], JSON.stringify({
+    generatedFrom: { reviewedEvidence: "archive/" + referencedEvidencePath },
+  }));
+  payloads.set(referencedEvidencePath, JSON.stringify({ evidence: "required for full digest membership" }));
+  payloads.set(unneededEvidencePath, JSON.stringify({ evidence: "digest-bound, not resolver-loaded" }));
   const files = [...payloads].map(([path, value]) => ({
     path,
     sha256: crypto.createHash("sha256").update(value).digest("hex"),
   }));
   const projectionVersion = await canonical.computeProjectionVersion(files);
+  const changedEvidenceDigests = files.map(file => file.path === unneededEvidencePath
+    ? { ...file, sha256: "f".repeat(64) }
+    : file);
+  assert.notEqual(await canonical.computeProjectionVersion(changedEvidenceDigests), projectionVersion,
+    "non-runtime authority digests remain part of the projection version");
   const manifest = {
     schemaVersion: "archive2-canonical-input-manifest-v1",
     resolverVersion: canonical.RESOLVER_VERSION,
@@ -423,11 +435,18 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
   for (const [path, value] of payloads)
     contents.set(new URL(path, baseUrl).href, value);
   const masterUrl = new URL(masterPath, baseUrl).href;
+  const requestedPaths = [];
   const fetcher = async (url) => {
+    requestedPaths.push(new URL(String(url)).pathname);
     const value = contents.get(new URL(String(url)).href);
     return value === undefined ? new Response("missing", { status: 404 }) : new Response(value);
   };
-  assert.equal((await canonical.loadInputBundle(fetcher, baseUrl)).projectionVersion, projectionVersion);
+  const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
+  assert.equal(bundle.projectionVersion, projectionVersion);
+  assert.ok(bundle.files[unneededEvidencePath], "the evidence digest remains in the full input commitment");
+  assert.equal(Object.hasOwn(bundle.resources, unneededEvidencePath), false);
+  assert.equal(requestedPaths.includes(new URL(unneededEvidencePath, baseUrl).pathname), false,
+    "runtime bootstrap must not fetch digest-only evidence files");
   await t.test("stale browser", async () => {
     await assert.rejects(
       canonical.loadInputBundle(fetcher, baseUrl, "archive2-canonical-v1:old"),
@@ -450,6 +469,18 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
     await assert.rejects(canonical.loadInputBundle(fetcher, baseUrl), (error) => error.code === "CANONICAL_AUTHORITY_UNAVAILABLE");
     contents.set(manifestUrl, JSON.stringify(manifest));
   });
+  await t.test("missing digest-only generatedFrom evidence", async () => {
+    const withoutEvidence = files.filter((file) => file.path !== referencedEvidencePath);
+    const incomplete = {
+      ...manifest,
+      files: withoutEvidence,
+      projectionVersion: await canonical.computeProjectionVersion(withoutEvidence),
+    };
+    contents.set(manifestUrl, JSON.stringify(incomplete));
+    await assert.rejects(canonical.loadInputBundle(fetcher, baseUrl),
+      (error) => error.code === "CANONICAL_AUTHORITY_UNAVAILABLE");
+    contents.set(manifestUrl, JSON.stringify(manifest));
+  });
   await t.test("mixed file bytes", async () => {
     contents.set(masterUrl, "{}\n");
     await assert.rejects(canonical.loadInputBundle(fetcher, baseUrl), (error) => error.code === "CANONICAL_INPUT_DIGEST_MISMATCH");
@@ -459,4 +490,33 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
     contents.delete(masterUrl);
     await assert.rejects(canonical.loadInputBundle(fetcher, baseUrl), (error) => error.code === "CANONICAL_AUTHORITY_UNAVAILABLE");
   });
+});
+
+test("runtime canonical bootstrap keeps all 57 authority digests while fetching only resolver inputs", async () => {
+  const archiveDir = path.join(root, "archive");
+  const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, "data/archive2-canonical-input-manifest.json"), "utf8"));
+  const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
+  const requested = [];
+  const fetcher = async (url) => {
+    const pathname = decodeURIComponent(new URL(String(url)).pathname);
+    const relative = pathname.replace(/^\/AP------\//, "");
+    const file = path.resolve(root, relative);
+    const fromRoot = path.relative(root, file);
+    requested.push(relative);
+    if (fromRoot.startsWith("..") || path.isAbsolute(fromRoot) || !fs.existsSync(file))
+      return new Response("missing", { status: 404 });
+    return new Response(fs.readFileSync(file), { status: 200 });
+  };
+
+  const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
+  assert.equal(manifest.files.length, 57);
+  assert.equal(bundle.projectionVersion, manifest.projectionVersion);
+  assert.equal(Object.keys(bundle.files).length, manifest.files.length,
+    "projection version remains bound to every manifest digest");
+  assert.equal(Object.keys(bundle.resources).length, canonical.REQUIRED_INPUT_PATHS.length);
+  assert.equal(requested.length, canonical.REQUIRED_INPUT_PATHS.length + 1,
+    "only the manifest and resolver inputs are fetched");
+  assert.ok(requested.length < manifest.files.length + 1);
+  assert.equal(requested.includes("archive/data/question_metadata.json"), false);
+  assert.equal(requested.includes("archive/data/question_identity_map.json"), false);
 });

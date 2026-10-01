@@ -488,22 +488,16 @@ const overrideIndex = {
 };
 const overrideIndexText = JSON.stringify(overrideIndex) + "\n";
 const overrideIndexTarget = path.join(root, "archive/data/archive2-item-review-overrides.json");
-const additionalInputPaths = new Set();
-for (const runtimePath of core.Canonical.REQUIRED_INPUT_PATHS.filter((value) => value.startsWith("data/meta-foundation/runtime/"))) {
-  const runtime = JSON.parse(read("archive/" + runtimePath));
-  for (const sourceRef of Object.values(runtime.generatedFrom || {})) {
-    if (typeof sourceRef !== "string" || !sourceRef.startsWith("archive/") || !sourceRef.endsWith(".json")) continue;
-    const rootPath = path.resolve(root, sourceRef);
-    if (!fs.existsSync(rootPath) || !fs.statSync(rootPath).isFile()) continue;
-    const webPath = sourceRef.slice("archive/".length);
-    additionalInputPaths.add(webPath);
-    if (webPath.includes("/evidence/") && /item_metadata_assignments.*\.json$/.test(webPath)) {
-      const receipt = path.posix.join(path.posix.dirname(webPath), "promotion_receipt.json");
-      if (fs.existsSync(path.resolve(root, "archive", receipt))) additionalInputPaths.add(receipt);
-    }
-  }
-}
-const allInputPaths = [...new Set([...core.Canonical.REQUIRED_INPUT_PATHS, ...additionalInputPaths])].sort();
+const runtimePacks = core.Canonical.RUNTIME_INPUT_PATHS.map((runtimePath) =>
+  JSON.parse(read("archive/" + runtimePath)),
+);
+const allInputPaths = core.Canonical.manifestInputPathsFromRuntimePacks(
+  runtimePacks,
+  (inputPath) => {
+    const absolutePath = path.resolve(root, "archive", inputPath);
+    return fs.existsSync(absolutePath) && fs.statSync(absolutePath).isFile();
+  },
+);
 const manifestFiles = allInputPaths.map((inputPath) => {
   const bytes = inputPath === "data/archive2-catalog.json"
     ? Buffer.from(packedText, "utf8")

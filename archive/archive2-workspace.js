@@ -2373,7 +2373,11 @@
           state.catalog.taxonomy,
         );
         state.sources = state.sources.filter(file => state.catalog.records.some(record =>
-          record.sourceFile === file && record.effectiveBrowseGrade === state.filters.grade));
+          record.sourceFile === file && C.browseGradeMatchesRecord(
+            record,
+            state.filters.grade,
+            state.catalog.projectionPolicy,
+          )));
         if (!state.receipts.length && !state.sealed)
           reconcileFinderSchool(state.filters);
         state.scopes = [];
