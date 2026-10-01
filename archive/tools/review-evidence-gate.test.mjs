@@ -16,6 +16,18 @@ const assetFile = path.join(assetDir, 'q1.svg');
 fs.writeFileSync(assetFile, '<svg xmlns="http://www.w3.org/2000/svg"><line id="l" x1="0" y1="0" x2="1" y2="1"/></svg>\n');
 const goodExam = `window.examTitle="test";window.questionBank=[{"id":1,"content":"<br>ㄱ. A<br>ㄴ. B","choices":["1","2"],"answer":"①","solution":"ㄱ. 참\\n\\nㄴ. 거짓","standardCourse":"공통수학2","standardUnitKey":"H22-C2-02","subUnitKey":"H22-C2-02-RELATION","problemTypeKey":"PT_LINE_RELATION","templateKey":"TPL_RELATION","solutionImage":"assets/images/test/q1.svg"}];\n`;
 const hash = value => `sha256:${crypto.createHash('sha256').update(value).digest('hex')}`;
+const repoRoot = process.cwd();
+const goldenPaths = ['archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js','archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js'];
+const negativePath = 'archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md';
+const blobHash=value=>{const bytes=Buffer.isBuffer(value)?value:Buffer.from(value);return crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes])).digest('hex');};
+function parseBank(file){const box={window:{}};new Function('window',fs.readFileSync(file,'utf8'))(box.window);return box.window.questionBank;}
+function boundRef(rel){const bytes=fs.readFileSync(path.join(repoRoot,rel));return {path:rel,sha256:hash(bytes),gitBlobSha:blobHash(bytes)};}
+function buildCalibration(){
+  const goldenSampleQuestionRefs=[];
+  for(const rel of goldenPaths){const bank=parseBank(path.join(repoRoot,rel));for(const q of bank.slice(0,2)) goldenSampleQuestionRefs.push({path:rel,qid:q.id,solutionSha256:hash(String(q.solution)),observation:'representative solution structure read'});}
+  return {goldenSampleRefs:goldenPaths.map(boundRef),goldenSampleQuestionRefs,negativeSampleRefs:[boundRef(negativePath)],calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY'],sampleReadBeforeWork:true,qualityCompareCount:'1/1',calibrationStatus:'PASS',solutionWorkMode:'INDEPENDENT_REVIEW',calibrationOrder:'BLIND_TARGET_DECISION_FROZEN_THEN_CALIBRATE'};
+}
+
 
 function evidence(examSource = goodExam) {
   return {
@@ -57,6 +69,7 @@ function evidence(examSource = goodExam) {
       problemTypeKey: 'PT_LINE_RELATION',
       templateKey: 'TPL_RELATION',
     }],
+    solutionQualityCalibration: buildCalibration(),
     summary: {
       questionCount: 1,
       questionEvidenceRows: 1,
@@ -76,6 +89,8 @@ function run(examSource, ev) {
 
 let report = run(goodExam, evidence());
 assert.equal(report.ok, true, JSON.stringify(report));
+const missingCalibration=evidence(); delete missingCalibration.solutionQualityCalibration; report=run(goodExam,missingCalibration); assert.equal(report.ok,false); assert(report.issues.includes('SOLUTION_CALIBRATION_REQUIRED'));
+const staleGolden=evidence(); staleGolden.solutionQualityCalibration.goldenSampleRefs[0].sha256='sha256:'+'0'.repeat(64); report=run(goodExam,staleGolden); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SHA256_MISMATCH')));
 
 const layoutBad = goodExam.replace('ㄱ. 참\\n\\nㄴ. 거짓', 'ㄱ. 참. ㄴ. 거짓');
 report = run(layoutBad, evidence(layoutBad));

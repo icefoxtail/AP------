@@ -1,5 +1,16 @@
 # JS아카이브 학생용 해설 운영규칙 v1
 
+## CURRENT HARD GATE — 2026-10-01 — GOLDEN SAMPLE AFTER FRESH / BEFORE CLOSE
+
+학생용 해설은 실제 Golden Sample calibration을 거친 뒤에만 PASS로 닫는다. 모든 solution 생성·재작성·업그레이드·승인 작업은 `Archive_작업전_Golden_Sample_Calibration_v1.md`와 `review-evidence-gate.mjs`를 함께 적용한다.
+
+- 신규/source-only CREATE 및 fresh rewrite: source+answer로 독립 fresh solution을 먼저 작성·동결 → Golden/Negative 비교 → target 보강.
+- 기존 production upgrade: baseline 확인 → Golden/Negative calibration → 객관적으로 부족한 문항만 보강.
+- 독립 REVIEW: blind target 판정 동결 → Golden/Negative quality compare. 샘플 문장 복사 금지.
+- Meta-only 등 solution 비접촉 작업만 N/A 가능하며 해설 품질 PASS를 새로 부여하지 않는다.
+- `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`를 실제 비교한다. 길이 기준은 사용하지 않는다.
+
+
 - 적용일: 2026-09-23
 - 최근 보강: 2026-09-25 — 기하 해설 SVG 적극 제작 기준 및 단계 경계 정합화
 - 상태: ACTIVE
