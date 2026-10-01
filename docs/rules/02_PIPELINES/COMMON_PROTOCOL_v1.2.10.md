@@ -2803,6 +2803,8 @@ Overlay가 단원 특성에 따라 판정 규칙을 구체화한다.
 
 # 18. Visual Fact Model · Deterministic Generator
 
+이 장의 deterministic generator는 **생성형 visual/해설 visual 및 17.1에서 허용된 예외 problem reconstruction**에만 적용한다. usable source pixel crop이 있는 기출 problem image는 생성 대상이 아니며 원본 PNG를 보존한다.
+
 시각자료는 machine-readable fact model에서 생성한다.
 
 예시 필드:
