@@ -20,7 +20,7 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "wide": false,
-    "content": "닫힌구간 $[-2,,2]$에서 함수 $f(x)=x^3+3x^2-12$의 최댓값과 최솟값의 합은? [3.5점]",
+    "content": "닫힌구간 $[-2,\\,2]$에서 함수 $f(x)=x^3+3x^2-12$의 최댓값과 최솟값의 합은? [3.5점]",
     "choices": [
       "$-4$",
       "$-3$",
@@ -81,7 +81,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:a1e47b3f056e16a0c84d3b15e77f347910e7701ff5058574e5406d39ddc90002"
+    "sourceMetadataFirstPassSha": "sha256:4b0c3027643e33ed2e62767e7f1ad79bef7a253e98624872e7c8769ca8b04cb3"
   },
   {
     "id": 2,
@@ -1523,7 +1523,7 @@ window.questionBank = [
     "visualAssetType": "graph",
     "visualAssetBBoxOnPage": {
       "x1": 170,
-      "y1": 1420,
+      "y1": 1380,
       "x2": 800,
       "y2": 1680
     },
@@ -1562,7 +1562,7 @@ window.questionBank = [
     "tagStatus": "manual_review",
     "visualAssetProvenance": {
       "assetPath": "assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
-      "assetSha256": "sha256:ebec9365a0615c430720359ae07e1f4034e2e7cc189309fed93454b886df99aa",
+      "assetSha256": "sha256:3564902487f9c875fb2b117e3b939fb5e82dffe4e6c9697c0c69ddaa5c0687dc",
       "assetBindingType": "DIRECT",
       "sourceDocumentSha256": "sha256:81806e70e69932928eeff5d90706d4c32ee45155133a421670e7c1d57ce929b3",
       "sourceQuestionNo": "18",
@@ -1573,14 +1573,14 @@ window.questionBank = [
       ],
       "sourceBBox": {
         "x1": 170,
-        "y1": 1420,
+        "y1": 1380,
         "x2": 800,
         "y2": 1680
       },
       "cropGenerator": "scanned_exam_pipeline.py",
       "pngDecodePass": true,
       "naturalWidth": 630,
-      "naturalHeight": 260,
+      "naturalHeight": 300,
       "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
       "verdict": "PENDING_REVIEW",
       "checks": {
@@ -1606,7 +1606,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:900e2895110b492186c70c066ea3904d24a443b1f4b96f4ca43e8a94d4c9d280"
+    "sourceMetadataFirstPassSha": "sha256:5f06e4f881f40219b203f49e5ba2c459875deae62be8ef0ea5162189424d315d"
   },
   {
     "id": 19,

@@ -1,0 +1,110 @@
+{
+  "schema": "SOURCE_ASSET_AND_TEXT_REPAIR_RECEIPT_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+  "priorArtifactCommit": "8a22c605549a4468a0d40823d5242bf798bcb301",
+  "priorIndependentReviewReportPath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+  "priorIndependentReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
+  "sourceTextRepair": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "1",
+      "field": "content",
+      "oldSubstring": "[-2,,2]",
+      "newSubstring": "[-2,\\,2]",
+      "reason": "Restore the printed closed-interval separator as valid TeX spacing; original pixels show endpoints −2 and 2 separated by one interval comma."
+    }
+  ],
+  "assetRepairs": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "oldBBox": {
+        "x1": 170,
+        "y1": 1420,
+        "x2": 800,
+        "y2": 1680
+      },
+      "newBBox": {
+        "x1": 170,
+        "y1": 1380,
+        "x2": 800,
+        "y2": 1680
+      },
+      "reason": "Restore full upper curve labels y=f(t), y=g(t)."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "oldBBox": {
+        "x1": 850,
+        "y1": 2110,
+        "x2": 1060,
+        "y2": 2460
+      },
+      "newBBox": {
+        "x1": 820,
+        "y1": 2100,
+        "x2": 1060,
+        "y2": 2460
+      },
+      "reason": "Restore complete v(t) label while keeping the neighboring choice line outside the crop."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "oldBBox": {
+        "x1": 1650,
+        "y1": 1450,
+        "x2": 2190,
+        "y2": 2050
+      },
+      "newBBox": {
+        "x1": 1650,
+        "y1": 1450,
+        "x2": 2100,
+        "y2": 2050
+      },
+      "reason": "Exclude the right page/column divider while retaining the complete source graph."
+    }
+  ],
+  "newSourceJs": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "jsPath": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:d425aeecffb594e8c2aea9d931d9e9e02ccb082ab3f430651a9bcf71b18555e2",
+      "changedQids": [
+        "1",
+        "18"
+      ],
+      "changedAssets": [
+        {
+          "qid": "18",
+          "path": "assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+          "bbox": {
+            "x1": 170,
+            "y1": 1380,
+            "x2": 800,
+            "y2": 1680
+          },
+          "assetSha256": "sha256:3564902487f9c875fb2b117e3b939fb5e82dffe4e6c9697c0c69ddaa5c0687dc",
+          "sourcePageNo": 5,
+          "sourcePageSha256": "sha256:6192219c8f99e1a4a0da028ddf4aa097dbac603c42f96165d5712ff3b7fb5529"
+        }
+      ]
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "jsPath": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
+      "sourceJsSha256": "sha256:55449fd9df1e955f1f77558eeefc3ceca0a8c2d27568395bb800c523536e94e7",
+      "changedQids": [
+        "4",
+        "22"
+      ],
+      "changedAssets": []
+    }
+  ],
+  "sourcePagePixelsChanged": false,
+  "assetOperations": "Source-page PNG crop only; no rotation, deskew, contrast, reconstruction, or pixel restoration.",
+  "recheckRequired": true,
+  "nextReviewScope": "Fresh independent recheck of source q1 serialization and the three repaired crops; preserve the 46-row initial report and do not edit unrelated questions/assets."
+}

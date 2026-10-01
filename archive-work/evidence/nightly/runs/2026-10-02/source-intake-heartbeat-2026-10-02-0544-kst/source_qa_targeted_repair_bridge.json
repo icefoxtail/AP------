@@ -1,0 +1,72 @@
+{
+  "schema": "SOURCE_QA_TARGETED_REPAIR_BRIDGE_v1",
+  "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+  "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+  "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
+  "initialReviewStatus": "ASSET_REPAIR_REQUIRED",
+  "initialReviewerSubagentId": "/root/source_qa_20261002_0544",
+  "initialQuestionReviewCount": 46,
+  "initialAssetReviewCount": 10,
+  "initialSourceAndChoicesParity": "PASS_46_OF_46",
+  "sourceTextRepair": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "1",
+      "oldContentSha256": "a29121af8dc28f58f1d22ac08ad9dc06210b5dcc2590ddaf31668730606b2b17",
+      "newContent": "닫힌구간 $[-2,\\,2]$에서 함수 $f(x)=x^3+3x^2-12$의 최댓값과 최솟값의 합은? [3.5점]",
+      "reason": "Initial full-field parity row missed a malformed interval separator in the worker transcription. Fresh reviewer must re-read the printed interval and verify TeX serialization."
+    }
+  ],
+  "assetRepairs": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "reason": "Restore full y=f(t), y=g(t) graph labels."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "4",
+      "reason": "Restore full v(t) graph label without neighboring choice text."
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "reason": "Remove right page/column divider from crop."
+    }
+  ],
+  "targetedRecheckScope": {
+    "questions": [
+      {
+        "examId": "22_팔마고_2학기_기말_고2_수학II",
+        "qids": [
+          "1",
+          "18"
+        ]
+      },
+      {
+        "examId": "22_효천고_2학기_기말_고2_수학II",
+        "qids": [
+          "4",
+          "22"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "examId": "22_팔마고_2학기_기말_고2_수학II",
+        "qids": [
+          "18"
+        ]
+      },
+      {
+        "examId": "22_효천고_2학기_기말_고2_수학II",
+        "qids": [
+          "4",
+          "22"
+        ]
+      }
+    ],
+    "doNotEdit": "Only targeted recheck report; source/asset files are frozen at the repair artifact commit."
+  },
+  "status": "FRESH_INDEPENDENT_RECHECK_PENDING"
+}

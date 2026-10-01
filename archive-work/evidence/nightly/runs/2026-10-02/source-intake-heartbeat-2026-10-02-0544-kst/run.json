@@ -4,7 +4,7 @@
   "batchDate": "2026-10-02",
   "owner": "codex-thread-automation-10",
   "startedAtKst": "2026-10-02T05:44:00+09:00",
-  "status": "SOURCE_ONLY_ARTIFACTS_READY_REVIEW_PENDING",
+  "status": "SOURCE_REPAIRS_READY_FOR_TARGETED_RECHECK",
   "priorityGroup": "high2",
   "priorityGroupRemainingBefore": 22,
   "priorityGroupRemainingAfterSelection": 20,
@@ -60,7 +60,7 @@
         "coverVisualVerification": "PASS_DIRECT_FULL_PAGE_PIXELS",
         "duplicateIdentityStatus": "PASS_NO_MATCHING_JS_IN_LATEST_ORIGIN_MAIN_AND_ORIGIN_INTAKE",
         "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_팔마고_2학기_기말_고2_수학II.js",
-        "sourceJsSha256": "sha256:e036d51c49daf582a20c798bed2c8fd351f7b774ca7b8e09d53a4ead9f61cdb2"
+        "sourceJsSha256": "sha256:d425aeecffb594e8c2aea9d931d9e9e02ccb082ab3f430651a9bcf71b18555e2"
       },
       "questionCount": 22,
       "choiceCount": 95,
@@ -93,17 +93,26 @@
       "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
       "renderStatus": "NOT_RUN_USER_DIRECTIVE",
       "renderReason": "User automation prohibits browser/engine exam, solution, and answer render.",
-      "sourceArtifactStatus": "READY_FOR_ARTIFACT_PUSH",
-      "independentReviewStatus": "PENDING_SINGLE_FRESH_SOURCE_QA_SUBAGENT",
+      "sourceArtifactStatus": "REPAIR_READY_FOR_PUSH",
+      "independentReviewStatus": "FRESH_TARGETED_RECHECK_PENDING",
       "reviewScope": "Only the two newly assigned papers in this run.",
       "reviewEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/source_text_asset_independent_review.json",
       "metadataFirstPassEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/source_metadata_first_pass.json",
       "sourceFidelityEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/source_text_freeze.json",
       "sourceAssetProvenanceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/source_asset_crop_provenance.json",
-      "sourceAssetCropAuditStatus": "INDEPENDENT_REVIEW_PENDING",
+      "sourceAssetCropAuditStatus": "TARGETED_RECHECK_PENDING",
       "productionAuthorized": false,
       "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
-      "notionWrites": "NOT_PERFORMED"
+      "notionWrites": "NOT_PERFORMED",
+      "sourceTextRepairQids": [
+        "1"
+      ],
+      "assetRepairQids": [
+        "18"
+      ],
+      "initialIndependentReviewStatus": "ASSET_REPAIR_REQUIRED",
+      "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+      "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741"
     },
     {
       "examId": "22_효천고_2학기_기말_고2_수학II",
@@ -120,7 +129,7 @@
         "coverVisualVerification": "PASS_DIRECT_FULL_PAGE_PIXELS",
         "duplicateIdentityStatus": "PASS_NO_MATCHING_JS_IN_LATEST_ORIGIN_MAIN_AND_ORIGIN_INTAKE",
         "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_효천고_2학기_기말_고2_수학II.js",
-        "sourceJsSha256": "sha256:7e185dec2519b4ae4a4fa286f7edb0b35f07b2a6aaf42b348d56d8ebc65d52ac"
+        "sourceJsSha256": "sha256:55449fd9df1e955f1f77558eeefc3ceca0a8c2d27568395bb800c523536e94e7"
       },
       "questionCount": 24,
       "choiceCount": 100,
@@ -153,21 +162,87 @@
       "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
       "renderStatus": "NOT_RUN_USER_DIRECTIVE",
       "renderReason": "User automation prohibits browser/engine exam, solution, and answer render.",
-      "sourceArtifactStatus": "READY_FOR_ARTIFACT_PUSH",
-      "independentReviewStatus": "PENDING_SINGLE_FRESH_SOURCE_QA_SUBAGENT",
+      "sourceArtifactStatus": "REPAIR_READY_FOR_PUSH",
+      "independentReviewStatus": "FRESH_TARGETED_RECHECK_PENDING",
       "reviewScope": "Only the two newly assigned papers in this run.",
       "reviewEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_text_asset_independent_review.json",
       "metadataFirstPassEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_metadata_first_pass.json",
       "sourceFidelityEvidenceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_text_freeze.json",
       "sourceAssetProvenanceRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_asset_crop_provenance.json",
-      "sourceAssetCropAuditStatus": "INDEPENDENT_REVIEW_PENDING",
+      "sourceAssetCropAuditStatus": "TARGETED_RECHECK_PENDING",
       "productionAuthorized": false,
       "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
-      "notionWrites": "NOT_PERFORMED"
+      "notionWrites": "NOT_PERFORMED",
+      "sourceTextRepairQids": [],
+      "assetRepairQids": [
+        "4",
+        "22"
+      ],
+      "initialIndependentReviewStatus": "ASSET_REPAIR_REQUIRED",
+      "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+      "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741"
     }
   ],
   "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
   "notionWrites": "NOT_PERFORMED",
   "independentReviewStatus": "PENDING_SINGLE_FRESH_SUBAGENT",
-  "runEvidenceDir": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst"
+  "runEvidenceDir": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst",
+  "initialIndependentReviewStatus": "ASSET_REPAIR_REQUIRED",
+  "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
+  "initialReviewTaskOrSubagentId": "/root/source_qa_20261002_0544",
+  "sourceTextRepairQids": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "1"
+    }
+  ],
+  "assetRepairQids": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "4"
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22"
+    }
+  ],
+  "targetedRecheckStatus": "PENDING_FRESH_SUBAGENT",
+  "targetedRecheckScope": {
+    "questions": [
+      {
+        "examId": "22_팔마고_2학기_기말_고2_수학II",
+        "qids": [
+          "1",
+          "18"
+        ]
+      },
+      {
+        "examId": "22_효천고_2학기_기말_고2_수학II",
+        "qids": [
+          "4",
+          "22"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "examId": "22_팔마고_2학기_기말_고2_수학II",
+        "qids": [
+          "18"
+        ]
+      },
+      {
+        "examId": "22_효천고_2학기_기말_고2_수학II",
+        "qids": [
+          "4",
+          "22"
+        ]
+      }
+    ],
+    "doNotEdit": "Only targeted recheck report; source/asset files are frozen at the repair artifact commit."
+  }
 }

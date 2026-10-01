@@ -284,8 +284,8 @@ window.questionBank = [
     "hasVisualAsset": true,
     "visualAssetType": "graph",
     "visualAssetBBoxOnPage": {
-      "x1": 850,
-      "y1": 2110,
+      "x1": 820,
+      "y1": 2100,
       "x2": 1060,
       "y2": 2460
     },
@@ -324,7 +324,7 @@ window.questionBank = [
     "tagStatus": "manual_review",
     "visualAssetProvenance": {
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
-      "assetSha256": "sha256:c927727e5ccb1f44a444a84da3cc0e2d907afcc0450b29b98df5c926c044c558",
+      "assetSha256": "sha256:2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
       "assetBindingType": "DIRECT",
       "sourceDocumentSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
       "sourceQuestionNo": "4",
@@ -334,15 +334,15 @@ window.questionBank = [
         "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png"
       ],
       "sourceBBox": {
-        "x1": 850,
-        "y1": 2110,
+        "x1": 820,
+        "y1": 2100,
         "x2": 1060,
         "y2": 2460
       },
       "cropGenerator": "scanned_exam_pipeline.py",
       "pngDecodePass": true,
-      "naturalWidth": 210,
-      "naturalHeight": 350,
+      "naturalWidth": 240,
+      "naturalHeight": 360,
       "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
       "verdict": "PENDING_REVIEW",
       "checks": {
@@ -368,7 +368,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:afff305fac4b95cbd9186fcfcf8b3c313e0b1a096a0786c4162731210b47984a"
+    "sourceMetadataFirstPassSha": "sha256:bfcea3635122c5e5f51946605886003776398bfff45853f3daaad785e90b36af"
   },
   {
     "id": 5,
@@ -1920,7 +1920,7 @@ window.questionBank = [
     "visualAssetBBoxOnPage": {
       "x1": 1650,
       "y1": 1450,
-      "x2": 2190,
+      "x2": 2100,
       "y2": 2050
     },
     "visualAssetStatus": "cropped_from_full_page_bbox",
@@ -1958,7 +1958,7 @@ window.questionBank = [
     "tagStatus": "manual_review",
     "visualAssetProvenance": {
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-      "assetSha256": "sha256:08687de1682ab5b2cfb579e2f587dc8c582c3c82ee56596c56e050260b623d76",
+      "assetSha256": "sha256:f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
       "assetBindingType": "DIRECT",
       "sourceDocumentSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
       "sourceQuestionNo": "서술형2",
@@ -1970,12 +1970,12 @@ window.questionBank = [
       "sourceBBox": {
         "x1": 1650,
         "y1": 1450,
-        "x2": 2190,
+        "x2": 2100,
         "y2": 2050
       },
       "cropGenerator": "scanned_exam_pipeline.py",
       "pngDecodePass": true,
-      "naturalWidth": 540,
+      "naturalWidth": 450,
       "naturalHeight": 600,
       "cropStatus": "CROP_PURITY_REVIEW_REQUIRED",
       "verdict": "PENDING_REVIEW",
@@ -2002,7 +2002,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:7893cbb42fcb7618691c56c84f1f9fb23ee7a3680fe5c65d9f07ed3ebd693d82"
+    "sourceMetadataFirstPassSha": "sha256:4ba3316163a03c5c25fa4caa00cff212df35c868511db43b4e5a7d4766187595"
   },
   {
     "id": 23,
