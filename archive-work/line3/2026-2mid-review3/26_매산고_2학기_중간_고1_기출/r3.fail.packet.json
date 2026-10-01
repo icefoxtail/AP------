@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v1",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "r3InputArtifactSha": "7401a9cd568589637b529131ed56a2b125767302",
+  "r3InputReview2Head": "337a85ab549cacebd55e1f3300f4372b9abe4fb4",
+  "reviewedAt": "2026-10-01T09:04:00+09:00",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "failedQids": [
+    1,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    18,
+    20,
+    21
+  ],
+  "failureCodes": [
+    "META_CANONICAL_HOLD",
+    "SOLUTION_VISUAL_MISSING",
+    "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL",
+    "CURRICULUM_FAIL",
+    "SOLUTION_LOGIC_GAP"
+  ],
+  "affectedAxes": [
+    "curriculum_method",
+    "visual_necessity",
+    "problem_image_crop_publication",
+    "solution_reproducibility",
+    "meta_canonical",
+    "protected_field_integrity"
+  ],
+  "findings": [
+    {
+      "qid": 1,
+      "codes": [
+        "META_CANONICAL_HOLD"
+      ],
+      "observedEvidence": "exact RPM L4 for setness judgment unresolved; problemTypeKey/templateKey remain null",
+      "authorityEvidence": "REVIEW2 artifact + current RPM/canonical authority"
+    },
+    {
+      "qid": 8,
+      "codes": [
+        "SOLUTION_VISUAL_MISSING"
+      ],
+      "observedEvidence": "quadratic tangency and parallel-line decisive step has no solutionImage",
+      "authorityEvidence": "CURRENT curriculum+visual N/N hard gate; geometry-equation visual canonical"
+    },
+    {
+      "qid": 9,
+      "codes": [
+        "SOLUTION_VISUAL_MISSING"
+      ],
+      "observedEvidence": "translated circle tangent to line has no solutionImage",
+      "authorityEvidence": "CURRENT curriculum+visual N/N hard gate; geometry-equation visual canonical"
+    },
+    {
+      "qid": 10,
+      "codes": [
+        "SOLUTION_VISUAL_MISSING"
+      ],
+      "observedEvidence": "two lines and angle-bisector equal-distance decisive step has no solutionImage",
+      "authorityEvidence": "CURRENT curriculum+visual N/N hard gate; geometry-equation visual canonical"
+    },
+    {
+      "qid": 11,
+      "codes": [
+        "SOLUTION_VISUAL_MISSING"
+      ],
+      "observedEvidence": "point-to-line feet and 3:2 distance ratio decisive step has no solutionImage",
+      "authorityEvidence": "CURRENT curriculum+visual N/N hard gate; geometry-equation visual canonical"
+    },
+    {
+      "qid": 12,
+      "codes": [
+        "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL"
+      ],
+      "observedEvidence": "problem crop places y=x label against/cut by crop edge",
+      "authorityEvidence": "source full-page page 3 + current problem crop"
+    },
+    {
+      "qid": 14,
+      "codes": [
+        "SOLUTION_VISUAL_MISSING"
+      ],
+      "observedEvidence": "circle-line tangency parameter cases have no solutionImage",
+      "authorityEvidence": "CURRENT curriculum+visual N/N hard gate; geometry-equation visual canonical"
+    },
+    {
+      "qid": 15,
+      "codes": [
+        "CURRICULUM_FAIL",
+        "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL"
+      ],
+      "observedEvidence": "final solution depends on direction-vector/projection terminology; problem crop clips y=mx label at right edge",
+      "authorityEvidence": "2026-10-01 hard-gate regression fixture + source full-page page 4"
+    },
+    {
+      "qid": 18,
+      "codes": [
+        "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL"
+      ],
+      "observedEvidence": "problem crop includes neighboring handwritten circle arc intruding at upper-left",
+      "authorityEvidence": "source full-page page 5 + current problem crop"
+    },
+    {
+      "qid": 20,
+      "codes": [
+        "SOLUTION_LOGIC_GAP"
+      ],
+      "observedEvidence": "B subset A asserted by 'both sixth powers are 1' without showing decisive algebraic link",
+      "authorityEvidence": "student reproducibility hard gate"
+    },
+    {
+      "qid": 21,
+      "codes": [
+        "CURRICULUM_FAIL",
+        "META_CANONICAL_HOLD"
+      ],
+      "observedEvidence": "final solution uses vector notation/vector-style perpendicular displacement; exact RPM primary remains unresolved",
+      "authorityEvidence": "2026-10-01 hard-gate regression fixture + current RPM/canonical authority"
+    }
+  ],
+  "suspectedSystemicScope": {
+    "curriculum": "FULL_21_QUESTION_REAUDIT",
+    "visualNecessity": "FULL_21_QUESTION_REAUDIT",
+    "crop": "TARGET_Q12_Q15_Q18",
+    "solutionReproducibility": "TARGET_Q20_PLUS_REPAIRED_SOLUTIONS",
+    "meta": "Q1_Q21_EXISTING_TRUE_HOLDS"
+  },
+  "protectedFieldDiffStatus": {
+    "content": "UNCHANGED_FROM_SOURCE_21_21",
+    "choices": "UNCHANGED_FROM_SOURCE_21_21",
+    "answer": "NO_R3_CHANGE",
+    "sourceIdentity": "NO_R3_CHANGE",
+    "sourceBranch": "READ_ONLY"
+  },
+  "authorityRefs": [
+    "docs/rules/03_REVIEW/JS아카이브_1차검수_프로토콜.md@57ac2d7c3f826d75d2e7b29860e74360e1b4ed1e",
+    "docs/rules/03_REVIEW/JS아카이브_2차검수_프로토콜.md@57ac2d7c3f826d75d2e7b29860e74360e1b4ed1e",
+    "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md@57ac2d7c3f826d75d2e7b29860e74360e1b4ed1e",
+    "docs/rules/04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md@main"
+  ],
+  "requiredRoute": "R1_THEN_R2_THEN_R3"
+}
