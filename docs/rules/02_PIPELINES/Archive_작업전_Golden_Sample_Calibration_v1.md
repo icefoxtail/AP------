@@ -1,5 +1,32 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
+## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION PHYSICAL BINDING
+
+해설을 **생성·재작성·업그레이드·승인**하는 모든 JS Archive 작업은 Golden Sample calibration을 권고가 아니라 stage-close **HARD GATE**로 적용한다. 수동 GPT/Codex, 예약 CREATE/R1/R2/R3, 기존 production solution upgrade에 예외가 없다.
+
+- NEW/SOURCE-ONLY 및 fresh-rewrite CREATE: target source/answer로 fresh solution을 먼저 동결 → Golden/Negative Sample을 실제 판독 → target 품질 보강. 기존 solution이 없으면 찾거나 억지로 참고하지 않는다.
+- 기존 production SOLUTION UPGRADE: current solution baseline 확인 → 수학 정합성 확인 → Golden/Negative Sample calibration → 부족 문항 upgrade.
+- R1/R2/R3: target의 blind/independent 판단을 먼저 동결 → Sample은 quality floor 비교에만 사용. Blind → Compare를 훼손하지 않는다.
+- solution을 생성·수정·승인하지 않는 순수 Meta-only/Git/manifest 작업만 `EXAM_SAMPLE_NOT_APPLICABLE` 가능. 이 경우 해설 품질 PASS/SOLUTION_COMPLETE를 새로 선언할 수 없다.
+
+`JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1.solutionQualityCalibration` 최소 필드:
+```text
+goldenSampleRefs                  # 2~3개, path + sha256 + gitBlobSha
+goldenSampleQuestionRefs          # sample별 대표 2~5문항, path + qid + solutionSha256 + observation
+negativeSampleRefs                # path + sha256 + gitBlobSha
+calibrationAxes
+sampleReadBeforeWork=true
+qualityCompareCount=N/N
+calibrationStatus=PASS
+solutionWorkMode
+calibrationOrder
+```
+
+필수 quality axes는 최소 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`다. `500자 이상`, `10줄 이상` 같은 길이 규칙은 금지한다. 파일명만 본 것은 calibration이 아니며 대표 문항의 실제 solution SHA까지 현재 파일 bytes와 결속한다.
+
+`archive/tools/review-evidence-gate.mjs`가 위 evidence를 물리 검증한다. Golden Sample 2~3개, sample별 대표 solution 2~5문항, target 전체 `qualityCompareCount=N/N`, 그리고 `archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md`가 결속되지 않으면 solution-bearing DONE/PASS는 FAIL-closed다.
+
+
 - 적용일: 2026-09-28
 - 상태: ACTIVE
 - 적용 범위: Archive 2.0 / JS Archive의 분석·제작·수정·검수·해설·조판·SVG·Meta·난이도·출시 전 품질작업

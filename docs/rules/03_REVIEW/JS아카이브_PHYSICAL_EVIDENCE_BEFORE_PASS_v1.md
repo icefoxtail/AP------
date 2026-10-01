@@ -1,5 +1,16 @@
 # JS아카이브 PHYSICAL EVIDENCE BEFORE PASS v1
 
+## CURRENT HARD GATE — 2026-10-01 — GOLDEN SAMPLE QUALITY FLOOR
+
+`review-evidence-gate.mjs`는 source/math/SVG/Meta physical evidence뿐 아니라 **solution quality calibration physical evidence**도 직접 검증한다. 적용 stage는 `CREATE / R1 / R2 / R3 / SOLUTION_UPGRADE`다.
+
+완료 전 필수: Golden Sample 2~3개의 `path + sha256 + gitBlobSha`, sample별 대표 solution 2~5문항의 `qid + solutionSha256 + observation`, 복성고1 false-PASS Negative Sample, 필수 3 quality axes, final target `qualityCompareCount=N/N`, `sampleReadBeforeWork=true`, `calibrationStatus=PASS`.
+
+stage 순서는 CREATE=`FRESH_SOLUTION_FROZEN_THEN_CALIBRATE`, 기존 upgrade=`BASELINE_REVIEW_THEN_CALIBRATE_THEN_UPGRADE`, REVIEW=`BLIND_TARGET_DECISION_FROZEN_THEN_CALIBRATE`로 고정한다.
+
+글자 수/줄 수 임계값은 품질 gate가 아니다. 쉬운 문항은 짧아도 되지만 핵심 중간식·왜 그 식인지·조건 적용·경우분리/보기판정·결론 연결이 빠져 학생이 재현하기 어렵다면 FAIL이다.
+
+
 - 적용일: 2026-10-01
 - 상태: **ACTIVE / CURRENT HARD GATE**
 - 적용 범위: JS Archive `CREATE / REVIEW1 / REVIEW2 / REVIEW3(R3)`, 수동 GPT 작업, 예약 GPT 작업, Codex 검수 handoff

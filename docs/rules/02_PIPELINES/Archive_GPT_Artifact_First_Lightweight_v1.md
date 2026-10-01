@@ -1,5 +1,10 @@
 # Archive GPT Artifact-First Lightweight v1
 
+## CURRENT — 2026-10-01 — SOLUTION QUALITY CALIBRATION IS NOT OPTIONAL
+
+Artifact-First는 물리 산출물을 먼저 보라는 뜻이지 해설 quality calibration을 생략하라는 뜻이 아니다. solution을 생성·수정·승인하는 기존 시험지 CREATE/REVIEW/repair/upgrade는 `Archive_작업전_Golden_Sample_Calibration_v1.md` + `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용하고 `review-evidence-gate.mjs`의 SHA-bound calibration PASS 없이는 DONE을 만들지 않는다. solution 비접촉 Meta-only/Git 기계 작업만 N/A 가능하다.
+
+
 ## CURRENT OVERRIDE — DEDICATED ITEM RECOVERY / POST-R3 LOCK (2026-10-01)
 - `ITEM_RECOVERY_QUEUE`는 기존 REVIEW2 lane이 아니라 **전용 Codex FINAL ITEM RECOVERY worker**가 소비한다.
 - HOLD는 수정 지시가 아니라 재판정 후보이며, latest bytes에서 FALSE/TRUE HOLD를 먼저 독립 재판정한다.
