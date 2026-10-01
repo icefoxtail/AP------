@@ -434,10 +434,16 @@ async function ensurePublicInquiriesTable(env) {
     )
   `).run();
   await ensurePublicInquiryColumn(env, 'phone_digits', `ALTER TABLE public_inquiries ADD COLUMN phone_digits TEXT NOT NULL DEFAULT ''`);
+  await ensurePublicInquiryColumn(env, 'updated_at', `ALTER TABLE public_inquiries ADD COLUMN updated_at TEXT`);
   await env.DB.prepare(`
     UPDATE public_inquiries
     SET phone_digits = replace(replace(replace(replace(replace(phone, '-', ''), ' ', ''), '.', ''), '(', ''), ')', '')
     WHERE phone_digits IS NULL OR phone_digits = ''
+  `).run();
+  await env.DB.prepare(`
+    UPDATE public_inquiries
+    SET updated_at = created_at
+    WHERE updated_at IS NULL AND created_at IS NOT NULL
   `).run();
   await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_created_at ON public_inquiries(created_at)`).run();
   await env.DB.prepare(`CREATE INDEX IF NOT EXISTS idx_public_inquiries_status ON public_inquiries(status)`).run();
