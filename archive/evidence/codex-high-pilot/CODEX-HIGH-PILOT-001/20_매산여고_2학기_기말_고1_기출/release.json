@@ -1,0 +1,108 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "RELEASE",
+  "status": "PILOT_DONE",
+  "branch": "work/high-source8-r2",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:24c69bbe408d5a091724ffbb30677617f98ed94fb784f7859cff555cc3c53904",
+  "targetArtifactGitBlobSha": "dbf5d7f9b6268118f8a8e584e1ea1d88a7e5defa",
+  "denominator": 22,
+  "resolvedAnswerCount": 22,
+  "resolvedSolutionCount": 22,
+  "changedSolutionCount": 22,
+  "itemHoldQids": [],
+  "calibration": {
+    "status": "MANUAL_SOLUTION_CALIBRATION_PASS",
+    "evidence": "golden-calibration.json",
+    "sampleCount": 2
+  },
+  "visual": {
+    "status": "ROUTINE_VISUAL_PASS_INDEPENDENTLY_RECHECKED",
+    "problemSourceImagesKept": 4,
+    "sourceImageQids": [5, 8, 15, 16],
+    "sourceImageBlobParity": "4/4",
+    "solutionSvgAdded": 0,
+    "solutionSvgModified": 0,
+    "visualEvidence": "visual-evidence.json",
+    "targetedRenderNeeded": false,
+    "fullSolutionRender": "NOT_RUN_ROUTINE_VISUAL_SCOPE"
+  },
+  "meta": {
+    "status": "META_PASS_WITH_DOCUMENTED_RPM_AND_CROSSWALK_GAPS",
+    "resolvedMetaRecordCount": 22,
+    "activeBindingCount": 22,
+    "rpmCoverageGapQids": [2, 9, 21],
+    "itemHoldQids": [],
+    "projectionCaveats": "RPM leaf gaps and crosswalk variants are documented; current active keys are retained without invented taxonomy."
+  },
+  "difficulty": {
+    "status": "PASS_WITH_ADJUDICATION",
+    "recordCount": 22,
+    "legacyCompatibility": {
+      "NORMAL": 19,
+      "BORDERLINE_ACCEPTABLE": 2,
+      "STRONG_CONFLICT": 1,
+      "UNKNOWN": 0
+    },
+    "evidence": "difficulty-blind-result.json"
+  },
+  "independentReview": {
+    "status": "PASS_WITH_DOCUMENTED_META_AND_DIFFICULTY_CAVEATS",
+    "evidence": "independent-review.json",
+    "targetedRepairEvidence": "q21-method-recheck.json",
+    "findings": [
+      "Initial q21 method finding repaired and independently rechecked; answer remains 3/8.",
+      "Initial blind answer discrepancies q15/q19/q20/q22 were independently corrected and withdrawn by the reviewer; final target answers are confirmed."
+    ]
+  },
+  "checks": {
+    "nodeSyntax": "PASS",
+    "vmRuntime": "PASS: 22 questions, 22 answers, 22 solutions",
+    "texDelimiterAndBraceScan": "PASS",
+    "protectedSourceParity": "22/22 content; 22/22 choices",
+    "sourceImageBlobParity": "4/4",
+    "metaRegistry": "ACTIVE; 22 field records and 22 active bindings validated",
+    "unrelatedMutationCount": 0,
+    "pilotEvidenceJson": "PASS all evidence JSON parsed"
+  },
+  "evidenceFiles": [
+    "state.json",
+    "answer.json",
+    "solution.json",
+    "self-review-1.json",
+    "self-review-2.json",
+    "calibration-preflight.json",
+    "golden-calibration.json",
+    "visual-evidence.json",
+    "difficulty-blind-input.json",
+    "difficulty-blind-result.json",
+    "meta-blind-input.json",
+    "meta-adjudication.json",
+    "resolver-preflight.json",
+    "meta.json",
+    "independent-answer-input.json",
+    "independent-solution-verification.json",
+    "q21-method-recheck.json",
+    "independent-review.json",
+    "release.json"
+  ],
+  "stageCommits": {
+    "answer": "d41874532",
+    "solution": "93d9e6b06",
+    "selfReview1": "2d770f432",
+    "selfReview2": "228f267ef",
+    "goldenCompare": "93a495219",
+    "visual": "f5832d7d9",
+    "visualAndSolutionRepair": "6161a384b",
+    "meta": "14f91ee27",
+    "independentReviewRepair": "f85d8741d",
+    "metaReconciliation": "b222d0d6c",
+    "independentVisualRecheck": "603d8c639"
+  },
+  "scope": "Candidate closure only; no MAIN merge, PR, publish, or shared-system change."
+}
