@@ -5,6 +5,17 @@ description: Route JS Archive SVG, graph, geometry, and solutionImage work. Rout
 
 # APMath Visual Upgrade — CURRENT ROUTER
 
+## CURRENT HARD START GATE — 2026-10-01
+
+ROUTINE_EXAM_VISUAL의 CREATE/REVIEW/repair/rebuild worker는 source/target SVG를 실제로 검수하거나 수정하기 전에 `Archive_작업전_Golden_Sample_Calibration_v1.md`의 Golden 2~3 + 관련 visual/복성고 Negative Sample을 읽고 calibration preflight를 닫는다.
+
+- visual repair/rebuild: `solution-calibration-gate.mjs --stage VISUAL_REPAIR --preflight`
+- repair 후 독립 visual recheck: `--stage INDEPENDENT_RECHECK --preflight`
+- 공통 visual axes: `VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`
+- sample pre-read는 quality bar를 맞추기 위한 것이며 target geometry truth는 source + verified solution에서 독립 판정한다.
+- post-R3에서는 preflight가 `R3_LOCKED` 범위를 다시 여는 근거가 아니다.
+
+
 This skill is a **visual route selector**.
 
 A visual subtask must not silently replace the parent exam task with a pipeline project.

@@ -1,6 +1,6 @@
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY RELEASE FLOOR
 
-R3는 이전 stage quality count를 재사용하지 않는다. latest artifact에 대한 fresh release 판단을 먼저 동결한 뒤 Golden/Negative Sample과 비교하여 학생 해설 quality floor를 다시 확인한다. `solutionQualityCalibration` physical binding과 `qualityCompareCount=N/N`이 없으면 R3 PASS 금지다.
+R3 worker도 예외가 아니다. stage assignment와 release scope만 확인한 직후 **이전 stage verdict/target solution을 열기 전에** Golden 2~3 + 관련 Negative Sample을 실제 판독해 동일 quality bar를 고정한다. 그 뒤 latest artifact에 대한 fresh release 판단을 만들고 마지막 compare에서 해설과 SVG의 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 확인한다. 이전 stage quality count는 재사용하지 않으며 `solutionQualityCalibration` physical binding과 `qualityCompareCount=N/N`이 없으면 R3 PASS 금지다.
 
 ## CURRENT OVERRIDE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
