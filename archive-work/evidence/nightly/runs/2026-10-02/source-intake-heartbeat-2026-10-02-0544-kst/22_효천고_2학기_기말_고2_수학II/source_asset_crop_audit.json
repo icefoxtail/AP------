@@ -3,29 +3,92 @@
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "examId": "22_효천고_2학기_기말_고2_수학II",
   "assetCount": 6,
-  "status": "INDEPENDENT_REVIEW_PENDING",
-  "allChecks": [
+  "status": "SOURCE_QA_PASS",
+  "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+  "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
+  "reconciledFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
+  "assets": [
     {
       "qid": "4",
       "sourceQuestionNo": "4",
-      "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
-      "assetSha256": "sha256:2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
+      "assetSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
       "sourcePageNo": 1,
+      "sourcePageSha256": "sha256:d42d901a9143a8f14c45dcee53b00a1a89faf4eadad27e2b7fc85335148d9352",
       "bbox": {
         "x1": 820,
         "y1": 2100,
         "x2": 1060,
         "y2": 2460
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": {
+        "qid": "4",
+        "sourceQuestionNo": "4",
+        "linkedQuestionReviewQid": "4",
+        "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+        "sourcePdfSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
+        "sourcePageNo": 1,
+        "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+        "sourcePageSha256": "sha256:d42d901a9143a8f14c45dcee53b00a1a89faf4eadad27e2b7fc85335148d9352",
+        "directOriginalPdfRasterEvidence": {
+          "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\source-qa-original-pdf-raster\\hyocheon-p1.png",
+          "method": "Poppler pdftoppm direct render from source PDF, 250 dpi, OCR disabled",
+          "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+          "sourcePageNo": 1,
+          "sha256": "73a5772055a8bab64d9f434d8ff0f532d1c51700ea211d8600ad8a2585e5f863",
+          "dimensionsPx": [
+            2530,
+            3583
+          ]
+        },
+        "bbox": {
+          "x1": 820,
+          "y1": 2100,
+          "x2": 1060,
+          "y2": 2460
+        },
+        "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
+        "assetSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+        "cropDimensionsPx": [
+          240,
+          360
+        ],
+        "pageCropPixelEqualityVerified": true,
+        "cropperBinding": {
+          "tool": "archive/tools/past-exam-pipeline/helpers/scanned_exam_pipeline.py",
+          "operations": [
+            "crop"
+          ],
+          "rotation": "none",
+          "deskew": "none",
+          "contrast": "none",
+          "reconstruction": "none",
+          "sourcePixelsRestored": false
+        },
+        "gates": {
+          "sourceDocumentQuestionPageBboxAssetShaCropperBinding": "PASS",
+          "cropPurity": "PASS",
+          "noNeighboringQuestionOrInstructionContamination": "PASS",
+          "noChoiceContamination": "PASS",
+          "noPageBorderContamination": "PASS",
+          "noClipping": "PASS",
+          "requiredLabelsPresentAndReadable": "PASS",
+          "questionSemanticMatch": "PASS"
+        },
+        "gateStatus": "PASS",
+        "visualFindings": "Complete v(t) label and full piecewise line graph are present with O, t, 1,2,3, 2 and −2 markings. No printed question prose or answer-choice text enters the crop.",
+        "assetProcessingEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_asset_crop_provenance.json"
+      },
+      "backReferenceQuestionReview": "4"
     },
     {
       "qid": "10",
@@ -33,21 +96,24 @@
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q010_visual.png",
       "assetSha256": "sha256:4fcede6af1577adf5b0a9c1435dd198191ffdcc1db69a78bf3740bc464f81453",
       "sourcePageNo": 1,
+      "sourcePageSha256": "sha256:d42d901a9143a8f14c45dcee53b00a1a89faf4eadad27e2b7fc85335148d9352",
       "bbox": {
         "x1": 1650,
         "y1": 2200,
         "x2": 2110,
         "y2": 2820
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": null,
+      "backReferenceQuestionReview": "10"
     },
     {
       "qid": "18",
@@ -55,21 +121,24 @@
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q018_visual.png",
       "assetSha256": "sha256:89ffefe6a51639710eac365503bca0f7d8861d72f1b2da2ef19dd8b92c0ccdf2",
       "sourcePageNo": 2,
+      "sourcePageSha256": "sha256:67931442b2e6fa7c005dc1d9d72aa150da8244a06680416f0389a34853c15dce",
       "bbox": {
         "x1": 1280,
         "y1": 1880,
         "x2": 1770,
         "y2": 2170
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": null,
+      "backReferenceQuestionReview": "18"
     },
     {
       "qid": "19",
@@ -77,43 +146,106 @@
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q019_visual.png",
       "assetSha256": "sha256:8e02ca994f430b987f59d33773e7f73c82bce7c8b528c96afe53c43d133f7779",
       "sourcePageNo": 3,
+      "sourcePageSha256": "sha256:8cdb1d6950f5eaa75ae7ca39b00eb12838611d7dfd22ea77de7928c93a073871",
       "bbox": {
         "x1": 220,
         "y1": 640,
         "x2": 1600,
         "y2": 1160
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": null,
+      "backReferenceQuestionReview": "19"
     },
     {
       "qid": "22",
       "sourceQuestionNo": "서술형2",
-      "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
-      "assetSha256": "sha256:f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "assetSha256": "f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
       "sourcePageNo": 3,
+      "sourcePageSha256": "sha256:8cdb1d6950f5eaa75ae7ca39b00eb12838611d7dfd22ea77de7928c93a073871",
       "bbox": {
         "x1": 1650,
         "y1": 1450,
         "x2": 2100,
         "y2": 2050
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": {
+        "qid": "22",
+        "sourceQuestionNo": "서술형2",
+        "linkedQuestionReviewQid": "22",
+        "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+        "sourcePdfSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
+        "sourcePageNo": 3,
+        "sourcePagePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+        "sourcePageSha256": "sha256:8cdb1d6950f5eaa75ae7ca39b00eb12838611d7dfd22ea77de7928c93a073871",
+        "directOriginalPdfRasterEvidence": {
+          "path": "C:\\Users\\USER\\AppData\\Local\\Temp\\source-qa-original-pdf-raster\\hyocheon-p3.png",
+          "method": "Poppler pdftoppm direct render from source PDF, 250 dpi, OCR disabled",
+          "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+          "sourcePageNo": 3,
+          "sha256": "0c85077eb9ecb167f302c481966631869218d0fc4eb093f34bf825a2d0e8a658",
+          "dimensionsPx": [
+            2530,
+            3583
+          ]
+        },
+        "bbox": {
+          "x1": 1650,
+          "y1": 1450,
+          "x2": 2100,
+          "y2": 2050
+        },
+        "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+        "assetSha256": "f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
+        "cropDimensionsPx": [
+          450,
+          600
+        ],
+        "pageCropPixelEqualityVerified": true,
+        "cropperBinding": {
+          "tool": "archive/tools/past-exam-pipeline/helpers/scanned_exam_pipeline.py",
+          "operations": [
+            "crop"
+          ],
+          "rotation": "none",
+          "deskew": "none",
+          "contrast": "none",
+          "reconstruction": "none",
+          "sourcePixelsRestored": false
+        },
+        "gates": {
+          "sourceDocumentQuestionPageBboxAssetShaCropperBinding": "PASS",
+          "cropPurity": "PASS",
+          "noNeighboringQuestionOrInstructionContamination": "PASS",
+          "noChoiceContamination": "PASS",
+          "noPageBorderContamination": "PASS",
+          "noClipping": "PASS",
+          "requiredLabelsPresentAndReadable": "PASS",
+          "questionSemanticMatch": "PASS"
+        },
+        "gateStatus": "PASS",
+        "visualFindings": "The complete graph is present with y=f(x), y=g(x), x/y axes, O and x=k. Curve tops and lower ends are retained; no neighboring prose, divider, page border or unrelated material enters the crop.",
+        "assetProcessingEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/source_asset_crop_provenance.json"
+      },
+      "backReferenceQuestionReview": "22"
     },
     {
       "qid": "24",
@@ -121,21 +253,24 @@
       "assetPath": "assets/images/22_효천고_2학기_기말_고2_수학II/q024_visual.png",
       "assetSha256": "sha256:c623df6cc4078221d3ea1de8f28d1b218b5b7d02178000f9f52f8582ff9dc5c0",
       "sourcePageNo": 4,
+      "sourcePageSha256": "sha256:5f296bdcd2ef1355101d4aec30ed7335e0f08a9a82aa2067d1fb002e5eb64529",
       "bbox": {
         "x1": 1100,
         "y1": 360,
         "x2": 1660,
         "y2": 650
       },
-      "cropPurity": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noOtherQuestionText": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noChoicesContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noPageBorderContamination": "REVIEW_PENDING_INDEPENDENT_QA",
-      "noClipping": "REVIEW_PENDING_INDEPENDENT_QA",
-      "requiredLabelsPresent": "REVIEW_PENDING_INDEPENDENT_QA",
-      "questionSemanticMatch": "REVIEW_PENDING_INDEPENDENT_QA",
-      "workerPixelInspection": "COMPLETED",
-      "workerNote": "Full-page source crop inspected; independent QA must confirm each provenance and semantic gate."
+      "cropPurity": "PASS",
+      "contamination": "PASS",
+      "choiceContamination": "PASS",
+      "pageBorderContamination": "PASS",
+      "clipping": "PASS",
+      "requiredLabels": "PASS",
+      "questionSemanticMatch": "PASS",
+      "pngDecode": "PASS",
+      "initialReviewFinding": null,
+      "targetedRecheckEvidence": null,
+      "backReferenceQuestionReview": "24"
     }
   ]
 }

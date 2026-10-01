@@ -1,12 +1,12 @@
 {
-  "originMain": "83b9d2c92b76611c0b620e414e9fc4e88396cf71",
-  "successfulExamCountForBatchDate": 1,
+  "originMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
+  "successfulExamCountForBatchDate": 3,
   "batchDate": "2026-10-02",
   "updatedAt": "2026-09-28T08:42:53Z",
   "activeRunId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "branch": "codex/archive-source-intake",
   "batchSuccessCap": 2,
-  "intakeHead": "6722270c560df0c2ce469217b51d9ccc4ccdf261",
+  "intakeHead": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
   "schema": "nightly-source-intake-ledger-v1",
   "runs": [
     {
@@ -302,6 +302,32 @@
       "sourceQACloseoutCommitSha": "20370dce9134556dae5c3c9c0181b5473f0a8f9c",
       "sourceQACloseoutPushSha": "20370dce9134556dae5c3c9c0181b5473f0a8f9c",
       "lockReleasedAtKst": "2026-10-02T02:37:35+09:00"
+    },
+    {
+      "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
+      "batchDate": "2026-10-02",
+      "status": "COMPLETED_SOURCE_ONLY_SOURCE_QA_PASS_RENDER_UNVERIFIED",
+      "priorityGroup": "high2",
+      "actualSubject": "Mathematics II",
+      "selectedExamIds": [
+        "22_팔마고_2학기_기말_고2_수학II",
+        "22_효천고_2학기_기말_고2_수학II"
+      ],
+      "successCount": 2,
+      "questionCount": 46,
+      "choiceCount": 195,
+      "assetCount": 10,
+      "sourceTextExactParityStatus": "PASS",
+      "choicesExactParityStatus": "PASS",
+      "sourceAssetCropAuditStatus": "SOURCE_QA_PASS",
+      "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
+      "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
+      "finalReconciledReviewReportSha256": "sha256:6de6a65cd5e76947da970a80eadbaa197d8a02db0cec0279907703f9429541f2",
+      "sourceArtifactCommitSha": "8a22c605549a4468a0d40823d5242bf798bcb301",
+      "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
+      "reviewReceiptCommitSha": "PENDING_REPORT_RECEIPT_COMMIT",
+      "reviewReceiptPushSha": "PENDING_REPORT_RECEIPT_PUSH",
+      "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -314,7 +340,7 @@
     "청암고"
   ],
   "fallbackCount": 2,
-  "updatedAtKst": "2026-10-02T02:38:00+09:00",
+  "updatedAtKst": "2026-10-02T07:02:26+09:00",
   "heldExamCount": 2,
   "priorityGroupRemainingAfterBatch": 23,
   "questionLayoutBackfillTargets": [
@@ -334,13 +360,13 @@
   ],
   "questionLayoutRenderStatus": "NOT_RUN_CODEX_HANDOFF",
   "questionLayoutBackfillStatus": "PASS_STATIC_RENDER_HANDOFF",
-  "nextStartPoint": "Parent verifies fresh source-QA report recheck for 22_순천고_2학기_기말_고2_수학II and handles the Notion checkbox/count; then continue high2 queue.",
+  "nextStartPoint": "Parent independently verifies this source-only QA receipt and updates the Notion checklist/count. Then refresh the current high2 subject queue and select the next stable-order eligible exam.",
   "questionLayoutBackfillCompletedAtUtc": "2026-09-27T21:38:55Z",
   "questionLayoutBackfillCompletedAtKst": "2026-09-28T06:38:55+09:00",
   "questionLayoutChangedCount": 14,
   "questionLayoutHoldCount": 0,
-  "sourceTextExactParityStatus": "PASS",
-  "choicesExactParityStatus": "PASS",
+  "sourceTextExactParityStatus": "PASS_46_OF_46",
+  "choicesExactParityStatus": "PASS_46_OF_46",
   "questionLayoutBackfillTargetSha": "sha256:77ae10f14918cdf35761b299fb3a222c4de139df5a9f8c747112cb80507287b0",
   "questionLayoutFreezeStatus": "PASS_STATIC_RENDER_HANDOFF",
   "questionLayoutChangedQuestions": [
@@ -460,8 +486,8 @@
   "lockStatus": "RELEASED",
   "lockOwner": "codex-thread-automation-10",
   "lockStartedAtKst": "2026-10-02T00:43:00+09:00",
-  "successfulSourceOnlyCountForRun": 1,
-  "lockReleasedAtKst": "2026-10-02T02:37:35+09:00",
+  "successfulSourceOnlyCountForRun": 2,
+  "lockReleasedAtKst": "2026-10-02T07:02:26+09:00",
   "currentRunSourceOnlyCompletion": {
     "runId": "source-intake-heartbeat-2026-10-02-0043-kst",
     "batchDate": "2026-10-02",
@@ -582,7 +608,7 @@
     "freshRecheckReportGitBlobContentSha256": "sha256:5b2159562e70d9ae1b8bd338d773fbee10bc57fbca50bc3d4eb9008039b19652"
   },
   "latestCanonicalRuleBlobSha": "7af7a8dbfed4ce6ee9737020d92d4c427b183ffa",
-  "closeoutStatus": "SOURCE_QA_PASS_FRESH_REPORT_RECHECK_NOTION_PARENT_PENDING",
+  "closeoutStatus": "SOURCE_QA_PASS_NOTION_PARENT_PENDING",
   "notionStatus": "WRITE_SUCCESS",
   "notionUpdatedAtKst": "2026-09-30T18:43:52+09:00",
   "notionChecklistPageUrl": "https://app.notion.com/p/3e90e68bd69f813798acc744c274da80",
@@ -595,7 +621,7 @@
   "currentRunRemoteHeadAtVerification": "7eff8b51cb12b3aff37bc3fbeb29a376f7f85939",
   "lastVerifiedOriginIntake": "7eff8b51cb12b3aff37bc3fbeb29a376f7f85939",
   "priorityGroupRemainingAfterSelection": 22,
-  "currentRunReviewReceiptCommitSha": "457fd282216df8c643ceda01968f1dda73872637",
+  "currentRunReviewReceiptCommitSha": "PENDING_REPORT_RECEIPT_COMMIT",
   "lastVerifiedOriginMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
   "branchDrift": {
     "mainAheadOfIntake": 315,
@@ -603,8 +629,23 @@
     "fastForwardPossible": false,
     "action": "No merge/reset; source-intake branch remains separate from main."
   },
-  "activeRunStatus": "SOURCE_REPAIRS_READY_FOR_TARGETED_RECHECK",
+  "activeRunStatus": "COMPLETED_SOURCE_ONLY_SOURCE_QA_PASS_RENDER_UNVERIFIED",
   "activeOwner": "codex-thread-automation-10",
   "activeSinceKst": "2026-10-02T05:44:00+09:00",
-  "latestOriginMain": "08c9170deb8ddb8a0883155afd2a67de75169962"
+  "latestOriginMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
+  "latestOriginIntake": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
+  "sourceAssetCropAuditStatus": "SOURCE_QA_PASS",
+  "sourceQACloseoutStatus": "SOURCE_QA_PASS_RECONCILED_AFTER_TARGETED_REPAIRS",
+  "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
+  "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
+  "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
+  "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
+  "finalReconciledReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
+  "finalReconciledReviewReportSha256": "sha256:6de6a65cd5e76947da970a80eadbaa197d8a02db0cec0279907703f9429541f2",
+  "currentRunSourceArtifactCommitSha": "8a22c605549a4468a0d40823d5242bf798bcb301",
+  "currentRunSourceRepairCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
+  "currentRunReviewReceiptPushSha": "PENDING_REPORT_RECEIPT_PUSH",
+  "currentRunNotionWrites": "NOT_PERFORMED",
+  "finalCloseoutReceiptRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_qa_closeout.json",
+  "finalCloseoutReceiptSha256": "sha256:392929c683bb317805022595c613906fda927690f31c19f5f41dfa50188ede64"
 }
