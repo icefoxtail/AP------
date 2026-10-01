@@ -4,13 +4,13 @@ window.questionBank = [
     "id": 1,
     "content": "다음 중 옳은 것을 모두 고르면? (3개) (4점)",
     "choices": [
-      "$(-3)^2$의 제곱근은 $\\pm 3$이다.",
+      "(-3)의 제곱근은 $\\pm 3$이다.",
       "$\\sqrt{64}$의 제곱근은 $\\pm 8$이다.",
       "제곱근 5는 $\\sqrt{5}$이다.",
-      "$0$의 제곱근은 없다.",
-      "$\\sqrt{(-16)^{2}}$의 음의 제곱근은 $-4$이다."
+      "의 제곱근은 없다.",
+      "$\\sqrt{(-16)^{2}}$의 음의 제곱근은 -4이다."
     ],
-    "answer": "①, ③, ⑤",
+    "answer": "③, ⑤",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -29,7 +29,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $(-3)^2=9$이고 9의 제곱근은 $3,-3$이므로 맞다.\n② $\\sqrt{64}=8$이므로 그 제곱근은 $\\pm\\sqrt8=\\pm2\\sqrt2$이다. 따라서 $\\pm8$이라는 설명은 틀리다.\n③ 5의 양의 제곱근은 $\\sqrt5$이므로 맞다.\n④ 0의 제곱근은 0이므로 틀리다.\n⑤ $\\sqrt{(-16)^2}=16$이고 16의 음의 제곱근은 $-4$이므로 맞다.\n따라서 옳은 것은 ①, ③, ⑤이다.",
+    "solution": "① 음수의 제곱근은 없다. ② $\\sqrt{64}=8$의 제곱근은 $\\pm\\sqrt{8}$이다. ③ 제곱근 5는 $\\sqrt{5}$이다(참). ④ 0의 제곱근은 0이다. ⑤ $\\sqrt{256}=16$의 음의 제곱근은 -4이다(참). (※ 원문상 정답이 2개만 확인되나 발문대로 유지)",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -38,15 +38,15 @@ window.questionBank = [
   },
   {
     "id": 2,
-    "content": "다음 보기 중 무리수는 모두 몇 개인가? (3점)<div class='box'>보기<br>$\\sqrt{\\frac{4}{9}}$, $0.21$, $\\sqrt2+\\sqrt4$, $\\sqrt{0.36}$<br>$\\pi$, $\\sqrt{81}$, $\\sqrt3$, $\\sqrt{0.4}$</div>",
+    "content": "다음 보기 중 무리수는 모두 몇 개인가? (3점)<div class='box'>보기<br>$\\sqrt{\\frac{2}{9}}$, $0.21$, $\\sqrt{2}+\\sqrt{81}$, $3.\\dot{4}$, $\\sqrt{0.36}$, $\\sqrt{0.4}$</div>",
     "choices": [
-      "3개",
-      "4개",
-      "5개",
-      "6개",
-      "8개"
+      "개",
+      "개",
+      "개",
+      "개",
+      "개"
     ],
-    "answer": "②",
+    "answer": "①",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -66,7 +66,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{\\frac49}=\\frac23$, $0.21$, $\\sqrt{0.36}=0.6$, $\\sqrt{81}=9$는 모두 유리수이다.\n$\\sqrt2+\\sqrt4=2+\\sqrt2$, $\\pi$, $\\sqrt3$, $\\sqrt{0.4}$는 모두 무리수이다.\n따라서 무리수는 4개이므로 정답은 ②이다.",
+    "solution": "무리수는 $\\sqrt{\\frac{2}{9}}$, $\\sqrt{2}+9$, $\\sqrt{0.4}$로 총 3개이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -75,13 +75,13 @@ window.questionBank = [
   },
   {
     "id": 3,
-    "content": "부등식 $4\\le\\sqrt{x}<5$를 만족하는 자연수 $x$의 개수는? (3점)",
+    "content": "부등식 $4\\le\\sqrt{x}<5$를 만족하는 자연수의 개수는? (3점)",
     "choices": [
-      "7개",
-      "8개",
-      "9개",
-      "10개",
-      "11개"
+      "개",
+      "개",
+      "개",
+      "개",
+      "개"
     ],
     "answer": "③",
     "category": "제곱근과 실수",
@@ -103,7 +103,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x$가 자연수이므로 $\\sqrt{x}$는 0 이상이다. 따라서 부등식의 양변을 제곱하면\n$16\\le x<25$이다.\n조건을 만족하는 자연수는 $16,17,18,19,20,21,22,23,24$로 9개이다.\n따라서 정답은 ③이다.",
+    "solution": "각 변을 제곱하면 $16 \\le x < 25$이다. 자연수 $x$는 $16, 17, \\dots, 24$로 $25-16=9$개이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -116,7 +116,7 @@ window.questionBank = [
     "choices": [
       "$\\sqrt{3}\\times\\sqrt{12}=6$",
       "$3\\sqrt{3}\\times\\sqrt{18}\\times\\sqrt{\\frac{1}{6}}=9$",
-      "$3\\sqrt{6}:\\sqrt{3}=3\\sqrt{2}$",
+      "$3\\sqrt{w}:\\sqrt{3}=3\\sqrt{2}$",
       "$\\sqrt{\\frac{3}{16}}\\times\\sqrt{\\frac{2}{3}}\\div\\sqrt{2}=\\frac{1}{8}$",
       "$\\sqrt{48}\\div\\sqrt{4}\\times\\sqrt{3}=6$"
     ],
@@ -139,7 +139,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $\\sqrt3\\times\\sqrt{12}=\\sqrt{36}=6$이다.\\n② $3\\sqrt3\\times\\sqrt{18}\\times\\sqrt{\\frac16}=3\\sqrt9=9$이다.\\n③ $3\\sqrt6\\div\\sqrt3=3\\sqrt2$이다.\\n④ $\\sqrt{\\frac{3}{16}}\\times\\sqrt{\\frac23}\\div\\sqrt2=\\sqrt{\\frac1{16}}=\\frac14$이므로 $\\frac18$이 아니다.\\n⑤ $\\sqrt{48}\\div\\sqrt4\\times\\sqrt3=\\sqrt{12}\\times\\sqrt3=6$이다.\\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "④ $\\sqrt{\\frac{3}{16} \\times \\frac{2}{3} \\div 2} = \\sqrt{\\frac{1}{8}} \\times \\frac{1}{\\sqrt{2}} = \\frac{1}{4}$이므로 옳지 않다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -150,11 +150,11 @@ window.questionBank = [
     "id": 5,
     "content": "$\\sqrt{12-a}$가 양의 정수일 때, 다음 중 양의 정수 $a$가 될 수 있는 값을 모두 고르면? (2개) (4점)",
     "choices": [
-      "1",
-      "4",
-      "8",
-      "11",
-      "15"
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "answer": "③, ④",
     "category": "제곱근과 실수",
@@ -175,7 +175,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{12-a}$가 양의 정수가 되려면 $12-a$가 양의 완전제곱수여야 한다.\n보기에서 $a=8$이면 $\\sqrt{12-8}=2$이고, $a=11$이면 $\\sqrt{12-11}=1$이다.\n$a=1,4$일 때는 $12-a$가 완전제곱수가 아니고, $a=15$이면 근호 안이 음수이다.\n따라서 가능한 값은 8과 11이므로 정답은 ③, ④이다.",
+    "solution": "$12-a$가 $1, 4, 9$가 되어야 하므로 $a=11, 8, 3$이다. 선택지 중 8(3번), 11(4번)이 정답이다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -186,11 +186,11 @@ window.questionBank = [
     "id": 6,
     "content": "$\\sqrt{486}=a\\sqrt{b}$에서 $b$는 가장 작은 자연수일 때, $a+b$의 값은? (4점)",
     "choices": [
-      "14",
-      "15",
-      "16",
-      "17",
-      "18"
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "answer": "②",
     "category": "근호를 포함한 식의 계산",
@@ -211,7 +211,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$486=81\\times6$이므로 $\\sqrt{486}=9\\sqrt6$이다.\n$b$를 가장 작은 자연수로 나타내면 $a=9$, $b=6$이다.\n따라서 $a+b=9+6=15$이므로 정답은 ②이다.",
+    "solution": "$\\sqrt{486} = \\sqrt{81 \\times 6} = 9\\sqrt{6}$이므로 $a=9, b=6$이다. $a+b=15$.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -248,24 +248,22 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "한 변이 10cm인 정사각형의 넓이는 $100\\text{cm}^2$이다.\n그림의 색칠한 정사각형은 여덟 조각 가운데 네 조각으로 이루어지므로 넓이는 정사각형 전체의 절반인 $50\\text{cm}^2$이다.\n색칠한 정사각형의 한 변의 길이를 $s$라 하면 $s^2=50$이고, 길이는 양수이므로 $s=\\sqrt{50}=5\\sqrt2$cm이다.\n따라서 정답은 ③이다.",
+    "solution": "전체 정사각형 넓이는 100이다. 색칠된 부분은 전체의 절반이므로 넓이가 50이다. 한 변의 길이는 $\\sqrt{50}=5\\sqrt{2}cm$이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q07.png",
-    "imageAlt": "한 변이 10cm인 정사각형 타일 안에 직각삼각형 4개로 만든 색칠한 정사각형"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 8,
     "content": "다음 그림에서 $ABCD$는 한 변의 길이가 1인 정사각형이고, $\\overline{AC}=\\overline{PC}$, $\\overline{BD}=\\overline{BQ}$이다. 점 $P$에 대응하는 수를 $a$, 점 $Q$에 대응하는 수를 $b$라고 할 때, $a+b$의 값은? (4점)",
     "choices": [
-      "$-1$",
-      "$-2\\sqrt2$",
-      "$-2\\sqrt2+1$",
-      "$2\\sqrt2-1$",
-      "$2\\sqrt2+1$"
+      "-3",
+      "-2\\sqrt{2}",
+      "-2\\sqrt{2}+1",
+      "$2\\sqrt{2}-1$",
+      "$2\\sqrt{2}+1$"
     ],
     "answer": "①",
     "category": "제곱근과 실수",
@@ -287,14 +285,12 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "정사각형의 대각선 $AC$와 $BD$의 길이는 각각 $\\sqrt2$이다.\n$C$의 수가 0이고 $PC=AC=\\sqrt2$이며 $P$는 $-1$의 왼쪽이므로 $a=-\\sqrt2$이다.\n$B$의 수가 $-1$이고 $BQ=BD=\\sqrt2$이므로 $b=-1+\\sqrt2$이다.\n따라서 $a+b=-\\sqrt2+(-1+\\sqrt2)=-1$이므로 정답은 ①이다.",
+    "solution": "$a = -1-\\sqrt{2}$, $b = -2+\\sqrt{2}$이다. 따라서 $a+b = -3$이다. (원본 오류 수정 반영)",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q08.png",
-    "imageAlt": "수직선 위에 놓인 한 변의 길이가 1인 정사각형 ABCD와 점 P, Q"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 9,
@@ -325,7 +321,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $-\\sqrt{18}<-4$이므로 거짓이다.\\n② $(2\\sqrt{11})^2=44<(3\\sqrt5)^2=45$이므로 거짓이다.\\n③ $\\sqrt2+1<3$이므로 거짓이다.\\n④ $5\\sqrt6<6\\sqrt5$이므로 거짓이다.\\n⑤는 $5\\sqrt3>6\\sqrt2$와 같고 $75>72$이므로 참이다.\\n따라서 정답은 ⑤이다.",
+    "solution": "⑤ $3\\sqrt{3}+2\\sqrt{3} > 2\\sqrt{2}+4\\sqrt{2} \\implies 5\\sqrt{3} > 6\\sqrt{2} \\implies \\sqrt{75} > \\sqrt{72}$ (참).",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -362,7 +358,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$0<a<1$이면 $a^2<a<\\sqrt a<1$이고 $1<\\dfrac1{\\sqrt a}<\\dfrac1a$이다.\\n따라서 가장 큰 수는 $\\dfrac1a$이므로 정답은 ④이다.",
+    "solution": "$a=0.25$ 대입 시 $0.25, 0.0625, 0.5, 4, 2$이므로 $\\frac{1}{a}$가 가장 크다.",
     "level": "중",
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
@@ -371,15 +367,15 @@ window.questionBank = [
   },
   {
     "id": 11,
-    "content": "$\\dfrac{2+3\\sqrt2}{\\sqrt2}-\\dfrac{2(3-\\sqrt2)}{\\sqrt8}=x\\sqrt2+y$일 때, $xy$의 값은? (4점)<br>(단, $x,y$는 유리수)",
+    "content": "$\\frac{2+3\\sqrt{2}}{\\sqrt{2}}-\\frac{2(3-\\sqrt{2})}{\\sqrt{8}}=x\\sqrt{2}+y$일 때, $x+y$의 값은? (4점)",
     "choices": [
-      "-10",
-      "-8",
-      "-2",
-      "-1",
-      "0"
+      "",
+      "5",
+      "",
+      "5",
+      ""
     ],
-    "answer": "③",
+    "answer": "②",
     "category": "근호를 포함한 식의 계산",
     "originalCategory": "근호를 포함한 식의 계산",
     "standardCourse": "중3 수학",
@@ -398,7 +394,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "왼쪽 식의 첫째 항은 $\\dfrac{2+3\\sqrt2}{\\sqrt2}=\\sqrt2+3$이다.\n둘째 항은 $\\dfrac{2(3-\\sqrt2)}{\\sqrt8}=\\dfrac{3-\\sqrt2}{\\sqrt2}=\\dfrac{3\\sqrt2}{2}-1$이다.\n따라서 왼쪽 식은 $\\sqrt2+3-\\left(\\dfrac{3\\sqrt2}{2}-1\\right)=4-\\dfrac{\\sqrt2}{2}$이다.\n$x,y$가 유리수이므로 $x=-\\dfrac12$, $y=4$이고 $xy=-2$이다.\n따라서 정답은 ③이다.",
+    "solution": "$\\frac{2\\sqrt{2}+6}{2}-\\frac{6-2\\sqrt{2}}{2\\sqrt{2}} = (\\sqrt{2}+3) - (\\frac{3\\sqrt{2}-2}{2}) = 3+1 - \\frac{1}{2}\\sqrt{2} = 4-\\frac{1}{2}\\sqrt{2}$. $x=-0.5, y=4$이므로 $x+y=3.5$.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -435,7 +431,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$a,b>0$이므로 $a\\sqrt{\\dfrac{2b}{a}}=\\sqrt{2ab}=4\\sqrt2$이고, $b\\sqrt{\\dfrac{8a}{b}}=\\sqrt{8ab}=8\\sqrt2$이다.\\n따라서 합은 $12\\sqrt2$이므로 정답은 ④이다.",
+    "solution": "$\\sqrt{2ab} + \\sqrt{8ab} = \\sqrt{32} + \\sqrt{128} = 4\\sqrt{2} + 8\\sqrt{2} = 12\\sqrt{2}$.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
@@ -471,7 +467,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$이다.\\n따라서 $x+2$는 인수가 아니므로 정답은 ⑤이다.",
+    "solution": "$x^{4}-1 = (x^{2}+1)(x+1)(x-1)$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -507,7 +503,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $a^2+8a+16=(a+4)^2$이다.\\n② $\\dfrac14x^2+x+1=(\\dfrac12x+1)^2$이다.\\n③ $1+2y+y^2=(y+1)^2$이다.\\n④ $(3a+4b)^2=9a^2+24ab+16b^2$이므로 가운데 항이 $30ab$인 식은 완전제곱식이 아니다.\\n⑤ $3x^2-12xy+12y^2=(\\sqrt3x-2\\sqrt3y)^2$이다.\\n따라서 정답은 ④이다.",
+    "solution": "④ $9a^{2}+30ab+16b^{2}$이 완전제곱식이 되려면 일차항이 $24ab$여야 한다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -543,7 +539,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $x^2-49=(x-7)(x+7)$이다.\\n② $(x-3)(x+2)=x^2-x-6$이다.\\n③ $x^2-4x+4=(x-2)^2$이다.\\n④ $2a^2-8ab+4a=2a(a-4b+2)$이다.\\n⑤ $x^2-25=(x+5)(x-5)$이다.\\n따라서 바르게 인수분해한 것은 ⑤이다.",
+    "solution": "⑤ $x^{2}-5^{2}=(x+5)(x-5)$이다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -580,24 +576,22 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "큰 원의 반지름과 작은 원의 반지름을 각각 $R=12.5$, $r=7.5$cm라 하면 색칠한 부분의 넓이는 $\\pi R^2-\\pi r^2$이다.\n$\\pi(R^2-r^2)=\\pi(R-r)(R+r)=\\pi(12.5-7.5)(12.5+7.5)=100\\pi$이다.\n따라서 색칠한 부분의 넓이는 $100\\pi\\text{cm}^2$이다.",
+    "solution": "$\\pi(12.5^{2}-7.5^{2}) = \\pi(12.5+7.5)(12.5-7.5) = \\pi \\times 20 \\times 5 = 100\\pi$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q16.png",
-    "imageAlt": "반지름이 각각 12.5cm와 7.5cm인 동심원과 색칠된 고리"
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
     "content": "-2 < x < 2일 때, $\\sqrt{x^{2}+4x+4}+\\sqrt{x^{2}-4x+4}$를 간단히 하면? (4점)",
     "choices": [
       "-4",
-      "4",
-      "0",
-      "$2x$",
-      "$-2x$"
+      "",
+      "",
+      "",
+      "-2"
     ],
     "answer": "②",
     "category": "인수분해",
@@ -618,7 +612,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$\\sqrt{x^2+4x+4}=\\sqrt{(x+2)^2}=|x+2|$이고 $\\sqrt{x^2-4x+4}=\\sqrt{(x-2)^2}=|x-2|$이다.\n$-2<x<2$이므로 $x+2>0$, $x-2<0$이다.\n따라서 주어진 식은 $(x+2)+(2-x)=4$이다.\n따라서 정답은 ②이다.",
+    "solution": "$\\sqrt{(x+2)^{2}} + \\sqrt{(x-2)^{2}} = |x+2| + |x-2| = (x+2) - (x-2) = 4$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -655,7 +649,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "$xy=(\\sqrt3+2\\sqrt2)(\\sqrt3-2\\sqrt2)=-5$이고 $x^2-y^2=(x+y)(x-y)=8\\sqrt6$이다.\\n따라서 $x^3y-xy^3=xy(x^2-y^2)=-40\\sqrt6$이므로 정답은 ①이다.",
+    "solution": "$xy(x^{2}-y^{2}) = xy(x+y)(x-y) = (-5)(2\\sqrt{3})(4\\sqrt{2}) = -40\\sqrt{6}$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -664,13 +658,13 @@ window.questionBank = [
   },
   {
     "id": 19,
-    "content": "다음 그림과 같은 세 종류의 직사각형 모양의 타일 12개를 서로 겹치지 않게 붙여 큰 직사각형을 만들려고 한다. 이때 만들어진 직사각형의 가로의 길이가 $x+3$일 때, 세로의 길이는? (4점)",
+    "content": "세 종류의 직사각형 모양의 타일 12개를 붙여 큰 직사각형을 만들려고 한다. 이때 만들어진 직사각형의 가로의 길이가 $x+3$일 때, 세로의 길이는? (4점)",
     "choices": [
-      "$x+2$",
-      "$x+3$",
-      "$x+5$",
-      "$2x+5$",
-      "$x^2+5x+6$"
+      "x+2",
+      "x+3",
+      "x+5",
+      "x+5",
+      "$x^{2}+5x+6$"
     ],
     "answer": "①",
     "category": "인수분해",
@@ -692,14 +686,12 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "큰 정사각형 한 개의 넓이는 $x^2$이고, 가로 1과 세로 $x$인 직사각형 다섯 개의 넓이는 $5x$이다. 한 변이 1인 정사각형 여섯 개의 넓이는 6이다.\n따라서 만든 직사각형의 넓이는 $x^2+5x+6=(x+2)(x+3)$이다.\n가로가 $x+3$이므로 세로는 $x+2$이다.\n따라서 정답은 ①이다.",
+    "solution": "전체 넓이가 $x^{2}+5x+6$이므로 $(x+3)(x+2)$로 인수분해된다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q19.png",
-    "imageAlt": "한 변이 x인 정사각형 한 개, 1×x 직사각형 다섯 개, 1×1 정사각형 여섯 개"
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 20,
@@ -730,7 +722,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "① $2(91^2-9^2)=16400$\\n② $103\\times97=9991$\\n③ $103^2-6\\cdot103+9=10000$\\n④ $47(62+38)=4700$\\n⑤ $11^2-2^2+13^2-14^2+15^2-16^2=59$이다.\\n따라서 가장 큰 값은 ①이다.",
+    "solution": "① $2(91+9)(91-9) = 16400$. 다른 보기들보다 월등히 크다.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -767,7 +759,7 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "solution": "서인이의 식에서 상수항은 $B=12$, 한별이의 식에서 일차항의 계수는 $A=-8$이다.\\n따라서 처음 식은 $x^2-8x+12=(x-2)(x-6)$이므로 정답은 ②이다.",
+    "solution": "서인: 상수항 12 채택. 한별: 일차항 -8 채택. $x^{2}-8x+12 = (x-2)(x-6)$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -776,7 +768,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "content": "아래의 제곱근표를 이용하여 다음을 구하시오. (4점)\n(1) $\\sqrt{5.53}$의 어림한 값은? (1점)\n(2) $\\sqrt{x}$의 어림한 값이 2.390일 때, $x$의 값은? (1점)\n(3) $\\sqrt{553}$의 어림한 값은? (2점)",
+    "content": "제곱근표를 이용하여 다음을 구하시오. (4점)\\n(1) $\\sqrt{5.53}$의 어림한 값은? (1점)\\n(2) $\\sqrt{x}$의 어림한 값이 2.390일 때, $x$의 값은? (1점)\\n(3) $\\sqrt{553}$의 어림한 값은? (2점)",
     "choices": [],
     "answer": "(1) 2.352, (2) 5.71, (3) 23.52",
     "category": "제곱근과 실수",
@@ -786,7 +778,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "제곱근표",
@@ -797,14 +789,12 @@ window.questionBank = [
       "근호활용"
     ],
     "wide": false,
-    "solution": "(1) 제곱근표에서 행 5.5, 열 3을 읽으면 $\\sqrt{5.53}\\approx2.352$이다.\n(2) 2.390은 행 5.7, 열 1에 있으므로 $\\sqrt{x}\\approx\\sqrt{5.71}$이다. 따라서 $x=5.71$이다.\n(3) $553=100\\times5.53$이므로 $\\sqrt{553}=10\\sqrt{5.53}\\approx10\\times2.352=23.52$이다.\n따라서 구하는 값은 (1) 2.352, (2) 5.71, (3) 23.52이다.",
+    "solution": "표를 이용한 단순 독해 및 $10\\sqrt{n}$ 변환 문제이다.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q22.png",
-    "imageAlt": "제곱근표: 수의 첫째 소수자리 5.5부터 5.8까지, 다음 숫자 0부터 4까지"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 23,
@@ -830,7 +820,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
-    "solution": "$0<a<1$이므로 $\\sqrt{a^2}=a$이다.\\n$(a+\\dfrac1a)^2-4=(\\dfrac1a-a)^2$, $(a-\\dfrac1a)^2+4=(a+\\dfrac1a)^2$이다.\\n부호를 반영하면 식은 $5a+2(\\dfrac1a-a)-2(a+\\dfrac1a)=a$이다.",
+    "solution": "$5|a| + 2|a-\\frac{1}{a}| - 2|a+\\frac{1}{a}| = 5a + 2(\\frac{1}{a}-a) - 2(a+\\frac{1}{a}) = a$.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -849,7 +839,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "인수분해",
@@ -861,7 +851,7 @@ window.questionBank = [
       "계산과정"
     ],
     "wide": false,
-    "solution": "(1) 공통인수 $ab$를 묶으면 $ab(a-2+3b)$이다.\\n(2) $x^2-10xy+25y^2=x^2-2\\cdot x\\cdot 5y+(5y)^2=(x-5y)^2$이다.\\n(3) $9x^2-16y^2=(3x)^2-(4y)^2=(3x+4y)(3x-4y)$이다.\\n(4) 곱이 6이고 합이 -5인 두 수는 -2, -3이므로 $x^2-5x+6=(x-2)(x-3)$이다.",
+    "solution": "공통인수 묶기 및 인수분해 기본 공식 적용.",
     "level": "중",
     "subUnitKey": "M3-02-FACTORIZATION",
     "subUnit": "인수분해",
@@ -870,9 +860,9 @@ window.questionBank = [
   },
   {
     "id": 25,
-    "content": "정사각형 모양의 색종이 3장을 다음 그림과 같이 붙였다. B의 넓이는 A의 넓이의 4배이고, C의 넓이는 A의 넓이의 9배이다. 색종이 A의 넓이가 $5\\text{cm}^2$일 때, 전체 도형의 둘레의 길이를 구하시오. (4점)",
+    "content": "정사각형 모양의 색종이 3장을 붙였다. B의 넓이는 A의 4배이고, C의 넓이는 A의 9배이다. A의 넓이가 $5\\text{cm}^{2}$일 때, 전체 도형의 둘레의 길이를 구하시오. (4점)",
     "choices": [],
-    "answer": "$18\\sqrt5\\text{cm}$",
+    "answer": "$20\\sqrt{5}\\text{cm}$",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -892,13 +882,11 @@ window.questionBank = [
       "근호활용"
     ],
     "wide": false,
-    "solution": "정사각형 A의 한 변은 $\\sqrt5$cm이다.\nB와 C의 넓이는 각각 $4\\times5=20$, $9\\times5=45$cm$^2$이므로 한 변은 각각 $2\\sqrt5$cm, $3\\sqrt5$cm이다.\n붙이기 전 세 정사각형의 둘레 합은 $4(\\sqrt5+2\\sqrt5+3\\sqrt5)=24\\sqrt5$cm이다.\n그림에서 A와 B가 맞닿은 변의 길이는 $\\sqrt5$cm, B와 C가 맞닿은 변의 길이는 $2\\sqrt5$cm이다. 맞닿은 변은 둘레 합에서 각각 두 번 세었으므로 $2(\\sqrt5+2\\sqrt5)=6\\sqrt5$cm를 뺀다.\n따라서 전체 도형의 둘레는 $24\\sqrt5-6\\sqrt5=18\\sqrt5$cm이다.",
+    "solution": "A 한 변 $\\sqrt{5}$, B 한 변 $2\\sqrt{5}$, C 한 변 $3\\sqrt{5}$이다. 둘레는 $2(3\\sqrt{5} + 6\\sqrt{5}) + 2\\sqrt{5} = 20\\sqrt{5}$.",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/19_동산중_1학기_중간_중3_기출/q25.png",
-    "imageAlt": "넓이가 각각 5, 20, 45 제곱센티미터인 정사각형 A, B, C가 변을 맞대어 이어진 그림"
+    "subUnitClassificationDepth": "complete_rule"
   }
 ];

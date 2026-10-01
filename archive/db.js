@@ -32,37 +32,6 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
-      "file": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
-      "school": "금당고",
-      "topic": "",
-      "grade": "고2",
-      "year": 2026,
-      "semester": "2",
-      "examType": "mid",
-      "subject": "미적분I",
-      "contentType": "기출",
-      "qCount": 21,
-      "rangeStartUnitKey": "H22-M1-01",
-      "rangeStartUnit": "함수의 극한",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-M1-04",
-      "rangeEndUnit": "도함수",
-      "rangeEndUnitOrder": 4,
-      "courseRanges": [
-        {
-          "standardCourse": "미적분I",
-          "courseCode": "H22-M1",
-          "rangeStartUnitKey": "H22-M1-01",
-          "rangeStartUnit": "함수의 극한",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-M1-04",
-          "rangeEndUnit": "도함수",
-          "rangeEndUnitOrder": 4
-        }
-      ],
-      "primaryStandardCourse": "미적분I"
-    },
-    {
       "file": "original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
       "school": "매산고",
       "topic": "",

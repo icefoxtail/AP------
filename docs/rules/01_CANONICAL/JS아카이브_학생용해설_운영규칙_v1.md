@@ -160,32 +160,25 @@ beforeSolutionHash
 
 ---
 
-### 2.2 CURRENT 중등 META_V2 재인증 예외 — 2026-09-30
+### 2.2 CURRENT 중등 재인증 예외 — 2026-09-29
 
-현재 generation은 `MIDDLE_RECERT_2026-09-30_META_V2`다. 이 generation은 일반 production 해설 업그레이드의 `KEEP | UPGRADE | HOLD` 규칙 위에 **재인증 track별 override**를 둔다.
+`MIDDLE_RECERT_2026-09-29_V1` scope인 M3 69 + M1 31 + M2 1학기 34에서는 **과거 해설 존재, 과거 KEEP/UPGRADE, CREATE_DONE, REVIEW1_DONE, R2E, main 반영 이력만으로 현재 해설 검토를 면제하지 않는다.**
 
-#### FULL_INTEGRATED_V2
+CURRENT CREATE가 모든 문항의 기존 solution을 다시 직접 읽고 현재 정본 기준으로 `KEEP | UPGRADE | HOLD`를 fresh 판정한다. 여기서 재인증은 **무조건 재작성**이 아니라 **무조건 재판독·재판정**이다. 이미 좋은 해설은 KEEP할 수 있지만 “해설이 있으니 충분해 보인다”는 존재 기반 판단으로 시험지 전체 검토를 건너뛸 수 없다.
 
-M3의 full-integrated 대상과 이후 M1 31 → M2 1학기 34에서는 **과거 해설 존재, 과거 KEEP/UPGRADE, CREATE_DONE, REVIEW1/REVIEW2, legacy R2/R2E, main 반영 이력만으로 현재 해설 작업을 면제하지 않는다.**
+각 문항은 최소한 다음을 다시 본다.
 
-CURRENT CREATE는 source/content/choices/answer를 고정한 뒤 **기존 solution을 초안·문장 재사용·first-pass 판정 근거로 쓰지 않고 전 문항 solution을 새로 작성**한다. source + verified answer에서 학생용 작은칠판 흐름으로 독립 작성한 뒤에만 기존 solution을 source truth/계산 사실 누락 비교용으로 열 수 있다.
+- 현재 source identity와 solution 정합성
+- 수학적 정확성과 학생 재현 가능성
+- 작은칠판 계산 전개와 결정적 중간식
+- 줄바꿈·해설 조판 가독성
+- 교육과정/학생용 언어
+- 해설 이해에 필요한 SVG/solutionImage의 필요성
+- 기존 visual이 있으면 solution과 실제 geometry/label owner가 맞는지
 
-CREATE 완료 증거:
-- `solutionRewrite=FULL_ALL_QUESTIONS`
-- `solutionRewriteCount=N/N`
-- item hold가 있으면 `solutionRewriteAttempted=N/N`, `solutionRewriteResolved=(N-H)/N`, held qid 명시
+현재 generation CREATE receipt에 이 fresh coverage가 결속되지 않으면 current CREATE_DONE으로 인정하지 않는다. REVIEW1/REVIEW2도 같은 generation artifact를 각각 fresh FULL 독립검수한다.
 
-REVIEW1/REVIEW2는 같은 generation artifact를 각각 처음 보는 것처럼 수학·solution 재현성·작은칠판·SVG/solutionImage를 FULL 독립검수하고, 안전하게 고칠 수 있는 결함은 같은 stage에서 핀포인트 repair한다.
-
-#### MAIN_PRESENT_META_ONLY
-
-current inventory에서 `MAIN_PRESENT_META_ONLY`로 명시된 pre-Meta main 시험지는 V1 REVIEW2에서 이미 source/content/choices/answer·전 문항 solution·작은칠판·layout/image/SVG가 통과한 frozen production artifact다. **Meta 누락만을 이유로 solution을 재작성하거나 의미 재검수하지 않는다.** current main exam/solution/SVG/image parity만 확인하고 `META_CREATE → META_REVIEW1 → META_REVIEW2`를 수행한다.
-
-이 fast track에서 actual content/solution/SVG drift 또는 student-facing defect가 발견되면 그 자리에서 억지로 Meta-only 수정하지 않고 `CONTENT_DRIFT_DISCOVERED`로 FULL_INTEGRATED_V2에 재진입한다.
-
-위 META_V2 재인증 scope 밖의 일반 기존 production 해설 업그레이드에는 §2의 `KEEP | UPGRADE | HOLD` 원칙이 그대로 적용된다.
-
-## 3. 판서형 계산 전개## 3. 판서형 계산 전개
+## 3. 판서형 계산 전개
 
 해설은 선생님이 칠판에 쓰듯 **식의 변화가 위에서 아래로 추적**되어야 한다.
 

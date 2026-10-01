@@ -86,7 +86,7 @@ test('all H1/H2 RPM Primary crosswalk routes remain semantic FINAL independent o
     });
   }
 
-  assert.equal(denominator, 754);
+  assert.equal(denominator, 753);
   assert.ok(Object.values(projections).reduce((sum, count) => sum + count, 0) === denominator);
 });
 
