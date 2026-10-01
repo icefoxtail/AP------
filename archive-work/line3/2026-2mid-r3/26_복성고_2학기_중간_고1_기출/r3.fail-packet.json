@@ -1,0 +1,64 @@
+{
+  "schema": "R3_FAIL_PACKET_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "examId": "26_복성고_2학기_중간_고1_기출",
+  "reviewedAtKst": "2026-10-01T09:34:09+09:00",
+  "r3InputArtifactSha": "969d36b10906a4c3b9c5203ba664a8796ec2fb5e",
+  "inputRef": "work/line3/26-bokseong-h1-2mid-review2-20261001@3eaea79c7831411600ffa8363e99487dd2090c8d",
+  "failedQids": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "failureCodes": [
+    "SOURCE_AUTHORITY_DRIFT",
+    "CURRICULUM_FAIL",
+    "SOLUTION_VISUAL_MISSING",
+    "SOLUTION_VISUAL_INCOMPLETE",
+    "META_UNRESOLVED",
+    "VISUAL_TAG_MISSING",
+    "QUESTIONTYPE_TAG_MISSING",
+    "ITEM_HOLD_GATE_FAIL"
+  ],
+  "affectedAxes": [
+    "source/content/choices/answer",
+    "curriculum-method",
+    "solution-visual",
+    "meta",
+    "tags",
+    "release-gate"
+  ],
+  "observedEvidence": {
+    "q2": "R2 has stale relation symbols and blank answer; pixel source repair d3bc3867d0abf54b483f7b45d30b25517e3fc362 establishes printed ∈ / ⊂ and answer ①.",
+    "curriculum": "q7 uses point arithmetic in internal division; q20 uses vector/normal-direction method. Both violate current Common Math 2 method rules.",
+    "visual": "Missing required solution visual q1,q3,q4,q6,q7,q8,q10,q18,q20; incomplete existing visual q12,q13,q19,q22.",
+    "meta": "R2 input still has item holds q2,q6,q8,q9,q19.",
+    "tags": "visual tag gaps q9,q11,q12,q13,q19,q22; subjective tag gaps q20,q21,q22."
+  },
+  "authorityRefs": {
+    "latestMain": "94f293ceb4f4a7d0e2ed2d23630ed8d182bed09d",
+    "q2SourceRepair": "d3bc3867d0abf54b483f7b45d30b25517e3fc362",
+    "r3LedgerCommit": "513cfcc673e6f2dc2043cca54befe5c49ff6ae3e"
+  },
+  "systemicScope": "A-source defect q2 + B curriculum/visual/meta/tag defects across multiple qids; A dominates.",
+  "protectedDiff": "R3 changed no exam/protected/source-identity fields.",
+  "failureClass": "FULL_REENTRY",
+  "requiredRoute": "FULL_R1_THEN_FULL_R2_THEN_R3",
+  "nextOwner": "R1_FULL_REOPEN",
+  "mainMutation": false
+}
