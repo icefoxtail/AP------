@@ -1101,7 +1101,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "옆면은 한 변이 4인 정삼각형이므로 내접원의 반지름은 $r=\\dfrac{4\\sqrt3}{6}=\\dfrac{2\\sqrt3}{3}$이다. 옆면의 높이는 $2\\sqrt3$, 밑면 중심에서 변의 중점까지는 2이므로 밑면으로 정사영하면 내접원은 반지름이 $a=\\dfrac{2\\sqrt3}{3}$, $b=\\dfrac23$인 타원이 된다. 따라서 네 타원의 넓이 합은 $B=4\\pi ab=\\dfrac{16\\sqrt3}{9}\\pi$이다.\n밑면을 $[0,4]\\times[0,4]$로 두면 이웃한 타원은 $(1,1),(3,1),(3,3),(1,3)$에서 접한다. 가운데 $2\\times2$ 정사각형을 네 개의 $1\\times1$ 구역으로 나누어 보자. 한 구역에서 위쪽 타원이 차지하는 넓이를 $T$라 하면, 그 타원의 아래 경계는 $y=\\dfrac{10}{3}-\\dfrac23\\sqrt{1-\\dfrac{3(x-2)^2}{4}}$이다.\n$u=x-2$로 놓으면\n$T=\\int_0^1\\left(-\\dfrac13+\\dfrac23\\sqrt{1-\\dfrac{3u^2}{4}}\\right)du=-\\dfrac13+\\dfrac23\\left(\\dfrac14+\\dfrac{\\pi}{3\\sqrt3}\\right)=-\\dfrac16+\\dfrac{2\\sqrt3}{27}\\pi$이다.\n각 $1\\times1$ 구역에서는 이웃한 두 타원이 각각 넓이 $T$만큼 차지하고 서로 한 점에서만 만난다. 따라서 $A=4\\{1-2T\\}=\\dfrac{16}{3}-\\dfrac{16\\sqrt3}{27}\\pi$이다. 그러므로\n$A+B=\\dfrac{16}{3}+\\dfrac{32\\sqrt3}{27}\\pi$이고 정답은 ①이다.",
-    "solutionImage": "",
+    "solutionImage": "assets/images/23_매산고_2학기_기말_고2_기하/q013_solution.svg",
     "image": "assets/images/23_매산고_2학기_기말_고2_기하/q013_visual.png",
     "visualAsset": "assets/images/23_매산고_2학기_기말_고2_기하/q013_visual.png",
     "hasVisualAsset": true,
@@ -1191,7 +1191,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "metadataStatus": "SOURCE_FIRST_PASS",
     "metadataReviewRequired": true,
-    "sourceMetadataFirstPassSha": "sha256:df8555d75349879c0268ae89ca102d27dc143dfde0f6b3dc56f6725952b75778"
+    "sourceMetadataFirstPassSha": "sha256:df8555d75349879c0268ae89ca102d27dc143dfde0f6b3dc56f6725952b75778",
+    "solutionImageAlt": "정사각형 밑면 위의 네 타원과 가운데 빗금친 영역 A, 한 모서리 타원 조각 T",
+    "solutionImageCaption": "네 타원이 접하는 가운데 영역 A와 한 모서리 조각 T를 본다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,

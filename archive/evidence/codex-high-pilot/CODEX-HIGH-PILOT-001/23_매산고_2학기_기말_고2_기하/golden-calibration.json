@@ -1,0 +1,93 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_매산고_2학기_기말_고2_기하",
+  "ordinal": 3,
+  "stage": "GOLDEN_COMPARE",
+  "status": "MANUAL_SOLUTION_CALIBRATION_PASS_WITH_SCOPE_NOTE",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
+  "targetArtifactSha256": "sha256:a5eb1267ee3cc67b5b22f0ec77333f3418546abe93513ef9ca3c367043e28cc3",
+  "targetArtifactGitBlobSha": "3aaefbd712b7e238691b5a437df74f7bf44a21f1",
+  "denominator": 20,
+  "resolvedSolutionCount": 20,
+  "itemHoldQids": [],
+  "sampleReadAfterFreshSolutionBeforeCompare": true,
+  "sampleCount": 2,
+  "samples": [
+    {
+      "path": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+      "sha256": "sha256:35fee22862598bf1f2adfef9083482f542c91367835b34cd117bf2a6467f33de",
+      "gitBlobSha": "f1f68c8ed030aa44114f3828648bcdd30f2628c0",
+      "grade": "고2",
+      "subject": "기하",
+      "examYear": 2023,
+      "selectedQids": [
+        5,
+        19
+      ],
+      "curriculumScopeNote": "Same school/year/grade/course source exam. Its current canonical JS fields are H22-GE/기하 despite a 2023 H2 source date, so this sample is used only for student-solution structure and geometry language, not taxonomy or unit authority."
+    },
+    {
+      "path": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sha256": "sha256:bf5e9db54d004dafd44592ac816ba46c14b0b8be4db5e5e62b2e70807f12733d",
+      "gitBlobSha": "8f875af0aa862d668f6750ff91b3ee7c3e6a6317",
+      "grade": "고2",
+      "subject": "기하",
+      "examYear": 2026,
+      "selectedQids": [
+        8,
+        12,
+        14,
+        18
+      ],
+      "curriculumScopeNote": "Supplementary same-grade/course geometry reference in the 2022 curriculum. Used for overlapping spatial-geometry solution density only; it does not determine the 2015 H15-GV taxonomy or answer methods."
+    }
+  ],
+  "axes": {
+    "studentReproducibility": "PASS: target shows vector setup, equations, all required condition use, and conclusions for every question.",
+    "smallBoardStructure": "PASS: cases q11/q12 and five truth-value blocks q9 are visibly separated; long spatial derivations q13/q14/q17/q20 show decisive intermediate calculations.",
+    "explanationDensity": "PASS: direct items remain brief; multi-step geometry expands only for coordinate, projection, or plane-normal reasoning.",
+    "visualSemanticParity": "PASS: source diagrams are preserved as the question visuals and the text references the pictured labels/regions; no solution visual judged necessary to understand a correct derivation apart from q13, routed for routine visual assessment."
+  },
+  "representativeObservations": [
+    {
+      "targetQids": [
+        1,
+        2,
+        5
+      ],
+      "samplePath": "archive/exams/original/high/h2/2mid/23_매산고_2학기_중간_고2_기하.js",
+      "sampleQids": [
+        5
+      ],
+      "observation": "Both state vector relationships and compute coordinates; target solutions retain enough component arithmetic without the sample’s repeated fixed labels."
+    },
+    {
+      "targetQids": [
+        13,
+        17
+      ],
+      "samplePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sampleQids": [
+        12
+      ],
+      "observation": "The sample separates projected area from dihedral-angle cosine. Target q13 spells out ellipse projection and cap integration; q17 states the projected-area ratio before solving the height."
+    },
+    {
+      "targetQids": [
+        14,
+        15,
+        20
+      ],
+      "samplePath": "archive/exams/original/high/h2/1mid/26_매산고_1학기_중간_고2_기하.js",
+      "sampleQids": [
+        8,
+        14
+      ],
+      "observation": "The sample uses a right-triangle/projection setup before computing a plane angle or distance. Target solutions make coordinate directions and normal vectors explicit."
+    }
+  ],
+  "scopeLimit": "Only one exact source-year H2 Geometry sample was present, and its live unit metadata is normalized to H22-GE. A second same-grade/course spatial-geometry reference is H22-GE. Both are used solely as student-solution quality references; no sample supplies semantic answers or target taxonomy.",
+  "conclusion": "Quality floor met for the 20 target solutions using the closest current-main H2 Geometry references; curriculum-version caveat is durable. No target wording or solution was copied.",
+  "postCalibrationChanges": "Added q13 solutionImage after the solution comparison; student solution text is unchanged."
+}
