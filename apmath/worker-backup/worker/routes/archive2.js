@@ -14,6 +14,8 @@ import {
   validateApprovedMixedQuestions,
   validateNormalBlueprint,
   checkTargetGrade,
+  checkTargetGrades,
+  resolveSavedPaperSourceGrades,
   blueprintInsertStatements,
   validateOriginalSnapshot,
 } from "../helpers/archive2-questions.js";
@@ -123,7 +125,10 @@ export async function handleArchive2(
       savedSnapshot = await readAndVerifySavedSnapshot(savedPaper);
       if (savedSnapshot.questions.length !== Number(savedPaper.question_count))
         fail("저장한 시험지 문항 수가 일치하지 않습니다.", 409);
-      checkTargetGrade(classRow, savedPaper.grade);
+      checkTargetGrades(
+        classRow,
+        await resolveSavedPaperSourceGrades(env, savedSnapshot.questions),
+      );
       title = savedPaper.title;
       file = `MIXED:archive2-saved-${paperId}-${batchId}`;
     }
@@ -190,7 +195,8 @@ export async function handleArchive2(
       await requireStudentAccess(teacher, newTargetIds, env);
     let payload = null,
       questions,
-      meta;
+      meta,
+      canonicalAuthority = null;
     if (savedPaperMode) {
       payload = { questions: savedSnapshot.questions, meta: savedSnapshot.meta };
       questions = savedSnapshot.questions;
@@ -218,6 +224,7 @@ export async function handleArchive2(
       if (!existing) {
         const verified = await validateOriginalSnapshot(env, payload, input);
         questions = verified.questions;
+        canonicalAuthority = verified.canonicalAuthority;
         payload.meta.identityTitle = verified.exam.identityTitle;
       } else {
         payload.meta.identityTitle = savedPayload?.meta?.identityTitle || "";
@@ -238,9 +245,11 @@ export async function handleArchive2(
       meta = payload?.meta || {};
       if (JSON.stringify(payload || {}).length > 900000)
         fail("mixed payload exceeds 900KB", 413);
-      if (!existing) checkTargetGrade(classRow, input.selection_filters?.grade);
-      if (!existing)
-        await validateApprovedMixedQuestions(env, questions, input);
+      if (!existing) {
+        const verified = await validateApprovedMixedQuestions(env, questions, input);
+        canonicalAuthority = verified.canonicalAuthority;
+        checkTargetGrades(classRow, verified.sourceGrades);
+      }
     } else {
       if (!file.startsWith("exams/") || file.includes(".."))
         fail("normalized archive_file required");
@@ -255,8 +264,9 @@ export async function handleArchive2(
         sourceQuestionNo: q.question_no,
       }));
       meta = { questionUids: input.question_uids };
-      const sourceGrade = await validateNormalBlueprint(env, questions, input);
-      if (!existing) checkTargetGrade(classRow, sourceGrade);
+      const verified = await validateNormalBlueprint(env, questions, input);
+      canonicalAuthority = verified.canonicalAuthority;
+      if (!existing) checkTargetGrade(classRow, verified.grade);
     }
     const rows = savedPaperMode
       ? (existing ? savedRows : savedSnapshot.bridgeRows)
@@ -264,6 +274,7 @@ export async function handleArchive2(
         ? savedRows
         : await buildQuestionSnapshot(input, questions, meta, {
             legacy: original,
+            canonicalAuthority,
           });
     const expectedQuestionCount = Number(savedPaperMode ? savedPaper.question_count : input.question_count);
     if (!rows?.length || rows.length !== expectedQuestionCount)

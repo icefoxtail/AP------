@@ -14,7 +14,8 @@ const requireWorker = createRequire(path.join(worker, "package.json"));
 const { Miniflare } = requireWorker("miniflare");
 const { build } = requireWorker("esbuild");
 const catalogText = fs.readFileSync(path.join(root, "archive/data/archive2-catalog.json"), "utf8");
-const catalog = core.decodeCatalog(JSON.parse(catalogText));
+const canonicalManifest = JSON.parse(fs.readFileSync(path.join(root, "archive/data/archive2-canonical-input-manifest.json"), "utf8"));
+const catalog = { ...core.decodeCatalog(JSON.parse(catalogText)), indexVersion: canonicalManifest.projectionVersion };
 
 const bundle = await build({
   stdin: {
@@ -49,25 +50,22 @@ const mf = new Miniflare({
   serviceBindings: {
     ARCHIVE2_ASSETS: (request) => {
       const url = new URL(request.url);
-      if (url.pathname.endsWith("/data/archive2-catalog.json"))
-        return new Response(catalogText, { headers: { "Content-Type": "application/json" } });
-      let file = "";
-      let baseDir = "";
-      if (url.pathname.includes("/assets/images/")) {
-        file = decodeURIComponent(url.pathname.split("/assets/images/")[1] || "");
-        baseDir = path.join(root, "archive/assets/images");
-      } else if (url.pathname.includes("/exams/")) {
-        file = decodeURIComponent(url.pathname.split("/exams/")[1] || "");
-        baseDir = path.join(root, "archive/exams");
-      } else {
-        return new Response("Not found", { status: 404 });
-      }
-      const filePath = path.resolve(baseDir, file);
+      const mounts = [
+        ["/AP------/archive/", path.join(root, "archive")],
+        ["/AP------/docs/", path.join(root, "docs")],
+      ];
+      const mount = mounts.find(([prefix]) => url.pathname.startsWith(prefix));
+      if (!mount) return new Response("Not found", { status: 404 });
+      const relativePath = decodeURIComponent(url.pathname.slice(mount[0].length));
+      const baseDir = mount[1];
+      const filePath = path.resolve(baseDir, relativePath);
       const relative = path.relative(baseDir, filePath);
-      if (!file || relative.startsWith("..") || path.isAbsolute(relative) || !fs.existsSync(filePath))
+      if (!relativePath || relative.startsWith("..") || path.isAbsolute(relative) || !fs.existsSync(filePath))
         return new Response("Not found", { status: 404 });
       const mime = path.extname(filePath).toLowerCase() === ".svg"
         ? "image/svg+xml"
+        : path.extname(filePath).toLowerCase() === ".json"
+          ? "application/json"
         : path.extname(filePath).toLowerCase() === ".png"
           ? "image/png"
           : path.extname(filePath).toLowerCase() === ".js"
@@ -120,7 +118,7 @@ function metaFor(title, questions, filters) {
     indexVersion: catalog.indexVersion,
   };
 }
-function saveInput(batchId, filters, papers, indexVersion = "stale-runtime-catalog:" + "v".repeat(500)) {
+function saveInput(batchId, filters, papers, indexVersion = catalog.indexVersion) {
   return {
     schema_version: "archive-saved-paper-v1",
     save_batch_id: batchId,
@@ -198,7 +196,8 @@ try {
       imageFixture = { record, rawQuestion };
     const html = [rawQuestion?.content, rawQuestion?.question, rawQuestion?.solution]
       .filter((value) => typeof value === "string").join(" ");
-    if (!htmlImageFixture) {
+    if (!htmlImageFixture && typeof rawQuestion?.solutionImage === "string" &&
+        rawQuestion.solutionImage.startsWith("assets/images/") && rawQuestion.solutionImage.toLowerCase().endsWith(".svg")) {
       const match = /<img\b[^>]*\bsrc\s*=\s*(["'])([^"']*assets\/images\/[^"']+)\1/i.exec(html);
       if (match) htmlImageFixture = { record, rawQuestion, imagePath: match[2] };
     }

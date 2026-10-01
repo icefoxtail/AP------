@@ -90,83 +90,47 @@
     return `<div class="archive-home-product is-unavailable" ${attrs} aria-disabled="true"><span>${esc(product.label)}</span></div>`;
   }
 
-  const courseGrades = Object.freeze({
-    "공통수학1": "고1",
-    "공통수학2": "고1",
-    "수학(상)": "고1",
-    "수학(하)": "고1",
-    대수: "고2",
-    수학I: "고2",
-    "확률과통계": "고2",
-    미적분: "고3",
-    "미적분I": "고3",
-    "미적분II": "고3",
-    수학II: "고3",
-    기하: "고3",
-    "기하와 벡터": "고3",
-  });
-  const courseGrade = (courseKey, curriculumKey = "") => {
-    if (typeof C.finderCourseGrade === "function") {
-      const shared = C.finderCourseGrade(courseKey, curriculumKey);
-      if (shared) return shared;
-    }
-    const middle = String(courseKey || "").match(/^M([123])-[12]$/);
-    return middle ? `중${middle[1]}` : courseGrades[courseKey] || "";
-  };
   const scopeText = (value) =>
     String(value ?? "")
       .normalize("NFC")
       .replace(/\s+/g, "")
       .replace(/[·・ㆍ]/g, "");
-  const scopeCourseKey = (row) => {
-    const course = C.normalizeCourseIdentity(row.courseKey);
-    const grade = course.match(/^중([123])(?:수학)?$/)?.[1];
-    if (!grade) return course;
-    const unit = String(row.standardUnitKey || row.legacyStandardUnitKey || "");
-    const major = unit.match(new RegExp(`^M${grade}-(\\d{2})$`));
-    if (major) return `M${grade}-${Number(major[1]) <= 4 ? 1 : 2}`;
-    const semester = unit.match(new RegExp(`^M${grade}-([12])-`))?.[1];
-    return semester ? `M${grade}-${semester}` : course;
-  };
+  const scopeCourseKey = (row) => C.normalizeCourseIdentity(row.courseKey);
+  const scopeParentKey = (row) => [
+    row.grade || row.sourceGrade || "",
+    row.curriculumKey || "",
+    scopeCourseKey(row),
+    scopeText(row.L1),
+    scopeText(row.L2),
+  ].join("|");
   const taxonomyRowsForFilters = (filters) => {
-    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true,
-      projected = C.hasSubjectProjection?.(filters.grade) === true;
+    const highSemantic = C.isHighSemanticSubjectGrade?.(filters.grade) === true;
     if (highSemantic && !filters.semanticSubject) return [];
-    const high1ProjectionPaths =
-      filters.grade === "고1" && filters.semanticSubject
-        ? new Set(
-            state.catalog.records
-              .filter(
-                (record) =>
-                  record.effectiveBrowseGrade === "고1" &&
-                  (!filters.curriculumKey ||
-                    record.curriculumKey === filters.curriculumKey) &&
-                  C.subjectProjectionMatches(record, filters),
-              )
-              .flatMap((record) => [C.pathKey(record, 4), C.pathKey({ ...record, ...(C.basicScopeParent(record, state.catalog.basicScopeLinks) || {}) }, 4)]),
-          )
-        : null;
-    return (state.catalog.basicTaxonomy || state.catalog.taxonomy).filter((r) => {
-      const projectionMatch =
-        !filters.semanticSubject ||
-        (filters.grade === "고1"
-          ? high1ProjectionPaths.has(C.pathKey(r, 4))
-          : C.subjectProjectionForRecord?.(r, filters.grade) ===
-            filters.semanticSubject);
-      const gradeMatch =
-        projected && filters.semanticSubject
-          ? true
-          : !filters.grade ||
-            courseGrade(r.courseKey, r.curriculumKey) === filters.grade;
-      return (
-        gradeMatch &&
-        projectionMatch &&
-        (!filters.curriculumKey || r.curriculumKey === filters.curriculumKey) &&
-        (!filters.courseKey ||
-          filters.semanticSubject ||
-          r.courseKey === filters.courseKey)
+    const allowedParents = new Set();
+    const selectionFilters = {
+      ...filters,
+      L3: "",
+      L4: "",
+      difficultyBuckets: [],
+      primaryPaths: [],
+    };
+    delete selectionFilters.scopeQuestionUids;
+    for (const record of state.catalog.records || []) {
+      if (!C.eligibility(record, state).ok || !C.matches(record, selectionFilters, state)) continue;
+      const parent = C.basicScopeParent(
+        record,
+        state.catalog.basicScopeLinks,
+        state.catalog.canonicalAuthority,
       );
-    });
+      if (parent) allowedParents.add(scopeParentKey({ ...record, ...parent }));
+    }
+    return (state.catalog.basicTaxonomy || []).filter((row) =>
+      (!filters.grade || row.grade === filters.grade ||
+        (highSemantic && C.isHighSemanticSubjectGrade?.(row.grade) === true)) &&
+      (!filters.curriculumKey || row.curriculumKey === filters.curriculumKey) &&
+      (!filters.courseKey || filters.semanticSubject || row.courseKey === filters.courseKey) &&
+      allowedParents.has(scopeParentKey(row)),
+    );
   };
   const state = {
     catalog: null,
@@ -434,18 +398,44 @@
       field => restoredFilters[field] && !/^(mf|rpm):/.test(restoredFilters[field]),
     );
     if (hasLegacyDetail) {
-      let scopePaths = unique(data.rows.flatMap(row => row.paths || []));
-      if (!scopePaths.length) {
-        const previousFilters = state.filters, previousScopes = state.scopes;
-        state.filters = { ...restoredFilters, L3: "", L4: "" };
-        state.scopes = data.scopes;
-        try { scopePaths = selectedScopePaths(); }
-        finally { state.filters = previousFilters; state.scopes = previousScopes; }
-      }
+      const scopePaths = unique(data.scopeSourcePaths || data.rows.flatMap(row => row.paths || (row.path ? [row.path] : [])));
+      if (!scopePaths.length)
+        throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
       Object.assign(restoredFilters, C.migrateLegacyAdvancedFilters(
-        restoredFilters, state.catalog.records, scopePaths, data.sources,
+        restoredFilters, state.catalog.records, scopePaths, data.sources, state.catalog.canonicalAuthority,
       ));
     }
+    const savedScopePaths = unique(data.scopeSourcePaths || data.rows.flatMap(row => row.paths || (row.path ? [row.path] : [])));
+    if (data.scopes.length && !savedScopePaths.length)
+      throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
+    let currentScopes = [];
+    const previousScopeState = {
+      filters: state.filters,
+      scopes: state.scopes,
+      sources: state.sources,
+      buckets: state.buckets,
+      rounds: state.rounds,
+      includeExtended: state.includeExtended,
+    };
+    try {
+      state.filters = restoredFilters;
+      state.scopes = [];
+      state.sources = data.sources;
+      state.buckets = Array.isArray(data.buckets) ? data.buckets : [];
+      state.rounds = data.rounds;
+      state.includeExtended = data.includeExtended === true;
+      currentScopes = scopeOptions();
+    } finally {
+      Object.assign(state, previousScopeState);
+    }
+    const currentScopePaths = new Set(currentScopes.flatMap(scope => scope.paths));
+    if (savedScopePaths.some(path => !currentScopePaths.has(path)))
+      throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
+    const restoredScopeKeys = currentScopes
+      .filter(scope => scope.paths.some(path => savedScopePaths.includes(path)))
+      .map(scope => scope.key);
+    if (data.scopes.length && !restoredScopeKeys.length)
+      throw new Error("현재 분류 기준이 변경되어 범위를 다시 선택해야 합니다.");
     const allowed = Object.keys(draft()).filter(
       (k) =>
         !["schemaVersion", "taxonomyVersion", "updatedAt", "selected", "scopeSourcePaths", "scopeQuestionUids"].includes(
@@ -463,18 +453,7 @@
       state.saveResultSignature = "";
     }
     state.filters = restoredFilters;
-    // A renamed display parent must not drop the source range in a saved paper.
-    const currentScopes = scopeOptions();
-    if (state.scopes.some(key => !currentScopes.some(s => s.key === key || s.paths.includes(key)))) {
-      const previousPaths = unique(data.scopeSourcePaths || data.rows.flatMap(row => row.paths || (row.path ? [row.path] : [])));
-      const previousUids = unique(data.scopeQuestionUids || data.rows.flatMap(row => row.scopeQuestionUids || []));
-      state.scopes = unique([
-        ...state.scopes.filter(key => currentScopes.some(s => s.key === key || s.paths.includes(key))),
-        ...currentScopes.filter(s => previousUids.length
-          ? s.scopeQuestionUids.some(uid => previousUids.includes(uid))
-          : s.paths.some(p => previousPaths.includes(p))).map(s => s.key),
-      ]);
-    }
+    state.scopes = restoredScopeKeys;
     // Old unopened drafts inherited [2, 3] without a user choosing difficulty.
     if (!data.selected.length && data.difficultyFilterVersion !== "optional-v1" &&
         data.distribution !== "custom" && JSON.stringify(data.buckets) === "[2,3]") {
@@ -543,49 +522,47 @@
   }
   function scopeOptions() {
     const canonicalRows = taxonomyRowsForFilters(state.filters);
-    const canonicalParents = new Set(canonicalRows.map(r =>
-      [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|")));
-    const excluded = C.composeExclusions(context()).union;
-    const pool = state.catalog.records.filter((r) =>
-      C.matches(r, { ...state.filters, L3: "", L4: "", difficultyBuckets: [], sourceFiles: state.sources }),
-    );
-    const sourceRows = pool.map(r => ({
-      ...r, ...(C.basicScopeParent(r, state.catalog.basicScopeLinks) || {}),
-      sourceScopePath: C.pathKey(r, 4),
-      scopeEligible: C.matches(r, state.filters) && C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
-        C.eligibility(r, state).ok && !excluded.has(r.questionUid),
-    }));
     const units = new Map();
-    // Source units remain visible even before their advanced taxonomy is published.
-    for (const r of [...canonicalRows, ...sourceRows]) {
-      if (!r.L1 || !r.L2) continue;
-      const key = [
-        r.curriculumKey,
-        scopeCourseKey(r),
-        scopeText(r.L1),
-        scopeText(r.L2),
-      ].join("|");
-      if (!units.has(key))
-        units.set(key, {
-          curriculumKey: r.curriculumKey,
-          courseKey: scopeCourseKey(r),
-          L1: r.L1,
-          L2: r.L2,
-          rows: [],
-        });
-      units.get(key).rows.push(r);
+    for (const row of canonicalRows) {
+      const key = scopeParentKey(row);
+      if (!units.has(key)) units.set(key, { ...row, records: new Map() });
     }
+    const excluded = C.composeExclusions(context()).union;
+    const selectionFilters = {
+      ...state.filters,
+      sourceFiles: state.sources,
+      difficultyBuckets: state.buckets,
+    };
+    const seenUids = new Set();
+    for (const record of state.catalog.records || []) {
+      if (!record.questionUid || seenUids.has(record.questionUid)) continue;
+      if (!C.eligibility(record, state).ok || !C.matches(record, selectionFilters, state)) continue;
+      if (!C.rowMatches(record, { difficultyBuckets: state.buckets }) || excluded.has(record.questionUid)) continue;
+      const parent = C.basicScopeParent(
+        record,
+        state.catalog.basicScopeLinks,
+        state.catalog.canonicalAuthority,
+      );
+      if (!parent) continue;
+      const key = scopeParentKey({ ...record, ...parent });
+      const unit = units.get(key);
+      if (!unit) continue;
+      unit.records.set(record.questionUid, record);
+      seenUids.add(record.questionUid);
+    }
+    for (const [key, unit] of units)
+      if (!unit.records.size) units.delete(key);
+
     const semanticGroups = new Map();
     const displayGroups = state.catalog.basicScopeGroups || [];
     const displayGroupFor = unit => !state.filters.curriculumKey && displayGroups.findIndex(group =>
       group.members.some(member => (!unit.curriculumKey || member.curriculumKey === unit.curriculumKey) &&
         scopeCourseKey(member) === unit.courseKey && scopeText(member.L1) === scopeText(unit.L1) && scopeText(member.L2) === scopeText(unit.L2)));
     for (const unit of units.values()) {
-      const semanticKey = [scopeText(unit.L1), scopeText(unit.L2)].join("|");
       const displayGroup = displayGroupFor(unit);
-      const key = displayGroup !== false && displayGroup >= 0 ? `display-group-${displayGroup}` : state.filters.curriculumKey
-        ? [unit.curriculumKey, unit.courseKey, semanticKey].join("|")
-        : semanticKey;
+      const key = displayGroup !== false && displayGroup >= 0
+        ? `display-group-${displayGroup}`
+        : [unit.curriculumKey, unit.courseKey, scopeText(unit.L1), scopeText(unit.L2)].join("|");
       if (!semanticGroups.has(key)) semanticGroups.set(key, []);
       semanticGroups.get(key).push(unit);
     }
@@ -600,10 +577,10 @@
           courseKey: "all",
           L1: first.L1,
           L2: first.L2,
-          rows: candidates.flatMap((unit) => unit.rows),
+          units: candidates,
         });
       } else {
-        groups.push(...candidates);
+        groups.push(...candidates.map((unit) => ({ ...unit, units: [unit] })));
       }
     }
     const displayKeys = new Map();
@@ -612,8 +589,8 @@
       displayKeys.set(key, (displayKeys.get(key) || 0) + 1);
     }
     return groups.map((group, index) => {
-      const paths = unique(group.rows.map((r) => r.sourceScopePath || C.pathKey(r, 4)));
-      const sources = group.rows.filter(r => r.sourceScopePath);
+      const sources = unique(group.units.flatMap((unit) => [...unit.records.values()]));
+      const paths = unique(sources.map((record) => C.pathKey(record, 4)));
       const displayKey = scopeText(group.L1) + "|" + scopeText(group.L2);
       const suffix =
         displayKeys.get(displayKey) > 1
@@ -626,12 +603,11 @@
         L1: group.L1,
         L2: group.L2,
         label: `${group.L2}${suffix}`,
-        basicScope: group.rows.some(r => canonicalParents.has(
-          [scopeCourseKey(r), scopeText(r.L1), scopeText(r.L2)].join("|"))),
+        basicScope: true,
         paths,
         scopeQuestionUids: unique(sources.map(r => r.questionUid)),
         count: sources.length,
-        eligibleCount: sources.filter(r => r.scopeEligible).length,
+        eligibleCount: sources.length,
       };
     });
   }
@@ -680,7 +656,7 @@
                     sourceFiles: state.sources,
                     primaryPaths: s.paths,
                     scopeQuestionUids: s.scopeQuestionUids,
-                  }) &&
+                  }, state) &&
                   C.rowMatches(r, { difficultyBuckets: state.buckets }) &&
                   C.eligibility(r, state).ok &&
                   !C.composeExclusions(context()).union.has(r.questionUid),
@@ -722,6 +698,8 @@
       pins: state.selected
         .filter((r) => state.pins.includes(r.questionUid))
         .map((r) => ({ questionUid: r.questionUid, rowId: r.rowId })),
+      canonicalAuthority: state.catalog?.canonicalAuthority,
+      projectionPolicy: state.catalog?.projectionPolicy,
       seed: state.seed,
     };
   }
@@ -876,7 +854,6 @@
   }
   function finderUpstreamMatch(exam, filters) {
     if (!O.matchesMaterial(exam, filters.material)) return false;
-    if (filters.grade && exam.effectiveBrowseGrade !== filters.grade) return false;
     return C.finderMatches(
       exam,
       {
@@ -1027,7 +1004,6 @@
       const examYear = Number(exam.year);
       if (
         !O.matchesMaterial(exam, f.material) ||
-        (f.grade && exam.effectiveBrowseGrade !== f.grade) ||
         (f.school && f.school !== exam.school) ||
         (hasYearFilter && !Number.isFinite(examYear)) ||
         (f.yearFrom && examYear < Number(f.yearFrom)) ||
@@ -1212,7 +1188,7 @@
       ).join("")}</div>`
     ).join("")}</div>`;
     return `<div class="resultbar"><h2>출제 범위</h2><div class="actions">${button("scope-all", "전체 선택", 'class="small"')}${button("scope-clear", "초기화", 'class="small"')}</div></div>
-      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 실질적으로 같은 2015·2022 범위를 하나로 묶습니다. 숫자는 시험지에 있는 전체 문항 수입니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>
+      <p class="muted">학년의 1·2학기 전체 범위입니다. 교육과정 전체에서는 승인된 공통 범위를 하나로 묶습니다. 숫자는 현재 조건과 품질 검사를 통과한 선택 가능 문항 수이며 같은 UID는 한 번만 셉니다. 기본은 난이도를 지정하지 않고, 미지정 문항을 포함한 전체 난이도에서 선택합니다.</p>
       <div class="range-controls"><label>범위 시작<select id="scope-start">${options(
         rangeOptions,
         rangeOptions[0]?.value ?? 0,
@@ -1231,11 +1207,11 @@
     const baseFilters = { ...selectionFilters, L3: "", L4: "" };
     const excluded = C.composeExclusions(context()).union;
     const eligible = pool().filter(r =>
-      C.matches(r, baseFilters) && C.eligibility(r, state).ok && !excluded.has(r.questionUid));
+      C.matches(r, baseFilters, state) && C.eligibility(r, state).ok && !excluded.has(r.questionUid));
     const labels = window.ARCHIVE_META_FOUNDATION_LABELS || { problemTypes: {}, templates: {} };
     const concepts = new Map(), types = new Map();
     for (const record of eligible) {
-      if (!C.advancedEligible(record)) continue;
+      if (!C.advancedEligible(record, state)) continue;
       const authority = C.advancedAuthority(record);
       const l3 = C.advancedFilterValue(record, 3), l4 = C.advancedFilterValue(record, 4);
       const l3Label = authority === "mf" ? labels.problemTypes[record.problemTypeKey] : record.L3;
@@ -1264,8 +1240,8 @@
     const excluded = C.composeExclusions(context()).union;
     const candidates = pool().filter(
       (r) =>
-        C.matches(r, selectionFilters) &&
-        C.eligibility(r).ok &&
+        C.matches(r, selectionFilters, state) &&
+        C.eligibility(r, state).ok &&
         !excluded.has(r.questionUid),
     );
     const shortages = rows
@@ -1948,8 +1924,8 @@
       excluded = C.composeExclusions(context()).union;
     candidateRecords = pool().filter(
       (r) =>
-        C.eligibility(r).ok &&
-        C.matches(r, selectionFilters) &&
+        C.eligibility(r, state).ok &&
+        C.matches(r, selectionFilters, state) &&
         C.rowMatches(r, row) &&
         !used.has(r.questionUid) &&
         !excluded.has(r.questionUid),
@@ -2396,7 +2372,11 @@
           state.catalog.taxonomy,
         );
         state.sources = state.sources.filter(file => state.catalog.records.some(record =>
-          record.sourceFile === file && record.effectiveBrowseGrade === state.filters.grade));
+          record.sourceFile === file && C.browseGradeMatchesRecord(
+            record,
+            state.filters.grade,
+            state.catalog.projectionPolicy,
+          )));
         if (!state.receipts.length && !state.sealed)
           reconcileFinderSchool(state.filters);
         state.scopes = [];
@@ -2625,7 +2605,7 @@
                 questionUid: r.questionUid,
                 sourceFile: r.sourceFile,
                 sourceOrdinal: r.sourceOrdinal,
-                reasons: C.eligibility(r).reasons,
+                reasons: C.eligibility(r, state).reasons,
               })),
           },
           "archive2-health.json",
@@ -2989,14 +2969,9 @@
       status("저장한 시험지를 서버에서 불러오고 있습니다.");
     }
     try {
-      const response = await fetch("data/archive2-catalog.json", {
-        cache: "no-cache",
-      });
-      if (!response.ok) throw new Error("문항 목록을 불러오지 못했습니다");
-      state.catalog = C.decodeCatalog(await response.json());
-      if (window.applyArchiveMetaFoundationCatalog) {
-        state.catalog = await window.applyArchiveMetaFoundationCatalog(state.catalog);
-      }
+      if (typeof window.applyArchiveMetaFoundationCatalog !== "function")
+        throw new Error("CANONICAL_AUTHORITY_UNAVAILABLE: 현재 분류 기준을 확인할 수 없습니다.");
+      state.catalog = await window.applyArchiveMetaFoundationCatalog();
       state.crosswalkInventory = await fetch(
         "data/archive2-crosswalk-inventory.json",
       )

@@ -1,6 +1,7 @@
 import { sha256hex } from "./admin-db.js";
 import { canAccessStudentsBatch } from "./foundation-db.js";
 import core from "../../../../archive/archive2-core.js";
+import canonical from "../../../../archive/archive2-canonical.js";
 
 export const ARCHIVE2_CONTRACT = "archive2-v1";
 const UID = /^qid_v1_[a-f0-9]{64}$/;
@@ -28,6 +29,18 @@ export function checkTargetGrade(classRow, sourceGrade) {
   if (core.gradeRank(sourceGrade) > core.gradeRank(grade))
     fail("대상 반보다 높은 학년의 source 문항은 기본 출제할 수 없습니다.", 409);
 }
+export function checkTargetGrades(classRow, sourceGrades) {
+  if (!Array.isArray(sourceGrades) || !sourceGrades.length)
+    fail("canonical source grade를 확인할 수 없습니다.", 409);
+  const uniqueGrades = new Set();
+  for (const value of sourceGrades) {
+    const grade = String(value ?? "").trim();
+    if (!core.gradeRank(grade))
+      fail("canonical source grade를 확인할 수 없습니다.", 409);
+    uniqueGrades.add(grade);
+  }
+  for (const grade of uniqueGrades) checkTargetGrade(classRow, grade);
+}
 export function uniqueIds(input, max = 200) {
   if (
     !Array.isArray(input) ||
@@ -51,22 +64,35 @@ export async function hasQuestionBridge(env) {
   ).first();
   return Boolean(row);
 }
-async function loadCatalog(env) {
-  const url = new URL(
-    "data/archive2-catalog.json",
-    String(
-      env.ARCHIVE_PUBLIC_BASE_URL ||
-        "https://icefoxtail.github.io/AP------/archive",
-    ).replace(/\/$/, "") + "/",
-  );
-  const response = env.ARCHIVE2_ASSETS
-    ? await env.ARCHIVE2_ASSETS.fetch(url)
-    : await fetch(url);
-  if (!response.ok) fail("승인 catalog를 확인할 수 없습니다.", 503);
-  return core.decodeCatalog(await response.json());
+function requireProjectionVersion(input) {
+  const version = String(input?.index_version || "").trim();
+  if (!version || version.length > 2000) fail("current projection index_version required", 409);
+  return version;
+}
+export async function loadCanonicalCatalog(env, expectedVersion = "") {
+  const baseUrl = String(
+    env.ARCHIVE_PUBLIC_BASE_URL ||
+      "https://icefoxtail.github.io/AP------/archive",
+  ).replace(/\/+$/, "") + "/";
+  try {
+    const versionBundle = await canonical.loadInputBundle(
+      (url) => env.ARCHIVE2_ASSETS
+        ? env.ARCHIVE2_ASSETS.fetch(url)
+        : fetch(url),
+      baseUrl,
+      expectedVersion,
+    );
+    return canonical.resolveCatalog({ versionBundle });
+  } catch (error) {
+    const refreshRequired = error?.code === "CANONICAL_PROJECTION_REFRESH_REQUIRED";
+    fail(
+      error?.message || "승인된 canonical authority를 확인할 수 없습니다.",
+      refreshRequired ? 409 : 503,
+    );
+  }
 }
 export async function validateNormalBlueprint(env, questions, input) {
-  const data = await loadCatalog(env),
+  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input)),
     file = norm(input.archive_file);
   const exam = data.exams.find((e) => e.file === file);
   if (
@@ -87,6 +113,14 @@ export async function validateNormalBlueprint(env, questions, input) {
       Number(q.source_question_ordinal) !== record.sourceOrdinal
     )
       fail("원본 blueprint의 canonical identity를 확인할 수 없습니다.", 409);
+    const identity = data.canonicalAuthority.identityByUid[record.questionUid];
+    const grade = canonical.resolveSourceGrade({
+      registeredGrade: data.canonicalAuthority.examGradeByFile[file],
+      sourceFile: file,
+      identitySourceFile: identity?.sourceArchiveFile,
+    });
+    if (grade.status !== "VALID" || grade.grade !== record.sourceGrade)
+      fail(grade.reason || grade.status || "SOURCE_GRADE_CONFLICT", 409);
     q.sourceFingerprint = record.sourceFingerprint;
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
@@ -107,17 +141,14 @@ export async function validateNormalBlueprint(env, questions, input) {
       new Map(data.sourceHashes).get(file)
   )
     fail("원본 source 파일이 catalog와 일치하지 않습니다.", 409);
-  return exam.effectiveBrowseGrade;
+  return { grade: records[0]?.sourceGrade || "", canonicalAuthority: data.canonicalAuthority };
 }
 export async function validateApprovedMixedQuestions(
   env,
   questions,
   input,
-  { allowStaleIndex = false } = {},
 ) {
-  const data = await loadCatalog(env);
-  if (!allowStaleIndex && data.indexVersion !== input.index_version)
-    fail("catalog 버전이 변경되었습니다. 문제지를 다시 검증하세요.", 409);
+  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input));
   const filters = input?.selection_filters;
   if (
     !filters ||
@@ -135,6 +166,7 @@ export async function validateApprovedMixedQuestions(
   const byUid = new Map(
     data.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r]),
   );
+  const sourceGrades = new Set();
   for (const q of questions || []) {
     const record = byUid.get(q.questionUid);
     const sourceFile = norm(
@@ -149,10 +181,26 @@ export async function validateApprovedMixedQuestions(
       sourceOrdinal !== Number(record.sourceOrdinal) ||
       !core.eligibility(record, {
         includeExtended: input.include_extended === true,
+        canonicalAuthority: data.canonicalAuthority,
       }).ok ||
-      !core.matches(record, input.selection_filters)
+      !core.matches(record, input.selection_filters, {
+        catalog: data,
+        canonicalAuthority: data.canonicalAuthority,
+        projectionPolicy: data.projectionPolicy,
+      })
     )
       fail("승인된 문항·출제 범위와 일치하지 않습니다.", 409);
+    if (!core.gradeRank(record.sourceGrade))
+      fail("canonical source grade를 확인할 수 없습니다.", 409);
+    sourceGrades.add(record.sourceGrade);
+    let assignmentFingerprint;
+    try {
+      assignmentFingerprint = await canonical.assignmentFingerprint(q);
+    } catch {
+      fail("문항 분류 fingerprint를 확인할 수 없습니다.", 409);
+    }
+    if (!record.assignmentFingerprint || assignmentFingerprint !== record.assignmentFingerprint)
+      fail("승인된 분류 assignment fingerprint가 일치하지 않습니다.", 409);
     const fingerprint = await sha256hex(
       JSON.stringify({
         content: q.content ?? null,
@@ -167,28 +215,72 @@ export async function validateApprovedMixedQuestions(
       q.sourceFingerprint !== fingerprint
     )
       fail("문항 내용 fingerprint가 일치하지 않습니다.", 409);
-    // A saved-paper request may have been composed against an older catalog.
-    // In that path, content identity and the current requested scope still have
-    // to match, while canonical metadata is refreshed from the current server
-    // record. Ordinary assignment validation remains strict.
-    if (!allowStaleIndex)
-      for (const field of core.META_FIELDS)
-        if (
-          q[field] !== undefined &&
-          JSON.stringify(q[field]) !== JSON.stringify(record[field])
-        )
-          fail("canonical metadata parity mismatch: " + field, 409);
+    for (const field of core.META_FIELDS)
+      if (
+        q[field] !== undefined &&
+        JSON.stringify(q[field]) !== JSON.stringify(record[field])
+      )
+        fail("canonical metadata parity mismatch: " + field, 409);
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
   }
-  return data.indexVersion;
+  return {
+    ...data,
+    sourceGrades: [...sourceGrades].sort((a, b) => core.gradeRank(a) - core.gradeRank(b)),
+  };
+}
+
+export async function resolveSavedPaperSourceGrades(_env, questions) {
+  if (!Array.isArray(questions) || !questions.length)
+    fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+  const sourceGrades = new Set();
+  for (const question of questions) {
+    const uid = String(question?.questionUid || ""),
+      sourceFile = norm(question?.sourceArchiveFile || question?.sourceFile || question?.source_archive_file),
+      sourceOrdinal = Number(question?.sourceOrdinal ?? question?.source_question_ordinal);
+    const identityEvidence = question?.sourceIdentityEvidence;
+    if (
+      !UID.test(uid) ||
+      !sourceFile ||
+      !Number.isInteger(sourceOrdinal) ||
+      sourceOrdinal < 1
+    )
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    if (identityEvidence) {
+      if (
+        identityEvidence.schemaVersion !== "archive2-saved-source-identity-v1" ||
+        identityEvidence.status !== "VERIFIED" ||
+        identityEvidence.questionUid !== uid ||
+        norm(identityEvidence.sourceFile) !== sourceFile ||
+        norm(identityEvidence.identitySourceFile) !== sourceFile ||
+        Number(identityEvidence.sourceOrdinal) !== sourceOrdinal ||
+        String(identityEvidence.sourceGrade || "") !== String(question?.sourceGrade || "")
+      ) fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    } else if (uid !== "qid_v1_" + (await sha256hex(sourceFile + "#" + sourceOrdinal))) {
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    }
+    const grade = canonical.resolveSnapshotSourceGrade({
+        preservedGrade: identityEvidence ? identityEvidence.sourceGrade : "",
+        sourceFile,
+        identitySourceFile: identityEvidence ? identityEvidence.identitySourceFile : sourceFile,
+      });
+    if (
+      grade.status !== "VALID" ||
+      !core.gradeRank(grade.grade)
+    )
+      fail("저장한 시험지 source identity를 확인할 수 없습니다.", 409);
+    if (!identityEvidence && question?.sourceGrade && String(question.sourceGrade) !== grade.grade)
+      fail("저장한 시험지 source grade가 source identity와 일치하지 않습니다.", 409);
+    sourceGrades.add(grade.grade);
+  }
+  return [...sourceGrades].sort((a, b) => core.gradeRank(a) - core.gradeRank(b));
 }
 // Original issue needs verified source bytes/ordinal identity, not automatic
 // selection approval. All raw fields (including visual/layout fields) are hashed.
 export async function validateOriginalSnapshot(env, payload, input) {
-  const catalog = await loadCatalog(env),
+  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input)),
     file = norm(input.archive_file);
-  const exam = catalog.exams.find((e) => e.file === file),
+  const exam = data.exams.find((e) => e.file === file),
     raw = payload?.questions;
   if (
     !exam ||
@@ -197,7 +289,7 @@ export async function validateOriginalSnapshot(env, payload, input) {
     Number(input.question_count) !== exam.qCount
   )
     fail("원본 시험의 문항 수가 일치하지 않습니다.", 409);
-  const records = catalog.records
+  const records = data.records
     .filter((r) => r.sourceFile === file)
     .sort((a, b) => a.sourceOrdinal - b.sourceOrdinal);
   if (records.length !== raw.length)
@@ -213,6 +305,14 @@ export async function validateOriginalSnapshot(env, payload, input) {
           "원본 내용 또는 문항 순서가 변경되었습니다. 목록을 새로고침하세요.",
           409,
         );
+      const identity = data.canonicalAuthority.identityByUid[r.questionUid];
+      const grade = canonical.resolveSourceGrade({
+        registeredGrade: data.canonicalAuthority.examGradeByFile[file],
+        sourceFile: file,
+        identitySourceFile: identity?.sourceArchiveFile,
+      });
+      if (grade.status !== "VALID" || grade.grade !== r.sourceGrade)
+        fail(grade.reason || grade.status || "SOURCE_GRADE_CONFLICT", 409);
       const result = {
         ...q,
         questionUid: r.identityStatus === "VERIFIED" ? r.questionUid : null,
@@ -228,7 +328,7 @@ export async function validateOriginalSnapshot(env, payload, input) {
       return result;
     }),
   );
-  return { questions: verified, exam };
+  return { questions: verified, exam, canonicalAuthority: data.canonicalAuthority };
 }
 export async function buildQuestionSnapshot(
   assignment,
@@ -258,17 +358,19 @@ export async function buildQuestionSnapshot(
     );
     const uid = String(q.questionUid || q.source_question_uid || "");
     let status = "UNRESOLVED";
-    if (
-      file &&
-      !file.includes("..") &&
-      !/^[a-z]+:/i.test(file) &&
-      Number.isInteger(ordinal) &&
-      ordinal > 0 &&
-      UID.test(uid) &&
-      uid === "qid_v1_" + (await sha256hex(file + "#" + ordinal)) &&
-      !seen.has(uid)
-    )
-      status = "VERIFIED";
+    const identity = options.canonicalAuthority?.identityByUid?.[uid];
+    if (options.canonicalAuthority) {
+      if (
+        file && !file.includes("..") && !/^[a-z]+:/i.test(file) &&
+        Number.isInteger(ordinal) && ordinal > 0 && UID.test(uid) &&
+        identity?.status === "VERIFIED" && norm(identity.sourceArchiveFile) === file &&
+        Number(identity.sourceOrdinal) === ordinal && !seen.has(uid)
+      ) status = "VERIFIED";
+    } else if (
+      file && !file.includes("..") && !/^[a-z]+:/i.test(file) &&
+      Number.isInteger(ordinal) && ordinal > 0 && UID.test(uid) &&
+      uid === "qid_v1_" + (await sha256hex(file + "#" + ordinal)) && !seen.has(uid)
+    ) status = "VERIFIED";
     if (status === "UNRESOLVED" && !options.legacy)
       fail("canonical UID/source ordinal mismatch at " + (i + 1));
     if (status === "VERIFIED") seen.add(uid);

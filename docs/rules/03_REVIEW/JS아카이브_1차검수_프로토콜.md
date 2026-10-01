@@ -1,6 +1,6 @@
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
-R1은 target artifact를 먼저 독립 판정·수리하고 그 판단을 동결한 뒤 Golden/Negative Sample과 비교한다. `solutionQualityCalibration`의 sample path/SHA/blob, 대표 문항 solution SHA, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`, `qualityCompareCount=N/N`, 복성고 false-PASS negative fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다. Golden Sample 문장 복사는 금지하고 품질 눈높이만 사용한다.
+R1 worker는 stage assignment와 scope만 확인한 직후, **target의 기존 solution/이전 verdict를 열기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 실제 판독한다. 이 preflight는 품질 눈높이만 고정하며 target 정답을 주지 않는다. 그 뒤 target을 fresh blind 판정·수리하고 마지막에 Golden floor와 N/N compare한다. sample path/SHA/blob, sample별 대표 solution 2~5문항의 solution SHA+excerpt, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`, `qualityCompareCount=N/N`, 복성고 false-PASS fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다.
 
 [JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
 

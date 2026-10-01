@@ -1,3 +1,13 @@
+## CURRENT OVERRIDE — 2026-10-01 — ITEM RECOVERY CALIBRATION PREFLIGHT
+
+FINAL ITEM RECOVERY도 일반 수정 라인과 동일 quality bar를 사용한다. queue의 HOLD reason을 읽고 actual qid를 수정하기 전에 Golden 2~3 + 관련 Negative Sample을 실제 판독하고 아래 preflight를 통과한다.
+
+```bash
+node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <calibration.json> --stage ITEM_RECOVERY --preflight
+```
+
+복구 대상이 asset/SVG이면 해설뿐 아니라 `VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 반드시 calibration한다. preflight는 upstream HOLD를 정답으로 만드는 근거가 아니며, 기존 규칙대로 HOLD 자체를 fresh 재판정한다.
+
 # Archive Final Item Direct Replacement v1
 
 status: **CURRENT / ACTIVE**  
