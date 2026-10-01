@@ -31,6 +31,10 @@ asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 �
 
 `R3_FAIL_PACKET` 필수: `failureClass`, `failedQids[]`, `failureCodes[]`, `affectedAxes[]`, `requiredRoute`, `systemicScope`, `r3InputArtifactSha`, observed/authority evidence.
 `failureClass`가 없거나 안전하게 결정할 수 없으면 CLASS A.
+
+복수 defect class가 한 시험지에 섞이면 **A > B > C** 우선순위로 exam-level `failureClass`를 정한다. `ASSET_ONLY`는 모든 unresolved defect가 C일 때만 사용한다. B+C가 섞이면 exam-level은 B이며 asset defect도 같은 targeted reentry 안에서 asset-only repair/recheck로 닫는다.
+
+CLASS C의 별도 신규 예약은 만들지 않는다. 기존 R1 owner가 `ASSET_OWNER_REPAIR`를 **asset-only mode**로 소비하고 수학 재풀이 없이 repair한 뒤 `INDEPENDENT_ASSET_RECHECK`로 넘긴다. 기존 R2 owner는 asset-only independent recheck만 수행하고 PASS면 `R3_RETRY`로 보낸다. semantic 영향이 발견되면 B/A로 승격한다.
 ## CURRENT OVERRIDE — R3 TARGETED REENTRY CONTRACT (2026-10-01)
 
 - `FULL_REENTRY`: 기존 FULL R1 계약으로 재진입.
