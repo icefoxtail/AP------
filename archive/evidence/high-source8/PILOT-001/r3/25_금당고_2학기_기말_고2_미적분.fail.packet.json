@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v1",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "examId": "25_금당고_2학기_기말_고2_미적분",
+  "examFile": "25_금당고_2학기_기말_고2_미적분.js",
+  "batch": "PILOT-001",
+  "r3Input": {
+    "r2Branch": "work/high-source8-r2",
+    "r2ReceiptCommit": "4ed204760aa22fd6b7ba9f20c554db261fadc0f4",
+    "r2ReceiptBlob": "8898f981c05e0b268c025c0975effab11b61fe6b",
+    "r3InputArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+    "r3InputArtifactRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+    "r3InputArtifactSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452"
+  },
+  "questionCount": 21,
+  "itemHoldCountAtInput": 1,
+  "failedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "failureCodes": [
+    "RELEASE_ARTIFACT_ANSWER_MISSING_ALL",
+    "RELEASE_ARTIFACT_SOLUTION_MISSING_ALL",
+    "PROTECTED_QUESTION_UID_MISSING_ALL",
+    "META_NOT_RELEASE_FINAL_ALL",
+    "DIFFICULTY_NOT_RELEASE_FINAL_ALL",
+    "SOURCE_MATH_NO_CHOICE_MATCH_Q15"
+  ],
+  "affectedAxes": [
+    "answer",
+    "math",
+    "solution",
+    "curriculumMethod",
+    "visualNecessity",
+    "smallBoard",
+    "studentLanguage",
+    "Meta",
+    "difficulty",
+    "protectedIdentity",
+    "releaseGate"
+  ],
+  "observedEvidence": {
+    "artifactStructure": {
+      "answerBlankCount": "21/21",
+      "solutionBlankCount": "21/21",
+      "questionUidMissingCount": "21/21",
+      "problemTypeKeyBlankCount": "21/21",
+      "templateKeyBlankCount": "21/21",
+      "metadataReviewRequiredCount": "21/21",
+      "difficultyNeedsReleaseReviewCount": "21/21",
+      "linkedProblemOrSolutionVisualCount": "0",
+      "sourceIdentityUniqueCount": "21/21",
+      "sourceDocumentShaCount": 1,
+      "idContinuity": "1..21 PASS",
+      "sourceOrdinalContinuity": "1..21 PASS"
+    },
+    "curriculumMethodAudit": {
+      "auditCount": "21/21",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "reason": "Final solution is blank on all 21 questions, so method inventory cannot be release-verified from the latest R2 artifact.",
+      "curriculumViolationQids": [],
+      "uncertainDependencyPassCount": 0
+    },
+    "visualNecessityAudit": {
+      "auditCount": "21/21",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "existingVisualAuditCount": "0/0",
+      "reason": "No linked visual exists and final solution is blank on all 21 questions; solution-visual necessity and correctness cannot be release-verified."
+    },
+    "solutionAndSmallBoard": {
+      "reproducibility": "FAIL 21/21: no final solution bytes",
+      "smallBoard": "FAIL 21/21: no student solution/small-board bytes",
+      "studentLanguage": "FAIL_UNEVALUABLE 21/21"
+    },
+    "metaDifficulty": {
+      "result": "FAIL",
+      "problemTypeKeyBlankCount": "21/21",
+      "templateKeyBlankCount": "21/21",
+      "metadataReviewRequiredCount": "21/21",
+      "difficultyBoundaryOrCompatibilityUnfinalizedCount": "21/21"
+    },
+    "q15FreshMath": {
+      "statement": "(xf'(x)-f(x))/x^2 = 3x e^(x^2), f(1)=0",
+      "derivation": "d(f/x)/dx = 3x e^(x^2). Integrating x=1..2 gives f(2)/2 = (3/2)(e^4-e), hence f(2)=3(e^4-e).",
+      "frozenChoices": [
+        "e^2",
+        "2e^2",
+        "4e^2",
+        "6e^2",
+        "8e^2"
+      ],
+      "result": "NO_CHOICE_MATCH",
+      "uniqueness": "FAIL"
+    }
+  },
+  "authorityRefs": {
+    "sourceAuthority": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+    "latestRemoteMainAtAction": "b476e68c71cc9ed443c80907a060b7d52e8914d5",
+    "r3ProtocolBlob": "108497de937423084f208e328956bb8b5e774bac",
+    "routingCanonical": "94297170a1f1c24f04f1b3f492e2e2dc44e63fcb",
+    "physicalEvidenceCanonical": "9a9e16c8246a17ac9e085b74d6b839c3ea618bdd"
+  },
+  "systemicScope": {
+    "isSystemic": true,
+    "allQuestionsAffectedByReleaseArtifactMissingAnswerSolution": true,
+    "identityUidMissingAll": true,
+    "metadataUnfinalizedAll": true,
+    "q15AdditionalSourceMathUniquenessFailure": true
+  },
+  "protectedDiff": {
+    "mutationPerformed": false,
+    "contentChoicesSourceIdentityMutated": false,
+    "note": "R3 performed no exam repair. Existing source identity keys are unique and stable, but protected questionUid is absent from all 21 latest R2 artifact rows."
+  },
+  "failureClass": "FULL_REENTRY",
+  "requiredRoute": "FULL_R1_THEN_FULL_R2_THEN_R3",
+  "nextOwner": "R1_FULL_REOPEN",
+  "finalMainPublishAllowed": false,
+  "r3RepairPerformed": false,
+  "createdAtKst": "2026-10-01T13:30:10+09:00"
+}
