@@ -1,0 +1,374 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_TARGETED_INDEPENDENT_RECHECK_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW2_TARGETED_INDEPENDENT_RECHECK_DONE",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "failureClass": "TARGETED_R1_R2",
+  "inputBranch": "work/line3/26-maesan-h1-2mid-r1-reopen-20261001",
+  "inputArtifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+  "inputRepairCommit": "0f616ffabeecd9f41af11e07f46576d737cc521e",
+  "reviewBranch": "work/line3/26-maesan-h1-2mid-r2-targeted-recheck-20261001",
+  "studentArtifactCommit": "8166fe3d5d2e72a7534ebb721fcb47d8f1d68e08",
+  "finalArtifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+  "independence": {
+    "firstPassAuthority": "CURRENT_ARTIFACT_PLUS_SOURCE_ONLY",
+    "r1RepairLedgerUsedAsAnswer": false,
+    "firstPassFrozenBeforeR1Compare": true,
+    "priorVerdictUsedAsMathAuthority": false
+  },
+  "scope": {
+    "curriculumQids": [
+      13,
+      15,
+      21
+    ],
+    "solutionReproducibilityQids": [
+      20
+    ],
+    "solutionSvgQids": [
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21
+    ],
+    "problemVisualQids": [
+      12,
+      15,
+      18
+    ],
+    "metaQids": [
+      1,
+      21
+    ],
+    "protectedFieldFamilies": [
+      "id",
+      "content",
+      "choices",
+      "answer",
+      "sourceIdentityKey",
+      "sourceDocumentSha256",
+      "source*"
+    ]
+  },
+  "firstPass": {
+    "curriculum": [
+      {
+        "qid": 13,
+        "status": "PASS",
+        "primaryMethods": [
+          "드모르간 법칙",
+          "집합 영역 분해",
+          "포함관계 직접 증명"
+        ],
+        "note": "대칭차 기호 없이 공통수학2 집합 연산 범위에서 완결"
+      },
+      {
+        "qid": 15,
+        "status": "PASS",
+        "primaryMethods": [
+          "직선 기울기",
+          "수직 조건",
+          "점과 직선 사이의 거리",
+          "피타고라스 정리"
+        ],
+        "note": "벡터·정사영 용어 의존 없음"
+      },
+      {
+        "qid": 21,
+        "status": "PASS",
+        "primaryMethods": [
+          "원주각-중심각",
+          "현의 수직이등분선",
+          "기울기",
+          "두 점 사이 거리"
+        ],
+        "note": "상위과정 벡터 없이 재현 가능"
+      }
+    ],
+    "solutionReproducibility": [
+      {
+        "qid": 20,
+        "status": "PASS",
+        "decisiveSteps": [
+          "zbar=1-z",
+          "z^2-z+1=0",
+          "z^6-1 인수분해로 B⊂A",
+          "A-B 4원소의 공집합 아닌 부분집합 계수"
+        ],
+        "answer": "15"
+      }
+    ],
+    "solutionSvg": [
+      {
+        "qid": 3,
+        "status": "PASS",
+        "facts": [
+          "기울기 3",
+          "기울기 -1/3",
+          "교점 (0.9,4.7)",
+          "수직"
+        ]
+      },
+      {
+        "qid": 5,
+        "status": "PASS",
+        "facts": [
+          "C1 중심 (-2,1), r=3",
+          "C2 중심 (3,-5), r=4"
+        ]
+      },
+      {
+        "qid": 7,
+        "status": "PASS",
+        "facts": [
+          "중심 (-2,1)",
+          "r^2=4-k",
+          "원 조건 k<4",
+          "k=4 퇴화점"
+        ]
+      },
+      {
+        "qid": 8,
+        "status": "PASS",
+        "facts": [
+          "y=x^2-1",
+          "접점 (1,0)",
+          "접선 기울기 2",
+          "(2,3) 통과 평행선"
+        ]
+      },
+      {
+        "qid": 9,
+        "status": "PASS",
+        "facts": [
+          "이동 중심 (k-1,1)",
+          "접선까지 중심거리 5",
+          "두 k 경우"
+        ]
+      },
+      {
+        "qid": 10,
+        "status": "PASS",
+        "facts": [
+          "R(2,1)",
+          "두 변까지 거리 1",
+          "작은 각 이등분선 y=x/2"
+        ]
+      },
+      {
+        "qid": 11,
+        "status": "PASS",
+        "facts": [
+          "A(-1,4)",
+          "B(4,19)",
+          "A'(5,7)",
+          "B'(0,17)",
+          "거리비 3:2"
+        ]
+      },
+      {
+        "qid": 12,
+        "status": "PASS",
+        "facts": [
+          "A(2,0) 대칭점 A'(0,2)",
+          "C(8,4), r=1",
+          "P 원 위",
+          "Q y=x 위",
+          "최단거리 구성"
+        ]
+      },
+      {
+        "qid": 14,
+        "status": "PASS",
+        "facts": [
+          "중심 (-a,a)",
+          "반지름 |a|",
+          "a=2/3 또는 4",
+          "직선 접함"
+        ]
+      },
+      {
+        "qid": 15,
+        "status": "PASS",
+        "facts": [
+          "A(4,4), r=4",
+          "H 수선의 발",
+          "B 가까운 교점",
+          "OH:BH=√3:1"
+        ]
+      },
+      {
+        "qid": 17,
+        "status": "PASS",
+        "facts": [
+          "M(-2,6)",
+          "N(4,1)",
+          "P(4,2)",
+          "G(2,3)"
+        ]
+      },
+      {
+        "qid": 18,
+        "status": "PASS",
+        "facts": [
+          "변환 중심 (-3,0)",
+          "반지름 1",
+          "왼쪽 아래 1/4 원호",
+          "끝점 (-4,0),(-3,-1)"
+        ]
+      },
+      {
+        "qid": 19,
+        "status": "PASS",
+        "facts": [
+          "A(-2,4), B(4,1), X(6,0) 일직선",
+          "AB=3√5"
+        ]
+      },
+      {
+        "qid": 21,
+        "status": "PASS",
+        "facts": [
+          "M(4,2)",
+          "O1(7,4), O2(1,0)",
+          "R=√26",
+          "OM=√13"
+        ]
+      }
+    ],
+    "problemVisual": [
+      {
+        "qid": 12,
+        "status": "FAIL_REPAIRABLE",
+        "sourcePageSha": "1a8cb211a13ea5d326ee37019a9e6716cdc41fb7",
+        "defects": [
+          "Q/P 및 AQ/QP 의미 요소 누락",
+          "x/y 단위 스케일 불일치로 원 metric 왜곡"
+        ]
+      },
+      {
+        "qid": 15,
+        "status": "FAIL_REPAIRABLE",
+        "sourcePageSha": "443ead1ae14a0d39b0018695fc5f0199c5b3c51e",
+        "defects": [
+          "x/y 단위 스케일 불일치로 원 metric 왜곡",
+          "AH⊥y=mx 직각 표식 누락"
+        ]
+      },
+      {
+        "qid": 18,
+        "status": "FAIL_REPAIRABLE",
+        "sourcePageSha": "a72e159cb36e5af462cdaf11e543f781984fe443",
+        "defects": [
+          "원본 O 라벨 누락",
+          "원본에 없는 x=-3 및 y=-1 눈금/라벨 추가"
+        ]
+      }
+    ],
+    "meta": [
+      {
+        "qid": 1,
+        "status": "PASS",
+        "problemTypeKey": "PT_SET_DEFINITION",
+        "templateKey": "TPL_SET_IDENTIFY",
+        "primaryReason": "분명하게 정해지는 모임인지 판정하는 것이 결정 단계"
+      },
+      {
+        "qid": 21,
+        "status": "PASS",
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_INSCRIBED_ANGLE_CENTER",
+        "primaryReason": "원주각으로 반지름을 고정하고 현의 수직이등분선에서 가능한 원의 중심을 찾는 것이 결정 단계"
+      }
+    ],
+    "protectedFields": {
+      "status": "PASS",
+      "comparedFromArtifactSha": "7401a9cd568589637b529131ed56a2b125767302",
+      "comparedToArtifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+      "diffCount": 0
+    }
+  },
+  "repairsInR2": [
+    {
+      "qid": 12,
+      "path": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q012_visual.svg",
+      "commit": "2744503c6c82ef330e171cba91591705acefb063",
+      "blob": "7318a3e83499eb20af5772edfe4d51100e46ef03",
+      "repair": "원본 Q/P·AQ/QP 복구 + equal-scale 좌표계"
+    },
+    {
+      "qid": 15,
+      "path": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q015_visual.svg",
+      "commit": "62de7bb78e3f971fc55dd64f88d763e378151d37",
+      "blob": "fde1c15f99f4ba6ae3922eb9a5b4f3e73e65ec4f",
+      "repair": "equal-scale 원/축 + A,H,B 관계 + 직각 표식"
+    },
+    {
+      "qid": 18,
+      "path": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q018_visual.svg",
+      "commit": "8166fe3d5d2e72a7534ebb721fcb47d8f1d68e08",
+      "blob": "dd79fc3da6dfebdba367363f8bda7f5bd2b4d91b",
+      "repair": "원본 O 및 눈금 라벨 parity 복구, 필기 0"
+    }
+  ],
+  "postRepair": {
+    "problemVisual": [
+      {
+        "qid": 12,
+        "status": "PASS",
+        "checks": [
+          "원본 의미 요소 O/A/Q/P/C/y=x 전부 존재",
+          "A(2,0), C(8,4), r=1 equal-scale",
+          "P 원 위, Q y=x 위",
+          "필기 0",
+          "라벨 clipping 0"
+        ]
+      },
+      {
+        "qid": 15,
+        "status": "PASS",
+        "checks": [
+          "A(4,4), r=4 equal-scale 원",
+          "B near-origin 교점",
+          "H 수선의 발",
+          "AH 직각 표식",
+          "필기 0",
+          "라벨 clipping 0"
+        ]
+      },
+      {
+        "qid": 18,
+        "status": "PASS",
+        "checks": [
+          "원본 O/x/y 및 -2,-1 / -2,-3 눈금 parity",
+          "중심 (-1,-2) 구조",
+          "불필요 추가 눈금 제거",
+          "필기 0",
+          "라벨 clipping 0"
+        ]
+      }
+    ],
+    "curriculumStatus": "PASS",
+    "solutionReproducibilityStatus": "PASS",
+    "solutionSvgStatus": "PASS_14_14",
+    "metaStatus": "PASS",
+    "protectedFieldStatus": "PASS",
+    "protectedFieldDiffCount": 0,
+    "jsBlobUnchanged": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+    "itemHoldCount": 0
+  },
+  "finalDecision": "PASS",
+  "nextOwner": "R3_RETRY",
+  "mainMutation": false,
+  "sourceMutation": false
+}
