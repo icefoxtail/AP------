@@ -3,7 +3,7 @@
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "examId": "22_효천고_2학기_기말_고2_수학II",
   "assetCount": 6,
-  "status": "SOURCE_QA_PASS",
+  "status": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "reconciledFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
@@ -271,6 +271,73 @@
       "initialReviewFinding": null,
       "targetedRecheckEvidence": null,
       "backReferenceQuestionReview": "24"
+    }
+  ],
+  "freshItemizationAuditRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+  "freshItemizationAuditSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+  "notationSourceMappingFailureCount": 63,
+  "freshAuditedAssets": [
+    {
+      "qid": "4",
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "sourceQuestionNo": "4",
+      "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+      "sourcePdfSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
+      "sourcePageNo": 1,
+      "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "pageBBox": {
+        "x1": 820,
+        "y1": 2100,
+        "x2": 1060,
+        "y2": 2460
+      },
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q004_visual.png",
+      "assetSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+      "claimedAssetSha256": "2dd44d228f195a2574084d0b64f28e0ffb18f24d7b58194e09aaf217e983f519",
+      "assetShaMatches": true,
+      "cropGenerator": "scanned_exam_pipeline.py (from current JS provenance)",
+      "actualProcessing": "Simple crop from source full-page raster; no source-pixel enhancement or reconstruction observed",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "PASS",
+        "requiredLabel": "PASS",
+        "questionSemanticMatch": "PASS"
+      },
+      "verdict": "PASS",
+      "finding": "Crop is the q4 velocity graph only. The V(t) label, origin, axes, marked values 1,2,3 and −2, vertex and line endpoints are visible; no neighboring prompt or answer choices appear.",
+      "linkedQuestionReviewQid": "4"
+    },
+    {
+      "qid": "22",
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "sourceQuestionNo": "서술형2",
+      "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_효천고2_수2_2기말.pdf",
+      "sourcePdfSha256": "sha256:3de860f5462f49674d3951cc3829e80539e0aaaef40e40874e127690a5ab7ab6",
+      "sourcePageNo": 3,
+      "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_효천고_2학기_기말_고2_수학II/pages/page_p003.png",
+      "pageBBox": {
+        "x1": 1650,
+        "y1": 1450,
+        "x2": 2100,
+        "y2": 2050
+      },
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "assetSha256": "f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
+      "claimedAssetSha256": "f59a333d23e11d90832b74f14ce5e36bdf7d1d6ec12e76f884dcd15cb50839bc",
+      "assetShaMatches": true,
+      "cropGenerator": "scanned_exam_pipeline.py (from current JS provenance)",
+      "actualProcessing": "Simple crop from source full-page raster; no source-pixel enhancement or reconstruction observed",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "verdict": "ASSET_REPAIR_REQUIRED",
+      "finding": "Direct q22 graph crop, but the upper portions of the plotted curves and the top of the y-axis/arrow are cut by the crop boundary. Expand upward to include the full graph semantics.",
+      "linkedQuestionReviewQid": "22"
     }
   ]
 }

@@ -34,7 +34,7 @@
   "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
   "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
   "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-  "finalReconciledReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+  "finalReconciledReportSha256": "sha256:a1a5f6ed5c36683ae36d47a80574ebc60206387698777f0b199cf1839e9f828e",
   "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "reviewerSubagentIds": [
     "/root/source_qa_20261002_0544",
@@ -57,7 +57,51 @@
   "notionsStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
   "handoffEligibility": "PENDING_PARENT_EVIDENCE",
   "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
-  "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+  "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "notionsWrites": "NOT_PERFORMED",
-  "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23"
+  "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23",
+  "itemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+  "itemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+  "notationSourceMappingFailureCount": 92,
+  "notationSourceMappingPassCount": 469,
+  "remainingAssetFailures": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "finding": "Direct graph crop for q18. The plotted curves, t-axis, point labels a,b,c,d,e,10 and f(t)/g(t) labels are present; the top crop boundary intersects the y-axis tip/label area. Increase the top margin so the complete y-axis arrow/label is retained.",
+      "pageBBox": {
+        "x1": 170,
+        "y1": 1380,
+        "x2": 800,
+        "y2": 1680
+      }
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "finding": "Direct q22 graph crop, but the upper portions of the plotted curves and the top of the y-axis/arrow are cut by the crop boundary. Expand upward to include the full graph semantics.",
+      "pageBBox": {
+        "x1": 1650,
+        "y1": 1450,
+        "x2": 2100,
+        "y2": 2050
+      }
+    }
+  ]
 }

@@ -338,8 +338,21 @@
       "sourceArtifactExamCount": 2,
       "sourceQAReadyCount": 0,
       "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
-      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
-      "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json"
+      "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+      "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
+      "itemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+      "itemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+      "notationSourceMappingFailureCount": 92,
+      "remainingAssetFailures": [
+        {
+          "examId": "22_팔마고_2학기_기말_고2_수학II",
+          "qid": "18"
+        },
+        {
+          "examId": "22_효천고_2학기_기말_고2_수학II",
+          "qid": "22"
+        }
+      ]
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -669,5 +682,9 @@
   "currentRunFinalReconciledReportSha256": "sha256:6d8c29cacd8c61b20cdf1b718deaae91630e1ce03a4e994dfcaeb072550235f0",
   "currentRunNotationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
   "sourceQAReadyCount": 0,
-  "currentRunFinalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8"
+  "currentRunFinalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+  "currentRunItemizationStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "currentRunItemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+  "currentRunItemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+  "currentRunNotationSourceMappingFailureCount": 92
 }

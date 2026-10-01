@@ -137,7 +137,13 @@
       "sourceQACloseoutCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
       "sourceQACloseoutPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
       "sourceQACloseoutStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
-      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT"
+      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+      "notationMappingFailureCount": 29,
+      "notationInventoryEntryCount": 233,
+      "remainingCropFailureQids": [
+        "18"
+      ],
+      "itemizationReviewerTaskOrSubagentId": "/root/source_itemization_qa_retry_20261002_0544"
     },
     {
       "examId": "22_효천고_2학기_기말_고2_수학II",
@@ -230,7 +236,13 @@
       "sourceQACloseoutCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
       "sourceQACloseoutPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
       "sourceQACloseoutStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
-      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT"
+      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+      "notationMappingFailureCount": 63,
+      "notationInventoryEntryCount": 328,
+      "remainingCropFailureQids": [
+        "22"
+      ],
+      "itemizationReviewerTaskOrSubagentId": "/root/source_itemization_qa_retry_20261002_0544"
     }
   ],
   "notionStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
@@ -316,7 +328,7 @@
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
   "finalReconciledReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
-  "finalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+  "finalReconciledReviewReportSha256": "sha256:a1a5f6ed5c36683ae36d47a80574ebc60206387698777f0b199cf1839e9f828e",
   "reviewReceiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "reviewReceiptPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "artifactCommits": {
@@ -346,8 +358,55 @@
   "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "sourceArtifactExamCount": 2,
   "sourceQAReadyCount": 0,
-  "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+  "itemizationReviewStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
   "initialFullReviewPreserved": true,
-  "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23"
+  "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23",
+  "itemizationReviewerTaskOrSubagentId": "/root/source_itemization_qa_retry_20261002_0544",
+  "itemizationAuditReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+  "itemizationAuditReportSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+  "notationSourceMappingFailureCount": 92,
+  "notationSourceMappingPassCount": 469,
+  "notationInventoryEntryCount": 561,
+  "visualAnchorStatus": "PASS_48",
+  "remainingAssetFailures": [
+    {
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "qid": "18",
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "finding": "Direct graph crop for q18. The plotted curves, t-axis, point labels a,b,c,d,e,10 and f(t)/g(t) labels are present; the top crop boundary intersects the y-axis tip/label area. Increase the top margin so the complete y-axis arrow/label is retained.",
+      "pageBBox": {
+        "x1": 170,
+        "y1": 1380,
+        "x2": 800,
+        "y2": 1680
+      }
+    },
+    {
+      "examId": "22_효천고_2학기_기말_고2_수학II",
+      "qid": "22",
+      "assetPath": "archive-work/assets/images/22_효천고_2학기_기말_고2_수학II/q022_visual.png",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "finding": "Direct q22 graph crop, but the upper portions of the plotted curves and the top of the y-axis/arrow are cut by the crop boundary. Expand upward to include the full graph semantics.",
+      "pageBBox": {
+        "x1": 1650,
+        "y1": 1450,
+        "x2": 2100,
+        "y2": 2050
+      }
+    }
+  ]
 }

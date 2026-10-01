@@ -3,7 +3,7 @@
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "examId": "22_팔마고_2학기_기말_고2_수학II",
   "assetCount": 4,
-  "status": "SOURCE_QA_PASS",
+  "status": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "initialReviewReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review.json",
   "targetedRecheckReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_recheck.json",
   "reconciledFinalReportRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_text_asset_independent_review_final.json",
@@ -164,6 +164,42 @@
       "initialReviewFinding": null,
       "targetedRecheckEvidence": null,
       "backReferenceQuestionReview": "21"
+    }
+  ],
+  "freshItemizationAuditRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/source_itemization_independent_audit.json",
+  "freshItemizationAuditSha256": "sha256:cc74aea55ed04e407dab8d8ba4ec48b1a3f71f61782c4291eda721476b594e20",
+  "notationSourceMappingFailureCount": 29,
+  "freshAuditedAssets": [
+    {
+      "qid": "18",
+      "examId": "22_팔마고_2학기_기말_고2_수학II",
+      "sourceQuestionNo": "18",
+      "sourcePdfPath": "D:/기출/(4)2기말/수2/2022_팔마고2_수2_2기말.pdf",
+      "sourcePdfSha256": "sha256:81806e70e69932928eeff5d90706d4c32ee45155133a421670e7c1d57ce929b3",
+      "sourcePageNo": 5,
+      "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "pageBBox": {
+        "x1": 170,
+        "y1": 1380,
+        "x2": 800,
+        "y2": 1680
+      },
+      "assetPath": "archive-work/assets/images/22_팔마고_2학기_기말_고2_수학II/q018_visual.png",
+      "assetSha256": "3564902487f9c875fb2b117e3b939fb5e82dffe4e6c9697c0c69ddaa5c0687dc",
+      "claimedAssetSha256": "3564902487f9c875fb2b117e3b939fb5e82dffe4e6c9697c0c69ddaa5c0687dc",
+      "assetShaMatches": true,
+      "cropGenerator": "scanned_exam_pipeline.py (from current JS provenance)",
+      "actualProcessing": "Simple crop from source full-page raster; no source-pixel enhancement or reconstruction observed",
+      "gates": {
+        "CROP_PURITY": "PASS",
+        "contamination": "PASS",
+        "clipping": "FAIL",
+        "requiredLabel": "FAIL",
+        "questionSemanticMatch": "PASS"
+      },
+      "verdict": "ASSET_REPAIR_REQUIRED",
+      "finding": "Direct graph crop for q18. The plotted curves, t-axis, point labels a,b,c,d,e,10 and f(t)/g(t) labels are present; the top crop boundary intersects the y-axis tip/label area. Increase the top margin so the complete y-axis arrow/label is retained.",
+      "linkedQuestionReviewQid": "18"
     }
   ]
 }
