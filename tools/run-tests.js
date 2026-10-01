@@ -32,6 +32,18 @@ const tests = includeQuarantined
 // become blocking checks on every normal test run.
 const requiredCommands = [
   {
+    label: 'archive/tools/solution-calibration-gate.mjs syntax',
+    args: ['--check', 'archive/tools/solution-calibration-gate.mjs']
+  },
+  {
+    label: 'archive/tools/review-evidence-gate.mjs syntax',
+    args: ['--check', 'archive/tools/review-evidence-gate.mjs']
+  },
+  {
+    label: 'archive/tools/review-evidence-gate.test.mjs',
+    args: ['--test', 'archive/tools/review-evidence-gate.test.mjs']
+  },
+  {
     label: 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs syntax',
     args: ['--check', 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs']
   },

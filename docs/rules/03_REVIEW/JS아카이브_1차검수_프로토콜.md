@@ -1,3 +1,7 @@
+## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
+
+R1은 target artifact를 먼저 독립 판정·수리하고 그 판단을 동결한 뒤 Golden/Negative Sample과 비교한다. `solutionQualityCalibration`의 sample path/SHA/blob, 대표 문항 solution SHA, `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`, `qualityCompareCount=N/N`, 복성고 false-PASS negative fixture가 validator PASS하지 않으면 R1 DONE/PASS 금지다. Golden Sample 문장 복사는 금지하고 품질 눈높이만 사용한다.
+
 [JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
 
 ## CURRENT HARD RULE — R1 FIRST-PASS ONLY / R3 DEFERRED OWNER SEPARATION (2026-10-01)

@@ -1,5 +1,10 @@
 ## CURRENT HARD RULE — NO-IDLE / FLEX RESCUE (2026-10-01)
 
+## CURRENT — 2026-10-01 — SOLUTION QUALITY CALIBRATION PHYSICAL HARD GATE
+
+모든 JS Archive 작업에서 **solution을 생성·수정·재작성·승인**하면 `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md` + `01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md` + `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다. CREATE/R1/R2/R3/수동 solution upgrade는 `archive/tools/review-evidence-gate.mjs`의 SHA-bound Golden/Negative Sample evidence 없이는 DONE/PASS 금지다. 신규 CREATE는 fresh solution 동결 후 calibration, 기존 upgrade는 baseline 확인 후 calibration, REVIEW는 blind decision freeze 후 calibration한다. 복성고1 2026-10-01 false-PASS fixture는 필수 Negative Sample이다. 글자 수/줄 수 기준은 사용하지 않는다.
+
+
 - 활성 예약 lane에 eligible backlog가 있는데 반복 NO-OP 또는 장시간 무진행하는 상태를 정상으로 취급하지 않는다.
 - 예약 시각보다 늦게 실행되는 플랫폼 queue delay 자체는 stall 근거가 아니다. liveness는 **durable physical progress**로 판정한다.
 - 운영감시자는 매 run Git/physical receipt에서 CREATE-1/2/3 x/23 + remaining ordinals, REVIEW1/69, REVIEW2/69(Meta-only/Full), initial R3 disposition, ITEM_RECOVERY/post-R3 queue, LINE3 first-pass R2 x/3, automation별 enabled/latest actual run/latest durable progress를 재계산한다.

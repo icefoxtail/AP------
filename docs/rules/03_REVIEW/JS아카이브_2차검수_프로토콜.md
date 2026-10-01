@@ -1,3 +1,7 @@
+## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
+
+R2는 R1 detail을 보기 전 blind decision freeze를 유지한다. freeze 이후 Golden/Negative Sample을 실제 판독하고 최종 solution을 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`로 N/N 비교한다. 물리 sample/question SHA evidence와 `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
+
 [JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
 ## CURRENT HARD RULE — R2 FIRST-PASS ONLY / ITEM RECOVERY + R3 DEFERRED SEPARATION (2026-10-01)
