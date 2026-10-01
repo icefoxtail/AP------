@@ -32,7 +32,7 @@ window.questionBank = [
       "-1",
       "-2"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -119,7 +119,7 @@ window.questionBank = [
       "ㄴ, ㄷ",
       "ㄱ, ㄴ, ㄷ"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -206,7 +206,7 @@ window.questionBank = [
       "$\\frac{15}2$",
       "$\\frac{17}2$"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -292,7 +292,7 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -379,7 +379,7 @@ window.questionBank = [
       "2",
       "3"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "assets/images/20_매산여고_2학기_기말_고1_기출/q005_visual.png",
     "visualAsset": "assets/images/20_매산여고_2학기_기말_고1_기출/q005_visual.png",
@@ -504,7 +504,7 @@ window.questionBank = [
       "48",
       "50"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -591,7 +591,7 @@ window.questionBank = [
       "3",
       "6"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -679,7 +679,7 @@ window.questionBank = [
       "제 3, 4사분면",
       "제 1, 3, 4사분면"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "assets/images/20_매산여고_2학기_기말_고1_기출/q008_visual.png",
     "visualAsset": "assets/images/20_매산여고_2학기_기말_고1_기출/q008_visual.png",
@@ -804,7 +804,7 @@ window.questionBank = [
       "-3",
       "-4"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -892,7 +892,7 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -979,7 +979,7 @@ window.questionBank = [
       "870",
       "872"
     ],
-    "answer": "",
+    "answer": "①",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1067,7 +1067,7 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "",
+    "answer": "①",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1154,7 +1154,7 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1243,7 +1243,7 @@ window.questionBank = [
       "674",
       "676"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1330,7 +1330,7 @@ window.questionBank = [
       "160",
       "170"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "assets/images/20_매산여고_2학기_기말_고1_기출/q015_visual.png",
     "visualAsset": "assets/images/20_매산여고_2학기_기말_고1_기출/q015_visual.png",
@@ -1455,7 +1455,7 @@ window.questionBank = [
       "72",
       "84"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "assets/images/20_매산여고_2학기_기말_고1_기출/q016_visual.png",
     "visualAsset": "assets/images/20_매산여고_2학기_기말_고1_기출/q016_visual.png",
@@ -1580,7 +1580,7 @@ window.questionBank = [
       "175",
       "210"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1660,7 +1660,7 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=\\frac{2-3x}{x-5}$의 역함수를 $f^{-1}(x)$라 할 때, $y=f^{-1}(x)$의 그래프의 두 점근선을 구하여라. [5점]",
     "choices": [],
-    "answer": "",
+    "answer": "x=-3, y=5",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1741,7 +1741,7 @@ window.questionBank = [
     "wide": false,
     "content": "집합 $A$가 $A=\\{1,2,3,4,5,6\\}$일 때, $A$에서 $A$로의 함수 중 다음 조건을 모두 만족시키는 함수 $f$의 개수를 구하여라. [5점]\n(가) 정의역 $A$의 두 원소 $m,n$에 대하여 $m\\ne n$이면 $f(m)\\ne f(n)$이다.\n(나) 정의역 $A$의 오직 한 원소 $n$에 대하여 $f(n+1)-f(n)=4$이다.",
     "choices": [],
-    "answer": "",
+    "answer": "192",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1822,7 +1822,7 @@ window.questionBank = [
     "wide": false,
     "content": "5개의 숫자 1, 3, 5, 7, 9를 모두 사용하여 만든 다섯 자리의 자연수를 큰 수부터 차례로 나열할 때, 50번째 수를 $a$라 하고 100번째 수를 $b$라 하자. $a-b$의 값을 구하여라. [6점] (부분점수 있음.)",
     "choices": [],
-    "answer": "",
+    "answer": "40176",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1905,7 +1905,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 점 $A(0,1)$, $B(1,2)$와 곡선 $y=\\sqrt{x}$ 위의 한 점 $P(x,y)$에 대하여 삼각형 $ABP$의 넓이의 최솟값을 구하여라. [7점] (부분점수 있음.)",
     "choices": [],
-    "answer": "",
+    "answer": "3/8",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1986,7 +1986,7 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)=3x+2$, $g(x)=(2x-1)^2$에 대하여 정의역을 $X=\\{x\\mid -a-1<x<a+1\\}$로 하는 합성함수 $f\\circ g$의 치역을 $A$라 하자. $A$의 원소 중 자연수가 300개 이상이 되도록 하는 자연수 $a$의 최솟값을 구하여라. [7점] (부분점수 있음.)",
     "choices": [],
-    "answer": "",
+    "answer": "4",
     "solution": "",
     "image": "",
     "visualAsset": "",
