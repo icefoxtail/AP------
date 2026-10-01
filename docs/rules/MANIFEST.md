@@ -40,9 +40,9 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/JS_변환_프롬프트.md | 11447 bytes | sha256 dba2fb3d74bef50632c50c41b37bfd34567a3661957bba2e679d3821725967e7
 - 03_REVIEW/무결성검수.md | 54100 bytes | sha256 65547e1d8cb330ce8d23705db03940ce569ba3039ace460e723529c8575f174d
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 8439 bytes | sha256 35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9
-- 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 26221 bytes | sha256 e0a60c11070ef15c69a6cdc05f3a83a0ee1296372b1aa7aa5c02a2610d29f068
-- 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 23625 bytes | sha256 ca943fc248f131bb7d0c87b51cccbb071964d3ef3661f2677bb96ae20684ee31
-- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 30702 bytes | sha256 a9d0c96558be7c5b5ed5d5e629a6a26cae358392500adbdc24e1918c8c5e0b7b
+- 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 26767 bytes | sha256 cb46aea16eb124dcb5a96a8115d36cc0c2a610af071b58ebed599f6ae49681d9
+- 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 24174 bytes | sha256 bfacff9a8526d375a1464bb16191549dc9110e6273388148754a686d334b0c90
+- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 31275 bytes | sha256 2b294bec6f9a5cdea04208e82d91f402b69b23ddaf23243ab8860259d97f725f
 - 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 72948 bytes | sha256 623931f36519c4e75f5c8b2013e3c3c23ef483db4bbed147c1fe1e1dc714e56e
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b

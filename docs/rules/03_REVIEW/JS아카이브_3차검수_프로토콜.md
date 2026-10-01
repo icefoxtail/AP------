@@ -169,6 +169,11 @@ release-bound R3에서 다음 중 하나라도 성립하면 MAIN_READY 금지:
 > 본문에 복사한 간이 단원표·기억·과거 예시는 판정 근거로 사용하지 않고 canonical master를 직접 대조한다.
 > **공용 Meta resolver 동기화(2026-09-27):** 최초 semantic 판단은 current source + verified final solution에서 `primaryMethod`/`decisiveStep`을 candidate-blind로 확정한 뒤, RPM Primary → exact grade/subject crosswalk → GLOBAL ACTIVE PT/TPL → exact binding 순으로 `archive/tools/meta-foundation/rpm-active-resolver.mjs`를 사용한다. difficulty는 독립 blind pass다.
 
+## SUPERSEDED / LEGACY V1 ROLE SCOPE — CHECKLIST REFERENCE ONLY (2026-10-01)
+
+아래 v1 본문의 `분류·메타·난이도 전담`, `정오답 검수는 2차` 같은 역할 제한은 **CURRENT가 아니다**. 현재 R3는 상단 CURRENT에 따라 MAIN 직전 Release Gate로서 curriculum/visual/해설/asset/Meta/무결성/출판 품질을 fresh audit하고 failureClass A/B/C를 결정한다. R3는 직접 repair하지 않는다.
+아래 Meta/difficulty 체크리스트는 상단 CURRENT와 충돌하지 않는 범위에서만 보조 체크리스트로 사용한다.
+
 너는 JS아카이브 3차 분류·메타·난이도 태그 검수 전담 엔진이다.
 
 이번 단계의 목적은 문항이 최종 JS아카이브 데이터베이스에 들어갈 때
