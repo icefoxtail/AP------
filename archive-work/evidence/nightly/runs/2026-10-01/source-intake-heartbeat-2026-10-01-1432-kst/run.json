@@ -2,13 +2,13 @@
   "schema": "archive-source-only-run-v1",
   "runId": "source-intake-heartbeat-2026-10-01-1432-kst",
   "batchDate": "2026-10-01",
-  "status": "source_artifacts_prepared_pending_independent_review",
+  "status": "source_only_review_passed_receipt_pending",
   "startedAtKst": "2026-10-01T14:44:41+09:00",
   "owner": "codex-thread-automation-10",
   "priorityGroup": "high2",
   "actualSubject": "Mathematics II",
   "selectedCount": 2,
-  "successCount": 0,
+  "successCount": 2,
   "selectedExamIds": [
     "22_매산고_2학기_기말_고2_수학II",
     "22_복성고_2학기_기말_고2_수학II"
@@ -31,7 +31,7 @@
       "reason": "Assignment omitted B after 657; unchanged PDF matches parent-corrected SHA."
     }
   ],
-  "updatedAtKst": "2026-10-01T16:07:27.000+09:00",
+  "updatedAtKst": "2026-10-01T16:52:12+09:00",
   "preparedSourceOnlyExamCount": 2,
   "latestOriginMainAtExtraction": "b47f0b12022a966ca28030f19823cd09a73169f2",
   "latestOriginIntakeAtExtraction": "d9451d45909d23b0bc489b6e51e6549fea7fbe5f",
@@ -78,14 +78,14 @@
   "renderStatus": "NOT_RUN_USER_DIRECTIVE",
   "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
   "sourceDefectCount": 0,
-  "independentReviewStatus": "PENDING",
+  "independentReviewStatus": "SOURCE_QA_PASS",
   "reviewScopeExamIds": [
     "22_매산고_2학기_기말_고2_수학II",
     "22_복성고_2학기_기말_고2_수학II"
   ],
   "reviewQuestionCount": 42,
   "reviewAssetCount": 6,
-  "reviewSchema": "One questionReviews row per qid; 1-3 verbatim source-language anchors paired with exact JS substrings, page region, comparisonBasis, and representationMapping when notation differs; per-q prompt/conditions/formulas/units/final ask/score/continuations/choices/assets/blank answer-solution/issue evidence.",
+  "reviewSchema": "SOURCE_TEXT_ASSET_INDEPENDENT_REVIEW_v1",
   "operationalCorrections": [
     {
       "examId": "22_매산고_2학기_기말_고2_수학II",
@@ -131,9 +131,9 @@
     }
   ],
   "sourceChecks": "PASS_SHA_IDENTITY_RANGE_SCHOOL_PDF_PROBLEM_KIND_NO_JS_NO_DUPLICATE; COVER_PIXELS_VERIFIED; SOURCE_TEXT_CHOICES_EXACT; ASSET_PROVENANCE_VISUAL_PASS; STATIC_VM_PASS",
-  "commitStatus": "NOT_COMMITTED_YET",
-  "pushStatus": "NOT_COMMITTED_YET",
-  "nextStartPoint": "After independent SOURCE_QA_PASS, next high2 Math II candidate in the current inventory order is D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
+  "commitStatus": "ARTIFACT_COMMITTED",
+  "pushStatus": "ARTIFACT_PUSH_VERIFIED",
+  "nextStartPoint": "Next high2 Math II candidate after SOURCE_QA_PASS: D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf; rebuild current queue and refs before selecting it.",
   "artifactRefs": {
     "selectedManifest": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\selection.json",
     "sourceQuestionIdentityCoverage": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\source_question_identity_coverage.json",
@@ -161,8 +161,8 @@
     "status": "PASS_BYTE_EQUAL_TO_LATEST_MAIN"
   },
   "latestOriginMainAtFinalFetch": "83b9d2c92b76611c0b620e414e9fc4e88396cf71",
-  "latestOriginIntakeAtFinalFetch": "d9451d45909d23b0bc489b6e51e6549fea7fbe5f",
-  "priorityGroupRemainingAfterBatch": 25,
+  "latestOriginIntakeAtFinalFetch": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "priorityGroupRemainingAfterBatch": 23,
   "sourceExams": [
     {
       "examId": "22_매산고_2학기_기말_고2_수학II",
@@ -217,7 +217,8 @@
       "renderStatus": "NOT_RUN_USER_DIRECTIVE",
       "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
       "productionAuthorized": false,
-      "independentReviewStatus": "PENDING"
+      "independentReviewStatus": "SOURCE_QA_PASS",
+      "independentReviewEvidenceRef": "archive-work/evidence/22_매산고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json"
     },
     {
       "examId": "22_복성고_2학기_기말_고2_수학II",
@@ -272,7 +273,8 @@
       "renderStatus": "NOT_RUN_USER_DIRECTIVE",
       "answerSolutionStatus": "OUT_OF_SCOPE_EMPTY",
       "productionAuthorized": false,
-      "independentReviewStatus": "PENDING"
+      "independentReviewStatus": "SOURCE_QA_PASS",
+      "independentReviewEvidenceRef": "archive-work/evidence/22_복성고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json"
     }
   ],
   "candidatePreflightStatus": "PASS",
@@ -280,8 +282,18 @@
   "pdfKindStatus": "PASS_PROBLEM_PDF_PARSED",
   "rangeAndSchoolStatus": "PASS_2019_PLUS_SECOND_SEMESTER_FINAL_GRADE2_NONEXCLUDED_SCHOOL",
   "selectionRef": "archive-work\\evidence\\nightly\\runs\\2026-10-01\\source-intake-heartbeat-2026-10-01-1432-kst\\selection.json",
-  "reviewDisposition": "PENDING_INDEPENDENT_SOURCE_ASSET_REVIEW",
+  "reviewDisposition": "SOURCE_QA_PASS",
   "latestCanonicalRuleSha256": "7642674cf88b5ac9949e12bd867412b6a70be42d6998763446a0883ccbc7a72f",
   "mainCatalogInputsByteEqualToLatestMain": true,
-  "mainCatalogInputCount": 58
+  "mainCatalogInputCount": 58,
+  "reviewerTaskOrSubagentId": "/root/source_visual_review_1432",
+  "reviewEvidenceRefs": [
+    "archive-work/evidence/22_매산고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json",
+    "archive-work/evidence/22_복성고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json"
+  ],
+  "artifactCommitSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "artifactPushSha": "f1b02f8d2fd7b8cd1460739d1e184aaeb279123c",
+  "receiptCommitStatus": "PENDING_RECEIPT_COMMIT",
+  "receiptCommitSha": null,
+  "receiptPushStatus": "PENDING_RECEIPT_PUSH"
 }
