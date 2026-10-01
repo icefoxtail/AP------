@@ -43,7 +43,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-190",
     "rpmPrimaryPath": {
@@ -114,7 +114,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-185",
     "rpmPrimaryPath": {
@@ -185,15 +185,15 @@ window.questionBank = [
     "answerSource": "independent_solve_item_hold",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_SOURCE_MATH",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
-    "rpmCrosswalkStatus": "ITEM_HOLD",
-    "canonicalBindingStatus": "UNRESOLVED",
-    "runtimeMaterializationStatus": "ITEM_HOLD",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "rpmCrosswalkStatus": "RPM_COVERAGE_GAP_NONBLOCKING",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+    "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "DIRECT_TRANSFER",
@@ -201,12 +201,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "review_hold",
+    "tagStatus": "item_hold",
     "itemHold": true,
     "itemHoldReasons": [
-      "SOURCE_CHOICE_SET_HAS_MULTIPLE_TRUE_OPTIONS",
-      "NO_EXACT_RPM_L4_FOR_CONGRUENCE_CORRESPONDENCE"
+      "SOURCE_CHOICE_SET_HAS_MULTIPLE_TRUE_OPTIONS"
     ],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_visual.png"
   },
@@ -253,15 +252,15 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
-    "rpmCrosswalkStatus": "ITEM_HOLD",
-    "canonicalBindingStatus": "UNRESOLVED",
-    "runtimeMaterializationStatus": "ITEM_HOLD",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "rpmCrosswalkStatus": "RPM_COVERAGE_GAP_NONBLOCKING",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+    "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_SPATIAL_LINE_CLASSIFICATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "RELATION_CLASSIFICATION",
@@ -271,11 +270,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "itemHold": true,
-    "itemHoldReasons": [
-      "NO_EXACT_RPM_L4_FOR_SKEW_LINE_LINE_RELATION_IN_SPACE"
-    ],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_visual.png"
+    "itemHold": false,
+    "itemHoldReasons": [],
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q004_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q4.svg"
   },
   {
     "id": 5,
@@ -320,7 +318,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-190",
     "rpmPrimaryPath": {
@@ -390,7 +388,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-167",
     "rpmPrimaryPath": {
@@ -461,7 +459,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-170",
     "rpmPrimaryPath": {
@@ -533,7 +531,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-169",
     "rpmPrimaryPath": {
@@ -603,7 +601,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -674,7 +672,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -743,7 +741,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-192",
     "rpmPrimaryPath": {
@@ -768,7 +766,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q011_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q11.svg"
   },
   {
     "id": 12,
@@ -813,7 +812,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-193",
     "rpmPrimaryPath": {
@@ -840,7 +839,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q012_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q12.svg"
   },
   {
     "id": 13,
@@ -885,7 +885,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -957,7 +957,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -1028,7 +1028,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-177",
     "rpmPrimaryPath": {
@@ -1055,7 +1055,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_visual.png"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q015_visual.png",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q15.svg"
   },
   {
     "id": 16,
@@ -1101,7 +1102,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
@@ -1117,8 +1118,8 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "tagConfidence": "high",
-    "tagStatus": "reviewed_create",
+    "tagConfidence": "review_hold",
+    "tagStatus": "item_hold",
     "itemHold": true,
     "itemHoldReasons": [
       "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
@@ -1167,7 +1168,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-223",
     "rpmPrimaryPath": {
@@ -1237,7 +1238,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-223",
     "rpmPrimaryPath": {
@@ -1307,7 +1308,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-231",
     "rpmPrimaryPath": {
@@ -1379,7 +1380,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-231",
     "rpmPrimaryPath": {
@@ -1445,7 +1446,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-176",
     "rpmPrimaryPath": {
@@ -1511,7 +1512,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-172",
     "rpmPrimaryPath": {
@@ -1576,7 +1577,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW1_DONE",
+    "reviewStatus": "REVIEW2_DONE",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "M1-RPM-192",
     "rpmPrimaryPath": {
