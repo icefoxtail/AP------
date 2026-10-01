@@ -1,0 +1,128 @@
+{
+  "schema": "JS_ARCHIVE_R3_RELEASE_GATE_LEDGER_v2",
+  "stage": "R3_FAIL_DEFERRED",
+  "examId": "26_왕운중_2학기_중간_중1_기출",
+  "auditedAtKst": "2026-10-01T19:33:44+09:00",
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false
+  },
+  "r3Input": {
+    "branch": "work/line3/26-wangun-m1-2mid-review2-20261001",
+    "sealedHead": "b0d697e4aaad2e724228579ef50ac55d7c0f2bb9",
+    "finalArtifactSha": "847ffdec7c0dad0d79573f5d4abe0f50be8f4636",
+    "receiptBlob": "d6d521f57e55688db0c4243e07798c254d8e0f4f",
+    "itemHoldCount": 0
+  },
+  "counts": {
+    "questions": "23/23",
+    "sourceContentChoices": "23/23 PASS",
+    "answerMath": "23/23 PASS",
+    "solutionMath": "23/23 PASS",
+    "curriculumMethod": "23/23 PASS",
+    "visualNecessity": "23/23 audited",
+    "problemImages": "18/18 PASS",
+    "linkedSolutionSvg": "10/11 PASS",
+    "smallBoardStudentLanguage": "23/23 PASS",
+    "meta": "22/23 PASS",
+    "difficulty": "23/23 PASS",
+    "runtimeString": "23/23 PASS"
+  },
+  "curriculumViolationQids": [],
+  "problemImageDefectQids": [],
+  "solutionVisualFailQids": [
+    15
+  ],
+  "metaFailQids": [
+    2
+  ],
+  "questionDisposition": {
+    "q1": "PASS",
+    "q2": "META_FAIL",
+    "q3": "PASS",
+    "q4": "PASS",
+    "q5": "PASS",
+    "q6": "PASS",
+    "q7": "PASS",
+    "q8": "PASS",
+    "q9": "PASS",
+    "q10": "PASS",
+    "q11": "PASS",
+    "q12": "PASS",
+    "q13": "PASS",
+    "q14": "PASS",
+    "q15": "VISUAL_FAIL",
+    "q16": "PASS",
+    "q17": "PASS",
+    "q18": "PASS",
+    "q19": "PASS",
+    "q20": "PASS",
+    "q21": "PASS",
+    "q22": "PASS",
+    "q23": "PASS"
+  },
+  "answerChecks": {
+    "q1": "①",
+    "q2": "②,④",
+    "q3": "③",
+    "q4": "⑤",
+    "q5": "①",
+    "q6": "①",
+    "q7": "③",
+    "q8": "②",
+    "q9": "②",
+    "q10": "①",
+    "q11": "⑤",
+    "q12": "④",
+    "q13": "⑤",
+    "q14": "④",
+    "q15": "④",
+    "q16": "②",
+    "q17": "⑤",
+    "q18": "②",
+    "q19": "①",
+    "q20": "②",
+    "q21": "17",
+    "q22": "16;(6,-5);(6,0)",
+    "q23": "60°"
+  },
+  "findings": {
+    "q2": {
+      "code": "META_NULL_BUT_CURRENT_ACTIVE_SEMANTIC_MATCH",
+      "current": "problemTypeKey/templateKey blank",
+      "canonical": "PT_M1_BASIC_CONSTRUCTION / TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE ACTIVE for 2022 M1-05 BASIC_FIGURE",
+      "dependency": "PT_M1_CONGRUENCE_UNIQUENESS remains as crossConcept"
+    },
+    "q15": {
+      "code": "SOLUTION_VISUAL_LABEL_OWNER_MISMATCH",
+      "source": "95° NW; b SE",
+      "solutionSvg": "b NW; 95° SE",
+      "problemBlob": "3eaf831fda50016b37b84d87d5ba0e8e835d34fd",
+      "solutionBlob": "9cc469c9933337cfc605343cd0c7b8b00e74ff61"
+    }
+  },
+  "sourceAudit": {
+    "result": "PASS",
+    "note": "six raw content deltas are layout-only HTML wrappers; q3 old DFE freeze is stale and current DEF is supported by printed vertex geometry plus unique-answer consistency"
+  },
+  "releaseGate": {
+    "result": "FAIL",
+    "status": "R3_FAIL_DEFERRED",
+    "openQids": [
+      2,
+      15
+    ],
+    "publishEligible": false
+  },
+  "physicalEvidenceGate": {
+    "validator": "review-evidence-gate.mjs --stage R3",
+    "status": "NOT_PASS_RUN",
+    "reason": "open release defects prohibit R3_PASS"
+  },
+  "r3BaselineArtifactSha": "847ffdec7c0dad0d79573f5d4abe0f50be8f4636",
+  "lockedScope": "all non-open qids/files/fields/axes",
+  "route": "CODEX_R3_REPAIR_THEN_INDEPENDENT_REVIEW_THEN_R3_RETRY",
+  "nextOwner": "CODEX_R3_REPAIR",
+  "r3ExamMutation": false,
+  "mainMutation": false
+}
