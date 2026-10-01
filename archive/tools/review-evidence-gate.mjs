@@ -5,11 +5,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
+import { validateSolutionCalibration } from './solution-calibration-gate.mjs';
 
 const SCHEMA = 'JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1';
 const PASS = 'PASS';
 const HOLD = 'HOLD';
-const ALLOWED_STAGES = new Set(['CREATE', 'R1', 'R2', 'R3']);
+const ALLOWED_STAGES = new Set(['CREATE', 'R1', 'R2', 'R3', 'SOLUTION_UPGRADE']);
 const REQUIRED_AXES = [
   'sourceExact', 'answerMath', 'solutionMath', 'smallBoard',
   'curriculum', 'visualNecessity', 'meta', 'difficulty', 'runtimeString',
@@ -35,7 +36,7 @@ function parseArgs(argv) {
   }
   if (!out.exam) throw new Error('EXAM_PATH_REQUIRED');
   if (!out.evidence) throw new Error('EVIDENCE_PATH_REQUIRED');
-  if (!ALLOWED_STAGES.has(out.stage)) throw new Error('STAGE_CREATE_R1_R2_R3_REQUIRED');
+  if (!ALLOWED_STAGES.has(out.stage)) throw new Error('STAGE_CREATE_R1_R2_R3_OR_SOLUTION_UPGRADE_REQUIRED');
   return out;
 }
 
@@ -230,6 +231,7 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
   const questionEvidence = checkQuestionRows(questions, evidence, issues);
   const visual = checkVisualRows(examFile, questions, evidence, issues);
   const metaEvidence = checkMetaRows(questions, evidence, issues);
+  issues.push(...validateSolutionCalibration({ examFile, questions, evidence, stage }));
   checkIndependence(stage, evidence, issues);
 
   const heldQids = [...new Set([...questionEvidence.heldQids, ...metaEvidence.heldQids])].sort((a, b) => a - b);
