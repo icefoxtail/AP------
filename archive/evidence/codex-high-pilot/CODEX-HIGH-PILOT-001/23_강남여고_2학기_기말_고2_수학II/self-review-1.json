@@ -1,0 +1,244 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_강남여고_2학기_기말_고2_수학II",
+  "stage": "SELF_REVIEW_1",
+  "status": "MATH_PASS_WITH_ITEM_HOLD",
+  "denominator": 25,
+  "resolvedQids": 24,
+  "heldQids": [
+    13
+  ],
+  "sourceArtifactGitBlobSha": "1374f3a7eb13a0adea4453444f34d9d9be37dbf1",
+  "reviewedArtifactSha256": "sha256:f19fdfcf67dc485f8cd284e365c029e5708bfbf5b0655deed19326c6218ab19a",
+  "reviewedArtifactGitBlobSha": "853d8479367811480839f23d33265c9bc2c19b4d",
+  "axes": [
+    "source-solution math",
+    "answer alignment",
+    "intermediate calculations",
+    "conditions",
+    "case splits",
+    "curriculum scope",
+    "possibility/existence",
+    "proof flow"
+  ],
+  "sourceVisualRefsKept": [
+    7,
+    12,
+    14,
+    18,
+    24
+  ],
+  "itemHold": {
+    "qid": 13,
+    "code": "SOURCE_MATH_NO_CHOICE_MATCH",
+    "calculation": "f'=3(x²−4); local maximum 15 at x=−2 and local minimum −17 at x=2. For a=14,15,16,17,18, distinct intersection counts of |f|=a are 6,5,4,2,2; none is 3."
+  },
+  "items": [
+    {
+      "qid": 1,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|1",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Derivative substitution: 3(−1)^2+8(−1)=−5."
+    },
+    {
+      "qid": 2,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|2",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Rescaling h by u=4h gives 4f'(1)=8."
+    },
+    {
+      "qid": 3,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|3",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Rolle endpoints both 0; derivative zero at c=−2."
+    },
+    {
+      "qid": 4,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|4",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Mean slope 5; derivative 2c+3=5 gives c=1."
+    },
+    {
+      "qid": 5,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|5",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Antiderivative endpoint difference is 52."
+    },
+    {
+      "qid": 6,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|6",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Velocity sign changes at t=3 for t≥0."
+    },
+    {
+      "qid": 7,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|7",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "After reading source image: f'>0 on (−3,−2), f'<0 on (−2,1), then f'>0 to the right of the derivative jump at x=1. Since f is continuous, maximum x=−2 and minimum x=1; stationary zeros x=0,2 do not change sign. Thus a+b=−1 (choice ④)."
+    },
+    {
+      "qid": 8,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|8",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "At x=2 slope fixes a=2; point condition gives b=−5; sum −3."
+    },
+    {
+      "qid": 9,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|9",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Odd part cancels; constant term gives 8a=16."
+    },
+    {
+      "qid": 10,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|10",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Critical values at −1 and 3; local max fixes a=7, min is −20."
+    },
+    {
+      "qid": 11,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|11",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Global monotonicity requires discriminant 4+12a≤0; maximum a=−1/3 remains strictly increasing."
+    },
+    {
+      "qid": 12,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|12",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Source graph signs give ∫f=−A+B=−1; ∫2x=7; total 6."
+    },
+    {
+      "qid": 13,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|13",
+      "sourceParity": "PASS",
+      "answerCheck": "ITEM_HOLD",
+      "solutionCheck": "ITEM_HOLD",
+      "freshMathCheck": "Critical levels max=15, min=−17; choices 14–18 yield intersection counts 6,5,4,2,2, never 3: ITEM_HOLD."
+    },
+    {
+      "qid": 14,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|14",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Volume x(12−2x)^2 peaks at x=2 with value 128."
+    },
+    {
+      "qid": 15,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|15",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "φ=x³−x²−x+6 has minimum 5 on x≥0, so max a=5."
+    },
+    {
+      "qid": 16,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|16",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Integrand is derivative of (x²+x)f; boundary fixes a=4; integral is −9/2."
+    },
+    {
+      "qid": 17,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|17",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Levels 2−n against cubic extrema ±2 give root counts 3,3,3,2, then six 1s; sum 17."
+    },
+    {
+      "qid": 18,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|18",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Signed areas yield S1=1/4 and S2=1; solve a⁴−2a²−3=0, a=√3."
+    },
+    {
+      "qid": 19,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|19",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "(가) F(−1)=4/3 true; (나) F(0)=−7/3 is negative; (다) integral F=−8/3 true."
+    },
+    {
+      "qid": 20,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|20",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Elapsed B time m−2; simultaneous positions/speeds give m=6,a=9/40; result 249."
+    },
+    {
+      "qid": 21,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|21",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Odd symmetry and interval integrals give ∫f=14; corrected bounds/differential on ∫4x dx are explicit; polynomial contribution 32; total 46."
+    },
+    {
+      "qid": 22,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|서술형1",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Differentiate to f=4x−8; original at x=a gives a=1 or3, condition selects3; result11."
+    },
+    {
+      "qid": 23,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|서술형2",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Equal velocities at t=2 (discard negative root); positions14 and23 give distance9."
+    },
+    {
+      "qid": 24,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|서술형3",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Derivative graph zeros and orientation give f'(x)=3x(x−4); notation repaired; integration and local maximum give coefficients and minimum −27."
+    },
+    {
+      "qid": 25,
+      "questionUid": "sha256:d634108ff68b961a5b9c98ecc395f8264d93eaa96b30c5a5d9cd952166e90859|서술형4",
+      "sourceParity": "PASS",
+      "answerCheck": "PASS",
+      "solutionCheck": "PASS",
+      "freshMathCheck": "Interval decomposition gives ∫f=7; corrected ∫4x notation gives −18; total 25."
+    }
+  ],
+  "repairRecheckQids": [
+    7,
+    21,
+    24,
+    25
+  ]
+}
