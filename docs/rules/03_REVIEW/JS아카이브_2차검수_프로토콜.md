@@ -52,7 +52,7 @@ TARGETED R2 순서:
 완료 evidence: `reentryMode=TARGETED`, `blindDecisionFrozen=true`, `independentSolverMethodInventory`, `candidateSolutionMethodInventory`, `recheckedQids[]`, `familyRescanAxis`, `familyRescanCount=N/N`, `r2OutputArtifactSha`.
 TARGETED에서 unrelated qids 전 문항 재풀이 금지. 새 systemic defect 발견 시 `FULL_REENTRY_REQUIRED`로 승격. nextOwner=`R3_RETRY`.
 
-## CURRENT — R3 FAIL REENTRY: R2 INDEPENDENT RECERTIFICATION (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAIL REENTRY: R2 INDEPENDENT RECERTIFICATION (2026-10-01)
 
 R3 FAIL 후 R1이 수리한 artifact는 반드시 R2를 다시 통과한다. R3→R1→R3 직행은 금지한다.
 

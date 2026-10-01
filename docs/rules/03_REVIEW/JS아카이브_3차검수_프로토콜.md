@@ -51,7 +51,7 @@ R3는 FAIL을 직접 repair하지 않지만 모든 FAIL을 FULL R1/R2로 되돌�
 
 R3_RETRY는 어떤 class였든 latest repaired lineage에서 full release gate를 다시 수행한다. bounded되는 것은 upstream R1/R2 재작업 범위다.
 
-## CURRENT — R3 FAIL → R1 → R2 → R3 CLOSED LOOP (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAIL → R1 → R2 → R3 CLOSED LOOP (2026-10-01)
 
 R3는 MAIN 직전 **release gate**이며 repair stage가 아니다. R3에서 학생 노출·교육과정·visual·출판·Meta·무결성 결함이 하나라도 확인되면 현재 artifact를 R3 PASS로 고쳐 닫지 않는다.
 
