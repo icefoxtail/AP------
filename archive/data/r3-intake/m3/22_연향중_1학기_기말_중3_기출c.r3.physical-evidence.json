@@ -1,0 +1,1411 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+  "examSha256": "sha256:f8bcd4d501a6d48bd57bb274b03a7ca3dcf7a9cf8e8cad3079776b341c41ae07",
+  "questionCount": 21,
+  "generation": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "track": "FULL_INTEGRATED_V2",
+  "ordinal": 37,
+  "executor": "R3_SURGE-2",
+  "claim": {
+    "gitBranch": "work/middle/m3/22-yeonhyang-1final-r3-surge2-20261002",
+    "notionClaimPage": "3ec0e68b-d69f-8143-aaa5-c937648b6060",
+    "competingClaimRecheck": "NONE_FOUND_AFTER_CLAIM"
+  },
+  "inputArtifactGitBlobSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "inputAuthorityCommit": "0d601b05be3f3d731a56483ee4391cd3709f8f9c",
+  "latestMainAtAudit": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
+  "audit": {
+    "freshFromLatestBytes": "21/21",
+    "answerIndependent": "21/21",
+    "solutionMath": "21/21",
+    "smallBoardActualStructure": "21/21",
+    "runtimeString": "21/21",
+    "metaFreshSemantic": "21/21",
+    "difficultyFreshBlind": "21/21",
+    "linkedSolutionImage": "0/0",
+    "gradeBounded": "21/21"
+  },
+  "independence": {
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "targetSpecificPriorVerdictReadAfterFreshDecisionFreeze": true,
+    "note": "Fresh target-byte solve/runtime/source-pixel decisions were frozen in this run; prior REVIEW2 material was used only afterward for provenance/compare."
+  },
+  "sourceParity": {
+    "latestLineageExamGitBlobSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+    "problemRasterLineage": {
+      "q11": {
+        "gitBlobSha": "8a4ef0d4a36e4ea9ea9e27af805bc7c0f4f07ee4",
+        "status": "FRESH_SOURCE_PIXEL_PASS"
+      },
+      "q12": {
+        "gitBlobSha": "9880d829b4629c75676a745da3afe60f79d60411",
+        "status": "CONFIRMED_SOURCE_TEXT_FIGURE_OWNER_CONTRADICTION"
+      },
+      "q15": {
+        "gitBlobSha": "ebc8c5555072c45f3af2d96f8b93ec6bbef46c15",
+        "status": "FRESH_SOURCE_PIXEL_PASS"
+      },
+      "q18": {
+        "gitBlobSha": "5003c9475f0d9dde4e4bf97a8dc9177c132dd2e2",
+        "status": "FRESH_SOURCE_PIXEL_PASS"
+      },
+      "q20": {
+        "gitBlobSha": "ef07d8237feaff055640ba2a6b99f00dd89ef826",
+        "status": "FRESH_SOURCE_PIXEL_PASS"
+      }
+    }
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q1 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: ㄷ은 일차방정식으로 정리되고 ㅂ은 분모에 x²이 있어 다항방정식이 아니므로 ③. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: ㄷ은 일차방정식으로 정리되고 ㅂ은 분모에 x²이 있어 다항방정식이 아니므로 ③. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SMALLBOARD_ENUMERATION_NOT_SEPARATED",
+          "observedEvidence": {
+            "field": "solution",
+            "observed": "ㄱ~ㅂ 판단이 한 문단 안에 이어져 source enumerated structure를 독립 block으로 재현하지 못함"
+          },
+          "unresolvedPoint": "ㄱ~ㅂ 판단을 학생이 항목별로 추적할 실제 solution block 구조가 필요함",
+          "nextRequiredEvidenceOrCapability": "Codex R3 repair에서 q1.solution의 ㄱ~ㅂ 판단을 독립 block으로 분리 후 independent review.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차방정식 여부 판별; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "RUNTIME_LITERAL_BACKSLASH_N_IN_CONTENT",
+          "observedEvidence": {
+            "field": "content",
+            "count": 6,
+            "observed": "sandbox 평가 뒤에도 literal backslash+n separator 6개가 남음"
+          },
+          "unresolvedPoint": "학생 노출 content가 실제 개행이 아니라 문자 \\\\n으로 남음",
+          "nextRequiredEvidenceOrCapability": "Codex R3 repair에서 q1.content의 line separator escape만 교정 후 independent review.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q2 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 전개·이항 후 이차항 계수 (a-3)(a+2)≠0; 보기 중 3만 불가이므로 ④. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 전개·이항 후 이차항 계수 (a-3)(a+2)≠0; 보기 중 3만 불가이므로 ④. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차방정식의 계수 조건; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q3 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x=2 대입으로 a=3, 3x²-5x-2=(3x+1)(x-2), 다른 근 -1/3 → ②. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: x=2 대입으로 a=3, 3x²-5x-2=(3x+1)(x-2), 다른 근 -1/3 → ②. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 주어진 근으로 계수 결정; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q4 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 정리하면 x²+6x=3, (x+3)²=12이므로 p=3,q=12,pq=36 → ①. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 정리하면 x²+6x=3, (x+3)²=12이므로 p=3,q=12,pq=36 → ①. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 완전제곱식 변형; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q5 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 근의 공식 비교로 B=-2, 4-3A=10 → A=-2, A-B=0 → ②. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 근의 공식 비교로 B=-2, 4-3A=10 → A=-2, A-B=0 → ②. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 근의 공식과 해의 꼴 비교; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B3."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q6 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 중근 조건 D=108-12a=0 → a=9 → ⑤. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 중근 조건 D=108-12a=0 → a=9 → ⑤. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 중근 조건; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q7 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 내각의 합만 y=180(x-2)로 일차함수이고 나머지는 이차함수 → ②. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 내각의 합만 y=180(x-2)로 일차함수이고 나머지는 이차함수 → ②. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차함수 판별; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q8 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=-5x²는 위로 볼록, 축 y축, 꼭짓점 (0,0), x<0에서 x 증가 시 y 증가 → ⑤. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: y=-5x²는 위로 볼록, 축 y축, 꼭짓점 (0,0), x<0에서 x 증가 시 y 증가 → ⑤. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: y=ax² 그래프 성질; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q9 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: x축 대칭은 계수 부호만 반대이고 절댓값이 같아야 하므로 -3과 3, ㄴ·ㄹ → ③. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: x축 대칭은 계수 부호만 반대이고 절댓값이 같아야 하므로 -3과 3, ㄴ·ㄹ → ③. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SMALLBOARD_ENUMERATION_NOT_SEPARATED",
+          "observedEvidence": {
+            "field": "solution",
+            "observed": "공유 보기 ㄱ~ㅂ 구조 대비 solution이 독립 판단 block을 제공하지 않음"
+          },
+          "unresolvedPoint": "공유 보기의 판정 근거가 작은칠판에서 항목 단위로 추적 가능해야 함",
+          "nextRequiredEvidenceOrCapability": "Codex R3 repair에서 q9.solution의 필요한 ㄱ~ㅂ 판정을 실제 block으로 분리 후 independent review.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: x축 대칭 그래프 비교; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "RUNTIME_LITERAL_BACKSLASH_N_IN_CONTENT",
+          "observedEvidence": {
+            "field": "content",
+            "count": 6,
+            "observed": "sandbox 평가 뒤 shared 보기 영역에 literal backslash+n separator 6개가 남고 actual newline과 혼재"
+          },
+          "unresolvedPoint": "문제 보기 구조가 실제 개행과 literal separator가 혼재해 runtime block 구조가 깨짐",
+          "nextRequiredEvidenceOrCapability": "Codex R3 repair에서 q9.content의 line separator escape만 교정 후 independent review.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q10 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: |a|가 가장 큰 4의 그래프 ㄱ이 가장 좁음 → ①. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: |a|가 가장 큰 4의 그래프 ㄱ이 가장 좁음 → ①. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 포물선 폭 비교; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q11 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: fresh source pixel: 좁은 그래프 (1,4) → a=4, 넓은 그래프 (2,1) → b=1/4, ab=1 → ③. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: fresh source pixel: 좁은 그래프 (1,4) → a=4, 넓은 그래프 (2,1) → b=1/4, ab=1 → ③. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh source pixel blob 8a4ef0d4a36e4ea9ea9e27af805bc7c0f4f07ee4 inspected: narrow graph passes (1,4), wide graph passes (2,1); no semantic contradiction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 그래프 점으로 계수 결정; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "CONFIRMED_SOURCE_TEXT_FIGURE_OWNER_CONTRADICTION",
+          "observedEvidence": {
+            "content": "stem says y=ax², y=3x² meet x=2 at A,B respectively",
+            "sourceRasterBlob": "9880d829b4629c75676a745da3afe60f79d60411",
+            "pixelFact": "A is visibly on y=3x² and B on y=ax²"
+          },
+          "unresolvedPoint": "stem owner order and actual source raster owner order are opposite",
+          "nextRequiredEvidenceOrCapability": "Codex R3 repair must correct q12.content owner order against source authority, preserving the source crop.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "answerMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "ANSWER_NOT_CLOSED_UNDER_LITERAL_STEM",
+          "observedEvidence": {
+            "literalStem": "A=(2,4a), B=(2,12)",
+            "condition": "AB=3BC",
+            "result": "a=12 or -6; no listed choice",
+            "imageIntended": "A=(2,12), B=(2,4a) gives a=3/4=③"
+          },
+          "unresolvedPoint": "literal stem does not yield the stored/listed answer",
+          "nextRequiredEvidenceOrCapability": "After q12.content owner-order repair, independently re-solve and verify answer ③.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "solutionMath": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "SOLUTION_FOLLOWS_RASTER_NOT_LITERAL_STEM",
+          "observedEvidence": {
+            "solution": "A=(2,12), B=(2,4a), C=(2,0)",
+            "storedAnswer": "③"
+          },
+          "unresolvedPoint": "solution is coherent with the raster but not with the current literal stem owner order",
+          "nextRequiredEvidenceOrCapability": "After q12.content repair, independent review must recheck stem↔solution↔answer parity.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh source raster pixel inspected. Objective semantic contradiction is confirmed and tracked under sourceExact/answerMath/solutionMath; no speculative coordinate/anchor fail was created."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 그래프 함수값과 선분 길이; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "HOLD",
+        "holdEvidence": {
+          "reason": "DIFFICULTY_DEFERRED_DUE_SOURCE_CONFLICT",
+          "observedEvidence": {
+            "observed": "source text/image owner conflict makes the current literal item non-closable"
+          },
+          "unresolvedPoint": "difficulty should not be finalized on a source-conflicted item",
+          "nextRequiredEvidenceOrCapability": "Re-evaluate difficulty only after q12.content owner-order repair is independently accepted.",
+          "repairAttempted": false,
+          "authorityLookupAttempted": true,
+          "whyDeterministicClosureImpossible": "Initial R3 is audit-only and direct mutation is prohibited; deterministic closure requires downstream Codex R3 repair on the pinned latest-lineage bytes."
+        }
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q13 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 평행이동으로 완전히 포개지려면 x² 계수 3/4 유지; ⑤만 해당. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 평행이동으로 완전히 포개지려면 x² 계수 3/4 유지; ⑤만 해당. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차함수 평행이동; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q14 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 이동 후 y=-3(x+1)², y=-12 대입 시 m=1,-3, 합 -2 → ①. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 이동 후 y=-3(x+1)², y=-12 대입 시 m=1,-3, 합 -2 → ①. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 평행이동 후 점 대입; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q15 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: fresh source pixel: 아래로 열린 포물선(위로 볼록), 꼭짓점 제1사분면 → a<0,p>0,q>0 → ④. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: fresh source pixel: 아래로 열린 포물선(위로 볼록), 꼭짓점 제1사분면 → a<0,p>0,q>0 → ④. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh source pixel blob ebc8c5555072c45f3af2d96f8b93ec6bbef46c15 inspected: downward-opening parabola with vertex in quadrant I; no semantic contradiction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 꼭짓점형 그래프 판독; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B1."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q16 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=3x²-3의 축은 y축(x=0), 꼭짓점 (0,-3), |3|>|1|, 평행이동으로 계수 변경 불가 → ①. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: y=3x²-3의 축은 y축(x=0), 꼭짓점 (0,-3), |3|>|1|, 평행이동으로 계수 변경 불가 → ①. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차함수 그래프 성질; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q17 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: y=-(x-2)²+3; y절편은 (0,-1)이므로 ⑤가 옳지 않음. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: y=-(x-2)²+3; y절편은 (0,-1)이므로 ⑤가 옳지 않음. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 완전제곱식과 보기 판정; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B2."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q18 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: fresh source pixel: x절편 -5,2와 y절편 -10 → y=(x+5)(x-2), a+b+c=-6 → ④. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: fresh source pixel: x절편 -5,2와 y절편 -10 → y=(x+5)(x-2), a+b+c=-6 → ④. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh source pixel blob 5003c9475f0d9dde4e4bf97a8dc9177c132dd2e2 inspected: x-intercepts -5,2 and y-intercept -10; no semantic contradiction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 절편으로 이차함수 복원; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B3."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q19 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: t초 후 PB=12-t, BQ=2t, 넓이 t(12-t)=35 → t=5,7; 처음은 5초. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: t초 후 PB=12-t, BQ=2t, 넓이 t(12-t)=35 → t=5,7; 처음은 5초. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Stem references a figure but repository asset is absent; all decisive rectangle lengths, directions and speeds are explicit in text and the grade-bounded answer closes uniquely. Record as VISUAL_RECHECK_ONLY/NONBLOCKING, not R3 FAIL."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 이차방정식의 활용; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B3."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q20 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: fresh source pixel: (4,-4)로 a=-1/4; x축 대칭은 y=1/4x², x=6에서 k=9. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: fresh source pixel: (4,-4)로 a=-1/4; x축 대칭은 y=1/4x², x=6에서 k=9. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "Fresh source pixel blob ef07d8237feaff055640ba2a6b99f00dd89ef826 inspected: graph passes (4,-4); no semantic contradiction."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 그래프 점과 x축 대칭; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B3."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "Pinned latest REVIEW2 artifact blob 340a8e122a3583fa15c5a8824dfb4851c6be2024 q21 fresh-read; production/main mutation 0."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "Fresh grade-bounded solve: 완전제곱 y=-1/2(x-1)²+4; 축 x=1, 꼭짓점 (1,4), 위로 볼록, x<1 증가·x>1 감소. Stored answer is consistent with the permitted middle-3 method."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "Fresh middle-3-bounded derivation frozen from current bytes: 완전제곱 y=-1/2(x-1)²+4; 축 x=1, 꼭짓점 (1,4), 위로 볼록, x<1 증가·x>1 감소. Current solution compared after the fresh solve is consistent."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "Actual runtime solution block/newline structure is sufficient for student reproduction; no unresolved enumeration collapse."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "2015 중3 교육과정 상한 안의 이차방정식·이차함수 및 선행 중등 개념만 사용; upper-grade-created FAIL/HOLD 0."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "No linked solutionImage; current text/problem visual state is sufficient for the audited solution unless separately noted."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "Fresh decisive method lookup: 완전제곱식으로 그래프 분석; RPM Primary → M3 crosswalk → compiled ACTIVE registry checked; no invented key."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "Fresh blind difficulty recheck: B3."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "Sandbox runtime inspection: no doubled high-signal TeX escape and no literal backslash-n separator defect."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "이차방정식 여부 판별",
+      "decisiveStep": "각 식을 이항·정리해 이차항 잔존 여부와 다항식 여부를 판정",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "이차방정식의 계수 조건",
+      "decisiveStep": "전개 후 x² 계수가 0이 아닌 조건을 결정",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "주어진 근으로 계수 결정",
+      "decisiveStep": "주어진 근 2를 대입해 a를 구한 뒤 인수분해",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식 변형",
+      "decisiveStep": "이항 후 양변에 9를 더해 (x+3)² 꼴 완성",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "근의 공식과 해의 꼴 비교",
+      "decisiveStep": "근의 공식 결과의 상수항·근호 부분을 주어진 꼴과 비교",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B3"
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "중근 조건",
+      "decisiveStep": "판별식 D=0을 적용",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "이차함수 판별",
+      "decisiveStep": "각 상황을 y=f(x)로 나타내 최고차수 비교",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "y=ax² 그래프 성질",
+      "decisiveStep": "계수 부호로 방향·축·꼭짓점·증가 감소 판정",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "x축 대칭 그래프 비교",
+      "decisiveStep": "계수의 절댓값이 같고 부호가 반대인 쌍 선택",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "포물선 폭 비교",
+      "decisiveStep": "|a|가 클수록 폭이 좁다는 성질 적용",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "그래프 점으로 계수 결정",
+      "decisiveStep": "각 포물선이 지나는 격자점을 y=ax²에 대입",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "그래프 함수값과 선분 길이",
+      "decisiveStep": "x=2에서 두 함수값을 A,B,C의 세로 길이로 변환",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "UNKNOWN_SOURCE_CONFLICT"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "이차함수 평행이동",
+      "decisiveStep": "평행이동에서 이차항 계수가 보존됨을 사용",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "평행이동 후 점 대입",
+      "decisiveStep": "y=-3(x+1)²에 (m,-12)를 대입해 두 m을 구함",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "꼭짓점형 그래프 판독",
+      "decisiveStep": "개구 방향과 꼭짓점 위치로 a,p,q 부호 판정",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B1"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "이차함수 그래프 성질",
+      "decisiveStep": "축·꼭짓점·폭·평행이동 불변량을 비교",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식과 보기 판정",
+      "decisiveStep": "표준형으로 축·꼭짓점을 얻고 좌표·사분면·절편을 직접 확인",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B2"
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "절편으로 이차함수 복원",
+      "decisiveStep": "두 x절편으로 인수형을 만들고 y절편으로 계수 결정",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B3"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "이차방정식의 활용",
+      "decisiveStep": "시간 t로 두 변을 나타내 삼각형 넓이 조건을 이차방정식으로 모델링",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B3"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "그래프 점과 x축 대칭",
+      "decisiveStep": "점 좌표로 a를 구하고 부호를 바꿔 대칭 그래프 함수값 계산",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B3"
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "완전제곱식으로 그래프 분석",
+      "decisiveStep": "일반형을 꼭짓점형으로 고쳐 축·꼭짓점·개구·증감을 읽음",
+      "rpmDisposition": "CURRENT_RPM_LOOKUP_COMPLETE",
+      "projectionDisposition": "PROJECTION_UNMATERIALIZED_OR_BINDING_PENDING_NONITEM",
+      "lookupRefs": [
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/01_2015/MIDDLE/M3-1.md@8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle3.json@afc1ede749966e838b117aca3cc640e5e8c2a345",
+        "archive/data/meta-foundation/compiled/concept_registry.json@0c6072aacb5c23cda2b9519e03eb9ddf770fa753"
+      ],
+      "nullReason": "CURRENT_ARTIFACT_PT_TPL_NULL; fresh RPM/crosswalk/ACTIVE-registry lookup found no unique materialized exact current-grade binding that makes null a release defect.",
+      "semanticStatus": "FRESH_SEMANTIC_FINAL",
+      "difficultyBucket": "B3"
+    }
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "21/21",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.",
+        "observation": "규칙→대입→중간값→결론을 실제 줄 블록으로 보여 주는 작은칠판 기준."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.",
+        "observation": "조건의 이유를 계산 직전에 두고 식 전개를 생략하지 않는 기준."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.",
+        "observation": "짧은 문항도 공식 의미와 실제 대입 단계를 생략하지 않는 기준."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.",
+        "observation": "핵심 관계→식 정리→결론 순서가 명확한 기준."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ],
+    "targetCompareNote": "21/21 post-freeze compare. q1/q9 runtime+small-board and q12 fresh source-raster contradiction are objective blocking defects; q19 missing figure is nonblocking under current source-truth sufficiency rule; speculative visual FAIL 0; upper-grade-created FAIL 0."
+  },
+  "compareAfterFreshFreeze": {
+    "contentSolution": "21/21 fresh math/answer/solution review; q1/q9 runtime block defects and q12 source-owner contradiction opened.",
+    "meta": "21/21 fresh semantic lookup; no inherited metadata HOLD promoted.",
+    "visual": "q11/q12/q15/q18/q20 source rasters freshly pixel-inspected; only q12 has objective semantic contradiction; q19 is VISUAL_RECHECK_ONLY/NONBLOCKING."
+  },
+  "summary": {
+    "questionCount": 21,
+    "questionEvidenceRows": 21,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 21,
+    "itemHoldCount": 3
+  },
+  "overallProtocolDisposition": "FAIL_CANDIDATE",
+  "failureCodes": [
+    "RUNTIME_LITERAL_BACKSLASH_N:q1:content",
+    "SMALLBOARD_ENUMERATION_FAIL:q1",
+    "RUNTIME_LITERAL_BACKSLASH_N:q9:content",
+    "SMALLBOARD_ENUMERATION_FAIL:q9",
+    "CONFIRMED_VISUAL_DEFECT:q12:SOURCE_TEXT_FIGURE_OWNER_CONTRADICTION"
+  ],
+  "nonblockingVisualNotes": [
+    {
+      "qid": 19,
+      "code": "VISUAL_RECHECK_ONLY",
+      "note": "Referenced figure absent, but all decisive facts are explicit in text and answer closes uniquely; not an openQid."
+    }
+  ],
+  "gradeUpperBoundViolationCount": 0,
+  "runtimeDoubledTexIssueCount": 0,
+  "confirmedVisualDefectQids": [
+    12
+  ],
+  "note": "R3 direct repair 0; production/main mutation 0; user hard rules honored."
+}
