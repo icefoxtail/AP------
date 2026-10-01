@@ -1,5 +1,17 @@
 [JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
 
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS (2026-10-01)
+
+R1 PASS/DONE은 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`의 item-level physical evidence gate를 통과해야 한다.
+
+- CREATE의 PASS/N/N 자기보고를 authority로 사용하지 않는다.
+- source/current artifact를 직접 열어 전 문항 qid evidence를 새로 만든다.
+- linked solutionImage는 **각 SVG의 expected fact와 actual primitive 좌표/위상 계산**을 남긴다. 라벨 문구 확인만으로 `solutionSvgAuditCount=X/X` 금지.
+- ㄱ/ㄴ/ㄷ·소문항·경우분리 작은칠판 구조는 actual solution block으로 확인한다.
+- Meta는 blind primaryMethod/decisiveStep → RPM/crosswalk → GLOBAL ACTIVE/binding을 실제 조회한다. resolvable null은 FAIL.
+- 완료 전 `review-evidence-gate.mjs --stage R1`의 `ok=true`가 필수다.
+- 예약 시간이 부족하면 checkpoint만 남기고 R1_DONE receipt를 만들지 않는다.
+
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
 `ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.
