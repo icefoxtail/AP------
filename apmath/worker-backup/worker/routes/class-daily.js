@@ -34,6 +34,27 @@ function normalizeProgressDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : '';
 }
 
+const CLASS_PROGRESS_PHASES = new Set([
+  'regular',
+  'semester1_midterm',
+  'semester1_final',
+  'semester2_midterm',
+  'semester2_final'
+]);
+
+function normalizeClassProgressPhaseDate(value) {
+  const date = normalizeProgressDate(value);
+  if (!date) return '';
+  const timestamp = Date.parse(`${date}T00:00:00.000Z`);
+  if (!Number.isFinite(timestamp)) return '';
+  return new Date(timestamp).toISOString().slice(0, 10) === date ? date : '';
+}
+
+function getClassProgressPhaseValue(value) {
+  const phase = String(value || '').trim();
+  return CLASS_PROGRESS_PHASES.has(phase) ? phase : 'regular';
+}
+
 function getProgressItemField(item, ...keys) {
   for (const key of keys) {
     if (item && item[key] !== undefined && item[key] !== null) return String(item[key]).trim();
@@ -126,15 +147,66 @@ async function getLegacyProgressRows(env, classIds, date) {
   return result.results || [];
 }
 
+async function getClassProgressPhaseRow(env, classId, date) {
+  return await env.DB.prepare(`
+    SELECT id, class_id, effective_date, phase,
+           updated_by_teacher_id, updated_by_teacher_name, created_at, updated_at
+    FROM class_progress_phases
+    WHERE class_id = ? AND effective_date <= ?
+    ORDER BY effective_date DESC, updated_at DESC, id DESC
+    LIMIT 1
+  `).bind(classId, date).first();
+}
+
+async function getClassProgressPhaseRows(env, classIds, date) {
+  if (!classIds.length) return [];
+  const markers = classIds.map(() => '?').join(',');
+  const result = await env.DB.prepare(`
+    SELECT id, class_id, effective_date, phase,
+           updated_by_teacher_id, updated_by_teacher_name, created_at, updated_at
+    FROM (
+      SELECT p.*,
+             ROW_NUMBER() OVER (
+               PARTITION BY p.class_id
+               ORDER BY p.effective_date DESC, p.updated_at DESC, p.id DESC
+             ) AS row_num
+      FROM class_progress_phases p
+      WHERE p.class_id IN (${markers})
+        AND p.effective_date <= ?
+    )
+    WHERE row_num = 1
+    ORDER BY class_id ASC
+  `).bind(...classIds, date).all();
+  const byClassId = new Map((result.results || []).map(row => [String(row.class_id), row]));
+  return classIds.map(classId => {
+    const row = byClassId.get(String(classId));
+    if (row) return { ...row, phase: getClassProgressPhaseValue(row.phase) };
+    return {
+      id: null,
+      class_id: String(classId),
+      effective_date: null,
+      phase: 'regular',
+      updated_by_teacher_id: null,
+      updated_by_teacher_name: null,
+      created_at: null,
+      updated_at: null
+    };
+  });
+}
+
 export async function getClassProgressInitialData(env, teacher, date = todayKstDateString()) {
   const classIds = await getAccessibleClassIds(env, teacher);
-  const rows = await getClassProgressRows(env, classIds, date);
+  const [rows, phases] = await Promise.all([
+    getClassProgressRows(env, classIds, date),
+    getClassProgressPhaseRows(env, classIds, date)
+  ]);
   return {
     class_progress_date: date,
     class_progress_taxonomy_version: CLASS_PROGRESS_TAXONOMY_VERSION,
     class_progress_taxonomy: CLASS_PROGRESS_TAXONOMY,
     class_progress_snapshots: rows.snapshots,
-    class_progress_items: rows.items
+    class_progress_items: rows.items,
+    class_progress_phases: phases
   };
 }
 
@@ -153,6 +225,85 @@ export async function handleClassDaily(request, env, teacher, path, url) {
       version: CLASS_PROGRESS_TAXONOMY_VERSION,
       items: CLASS_PROGRESS_TAXONOMY
     });
+  }
+
+  if (resource === 'class-progress-phase') {
+    const currentTeacher = await requireTeacher(request, env, teacher);
+    if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+
+    if (method === 'GET') {
+      const classId = String(url.searchParams.get('class_id') || '').trim();
+      const date = normalizeClassProgressPhaseDate(url.searchParams.get('date'));
+      if (!classId || !date) {
+        return jsonResponse({ success: false, error: 'class_id and valid date required' }, 400);
+      }
+      if (!(await canAccessClass(currentTeacher, classId, env))) {
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      }
+
+      const row = await getClassProgressPhaseRow(env, classId, date);
+      return jsonResponse({
+        success: true,
+        class_id: classId,
+        date,
+        phase: getClassProgressPhaseValue(row?.phase),
+        effective_date: row?.effective_date || null,
+        updated_by_teacher_id: row?.updated_by_teacher_id || null,
+        updated_by_teacher_name: row?.updated_by_teacher_name || null
+      });
+    }
+
+    if (method === 'POST' || method === 'PUT') {
+      let data;
+      try {
+        data = await request.json();
+      } catch (error) {
+        return jsonResponse({ success: false, error: 'invalid JSON body' }, 400);
+      }
+
+      const classId = String(data?.class_id || data?.classId || '').trim();
+      const effectiveDate = normalizeClassProgressPhaseDate(data?.effective_date || data?.effectiveDate);
+      const phase = String(data?.phase || '').trim();
+      if (!classId || !effectiveDate) {
+        return jsonResponse({ success: false, error: 'class_id and valid effective_date required' }, 400);
+      }
+      if (!CLASS_PROGRESS_PHASES.has(phase)) {
+        return jsonResponse({ success: false, error: 'invalid phase' }, 422);
+      }
+      if (!(await canAccessClass(currentTeacher, classId, env))) {
+        return jsonResponse({ error: 'Forbidden' }, 403);
+      }
+
+      const phaseId = `cpp_${(await sha256hex(`${classId}|${effectiveDate}`)).slice(0, 40)}`;
+      await env.DB.prepare(`
+        INSERT INTO class_progress_phases (
+          id, class_id, effective_date, phase,
+          updated_by_teacher_id, updated_by_teacher_name, created_at, updated_at
+        ) VALUES (?, ?, ?, ?, ?, ?, DATETIME('now'), DATETIME('now'))
+        ON CONFLICT(class_id, effective_date) DO UPDATE SET
+          phase = excluded.phase,
+          updated_by_teacher_id = excluded.updated_by_teacher_id,
+          updated_by_teacher_name = excluded.updated_by_teacher_name,
+          updated_at = DATETIME('now')
+      `).bind(
+        phaseId,
+        classId,
+        effectiveDate,
+        phase,
+        currentTeacher.id || null,
+        currentTeacher.name || null
+      ).run();
+
+      const row = await env.DB.prepare(`
+        SELECT id, class_id, effective_date, phase,
+               updated_by_teacher_id, updated_by_teacher_name, created_at, updated_at
+        FROM class_progress_phases
+        WHERE class_id = ? AND effective_date = ?
+      `).bind(classId, effectiveDate).first();
+      return jsonResponse({ success: true, ...row });
+    }
+
+    return jsonResponse({ success: false, error: 'method not allowed' }, 405);
   }
 
   if (resource === 'class-progress') {
