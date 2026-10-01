@@ -1,0 +1,255 @@
+{
+  "schema": "codex-high-pilot-difficulty-result-v1",
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "META_DIFFICULTY",
+  "status": "PASS_WITH_ADJUDICATION",
+  "input": "difficulty-blind-input.json",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactSha256": "sha256:bbefaf1c7f465c4e78ef9426a2d05b0b6c318dccdad200c78542ad1fb44eaa9a",
+  "finalSolutionInputArtifactSha256": "sha256:cd998b8de0163b3b38c2d3af728fea08752d910dce16d6355ae14fc024be73cc",
+  "priorLevelAndDifficultyExcludedFromBlindPass": true,
+  "reviewers": [
+    "ordinal4_difficulty_blind",
+    "ordinal4_difficulty_tiebreak",
+    "Codex primary adjudication"
+  ],
+  "legacyMappingAfterBlind": {
+    "bucket1": "하",
+    "bucket2": "중",
+    "bucket3": "중",
+    "bucket4": "상",
+    "bucket5": "상"
+  },
+  "questions": [
+    {
+      "qid": 1,
+      "bucket": 1,
+      "confidence": "medium",
+      "boundaryFlag": "B12",
+      "legacyLevel": "하",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Two function equalities at the explicitly finite inputs give direct equations. The tie-break pass preferred bucket 1; the primary pass found bucket 2 plausible, so B12 and medium are retained."
+    },
+    {
+      "qid": 2,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Use the functional equation at zero, then injectivity and the product law for three independent statements."
+    },
+    {
+      "qid": 3,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Image equality follows from codomain and containment; compare two affine endpoint orientations."
+    },
+    {
+      "qid": 4,
+      "bucket": 1,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "하",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "A direct input substitution into the composition relation gives h(1)."
+    },
+    {
+      "qid": 5,
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Read a fixed point and a three-cycle from the graph, then reduce exponents modulo the period."
+    },
+    {
+      "qid": 6,
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Undo the outer inverse and affine input map, then evaluate h at two inputs."
+    },
+    {
+      "qid": 7,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Combine injectivity on a half-line with surjectivity onto the same set and solve from the vertex range."
+    },
+    {
+      "qid": 8,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Read parameter signs from a graph, then propagate them through the radical graph domain and output sign."
+    },
+    {
+      "qid": 9,
+      "bucket": 4,
+      "confidence": "medium",
+      "boundaryFlag": "B45",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Recognize symmetry axes after centering a rectangular hyperbola; adjacent bucket 5 remains plausible."
+    },
+    {
+      "qid": 10,
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Determine parameters from one point and one asymptote, then use monotonicity to select interval endpoints."
+    },
+    {
+      "qid": 11,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Count two adjacency events with overlap subtraction and fixed endpoint placements."
+    },
+    {
+      "qid": 12,
+      "bucket": 4,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Stitch two branch ranges under injectivity and full-range conditions, then solve for the input."
+    },
+    {
+      "qid": 13,
+      "bucket": 4,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Derive separate quadrant inequalities for two graphs and intersect them before counting integers."
+    },
+    {
+      "qid": 14,
+      "bucket": 2,
+      "confidence": "medium",
+      "boundaryFlag": "B12",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyComparison": "Blind bucket 2 is retained after an independent recheck; level 상 normally maps to bucket 4 or 5. Preserve both histories and do not modify the source level."
+    },
+    {
+      "qid": 15,
+      "bucket": 4,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyComparison": "Independent recheck retained bucket 4 with bucket 3 plausible; the adjacent legacy mismatch was reviewed and accepted under the stability lock."
+    },
+    {
+      "qid": 16,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Model region adjacency as a four-cycle and split the coloring count by opposite colors."
+    },
+    {
+      "qid": 17,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Use gaps around repeated symbols, then subtract the endpoint configuration disallowed by implication."
+    },
+    {
+      "qid": 18,
+      "bucket": 2,
+      "confidence": "high",
+      "boundaryFlag": "NONE",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Swap variables, solve the inverse rational equation, and read its asymptotes."
+    },
+    {
+      "qid": 19,
+      "bucket": 4,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Count marked qualifying adjacent permutation pairs and correct for double counts; exact-one counting adds structural work."
+    },
+    {
+      "qid": 20,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "중",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Partition permutations into first-digit factorial blocks and track within-block ranks."
+    },
+    {
+      "qid": 21,
+      "bucket": 3,
+      "confidence": "medium",
+      "boundaryFlag": "B23",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyComparison": "Independent recheck retained bucket 3 with bucket 2 plausible; the adjacent legacy mismatch was reviewed and accepted under the stability lock."
+    },
+    {
+      "qid": 22,
+      "bucket": 4,
+      "confidence": "medium",
+      "boundaryFlag": "B34",
+      "legacyLevel": "상",
+      "legacyLevelCompatibility": "NORMAL",
+      "rationale": "Determine the quadratic image of an asymmetric open interval, count natural values, and find the least threshold parameter."
+    }
+  ],
+  "adjudications": [
+    {
+      "qid": 1,
+      "decision": "Bucket 1, medium, B12.",
+      "basis": "Fresh judges straddled buckets 1 and 2. The problem uses direct finite-domain substitutions and elementary elimination; the boundary is retained rather than overstating confidence."
+    },
+    {
+      "qid": 4,
+      "decision": "Bucket 1, high.",
+      "basis": "The direct substitution h(f(0))=g(0) makes the solve elementary even though one equivalent full-formula derivation is possible."
+    },
+    {
+      "qid": 14,
+      "decision": "Bucket 2, medium, B12; legacy STRONG_CONFLICT.",
+      "basis": "Complement counting requires interpreting an OR condition, while the independent tie-break retained bucket 2. Keep old level 상 unchanged and preserve the strong historical mismatch."
+    },
+    {
+      "qid": 15,
+      "decision": "Bucket 4, medium, B34; legacy BORDERLINE_ACCEPTABLE.",
+      "basis": "The source circle requires a non-obvious cyclic-gap model; independent recheck retained bucket 4 with bucket 3 plausible. The old middle-level mismatch is adjacent and accepted after review."
+    },
+    {
+      "qid": 21,
+      "decision": "Bucket 3, medium, B23; legacy BORDERLINE_ACCEPTABLE.",
+      "basis": "The square-root substitution and determinant setup are a standard representation choice followed by a quadratic minimum; independent recheck retained bucket 3 with bucket 2 plausible."
+    }
+  ],
+  "legacyLevelWasNotUsedForBucketSelection": true,
+  "finalMetadataTargetArtifactSha256": "sha256:960d6def2ab75be811f025a39544dce977dcf1b356e4e2aa9ff357471b01b750",
+  "finalMetadataTargetArtifactGitBlobSha": "6a2a7316556926fb7dc65ff81991d29a4209c068"
+}

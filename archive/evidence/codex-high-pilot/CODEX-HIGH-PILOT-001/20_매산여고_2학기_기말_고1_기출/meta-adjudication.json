@@ -1,0 +1,588 @@
+{
+  "schema": "codex-high-pilot-meta-adjudication-v1",
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "authority": "Fresh source + independently verified final solution; blind Meta recommendations checked against 2015 H1 RPM Primary, the current H1 crosswalk, standard-unit master, GLOBAL ACTIVE registries, and exact curriculum bindings.",
+  "blindInput": "meta-blind-input.json",
+  "difficultyInput": "difficulty-blind-input.json",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "questions": [
+    {
+      "qid": 1,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+      "problemTypeKey": "PT_FUNCTION_EQUALITY",
+      "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "integrationReason": "Equality on a finite domain is the full primary method; evaluate at both domain points and solve.",
+      "rpm": {
+        "id": "H1-RPM-100",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 뜻",
+        "l4": "대응과 함수",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 2,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+      "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_MULTIPLICATIVE",
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "The multiplicative equation and inverse-function condition jointly determine the statement checks.",
+      "rpm": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": null,
+        "l4": null,
+        "status": "RPM_COVERAGE_GAP_META_ONLY",
+        "nearestSupported": "함수의 뜻; the H15 RPM source has no exact functional-equation leaf."
+      }
+    },
+    {
+      "qid": 3,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_DOMAIN_CODOMAIN_RANGE_CONDITION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "The increasing and decreasing endpoint assignments form two distinct cases before maximizing.",
+      "rpm": {
+        "id": "H1-RPM-101",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 뜻",
+        "l4": "정의역·공역·치역",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 4,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Recover h from the composition relation, then evaluate it at the requested input.",
+      "rpm": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The active function-recovery PT/TPL pair has an exact H15 composition-unit binding."
+      }
+    },
+    {
+      "qid": 5,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Read the finite-map cycle, then reduce each exponent by its period.",
+      "rpm": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The active iteration PT/TPL pair has an exact H15 composition-unit binding."
+      }
+    },
+    {
+      "qid": 6,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_CONJUGATION",
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Undo the outer inverse, recover h through the affine inner map, then evaluate two values.",
+      "rpm": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The active inverse-composition PT/TPL pair has an exact H15 composition-unit binding."
+      }
+    },
+    {
+      "qid": 7,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Injectivity on the half-line and surjectivity onto that same set are both needed to determine a.",
+      "rpm": {
+        "id": "H1-RPM-106",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The target asks for existence of an inverse but its decisive criterion is one-to-one behavior on the restricted domain; keep FUNCTION_RELATION L2."
+      }
+    },
+    {
+      "qid": 8,
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 5,
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Infer signs from the rational graph first, then use those signs in the radical graph.",
+      "rpm": {
+        "id": "H1-RPM-118",
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "정의역과 치역",
+        "l4": "그래프 위치",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The active quadrant PT/TPL pair is exact for the radical-graph target and has an H15 binding."
+      }
+    },
+    {
+      "qid": 9,
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+      "subUnit": "유리함수의 그래프",
+      "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+      "crossConceptKeys": [
+        "CC_FUNCTION_SYMMETRY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Center translation and both reflection symmetries jointly determine the two axes and coefficient labeling.",
+      "rpm": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "유리함수의 그래프",
+        "l4": null,
+        "status": "RPM_COVERAGE_GAP_META_ONLY",
+        "nearestSupported": "기본 그래프; no exact H15 L4 for symmetry axes."
+      }
+    },
+    {
+      "qid": 10,
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
+      "subUnit": "유리함수의 활용",
+      "conceptClusterKey": "H15-SB-04-RATIONAL_APPLICATION",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Determine the function from point/asymptote data, then select the interval endpoint extrema.",
+      "rpm": {
+        "id": "H1-RPM-113",
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "유리함수의 활용",
+        "l4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY",
+        "projectionNote": "RPM path is exact; crosswalk is RPM_ONLY, while the global active PT/TPL pair and exact H15 binding are reusable."
+      }
+    },
+    {
+      "qid": 11,
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Count both adjacency events and subtract their overlap.",
+      "rpm": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 12,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-FUNCTION_RELATION",
+      "subUnit": "함수의 뜻과 대응",
+      "conceptClusterKey": "H15-SB-03-FUNCTION_RELATION",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "The two branch ranges must be disjoint and stitch together to the requested range while preserving injectivity.",
+      "rpm": {
+        "id": "H1-RPM-106",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 13,
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 5,
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "The rational and radical graph constraints jointly bound k before the integer count.",
+      "rpm": {
+        "id": "H1-RPM-118",
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "정의역과 치역",
+        "l4": "그래프 위치",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The rational condition is a secondary active concept; the target unit remains the radical graph."
+      }
+    },
+    {
+      "qid": 14,
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "integrationReason": "Complement counting stays within restricted permutations.",
+      "rpm": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 15,
+      "standardUnitKey": "H15-SB-08",
+      "standardUnit": "조합",
+      "standardUnitOrder": 8,
+      "subUnitKey": "H15-SB-08-COMBINATION_APPLICATION",
+      "subUnit": "조합의 활용",
+      "conceptClusterKey": "H15-SB-08-COMBINATION_APPLICATION",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_DIAMETER",
+        "CC_INSCRIBED_ANGLE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Select three vertices by combination and use diameter/inscribed-angle geometry to partition triangle types.",
+      "rpm": {
+        "id": "H1-RPM-131",
+        "majorUnit": "경우의 수",
+        "midUnit": "조합",
+        "l3": "조합의 활용",
+        "l4": "도형에서의 선택",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The direct crosswalk maps geometry vertex selection to the active combination-selection template; arc-gap angle classification is the item-specific method."
+      }
+    },
+    {
+      "qid": 16,
+      "standardUnitKey": "H15-SB-06",
+      "standardUnit": "경우의 수",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "subUnit": "경우의 수의 기본 원리",
+      "conceptClusterKey": "H15-SB-06-COUNTING_PRINCIPLE",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Coloring a four-cycle requires separating equal and unequal colors on the opposite regions.",
+      "rpm": {
+        "id": "H1-RPM-122",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "합·곱의 법칙",
+        "l4": "경우를 나누어 세기",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The exact current H15 primary-unit binding and case-counting crosswalk were retained; the H1 graph-coloring template captures the item-specific cycle structure."
+      }
+    },
+    {
+      "qid": 17,
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "integrationReason": "Count gap placements, then remove the endpoint case forbidden by the implication.",
+      "rpm": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The restricted-arrangement path captures the decisive non-adjacency and endpoint conditions; identical-symbol gap counting is the item-specific method."
+      }
+    },
+    {
+      "qid": 18,
+      "standardUnitKey": "H15-SB-04",
+      "standardUnit": "유리함수",
+      "standardUnitOrder": 4,
+      "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
+      "subUnit": "유리함수의 그래프",
+      "conceptClusterKey": "H15-SB-04-RATIONAL_GRAPH",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Find the inverse expression first, then read its vertical and horizontal asymptotes.",
+      "rpm": {
+        "id": "H1-RPM-110",
+        "majorUnit": "함수",
+        "midUnit": "유리함수",
+        "l3": "점근선과 위치",
+        "l4": "점근선",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 19,
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-SB-07-PERMUTATION_RESTRICTED",
+      "subUnit": "조건이 있는 순열",
+      "conceptClusterKey": "H15_SB_07_PERMUTATION_RESTRICTED",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_ONE_TO_ONE_FUNCTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "Injectivity turns the map into a permutation, and the adjacent-value condition is then counted as a constrained arrangement.",
+      "rpm": {
+        "id": "H1-RPM-125",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "특정 조건 배열",
+        "status": "DIRECT_ACTIVE",
+        "projectionNote": "The finite injective function set is reinterpreted as permutations before the count; the active permutation path matches the decisive method."
+      }
+    },
+    {
+      "qid": 20,
+      "standardUnitKey": "H15-SB-07",
+      "standardUnit": "순열",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
+      "subUnit": "순열",
+      "conceptClusterKey": "H15-SB-07-PERMUTATION_BASIC",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_H1_ARRANGEMENT_LEXICOGRAPHIC_RANK",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "integrationReason": "Every permutation of the given positive digits is a natural number, so this wording adds no filtering condition.",
+      "rpm": {
+        "id": "H1-RPM-124",
+        "majorUnit": "경우의 수",
+        "midUnit": "경우의 수와 순열",
+        "l3": "순열",
+        "l4": "일렬 배열",
+        "status": "DIRECT_ACTIVE"
+      }
+    },
+    {
+      "qid": 21,
+      "standardUnitKey": "H15-SB-05",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 5,
+      "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "subUnit": "무리함수의 그래프",
+      "conceptClusterKey": "H15-SB-05-IRRATIONAL_GRAPH",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "integrationReason": "The radical-curve parameterization and triangle-area objective jointly define the quadratic to minimize.",
+      "rpm": {
+        "id": null,
+        "majorUnit": "함수",
+        "midUnit": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": null,
+        "status": "RPM_COVERAGE_GAP_META_ONLY",
+        "nearestSupported": "무리함수의 그래프 / 그래프 위치; no exact RPM leaf for a triangle-area minimum constrained to the curve."
+      }
+    },
+    {
+      "qid": 22,
+      "standardUnitKey": "H15-SB-03",
+      "standardUnit": "함수",
+      "standardUnitOrder": 3,
+      "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H15-SB-03-COMPOSITE_FUNCTION",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_RANGE",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "integrationReason": "Determine the composite range first, then count its natural-number values and minimize a.",
+      "rpm": {
+        "id": "H1-RPM-102",
+        "majorUnit": "함수",
+        "midUnit": "함수",
+        "l3": "합성함수",
+        "l4": "합성함수 계산",
+        "status": "DIRECT_ACTIVE"
+      }
+    }
+  ],
+  "difficulty": {
+    "blindResult": "difficulty-blind-result.json",
+    "legacyLevelUsedOnlyAfterBlindFreeze": true
+  },
+  "targetArtifactFieldsToApply": {
+    "sourceProtectedFields": "unchanged",
+    "curriculum": "2015",
+    "course": "수학(하)"
+  },
+  "parentAdjudications": [
+    "q7 remains under function relation: the decisive RPM path is the one-to-one property, not inverse construction; exact H1-RPM-106 crosswalk and binding are available.",
+    "q16 remains under the counting-principle subunit because the decisive representation is case counting; the H1 graph-coloring template is a specific active reuse.",
+    "q19 moves to restricted permutations because injectivity on the equal finite sets turns the counted functions into permutations, the decisive counting method with a direct H1-RPM-125 mapping.",
+    "q15 uses the active combination-selection template supported by the exact H1-RPM-131 geometry-selection crosswalk; arc-gap classification is the item-specific refinement. CrossConcepts are diameter and inscribed angle, not triangle area.",
+    "q12 records COND_RANGE for the specified strict target range y<−2; no canonical key expresses a negative output threshold separately from a range condition.",
+    "q20 omits COND_NATURAL_NUMBER because all digit permutations are positive and the phrase does not change the candidate set."
+  ],
+  "committedTargetArtifactSha256": "sha256:960d6def2ab75be811f025a39544dce977dcf1b356e4e2aa9ff357471b01b750",
+  "committedTargetArtifactGitBlobSha": "6a2a7316556926fb7dc65ff81991d29a4209c068"
+}

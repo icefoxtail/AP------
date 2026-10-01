@@ -1,0 +1,448 @@
+{
+  "schema": "codex-high-pilot-meta-blind-v1",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactSha256": "sha256:bbefaf1c7f465c4e78ef9426a2d05b0b6c318dccdad200c78542ad1fb44eaa9a",
+  "targetArtifactSha256": "sha256:cd998b8de0163b3b38c2d3af728fea08752d910dce16d6355ae14fc024be73cc",
+  "curriculumContext": {
+    "curriculum": "2015",
+    "grade": "H1",
+    "examYear": 2020,
+    "term": "2final",
+    "course": "derive from source and solutions"
+  },
+  "priorMetadataExcluded": true,
+  "questions": [
+    {
+      "qid": 1,
+      "sourceOrdinal": 1,
+      "content": "정의역이 $\\{1,3\\}$인 두 함수 $f(x)=4x$, $g(x)=ax^2+b$에서 $f=g$가 성립할 때 $2a-b$의 값을 구하여라. [3.5점]",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "-1",
+        "-2"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:8f270f828e3b2d2919db7d30f6f14888ddcd71919d3f5dc78fc493632a6c0996",
+      "choicesHash": "sha256:50b8b87d2540cac0285616b54093831ec4d0db5409d148b6b69543e90fb119c2",
+      "sourceFingerprint": "sha256:cdf3af7b075a4a2669695c1b3441282a7a8712e1a8e971bbb89ef0e75b6fbc8f",
+      "answer": "④",
+      "solution": "조건을 두 함수에 대입한다.\n$x=1$에서 $4=a+b$이고, $x=3$에서 $12=9a+b$이다.\n두 식을 빼면 $8=8a$이므로 $a=1$이다.\n따라서 $b=3$이고 $2a-b=2-3=-1$이다. 정답은 ④이다.",
+      "solutionHash": "sha256:be1d523ae0c130d2df53d37aff087cca4dd43fc009e6e9a4d0081626ca4d966c"
+    },
+    {
+      "qid": 2,
+      "sourceOrdinal": 2,
+      "content": "함수 $f$에 대하여 역함수 $f^{-1}$가 존재하고, 임의의 실수 $x,y$에 대하여 $f(x+y)=f(x)f(y)$를 만족시킬 때, 다음 보기 중 옳은 것을 모두 구하여라. (단, $f(x)>0$)\n(ㄱ) $f^{-1}(1)=0$\n(ㄴ) $f(1)=2$이면 $f(3)=9$\n(ㄷ) $f^{-1}(4)=1$이면 $16f(-2)=1$ [4.3점]",
+      "choices": [
+        "ㄱ",
+        "ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ",
+        "ㄱ, ㄴ, ㄷ"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:9e3ed8e91abf26b4927e3bcfcbe06503f0c17b5f352fc4480eb32991ade27822",
+      "choicesHash": "sha256:09c64bef5d7bfd86a9cb5b5e5d7a601757eb8f29d2d48151c224e7f96dff68f9",
+      "sourceFingerprint": "sha256:908944602697e3ae72b973b1c11becd8dd3b04736a9203dc28b8cf11f9b7228d",
+      "answer": "③",
+      "solution": "먼저 곱셈 조건에 $x=y=0$을 대입하면 $f(0)=f(0)^2$이다. $f(0)>0$이므로 $f(0)=1$이다.\n**ㄱ.** $f(0)=1$이고 역함수가 있으므로 1의 원상은 0 하나뿐이다. 따라서 $f^{-1}(1)=0$이다. 참.\n**ㄴ.** $f(3)=f(1+1+1)=f(1)^3=2^3=8$이다. 9가 아니므로 거짓.\n**ㄷ.** $f^{-1}(4)=1$은 $f(1)=4$라는 뜻이다. 그러면 $f(2)=f(1)^2=16$이고, $f(2)f(-2)=f(0)=1$에서 $f(-2)=1/16$이다. 따라서 $16f(-2)=1$이고 참이다.\n옳은 것은 ㄱ, ㄷ이므로 ③이다.",
+      "solutionHash": "sha256:109b5937855fdedfbff92c6b2ffaeaca4f66422692a32085ed02f196fe3d0db0"
+    },
+    {
+      "qid": 3,
+      "sourceOrdinal": 3,
+      "content": "두 집합 $X=\\{x\\mid 1\\le x\\le5\\}$, $Y=\\{y\\mid-2\\le y\\le3\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=ax+b$가 $Y\\subset f(X)$를 만족하도록 하는 상수 $a,b$에 대하여 $|a-b|$의 값 중에서 최댓값을 구하여라. [4.2점]",
+      "choices": [
+        "$\\frac92$",
+        "$\\frac{11}2$",
+        "$\\frac{13}2$",
+        "$\\frac{15}2$",
+        "$\\frac{17}2$"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:af0e28ad79ae01a5d2a48a5e50be68f945d02cb052a5a2f148e71e71bbe88eab",
+      "choicesHash": "sha256:4f09353962184c861ee3cc2e79f4dc4f30a6f3f667ed79d6c0ca6521cebdc58f",
+      "sourceFingerprint": "sha256:917759e24f62999a760ddafcbdc755e3d03ae63e287f0103a09b4bd4423b140c",
+      "answer": "②",
+      "solution": "$f$는 $X$에서 $Y$로 가므로 $f(X)\\subset Y$이다. 조건 $Y\\subset f(X)$도 있으므로 $f(X)=Y=[-2,3]$이다.\n$x$가 1에서 5까지 변할 때 일차함수의 양 끝 함수값은 $-2,3$이어야 한다.\n증가하는 경우에는 $a+b=-2$, $5a+b=3$이므로 $a=5/4$, $b=-13/4$이다. 이때 $|a-b|=18/4=9/2$이다.\n감소하는 경우에는 $a+b=3$, $5a+b=-2$이므로 $a=-5/4$, $b=17/4$이다. 이때 $|a-b|=22/4=11/2$이다.\n따라서 최댓값은 $11/2$이고 정답은 ②이다.",
+      "solutionHash": "sha256:9f560b3cc66dead5c1f8ae90bf452bb54f26dfdadb7e706fbae0317577e4b4ba"
+    },
+    {
+      "qid": 4,
+      "sourceOrdinal": 4,
+      "content": "두 함수 $f(x)=2x+1$, $g(x)=-2x+3$에 대하여 $h\\circ f=g$를 만족시키는 함수 $h(x)$가 존재할 때, $h(1)$의 값을 구하여라. [3.7점]",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:4ad8fb5406c68c2ea5644247232a1d4b9f3c203345a1ad707519cb872c7d0cf2",
+      "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "sourceFingerprint": "sha256:342f9925556408872ea091dbd09a5a98d398b61a4e0e60ccf372bd505c3c5e3a",
+      "answer": "③",
+      "solution": "$f(x)=2x+1$의 역함수는 $f^{-1}(y)=(y-1)/2$이다. $h(f(x))=g(x)$에서 $y=f(x)$로 두면 $h(y)=g(f^{-1}(y))$이다.\n따라서 $h(1)=g(f^{-1}(1))=g(0)=-2\\cdot0+3=3$이다. 정답은 ③이다.",
+      "solutionHash": "sha256:e9e92d75ef2bb9cac825d3ae93d1aeccda33c8be8f246f5f6adf982c36bf10bf"
+    },
+    {
+      "qid": 5,
+      "sourceOrdinal": 5,
+      "content": "집합 $X=\\{1,2,3,4\\}$에 대하여 함수 $f:X\\to X$가 있다. 함수 $y=f(x)$의 그래프가 그림과 같을 때, $f^1=f$, $f^2=f\\circ f^1$, $f^3=f\\circ f^2$, $\\cdots$, $f^{n+1}=f\\circ f^n$으로 정의하자. $f^{10}(2)+f^{100}(1)-f^{2020}(4)$를 구하여라. [4.1점]",
+      "choices": [
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "questionType": "객관식",
+      "problemVisual": {
+        "ref": "assets/images/20_매산여고_2학기_기말_고1_기출/q005_visual.png",
+        "path": "archive-work/assets/images/20_매산여고_2학기_기말_고1_기출/q005_visual.png",
+        "sha256": "sha256:07ff4549ac8ddc0ff5819d7231f1a8555cf2f0c4b2456499c49c4f8f6dcee376",
+        "gitBlobSha": "fbd57d2e815ef5f39fd93f1f599250083a5202ff"
+      },
+      "contentHash": "sha256:0049826179aa6e9159b5c12c74e120f7084f3c4074fb6163d59023896f64d2fd",
+      "choicesHash": "sha256:b54bd5ff738505c1d448170e2918bb039b284e1d2c5f77765b20ce879d3b74b1",
+      "sourceFingerprint": "sha256:418dffd8a74eda8c44d1b82a26557d3f8da52d1b86bac43b50e719e0fb6446c3",
+      "answer": "⑤",
+      "solution": "그림에서 $f(1)=4$, $f(2)=2$, $f(3)=1$, $f(4)=3$이다.\n$2$는 고정점이므로 $f^{10}(2)=2$이다.\n$1\\to4\\to3\\to1$은 길이 3인 순환이다. $100=3\\cdot33+1$이므로 $f^{100}(1)=f(1)=4$이다. 또 $2020=3\\cdot673+1$이므로 $f^{2020}(4)=f(4)=3$이다.\n따라서 $2+4-3=3$이고 정답은 ⑤이다.",
+      "solutionHash": "sha256:cb6f0d3f1a9fb87fea245664117071cdef481ba33e859f6ad61507751c1b252c"
+    },
+    {
+      "qid": 6,
+      "sourceOrdinal": 6,
+      "content": "실수 전체의 집합에서 정의된 세 함수 $f,g,h$에 대하여 $f(x)=\\frac12x-3$, $g(x)=3x+1$이고, 합성함수 $g^{-1}\\circ h\\circ f$가 항등함수일 때, $h(0)+h(1)$의 값을 구하여라. [4.4점]",
+      "choices": [
+        "42",
+        "44",
+        "46",
+        "48",
+        "50"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:7b8d6c2237371be11d3955f09b04fc1c735323398c5174a65c5988b95bf57654",
+      "choicesHash": "sha256:c41a3e475856a33e8d34195fc89361a35e3ea298a02ba3c7f6f8e10fdaf1575e",
+      "sourceFingerprint": "sha256:f96bc280a3f406c6566b6180154d13ae0f3f50248a2932fd733ddda5b93f902e",
+      "answer": "②",
+      "solution": "$g^{-1}\\circ h\\circ f$가 항등함수이므로 양변에 $g$를 합성하면 $h(f(x))=g(x)$이다.\n$f^{-1}(y)=2y+6$이므로 $h(y)=g(f^{-1}(y))=3(2y+6)+1=6y+19$이다.\n따라서 $h(0)=19$, $h(1)=25$이고 합은 44이다. 정답은 ②이다.",
+      "solutionHash": "sha256:1a2e7a6e11b8a1b9ef2c859559e8ee9db0800e01aa44e567792d3ba74c7306b4"
+    },
+    {
+      "qid": 7,
+      "sourceOrdinal": 7,
+      "content": "집합 $X=\\{x\\mid x\\ge a\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=x^2-4x-6$의 역함수가 존재할 때, 상수 $a$의 값을 구하여라. [4.3점]",
+      "choices": [
+        "-6",
+        "-3",
+        "0",
+        "3",
+        "6"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:9b80f45086e619111bd1e0d1d46b607b86b94c6c209f219633b8125d1ba62a18",
+      "choicesHash": "sha256:a3b017ca61c6a0ccc56051504df5211545cf404433558d7e6ddc40a2eaecac66",
+      "sourceFingerprint": "sha256:b3a925a430727aa076049021adc57f53f376e78397369d3f11f2593f1e762e74",
+      "answer": "⑤",
+      "solution": "$f(x)=(x-2)^2-10$은 $x=2$를 축으로 하는 포물선이다. $a<2$이면 정의역에 2의 양쪽 값이 들어가므로 $f(2-t)=f(2+t)$인 서로 다른 두 입력이 생겨 일대일이 아니다. 따라서 $a\\ge2$이다.\n함수가 $X=[a,\\infty)$에서 $X$로 가고 역함수가 존재하려면 치역이 $X$ 전체여야 한다. $a\\ge2$일 때 최솟값은 $f(a)$이므로 $f(a)=a$이다.\n$(a-2)^2-10=a$를 풀면 $a^2-5a-6=0$, 즉 $(a-6)(a+1)=0$이다. $a\\ge2$를 만족하는 값은 $a=6$이다. 정답은 ⑤이다.",
+      "solutionHash": "sha256:671ed85f8940fc5e0a29600b9a2bbd7b7f745b87b721f9ead3b434ce5603a1d6"
+    },
+    {
+      "qid": 8,
+      "sourceOrdinal": 8,
+      "content": "유리함수 $y=\\frac{bx+c}{x+a}$의 그래프가 그림과 같을 때, 무리함수 $y=a\\sqrt{-x+b}+c$의 그래프가 지나는 사분면을 구하여라. (단, $a,b,c$는 상수) [3.8점]",
+      "choices": [
+        "제 1사분면",
+        "제 3사분면",
+        "제 1, 2사분면",
+        "제 3, 4사분면",
+        "제 1, 3, 4사분면"
+      ],
+      "questionType": "객관식",
+      "problemVisual": {
+        "ref": "assets/images/20_매산여고_2학기_기말_고1_기출/q008_visual.png",
+        "path": "archive-work/assets/images/20_매산여고_2학기_기말_고1_기출/q008_visual.png",
+        "sha256": "sha256:111dc44cc42f9aae359cab0ff96b620da66a28673c8f5522f2a304fdac526e71",
+        "gitBlobSha": "609f05153c246487026d2bdb03d8a8588e1ed687"
+      },
+      "contentHash": "sha256:1e5f7fe92970509f52165e3b03a78af9c10ba404c82685fa12ff7c634d3774bf",
+      "choicesHash": "sha256:e6a8be5af6bbae3c5acf247d3839b217e8c7e26cbd02ee7e29968c50f8996304",
+      "sourceFingerprint": "sha256:c4ee6a57a66c59bc0a7470808c33ecc3423726215cfa7152c4115b4d65e263b1",
+      "answer": "④",
+      "solution": "그래프의 수직점근선은 $x=-a$이고 양수 쪽에 있으므로 $a<0$이다. 수평점근선은 $y=b$이고 $x$축 위에 있으므로 $b>0$이다. 그래프의 $y$절편은 수평점근선보다 위에 있어 $c/a>b>0$이다. $a<0$이므로 $c<0$이다.\n무리함수 $y=a\\sqrt{-x+b}+c$의 정의역은 $x\\le b$이다. 제곱근은 0 이상이고 $a,c$가 모두 음수이므로 함수값은 항상 음수이다. 또한 $b>0$이므로 정의역에는 양수와 음수가 모두 있다.\n따라서 그래프는 제3, 제4사분면을 지나며 정답은 ④이다.",
+      "solutionHash": "sha256:0258e637b013c218b3747b3d528c3688a8428448c60cb5fdf2eedff06fef9e69"
+    },
+    {
+      "qid": 9,
+      "sourceOrdinal": 9,
+      "content": "유리함수 $y=\\frac{3-4x}{2x+1}$의 그래프가 두 직선 $y=ax+b$, $y=cx+d$에 대하여 대칭일 때, $ad-bc$의 값을 구하여라. (단, $a,b,c,d$는 상수이고, $a>c$이다.) [4.0점]",
+      "choices": [
+        "0",
+        "-1",
+        "-2",
+        "-3",
+        "-4"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:03243f3263a17ba85a177913775fd9b0e324c4de2014890b216692aa6fd926d0",
+      "choicesHash": "sha256:ca3c35afd06c687184675f3b19c0301ecc7ce0921fe6230340d0d6b1a65bae4f",
+      "sourceFingerprint": "sha256:e01b50de70255058770198e940e8458a94365d1490d08bd272438bf2ba903efd",
+      "answer": "⑤",
+      "solution": "유리함수를 나누어 쓰면 $y=-2+\\dfrac{5}{2x+1}$이다. 따라서 $(x+1/2)(y+2)=5/2$이다. $X=x+1/2$, $Y=y+2$로 두면 $XY=5/2$이다. 이 식은 $X,Y$를 서로 바꾸어도 변하지 않고, $(X,Y)$를 $(-Y,-X)$로 바꾸어도 곱은 $XY$로 같다. 따라서 두 대칭축은 $Y=X$, $Y=-X$이다. 원래 좌표로는 $y=x-3/2$, $y=-x-5/2$이다.\n두 기울기 중 큰 값이 $a$이므로 $a=1$, $c=-1$이다. 따라서 $b=-3/2$, $d=-5/2$이고 $ad-bc=1\\cdot(-5/2)-(-3/2)(-1)=-4$이다. 정답은 ⑤이다.",
+      "solutionHash": "sha256:02dfcb5a073958c80cde1b4acdd4ce4df84ddbc309f3c61d3d96d983956b077e"
+    },
+    {
+      "qid": 10,
+      "sourceOrdinal": 10,
+      "content": "유리함수 $y=\\frac{ax+b}{x+2}$의 그래프는 점 $(-1,0)$을 지나고, 직선 $y=3$는 이 그래프의 점근선 중 하나이다. $0\\le x\\le4$에서 이 함수의 최솟값을 $m$, 최댓값을 $M$이라 할 때, $m+M$의 값을 구하여라. (단, $a,b$는 상수) [4.0점]",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:18a0e8fff9b27198452baf7cd73c1d7b30700744c3eb5f4808e0362e8a5d7776",
+      "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "sourceFingerprint": "sha256:dd91e992a5c9fc9f82bd037a206ff3f660d8128f266f52a13e3f83e24022a80e",
+      "answer": "④",
+      "solution": "그래프가 $(-1,0)$을 지나므로 $(-a+b)/1=0$, 즉 $b=a$이다. 수평점근선은 $y=a$이므로 $a=3$, 따라서 $b=3$이다.\n함수는 $f(x)=\\dfrac{3x+3}{x+2}=3-\\dfrac3{x+2}$이다. $0\\le x\\le4$에서 $x+2$가 커질수록 양수 $3/(x+2)$는 작아지므로 $f(x)$는 증가한다.\n따라서 최솟값은 $f(0)=3/2$, 최댓값은 $f(4)=5/2$이다. $m+M=4$이고 정답은 ④이다.",
+      "solutionHash": "sha256:d7ef6e626b2a6e78c05fe354483258152007b2612b6ddbfbb2acc830a8fca6ce"
+    },
+    {
+      "qid": 11,
+      "sourceOrdinal": 11,
+      "content": "$q,u,e,s,t,i,o,n$의 8개의 문자를 일렬로 나열할 때, $o$와 $e$ 또는 $o$와 $i$가 서로 이웃하고, $t$와 $n$이 양 끝에 오는 모든 경우의 수를 구하여라. [4.1점]",
+      "choices": [
+        "864",
+        "866",
+        "868",
+        "870",
+        "872"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:1c69bf3fbded0f413f14a731aef03dd6b570d5bc161ca8de1ff7467fa818ca2b",
+      "choicesHash": "sha256:7caacc43c8600dd37fe355b7aa91d36f3e5bd6b66b1c8a20256f2c59819d3833",
+      "sourceFingerprint": "sha256:28bf95d1076120c9741587a3abca47fdbef8332ff5dc9fd5c298cb67480dc306",
+      "answer": "①",
+      "solution": "먼저 양 끝에 $t,n$을 놓는 순서는 $2!$가지이다. 가운데 여섯 자리에 $q,u,e,s,i,o$를 배열하되 $o$가 $e$ 또는 $i$와 이웃해야 한다.\n$o,e$를 한 묶음으로 보면 묶음 내부 순서는 2가지이고, 묶음과 나머지 네 글자의 배열은 $5!$가지이다. 따라서 $o,e$가 이웃하는 배열은 $2\\cdot5!$가지이다. $o,i$도 마찬가지로 $2\\cdot5!$가지이다.\n두 조건을 동시에 만족하면 세 글자가 $eoi$ 또는 $ioe$의 한 묶음이 된다. 이 경우는 $2\\cdot4!$가지이다. 포함배제에 따라 가운데 배열 수는 $2\\cdot5!+2\\cdot5!-2\\cdot4!=432$이다.\n전체는 $2\\cdot432=864$가지이므로 정답은 ①이다.",
+      "solutionHash": "sha256:f5fffeaf0f8c42721b4f2b4237386798611535b16937a9b9e619b0f14f686e23"
+    },
+    {
+      "qid": 12,
+      "sourceOrdinal": 12,
+      "content": "실수 전체의 집합에서 정의된 함수 $f(x)=\\begin{cases}\\dfrac{a-2x}{x-1}&(x>2)\\\\-\\sqrt{2-x}+2a&(x\\le2)\\end{cases}$일 때, 함수 $f$는 다음 조건을 만족시킨다. (단, $a$는 상수)\n(가) 치역은 $\\{y\\mid y<-2\\}$이다.\n(나) 함수 $f$는 일대일함수이다.\n$f(3)f(k)=50$일 때, 상수 $k$의 값을 구하여라. [4.6점]",
+      "choices": [
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:2933cbeef9038c1104e1c225218cf2b47ffd75b13af47f476c0aace77519beba",
+      "choicesHash": "sha256:795cfd58741e8d6653064f4b6397fd24636879021c41dda8dfaed61f6b6f63b9",
+      "sourceFingerprint": "sha256:74c8973a59eb41258c88d011ea61319abf02aa9647af0588566c2cdf362ee0bd",
+      "answer": "①",
+      "solution": "왼쪽 가지 $x\\le2$의 값은 $-\\sqrt{2-x}+2a$이므로 치역은 $(-\\infty,2a]$이다. 오른쪽 가지는 $x>2$에서 $-2+(a-2)/(x-1)$이다. 전체 치역이 $y<-2$이려면 $a<2$이고, 이 가지의 치역은 $(a-4,-2)$이다.\n일대일이려면 두 가지 치역이 겹치지 않아야 한다. 또 합집합이 $(-\\infty,-2)$ 전체가 되려면 왼쪽 끝 $2a$와 오른쪽 가지의 시작값 $a-4$가 맞닿아야 한다. 따라서 $2a=a-4$, 즉 $a=-4$이다. 이때 치역은 $(-\\infty,-8]\\cup(-8,-2)=(-\\infty,-2)$로 조건을 만족한다.\n$f(3)=(-4-6)/(3-1)=-5$이므로 $f(3)f(k)=50$에서 $f(k)=-10$이다. 오른쪽 가지의 값은 $(-8,-2)$이므로 $k$는 왼쪽 가지에 있고, $-\\sqrt{2-k}-8=-10$에서 $k=-2$이다. 정답은 ①이다.",
+      "solutionHash": "sha256:f9e6f4628546b924092053b52785b3e634ec5b1925adce26ce8139e319e692bc"
+    },
+    {
+      "qid": 13,
+      "sourceOrdinal": 13,
+      "content": "유리함수 $y=\\frac{k}{x-3}+2$의 그래프가 모든 사분면을 지나고, 함수 $y=-\\sqrt{2x+k}+3$의 그래프가 제 1사분면, 제 2사분면, 제 4사분면을 지나도록 하는 정수 $k$의 개수를 구하여라. [4.3점]",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:eb5bf1389452cdb0faea6924fd7483428ba0f159c18706b7eeb7405a1d78ed91",
+      "choicesHash": "sha256:3cc19e370a6671b60f17396fd032ed6593aa1547f8af80d6ab8d949018911b5e",
+      "sourceFingerprint": "sha256:593fff8d027c1d218017a3031fce083c2b3cae22c5d8d4c597594f6ccbad3f41",
+      "answer": "②",
+      "solution": "$y=\\dfrac{k}{x-3}+2$부터 본다. 모든 사분면을 지나려면 $k>0$이어야 한다. 실제로 $k\\le0$이면 $x<3$에서 $y\\ge2$라서 제3사분면에 들어갈 수 없다. $k>0$이면 오른쪽 가지는 제1사분면을, 왼쪽 가지는 제2사분면을 지난다. 제3사분면으로 들어가려면 $x<0$에서 $2+\\dfrac{k}{x-3}<0$이어야 한다. $y=0$이 되는 점은 $x=3-k/2$이므로 이 경계가 0보다 작아야 한다. 따라서 $k>6$이다. 이때 오른쪽 가지는 $x$가 3보다 조금 큰 곳에서 음수가 되어 제4사분면도 지난다.\n다음 $y=-\\sqrt{2x+k}+3$이 제1사분면을 지나려면 $x>0$에서 $\\sqrt{2x+k}<3$인 점이 있어야 하므로 $k<9$이다. 제2사분면에는 $-k/2\\le x<0$인 정의역 구간이 있어야 하므로 $k>0$이다. 제4사분면은 $x$를 충분히 크게 잡으면 지난다. 따라서 이 함수의 조건은 $0<k<9$이다.\n두 조건을 합치면 $6<k<9$이고 정수는 7, 8이다. 개수는 2이므로 정답은 ②이다.",
+      "solutionHash": "sha256:ee04c8e7573ac2b9c5770b9118c1546c1de4ad35cf0ee807bdce4fe73a4e43af"
+    },
+    {
+      "qid": 14,
+      "sourceOrdinal": 14,
+      "content": "수학 행사장에는 $A$동아리 학생 2명과 $B$동아리 학생 4명이 각자 집에서 출발하기로 했다. 행사장에 2명 이상이 동시에 도착하는 경우가 없다고 할 때, 처음 또는 마지막에 $B$동아리 학생이 도착하는 모든 경우의 수를 구하여라. [3.6점]",
+      "choices": [
+        "668",
+        "670",
+        "672",
+        "674",
+        "676"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:8ac46afadfa6cadef8527cfc6e3559aee7f084aca8e6478b1e9ce24f25a34a54",
+      "choicesHash": "sha256:07ebc734b6bedba7963c8f9f53bab156011060071059b84be45893921d948d5a",
+      "sourceFingerprint": "sha256:70bc9fe28733ae85c065bb8c0faf1516cb477bbd2e1b3aca1d542eb8b86df95d",
+      "answer": "③",
+      "solution": "동시에 도착하는 사람이 없으므로 여섯 학생의 도착 순서를 세면 된다. 전체 순서는 $6!=720$가지이다.\n처음 또는 마지막이 B인 경우의 여집합은 처음과 마지막이 모두 A인 경우이다. 두 A를 양 끝에 놓는 방법은 $2!$가지이고, 네 B를 가운데 놓는 방법은 $4!$가지이다.\n따라서 구하는 수는 $720-2!\\cdot4!=720-48=672$이다. 정답은 ③이다.",
+      "solutionHash": "sha256:98d92861a74e50894ad10c69bc194a63040fdc571a9947799aa7228ea66b270e"
+    },
+    {
+      "qid": 15,
+      "sourceOrdinal": 15,
+      "content": "다음 그림과 같이 원 위에 있는 12개의 점 중에서 3개의 점을 꼭짓점으로 하여 삼각형을 만들 때, 직각삼각형의 개수를 $a$, 둔각삼각형의 개수를 $b$, 예각삼각형의 개수를 $c$라고 할 때, $a+b-c$의 값을 구하여라. [4.5점]",
+      "choices": [
+        "130",
+        "140",
+        "150",
+        "160",
+        "170"
+      ],
+      "questionType": "객관식",
+      "problemVisual": {
+        "ref": "assets/images/20_매산여고_2학기_기말_고1_기출/q015_visual.png",
+        "path": "archive-work/assets/images/20_매산여고_2학기_기말_고1_기출/q015_visual.png",
+        "sha256": "sha256:b621dcd1aa7dc3280b79748ce9cc6adcfcd51f58a49b27b020524c0be6227f66",
+        "gitBlobSha": "d68e0e1c948c20ee1442aa9192f952105240335a"
+      },
+      "contentHash": "sha256:84d375f43506147716dda04bc254abbc6974dbfbda3a8aff85c1b53fbca53913",
+      "choicesHash": "sha256:692ea45fa5b6c83e620927a67f4215287580342946952e524e258661d18f778b",
+      "sourceFingerprint": "sha256:afa95f1645d2d0b936ba8bb9d76f0d6e96045fa445c35e93282c0b946958c579",
+      "answer": "②",
+      "solution": "전체 삼각형은 $\\binom{12}{3}=220$개이다. 원의 지름 양 끝점을 빗변으로 하는 직각삼각형은 지름 6개마다 나머지 점 10개 중 하나를 고르므로 $a=6\\cdot10=60$개이다.\n원이 12개의 같은 간격으로 나뉘므로 세 꼭짓점 사이의 간격을 칸 수로 세면 세 수의 합은 12이다. 둔각삼각형은 세 간격 중 하나가 6보다 클 때 생기며, 그런 간격은 하나뿐이다. 시작 꼭짓점을 정하면 큰 간격이 7,8,9,10칸일 수 있다. 7칸이면 나머지 두 양의 간격의 합은 5라 4가지, 이어서 8칸은 3가지, 9칸은 2가지, 10칸은 1가지이다. 따라서 $b=12(4+3+2+1)=120$개이다.\n예각삼각형 수는 나머지이므로 $c=220-60-120=40$개이다. 따라서 $a+b-c=60+120-40=140$이고 정답은 ②이다.",
+      "solutionHash": "sha256:2dcfda5804faf35de6b117352add91142ea979f20ad16a84ef83fcc9d6e4f65a"
+    },
+    {
+      "qid": 16,
+      "sourceOrdinal": 16,
+      "content": "오른쪽 그림의 4개의 영역 $A,B,C,D$를 서로 다른 4가지 색을 사용하여 칠하려고 한다. 같은 색을 중복하여 사용해도 좋으나 이웃한 영역에는 서로 다른 색을 칠할 때, 색칠한 결과로 나올 수 있는 모든 경우의 수를 구하여라. [4.2점]",
+      "choices": [
+        "36",
+        "48",
+        "60",
+        "72",
+        "84"
+      ],
+      "questionType": "객관식",
+      "problemVisual": {
+        "ref": "assets/images/20_매산여고_2학기_기말_고1_기출/q016_visual.png",
+        "path": "archive-work/assets/images/20_매산여고_2학기_기말_고1_기출/q016_visual.png",
+        "sha256": "sha256:9db9578d3b3e11f7c968f6458f6cf45deb8260046c0dddb32f9830a794eb7090",
+        "gitBlobSha": "c5162858be2e6f3586d4dbf9e6a607494c3961d2"
+      },
+      "contentHash": "sha256:0ca22dcc2465a436a69bed6e495e781d66bb5876da4940a888e718a54ecf50a7",
+      "choicesHash": "sha256:9660ef208a4ae4f3fc0400aeed1cfe436042fac45125e148e406c81a05590934",
+      "sourceFingerprint": "sha256:e1493e6c8f698726455120b54043419f69b4b4bc298e56ec8b4c30af0e573dca",
+      "answer": "⑤",
+      "solution": "그림에서 이웃한 영역은 $A$와 $B$, $B$와 $C$, $C$와 $D$, $D$와 $A$이다. 즉 네 영역의 이웃 관계는 순환한다.\n먼저 $A$의 색은 4가지이다. $B$와 $D$는 각각 $A$와 달라야 하므로 각각 3가지이다.\n$B,D$의 색이 같으면 $C$는 그 색과 달라야 하므로 3가지이다. 이 경우는 $3\\cdot3=9$가지이다. $B,D$의 색이 다르면 $C$는 두 색과 모두 달라야 하므로 2가지이고, 이 경우는 $3\\cdot2\\cdot2=12$가지이다.\n$A$ 색까지 포함하면 $4(9+12)=84$가지이다. 정답은 ⑤이다.",
+      "solutionHash": "sha256:4854b974fc6d975829619e370dc40fbedfd41253b74805113f6e01f147ff6f34"
+    },
+    {
+      "qid": 17,
+      "sourceOrdinal": 17,
+      "content": "8개의 $a$와 4개의 $b$를 모두 사용하여 만든 12자리 문자열 중에서 다음 조건을 모두 만족시키는 문자열의 개수를 구하여라. [4.4점]\n(가) $b$는 연속해서 나올 수 없다.\n(나) 첫째 자리의 문자가 $b$이면 마지막 자리의 문자는 $a$이다.",
+      "choices": [
+        "70",
+        "105",
+        "140",
+        "175",
+        "210"
+      ],
+      "questionType": "객관식",
+      "problemVisual": null,
+      "contentHash": "sha256:fe2709f372fe49a5052e5078c40593508b636bd946b77cad0bba315b2cb9d756",
+      "choicesHash": "sha256:022e724bb5ab925c0c84f16f4e42a79978faf9327e211ce95c72a3593560163f",
+      "sourceFingerprint": "sha256:42f29ff44ce67ec1b26acebdd0675afc76a419542e9971839d80bbc3190e8216",
+      "answer": "②",
+      "solution": "먼저 여덟 개의 $a$ 사이와 양 끝에 생기는 9개의 자리에 $b$를 하나씩 놓을 수 있다. 연속한 $b$를 막으려면 각 자리에 최대 하나를 놓으므로, 조건 (가)를 만족하는 문자열은 $\\binom94=126$개이다.\n첫째 자리가 $b$인 경우에는 마지막 자리가 $a$여야 하므로 양 끝 자리에 동시에 $b$가 있는 경우만 빼면 된다. 양 끝의 $b$를 놓고 나면 안쪽의 8개 자리 중 서로 이웃하지 않는 두 자리를 고른다. 방법 수는 $\\binom82-7=21$이다.\n따라서 조건을 모두 만족하는 문자열은 $126-21=105$개이다. 정답은 ②이다.",
+      "solutionHash": "sha256:a87ff25ca55efc52b659dc7db5daec6e9e020877a90a209ba66b662bc507307a"
+    },
+    {
+      "qid": 18,
+      "sourceOrdinal": 18,
+      "content": "함수 $f(x)=\\frac{2-3x}{x-5}$의 역함수를 $f^{-1}(x)$라 할 때, $y=f^{-1}(x)$의 그래프의 두 점근선을 구하여라. [5점]",
+      "choices": [],
+      "questionType": "단답형",
+      "problemVisual": null,
+      "contentHash": "sha256:3ab20bb8bb3ea805c9eaf751ab5791b1ab8a85f37ff615409156373f22e51b44",
+      "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "sha256:fab9ab57414ee1d8dad10f60ed8d7a882adfac860ca00b197da4209df8ec09a6",
+      "answer": "x=-3, y=5",
+      "solution": "역함수 그래프의 식을 구하기 위해 $y=\\dfrac{2-3x}{x-5}$에서 $x,y$를 바꾼다.\n$x=\\dfrac{2-3y}{y-5}$이므로 $x(y-5)=2-3y$이다.\n$xy-5x=2-3y$에서 $y(x+3)=5x+2$이므로 $y=\\dfrac{5x+2}{x+3}$이다.\n분모가 0이 되는 $x=-3$이 수직점근선이고, 분자와 분모의 최고차항 계수 비가 5이므로 수평점근선은 $y=5$이다.",
+      "solutionHash": "sha256:023ab306b09a39069206796cde0b4be673d35090bcc2c8a6854e81733fa1a705"
+    },
+    {
+      "qid": 19,
+      "sourceOrdinal": 19,
+      "content": "집합 $A$가 $A=\\{1,2,3,4,5,6\\}$일 때, $A$에서 $A$로의 함수 중 다음 조건을 모두 만족시키는 함수 $f$의 개수를 구하여라. [5점]\n(가) 정의역 $A$의 두 원소 $m,n$에 대하여 $m\\ne n$이면 $f(m)\\ne f(n)$이다.\n(나) 정의역 $A$의 오직 한 원소 $n$에 대하여 $f(n+1)-f(n)=4$이다.",
+      "choices": [],
+      "questionType": "단답형",
+      "problemVisual": null,
+      "contentHash": "sha256:2205d5c89b90eca6d77ce897022fe8f7a2ae714b40b5245e4ba0cceaa0c508dc",
+      "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "sha256:695100fd732bf05024671ee6bebf5e9984dafe4e21c593f28bb2ac46a47d26f4",
+      "answer": "192",
+      "solution": "조건을 만족하는 인접한 입력쌍을 $n,n+1$이라 하자. 함수가 일대일이므로 6개 원소의 순열이다. $f(n+1)-f(n)=4$가 되려면 $(f(n),f(n+1))$은 $(1,5)$ 또는 $(2,6)$ 두 가지이다.\n먼저 조건을 만족하는 $n$을 하나 표시해 세면 $5\\cdot2\\cdot4!=240$가지이다. 단, 한 순열이 조건을 두 번 만족하면 두 번 세었다. 연속한 두 쌍은 값이 4씩 연속 증가해야 하므로 1부터 6 안에서 불가능하다. 서로 겹치지 않는 두 쌍의 위치 선택은 다섯 인접쌍 중 6가지이고, 목표값 쌍 배치는 2가지, 남은 두 함수값 배치는 $2!$가지이다. 따라서 두 조건을 동시에 만족하는 순열은 $6\\cdot2\\cdot2=24$개이다. 세 번 만족하는 경우는 목표값 4개만으로 세 쌍을 만들 수 없어 없다.\n정확히 한 번 만족하는 순열 수는 $240-2\\cdot24=192$이다.",
+      "solutionHash": "sha256:6b0157c1ac002ec236e298768573e8504c861e55965931932e8b3b1ed0f9db88"
+    },
+    {
+      "qid": 20,
+      "sourceOrdinal": 20,
+      "content": "5개의 숫자 1, 3, 5, 7, 9를 모두 사용하여 만든 다섯 자리의 자연수를 큰 수부터 차례로 나열할 때, 50번째 수를 $a$라 하고 100번째 수를 $b$라 하자. $a-b$의 값을 구하여라. [6점] (부분점수 있음.)",
+      "choices": [],
+      "questionType": "서술형",
+      "problemVisual": null,
+      "contentHash": "sha256:3f5bbb8db50d39634117cf6940344e6c79912f38b55f096bb78831567b7f1520",
+      "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "sha256:e86f405add683e915212fc50b1eb0549846fb7cba3a5091e31317550056e0b74",
+      "answer": "40176",
+      "solution": "첫째 자리를 정하면 나머지 네 숫자는 $4!=24$가지로 배열된다. 큰 수부터 세면 첫째 자리가 9인 수가 1~24번째, 7인 수가 25~48번째, 5인 수가 49~72번째이다.\n따라서 50번째 수는 첫째 자리가 5인 묶음의 두 번째 수이다. 나머지를 내림차순으로 배열하면 처음 두 수는 59731, 59713이므로 $a=59713$이다.\n100번째 수는 첫째 자리가 1인 묶음의 네 번째 수이다. 나머지 9,7,5,3의 내림차순 순열 중 네 번째는 9537이므로 $b=19537$이다.\n따라서 $a-b=59713-19537=40176$이다.",
+      "solutionHash": "sha256:d12f52801bcef21bc86f178fe814cad22c2efc020b77a117b8e777de2df071ea"
+    },
+    {
+      "qid": 21,
+      "sourceOrdinal": 21,
+      "content": "두 점 $A(0,1)$, $B(1,2)$와 곡선 $y=\\sqrt{x}$ 위의 한 점 $P(x,y)$에 대하여 삼각형 $ABP$의 넓이의 최솟값을 구하여라. [7점] (부분점수 있음.)",
+      "choices": [],
+      "questionType": "서술형",
+      "problemVisual": null,
+      "contentHash": "sha256:affd797763ab66fed5275683f487407a7fd14981abf5a927c1720992d255cdae",
+      "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "sha256:e5bb38e7fea6de13946acd340d06ec05523623cc2f122243441656ce1a01e179",
+      "answer": "3/8",
+      "solution": "$t=\\sqrt{x}$라 두면 $t\\ge0$, $P=(t^2,t)$이다. 삼각형 넓이는 두 변의 행렬식 절댓값의 절반이다.\n$\\overrightarrow{AB}=(1,1)$, $\\overrightarrow{AP}=(t^2,t-1)$이므로\n$[ABP]=\\dfrac12|1\\cdot(t-1)-1\\cdot t^2|=\\dfrac12(t^2-t+1)$이다.\n$t^2-t+1=(t-1/2)^2+3/4$이므로 최솟값은 $t=1/2$에서 나온다. 따라서 넓이의 최솟값은 $\\dfrac12\\cdot\\dfrac34=\\dfrac38$이다.",
+      "solutionHash": "sha256:25fd2b482d8c505cfc451f7c581517100ac09cbf7bda0c2347333ea6f742df92"
+    },
+    {
+      "qid": 22,
+      "sourceOrdinal": 22,
+      "content": "두 함수 $f(x)=3x+2$, $g(x)=(2x-1)^2$에 대하여 정의역을 $X=\\{x\\mid -a-1<x<a+1\\}$로 하는 합성함수 $f\\circ g$의 치역을 $A$라 하자. $A$의 원소 중 자연수가 300개 이상이 되도록 하는 자연수 $a$의 최솟값을 구하여라. [7점] (부분점수 있음.)",
+      "choices": [],
+      "questionType": "서술형",
+      "problemVisual": null,
+      "contentHash": "sha256:12685687ce6b6c0be69c318d6326ee9432d714499519ab9982dd4fef5b39852f",
+      "choicesHash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sourceFingerprint": "sha256:9b92ec1eaf6c90257609ac2ff1919cf4aaf1ebc461f99477adbaf2d209a74528",
+      "answer": "4",
+      "solution": "$f(g(x))=3(2x-1)^2+2=12(x-1/2)^2+2$이다. 정의역은 $(-a-1,a+1)$이고 $x=1/2$는 이 안에 있으므로 치역의 최솟값 2는 포함된다.\n왼쪽 끝점 $-a-1$이 꼭짓점 $1/2$에서 더 멀기 때문에 치역은 $[2,12(a+3/2)^2+2)$이다.\n$a=3$이면 치역은 $[2,245)$이므로 자연수 원소는 2부터 244까지, 243개이다. $a=4$이면 치역은 $[2,365)$이므로 2부터 364까지, 363개이다. 따라서 300개 이상을 만드는 가장 작은 자연수는 $a=4$이다.",
+      "solutionHash": "sha256:6653bf91322c28eb3f47e5be07196ff68acd1bd48a4310db17f891de557f8440"
+    }
+  ]
+}
