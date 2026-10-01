@@ -1,7 +1,7 @@
 # Archive 2.0 Canonical Namespace Impact — 20261001
 
-- Generated: 2026-10-01T05:10:40.205Z
-- Projection: `archive2-canonical-v1:48049f68a5981519d51ea9d0191ec33654157c0671623fb66408a9bba265541e`
+- Generated: 2026-10-01T09:42:52.049Z
+- Projection: `archive2-canonical-v1:1689493441ebc34f0acfb18729d6461e07c68b0f722cc59dc2d90ad03f84ff4a`
 - Taxonomy: `8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b`
 
 ## UID totals
@@ -11,9 +11,9 @@
 | Parsed raw source questions | 11550 |
 | Built catalog | 11550 |
 | Final shared projection | 11550 |
-| BASIC selectable | 1929 |
+| BASIC selectable | 1935 |
 | ADVANCED selectable | 1 |
-| BASIC exclusions | 9621 |
+| BASIC exclusions | 9615 |
 
 The source population is keyed by unique `questionUid`. Unique UID counts per reason; one UID may appear in several reasons. Mutually exclusive; order is grade, identity, source integrity, approved release fingerprint, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.
 
@@ -44,7 +44,7 @@ The source population is keyed by unique `questionUid`. Unique UID counts per re
 | 고2 \| 2022 \| 확률과통계 | 19 |
 | 중1 \| 2015 \| M1-2 | 13 |
 | 중1 \| 2022 \| M1-1 | 9 |
-| 중1 \| 2022 \| M1-2 | 29 |
+| 중1 \| 2022 \| M1-2 | 45 |
 | 중2 \| 2015 \| M2-1 | 287 |
 | 중2 \| 2015 \| M2-2 | 337 |
 | 중2 \| 2022 \| M2-1 | 57 |
@@ -82,7 +82,7 @@ These catalog hints are retained for audit and do not create selectable scopes.
 | 중1 \| 2015 \| M1-1 | 115 |
 | 중1 \| 2015 \| M1-2 | 292 |
 | 중1 \| 2022 \| M1-1 | 59 |
-| 중1 \| 2022 \| M1-2 | 140 |
+| 중1 \| 2022 \| M1-2 | 124 |
 | 중2 \|  \| 중2 | 38 |
 | 중2 \|  \| 중2 수학 | 1045 |
 | 중3 \|  \| 공통수학1 | 15 |
@@ -98,8 +98,8 @@ These catalog hints are retained for audit and do not create selectable scopes.
 
 | Stage | UID count |
 | --- | ---: |
-| catalog_builder_assignment_evidence | 1928 |
-| catalog_builder_unverified_hint | 9620 |
+| catalog_builder_assignment_evidence | 1944 |
+| catalog_builder_unverified_hint | 9604 |
 | reviewed_runtime_item_override | 2 |
 
 ## Exclusion reasons
@@ -108,9 +108,9 @@ Overlapping reason counts:
 
 | Reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 9620 |
-| canonical_parent | 9620 |
-| course_namespace | 9620 |
+| assignment_evidence | 9604 |
+| canonical_parent | 9604 |
+| course_namespace | 9604 |
 | review_hold | 446 |
 | scope_policy | 28 |
 | semantic_or_metadata_hold | 216 |
@@ -122,7 +122,7 @@ Mutually exclusive primary reasons:
 
 | Primary reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 6945 |
+| assignment_evidence | 6939 |
 | review_hold | 250 |
 | scope_policy | 1 |
 | semantic_or_metadata_hold | 138 |
@@ -130,7 +130,7 @@ Mutually exclusive primary reasons:
 | source_quality_hold | 27 |
 | source_release | 2086 |
 
-Primary-reason total: 9621 of 9621 excluded UIDs.
+Primary-reason total: 9615 of 9615 excluded UIDs.
 
 ## Input integrity
 

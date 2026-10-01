@@ -1004,7 +1004,6 @@
       const examYear = Number(exam.year);
       if (
         !O.matchesMaterial(exam, f.material) ||
-        (f.grade && exam.effectiveBrowseGrade !== f.grade) ||
         (f.school && f.school !== exam.school) ||
         (hasYearFilter && !Number.isFinite(examYear)) ||
         (f.yearFrom && examYear < Number(f.yearFrom)) ||

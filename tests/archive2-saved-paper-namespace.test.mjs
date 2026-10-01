@@ -11,6 +11,7 @@ import {
   readAndVerifySavedSnapshot,
   SAVED_PAPER_SCHEMA,
 } from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
+import { resolveSavedPaperSourceGrades } from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
@@ -108,6 +109,100 @@ test("an immutable saved snapshot remains verifiable when current taxonomy autho
     const savedBranch = route.slice(savedBranchStart, savedBranchEnd);
     assert.match(savedBranch, /savedSnapshot\.questions/);
     assert.doesNotMatch(savedBranch, /validateApprovedMixedQuestions|loadCanonicalCatalog/);
+  } finally {
+    env.ARCHIVE2_ASSETS.fetch = previousFetch;
+  }
+});
+
+test("saved snapshot source grades resolve from preserved identity when canonical catalog is unavailable", async () => {
+  const sharedRecord = catalog.records.find(row => row.sourceGrade === "고2" &&
+    core.subjectProjectionForRecord(row, "", catalog.projectionPolicy) &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  assert.ok(sharedRecord, "test needs a real approved high2 shared-subject source");
+  const [rawSharedQuestion] = source.evaluate(
+    fs.readFileSync(path.join(root, "archive/exams", sharedRecord.sourceFile), "utf8"),
+    sharedRecord.sourceFile,
+  ).slice(sharedRecord.sourceOrdinal - 1, sharedRecord.sourceOrdinal);
+  const sharedQuestion = {
+    ...rawSharedQuestion,
+    questionUid: sharedRecord.questionUid,
+    sourceArchiveFile: sharedRecord.sourceFile,
+    sourceOrdinal: sharedRecord.sourceOrdinal,
+    sourceQuestionNo: sharedRecord.sourceQuestionNo,
+    sourceFingerprint: sharedRecord.sourceFingerprint,
+  };
+  for (const field of core.META_FIELDS)
+    if (sharedRecord[field] !== undefined) sharedQuestion[field] = sharedRecord[field];
+  const filters = {
+    grade: "고3",
+    curriculumKey: sharedRecord.curriculumKey,
+    semanticSubject: core.subjectProjectionForRecord(sharedRecord, "", catalog.projectionPolicy),
+    primaryPaths: [core.pathKey(sharedRecord, 4)],
+    scopeQuestionUids: [sharedRecord.questionUid],
+  };
+  const prepared = await prepareSavedPaperBatch(env, {
+    schema_version: SAVED_PAPER_SCHEMA,
+    save_batch_id: "22222222-2222-4222-8222-222222222222",
+    index_version: catalog.indexVersion,
+    selection_filters: filters,
+    papers: [{
+      part_index: 0,
+      questions: [sharedQuestion],
+      meta: { title: "shared source", qpp: 4, questionUids: [sharedRecord.questionUid] },
+    }],
+  });
+  const snapshot = JSON.parse(prepared.papers[0].snapshot_json);
+  assert.equal(snapshot.questions[0].sourceGrade, "고2",
+    "new snapshots preserve the server-verified actual source grade separately from browse grade");
+  assert.deepEqual(snapshot.questions[0].sourceIdentityEvidence, {
+    schemaVersion: "archive2-saved-source-identity-v1",
+    status: "VERIFIED",
+    questionUid: sharedRecord.questionUid,
+    sourceFile: sharedRecord.sourceFile,
+    sourceOrdinal: sharedRecord.sourceOrdinal,
+    identitySourceFile: sharedRecord.sourceFile,
+    sourceGrade: "고2",
+  });
+  const legacySnapshotQuestions = snapshot.questions.map(({
+    sourceGrade: _sourceGrade,
+    sourceIdentityEvidence: _sourceIdentityEvidence,
+    ...question
+  }) => question);
+  const previousFetch = env.ARCHIVE2_ASSETS.fetch;
+  env.ARCHIVE2_ASSETS.fetch = async () => new Response("authority unavailable", { status: 503 });
+  try {
+    assert.deepEqual(
+      await resolveSavedPaperSourceGrades(env, snapshot.questions),
+      ["고2"],
+      "new snapshots must deliver from server-verified source identity evidence without loading the current catalog",
+    );
+    assert.deepEqual(
+      await resolveSavedPaperSourceGrades(env, legacySnapshotQuestions),
+      ["고2"],
+      "a 고3 browse grade must not replace the preserved 고2 source grade",
+    );
+    const renamedUid = "qid_v1_" + "b".repeat(64);
+    const renamedIdentity = {
+      ...legacySnapshotQuestions[0],
+      questionUid: renamedUid,
+      sourceGrade: "고2",
+      sourceIdentityEvidence: {
+        schemaVersion: "archive2-saved-source-identity-v1",
+        status: "VERIFIED",
+        questionUid: renamedUid,
+        sourceFile: legacySnapshotQuestions[0].sourceArchiveFile,
+        sourceOrdinal: legacySnapshotQuestions[0].sourceOrdinal,
+        identitySourceFile: legacySnapshotQuestions[0].sourceArchiveFile,
+        sourceGrade: "고2",
+      },
+    };
+    assert.deepEqual(await resolveSavedPaperSourceGrades(env, [renamedIdentity]), ["고2"],
+      "saved identity evidence must survive a verified source-path rename without the current identity catalog");
+    await assert.rejects(
+      resolveSavedPaperSourceGrades(env, [{ ...legacySnapshotQuestions[0], sourceArchiveFile: "similar/shared.js" }]),
+      error => error.status === 409,
+      "without source-grade identity evidence the route must fail closed",
+    );
   } finally {
     env.ARCHIVE2_ASSETS.fetch = previousFetch;
   }
