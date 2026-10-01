@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_WRITE_GATE_TRANSIENT_v1",
+  "generation": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "canonicalOrdinal": 37,
+  "examFile": "22_연향중_1학기_기말_중3_기출c.js",
+  "state": "R3_WRITE_GATE_TRANSIENT",
+  "inputAuthorityCommit": "0d601b05be3f3d731a56483ee4391cd3709f8f9c",
+  "inputExamBlob": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "inputExamSha256": "sha256:f8bcd4d501a6d48bd57bb274b03a7ca3dcf7a9cf8e8cad3079776b341c41ae07",
+  "freshAuditCandidateOpenQids": [
+    1,
+    9,
+    12
+  ],
+  "findings": {
+    "1": [
+      "q1.content runtime literal backslash-n x6",
+      "q1.solution small-board ㄱ~ㅂ enumeration not physically separated"
+    ],
+    "9": [
+      "q9.content runtime literal backslash-n x6",
+      "q9.solution shared ㄱ~ㅂ enumeration not physically separated"
+    ],
+    "12": [
+      "actual linked source raster assigns A to y=3x^2 and B to y=ax^2",
+      "literal stem assigns A,B respectively to y=ax^2,y=3x^2",
+      "literal stem gives no listed answer; raster-intended route gives ③"
+    ]
+  },
+  "nonblockingVisualNotes": [
+    {
+      "qid": 19,
+      "note": "Referenced figure absent, but all decisive rectangle/motion facts are explicit in text; not promoted to blocking visual defect under current hard rule."
+    }
+  ],
+  "gradeUpperBoundViolationCount": 0,
+  "runtimeDoubledTexIssueCount": 0,
+  "confirmedVisualDefectQids": [
+    12
+  ],
+  "productionBytesMutation": 0,
+  "directRepair": false,
+  "mainPublish": false,
+  "finalDispositionIssued": false,
+  "reasonFinalDispositionNotIssued": "Physical-evidence/validator Git write was blocked before commit; retry exact evidence binding on next run."
+}
