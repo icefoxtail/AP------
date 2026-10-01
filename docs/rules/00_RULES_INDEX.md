@@ -57,7 +57,10 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - 현재 진행 중인 M2 2학기 고정 20은 META_V2 reset 대상이 아니며 기존 current REVIEW/PUBLISH tail을 완주한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
-- 현재 REVIEW는 REVIEW1 + REVIEW2 두 번이다. REVIEW3는 사용자 명시 지시가 있을 때만 추가한다.
+- CURRENT R3는 **MAIN 직전 release gate**다. R3는 repair stage가 아니며, CURRENT가 R3를 요구하는 release-bound flow에서 REVIEW2 이후 반드시 통과한다.
+- 현재 적용 대상은 2026 긴급 5시험지, 고등 SOURCE-ONLY PILOT-001, 그리고 M3 REVIEW2 69/69 뒤 CREATE-1/2/3이 임시 전환하는 M3 TEMP R3 campaign이다.
+- R3 FAIL 회귀는 `failureClass`로 고정한다: A `FULL_REENTRY`, B `TARGETED_R1_R2`, C `ASSET_ONLY`. 애매하면 A. B는 failed qid repair + defect-family N/N rescan + targeted blind recheck이며 unrelated 전 문항 수학 재풀이를 금지한다.
+- R3_RETRY는 어떤 class였든 latest repaired lineage에서 full release gate를 다시 닫는다.
 
 ### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 

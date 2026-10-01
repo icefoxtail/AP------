@@ -1,4 +1,4 @@
-[JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]
+[JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
