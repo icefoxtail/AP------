@@ -1,5 +1,13 @@
 [JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
+## CURRENT HARD RULE — R2 FIRST-PASS ONLY / ITEM RECOVERY + R3 DEFERRED SEPARATION (2026-10-01)
+- R2는 정상 first-pass REVIEW2만 담당한다.
+- `ITEM_RECOVERY_QUEUE`는 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. R2 예약 lane은 held-qid recovery fallback을 수행하지 않는다.
+- `R3_FAIL_DEFERRED`, `CODEX_REPAIR_DONE`, `CODEX_REPAIR_RETRY_REQUIRED`도 R2가 소비하지 않는다.
+- initial R3 이후 독립검수는 별도 Codex R3 Independent Review worker가 changed/open locus만 검사한다.
+- 아래 R3 reentry/FULL_REENTRY/TARGETED R2 섹션은 SUPERSEDED / HISTORY다.
+
+
 ## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS + R2 BLIND FREEZE (2026-10-01)
 
 R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
@@ -93,7 +101,7 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - q12·q15·q18의 crop/필기혼입/라벨잘림을 HOLD로 보낸 것은 false HOLD다. asset repair로 직접 닫아야 한다.
 - q1·q21을 ACTIVE canonical lookup을 끝까지 하지 않고 Meta HOLD로 둔 것도 false HOLD다. q1은 `PT_SET_DEFINITION / TPL_SET_IDENTIFY`, q21은 `PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER`로 exact ACTIVE mapping이 가능하다.
 
-## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAILURE CLASS ROUTING (2026-10-01)
 
 R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
 
@@ -128,7 +136,7 @@ asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 �
 복수 defect class가 한 시험지에 섞이면 **A > B > C** 우선순위로 exam-level `failureClass`를 정한다. `ASSET_ONLY`는 모든 unresolved defect가 C일 때만 사용한다. B+C가 섞이면 exam-level은 B이며 asset defect도 같은 targeted reentry 안에서 asset-only repair/recheck로 닫는다.
 
 CLASS C의 별도 신규 예약은 만들지 않는다. 기존 R1 owner가 `ASSET_OWNER_REPAIR`를 **asset-only mode**로 소비하고 수학 재풀이 없이 repair한 뒤 `INDEPENDENT_ASSET_RECHECK`로 넘긴다. 기존 R2 owner는 asset-only independent recheck만 수행하고 PASS면 `R3_RETRY`로 보낸다. semantic 영향이 발견되면 B/A로 승격한다.
-## CURRENT OVERRIDE — R3 TARGETED INDEPENDENT RECHECK (2026-10-01)
+## SUPERSEDED / HISTORY — R3 TARGETED INDEPENDENT RECHECK (2026-10-01)
 
 - `FULL_REENTRY`: 기존 FULL R2 독립검수.
 - `TARGETED_R1_R2`: R1 수리 qid만 기존 solution/R1 repair/R3 verdict를 보지 않고 먼저 독립 재풀이·판정.

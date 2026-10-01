@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 52040 bytes | sha256 e296e22efe3cb84ff0ed6fa6615783fd742d376fc4f5bd32df0216781f6b113b
+- 00_RULES_INDEX.md | 54057 bytes | sha256 bb55fbde6f16df255ebc7a2bf4281a80b5b0e30825a3b09caae47f6b64fd2266
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 23333 bytes | sha256 ed736808a9ac5b2c68e1b57a2f2adfbd183b959966fdbfeb093d0926d2863c2c
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12887 bytes | sha256 7642674cf88b5ac9949e12bd867412b6a70be42d6998763446a0883ccbc7a72f
@@ -24,14 +24,14 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md | 12151 bytes | sha256 8ac96f30c9bd58e5e5d15402182d79842ab76d63f37820c83f41f969c9b1260b
 - 02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md | 25899 bytes | sha256 54cf213b109d0fc8f8c83175a843da63f41eab374eb51472b130a3489a8bd5c3
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 9062 bytes | sha256 e3f8ee3bbb39d84194bb327decf144af23b6c954871eb160e7284953f0e82686
-- 02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md | 15932 bytes | sha256 a6e4e0c77f7ebeaa50b6a52fdca9c672908d00e3041b7f0d80a71d7ee6b56ac7
+- 02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md | 16488 bytes | sha256 594f9b51924cae3666fca8dbc3f51dd5772afd34c7cc37f130fd1a9d0f07204b
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v1.md | 37090 bytes | sha256 d2615ebbcb68ff7f3b87ddef27a0c0669e8d43d5090797e2f9a725583f4d3fff
 - 02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md | 19159 bytes | sha256 2a98dca6246c84bd02b65a0264d1256fef0c31c6db914d14925cb07b6aad9311
 - 02_PIPELINES/CODEX_Meta_Foundation_단원정리_실행프로토콜_v1.md | 26401 bytes | sha256 82fd2bba9cc933949a4ad8f8ea0942aaffd9747ec1e043beb0a3927097b7237b
 - 02_PIPELINES/🤖 JS아카이브 발문·보기 추출 프로토콜 v4.md | 20382 bytes | sha256 72cfa8026340f9a8c5aa37a55d5c2a9662186203033156224d8a228a8e43c390
 - 02_PIPELINES/코드검사실_JS아카이브_시험지작업_통합운영프로토콜_v1.3.1_14장_ENGINE_CAPABILITY_LOCK보강.md | 131125 bytes | sha256 da233083c7651ff8f18f3439a7b92706e1a5ddd985a4cbf7cda78ddcf86f077e
 - 02_PIPELINES/문제해설추출.md | 28727 bytes | sha256 35bd8677081d5d1dfeda23d9b709af8bedbd3b74e9688a012dfe9e393386a140
-- 02_PIPELINES/수정프로토콜.md | 45800 bytes | sha256 d03152692cdca9d2f87a1cbc5315f0dd2cdb0bbce2865ac6145274542609a8f4
+- 02_PIPELINES/수정프로토콜.md | 47773 bytes | sha256 52e0424026688c0fbc6746159e846f84824abc92cf564e45b058eb9261d0ab0a
 - 02_PIPELINES/작업방식_적응형배치루프_v1.md | 9468 bytes | sha256 ce4166be64d437a98eebcacbb728e6625dd4ba6472f0d6d20295767265c71685
 - 02_PIPELINES/수정후보고프로토콜.md | 880 bytes | sha256 bbdd866d15e6dc7e03ee265cf3b02571f6ef3ed4a15c03ebacb816d3311cbc4f
 - 02_PIPELINES/작업방식_5문항배치루프_필수.md | 5586 bytes | sha256 03ff3af80c2ce350181a142377955cc6657fa7f2d419c7461c6a09e7b1013858
@@ -40,10 +40,10 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/JS_변환_프롬프트.md | 11447 bytes | sha256 dba2fb3d74bef50632c50c41b37bfd34567a3661957bba2e679d3821725967e7
 - 03_REVIEW/무결성검수.md | 54712 bytes | sha256 7e3f7034091bc683e3aa89cd3bc78b54b23984328c9bffa876a93abc44f261ae
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 8439 bytes | sha256 35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9
-- 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 32257 bytes | sha256 72884423cd7f764a7deec1bcbae9c709e69e83c806fb13e10190e51f8654b67f
-- 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 29735 bytes | sha256 0e380fa5c85f67d8559e218db859957db0a9348e9af582901b2a34ea6c8eff26
-- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 33924 bytes | sha256 a4ac3a646d5ffb102702b9fa3f08171cf52fca557afb50678d3cad6245264921
-- 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 14478 bytes | sha256 b426fe3458ee75dc9078720986bc8d38ac276e88d8a53b472e5d360e8da4d41f
+- 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 32669 bytes | sha256 507be6a3f52f866dac69f28ce5da6a4604da26b8e6f92b83eb9a7bd709eb249d
+- 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 30353 bytes | sha256 4a020742b313fee598e5e37044d65d78c3a5b8d9897cadebbeee211dc355777c
+- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 35215 bytes | sha256 7911536ea375b573074a6c05d02663040684ef76d29b944ef8d8169671629ab0
+- 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 15364 bytes | sha256 1c9a8dbafedcacbe93a2e417fbc32845f01cd732c204ae29059525521d912b9b
 - 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 73684 bytes | sha256 1dcb787717543982f0c26f7522df7d66087302751d424dec715ada6bb9fa61d1
 - 04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md | 66253 bytes | sha256 0155abcb370afdcf0d177fece9afa8f66b3cdfd7be619af5fed71e725a919e3b

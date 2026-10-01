@@ -313,7 +313,19 @@ latest R1 artifact bytes 직접 읽기
 
 `blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`가 없으면 R2 DONE 금지.
 
-### R3
+### R3 INITIAL vs R3_RETRY
+
+**initial R3**는 시험지 전체를 보는 마지막 전수 release audit다.
+- 전 문항 questionRows / visualRows / metaRows를 fresh 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
+
+**R3_RETRY**는 initial R3 FAIL 이후 targeted regression이다.
+- `R3_BASELINE`의 PASS scope를 잠근다.
+- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 재검한다.
+- LOCKED scope는 semantic row를 다시 만들지 않고 baseline blob/hash와 불변인지 확인한다.
+- 필수 retry evidence: `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `outputArtifactSha`.
+- full `questionRows=N`을 다시 만들어 4차·5차 전수검수로 반복하는 것은 금지한다.
+
+### R3 — INITIAL FULL AUDIT DETAILS
 
 R3는 release gate다.
 
