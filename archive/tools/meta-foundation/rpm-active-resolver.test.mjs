@@ -28,7 +28,9 @@ import {
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const registry = loadActiveMetaRegistry(root);
 const crosswalk = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json'), 'utf8'));
+const middle2Crosswalk = JSON.parse(fs.readFileSync(path.join(root, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json'), 'utf8'));
 const rowFor = id => crosswalk.records.find(row => row.id === id);
+const middle2RowFor = id => middle2Crosswalk.records.find(row => row.id === id);
 
 function makeInput(row, overrides = {}) {
   const sourceArchiveFile = 'original/high/h1/1final/fixture.js';
@@ -150,6 +152,40 @@ test('RPM semantics remain final when no legacy PT/TPL projection exists', () =>
   assert.equal(result.semanticStatus, 'FINAL');
   assert.equal(result.projectionStatus, 'PROJECTION_UNMATERIALIZED');
   assert.equal(result.problemTypeKey, '');
+});
+
+test('M3 may reuse a deterministic M2 prerequisite semantic while keeping current M3 L1/L2', () => {
+  const row = middle2RowFor('M2-RPM-067');
+  assert.ok(row);
+  const input = makeInput(row);
+  input.curriculumContext = {
+    grade: 'M3', curriculum: row.curriculum, scope: 'M3-2', standardCourse: '중3 수학',
+    standardUnitKey: 'M3-06', subUnitKey: 'M3-06-CIRCLE_LINE',
+  };
+  input.sourceIdentity.sourceArchiveFile = 'original/middle/m3/2mid/prerequisite-fixture.js';
+  input.sourceIdentity.questionUid = questionUidForSource(input.sourceIdentity.sourceArchiveFile, 1);
+  input.sourceIdentity.sourceIdentityKey = input.sourceIdentity.questionUid;
+  const result = resolveMetaRoute(input, { repoRoot: root });
+  assert.equal(result.semanticStatus, 'FINAL');
+  assert.equal(result.rpmSemantic.scope, 'M2-2');
+  assert.equal(result.rpmSemantic.targetScope, 'M3-2');
+  assert.equal(result.rpmSemantic.scopeRelation, 'LOWER_GRADE_PREREQUISITE');
+  assert.equal(result.crosswalkFile, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json');
+  assert.equal(result.problemTypeKey, 'PT_TRIANGLE_CENTERS');
+  assert.equal(result.templateKey, 'TPL_TRIANGLE_INCENTER');
+  assert.equal(result.projectionStatus, 'PROJECTION_REUSE');
+  assert.match(result.bindingIdentity, /^2015\|M3-06\|M3-06-CIRCLE_LINE\|PT_TRIANGLE_CENTERS\|/);
+  assert.equal(validateResolverEvidence(input, result, { repoRoot: root }).status, 'PASS');
+});
+
+test('lower grade targets cannot import future-grade RPM semantics', () => {
+  const row = middle2RowFor('M2-RPM-067');
+  const input = makeInput(row);
+  input.curriculumContext = {
+    grade: 'M1', curriculum: row.curriculum, scope: 'M1-2', standardCourse: '중1 수학',
+    standardUnitKey: 'M1-06', subUnitKey: 'M1-06-POLYGON_CIRCLE',
+  };
+  assert.throws(() => resolveMetaRoute(input, { repoRoot: root }), /META_RPM_FUTURE_OR_UNRELATED_SCOPE_FORBIDDEN/);
 });
 
 test('a path absent from RPM Primary is a true semantic hold', () => {

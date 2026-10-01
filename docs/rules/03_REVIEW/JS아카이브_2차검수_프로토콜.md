@@ -83,8 +83,10 @@ upstream R1/R2의 hold reason을 그대로 실행 지시로 복사해 **모든 h
 - 반대로 일부 문항은 실제 recrop/원본 확인이 필요할 수 있다. **정확한 true-HOLD subset은 recovery가 qid별로 다시 판정하며 11건 전체를 true HOLD로 상속하지 않는다.**
 - 이 사례 이후 source-asset HOLD는 반드시 `decisiveMissingFacts[]`와 `whyTruthStillNonDeterministic`를 가져야 한다.
 ### B. Meta / PT·TPL / RPM projection
-- `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
-- `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.
+- `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → current-scope RPM Primary → 이미 이수한 prerequisite lower-scope RPM → semantic source crosswalk → GLOBAL ACTIVE shared taxonomy/templates → target current curriculum binding/aliases**까지 조회한다.
+- lookup은 lower-only다. 중1은 중2/중3, 중2는 중3, 중3은 고등, 고1은 고2+의 semantic을 가져오지 않는다. 반대로 중2는 중1, 중3은 중1/중2, 고1은 중등의 이미 배운 개념을 Primary/CrossConcept로 재사용할 수 있다.
+- lower-scope L3/L4를 재사용해도 target `standardCourse/standardUnitKey/subUnitKey`는 현재 문항 위치를 유지한다. source scope는 provenance로만 기록한다.
+- `RPM_ONLY`, `*_BINDING_GAP`, current-scope exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다. current scope miss 뒤 prerequisite lower-scope lookup 없이 `NO_EXACT_RPM_L4...` HOLD를 만들면 false HOLD다.
 - RPM semantic coverage가 부족하더라도 source+solution이 하나의 **GLOBAL ACTIVE problemTypeKey/templateKey + exact curriculum binding**에 유일하게 대응하면 PT/TPL은 채우고, RPM 쪽 부족은 `RPM_COVERAGE_GAP_META_ONLY` 같은 비차단 taxonomy debt로 별도 기록한다. **없는 RPM L3/L4를 임의 생성하지는 않는다.**
 - TRUE Meta HOLD는 primary semantic 자체가 source/solution으로 결정되지 않거나, exhaustive lookup 뒤에도 exact ACTIVE 후보가 복수로 남거나, deterministic machine projection 자체가 실제로 존재하지 않는 경우에만 허용한다.
 
@@ -180,7 +182,8 @@ CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 
 
 final solution에서 실제 풀이가 의존하는 `concepts[] / formulas[] / notations[] / methods[]`를 문항별로 다시 추출한다. 단순 금지어 검색으로 대체하지 않는다.
 
-각 항목을 `standardCourse + standardUnitKey/subUnitKey + 현재 교육과정 authority`에 직접 대조하여 `ALLOWED / NOT_ALLOWED / UNCERTAIN`으로 기록한다.
+각 항목을 `standardCourse + standardUnitKey/subUnitKey + 현재 교육과정 authority`에 직접 대조하여 `ALLOWED / NOT_ALLOWED / UNCERTAIN`으로 기록한다. 이때 교육과정은 누적형으로 본다. **현재 학년까지 이미 이수한 하위 학년/선행 scope 개념·공식·표기·방법은 ALLOWED이고, 아직 배우지 않은 상위 학년/후속과정 의존만 NOT_ALLOWED다.**
+- lower-grade method를 사용했다는 이유만으로 `CURRICULUM_FAIL`을 만들지 않는다. 예: 고1 도형의 방정식 풀이에서 중등의 피타고라스 정리·삼각형 닮음·원과 직선 성질 사용은 허용한다.
 - 하나라도 실제 풀이에 필요한 `NOT_ALLOWED`가 있으면 수학적으로 맞아도 즉시 `CURRICULUM_FAIL`.
 - `UNCERTAIN`을 PASS로 올리지 않는다.
 - 안전한 과정 내 풀이로 바꿀 수 있으면 같은 review에서 최소수정 후 inventory부터 다시 검수한다.
