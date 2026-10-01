@@ -1,17 +1,26 @@
-## CURRENT OVERRIDE — NORMAL-FIRST / DEFERRED R3 REENTRY (2026-10-01)
+## CURRENT OVERRIDE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
 정상 1차 흐름을 R3 실패 재작업보다 우선한다.
 
 - 아직 initial R3 판정을 받지 않은 정상 latest-R2 시험지가 있으면 그 시험지를 먼저 검수한다.
 - R3 PASS는 `R3_PASS / READY_FOR_CODEX_PUBLISH`로 닫고, R3 자체는 MAIN merge를 하지 않는다.
 - R3 FAIL은 기존 `failureClass` A/B/C와 `requiredRoute`를 packet에 그대로 보존하되 current 실행 상태를 `R3_FAIL_DEFERRED / DEFERRED_REENTRY_QUEUE`로 둔다.
-- FAIL 직후 R1/R2 재작업을 정상 first-pass 큐보다 우선시키지 않는다. 정상 큐가 비었거나 사용자가 특정 시험지 재작업을 직접 지시한 경우에만 deferred route를 소비한다.
+- FAIL 직후 R1/R2로 되돌리지 않는다. 별도 Codex post-R3 repair/review worker가 OPEN locus를 병렬 처리하며 정상 first-pass R1/R2/initial R3는 계속 진행한다.
 - initial R3 disposition은 `R3_PASS` 또는 `R3_FAIL_DEFERRED` 둘 중 하나다. FAIL은 release 실패이므로 publish 금지지만, 다른 시험지의 first-pass 진행을 막지 않는다.
 - M3 initial R3 소유권은 lane-local TEMP R3-1/2/3에 있다. dedicated R3는 M3 initial R3를 중복 소비하지 않는다.
 - M3 CREATE lane은 자기 mod-3 partition의 current-generation CREATE가 physical-evidence-valid DONE* 100%가 되는 즉시 다른 CREATE lane이나 M3 REVIEW2 69/69을 기다리지 않고 TEMP R3로 전환할 수 있다.
 - 해당 partition의 모든 시험지가 initial R3 disposition을 가지면 그 lane은 M1 CREATE를 재개할 수 있다. deferred 실패는 별도 재작업 큐에 남고 CREATE 재개를 막지 않는다.
 
-아래의 즉시 R1/R2 reentry 표현은 **재작업 범위(route)**를 설명하는 것으로만 읽는다. queue priority/즉시 실행 권한을 뜻하지 않는다. 이 섹션과 충돌하면 본 CURRENT OVERRIDE가 우선한다.
+아래의 R1/R2 reentry·FULL_REENTRY·full R3_RETRY 표현은 모두 **SUPERSEDED / HISTORY**다. current post-R3 owner는 Codex repair/review + GPT targeted R3_RETRY다.
+
+## CURRENT HARD RULE — POST-R3 BASELINE LOCK / TARGETED RETRY (2026-10-01)
+
+- initial R3가 시험지 전체를 보는 마지막 전수 release audit다.
+- initial R3 종료 artifact와 linked assets를 `R3_BASELINE`으로 동결한다.
+- FAIL packet은 `openQids[] / openFiles[] / openFields[] / openAxes[] / directDependencies[]`를 고정한다. 그 밖은 `R3_LOCKED`다.
+- legacy `FULL_REENTRY` failureClass도 whole-exam reopen 권한이 아니다. 범위를 한정할 수 없으면 `SCOPE_EXPANSION_REQUIRED`로 필요한 dependency locus만 추가한다.
+- post-R3 경로는 `R3_FAIL_DEFERRED → Codex R3 Repair → Codex Independent Review → READY_FOR_R3_RETRY → GPT TARGETED R3_RETRY`다. 정상 R1/R2로 되돌리지 않는다.
+- targeted R3_RETRY는 open/changed locus + direct dependency + lock 보존만 확인한다. initial R3 전수감사를 반복하지 않는다.
 
 [JS아카이브 3차 검수 프로토콜 — MAIN 직전 Release Gate v2.0]
 
@@ -19,12 +28,12 @@
 
 R3는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 MAIN 직전 최종 release gate로 적용한다.
 
-- R1/R2의 `N/N`, PASS receipt, ledger 요약을 release evidence로 사용하지 않는다.
-- latest artifact bytes에서 source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 fresh audit한다.
+- **initial R3**에서는 R1/R2의 `N/N`, PASS receipt, ledger 요약을 release evidence로 사용하지 않고 latest artifact bytes에서 source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 전수 fresh audit한다.
+- **R3_RETRY**에서는 `R3_BASELINE`의 LOCKED PASS를 다시 감사하지 않는다. open/changed locus + direct dependency만 fresh audit하고 나머지는 hash/diff lock을 확인한다.
 - `freshFromArtifactBytes=true` + `priorStageCountsUsedAsEvidence=false`가 evidence에 없으면 R3_PASS 금지.
 - linked SVG는 라벨 문구가 아니라 actual primitive 좌표/위상으로 solution fact를 재계산한다.
 - Meta는 null field까지 전수 resolver/canonical lookup evidence를 남긴다.
-- 완료 전 `review-evidence-gate.mjs --stage R3`의 `ok=true`가 필수다.
+- initial R3 완료 전 `review-evidence-gate.mjs --stage R3`의 `ok=true`가 필수다. targeted R3_RETRY는 full-row validator로 전수감사를 반복하지 않고 `openScope + changedScope + lockedScopeMutationCount=0` retry evidence를 남긴다.
 - 예약 시간이 부족하면 R3_PASS를 추정하지 않고 checkpoint만 남긴다.
 
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
@@ -57,7 +66,7 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - q12·q15·q18의 crop/필기혼입/라벨잘림을 HOLD로 보낸 것은 false HOLD다. asset repair로 직접 닫아야 한다.
 - q1·q21을 ACTIVE canonical lookup을 끝까지 하지 않고 Meta HOLD로 둔 것도 false HOLD다. q1은 `PT_SET_DEFINITION / TPL_SET_IDENTIFY`, q21은 `PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER`로 exact ACTIVE mapping이 가능하다.
 
-## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAILURE CLASS ROUTING (2026-10-01)
 
 R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
 
@@ -92,7 +101,7 @@ asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 �
 복수 defect class가 한 시험지에 섞이면 **A > B > C** 우선순위로 exam-level `failureClass`를 정한다. `ASSET_ONLY`는 모든 unresolved defect가 C일 때만 사용한다. B+C가 섞이면 exam-level은 B이며 asset defect도 같은 targeted reentry 안에서 asset-only repair/recheck로 닫는다.
 
 CLASS C의 별도 신규 예약은 만들지 않는다. 기존 R1 owner가 `ASSET_OWNER_REPAIR`를 **asset-only mode**로 소비하고 수학 재풀이 없이 repair한 뒤 `INDEPENDENT_ASSET_RECHECK`로 넘긴다. 기존 R2 owner는 asset-only independent recheck만 수행하고 PASS면 `R3_RETRY`로 보낸다. semantic 영향이 발견되면 B/A로 승격한다.
-## CURRENT OVERRIDE — R3 FAILURE TRIAGE / BOUNDED REENTRY (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAILURE TRIAGE / BOUNDED REENTRY (2026-10-01)
 
 R3는 FAIL을 직접 repair하지 않지만 모든 FAIL을 FULL R1/R2로 되돌리지도 않는다. failure를 기계적으로 분류해 packet에 고정한다.
 - `FULL_REENTRY`: source/answer/math/identity/multi-locus/systemic scope 불명 → FULL R1 → FULL R2 → R3_RETRY.

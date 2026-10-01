@@ -1,13 +1,43 @@
-## CURRENT HARD RULE — NORMAL-FIRST / DEFERRED R3 REENTRY (2026-10-01)
+## CURRENT HARD RULE — NO-IDLE / FLEX RESCUE (2026-10-01)
+
+- 활성 예약 lane에 eligible backlog가 있는데 반복 NO-OP 또는 장시간 무진행하는 상태를 정상으로 취급하지 않는다.
+- 예약 시각보다 늦게 실행되는 플랫폼 queue delay 자체는 stall 근거가 아니다. liveness는 **durable physical progress**로 판정한다.
+- 운영감시자는 매 run Git/physical receipt에서 CREATE-1/2/3 x/23 + remaining ordinals, REVIEW1/69, REVIEW2/69(Meta-only/Full), initial R3 disposition, ITEM_RECOVERY/post-R3 queue, LINE3 first-pass R2 x/3, automation별 enabled/latest actual run/latest durable progress를 재계산한다.
+- `eligible backlog > 0`인데 durable stage advancement가 **75분 이상 없고**, target branch/receipt/claim에도 **45분 이내 fresh 변화가 없으며**, primary worker in-flight 또는 competing claim도 없을 때만 `STALL_DETECTED / FLEX_RESCUE_REQUIRED`로 판정한다.
+- 조율자/FLEX RESCUE는 위 조건을 만족한 stalled CREATE/R1/R2/lane-local initial R3의 **oldest eligible 1시험지**만 해당 lane의 CURRENT protocol 그대로 대신 처리할 수 있다.
+- rescue 직전 `FLEX_CLAIM(lane, exam, inputSha, claimedAtKST)`을 기록하고 즉시 physical state를 재조회한다. primary worker 또는 다른 claim의 fresh 진행이 보이면 claim을 취소하고 mutation 0으로 종료한다.
+- `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_* / READY_FOR_R3_RETRY`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용, targeted R3_RETRY는 dedicated GPT R3 전용이다.
+- stale Notion selector만 믿고 backlog를 NO-WORK로 처리하지 않는다. physical receipt가 있으면 CURRENT를 정합화하고 진행한다.
+- non-global blocker 하나 때문에 전체 pipeline을 정지하지 않는다.
+- 활성 시간표의 정확한 시각은 Notion `JS Archive 예약 세션 운영 규칙 v2 — CURRENT`를 live authority로 사용한다. 2026-10-01 cutover에서 CREATE-2는 고등 8시험지와의 :20 충돌을 피하도록 분리되었다.
+
+## CURRENT HARD RULE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
 - 정상 `CREATE → R1 → R2 → initial R3` first-pass가 R3 FAIL 재작업보다 항상 우선한다.
-- R3 FAIL은 A/B/C `failureClass`와 route를 보존하되 `R3_FAIL_DEFERRED / DEFERRED_REENTRY_QUEUE`로 분리한다. 정상 first-pass eligible이 없거나 사용자 직접 지시가 있을 때만 reentry를 소비한다.
+- R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하지만 정상 R1/R2에 재진입시키지 않는다. **별도 Codex post-R3 repair/review 예약창이 first-pass lane과 병렬로 처리할 수 있다.** NORMAL-FIRST는 실패 시험지가 정상 first-pass lane의 우선순위를 빼앗지 않는다는 뜻이다.
 - R3 PASS만 `READY_FOR_CODEX_PUBLISH` 후보다. FAIL은 publish 금지이며 다른 시험지 흐름을 막지 않는다.
 - M3 CREATE-1/2/3은 자기 mod-3 partition CREATE가 current physical-evidence gate까지 100% 완료되는 순간 lane별로 TEMP R3로 전환한다. M3 REVIEW2 69/69 또는 다른 CREATE lane 완료를 기다리지 않는다.
 - partition initial R3 완료 기준은 각 시험지가 `R3_PASS` 또는 `R3_FAIL_DEFERRED` disposition을 갖는 것이다. 이후 해당 CREATE lane은 M1 CREATE를 재개할 수 있다.
 - M3 initial R3는 TEMP R3-1/2/3 전담이며 dedicated R3가 중복 소비하지 않는다.
 - 세부 failureClass 및 release audit는 `03_REVIEW/JS아카이브_3차검수_프로토콜.md`를 따른다.
 
+## CURRENT HARD RULE — POST-R3 LOCKED TARGETED RECOVERY (2026-10-01)
+
+- **initial R3가 시험지 전체를 보는 마지막 전수 release audit**다. initial R3 종료 artifact를 `R3_BASELINE`으로 동결한다.
+- R3 FAIL 이후에는 `failedQids[] / failedFiles[] / affectedFields[] / affectedAxes[] / directDependencies[]`만 OPEN한다. 그 밖의 문항·해설·SVG·Meta·difficulty·source·layout·asset은 `R3_LOCKED`다.
+- `R3_LOCKED` 영역은 다시 풀거나 의미검수하지 않는다. baseline blob/hash/diff 불변성만 확인한다.
+- legacy `FULL_REENTRY` code가 남아 있어도 whole-exam R1/R2/R3 재실행을 뜻하지 않는다. 실제 수리 범위는 packet의 OPEN locus가 결정한다.
+- OPEN 밖 dependency가 반드시 필요하면 자동 전체확대 대신 `SCOPE_EXPANSION_REQUIRED`로 필요한 qid/file/field와 dependency evidence만 추가한다.
+- R3 이후 defect-family 시험지 전체 N/N rescan, unrelated 전 문항 재풀이, 전 SVG/Meta 재검은 금지한다.
+- post-R3 전담 경로: `R3_FAIL_DEFERRED → CODEX_R3_REPAIR → CODEX_INDEPENDENT_REVIEW → READY_FOR_R3_RETRY → GPT_TARGETED_R3_RETRY → R3_RETRY_PASS → READY_FOR_CODEX_PUBLISH`.
+- Codex repair는 OPEN locus만 수정하고, Codex independent review는 changed/open locus만 독립검수 + `lockedScopeMutationCount=0`을 확인한다.
+- GPT `R3_RETRY`는 수정된 OPEN locus + direct dependency + LOCK 보존만 targeted regression 한다. initial R3 전수감사를 4차·5차로 반복하지 않는다.
+
+### CURRENT ownership
+- 정상 R1/R2는 first-pass 검수 전용이며 `R3_FAIL_DEFERRED`를 소비하지 않는다.
+- R3 deferred repair는 별도 Codex repair / independent-review 예약창이 병렬 처리한다.
+- `ITEM_RECOVERY_QUEUE`도 별도 Codex FINAL ITEM RECOVERY worker가 소비한다.
+- content-bearing current flow의 `ITEM_RECOVERY_DONE`은 `READY_FOR_R3`로 간다. `READY_FOR_COMMIT`만으로 publish하지 않는다.
 # JS아카이브 규칙 통합 인덱스
 
 이 문서는 `docs/rules/`의 단일 진입점이다. 규칙 원문을 무리하게 한 파일에 복사하지 않고, 기준 원본·작업 프로토콜·검수 프로토콜·특수 규정·역사 문서를 역할별로 분리한다.
@@ -48,6 +78,56 @@ CREATE / REVIEW1 / REVIEW2 / R3의 PASS/DONE은 `03_REVIEW/JS아카이브_PHYSIC
 - HOLD는 원본 자체가 없거나 판독 불능이고, 가능한 복원이 여러 개라 하나를 고르면 추측이 되는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
 - 특정 worker/runtime에서 binary crop 편집이 불편하다는 사실만으로 콘텐츠 HOLD를 만들지 않는다. 허용된 deterministic fallback으로 닫을 수 있으면 같은 stage에서 수리한다.
 
+#### A-1. CROP COMPLETENESS ≠ SOURCE-TRUTH SUFFICIENCY — HARD
+
+문제 이미지가 **완벽하게 넓게 잘렸는지**와 **그 문항의 source truth를 수학적으로 확정할 수 있는지**는 다른 판정이다.
+
+- image 파일이 실제로 존재하고, 현재 crop + 발문 + 보기 + 정답 + 보이는 기하 관계만으로 정답·풀이에 필요한 결정적 사실을 유일하게 확정할 수 있으면 `ITEM_HOLD` 금지다.
+- 꼭짓점 문자 하나, 선분 끝 일부, 여백, 장식, 이미 발문에 적힌 수치·관계가 crop 밖으로 조금 잘린 정도는 기본적으로 `ASSET_REPAIR_REQUIRED` 또는 `SOURCE_ASSET_OK_WITH_CROP_DEBT`다. 수학 truth가 막히지 않으면 HOLD가 아니다.
+- 반대로 잘린 픽셀 안에 **정답 또는 풀이를 결정하는 유일한 수치·기호·라벨 owner·직각/평행/접선/포함 관계**가 있고, 그 사실을 다른 source 축에서 유일하게 복구할 수 없을 때만 source-visual HOLD 후보가 된다.
+- 현재 worker/runtime가 full-page PDF/scan bytes를 열지 못했다는 사실 자체는 HOLD 사유가 아니다. 먼저 current main의 linked asset을 직접 읽고, 발문/보기/answer/visible geometry와 합쳐 source-truth sufficiency를 판정한다.
+- `SOURCE_ASSET_MISSING`은 **참조해야 할 asset 파일 자체가 실제로 없을 때만** 쓴다. 파일이 존재하지만 crop이 좁은 경우에는 이 reason code를 쓰지 않는다.
+- `SOURCE_ASSET_CROP_INCOMPLETE`는 기본적으로 repair/debt 상태이며 자동 `ITEM_HOLD` 코드가 아니다.
+
+source visual을 HOLD로 입장시키려면 다음 네 항목을 모두 증명해야 한다.
+
+1. `decisiveMissingFacts[]`: crop 밖으로 사라진 **결정적 source fact**가 무엇인지 구체적으로 적는다.
+2. `alternateEvidenceChecked[]`: content / choices / answer / 다른 visible geometry / existing source asset에서 그 사실을 유일하게 복구할 수 없는지 확인한다.
+3. `fullPageLookupResult`: full-page source를 실제로 찾았는지, 찾았는데도 판독 불능인지, 현재 runtime에서만 접근 실패인지 구분한다.
+4. `whyTruthStillNonDeterministic`: repair 또는 deterministic reconstruction 후에도 왜 하나의 truth로 닫히지 않는지 적는다.
+
+위 네 항목 중 하나라도 없으면 source-visual `ITEM_HOLD`는 무효다.
+
+권장 분류:
+
+```text
+SOURCE_ASSET_OK
+SOURCE_ASSET_OK_WITH_CROP_DEBT
+ASSET_REPAIR_REQUIRED
+SOURCE_TRUTH_BLOCKED   ← 이것만 ITEM_HOLD 후보
+```
+
+#### A-2. ITEM_RECOVERY는 HOLD를 상속하지 않고 다시 판정한다 — HARD
+
+`ITEM_RECOVERY_QUEUE`에 들어왔다는 사실은 **그 HOLD가 옳다는 증거가 아니다.**
+
+recovery worker는 held qid마다 latest main의 실제 bytes와 source/canonical을 다시 확인해 먼저 다음 중 하나로 재분류한다.
+
+- `FALSE_HOLD_NO_REPAIR_NEEDED`: 기존 artifact만으로 truth가 충분함 → content mutation 없이 HOLD만 제거.
+- `FALSE_HOLD_ASSET_REPAIR`: truth는 충분하지만 crop/가독성/파일참조 보정이 필요함 → 필요한 asset만 최소수리.
+- `TRUE_HOLD_REPAIRABLE`: 실제 결함이 있으나 deterministic repair로 닫힘 → 해당 qid만 수리.
+- `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`: 결정적 source fact가 실제로 없고 유일복구 불가 → 그때만 Direct Replacement 후보.
+
+upstream R1/R2의 hold reason을 그대로 실행 지시로 복사해 **모든 held qid를 무조건 수정하거나 대체하지 않는다.**
+### CURRENT regression fixture — 24 금당중 중3 2학기 중간 (2026-10-01)
+
+대상: `24_금당중_2학기_중간_중3_수학.js`.
+
+- current main에는 source image가 22/22 실제 존재했고 R1도 `source image direct inspection=22/22`, main blob parity 22/22 exact를 기록했다.
+- 그럼에도 q1/q2/q6/q9/q10/q12/q15/q17/q18/q22/q23 총 11건을 `SOURCE_ASSET_CROP_INCOMPLETE`로 HOLD 승격한 것은 **crop completeness와 source-truth sufficiency를 혼동한 과승격 사례**다.
+- 예를 들어 q10/q12/q22처럼 일부 라벨·끝부분이 잘려도 발문과 visible geometry만으로 필요한 수학 truth가 이미 결정되는 문항은 HOLD가 아니다.
+- 반대로 일부 문항은 실제 recrop/원본 확인이 필요할 수 있다. **정확한 true-HOLD subset은 recovery가 qid별로 다시 판정하며 11건 전체를 true HOLD로 상속하지 않는다.**
+- 이 사례 이후 source-asset HOLD는 반드시 `decisiveMissingFacts[]`와 `whyTruthStillNonDeterministic`를 가져야 한다.
 ### B. Meta / PT·TPL / RPM projection
 - `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
 - `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.
@@ -83,9 +163,9 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - CREATE/REVIEW는 긴 pipeline ceremony보다 **최종 artifact 품질**에 집중한다. Golden/Negative Sample + target 원본 + 작업에 직접 필요한 정본만 먼저 읽는다.
 - Git safety와 source exact, 수학 정확성, 학생용 해설, 이미지/SVG 품질, Meta/difficulty 전수 audit는 경량화 대상이 아니다.
 - CURRENT R3는 **MAIN 직전 release gate**다. R3는 repair stage가 아니며, CURRENT가 R3를 요구하는 release-bound flow에서 REVIEW2 이후 반드시 통과한다.
-- 현재 적용 대상은 2026 긴급 5시험지, 고등 SOURCE-ONLY PILOT-001, 그리고 M3 REVIEW2 69/69 뒤 CREATE-1/2/3이 임시 전환하는 M3 TEMP R3 campaign이다.
-- R3 FAIL 회귀는 `failureClass`로 고정한다: A `FULL_REENTRY`, B `TARGETED_R1_R2`, C `ASSET_ONLY`. 애매하면 A. B는 failed qid repair + defect-family N/N rescan + targeted blind recheck이며 unrelated 전 문항 수학 재풀이를 금지한다.
-- R3_RETRY는 어떤 class였든 latest repaired lineage에서 full release gate를 다시 닫는다.
+- current initial R3는 긴급/고등 release와 lane-local TEMP M3 R3에 적용한다. M3 TEMP R3는 각 CREATE partition이 physical-evidence-valid CREATE 100%가 되는 즉시 독립 전환한다.
+- initial R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하고 packet의 OPEN locus만 Codex post-R3 repair가 소비한다. legacy `FULL_REENTRY`가 있어도 whole-exam R1/R2 재실행으로 해석하지 않는다.
+- R3_RETRY는 changed/open locus + direct dependency + `R3_LOCKED` hash/diff 보존만 targeted regression 한다.
 
 ### NO EXAM PENDING / STAGE AUTHORITY CONTINUITY — CURRENT HARD RULE (2026-10-01)
 
@@ -109,7 +189,7 @@ CREATE / REVIEW1 / REVIEW2 / BATCH의 write recovery는 `02_PIPELINES/Archive_Au
 - CREATE에서 미해결 문항이 있어도 나머지 문항을 완료하고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다. CREATE 판단은 최종 판정이 아니며 REVIEW1이 held item을 처음부터 독립 재판정한다.
 - REVIEW1에서 남은 문항 HOLD는 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘기고 REVIEW2가 다시 독립 재판정한다.
 - REVIEW2 뒤에도 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`에 둔다. 시험지 HOLD 상태를 만들지 않는다.
-- `ITEM_RECOVERY_QUEUE`의 소비 주체는 기존 REVIEW2 lane이다. 각 lane은 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 item-recovery 시험지 1개의 **held qid만** 재판정한다. 시험지 전체 재검은 하지 않는다. 전부 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다.
+- `ITEM_RECOVERY_QUEUE`의 소비 주체는 **전용 Codex FINAL ITEM RECOVERY worker**다. 정상 REVIEW2 lane은 first-pass R2만 수행한다. Codex recovery는 HOLD 자체를 latest bytes에서 먼저 독립 재판정하고 TRUE HOLD만 최소수리/대체한다. 전부 해결되어 `itemHoldCount=0`이면 current content-bearing flow는 `ITEM_RECOVERY_DONE → READY_FOR_R3`로 승격한다.
 - BATCH/FINAL은 `itemHoldCount=0`인 시험지만 publish하고, held item이 남은 시험지는 publish pending으로 건너뛴다. 다른 시험지·lane·cohort 진행은 계속한다.
 - authority/connector/Git write 실패는 시험지 상태로 남기지 않는다. exact recovery artifact를 `stageArtifactRef`로 사용해 stage를 정상 완료하고, Git 전체 write capability가 막힌 경우에만 전역 blocker로 보고한다.
 - 문항 HOLD에는 최소 `qid/questionUid / reason / observedEvidence / unresolvedPoint / nextRequiredEvidenceOrCapability / createdStage / lastReviewedStage`를 남긴다.
@@ -117,6 +197,15 @@ CREATE / REVIEW1 / REVIEW2 / BATCH의 write recovery는 `02_PIPELINES/Archive_Au
 
 CURRENT full-solution-rewrite gate도 이 규칙을 따른다. 명시적 item hold가 있으면 해당 문항만 rewrite 미완을 허용하고 `solutionRewriteAttempted=N/N`, `solutionRewriteResolved=(N-H)/N`, `itemHoldQuestionIds=[...]`를 기록한다. 이 명시적 lineage가 있는 시험지는 N/N 완료 marker가 없다는 이유만으로 CREATE 전체를 되감거나 REVIEW 진입을 막지 않는다. REVIEW1/2가 held item을 독립 재시도하여 해결 즉시 HOLD를 제거한다.
 
+### ITEM RECOVERY HOLD REVALIDATION — CURRENT HARD RULE (2026-10-01)
+
+- `ITEM_RECOVERY_QUEUE`는 수정 지시 목록이 아니라 **HOLD 재판정 후보 목록**이다.
+- recovery worker는 latest main/current bytes에서 held qid를 먼저 독립 재판정하고, upstream R1/R2 hold reason은 마지막 compare에서만 참고한다.
+- `FALSE_HOLD_NO_REPAIR_NEEDED`면 파일 mutation 없이 HOLD만 제거한다.
+- `FALSE_HOLD_ASSET_REPAIR`면 수학 truth를 다시 만들지 않고 필요한 asset만 최소수리한다.
+- `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`가 독립 확인된 경우에만 Direct Replacement까지 간다.
+- full-page source를 현재 runtime이 못 열었다는 사실 자체는 HOLD 사유가 아니다.
+- 24 금당중 중3 2학기 중간의 11개 crop HOLD는 mandatory false-HOLD regression 사례다. 11건을 그대로 상속하지 말고 qid별로 source-truth sufficiency를 다시 판정한다.
 ### FINAL ITEM RECOVERY / DIRECT QUESTION REPLACEMENT — CURRENT HARD RULE (2026-09-30)
 
 REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대체는 `02_PIPELINES/Archive_Final_Item_Direct_Replacement_v1.md`를 적용한다.
@@ -128,7 +217,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 - 객관식은 보기 5개를 전수 검증하며 **③ default를 금지**한다. 현재 시험지에서 덜 쓰인 정답 위치를 우선하되 보기 자연성을 해치는 억지 배치는 금지한다.
 - 숫자형 보기는 같은 표현 체계와 자연스러운 규모를 유지하고 단독 outlier를 만들지 않는다. 오답은 실제 오류 경로에서 만든다.
 - 문항 교체 시 해당 qid의 Meta는 새 문제+새 solution 기준으로 fresh 재판정한다.
-- non-target qid는 불변이며, 완료 시험지는 `READY_FOR_COMMIT`까지만 올리고 main은 별도 writer가 담당한다.
+- non-target qid는 불변이며, current content-bearing flow의 완료 시험지는 `ITEM_RECOVERY_DONE → READY_FOR_R3`까지만 올린다. R3 PASS 전 main publish 금지다.
 
 ### ARCHIVE GOLDEN SAMPLE CALIBRATION — 공통 START HARD RULE (2026-09-28)
 
@@ -180,7 +269,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`는 **frozen legacy READY_FOR_R2E cohort / 과거 receipt·checkpoint 복구 전용**으로 보존한다. `MIDDLE_RECERT_2026-09-30_META_V2`의 신규 CURRENT 생산 경로에는 적용하지 않는다.
 
 - 현재 기존 시험지 경로: `CREATE → REVIEW1 → REVIEW2 → BATCH/FINAL → MAIN`.
-- held qid 복구는 별도 R2E cohort가 아니라 기존 REVIEW2 lane의 `ITEM_RECOVERY_QUEUE`가 소비한다.
+- held qid 복구는 legacy R2E가 아니라 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. 기존 REVIEW2 lane 소비 문구는 superseded다.
 - 신규 CREATE/REVIEW의 Meta는 Artifact-First META_V2 통합 계약에서 같은 시험지 작업으로 처리한다.
 - legacy R2E 문서의 `READY_FOR_R2E`, cohort HOLD grouping, R2E_FINAL/R2E_MAIN_FINAL은 새 CURRENT stage 이름이나 release authority로 재사용하지 않는다.
 

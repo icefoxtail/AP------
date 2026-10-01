@@ -1,5 +1,14 @@
 # Archive GPT Artifact-First Lightweight v1
 
+## CURRENT OVERRIDE — DEDICATED ITEM RECOVERY / POST-R3 LOCK (2026-10-01)
+- `ITEM_RECOVERY_QUEUE`는 기존 REVIEW2 lane이 아니라 **전용 Codex FINAL ITEM RECOVERY worker**가 소비한다.
+- HOLD는 수정 지시가 아니라 재판정 후보이며, latest bytes에서 FALSE/TRUE HOLD를 먼저 독립 재판정한다.
+- current content-bearing flow의 item recovery 완료 상태는 `ITEM_RECOVERY_DONE → READY_FOR_R3`다. `READY_FOR_COMMIT`만으로 publish하지 않는다.
+- initial R3가 시험지 전체를 보는 마지막 전수 release audit다.
+- R3 FAIL 이후는 별도 Codex repair + Codex independent review가 OPEN locus만 처리하고, GPT R3_RETRY도 changed/open locus + LOCK 불변성만 targeted regression 한다.
+- 정상 R1/R2는 R3 deferred repair를 소비하지 않는다.
+
+
 - 적용 시점: **중3 생산 라인부터**
 - 상태: ACTIVE / CURRENT RECERTIFICATION
 - 적용 대상: JS Archive 정상 시험지 CREATE / REVIEW1 / REVIEW2 / FINAL handoff
@@ -168,8 +177,8 @@ CURRENT CREATE receipt에는 반드시 `solutionRewrite=FULL_ALL_QUESTIONS`와 `
 - CREATE: 해결 가능한 결함은 즉시 수정한다. 해결 불가 문항만 item hold로 남기고 `CREATE_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW1_WITH_ITEM_HOLDS`로 넘긴다.
 - REVIEW1: CREATE의 hold 결론을 신뢰하지 않고 전체 문항과 held item을 처음부터 독립 검수한다. 해결되면 hold를 제거하고, 남으면 `REVIEW1_DONE_WITH_ITEM_HOLDS → READY_FOR_REVIEW2_WITH_ITEM_HOLDS`로 넘긴다.
 - REVIEW2: 다시 독립 재판정한다. 남으면 `REVIEW2_DONE_WITH_ITEM_HOLDS`로 stage 완료를 기록하고 held UID만 `ITEM_RECOVERY_QUEUE`로 보낸다. 시험지 전체 HOLD를 만들지 않는다.
-- ITEM recovery는 별도 시험지 격리 레인을 만들지 않는다. 기존 REVIEW2 lane이 정상 `READY_FOR_REVIEW2*`를 우선 처리하고, 자기 partition에 정상 eligible이 없을 때 가장 오래된 `ITEM_RECOVERY_QUEUE` 시험지 1개의 **held qid만** fresh 재판정한다. 해결된 qid만 제거하고, 모두 해결되어 `itemHoldCount=0`이면 `READY_FOR_COMMIT`으로 승격한다. 같은 미해결 근거를 새 evidence 없이 무한 반복하지 않는다.
-- BATCH/FINAL: item hold가 남은 시험지를 그 실행에서 건너뛰되 다른 시험지는 계속 처리한다. 해당 시험지는 item recovery가 끝나 `itemHoldCount=0`이 되면 `READY_FOR_COMMIT`으로 승격한다.
+- ITEM recovery는 전용 Codex FINAL ITEM RECOVERY worker가 가장 오래된 eligible 시험지 1건의 held qid만 처리한다. upstream HOLD를 그대로 믿지 않고 latest bytes에서 HOLD 자체를 재판정한다. 모두 해결되어 `itemHoldCount=0`이면 `ITEM_RECOVERY_DONE → READY_FOR_R3`로 승격한다.
+- BATCH/FINAL 또는 publish owner는 latest-lineage R3 PASS가 없는 content-bearing 시험지를 publish하지 않는다. item recovery가 끝났다는 사실만으로 MAIN_READY가 아니다.
 - authority/connector/Git write 실패는 시험지 단위 상태로 남기지 않는다. primary write가 막히면 exact recovery ref/commit/blob을 `stageArtifactRef`로 사용해 stage를 정상 DONE*으로 닫는다. 어떤 exact artifact도 저장할 수 없는 Git 전역 장애만 `GLOBAL_WRITE_CAPABILITY_BLOCKER`로 보고하며 다른 eligible 작업은 계속한다.
 
 각 item hold 최소 기록: `questionUid/qid`, `reason`, `observedEvidence`, `unresolvedPoint`, `nextRequiredEvidenceOrCapability`, `createdStage`, `lastReviewedStage`.
@@ -363,9 +372,9 @@ M3부터 레인 골격은 유지할 수 있다.
 CREATE
 → REVIEW1
 → REVIEW2
-→ BATCH/FINAL mechanical handoff
-→ MAIN
-→ SVG FINAL AUDIT
+→ initial R3
+→ PASS: READY_FOR_CODEX_PUBLISH → MAIN
+→ FAIL: R3_FAIL_DEFERRED → Codex repair → Codex independent review → targeted R3_RETRY
 ```
 
 단, CREATE/REVIEW 프롬프트는 본 문서의 Artifact-first 짧은 지시를 사용한다.

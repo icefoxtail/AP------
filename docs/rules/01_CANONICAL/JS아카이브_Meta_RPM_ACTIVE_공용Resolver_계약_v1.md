@@ -13,10 +13,11 @@
 ```text
 current source + independently verified final student solution
 → decision-isolated semantic judgement
-→ RPM Primary README → CANONICAL_MASTER → exact curriculum/scope view
-→ exact RPM L3/L4 path
+→ RPM Primary README → CANONICAL_MASTER → current curriculum/scope view
+→ current scope에 exact path가 없으면 allowed prerequisite lower-scope view를 lower-only로 조회
+→ current 또는 prerequisite RPM L3/L4 path
 = RPM_SEMANTIC_FINAL
-→ exact grade/subject crosswalk
+→ semantic source-scope crosswalk + target grade/subject GLOBAL ACTIVE/binding projection
 → GLOBAL ACTIVE PT/TPL + binding projection lookup
 → projectionStatus(PROJECTION_REUSE / PROJECTION_BINDING_PENDING / PROJECTION_UNMATERIALIZED / META_ONLY_COMPATIBILITY_PENDING)
 → separate fresh difficulty blind pass
@@ -25,6 +26,21 @@ current source + independently verified final student solution
 ```
 
 **RPM L3/L4가 deterministic하게 확정되는 순간 semantic classification은 FINAL이다.** crosswalk/PT/TPL/binding은 그 semantic을 기존 machine-key consumer에 투영하는 compatibility layer이며, projection gap은 semantic HOLD가 아니다.
+
+### 1.1 Lower-only prerequisite scope fallback
+
+현재 scope의 RPM에 exact semantic path가 없다는 사실만으로 HOLD하지 않는다. resolver 입력의 `rpmPath.scope`는 target `curriculumContext.scope`와 같거나, 아래 조건을 만족하는 **이미 이수한 prerequisite scope**일 수 있다.
+
+- M1 target: higher middle scope 금지.
+- M2 target: M1 허용, M3 금지.
+- M3 target: M1/M2 허용.
+- H1 target: M1/M2/M3 허용, H2+ 금지.
+- 중등의 같은 학년에서는 현재 학기보다 앞선 scope만 허용한다. H1은 `수학_상 → 수학_하`, `공통수학1 → 공통수학2`의 선행 방향만 허용한다.
+- H2+는 lower grade/band를 허용하되 같은 학년의 다른 과목을 자동 prerequisite로 간주하지 않는다.
+
+lower-scope semantic을 사용해도 target `standardCourse/standardUnitKey/subUnitKey`는 바꾸지 않는다. evidence에는 `semanticScopeRelation=CURRENT_SCOPE|PRIOR_SAME_GRADE_SCOPE|LOWER_GRADE_PREREQUISITE`, target scope, semantic source scope를 함께 남긴다. projection은 semantic source crosswalk로 canonical PT/TPL 후보를 찾되, **binding은 target current L1/L2에서 다시 검증**한다. target binding이 없으면 `PROJECTION_BINDING_PENDING`이며 semantic HOLD가 아니다.
+
+future/higher scope를 lower grade 문항에 넣으면 `META_RPM_FUTURE_OR_UNRELATED_SCOPE_FORBIDDEN`으로 거부한다.
 
 Semantic first pass는 source identity, content/choices/image reference hash, verified solution hash, curriculum/L1/L2, `primaryMethod`, `decisiveStep`만 사용한다. same-stage candidate의 `problemTypeKey`, `templateKey`, CrossConcept/Condition suggestion, 이전 verdict, heuristic/tag-enrichment 결과는 입력하지 않는다.
 
@@ -38,10 +54,10 @@ Resolver 입력은 `sourceIdentity`, `solutionIdentity`, `curriculumContext`, `s
 - canonical `sourceIdentityKey` alongside `questionUid`; both refer to the same frozen source UID, and `questionUid` must be the canonical file/ordinal UID
 - `contentHash`, `choicesHash`, `imageRefHash`, `sourceFingerprint`
 - `solutionIdentity.status=VERIFIED_FINAL`, `independentVerification=true`, `solutionHash`
-- `curriculum`, `grade`, RPM `scope`, `standardUnitKey`, `subUnitKey`
-- semantic `primaryMethod`, `decisiveStep`, RPM L3/L4 path
+- `curriculum`, `grade`, target RPM `scope`, `standardUnitKey`, `subUnitKey`
+- semantic `primaryMethod`, `decisiveStep`, RPM L3/L4 path. `rpmPath.scope`는 target scope 또는 허용된 prerequisite lower scope일 수 있다.
 
-Resolver 출력은 RPM path/L3/L4와 **`semanticStatus`**, 실제 crosswalk file·row/status, 기존 ACTIVE PT/TPL/binding projection과 **`projectionStatus`**, `sourceFingerprint`, `inputBundleSha`, authority file hashes, `evidenceSha`를 포함한다. semantic status와 projection status를 하나의 HOLD/disposition으로 합치지 않는다. `build-rpm-active-resolution.mjs`는 독립 judgement input에서 resolver 결과와 validation receipt를 생성한다. 각 검수/repair/R2E 단계는 같은 resolver 결과를 UID와 SHA로 결속한다.
+Resolver 출력은 RPM path/L3/L4와 **`semanticStatus`**, `semanticScopeRelation`, target/semantic source scope, 실제 crosswalk file·row/status, 기존 ACTIVE PT/TPL/binding projection과 **`projectionStatus`**, `sourceFingerprint`, `inputBundleSha`, authority file hashes, `evidenceSha`를 포함한다. semantic status와 projection status를 하나의 HOLD/disposition으로 합치지 않는다. `build-rpm-active-resolution.mjs`는 독립 judgement input에서 resolver 결과와 validation receipt를 생성한다. 각 검수/repair/R2E 단계는 같은 resolver 결과를 UID와 SHA로 결속한다.
 
 ## 3. Disposition
 
