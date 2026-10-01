@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_TARGETED_REPAIR_LEDGER_v1",
+  "generation": "2026_2MID_TEMP_LINE3",
+  "stage": "REVIEW1_TARGETED_REPAIR_DONE",
+  "reviewedAtKst": "2026-10-01T10:56:55+09:00",
+  "examId": "26_매산고_2학기_중간_고1_기출",
+  "reentryFrom": "R3_RETRY_FAIL",
+  "reentryMode": "TARGETED",
+  "failureClass": "TARGETED_R1_R2",
+  "r3FailurePacketRef": "archive-work/line3/2026-2mid-review3/26_매산고_2학기_중간_고1_기출/r3.retry.fail.packet.20261001-1037.json",
+  "packetFinding": {
+    "failedQids": [
+      3
+    ],
+    "failureCode": "SOLUTION_VISUAL_STUDENT_LABEL_EXACTNESS",
+    "observed": "q3-solution.svg exposed derived intersection P(0.9,4.7) as rounded student-facing coordinate label",
+    "authority": "exact intersection of y=3x+2 and y=-x/3+5 is (9/10,47/10)"
+  },
+  "repairQids": [
+    3
+  ],
+  "repair": {
+    "file": "archive/assets/images/26_매산고_2학기_중간_고1_기출/q3-solution.svg",
+    "oldBlob": "fcb4830e1212a375038776f52e640ec22dfb01f1",
+    "newBlob": "1066c94ae93ddc11174a1dc23b4949f1fb6826de",
+    "oldLabel": "P(0.9,4.7)",
+    "newLabel": "P(9/10,47/10)",
+    "semanticChange": false
+  },
+  "familyRescan": {
+    "axis": "SOLUTION_VISUAL_STUDENT_FACING_DECIMAL_COORDINATE_LABEL",
+    "qids": [
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      17,
+      18,
+      19,
+      21
+    ],
+    "count": "14/14",
+    "beforeDefects": [
+      3
+    ],
+    "afterDefects": [],
+    "result": "PASS"
+  },
+  "protectedFields": {
+    "examBlobBefore": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+    "examBlobAfter": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
+    "sourceContentChoicesAnswerSolution": "UNCHANGED",
+    "sourceIdentity": "UNCHANGED",
+    "metadataDifficulty": "UNCHANGED"
+  },
+  "r1OutputArtifactSha": "e7f054911403216e3c3a2a48a906cf61579e2735",
+  "itemHoldCount": 0,
+  "nextOwner": "R2_TARGETED_INDEPENDENT_RECHECK",
+  "mainMutation": false,
+  "sourceAuthorityMutation": false
+}
