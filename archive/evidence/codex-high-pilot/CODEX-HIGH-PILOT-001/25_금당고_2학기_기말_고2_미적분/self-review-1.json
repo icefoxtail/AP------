@@ -1,0 +1,199 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "stage": "SELF_REVIEW_1",
+  "status": "MATH_PASS_WITH_ITEM_HOLD",
+  "denominator": 21,
+  "mathAnswerSolutionChecks": 20,
+  "heldQids": [
+    15
+  ],
+  "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
+  "reviewedArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "reviewedArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
+  "axes": [
+    "source ↔ solution math",
+    "answer alignment",
+    "intermediate calculations",
+    "conditions",
+    "case splits",
+    "curriculum scope",
+    "existence/possibility",
+    "written reasoning"
+  ],
+  "itemHold": {
+    "qid": 15,
+    "code": "SOURCE_MATH_NO_CHOICE_MATCH",
+    "derivation": "(f(x)/x)'=3xe^{x²}; f(1)=0 gives f(2)=3(e⁴−e), which is absent from choices ①–⑤. No source repair was inferred."
+  },
+  "items": [
+    {
+      "qid": 1,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|1",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Differentiate each listed rule; only implicit derivative item ④ is correct."
+    },
+    {
+      "qid": 2,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|2",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Tangent slope condition yields contact x=1 and line y=x+2."
+    },
+    {
+      "qid": 3,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|3",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Velocity and position are correct; acceleration is (2,2), so item ③ is false."
+    },
+    {
+      "qid": 4,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|4",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Critical point x=0 and both endpoints compared; max e^-3+3, min 1."
+    },
+    {
+      "qid": 5,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|5",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "tan²x=sec²x−1 makes item ③ the only incorrect antiderivative."
+    },
+    {
+      "qid": 6,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|6",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "u=x² gives (e⁴−1)/2."
+    },
+    {
+      "qid": 7,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|7",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Integration by parts and initial value give e²+4."
+    },
+    {
+      "qid": 8,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|8",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Right-endpoint Riemann sum converges to ∫₀¹x⁴dx=1/5."
+    },
+    {
+      "qid": 9,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|9",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Tangent through (-2,0) touches x=-1; line y=-x-2."
+    },
+    {
+      "qid": 10,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|10",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Alternating sum 1−2+…+9−10 equals −5."
+    },
+    {
+      "qid": 11,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|11",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "f(6)=3 and f'(6)=1/3, so inverse derivative gives 6+3=9."
+    },
+    {
+      "qid": 12,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|12",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Inflection x=2; tangent intercepts (4,0),(0,4/e²), area 8/e²."
+    },
+    {
+      "qid": 13,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|13",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Derivative definition and FTC give sin(π/3)−sin(π/6)."
+    },
+    {
+      "qid": 14,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|14",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Substitution u=lnx+10 gives increment 2; result 12."
+    },
+    {
+      "qid": 15,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|15",
+      "sourceParity": "PASS",
+      "answerDisposition": "ITEM_HOLD",
+      "solutionDisposition": "ITEM_HOLD"
+    },
+    {
+      "qid": 16,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|16",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "For t<1, g'<0; opposite-direction interval determines a=1/2."
+    },
+    {
+      "qid": 17,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|단답형 1",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Logarithmic derivative at zero is 11/2; prefactor 2 gives 11."
+    },
+    {
+      "qid": 18,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|단답형 2",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Parametric derivative gives −2sec³(π/3)=−16."
+    },
+    {
+      "qid": 19,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 1",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Differentiate twice, use f(0)=e⁴ and solve f'=f to get f(-2)=e²."
+    },
+    {
+      "qid": 20,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 2",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "a_n=−1/(n+1); telescoping products sum to 1/2."
+    },
+    {
+      "qid": 21,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 3",
+      "sourceParity": "PASS",
+      "answerDisposition": "PASS",
+      "solutionDisposition": "PASS",
+      "freshMathCheck": "Conditions give a=-2,b=2 and f(x)=((x-1)^2+1)e^x, while f'(x)=x^2e^x. Thus f is strictly increasing with range (0,∞); its inverse is valid on that range, including e. Differentiating g(f(x))=f'(x) gives g'(e)=3 and product rule gives h'(e)=4."
+    }
+  ],
+  "q21Recheck": "PASS_AFTER_RECHECK"
+}

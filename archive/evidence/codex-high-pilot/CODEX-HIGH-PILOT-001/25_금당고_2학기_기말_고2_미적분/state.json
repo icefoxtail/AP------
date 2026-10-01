@@ -5,35 +5,158 @@
   "branch": "work/high-source8-r2",
   "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
   "observedRemoteBranchHead": "5f306e74840e92ef45131c5c04abcce027ac06b4",
-  "latestOriginMain": "d9a4d5e24a605dfba856d88e4547806393ad32fd",
+  "latestOriginMain": "ca2910c12845bcdcf86ea1dd021ec27ac1136190",
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
-  "lastDurableStage": "ANSWER",
-  "currentStage": "SOLUTION",
-  "nextStage": "SOLUTION",
+  "lastDurableStage": "GOLDEN_COMPARE",
+  "currentStage": "VISUAL",
+  "nextStage": "VISUAL",
   "artifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
-  "artifactSha256": "f5f18b3f41eab8f735c8819dd4a06928b65ff861f37073c077bee5b2542c5434",
+  "artifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
   "denominator": 21,
   "resolvedAnswerCount": 20,
   "solutionCount": 0,
   "itemHoldQids": [
     15
   ],
-  "calibrationStatus": "PENDING_GOLDEN_SEARCH",
+  "calibrationStatus": "PILOT_BLOCKED_CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
   "blocker": {
-    "qid": 15,
-    "code": "SOURCE_MATH_NO_CHOICE_MATCH",
-    "detail": "Fresh derivation gives 3(e^4-e), which matches none of the frozen choices; source remains unchanged."
+    "code": "CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
+    "detail": "Latest-main samples were read; however the pinned checkout uses CRLF bytes that fail raw SHA/blob binding and lacks the required Bokseong negative fixture plus the calibration helper. The mandated VISUAL_REPAIR preflight failed. No unrelated files or main were mutated.",
+    "gateEvidence": "calibration-preflight.json"
   },
-  "examTerminalStatus": null,
+  "examTerminalStatus": "PILOT_BLOCKED_CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
   "evidence": {
     "answer": "answer.json",
-    "solutionSelfReview": null,
-    "goldenCalibration": null,
-    "visual": null,
+    "solutionSelfReview": "self-review-1.json; self-review-2.json",
+    "goldenCalibration": "golden-calibration.json",
+    "visual": "visual-evidence.json (triage complete; q12 SVG not built)",
     "meta": null,
-    "independentReview": null,
-    "release": null
+    "independentReview": "independent-review.json (partial fresh math/answer check; lifecycle stage not reached)",
+    "release": null,
+    "calibrationPreflight": "calibration-preflight.json"
   },
-  "unrelatedMutationCount": 0
+  "unrelatedMutationCount": 0,
+  "resolvedSolutionCount": 20,
+  "unfinishedSolutionQids": [
+    15
+  ],
+  "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
+  "selfReview1Status": "MATH_PASS_WITH_ITEM_HOLD",
+  "repairNote": null,
+  "selfReview2Status": "STUDENT_PASS_WITH_ITEM_HOLD",
+  "attemptedStage": "GOLDEN_COMPARE_MANUAL_AND_VISUAL_PREFLIGHT",
+  "unfinishedQids": {
+    "solution": [
+      15
+    ],
+    "visual": [
+      12
+    ],
+    "meta": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "independentReview": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "release": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ]
+  },
+  "blockedAtStage": "VISUAL",
+  "manualGoldenCompareStatus": "PASS_ON_20_RESOLVED_QIDS",
+  "lastDurableCommitBeforeBlockedCloseout": "546640c52e83d1f9763da8df04267c513e007b9a",
+  "authorityRefs": [
+    {
+      "path": "docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md",
+      "gitBlobSha": "bf5b8a1b6d7488d30b4b1ced5fbe6853001c9d75"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md",
+      "gitBlobSha": "a236279d4078647ae73f715e20698d709abb7c80"
+    },
+    {
+      "path": "docs/rules/02_PIPELINES/Archive_GPT_Artifact_First_Lightweight_v1.md",
+      "gitBlobSha": "b6dd7c796af39d36352fdbcc997633908d188e2f"
+    },
+    {
+      "path": "docs/rules/04_VISUAL/도형추출.md",
+      "gitBlobSha": "60ef59ad5990a2ea2a6fbccd479859710d6f2ece"
+    }
+  ],
+  "commitSha": null,
+  "independentReviewStageStatus": "NOT_REACHED_BLOCKED_BEFORE_META",
+  "pendingMetaQids": [
+    17
+  ],
+  "progressCommits": [
+    {
+      "stage": "ANSWER",
+      "sha": "74acd9b45b14befe827aecf15f1f45c524f3ec6b"
+    },
+    {
+      "stage": "SOLUTION",
+      "sha": "546640c52e83d1f9763da8df04267c513e007b9a"
+    }
+  ]
 }

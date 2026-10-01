@@ -1,0 +1,64 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "scope": "Fresh read-only independent answer/math/student solution check; this is evidence from the worker, but the lifecycle INDEPENDENT_REVIEW stage is not closed.",
+  "denominator": 21,
+  "answerMathReview": "21/21 source questions independently solved from content/choices before comparing stored values.",
+  "answers": {
+    "15": "ITEM_HOLD: 3(e^4-e) not among frozen choices",
+    "1-14": [
+      "④",
+      "①",
+      "③",
+      "⑤",
+      "③",
+      "②",
+      "④",
+      "①",
+      "②",
+      "②",
+      "②",
+      "④",
+      "③",
+      "③"
+    ],
+    "16-21": [
+      "①",
+      "$11$",
+      "-16",
+      "$e^2$",
+      "$1/2$",
+      "$4$"
+    ]
+  },
+  "findings": [
+    {
+      "qid": 15,
+      "severity": "ITEM_HOLD",
+      "code": "SOURCE_MATH_NO_CHOICE_MATCH",
+      "detail": "(f/x)'=3xe^(x²), f(1)=0 gives f(2)=3(e^4-e); no listed choice matches."
+    },
+    {
+      "qid": 21,
+      "severity": "PASS_AFTER_RECHECK",
+      "detail": "Correct function is f=(x²−2x+2)e^x; f'=x²e^x. f is strictly increasing with range (0,∞); inverse is valid at e and h'(e)=4. Initial contrary note confused f and f'; corrected independently."
+    },
+    {
+      "qid": 17,
+      "severity": "META_FOLLOWUP",
+      "detail": "Source-only metadata has blank category/unit fields; Meta stage should resolve against current ACTIVE canonical semantic."
+    }
+  ],
+  "scopeFindings": {
+    "sourceQuestionCount": "21/21 across four pages",
+    "contentChoicesSourceCheck": "21/21",
+    "curriculum": "2015 high-school Calculus",
+    "studentReproducibility": "19 resolved qids concise and sufficient; q21 solution updated to state inverse domain/range.",
+    "jsSyntax": "node --check passed in worker review",
+    "runtimeTeX": "balanced dollar delimiters reported by worker; browser rendering not tested.",
+    "visual": "Not stage-reviewed; no solution SVG was added.",
+    "meta": "Not stage-reviewed; q17 metadata gap noted.",
+    "protectedSourceFields": "No issue reported."
+  },
+  "agentStatus": "Corrected q21 finding; read-only; no files modified."
+}
