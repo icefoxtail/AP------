@@ -4,7 +4,7 @@
   "classification": "SYSTEM_DEFECT_CANDIDATE",
   "candidate": "solution-calibration-gate.mjs computes SHA-256 and Git blob SHA from raw Windows checkout bytes; Git clean-filter blob SHA differs for CRLF checkout files.",
   "evidence": {
-    "latestMain": "ca2910c12845bcdcf86ea1dd021ec27ac1136190",
+    "latestMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
     "helperPath": "archive/tools/solution-calibration-gate.mjs",
     "helperMainSha256": "sha256:fc5230b62afbec3146ee1669a143910b667ed0377f04f90b0f7b255e283af98d",
     "checkoutHelperPresent": false,
@@ -32,5 +32,6 @@
   },
   "impact": "A Windows checkout using CRLF may fail calibration refs despite Git-clean blobs matching latest main. This blocks this exam’s Visual preflight. The absent negative fixture is a separate pinned-baseline availability issue.",
   "scope": "Evidence only; no shared helper, canonical rule, global fixture, other sample, or other exam was modified.",
-  "next": "Investigate only in a separately authorized shared-system task; this exam remains stopped at VISUAL."
+  "next": "Investigate only in a separately authorized shared-system task; this exam remains stopped at VISUAL.",
+  "latestVisualRuleGitBlobSha": "08cfc834e3dae9838000880baaf983a685dece51"
 }

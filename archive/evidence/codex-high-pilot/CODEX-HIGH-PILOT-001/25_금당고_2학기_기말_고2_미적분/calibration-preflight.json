@@ -5,7 +5,7 @@
   "stageAttempt": "VISUAL_REPAIR_CALIBRATION_PREFLIGHT",
   "targetArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
   "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
-  "latestOriginMain": "ca2910c12845bcdcf86ea1dd021ec27ac1136190",
+  "latestOriginMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
   "gateResult": {
     "ok": false,
     "stage": "VISUAL_REPAIR",
@@ -28,5 +28,10 @@
   "nextStage": "VISUAL",
   "terminalStatus": "PILOT_BLOCKED_CALIBRATION_PREFLIGHT_INPUT_NOT_IN_LOCKED_BRANCH",
   "note": "The latest main artifacts were read and SHA-bound. The canonical helper failed against the pinned worktree. Satisfying it would require importing unrelated canonical files/fixtures or changing the pinned baseline, both outside this exam-only scope.",
-  "systemDefectCandidate": "system-defect-candidate.json"
+  "systemDefectCandidate": "system-defect-candidate.json",
+  "latestMainVisualRule": {
+    "path": "docs/rules/04_VISUAL/도형추출.md",
+    "gitBlobSha": "08cfc834e3dae9838000880baaf983a685dece51",
+    "changeSummary": "Clarifies source problem PNG versus instructional solution SVG; q12 has no source visual and candidate work is solution-only."
+  }
 }
