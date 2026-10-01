@@ -40,7 +40,13 @@
 
 ## 1. Stage 완료를 열 수 있는 최소 물리 증거
 
-CREATE/R1/R2/R3에서 `*_DONE`, `PASS`, `READY_FOR_*`, `R3_PASS`를 기록하려면 다음이 모두 필요하다.
+CREATE/R1/R2/R3에서 완료 상태를 기록하려면 다음이 모두 필요하다.
+
+- **무결함 완료:** `*_DONE / PASS / READY_FOR_* / R3_PASS`
+- **문항별 미해결을 명시한 완료:** CREATE/R1/R2에 한해 `*_DONE_WITH_ITEM_HOLDS` 허용. 단 HOLD가 있는 모든 qid/axis는 아래 HOLD physical evidence를 완전하게 가져야 한다.
+- **R3 release:** `itemHoldCount=0`만 허용한다. HOLD가 하나라도 있으면 R3 PASS 금지.
+
+시간 부족·검수 미완료는 ITEM_HOLD가 아니다. 이 경우 checkpoint만 남기고 stage 완료 receipt를 만들지 않는다.
 
 1. 최종 exam artifact path + SHA
 2. denominator `questionCount=N`
@@ -85,7 +91,9 @@ worker가 `N/N`을 직접 입력했다고 해서 위 조건을 대체할 수 없
 - `difficulty`
 - `runtimeString`
 
-각 축의 PASS는 최소 다음 두 값을 가져야 한다.
+각 축은 `PASS` 또는 명시적 `HOLD`다.
+
+PASS 최소형:
 
 ```json
 {
@@ -94,7 +102,24 @@ worker가 `N/N`을 직접 입력했다고 해서 위 조건을 대체할 수 없
 }
 ```
 
-`status=PASS`인데 `evidence`가 비어 있으면 PASS가 아니다.
+HOLD 최소형:
+
+```json
+{
+  "status": "HOLD",
+  "holdEvidence": {
+    "reason": "실제 reason code",
+    "observedEvidence": "직접 확인한 source/math/asset 사실",
+    "unresolvedPoint": "현재 유일하게 닫히지 않은 점",
+    "nextRequiredEvidenceOrCapability": "무엇이 추가되면 닫히는지",
+    "repairAttempted": "실제로 시도한 deterministic repair",
+    "authorityLookupAttempted": "실제로 조회한 source/canonical/binding",
+    "whyDeterministicClosureImpossible": "왜 추측 없이 닫을 수 없는지"
+  }
+}
+```
+
+`status=PASS`인데 evidence가 비어 있으면 PASS가 아니고, `status=HOLD`인데 위 holdEvidence가 불완전하면 유효한 HOLD가 아니다.
 
 한 축의 PASS로 다른 축의 결함을 덮지 않는다.
 
@@ -359,6 +384,8 @@ stage DONE receipt는 최소 다음을 가리킨다.
 ```
 
 `evidenceGateStatus=PASS`는 worker가 임의로 쓰는 값이 아니다. validator `ok=true` 결과에 결속한다.
+
+CREATE/R1/R2에서 명시적 item hold가 있는 경우 validator는 `disposition=PASS_WITH_ITEM_HOLDS`를 낼 수 있다. 이는 **stage evidence가 완전하다는 뜻이지 held qid가 PASS라는 뜻이 아니다.** R3는 `PASS_WITH_ITEM_HOLDS`를 허용하지 않는다.
 
 ---
 
