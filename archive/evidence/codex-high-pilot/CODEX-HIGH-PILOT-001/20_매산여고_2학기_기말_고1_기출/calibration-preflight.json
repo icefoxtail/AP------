@@ -1,0 +1,95 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "GOLDEN_COMPARE_PREFLIGHT",
+  "preflightStatus": "PASS",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256AtPreflight": "sha256:40989d121d134568d174a5fc0c5a93e4aa24b75042dd5ebc3d14dd74ebc7f651",
+  "denominator": 22,
+  "sampleReadBeforeWork": true,
+  "sampleReadBeforeTargetSolutionWrite": true,
+  "targetSourceOnlyFreshAnswerAuthority": "answer.json; 22/22 independently derived from frozen source content, choices, and inspected pixels.",
+  "solutionWorkMode": "Fresh source-only solution draft, calibrated against 2025 H1 mathematics examples before writing solution fields into the target JS.",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+      "representativeQuestions": [
+        {
+          "qid": 11,
+          "solutionSha256": "sha256:89e7a184700b58dc26e660db8aae01aa94ae0f06353b90c6e007ced375495ab6",
+          "solutionExcerpt": "두 집합의 식이 뜻하는 포함관계부터 바꾸어 생각한다.",
+          "observation": "Restates set equations as inclusions, then enumerates free element choices and the resulting power count."
+        },
+        {
+          "qid": 17,
+          "solutionSha256": "sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145",
+          "solutionExcerpt": "세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.",
+          "observation": "Names the complete failure cases first, separates parallel-pair cases from concurrency, and shows each equation chain."
+        },
+        {
+          "qid": 23,
+          "solutionSha256": "sha256:309880c00afd7d04fd63b9827e9a7536ea3167c345e9db40adc1298fd0a2215c",
+          "solutionExcerpt": "먼저 선분 $OA$의 길이를 구한다.",
+          "observation": "Makes the needed length and right-triangle intermediates explicit before comparing the two geometric cases."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+      "representativeQuestions": [
+        {
+          "qid": 14,
+          "solutionSha256": "sha256:d5eb924d91802b5ffe0c564517765757fe7ea9feef3d661ba2f2e6de6b4021bd",
+          "solutionExcerpt": "점 $I$는 삼각형 $ABC$의 내심이므로 직선 $AI$는 $\\angle A$의 이등분선이다.",
+          "observation": "Links the named point to its defining theorem, then computes the ratio and both coordinates in small steps."
+        },
+        {
+          "qid": 21,
+          "solutionSha256": "sha256:3b1db3c72a8f0fe52b66865319ba4b7a57c7374a8e2b7ec36cd3bbed18364ac9",
+          "solutionExcerpt": "점 $C$는 직선 $AB$ 위에 있으므로 위치를 나누어 생각해야 한다.",
+          "observation": "Explicitly splits the interior and exterior positions on a line and checks both against the distance ratio."
+        },
+        {
+          "qid": 22,
+          "solutionSha256": "sha256:dad0755c418396e902dbf3ee158569f0d8a4917afb5ca39d25619f8de1532514",
+          "solutionExcerpt": "반지름을 $r$이라고 하자.",
+          "observation": "Separates center-sign cases, eliminates impossible roots, and rationalizes the final distance."
+        }
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+      "observation": "Read the cross-axis regression requirements for real SVG geometry, independent statement blocks, active Meta mappings, and runtime TeX/source escapes."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+      "sha256": "sha256:7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+      "gitBlobSha": "3598d979a174c87faf66ef93aadb962b2047b5df",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5",
+      "observation": "Read the SVG primitive coordinates: the line label claims slope −7, but the rendered line from (65,356) to (520,31) has slope −5/7. Text labels alone do not establish geometric parity."
+    }
+  ],
+  "sampleReadBeforeTargetSolutionWrite": true,
+  "qualityCompareCount": null,
+  "calibrationStatus": "PREFLIGHT_PASS; FINAL_22_ITEM_COMPARE_PENDING"
+}
