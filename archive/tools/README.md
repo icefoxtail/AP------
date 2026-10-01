@@ -19,6 +19,38 @@ and final aggregation. Historical batch PASS and successful extraction are not
 release authority. The core covers visual, original, textbook, ALIVE and metadata
 routes while preserving their distinct algorithms and review scopes.
 
+## review-evidence-gate.mjs
+
+CREATE / R1 / R2 / R3의 PASS/DONE 자기보고를 item-level physical evidence로 검증하는 공용 fail-closed gate다.
+
+```bash
+node archive/tools/review-evidence-gate.mjs \
+  --exam archive/exams/original/.../시험지.js \
+  --evidence <physical-evidence.json> \
+  --stage CREATE|R1|R2|R3
+```
+
+검사:
+- final exam SHA + question denominator
+- qid별 source/math/small-board/curriculum/visual/meta/difficulty/runtime evidence
+- runtime doubled TeX escape
+- ㄱ/ㄴ/ㄷ 등 enumerated small-board block
+- linked solutionImage ↔ visual evidence row 및 asset SHA
+- SVG PASS의 physical method(`COORDINATE_COMPUTE / TOPOLOGY_COMPUTE / SOURCE_PIXEL / TARGETED_RENDER`)
+- Meta null reason / `META_NULL_BUT_RESOLVABLE`
+- R2 blind freeze / R3 fresh-byte independence
+- summary count가 item rows와 일치하는지
+
+`ok=false`이면 stage PASS/DONE 금지.
+
+회귀 테스트:
+
+```bash
+node archive/tools/review-evidence-gate.test.mjs
+```
+
+정본 계약: `docs/rules/03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`.
+
 ## exam-lint.mjs
 
 기출 JS 파일의 구조·표기를 자동 검수한다. 룰북 §14의 **1차 게이트**에 해당한다.
