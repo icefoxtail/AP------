@@ -1,0 +1,262 @@
+{
+  "schemaVersion": "LINE3_REVIEW2_BLIND_EVIDENCE_V1",
+  "examKey": "26_왕운중_2학기_중간_중2_기출",
+  "stage": "REVIEW2_BLIND_EVIDENCE_FREEZE",
+  "reviewMode": "NORMAL_FULL_INDEPENDENT",
+  "reviewLane": "LINE3",
+  "review2Branch": "work/line3/26-wangun-m2-2mid-review2-20261001",
+  "inputR1FinalArtifactSha": "ef43f55cfbc82e0821786d151fb3ee8d30ba1843",
+  "inputR1SealedHead": "314de2cabcdb8bdc0eb701095d4cce275839ebee",
+  "blindDecisionFrozenBeforeR1Compare": true,
+  "r1LedgerOpenedBeforeFreeze": false,
+  "sourceDocumentSha256": "sha256:01edf694f153321a8d8b2f130275d1637966440577d4756ef8c1c343f5409b7c",
+  "sourcePages": [
+    {
+      "page": 1,
+      "gitBlobSha": "03697b394384fd7a784db391803f3bb643bc0c4f"
+    },
+    {
+      "page": 2,
+      "gitBlobSha": "11c3e7fd65caf13d57ce8a9990fc19f2030ba51c"
+    },
+    {
+      "page": 3,
+      "gitBlobSha": "17b8ccc9c57ec707d5413147cacec03edfd12f0e"
+    },
+    {
+      "page": 4,
+      "gitBlobSha": "297540536f691d47abe939719b15d32b32b2ab75"
+    },
+    {
+      "page": 5,
+      "gitBlobSha": "dbc11ba9e86e7548099d2afdcbc0ef8d211966ce"
+    },
+    {
+      "page": 6,
+      "gitBlobSha": "b6b585c17f1f9de078a9b609eb7f80f851db80bc"
+    }
+  ],
+  "authorityRefs": {
+    "rpmCrosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json@0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "activeTaxonomy": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json@f3b2880cee6047202a8558a62e97949ddca34971",
+    "activeBindings": "archive/data/meta-foundation/canonical/packs/middle-geometry/bindings.json@32339f1b96e2d85d2471c30ad9a29bebe651222b",
+    "curriculumBasis": "2022 revised curriculum applies to middle-school grade 2 from 2026-03-01; source exam is 2026 M2"
+  },
+  "auditCounts": {
+    "questionCount": 24,
+    "sourceContentChoices": "24/24",
+    "independentSolve": "24/24",
+    "mathSolution": "24/24",
+    "smallBoard": "24/24",
+    "microLayout": "24/24",
+    "curriculumMethod": "24/24",
+    "visualNecessity": "24/24",
+    "metadata": "24/24",
+    "difficulty": "24/24"
+  },
+  "independentFindingsFrozen": [
+    {
+      "qid": 4,
+      "family": "SOLUTION_COMPLETENESS",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "Current solution proves choice 4 false but does not establish the other four statements, so uniqueness for '옳지 않은 것' is not fully reproduced."
+    },
+    {
+      "qid": 5,
+      "family": "SOURCE_MATH",
+      "verdict": "ITEM_HOLD",
+      "evidence": "Given CF=BE=5, BD=CE, FE⊥BC, ED⊥AB, angle C=50°, AF=3 are mutually inconsistent. RHS forces angle B=50° and AB=AC=8, while projection gives CE=5cos50 and BC=5+5cos50, contradicting BC=16cos50."
+    },
+    {
+      "qid": 5,
+      "family": "PROBLEM_VISUAL",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "q05.svg omits ED and places D off AB; source topology requires D on AB and ED perpendicular AB."
+    },
+    {
+      "qid": 6,
+      "family": "PROBLEM_VISUAL",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "q006_visual.svg omits AP although source diagram contains AP and choices use AP."
+    },
+    {
+      "qid": 10,
+      "family": "META_CROSSCONCEPT",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "DE∥BC is decisive in the incenter solution; add canonical CC_PARALLEL_LINES."
+    },
+    {
+      "qid": 22,
+      "family": "SOLUTION_VISUAL",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "q22-solution.svg owns side labels incorrectly: source AB=14, AC=13, BC=15, but SVG displays 13,15,14 respectively."
+    },
+    {
+      "qids": "1-24",
+      "family": "CURRICULUM_META",
+      "verdict": "REPAIR_REQUIRED",
+      "evidence": "2026 middle-school grade 2 is under the 2022 revised curriculum; candidate artifact is uniformly tagged curriculum=2015 and uses 2015 RPM IDs. Rebind to 2022 RPM semantics without treating binding gaps/RPM_ONLY as Meta holds."
+    }
+  ],
+  "qidBlindAudit": [
+    {
+      "qid": 1,
+      "answer": "⑤",
+      "method": "isosceles base angles + angle bisector",
+      "difficulty": 2
+    },
+    {
+      "qid": 2,
+      "answer": "④",
+      "method": "RHA definition",
+      "difficulty": 1
+    },
+    {
+      "qid": 3,
+      "answer": "③",
+      "method": "incenter angle + circumcenter angle/radius relations",
+      "difficulty": 3
+    },
+    {
+      "qid": 4,
+      "answer": "④",
+      "method": "circumcenter central-angle relations + right-triangle circumcenter",
+      "difficulty": 4
+    },
+    {
+      "qid": 5,
+      "answer": "② (intended local derivation only)",
+      "method": "RHS local congruence",
+      "difficulty": null,
+      "itemHoldReason": "SOURCE_CONDITION_INCONSISTENCY"
+    },
+    {
+      "qid": 6,
+      "answer": "②, ④",
+      "method": "isosceles vertex-angle-bisector perpendicular bisector",
+      "difficulty": 2
+    },
+    {
+      "qid": 7,
+      "answer": "⑤",
+      "method": "incenter angle-bisector equations",
+      "difficulty": 3
+    },
+    {
+      "qid": 8,
+      "answer": "①",
+      "method": "isosceles + incenter + circumcenter angle chase",
+      "difficulty": 3
+    },
+    {
+      "qid": 9,
+      "answer": "③",
+      "method": "perpendicular bisectors define circumcenter",
+      "difficulty": 2
+    },
+    {
+      "qid": 10,
+      "answer": "③",
+      "method": "incenter angle bisectors + parallel-line angle transfer",
+      "difficulty": 3
+    },
+    {
+      "qid": 11,
+      "answer": "②",
+      "method": "parallelogram opposite sides",
+      "difficulty": 1
+    },
+    {
+      "qid": 12,
+      "answer": "①, ⑤",
+      "method": "parallelogram criteria",
+      "difficulty": 2
+    },
+    {
+      "qid": 13,
+      "answer": "③",
+      "method": "parallelogram adjacent/opposite angles",
+      "difficulty": 1
+    },
+    {
+      "qid": 14,
+      "answer": "④",
+      "method": "parallelogram angle bisectors form rectangle",
+      "difficulty": 3
+    },
+    {
+      "qid": 15,
+      "answer": "①",
+      "method": "special-quadrilateral diagonal properties",
+      "difficulty": 2
+    },
+    {
+      "qid": 16,
+      "answer": "③",
+      "method": "rectangle equal/bisecting diagonals",
+      "difficulty": 1
+    },
+    {
+      "qid": 17,
+      "answer": "①",
+      "method": "square + isosceles angle chase",
+      "difficulty": 3
+    },
+    {
+      "qid": 18,
+      "answer": "⑤",
+      "method": "rhombus diagonal angle-bisector/perpendicular properties",
+      "difficulty": 3
+    },
+    {
+      "qid": 19,
+      "answer": "④",
+      "method": "similar-figure corresponding-side ratio",
+      "difficulty": 2
+    },
+    {
+      "qid": 20,
+      "answer": "②",
+      "method": "similarity ratio squared for area",
+      "difficulty": 2
+    },
+    {
+      "qid": 21,
+      "answer": "6",
+      "method": "RHA congruence then triangle area",
+      "difficulty": 3
+    },
+    {
+      "qid": 22,
+      "answer": "16π",
+      "method": "incenter distance to sides + area decomposition",
+      "difficulty": 2
+    },
+    {
+      "qid": 23,
+      "answer": "80°",
+      "method": "square diagonal angle + SAS congruence + angle chase",
+      "difficulty": 4
+    },
+    {
+      "qid": 24,
+      "answer": "12 cm²",
+      "method": "parallelogram diagonal area partition + midpoint area halving",
+      "difficulty": 2
+    }
+  ],
+  "frozenConclusion": {
+    "answerParity": "23/24 mathematically confirmed; q5 source conditions inconsistent although intended answer ② is recoverable by the local RHS path",
+    "itemHoldQids": [
+      5
+    ],
+    "deterministicRepairQids": [
+      4,
+      5,
+      6,
+      10,
+      22
+    ],
+    "systemicMetaRepair": "curriculum/RPM rebinding 24/24 from 2015 to 2022"
+  }
+}
