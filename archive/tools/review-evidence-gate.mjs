@@ -8,6 +8,7 @@ import { pathToFileURL } from 'node:url';
 
 const SCHEMA = 'JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1';
 const PASS = 'PASS';
+const HOLD = 'HOLD';
 const ALLOWED_STAGES = new Set(['CREATE', 'R1', 'R2', 'R3']);
 const REQUIRED_AXES = [
   'sourceExact', 'answerMath', 'solutionMath', 'smallBoard',
@@ -41,6 +42,18 @@ function parseArgs(argv) {
 const sha256 = value => `sha256:${crypto.createHash('sha256').update(value).digest('hex')}`;
 const normalize = value => String(value || '').replaceAll('\\', '/');
 const nonEmpty = value => typeof value === 'string' && value.trim().length > 0;
+const hasValue = value => value !== undefined && value !== null && (typeof value !== 'string' || value.trim().length > 0);
+function validHoldEvidence(item) {
+  const hold = item?.holdEvidence;
+  return Boolean(hold
+    && nonEmpty(hold.reason)
+    && hasValue(hold.observedEvidence)
+    && nonEmpty(hold.unresolvedPoint)
+    && nonEmpty(hold.nextRequiredEvidenceOrCapability)
+    && hasValue(hold.repairAttempted)
+    && hasValue(hold.authorityLookupAttempted)
+    && nonEmpty(hold.whyDeterministicClosureImpossible));
+}
 
 function loadExam(file) {
   const source = fs.readFileSync(file, 'utf8');
@@ -95,7 +108,16 @@ function checkQuestionRows(questions, evidence, issues) {
     if (!row) { issues.push(`QUESTION_ROW_MISSING:q${q.id}`); continue; }
     for (const axis of REQUIRED_AXES) {
       const item = row[axis];
-      if (!item || item.status !== PASS || !nonEmpty(item.evidence)) issues.push(`QUESTION_AXIS_EVIDENCE_MISSING:q${q.id}:${axis}`);
+      if (!item || ![PASS, HOLD].includes(item.status)) {
+        issues.push(`QUESTION_AXIS_EVIDENCE_MISSING:q${q.id}:${axis}`);
+        continue;
+      }
+      if (item.status === PASS && !nonEmpty(item.evidence)) {
+        issues.push(`QUESTION_AXIS_PASS_EVIDENCE_MISSING:q${q.id}:${axis}`);
+      }
+      if (item.status === HOLD && !validHoldEvidence(item)) {
+        issues.push(`QUESTION_AXIS_HOLD_EVIDENCE_INCOMPLETE:q${q.id}:${axis}`);
+      }
     }
     const tex = runtimeTexIssues(q);
     for (const issue of tex) issues.push(`RUNTIME_TEX_FAIL:q${q.id}:${issue}`);
@@ -106,7 +128,11 @@ function checkQuestionRows(questions, evidence, issues) {
   }
   const actual = new Set(questions.map(q => Number(q.id)));
   for (const qid of byQid.keys()) if (!actual.has(qid)) issues.push(`QUESTION_ROW_ORPHAN:q${qid}`);
-  return rows.length;
+  const heldQids = [...byQid.entries()]
+    .filter(([, row]) => REQUIRED_AXES.some(axis => row?.[axis]?.status === HOLD))
+    .map(([qid]) => qid)
+    .sort((a, b) => a - b);
+  return { rowCount: rows.length, heldQids };
 }
 
 function checkVisualRows(examFile, questions, evidence, issues) {
@@ -151,7 +177,10 @@ function checkMetaRows(questions, evidence, issues) {
   for (const q of questions) {
     const row = byQid.get(Number(q.id));
     if (!row) { issues.push(`META_ROW_MISSING:q${q.id}`); continue; }
-    if (row.result !== PASS || !nonEmpty(row.primaryMethod) || !nonEmpty(row.decisiveStep)) issues.push(`META_SEMANTIC_EVIDENCE_MISSING:q${q.id}`);
+    if (![PASS, HOLD].includes(row.result) || !nonEmpty(row.primaryMethod) || !nonEmpty(row.decisiveStep)) {
+      issues.push(`META_SEMANTIC_EVIDENCE_MISSING:q${q.id}`);
+    }
+    if (row.result === HOLD && !validHoldEvidence(row)) issues.push(`META_HOLD_EVIDENCE_INCOMPLETE:q${q.id}`);
     if (!nonEmpty(row.rpmDisposition) || !nonEmpty(row.projectionDisposition) || !array(row.lookupRefs).length) issues.push(`META_LOOKUP_EVIDENCE_MISSING:q${q.id}`);
     const ptNull = !nonEmpty(q.problemTypeKey);
     const tplNull = !nonEmpty(q.templateKey);
@@ -194,17 +223,21 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
   if (evidence.examSha256 !== examSha) issues.push('EVIDENCE_EXAM_SHA_MISMATCH');
   if (Number(evidence.questionCount) !== questions.length) issues.push('EVIDENCE_QUESTION_COUNT_MISMATCH');
 
-  const questionRows = checkQuestionRows(questions, evidence, issues);
+  const questionEvidence = checkQuestionRows(questions, evidence, issues);
   const visual = checkVisualRows(examFile, questions, evidence, issues);
   const metaRows = checkMetaRows(questions, evidence, issues);
   checkIndependence(stage, evidence, issues);
 
+  const heldQids = questionEvidence.heldQids;
+  if (stage === 'R3' && heldQids.length) issues.push(`R3_ITEM_HOLD_FORBIDDEN:${heldQids.join(',')}`);
+
   const derived = {
     questionCount: questions.length,
-    questionEvidenceRows: questionRows,
+    questionEvidenceRows: questionEvidence.rowCount,
     linkedSolutionVisualCount: visual.expected,
     visualEvidenceRows: visual.actual,
     metaEvidenceRows: metaRows,
+    itemHoldCount: heldQids.length,
   };
   checkSummary(evidence, derived, issues);
 
@@ -215,6 +248,8 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
     examPath: normalize(examFile),
     examSha256: examSha,
     ...derived,
+    itemHoldQids: heldQids,
+    disposition: issues.length ? 'FAIL' : heldQids.length ? 'PASS_WITH_ITEM_HOLDS' : 'PASS',
     issues,
   };
 }
