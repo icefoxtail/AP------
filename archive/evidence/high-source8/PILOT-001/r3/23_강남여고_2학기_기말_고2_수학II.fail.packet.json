@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v1",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "currentExecutionState": "R3_FAIL_DEFERRED",
+  "deferredQueueState": "DEFERRED_REENTRY_QUEUE",
+  "examId": "23_강남여고_2학기_기말_고2_수학II",
+  "examFile": "23_강남여고_2학기_기말_고2_수학II.js",
+  "batch": "PILOT-001",
+  "ordinal": 2,
+  "r3InputArtifactSha": "1374f3a7eb13a0adea4453444f34d9d9be37dbf1",
+  "r3InputArtifactPath": "archive-work/exams/original/high/h2/2final/23_강남여고_2학기_기말_고2_수학II.js",
+  "r3InputArtifactRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "r2ReceiptCommit": "3572560c86699912f6e091bbe59e37f56d94ad0d",
+  "r2ReceiptBlob": "ac57e1979ec71b45dedb9b6778e361f2856a8f9e",
+  "questionCount": 25,
+  "itemHoldCountAtInput": 0,
+  "freshFromArtifactBytes": true,
+  "priorStageCountsUsedAsEvidence": false,
+  "failedQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "failureCodes": [
+    "RELEASE_ARTIFACT_ANSWER_MISSING_ALL",
+    "RELEASE_ARTIFACT_SOLUTION_MISSING_ALL",
+    "PROTECTED_QUESTION_UID_MISSING_ALL",
+    "META_TEMPLATE_NOT_RELEASE_FINAL_ALL",
+    "RELEASE_DIFFICULTY_EVIDENCE_MISSING_ALL"
+  ],
+  "affectedAxes": [
+    "answer",
+    "math",
+    "solution",
+    "curriculumMethod",
+    "visualNecessity",
+    "smallBoard",
+    "studentLanguage",
+    "Meta",
+    "difficulty",
+    "protectedIdentity",
+    "releaseGate"
+  ],
+  "observedEvidence": {
+    "artifactStructure": {
+      "answerBlankCount": "25/25",
+      "solutionBlankCount": "25/25",
+      "questionUidMissingCount": "25/25",
+      "problemTypeKeyPresentCount": "25/25",
+      "templateKeyBlankCount": "25/25",
+      "metadataReviewRequiredCount": "25/25",
+      "difficultyBucketPresentCount": "25/25",
+      "sourceIdentityUniqueCount": "25/25",
+      "idContinuity": "1..25 PASS",
+      "sourceOrdinalContinuity": "1..25 PASS"
+    },
+    "curriculumMethodAudit": {
+      "auditCount": "25/25",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "reason": "All 25 final solution fields are blank, so final-solution method inventory cannot be release-verified.",
+      "curriculumViolationQids": [],
+      "uncertainDependencyPassCount": 0
+    },
+    "visualNecessityAudit": {
+      "auditCount": "25/25",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "existingProblemVisualAuditCount": "5/5 PASS",
+      "existingProblemVisualQids": [
+        7,
+        12,
+        14,
+        18,
+        24
+      ],
+      "existingProblemVisualBlobs": {
+        "q7": "1f8e22f554b2e002f68a9036421e36fcd7df3c29",
+        "q12": "daec9ed57f3813de4519f061fc3b3238c6a1c8e5",
+        "q14": "3918456166e7d780dcde65cc173c146e9f537141",
+        "q18": "382f59f2a9c3a192655b27dc2b085a7406325a2b",
+        "q24": "3f46858336960f851b9a37aeb2feb781928529d2"
+      },
+      "reason": "Problem visuals were directly inspected and are publication-readable, but solution-visual necessity cannot be release-verified because all final solutions are blank."
+    },
+    "solutionAndSmallBoard": {
+      "reproducibility": "FAIL 25/25: no final solution bytes",
+      "smallBoard": "FAIL 25/25: no solution/small-board bytes",
+      "studentLanguage": "FAIL_UNEVALUABLE 25/25"
+    },
+    "metaDifficulty": {
+      "result": "FAIL",
+      "problemTypeKeyPresentCount": "25/25",
+      "templateKeyBlankCount": "25/25",
+      "metadataReviewRequiredCount": "25/25",
+      "difficultyBucketPresentCount": "25/25",
+      "note": "Source-first-pass fields are not release-final Meta/difficulty evidence."
+    },
+    "protectedIdentity": {
+      "sourceIdentityUniqueCount": "25/25",
+      "questionUidMissingCount": "25/25",
+      "result": "FAIL"
+    }
+  },
+  "authorityRefs": {
+    "latestRemoteMainAtAction": "2c543d1e62f5b8770cda6911fbf3331495ef6a8b",
+    "r3ProtocolBlob": "d3f0e69f7c33877877f93e9e7d3da0ba6b33c6cb",
+    "physicalEvidenceProtocolBlob": "3f21970f5246c1e42886dd6831f07cd707eeaa6a",
+    "normalFirstPolicyCommit": "2c543d1e62f5b8770cda6911fbf3331495ef6a8b"
+  },
+  "systemicScope": {
+    "isSystemic": true,
+    "allQuestionsAffectedByReleaseArtifactMissingAnswerSolution": true,
+    "questionUidMissingAll": true,
+    "metadataTemplateUnfinalizedAll": true
+  },
+  "protectedDiff": {
+    "mutationPerformed": false,
+    "contentChoicesSourceIdentityMutated": false
+  },
+  "failureClass": "FULL_REENTRY",
+  "requiredRoute": "FULL_R1_THEN_FULL_R2_THEN_R3",
+  "deferredReentryRoute": "FULL_R1_THEN_FULL_R2_THEN_R3",
+  "nextOwner": "DEFERRED_REENTRY_QUEUE",
+  "initialR3Disposition": "R3_FAIL_DEFERRED",
+  "finalMainPublishAllowed": false,
+  "r3RepairPerformed": false,
+  "createdAtKst": "2026-10-01T14:38:31+09:00"
+}
