@@ -125,6 +125,37 @@ HOLD 최소형:
 
 ---
 
+## 2.1 SOURCE VISUAL SUFFICIENCY / HOLD ADMISSION — HARD
+
+problem image가 연결된 qid는 “파일이 있음/없음” 또는 “crop이 완전/불완전”만 기록하지 않고 **수학적 source-truth sufficiency**를 분리해 남긴다.
+
+권장 evidence:
+
+```json
+{
+  "assetRefExists": true,
+  "assetSha": "git-blob-or-sha256",
+  "cropCompleteness": "COMPLETE | PARTIAL",
+  "decisiveFactsRequired": ["..."],
+  "decisiveFactsVisibleOrRecovered": ["..."],
+  "decisiveMissingFacts": [],
+  "alternateEvidenceChecked": ["content", "choices", "answer", "visible-geometry"],
+  "sourceTruthSufficiency": "SUFFICIENT | REPAIRABLE | BLOCKED",
+  "holdAdmission": "NO_HOLD | ASSET_REPAIR_REQUIRED | ITEM_HOLD"
+}
+```
+
+판정 원칙:
+
+- `cropCompleteness=PARTIAL`이어도 `sourceTruthSufficiency=SUFFICIENT`이면 HOLD 금지.
+- current runtime에서 full-page source를 못 연 사실만으로 `BLOCKED` 금지.
+- `ITEM_HOLD`는 `decisiveMissingFacts[]`가 실제로 있고 다른 source 축으로 유일복구가 안 되는 경우만 허용.
+- `SOURCE_ASSET_MISSING`은 실제 referenced asset file 부재에만 사용.
+- R1/R2와 ITEM_RECOVERY는 upstream hold count를 authority로 사용하지 않고 qid별 sufficiency를 새로 판정한다.
+
+2026-10-01 `24_금당중_2학기_중간_중3_수학.js`의 11개 crop HOLD는 이 구분이 없어서 발생한 false-positive regression 사례다.
+
+---
 ## 3. Runtime string HARD GATE
 
 JS source code에 보이는 문자열과 실제 브라우저/engine이 소비하는 **runtime 문자열을 구분**한다.
@@ -282,7 +313,19 @@ latest R1 artifact bytes 직접 읽기
 
 `blindDecisionFrozenBeforeR1Compare=true`와 `blindFreezeSha256`가 없으면 R2 DONE 금지.
 
-### R3
+### R3 INITIAL vs R3_RETRY
+
+**initial R3**는 시험지 전체를 보는 마지막 전수 release audit다.
+- 전 문항 questionRows / visualRows / metaRows를 fresh 생성하고 `review-evidence-gate.mjs --stage R3` full validator PASS를 요구한다.
+
+**R3_RETRY**는 initial R3 FAIL 이후 targeted regression이다.
+- `R3_BASELINE`의 PASS scope를 잠근다.
+- `openQids/openFiles/openFields/openAxes/directDependencies`와 실제 changed locus만 재검한다.
+- LOCKED scope는 semantic row를 다시 만들지 않고 baseline blob/hash와 불변인지 확인한다.
+- 필수 retry evidence: `r3BaselineArtifactSha`, `openScope`, `changedScope`, `reviewedOpenScope`, `lockedScopeMutationCount=0`, `closedFailureCodes`, `outputArtifactSha`.
+- full `questionRows=N`을 다시 만들어 4차·5차 전수검수로 반복하는 것은 금지한다.
+
+### R3 — INITIAL FULL AUDIT DETAILS
 
 R3는 release gate다.
 

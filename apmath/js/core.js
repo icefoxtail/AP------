@@ -821,7 +821,13 @@ async function loadData(isInitial = false) {
 
     if (isInitial) toast('데이터 동기화 중...', 'info');
     const data = await api.get('initial-data');
-    if (data.error && data.error === 'Unauthorized') { logout(); return; }
+    if (data?.error === 'Unauthorized') { logout(); return; }
+    if (!data || data.error || data.success === false
+        || !Array.isArray(data.students) || !Array.isArray(data.classes)
+        || !Array.isArray(data.consultations)) {
+        notifyApiFailure('initial-data', data?.error || 'invalid response');
+        return;
+    }
 
     state.db = {
         classes: Array.isArray(data.classes) ? data.classes : [],

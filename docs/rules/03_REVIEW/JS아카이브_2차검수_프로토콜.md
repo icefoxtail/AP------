@@ -1,5 +1,13 @@
 [JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
+## CURRENT HARD RULE — R2 FIRST-PASS ONLY / ITEM RECOVERY + R3 DEFERRED SEPARATION (2026-10-01)
+- R2는 정상 first-pass REVIEW2만 담당한다.
+- `ITEM_RECOVERY_QUEUE`는 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. R2 예약 lane은 held-qid recovery fallback을 수행하지 않는다.
+- `R3_FAIL_DEFERRED`, `CODEX_REPAIR_DONE`, `CODEX_REPAIR_RETRY_REQUIRED`도 R2가 소비하지 않는다.
+- initial R3 이후 독립검수는 별도 Codex R3 Independent Review worker가 changed/open locus만 검사한다.
+- 아래 R3 reentry/FULL_REENTRY/TARGETED R2 섹션은 SUPERSEDED / HISTORY다.
+
+
 ## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS + R2 BLIND FREEZE (2026-10-01)
 
 R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
@@ -24,9 +32,61 @@ R2는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용한다.
 - HOLD는 원본 자체가 없거나 판독 불능이고, 가능한 복원이 여러 개라 하나를 고르면 추측이 되는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
 - 특정 worker/runtime에서 binary crop 편집이 불편하다는 사실만으로 콘텐츠 HOLD를 만들지 않는다. 허용된 deterministic fallback으로 닫을 수 있으면 같은 stage에서 수리한다.
 
+#### A-1. CROP COMPLETENESS ≠ SOURCE-TRUTH SUFFICIENCY — HARD
+
+문제 이미지가 **완벽하게 넓게 잘렸는지**와 **그 문항의 source truth를 수학적으로 확정할 수 있는지**는 다른 판정이다.
+
+- image 파일이 실제로 존재하고, 현재 crop + 발문 + 보기 + 정답 + 보이는 기하 관계만으로 정답·풀이에 필요한 결정적 사실을 유일하게 확정할 수 있으면 `ITEM_HOLD` 금지다.
+- 꼭짓점 문자 하나, 선분 끝 일부, 여백, 장식, 이미 발문에 적힌 수치·관계가 crop 밖으로 조금 잘린 정도는 기본적으로 `ASSET_REPAIR_REQUIRED` 또는 `SOURCE_ASSET_OK_WITH_CROP_DEBT`다. 수학 truth가 막히지 않으면 HOLD가 아니다.
+- 반대로 잘린 픽셀 안에 **정답 또는 풀이를 결정하는 유일한 수치·기호·라벨 owner·직각/평행/접선/포함 관계**가 있고, 그 사실을 다른 source 축에서 유일하게 복구할 수 없을 때만 source-visual HOLD 후보가 된다.
+- 현재 worker/runtime가 full-page PDF/scan bytes를 열지 못했다는 사실 자체는 HOLD 사유가 아니다. 먼저 current main의 linked asset을 직접 읽고, 발문/보기/answer/visible geometry와 합쳐 source-truth sufficiency를 판정한다.
+- `SOURCE_ASSET_MISSING`은 **참조해야 할 asset 파일 자체가 실제로 없을 때만** 쓴다. 파일이 존재하지만 crop이 좁은 경우에는 이 reason code를 쓰지 않는다.
+- `SOURCE_ASSET_CROP_INCOMPLETE`는 기본적으로 repair/debt 상태이며 자동 `ITEM_HOLD` 코드가 아니다.
+
+source visual을 HOLD로 입장시키려면 다음 네 항목을 모두 증명해야 한다.
+
+1. `decisiveMissingFacts[]`: crop 밖으로 사라진 **결정적 source fact**가 무엇인지 구체적으로 적는다.
+2. `alternateEvidenceChecked[]`: content / choices / answer / 다른 visible geometry / existing source asset에서 그 사실을 유일하게 복구할 수 없는지 확인한다.
+3. `fullPageLookupResult`: full-page source를 실제로 찾았는지, 찾았는데도 판독 불능인지, 현재 runtime에서만 접근 실패인지 구분한다.
+4. `whyTruthStillNonDeterministic`: repair 또는 deterministic reconstruction 후에도 왜 하나의 truth로 닫히지 않는지 적는다.
+
+위 네 항목 중 하나라도 없으면 source-visual `ITEM_HOLD`는 무효다.
+
+권장 분류:
+
+```text
+SOURCE_ASSET_OK
+SOURCE_ASSET_OK_WITH_CROP_DEBT
+ASSET_REPAIR_REQUIRED
+SOURCE_TRUTH_BLOCKED   ← 이것만 ITEM_HOLD 후보
+```
+
+#### A-2. ITEM_RECOVERY는 HOLD를 상속하지 않고 다시 판정한다 — HARD
+
+`ITEM_RECOVERY_QUEUE`에 들어왔다는 사실은 **그 HOLD가 옳다는 증거가 아니다.**
+
+recovery worker는 held qid마다 latest main의 실제 bytes와 source/canonical을 다시 확인해 먼저 다음 중 하나로 재분류한다.
+
+- `FALSE_HOLD_NO_REPAIR_NEEDED`: 기존 artifact만으로 truth가 충분함 → content mutation 없이 HOLD만 제거.
+- `FALSE_HOLD_ASSET_REPAIR`: truth는 충분하지만 crop/가독성/파일참조 보정이 필요함 → 필요한 asset만 최소수리.
+- `TRUE_HOLD_REPAIRABLE`: 실제 결함이 있으나 deterministic repair로 닫힘 → 해당 qid만 수리.
+- `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`: 결정적 source fact가 실제로 없고 유일복구 불가 → 그때만 Direct Replacement 후보.
+
+upstream R1/R2의 hold reason을 그대로 실행 지시로 복사해 **모든 held qid를 무조건 수정하거나 대체하지 않는다.**
+### CURRENT regression fixture — 24 금당중 중3 2학기 중간 (2026-10-01)
+
+대상: `24_금당중_2학기_중간_중3_수학.js`.
+
+- current main에는 source image가 22/22 실제 존재했고 R1도 `source image direct inspection=22/22`, main blob parity 22/22 exact를 기록했다.
+- 그럼에도 q1/q2/q6/q9/q10/q12/q15/q17/q18/q22/q23 총 11건을 `SOURCE_ASSET_CROP_INCOMPLETE`로 HOLD 승격한 것은 **crop completeness와 source-truth sufficiency를 혼동한 과승격 사례**다.
+- 예를 들어 q10/q12/q22처럼 일부 라벨·끝부분이 잘려도 발문과 visible geometry만으로 필요한 수학 truth가 이미 결정되는 문항은 HOLD가 아니다.
+- 반대로 일부 문항은 실제 recrop/원본 확인이 필요할 수 있다. **정확한 true-HOLD subset은 recovery가 qid별로 다시 판정하며 11건 전체를 true HOLD로 상속하지 않는다.**
+- 이 사례 이후 source-asset HOLD는 반드시 `decisiveMissingFacts[]`와 `whyTruthStillNonDeterministic`를 가져야 한다.
 ### B. Meta / PT·TPL / RPM projection
-- `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
-- `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.
+- `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → current-scope RPM Primary → 이미 이수한 prerequisite lower-scope RPM → semantic source crosswalk → GLOBAL ACTIVE shared taxonomy/templates → target current curriculum binding/aliases**까지 조회한다.
+- lookup은 lower-only다. 중1은 중2/중3, 중2는 중3, 중3은 고등, 고1은 고2+의 semantic을 가져오지 않는다. 반대로 중2는 중1, 중3은 중1/중2, 고1은 중등의 이미 배운 개념을 Primary/CrossConcept로 재사용할 수 있다.
+- lower-scope L3/L4를 재사용해도 target `standardCourse/standardUnitKey/subUnitKey`는 현재 문항 위치를 유지한다. source scope는 provenance로만 기록한다.
+- `RPM_ONLY`, `*_BINDING_GAP`, current-scope exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다. current scope miss 뒤 prerequisite lower-scope lookup 없이 `NO_EXACT_RPM_L4...` HOLD를 만들면 false HOLD다.
 - RPM semantic coverage가 부족하더라도 source+solution이 하나의 **GLOBAL ACTIVE problemTypeKey/templateKey + exact curriculum binding**에 유일하게 대응하면 PT/TPL은 채우고, RPM 쪽 부족은 `RPM_COVERAGE_GAP_META_ONLY` 같은 비차단 taxonomy debt로 별도 기록한다. **없는 RPM L3/L4를 임의 생성하지는 않는다.**
 - TRUE Meta HOLD는 primary semantic 자체가 source/solution으로 결정되지 않거나, exhaustive lookup 뒤에도 exact ACTIVE 후보가 복수로 남거나, deterministic machine projection 자체가 실제로 존재하지 않는 경우에만 허용한다.
 
@@ -43,7 +103,7 @@ HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
 - q12·q15·q18의 crop/필기혼입/라벨잘림을 HOLD로 보낸 것은 false HOLD다. asset repair로 직접 닫아야 한다.
 - q1·q21을 ACTIVE canonical lookup을 끝까지 하지 않고 Meta HOLD로 둔 것도 false HOLD다. q1은 `PT_SET_DEFINITION / TPL_SET_IDENTIFY`, q21은 `PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER`로 exact ACTIVE mapping이 가능하다.
 
-## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+## SUPERSEDED / HISTORY — R3 FAILURE CLASS ROUTING (2026-10-01)
 
 R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
 
@@ -78,7 +138,7 @@ asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 �
 복수 defect class가 한 시험지에 섞이면 **A > B > C** 우선순위로 exam-level `failureClass`를 정한다. `ASSET_ONLY`는 모든 unresolved defect가 C일 때만 사용한다. B+C가 섞이면 exam-level은 B이며 asset defect도 같은 targeted reentry 안에서 asset-only repair/recheck로 닫는다.
 
 CLASS C의 별도 신규 예약은 만들지 않는다. 기존 R1 owner가 `ASSET_OWNER_REPAIR`를 **asset-only mode**로 소비하고 수학 재풀이 없이 repair한 뒤 `INDEPENDENT_ASSET_RECHECK`로 넘긴다. 기존 R2 owner는 asset-only independent recheck만 수행하고 PASS면 `R3_RETRY`로 보낸다. semantic 영향이 발견되면 B/A로 승격한다.
-## CURRENT OVERRIDE — R3 TARGETED INDEPENDENT RECHECK (2026-10-01)
+## SUPERSEDED / HISTORY — R3 TARGETED INDEPENDENT RECHECK (2026-10-01)
 
 - `FULL_REENTRY`: 기존 FULL R2 독립검수.
 - `TARGETED_R1_R2`: R1 수리 qid만 기존 solution/R1 repair/R3 verdict를 보지 않고 먼저 독립 재풀이·판정.
@@ -122,7 +182,8 @@ CURRENT FULL REVIEW에서는 수학 정오답과 별개로 아래 두 분모를 
 
 final solution에서 실제 풀이가 의존하는 `concepts[] / formulas[] / notations[] / methods[]`를 문항별로 다시 추출한다. 단순 금지어 검색으로 대체하지 않는다.
 
-각 항목을 `standardCourse + standardUnitKey/subUnitKey + 현재 교육과정 authority`에 직접 대조하여 `ALLOWED / NOT_ALLOWED / UNCERTAIN`으로 기록한다.
+각 항목을 `standardCourse + standardUnitKey/subUnitKey + 현재 교육과정 authority`에 직접 대조하여 `ALLOWED / NOT_ALLOWED / UNCERTAIN`으로 기록한다. 이때 교육과정은 누적형으로 본다. **현재 학년까지 이미 이수한 하위 학년/선행 scope 개념·공식·표기·방법은 ALLOWED이고, 아직 배우지 않은 상위 학년/후속과정 의존만 NOT_ALLOWED다.**
+- lower-grade method를 사용했다는 이유만으로 `CURRICULUM_FAIL`을 만들지 않는다. 예: 고1 도형의 방정식 풀이에서 중등의 피타고라스 정리·삼각형 닮음·원과 직선 성질 사용은 허용한다.
 - 하나라도 실제 풀이에 필요한 `NOT_ALLOWED`가 있으면 수학적으로 맞아도 즉시 `CURRICULUM_FAIL`.
 - `UNCERTAIN`을 PASS로 올리지 않는다.
 - 안전한 과정 내 풀이로 바꿀 수 있으면 같은 review에서 최소수정 후 inventory부터 다시 검수한다.

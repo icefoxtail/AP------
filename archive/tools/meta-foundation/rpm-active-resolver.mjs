@@ -11,7 +11,8 @@ export const META_DIFFICULTY_SCHEMA = 'JS_ARCHIVE_DIFFICULTY_BLIND_EVIDENCE_v1';
 export const R2E_META_INPUT_SCHEMA_V1 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v1';
 export const R2E_META_INPUT_SCHEMA_V2 = 'JS_ARCHIVE_R2E_META_INPUT_RECEIPT_v2';
 export const META_LOOKUP_ORDER = Object.freeze([
-  'RPM_PRIMARY_README', 'RPM_CANONICAL_MASTER', 'RPM_CURRICULUM_SCOPE_VIEW', 'RPM_SEMANTIC_CLASSIFICATION_FINAL', 'RPM_TO_ACTIVE_CROSSWALK', 'ACTIVE_META_FOUNDATION',
+  'RPM_PRIMARY_README', 'RPM_CANONICAL_MASTER', 'RPM_CURRICULUM_SCOPE_VIEW', 'RPM_PREREQUISITE_SCOPE_FALLBACK',
+  'RPM_SEMANTIC_CLASSIFICATION_FINAL', 'RPM_TO_ACTIVE_CROSSWALK', 'ACTIVE_META_FOUNDATION',
 ]);
 export const DECISION_ISOLATED_INPUT_FIELDS = Object.freeze(['sourceIdentity', 'solutionIdentity', 'curriculumContext', 'semanticDecision']);
 export const ADVANCED_META_FIELDS_EXCLUDED_FROM_SEMANTIC_INPUT = Object.freeze([
@@ -65,6 +66,44 @@ function normalizeGrade(value) {
 
 function levelForGrade(grade) { return grade.startsWith('M') ? 'MIDDLE' : grade.startsWith('H') ? 'HIGH' : ''; }
 
+const H1_RPM_SCOPES = new Set(['수학_상', '수학_하', '공통수학1', '공통수학2']);
+const H2_RPM_SCOPES = new Set(['수학I', '수학II', '미적분', '확률과통계', '기하', '대수', '미적분I', '미적분II']);
+const GRADE_ORDER = Object.freeze({ M1: 1, M2: 2, M3: 3, H1: 4, H2: 5, H3: 6 });
+
+function gradeForRpmScope(scope) {
+  const s = text(scope).replaceAll(' ', '');
+  const middle = s.match(/^M([123])-[12]$/);
+  if (middle) return 'M' + middle[1];
+  if (H1_RPM_SCOPES.has(s)) return 'H1';
+  if (H2_RPM_SCOPES.has(s)) return 'H2';
+  return '';
+}
+
+function priorSameGradeScopeAllowed(targetScope, sourceScope, grade) {
+  const target = text(targetScope).replaceAll(' ', '');
+  const source = text(sourceScope).replaceAll(' ', '');
+  if (grade.startsWith('M')) {
+    const tm = target.match(/^M([123])-([12])$/);
+    const sm = source.match(/^M([123])-([12])$/);
+    return Boolean(tm && sm && tm[1] === sm[1] && Number(sm[2]) < Number(tm[2]));
+  }
+  if (grade === 'H1') {
+    return (target === '수학_하' && source === '수학_상')
+      || (target === '공통수학2' && source === '공통수학1');
+  }
+  return false;
+}
+
+function semanticScopeRelation(context, rpmPath) {
+  const targetGrade = normalizeGrade(context.grade);
+  const sourceGrade = gradeForRpmScope(rpmPath.scope);
+  if (text(rpmPath.scope) === text(context.scope)) return 'CURRENT_SCOPE';
+  if (!targetGrade || !sourceGrade) return 'FORBIDDEN';
+  if ((GRADE_ORDER[sourceGrade] || 99) < (GRADE_ORDER[targetGrade] || -1)) return 'LOWER_GRADE_PREREQUISITE';
+  if (sourceGrade === targetGrade && priorSameGradeScopeAllowed(context.scope, rpmPath.scope, targetGrade)) return 'PRIOR_SAME_GRADE_SCOPE';
+  return 'FORBIDDEN';
+}
+
 function subjectFamilyFor(scope, explicit) {
   const s = text(scope).replaceAll(' ', '');
   let derived = '';
@@ -95,8 +134,8 @@ function crosswalkPathFor(context) {
 }
 
 function viewPathFor(context, rpmPath) {
-  const grade = normalizeGrade(context.grade);
-  const band = levelForGrade(grade);
+  const semanticGrade = gradeForRpmScope(rpmPath.scope) || normalizeGrade(context.grade);
+  const band = levelForGrade(semanticGrade);
   const year = context.curriculum === '2015' ? '01_2015' : context.curriculum === '2022' ? '02_2022' : '';
   if (!band || !year || !text(rpmPath.scope)) return '';
   return `${rpmBase}/${year}/${band}/${rpmPath.scope}.md`;
@@ -190,7 +229,9 @@ export function buildDecisionIsolatedInput(input) {
     l3: text(rpmPathInput.l3),
     l4: text(rpmPathInput.l4),
   };
-  if (rpmPath.curriculum !== curriculum || rpmPath.scope !== scope) throw new Error('META_RPM_CONTEXT_MISMATCH');
+  if (rpmPath.curriculum !== curriculum) throw new Error('META_RPM_CONTEXT_MISMATCH');
+  const scopeRelation = semanticScopeRelation({ grade, curriculum, scope }, rpmPath);
+  if (scopeRelation === 'FORBIDDEN') throw new Error('META_RPM_FUTURE_OR_UNRELATED_SCOPE_FORBIDDEN');
   const bundle = {
     sourceIdentity: {
       sourceArchiveFile,
@@ -204,7 +245,7 @@ export function buildDecisionIsolatedInput(input) {
     },
     solutionIdentity: { status: 'VERIFIED_FINAL', solutionHash, independentVerification: true },
     curriculumContext: { grade, curriculum, scope, subjectFamily, standardCourse, standardUnitKey, subUnitKey },
-    semanticDecision: { primaryMethod, decisiveStep, rpmPath },
+    semanticDecision: { primaryMethod, decisiveStep, rpmPath, scopeRelation },
   };
   return { bundle, sourceFingerprint, inputBundleSha: objectSha(bundle) };
 }
@@ -221,17 +262,20 @@ function findRpmRecords(master, rpmPath) {
   return hits;
 }
 
-function crosswalkMatch(file, context, rpmPath) {
+function crosswalkMatch(file, context, rpmPath, scopeRelation = 'CURRENT_SCOPE') {
   const doc = readJson(file);
-  const rows = (doc.records || []).filter(row => row.curriculum === context.curriculum && row.scope === context.scope
-    && row.standardUnitKey === context.standardUnitKey && equal(row.rpmPath, {
+  let rows = (doc.records || []).filter(row => row.curriculum === rpmPath.curriculum && row.scope === rpmPath.scope
+    && equal(row.rpmPath, {
       majorUnit: rpmPath.majorUnit, midUnit: rpmPath.midUnit, l3: rpmPath.l3, l4: rpmPath.l4,
     }));
+  if (scopeRelation === 'CURRENT_SCOPE') rows = rows.filter(row => row.standardUnitKey === context.standardUnitKey);
   if (!rows.length) return { doc, row: null, duplicate: false };
   if (rows.length > 1) return { doc, row: null, duplicate: true };
   const row = rows[0];
-  if (row.subUnitKey != null && row.subUnitKey !== context.subUnitKey) return { doc, row: null, duplicate: false, l2Mismatch: true };
-  if (row.standardCourse && context.standardCourse && row.standardCourse !== context.standardCourse) return { doc, row: null, duplicate: false, standardCourseMismatch: true };
+  if (scopeRelation === 'CURRENT_SCOPE') {
+    if (row.subUnitKey != null && row.subUnitKey !== context.subUnitKey) return { doc, row: null, duplicate: false, l2Mismatch: true };
+    if (row.standardCourse && context.standardCourse && row.standardCourse !== context.standardCourse) return { doc, row: null, duplicate: false, standardCourseMismatch: true };
+  }
   return { doc, row, duplicate: false };
 }
 
@@ -265,6 +309,8 @@ function semanticRecord(fields) {
     authorityVersion: 'RPM_PRIMARY_TAXONOMY_v1.0',
     curriculum: rpmPath.curriculum,
     scope: rpmPath.scope,
+    targetScope: bundle.curriculumContext.scope,
+    scopeRelation: bundle.semanticDecision.scopeRelation || 'CURRENT_SCOPE',
     majorUnit: rpmPath.majorUnit,
     midUnit: rpmPath.midUnit,
     l3: rpmPath.l3,
@@ -366,13 +412,13 @@ function projectionPending(fields, projectionStatus, reasonCode, details = {}) {
   });
 }
 
-function exactProjectionBindings(registry, row, context, problemTypeKey) {
-  const binding = row.binding || {};
-  const curriculum = text(binding.curriculum || context.curriculum);
-  const standardUnitKey = text(binding.standardUnitKey || context.standardUnitKey);
-  const subUnitKey = Object.hasOwn(binding, 'subUnitKey')
-    ? binding.subUnitKey : Object.hasOwn(row, 'subUnitKey') ? row.subUnitKey : context.subUnitKey;
-  const standardCourse = text(binding.standardCourse || row.standardCourse || context.standardCourse);
+function exactProjectionBindings(registry, row, context, problemTypeKey, { forceCurrentContext = false } = {}) {
+  const binding = forceCurrentContext ? {} : (row.binding || {});
+  const curriculum = forceCurrentContext ? text(context.curriculum) : text(binding.curriculum || context.curriculum);
+  const standardUnitKey = forceCurrentContext ? text(context.standardUnitKey) : text(binding.standardUnitKey || context.standardUnitKey);
+  const subUnitKey = forceCurrentContext ? context.subUnitKey : (Object.hasOwn(binding, 'subUnitKey')
+    ? binding.subUnitKey : Object.hasOwn(row, 'subUnitKey') ? row.subUnitKey : context.subUnitKey);
+  const standardCourse = forceCurrentContext ? text(context.standardCourse) : text(binding.standardCourse || row.standardCourse || context.standardCourse);
   return (registry.bindingRows || []).filter(item => item.status === 'ACTIVE'
     && item.curriculum === curriculum
     && item.standardUnitKey === standardUnitKey
@@ -409,6 +455,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   const { bundle, sourceFingerprint, inputBundleSha } = isolated;
   const context = bundle.curriculumContext;
   const rpmPath = bundle.semanticDecision.rpmPath;
+  const scopeRelation = bundle.semanticDecision.scopeRelation || 'CURRENT_SCOPE';
   const refs = [];
   const readRef = relative => {
     try { const ref = pathRef(root, relative); refs.push(ref); return ref; }
@@ -445,9 +492,12 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
 
   const rpmSemanticBase = {
     bundle, rpmHit, refs, sourceFingerprint, inputBundleSha,
-    rpmPath, rpmL3: rpmPath.l3, rpmL4: rpmPath.l4,
+    rpmPath, rpmL3: rpmPath.l3, rpmL4: rpmPath.l4, semanticScopeRelation: scopeRelation,
   };
-  const crosswalkPath = crosswalkPathFor(context);
+  const semanticGrade = gradeForRpmScope(rpmPath.scope) || normalizeGrade(context.grade);
+  const crosswalkContext = scopeRelation === 'CURRENT_SCOPE'
+    ? context : { ...context, grade: semanticGrade, scope: rpmPath.scope, subjectFamily: '' };
+  const crosswalkPath = crosswalkPathFor(crosswalkContext);
   const crosswalkRef = crosswalkPath ? readRef(crosswalkPath) : null;
   if (crosswalkRef) refs.push({ ...crosswalkRef, role: 'RPM_TO_ACTIVE_COMPATIBILITY_PROJECTION' });
   let activeRegistry;
@@ -465,7 +515,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
   if (!crosswalkRef) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROUTE_UNAVAILABLE');
 
   let matched;
-  try { matched = crosswalkMatch(path.join(root, crosswalkRef.path), context, rpmPath); }
+  try { matched = crosswalkMatch(path.join(root, crosswalkRef.path), context, rpmPath, scopeRelation); }
   catch { return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_DATA_UNAVAILABLE'); }
   if (matched.duplicate) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_COMPATIBILITY_ROW_AMBIGUOUS');
   if (matched.standardCourseMismatch) return projectionPending(base, 'PROJECTION_UNMATERIALIZED', 'CROSSWALK_STANDARD_COURSE_PROJECTION_MISMATCH');
@@ -504,7 +554,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
     const candidates = new Set(mappedTemplateKeys);
     if (!selection || selection.stage !== 'POST_CROSSWALK' || selection.inputBundleSha !== inputBundleSha
       || selection.crosswalkRecordId !== row.id || !candidates.has(selection.templateKey) || !text(selection.decisiveStepReason)) {
-      const existingBindings = exactProjectionBindings(activeRegistry, row, context, problemTypeKey);
+      const existingBindings = exactProjectionBindings(activeRegistry, row, context, problemTypeKey, { forceCurrentContext: scopeRelation !== 'CURRENT_SCOPE' });
       return projectionPending(currentBase, 'META_ONLY_COMPATIBILITY_PENDING', 'FAMILY_TEMPLATE_SELECTION_PENDING',
         { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys,
           bindingOwnerPack: existingBindings.length === 1 ? text(existingBindings[0].ownerPack) : '' });
@@ -523,7 +573,7 @@ export function resolveMetaRoute(input, { repoRoot = DEFAULT_ROOT, registry: sup
       { problemTypeKey, canonicalOwnerPack, ownerVersion: canonicalPack.version, mappedTemplateKeys: templateKey ? [templateKey] : [] });
   }
 
-  const bindingRows = exactProjectionBindings(activeRegistry, row, context, problemTypeKey);
+  const bindingRows = exactProjectionBindings(activeRegistry, row, context, problemTypeKey, { forceCurrentContext: scopeRelation !== 'CURRENT_SCOPE' });
   const bindingOwnerHint = text(row.bindingOwnerPack || row.binding?.bindingOwnerPack || row.binding?.ownerPack);
   const hintedBindings = bindingOwnerHint ? bindingRows.filter(binding => text(binding.ownerPack) === bindingOwnerHint) : [];
   const eligibleBindings = bindingOwnerHint ? hintedBindings : bindingRows;

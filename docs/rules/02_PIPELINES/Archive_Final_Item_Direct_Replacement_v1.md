@@ -3,7 +3,7 @@
 status: **CURRENT / ACTIVE**  
 scope: **REVIEW2 이후에도 남은 ITEM_HOLD의 held qid 직접 복구·대체**  
 execution style: **DIRECT AUTHORING / NO GENERATION PIPELINE**  
-updated: 2026-09-30
+updated: 2026-10-01
 
 ## 0. 목적
 
@@ -22,7 +22,7 @@ REVIEW2_DONE_WITH_ITEM_HOLDS
 → replacement qid Meta fresh 판정
 → ITEM_HOLD 제거
 → itemHoldCount=0
-→ READY_FOR_COMMIT
+→ READY_FOR_R3
 ```
 
 ## 1. 실행 경계 — HARD
@@ -39,6 +39,12 @@ REVIEW2_DONE_WITH_ITEM_HOLDS
 
 다만 이 문서는 기존 JS schema, 학생용 해설 규칙, 교육과정, Meta semantic authority, Git safety를 무효화하지 않는다.
 
+## 1.1 CURRENT OWNER — DEDICATED CODEX ITEM RECOVERY
+
+- current `ITEM_RECOVERY_QUEUE`는 정상 REVIEW2 lane이 소비하지 않는다.
+- 별도 Codex FINAL ITEM RECOVERY 예약창이 가장 오래된 eligible 시험지 1건의 held qid만 처리한다.
+- upstream HOLD reason은 수정 명령이 아니라 재판정 provenance다. latest bytes에서 HOLD 자체를 먼저 독립 재판정한다.
+- R3 FAIL repair와 ITEM_RECOVERY를 같은 worker에 섞지 않는다. R3 이후 수리는 별도 Codex R3 repair worker가 담당한다.
 ## 2. 적용 조건
 
 다음 조건일 때 적용한다.
@@ -50,6 +56,62 @@ REVIEW2_DONE_WITH_ITEM_HOLDS
 
 시험지 전체를 다시 검수하지 않는다. **held qid와 직접 연결된 asset/Meta만 작업한다.**
 
+## 2.1 HOLD REVALIDATION FIRST — HARD
+
+`ITEM_RECOVERY_QUEUE`는 **수정 지시 목록이 아니라 재판정 후보 목록**이다. upstream CREATE/R1/R2가 남긴 HOLD reason은 provenance이지 최종 truth authority가 아니다.
+
+held qid를 실제로 고치기 전에 반드시 다음 순서로 **HOLD 자체부터 독립 재검증**한다.
+
+```text
+latest main/current artifact 직접 확인
+→ held qid의 source/content/choices/answer/asset 확인
+→ upstream hold reason을 보지 않고 source-truth sufficiency 판정
+→ 그 뒤 기존 hold ledger와 compare
+→ FALSE HOLD면 즉시 해제
+→ TRUE HOLD만 repair / replacement
+```
+
+### 2.1.1 source-asset HOLD 재판정
+
+crop이 좁거나 라벨 일부가 잘렸다는 사실만으로 HOLD를 유지하지 않는다.
+
+- `FALSE_HOLD_NO_REPAIR_NEEDED`: image 파일이 있고 current crop + 발문/보기/answer/visible geometry로 결정적 source fact가 충분함. **문항/asset mutation 없이 HOLD만 제거**한다.
+- `FALSE_HOLD_ASSET_REPAIR`: 수학 truth는 충분하지만 출판품질·가독성 때문에 recrop이 유익함. 해당 asset만 최소수리한다.
+- `TRUE_HOLD_REPAIRABLE`: 실제 결정적 결함이 있지만 원본 또는 deterministic reconstruction으로 유일하게 복구 가능. 해당 qid만 수리한다.
+- `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`: 정답/풀이를 결정하는 유일한 수치·기호·라벨 owner·기하 관계가 실제로 사라졌고 다른 source 축으로도 유일복구 불가. **이 상태만 direct replacement 후보**다.
+
+현재 worker/runtime가 full-page source bytes를 열지 못했다는 사실 자체는 `TRUE_HOLD_SOURCE_TRUTH_BLOCKED`가 아니다.
+
+`SOURCE_ASSET_MISSING`은 실제 asset 파일 부재에만 사용한다. existing-but-cropped asset에는 사용하지 않는다.
+
+### 2.1.2 HOLD를 유지하려면 필요한 증거
+
+TRUE HOLD로 재확정하려면 최소:
+
+- `decisiveMissingFacts[]`
+- `alternateEvidenceChecked[]`
+- `fullPageLookupResult`
+- `whyTruthStillNonDeterministic`
+- `repairAttempted`
+- `nextRequiredEvidenceOrCapability`
+
+를 남긴다.
+
+이 증거가 없거나, latest bytes를 직접 확인하지 않고 upstream HOLD를 그대로 상속했다면 **FALSE HOLD 후보로 간주하고 재판정부터 한다.**
+
+### 2.1.3 불필요한 mutation 금지
+
+FALSE HOLD로 판정되면 “이미 recovery queue에 들어왔으니 무엇이라도 고쳐야 한다”는 이유로 파일을 변경하지 않는다.
+
+- artifact가 이미 충분하면 mutation 0으로 HOLD만 해제한다.
+- asset 품질 보정이 실제 필요한 경우에만 asset 1개를 최소수리한다.
+- 대체문항 생성은 마지막 수단이며, TRUE HOLD가 독립 재확정되지 않으면 금지한다.
+
+### 2.1.4 regression — 24 금당중 중3 2학기 중간
+
+`24_금당중_2학기_중간_중3_수학.js`는 main에 source image 22/22가 존재했음에도 R1이 11개 crop을 HOLD로 승격했다.
+
+이 11건은 recovery에서 **전부 다시 qid별 재판정**한다. q10/q12/q22처럼 visible source + 발문으로 수학 truth가 이미 충분한 문항을 HOLD로 유지하거나 무조건 recrop하지 않는다. 실제 recrop/원본 확인이 필요한 subset만 처리한다.
 ## 3. 복구 우선순위
 
 ### 3.1 원본 우선
@@ -330,10 +392,10 @@ production question object에 임의 provenance field를 추가하지 않는다.
 ```text
 ITEM_RECOVERY_DONE
 itemHoldCount = 0
-READY_FOR_COMMIT
+READY_FOR_R3
 ```
 
-까지만 승격한다. main publish는 별도 writer가 수행한다.
+까지만 승격한다. current content-bearing 시험지는 R3 PASS 전 main publish 금지다.
 
 ## 15. 참고 품질 원칙
 

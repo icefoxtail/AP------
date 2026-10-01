@@ -61,6 +61,8 @@ L1/L2
 
 L3/L4 semantic path 선조회
 → RPM Primary v1.0 LOCKED taxonomy (`README.md` + `CANONICAL_MASTER.json` + 대상 curriculum/scope)
+→ current scope에 exact path가 없으면 이미 이수한 prerequisite lower scope를 lower-only로 조회
+→ lower scope reuse 시 target L1/L2는 유지하고 semantic source scope provenance를 기록
 
 RPM → ACTIVE 재탐색 방지
 → RPM path 확정 직후 정확한 학년/과목 crosswalk JSON 조회
@@ -80,7 +82,9 @@ compiled/
 
 ### 1.1 RPM → ACTIVE CROSSWALK FIRST LOOKUP HARD
 
-RPM Primary에서 문항의 L3/L4 semantic path를 확정한 순간 **semantic assignment는 FINAL 후보**다. 그 뒤 학년/과목 crosswalk는 기존 PT/TPL/binding projection을 찾기 위한 lookup reference로만 사용한다.
+RPM Primary에서 문항의 L3/L4 semantic path를 확정한 순간 **semantic assignment는 FINAL 후보**다.
+
+**PREREQUISITE LOWER-SCOPE HARD:** current 학년/scope의 RPM에 exact L3/L4가 없다고 바로 HOLD하지 않는다. 같은 curriculum에서 이미 이수한 lower scope를 아래 방향으로만 조회한다: 중2→중1, 중3→중1·중2, 고1→중등. 중등 같은 학년은 이전 학기 scope만, 고1은 `수학_상→수학_하` / `공통수학1→공통수학2` 방향만 허용한다. 상위 학년/후속 scope 역참조는 금지한다. lower semantic을 재사용해도 target L1/L2는 현재 문항 범위를 유지하고, source scope만 provenance로 남긴다. target binding 부재는 projection debt이지 semantic HOLD가 아니다. 그 뒤 학년/과목 crosswalk는 기존 PT/TPL/binding projection을 찾기 위한 lookup reference로만 사용한다.
 
 현재 선택표는 기존과 같다.
 
