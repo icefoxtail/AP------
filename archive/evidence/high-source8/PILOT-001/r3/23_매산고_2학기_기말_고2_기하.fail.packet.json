@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v2",
+  "status": "R3_FAIL_REENTRY_REQUIRED",
+  "currentExecutionState": "R3_FAIL_DEFERRED",
+  "deferredQueueState": "DEFERRED_REENTRY_QUEUE",
+  "examId": "23_매산고_2학기_기말_고2_기하",
+  "examFile": "23_매산고_2학기_기말_고2_기하.js",
+  "batch": "PILOT-001",
+  "ordinal": 3,
+  "r3BaselineArtifactSha": "8a95f0fe0c2ecd24bef37cc98bf767c6d7354559",
+  "r3InputArtifactSha": "8a95f0fe0c2ecd24bef37cc98bf767c6d7354559",
+  "r3InputArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
+  "r3InputArtifactRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "r2ReceiptCommit": "5c092ad08a33ead91c9dd96f6499c4fb35ee48de",
+  "r2ReceiptBlob": "fb627029612588128d0b968558b4afd0d05df671",
+  "questionCount": 20,
+  "itemHoldCountAtInput": 0,
+  "freshFromArtifactBytes": true,
+  "priorStageCountsUsedAsEvidence": false,
+  "openQids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "openFiles": [
+    "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js"
+  ],
+  "openFields": [
+    "answer",
+    "solution",
+    "questionUid",
+    "problemTypeKey",
+    "templateKey",
+    "metadataStatus",
+    "metadataReviewRequired",
+    "difficultyConfidence"
+  ],
+  "openAxes": [
+    "answer",
+    "solution",
+    "curriculumMethod",
+    "visualNecessity",
+    "smallBoard",
+    "studentLanguage",
+    "Meta",
+    "difficulty",
+    "protectedIdentity",
+    "releaseGate"
+  ],
+  "directDependencies": [
+    "final answer/solution bytes -> curriculum method audit",
+    "final solution bytes -> solution reproducibility/small-board/student-language audit",
+    "final solution bytes -> solution visual necessity audit",
+    "questionUid + ACTIVE PT/TPL/binding -> Meta release-final audit",
+    "release-final difficulty evidence -> difficulty gate"
+  ],
+  "failureCodes": [
+    "RELEASE_ARTIFACT_ANSWER_MISSING_ALL",
+    "RELEASE_ARTIFACT_SOLUTION_MISSING_ALL",
+    "PROTECTED_QUESTION_UID_MISSING_ALL",
+    "META_PROBLEM_TYPE_MISSING_ALL",
+    "META_TEMPLATE_MISSING_ALL",
+    "META_STATUS_NOT_RELEASE_FINAL_ALL",
+    "DIFFICULTY_CONFIDENCE_LOW_ALL"
+  ],
+  "affectedAxes": [
+    "answer",
+    "math",
+    "solution",
+    "curriculumMethod",
+    "visualNecessity",
+    "smallBoard",
+    "studentLanguage",
+    "Meta",
+    "difficulty",
+    "protectedIdentity",
+    "releaseGate"
+  ],
+  "observedEvidence": {
+    "artifactStructure": {
+      "answerBlankCount": "20/20",
+      "solutionBlankCount": "20/20",
+      "questionUidMissingCount": "20/20",
+      "problemTypeKeyBlankCount": "20/20",
+      "templateKeyBlankCount": "20/20",
+      "metadataStatusSourceFirstPassCount": "20/20",
+      "metadataReviewRequiredCount": "20/20",
+      "difficultyConfidenceLowCount": "20/20",
+      "sourceIdentityUniqueCount": "20/20",
+      "idContinuity": "1..20 PASS",
+      "sourceOrdinalContinuity": "1..20 PASS"
+    },
+    "curriculumMethodAudit": {
+      "auditCount": "20/20",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "reason": "All 20 final solution fields are blank, so final-solution method inventory cannot be release-verified.",
+      "curriculumViolationQids": [],
+      "uncertainDependencyPassCount": 0
+    },
+    "visualNecessityAudit": {
+      "auditCount": "20/20",
+      "result": "FAIL_UNEVALUABLE_FROM_RELEASE_ARTIFACT",
+      "reason": "All 20 final solution fields are blank, so solution-visual necessity cannot be release-verified.",
+      "existingProblemVisualAuditCount": "7/7 PASS",
+      "existingProblemVisualQids": [
+        4,
+        8,
+        13,
+        14,
+        15,
+        19,
+        20
+      ],
+      "existingProblemVisualBlobs": {
+        "q4": "09b1e4e1437b24b9d177ae16dc73294c6286a706",
+        "q8": "6e2d56dde62beb3126ded2726db1031f7015fe4a",
+        "q13": "de3584d9a9a673854c74624feea268d6b8c869a8",
+        "q14": "87a444634af44a99124da9b7c8d189b2c5110217",
+        "q15": "1f0979239fbbfbd410d2c94a3e265c834fc8656f",
+        "q19": "70493f78adfeec3e64a4ff072ba8a88d3259f642",
+        "q20": "14ebf4d6d273aadc6ed0011541883ac0c8af3efb"
+      },
+      "existingProblemVisualObservation": "Fresh pixel inspection: all seven crops are publication-readable and preserve the required geometry/labels without material clipping."
+    },
+    "solutionAndSmallBoard": {
+      "reproducibility": "FAIL 20/20: no final solution bytes",
+      "smallBoard": "FAIL 20/20: no solution/small-board bytes",
+      "studentLanguage": "FAIL_UNEVALUABLE 20/20"
+    },
+    "metaDifficulty": {
+      "result": "FAIL",
+      "problemTypeKeyBlankCount": "20/20",
+      "templateKeyBlankCount": "20/20",
+      "metadataStatusSourceFirstPassCount": "20/20",
+      "metadataReviewRequiredCount": "20/20",
+      "difficultyConfidenceLowCount": "20/20",
+      "note": "SOURCE_FIRST_PASS/low-confidence fields are not release-final Meta/difficulty evidence."
+    },
+    "protectedIdentity": {
+      "sourceIdentityUniqueCount": "20/20",
+      "questionUidMissingCount": "20/20",
+      "result": "FAIL"
+    },
+    "runtime": {
+      "result": "FAIL_RELEASE_INCOMPLETE",
+      "reason": "Answer/solution runtime exposure cannot be release-validated because both fields are blank 20/20."
+    }
+  },
+  "authorityRefs": {
+    "latestRemoteMainAtAction": "3188c3585a2bac28b866db39c38089a404ae138b",
+    "r3ProtocolBlob": "793f2f9d3fe3c371722ce15da7b9ccdafcf3dfb9",
+    "r2ArtifactRef": "codex/archive-source-intake@1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+    "r2ReceiptCommit": "5c092ad08a33ead91c9dd96f6499c4fb35ee48de"
+  },
+  "r3Locked": {
+    "scope": "All fields/assets outside openQids/openFiles/openFields/openAxes/directDependencies",
+    "sourceContentChoicesIdentity": "R3_LOCKED",
+    "problemVisualQids": [
+      4,
+      8,
+      13,
+      14,
+      15,
+      19,
+      20
+    ],
+    "problemVisualStatus": "R3_LOCKED_AFTER_FRESH_7_OF_7_PASS"
+  },
+  "systemicScope": {
+    "isSystemic": true,
+    "allQuestionsAffectedByMissingReleaseAnswerSolution": true,
+    "allQuestionsMissingQuestionUid": true,
+    "allQuestionsMissingReleaseMetaKeys": true
+  },
+  "protectedDiff": {
+    "mutationPerformed": false,
+    "contentChoicesSourceIdentityMutated": false
+  },
+  "failureClass": "FULL_REENTRY",
+  "wholeExamR1R2ReentryAuthorized": false,
+  "deferredReentryRoute": "CODEX_R3_REPAIR_THEN_INDEPENDENT_REVIEW_THEN_READY_FOR_R3_RETRY",
+  "nextOwner": "CODEX_R3_REPAIR",
+  "initialR3Disposition": "R3_FAIL_DEFERRED",
+  "finalMainPublishAllowed": false,
+  "r3RepairPerformed": false,
+  "reviewEvidenceGate": {
+    "stage": "R3",
+    "passRequiredOnlyForR3Pass": true,
+    "status": "NOT_RUN_FAIL_ALREADY_DETERMINED"
+  },
+  "createdAtKst": "2026-10-01T20:37:02+09:00"
+}
