@@ -129,6 +129,22 @@ target source + required authority만 읽음
 
 ## 5. Negative Sample 규칙
 
+### CURRENT cross-axis negative regression set — 2026-10-01 복성고1
+
+CREATE/R1/R2/R3의 학생용 해설 품질 calibration에서는
+`archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md`를 우선 Negative Sample로 읽는다.
+
+이 fixture는 한 시험지가 CREATE → R1 → R2 → R3 FAIL → R1 FULL → R2 FULL을 거친 뒤에도 direct R3에서 다시 발견된 false PASS다.
+
+반드시 잡아야 하는 family:
+- **SVG actual geometry:** q1/q3/q7/q8/q20 — 라벨 문구는 맞지만 실제 primitive 좌표/기울기/접점/곡선이 solution fact와 불일치
+- **small-board structure:** q2/q17 — ㄱ/ㄴ/ㄷ 판정을 실제 block으로 분리하지 않았는데 N/N PASS
+- **Meta null-but-resolvable:** q4/q11/q21 — exact ACTIVE mapping이 있는데 null
+- **runtime/source escape:** q2/q7/q20 — source code를 훑는 것만으로 놓친 doubled TeX escape
+
+이 세트는 별도 파일럿이 아니다. **현재 production CREATE/R1/R2/R3가 즉시 재발 방지해야 하는 HARD regression fixture**다.
+`22/22`, `14/14` 같은 자기보고 count가 있어도 실제 physical evidence가 없으면 이 fixture를 통과한 것으로 보지 않는다.
+
 Golden Sample만 보면 같은 유형의 false PASS를 반복할 수 있으므로,
 관련 작업에는 알려진 실패 실물도 최소 **1~2개** 먼저 본다.
 
