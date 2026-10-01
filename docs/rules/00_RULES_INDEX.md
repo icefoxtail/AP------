@@ -1,7 +1,7 @@
-## CURRENT HARD RULE — NORMAL-FIRST / DEFERRED R3 REENTRY (2026-10-01)
+## CURRENT HARD RULE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
 
 - 정상 `CREATE → R1 → R2 → initial R3` first-pass가 R3 FAIL 재작업보다 항상 우선한다.
-- R3 FAIL은 A/B/C `failureClass`와 route를 보존하되 `R3_FAIL_DEFERRED / DEFERRED_REENTRY_QUEUE`로 분리한다. 정상 first-pass eligible이 없거나 사용자 직접 지시가 있을 때만 reentry를 소비한다.
+- R3 FAIL은 `R3_FAIL_DEFERRED`로 격리하지만 정상 R1/R2에 재진입시키지 않는다. **별도 Codex post-R3 repair/review 예약창이 first-pass lane과 병렬로 처리할 수 있다.** NORMAL-FIRST는 실패 시험지가 정상 first-pass lane의 우선순위를 빼앗지 않는다는 뜻이다.
 - R3 PASS만 `READY_FOR_CODEX_PUBLISH` 후보다. FAIL은 publish 금지이며 다른 시험지 흐름을 막지 않는다.
 - M3 CREATE-1/2/3은 자기 mod-3 partition CREATE가 current physical-evidence gate까지 100% 완료되는 순간 lane별로 TEMP R3로 전환한다. M3 REVIEW2 69/69 또는 다른 CREATE lane 완료를 기다리지 않는다.
 - partition initial R3 완료 기준은 각 시험지가 `R3_PASS` 또는 `R3_FAIL_DEFERRED` disposition을 갖는 것이다. 이후 해당 CREATE lane은 M1 CREATE를 재개할 수 있다.
@@ -256,7 +256,7 @@ REVIEW2와 수정프로토콜 이후에도 남은 held qid의 최종 복구·대
 `02_PIPELINES/JS_ARCHIVE_R2E_INTAKE_TO_MAIN_v3.md`는 **frozen legacy READY_FOR_R2E cohort / 과거 receipt·checkpoint 복구 전용**으로 보존한다. `MIDDLE_RECERT_2026-09-30_META_V2`의 신규 CURRENT 생산 경로에는 적용하지 않는다.
 
 - 현재 기존 시험지 경로: `CREATE → REVIEW1 → REVIEW2 → BATCH/FINAL → MAIN`.
-- held qid 복구는 별도 R2E cohort가 아니라 기존 REVIEW2 lane의 `ITEM_RECOVERY_QUEUE`가 소비한다.
+- held qid 복구는 legacy R2E가 아니라 전용 Codex FINAL ITEM RECOVERY worker가 소비한다. 기존 REVIEW2 lane 소비 문구는 superseded다.
 - 신규 CREATE/REVIEW의 Meta는 Artifact-First META_V2 통합 계약에서 같은 시험지 작업으로 처리한다.
 - legacy R2E 문서의 `READY_FOR_R2E`, cohort HOLD grouping, R2E_FINAL/R2E_MAIN_FINAL은 새 CURRENT stage 이름이나 release authority로 재사용하지 않는다.
 

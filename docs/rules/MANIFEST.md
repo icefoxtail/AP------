@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 54057 bytes | sha256 bb55fbde6f16df255ebc7a2bf4281a80b5b0e30825a3b09caae47f6b64fd2266
+- 00_RULES_INDEX.md | 54193 bytes | sha256 65d37e3f29f43bc8255b8cff680fbd160825029bd95ff23b4812cf81c7174cf0
 - 01_CANONICAL/프로젝트_컨텍스트.md | 18965 bytes | sha256 c0bad8e4c79294913bafce6a89859380abd35fdd4726503bfd652ba634634eb6
 - 01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md | 23333 bytes | sha256 ed736808a9ac5b2c68e1b57a2f2adfbd183b959966fdbfeb093d0926d2863c2c
 - 01_CANONICAL/JS아카이브_문항조판_운영규칙_v1.md | 12887 bytes | sha256 7642674cf88b5ac9949e12bd867412b6a70be42d6998763446a0883ccbc7a72f
@@ -42,7 +42,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 03_REVIEW/수학_문항오류_검증_프로토콜_v2.1.md | 8439 bytes | sha256 35afb56a5e2c6e676e9244f8387f1d32efec1840341c846a38d56750c31eaea9
 - 03_REVIEW/JS아카이브_1차검수_프로토콜.md | 32669 bytes | sha256 507be6a3f52f866dac69f28ce5da6a4604da26b8e6f92b83eb9a7bd709eb249d
 - 03_REVIEW/JS아카이브_2차검수_프로토콜.md | 30353 bytes | sha256 4a020742b313fee598e5e37044d65d78c3a5b8d9897cadebbeee211dc355777c
-- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 35215 bytes | sha256 7911536ea375b573074a6c05d02663040684ef76d29b944ef8d8169671629ab0
+- 03_REVIEW/JS아카이브_3차검수_프로토콜.md | 35128 bytes | sha256 08d63a66102b3f40d707fa452fa1e4483f5b6e71472293b55a3a5431074c8c96
 - 03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md | 15364 bytes | sha256 1c9a8dbafedcacbe93a2e417fbc32845f01cd732c204ae29059525521d912b9b
 - 04_VISUAL/도형추출.md | 57487 bytes | sha256 5121ee73b19e9df3310c98720532dd6d9768be2d7a172837f57db1f78e7cef09
 - 04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md | 73684 bytes | sha256 1dcb787717543982f0c26f7522df7d66087302751d424dec715ada6bb9fa61d1
