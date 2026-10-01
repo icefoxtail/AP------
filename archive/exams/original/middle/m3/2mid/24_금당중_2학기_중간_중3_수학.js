@@ -523,7 +523,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "객관식",
       "도형"
@@ -679,7 +679,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -705,7 +705,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -733,7 +733,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
