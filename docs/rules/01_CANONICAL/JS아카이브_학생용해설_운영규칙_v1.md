@@ -1,5 +1,17 @@
 # JS아카이브 학생용 해설 운영규칙 v1
 
+## CURRENT OVERRIDE — 2026-10-01 — ALL WORKER SAMPLE PREFLIGHT
+
+학생용 해설·solutionImage/SVG를 **생성·수정·검수·승인**하는 CREATE/R1/R2/R3/upgrade/repair/recovery/independent-recheck worker는 target 작업 전에 Golden 2~3 + 관련 Negative Sample을 실제 판독한다.
+
+- 신규/source-only CREATE: sample preflight로 품질 기준만 고정한 뒤 source+answer에서 target을 독립 fresh solve한다. 기존 target solution은 찾거나 참고하지 않는다.
+- 기존 production upgrade: sample preflight → baseline 확인 → 부족 문항만 upgrade.
+- 독립 REVIEW/recheck: sample preflight 후 target prior solution/verdict를 가린 상태로 blind target 판정 → 마지막 quality compare.
+- repair/recovery: sample preflight → defect/open scope 동결 → 최소수리 → changed/open locus independent recheck. post-R3 LOCK 영역은 calibration 명목으로 다시 열지 않는다.
+- 필수 공통 quality axes: `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`.
+- 글자 수·줄 수 임계값은 사용하지 않는다.
+
+
 ## CURRENT HARD GATE — 2026-10-01 — GOLDEN SAMPLE AFTER FRESH / BEFORE CLOSE
 
 학생용 해설은 실제 Golden Sample calibration을 거친 뒤에만 PASS로 닫는다. 모든 solution 생성·재작성·업그레이드·승인 작업은 `Archive_작업전_Golden_Sample_Calibration_v1.md`와 `review-evidence-gate.mjs`를 함께 적용한다.

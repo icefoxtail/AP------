@@ -1,6 +1,6 @@
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION
 
-R2는 R1 detail을 보기 전 blind decision freeze를 유지한다. freeze 이후 Golden/Negative Sample을 실제 판독하고 최종 solution을 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY`로 N/N 비교한다. 물리 sample/question SHA evidence와 `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
+R2 worker는 stage assignment와 scope만 확인한 직후, **R1 detail/target 기존 solution을 보기 전에** Golden 2~3 + 관련 Negative Sample을 먼저 읽어 품질 눈높이를 고정한다. 이후 latest R1 artifact에서 target blind decision freeze를 만들고 마지막 compare에서 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`를 N/N 재확인한다. 물리 sample path/SHA/blob + 대표 solution SHA/excerpt + `calibrationStatus=PASS`가 없으면 R2 DONE/PASS 금지다.
 
 [JS아카이브 2차 검수 프로토콜 — FULL 독립 재검·Reentry v2.0]
 
