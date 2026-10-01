@@ -111,7 +111,7 @@ CREATE / REVIEW1 / REVIEW2 / R3의 PASS/DONE은 `03_REVIEW/JS아카이브_PHYSIC
 
 ### A. problem image / asset / 출판품질
 - crop 경계 잘림, 학생 필기 혼입, 주변 문항 침범, 라벨 clipping, 불필요한 여백, 파일참조 오류, 단순 가독성 결함은 기본적으로 `ASSET_REPAIR_REQUIRED`이며 `ITEM_HOLD`가 아니다.
-- 수리 우선순위는 **원본 픽셀 재크롭·정리 → 결정론적 code-first 재구성 → HOLD**다.
+- 수리 우선순위는 **원본 픽셀이 존재하면 원본 픽셀 재크롭·정리에서 종결**한다. `결정론적 code-first 재구성`은 full-page/source pixels가 실제로 없거나 recrop까지 해도 사용 불가능한 예외 fallback에서만 허용하며, usable source crop을 대체하는 수단으로 쓰지 않는다. 그 예외 fallback으로도 source truth가 닫히지 않을 때만 HOLD다.
 - 원본이 좌표그래프·기하 스케치처럼 구조적 시각자료이고, source에서 라벨·좌표·선·곡선·관계가 유일하게 동결되어 있으며 pixel-critical 인쇄 기호를 잃지 않는 경우에는 원본 사실만으로 deterministic SVG/graph reconstruction을 허용한다. 생성형 이미지로 원문을 추정·재창작하지 않는다.
 - HOLD는 원본 자체가 없거나 판독 불능이고, 가능한 복원이 여러 개라 하나를 고르면 추측이 되는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
 - 특정 worker/runtime에서 binary crop 편집이 불편하다는 사실만으로 콘텐츠 HOLD를 만들지 않는다. 허용된 deterministic fallback으로 닫을 수 있으면 같은 stage에서 수리한다.
