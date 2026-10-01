@@ -1,0 +1,82 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "23_매산고_2학기_기말_고2_기하",
+  "ordinal": 3,
+  "stage": "RELEASE",
+  "status": "PILOT_DONE",
+  "branch": "work/high-source8-r2",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "startingBaseline": "5f306e74840e92ef45131c5c04abcce027ac06b4",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
+  "targetArtifactSha256": "sha256:79950e5f8e51f6980b4d1151d83f7c76c8d9de87292489882283a15fbfe79056",
+  "targetArtifactGitBlobSha": "7cc4e39ec56ba587bea68f6cd82ca24ee6251c8f",
+  "denominator": 20,
+  "resolvedAnswerCount": 20,
+  "resolvedSolutionCount": 20,
+  "changedSolutionCount": 20,
+  "itemHoldQids": [],
+  "calibration": {
+    "status": "MANUAL_SOLUTION_CALIBRATION_PASS_WITH_SCOPE_NOTE",
+    "evidence": "golden-calibration.json",
+    "sampleCount": 2
+  },
+  "visual": {
+    "problemSourceImagesKept": 7,
+    "sourceImageQids": [4, 8, 13, 14, 15, 19, 20],
+    "solutionSvgAdded": 1,
+    "solutionSvgModified": 0,
+    "visualEvidence": "visual-evidence.json",
+    "solutionSvgRefs": ["assets/images/23_매산고_2학기_기말_고2_기하/q013_solution.svg"]
+  },
+  "meta": {
+    "status": "META_PASS_WITH_RPM_ONLY_PROJECTION_GAP",
+    "resolvedMetaRecordCount": 20,
+    "activeH15GVBindingCount": 0,
+    "legacyLevelCompatibilityUnknownCount": 20,
+    "itemHoldQids": [],
+    "projectionGap": "All 38 current-main H15 Geometry RPM rows remain RPM_ONLY/NO_ACTIVE_MAPPING; no H22/M1 substitute keys were invented. Legacy level values are blank, so UNKNOWN is retained."
+  },
+  "independentReview": {
+    "status": "PASS_WITH_DOCUMENTED_META_GAP",
+    "evidence": "independent-review.json",
+    "findings": []
+  },
+  "checks": {
+    "nodeSyntax": "PASS",
+    "vmRuntime": "PASS",
+    "texDelimiterAndBraceScan": "PASS",
+    "protectedSourceParity": "20/20",
+    "sourceImageBlobParity": "7/7",
+    "activeRegistry": "ACTIVE; 20 field records validated",
+    "activeCurriculumBindings": "0 H15 Geometry bindings; RPM-only gap documented",
+    "unrelatedMutationCount": 0
+  },
+  "evidenceFiles": [
+    "state.json",
+    "answer.json",
+    "solution.json",
+    "self-review-1.json",
+    "self-review-2.json",
+    "golden-calibration.json",
+    "visual-evidence.json",
+    "difficulty-blind-input.json",
+    "meta-blind-input.json",
+    "meta.json",
+    "independent-review.json",
+    "release.json"
+  ],
+  "stageCommits": {
+    "answer": "f099a25d57c95d8a0523c830bd19535dcfaabd23",
+    "solution": "48f90ee0ecef03223830b3b4f8b1a6b0c2576633",
+    "selfReview1": "15a56ed62b6b1a713943533d8cf33cddaf29452c",
+    "selfReview2": "3523909a479049da8508e15c65ebe7f7f9db5b7f",
+    "goldenCompare": "04c30ed99b9d43c37bb0a9509932f2daa788a481",
+    "visual": "04c30ed99b9d43c37bb0a9509932f2daa788a481",
+    "visualRepair": "76444df486d8747d66647879f24cf8c902985573",
+    "meta": "32936d211b4e78e1714c4c0b8a5b610dfaede289",
+    "metaReconciliation": "8f70a29cfb194fad03ec43689668cdd8921ed96a",
+    "independentReview": "5a04436c49ea171ebcce624dd065253b5da60fa4"
+  },
+  "scope": "Candidate closure only; no MAIN merge, PR, publish, or shared-system change."
+}
