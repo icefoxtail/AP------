@@ -1,7 +1,7 @@
 # Archive 2.0 Canonical Namespace Impact — 20261001
 
-- Generated: 2026-10-01T12:06:18.902Z
-- Projection: `archive2-canonical-v1:cf0f5ebf790fd103765807b08cbd429a711877dac5ea8ecc2ec0b8c318adb7f5`
+- Generated: 2026-10-01T12:16:54.942Z
+- Projection: `archive2-canonical-v1:4d31dacdb3b39fc1df1a14d00cddf5083b2d468f10ab1e09d49a3ce62bf01419`
 - Taxonomy: `8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b`
 
 ## UID totals
