@@ -11,86 +11,6 @@
     "gitBlobSha": "fd52b6f7bdd0e86c9164d0fa9d864643e7bb8be9",
     "questionCount": 21
   },
-  "calibration": {
-    "goldenSampleRefs": [
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
-        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
-        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
-        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
-        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
-      }
-    ],
-    "goldenSampleQuestionRefs": [
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
-        "qid": 1,
-        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
-        "qid": 10,
-        "solutionSha256": "sha256:622be786ec1bbc6a9336a8ec6edd91599cf8caff7a36e9334b15951a8a902b60",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
-        "qid": 1,
-        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
-        "qid": 10,
-        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
-        "qid": 1,
-        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      },
-      {
-        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
-        "qid": 10,
-        "solutionSha256": "sha256:7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
-        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인."
-      }
-    ],
-    "negativeSampleRefs": [
-      {
-        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
-        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
-        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
-      }
-    ],
-    "calibrationAxes": [
-      "STUDENT_REPRODUCIBILITY",
-      "SMALL_BOARD_STRUCTURE",
-      "EXPLANATION_DENSITY"
-    ],
-    "sampleReadBeforeWork": true,
-    "qualityCompareCount": "21/21",
-    "calibrationStatus": "PASS",
-    "solutionWorkMode": "EXISTING_SOLUTION_UPGRADE",
-    "calibrationOrder": "BASELINE_REVIEW_THEN_CALIBRATE_THEN_UPGRADE",
-    "validator": {
-      "name": "archive/tools/solution-calibration-gate.mjs",
-      "stage": "SOLUTION_UPGRADE",
-      "status": "PASS",
-      "issues": []
-    }
-  },
   "questionRows": [
     {
       "qid": 1,
@@ -267,6 +187,99 @@
     ],
     "solutionSvgCount": 14,
     "solutionSvgDisposition": "STATIC_GEOMETRY_PARITY_KEEP_ALL",
-    "render": "NOT_RUN_BY_USER_DIRECTION"
+    "render": "NOT_RUN_BY_USER_DIRECTION",
+    "visualReadabilityEvidence": "정적 inspection: viewBox/canvas와 text/point/line/circle primitive의 배치 확인. 실제 브라우저 렌더는 사용자 지시에 따라 생략.",
+    "calibrationEvidenceReplay": "PASS"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:0f2f3d055ef9a7b4464a68ef8588642e1e633c07cc78086d1671875ef410563f",
+        "gitBlobSha": "36f720ef3d1d8c0bf426b32dd0b7a68f15cc9812"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:80cc1d0d2af2a76471441583075d0c2a04f62986d9ac95349c4985a9b2f3e54c",
+        "gitBlobSha": "f94f614cc788eaa4e8d25a09b71f1c0d9c18f84d"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:17c42ee7a3fd597b7ba8ddf0e15beb6ec9c8758bc0ffd262460c7f56d55c877b",
+        "gitBlobSha": "639acb54459718fdeb83a1a281f33483bc81edb4"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 한쪽 끝"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:622be786ec1bbc6a9336a8ec6edd91599cf8caff7a36e9334b15951a8a902b60",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "원의 중심과 반지름부터 확인한다.\n원\n$(x-a)^2+(y-1)^2=16$\n의 중심은 $(a,1)$이고 반지름은 $"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(3,0)"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:600e0a71c0142fd37da184b35f4650cacc44597b9b48a7e7a350131e83d1551c",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "주어진 조건\n$A\\cap B=B$\n는 $B$의 모든 원소가 $A$에도 들어 있다는 뜻이다.\n따라서\n$B\\subset"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:452af1611df74ec7da1ba63459c630385f6c31ba2138c01e22edd37d54d15ae9",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "집합 $A$의 원소는 $1$, $2$, $\\{1\\}$이다. 원소 관계 $\\in$와 부분집합 관계 $\\subset$를"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+        "qid": 10,
+        "solutionSha256": "sha256:7c72f3a036e518df8cb19bf8759dc175ad8ab89a79e04d0c1964b3b6cbac7b94",
+        "observation": "직접 판독 후 학생 재현성·작은칠판 구조·설명 밀도 비교: 개념/조건→식→중간 계산→결론의 순서 확인.",
+        "solutionExcerpt": "두 점 사이의 거리 공식으로 세 변의 길이의 제곱을 구한다.\n$AB^2=(3-1)^2+(0-2)^2$\n$=4+4=8"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:39c03a074003c240075547aac15421694b6b90181f5a91135d7927c90e3db3f8",
+        "gitBlobSha": "9775c4993d7e148a9da816ae36acdf652bc69906"
+      }
+    ],
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "sampleReadBeforeWork": true,
+    "qualityCompareCount": "21/21",
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "EXISTING_SOLUTION_UPGRADE",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_BASELINE_REVIEW_THEN_UPGRADE",
+    "contractCommit": "0c1513412",
+    "validatorReceipt": {
+      "tool": "archive/tools/solution-calibration-gate.mjs",
+      "contractCommit": "0c15134123565d3d00f3eecc20e6fe49f0c793c7",
+      "stage": "SOLUTION_UPGRADE",
+      "status": "PASS",
+      "questionCount": 21,
+      "issues": []
+    }
   }
 }
