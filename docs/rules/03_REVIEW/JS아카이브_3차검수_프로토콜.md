@@ -1,5 +1,17 @@
 [JS아카이브 3차 검수 프로토콜 — MAIN 직전 Release Gate v2.0]
 
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS / R3 FRESH-BYTES ONLY (2026-10-01)
+
+R3는 `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 MAIN 직전 최종 release gate로 적용한다.
+
+- R1/R2의 `N/N`, PASS receipt, ledger 요약을 release evidence로 사용하지 않는다.
+- latest artifact bytes에서 source/runtime/small-board/SVG actual geometry/Meta null-resolvable을 fresh audit한다.
+- `freshFromArtifactBytes=true` + `priorStageCountsUsedAsEvidence=false`가 evidence에 없으면 R3_PASS 금지.
+- linked SVG는 라벨 문구가 아니라 actual primitive 좌표/위상으로 solution fact를 재계산한다.
+- Meta는 null field까지 전수 resolver/canonical lookup evidence를 남긴다.
+- 완료 전 `review-evidence-gate.mjs --stage R3`의 `ok=true`가 필수다.
+- 예약 시간이 부족하면 R3_PASS를 추정하지 않고 checkpoint만 남긴다.
+
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
 `ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.
