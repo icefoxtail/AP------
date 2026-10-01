@@ -1,0 +1,98 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "stage": "SOLUTION",
+  "status": "SOLUTION_DRAFT_COMPLETE_WITH_ITEM_HOLD",
+  "denominator": 21,
+  "resolvedSolutionCount": 20,
+  "itemHoldQids": [
+    15
+  ],
+  "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+  "targetArtifactSha256": "5d060ff275a64fc12957200f9e999193ad24b95ad217a8cbb523a2570546e221",
+  "targetArtifactGitBlobSha": "391a77834e59e93f331c5a5dd0aa85fd7def8118",
+  "calibrationStatus": "PENDING_GOLDEN_SEARCH",
+  "solutions": [
+    {
+      "qid": 1,
+      "solution": "각 식을 미분해 확인한다.\n① 연쇄법칙으로 $y'=-3\\cos(2-3x)$이다.\n② $y'=5\\ln3\\cdot3^{5x-1}$이다.\n③ 곱의 미분법으로 $y'=\\ln|x-1|+\\dfrac{x}{x-1}$이다.\n④ $x=e^y+2y$를 미분하면 $1=(e^y+2)y'$이므로 $y'=\\dfrac1{e^y+2}$이다.\n⑤ $y'=-\\sin x\\cos(\\cos x)$이다.\n따라서 옳은 것은 ④이다."
+    },
+    {
+      "qid": 2,
+      "solution": "곡선의 기울기는 $y'=\\dfrac1x$이다. 기울기가 1이면 $x=1$이고 곡선 위의 점은 $(1,3)$이다. 접선은 $y-3=x-1$, 즉 $y=x+2$이므로 ①이다."
+    },
+    {
+      "qid": 3,
+      "solution": "$x'=3t^2-4t$, $y'=2t+2$이므로 $t=1$에서 속도는 $(-1,4)$, 속력은 $\\sqrt{17}$이다. $x''=6t-4$, $y''=2$이므로 가속도는 $(2,2)$, 크기는 $2\\sqrt2$이다. 위치는 $(-1,3)$이다. 가속도를 $(-2,2)$라고 한 ③이 틀리다."
+    },
+    {
+      "qid": 4,
+      "solution": "$f'(x)=e^x-1$이므로 $[-3,0]$에서 감소하고 $[0,1]$에서 증가한다. 따라서 최솟값은 $f(0)=1$이다. 끝점에서 $f(-3)=e^{-3}+3$, $f(1)=e-1$이고 $e<3$이므로 $f(-3)>f(1)$. 최댓값은 $e^{-3}+3$이어서 ⑤이다."
+    },
+    {
+      "qid": 5,
+      "solution": "①은 $3x^2-\\dfrac1x+\\dfrac1{x^2}$를 적분한 결과로 맞다. ②는 치환적분, ④는 $\\dfrac1x-\\dfrac1{x+1}$로 나눈 결과, ⑤는 부분적분 결과로 맞다. 그런데 $\\tan^2x=\\sec^2x-1$이므로 $\\int\\tan^2x\\,dx=\\tan x-x+C$이다. 부호가 다른 ③이 틀리다."
+    },
+    {
+      "qid": 6,
+      "solution": "$u=x^2$로 두면 $du=2x\\,dx$이고 적분 구간은 $0$에서 $4$로 바뀐다. 따라서 $\\int_0^2xe^{x^2}dx=\\dfrac12\\int_0^4e^u du=\\dfrac{e^4-1}{2}$이므로 ②이다."
+    },
+    {
+      "qid": 7,
+      "solution": "$f(e)-f(1)=\\int_1^e(4x+1)\\ln x\\,dx$이다. 부분적분하면 한 원시함수는 $F(x)=2x^2\\ln x-x^2+x\\ln x-x$이다. $F(e)=e^2$, $F(1)=-2$이므로 $f(e)=2+F(e)-F(1)=e^2+4$이다. 정답은 ④이다."
+    },
+    {
+      "qid": 8,
+      "solution": "주어진 합은 $[0,1]$에서 $x^4$의 오른쪽 끝점 리만 합이다. 따라서 극한은 $\\int_0^1x^4dx=\\left[\\dfrac{x^5}{5}\\right]_0^1=\\dfrac15$이고 ①이다."
+    },
+    {
+      "qid": 9,
+      "solution": "접점의 $x$좌표를 $a$라 하면 접점은 $(a,1/a)$, 접선 기울기는 $-1/a^2$이다. $(-2,0)$을 지나므로 $-1/a=(-2-a)(-1/a^2)$, 즉 $-a=2+a$이고 $a=-1$이다. 접선은 $y+1=-(x+1)$이므로 $y=-x-2$, 정답은 ②이다."
+    },
+    {
+      "qid": 10,
+      "solution": "$f'(x)=\\sum_{k=1}^{10}kx^{-k-1}$이다. $x=-1$을 대입하면 $1-2+3-4+\\cdots+9-10=(1-2)+(3-4)+(5-6)+(7-8)+(9-10)=-5$이다. 따라서 ②이다."
+    },
+    {
+      "qid": 11,
+      "solution": "극한 조건에서 $f(6)=3$, $f'(6)=\\dfrac13$이다. 역함수에 대해 $g(3)=6$, $g'(3)=\\dfrac1{f'(6)}=3$이므로 $g(3)+g'(3)=9$, 정답은 ②이다."
+    },
+    {
+      "qid": 12,
+      "solution": "$y=xe^{-x}$이면 $y'=e^{-x}(1-x)$, $y''=e^{-x}(x-2)$이다. 변곡점은 $A=(2,2/e^2)$이고 접선 기울기는 $-1/e^2$이다. 접선은 $y=(4-x)/e^2$이므로 $B=(4,0)$, $C=(0,4/e^2)$이다. 넓이는 $\\dfrac12\\cdot4\\cdot\\dfrac4{e^2}=\\dfrac8{e^2}$이어서 ④이다."
+    },
+    {
+      "qid": 13,
+      "solution": "극한 조건은 $f'(x)=\\cos x$를 뜻한다. 따라서 $f(\\pi/3)-f(\\pi/6)=\\int_{\\pi/6}^{\\pi/3}\\cos x\\,dx=\\sin\\dfrac\\pi3-\\sin\\dfrac\\pi6=\\dfrac{\\sqrt3-1}{2}$이다. 정답은 ③이다."
+    },
+    {
+      "qid": 14,
+      "solution": "$f(e^6)-f(1/e)=\\int_{1/e}^{e^6}\\dfrac{dx}{x\\sqrt{\\ln x+10}}$이다. $u=\\ln x+10$으로 두면 구간은 $9$에서 $16$이므로 차는 $\\int_9^{16}\\dfrac{du}{\\sqrt u}=2\\sqrt u\\big|_9^{16}=2$이다. $f(1/e)=10$이므로 $f(e^6)=12$, 정답은 ③이다."
+    },
+    {
+      "qid": 16,
+      "solution": "$P$의 속도는 $f'(t)=2t-a$이다. $Q$의 속도는 $g'(t)=\\dfrac{2(t-1)}{(t-1)^2+1}$이므로 $t<1$에서 음수이다. 반대 방향인 구간이 정확히 $1/4<t<1$이 되려면 $P$의 속도는 $t>1/4$에서 양수이고 경계에서 $2(1/4)-a=0$이다. 따라서 $a=1/2$, 정답은 ①이다."
+    },
+    {
+      "qid": 17,
+      "solution": "$S(x)=\\dfrac{e^x+e^{2x}+\\cdots+e^{10x}}{10}$이라 두면 $S(0)=1$이다. 극한은 $2\\lim_{x\\to0}\\dfrac{\\ln S(x)-\\ln S(0)}x=2(\\ln S)'(0)$이다. $(\\ln S)'(0)=S'(0)/S(0)=(1+2+\\cdots+10)/10=11/2$이므로 값은 11이다."
+    },
+    {
+      "qid": 18,
+      "solution": "$\\dfrac{dy}{dx}=\\dfrac{dy/d\\theta}{dx/d\\theta}=-2\\tan\\theta$이다. 따라서 $\\dfrac{d^2y}{dx^2}=\\dfrac{d(-2\\tan\\theta)/d\\theta}{dx/d\\theta}=-2\\sec^3\\theta$이다. $\\theta=\\pi/3$에서 $-2\\cdot2^3=-16$이다."
+    },
+    {
+      "qid": 19,
+      "solution": "양변을 $x$에 대하여 미분하면 $f(x)-e^4=\\int_0^xf(t)dt$이다. $x=0$에서 $f(0)=e^4$이다. 이 식을 다시 미분하면 $f'(x)=f(x)$이므로 $(e^{-x}f(x))'=0$이다. 따라서 $e^{-x}f(x)$는 상수이고, $f(0)=e^4$에서 $f(x)=e^{x+4}$이다. 그러므로 $f(-2)=e^2$이다."
+    },
+    {
+      "qid": 20,
+      "solution": "$u=\\ln x$로 치환하면 $a_n=\\int_1^0u^n du=-\\dfrac1{n+1}$이다. 그러므로 $a_na_{n+1}=\\dfrac1{(n+1)(n+2)}=\\dfrac1{n+1}-\\dfrac1{n+2}$이다. 부분합은 $\\dfrac12-\\dfrac1{N+2}$이므로 $N\\to\\infty$일 때 합은 $1/2$이다."
+    },
+    {
+      "qid": 21,
+      "solution": "조건 (가)의 $f(1)=e$에서 $a+b=0$이다.\n$f'(x)=(x^2+(a+2)x+a+b)e^x$이고 $f'(1)=e$에서 $2a+b=-2$이다. 두 식을 풀면 $a=-2,b=2$이므로 $f(x)=(x^2-2x+2)e^x=((x-1)^2+1)e^x$이고 $f'(x)=x^2e^x$이다. $f'(x)>0$ ($x\\ne0$)이므로 $f$는 엄격히 증가한다. 또한 $x\\to-\\infty$에서 $f(x)\\to0$, $x\\to\\infty$에서 $f(x)\\to\\infty$이므로 $f$의 치역은 $(0,\\infty)$이고 역함수가 존재한다.\n조건 (나)와 $f(1)=e$에서 $f^{-1}(e)=1$, $g(e)=f'(1)=e$이다. $g(f(x))=f'(x)$를 미분하면 $g'(f(x))f'(x)=f''(x)$이다. $f''(x)=(x^2+2x)e^x$이므로 $g'(e)=3$이다. 또 $(f^{-1})'(e)=1/f'(1)=1/e$이다.\n따라서 $h'(e)=(f^{-1})'(e)g(e)+f^{-1}(e)g'(e)=1+3=4$이다."
+    }
+  ]
+}
