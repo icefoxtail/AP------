@@ -6,6 +6,20 @@
 - 비적용: 공통 generator/validator 개발, 대량 migration, 전역 Meta/Foundation 수술, 시스템 파이프라인 구현
 - current certification generation: `MIDDLE_RECERT_2026-09-30_META_V2`
 
+## CURRENT HARD RULE — PHYSICAL EVIDENCE BEFORE PASS / 2026-10-01
+
+FULL_INTEGRATED_V2의 CREATE / REVIEW1 / REVIEW2는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 반드시 통과한다.
+
+- stage worker가 적은 `N/N` 집계만으로 DONE 금지. qid별 evidence row에서 validator가 분모를 재계산한다.
+- final exam SHA, qid별 source/math/small-board/curriculum/visual/meta/difficulty/runtime evidence, linked solutionImage별 visual evidence가 필요하다.
+- visual PASS는 실제 SVG 좌표/위상 계산 evidence가 없으면 성립하지 않는다.
+- Meta null은 lookup evidence + nullReason 필수. unique EXACT_ACTIVE mapping이 있는데 null이면 FAIL.
+- 예약 run이 시간 내 evidence를 완결하지 못하면 exact checkpoint만 보존하고 DONE receipt를 발행하지 않는다.
+- 공용 gate: `node archive/tools/review-evidence-gate.mjs --exam <js> --evidence <json> --stage CREATE|R1|R2|R3`.
+- 별도 파일럿/유예 없이 현재 진행 artifact부터 즉시 적용한다.
+
+---
+
 ## CURRENT — MAIN_PRESENT META-ONLY FAST TRACK / 2026-09-30
 
 형님 최신 지시로 `MIDDLE_RECERT_2026-09-30_META_V2` 안에 **MAIN_PRESENT_META_ONLY** 예외 트랙을 둔다.
