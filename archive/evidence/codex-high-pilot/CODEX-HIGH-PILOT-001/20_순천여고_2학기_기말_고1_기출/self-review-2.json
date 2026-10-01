@@ -1,0 +1,53 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_순천여고_2학기_기말_고1_기출",
+  "ordinal": 5,
+  "stage": "SELF_REVIEW_2",
+  "status": "STUDENT_PASS",
+  "reviewer": "Codex primary, full student-facing reread",
+  "denominator": 23,
+  "reviewedQuestionCount": 23,
+  "heldQids": [],
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "reviewedArtifactSha256": "sha256:f782397757ce6eb4657204bb06035510fc2f85607f2560b08ea006bb937c5c71",
+  "reviewedArtifactGitBlobSha": "d3dc656b1b30ad3852d53e2f28ac24bbc8fd213c",
+  "axes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "ENUMERATED_AND_CASE_BLOCKS",
+    "SUBPART_SEPARATION",
+    "BOARD_FLOW_AND_KEY_EQUATIONS"
+  ],
+  "fullCoverage": [
+    {"qid":1,"status":"PASS","note":"Short calculation is complete and the notation-to-exponent step is visible."},
+    {"qid":2,"status":"PASS","note":"One affine equation leads directly to the requested value without a skipped inverse step."},
+    {"qid":3,"status":"PASS","note":"Odd-tens and even-tens cases are separated and cover all valid two-digit numbers."},
+    {"qid":4,"status":"PASS","note":"The numerator expansion is visible; no hidden 'simplifying' step remains."},
+    {"qid":5,"status":"PASS","note":"Composition is evaluated inside-out with each intermediate value shown."},
+    {"qid":6,"status":"PASS","note":"The combination count is a concise, reproducible direct method."},
+    {"qid":7,"status":"PASS","note":"End choices and middle arrangement are independent visible factors."},
+    {"qid":8,"status":"PASS","note":"Both inverse-graph implications are stated before solving the two equations."},
+    {"qid":9,"status":"PASS","note":"The two graph readings are named separately and feed the composition in order."},
+    {"qid":10,"status":"PASS","note":"The injective assignment interpretation and 6P4 calculation are explicit."},
+    {"qid":11,"status":"PASS","note":"Monotonic direction, endpoint for each extreme, and recovered parameter are stated."},
+    {"qid":12,"status":"PASS","note":"The sign argument is divided into exhaustive parameter intervals and handles the boundary k=3."},
+    {"qid":13,"status":"PASS","note":"The inverse derivation and inverse-domain condition are on separate readable steps."},
+    {"qid":14,"status":"PASS","note":"Complement cases are named and counted without overlap."},
+    {"qid":15,"status":"PASS","note":"Coordinates, hyperbola relation, right-triangle legs, and area calculation are shown in sequence."},
+    {"qid":16,"status":"PASS_AFTER_REPAIR","note":"The solution now states u≠v before cancelling u−v, with the one-to-one graph reason explicit."},
+    {"qid":17,"status":"PASS_AFTER_REPAIR","note":"Original conditions (가), (나), (다) now have separate visible blocks; the forbidden family is subtracted explicitly."},
+    {"qid":18,"status":"PASS","note":"Complex powers reduce by repeated multiplication and a four-step cycle; no polar-form prerequisite is hidden."},
+    {"qid":19,"status":"PASS","note":"Substitution, discriminant minimum, violating-slope argument, equality case, and horizontal-line case are all visible."},
+    {"qid":20,"status":"PASS","note":"The source diagram's horizontal/vertical construction maps cleanly to coordinates and equal legs."},
+    {"qid":21,"status":"PASS","note":"Subparts (1),(2) are separated; the non-diagonal intersection check and admissible fixed-point root are explained."},
+    {"qid":22,"status":"PASS","note":"Outer ranges, middle monotonicity, coefficient equations, and final range/injectivity check form a complete board flow."},
+    {"qid":23,"status":"PASS","note":"The involution cycle cases k=0,1,2 are exhaustive and the pairing count is readable."}
+  ],
+  "repairsAndRechecks": [
+    {"qid":16,"repair":"State that distinct points on this graph have distinct y-coordinates before cancelling u−v.","recheck":"PASS; the graph is one-to-one in y on its domain, so the cancellation is valid."},
+    {"qid":17,"repair":"Split source conditions (가), (나), (다) into independent labelled solution blocks.","recheck":"PASS; the include, choose, and forbidden-subset steps are individually visible."}
+  ],
+  "protectedSourceParity": "PASS: 23/23 content and 23/23 choices exact; source order and visual refs unchanged.",
+  "findings": []
+}
