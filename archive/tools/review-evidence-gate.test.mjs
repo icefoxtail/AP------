@@ -104,4 +104,36 @@ report = run(metaExam, metaBad);
 assert.equal(report.ok, false);
 assert(report.issues.some(x => x.startsWith('META_NULL_BUT_RESOLVABLE')));
 
+const holdEvidence = {
+  reason: 'SOURCE_HOLD',
+  observedEvidence: 'source is ambiguous',
+  unresolvedPoint: 'one printed symbol cannot be determined',
+  nextRequiredEvidenceOrCapability: 'higher-resolution source',
+  repairAttempted: 'pixel enlargement attempted',
+  authorityLookupAttempted: 'source pages and identity map checked',
+  whyDeterministicClosureImpossible: 'two readings remain equally possible',
+};
+
+const r1Hold = evidence(goodExam);
+r1Hold.stage = 'R1';
+r1Hold.independence = { createReceiptUsedAsAuthority: false };
+r1Hold.questionRows[0].sourceExact = { status: 'HOLD', holdEvidence };
+r1Hold.summary.itemHoldCount = 1;
+report = (() => {
+  fs.writeFileSync(examFile, goodExam);
+  const evidenceFile = path.join(root, 'evidence-r1-hold.json');
+  fs.writeFileSync(evidenceFile, JSON.stringify(r1Hold, null, 2));
+  return validatePhysicalEvidence({ examFile, evidenceFile, stage: 'R1' });
+})();
+assert.equal(report.ok, true, JSON.stringify(report));
+assert.equal(report.disposition, 'PASS_WITH_ITEM_HOLDS');
+assert.deepEqual(report.itemHoldQids, [1]);
+
+const r3Hold = evidence(goodExam);
+r3Hold.questionRows[0].sourceExact = { status: 'HOLD', holdEvidence };
+r3Hold.summary.itemHoldCount = 1;
+report = run(goodExam, r3Hold);
+assert.equal(report.ok, false);
+assert(report.issues.some(x => x.startsWith('R3_ITEM_HOLD_FORBIDDEN')));
+
 console.log('review-evidence-gate.test.mjs PASS');
