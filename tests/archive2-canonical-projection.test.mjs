@@ -222,7 +222,8 @@ test("browser runtime resolves the exact catalog and version bundle through the 
       localPath = path.join(root, "docs", pathname.slice("/AP------/docs/".length));
     else return new Response("not found", { status: 404 });
     if (!fs.existsSync(localPath)) return new Response("not found", { status: 404 });
-    return new Response(fs.readFileSync(localPath));
+    const body = fs.readFileSync(localPath, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+    return new Response(body);
   };
   vm.runInNewContext(source, {
     window,
@@ -404,7 +405,7 @@ test("high1 curriculum projection uses exact version-bound allowlist entries and
 test("input bundle rejects mixed bytes, an old browser version, and missing canonical authority", async (t) => {
   assert.equal(typeof canonical.loadInputBundle, "function");
   assert.equal(typeof canonical.computeProjectionVersion, "function");
-  const payload = "{\"status\":\"DERIVED_READ_ONLY\"}";
+  const payload = "{\"status\":\"DERIVED_READ_ONLY\"}\n";
   const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
   const payloads = new Map(canonical.MANIFEST_REQUIRED_PATHS.map((path) => [path, path === masterPath ? payload : "{}"]));
   const unneededEvidencePath = "data/meta-foundation/evidence/unneeded-runtime-input.json";
@@ -452,6 +453,11 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
       canonical.loadInputBundle(fetcher, baseUrl, "archive2-canonical-v1:old"),
       (error) => error.code === "CANONICAL_PROJECTION_REFRESH_REQUIRED",
     );
+  });
+  await t.test("CRLF transport normalizes to the same canonical input bytes", async () => {
+    contents.set(masterUrl, payload.replace(/\n/g, "\r\n"));
+    assert.equal((await canonical.loadInputBundle(fetcher, baseUrl)).projectionVersion, projectionVersion);
+    contents.set(masterUrl, payload);
   });
   await t.test("stale resolver code", async () => {
     contents.set(manifestUrl, JSON.stringify({ ...manifest, resolverVersion: "0.9.0" }));
@@ -505,7 +511,8 @@ test("runtime canonical bootstrap keeps all 57 authority digests while fetching 
     requested.push(relative);
     if (fromRoot.startsWith("..") || path.isAbsolute(fromRoot) || !fs.existsSync(file))
       return new Response("missing", { status: 404 });
-    return new Response(fs.readFileSync(file), { status: 200 });
+    const body = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+    return new Response(body, { status: 200 });
   };
 
   const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
@@ -519,4 +526,15 @@ test("runtime canonical bootstrap keeps all 57 authority digests while fetching 
   assert.ok(requested.length < manifest.files.length + 1);
   assert.equal(requested.includes("archive/data/question_metadata.json"), false);
   assert.equal(requested.includes("archive/data/question_identity_map.json"), false);
+});
+
+test("canonical manifest digests use stable LF authority bytes in CRLF worktrees", () => {
+  const archiveDir = path.join(root, "archive");
+  const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, "data/archive2-canonical-input-manifest.json"), "utf8"));
+  for (const entry of manifest.files) {
+    const file = path.resolve(archiveDir, entry.path);
+    const canonicalText = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
+    const digest = crypto.createHash("sha256").update(canonicalText).digest("hex");
+    assert.equal(digest, entry.sha256, entry.path);
+  }
 });

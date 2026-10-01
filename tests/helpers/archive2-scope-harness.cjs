@@ -10,7 +10,7 @@ function readProjection() {
   const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data/archive2-canonical-input-manifest.json'), 'utf8'));
   const resources = {}, files = {};
   for (const row of manifest.files) {
-    const bytes = fs.readFileSync(path.resolve(archiveDir, row.path));
+    const bytes = Buffer.from(fs.readFileSync(path.resolve(archiveDir, row.path), 'utf8').replace(/^\uFEFF/, '').replace(/\r\n/g, '\n'));
     const actualSha = crypto.createHash('sha256').update(bytes).digest('hex');
     if (actualSha !== row.sha256) throw new Error('Archive2 test input digest mismatch: ' + row.path);
     resources[row.path] = JSON.parse(bytes.toString('utf8'));
