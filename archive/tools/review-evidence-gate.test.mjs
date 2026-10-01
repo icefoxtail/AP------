@@ -24,8 +24,8 @@ function parseBank(file){const box={window:{}};new Function('window',fs.readFile
 function boundRef(rel){const bytes=fs.readFileSync(path.join(repoRoot,rel));return {path:rel,sha256:hash(bytes),gitBlobSha:blobHash(bytes)};}
 function buildCalibration(){
   const goldenSampleQuestionRefs=[];
-  for(const rel of goldenPaths){const bank=parseBank(path.join(repoRoot,rel));for(const q of bank.slice(0,2)) goldenSampleQuestionRefs.push({path:rel,qid:q.id,solutionSha256:hash(String(q.solution)),observation:'representative solution structure read'});}
-  return {goldenSampleRefs:goldenPaths.map(boundRef),goldenSampleQuestionRefs,negativeSampleRefs:[boundRef(negativePath)],calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY'],sampleReadBeforeWork:true,qualityCompareCount:'1/1',calibrationStatus:'PASS',solutionWorkMode:'INDEPENDENT_REVIEW',calibrationOrder:'BLIND_TARGET_DECISION_FROZEN_THEN_CALIBRATE'};
+  for(const rel of goldenPaths){const bank=parseBank(path.join(repoRoot,rel));for(const q of bank.slice(0,2)){const solution=String(q.solution); goldenSampleQuestionRefs.push({path:rel,qid:q.id,solutionSha256:hash(solution),solutionExcerpt:solution.slice(0,Math.min(solution.length,80)),observation:'representative solution and visual-quality structure read'});}}
+  return {goldenSampleRefs:goldenPaths.map(boundRef),goldenSampleQuestionRefs,negativeSampleRefs:[boundRef(negativePath)],calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY','VISUAL_SEMANTIC_PARITY','VISUAL_READABILITY'],sampleReadBeforeWork:true,qualityCompareCount:'1/1',calibrationStatus:'PASS',solutionWorkMode:'INDEPENDENT_REVIEW',calibrationOrder:'SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE'};
 }
 
 
@@ -91,6 +91,8 @@ let report = run(goodExam, evidence());
 assert.equal(report.ok, true, JSON.stringify(report));
 const missingCalibration=evidence(); delete missingCalibration.solutionQualityCalibration; report=run(goodExam,missingCalibration); assert.equal(report.ok,false); assert(report.issues.includes('SOLUTION_CALIBRATION_REQUIRED'));
 const staleGolden=evidence(); staleGolden.solutionQualityCalibration.goldenSampleRefs[0].sha256='sha256:'+'0'.repeat(64); report=run(goodExam,staleGolden); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SHA256_MISMATCH')));
+const staleExcerpt=evidence(); staleExcerpt.solutionQualityCalibration.goldenSampleQuestionRefs[0].solutionExcerpt='not-present-in-sample'; report=run(goodExam,staleExcerpt); assert.equal(report.ok,false); assert(report.issues.some(x=>x.startsWith('GOLDEN_SAMPLE_SOLUTION_EXCERPT_MISSING_OR_STALE')));
+const missingVisualAxis=evidence(); missingVisualAxis.solutionQualityCalibration.calibrationAxes=missingVisualAxis.solutionQualityCalibration.calibrationAxes.filter(x=>x!=='VISUAL_SEMANTIC_PARITY'); report=run(goodExam,missingVisualAxis); assert.equal(report.ok,false); assert(report.issues.includes('CALIBRATION_AXIS_REQUIRED:VISUAL_SEMANTIC_PARITY'));
 
 const layoutBad = goodExam.replace('ㄱ. 참\\n\\nㄴ. 거짓', 'ㄱ. 참. ㄴ. 거짓');
 report = run(layoutBad, evidence(layoutBad));
