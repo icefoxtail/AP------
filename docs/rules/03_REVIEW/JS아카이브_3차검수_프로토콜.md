@@ -1,5 +1,35 @@
 [JS아카이브 3차 검수 프로토콜 — 분류·메타·난이도 태그 검수 v1.0]
 
+## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
+
+`ITEM_HOLD` / `META_CANONICAL_HOLD`는 결함을 발견했을 때의 기본 상태가 아니라 **결정론적 수리와 정본 조회를 실제로 끝까지 수행한 뒤에도 닫을 수 없을 때만 허용되는 최후 상태**다. 작업자가 번거롭거나 현재 방법이 바로 떠오르지 않는다는 이유로 HOLD를 만들지 않는다.
+
+### A. problem image / asset / 출판품질
+- crop 경계 잘림, 학생 필기 혼입, 주변 문항 침범, 라벨 clipping, 불필요한 여백, 파일참조 오류, 단순 가독성 결함은 기본적으로 `ASSET_REPAIR_REQUIRED`이며 `ITEM_HOLD`가 아니다.
+- 수리 우선순위는 **원본 픽셀 재크롭·정리 → 결정론적 code-first 재구성 → HOLD**다.
+- 원본이 좌표그래프·기하 스케치처럼 구조적 시각자료이고, source에서 라벨·좌표·선·곡선·관계가 유일하게 동결되어 있으며 pixel-critical 인쇄 기호를 잃지 않는 경우에는 원본 사실만으로 deterministic SVG/graph reconstruction을 허용한다. 생성형 이미지로 원문을 추정·재창작하지 않는다.
+- HOLD는 원본 자체가 없거나 판독 불능이고, 가능한 복원이 여러 개라 하나를 고르면 추측이 되는 경우처럼 **source truth가 실제로 비결정적일 때만** 허용한다.
+- 특정 worker/runtime에서 binary crop 편집이 불편하다는 사실만으로 콘텐츠 HOLD를 만들지 않는다. 허용된 deterministic fallback으로 닫을 수 있으면 같은 stage에서 수리한다.
+
+### B. Meta / PT·TPL / RPM projection
+- `META_CANONICAL_HOLD` 전에 반드시 **source + verified final solution → RPM Primary semantic → 학년·과목 crosswalk → GLOBAL ACTIVE taxonomy/templates → exact curriculum binding/aliases**까지 조회한다.
+- `RPM_ONLY`, `*_BINDING_GAP`, exact RPM L4 coverage gap 자체만으로 HOLD를 만들지 않는다.
+- RPM semantic coverage가 부족하더라도 source+solution이 하나의 **GLOBAL ACTIVE problemTypeKey/templateKey + exact curriculum binding**에 유일하게 대응하면 PT/TPL은 채우고, RPM 쪽 부족은 `RPM_COVERAGE_GAP_META_ONLY` 같은 비차단 taxonomy debt로 별도 기록한다. **없는 RPM L3/L4를 임의 생성하지는 않는다.**
+- TRUE Meta HOLD는 primary semantic 자체가 source/solution으로 결정되지 않거나, exhaustive lookup 뒤에도 exact ACTIVE 후보가 복수로 남거나, deterministic machine projection 자체가 실제로 존재하지 않는 경우에만 허용한다.
+
+### C. HOLD 입장 증거
+HOLD를 남기려면 ledger/receipt에 최소 다음이 있어야 한다.
+- `repairAttempted`: 어떤 deterministic repair를 실제 시도했는지
+- `authorityLookupAttempted`: 어떤 source/canonical/crosswalk/taxonomy/binding을 실제 조회했는지
+- `whyDeterministicClosureImpossible`: 왜 현재 evidence로 유일하게 닫을 수 없는지
+- `nextRequiredEvidenceOrCapability`: 무엇이 추가되면 풀리는지
+
+이 증거가 없으면 HOLD 판정 자체가 무효이며 repair/lookup을 계속한다.
+
+### CURRENT regression fixture — 26 매산고 고1 2학기 중간
+- q12·q15·q18의 crop/필기혼입/라벨잘림을 HOLD로 보낸 것은 false HOLD다. asset repair로 직접 닫아야 한다.
+- q1·q21을 ACTIVE canonical lookup을 끝까지 하지 않고 Meta HOLD로 둔 것도 false HOLD다. q1은 `PT_SET_DEFINITION / TPL_SET_IDENTIFY`, q21은 `PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER`로 exact ACTIVE mapping이 가능하다.
+
 ## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
 
 R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
