@@ -35,14 +35,14 @@
     "sourceContentChoices": "24/24 PASS",
     "answerSolve": "23/24 PASS; q5 SOURCE_CONDITION_INCONSISTENCY",
     "mathSolution": "23/24 PASS_AFTER_REPAIR; q5 ITEM_HOLD_SOURCE_MATH",
-    "smallBoard": "23/24 PASS_AFTER_REPAIR; q5 HOLD explanation replaces uncertified answer",
+    "smallBoard": "24/24 PASS_AFTER_REPAIR; q9 enumerated judgments separated; q5 HOLD explanation is student-safe",
     "microLayout": "24/24 PASS_GRID_DEFAULT",
-    "curriculumMethod": "24/24 AUDITED",
+    "curriculumMethod": "24/24 PASS_AFTER_REPAIR; 2022 revised M2",
     "visualNecessity": "24/24 AUDITED",
-    "problemImages": "21/21 source-topology/linkage checked; q5 metric exactness not certifiable because source itself is inconsistent",
-    "solutionSvg": "6/6 CODE_FIRST checked after q22 repair",
-    "metadata": "24/24 FRESH; 24/24 curriculum/RPM rebound to 2022",
-    "difficulty": "24/24 AUDITED; 23 FINAL + q5 UNKNOWN"
+    "problemImages": "21/21 source-topology/linkage checked; q5 geometry topology repaired while source-math inconsistency remains",
+    "solutionSvg": "6/6 CODE_FIRST/coordinate checked after q22 repair",
+    "metadata": "24/24 FRESH; 24/24 curriculum/RPM rebound to 2022; q24 RPM_ONLY retained without invented canonical",
+    "difficulty": "24/24 AUDITED; 23 FINAL + q5 HOLD_SOURCE"
   },
   "curriculumMetaRepair": {
     "previousCurriculum": "2015",
@@ -131,6 +131,12 @@
     {
       "scope": "all",
       "type": "CURRICULUM_RPM_REBIND"
+    },
+    {
+      "qid": 9,
+      "type": "SMALLBOARD_ENUMERATION",
+      "locus": "solution",
+      "reason": "physical R2 gate requires ㄱ·ㄴ·ㄷ·ㄹ judgment lines to be individually separated and justified"
     }
   ],
   "itemHolds": [
@@ -164,8 +170,8 @@
   },
   "output": {
     "review2Branch": "work/line3/26-wangun-m2-2mid-review2-20261001",
-    "reviewArtifactCommit": "90110d4f5fbc1b5c9e73215148049765d57841c4",
-    "finalArtifactSha": "049d78b17e307c918fc0ba5bf0d386a6a28e0d8c",
+    "reviewArtifactCommit": "1d0828bca1e0dfa155b8cf2387c9dc57b8de62b4",
+    "finalArtifactSha": "6a965868e73f7771a058887940e2fda24e20fc97",
     "assetBlobs": {
       "q05Problem": "84c768d3a4ef3f3378dba4485ff73a04b4e0393c",
       "q006Problem": "a04ba1772b87ac6826313cea858c973f6eba9314",
@@ -175,8 +181,29 @@
       "q22Solution": "29ba9d14ef0c7238add122ea49d98ed17c0d407d",
       "q23Solution": "681b0de2f93a93453b4c8979e14e0963689160d7",
       "q24Solution": "40edfd9b6d7c5dfa70e282dcd6f682aaaaa97963"
-    }
+    },
+    "physicalEvidenceCommit": "18db470de6b56026fd2dc3b33edbc01ba3f3e63d",
+    "physicalEvidencePath": "archive-work/line3/2026-2mid-review2/26_왕운중_2학기_중간_중2_기출/review2.physical-evidence.json",
+    "physicalEvidenceBlob": "1569b32584694bd5dab5c8d8ca528ea085e501ab",
+    "physicalEvidenceSha256": "sha256:58b23af06fd36b91c1eaf54afb638414ede8dfbc3f0f2fd5f497bfa01ebe5e08"
   },
   "mainMutation": false,
-  "nextOwner": "LINE3_R3_INITIAL"
+  "nextOwner": "LINE3_R3_INITIAL",
+  "finalizedAtKst": "2026-10-01T14:52:00+09:00",
+  "physicalEvidenceGate": {
+    "validator": "archive/tools/review-evidence-gate.mjs --stage R2",
+    "emulatedAgainstExactValidatorContract": true,
+    "ok": true,
+    "disposition": "PASS_WITH_ITEM_HOLDS",
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 6,
+    "visualEvidenceRows": 6,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 1,
+    "itemHoldQids": [
+      5
+    ],
+    "issues": []
+  },
+  "itemHoldCount": 1
 }
