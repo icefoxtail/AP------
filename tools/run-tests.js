@@ -44,6 +44,10 @@ const requiredCommands = [
     args: ['--test', 'archive/tools/review-evidence-gate.test.mjs']
   },
   {
+    label: 'archive/tools/solution-calibration-gate.test.mjs',
+    args: ['--test', 'archive/tools/solution-calibration-gate.test.mjs']
+  },
+  {
     label: 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs syntax',
     args: ['--check', 'archive/tools/geometry-equation/verify-svg-coordinate-parity.mjs']
   },

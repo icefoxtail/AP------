@@ -1,5 +1,43 @@
 # Archive 작업 전 Golden Sample Calibration v1
 
+## CURRENT OVERRIDE — 2026-10-01 — ALL JS QUALITY WORKER START GATE
+
+이 calibration은 더 이상 CREATE/solution production 전용이 아니다. **학생 노출 JS의 해설·solutionImage/SVG·문항 품질을 생성·수정·검수·승인하는 모든 worker의 공통 START GATE**다.
+
+적용 worker:
+- CREATE
+- R1 / R2 / R3
+- 기존 production solution upgrade
+- REVIEW 내부 PASS_AFTER_REPAIR
+- targeted repair / pinpoint repair
+- post-R3 Codex R3 repair
+- FINAL ITEM RECOVERY
+- SVG/solutionImage add/repair/rebuild
+- Codex/GPT independent recheck
+- 예약/FLEX rescue가 위 역할을 대신 수행하는 경우
+
+고정 순서:
+```text
+stage assignment / open scope 확인
+→ Golden Sample 2~3 + 관련 Negative Sample 실제 판독
+→ CALIBRATION_PREFLIGHT PASS
+→ target-specific blind/baseline/defect-scope 작업
+→ 수정 또는 판정
+→ Golden quality floor와 final/changed scope compare
+→ 해당 stage close
+```
+
+**Blind는 sample을 보지 않는다는 뜻이 아니다.** 외부 Golden/Negative는 작업 전에 읽어 품질 눈높이를 통일한다. 대신 target의 기존 solution, 이전 reviewer verdict, repair answer를 독립판정 전에 보지 않는 규칙은 그대로 유지한다.
+
+모든 preflight는 sample별 대표 문항 2~5개의 `solutionSha256 + solutionExcerpt + observation`까지 실제 bytes와 결속한다. 공통 5축은 `STUDENT_REPRODUCIBILITY / SMALL_BOARD_STRUCTURE / EXPLANATION_DENSITY / VISUAL_SEMANTIC_PARITY / VISUAL_READABILITY`다.
+
+repair/recovery worker는 아래 공용 gate를 target mutation 전에 통과한다.
+```bash
+node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <calibration.json> --stage REPAIR --preflight
+```
+stage는 실제 역할에 따라 `REPAIR / R3_REPAIR / ITEM_RECOVERY / VISUAL_REPAIR / INDEPENDENT_RECHECK`를 사용한다.
+
+
 ## CURRENT HARD GATE — 2026-10-01 — SOLUTION QUALITY CALIBRATION PHYSICAL BINDING
 
 해설을 **생성·재작성·업그레이드·승인**하는 모든 JS Archive 작업은 Golden Sample calibration을 권고가 아니라 stage-close **HARD GATE**로 적용한다. 수동 GPT/Codex, 예약 CREATE/R1/R2/R3, 기존 production solution upgrade에 예외가 없다.

@@ -2,7 +2,7 @@
 
 ## CURRENT — 2026-10-01 — SOLUTION QUALITY CALIBRATION IS NOT OPTIONAL
 
-Artifact-First는 물리 산출물을 먼저 보라는 뜻이지 해설 quality calibration을 생략하라는 뜻이 아니다. solution을 생성·수정·승인하는 기존 시험지 CREATE/REVIEW/repair/upgrade는 `Archive_작업전_Golden_Sample_Calibration_v1.md` + `JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`를 적용하고 `review-evidence-gate.mjs`의 SHA-bound calibration PASS 없이는 DONE을 만들지 않는다. solution 비접촉 Meta-only/Git 기계 작업만 N/A 가능하다.
+Artifact-First는 물리 산출물을 먼저 보라는 뜻이지 quality calibration을 생략하라는 뜻이 아니다. CREATE/R1/R2/R3/upgrade뿐 아니라 targeted repair, post-R3 repair, ITEM_RECOVERY, VISUAL_REPAIR, independent recheck까지 target 작업 전에 `Archive_작업전_Golden_Sample_Calibration_v1.md`의 공용 preflight를 통과한다. full stage는 이후 `review-evidence-gate.mjs`의 closure까지 닫고, targeted repair/recovery는 LOCK을 풀지 않도록 preflight + changed/open locus independent recheck만 수행한다. solution/visual 비접촉 Meta-only/Git 기계 작업만 N/A 가능하다.
 
 
 ## CURRENT OVERRIDE — DEDICATED ITEM RECOVERY / POST-R3 LOCK (2026-10-01)
@@ -29,7 +29,7 @@ FULL_INTEGRATED_V2의 CREATE / REVIEW1 / REVIEW2는 `03_REVIEW/JS아카이브_PH
 - visual PASS는 실제 SVG 좌표/위상 계산 evidence가 없으면 성립하지 않는다.
 - Meta null은 lookup evidence + nullReason 필수. unique EXACT_ACTIVE mapping이 있는데 null이면 FAIL.
 - 예약 run이 시간 내 evidence를 완결하지 못하면 exact checkpoint만 보존하고 DONE receipt를 발행하지 않는다.
-- 공용 gate: `node archive/tools/review-evidence-gate.mjs --exam <js> --evidence <json> --stage CREATE|R1|R2|R3`.
+- 공용 gate: `node archive/tools/review-evidence-gate.mjs --exam <js> --evidence <json> --stage CREATE|R1|R2|R3` (full-stage closure) + `node archive/tools/solution-calibration-gate.mjs --exam <js> --evidence <json> --stage REPAIR|R3_REPAIR|ITEM_RECOVERY|VISUAL_REPAIR|INDEPENDENT_RECHECK --preflight` (all repair/recheck START gate).
 - 별도 파일럿/유예 없이 현재 진행 artifact부터 즉시 적용한다.
 
 ---
