@@ -1188,7 +1188,7 @@ window.questionBank = [
     "templateKey": "",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "DEEP_COMPOSITE",
+    "integrationPattern": "SEQUENTIAL",
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",

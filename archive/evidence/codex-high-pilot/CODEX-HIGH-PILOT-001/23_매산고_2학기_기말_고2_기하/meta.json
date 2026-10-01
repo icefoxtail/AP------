@@ -9,8 +9,8 @@
   "sourceArtifactSha256": "sha256:c4fc51546389408260a5ee0b0e9277c566d40779d20049d0e8059d4b127fa69c",
   "sourceArtifactGitBlobSha": "8a95f0fe0c2ecd24bef37cc98bf767c6d7354559",
   "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
-  "targetArtifactSha256": "sha256:7879afa47b1403bc3e72bb26a0f416bf47b38d284f15ebe069c94d6175162b1e",
-  "targetArtifactGitBlobSha": "b7a5ee5cb4b5becb0ef3ff58e1aadbea66c2f71e",
+  "targetArtifactSha256": "sha256:79950e5f8e51f6980b4d1151d83f7c76c8d9de87292489882283a15fbfe79056",
+  "targetArtifactGitBlobSha": "7cc4e39ec56ba587bea68f6cd82ca24ee6251c8f",
   "denominator": 20,
   "resolvedMetaRecordCount": 20,
   "itemHoldQids": [],
@@ -611,7 +611,7 @@
       "templateKey": null,
       "crossConceptKeys": [],
       "conditionKeys": [],
-      "integrationPattern": "DEEP_COMPOSITE",
+      "integrationPattern": "SEQUENTIAL",
       "difficulty": {
         "bucket": 5,
         "confidence": "medium",
@@ -882,6 +882,11 @@
       "field": "Condition omission q19",
       "decision": "Do not assign COND_RANGE for b≥0.",
       "basis": "The objective reduces to 5−a and the upper semicircle still permits every a in [−1,1], so the condition does not alter extrema or candidate selection."
+    },
+    {
+      "field": "Q13 IntegrationPattern",
+      "decision": "SEQUENTIAL",
+      "basis": "After replacing the calculus integral with sector-minus-triangle geometry, the solution is a linear chain: face incircle and projection scale → one cap area → central complement and total."
     }
   ]
 }
