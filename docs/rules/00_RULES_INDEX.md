@@ -56,7 +56,7 @@ CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/F
 - rescue 직전 `FLEX_CLAIM(lane, exam, inputSha, claimedAtKST)`을 기록하고 즉시 physical state를 재조회한다. 실제 in-flight worker 또는 competing claim이 확인될 때만 claim을 취소하고 mutation 0으로 종료한다.
 - `ITEM_RECOVERY_QUEUE`와 post-R3 `R3_FAIL_DEFERRED / CODEX_REPAIR_* / READY_FOR_R3_RETRY`는 FLEX가 소비하지 않는다. 정상 R1/R2는 first-pass 전용이며 post-R3 repair/review는 Codex 전용, targeted R3_RETRY는 dedicated GPT R3 전용이다.
 - stale Notion selector만 믿고 backlog를 NO-WORK로 처리하지 않는다. physical receipt가 있으면 CURRENT를 정합화하고 진행한다.
-- non-global blocker 하나 때문에 전체 pipeline을 정지하지 않는다.
+- **global/non-global blocker라는 운영 상태 자체를 만들지 않는다.** 실패는 scoped debt로 닫고 비충돌 eligible 작업을 계속한다.
 - 활성 시간표의 정확한 시각은 Notion `JS Archive 예약 세션 운영 규칙 v2 — CURRENT`를 live authority로 사용한다. 2026-10-01 cutover에서 CREATE-2는 고등 8시험지와의 :20 충돌을 피하도록 분리되었다.
 
 ## CURRENT HARD RULE — NORMAL-FIRST / PARALLEL CODEX POST-R3 REPAIR (2026-10-01)
