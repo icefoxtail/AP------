@@ -2,7 +2,7 @@
   "schema": "NIGHTLY_SOURCE_ONLY_CLOSEOUT_v1",
   "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
   "batchDate": "2026-10-02",
-  "status": "SOURCE_QA_PASS_RENDER_UNVERIFIED_NOTION_PARENT_PENDING",
+  "status": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
   "priorityGroup": "high2",
   "year": 2022,
   "grade": "고2",
@@ -34,8 +34,8 @@
   "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
   "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
   "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-  "finalReconciledReportSha256": "sha256:6de6a65cd5e76947da970a80eadbaa197d8a02db0cec0279907703f9429541f2",
-  "finalVerdict": "SOURCE_QA_PASS",
+  "finalReconciledReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
+  "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "reviewerSubagentIds": [
     "/root/source_qa_20261002_0544",
     "/root/source_qa_recheck_20261002_0544"
@@ -54,5 +54,10 @@
   "sourceQACloseoutCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "sourceQACloseoutPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "remoteBranchHeadAtVerification": "6ae2cd435af0f29eefb2160f1e8458e27b7662ef",
-  "notionsStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT"
+  "notionsStatus": "PENDING_PARENT_CHECKBOX_AND_COUNT",
+  "handoffEligibility": "PENDING_PARENT_EVIDENCE",
+  "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
+  "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+  "notionsWrites": "NOT_PERFORMED",
+  "notationInventoryRepairSha256": "sha256:2c1aea26dafbd84fd89f60cce90d4f01c362eb2d49b642bad5818684e9d4ec23"
 }

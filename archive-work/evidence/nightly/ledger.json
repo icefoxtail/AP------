@@ -1,6 +1,6 @@
 {
   "originMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
-  "successfulExamCountForBatchDate": 3,
+  "successfulExamCountForBatchDate": 1,
   "batchDate": "2026-10-02",
   "updatedAt": "2026-09-28T08:42:53Z",
   "activeRunId": "source-intake-heartbeat-2026-10-02-0544-kst",
@@ -306,14 +306,14 @@
     {
       "runId": "source-intake-heartbeat-2026-10-02-0544-kst",
       "batchDate": "2026-10-02",
-      "status": "COMPLETED_SOURCE_ONLY_SOURCE_QA_PASS_RENDER_UNVERIFIED",
+      "status": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
       "priorityGroup": "high2",
       "actualSubject": "Mathematics II",
       "selectedExamIds": [
         "22_팔마고_2학기_기말_고2_수학II",
         "22_효천고_2학기_기말_고2_수학II"
       ],
-      "successCount": 2,
+      "successCount": 0,
       "questionCount": 46,
       "choiceCount": 195,
       "assetCount": 10,
@@ -322,7 +322,7 @@
       "sourceAssetCropAuditStatus": "SOURCE_QA_PASS",
       "initialReviewReportSha256": "sha256:58f36ead27328ad6dc1f6664d6d8fb5733e394c12f7a3882644740420bddf741",
       "targetedRecheckReportSha256": "sha256:fbe52fc302ce6cb934c04bf5a67e543227390bd832839584b95401055715a78f",
-      "finalReconciledReviewReportSha256": "sha256:6de6a65cd5e76947da970a80eadbaa197d8a02db0cec0279907703f9429541f2",
+      "finalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8",
       "sourceArtifactCommitSha": "8a22c605549a4468a0d40823d5242bf798bcb301",
       "sourceRepairArtifactCommitSha": "2d2ebd9c90514f985be60710e07ba0cad64a3274",
       "reviewReceiptCommitSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
@@ -334,7 +334,12 @@
       "sourceQACloseoutPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
       "remoteBranchHeadAtVerification": "6ae2cd435af0f29eefb2160f1e8458e27b7662ef",
       "notionWrites": "NOT_PERFORMED",
-      "finalCloseoutReceiptSha256": "sha256:07bb5b266acd7e9191a58d19006859e2ec910cf570e348b5895e94c0c17d47c0"
+      "finalCloseoutReceiptSha256": "sha256:07bb5b266acd7e9191a58d19006859e2ec910cf570e348b5895e94c0c17d47c0",
+      "sourceArtifactExamCount": 2,
+      "sourceQAReadyCount": 0,
+      "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
+      "itemizationReviewStatus": "PENDING_FRESH_OCR_FREE_AUDIT",
+      "notationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json"
     }
   ],
   "owner": "codex-thread-automation-10",
@@ -493,7 +498,7 @@
   "lockStatus": "RELEASED",
   "lockOwner": "codex-thread-automation-10",
   "lockStartedAtKst": "2026-10-02T00:43:00+09:00",
-  "successfulSourceOnlyCountForRun": 2,
+  "successfulSourceOnlyCountForRun": 0,
   "lockReleasedAtKst": "2026-10-02T07:02:26+09:00",
   "currentRunSourceOnlyCompletion": {
     "runId": "source-intake-heartbeat-2026-10-02-0043-kst",
@@ -615,7 +620,7 @@
     "freshRecheckReportGitBlobContentSha256": "sha256:5b2159562e70d9ae1b8bd338d773fbee10bc57fbca50bc3d4eb9008039b19652"
   },
   "latestCanonicalRuleBlobSha": "7af7a8dbfed4ce6ee9737020d92d4c427b183ffa",
-  "closeoutStatus": "SOURCE_QA_PASS_NOTION_PARENT_PENDING",
+  "closeoutStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
   "notionStatus": "WRITE_SUCCESS",
   "notionUpdatedAtKst": "2026-09-30T18:43:52+09:00",
   "notionChecklistPageUrl": "https://app.notion.com/p/3e90e68bd69f813798acc744c274da80",
@@ -636,7 +641,7 @@
     "fastForwardPossible": false,
     "action": "No merge/reset; source-intake branch remains separate from main."
   },
-  "activeRunStatus": "COMPLETED_SOURCE_ONLY_SOURCE_QA_PASS_RENDER_UNVERIFIED",
+  "activeRunStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
   "activeOwner": "codex-thread-automation-10",
   "activeSinceKst": "2026-10-02T05:44:00+09:00",
   "latestOriginMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007",
@@ -659,5 +664,10 @@
   "currentRunSourceQACloseoutPushSha": "7d62fde00d5bf5cb62aa991bf7e6538561ef0f0d",
   "currentRunRemoteBranchHeadAtVerification": "6ae2cd435af0f29eefb2160f1e8458e27b7662ef",
   "currentRunTargetedRecheckStatus": "PASS",
-  "currentRunStatus": "COMPLETED_SOURCE_ONLY_SOURCE_QA_PASS_RENDER_UNVERIFIED"
+  "currentRunStatus": "SOURCE_QA_ITEMIZATION_REQUIRED_PENDING_PARENT_EVIDENCE",
+  "currentRunSourceQACloseoutStatus": "SOURCE_QA_ITEMIZATION_REQUIRED",
+  "currentRunFinalReconciledReportSha256": "sha256:6d8c29cacd8c61b20cdf1b718deaae91630e1ce03a4e994dfcaeb072550235f0",
+  "currentRunNotationInventoryRepairRef": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/notation_inventory_repair_receipt.json",
+  "sourceQAReadyCount": 0,
+  "currentRunFinalReconciledReviewReportSha256": "sha256:93a60d85b693773d53c2a6c034b96d5ffbe4fd7d21837f625d8bc0429c22bbb8"
 }

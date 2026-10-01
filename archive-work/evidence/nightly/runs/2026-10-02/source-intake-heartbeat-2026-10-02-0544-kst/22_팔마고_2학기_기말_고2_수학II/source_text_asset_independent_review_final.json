@@ -35,7 +35,7 @@
     "count": 22,
     "denominator": 22,
     "percent": 100,
-    "status": "PASS",
+    "status": "PASS_PENDING_NOTATION_INVENTORY_AUDIT",
     "targetedSourceTextRecheckedQids": "1",
     "targetedRepairReviewQids": [
       "1",
@@ -76,21 +76,6 @@
       "directVisualRead": true,
       "ocrUsed": false,
       "visuallyReadAnchors": [
-        {
-          "sourceSnippet": "닫힌구간",
-          "jsSubstring": "닫힌구간",
-          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
-          "pagePixelRegion": {
-            "page": 1,
-            "approxBboxPx": {
-              "x1": 150,
-              "y1": 815,
-              "x2": 335,
-              "y2": 855
-            }
-          },
-          "result": "PASS"
-        },
         {
           "sourceSnippet": "[-2, 2]",
           "jsSubstring": "$[-2,\\,2]$",
@@ -194,22 +179,269 @@
       ],
       "notationInventory": [
         {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "[",
+          "jsField": "content",
+          "jsSerialization": "[",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2, 2]",
+          "jsField": "content",
+          "jsSerialization": "-2,\\,2]",
+          "jsSubstringStart": 7,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2, 2]",
+            "js": "-2,\\,2]",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization. TeX thin spacing encodes printed mathematical spacing; it adds no source token."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedBracketGroup",
           "sourceVisualToken": "[−2, 2]",
-          "jsSerialization": "$[-2,\\,2]$",
-          "pageRegion": "q1 first formula, approx x335–500 y815–855",
-          "result": "PASS"
+          "jsField": "content",
+          "jsSerialization": "[-2,\\,2]",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "[−2, 2]",
+            "js": "[-2,\\,2]",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization. TeX thin spacing encodes printed mathematical spacing; it adds no source token."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
         },
         {
-          "sourceVisualToken": "f(x)=x³+3x²−12",
-          "jsSerialization": "$f(x)=x^3+3x^2-12$",
-          "pageRegion": "q1 formula, approx x510–1030 y815–855",
-          "result": "PASS"
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)=x³",
+          "jsField": "content",
+          "jsSerialization": "f(x)=x^3",
+          "jsSubstringStart": 22,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "f(x)=x³",
+            "js": "f(x)=x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
         },
         {
-          "sourceVisualToken": "[3.5점]",
-          "jsSerialization": "[3.5점]",
-          "pageRegion": "end of q1 prompt, approx x480–620 y855–910",
-          "result": "PASS"
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+3x²",
+          "jsField": "content",
+          "jsSerialization": "+3x^2",
+          "jsSubstringStart": 30,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "+3x²",
+            "js": "+3x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−12",
+          "jsField": "content",
+          "jsSerialization": "-12",
+          "jsSubstringStart": 35,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−12",
+            "js": "-12",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 23,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−4",
+          "jsField": "choices[0]",
+          "jsSerialization": "-4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−4",
+            "js": "-4",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−3",
+          "jsField": "choices[1]",
+          "jsSerialization": "-3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−3",
+            "js": "-3",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2",
+          "jsField": "choices[2]",
+          "jsSerialization": "-2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2",
+            "js": "-2",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−1",
+          "jsField": "choices[3]",
+          "jsSerialization": "-1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−1",
+            "js": "-1",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": {
+            "page": 1,
+            "approxBboxPx": {
+              "x1": 335,
+              "y1": 815,
+              "x2": 500,
+              "y2": 855
+            }
+          },
+          "status": "PASS"
         }
       ],
       "nestedStructureChecks": {
@@ -422,10 +654,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "P",
+          "jsField": "content",
+          "jsSerialization": "P",
+          "jsSubstringStart": 24,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.06,
             0.56,
             0.47,
@@ -434,10 +671,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "t",
+          "jsField": "content",
+          "jsSerialization": "t",
+          "jsSubstringStart": 32,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.06,
             0.56,
             0.47,
@@ -446,10 +688,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: [",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x",
+          "jsField": "content",
+          "jsSerialization": "x",
+          "jsSubstringStart": 41,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.06,
             0.56,
             0.47,
@@ -458,10 +705,144 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x=t³",
+          "jsField": "content",
+          "jsSerialization": "x=t^3",
+          "jsSubstringStart": 46,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "x=t³",
+            "js": "x=t^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−6t²",
+          "jsField": "content",
+          "jsSerialization": "-6t^2",
+          "jsSubstringStart": 51,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−6t²",
+            "js": "-6t^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+9t",
+          "jsField": "content",
+          "jsSerialization": "+9t",
+          "jsSubstringStart": 56,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "t=3",
+          "jsField": "content",
+          "jsSerialization": "t=3",
+          "jsSubstringStart": 65,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[0]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[1]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[2]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.06,
+            0.56,
+            0.47,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[3]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.06,
             0.56,
             0.47,
@@ -808,10 +1189,15 @@
       },
       "notationInventory": [
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: <",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.18,
             0.94,
@@ -820,10 +1206,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 5,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.18,
             0.94,
@@ -832,10 +1223,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=fprime(x)",
+          "jsField": "content",
+          "jsSerialization": "y=fprime(x)",
+          "jsSubstringStart": 16,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.18,
             0.94,
@@ -844,10 +1240,100 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "[B,D]",
+          "jsField": "content",
+          "jsSerialization": "[B,D]",
+          "jsSubstringStart": 104,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.18,
+            0.94,
+            0.39
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedBracketGroup",
+          "sourceVisualToken": "[B,D]",
+          "jsField": "content",
+          "jsSerialization": "[B,D]",
+          "jsSubstringStart": 104,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.18,
+            0.94,
+            0.39
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x=D",
+          "jsField": "content",
+          "jsSerialization": "x=D",
+          "jsSubstringStart": 131,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.18,
+            0.94,
+            0.39
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x",
+          "jsField": "content",
+          "jsSerialization": "x",
+          "jsSubstringStart": 184,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.18,
+            0.94,
+            0.39
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "C",
+          "jsField": "content",
+          "jsSerialization": "C",
+          "jsSubstringStart": 192,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.18,
+            0.94,
+            0.39
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "G",
+          "jsField": "content",
+          "jsSerialization": "G",
+          "jsSubstringStart": 197,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.18,
             0.94,
@@ -1181,10 +1667,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "int₀¹dfrac1x+1,dx",
+          "jsField": "content",
+          "jsSerialization": "int_0^1dfrac{1}{x+1},dx",
+          "jsSubstringStart": 5,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "int₀¹dfrac1x+1,dx",
+            "js": "int_0^1dfrac{1}{x+1},dx",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1193,10 +1689,20 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: {",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−int₁⁰dfracy³y+1,dy",
+          "jsField": "content",
+          "jsSerialization": "-int_1^0dfrac{y^3}{y+1},dy",
+          "jsSubstringStart": 28,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−int₁⁰dfracy³y+1,dy",
+            "js": "-int_1^0dfrac{y^3}{y+1},dy",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed subscripts map to TeX subscript syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1205,10 +1711,15 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac16",
+          "jsField": "choices[0]",
+          "jsSerialization": "dfrac16",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1217,10 +1728,15 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac56",
+          "jsField": "choices[1]",
+          "jsSerialization": "dfrac56",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1229,10 +1745,15 @@
           "status": "PASS"
         },
         {
-          "category": "fraction",
-          "sourceVisualToken": "stacked numerator/denominator",
-          "jsSerialization": "fraction structure: dfrac",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac76",
+          "jsField": "choices[2]",
+          "jsSerialization": "dfrac76",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1241,10 +1762,42 @@
           "status": "PASS"
         },
         {
-          "category": "integral",
-          "sourceVisualToken": "∫",
-          "jsSerialization": "integral bounds and integrand: int",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac116",
+          "jsField": "choices[3]",
+          "jsSerialization": "dfrac{11}{6}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "dfrac116",
+            "js": "dfrac{11}{6}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
+            0.52,
+            0.53,
+            0.94,
+            0.71
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac136",
+          "jsField": "choices[4]",
+          "jsSerialization": "dfrac{13}{6}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "dfrac136",
+            "js": "dfrac{13}{6}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 1,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p001.png",
+          "pageRegion": [
             0.52,
             0.53,
             0.94,
@@ -1589,10 +2142,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=x²",
+          "jsField": "content",
+          "jsSerialization": "y=x^2",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "y=x²",
+            "js": "y=x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -1601,10 +2164,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−3x",
+          "jsField": "content",
+          "jsSerialization": "-3x",
+          "jsSubstringStart": 9,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−3x",
+            "js": "-3x",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -1613,10 +2186,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: [",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x",
+          "jsField": "content",
+          "jsSerialization": "x",
+          "jsSubstringStart": 16,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -1625,10 +2203,93 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac92",
+          "jsField": "choices[0]",
+          "jsSerialization": "dfrac92",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[1]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac112",
+          "jsField": "choices[2]",
+          "jsSerialization": "dfrac{11}{2}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "dfrac112",
+            "js": "dfrac{11}{2}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "6",
+          "jsField": "choices[3]",
+          "jsSerialization": "6",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac132",
+          "jsField": "choices[4]",
+          "jsSerialization": "dfrac{13}{2}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "dfrac132",
+            "js": "dfrac{13}{2}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -1969,10 +2630,15 @@
       },
       "notationInventory": [
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: <",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 92,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.56,
             0.5,
@@ -1981,10 +2647,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 93,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.56,
             0.5,
@@ -1993,10 +2664,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(a,b)",
+          "jsField": "content",
+          "jsSerialization": "(a,b)",
+          "jsSubstringStart": 105,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.56,
             0.5,
@@ -2005,10 +2681,168 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a,b)",
+          "jsField": "content",
+          "jsSerialization": "(a,b)",
+          "jsSubstringStart": 105,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x=c",
+          "jsField": "content",
+          "jsSerialization": "x=c",
+          "jsSubstringStart": 115,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(a<c<b)",
+          "jsField": "content",
+          "jsSerialization": "(a<c<b)",
+          "jsSubstringStart": 121,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a<c<b)",
+          "jsField": "content",
+          "jsSerialization": "(a<c<b)",
+          "jsSubstringStart": 121,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=f(x)",
+          "jsField": "content",
+          "jsSerialization": "y=f(x)",
+          "jsSubstringStart": 153,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(c,f(c))",
+          "jsField": "content",
+          "jsSerialization": "(c,f(c))",
+          "jsSubstringStart": 167,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(c,f(c))",
+          "jsField": "content",
+          "jsSerialization": "(c,f(c))",
+          "jsSubstringStart": 167,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x=a",
+          "jsField": "content",
+          "jsSerialization": "x=a",
+          "jsSubstringStart": 210,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "fprime(a)=0",
+          "jsField": "content",
+          "jsSerialization": "fprime(a)=0",
+          "jsSubstringStart": 227,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.04,
+            0.56,
+            0.5,
+            0.76
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a)",
+          "jsField": "content",
+          "jsSerialization": "(a)",
+          "jsSubstringStart": 233,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.04,
             0.56,
             0.5,
@@ -2447,10 +3281,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)=x³",
+          "jsField": "content",
+          "jsSerialization": "f(x)=x^3",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "f(x)=x³",
+            "js": "f(x)=x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2459,10 +3303,20 @@
           "status": "PASS"
         },
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: <",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+ax²",
+          "jsField": "content",
+          "jsSerialization": "+ax^2",
+          "jsSubstringStart": 12,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "+ax²",
+            "js": "+ax^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2471,10 +3325,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−(a²−8a)x",
+          "jsField": "content",
+          "jsSerialization": "-(a^2-8a)x",
+          "jsSubstringStart": 17,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−(a²−8a)x",
+            "js": "-(a^2-8a)x",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2483,10 +3347,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+3",
+          "jsField": "content",
+          "jsSerialization": "+3",
+          "jsSubstringStart": 27,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2495,10 +3364,15 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 5,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2507,10 +3381,232 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a²−8a)",
+          "jsField": "content",
+          "jsSerialization": "(a^2-8a)",
+          "jsSubstringStart": 18,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(a²−8a)",
+            "js": "(a^2-8a)",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "a",
+          "jsField": "content",
+          "jsSerialization": "a",
+          "jsSubstringStart": 53,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x₁,x₂",
+          "jsField": "content",
+          "jsSerialization": "x_1,x_2",
+          "jsSubstringStart": 84,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "x₁,x₂",
+            "js": "x_1,x_2",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x₁<x₂",
+          "jsField": "content",
+          "jsSerialization": "x_1<x_2",
+          "jsSubstringStart": 99,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "x₁<x₂",
+            "js": "x_1<x_2",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x₁)<f(x₂)",
+          "jsField": "content",
+          "jsSerialization": "f(x_1)<f(x_2)",
+          "jsSubstringStart": 111,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "f(x₁)<f(x₂)",
+            "js": "f(x_1)<f(x_2)",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x₁)",
+          "jsField": "content",
+          "jsSerialization": "(x_1)",
+          "jsSubstringStart": 112,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(x₁)",
+            "js": "(x_1)",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x₂)",
+          "jsField": "content",
+          "jsSerialization": "(x_2)",
+          "jsSubstringStart": 119,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(x₂)",
+            "js": "(x_2)",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[0]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "6",
+          "jsField": "choices[1]",
+          "jsSerialization": "6",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "7",
+          "jsField": "choices[2]",
+          "jsSerialization": "7",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "8",
+          "jsField": "choices[3]",
+          "jsSerialization": "8",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "9",
+          "jsField": "choices[4]",
+          "jsSerialization": "9",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -2855,10 +3951,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x³",
+          "jsField": "content",
+          "jsSerialization": "x^3",
+          "jsSubstringStart": 5,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "x³",
+            "js": "x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.52,
             0.48,
             0.94,
@@ -2867,10 +3973,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+6x²",
+          "jsField": "content",
+          "jsSerialization": "+6x^2",
+          "jsSubstringStart": 8,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "+6x²",
+            "js": "+6x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.52,
             0.48,
             0.94,
@@ -2879,10 +3995,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: [",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+9x",
+          "jsField": "content",
+          "jsSerialization": "+9x",
+          "jsSubstringStart": 13,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.52,
             0.48,
             0.94,
@@ -2891,10 +4012,144 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2",
+          "jsField": "content",
+          "jsSerialization": "-2",
+          "jsSubstringStart": 16,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2",
+            "js": "-2",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−a=0",
+          "jsField": "content",
+          "jsSerialization": "-a=0",
+          "jsSubstringStart": 18,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−a=0",
+            "js": "-a=0",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "a",
+          "jsField": "content",
+          "jsSerialization": "a",
+          "jsSubstringStart": 48,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[0]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[1]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[2]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[3]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
+            0.52,
+            0.48,
+            0.94,
+            0.64
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[4]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 2,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p002.png",
+          "pageRegion": [
             0.52,
             0.48,
             0.94,
@@ -3223,10 +4478,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "xge0",
+          "jsField": "content",
+          "jsSerialization": "xge0",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -3235,10 +4495,20 @@
           "status": "PASS"
         },
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: ge",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2x³",
+          "jsField": "content",
+          "jsSerialization": "2x^3",
+          "jsSubstringStart": 16,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "2x³",
+            "js": "2x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -3247,10 +4517,20 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: [",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−3kx²",
+          "jsField": "content",
+          "jsSerialization": "-3kx^2",
+          "jsSubstringStart": 20,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−3kx²",
+            "js": "-3kx^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -3259,10 +4539,117 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+8ge0",
+          "jsField": "content",
+          "jsSerialization": "+8ge0",
+          "jsSubstringStart": 26,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "k",
+          "jsField": "content",
+          "jsSerialization": "k",
+          "jsSubstringStart": 50,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[0]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[1]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[2]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "7",
+          "jsField": "choices[3]",
+          "jsSerialization": "7",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.05,
+            0.49,
+            0.21
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[4]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.05,
             0.49,
@@ -3591,10 +4978,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -3603,10 +4995,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 7,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -3615,10 +5012,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "F(x)",
+          "jsField": "content",
+          "jsSerialization": "F(x)",
+          "jsSubstringStart": 21,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -3627,10 +5029,20 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfracddxint F(x),dx=xf(x)",
+          "jsField": "content",
+          "jsSerialization": "dfrac{d}{dx}int F(x),dx=xf(x)",
+          "jsSubstringStart": 32,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "dfracddxint F(x),dx=xf(x)",
+            "js": "dfrac{d}{dx}int F(x),dx=xf(x)",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -3639,10 +5051,20 @@
           "status": "PASS"
         },
         {
-          "category": "fraction",
-          "sourceVisualToken": "stacked numerator/denominator",
-          "jsSerialization": "fraction structure: dfrac",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+2x³",
+          "jsField": "content",
+          "jsSerialization": "+2x^3",
+          "jsSubstringStart": 61,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "+2x³",
+            "js": "+2x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -3651,10 +5073,173 @@
           "status": "PASS"
         },
         {
-          "category": "integral",
-          "sourceVisualToken": "∫",
-          "jsSerialization": "integral bounds and integrand: int",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2x²",
+          "jsField": "content",
+          "jsSerialization": "-2x^2",
+          "jsSubstringStart": 66,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2x²",
+            "js": "-2x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(0)=2",
+          "jsField": "content",
+          "jsSerialization": "f(0)=2",
+          "jsSubstringStart": 85,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(0)",
+          "jsField": "content",
+          "jsSerialization": "(0)",
+          "jsSubstringStart": 86,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(1)",
+          "jsField": "content",
+          "jsSerialization": "f(1)",
+          "jsSubstringStart": 98,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(1)",
+          "jsField": "content",
+          "jsSerialization": "(1)",
+          "jsSubstringStart": 99,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[0]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[1]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[2]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[3]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.04,
+            0.49,
+            0.49,
+            0.72
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[4]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.04,
             0.49,
             0.49,
@@ -4003,10 +5588,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4015,10 +5605,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 7,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4027,10 +5622,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x",
+          "jsField": "content",
+          "jsSerialization": "x",
+          "jsSubstringStart": 20,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4039,10 +5639,20 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "int₁x f(t),dt=x³",
+          "jsField": "content",
+          "jsSerialization": "int_1^x f(t),dt=x^3",
+          "jsSubstringStart": 29,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "int₁x f(t),dt=x³",
+            "js": "int_1^x f(t),dt=x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4051,10 +5661,20 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2ax²",
+          "jsField": "content",
+          "jsSerialization": "-2ax^2",
+          "jsSubstringStart": 48,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2ax²",
+            "js": "-2ax^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4063,10 +5683,15 @@
           "status": "PASS"
         },
         {
-          "category": "integral",
-          "sourceVisualToken": "∫",
-          "jsSerialization": "integral bounds and integrand: int",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+a",
+          "jsField": "content",
+          "jsSerialization": "+a",
+          "jsSubstringStart": 54,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4075,10 +5700,168 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(t)",
+          "jsField": "content",
+          "jsSerialization": "(t)",
+          "jsSubstringStart": 38,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(단, a는 상수)",
+          "jsField": "content",
+          "jsSerialization": "(단, a는 상수)",
+          "jsSubstringStart": 59,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(단, a는 상수)",
+          "jsField": "content",
+          "jsSerialization": "(단, a는 상수)",
+          "jsSubstringStart": 59,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "fprime(2)",
+          "jsField": "content",
+          "jsSerialization": "fprime(2)",
+          "jsSubstringStart": 80,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(2)",
+          "jsField": "content",
+          "jsSerialization": "(2)",
+          "jsSubstringStart": 86,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[0]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[1]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[2]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[3]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.51,
+            0.05,
+            0.94,
+            0.22
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[4]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.51,
             0.05,
             0.94,
@@ -4435,10 +6218,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "P",
+          "jsField": "content",
+          "jsSerialization": "P",
+          "jsSubstringStart": 31,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.52,
             0.45,
             0.94,
@@ -4447,10 +6235,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "t",
+          "jsField": "content",
+          "jsSerialization": "t",
+          "jsSubstringStart": 39,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.52,
             0.45,
             0.94,
@@ -4459,10 +6252,139 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "v(t)=1",
+          "jsField": "content",
+          "jsSerialization": "v(t)=1",
+          "jsSubstringStart": 50,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2t",
+          "jsField": "content",
+          "jsSerialization": "-2t",
+          "jsSubstringStart": 56,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2t",
+            "js": "-2t",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(t)",
+          "jsField": "content",
+          "jsSerialization": "(t)",
+          "jsSubstringStart": 51,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac12",
+          "jsField": "choices[0]",
+          "jsSerialization": "dfrac12",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[1]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac32",
+          "jsField": "choices[2]",
+          "jsSerialization": "dfrac32",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[3]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
+            0.52,
+            0.45,
+            0.94,
+            0.69
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "dfrac52",
+          "jsField": "choices[4]",
+          "jsSerialization": "dfrac52",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 3,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p003.png",
+          "pageRegion": [
             0.52,
             0.45,
             0.94,
@@ -4783,10 +6705,15 @@
       },
       "notationInventory": [
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -4795,10 +6722,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 7,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -4807,10 +6739,134 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=fprime(x)",
+          "jsField": "content",
+          "jsSerialization": "y=fprime(x)",
+          "jsSubstringStart": 18,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "fprime(1)",
+          "jsField": "content",
+          "jsSerialization": "fprime(1)",
+          "jsSubstringStart": 77,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(1)",
+          "jsField": "content",
+          "jsSerialization": "(1)",
+          "jsSubstringStart": 83,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "8",
+          "jsField": "choices[0]",
+          "jsSerialization": "8",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "7",
+          "jsField": "choices[1]",
+          "jsSerialization": "7",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "6",
+          "jsField": "choices[2]",
+          "jsSerialization": "6",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[3]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.34
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[4]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -5137,10 +7193,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=x(x−a)²",
+          "jsField": "content",
+          "jsSerialization": "y=x(x-a)^2",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "y=x(x−a)²",
+            "js": "y=x(x-a)^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.46,
             0.49,
@@ -5149,10 +7215,20 @@
           "status": "PASS"
         },
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: >",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x−a)",
+          "jsField": "content",
+          "jsSerialization": "(x-a)",
+          "jsSubstringStart": 7,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(x−a)",
+            "js": "(x-a)",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.46,
             0.49,
@@ -5161,10 +7237,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=x",
+          "jsField": "content",
+          "jsSerialization": "y=x",
+          "jsSubstringStart": 21,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.46,
             0.49,
@@ -5173,10 +7254,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "a",
+          "jsField": "content",
+          "jsSerialization": "a",
+          "jsSubstringStart": 52,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.46,
             0.49,
@@ -5185,10 +7271,117 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(단, a>0)",
+          "jsField": "content",
+          "jsSerialization": "(단, a>0)",
+          "jsSubstringStart": 61,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(단, a>0)",
+          "jsField": "content",
+          "jsSerialization": "(단, a>0)",
+          "jsSubstringStart": 61,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "1",
+          "jsField": "choices[0]",
+          "jsSerialization": "1",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2",
+          "jsField": "choices[1]",
+          "jsSerialization": "2",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3",
+          "jsField": "choices[2]",
+          "jsSerialization": "3",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "4",
+          "jsField": "choices[3]",
+          "jsSerialization": "4",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.04,
+            0.46,
+            0.49,
+            0.67
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "5",
+          "jsField": "choices[4]",
+          "jsSerialization": "5",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.04,
             0.46,
             0.49,
@@ -5525,10 +7718,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "limₙ oᵢₙftyleft2nint₁^ racn+1n(x³−2x²+3x+5),dx ight",
+          "jsField": "content",
+          "jsSerialization": "lim_{n\toinfty}left{2nint_1^{\frac{n+1}{n}}(x^3-2x^2+3x+5),dx\right}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "limₙ oᵢₙftyleft2nint₁^ racn+1n(x³−2x²+3x+5),dx ight",
+            "js": "lim_{n\toinfty}left{2nint_1^{\frac{n+1}{n}}(x^3-2x^2+3x+5),dx\right}",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed subscripts map to TeX subscript syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5537,10 +7740,20 @@
           "status": "PASS"
         },
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: le",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x³−2x²+3x+5)",
+          "jsField": "content",
+          "jsSerialization": "(x^3-2x^2+3x+5)",
+          "jsSubstringStart": 42,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(x³−2x²+3x+5)",
+            "js": "(x^3-2x^2+3x+5)",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5549,10 +7762,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: {",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "10",
+          "jsField": "choices[0]",
+          "jsSerialization": "10",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5561,10 +7779,15 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "11",
+          "jsField": "choices[1]",
+          "jsSerialization": "11",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5573,10 +7796,15 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "12",
+          "jsField": "choices[2]",
+          "jsSerialization": "12",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5585,10 +7813,32 @@
           "status": "PASS"
         },
         {
-          "category": "integral",
-          "sourceVisualToken": "∫",
-          "jsSerialization": "integral bounds and integrand: int",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "13",
+          "jsField": "choices[3]",
+          "jsSerialization": "13",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.29
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "14",
+          "jsField": "choices[4]",
+          "jsSerialization": "14",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -5933,10 +8183,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=",
+          "jsField": "content",
+          "jsSerialization": "y=",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -5945,10 +8200,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−dfrac12x²",
+          "jsField": "content",
+          "jsSerialization": "-dfrac12x^2",
+          "jsSubstringStart": 6,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−dfrac12x²",
+            "js": "-dfrac12x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -5957,10 +8222,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+6x",
+          "jsField": "content",
+          "jsSerialization": "+6x",
+          "jsSubstringStart": 17,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -5969,10 +8239,15 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "x",
+          "jsField": "content",
+          "jsSerialization": "x",
+          "jsSubstringStart": 24,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -5981,10 +8256,161 @@
           "status": "PASS"
         },
         {
-          "category": "fraction",
-          "sourceVisualToken": "stacked numerator/denominator",
-          "jsSerialization": "fraction structure: dfrac",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=mx",
+          "jsField": "content",
+          "jsSerialization": "y=mx",
+          "jsSubstringStart": 47,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "m",
+          "jsField": "content",
+          "jsSerialization": "m",
+          "jsSubstringStart": 70,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(6−m)³",
+          "jsField": "content",
+          "jsSerialization": "(6-m)^3",
+          "jsSubstringStart": 79,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(6−m)³",
+            "js": "(6-m)^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(6−m)",
+          "jsField": "content",
+          "jsSerialization": "(6-m)",
+          "jsSubstringStart": 79,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(6−m)",
+            "js": "(6-m)",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "60",
+          "jsField": "choices[0]",
+          "jsSerialization": "60",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "72",
+          "jsField": "choices[1]",
+          "jsSerialization": "72",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "84",
+          "jsField": "choices[2]",
+          "jsSerialization": "84",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "96",
+          "jsField": "choices[3]",
+          "jsSerialization": "96",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.68
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "108",
+          "jsField": "choices[4]",
+          "jsSerialization": "108",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 4,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p004.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -6321,10 +8747,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "a",
+          "jsField": "content",
+          "jsSerialization": "a",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6333,10 +8764,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)=dfrac14x⁴",
+          "jsField": "content",
+          "jsSerialization": "f(x)=dfrac14x^4",
+          "jsSubstringStart": 18,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "f(x)=dfrac14x⁴",
+            "js": "f(x)=dfrac14x^4",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6345,10 +8786,20 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "−2x²",
+          "jsField": "content",
+          "jsSerialization": "-2x^2",
+          "jsSubstringStart": 33,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "−2x²",
+            "js": "-2x^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6357,10 +8808,15 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+x",
+          "jsField": "content",
+          "jsSerialization": "+x",
+          "jsSubstringStart": 38,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6369,10 +8825,15 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+6",
+          "jsField": "content",
+          "jsSerialization": "+6",
+          "jsSubstringStart": 40,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6381,10 +8842,190 @@
           "status": "PASS"
         },
         {
-          "category": "fraction",
-          "sourceVisualToken": "stacked numerator/denominator",
-          "jsSerialization": "fraction structure: dfrac",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 19,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "g(x)=x",
+          "jsField": "content",
+          "jsSerialization": "g(x)=x",
+          "jsSubstringStart": 46,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+a",
+          "jsField": "content",
+          "jsSerialization": "+a",
+          "jsSubstringStart": 52,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "k(a)",
+          "jsField": "content",
+          "jsSerialization": "k(a)",
+          "jsSubstringStart": 80,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a)",
+          "jsField": "content",
+          "jsSerialization": "(a)",
+          "jsSubstringStart": 81,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "suma=₁¹²k(a)",
+          "jsField": "content",
+          "jsSerialization": "sum_{a=1}^{12}k(a)",
+          "jsSubstringStart": 93,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "suma=₁¹²k(a)",
+            "js": "sum_{a=1}^{12}k(a)",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring. Printed subscripts map to TeX subscript syntax in the exact JS substring."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "31",
+          "jsField": "choices[0]",
+          "jsSerialization": "31",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "29",
+          "jsField": "choices[1]",
+          "jsSerialization": "29",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "27",
+          "jsField": "choices[2]",
+          "jsSerialization": "27",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "25",
+          "jsField": "choices[3]",
+          "jsSerialization": "25",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "24",
+          "jsField": "choices[4]",
+          "jsSerialization": "24",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -6741,10 +9382,15 @@
       },
       "notationInventory": [
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: <",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "A,B",
+          "jsField": "content",
+          "jsSerialization": "A,B",
+          "jsSubstringStart": 17,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.48,
             0.49,
@@ -6753,10 +9399,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "t",
+          "jsField": "content",
+          "jsSerialization": "t",
+          "jsSubstringStart": 27,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.48,
             0.49,
@@ -6765,10 +9416,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(t),g(t)",
+          "jsField": "content",
+          "jsSerialization": "f(t),g(t)",
+          "jsSubstringStart": 41,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.48,
             0.49,
@@ -6777,10 +9433,168 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(t)",
+          "jsField": "content",
+          "jsSerialization": "(t)",
+          "jsSubstringStart": 42,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "y=f(t),y=g(t)",
+          "jsField": "content",
+          "jsSerialization": "y=f(t),y=g(t)",
+          "jsSubstringStart": 64,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "fprime(a)=fprime(d)=0",
+          "jsField": "content",
+          "jsSerialization": "fprime(a)=fprime(d)=0",
+          "jsSubstringStart": 125,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a)",
+          "jsField": "content",
+          "jsSerialization": "(a)",
+          "jsSubstringStart": 131,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(d)",
+          "jsField": "content",
+          "jsSerialization": "(d)",
+          "jsSubstringStart": 141,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "gprime(a)=gprime(e)=0",
+          "jsField": "content",
+          "jsSerialization": "gprime(a)=gprime(e)=0",
+          "jsSubstringStart": 150,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(e)",
+          "jsField": "content",
+          "jsSerialization": "(e)",
+          "jsSubstringStart": 166,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "d<t<e",
+          "jsField": "content",
+          "jsSerialization": "d<t<e",
+          "jsSubstringStart": 201,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "0<t<10",
+          "jsField": "content",
+          "jsSerialization": "0<t<10",
+          "jsSubstringStart": 242,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.04,
+            0.48,
+            0.49,
+            0.86
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "t=a",
+          "jsField": "content",
+          "jsSerialization": "t=a",
+          "jsSubstringStart": 265,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.04,
             0.48,
             0.49,
@@ -7106,10 +9920,20 @@
       },
       "notationInventory": [
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: {",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "3,mathrmm",
+          "jsField": "content",
+          "jsSerialization": "3,mathrm{m}",
+          "jsSubstringStart": 66,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "3,mathrmm",
+            "js": "3,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -7118,10 +9942,130 @@
           "status": "PASS"
         },
         {
-          "category": "unit",
-          "sourceVisualToken": "m",
-          "jsSerialization": "unit serialization: mathrm{m}",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "2,mathrmm",
+          "jsField": "content",
+          "jsSerialization": "2,mathrm{m}",
+          "jsSubstringStart": 123,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "2,mathrmm",
+            "js": "2,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "63,mathrmm",
+          "jsField": "choices[0]",
+          "jsSerialization": "63,mathrm{m}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "63,mathrmm",
+            "js": "63,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "65,mathrmm",
+          "jsField": "choices[1]",
+          "jsSerialization": "65,mathrm{m}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "65,mathrmm",
+            "js": "65,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "67,mathrmm",
+          "jsField": "choices[2]",
+          "jsSerialization": "67,mathrm{m}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "67,mathrmm",
+            "js": "67,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "69,mathrmm",
+          "jsField": "choices[3]",
+          "jsSerialization": "69,mathrm{m}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "69,mathrmm",
+            "js": "69,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.04,
+            0.94,
+            0.28
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "71,mathrmm",
+          "jsField": "choices[4]",
+          "jsSerialization": "71,mathrm{m}",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "71,mathrmm",
+            "js": "71,mathrm{m}",
+            "mapping": "The complete printed formula token is represented in the exact JS math substring without changing its value."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -7434,10 +10378,20 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)=x³",
+          "jsField": "content",
+          "jsSerialization": "f(x)=x^3",
+          "jsSubstringStart": 4,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "f(x)=x³",
+            "js": "f(x)=x^3",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -7446,10 +10400,20 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+ax²",
+          "jsField": "content",
+          "jsSerialization": "+ax^2",
+          "jsSubstringStart": 12,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "+ax²",
+            "js": "+ax^2",
+            "mapping": "Printed superscripts map to TeX exponent syntax in the exact JS substring."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -7458,10 +10422,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+ax",
+          "jsField": "content",
+          "jsSerialization": "+ax",
+          "jsSubstringStart": 17,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -7470,10 +10439,93 @@
           "status": "PASS"
         },
         {
-          "category": "exponent",
-          "sourceVisualToken": "superscript",
-          "jsSerialization": "TeX ^ exponent: ^",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "+1",
+          "jsField": "content",
+          "jsSerialization": "+1",
+          "jsSubstringStart": 20,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.75
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 5,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.75
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "(−2,1)",
+          "jsField": "content",
+          "jsSerialization": "(-2,1)",
+          "jsSubstringStart": 31,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(−2,1)",
+            "js": "(-2,1)",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.75
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(−2,1)",
+          "jsField": "content",
+          "jsSerialization": "(-2,1)",
+          "jsSubstringStart": 31,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "(−2,1)",
+            "js": "(-2,1)",
+            "mapping": "Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
+            0.51,
+            0.49,
+            0.94,
+            0.75
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "a",
+          "jsField": "content",
+          "jsSerialization": "a",
+          "jsSubstringStart": 65,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 5,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p005.png",
+          "pageRegion": [
             0.51,
             0.49,
             0.94,
@@ -7702,10 +10754,15 @@
       },
       "notationInventory": [
         {
-          "category": "minus",
-          "sourceVisualToken": "−",
-          "jsSerialization": "TeX/printed leading or binary minus: -",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "xge a",
+          "jsField": "content",
+          "jsSerialization": "xge a",
+          "jsSubstringStart": 1,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7714,10 +10771,15 @@
           "status": "PASS"
         },
         {
-          "category": "inequality",
-          "sourceVisualToken": "<, >, ≤, or ≥",
-          "jsSerialization": "directional inequality token: ge",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)>0",
+          "jsField": "content",
+          "jsSerialization": "f(x)>0",
+          "jsSubstringStart": 11,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7726,10 +10788,15 @@
           "status": "PASS"
         },
         {
-          "category": "equality",
-          "sourceVisualToken": "=",
-          "jsSerialization": "equality token: =",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(x)",
+          "jsField": "content",
+          "jsSerialization": "(x)",
+          "jsSubstringStart": 12,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7738,10 +10805,15 @@
           "status": "PASS"
         },
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: (",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(x)",
+          "jsField": "content",
+          "jsSerialization": "f(x)",
+          "jsSubstringStart": 26,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7750,10 +10822,15 @@
           "status": "PASS"
         },
         {
-          "category": "subscript",
-          "sourceVisualToken": "subscript",
-          "jsSerialization": "TeX _ subscript: _",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "S(x)",
+          "jsField": "content",
+          "jsSerialization": "S(x)",
+          "jsSubstringStart": 56,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7762,10 +10839,15 @@
           "status": "PASS"
         },
         {
-          "category": "fraction",
-          "sourceVisualToken": "stacked numerator/denominator",
-          "jsSerialization": "fraction structure: dfrac",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "f(a)=10",
+          "jsField": "content",
+          "jsSerialization": "f(a)=10",
+          "jsSubstringStart": 68,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -7774,10 +10856,54 @@
           "status": "PASS"
         },
         {
-          "category": "derivative",
-          "sourceVisualToken": "′",
-          "jsSerialization": "derivative marker: prime",
-          "pageRegionNorm": [
+          "tokenKind": "printedParentheticalToken",
+          "sourceVisualToken": "(a)",
+          "jsField": "content",
+          "jsSerialization": "(a)",
+          "jsSubstringStart": 69,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.48
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "Fprime(x)=f(x)",
+          "jsField": "content",
+          "jsSerialization": "Fprime(x)=f(x)",
+          "jsSubstringStart": 81,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
+            0.04,
+            0.04,
+            0.49,
+            0.48
+          ],
+          "status": "PASS"
+        },
+        {
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "limx o a₊dfrac2S(x)x−a",
+          "jsField": "content",
+          "jsSerialization": "lim_{x\to a+}dfrac{2S(x)}{x-a}",
+          "jsSubstringStart": 102,
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+          "representationMapping": {
+            "printed": "limx o a₊dfrac2S(x)x−a",
+            "js": "lim_{x\to a+}dfrac{2S(x)}{x-a}",
+            "mapping": "Printed subscripts map to TeX subscript syntax in the exact JS substring. Printed mathematical minus glyph − maps to ASCII - in the TeX serialization."
+          },
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.04,
             0.04,
             0.49,
@@ -8032,10 +11158,15 @@
       },
       "notationInventory": [
         {
-          "category": "brackets",
-          "sourceVisualToken": "( ), [ ], or { }",
-          "jsSerialization": "delimiting brackets: [",
-          "pageRegionNorm": [
+          "tokenKind": "printedMathTerm",
+          "sourceVisualToken": "k",
+          "jsField": "content",
+          "jsSerialization": "k",
+          "jsSubstringStart": 47,
+          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "sourcePageNo": 6,
+          "sourcePageEvidencePath": "archive-work/evidence/nightly/runs/2026-10-02/source-intake-heartbeat-2026-10-02-0544-kst/22_팔마고_2학기_기말_고2_수학II/pages/page_p006.png",
+          "pageRegion": [
             0.51,
             0.04,
             0.94,
@@ -8538,7 +11669,7 @@
       "sourcePageSha256VerifiedAgainstDisk": true
     }
   ],
-  "finalVerdict": "SOURCE_QA_PASS",
+  "finalVerdict": "SOURCE_QA_ITEMIZATION_REQUIRED",
   "findings": [],
   "reviewerSubagentId": "/root/source_qa_20261002_0544",
   "reviewedAtKst": "2026-10-02T06:19:47+09:00",
@@ -8551,5 +11682,13 @@
   "targetedRecheckQids": [
     "1",
     "18"
-  ]
+  ],
+  "notationInventoryRepair": {
+    "status": "EVIDENCE_REPAIRED_PENDING_FRESH_OCR_FREE_AUDIT",
+    "newConcreteNotationRows": 233,
+    "questionCount": 22,
+    "genericPlaceholderRows": 0,
+    "palQ1AnchorCount": 3
+  },
+  "handoffEligibility": "PENDING_PARENT_EVIDENCE"
 }
