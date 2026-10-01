@@ -1,0 +1,98 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_순천여고_2학기_기말_고1_기출",
+  "ordinal": 5,
+  "stage": "GOLDEN_COMPARE",
+  "status": "MANUAL_SOLUTION_CALIBRATION_PASS",
+  "branch": "work/high-source8-r2",
+  "originMain": "98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_순천여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:f782397757ce6eb4657204bb06035510fc2f85607f2560b08ea006bb937c5c71",
+  "targetArtifactGitBlobSha": "d3dc656b1b30ad3852d53e2f28ac24bbc8fd213c",
+  "denominator": 23,
+  "resolvedSolutionCount": 23,
+  "qualityCompareCount": "23/23",
+  "itemHoldQids": [],
+  "sampleReadBeforeWork": true,
+  "blindDecisionFrozenBeforeCompare": true,
+  "solutionWorkMode": "Fresh student-facing solutions written after source-only answers and calibration preflight.",
+  "calibrationOrder": "source-only solve and freeze answers → read two current H1 Golden samples and current negative fixture → write solutions → full math/student reviews → final 23/23 quality comparison",
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "representativeQuestions": [
+        {"qid":11,"solutionSha256":"sha256:89e7a184700b58dc26e660db8aae01aa94ae0f06353b90c6e007ced375495ab6","observation":"Translate set identities into inclusion relations before counting; show each independent free choice."},
+        {"qid":17,"solutionSha256":"sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145","observation":"List exhaustive failure cases, solve each parameter condition visibly, and combine without overlap."},
+        {"qid":23,"solutionSha256":"sha256:309880c00afd7d04fd63b9827e9a7536ea3167c345e9db40adc1298fd0a2215c","observation":"Build geometric intermediate values, separate location cases, and tie the extreme case to the requested quantity."}
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "representativeQuestions": [
+        {"qid":5,"solutionSha256":"sha256:8e1a0f149d821431abc022690f63b1b99c675d8373a575c92dc4d1688dc4b109","observation":"Explain the consequence of set equality before finding unknowns and verify the requested expression."},
+        {"qid":12,"solutionSha256":"sha256:c77c0042b36d4618b4c94ddb0d784539f8b4521004c45b5ae9467daf7a6d2414","observation":"Use vertex form and state transformed points before writing the final parameter relation."},
+        {"qid":20,"solutionSha256":"sha256:40bb99e366d1e9f497a07702c138407585607b7d6ef45a1107499c5f9f0d25e1","observation":"Use a complement to simplify counting and show substitutions into the set formula."}
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+      "observation": "Guard against merged enumerated judgements, runtime escape defects missed in source, and visual claims not supported by actual primitives. q17 now has separate (가)/(나)/(다) blocks; q18 avoids polar notation; source image facts are checked against pixels."
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q1-solution.bad.svg",
+      "revision": "origin/main@98dc1e9671c661386fe1bf50979c64ea8b9e19e8",
+      "sha256": "sha256:022a90d5887f312af6eff6d0c1ee15cac740460bb177709f9a6f274fd20f3d92",
+      "gitBlobSha": "952e3492201bfa100a22c3af830320f84abd14fa",
+      "observation": "Primitive passes through the axes origin while nearby text claims a different y-intercept; visual claims require coordinate-level parity."
+    }
+  ],
+  "qualityCompare": [
+    {"qid":1,"status":"PASS","observation":"Short notation calculation remains reproducible."},
+    {"qid":2,"status":"PASS","observation":"Affine inverse composition shows each substitution."},
+    {"qid":3,"status":"PASS","observation":"Parity cases are exhaustive and visible."},
+    {"qid":4,"status":"PASS","observation":"Numerator algebra is written explicitly."},
+    {"qid":5,"status":"PASS","observation":"Inside-out composition and intermediate values are shown."},
+    {"qid":6,"status":"PASS","observation":"Direct combination calculation matches the easy-item quality floor."},
+    {"qid":7,"status":"PASS","observation":"End placements and remaining arrangements are separate factors."},
+    {"qid":8,"status":"PASS","observation":"Both inverse-graph conditions are translated to function values."},
+    {"qid":9,"status":"PASS","visual":"SOURCE_GRAPH_USED","observation":"The two graph readings needed for the inverse composition are explicit."},
+    {"qid":10,"status":"PASS","observation":"Distinct-box assignment is translated to 6P4."},
+    {"qid":11,"status":"PASS","observation":"Monotonicity and both interval endpoints are tied to extrema."},
+    {"qid":12,"status":"PASS","observation":"Parameter sign cases and boundary k=3 are checked."},
+    {"qid":13,"status":"PASS","observation":"Inverse expression and inverse domain are both stated."},
+    {"qid":14,"status":"PASS","observation":"Complement count avoids overlap and includes ordered pairs."},
+    {"qid":15,"status":"PASS","visual":"SOURCE_GRAPH_USED","observation":"Source graph defines the line/hyperbola intersections; coordinate model and triangle legs are explicit."},
+    {"qid":16,"status":"PASS_AFTER_TARGETED_READABILITY_REPAIR","observation":"Distinct y-values justify cancellation before the slope simplification."},
+    {"qid":17,"status":"PASS_AFTER_TARGETED_READABILITY_REPAIR","observation":"Each source condition now has its own labelled block."},
+    {"qid":18,"status":"PASS","observation":"Complex powers use direct multiplication cycles within the high-school algebra method."},
+    {"qid":19,"status":"PASS","observation":"The line-intersection discriminant bound and equality case are explicit."},
+    {"qid":20,"status":"PASS","visual":"SOURCE_DIAGRAM_USED","observation":"The source diagram's horizontal/vertical construction maps to A,B,C coordinates and equal legs."},
+    {"qid":21,"status":"PASS","visual":"SOURCE_GRAPH_USED","observation":"Endpoint coordinates set a,b; the shared inverse point is solved with an admissible-root check."},
+    {"qid":22,"status":"PASS","observation":"Outer ranges, middle injectivity, coefficients, and resulting bijection are checked."},
+    {"qid":23,"status":"PASS","observation":"Involution cycle cases and pairings are exhaustive."}
+  ],
+  "targetedRepairs": [
+    {"qid":16,"repair":"Explain u≠v before cancelling the common factor in the secant slope.","recheck":"PASS"},
+    {"qid":17,"repair":"Separate source conditions (가), (나), and (다) into independent solution blocks.","recheck":"PASS"}
+  ],
+  "scopeNote": "Routine source visuals were preserved; no solution SVG was added. No full solution render was in scope.",
+  "calibrationStatus": "PASS"
+}
