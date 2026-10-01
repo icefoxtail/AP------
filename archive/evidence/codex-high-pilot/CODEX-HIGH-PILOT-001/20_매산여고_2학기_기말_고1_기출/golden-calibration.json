@@ -1,0 +1,211 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "GOLDEN_COMPARE",
+  "status": "MANUAL_SOLUTION_CALIBRATION_PASS",
+  "branch": "work/high-source8-r2",
+  "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+  "targetArtifactPath": "archive-work/exams/original/high/h1/2final/20_매산여고_2학기_기말_고1_기출.js",
+  "targetArtifactSha256": "sha256:e5153922b85e94cf831321c12f15deb10b44f41ccdc5b73a702add970c34c0f0",
+  "targetArtifactGitBlobSha": "3d1e1b517e1f4e05fd5e3d74d52c9b5c69c5d05b",
+  "denominator": 22,
+  "resolvedSolutionCount": 22,
+  "itemHoldQids": [],
+  "sampleReadBeforeWork": true,
+  "solutionWorkMode": "Fresh SOURCE_ONLY solution; final student-facing target mutation followed physical same-grade calibration preflight.",
+  "calibrationOrder": "fresh source solve → complete student solution draft → read Golden and Negative samples → write solutions to target JS → full math/student self-reviews → final 22/22 quality comparison",
+  "goldenSampleRefs": [
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+      "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+      "representativeQuestions": [
+        {
+          "qid": 11,
+          "solutionSha256": "sha256:89e7a184700b58dc26e660db8aae01aa94ae0f06353b90c6e007ced375495ab6",
+          "solutionExcerpt": "두 집합의 식이 뜻하는 포함관계부터 바꾸어 생각한다.",
+          "observation": "Translate set equations to inclusions before counting independent choices."
+        },
+        {
+          "qid": 17,
+          "solutionSha256": "sha256:5eb70cf6da9787aac370454f945e709a66d81e77ddbec3e4c52bf0f49de98145",
+          "solutionExcerpt": "세 직선이 삼각형을 이루려면 어느 두 직선도 평행하지 않고, 세 직선이 한 점에서 동시에 만나지도 않아야 한다.",
+          "observation": "Name the exhaustive cases first, separate them, and show the equation steps."
+        },
+        {
+          "qid": 23,
+          "solutionSha256": "sha256:309880c00afd7d04fd63b9827e9a7536ea3167c345e9db40adc1298fd0a2215c",
+          "solutionExcerpt": "먼저 선분 $OA$의 길이를 구한다.",
+          "observation": "Expose needed geometric intermediates and compare candidate configurations."
+        }
+      ]
+    },
+    {
+      "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+      "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+      "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+      "revision": "origin/main@6607e74c48bb6ab0043ef4feca851d5bb366eca1",
+      "representativeQuestions": [
+        {
+          "qid": 14,
+          "solutionSha256": "sha256:d5eb924d91802b5ffe0c564517765757fe7ea9feef3d661ba2f2e6de6b4021bd",
+          "solutionExcerpt": "점 $I$는 삼각형 $ABC$의 내심이므로\n직선 $AI$는 $\\angle A$의 이등분선이다.\n직선 $AI$와 선분 $BC$의 교점을 $D$라고 하자.\n각의 이등분선 정리에 의해\n$BD:DC=AB:AC$이다.\n먼저 두 변의 ",
+          "observation": "Connect a geometric definition to its theorem before calculating the ratio and coordinates."
+        },
+        {
+          "qid": 21,
+          "solutionSha256": "sha256:3b1db3c72a8f0fe52b66865319ba4b7a57c7374a8e2b7ec36cd3bbed18364ac9",
+          "solutionExcerpt": "점 $C$는 직선 $AB$ 위에 있으므로 위치를 나누어 생각해야 한다.",
+          "observation": "Separate interior and exterior configurations and verify the length condition in both."
+        },
+        {
+          "qid": 22,
+          "solutionSha256": "sha256:dad0755c418396e902dbf3ee158569f0d8a4917afb5ca39d25619f8de1532514",
+          "solutionExcerpt": "반지름을 $r$이라고 하자.",
+          "observation": "Separate sign cases and make the feasibility of roots explicit."
+        }
+      ]
+    }
+  ],
+  "negativeSampleRefs": [
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+      "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+      "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+    },
+    {
+      "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/q3-solution.bad.svg",
+      "sha256": "sha256:7d898cf2fc9942f3b97f3f9157c1c956d9edf6759b54c7cc9fb7887b1074213c",
+      "gitBlobSha": "3598d979a174c87faf66ef93aadb962b2047b5df",
+      "observation": "The line label says slope −7 while the primitive line through (65,356),(520,31) has slope −5/7; geometry must be checked from primitives."
+    }
+  ],
+  "calibrationAxes": [
+    "STUDENT_REPRODUCIBILITY",
+    "SMALL_BOARD_STRUCTURE",
+    "EXPLANATION_DENSITY",
+    "VISUAL_SEMANTIC_PARITY",
+    "VISUAL_READABILITY"
+  ],
+  "qualityCompareCount": "22/22",
+  "qualityComparisons": [
+    {
+      "qid": 1,
+      "status": "MEETS_FLOOR",
+      "observation": "Two substitutions and elimination are visibly carried through."
+    },
+    {
+      "qid": 2,
+      "status": "MEETS_FLOOR",
+      "observation": "Each statement has a separate decision block and its own decisive calculation."
+    },
+    {
+      "qid": 3,
+      "status": "MEETS_FLOOR",
+      "observation": "Both possible endpoint orientations and requested absolute values are evaluated."
+    },
+    {
+      "qid": 4,
+      "status": "MEETS_FLOOR",
+      "observation": "The inverse map is established before substitution."
+    },
+    {
+      "qid": 5,
+      "status": "MEETS_FLOOR",
+      "observation": "The source graph map and periodic reduction are explicit."
+    },
+    {
+      "qid": 6,
+      "status": "MEETS_FLOOR",
+      "observation": "The inverse affine step and both requested function values are shown."
+    },
+    {
+      "qid": 7,
+      "status": "MEETS_FLOOR",
+      "observation": "Equal-input failure and onto-range requirement are both explained."
+    },
+    {
+      "qid": 8,
+      "status": "MEETS_FLOOR",
+      "observation": "Visual signs, radical domain, and quadrant conclusion are linked."
+    },
+    {
+      "qid": 9,
+      "status": "MEETS_FLOOR",
+      "observation": "Centered coordinates expose both symmetry transformations and coefficient labels."
+    },
+    {
+      "qid": 10,
+      "status": "MEETS_FLOOR",
+      "observation": "Algebraic monotonicity gives endpoint extrema without higher-curriculum calculus."
+    },
+    {
+      "qid": 11,
+      "status": "MEETS_FLOOR",
+      "observation": "Bundles, overlap, and the fixed end choices are shown separately."
+    },
+    {
+      "qid": 12,
+      "status": "MEETS_FLOOR",
+      "observation": "Piecewise ranges establish both injectivity and surjectivity onto the requested range."
+    },
+    {
+      "qid": 13,
+      "status": "MEETS_FLOOR",
+      "observation": "The two graph conditions are independently bounded and intersected before counting integers."
+    },
+    {
+      "qid": 14,
+      "status": "MEETS_FLOOR",
+      "observation": "A short complement count avoids hidden endpoint cases."
+    },
+    {
+      "qid": 15,
+      "status": "MEETS_FLOOR",
+      "observation": "The 220 total, 60 right, 120 obtuse, and 40 acute counts are reproducible from arc gaps."
+    },
+    {
+      "qid": 16,
+      "status": "MEETS_FLOOR",
+      "observation": "The source adjacency is identified and both color-count cases are computed."
+    },
+    {
+      "qid": 17,
+      "status": "MEETS_FLOOR",
+      "observation": "The gap model and excluded endpoint configuration are explicit."
+    },
+    {
+      "qid": 18,
+      "status": "MEETS_FLOOR",
+      "observation": "Variable swap, rearrangement, and asymptote rules are applied in order."
+    },
+    {
+      "qid": 19,
+      "status": "MEETS_FLOOR",
+      "observation": "Marked-event count, overlaps, and exact-one correction are shown."
+    },
+    {
+      "qid": 20,
+      "status": "MEETS_FLOOR",
+      "observation": "Lexicographic block boundaries and within-block ranks are tracked explicitly."
+    },
+    {
+      "qid": 21,
+      "status": "MEETS_FLOOR",
+      "observation": "The substitution reduces area to a quadratic and its feasible vertex is checked."
+    },
+    {
+      "qid": 22,
+      "status": "MEETS_FLOOR",
+      "observation": "The minimum inclusion, open maximum, and threshold comparison are all visible."
+    }
+  ],
+  "finalCalibrationStatus": "PASS",
+  "observations": [
+    "Both Golden samples are 2025 H1 mathematics exams; they are used only for student explanation quality, not answer or Meta authority.",
+    "The target solutions meet the comparison floor for reproducible intermediate steps, case visibility, and concise board flow.",
+    "No sample wording or solution template was copied."
+  ]
+}
