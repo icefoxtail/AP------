@@ -1,3 +1,5 @@
+window.examTitle = "26_복성고_2학기_중간_고1_기출";
+
 window.questionBank = [
   {
     "id": 1,
@@ -16,7 +18,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "두 점을 지나는 직선"
+      "두 점을 지나는 직선",
+      "시각자료"
     ],
     "wide": false,
     "content": "두 점 $(-5, 3)$, $(1, -2)$을 지나는 직선의 $y$절편은? (3.6점)",
@@ -40,7 +43,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_LINE_EQUATION",
     "templateKey": "TPL_LINE_TWO_POINTS",
     "crossConceptKeys": [],
@@ -52,7 +55,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "두 점과 y절편을 표시한 직선 그래프",
+    "solutionImageCaption": "두 점을 잇는 직선의 기울기와 y절편을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -74,7 +81,7 @@ window.questionBank = [
       "집합의 포함·연산 종합"
     ],
     "wide": false,
-    "content": "두 집합 $A=\\{x\\mid x는 12 이하의 양의 홀수\\}$, $B=\\{2,3,5,7,11\\}$에 대하여 다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\{1,3,5\\}\\subset A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\not\\subset A$<br>ㄹ. $A\\cap B^C=\\{1,9\\}$</div>",
+    "content": "두 집합 $A=\\\\{x\\\\mid x는 12 이하의 양의 홀수\\\\}$, $B=\\\\{2,3,5,7,11\\\\}$에 대하여 다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (3.6점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $\\\\{1,3,5\\\\}\\\\in A$<br>ㄴ. $n(A)=7$<br>ㄷ. $B\\\\subset A$<br>ㄹ. $A\\\\cap B^C=\\\\{1,9\\\\}$</div>",
     "choices": [
       "ㄹ",
       "ㄱ, ㄷ",
@@ -82,8 +89,8 @@ window.questionBank = [
       "ㄴ, ㄹ",
       "ㄱ, ㄴ, ㄹ"
     ],
-    "answer": "",
-    "solution": "$A=\\{1,3,5,7,9,11\\}$이므로 $n(A)=6$이다. ㄱ은 참, ㄴ은 거짓이다. 또 $2\\in B$, $2\\notin A$이므로 ㄷ은 참이고, $A\\cap B^C=A-B=\\{1,9\\}$이므로 ㄹ도 참이다. 따라서 옳은 것은 ㄱ, ㄷ, ㄹ인데 source에 보존된 다섯 선택지에는 이 조합이 없다. 원문 선택지·정답표 직접 재확인이 필요하다.",
+    "answer": "①",
+    "solution": "$A=\\\\{1,3,5,7,9,11\\\\}$이다. ㄱ의 $\\\\{1,3,5\\\\}$는 집합이므로 $A$의 원소 하나가 아니어서 거짓이다. ㄴ은 $n(A)=6$이므로 거짓이다. ㄷ은 $2\\\\in B$이지만 $2\\\\notin A$이므로 거짓이다. ㄹ은 $A\\\\cap B^C=A-B=\\\\{1,9\\\\}$이므로 참이다.\\n\\n따라서 옳은 것은 ㄹ뿐이고 정답은 ①이다.",
     "sourceQuestionNo": "2",
     "displayNo": "2",
     "sourceOrdinal": 2,
@@ -92,22 +99,22 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:47c548f8d9b598c2260ef2848fab64ae8ab07eed15d57b70c1bff1922337b8c7|2",
     "contentSource": "full_page_source_evidence",
     "choicesSource": "full_page_source_evidence",
-    "answerSource": "independent_solve_item_hold",
-    "solutionSource": "fresh_independent_solution",
+    "answerSource": "independent_solve_after_audited_source_repair",
+    "solutionSource": "fresh_independent_solution_after_audited_source_repair",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_SOURCE_MATH",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "INTERDEPENDENT",
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "review_hold",
-    "tagStatus": "item_hold"
+    "tagStatus": "item_hold_meta"
   },
   {
     "id": 3,
@@ -126,7 +133,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "점과 직선 사이의 거리"
+      "점과 직선 사이의 거리",
+      "시각자료"
     ],
     "wide": false,
     "content": "점 $(-1, 2)$와 직선 $y=-7x+2a$ 사이의 거리가 $2\\sqrt{2}$일 때, 양수 $a$의 값은? (3.7점)",
@@ -150,7 +158,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_POINT_LINE_DISTANCE",
     "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
     "crossConceptKeys": [],
@@ -164,7 +172,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "점 P에서 직선에 내린 수선과 거리",
+    "solutionImageCaption": "수선의 발 H와 거리 2√2를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -183,7 +195,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "직선의 평행이동"
+      "직선의 평행이동",
+      "시각자료"
     ],
     "wide": false,
     "content": "직선 $x-3y+4=0$을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $1$만큼 평행이동한 도형이 점 $(2, 2)$를 지날 때, 실수 $a$의 값은? (3.7점)",
@@ -207,7 +220,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -219,7 +232,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "직선 위 점의 평행이동 대응",
+    "solutionImageCaption": "이동 (3,1)이 직선 방향과 같아 직선이 보존된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -262,7 +279,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_COORD_DISTANCE",
     "templateKey": "TPL_COORD_DISTANCE_DIRECT",
     "crossConceptKeys": [],
@@ -295,7 +312,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "두 직선의 평행과 수직"
+      "두 직선의 평행과 수직",
+      "시각자료"
     ],
     "wide": false,
     "content": "직선 $x-3y+2=0$과 직선 $ax-6y+9=0$이 서로 평행하고, 직선 $3x+5y-4=0$과 직선 $15x-by+11=0$이 서로 수직일 때, $ab$의 값은? (3.8점)",
@@ -319,8 +337,8 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
-    "problemTypeKey": null,
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE_ITEM_HOLD_META",
+    "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
@@ -331,7 +349,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "review_hold",
-    "tagStatus": "item_hold_meta"
+    "tagStatus": "item_hold_meta",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "평행 조건과 수직 조건",
+    "solutionImageCaption": "a=2의 평행과 b=9의 수직 관계를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -350,7 +372,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "내분점"
+      "내분점",
+      "시각자료"
     ],
     "wide": false,
     "content": "이차함수 $f(x)=-4x^2-4x-1$의 그래프가 $x$축과 만나는 점을 각각 $A$, $y$축과 만나는 점을 $B$라 하자. 점 $C(a,b)$가 선분 $AB$를 $4:1$로 내분할 때, $\\dfrac{b}{a}$의 값은? (3.9점)",
@@ -362,7 +385,7 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "②",
-    "solution": "$f(x)=-(2x+1)^2$이므로 $A=(-1/2,0)$, $B=(0,-1)$이다. $AC:CB=4:1$이므로 $C=(A+4B)/5=(-1/10,-4/5)$이다. 따라서 $b/a=8$이다.\\n\\n따라서 정답은 ②이다.",
+    "solution": "$f(x)=-(2x+1)^2$이므로 $A=(-\\\\dfrac12,0)$이고, $x=0$을 대입하면 $B=(0,-1)$이다. $AC:CB=4:1$이므로 내분점 공식에서\\n$a=\\\\dfrac{1\\\\cdot(-1/2)+4\\\\cdot0}{5}=-\\\\dfrac1{10},\\\\qquad b=\\\\dfrac{1\\\\cdot0+4\\\\cdot(-1)}{5}=-\\\\dfrac45.$\\n따라서 $\\\\dfrac ba=8$이다.\\n\\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "7",
     "displayNo": "7",
     "sourceOrdinal": 7,
@@ -374,7 +397,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_COORD_SECTION",
     "templateKey": "TPL_SECTION_INTERNAL",
     "crossConceptKeys": [
@@ -388,7 +411,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "포물선의 절편과 내분점",
+    "solutionImageCaption": "C가 AB를 4:1로 내분함을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -407,7 +434,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "원 밖의 점에서 그은 접선"
+      "원 밖의 점에서 그은 접선",
+      "시각자료"
     ],
     "wide": false,
     "content": "점 $(3, -1)$에서 원 $x^2+y^2=8$에 그은 접선의 방정식이 $(1,a)$를 지난다. 양수 $a$의 값은? (4.1점)",
@@ -431,7 +459,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -445,7 +473,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "curriculum": "2022",
     "tagConfidence": "review_hold",
-    "tagStatus": "item_hold_meta"
+    "tagStatus": "item_hold_meta",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "원과 외부점의 접선",
+    "solutionImageCaption": "접점에서 반지름과 접선이 수직임을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -464,7 +496,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "직선의 그래프와 계수의 부호"
+      "직선의 그래프와 계수의 부호",
+      "시각자료"
     ],
     "wide": false,
     "content": "세 상수 $a$, $b$, $c$에 대하여 직선 $ax+by+c=0$이 그림과 같다.<br>다음 중 옳은 것만을 &lt;보기&gt;에서 있는대로 고른 것은? (4.2점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">보기</div>ㄱ. $b(c-a)>0$이다.<br>ㄴ. 직선 $bx-cy-a=0$은 제4사분면을 지나지 않는다.<br>ㄷ. $3a=-7b$인 경우 직선 $ax+by+c=0$은 직선 $y=-\\dfrac{7}{3}x$와 수직이다.</div>",
@@ -488,7 +521,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -523,7 +556,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "원이 되기 위한 조건"
+      "원이 되기 위한 조건",
+      "시각자료"
     ],
     "wide": false,
     "content": "방정식 $x^2+y^2-8x-2ky+2k^2-6k=0$이 나타내는 도형이 원이 되도록 하는 실수 $k$값의 범위에 속하는 정수 중 가장 큰 값을 $M$, 가장 작은 값을 $m$이라 하자. $M-m$의 값은? (4.3점)",
@@ -547,7 +581,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_EQUATION",
     "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
     "crossConceptKeys": [],
@@ -562,7 +596,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "k의 허용 구간과 대표 원",
+    "solutionImageCaption": "−2<k<8에서 반지름 제곱이 양수임을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -581,7 +619,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "대칭이동을 이용한 최단거리"
+      "대칭이동을 이용한 최단거리",
+      "시각자료"
     ],
     "wide": false,
     "content": "두 점 $A(1, 4)$, $B(4, 8)$과 직선 $y=x$ 위의 점 $P$에 대하여 각 점들을 꼭짓점으로 하는 삼각형 $APB$가 있다. 이때, 삼각형 $APB$의 둘레의 길이의 최솟값은? (4.3점)",
@@ -605,7 +644,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -639,7 +678,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "기울기가 주어진 원의 접선"
+      "기울기가 주어진 원의 접선",
+      "시각자료"
     ],
     "wide": false,
     "content": "제4사분면에서 원 $x^2+y^2=20$에 접하고 직선 $2x-y+7=0$에 평행한 직선이 곡선 $y=x^2-2ax+10a$에 접할 때, 양수 $a$의 값은? (4.3점)",
@@ -663,7 +703,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_TANGENT",
     "templateKey": "TM_TANGENT_GIVEN_SLOPE",
     "crossConceptKeys": [
@@ -680,7 +720,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q12-solution.svg"
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "원과 접선 및 포물선 접점",
+    "solutionImageCaption": "원 접점의 반지름 수직 관계와 포물선 접점을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -699,7 +742,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "직선에 대한 대칭이동"
+      "직선에 대한 대칭이동",
+      "시각자료"
     ],
     "wide": false,
     "content": "직선 $\\ell:3x-y-4=0$을 직선 $y=x$에 대하여 대칭이동한 직선을 $\\ell\\prime$이라고 할 때, 두 직선 $\\ell$, $\\ell\\prime$과 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는? (4.3점)",
@@ -723,7 +767,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
     "templateKey": "TT_LINE_REFLECTION_EQUATION",
     "crossConceptKeys": [
@@ -738,7 +782,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q13-solution.svg"
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "y=x에 대한 두 직선의 대칭",
+    "solutionImageCaption": "대칭축과 두 직선, 둘러싸인 영역을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -781,7 +828,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SET_CARDINALITY",
     "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
     "crossConceptKeys": [
@@ -842,7 +889,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SET_CARDINALITY",
     "templateKey": "TPL_OPERATION_CARDINALITY_COMPOSITE",
     "crossConceptKeys": [],
@@ -899,7 +946,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SET_OPERATION",
     "templateKey": "TPL_DIRECT_MIXED_OPERATION",
     "crossConceptKeys": [
@@ -958,7 +1005,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SET_OPERATION_LAW",
     "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
     "crossConceptKeys": [],
@@ -989,7 +1036,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "점의 이동 규칙"
+      "점의 이동 규칙",
+      "시각자료"
     ],
     "wide": false,
     "content": "점 $A_1(1, 1)$과 자연수 $n$에 대하여 점 $A_{n+1}$을 다음 &lt;규칙&gt;에 따라 정한다.<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">규칙</div>점 $A_n(a,b)$에 대하여<br>(가) $a>b$이면 점 $A_{n+1}(a,b)$은 점 $A_n$을 직선 $y=x$에 대하여 대칭이동한 점이다.<br>(나) $a\\le b$이면 점 $A_{n+1}(a,b)$은 점 $A_n$을 $x$축 방향으로 2만큼 평행이동한 점이다.</div><br>이때, $\\overline{A_1A_2}+\\overline{A_2A_3}+\\overline{A_3A_4}+\\cdots+\\overline{A_{19}A_{20}}$의 값을 $a+b\\sqrt{2}$라 할 때, $a-b$의 값은? (5.0점)",
@@ -1013,7 +1061,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_MOVE_COMPOSITE",
     "templateKey": "TT_COMPOSITE_POINT",
     "crossConceptKeys": [],
@@ -1025,7 +1073,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "점 A_n의 반복 이동 경로",
+    "solutionImageCaption": "거리 패턴 2, 2√2, 2가 반복됨을 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1044,7 +1096,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "원 위 점의 기울기 최댓값·최솟값"
+      "원 위 점의 기울기 최댓값·최솟값",
+      "시각자료"
     ],
     "wide": false,
     "content": "두 점 $A(-2, 3)$, $B(4, -5)$에 대하여 점 $C$가 $\\overline{AB}=5\\overline{BC}$를 만족한다. 점 $C$가 그리는 도형의 넓이를 $a\\pi$, 점 $C$ 위의 임의의 한 점 $P(b,c)$에 대하여 $\\dfrac{c}{b}$가 최대일 때의 값을 $M$, 최소일 때의 값을 $m$이라 하자. $a+M+m$의 값은? (5.1점)",
@@ -1068,7 +1121,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -1081,7 +1134,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "review_hold",
     "tagStatus": "item_hold_meta",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q19-solution.svg"
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "원점에서 원에 그은 두 접선",
+    "solutionImageCaption": "두 접선의 기울기가 c/b의 극값을 준다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1100,13 +1156,15 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "수선의 발과 직선의 수직"
+      "수선의 발과 직선의 수직",
+      "서술형",
+      "시각자료"
     ],
     "wide": false,
     "content": "좌표평면 위의 점 $P(6, 3)$에서 직선 $\\ell: ax+by-8=0$ (단, $a$, $b$는 5 이하의 자연수)에 내린 수선의 발을 $H(x_1,y_1)$라 하자. 어떤 실수 $k$ ($k\\ne0$)에 대하여<br>$$x_1-6=3k,\\qquad y_1-3=4k$$<br>가 성립할 때, 다음 물음에 대하여 풀이과정과 함께 답하시오. (총 4점, 부분점수 있음.)<br>1-(1). $a$, $b$의 값을 풀이과정과 함께 각각 구하시오. (2점)<br>1-(2). 실수 $k$의 값을 풀이과정과 함께 구하시오. (2점)",
     "choices": [],
     "answer": "$a=3,\\ b=4,\\ k=-\\dfrac{22}{25}$",
-    "solution": "$\\overrightarrow{PH}=(3k,4k)$는 직선 $\\ell$의 법선방향이다. 따라서 $(a,b)$는 $(3,4)$와 평행하고 $a,b\\le5$인 자연수이므로 $a=3$, $b=4$이다. $H=(6+3k,3+4k)$를 $3x+4y-8=0$에 대입하면 $22+25k=0$, 따라서 $k=-22/25$이다.\\n\\n따라서 $a=3$, $b=4$, $k=-\\dfrac{22}{25}$이다.",
+    "solution": "$k\\\\ne0$이므로 $PH$의 기울기는 $\\\\dfrac{y_1-3}{x_1-6}=\\\\dfrac{4k}{3k}=\\\\dfrac43$이다. $PH$는 직선 $\\\\ell$에 수직이므로 $\\\\ell$의 기울기는 $-\\\\dfrac34$이다. 한편 $\\\\ell:ax+by-8=0$의 기울기는 $-\\\\dfrac ab$이므로 $\\\\dfrac ab=\\\\dfrac34$이다. $a,b$는 5 이하의 자연수이므로 $a=3$, $b=4$이다.\\n\\n이때 $H=(6+3k,3+4k)$이고 $H$는 $3x+4y-8=0$ 위에 있으므로\\n$3(6+3k)+4(3+4k)-8=0$.\\n따라서 $22+25k=0$에서 $k=-\\\\dfrac{22}{25}$이다.\\n\\n따라서 $a=3$, $b=4$, $k=-\\\\dfrac{22}{25}$이다.",
     "sourceQuestionNo": "서논술형1",
     "displayNo": "서논술형1",
     "sourceOrdinal": 20,
@@ -1118,7 +1176,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
     "crossConceptKeys": [
@@ -1136,7 +1194,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "STRONG_CONFLICT",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "점 P와 수선의 발 H",
+    "solutionImageCaption": "PH와 직선 l의 수직 관계를 확인한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1155,7 +1217,8 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "조건을 만족하는 부분집합의 개수"
+      "조건을 만족하는 부분집합의 개수",
+      "서술형"
     ],
     "wide": false,
     "content": "전체집합 $U=\\{x\\mid x는 17 이하의 자연수\\}$의 부분집합 $P=\\{x\\mid x는 17 이하의 소수\\}$에 대하여 다음 &lt;조건&gt;을 만족시키는 $U$의 부분집합 $X$의 개수를 풀이과정과 함께 구하시오. (8점, 부분점수 있음.)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">조건</div>(가) $n(X-P)\\times n((P-X)^C)=12$<br>(나) 집합 $X$의 모든 원소들의 곱이 $M$일 때, $M$의 소인수의 개수는 2개뿐이다.</div>",
@@ -1173,7 +1236,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_SUBSET_COUNT",
     "templateKey": null,
     "crossConceptKeys": [
@@ -1209,7 +1272,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [
       "기출",
-      "집합 조건과 원·직선의 위치 관계"
+      "집합 조건과 원·직선의 위치 관계",
+      "서술형",
+      "시각자료"
     ],
     "wide": false,
     "content": "전체집합 $U=\\{(x,y)\\mid x,y는 실수\\}$의 세 부분집합 $A$, $B$, $C$가 다음과 같다.<br>$$A=\\{(x,y)\\mid x^2+y^2=10\\},\\qquad B=\\{(x,y)\\mid kx+y-5k=0\\},\\qquad C=\\{(x,\\sqrt{6})\\mid x는 실수\\}$$<br>$(A\\cup C)\\cap(B\\cup C)=(A\\cap A^C)^C\\cap C$를 만족하도록 하는 모든 $k$값의 범위를 풀이과정과 함께 구하시오. (8점, 부분점수 있음.)",
@@ -1227,7 +1292,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_FULL_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
     "crossConceptKeys": [],
@@ -1240,6 +1305,9 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q22-solution.svg"
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "원과 두 경계 접선 및 C",
+    "solutionImageCaption": "양의 경계 접점만 C 위에 있음을 확인한다.",
+    "solutionImageSize": "full"
   }
 ];
