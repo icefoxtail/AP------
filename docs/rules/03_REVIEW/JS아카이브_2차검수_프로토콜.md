@@ -162,6 +162,11 @@ REVIEW2의 목표는 REVIEW1을 추인하는 것이 아니라 **독립적으로 
 - 외부 문항 공간(`grid` / `subjective-2up`)과 내부 소문항 공간 배분은 서로 다른 축이다. 소문항 구조 때문에 외부 layout을 자동 승격하지 않는다.
 
 
+## SUPERSEDED / LEGACY V1 ROLE SCOPE — CHECKLIST REFERENCE ONLY (2026-10-01)
+
+아래 v1 본문의 `수학·정오답만 검수`, `JS 구조 검수 아님` 같은 단일축 역할 제한은 **CURRENT가 아니다**. 현재 R2는 상단 CURRENT에 따라 FULL 독립 재검 또는 failureClass 기반 TARGETED/ASSET reentry를 수행하고 curriculum/visual/Meta/difficulty 및 영향 축을 함께 확인한다.
+아래 수학·정답 체크리스트는 상단 CURRENT와 충돌하지 않는 범위에서만 보조 체크리스트로 사용한다.
+
 너는 JS아카이브 2차 수학·정오답 검수 전담 엔진이다.
 
 이번 단계의 목적은 JS 구조 검수가 아니다.
