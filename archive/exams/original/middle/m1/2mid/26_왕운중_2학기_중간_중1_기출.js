@@ -93,7 +93,7 @@ window.questionBank = [
       "삼각형 성립"
     ],
     "wide": false,
-    "content": "다음은 학생들이 작도에 대해 토론한 내용이다. 잘못 이야기한 사람을 모두 고르면? (정답 2개)",
+    "content": "다음은 학생들이 작도에 대해 토론한 내용이다. 잘못 이야기한 사람을 모두 고르면? (정답 2개) (4점)",
     "choices": [
       "훈이: 작도에서 컴퍼스로 선분의 길이를 재어 옮길 수 있어.",
       "짱구: 길이를 잴 때 눈금 없는 자도 이용하잖아!",
@@ -295,7 +295,7 @@ window.questionBank = [
       "삼각형 결정"
     ],
     "wide": false,
-    "content": "한 변의 길이가 $6\\mathrm{cm}$이고 그 양 끝 각이 아닌 두 각의 크기가 $40^\\circ$, $75^\\circ$인 삼각형을 아래와 같이 그릴 수 있다. 이에 대한 설명으로 옳은 것을 있는 대로 고른 것은?<br><div class=\"note-box\">ㄱ. 나머지 한 각의 크기를 알 수 있으므로 삼각형은 하나로 정해진다.<br>ㄴ. 제시된 삼각형과 다른 모양의 삼각형을 그릴 수 있다.<br>ㄷ. 나머지 한 각의 크기는 $75^\\circ$이다.<br>ㄹ. 제시된 삼각형은 이등변삼각형이다.</div>",
+    "content": "한 변의 길이가 $6\\mathrm{cm}$이고 그 양 끝 각이 아닌 두 각의 크기가 $40^\\circ$, $75^\\circ$인 삼각형을 아래와 같이 그릴 수 있다. 이에 대한 설명으로 옳은 것을 있는 대로 고른 것은? (4점)<br><div class=\"note-box\">ㄱ. 나머지 한 각의 크기를 알 수 있으므로 삼각형은 하나로 정해진다.<br>ㄴ. 제시된 삼각형과 다른 모양의 삼각형을 그릴 수 있다.<br>ㄷ. 나머지 한 각의 크기는 $75^\\circ$이다.<br>ㄹ. 제시된 삼각형은 이등변삼각형이다.</div>",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -436,7 +436,7 @@ window.questionBank = [
       "넓이"
     ],
     "wide": false,
-    "content": "정비례 관계 $y=ax\\ (a>0)$ 그래프와 반비례 관계 $y=\\dfrac{b}{x}\\ (b>0)$인 두 그래프에 대한 설명으로 옳은 것은?",
+    "content": "정비례 관계 $y=ax\\ (a>0)$ 그래프와 반비례 관계 $y=\\dfrac{b}{x}\\ (b>0)$인 두 그래프에 대한 설명으로 옳은 것은? (4점)",
     "choices": [
       "두 그래프는 모두 원점 $(0,0)$을 지난다.",
       "$a$의 값이 커질수록 정비례 그래프는 $x$축에 더 가까워진다.",
@@ -508,7 +508,7 @@ window.questionBank = [
       "사분면"
     ],
     "wide": false,
-    "content": "$y$가 $x$에 반비례하고, $x=-4$일 때, $y=20$이다. 다음 &lt;보기&gt; 중 옳은 것은 모두 몇 개인가?<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $x$의 값이 2배가 되면 $y$의 값도 2배가 된다.<br>ㄴ. $x$와 $y$ 사이의 관계식은 $y=-8x$이다.<br>ㄷ. $x=4$일 때, $y=-2$이다.<br>ㄹ. 반비례 그래프는 제2사분면과 제4사분면을 지난다.</div>",
+    "content": "$y$가 $x$에 반비례하고, $x=-4$일 때, $y=20$이다. 다음 &lt;보기&gt; 중 옳은 것은 모두 몇 개인가? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $x$의 값이 2배가 되면 $y$의 값도 2배가 된다.<br>ㄴ. $x$와 $y$ 사이의 관계식은 $y=-8x$이다.<br>ㄷ. $x=4$일 때, $y=-2$이다.<br>ㄹ. 반비례 그래프는 제2사분면과 제4사분면을 지난다.</div>",
     "choices": [
       "0개",
       "1개",
@@ -578,7 +578,7 @@ window.questionBank = [
       "각의 크기"
     ],
     "wide": false,
-    "content": "다음 그림에서 $m\\parallel n$일 때, $\\angle b-\\angle a$의 크기는?",
+    "content": "다음 그림에서 $m\\parallel n$일 때, $\\angle b-\\angle a$의 크기는? (4점)",
     "choices": [
       "$0^\\circ$",
       "$10^\\circ$",
@@ -649,7 +649,7 @@ window.questionBank = [
       "기계"
     ],
     "wide": false,
-    "content": "어떤 작업을 똑같은 기계 24대로 작업하면 20시간 만에 끝낼 수 있다고 한다. 이 작업을 똑같은 기계 24대로 시작하여 5시간 동안 작업한 후, 남은 일을 10시간 만에 모두 끝내기 위해 똑같은 기계를 추가로 더 투입하였다. 추가로 더 투입한 기계는 몇 대인가?",
+    "content": "어떤 작업을 똑같은 기계 24대로 작업하면 20시간 만에 끝낼 수 있다고 한다. 이 작업을 똑같은 기계 24대로 시작하여 5시간 동안 작업한 후, 남은 일을 10시간 만에 모두 끝내기 위해 똑같은 기계를 추가로 더 투입하였다. 추가로 더 투입한 기계는 몇 대인가? (4점)",
     "choices": [
       "12대",
       "14대",
@@ -789,7 +789,7 @@ window.questionBank = [
       "맞꼭지각"
     ],
     "wide": false,
-    "content": "다음 그림에서 $l\\parallel m$이고 점 $O$는 $\\overline{AB}$와 $\\overline{CD}$의 교점이다. $\\triangle AOC\\equiv\\triangle BOD$이 되도록 하는 조건을 고르면?",
+    "content": "다음 그림에서 $l\\parallel m$이고 점 $O$는 $\\overline{AB}$와 $\\overline{CD}$의 교점이다. $\\triangle AOC\\equiv\\triangle BOD$이 되도록 하는 조건을 고르면? (4점)",
     "choices": [
       "$\\overline{AO}=\\overline{DO}$",
       "$\\overline{BO}=\\overline{CO}$",
@@ -862,7 +862,7 @@ window.questionBank = [
       "꺾은선"
     ],
     "wide": false,
-    "content": "다음 그림에서 두 직선 $l$과 $m$이 평행할 때, $\\angle x$의 값은?",
+    "content": "다음 그림에서 두 직선 $l$과 $m$이 평행할 때, $\\angle x$의 값은? (5점)",
     "choices": [
       "$90^\\circ$",
       "$100^\\circ$",
@@ -1005,7 +1005,7 @@ window.questionBank = [
       "각의 위치"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 한 평면 위에서 두 직선 $l$, $m$이 한 직선 $n$과 만날 때, $\\angle d$와 엇각인 각의 크기는?",
+    "content": "다음 그림과 같이 한 평면 위에서 두 직선 $l$, $m$이 한 직선 $n$과 만날 때, $\\angle d$와 엇각인 각의 크기는? (4점)",
     "choices": [
       "$75^\\circ$",
       "$80^\\circ$",
@@ -1079,7 +1079,7 @@ window.questionBank = [
       "수직이등분선"
     ],
     "wide": false,
-    "content": "다음 중 항상 옳은 문장을 말한 사람의 수는?<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>원희: 평각이라 함은 각의 크기가 90도인 각이야.<br>리나: 서로 마주 보는 두 각은 항상 크기가 같아.<br>미나: 서로 만나지 않는 두 직선은 평행이라 할 수 있지?<br>제다: 직선 $l$이 선분 $AB$의 중점 $M$을 지날 때, 직선 $l$이 선분 $AB$의 수직이등분선이라 함은 $l\\perp\\overline{AB}$, $\\overline{AM}=\\overline{MB}$로 나타낼 수 있어.<br>메이: 동위각의 크기는 언제나 같지.</div>",
+    "content": "다음 중 항상 옳은 문장을 말한 사람의 수는? (4점)<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>원희: 평각이라 함은 각의 크기가 90도인 각이야.<br>리나: 서로 마주 보는 두 각은 항상 크기가 같아.<br>미나: 서로 만나지 않는 두 직선은 평행이라 할 수 있지?<br>제다: 직선 $l$이 선분 $AB$의 중점 $M$을 지날 때, 직선 $l$이 선분 $AB$의 수직이등분선이라 함은 $l\\perp\\overline{AB}$, $\\overline{AM}=\\overline{MB}$로 나타낼 수 있어.<br>메이: 동위각의 크기는 언제나 같지.</div>",
     "choices": [
       "1명",
       "2명",
@@ -1147,7 +1147,7 @@ window.questionBank = [
       "자료 정렬"
     ],
     "wide": false,
-    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.)",
+    "content": "다음은 자연수인 변량들을 작은 값부터 크기순으로 나열한 것이다. 최빈값이 $x$로 유일할 때, 중앙값은? (단, $x\\ne y$이다.) (4점)",
     "choices": [
       "10",
       "9.5",
@@ -1217,7 +1217,7 @@ window.questionBank = [
       "도수"
     ],
     "wide": false,
-    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면?",
+    "content": "다음 표는 어느 중학교 32명의 학생들이 한 달 동안 읽은 책의 수를 조사하여 나타낸 것이다. 이에 대한 설명으로 옳은 것을 고르면? (4점)",
     "choices": [
       "최빈값은 10명이다.",
       "중앙값은 3권이다.",
@@ -1359,7 +1359,7 @@ window.questionBank = [
       "상대도수"
     ],
     "wide": false,
-    "content": "위 자료에 대한 설명으로 옳지 않은 것은?",
+    "content": "위 자료에 대한 설명으로 옳지 않은 것은? (4점)",
     "choices": [
       "계급의 크기는 5시간이다.",
       "도수가 가장 높은 계급은 0시간 이상 5시간 미만이다.",
