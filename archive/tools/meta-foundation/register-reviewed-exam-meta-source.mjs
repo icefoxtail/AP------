@@ -161,6 +161,7 @@ for (const item of runtimeFiles) for (const row of item.data.records||[]) {
   runtimeOwnerByUid.set(row.questionUid,item.data.packId);
 }
 const groupLabels = {
+  "H22-C-05": { L1:"방정식과 부등식", L2:"이차방정식과 이차함수" },
   "H22-C2-01": { L1:"도형의 방정식", L2:"평면좌표" },
   "H22-C2-02": { L1:"도형의 방정식", L2:"직선의 방정식" },
   "H22-C2-03": { L1:"도형의 방정식", L2:"원의 방정식" },
