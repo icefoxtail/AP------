@@ -8,7 +8,7 @@ excluded: `MANIFEST.md`, design plans, legacy snapshots, drafts, and historical 
 The hashes below are recomputed from the current working tree. A source-pack or review-pack gate must fail closed if a listed file is missing or its byte count/hash differs.
 
 ## files
-- 00_RULES_INDEX.md | 64429 bytes | sha256 734c8111aa8a7323a98e1c333ae3456fed722674c48d8cda5f715f59b0ddfac8
+- 00_RULES_INDEX.md | 64506 bytes | sha256 f0ebc2bb0bbb62094674684c847138d106ebe245169d0eafa9c7d507542eff2c
 - 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 9327 bytes | sha256 141219a22fcea540b31215384dfb5d35ada177e099bfbd26d7f01eb42002999e
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11027 bytes | sha256 db8a8119c12bffac5331d7864b7aa136514bc97736becc45f5f1caa0e9c18463
