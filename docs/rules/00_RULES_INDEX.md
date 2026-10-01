@@ -287,14 +287,15 @@ ROUTINE_EXAM_VISUAL 최소 기준:
 2. `02_PIPELINES/수정프로토콜.md`
 3. `02_PIPELINES/작업방식_적응형배치루프_v1.md` (현재 배치 크기·UID 중복·revision·canonical 판정 기준)
 4. `02_PIPELINES/작업방식_5문항배치루프_필수.md` (legacy compatibility reference; 고위험 문항의 3~5문항 축소 루프에만 참조)
-5. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
-6. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
-7. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
-8. `03_REVIEW/무결성검수.md`
-9. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 제작·수치·style·publication)
-10. 기하 문항이면 `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (visual necessity·pedagogy·semantic independent review)
-11. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
-12. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
+5. `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md` (CREATE/R1/R2/R3 공통 PASS 증거 gate)
+6. `03_REVIEW/JS아카이브_1차검수_프로토콜.md`
+7. `03_REVIEW/JS아카이브_2차검수_프로토콜.md`
+8. `03_REVIEW/JS아카이브_3차검수_프로토콜.md`
+9. `03_REVIEW/무결성검수.md`
+10. `04_VISUAL/도형추출.md` v3.0 (도형·그래프 제작·수치·style·publication)
+11. 기하 문항이면 `04_VISUAL/기하_시각자료_해설_독립검수_통합운영규정_v1.1_QUALIFICATION_READY.md` (visual necessity·pedagogy·semantic independent review)
+12. `04_VISUAL/AP_MATH_OS_집합_명제_논리시각자료_Semantic_Overlay_v1.4_QUALIFICATION_READY.md` (집합·명제 Logic Visual qualification 전용 candidate overlay)
+13. `04_VISUAL/도형의방정식_해설_SVG_독립검수_운영규정_v1.1.md` (v1.2 최소 SVG 좌표 parity 보강 부록 포함, 해당 시)
 
 ## 2. 디렉터리별 역할
 
