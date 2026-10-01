@@ -1,4 +1,11 @@
 ## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
+## CURRENT — 2026-10-01 — GRADE-BOUNDED REVIEW / UPPER-GRADE FAIL-HOLD FORBIDDEN
+- CREATE/R1/R2/R3/repair/retry의 **정답·해설·PASS/FAIL/HOLD 판정은 대상 학년 교육과정 상한선 안에서** 수행한다.
+- 하위 학년에서 아직 배우지 않은 상위 학년/후속과정 방법(예: 중2 문항에 삼각비·코사인, 중3 문항에 고등 벡터/정사영)을 사용해 추가 모순·반례를 만들고 그 결과로 `SOURCE_CONDITION_INCONSISTENCY`, `ANSWER_UNIQUENESS_UNRESOLVED`, ITEM_HOLD 또는 R3 FAIL을 생성하는 행위를 금지한다.
+- 대상 학년의 허용 방법으로 source/조건에서 정답이 유일하게 결정되면 그 grade-bounded semantics에서 PASS한다. 상위 과정 검산은 내부 참고로도 release verdict를 뒤집는 근거가 될 수 없다.
+- lower-grade prerequisite reuse는 기존 규칙대로 허용하되 방향은 lower-only다.
+- 회귀 사례: `26_왕운중_2학기_중간_중2_기출` q5는 RHS 합동 → ∠B=∠C → AB=AC=AF+FC=8로 정답 ②가 닫힌다. R2/R3의 cos50 검산 기반 q5 HOLD는 `FALSE_HOLD_CURRICULUM_VIOLATION`으로 폐기한다.
+
 
 CREATE/R1/R2/R3뿐 아니라 repair/recovery/visual repair/independent recheck/FLEX rescue가 학생 노출 JS 품질을 만들거나 판정하면, **target artifact를 열거나 수정하기 전에** `02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md`의 Golden 2~3 + 관련 Negative Sample을 실제 판독한다. 공용 preflight는 `archive/tools/solution-calibration-gate.mjs --preflight`다.
 
