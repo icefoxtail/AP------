@@ -66,7 +66,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q001_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q001_visual.png"
   },
   {
     "id": 2,
@@ -132,7 +132,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q002_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q002_visual.png"
   },
   {
     "id": 3,
@@ -198,7 +198,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q003_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q003_visual.png"
   },
   {
     "id": 4,
@@ -266,7 +266,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q004_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q004_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q4-solution.svg"
   },
   {
@@ -333,7 +333,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_r2_adjudicated",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q05.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q005_visual.png"
   },
   {
     "id": 6,
@@ -399,7 +399,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q006_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q006_visual.png"
   },
   {
     "id": 7,
@@ -465,7 +465,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q007"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q007_visual.png"
   },
   {
     "id": 8,
@@ -531,7 +531,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q008"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q008_visual.png"
   },
   {
     "id": 9,
@@ -597,7 +597,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q009"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q009_visual.png"
   },
   {
     "id": 10,
@@ -665,7 +665,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q010",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q010_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q10-solution.svg"
   },
   {
@@ -732,7 +732,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q011"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q011_visual.png"
   },
   {
     "id": 12,
@@ -932,7 +932,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q014"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q014_visual.png"
   },
   {
     "id": 15,
@@ -1064,7 +1064,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q016"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q016_visual.png"
   },
   {
     "id": 17,
@@ -1130,7 +1130,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q017"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q017_visual.png"
   },
   {
     "id": 18,
@@ -1196,7 +1196,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q018"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q018_visual.png"
   },
   {
     "id": 19,
@@ -1262,7 +1262,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q019"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q019_visual.png"
   },
   {
     "id": 20,
@@ -1328,7 +1328,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q020"
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q020_visual.png"
   },
   {
     "id": 21,
@@ -1390,7 +1390,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q021",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q021_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q21-solution.svg"
   },
   {
@@ -1453,7 +1453,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q022",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q022_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q22-solution.svg"
   },
   {
@@ -1514,7 +1514,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q023",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q023_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q23-solution.svg"
   },
   {
@@ -1577,7 +1577,7 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_create",
-    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/source-visuals-sprite.svg#q024",
+    "image": "assets/images/26_왕운중_2학기_중간_중2_기출/q024_visual.png",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중2_기출/q24-solution.svg"
   }
 ];
