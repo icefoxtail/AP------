@@ -32,7 +32,7 @@ window.questionBank = [
       "8",
       "11"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -119,7 +119,7 @@ window.questionBank = [
       "2",
       "4"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -206,7 +206,7 @@ window.questionBank = [
       "20",
       "25"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -293,7 +293,7 @@ window.questionBank = [
       "3",
       "5"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -380,7 +380,7 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -467,7 +467,7 @@ window.questionBank = [
       "9",
       "10"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -554,7 +554,7 @@ window.questionBank = [
       "45",
       "54"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -641,7 +641,7 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -728,7 +728,7 @@ window.questionBank = [
       "4",
       "5"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q009_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q009_visual.png",
@@ -853,7 +853,7 @@ window.questionBank = [
       "240",
       "360"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -940,7 +940,7 @@ window.questionBank = [
       "8",
       "9"
     ],
-    "answer": "",
+    "answer": "①",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1027,7 +1027,7 @@ window.questionBank = [
       "1",
       "3"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1114,7 +1114,7 @@ window.questionBank = [
       "3",
       "5"
     ],
-    "answer": "",
+    "answer": "⑤",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1201,7 +1201,7 @@ window.questionBank = [
       "20",
       "25"
     ],
-    "answer": "",
+    "answer": "④",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1289,7 +1289,7 @@ window.questionBank = [
       "$\\dfrac92$",
       "8"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q015_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q015_visual.png",
@@ -1414,7 +1414,7 @@ window.questionBank = [
       "$\\dfrac12$",
       "2"
     ],
-    "answer": "",
+    "answer": "③",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1501,7 +1501,7 @@ window.questionBank = [
       "36",
       "49"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1588,7 +1588,7 @@ window.questionBank = [
       "1",
       "2"
     ],
-    "answer": "",
+    "answer": "①",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1675,7 +1675,7 @@ window.questionBank = [
       "2",
       "3"
     ],
-    "answer": "",
+    "answer": "①",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -1763,7 +1763,7 @@ window.questionBank = [
       "3",
       "4"
     ],
-    "answer": "",
+    "answer": "②",
     "solution": "",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q020_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q020_visual.png",
@@ -1882,7 +1882,7 @@ window.questionBank = [
     "wide": false,
     "content": "무리함수 $f(x)=-\\sqrt{2x+a}+b$의 그래프가 다음 그림과 같을 때, 다음을 구하시오. [6점]\n(1) 상수 $a,b$의 값을 각각 구하시오. [2점]\n(2) 무리함수 $f$의 역함수를 $g$라 할 때, 함수 $y=f(x)$와 함수 $y=g(x)$의 만나는 점의 좌표가 $(p,q)$이다. $p+q$의 값을 풀이과정과 함께 서술하시오. [4점]",
     "choices": [],
-    "answer": "",
+    "answer": "a=2, b=2; p+q=6−2√7",
     "solution": "",
     "image": "assets/images/20_순천여고_2학기_기말_고1_기출/q021_visual.png",
     "visualAsset": "assets/images/20_순천여고_2학기_기말_고1_기출/q021_visual.png",
@@ -2002,7 +2002,7 @@ window.questionBank = [
     "wide": false,
     "content": "최고차항의 계수가 양수인 이차함수 $f(x)$에 대하여 함수 $g(x)$를 다음과 같이 정의하자.\n$g(x)=\\begin{cases}x-4&(x<-1)\\\\f(x)&(-1\\le x\\le2)\\\\x+2&(x>2)\\end{cases}$\n함수 $g(x)$의 치역이 실수 전체의 집합이고, 함수 $g(x)$의 역함수가 존재할 때, $g(0)=-1$, $g(-1)=4$를 만족하는 $f(x)$를 풀이과정과 함께 서술하시오. [7점]",
     "choices": [],
-    "answer": "",
+    "answer": "x^2-4x-1",
     "solution": "",
     "image": "",
     "visualAsset": "",
@@ -2083,7 +2083,7 @@ window.questionBank = [
     "wide": false,
     "content": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 $f=f^{-1}$을 만족하는 함수 $f:X\\to X$의 개수를 풀이과정과 함께 서술하시오. [7점]",
     "choices": [],
-    "answer": "",
+    "answer": "26",
     "solution": "",
     "image": "",
     "visualAsset": "",
