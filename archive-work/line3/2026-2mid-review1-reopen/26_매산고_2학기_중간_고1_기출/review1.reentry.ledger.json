@@ -1,7 +1,7 @@
 {
   "schemaVersion": "JS_ARCHIVE_R1_REOPEN_LEDGER_v1",
   "generation": "2026_2MID_TEMP_LINE3",
-  "stage": "REVIEW1_REOPEN_DONE_WITH_ITEM_HOLDS",
+  "stage": "REVIEW1_REOPEN_DONE",
   "reentryFrom": "R3_FAIL",
   "examId": "26_매산고_2학기_중간_고1_기출",
   "inputR3ArtifactSha": "7401a9cd568589637b529131ed56a2b125767302",
@@ -19,7 +19,7 @@
     20,
     21
   ],
-  "r1OutputArtifactSha": "5c4be7cb73134199858d55bb549faab3b839f410",
+  "r1OutputArtifactSha": "01bff3fd0ac028e527680b311c0faa4771ecfe0e",
   "r1RepairQids": [
     3,
     5,
@@ -573,6 +573,25 @@
       ],
       "type": "SOLUTION_VISUAL_ADD",
       "detail": "added nine Python-verified solution SVGs after full visual-necessity audit"
+    },
+    {
+      "qid": 1,
+      "type": "META_FILL",
+      "detail": "filled exact ACTIVE canonical PT_SET_DEFINITION / TPL_SET_IDENTIFY; 2022 H22-C2-05-CORE binding ACTIVE; RPM crosswalk compatibility gap retained as non-blocking evidence"
+    },
+    {
+      "qid": 21,
+      "type": "META_FILL",
+      "detail": "filled exact ACTIVE canonical PT_CIRCLE_EQUATION / TM_CIRCLE_INSCRIBED_ANGLE_CENTER; 2022 H22-C2-03-CIRCLE_EQUATION binding ACTIVE"
+    },
+    {
+      "qids": [
+        12,
+        15,
+        18
+      ],
+      "type": "PROBLEM_ASSET_REPAIR",
+      "detail": "replaced clipped/contaminated raster crops with deterministic source-faithful SVG reconstructions; no generative image model used"
     }
   ],
   "newlyDiscoveredDuringReaudit": [
@@ -768,46 +787,9 @@
     "sourceIdentityKey": "UNCHANGED_21_21",
     "sourceDocumentSha256": "UNCHANGED_21_21"
   },
-  "itemHolds": [
-    {
-      "qid": 1,
-      "reason": "META_CANONICAL_HOLD_NO_EXACT_RPM_L4_FOR_SETNESS_JUDGMENT"
-    },
-    {
-      "qid": 12,
-      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_LABEL_EDGE_CLIP"
-    },
-    {
-      "qid": 15,
-      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_LABEL_EDGE_CLIP"
-    },
-    {
-      "qid": 18,
-      "reason": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL_NEIGHBOR_HANDWRITING_INTRUSION"
-    },
-    {
-      "qid": 21,
-      "reason": "META_CANONICAL_HOLD_NO_EXACT_RPM_L4_FOR_INSCRIBED_ANGLE_CIRCLE_CENTER_LOCUS"
-    }
-  ],
-  "itemHoldCount": 5,
-  "unresolvedR3Codes": [
-    {
-      "code": "META_CANONICAL_HOLD",
-      "qids": [
-        1,
-        21
-      ]
-    },
-    {
-      "code": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL",
-      "qids": [
-        12,
-        15,
-        18
-      ]
-    }
-  ],
+  "itemHolds": [],
+  "itemHoldCount": 0,
+  "unresolvedR3Codes": [],
   "closedR3Codes": [
     {
       "code": "CURRICULUM_FAIL",
@@ -836,9 +818,66 @@
       "qids": [
         20
       ]
+    },
+    {
+      "code": "META_CANONICAL_HOLD",
+      "qids": [
+        1,
+        21
+      ],
+      "resolution": "CLOSED_BY_EXACT_ACTIVE_CANONICAL_FILL"
+    },
+    {
+      "code": "PROBLEM_IMAGE_CROP_PUBLICATION_FAIL",
+      "qids": [
+        12,
+        15,
+        18
+      ],
+      "resolution": "CLOSED_BY_DETERMINISTIC_SOURCE_FAITHFUL_SVG_RECONSTRUCTION"
     }
   ],
-  "nextOwner": "R2_REOPEN",
+  "nextOwner": "R2_TARGETED_INDEPENDENT_RECHECK",
   "mainMutation": false,
-  "sourceMutation": false
+  "sourceMutation": false,
+  "failureClass": "TARGETED_R1_R2",
+  "semanticMetaFinalCount": "21/21",
+  "metadataAuditCount": "21/21",
+  "metaFillEvidence": {
+    "q1": {
+      "problemTypeKey": "PT_SET_DEFINITION",
+      "templateKey": "TPL_SET_IDENTIFY",
+      "taxonomyStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-05",
+        "subUnitKey": "H22-C2-05-CORE",
+        "status": "ACTIVE"
+      },
+      "rpmCompatibility": "H1-RPM-231 remains RPM_ONLY/non-exact; exact ACTIVE canonical semantic mapping used per current user-directed target completion"
+    },
+    "q21": {
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_INSCRIBED_ANGLE_CENTER",
+      "taxonomyStatus": "ACTIVE",
+      "binding": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2",
+        "standardUnitKey": "H22-C2-03",
+        "subUnitKey": "H22-C2-03-CIRCLE_EQUATION",
+        "status": "ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_INSCRIBED_ANGLE",
+        "CC_PERPENDICULAR_BISECTOR"
+      ]
+    }
+  },
+  "problemAssetRepairCount": "3/3",
+  "problemAssetRepairQids": [
+    12,
+    15,
+    18
+  ]
 }
