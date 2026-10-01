@@ -189,7 +189,11 @@ function checkMetaRows(questions, evidence, issues) {
     if (nonEmpty(q.problemTypeKey) && row.problemTypeKey && row.problemTypeKey !== q.problemTypeKey) issues.push(`META_PT_EVIDENCE_MISMATCH:q${q.id}`);
     if (nonEmpty(q.templateKey) && row.templateKey && row.templateKey !== q.templateKey) issues.push(`META_TPL_EVIDENCE_MISMATCH:q${q.id}`);
   }
-  return rows.length;
+  const heldQids = rows.filter(row => row?.result === HOLD)
+    .map(row => Number(row?.qid))
+    .filter(Number.isInteger)
+    .sort((a, b) => a - b);
+  return { rowCount: rows.length, heldQids };
 }
 
 function checkIndependence(stage, evidence, issues) {
@@ -225,10 +229,10 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
 
   const questionEvidence = checkQuestionRows(questions, evidence, issues);
   const visual = checkVisualRows(examFile, questions, evidence, issues);
-  const metaRows = checkMetaRows(questions, evidence, issues);
+  const metaEvidence = checkMetaRows(questions, evidence, issues);
   checkIndependence(stage, evidence, issues);
 
-  const heldQids = questionEvidence.heldQids;
+  const heldQids = [...new Set([...questionEvidence.heldQids, ...metaEvidence.heldQids])].sort((a, b) => a - b);
   if (stage === 'R3' && heldQids.length) issues.push(`R3_ITEM_HOLD_FORBIDDEN:${heldQids.join(',')}`);
 
   const derived = {
@@ -236,7 +240,7 @@ export function validatePhysicalEvidence({ examFile, evidenceFile, stage }) {
     questionEvidenceRows: questionEvidence.rowCount,
     linkedSolutionVisualCount: visual.expected,
     visualEvidenceRows: visual.actual,
-    metaEvidenceRows: metaRows,
+    metaEvidenceRows: metaEvidence.rowCount,
     itemHoldCount: heldQids.length,
   };
   checkSummary(evidence, derived, issues);
