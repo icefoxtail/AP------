@@ -1,19 +1,19 @@
 # Archive 2.0 Canonical Namespace Impact — 20261001
 
-- Generated: 2026-10-01T02:39:59.773Z
-- Projection: `archive2-canonical-v1:7574c5510640d4a5398311f9d234bc3b8d558e8e0d82c8e653da2bec849ce2bd`
+- Generated: 2026-10-01T05:10:40.205Z
+- Projection: `archive2-canonical-v1:48049f68a5981519d51ea9d0191ec33654157c0671623fb66408a9bba265541e`
 - Taxonomy: `8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b`
 
 ## UID totals
 
 | Stage | Unique UID count |
 | --- | ---: |
-| Parsed raw source questions | 11507 |
-| Built catalog | 11507 |
-| Final shared projection | 11507 |
-| BASIC selectable | 1920 |
+| Parsed raw source questions | 11550 |
+| Built catalog | 11550 |
+| Final shared projection | 11550 |
+| BASIC selectable | 1929 |
 | ADVANCED selectable | 1 |
-| BASIC exclusions | 9587 |
+| BASIC exclusions | 9621 |
 
 The source population is keyed by unique `questionUid`. Unique UID counts per reason; one UID may appear in several reasons. Mutually exclusive; order is grade, identity, source integrity, approved release fingerprint, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.
 
@@ -21,7 +21,7 @@ The source population is keyed by unique `questionUid`. Unique UID counts per re
 
 | Grade | Unique source UIDs |
 | --- | ---: |
-| 고1 | 3302 |
+| 고1 | 3345 |
 | 고2 | 2416 |
 | 중1 | 1943 |
 | 중2 | 1764 |
@@ -35,7 +35,7 @@ The source population is keyed by unique `questionUid`. Unique UID counts per re
 | 고1 \| 2015 \| 수학(상) | 14 |
 | 고1 \| 2015 \| 수학(하) | 155 |
 | 고1 \| 2022 \| 공통수학1 | 67 |
-| 고1 \| 2022 \| 공통수학2 | 4 |
+| 고1 \| 2022 \| 공통수학2 | 13 |
 | 고2 \| 2015 \| 수학I | 89 |
 | 고2 \| 2015 \| 수학II | 103 |
 | 고2 \| 2015 \| 확률과통계 | 105 |
@@ -65,7 +65,7 @@ These catalog hints are retained for audit and do not create selectable scopes.
 | 고1 \| 2015 \| 수학(하) | 762 |
 | 고1 \| 2022 \| 공통수학 | 33 |
 | 고1 \| 2022 \| 공통수학1 | 621 |
-| 고1 \| 2022 \| 공통수학2 | 260 |
+| 고1 \| 2022 \| 공통수학2 | 294 |
 | 고2 \|  \| 공통수학1 | 3 |
 | 고2 \|  \| 공통수학2 | 3 |
 | 고2 \|  \| 기하 | 63 |
@@ -98,8 +98,8 @@ These catalog hints are retained for audit and do not create selectable scopes.
 
 | Stage | UID count |
 | --- | ---: |
-| catalog_builder_assignment_evidence | 1919 |
-| catalog_builder_unverified_hint | 9586 |
+| catalog_builder_assignment_evidence | 1928 |
+| catalog_builder_unverified_hint | 9620 |
 | reviewed_runtime_item_override | 2 |
 
 ## Exclusion reasons
@@ -108,9 +108,9 @@ Overlapping reason counts:
 
 | Reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 9586 |
-| canonical_parent | 9586 |
-| course_namespace | 9586 |
+| assignment_evidence | 9620 |
+| canonical_parent | 9620 |
+| course_namespace | 9620 |
 | review_hold | 446 |
 | scope_policy | 28 |
 | semantic_or_metadata_hold | 216 |
@@ -122,7 +122,7 @@ Mutually exclusive primary reasons:
 
 | Primary reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 6911 |
+| assignment_evidence | 6945 |
 | review_hold | 250 |
 | scope_policy | 1 |
 | semantic_or_metadata_hold | 138 |
@@ -130,14 +130,14 @@ Mutually exclusive primary reasons:
 | source_quality_hold | 27 |
 | source_release | 2086 |
 
-Primary-reason total: 9587 of 9587 excluded UIDs.
+Primary-reason total: 9621 of 9621 excluded UIDs.
 
 ## Input integrity
 
 | Input check | Count |
 | --- | ---: |
-| Source files | 480 |
-| Parsed source questions | 11507 |
+| Source files | 482 |
+| Parsed source questions | 11550 |
 | Source digest failures | 0 |
 | Raw question hash mismatches | 0 |
 | Unregistered raw questions | 0 |
