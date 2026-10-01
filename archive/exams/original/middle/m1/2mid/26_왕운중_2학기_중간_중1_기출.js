@@ -124,10 +124,10 @@ window.questionBank = [
       "l4": "선분·각의 이동"
     },
     "rpmCrosswalkStatus": "RPM_ONLY",
-    "canonicalBindingStatus": "NO_ACTIVE_MAPPING",
-    "runtimeMaterializationStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
-    "problemTypeKey": "",
-    "templateKey": "",
+    "canonicalBindingStatus": "ACTIVE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+    "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
     "crossConceptKeys": [
       "PT_M1_CONGRUENCE_UNIQUENESS"
     ],
