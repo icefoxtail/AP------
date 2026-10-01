@@ -1,3 +1,13 @@
+## CURRENT HARD RULE — NO-STOP PIPELINE / FINAL-DEBT (2026-10-02)
+- 실행 정본: `02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md`.
+- 운영 selector용 `BLOCK/BLOCKED/PENDING`은 신규 생성하지 않는다. legacy 상태는 HISTORY/debt provenance로만 읽는다.
+- 모든 실패는 **상태 재확인 → mutation 여부 확인 → 안전 재시도 → stale ref/SHA/page/claim 갱신 → 안전한 대체 경로 → 결과 재조회 → DONE 또는 DEBT close**까지 수행한다.
+- debt는 `ITEM_HOLD / FINAL_REVIEW_DEBT / WRITE_RECOVERY_DEBT / INFRA_RETRY_DEBT / USER_DECISION_DEBT`로 남기며 다른 문항·시험지·lane·cohort를 멈추지 않는다.
+- HARD gate는 PASS/release 품질 기준으로 유지한다. **HARD gate FAIL은 scheduler stop이 아니다.**
+- 입력 artifact가 있는 후속 REVIEW/R3는 debt가 있어도 계속한다. artifact 자체가 없으면 그 dependent target만 skip하고 다음 eligible을 잡는다.
+- 최종 MAIN/PUBLISH/FINAL SEAL에서만 모든 release debt=0 + 기존 품질 gate PASS를 강제한다.
+- Git canonical: `1252e7ab524d74770ac361094cbbf2e9a4a47b56`.
+
 ## CURRENT — 2026-10-01 — ALL JS QUALITY WORKERS READ SAMPLES BEFORE TARGET
 ## CURRENT HARD RULE — PROBLEM SOURCE IMAGE = CROP-FIRST / NO SVG REPLACEMENT (2026-10-02)
 - **발문에 실제 원본 도형·그래프·표·조건 이미지가 존재하고 full-page/source crop 픽셀을 사용할 수 있으면, 문제용 시각자산은 그 원본 픽셀을 crop/recrop하여 PNG로 보존하는 것이 1순위이자 기본 종결이다.**
