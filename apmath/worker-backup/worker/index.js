@@ -3620,7 +3620,6 @@ async function handleApiRequest(request, env) {
 
         if (
           resource === 'exam-blueprints' ||
-          resource === 'archive-saved-papers' ||
           resource === 'class-exam-assignments' ||
           resource === 'exam-sessions' ||
           resource === 'exam-analysis' ||
@@ -3650,7 +3649,6 @@ async function handleApiRequest(request, env) {
           resource === 'class-daily-records' ||
           resource === 'class-daily-progress' ||
           resource === 'class-progress' ||
-          resource === 'class-progress-phase' ||
           resource === 'class-progress-taxonomy'
         ) {
           const teacher = await verifyAuth(request, env);
