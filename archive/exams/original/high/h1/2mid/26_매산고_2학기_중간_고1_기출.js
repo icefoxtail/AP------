@@ -41,7 +41,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW1_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -97,7 +97,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_SET_OPERATION",
     "templateKey": "TPL_DIRECT_MIXED_OPERATION",
     "crossConceptKeys": [],
@@ -154,7 +154,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_LINE_RELATION",
     "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
     "crossConceptKeys": [],
@@ -166,7 +166,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "서로 수직인 두 직선의 기울기와 교점을 나타낸 좌표 그림",
+    "solutionImageCaption": "두 직선의 기울기는 각각 3과 -1/3이므로 곱이 -1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -211,7 +215,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [],
@@ -268,7 +272,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_EQUATION",
     "templateKey": "TM_CIRCLE_CENTER_RADIUS",
     "crossConceptKeys": [],
@@ -280,7 +284,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "두 원 C1, C2의 중심과 반지름을 비교한 해설 그림",
+    "solutionImageCaption": "C1의 반지름 3과 C2의 반지름 4를 확인하면 합이 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -324,7 +332,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_DIRECT",
     "crossConceptKeys": [],
@@ -381,7 +389,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_EQUATION",
     "templateKey": "TM_CIRCLE_EXISTENCE_CONDITION",
     "crossConceptKeys": [],
@@ -395,7 +403,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "원의 중심과 반지름 제곱 4-k의 조건을 나타낸 해설 그림",
+    "solutionImageCaption": "원이 되려면 반지름의 제곱 $4-k$가 0보다 커야 한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -440,7 +452,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
     "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
     "crossConceptKeys": [
@@ -454,7 +466,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "포물선과 접선, 그 접선과 평행한 직선을 나타낸 그래프",
+    "solutionImageCaption": "점 (1,0)에서의 접선 기울기는 중근 조건으로 2이고, 구하는 직선도 기울기 2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -499,7 +515,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
     "templateKey": "TT_CIRCLE_TRANSLATION_CENTER",
     "crossConceptKeys": [
@@ -513,7 +529,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "평행이동한 원의 두 가능한 중심과 접선까지의 거리를 나타낸 그림",
+    "solutionImageCaption": "두 가능한 중심에서 직선까지의 거리가 모두 반지름 5와 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -557,7 +577,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_POINT_LINE_DISTANCE",
     "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
     "crossConceptKeys": [
@@ -571,7 +591,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "두 직선과 작은 각의 이등분선, 등거리 관계를 나타낸 그림",
+    "solutionImageCaption": "각의 이등분선 위의 점은 두 직선까지의 거리가 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -616,7 +640,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_POINT_LINE_DISTANCE",
     "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
     "crossConceptKeys": [],
@@ -630,7 +654,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "점 A, B에서 직선 l에 내린 수선과 거리비를 나타낸 그림",
+    "solutionImageCaption": "$AA'=3\\sqrt5$, $BB'=2\\sqrt5$이므로 거리비는 3:2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -675,7 +703,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE_ITEM_HOLD_ASSET",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
@@ -715,8 +743,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "집합",
-      "집합의 연산법칙",
-      "대칭차"
+      "집합의 연산법칙"
     ],
     "wide": false,
     "content": "전체집합 $U$의 공집합이 아닌 부분집합 $A$, $B$에 대하여 $S(A,B)=(A\\cap B^C)\\cup(A\\cup B^C)^C$라 할 때, 다음 중 &lt;보기&gt;에서 옳은 것만을 있는 대로 고른 것은? [4.8점]<br><div class=\"note-box\"><div style=\"text-align:center;font-weight:600;margin-bottom:4px;\">&lt;보기&gt;</div>ㄱ. $n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다.<br>ㄴ. $S(A,B)=A^C$이면 $A\\cup B=U$이다.<br>ㄷ. $S(A,B)\\cap C^C=S(A\\cap B,B\\cap C)$이다.</div>",
@@ -728,7 +755,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "②",
-    "solution": "드모르간 법칙을 이용하면\n$(A\\cup B^C)^C=A^C\\cap B$이다.\n따라서\n$S(A,B)=(A\\cap B^C)\\cup(A^C\\cap B)=A\\triangle B$이다.\n\nㄱ. $A\\cup B$는 서로 겹치지 않는 $A\\triangle B$와 $A\\cap B$로 나뉜다.\n$n(A\\triangle B)=n(A\\cup B)$이면 $n(A\\cap B)=0$이므로 참이다.\n\nㄴ. $A\\triangle B=A^C$라 하자.\n$x\\in A$이면 $x\\notin A\\triangle B$이므로 $x\\in B$이고,\n$x\\notin A$이면 $x\\in A^C=A\\triangle B$이므로 역시 $x\\in B$이다.\n따라서 $B=U$이고 $A\\cup B=U$이므로 참이다.\n\nㄷ은 일반적으로 성립하지 않는다.\n예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$, $C=\\varnothing$이면 왼쪽은 $\\varnothing$이지만 오른쪽은 $\\{1\\}$이다.\n\n따라서 옳은 것은 ㄱ, ㄴ이다.\n\n따라서 정답은 ②이다.",
+    "solution": "드모르간 법칙을 이용하면\n$(A\\cup B^C)^C=A^C\\cap B$이다.\n따라서\n$S(A,B)=(A\\cap B^C)\\cup(A^C\\cap B)$이다.\n\nㄱ. $A\\cup B$는 서로 겹치지 않는\n$A\\cap B$, $A\\cap B^C$, $A^C\\cap B$의 세 부분으로 나뉜다.\n$S(A,B)$는 이 중 뒤의 두 부분의 합이므로\n$n(S(A,B))=n(A\\cup B)$이면 $n(A\\cap B)=0$이다. 따라서 참이다.\n\nㄴ. $S(A,B)=A^C$라 하자.\n$x\\in A$인데 $x\\notin B$라면 $x\\in A\\cap B^C\\subset S(A,B)=A^C$가 되어 모순이다.\n따라서 $A\\subset B$이다.\n또 $x\\in A^C=S(A,B)$이면 $x\\notin A$이므로\n$x$는 $A\\cap B^C$에는 속할 수 없고 $A^C\\cap B$에 속해야 한다.\n따라서 $A^C\\subset B$이다.\n그러므로 $U=A\\cup A^C\\subset B$이므로 $B=U$이고 $A\\cup B=U$이다. 따라서 참이다.\n\nㄷ은 일반적으로 성립하지 않는다.\n예를 들어 $U=\\{1,2\\}$, $A=B=\\{1\\}$, $C=\\varnothing$이면\n왼쪽은 $\\varnothing$이지만 오른쪽은 $\\{1\\}$이다.\n\n따라서 옳은 것은 ㄱ, ㄴ이다.\n\n따라서 정답은 ②이다.",
     "sourceQuestionNo": "13",
     "displayNo": "13",
     "sourceOrdinal": 13,
@@ -740,7 +767,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_SET_OPERATION_LAW",
     "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
     "crossConceptKeys": [],
@@ -797,7 +824,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
     "crossConceptKeys": [],
@@ -809,7 +836,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "직선과 접하는 두 가능한 원을 함께 나타낸 해설 그림",
+    "solutionImageCaption": "중심 $(-a,a)$에서 직선까지의 거리가 반지름 $|a|$와 같아지는 두 경우를 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -829,8 +860,7 @@ window.questionBank = [
     "tags": [
       "객관식",
       "원의 방정식",
-      "현의 길이",
-      "삼각비"
+      "현의 길이"
     ],
     "wide": false,
     "content": "그림과 같이 좌표평면 위에 원 $C:(x-4)^2+(y-4)^2=16$, 직선 $y=mx\\ (0<m<1)$이 있다.<br>원 $C$의 중심을 $A$, 점 $A$에서 직선 $y=mx$에 내린 수선의 발을 $H$, 직선 $y=mx$가 원 $C$와 만나는 두 점 중 원점 $O$에 가까운 점을 $B$라 할 때,<br>$\\overline{OH}:\\overline{BH}=\\sqrt{3}:1$이다. 상수 $m$의 값은? [4.9점]",
@@ -842,7 +872,7 @@ window.questionBank = [
       "$2-\\sqrt{3}$"
     ],
     "answer": "⑤",
-    "solution": "직선 $y=mx$의 방향벡터를 $(1,m)$이라 하자.\n원의 중심은 $A(4,4)$이고 반지름은 $4$이다.\n\n점 $A$를 직선 $y=mx$에 정사영한 점이 $H$이므로\n$OH=\\dfrac{4(1+m)}{\\sqrt{1+m^2}}$이다.\n또 점과 직선 사이의 거리 공식으로\n$AH=\\dfrac{4(1-m)}{\\sqrt{1+m^2}}$이다.\n\n$AH\\perp BH$이고 $AB=4$이므로\n$BH^2=AB^2-AH^2\n=16-\\dfrac{16(1-m)^2}{1+m^2}\n=\\dfrac{32m}{1+m^2}$이다.\n따라서\n$BH=4\\sqrt{\\dfrac{2m}{1+m^2}}$이다.\n\n$OH:BH=\\sqrt3:1$이므로\n$\\dfrac{OH^2}{BH^2}=3$이다.\n즉\n$\\dfrac{(1+m)^2}{2m}=3$이므로\n$m^2-4m+1=0$이다.\n따라서 $m=2\\pm\\sqrt3$이고,\n$0<m<1$이므로\n$m=2-\\sqrt3$이다.\n\n따라서 정답은 ⑤이다.",
+    "solution": "원의 중심은 $A(4,4)$이고 반지름은 $4$이다.\n수선의 발 $H$는 직선 $y=mx$ 위의 점이므로 $H=(t,mt)$라 하자.\n\n$AH$는 직선 $y=mx$에 수직이므로 두 직선의 기울기의 곱을 이용하면\n$\\dfrac{mt-4}{t-4}\\cdot m=-1$이다.\n따라서\n$m^2t-4m=-t+4$,\n$t(1+m^2)=4(1+m)$이므로\n$t=\\dfrac{4(1+m)}{1+m^2}$이다.\n\n그러므로\n$OH=\\sqrt{t^2+(mt)^2}\n=t\\sqrt{1+m^2}\n=\\dfrac{4(1+m)}{\\sqrt{1+m^2}}$이다.\n또 점 $A(4,4)$와 직선 $mx-y=0$ 사이의 거리이므로\n$AH=\\dfrac{4(1-m)}{\\sqrt{1+m^2}}$이다.\n\n$B$, $H$는 모두 직선 $y=mx$ 위에 있고 $AH\\perp BH$이므로\n직각삼각형 $ABH$에서\n$BH^2=AB^2-AH^2\n=16-\\dfrac{16(1-m)^2}{1+m^2}\n=\\dfrac{32m}{1+m^2}$이다.\n따라서\n$BH=4\\sqrt{\\dfrac{2m}{1+m^2}}$이다.\n\n$OH:BH=\\sqrt3:1$이므로\n$\\dfrac{OH^2}{BH^2}=3$이다.\n즉\n$\\dfrac{(1+m)^2}{2m}=3$이므로\n$m^2-4m+1=0$이다.\n따라서 $m=2\\pm\\sqrt3$이고,\n$0<m<1$이므로\n$m=2-\\sqrt3$이다.\n\n따라서 정답은 ⑤이다.",
     "sourceQuestionNo": "15",
     "displayNo": "15",
     "sourceOrdinal": 15,
@@ -854,7 +884,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE_ITEM_HOLD_ASSET",
     "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
     "templateKey": "TM_CIRCLE_CHORD_LENGTH",
     "crossConceptKeys": [
@@ -876,7 +906,7 @@ window.questionBank = [
     "imageSize": "full",
     "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q15-solution.svg",
     "solutionImageAlt": "원 중심 A에서 직선 y=mx에 내린 수선 AH와 현의 반쪽 BH, 선분 OH를 나타낸 해설 그림",
-    "solutionImageCaption": "직각삼각형 AHB와 $OH:BH=\\sqrt3:1$을 이용하면 삼각함수 없이 $m$을 결정할 수 있다.",
+    "solutionImageCaption": "H는 A에서 직선 y=mx에 내린 수선의 발이다. 직각삼각형 AHB와 $OH:BH=\\sqrt3:1$을 함께 이용한다.",
     "solutionImageSize": "full"
   },
   {
@@ -916,7 +946,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_SUBSET_COUNT",
     "templateKey": "TPL_SUBSET_COUNT_POWERSET_BASIC",
     "crossConceptKeys": [],
@@ -967,7 +997,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_COORD_CENTROID",
     "templateKey": "TPL_CENTROID_DIRECT",
     "crossConceptKeys": [
@@ -981,7 +1011,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_매산고_2학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 내분점 M,N,P와 삼각형 MNP의 무게중심 G를 나타낸 그림",
+    "solutionImageCaption": "세 내분점의 좌표를 구한 뒤 그 평균으로 무게중심 G(2,3)을 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1020,7 +1054,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE_ITEM_HOLD_ASSET",
     "problemTypeKey": "PT_MOVE_COMPOSITE",
     "templateKey": "TT_COMPOSITE_GRAPH",
     "crossConceptKeys": [],
@@ -1078,7 +1112,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_COORD_DISTANCE",
     "templateKey": "TPL_COORD_DISTANCE_DIRECT",
     "crossConceptKeys": [
@@ -1124,7 +1158,7 @@ window.questionBank = [
     "content": "&lt;서술형2&gt;<br>복소수 전체의 집합 $\\mathbb{C}$의 공집합이 아닌 세 부분집합 $A=\\{z\\mid z^6=1\\}$, $B=\\{z\\mid z+\\overline{z}=1,\\ z\\overline{z}=1\\}$, $C$에 대하여<br>$A\\cup B\\cup C=A$, $A\\cap B\\cap C=\\varnothing$을 만족하는 집합 $C$의 개수를 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$15$",
-    "solution": "$z=a+bi$라 하면\n$z+\\overline z=2a=1$이므로 $a=\\dfrac12$이고,\n$z\\overline z=a^2+b^2=1$이므로\n$b=\\pm\\dfrac{\\sqrt3}{2}$이다.\n따라서\n$B=\\left\\{\\dfrac12+\\dfrac{\\sqrt3}{2}i,\\dfrac12-\\dfrac{\\sqrt3}{2}i\\right\\}$이다.\n이 두 복소수는 모두 $6$제곱하면 $1$이므로 $B\\subset A$이다.\n또 $z^6=1$은 서로 다른 근 $6$개를 가지므로 $n(A)=6$, $n(B)=2$이다.\n\n$A\\cup B\\cup C=A$에서 $C\\subset A$이고,\n$A\\cap B\\cap C=\\varnothing$에서 $B\\cap C=\\varnothing$이다.\n따라서 $C$는 원소가 $4$개인 $A-B$의 공집합이 아닌 부분집합이다.\n가능한 $C$의 개수는\n$2^4-1=15$이다.\n\n따라서 답은 $15$이다.",
+    "solution": "$z\\in B$라 하자.\n$z+\\overline z=1$이므로 $\\overline z=1-z$이다.\n또 $z\\overline z=1$이므로\n$z(1-z)=1$,\n즉\n$z^2-z+1=0$이다.\n따라서 $B$는 방정식 $z^2-z+1=0$의 두 근으로 이루어진 집합이고 $n(B)=2$이다.\n\n한편\n$z^6-1=(z^3-1)(z^3+1)\n=(z-1)(z+1)(z^2+z+1)(z^2-z+1)$이다.\n따라서 $z^2-z+1=0$의 두 근은 모두 $z^6=1$을 만족하므로 $B\\subset A$이다.\n또 위 인수들은 서로 겹치는 근을 갖지 않으므로 $n(A)=6$이다.\n\n$A\\cup B\\cup C=A$에서 $C\\subset A$이고,\n$A\\cap B\\cap C=\\varnothing$에서 $B\\cap C=\\varnothing$이다.\n따라서 $C$는 원소가 $4$개인 $A-B$의 공집합이 아닌 부분집합이다.\n가능한 $C$의 개수는\n$2^4-1=15$이다.\n\n따라서 답은 $15$이다.",
     "sourceQuestionNo": "서술형2",
     "displayNo": "서술형2",
     "sourceOrdinal": 20,
@@ -1136,7 +1170,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE",
+    "reviewStatus": "REVIEW1_REOPEN_DONE",
     "problemTypeKey": "PT_SUBSET_COUNT",
     "templateKey": "TPL_SUBSET_COUNT_POWERSET_BASIC",
     "crossConceptKeys": [],
@@ -1178,7 +1212,7 @@ window.questionBank = [
     "content": "&lt;서술형3&gt;<br>좌표평면 위의 두 점 $A(6,-1)$, $B(2,5)$에 대하여 $\\angle APB=45^\\circ$를 만족시키는 점 $P$가 있다.<br>세 점 $A$, $B$, $P$를 지나는 원을 $C$라 할 때,<br>원 $C$의 중심이 지나는 모든 $x$좌표의 값들의 곱을 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$7$",
-    "solution": "$AB=\\sqrt{(2-6)^2+(5+1)^2}=2\\sqrt{13}$이다.\n원의 중심을 $O$라 하고 반지름을 $R$이라 하자.\n\n$\\angle APB=45^\\circ$이므로 원주각과 중심각의 관계에 따라\n현 $AB$를 보는 작은 중심각은 $\\angle AOB=90^\\circ$이다.\n따라서 직각이등변삼각형 $AOB$에서\n$AB^2=OA^2+OB^2=2R^2$이다.\n그러므로\n$52=2R^2$이고 $R=\\sqrt{26}$이다.\n\n현 $AB$의 중점을 $M$이라 하면\n$M=(4,2)$이고 $AM=\\sqrt{13}$이다.\n원의 중심은 현 $AB$의 수직이등분선 위에 있으므로 $OM\\perp AB$이고\n$OM=\\sqrt{R^2-AM^2}=\\sqrt{13}$이다.\n\n$\\overrightarrow{AB}=(-4,6)$에 수직이고 길이가 $\\sqrt{13}$인 벡터는\n$(3,2)$ 또는 $(-3,-2)$이다.\n따라서 가능한 원의 중심은\n$(4,2)+(3,2)=(7,4)$,\n$(4,2)-(3,2)=(1,0)$이다.\n\n두 중심의 $x$좌표의 곱은\n$7\\times1=7$이다.\n\n따라서 답은 $7$이다.",
+    "solution": "$AB=\\sqrt{(2-6)^2+(5+1)^2}=2\\sqrt{13}$이다.\n원의 중심을 $O$라 하고 반지름을 $R$이라 하자.\n\n$\\angle APB=45^\\circ$이므로 원주각과 중심각의 관계에 따라\n현 $AB$를 보는 작은 중심각은 $\\angle AOB=90^\\circ$이다.\n따라서 직각이등변삼각형 $AOB$에서\n$AB^2=OA^2+OB^2=2R^2$이다.\n그러므로\n$52=2R^2$이고 $R=\\sqrt{26}$이다.\n\n현 $AB$의 중점을 $M$이라 하면\n$M=(4,2)$이고 $AM=\\sqrt{13}$이다.\n원의 중심은 현 $AB$의 수직이등분선 위에 있으므로 $OM\\perp AB$이고\n$OM=\\sqrt{R^2-AM^2}=\\sqrt{13}$이다.\n\n직선 $AB$의 기울기는\n$\\dfrac{5-(-1)}{2-6}=-\\dfrac32$이므로\n수직이등분선의 기울기는 $\\dfrac23$이다.\n원의 중심을 $O(h,k)$라 하면\n$k-2=\\dfrac23(h-4)$이다.\n또 $OM=\\sqrt{13}$이므로\n$(h-4)^2+(k-2)^2=13$이다.\n위 두 식을 대입하면\n$(h-4)^2+\\dfrac49(h-4)^2=13$,\n$\\dfrac{13}{9}(h-4)^2=13$이다.\n따라서\n$(h-4)^2=9$이므로\n$h=7$ 또는 $h=1$이다.\n\n두 중심의 $x$좌표의 곱은\n$7\\times1=7$이다.\n\n따라서 답은 $7$이다.",
     "sourceQuestionNo": "서술형3",
     "displayNo": "서술형3",
     "sourceOrdinal": 21,
@@ -1190,7 +1224,7 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW1_REOPEN_DONE_ITEM_HOLD_META",
     "problemTypeKey": null,
     "templateKey": null,
     "crossConceptKeys": [
