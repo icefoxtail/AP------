@@ -72,6 +72,47 @@ UNRESOLVED RELEASE DEBT
 → 다음 eligible
 ```
 
+
+---
+
+## 2.1 조율자 / FLEX — ACTION-FIRST RESCUE
+
+조율자/FLEX의 완료 기준은 **문서 기록이 아니라 병목 제거 또는 실행 가능한 repair handoff**다.
+
+`STALL_DETECTED`, `FLEX_RESCUE_REQUIRED`, `CHECKPOINT_CHURN_STALL`, 반복 `WRITE_GATE_TRANSIENT`, 반복 `mutation 0`, validator 미실행/실패가 확인되면 다음 순서를 지킨다.
+
+1. 최신 physical state와 마지막 durable artifact/checkpoint를 재조회한다.
+2. 정확한 실패 지점을 특정한다.
+   - `failedGate`
+   - 정확한 `qid / file / field`
+   - current input/artifact SHA
+   - missing evidence
+   - 필요한 validator / closure condition
+3. 실제 primary worker in-flight 또는 valid competing claim이 없으면 claim 후 **직접 repair를 먼저 실행**한다.
+4. deterministic repair, evidence materialization, validator 실행, durable receipt closure가 가능하면 같은 run에서 끝낸다.
+5. 직접 repair가 불가능한 경우에만 `RESCUE_DIAGNOSIS`를 만든다. 최소 필드는 다음과 같다.
+   - `target`
+   - `failedGate`
+   - `openQids/openFiles/openFields`
+   - `currentInputSha`
+   - `candidateOrCheckpointRef`
+   - `requiredRepairActions`
+   - `doNotTouchScope`
+   - `executionOwner`
+   - `exactCompletionGate`
+   - `retryCommandOrValidator`
+   - `nextOwner`
+6. CREATE/R1/R2/FLEX 범위에서 조율자가 직접 수행 가능한 작업은 다른 owner에게 넘기지 않고 직접 닫는다. post-R3 Codex repair / ITEM_RECOVERY처럼 전용 owner가 있는 범위만 executable handoff한다.
+7. **repair 또는 executable handoff가 물리적으로 생긴 뒤에만** Notion snapshot/debt/history를 갱신한다.
+
+금지:
+- `STALL_DETECTED`나 debt 문서만 추가하고 조율 완료 처리
+- 같은 target에 generic checkpoint/debt를 반복 생성
+- 같은 이유로 두 번 이상 재등장했는데 동일 recovery action 반복
+- actual repair/mutation/validator attempt 또는 executable handoff 없이 `RESOLVED`, `COORDINATED`, `RECOVERY_DONE` 표기
+
+같은 target이 두 FLEX cycle 이상 반복되면 `RESCUE_DIAGNOSIS`를 갱신하고 이전 시도와 **다른 구체적 recovery action**을 수행한다. 이것이 없으면 상태는 `COORDINATION_INCOMPLETE`다.
+
 ---
 
 ## 3. Non-blocking Debt Registry
