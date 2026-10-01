@@ -1,3 +1,13 @@
+## CURRENT HARD RULE — NORMAL-FIRST / DEFERRED R3 REENTRY (2026-10-01)
+
+- 정상 `CREATE → R1 → R2 → initial R3` first-pass가 R3 FAIL 재작업보다 항상 우선한다.
+- R3 FAIL은 A/B/C `failureClass`와 route를 보존하되 `R3_FAIL_DEFERRED / DEFERRED_REENTRY_QUEUE`로 분리한다. 정상 first-pass eligible이 없거나 사용자 직접 지시가 있을 때만 reentry를 소비한다.
+- R3 PASS만 `READY_FOR_CODEX_PUBLISH` 후보다. FAIL은 publish 금지이며 다른 시험지 흐름을 막지 않는다.
+- M3 CREATE-1/2/3은 자기 mod-3 partition CREATE가 current physical-evidence gate까지 100% 완료되는 순간 lane별로 TEMP R3로 전환한다. M3 REVIEW2 69/69 또는 다른 CREATE lane 완료를 기다리지 않는다.
+- partition initial R3 완료 기준은 각 시험지가 `R3_PASS` 또는 `R3_FAIL_DEFERRED` disposition을 갖는 것이다. 이후 해당 CREATE lane은 M1 CREATE를 재개할 수 있다.
+- M3 initial R3는 TEMP R3-1/2/3 전담이며 dedicated R3가 중복 소비하지 않는다.
+- 세부 failureClass 및 release audit는 `03_REVIEW/JS아카이브_3차검수_프로토콜.md`를 따른다.
+
 # JS아카이브 규칙 통합 인덱스
 
 이 문서는 `docs/rules/`의 단일 진입점이다. 규칙 원문을 무리하게 한 파일에 복사하지 않고, 기준 원본·작업 프로토콜·검수 프로토콜·특수 규정·역사 문서를 역할별로 분리한다.
