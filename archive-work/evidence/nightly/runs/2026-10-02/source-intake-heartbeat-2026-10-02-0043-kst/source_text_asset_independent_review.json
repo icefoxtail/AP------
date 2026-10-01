@@ -2070,7 +2070,7 @@
         },
         {
           "sourceVisualToken": "f(2)<0",
-          "jsSerialization": "f(2)<0",
+          "jsSerialization": "f(2)&lt;0",
           "pageRegion": {
             "page": 2,
             "bboxApprox": [
@@ -2081,7 +2081,7 @@
             ]
           },
           "status": "PASS",
-          "mapping": "strict inequality"
+          "mapping": "The printed strict less-than glyph is HTML-escaped as &lt; in the JS field."
         }
       ]
     },
@@ -2232,7 +2232,7 @@
         },
         {
           "sourceVisualToken": "α<k<β",
-          "jsSerialization": "\\alpha<k<\\beta",
+          "jsSerialization": "\\alpha&lt;k&lt;\\beta",
           "pageRegion": {
             "page": 2,
             "bboxApprox": [
@@ -2243,7 +2243,7 @@
             ]
           },
           "status": "PASS",
-          "mapping": "Greek/inequality"
+          "mapping": "Printed Greek alpha/beta serialize as TeX \\alpha and \\beta; each printed less-than glyph serializes as &lt; within the math span."
         }
       ]
     },
@@ -2723,7 +2723,7 @@
       "notationInventory": [
         {
           "sourceVisualToken": "0≤x<2",
-          "jsSerialization": "0\\le x<2",
+          "jsSerialization": "0\\le x&lt;2",
           "pageRegion": {
             "page": 3,
             "bboxApprox": [
@@ -2734,11 +2734,11 @@
             ]
           },
           "status": "PASS",
-          "mapping": "mixed interval"
+          "mapping": "Printed ≤ serializes as TeX \\le; printed < serializes as HTML entity &lt; in the JS field."
         },
         {
           "sourceVisualToken": "2≤x<4",
-          "jsSerialization": "2\\le x<4",
+          "jsSerialization": "2\\le x&lt;4",
           "pageRegion": {
             "page": 3,
             "bboxApprox": [
@@ -2749,7 +2749,7 @@
             ]
           },
           "status": "PASS",
-          "mapping": "mixed interval"
+          "mapping": "Printed ≤ serializes as TeX \\le; printed < serializes as HTML entity &lt; in the JS field."
         },
         {
           "sourceVisualToken": "F(3)=−2",
@@ -2895,7 +2895,7 @@
       "notationInventory": [
         {
           "sourceVisualToken": "α<β<0<γ",
-          "jsSerialization": "\\alpha<\\beta<0<\\gamma",
+          "jsSerialization": "\\alpha&lt;\\beta&lt;0&lt;\\gamma",
           "pageRegion": {
             "page": 4,
             "bboxApprox": [
@@ -2906,7 +2906,7 @@
             ]
           },
           "status": "PASS",
-          "mapping": "Greek/order"
+          "mapping": "Printed Greek alpha, beta and gamma serialize as TeX control words, and all three printed less-than glyphs serialize as HTML entity &lt; in the JS field."
         },
         {
           "sourceVisualToken": "f(α)f(β)f(γ)=0",
@@ -3259,7 +3259,7 @@
         },
         {
           "sourceVisualToken": "x>1",
-          "jsSerialization": "x>1",
+          "jsSerialization": "x&gt;1",
           "pageRegion": {
             "page": 4,
             "bboxApprox": [
@@ -3270,7 +3270,7 @@
             ]
           },
           "status": "PASS",
-          "mapping": "strict inequality"
+          "mapping": "The printed strict greater-than glyph is HTML-escaped as &gt; in the JS field."
         }
       ]
     },
@@ -3403,8 +3403,8 @@
       "visuallyReadAnchors": [
         {
           "sourceVerbatim": "x좌표가",
-          "exactJsFieldSubstring": "x좌표가",
-          "comparisonBasis": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "exactJsFieldSubstring": "$x$좌표가",
+          "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
           "sourcePageRegion": {
             "page": 5,
             "bboxApprox": [
@@ -3414,7 +3414,8 @@
               2610
             ],
             "coordinateSpace": "page-pixel top-left origin; approximate prompt/anchor region"
-          }
+          },
+          "representationMapping": "The printed Latin glyph x is serialized as TeX math delimited by $x$ in the JS content; the following Korean substring 좌표가 is literal and unchanged."
         }
       ],
       "checkedComponents": {
@@ -3646,7 +3647,7 @@
     "stringNormalization": "none"
   },
   "questionIdentityCount": 22,
-  "finalVerdict": "SOURCE_QA_PASS",
+  "finalVerdict": "SOURCE_QA_RECHECK_PENDING",
   "sourcePageEvidence": [
     {
       "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p001.png",
@@ -3673,5 +3674,38 @@
       "sha256": "sha256:ab3db22206bcf95ed0a69f4df77eb9cbaca9fe32493d392d462864b8ec74be08",
       "page": 5
     }
-  ]
+  ],
+  "previousReviewRevision": {
+    "sourceArtifactCommitSha": "79a082fda7522da09d973591173260b9efa18bb6",
+    "reviewReceiptCommitSha": "457fd282216df8c643ceda01968f1dda73872637",
+    "reportSha256": "sha256:3d26aa450a4b1cd6451f0c17248b801f1c100b201d1e841fffe388f04d62005b",
+    "priorFinalVerdict": "SOURCE_QA_PASS",
+    "status": "SUPERSEDED_AFTER_PARENT_EVIDENCE_AUDIT"
+  },
+  "evidenceRevision": {
+    "revision": 2,
+    "scope": "REVIEW_REPORT_EVIDENCE_ONLY",
+    "sourceOrAssetChanged": false,
+    "q21AnchorCorrection": {
+      "sourceVerbatim": "x좌표가",
+      "previousJsFieldSubstring": "x좌표가",
+      "correctJsFieldSubstring": "$x$좌표가",
+      "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+      "representationMapping": "The printed Latin glyph x is serialized as TeX math delimited by $x$ in the JS content; the following Korean substring 좌표가 is literal and unchanged."
+    },
+    "notationInventorySerializationCorrections": [
+      {
+        "qid": 17,
+        "notationIndex": 0,
+        "sourceVisualToken": "α<β<0<γ",
+        "previousJsSerialization": "\\alpha&lt;\\beta<0&lt;\\gamma",
+        "correctedJsSerialization": "\\alpha&lt;\\beta&lt;0&lt;\\gamma",
+        "mapping": "Printed Greek alpha, beta and gamma serialize as TeX control words, and all three printed less-than glyphs serialize as HTML entity &lt; in the JS field."
+      }
+    ],
+    "freshIndependentRecheckRequired": true,
+    "recheckStatus": "PENDING"
+  },
+  "reportStatus": "REVISED_EVIDENCE_PENDING_FRESH_INDEPENDENT_RECHECK",
+  "reviewStatus": "PENDING_FRESH_OCR_FREE_RECHECK"
 }
