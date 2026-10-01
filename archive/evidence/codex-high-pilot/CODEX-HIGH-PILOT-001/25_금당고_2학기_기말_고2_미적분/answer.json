@@ -1,0 +1,189 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "25_금당고_2학기_기말_고2_미적분",
+  "ordinal": 1,
+  "stage": "ANSWER",
+  "status": "ANSWER_COMPLETE_WITH_ITEM_HOLD",
+  "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+  "sourceArtifactGitBlobSha": "e8963b7b55b36a319af0aa67bf8516b5cf3af452",
+  "sourceDocumentSha256": "0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020",
+  "inputQuestionCount": 21,
+  "resolvedAnswerCount": 20,
+  "itemHoldQids": [
+    15
+  ],
+  "authorityUsed": "Fresh derivation from source content and choices in the locked source-only artifact; prior answer/review evidence was not used to select answers.",
+  "questions": [
+    {
+      "qid": 1,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|1",
+      "sourceOrdinal": 1,
+      "disposition": "RESOLVED",
+      "answer": "④",
+      "decisiveCalculation": "Chain rule: options 1, 2, 3, and 5 each have a derivative error; implicit differentiation in option 4 gives (e^y+2)y'=1, so y'=1/(e^y+2)."
+    },
+    {
+      "qid": 2,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|2",
+      "sourceOrdinal": 2,
+      "disposition": "RESOLVED",
+      "answer": "①",
+      "decisiveCalculation": "The tangent slope is 1/x, so x=1; the curve point is (1,3), giving y-3=x-1 and y=x+2."
+    },
+    {
+      "qid": 3,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|3",
+      "sourceOrdinal": 3,
+      "disposition": "RESOLVED",
+      "answer": "③",
+      "decisiveCalculation": "At t=1, (x',y')=(-1,4), speed=√17, (x'',y'')=(2,2), acceleration magnitude=2√2, and position=(-1,3); only option 3 is false."
+    },
+    {
+      "qid": 4,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|4",
+      "sourceOrdinal": 4,
+      "disposition": "RESOLVED",
+      "answer": "⑤",
+      "decisiveCalculation": "f'=e^x-1 changes from negative to positive at x=0; values at -3,0,1 are e^-3+3, 1, e-1, so max=e^-3+3 and min=1."
+    },
+    {
+      "qid": 5,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|5",
+      "sourceOrdinal": 5,
+      "disposition": "RESOLVED",
+      "answer": "③",
+      "decisiveCalculation": "tan²x=sec²x-1, hence its antiderivative is tan x-x+C; option 3 has the wrong sign."
+    },
+    {
+      "qid": 6,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|6",
+      "sourceOrdinal": 6,
+      "disposition": "RESOLVED",
+      "answer": "②",
+      "decisiveCalculation": "With u=x², du=2x dx; the integral is 1/2∫_0^4 e^u du = (e^4-1)/2."
+    },
+    {
+      "qid": 7,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|7",
+      "sourceOrdinal": 7,
+      "disposition": "RESOLVED",
+      "answer": "④",
+      "decisiveCalculation": "An antiderivative is F(x)=2x²lnx-x²+xlnx-x. F(e)-F(1)=e²+2, so f(e)=2+(e²+2)=e²+4."
+    },
+    {
+      "qid": 8,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|8",
+      "sourceOrdinal": 8,
+      "disposition": "RESOLVED",
+      "answer": "①",
+      "decisiveCalculation": "This is the right-endpoint Riemann sum for ∫_0^1 x^4 dx=1/5."
+    },
+    {
+      "qid": 9,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|9",
+      "sourceOrdinal": 9,
+      "disposition": "RESOLVED",
+      "answer": "②",
+      "decisiveCalculation": "At tangency x=a the tangent is y-1/a=-(x-a)/a². Passing through (-2,0) gives -a=2+a, so a=-1 and the line is y=-x-2."
+    },
+    {
+      "qid": 10,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|10",
+      "sourceOrdinal": 10,
+      "disposition": "RESOLVED",
+      "answer": "②",
+      "decisiveCalculation": "f'(x)=Σ_(k=1)^10 k x^(-k-1); at x=-1 this is 1-2+3-4+…+9-10=-5."
+    },
+    {
+      "qid": 11,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|11",
+      "sourceOrdinal": 11,
+      "disposition": "RESOLVED",
+      "answer": "②",
+      "decisiveCalculation": "The limit gives f(6)=3 and f'(6)=1/3. Thus g(3)=6 and g'(3)=1/f'(6)=3; the sum is 9."
+    },
+    {
+      "qid": 12,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|12",
+      "sourceOrdinal": 12,
+      "disposition": "RESOLVED",
+      "answer": "④",
+      "decisiveCalculation": "For y=xe^-x, y''=e^-x(x-2), so A=(2,2/e²); the tangent is y=(4-x)/e² with intercepts B=(4,0), C=(0,4/e²), giving area 8/e²."
+    },
+    {
+      "qid": 13,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|13",
+      "sourceOrdinal": 13,
+      "disposition": "RESOLVED",
+      "answer": "③",
+      "decisiveCalculation": "f'=cos x, so f(π/3)-f(π/6)=sin(π/3)-sin(π/6)=(√3-1)/2."
+    },
+    {
+      "qid": 14,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|14",
+      "sourceOrdinal": 14,
+      "disposition": "RESOLVED",
+      "answer": "③",
+      "decisiveCalculation": "Integrating f'=1/[x√(lnx+10)] with u=lnx+10 gives f(e^6)-f(1/e)=2(√16-√9)=2; hence f(e^6)=12."
+    },
+    {
+      "qid": 15,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|15",
+      "sourceOrdinal": 15,
+      "disposition": "ITEM_HOLD",
+      "answer": null,
+      "decisiveCalculation": "For x≠0, (f/x)'=3x e^(x²), so f(x)/x=(3/2)e^(x²)+C. From f(1)=0, f(2)=3(e^4-e), which matches none of the five frozen choices; hold only q15."
+    },
+    {
+      "qid": 16,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|16",
+      "sourceOrdinal": 16,
+      "disposition": "RESOLVED",
+      "answer": "①",
+      "decisiveCalculation": "g'(t)=2(t-1)/[(t-1)²+1] is negative for t<1. Opposite directions on exactly (1/4,1) require f'(t)=2t-a>0 there with boundary a/2=1/4, so a=1/2."
+    },
+    {
+      "qid": 17,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|단답형 1",
+      "sourceOrdinal": 17,
+      "disposition": "RESOLVED",
+      "answer": "$11$",
+      "decisiveCalculation": "The average of e^(kx), k=1,…,10, is 1+(55/10)x+O(x²); its logarithm is (11/2)x+O(x²), and multiplication by 2/x gives 11."
+    },
+    {
+      "qid": 18,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|단답형 2",
+      "sourceOrdinal": 18,
+      "disposition": "RESOLVED",
+      "answer": "$-16$",
+      "decisiveCalculation": "dy/dx=(dy/dθ)/(dx/dθ)=-2tanθ; differentiating with respect to x gives d²y/dx²=-2sec³θ, which is -16 at θ=π/3."
+    },
+    {
+      "qid": 19,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 1",
+      "sourceOrdinal": 19,
+      "disposition": "RESOLVED",
+      "answer": "$e^2$",
+      "decisiveCalculation": "Differentiate the identity once: f(x)-e^4=∫_0^x f(t)dt. At x=0 this gives f(0)=e^4; differentiating again gives f'=f, so f(x)=e^(x+4) and f(-2)=e²."
+    },
+    {
+      "qid": 20,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 2",
+      "sourceOrdinal": 20,
+      "disposition": "RESOLVED",
+      "answer": "$\\dfrac{1}{2}$",
+      "decisiveCalculation": "With u=lnx, a_n=∫_1^0 u^n du=-1/(n+1). Thus a_n a_(n+1)=1/[(n+1)(n+2)]=1/(n+1)-1/(n+2), and the infinite sum is 1/2."
+    },
+    {
+      "qid": 21,
+      "questionUid": "sha256:0b4a3e6e1fb32fe42fa43949e26ebc73b42514edaa6bc0e20d23c6d4027cd020|서·논술형 3",
+      "sourceOrdinal": 21,
+      "disposition": "RESOLVED",
+      "answer": "$4$",
+      "decisiveCalculation": "From f(1)=e and f'(1)=e, a+b=0 and 2a+b=-2, hence a=-2,b=2 and f'(x)=x²e^x. Since f(1)=e, g(e)=e; differentiating g(f(x))=f'(x) gives g'(e)=f''(1)/f'(1)=3. Also (f^-1)'(e)=1/e, so h'(e)=e/e+3=4."
+    }
+  ],
+  "targetArtifactPath": "archive-work/exams/original/high/h2/2final/25_금당고_2학기_기말_고2_미적분.js",
+  "targetArtifactGitBlobSha": "8016e1999423c9ad4480857f3af1d76dd80af5ff",
+  "targetArtifactSha256": "f5f18b3f41eab8f735c8819dd4a06928b65ff861f37073c077bee5b2542c5434"
+}
