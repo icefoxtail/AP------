@@ -1,6 +1,19 @@
 # 도형의 방정식 해설 품질 + SVG 제작/독립검수 통합 운영규정 v1.1
 # v1.2 최소 SVG 좌표 parity 보강 부록 적용
 
+## CURRENT HARD GATE — SVG PHYSICAL EVIDENCE BEFORE PASS (2026-10-01)
+
+CREATE/R1/R2/R3에서 이 규정을 적용할 때 SVG PASS는 `03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`에 결속한다.
+
+- 각 linked SVG마다 `assetSha256 / expectedFacts[] / observedFacts[] / checks[]`를 남긴다.
+- expected fact는 source + 독립 풀이 + final solution에서 먼저 동결한다.
+- observed fact는 **actual SVG primitive 좌표/위상**에서 계산한다.
+- 직선 기울기·점의 선 위 여부·수직/평행·원 중심/반지름·접선·내분/대칭 등 해당 수학 관계를 직접 계산한다.
+- SVG 안에 식·좌표·'수직' 문구가 적혀 있는 것은 geometry evidence가 아니다.
+- `TEXT_LABEL_ONLY`로 PASS 금지. 최소 `COORDINATE_COMPUTE / TOPOLOGY_COMPUTE / SOURCE_PIXEL` 중 하나가 필요하다.
+- 수정 후 asset SHA가 바뀌면 이전 geometry evidence는 무효이며 새 bytes에서 다시 계산한다.
+- 2026-10-01 복성고1 q1/q3/q7/q8/q20 실패본은 `archive/fixtures/review-negative-regressions/2026-10-01-bokseong/`의 필수 회귀 fixture다.
+
 > 작업 순서 정정(2026-08-28): 이미 production JS가 있는 단원별 해설 업그레이드에서는
 > 대상 문항을 확정하기 전에 시험지 전체를 렌더하지 않는다. 규정 확인과 JS 기반 대상 선별,
 > 문항별 해설 품질 분석·수정·SVG 제작을 먼저 끝내고, 그 완료본을 전체 렌더로 검수한다.
