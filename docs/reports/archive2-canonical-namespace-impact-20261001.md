@@ -1,7 +1,7 @@
 # Archive 2.0 Canonical Namespace Impact — 20261001
 
-- Generated: 2026-10-01T12:16:54.942Z
-- Projection: `archive2-canonical-v1:4d31dacdb3b39fc1df1a14d00cddf5083b2d468f10ab1e09d49a3ce62bf01419`
+- Generated: 2026-10-01T12:23:18.182Z
+- Projection: `archive2-canonical-v1:dd6db5d275f208aa672af86e8217ac7459728917f99d4e0ff9a9d00b37a5996d`
 - Taxonomy: `8997970a1e9c45960463393bb651cdbb0d21d7ca602e2fd58b7d51730d98b55b`
 
 ## UID totals
@@ -11,9 +11,9 @@
 | Parsed raw source questions | 11550 |
 | Built catalog | 11550 |
 | Final shared projection | 11550 |
-| BASIC selectable | 1930 |
+| BASIC selectable | 1928 |
 | ADVANCED selectable | 1 |
-| BASIC exclusions | 9620 |
+| BASIC exclusions | 9622 |
 
 The source population is keyed by unique `questionUid`. Unique UID counts per reason; one UID may appear in several reasons. Mutually exclusive; order is grade, identity, source integrity, approved release fingerprint, source quality, semantic/review, scope policy, assignment evidence, namespace, then canonical parent.
 
@@ -117,21 +117,21 @@ Overlapping reason counts:
 | semantic_or_metadata_hold | 216 |
 | source_grade | 174 |
 | source_quality_hold | 27 |
-| source_release | 2108 |
+| source_release | 2121 |
 
 Mutually exclusive primary reasons:
 
 | Primary reason | Unique UIDs |
 | --- | ---: |
-| assignment_evidence | 6922 |
+| assignment_evidence | 6911 |
 | review_hold | 250 |
 | scope_policy | 1 |
 | semantic_or_metadata_hold | 138 |
 | source_grade | 174 |
 | source_quality_hold | 27 |
-| source_release | 2108 |
+| source_release | 2121 |
 
-Primary-reason total: 9620 of 9620 excluded UIDs.
+Primary-reason total: 9622 of 9622 excluded UIDs.
 
 ## Input integrity
 
