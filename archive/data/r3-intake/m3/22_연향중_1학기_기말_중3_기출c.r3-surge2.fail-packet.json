@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R3_FAIL_PACKET_v2",
+  "generation": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "canonicalOrdinal": 37,
+  "examFile": "22_연향중_1학기_기말_중3_기출c.js",
+  "stage": "R3_FAIL_DEFERRED",
+  "readyState": "DEFERRED_REENTRY_QUEUE",
+  "failureClass": "TARGETED_R3_REPAIR",
+  "requiredRoute": "CODEX_R3_REPAIR_THEN_INDEPENDENT_REVIEW_THEN_GPT_TARGETED_R3_RETRY",
+  "r3InputArtifactSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "r3BaselinePath": "archive/data/r3-intake/m3/22_연향중_1학기_기말_중3_기출c.r3.baseline.json",
+  "failedQids": [
+    1,
+    9,
+    12
+  ],
+  "failureCodes": [
+    "RUNTIME_LITERAL_BACKSLASH_N:q1:content",
+    "SMALLBOARD_ENUMERATION_FAIL:q1",
+    "RUNTIME_LITERAL_BACKSLASH_N:q9:content",
+    "SMALLBOARD_ENUMERATION_FAIL:q9",
+    "CONFIRMED_VISUAL_DEFECT:q12:SOURCE_TEXT_FIGURE_OWNER_CONTRADICTION"
+  ],
+  "affectedAxes": [
+    "runtimeString",
+    "smallBoard",
+    "sourceExact",
+    "answerMath",
+    "solutionMath"
+  ],
+  "openFiles": [
+    "archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js"
+  ],
+  "openFields": [
+    "q1.content",
+    "q1.solution",
+    "q9.content",
+    "q9.solution",
+    "q12.content"
+  ],
+  "directDependencies": [
+    "q12.answer",
+    "q12.solution",
+    "q12.image"
+  ],
+  "findings": {
+    "q1": {
+      "runtime": "sandbox runtime retains literal backslash+n separators x6 in content",
+      "smallBoard": "ㄱ~ㅂ judgments remain in one prose block instead of independently traceable blocks",
+      "repairBoundary": "q1.content line separators + q1.solution enumeration block structure only"
+    },
+    "q9": {
+      "runtime": "sandbox runtime retains literal backslash+n separators x6 in shared 보기 content and mixes them with actual newlines",
+      "smallBoard": "shared ㄱ~ㅂ structure is not represented as independently traceable judgment blocks",
+      "repairBoundary": "q9.content line separators + q9.solution enumeration block structure only"
+    },
+    "q12": {
+      "sourceRasterBlob": "9880d829b4629c75676a745da3afe60f79d60411",
+      "observed": "source raster places A on y=3x² and B on y=ax² at x=2, while literal stem assigns A,B respectively to y=ax²,y=3x²",
+      "literalConsequence": "A=(2,4a), B=(2,12), AB=3BC yields a=12 or -6, no listed answer",
+      "intendedConsequence": "A=(2,12), B=(2,4a) yields a=3/4=③, matching raster, stored solution and answer",
+      "repairBoundary": "q12.content owner order only; preserve source crop; q12.answer/solution/image are locked dependencies to reverify, not edit by default"
+    }
+  },
+  "gradeUpperBoundViolationCount": 0,
+  "speculativeVisualFailCount": 0,
+  "confirmedVisualDefectQids": [
+    12
+  ],
+  "runtimeDoubledTexIssueCount": 0,
+  "nonblockingVisualNotes": [
+    {
+      "qid": 19,
+      "code": "VISUAL_RECHECK_ONLY",
+      "note": "No objective semantic contradiction; text suffices for unique answer."
+    }
+  ],
+  "lockedScopeRule": "All qids/files/fields outside openFields are R3_LOCKED; Codex repair must report lockedScopeMutationCount=0.",
+  "nextOwner": "CODEX_R3_REPAIR",
+  "productionBytesMutation": 0,
+  "directR3Repair": false,
+  "mainPublish": false
+}
