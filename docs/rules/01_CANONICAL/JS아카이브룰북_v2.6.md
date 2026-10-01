@@ -585,7 +585,7 @@ content: "그림과 같이 ...<br><img src=\"assets/images/시험지전체명/q2
   * Export 라벨 제거
   * 과도한 여백 제거
   * 문제와 무관한 보조 객체 제거
-* 단순 기하도형/간단 좌표도형은 SVG 유지가 가능하나, 복잡한 그래프는 PNG를 우선 검토한다.
+* 단순 기하도형/간단 좌표도형의 SVG 유지는 **원본 자체가 SVG이거나 source pixel이 실제로 없어서 reconstruction이 허용된 경우**에만 해당한다. 기출 full-page/source crop PNG가 사용 가능하면 단순 도형이라도 generated SVG로 교체하지 않는다. 복잡한 그래프는 PNG를 우선 검토한다.
 * 이미지도 발문 바로 아래에 출력되어야 하며, 보기 아래나 해설 아래로 내려가면 안 된다.
 * **`exams/*.js`와 `assets/images/*`는 세트로 관리한다.** JS만 올리고 PNG를 누락한 상태는 엔진 통과와 별개로 무결성 실패로 본다.
 
