@@ -1,0 +1,368 @@
+{
+  "schema": "SOURCE_TEXT_ASSET_INDEPENDENT_RECHECK_v1",
+  "runId": "source-intake-independent-recheck-2026-10-02",
+  "examId": "22_순천고_2학기_기말_고2_수학II",
+  "sourcePdf": "D:/기출/(4)2기말/수2/2022_순천고2_수2_2기말.pdf",
+  "sourcePdfSha256": "0c470b22688eb20c41e6758b71834066e6e88ae6ae1c7f1672a5bce4490dd851",
+  "sourceJsPath": "archive-work/exams/original/high/h2/2final/22_순천고_2학기_기말_고2_수학II.js",
+  "sourceJsSha256": "6db84565095fd1c38db5833ba57c7aa1045b54a3b5e6e47e49bb290ec7ecdf20",
+  "correctedReviewReportPath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review.json",
+  "correctedReviewReportSha256": "sha256:785ade3ae674e659929ecb9b114a454fdb0185beafbe3f1371f26297758512fa",
+  "sourceArtifactCommitSha": "79a082fda7522da09d973591173260b9efa18bb6",
+  "repairCommitSha": "9528e6fdd1a55da6b699a11b73832e257084b551",
+  "reviewerId": "/root/suncheon_source_qa_recheck_20261002",
+  "reviewerWindow": "2026-10-02 KST; fresh OCR-free pixel review and independent JSON/JS integrity audit",
+  "ocrUsed": false,
+  "browserScreenshotRendererUsed": false,
+  "qid21VisualEvidence": {
+    "qid": 21,
+    "printedSourceQuestionNo": "서술형2",
+    "reportDisplayNo": "서술형2",
+    "sourcePagePath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p005.png",
+    "sourcePageSha256": "sha256:ab3db22206bcf95ed0a69f4df77eb9cbaca9fe32493d392d462864b8ec74be08",
+    "directVisualRead": true,
+    "anchor": {
+      "sourceVerbatim": "x좌표가",
+      "exactJsFieldSubstring": "$x$좌표가",
+      "comparisonBasis": "EXACT_SEMANTIC_SERIALIZATION_MAPPING",
+      "representationMapping": "The printed Latin glyph x is serialized as TeX math delimited by $x$ in the JS content; the following Korean substring 좌표가 is literal and unchanged.",
+      "sourcePageRegion": {
+        "page": 5,
+        "bboxApprox": "170 1430 1090 2610",
+        "coordinateSpace": "page-pixel top-left origin; approximate prompt/anchor region"
+      }
+    },
+    "pixelFinding": "Viewed the original full page p005 directly. The printed phrase reads “x좌표가”; the Latin x is followed by Korean 좌표가. The exact substring $x$좌표가 occurs in the corresponding JS content. This is TeX serialization mapping, not literal string equality.",
+    "imageVisualAssetPath": "archive-work/assets/images/22_순천고_2학기_기말_고2_수학II/q021_visual.png",
+    "assetSha256": "3fa4b7bb5a91e51889d22a6b36f9b4ede7d127228e4abdd2148c548150ababa8",
+    "assetBBox": {
+      "coordinateSpace": "page-pixel top-left origin",
+      "x1": 190,
+      "y1": 1610,
+      "x2": 780,
+      "y2": 2250
+    },
+    "assetPixelFinding": "Viewed the qid 21 crop alongside p005. The graph labels, axes, origin, dashed guides, coordinate labels −2 and 1, and both tangencies are visible and match the item. The report discloses a mask for adjacent score text; graph pixels remain intact."
+  },
+  "wholeReportIntegrity": {
+    "questionInventoryCount": 22,
+    "jsQuestionCount": 22,
+    "reportQuestionRows": 22,
+    "uniqueQidRows": 22,
+    "oneRowPerInventoryQid": "PASS",
+    "allRowsHaveNotationInventory": "PASS",
+    "notationEntryCount": 52,
+    "notationSerializationExactSubstringCount": 52,
+    "notationSerializationSearchFields": "Each exact JS serialization was found in that item’s JS content or a choice field, including qid 4’s fraction serialization in a choice field.",
+    "notationStatusAndMappingFields": "PASS for all 52 entries",
+    "visualAnchorCount": 22,
+    "visualAnchorExactSubstringAndComparisonBasis": "PASS for all 22; mapped anchors include per-anchor representationMapping.",
+    "choiceRows": 95,
+    "choiceRowsMatchedExactJsIndexValueAndReportOrder": 95,
+    "constructedResponseNAItems": 3,
+    "constructedResponseNAGate": "PASS; each has NOT_APPLICABLE status and a reason.",
+    "answerAndSolutionEmptyRows": 22,
+    "qid21AnchorCheck": "PASS; sourceVerbatim x좌표가, exact JS substring $x$좌표가, comparisonBasis EXACT_SEMANTIC_SERIALIZATION_MAPPING, and per-anchor representationMapping present.",
+    "assetRows": 2,
+    "assetRowsPassedAllProvenanceAndSemanticGates": 2,
+    "findings": []
+  },
+  "perQidChecks": [
+    {
+      "qid": 1,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 2,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 3,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 4,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order; fraction serialization is in a choice field"
+    },
+    {
+      "qid": 5,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 6,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 7,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 8,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 9,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 10,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 11,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 12,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 13,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 14,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 15,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 16,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 17,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 18,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 19,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": "PASS; exact JS indices, values, and report order"
+    },
+    {
+      "qid": 20,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": {
+        "status": "NOT_APPLICABLE",
+        "reason": "Constructed response; no printed choices and JS choices is empty."
+      }
+    },
+    {
+      "qid": 21,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": {
+        "status": "NOT_APPLICABLE",
+        "reason": "Constructed response; no printed choices and JS choices is empty."
+      }
+    },
+    {
+      "qid": 22,
+      "identityAndPageMatchJS": true,
+      "notationInventoryPresent": true,
+      "notationSerializationsExactJSSubstrings": true,
+      "visualAnchorExactJSSubstringAndBasis": true,
+      "answerSolutionEmpty": true,
+      "choiceReviews": {
+        "status": "NOT_APPLICABLE",
+        "reason": "Constructed response; no printed choices and JS choices is empty."
+      }
+    }
+  ],
+  "assetReviews": [
+    {
+      "qid": 3,
+      "checks": {
+        "CROP_PURITY": "PASS",
+        "PNG_DECODE": "PASS",
+        "QUESTION_SEMANTIC_MATCH": "PASS",
+        "NO_CHOICES_CONTAMINATION": "PASS",
+        "NO_OTHER_QUESTION_TEXT": "PASS",
+        "JS_REFERENCE": "PASS",
+        "SOURCE_DOCUMENT_QUESTION_PAGE_BBOX_BINDING": "PASS",
+        "NO_CLIPPING": "PASS",
+        "REQUIRED_LABELS_PRESENT": "PASS",
+        "NO_PAGE_BORDER_CONTAMINATION": "PASS"
+      },
+      "sha256": "6e177ab280325abdc21f43b109d27cb3b727f23b368c29f5b17d1f6606a4a6fb",
+      "comparison": "PNG shown against p001 at exact bbox; graph includes y-axis, origin, velocity curve, label y=v(t), horizontal t-axis, endpoint label 20. Direct page crop pixels identical; graph complete and isolated.",
+      "sourcePdfSha256": "0c470b22688eb20c41e6758b71834066e6e88ae6ae1c7f1672a5bce4490dd851",
+      "bbox": {
+        "coordinateSpace": "page-pixel top-left origin",
+        "x1": 250,
+        "y1": 2215,
+        "x2": 1050,
+        "y2": 2540
+      },
+      "path": "archive-work/assets/images/22_순천고_2학기_기말_고2_수학II/q003_visual.png",
+      "restoration": "none",
+      "sourcePageNo": 1,
+      "sourceQuestionNo": "3",
+      "questionReviewRef": "qid 3",
+      "cropGenerator": "scanned_exam_pipeline.py",
+      "processing": [
+        "direct pixel crop from source page raster only"
+      ],
+      "sourcePagePath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p001.png",
+      "jsReference": "assets/images/22_순천고_2학기_기말_고2_수학II/q003_visual.png"
+    },
+    {
+      "qid": 21,
+      "checks": {
+        "CROP_PURITY": "PASS",
+        "PNG_DECODE": "PASS",
+        "QUESTION_SEMANTIC_MATCH": "PASS",
+        "NO_CHOICES_CONTAMINATION": "PASS",
+        "NO_OTHER_QUESTION_TEXT": "PASS",
+        "JS_REFERENCE": "PASS",
+        "SOURCE_DOCUMENT_QUESTION_PAGE_BBOX_BINDING": "PASS",
+        "NO_CLIPPING": "PASS",
+        "REQUIRED_LABELS_PRESENT": "PASS",
+        "NO_PAGE_BORDER_CONTAMINATION": "PASS"
+      },
+      "sha256": "3fa4b7bb5a91e51889d22a6b36f9b4ede7d127228e4abdd2148c548150ababa8",
+      "comparison": "Viewed p005 original, exact bbox crop, and final PNG. Graph labels y=g(x), y=f(x), axes/origin, dashed guides, x labels −2 and 1 and both tangencies are visible. The report discloses a mask for adjacent score text; graph pixels remain intact.",
+      "sourcePdfSha256": "0c470b22688eb20c41e6758b71834066e6e88ae6ae1c7f1672a5bce4490dd851",
+      "bbox": {
+        "coordinateSpace": "page-pixel top-left origin",
+        "x1": 190,
+        "y1": 1610,
+        "x2": 780,
+        "y2": 2250
+      },
+      "path": "archive-work/assets/images/22_순천고_2학기_기말_고2_수학II/q021_visual.png",
+      "restoration": "none; source pixels unchanged",
+      "sourcePageNo": 5,
+      "sourceQuestionNo": "서술형2",
+      "maskEvidence": {
+        "pixelDiffInsideMask": 1325,
+        "localBBox": {
+          "x1": 510,
+          "y1": 0,
+          "x2": 589,
+          "y2": 45
+        },
+        "graphPixelsChanged": false,
+        "purpose": "remove adjacent score text only",
+        "pixelDiffOutsideMask": 0
+      },
+      "questionReviewRef": "qid 21",
+      "cropGenerator": "scanned_exam_pipeline.py",
+      "processing": [
+        "direct pixel crop from source page raster",
+        "white mask only at crop-local bbox (510,0)-(589,45) removes adjacent printed [7점] score pixels"
+      ],
+      "sourcePagePath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p005.png",
+      "jsReference": "assets/images/22_순천고_2학기_기말_고2_수학II/q021_visual.png"
+    }
+  ],
+  "finalVerdict": "SOURCE_QA_REPORT_RECHECK_PASS",
+  "persistenceStatus": "PERSISTED_BY_SOURCE_WORKER_FROM_REVIEWER_FINAL_RESPONSE_UTF8"
+}

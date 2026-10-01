@@ -3647,7 +3647,7 @@
     "stringNormalization": "none"
   },
   "questionIdentityCount": 22,
-  "finalVerdict": "SOURCE_QA_RECHECK_PENDING",
+  "finalVerdict": "SOURCE_QA_PASS",
   "sourcePageEvidence": [
     {
       "path": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/pages/page_p001.png",
@@ -3704,8 +3704,27 @@
       }
     ],
     "freshIndependentRecheckRequired": true,
-    "recheckStatus": "PENDING"
+    "recheckStatus": "PENDING",
+    "freshIndependentRecheck": {
+      "status": "SOURCE_QA_REPORT_RECHECK_PASS",
+      "recheckReportSha256": "sha256:d90dae34899026459e2fc78fa3ad2b7df0a7c76b0687ffd2e5fca2fcaf4cfcc0",
+      "reviewerId": "/root/suncheon_source_qa_recheck_20261002",
+      "recheckedAtKst": "2026-10-02T02:33:40+09:00"
+    }
   },
-  "reportStatus": "REVISED_EVIDENCE_PENDING_FRESH_INDEPENDENT_RECHECK",
-  "reviewStatus": "PENDING_FRESH_OCR_FREE_RECHECK"
+  "reportStatus": "SOURCE_QA_PASS_AFTER_FRESH_EVIDENCE_RECHECK",
+  "reviewStatus": "FRESH_INDEPENDENT_REPORT_RECHECK_PASS",
+  "freshIndependentRecheck": {
+    "schema": "SOURCE_TEXT_ASSET_INDEPENDENT_RECHECK_v1",
+    "status": "SOURCE_QA_REPORT_RECHECK_PASS",
+    "recheckReportPath": "archive-work/evidence/22_순천고_2학기_기말_고2_수학II/reports/source_text_asset_independent_review_recheck.json",
+    "recheckReportSha256": "sha256:d90dae34899026459e2fc78fa3ad2b7df0a7c76b0687ffd2e5fca2fcaf4cfcc0",
+    "reviewerId": "/root/suncheon_source_qa_recheck_20261002",
+    "sourceArtifactCommitSha": "79a082fda7522da09d973591173260b9efa18bb6",
+    "evidenceRepairCommitSha": "9528e6fdd1a55da6b699a11b73832e257084b551",
+    "correctedCanonicalReportSha256BeforeRecheck": "sha256:785ade3ae674e659929ecb9b114a454fdb0185beafbe3f1371f26297758512fa",
+    "qid21AnchorStatus": "PASS",
+    "fullReportIntegrityStatus": "PASS",
+    "recheckedAtKst": "2026-10-02T02:33:40+09:00"
+  }
 }
