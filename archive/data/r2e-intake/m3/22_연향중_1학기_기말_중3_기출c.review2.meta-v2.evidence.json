@@ -1,0 +1,424 @@
+{
+  "schemaVersion": "JS_ARCHIVE_M3_REVIEW2_META_V2_EVIDENCE_v1",
+  "certificationGeneration": "MIDDLE_RECERT_2026-09-30_META_V2",
+  "certificationTrack": "FULL_INTEGRATED_V2",
+  "canonicalOrdinal": 37,
+  "lane": "REVIEW2-1",
+  "examPath": "archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+  "reviewedArtifactSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "sourceMainSha": "57ac2d7c3f826d75d2e7b29860e74360e1b4ed1e",
+  "sourceMainExamBlobSha": "eda24492496203ffc01baef703ff6c8608b71420",
+  "upstreamReview1Commit": "46aac7b219dc64fea305a04f190de729f5d1e6ca",
+  "upstreamReview1PayloadSha": "8e085164da03e1cccefd65f414128fef34d0e7e1",
+  "upstreamReview1ReceiptSha": "7aa8f0d8f7510c88df7acff56cb0585a2bc8f872",
+  "reviewMode": "FRESH_FULL_CURRENT_ARTIFACT_REDERIVATION",
+  "audits": {
+    "sourceContentChoicesAnswer": "21/21; protected content/choices/answer/image exact to current main; objective choices 90/90",
+    "mathSolution": "21/21 audited; 20/21 mathematically resolved in current artifact; q12 source text/figure conflict prevents a unique current-source answer",
+    "smallBoard": "21/21",
+    "layout": "21/21; q1-18 grid; q19-21 subjective-2up with static capacity evidence",
+    "existingProblemVisual": "5/5 physically inspected; q11/q15/q18/q20 PASS; q12 source text/figure conflict",
+    "sourceReferencedVisual": "6/6 attempted; q11/q12/q15/q18/q20 present, q19 missing",
+    "visualNecessity": "21/21 independently audited; solutionVisualMissingQids=[]",
+    "curriculumMethod": "21/21 independently inventoried; curriculumViolationQids=[]",
+    "metadata": "21/21 fresh",
+    "canonicalBindingRuntime": "21/21",
+    "difficulty": "21/21 fresh; 20 resolved + q12 UNKNOWN because the current item is source-conflicted"
+  },
+  "protectedFieldDrift": 0,
+  "mathCheckSummary": {
+    "1": "③",
+    "2": "④",
+    "3": "②",
+    "4": "①",
+    "5": "②",
+    "6": "⑤",
+    "7": "②",
+    "8": "⑤",
+    "9": "③",
+    "10": "①",
+    "11": "③",
+    "12": "UNRESOLVED_CURRENT_ARTIFACT: literal stem/image order conflict yields no listed answer under the literal 'respectively' assignment; image-intended route yields ③",
+    "13": "⑤",
+    "14": "①",
+    "15": "④",
+    "16": "①",
+    "17": "⑤",
+    "18": "④",
+    "19": "5초 후",
+    "20": "9",
+    "21": "y=-1/2(x-1)^2+4; axis x=1; vertex (1,4); opens downward(위로 볼록); increasing for x<1 and decreasing for x>1"
+  },
+  "visualEvidence": {
+    "11": "blob 8a4ef0d4a36e4ea9ea9e27af805bc7c0f4f07ee4: both parabolas share O; narrow graph passes (1,4), wide graph passes (2,1), so ab=1.",
+    "12": "blob 9880d829b4629c75676a745da3afe60f79d60411: A is drawn on y=3x^2 and B on y=ax^2 at x=2, opposite the literal 'respectively' order in content.",
+    "15": "blob ebc8c5555072c45f3af2d96f8b93ec6bbef46c15: downward-opening parabola; vertex is in quadrant I, so a<0,p>0,q>0.",
+    "18": "blob 5003c9475f0d9dde4e4bf97a8dc9177c132dd2e2: x-intercepts -5,2 and y-intercept -10; y=(x+5)(x-2), a+b+c=-6.",
+    "19": "stem explicitly requires a figure but image is null and q19.png is absent; text is enough to solve the math, but source visual parity is not recoverable from the repository.",
+    "20": "blob ef07d8237feaff055640ba2a6b99f00dd89ef826: graph y=ax^2 passes (4,-4), so a=-1/4; x-axis reflection gives y=1/4x^2 and k=9."
+  },
+  "curriculumMethodAuditCount": "21/21",
+  "curriculumMethodInventory": {
+    "1": {
+      "inventory": [
+        "이항·전개",
+        "다항식 차수 판별",
+        "분모가 있는 식의 다항방정식 여부"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식"
+    },
+    "2": {
+      "inventory": [
+        "전개",
+        "계수 정리",
+        "이차항 계수≠0 조건"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식"
+    },
+    "3": {
+      "inventory": [
+        "주어진 근 대입",
+        "매개변수 결정",
+        "인수분해"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식"
+    },
+    "4": {
+      "inventory": [
+        "전개",
+        "이항",
+        "완전제곱식 변형"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식"
+    },
+    "5": {
+      "inventory": [
+        "근의 공식",
+        "근호식 비교",
+        "계수 결정"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식"
+    },
+    "6": {
+      "inventory": [
+        "중근 조건",
+        "판별식 D=b²-4ac"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 근의 개수·판별"
+    },
+    "7": {
+      "inventory": [
+        "다각형 대각선 수",
+        "내각의 합",
+        "원의 넓이",
+        "정육면체 겉넓이",
+        "사다리꼴 넓이",
+        "이차함수 판별"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차함수의 뜻 + 선행 도형 공식"
+    },
+    "8": {
+      "inventory": [
+        "y=ax²의 방향",
+        "대칭축",
+        "꼭짓점",
+        "증가·감소"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 y=ax² 그래프"
+    },
+    "9": {
+      "inventory": [
+        "x축 대칭 시 계수 부호 반전",
+        "y=ax² 그래프 비교"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 y=ax² 그래프"
+    },
+    "10": {
+      "inventory": [
+        "|a|와 포물선 폭의 관계"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 y=ax² 그래프"
+    },
+    "11": {
+      "inventory": [
+        "그래프 격자점 판독",
+        "y=ax²에 좌표 대입",
+        "계수 결정"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 그래프와 식"
+    },
+    "12": {
+      "inventory": [
+        "x=2에서 함수값",
+        "선분 길이",
+        "계수 방정식"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 그래프와 식",
+      "note": "method is in curriculum; source text/figure order conflict remains an item hold"
+    },
+    "13": {
+      "inventory": [
+        "평행이동",
+        "이차항 계수 보존"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 꼭짓점형·평행이동"
+    },
+    "14": {
+      "inventory": [
+        "수평 평행이동",
+        "점 대입",
+        "제곱방정식의 두 해"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 꼭짓점형·평행이동"
+    },
+    "15": {
+      "inventory": [
+        "꼭짓점형 y=a(x-p)²+q",
+        "개구 방향",
+        "꼭짓점 좌표의 부호"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차함수 그래프"
+    },
+    "16": {
+      "inventory": [
+        "대칭축",
+        "꼭짓점",
+        "|a|와 폭",
+        "평행이동에서 이차항 계수 보존"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차함수 그래프"
+    },
+    "17": {
+      "inventory": [
+        "완전제곱식 변형",
+        "좌표 대입",
+        "축·꼭짓점",
+        "사분면 부호 판정"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 일반형 그래프"
+    },
+    "18": {
+      "inventory": [
+        "x절편으로 인수형 구성",
+        "y절편으로 계수 결정"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 그래프와 계수 + 선행 인수분해"
+    },
+    "19": {
+      "inventory": [
+        "거리=속력×시간",
+        "직사각형 변의 길이",
+        "삼각형 넓이",
+        "이차방정식",
+        "가장 이른 양의 해"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 이차방정식의 활용 + 선행 도형"
+    },
+    "20": {
+      "inventory": [
+        "그래프 점 좌표 대입",
+        "계수 결정",
+        "x축 대칭",
+        "함숫값"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 그래프와 식"
+    },
+    "21": {
+      "inventory": [
+        "완전제곱식 변형",
+        "축·꼭짓점",
+        "개구 방향",
+        "증가·감소"
+      ],
+      "verdict": "ALLOWED",
+      "authority": "2015 M3-1 일반형 그래프"
+    }
+  },
+  "curriculumViolationQids": [],
+  "visualNecessityAuditCount": "21/21",
+  "visualNecessityRows": {
+    "1": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "2": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "3": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "4": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "5": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "6": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC",
+    "7": "NO_SOLUTION_VISUAL_REQUIRED_FORMULA_CLASSIFICATION",
+    "8": "NO_SOLUTION_VISUAL_REQUIRED_FORMULA_PROPERTIES_SUFFICIENT",
+    "9": "NO_SOLUTION_VISUAL_REQUIRED_COEFFICIENT_SYMMETRY_SUFFICIENT",
+    "10": "NO_SOLUTION_VISUAL_REQUIRED_ABS_COEFFICIENT_RULE_SUFFICIENT",
+    "11": "EXISTING_PROBLEM_VISUAL_SUFFICIENT_PASS",
+    "12": "EXISTING_PROBLEM_VISUAL_CONFLICT_ITEM_HOLD_EXTRA_SOLUTION_VISUAL_CANNOT_RESOLVE_SOURCE",
+    "13": "NO_SOLUTION_VISUAL_REQUIRED_TRANSLATION_COEFFICIENT_TEST",
+    "14": "NO_SOLUTION_VISUAL_REQUIRED_ALGEBRAIC_TRANSLATION_AND_SUBSTITUTION",
+    "15": "EXISTING_PROBLEM_VISUAL_SUFFICIENT_PASS",
+    "16": "NO_SOLUTION_VISUAL_REQUIRED_FORMULA_PROPERTIES_SUFFICIENT",
+    "17": "NO_SOLUTION_VISUAL_REQUIRED_COMPLETE_SQUARE_AND_SUBSTITUTION_SUFFICIENT",
+    "18": "EXISTING_PROBLEM_VISUAL_SUFFICIENT_PASS",
+    "19": "SOURCE_VISUAL_MISSING_ITEM_HOLD_EXTRA_SOLUTION_VISUAL_NOT_SOURCE_SUBSTITUTE",
+    "20": "EXISTING_PROBLEM_VISUAL_SUFFICIENT_PASS",
+    "21": "NO_SOLUTION_VISUAL_REQUIRED_COMPLETE_SQUARE_PROPERTIES_SUFFICIENT"
+  },
+  "solutionVisualMissingQids": [],
+  "layoutEvidence": {
+    "gridQuestionIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "subjective2upQuestionIds": [
+      19,
+      20,
+      21
+    ],
+    "staticCapacityEvidence": {
+      "19": "long motion/geometry stem plus required written work and referenced figure area",
+      "20": "problem graph plus multi-step written derivation",
+      "21": "multi-output written response: transformed form, axis, vertex, opening, increase/decrease"
+    }
+  },
+  "itemHolds": [
+    {
+      "qid": 12,
+      "reason": "SOURCE_TEXT_FIGURE_LABEL_ORDER_CONFLICT",
+      "observedEvidence": "Current content assigns y=ax^2 then y=3x^2 respectively to A,B, but the linked source image places A on y=3x^2 and B on y=ax^2. Literal content produces no listed answer; the image-intended assignment produces ③.",
+      "unresolvedPoint": "Exact original page text is still required to determine which equation order is source-authoritative.",
+      "nextRequiredEvidenceOrCapability": "Read the exact original 2022 연향중3 1기말 q12 source page/PDF before changing protected content.",
+      "createdStage": "REVIEW1",
+      "lastReviewedStage": "REVIEW2"
+    },
+    {
+      "qid": 19,
+      "reason": "SOURCE_ASSET_MISSING",
+      "observedEvidence": "Stem says '아래 그림과 같이'; image is null and q19.png is absent. The text nevertheless determines the mathematics and gives first time 5 seconds.",
+      "unresolvedPoint": "Exact original rectangle/motion source figure is absent from repository artifacts.",
+      "nextRequiredEvidenceOrCapability": "Recover exact q19 source figure from the original 2022 연향중3 1기말 PDF/page; catalog URL exists but source PDF object was not accessible in this run.",
+      "createdStage": "CREATE",
+      "lastReviewedStage": "REVIEW2"
+    }
+  ],
+  "metadataHolds": {},
+  "metadataFreshRowDigest": [
+    "q1 M3-RPM-029 RPM_ONLY difficulty=B2",
+    "q2 M3-RPM-029 RPM_ONLY COND_NONZERO SEQUENTIAL difficulty=B2",
+    "q3 M3-RPM-031 RPM_ONLY SEQUENTIAL difficulty=B2",
+    "q4 M3-RPM-034 RPM_ONLY difficulty=B2",
+    "q5 M3-RPM-035 RPM_ONLY SEQUENTIAL difficulty=B3 boundary=B23",
+    "q6 M3-RPM-036 RPM_ONLY difficulty=B1",
+    "q7 M3-RPM-043 RPM_ONLY L2=M3-04-QUADRATIC_FUNCTION_GRAPH difficulty=B2",
+    "q8 M3-RPM-046 RPM_ONLY difficulty=B1",
+    "q9 M3-RPM-045 RPM_ONLY CC_FUNCTION_SYMMETRY difficulty=B1",
+    "q10 M3-RPM-045 RPM_ONLY difficulty=B1",
+    "q11 M3-RPM-048 PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION BINDING_PENDING difficulty=B2",
+    "q12 M3-RPM-048 PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION COND_POSITIVE SEQUENTIAL BINDING_PENDING ITEM_HOLD=SOURCE_TEXT_FIGURE_LABEL_ORDER_CONFLICT difficulty=UNKNOWN",
+    "q13 M3-RPM-049 PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION BINDING_PENDING difficulty=B1",
+    "q14 M3-RPM-049 PT_FUNCTION_GRAPH_TRANSFORM/TPL_FUNCTION_GRAPH_TRANSLATION SEQUENTIAL BINDING_PENDING difficulty=B2",
+    "q15 M3-RPM-053 RPM_ONLY CC_VERTEX difficulty=B1",
+    "q16 M3-RPM-050 RPM_ONLY difficulty=B2",
+    "q17 M3-RPM-051 RPM_ONLY CC_VERTEX SEQUENTIAL difficulty=B2",
+    "q18 M3-RPM-054 PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION SEQUENTIAL BINDING_PENDING difficulty=B3",
+    "q19 M3-RPM-041 RPM_ONLY CC_TRIANGLE_AREA SEQUENTIAL ITEM_HOLD=SOURCE_ASSET_MISSING difficulty=B3",
+    "q20 M3-RPM-048 PT_H1_QUADRATIC_RECONSTRUCTION/TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION CC_FUNCTION_SYMMETRY SEQUENTIAL BINDING_PENDING difficulty=B3",
+    "q21 M3-RPM-051 RPM_ONLY CC_VERTEX+CC_FUNCTION_MONOTONICITY SEQUENTIAL difficulty=B3"
+  ],
+  "semanticFinalCount": 21,
+  "projection": {
+    "REUSE": 0,
+    "BINDING_PENDING": 6,
+    "UNMATERIALIZED": 15,
+    "NOT_ATTEMPTED": 0
+  },
+  "difficultyBlindPass": {
+    "perQuestion": {
+      "1": "B2",
+      "2": "B2",
+      "3": "B2",
+      "4": "B2",
+      "5": "B3",
+      "6": "B1",
+      "7": "B2",
+      "8": "B1",
+      "9": "B1",
+      "10": "B1",
+      "11": "B2",
+      "12": "UNKNOWN",
+      "13": "B1",
+      "14": "B2",
+      "15": "B1",
+      "16": "B2",
+      "17": "B2",
+      "18": "B3",
+      "19": "B3",
+      "20": "B3",
+      "21": "B3"
+    },
+    "distribution": {
+      "B1": 6,
+      "B2": 9,
+      "B3": 5,
+      "B4": 0,
+      "B5": 0,
+      "UNKNOWN": 1
+    },
+    "note": "Fresh difficulty was rederived from the current question/choices/required visuals/final solution. q12 is UNKNOWN because the current source representation is internally inconsistent; it is not safe for automatic selection until source recovery."
+  },
+  "compareAfterFreshPass": {
+    "upstreamSemanticComparison": "21/21 semantic path reproduced; no Meta semantic correction",
+    "upstreamDifficultyComparison": "q12 changed B3 -> UNKNOWN because REVIEW2 treats unresolved source conflict as non-selectable difficulty; all other buckets reproduced",
+    "metadataCorrectionCount": 0,
+    "difficultyCorrectionCount": 1,
+    "difficultyCorrectedQids": [
+      12
+    ]
+  },
+  "canonicalValidation": {
+    "rpmPrimaryViewSha": "8f132f190f5ec8c1bb1d7e7d16ed0798e3a5eb20",
+    "rpmCrosswalkSha": "afc1ede749966e838b117aca3cc640e5e8c2a345",
+    "activeRegistrySha": "c661a39dca228f678d7a4ee2d9df9ccc7b6244be",
+    "functionsGraphsTaxonomySha": "a6684bdfec3ff8beaff25c19346b4865a24f7b81",
+    "functionsGraphsBindingsSha": "89e975174c3aa3339f287db56c35d5db8df2a902",
+    "h1FoundationTaxonomySha": "2d2ce738893a58206072da3f972a832c9adf5eb6",
+    "h1FoundationBindingsSha": "53dc8919232dbd0f86b126c26fbca16d84be0269",
+    "result": "Six projected PT/TPL rows remain ACTIVE semantic candidates with missing exact 2015 M3-04 binding (BINDING_PENDING); the other 15 remain RPM_ONLY / UNMATERIALIZED. No new key was invented."
+  },
+  "outputFinalArtifactSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "examArtifactMutation": false,
+  "protectedSourceFieldMutation": false,
+  "mainMutation": 0,
+  "next": "ITEM_RECOVERY_QUEUE"
+}
