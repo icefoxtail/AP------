@@ -28,8 +28,8 @@
   ],
   "heldQids": [],
   "sourceArtifactGitBlobSha": "8a95f0fe0c2ecd24bef37cc98bf767c6d7354559",
-  "reviewedArtifactSha256": "sha256:a5eb1267ee3cc67b5b22f0ec77333f3418546abe93513ef9ca3c367043e28cc3",
-  "reviewedArtifactGitBlobSha": "3aaefbd712b7e238691b5a437df74f7bf44a21f1",
+  "reviewedArtifactSha256": "sha256:b77914eaf9c34e72b6f108a5f07970dd72cd329dd67c01ca74cbbb36378ecdad",
+  "reviewedArtifactGitBlobSha": "f8907f7135464e7aa5d9bbb754f857fe913302c7",
   "axes": [
     "source↔solution math",
     "answer alignment",
@@ -54,7 +54,8 @@
       "answerCheck": "PASS",
       "solutionCheck": "PASS",
       "freshMathCheck": "The comparison vector is (9,10); x/y=9/10, matching ②.",
-      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY"
+      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY",
+      "curriculumMetaRecheck": "PASS_AFTER_RPM_ADJUDICATION"
     },
     {
       "qid": 3,
@@ -94,7 +95,8 @@
       "answerCheck": "PASS",
       "solutionCheck": "PASS",
       "freshMathCheck": "Direction vectors yield sin²θ=9/10.",
-      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY"
+      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY",
+      "curriculumMetaRecheck": "PASS_AFTER_RPM_ADJUDICATION"
     },
     {
       "qid": 8,
@@ -134,14 +136,15 @@
       "answerCheck": "PASS",
       "solutionCheck": "PASS",
       "freshMathCheck": "Two admissible B vectors give circle radii √2 and2√2; squared perimeter sum40π².",
-      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY"
+      "curriculumCheck": "PASS_2015_HIGH_GEOMETRY",
+      "curriculumMetaRecheck": "PASS_AFTER_RPM_ADJUDICATION"
     },
     {
       "qid": 13,
       "sourceParity": "PASS_FROZEN_FIELDS",
       "answerCheck": "PASS",
       "solutionCheck": "PASS",
-      "freshMathCheck": "Projected ellipse caps and fourfold symmetry give A+B=16/3+32√3π/27, matching①; confirmed by two independent blind calculations.",
+      "freshMathCheck": "The Geometry-only cap proof is reproducible: the 60° sector minus a right triangle with legs r/2 and √3r/2, scaled by 1/√3, gives T; then A+B matches choice①.",
       "curriculumCheck": "PASS_2015_HIGH_GEOMETRY"
     },
     {
@@ -210,5 +213,7 @@
     19,
     20
   ],
-  "repairRecheckQids": []
+  "repairRecheckQids": [
+    13
+  ]
 }

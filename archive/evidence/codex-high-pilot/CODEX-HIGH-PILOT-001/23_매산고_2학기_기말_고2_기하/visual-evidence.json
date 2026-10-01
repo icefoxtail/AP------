@@ -6,8 +6,8 @@
   "status": "ROUTINE_VISUAL_PASS_WITH_Q13_SOLUTION_SVG",
   "denominator": 20,
   "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
-  "targetArtifactSha256": "sha256:a5eb1267ee3cc67b5b22f0ec77333f3418546abe93513ef9ca3c367043e28cc3",
-  "targetArtifactGitBlobSha": "3aaefbd712b7e238691b5a437df74f7bf44a21f1",
+  "targetArtifactSha256": "sha256:b77914eaf9c34e72b6f108a5f07970dd72cd329dd67c01ca74cbbb36378ecdad",
+  "targetArtifactGitBlobSha": "f8907f7135464e7aa5d9bbb754f857fe913302c7",
   "problemVisualRequiredQids": [
     4,
     8,
@@ -66,8 +66,8 @@
     {
       "qid": 13,
       "path": "archive-work/assets/images/23_매산고_2학기_기말_고2_기하/q013_solution.svg",
-      "sha256": "sha256:381b559f2e0de859ef769a12dfdf9b7f273920ccd781bdd81a462b7d2952324f",
-      "gitBlobSha": "3e95d53962b4045311fd43a777043082f465fdbf",
+      "sha256": "sha256:5ca75623acbf3e8d97caaec4c11a43ba27331faf8b566ee6b2253a9cbac0c9b1",
+      "gitBlobSha": "aadeffb1b23315cd7197dcc9e6e19c01399f48e0",
       "jsRef": "assets/images/23_매산고_2학기_기말_고2_기하/q013_solution.svg",
       "alt": "정사각형 밑면 위의 네 타원과 가운데 빗금친 영역 A, 한 모서리 타원 조각 T",
       "caption": "네 타원이 접하는 가운데 영역 A와 한 모서리 조각 T를 본다.",
@@ -107,9 +107,9 @@
     "needed": true,
     "method": "Local sharp SVG rasterization (no browser).",
     "previewPath": "archive/evidence/codex-high-pilot/CODEX-HIGH-PILOT-001/23_매산고_2학기_기말_고2_기하/q013_solution-render.png",
-    "previewSha256": "sha256:0bd16e930b17fae31d3a33db53ded652b12326bc03c7807d024935e05597c4e4",
+    "previewSha256": "sha256:afd3fe5ea44f1a1a7f820c327a22ea8f2ba3f377096ac74f7c953cfdb6c1c720",
     "dimensions": {
-      "width": 500,
+      "width": 700,
       "height": 430
     },
     "rendererVersions": {
@@ -143,7 +143,7 @@
       "zlib-ng": "2.3.3",
       "sharp": "0.35.4"
     },
-    "actualPixelInspection": "PASS: central hatch remains inside four inward ellipse arcs; one cap T is isolated in the upper-right corner; labels S1–S4, A, T do not collide or clip; monochrome hatches distinguish A and T."
+    "actualPixelInspection": "PASS: ellipse boundaries, central A hatch, cap T, sector/triangle inset, 60° label, right-angle marker, O, r/2 and √3r/2 labels are legible and non-overlapping in grayscale."
   },
   "solutionVisualAudit": "PASS: rendered q13 solutionImage visually matches the formula and region names in solution.",
   "targetedRenderNeeded": true,
@@ -333,7 +333,7 @@
   "independentVisualReview": {
     "reviewer": "ordinal3_q13_visual_review",
     "status": "PASS",
-    "findings": "Ellipse semiaxes, four tangent points, central A arcs, cap T, labels, grayscale readability, and clipping/collision inspected against the raster preview.",
+    "findings": "Final recheck confirms O is clear of the radius, the right-angle marker and both leg labels r/2 and √3r/2 are visible, and the 60°/T labels remain distinct. Geometry and area decomposition match the current Geometry-only solution.",
     "canonicalEngineRender": "NOT_TESTED_ROUTINE_NO_FULL_SOLUTION_RENDER"
   }
 }

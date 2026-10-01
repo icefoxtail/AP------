@@ -6,8 +6,8 @@
   "status": "MANUAL_SOLUTION_CALIBRATION_PASS_WITH_SCOPE_NOTE",
   "originMain": "6607e74c48bb6ab0043ef4feca851d5bb366eca1",
   "targetArtifactPath": "archive-work/exams/original/high/h2/2final/23_매산고_2학기_기말_고2_기하.js",
-  "targetArtifactSha256": "sha256:a5eb1267ee3cc67b5b22f0ec77333f3418546abe93513ef9ca3c367043e28cc3",
-  "targetArtifactGitBlobSha": "3aaefbd712b7e238691b5a437df74f7bf44a21f1",
+  "targetArtifactSha256": "sha256:b77914eaf9c34e72b6f108a5f07970dd72cd329dd67c01ca74cbbb36378ecdad",
+  "targetArtifactGitBlobSha": "f8907f7135464e7aa5d9bbb754f857fe913302c7",
   "denominator": 20,
   "resolvedSolutionCount": 20,
   "itemHoldQids": [],
@@ -89,5 +89,13 @@
   ],
   "scopeLimit": "Only one exact source-year H2 Geometry sample was present, and its live unit metadata is normalized to H22-GE. A second same-grade/course spatial-geometry reference is H22-GE. Both are used solely as student-solution quality references; no sample supplies semantic answers or target taxonomy.",
   "conclusion": "Quality floor met for the 20 target solutions using the closest current-main H2 Geometry references; curriculum-version caveat is durable. No target wording or solution was copied.",
-  "postCalibrationChanges": "Added q13 solutionImage after the solution comparison; student solution text is unchanged."
+  "postCalibrationChanges": "Added the q13 solution visual and revised q13 to the in-curriculum 60° sector/triangle area proof; affected solution and calibration scope were rechecked. L1/L2 taxonomy fields for q2/q7/q12 were corrected from current-main RPM mapping; solution wording is unchanged. L1/L2 taxonomy fields for q2/q7/q12 were corrected from current-main RPM mapping; solution wording is unchanged. L1/L2 for q2/q7/q12 corrected from current-main RPM mapping; solution wording unchanged.",
+  "postCalibrationRecheck": {
+    "qid": 13,
+    "status": "PASS",
+    "comparisonQids": [
+      12
+    ],
+    "observation": "Target uses standard sector and triangle areas with the orthogonal-projection area factor; the inset visual shows the subtraction."
+  }
 }
