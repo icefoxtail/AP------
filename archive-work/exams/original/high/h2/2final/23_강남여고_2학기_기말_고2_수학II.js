@@ -28,7 +28,7 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "$f'(x)=3x^2+8x$이므로 $f'(-1)=3-8=-5$이다. 따라서 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -110,7 +110,7 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "$u=4h$로 두면 극한은 $4\\lim_{u\\to0}\\dfrac{f(1+u)-f(1)}u=4f'(1)$이다. $f'(1)=2$이므로 값은 $8$, 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -192,7 +192,7 @@ window.questionBank = [
       "$2$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$f(-7)=49-28-21=0$, $f(3)=9+12-21=0$이므로 롤의 정리를 적용할 수 있다. $f'(x)=2x+4$에서 $f'(c)=0$이면 $c=-2$이다. 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -274,7 +274,7 @@ window.questionBank = [
       "$\\dfrac{5}{2}$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "평균변화율은 $\\dfrac{f(2)-f(0)}{2-0}=\\dfrac{10-0}{2}=5$이다. $f'(x)=2x+3$이므로 $2c+3=5$에서 $c=1$이다. 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -356,7 +356,7 @@ window.questionBank = [
       "$54$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "원시함수는 $x^2+7x$이다. 따라서 $\\int_1^5(2x+7)dx=[x^2+7x]_1^5=60-8=52$이고, 정답은 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -438,7 +438,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "위치의 도함수는 속도이므로 $x'(t)=-6t^2+18t=-6t(t-3)$이다. $0<t<3$에서는 양수, $t>3$에서는 음수이므로 운동 방향은 $t=3$에서 바뀐다. 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -520,7 +520,7 @@ window.questionBank = [
       "$-2$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "그림에서 $-3<x<-2$일 때 $f'(x)>0$, $-2<x<1$일 때 $f'(x)<0$이다. $x=0$에서 도함수는 0이지만 부호는 바뀌지 않는다.\n$x=1$에서 도함수는 정의되지 않지만 함수 $f$는 연속이고, 왼쪽에서 감소하다 오른쪽에서 증가하므로 $f$는 $b=1$에서 극소이다. $x=2$에서도 도함수 부호는 양수로 유지된다.\n따라서 $a=-2$, $b=1$이고 $a+b=-1$이다. 정답은 ④이다.",
     "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q007_visual.png",
     "visualAsset": "assets/images/23_강남여고_2학기_기말_고2_수학II/q007_visual.png",
     "hasVisualAsset": true,
@@ -640,7 +640,7 @@ window.questionBank = [
       "$-5$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "접선 기울기는 $f'(x)=2x+a$이다. $x=2$에서 $4+a=6$이므로 $a=2$이다. 또 $(2,3)$이 곡선 위에 있으므로 $4+2a+b=3$, 따라서 $b=-5$이다. $a+b=-3$이므로 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -722,7 +722,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$-2x$는 홀함수이므로 대칭구간에서 적분값은 $0$이다. 따라서 $\\int_{-a}^a(-2x+4)dx=4(2a)=8a=16$이고 $a=2$, 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -804,7 +804,7 @@ window.questionBank = [
       "$-24$"
     ],
     "answer": "④",
-    "solution": "",
+    "solution": "$f'(x)=3x^2-6x-9=3(x-3)(x+1)$이므로 극대는 $x=-1$, 극소는 $x=3$에서 생긴다. $f(-1)=5+a=12$에서 $a=7$이다. 그러면 $f(3)=27-27-27+7=-20$이므로 정답은 ④이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -886,7 +886,7 @@ window.questionBank = [
       "$-\\dfrac{1}{6}$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "역함수가 존재하려면 이 삼차함수는 단조증가해야 하므로 $f'(x)=3x^2+2x-a\\ge0$이어야 한다. 이 이차식의 판별식은 $4+12a$이므로 $4+12a\\le0$, 즉 $a\\le-\\dfrac13$이다. 등호일 때도 도함수는 한 점에서만 $0$이고 함수는 엄격히 증가하므로 최댓값은 $-\\dfrac13$, 정답은 ②이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -968,7 +968,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "그림에서 $f(x)<0$인 $[-3,1]$의 적분은 $-A=-3$이고, $[1,4]$의 적분은 $B=2$이다. 따라서 $\\int_{-3}^4 f(x)dx=-1$이다. 또 $\\int_{-3}^4 2x dx=[x^2]_{-3}^4=16-9=7$이다. 구하는 값은 $-1+7=6$, 정답은 ②이다.",
     "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q012_visual.png",
     "visualAsset": "assets/images/23_강남여고_2학기_기말_고2_수학II/q012_visual.png",
     "hasVisualAsset": true,
@@ -1170,7 +1170,7 @@ window.questionBank = [
       "$132$"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "귀퉁이에서 한 변이 $x$인 정사각형을 자르면 상자 밑면은 $(12-2x)\\times(12-2x)$, 높이는 $x$이다. $V(x)=x(12-2x)^2$이고 $0<x<6$이다. $V'(x)=(12-2x)(12-6x)$이므로 $0<x<2$에서 증가하고 $2<x<6$에서 감소한다. 따라서 최댓값은 $V(2)=2\\cdot8^2=128$, 정답은 ③이다.",
     "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q014_visual.png",
     "visualAsset": "assets/images/23_강남여고_2학기_기말_고2_수학II/q014_visual.png",
     "hasVisualAsset": true,
@@ -1290,7 +1290,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$f(x)-g(x)=x^3-x^2-x+6-a=\\phi(x)-a$라 두자. $\\phi'(x)=3x^2-2x-1=(3x+1)(x-1)$이므로 $x\\ge0$에서 $\\phi$는 $[0,1]$에서 감소하고 $[1,\\infty)$에서 증가한다. 최솟값은 $\\phi(1)=5$이다. 모든 $x\\ge0$에서 $\\phi(x)-a\\ge0$이려면 $a\\le5$이므로 최댓값은 5, 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1374,7 +1374,7 @@ window.questionBank = [
       "$-\\dfrac{9}{2}$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "두 적분의 합은 곱의 미분법으로 $\\int_1^2\\{(x^2+x)f(x)' +(2x+1)f(x)\\}dx=[(x^2+x)f(x)]_1^2$이다. $f(1)=0$, $f(2)=2-a$이므로 $6(2-a)=-12$, 따라서 $a=4$이다. $f(x)=x^2-5x+4$이고 $\\int_1^4 f(x)dx=[\\frac{x^3}{3}-\\frac{5x^2}{2}+4x]_1^4=-\\frac92$이다. 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1456,7 +1456,7 @@ window.questionBank = [
       "$21$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "$h(x)=x^3-3x$라 두면 $h'(x)=3(x^2-1)$이고 극댓값은 $h(-1)=2$, 극솟값은 $h(1)=-2$이다. 방정식은 $h(x)=2-n$이다.\n$n=1,2,3$이면 $2-n$은 $(-2,2)$에 있으므로 각각 서로 다른 실근이 3개이다.\n$n=4$이면 $2-n=-2$이므로 실근이 2개이다.\n$n=5,\\ldots,10$이면 $2-n<-2$이므로 각각 실근이 1개이다.\n따라서 $\\sum_{n=1}^{10}a_n=3+3+3+2+6=17$이고, 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1540,7 +1540,7 @@ window.questionBank = [
       "$\\sqrt{6}$"
     ],
     "answer": "②",
-    "solution": "",
+    "solution": "$0\\le x\\le1$에서 $x^3-x\\le0$이므로 $S_1=\\int_0^1(x-x^3)dx=\\dfrac14$이다. $x\\ge1$에서는 $x^3-x\\ge0$이므로 $S_2=\\int_1^a(x^3-x)dx=\\dfrac{a^4}{4}-\\dfrac{a^2}{2}+\\dfrac14$이다. $S_2=4S_1=1$에서 $a^4-2a^2-3=0$, 즉 $(a^2-3)(a^2+1)=0$이다. $a>1$이므로 $a=\\sqrt3$, 정답은 ②이다.",
     "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q018_visual.png",
     "visualAsset": "assets/images/23_강남여고_2학기_기말_고2_수학II/q018_visual.png",
     "hasVisualAsset": true,
@@ -1662,7 +1662,7 @@ window.questionBank = [
       "(가), (나), (다)"
     ],
     "answer": "③",
-    "solution": "",
+    "solution": "(가) $\\int_{-1}^1(6x-2x^2)dx=-\\dfrac43$이므로 $F(-1)=\\int_1^{-1}f(x)dx=\\dfrac43$이다. 참이다.\n(나) $F'=f$이고 $x<0$에서 $f(x)<0$, $0<x<3$에서 $f(x)>0$이다. 따라서 $F$는 $x=0$에서 극소이고 $F(0)=-\\int_0^1(6x-2x^2)dx=-\\dfrac73<0$이므로 거짓이다.\n(다) $-1\\le x\\le1$에서 $F(x)=3x^2-\\dfrac23x^3-\\dfrac73$이다. 따라서 $\\int_{-1}^1F(x)dx=2-\\dfrac{14}3=-\\dfrac83$이고 (다)는 참이다.\n그러므로 항상 옳은 것은 (가), (다)이며 정답은 ③이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1744,7 +1744,7 @@ window.questionBank = [
       "$249$"
     ],
     "answer": "⑤",
-    "solution": "",
+    "solution": "결합 시각을 A가 발사된 뒤 $m$초라 하면 (가)에 따라 B는 발사 후 $m-2$초 움직였다.\nA의 위치는 $\\dfrac{m^3}{120}$, B의 위치는 $\\dfrac{a(m-2)^2}{2}$이다. 결합하므로 두 위치가 같아 $\\dfrac{m^3}{120}=\\dfrac{a(m-2)^2}{2}$이다.\n(나)의 속도 조건은 $\\dfrac{m^2}{40}=a(m-2)$이다. 두 식을 함께 쓰면 $m>2$이고 $\\dfrac{m}{120}=\\dfrac{m-2}{80}$을 얻어 $m=6$이다. 그러면 $a=\\dfrac{m^2}{40(m-2)}=\\dfrac9{40}$이다.\n따라서 $40(a+m)=9+240=249$, 정답은 ⑤이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1828,7 +1828,7 @@ window.questionBank = [
       "$50$"
     ],
     "answer": "①",
-    "solution": "",
+    "solution": "(가) $f$는 홀함수이므로 $\\int_{-3}^3f(x)dx=0$이다.\n(나) $\\int_{-2}^3f(x)dx=\\int_{-2}^2f(x)dx+\\int_2^3f(x)dx$이고 첫 적분은 0이므로 $\\int_2^3f(x)dx=6$이다.\n(다) 홀함수의 대칭성에서 $\\int_2^5f(x)dx=-\\int_{-5}^{-2}f(x)dx=20$이다. 따라서 $\\int_3^5f(x)dx=20-6=14$이다.\n그러므로 $\\int_{-3}^5f(x)dx=14$이다. 또 $\\int_{-3}^{5}4x\\,dx=[2x^2]_{-3}^5=32$이므로 구하는 값은 $14+32=46$, 정답은 ①이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1904,7 +1904,7 @@ window.questionBank = [
     "content": "임의의 실수 $x$에 대하여 $\\int_a^x f(t)\\,dt=2x^2-8x+6$을 만족시키는 연속함수 $f(x)$에 대하여 $f(4)+a$의 값을 구하시오. (단, $a>1$) [5점]",
     "choices": [],
     "answer": "$11$",
-    "solution": "",
+    "solution": "양변을 $x$로 미분하면 $f(x)=4x-8$이다. $x=a$를 대입하면 적분은 $0$이므로 $2a^2-8a+6=0$, 즉 $a=1$ 또는 $a=3$이다. 조건 $a>1$에서 $a=3$이므로 $f(4)+a=8+3=11$이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -1982,7 +1982,7 @@ window.questionBank = [
     "content": "수직선 위를 움직이는 두 점 $P$, $Q$의 시각 $t$에서의 위치가 각각 $x_P(t)=\\dfrac{5}{3}t^3+\\dfrac{2}{3}$, $x_Q(t)=\\dfrac{9}{2}t^2+2t+1$일 때, 두 점 $P$, $Q$의 속도가 같아지는 순간에 두 점 사이의 거리를 구하시오. [5점]",
     "choices": [],
     "answer": "$9$",
-    "solution": "",
+    "solution": "속도를 구하면 $v_P=5t^2$, $v_Q=9t+2$이다. $5t^2=9t+2$에서 $t=2$ 또는 $t=-\\dfrac15$이다. 발사 후 시간이므로 $t=2$를 쓴다. 이때 $x_P=\\dfrac53(2)^3+\\dfrac23=14$, $x_Q=\\dfrac92(2)^2+2(2)+1=23$이므로 두 점 사이의 거리는 9이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
@@ -2058,7 +2058,7 @@ window.questionBank = [
     "content": "함수 $f(x)=x^3+ax^2+bx+c$의 도함수 $y=f'(x)$의 그래프가 다음 그림과 같다. 함수 $f(x)$의 극댓값이 $5$일 때, 상수 $a$, $b$, $c$의 값과 극솟값을 구하시오. [5점]",
     "choices": [],
     "answer": "$a=-6$, $b=0$, $c=5$, 극솟값 $-27$",
-    "solution": "",
+    "solution": "그림에서 $f'(x)$의 영점은 $0,4$이고 포물선은 위로 열린다. 최고차항 계수가 3이므로 $f'(x)=3x(x-4)$이다.\n적분하면 $f(x)=x^3-6x^2+C$이다. $x=0$에서 극댓값이 5이므로 $C=5$이다. 따라서 $a=-6,b=0,c=5$이다.\n$x=4$에서 극소이므로 $f(4)=64-96+5=-27$이다.",
     "image": "assets/images/23_강남여고_2학기_기말_고2_수학II/q024_visual.png",
     "visualAsset": "assets/images/23_강남여고_2학기_기말_고2_수학II/q024_visual.png",
     "hasVisualAsset": true,
@@ -2172,7 +2172,7 @@ window.questionBank = [
     "content": "다항함수 $f(x)$가 $\\int_{-3}^{1}f(x)\\,dx=5$, $\\int_0^5 f(x)\\,dx=6$, $\\int_1^5 f(x)\\,dx=8$을 만족시킬 때, 정적분 $\\int_{-3}^{0}\\{f(x)-4x\\}\\,dx$를 구하시오. [5점]",
     "choices": [],
     "answer": "$25$",
-    "solution": "",
+    "solution": "구간을 나누면 $\\int_{-3}^1f=\\int_{-3}^0f+\\int_0^1f=5$이다. 또한 $\\int_0^5f=\\int_0^1f+\\int_1^5f=6$이므로 $\\int_0^1f=6-8=-2$이다. 따라서 $\\int_{-3}^0f=5-(-2)=7$. 그리고 $\\int_{-3}^{0}4x\\,dx=[2x^2]_{-3}^0=-18$. 구하는 값은 $7-(-18)=25$이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,
