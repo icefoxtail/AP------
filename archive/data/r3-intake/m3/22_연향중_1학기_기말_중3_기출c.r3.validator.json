@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_VALIDATOR_RECEIPT_v1",
+  "stage": "R3",
+  "examPath": "archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js",
+  "examArtifactAuthority": "0d601b05be3f3d731a56483ee4391cd3709f8f9c",
+  "examGitBlobSha": "340a8e122a3583fa15c5a8824dfb4851c6be2024",
+  "examSha256": "sha256:f8bcd4d501a6d48bd57bb274b03a7ca3dcf7a9cf8e8cad3079776b341c41ae07",
+  "evidencePath": "archive/data/r3-intake/m3/22_연향중_1학기_기말_중3_기출c.r3.physical-evidence.json",
+  "evidenceGitBlobSha": "e96a62a26fff7b4b807f01679e7a5ac41ca245ae",
+  "evidenceSha256": "sha256:b32fabd6bb755b3487911024e9846db46cfeba66af6ccc411f679121687db1c5",
+  "gateSource": {
+    "reviewEvidenceGate": "archive/tools/review-evidence-gate.mjs@c9b50158bec0c931433e8c50913a5a555d3e53f5",
+    "solutionCalibrationGate": "archive/tools/solution-calibration-gate.mjs@b56d8b4c54c91ee75726c1c9e1ea4e13160bdc41",
+    "rulesIndex": "docs/rules/00_RULES_INDEX.md@7220dd0979ee0db703d9f91193f7dc2f7488ee98",
+    "r3Protocol": "docs/rules/03_REVIEW/JS아카이브_3차검수_프로토콜.md@c2cbd7b8af8aaf3fde6eb775540f7dea6a5e64a1",
+    "latestMain": "f59e29c0f4cd6a9318f49e94a74919c50282d007"
+  },
+  "canonicalCommand": "node archive/tools/review-evidence-gate.mjs --exam archive/exams/original/middle/m3/1final/22_연향중_1학기_기말_중3_기출c.js --evidence archive/data/r3-intake/m3/22_연향중_1학기_기말_중3_기출c.r3.physical-evidence.json --stage R3",
+  "executionMode": "CONNECTED_V8_CANONICAL_REPLAY",
+  "replayNote": "The exact current gate/calibration source blobs and pinned target/evidence/sample bindings were read. Deterministic gate logic was replayed in the connected runtime. A repository-local Node CLI process is not claimed.",
+  "ok": false,
+  "questionCount": 21,
+  "questionEvidenceRows": 21,
+  "linkedSolutionVisualCount": 0,
+  "visualEvidenceRows": 0,
+  "metaEvidenceRows": 21,
+  "itemHoldCount": 3,
+  "itemHoldQids": [
+    1,
+    9,
+    12
+  ],
+  "disposition": "FAIL",
+  "issues": [
+    "R3_ITEM_HOLD_FORBIDDEN:1,9,12"
+  ],
+  "gradeBoundedAudit": "PASS_21_OF_21",
+  "gradeUpperBoundViolationCount": 0,
+  "visualDoubtPolicy": "PASS_NO_SPECULATIVE_FAIL",
+  "confirmedVisualDefectQids": [
+    12
+  ],
+  "problemRasterFreshPixelPassQids": [
+    11,
+    15,
+    18,
+    20
+  ],
+  "nonblockingVisualRecheckQids": [
+    19
+  ],
+  "freshMetaAudit": "21/21; all rows have fresh method/decisive-step/lookup/nullReason evidence; no inherited Meta HOLD promoted.",
+  "difficultyAudit": "21/21; q12 deferred only because source text/image owner contradiction is unresolved.",
+  "runtimeDoubledTexIssues": 0,
+  "confirmedRuntimeLiteralLineEscapeQids": [
+    1,
+    9
+  ],
+  "validatorAtKst": "2026-10-02T07:24:36+09:00"
+}
