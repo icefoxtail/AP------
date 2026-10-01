@@ -1902,7 +1902,7 @@ window.questionBank = [
     "content": "두 점 $A(0,1)$, $B(1,2)$와 곡선 $y=\\sqrt{x}$ 위의 한 점 $P(x,y)$에 대하여 삼각형 $ABP$의 넓이의 최솟값을 구하여라. [7점] (부분점수 있음.)",
     "choices": [],
     "answer": "3/8",
-    "solution": "$t=\\sqrt{x}$라 두면 $t\\ge0$, $P=(t^2,t)$이다. 삼각형 넓이는 두 변의 행렬식 절댓값의 절반이다.\n$\\overrightarrow{AB}=(1,1)$, $\\overrightarrow{AP}=(t^2,t-1)$이므로\n$[ABP]=\\dfrac12|1\\cdot(t-1)-1\\cdot t^2|=\\dfrac12(t^2-t+1)$이다.\n$t^2-t+1=(t-1/2)^2+3/4$이므로 최솟값은 $t=1/2$에서 나온다. 따라서 넓이의 최솟값은 $\\dfrac12\\cdot\\dfrac34=\\dfrac38$이다.",
+    "solution": "$t=\\sqrt{x}$라 두면 $t\\ge0$, $P=(t^2,t)$이다. 두 점 $A(0,1)$, $B(1,2)$를 지나는 직선은 $y=x+1$이고, $AB=\\sqrt2$이다.\n점 $P$와 직선 $y=x+1$ 사이의 거리는\n$\\dfrac{|t^2-t+1|}{\\sqrt{1^2+(-1)^2}}=\\dfrac{t^2-t+1}{\\sqrt2}$이다. 여기서 $t^2-t+1=(t-1/2)^2+3/4>0$이므로 절댓값을 없앴다.\n따라서 삼각형의 넓이는 $\\dfrac12\\cdot\\sqrt2\\cdot\\dfrac{t^2-t+1}{\\sqrt2}=\\dfrac{t^2-t+1}{2}=\\dfrac{(t-1/2)^2+3/4}{2}$이다. $t=1/2$는 조건 $t\\ge0$을 만족하므로 이때 넓이는 최솟값 $\\dfrac38$이다.",
     "image": "",
     "visualAsset": "",
     "hasVisualAsset": false,

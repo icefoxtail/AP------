@@ -1,0 +1,16 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "INDEPENDENT_REVIEW_TARGETED_RECHECK",
+  "qid": 21,
+  "status": "PASS",
+  "reviewer": "ordinal4_solution_verifier",
+  "reviewScope": "q21 solution method, derivation, minimum, and curriculum appropriateness",
+  "finding": "The prior solution used vectors and a determinant, beyond the requested course method scope.",
+  "repair": "Replaced it with the line AB: y=x+1, base length sqrt(2), point-to-line height (t^2-t+1)/sqrt(2), and base-height area minimization.",
+  "verification": "With t=sqrt(x)>=0, P=(t^2,t). The height numerator is positive since t^2-t+1=(t-1/2)^2+3/4. Area is (t^2-t+1)/2 and reaches 3/8 at t=1/2. The derivation uses high-school coordinate geometry and completing the square; no calculus or determinant is used.",
+  "curriculumNote": "PASS at H1 course level. Exact '수학(하)' semester placement may vary by school sequencing for point-to-line distance.",
+  "targetArtifactSha256": "sha256:24c69bbe408d5a091724ffbb30677617f98ed94fb784f7859cff555cc3c53904",
+  "targetArtifactGitBlobSha": "dbf5d7f9b6268118f8a8e584e1ea1d88a7e5defa"
+}

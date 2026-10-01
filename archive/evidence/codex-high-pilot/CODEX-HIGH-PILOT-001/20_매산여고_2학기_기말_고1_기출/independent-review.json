@@ -1,0 +1,43 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "INDEPENDENT_REVIEW",
+  "status": "PASS_WITH_DOCUMENTED_META_AND_DIFFICULTY_CAVEATS",
+  "reviewer": "ordinal4_final_independent_review",
+  "independentOfSelfReviewVerdicts": true,
+  "denominator": 22,
+  "coverage": {
+    "math": "PASS 22/22",
+    "answer": "PASS 22/22",
+    "studentReproducibility": "PASS after q21 method repair",
+    "smallBoard": "PASS",
+    "curriculum": "PASS at H1 course level; q21 exact semester placement noted",
+    "visual": "PASS 4/4 source visuals",
+    "meta": "PASS_WITH_DOCUMENTED_GAPS",
+    "protectedSourceFields": "PASS 22/22 content and choices",
+    "runtimeAndTex": "PASS node syntax, VM count 22, balanced TeX delimiters"
+  },
+  "answerKey": "Agrees with final target on all 22. The reviewer's initial q15 acute/obtuse, q19 inclusion-exclusion, q20 rank, and q22 coefficient discrepancies were independently recomputed and withdrawn; final answers are q15=140, q19=192, q20=40176, q22=4.",
+  "targetedFindings": [
+    {
+      "qid": 21,
+      "initialFinding": "The correct answer 3/8 was derived using vectors and a determinant outside the stated method scope.",
+      "repair": "Replaced with a base-height derivation using line AB: y=x+1 and point-to-line height.",
+      "recheck": "PASS; area (t^2-t+1)/2 is minimized at t=1/2, yielding 3/8. The verifier judged the method appropriate at H1 course level and noted exact semester placement may vary by school sequencing.",
+      "evidence": "q21-method-recheck.json"
+    }
+  ],
+  "visualFindings": "q5 encodes 1→4→3→1 and 2→2; q8 graph supports asymptote and intercept signs; q15 has 12 evenly spaced points; q16 adjacency is A-B-C-D-A. All four image SHA-256 values match frozen source references.",
+  "metaAndDifficultyFindings": "Meta coverage 22/22 with documented nonblocking RPM gaps q2, q9, q21; active/projection caveats are not promoted into invented taxonomy. Difficulty status PASS_WITH_ADJUDICATION; q14 strong conflict and q15/q21 borderline legacy comparisons remain documented.",
+  "sourceIntegrity": {
+    "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
+    "contentParity": "22/22",
+    "choiceParity": "22/22",
+    "sourceImageBlobParity": "4/4",
+    "unrelatedMutationCount": 0
+  },
+  "targetArtifactSha256": "sha256:24c69bbe408d5a091724ffbb30677617f98ed94fb784f7859cff555cc3c53904",
+  "targetArtifactGitBlobSha": "dbf5d7f9b6268118f8a8e584e1ea1d88a7e5defa",
+  "scopeLimit": "Static TeX delimiter validation was performed; no full browser or LaTeX render was run."
+}
