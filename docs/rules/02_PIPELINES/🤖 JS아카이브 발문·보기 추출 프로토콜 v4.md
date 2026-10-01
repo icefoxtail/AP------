@@ -466,6 +466,8 @@ neededSource는 "table_crop" 또는 "higher_resolution_full_page"로 기록한�
 
 이 공정에서는 도형, 그래프, SVG를 새로 그리지 않는다.
 
+**HARD:** full-page/source에서 원본 그림을 crop할 수 있으면 그 PNG가 문제용 canonical asset이다. 원본 crop을 generated SVG로 교체하지 않는다. SVG가 필요하면 해설용 `solutionImage`/solution visual로 별도 생성한다.
+
 도형/그래프가 문제 풀이 또는 보기 판독에 필요한 경우:
 
 원문 발문은 content에 입력한다.
