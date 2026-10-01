@@ -11,8 +11,8 @@
   "sourceAuthorityCommit": "1c7927c7a9a2fe3c8e420b7de4dab702f23cb4dc",
   "sourceArtifactSha256": "sha256:bbefaf1c7f465c4e78ef9426a2d05b0b6c318dccdad200c78542ad1fb44eaa9a",
   "sourceArtifactGitBlobSha": "ca9f16b88bd898f46c1359c713bc1dc10c318e68",
-  "reviewedArtifactSha256": "sha256:e5153922b85e94cf831321c12f15deb10b44f41ccdc5b73a702add970c34c0f0",
-  "reviewedArtifactGitBlobSha": "3d1e1b517e1f4e05fd5e3d74d52c9b5c69c5d05b",
+  "reviewedArtifactSha256": "sha256:cd998b8de0163b3b38c2d3af728fea08752d910dce16d6355ae14fc024be73cc",
+  "reviewedArtifactGitBlobSha": "81518e04df81671d32d9d1364b2dc64c2e0a3cf0",
   "axes": [
     "source to solution mathematics",
     "answer alignment",
@@ -163,6 +163,16 @@
       "qid": 15,
       "repair": "Student re-read explained the positive-gap composition count behind 4+3+2+1.",
       "recheck": "PASS: long-gap count and answer are unchanged."
+    },
+    {
+      "qid": 9,
+      "repair": "Corrected the centered hyperbola product constant from 7/2 to 5/2; translated axes remain unchanged.",
+      "recheck": "PASS: direct expansion verifies (x+1/2)(y+2)=5/2; answer −4 unchanged."
+    },
+    {
+      "qid": "3,7,10,13,15",
+      "repair": "Converted literal backslash-n sequences in paragraph separators to actual line breaks.",
+      "recheck": "PASS: math and answer unchanged; runtime student text now has real paragraph breaks."
     }
   ],
   "protectedSourceParity": "PASS: 22/22 content and 22/22 choices exact against frozen source authority; only answer and solution fields added.",

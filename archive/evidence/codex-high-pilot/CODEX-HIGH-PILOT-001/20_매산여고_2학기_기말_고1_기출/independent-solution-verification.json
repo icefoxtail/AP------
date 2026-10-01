@@ -1,0 +1,40 @@
+{
+  "pilotId": "CODEX-HIGH-PILOT-001",
+  "exam": "20_매산여고_2학기_기말_고1_기출",
+  "ordinal": 4,
+  "stage": "PRE_META_INDEPENDENT_SOLUTION_VERIFICATION",
+  "status": "PASS_22_OF_22",
+  "reviewer": "ordinal4_solution_verifier",
+  "answerKeySource": "independent-answer-input.json (source text, choices, and source images only)",
+  "answersFrozenBeforeSolutionRead": true,
+  "solutionEvidence": "solution.json",
+  "verifiedArtifactSha256": "sha256:cd998b8de0163b3b38c2d3af728fea08752d910dce16d6355ae14fc024be73cc",
+  "verifiedArtifactGitBlobSha": "81518e04df81671d32d9d1364b2dc64c2e0a3cf0",
+  "denominator": 22,
+  "independentAnswerCount": 22,
+  "answerSolutionAlignment": "PASS 22/22",
+  "studentSolutionMath": "PASS 22/22 after targeted textual repairs",
+  "curriculumMethod": "PASS",
+  "visualSemantics": "PASS for source visual qids 5,8,15,16",
+  "texReadability": "PASS after paragraph repairs",
+  "targetedFindings": [
+    {
+      "qid": 9,
+      "finding": "The centered rational equation must be (x+1/2)(y+2)=5/2; the draft had 7/2.",
+      "repair": "Corrected the constant. Symmetry axes and final coefficient value remain y=x−3/2, y=−x−5/2 and ad−bc=−4.",
+      "recheck": "PASS"
+    },
+    {
+      "qids": [3,7,10,13,15],
+      "finding": "Literal backslash-n sequences were present in solution text instead of paragraph breaks.",
+      "repair": "Replaced each with actual line breaks.",
+      "recheck": "PASS; runtime strings contain no literal backslash-n in these items."
+    },
+    {
+      "qid": 20,
+      "finding": "The verifier's first rank list mistakenly called the 50th permutation 59731.",
+      "recheck": "Full 120-permutation descending enumeration confirms rank 50 is 59713 and rank 100 is 19537; difference 40176. The verifier withdrew its initial q20 discrepancy and marked the solution PASS."
+    }
+  ],
+  "findings": []
+}
