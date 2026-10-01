@@ -1,5 +1,46 @@
 [JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]
 
+## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+
+R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
+
+### CLASS A — FULL_REENTRY
+다음은 `FULL R1 → FULL R2 → R3_RETRY`다.
+- source/content/choices/answer 자체 오류 또는 원본 판독 오류
+- 수학적 성립성·정답 유일성·핵심 논리 오류
+- protected field / UID / source identity 불일치
+- multi-locus reauthoring
+- defect family 영향범위를 안전하게 한정할 수 없음
+- `SYSTEMIC_SCOPE_UNCERTAIN`
+
+### CLASS B — TARGETED_R1_R2
+qid와 defect family가 특정되는 curriculum/solution/visual/Meta/layout/student-language 결함은 시험지 전체 FULL 재실행을 금지한다.
+`R3_FAIL → R1_TARGETED_REPAIR → R2_TARGETED_INDEPENDENT_RECHECK → R3_RETRY`
+- R1은 failed qids만 수리한다.
+- false PASS family는 시험지 전체 N/N scan으로 다시 연다.
+- `CURRICULUM_FAIL` → 해당 qid solution 수리 + `curriculumMethodAuditCount=N/N`.
+- `SOLUTION_VISUAL_MISSING`/visual necessity false PASS → 해당 qid visual 수리 + `visualNecessityAuditCount=N/N`.
+- unrelated source/answer/math 전 문항 재풀이 금지.
+- R2는 수리 qid를 기존 해설을 보지 않고 curriculum-constrained blind solve한 뒤 decision freeze 후 packet/repair와 비교한다.
+
+### CLASS C — ASSET_ONLY
+수학 의미·정답·solution 의미를 바꾸지 않는 순수 출판 asset 결함은 FULL R1/R2 회귀 금지.
+`R3_FAIL → ASSET_OWNER_REPAIR → INDEPENDENT_ASSET_RECHECK → R3_RETRY`
+예: crop 경계, clipping, 손글씨/인접 오염, label 가독성, source-neutral image polish, 파일 참조.
+asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 건드리면 CLASS B 또는 A로 승격한다.
+
+`R3_FAIL_PACKET` 필수: `failureClass`, `failedQids[]`, `failureCodes[]`, `affectedAxes[]`, `requiredRoute`, `systemicScope`, `r3InputArtifactSha`, observed/authority evidence.
+`failureClass`가 없거나 안전하게 결정할 수 없으면 CLASS A.
+## CURRENT OVERRIDE — R3 TARGETED REENTRY CONTRACT (2026-10-01)
+
+- `FULL_REENTRY`: 기존 FULL R1 계약으로 재진입.
+- `TARGETED_R1_R2`: failed qids만 repair + defect family N/N rescan. unrelated qids의 수학·정답·source 전수 재풀이 금지.
+- `ASSET_ONLY`: R1 math repair 대상 아님. 지정 asset owner로 라우팅.
+
+TARGETED evidence: `reentryMode=TARGETED`, `r3FailurePacketRef`, `repairQids[]`, `familyRescanAxis`, `familyRescanCount=N/N`, `r1OutputArtifactSha`. nextOwner=`R2_TARGETED_INDEPENDENT_RECHECK`.
+`CURRICULUM_FAIL`이면 해당 학년·과목 허용 method로 solution을 다시 쓰고 전체 시험지 curriculum N/N을 닫는다.
+`SOLUTION_VISUAL_MISSING`이면 필요한 visual을 제작/수리하고 전체 시험지 visual necessity N/N을 닫는다.
+
 ## CURRENT — R3 FAIL REENTRY: R1 REOPEN CONTRACT (2026-10-01)
 
 R3가 student-facing/release 결함을 발견하면 R3에서 산출물을 직접 고쳐 PASS로 닫지 않는다. 반드시 물리 `R3_FAIL_PACKET`과 함께 이 R1으로 되돌린다.

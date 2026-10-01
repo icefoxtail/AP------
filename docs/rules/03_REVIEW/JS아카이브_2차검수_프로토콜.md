@@ -1,5 +1,53 @@
 [JS아카이브 2차 검수 프로토콜 — 수학·정오답 검수 v1.0]
 
+## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+
+R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
+
+### CLASS A — FULL_REENTRY
+다음은 `FULL R1 → FULL R2 → R3_RETRY`다.
+- source/content/choices/answer 자체 오류 또는 원본 판독 오류
+- 수학적 성립성·정답 유일성·핵심 논리 오류
+- protected field / UID / source identity 불일치
+- multi-locus reauthoring
+- defect family 영향범위를 안전하게 한정할 수 없음
+- `SYSTEMIC_SCOPE_UNCERTAIN`
+
+### CLASS B — TARGETED_R1_R2
+qid와 defect family가 특정되는 curriculum/solution/visual/Meta/layout/student-language 결함은 시험지 전체 FULL 재실행을 금지한다.
+`R3_FAIL → R1_TARGETED_REPAIR → R2_TARGETED_INDEPENDENT_RECHECK → R3_RETRY`
+- R1은 failed qids만 수리한다.
+- false PASS family는 시험지 전체 N/N scan으로 다시 연다.
+- `CURRICULUM_FAIL` → 해당 qid solution 수리 + `curriculumMethodAuditCount=N/N`.
+- `SOLUTION_VISUAL_MISSING`/visual necessity false PASS → 해당 qid visual 수리 + `visualNecessityAuditCount=N/N`.
+- unrelated source/answer/math 전 문항 재풀이 금지.
+- R2는 수리 qid를 기존 해설을 보지 않고 curriculum-constrained blind solve한 뒤 decision freeze 후 packet/repair와 비교한다.
+
+### CLASS C — ASSET_ONLY
+수학 의미·정답·solution 의미를 바꾸지 않는 순수 출판 asset 결함은 FULL R1/R2 회귀 금지.
+`R3_FAIL → ASSET_OWNER_REPAIR → INDEPENDENT_ASSET_RECHECK → R3_RETRY`
+예: crop 경계, clipping, 손글씨/인접 오염, label 가독성, source-neutral image polish, 파일 참조.
+asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 건드리면 CLASS B 또는 A로 승격한다.
+
+`R3_FAIL_PACKET` 필수: `failureClass`, `failedQids[]`, `failureCodes[]`, `affectedAxes[]`, `requiredRoute`, `systemicScope`, `r3InputArtifactSha`, observed/authority evidence.
+`failureClass`가 없거나 안전하게 결정할 수 없으면 CLASS A.
+## CURRENT OVERRIDE — R3 TARGETED INDEPENDENT RECHECK (2026-10-01)
+
+- `FULL_REENTRY`: 기존 FULL R2 독립검수.
+- `TARGETED_R1_R2`: R1 수리 qid만 기존 solution/R1 repair/R3 verdict를 보지 않고 먼저 독립 재풀이·판정.
+- `ASSET_ONLY`: R2 math recheck 생략, independent asset checker가 검증.
+
+TARGETED R2 순서:
+1. source + 학년/과목 curriculum profile 고정.
+2. candidate solution을 보지 않고 해당 qid curriculum-constrained blind solve.
+3. `independentSolverMethodInventory` 기록 및 curriculum PASS 확인.
+4. 그 뒤 repaired solution을 열어 `candidateSolutionMethodInventory`와 비교.
+5. 마지막에 R3_FAIL_PACKET/R1 repair ledger를 열어 regression closure 확인.
+6. defect family N/N marker 독립 재확인.
+
+완료 evidence: `reentryMode=TARGETED`, `blindDecisionFrozen=true`, `independentSolverMethodInventory`, `candidateSolutionMethodInventory`, `recheckedQids[]`, `familyRescanAxis`, `familyRescanCount=N/N`, `r2OutputArtifactSha`.
+TARGETED에서 unrelated qids 전 문항 재풀이 금지. 새 systemic defect 발견 시 `FULL_REENTRY_REQUIRED`로 승격. nextOwner=`R3_RETRY`.
+
 ## CURRENT — R3 FAIL REENTRY: R2 INDEPENDENT RECERTIFICATION (2026-10-01)
 
 R3 FAIL 후 R1이 수리한 artifact는 반드시 R2를 다시 통과한다. R3→R1→R3 직행은 금지한다.

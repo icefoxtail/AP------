@@ -1,5 +1,52 @@
 [JS아카이브 3차 검수 프로토콜 — 분류·메타·난이도 태그 검수 v1.0]
 
+## CURRENT OVERRIDE — R3 FAILURE CLASS ROUTING (2026-10-01)
+
+R3 FAIL 회귀 범위는 검수자 재량이 아니라 `failureClass`와 `failureCodes[]`로 결정한다. 이 규칙은 기존의 일률적인 FULL R1→FULL R2→R3 해석보다 우선한다.
+
+### CLASS A — FULL_REENTRY
+다음은 `FULL R1 → FULL R2 → R3_RETRY`다.
+- source/content/choices/answer 자체 오류 또는 원본 판독 오류
+- 수학적 성립성·정답 유일성·핵심 논리 오류
+- protected field / UID / source identity 불일치
+- multi-locus reauthoring
+- defect family 영향범위를 안전하게 한정할 수 없음
+- `SYSTEMIC_SCOPE_UNCERTAIN`
+
+### CLASS B — TARGETED_R1_R2
+qid와 defect family가 특정되는 curriculum/solution/visual/Meta/layout/student-language 결함은 시험지 전체 FULL 재실행을 금지한다.
+`R3_FAIL → R1_TARGETED_REPAIR → R2_TARGETED_INDEPENDENT_RECHECK → R3_RETRY`
+- R1은 failed qids만 수리한다.
+- false PASS family는 시험지 전체 N/N scan으로 다시 연다.
+- `CURRICULUM_FAIL` → 해당 qid solution 수리 + `curriculumMethodAuditCount=N/N`.
+- `SOLUTION_VISUAL_MISSING`/visual necessity false PASS → 해당 qid visual 수리 + `visualNecessityAuditCount=N/N`.
+- unrelated source/answer/math 전 문항 재풀이 금지.
+- R2는 수리 qid를 기존 해설을 보지 않고 curriculum-constrained blind solve한 뒤 decision freeze 후 packet/repair와 비교한다.
+
+### CLASS C — ASSET_ONLY
+수학 의미·정답·solution 의미를 바꾸지 않는 순수 출판 asset 결함은 FULL R1/R2 회귀 금지.
+`R3_FAIL → ASSET_OWNER_REPAIR → INDEPENDENT_ASSET_RECHECK → R3_RETRY`
+예: crop 경계, clipping, 손글씨/인접 오염, label 가독성, source-neutral image polish, 파일 참조.
+asset 수정이 수학 조건·label owner·좌표 의미·solution 의미를 건드리면 CLASS B 또는 A로 승격한다.
+
+`R3_FAIL_PACKET` 필수: `failureClass`, `failedQids[]`, `failureCodes[]`, `affectedAxes[]`, `requiredRoute`, `systemicScope`, `r3InputArtifactSha`, observed/authority evidence.
+`failureClass`가 없거나 안전하게 결정할 수 없으면 CLASS A.
+## CURRENT OVERRIDE — R3 FAILURE TRIAGE / BOUNDED REENTRY (2026-10-01)
+
+R3는 FAIL을 직접 repair하지 않지만 모든 FAIL을 FULL R1/R2로 되돌리지도 않는다. failure를 기계적으로 분류해 packet에 고정한다.
+- `FULL_REENTRY`: source/answer/math/identity/multi-locus/systemic scope 불명 → FULL R1 → FULL R2 → R3_RETRY.
+- `TARGETED_R1_R2`: qid와 family가 특정되는 curriculum/solution/visual/Meta/layout/student-language → R1_TARGETED_REPAIR → R2_TARGETED_INDEPENDENT_RECHECK → R3_RETRY.
+- `ASSET_ONLY`: 수학 의미를 바꾸지 않는 crop/clipping/오염/가독성/파일참조 → ASSET_OWNER_REPAIR → INDEPENDENT_ASSET_RECHECK → R3_RETRY.
+
+검수자가 속도를 이유로 class를 낮추는 것은 금지. 애매하면 FULL_REENTRY.
+매산고 회귀 fixture:
+- q15·q21 교육과정 위반 → TARGETED_R1_R2 + 시험지 전체 curriculum N/N rescan.
+- q8·q9·q10·q11·q14 visual necessity 누락 → TARGETED_R1_R2 + 시험지 전체 visual necessity N/N rescan.
+- q12/q18 crop/오염이 수학 의미를 건드리지 않는 경우 → ASSET_ONLY.
+- source symbol/answer/math 자체 오류 → FULL_REENTRY.
+
+R3_RETRY는 어떤 class였든 latest repaired lineage에서 full release gate를 다시 수행한다. bounded되는 것은 upstream R1/R2 재작업 범위다.
+
 ## CURRENT — R3 FAIL → R1 → R2 → R3 CLOSED LOOP (2026-10-01)
 
 R3는 MAIN 직전 **release gate**이며 repair stage가 아니다. R3에서 학생 노출·교육과정·visual·출판·Meta·무결성 결함이 하나라도 확인되면 현재 artifact를 R3 PASS로 고쳐 닫지 않는다.
