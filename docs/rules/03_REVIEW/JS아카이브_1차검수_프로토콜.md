@@ -1,4 +1,4 @@
-[JS아카이브 1차 검수 프로토콜 — 구조·무결성 검수 v1.0]
+[JS아카이브 1차 검수 프로토콜 — FULL 독립검수·Repair v2.0]
 
 ## CURRENT HARD RULE — HOLD ADMISSION GATE / REPAIRABLE ≠ HOLD (2026-10-01)
 
