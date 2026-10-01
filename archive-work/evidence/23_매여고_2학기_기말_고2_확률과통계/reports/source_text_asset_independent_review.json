@@ -438,8 +438,83 @@
       ],
       "linkedAssets": [],
       "sourceComparisonMethod": "Original page raster was reopened and read directly; each cited phrase is a visually checked printed wording/symbol and is paired with an exact current JS substring. No OCR or PDF text extraction.",
-      "notationInventory": [],
-      "notationInventoryStatus": "NOT_APPLICABLE",
+      "notationInventory": [
+        {
+          "sourceVisualToken": "ㄱ. → ㄴ. → ㄷ.",
+          "sourceTokenSequence": [
+            "ㄱ.",
+            "ㄴ.",
+            "ㄷ."
+          ],
+          "jsSerialization": "ㄱ. 국회의원 선거 여론 조사는 전수조사이다.<br>ㄴ. 어느 과일 가게에 진열된 과일의 당도 조사는 표본조사이다.<br>ㄷ. 표본조사의 목적은 모집단 전체를 조사하지 않고 그 일부인 표본을 조사하여 얻은 정보를 바탕으로 모집단의 특성을 추측하는 데 있다.",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 1,
+          "pageRegion": "p1 upper-left, 보기 box",
+          "bbox": [
+            40,
+            410,
+            890,
+            1060
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Reopened full-page raster; printed ㄱ/ㄴ/ㄷ labels and order read directly and matched to content."
+        },
+        {
+          "sourceVisualToken": "① → ② → ③ → ④ → ⑤",
+          "sourceTokenSequence": [
+            "①",
+            "②",
+            "③",
+            "④",
+            "⑤"
+          ],
+          "jsSerialization": {
+            "jsField": "choices",
+            "orderedValues": [
+              "ㄱ, ㄴ, ㄷ",
+              "ㄱ, ㄴ",
+              "ㄱ, ㄷ",
+              "ㄴ, ㄷ",
+              "ㄷ"
+            ],
+            "indexToPrintedLabel": [
+              {
+                "jsArrayIndexZeroBased": 0,
+                "printedChoiceLabel": "①"
+              },
+              {
+                "jsArrayIndexZeroBased": 1,
+                "printedChoiceLabel": "②"
+              },
+              {
+                "jsArrayIndexZeroBased": 2,
+                "printedChoiceLabel": "③"
+              },
+              {
+                "jsArrayIndexZeroBased": 3,
+                "printedChoiceLabel": "④"
+              },
+              {
+                "jsArrayIndexZeroBased": 4,
+                "printedChoiceLabel": "⑤"
+              }
+            ]
+          },
+          "mappingType": "PRINTED_CHOICE_LABEL_TO_JS_ARRAY_ORDER",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-left, five printed options beneath 보기 box",
+          "bbox": [
+            40,
+            410,
+            890,
+            1060
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed circled option labels read directly from the page. JS stores option strings in array order; index 0–4 maps to ①–⑤."
+        }
+      ],
+      "notationInventoryStatus": "PASS",
       "notationAndPromptReviewStatus": "PASS_NO_SPECIAL_NOTATION_PRESENT"
     },
     {
@@ -6083,8 +6158,145 @@
         }
       ],
       "sourceComparisonMethod": "Original page raster was reopened and read directly; each cited phrase is a visually checked printed wording/symbol and is paired with an exact current JS substring. No OCR or PDF text extraction.",
-      "notationInventory": [],
-      "notationInventoryStatus": "NOT_APPLICABLE",
+      "notationInventory": [
+        {
+          "sourceVisualToken": "z | 1.0 | 1.5 | 2.0 | 2.5 | 3.0",
+          "sourceComponent": "tableColumnHeader",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table linked standard-normal table crop",
+          "bbox": {
+            "x1": 950,
+            "y1": 1986,
+            "x2": 1705,
+            "y2": 2120
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "assetSha256": "sha256:36d3208c851e59773fec8b46786239515dbb585a14086d58626c8b2533c1458b",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "P(0 ≤ Z ≤ z) | 0.3413 | 0.4332 | 0.4772 | 0.4938 | 0.4987",
+          "sourceComponent": "probabilityHeaderAndOrderedValues",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table linked standard-normal table crop",
+          "bbox": {
+            "x1": 950,
+            "y1": 1986,
+            "x2": 1705,
+            "y2": 2120
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "assetSha256": "sha256:36d3208c851e59773fec8b46786239515dbb585a14086d58626c8b2533c1458b",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "1.0:0.3413; 1.5:0.4332; 2.0:0.4772; 2.5:0.4938; 3.0:0.4987",
+          "sourceComponent": "orderedTableRows",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table linked standard-normal table crop",
+          "bbox": {
+            "x1": 950,
+            "y1": 1986,
+            "x2": 1705,
+            "y2": 2120
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+          "assetSha256": "sha256:36d3208c851e59773fec8b46786239515dbb585a14086d58626c8b2533c1458b",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q006_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "60g",
+          "jsSerialization": "60g",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table printed prompt",
+          "bbox": [
+            920,
+            1680,
+            1780,
+            2320
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "16g",
+          "jsSerialization": "16g",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table printed prompt",
+          "bbox": [
+            920,
+            1680,
+            1780,
+            2320
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "64개의",
+          "jsSerialization": "64개의",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table printed prompt",
+          "bbox": [
+            920,
+            1680,
+            1780,
+            2320
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "58g 이상 64g 이하",
+          "jsSerialization": "58g 이상 64g 이하",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 1,
+          "pageRegion": "p1 lower-right, normal table printed prompt",
+          "bbox": [
+            920,
+            1680,
+            1780,
+            2320
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        }
+      ],
+      "notationInventoryStatus": "PASS",
       "notationAndPromptReviewStatus": "PASS_NO_SPECIAL_NOTATION_PRESENT"
     },
     {
@@ -13199,8 +13411,145 @@
         }
       ],
       "sourceComparisonMethod": "Original page raster was reopened and read directly; each cited phrase is a visually checked printed wording/symbol and is paired with an exact current JS substring. No OCR or PDF text extraction.",
-      "notationInventory": [],
-      "notationInventoryStatus": "NOT_APPLICABLE",
+      "notationInventory": [
+        {
+          "sourceVisualToken": "z | P(0 ≤ Z ≤ z)",
+          "sourceComponent": "tableColumnHeader",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt linked standard-normal table crop",
+          "bbox": {
+            "x1": 1338,
+            "y1": 1788,
+            "x2": 1730,
+            "y2": 2100
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "assetSha256": "sha256:e1ec99ff67ea178cee2c1cc69588ab0ca294f88887b6347a3d805590d68bf392",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "0.5:0.19; 1.0:0.34; 1.5:0.43; 2.0:0.48",
+          "sourceComponent": "probabilityHeaderAndOrderedValues",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt linked standard-normal table crop",
+          "bbox": {
+            "x1": 1338,
+            "y1": 1788,
+            "x2": 1730,
+            "y2": 2100
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "assetSha256": "sha256:e1ec99ff67ea178cee2c1cc69588ab0ca294f88887b6347a3d805590d68bf392",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "0.5:0.19; 1.0:0.34; 1.5:0.43; 2.0:0.48",
+          "sourceComponent": "orderedTableRows",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt linked standard-normal table crop",
+          "bbox": {
+            "x1": 1338,
+            "y1": 1788,
+            "x2": 1730,
+            "y2": 2100
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+          "assetSha256": "sha256:e1ec99ff67ea178cee2c1cc69588ab0ca294f88887b6347a3d805590d68bf392",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q013_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "평균 10g",
+          "jsSerialization": "평균 10g",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt printed prompt",
+          "bbox": [
+            920,
+            1360,
+            1780,
+            1850
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "표준편차가 5g",
+          "jsSerialization": "표준편차가 5g",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt printed prompt",
+          "bbox": [
+            920,
+            1360,
+            1780,
+            1850
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "25개의",
+          "jsSerialization": "25개의",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt printed prompt",
+          "bbox": [
+            920,
+            1360,
+            1780,
+            1850
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "9g 이상 12g 이하",
+          "jsSerialization": "9g 이상 12g 이하",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 2,
+          "pageRegion": "p2 lower-right, table beside prompt printed prompt",
+          "bbox": [
+            920,
+            1360,
+            1780,
+            1850
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        }
+      ],
+      "notationInventoryStatus": "PASS",
       "notationAndPromptReviewStatus": "PASS_NO_SPECIAL_NOTATION_PRESENT"
     },
     {
@@ -16424,8 +16773,161 @@
         }
       ],
       "sourceComparisonMethod": "Original page raster was reopened and read directly; each cited phrase is a visually checked printed wording/symbol and is paired with an exact current JS substring. No OCR or PDF text extraction.",
-      "notationInventory": [],
-      "notationInventoryStatus": "NOT_APPLICABLE",
+      "notationInventory": [
+        {
+          "sourceVisualToken": "z | P(0 ≤ Z ≤ z)",
+          "sourceComponent": "tableColumnHeader",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table linked standard-normal table crop",
+          "bbox": {
+            "x1": 1115,
+            "y1": 600,
+            "x2": 1505,
+            "y2": 860
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "assetSha256": "sha256:a21d09c75c708114f97fdad9790532067145861c8a25224be8f30f5af7e30ea7",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "0.5:0.19; 1.0:0.34; 1.5:0.43; 2.0:0.48",
+          "sourceComponent": "probabilityHeaderAndOrderedValues",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table linked standard-normal table crop",
+          "bbox": {
+            "x1": 1115,
+            "y1": 600,
+            "x2": 1505,
+            "y2": 860
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "assetSha256": "sha256:a21d09c75c708114f97fdad9790532067145861c8a25224be8f30f5af7e30ea7",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "0.5:0.19; 1.0:0.34; 1.5:0.43; 2.0:0.48",
+          "sourceComponent": "orderedTableRows",
+          "jsSerialization": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "mappingType": "DIRECT_VISUAL_ASSET_REFERENCE",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table linked standard-normal table crop",
+          "bbox": {
+            "x1": 1115,
+            "y1": 600,
+            "x2": 1505,
+            "y2": 860
+          },
+          "sourceAssetPath": "archive-work/assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+          "assetSha256": "sha256:a21d09c75c708114f97fdad9790532067145861c8a25224be8f30f5af7e30ea7",
+          "status": "PASS",
+          "sourceEvidence": "Header, inequality, values and order read directly from reopened page raster and crop; JS links this exact SHA-bound raster asset.",
+          "jsField": "visualAsset (same path as image)",
+          "jsFields": {
+            "visualAsset": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png",
+            "image": "assets/images/23_매여고_2학기_기말_고2_확률과통계/q016_visual.png"
+          },
+          "serializationFeature": "table glyphs/values are preserved in the referenced raster asset; JS stores the path, not table text."
+        },
+        {
+          "sourceVisualToken": "350mL",
+          "jsSerialization": "350mL",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table printed prompt",
+          "bbox": [
+            920,
+            190,
+            1780,
+            840
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "10mL",
+          "jsSerialization": "10mL",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table printed prompt",
+          "bbox": [
+            920,
+            190,
+            1780,
+            840
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "330mL 이하",
+          "jsSerialization": "330mL 이하",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table printed prompt",
+          "bbox": [
+            920,
+            190,
+            1780,
+            840
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "10000병",
+          "jsSerialization": "10000병",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table printed prompt",
+          "bbox": [
+            920,
+            190,
+            1780,
+            840
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        },
+        {
+          "sourceVisualToken": "228개 이상",
+          "jsSerialization": "228개 이상",
+          "jsField": "content",
+          "mappingType": "LITERAL_SOURCE_TEXT_SUBSTRING_EQUALITY",
+          "pageNo": 3,
+          "pageRegion": "p3 upper-right prompt and table printed prompt",
+          "bbox": [
+            920,
+            190,
+            1780,
+            840
+          ],
+          "status": "PASS",
+          "sourceEvidence": "Printed number/unit/inequality phrase read from reopened full-page raster and matched literally in JS content."
+        }
+      ],
+      "notationInventoryStatus": "PASS",
       "notationAndPromptReviewStatus": "PASS_NO_SPECIAL_NOTATION_PRESENT"
     },
     {
@@ -22938,5 +23440,17 @@
     "ocrUsed": false,
     "pdfTextExtractionUsed": false,
     "assetReviewsPreserved": true
+  },
+  "notationInventoryCoverage": {
+    "status": "PASS",
+    "completedQidCount": 22,
+    "denominator": 22,
+    "missingQids": [],
+    "reopenedFullPageRasterReview": true,
+    "currentJsRead": true,
+    "ocrUsed": false,
+    "pdfTextExtractionUsed": false,
+    "recheckedAtKst": "2026-10-01T20:03:52+09:00",
+    "recheckedByReviewerWindowId": "01a0f5de-5560-71b1-9b94-2773b61ba5ad"
   }
 }
