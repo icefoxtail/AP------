@@ -164,7 +164,7 @@ window.questionBank = [
       "대응각"
     ],
     "wide": false,
-    "content": "다음 그림에서 $\\triangle ABC \\equiv \\triangle DFE$라 할 때, 그림에 대한 설명으로 옳은 것은? (3점)",
+    "content": "다음 그림에서 $\\triangle ABC \\equiv \\triangle DEF$라 할 때, 그림에 대한 설명으로 옳은 것은? (3점)",
     "choices": [
       "$\\overline{AC}=\\overline{DE}$",
       "$\\angle B=\\angle F$",
@@ -172,8 +172,8 @@ window.questionBank = [
       "ASA 합동이다.",
       "$\\overline{DF}=4\\mathrm{cm}$"
     ],
-    "answer": "",
-    "solution": "[키포인트] $\\triangle ABC\\equiv\\triangle DFE$이므로 $A\\leftrightarrow D$, $B\\leftrightarrow F$, $C\\leftrightarrow E$입니다. 따라서 $\\angle B=\\angle F=48^\\circ$이고 $AB=DF=4\\mathrm{cm}$입니다.\n\n현재 동결된 source/choices에서는 ②와 ⑤가 동시에 참이 되어 단일 정답을 확정할 수 없습니다. 원본 보기 재대조가 필요한 ITEM_HOLD입니다.",
+    "answer": "③",
+    "solution": "[키포인트] 합동식에서 대응하는 꼭짓점의 순서를 먼저 확인합니다.\n\n$\\triangle ABC\\equiv\\triangle DEF$이므로 $A\\leftrightarrow D$, $B\\leftrightarrow E$, $C\\leftrightarrow F$입니다. 따라서 $\\angle E=\\angle B=48^\\circ$입니다. 반면 $AC$의 대응변은 $DF$, $AB$의 대응변은 $DE$이므로 ①, ②, ⑤는 옳지 않습니다.\n\n따라서 정답은 ③입니다.",
     "sourceQuestionNo": "3",
     "displayNo": "3",
     "sourceOrdinal": 3,
@@ -182,10 +182,10 @@ window.questionBank = [
     "sourceIdentityKey": "sha256:f64f963b3cb0a6451332e97004546344a99f82c0df581dfc07ec02fa1e1d86e7|3",
     "contentSource": "full_page_source_evidence",
     "choicesSource": "full_page_source_evidence",
-    "answerSource": "independent_solve_item_hold",
+    "answerSource": "independent_solve_after_source_transcription_repair",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_SOURCE_MATH",
+    "reviewStatus": "REVIEW2_DONE_AFTER_REPAIR",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
@@ -201,12 +201,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "tagConfidence": "review_hold",
-    "tagStatus": "item_hold",
-    "itemHold": true,
-    "itemHoldReasons": [
-      "SOURCE_CHOICE_SET_HAS_MULTIPLE_TRUE_OPTIONS"
-    ],
+    "tagConfidence": "high",
+    "tagStatus": "reviewed_repair",
+    "itemHold": false,
+    "itemHoldReasons": [],
     "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q003_visual.png"
   },
   {
@@ -413,7 +411,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q006_visual.svg"
   },
   {
     "id": 7,
@@ -486,7 +484,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "solutionImage": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/solution_q7.svg"
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q7.svg"
   },
   {
     "id": 8,
@@ -982,8 +980,8 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
-    "solutionImage": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q014_visual.svg",
+    "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q14.svg"
   },
   {
     "id": 15,
@@ -1102,28 +1100,30 @@ window.questionBank = [
     "answerSource": "independent_solve",
     "solutionSource": "fresh_independent_solution",
     "extractionStatus": "SOURCE_TEXT_EXTRACTED",
-    "reviewStatus": "REVIEW2_DONE_ITEM_HOLD_META",
+    "reviewStatus": "REVIEW2_DONE_AFTER_META_REPAIR",
     "curriculum": "2022",
     "rpmPrimaryRecordId": "",
     "rpmPrimaryPath": null,
-    "rpmCrosswalkStatus": "ITEM_HOLD",
-    "canonicalBindingStatus": "UNRESOLVED",
-    "runtimeMaterializationStatus": "ITEM_HOLD",
-    "problemTypeKey": "",
-    "templateKey": "",
-    "crossConceptKeys": [],
+    "rpmCrosswalkStatus": "RPM_COVERAGE_GAP_NONBLOCKING",
+    "canonicalBindingStatus": "ACTIVE_FAMILY_REUSE",
+    "runtimeMaterializationStatus": "ACTIVE_BOUND",
+    "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+    "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_BASIC_TERM_CLAIM_AUDIT",
+    "crossConceptKeys": [
+      "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+      "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+      "PT_M1_PARALLEL_ANGLE_POSITION"
+    ],
     "conditionKeys": [],
     "integrationPattern": "CLAIM_AUDIT",
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "tagConfidence": "review_hold",
-    "tagStatus": "item_hold",
-    "itemHold": true,
-    "itemHoldReasons": [
-      "MULTI_L4_SEMANTIC_SPAN_NO_UNIQUE_PRIMARY"
-    ]
+    "tagConfidence": "high",
+    "tagStatus": "reviewed_repair",
+    "itemHold": false,
+    "itemHoldReasons": []
   },
   {
     "id": 17,
@@ -1193,7 +1193,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q017_visual.svg"
   },
   {
     "id": 18,
@@ -1604,7 +1604,7 @@ window.questionBank = [
     "tagStatus": "reviewed_create",
     "itemHold": false,
     "itemHoldReasons": [],
-    "image": "archive/assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.svg",
+    "image": "assets/images/26_왕운중_2학기_중간_중1_기출/q023_visual.svg",
     "solutionImage": "assets/images/26_왕운중_2학기_중간_중1_기출/solution_q23.svg"
   }
 ];
